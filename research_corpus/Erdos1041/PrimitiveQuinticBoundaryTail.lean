@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector
+import research_corpus.Erdos1041.TetranomialElementarySymmetricSelector
 
 /-!
 # Erdős #1041: primitive-quintic boundary tails

@@ -177,4 +177,3 @@ rapid-near-simultaneous first-merge shell than the return's
 `sqrt(beta_1/beta_2)` residual.  It does not by itself prove that this shell
 is near Fekete in the full topology-sensitive sense, and it does not close
 FP--GM, COVER, combined charge, or unrestricted Erdős 1041.
-

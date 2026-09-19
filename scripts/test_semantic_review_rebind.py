@@ -20,6 +20,12 @@ and each one must be refused by name.
 from __future__ import annotations
 
 import semantic_review as sr
+import json
+import subprocess
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
+from semantic_corpus_storage import encode_corpus
 
 REVISION = "9e231ce4371fcda607f81c4520d29b16dcb4482e"
 OLD_FINGERPRINT = "sha256:" + "a" * 64
@@ -446,7 +452,54 @@ def check_moved_revision_across_layout_move_is_reissued() -> None:
     )
 
 
+def check_explicit_committed_baseline() -> None:
+    """An independent clone can rebind after a merge without trusting its conflict file."""
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        def git(*args):
+            return subprocess.run(["git", *args], cwd=root, check=True,
+                capture_output=True, env=sr.command_environment()).stdout.decode().strip()
+        git("init", "-q")
+        git("config", "user.name", "Fixture")
+        git("config", "user.email", "fixture@example.invalid")
+        corpus_path = root / "docs/semantic_corpus.json.gz"
+        corpus_path.parent.mkdir()
+        old = sample_corpus(OLD_FINGERPRINT)
+        corpus_path.write_bytes(encode_corpus(json.dumps(old)))
+        git("add", "docs/semantic_corpus.json.gz")
+        git("commit", "-qm", "baseline")
+        revision = git("rev-parse", "HEAD")
+        corpus_path.write_bytes(b"conflicted worktree bytes")
+        with patch.object(sr, "ROOT", root):
+            loaded, resolved = sr.rebind_baseline(revision)
+            require(loaded == old and resolved == revision, "baseline did not use immutable Git bytes")
+            records, failures, _ = sr.rebind_receipts(sample_registry(old), loaded,
+                sample_corpus(NEW_FINGERPRINT), reviewed_revision=REVISION)
+            require(records and not failures, "unchanged merge material could not rebind")
+            changed = sample_corpus(NEW_FINGERPRINT)
+            changed["statement_nodes"][0]["canonical_statement"] = "Different mathematics."
+            _, failures, _ = sr.rebind_receipts(sample_registry(old), loaded, changed,
+                reviewed_revision=REVISION)
+            require(failures, "explicit baseline bypassed substantive review")
+            for bad in ("missing-ref", "--help"):
+                try:
+                    sr.rebind_baseline(bad)
+                except subprocess.CalledProcessError:
+                    pass
+                else:
+                    raise AssertionError("invalid baseline was accepted")
+            git("add", "docs/semantic_corpus.json.gz")
+            git("commit", "-qm", "invalid compressed corpus")
+            try:
+                sr.rebind_baseline("HEAD")
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("corrupt baseline was accepted")
+
+
 def main() -> int:
+    check_explicit_committed_baseline()
     check_fingerprint_only_move_is_allowed()
     check_changed_mathematics_is_refused()
     check_changed_relation_basis_is_refused()

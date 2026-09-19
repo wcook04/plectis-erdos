@@ -3,6 +3,9 @@ build/
 __pycache__/
 state/
 
+# Immutable, manifest-owned research receipts are published corpus evidence.
+!/research_corpus/Erdos1041/state/
+
 # Acquired third-party PDFs, scans, and source archives are retained as
 # working-tree evidence only.  Their artifact-level disposition ledger and
 # source-closure records are public; the binaries require verified permission

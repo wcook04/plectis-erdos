@@ -79,6 +79,6 @@ COVER.  Erdős 1041 remains open.
 ## Validation
 
 ```sh
-lake env lean research_corpus/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean
+./lake env lean research_corpus/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean
 ./repo-python -m system.lib.formal_math_frontier_integrity --repo-root . --check-currency
 ```

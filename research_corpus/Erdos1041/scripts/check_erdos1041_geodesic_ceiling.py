@@ -38,8 +38,7 @@ roots nearest the least critical point, ``max_{[a,b]}|f| <= C_n mu``, so
 and settles 1041 for that f.  ``C_3 = 9/8`` exactly; ``C_n`` grows like ``n/4``, so
 the window closes like ``4/n``.
 
-Reproduce:  ./repo-python source-provenance://private-authoring-project/ErdosProblems/\
-Erdos1041/scripts/check_erdos1041_geodesic_ceiling.py
+Reproduce:  python3 research_corpus/Erdos1041/scripts/check_erdos1041_geodesic_ceiling.py
 """
 
 from __future__ import annotations

@@ -1,466 +1,2955 @@
-# Erdős 1041 — current frontier (2026-08-30, updated by the proof wave of that date)
+# erdos_1041 mathematical frontier
 
-Read this before `STRONGEST_RESULTS.json`.  That map is generated from the
-2026-08-28 activation lists and therefore still presents as live several rows
-that were **refuted on 2026-08-29**.  This file is the dated delta.  The
-unrestricted problem is **OPEN**.
+Generated from the exported research packet. Read the strongest applicable
+result before attempting a proof; superseded results remain history.
 
-2026-08-30 PROOF WAVE (nine-agent verification fleet + main loop; six new
-owner notes, six new checkers, all green):
-- **(EX) base stratum PROVED at every degree**: the one-face radial
-  scattering theorem (`OneFaceRadialScatteringTheorem.md`) — strict
-  negative excess `<= 2|c*|(pi/n - 1)` at the trace-nonneg critical hub
-  on every one-mode model, `n >= 4`, plus the `n = 3` case with constant
-  `sqrt 3 - 2`; this is (MLS-strict) at `|M| = 1` with explicit constants.
-- **Tangent certificate (ii) is now EXACT** (`QuinticTangentOrbitExactCertificate.md`):
-  Sturm-certified containment, closed-form budget, stability floors
-  `m_- = 0.4847` / `m_+ = 1` — the "one box" of the §7 recipe, with the
-  gauge sign-slip in `QuinticStarKernelMechanics.md` §6 repaired.
-- **(EX) measured GLOBALLY TRUE on the quintic core with uniform margin**
-  (`TraceMaxRadialExcessLaw.md`): `sup(e_i + e_j) = -0.0362736374` for the
-  rightward Main-Theorem arms, extremal EXACTLY at certificate (ii); the
-  coercivity invariant is `|c*|` (corr `-0.99`), NOT `Delta_5`; the OUTWARD
-  RADIAL carrier fails in an open pocket at the orbit (do not re-propose).
-- **The explicit two-root area constant is DONE**
-  (`ProperComponentExplicitAreaConstant.md`): `A_{5,2} <= 4^{-2/5}(1 - 6.76e-8)`
-  by an exact-rational certificate; `Theta_{5,2} >= 0.940354223795` (+1.36e-8).
-- **The AGG3 radial constant is DERIVED and uniformly positive in every
-  phase** (`AggregateN3InnerModelClosedForm.md`,
-  `AggregateN3PshUniformityClosure.md`): the psh tangent cone proves
-  `D+9D''<=0` and the explicit barrier
-  `D(phi)>=D(0)cos((phi-pi/2)/3)/cos(pi/6)>=D(0)>=(3pi-8)/16`; the wall is
-  now the global minimum by proof, not a sweep.  The campaign's `C=0.0705`
-  was a wall-adjacent instrument artifact (see §4.2).
-- **FP_4 is PROVED completely** (`FreePointZeroInsertionFP4Matching.md`):
-  split at `max |c_j|^2 = 21/25`.  In the central region the exact
-  logarithmic energy/variance theorem combines with a Bernstein-certified
-  row envelope and rational Taylor bounds.  In the outer region the
-  K4-Hoelder bound `S_4^4 <= 8W`, a symmetric-square identity, and a
-  one-variable radical certificate give the strict estimate `W < 32`.
-  Equality is possible only at `c_1=...=c_4=0`.  The former insertion,
-  matching-stratum, and no-go results remain useful subordinate structure,
-  but there is no residual FP_4 case.  The free-point family remains open
-  only for `m >= 5`; RM and the Lorentzian-Gram route are now higher-degree
-  routes rather than FP_4 obligations.
-- **The all-degree FP-to-(S) bridge is PROVED**
-  (`FreePointTorusPshReduction.md`): the symmetric critical-value functional
-  is continuous plurisubharmonic on the root polydisk, so its maximum moves
-  to the root torus; there the exact self-inversive identity converts it to
-  `FP_{n-1}`, and the tangent inequality
-  `y^{(n-1)/n} <= ((n-1)y+1)/n` corrects the exponent.  Hence
-  `FP_{n-1} ==> (S)_n` at every degree.  In particular, the landed `FP_3`
-  and `FP_4` now prove (S) in degrees four and five.  This advances the
-  auxiliary algebraic frontier only; (S) still does not imply the parent.
-- **Integrated entropy sum rule** (`TraceMaxEntropyAngularBudget.md`):
-  `sum_j int log|q_j| = -(pi/sin(pi/n)) sum_k Re(v - H(c_k))^{1/n}` — the
-  exact all-sheet budget for the (EX) allocation step.
-- **The surviving admissible product now has a psh terminal-stratum
-  reduction** (`AdmissibleCriticalArcProductPshReduction.md`): on every
-  wall-free cell with fixed admissible hubs,
-  `log prod_c L(c)/(2|f(c)|^(1/n))` is plurisubharmonic.  Thus the exact
-  target-deciding product `(AP)` has no generic interior maximizer; its proof
-  burden moves to root-boundary, admissibility-wall, saddle-connection, and
-  collision strata.  Four guarded quintic holomorphic disks satisfy the
-  predicted sub-mean law.  This is a reduction, not a proof of `(AP)`.
-- **The first saddle-wall AP block is compressed exactly**
-  (`SaddleWallPairCompression.md`): if the lower outgoing arms have lengths
-  `A,B` and the upper stem plus unaffected arm has length `X`, the wall can
-  choose the shorter continuation and
-  `(A+B)(X+min(A,B)) <= (A+B+X)^2/2`, with exact slack
-  `[X^2+(A+B)|A-B|]/2`. Thus the two normalized wall factors close under
-  the single three-arm threshold
-  `A+B+X <= 2sqrt(2)|w_low w_high|^(1/(2n))`. The branch-switch allocation is
-  no longer an unspecified residual.
-- **The scalar three-arm threshold is FALSE, while `(AP)` is exact on a full
-  all-even wall family** (`SymmetricTwoLevelWallFamily.md`). For
-  `f=(z^m-a^m)(z^m+b^m)`, every critical value lies on one two-level saddle
-  wall, the inner edges have length `2b`, the outer edges have length `a+b`,
-  and the complete admissible product is
-  `r^((m-1)/2)(1+r)^m/[2^(m-1)(1+r^m)]<=1`, `r=b/a`, by the midpoint
-  power-mean inequality. Equality is only the regular `2m`-gon limit. The
-  parent path theorem on this centred-trinomial family was already subsumed by
-  `CyclicTrinomialFiberCase.md`; the new content is the exact AP/wall
-  calculation. Already at the quartic ratio `r=9/10`, the discarded scalar
-  `T` threshold fails by
-  exact fourth-power gap `5836/625`, while the true wall-pair square is
-  `3249/3620<1`. The correct general residual retains the exact stem/imbalance
-  slack:
-  `T^2-X^2-(A+B)|A-B|<=8|w_low w_high|^(1/n)`, or works with the complete
-  rooted merger block directly.
+The universal assertion that every monic complex polynomial of degree at least2 with roots in the open unit disc has two root occurrences joined inside its strict unit lemniscate by a continuous path of total variation less than2 is false.
 
-SAME-DAY UPDATE (2026-08-29 solve session, evening): §§1, 3, 4, 5 below carry
-that session's deltas — the model star kernel became a THEOREM at every degree
-(`QuinticStarKernelMechanics.md`), the two-root area gap (old gap 5) is
-PROVED in existence form (`ProperComponentUniformAreaGap.md`), (SPOKE-5)
-as stated is VIOLATED at an exact pocket corner, and the near-gon
-adversarial geography is mapped (`TwoTierStraightStarSelectorLab.md`).
+## Original target and route relations
 
-Target (unchanged): for monic `f` of degree `n >= 2` with all roots in the
-open unit disk, two roots are joined by a rectifiable path of length `< 2`
-inside `{|f| < 1}`.
+The universal assertion that every monic complex polynomial of degree at least2 with roots in the open unit disc has two root occurrences joined inside its strict unit lemniscate by a continuous path of total variation less than2 is false.
 
-## 1. Refuted — do not rebuild these
+Canonical frontier kind: `declared_target_or_counterexample`.
 
-Each row has a certified witness in the file named; each was killed by
-measurement plus adjudication, not by an absent proof.
+Only an equivalent reduction can replace the original target. A stronger sufficient
+condition can solve it when proved; refuting that condition does not refute the target.
+Auxiliary results require an additional proved implication to decide the target.
+Exact producer identity is source identity, not a claim of logical equivalence.
 
-| Row | Status | Owner file |
-|---|---|---|
-| `L(c*) < 2` at the strict-argmin first-merge hub (universal form) | **FALSE**, closed disk, deg 4 (`>= 2.000146`) and deg 5 (`2.0142514`, margin 97x) | `MinimalHubArmBudgetRefutation.md` |
-| Every critical-value-slack envelope, incl. `L(c*) <= 2 D^{1/(n(n-1))}` (`D = |disc f|/n^n`) and its geometric-mean/discriminant forms | **FALSE**; the extremality lemma makes this the weakest Hadamard-sufficient member, so the whole family dies with it | same, Result B + addenda |
-| Aggregate `Sigma_c L(c) <= 2(n-1) R_MEC` (AGG) | **FALSE** at `n = 4` (open violating region, ratio `1.001059`) and `n = 5` (one certified witness, ratio `1.000338`) | `SeparatrixAggregateReduction.md` addendum |
-| `CriticalTreeLengthCharge.md` (A), (E), componentwise (F) | **FALSE** — same deg-4 witness has ALL hubs admissible, so the admissible-set aggregate is exactly the refuted sum | same addendum |
-| `AdmissibleCriticalArcProductLab.md` (AQ), (CAQ) | **FALSE** at the same witness (measured `1.001853`) | same addendum |
-| Aggregate/sum form of the open producer `critical_point_selection_with_inverse_ray_length_control` | **FALSE**; only its SELECTION form survives | same addendum |
-| Universal scalar saddle-wall threshold `T<=2sqrt(2)|w_low w_high|^(1/(2n))` | **FALSE** for the exact quartic wall `(z^2-a^2)(z^2+b^2)` at `b/a=9/10`; the true normalized pair is still `<1` | `SymmetricTwoLevelWallFamily.md` |
-| Origin two-radii connector inside the near-Fekete shell (any `eta`-neighbourhood) | **FALSE** for `n = 3` (proved) and every `n >= 5` (exact rational quintic witness; 4 of 5 spokes escape by rational signs) | `NearFeketeRadialAngularSplit.md` Theorem 7 |
-| (SPOKE-5) as stated (critical hub + two contained straight segments, length `<= 2`, closed disk) | **VIOLATED** at an exact on-circle rotated-gon-pocket corner: min over admissible hubs x pairs of star `sup|f| = 1.00008536426413` (two independent instruments, 35/60 dps, exact rational input; completes the deg-6/9 pattern at deg 5) | `Degree5AssemblyAndSharpenedCuts.md` addendum; `TwoTierStraightStarSelectorLab.md` |
-| The OUTWARD RADIAL value-ray carrier at the trace-max hub, as a GLOBAL quintic-core mechanism | **FAILS in an open pocket** at the tangent orbit (`sup E_radial = +0.358`, cone measure `2.7%`; ray blocked by a collinear double foreign value); survives only on the one-face stratum (theorem) and at `dist >= 0.30` from the orbit (measured) | `TraceMaxRadialExcessLaw.md` (2026-08-30) |
-| The SYMMETRIC K4-matching Hoelder family for FP_4 (dedicated x-column; incl. `W <= 32` and its CS polynomial variant), and more generally every UNWEIGHTED four-column row-factor permutation | **DEAD as stated**: exact extremals (`W* = 32.106...` at the triangle+origin family, `P* = 131.587...` at `u = 3/8`) and the closed-form symmetric obstruction `C >= 3/256`; for the full unweighted permutation class, majorization proves the aligned assignment is pointwise best and at `u=1/6` its product is `329/2+14sqrt(43)>256`.  Weighted/product-merged and label-minimized variants evade these exact no-gos and reach `2.19e-6` excess — measured violated, not covered by either obstruction | `FreePointZeroInsertionFP4Matching.md` (2026-08-30) |
+- equivalent_to_target: none
+- target_deciding_but_stronger: none
+- auxiliary_not_target_deciding: `sextic_second_mode_mixed_neighborhood_transfer`, `concyclic_form_a_cut_objective_below_one`, `fixed_safe_monodromy_block_average_lift_length`
+- out_of_scope_for_target: none
 
-Older no-gos in `research_packet.json::negative_results` remain in force.
+The exact target is refuted by the checked counterexample. Remaining open producers are bounded or conditional auxiliary questions, not replacements for an open universal target. Retired universal routes and their former statements are preserved separately.
 
-## 2. Surviving carriers of the parent theorem
 
-- **Hub selection**, `min_c L(c) < 2` over admissible hubs.  This is now the
-  canonical metric row: it survived every 2026-08-29 killer
-  (`0.977` at the deg-4 aggregate witness, `0.964` at the deg-5 one,
-  `0.973` at the argmin witness).  Wiring, all proved in-corpus:
-  `AttachmentAwareReeb.md` Corollary 3a gives
-  `Lam(f) <= min_c L(c)` for ray-separated `f`; its Corollary G gives density
-  of ray-separated polynomials in `K_n`; `GenericSufficiencyClosure.md`
-  Theorem L (lower semicontinuity of `Lam`) and Corollary S then convert
-  `min_c L(c) <= 2` on that dense class into the strict open-disk theorem.
-  **So proving `min_c L(c) <= 2` on ray-separated `K_n` proves Erdős 1041 in
-  degree `n`, with no further bookkeeping.**
-- COVER (`one_root_covering_of_the_first_merge_component`), FP–GM free-pair
-  selector, fixed-block monodromy average lift, and the capacity-geodesic
-  conjecture (C) are unaffected by the 2026-08-29 refutations.
+## Established results and their evidence
 
-Selection must NOT be by minimal critical value (§1 row 1), and no
-surviving envelope may be a function of the critical-value moduli alone
-(§1 row 2): the deg-4 witness has all critical values tied to `7.1e-7` while
-its arms exceed the radial budget, so those data cannot separate it from
-`z^4 - lambda`.
+### free_point_torus_psh_reduction_2026_08_30
 
-## 3. New proved tools available to a solver
+For every n>=2, the free-point inequality FP_(n-1) implies Conjecture (S)_n: if f is monic of degree n, its roots have minimum-enclosing-disk radius R, and c_1,...,c_(n-1) are its critical points with multiplicity, then sum_j |f(c_j)|^(1/n) <= (n-1)R. The symmetric critical-value functional Phi(a)=sum_(f_a'(c)=0)|f_a(c)|^(1/n) is continuous plurisubharmonic on the root polydisk: it is a sum of powers of holomorphic critical-value branches off the analytic collision locus and extends across that locus by local boundedness and psh removability. Iterated maximum principle moves the roots to the distinguished torus. There the exact identity |f(c_j)|=product_k|1-conj(c_j)c_k| converts FP_(n-1) into sum y_j<=n-1, and y^((n-1)/n)<=((n-1)y+1)/n gives the required exponent. Scaling restores R. Therefore the landed FP3 and FP4 theorems prove (S) in degrees four and five, and together with the earlier cases (S) is proved for n=2,3,4,5.
 
-All proved on 2026-08-29 unless stated; see the named file for full proofs.
+Evidence/status: ordinary_exact_all_degree_fp_to_separatrix_aggregate_bridge_with_green_deterministic_checker;_lean_scalar_kernel_elaboration_capacity_deferred
 
-- **Quantitative Fekete–Hadamard stability** (`NearFeketeRadialAngularSplit.md`
-  Theorem 2): `D >= 1 - eta`, `eta <= 1/(80 n^2)` forces
-  `1 - rho_i^2 <= n eta/(n-1)`, pairwise separation
-  `>= (2 - 2 sqrt(eta) - n eta)/(n-1)`, and a bijection to a rotated regular
-  `n`-gon within `7 sqrt(eta)`.  (The object `HardRegimeIsNearFekete.md`
-  names as missing.)
-- **Radial monotonicity and reduction** (Theorem 3, Corollary 3a): near
-  Fekete, radial deficits only help — the entire difficulty is **angular**.
-- **Radial slice** (Theorem 4): exact gon directions with arbitrary radii
-  give the two-radii path unconditionally for `n <= 6`; general `n` admits
-  the radial band `1 - rho <= 2(1 - cos(2 pi/n))`.
-- **Spoke expansion / averaging identity** (Theorem 5) and the **centroid
-  half-plane law** (Theorem 6) for roots on a circle.
-- **Lemma S5** (`Degree5AssemblyAndSharpenedCuts.md`): `|f(c)| <= 1/M_n`
-  makes both nearest straight spokes safe; `1/M_5 = 0.2760461` (11x the
-  previous deep-low row), `M_3 = 27/25` exact, branch switch at `t_c = 2/n`.
-- **Grönwall area identity** at a connected terminal component, with
-  `a_1 = -c_{n-2}/(n t^{1/n})` exact — replaces Pólya's area bound there.
-- **Fiber derivative product identity**
-  `prod_{f(z)=w} f'(z) = n^n prod_k (f(c_k) - w)`, the weighted-mean arm
-  form, and the **GM-damped quadratic consumer** `L_arm^2 <= mu^{1/n} J`
-  (`MinimalHubArmBudgetRefutation.md` Lemmas 1–2, Proposition 3).
-- **Plurisubharmonicity of the arm aggregate** in root coordinates, with the
-  extremum pushed to circle / saddle-connection / degenerate strata
-  (`SeparatrixAggregateReduction.md` §§PSH, MAX) — machinery that outlived
-  its target inequality and applies to any arm functional.
+- [FreePointTorusPshReduction.md](FreePointTorusPshReduction.md)
+- [FreePointTorusPshReduction.lean](FreePointTorusPshReduction.lean)
+- [check_erdos1041_free_point_torus_psh_reduction.py](scripts/check_erdos1041_free_point_torus_psh_reduction.py)
+- [free_point_torus_psh_reduction_20260830_tao_pipeline_receipt.json](free_point_torus_psh_reduction_20260830_tao_pipeline_receipt.json)
 
-Added by the same-day solve session (owner files carry full proofs):
+claim_boundary: The bridge is an ordinary exact analytic theorem. The Lean companion checks only its scalar exponent-conversion fan-in and remains pending focused elaboration; it does not formalize psh removability or the torus polynomial identity. The equality converse is not claimed. FP_m remains open for m>=5, Conjecture (S) does not imply the parent, and unrestricted Erdos 1041 remains open. No novelty or literature-priority claim is made.
 
-- **The model star kernel is a THEOREM at every degree**
-  (`QuinticStarKernelMechanics.md` §1): for the blow-up
-  `H = w^n + sum_{k <= (n-1)/2} b_k w^k`, the trace-maximal critical hub's
-  two value-ray arms join two DISTINCT tracts at the OPTIMAL level
-  `D = max Re H(c) >= 0` (tangent case included), and no connector exists
-  above level `D`.  Component census `#comp{Re H > t} = n - #{Re H(c) > t}`;
-  hub bound `|c| <= 0.858594`; exact origin region; arm normal form with
-  exact C+ constants; the excess/curvature-budget identity (the exact
-  metric side); hub-shift desingularisation.
-- **The quintic tangent stratum is ONE closed-form gauge orbit**
-  (`320 |b_1|^3 = 27 |b_2|^4`, twist pinned at `+- i`; identification with
-  `QuinticEqualityTetrahedron.md`'s equality chart; two explicit connector
-  certificates there) — two independent derivations agree.
-- **Sector–ellipse hub metric, trace identity/selector, spine containment,
-  exact origin-ray criteria** (`NearFeketeAngularSelectorToolkit.md`).
-- **The uniform proper-component area gap**
-  (`ProperComponentUniformAreaGap.md`): `A_{n,k} < (k/(2n-k))^{2/n}`
-  exists for all `(n, k)` — old gap 5 is now a theorem in existence form —
-  plus the Schur-tail lemma for the future explicit constant.
-- **FP_3** (`FreePointMeanInequalityFP3.md`): the `m = 3` free-point case
-  of (S)'s reduction target.
-- **Real-scale selector geography** (`TwoTierStraightStarSelectorLab.md`,
-  computational): the near-gon pocket's mechanism ordering under three
-  adversarial rounds — origin, critical-hub stars, and radial-truncation
-  cuts die in successively deeper sub-pockets, while free-hub stars
-  survive thinly and DESCENT ARMS keep a `~0.15` length margin throughout
-  (`min_c L(c) <= 1.85` at every located corner).
+### fp4_complete_2026_08_30
 
-## 4. Open gaps worth attacking (the actual ask)
+For arbitrary c_1,...,c_4 in the closed unit disk, put d_ij=|1-conj(c_i)c_j|, T_j=(product_k d_jk)^(1/4), and S_4=sum_j T_j. Then S_4<=4, with equality only when every c_j=0. The proof splits at max_j|c_j|^2=21/25. In the central region, the logarithmic energy/variance theorem combines with the exact row envelope (1-(21/25)t^2)(1+(21/25)t)^3<=12/5, certified by forty-eight positive Bernstein coefficients, and rational exponential bounds to give S_4<=4. In the outer region, K4 Hoelder gives S_4^4<=8W; the identity sum_(i<j)d_ij^2=6+sum u_j-|sum c_j|^2+sum_(i<j)u_i u_j, Cauchy over the three perfect matchings, and the bound on the three smaller pair products reduce W<32 to one variable. Its unique stationary point s=(-27+3sqrt(473))/50 has exact positive squared slack, completing the strict outer estimate.
 
-1. **Conjecture (S)** — `Sigma_{k=1}^{n-1} |f(c_k)|^{1/n} <= (n-1) R`, the
-   arithmetic mean of the merge-level capacities bounded by the circumradius.
-   Strictly strengthens Schur–Fekete (which gives only the geometric mean),
-   tight on `(z-tau)^n - lambda`, **proved for `n = 2, 3, 4, 5`**,
-   adversarial sup exactly `1.000000` through `n = 13`, and unrefuted by
-   every 2026-08-29 witness.  It is the surviving algebraic half of the
-   refuted aggregate (`AGG ratio = S * V`; the violation is entirely in the
-   metric factor `V`).  Reduces to a **free-point** inequality: for
-   `c_1..c_m` in the closed unit disk,
-   `(1/m) Sigma_j (prod_k |1 - conj(c_j) c_k|)^{1/m} <= 1`.  Unused
-   ingredient: the rank-2 Lorentzian structure of `N_{jk} = <u_j, u_k>`,
-   `u_j = (1, conj(c_j))`.  **(S) does not imply the parent by itself** — it
-   is a standalone theorem worth having.  SAME-DAY (08-29): the `m = 3`
-   free-point case was proved (`FreePointMeanInequalityFP3.md`).  On
-   2026-08-30 the complete `m = 4` case was then proved
-   (`FreePointZeroInsertionFP4Matching.md`): the central/outer split at
-   `max |c_j|^2 = 21/25` combines the rowwise log-energy theorem with the
-   K4-Hoelder majorant and an exact one-variable radical certificate.
-   Equality is only the all-zero tuple.  The all-degree bridge
-   `FP_{n-1} ==> (S)_n` is now proved in
-   `FreePointTorusPshReduction.md`, including the multiple-critical psh
-   removability step, exact root-torus identity, and exponent conversion.
-   Thus the next free-point burden is exactly `FP_m` for `m >= 5`.  The
-   all-degree small-angle insertion and adaptive rowwise theorem,
-   plus RM and the Lorentzian-Gram structure, remain the leading mechanisms
-   for that higher-degree frontier; there is no remaining FP_4 residual.
-2. **Decide (AGG) at `n = 3` — the radial constant and its all-phase
-   uniformity are now PROVED (2026-08-30), and the campaign's headline
-   constant corrected.**  The
-   gate-free campaign (no violation, 3500+ configs, two-tier instrument)
-   stands; the matched asymptotics it asked for has landed as an EXACT
-   reduction (`AggregateN3InnerModelClosedForm.md`): every cubic
-   normal-forms to `z^3 - 3s^2 z - 1`, both hubs solve one inner problem
-   with the single-valued label `w = 2 cos(2 nu/3)`, and
+Evidence/status: ordinary_exact_complete_fp4_theorem_with_deterministic_checker;_lean_scalar_kernel_elaboration_capacity_deferred
 
-   `4R - Sigma L = 2|s| D(phi) + O(|s|^2)`,
-   `min_phi D = D(0) = 3E - (9/4)K - 1/2 = 0.10944833 >= (3pi-8)/16 > 0`
+Superseded by **weighted_quadratic_free_point_all_degrees**. Use that stronger result.
 
-   (closed form at the saddle-connection wall, elementary positivity,
-   sqrt-cusp `c = 0.6917`, max `D(pi/2) = 0.6080`).
-   `AggregateN3PshUniformityClosure.md` closes the former psh-uniformity
-   residual: `D+9D''<=0` and
-   `D(phi)>=D(0)cos((phi-pi/2)/3)/cos(pi/6)>=D(0)`, so all-phase
-   positivity and the wall's global-minimum property are unconditional.
-   the conversion is `C(phase) = 2 sqrt(|b_1|/3) D(phi)` (MEASURED), so
-   the campaign's `C = 0.0705(1)` was a WALL-ADJACENT ARTIFACT (true
-   phase-minimum at `|b_1| = 0.7` is `0.1057`); its `D = 0.375/0.489`
-   rows are confirmed on the derived curve.  Third instrument-defect
-   direction exhibited: branch-jump at a foreign critical value ON the
-   ray (false negatives at the wall) — see §4.6.  Owners:
-   `AggregateN3GateFreeCampaign.md` (+ 2026-08-30 corrections),
-   `AggregateN3InnerModelClosedForm.md`,
-   `AggregateN3PshUniformityClosure.md`; checkers
-   `check_erdos1041_aggregate_n3_gatefree.py`,
-   `check_erdos1041_aggregate_n3_inner_model.py`,
-   `check_erdos1041_aggregate_n3_psh_uniformity.py`.  The `n = 5`
-   open-region widening below stands.  Remaining for the cap: the
-   psh-uniformity interchange (or direct `A + 9A'' >= 0`); the global
-   (non-near-radial) `n = 3` decision is now a 2-real-parameter
-   certified-computation target.
-3. **(R1), the near-Fekete containment selector — first order PROVED;
-   the metric half now has a proved base stratum, an exact extremal, and
-   a measured global margin.**  The Main Theorem of
-   `QuinticStarKernelMechanics.md` closes (R1)'s first-order containment
-   content AT EVERY DEGREE.  2026-08-30 state of obligation (a), the
-   EXCESS inequality `e_i + e_j <= 0` for the rightward arms (capture
-   `cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54`):
-   - PROVED on the one-face stratum at every degree with the explicit
-     constant `2|c*|(pi/n - 1)` (`OneFaceRadialScatteringTheorem.md` —
-     the (MLS-strict) `|M| = 1` base case; radial and rightward carriers
-     coincide in the constant there);
-   - PROVED for the CURVED RIGHTWARD INVERSE-RAY PAIR at the isolated tangent
-     orbit (`QuinticTangentCurvedExcessCertificate.md`): exact
-     resultant/Sturm slope control plus rational transverse-oscillation
-     bounds give `E_pair <= -19517458527181/5000000000000000 < 0` in the
-     real tangent normal form.  The older straight-connector certificate
-     (`QuinticTangentOrbitExactCertificate.md`) remains a separate
-     target-valid rescue with quantified R5 curvature/jet stability data;
-   - PROVED UNIFORMLY on the ENTIRE repeated-critical `mu=-10` phase arc
-     (`QuinticMinusTenFullArcExcessCertificate.md`): for
-     `phi_0=arctan(1/(2sqrt(2)))`, the fixed-box coordinates
-     `t=r(q)+(k(q)-r(q))y`, `w=b(k-t)` and the exact square-integrand identity
-     `h|w_y|=(k-r)^3(1-y)^2S_t^2/(S_w Delta)` remove the turn singularity.
-     Exact rational branch isolation at 64 phase anchors, 640 point cells per
-     signed arm, and 128 dual cells for one mean-value transport per phase
-     slab prove
-     `mathcal E(-10,phi)<-1/100<0` for every `|phi|<=phi_0`.  The central
-     certificate (`QuinticMinusTenCentralExcessCertificate.md`, bound
-     `-2853/100000`) and endpoint certificate
-     (`QuinticMinusTenEndpointExcessCertificate.md`, bound `-1/80`) remain
-     sharper pointwise predecessors.  Thus (EX-10) is discharged; by the
-     proved wall reduction, the remaining universal model obligation (EX-U)
-     is exactly (EX-W);
-   - **(EX-W) has now dropped from TWO real dimensions to ONE on every
-     regular wall sheet** (`QuinticWallSheetSubharmonicReduction.md`).  In
-     the active-critical-root coordinate
-     `mu(u)=-(5/2)(u+2)(u^2+2u+2)`, `lambda=g(u)`, fifth-root gap
-     normalization freezes the wall ray and proves
-     `mathcal E/|lambda|^(1/5)` subharmonic.  Hence sign on a regular sheet
-     is controlled by its double-tight boundary and puncture limsups.  The
-     double-tight boundary first had an exact degree-ten critical-root cover;
-     `QuinticDoubleTightCriticalValueCarrier.md` now replaces it by the
-     smaller unordered invariant `kappa=t/(1+t^2)`.  Its complete physical
-     event set is `-1/2,(1-3sqrt(3))/13,0,(1+3sqrt(3))/13,1/2`; exact
-     discriminant and denominator resultants leave exactly five
-     upper-half-plane `mu` branches on four regular intervals.  A single
-     compact arm chart is regular at both the double hub and infinity, so the
-     remaining ordinary wall target is a finite `4 x 5 x 2 x [0,1]` atlas
-     with no ordered-root reconstruction or tail chart.  The
-     direction-dependent triple-hub limits are
-     now also PROVED NEGATIVE
-     (`QuinticMinusTenWallLimitSideArmCertificate.md`): the three approach
-     lobes limit to `{T_0,T_1}`, `{T_1,T_4}`, `{T_0,T_4}`; a degree-110
-     no-turn Sturm certificate gives the missing shallow-arm bound
-     `e_0<-13/15`, hence exact pair ceilings `-23/30`, `-1/80`, `-47/48`.
-     Thus every `mu=-10` puncture limsup is closed.  The two formerly open
-     endpoint rays on the gap-zero fibre are now also PROVED NEGATIVE
-     (`QuinticMuStarEndpointExcessCertificate.md`): exact
-     resultant/Sturm/Krawczyk atlases on the factorization
-     `P(u)=(u^2-1)^2(u+i sqrt(5))` give
-     `E_+<-47/125` and `E_-<-2/5`, hence both are `<-3/8`.
-     `QuinticMuStarAngularFiberReduction.md` then controls the whole allowed
-     half-circle at `mu=(-70+10i sqrt(5))/27`, and conjugation handles the
-     other `mu_*`; the global phase Sturm theorem gives an independent
-     endpoint-domination route.  Consequently the **sole remaining
-     model-metric burden is the compact `4 x 5 x 2 x [0,1]` double-tight
-     atlas**.  Its three interior event fibres are now excised exactly
-     (`QuinticDoubleTightCompactAtlas.md`): certified margins give
-     `E<-1/6` at `kappa_-` and `E<-1` at `kappa_+`, while the squarefree
-     Newton charts plus the already-closed `mu=-10` and `mu_*` limits give a
-     negative neighborhood of `kappa=0`.  The effective residual is only
-     the disjoint compact regular branch truncations between those
-     neighborhoods;
-   - MEASURED globally true on the quintic core with uniform margin
-     `0.0362736374`, extremal at that same point; coercivity invariant
-     `|c*|`, NOT `Delta_5` (`TraceMaxRadialExcessLaw.md`);
-   - exact all-sheet currency available: the integrated entropy sum rule
-     (`TraceMaxEntropyAngularBudget.md`); the open step is the
-     TWO-SHEET ALLOCATION, routed through `|c*|`.
-   - exact universal compactification available:
-     `QuinticTraceMaxUniversalChamber.md` proves
-     `E_pair=|c*| mathcal E(mu,phi)`, identifies trace-maximality with an
-     algebraic three-gap chamber, and proves the explicit outer bound
-     `|mu|<67500`.  Thus the whole quintic (EX) obligation is one compact
-     three-real-variable certification problem with the hub scale deleted;
-     `mu=0` is closed by the one-face theorem, the isolated tangent point is
-     closed by its curved-excess certificate, and the entire `mu=-10` phase
-     arc is closed by its uniform quadratic-arm certificate.  Its real-`mu`
-     chamber is classified
-     exactly as two algebraic intervals plus the isolated tangent point; the
-     sharp real-axis radius is `197.4409737432...`.  The critical gap also
-     collapses from the fixed quintic to the bilinear formula
-     `x(2mu+20-3mu x)/5`.  The later wall-sheet theorem sharpens the
-     remaining exact target to the one-dimensional degree-ten carrier and
-     its exceptional fibres rather than a two-dimensional wall cover.
-   Obligation (b), the real-scale remainder budget, remains OPEN but its
-   previous naive form is now computationally refuted
-   (`QuinticModelRealTransferLaw.md`): at an exact-root tangent-orbit
-   specimen the model-selected hub has positive real excess about
-   `+0.0024` even though its model excess is negative.  The real trace-max
-   hub stays deeply safe on 263/263 sampled quintics, but that is a measured
-   degree-five law, not a theorem, and a replayed near-square quartic shows
-   it is false as an all-degree principle.  The degree-five endgame sweep
-   (`QuinticEndgameResidualMap.md`) finds no counterexample and localizes the
-   true real residual to a linear `|c|` cusp at the regular pentagon
-   (measured adversarial max `min_c L=1.985293810`; exact boundary value
-   `2` at `z^5-1`).  Thus an eventual consumer must prove either a small
-   model-hub transfer window or the degree-five real-hub cusp with explicit
-   remainder; the measured laws are not promoted to proof.
-4. **Degree-5 finite-certificate targets (REDIRECTED — (SPOKE-5) as
-   previously stated here is refuted, see §1).**  In order of measured
-   robustness in the pocket: (i) the descent-arm bound `min_c L(c) <= 2`
-   over admissible hubs (the canonical carrier of §2; containment
-   automatic, `min_c L <= 1.85` at every adversarial corner) and the
-   free-hub two-segment family (`TwoSegmentContainmentReduction.md`);
-   the new cellwise psh theorem for the surviving admissible product
-   (`AdmissibleCriticalArcProductPshReduction.md`) independently removes
-   generic cell interiors and gives a second finite-certificate route on the
-   root/admissibility/saddle/collision terminal strata;
-   (ii) the length-free Form A-cut family (`TruncatedSpokeReduction.md`,
-   atlas-aligned) on the bulk, carried at real scale by the exact
-   remainder budget (`FormACutQuantitativeExpansion.md` (S)) — model
-   margins alone fail near the gon (measured, round 3).  Capture:
-   `cap_quick_build_the_cut_5_finite_certificate_for_d_b122beb7e514`.
-5. **Two-root component area bound — PROVED, and now EXPLICIT
-   (2026-08-30)**: `ProperComponentUniformAreaGap.md` gives
-   `A_{n,k} < (k/(2n-k))^{2/n}` for all `(n, k)`;
-   `ProperComponentExplicitAreaConstant.md` makes it numeric:
-   `A_{5,2} <= 4^{-2/5}(1 - 6.76e-8)` (exact-rational certificate
-   `L(13/50000)^2 <= 15/16777216`; elementary fallback `8.27e-11`),
-   hence `Theta_{5,2} >= 0.940354223795` — explicit `+1.362e-8`.  The
-   measured `0.482`/`0.264` show the TRUE gap is far larger; the route
-   itself caps near `1.1e-7`, so sharpening toward the measured value
-   needs a new mechanism (open, low priority), not better roundings.
-   General table: `(5,1): 2.5e-11`, `(5,3): 1.1e-5`, `(6,2): 2.1e-10`.
-6. **Instrument law to adopt**: the binding degeneracy for arm measurements
-   is a foreign critical **value** near the descending segment `[0, f(c)]`,
-   invisible to critical-**point** separation gates.  Use
-   `value_gap := min_{i != j} dist(f(c_j), segment[0, f(c_i)]) / |f(c_i)|`.
-   An apparent (AGG) violation at `value_gap = 1.2e-16` was adjudicated FAKE;
-   the certified witnesses sit at `~1e-9`.  THREE defect directions are now
-   on record: UNDER-report at degenerate hubs (NEG 32/42/49), OVER-report at
-   nearly-double critical points (`AggregateN3GateFreeCampaign.md` Result 3),
-   and BRANCH-JUMP at a foreign critical value ON the ray — false negatives,
-   up to false violations, at a saddle-connection wall
-   (`AggregateN3InnerModelClosedForm.md` §3; the admissible instrument there
-   is a globally single-valued branch label).
-7. **Priority/novelty unchecked** for Theorem 2, the coarea identity
-   `Sigma_k |f(c_k)|^{1/n} = int_0^inf (nu(lambda^n) - 1) d lambda`, the
-   self-inversive torus identity, and (S).  Assume classical until searched.
+- [FreePointZeroInsertionFP4Matching.md](FreePointZeroInsertionFP4Matching.md)
+- [FreePointFP4Complete.lean](FreePointFP4Complete.lean)
+- [check_erdos1041_free_point_zero_insertion_fp4.py](scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
+- [fp4_complete_20260830_tao_pipeline_receipt.json](fp4_complete_20260830_tao_pipeline_receipt.json)
 
-## 5. Residual degree map
+### fp_all_degrees_central_radius_2026_08_30
 
-`n = 3` proved (`CubicCriticalHub.md`).  `n = 4` proved externally
-(Pendyala, arXiv:2606.24875; extended locally by `QuarticCoreRadiusCase.md`).
-`n = 5` **open**, with the residual localised to rapid nearly-simultaneous
-merging near the regular pentagon; generic families are fully covered by the
-named theorems, and the uncovered region is `beta_1 > 0.2760`, every merge
-ratio above its `Theta_{5,k}`, `D` median `0.986`.  Closed sub-families at all
-degrees: collinear, concyclic with radius `<= 2^{-1/n}`, cyclic trinomials
-and tetranomials, cyclic quotients, binomials, sparse quintics, quartic-core,
-deep-low critical value, separated-level Bergman, and the new exact-gon
-radial slice for `n <= 6`.
+For every m put h_j=log T_j, q_r=sum_k c_k^r, E=(1/m)sum_(r>=1)|q_r|^2/r, L_j=-log(1-|c_j|^2), M_j=(1/m)sum_k -log(1-|c_j||c_k|), and C(t)=(exp(t)-1-t)/t^2 with C(0)=1/2. The logarithmic expansion gives sum h_j=-E, Cauchy gives h_j^2<=(E/m)L_j, and the triangle inequality gives |h_j|<=M_j. The sharp rowwise quadratic remainder exp(h_j)<=1+h_j+C(M_j)h_j^2 therefore proves FP_m whenever (1/m)sum_j C(M_j)L_j<=1, with equality only when every c_j=0. This strictly strengthens C(Lmax)Lbar<=1. Uniformly it holds for max_j|c_j|<=rho_*=sqrt(1-exp(-L_*))=0.8457729381..., where L_*>0 solves exp(L_*)=1+2L_* (equivalently L_*=-W_{-1}(-1/(2sqrt(e)))-1/2).
 
-Same-day pocket geography (computational, three adversarial rounds +
-35/60-dps adjudication of every corner): uniform-angle on-circle quintics
-close by the origin tier alone (1500/1500); the hard territory is
-exclusively the rotated-gon pocket, where straight mechanisms die in the
-order origin -> critical-hub stars -> radial-truncation cuts as the corner
-deepens, while free-hub stars survive thinly and descent arms never
-dropped below a `0.15` length margin.  Checkers for the same-day results:
-`scripts/check_erdos1041_angular_selector_toolkit.py`,
-`scripts/check_erdos1041_two_tier_selector_lab.py`,
-`scripts/check_erdos1041_quintic_star_kernel_mechanics.py`,
-`scripts/check_erdos1041_proper_component_area_gap.py`,
-`scripts/check_erdos1041_free_point_fp3.py`.
+Evidence/status: ordinary_exact_all_degree_rowwise_adaptive_free_point_theorem_with_deterministic_checker
 
-Checkers for the 2026-08-30 proof wave (all green at landing):
-`scripts/check_erdos1041_one_face_radial_scattering.py`,
-`scripts/check_erdos1041_tangent_orbit_exact_certificate.py`,
-`scripts/check_erdos1041_quintic_tangent_curved_excess.py`,
-`scripts/check_erdos1041_trace_max_entropy_budget.py`,
-`scripts/check_erdos1041_explicit_area_constant.py`,
-`scripts/check_erdos1041_aggregate_n3_inner_model.py`,
-`scripts/check_erdos1041_aggregate_n3_psh_uniformity.py`,
-`scripts/check_erdos1041_free_point_zero_insertion_fp4.py`,
-`scripts/check_erdos1041_trace_max_radial_excess.py`.
+Superseded by **weighted_quadratic_free_point_all_degrees**. Use that stronger result.
 
-## 6. Evidence classes used here
+- [FreePointZeroInsertionFP4Matching.md](FreePointZeroInsertionFP4Matching.md)
+- [check_erdos1041_free_point_zero_insertion_fp4.py](scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
 
-Ordinary proved mathematics; exact rational/interval certificates; 50-dps
-mpmath certificates with independent-instrument agreement; and adversarial
-measurement (never presented as proof).  Each owner file labels its own rows.
-Checkers for the 2026-08-29 results:
-`scripts/check_erdos1041_minimal_hub_arm_budget_refutation.py`,
-`scripts/check_erdos1041_separatrix_aggregate.py`,
-`scripts/check_erdos1041_near_fekete_radial_angular_split.py`,
-`scripts/check_erdos1041_degree5_sharpened_cuts.py`.
+### fp4_matching_stratum_2026_08_30
+
+Let x_i=1-|c_i|^2, d_ij=|1-conj(c_i)c_j|, and T_i=(x_i product_(k ne i)d_ik)^(1/4) for four closed-unit-disk points. If the superunit graph {ij:d_ij>1} is a matching, then sum_i T_i<=4, with equality only when all c_i=0. After relabelling all cross edges between {1,2} and {3,4} are at most one. Each pair is bounded by d_ij^(1/4)(x_i^(1/4)+x_j^(1/4))<=2: its fourth power is at most 8(2-r^2-s^2)(1+rs)<=16 because 2-(2-r^2-s^2)(1+rs)=(r-s)^2+rs(r^2+s^2). A rational specimen has exactly the two superunit edges 12 and 34, so the stratum is genuinely larger than the all-small locus.
+
+Evidence/status: ordinary_exact_fp4_subcase_with_symbolic_and_rational_checker
+
+- [FreePointZeroInsertionFP4Matching.md](FreePointZeroInsertionFP4Matching.md)
+- [check_erdos1041_free_point_zero_insertion_fp4.py](scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
+
+### first_critical_pair_energy_cone_no_go_2026_08_27
+
+The returned first-critical pair-energy cone inequality is false already for the exact monic cubic p(c+w)=v+a w^2+w^3 with c=-1/2-i/100, a=-1/16-5i/6, and v=-1/32+i/160. Three disjoint rational Rouche disks certify that every root lies strictly in the unit disk, and exact critical-value comparison makes c the unique minimum-modulus critical point. For the two inverse branches p(z_+(s))=p(z_-(s))=v(1-s^2), the pair energy satisfies E-|c|^2=A s^2+O(s^4) with 0<A<K=|v/a|, so E'^2-4(E-|c|^2)(|M'|^2+|D'|^2)=4A(A-K)s^2+O(s^4)<0 for all sufficiently small positive s. The branch coordinate remains valid; only the proposed pointwise cone producer is retired.
+
+Evidence/status: exact_gaussian_rational_cubic_counterexample_with_rouche_root_certificate
+
+- [FirstCriticalPairEnergyNoGo20260827.md](FirstCriticalPairEnergyNoGo20260827.md)
+- [check_erdos1041_first_critical_pair_energy_no_go.py](scripts/check_erdos1041_first_critical_pair_energy_no_go.py)
+- [full_pass_batch_assimilation_20260827_tao_pipeline_receipt.json](full_pass_batch_assimilation_20260827_tao_pipeline_receipt.json)
+
+### orlicz_antichain_gram_pareto_selector_2026_08_26
+
+For a k-root component, let U be the exact union of roots contaminated by an ancestral increment at least alpha or a Gram-row defect at least eta, and b=|U|. If b<=k-2, two roots outside U satisfy A_i,A_j<=S/(k-b-1) and the sharp same-pair complement-energy product inequality P^2(k-2)^(k-2)<=(q_iq_j)^2 Q_comp(i,j)^(k-2). If b<=k-3, two roots outside U satisfy A_i,A_j<=S/(k-b-2), q_i,q_j>=h_opt(B,P,k), and F_i,F_j>=h_opt^2, where h_opt is the largest threshold determined by B and P for which at most one charge is smaller. Replacing b by separate Orlicz and Gram Markov counts recovers return 003 as a coarse corollary. The returned four-leaf no-go is exact only for the abstract invariant ledger, and the Gram-good branch cannot replace the exceptional-root branch.
+
+Evidence/status: ordinary_exact_overlap_sensitive_two_tier_strengthening_with_55053_row_rational_replay;_lean_elaboration_pending_low_disk_firewall
+
+- [OrliczAntichainGramParetoSelector20260826.md](OrliczAntichainGramParetoSelector20260826.md)
+- [check_erdos1041_orlicz_antichain_gram_pareto_selector.py](scripts/check_erdos1041_orlicz_antichain_gram_pareto_selector.py)
+- [OrliczAntichainGramParetoSelector20260826.lean](OrliczAntichainGramParetoSelector20260826.lean)
+- [orlicz_antichain_gram_pareto_selector_20260826_tao_pipeline_receipt.json](orlicz_antichain_gram_pareto_selector_20260826_tao_pipeline_receipt.json)
+
+### cassini_nine_tenths_quantitative_tree_budget_slack
+
+At the rational witness a=9/10, the Cassini elementary majorant misses the two-root distance by more than 4/25: 4(sqrt((9/10)^2+9/10)-9/10)+4/25 < 2(9/10). This is a quantitative instance of the tree-budget failure and makes the margin explicit for readers and downstream consumers.
+
+Evidence/status: lean_checked_quantitative_refutation_consumer
+
+- [CassiniTreeBudget.lean](CassiniTreeBudget.lean)
+
+claim_boundary: This is a single-witness quantitative refutation of the uniform tree-budget assertion. It does not prove the unrestricted Erdos 1041 claim, establish the replacement hub inequality, or transfer the slack to arbitrary root configurations without the separate geometric hypotheses.
+
+### cassini_family_tree_budget_slack
+
+For every real a>4/5, the Cassini elementary coarea majorant 4(sqrt(a^2+a)-a) is strictly below the two-root distance 2a. This is the family-wide inequality behind the quantitative a=9/10 witness and makes the tree-budget failure robust across the entire interval rather than a single numerical example.
+
+Evidence/status: lean_checked_family_refutation_consumer
+
+- [CassiniTreeBudget.lean](CassiniTreeBudget.lean)
+
+claim_boundary: This is a family-wide refutation of the displayed Cassini tree-budget bound. It does not prove the unrestricted Erdos 1041 theorem, supply the replacement hub inequality, or transfer the slack to arbitrary root configurations without the separate geometric hypotheses.
+
+### five_centroid_distances_pair_selection
+
+For five nonnegative distances with square-sum below 5, at least one of the ten pair sums is strictly below 2. This is the exact scalar pair-selection step behind the five-point centroid hub budget and exposes the finite combinatorial alternative without weakening the strict inequality.
+
+Evidence/status: lean_checked_centroid_selector
+
+- [CentroidHubBudget.lean](CentroidHubBudget.lean)
+
+claim_boundary: The lemma is only a scalar five-distance selector. It does not supply the geometric hypotheses that produce the five distances, prove the unrestricted Erdos 1041 hub inequality, or close the remaining attachment/critical-level allocation problem.
+
+### sparse_defect_survivor_selector_2026_08_26
+
+For F_(n,r)(z)=z^n-r^(n-1)z, one Gram-exceptional central root carries fraction (n-1)/n of the ER4 mass while every attachment age is zero; deleting it leaves only 1/n, even under any fixed determinant floor below e^(-1). This retires deletion-only Gram allocation but not Erdos 1041, because the exceptional root is a radial connector hub. For any survivor set S and the same two least-age survivors i,j, AM-GM strengthens the returned whole-component selector to P_S^2(s-2)^(s-2)<=(q_iq_j)^2 Q_comp(i,j)^(s-2)<=(q_iq_j)^2 Q_S^(s-2), with no deleted charge and equality on the star survivors. A separate returned componentwise trace no-go is not admitted because its supplied bundle omits the claimed trace certificate and names a checker for a different mechanism.
+
+Evidence/status: ordinary_exact_actual_polynomial_no_go_and_strengthened_survivor_local_selector_with_exact_checker;_lean_elaboration_pending_low_disk_firewall
+
+- [SparseDefectSurvivorSelector20260826.md](SparseDefectSurvivorSelector20260826.md)
+- [check_erdos1041_sparse_defect_survivor_selector.py](scripts/check_erdos1041_sparse_defect_survivor_selector.py)
+- [SparseDefectSurvivorSelector20260826.lean](SparseDefectSurvivorSelector20260826.lean)
+- [sparse_defect_survivor_selector_20260826_tao_pipeline_receipt.json](sparse_defect_survivor_selector_20260826_tao_pipeline_receipt.json)
+
+### six_return_joint_full_energy_charged_lifetime_and_sharp_gram
+
+Six Type-B returns are reconciled against the current 1041 corpus. If no normalized closed root path has length at most two, the returned lifetime inequality strengthens to sum_v I_{k_v}(r_v)+(1/2)sum_v J_v+(1/4)sum_i sigma_i^2/|f'(a_i)|^2<n/4. Here J_v is the positive excess obtained by retaining the maximum of merge-propagated leaf energy and Bergman demand throughout node v's lifetime, and sigma_i is the truncated first attachment level of a singleton root component. Separately, a discriminant floor D>=delta gives the sharper normalized Vandermonde Gram estimate ||H-I||_F^2<=2 M_delta log(1/delta), where M_delta exp(1-M_delta)=delta; this removes one unnecessary power of M_delta from the return. The retained translated-cut, angular full-fibre action, pole budget, lifetime, antichain, comb, cubic no-go, and unicritical theorems leave one common pair/component allocation residual. Unrestricted Erdos 1041 remains open.
+
+Evidence/status: ordinary_exact_joint_assimilation_with_two_strict_strengthenings_lean_checked_scalar_fanin_and_exact_replay
+
+- [SixReturnJointAssimilation20260826.md](SixReturnJointAssimilation20260826.md)
+- [check_erdos1041_six_return_joint_assimilation.py](scripts/check_erdos1041_six_return_joint_assimilation.py)
+- [SixReturnJointAssimilation20260826.lean](SixReturnJointAssimilation20260826.lean)
+- [six_return_joint_assimilation_20260826_tao_pipeline_receipt.json](six_return_joint_assimilation_20260826_tao_pipeline_receipt.json)
+
+### optimized_first_two_critical_level_bergman
+
+Let the distinct-root monic degree-n polynomial have roots in the open unit disk and first two critical-value moduli 0<beta_1<beta_2. Put L=min(beta_2,1). If L^(2/n)(1/(n-1))^(2/n) log((L+beta_1)/(L-beta_1))<2, then two roots are joined inside {|f|<1} by a curve of length <2. The proof observes the first-merge two-root component at a regular t approaching L, uses the exterior-fibre area gap and connected-cluster Bergman theorem, and proves that t^(2/n)log((t+beta_1)/(t-beta_1)) is strictly decreasing. This strictly strengthens the returned geometric-mean-level theorem: its T=sqrt(beta_1 beta_2) satisfies T<L and its hypothesis bounds the same cost at T by 2R^2<2. A simpler sufficient condition is beta_1/L<tanh((n-1)^(2/n)). Unrestricted Erdos 1041 remains open in the rapid tied-level shell.
+
+Evidence/status: ordinary_exact_all_degree_sufficient_theorem_with_lean_checked_scalar_kernel_and_symbolic_replay
+
+- [FirstTwoCriticalOptimizedBergman.md](FirstTwoCriticalOptimizedBergman.md)
+- [check_erdos1041_first_two_critical_optimized_bergman.py](scripts/check_erdos1041_first_two_critical_optimized_bergman.py)
+- [FirstTwoCriticalOptimizedBergman.lean](FirstTwoCriticalOptimizedBergman.lean)
+- [first_two_critical_optimized_bergman_tao_pipeline_receipt.json](first_two_critical_optimized_bergman_tao_pipeline_receipt.json)
+
+### finite_near_fekete_transverse_cones
+
+For every fixed constant-free transverse cone h(0)=0 with a quantitative nonzero linear coefficient, the matched-asymptotic argument gives a uniform small-perturbation bound L < 2R and an open-disk corollary. The result closes a finite transverse shell, not the tangent directions, the D-away-from-one bulk, nonzero constant perturbations, or unrestricted Erdos #1041.
+
+Evidence/status: ordinary_analytic_finite_transverse_shell_with_formal_transfer
+
+- [NearFeketeTransverseClosure.md](NearFeketeTransverseClosure.md)
+
+### eventually_pos_of_scaled_deficit_tendsto_pos
+
+A positive limit of the scaled transverse deficit implies that the deficit is eventually positive.
+
+Evidence/status: lean_checked_eventual_sign_transfer
+
+- [NearFeketeTransverseClosure.lean](NearFeketeTransverseClosure.lean)
+
+claim_boundary: The theorem is an eventual sign-transfer implication under its explicit limit premise. It does not prove the complex asymptotic premise, branch convergence, tangent control, or unrestricted Erdos #1041.
+
+### eventually_length_lt_twice_radius
+
+A positive transverse deficit yields eventual path length strictly less than twice the enclosing radius.
+
+Evidence/status: lean_checked_eventual_length_transfer
+
+- [NearFeketeTransverseClosure.lean](NearFeketeTransverseClosure.lean)
+
+claim_boundary: The theorem is a checked eventual length-transfer implication under its explicit positive-deficit premise. It does not prove the premise, branch convergence, tangent control, or unrestricted Erdos #1041.
+
+### eventually_length_lt_two
+
+An eventually subunit enclosing radius combined with the preceding transfer gives eventual path length strictly less than two.
+
+Evidence/status: lean_checked_eventual_open_disk_transfer
+
+- [NearFeketeTransverseClosure.lean](NearFeketeTransverseClosure.lean)
+
+claim_boundary: The theorem is only an eventual transfer from a subunit enclosing-radius premise to a strict length bound. It does not prove the premise, settle tangent directions or the bulk regime, or establish unrestricted Erdos #1041.
+
+### newton_flow_value_equation
+
+Away from a critical point, the complex Newton vector -f/f' cancels under the derivative: f'*(-f/f')=-f. Along any differentiable trajectory tangent to this field, the composite polynomial value therefore satisfies w'=-w.
+
+Evidence/status: lean_checked
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+claim_boundary: The named declaration proves the local derivative identity and value ODE under its explicit differentiability and noncritical-point hypotheses. It does not prove global existence or uniqueness of a Newton trajectory, root-to-root branch selection, convex-hull invariance, an arclength bound, or unrestricted Erdős #1041.
+
+### newton_descent_root_convex_hull_invariance
+
+Let K be the convex hull of the roots. At a supporting line, rotate the outward normal to the positive real direction and write w_j for the root displacements. Then Re(w_j)>=0 implies Re(sum_j 1/w_j)>=0, hence the outward component of the Newton vector -(sum_j 1/w_j)^(-1) is nonpositive. Closed-convex viability makes K forward invariant for Newton descent. If a non-root critical point lies on a supporting face, reciprocal balance plus nonnegative summands forces every root displacement to lie on the supporting line; Lean checks this boundary rigidity. Therefore every canonical descending inverse-ray branch remains in K. For roots in the open unit disk this completely closes spatial containment, but not arclength: the corrected remaining producer is the sharp admissible-hub inequality min_{|f(c)|<1} L(c)<=2R.
+
+Evidence/status: ordinary_analytic_proof_with_lean_checked_supporting_half_plane_and_boundary_rigidity
+
+- [NewtonConvexHullInvariance.md](NewtonConvexHullInvariance.md)
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+### newton_flow_exponential_first_integral
+
+Along a Newton-flow trajectory, exp(t)f(z(t)) has derivative zero. This is the differential form of f(z(t))=exp(-t)f(z(0)).
+
+Evidence/status: lean_checked
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+claim_boundary: The named declaration proves the local first-integral derivative identity under its explicit differentiability and flow hypotheses. It does not prove global existence or uniqueness of a Newton trajectory, root-to-root branch selection, convex-hull invariance, an arclength bound, or unrestricted Erdős #1041.
+
+### value_ray_transport_containment_and_stretch_boundary
+
+Let f be monic of degree at least two, let Gamma join distinct roots, and let its radial value cone C_lambda(Gamma) contain no critical value. Then the inverse lift of s f(z), s from 1 to lambda, is a continuous root-to-root transport with max |f| scaled by lambda; when lambda M<1 this repairs containment in the open lemniscate. Where defined away from roots, its derivative is N(z)/N(T_lambda z) for N=f'/f, so its length is the exact integral of the Newton-step ratio S(T_lambda z)/S(z), S=|f/f'|. For z^n-r^n the adjacent-chord midpoint reaches the sharpness radius at stop level one, while the pointwise sufficient contraction sign fails for every n at least three. Thus containment is available under cone avoidance, but neither a global length bound nor Erdős #1041 follows; the remaining obligation is integral metric control or a different global mechanism.
+
+Evidence/status: ordinary_transport_and_stretch_proofs_with_exact_binomial_boundary_and_bounded_probe
+
+- [NewtonFlowTransport.md](NewtonFlowTransport.md)
+- [erdos1041_newton_flow_transport.py](formal_math/probes/erdos1041_newton_flow_transport.py)
+
+### critical_value_ray_separation
+
+The endpoints of any finite Newton-flow connection lie on the same oriented ray from zero. Consequently critical values on distinct positive rays cannot be joined by a Newton-flow saddle connection.
+
+Evidence/status: lean_checked_consumer
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+claim_boundary: The named declarations prove the same-positive-ray consequence for a finite Newton-flow connection under their explicit hypotheses, including the resulting no-connection statement for distinct positive rays. They do not prove existence or uniqueness of trajectories, cover all critical-value configurations, establish global branch selection, or imply the unrestricted Erdős #1041 length bound.
+
+### translated_ray_collision_parameterization
+
+For distinct complex values a and b, every common translation beta for which a+beta and b+beta lie on the same positive ray has the explicit form beta=(r*a-b)/(1-r) for a real r>0 with r not equal to 1. Thus each pair contributes only a one-real-parameter forbidden locus.
+
+Evidence/status: lean_checked
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+claim_boundary: The named declaration proves the explicit one-real-parameter form of the common-translation locus for one distinct pair under its stated hypotheses. It does not by itself prove finite-family avoidance, perturbation stability, a global Newton-flow construction, or the unrestricted Erdős #1041 conclusion.
+
+### finite_planar_translation_avoidance
+
+Every finite injective family of complex values admits an arbitrarily small common translation after which all values are nonzero and no two lie on the same positive ray. Lean enlarges each bad pair locus to a real affine line, proves every such line closed with dense complement in the complex plane, intersects the finitely many open dense complements, and chooses a point in the prescribed ball.
+
+Evidence/status: lean_checked
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+### constant_perturbation_root_continuity
+
+For a positive-degree monic split complex polynomial whose roots have norm at most rho, Lean specializes Mathlib's quantitative continuity-of-roots theorem to f+C(shift). If ((natDegree+1)*epsilon)^(natDegree)^(-1)+rho<1 and norm(shift)<epsilon, then every root of the perturbed polynomial still has norm strictly below one.
+
+Evidence/status: lean_checked
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+### critical_value_level_separation
+
+Every finite injective complex family admits an arbitrarily small common translation after which every value is nonzero, no two values lie on the same positive ray, and no two have equal norm. The equal-norm pair locus is explicitly a real affine line.
+
+Evidence/status: lean_checked
+
+- [LevelSeparation.lean](LevelSeparation.lean)
+
+claim_boundary: The result is a finite-family translation-avoidance theorem. It does not establish that a polynomial perturbation preserves the required root geometry, prove a critical-point path-length bound, or close the unrestricted Erdos #1041 statement.
+
+### spoke_escapes_lemniscate_exact
+
+For the exact degree-five model F(z)=(z-r)(z-ir)(z+ir)(z-rω)(z-rω̄), with r=999/1000 and ω=e^(2πi/3), the critical point 0 has |F(0)|=r^5<1 but the real spoke already exits the open unit lemniscate at z=r/10: |F(r/10)|=r^5·100899/100000>1, witnessed by the Lean-checked integer inequality 10^20 < 999^5·100899.
+
+Evidence/status: lean_checked_exact_counterexample
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+
+claim_boundary: This is an exact mechanism counterexample to blanket fixed-spoke or star-shapedness completion from a logarithmic critical point. The two spokes toward ±ir remain safe, so it does not refute Erdos #1041, the existence of another root pair, or curved descending paths; it only forces the remaining argument to make a genuine branch or path selection.
+
+### bernoulli_sharp_two_distance_kernel_consumer
+
+For m∈ℕ and positive normalized distances a≤b with b≤m·a and a·b^m≤1, the exact Bernoulli kernel forces a+b≤2. This is the sharp scalar inequality that converts reciprocal critical balance and geometric-mean product control into the constant-2 two-distance bound.
+
+Evidence/status: lean_checked_bernoulli_sharp_two_consumer
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+
+claim_boundary: This is an elementary normalized-distance implication, not the global polynomial theorem by itself. It does not supply the critical-point hypotheses, identify actual roots, prove lemniscate containment of spokes or curved connectors, resolve branch selection, or close unrestricted Erdos #1041.
+
+### critical_pair_metric_scale
+
+At a logarithmic critical point, if r is the positive geometric mean of the root distances, two distinct roots have total distance from that point at most 2r. This sharp scale result does not put either straight spoke inside the lemniscate.
+
+Evidence/status: lean_checked_conditional
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+
+### global_disk_inverse_balance_budget_consumer
+
+For real parameters N,t,δ,e with N≥2, t<1, 0<δ≤e≤1+t, δ≤1, e≤(N−1)δ, and the inverse-square disk estimate N≤(1−t²)(1/δ²+(N−1)/e²), the exact Lean kernel forces δ+e≤2. These are the scalar geometric inputs used by the global closed-unit-disk two-nearest-root budget.
+
+Evidence/status: lean_checked_global_disk_inverse_balance_consumer
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+
+claim_boundary: This is the algebraic core of the global metric budget, not a proof of the unrestricted Erdos #1041 path theorem. It does not supply the polynomial-to-hypothesis instantiation, put the selected spokes or any replacement connector inside the lemniscate, or resolve branch selection and curved-path geometry; the packet's open containment boundary remains unchanged.
+
+### global_critical_two_nearest_root_budget
+
+For every monic polynomial of degree at least two whose roots lie in the closed unit disk, and every critical point c, two roots counted with multiplicity have total distance from c at most 2. If c is not a root, the two nearest roots work. Rotate c to t>=0, use the unit-disk constraints and reciprocal critical balance to obtain n<=(1-t^2)sum d_j^(-2), delta<=1, e<=(n-1)delta and e<=1+t. A hypothetical delta+e>2 gives 1-t^2<delta*e and hence n<e/delta+(n-1)delta/e, contradicting 1<=e/delta<=n-1. This globally closes the metric-budget subproblem B1 but supplies no contained path.
+
+Evidence/status: ordinary_complete_global_metric_theorem_with_lean_checked_algebraic_core
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+- [GlobalCriticalTwoNearestBudget.md](GlobalCriticalTwoNearestBudget.md)
+
+### legacy_minimum_critical_descent_branch_reconciliation
+
+The legacy quartic score 2.0068 was a branch-tracking error, not a counterexample. Exact recovery of the recorded eight-decimal Gaussian-rational roots and residual-gated inverse-value continuation lands the two descending branches at roots 0 and 1 with normalized total length 0.7385324012 at three step sizes. The receipt validates the historical computation only and is not used by the global metric proof.
+
+Evidence/status: exact_root_recovery_with_residual_gated_numerical_regression
+
+- [check_legacy_minimum_critical_descent_regression.py](scripts/check_legacy_minimum_critical_descent_regression.py)
+- [MinimumCriticalNewtonHubLab.md](MinimumCriticalNewtonHubLab.md)
+- [erdos1041_legacy_minimum_critical_descent_regression_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_legacy_minimum_critical_descent_regression_receipt.json)
+
+### cubic_minimal_critical_value_short_hub
+
+For every monic cubic presented by three listed roots in the open unit disc, two distinct root occurrences are joined by an explicit continuous rectifiable two-segment hub contained in |p|<1, of actual total variation strictly less than 2. Squarefreeness gives distinct endpoint values; repeated roots admit a constant connector. The proof derives a small critical value from the reflected polar estimate, chooses a critical point of minimal value modulus, scales its cubic expansion, and applies the algebraic Schur root-count theorem at the closed-disc boundary. The two normalized root spokes have total length at most twice the cube root of the critical-value modulus, strictly below 2. All suppliers, multiplicity cases, containment, and variation bounds are Lean checked. This settles degree three only; it asserts no novelty or general-degree result.
+
+Evidence/status: lean_kernel_checked
+
+- [PaperCubicCompletion.lean](PaperCubicCompletion.lean)
+- [cubic_completion_r8_verification.json](cubic_completion_r8_verification.json)
+
+### unique_nearest_straight_spoke_counterexample
+
+There is an exact balanced five-root configuration with p=999/1000, a=(901/902)p, and roots a, plus or minus ip, and p(-451 plus or minus 780i)/901. All roots lie in the open unit disk, their reciprocal sum is zero, and a is the unique nearest root to the critical point 0. Yet at z=a/10 the monic factored polynomial has modulus 59875209312258922123673577759296931/59708022487203200000000000000000000>1. Therefore the nearest/second-nearest pair from the metric proof cannot in general be joined through the critical point by two straight spokes inside the lemniscate. This kills that completion, not Erdős #1041 or curved descending paths.
+
+Evidence/status: lean_checked_exact_counterexample
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+
+### metric_selected_newton_branch_hub_counterexample
+
+For the same exact balanced quintic, the two canonical descending inverse-ray branches from the metric critical point 0 have combined length greater than 520999/250000=2.083996. An exact critical-level resultant excludes intervening critical values; exact rectangle root counts and boundary isolation identify the two half-level branch points; rational Rouche disks locate them; and triangle inequalities from either disk to every polynomial root give the strict length lower bound. Thus Newton containment does not repair the metric-selected critical point: any critical-hub proof needs a new critical-point selection principle or global Reeb geometry. Other critical points remain live, and Erdős #1041 remains open.
+
+Evidence/status: exact_algebraic_topological_mechanism_elimination_not_lean_checked
+
+- [erdos1041_newton_branch_hub_counterexample_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_newton_branch_hub_counterexample_receipt.json)
+
+### all_straight_root_pair_segments_counterexample
+
+For the exact monic cubic f(z)=z^3-(99/100)^3, all three roots lie in the open unit disk, but every pair midpoint has polynomial value -9(99/100)^3/8 and hence modulus greater than one. Therefore every straight segment between distinct roots exits the strict unit lemniscate. Yet the broken line r to 0 to r*omega stays inside and has length 2r<2. This eliminates all direct root-chord proofs while opening an exact critical-point-hub mechanism; it does not force curvature and leaves Erdős #1041 open.
+
+Evidence/status: lean_checked_exact_mechanism_elimination
+
+- [CriticalTwoRootProximity.lean](CriticalTwoRootProximity.lean)
+- [erdos1041_all_straight_segments_counterexample_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_all_straight_segments_counterexample_receipt.json)
+
+### binomial_complementary_chord_short_path
+
+For every n >= 2 and every nonzero a with |a|<1, two adjacent roots of z^n-a have an explicit polygonal path inside |z^n-a|<1 of length below 2. For n>=3, the adjacent-root chord is strictly contained below the exact threshold |a| <= 1/(1+cos(pi/n)^n); at and above it, a maximal inner crossing chord has closed containment with one midpoint touch, and radial contraction makes it strict without reaching length 2. The chord maximum, common transition, crossing-radius maximality, and strictification form one theorem stack. This settles the binomial subfamily only, makes no path-optimality claim, and does not select paths for arbitrary monic polynomials or settle Erdős #1041.
+
+Evidence/status: ordinary_complete_all_degree_binomial_subfamily_proof_with_bounded_exact_replay
+
+- [CrossingChordUpperBound.md](CrossingChordUpperBound.md)
+- [check_erdos1041_crossing_chord.py](scripts/check_erdos1041_crossing_chord.py)
+
+### quartic_core_factor_budget_radius_class
+
+Let four selected roots lie in a disk D(h,R) with 0<R<1. If R^4 times the product over all unselected roots of (R+|z_k-h|) is at most 1, then the published degree-four Pendyala construction, translated and scaled, gives two selected roots joined inside |f|<1 by a polygonal path of length below 2R<2. The Lean declarations check the scalar and complex factor-budget fan-in, the uniform-radius identity, and the exact rational quintic budget witness; they do not formalize Pendyala's geometric construction or the whole analytic transport. Consequently every degree-n configuration of circumradius rho<2^(4/n-1) lies in the resulting radius class. This does not supply a favorable quartet/centre for arbitrary configurations, claim an optimal radius, or settle Erdős #1041.
+
+Evidence/status: ordinary_all_degree_radius_class_transport_with_external_quartic_input_and_lean_checked_factor_budget
+
+- [QuarticCoreRadiusCase.md](QuarticCoreRadiusCase.md)
+- [check_erdos1041_quartic_core_radius_case.py](scripts/check_erdos1041_quartic_core_radius_case.py)
+- [QuarticCoreRadiusCase.lean](QuarticCoreRadiusCase.lean)
+
+### two_safe_origin_spokes_counterexample
+
+Let r=99999/100000 and take roots r, r(-20 plus or minus 99i)/101, and r(-28 plus or minus 195i)/197. These are five distinct roots strictly inside the unit disk. Exact Gaussian-rational evaluation at t=3/125 on the first conjugate pair of root-to-origin spokes and t=17/1000 on the second pair gives |f(tz)|^2>1 in all four cases. Thus at most one root-to-origin spoke is contained in the strict unit lemniscate, decisively eliminating the tempting shortcut of selecting two safe spokes and joining their roots through the fixed hub 0. The all-critical inverse-ray and global Reeb routes remain open.
+
+Evidence/status: exact_gaussian_rational_mechanism_elimination
+
+- [erdos1041_origin_spoke_pair_counterexample_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_origin_spoke_pair_counterexample_receipt.json)
+
+### minimum_critical_straight_hub_counterexample
+
+Minimal critical-value selection does not rescue straight critical spokes. Five explicit Gaussian-rational roots of common norm 999999/1000000 have four derivative roots isolated in pairwise disjoint exact Rouche disks. Rational interval evaluation proves that one critical-value modulus is strictly smallest and below one. At that first critical point, four of the five root spokes have named dyadic waypoints with exact lower bounds |f|^2>1, so at most one spoke is contained and no two-spoke straight hub exists. This eliminates only the straight completion of the canonical first-merge reduction. The same witness has numerical descending inverse-ray length about 1.755, so the curved first-merge theorem remains constructive.
+
+Evidence/status: exact_gaussian_rational_interval_mechanism_elimination
+
+- [check_minimum_critical_straight_hub.py](scripts/check_minimum_critical_straight_hub.py)
+- [erdos1041_minimum_critical_straight_hub_counterexample_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_minimum_critical_straight_hub_counterexample_receipt.json)
+
+### adaptive_mec_chord_or_radial_counterexample
+
+The direct all-degree extension of Pendyala's quartic argument is false in degree five. Five explicit Gaussian-rational roots of norm 9999/10000 have minimum enclosing disk centered at zero, certified by positive rational barycentric weights on three unit directions. Exact factored evaluation at fourteen rational waypoints shows that every one of the ten root chords exits |f|<1 and that four of the five radial arms through the minimum-enclosing-disk center exit as well. Hence neither branch of the adaptive disjunction--one safe chord or two safe MEC radial arms--is available. This does not refute Erdős #1041; it forces a polynomial-adapted non-MEC hub, curved path, or global component/Reeb mechanism.
+
+Evidence/status: exact_gaussian_rational_mechanism_elimination
+
+- [erdos1041_adaptive_mec_dichotomy_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_adaptive_mec_dichotomy_receipt.json)
+
+### cassini_tree_budget_falsifier
+
+Under the explicit coarea level-length majorant, the Cassini witness a=9/10 makes the proposed tree budget strictly shorter than the distance between its roots. Source-pinned replay shows that this is exactly the epsilon-sharp spanning-tree estimate asserted by Proposition 12 of the March unrestricted draft and Proposition 7 of the shorter unrestricted draft. Both load-bearing propositions are therefore false, independently of their different local-topology discussions. This refutes those candidate proofs, not Erdős #1041; the same quadratic has a straight root segment of length below two inside its lemniscate.
+
+Evidence/status: lean_checked_source_linked_dual_draft_mechanism_elimination
+
+- [CassiniTreeBudget.lean](CassiniTreeBudget.lean)
+
+### cassini_positive_attachment_deficit
+
+At a=9/10, every connected root-spanning length exceeds the proposed coarea budget by more than 4/25. Therefore a strip proof cannot choose independently average-short Newton trajectories and repair their attachment mismatch inside arbitrarily small saddle neighbourhoods. In the Cassini flow only the critical-value-ray trajectory reaches the saddle; generic average-selected trajectories miss every sufficiently small saddle neighbourhood. This eliminates the additive-error strip-length fan-in with the unchanged 1/(2pi) coefficient, while leaving the compact Reeb decomposition and direct two-root path mechanisms open.
+
+Evidence/status: lean_checked_mechanism_elimination
+
+- [CassiniTreeBudget.lean](CassiniTreeBudget.lean)
+
+### cassini_no_uniform_length_slack
+
+For the admissible quadratic family f_m(z)=z^2-((m-1)/m)^2, the two roots have distance 2-2/m. Lean proves the quantified consequence that no positive polynomial-independent delta can strengthen the target bound from 2 to 2-delta. Near-regular all-critical Newton-hub probes selected this exact boundary after their normalized minimum score approached one. Generic perturbation and root transfer must therefore preserve a data-dependent strict slack rather than spend a fixed global margin.
+
+Evidence/status: lean_checked_exact_mechanism_elimination
+
+- [CassiniTreeBudget.lean](CassiniTreeBudget.lean)
+- [erdos1041_uniform_slack_no_go_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_uniform_slack_no_go_receipt.json)
+
+### radial_lift_coarea_critical_ray_sampling_obstruction
+
+If R(theta) is the total length of every inverse lift of the value-plane radius at angle theta, the area formula gives integral R(theta) dtheta = integral over |f|<1 of |f'|/|f| dA. This is only an angular L1 identity. The explicit family f_epsilon(z)=z^n+epsilon*z-r^n has n-1 simple critical points c with c^(n-1)=-epsilon/n and critical values -r^n-(n-1)c^n, so all critical-value arguments coalesce at pi. In the limit f_0=z^n-r^n the complete negative-ray lift has exact length n(r+(1-r^n)^(1/n)); charging it once per critical point already exceeds the desired 2(n-1) scale for r=9/10. Therefore the aggregate inverse-ray conjecture cannot follow by sampling the raw coarea angular average at every critical ray. The conjecture remains open only through a multiplicity-aware descending-edge or Reeb charge.
+
+Evidence/status: exact_area_formula_and_explicit_family_mechanism_elimination
+
+- [erdos1041_radial_lift_coarea_gap_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_radial_lift_coarea_gap_receipt.json)
+
+### finite_exceptional_linear_critical_value_perturbations
+
+For every complex polynomial f of degree at least two, all but finitely many lambda make f+lambda*z have simple critical points with pairwise distinct critical values. The proof eliminates lambda from a collision pair (u,v): the divided-difference equations (f'(u)-f'(v))/(u-v)=0 and (f(u)-f(v))/(u-v)-f'(u)=0 have no common projective point at infinity, hence only finitely many affine solutions. Thus the one-coefficient perturbation supplies the genericity part of the former first producer arbitrarily close to zero.
+
+Evidence/status: ordinary_algebraic_proof_not_lean_checked
+
+- [erdos-1041-lemniscate-newton-flow.tex](formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex)
+
+### compact_barrier_stability_under_linear_constant_perturbation
+
+For a compact protected set free of critical points, finitely many root discs with nonvanishing boundary values, and finitely many compact regular-level barriers, the explicit inequalities |lambda|<min_C|f'| and R|lambda|+|beta| below the root and level margins ensure that f+lambda*z+beta has no critical point in the protected set, preserves every root-disc zero count by Rouche's theorem, and remains on the same side of every designated level barrier. The protected-set noncriticality implication is separately Lean-checked; the Rouche and level-side implications remain ordinary proof.
+
+Evidence/status: ordinary_algebraic_proof_with_lean_checked_protected_set_component
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+- [erdos-1041-lemniscate-newton-flow.tex](formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex)
+
+### protected_set_noncriticality_under_small_linear_perturbation
+
+If lower is a uniform lower bound for the derivative norm on a protected set C and the linear-coefficient perturbation shift has norm below lower, then f'(z)+shift is nonzero for every z in C. This is exactly the protected-set noncriticality component of the compact-barrier argument.
+
+Evidence/status: lean_checked_comparator_targeted
+
+- [NewtonFlowRaySeparation.lean](NewtonFlowRaySeparation.lean)
+
+### straight_spoke_hub_criterion_separation
+
+Two containment tests for a two-spoke critical hub had been used interchangeably and are different statements. The hub-sublevel test asks |f| <= |f(c)| on the spoke; the open-lemniscate test asks only |f| < 1, which is all the target needs because |f(c)| < 1 already. The landed degree-three theorem proves the sublevel form: its identity P_b(tw) = 1 - t^2 - t^2(1-t)w^3 gives |P_b(tw)| <= 1 - t^3, and |P_b| <= 1 is exactly |f| <= |f(c)|. The sublevel form is false from degree four. The exact Gaussian-rational quartic with roots (9999+4i)/10000, (-125+9998i)/10000, (-9999-14i)/10000 and (-23-9999i)/10000 has all roots strictly inside the open unit disk by the integer inequality a^2+b^2 < 10^8, and each of its two admissible critical points carries at most one sublevel-contained spoke, so the sublevel mechanism yields no two-spoke path at all. The same hubs carry three open-contained spokes with best pair 1.787689338 < 2, so the two criteria genuinely separate. The weaker criterion then fails as well two degrees later: witnesses at degree six and degree nine (stored as exact IEEE-754 hexadecimal literals, roots strictly inside the unit disk) have every admissible critical point carrying at most one open-contained spoke, verified at 60 digits with f' residuals near 1e-61. At those configurations no critical point supplies a two-straight-spoke path at all, while the two descending inverse-ray branches at the same hubs give 1.763942 and 1.545995. Segment maxima are located from the real roots of d|f|^2/dt along the segment rather than sampled. Verified in float64 and re-derived at 60 decimal digits. The critical points are located numerically, not by exact rational Rouche disks; margins are 1.72e-5 and 1.96e-5 on the second spoke and 1.22e-3 on the inadmissible hub, so a certified enclosure of radius below 1e-7 would close that gap.
+
+Evidence/status: high_precision_witness_mechanism_elimination_not_lean_checked
+
+- [check_erdos1041_straight_spoke_hub_criterion.py](scripts/check_erdos1041_straight_spoke_hub_criterion.py)
+- [StraightSpokeHubCriterionLab.md](StraightSpokeHubCriterionLab.md)
+- [erdos1041_straight_spoke_hub_criterion_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_straight_spoke_hub_criterion_receipt.json)
+
+### admissible_branch_length_reformulation
+
+The surviving obligation must retain the polynomial-value threshold: min over admissible critical points c, meaning |f(c)|<1, of L(c) <= 2R. A short inverse-ray pair at an inadmissible hub need not lie in the target lemniscate, and scaling the roots changes critical values, so the earlier all-critical-point affine-invariant wording was insufficient. The corrected statement implies the target because roots in the open unit disk have R<1. Equality is attained and identifiable. Every monic quadratic gives equality exactly: with c the midpoint and d the half-difference, f(c+u)=u^2-d^2, so the descending pair is the root segment of length 2R and its critical value has modulus |d|^2<1. The family z^n-r^n gives equality too at its admissible central critical point. The per-hub strengthening L(c)<=2 max_k |z_k-c| is nevertheless false at an explicit admissible quartic hub with ratio 1.210001551, while the admissible minimum at that configuration is 0.306554. Thus the minimum over admissible hubs is load-bearing.
+
+Evidence/status: corrected_obligation_plus_ordinary_equality_proofs_and_witness_elimination_not_lean_checked
+
+- [check_erdos1041_invariant_branch_length.py](scripts/check_erdos1041_invariant_branch_length.py)
+- [CriticalTreeLengthCharge.md](CriticalTreeLengthCharge.md)
+
+### admissible_critical_forest_tangent_support_reduction
+
+Let A be the admissible critical points, counted with multiplicity, and m=|A|. The stronger inequality sum_{c in A} L(c)<=2Rm would imply the required admissible minimum. For an edge from roots a,b, let U_a,U_b point from the roots toward its critical point and let K_e=integral kappa<z,N> ds. Exact differentiation gives 2R-L(e)=(R+<a,U_a>)+(R+<b,U_b>)+K_e. The endpoint deficits are nonnegative, and on a Newton half-edge d arg T=-Im((f''/f')dz). Thus the theorem is exactly nonnegativity of the combined endpoint-deficit plus signed-curvature charge. For a level-one component Omega containing k roots, f:Omega->D is proper of degree k; after a Riemann map phi:D->Omega, B=f o phi is a degree-k finite Blaschke product, the component has k-1 critical points by Riemann-Hurwitz, and its total critical-tree length is integral_{Gamma_B}|phi'|. The component lemma is therefore the trace bound integral_{Gamma_B}|phi'|<=2R(k-1), retaining the polynomial coupling and global R. The deterministic receipt evaluates 521 complete admissible-hub sets in degrees 3,4,5,6,8; the largest normalized admissible aggregate is 0.988850245227178. Curvature alone can be negative by 0.1613048394826284, root-star allocation is negative on a pinned quartic, and component-local circumradius fails on a pinned separated sextic. All survivals are falsifier results only.
+
+Evidence/status: ordinary_exact_calculus_and_uniformization_reduction_plus_finite_aggregate_falsifier
+
+- [CriticalTreeLengthCharge.md](CriticalTreeLengthCharge.md)
+- [check_erdos1041_invariant_branch_length.py](scripts/check_erdos1041_invariant_branch_length.py)
+
+### complete_cyclic_hub_orbit_correlation_cancellation
+
+For complex nu,a,b, twice Im(nu*a)Im(nu*b) is normSq(nu) Re(a*conj(b)) minus the frequency-two term Re(nu^2*a*b). Therefore a finite unit family with sum nu^2=0 has doubled total correlation equal to its cardinality times Re(a*conj(b)), and the total is nonnegative whenever that surviving real correlation is nonnegative. Lean also proves the concrete cyclic form: if zeta^m=1, zeta^2 is not 1, and zeta and the seed have unit squared norm, then the orbit nu_i=zeta^i nu_0 has vanishing square moment and satisfies the same exact identity.
+
+Evidence/status: lean_checked_exact_algebraic_kernel
+
+- [NearFeketeHubOrbit.lean](NearFeketeHubOrbit.lean)
+
+### strong_completion_multi_seeded_pressure_and_cubic_sweep
+
+Evidence on the STRONG completion named in MinimumCriticalNewtonHubLab.md, L_1 + L_2 <= 2 rho with rho = |f(c*)|^(1/n) at the minimum-critical hub, as distinct from the weak 2R completion that admissible_critical_forest_tangent_support_reduction pursues. The minimum-critical hub is admissible whenever the roots lie in the open unit disk, since Fekete gives |f(c*)| <= R^n < 1, so the strong statement does not need the separate admissibility qualifier. Its dedicated falsifier critical-scale-normalized-minimum-critical-newton-hub had reached 0.9495242630078684 on a canonical degree-five run. Five independent seedings -- near-extremal, uniform, clustered, near-collision and a combined restart -- drive the ratio to 0.999994283 at degree three without crossing one. The degree-three case is swept COMPLETELY rather than sampled: normalising gives P(u) = u^3 + s u^2 + 1 with critical points 0 and -2s/3 and P(-2s/3) = 1 + 4 s^3 / 27, so minimality is exactly |1 + 4 s^3 / 27| >= 1, and 2328 admissible parameters give maximum branch pair length 1.997967707 with zero violations. Two structural facts come with it. The extremum is a CUSP: at z^n - r^n the critical point has multiplicity n-1, and splitting it drops the ratio by a fractional power of the perturbation -- at degree five 1e-9 gives 0.99648, 1e-6 gives 0.98012, 1e-3 gives 0.88553 -- so a second-order variational argument at the extremum will not see the right behaviour. And every monic quadratic is a second exact equality family, L = |z1 - z2| = 2|d| with |f(c)| = |d|^2, hence L = 2|f(c)|^(1/2).
+
+Evidence/status: finite_evidence_plus_complete_one_parameter_sweep_not_lean_checked
+
+- [check_erdos1041_minimal_hub_metric_scale.py](scripts/check_erdos1041_minimal_hub_metric_scale.py)
+- [StraightSpokeHubCriterionLab.md](StraightSpokeHubCriterionLab.md)
+- [erdos1041_minimal_hub_metric_scale_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_minimal_hub_metric_scale_receipt.json)
+
+### turning_floor_at_simple_saddle
+
+At a simple critical point c whose two descent branches reach roots a and b, with alpha_A, alpha_B the total variations of the tangent direction and phi the angle a-c and b-c subtend at c, alpha_A + alpha_B >= pi - phi, hence alpha_max >= (pi - phi)/2. Proof: the two descending directions at a simple saddle are exactly opposite, and a curve's chord direction lies in the convex hull of its tangent directions. Zero violations in 978 hubs, minimum slack 3.5e-4 rad. See TurningFloorRefutation.md.
+
+Evidence/status: ordinary_proof_plus_finite_verification
+
+
+### chord_deficit_length_identity
+
+For a branch from p to q with unit tangent T and chord direction e, L = |q-p| + integral (1 - cos theta(s)) ds where theta(s) = angle(T(s), e), since integral T ds = q - p. Summing both branches at a hub gives L(c) = (d1 + d2) + D(c) with D(c) >= 0, exactly tight on z^n - r^n where D(c) -> 0. Restates MIN as: at some admissible hub D(c) < 2 - (d1 + d2). See TurningFloorRefutation.md.
+
+Evidence/status: elementary_identity
+
+
+### reciprocal_adjoint_resultant_power_sum_identity
+
+For roots a_1..a_n in the open unit disk and f* the reciprocal adjoint, |Res(f, f*)| = prod_{j,k} |1 - conj(a_j) a_k| = exp(-sum_{m>=1} |p_m|^2 / m) <= 1 with p_m the power sums, equality iff f = z^n. Corollary: min_k |g(a_k)| <= 1, so a root-centred reciprocal sweep always exists, answering the precondition of transfer question 1 in ReciprocalSweepBoundaryLab.md. Novelty NOT claimed: plausibly classical Schur-Cohn material, priority search still required. See RootCentredReciprocalSweep.md.
+
+Evidence/status: ordinary_proof
+
+
+### extremal_family_sweep_component_separation
+
+For f = z^n - r^n, g = f* = 1 - r^n z^n, every root has the same sweep level |g(a_k)| = 1 - r^(2n), and {|g| < 1} inside the disk has exactly n components each holding one root. Hence no root-to-root path exists inside {|g| < 1}; any such path in {|g| <= 1} passes through z = 0 and the shortest is the radial spoke pair of total length exactly 2r. The reciprocal sweep therefore recovers 2r exactly on the extremal family and offers no slack. See RootCentredReciprocalSweep.md.
+
+Evidence/status: ordinary_proof_plus_finite_verification
+
+
+### admissible_forest_aggregate_in_the_hard_regime
+
+The admissible-forest aggregate sum_{c in A} L(c) <= 2 R m of CriticalTreeLengthCharge.md was measured over 521 bulk-drawn complete hub sets with maximum normalized ratio 0.988850245227178. But (A) is TIGHT on z^n - r^n and HardRegimeIsNearFekete.md shows the hard configurations are the near-Fekete ones, so a violation would live in the shell and the bulk maximum is not the relevant number. Measured inside the shell -- roots r(1+a_k)exp(i(2 pi k/n + t_k)) with r just below one, eight perturbation scales from 1e-2 to 1e-7 -- (A) holds at every scale and climbs monotonically toward one, with worst ratios 0.999984770, 0.999094123, 0.995004633 and 0.989932789 at degrees 3 to 6. Every shell configuration has exactly n-1 admissible hubs. A measurement risk had to be ruled out first: near-Fekete hubs are near-degenerate and the branch integrator under-reports at an exactly degenerate hub, so an under-reported aggregate would look safe precisely where it is tightest. Each arc is therefore integrated twice, by the level substitution f(z(u)) = (1-u^2) f(c) and independently through the square-root resolution xi^2 = f(c) - w. They agree to about 1e-15 down to perturbation 1e-4 and to 4e-8 at 1e-7, so the under-report does not reach the shell and the numbers can be read.
+
+Evidence/status: finite_falsifier_survival_in_the_identified_hard_regime_with_independent_integrator_check
+
+- [check_erdos1041_aggregate_near_fekete.py](scripts/check_erdos1041_aggregate_near_fekete.py)
+- [StraightSpokeHubCriterionLab.md](StraightSpokeHubCriterionLab.md)
+- [erdos1041_aggregate_near_fekete_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_aggregate_near_fekete_receipt.json)
+
+### centre_plus_polygon_merge_topology_closed_form
+
+On f(z) = z(z^(n-1) - r^(n-1)) the merge-topology summed ratio has the closed form n mu (1/|f'(0)| + 1/|f'(r omega)|)/(2R) = n^((n-2)/(n-1))/2, independent of r, using mu = r^n (n-1)/n^(n/(n-1)), R = r, |f'(0)| = r^(n-1) and |f'(r omega^k)| = (n-1) r^(n-1). Values 1.259921 at n=4, 3.871318 at n=10, 13.340007 at n=30, asymptotically ~n/2. Derived by hand and verified against direct computation for n = 4..30 at r in {0.95, 0.999} to worst relative gap 5.5e-15. See MergeTopologyBoundRefutation.md.
+
+Evidence/status: ordinary_proof_plus_finite_verification
+
+
+### quantitative_fekete_stability_hadamard_defect
+
+HardRegimeIsNearFekete.md names a stability estimate for the Fekete maximiser as the missing object joining its two halves. Here is one. With V_{ij}=a_j^i (i=0..n-1), G=VV^*, g_i=G_ii=sum_j|a_j|^{2i}, and Ghat=G/sqrt(g_i g_k), the identity det G = prod_{i<j}|a_i-a_j|^2 plus the scalar inequality log mu <= (mu-1)-(mu-1)^2/(2n) on (0,n] applied to the eigenvalues of Ghat (psd, unit diagonal, trace n, so spectrum in [0,n]) give prod_{i<j}|a_i-a_j|^2 <= (prod_i g_i) exp(-||Ghat-I||_F^2/(2n)), hence D <= exp(-||Ghat-I||_F^2/(2n)). Corollaries: (C1) g_i/n >= D for every i, so D near one forces every modulus near one; (C2) for roots on the unit circle, sum_{m=1}^{n-1}(n-m)|p_m|^2 <= n^3 log(1/D), so by Newton's identities D near one forces f close to z^n+e_n. Equality exactly at the regular n-gon on the unit circle. Fekete's own bound is the Hadamard step alone; this is its defect term.
+
+Evidence/status: ordinary_complete_proof_not_lean_checked_novelty_not_claimed
+
+- [check_erdos1041_near_fekete_cusp_law.py](scripts/check_erdos1041_near_fekete_cusp_law.py)
+- [NearFeketeCuspLaw.md](NearFeketeCuspLaw.md)
+
+### near_fekete_cusp_law_and_strict_local_maximality
+
+For f = z^n - m + eps*h (deg h <= n-1, m = R^n), the critical points solve n z^{n-1} = -eps h'(z), so at leading order they form a regular (n-1)-gon of radius rho = (eps|h'(0)|/n)^{1/(n-1)} rotated by arg(-eps h'(0))/(n-1): ONLY h'(0) enters. Rescaling z = rho zeta and using eps = n rho^{n-1} gives f(z)+m = rho^n (zeta^n + n zeta), so the near field is the eps-free, R-free model g(zeta)=zeta^n+n zeta, whose critical points are exactly zeta^{n-1}=-1 with critical values (n-1)zeta_c. Matching to the far field (radial segments of z^n = m sigma, length R) gives L(c) = 2R - kappa_n(phi) rho + O(rho^2) with kappa_n(phi)=beta_1+beta_2 the renormalised near-field excess, phi = arg h'(0). Measured limits at phi=0 (which is where the minimum over phi sits): kappa_3=0.60802134, kappa_4=1.0301197, kappa_5=1.2585783, kappa_6=1.3989124, eight converged digits, identical at R=0.5 and R=0.9. Full direction sweeps give min_phi kappa_3=0.6080216 (max 0.8125984) and min_phi kappa_4=1.0301197 (max 1.1341439), 2pi/n-periodic, STRICTLY POSITIVE at every sampled direction. Random h confirm universality to six digits via arg h'(0). Hence z^n - mu is a strict local maximum of min_c L(c)/(2R) with value exactly 1, approached at rate eps^{1/(n-1)}.
+
+Evidence/status: ordinary_scaling_proof_plus_high_precision_constants_not_lean_checked
+
+- [check_erdos1041_near_fekete_cusp_law.py](scripts/check_erdos1041_near_fekete_cusp_law.py)
+- [NearFeketeCuspLaw.md](NearFeketeCuspLaw.md)
+
+### chord_deficit_polynomial_representation
+
+TurningFloorRefutation.md reduces MIN to D(c) < 2 - (d1+d2) and states that 'the content would be an estimate for D(c) in terms of the polynomial, and none is offered'. This supplies the exact representation such an estimate must start from. Parametrising a descent half-edge by the value radius, f(z(rho)) = rho e^{i theta} gives dz = e^{i theta} d rho / f'(z), hence L_A = int_0^{|v|} |1/f'| d rho and c - a = e^{i theta} int_0^{|v|} (1/f') d rho. So the chord deficit of a branch is EXACTLY the triangle-inequality defect of the complex integral of 1/f' along the descent ray: D_A = int |1/f'| d rho - |int (1/f') d rho|. Since f is monic, f' = n prod_j (z - c_j) over the n-1 critical points, so L(c) = (1/n) sum_branches int_0^{|v|} d rho / prod_j |z(rho) - c_j| -- length and deficit are both integrals of the reciprocal product of distances to the CRITICAL POINTS, not the roots. Verified against tracked branches to 1e-9 (the start truncation), with L(c) - (d1+d2) = D(c) closing to 1e-16. Consequence: arg f' = sum_j arg(z - c_j), so the deficit is driven by the angles the branch subtends at the critical points weighted by ds, and D_A <= (1/2) int |1/f'| (arg(1/f') - beta)^2 d rho is precisely the weighted L^2 turning bound the refutation names as sufficient, written against the polynomial's own critical divisor. No estimate is claimed.
+
+Evidence/status: ordinary_identity_plus_numerical_verification
+
+- [StraightSpokeHubCriterionLab.md](StraightSpokeHubCriterionLab.md)
+
+### two_segment_containment_reduction
+
+Erdos #1041 follows from a pure CONTAINMENT statement with no length integral. If for every monic f with roots in the open unit disk there are distinct roots a,b and a point h with max_[h,a]|f| < 1, max_[h,b]|f| < 1 and |h-a| + |h-b| < 2, then the polygonal path a -> h -> b settles the problem. Condition (iii) says exactly that h lies in the open ellipse with foci a,b and major axis 2, so the length obligation becomes a two-real-dimensional membership test on ONE POINT rather than a functional inequality along a curve: straight segments have zero chord deficit, so D(c), the turning floor, and the branch-length integral int_0^mu ds/|f'| all vanish from the statement. The ellipse always contains the chord [a,b], and always contains the origin since |a|+|b| < 2; when |a| = |b| = 1 the origin lies exactly ON the ellipse, so the two-radius broken line of the extremal family z^n - r^n is the boundary case of the whole mechanism. This is a SUFFICIENT family, so its failure would not refute the problem. Free-hub feasibility holds at every recorded hard witness (best hub max|f| = 0.943, 0.970, 0.005, 0.956, 0.99995, 0.99994 at the degree-3 witness, cubic z^3-(99/100)^3, degree-5 origin-spoke lab, degree-5 adaptive-MEC, and the degree-6 and degree-9 QC = infinity witnesses), including the two rows where chords and the centre hub are simultaneously empty and the two rows where no critical hub carries two spokes. Adversarial hill-climbing on V = min over pairs min over ellipse hubs max(max_[h,a]|f|, max_[h,b]|f|), roots capped at modulus one, cannot move V off one by more than about 5e-7 at any degree 3 through 9, with the regular polygon as maximiser and the optimal hub slightly off the origin. Neither reported row is a bound and they err oppositely: a sampled objective under-reports a maximum, while scoring the winning hub with the EXACT segment maximum over-reports the inner minimum because the hub comes from a finite grid, so the 1.0000005438 seen at n = 3 is inner-search truncation and not a failing configuration. Per negative_results entry 19 this is reported with a NEGATIVE CONTROL and a MARGIN GAP rather than as a bare supremum: the same searcher at the same budget and the same degree breaks the weaker chord-or-origin disjunction at n = 3, 5, 6 (V = 1.0098, 1.0012, 1.0003), so the false disjunction fails by 9.7e-3 where the free-hub residual is 5.4e-7, four orders of magnitude apart; the n = 3 return is the exact witness recorded above. Random sampling is worthless here -- 4000 draws from six structured families gave zero failures of the disjunction the adversarial searcher broke immediately. The conjecture is unproved and the search is capped at degree nine.
+
+Evidence/status: elementary_reduction_plus_exact_witness_plus_calibrated_search
+
+- [TwoSegmentContainmentReduction.md](TwoSegmentContainmentReduction.md)
+
+### near_fekete_cusp_positivity_n3_proved
+
+kappa_3 > 0 is now PROVED, closing the binding instance of the one inequality NearFeketeCuspLaw.md section 8 lists as measured rather than proved. Two ingredients. (1) At n = 3 the near-field model's descending branches are an EXPLICIT ALGEBRAIC GRAPH. A branch satisfies Im g = 2 identically, i.e. 3X^2 Y - Y^3 + 3Y = 2; since Y^3 - 3Y + 2 = (Y-1)^2 (Y+2) this solves as X(Y) = (1-Y) sqrt((Y+2)/(3Y)) for Y > 0, with branch 1 the arc Y: 1 -> 0 (exit direction 0) and branch 2 the arc Y: 1 -> infinity (exit direction 2pi/3), and X'(Y) = -(Y^2+Y+1)/(sqrt3 Y^{3/2} sqrt(Y+2)) < 0. Integrating on this graph reproduces the recorded constants to every quoted digit: ex_1 = 1.235094261, ex_2 = 0.1568844275, kappa_3 = 0.6080213112 against the recorded 0.6080213113, and D_1 = 0.2350942613, D_2 = 0.02290983128. Im g - 2 vanishes to 3.9e-38 over 400 sampled points. This is special to n = 3: Im(zeta^n) = const is not solvable for X over Y at higher degree. (2) The L^2 chord-deficit estimate the same file names as the missing tool ('a proof needs the hypotenuse, i.e. a genuine L^2 estimate on dY/dX'). In the exit-aligned frame eta = e^{-i alpha} zeta = P + iQ with P monotone, sqrt(dP^2+dQ^2) <= dP + dQ^2/(2 dP) and r >= P and P(start) = cos(gamma) give D <= (1/2) int (dQ)^2/dP; the integrand is tan^2(tau - alpha) dP, so this is exactly the L^2 turning estimate, and it keeps the hypotenuse the |dX|+|dY| split discards (that split returns 2.634 against the true 1.392). Closing at n=3: on branch 1 the integrand is sqrt3 Y^{3/2} sqrt(Y+2)/(Y^2+Y+1) <= 3Y^{3/2} on [0,1], so I_1 <= 6/5 and D_1 <= 3/5; on branch 2, dP/dY = (sqrt3 + |X'|)/2 >= sqrt3/2 and dQ/dY = (sqrt3|X'| - 1)/2 = N/(2 Y^{3/2} sqrt(Y+2)) with N = (3Y^2+2Y+1)/(Y^2+Y+1+sqrt(Y^4+2Y^3)) <= 3/2 for Y >= 1 (equivalent to the termwise-positive 12Y^3+5Y^2+2Y-1 >= 0), so with Y+2 >= 3, I_2 <= sqrt3/16 and D_2 <= sqrt3/32. Hence kappa_3 = (cos gamma_1 + cos gamma_2) - (D_1+D_2) >= sqrt3/2 - 3/5 - sqrt3/32 = 15 sqrt3/32 - 3/5 = 0.211898816 > 0, equivalently J_3 <= 3.576 < 4. So z^3 - mu is a STRICT local maximum of min_c L(c)/(2R) in the aligned direction, first order in rho, no longer a measurement. SCOPE, and it is narrow. Only the phi = 0 ray direction at n = 3 is covered: the model is zeta^n + n e^{i phi} zeta, and the rotation zeta -> e^{i phi/(n-1)} zeta that normalises it to zeta^n + n zeta leaves a global phase e^{i n phi/(n-1)} on g, which is the descent-ray angle, so phi survives. NearFeketeCuspLaw.md MEASURES phi = 0 as min_phi kappa_3 and n = 3 as the binding degree; both remain measurements, so what is proved is positivity at the measured-worst instance, not the near-Fekete half. Lemma 2 is degree-free and is the reusable piece; a general-n proof needs a bound on int tan^2(tau - alpha) dP for zeta^n + n zeta, where the target cos gamma_1 + cos gamma_2 grows from sqrt3/2 towards 2 while the measured D_1+D_2 peaks at 0.3395 at n = 5. The D-bounded-away-from-1 half is untouched. Erdos #1041 remains open.
+
+Evidence/status: proved_binding_case_of_a_previously_measured_inequality
+
+- [NearFeketeCuspPositivityProof.md](NearFeketeCuspPositivityProof.md)
+
+### visibility_overlap_reduction_to_a_one_root_statement
+
+Erdos #1041 follows from a ONE-ROOT statement carrying no separate length obligation. LEMMA (proved, elementary): if Omega is compact connected, a_1..a_k in Omega with k>=2, and S_j = {h in Omega : some path in Omega from h to a_j has length <= 1}, then the S_j are closed (Arzela-Ascoli plus lower semicontinuity of length) and nonempty, so if they COVER Omega they cannot be pairwise disjoint -- a finite disjoint closed cover of a connected space is a clopen partition. Hence some h lies in two of them and two roots are joined in Omega by a path of length <= 2. REDUCTION (proved): for monic g with roots in the CLOSED unit disk write mu = min_c |g(c)|. Fekete gives prod_c |g(c)| = |disc|/n^n <= 1 so mu <= 1; every component of a sublevel set carries a root; components of {|g|<lambda} are simply connected so crossing a critical level can only MERGE; hence for every lambda in [mu,1] the component Omega_lambda of {|g|<=lambda} containing the minimising critical point is compact, connected and carries k>=2 roots. So the hypothesis (COVER) -- for SOME lambda in [mu,1], every point of Omega_lambda lies within intrinsic distance 1 of a root inside it -- yields a pair path of length <= 2 at level <= 1, and the minimum-enclosing-disk normalisation g(w)=R^{-n} f(z_c+Rw) converts that into length <= 2R < 2 inside {|f| < 1}. Both strict inequalities come from R < 1, not from the hypothesis. WHY IT MATTERS: eight independent eliminations on file (negative_results 5, 8, 9, 11, 14, 18, 26, 37) all exhibit 'at most one' good object -- one contained spoke, one safe arm, one safe radial -- and none exhibits zero. Each kills a mechanism needing TWO objects at once. (COVER) needs one, by any path, so none of them applies to it; and because the constant 2 is produced by the lemma from the constant 1, no residual length inequality survives, unlike the descent producer min_c L(c) <= 2R. SHARPNESS (proved, closed form): on g = z^n - r^n the only critical point is 0 with mu = r^n, every radial segment satisfies |g(t r w)| = r^n(1-t^n) <= mu, and dist(0, root) = r = mu^{1/n} exactly, so (COVER) holds with EQUALITY at every degree and the lemma returns exactly 2r. RIGIDITY (proved): min_k |h - z_k| <= |g(h)|^{1/n} always, since the geometric mean of the distances is |g(h)|^{1/n}, with equality iff every root is equidistant from h. So the equality stratum of (COVER) is exactly ONE-SPOKE: for w_1..w_n on the unit circle some j has prod_k |t w_j - w_k| <= 1 for all t in [0,1]. Summing over j is the radial product identity of TwoSegmentLevelIdentity.md 4b and gives 'for each t some j'; ONE-SPOKE needs 'some j for each t' and that exchange is not supplied. n=2 is elementary; n>=3 is open. MEASUREMENT: 38 configurations (extremal family, the 3-degrees-from-hexagon witness, the stored origin-spoke, minimal-cubic and balanced-quintic witnesses, 10 random, 12 near-Fekete) by multi-source Dijkstra over the first-merge component with a 16-neighbour stencil and interior-admission on every move. A grid path is a genuine path so the numbers are UPPER bounds and '<= 1' is sound. Worst sup dist = 1.01886, worst scale-free ratio sup dist / mu^{1/n} = 1.02325, worst resulting pair geodesic 2.00400 at z^2-0.999^2 whose closed form is 1.998 -- all inside the measured 1.2 per cent grid band, and the rows reading exactly 1.0000 are the extremal family where equality is proved. (COVER) is NOT proved and no adversarial search against it has run. GENERALISED FORM AND ITS MEASUREMENT: the lemma needs the covering only on a compact CONNECTED subset Gamma of Omega carrying two roots, with paths allowed to run in all of Omega -- the two roles are separate, Omega should be as large as possible and Gamma as small as possible, and Gamma = Omega is the crudest admissible choice. The cheapest Gamma is the pair of descending Newton branches from c*, an ARC rather than a region. On that Gamma the hypothesis was tested in the STRONGEST form the lemma can consume -- every point of the arc must see one of the two roots by a STRAIGHT segment inside {|f| <= 1} -- and over 26 scored configurations at 283 sampled points per arc there were ZERO points seeing neither root, at least 155 points per row seeing BOTH, and the largest |h-a|+|h-b| over all overlap points was 1.91208 against a budget of 2, so the length is met with room and is never imposed separately. Twelve rows are excluded and receipted: two below degree three and ten with a degenerate minimising hub, which the closed-form arm settles instead.
+
+Evidence/status: proved_reduction_plus_proved_equality_case_plus_measured_hypothesis
+
+- [check_erdos1041_visibility_overlap.py](scripts/check_erdos1041_visibility_overlap.py)
+- [VisibilityOverlapReduction.md](VisibilityOverlapReduction.md)
+
+### capacity_geodesic_conjecture_and_its_equality_family
+
+Erdos #1041 follows from a SCALE-FREE length bound at the first-merge level, with no unit-disk hypothesis. Write K_t = {|f| <= t}; cap(K_t) = t^{1/n} (LemniscateCapacityBudget.md (B)). Conjecture (C): if a component of K_t holds two roots then two of them are joined INSIDE it by a path of length <= 2 t^{1/n} = 2 cap(K_t). PROVED here: (C) implies #1041, by applying it at t = mu and using only the classical Fekete chain mu <= R^n, since then the path has length <= 2 mu^{1/n} <= 2R < 2 and lies in K_mu subset {|f|<1}; the ratio geo/(2 t^{1/n}) is an AFFINE INVARIANT, so the disk is a normalisation and not a hypothesis; (C) is an EQUALITY for f = (z-tau)^n - lambda at every n >= 2 and every lambda != 0, hence for EVERY quadratic -- an equality on a two-parameter family at every degree, not in a limit, proved by the sector argument on Dbar(lambda,|lambda|) which lies in |arg(w/lambda)| <= pi/2; and at t = mu the two lobes meet only at c*, so geo splits as geo(a,c*) + geo(b,c*). (C) sits STRICTLY between what is refuted and the target: geo <= L(c*) always, so the STRONG completion L(c*) <= 2 mu^{1/n} that negative_results entry 28 refutes would imply (C), and (C) implies TrueGeodesicLab.md's radius bound geo <= 2 max|z_i|. Measured with paths pinned through c* (so no neck-cutting artefact) and audited for containment, the ratio is below 1 at every stored hard witness -- QC degree-6 0.8610866, QC degree-9 0.7529590, exact cubic 0.8523585, quintic 0.0826093, quartic 0.8970902 -- and 0.9999999935 on z^3-(99/100)^3, whose exact value 1 is Theorem 2. CONTAINMENT CAVEAT: the relaxation admits moves on finitely many samples per segment, so two rows leak above the level by 1.4e-9 (QC degree-6) and 9.3e-10 (QC degree-9) relative; such a path is not literally in K_mu and is admissible only because shrinking it back costs O(leak) in length against margins of 0.139 and 0.247. The receipt gates on that coupling (a row may audit above 1 only with margin >= 1e-3); the equality row and the two smallest-margin rows audit at exactly 1.0; in the near-Fekete shell it rises to 1 FROM BELOW at every degree. Every reported geodesic is the length of an explicitly audited contained path, hence an upper bound, so ratios below 1 are witnesses. Receipt scripts/check_erdos1041_capacity_geodesic.py; note CapacityGeodesicConjecture.md.
+
+Evidence/status: proved_reduction_plus_proved_equality_case_plus_measured_hypothesis
+
+- [check_erdos1041_visibility_overlap.py](scripts/check_erdos1041_visibility_overlap.py)
+- [VisibilityOverlapReduction.md](VisibilityOverlapReduction.md)
+
+### capacity_geodesic_margin_is_first_order_in_the_critical_radius
+
+The near-Fekete cusp is a COORDINATE, not an obstruction, for the capacity-geodesic objective. HardRegimeIsNearFekete.md records that a perturbative attack at the extremum 'must handle a fractional-power response, which is a materially harder object than a Hessian'. Proposition 4 (CapacityGeodesicConjecture.md section 7): for f_eps = z^n - m + eps h, with rho_crit = (eps|h'(0)|/n)^{1/(n-1)} the radius of the critical (n-1)-gon of near_fekete_cusp_law_and_strict_local_maximality, the METRIC SLACK satisfies 2 rho - (d_a + d_b) = rho_crit (cos th_a + cos th_b) + O(rho_crit^2) >= 2 cos^2(pi/n) rho_crit (1+o(1)) > 0, because mu = m + O(eps), eps = (n/|h'(0)|) rho_crit^{n-1} = o(rho_crit) for n >= 3, and the merging pair brackets the hub direction so th_a + th_b = 2 pi / n. So the slack is FIRST ORDER in rho_crit with an explicit positive slope, and (C) near the extremal needs only that the geodesic deficit geo - (d_a+d_b) is o(rho_crit). Measured along a fixed perturbation direction over seven decades: the slope of log(1 - geo/(2 rho)) against log rho_crit is 0.9981, 0.9747, 0.9645, 1.0067 at n = 3,4,5,6 (predicted 1), against log eps it is 0.4989, 0.3248, 0.2412, 0.2021 (predicted 1/(n-1) = 0.5, 0.3333, 0.25, 0.2), and the constant (1-ratio)/rho_crit lands inside the predicted band [cos^2(pi/n), cos(pi/n)] at every degree. Eliminating eps through the smooth Fekete maximum (1 - D ~ eps^2) gives the intrinsic form 1 - geo/(2 mu^{1/n}) ~ (1-D)^{1/(2(n-1))} -- the quantitative Fekete-stability object exact_results::quantitative_fekete_stability_hadamard_defect names, with the exponent attached.
+
+Evidence/status: proved_reduction_plus_proved_equality_case_plus_measured_hypothesis
+
+- [check_erdos1041_visibility_overlap.py](scripts/check_erdos1041_visibility_overlap.py)
+- [VisibilityOverlapReduction.md](VisibilityOverlapReduction.md)
+
+### radial_resultant_sweep_identity
+
+For monic f with roots a_k, f* the reciprocal adjoint and ahat_j = a_j/|a_j|, -log|f*(z)| = sum_{m>=1}(1/m)Re(conj(p_m) z^m) gives sum_j -log|f*(t ahat_j)| = sum_{m>=1}(t^m/m)Re(conj(p_m) sigma_m) with sigma_m = sum_j ahat_j^m. If all |a_k| = r then p_m = r^m sigma_m and the right side is sum_{m>=1}((tr)^m/m)|sigma_m|^2 >= 0, so prod_j |f*(t ahat_j)| = exp(-sum_m ((tr)^m/m)|sigma_m|^2) <= 1, decreasing in t on [0,1/r). At t = r this is exactly reciprocal_adjoint_resultant_power_sum_identity (Theorem RS): the identity above is the whole radial sweep, not only its endpoint. Paired with the Blaschke majorant |f| <= |f*| on the closed disk and the harmonicity of log|f*| there, it gives: at EVERY radius t at least one root direction has |f(t ahat_j)| <= 1, with an explicit deficit. This is an L^1-in-t statement and the good index moves with t; the L^infinity upgrade is Form A', which negative_results 8/16 refute. Checked to 2.1e-13 over 72 (degree, radius, radial point) triples in degrees 2-9 with tail-bounded truncation. See RadialResultantSweep.md.
+
+Evidence/status: ordinary_proof_plus_numerical_verification_novelty_not_claimed
+
+
+### near_fekete_origin_spoke_balance_and_kernel
+
+For a_k = omega^k(1+e_k), log|f(z)| = log|1-z^n| + Re Lambda(z) + O(eta^2) with Lambda(z) = sum_k e_k/(1 - z omega^{-k}), and the EXACT balance identity sum_j Lambda(t omega^j) = n Lambda(0)/(1-t^n): every harmonic m not divisible by n cancels across the n spokes. For a pure angular perturbation theta the functional is explicit: log|f(t omega^j)| - log(1-t^n) = P_j(t) + O(eta^2) with P_j(t) = sum_{l=1}^{floor((n-1)/2)} (theta_{j+l} - theta_{j-l}) g_l(t) and g_l(t) = t sin(2 pi l/n)/(1 - 2 t cos(2 pi l/n) + t^2) > 0 -- positive conjugate-Poisson kernels acting only on the ANTISYMMETRIC part of theta about j, with sum_j P_j == 0. Consequences: a perturbation symmetric about root j leaves that spoke exactly contained; the entry radius tau_j is the largest root of P_j(t) = -log(1-t^n); and on the leading harmonic tau_j = (cos psi_j)_+^{1/(n-1)}, psi = arg Ehat_1, a FRACTIONAL power of the perturbation, which is why the recorded entry radii are small. Verified: balance to 1.2e-13, expansion residual O(eta^2) (shrink 101.0 and 100.1 per decade), tau ratio 0.99847 at eta = 1e-5. See RadialResultantSweep.md.
+
+Evidence/status: ordinary_first_order_proof_plus_numerical_verification
+
+
+### form_a_cut_cusp_exponent_at_the_regular_gon
+
+Rescaling z = s zeta with s^{n-1} = |Ehat_1| gives the eta-free, R-free near-field model of the ORIGIN-SPOKE route: W(zeta) = Re(e^{i psi} zeta) - Re(zeta^n) = Re H, harmonic, with W(0) = 0 so the good set is a half plane near the origin -- which is why the Form A-cut chord works at leading order (a linear function attains its maximum on a segment at an endpoint). At n = 3, psi = pi/3 the model is EXACTLY CRITICAL: the only admissible pair has chord maximum g(s) = s^3/8 - s/4 + 1/(8s), g'(s) = 0 iff 3s^4 - 2s^2 - 1 = 0 iff s = 1, and g(1) = 0 exactly, attained where both harmonics vanish separately. Degree three is the ONLY such degree: the number of fully good rays is the number of n-th roots of unity in a closed half plane, at least floor(n/2), which is >= 2 exactly when n >= 4, and two good rays make the whole staple strictly negative for small s. Measured consequence: the regular n-gon on the unit circle is a STRICT local maximum of the Form A-cut objective V with value exactly 1, and 1 - V ~ c_n eps^{n/(n-1)} -- median exponent 1.504 against 3/2 at n = 3 and 1.333 against 4/3 at n = 4 over nine directions each, none with V > 1. The exponent is below 2, so V has infinite second derivative there: a cusp, and no Hessian argument applies. This explains the 1.0000000 pin that TruncatedSpokeReduction.md sec 6 and TwoSegmentContainmentReduction.md sec 5 both record without an explanation. c_n is not proved positive. See RadialResultantSweep.md.
+
+Evidence/status: near_field_model_proved_at_n3_plus_measured_exponent_not_proved
+
+
+### bergman_segment_length_bound_and_capacity_window
+
+AffineNormalisedModuli.md section 7 names 'a sharp replacement for the Koebe constants in Theorem R' as the object that would change the picture. Koebe is the wrong estimate: by Theorem B the descent arc is the image of a DIAMETER under the Riemann map psi : D -> Omega_t, and Area(Omega_t) = ||psi'||^2 in the Bergman space A^2(D), so length is an L^1 integral of psi' along a fixed curve and the sharp tool is the reproducing kernel. LEMMA A: for h in A^2(D) and 0 < q < 1, (int_{-q}^{q}|h| ds)^2 <= Lambda(q) ||h||^2 with Lambda(q) = int int ds ds'/(pi(1-s s')^2) = (2/pi) log((1+q^2)/(1-q^2)); the proof is Cauchy-Schwarz against Phi_u = int u(s) K_s ds plus POSITIVITY of the Bergman kernel on the real segment, which makes u = 1 optimal. Equality holds for h(z) = (1-q^2 z^2)^{-1}, whose primitive log((1+qz)/(1-qz))/(2q) is UNIVALENT, so 2/pi is sharp among conformal maps and not an artifact of the larger class. LEMMA B: the same estimate for an arbitrary curve gives length(Gamma) <= (1/2) len_hyp(Gamma) sqrt(Area(Omega)/pi) in any simply connected Omega. OBSERVATION: Theorem B never uses minimality of mu -- Riemann-Hurwitz gives chi = 1 = 2 - b, so a two-root component has exactly one branch point, which must be the hub -- so the machinery runs at EVERY Fekete-admissible hub, which is what admissible_branch_length_reformulation calls load-bearing. THEOREM C: if the component Omega of {|f| < t} at a critical point c with v = |f(c)| holds exactly two roots, then L(c) <= sqrt((2 Area(Omega)/pi) log((t+v)/(t-v))) <= t^{1/n} sqrt(2 log((t+v)/(t-v))). COROLLARY D fires at v/t < tanh(1) = 0.7615942 against Corollary R's v/t < tanh^2(1/8) = 0.0154637, a factor of 49.25 in the admissible level ratio before the true area replaces the Polya cap. The hypothesis is non-empty exactly when mu < R^n, i.e. when D < 1, so this is a quantitative form of HardRegimeIsNearFekete.md's split in which the room is spent against AREA rather than against the level ratio alone. THEOREM E: the binding case of Conjecture (C) of CapacityGeodesicConjecture.md is a component holding exactly two roots -- at the level where a component first holds two roots, two one-root lobes merge -- so Theorem C proves (C) whenever t >= coth(1) v = 1.3130353 v, confining the whole content of (C) to the level window [v, coth(1) v), a relative width of 31.3 percent. That window is DEGREE-FREE, because t^{1/n} cancels on both sides; every route through mu <= D^{1/(n-1)} instead gives a window that closes as n grows. CALIBRATION: on the quadratic equality family z^2 - d^2, where L = 2R exactly, Area = 2 t E(m = 1/t^2) with E the complete elliptic integral of the second kind, and (2 Area/pi) log((t+1)/(t-1)) = 4(1 + 1/(12 t^2) + O(t^-4)), so the bound is 2 sqrt(1 + 1/(12t^2)): strictly above the truth at every finite level and converging to it, verified at 40 digits with Richardson coefficient 0.08333333 against 1/12; float64 loses five digits to cancellation there. MEASURED, same hypothesis set: 104 of 108 configurations settled against Theorem R's 30, 74 settled only here and 0 lost, worst L/bound 0.981 over 1085 admissible (hub, level) pairs, and still firing at mu = 0.9998 on the near-Fekete shell with the reach improving as the degree rises. A NEW INSTRUMENT-DEFECT CLASS MEMBER: a grid's ROOT count of a sublevel component is not a safe witness for the two-root hypothesis, since the necks go sub-grid, while its CRITICAL-POINT count is, because Riemann-Hurwitz makes them the same statement; nine of eleven first-run violations read two roots while holding two critical points. Areas are now bracketed by erosion/dilation and calibrated against the closed-form Cassini area. Silent by construction on z^n - r^n, where every level above mu gives a component holding all n roots.
+
+Evidence/status: proved_sharp_lemma_plus_proved_theorem_plus_measured_reach
+
+- [check_erdos1041_bergman_segment_bound.py](scripts/check_erdos1041_bergman_segment_bound.py)
+- [BergmanSegmentLengthBound.md](BergmanSegmentLengthBound.md)
+
+### bergman_geodesic_moebius_invariance
+
+BergmanSegmentLengthBound.md section 3 names the missing object for a k-root component: 'prod_j rho(zeta_c,zeta_j) = |f(c)|/t bounds the SMALLEST pseudohyperbolic distance and says nothing about the second'. Two identities close that. (1) The Bergman segment functional Lambda(gamma) = int int |dz||dz'|/(pi|1-conj(z')z|^2) is MOEBIUS INVARIANT, because |1-conj(sigma(z'))sigma(z)|^2 = |sigma'(z)||sigma'(z')||1-conj(z')z|^2 exactly. Hence Lemma A's closed form is not about segments: for the hyperbolic geodesic between two points at pseudohyperbolic distance rho, Lambda = (1/pi)log(1/(1-rho^2)). THEOREM C': for ANY simply connected Omega of finite area and a,b in Omega, the hyperbolic geodesic satisfies length^2 <= (Area(Omega)/pi) log(1/(1-rho_Omega(a,b)^2)); SHARP, attained on Omega = psi_q(D), psi_q = (1/2q)log((1+qz)/(1-qz)), a,b = psi_q(-+q), verified to 3e-7. Theorem C is the k=2 case VERBATIM (antipodality gives 1-rho^2 = ((t-v)/(t+v))^2) and its coth(1) threshold is recovered exactly. (2) LEMMA G: for a component Omega of {|f|<t} with roots a_1..a_k, sum_j g_Omega(z,a_j) = log(t/|f(z)|) exactly; expanding at a simple root gives the ROOT-CENTRED product identity prod_{j!=i} rho_Omega(a_i,a_j) = r_Omega(a_i)|f'(a_i)|/t =: P_i < 1, so min_{j!=i} rho_Omega(a_i,a_j) <= P_i^{1/(k-1)} -- a bound between two ROOTS, not from the hub. Theorem F, Corollary F' and Theorem E' follow, reducing to Theorem E at k=2. A Gram/Bessel inequality Area(Omega) >= pi c* G^{-1} c with |G_ij| = 1-rho_ij^2 sharpens the conformal-radius bound to r_Omega(a_i) <= sqrt(Area(1+S)/(pi k)), S = max_i sum_{j!=i}(1-rho_ij^2): on z^6-0.9^6 at t=1 that is 0.4235 against the exact 0.2648, where sqrt(Area/pi) gives 0.9776. SUBDOMAIN PRINCIPLE: Theorem C' has no hypothesis tying Omega to f, so any simply connected subdomain of {|f|<1} carrying two roots is admissible; the canonical choice is the union of two adjacent NEWTON BASINS. PROPOSITION S: on z^n-r^n the uniformiser Phi(z)^n = sigma(z^n) is rotation-equivariant and carries that subdomain onto the DISC SECTOR {|zeta|<1, arg in (-pi/n,3pi/n)} with the roots at R_0, R_0 omega, R_0 = r t^{-1/n}; so Area = (2/n)Area(Omega_t) EXACTLY and rho is elementary. Expanding, 1-rho^2 = (32a^2/(a^2-1)^2) eps^2 with a = cot^2(pi/8) = 3+2sqrt2 and 32a^2 = 544+384sqrt2 = (a^2-1)^2, so the constant is exactly 1 and 1-r_max(n) = Theta(n^{-1}e^{-2n}). MEASURED CUT-OFFS (mpmath, 50 digits): 1-r_max = 1.7e-2, 1.2e-3, 1.1e-4, 1.1e-5, 1.4e-7, 1.7e-8, 2.1e-9, 3.2e-11, 8.8e-15 at n = 3,4,5,6,8,9,10,12,16, successive ratios converging to e^2. This matters because Theorem C is SILENT BY CONSTRUCTION on z^n - r^n (no level ever gives a two-root component, BergmanSegmentLengthBound.md section 6), so the degenerate stratum has a non-empty criterion for the first time; the criterion is open in the roots so each firing row settles a neighbourhood, whose size is NOT quantified here. On the recorded hard witnesses Theorem F is VACUOUS (P_i >= 1 at every tested level) except the degree-5 origin-spoke lab (bound 0.061 at t=0.30). Erdos #1041 remains open; nothing here reaches the near-Fekete shell.
+
+Evidence/status: ordinary_complete_proof_plus_exact_closed_forms_not_lean_checked_novelty_not_claimed
+
+- [BergmanGeodesicInvariance.md](BergmanGeodesicInvariance.md)
+- [check_erdos1041_bergman_geodesic.py](scripts/check_erdos1041_bergman_geodesic.py)
+- [erdos1041_bergman_geodesic_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_bergman_geodesic_receipt.json)
+
+### form_a_cut_adjacent_good_pair_selector
+
+TruncatedSpokeReduction.md proves Form A-cut -- three segments, NO length obligation -- and leaves the SELECTION open; form_a_cut_cusp_exponent_at_the_regular_gon records that its cusp constant c_n is not proved positive. The selector is now identified and proved sufficient AT LEADING ORDER for n >= 4. With a_k = omega^k(1+e_k), E_1 = sum_k e_k omega^{-k}, the near field is log|f(z)| = Re E_0 + Re(E_1 z) - Re(z^n) + R with CHECKED error orders: at sigma ~ eta^{1/(n-1)} both leading terms are ~eta^{n/(n-1)} while eta sigma^2, eta^2 and sigma^{2n} are strictly higher order for n >= 3 (n/(n-1) <= 2), so the model is asymptotically exact rather than formal. A root carries a GOOD RAY iff p_j := Re(E_1 a^_j) <= 0 -- a CLOSED half plane -- and then its entry radius is zero (Lemma 1). The good set is therefore a contiguous arc of at least floor(n/2) directions and contains two ADJACENT indices exactly when n >= 4 (Lemma 2); the recorded slope identity P_j'(0) = Re(E_1 omega^j) is the same statement. On the common-radius chord w(tau) = (1-tau)a^_i + tau a^_j the only positive term is -sigma^n Re(w^n), so the pair works for small sigma iff Re(w(tau)^n) < 0 implies (1-tau)p_i + tau p_j < 0. Along an ADJACENT chord arg(w^n) turns exactly once, so Re(w^n) < 0 only strictly inside (0,1), where the interpolant is strictly negative unless both directions lie on the line Re(E_1 zeta) = 0 -- impossible for adjacent directions at n >= 3. Hence EVERY adjacent good pair satisfies the criterion automatically (Lemma 3), and the two-dimensional free hub search is not needed near Fekete. n = 3 is exactly the degree where Lemma 2 gives one good ray, and is settled separately by CubicCriticalHub.md. REFUTED RIVAL: the rule one would guess first -- take the MOST ANTIPODAL good pair so the chord dips near the origin -- is FALSE at 45/48, failing by 1.0287764761 at n=10 eta=1e-1, 1.0003866137 at n=8 eta=1e-2 and 1.0000002022 at n=10 eta=1e-5, the last arbitrarily close to the regular polygon; the extreme rays of the good arc are the most marginal ones. MEASURED with EXACT segment maxima (real roots of d|f|^2/dt): the adjacent selector succeeds 70/70 on one seed stream over n=4..12 and eta=1e-1..1e-7, angular and mixed, and reproduces the free two-dimensional optimum to nine printed digits at 57 of the 70 rows. A second stream locates its boundary: at n=12 angular it crosses one between eta = 0.02 and 0.03 (1.002637 at 0.03, 0.999793 at 0.02) while the free optimum there is still 0.79, so the SELECTOR and not Form A-cut is what is near-Fekete-only. INSTRUMENT: a sampled 3001-point segment maximum reported 70/70 for the ANTIPODAL rule as well and missed the n=12 crossing -- negative_results entry 34's class at a fifth location; every number in the note is exact. SCOPE: the Proposition is leading order, has no explicit threshold eta_0(n), carries the modulus part of the perturbation only through the angular kernel identity, and does NOT prove c_n > 0. Erdos #1041 remains open.
+
+Evidence/status: leading_order_proof_plus_refuted_rival_selector_plus_exact_measurement_not_lean_checked
+
+- [FormACutAdjacentSelector.md](FormACutAdjacentSelector.md)
+- [check_erdos1041_form_a_cut_selector.py](scripts/check_erdos1041_form_a_cut_selector.py)
+- [erdos1041_form_a_cut_selector_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_form_a_cut_selector_receipt.json)
+
+### exact_component_capacity_green_defect
+
+LemniscateCapacityBudget.md (D) and every consumer of Polya spend the INEQUALITY cap(C) <= cap(K_t) = t^{1/n} for a connected component C of {|f| < t}. The exact value is available. With Omega = Chat minus closure(C), n log cap(closure C) = log t - Sigma, where Sigma = sum over the roots z_j OUTSIDE C, with multiplicity, of g_Omega(z_j, infinity); equivalently cap(closure C) = t^{1/n} exp(-Sigma/n) with Sigma >= 0. Proof: no root lies on dC since roots have |f| = 0 != t; u(z) = log(|f|/t) + sum_{z_j not in C} g_Omega(z, z_j) has its root singularities cancel, is harmonic on Omega minus infinity, vanishes on dC and grows like n log|z| - log t + Sigma; subtracting n g_Omega(., infinity) leaves a bounded harmonic function vanishing on the boundary, hence zero, and reading it at infinity gives the identity. Sigma = 0 exactly when C holds every root, i.e. when {|f| < t} is connected, recovering cap(K_t) = t^{1/n}. CONSEQUENCE, with kappa := cap(Omega_t)/t^{1/n} = exp(-Sigma/n) and Area <= pi cap^2: Theorem C of BergmanSegmentLengthBound.md becomes L(c) <= kappa t^{1/n} sqrt(2 log((t+v)/(t-v))), so its Theorem E window narrows from relative width coth(1)-1 = 31.30% to coth(1/kappa^2)-1, and Corollary D's Erdos-1041 threshold moves from tanh(1) to tanh(1/kappa^2). This strictly dominates that file's Cassini area bound, which is capacity monotonicity applied to an oval CONTAINING Omega_t. MEASURED at a calibrated resolution (equilibrium-measure solver, worst known-capacity error 1.21e-4; identity residual 1.45e-4 against tolerance 1.21e-3; Sigma = 0 reproduces t^{1/n} to 7.24e-5): over 12 first-merge two-root components kappa has median 0.3891 and max 0.5811, giving windows of median 0.0006% and worst 0.5370%. LOAD-BEARING DISCLOSURE: every surviving measured row is a BULK configuration. The near-Fekete seeds produced no rows, so the corollary is UNMEASURED on the shell where the difficulty lives, and it is provably EMPTY on the extremal family z^n - lambda, where {|f| < t} is connected for t > v, so Sigma = 0 and kappa = 1. Erdos #1041 and conjecture (C) remain open.
+
+Evidence/status: ordinary_complete_proof_plus_calibrated_measurement_not_lean_checked_novelty_not_claimed
+
+- [ComponentCapacityFormula.md](ComponentCapacityFormula.md)
+- [check_erdos1041_component_capacity.py](scripts/check_erdos1041_component_capacity.py)
+
+### sharp_collinear_root_diameter_extremal
+
+For n >= 2, put r_n = cos(pi/(2n)) and C_n = 1/(2^(n-1) r_n^n). Every monic degree-n polynomial whose zeros are collinear and have diameter D has an adjacent-root chord of length at most D on which |f| <= C_n (D/2)^n. Equivalently, the supremum over monic real-rooted degree-n polynomials of root diameter D of the minimum real critical-gap height is exactly C_n (D/2)^n. The endpoint-normalized scaled Chebyshev polynomial attains equality in every gap, so the constant is sharp. The proof normalizes the extreme roots to -1 and 1 and compares with q_*(x)=T_n(r_n x)/(2^(n-1)r_n^n). If every gap peak of q exceeded C_n, q-q_* would have the two endpoint zeros and one zero between every consecutive pair of alternating peaks: n distinct zeros despite degree at most n-1. This solves the all-degree collinear-root subcase of Erdos #1041 for the open unit disk, and also the closed-disk collinear case for n >= 3; degree two at roots -1,1 is the exact boundary obstruction. The ordinary proof covers the compactness choice of gap maxima, affine complex-to-real normalization, and Chebyshev equality configuration. Lean checks the load-bearing root-counting alternation theorem and the complete endpoint-normalized Chebyshev upper-bound adapter. Deterministic stress covered 20000 configurations per degree for n=2,...,10, 180000 total, with exact equality ratio one for the scaled Chebyshev family. No literature-priority claim is made.
+
+Evidence/status: ordinary_complete_sharp_all_degree_subcase_proof_plus_lean_checked_alternation_and_chebyshev_adapter_novelty_not_claimed
+
+- [check_erdos1041_collinear_chebyshev.py](scripts/check_erdos1041_collinear_chebyshev.py)
+- [CollinearRootCase.md](CollinearRootCase.md)
+- [SharpCollinearAlternation.lean](SharpCollinearAlternation.lean)
+- [SharpCollinearChebyshev.lean](SharpCollinearChebyshev.lean)
+- [collinear_root_tao_pipeline_receipt.json](collinear_root_tao_pipeline_receipt.json)
+
+### unconditional_constant_factor_pair_geodesic
+
+Let f be monic of degree n >= 2, let mu be the least critical-value modulus, and put rho = mu^(1/n). Zeros are listed with multiplicity. Two zero occurrences are joined by a possibly degenerate path of length at most (71/10)rho inside K_(2mu); when f is squarefree their zero locations are distinct. The proof is degree-free and uses the componentwise estimate H^1(partial C)^2 <= 2 pi k sigma A'(sigma), a regular-level mean-value choice above mu, the singleton boundary specialization sum_i mu^2/|f'(a_i)|^2<=rho^2 of the stronger fixed-level LC2 theorem, Koebe control on one-root lobes, and a cyclic boundary hop. At lambda=2 and r=3/20, exact rational bounds on the elementary constants give coefficient 66517563/9392500<71/10. The existing Python receipt is finite regression only. The sharp length-2 statement in the open unit lemniscate, containment at K_mu, and Conjecture P remain open.
+
+Evidence/status: ordinary_complete_unconditional_proof_plus_finite_regression_not_lean_checked_not_independently_reviewed
+
+- [UnconditionalConstantFactorBound.md](UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](scripts/check_erdos1041_constant_factor_bound.py)
+
+### low_critical_high_arity_first_merge_closure
+
+Let f be monic with all roots in the open unit disk, let mu be its least critical-value modulus, and let k be the number of roots in a minimizing first-merge component. Each of the following conditions implies that two distinct roots are joined by a path of length strictly less than 2 inside {|f|<1}: (i) mu<=1/2 and k>=17; (ii) mu<=1/4 and k>=12; (iii) mu<=1/8 and k>=10. The LC2-improved boundary-hop assembly uses respectively (lambda,r)=(2,13/100),(4,3/25),(8,11/100). Since lambda*mu<=1, multiplication by rho=mu^(1/n) cancels the high-level lambda^(1/n) factor. Exact rational certificates bound the three squared brackets strictly below 34, 24, and 20, so multiplication by 2/k puts each squared path length below 4. The regular working level can be chosen below 1 even at lambda*mu=1, giving strict containment.
+
+Evidence/status: ordinary_complete_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed
+
+Superseded by **['low_critical_potential_closure_all_degrees_2026_09_05']**. Use that stronger result.
+
+- [UnconditionalConstantFactorBound.md](UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](scripts/check_erdos1041_constant_factor_bound.py)
+
+### low_critical_component_capacity_defect_closure
+
+Let f be monic with all roots in the open unit disk, let mu<=1/2 be its least critical-value modulus, let C be the component of {|f|<2mu} containing a minimizing critical point, and put kappa=cap(closure C)/(2mu)^(1/n). If kappa<=1/3, two distinct roots are joined by a path of length strictly less than 2 inside {|f|<1}. The exact component-capacity formula multiplies the boundary and high-lift terms in the LC2-improved boundary-hop construction by kappa. Taking lambda=2 and r=1/20 gives coefficient at most 6518353/3285100=2-51847/3285100. Equivalently, the exterior Green defect sum Sigma at the roots excluded from C closes the target whenever Sigma>=n log 3.
+
+Evidence/status: ordinary_complete_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed
+
+Superseded by **['low_critical_potential_closure_all_degrees_2026_09_05']**. Use that stronger result.
+
+- [UnconditionalConstantFactorBound.md](UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](scripts/check_erdos1041_constant_factor_bound.py)
+
+### low_critical_arity_capacity_lattice_closure
+
+Let f be monic with all roots in the open unit disk, let k0 be the arity of a minimizing first-merge component, and let kappa be the normalized capacity of its containing lambda*mu-component. Retaining both the outer sqrt(2/k) factor and component capacity in the LC2-improved boundary-hop construction gives length<sqrt(2/k0)(A_lambda+B_lambda kappa). At mu<=1/2, (A_2,B_2)=(283/3610,52029/9100), with exact rational cutoffs for k0=2,...,16 equal to 1/3,2/5,12/25,1/2,7/12,16/25,2/3,7/10,3/4,4/5,5/6,7/8,9/10,33/35,39/40. At mu<=1/4, (A_4,B_4)=(849/3872,11975/2632), with cutoffs for k0=2,...,11 equal to 19/50,12/25,4/7,16/25,7/10,3/4,4/5,7/8,14/15,49/50. At mu<=1/8, (A_8,B_8)=(3113/15842,13427/3150), with cutoffs for k0=2,...,9 equal to 2/5,1/2,3/5,2/3,3/4,4/5,8/9,18/19. At mu<=1/64, lambda=64 and r=3/32 give sharpened exact cutoffs for k0=2,...,9 equal to 4/9,5/9,16/25,8/11,4/5,13/15,13/14,99/100, while every k0>=10 closes without a capacity defect. Every row is certified by an exact integer inequality (A_lambda+B_lambda*q_k)^2<2k.
+
+Evidence/status: ordinary_complete_target_regime_proof_with_exact_rational_table_certificate_not_lean_checked_not_independently_reviewed
+
+Superseded by **['low_critical_potential_closure_all_degrees_2026_09_05']**. Use that stronger result.
+
+- [UnconditionalConstantFactorBound.md](UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](scripts/check_erdos1041_constant_factor_bound.py)
+
+### capacity_saturation_radial_merge_bridge
+
+Let U be a proper regular k-root component of {|f|<t} for a monic degree-n polynomial, let m=n-k, let B be its exterior degree-m finite Blaschke product, and put p=|B(0)|=cap(closure U)^n/t. If r is the largest modulus of a zero of B, define M_n(r)=max_(1<=x<=1/r) x^n(1-rx)/(x-r). Then an actual exterior radial curve joins U to an excluded root inside {|f|<=t M_n(r)}, so the next component merger satisfies b_next/t<=M_n(r)<=M_n(p^(1/m))<=p^(-(n-1)/m). The proof uses the exact spectator contraction |x-a|^2-|1-conj(a)x|^2=(x^2-1)(1-|a|^2)>=0 and monotonicity of M_n. Separately, the antipodal-fibre identity gives the exact saturation bound sum_j(n-|B'(zeta_j)|)<=n^2 Delta/(1+n Delta/m), Delta=(1-p)/(1+p)-m/n. Composing the source-current mu<=1/64,k0=9 cutoff q=99/100 with p<9/(2n-9) closes every proper top cell in degrees 10<=n<=459, strengthening the returned older degree-band computation. In the symmetric model B_s=(z^m-s)/(1-sz^m), the exact critical equation is y^2-[((n+m)s^2+(n-m))/(ns)]y+1=0 and the merge-height cusp has leading coefficient (sqrt(2)/3)(n^2-m^2)/(sqrt(n)m^(3/2)) epsilon^(3/2).
+
+Evidence/status: ordinary_exact_multi_exterior_merge_ceiling_with_exact_integer_band_composition_symmetric_envelope_now_proved_in_sharp_symmetric_merge_envelope_and_exact_fibre_defect
+
+Superseded by **['sharp_symmetric_merge_envelope_and_exact_fibre_defect']**. Use that stronger result.
+
+- [CapacitySaturationBridge.md](CapacitySaturationBridge.md)
+- [check_erdos1041_capacity_saturation_bridge.py](scripts/check_erdos1041_capacity_saturation_bridge.py)
+
+### concyclic_alternation_theorem
+
+Erdos #1041 is settled unconditionally for every monic f whose zeros lie on a CIRCLE of radius rho <= 2^{-1/n} (and, with no radius hypothesis, at n = 2). This is the circle companion of the collinear theorem of CollinearRootCase.md and uses the same mechanism in the only other chart where it exists. THEOREM C: let w_1..w_n be distinct on the unit circle, g = prod (z - w_k), A_1..A_n the open gap arcs, and q(z) = z^n - c with c = (-1)^{n+1} prod_k w_k. Then some gap satisfies |g| <= |q| pointwise on A_k. MECHANISM: a polynomial with zeros on a circle is self-inversive, so R[p](psi) = (-i)^n e^{-i(n psi + Phi)/2} p(e^{i psi}) is REAL for p = g and for every monic p in the same self-inversive class; and every monic member of that class has the SAME CONSTANT TERM as g, so g - q vanishes at 0 and has degree <= n-1, leaving at most n-2 zeros on the circle. If |g| > |q| somewhere in every gap, the sign of R[g-q] alternates across the n gaps and (using R[p](psi+2pi) = (-1)^n R[p](psi) to close the cycle) g - q acquires n distinct circle zeros. Contradiction. CONSEQUENCES on that same gap: max_{A_k}|g| <= 2, sharp at every degree since g = z^n - c gives exactly 2 on every gap; and A_k contains no zero of q, whose zeros are spaced 2pi/n, so its angular width is <= 2pi/n and |w_{k+1}-w_k| <= 2 sin(pi/n). LEMMA S (chord domination): u = log|g| is harmonic inside the disk, and on the open chord [w_k,w_{k+1}] the normal derivative towards the gap arc is sum_{j not in {k,k+1}} <z-w_j,N>/|z-w_j|^2 > 0, because a chord separates the two arcs and all other zeros lie on the far side; the two endpoint terms drop out since z - w_k and z - w_{k+1} are parallel to the chord. Hence max over the chord is never attained inside the circular segment, so max_chord |g| <= max_{A_k} |g|, strictly for n >= 3. That converts an arc statement, whose length rho*delta carries no bound, into a STRAIGHT SEGMENT of length <= 2 rho sin(pi/n) < 2 -- the length obligation of #1041 is discharged for free. COROLLARY: monic f, zeros on a circle of radius rho with 2 rho^n <= 1, gives two zeros joined by a segment of length <= 2 rho sin(pi/n) < 2 on which |f| < 1. New content begins at degree five (degrees 2,3,4 are already settled): admissible radii 0.8706, 0.8909, 0.9057, 0.9170 at n = 5,6,7,8, rising to 0.9659 at n = 20. SCOPE, load-bearing: the equality family of Theorem C is z^n - c, which is exactly this problem's own extremal family, so this route provably cannot reach rho -> 1 -- min over monic admissible q of max_{|z|=1}|q| IS 2 (sum R[q] over the n points where its top harmonic is +2: every lower harmonic cancels), and on the regular n-gon the chord maximum is rho^n(1+cos^n(pi/n)) > rho^n. On z^n - rho^n the components of {|f|<1} are n petals meeting only at the centre and the unique shortest admissible path is the radius pair of length exactly 2 rho, which is the near-Fekete cusp of near_fekete_cusp_law_and_strict_local_maximality and is untouched here. CALIBRATION: exact Gaussian-rational arm verifies the self-inversive coefficient identity b_j = (-1)^n W conj(b_{n-j}), that q lies in the same class with q(0) = g(0), that g-q has zero constant term, and both inequalities at exact points, at n = 4,5,6,7 in Fraction arithmetic. Float arm sweeps random, near-regular (perturbation 1e-1..1e-6) and two-cluster configurations at n = 2..12 with maxima located as polynomial roots and EVALUATED in the stable product form -- the degree-2n Laurent locator cancels catastrophically for clustered zeros and under-reports by up to 1e-8 relative, the direction that flatters containment, which is negative_results entries 24/34/41/44's class reproduced at a new location. Negative control per negative_results entry 19: the same searcher at the same budget pushes the neighbouring FALSE statement 'every gap arc has max|g| <= 2' over its threshold at every degree tested. CONJECTURE, calibrated not proved: the sharp CHORD constant is 1 + cos^n(pi/n), attained exactly at the regular n-gon; adversarial hill climbing converges to 1.124999, 1.249999, 1.346566 at n = 3,4,5 against 1.125, 1.25, 1.3465678 from several seedings. Granting it moves the admissible radius to (1+cos^n(pi/n))^{-1/n}, about 0.94 at every degree, still not to 1.
+
+Evidence/status: ordinary_complete_sharp_proof_plus_exact_rational_witness_plus_calibrated_conjecture_not_lean_checked
+
+- [ConcyclicAlternation.md](ConcyclicAlternation.md)
+- [check_erdos1041_concyclic_alternation.py](scripts/check_erdos1041_concyclic_alternation.py)
+- [erdos1041_concyclic_alternation_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_concyclic_alternation_receipt.json)
+
+### minimal_hub_window_join_inside_mu
+
+If the minimising critical point c* of a squarefree monic f is simple and T* in (mu, +inf] is the two-root persistence level of its component (component root-counts jump only at critical-value moduli, so T* >= nu_2), then two roots are joined by a path INSIDE {|f| <= mu} -- the containment the constant-factor theorem reaches only at 2mu -- of length L <= inf_{mu<t<T*} t^{1/n} sqrt(2 log((t+mu)/(t-mu))) = T*^{1/n} sqrt(2 log((T*+mu)/(T*-mu))), with Psi_n(x) = x^{1/n} sqrt(2 log((x+1)/(x-1))) strictly decreasing via x = coth u (Psi^2 = 4u coth(u)^{2/n}); for n = 2 the limit is exactly 2 mu^{1/n}, optimal on the full quadratic equality family. Corollary: if T*/mu >= coth(1) the constant is <= sqrt(2) coth(1)^{1/n} mu^{1/n} <= 1.55 mu^{1/n}. Master bound min(8 [K_{2mu}], Psi_n(T*/mu) [K_mu]) dominates the recorded unconditional bounds unless T*/mu - 1 < ~2 e^{-32}. Spectral settling criterion: roots in disk radius R and nu_2/mu > x_n*, where Psi_n(x_n*) = 2 (x_2* = +inf; x_n* = 1.6064943, 1.4784372, 1.4289343, 1.4023941, 1.3857936, 1.3744142, 1.3598081 at n = 3,4,5,6,7,8,10; strictly decreasing to 1), settle Erdos #1041 for f with the join inside {|f| <= mu}. Compositional pullback: for P monic degree n with min(nu_2^P, |P(0)|)/mu_P > x_n*, every fibre f = P((z-h)^q), q >= 2, satisfies Erdos #1041, since f's critical spectrum is {P's critical values} union |P(0)| and x_{nq}* <= x_n* -- covering arbitrary-degree quotients without spoke selectors.
+
+Evidence/status: ordinary_proof_on_quoted_directory_theorem_c_plus_two_elementary_lemmas_not_lean_checked
+
+- [MinimalHubWindowJoin.md](MinimalHubWindowJoin.md)
+- [check_erdos1041_minimal_hub_window.py](scripts/check_erdos1041_minimal_hub_window.py)
+- [erdos1041_minimal_hub_window_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_minimal_hub_window_receipt.json)
+
+### primitive_quintic_closed_disk_two_tail_theorem
+
+Let p(z)=z^5+a z^4+bz+c be monic and suppose all five roots lie in the closed unit disk. Then at least two distinct roots w satisfy |bw+c|<=1. If a!=0, two distinct roots satisfy the strict inequality; if a=0, every root is safe and |bw+c|=|w|^5. Abel summation converts each selected tail into a radial unit-sublevel path from the root to zero, so this settles the complete closed-disk primitive sparse quintic subproblem of Erdos #1041, including mixed interior/boundary root configurations. After rotating a to r>=0, the first three Newton sums are -r,r^2,-r^3. The harmonic extension H of the boundary cubic separator has exact total 5-2r and disk maximum 4-2r. An unsafe tail forces 5(1-s)<=2r(x+r/2); a two-variable completion of squares gives H<=2/31. Four unsafe roots would therefore score at most 4-2r+8/31<5-2r, contradiction. Lean checks the finite moment, disk-cap, unsafe-cap, two-selector, and zero-a equality arguments. SymPy checks the algebraic identities exactly; a deterministic 1,200-configuration Schur audit checked 6,000 roots, observed minimum safe-tail count two, and maximum unsafe score 0.020385883725163034<2/31.
+
+Evidence/status: analytic_complete_lean_checked_exact_computation_closed_disk_subproblem_novelty_not_claimed
+
+- [PrimitiveQuinticInteriorTail.md](PrimitiveQuinticInteriorTail.md)
+- [check_erdos1041_primitive_quintic_interior_tail.py](scripts/check_erdos1041_primitive_quintic_interior_tail.py)
+- [PrimitiveQuinticBoundaryTail.lean](PrimitiveQuinticBoundaryTail.lean)
+- [PrimitiveQuinticInteriorTail.lean](PrimitiveQuinticInteriorTail.lean)
+- [primitive_quintic_interior_tail_tao_pipeline_receipt.json](primitive_quintic_interior_tail_tao_pipeline_receipt.json)
+
+### concyclic_potential_domination_kernel_and_certificate_criterion
+
+For concyclic zeros: (i) Lean-checked factor bound log|1-w| <= |w|^2/2 - Re w (|w|<1) with multiplicative fan-in prod_i |z-v_i|^2 <= exp(n|z|^2 - 2 P(z)), P(z)=sum_i Re(z conj(v_i)), giving the sufficient cone certificate P(z) >= n|z|^2/2 ==> |g(z)| <= 1 on chords and spokes (ErdosProblems.Erdos1041.ConcyclicPotentialBound); (ii) exact Form-A-cut certificate criterion reducing V<=1 per configuration to finitely many one-dimensional polynomial containment checks; (iii) PROVEN INFEASIBILITY of first-moment-only certificates for n>=4: no (s,R) with R=|s_1|<=n satisfies the crude-tail spoke system, and even artificial spectral caps |s_m|<=beta fail in the near-regular shell where R,beta share scale -- any proof of V<=1 needs joint multi-harmonic bookkeeping.
+
+Evidence/status: lean_checked_kernel_plus_exact_reduction_criterion_plus_proven_infeasibility_of_first_moment_certificates
+
+- [check_erdos1041_concyclic_form_a_cut_certificate.py](scripts/check_erdos1041_concyclic_form_a_cut_certificate.py)
+
+### concyclic_concentric_alternation_counterexample
+
+The concentric-alternation law Conjecture U is FALSE already for five distinct unit-circle roots. At s=3/20 the Gaussian-rational configuration w=(44/125+117i/125, -1809/2609+1880i/2609, -4/5-3i/5, 24/145-143i/145, 1012/1013-45i/1013) has, in every one of its five closed cyclic gaps, an explicit Gaussian-rational unit direction x_k with |prod_j((3/20)x_k-w_j)| > 1+(3/20)^5. The five exact squared margins are positive and range from 0.0019145 to 0.0191028. Therefore min_k max_{G_k} log|g(s exp(i psi))| > log(1+s^5), contrary to Conjecture U. This retires only the configuration-independent regular-polygon majorant. The Form-A-cut objective V<=1, the concyclic case, and unrestricted Erdos #1041 remain open.
+
+Evidence/status: analytic_complete_exact_fraction_checked_lean_checked_rational_core
+
+- [ConcyclicAlternationCounterexample.md](ConcyclicAlternationCounterexample.md)
+- [check_erdos1041_concyclic_alternation_counterexample.py](scripts/check_erdos1041_concyclic_alternation_counterexample.py)
+- [ConcyclicAlternationCounterexample.lean](ConcyclicAlternationCounterexample.lean)
+- [concyclic_alternation_counterexample_tao_pipeline_receipt.json](concyclic_alternation_counterexample_tao_pipeline_receipt.json)
+
+### concyclic_smallest_gap_common_radius_selector_counterexample
+
+The deterministic Form-A rule 'choose the unique smallest angular gap, then optimize only its common radius' is FALSE for five distinct unit-circle roots. For the rational half-angle parameters q=(1/1200,8/11,40/13,-83/27,-8/11), the w3,w4 gap is uniquely smallest by four exact positive squared-chord margins. Radius zero is inadmissible because |g(w4/10)|^2-1 is the positive rational 148116977372167593862092797/517567344770831203690000000000. At every 0<s<=1 the midpoint m=(w3+w4)/2 of the selected scaled chord satisfies |g(sm)|^2-1=s*(961/D)*A(s)>0: after degree elevation, 1260 A(s) has a degree-ten Bernstein expansion with eleven strictly positive integer coefficients. Hence no common radius works for that selected pair. This refutes only the smallest-gap selector; another pair may work, so Form A, the concyclic case, and Erdos #1041 remain open.
+
+Evidence/status: analytic_complete_exact_fraction_checked_lean_checked_all_radius_obstruction
+
+- [ConcyclicSmallestGapSelectorCounterexample.md](ConcyclicSmallestGapSelectorCounterexample.md)
+- [check_erdos1041_concyclic_smallest_gap_selector_counterexample.py](scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py)
+- [ConcyclicSmallestGapSelectorCounterexample.lean](ConcyclicSmallestGapSelectorCounterexample.lean)
+- [concyclic_smallest_gap_selector_counterexample_tao_pipeline_receipt.json](concyclic_smallest_gap_selector_counterexample_tao_pipeline_receipt.json)
+
+### sextic_canonical_mixed_slice_connector
+
+For every u>=0, the canonical degree-six homogeneous mixed model H_u(z)=Re(-i*u*z-z^2-z^6) has one explicit truncated connector in {H_u<=0}. Put q=(7+4sqrt(3))/27 and r=q^(1/4). The two outward ray tails in the sixth-root directions 1 and exp(-pi*i/3), from radius r to one, are nonpositive. On their chord, with w(t)=(1-t)+t exp(-pi*i/3), the carrier Re(w^2)+q Re(w^6) factors as q(t+1+sqrt(3))(t+1-sqrt(3))^2 C(t), where the four cubic Bernstein coefficients of C are strictly positive. Hence H_0(rw(t))<=0, with one exact double contact at t=sqrt(3)-1. The whole connector lies in the lower half-plane, so the additional term u Im(z) is nonpositive and the same connector works for every u>=0. Its normalized length is 2-r<2. This closes one complete sextic mixed-mode phase slice, not the full degree-six low-mode model or an actual-polynomial finite neighbourhood.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_square_bernstein_certificate
+
+- [SexticCanonicalMixedSlice.md](SexticCanonicalMixedSlice.md)
+- [check_erdos1041_sextic_canonical_mixed_slice.py](scripts/check_erdos1041_sextic_canonical_mixed_slice.py)
+- [SexticCanonicalMixedSlice.lean](SexticCanonicalMixedSlice.lean)
+- [sextic_canonical_mixed_slice_tao_pipeline_receipt.json](sextic_canonical_mixed_slice_tao_pipeline_receipt.json)
+
+### sextic_square_contact_null_branch
+
+The unique coefficient direction invisible to the four first-order square contacts at H_0(z)=Re(-z^2-z^6) continues as an exact algebraic zero-contact connector branch. Put s=sqrt(3), q0=(7+4s)/27 and beta*=(106+25s)/1221. For 0<=beta<=beta*, choose r^4=q0(1+(3/2)beta(s-1)), c=beta/r and u=3 beta r(2-s). Then H_beta(z)=Re(-i*u*z-z^2+i*c*z^3-z^6) has a nonpositive truncated connector on the adjacent sixth-root directions omega^2,omega^3. After division by r^2/2 the chord is the convex combination of its beta=0 certificate and a terminal factor (239+137s)/407 (t-1)(t-s+1)^2 P(t), where P has four strictly positive cubic Bernstein coefficients. The non-real ray is bounded by y^2(-86/9+17s/3)(beta-beta*)<=0. At beta=beta* this prescribed connector acquires a new ray-endpoint zero. Its length is 2-r<2. This does not assert optimal equality: all-pair computation finds a different adjacent connector with strict sampled margin for beta>0. The theorem covers one homogeneous sextic branch only, not the complete sextic model, finite transfer, or Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_convex_endpoint_certificate
+
+- [SexticNullBranch.md](SexticNullBranch.md)
+- [check_erdos1041_sextic_null_branch.py](scripts/check_erdos1041_sextic_null_branch.py)
+- [SexticNullBranch.lean](SexticNullBranch.lean)
+- [sextic_null_branch_tao_pipeline_receipt.json](sextic_null_branch_tao_pipeline_receipt.json)
+
+### sextic_null_branch_strict_companion
+
+For every parameter 0<=beta<=beta* on the sextic null branch, the opposite adjacent pair has a companion connector at the mirror radius rho^4=q0(1-(3/2)beta(sqrt(3)-1)). With R the original branch radius, put L=R/rho>=1 and M=rho/R<=1. The actual normalized chord is bounded above by branchChord(-beta): the L and M corrections both improve the sign. At -beta* this mirror chord factors as -(4943+2813sqrt(3))/10989 times (t-sqrt(3)+1)^2 times a quartic whose five Bernstein coefficients are strictly positive; convex interpolation with beta=0 proves the whole chord. On the non-real ray q(-beta)>=q(-beta*)>1/6 and y^6-1>=(3)(y^2-1), which absorbs all outward positive growth. Hence the companion chord and both ray tails are nonpositive and its length is 2-rho<2. For beta>0 the chord comparison is strict in its interior. This is a homogeneous sextic branch theorem, not the complete sextic atlas, finite transfer, or Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_mirror_bernstein_certificate
+
+- [SexticNullBranchCompanion.md](SexticNullBranchCompanion.md)
+- [check_erdos1041_sextic_null_branch_companion.py](scripts/check_erdos1041_sextic_null_branch_companion.py)
+- [SexticNullBranchCompanion.lean](SexticNullBranchCompanion.lean)
+- [sextic_null_branch_companion_tao_pipeline_receipt.json](sextic_null_branch_companion_tao_pipeline_receipt.json)
+
+### sextic_null_branch_uniform_stability_tube
+
+Fix 0<epsilon<=beta<=beta* on the positive sextic null branch. At the mirror companion radius rho, put L=R/rho and M=rho/R. The exact radius identity q(beta)=L^4 q(-beta) implies L<2 and L-1>=(sqrt(3)-1)beta/5. On the first chord half t<=1/2, the canonical double-contact square is uniformly separated from zero: endpoint Bernstein floors give the mirror chord at most -1/100. On the second half, the radius-ratio correction gives at most -beta^2/10. Hence the actual normalized companion chord is at most -epsilon^2/10 throughout, and the outward selected ray has the stronger fixed bound -1/100. Any pointwise additive real error of size at most epsilon^2/20 therefore preserves strict negativity. This proves a finite-perturbation tube on every compact positive subbranch, but excludes beta=0, the remaining sextic faces, actual-polynomial coefficient bookkeeping, and unrestricted Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_quantitative_actual_radius_margin
+
+- [SexticNullBranchUniformMargin.md](SexticNullBranchUniformMargin.md)
+- [check_erdos1041_sextic_null_branch_uniform_margin.py](scripts/check_erdos1041_sextic_null_branch_uniform_margin.py)
+- [SexticNullBranchUniformMargin.lean](SexticNullBranchUniformMargin.lean)
+- [sextic_null_branch_uniform_margin_tao_pipeline_receipt.json](sextic_null_branch_uniform_margin_tao_pipeline_receipt.json)
+
+### sextic_null_branch_transverse_selector
+
+At the canonical sextic square-contact model, write a gauge-fixed tangent perturbation as Re((a1+i*b1)z-i*theta*z^2+i*c*z^3). At the four contacts z=a(+-1+-i), put p=a*a1, q=2*a^2*theta and r=-a*(b1+2*a^2*c). The four first variations are p+q+r, p-q-r, -p-q+r and -p+q-r. If m is their minimum, then m<=0 and p^2+q^2+r^2<=3m^2; the constant three is sharp. Their common kernel is exactly a1=theta=0 and b1=-2*a^2*c, the already-continued null line. Completing the square shows that a contact margin 45*delta^2 absorbs chord variation 3*delta*|t-t0| against canonical curvature -(t-t0)^2/20. Hence outside p^2+q^2+r^2<6075*delta^4 one canonical contact supplies the full local chord margin. This closes every first-order transverse direction and reduces beta->0 to a bounded second-order tube around one explicit branch; it does not prove that secondary atlas, finite transfer, or Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_sharp_tetrahedral_selector
+
+- [SexticNullBranchTransverseSelector.md](SexticNullBranchTransverseSelector.md)
+- [check_erdos1041_sextic_null_branch_transverse_selector.py](scripts/check_erdos1041_sextic_null_branch_transverse_selector.py)
+- [SexticNullBranchTransverseSelector.lean](SexticNullBranchTransverseSelector.lean)
+- [sextic_null_branch_transverse_selector_tao_pipeline_receipt.json](sextic_null_branch_transverse_selector_tao_pipeline_receipt.json)
+
+### sextic_null_branch_second_order_atlas
+
+In the O(beta^2) tube around the canonical sextic null branch, let p,q,r be the three normalized second-order transverse contact coordinates. Optimizing the fourth-power truncation-radius slope gives two exact offsets o_plus=-117+(135/2)sqrt(3) and o_minus=-9+(9/2)sqrt(3). The four limiting connector maxima are o_plus+p+q+r, o_plus-p-q+r, o_minus-p+q-r, and o_minus+p-q-r. Their transverse terms sum to zero, so their average is -63+36sqrt(3)<-3/5. Hence for every real p,q,r at least one connector has normalized limiting maximum at most -3/5. The radius optimizers are exactly plus or minus (21+11sqrt(3))/54, obtained from complete squares with positive coefficient (2187/4)(97-56sqrt(3)). This closes the entire bounded second-order homogeneous atlas, but not its uniform finite-beta Taylor transfer, other sextic faces, actual-polynomial transfer, or unrestricted Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_uniform_four_connector_cover
+
+- [SexticNullBranchSecondOrderAtlas.md](SexticNullBranchSecondOrderAtlas.md)
+- [check_erdos1041_sextic_null_branch_second_order_atlas.py](scripts/check_erdos1041_sextic_null_branch_second_order_atlas.py)
+- [SexticNullBranchSecondOrderAtlas.lean](SexticNullBranchSecondOrderAtlas.lean)
+- [sextic_null_branch_second_order_atlas_tao_pipeline_receipt.json](sextic_null_branch_second_order_atlas_tao_pipeline_receipt.json)
+
+### sextic_null_branch_finite_transfer
+
+Let s=sqrt(3), q0=(7+4s)/27, a0=(3/2)q0(s-1), k*=(21+11s)/54, h=(3-s)/2 and r0=q0^(1/4). For 0<beta<=10^-9 and normalized transverse coordinates |P|,|Q|,|U|<=78, put R^4=q0+a0 beta, a1=P r0/(2h), b1=-U r0/(2h), theta=Q/(4h^2), and H(z)=Re((-3i beta R(2-s)+beta^2(a1+i b1))z+(-1-i beta^2 theta)z^2+(i beta/R)z^3-z^6). Among the four adjacent pairs 0,2,3,5, using rho^4=q0+k* beta for 0,2 and rho^4=q0-k* beta for 3,5, one full truncated connector is nonpositive. Its normalized chord is at most -beta^2/2 and its length is 2-rho<2. The proof uses the exact second-order profiles, a global canonical floor -(2/5)(t-t_j)^2, outer scale |t-t_j|>=100 beta, and a local remainder coefficient 40,481,000<40,500,000, absorbed because 40,500,000 beta<1/20. This closes the exact finite-beta homogeneous canonical null core, not the remaining sextic faces, arbitrary actual-polynomial transfer, or unrestricted Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_explicit_finite_beta_core
+
+- [SexticNullBranchFiniteTransfer.md](SexticNullBranchFiniteTransfer.md)
+- [check_erdos1041_sextic_null_branch_finite_transfer.py](scripts/check_erdos1041_sextic_null_branch_finite_transfer.py)
+- [SexticNullBranchFiniteTransfer.lean](SexticNullBranchFiniteTransfer.lean)
+- [sextic_null_branch_finite_transfer_tao_pipeline_receipt.json](sextic_null_branch_finite_transfer_tao_pipeline_receipt.json)
+
+### sextic_null_branch_global_box_atlas
+
+Let betaStar=(106+25sqrt(3))/1221 and use the exact homogeneous sextic family and normalized transverse cube |P|,|Q|,|U|<=78 of the finite-transfer theorem. For every 0<beta<=betaStar, at least one of the four limiting-profile-selected adjacent pairs 0,2,3,5 has a complete truncated connector in H<=0, with truncation fourth power q0 plus or minus kStar beta and total length 2-rho<2. The four affine selector cells reduce by reflection to 17 exact vertices. The sole central equalizer has profile -63+36sqrt(3)<-3/5; every other vertex has selected profile at most -78. Small beta is absorbed by separate central and noncentral margins. On [10^-6,betaStar], exact bivariate Bernstein certificates prove the Taylor upper polynomials nonpositive, with third-order budgets 1/2 and 300 respectively. Degree-20 binomial tails rigorously certify the sharp central remainder and radial monotonicity on both selected rays. This closes the complete finite homogeneous canonical null-box atlas, not other sextic faces, actual-polynomial transfer, or unrestricted Erdos #1041.
+
+Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_full_canonical_parameter_interval
+
+- [SexticNullBranchGlobalBoxAtlas.md](SexticNullBranchGlobalBoxAtlas.md)
+- [check_erdos1041_sextic_null_branch_global_box_atlas.py](scripts/check_erdos1041_sextic_null_branch_global_box_atlas.py)
+- [SexticNullBranchGlobalBoxAtlas.lean](SexticNullBranchGlobalBoxAtlas.lean)
+- [sextic_null_branch_global_box_atlas_tao_pipeline_receipt.json](sextic_null_branch_global_box_atlas_tao_pipeline_receipt.json)
+
+### sextic_cubic_face_positive_radius_connector_no_go
+
+For the pure cubic sextic model H(z)=Re(z^3-z^6), no positive equal-radius truncated-spoke connector between two non-antipodal sixth-root directions lies in H<=0. Every such pair has gap pi/3 or 2pi/3. At chord parameter 1/2 or 1/3 respectively, the chord crosses the half-step direction (2j+1)pi/6, where z^3=i*x for a nonzero real x and H(z)=x^2>0. Antipodal pairs have length exactly two and cannot yield the strict metric target. Therefore the proposed full positive-radius atlas for Re(Az+Bz^2+Cz^3-z^6), max(|A|,|B|,|C|)=1, is false on (A,B,C)=(0,0,1). The face itself remains solvable by the radius-zero origin connector and the cyclic-trinomial theorem; the consequence is a mandatory stratification, not a counterexample to Erdos #1041.
+
+Evidence/status: ordinary_complete_exact_symbolic_replay_with_lean_checked_algebraic_core
+
+- [SexticCubicFaceConnectorNoGo.md](SexticCubicFaceConnectorNoGo.md)
+- [check_erdos1041_sextic_cubic_face_connector_no_go.py](scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py)
+- [SexticCubicFaceConnectorNoGo.lean](SexticCubicFaceConnectorNoGo.lean)
+- [sextic_cubic_face_connector_no_go_tao_pipeline_receipt.json](sextic_cubic_face_connector_no_go_tao_pipeline_receipt.json)
+
+### sextic_cubic_radial_deficit_staple_cone
+
+For G(z)=-Delta+Re(E1 z+E2 z^2+E3 z^3+E4 z^4+E5 z^5-z^6), assume 0<Delta<=1, |E3|<=1, and |E1|+|E2|+|E4|+|E5|<=Delta. Put s=Delta/4. One parity class of three sixth-root directions makes the cubic projection nonpositive. Each selected radial arm from s to unit radius is strictly negative because the nuisance modes spend at most Delta*t and the remaining -t^6 is strict. The complete disk |z|<=s has value at most -Delta/2. Hence any two selected rays joined inside that disk form a strict staple of length 2-(2-sqrt(3))s<2. This restores the radial deficit omitted by the deficit-free cubic-face atlas and closes a full-dimensional finite Fourier stability cone, not every cubic-dominant normalization or the actual-polynomial transfer.
+
+Evidence/status: ordinary_complete_explicit_model_theorem_with_exact_replay_and_lean_checked_scalar_core
+
+- [SexticCubicRadialDeficitCone.md](SexticCubicRadialDeficitCone.md)
+- [check_erdos1041_sextic_cubic_radial_deficit_cone.py](scripts/check_erdos1041_sextic_cubic_radial_deficit_cone.py)
+- [SexticCubicRadialDeficitCone.lean](SexticCubicRadialDeficitCone.lean)
+- [sextic_cubic_radial_deficit_cone_tao_pipeline_receipt.json](sextic_cubic_radial_deficit_cone_tao_pipeline_receipt.json)
+
+### sextic_first_mode_three_quarter_overlap
+
+In the normalized paired sextic tangent model, let A=|E1|, B=|E2| with 0<=B<=1, and select the adjacent sixth-root directions whose first-mode projections are at most -A/2. If 3B<=4A, both complete selected rays are nonpositive. The worst normalized ray factors as -t P(t)/8, where P(t)=8t^5-3t^4+8t^3-8t+3. On t<=1/2 its six Bernstein controls after x=2t are 3, 11/5, 7/5, 7/10, 13/80, 1/16; on t>=1/2, x=2t-1 gives 16P=4x^5+17x^4+44x^3+70x^2-8x+1 and the quadratic equals 70(x-2/35)^2+27/35. The small adjacent chord remains strict under the existing scale conditions, with explicit residual margin A*u/48. Thus the unresolved mixed annulus shrinks from |E1|/|E2|<4/5 to |E1|/|E2|<3/4.
+
+Evidence/status: analytic_complete_exact_rational_replay_lean_checked
+
+- [SexticFirstModeThreeQuarterOverlap.md](SexticFirstModeThreeQuarterOverlap.md)
+- [check_erdos1041_sextic_first_mode_three_quarter_overlap.py](scripts/check_erdos1041_sextic_first_mode_three_quarter_overlap.py)
+- [SexticFirstModeThreeQuarterOverlap.lean](SexticFirstModeThreeQuarterOverlap.lean)
+- [sextic_first_mode_three_quarter_overlap_tao_pipeline_receipt.json](sextic_first_mode_three_quarter_overlap_tao_pipeline_receipt.json)
+
+### two_root_path_length_lower_semicontinuity
+
+Let K_n be the compact class of monic degree-n polynomials with all roots in the CLOSED unit disk, and for g in K_n let Lam(g) be the infimum of lengths of rectifiable curves inside {|g|<=1} joining two roots of g, minimised over ordered index pairs of the root list. Then Lam is LOWER semicontinuous on K_n, so {Lam<=2} is closed. Proof: roots in the closed unit disk give prod_j|z-b_j|>=(|z|-1)^n>=1 for |z|>=2, so every sublevel set {|g|<=1} lies in the fixed compact disk {|z|<=2}; constant-speed reparametrisation makes bounded-length competitors equi-Lipschitz there; Arzela-Ascoli plus lower semicontinuity of length transports a path to the limit polynomial. CONSEQUENCE (Corollary D): if Lam<=2 on any subset of K_n whose closure is K_n, then Lam<=2 on K_n. Since roots-in-the-open-disk, squarefree, finite-exceptional one-coefficient genericity, and any nonempty Zariski-open coefficient condition are each dense in K_n and may be conjoined, every genericity-dependent route in this directory may drop its transfer half. Composing with the recorded minimum-enclosing-disk normalisation of VisibilityOverlapReduction.md section 3, which supplies length<=2R<2 and |f|<=R^n<1 from R<1 alone and therefore spends no slack, gives Corollary S: to prove Erdos #1041 in degree n it suffices to prove Lam<=2 on SOME dense subclass of K_n. EXTREMAL VALUE: Lam(z^n-1)=2 exactly. The sublevel set is characterised by |z|^(2n)<=2Re(z^n), so off the origin Re(z^n)>0, which confines the punctured sublevel set to the n pairwise disjoint open sectors |arg z - 2 pi k/n|<pi/(2n); a path joining two roots therefore meets 0 and has length at least 1+1=2, while the radial pair path attains 2. EQUIVALENCE (Theorem Q): Erdos #1041 in degree n holds if and only if Lam<=2 on all of K_n, if and only if sup{Lam(g):g in K_n}=2, i.e. if and only if z^n-1 maximises Lam on K_n. Lam is lower semicontinuous, so it attains its minimum, not its maximum; the supremum is attained exactly when the conjecture holds.
+
+Evidence/status: analytic_complete_exact_rational_replay_lean_checked
+
+- [GenericSufficiencyClosure.lean](GenericSufficiencyClosure.lean)
+- [generic_sufficiency_closure_tao_pipeline_receipt.json](generic_sufficiency_closure_tao_pipeline_receipt.json)
+- [check_erdos1041_generic_sufficiency_closure.py](scripts/check_erdos1041_generic_sufficiency_closure.py)
+
+### reciprocal_newton_expansion
+
+Let f(z)=prod_j(z-a_j) with every a_j nonzero, r=min_j|a_j|, and p_m=sum_j a_j^(-m). Then for |z|<r, log|f(z)|=log|f(0)|-Re sum_{m>=1}(p_m/m)z^m, absolutely convergent, with q=|z|/r and for every N>=0 the tail bounds |remainder|<=n q^(N+1)/((N+1)(1-q)), |T_N'|<=(n/r)q^N/(1-q), and |T_N''|<=(n/r^2)q^(N-1)(N/(1-q)+q/(1-q)^2). This is a TAYLOR series, not an asymptotic one, and it is controlled in C^2 where FormACutQuantitativeExpansion controls its remainder only in C^0. R2 (coefficients are rational in the coefficients of f): writing f=sum c_k z^k and chat_k=c_k/c_0, Newton's identity for the reversed polynomial gives sum_{j=0}^{m-1} chat_j p_{m-j} + m chat_m = 0, i.e. p_m = -m chat_m - sum_{j=1}^{m-1} chat_j p_{m-j}; equivalently f'=-f sum_{m>=0} p_{m+1} z^m as formal series. So the normalisation is rational, hence semialgebraic, with no root labelling. R3 (the bridge to the E_m coordinates already on file): with a_k=omega^k(1+e_k), eta=max|e_k|<1 and E_m^(j)=sum_k e_k^j omega^(-km), for 1<=m<=n-1 -p_m/m = E_m - ((m+1)/2)E_m^(2) + ((m+1)(m+2)/6)E_m^(3) - ..., general term (-1)^(j-1)(1/m)binom(m+j-1,j)E_m^(j), and |-p_m/m - E_m| <= n(m+1)eta^2/(2(1-eta)^(m+2)). THEREFORE the anchored nonlinear remainder R_anchor=O(eta^2|z|) of FormACutQuantitativeExpansion is not an error at all: it is the second and higher terms of an exact coefficient. This matters exactly when a quadratic correction carries the same Newton weight as a nominally active linear mode, which is what a tied face or a face switch produces. R4 (staple length): the equal-radius staple a_i -> s u_i -> s u_j -> a_j has length exactly |a_i|+|a_j|-s(2-|u_i-u_j|), hence at most |a_i|+|a_j|<2 for every admissible s including s=0, so moving root directions spend no margin. R5 (contact absorption): if F<=-kappa x^2+B|x|+V+eps with kappa>0 then F<=V+eps+B^2/(4 kappa), so a zero-margin contact survives exactly when V+eps+B^2/(4 kappa)<0; uniform convergence to a non-positive model is NOT sufficient, the countermodel being -x^2+eps. The recorded sextic instance is curvature -x^2/20 against transverse slope 3 delta |x|, costing exactly 45 delta^2.
+
+Evidence/status: analytic_complete_exact_rational_replay_lean_checked
+
+- [ReciprocalNewtonExpansion.lean](ReciprocalNewtonExpansion.lean)
+- [reciprocal_newton_expansion_tao_pipeline_receipt.json](reciprocal_newton_expansion_tao_pipeline_receipt.json)
+- [check_erdos1041_reciprocal_newton_expansion.py](scripts/check_erdos1041_reciprocal_newton_expansion.py)
+
+### attachment_aware_reeb_lane_ceiling
+
+Call a component U of {|f|<1} carrying k>=2 roots RAY SEPARATED when its critical points are simple, its critical values v_c=rho_c exp(i theta_c) are nonzero, and their arguments and moduli are pairwise distinct. THEOREM 1: cutting the value disk along the OUTWARD slits J_c={r exp(i theta_c): rho_c<=r<1} leaves D-dagger star-shaped about 0, hence simply connected, so f restricted to its preimage in U is an unbranched k-fold covering splitting into exactly k sheets, one per root; each simple critical value transposes exactly two sheets, and k-1 transpositions acting transitively on k labels give a TREE T_f whose geometric realisation is the union of the canonical descending inverse-ray arcs A_c, each contained in {|f|<=rho_c}. Cutting instead along the COMPLETE critical rays leaves sectors with no branch value, so every preimage component maps biholomorphically and (-log|f|, arg f) is a real-analytic diffeomorphism onto a Euclidean strip: the Reeb regions are genuine strips, and the saddle neighbourhoods N_c(delta) have diameter and internal connector cost O(sqrt delta). THEOREM 2 (attachment rigidity): a Newton trajectory has f(gamma(t))=exp(-t) f(gamma(0)), so its value argument theta is frozen; meeting N_c(delta) forces rho_c |sin(theta-theta_c)| < delta and cos(theta-theta_c)>0 for delta<rho_c, an angular window of measure exactly 2 arcsin(delta/rho_c) <= pi delta/rho_c. The one identity behind this is rho^2-2 rho t c+t^2-rho^2 s^2=(t-rho c)^2. THEOREM 2': if f-v_c vanishes to order p at c then the window at physical radius eps is Theta(eps^p/rho_c) - the exponent is the ramification index. THEOREM 3 (lane ceiling): for local Newton skeletons whose non-trajectory connectors are confined to the shrinking neighbourhoods, the pair cost tends to min_c L(c) and the spanning cost to sum_c L(c). Hence Lam(f) <= min_c L(c) <= (1/m) sum_c L(c) and the Reeb/strip lane proves EXACTLY min_c L(c)<2 - no better and no worse than admissible_branch_length_reformulation. Independent strip averaging supplies no metric saving, which is why the recorded 4/25 Cassini attachment deficit cannot be repaired by finer local Morse bookkeeping: the strip average is an interior L1 quantity in the angular variable while attachment needs its boundary trace at theta_c. THEOREM 5 (extremal family, exact): for g=z^n-r^n the closest approach of the ray of angle theta to the hub is r if cos theta>=0 and r|sin theta|^(1/n) if cos theta<0, so for eps<r a trajectory meets B(0,eps) iff cos theta<0 and |sin theta|<(eps/r)^n. On the family that is extremal for the whole problem the attachable fraction of directions is the n-th power of eps/r. THEOREM 4 (root-star tangent law): at a simple root a the unit tangent of the incident arc A_c pointing into the arc is exactly exp(i(theta_c - arg f'(a))), so ray separation is precisely the statement that the geometric tree has no tangency at a root, and sum_i <a,U_a^(i)> = Re(a exp(i arg f'(a)) S_a) with S_a=sum_i exp(-i theta_{c_i}). COROLLARY 4a: the componentwise obligation (F) of CriticalTreeLengthCharge.md is exactly 2Rm + sum_{a in V(C)} Re(a exp(i arg f'(a)) S_a) + sum_{e in C} K_e >= 0. COROLLARY G: the four ray-separation hypotheses each exclude a proper closed real-analytic subset, so ray-separated polynomials are DENSE in the closed-disk class K_n; by GenericSufficiencyClosure Theorem L and Corollary S, proving min_c L(c)<=2 for ray-separated members of K_n proves Erdos #1041 in degree n. The genericity is therefore free.
+
+Evidence/status: analytic_complete_exact_rational_replay_lean_checked
+
+- [AttachmentAwareReeb.lean](AttachmentAwareReeb.lean)
+- [attachment_aware_reeb_tao_pipeline_receipt.json](attachment_aware_reeb_tao_pipeline_receipt.json)
+- [check_erdos1041_attachment_aware_reeb.py](scripts/check_erdos1041_attachment_aware_reeb.py)
+
+### sextic_chord_covering_criterion_and_unit_band
+
+For the paired homogeneous sextic tangent model H=Re(Az+Bz^2+iCz^3-conj(B)z^4-conj(A)z^5-z^6) on the adjacent unit chord z_j(x)=exp(i(2j+1)pi/6)(sqrt3+ix)/2, THEOREM 1 (normal form): 64 H(z_j(x)) = -64 + (1-x^2) N_j(x) with N_j(x)=x^4-44x^2+91+4p(21-x^2)+16 sqrt3 r x+10 sqrt3 u(5-x^2)+2 v x(29-x^2)-24 sqrt3 c, where alpha=A exp(i theta_j)=u+iv, beta=B exp(2 i theta_j)=p+ir, c=(-1)^j C. COROLLARY: H(omega^j)=-1 for every j and every (A,B,C), so all six root directions sit at identical depth and x=+-1 never binds. THEOREM 2 (decoupled covering criterion, exact iff): with W_j = N_j + 24 sqrt3 c_j - 64/(1-x^2) and S_j = sup_{|x|<1} W_j, some adjacent chord lies in {H<=0} for EVERY real C if and only if min_{j even} S_j + min_{j odd} S_j <= 0. The supplied pivot mechanism is the sufficient special case j'=j+3; mixed pairs are strictly stronger and are what the model uses once |A| grows. THEOREM 3 (unit band): |B|=1 and |A|<=1 imply that for every real C one of two antipodal adjacent unit chords carries H <= -1/256 along its whole length 1, certified by G1(t)=t^6+5t^5/8-43t^4+651t^3/8+91t^2-82t+15 >= 1/4 on [0,1] via a SIX-piece dyadic degree-six Bernstein certificate (two pieces provably do not suffice; min G1 = 0.264286 at t = 0.335121). This strictly contains the supplied band |A|<=3|B|/4 with margin 127/3072, so the residual closes with a quarter-width OVERLAP into the first-mode chart rather than meeting it at a point. THEOREM 4 (sharpness): the pivot T=25u/12 with the symmetrised gap is sharp at lambda* = min_t P(t)/(2t(1-t^2)sqrt(t^4+17t^2+841)) = 1.0153340671..., unique interior critical point t*=0.3371285327...; Cauchy-Schwarz is lossless and the symmetrisation is lossless because P(-t)-P(t)=48t(1-t^2)>=0 but arg A is adversarial; freeing the pivot raises the antipodal-pair threshold to 1.3880401... THEOREM 5 (antipodal barrier): (N_j+24 sqrt3 c_j)(0)+(N_{j+3}+24 sqrt3 c_{j+3})(0)=2(91+84p), so Re(beta)<=-9/28 is necessary for ANY antipodal pair, independent of A, C and the pivot; hence the antipodal mechanism cannot reach |B|<9/14 at the extremal second-mode phase and mixed pairs are mathematically necessary below it. THEOREM 6 (large first mode): with psi(chi)=max_{|x|<=1}[10 sqrt3 cos chi (5-x^2)+2 sin chi x(29-x^2)], every phase admits an even j within pi/6 and an odd j' within pi/3 of the reversed direction, giving psi(chi_j)<=-32 and psi(chi_j')<=8 sqrt3 via the exact factorisations (t-1)(t^2-14t-43)>=0 and (t-1)(t^2-4t-33)>=0 on [0,1]; hence min_even psi + min_odd psi <= 8 sqrt3 - 32 < 0 and criterion (4) holds for |A| >= 226/(32-8 sqrt3) = 12.46...
+
+Evidence/status: analytic_complete_exact_rational_replay
+
+- [check_erdos1041_sextic_chord_covering_criterion.py](scripts/check_erdos1041_sextic_chord_covering_criterion.py)
+- [erdos1041_sextic_chord_covering_criterion_receipt.json](state/formal_math/erdos257_period_noncollapse/erdos1041_sextic_chord_covering_criterion_receipt.json)
+
+### self_inversive_comparison_dual_and_selector_no_go
+
+For a monic self-inversive comparison polynomial evaluated on the alternating unit-circle nodes of a concyclic polynomial, the exact gap-product/residue identity gives positive quadrature weights omega_j with sum omega_j=1 and weighted comparison ratios x_j satisfying sum omega_j x_j=1. Hence some ratio is at least one. More sharply, the evaluation image is the entire weighted affine hyperplane: for every nonempty proper candidate set S, two-level ratios can be chosen above one exactly on S and below one off S. Thus comparison-polynomial freedom alone has no geometric selector content; any successful use must impose an additional metric or containment functional. The dilation node identity and topological two-root-component consequence remain valid auxiliary tools.
+
+Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
+
+- [SelfInversiveComparisonDual.md](SelfInversiveComparisonDual.md)
+- [check_erdos1041_self_inversive_comparison_dual.py](scripts/check_erdos1041_self_inversive_comparison_dual.py)
+- [SelfInversiveComparisonDual.lean](SelfInversiveComparisonDual.lean)
+- [attachment_assimilation_2026_08_25_tao_pipeline_receipt.json](attachment_assimilation_2026_08_25_tao_pipeline_receipt.json)
+
+### critical_blaschke_pair_bound
+
+For a degree-k finite Blaschke product critical at zero, order its zero radii r1<=r2<=... and put P=prod r_j. The critical polygon with side lengths q(r)=1/r-r gives q(r1)<=(k-1)q(r2), hence r2<=(k-1)r1 and r2^k<=(k-1)P. The sharp implicit lower envelope P>=x_k(r2)r2^(k-1) is stronger. Transferred to a polynomial lemniscate component and composed with the sharp Bergman geodesic estimate, this gives an explicit all-degree sufficient region, including the Polya-level condition ((k-1)|f(c)|)^(2/k)<=tanh(1). Higher critical multiplicity gives the exact moment cancellations sum(alpha_j^-q-conj(alpha_j)^q)=0 for q through the multiplicity. The estimate degenerates as P approaches one and does not settle the near-Fekete regime.
+
+Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
+
+- [CriticalBlaschkePairBound.md](CriticalBlaschkePairBound.md)
+- [check_erdos1041_critical_blaschke_pair_bound.py](scripts/check_erdos1041_critical_blaschke_pair_bound.py)
+- [CriticalBlaschkePairBound.lean](CriticalBlaschkePairBound.lean)
+- [attachment_assimilation_2026_08_25_tao_pipeline_receipt.json](attachment_assimilation_2026_08_25_tao_pipeline_receipt.json)
+
+### connected_cluster_bergman_certificate
+
+Let C be a regular polynomial lemniscate component containing k zeros counted with multiplicity and at least two distinct zero locations. With A_C=Area(C) and q_C the maximum internal critical-value modulus divided by the level, the whole critical sublevel of the degree-k Blaschke uniformization is connected by Riemann-Hurwitz. Its cover by pseudohyperbolic discs therefore has an edge between unequal zero locations, yielding a pair at distance at most 2 q_C^(1/k)/(1+q_C^(2/k)). The sharp Bergman estimate gives length^2 <= (2A_C/pi) log((1+q_C^(2/k))/(1-q_C^(2/k))). Thus alpha_C log((1+q_C^(2/k))/(1-q_C^(2/k)))<=2 is a complete component certificate. The capacity form is q_C<=tanh(1/kappa_C^2)^(k/2). This handles arbitrary simultaneous ties without minimizing over marked hubs. The remaining CDF obligation is to force the certificate at some merge-tree node.
+
+Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
+
+- [ConnectedClusterBergman.md](ConnectedClusterBergman.md)
+- [check_erdos1041_connected_cluster_bergman.py](scripts/check_erdos1041_connected_cluster_bergman.py)
+- [ConnectedClusterBergman.lean](ConnectedClusterBergman.lean)
+- [attachment_assimilation_2026_08_25_tao_pipeline_receipt.json](attachment_assimilation_2026_08_25_tao_pipeline_receipt.json)
+
+### connected_cluster_fixed_level_area_forcing
+
+Fix a regular level 0<t<1 and list all multi-root components C_i of K_t. Put alpha_i=Area(C_i)/(pi t^(2/n)) and L_i=log((1+q_i^(2/k_i))/(1-q_i^(2/k_i))), where q_i is the largest internal critical-value modulus divided by t. The connected-cluster Bergman certificate gives a curve in C_i with length_i^2<=2 t^(2/n) alpha_i L_i, while disjointness and Polya give sum_i alpha_i<=1. Therefore the single fixed-level condition sum_i 2/L_i>=1 forces some alpha_i L_i<=2 and hence two roots joined inside K_t by a curve of length at most 2 t^(1/n)<2. The finite pigeonhole implication and its exact composition with the landed Bergman consumer are Lean checked. A deterministic descending-branch merge-tree probe certifies this scalar condition on three bulk configurations (maxima 2.2625, 3.0390, 1.2920 in degrees 4,6,8) but falsifies its universality on near-regular radius-0.999 perturbations in degrees 4,6,8,10 (maxima 0.3049, 0.2739, 0.3046, 0.6395). Those numerical rows refute only merge-level-only reciprocal-barrier forcing; actual component areas may still force a certificate, and Erdős #1041 remains open.
+
+Evidence/status: ordinary_analytic_proof_with_lean_checked_finite_kernel_and_deterministic_scalar_falsifier
+
+- [ConnectedClusterAreaForcing.md](ConnectedClusterAreaForcing.md)
+- [check_erdos1041_connected_cluster_area_forcing.py](scripts/check_erdos1041_connected_cluster_area_forcing.py)
+- [ConnectedClusterAreaForcing.lean](ConnectedClusterAreaForcing.lean)
+- [connected_cluster_area_forcing_tao_pipeline_receipt.json](connected_cluster_area_forcing_tao_pipeline_receipt.json)
+
+### tied_newton_face_complete_spoke_no_go_and_connector_rescue
+
+For the quintic tied-face model H(z)=Re(z+10z^2-z^5), every fifth-root ray contains a point with H>0. Writing s=sqrt(5), the five restrictions have three conjugacy types q0=t+10t^2-t^5, q1=((s-1)/4)t-10((s+1)/4)t^2-t^5, and q2=-((s+1)/4)t+10((s-1)/4)t^2-t^5; positive witnesses occur at t=1/10, 1/1000, and 3/10 respectively. Thus a general tied Newton face need not have even one complete safe model spoke. The correct replacement succeeds on the same example: ray types 1 and 2 are strictly negative for every t>=2, and on the adjacent connector z(u)=2((1-u)omega+u omega^2) the exact quartic restriction satisfies H<=-5 for all 0<=u<=1, by a two-piece Bernstein certificate split at u=1/2. Lean checks the radical inequalities, five-ray assembly, no-safe-ray theorem, outward ray bounds, quartic Bernstein lemma, and connector margin. This closes the first tied face with a connector while proving complete-spoke selection cannot be the all-degree mechanism.
+
+Evidence/status: exact_ordinary_root_of_unity_reduction_with_lean_checked_no_go_and_connector
+
+- [TiedNewtonFaceTwoSpokeNoGo.lean](TiedNewtonFaceTwoSpokeNoGo.lean)
+- [TiedNewtonFaceTwoSpokeNoGo.md](TiedNewtonFaceTwoSpokeNoGo.md)
+- [check_erdos1041_tied_newton_face_two_spoke_no_go.py](scripts/check_erdos1041_tied_newton_face_two_spoke_no_go.py)
+- [tied_newton_face_two_spoke_no_go_tao_pipeline_receipt.json](tied_newton_face_two_spoke_no_go_tao_pipeline_receipt.json)
+
+claim_boundary: This is an exact obstruction-and-rescue theorem for the single quintic model H(z)=Re(z+10z^2-z^5): it rules out a complete safe fifth-root spoke and certifies one radius-two adjacent connector. It does not prove the compact tied-face connector theorem in arbitrary degree, transfer the model connector to a neighbourhood of a general polynomial, or solve the unrestricted Erdős 1041 problem.
+
+### tied_newton_face_zero_critical_value_trace_and_two_end_merge
+
+Let Q(z)=sum_(m in M) A_m z^m-z^n with every active degree 1<=m<n/2, and list the n-1 critical points c_i with multiplicity. The missing upper half of Q'/(-n) makes the Newton power sums sum_i c_i^m vanish for every active m. At a critical point, Q(c)=sum_m(1-m/n)A_m c^m, so sum_i Q(c_i)=0 exactly. Hence some critical point has Re Q(c)<=0. The local harmonic saddle has at least two negative sectors; every component of {Re Q<Re Q(c)} is unbounded by the maximum principle, so by level zero two distinct asymptotic negative root-direction ends lie in one connected component of {Re Q<=0}. Thus every all-degree low tied face has a safe topological connector. Lean checks the derivative-equation rewrite, finite trace cancellation, zero-sum left-half-plane selection, and their composition. The ordinary Newton-identity and harmonic-topology steps are written out in the companion proof. A bounded critical-hub straight-arm probe on 80 deterministic models in degrees 5..9 had zero sampled failures, but sampling is evidence only.
+
+Evidence/status: all_degree_ordinary_analytic_topological_theorem_with_lean_checked_trace_kernel
+
+- [TiedNewtonFaceCriticalTrace.md](TiedNewtonFaceCriticalTrace.md)
+- [check_erdos1041_tied_newton_face_critical_trace.py](scripts/check_erdos1041_tied_newton_face_critical_trace.py)
+- [TiedNewtonFaceCriticalTrace.lean](TiedNewtonFaceCriticalTrace.lean)
+- [tied_newton_face_critical_trace_tao_pipeline_receipt.json](tied_newton_face_critical_trace_tao_pipeline_receipt.json)
+
+### tied_newton_face_negative_paired_critical_trace
+
+Let Q(z)=sum_(m in M) A_m z^m-z^n with 1<=m<n/2, and let c_i be its n-1 critical points with multiplicity. Newton's identities one step beyond the leading zero-trace theorem give sum_i c_i^(n-m)=m(n-m)A_m/n for every active m. Disk tangency forces the complementary coefficient -conj(A_m)z^(n-m), whose total correction at the critical multiset is therefore exactly -m(n-m)|A_m|^2/n<0. On a rational tied face its gap is q(n-2m), so the maximal active low mode arrives first and cannot be cancelled at that order. Consequently either a leading critical value already has negative real part, or every leading real part is zero and the first paired correction is negative at some critical branch: every tied low face has a lexicographically negative saddle. Lean checks the negative norm-square trace and finite lexicographic selector; the exact Newton recurrence is replayed in degrees 5 through 40. At the sharp quintic equality u^3=27/320, x=(2u/3)(1-i sqrt(5)) has leading critical value on level zero and paired correction Re(x^3)=-7/20, exactly calibrating the theorem.
+
+Evidence/status: all_degree_ordinary_analytic_newton_face_theorem_with_lean_checked_finite_kernel
+
+- [TiedNewtonFacePairedTrace.md](TiedNewtonFacePairedTrace.md)
+- [check_erdos1041_tied_newton_face_paired_trace.py](scripts/check_erdos1041_tied_newton_face_paired_trace.py)
+- [TiedNewtonFacePairedTrace.lean](TiedNewtonFacePairedTrace.lean)
+- [tied_newton_face_paired_trace_tao_pipeline_receipt.json](tied_newton_face_paired_trace_tao_pipeline_receipt.json)
+
+### adjacent_root_direction_ellipse_metric_cover
+
+Let n>=3, R>0, and let omega_j,omega_(j+1) be adjacent n-th roots of unity bracketing the argument of c with |c|<=R. Then |R omega_j-c|+|R omega_(j+1)-c|<=2R. After rotating, the adjacent foci are (cos(pi/n), plus or minus sin(pi/n)); their major-axis-two ellipse has semiaxes cos(pi/n) and 1. The entire intervening unit-disk sector lies in that ellipse because cos(pi/n)>=1/2. Scaling gives the theorem. Lean checks a division-free formulation: sector data imply the quadratic ellipse inequality, ellipse membership implies the two-focus distance sum, and their composition. Consequently the tied Newton-face straight-arm route no longer needs a separate scattering-defect estimate: once a trace-selected hub c, radius R>=|c|, and two adjacent bracketing contained arms and tails are found, their length is automatically at most 2R. A stationary-polynomial probe on 96 normalized faces in degrees 5 through 8 had zero sampled failures for the combined selector; the sharp quintic equality chart has leading score zero and is made strict only by the already-landed paired correction. Computation is evidence only.
+
+Evidence/status: all_degree_ordinary_euclidean_theorem_with_lean_checked_algebraic_kernel
+
+- [TiedNewtonFaceAdjacentEllipse.md](TiedNewtonFaceAdjacentEllipse.md)
+- [check_erdos1041_tied_newton_face_adjacent_hub.py](scripts/check_erdos1041_tied_newton_face_adjacent_hub.py)
+- [TiedNewtonFaceAdjacentEllipse.lean](TiedNewtonFaceAdjacentEllipse.lean)
+- [tied_newton_face_adjacent_hub_tao_pipeline_receipt.json](tied_newton_face_adjacent_hub_tao_pipeline_receipt.json)
+
+### barycentric_disc_envelope_and_descent_disc
+
+Every polynomial lemniscate K_T is exactly the union, over positive product-one weights lambda, of the Euclidean discs (1/n)sum lambda_j|z-a_j|^2<=T^(2/n). In simplex coordinates their centers and squared radii are h(p)=sum p_j a_j and nT^(2/n)G(p)-V(p). For a FIXED point z, the feasible weight set is convex because nT^(2/n)G(p)-sum p_j|z-a_j|^2 is concave; no joint convexity in moving (p,z) is claimed. The inverse-square barycenter B(z)=z-conj(P(z))/S(z) carries the exact descent disc D(B,|z-B|) inside the |f(z)| sublevel and a Pythagorean descent inequality. Interpolating p to a root vertex gives an exact sufficient straight-arm certificate: V+s|a_i-h|^2 <= nT^(2/n)G(p)(1+s/((1-s)p_i))^(1/n) for all s<1. Composing the inverse-square special case with the ALREADY-LANDED geometric-mean theorem exists_two_roots_dist_sum_le_two_mul_geomMean, if S_c r2^2<=2n/(n-1), both nearest spokes lie in K_1, so a least-critical hub gives the sharp Erdos path after scaling. The critical ellipse itself is not new here. Arbitrary critical spokes are exactly refuted by the six-root family (z^2-r^2)(z^4+(6/5)r^2z^2+r^4), for which |f(r/2)|=(327/320)r^6. The remaining diffuse regime is a correlated feasible-disc-chain inequality.
+
+Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
+
+- [BarycentricEnvelope.md](BarycentricEnvelope.md)
+- [check_erdos1041_barycentric_envelope.py](scripts/check_erdos1041_barycentric_envelope.py)
+- [BarycentricEnvelope.lean](BarycentricEnvelope.lean)
+- [attachment_assimilation_2026_08_25_tao_pipeline_receipt.json](attachment_assimilation_2026_08_25_tao_pipeline_receipt.json)
+
+### barycentric_nearest_two_sum_scale_consumer
+
+If the first nearest radius r₁ is at most the second radius r₂ and the second radius is at most the geometric-mean scale ρ, Lean proves r₁+r₂≤2ρ. This is the exact scalar consumer for the sharp two-spoke radius budget in the barycentric-envelope route.
+
+Evidence/status: lean_checked_nearest_two_radius_budget_consumer
+
+- [BarycentricEnvelope.lean](BarycentricEnvelope.lean)
+
+claim_boundary: Only the ordered-real inequality is formalized; it does not prove nearest-root selection, geometric-mean control, disc containment, the critical ellipse theorem, or unrestricted Erdős #1041.
+
+### barycentric_two_spoke_scale_transport_consumer
+
+Given the sharp radius budget r₁+r₂≤2ρ and an upper scale bound ρ≤scale, Lean transports the budget to r₁+r₂≤2*scale. This is the scalar scale-transport consumer used after the nearest-two barycentric radius estimate.
+
+Evidence/status: lean_checked_two_spoke_scale_transport
+
+- [BarycentricEnvelope.lean](BarycentricEnvelope.lean)
+
+claim_boundary: Only the ordered-real scale transport is formalized; it does not prove either radius premise, disc containment, nearest-root selection, the global two-root theorem, or unrestricted Erdős #1041.
+
+### critical_ellipse_minimax_finite_contact_reduction
+
+For a fixed root pair and closed ellipse, the moving-hub two-segment level functional attains a minimum. Danskin's theorem and the convex Fermat rule say that at an interior minimizer zero lies in the convex hull of the active contact gradients g=(1-t)(Re(f'/f),-Im(f'/f)); on the boundary one adds the ellipse normal cone. Planar Caratheodory therefore reduces the active set to at most three contacts, each interior segment contact also satisfying Re((a-h)f'/f)=0. Corrected sharp form: two noncritical contacts on the two distinct arms force the arms to be collinear and cannot beat the root chord, but two contacts on the same arm may have opposed normal gradients and remain live. For nonparallel arms, a 2+1 balance of interior tangent contacts forces the singleton contact to be critical; a genuinely three-direction certificate therefore needs the common hub endpoint t=0 or the ellipse boundary normal. At a hub endpoint, the real logarithmic gradient equals S(h-B), where B is the inverse-square barycenter; a unit arm initially enters the certified descent disc centered at B exactly for length 2 max(0,(B-h) dot u). Thus the endpoint KKT sign is equivalent to local descent-disc containment. The stored degree-six, degree-nine, and exact degree-seven hard rows have interior optimized hubs, active common hub endpoints, and full near-active convex-hull residuals about 1e-8; their one-disc certified arm fractions are only about 1.6e-5 to 2.2e-4. The numerical optimization is evidence only. The reduction narrows CE--GM to finite semialgebraic critical-contact, same-arm opposing-pair, hub-endpoint, and boundary-normal systems but does not bound their level by Gcrit.
+
+Evidence/status: corrected_analytic_complete_deterministic_probe_lean_algebra_kernel_checked
+
+- [CriticalEllipseMinimaxStationarity.md](CriticalEllipseMinimaxStationarity.md)
+- [check_erdos1041_critical_ellipse_minimax_stationarity.py](scripts/check_erdos1041_critical_ellipse_minimax_stationarity.py)
+- [CriticalEllipseMinimaxStationarity.lean](CriticalEllipseMinimaxStationarity.lean)
+
+### tied_newton_face_minimum_real_critical_selector_no_go
+
+For Q(z)=-(379/256)z+3z^2-z^5, the critical point c0=1/4 uniquely minimizes the real parts of the four critical values, but no radial cutoff based at c0 can make both the finite positive-real arm and its outward tail lie in {Re Q<=0}. Exactly, Q'(z)=-(4z-1)(320z^3+80z^2+20z-379)/256 and Q(c0)=-47/256. The cubic factor has one real root r in (24/25,1), whose critical value is positive. For its nonreal conjugate roots x+/-iy, Viete gives 2x+r=-1/4 and x^2+y^2=379/(320r); their real critical-value gap above -47/256 reduces to (10460r^2+4245r-13644)/(12800r)>0. Thus c0 is the unique minimum-real hub. Yet Q(2/3)=6677/31104>0, and for every cutoff R the point 2/3 lies either on the arm [1/4,R] or on the tail [R,infinity]. Since every adjacent pair bracketing arg c0 contains the positive-real fifth-root direction, the greedy minimum-real selector cannot supply the adjacent arm-and-tail certificate.
+
+Evidence/status: exact_quintic_selector_refutation_with_lean_checked_rational_kernel
+
+- [TiedNewtonFaceMinimumRealSelectorNoGo.md](TiedNewtonFaceMinimumRealSelectorNoGo.md)
+- [check_erdos1041_tied_newton_face_minimum_real_selector_no_go.py](scripts/check_erdos1041_tied_newton_face_minimum_real_selector_no_go.py)
+- [TiedNewtonFaceMinimumRealSelectorNoGo.lean](TiedNewtonFaceMinimumRealSelectorNoGo.lean)
+- [tied_newton_face_minimum_real_selector_no_go_tao_pipeline_receipt.json](tied_newton_face_minimum_real_selector_no_go_tao_pipeline_receipt.json)
+
+### tied_newton_face_rational_hub_connector_rescue
+
+The quintic Q(z)=-(379/256)z+3z^2-z^5 that refutes minimum-real plus angular bracketing has a strict rational connector in the same four-ended component. Take h=-3/5+9i/10, R=3/2, u=(57+176i)/185 and v=(-1431+1040i)/1769. The directions are exactly unit and lie strictly in negative fifth-degree asymptotic sectors. All six degree-five Bernstein controls on each arm h to Ru and h to Rv, and all six reciprocal-tail controls on each outward tail, are strictly negative; the largest is below -0.13. The squared arm lengths are 2601/1850 and 33309/88450, each below R^2, hence their sum is strictly below 2R=3. Lean checks the four Bernstein identities, their nonpositive-control consumer, reciprocal-tail transport, and the metric inequality.
+
+Evidence/status: exact_rational_connector_with_lean_checked_bernstein_certificate
+
+- [TiedNewtonFaceRationalHubRescue.md](TiedNewtonFaceRationalHubRescue.md)
+- [check_erdos1041_tied_newton_face_rational_hub_rescue.py](scripts/check_erdos1041_tied_newton_face_rational_hub_rescue.py)
+- [TiedNewtonFaceRationalHubRescue.lean](TiedNewtonFaceRationalHubRescue.lean)
+- [tied_newton_face_rational_hub_rescue_tao_pipeline_receipt.json](tied_newton_face_rational_hub_rescue_tao_pipeline_receipt.json)
+
+### critical_ellipse_stationary_upper_bound_no_go_and_second_order_filter
+
+Finite-contact KKT reduction is necessary but pointwise KKT upper-bound elimination is false. An exact monic quartic with all roots in the open unit disc has an interior one-contact critical stationary hub strictly above Gcrit, while a different feasible critical hub lies below Gcrit. The bad hub is an exact saddle: both arm directions and their mixed second-order term lie in one negative quadratic cone, and an explicit rational displacement lowers both complete arm maxima. A genuine simple-critical local minimizer with strict hub maxima must satisfy Re(conj(f(h))f''(h)(a-h)(b-h))>=0.
+
+Evidence/status: exact_quartic_no_go_with_lean_checked_algebraic_kernel
+
+- [CriticalEllipseStationaryNoGo.md](CriticalEllipseStationaryNoGo.md)
+- [check_erdos1041_critical_ellipse_stationary_no_go.py](scripts/check_erdos1041_critical_ellipse_stationary_no_go.py)
+- [CriticalEllipseStationaryNoGo.lean](CriticalEllipseStationaryNoGo.lean)
+
+### barycentric_augmented_target_disc
+
+At every nonroot z and target T>=|f(z)|, the disc centered at B=z-conj(P)/S with squared radius |z-B|^2+n(T^(2/n)-|f(z)|^(2/n))/(|f(z)|^(2/n)S) lies in {|f|<=T}. On a ray its exact reach is alpha+sqrt(alpha^2+sigma^2): strict target slack gives positive reach in every direction, while boundary slack zero stalls exactly at the endpoint KKT sign. The inverse-square barycentric flow satisfies -dF/dt>=2|z'|^2, which controls action but not arclength.
+
+Evidence/status: ordinary_analytic_proof_with_lean_checked_scalar_kernel
+
+- [BarycentricTargetDisc.md](BarycentricTargetDisc.md)
+- [BarycentricTargetDisc.lean](BarycentricTargetDisc.lean)
+
+### barycentric_ray_reach_quadratic_identity
+
+For σ²≥0, the ray-reach expression reach=α+√(α²+σ²) satisfies the exact quadratic identity reach²−2α·reach−σ²=0. This is the algebraic root equation used by the augmented target-disc reach calculation.
+
+Evidence/status: lean_checked_ray_reach_quadratic_consumer
+
+- [BarycentricTargetDisc.lean](BarycentricTargetDisc.lean)
+
+claim_boundary: The declaration proves only the quadratic identity; it does not prove reach positivity at strict slack, target-disc containment, boundary-stall behavior, action control, global arclength, or unrestricted Erdős #1041.
+
+### tied_newton_face_nonadjacent_pair_no_go_and_strict_chart
+
+For Q(z)=-(65/27)z+(100/27)z^2-z^5, the critical heights are 8/27,-32/81,4/81,4/81. Thus the unique two-ended negative component joins nonadjacent asymptotic sectors. It has the exact symmetric chart h=1/3,R=1/2,u=(5+12i)/13,v=conj(u): all arm and reciprocal-tail degree-five Bernstein controls are strictly negative, and each squared arm length is 1417/6084 with margin 2/117 below R^2, so total length is strictly below 2R=1. Quantitatively, the same fixed certificate survives A=-65/27+da+i ea, B=100/27+db+i eb whenever max(|da|,|ea|,|db|,|eb|)<=2/3. Exact l1 sensitivity leaves all 24 controls strictly negative; their largest upper control is -29/1053, while the metric margin is unchanged.
+
+Evidence/status: exact_symmetric_quintic_and_quantitative_open_chart_with_lean_checked_bernstein_metric_and_box_kernel
+
+- [TiedNewtonFaceNonAdjacentNoGo.md](TiedNewtonFaceNonAdjacentNoGo.md)
+- [check_erdos1041_tied_newton_face_non_adjacent_no_go.py](scripts/check_erdos1041_tied_newton_face_non_adjacent_no_go.py)
+- [TiedNewtonFaceNonAdjacentNoGo.lean](TiedNewtonFaceNonAdjacentNoGo.lean)
+
+### fixed_nearest_pair_cegm_minimal_quartic_no_go
+
+A monic quartic with all roots in the open unit disc has a unique least-critical-value point and a unique nearest-root pair whose two roots lie in distinct components of the Gcrit sublevel. A rational circle lies strictly above a separating rational level T with Gcrit<T<the final merge critical value. Hence no path of any shape, not only no two-arm hub, joins the prescribed pair at level Gcrit. Degrees two and three satisfy the fixed selector, so four is minimal.
+
+Evidence/status: exact_minimal_degree_refutation_with_lean_checked_algebra_and_topological_consumer
+
+- [CEGMQuarticFixedPairNoGo.md](CEGMQuarticFixedPairNoGo.md)
+- [check_erdos1041_cegm_quartic_fixed_pair_no_go.py](scripts/check_erdos1041_cegm_quartic_fixed_pair_no_go.py)
+- [CEGMQuarticFixedPairNoGo.lean](CEGMQuarticFixedPairNoGo.lean)
+
+### tied_newton_face_component_degree_selector_and_critical_hub_rescue
+
+For every component U of {Re Q<0}, the restriction Q|U is a proper surjective map to the left half-plane whose degree equals the number of asymptotic negative ends and equals one plus the total ramification in U. Components are simply connected and their cyclic end sets form a noncrossing partition. On Q=-(379/256)z+3z^2-z^5, the component containing c0=1/4 has passport E(U)={1,2,3,4}, degree 4, ramification 3; the remaining end {0} is a degree-one component. The original critical point c0 strictly joins its true ends omega1,omega4 at R=1/2: six radical Bernstein controls are negative, both tails are negative, and the connector length is (1/2)sqrt(6-sqrt(5))<1. Thus the earlier no-go is angular component mismatch, not a bad hub. The renormalized intrinsic defect is nonincreasing and has a finite limit beta, but beta=0 need not be attained at finite radius. A sufficient horizontal-fibre producer must prove delta<0, a finite-radius connector directly, or non-strict delta<=0 plus equality rigidity.
+
+Evidence/status: ordinary_analytic_component_theorem_with_exact_quintic_checker_and_lean_checked_finite_kernel
+
+- [TiedNewtonFaceComponentSelector.md](TiedNewtonFaceComponentSelector.md)
+- [check_erdos1041_tied_newton_face_component_selector.py](scripts/check_erdos1041_tied_newton_face_component_selector.py)
+- [TiedNewtonFaceComponentSelector.lean](TiedNewtonFaceComponentSelector.lean)
+- [tied_newton_face_component_selector_tao_pipeline_receipt.json](tied_newton_face_component_selector_tao_pipeline_receipt.json)
+
+### tied_newton_face_horizontal_fibre_hubwise_no_go
+
+For Q(z)=15z+5z^2-z^5, c=-1 is a simple negative critical point with Q(c)=-9. The conjugate horizontal-fibre lifts of (-infinity,-9) cross the imaginary axis at +/-i*15^(1/4), continue into the fifth-root sectors exp(+/-2pi i/5), and have renormalized total-length defect delta_Q(-1)>=(sqrt(5)-1)/2>0. Thus horizontal-fibre negativity is false hub by hub even among negative critical points.
+
+Evidence/status: ordinary_analytic_exact_no_go_with_lean_checked_algebra_and_sign_kernel
+
+- [TiedNewtonFaceHorizontalFibreHubwiseNoGo.md](TiedNewtonFaceHorizontalFibreHubwiseNoGo.md)
+- [check_erdos1041_tied_newton_face_horizontal_fibre_hubwise_no_go.py](scripts/check_erdos1041_tied_newton_face_horizontal_fibre_hubwise_no_go.py)
+- [TiedNewtonFaceHorizontalFibreHubwiseNoGo.lean](TiedNewtonFaceHorizontalFibreHubwiseNoGo.lean)
+- [tied_newton_face_horizontal_fibre_hubwise_no_go_tao_pipeline_receipt.json](tied_newton_face_horizontal_fibre_hubwise_no_go_tao_pipeline_receipt.json)
+
+### tied_newton_face_all_fibre_product_and_velocity_moments
+
+For any monic P of degree n and every simple fibre P(z_j(s))=s^n, the product of all inverse-branch speeds equals product over critical points d_k of s^n/|s^n-P(d_k)|. If Re P(d_k)<=0 for all k, this product is at most one, increases to one, and is independent of branch labels. Moreover the complete signed velocity moments satisfy sum_j z_j^ell z_j'=0 for ell=0,...,n-2 and equal n*s^(n-1) at ell=n-1. For P=Q(c)-Q with c minimizing Re Q on the critical set, the half-plane hypothesis is automatic.
+
+Evidence/status: ordinary_exact_resultant_and_lagrange_theorem_with_lean_checked_half_plane_consumer
+
+- [TiedNewtonFaceFibreProduct.md](TiedNewtonFaceFibreProduct.md)
+- [check_erdos1041_tied_newton_face_fibre_product.py](scripts/check_erdos1041_tied_newton_face_fibre_product.py)
+- [TiedNewtonFaceFibreProduct.lean](TiedNewtonFaceFibreProduct.lean)
+- [tied_newton_face_fibre_product_tao_pipeline_receipt.json](tied_newton_face_fibre_product_tao_pipeline_receipt.json)
+
+### positive_leftmost_fibre_quintic_rational_finite_connector_rescue
+
+The quintic Q(z)=15z+5z^2-z^5 that has strictly positive defect at its unique leftmost critical fibre nevertheless has a strict rational finite connector. With h=-8/5, R=7/5, and u=(-3+4i)/5, v=conj(u), all six finite-arm and all six reciprocal-tail Bernstein controls are strictly negative (repeated by conjugacy), Re(u^5)=237/3125>0, and each squared arm length is 229/125 with margin 16/125 below R^2. The same fixed connector works for every Q_delta(z)=(15+da+i ea)z+(5+db+i eb)z^2-z^5 with max(|da|,|ea|,|db|,|eb|)<=1/6: every perturbed arm and tail Bernstein control remains strictly negative, with smallest certified margin 196/9375. Hence the central connector has length strictly below 2R throughout an explicit four-real-dimensional coefficient chart.
+
+Evidence/status: exact_rational_noncritical_connector_and_four_parameter_open_chart_with_lean_checked_kernel
+
+- [TiedNewtonFacePositiveFibreRationalRescue.md](TiedNewtonFacePositiveFibreRationalRescue.md)
+- [check_erdos1041_tied_newton_face_positive_fibre_rational_rescue.py](scripts/check_erdos1041_tied_newton_face_positive_fibre_rational_rescue.py)
+- [TiedNewtonFacePositiveFibreRationalRescue.lean](TiedNewtonFacePositiveFibreRationalRescue.lean)
+- [tied_newton_face_positive_fibre_rational_rescue_tao_pipeline_receipt.json](tied_newton_face_positive_fibre_rational_rescue_tao_pipeline_receipt.json)
+
+### tied_newton_face_block_l1_same_fixture_rational_connector_rescue
+
+For the degree-six polynomial Q(z)=-z^6-3z^2-5997001/10^9 whose unique six-ended negative component exactly refutes pointwise component-block L1 contraction, the rational noncritical hub h=7/10+57i/80, cutoff R=5/4, and the supplied adjacent asymptotic directions give fourteen strictly negative arm/tail Bernstein controls. The connector length is approximately 1.2776427568 and is strictly below 2R. Thus the failed aggregate speed norm is unnecessary cost on its own falsifier.
+
+Evidence/status: exact_rational_noncritical_connector_with_lean_checked_controls_and_metric_budget
+
+- [TiedNewtonFaceBlockL1RationalRescue.md](TiedNewtonFaceBlockL1RationalRescue.md)
+- [check_erdos1041_tied_newton_face_block_l1_rational_rescue.py](scripts/check_erdos1041_tied_newton_face_block_l1_rational_rescue.py)
+- [TiedNewtonFaceBlockL1RationalRescue.lean](TiedNewtonFaceBlockL1RationalRescue.lean)
+- [tied_newton_face_block_l1_rational_rescue_tao_pipeline_receipt.json](tied_newton_face_block_l1_rational_rescue_tao_pipeline_receipt.json)
+
+### tied_newton_face_block_l1_rational_connector_chart
+
+The same hub, end pair, and cutoff remain valid for P_{a,b}(z)=-z^6+a z^2+b throughout |a+3|<=1/192 and |b+5997001/10^9|<=1/192. Every load-bearing arm, reciprocal-tail, topology, and metric inequality is exact. The true controlling radius is 20577415197/3931840000000, so 1/192 works while 1/191 fails the worst template control.
+
+Evidence/status: exact_two_parameter_strict_chart_with_lean_checked_sensitivity_kernel
+
+- [TiedNewtonFaceBlockL1RationalChart.md](TiedNewtonFaceBlockL1RationalChart.md)
+- [check_erdos1041_tied_newton_face_block_l1_rational_chart.py](scripts/check_erdos1041_tied_newton_face_block_l1_rational_chart.py)
+- [TiedNewtonFaceBlockL1RationalChart.lean](TiedNewtonFaceBlockL1RationalChart.lean)
+- [tied_newton_face_block_l1_rational_chart_tao_pipeline_receipt.json](tied_newton_face_block_l1_rational_chart_tao_pipeline_receipt.json)
+
+### tied_newton_face_block_l1_complete_polyhedral_template_cell
+
+For the fixed block-L1 rational connector template in P_{a,b}(z)=-z^6+a z^2+b, strict feasibility is exactly the intersection -1875/128<a<0, b<0, and fourteen affine Bernstein half-planes T_{w,j}+a S_{w,j}+b<0. The lower envelope has eight active facets and seven exact transition points; the earlier 1/192 square is only an inscribed subset.
+
+Evidence/status: exact_complete_fixed_template_cell_with_lean_checked_tail_and_topology_kernel
+
+- [TiedNewtonFaceBlockL1PolyhedralCell.md](TiedNewtonFaceBlockL1PolyhedralCell.md)
+- [check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py](scripts/check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py)
+- [TiedNewtonFaceBlockL1PolyhedralCell.lean](TiedNewtonFaceBlockL1PolyhedralCell.lean)
+- [tied_newton_face_block_l1_polyhedral_cell_tao_pipeline_receipt.json](tied_newton_face_block_l1_polyhedral_cell_tao_pipeline_receipt.json)
+
+### tied_newton_face_all_degree_even_symmetric_diameter_cone
+
+For every P(z)=-z^(2m)+sum a_k z^(2k)+b with all real a_k<=0 and b<0, P(x)<0 on the complete real axis. Hence opposite asymptotic ends lie in one negative component and [-R,R] is a contained connector of exact length 2R for every R>0. The entire block-L1 family a<=0,b<0 is included.
+
+Evidence/status: ordinary_all_degree_connector_theorem_with_lean_checked_sign_and_metric_kernel
+
+- [TiedNewtonFaceEvenSymmetricDiameter.md](TiedNewtonFaceEvenSymmetricDiameter.md)
+- [check_erdos1041_tied_newton_face_even_symmetric_diameter.py](scripts/check_erdos1041_tied_newton_face_even_symmetric_diameter.py)
+- [TiedNewtonFaceEvenSymmetricDiameter.lean](TiedNewtonFaceEvenSymmetricDiameter.lean)
+- [tied_newton_face_even_symmetric_diameter_tao_pipeline_receipt.json](tied_newton_face_even_symmetric_diameter_tao_pipeline_receipt.json)
+
+### tied_newton_face_all_degree_asymmetric_diameter_tube
+
+For P(z)=-z^(2m)+sum a_k z^(2k)+b+sum c_j z^j with a_k<=0, b<0, j<2m, and R>=1, define A_R=sum |c_j|R^j and B_R=sum |c_j|/R^(2m-j). If A_R<-b and B_R<=1, then uniformly P(x)<=b+A_R<0 for every real x. The exact witness -z^6-1+(z+z^3+z^5)/100 has A_2=21/50, B_2=21/3200, and global margin 29/50. Composing this strict sign tube with ReciprocalNewtonExpansion R4 makes the moved-root staple length automatically less than two; only compactified containment remains for actual-polynomial transfer.
+
+Evidence/status: ordinary_all_degree_two_scale_connector_theorem_with_exact_checker_and_lean_checked_domination_kernel
+
+- [TiedNewtonFaceAsymmetricDiameterTube.md](TiedNewtonFaceAsymmetricDiameterTube.md)
+- [check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py](scripts/check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py)
+- [TiedNewtonFaceAsymmetricDiameterTube.lean](TiedNewtonFaceAsymmetricDiameterTube.lean)
+- [tied_newton_face_asymmetric_diameter_tube_tao_pipeline_receipt.json](tied_newton_face_asymmetric_diameter_tube_tao_pipeline_receipt.json)
+
+### tied_newton_face_all_degree_complex_rotated_diameter_tube
+
+Let N=2m>0, let |u|=1 with u^N=1, and let Q(z)=-z^N+b+sum_{j<N} c_j z^j with arbitrary complex lower coefficients. For R>=1 and majorants d_j>=|c_j|, put A_R=sum d_j R^j and B_R=sum d_j/R^(N-j). If Re(b)+A_R<0 and B_R<=1, then uniformly Re Q(tu)<=Re(b)+A_R<0 for every real t. Thus the complete rotated diameter lies in the negative-real half-plane preimage. The genuinely complex witness N=4, u=i, R=2, b=-1, c_1=c_3=(1+i)/100, d_1=d_3=1/50 has A_R=1/5, B_R=1/80, and margin 4/5. ReciprocalNewtonExpansion R4 again makes the moved-root staple metric-free; transfer asks only for uniform compactified containment.
+
+Evidence/status: ordinary_all_degree_complex_connector_theorem_with_exact_gaussian_rational_checker_and_lean_checked_domination_kernel
+
+- [TiedNewtonFaceComplexDiameterTube.md](TiedNewtonFaceComplexDiameterTube.md)
+- [check_erdos1041_tied_newton_face_complex_diameter_tube.py](scripts/check_erdos1041_tied_newton_face_complex_diameter_tube.py)
+- [TiedNewtonFaceComplexDiameterTube.lean](TiedNewtonFaceComplexDiameterTube.lean)
+- [tied_newton_face_complex_diameter_tube_tao_pipeline_receipt.json](tied_newton_face_complex_diameter_tube_tao_pipeline_receipt.json)
+
+### tied_newton_face_complex_diameter_actual_polynomial_transfer
+
+Let an even-degree near-Fekete sequence converge in reciprocal-Newton normalization to a strict complex rotated-diameter cell with Re(b)+A_R=-delta<0 and B_R<=1. For all sufficiently large sequence indices, the two actual roots approaching the opposite model directions are joined inside |f|<1 by the equal-radius staple at normalized cutoff 2R, and its length is strictly below two. Containment is proved in three ranges: compact moved-chord convergence preserving delta/2, half-leading mesoscopic domination with two 1/8 error budgets, and a fixed regular-polygon outer collar.
+
+Evidence/status: ordinary_sequential_near_fekete_transfer_theorem_with_exact_checker_and_lean_checked_absorption_kernel
+
+- [TiedNewtonFaceComplexDiameterTransfer.md](TiedNewtonFaceComplexDiameterTransfer.md)
+- [check_erdos1041_tied_newton_face_complex_diameter_transfer.py](scripts/check_erdos1041_tied_newton_face_complex_diameter_transfer.py)
+- [TiedNewtonFaceComplexDiameterTransfer.lean](TiedNewtonFaceComplexDiameterTransfer.lean)
+- [tied_newton_face_complex_diameter_transfer_tao_pipeline_receipt.json](tied_newton_face_complex_diameter_transfer_tao_pipeline_receipt.json)
+
+### actual_component_merge_tree_area_lower_bound
+
+On every regular k-root component branch C(R), A(R)/R^(2/k) is nondecreasing. Propagating the inverse-derivative leaf masses through actual critical merges gives A_v(R)/(pi R^(2/k_v)) >= Q_v^(2/k_v)/k_v, where Q_v=k_v^k_v product_(a_i in v)1/|f'(a_i)| product_(c internal to v)|f(c)|^m_c. For a complete connected monic degree-k block, the resultant identity gives Q_v=1 and A(R)>=(pi/k)R^(2/k). At any regular forest cut, product_j Q_j=(product_j k_j^k_j)/(n^n product_(|f(c)|>R)|f(c)|^m_c), while summing the component lower bounds against Polya gives sum_j (Q_j^(2/k_j)/k_j)R^(2/k_j-2/n)<=1. A direct proof of branch monotonicity uses boundary Cauchy--Schwarz plus planar isoperimetry. These are actual multiscale forest laws, but the area statement is a lower bound and is not the small-area hypothesis in ConnectedClusterBergman.
+
+Evidence/status: ordinary_exact_actual_component_theorem_with_exact_finite_checker
+
+- [TypeBReturnAssimilation20260826.md](TypeBReturnAssimilation20260826.md)
+- [check_erdos1041_type_b_return_assimilation.py](scripts/check_erdos1041_type_b_return_assimilation.py)
+- [type_b_return_assimilation_20260826_tao_pipeline_receipt.json](type_b_return_assimilation_20260826_tao_pipeline_receipt.json)
+
+### arbitrary_modulus_root_ray_product_contraction
+
+For f(z)=product_j(z-a_j), |a_j|<=1, p_m=sum_j a_j^m, and 0<=t<1, set E(t)=sum_(m>=1)t^m|p_m|^2/m, D_0=sum_j(1-|a_j|^2), and D_t=sum_i(1-t^2|a_i|^2). The ordered-pair factor identity gives product_i|f(t a_i)|=exp(-E(t)) product_(i,j)sqrt(1-X_ij), where X_ij=(1-|a_j|^2)(1-t^2|a_i|^2)/|1-t a_i conjugate(a_j)|^2. Consequently min_i|f(t a_i)|<=exp(-E(t)/n-D_0 D_t/(2n(1+t)^2))<=1. If at least one root is interior, the final inequality is strict for every t<1. Equality in the original product contraction occurs only when all roots lie on the unit circle. The good index may still move with t, so this quantitative open-cover margin does not produce a fixed spoke, compatible pair, or joining chord.
+
+Evidence/status: ordinary_exact_all_degree_theorem_with_quantitative_strict_defect_and_exact_symbolic_rational_kernels
+
+- [TypeBReturnAssimilation20260826.md](TypeBReturnAssimilation20260826.md)
+- [check_erdos1041_type_b_return_assimilation.py](scripts/check_erdos1041_type_b_return_assimilation.py)
+- [type_b_return_assimilation_20260826_tao_pipeline_receipt.json](type_b_return_assimilation_20260826_tao_pipeline_receipt.json)
+
+claim_boundary: This is a quantitative moving-index theorem. It does not provide a continuous or fixed index, two compatible outer tails, a contained joining chord, a common component, a COVER carrier, common-ancestry compensation, or unrestricted Erdős 1041.
+
+### critical_arc_product_admissibility_quantifier_firewall
+
+For simple generic critical points c, write v_c=f(c), L(c) for the canonical descending inverse-ray edge, A={c:|v_c|<1}, B={c:|v_c|>=1}, and q_c=L(c)/(2|v_c|^(1/n)). The proposed but UNPROVED all-critical inequality product_c L(c)<=2^(n-1)(product_c|v_c|)^(1/n) is exactly equivalent by the resultant identity to product_c L(c)<=(2^(n-1)/n)|Delta|^(2/n). It does not by itself prove Erdős 1041: the exact scalar data n=3, (|v_A|,L_A)=(1/16,3), (|v_B|,L_B)=(8,1) satisfy product|v|<1 and the proposed global length product inequality, yet the only short edge is inadmissible. The genuinely target-deciding conditional is product_(c in A)L(c)<=2^|A|(product_(c in A)|v_c|)^(1/n), which forces some admissible L(c)<2. Equivalently, the global conjecture becomes sufficient if product_(c in B)q_c>=1. No actual-polynomial counterexample to the global conjecture and no proof of either product premise is claimed.
+
+Evidence/status: ordinary_exact_conditional_reduction_with_exact_rational_inference_no_go
+
+- [TypeBReturnAssimilation20260826.md](TypeBReturnAssimilation20260826.md)
+- [check_erdos1041_type_b_return_assimilation.py](scripts/check_erdos1041_type_b_return_assimilation.py)
+- [critical_arc_product_candidate_20260827_tao_pipeline_receipt.json](critical_arc_product_candidate_20260827_tao_pipeline_receipt.json)
+
+claim_boundary: Exact: resultant normalization, admissible-subproduct sufficiency, compensation implication, and scalar failure of the all-index-to-admissible-index deduction. Unproved: the global critical-arc product inequality, the admissible subproduct inequality, and the inadmissible compensation premise. The scalar countermodel is not asserted to be polynomial-realizable.
+
+### admissible_critical_arc_product_cellwise_log_psh_reduction
+
+On any wall-free root-configuration cell with simple roots and critical points, nonzero critical values, fixed admissible critical set A, and fixed descending-arm continuation combinatorics, log Q_A=sum_(c in A)[log L(c)-log 2-(1/n)log|f(c)|] is plurisubharmonic. The proof packages the two holomorphic inverse-arm derivatives into the Banach space L1 direct-sum_1 L1, observes L(c) is its norm, uses that log of a holomorphic Banach-valued norm is psh, and subtracts the pluriharmonic critical-value term. Hence the target-deciding admissible product has no nonconstant generic interior maximum: its supremum moves to a root boundary, an admissibility wall, a saddle-connection wall, or a root/critical collision. Four guarded holomorphic quintic disks satisfy the sub-mean law, and a bounded 78-row unit-circle terminal search has no product above one (maximum 0.910417681941); these numerical rows are falsifier evidence only.
+
+Evidence/status: ordinary_exact_cellwise_psh_reduction_with_guarded_quintic_falsifier_search
+
+- [AdmissibleCriticalArcProductPshReduction.md](AdmissibleCriticalArcProductPshReduction.md)
+- [check_erdos1041_admissible_product_psh.py](scripts/check_erdos1041_admissible_product_psh.py)
+
+claim_boundary: Exact: cellwise logarithmic plurisubharmonicity and the per-cell terminal-stratum reduction. Numerical only: four quintic sub-mean rows and the bounded unit-circle terminal search. The psh germ is not asserted to extend through a saddle or admissibility wall; a dilation preserves fixed-label q factors but can change the admissible set. The admissible product inequality, every terminal-stratum certificate, degree five, and unrestricted Erdős 1041 remain open.
+
+### saddle_wall_two_hub_metric_compression
+
+On a simple saddle-connection wall let the lower saddle have outgoing arm lengths A,B, and let X be the upper saddle-to-lower-saddle stem plus the upper saddle's unaffected descending arm. The lower hub path has length A+B and the wall can continue the upper lift through either lower branch, with lengths X+A and X+B. Exact algebra gives (A+B) min(X+A,X+B) <= (A+B+X)^2/2, with slack [X^2+(A+B)|A-B|]/2; it also gives (A+B)sqrt((X+A)(X+B)) <= (A+B+X)^2/2 for the two one-sided continuations. If beta and gamma are the lower and upper critical-value moduli, the two normalized admissible-product factors therefore satisfy q_low q_high <= T^2/[8(beta gamma)^(1/n)], T=A+B+X. Thus T<=2sqrt(2)(beta gamma)^(1/(2n)) is one scalar sufficient certificate for the two-hub wall block.
+
+Evidence/status: ordinary_exact_terminal_stratum_reduction_with_exact_fraction_replay
+
+- [SaddleWallPairCompression.md](SaddleWallPairCompression.md)
+- [check_erdos1041_saddle_wall_pair_compression.py](scripts/check_erdos1041_saddle_wall_pair_compression.py)
+
+claim_boundary: Exact: the simple-wall arm-choice algebra, its explicit nonnegative slack, the geometric-mean two-sided form, the normalized sufficient total-length threshold, and the shape-retaining equivalent T^2-X^2-(A+B)|A-B|<=8(beta gamma)^(1/n). Imported: the standard inverse-ray decomposition when an upper lift meets one simple lower saddle. The sufficient total-length threshold is now exactly refuted as a universal polynomial-wall claim by symmetric_two_level_wall_admissible_product_and_scalar_no_go. Unproved: the shape-retaining condition for general walls, longer saddle spines, remaining admissible factors, either nearby one-sided cell, and every other terminal stratum. AP, degree five, and unrestricted Erdos 1041 remain open.
+
+### symmetric_two_level_wall_admissible_product_and_scalar_no_go
+
+For every m>=2 and 0<b<a<1, f(z)=(z^m-a^m)(z^m+b^m) has a central critical point of multiplicity m-1 at level beta=a^m b^m and m simple outer critical points at level gamma=((a^m+b^m)/2)^2, all on one descending ray. The limiting central merge edges have length 2b and every outer edge has length a+b. With r=b/a and n=2m, the complete admissible product is Q_m(r)=r^((m-1)/2)(1+r)^m/[2^(m-1)(1+r^m)]<=r^((m-1)/2)<=1 by midpoint convexity, strict for r<1 with equality only at the regular 2m-gon collision. In the quartic subfamily the former scalar total-three-arm threshold is false at r=9/10 by exact fourth-power gap 5836/625, although the true lower/upper normalized pair square is 3249/3620<1 with slack 371/3620. The exact general wall condition retains shape slack: T^2-X^2-(A+B)|A-B|<=8(beta gamma)^(1/n).
+
+Evidence/status: ordinary_exact_subordinate_all_even_degree_ap_family_and_scalar_no_go_with_lean_source_pending_focused_validation
+
+- [SymmetricTwoLevelWallFamily.md](SymmetricTwoLevelWallFamily.md)
+- [check_erdos1041_symmetric_two_level_wall.py](scripts/check_erdos1041_symmetric_two_level_wall.py)
+- [SymmetricTwoLevelWall.lean](SymmetricTwoLevelWall.lean)
+
+claim_boundary: Exact ordinary mathematics: critical points and levels, inverse-ray arm geometry, the all-even-degree AP formula and power-mean bound, equality case, quartic scalar-threshold counterexample, and shape-slack diagnosis. The Lean source states the quartic polynomial slack and rational no-go kernel, but focused validation was terminated by the canonical build firewall before any theorem diagnostic and is pending. The parent path conclusion for this centred-trinomial family was already proved by cyclic_trinomial_fiber_case_all_degrees; the new positive claim is AP on this structured wall. It does not prove AP on general walls, degree five, or unrestricted Erdos 1041.
+
+### deep_low_critical_two_spoke_and_discriminant_class
+
+Let c be a non-root critical point of a degree-n polynomial p and let a_1,a_2 be its two nearest roots. Critical balance gives |a_2-c|/|a_1-c|<=n-1. Direct factorization along the two segments yields a common amplification bound n*2^(n-2). Hence |p(c)|<=1/(n*2^(n-2)) puts both straight spokes inside {|p|<=1}; for roots in the closed unit disk their total length is at most 2 by GlobalCriticalTwoNearestBudget. Consequently the normalized discriminant class D<= (n*2^(n-2))^(-(n-1)) satisfies the closed theorem, and circumradius scaling proves the original strict theorem for open-disk roots in this class.
+
+Evidence/status: ordinary_exact_all_degree_subcase_with_deterministic_scalar_regression_and_lean_scalar_validation_pending_capacity
+
+- [LowCriticalTwoRootReduction20260826.md](LowCriticalTwoRootReduction20260826.md)
+- [check_erdos1041_low_critical_two_root_reduction.py](scripts/check_erdos1041_low_critical_two_root_reduction.py)
+- [LowCriticalTwoRootReduction20260826.lean](LowCriticalTwoRootReduction20260826.lean)
+- [low_critical_two_root_reduction_20260826_tao_pipeline_receipt.json](low_critical_two_root_reduction_20260826_tao_pipeline_receipt.json)
+
+### root_hull_metric_projection_contraction
+
+Metric projection pi_K onto the convex hull K of the roots satisfies |pi_K(z)-a_j|<=|z-a_j| for every root, hence |f(pi_K(z))|<=|f(z)|, and is 1-Lipschitz. Every admissible path may therefore be confined to the root hull without increasing length or polynomial modulus.
+
+Evidence/status: ordinary_exact_all_degree_geometric_reduction
+
+- [TypeBReturnAssimilation20260826.md](TypeBReturnAssimilation20260826.md)
+- [type_b_return_assimilation_20260826_tao_pipeline_receipt.json](type_b_return_assimilation_20260826_tao_pipeline_receipt.json)
+
+### proper_component_capacity_gap
+
+Let U be a regular component of {|f|<t} containing k<n roots of a monic degree-n polynomial. Every exterior root preimage xi_j satisfies |xi_j|>(n+1)/(n-1). Hence cap(closure U)<t^(1/n)((n-1)/(n+1))^((n-k)/n) and Area(U)/pi<t^(2/n)((n-1)/(n+1))^(2(n-k)/n). This yields the valid connected-cluster threshold q_U<=tanh(((n-1)/(n+1))^(-2(n-k)/n))^(k/2), and the corresponding explicit first-merge COVER criterion. The exterior boundary parameter cannot be identified with the interior Blaschke parameter without controlling conformal welding.
+
+Evidence/status: ordinary_exact_component_theorem_with_lean_checked_scalar_kernel_and_exact_threshold_audit
+
+- [ProperComponentCapacityGap.md](ProperComponentCapacityGap.md)
+- [check_erdos1041_proper_component_capacity_gap.py](scripts/check_erdos1041_proper_component_capacity_gap.py)
+- [ProperComponentCapacityGap.lean](ProperComponentCapacityGap.lean)
+- [proper_component_capacity_gap_consequence_receipt.json](proper_component_capacity_gap_consequence_receipt.json)
+
+### charged_lifetime_allocation_no_go_consumer
+
+A strict uncharged slack always admits strictly positive node and leaf charges that still fit the charged budget; upper bounds on the actual node and leaf charges preserve that strict inequality; and for every positive component size k and requested margin, a positive energy E can be chosen with k*E/2 below the margin. Thus a scalar charged-lifetime ceiling alone cannot force a positive energy floor.
+
+Evidence/status: lean_checked_charged_lifetime_allocation_no_go_consumer
+
+- [ChargedLifetimeAllocationNoGo.lean](ChargedLifetimeAllocationNoGo.lean)
+
+claim_boundary: This is an exact real-algebra allocation obstruction. It does not assert that actual polynomial energies are freely prescribable, identify the analytic attachment functional, prove a lower energy bound, establish a weighted-tree selector, supply an unrestricted polynomial construction, or close unrestricted Erdős #1041.
+
+### quartic_young_energy_fraction_lt_half_consumer
+
+For the exact quartic witness, the Young-energy fraction is 144/769, strictly below the half-energy threshold 1/2. This isolates the rational strict inequality that drives the quartic local deficit before its exact positive margin is recorded separately.
+
+Evidence/status: lean_checked_quartic_young_energy_fraction_consumer
+
+- [AttachmentCoupledEnergySelector20260826.lean](AttachmentCoupledEnergySelector20260826.lean)
+
+claim_boundary: This is an exact rational inequality for one quartic witness. It does not prove the weighted-tree selector inequality, establish the full energy interpretation beyond the source analysis, bound the restored common-ancestry factor, prove a safe path or arm, or close unrestricted Erdos #1041.
+
+### quartic_terminal_inner_ratio_gt_four_consumer
+
+For the exact quartic witness, the terminal inner ratio is 144/25, and it is strictly greater than 4. This isolates the rational endpoint margin used by the attachment-coupled energy obstruction.
+
+Evidence/status: lean_checked_quartic_terminal_inner_ratio_consumer
+
+- [AttachmentCoupledEnergySelector20260826.lean](AttachmentCoupledEnergySelector20260826.lean)
+
+claim_boundary: The result is only an exact rational inequality for the quartic witness. It does not prove the weighted-tree selector inequality, establish the full quartic energy interpretation beyond the separately documented source, bound the restored common-ancestry factor, prove a safe path or arm, or close unrestricted Erdős #1041.
+
+### quartic_young_energy_deficit_consumer
+
+For the exact quartic Young-energy fraction 144/769, the deficit from the half-energy threshold is exactly 1/2 - 144/769 = 481/1538. This records a positive rational margin rather than only the qualitative strict inequality.
+
+Evidence/status: lean_checked_quartic_young_energy_deficit_consumer
+
+- [AttachmentCoupledEnergySelector20260826.lean](AttachmentCoupledEnergySelector20260826.lean)
+
+claim_boundary: The result is only an exact rational arithmetic identity for the quartic witness. It does not prove the weighted-tree selector inequality, establish the quartic energy interpretation beyond the separately documented source, bound the restored common-ancestry factor, prove a safe path or arm, or close unrestricted Erdős #1041.
+
+### common_ancestry_discount_exact_consumer
+
+For real β, w, A, and B, the common-ancestry discount factorizes exactly: β*w*exp(-2*(A+B)) = (β*exp(-2*B))*(w*exp(-2*A)). This isolates the common ancestry contribution in the singleton entrance-charge currency after the pair's tree distance has canceled it.
+
+Evidence/status: lean_checked_common_ancestry_factorization_consumer
+
+- [AttachmentCoupledEnergySelector20260826.lean](AttachmentCoupledEnergySelector20260826.lean)
+
+claim_boundary: The result is only an algebraic real-exponential factorization. It does not prove the weighted-tree selector inequality, bound the restored common factor below, establish a polynomial root or merge-tree budget, prove a safe path or arm, or close unrestricted Erdős #1041.
+
+### attachment_coupled_energy_selector_and_transport_ceiling
+
+For a rooted weighted leaf tree, C=sum_u x_u E_u(W-E_u), pair distance d(i,j) counting exactly the separating edges, and D=1-sum_i(w_i/W)^2, every lambda>0 admits distinct leaves with w_i w_j exp(-lambda d(i,j)) >= [D W^2/(k(k-1))] exp(-2 lambda C/(D W^2)) >= G^2 exp(-2 lambda C/(k(k-1)G^2)); the constants are sharp on equal-weight equal-edge stars. At the selected lowest common merge this gives the corresponding sharp two-term discounted sum. However exact entrance-energy propagation shows that transporting this local quantity into singleton charge restores the common factor beta_v^(2/k_v) exp(-2B_a(v)); the current abstract ledgers do not bound that factor below.
+
+Evidence/status: ordinary_exact_weighted_tree_theorem_with_actual_polynomial_no_go_exact_checker_and_lean_scalar_kernel_pending_capacity
+
+- [AttachmentCoupledEnergySelector20260826.md](AttachmentCoupledEnergySelector20260826.md)
+- [check_erdos1041_attachment_coupled_energy_selector.py](scripts/check_erdos1041_attachment_coupled_energy_selector.py)
+- [AttachmentCoupledEnergySelector20260826.lean](AttachmentCoupledEnergySelector20260826.lean)
+
+### critical_spoke_synchronized_reciprocal_sweep
+
+At a non-root critical point c put u_i=1/(a_i-c), S_m=sum_i u_i^m, and z_i(r)=c+r conjugate(u_i). Whenever r max_i|u_i|^2<1, sum_i log|p(z_i(r))/p(c)|=-sum_(m>=1)r^m|S_m|^2/m<=0, so the product of the sampled spoke ratios is at most one and at every synchronized reciprocal radius at least one sampled spoke point is safe. The Gaussian-integer reciprocal-balanced cubic u=(-3-2i,3i,3-i) has S_2=4+6i and exactly one initially descending spoke, proving that the moment mechanism cannot universally select a pair.
+
+Evidence/status: ordinary_exact_analytic_theorem_with_gaussian_integer_scope_witness_and_independent_checker
+
+- [CriticalSpokeMomentSweep20260826.md](CriticalSpokeMomentSweep20260826.md)
+- [check_erdos1041_critical_spoke_moment_sweep.py](scripts/check_erdos1041_critical_spoke_moment_sweep.py)
+- [CriticalSpokeMomentSweep20260826.lean](CriticalSpokeMomentSweep20260826.lean)
+
+### orlicz_upper_bound_from_lifetime_consumer
+
+Given positive size, the exact identity lifetime=size*phi, and a lifetime upper bound budget, Lean proves phi≤budget/size. This is the ordered-algebra consumer that translates an attachment-lifetime ceiling into the corresponding Orlicz-transform ceiling.
+
+Evidence/status: lean_checked_lifetime_to_orlicz_upper_bound
+
+- [AttachmentAgeLifetimeOrlicz.lean](AttachmentAgeLifetimeOrlicz.lean)
+
+claim_boundary: Only the real-algebra division step is formalized; it does not identify the analytic integral transform, prove the exact identity or convexity for a concrete attachment model, establish arbitrary-polynomial realizability, or close unrestricted Erdős #1041.
+
+### weighted_orlicz_chain_consumer
+
+Given positive total size, the analytic lower bound lifetime ≥ totalSize * Phi(weightedAge), and monotonicity Phi(totalAge) ≤ Phi(weightedAge), Lean proves totalSize * Phi(totalAge) ≤ lifetime. This is the exact scalar consumer that converts the weighted analytic lower bound into the floor-value chain bound. The child-size relation 2*totalAge ≤ weightedAge is upstream analytic context and is not consumed by this declaration.
+
+Evidence/status: lean_checked_analytic_consumer_bridge
+
+- [AttachmentAgeLifetimeOrlicz.lean](AttachmentAgeLifetimeOrlicz.lean)
+
+claim_boundary: The declaration checks only the ordered real-algebra consumer after the analytic transform and monotonicity comparison are supplied; it does not consume the child-size relation. It does not formalize the integral identity, prove the analytic hypotheses for arbitrary polynomial components, or close the unrestricted Erdős #1041 path theorem.
+
+### second_age_tail_lower_consumer
+
+Given 1<count and the tail inequality (count-1)*secondAge≤total, Lean proves secondAge≤total/(count-1). This is the exact ordered-age consumer for the sharp two-root threshold in the #1041 attachment-age route.
+
+Evidence/status: lean_checked_second_age_threshold_consumer
+
+- [AttachmentAgeLifetimeOrlicz.lean](AttachmentAgeLifetimeOrlicz.lean)
+
+claim_boundary: Only the elementary ordered-age division step is formalized; it does not prove the root-summed age/product identity, analytic attachment hypotheses, arbitrary-polynomial realization, or unrestricted Erdős #1041.
+
+### orlicz_no_uniform_linear_lower_boundary
+
+For an Orlicz transform sublinear at zero, Lean proves that no positive universal constant can lower-bound the transform linearly on all positive ages. This records the exact negative boundary for any attempted age-to-Orlicz linear shortcut in the #1041 route.
+
+Evidence/status: lean_checked_negative_orlicz_boundary
+
+- [AttachmentAgeLifetimeOrlicz.lean](AttachmentAgeLifetimeOrlicz.lean)
+
+claim_boundary: Only the ordered-real contradiction is formalized; it does not identify the analytic transform, prove sublinearity for a particular integral, or close unrestricted Erdős #1041.
+
+### exterior_fibre_capacity_gap_scalar_kernel
+
+For positive n and nonnegative m,p, the fibre reciprocal inequality m/n < (1-p)/(1+p) implies p < (n-m)/(n+m). Substituting m=n-k identifies the sharp constant k/(2*n-k), and for 0<k<n Lean proves that this constant lies strictly between zero and one. This is the exact scalar kernel used by the exterior-fibre capacity gap argument.
+
+Evidence/status: lean_checked_analytic_consumer_bridge
+
+- [ExteriorBlaschkeFibreCapacityGap.lean](ExteriorBlaschkeFibreCapacityGap.lean)
+
+claim_boundary: The declarations check only the rational real-algebra kernel and its positivity/upper bound. They do not formalize the finite-Blaschke harmonic-measure fibre identity, identify matching interior and exterior circle parameters, prove the analytic reciprocal-derivative estimate, or close unrestricted Erdős #1041.
+
+### fixed_block_quadratic_budget_equivalence
+
+On a fixed finite sheet block with normalized sheet-time measure, the infimum over positive lifetime weights lambda of A(lambda)E(lambda) is exactly the square of the average complete-lift length. Hence a limsup quadratic budget at most four is equivalent to an average whole-lift length bound at most two. If M and F are the moved and fixed sheets, a whole-block bound sum_B L<=C(|M|+|F|)-Delta gives the sharp quantitative compensation sum_M L<=C|M|+S_F-Delta and min_M L<=C+(S_F-Delta)/|M|, where S_F=C|F|-sum_F L is the unpaid fixed-sheet slack. Thus Delta>S_F is the exact strict-shortening interface; the earlier fixed-average-at-least-C criterion is only the Delta=0 zero-slack special case. The three-sheet transposition at Delta=0 attains the bound exactly, so its coefficient and denominator are sharp. Once a moved lift is selected inside the closed unit lemniscate, convex projection and compactness give a root-to-root path of length at most two.
+
+Evidence/status: ordinary_exact_variational_equivalence_with_sharp_quantitative_fixed_slack_compensation_and_lean_kernel_pending_low_disk_validation
+
+- [FixedBlockQuadraticBudgetEquivalence.md](FixedBlockQuadraticBudgetEquivalence.md)
+
+claim_boundary: The variational identity, conditional moved-sheet consumer, sharp quantitative fixed-slack compensation inequality, and sharp three-sheet equality model are proved by ordinary exact mathematics and replayed in exact rational finite models. FixedBlockCompensation.lean authors the finite allocation kernel, but its focused validation is deferred by the live low-disk guard and no Lean authority is claimed yet. No source-current theorem proves that a strict grouped-cluster, Bergman, circumradius, or Fekete margin dominates S_F/|M|, or constructs the fixed safe moved-sheet block with the required compensated average-length budget. That margin comparison is now the first unsupported downstream implication; unrestricted Erdős 1041 remains open.
+
+### separate_critical_contour_no_go
+
+For a ray-separated degree-k component, a thin lollipop contour around the fully resolved radial critical-value star has full-cycle monodromy, but its average complete-lift length has liminf at least (2/k) sum_c L(c). If every pairwise root chord exceeds k/(k-1), this lower bound exceeds two. Generic normalized cubics near an equilateral triangle and quartics near a square satisfy that strict criterion, so the canonical separate-slit derangement construction misses the fixed-block budget on actual hard-class examples.
+
+Evidence/status: ordinary_exact_negative_result_for_resolved_critical_star_monodromy
+
+- [SeparateCriticalContourNoGo.md](SeparateCriticalContourNoGo.md)
+
+claim_boundary: The planar covering and length-liminf theorem is proved by ordinary exact mathematics. It rules out only contours that separately resolve and circle every radial critical slit. It does not rule out grouping near-coincident critical values before contouring them, fixed safe moved blocks, fixed-sheet compensation, combined charge, COVER, FP--GM, or unrestricted Erdős 1041.
+
+### grouped_critical_cluster_monodromy
+
+For f_0(z)=z^n-r^n, 0<r<1, the value-plane lollipop that stems to and circles the whole critical-value cluster at radius q has full-cycle monodromy and every complete lift has exact length 2r-2(1-pi/n)q^(1/n). In every degree q can be chosen with the lollipop inside the open unit value disk and the lift length below two. The fixed loop, full-cycle monodromy, and strict individual lift bounds persist throughout an open coefficient neighbourhood of f_0, proving Erdős 1041 on an all-degree neighbourhood of every strict regular polygon.
+
+Evidence/status: ordinary_exact_all_degree_local_positive_result
+
+- [GroupedCriticalClusterMonodromy.md](GroupedCriticalClusterMonodromy.md)
+
+claim_boundary: The formula and coefficient-neighbourhood theorem are proved by ordinary exact mathematics. The neighbourhood is qualitative and shrinks as r tends to one; no source-current theorem converts the topology-sensitive discriminant lower bound into enough quantitative cluster control. The theorem also does not directly cover configurations whose full critical-value cluster crosses the unit value circle. Partial admissible clusters, complementary Bergman allocation, combined charge, COVER, FP--GM, and unrestricted Erdős 1041 remain open.
+
+### partial_critical_cluster_monodromy
+
+A value-plane Jordan contour enclosing exactly a connected edge subtree E of a ray-separated sheet tree has monodromy equal to one full cycle on the incident sheet block B and fixes the complement. Therefore an average complete-lift bound at most two on B conditionally solves the target by the fixed-block theorem. On the pinned degree-six and degree-nine near-Fekete witnesses, deterministic continuation finds unit-value-disk circles enclosing exactly the two and three admissible critical values, moved cycles of sizes three and four, and moved-block means about 1.84327 and 1.63875; the largest individual moved lift exceeds two in both rows.
+
+Evidence/status: ordinary_exact_conditional_subtree_cycle_with_pinned_candidate_evidence
+
+- [PartialCriticalClusterMonodromyLab.md](PartialCriticalClusterMonodromyLab.md)
+
+claim_boundary: The subtree-cycle theorem and conditional consumer are ordinary exact mathematics. The two witness length rows are floating-point candidate evidence with coarse/fine and geometric separation guards, not interval-certified instance proofs. No universal partial-cluster average bound or unrestricted Erdős 1041 proof is claimed.
+
+### partial_cluster_preimage_perimeter_identity
+
+For a proper degree-d polynomial preimage component W over a Jordan domain Q, the sum of the d complete lifted lollipop lengths is exactly 2 Lambda(alpha,W)+P(W), where Lambda is the total lifted access-stem length and P(W) is the boundary perimeter. Thus the partial-cluster moved-block criterion is exactly 2 Lambda+P(W)<=2d, and strict value-disk containment with 2 Lambda+P(W)<2d closes the parent theorem through the occupied subtree-cycle and fixed-block consumers.
+
+Evidence/status: ordinary_exact_analytic_identity_with_exact_rational_regression
+
+- [PartialClusterPreimagePerimeterIdentity.md](PartialClusterPreimagePerimeterIdentity.md)
+- [check_erdos1041_partial_cluster_preimage_perimeter.py](scripts/check_erdos1041_partial_cluster_preimage_perimeter.py)
+
+claim_boundary: The preimage-perimeter identity and its connected-subtree consumer are ordinary exact complex analysis. The exact rational checker verifies permutation bookkeeping and the regular-polygon specialization. No source-current theorem proves existence of an admissible isolating pair (Q,alpha) satisfying the strict inequality for every polynomial, nor the complementary Bergman/COVER dichotomy; unrestricted Erdős 1041 remains open.
+
+### singleton_cluster_limit_equivalence
+
+For an admissible simple critical point c, shrinking singleton critical-value circles have mean complete-lollipop length converging to the canonical two-arm inverse-ray length L(c). Hence any admissible c with L(c)<2 yields a strict partial-cluster certificate, making the componentwise combined-charge producer the singleton specialization of the preimage-perimeter route while preserving multi-critical clusters as a genuine fallback.
+
+Evidence/status: ordinary_exact_singleton_limit_with_candidate_selection_evidence
+
+- [AdaptiveClusterSelectionLab.md](AdaptiveClusterSelectionLab.md)
+- [check_erdos1041_adaptive_cluster_selection.py](scripts/check_erdos1041_adaptive_cluster_selection.py)
+
+claim_boundary: The singleton limit is ordinary exact local complex analysis. The 254-configuration adaptive selector sweep is deterministic floating-point candidate evidence only. It does not prove min_c L(c)<=2, interval-certify the sweep, establish the componentwise combined-charge inequality, or solve unrestricted Erdős 1041.
+
+### scale_weighted_arithmetic_charge_bridge
+
+For each nontrivial level-one component C, let A_C be its critical edges, s_c=|f(c)|^(1/n), and q(c)=L(c)/(2s_c). The componentwise arithmetic inequality |A_C|^(-1) sum_(c in A_C)q(c)<=1 implies the global target-deciding admissible product inequality by componentwise AM-GM and multiplication. Using 2R-L(c)=D_c+K_c, it is exactly equivalent on each component to sum_(c in A_C)(D_c+K_c)/(2s_c)>=sum_(c in A_C)(R/s_c-1). This strengthens the former global AQ/WSC candidate by forbidding cross-component compensation while retaining the full-root circumradius and external-root coupling.
+
+Evidence/status: ordinary_exact_componentwise_am_gm_reduction_with_deterministic_floating_falsifier_survival
+
+- [AdmissibleCriticalArcProductLab.md](AdmissibleCriticalArcProductLab.md)
+- [check_erdos1041_admissible_critical_arc_product.py](scripts/check_erdos1041_admissible_critical_arc_product.py)
+
+claim_boundary: The componentwise-to-global AM-GM implication and CAQ iff CWSC equivalence are ordinary exact algebra. CAQ/CWSC itself is UNPROVED. The deterministic floating checker found zero violations across 273 maximal admissible components in the 270-configuration base corpus and zero violations across 801 components in the independent fixed-seed 800-configuration stress corpus; the largest component means were 0.995680941647 and 0.999478637196. The simpler rule pairing every q(c)>1 with the next higher critical scale is numerically false on 89 base and 62 stress overspends. These computations are candidate/falsifier evidence only and do not interval-certify CAQ, prove CWSC, or solve unrestricted Erdos 1041.
+
+### cut_scaled_subtree_arithmetic_potential
+
+For an admissible merge node v, let beta_v be its critical modulus, b_v the modulus of its next admissible ancestor or the level-one cut, T_v the complete admissible rooted merge subtree below v, N_v=|T_v|=k_v-1, and q(u)=L(u)/(2 beta_u^(1/n)). The cut-scaled subtree assertion CSTA is Phi_v=(b_v^(1/n)/N_v) sum_(u in T_v)q(u)<=1. At a maximal level-one component it is exactly CAQ, and at a cherry it is exactly the occupied factor bound h_v<=1. If delta_v=N_v(1-Phi_v), x_v=(beta_v/b_v)^(1/n), and G_v=L(v)/2+N_v-1-N_v x_v, then exact algebra gives delta_v=x_v^(-1)(sum_i delta_(v_i)-G_v), where v_i are the admissible internal children. The graft debt further has the exact positive-liability decomposition C_v=x_v^N_v-N_v x_v+N_v-1=(1-x_v)^2 sum_(j=0)^(N_v-2)(N_v-1-j)x_v^j>=0 and O_v=max(0,L(v)/2-x_v^N_v)=x_v^N_v max(0,h_v-1), with G_v<=C_v+O_v. Therefore PGLS, sum_i delta_(v_i)>=C_v+O_v, is a stronger sufficient recursive step whose two liabilities are respectively the quadratic cut-scale convexity cost and positive multiplicative node overspend.
+
+Evidence/status: ordinary_exact_recursive_reduction_with_deterministic_floating_falsifier_survival
+
+- [AdmissibleCriticalArcProductLab.md](AdmissibleCriticalArcProductLab.md)
+- [check_erdos1041_admissible_critical_arc_product.py](scripts/check_erdos1041_admissible_critical_arc_product.py)
+
+claim_boundary: The CSTA endpoint identifications, CSTR recurrence, convexity factorization, and implication PGLS=>the needed graft inequality are ordinary exact algebra. CSTA and PGLS are UNPROVED, so this row does not prove CAQ/CWSC or unrestricted Erdos 1041. The naive unscaled assertion average_(u in T_v)q(u)<=1 is numerically false on the pinned near-tie quartic singleton. CSTA has zero violations across 1,252 base rooted subtrees and 4,288 independent fixed-seed stress rooted subtrees. PGLS likewise has zero violations; the largest measured positive-liability/child-slack ratios are 0.857114446951 and 0.960626426260. A fixed half-slack allocation is false: the convexity/overspend halves fail on 32/0 base nodes and 96/4 stress nodes. These computations are deterministic floating candidate/falsifier evidence only, not interval certification or proof authority.
+
+### universal_radial_contour_sharp_criterion_no_go_2026_08_28
+
+For P(z)=z^2-r^2 with r=5/6, the componentwise radial-contour expression proposed in return 002 is strictly greater than four. Before the two roots merge, the two one-root level loops have total perimeter at least 4(sqrt(r^2+s)-sqrt(r^2-s)); after merger the component perimeter is at least 4r. Hence the proposed expression is at least 4r+(4r/pi)J, where J=2sqrt(2)-2log(1+sqrt(2)). The elementary bounds J>=1/sqrt(2), pi<22/7, and 7/(22sqrt(2))>1/5 make this lower bound strictly greater than 4 at r=5/6.
+
+Evidence/status: ordinary_exact_quadratic_counterexample_to_universal_sharp_component_criterion
+
+- [TypeBReturnAssimilation20260828.md](TypeBReturnAssimilation20260828.md)
+
+claim_boundary: This exactly refutes only the universal sharp radial-contour criterion RC4 returned in artifact 002. It does not refute componentwise radial contours as one branch of a target-deciding dichotomy, a compensation theorem when the contour budget fails, grouped or partial-cluster monodromy, or unrestricted Erdos 1041.
+
+### global_tree_admissible_product_2026_08_28
+
+For monic f of degree n >= 2 with listed zeros in the closed unit disc and c_1..c_{n-1} the zeros of f', the incidence product R = prod_{i,j} |z_i - c_j| = prod_j |f(c_j)| <= 1, with equality exactly for rotations of the regular n-gon. Moreover, for EVERY tree T on n slots and EVERY bijection lambda: E(T) -> {1..n-1}, some placement pi satisfies prod_{uv in E(T)} |z_{pi(u)} - c_{lambda(uv)}| |z_{pi(v)} - c_{lambda(uv)}| <= R^(2/n) <= 1, with the forest refinement (bound (prod_{j in J} |f(c_j)|)^(2/n) for a labelled forest using label set J). The weighted products B(pi) = A(pi)/prod_e |f(c_{lambda(e)})|^(2/n) satisfy prod_pi B(pi) = 1 identically for every monic f, so min B <= 1 <= max B. Also prod_i dist(z_i, Z(f')) <= 1. Proof: f'(z_i) = prod_{k!=i}(z_i - z_k) and Hadamard on the Vandermonde matrix; each labelled incidence (i, j) occurs in exactly 2(n-1)! of the n! placement products.
+
+Evidence/status: ordinary_exact_matching_theorem_without_containment
+
+- [TypeBReturnAssimilation20260828.md](TypeBReturnAssimilation20260828.md)
+- [GlobalTreeAdmissibleProduct.md](GlobalTreeAdmissibleProduct.md)
+- [check_erdos1041_global_tree_admissible_product.py](scripts/check_erdos1041_global_tree_admissible_product.py)
+- [global_tree_admissible_product_tao_pipeline_receipt.json](global_tree_admissible_product_tao_pipeline_receipt.json)
+
+claim_boundary: Carries no sublevel containment: matched pairs need not have any contained arm (negative entries 12, 15, 16, 22, 25; CentroidHubCounterexample), so the theorem does not feed free_pair_geometric_mean_two_arm_selector (whose open premise is arm containment in {|f| <= Gcrit}), is not an admissible product in the (AP) sense of AdmissibleCriticalArcProductLab.md (entrance arcs, not Euclidean distances; hybrid falsifier 0.839217266469 vs 1.075474341153 untouched), and its single-point corollaries are dominated by the occupied per-point two-nearest budget d1+d2 <= 2|f(c)|^(1/n). The non-dominated content is the simultaneous matching quantifier over (T, lambda). Does not change the parent claim ceiling.
+
+### component_lifetime_transport_identity_2026_08_28
+
+For a degree-d component W of the lemniscate forest with lifetime (beta, delta), mean access L_W(t) = (1/2pi) int Lambda_theta dtheta and perimeter p_W(t) = H^1(dK_t(W)): (Lemma A) L_W(t) = (1/2pi) int_beta^t p_W(s) ds/s, so L_W'(t) = p_W(t)/(2 pi t); (Theorem B) d/dt (t^(1/pi) L_W(t)) = (1/(2 pi)) t^(1/pi - 1) (2 L_W(t) + p_W(t)), equivalently int_beta^delta (2 L_W + p_W - 2d) dnu = 2[t^(1/pi)(L_W - d)]_beta^delta with dnu(t) = (1/pi) t^(1/pi - 1) dt. The excess charge t^(1/pi)(L_W - d_W) is exactly additive across mergers, and summing over the forest telescopes to int_0^1 (2L + p - 2n) dnu = 2(L(1) - n) <= 0 via the occupied global inverse-fibre budget L(1) <= n. The weight alpha = 1/pi is forced by the coarea constant; the law is an identity, so no reweighting avoids the obstruction.
+
+Evidence/status: ordinary_exact_transport_identity_with_singleton_slack_obstruction
+
+- [TypeBReturnAssimilation20260828.md](TypeBReturnAssimilation20260828.md)
+- [ComponentLifetimeTransportIdentity.md](ComponentLifetimeTransportIdentity.md)
+- [check_erdos1041_global_tree_admissible_product.py](scripts/check_erdos1041_global_tree_admissible_product.py)
+- [component_lifetime_transport_identity_tao_pipeline_receipt.json](component_lifetime_transport_identity_tao_pipeline_receipt.json)
+
+claim_boundary: Not a parent producer: under the failure hypothesis every degree >= 2 component can satisfy 2 L_W + p_W > 2 d while degree-one singleton loops absorb the entire global negative defect, which is exactly the virtual-cut/grafting residual of AdmissibleCriticalArcProductLab.md; the universal pointwise form is refuted by universal_radial_contour_sharp_criterion_no_go_2026_08_28 (z^2 - (5/6)^2) and negative entry 65. Fixed-level specialization is the occupied (PP2) of PartialClusterPreimagePerimeterIdentity.md. Parent claim ceiling unchanged.
+
+### exterior_root_product_covering_2026_08_29
+
+Exterior root-product covering lemma (landed from return B of batch erdos1041_20260829_meanshift_fullparent, independently re-derived). For m>=1, b_1..b_m in D, 0<r<1, B=prod|b_j|, F(z)=prod_j (1-r conj(b_j) z)/(1-conj(b_j) z), the value Lambda=(1-r^m B)/(1-B) lies in F(closed unit disk); hence max_{|z|=1} prod_j |z-r b_j|/|z-b_j| >= Lambda, and the stronger Apollonius covering {|lambda: |lambda-1| < B |lambda-r^m|} subset F(D) holds. The constant is exact: for the symmetric configuration b_j = rho e^{i(theta+2pij/m)} the boundary modulus |F| is identically Lambda, and for m=1 the boundary maximum equals Lambda for every configuration. Landed WITHOUT a live parent consumer: the returned 'activated last-lobe reduction' that would consume it (obstruction (2) = exact negation of the lemma) appears nowhere in the corpus or packets and is unproved, so no parent ceiling change follows.
+
+Evidence/status: ordinary_exact_auxiliary_theorem_with_lean_scalar_kernel_and_exact_sharpness
+
+- [ExteriorRootProductCovering.md](ExteriorRootProductCovering.md)
+- [check_erdos1041_exterior_root_product_covering.py](scripts/check_erdos1041_exterior_root_product_covering.py)
+
+### aggregate_n3_psh_uniformity_closure_2026_08_30
+
+For the exact cubic near-radial deficit D(phi) of AggregateN3InnerModelClosedForm, the wall-free arm aggregate has the locally uniform expansion Sigma_c L(c)=4-2|s|D(-3 arg s)+O(|s|^2). A general test-function tangent-cone lemma says that if a subharmonic function has u(re^{i theta})=u_0+r a(theta)+O(r^2) locally uniformly, then a+a''>=0 distributionally. Applying the landed per-cell plurisubharmonicity of the arm aggregate with a(theta)=-2D(-3theta) gives D+9D''<=0. Wronskian comparison against h(phi)=D(0)cos((phi-pi/2)/3)/cos(pi/6) proves D(phi)>=h(phi)>=D(0)>=(3pi-8)/16>0 on every phase. Thus the saddle-connection wall is the global phase minimum by proof and the former psh-uniformity residual is closed.
+
+Evidence/status: ordinary_exact_subharmonic_tangent_cone_theorem_with_scalar_lean_source_pending_focused_validation
+
+- [AggregateN3PshUniformityClosure.md](AggregateN3PshUniformityClosure.md)
+- [check_erdos1041_aggregate_n3_psh_uniformity.py](scripts/check_erdos1041_aggregate_n3_psh_uniformity.py)
+- [AggregateN3PshUniformity.lean](AggregateN3PshUniformity.lean)
+
+claim_boundary: Closes all-phase positivity only for the first-order near-radial AGG3 coefficient. The Banach-valued plurisubharmonicity, distributional tangent limit, uniform inverse-branch asymptotic, and calculus maximum principle are ordinary analytic mathematics. The scalar Lean source is present, but focused Lake validation is pending because the live firewall terminated the private-project build during an exclusive canonical-root release window before any theorem diagnostic. AGG3 away from the near-radial shell and unrestricted Erdos 1041 remain open; AGG is false for every recorded degree n>=4 witness.
+
+### quintic_trace_max_universal_chamber_2026_08_30
+
+For every non-pure low-mode quintic H(z)=z^5+b_2 z^2+b_1 z and nonzero trace-maximal critical hub c, put mu=b_2/c^3 and phi=arg(c^5). With z=c(1+x), H(c(1+x))-H(c)=c^5 x^2(x^3+5x^2+10x+10+mu), the other critical displacements solve 5x^3+20x^2+30x+20+2mu=0, and their selected-to-other value gaps are c^5 g(x) with g(x)=x^3(3x^2+10x+10)/2. Modulo the critical cubic this gap collapses further to g=x(2mu+20-3mu x)/5; after y=x+4/3 the critical cubic is depressed and the gap is bilinear. Trace-maximality is exactly the three half-plane inequalities Re(e^(i phi)g(x_j))>=0. The rightward pair excess factors exactly as E_pair(H,c)=|c| E_universal(mu,phi). A quantitative Rouche argument proves the universal chamber compact with |mu|<67500. On the real mu-axis the chamber is exactly [alpha_1,-10] union [alpha_2,alpha_3] union {50+30sqrt(3)}, where alpha_1,alpha_2,alpha_3 are the three real roots of 27M^5+5450M^4+23000M^3-105000M^2-700000M-1000000, isolated respectively in (-198,-197),(-4,-3),(5,6).
+
+Evidence/status: ordinary_exact_compact_universal_reduction_with_lean_algebra_kernel_and_exact_real_axis_classification
+
+- [QuinticTraceMaxUniversalChamber.md](QuinticTraceMaxUniversalChamber.md)
+- [check_erdos1041_quintic_trace_max_universal_chamber.py](scripts/check_erdos1041_quintic_trace_max_universal_chamber.py)
+- [QuinticTraceMaxUniversalChamber.lean](QuinticTraceMaxUniversalChamber.lean)
+
+claim_boundary: This is an exact compactification and a complete exact classification only of the real-mu chamber, not a proof of the universal excess inequality. Separate analytic certificates prove the one-face point mu=0, the isolated tangent point mu=50+30sqrt(3), and the entire allowed canonical mu=-10 phase arc. The chamber-wall reduction leaves EX-W, and the weighted wall-sheet maximum principle further reduces its regular sheets to one-real-dimensional double-tight branches plus gap-zero and triple-hub puncture limits. The real-scale transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+### quintic_tangent_curved_excess_certificate_2026_08_30
+
+At the isolated tangent point (mu,phi)=(50+30sqrt(3),-pi/2) of the quintic trace-max universal chamber, the canonical curved rightward inverse-ray pair has strictly negative excess. In the real normal form G(V)=V^5+40V^2-60V with hub h=sqrt(3)-1, the two upward arms are the unique algebraic graphs P(A,t^2)=0 on A>0 and A<0. Exact resultants and Sturm isolation prove tangent-slope ranges 0<p_R<1 and 7/8<p_L<7/5, exactly one finite transverse extremum on each arm, and Osc_R<277/1000, Osc_L<63/2000. The support-oscillation lemma then gives E_pair<=-19517458527181/5000000000000000<0. Positive similarity proves E_universal(50+30sqrt(3),-pi/2)<0.
+
+Evidence/status: ordinary_exact_curved_inverse_ray_excess_theorem_with_resultant_sturm_interval_certificate_and_lean_algebra_kernel
+
+- [QuinticTangentCurvedExcessCertificate.md](QuinticTangentCurvedExcessCertificate.md)
+- [check_erdos1041_quintic_tangent_curved_excess.py](scripts/check_erdos1041_quintic_tangent_curved_excess.py)
+- [QuinticTangentCurvedExcessCertificate.lean](QuinticTangentCurvedExcessCertificate.lean)
+
+claim_boundary: This row proves the isolated tangent gauge orbit only. The full canonical mu=-10 phase arc is closed by a separate exact uniform certificate, but the remaining one-dimensional EX-W boundary and puncture obligations, real-scale transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+surviving_obligation: Certify the degree-ten double-tight wall branches and the gap-zero/triple-hub puncture limits, then discharge the actual-polynomial real-scale transfer. The degree-five theorem and unrestricted Erdos 1041 remain open.
+
+### quintic_minus_ten_central_excess_certificate_2026_08_30
+
+At the central point (mu,phi)=(-10,0) of the repeated-critical boundary of the quintic trace-max universal chamber, the limiting pair from the real simple-hub chamber is the conjugate pair of F(x)=x^3(x^2+5x+10)=s born in directions plus or minus 2pi/3. Writing x=a+ib and t=a/b reduces the entire upper branch to the quadratic equation (5t^4-10t^2+1)b^2+20t(t^2-1)b+10(3t^2-1)=0. A 256-cell exact rational tangent partition, exact Sturm slope exclusions, Bernstein tail bounds, and the support-oscillation identity prove E_universal(-10,0)<-2853/100000<0.
+
+Evidence/status: ordinary_exact_repeated_critical_curved_pair_excess_theorem_with_sturm_bernstein_rational_interval_certificate_and_lean_algebra_kernel
+
+- [QuinticMinusTenCentralExcessCertificate.md](QuinticMinusTenCentralExcessCertificate.md)
+- [check_erdos1041_quintic_minus_ten_central_excess.py](scripts/check_erdos1041_quintic_minus_ten_central_excess.py)
+- [QuinticMinusTenCentralExcessCertificate.lean](QuinticMinusTenCentralExcessCertificate.lean)
+
+claim_boundary: This row remains the sharper pointwise theorem at (mu,phi)=(-10,0); the full phase-arc theorem supplies uniform closure for the canonical pair. It does not identify every direction-dependent wall-sheet tract-pair limit or prove the remaining one-dimensional EX-W obligations, real-scale transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: The canonical mu=-10 phase arc has no surviving excess subarc. Certify the degree-ten double-tight wall branches and all exceptional puncture limits, then discharge the actual-polynomial real-scale transfer; degree five and unrestricted Erdos 1041 remain open.
+
+### quintic_minus_ten_endpoint_excess_certificate_2026_08_30
+
+Let phi_0=arctan(1/(2sqrt(2))), the two endpoints of the allowed phase arc on the mu=-10 repeated-critical stratum. At each point (mu,phi)=(-10,+-phi_0), the canonical limiting curved inverse-ray pair has excess below -1/80. Writing an upper arm as x=b(t+i) and q=tan(phi) gives the quadratic curve A_q(t)b^2+B_q(t)b+C_q(t)=0. For q=+-1/(2sqrt(2)), exact rational isolation of the cubic start direction and terminal degree-ten root, a 640-cell interval partition on each arm, and a full degree-120 eliminated Sturm polynomial bounding every unresolved transverse turn prove J_-<7/20 and J_+<11/40. Exact node-to-cell gluing, w=0 and w=1 endpoint attachment, and positive physical-ray orientation are checked on the selected branches. The support-oscillation fan-in gives E_universal(-10,+-phi_0)<-1/80<0.
+
+Evidence/status: ordinary_exact_repeated_critical_endpoint_curved_pair_excess_theorem_with_resultant_sturm_rational_interval_certificate_and_lean_algebra_kernel
+
+- [QuinticMinusTenEndpointExcessCertificate.md](QuinticMinusTenEndpointExcessCertificate.md)
+- [check_erdos1041_quintic_minus_ten_endpoint_excess.py](scripts/check_erdos1041_quintic_minus_ten_endpoint_excess.py)
+- [QuinticMinusTenEndpointExcessCertificate.lean](QuinticMinusTenEndpointExcessCertificate.lean)
+
+claim_boundary: This row remains the sharper pointwise theorem at the two endpoint phases phi=+-arctan(1/(2sqrt(2))); the full phase-arc theorem supplies uniform closure for the canonical pair. It does not identify every direction-dependent wall-sheet tract-pair limit or prove the remaining one-dimensional EX-W obligations, real-scale transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: The canonical mu=-10 phase arc has no surviving excess subarc. Certify the degree-ten double-tight wall branches and all exceptional puncture limits, then discharge the actual-polynomial real-scale transfer; degree five and unrestricted Erdos 1041 remain open.
+
+### quintic_minus_ten_full_arc_excess_certificate_2026_08_30
+
+Let phi_0=arctan(1/(2sqrt(2))). For every allowed phase |phi|<=phi_0 on the mu=-10 repeated-critical stratum, the canonical pair of limiting curved inverse-ray arms has universal excess below -1/100. For signed zeta=tan(phi), the fixed coordinates t=r(zeta)+(k(zeta)-r(zeta))y and w=b(k-t) reduce the selected arm to one quadratic equation S=0 on 0<=y<=1. The exact identities kY-X=-(k-t)^2 S_t and w_y=-(k-r)S_t/S_w give the nonnegative square-integrand formula tan(|theta|/2)|w_y|=(k-r)^3(1-y)^2 S_t^2/(S_w Delta). An outward-rounded 2^-80 dyadic atlas isolates and glues every selected branch, proves S_w,Y,Delta>0, bounds 64 phase anchors with 640 point cells per signed arm, and transports each anchor over its phase slab using exact first-order interval jets on 128 dual cells. The exact rational fan-in proves E_universal(-10,phi)<-1/100<0 uniformly. This closes EX-10.
+
+Evidence/status: ordinary_exact_uniform_full_repeated_critical_phase_arc_excess_theorem_with_dyadic_interval_atlas_and_lean_algebra_status_firewall
+
+- [QuinticMinusTenFullArcExcessCertificate.md](QuinticMinusTenFullArcExcessCertificate.md)
+- [check_erdos1041_quintic_minus_ten_full_arc_excess.py](scripts/check_erdos1041_quintic_minus_ten_full_arc_excess.py)
+- [QuinticMinusTenFullArcExcessCertificate.lean](QuinticMinusTenFullArcExcessCertificate.lean)
+
+claim_boundary: This is an exact all-phase theorem only for the canonical pair on the universal mu=-10 repeated-critical stratum. The finite exact Python atlas is theorem authority; Lean supplies an algebraic replay/status firewall rather than an end-to-end proof. The separate wall-limit side-arm theorem, rather than an implicit identification with the canonical pair, closes the direction-dependent nonzero-active triple-hub limits. EX-W, model-to-real transfer, the degree-five real theorem, and unrestricted Erdos 1041 remain open.
+
+surviving_obligation: The canonical mu=-10 phase arc and both mu* gap-zero phase fibres now have no surviving excess subarc. A later exact side-arm theorem also closes every nonzero-active wall-sheet puncture limit above mu=-10. Certify only the regular compact one-real-dimensional double-tight wall carrier, then discharge the model-to-real consumption law. Degree five and unrestricted Erdos 1041 remain open.
+
+### quintic_minus_ten_wall_limit_side_arm_certificate_2026_08_30
+
+At the two nonzero-gap wall phases on the mu=-10 triple-hub fibre, the three approach lobes limit to the tract pairs {T0,T1}, {T1,T4}, and {T0,T4}. The canonical pair has the earlier exact ceiling -1/80. For the single missing shallow arm, the upper q=-1/(2sqrt(2)) quadratic curve has start r=cot(phi0/3), terminal k=cot(phi0/5)>14, and transverse coordinate w=b(k-t). Exact coefficient signs give one global positive root 0<w<1. The degree-120 stationary eliminant factors as the degree-10 terminal polynomial times a degree-110 quotient having no root on [8.7899,14.7]; one exact section orients w_t>0. The outward arm therefore has support budget J<1 and excess e0<-13/15. Combining with the earlier individual arm bounds e_-<1/10 and e_+<-9/80 gives exact ceilings -23/30, -1/80, and -47/48 for all three tract pairs. Conjugation handles the opposite phase.
+
+Evidence/status: ordinary_exact_all_nonzero_active_mu_minus_ten_wall_limit_resolution_theorem_with_degree_110_sturm_certificate
+
+- [QuinticMinusTenWallLimitSideArmCertificate.md](QuinticMinusTenWallLimitSideArmCertificate.md)
+- [check_erdos1041_quintic_minus_ten_wall_limit_side_arm.py](scripts/check_erdos1041_quintic_minus_ten_wall_limit_side_arm.py)
+
+claim_boundary: The theorem covers all three wall-limit tract-pair resolutions only at the mu=-10 puncture. The separate exact endpoint and angular theorems close both mu* fibres. This row does not certify the ordinary double-tight carrier, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: Certify the ordinary compact one-dimensional double-tight wall branches to close EX-W; the two mu* gap-zero phase fibres are now closed separately. Model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+### quintic_wall_sheet_subharmonic_reduction_2026_08_30
+
+On the normalized critical-root cover mu(u)=-(5/2)(u+2)(u^2+2u+2), let lambda(u)=g(u) be a selected nonzero tight gap and choose the wall phase by exp(i phi)lambda=-eps i|lambda|. A local fifth root alpha^5=lambda, x=alpha y, and s=|lambda|tau turn the moving inverse ray into the fixed ray P(y)=eps i tau, where P=y^5+5cy^4+10c^2y^3+(10+mu)c^3y^2 and P-(y+c)^5=mu c^3y^2-5c^4y-c^5. The normalized excess U=mathcal E/|lambda|^(1/5) is a locally uniform limit of finite integrals of moduli of holomorphic inverse-branch derivatives minus a parameter-constant normalizer, hence is subharmonic on every regular lifted wall sheet. Sign(U)=sign(mathcal E), so the maximum principle reduces each two-real-dimensional regular sheet to its one-real-dimensional double-tight boundary plus limsup obligations at lambda=0 and mu=-10. The double-tight boundary has an exact degree-ten implicit cover P_t(x)=0 over the ordered real gap ratio t in [-1,1]; its only real root-branch events are t=(1-sqrt(3))/2,0,1.
+
+Evidence/status: ordinary_exact_weighted_subharmonic_wall_sheet_reduction_with_exact_degree_ten_boundary_algebra_checker
+
+- [QuinticWallSheetSubharmonicReduction.md](QuinticWallSheetSubharmonicReduction.md)
+- [check_erdos1041_quintic_wall_sheet_subharmonic_reduction.py](scripts/check_erdos1041_quintic_wall_sheet_subharmonic_reduction.py)
+
+claim_boundary: The weighted function U, not mathcal E itself, is proved subharmonic. The degree-ten critical-root polynomial is a valid implicit cover, while the later unordered critical-value theorem supplies the smaller atlas target. Separate exact theorems close all direction-dependent triple-hub and gap-zero limits; this row remains a genuine reduction, not a proof of EX-W or EX-U.
+
+surviving_obligation: Execute only the disjoint compact truncations of the twenty regular unordered critical-value double-tight branches. Exact side-arm, mu* endpoint-plus-angular, and event-excision theorems close all exceptional fibres and relative neighborhoods of every interior carrier event. This sole remaining effective model-metric class closes EX-W; model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+### quintic_double_tight_critical_value_carrier_2026_08_30
+
+Let Q_mu(Y)=Y^3+A Y^2+B Y+C be the exact cubic whose roots are the three quintic critical gaps, with A=4(mu+4), B=-(12/25)(3mu^3-5mu^2-100mu-200), and C=(4/3125)(mu+10)^3(27mu^2+140mu+200). For an unordered double-tight pair {a,b}, kappa=ab/(a^2+b^2) lies in [-1/2,1/2]. Eliminating the pair gives the degree-ten carrier K=C^2(1+kappa)^3-ABC kappa(1+kappa)(1+4kappa)+(A^3C+B^3)kappa^2(1+2kappa)-A^2B^2kappa^3. In fact K is minus the product of kappa(u^2+v^2)-uv over the three unordered critical-gap pairs. The pair sum and chamber ray are recovered rationally on every regular fibre. Exact discriminant and denominator resultants prove that the complete physical event set is -1/2,(1-3sqrt(3))/13,0,(1+3sqrt(3))/13,1/2 and that each of the four regular intervals carries exactly five upper-half-plane mu branches. The compact substitution s=(r/(1-r))^10, x=r^5 y/(1-r)^2 turns each hub arm into one polynomial equation on 0<=r<=1, regular at both endpoints, and gives the exact finite excess identity e_arm=integral(|V|-Re(conj(eta)V))dr-Re(conj(eta)).
+
+Evidence/status: ordinary_exact_compact_unordered_double_tight_critical_value_carrier_with_complete_event_resultants_and_hub_to_infinity_arm_chart
+
+- [QuinticDoubleTightCriticalValueCarrier.md](QuinticDoubleTightCriticalValueCarrier.md)
+- [check_erdos1041_quintic_double_tight_critical_value_carrier.py](scripts/check_erdos1041_quintic_double_tight_critical_value_carrier.py)
+
+claim_boundary: This is a proved exact carrier and compactification, not the completed sign atlas. The transverse-square rationalization may be used only on cells where its denominator is proved positive; otherwise the original nonnegative square-root defect must be bounded. It does not prove EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: Execute interval-Newton continuation and prove the uniform negative pair-excess bound only on the disjoint compact truncations of the twenty regular branches. The two mu* fibres, the mu=-10 fibre, and all relative neighborhoods of the three interior carrier events are already removed. This effective regular atlas is the sole remaining model-metric class before EX-W; model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+### quintic_mustar_angular_fiber_reduction_2026_08_30
+
+For mu*=(-70+10i sqrt(5))/27, F=x^2(x+(5+i sqrt(5))/3)^2(x+(5-2i sqrt(5))/3), and the nonzero critical gaps are collinear with ratio 2+sqrt(3). The exact allowed phase fibre is |phi-phi_c|<=pi/2, where exp(i phi_c)=(-19+5i sqrt(5))/(9sqrt(6)). For alpha^5 carrying the ray, Q_alpha(y)=alpha^-5 F(alpha y) has terminal defect Q_alpha-(y+alpha^-1)^5=mu*alpha^-3y^2-5alpha^-4y-alpha^-5. The normalized pair excess U(alpha)=mathcal E(phi(alpha))/|alpha| is subharmonic. On the fifth-root sector of opening L=pi/5, radial homogeneity writes U=A(theta)/r and gives A''+A>=0 distributionally. The Dirichlet Poincare inequality for L<pi places A below its sine interpolant. Hence endpoint bounds A(0),A(L)<=-a imply A<=-a on the entire sector because [sin(L-t)+sin(t)]/sin(L)>=1. Conjugation handles the other mu*.
+
+Evidence/status: ordinary_exact_short_sector_subharmonic_maximum_principle_reducing_each_mustar_halfcircle_to_two_endpoint_rays
+
+- [QuinticMuStarAngularFiberReduction.md](QuinticMuStarAngularFiberReduction.md)
+- [check_erdos1041_quintic_mustar_angular_fiber.py](scripts/check_erdos1041_quintic_mustar_angular_fiber.py)
+
+claim_boundary: The subharmonic angular maximum principle is an ordinary exact theorem, and its required endpoint hypotheses are now supplied by QuinticMuStarEndpointExcessCertificate.md. It does not prove the compact ordinary carrier, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: Both mu* gap-zero fibres are closed. Execute the compact ordinary double-tight atlas to close EX-W. Model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+### quintic_mustar_endpoint_excess_certificate_2026_08_30
+
+At mu*=(-70+10i sqrt(5))/27 the normalized endpoint level polynomial factors as P(u)=(u^2-1)^2(u+i sqrt(5)). The compact equation H_sigma=0 has H_y=((1-r)^8/r^5)P'(u), so longitudinal and transverse signs can be certified without quotient singularities. Exact resultant and Sturm filtering proves positive longitudinal speed on all four selected arms and transverse turn counts 1,0,0,0. The sole turn lies in a strict rational two-dimensional Krawczyk box and has Vmax<7/8. Exact terminal transverse and projection bounds then give E_+<547/500-147/100=-47/125 and E_-<7/6-47/30=-2/5, hence both endpoint pair excesses are below -3/8. No numerical quadrature is used.
+
+Evidence/status: ordinary_exact_gap_zero_endpoint_curved_pair_excess_theorem_with_resultant_sturm_krawczyk_rational_interval_certificate
+
+- [QuinticMuStarEndpointExcessCertificate.md](QuinticMuStarEndpointExcessCertificate.md)
+- [check_erdos1041_quintic_mustar_endpoint_excess.py](scripts/check_erdos1041_quintic_mustar_endpoint_excess.py)
+
+claim_boundary: This theorem proves the two endpoint curved-pair inequalities on one mu* fibre; the separate angular maximum principle and conjugation are required for full-fibre closure. It does not prove the ordinary double-tight atlas, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: The regular compact 4 x 5 x 2 x [0,1] double-tight atlas is the sole remaining model-metric obligation before EX-W. Model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open.
+
+### quintic_double_tight_event_excision_2026_08_30
+
+On the exact degree-ten unordered double-tight carrier, every interior singular event fibre has a relative open neighborhood on which the selected pair excess is strictly negative. At kappa=(1-3sqrt(3))/13 and kappa=(1+3sqrt(3))/13, the exact double-root tangent cones have finite nonreal conjugate slopes and fresh outward-rounded dyadic-ball evaluations give E<-1/6 and E<-1 respectively at the incident triple-tight centres. At kappa=0, exact factorization and squarefree Newton charts exhaust the limiting fibres as mu=-10 and the conjugate pair mu*=(-70+-10i sqrt(5))/27; the earlier mu=-10 wall-limit and mu* endpoint-plus-angular theorems give strict negative limits. Local uniform continuity on every incident regular chart then supplies the required relative negative neighborhoods.
+
+Evidence/status: ordinary_exact_event_excision_theorem_with_symbolic_newton_charts_continuity_and_dyadic_ball_point_certificates
+
+- [QuinticDoubleTightCompactAtlas.md](QuinticDoubleTightCompactAtlas.md)
+- [check_erdos1041_quintic_double_tight_compact_atlas.py](scripts/check_erdos1041_quintic_double_tight_compact_atlas.py)
+
+claim_boundary: No numerical neighborhood radius, global monotonicity in kappa, or endpoint-domination theorem is claimed. Restricting the subharmonic wall function to the real carrier does not justify endpoint domination and tracked branches have interior bumps. This theorem does not prove the remaining regular subatlas, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
+
+surviving_obligation: Prove a uniform negative pair-excess bound on the disjoint regular compact branch truncations, for example by interval Newton plus a derivative budget or a finite semialgebraic support-variation certificate. Then compose the model-to-real transfer. Degree five and unrestricted Erdos 1041 remain open.
+
+### quintic_double_tight_positive_decade_continuation_2026_08_30
+
+On the connected positive regular interval 4949/500000 <= t <= 12116785580404918688981310598233490936176657/655360000000000000000000000000000000000000000, the unordered quintic double-tight carrier has exactly five pairwise-disjoint upper-half-plane sheets and the complete selected-pair excess is strictly negative on every sheet. Eighteen exact rational affine-predictor rows give ninety strict two-variable Krawczyk carrier cells, twenty exact sign-transport macro blocks, and eighty-five consecutive-overlap uniqueness tests. The first row overlaps the earlier cusp continuation. The weakest certified excess is below -0.000846889; the weakest carrier determinant, wall-orientation cross, and upper-tube separation are respectively above 79.8120664, 0.00199119464, and 0.0107790003.
+
+Evidence/status: ordinary_exact_common_five_sheet_krawczyk_continuation_and_negative_excess_certificate
+
+- [QuinticDoubleTightPositiveDecadeContinuation.md](QuinticDoubleTightPositiveDecadeContinuation.md)
+- [check_erdos1041_quintic_double_tight_positive_decade_continuation.py](scripts/check_erdos1041_quintic_double_tight_positive_decade_continuation.py)
+
+claim_boundary: No sign, continuation, or sheet count is asserted beyond the exact displayed interval. This does not close the remaining regular quintic carrier, EX-W, degree five, or unrestricted Erdos 1041. The generic consequence-map matches on A_SEED and MU_SEED in eight sibling checkers are lexical variable-name collisions; those independent validators require no change.
+
+surviving_obligation: Certify the remaining disjoint compact regular double-tight truncations outside the displayed interval, then compose the already-proved quintic model-to-real transfer and solve the surviving all-degree containment/selection splice.
+
+### first_merge_critical_value_separation_certificate_2026_08_30
+
+Let f be monic of degree n>=3 and let c be a nonzero simple critical hub. If every other critical point d satisfies |1-f(d)/f(c)|>=S>1, then after normalizing f(c)=1 the square-root resolution P(Z(xi))=1-xi^2 has no unresolved branch point in |xi|<sqrt(S), so either local saddle sheet continues holomorphically and injectively across that disk. The area formula, Polya's area-capacity inequality for {|P|<1+R^2}, and coefficient Cauchy-Schwarz give integral_{-1}^1 |Z'(xi)| dxi <= 2*(1+S)^(1/n)*sqrt(log(S/(S-1))). Hence the connector is shorter than two whenever (1+S)^(2/n)log(S/(S-1))<1. Exact convenient thresholds are S=4 for n>=3, S=3 for n>=4, and S=2 for n>=7. Scaling back produces two distinct roots joined inside {|f|<=|f(c)|}; with open-unit-disk roots the Fekete chain gives |f(c)|<1, proving Erdos 1041 for the polynomial.
+
+Evidence/status: ordinary_exact_all_degree_parent_theorem_in_the_separated_simple_first_merge_regime
+
+Superseded by **disk_family_critical_value_separation_2026_09_02**. Use that stronger result.
+
+- [FirstMergeCriticalValueSeparationCertificate.md](FirstMergeCriticalValueSeparationCertificate.md)
+- [check_erdos1041_first_merge_critical_value_separation.py](scripts/check_erdos1041_first_merge_critical_value_separation.py)
+
+claim_boundary: The three convenient thresholds are sufficient, not claimed sharp; the exact condition is (1+S)^(2/n)log(S/(S-1))<1. The theorem requires a simple nonzero critical hub and gives no estimate below that curve or when the selected saddle is multiple. The consequence-map matches on the generic symbol D_2 outside this source are lexical collisions and do not change those consumers. The unrestricted problem remains open precisely because the clustered complement is not covered. SUPERSEDED 2026-09-02 by disk_family_critical_value_separation_2026_09_02, which improves every constant and frees the centre; this row is retained as history.
+
+surviving_obligation: Cover the complementary clustered or near-tied critical-value regime below the exact terminal curve, including multiple saddles, by grouped resolved covers, partial-cluster monodromy, a moved-block/attachment inequality, or another global producer.
+
+### disk_family_critical_value_separation_2026_09_02
+
+Let f be monic of degree n>=3, c a simple non-root critical point, v=f(c), and normalize P(w)=f(c+|v|^(1/n)w)/v so that P(0)=1, P'(0)=0, with other critical values v_j=f(d_j)/v. Fix a real centre w0 in [0,1] and a radius S>max(w0,1-w0) with |v_j-w0|>=S for every j, and put p=w0(1-w0). Then the square-root resolution P(Z(xi))=1-xi^2 extends to a conformal bijection of the Cassini domain {|xi^2-(1-w0)|<S} onto the two-sheeted component U of {|P-w0|<S} containing 0, the endpoints Z(+-1) are distinct roots, the connector lies in {|P|<=1}, and len(Z([-1,1]))^2 <= 2 (S/(n-1))^(2/n) log((S^2+S+p)/(S^2-S+p)). The proof composes the Bergman segment inequality Lemma A (the connector is the image of the real diameter [-q,q], q^2=S/(S^2+p), under the composed uniformiser), Polya's Area(K)<=pi cap(K)^2 on closure(U), and the exterior-fibre product gap cap(closure U)^n/S<k/(2n-k) at k=2 for the proper regular component of the unimodular-leading lemniscate of P-w0. Hence two roots of f are joined inside {|f|<=|v|} by a path shorter than 2|v|^(1/n) whenever C(n,S,p)=(S/(n-1))^(2/n) log((S^2+S+p)/(S^2-S+p))<2; with open-unit-disk roots and |v|<1 (any simple minimising hub) this proves Erdos 1041 for f. Uniform thresholds: C<2 for every n>=3, every 4/3<=S<=2, every p in [0,1/4]; so separation 4/3 from any real centre of the value segment [0,1], in particular |1-v_j|>=4/3 or |v_j|>=4/3, suffices in every degree. Radius 2 at the branch centre works for every n>=3 (formerly n>=6) and radius 6/5 already at n=3. Exact per-degree endpoint thresholds S_n^*: 1.10892 (n=3), 1.07318 (4), 1.06981 (5), 1.07347 (6), 1.09994 (10), 1.25415 (100), tending to coth(1)=1.31303; interior centres are sharper (S_3^*(1/2)=0.63053).
+
+Evidence/status: ordinary_exact_all_degree_parent_theorem_in_the_disk_separated_simple_hub_regime_with_lean_checked_threshold_kernel_and_recorded_adversarial_falsifier
+
+- [DiskFamilyCriticalValueSeparation.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md)
+- [DiskFamilyCriticalValueSeparation.lean](DiskFamilyCriticalValueSeparation.lean)
+- [check_erdos1041_disk_family_critical_value_separation.py](scripts/check_erdos1041_disk_family_critical_value_separation.py)
+
+claim_boundary: The thresholds are sufficient, not claimed sharp; equality in the Bergman step needs a specific derivative and equality in Polya needs a disk, neither attained by a polynomial component. The theorem needs a simple hub; it is silent at multiple saddles. Dubinin (J. Math. Sci. 193 (2013)) Theorem 1, the relative Polya inequality flagged by the 2026-09-02 prior-art pass, enters neither this proof nor the 2026-08-30 one; it is the branch monotonicity used by actual_component_merge_tree_area_lower_bound and should be cited there. Its full text was not obtained. No literature-priority claim. Unrestricted Erdos 1041 remains open.
+
+surviving_obligation: Cover the near-tie lens, where the second critical value is within ratio coth(1) of the first in modulus and within about 82 degrees in argument; the extremal family sits at its centre and saturates the target, so no Bergman/Polya estimate with positive loss can close it and an exact near-Fekete argument is required. The three-sheeted resolved cover over a disk containing both 1 and v_2 is simply connected but its Bergman constant diverges like log(1/|1-v_2|).
+
+### abel_control_polygon_and_all_degree_trinomial_conclusion
+
+At a root zeta of a degree-n polynomial with coefficients c, the radial value obeys the Abel control-polygon identity sum_(j<n) (t^j - t^(j+1)) S_j(zeta) = p(t zeta) with S_j(zeta)=sum_(k<=j) c_k zeta^k; the weights are non-negative and sum to 1-t^n, giving the finite certificate |p(t zeta)| <= R (1-t^n) for R = max_(j<n) |S_j(zeta)|. Specialising to the monic trinomial z^n + a z^m + b with 1<=m<n, at a root one has the exact cancellation (t zeta)^n + a (t zeta)^m + b = b(1-t^m) + zeta^n (t^n - t^m), so every radial segment from 0 to every root stays strictly inside {|f|<1}. The constant bound |b|<1 is DERIVED from the root hypothesis by Vieta on the monic X^n + C a X^m + C b, not assumed. Hence for any two roots the packaged conclusion gives both radial segments inside the lemniscate together with |zeta_1|+|zeta_2|<2, with a completely unrestricted. The pivot form generalises the cancellation to an arbitrary intermediate exponent, eliminating a_m from the radial value and yielding the sufficient condition N_m(t) <= t^n + delta(1-t^m) with delta = 1-|a_0|.
+
+Evidence/status: lean_checked
+
+- [AbelControlPolygon.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AbelControlPolygon.lean)
+
+claim_boundary: This is an unconditional SOLVED FAMILY, not progress on the unrestricted problem: Erdos 1041 remains open. PRIOR OVERLAP, verified on disk before landing: CyclicTrinomialFiberCase.trinomialRoot_spoke_factorization and trinomialRoot_spoke_norm_lt_one_of_norm_lt_one already carried the three-term cancellation and the radial containment estimate in quotient-variable form, but with |c|<1 as a HYPOTHESIS and no geometric conclusion attached; cyclicTrinomial_two_short_fiber_displacements and EvenSymmetricTrinomialCase.two_short_displacements_give_short_hub already carried |zeta_1|+|zeta_2|<2; CyclicTetranomialCoefficientCase hand-instantiates the Abel factorisation at four terms; TrinomialInterpolationSpoke.interpolation_remainder_identity carries the pivot remainder in difference form. What is new here is the general-n partial-sum control-polygon identity, the R(1-t^n) certificate, the DERIVATION of |b|<1 from the roots, the packaged conclusion assuming only that all roots lie in the open disc, and the direct pivot form with its sufficient condition. No erdos1041Conclusion or shortRootPath predicate exists in the tree, so containment and length are stated directly. NOT landed: the Newton-face constant kappa_(n,q) and its scalar inner approximation.
+
+### sextic_prescribed_spoke_guardrail
+
+For f_r(z) = z^6 + (1/5) r^2 z^4 - (1/5) r^4 z^2 - r^6 = (z^2-r^2)(z^4 + (6/5) r^2 z^2 + r^4), every zero has modulus exactly r, and f_r(r/2) = -(327/320) r^6. Hence for 0<r<1 with r^6 > 320/327 every zero lies strictly inside the open unit disc while the prescribed spoke to the root r leaves the unit lemniscate. Exactly one intermediate coefficient cannot produce this: the Abel partial sums must leave the value disc and return, which needs at least two active intermediate modes.
+
+Evidence/status: lean_checked
+
+- [AbelControlPolygon.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AbelControlPolygon.lean)
+
+claim_boundary: This refutes a SELECTOR, not the problem. f_r is not a counterexample to Erdos 1041: a different cyclic fibre supplies a short path, since for the non-real root lambda of lambda^2 + (6/5) lambda + 1 one has |h(u lambda)| <= 1 on (0,1], so the two roots plus/minus r sqrt(lambda) are joined through 0 with length 2r < 2. That positive half is NOT formalised and is recorded here as prose only. It also marks the exact limit of the trinomial radial mechanism above. Previously the guardrail lived only as prose in BarycentricEnvelope.md section 5; BarycentricEnvelope.lean does not contain it.
+
+### free_point_diameter_and_geodesic_all_degree
+
+The free-point functional S_m = sum_j (prod_k |1 - conj(c_j) c_k|)^(1/m) is now STATED in Lean for the first time. Two unconditional all-degree theorems. On the real diameter, row-wise AM-GM gives the strictly stronger S_m <= m(1 - xbar^2) <= m, with equality only at the origin: equality forces xbar = 0, and then prod_k (1 - x_j x_k) <= (1 - x_j^2) e^(x_j^2) < 1 unless x_j = 0. On ANY hyperbolic geodesic psi_beta(x) = (x + i beta)/(1 - i beta x), the cleared Gram identity |1 - conj(psi(s)) psi(t)| sqrt(1+(beta s)^2) sqrt(1+(beta t)^2) = (1-beta^2)(1 - s t) holds exactly - the difference of the two sides is beta^2 (1 - s t)(I^2 + 1) - so every pseudo-distance is dominated by the corresponding real chord and S_m <= m(1 - xbar^2) <= m transfers. Landed for beta^2 <= 1, slightly more general than the beta < 1 of the source, since |beta| = 1 puts the configuration on the unit circle where S_m = 0.
+
+Evidence/status: lean_checked
+
+- [FreePointHilbertCertificate.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointHilbertCertificate.lean)
+
+claim_boundary: NOVELTY OF THE GEODESIC STATEMENT IS UNASSESSED; no priority is claimed. Before this module no Lean file in ErdosProblems/Erdos1041 stated the free-point functional at all - FreePointFP4Complete is a scalar algebraic kernel and FreePointTorusPshReduction is an exponent bridge; the corpus's FP_m work lived in markdown companions with Python checkers. Moebius and Blaschke parametrisations appear in several companions but never attached to this functional. These are special configurations: a diameter and a geodesic. They say nothing about the general FP_m and nothing about Erdos 1041, which remains open - free-point control is an arithmetic mean of critical-value capacities and carries no implication to a single short root-to-root curve.
+
+### free_point_hilbert_chord_and_central_radius_conditional
+
+The Hilbert chord lemma is landed over a general real InnerProductSpace: with u the mean of the v_j and B any bound on their norms, the mean of exp(-<v_j,u>) is at most F_B(r) = cosh(Br) - (r/B) sinh(Br) at r = ||u||. F_B(r) < 1 for every r > 0 when B^2 <= 2, and F_B(B) = exp(-B^2), so the abstract method's constant 2 is anchored at both ends. The central radius sqrt(1 - e^(-2)) = 0.9298734950321937 satisfies -log(1 - rho^2) <= 2. The route avoids the source's derivative computation entirely: with x = Br and B^2 <= 2, F_B(r) <= cosh x - (x/2) sinh x, which halves to sinh t < t cosh t, so only one derivative is ever taken.
+
+Evidence/status: lean_checked
+
+- [FreePointHilbertCertificate.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointHilbertCertificate.lean)
+
+claim_boundary: THE CENTRAL-RADIUS THEOREM IS THE NAMED-HYPOTHESIS VERSION, NOT THE ELL-2 ONE. freePointSum_central_le_of_series assumes the energy identity and the Cauchy-Schwarz row bound as explicit hypotheses; those are exactly ROWCERT+ steps (i)-(iii) and are NOT discharged here. The ell^2 feature-map bridge - v(c) = (c, c^2/sqrt2, ...) with ||v(c)||^2 = -log(1-|c|^2) - was not attempted, and a finite-dimensional truncation was deliberately NOT substituted as a stand-in, because a truncated map does not satisfy that identity exactly and would need its own weaker radius plus a limit argument. Comparison, stated honestly: the corpus's per-m ROWCERT+ central radii are about 0.943806, 0.931680, 0.924452, 0.919669 for m = 3,4,5,6 tending to 0.896360, so the Hilbert radius 0.929873 is WEAKER at m = 3 and 4 - both already solved - and stronger for every m >= 5, uniform in m, with no box computation. Item 5's unique later root r_*(B) and the balanced-cone reduction are not landed; only the outer anchor F_B(B) = e^(-B^2) is.
+
+### weighted_quadratic_free_point_all_degrees
+
+For finitely many closed-disc points c_j and positive weights w_j summing to one, G(z)=product_k |1-conj(c_k)z|^{w_k} satisfies sum_j w_j G(c_j)^2 + sum_(nu>=1)(2nu-1)|a_nu|^2 <= 1, where a_nu are the Taylor coefficients of exp(sum_k w_k log(1-conj(c_k)z)). In particular sum_j w_j G(c_j)^2 <= 1-|sum_j w_j c_j|^2, with equality in the bound by one only at the origin configuration. Equal weights close FP_m for every m. The torus/psh bridge proves sum_j |f(w_j)|^{2/(n-1)} <= (n-1)R^{2n/(n-1)}, hence (S)_n in every degree.
+
+Evidence/status: ordinary_proof_verified_not_lean_formalized
+
+- [FreePointQuadraticAllDegrees.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md)
+
+claim_boundary: Ordinary analytic proof. The critical-value mean does not supply the missing root-to-root metric connector.
+
+### robust_merge_scalar_separation_and_one_root_bergman
+
+For every n>=2 and r with r^2 artanh(r^2)>2, an open coefficient neighbourhood of z^n-r^n fails the connected-cluster scalar at every regular multi-root level, while a strict full-cycle lollipop proves the parent on that neighbourhood. For a regular degree-k component C of |f|<t and h in C, some root a has d_C(h,a)^2 <= Area(C)/pi log(1/(1-(|f(h)|/t)^(2/k))). A strict uniform bound below one over a connected root-carrying continuum gives a length-below-two connector.
+
+Evidence/status: ordinary_proof_verified_not_lean_formalized
+
+- [R2MergeNodeSeparation.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/R2MergeNodeSeparation.md)
+
+claim_boundary: The regular-polygon no-go was already known. Robustness and the explicit one-root composition are additional; no universal forcing or parent theorem is asserted.
+
+### all_arity_unique_active_stationarity_exclusion
+
+For m>=2, the fixed-product attached-ray selector has no positive-valued stationary point in a cell with a unique active ray, a unique nondegenerate interior radial optimizer, and all angular/radial constraints strict. Angular and radial stationarity force all points to coincide, contradicting unique activity. This removes every smooth single-active stationary stratum at every level, strengthening the returned level-one local-maximum exclusion.
+
+Evidence/status: ordinary_proof_verified_not_lean_formalized
+
+- [SmoothUniqueActiveContactExclusionAllArity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SmoothUniqueActiveContactExclusionAllArity.md)
+
+claim_boundary: Does not remove multi-active switches, optimizer switches, closed boundaries or the regular orbit.
+
+### low_critical_potential_closure_all_degrees_2026_09_05
+
+Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=199/1000 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on the root locations, the first-merge arity, or any component capacity is needed. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f| < (1000/199) mu} by a curve of length below 2 ((1000/199) mu)^(1/n). The proof fixes a compact connected Gamma in K_mu through the least critical point, follows its ancestor component C_t, and plays two failure inequalities against each other at every level x=log(t/mu): COVER failure forces arity k(x) >= 2x/delta(a(x)) with delta(a)=-log(1-exp(-1/a)) and a(x)=Area(K_t)/pi (one-root Bergman plus the connected clopen-cover lemma), while boundary-hop failure forces the area growth a'(x) >= (1/(2 pi^2))[2 sqrt(k) - sqrt(2a(x+2))]_+^2 (averaged radial-lift lemma int L^2 <= Area/pi replacing Koebe, coarea, and the per-component perimeter inequality). Since a<=1 while t<1, the resulting differential inequality cannot survive past x=log(1000/199). The returned scalar potential V(a)=int_0^a delta gives 1/8; the exact comparison ODE with a grid over the initial area gives 199/1000 in every degree (full-precision certificate, X_cert=1.61217; quick mode certifies 197/1000), and at fixed degree the Polya cap a<=(mu e^x)^(2/n) and the arity cap k<=n give larger thresholds, certified as mu<=1/3 (n=4), 3/10 (n=5), 1/4 (n=6), 199/1000 (n=7) in quick mode with the full-precision values recorded in the note.
+
+Evidence/status: ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed
+
+Superseded by **cluster_separation_low_critical_closure_nine_twentyfifths**. Use that stronger result.
+
+- [LowCriticalPotentialClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LowCriticalPotentialClosure.md)
+- [check_erdos1041_low_critical_potential_closure.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_low_critical_potential_closure.py)
+
+claim_boundary: Ordinary mathematics plus an exact rational certificate (implicit lower-Euler comparison with directed rounding, truncated exponential series, integer square roots). Not Lean-checked, not independently reviewed. The regime 199/1000 < mu < 1 remains open: the mechanism cannot reach mu near 1 because the failure window (mu,1) shrinks to nothing, which is exactly the near-Fekete shell. Erdos 1041 remains open.
+
+### chord_conditioned_bergman_geodesic_bound
+
+Let Omega be simply connected with finite area A, a != b in Omega, Gamma their hyperbolic geodesic, L=length(Gamma), d=|a-b|, rho=rho_Omega(a,b), x=(1-sqrt(1-rho^2))/(1+sqrt(1-rho^2)), E=(A/pi)log(1/(1-rho^2)). Then E>=L^2>=d^2 and L^2-d^2 <= lam(x)(E-d^2), where lam(x) is the norm on h^perp of the Bergman restriction operator on [-sqrt x, sqrt x], equivalently the spectral gap of an explicit reversible Markov kernel. lam(x) is the optimal affine coefficient and is attained in the limit by conformal maps. Proved bounds: lam(x) <= min{x, b1(x), b2(x)} with b1(x)=(x-(1-x^2)artanh x)/x^2 < x and b2(x)=((1+x)artanh(sqrt x)-(1-x)arctan(sqrt x))/(4 sqrt x); and lam(x) >= 1 - log(1+x)/artanh(x). Two independent proofs are given, one by weighted Cauchy-Schwarz and one by refining the positivity step of Lemma A.
+
+Evidence/status: ordinary_complete_proof_two_independent_routes_with_exact_rational_and_falsification_replay_novelty_not_claimed
+
+- [ChordConditionedBergman.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ChordConditionedBergman.md)
+- [check_erdos1041_chord_conditioned_bergman.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_chord_conditioned_bergman.py)
+
+claim_boundary: Ordinary mathematics throughout, including both proofs, both coefficient bounds, sharpness with univalence, and the lower bound. Optimality is optimality of the affine coefficient, not of the bound for each separately prescribed triple (A,d,rho). Every numerical value of lam(x) is floating point from a truncated principal compression of the exact matrix, so it is a lower estimate of lam and carries no proof authority. The claim that b1 is below b2 on (0,1) is a 10^-4 grid measurement plus the expansion b2-b1=(4/105)x^3+O(x^5); the note uses the min. No novelty is claimed against Bergman-space or Markov-chain literature. Erdos 1041 remains open.
+
+### chord_conditioned_two_root_window_and_cluster_consumers
+
+Consumers of the chord-conditioned bound. (i) For a two-root component of {|f|<t} with critical point c, v=|f(c)|, x=v/t, d=|a-b|, the descent arc satisfies L^2 <= (1-lam)d^2 + lam(2 Area/pi)log((t+v)/(t-v)) with lam=min{x,b1(x),b2(x)}. (ii) Over the persistence window v<t<T, F(t)=d^2+(v/t)(G(t)-d^2) is strictly decreasing, so L^2 <= (1-v/T)d^2+(v/T)G(T); the criterion q(G(T)-4) < (1-q)(4-d^2) with q=v/T retains the scalar condition G(T)<4 and adds a regime where G(T)>4 is paid for by the chord deficit. (iii) If t<=1, |a-b|<=1 and v/t<=17/20 then L^2 < 767/200 < 4 and L < 1.959. (iv) For a connected cluster with y=q_C^(2/k), L^2 <= (1-y)D_C^2 + (2 y A_C/pi)log((1+y)/(1-y)), which also improves the area coefficient by the factor y. Witness: f=z^3-pz-1/4 with u=1011/1600, p=u^2-1/(4u) has G(T)>4.0014 and F(T)<3.9996, so the corpus first-two-level criterion fails and the chord-conditioned one fires.
+
+Evidence/status: ordinary_exact_sufficient_criteria_with_exact_rational_separating_witness
+
+- [ChordConditionedBergman.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ChordConditionedBergman.md)
+- [check_erdos1041_chord_conditioned_bergman.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_chord_conditioned_bergman.py)
+
+claim_boundary: All four consumers are ordinary proofs from the parent theorem plus already-landed corpus inputs (the degree-two normal form, the t-independent containment of the descent arc, the exterior-fibre area gap, the cluster selection, Polya's area bound). The 17/20 criterion and the cubic witness are certified by exact rational arithmetic. The source return's published proof chain for the 17/20 criterion contains one invalid step, bounding (1-b(x))d^2 by 3/10; the repaired monotone chain reaches the same constant and is what is landed. The witness is a strict improvement of one certificate on one polynomial; it is not a new degree range for the parent. Erdos 1041 remains open.
+
+### chord_conditioned_moved_sheet_endpoint_charge
+
+Let Z_j : D -> C, j=1..N, be holomorphic extensions of complete lifts along I=[-sqrt x, sqrt x] with images in the admissible lemniscate and endpoints Z_j(-sqrt x)=a_j, Z_j(sqrt x)=a_{tau(j)}. With L_j, d_j the lift lengths and endpoint chords, E_j the Dirichlet energy with multiplicity, M the moved set of size m, nfix=N-m, and Q=(4/pi)artanh(x) sum_j E_j, the chord-conditioned bound gives min_{j in M} L_j^2 <= (lam Q + (1-lam) sum_{j in M} d_j^2)/m. If Q <= 4N, then (1-lam) sum_{j in M}(4-d_j^2) > 4 lam nfix is sufficient for a moved lift of length below 2; with Q <= 4N - dE the condition becomes (1-lam) sum_{j in M}(4-d_j^2) + lam dE > 4 lam nfix.
+
+Evidence/status: ordinary_conditional_implication_with_unsupplied_geometric_hypotheses
+
+- [ChordConditionedBergman.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ChordConditionedBergman.md)
+
+claim_boundary: The three displays are ordinary implications from the parent theorem and summation. The holomorphic extensions Z_j and the energy budget Q <= 4N are NOT supplied here or by either return, and E_j may not be replaced by the area of a lemniscate component without a separate multiplicity estimate. This does not touch the launch problem of partial_cluster_preimage_perimeter_identity and does not settle Erdos 1041.
+
+### sharp_symmetric_merge_envelope_and_exact_fibre_defect
+
+Let U_t be a regular persistent component of {|f|<t} for monic f of degree n, holding k<n roots with multiplicity, m=n-k>=1, N=2n-k, p0=k/N, p(t)=cap(closure U_t)^n/t, B_t its exterior degree-m Blaschke product, h_t=n-|B_t'|. Then d log c/d log t = (1/2pi) int dtheta/h_t >= 1/k. Decomposing over complete boundary fibres, d log c/d log t = 1/n + (m/n) sqrt((1-p^2)/(k^2-N^2p^2)) + V(B_t) with V>=0 the fibre variance, whose exact value is the angular mean of (1/n^2)[sum_j 1/q_j - m^2/sum_j q_j], q_j=n/|B_t'(zeta_j)|-1. Hence if T is the first level at which U_t acquires an excluded root, log(T/t) <= Psi_{n,k}(p) = (1/m) int_p^{p0} sqrt(k^2-N^2u^2)/(u sqrt(1-u^2)) du = log F_{n,k}(p), F = y^{n/m}(1-py)/(y-p) with y>1 the larger root of y^2-((k+Np^2)/(np))y+1=0. V=0 exactly for B=Moebius(z^m). Equality holds for f=z^k(z^m-1). F ~ (m k^{k/m}/n^{n/m}) p^{-k/m} and F <= (p0/p)^{k/m}.
+
+Evidence/status: ordinary_complete_exterior_analytic_theorem_with_exact_rational_algebra_and_deterministic_floating_replay_two_independent_derivations_not_lean_checked_not_independently_reviewed
+
+- [SharpSymmetricMergeEnvelope.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpSymmetricMergeEnvelope.md)
+- [check_erdos1041_sharp_merge_envelope.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sharp_merge_envelope.py)
+
+claim_boundary: This is a level-parameter lifetime bound for one component, proved on the exterior model. It carries no metric conclusion and produces no curve. It proves equation (18) of CapacitySaturationBridge.md and supersedes that note's Theorem 3 for m>=2 while reproducing it exactly at m=1. It is not Lean-checked, has not been independently reviewed, and claims no novelty against the potential-theory literature: the capacity variation formula is the standard Hadamard shape derivative of the exterior Green function. Erdos 1041 remains open.
+
+### ancestral_capacity_growth_and_capacity_to_arity_alternative
+
+Following one component ancestry C_t with root count k(t) and capacity c(t), for 0<t0<S one has c(S) >= c(t0)(S/t0)^{1/k(S)}. The proof integrates d log c/d log t >= 1/k(t) on the finitely many regular intervals and adds the non-negative logarithmic capacity jumps at attachments, including simultaneous ones. Combined with c(S) <= cap(K_S) = S^{1/n}, if S<1 and c(t0)>q then k(S) > log(S/t0)/log(1/q). The statement refers to one actual ancestor, with no reassignment of capacity between components.
+
+Evidence/status: ordinary_complete_proof_from_the_capacity_speed_identity_not_lean_checked
+
+- [SharpSymmetricMergeEnvelope.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpSymmetricMergeEnvelope.md)
+
+claim_boundary: A capacity-to-arity conversion along a real ancestry. It supplies no metric input and no bound on access or perimeter, and it does not by itself force any merge node to cross either metric threshold in ExteriorBlaschkeFibreCapacityGap.md section 3. Erdos 1041 remains open.
+
+### centred_circle_quadrinomial_connector_2026_09_05
+
+Let p(z)=z^n+omega conj(a) z^(n-k)+a z^k+omega with |omega|=1, 1<=k<n/2, n>=4, and all n roots on |z|=1. Then two root occurrences are joined inside {|p|<=1} by a curve of length at most 2, via an exhaustive alternative: either two distinct roots satisfy |omega+a zeta^k|<=1, in which case the exact Abel identity p(t zeta)=(1-t^k)omega+(t^k-t^(n-k))S-(t^(n-k)-t^n)zeta^n gives |p(t zeta)|<=1-t^n on the whole spoke; or n=3k and |a|>sqrt(3), in which case two roots are joined by a unit-circle arc of length below 2 pi/(5k) on which |p|<3-sqrt(5)<1. Selection uses phase-crossing counting with N_-=k, Newton bounds A^2<=n/k and A<=2 for n>3k, and a 3x3 Gram determinant for 2k<n<3k. Scaling by r<1 gives strict Erdos 1041. Corollary: every monic degree n>=4 polynomial with at most four non-zero coefficients whose roots all have the same modulus r<1 satisfies Erdos 1041.
+
+Evidence/status: ordinary_analytic_case_theorem_verified_not_lean_formalized
+
+- [CentredCircleQuadrinomialConnector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md)
+- [check_erdos1041_centred_circle_quadrinomial.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centred_circle_quadrinomial.py)
+
+claim_boundary: Requires all roots on one circle centred at the origin. It is not a theorem about unrestricted Schur-stable quadrinomials, and it does not prove unrestricted Erdos 1041. Ordinary analytic proof, no Lean module. Sampling in the replay script is falsification evidence only.
+
+### polar_derivative_schur_pointwise_critical_certificate_2026_09_05
+
+Let f be monic of degree n with all roots in the open unit disc, q=f'/n=prod_j(z-c_j) with m=n-1, and q#(z)=prod_j(1-conj(c_j)z). Then sigma_f=(f-z q)/q# is analytic on a neighbourhood of the closed unit disc with |sigma_f|<1 there, so |f(c_j)| < prod_l |1-conj(c_l)c_j| STRICTLY at every critical point. Proof: Re(zeta f'/f)>n/2 on |zeta|=1 because 2(1-Re(conj(zeta)a_i))-|zeta-a_i|^2=1-|a_i|^2>0, hence |n f-zeta f'|<|f'|, and |q#|=|q| on the circle plus the maximum principle. Composing with the corpus equal-weight weighted free-point theorem gives (1/m)sum_j|f(c_j)|^(2/m)+D(g)+S(f)<=1 with g=(q#)^(1/m), D(g)=sum_(nu>=1)(2nu-1)|b_nu|^2 and the non-negative interior defect S(f)=(1/m)sum_j(1-|sigma_f(c_j)|^(2/m))|g(c_j)|^2; taking only b_1 gives the centroid form with |(1/n)sum_i a_i|^2.
+
+Evidence/status: ordinary_analytic_theorem_verified_not_lean_formalized
+
+- [CentredCircleQuadrinomialConnector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md)
+- [check_erdos1041_centred_circle_quadrinomial.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centred_circle_quadrinomial.py)
+
+claim_boundary: A pointwise critical-value estimate. It does not select a root pair and does not control the length of any joining curve. It strengthens the free-point aggregate route by an additive non-negative term and does not replace it; the corpus torus/psh bridge remains the source of the aggregate inequality. Ordinary analytic proof, no Lean module. The return stated the inequality with <=; the proof gives strict <.
+
+### translated_non_adjacent_trinomial_2026_09_05
+
+Let f(z)=(z-h)^n+A(z-h)^m+C with n>=4, 1<=m<=n-2, and h, A, C arbitrary complex. If all roots lie in a closed disc D(q,R), put H=|h-q| and sigma=sqrt(R^2-H^2). Then two listed roots are joined through h by two straight segments of total length at most 2 sigma with |f(h+t(a_l-h))|<=sigma^n(1-t^n) on each. Since m<=n-2 kills the w^(n-1) coefficient, h is the centroid, and Newton's identities give S_2=0 when m<=n-3 or S_3=0 when m=n-2; either vanishing moment forces at least two displacements of modulus at most sigma, by a centroid-balance and half-plane contradiction. Combined with |C|<=sigma^n and the trinomial cancellation identity P(tw)=(1-t^m)C-(t^m-t^n)w^n, this proves Erdos 1041 for every such polynomial with roots in the open unit disc, coprime exponent pairs and arbitrary translation included.
+
+Evidence/status: ordinary_analytic_case_theorem_verified_not_lean_formalized
+
+- [TranslatedNonAdjacentTrinomial.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TranslatedNonAdjacentTrinomial.md)
+- [check_erdos1041_translated_trinomial.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_translated_trinomial.py)
+
+claim_boundary: Requires n>=4 and 1<=m<=n-2. It does not cover the translated adjacent family (z-h)^n+A(z-h)^(n-1)+C, where h is generally not the centroid, and it does not cover the translated coprime cubic n=3, m=1, where the vanishing coefficient would be the constant term. It does not prove unrestricted Erdos 1041. Ordinary analytic proof, no Lean module.
+
+### centroid_moment_localisation_and_balanced_weight_duality_2026_09_05
+
+For any points a_1..a_n in D(q,R) with centroid h, displacements w_j, H=|h-q| and sigma^2=R^2-H^2: (i) if S_2=0 and sigma>0 then the count of j with |w_j|<=sigma exceeds n(R+H)/(4R+2H)>=n/4, so it is at least floor(n/4)+1; (ii) for arbitrary n>=2 and H>0, the second smallest centroid distance obeys r_(2)^2 <= sigma^2 + min{D_0, D_2, D_3} with D_0=2H(R-H)/(n-1), D_2=[3(R-H)^2-(n-1)sigma^2-M_2]_+/(n-1), D_3=sqrt(2H(M_3)_+/(3(n-1))), where M_k=Re(e^(-ik theta)S_k) and theta=arg(h-q); hence r_(2)<=nR/sqrt(n^2-1), attained for every odd n; and M_3<=0 alone forces r_(2)<=sigma. (iii) The best obtainable R^2-|h-q|^2 equals max over balanced probability vectors p with sum_j p_j w_j=0 of sum_j p_j |w_j|^2, attained with support on at most three points.
+
+Evidence/status: ordinary_analytic_theorem_verified_not_lean_formalized
+
+- [TranslatedNonAdjacentTrinomial.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TranslatedNonAdjacentTrinomial.md)
+- [check_erdos1041_translated_trinomial.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_translated_trinomial.py)
+
+claim_boundary: Pure point-configuration geometry. It supplies a second individual radius and an optimised enclosing scale. It does not supply containment for an arbitrary polynomial: applied to the exact quintic of CentroidHubCounterexample.md the derived coefficient budget stays above one at every pivot, so the certificate correctly does not fire. Ordinary analytic proof, no Lean module.
+
+### moment_localised_coefficient_certificate_open_neighbourhood_2026_09_05
+
+Let a monic degree-n polynomial have roots in D(q,R) and expand about its centroid as f(h+w)=w^n+sum_(k=1..n-2) b_k w^k + b_0. Choose U with r_(2)<=U from the signed-moment bound, so |b_0|<=sigma^n<=U^n. For any pivot m in 1..n-2, eliminating b_m w^m at a root gives f(h+tw)=(1-t^m)b_0+(t^n-t^m)w^n+sum_(k!=m) b_k(t^k-t^m)w^k, and the budget U^n + sum_(k!=m) |b_k| U^k d_km < 1, with d_km = (|k-m|/max(k,m))(min(k,m)/max(k,m))^(min(k,m)/|k-m|), implies U<1 and forces two roots joined through the centroid by a curve of length at most 2U<2 inside {|f|<1}. At a strict translated non-adjacent trinomial the sum vanishes at the trinomial pivot and the left side is sigma^n<1, so the certificate covers an open full-dimensional coefficient neighbourhood of every such instance.
+
+Evidence/status: ordinary_analytic_theorem_verified_not_lean_formalized
+
+- [TranslatedNonAdjacentTrinomial.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TranslatedNonAdjacentTrinomial.md)
+- [check_erdos1041_translated_trinomial.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_translated_trinomial.py)
+
+claim_boundary: A sufficient finite coefficient test, not a characterisation. Verified to stay silent on the stored centroid-hub counterexample, where the pivot budgets are 1.16927981, 1.05490983 and 1.06166219. It does not close unrestricted Erdos 1041. Ordinary analytic proof, no Lean module.
+
+### completed_trace_curvature_measure_and_polygonal_shortening
+
+For monic f of degree n>=3 and 1<=p<=2, the Vandermonde-minor norm H_p(w)=n^(2-n-2/p)(sum_j |D_j(w)|^p)^(2/p) has mu_p=(1/2)Laplacian log H_p a positive measure of mass pi(n-1)(n-2)/n with log H_p equal to its logarithmic potential; if the roots lie in a disc of radius R then (1/E) int log|zeta| dmu_p <= n log R, sharp exactly at the regular n-gon, by Cauchy-Binet plus Hadamard on the n x (n-1) root matrix. Away from critical values mu_p = p V_p dA is the negative Gaussian curvature of the inverse-fibre metric rho_p^2|dw|^2, and each critical value carries the exact atom pi[m_v - 2(1-1/e_v)], zero at a simple critical point and pi(d-1)(d-2)/d at an isolated d-fold one. Replacing the value-plane circle by the regular d-gon at a d-fold critical point shortens the preimage-perimeter budget with coefficient 1-sin(pi/d) in place of 1-pi/d, with exact containment max_{P_s}|b-u^d| = b + s^d cos^d(pi/d); on z^n-r^n this gives L = 2r-2s(1-sin(pi/n)) under r^n+s^n cos^n(pi/n)<1, and an explicit coefficient neighbourhood by Rouche produces genuine connectors of length below 2.
+
+Evidence/status: ordinary_analytic_all_degree_measure_theorem_plus_sharp_local_surgery_not_lean_checked
+
+- [TraceCurvatureMeasureAndPolygonalShortening.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TraceCurvatureMeasureAndPolygonalShortening.md)
+- [check_erdos1041_polygonal_shortening.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_polygonal_shortening.py)
+
+claim_boundary: Ordinary analytic mathematics, no Lean module, no priority claim; the prior-art status of the log-moment inequality is unassessed. The measure bound is global and supplies no per-block allocation of 2 Lambda(alpha,W)+Per(W); the polygonal surgery assumes an isolated d-fold critical value on a clean value segment and is not proved to be available in a general configuration; the coefficient neighbourhood is perturbative and degenerates as r tends to one. Erdos 1041 remains open.
+
+### sharp_nodal_crofton_budget_and_high_cyclic_pullbacks
+
+If every root of a monic degree-n f lies in the closed disc D(c,R), then for every phase the full inverse image of a value line satisfies H^1(f^{-1}(e^{i phi}R) cap D(c,R)) <= 2nR, with the exact decomposition 2nR - L = D_phi(f) + T_{phi,c}(R) into a Crofton line-count deficit and the excess length of the 2n exterior radial ends, both nonnegative. Equality holds exactly for f(c+w)=w^n+e^{i phi}b with b real. The proof uses a renormalised Crofton identity comparing the nodal set against its n asymptotic lines before passing to the limit, plus the exterior estimate Re((z-c)f'/f) > n/2 for |z-c| > R. The deficit is computed exactly on {Re z^n = 1} as (n-1)B(1-1/(2n),1/2). Separately, every monic P with roots in the open unit disc and P(0) nonzero has a constant C_P such that P(z^m) satisfies the target for every m > C_P, by lifting a winding-one loop in the component of {|P|<1} containing the origin, with length at most 2C_P/m.
+
+Evidence/status: ordinary_analytic_sharp_all_degree_identity_plus_unconditional_pullback_family_not_lean_checked
+
+- [NodalCroftonBudgetAndCyclicPullbacks.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NodalCroftonBudgetAndCyclicPullbacks.md)
+- [check_erdos1041_polygonal_shortening.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_polygonal_shortening.py)
+
+claim_boundary: Ordinary analytic mathematics, no Lean module, no priority claim; the sharp constant and the equality rigidity are close to standard nodal results and their prior-art status is unassessed. The nodal identity bounds a whole inverse image and selects no component: on z^n-r^n at phase pi/2 the nodal set has n components with one root each and total length inside the disc tending to zero, so no strengthening of the scalar deficit at a prescribed phase can force two roots into one component. The pullback theorem has a base-dependent threshold. Erdos 1041 remains open.
+
+### pinned_witness_noncritical_hub_connectors
+
+The pinned degree-six and degree-nine QC_REFUTATION_WITNESSES now have exact positive connectors through noncritical hubs. Two straight segments through h_6=(3+2i)/25 and h_9=-1/5-4i/25 stay in {|f| < 99999/100000} with lengths at most 29471595/2^24 < 1.757 and 12825029/2^23 < 1.529, certified by 64 strictly positive Bernstein coefficients of the slack polynomial; both hubs satisfy f'(h) nonzero in exact Gaussian-rational arithmetic. The three-segment paths a_i -> t a_i -> t a_j -> a_j with t = 19/100 and 29/100 stay in {|f|^2 < 19999/20000} with lengths below 181/100 and 1623/1000, certified by 96 exact Bernstein inequalities. Both certificates survive explicit 1e-9 root-coordinate neighbourhoods. Because the three-segment paths lie in half planes missing the origin, every cyclic pullback P_d(z^m), m>=1, inherits a connector of length below 1.81 and 1.623 in degrees 6m and 9m.
+
+Evidence/status: exact_rational_bernstein_positive_certificate_on_pinned_witnesses_not_lean_checked
+
+- [PinnedWitnessNoncriticalHubConnectors.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PinnedWitnessNoncriticalHubConnectors.md)
+- [check_erdos1041_pinned_witness_hub_connectors.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_pinned_witness_hub_connectors.py)
+
+claim_boundary: Two configurations plus explicit neighbourhoods and their pullback families. Exact rational certificates, no Lean module. No hub-selection rule is supplied and no statement is made about any other configuration. The corpus critical-hub no-go (straight_spoke_hub_criterion_separation) concerns admissible critical points only and is untouched: both hubs are verified noncritical. Erdos 1041 remains open.
+
+### cluster_separation_low_critical_closure_nine_twentyfifths
+
+Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=9/25 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on root locations, first-merge arity, or component capacity is needed. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f|<(25/9)mu} by a curve of length below 2((25/9)mu)^(1/n). The proof runs the failure ODE of LowCriticalPotentialClosure.md on the ANCESTOR COMPONENT C_t of the two-lobe set through the least critical point (every ingredient is per-component, so a(x)=Area(C_t)/pi replaces the global area for free) and adds a second arity floor: failure forces every pair of roots in C_t to be hyperbolically separated by d_min(a)=4 artanh(sqrt(tanh(1/a))) (the contrapositive of the connected-cluster Bergman barrier, which needs no pair selection and so is untouched by the refutation of universal merge-node selection), and combined with the COVER observer h (lambda_j=-log rho(h,b_j)<=delta(a)/2 for all j, d_1+d_2>=d_min so d_j>=d_min/2 for j>=2) this gives x<=Lambda(k,a):=max(delta(a)/2+(k-1)lam(g), k tau(a)/2) with tau(a)=-log tanh(1/a), lam(d)=-log tanh(d/2), g=2lam(tau/2)-lam(delta/2), the sharp ordered profile by convexity of lam. Since tau(a)<delta(a) for every a>0 this dominates the COVER floor k>=2x/delta(a). The boundary-hop inequality a'(x)>=(1/(2pi^2))[2sqrt(k)-sqrt(2a(x+2))]_+^2 and the Polya cap a<=1 are unchanged, so the same monotone implicit-Euler comparison with a geometric grid over the unknown initial area certifies X_cert=101437302713/100000000000<1.014374 and (9/25)exp(X_cert)<1. Floating supremum of the mechanism: X_*=0.99500, i.e. mu=0.36972 is unreachable by this mechanism with any certificate.
+
+Evidence/status: ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed
+
+- [ClusterSeparationLowCriticalClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClusterSeparationLowCriticalClosure.md)
+- [check_erdos1041_cluster_separation_closure.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cluster_separation_closure.py)
+
+claim_boundary: Ordinary mathematics plus an exact rational certificate (implicit lower-Euler comparison with directed rounding, odd-power series with geometric tails for tau and delta, integer square roots), replayed in quick mode (step 1/100, 8 grid points, ~3 min) by the verifier; full mode (step 1/400, 12 grid points) is slower and its output is the authority for any tighter constant. Not Lean-checked, not independently reviewed. The Bergman constant L^2<=4a artanh(s^2) was validated numerically against f=z^2-r^2 (bound exceeds the true geodesic length at every tested (r,t), ratio tending to 1). No fixed-degree constant is claimed in this row; the crude-floor fixed-degree values 1/2, 9/20, 2/5, 7/20 at n=4,5,6,7 are recorded in the note behind --per-degree and the sharp-floor fixed-degree lane is a live wave-2 item. The regime 0.370<mu<1 remains open (the near-Fekete shell, where the failure window closes). Erdos 1041 remains open.
+
+### cluster_pairwise_hyperbolic_separation_under_failure
+
+Let C be a regular component of {|f|<t} with t<1 holding k>=2 roots of the squarefree monic f, a=Area(C)/pi, and uniformise C by the disc. If two roots in C sit at hyperbolic distance d in the uniformisation and s=tanh(d/4), the hyperbolic geodesic of C joining them has Euclidean length L with L^2<=4a artanh(s^2) (Bergman-kernel Cauchy-Schwarz with the double integral of 1/(1-xy)^2 over [-s,s]^2 equal to 4 artanh(s^2)). Consequently, if no two distinct roots of f are joined inside {|f|<1} by a curve of length below 2, then EVERY pair of roots in C satisfies d>=d_min(a)=4 artanh(sqrt(tanh(1/a))). With one endpoint at zero this is the one-root COVER bound of R2MergeNodeSeparation.md; with s=q^(1/k) it is exactly the connected-cluster barrier a log((1+q^(2/k))/(1-q^(2/k)))<2. What is new is the use: the contrapositive needs no selection rule, so negative result 74 (universal merge-node selection is false) does not touch it.
+
+Evidence/status: ordinary_complete_proof_contrapositive_of_landed_barrier_novelty_not_claimed
+
+- [ClusterSeparationLowCriticalClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClusterSeparationLowCriticalClosure.md)
+- [check_erdos1041_cluster_separation_closure.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cluster_separation_closure.py)
+
+claim_boundary: Ordinary Bergman-space Cauchy-Schwarz, assumed known to the potential-theory literature; no novelty is claimed for the inequality, only for its contrapositive deployment as a failure constraint. Requires t regular and f squarefree. Erdos 1041 remains open.
+
+### centroid_variance_chord_chart_2026_09_05
+
+Let a_1..a_n be the roots of monic f, c their centroid, d_k=|a_k-c|, Var=(1/n)sum d_k^2, and r_(1)<=...<=r_(n) the ordered d_k. Proposition 1 (mean-square envelope, the uniform-weight member of the BarycentricEnvelope disc envelope): |f(z)|^(2/n)<=|z-c|^2+Var for every z. Theorem 2: if two distinct roots satisfy max(d_i,d_j)^2+Var<1 then the closed segment [a_i,a_j] lies in {|f|<1}; with all roots in the open unit disc it is a contained root chord of length below 2 and Erdos 1041 holds for f. The optimal pair is the two centroid-nearest roots, so the condition is r_(2)^2+Var<1. Corollary 3 (variance-only threshold, sharp): Var<(n-1)/(2n-1) suffices, and the threshold cannot be raised by the Markov step alone, with equality approached by z^n-rho^(n-1)z. Theorem 4: if max over [0,1] of the corpus carrier minimax Phi_ij is below 1 then [a_i,a_j] is contained; this is the p=1 minimax (Bdual) of BarycentricEnvelope.md used positively at a root/root pair, and it strictly widens the chord criterion.
+
+Evidence/status: ordinary_complete_regime_theorem_with_sharp_threshold_and_exact_rational_replay_envelope_is_corpus_property
+
+- [CentroidVarianceChordChart.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidVarianceChordChart.md)
+- [check_erdos1041_centroid_variance_chord_chart.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_variance_chord_chart.py)
+
+claim_boundary: Sections 1-3 are ordinary proofs of a sufficient condition and a regime; they do not prove unrestricted Erdos 1041. The envelope and the carrier functional are already corpus property (BarycentricEnvelope.md); what is new is the root-pair selection, the exact variance threshold with its extremal family, and the positive use of (Bdual). The verifier certifies the Corollary 3 sharp configuration and the even-degree diameter chord exactly and samples the envelope, Theorem 2 and Theorem 4 over random configurations as falsification evidence only. No Lean module exists. Erdos 1041 remains open.
+
+### variance_cannot_reach_the_critical_spectrum_2026_09_05
+
+The two bridge inequalities that would hand the complement of the variance chart to the low-critical closure, D<=Var^(n(n-1)/2) with D=prod_(i<j)|a_i-a_j|^2/n^n, and mu<=Var^(n/2), are both invariant, homogeneous, and equalities on z^n-r^n, and both are FALSE for every n>=6. The single family f_n(z)=z^n-z (roots 0 and the (n-1)-st roots of unity; scale z->sz, 0<s<1, to put every root in the open disc without changing either ratio) has Var=(n-1)/n, D=mu^(n-1)=(n-1)^(n-1)/n^n, mu=(n-1)/n^(n/(n-1)), and D/Var^(n(n-1)/2)=(mu/Var^(n/2))^(n-1)=n^(n(n-3)/2)/(n-1)^((n-1)(n-2)/2)>1 for n>=6, certified as an integer inequality for 6<=n<=40 and proved for all n>=6. Hence second-moment data cannot reach mu, and the regular n-gon does NOT maximise the discriminant at fixed second moment for n>=6.
+
+Evidence/status: ordinary_complete_all_degree_refutation_with_exact_integer_certificate
+
+- [CentroidVarianceChordChart.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidVarianceChordChart.md)
+- [check_erdos1041_centroid_variance_chord_chart.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_variance_chord_chart.py)
+
+claim_boundary: Ordinary proof plus exact integer/rational certificate. It refutes two bridge inequalities and makes no statement about Erdos 1041 itself; it exhibits no counterexample to the target. Answers the second-moment version of the stability question of HardRegimeIsNearFekete.md in the negative. Erdos 1041 remains open.
+
+### separated_neck_level_and_arity_forcing_2026_09_05
+
+Assume (FAIL): no two distinct roots of the squarefree monic f are joined inside {|f|<1} by a curve of length below 2. Theorem 1 (sharp separation): in every component C of {|f|<t}, t<1 regular, every pair of roots has pseudohyperbolic distance rho >= rho* = sqrt(1-e^-4) = 0.99079985..., with companion s* = (1-sqrt(1-rho*^2))/rho* = sqrt(tanh 1) = 0.87269362... and the rational identity 2s*/(1+s*^2) = rho* in E = e^2; the working constant 0.99 of the corpus discards 0.0008 of margin. Uniformise f/t = B, a Blaschke product of degree k with zeros w_j. Lobe separation: at most one zero lies within pseudohyperbolic distance s* of any point. Critical equation: moving a critical point to 0, sum_j (1-|v_j|^2)/v_j = 0. Theorem 2 (neck level): with m = min_j |v_j|, g(u) = (1-u^2)/u satisfies g(m) <= (k-1) g(s*), hence every critical value inside C satisfies |f(c)|/t = prod_j rho(c,w_j) >= N_k := m_k s*^(k-1), with N_k > 0.76159, 0.58144, 0.44592, 0.34404, 0.26726, 0.20911, 0.16476 for k = 2..8. Corollary 3: a two-root component born at critical modulus v cannot survive past v/tanh(1) < 1.31305 v. Corollary 4 (compressed critical spectrum): all critical values inside a k-root component at level t <= 1 lie in [N_k t, t). Corollary 5 (arity forcing): mu/t = |B(c*)| >= N_k(t), i.e. k(x) >= K(x) := min{k : N_k <= e^-x} with x = log(t/mu), a third arity-forcing inequality for the low-critical comparison ODE, independent of COVER and of the pairwise-separation floor.
+
+Evidence/status: ordinary_complete_proof_under_the_failure_hypothesis_with_exact_rational_certificate_not_lean_checked
+
+- [SeparatedNeckArityForcing.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparatedNeckArityForcing.md)
+- [check_erdos1041_separated_neck_arity_forcing.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separated_neck_arity_forcing.py)
+
+claim_boundary: Every statement is conditional on (FAIL) and is used only in contrapositive. Theorem 2 is sharp up to the unproved sharpening m >= s* (measured with slack 0.106-0.359 over about 1500 separated samples per k = 2..5), which would move the float model to X* = 1.3197, mu = 0.267, still below 9/25. The premise 'the last neck joins two one-root lobes' holds only at k = 2 (Riemann-Hurwitz gives degrees d1 + d2 = k), so the last-neck descent-pair route is a k = 2 statement or needs recursion. Not Lean-checked, not independently reviewed. Erdos 1041 remains open.
+
+### neck_augmented_low_critical_closure_one_fifth_2026_09_05
+
+Theorem 6: every squarefree monic f of degree n >= 2 with least critical-value modulus mu <= 1/5 has two distinct roots joined inside {|f|<1} by a rectifiable curve of length below 2. Proof: the certified comparison-ODE pipeline of LowCriticalPotentialClosure.md with the arity lower bound replaced by max(COVER floor, K(x)) from Corollary 5 and nothing else changed gives X_cert = 1.604373027130775 (quick mode) against 1.624373027130775 for COVER alone, and (1/5) exp(X_cert) < 1. This crosses the value 0.19989 that the parent note records as unreachable by the COVER/hop pair alone.
+
+Evidence/status: ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_superseded_same_day_by_nine_twentyfifths
+
+Superseded by **cluster_separation_low_critical_closure_nine_twentyfifths**. Use that stronger result.
+
+- [SeparatedNeckArityForcing.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparatedNeckArityForcing.md)
+- [check_erdos1041_separated_neck_arity_forcing.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separated_neck_arity_forcing.py)
+
+claim_boundary: An independent, weaker confirmation of the same-day 9/25 closure (ClusterSeparationLowCriticalClosure.md), whose pairwise-separation floor forces arity near 7 on the attractor where the neck floor forces 4; composing the two does not move 9/25 (conductor measurement recorded in the note's section 4a). Full mode and the per-degree rows were not re-run. Erdos 1041 remains open.
+
+### hub_taylor_truncation_spoke_certificate_free_length_2026_09_05
+
+Let f be monic of degree n, h any point, and T_j the degree-j Taylor truncation of f at h. For every root a and s in [0,1], f(h+s(a-h)) = sum_{j<n} (s^j - s^{j+1}) T_j(a): the Abel/control-polygon weights are non-negative and sum to 1-s^n. Since T_{n-1}(a) = -(a-h)^n at a root, the criterion max_{j<n} |T_j(a)| < 1 already forces |a-h| < 1. Theorem 2: if two roots a, b satisfy max_j |T_j(a)| < 1 and max_j |T_j(b)| < 1 at a common hub h, then the broken line a -> h -> b lies in {|f|<1} AND has length below 2, so Erdos 1041 holds for f with no separate metric obligation; this deletes condition (iii) of two_segment_containment_reduction. The criterion is exact on z^n - lambda at h = 0 (every form equals mu, margin exactly 1 - mu). Certified positively at the root CENTROID on both pinned QC-refutation witnesses of StraightSpokeHubCriterionLab.md (degrees 6 and 9, mu = 0.99995098.. and 0.99994148.., where no critical hub works): two roots with max_j |T_j(a)|^2 < 1 (0.9999981468 and 0.9999868689) and total length bounded by 1.9999283607 and 1.9999669017, exact Fraction arithmetic with 48-bit isqrt upper bounds.
+
+Evidence/status: ordinary_complete_elementary_theorem_with_exact_rational_certificate_identity_is_corpus_property
+
+- [HubTaylorSpokeCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HubTaylorSpokeCertificate.md)
+- [check_erdos1041_hub_taylor_spoke_certificate.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_hub_taylor_spoke_certificate.py)
+
+claim_boundary: Sufficient criterion, not necessary; the spoke identity itself is corpus property (abel_control_polygon_and_all_degree_trinomial_conclusion, GeneralSpokeIdentity.md (S)/(SC)); new are the general-hub statement, the free length, and the centroid certificates. No hub rule is supplied, and the degree-five refutation below shows the fixed hub set cannot supply one. Measured over 2250 survivors with 9/25 < mu < 1 at degrees 4-12 the sharp form max_s (1-s) sum_j |T_j| s^j covers every sample and the centroid is the winning hub from n = 6 up (1850 of 2250), the opposite of the corpus's default hub ordering; measurement only. Erdos 1041 remains open.
+
+### degree_five_fixed_hub_set_refutation_in_the_surviving_regime_2026_09_05
+
+Theorem 4: an explicit monic quintic with all five roots strictly inside the open unit disc and least critical-value modulus mu >= 0.9999871398 > 9/25 has NO hub in {c*} u {critical c : |f(c)| < 1} u {0} u {centroid} carrying two straight spokes contained in {|f|<1}; every hub carries at most one. Certified exactly: five |a_j|^2 < 1; four critical points isolated one per Rouche disc of radius 2^-30; one disc inadmissible throughout; the three admissible critical hubs, the origin and the centroid each carry four rational escape witnesses t in {1/20, 1/10, 1/5} at which |f| - 5*3^4*(1-t)*2^-30 > 1. Erdos 1041 is not refuted there: a free hub near -0.05 - 0.09i carries two contained spokes (floating), 0.103 away from the fixed set, the scale of the split critical cluster rather than of the perturbation. Found by a wall-guarded adversarial climb in 40 restarts after 2250 random survivors had missed it.
+
+Evidence/status: exact_rational_refutation_of_the_fixed_hub_disjunction
+
+- [HubTaylorSpokeCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HubTaylorSpokeCertificate.md)
+- [check_erdos1041_hub_taylor_spoke_certificate.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_hub_taylor_spoke_certificate.py)
+
+claim_boundary: Refutes the DISJUNCTION over the standing hub set at one configuration in the surviving regime (each single hub rule was already refuted separately at other configurations); it retires the fixed-hub-set completion including the conductor's sampled 'hub disjunction never fails' reading of 2026-09-05. Any completion must let the hub move off the fixed set. The surviving target is free-hub existence: for every monic f with roots in the open disc, some h and two roots satisfy max_{j<n} |T_j(a)| < 1, which by Theorem 2 settles the problem with no metric obligation and is decidable exactly at any rational configuration. Erdos 1041 remains open.
+
+### critical_spectrum_blaschke_zero_separation_2026_09_05
+
+Let B be a finite Blaschke product of degree k>=2 with zeros b_1..b_k in the disc and |B(c)|>=m>0 at every critical point c in the disc. Then (a) rho(b_i,b_j) >= 2 sqrt(m)/(1+m), i.e. hyperbolic distance d(b_i,b_j) >= 4 artanh(sqrt m), for every i != j (an identity at k=2, where the unique critical value has modulus tanh^2(d/4), and asymptotically sharp at every k); (b) prod_{l != j} rho(b_l,b_j) = (1-|b_j|^2)|B'(b_j)| >= m for every j, asymptotically sharp on b_j = r omega^j as r -> 1. Proofs: {|B|<m} contains no critical point so it splits into k degree-one components; (a) by factoring B = phi_i phi_j R with |B| <= |phi_i phi_j| and the connectivity of a degree-two sublevel set containing its critical point; (b) by Schwarz-Pick on the inverse of B/m on one component. On the ancestor component of the low-critical ODE this holds with m = mu/t = e^-x and NO failure hypothesis. The 7-armed star B = (z^7 - r^7)/(1 - r^7 z^7) realises the 9/25 attractor's Blaschke data for every r >= 0.942490 (certified at r = 99/100: m = 0.9320653 > e^-X_* and rho^2 >= 0.9993311 > tanh^2(d_min(1)/2)), so there is no realisability obstruction at that level.
+
+Evidence/status: ordinary_complete_unconditional_theorem_with_exact_rational_witnesses_not_lean_checked_novelty_not_claimed
+
+- [CriticalSpectrumClusterSeparation.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalSpectrumClusterSeparation.md)
+- [check_erdos1041_critical_spectrum_separation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_spectrum_separation.py)
+
+claim_boundary: Ordinary proof (standard Schwarz-Pick plus sublevel connectivity), assumed known, no priority claimed; not Lean-checked, not reviewed. It does NOT improve any landed threshold: Theorem 3 of the note proves exactly that the unconditional separation floor d_crit(x) = 4 artanh(e^{-x/2}) leaves the 9/25 arity floor pointwise unchanged (d_crit > d_min iff x < tau(a), where the branch it feeds has already fallen below k = 2), confirmed at 220 digits over 12000 grid cells and by the comparison ODE (X_* = 0.9982629 with and without it). Erdos 1041 remains open.
+
+### hyperbolic_packing_arity_floor_two_fifths_2026_09_05
+
+Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=2/5 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on root locations, arity, or capacity. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f|<(5/2)mu} by a curve of length below 2((5/2)mu)^(1/n). Mechanism: identical to ClusterSeparationLowCriticalClosure.md (ancestor component, COVER failure, boundary hop, comparison ODE, rounding discipline) except the arity floor. Lemma P: with h the COVER observer at the origin of the uniformised ancestor component, b_j its k roots, lam_j=-log|b_j|, D=d_min(a), E=e^(2/a)-1 (so cosh(D/2)=e^(2/a) and the hyperbolic ball B(b_j,D/2) has area 2 pi E), the balls are pairwise disjoint, at most one contains 0, G(z)=-log|z| is harmonic off 0 so the hyperbolic mean value property gives lam_j=(1/A_0) int_{B_j} G dA_hyp for every non-exceptional j, and the bathtub rearrangement against the centred ball of the same area (cosh R=C) gives sum_j lam_j <= delta(a)/2 + [(C-1)/2 log((C+1)/(C-1)) + log((C+1)/2)]/E with C=1+(k-1)E (one exceptional ball) or the same without delta/2 with C=1+kE (none); the sum is at most the larger of the two, so failure forces k >= min(1+2(exp(E(x-delta/2)-1)-1)/E, 2(exp(Ex-1)-1)/E) (P), using (C-1)artanh(1/C)<=1. The certificate takes the maximum of (P), the COVER floor and the landed ordered profile. Floating supremum of the hitting time drops from 0.99364 to X_*=0.89374, so 0.410 is the mechanism's ceiling; exact rational certificate in quick mode X_cert=91437302713/100000000000<0.914374 and (2/5)exp(X_cert)<1.
+
+Evidence/status: ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_conductor_read_not_independently_reviewed
+
+- [HyperbolicPackingArityFloor.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HyperbolicPackingArityFloor.md)
+- [check_erdos1041_packing_arity_floor.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_packing_arity_floor.py)
+
+claim_boundary: Ordinary mathematics plus an exact rational certificate (implicit lower Euler with directed rounding; E_lower from a rounded-up area, exp_lower in the floor, delta_upper in the shift, floors monotone in the required directions: the packing floor is increasing in E and in x-shift, hence non-increasing in a, which the monotone comparison needs). Conductor verified Lemma P (hyperbolic mean value for the disc Green function, disjointness, rearrangement, the by-parts closed form, the two-case inversion) and the checker's rounding directions on 2026-09-05; the lane's author was terminated by a rate limit before its own final report, so the note carries no author-side self-audit beyond its claim boundary. Not Lean-checked, not independently reviewed. The feasible-optimum table in the note is measurement. Fixed-degree rows were not re-run. The regime 2/5 < mu < 1 remains open; the mechanism's own ceiling is 0.410. Erdos 1041 remains open.
+
+### fixed_degree_angular_cluster_closure_2026_09_05
+
+Let f be squarefree monic of degree n>=3 with least critical-value modulus mu. If mu<=mu_n then two distinct roots of f are joined inside {|f|<1} by a rectifiable curve of length below 2, with certified mu_4=61/100, mu_5=139/250, mu_6=253/500, mu_7=23/50, mu_8=209/500, mu_9=19/50 (mechanism values exp(-B_n)=0.6102, 0.5566, 0.5067, 0.4608, 0.4187, 0.3803; at n=3 the value 333/500 is a sanity row since degree three is proved in the corpus; from n=10 the all-degree theorem is the better statement). Mechanism: a STATIC bound, no ODE. With w_j=e^(-d_j) for the hyperbolic distances from the COVER observer, failure gives w_iw_j<=r^2=e^(-d_min) for every pair and w_j<=W=tanh(delta/4) (Lemma 2, the hyperbolic law of cosines with the angle kept: s_ij=sin^2((phi_i-phi_j)/2) >= 2M w_iw_j - w_i^2 - w_j^2 with M=cosh d_min), and Lemma 3 (angular second moment): sum_{i<j} s_ij = (k^2-|sum_j e^{i phi_j}|^2)/4 <= k^2/4. Summing gives M S^2 <= k^2/4 + (M+k-1)Q with S=sum w_j, Q=sum w_j^2 <= rS + W(W-r), hence Theorem 4: x <= Theta(k,a) = 2S(k,a)/(1-W^2) with S the positive root of M S^2-(M+k-1)rS-[k^2/4+(M+k-1)W(W-r)]=0. With k<=n and a<=1, log(1/mu) <= min(Lambda(n,1), Theta(n,1)) under failure, and Theta is the binding branch at every n>=3 (Theta(k,1) ~ 0.0980k against Lambda(k,1) = 0.1362k, a uniform 1.389-fold strengthening of the arity floor).
+
+Evidence/status: ordinary_complete_fixed_degree_family_of_theorems_with_exact_rational_certificate_not_lean_checked_conductor_read_monotonicity_in_area_asserted
+
+- [FixedDegreeClusterSeparationClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedDegreeClusterSeparationClosure.md)
+- [check_erdos1041_fixed_degree_cluster_closure.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_fixed_degree_cluster_closure.py)
+
+claim_boundary: Ordinary proofs of Lemmas 2-3 and Theorem 4 (conductor verified the law-of-cosines algebra, the pair bound w_iw_j<=e^-d_min via w<=W<1/sqrt2, the ordering/convexity step, and artanh(w)<=w/(1-w^2)); exact rational certificate mu_n exp_upper(B_upper(n,1))<1. The step 'B(k,a) is increasing in a, so B(k,a)<=B(k,1)' is asserted in the note with a sketch (M decreasing, r and W increasing in a) and is the same monotonicity the landed 9/25 note uses for Lambda; it is flagged for independent review. The lane's author was terminated by a rate limit before its own final report. Its per-component capacity discussion and 'what is left per degree' sections are analysis, not theorems. Not Lean-checked. Erdos 1041 remains open in every degree n>=4.
+
+### near_fekete_inner_model_widening_2026_09_05
+
+Proposition 1 (exact inner reduction): f(z)=rho^n Q(z/rho)+C with Q'=n prod(Z-Z_j), sum Z_j=0, is an exact change of variables, and min_c L(c)=2R+rho min_j A_j+O(rho^2) with A_j=-2|Z_j|+int over the two arms of (1-cos chi) ds. Lemma 3/Proposition 4 (hub endpoint cancellation): at a simple hub the two branch tangents satisfy T_+=-T_-, so in the tangent-support identity the hub terms cancel and A_j=-K_j, the total curvature charge of the two arms; the minimum two-arm obligation in the cusp is exactly max_j K_j>=0. Corollary 5: two straight rays perpendicular to the radius give A_j=0, radial arms give -2|Z_j|. The corpus cusp model of NearFeketeCuspLaw.md is a proper slice for every n>=4 (2n-5 real parameters against 1; the slice reproduces kappa_n at n=3..6 to 5e-7..4e-11). Admissibility is vacuous in the cusp (threshold n(1-c)/rho^n -> infinity). Exact chord certificates (Fraction arithmetic, Kantorovich critical discs) refute the |f(c)|^s-weighted mean of L(c) at (n,s)=(4,4),(4,8),(5,8).
+
+Evidence/status: ordinary_proofs_of_the_inner_reduction_and_charge_identity_plus_exact_chord_certificates_degree_five_refutation_withdrawn_by_conductor
+
+- [NearFeketeInnerModelWidening.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeInnerModelWidening.md)
+- [check_erdos1041_near_fekete_inner_model.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_inner_model.py)
+
+claim_boundary: The note's section 5.4 claimed a finite-computational refutation of min_{|f(c)|<1} L(c)<=2R at degree five; the CONDUCTOR WITHDREW it on 2026-09-05: the witness sits on the saddle-connection wall (two critical values with equal imaginary part to 1.8e-12 and ordered real parts, so one arm runs into the other hub; a second arm passes a hub at gap 1.1e-4), and every Gaussian perturbation of the critical configuration at 1e-3 returns min_j A_j to negative (12/12). The checker's --part refute now reports verdict withdrawn_saddle_connection_wall with the gap and a perturbation table. The M_4=0 configuration Z=(-1,0,1) is also on the wall (all critical values real). The guarded state of the min statement in the widened model is the first climb's: min_j A_j<=-0.1033 at n=4 and strictly negative in every wall-guarded configuration found at n=4,5; the sign of M_6 is unresolved. Not Lean-checked. Erdos 1041 remains open.
+
+### exterior_energy_has_no_floor_from_the_failure_inequalities_2026_09_05
+
+Theorem E: for every s_0>0 there is a squarefree monic f with every root in the open unit disc, a level t<=1, and a component C of {|f|<t} holding k>=2 roots pairwise at hyperbolic distance >= d_min(a) in its uniformisation, with a COVER observer h at |f(h)|=mu, lam_j<=delta(a)/2 for every root and sum_j lam_j=x=log(t/mu) exactly, every critical value inside C of modulus >= mu, and yet the exterior coefficient energy S=sum l|beta_l|^2 of C is below s_0. Concretely f=z^n-q(n) at t=1 with q(n) the self-consistent separation threshold gives S(n)=(1/n)log(1/(1-q^2))(1+o(1)), q(n)->0.65131, so S->0 while x->0.42879 and a->1. Exact identities (E1)-(E5) express S through the exterior Blaschke data.
+
+Evidence/status: exact_negative_result_on_an_explicit_family_checked_at_40_digits_not_lean_checked
+
+- [ExteriorEnergyFloorClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorEnergyFloorClosure.md)
+- [check_erdos1041_exterior_energy_floor.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_exterior_energy_floor.py)
+
+claim_boundary: On the family Erdos 1041 is trivially true (adjacent roots are joined by a contained segment), so the family is not a failure trajectory; what Theorem E kills is the derivation of a uniform floor S>=s_0 from the mechanism's own hypotheses (x, a, k, separation, COVER). A genuine floor must come from an ingredient the mechanism does not carry. The S.k band and conditional threshold table are measurements. Not independently reviewed; the lane's author was terminated by a rate limit before its final report. Erdos 1041 remains open.
+
+### regular_family_adjacent_chord_law_2026_09_05
+
+Theorem A: for n>=3 and f=(z-tau)^n-lambda with |lambda|=m, the maximum of |f| on the chord joining two roots adjacent in argument about tau equals m(1+cos^n(pi/n)), attained only at the midpoint. Hence with roots in the open unit disc the adjacent chord is contained in {|f|<1} iff mu<kappa_n:=1/(1+cos^n(pi/n)); kappa_n decreases strictly to 1/2 (kappa_3=8/9, kappa_4=4/5, kappa_6=64/91), so kappa_n>1/2 at every degree. Theorem B (centroid spoke perturbation envelope): for roots a_j=c+lambda omega^j(1+delta_j) with |delta_j|<=delta<1, every centroid spoke has max|f|<=|f(c)|exp(2 delta S_n/(1-delta)), S_n=sum_{k<n} 1/min_{s in[0,1]}|1-s omega^k|. Theorem D: for (z^k-a^k)(z^k+b^k), k>=2, 0<b<=a<1, the centroid is the origin and the least critical point, mu=a^k b^k, the other critical values are (a^k+b^k)^2/4, and every origin spoke has max exactly max(a^k b^k,(a^k+b^k)^2/4)<1.
+
+Evidence/status: ordinary_complete_proof_on_the_equality_family_with_exact_rational_bernstein_certificate
+
+- [MiddleRegimeCanonicalHub.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MiddleRegimeCanonicalHub.md)
+- [check_erdos1041_middle_regime_canonical_hub.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py)
+
+claim_boundary: Equality-family and explicit-family statements; they say nothing about general f. The value at the regular n-gon was already corpus property (negative result 57); Theorem A generalises CentroidVarianceChordChart.md Lemma 6 from n=3 and supplies the sharp threshold kappa_n. Theorem B is perturbative and cannot be converted into a mu-threshold because sup|f(centroid)|=1 at every m_0<1 in the band (measured). Not Lean-checked. Erdos 1041 remains open.
+
+### central_root_family_no_uniform_fekete_rigidity_2026_09_05
+
+Theorem C: f_{n,r}=z(z^{n-1}-r^{n-1}) has mu=(n-1)n^{-n/(n-1)}r^n -> 1 as n -> infinity, centroid 0 which is a root, eccentricity exactly 1, and centroid-spoke maximum exactly mu. Consequently mu does NOT control the deviation from a regular polygon uniformly in n: every eta obtained by perturbing (z-tau)^n-lambda must depend on n. Companion facts: D>=mu^{n-1} is sharp (equality on z^n-m); Var>=mu^{2/n} is false for n>=6 (Var=0.8679<0.8735 at n=8, m_0=0.6); sup|f(centroid)|=1 at every m_0<1 (measured). Exact eta-cap: from the corpus's Rouche enclosure of the Theorem-4 quintic of HubTaylorSpokeCertificate.md, mu<=0.9999878941954923, so any canonical-hub theorem of the form '2/5<mu<=1-eta implies a canonical chord or two canonical spokes' is false for eta<=1.2105804507e-05; measured sup of the canonical disjunction value under mu<=1-eta reaches 1-eta within 4e-5 at n=4,5 down to eta=1e-4, so 1.21e-5 < eta_true <= 1e-4.
+
+Evidence/status: ordinary_complete_proof_with_exact_rational_thresholds
+
+- [MiddleRegimeCanonicalHub.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MiddleRegimeCanonicalHub.md)
+- [check_erdos1041_middle_regime_canonical_hub.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py)
+
+claim_boundary: Theorem C and the D-sharpness are ordinary proofs; the eta-cap is an exact rational certificate over the corpus's Rouche data (hub half exact, chord half floating); the Var and |f(centroid)| statements are measurements. This does not contradict fixed-degree Fekete rigidity, it degenerates the modulus. Erdos 1041 remains open.
+
+### spoke_maximum_exceeds_largest_critical_value_at_cstar_2026_09_05
+
+The statement 'at the least critical point c* the second-smallest straight-spoke maximum is at most the largest critical value nu_max' is FALSE. Witness: a monic octic with Gaussian-rational roots strictly inside the open unit disc, mu in [0.786546977037, 0.786546977039], nu_max<=0.78903690 (all seven critical points enclosed in pairwise disjoint Kantorovich discs of radius 10^-6, the least one separated from the others), at which seven of the eight straight spokes from c* carry a rational parameter s with |f|-10^-6 sup|f'|>nu_max for every point of the c* disc; the floating excess is m2(c*)-nu_max=+0.0026. The configuration is near-tied and near-regular (all critical values within 0.3 percent); a free hub near the critical cluster brings the second spoke maximum down to exactly mu.
+
+Evidence/status: exact_rational_refutation_single_witness
+
+- [TieRaceLandscape.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TieRaceLandscape.md)
+- [check_erdos1041_tie_race_landscape.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tie_race_landscape.py)
+
+claim_boundary: Exact certificate (Fraction arithmetic, integer square roots rounded in the safe direction, Taylor-shift bounds for the derivative on discs and along segments). A single witness; the measured supremum of the excess over mu<=0.95 is 8e-5, 1e-3, 1.5e-3, 2.6e-3 at n=4,5,6,8 (basin records). Erdos 1041 remains open.
+
+### circle_slice_angular_packing_arity_floor_2026_09_05
+
+Lemma 3 (circle-slice packing): let b_1..b_k lie in the hyperbolic disc with pairwise hyperbolic distance >= D, d_j = d(0,b_j). For every r > 0, sum_j w(d_j, r) <= pi, where w(d,r) = arccos((cosh d cosh r - cosh(D/2))/(sinh d sinh r)) clamped to [0, pi]: the pairwise disjoint balls B(b_j, D/2) cut pairwise disjoint arcs out of the circle of radius r about the observer. sup_r w(d,r) = arcsin(sinh(D/2)/sinh d). Theorem 5 (dual arity floor): for any radii r_i > 0 and weights sigma_i >= 0 with S = sum sigma_i and U = sup_{d >= d_low} [lam(d) - sum_i sigma_i w(d, r_i)], sum_j lam(d_j) <= k U + pi S; hence under the failure inputs of ClusterSeparationLowCriticalClosure.md (sum_j lam(d_j) >= x, d_j >= d_low(a), pairwise separation D = d_min(a)) the arity satisfies k >= (x - pi S)/U for every admissible (r, sigma), the choice of sigma being free (a floating LP proposes, exact arithmetic disposes). Proposition 2 (the consecutive-gap angular budget is empty): ordering the roots by argument about the observer and summing the consecutive-gap law-of-cosines inequalities forces nothing, because Theta(d, d') = 0 whenever |d - d'| >= D, so alternating radii d_low and d_low + D give budget zero at every arity; that relaxation admits sum_j lam(d_j) >= floor(k/2) delta(a)/2, linear in k, and is worse than the packing floor (P) from k = 8.
+
+Evidence/status: ordinary_complete_proof_elementary_hyperbolic_geometry_with_exact_certificate_novelty_not_claimed
+
+- [AngularBudgetLowCriticalClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md)
+- [check_erdos1041_angular_budget_closure.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_angular_budget_closure.py)
+
+claim_boundary: Elementary hyperbolic geometry, assumed known, no priority claimed. The lemma gives an arity floor only in combination with the COVER and pairwise-separation failure inputs. The certificate bounds U by a worst-first branch-and-bound using that lam is decreasing and the arc half-angle is unimodal in d (its minimum on a cell sits at an endpoint), a tail bound beyond r_max + D/2, the area snapped up to a grid (D and d_low decrease in a), pi rounded up, and integer ceilings on every real floor. Measured: the circle-slice family is within 4.7 percent of the best realisable configuration at every arity 2..30 (the packing floor (P) is 64 percent off at k = 7). Not Lean-checked, not independently reviewed. Erdos 1041 remains open.
+
+### erdos1041_all_degree_mu_13_25_2026_09_05
+
+Theorem A'': every squarefree monic f of degree n >= 2 whose least critical-value modulus satisfies mu <= 13/25 has two distinct roots joined inside {|f| < 1} by a rectifiable curve of length strictly below 2; no hypothesis on root locations, arity, or capacity. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f| < (25/13) mu} by a curve of length below 2((25/13) mu)^(1/n). Mechanism: the comparison ODE of the 197/1000, 9/25 and 2/5 notes with the arity floor replaced by the maximum of the COVER floor, the ordered profile, the packing floor (P), and the circle-slice dual floor of Theorem 5, with integer ceilings. Certificate: full mode (step 1/400, 12 grid areas, 14 radii per dual, 7 arities, 126 certified duals, 13.5 minutes) X_cert = 635762889599/1000000000000 < 0.6357629 and (13/25) exp(X_cert) < 1; quick mode (101 s) certifies 51/100 with X_cert < 0.664374. Floating supremum of the mechanism: mu = 0.5194, and even an exact arity floor caps this mechanism at mu ~ 0.545.
+
+Evidence/status: ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_conductor_read_not_independently_reviewed
+
+- [AngularBudgetLowCriticalClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md)
+- [check_erdos1041_angular_budget_closure.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_angular_budget_closure.py)
+
+claim_boundary: Ordinary mathematics plus an exact rational certificate; conductor read the lemma, the dual floor, and the checker's sup bound and rounding directions; not Lean-checked, not independently reviewed. The first landed constant above 1/2. Fixed-degree rows n = 4 (61/100) and n = 5 (139/250) remain stronger; from n = 6 up this is the better statement. The arity floor is now within about 5 percent of the best realisable configuration, so this route has at most about 0.025 of head-room; the regime 13/25 < mu < 1 remains open and the next lever is not the arity floor. Erdos 1041 remains open.
+
+### free_hub_existence_structure_and_witness_certificates_2026_09_05
+
+Lemma T: at a root a of f, the degree-j Taylor truncation at a hub h satisfies T_j(a) = -sum_{k>j} b_k (a-h)^k, so the hub-Taylor criterion (A) max_{j<n}|T_j(a)|<1 is a statement about coefficient tails whose two extreme members are |a-h|<1 and |f(h)|<1. Corollary C: at the root centroid h_0 the coefficient b_{n-1} vanishes, so T_{n-2}=T_{n-1}=-(a-h_0)^n and (A) tests only j=0 and 1<=j<=n-3, the structural reason the centroid dominates measured hub rankings. Theorem A (tied Newton face closed): for f=z^n+gamma z^{n-2}+c_0 with all roots in the open disc the criterion value at h=0 is exactly max(|c_0|,|a|^n)<1 at every root, so Erdos 1041 holds by two origin spokes of length below 2. Theorem B (near-Fekete centroid closure): with m=|f(h_0)| and E=sum_{k=1}^{n-3}|f^{(k)}(h_0)/k!|, if m+E<1 and two roots lie within 1 of h_0 then (A) holds at h_0 for those roots; in the widened cusp scaling the left side is O(rho^3) against a margin O(rho^2), so the balanced cusp is covered at every degree and only the deep corner 1-m=O(rho^3) is left. Lemma R: sum_{l<n} f(h+w^l x) = n(f(h)+x^n) for every h, x and primitive n-th root of unity w (free-hub form of the Vieta lobe coupling). Lemma S: any connected set containing two roots has max|f|>=mu. Exact certificates: the degree-five witness of HubTaylorSpokeCertificate.md Theorem 4 passes (A) at two roots at the Gaussian-rational hub (-459+1167i)/16384 (max_j|T_j|^2=0.9999984799, length<=1.8784357), the pinned degree-six and degree-nine witnesses at (1178+806i)/16384 and (-2056-1670i)/16384.
+
+Evidence/status: ordinary_proofs_plus_exact_rational_certificates_on_three_named_configurations
+
+- [FreeHubExistence.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreeHubExistence.md)
+- [check_erdos1041_free_hub_existence.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_free_hub_existence.py)
+
+claim_boundary: Theorem A is the tied-Newton-face family only (a restatement of the translated-trinomial route with q=n-2). Theorem B's hypothesis (ii) is not automatic and fails at n=3. The three witness certificates are existence statements with the hub supplied, not a rule. Not Lean-checked, not independently reviewed. Erdos 1041 remains open.
+
+### sextic_chord_recession_closure
+
+For H=Re(Az+Bz^2+iCz^3-conj(B)z^4-conj(A)z^5-z^6), |B|=1 and |A|>=1, every real C admits an adjacent sixth-root unit chord on which H<=-1/256. The proof selects an even/odd chord pair at |A|=1 with nonpositive combined threshold bound and nonpositive combined recession bound; that same pair covers every larger |A|. A complete exact integer interval/Bernstein certificate covers both phases with 2070 rational boxes, minimum recession slack 25/4 and threshold slack 19/32. Combined with sextic_chord_covering_criterion_and_unit_band, this proves the conclusion for every complex A and real C at |B|=1, closing the formerly open middle band and replacing the normalized homogeneous ray-chart interface by length-one chords with margin 1/256. No nonlinear actual-polynomial transfer, arbitrary-|B| theorem, pure-cubic closure, unrestricted Erdos #1041 solution, Lean verification, novelty, or independent-review claim follows.
+
+Evidence/status: ordinary_proof_with_complete_exact_integer_interval_bernstein_certificate_not_lean_checked
+
+- [SexticChordRecessionClosure.md](SexticChordRecessionClosure.md)
+- [check_erdos1041_chord_recession_closure.py](scripts/check_erdos1041_chord_recession_closure.py)
+
+### sextic_natural_scale_two_ray_selector
+
+Let K=(49152/9765625)^(1/8)=0.516095584963..., A nonzero, B complex, C real. If |A|>=K |B|^(5/4), both U=Re(Az+Bz^2+iCz^3-z^6) and H=Re(Az+Bz^2+iCz^3-conj(B)z^4-conj(A)z^5-z^6) admit two non-antipodal sixth-root directions with complete safe rays on 0<=t<=1. For every fixed coefficient triple the rays can be truncated at a positive radius and joined by a strictly negative chord, with path length at most 2-(2-sqrt3)u<2. Proof: the exact scalar threshold is k b_+^(5/4), k=4/5^(5/4); two failing antipodal classes contradict the first-mode Gram lower bound, the second-mode equilateral Gram identity and superadditivity of x^(5/4). The high paired modes improve the ray comparison. A derivative estimate handles a zero first-mode endpoint of the small chord. K is the sharp universal complete-ray threshold for the unpaired model, by a limiting two-positive-projection construction. At |B|<=1 this strictly enlarges the earlier |A|>=3|B|/4 cone. No coefficient-independent chord radius, actual-polynomial transfer, unrestricted Erdos #1041 solution, Lean check or external novelty claim is made.
+
+Evidence/status: ordinary_analytic_proof_with_exact_symbolic_checks_not_lean_checked
+
+- [SexticNaturalScaleRaySelector.md](SexticNaturalScaleRaySelector.md)
+- [check_erdos1041_natural_scale_ray_selector.py](scripts/check_erdos1041_natural_scale_ray_selector.py)
+
+### sextic_natural_scale_actual_polynomial_transfer
+
+Let omega=exp(pi i/3), a_j=omega^j(1+e_j), |a_j|<=1, f=prod_j(z-a_j), E_m=sum_j e_j omega^(-jm), and gauge E0=-Delta real. Put rho=max(|E1|^(1/5),|E2|^(1/4)). If 0<rho<=10^(-18), Delta<=20000rho^6 and |E1|>=(13/25)|E2|^(5/4), then two actual roots are joined inside the STRICT lemniscate |f|<1 by actual root-ray tails and their chord at radius rho/200; total length is at most 2-rho/800<2. The normalized Gram selector survives a positive 1/1000 shift of the second-mode projections, giving U(t zeta)<=-t^2/1000 on two non-antipodal rays. A radius-1/200 chord has margin 1/40000000, including the zero first-mode endpoint case. Fourier inversion gives eta<100rho^3 and cubic energy gives |E3|<500rho^3. The exact origin-anchored logarithmic expansion, high-mode bounds and actual-root angular displacement have combined normalized error <=10^9rho on |z|<=32rho; explicit intermediate and far-half estimates carry the arms to their actual roots. Exit from either low-mode inequality in sextic_anisotropic_cubic_transition_cone implies Delta<20000rho^6, so the deficit hypothesis is available on that transverse branch. The proof does not cover the smaller-first-mode transverse sector, the finite transfer of every radial/cubic branch, every near-regular sextic or unrestricted Erdos #1041.
+
+Evidence/status: ordinary_analytic_actual_polynomial_theorem_with_exact_rational_budget_checks_not_lean_checked
+
+- [SexticNaturalScaleFiniteTransfer.md](SexticNaturalScaleFiniteTransfer.md)
+- [check_erdos1041_natural_scale_finite_transfer.py](scripts/check_erdos1041_natural_scale_finite_transfer.py)
+
+claim_boundary: Actual polynomial result on the displayed explicit sector; no external novelty or full-problem solution claim.
+
+### sextic_paired_quartic_actual_polynomial_lift
+
+Let a_j=omega^j(1+e_j), |a_j|<=1, E_m=sum_j e_j omega^(-jm), E0=-Delta in the common rotational gauge, and f=prod_j(z-a_j). Set rho=|E2|^(1/4)>0, A=E1/rho^5, B=E2/rho^4, C=Im(E3)/rho^3 and M=rho^2+min(|C|,1). If rho<=10^(-18), Delta<=20000rho^6 and |A|<=M/10000, then two adjacent actual roots have a three-piece actual root-ray/chord path in STRICT |f|<1, of length <=2-rho/2, at chord radius rho*((7+4sqrt(3))/27)^(1/4). This includes the entire E1=0 plane subject to the size/deficit hypotheses, every admissible tangent cubic including zero, and the specified neighborhood. The root-disc pairing E4=-conj(E2)+O(Delta) supplies a normalized fourth-mode correction whose canonical double-contact value is exactly -rho^2/3. A phase-wedge identity preserves the all-phase reduction for this correction. The even chord has margin rho^2/4; a favorable antipodal cubic choice and the small first-mode allowance give an adaptive margin M/2500. Sharper Fourier inversion eta<=rho^3(|C|+rho) makes the actual-polynomial logarithmic and root-angle error <=10^10 rho M, uniformly through C=0. The previously verified outer-arm estimates reach the actual roots.
+
+Evidence/status: ordinary_analytic_actual_polynomial_theorem_with_exact_symbolic_and_rational_checks_not_lean_checked
+
+- [SexticPairedQuarticFiniteLift.md](SexticPairedQuarticFiniteLift.md)
+- [check_erdos1041_paired_quartic_finite_lift.py](scripts/check_erdos1041_paired_quartic_finite_lift.py)
+
+claim_boundary: Actual-polynomial finite lift of the second-mode/cubic plane and a quantified neighborhood. Intermediate mixed modes, other branches, general near-regular sextics, and unrestricted Erdos #1041 remain open; no external novelty claim.
+
+### sextic_canonical_phase_critical_threshold_concavity
+
+For every complex A and real C, H(z)=Re(Az-z^2+iCz^3-z^6) has an adjacent sixth-root pair and radius 0<r<1 whose two radial tails to those roots and joining chord lie in H<=0, of total length 2-r<2. Sixth-root rotation covers B in {-1,-omega^2,-omega^4}. This is the complete canonical second-mode phase with arbitrary first and tangent-cubic coefficients. For A=-iu the equations H(z)=0 and Fprime(z)=0 admit an explicit family parameterized by h in [1,19/10], k=h^2/3, D=5+25k-13k^2-k^3, y^4=(3k+1)/(3D), u=y*2(k-1)(k+1)(-k^2+8k+1)/D, gamma=2(k-1)(-k^2+20k+5)/(3Dy), r=y(h+1)/sqrt(3). The complete chord has an exact square factor times a positive degree-(6,4) Bernstein polynomial; all 35 coefficients are at least16. Radius and outward-ray inequalities hold throughout the stated parameter range. This family defines a strictly concave critical threshold gamma(u), with gamma(0)=0, gamma_prime(0)=sqrt(3), gamma_second(0)=-sqrt(2)*3^(3/4). The upper chord covers C>=gamma(u) and the antipodal negative-u chord covers C<=-gamma(-u); concavity makes the ranges overlap and gives the fixed selector C>=sqrt(3)u versus C<=sqrt(3)u. The family covers 0<=u<=u_star=4/(5sqrt(3)*10^(1/4)); for u>=u_star, two rays are globally safe and a sufficiently small chord works for every C. Reflection across the imaginary axis makes the real part of A favorable, and conjugation handles both signs of its imaginary part.
+
+Evidence/status: ordinary_analytic_homogeneous_model_theorem_with_exact_symbolic_certificate_not_lean_checked
+
+- [SexticCanonicalCriticalThreshold.md](SexticCanonicalCriticalThreshold.md)
+- [check_erdos1041_canonical_critical_threshold.py](scripts/check_erdos1041_canonical_critical_threshold.py)
+
+claim_boundary: Complete canonical phase orbit for the homogeneous unpaired sextic model. Continuous second-mode phases, off-phase null boxes, and source-specific actual-polynomial transfer remain distinct. Neither all near-regular sextics nor unrestricted Erdos1041 is solved.
+
+### sextic_canonical_phase_actual_polynomial_transfer
+
+Let a_j=omega^j(1+e_j), |a_j|<=1, E_m=sum_j e_j omega^(-jm), E0=-Delta in the common rotational gauge, f=prod_j(z-a_j), and rho=max(|E1|^(1/5),|E2|^(1/4)). If 0<rho<=10^(-20), Delta<=20000rho^6, and E2 is in {-b,-b omega^2,-b omega^4:b>=0}, then two actual roots have a three-piece radial-tail/chord path in STRICT |f|<1, with length <=2-rho/800. This covers all relative first-mode amplitudes and all admissible tangent cubics on the canonical phase under the displayed hypotheses. The existing first-mode theorem handles |E1|>=(13/25)|E2|^(5/4). In the new complementary branch rho=|E2|^(1/4), the selected roots are adjacent and length improves to <2-rho/4. For A=a-iu, 0<=u<=1/16, the critical-threshold curvature is <=-1/100, while the paired quartic is negative at every critical contact. They yield an adaptive margin M/40000000, M=rho^2+u^2+min(|C-sqrt(3)u|,1)+|a|. The actual logarithmic and angle error is <=10^10 rho M. For 1/16<=u<=13/25, eleven fixed rational radii cover both cubic-selector ranges, each with exact chord/ray margin 10^(-6). The coarse actual error <=10^9rho transfers those cells. Common strict outer-arm estimates reach the actual roots. Reflection and conjugation select indices and the actual-angle error accounts for the absence of exact symmetries in the roots.
+
+Evidence/status: ordinary_analytic_actual_polynomial_theorem_with_exact_compact_cells_and_rational_bounds_not_lean_checked
+
+- [SexticCanonicalPhaseFiniteTransfer.md](SexticCanonicalPhaseFiniteTransfer.md)
+- [check_erdos1041_canonical_phase_finite_transfer.py](scripts/check_erdos1041_canonical_phase_finite_transfer.py)
+- [sextic_canonical_compact_cells.json](scripts/sextic_canonical_compact_cells.json)
+
+claim_boundary: Actual-polynomial theorem on the exact canonical Fourier phase with explicit size/deficit bounds. Continuous noncanonical phases, other deficit/cubic branches, arbitrary near-regular sextics, and unrestricted Erdos #1041 remain open.
+
+### sep_or_cubic_refutation_2026_09_06
+
+SEP-OR is false. For f(z)=z^3+(3/100)z-3/4, Rouche on |z|=1 with 39/50<1 places every root in the open unit disc. The simple critical points are ±i/10 with values -3/4±i/500, so mu^2=9/16+1/250000>(13/25)^2 and mu>3/4. The values lie on distinct positive rays, and |1-v_-/v_+|=1/(250 mu)<2/375<2. Neither critical value is separated by two. The same strict margins persist under small coefficient perturbations. The example is a trinomial, so the parent path conclusion is already settled by trinomial_erdos1041_conclusion; the obstruction is to any covering programme that would settle mu>13/25 by critical-value separation two, or else first-merge arity, or else a capacity cutoff. Arity/capacity corollaries assume mu<=1/2 and cannot fill that residual.
+
+Evidence/status: ordinary_exact_refutation_with_lean_checked_rational_cores_not_a_parent_counterexample
+
+- [ExactObstructionsR2.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExactObstructionsR2.md)
+- [check_erdos1041_r2_revision_exact_cores.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_r2_revision_exact_cores.py)
+- [RevisionR2ExactCores.lean](RevisionR2ExactCores.lean)
+
+claim_boundary: Ordinary exact refutation of a proposed covering disjunction, not of Erdos #1041. Rouche, distinct-ray, and perturbation persistence are ordinary; the displayed rational inequalities are Lean-checked in RevisionR2ExactCores.lean. SEP-OR never appeared as a live covering theorem in this packet; this row prevents it from being treated as one.
+
+### one_root_gamma_perimeter_refutation_z8_2026_09_06
+
+The one-root gamma perimeter bound H^1(partial C) <= Gamma(1/4)^2/(2 sqrt(pi)) cap({|f|<=sigma}) is false. For p(z)=z^8-(3/2)z the connected component C of {|p|<=1} containing zero contains exactly one zero (Rouche on |z|=4/5: 6/5-(4/5)^8>1), contains a neighbourhood of the closed disc of radius 5/8 (15/16+(5/8)^8<1), and therefore has H^1(partial C)>5 pi/4. The proposed constant is at most (pi/2)(1+sqrt(2)) by the secant bound, and sqrt(2)<3/2 gives (pi/2)(1+sqrt(2))<5 pi/4. A universal one-root constant, if one exists, must be at least 2 pi by the binomial family z^N-z. This is not a counterexample to Erdos #1041; the scaled binomial z^8-(3/256)z puts all roots in the open disc.
+
+Evidence/status: ordinary_exact_refutation_with_lean_checked_rational_cores_not_a_parent_counterexample
+
+- [ExactObstructionsR2.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExactObstructionsR2.md)
+- [check_erdos1041_r2_revision_exact_cores.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_r2_revision_exact_cores.py)
+- [RevisionR2ExactCores.lean](RevisionR2ExactCores.lean)
+
+claim_boundary: Exact algebraic comparison, no floating gamma evaluation. The floating family z^n-z already killed the same bound in DegenerateHubBlaschkeReduction.md; this row supplies the first exact algebraic witness. Conjecture P in UnconditionalConstantFactorBound.md used this gamma constant as a one-root perimeter conjecture and is therefore false as stated. Conditional Theorem 3 there survives only with a larger beta, necessarily at least 2 pi.
+
+### first_merge_arity_does_not_force_capacity_gap_2026_09_06
+
+First-merge arity does not force a capacity gap. For g(z)=z^3-(3/400)z-3/32 the critical points are ±1/20 with g(-1/20)=-187/2000 and g(1/20)=-47/500, so mu=187/2000<1/2 is a unique first-critical modulus. The first critical point is simple and g is squarefree. At T=2 mu both critical values lie strictly inside the value disc, so Riemann-Hurwitz gives a single component of {|g|<T}; for monic degree n one has cap(K_T)=T^{1/n}, hence the ancestor at 2 mu has normalised capacity kappa=1 while k_0=2. All roots lie in the open unit disc by Rouche: 3/400+3/32=81/800<1. Thus k_0=2 and kappa=1 can coexist under the corollaries' root and mu hypotheses. No estimate kappa<=tau_2<1 follows from low first-merge arity alone.
+
+Evidence/status: ordinary_exact_refutation_with_lean_checked_rational_cores_not_a_parent_counterexample
+
+- [ExactObstructionsR2.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExactObstructionsR2.md)
+- [check_erdos1041_r2_revision_exact_cores.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_r2_revision_exact_cores.py)
+- [RevisionR2ExactCores.lean](RevisionR2ExactCores.lean)
+
+claim_boundary: Does not refute the arity/capacity corollaries of UnconditionalConstantFactorBound.md, which are implications kappa<=tau_{k_0} under mu<=1/2, not the converse. It refutes any covering reading that low first-merge arity forces a capacity defect, and it shows those corollaries cannot fill the residual mu>13/25.
+
+### tied_minimum_two_root_window_refutation_2026_09_07
+
+A simple minimising critical point does not force a two-root persistence interval up to the next distinct critical-value modulus. For g(z)=z^4-(4/15)z^3-(4/25)z^2+1/750 the derivative is 4z(z+1/5)(z-2/5), all three critical points are simple, g(-1/5)=-1/750, g(0)=1/750, g(2/5)=-59/3750, so mu=1/750 is tied and the next distinct modulus is (59/5)mu. Rouche on |z|=1 with 107/250<1 places all four roots in the open unit disc; four distinct real roots lie in (-1,1) by sign changes. The first nontrivial component of K_mu already has degree three. Replacement hypotheses: unique global minimiser, an explicit degree-two window (mu,T*), or the registered disk-family two-sheeted component. Psi_n(x)=2 tends to coth 1, not to 1.
+
+Evidence/status: ordinary_exact_refutation_with_rational_cores_not_a_parent_counterexample
+
+- [TiedMinimumTwoRootWindow.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedMinimumTwoRootWindow.md)
+- [check_erdos1041_r2_revision_exact_cores.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_r2_revision_exact_cores.py)
+
+claim_boundary: Refutes a structural inference in MinimalHubWindowJoin.md Lemma 1 and the short-note theorem res:minimal-hub-window as previously worded. Does not refute Bergman Theorem C under an explicit two-root hypothesis, the disk-family theorem, or Erdos #1041. The witness itself has a real interval joining three roots inside K_mu.
+
+### collective_radial_window_constant_factor_2026_09_07
+
+Averaging complete precritical inverse lifts (radial-mean lemma: mean complete radial length of a conformal map of the disc is at most sqrt(Area/pi), sharp for affine maps) and retaining all nontrivial components of K_sigma yields a path in K_t, sigma < t < T, of length at most sqrt(2/M(sigma)) T^{1/n} sqrt(2+(sqrt(log(T/mu))+pi/sqrt(log(T/sigma)))^2), where M(sigma) counts roots in all nontrivial components. Specialising to T=2mu for n>=4 gives coefficient C_*=2^{1/4} sqrt(2+log 2+2pi+pi^2/log 2) with C_*^2<(573/100)^2 by bounded artanh/Machin series. If mu>13/25 and N(3/5)>=14, equivalently M(3/5)>=15, the same bound at T=1 yields L^2<4 inside {|f|<1}. Degree two and three use the existing exact/cubic hub bounds.
+
+Evidence/status: ordinary_analytic_theorem_with_exact_rational_coefficient_cores_not_lean_checked
+
+- [CollectiveRadialWindowBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollectiveRadialWindowBound.md)
+- [check_erdos1041_r2_revision_exact_cores.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_r2_revision_exact_cores.py)
+
+claim_boundary: Ordinary analysis independently checked; rational cores in the r2/r3 exact-core checker. Does not replace unconditional_constant_factor_pair_geodesic in the short note: the inspectable lead constant remains 71/10 in K_{2mu}. Does not improve 13/25, does not prove the unrestricted constant 2, and is not Lean-checked. Coarea, Pólya, and Jordan-component identities remain ordinary.
+
+### disk_family_all_centre_degree_uniform_radius_2026_09_07
+
+From the registered coefficient C(n,S,p)=(S/(n-1))^{2/n} log((S^2+S+p)/(S^2-S+p)), p=a(1-a), the logarithmic factor equals 2 iff S^2-A S+p=0 with A=coth 1. The larger root S_infty(a)=(A+sqrt(A^2-4a(1-a)))/2 is admissible and strictly below n-1, so C(n,S_infty(a),p)<2 for every finite n>=3. Endpoints S_infty(0)=S_infty(1)=coth 1 were already recorded. Failure of the test is forall a in [0,1], D(a)<=max(a,1-a) or C(n,D(a),a)>=2; the obstructing critical value may depend on the centre.
+
+Evidence/status: ordinary_extracted_corollary_of_registered_disk_family_coefficient_not_a_new_bergman_estimate
+
+- [DiskFamilyCriticalValueSeparation.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md)
+- [check_erdos1041_r2_revision_exact_cores.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_r2_revision_exact_cores.py)
+
+claim_boundary: Extracted from disk_family_critical_value_separation_2026_09_02. Not a new length estimate. The uniform 4/3 kernel remains the Lean-checked sufficient radius. The one-value lens residual is valid in degree three; with several other critical values the blocker is centre-dependent.
+
+### poisson_taylor_finite_identity_2026_09_07
+
+The Taylor combination sum_j |a_j|^2 - 2 sum_j j |a_j|^2 equals |a_0|^2 - sum_{j>=1} (2j-1)|a_j|^2. The coefficient inequality m^2/(2m-1) <= m for m>=1 is the local remainder from the r3 radial-mean lemma. This is the finite-coefficient form of identity (1) in the r4 return, not the analytic Poisson integral on the circle and not the 4s hierarchy.
+
+Evidence/status: lean_checked_finite_coefficient_form_not_the_analytic_poisson_theorem
+
+- [PoissonTaylorFiniteIdentity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PoissonTaylorFiniteIdentity.lean)
+
+claim_boundary: Finite coefficient identity. Does not prove the analytic free-point theorem, the 4s endpoint, or any path statement. Does not replace 71/10, 13/25, or disk-family S=4/3.
+
+### polar_derivative_circle_comparison_2026_09_07
+
+For |zeta|=1 and |a|<1, Re(zeta/(zeta-a))>1/2, by the identity 2(1-Re(conj(zeta) a))-|zeta-a|^2 = 1-|a|^2. Summing over a nonempty finite family of open-disc roots gives Re H > n/2 for H=sum zeta/(zeta-a_i), hence |n-H|<|H| on the circle. This is the polar-derivative comparison on the circle from CentredCircleQuadrinomialConnector.md Theorem 3.
+
+Evidence/status: lean_checked_circle_comparison_not_the_disc_schur_theorem
+
+- [PolarDerivativeCircle.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PolarDerivativeCircle.lean)
+
+claim_boundary: Circle comparison only. Does not invoke the maximum principle, does not prove |sigma_f|<1 on the disc, and does not select a root-to-root path. The full Schur certificate remains the registered ordinary theorem polar_derivative_schur_pointwise_critical_certificate_2026_09_05.
+
+### sharp_power_disc_products_4s_hierarchy_2026_09_07
+
+If the first s-1 power sums of a positive-weight closed-disc configuration vanish, then sum w_j G(c_j)^p <= 1 for 0<p<=4s, in particular at exponent 4s. Finite equality holds only at the origin. The exponent 4s is sharp uniformly in cardinality. Critical-value moment corollaries follow after the registered polar comparison. The quadratic case p=2 is already weighted_quadratic_free_point_all_degrees and is not re-announced.
+
+Evidence/status: ordinary_analytic_theorem_verified_not_lean_formalized_not_in_flagship
+
+- [SharpPowerDiscProducts.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpPowerDiscProducts.md)
+
+claim_boundary: Ordinary analysis independently checked at identity and rigidity level. Not Lean-checked. Not inserted into the short note. Does not select a pair, does not bound a canonical arc, and does not replace 71/10, 13/25, or disk-family S=4/3. Selected-critical-value unit-lemniscate statements still require |v|<1. Erdos #1041 remains open.
+
+### blaschke_power_critical_value_algebra_2026_09_07
+
+Over any commutative ring, if u^k du = v^k dv then du(u^{k+1}-v^{k+1}) = v^k (u dv - v du). Specialising to A=z(z+b), D=1+bz yields the division-free identity (2z+b)(A^{k+1}-D^{k+1}) = -(b z^2+2z+b) D^k at algebraic critical points. Companion ring identities give the disc-automorphism modulus factor and the Poisson-density numerator. These are algebraic only.
+
+Evidence/status: algebraic_identities_lean_checked_focused_build_exit_0
+
+- [BlaschkePowerCriticalValues.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkePowerCriticalValues.lean)
+- [lean_fast_build.py](formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py)
+
+claim_boundary: Does not formalise weak convergence of critical measures, Poisson integration, 4s optimality, high-critical connectors, Lambda degeneration, or any parent path theorem. Focused lean_fast_build.py --jobs 2 via command_future cf_d6194888f2184c668217 completed exit 0; oleans landed. Algebraic identities only. Not added to Root.lean. Erdos #1041 remains open.
+
+### blaschke_power_degree8_moment_certificate_2026_09_07
+
+For N=4, b=1/2, r=999/1000, the contracted Blaschke-power octic G has seven disjoint rational Rouche discs for G' and mean |G(c)|^{8/7} > 3763187/3500000 > 1.075. This violates a proposed degree-uniform numerator 8 in that degree; it does not violate the proved numerator 4, and is not a parent-path counterexample.
+
+Evidence/status: exact_rational_certificate_replayed
+
+- [check_degree8.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/blaschke_power/check_degree8.py)
+- [check_degree8.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/blaschke_power/check_degree8.py)
+
+claim_boundary: Exact Fraction arithmetic only. Root-circle construction and Rouche interpretation remain ordinary. Does not certify an asymptotic N0. Does not replace 71/10, 13/25, or disk-family S=4/3.
+
+### blaschke_power_degree24_high_critical_certificate_2026_09_07
+
+For N=12, b=1/120, r=999999999/10^9, the contracted degree-24 Blaschke-power polynomial G has 23 disjoint rational Rouche discs, every critical value in |v+1|<1/12, and mean |G(c)|^{8/23} > 46001266667/46000000000 > 40001/40000. Hence mu>11/12>13/25, every pair satisfies |v_i/v_j-1|<2/11, and no selected critical value passes the radius-4/3 test at any centre in [0,1]. Not a counterexample to the parent path problem.
+
+Evidence/status: exact_rational_certificate_replayed
+
+- [check_high_critical.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/blaschke_power/check_high_critical.py)
+- [check_high_critical.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/blaschke_power/check_high_critical.py)
+
+claim_boundary: Finite spectral certificate only. Does not verify the asymptotic connector theorem or any numerical N0. Does not violate the proved numerator 4, 13/25, or 71/10.
+
+### blaschke_power_polynomial_class_4s_sharpness_2026_09_07
+
+The r4 free-point hierarchy with numerator 4s is realised by actual polynomial critical values of F_N=A^N-D^N. For every s>=1 and p>4s there exist monic open-disc polynomials whose first s-1 critical-point power sums vanish but whose mean |f(c)|^{p/(n-1)} exceeds 1, including a high-critical nonseparated regime. Completeness of the ordinary proofs is in BlaschkePowerCriticalSpectra_r5_source.md.
+
+Evidence/status: ordinary_advisory_not_lean_not_flagship
+
+- [BlaschkePowerCriticalSpectra.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md)
+
+claim_boundary: Ordinary advisory. Novelty not established. Not Lean-checked as an analytic theorem. Not promoted into the short-note flagship. Does not select a pair and does not solve Erdos #1041. The quadratic case remains weighted_quadratic_free_point_all_degrees.
+
+### blaschke_power_high_critical_short_connectors_2026_09_07
+
+For fixed small lambda>0 and b=lambda/N, mu(F_N) tends to e^{-lambda} while two nearby roots near -1 admit an inward-radial plus circular connector of length O((log(1/lambda))/N) inside {|F_N|<1}. Radial contraction preserves containment and decreases length. The proof supplies no numerical N0.
+
+Evidence/status: ordinary_advisory_unspecified_N0_not_flagship
+
+- [BlaschkePowerCriticalSpectra.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md)
+
+claim_boundary: Ordinary advisory family theorem, not a parent solution. Does not replace the trinomial flagship. Does not certify that any particular small degree lies beyond the unspecified threshold. Not Lean-checked.
+
+### blaschke_power_lambda_metric_degeneration_2026_09_07
+
+With lambda_N=exp(-alpha N), Lambda(F_N) tends to 2(1-e^{-alpha/2}). Coefficients approach z^{2N}-1 exponentially, so no modulus of continuity for Lambda is uniform across degrees in coefficient l1 or closed-disc uniform norm.
+
+Evidence/status: ordinary_advisory_compatible_with_fixed_degree_lsc
+
+- [BlaschkePowerCriticalSpectra.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md)
+
+claim_boundary: Compatible with registered fixed-degree lower semicontinuity (two_root_path_length_lower_semicontinuity / GenericSufficiencyClosure.md). Does not contradict the closed-class reduction. Not a parent counterexample. Ordinary advisory, not Lean-checked.
+
+### erdos1041_scaled_low_critical_five_halves_displayed_2026_09_07
+
+Every squarefree monic polynomial of degree n>=2 has two distinct roots joined in {|f|<(25/13) mu} by a curve of length less than 2((25/13) mu)^{1/n}. In every degree the length can be chosen less than (5/2) mu^{1/n}: (25/13)^{1/n} <= (25/13)^{1/3} < 5/4 for n>=3, and the root segment of length 2 sqrt(mu) in degree two. This is Corollary B'' of AngularBudgetLowCriticalClosure.md plus the uniform rational coefficient; it is not a new parent theorem of the r6 review.
+
+Evidence/status: ordinary_displayed_corollary_of_registered_13_25_not_new_theorem
+
+- [erdos-1041-lemniscate-newton-flow.tex](formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex)
+- [check_r6_constants.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_r6_constants.py)
+
+claim_boundary: Displayed in the live short note as res:scaled-low-critical. Does not replace 13/25, 71/10, or the trinomial flagship. Does not insert the uniform Blaschke-sector connector or the cusp law into the paper. The (5/2) coefficient is convenient, not asserted optimal. Erdos #1041 remains open.
+
+### blaschke_sector_uniform_connector_2026_09_07
+
+For every N>=3 and 0<b<=1/(10N), F_{N,b}(z)=[z(z+b)]^N-(1+bz)^N has an explicit three-piece connection of length at most 2-(689/1050)t<2 at level exp(-lambda t/25)<1, where lambda=Nb and t=(2 lambda/5)^{1/(2N-1)}. Radial contraction preserves simple open-disc roots and decreases length. This removes the unspecified starting degree of the r5 asymptotic connector in the stated parameter range.
+
+Evidence/status: ordinary_advisory_explicit_N_ge_3_not_flagship
+
+- [BlaschkeSectorConnector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkeSectorConnector.md)
+- [check_r6_constants.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_r6_constants.py)
+
+claim_boundary: Ordinary advisory family theorem. Novelty not established. Not Lean-checked as an analytic path theorem. Not inserted into the live short-note flagship. Does not solve Erdos #1041. Completeness of the ordinary proof is in BlaschkeSectorConnector_r6_source.tex.
+
+### blaschke_sector_degree24_length_below_half_2026_09_07
+
+For the r5 contracted degree-24 polynomial G (N=12, b=1/120, r=999999999/10^9), the sector path specialises to length < 58672129/117936000 < 1/2 at level <= 3750/3763 < 1. The existing high-critical certificate (mu>11/12, fails every radius-4/3 centre test, mean |G(c)|^{8/23}>40001/40000) is unchanged. This is an explicitly easy metric example outside those scalar regimes, not a counterexample to the parent problem.
+
+Evidence/status: ordinary_path_plus_exact_rational_margins
+
+- [BlaschkeSectorConnector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkeSectorConnector.md)
+- [check_r6_constants.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_r6_constants.py)
+
+claim_boundary: Finite ordinary path plus exact Fraction arithmetic. Does not violate 13/25, 71/10, numerator 4, or disk-family S=4/3. Does not solve Erdos #1041.
+
+### blaschke_sector_fixed_degree_cusp_2026_09_07
+
+Along the family of the uniform sector theorem, with n=2N even and n>=6, (689/1050)(9 delta_b/50)^{1/(n-1)} <= 2-Lambda(F_{N,b}) <= 2 delta_b^{1/(n-1)}. In particular 2-Lambda(F_{N,b}) is comparable to delta_b^{1/(n-1)} as b->0. No local Hölder estimate at z^n-1 with exponent greater than 1/(n-1) holds for Lambda on the full closed-root-disc coefficient class. It does not establish a Hölder upper modulus for arbitrary perturbations, or a leading cusp constant.
+
+Evidence/status: ordinary_advisory_not_flagship
+
+- [BlaschkeSectorConnector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkeSectorConnector.md)
+
+claim_boundary: Ordinary advisory, not Lean-checked, not independently reviewed, not a parent solution. Compatible with registered fixed-degree lower semicontinuity. Negative only for a stronger local Hölder exponent at the binomial on the full closed class along this family.
+
+### blaschke_sector_connector_lean_scalar_2026_09_07
+
+Proposed Mathlib module of ring identities and rational inequalities: circle norm-defect, disc-retention, quadratic and power pullbacks, amplitude bound, scalar length consolidation, reverse-triangle barrier, exact degree-24 comparisons, and (25/13)<(5/4)^3. Type B reported no sorry and no custom axioms. This wave copied the source and did not compile it.
+
+Evidence/status: source_landed_uncompiled_algebraic_inequalities_only
+
+- [BlaschkeSectorConnector.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BlaschkeSectorConnector.lean)
+- [lean_fast_build.py](formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py)
+
+claim_boundary: Does not formalise holomorphic square-root choice, path integration, sector topology, root continuity, or Lambda. Not added to Root.lean. Not a Comparator or Palomar run. Parent owns serial focused build. Erdos #1041 remains open.
+
+### r7_1041_complete_trinomial
+
+For 1 ≤ m < n and f(z) = z^n + a z^m + b with every zero in the open unit disc, any two zeros z₁, z₂ are joined by the explicit broken line through the origin: it is continuous, has the two zeros as its endpoints at parameters 0 and 2, stays inside {|f| < 1} at every parameter, has bounded variation, and its extended variation equals ‖z₁‖ + ‖z₂‖ and is strictly below 2.
+
+Evidence/status: proved
+
+- [PaperTrinomial.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperTrinomial.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: This is the trinomial family only. It settles no case of Erdős #1041 outside that family, and the parent problem is open.
+
+### r7_1041_complete_sextic_guardrail
+
+There is an explicit rational r in (0,1), namely 999/1000, for which every zero of the sextic f_r has modulus below 1 while the point (1/2)r on the radial spoke to the zero r has |f_r| > 1.
+
+Evidence/status: proved
+
+- [PaperTrinomial.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperTrinomial.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: A prescribed-spoke counterexample. It excludes automatic control of a named radial spoke once further partial sums occur; it is not a no-go for arbitrary connectors and says nothing about the parent problem.
+
+### r7_1041_complete_sep_or_counterexample
+
+The monic cubic P(z) = z^3 + (3/100) z - 3/4 has every zero in the open unit disc, exactly two critical points, both simple, a least critical modulus μ that is proved least rather than assumed and satisfies μ > 13/25, critical values on distinct positive rays, and normalised critical-value separation ‖1 - f(c₋)/f(c₊)‖ < 2/375 < 2.
+
+Evidence/status: proved
+
+- [PaperSeparationCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: This refutes a covering reading of the separation criterion. It is not a counterexample to Erdős #1041, which remains open.
+
+### r7_1041_complete_straight_path_obstructions
+
+There is a monic quintic with all roots in the open unit disc and a non-root critical point whose uniquely nearest root, nearest among every zero of the polynomial, has a point on its straight spoke outside {|f| < 1}; and a monic cubic with all roots in the open unit disc for which the midpoint of every pair of distinct roots lies outside {|f| < 1}.
+
+Evidence/status: proved
+
+- [PaperStraightObstructions.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperStraightObstructions.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: Two straight-path no-gos. They exclude straight-line completions of the critical proximity selector; they are not counterexamples to the parent problem.
+
+### r7_1041_connectedBelow_affine
+
+If f(h + c z) = d g(z) for all z with c ≠ 0 and d ≠ 0, and g has a contained rectifiable connector below level R of extended variation below L between a and b, then f has one below level ‖d‖ R of extended variation below ‖c‖ L between h + c a and h + c b.
+
+Evidence/status: proved
+
+- [PaperMetricScaling.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperMetricScaling.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: This is the metric transport step of the scale-free corollary and nothing more. The low-critical 13/25 input it would consume is ordinary and unformalised, so the scale-free corollary is not thereby formal.
+
+### r7_1041_curve_assembly
+
+The two-segment connector hub a h b is continuous, hits a, h and b at parameters 0, 1 and 2, has bounded variation on [0,2], and its extended variation is exactly ‖h - a‖ + ‖b - h‖; containment is transported from the two spokes rather than from the endpoints.
+
+Evidence/status: proved
+
+- [PaperCurveAssembly.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperCurveAssembly.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: Curve infrastructure. It backs no displayed statement on its own and replaces a proxy length by Mathlib's eVariationOn.
+
+### r7_1041_arity_floor_of_sSup
+
+Given a dual majorant ℓ(d) ≤ sSup(dualValues) + ∑_i σ_i w(d, r_i) for d ≥ d₀ with the supremum positive and bounded above, nonnegative weights σ, a mass bound x ≤ ∑_j ℓ(d_j), and slice-wise packing ∑_j w(d_j, r_i) ≤ π₀ for every i, the arity satisfies (x - π₀ ∑_i σ_i)/sSup(dualValues) ≤ k.
+
+Evidence/status: proved
+
+- [PaperFiniteDual.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperFiniteDual.lean)
+- [lean_check_slot.py](formal_math/erdos257_period_noncollapse/scripts/lean_check_slot.py)
+
+claim_boundary: The finite summation and supremum step only. The common-circle packing inequality is a hypothesis of the Lean statement; the hyperbolic disjointness argument that supplies it is ordinary and unformalised, and the 13/25 theorem that consumes this bound is not thereby formal.
+
+### r11_analytic_all_degree_critical_value_budget
+
+The repaired and fully checked analytic chain proves the all-degree critical-value mean and quadratic power budget for monic complex polynomials whose roots lie in a closed disc, including the zero-radius endpoint and the stated moment range.
+
+Evidence/status: lean_checked
+
+- [PaperCriticalValueMeanR10.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean)
+- [analytic_1041_validation_receipt.json](work/erdos_release_readiness_r8_20260908/returned_authoring_r11/review_11/analytic_1041_validation_receipt.json)
+
+claim_boundary: This is an analytic critical-value budget. It supplies no root-to-root path, COVER selector, monodromy theorem, or global geometric solution of Erdős 1041.
+
+### r11_weighted_variance_and_free_point_endpoints
+
+The checked weighted layer gives the exact probability variance identity, equality precisely on positive support, simultaneous variance plus finite Taylor deficit, all-degree equal-weight equality and strictness, and the retained three- and four-point conclusions.
+
+Evidence/status: lean_checked
+
+- [PaperWeightedCoverageR11.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PaperWeightedCoverageR11.lean)
+- [analytic_1041_validation_receipt.json](work/erdos_release_readiness_r8_20260908/returned_authoring_r11/review_11/analytic_1041_validation_receipt.json)
+
+claim_boundary: Zero-weight centres are unconstrained. The FP3/FP4 conclusions do not validate the retired alternative mechanisms and do not construct admissible paths.
+
+### r11_three_point_defect_scalar_kernel
+
+A checked scalar three-point defect identity provides its nonnegativity, majorant, and exact zero classification under explicit nonnegativity and sum-at-most-three hypotheses.
+
+Evidence/status: lean_checked
+
+- [ThreePointDefectR11.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ThreePointDefectR11.lean)
+- [analytic_1041_validation_receipt.json](work/erdos_release_readiness_r8_20260908/returned_authoring_r11/review_11/analytic_1041_validation_receipt.json)
+
+claim_boundary: This scalar identity is independent support; it is not a proof of the retired three-point geometric mechanism or a connector theorem.
+
+### r11_reciprocal_log_series
+
+The checked reciprocal logarithmic series supplies factorwise convergence inside the minimum root modulus, the log-modulus identity and series, the literal finite coefficient polynomial, and a zeroth-order tail estimate, allowing repeated roots.
+
+Evidence/status: lean_checked
+
+- [ReciprocalLogSeriesR11.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalLogSeriesR11.lean)
+- [analytic_1041_validation_receipt.json](work/erdos_release_readiness_r8_20260908/returned_authoring_r11/review_11/analytic_1041_validation_receipt.json)
+
+claim_boundary: All roots are nonzero through the positive minimum-radius hypothesis and evaluation stays strictly inside that radius. No logarithm branch or derivative identity is asserted outside the stated domain.
+
+### point_separation_does_not_force_critical_value_separation_r13
+
+The monic quartic p(z)=z^4-z^3/262144-2z^2+3z/262144+1/2 has p′(z)=4(z+1)(z-3/1048576)(z-1). Sign changes in four disjoint intervals place its four roots in (-3/2,-5/4), (-3/4,-1/2), (1/2,3/4), and (5/4,3/2), exhausting all roots by degree. Together with the three critical points, all seven points are pairwise more than 1/4 apart, while |p(1)-p(-1)|=1/65536 < 3/65536 = (4-1)((1/4)/4)^4. More generally p_s(z)=z^4-(4/3)sz^3-2z^2+4sz+1/2 for 0<s≤1/64 retains the same separated root/critical-point pattern and has |p_s(1)-p_s(-1)|=16s/3 tending to zero.
+
+Evidence/status: exact_rational_counterexample_with_complete_real_root_exhaustion;_lean_candidate_unrun
+
+- [PointSeparationCriticalValueNoGoR13.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PointSeparationCriticalValueNoGoR13.md)
+- [exact_counterexample_check.json](work/erdos_release_readiness_r8_20260908/returned_authoring_r11/review_1041_geometry_r13/exact_counterexample_check.json)
+
+claim_boundary: Refutes only the proposed implication from pairwise separation of roots and critical points to a positive lower bound for distinct critical values. It does not refute the source-current conditional theorem, which assumes a normalized critical-value gap directly; it does not affect the independent analytic results; unrestricted Erdos 1041 remains open.
+
+### ani_degree_seven_total_variation_counterexample
+
+There exists a monic complex polynomial of degree seven with all roots in the open unit disc and no repeated roots, such that every continuous path on [0,1] in its strict unit lemniscate joining distinct roots has extended total variation greater than 2. This is one explicit instance of ani’s construction.
+
+Evidence/status: lean_kernel_checked_private_and_public_4_29_Palomar_pending
+
+- [CatalogueAdapter.lean](Counterexample/CatalogueAdapter.lean)
+
+claim_boundary: The theorem refutes the universal total-variation formulation. It does not formalise ani’s whole small-parameter family or a Hausdorff-measure comparison. Independent human review of historical correspondence is not recorded; positive restricted-family results retain their own hypotheses.
+
+## Known failed routes
+
+The universal scalar saddle-wall threshold T<=2sqrt(2)(beta gamma)^(1/(2n)) is FALSE for an actual polynomial wall. For f(z)=(z^2-a^2)(z^2+b^2) with b/a=9/10, the fourth-power threshold fails by exactly 5836/625. The true normalized lower/upper pair remains below one: its square is 3249/3620 with slack 371/3620, and the complete quartic AP product is also strictly below one. SCOPE: this retires only the total-length strengthening obtained by discarding the exact X^2 and arm-imbalance slack. The shape-retaining condition T^2-X^2-(A+B)|A-B|<=8(beta gamma)^(1/n), complete rooted-block compensation, AP, and unrestricted Erdos 1041 remain live. Exact checker: scripts/check_erdos1041_symmetric_two_level_wall.py; pending Lean source: SymmetricTwoLevelWall.lean.
+
+The first-critical pair-energy cone inequality is FALSE already for an exact cubic with every root strictly in the open unit disk and a unique minimum-modulus critical point. For p(c+w)=v+a w^2+w^3 with c=-1/2-i/100, a=-1/16-5i/6, and v=-1/32+i/160, three exact rational Rouche disks certify the roots. Along the two local inverse branches, E-|c|^2=A s^2+O(s^4) with 0<A<K=|v/a|, and the proposed cone difference has leading term 4A(A-K)s^2<0. Exact checker: scripts/check_erdos1041_first_critical_pair_energy_no_go.py. SCOPE: this retires only the pointwise pair-energy producer; the descending-branch route, combined charge, COVER, and unrestricted Erdős 1041 remain open.
+
+The terminal-node weighted-young entrance-energy lift is false for an actual polynomial. For F(z)=(z^2-1/100)(z^2-1/4), the inner and terminal merge moduli are 1/400 and 9/625, the inner and outer entrance energies are 625/576 and 1/4, and the only two terminal-young roots carry exactly 144/769<1/2 of total energy, with strict deficit 481/1538. The inequalities are exact and persist under small generic perturbation. The sharp attachment-coupled selector survives, but exact transport to the selected lowest common merge restores the common-ancestry discount, so localization alone does not close the metric consumer.
+
+The retained scalar/tree ledger does not force both roots at the sharp two-young threshold A<=S/(k-1) to be individually h_cl-heavy. A minimal four-leaf labelled comb has top ages (2s,2s,s,0), makes roots 3 and 4 the exact two-young pair, and assigns exactly one of them below h_cl while satisfying the stated merge-product, energy-bridge, lifetime, and abstract H=I Gram identities. This is an abstract invariant-ledger countermodel, not an actual-polynomial realisation. It retires only the uncoupled deduction; the sharper pair-product guarantee survives for the same two roots, and three-young selection supplies two individually heavy roots.
+
+Attachment youth has the opposite polarity for the direct root-centred Bergman consumer. Domain monotonicity from the singleton component gives r_Omega_t(a_i)>=q_i and hence the Green product P_i(t)>=sigma_i/t, which approaches a lower bound near one for a young root observed near component birth. The consumer needs an upper bound away from one, and charge heaviness cancels from this estimate. A different observation level or independent upper bound is required.
+
+Deleting Gram-exceptional rows before assigning connector geometry is impossible as a degree-free allocation rule. For F_(n,r)(z)=z^n-r^(n-1)z with r close to one, a fixed determinant floor below e^(-1) permits exactly one exceptional central row, yet that root carries fraction (n-1)/n of the ER4 mass and every attachment age is zero; deleting it leaves only 1/n and any two surviving outer roots carry 2/[n(n-1)]. This is not a counterexample to Erdos 1041: the central root is the useful hub and the radial connector has length r<1. The surviving architecture must include an exceptional-root branch or retain all roots until geometry is assigned.
+
+The full normalized sextic mixed model cannot be covered by positive equal-radius root-direction connectors. On H(z)=Re(z^3-z^6), every non-antipodal sixth-root chord crosses a half-step direction where z^3 is nonzero purely imaginary and H(z)=|z|^6>0; antipodal pairs have length exactly two. The pure cubic face is still solved by its radius-zero origin connector, so this refutes only the monolithic positive-radius atlas and forces a separate stable origin cone. Exact checker: scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py; Lean core: SexticCubicFaceConnectorNoGo.lean.
+
+The unique-smallest-angular-gap common-radius selector for Form A is FALSE at n=5. A rational half-angle pentagon makes w3,w4 the unique smallest gap, blocks radius zero on the w4 spoke, and blocks every positive radius at the selected chord midpoint. The latter is uniform: |g(sm)|^2-1 is a positive rational multiple of s times a polynomial whose degree-ten Bernstein coefficients are all strictly positive. Exact checker: scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py; Lean core: ConcyclicSmallestGapSelectorCounterexample.lean. SCOPE: angular gap size alone cannot select the pair. Another adjacent pair may still work; Form A, the concyclic case, and Erdos #1041 remain open.
+
+Concentric-alternation Conjecture U is FALSE at n=5 and s=3/20. Five exact Gaussian-rational unit roots and five exact unit test directions place a strict violating point in every closed root gap; the squared margins above (1+s^5)^2 are 0.0019145, 0.0191028, 0.0078963, 0.0070978 and 0.0021883. Exact Fraction checker: scripts/check_erdos1041_concyclic_alternation_counterexample.py; rational core Lean-checked in ConcyclicAlternationCounterexample.lean. The earlier 930-check battery never entered this basin, which is negative_results entry 19 applying again. SCOPE: this refutes only the uniform regular-polygon majorant at prescribed radius. Form-A-cut V<=1 can choose its radius jointly with two spokes and remains open; the concyclic case and Erdos #1041 are untouched.
+
+No polynomial-independent positive length slack is available, even for the quadratic Cassini family: root distances 2-2/m approach two. Any generic-perturbation reduction must preserve a starting-polynomial-dependent margin; a fixed global transfer budget is eliminated.
+
+The same exact Cassini polynomial refutes the load-bearing tree-budget statements in both unrestricted drafts: Proposition 12 of the March manuscript and Proposition 7 of the shorter draft. At a=9/10 the component satisfies their Morse/distinct-critical-value hypotheses, but the true coarea budget is strictly below 41/25 while any connected set spanning the roots has length at least 9/5, a gap greater than 4/25. This is an independently checked polynomial counterexample to the printed metric propositions, stronger than the previously recorded local-sector criticism. It does not rule out a differently weighted Reeb theorem, a construction that explicitly pays attachment cost, or a direct two-root argument.
+
+Pairwise distinct critical values or pairwise distinct critical-value moduli do not alone exclude saddle connections. What the Newton-flow identity naturally detects is pairwise distinct critical-value arguments.
+
+A common constant translation preserves equality among initially equal critical values. The finite planar-avoidance theorem therefore closes ray separation only after a separate perturbation has made the critical-value family injective.
+
+The checked critical-pair metric theorem cannot be completed by choosing its nearest and second-nearest roots and joining them to the critical point with straight segments. An exact balanced quintic makes the nearest root unique while its spoke exits the strict unit lemniscate. Any successful fan-in must use curved descending branches, another critical point, or the global component/Reeb geometry.
+
+Curving the two spokes along the canonical descending inverse-ray branches at that same metric-selected critical point still does not close the argument. In the exact balanced quintic, one certified half-level waypoint on each branch forces their combined length above 2.083996. The surviving hub mechanism must select a different critical point using arc-length information, or use global component/Reeb geometry; mere Newton containment at the metric critical point is insufficient.
+
+Direct root-chord selection is impossible in general: the exact cubic z^3-(99/100)^3 has all roots in the open unit disk, yet the midpoint of every distinct root pair lies outside |f|<1. The same cubic is joined by the two safe radial spokes through 0 with total length 99/50, so the result forces departure from a single chord but does not force curvature; it opens critical-point hubs and more general multi-segment or topological mechanisms.
+
+The safe broken line through the origin in the cubic is not a universal replacement for direct chords. An exact five-root rational-complex configuration has four root-to-origin spokes with explicit waypoints satisfying |f|^2>1, leaving at most one safe spoke. Any fixed-origin two-spoke proof is therefore eliminated; hub selection must depend on the polynomial's critical or global component structure.
+
+Selecting the critical point with minimum critical-value modulus still does not justify straight spokes. An exact degree-five Gaussian-rational witness has a unique first critical value below one but four unsafe root spokes from that critical point. The first-merge topology survives only with its curved inverse-ray branches or a different path.
+
+Least-critical-value selection also fails for curved branch length itself. A pinned degree-four configuration has least-critical-value branch-pair length about 1.042608 at level 0.334325, while a later hub has shorter length about 0.841236 at level 0.362534. Thus the invariant target must retain the global minimum over critical hubs; first merge is not a valid uniform length selector.
+
+Even allowing an adaptive choice between every root chord and every two-arm broken line through the minimum-enclosing-disk center does not extend the quartic proof. An exact degree-five Gaussian-rational configuration makes all ten chords unsafe and leaves at most one safe MEC radial arm. The unrestricted proof must use a polynomial-adapted non-MEC hub, curvature, or global component/Reeb geometry.
+
+The exact radial-lift area identity controls an angular L1 average, not the discrete sum over critical-value rays. For f_epsilon(z)=z^n+epsilon*z-r^n, all n-1 simple critical-value arguments coalesce at pi, and repeating the limiting complete-ray lift majorant already exceeds the target 2(n-1) scale. Direct unweighted coarea-average sampling is eliminated; only a multiplicity-aware descending-edge or Reeb charge remains live for the aggregate conjecture.
+
+The June 2026 quartic theorem does not close the unrestricted problem.
+
+The degree-three theorem's own spoke inequality does not generalise. It proves containment in the hub sublevel set {|f| <= |f(c)|}, and an exact Gaussian-rational quartic with all roots in the open unit disk has, at every admissible critical point, at most one sublevel-contained straight spoke. The failure occurs in an arbitrarily small neighbourhood of the extremal family z^n - r^n, where the radial spokes satisfy |f(t z_k)| = r^n(1 - t^n) with equality only at t = 0, so sublevel containment there is marginal and a generic perturbation breaks it. A deterministic stress family breaks it at every degree from four to eight and never at degree three. This does not refute the weaker open-lemniscate containment, which survives on the same witness.
+
+Selecting the two nearest roots at the minimal-critical-value hub and asking for sublevel-contained spokes is false: a degree-twelve configuration sends the second-nearest root's spoke to |f|/|f(c)| = 2.28318003178603 at t = 0.716, confirmed at 60 digits. The second-nearest root need not lie in a component adjacent to the hub.
+
+Normalising at the minimal-critical-value hub does not put two roots inside the closed unit disk. With P(u) = 1 + u^2 R(u), P(0) = 1, P'(0) = 0 and |P(kappa)| >= 1 at every critical point, adversarial search drove the second-smallest root modulus to 1.080244757 at degree four and 1.037279478 at degree five. The length bound must come from the Lean-checked critical-pair metric scale's sum |u|_(1) + |u|_(2) <= 2, not from bounding each root.
+
+The total inverse-ray tree length obeys no bound n|v|^{1/n}. The pure power z^n - r^n attains equality, which made the bound look canonical, but a degree-three edge configuration reaches ratio 1.065658. Relatedly the two branches that merge at a critical point are not a typical pair: their share of the total tree length reaches 0.999066 against an average share 2/n = 0.25 at degree eight. Any argument that bounds the whole inverse-ray tree and then takes two of n branches is eliminated.
+
+Straight two-spoke paths through a single critical point are eliminated from degree five. The degree-five witness is a near-Fekete quintic: a 1e-5 angular perturbation of the fifth roots of unity at modulus 1 - 1e-9, angles 0.99998979, 0.2, 0.4, 0.6, 0.8 of a turn. Its four critical points sit at |c| about 0.05 with |f''| about 3e-3 -- the spread of the 4-fold critical point that z^5 - r^5 has at the origin -- and no critical hub carries two contained spokes: two have |f(c)| > 1 and are inadmissible, and the other two contain exactly one spoke each. It appeared at 1 failure in 1500 under near-Fekete seeding after a random degree-five sample of the same exact test had reported zero failures; the hard regime is the one HardRegimeIsNearFekete.md already identifies. Provenance is weaker than the witnesses below: it is recorded as a measurement in CriticalBudgetLab.md (commit 343ef99ad3), not stored as an exact IEEE-754 hexadecimal literal, and that commit shipped no probe and no receipt. Erdos #1041 is not refuted there -- the ORIGIN, which is not a critical point in this configuration, gives a certified two-segment path of length 1.999999998. So the honest degree-five statement needs the union of both hubs, and the two failure modes are disjoint: the exact rational MEC falsifier of AdaptiveMecDichotomyLab.md kills chord-plus-origin and is rescued by a critical hub at 1.218210, while this quintic kills the critical hubs and is rescued by the origin. Pendyala's quartic proof uses the origin route; the corpus's surviving front is the critical route. Witnesses at degree six and degree nine, with all roots strictly inside the open unit disk, have every admissible critical point carrying at most one root whose straight spoke stays in {|f| < 1}; verified at 60 digits with f' residuals near 1e-61 and with segment maxima located from the roots of d|f|^2/dt rather than sampled. The degree-six witness has two admissible hubs at |f(c)| = 0.99995098599675816247 and 0.99995927525097869638, each with exactly one contained spoke; the degree-nine witness has three, each with exactly one. Erdos #1041 is not refuted at those configurations: the descending inverse-ray branch pairs give 1.763942 and 1.545995, and grid geodesics give 1.668784 and 1.395432. This confirms negative result 4 rather than relaxing it, and leaves the descending-branch arc length as the quantity to bound.
+
+Methodological: an adversarial supremum pinned just below a threshold is not evidence that the threshold is never crossed. Maximising the straight-spoke hub objective directly gave suprema 1.999999688 through 1.928588184 for degrees three to twelve, never reaching two, while a differently seeded search over the same space found configurations where the objective is infinite. Report which basin a search explored, not only its record value.
+
+No hub-by-hub argument can prove the surviving branch-length obligation. The per-hub strengthening L(c) <= 2 max_k |z_k - c| is tight on both equality families -- every quadratic and z^n - r^n -- but false in general: a pinned degree-four witness, stored as exact IEEE-754 literals with all roots at modulus below 0.782955 and an admissible hub at |f(c)| = 0.0318, reaches ratio 1.210001551. It is neither a boundary nor a level-one degeneracy, and at that same configuration the admissible-minimum ratio is only 0.306554. The minimum over admissible critical points is therefore load-bearing rather than a convenience of the argument.
+
+The exact charge identity does not split into separately nonnegative pieces. A deterministic complete-hub sweep finds normalized total signed curvature support -0.1613048394826284, while an IEEE-pinned quartic gives root-star charge/R -0.004211433878039096 with the allocation identity closing within 8.9e-16. Therefore neither curvature-only positivity nor nonnegative charge at each root can prove the aggregate. Cancellation must couple endpoint deficit and curvature above root-star scale.
+
+An admissible component cannot be normalized using only the circumradius of its own roots. A pinned degree-six two-cluster configuration has an inadmissible central merger and two nontrivial admissible components; one component has normalized local-radius charge -0.00014178329316116844, even though its charge against the global root circumradius is positive. External roots remain in f'/f and are metric data for every Newton trajectory.
+
+The level condition |f(c)| <= R^n does not by itself imply the strong completion. Applied at an arbitrary critical point it fails on about one percent of hubs, reaching ratio 1.0556 at degree six. What the discriminant/Fekete sandwich supplies is a bound at the MINIMUM-critical hub, and it is minimality -- every component of {|f| < |f(c*)|} still holding exactly one root -- rather than the level that the strong completion depends on.
+
+Engine boundary for descending-branch integration: at a DEGENERATE critical point the two-branch substitution f(z(u)) = (1-u^2) f(c) is the wrong local model. All n preimages are equidistant from the hub and the field is stiff at the start, so descending_pair under-reports the length there -- on z^n - r^n it returns 1.7989 against the true 2r = 1.8 at degree six, and the deficit does not shrink with the start offset. The under-report is in the conservative direction for the length conjectures, but equality families must be asserted from their ordinary proofs rather than from the integrator.
+
+The turning-inflation route is refuted at every degree n >= 3. The chain L(c) <= (d1+d2)/cos(alpha_max/2) <= 2R cannot close: the budget d1+d2 <= 2R is saturated exactly on z^n - r^n (max ratio 1.000000000000 over 24048 critical points), where phi = 2pi/n, so the turning floor forces alpha_max >= pi/2 - pi/n and the chain returns at best 2R sec(pi/4 - pi/(2n)) = 1.0353, 1.0824, 1.1223, 1.1547, 1.1810, 1.2027 times 2R for n = 3..8, equal to 2R only at n = 2. Not a basin record: the worst ratio increases monotonically as the extremal parameter eps -> 0 at every degree, and it fails on the bit-exact QC witnesses with no search (degree 6 gives 1.100817 and 1.138117 at both hubs). Supremum is +infinity, since alpha exceeds pi at 5/436 clean hubs (max 224.03 deg) making the bound vacuous. The recorded alpha = 0 on the extremal family holds only at the DEGENERATE hub of multiplicity n-1; a simple hub's two branches leave back-to-back and cannot follow two radii meeting at 2pi/n. Receipt scripts/check_erdos1041_turning_inflation.py.
+
+The first-merge-hub conditional theorem's spoke claim is false. Its step 3, that each spoke [z_a, c*] stays inside {|f| < 1} at the least-critical-value hub, fails on this directory's own stored exact witnesses: at degree 6 a nearest-root spoke reaches |f| = 1.0000093332434161438 at t = 0.87625888 and at degree 9 it reaches 1.0000103851845920825 at t = 0.80548221, both above 1, so the nearest-pair broken line leaves the lemniscate. The length half does not fail there: d1+d2 is 1.717 and 1.498, well inside the budget. Containment breaks, not the budget. The adversarial attack on the claim topped out at 0.986769 and missed violations of size ~1e-5 at max root modulus 0.99999985. Receipt scripts/check_erdos1041_first_merge_hub_claims.py.
+
+The reciprocal sweep cannot join two roots on the extremal family: {|g| < 1} splits into n components, one per root, meeting only at z = 0 where |g| = 1 exactly. So transfer question 2's root-attachment charge has nothing to charge there, independently of the 2*pi*n Crofton budget, and any sweep-based proof must supply its own component-crossing mechanism at level exactly one.
+
+The recorded MIN and AVG ceilings are not ceilings. CriticalBudgetLab.md's table reads max min_c L_c as 1.852321 / 1.634226 / 1.592300 at n = 4,5,6 and max normalized aggregate as 0.904177 / 0.822727 / 0.746591 / 0.680409 at n = 4..7, concluding both are tight at n = 3 and only there. The extremal family z^n - r^n gives min_c L_c = 2r and normalized aggregate r at EVERY degree, so both suprema are attained in the limit r -> 1 at every n. Confirmed through the corpus's own machinery: perturbing the extremal family by 1e-9 at r = 0.999 gives minimum two-root budgets 1.998000, 1.996981, 1.998001 at n = 4,5,6. Consequence: no degree-dependent slack exists and any argument must be tight at every degree.
+
+The strong statement L(c*) <= 2 rho, rho = T*^(1/n), is refuted at degree four with worst ratio 1.004246913 (mu = 0.9670225538632438 at 50 digits, L = 1.9917262723, 2 rho = 1.9833033547), pair and length identical across six tolerances 1e-8 to 1e-13 with endpoint error 1.7e-14. CAVEATS, load-bearing: the two smallest critical values agree to 2.30e-9 relative, at the runner-up hub the ratio is 0.9608, the violation dies under a 1e-3 perturbation (0/12), and every violation found has critical-value separation below about 1e-6; under a slightly wider tie-tolerant selector it would not stand. This is what MinimumCriticalNewtonHubLab.md predicted -- a crossing above one kills only the strong statement, and the scale-normalized 2R completion is untouched.
+
+The merge-topology branch bound L_branch(c -> a) <= n|f(c)|/|f'(a)| is refuted at every degree and appears UNBOUNDED in the degree: max over hubs runs 1.069, 1.151, 1.258, 1.272, 1.416, 1.471, 1.438, 1.557, 1.613, 1.628, 1.721, 1.733 for n = 3..14, monotone with no ceiling. Equality on z^n - r^n confirmed to 1e-16. The c*-restricted form, which is what the paired route needs, also fails at degree 3 with ratio 1.006770882 (endpoint error 1.0e-14) and robustly: 12/12 perturbations at 1e-4 still violate. Recorded as apparently unbounded, not as a bound.
+
+The summed merge-topology bound n mu (1/|f'(a)| + 1/|f'(b)|) <= 2R is refuted by an exact identity and is unbounded. On f(z) = z(z^(n-1) - r^(n-1)) the ratio equals n^((n-2)/(n-1))/2 independent of r, reaching 13.340007 at n=30. Also refuted at degree 3 (1.0162361) and on the bit-exact hex witnesses at 60 digits (1.00031579... degree 6, 1.00013757... degree 9) under both R conventions. Not a symmetry artifact: breaking the (n-1)-fold symmetry at eps=0.01 moves the degree-8 value only from 2.096481 to 2.074570. The failure is first order -- the ratio's excess grows linearly in the perturbation (~1.9x per doubling) while the Fekete deficit that would protect it grows superlinearly (~2.5x) -- so it fails in every neighbourhood of the extremal family.
+
+Hub selection dominates the form of the bound: 196 of 197 observed symmetric-bound violations sit at NON-minimal hubs. At minimum-critical hubs there is 1 violation in 480 branches (worst 1.0068); at non-minimal hubs, 196 in 1466 (worst 1.5784), and the worst offenders all have |f(c)| about 0.99 or above.
+
+RETRACTION, 2026-08-23 (commit b071f556b8 retracting 558e07a20d): a claim that the second-root premise is FALSE at degree four is withdrawn. It tested |w| <= 1, only the CRUDE sufficient form of criterion (SC) in GeneralSpokeIdentity.md. Against the sharp form max_t (1-t)|Q(t)| <= 1, two roots pass at all three stored witnesses and both spokes are contained. The correct sufficient condition is also weaker than stated: since spoke length is lambda|w_i| with lambda = |f(c)|^(1/n) < 1, two roots satisfying (SC) with |w_1|+|w_2| <= 2 suffice, and the sum never binds in sampling (35430/35430 at n=3, 23988/23988 at n=4, 7970/7970 at n=5). Configurations where fewer than two roots pass (SC) do exist from degree four, but at three examined directly two spokes were still contained, so SC failure does not establish containment failure. The degree-four boundary remains settled by StraightSpokeHubCriterionLab.md section 2, not by that commit.
+
+Instrument defect class, both members biased the SAME way. A descending branch parameterised by f(z)=v(1-s^m) suffers (a) scale truncation -- a hub that is simple yet NEARLY degenerate, i.e. the entire near-Fekete regime, crosses many decades of |z-c| inside a vanishing range of s, and plain Gauss-Legendre on [0,1] silently drops the inner journey; and (b) loss of sigma to rounding once sigma < eps_mach, after which Newton collapses the branch back onto the hub. Both UNDER-report length, i.e. both flatter the surviving obligation min_c L(c) <= 2R. Fixes: a geometric mesh [0,2^-K],...,[1/2,1], and shifted coordinates solving Q(w)=f(c+w)-v = -v sigma whose constant term is exactly zero. With both, the integrator returns 2r to 3.9e-16 on the equality family z^n-r^n at n=3..7 -- the case where StraightSpokeHubCriterionLab.md records this directory's integrator returning 1.7989 against 1.8 at degree six -- and reproduces both stored hard witnesses (1.763941902 vs 1.763942, 1.545995147 vs 1.545995). Separately, an APPROXIMATE smallest enclosing circle inflates R, which sits in the obligation's denominator and again flatters the conjecture: Badoiu-Clarkson at 3000 steps returned R=1.0000724 for the degree-6 witness whose roots all have modulus 0.99999985. Compute the MEC exactly over pairs and triples.
+
+The STRONG completion L(c*) <= 2|f(c*)|^{1/n} is NOT refuted near Fekete. A float64 similarity-normalised search reported a strong ratio 1.0000018874 at n=4 in the Fekete basin; certified at 50 digits on the near-Fekete family it is strictly below one at every point, rising to 1 from below as eps -> 0 (n=3: 0.99999980 at eps=1e-12; n=6: 0.99783784). The float64 reading was inside that engine's own error bar. Recorded because this directory has four prior retracted counterexamples of exactly this shape, and because a search-engine error bar must be certified rather than assumed.
+
+The reported start-direction defect in system.lib.formal_math_lemniscate does not reproduce as a locator problem. A Taylor locator solving a_n d^n + ... + a_2 d^2 + u^2 v = 0 in d = z - c was added and compared with the level-root locator over 778 hubs spanning generic and near-Fekete configurations down to perturbation scale 1e-7: they agree in arc length to 1e-13 and in start direction to 1e-13. The residual angular error is real, not an artifact. At finite u the two descent directions are opposite only to order u, with correction O(u a_3/a_2), and a_2 = f''(c)/2 tends to zero as the hub approaches a degenerate one. Measured deviation from exactly-opposite at u = 1e-6: 1.6e-6 rad generic, 6.7e-2 rad on a near-Fekete shell at scale 1e-6, 1.7e-1 rad at scale 1e-7, identically for both locators. The operative rule is therefore a step-size criterion -- u small compared with |a_2/a_3| times the angular accuracy wanted -- and no choice of locator substitutes for it. descending_pair keeps its original default since changing it would move landed receipts for no measured gain.
+
+The disjunction 'one safe root chord OR two safe radial arms through the minimum enclosing disc centre' fails already at DEGREE THREE, which is minimal: for n = 2 the chord between the two roots is always safe, since on [a,b] one has |f| = t(1-t)|a-b|^2 <= |a-b|^2/4 <= 1. The witness is L(7+24i)/25, L(7-24i)/25, -L with L = 999/1000, three Gaussian rationals of common modulus L < 1. Positive rational barycentric weights (25/64, 25/64, 7/32) annihilate the three unit directions, so the origin is strictly inside their hull and D(0,L) is the minimum enclosing disc, making the centre hub the origin. Exact rational evaluation gives |f|^2 > 1 at the midpoint of all three root chords and at t = 1/10 on two of the three origin spokes, so no chord is safe and at most one radial arm is safe. This lowers the recorded degree-five elimination adaptive_mec_chord_or_radial_counterexample to the minimal degree and supplies its mechanism: with all roots on a common circle of radius L, the spoke to a_j starts at |f(0)| = L^n and has initial log-derivative -Re(conj(p_1) a_j)/L, so only roots in the closed half plane Re(conj(p_1) z) >= 0 can carry a contained spoke, and that half plane can hold exactly one root even though sum_j Re(conj(p_1) a_j) = |p_1|^2 >= 0. The consequence is that the critical-hub family is NOT redundant: chords and the centre hub can be empty at the same configuration. Erdos #1041 is untouched; its degree-three case is proved in CubicCriticalHub.md by a critical-point hub.
+
+Correction, 2026-08-24, to exact_results::two_safe_origin_spokes_counterexample. That entry records 'at most one safe root-to-origin spoke' for r=99999/100000 with roots r, r(-20+-99i)/101, r(-28+-195i)/197, having checked four of the five. Exact Gaussian-rational evaluation of the fifth gives ZERO safe spokes: each of the five carries a rational waypoint t in (0,1) with |f(t z_j)|^2 > 1, verified in Fraction arithmetic and stored in erdos1041_visibility_overlap_receipt.json. The witness is sharper than recorded. It is also the row that forces the visibility-overlap reduction to be stated on the FIRST-MERGE component rather than the component of the origin: all five roots sit at modulus r, so a path from 0 to a root has about 1e-5 of length budget while every straight spoke is excluded and the cheapest corridor detour costs about 7.7e-5. At mu = 0.00477 the first-merge component is a small neighbourhood of the two roots that are 3.2 degrees apart and does not contain the origin, so the reduction is unaffected -- but the level in (COVER) is not free.
+
+The capacity-geodesic bound (C) does NOT halve per lobe under the minimum-critical-value hub selector, but the failure is confined to near-ties and the min-over-hubs form is untouched. At level mu the lobes meet only at c*, so geo = geo(a,c*) + geo(b,c*), inviting geo(a,c*) <= rho = mu^{1/n} on each lobe -- an equality on both extremal families and a ONE-lobe statement with f conformal onto a disk. An exact degree-four witness (roots stored as IEEE-754 hex in scripts/check_erdos1041_capacity_geodesic.py::PERLOBE_WITNESS, all four moduli in 0.98489..0.99841) has merging-pair d/rho = (0.9932938, 1.0003912) at the minimum-critical hub, so one merging root is strictly farther from c* than the geometric mean. The refutation is exact -- d is a distance between two computed points, and geo >= d -- but it is a SELECTOR result, not a statement about the problem: the two smallest critical values agree to 1.55e-6, at the runner-up hub the ratio is 0.9924758 and at the third 0.9988951, and a tie-guarded adversarial climb (rejecting critsep < 1.001) tops out at 0.9192 at n=4 and 0.8545 at n=5, falling to 0.6664 and 0.5582 at guard 1.2. This is the same shape as entry 28's own caveat and both of its checks were run. The pair budget holds at every hub of the witness (0.9968, 0.9660, 0.9518). Consequence for method: a min-critical-hub proof of (C) must spend the two lobes against each other. Consequence for gap 1 of FirstMergeReductionState.md: the same witness has merging pair != nearest pair, but only inside that tie -- over 440 bulk draws across six families and every tie-guarded climb the merging pair WAS the pair nearest c*, so no tie-free separation is on file and the gap is still open in the direction that matters.
+
+Self-correction, 2026-08-24, same session, to visibility_overlap_reduction_to_a_one_root_statement. The first landed measurement of (COVER) fixed the level at lambda = 1.01*mu. Adversarial hill-climbing on that objective BREAKS it at degree three: roots -0.044684909847+0.962379872660i, -0.866609339080-0.498987227711i, 0.864151412519-0.503231891122i (two exactly on |z|=1), mu = 0.9577745241, give sup dist = 1.0349, stable under grid refinement from step 0.0174 through 0.0035 while the pair geodesic converges cleanly 1.7945 -> 1.7682, so it is NOT a discretisation artefact. It refutes only the FIXED-LEVEL reading. Scanning the level gives 0.9427 at 1.0005*mu, 0.9543 at 1.002*mu, 1.0349 at 1.01*mu, 0.9950 at 1.03*mu and 0.9937 at lambda = 1, so the existential statement holds there with 0.057 to spare. The constant is NOT MONOTONE in the level: raising it both adds points to cover and adds shortcuts, and at a further merge the shortcuts win discontinuously -- here the drop from 1.0349 to 0.9950 happens exactly when the third root joins the component. Consequence: any measurement of (COVER) that fixes a level will report false violations. With the level scanned, the 38-row corpus worst case improves from 1.01886 to 1.00578, the scale-free ratio from 1.02325 to 1.00678, and the worst pair geodesic from 2.00400 to 1.99800 -- the last being the exact closed form 2r at z^2 - 0.999^2, so the apparent excess above 2 was pure discretisation. Receipt arm `levels`.
+
+Instrument-defect class, FIFTH reproduction, 2026-08-24, new cause. A probe that traces the descending Newton branch pair from c* and then scores a containment statement on the traced arc fails at a DEGENERATE minimising hub, and fails in the direction that looks like a refutation. On z^8 - 0.999^8 the sevenfold critical point at the origin resolves numerically into a cloud of radius 5.1e-3; the tracer starts from a spurious hub at -0.0016+0.0048i and the arc it returns contains points with |f| = 1.166 > 1 -- the traced curve has LEFT the lemniscate. Scored naively that reads as two points of the arc seeing neither root, i.e. as a covering failure, at precisely the family where the covering is provable in closed form (on z^n - r^n the branches are the radial segments and |f(s r w)| = r^n(1-s^n) <= r^n). This is negative_results entry 24's class with a different consequence: entry 24 records that a degenerate hub makes the two-branch substitution UNDER-report length, which flatters the conjecture; here it makes a containment probe OVER-report failure. General rule, not stated by entry 24: a traced curve must be verified to lie in the region before any containment statement is scored on it. Two guards are now in the receipt arm `path` -- reject a minimising hub with another critical point within 1e-3, and require max over the traced arc of |f| <= 1 before scoring -- and the excluded rows are receipted, never silently dropped, with the extremal family settled instead by the closed-form arm.
+
+ONE-SPOKE is FALSE at n = 5, and the falsifier was already on file. The equality-stratum stress statement of visibility_overlap_reduction_to_a_one_root_statement -- for w_1..w_n on the unit circle some j has prod_k |t w_j - w_k| <= 1 for every t in [0,1] -- is refuted by an exact Gaussian-rational countermodel landed concurrently by codex_root at commit 9fede2b363 (checker formal_math/probes/erdos1041_one_spoke_countermodel.py) and RE-VERIFIED INDEPENDENTLY here in Fraction arithmetic and again by exact segment maxima. The five points 1, (-20+-99i)/101, (-28+-195i)/197 have squared moduli exactly 1, and at t = 339/1000, 1/1000, 1/1000, 1/500, 1/500 the five products are 1.000335336109477, 1.000124073322536 (twice) and 1.000171161469739 (twice), all above one; the exact maxima over [0,1] are 1.010340874179, 1.000778858212 (twice), 1.000387427136 (twice). Those five directions are exactly the ones of exact_results::two_safe_origin_spokes_counterexample, whose roots are r times them at r = 99999/100000, where this directory's own correction already records ZERO safe spokes -- so the refutation was in hand and was not connected to the statement it refutes. Sampling could not have found it: at n = 3 the two-dimensional configuration space was SWEPT over 519841 grid configurations with the objective never positive, so the failure is invisible at degree three, and 20000 randomised configurations at degrees 3 to 12 produced no violation at all with mean safe-spoke count 4.409. negative_results entry 19 applies to the file that recorded it. What survives from that search is only a negative: four natural crowding statistics pick a safe spoke 99.19, 98.87, 93.02 and 89.41 per cent of the time, so even where a safe spoke exists it is not named by any of them. SCOPE: this retires the ONE-SPOKE stress statement only. It is not a necessary condition for (COVER) -- the equality stratum needs |g(h)| = 1 hence lambda = 1, and at lambda = mu that stratum is empty away from the exact regular n-gon. The countermodel configuration has mu = 0.00477, its first-merge component is a small neighbourhood of the two roots that are 3.2 degrees apart and does not contain the centre, and both the covermu and path arms pass on it. The visibility-overlap lemma, the reduction, and Erdos #1041 are untouched.
+
+Instrument defect, new location, same class as entry 34 and biased the same way. The Form A-cut hub radius s must be searched on a LOGARITHMIC grid: the optimum sits at s ~ eta^{1/(n-1)}, a fractional power of the perturbation, so a uniform grid on [tau, 1] with 200 points (step 5e-3) cannot resolve an optimum near 1e-2 and reports an INFLATED V, i.e. it errs against the mechanism. It corrupted the measured cusp exponent to 1.08 instead of 1.5 in one degree-three direction. With a log grid plus the endpoint s = tau the nine degree-three directions land in [1.501, 1.540]. A first exponent table computed on the uniform grid read 1.519/1.337/1.260/1.20/1.17 at n = 3..7 and is withdrawn.
+
+Instrument-defect class, SIXTH reproduction, 2026-08-24, new location and new cause -- and a fix that generalises. rho_Omega(a,b) = exp(-g_Omega(a,b)) is the dangerous quantity in Theorem C' of BergmanGeodesicInvariance.md, and a grid Laplace solve for g places Dirichlet data on cells just OUTSIDE the mask, i.e. solves on a slightly LARGER domain, so g is too large, rho too small and the bound too small -- the direction that flatters the conjecture, as in entries 24, 34 and 41. In the regime that matters, a component pinched at a near-degenerate hub so that rho -> 1 and g -> 0, the O(dx) boundary error is the SAME SIZE as g. An unguarded run reported three settlements at the hardest recorded configurations -- near-Fekete quintic 1.681, degree-6 QC=infinity 1.515, degree-9 QC=infinity 1.353, all 'bound < 2' -- and a two-resolution Richardson guard with the verdict taken at min(g) - 2*spread turns ALL THREE into 'rho indistinguishable from 1', i.e. undecidable. The three settlements are RETRACTED. The fix is not a finer grid: Corollary G' expresses the same number through the CONFORMAL RADIUS, prod_{j!=i} rho_Omega(a_i,a_j) = r_Omega(a_i)|f'(a_i)|/t, and r_Omega is O(1), so the same solve delivers it to O(dx) RELATIVE accuracy and in the conservative direction -- measured above the closed form at every tested (n,r,t) by 0.6% to 2.6%, halving with dx. GENERAL RULE, extending the class: when a bound depends on a quantity only through its logarithm near a degeneracy, do not sample the quantity -- find an identity carrying it through a non-degenerate one. Separately, a float64 evaluation of the same closed-form reach reports spurious cut-offs at the 1e-15 level from n = 10 on; the recorded table is mpmath at 50 digits.
+
+The most-antipodal-good-pair selector for Form A-cut is FALSE. The chord's only positive near-field term is -sigma^n Re(w^n), largest where the chord is farthest from the origin, so the natural rule is to take the two good rays that are most nearly antipodal. Exact segment maxima refute it at 3 of 48 near-Fekete configurations: V = 1.0287764761 (n=10, eta=1e-1, angular), 1.0003866137 (n=8, eta=1e-2) and 1.0000002022 (n=10, eta=1e-5) -- the last arbitrarily close to the regular polygon, so this is not a large-perturbation artefact. The mechanism is that the extreme rays of the good arc are the ones closest to the line Re(E_1 zeta) = 0, hence contribute the weakest negative linear term. The correct rule is the ADJACENT good pair (exact_results::form_a_cut_adjacent_good_pair_selector). Form A-cut itself is untouched: the free optimum is below one at every refuting row.
+
+Instrument-defect class, SEVENTH reproduction, 2026-08-24, and the FIRST member that biases the OTHER way. Entries 24, 34, 41 and 44 all record instruments that UNDER-report and therefore flatter a conjecture. This one OVER-reports and manufactures refutations. On the wrapping gap A_n = (phi_n, phi_1 + 2 pi) of a concyclic configuration, a critical point selected by a test modulo 2 pi is returned in [0, 2 pi) and can therefore sit numerically BELOW the arc's left endpoint a = phi_n. Handed unlifted to a bracketed local refinement it inverts the bracket, and the refinement then reports values from OUTSIDE the arc. In a 660-configuration sweep of ConcyclicAlternation.md this produced 11 false violations of the theorem's own conclusion max_{A_k}|g| <= 2 -- readings of 2.42, 3.17, 3.59, 5.74 -- and an adversarial 'record' of 25.24 against a budget of 2, every one of them pure bookkeeping. A 4e5-point brute-force cross-check on 400 configurations returns worst 1.894 against the budget. FIX: after any modular selection from a cyclic interval, lift into that interval's own branch, psi <- a + ((psi - a) mod 2 pi), before any bracketed step. GENERAL RULE, extending the class: a selection defect can point either way, so an apparent REFUTATION deserves the same instrument audit that this directory already demands for an apparent confirmation. Receipt state/formal_math/erdos257_period_noncollapse/erdos1041_concyclic_alternation_receipt.json.
+
+Instrument-defect class, same session, the ordinary under-reporting direction, at a new location. For zeros on the unit circle |g(e^{i psi})|^2 = x^{-n} P(x) with P = g*h of degree 2n, and the critical points solve x P'(x) - n P(x) = 0. That polynomial is the right LOCATOR and the wrong EVALUATOR: for clustered zeros it cancels catastrophically and returns values about 1e-8 relative below the truth, which flatters every containment statement scored on it. A second face of the same defect: filtering the locator's roots for the unit circle at | |x| - 1 | < 1e-6 silently DROPS true circle roots at ill-conditioned configurations, and a dropped critical point can only lower a reported maximum. Fix: locate with the polynomial, evaluate in the stable product form prod_k |2 sin((psi - phi_k)/2)| in log space; widen the circle filter to 1e-3; and add a dense grid safety net so the locator is never trusted alone.
+
+The obvious Fekete-deficit split of the concyclic case is a BAD decomposition, and the chord family is why. With D = prod_{i<j}|w_i-w_j|^2 / n^n the deficit of a concyclic configuration, climbing min_k max over the chord [w_k,w_{k+1}] of |g| inside D-bins gives a clean monotone envelope whose crossing of the level 1 DECREASES with degree: D* is about 0.87, 0.68, 0.51, 0.42, 0.32 at n = 3,4,5,6,7. Below D* the plain chord already certifies Erdos #1041 at EVERY radius rho < 1, not only rho <= 2^{-1/n}. But the near-Fekete cusp analysis of NearFeketeCuspLaw.md is a leading-order expansion valid only as D -> 1, so the band D* < D < 1 is covered from neither side and it WIDENS with n. Consequence for method: a deficit split must use a path family whose objective reaches 1 at the regular n-gon -- the Form A-cut family of TruncatedSpokeReduction.md, whose concyclic objective is measured at exactly 1 there -- not the chord, whose objective is 1 + cos^n(pi/n) > 1 there. This does not weaken the radius-hypothesis corollary of concyclic_alternation_theorem, which never mentions the deficit.
+
+The proposed two-segment level identity V_E=mu and its necessary condition SPOKE>=1 are FALSE. A degree-seven polynomial with seven exact dyadic roots strictly in the open unit disk has six critical points isolated by disjoint radius-1e-12 Rouche disks, a unique least critical value mu=0.8158048440849527910... separated from the next value 0.8163950933409540163..., and ZERO root spokes contained in {|f|<=mu}. Seven pinned dyadic waypoints give exact squared-value gaps from 2.83325e-5 to 8.77604e-3, while the complete interval-transfer errors are at most 1.61e-8. Any two-arm connection at the unique first-merge level must contain the merge point and hence a safe root subsegment, so V_E>mu. Exact Fraction checker: scripts/check_erdos1041_two_segment_level_identity_refutation.py; abstract gate implication Lean-checked in TwoSegmentLevelIdentityRefutation.lean. SCOPE: the weaker level-one free-hub conjecture V_E<=1, COVER, and Erdos #1041 are untouched; the witness has mu about 0.816 and ample room below level one.
+
+Complete-spoke selection on a general tied near-Fekete Newton face is FALSE already in the exact quintic homogeneous model H(z)=Re(z+10z^2-z^5). Every fifth-root ray has an explicit positive waypoint: the three conjugacy types escape at t=1/10, 1/1000, and 3/10. The radical inequalities and the negation of a globally nonpositive ray are Lean checked. This is a mechanism no-go, not a counterexample to Form A-cut or Erdős #1041: on the same model, the adjacent ray types 1,2 are safe outward from radius 2 and their radius-two connector satisfies H<=-5 by an exact two-piece Bernstein certificate. The result therefore proves that truncated connectors are logically necessary on tied faces and closes this first face with the correct object.
+
+Greedy minimum-real-critical-value selection is FALSE for adjacent tied-face containment. For Q(z)=-(379/256)z+3z^2-z^5, c=1/4 is proved to uniquely minimize Re Q over all four critical points, yet Q(2/3)=6677/31104>0 and every cutoff puts 2/3 on either the finite positive-real arm or its outward tail. Both adjacent pairs bracketing arg c contain that ray, so the selected hub can never furnish the required certificate. The derivative factorization, real-root comparison, Viete conjugate-pair gap, and cutoff dichotomy are Lean checked and symbolically replayed. SCOPE: this refutes only the ordering rule; another negative critical hub may work, and the existential adjacent selector and Erdős #1041 remain open.
+
+Universal upper bounds for every finite-contact KKT system are FALSE. The exact quartic of CriticalEllipseStationaryNoGo.md has a one-contact critical KKT hub strictly above Gcrit, but it is a saddle and a different feasible hub lies below Gcrit. The corrected variational target is the minimum over the KKT locus, augmented by second-order necessary conditions; one above-threshold stationary branch does not refute FP-GM or Erdős #1041.
+
+Universal adjacent pairing of the unique two-ended tied-face component is FALSE. The symmetric quintic Q(z)=-(65/27)z+(100/27)z^2-z^5 has exactly one negative critical point and its unique two-ended negative component joins nonadjacent sectors. The same component has a strict exact nonadjacent two-arm/tail connector, so adjacency is the false selector and free-pair geometry survives.
+
+Fixed least-critical/two-nearest-root CE--GM is FALSE in minimal degree four. The exact unit-disc quartic of CEGMQuarticFixedPairNoGo.md has its selected roots in different components at level Gcrit, separated by a rational circle on which |g| is strictly larger. No hub or path of any shape rescues the fixed pair. The surviving statement is joint free-pair FP-GM; unrestricted Erdős #1041 remains open.
+
+Horizontal-fibre negativity is FALSE hub by hub even on negative critical points, and the returned Leftmost-Fibre Inequality LF is false. For Q(z)=15z+5z^2-z^5, c=-1 is the unique leftmost critical point with Q(c)=-9; its conjugate lifts of the leftward real ray escape in sectors exp(+/-2pi i/5), and chord displacement forces delta_Q(c)>=(sqrt(5)-1)/2>0. SCOPE: this does not refute the existential producer min over all negative critical points delta_Q(c)<0. It proves broader minimization or a component aggregate is load-bearing and that paired-trace or leftmost-critical validity alone cannot select the metric hub.
+
+Pointwise full-fibre L1 contraction is FALSE even under the strict critical-value half-plane hypothesis. For x=1001/1000, epsilon=x^3+3x-4=6003001/10^9, P(z)=z^6+3z^2-epsilon has every critical value on Re w=-epsilon<0. On the simple fibre P(z)=4 with s=2^(1/3), exact factorization through y=z^2 and rational radical bounds give sum_j |z_j'(s)| > 44510696/7409649 = 6+52802/7409649. SCOPE: the resultant product and signed moment identities remain true, and this does not refute component-block, externally weighted, weak-majorization, or integrated monodromy-loop inequalities. Those are now the live fibre-selector residuals.
+
+Pointwise component-block L1 contraction is also FALSE in the exact target topology. For x=999/1000 and epsilon=x^3+3x-4=-5997001/10^9, Q(z)=-z^6-3z^2+epsilon has five simple critical points and every critical value has real part epsilon<0. The component passport gives 6 sheets minus 5 ramification units equals one component of {Re Q<0}, so the fibre Q=-4 is one six-ended monodromy block. The same exact factorization and rational radical certificate give sum_j |z_j'(2^(1/3))| > 6+52802/7409649. SCOPE: because the block is the entire fibre, complementary external-factor weighting is constant and cannot repair this specimen. The surviving fibre producers are internal two-sheet weak majorization, loop-dependent weights, or integrated monodromy action; unrestricted Erdős #1041 remains open.
+
+The canonical fixed-point-free contour obtained by separately resolving every radial critical-value slit is metrically too expensive. For a ray-separated k-sheet component, its average complete-lift length has liminf at least (2/k) sum_c L(c), because the contour traverses both sides of every critical arm. A chord lower bound makes this exceed two for generic normalized cubics near an equilateral triangle and quartics near a square, even though the monodromy is a full cycle. Exact source and checker: SeparateCriticalContourNoGo.md and scripts/check_erdos1041_separate_critical_contour_no_go.py. SCOPE: only the fully resolved separate-slit lollipop is retired. Grouped critical-value contours, which can charge a near-coincident cluster once, remain live; Erdős 1041 is untouched.
+
+The universal sharp componentwise radial-contour criterion RC4 returned on 2026-08-28 is FALSE already for P(z)=z^2-(5/6)^2. The multi-root component begins only at t=(5/6)^2 and has perimeter at least 10/3; below merger the two one-root level loops contribute at least 4(sqrt(r^2+s)-sqrt(r^2-s)). Exact integration gives a total lower bound 4r+(4r/pi)(2sqrt(2)-2log(1+sqrt(2)))>4 using only pi<22/7 and elementary radical inequalities. SCOPE: this retires only a universal RC4 estimate. A target-deciding dichotomy or compensation theorem, grouped or partial-cluster monodromy, and unrestricted Erdős 1041 remain open.
+
+The pairwise-comonotonicity strengthening of FP radial monotonicity is FALSE exactly. For c=(-9/10,-3/4,-1/2,-1/4) and radial parameter x=1/4, A_1=454859867/819200000 < A_2=2588047/4194304 while G_1=1170425808/454859867 > G_2=26878032/12940235. Hence T_j=A_j^(1/4) and G_j are not similarly ordered, so the unweighted power-sum identity cannot be upgraded by a direct Chebyshev/rearrangement argument. SCOPE: the full weighted sum remains positive on the specimen, so RM and FP4 remain open; the live RM target is a global compensation identity or weighted power-sum representation.
+
+Every unweighted four-column row-factor-permutation Holder proof of FP4 is obstructed exactly on the triangle-plus-origin family. The origin row is (1,1,1,1) and each triangle row permutes v=(D,D,1,x), D=sqrt(1+u+u^2), x=1-u. The aligned column sums 1+3v majorize every other assignment, so concavity of log makes their product the pointwise minimum over all row permutations. At u=1/6 this minimum is 329/2+14sqrt(43)=256+(28sqrt(43)-183)/2>256, with 28^2*43=33712>33489=183^2. SCOPE: this strictly extends the dedicated-x symmetric no-go to the complete unweighted permutation class. Weighted/product-merged M2, X, deletion schemes, RM, PM4, FP4, and unrestricted Erdos 1041 remain open.
+
+Nonpositive quadratic branch energy is NOT a necessary bridge to the canonical pair L1 excess inequality, even at the exact quintic tangent orbit. In the normalized gauge G(V)=V^5+40V^2-60V, exact interval integration gives the canonical-pair quadratic energy Q_G>3833966005559069387/8181640000000000000. Since 40^(-1/3)>29/100, the original-gauge energy is >29/1000>0, while the existing exact tangent certificate proves the actual pair L1 excess is strictly negative (diagnostic values about +0.31205 versus -0.0363). Exact source and checker: QuinticTangentQuadraticBridgeObstruction.md and scripts/check_erdos1041_quintic_tangent_quadratic_bridge_obstruction.py. SCOPE: this kills only quadratic-energy nonpositivity as a necessary canonical-pair bridge. Direct L1, moved-block, entropy, and integrated monodromy routes remain live; unrestricted Erdos 1041 remains open.
+
+The present square-root-free fixed-strip support schedule cannot extend the common positive quintic cusp collar beyond u=1/1000. On the exact microcell [1/1000,1001/1000000], all three upper carrier sheets are Krawczyk-isolated and exhaustive; the two strong sheets have support uppers -0.425739800 and -0.963900937, but the weak-sheet majorant is +0.556429559 and is already +0.549879571 at u=1/1000. Parameter refinement therefore cannot repair this fixed-strip schedule. Exact source and checker: QuinticWeightedCuspSupportBridge.md and scripts/check_erdos1041_quintic_weighted_cusp_support_bridge.py. SCOPE: this is a certificate-method obstruction, NOT a sign counterexample. The proved five-sheet collar 0<=u<=1/1000 remains valid with weakest transported excess upper -0.02354340; a sharper adaptive cone, direct L1, or different transport invariant is required.
+
+The componentwise combined-charge inequality and the full admissible critical-arc product are both FALSE, on an OPEN family, not merely at an isolated specimen. On the blown-up saddle-wall quartic f(z)=z^4-a(s rho)^2 z^2+(b+i delta)(s rho)^3 z-s^4 with a=1, b=2/5, rho=1/50, delta=1e-6, s=0.99989 - four simple roots strictly inside the open unit disc, three simple critical points, every critical value admissible, one admissible component - the three canonical two-arm inverse-ray lengths sum to 6.000253120901 against 6R=5.999939963992, so by the exact tangent-support identity 2R-L(e)=D_e+K_e the component charge is -3.13e-04, and the admissible product is prod q_j=1.000451748764>1. SCOPE, and it is the whole point: this retires two proposed proof MECHANISMS, not Erdos 1041, which the same family SATISFIES - the shortest arm is 1.995615925599 below 2R=1.999979987997, giving a root-to-root path of length below 2 inside {|f|<1}. Every hub's two arms reach distinct roots. The order-sensitive trimmed product over the two smallest ratios is 0.998107041600<1 and survives; every differentiable symmetric monotone aggregate of the three ratios has the WRONG first-order sign, since the first-order vector ((x2+kappa)/2, kappa, (kappa-x2)/2) has positive coordinate sum 2 kappa while its smallest coordinate is negative. Exact checker: ErdosProblems/Erdos1041/scripts/check_saddle_wall_aggregate_refutation.py, receipt state/formal_math/erdos1041/saddle_wall_aggregate_refutation_receipt.json, stable across three tolerance settings with arm-sum spread 1.07e-12. METHOD WARNING: summing chords along a resampled polyline undercounts the curved continuation near the saddle by enough to put sum L BELOW 6R and reverse the finding; arc length must be carried as an integrated ODE state. Lean scalar kernel: ErdosProblems/Erdos1041/MechanismSeparationScalarKernel.lean, declarations wallBaux_one_third_factor, wallN_one_third_factor, wallN_nonneg, wallN_eq_cleared_slope, slope_defect_nonneg, sqrt_excess_le, curved_excess_lt_third, wall_sign_pattern, smooth_symmetric_aggregate_first_order_sign - the slope bound sigma^2<=1/3 that forces 3 kappa < x2, and the intercept algebra B1+B2+B3=-4 kappa with B2+B3=x2-3 kappa>0. NOT formalised: the arm-length continuation itself, which is finite computational evidence.
+
+Universal merge-node forcing of the connected-cluster Bergman certificate is FALSE. The certificate itself remains CORRECT and its consumer ConnectedClusterBergman.length_le_two_of_cluster_certificate is untouched; what fails is the universal claim that every polynomial has SOME merge-tree node satisfying it. On z^n-r^n at r=99/100 the barrier alpha_C log((1+q^(2/k))/(1-q^(2/k))) is bounded below by r^2 artanh(r^2)=2.2543196280541 at EVERY regular level and in EVERY degree, with the exact rational certificate 2541/1250=2+41/1250 obtained from (1+x0)/(1-x0)=19801/199>64 and log 2>56/81. The degree-free petal-area bound Area(E_{n,r})>=pi r^2/2 comes from Jensen against int log(2 cos theta)=0 and is what makes the failure degree-independent. Threshold: x*=0.968364434984413, r*=0.984055097534896. SCOPE: the parent is TRUE on the same family - z^n-r^n has the two-spoke path through 0 of length 2r<2 - so this retires a proof route, not the problem, and two-node interpolation using the same scalar (alpha_C, q_C) certificate is excluded too, because the failure covers every regular level and not only critical levels. Lean scalar kernel: ErdosProblems/Erdos1041/MechanismSeparationScalarKernel.lean, declarations log_two_gt_56_div_81, regular_ratio_gt_sixty_four, log_sixty_four_gt, rational_cluster_margin, rational_cluster_margin_gt_two, clusterBarrierScalar, clusterBarrierScalar_mono, clusterBarrier_gt_two_of_lower_bounds, artanhWeight_strictMonoOn, artanhWeight_r_sq_gt_two. NOT formalised: the petal-area Jensen argument, the arm-length continuation, and Riemann-Hurwitz.
+
+The unrestricted two-tail selector conjecture for tetranomials is FALSE. CyclicTetranomialCoefficientCase.md section 4 records, as evidence for a next selector conjecture, that an unrestricted probe over 6,348 configurations never found fewer than two roots with |c+b w^s|<1, and asks whether two roots must satisfy the tail bound |a w^r+w^m|<1 even when the coefficient budget fails. Take r=99/100 and F(z)=z^6+(5/2)r^2 z^4+(5/2)r^4 z^2+r^6. Its quotient w^3+(5/2)w^2+(5/2)w+1 factors as (w+1)(w^2+(3/2)w+1) with all roots unimodular, so every root of F has modulus r<1. At every quotient root the recorded tail is r^6(1+(5/2)zeta) with |zeta|=1, so its modulus is at least (3/2)r^6, and exactly (3/2)r^6-1 = 824440448203/2000000000000 > 0. ZERO roots satisfy the tail bound. SCOPE: this refutes the conjecture and its numerical evidence only; no proved theorem of that file is contradicted, since |b|+|c| = 3342970174401/1000000000000 > 1 there, and the sextic satisfies Erdos 1041 by the centred-circle quadrinomial arc certificate (CentredCircleQuadrinomialConnector.md), with a connector of length (r/2)arccos(3/4) < pi/5 on which |F| < 3-sqrt(5).
+
+A universal tail or radial selector for four-term polynomials cannot exist as stated, because the exceptional exponent relation n=3k with |a|>sqrt(3) is exactly the family in which the radial certificate can fail at EVERY root while the target conclusion still holds through a non-radial short circular arc. SCOPE: this constrains the shape of any future selector; it says nothing about Erdos 1041 itself.
+
+The sharp affine coefficient does not remove the pinching divergence of the Bergman route. Testing the reversible kernel of ChordConditionedBergman.md on the mean-zero function sgn gives lam(x) >= 1 - log(1+x)/artanh(x), hence lam(x)*log(1/(1-rho^2)) >= log(1/(1-rho^2)) - 4 log(1+x) -> infinity as x -> 1. Therefore no choice of the affine coefficient in L^2 - d^2 <= lam(E - d^2), including the optimal one, keeps the whole-component bound finite when the two marked points become hyperbolically separated at bounded area. On z^n - r^n at level 1 with r -> 1 the refined bound is ineffective at every fixed degree. SCOPE: a limitation of the estimate; that family is settled by its two radial arms of length 2r < 2, so it is not evidence against the parent.
+
+The low-critical potential mechanism of LowCriticalPotentialClosure.md cannot reach mu close to 1 by any choice of constants: its two failure inequalities (COVER forces arity, boundary-hop forces area growth) need a failure window (mu,1) of logarithmic length at least about 1.61 to contradict Polya's area cap, because the extremal counterexample trajectory rides with forced arity between six and seven and area growth near 0.4 per unit of log t. The exact comparison ODE gives 0.19989 in every degree, so 1/5 is unreachable by this mechanism and the surviving regime 0.199 < mu < 1 requires a different tool. SCOPE: a limitation of the mechanism; the near-Fekete shell is addressed by other corpus results.
+
+The ancestor-capacity coupling cannot improve the low-critical threshold. Composing the exact component capacity formula (Area<=pi cap^2), the capacity-speed law d log cap/d log t>=1/k of SharpSymmetricMergeEnvelope.md with non-negative jumps at attachments, and the fibre-coupled gap cap^n/t<k/(2n-k) of ExteriorBlaschkeFibreCapacityGap.md gives the degree-free constraint int_{x1}^{x2} dxi/k(xi)<=(1/2)log(1/a(x1))+(x2-X+log p0)/n on every failure trajectory, but it holds with about 18% slack on the extremal trajectory of both the 197/1000 and the 9/25 mechanisms (worst ratio 0.82). It binds only when k a'<2 on the attractor, and the attractor has k a' about 3.2-3.5. The structural reason is that every capacity-derived area cap enters as (something small)^(2/n) and tends to 1 in the large-degree limit. SCOPE (W1-A, 2026-09-05): retires the capacity route as a source of an ALL-DEGREE area cap for the failure ODE; the capacity-speed law, the merge envelope, and their fixed-degree uses are untouched.
+
+Hyperbolic packing does not refine the cluster arity floor in the operative regime. Under failure the k roots of the ancestor component are pairwise at hyperbolic distance at least d_min(a), so j disjoint balls of radius d_min/2 give d_j>=2 arcsinh(sqrt(j) sinh(d_min/4))-d_min/2; this exceeds the triangle-inequality bound d_j>=d_min/2 only for j above exp(d_min/2), which is 14 at a=1, while the extremal trajectory rides at arity 7.1-7.3. SCOPE (W1-A, 2026-09-05): retires packing as a refinement of the ordered profile at the attractor; it would become binding for any mechanism forcing arity above about exp(2/a).
+
+The discriminant/Fekete critical-value product adds nothing at moderate mu. From prod_j|f(c_j)|=D<=1 for roots in the closed unit disc and |f(c_j)|>=mu one gets only mu<=D^(1/(n-1)), which is satisfied by any D>=mu^(n-1) and imposes no constraint until mu->1. SCOPE (W1-A, 2026-09-05): the critical-value product reproduces the near-Fekete shell and cannot supply an independent second inequality for the low-critical mechanism; Fekete-deficit results conditioning on D directly are untouched.
+
+The chord-chart extremal landscape (ChordChartExtremalLandscapeLab.md, measurement only): the maximiser of m(f), the intrinsic distance inside {|f|<1} between the closest pair of roots in that metric, over max|a_k|<=0.9999 is z^n-r^n at the radius cap at every degree 3..8 (verified upper bounds 1.943, 1.818, 1.678, 1.543, 1.415, 1.304 at n=3..8, all below 2 and inside the exact corpus brackets), so the corpus's regular-polygon extremum is the extremum of the intrinsic pair distance too. Chordless configurations (no contained straight root chord) exist at every degree 3..8 but only in a shell with max|a_k| within 10^-2 of 1, at Fekete ratio D in [0.67,0.95], not confined to odd degree and not asymptotically near-Fekete. The honest gap of the variance chart in its own coordinate is Var in [(n-1)/(2n-1), V_n) with V_3=(8/9)^(2/3) exactly and V_5=0.97933, V_7=0.98676 measured. SCOPE (W1-D, 2026-09-05): floating searches with reported basins; the composed cover 'contained root chord OR a hub in {0,centroid} union {critical points} with two contained straight spokes' was never defeated (residual-gap census 0 at every degree 3..8 over 70x500 adversarial restarts), and that disjunction is the smallest open sub-statement this lane isolates; it is not implied by anything in the corpus and the corpus kills each disjunct separately but not the disjunction. The n=8, r=0.99 rung of the radius ladder is blank because the N=201 Dijkstra path failed containment verification there; that is a grid limitation, not a datum.
+
+The corpus working separation constant 0.99 for the hard regime is not sharp: Theorem C' of BergmanGeodesicInvariance.md with Polya's area cap gives L^2 <= log(1/(1-rho^2)), so the exact threshold is rho* = sqrt(1-e^-4) = 0.99079985926..., companion s* = sqrt(tanh 1) = 0.87269362..., and quoting 0.99 discards a genuine 0.0008 of margin. Chord-conditioning raises the threshold further when the root chord is short but never removes the pinching divergence (negative result 77). SCOPE (W1-C, 2026-09-05): constant correction only.
+
+The premise 'the last neck joins two one-root lobes' is FALSE for k >= 3: Riemann-Hurwitz gives two boundary components of degrees d1 + d2 = k, not 1 + 1, so any last-neck descent-pair argument is a k = 2 statement or needs recursion. At k = 2 the descent pair is the conformal image of [-sqrt x, sqrt x] and the chord-conditioned bound gives length below 2 unless v/T > tanh(((n-1)/T)^(2/n)) with T the component's merger level (which may exceed 1): failure needs T < 1.109, 1.073, 1.070, 1.074, 1.086, 1.100, 1.153, 1.254 at n = 3,4,5,6,8,10,20,100, and at T = 1 needs v >= 0.9198, 0.9393, 0.9404, 0.9366, 0.9256, 0.9141, 0.8722, 0.7992. The residual is exactly the near-tie shell; on z^n - r^n no level produces a two-root component, so the route is silent there by construction. SCOPE (W1-C, 2026-09-05): retires the k >= 3 form of the last-neck premise; the k = 2 window is a proved conditional.
+
+The supremum of the min-pair INTRINSIC distance inside {|f|<1} is exactly 2 at every degree, attained only in the r -> 1 limit of z^n - r^n, with deficit approximately 2(1-sin(pi/n))(n(1-r))^(1/n) (closed form 2r - 2(1-sin(pi/n))(1-r^n)^(1/n) from the all-angles-safe disc of radius (1-r^n)^(1/n)). Masked 16-neighbour grid Dijkstra with midpoint-tested long edges, exact on z^2 - r^2 to 0.2 percent, biased to over-report: radius-capped at 0.99799 the maximisers at n = 3..10 are the regular n-gon (1.870, 1.671, 1.456, 1.288, 1.145, 1.019, 0.915, 0.831), and at r = 1 - 1e-6 the values are 1.9998, 1.9565, 1.9002, 1.8014, 1.7134, 1.6288, 1.5302, 1.4545. A Fekete deficit costs steeply: max min-pair distance subject to D <= 0.9, 0.5, 0.1, 0.01 is 1.439, 1.189, 0.975, 0.764 at n = 4. Certified sample path: regular pentagon at r = 0.999, mask eroded to 3e-3, Lipschitz <= 6.079, length 1.5915, sup |f| <= 0.99789 < 1. SCOPE (W1-C, 2026-09-05): extends negative result 37 from the two-arm budget to the geodesic; no degree-dependent or Fekete-neighbourhood slack exists in the true metric.
+
+The elementary-symmetric coefficient route to a hub-Taylor certificate has an exact ceiling strictly inside the closed regime. Bounding the Taylor coefficients |b_i| at a hub by e_{n-i}(d_1..d_n) with the spoke radius d_(2) gives, on z^n - mu, the exact route value mu sup_s [(1+s)^n - 2^n s^n] = c_n mu with c_n = 2^n/(2*2^(1/(n-1)) - 1)^(n-1), so the route needs mu < 1/c_n <= 1/c_4 = 0.2194196 < 9/25 at every n >= 4, with 1/c_n decaying like 2^-n; certified exactly for 4 <= n <= 64. The term-wise m_{i,n} = (i/n)^(i/(n-i))(1-i/n) version is worse (M_n = 4.81, 9.20, 17.89, ...). The reason is structural: at the regular polygon b_i = 0 for 1 <= i <= n-1 while e_{n-i}(d) is maximal, so the bound discards exactly the cancellation the equality family lives on. Also refuted: any mu_0 < 1 with mu > mu_0 implying the criterion at c*, since containment itself fails at c* on both pinned QC witnesses (mu = 0.99995); and the absolute-value form (SC-sup), which fails at every hub on both witnesses and covers only 55 percent of sampled survivors, falling to 38 percent by degree 12. SCOPE (W2-D, 2026-09-05): kills every route replacing complex Taylor coefficients by moduli of symmetric functions of root distances and every absolute-value spoke criterion in the surviving regime; criteria using the true complex partial sums are untouched.
+
+The fixed hub disjunction 'contained root chord, or a hub in {0, centroid} u {critical points with |f(c)|<1} with two contained straight spokes' is refuted as a completion: the exact quintic of degree_five_fixed_hub_set_refutation_in_the_surviving_regime_2026_09_05 (mu >= 0.9999871398, all roots in the open disc) has no such hub, and none of its ten root chords is contained either: the conductor's 20001-point sampling puts max |f| on every chord at or above 1.0114 (floating, margin 0.011, falsification evidence). The conductor's same-day census ('hub disjunction never fails' over 708 + 2250 sampled survivors) and the W1-D residual-gap census (0 defeats at degrees 3-8 over 70x500 restarts) were basin-limited in the sense of negative result 28: the refutation was found only by a wall-guarded adversarial climb. SCOPE (W2-D, 2026-09-05): the surviving statement is free-hub existence (some h, not drawn from a finite canonical set, with two roots satisfying max_{j<n} |T_j(a)| < 1); the working hub at the witness sits 0.103 from the fixed set, at the scale of the split critical cluster.
+
+The critical spectrum cannot supply arity forcing for the cluster-separation mechanism, in principle: every consequence of large critical values says the roots are hyperbolically far apart, the same direction the failure hypothesis already forces, so a separation floor only tightens Lambda(k,a) and can never supply the missing opposing quantity (the exterior-area deficit S). Exactly: adding d_crit(x) = 4 artanh(e^{-x/2}) leaves K(x,a,d) unchanged at every (x,a) since d_crit > d_min iff x < tau(a) and there lam(d_crit/2) = x/2 gives k_B = 2 while lam(d_min/2) = tau/2 gives k_B = 2x/tau < 2, both reducing to max(2, 2x/delta); the zero-product sum form is implied by the failure separation throughout the window (ratio 0.0074 to 0.0538 on the attractor, slack 19x to 135x). The disjoint hyperbolic-disc AREA packing bound N(r) <= (cosh(r + d_min/2) - 1)/(cosh(d_min/2) - 1) is too weak (permits 9.94 roots at the inner radius where one fits; Phi(7.665, 1) = 1.758 against x = 0.998). A derived 'arity cap' from the sum form was wrong (failure gives an upper bound on lam_ij, so no contradiction arises); recorded so it is not re-derived. SCOPE (W2-A, 2026-09-05): retires the critical spectrum as a source of arity forcing for this mechanism only; Theorem 1 stands.
+
+The ordered profile Lambda(k,a) = max(delta/2 + (k-1) lam(g), k tau/2) of ClusterSeparationLowCriticalClosure.md is a relaxation that is not realisable for k >= 3: d_i + d_j = d(b_i,b_j) needs the observer on the geodesic through b_i, b_j, and the k_B branch demands that on every pair at once. Measured at a = 1 (d_min = 5.377073, d_low = 2.170077, R0 = 0.795060) the best realisable sum_j lam(d_j) is 0.5208 at k = 7 against the abstract 0.9532 (ratio 1.83) and 0.7283 at k = 30, never reaching the required x = 0.998; two roots at radius R0 have rho <= 0.974267 < tanh(d_min/2) = 0.990800, so at most one root sits at the COVER-saturating radius, and a d_min-separated ring contributes at most 2 pi / sqrt(2(cosh d_min - 1)) = 0.4310 however large. The rigorous replacement is the angular budget: ordering the roots by argument about the observer, consecutive gaps sum to 2 pi and each obeys cos Theta >= (cosh d_i cosh d_{i+1} - cosh d_min)/(sinh d_i sinh d_{i+1}), so failure forces sum_i Theta_i <= 2 pi. SCOPE (W2-A, 2026-09-05): the 9/25 theorem is CORRECT (Lambda is a valid upper bound on the sum, hence a valid floor); what is recorded is that the floor is far from sharp and the optimiser table is a lower bound for a maximum, so no threshold may be quoted from it before an exact certificate (live wave-3 lane). Side finding for the certificate owner: _k_lower returns a real-valued floor while k is an integer built from upper bounds on delta, tau, lam(g); ceil() is valid and strictly stronger, moving the floating replica from mu = 0.3685 to 0.3845 (9/25 -> 19/50) pending a rounding-direction audit.
+
+Instrument-defect class, SIXTH reproduction, 2026-09-05, same location as the fifth (the widened near-Fekete inner model, degree five, min_j A_j = +0.0227) and a stronger disguise: an interior maximin stationary point with three of four A_j equal to five digits, two branch integrators agreeing to twelve digits, a chord-sum audit, and persistence under the scale parameters (c, rho). All of that is compatible with a saddle-connection wall, because none of it moves the critical configuration Z. The configuration's critical values V_1=-0.025894-0.004727i and V_2=-0.025897-0.004727i have equal imaginary part to 1.8e-12 with Re V_1 > Re V_2, so the arm of hub 2 (which follows Q = V_2 + s, s real increasing) runs into hub 1, and a third arm passes a hub at gap 1.1e-4; every Gaussian perturbation of Z at 1e-3 returns min_j A_j to negative (12/12, median -0.041). GENERAL RULE, extending negative results 43, 50 and 55: an optimiser on inverse-branch models must carry the wall guard (reject |Im V_i - Im V_j| < g whenever Re V_j > Re V_i, and colliding critical points), and an 'open condition' must be demonstrated by perturbing the configuration itself, not its scale parameters. SCOPE: the degree-five refutation of the min two-arm statement is withdrawn; the min statement is unrefuted; NearFeketeInnerModelWidening.md's inner reduction, charge identity, slice properness, and chord certificates are untouched.
+
+The exterior coefficient energy S of the ancestor component has NO uniform lower bound derivable from the failure inequalities (Theorem E of ExteriorEnergyFloorClosure.md): the family z^n - q(n) at t = 1 realises separation, COVER saturation, and the critical-value floor with S -> 0. SCOPE (W2-E, 2026-09-05): retires 'a floor on S from (x, a, k, separation)' as a route; the cap a <= 1 cannot be improved this way. The positive residue of the same computation is the hyperbolic packing floor, which raised the regime to 2/5 by a different route.
+
+mu does not bound the deviation from a regular polygon uniformly in n: z(z^{n-1}-r^{n-1}) has mu -> 1 with eccentricity exactly 1 (MiddleRegimeCanonicalHub.md Theorem C). SCOPE (W3-D, 2026-09-05): retires every perturbative attack on 2/5<mu<=1-eta with n-independent eta; D>=mu^{n-1} is attained on z^n-m so no mu-conditioned deviation functional routed through D beats an exponentially weak constant; sup|f(centroid)|=1 at every m_0<1 so |f(centroid)|-based criteria have no mu-margin; the absolute-value spoke bound at the centroid reproduces the elementary-symmetric ceiling 0.219420; the regular n-gon is NOT the maximiser of the min-chord ratio for n>=4.
+
+Conjecture P ('the two-root component of {|f|<t} containing c* is star-shaped from c* along its two root directions for every t below its attachment level T*', equivalently the merging-pair spoke maxima are at most T*) is FALSE, and false in the middle regime: with T* and the merging pair computed from the exact merge tree (steepest descent from c_j +- delta u_j identifies the two lobes each critical point joins, union-find over critical points sorted by value), pair_max/T* = 1.000005 (n=4, mu=0.532), 1.000195 (n=5, mu=0.787), 1.000207 (n=6, mu=0.645), 1.004089 (n=8, mu=0.308), and 1.00003..1.00007 at the three stored shell witnesses; every violation is a near-tied configuration with T*/mu-1 between 1e-5 and 1e-3. For cubics P is TRUE with equality exactly on the tie line (sup ratio 1.000000 over 22695 affine-normalised parameters, attained only at T*=mu). A 700x700 grid flood fill reported 0/534 violations because it cannot resolve near-tie necks: grid connectivity is not an instrument for near-ties. SCOPE (conductor, 2026-09-05): had P held, composing it with the k=2 window of the disk-family separation theorem (failure forces T*<coth(1)mu) and the merging-pair length floor would have settled every mu<tanh(1); that composition is dead as stated. Floating witnesses, method recorded in TieRaceLandscape.md (L5).
+
+Measured laws of the tie race (TieRaceLandscape.md, floating, basin records): (L1) the canonical hub's margin is 1-mu: over 6000 samples per degree at n=5,6,8,10,12 the worst second spoke maximum at the centroid is about mu+0.02 in every mu-bin, the origin within 0.01 of it, and below mu~0.5 the adjacent chord adds a second cover; (L2) fixed-hub failures live only in the shell: continuation of the exact quintic of HubTaylorSpokeCertificate.md Theorem 4 downward in mu loses the failure the moment mu is capped at 0.9999 (objective 1.000003 at mu=0.999988 -> 0.999925), shell seeds at n=6,7 never fail, random climbs at n=5..8 with mu<=0.999 find none; (L4) statement Q, min over admissible critical hubs of m2(c)<=nu_max, has no violation in 667 survivors and adversarial climbs reach sup(min_c m2 - nu_max)=+0.000000 (equality at ties), with a +2.2e-7 violation only at the deep-shell quintic where nu_max>1; (L7) the merging-pair length floor (|a-c*|+|b-c*|)/(2mu^{1/n}) stays at or below 0.89, 0.82, 0.75, 0.66 at n=4,5,6,8 and the merging pair coincided with the nearest pair in every sample; (L8) on the maximisers of the spoke excess a free hub reaches min_h m2(h)=mu exactly, the hub lying inside one lobe on the line through the other root and c*. SCOPE: four natural fixed statements (spoke max at c* <= nu_max; P; the canonical hub set; the absolute-value spoke criterion) fail by 1e-4..1e-3 exactly at near-ties and hold with margin away from them; a completion must be a selection principle that is optimal at ties (a minimum over the tied hub cluster, a continuously placed hub, or a hub-free statement whose margin does not vanish at ties, of which the chord-minimum conjecture is the first).
+
+The consecutive-gap angular budget (sum over cyclically consecutive roots, ordered by argument about the COVER observer, of Theta(d_i, d_{i+1}) <= 2 pi with cos Theta >= (cosh d_i cosh d_j - cosh D)/(sinh d_i sinh d_j)) imposes NO constraint: Theta(d, d') = 0 whenever |d - d'| >= D, so alternating radii d_low and d_low + D make every consecutive term zero and the relaxation admits sum_j lam(d_j) >= floor(k/2) delta(a)/2 at every arity, linear in k against a truth that grows like log k, worse than the packing floor (P) from k = 8. Also false: the 'disjoint angular shadows' heuristic (shadows of disjoint equal balls overlap when one is radially behind the other), and the sorted-by-radius bound m psi(d_m) <= 2 pi (Theta(., d') is not monotone in its smaller argument). Radial-band knapsacks are valid but divergent (each band of width w contributes about (pi/sinh(D/2)) e^w with unbounded band count). SCOPE (W3-A, 2026-09-05): retires the consecutive-gap relaxation proposed in CriticalSpectrumClusterSeparation.md section 6 and its heuristic variants; the all-pairs angular bound Theta(k,a) of FixedDegreeClusterSeparationClosure.md and the circle-slice family are unaffected. The arity-floor route is now nearly exhausted: with the circle-slice floor within 4.7 percent of the realisable optimum the mechanism's ceiling is mu ~ 0.545, so closing the remaining slack is worth at most 0.025.
+
+The hub-Taylor criterion (A) is refuted as a completion route, and the good set is not a critical-scale disc (W3-C, 2026-09-05). On 15 audited configurations with mu>0.9998 at n=5,6,7 the minimum over ALL hubs of the criterion value V(h) exceeds 1 by 1e-6..2.5e-4 while a free hub carries two contained straight spokes of total length below 2 with value equal to mu to 7-8 digits: (A) is strictly too strong for the surviving regime. The set {h : V(h)<1} is a thin sliver of width about sqrt((1-mu)/C(n,2)) at distance 0.5-0.65 rho_crit from the critical-cluster centre, with inradius/rho_crit = 4.4e-5, 4.7e-4, 2.8e-3 at the three hard witnesses, not a disc of radius c rho_crit. The derivative-tree hub set union_{k=1}^{n-1}{f^{(k)}=0} (n(n-1)/2 canonical points containing the critical points and the centroid) covers the three pinned witnesses but fails on 48 of 1400 random survivors with mu>2/5 (0,19,8,8,6,5,2 at n=4..10, worst V=1.00279). Do not re-attempt: the t->0 inner-model limit on Form A (manufactures false negatives: ceil(n/2) good directions where the exact statement gives n; carry t as a live parameter), killing b_{n-2} by hub choice (works on the quintic, fails on both pinned witnesses), any triangle-inequality route (m+sum|b_k| is 1.00344, 1.00249, 1.00135 against margins 3.4e-8, 9.3e-7, 6.6e-6: phases are the entire content in the deep corner), the 'balance point' (it is a critical point), and covering certificates for an empty good set (V is Lipschitz with constant about n 3^{2n}). SCOPE: refutes the (A)-form of free-hub existence and the derivative-tree hub set; Erdos 1041 and the sharp statement (FH) below are untouched. The sharp open sub-statement: (FH) for every monic f with roots in the open disc and every eps>0 there are h and two roots a, b with |a-h|<1, |b-h|<1 and max over [h,a] u [h,b] of |f| < mu+eps; (FH) implies the target whenever mu<1, is sharp by Lemma S with equality on z^n-lambda, and is unrefuted.
+
+SEP-OR is FALSE (2026-09-06). The cubic f(z)=z^3+(3/100)z-3/4 has all roots in the open unit disc, simple critical points, distinct critical-value rays, mu>3/4>13/25, and |1-v_-/v_+|<2/375<2. Neither critical value is separated by two. The example is a trinomial, so Erdos #1041 holds for it by the radial theorem; the obstruction is to any covering programme that would settle the residual mu>13/25 by separation-or-arity-or-capacity. Arity/capacity corollaries assume mu<=1/2. Ordinary proof: ExactObstructionsR2.md. Rational cores: check_erdos1041_r2_revision_exact_cores.py and RevisionR2ExactCores.lean.
+
+The one-root gamma perimeter bound H^1(partial C)<=Gamma(1/4)^2/(2 sqrt(pi)) cap({|f|<=sigma}) is FALSE (2026-09-06). For p(z)=z^8-(3/2)z the central one-root component of {|p|<=1} contains D_{5/8} and therefore has perimeter >5 pi/4, which already exceeds the secant upper bound (pi/2)(1+sqrt(2)) of the proposed constant. A degree-uniform one-root constant, if one exists, must be at least 2 pi by z^N-z. This is not a counterexample to Erdos #1041. The floating family in DegenerateHubBlaschkeReduction.md already killed the same bound; this is the first exact algebraic witness. Ordinary proof: ExactObstructionsR2.md.
+
+First-merge arity does not force a capacity gap (2026-09-06). The cubic g(z)=z^3-(3/400)z-3/32 has all roots in the open disc, mu=187/2000<1/2, unique first-critical modulus, k_0=2, and kappa=1 at level 2 mu. The arity/capacity corollaries remain valid as implications kappa<=tau_{k_0} under mu<=1/2; they are not a covering of mu>13/25, and low arity alone does not imply kappa<1. Ordinary proof: ExactObstructionsR2.md.
+
+A simple minimising critical point does not force a two-root window up to the next distinct critical-value modulus (2026-09-07). The quartic g(z)=z^4-(4/15)z^3-(4/25)z^2+1/750 has three simple critical points, tied minima of modulus 1/750, all four roots in the open disc by Rouche 107/250<1, and first nontrivial component of degree three. Bergman Theorem C survives only under an explicit two-root or unique-minimiser hypothesis. Ordinary proof: TiedMinimumTwoRootWindow.md. Rational cores: check_erdos1041_r2_revision_exact_cores.py.
+
+A larger degree-uniform critical-value moment numerator than 4s is unavailable even after restricting to mu>13/25 and excluding every radius-4/3 centre test: the Blaschke-power family with b=lambda/N and the exact degree-24 rational certificate (N=12, b=1/120) give mean |G(c)|^{8/23}>1 while mu>11/12 and |v_i/v_j-1|<2/11. SCOPE: retires only a stronger marginal exponent in that class. Joint value/branch/metric statements, 13/25, 71/10, disk-family S=4/3, and unrestricted Erdos 1041 remain live. Checker: Erdos1041/scripts/blaschke_power/check_high_critical.py.
+
+No degree-uniform modulus of metric stability for Lambda exists in coefficient l1 or closed-disc uniform norm: with lambda_N=exp(-alpha N), Lambda(F_N) tends to 2(1-e^{-alpha/2}) while coefficients approach z^{2N}-1 exponentially. SCOPE: uniformity across degrees only. Fixed-degree lower semicontinuity in GenericSufficiencyClosure.md remains intact. Not a parent counterexample.
+
+No local Hölder estimate for Lambda at z^n-1 with exponent greater than 1/(n-1) holds on the full closed-root-disc coefficient class: along F_{N,b}=[z(z+b)]^N-(1+bz)^N in every fixed even degree n=2N>=6, 2-Lambda(F_{N,b}) is comparable to delta_b^{1/(n-1)}. SCOPE: this family and local Hölder exponent only. Does not give a Hölder upper modulus for arbitrary perturbations, a leading cusp constant, or a parent counterexample. Ordinary advisory in Erdos1041/BlaschkeSectorConnector.md.
+
+A degree-uniform one-root perimeter constant, if one exists, is not witnessed by z^N-z at level 1 (that family has no isolated one-root component there). The corrected necessary lower bound uses z^N-a z with fixed a>1, then N large and a down to 1, giving a necessary constant of at least 2 pi, not a proved upper bound. SCOPE: repairs a false witness family. Live note keyed to res:one-root-gamma-false. Authority ExactObstructionsR2.md.
+
+No covering reading of the critical-value separation criterion holds: z^3 + (3/100) z - 3/4 has every zero in the open unit disc, both critical points simple, least critical modulus above 13/25, critical values on distinct positive rays, and normalised separation below 2/375 (r7_1041_complete_sep_or_counterexample).
+
+Straight spokes from a critical point to its uniquely nearest root are not always contained: an explicit monic quintic escapes at one tenth of that spoke (r7_1041_complete_straight_path_obstructions).
+
+Straight root-pair segments are not always contained: for an explicit monic cubic every distinct-pair midpoint lies outside the unit lemniscate (r7_1041_complete_straight_path_obstructions).
+
+A prescribed radial spoke to a zero is not automatically contained once further partial sums occur: the sextic at r = 999/1000 escapes at half that spoke (r7_1041_complete_sextic_guardrail).
+
+The 320-print audit verifies the analytic source closure, not the geometric path construction; COVER, free-pair selection, and global monodromy remain open.
+
+The retired alternative FP3/FP4 mechanisms remain retired; their conclusions follow from the stronger checked all-degree weighted argument.
+
+Pairwise ε-separation of all roots and critical points does not force |v-w| ≥ (n-1)(ε/4)^n for distinct critical values: the exact quartic in PointSeparationCriticalValueNoGoR13.md violates the claimed bound, and its p_s family makes the critical-value gap tend to zero while preserving a fixed point-separation margin. Any producer using point separation alone for the source-current critical-value-gap hypothesis is retired.
+
+## Open implications
+
+### fixed_safe_monodromy_block_average_lift_length
+
+Audit the generic normalized hard-polynomial hypotheses and the claimed compactness/strictification implication before further universal use. The checked degree7 counterexample is not asserted to meet those extra hypotheses. Conditional and bounded local monodromy estimates may survive, but this is no longer a certified route to the refuted universal total-variation target.
+
+Evidence/status: conditional_generic_mechanism_applicability_and_implication_audit
+
+- [check_erdos1041_fixed_block_quadratic_budget.py](scripts/check_erdos1041_fixed_block_quadratic_budget.py)
+
+### sextic_second_mode_mixed_neighborhood_transfer
+
+HOMOGENEOUS CHORD RANGE CLOSED 2026-09-05 by sextic_chord_recession_closure. For the paired sextic model with |B|=1, every complex A and real C admits an adjacent unit chord carrying H<=-1/256. The unit band is the earlier exact theorem; the range |A|>=1 is now proved by a recession lemma and a complete exact integer interval/Bernstein certificate. Thus the normalized model has connector length one, length slack one, and margin 1/256 uniformly. The old ray-chart interface 1/768 with length slack 1/16 is superseded on this normalized model. WHAT REMAINS is the source-specific nonlinear actual-polynomial transfer, including the correct normalization and continuation to actual roots. Do not rescale |B| to one while silently keeping the sextic coefficient fixed. The theorem does not cover arbitrary |B|, the pure cubic face, or unrestricted Erdos #1041. UPDATE natural-scale ray selector: sextic_natural_scale_two_ray_selector directly closes the ORIGINAL paired coefficient cone |E1|>=K |E2|^(5/4), E1 nonzero, K=(49152/9765625)^(1/8), with a possibly non-adjacent pair and a coefficient-dependent small chord. This reduces the remaining mixed Fourier-model coefficient region to |E1|<K |E2|^(5/4), subject to the separate cubic/radial branches. Spatial normalization changes the paired high-mode coefficients by rho^2 and rho^4; the all-A unit-B paired chord theorem therefore does not on its own close this residual or supply the actual-polynomial transfer. FINITE FIRST-MODE SECTOR CLOSED by sextic_natural_scale_actual_polynomial_transfer: for rho<=10^(-18), Delta<=20000rho^6 and |E1|>=(13/25)|E2|^(5/4), the original actual monic sextic has a strict unit-lemniscate path of length <=2-rho/800. This is an ordinary analytic proof with exact rational budget checks, not merely a model theorem. The remaining finite transverse sector has |E1|<(13/25)|E2|^(5/4); the other radial/cubic finite transfers and unrestricted #1041 remain separate and open. SECOND-MODE PLANE FINITE LIFT CLOSED by sextic_paired_quartic_actual_polynomial_lift: with rho=|E2|^(1/4), C=Im(E3)/rho^3, rho<=10^(-18), Delta<=20000rho^6, and |E1|/rho^5<=(rho^2+min(|C|,1))/10000, an actual adjacent-root path lies in strict |f|<1 with length <=2-rho/2. This includes E1=0 at every admissible cubic, including zero. The remaining finite transverse mixed region is between this adaptive small-first-mode neighborhood and the previously closed |A|>=13/25 cone; source-specific other branches remain separate. CANONICAL PHASE MODEL CLOSED by sextic_canonical_phase_critical_threshold_concavity: for B in {-1,-omega^2,-omega^4}, every complex A and real C has a complete adjacent truncated connector in Re(Az+Bz^2+iCz^3-z^6)<=0 with radius below1 and length2-r. A concave algebraic critical-threshold curve replaces the small canonical coefficient slices. This does not yet provide the continuous-phase mixed model or the actual-polynomial transfer of this new family; off-phase atlas results retain separate scope. CANONICAL PHASE ACTUAL TRANSFER CLOSED by sextic_canonical_phase_actual_polynomial_transfer: for rho<=10^(-20), Delta<=20000rho^6 and E2 on the canonical phase orbit, every relative first-mode amplitude and admissible cubic has a strict actual-root path of length <=2-rho/800; the new low-first-mode branch gives adjacent roots and <2-rho/4. The vanishing first-mode range uses critical concavity plus the paired quartic, and eleven exact compact cells cover the rest. The remaining transverse mixed transfer has noncanonical continuous E2 phase; other branches and larger neighborhoods remain separate.
+
+Evidence/status: see the source; no formal status inferred
+
+- [check_erdos1041_sextic_cubic_paired_deficit_cone.py](scripts/check_erdos1041_sextic_cubic_paired_deficit_cone.py)
+
+### concyclic_form_a_cut_objective_below_one
+
+Prove the concyclic case of Erdos #1041 in ONE inequality. For w_1..w_n distinct on the unit circle, g = prod(z - w_k), tau_j = sup{t in [0,1] : |g(t w_j)| > 1}, define the Form A-cut objective of TruncatedSpokeReduction.md, V = min over pairs (i,j), min over s >= max(tau_i, tau_j), of max over the chord [s w_i, s w_j] of |g|. Prove V <= 1. Because the Form A-cut path w_i -> s w_i -> s w_j -> w_j has length 2(1-s) + 2 s sin(theta_ij) <= 2 for EVERY admissible s, this settles Erdos #1041 for ALL concyclic zeros at EVERY radius rho < 1: scaling gives |f| = rho^n |g| <= rho^n < 1 on the path and length <= 2 rho < 2. Equality holds exactly at the regular n-gon, in the limit s -> 0, where the path degenerates to the pair of radii of length exactly 2 -- so this is the one path family that reaches the problem's own extremal configuration, which is why concyclic_alternation_theorem's chord family cannot replace it (its value there is 1 + cos^n(pi/n) > 1). ROUTE: the exact structure is unusually strong here. log|g| is HARMONIC on the open disk with log|g(0)| = 0 exactly, log|g(t zeta)| = -sum_m (t^m/m) Re(conj(sigma_m) zeta^m) with sigma_m the power sums, and radial_resultant_sweep_identity gives sum_j log|g(t w_j)| = -sum_m (t^m/m)|sigma_m|^2 <= 0 for every t, so at every radius some root direction is good -- the L^1 statement. The obligation is the L^infinity upgrade PLUS the connecting chord. Do NOT route through ONE-SPOKE (full radial spokes), which negative_results entry 42 refutes at n = 5; truncation at s > 0 deletes exactly the first-order germ at the origin that the refutation exploits. Do NOT route through a plain-chord Fekete-deficit split: the chord envelope crosses 1 at D* about 0.87, 0.68, 0.51, 0.42, 0.32 at n = 3..7, a threshold that FALLS with degree, while the near-Fekete cusp expansion is valid only as D -> 1, so the middle band is covered from neither side and widens with n. CALIBRATION landed 2026-08-24: adversarial hill climbing seeded on the regular n-gon at perturbation scales 1e-1 down to 1e-6 (adjacent pairs, s swept on a joint linear+geometric grid with local refinement) reaches V = 1.000000000000 at n = 3 and 0.999999999841, 0.999999999787, 0.999999997390 at n = 4, 5, 6 -- the maximum is the regular n-gon and the objective never crosses 1. Earlier random-configuration sweeps read worst V = 0.982, 0.854, 0.456, 0.554, 0.172, 0.239 at n = 3..8, so the constraint binds only in the near-regular shell, exactly as HardRegimeIsNearFekete.md predicts. The measurement is NOT a proof and negative_results entry 19 applies: a supremum pinned at a threshold is one basin. Degrees 7 to 10 of that sweep are NOT on file: the run that produced n = 3..6 was a scratchpad process and its remaining rows were never landed. Re-derive with ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut.py 7 -- it prints one row per degree and takes roughly ten minutes past n = 6 on an M4. Do not quote n >= 7 until that rerun exists. UPDATE 2026-08-25: degrees 7..10 adversarial rerun LANDED (seed 20260825): regular V = 1.000000000000 at every degree; worst near-regular excesses -4.588e-08 (n=10), -2.369e-08 (7), -1.167e-08 (8), -2.094e-08 (9), -1.839e-09 (6); never crosses 1 -- the do-not-quote-n>=7 stricture is discharged (measurement only, entry 19 applies). Exact certificate criterion + Lean potential-domination kernel landed (ConcyclicPotentialBound.lean, ConcyclicFormACutCertificate.md). First-moment-only certificates are PROVEN INFEASIBLE for n>=4 (mid-range spokes need multi-harmonic data), so the surviving route is joint cluster/cone bookkeeping: opposite-side clustering that inflates log(1+t) factors also rotates s_1 into the used gap, converting those factors to log(1-t) damping. Concentric-alternation law (Conjecture U): min_k max_{G_k} log|g(s e^{i psi})| <= log(1+s^n) at every s, equality iff regular -- measured at float-noise slack over 930 checks n=3..8 including adversarial shells (receipt erdos1041_concyclic_fac_certificate_receipt.json, PASS); NOT provable by transporting the s=1 alternation (no circle zeros at s<1, hence no sign input).
+
+Evidence/status: see the source; no formal status inferred
+
+- [check_erdos1041_concyclic_form_a_cut.py](scripts/check_erdos1041_concyclic_form_a_cut.py)

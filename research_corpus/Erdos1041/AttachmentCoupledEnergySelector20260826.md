@@ -158,4 +158,3 @@ fixed absolute tolerance fails on sufficiently imbalanced weights even though
 the theorem is true. `AttachmentCoupledEnergySelector20260826.lean` checks the
 exact quartic inequalities and the scalar common-ancestry factorisation in
 `(TR2)`.
-

@@ -138,4 +138,3 @@ q_C > tanh(exp(2 Sigma_C/n))^(k_C/2)
 at every node.  This is a much narrower target than a generic tie
 classification, but it is not proved here.  In particular, neither taking a
 minimum of marked-hub functions nor a naive edge-area average establishes it.
-

@@ -1,5 +1,5 @@
-import ErdosProblems.Erdos1041.SexticNullBranchFiniteTransfer
-import ErdosProblems.Erdos1041.SexticNullBranchUniformMargin
+import research_corpus.Erdos1041.SexticNullBranchFiniteTransfer
+import research_corpus.Erdos1041.SexticNullBranchUniformMargin
 
 /-!
 # Erdős #1041: the full finite sextic null-box atlas

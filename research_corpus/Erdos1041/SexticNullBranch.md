@@ -6,6 +6,11 @@ ray bound. This enlarges the degree-six homogeneous atlas. It does **not**
 prove the full sextic mixed model, a finite actual-polynomial neighbourhood,
 or unrestricted Erdős #1041.
 
+The later `SexticCanonicalCriticalThreshold.md` proves a homogeneous
+connector for arbitrary complex first coefficient and every real tangent
+cubic at this canonical second-mode phase. The exact branch below remains
+a valid special family; its off-phase stability results have additional scope.
+
 ## 1. What the constrained adversary found
 
 At the canonical sextic point
@@ -35,8 +40,8 @@ a_1=theta=0,             b_1=-2a^2 c.                   (1)
 ```
 
 An adversarial search forced away from the already-closed `c=0` slice and
-converged to (1) after undoing sixth-root rotation. Numerically, its ratio
-`|A|/c=0.57665...` is `2a^2` to the search accuracy. This is why the earlier
+converged to (1) after undoing sixth-root rotation. Its exact ratio is
+`|A|/c=2a^2=1/sqrt(3)=0.5773502691...`. This is why the earlier
 optimizer appeared to approach zero without finding a new phase orbit.
 
 The first-order null direction is not merely infinitesimal. It continues as
@@ -173,6 +178,6 @@ the actual-polynomial remainder transfer remain open.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_sextic_null_branch.py
-./repo-python source-provenance://private-authoring-project/scripts/lean_fast_build.py --jobs 2 \
+python3 research_corpus/Erdos1041/scripts/lean_fast_build.py --jobs 2 \
   ErdosProblems/Erdos1041/SexticNullBranch.lean
 ```

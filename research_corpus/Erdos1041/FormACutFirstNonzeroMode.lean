@@ -75,4 +75,3 @@ theorem two_le_mode_halfplane_supply {n d q : ℕ}
       omega
 
 end ErdosProblems.Erdos1041.FormACutFirstNonzeroMode
-

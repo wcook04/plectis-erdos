@@ -3,7 +3,7 @@
 
 # How this repository works
 
-This is a public Lean project about eight unsolved problems in mathematics.
+This is a public Lean project about eight mathematical problem programmes.
 It keeps the proofs, papers, computations and research records together so
 another researcher can inspect the work and continue it. This guide explains
 how those files fit together and what the checks establish.
@@ -25,10 +25,13 @@ standards of evidence. A declaration has the public status recorded for it in
 the registry; adding a file or compiling a library does not create that status.
 [Methodology](METHODOLOGY.md) explains the review and change rules.
 
-All eight mathematical problems remain open. The repository proves
-intermediate results, exact reformulations and bounded examples around them;
-it does not claim a solution to any of them. This is a self-contained public
-release: its use and its mathematical claims do not depend on private files.
+The degree-seven example refutes the total-variation formulation of Erdős
+#1041. The other seven target problems are not resolved here. Independent human
+review of correspondence with the historical curve-length formulation has not
+been recorded. Comparator checks only its selected exact statements, configured
+axioms and kernel acceptance; it does not assess novelty or historical
+correspondence. This is a self-contained public release: its use and its
+mathematical claims do not depend on private files.
 
 ## The architecture in one page
 

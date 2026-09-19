@@ -1723,7 +1723,7 @@ def main(argv: list[str] | None = None) -> int:
             check(
                 all(claim_index[target_id]["status"] == "open"
                     for target_id in target_ids if target_id in claim_index),
-                f"programme route {route.get('id')!r} target claims must remain open",
+                f"programme route {route.get('id')!r} target claims must carry canonical status=open",
             )
             check(not (core_ids - claim_id_set),
                   f"programme route {route.get('id')!r} has unknown core claims: "
@@ -2342,6 +2342,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_semantic_review.py"),
             ],
+            "semantic_rebind_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_semantic_review_rebind.py"),
+            ],
             "theory_lab_contract": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_theory_lab.py"),
@@ -2528,6 +2532,11 @@ def main(argv: list[str] | None = None) -> int:
         semantic_review_fixtures.returncode == 0,
         "semantic review mutation fixtures: "
         f"{child_output(semantic_review_fixtures)}",
+    )
+    semantic_rebind_fixtures = mid_checks["semantic_rebind_fixtures"]
+    check(
+        semantic_rebind_fixtures.returncode == 0,
+        f"semantic review rebind guards: {child_output(semantic_rebind_fixtures)}",
     )
 
     # The theory lab is the layer that makes predictive claims -- which mechanism

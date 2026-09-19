@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
+import research_corpus.Erdos1041.NewtonFlowRaySeparation
 
 /-!
 # Erdős #1041: separating critical *levels*, not only critical arguments

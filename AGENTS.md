@@ -3,8 +3,8 @@
 
 # Agent instructions
 
-First-contact contract. [the detailed agent guide](docs/agents/AGENT_GUIDE.md) owns deep change,
-authority, and validation rules; open only the section the route names.
+The [agent guide](docs/agents/AGENT_GUIDE.md) owns change,
+authority and validation rules; open only the routed section.
 
 This is a self-contained public Lean repository and scholarly artefact. Use only
 tracked files in this checkout. Do not depend on `ai_workflow`, sibling
@@ -55,9 +55,9 @@ python3 scripts/query_corpus.py --route erdos257_half_story
 python3 scripts/query_corpus.py --route browse_claim_status
 ```
 
-If free text returns no cells, use those routes; do not replace
-machine evidence with manuscript-only inference. All eight indexed problems
-remain open.
+If free text returns no semantic cells, use those stable routes; do not replace
+machine evidence with prose. #1041's total-variation form is refuted;
+historical correspondence remains unreviewed.
 Choose work: `python3 scripts/query_corpus.py --open`.
 
 ### Lean proof work or source mutation

@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.QuinticMinusTenEndpointExcessCertificate
+import research_corpus.Erdos1041.QuinticMinusTenEndpointExcessCertificate
 
 /-!
 # Erdős 1041: Lean replay for the full `μ = -10` phase-arc certificate

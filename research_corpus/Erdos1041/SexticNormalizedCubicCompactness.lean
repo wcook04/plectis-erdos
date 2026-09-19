@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticAnisotropicCubicCone
+import research_corpus.Erdos1041.SexticAnisotropicCubicCone
 import Mathlib.Tactic
 
 /-!

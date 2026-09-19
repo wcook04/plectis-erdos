@@ -213,4 +213,3 @@ ordinary mathematics.
 
 This exact no-go retires one CE--GM elimination strategy.  It does not refute
 CE--GM, the tied-Newton-face joint selector, or unrestricted Erdős #1041.
-

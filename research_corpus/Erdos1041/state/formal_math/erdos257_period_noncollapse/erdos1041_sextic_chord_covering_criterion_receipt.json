@@ -1,0 +1,202 @@
+{
+  "id": "erdos1041_sextic_chord_covering_criterion",
+  "arms": [
+    {
+      "name": "1. chord normal form  64H = -64 + (1-x^2)N",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "2. uniform root depth  H(omega^j) = -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "3. canonical-phase gap P(x)",
+      "pass": true,
+      "detail": "x**6 - 43*x**4 + 24*x**3 + 91*x**2 - 24*x + 15"
+    },
+    {
+      "name": "4. one-sidedness  P(-t) - P(t) = 48 t (1-t^2)",
+      "pass": true,
+      "detail": "-48*t*(t - 1)*(t + 1)"
+    },
+    {
+      "name": "5. pivot residual at T = 25u/12",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6. Cauchy-Schwarz kernel is exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "7. rational majorant  sqrt(t^4+17t^2+841) <= 29 + 5t^2/16 on [0,1]",
+      "pass": true,
+      "detail": "difference = -3*t**2*(77*t**2 - 96)/256 >= 0 for t^2 <= 96/77"
+    },
+    {
+      "name": "8. gap polynomial at |A| = |B|",
+      "pass": true,
+      "detail": "t**6 + 5*t**5/8 - 43*t**4 + 651*t**3/8 + 91*t**2 - 82*t + 15"
+    },
+    {
+      "name": "9. six-piece Bernstein certificate  G1 >= 1/4 on [0,1]",
+      "pass": true,
+      "detail": "uniform chord margin 1/256"
+    },
+    {
+      "name": "10. supplied |A| <= 3/4 branch reproduced, margin 127/3072",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "11. antipodal midpoint sum  K_j(0) + K_{j+3}(0) = 2(91 + 84 p)",
+      "pass": true,
+      "detail": "so Re(beta) <= -9/28 is necessary for any antipodal pair"
+    },
+    {
+      "name": "12. inner-cone bound  -32 - h(t) = (1-t)(43 + 29t + 15t^2 - t^3)/1 >= 0",
+      "pass": true,
+      "detail": "factorisation (t - 1)*(t**2 - 14*t - 43)"
+    },
+    {
+      "name": "13. outer-cone bound  8 - g(t) = (t-1)(t^2-4t-33) >= 0 on [0,1]",
+      "pass": true,
+      "detail": "factorisation (t - 1)*(t**2 - 4*t - 33)"
+    },
+    {
+      "name": "14. leading invariant  min_even psi + min_odd psi <= 8 sqrt3 - 32 < 0",
+      "pass": true,
+      "detail": "8 sqrt3 - 32 = -18.143594"
+    },
+    {
+      "name": "15. adversarial direct-complex replay, |B|=1, |A|<=1, |C| up to 1e6",
+      "pass": true,
+      "detail": "rows=145015  worst best-chord value=-0.21183874  budget=-1/256=-0.00390625"
+    },
+    {
+      "name": "16. DIAGNOSTIC ONLY, not proof: six-chord criterion over the middle band",
+      "pass": true,
+      "detail": "sup over phases of (min_even S + min_odd S); negative means covered"
+    },
+    {
+      "name": "17. Theorem 2 criterion vs the original complex model at the breakpoints",
+      "pass": true,
+      "detail": "5076 probes agree, 0 mismatch"
+    },
+    {
+      "name": "18. chord chart genuinely fails below |B| = 9/14 (Theorem 5 barrier)",
+      "pass": true,
+      "detail": "10 exhibited (A,B) with an uncovered C-window; narrowest width 3.238e-03"
+    }
+  ],
+  "bernstein_controls": {
+    "[0,1/4]": [
+      "59/4",
+      "34/3",
+      "1991/240",
+      "58379/10240",
+      "27659/7680",
+      "100181/49152",
+      "8535/8192"
+    ],
+    "[1/4,5/16]": [
+      "8535/8192",
+      "155869/196608",
+      "94887/163840",
+      "2104533/5242880",
+      "2726469/10485760",
+      "2606563/16777216",
+      "1473051/16777216"
+    ],
+    "[5/16,11/32]": [
+      "1473051/16777216",
+      "906295/16777216",
+      "9902157/335544320",
+      "60057/4194304",
+      "11388051/1342177280",
+      "9702139/805306368",
+      "26890821/1073741824"
+    ],
+    "[11/32,3/8]": [
+      "26890821/1073741824",
+      "61268185/1610612736",
+      "30435461/503316480",
+      "15496937/167772160",
+      "8416169/62914560",
+      "1162085/6291456",
+      "8035/32768"
+    ],
+    "[3/8,1/2]": [
+      "8035/32768",
+      "766315/1572864",
+      "289087/327680",
+      "234633/163840",
+      "21893/10240",
+      "6145/2048",
+      "1029/256"
+    ],
+    "[1/2,1]": [
+      "1029/256",
+      "4145/512",
+      "9393/640",
+      "30411/1280",
+      "5629/160",
+      "2335/48",
+      "255/4"
+    ]
+  },
+  "adversarial": {
+    "rows": 145015,
+    "worst_best_chord_value": -0.2118387354444291,
+    "worst_row": [
+      0.95,
+      1.0,
+      17,
+      12
+    ]
+  },
+  "middle_band_diagnostic_evidence_only": {
+    "1.0": -32.70399762487975,
+    "1.5": -84.85006326524687,
+    "2.0": -148.71753844301696,
+    "3.0": -257.322081350154,
+    "5.0": -455.18901859305834,
+    "8.0": -729.1314722910693,
+    "12.5": -1100.750068883298
+  },
+  "criterion_equivalence": {
+    "agree": 5076,
+    "mismatch": [],
+    "failure_witnesses": [
+      {
+        "absA": 0.2,
+        "absB": 0.4,
+        "gap_width": 0.2885825210542919
+      },
+      {
+        "absA": 0.4333333333333333,
+        "absB": 0.4,
+        "gap_width": 0.24812086276584788
+      },
+      {
+        "absA": 0.19999999999999998,
+        "absB": 0.4,
+        "gap_width": 0.09574508332723122
+      },
+      {
+        "absA": 0.2,
+        "absB": 0.4,
+        "gap_width": 0.003237767658952395
+      },
+      {
+        "absA": 0.2,
+        "absB": 0.4,
+        "gap_width": 0.08110991846623278
+      }
+    ]
+  },
+  "all_pass": true
+}

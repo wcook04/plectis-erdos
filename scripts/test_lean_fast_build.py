@@ -43,6 +43,43 @@ class LeanFastBuildTests(unittest.TestCase):
                 {"Examples": root / "examples" / "Examples.lean"},
             )
 
+    def test_changed_targets_use_discovered_names_under_srcdir(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "lean" / "Pkg" / "Proof.lean"
+            source.parent.mkdir(parents=True)
+            source.write_text("-- proof\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\nsrcDir = "lean"\n', encoding="utf-8"
+            )
+            modules = fast.discover(root)
+            self.assertEqual(
+                fast.changed_targets_from_paths([source, root / "unknown.lean"], modules, root),
+                ["Pkg.Proof"],
+            )
+
+    def test_declared_defaults_resolve_roots_under_srcdir(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "lean").mkdir()
+            (root / "examples").mkdir()
+            for relative in ("lean/Main.lean", "examples/Examples.lean"):
+                (root / relative).write_text("-- root\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                'defaultTargets = ["Main"]\n'
+                '[[lean_lib]]\nname = "Main"\nsrcDir = "lean"\n'
+                '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
+                encoding="utf-8",
+            )
+            self.assertEqual(fast.resolve_targets([], fast.discover(root), root), ["Main"])
+
+    def test_missing_declared_default_does_not_silently_skip_build(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "lakefile.toml").write_text('defaultTargets = ["Missing"]\n')
+            with self.assertRaisesRegex(ValueError, "declared default Lean roots not found"):
+                fast.default_root_targets({}, root)
+
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
             encoding="utf-8"

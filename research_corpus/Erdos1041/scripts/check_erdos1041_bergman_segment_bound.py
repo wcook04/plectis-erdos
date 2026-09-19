@@ -50,8 +50,7 @@ Arms, each fail-closed
 
 Replay:
 
-    ./repo-python source-provenance://private-authoring-project/ErdosProblems/\\
-Erdos1041/scripts/check_erdos1041_bergman_segment_bound.py --part all \\
+    python3 research_corpus/Erdos1041/scripts/check_erdos1041_bergman_segment_bound.py --part all \\
         --trials 3 --grid 701
 """
 from __future__ import annotations

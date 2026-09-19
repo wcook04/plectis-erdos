@@ -61,6 +61,8 @@ def citation_identity_errors(
         errors,
         cff,
         "title",
+        # CITATION.cff describes the tagged release, whose immutable historical
+        # title is independent of the current README's corrected status wording.
         "Plectis: research on eight open Erdős problems",
     )
     require_scalar(errors, cff, "version", str(release["version"]))

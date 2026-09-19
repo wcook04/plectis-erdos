@@ -58,4 +58,3 @@ theorem quintic_universal_chamber_rational_budget :
   norm_num
 
 end ErdosProblems.Erdos1041
-

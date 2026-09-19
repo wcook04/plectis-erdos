@@ -101,6 +101,24 @@ def main() -> None:
     human_entry = HUMAN_ENTRY.read_text(encoding="utf-8")
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
     docs_index = (ROOT / "docs/README.md").read_text(encoding="utf-8")
+    claims = json.loads((ROOT / "docs/claims.json").read_text(encoding="utf-8"))
+    status_boundary = claims["external_verification_packet"]["boundary"]
+    compact_status_boundary = " ".join(status_boundary.split())
+    for relative in (
+        "README.md",
+        "docs/READING_GUIDE.md",
+        "docs/SCOPE.md",
+        "docs/ARCHITECTURE.md",
+        "docs/README.md",
+        "docs/RESULTS.md",
+        "paper/README.md",
+        "docs/agents/AGENT_GUIDE.md",
+    ):
+        surface = (ROOT / relative).read_text(encoding="utf-8")
+        require(
+            compact_status_boundary in " ".join(surface.split()),
+            f"{relative} lost the authority-owned release status boundary",
+        )
 
     reader_surfaces = (
         ROOT / "README.md",
@@ -158,9 +176,10 @@ def main() -> None:
     # his own voice (second pass the same day); the paper index carries
     # short/longer PDF links, one-line strongest results, and erdosproblems.com
     # URLs that this counter charges as words. The budget follows the authored
-    # page, it does not reshape it. Funded with slack, not to the byte.
+    # page, it does not reshape it. The 2026-09-19 exact #1041 release boundary
+    # adds one authority-owned paragraph, so the same bounded surface allows 2_100.
     require(
-        len(prose_words(readme)) <= 2_000,
+        len(prose_words(readme)) <= 2_100,
         "README prose exceeds the human front-door budget",
     )
     # 2026-09-10, operator-directed: the front page carries no command block at
@@ -172,10 +191,8 @@ def main() -> None:
         and "](docs/agents/AGENT_WORKBENCH.md)" in readme,
         "README no longer routes readers to the documents that hold its commands",
     )
-    require(
-        "All eight problems remain open" in readme,
-        "README does not state the global open boundary near the front",
-    )
+    require(compact_status_boundary in " ".join(readme.split()),
+            "README does not state the authority-owned status boundary near the front")
     require(
         "docs/claims.json" in readme,
         "README must route claim status to its canonical owner",
@@ -208,7 +225,7 @@ def main() -> None:
     require("```" not in first_screen and "git clone" not in first_screen,
         "README asks a cold reader to choose a checkout before showing the papers")
     require(
-        "![Eight open problems:" in first_screen
+        "![Eight Erdős problem programmes:" in first_screen
         and "](.github/system-map.png)" in first_screen,
         "README opening lost the mathematical research-record banner",
     )
@@ -231,8 +248,10 @@ def main() -> None:
     human_words = words(human_entry)
     prose_blocks = authored_prose_blocks(human_entry)
     prose_word_count = sum(len(words(block)) for block in prose_blocks)
+    # The exact four-sentence #1041 status boundary is projected into the human
+    # entry verbatim, so its existing bounded introduction now allows 1_250 words.
     require(
-        450 <= len(human_words) <= 1_200,
+        450 <= len(human_words) <= 1_250,
         "HUMAN_ENTRY must be a substantial but bounded prose introduction",
     )
     require(
@@ -243,7 +262,8 @@ def main() -> None:
         len(words(prose_blocks[0])) >= 35,
         "HUMAN_ENTRY does not explain the project before routing the reader",
     )
-    require("All eight problems remain open" in human_entry, "human entry blurs the open boundary")
+    require(compact_status_boundary in " ".join(human_entry.split()),
+            "human entry blurs the authority-owned status boundary")
     require(
         "Comparator" in human_entry and "Palomar" in human_entry,
         "human entry does not explain the two public review surfaces",

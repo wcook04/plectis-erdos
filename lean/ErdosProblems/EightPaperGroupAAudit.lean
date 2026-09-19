@@ -1,0 +1,27 @@
+import ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter
+import ErdosProblems.Erdos68.PaperCompletePrimePole
+import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Erdos68.PaperCompleteMomentIdeal
+import ErdosProblems.Erdos68.PaperCompleteResidualIdentity
+import ErdosProblems.Erdos68.PaperCompleteSupplementary
+import ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass
+import ErdosProblems.Erdos243.PaperCompleteR8.GrowthDebtSummability
+
+#print axioms Erdos1041.Counterexample.erdos1041_counterexample
+#print axioms Erdos1041.Counterexample.erdos1041_ani_degree_seven
+#print axioms Erdos1041.Counterexample.erdos1041_no_short_variation_path
+#print axioms ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+#print axioms Erdos68.gcd_factorial_sub_one_dvd_descFactorial_sub_one
+#print axioms Erdos68.gcd_factorial_sub_one_le_pow_gap
+#print axioms ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment
+#print axioms ErdosProblems.Erdos68.PaperComplete.minimum_moment_content_one
+#print axioms ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime
+#print axioms ErdosProblems.Erdos68.PaperComplete.residual_transparency
+#print axioms ErdosProblems.Erdos68.PaperComplete.summable_fullResidual
+#print axioms ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral
+#print axioms ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference
+#print axioms ErdosProblems.Erdos68.PaperComplete.moving_factor_min_split
+#print axioms ErdosProblems.Erdos68.PaperComplete.fixed_owner_absorption
+#print axioms ErdosProblems.Erdos243.PaperCompleteR8.canonical_sylvester_of_finite_negative_mass
+#print axioms ErdosProblems.Erdos243.PaperCompleteR8.canonical_weighted_growth_record
+#print axioms ErdosProblems.Erdos243.PaperCompleteR8.canonical_weighted_growth_record_factored

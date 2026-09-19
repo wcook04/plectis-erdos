@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.QuinticTraceMaxUniversalChamber
+import research_corpus.Erdos1041.QuinticTraceMaxUniversalChamber
 
 /-!
 # Erdős 1041: algebra for the tangent curved-excess certificate
@@ -54,4 +54,3 @@ theorem quintic_tangent_curved_excess_rational_fanin :
   norm_num
 
 end ErdosProblems.Erdos1041
-

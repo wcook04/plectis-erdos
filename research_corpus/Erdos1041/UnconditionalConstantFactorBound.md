@@ -1,7 +1,9 @@
 # Erdős #1041 holds up to an absolute constant
 
-Status: **two unconditional theorems, proved here**, plus one sharp conjecture they
-isolate. Current through 2026-08-28 source audit. **Erdős #1041 itself remains
+Status: **two unconditional theorems, proved here**. The one-root gamma
+perimeter conjecture isolated in §10 is **false**; see
+[ExactObstructionsR2.md](ExactObstructionsR2.md). The constant-factor theorems
+of §1 are unaffected. Current through 2026-09-06. **Erdős #1041 itself remains
 open** — the constant `2` is sharp and nothing below reaches it. The numerical
 receipt in §11 remains dated 2026-08-24; this source-only update does not claim
 a fresh replay.
@@ -28,10 +30,9 @@ the inequalities written in this note: the capacity identity, the area bound,
 Cauchy--Schwarz, the univalent-map distortion estimate, and the finite graph
 exit lemma. No external paper theorem is imported, and no literature-priority
 claim is made for the resulting finite bound. The numerical section is
-measurement only; Conjecture P and the sharp constant `2` remain open.
-
-The global area--capacity input has a historical primary-source antecedent, but
-that antecedent is not being substituted for the proof above. George Pólya's
+measurement only. The one-root gamma conjecture of §10 is false; Theorem 1
+does not use it. The global area--capacity input has a historical primary-source
+antecedent, but that antecedent is not being substituted for the proof above. George Pólya's
 1928 primary scan, [downloaded here](https://archive.org/download/sitzungsbericht1928preu/sitzungsbericht1928preu.pdf)
 (SHA-256
 `2de0cd74d07f02ff08be81e1eaac35b5529e1c60e35e1c5c9b4c4ca0602fd205`), gives
@@ -581,11 +582,23 @@ geo  ≤  ( 2 Σ_i ℓ_i(θ) + H^1(∂C_t) ) / k .
 ```
 
 The old assembly spent Lemma 3 pointwise, using `cr_i≤4ρ` for every root.
-The singleton part of the proof of the stronger fixed-level full-energy theorem
-`(LC2)` in `SixReturnJointAssimilation20260826.md` is unconditional below the
-first critical level: there are then no nontrivial active components, so the
-one-root area lower bounds add directly under Polya's global area bound. Letting
-that precritical inequality tend to the first critical level gives
+Here is the direct unconditional area argument for the aggregate that replaces
+that pointwise loss.  Fix `0<σ<μ`.  For each root `a_i`, let `U_(i,σ)` be its
+component of `{|f|<σ}` and let `φ_(i,σ):D→U_(i,σ)` be the inverse of `f/σ`.
+Then `|φ_(i,σ)'(0)|=σ/|f'(a_i)|`.  The coefficient-area formula for a
+univalent map gives
+
+```text
+Area(U_(i,σ)) >= π σ^2/|f'(a_i)|^2.
+```
+
+These one-root components are disjoint, so Pólya's global area bound yields
+
+```text
+sum_i σ^2/|f'(a_i)|^2 <= Area(K_σ)/π <= σ^(2/n).
+```
+
+Letting `σ` increase to `μ` gives
 
 ```text
 sum_i cr_i^2 = sum_i μ^2/|f'(a_i)|^2 ≤ ρ^2.              (D)
@@ -636,8 +649,8 @@ Three replacements, each of which the earlier attempts lacked.
    `[μ, λμ]` by a mean-value argument removes that divergence at the cost of
    the containment level `λμ` and a factor `1/sqrt(log λ)`.
 
-Point 3 is the only blemish in Theorem 1, and §10 isolates exactly what would
-remove it.
+Point 3 is the only blemish in Theorem 1. Section 10 records that the
+quadratic gamma constant does not close it.
 
 ## 9. What this does and does not say
 
@@ -657,66 +670,52 @@ remove it.
   the constructed path at `≈ 2–5 ρ` on real configurations, so the true
   constant of this construction is nearer `5`.
 
-## 10. The sharp conjecture this isolates
+## 10. The one-root gamma bound is false
 
-Removing the level window means bounding the perimeter of a one-root lobe **at
-the critical level itself**, where Lemma 1 fails. Measurement makes the sharp
-form startlingly clean.
+Removing the level window would require bounding the perimeter of a one-root
+lobe **at the critical level itself**, where Lemma 1 fails. The gamma constant
+below is the quadratic Bernoulli length. It is **not** an upper bound for
+one-root components of `{|f| ≤ σ}`.
 
-> **Conjecture P.** Let `C` be a connected component of `{|f| ≤ σ}` containing
-> exactly one root of `f`. Then
+> **False statement (formerly Conjecture P).** Let `C` be a connected component
+> of `{|f| ≤ σ}` containing exactly one root of `f`. Then
 >
 > ```text
-> H^1(∂C)  ≤  sqrt(2) · ϖ · σ^{1/n}  =  sqrt(2) ϖ · cap({|f| ≤ σ}),
+> H^1(∂C)  ≤  sqrt(2) · ϖ · σ^{1/n}  =  Γ(1/4)^2 / (2 sqrt(π)) · cap({|f| ≤ σ}).
 > ```
->
-> where `ϖ = 2.62205755…` is the lemniscate constant and
+
+For `p(z) = z^8 - (3/2)z` the central component of `{|p| ≤ 1}` contains the
+closed disc of radius `5/8` and therefore has perimeter strictly above
+`5π/4`. The proposed constant is at most `(π/2)(1+√2) < 5π/4`. Proof:
+[ExactObstructionsR2.md](ExactObstructionsR2.md). The binomial family
+`z^N - z` shows that any degree-uniform one-root constant, if one exists,
+must be at least `2π`.
+
+The quadratic Bernoulli computation remains correct as an equality case for
+that family: for `f = z^2 − d^2` one has `μ = d^2`, `ρ = d`, and one loop of
+`|z^2 − d^2| = d^2` has length `Γ(1/4)^2/(2√π) ρ`. That does not dominate
+higher-degree one-root components.
+
+> **Theorem 3 (conditional).** If some constant `β` bounds every one-root
+> component perimeter in the form `H^1(∂C) ≤ β σ^{1/n}` for all `σ ≤ μ`, then
+> two roots of `f` are joined **inside `K_μ`** by a path of length at most
 >
 > ```text
-> sqrt(2) ϖ  =  Γ(1/4)^2 / (2 sqrt(π))  =  3.7081493546027438…
+> ( 8x/(1−x)^2 + (β/π) log(1/x) + β ) ρ      for any x ∈ (0,1).
 > ```
 >
-> Equality holds exactly for `f` quadratic at `σ = μ`, where `∂C` is one loop
-> of a Bernoulli lemniscate.
-
-The extremal value is exact. For `f = z^2 − d^2` one has `μ = d^2`, `ρ = d`, and
-the one-root lobe boundary is `|z^2 − d^2| = d^2`, one loop of Bernoulli's
-lemniscate. With `φ(w) = d sqrt(1+w)` the length is
-`∫_0^{2π} |φ'(e^{iθ})| dθ = (d/2) ∫_0^{2π} (2|cos(θ/2)|)^{-1/2} dθ
- = d √π Γ(1/4) / (√2 Γ(3/4)) = d Γ(1/4)^2/(2√π) = √2 ϖ ρ`,
-using `Γ(1/4)Γ(3/4) = π√2`. For general `n` the closed form
-on `z^n − r^n` is `(2^{1/n}/n) √π Γ(1/(2n)) / Γ(1/(2n) + 1/2) · ρ`, which
-decreases from `3.7081` at `n = 2` to `2` as `n → ∞`.
-
-Conjecture P is the **one-root, per-component form of the
-Erdős–Herzog–Piranian lemniscate-length problem**, and it is a genuinely
-different extremal problem: EHP's conjectured per-root constant is `2`, attained
-asymptotically by `z^n − 1`, whereas the one-root maximum is `√2 ϖ`, attained by
-a quadratic.
-
-> **Theorem 3 (conditional).** If Conjecture P holds with constant `β` for all
-> `σ ≤ μ`, then two roots of `f` are joined **inside `K_μ`** by a path of
-> length at most
->
-> ```text
-> ( 8x/(1−x)^2 + (β/π) log(1/x) + β ) ρ      for any x ∈ (0,1),
-> ```
->
-> which is `≈ 7.4 ρ` at `β = √2 ϖ`, `x = 0.1`. In particular Erdős #1041 would
-> then hold with `2` replaced by an absolute constant for **every** polynomial
-> with roots in the open unit disk, with no `2R^n ≤ 1` proviso.
+> Any such `β` is at least `2π`. Theorem 1 does not depend on this implication.
 
 *Proof.* At level `μ` exactly, `c* ∈ ∂U_a ∩ ∂U_b` for two of the one-root lobes
 (F6), so it suffices to bound `d_{Ū_a}(a, c*)`. Lift from `a` along any ray to
-`∂U_a` and then travel along `∂U_a` to `c*`, which is a point of that Jordan
-curve — no tail is needed, which is the whole gain of working at `μ`:
+`∂U_a` and then travel along `∂U_a` to `c*`:
 
 ```text
 d(a, c*) ≤ ℓ_a(θ) + ½ H^1(∂U_a) ≤ mean_θ ℓ_a + ½ β ρ .
 ```
 
 The mean lift is `(1/2π) ∫_0^μ P_a(σ) dσ/σ` with `P_a(σ) = H^1(∂U_a(σ))`. Bound
-`P_a(σ)` by Koebe for `σ ≤ xμ` and by Conjecture P for `σ ≥ xμ`:
+`P_a(σ)` by Koebe for `σ ≤ xμ` and by the hypothetical `β` for `σ ≥ xμ`:
 
 ```text
 mean_θ ℓ_a ≤ cr_a · x/(1−x)^2 + (β ρ /2π) log(1/x) ≤ 4x/(1−x)^2 ρ + (βρ/2π) log(1/x),
@@ -725,9 +724,8 @@ mean_θ ℓ_a ≤ cr_a · x/(1−x)^2 + (β ρ /2π) log(1/x) ≤ 4x/(1−x)^2 �
 using `cr_a ≤ 4ρ` and `P_a(σ) ≤ β σ^{1/n} ≤ βρ`. Doubling for the two lobes and
 adding `½β ρ` twice gives the stated bound. ∎
 
-Conjecture P is therefore *exactly* the residue: it is a statement about one
-lobe, one root and one Jordan curve, with an explicit extremal and an explicit
-constant, and it upgrades Theorem 1 to a clean constant-factor Erdős #1041.
+The residue of Theorem 1 is therefore still a one-root perimeter bound at the
+critical level, but not the gamma constant.
 
 ## 11. Measurement
 
@@ -750,7 +748,7 @@ Every inequality of §4–§7 was checked directly:
 Lemma 1 is tight to within `10–15%` on every row, so the Cauchy–Schwarz step is
 not where the constant is lost.
 
-Conjecture P, `120` configurations over degrees `2…10` and five families
+The former one-root gamma conjecture, `120` configurations over degrees `2…10` and five families
 (uniform in the disk, on a circle, near-Fekete shells, clustered, near-collinear),
 with a degenerate-hub guard and a trace-quality gate:
 
@@ -808,10 +806,11 @@ is not where the constant is lost; the losses are the distortion estimate's
 
 Theorem 1, Corollary 2, Step 0 and Theorem 3 are proved above by ordinary
 mathematics; no computation enters any of their proofs. §11 is measurement:
-Conjecture P is **not** proved, and no adversarial search has been run against
-it — the `120` rows are random and family-seeded, so `negative_results` 19
-applies and the reported maximum is a basin record, not a supremum. The
-constant `71/10` in Theorem 1 is an honest upper bound for `λ=2`, not an optimum.
+the quadratic gamma constant is an equality case, not a covering bound, and
+the exact degree-eight witness of ExactObstructionsR2.md refutes it. The
+`120` rows are random and family-seeded, so `negative_results` 19 applies to
+that survey as a basin record, not a supremum. The constant `71/10` in
+Theorem 1 is an honest upper bound for `λ=2`, not an optimum.
 Erdős #1041 is open.
 
 ## 13. Replay

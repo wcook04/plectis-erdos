@@ -250,6 +250,16 @@ Unreceipted nodes remain authored navigation. Use
 subjects and `python3 scripts/semantic_review.py --check` for the focused
 freshness gate.
 
+After unrelated source additions change the atlas fingerprint, use
+`python3 scripts/semantic_review.py --rebind` to check whether every reviewed
+subject is unchanged; add `--apply` only after that comparison passes. During
+a merge, the incoming receipts may belong to the other parent's corpus. Use
+`--baseline-ref <commit>` to read that immutable corpus directly, without
+choosing a generated conflict file by hand. The command records the resolved
+commit, reproduces each old receipt digest, and rejects changed wording,
+evidence or boundaries. Then run `python3 scripts/refresh_projections.py`.
+A selected baseline never substitutes for a new semantic review.
+
 The generated corpus keeps two different identities separate. Its
 `source_provenance.formal_source` is the committed Lean source anchor declared
 by `claims.json`; its `evidence_fingerprint` and

@@ -123,4 +123,3 @@ mountain-pass monotonicity theorem is still required.  The first live case is
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_two_exterior_symmetric_envelope.py
 ```
-

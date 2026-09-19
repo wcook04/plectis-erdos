@@ -215,7 +215,7 @@ unrestricted Erdős 1041 remain open.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_symmetric_two_level_wall.py
-./repo-python source-provenance://private-authoring-project/scripts/lean_fast_build.py --jobs 2 \
+python3 research_corpus/Erdos1041/scripts/lean_fast_build.py --jobs 2 \
   ErdosProblems/Erdos1041/SymmetricTwoLevelWall.lean
 ```
 

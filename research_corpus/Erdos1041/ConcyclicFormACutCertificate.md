@@ -237,8 +237,7 @@ python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation_
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py
 
 # Lean kernel (focused build)
-cd source-provenance://private-authoring-project && ../../repo-python scripts/lean_fast_build.py \
-  --jobs 2 ErdosProblems.Erdos1041.ConcyclicPotentialBound
+lake env lean research_corpus/Erdos1041/ConcyclicPotentialBound.lean
 
 # Certificate battery (regular attainment, near-regular shells, controls)
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py

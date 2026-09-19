@@ -34,7 +34,7 @@ import sys
 
 import numpy as np
 
-RECEIPT = ("source-provenance://private-authoring-project/receipts/"
+RECEIPT = ("research_corpus/Erdos1041/"
            "erdos1041_form_a_cut_selector_receipt.json")
 
 

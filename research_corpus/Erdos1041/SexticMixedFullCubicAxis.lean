@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticMixedCubicLiftWindow
+import research_corpus.Erdos1041.SexticMixedCubicLiftWindow
 import Mathlib.Tactic
 
 /-!

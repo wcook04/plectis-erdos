@@ -64,8 +64,7 @@ every ray direction.  PART 7 verifies that at the ACTUAL hubs ``e^{i pi (2k+1)/(
 at each failure direction of PART 4, exactly one of the five ``n = 6`` hubs passes
 both hypotheses, and it is never the hub the earlier parts fixed.
 
-Reproduce:  ./repo-python source-provenance://private-authoring-project/ErdosProblems/\
-Erdos1041/scripts/check_erdos1041_ray_direction_scope.py
+Reproduce:  python3 research_corpus/Erdos1041/scripts/check_erdos1041_ray_direction_scope.py
 """
 
 from __future__ import annotations

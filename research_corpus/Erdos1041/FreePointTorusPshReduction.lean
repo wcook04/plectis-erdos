@@ -24,7 +24,7 @@ theorem rpow_le_tangent_at_one {y q : ℝ} (hy : 0 ≤ y)
     y ^ q ≤ q * y + (1 - q) := by
   have hs : -1 ≤ y - 1 := by linarith
   have h : (1 + (y - 1)) ^ q ≤ 1 + q * (y - 1) :=
-    Real.rpow_one_add_le_one_add_mul_self hs hq0 hq1
+    rpow_one_add_le_one_add_mul_self hs hq0 hq1
   have hbase : 1 + (y - 1) = y := by ring
   rw [hbase] at h
   calc
@@ -42,7 +42,8 @@ theorem sum_rpow_le_card_of_sum_le_card {ι : Type*} [Fintype ι]
     ∑ i, y i ^ q ≤ ∑ i, (q * y i + (1 - q)) := by
       exact Finset.sum_le_sum fun i _ => rpow_le_tangent_at_one (hy i) hq0 hq1
     _ = q * (∑ i, y i) + (Fintype.card ι : ℝ) * (1 - q) := by
-      simp [Finset.mul_sum]
+      rw [Finset.sum_add_distrib, Finset.mul_sum, Finset.sum_const, Finset.card_univ,
+        nsmul_eq_mul]
     _ ≤ q * (Fintype.card ι : ℝ) +
           (Fintype.card ι : ℝ) * (1 - q) := by
       gcongr

@@ -71,4 +71,3 @@ print(f"  x={x}, epsilon={epsilon}")
 print("  all five simple critical values have real part epsilon < 0")
 print("  component passport: 6 sheets - 5 ramification = 1 negative component")
 print(f"  rational block-speed lower bound={lower} = 6 + {lower - 6}")
-

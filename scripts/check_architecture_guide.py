@@ -20,6 +20,7 @@ PAPER_README = ROOT / "paper" / "README.md"
 SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
 SYSTEMS_PDF = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf"
 PUBLICATION_CONTRACT = ROOT / "docs" / "publication_contract.json"
+CLAIMS = ROOT / "docs" / "claims.json"
 MAX_GUIDE_BYTES = 18_000
 # Keep the architecture paper bounded without accumulating one-off magic-number
 # raises.  Its legitimate explanatory load grows with the canonical publication
@@ -121,9 +122,7 @@ SECTION_ORDER = (
 
 REQUIRED_ANCHOR_GROUPS = {
     "purpose_and_boundary": (
-        "eight unsolved problems in mathematics",
-        "All eight mathematical problems remain open",
-        "does not claim a solution to any of them",
+        "eight mathematical problem programmes",
         "self-contained public release",
     ),
     "three_decisions": (
@@ -371,6 +370,13 @@ def validate_claim_scope(text: str, claims: dict) -> None:
         f"architecture claim scope differs from docs/claims.json: "
         f"stated={sorted(stated)}, registered={sorted(registered)}"
     ))
+def external_status_boundary() -> str:
+    claims = json.loads(safe_architecture_text(CLAIMS))
+    packet = claims.get("external_verification_packet", {})
+    boundary = packet.get("boundary")
+    require(isinstance(boundary, str) and boundary.strip(),
+            "docs/claims.json lacks the external verification status boundary")
+    return normalise(boundary)
 
 
 def validate_guide(text: str) -> None:
@@ -387,6 +393,8 @@ def validate_guide(text: str) -> None:
     validate_claim_scope(text, json.loads(safe_architecture_text(ROOT / "docs/claims.json")))
 
     compact = normalise_tex(text)
+    require(external_status_boundary().casefold() in compact.casefold(),
+            "architecture guide lost the authority-owned status boundary")
     for group_id, anchors in REQUIRED_ANCHOR_GROUPS.items():
         for anchor in anchors:
             require(normalise(anchor).casefold() in compact.casefold(), (
@@ -477,6 +485,11 @@ def validate_entry_links(
 ) -> None:
     readme_first_impression = (
         readme.encode("utf-8")[:6_000].decode("utf-8", errors="ignore")
+    )
+    require(
+        external_status_boundary().casefold()
+        in normalise(readme_first_impression).casefold(),
+        "README first impression lost the authority-owned status boundary",
     )
     require("](docs/ARCHITECTURE.md)" in readme,
             "README lost the architecture guide entry link")

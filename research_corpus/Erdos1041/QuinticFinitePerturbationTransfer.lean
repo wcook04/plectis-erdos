@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.QuinticRadialDominantCone
+import research_corpus.Erdos1041.QuinticRadialDominantCone
 import Mathlib.Tactic
 
 /-!

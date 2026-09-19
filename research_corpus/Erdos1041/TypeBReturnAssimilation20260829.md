@@ -131,5 +131,5 @@ first-merge lane.
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_exterior_root_product_covering.py
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_mean_shift_graft_search.py
-lake env lean research_corpus/Erdos1041/ExteriorRootProductCovering.lean
+./lake env lean research_corpus/Erdos1041/ExteriorRootProductCovering.lean
 ```

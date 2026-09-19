@@ -30,7 +30,7 @@ front door in ordinary language; agent surfaces may remain command-heavy.
 
 A blank-slate agent must receive the complete problem fleet here; it must not
 already know a query command or infer the fleet from directory names.
-**All eight indexed problems remain open.**
+**The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.**
 
 Each entry states the mathematical target, then the checked frontier and live
 obstruction, then the standalone paper.
@@ -81,11 +81,11 @@ support and some supports with divergent reciprocal sum. For finite nonempty
 prime set \(P\), let \(h(a)\) be the largest \(P\)-supported divisor of \(a\).
 If \(\sum_{a\in A}h(a)/(a(b^{h(a)}-1))<\infty\), then
 \(\sum_{a\in A}1/(b^a-1)\) is irrational for that integer base \(b\ge2\).
-The long paper supplies the full ordinary proof; it is not formalised.
-An ordinary common-witness proof also combines a base-two weighted host
-with a positive divisor-cover host: every infinite subseries on their union
-is irrational at every integer base. The proposed separation hosts remain
-unassessed.
+The full theorem, including the hereditary all-base clause from the base-two
+hypothesis, is formalised in Lean.  Lean also checks the common-witness theorem
+combining a base-two weighted host with a positive divisor-cover host: every
+infinite subseries on their union is irrational at every integer base.  The
+proposed separation hosts remain unassessed.
 Lean separately checks full support, finite-period noncollapse, named structured families,
 hereditary unique coding, and the compactness, topology, perfectness, and exact
 measure dichotomy of restricted achievement sets. Prime support at base 2 and
@@ -539,27 +539,17 @@ Run the untargeted two-root command only at the integration or release
 boundary. A focused PASS authorizes the edited source scope; it is not a full
 project integration receipt.
 
-The wrapper is the public concurrency boundary. Equivalent clean clones share
-one content-keyed validation future in the repository-scoped host cache.
-A different Lean target returns deferred exit 75 immediately while one
-`lean-host` owner is active, rather than silently queueing another detached
-build; retrying after the owner finishes launches the deferred target. That heavy-owner lock is above
-the repository slug, allowing cooperating public and authoring checkouts to
-share identical work without sharing mutable build trees. The detached owner
-continues if an attached caller exits; externally killed Lean children automatically resume
-from partial output for up to three attempts, with exhaustion classified as
-deferred exit 75 rather than a theorem failure. Completed output is bounded,
-and terminal state is cleaned automatically. Same-lock cold clones receive independent
-copy-on-write `.lake/packages` trees from a host seed when the filesystem
-supports it; mutable cache directories are never symlinked. Set
-`VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
-explicitly isolated cache is required. None of this cache state is proof
-authority: the terminal receipt preserves the underlying Lake exit code.
-`python3 scripts/validation_singleflight.py status --key <key>` prints a
-bounded operational card; add `--full` only when the complete hashed source
-manifest is needed.
-The clone-local operational guide is
-[skills/lean-concurrent-validation/SKILL.md](../../skills/lean-concurrent-validation/SKILL.md).
+The wrapper coordinates Lean builds across cooperating clones using a
+content-keyed host cache. Matching inputs reuse one validation; a different
+active build defers immediately with exit 75. A focused pass covers its named
+targets, not the whole project. Cached operational state never replaces the
+underlying Lake exit code or source-bound evidence.
+
+Use [the concurrent validation workflow](../../skills/lean-concurrent-validation/SKILL.md)
+for cache admission, resource ownership, interruption recovery and diagnostics.
+`python3 scripts/validation_singleflight.py status --key <key>` returns a
+bounded card; `--full` includes the hashed source manifest. Advance independent
+work while a build runs, and resume deferred work when its owner finishes.
 
 For agent-entry, skill-catalog, generated-projection, contribution-flow, or
 other clean-clone infrastructure repairs, load
@@ -590,37 +580,14 @@ After declaration lines move, rebuild the declaration atlas and run
 `python3 scripts/refresh_source_coordinates.py`; it changes coordinates only,
 never declaration names or mathematical prose.
 
-A separate diagnostic checks that a cold clone stays readable:
+For a quick readability check, run
+`python3 scripts/check_cold_clone_comprehension.py --quick`. It checks compact
+human and agent projections without elaborating Lean. The full cold-clone
+journey and adversarial fixtures already run in the release gate; rerun the
+named failing component when diagnosing a failure.
 
-```sh
-python3 scripts/test_proof_cockpit.py
-python3 scripts/agent_entry.py --entry "<task>"
-python3 scripts/agent_entry.py --skills
-python3 scripts/agent_skill_catalog.py --check
-python3 scripts/test_agent_entry.py
-python3 scripts/test_clone_skills.py
-python3 scripts/test_contribution_entry.py
-python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/check_architecture_guide.py
-python3 scripts/test_architecture_guide.py
-python3 scripts/check_cold_clone_comprehension.py
-python3 scripts/test_cold_clone_comprehension.py
-```
-
-The `--quick` path checks the committed compact human and agent projections
-without a Lean build or typed-query sweep, so a fresh clone gets an immediate
-readability receipt. Semantic-corpus freshness is proved from the tracked
-content-addressed receipt in `docs/semantic_corpus_check.json`; the receipt is
-accepted only while the exact builder inputs, generated corpus, and projected
-census surfaces retain their recorded digests. Run
-`python3 scripts/build_semantic_corpus.py --check --full-check` to bypass that
-fast path and rebuild the projection in memory. The full diagnostic proves the first-contact boundary
-through the same bounded public query packets a cold coding agent would follow;
-it does not concatenate the claim registry, methodology, or declaration atlas
-as evidence. Both check navigation semantics and response budgets, not Lean
-proof correctness, and the full diagnostic runs in the release gate. A failure
-means a projection, route, or typed handle dropped a distinction and should be
-repaired.
-The companion adversarial test removes human semantic anchors and mutates proof
-authority, open-boundary, finite-bound, source-coordinate, and graph-link
-facts; every mutation must make the evaluator fail.
+Semantic freshness uses `docs/semantic_corpus_check.json` only while the
+builder inputs, generated corpus and projected census retain their recorded
+digests. `python3 scripts/build_semantic_corpus.py --check --full-check`
+bypasses that cache and rebuilds in memory. These checks establish navigation
+and projection consistency, not proof correctness.

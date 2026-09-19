@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
+import research_corpus.Erdos1041.CyclicTrinomialFiberCase
 import Mathlib.Tactic
 
 /-!

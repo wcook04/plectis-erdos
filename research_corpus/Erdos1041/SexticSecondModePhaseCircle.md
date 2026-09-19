@@ -118,4 +118,3 @@ first and cubic modes.  The canonical null-box atlas already handles the only
 known double-contact degeneration; the next task is to overlap its cells with
 strict phase-circle arcs and then perform the origin-anchored remainder
 transfer.
-

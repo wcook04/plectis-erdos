@@ -1,6 +1,7 @@
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
 import ErdosProblems.Erdos68.FactorialChannelCertificate
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
+import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
 import Mathlib.Algebra.GCDMonoid.FinsetLemmas
 import Mathlib.Data.Nat.GCD.BigOperators
 import Mathlib.Data.Nat.Factorization.Basic
