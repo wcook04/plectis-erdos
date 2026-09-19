@@ -13,23 +13,23 @@
     },
     "erdos_1041_note": {
       "inputs": {
-        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:c945263aa1fae707f2713ad337567146a3b15f0b2f8a32cf348f9df662ae3ed7",
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:445fca3fff9aa43172949446c904f7a14b19ee7e8c928924b31a1c2173cde400",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:562e91ff27ee9f0eb9e784350f914b565f0786cae2c63a097bf6edcf4b75ed87",
+      "rendered_content_digest": "sha256:96898330016c6d569407e78925468d8bb1ed9c7683998cc9cd46a7ba6a5dd7a0",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     "erdos_1041_reasoning_record": {
       "inputs": {
-        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:5e90870b787f7c1df74ca995e3c09a2909c09f53c57fea7d13cd7b92f1d07caf",
+        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:eba55d828cca9f8a3d010b063d5e9ee853bf286dc249ba3da3a6347e2a149cff",
+      "rendered_content_digest": "sha256:1a66a6e7a70302c368112f3c6580806411822de0fb890a2d670ce3f6bca1d5bf",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
