@@ -52,10 +52,10 @@ check: all
 
 # The public reasoning manuscripts are flat generated projections. Their
 # authored parts remain small enough for focused mathematical review.
-erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEMBLER)
+249/erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 249
 
-erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
+257/erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 257
 
 # Short and long problem papers share the preamble.
@@ -80,20 +80,20 @@ clean:
 	rm -f $(PAPERS:%=%.pdf) $(PAPERS:%=%.aux) $(PAPERS:%=%.log) \
 	  $(PAPERS:%=%.out) $(PAPERS:%=%.toc)
 
-erdos1041-lemniscate-reasoning-surface.tex: $(wildcard reasoning-parts/erdos1041/*.tex) $(REASONING_ASSEMBLER)
+1041/erdos1041-lemniscate-reasoning-surface.tex: $(wildcard reasoning-parts/erdos1041/*.tex) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 1041
 
-erdos1049-rational-base-lambert-reasoning-surface.tex: $(wildcard reasoning-parts/erdos1049/*.tex) $(REASONING_ASSEMBLER)
+1049/erdos1049-rational-base-lambert-reasoning-surface.tex: $(wildcard reasoning-parts/erdos1049/*.tex) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 1049
 
-erdos68-factorial-reasoning-surface.tex: $(wildcard reasoning-parts/erdos68/*.tex) $(REASONING_ASSEMBLER)
+68/erdos68-factorial-reasoning-surface.tex: $(wildcard reasoning-parts/erdos68/*.tex) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 68
 
-erdos243-reciprocal-tail-reasoning-surface.tex: $(wildcard reasoning-parts/erdos243/*.tex) $(REASONING_ASSEMBLER)
+243/erdos243-reciprocal-tail-reasoning-surface.tex: $(wildcard reasoning-parts/erdos243/*.tex) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 243
 
-erdos251-prime-gap-reasoning-surface.tex: $(wildcard reasoning-parts/erdos251/*.tex) $(REASONING_ASSEMBLER)
+251/erdos251-prime-gap-reasoning-surface.tex: $(wildcard reasoning-parts/erdos251/*.tex) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 251
 
-erdos269-running-lcm-reasoning-surface.tex: $(wildcard reasoning-parts/erdos269/*.tex) $(REASONING_ASSEMBLER)
+269/erdos269-running-lcm-reasoning-surface.tex: $(wildcard reasoning-parts/erdos269/*.tex) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 269
