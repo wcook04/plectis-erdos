@@ -8,20 +8,16 @@ import Erdos249257
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 
 /-!
-# The demand ledger
+# Preserved extracted antecedents
 
-Machine-extracted from the semantic-corpus snapshot used to build this file.
-Each recorded antecedent is the type of a named theorem hypothesis binder.
-Walking that snapshot with `forallTelescope` and retaining closed `Prop` binders
-produced the entries below; current semantic-corpus totals may be larger.
-
-`docs/semantic/frontier.json` currently records 52 open antecedents in prose.
-This checked-in ledger exposes 101 named closed `Prop`s, of which 23 are labelled
-substantial statements and the rest are side conditions. Nothing here is transcribed: each entry is `hypOf%`
-applied to the source theorem, so it is the kernel's own `Expr` or it fails to
-elaborate.
-
-Entries are ordered by statement size, substantial ones first.
+Each definition below is the type of a named theorem hypothesis binder,
+extracted by `hypOf%` from the kernel's `ConstantInfo`; it is not transcribed.
+The collection was produced from an earlier corpus snapshot and is retained so
+the checked relation theorems continue to compile. It is not a current census
+of the public corpus, and its authored `substantial`/`small` labels do not rank
+mathematical value. Current relation navigation is owned by
+`scripts/query_semantic.py`, while one-sketch equivalence testing is owned by
+`scripts/residual_evaluator.py`.
 -/
 
 namespace DemandLedger
