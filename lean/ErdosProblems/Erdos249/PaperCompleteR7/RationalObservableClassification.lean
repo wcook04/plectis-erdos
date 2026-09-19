@@ -15,7 +15,6 @@ confusing these conventions would give the wrong rational-value formula.
 The proof clears finitely many rational denominators, invokes the existing
 integer-observable theorem, and evaluates the eventually constant tail.
 No new CRT, Dirichlet, or isolated-pulse hypothesis is assumed.
-Build status: NOT RUN; all declarations below are complete proof candidates.
 -/
 
 namespace ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables
