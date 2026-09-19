@@ -1743,6 +1743,13 @@ def validate_route_memory_cards() -> None:
         assert row["problem"].isdigit(), row
         assert row["id"] in index_card, row["id"]
         assert open_proposition_packet(row["id"])["open_proposition"]["id"] == row["id"]
+        current_paper = row["current_problem_paper"]
+        assert current_paper and current_paper["resolution"] == "resolved", row
+        assert "archive" not in Path(current_paper["source"]).parts, row
+        assert f"current paper: {current_paper['source']}" in index_card
+        packet = open_proposition_packet(row["id"])
+        assert packet["current_problem_paper"] == current_paper
+        assert current_paper["source"] in query_corpus.render_card(packet)
     assert "not a ranking" in index_card
     json_view, json_format = query_corpus.query_args_packet(["--open", "--format", "json"])
     assert json_format == "json" and json_view == index_view
@@ -1750,6 +1757,13 @@ def validate_route_memory_cards() -> None:
         ["--open", "remaining_open.unbounded_certificate_supply"]
     )
     assert single_view["kind"] == "open_proposition"
+    # The exact old statement stays inspectable; it is no longer the only
+    # reading route for a live open question.
+    assert single_view["open_proposition"]["paper_anchor"]["source"].startswith("paper/archive/")
+    assert single_view["current_problem_paper"]["source"] == (
+        "paper/249/erdos-249-binary-totient-series.tex"
+    )
+    assert "archived statement anchor:" in index_card
 
     module_view = query_corpus.module_packet(
         "Erdos249257/CertificateKernel.lean", 20

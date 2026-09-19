@@ -3467,6 +3467,7 @@ def open_proposition_packet(open_id: str) -> dict[str, Any]:
         "linked_claims": linked_claims,
         "advancing_claims": advancing_claims,
         "paper_anchor": paper_anchor,
+        "current_problem_paper": open_proposition_current_paper(proposition),
         "route_memory": route_memory,
         "follow": "python3 scripts/query_corpus.py --claim <claim_id>",
         "source": "docs/claims.json::remaining_open_propositions",
@@ -3481,6 +3482,27 @@ def open_proposition_problem(proposition: dict[str, Any]) -> str:
     """Read the problem number from the open target claim id."""
     match = re.search(r"\d+", proposition["open_target_claim"])
     return match.group(0) if match else "other"
+
+
+def open_proposition_current_paper(proposition: dict[str, Any]) -> dict[str, Any] | None:
+    """Use the problem index for reading; retain exact older anchors as provenance."""
+    problem = open_proposition_problem(proposition)
+    row = next((row for row in load("docs/problems.json")["problems"]
+                if str(row["erdos_number"]) == problem), None)
+    paper = (row or {}).get("paper") or {}
+    source = paper.get("source")
+    if paper.get("resolution") != "resolved" or not isinstance(source, str):
+        return None
+    path = Path(source)
+    if path.is_absolute() or ".." in path.parts or "archive" in path.parts:
+        return None
+    if not (ROOT / path).is_file():
+        return None
+    return {
+        **paper,
+        "authority_posture": "current_reading_route_not_exact_statement_or_proof_identity",
+        "owner": "docs/problems.json::problems.paper",
+    }
 
 
 def open_proposition_index_packet() -> dict[str, Any]:
@@ -3504,6 +3526,7 @@ def open_proposition_index_packet() -> dict[str, Any]:
                 "problem": open_proposition_problem(proposition),
                 "statement": proposition["statement"],
                 "open_target_claim": proposition["open_target_claim"],
+                "current_problem_paper": open_proposition_current_paper(proposition),
                 "paper_anchor": (
                     {
                         "source": anchor.get("source"),
@@ -10904,7 +10927,10 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| linked_claims={len(packet['linked_claims'])} "
             f"| advancing_claims={len(packet['advancing_claims'])}"
         )
-        return _append_route_memory_resumes(card, packet.get("route_memory"))
+        card = _append_route_memory_resumes(card, packet.get("route_memory"))
+        if paper := packet.get("current_problem_paper"):
+            card += f" | current paper={paper['source']}"
+        return card
     if kind == "open_proposition_index":
         rows = [
             f"open propositions | {packet['count']} across "
@@ -10923,9 +10949,13 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"{row['advancing_claim_count']}"
             )
             rows.append(f"    {statement}")
+            paper = row.get("current_problem_paper")
+            if paper:
+                rows.append(f"    current paper: {paper['source']}")
             anchor = row["paper_anchor"]
             if anchor and anchor.get("source"):
-                rows.append(f"    paper: {anchor['source']}:{anchor.get('line')}")
+                role = "archived statement anchor" if "archive" in Path(anchor['source']).parts else "statement anchor"
+                rows.append(f"    {role}: {anchor['source']}:{anchor.get('line')}")
         rows.append(f"next: {packet['follow']}")
         return "\n".join(rows)
     if kind == "route_index":
