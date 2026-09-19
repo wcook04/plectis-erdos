@@ -122,7 +122,6 @@ SECTION_ORDER = (
 REQUIRED_ANCHOR_GROUPS = {
     "purpose_and_boundary": (
         "eight unsolved problems in mathematics",
-        "reviewed claim registry covers #249 and #257",
         "All eight mathematical problems remain open",
         "does not claim a solution to any of them",
         "self-contained public release",
@@ -138,6 +137,10 @@ REQUIRED_ANCHOR_GROUPS = {
         "docs/methodology.json",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
+        "verification/comparator.json",
+        "PALOMAR_POLICY_RECONCILIATION.json",
+        "--route comparator_assurance",
+        "--route palomar_qualification",
     ),
     "worked_example": (
         "certified_kill_instances",
@@ -167,6 +170,9 @@ REQUIRED_PATHS = (
     "docs/methodology.json",
     "docs/publication_contract.json",
     "docs/publication_evidence.json",
+    "verification/comparator.json",
+    "docs/verification/PALOMAR_QUALIFICATION.md",
+    "docs/PALOMAR_POLICY_RECONCILIATION.json",
     "docs/ORIENTATION.md",
     "docs/SOURCE_MAP.md",
     "scripts/check_release.py",
@@ -351,6 +357,22 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def validate_claim_scope(text: str, claims: dict) -> None:
+    """Compare the guide's scope with registry identities, not a frozen slogan."""
+    registered = {
+        int(match.group(1))
+        for problem_id in claims.get("external_verification_packet", {}).get("problem_ids", [])
+        if (match := re.fullmatch(r"erdos_(\d+)", str(problem_id)))
+    }
+    scope = re.search(r"reviewed claim registry covers ([^.]+)\.", normalise(text))
+    require(scope is not None, "architecture guide must state its reviewed claim scope")
+    stated = {int(number) for number in re.findall(r"#(\d+)", scope.group(1))}
+    require(bool(registered) and stated == registered, (
+        f"architecture claim scope differs from docs/claims.json: "
+        f"stated={sorted(stated)}, registered={sorted(registered)}"
+    ))
+
+
 def validate_guide(text: str) -> None:
     size = len(text.encode("utf-8"))
     require(size <= MAX_GUIDE_BYTES, (
@@ -362,6 +384,7 @@ def validate_guide(text: str) -> None:
         f"architecture guide lost section sequence {SECTION_ORDER}"
     ))
     require(positions == sorted(positions), "architecture guide sections are out of order")
+    validate_claim_scope(text, json.loads(safe_architecture_text(ROOT / "docs/claims.json")))
 
     compact = normalise_tex(text)
     for group_id, anchors in REQUIRED_ANCHOR_GROUPS.items():

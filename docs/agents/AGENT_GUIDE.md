@@ -310,14 +310,14 @@ Lean build when a result must be checked.
    paper that writes the problem up, and the Comparator disposition of every
    contribution family. The last two are joins into `docs/papers/corpus.json`
    and the review matrix in `docs/claims.json`; a disposition says whether
-   Comparator was asked to check that family, not whether it is true. The #249
-   and #257 rows index expansion modules and do not replace the separately
-   reviewed `Erdos249257` claim registry.
+   Comparator was asked to check that family, not whether it is true. The
+   claim registry covers all eight problems across both Lean roots; the
+   problem index does not replace its per-claim evidence and status.
    Its authored source is `docs/problem_index_source.json` and it is rebuilt by
-   `python3 scripts/build_problem_index.py`. **These declarations carry no
-   reviewed public claim status.** The claim registry has no row for them, and
-   a passing kernel check of `ErdosProblems.lean` does not create one; do not
-   report a problem as advanced because its module count grew.
+   `python3 scripts/build_problem_index.py`. **A declaration's public claim
+   status must be read from its registry row.** A declaration without a row
+   gains no reviewed status from a passing kernel check of
+   `ErdosProblems.lean`; do not report progress because a module count grew.
 11. Use `docs/declaration_atlas.json` when you need the exhaustive mathematical
    scale: every declaration, signature excerpt, module, import edge, generated
    certificate marker, and principal-claim link. It is a generated navigation
