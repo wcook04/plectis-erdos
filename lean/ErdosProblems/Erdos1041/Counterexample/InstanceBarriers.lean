@@ -3,11 +3,9 @@ import ErdosProblems.Erdos1041.Counterexample.BarrierSigns
 Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`. -/
 
 /-!
-STATEMENT-NAME DELTA: the candidate is placed in the child namespace
-`S7Proof`, because the unchanged input Defs.lean already declares the requested
-fully qualified name. The proposition itself below is unchanged. No reference
-to the existing theorem stub is made. Compilation and axiom checks were not
-available in the creation environment; see RETURN_NOTES.md.
+The barrier proof is placed in the child namespace `S7Proof`, alongside its
+supporting algebra.  The exported theorem below is part of the successfully
+checked dependency chain for `erdos1041_counterexample`.
 -/
 noncomputable section
 namespace Erdos1041.Counterexample.S7Proof

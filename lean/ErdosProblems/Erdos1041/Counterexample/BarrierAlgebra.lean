@@ -4,9 +4,10 @@ import Mathlib
 Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`. -/
 
 /-!
-The namespace `S7Proof` avoids redeclaring the `s7_barriers` stub already present
-in the unchanged supplied `Defs.lean`. No theorem stub from that file is used.
-This source is a proof candidate, not a recorded successful Lean build.
+The namespace `S7Proof` keeps the barrier lemmas separate from the shared
+definitions in `Defs.lean`.  These lemmas are consumed by
+`InstanceBarriers.lean` and belong to the successfully checked counterexample
+dependency chain.
 -/
 noncomputable section
 

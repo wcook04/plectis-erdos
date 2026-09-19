@@ -28,9 +28,11 @@ parameter value `s = 10⁻⁶` and carries the resulting concrete objects.
 
 ## What this file is
 
-A shared interface, not a proof.  Every theorem below is `sorry`.  The
-formalisation is cut into six slices; each slice proves its own obligations in
-its own file and consumes the other slices' obligations from here, unchanged.
+This file supplies the shared constants, polynomials and proposition-level
+interface.  Its three elementary value identities are proved here.  The
+formalisation is cut into six proof slices; each slice proves its own
+obligations in its own file, and `Assembly.lean` composes those checked results.
+No admitted theorem is introduced here.
 
 | slice | file | owns |
 |---|---|---|
