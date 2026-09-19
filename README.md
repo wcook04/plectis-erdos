@@ -1,19 +1,24 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: research on eight open Erdős problems
+# Plectis: research on eight Erdős problem programmes
 
 Plectis is an open-source, AI-assisted research project. This repository contains
-the papers, Lean proofs, computations, failed approaches, and questions
-that remain, so another researcher can inspect the work and continue from it.
-**All eight problems remain open.**
+the papers, Lean proofs, computations, failed approaches, and remaining
+questions, so another researcher can inspect the work and continue from it.
+**The degree-seven example refutes the total-variation formulation of
+Erdős #1041. The other seven target problems are not resolved here. Independent
+human review of correspondence with the historical curve-length formulation
+has not been recorded. Comparator checks only its selected exact statements,
+configured axioms and kernel acceptance; it does not assess novelty or
+historical correspondence.**
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
 [Contact me](https://wcook04.github.io/plectis/#contact)
 
-![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
+![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
 ## Where to start
 

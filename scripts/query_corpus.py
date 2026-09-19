@@ -11154,9 +11154,9 @@ def render_card(packet: dict[str, Any]) -> str:
                 "run Lean."
             ),
             (
-                f"Indexed problems: {problem_ids}. "
-                f"{scale['indexed_open_problem_count']} of "
-                f"{scale['indexed_problem_count']} remain open."
+                f"Indexed problems: {problem_ids}. Historical programme targets "
+                f"marked open: {scale['indexed_open_problem_count']} of "
+                f"{scale['indexed_problem_count']}."
             ),
             (
                 f"For another problem, replace {lead['problem']} in the result "

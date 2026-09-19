@@ -850,7 +850,7 @@ def validate_agent_tour() -> None:
         "--tour --format json",
     ):
         assert f"{command} {arguments}" in card.stdout
-    assert "8 of 8 remain open." in card.stdout
+    assert "Historical programme targets marked open: 8 of 8." in card.stdout
     assert "does not run Lean" in card.stdout
     assert run("--tour").stdout == card.stdout
     source = query("--declaration", lead["source_declaration"])["matches"][0]
@@ -893,7 +893,7 @@ def validate_agent_tour_card_lead() -> None:
     assert "Source theorem: python3 scripts/query_corpus.py --declaration Example.source_theorem" in card
     assert "--connections Example.source_theorem" in card
     assert "--route erdos_249" in card
-    assert "Indexed problems: #249, #257. 1 of 2 remain open." in card
+    assert "Indexed problems: #249, #257. Historical programme targets marked open: 1 of 2." in card
     assert "Example.Comparator.wrapper" not in card
     assert "completed_direct_result" not in card
     assert "formalisation of an existing theorem" not in card
@@ -2036,9 +2036,8 @@ def validate_claim_status_packets() -> None:
         if status == "open":
             # Derived from the claim registry, not listed here. This assertion
             # used to name erdos_249 and universal_257 by hand, from when those
-            # were the whole corpus; it has been eight problems for a while and
-            # every one of them is open, but the assertion sat behind earlier
-            # failures and never ran to notice.
+            # were the whole corpus; the assertion sat behind earlier failures
+            # and never ran to notice.
             registry_open = {
                 row["id"]
                 for row in claims_document["claims"]
@@ -2046,8 +2045,7 @@ def validate_claim_status_packets() -> None:
             }
             assert len(registry_open) >= 2, (
                 "the claim registry reports fewer than two open claims, which "
-                "would make this check vacuous; the repository states that all "
-                "eight Erdős problems remain open"
+                "would make this check vacuous for the registry's open-status packet"
             )
             assert {row["id"] for row in packet["claims"]} == registry_open, (
                 "the open-status packet disagrees with docs/claims.json: "

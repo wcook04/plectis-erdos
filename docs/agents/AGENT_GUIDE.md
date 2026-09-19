@@ -30,7 +30,7 @@ front door in ordinary language; agent surfaces may remain command-heavy.
 
 A blank-slate agent must receive the complete problem fleet here; it must not
 already know a query command or infer the fleet from directory names.
-**All eight indexed problems remain open.**
+**The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.**
 
 Each entry states the mathematical target, then the checked frontier and live
 obstruction, then the standalone paper.

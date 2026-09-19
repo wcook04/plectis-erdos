@@ -1723,7 +1723,7 @@ def main(argv: list[str] | None = None) -> int:
             check(
                 all(claim_index[target_id]["status"] == "open"
                     for target_id in target_ids if target_id in claim_index),
-                f"programme route {route.get('id')!r} target claims must remain open",
+                f"programme route {route.get('id')!r} target claims must carry canonical status=open",
             )
             check(not (core_ids - claim_id_set),
                   f"programme route {route.get('id')!r} has unknown core claims: "
