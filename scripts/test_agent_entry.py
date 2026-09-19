@@ -81,6 +81,15 @@ ROUTE_CASES = {
         "mine-open-problem",
     ),
     "report theorem status and what remains open": ("mathematical_status", "explain-public-system"),
+    # Observed in a cold outsider trial, 19 September 2026: each of these used
+    # to return the "<goal>" placeholder instead of a list of open questions.
+    "find an open problem I can attack": ("choose_open_question", "mine-open-problem"),
+    "what is the most promising unsolved lemma I could prove": (
+        "choose_open_question",
+        "mine-open-problem",
+    ),
+    "where can I help": ("choose_open_question", "mine-open-problem"),
+    "what should I work on": ("choose_open_question", "mine-open-problem"),
     "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
     "find a proof in Lean": ("bounded_research", "mine-open-problem"),
     "prove this Lean theorem": ("bounded_research", "mine-open-problem"),

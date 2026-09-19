@@ -56,6 +56,7 @@ Start with one of these bounded tasks:
 
 | Task to give your agent | Useful result |
 |---|---|
+| Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
 | Explain how this repo works to a newcomer | A source-linked map and one relevant next action |
 | Independently reproduce the checked claim `eb_full_support` | Verifier output, checkout commit, assumptions and remaining open boundary |
 | Improve cold clone navigation | One reproduced failure, a focused repair and the corresponding regression check |

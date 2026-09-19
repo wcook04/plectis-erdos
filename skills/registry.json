@@ -263,6 +263,60 @@
       "boundary": "Reconstruct the requested public candidate universe, compare logical reach and exact evidence, distinguish useful reductions from reformulations, then propagate a source-pinned selection without claiming a fresh proof replay."
     },
     {
+      "id": "choose_open_question",
+      "title": "Choose an open question to work on",
+      "task_cues": [
+        "what should i work on",
+        "what can i work on",
+        "what to work on",
+        "something to work on",
+        "where can i help",
+        "how can i help",
+        "open questions",
+        "open propositions",
+        "what is open",
+        "what remains open",
+        "pick a problem",
+        "choose a problem",
+        "choose a question",
+        "find an open problem",
+        "find me an open problem",
+        "easiest open problem",
+        "most promising",
+        "unsolved lemma",
+        "make progress on something"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "choose",
+            "pick",
+            "recommend",
+            "suggest"
+          ],
+          "objects": [
+            "frontier",
+            "lemma",
+            "problem",
+            "question",
+            "target",
+            "task"
+          ]
+        }
+      ],
+      "skills": [
+        "mine-open-problem"
+      ],
+      "read": [
+        "docs/FRONTIER_RELAY.md"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --open",
+        "python3 scripts/query_corpus.py --open <id>"
+      ],
+      "boundary": "The list is a menu of authored open statements, not a ranking. Choose one row, open its packet, and keep its exact boundary: settling a sub-question settles only what its statement says."
+    },
+    {
       "id": "bounded_research",
       "title": "Attack one bounded open frontier",
       "task_cues": [
@@ -290,6 +344,7 @@
         "skills/mine-open-problem/SKILL.md"
       ],
       "commands": [
+        "python3 scripts/query_corpus.py --open",
         "python3 scripts/query_corpus.py --goal-support \"<goal>\"",
         "python3 scripts/query_corpus.py --proof-plan \"<goal>\" --depth 4"
       ],

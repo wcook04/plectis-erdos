@@ -14,6 +14,27 @@ does not require Plectis's private system, a hosted service, a new account or a
 particular model provider. Owner-authorised model use and optional Lean builds
 have their own costs and dependencies.
 
+## Pick a question first
+
+If you already have a clone, this lists every open question in the repository,
+grouped by problem, each with its statement and its place in the paper:
+
+```sh
+python3 scripts/query_corpus.py --open
+```
+
+Choose one row and open it. The packet names the checked results that bear on
+the question and the routes that have already been recorded for it:
+
+```sh
+python3 scripts/query_corpus.py --open <id>
+```
+
+The list is a menu in registry order. It does not rank the questions by
+difficulty or by value. Some rows are one of the eight original problems; the
+others are narrower questions whose answer settles only what the row says.
+The rest of this guide covers packaging, the pinned wrapper, and the return.
+
 ## Start from a reviewed checkout
 
 The portable wrapper lives at
@@ -107,6 +128,7 @@ invitation to relabel an equivalence or finite certificate as a solution.
 
 ```sh
 cd "$RESEARCH_DIR"
+python3 scripts/query_corpus.py --open
 python3 scripts/query_corpus.py --route erdos249_certificate_story
 # Alternative, not an instruction to attempt both:
 python3 scripts/query_corpus.py --route erdos257_half_story

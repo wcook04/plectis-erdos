@@ -1728,6 +1728,29 @@ def validate_route_memory_cards() -> None:
         "arithmetic_obstruction_interfaces"
     ) in open_card
 
+    # Bare --open is the answer to "what can I work on?": it must list every
+    # registered open proposition exactly once, and each row must resolve.
+    registered_open = load("docs/claims.json")["remaining_open_propositions"]
+    index_view, index_format = query_corpus.query_args_packet(["--open"])
+    assert index_format == "card", index_format
+    assert index_view["kind"] == "open_proposition_index"
+    assert index_view["count"] == len(registered_open)
+    assert sorted(row["id"] for row in index_view["open_propositions"]) == sorted(
+        row["id"] for row in registered_open
+    )
+    index_card = query_corpus.render_card(index_view)
+    for row in index_view["open_propositions"]:
+        assert row["problem"].isdigit(), row
+        assert row["id"] in index_card, row["id"]
+        assert open_proposition_packet(row["id"])["open_proposition"]["id"] == row["id"]
+    assert "not a ranking" in index_card
+    json_view, json_format = query_corpus.query_args_packet(["--open", "--format", "json"])
+    assert json_format == "json" and json_view == index_view
+    single_view, _ = query_corpus.query_args_packet(
+        ["--open", "remaining_open.unbounded_certificate_supply"]
+    )
+    assert single_view["kind"] == "open_proposition"
+
     module_view = query_corpus.module_packet(
         "Erdos249257/CertificateKernel.lean", 20
     )
