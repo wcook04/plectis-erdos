@@ -5,7 +5,7 @@ import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
 /-!
 # The canonical weighted-record equivalence
 
-Complete uncompiled candidates for both occurrences of `res:weightedrecord`.
+Formal targets for both occurrences of `res:weightedrecord`.
 The rational value is supplied as `HasSum ... (p/q)`, exactly as in the
 repaired r7 canonical-state theorem. All tail integrality and small-error
 facts come from that theorem; none are additional hypotheses here.

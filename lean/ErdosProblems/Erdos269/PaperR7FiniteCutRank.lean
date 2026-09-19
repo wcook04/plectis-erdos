@@ -11,8 +11,8 @@ except for the two extreme columns, removes exactly that redundancy, and states
 the result using `Matrix.rank`. Repetitions and permutations of columns are
 handled by a column-range equality, not an extra independence assumption.
 
-Validation: authored against Lean 4.29.1 / the packet's Mathlib pin; NOT compiled
-in this return. No admitted statements or additional axioms are introduced.
+Authored against Lean 4.29.1 and the packet's Mathlib pin.
+No admitted statements or additional axioms are introduced.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

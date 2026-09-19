@@ -4,7 +4,7 @@ import Mathlib
 # Elementary signed bounds used by the round-8 candidates
 
 These constructor proofs avoid depending on the explicit/implicit argument
-conventions of the core integer absolute-value lemmas. Uncompiled.
+conventions of the core integer absolute-value lemmas.
 -/
 namespace ErdosProblems.Erdos243.PaperCompleteR8
 

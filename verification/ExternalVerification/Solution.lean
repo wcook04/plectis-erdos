@@ -24,7 +24,7 @@ import Erdos249257.FirstHarmonicPivot
 import Erdos249257.TotientActualLcmOrbitSign
 import Erdos249257.ActualForeignResidueProjection
 import Erdos249257.TropicalCurvatureCarry
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery

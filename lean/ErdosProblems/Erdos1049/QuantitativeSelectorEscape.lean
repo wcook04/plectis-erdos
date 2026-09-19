@@ -3,7 +3,7 @@ import ErdosProblems.Erdos1049.AdelicHeightBridge
 /-!
 # Quantitative selector escape: finite certificate layer
 
-R5 candidate source. NOT compiled in the review environment.
+R5 source; build status belongs to source-bound validation receipts.
 This module uses the live packet's bounded-fibre theorem. It constructs
 neither source rows nor bins for their real remainders. The ordinary dossier
 constructs interval bins and states the source-dependent obligations.

@@ -4,7 +4,7 @@ import Mathlib.Analysis.SpecialFunctions.Log.Basic
 /-!
 # The quantitative canonical-tail lemma
 
-Uncompiled candidates for the whole long-record `res:tailratio`.
+Formal targets for the whole long-record `res:tailratio`.
 The O(1/a_n) conclusion has an explicit eventual constant 16.  The growth
 bound is first proved as an exact binary-power inequality, and then
 converted to the exponential notation of the paper.

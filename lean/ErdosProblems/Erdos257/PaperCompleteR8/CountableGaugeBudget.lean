@@ -2,8 +2,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.CountableCoverLogBudget
 import ErdosProblems.Erdos257.PaperCompleteR8.CoverScalarGauge
 import ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget
 
-/-! Full Psi-valued countable cover budget. Candidate authoring; Lean and
-axiom audit UNRUN. The finite subcover retains its original weights and
+/-! Full Psi-valued countable cover budget. Build and axiom-audit status belongs to validation receipts. The finite subcover retains its original weights and
 uses only their subprobability bound; no disjointness is imposed. -/
 noncomputable section
 namespace ErdosProblems.Erdos257.PaperCompleteR8

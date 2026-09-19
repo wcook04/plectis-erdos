@@ -4,7 +4,7 @@ import Mathlib
 /-!
 # The actual scalar cover gauge and its first exact branch
 
-New proof candidates, UNRUN. The infimum is over genuine admissible exponents.
+Proof source. The infimum is over genuine admissible exponents.
 This module proves nonnegativity, the e*log lower bound, and the exact branch
 Psi(t)=t for 1<=t<=4. The large-t exact branch is proved in analytic_proofs.md
 but is not asserted as a Lean theorem in this module.

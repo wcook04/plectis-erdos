@@ -10,7 +10,7 @@ putative ring homomorphism from `ℚ` to `ZMod B`. We first compute with units
 in an arbitrary commutative ring, then identify the result with that inverse.
 The row/column indices are chosen before either the modulus or layer.
 
-Validation: authored, not compiled. No admissions.
+Build status belongs to source-bound validation receipts. No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

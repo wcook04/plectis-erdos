@@ -6,7 +6,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.Real
 /-!
 # The analytic part of the weighted-record assembly
 
-Uncompiled round-8 candidates. No assumed divergence of sampled weights is
+Round-8 source. No assumed divergence of sampled weights is
 left in the paper-facing theorem. Its source is the displayed improper
 integral and antitonicity on `[1, infinity)`.
 

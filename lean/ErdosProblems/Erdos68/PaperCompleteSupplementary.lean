@@ -7,7 +7,7 @@ import ErdosProblems.Erdos68.PaperCompleteExisting
 The label res:translator in the SHORT note is the composite example U_9;
 res:translator in the LONG record is the different prime-pair theorem.
 Coverage keys are (source, label), not the bare label.
-STATUS: all newly assembled declarations below are uncompiled candidates.
+Build status belongs to source-bound validation receipts.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 

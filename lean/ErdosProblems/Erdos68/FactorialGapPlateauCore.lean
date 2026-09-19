@@ -314,7 +314,7 @@ rational grid integer.
 
 The hypothesis is divisibility `q ∣ n!`, not the cruder size bound `q ≤ n`.
 Only the divisibility is used, and it is strictly weaker: every `q ≤ n`
-divides `n!`, but so does every `n`-smooth `q` of any magnitude. -/
+divides `n!`, and some larger denominators do too (for example `12 ∣ 4!`). -/
 theorem strictFacTop_factorialGapPrefix_eq_cleared_rational_of_dvd
     {n q : ℕ} {a : ℤ}
     (hn : 2 ≤ n)

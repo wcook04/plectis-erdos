@@ -284,6 +284,27 @@ theorem gcd_factorial_sub_one_le_pow_gap
     _ ≤ n.descFactorial (n - m) := Nat.sub_le _ _
     _ ≤ n ^ (n - m) := Nat.descFactorial_le_pow _ _
 
+/-- Exact paper form of the factorial-gap gcd bound. -/
+theorem factorial_gap_gcd_exact
+    {m n : ℕ} (hm : 2 ≤ m) (hmn : m < n) :
+    let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
+    let Q := n.descFactorial (n - m)
+    g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m) := by
+  dsimp
+  have hkpos : 0 < n - m := Nat.sub_pos_of_lt hmn
+  have hk : n - m ≤ n := Nat.sub_le _ _
+  have hndvd : n ∣ n.descFactorial (n - m) :=
+    dvd_descFactorial_of_pos hkpos hk
+  have hnQ : n ≤ n.descFactorial (n - m) :=
+    Nat.le_of_dvd (Nat.descFactorial_pos.mpr hk) hndvd
+  have hQsubpos : 0 < n.descFactorial (n - m) - 1 := by
+    omega
+  have hdvd := gcd_factorial_sub_one_dvd_descFactorial_sub_one hmn
+  refine ⟨hdvd, Nat.le_of_dvd hQsubpos hdvd, ?_⟩
+  have hpow : n.descFactorial (n - m) ≤ n ^ (n - m) :=
+    Nat.descFactorial_le_pow _ _
+  omega
+
 /-! ## Consecutive factorial-gap segments -/
 
 /-- The `k` consecutive factorial gaps beginning at `m`. -/
@@ -1118,6 +1139,7 @@ theorem no_eventual_square_subsequence_three_halves_upper
 
 #print axioms list_prod_dvd_lcm_mul_pairwiseGCDProduct
 #print axioms gcd_factorial_sub_one_dvd_descFactorial_sub_one
+#print axioms factorial_gap_gcd_exact
 #print axioms pairDistanceExponent_eq_choose
 #print axioms factorialGapSegment_prod_le_channelLCM_mul_pow_choose
 #print axioms factorialGapSegment_base_pow_lt_radiusFactorial_mul_pow

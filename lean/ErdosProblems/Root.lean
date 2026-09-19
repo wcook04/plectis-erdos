@@ -1,3 +1,4 @@
+import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
@@ -17,6 +18,7 @@ import ErdosProblems.Erdos243.FeedbackRealizability
 import ErdosProblems.Erdos243.FiniteHorizonResidue
 import ErdosProblems.Erdos243.GlobalLcmHeight
 import ErdosProblems.Erdos243.LcmCriticalBoundary
+import ErdosProblems.Erdos243.PaperCompleteR11.GroupAPaperEndpointsAudit
 import ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass
 import ErdosProblems.Erdos243.PaperCompleteR8.GrowthDebtSummability
 import ErdosProblems.Erdos243.PrimitivePrefixRigidity
@@ -39,10 +41,13 @@ import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos251.ShiftedGapCountingR9
 import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
 import ErdosProblems.Erdos257.SquarefreeSupportIncidence
 import ErdosProblems.Erdos269.BoundedRadixTailEscape
 import ErdosProblems.Erdos269.CarryLiftExtinction
 import ErdosProblems.Erdos269.FiniteCutRank
+import ErdosProblems.Erdos269.PaperR14StatementAxiomAudit
 import ErdosProblems.Erdos269.PaperR7FiniteCutRank
 import ErdosProblems.Erdos269.PaperR7ModularMinors
 import ErdosProblems.Erdos269.ResidueEscape
@@ -70,6 +75,7 @@ import ErdosProblems.Erdos68.PrimeUnitTranslator
 import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import ErdosProblems.Erdos68.TailIdealCertificate
+import ErdosProblems.EightPaperGroupAAudit
 
 /-!
 # Problem-centric Erdős formalization root

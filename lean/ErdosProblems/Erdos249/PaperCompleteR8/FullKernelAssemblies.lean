@@ -21,7 +21,7 @@ Mathlib API (pinned source opened):
 * LinearAlgebra/LinearIndependent/Defs.lean: independence is injectivity
   of finite-support evaluation.
 
-New uncompiled source; not a kernel receipt.
+Build status belongs to source-bound validation receipts.
 -/
 
 namespace ErdosProblems.Erdos249.PaperCompleteR8

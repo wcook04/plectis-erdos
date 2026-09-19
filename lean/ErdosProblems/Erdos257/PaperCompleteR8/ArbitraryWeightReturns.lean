@@ -8,7 +8,7 @@ import ErdosProblems.Erdos257.PaperCompleteR7.TailGluing
 This proves the paper's arbitrary-weight remark. It does not attempt to
 re-enumerate an arbitrary probability sequence into geometric weights.
 The checked single-column potential and finite-prefix limits are reused.
-All builds and axiom audits are UNRUN.
+Build and axiom-audit status belongs to source-bound validation receipts.
 -/
 noncomputable section
 namespace ErdosProblems.Erdos257.PaperCompleteR8
