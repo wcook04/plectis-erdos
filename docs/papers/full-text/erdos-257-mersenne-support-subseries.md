@@ -133,7 +133,8 @@ Next let $`Q_t=\operatorname{lcm}(1,\ldots,t)`$. For each fixed $`d`$, eventuall
 ```
 Thus the limiting averages of the nonnegative displacements $`\Delta_{b,A}(Q_tm)`$ tend to zero. Choose $`t`$, then a sufficiently long finite average, and finally a term no larger than that average. This gives arbitrarily small positive displacements, contradicting the rational lattice in <a href="#eq:intro-displacement" data-reference-type="eqref" data-reference="eq:intro-displacement">[eq:intro-displacement]</a>. This proves Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a> directly at every integer base.
 
-The order of limits is essential: the observation length tends to infinity with the modulus fixed, and only then does the modulus increase. Reciprocal summability controls both interchanges.
+The order of limits is essential: the observation length tends to infinity with the modulus fixed, and only then does the modulus increase. Reciprocal summability controls both interchanges. The exact all-base result, with hypotheses $`b\ge2`$, infinitude of $`A`$, and summability of $`a\mapsto
+\mathbf1_A(a)/a`$, is kernel-checked as [`irrational_erdosSupportSeries_of_summable_reciprocal`](https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395).
 
 <a id="sec:eight-return-extensions"></a>
 
@@ -203,6 +204,8 @@ For the gcd claim, either every $`P`$-prime-power component of $`h(a)`$ is at mo
 The order of choices is important. First fix $`\varepsilon`$ and choose $`F`$ and its common multiple $`L`$; only then let $`H\to\infty`$. With $`L`$ fixed, $`Q\le LH^r`$, $`G=H/p_*+O(1)`$ and $`M\asymp b^{G/2}`$, so every term after $`\varepsilon`$ tends to zero. This produces arbitrarily small displacements, but gives no specified decay rate in the index $`N=Qt`$. The left side is a finite average of positive displacements, so one is below $`2\varepsilon`$ for large $`H`$. Since $`\varepsilon`$ is arbitrary, this contradicts the lower bound $`1/q`$ under rationality. Finally $`W_{b,P}(A)\le W_{2,P}(A)`$ for $`b\ge2`$, and weighted mass decreases on taking subsets. ◻
 
 </div>
+
+The exact interface of Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a>, including its fixed-base conclusion and hereditary all-base clause, is kernel-checked as [`divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L99).
 
 <a id="an-example-beyond-reciprocal-summability"></a>
 
@@ -751,7 +754,7 @@ The endpoint and the open lower bound $`\alpha>0`$ are both included in this cal
 
 # Guide to the formal sources
 
-The support criteria are proved above. The fixed-revision links below are not fresh build or axiom-audit receipts: challenge statements are not proofs, and solution wrappers retain their hypotheses. The release at `52f29ad173b0` contains bodies for [the positive-cover conclusion](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241) and [the weighted and mixed conclusions](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L98). The ordinary proof for $`A_\star`$ is separate from the existential host wrapper, which does not verify that example. No fresh Lean replay was run.
+The public proof closure at `065e09523286` was replayed under Lean 4.29.1. Besides the reciprocal and weighted declarations cited above, the replay checked the exact strengthened positive-cover conclusion in [`strengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241) and the common-witness conclusion in [`mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L105). The axiom audit for these endpoints reports only `propext`, `Classical.choice`, and `Quot.sound`. The ordinary proof for $`A_\star`$ remains separate from the existential host wrapper, which does not verify that named example.
 
 Erdős’s five-page paper was checked directly: p. 222 states the reciprocal-summable extension without proof, and p. 226 describes the fractional-part approach. The original Luca–Tachiya and Hornich articles were not independently retrieved. The periodic theorem \[lucatachiya2014periodic\] was checked in Luca and Tachiya’s own account \[lucatachiya2017, Theorem A and Example 2, pp. 139–140\], and the strict-tail result in Nitecki’s exposition. The *Formal Conjectures* file \[formalconjectures257\] is statement-level prior art, not a proof dependency.
 

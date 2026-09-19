@@ -1654,6 +1654,8 @@ T_1=\frac{N-D}{D},\qquad \gcd(N-D,D)=\gcd(N,D).
 ```
 The supplied `PaperR7RationalBridge.lean` proves this translation, which preserves the denominator, its smooth factor and the clearing onset. These comparisons use the attached sources; they are not a new build or verification of all historical link targets.
 
+Two displayed statements also have direct current-source counterparts. The threshold-column rank formula is [finite cut rank](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182); its range equality allows repeated columns and arbitrary ordering. The uniform modular-minor statement is [uniform modular minors](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133); its row and column indices are chosen before the modulus and layer. The two modules compiled under Lean 4.29.1 during this source migration.
+
 | informal statement | linked Lean source |
 |:---|:---|
 | integer represented by an exponent triple | [](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L32) |
@@ -1779,6 +1781,8 @@ The supplied `PaperR7RationalBridge.lean` proves this translation, which preserv
 | small-form criterion | [](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/PurePowerIrrationality.lean#L94) |
 | irrationality from clearing and small nonzero gaps | [](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/PurePowerIrrationality.lean#L156) |
 | indices giving the threshold staircase | [staircase indices](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Shared/IrrationalRotationStaircase.lean#L271) |
+| finite threshold-column rank, including the extreme-column defect | [finite cut rank](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182) |
+| uniform admissible modular minors, with indices chosen before modulus and layer | [uniform modular minors](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133) |
 
 <a id="sec:erdos-269-complete-family-map"></a>
 

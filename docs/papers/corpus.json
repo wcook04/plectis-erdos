@@ -122,11 +122,11 @@
         "year": "2026",
         "title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/archive/erdos249-257-main-paper.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/archive/erdos249-257-main-paper.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/archive/erdos249-257-main-paper.tex",
+        "text": "Will Cook (2026). Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/archive/erdos249-257-main-paper.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -138,10 +138,10 @@
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/archive/erdos249-257-main-paper.tex",
       "source_sha256": "sha256:60dd9a22f4335145ce3917490d31ee84a6751ff1fe2e7235ecb292426599a570",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/archive/erdos249-257-main-paper.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/archive/erdos249-257-main-paper.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/archive/erdos249-257-main-paper.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/archive/erdos249-257-main-paper.tex",
       "section_count": 161,
       "sections": [
         {
@@ -1164,11 +1164,11 @@
         "year": "2026",
         "title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "text": "Will Cook (2026). Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1180,10 +1180,10 @@
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "source_sha256": "sha256:24185ca24d344389ef0e77daf8481dbd9085344fa6cf001303052b0e9127cdbf",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos-68-factorial-denominator-irrationality.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos-68-factorial-denominator-irrationality.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "section_count": 29,
       "sections": [
         {
@@ -1419,11 +1419,11 @@
         "year": "2026",
         "title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos68-factorial-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos68-factorial-reasoning-surface.tex",
+        "text": "Will Cook (2026). Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1435,10 +1435,10 @@
       "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
       "local_source": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "source_sha256": "sha256:28195f1a03eaab8ccaf598277ae2ee3deb7a38685a908dd0b851f7f82d92caf3",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos68-factorial-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos68-factorial-reasoning-surface.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/68/erdos68-factorial-reasoning-surface.tex",
       "section_count": 39,
       "sections": [
         {
@@ -1734,11 +1734,11 @@
         "year": "2026",
         "title": "Bounded Increments and Rational Reciprocal Sums",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Bounded Increments and Rational Reciprocal Sums. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "text": "Will Cook (2026). Bounded Increments and Rational Reciprocal Sums. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1750,10 +1750,10 @@
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "source_sha256": "sha256:a342a68ed3eede0e4bed6ecb87ea7837820e8f9fc00982f94afd0a2cd90620ee",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "section_count": 20,
       "sections": [
         {
@@ -1931,11 +1931,11 @@
         "year": "2026",
         "title": "Reciprocal-Tail Rigidity: Theorems, Proofs and Questions",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Reciprocal-Tail Rigidity: Theorems, Proofs and Questions. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+        "text": "Will Cook (2026). Reciprocal-Tail Rigidity: Theorems, Proofs and Questions. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1947,10 +1947,10 @@
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "source_sha256": "sha256:8c50e2034e8d642a45576ad572c5be26f9ec3dc8b2874cba7efc8693220fe022",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "section_count": 61,
       "sections": [
         {
@@ -2374,11 +2374,11 @@
         "year": "2026",
         "title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos-249-binary-totient-series.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos-249-binary-totient-series.tex",
+        "text": "Will Cook (2026). Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -2390,10 +2390,10 @@
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/249/erdos-249-binary-totient-series.tex",
       "source_sha256": "sha256:2989c5d03312e98a85b2bf68cf44b4e97880b3cc9f6eb23cdc86a77255e4844c",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos-249-binary-totient-series.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos-249-binary-totient-series.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/249/erdos-249-binary-totient-series.tex",
       "section_count": 18,
       "sections": [
         {
@@ -2563,11 +2563,11 @@
         "year": "2026",
         "title": "The Binary Totient Series",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos249-totient-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). The Binary Totient Series. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos249-totient-reasoning-surface.tex",
+        "text": "Will Cook (2026). The Binary Totient Series. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -2579,10 +2579,10 @@
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/249/erdos249-totient-reasoning-surface.tex",
       "source_sha256": "sha256:4fc2de1ab813e566e69995b832fc1cd89b722c238230930182ed0de7becc8da2",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos249-totient-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos249-totient-reasoning-surface.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/249/erdos249-totient-reasoning-surface.tex",
       "section_count": 161,
       "sections": [
         {
@@ -3606,11 +3606,11 @@
         "year": "2026",
         "title": "Sparse Congruence-Preserving Perturbations of Dyadic Series",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Sparse Congruence-Preserving Perturbations of Dyadic Series. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+        "text": "Will Cook (2026). Sparse Congruence-Preserving Perturbations of Dyadic Series. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -3622,10 +3622,10 @@
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
       "local_source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
       "source_sha256": "sha256:10c6cff02d746a305f99839db2ec3bfe30f1a2574e0d0a707c891920cfb7b4cb",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos-251-prime-gap-dyadic-series.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/251/erdos-251-prime-gap-dyadic-series.tex",
       "section_count": 13,
       "sections": [
         {
@@ -3761,11 +3761,11 @@
         "year": "2026",
         "title": "Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+        "text": "Will Cook (2026). Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -3777,10 +3777,10 @@
       "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
       "local_source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "source_sha256": "sha256:7e96053fc2dee7800f04e599ea7570cbbba024e7449e3da088f497fac42ce0e7",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos251-prime-gap-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "section_count": 64,
       "sections": [
         {
@@ -4222,11 +4222,11 @@
         "year": "2026",
         "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos-257-mersenne-support-subseries.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Weighted Support Criteria for Reciprocal Mersenne Subseries. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos-257-mersenne-support-subseries.tex",
+        "text": "Will Cook (2026). Weighted Support Criteria for Reciprocal Mersenne Subseries. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4237,11 +4237,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:04770c999a5148a01ca0908e8d9a24ce16df35ff39419a688865cc953b028d79",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos-257-mersenne-support-subseries.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos-257-mersenne-support-subseries.tex",
+      "source_sha256": "sha256:9851316d4cbc0d4d1904082f4ad1ab5ac43c1ac4c89f59d42e6204a8862c2ba6",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/257/erdos-257-mersenne-support-subseries.tex",
       "section_count": 38,
       "sections": [
         {
@@ -4266,217 +4266,217 @@
           "level": 1,
           "id": "sec:eight-return-extensions",
           "title": "Extensions beyond reciprocal summability",
-          "line": 138
+          "line": 139
         },
         {
           "level": 2,
           "id": "proof-of-the-weighted-criterion",
           "title": "Proof of the weighted criterion",
-          "line": 144
+          "line": 145
         },
         {
           "level": 2,
           "id": "an-example-beyond-reciprocal-summability",
           "title": "An example beyond reciprocal summability",
-          "line": 207
+          "line": 210
         },
         {
           "level": 2,
           "id": "sec:common-kernel",
           "title": "A common finite average for the extensions",
-          "line": 229
+          "line": 232
         },
         {
           "level": 2,
           "id": "positive-divisor-majorants",
           "title": "Positive divisor majorants",
-          "line": 267
+          "line": 270
         },
         {
           "level": 2,
           "id": "what-every-positive-cover-must-pay",
           "title": "What every positive cover must pay",
-          "line": 327
+          "line": 330
         },
         {
           "level": 2,
           "id": "combining-the-two-support-criteria",
           "title": "Combining the two support criteria",
-          "line": 368
+          "line": 371
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 415
+          "line": 418
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 442
+          "line": 445
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Limits of the small-displacement criterion",
-          "line": 457
+          "line": 460
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 475
+          "line": 478
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "Greedy membership and an integer recurrence",
-          "line": 491
+          "line": 494
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 559
+          "line": 562
         },
         {
           "level": 4,
           "id": "integer-quotients-for-121.",
           "title": "Integer quotients for 1/21.",
-          "line": 565
+          "line": 568
         },
         {
           "level": 4,
           "id": "approximation-to-12-by-finite-supports.",
           "title": "Approximation to 1/2 by finite supports.",
-          "line": 614
+          "line": 617
         },
         {
           "level": 4,
           "id": "finite-families-with-a-shared-prefix.",
           "title": "Finite families with a shared prefix.",
-          "line": 653
+          "line": 656
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 718
+          "line": 721
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 722
+          "line": 725
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 737
+          "line": 740
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 750
+          "line": 753
         },
         {
           "level": 4,
           "id": "finite-sums-and-rational-denominators.",
           "title": "Finite sums and rational denominators.",
-          "line": 760
+          "line": 763
         },
         {
           "level": 4,
           "id": "rationality-and-integer-carries.",
           "title": "Rationality and integer carries.",
-          "line": 766
+          "line": 769
         },
         {
           "level": 4,
           "id": "classical-support-theorems-and-examples.",
           "title": "Classical support theorems and examples.",
-          "line": 772
+          "line": 775
         },
         {
           "level": 4,
           "id": "squarefree-divisor-counts-and-certificate-restrictions.",
           "title": "Squarefree divisor counts and certificate restrictions.",
-          "line": 778
+          "line": 781
         },
         {
           "level": 4,
           "id": "deleting-finitely-many-terms.",
           "title": "Deleting finitely many terms.",
-          "line": 784
+          "line": 787
         },
         {
           "level": 4,
           "id": "the-full-achievement-set.",
           "title": "The full achievement set.",
-          "line": 790
+          "line": 793
         },
         {
           "level": 4,
           "id": "restricted-achievement-sets.",
           "title": "Restricted achievement sets.",
-          "line": 796
+          "line": 799
         },
         {
           "level": 4,
           "id": "half-membership-and-finite-approximations.",
           "title": "Half-membership and finite approximations.",
-          "line": 802
+          "line": 805
         },
         {
           "level": 4,
           "id": "finite-greedy-inequalities.",
           "title": "Finite greedy inequalities.",
-          "line": 808
+          "line": 811
         },
         {
           "level": 4,
           "id": "fixed-core-supports-and-dilation.",
           "title": "Fixed-core supports and dilation.",
-          "line": 814
+          "line": 817
         },
         {
           "level": 4,
           "id": "the-shared-prefix-families.",
           "title": "The shared-prefix families.",
-          "line": 820
+          "line": 823
         },
         {
           "level": 4,
           "id": "the-m\u00f6bius-example-and-two-prime-digit-systems.",
           "title": "The M\u00f6bius example and two-prime digit systems.",
-          "line": 826
+          "line": 829
         },
         {
           "level": 4,
           "id": "scaled-greedy-remainders.",
           "title": "Scaled greedy remainders.",
-          "line": 832
+          "line": 835
         },
         {
           "level": 4,
           "id": "finite-quotient-tests-for-121.",
           "title": "Finite quotient tests for 1/21.",
-          "line": 838
+          "line": 841
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 844
+          "line": 847
         }
       ],
       "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:585559f9d9ab88d0b53c1d09e4e421654f8dd5791540b883b96f55f951e4dbc8",
-      "pdf_byte_count": 173537,
+      "pdf_sha256": "sha256:54185aa42c2a710300554412586bed9f456bdb61c3c2a21c0e306a50ac04f058",
+      "pdf_byte_count": 174867,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4494,12 +4494,12 @@
           {
             "id": "sec:eight-return-extensions",
             "title": "Extensions beyond reciprocal summability",
-            "line": 138
+            "line": 139
           },
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 559
+            "line": 562
           }
         ],
         "unresolved_count": 0
@@ -4527,11 +4527,11 @@
         "year": "2026",
         "title": "Reciprocal Mersenne Subseries",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos257-mersenne-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Reciprocal Mersenne Subseries. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos257-mersenne-reasoning-surface.tex",
+        "text": "Will Cook (2026). Reciprocal Mersenne Subseries. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4542,11 +4542,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:7a58c3a9dee7e9b1396ccae99e64b8b031d64bfbfbfe9b5b826201531c2ba31b",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "source_sha256": "sha256:cb199e7fe598e162abf8b71d74cc0cc114e2c94bdd821140e60320e406abdd81",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
       "section_count": 164,
       "sections": [
         {
@@ -5536,8 +5536,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:4c23d2e614c5a01981e4398430d5d44ffe0f5691f5412f27f97e87c3cc54d0a3",
-      "pdf_byte_count": 831298,
+      "pdf_sha256": "sha256:78d1599e080851f48774a71f94b150f8c022033e3cad641b469294fc83638dcf",
+      "pdf_byte_count": 831709,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5588,11 +5588,11 @@
         "year": "2026",
         "title": "The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "text": "Will Cook (2026). The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -5603,11 +5603,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md",
       "local_source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-      "source_sha256": "sha256:b3ee7c5dd8d0f937f43e8a7466586a57c26e0bb27df8f1304bfd8d6bfe955439",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos269-running-lcm-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "source_sha256": "sha256:a69e4b992ba9132b156031c1eeef2ada0876cfa95fbc3ae5a8dfa059774106a7",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/269/erdos269-running-lcm-reasoning-surface.tex",
       "section_count": 44,
       "sections": [
         {
@@ -5872,13 +5872,13 @@
           "level": 1,
           "id": "sec:erdos-269-complete-family-map",
           "title": "What the results use and what they do not prove",
-          "line": 1783
+          "line": 1787
         }
       ],
       "citations_rendered": 37,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:98c67378f70ae597aa8b003e4abeceb1ffbb0b45fdfbc07a4122161e34e257ee",
-      "pdf_byte_count": 301741,
+      "pdf_sha256": "sha256:b3cbfb6f76ef733deb2230c00462c5942ef66afff65ae8a1c23644787cb8e2f5",
+      "pdf_byte_count": 302877,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5901,7 +5901,7 @@
           {
             "id": "sec:erdos-269-complete-family-map",
             "title": "What the results use and what they do not prove",
-            "line": 1783
+            "line": 1787
           }
         ],
         "unresolved_count": 0
@@ -5929,11 +5929,11 @@
         "year": "2026",
         "title": "No Finite Separable Representation at Three Prime Generators",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos-269-three-prime-running-lcm.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). No Finite Separable Representation at Three Prime Generators. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos-269-three-prime-running-lcm.tex",
+        "text": "Will Cook (2026). No Finite Separable Representation at Three Prime Generators. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -5944,11 +5944,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:5ff270bb32dbf9cfef527e120a7f809244344f84d1fae72c547ac949b954853e",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos-269-three-prime-running-lcm.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos-269-three-prime-running-lcm.tex",
+      "source_sha256": "sha256:022020477a9abdf2a63e0d3d4f8847b22d6be33df65ca9acf1704e718c14a772",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/269/erdos-269-three-prime-running-lcm.tex",
       "section_count": 16,
       "sections": [
         {
@@ -6050,8 +6050,8 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:ab695c5dd12a1083aeed4b936b911984333140e9d29342f14587a170b55358ca",
-      "pdf_byte_count": 118614,
+      "pdf_sha256": "sha256:082d46a95cdb741c4de168404f1399eb6a79c90d9a9e98749931a1b00423b6f1",
+      "pdf_byte_count": 119169,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6102,11 +6102,11 @@
         "year": "2026",
         "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6117,11 +6117,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:c945263aa1fae707f2713ad337567146a3b15f0b2f8a32cf348f9df662ae3ed7",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "source_sha256": "sha256:445fca3fff9aa43172949446c904f7a14b19ee7e8c928924b31a1c2173cde400",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "section_count": 39,
       "sections": [
         {
@@ -6361,8 +6361,8 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:562e91ff27ee9f0eb9e784350f914b565f0786cae2c63a097bf6edcf4b75ed87",
-      "pdf_byte_count": 195869,
+      "pdf_sha256": "sha256:96898330016c6d569407e78925468d8bb1ed9c7683998cc9cd46a7ba6a5dd7a0",
+      "pdf_byte_count": 196763,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6413,11 +6413,11 @@
         "year": "2026",
         "title": "Paths in Polynomial Lemniscates: Proofs and Examples",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Proofs and Examples. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Proofs and Examples. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6428,11 +6428,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
       "local_source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "source_sha256": "sha256:5e90870b787f7c1df74ca995e3c09a2909c09f53c57fea7d13cd7b92f1d07caf",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "source_sha256": "sha256:4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "section_count": 67,
       "sections": [
         {
@@ -6840,8 +6840,8 @@
       ],
       "citations_rendered": 65,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:eba55d828cca9f8a3d010b063d5e9ee853bf286dc249ba3da3a6347e2a149cff",
-      "pdf_byte_count": 428532,
+      "pdf_sha256": "sha256:1a66a6e7a70302c368112f3c6580806411822de0fb890a2d670ce3f6bca1d5bf",
+      "pdf_byte_count": 429305,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6892,11 +6892,11 @@
         "year": "2026",
         "title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos-1049-rational-base-lambert.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos-1049-rational-base-lambert.tex",
+        "text": "Will Cook (2026). Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6908,10 +6908,10 @@
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "source_sha256": "sha256:f8b59587ad61a01439462544320099d9f8b9ab7dd6832d366081fb3fbdb886ef",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos-1049-rational-base-lambert.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos-1049-rational-base-lambert.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1049/erdos-1049-rational-base-lambert.tex",
       "section_count": 30,
       "sections": [
         {
@@ -7153,11 +7153,11 @@
         "year": "2026",
         "title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+        "text": "Will Cook (2026). Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7169,10 +7169,10 @@
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
       "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "source_sha256": "sha256:5125a128adebb5ca10e1e1f5a70d87aa9e6ffca571ddc9ae4970b13581833b20",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "section_count": 58,
       "sections": [
         {
@@ -7582,11 +7582,11 @@
         "year": "2026",
         "title": "Problem-Sized Lean Worlds",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/claim-faithful-publication-systems-paper.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Problem-Sized Lean Worlds. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/claim-faithful-publication-systems-paper.tex",
+        "text": "Will Cook (2026). Problem-Sized Lean Worlds. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7597,11 +7597,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:a288ad871c7b8b529c62927a809496251e0d597a2fd8c3f507cec20768d80fb9",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/claim-faithful-publication-systems-paper.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/claim-faithful-publication-systems-paper.tex",
+      "source_sha256": "sha256:73e0d0e0af0098187452caa1095721051bf7b385c14b3196f2490614fa726e46",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/claim-faithful-publication-systems-paper.tex",
       "section_count": 48,
       "sections": [
         {
@@ -7895,7 +7895,7 @@
       ],
       "citations_rendered": 28,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:607409a9207f0c76056fcfc54000a9a0c406a0cbb95e015f78b3a64a19c84467",
+      "pdf_sha256": "sha256:c69635e89f6d6f36637ea7455a8dc9533c84ab681a155e7b5685aa8f7f97d37c",
       "pdf_byte_count": 153482,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7952,11 +7952,11 @@
         "year": "2026",
         "title": "From a Cold Clone to a Proof Receipt",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/cold-clone-to-proof-receipt.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). From a Cold Clone to a Proof Receipt. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/cold-clone-to-proof-receipt.tex",
+        "text": "Will Cook (2026). From a Cold Clone to a Proof Receipt. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7967,11 +7967,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:156137cbbcbf6484e73fb01b4091e36d64d4f0e12a95f3719157411463466d1e",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/cold-clone-to-proof-receipt.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/cold-clone-to-proof-receipt.tex",
+      "source_sha256": "sha256:e3791a60590c12d857c0a84fd85a1393d7964ea8041dccd695fc91bbb9a2107d",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/cold-clone-to-proof-receipt.tex",
       "section_count": 20,
       "sections": [
         {
@@ -8097,8 +8097,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:cc302589401b8d0d107a74dc482d4336fe7a08479146b67b6d45a0b49bf1e733",
-      "pdf_byte_count": 85943,
+      "pdf_sha256": "sha256:c0b38fdf1de52439ed57b33c605b7ddb693b514791add06e0ca78e43608eaae6",
+      "pdf_byte_count": 85946,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8154,11 +8154,11 @@
         "year": "2026",
         "title": "From Spare Compute to Cumulative Mathematics",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/open-source-mathematics-strategy.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos, commit 1ed38b5c5ad53f5af189ddb2e6046ff214100d69. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/open-source-mathematics-strategy.tex",
+        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -8170,10 +8170,10 @@
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
       "source_sha256": "sha256:13f7aade865f32012ac747a38866d074f8331835579fe38ed7bc33cfd1f27271",
-      "canonical_source_commit": "1ed38b5c5ad53f5af189ddb2e6046ff214100d69",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/open-source-mathematics-strategy.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/open-source-mathematics-strategy.tex",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/open-source-mathematics-strategy.tex",
       "section_count": 32,
       "sections": [
         {

@@ -2,7 +2,7 @@
   "schema": "erdos-external-verification-packet/1",
   "scope": "all_eight_public_problem_programmes",
   "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-  "boundary": "All eight covered Erdős problems remain open. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
+  "boundary": "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
   "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
   "automation": {
     "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:a2dbfa3d8cb217528864948417c4b95431c031841c236eff0dfdfe0f0fba98a5",
+    "owner_digest": "sha256:e6a9e28a5b615ec5391bb22d24f61c9484215ea665c665c4072265480e374adc",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:28facf7677ab602eb59ff6a87e01c103a791eb92b1a4ec0dc8ff38e089344a23",
+    "projection_digest": "sha256:ca83a7fb9a4f7002269dcb65c8e6cd69183f38d4e5031e6f884b993dd7400a31",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1765,10 +1765,10 @@
             "module": "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
             "path": "lean/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
             "present": true,
-            "line_count": 6674,
+            "line_count": 6675,
             "declaration_count": 223,
             "theorem_count": 183,
-            "content_digest": "sha256:e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+            "content_digest": "sha256:5f999c8f50f693e12ecd059bcee5e6b47044f4f678e31b824f398931ae5224be"
           },
           {
             "module": "ErdosProblems.Erdos68.FactorialCarry",
@@ -2514,11 +2514,20 @@
         "erdos_number": 1041,
         "short_title": "Short connections inside polynomial lemniscates",
         "status": "open",
-        "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?",
+        "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
         "directory": "lean/ErdosProblems/Erdos1041",
         "modules": [
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean",
+            "present": true,
+            "line_count": 90,
+            "declaration_count": 2,
+            "theorem_count": 2,
+            "content_digest": "sha256:1f807ef3e453c12f382d4ce7a4f422397e1e2dee33ba87d68323273a1860a600"
+          },
           {
             "module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
             "path": "lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
@@ -2537,6 +2546,7 @@
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
+          "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.",
           "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.",
           "The exponentially rescaled polynomial value is a first integral, so the value of a Newton trajectory remains on one oriented ray.",
           "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
@@ -2545,35 +2555,40 @@
           "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
         ],
         "what_is_not_checked": [
-          "Erdos Problem 1041 in unrestricted degree.",
+          "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation.",
+          "Independent human review adjudicating whether the checked total-variation formulation exactly represents the historical question.",
           "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
           "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
           "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
-          "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
+          "A corrected restricted-family or alternative-metric gluing theorem; universal sub-two total-variation gluing is ruled out by the degree-seven counterexample."
         ],
         "open_obligations": [
+          {
+            "id": "historical_curve_length_correspondence",
+            "statement": "Determine the precise correspondence between the historical curve-length question and the refuted total-variation formulation, including any required Hausdorff-measure comparison and independent human review."
+          },
           {
             "id": "repair_or_refute_saddle_block",
             "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
           },
           {
             "id": "compact_ray_cut_strip_decomposition",
-            "statement": "Build a compact strip or cell decomposition after cutting along critical-value rays, without presupposing the unproved local valence count."
+            "statement": "Construct and verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses, as auxiliary structure for restricted families or a correspondence-adjusted historical formulation. It does not imply a universal sub-two total-variation connector."
           },
           {
-            "id": "metric_gluing_below_two",
-            "statement": "Glue the local pieces with strict quantitative slack while preserving the sharp one-over-two-pi length bookkeeping."
+            "id": "corrected_metric_gluing_for_restricted_families",
+            "statement": "The degree-seven counterexample rules out universal total-variation gluing below two. For a stated restricted family or different historical length notion, derive a metric gluing inequality with all positive attachment costs explicit; the false printed 1/(2π) coefficient may not be retained."
           },
           {
             "id": "two_stage_stable_perturbation",
-            "statement": "First separate critical values, then apply the checked small translation, while retaining roots, the selected component, collars, ray separation, and a strict length margin."
+            "statement": "Given a polynomial/component and an already selected connector with explicit strict slack, quantify a two-stage perturbation preserving roots, that component, collars, ray separation, and the stated slack. No universal existence or sub-two conclusion is asserted."
           },
           {
             "id": "relative_global_newton_flow_theorem",
-            "statement": "Prove the global relative Newton-flow theorem that turns the checked ray separation into the required root-to-root curve inside the original open lemniscate."
+            "statement": "Under explicit relative component, saddle, and corrected metric hypotheses, derive the corresponding root-to-root Newton-flow connector. The theorem must state its restricted hypotheses and cannot imply a sub-two total-variation connector for every polynomial."
           }
         ],
-        "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
+        "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence and is separate from the exact degree-seven total-variation counterexample checked in Lean.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
           "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
@@ -2603,33 +2618,33 @@
         "research_corpus": {
           "directory": "research_corpus/Erdos1041",
           "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
-          "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
+          "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims.",
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
+              "content_digest": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-              "content_digest": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
+              "content_digest": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3"
+              "content_digest": "sha256:d72594f2dd335f7caf82ea91fea17c2e0005015e8a091b61ca804ddfd4e8d3a9"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef"
+              "content_digest": "sha256:a46179ff4b41f37df19ae58dee79ff973195c2c4e3fc2d70e367c2ab3743181b"
             }
           },
           "strongest_result_summary": {
-            "source_checkpoint": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
+            "source_checkpoint": "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac",
             "status": "open",
-            "result_count": 45
+            "result_count": 294
           },
           "checkpoint_summary": {
-            "source_subtree_tree": "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d",
-            "exported_source_file_count": 839,
+            "source_subtree_tree": null,
+            "exported_source_file_count": 952,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2778,7 +2793,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:283fc4a57d3e38d0fcc4ea122bddd07192227436807134f66ddbca7a15bd0ab8",
+    "lakefile.toml": "sha256:89ca531b10603e0b381862c07b824d327691875b892e1aa5c5290a29e7cde1dc",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

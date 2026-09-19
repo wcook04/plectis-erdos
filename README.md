@@ -208,16 +208,16 @@ Mathlib. See the [security policy](.github/SECURITY.md) for the execution bounda
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 141 curated claim records in 30 contribution families, reaching Lean source through 451 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 463 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 91% of the 157,402 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 90% of the 158,846 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,343 |
-| Formal results and supporting lemmas | 154,477 |
-| Curated claim records | 141 |
-| Contribution families | 30 |
+| Lean modules (the two library roots) | 1,405 |
+| Formal results and supporting lemmas | 155,672 |
+| Curated claim records | 148 |
+| Contribution families | 33 |
 
 Generated shards are counted as formal source and never as separate
 mathematical claims. Claim records cover every status, including cited and
