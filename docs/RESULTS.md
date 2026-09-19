@@ -436,7 +436,7 @@ The nonrecurring view contains 184 unconditional object theorems, 56 scoped barr
 
 The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 231 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
 
-Of 23 substantial Lean propositions extracted from hypotheses of conditional theorems, 17 are provably equivalent to an endpoint: 14 to #249 and 3 to the `1/2` membership test for #257. Equivalence here is kernel-checked against the extracted proposition, not a claim that either endpoint is settled.
+The [historical hypothesis audit](reference/TRUTH_AUDIT.md) describes a selected extraction, not the current corpus or a measure of mathematical value. Use the problem and theorem routes above to inspect the results and their exact boundaries.
 <!-- END semantic_public_census -->
 
 The large #249 denominator exclusion is a direct, kernel-checked instantiation

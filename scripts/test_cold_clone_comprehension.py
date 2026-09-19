@@ -677,14 +677,13 @@ def main() -> int:
         "docs/reference/TRUTH_AUDIT.md"
     ].replace(
         (
-            f"The `{census['demand_equivalent_total']}/"
-            f"{census['demand_lattice_counts']['substantial']}` count"
+            "selected audit, not the current corpus or a measure of mathematical value"
         ),
-        "The `0/0` count",
+        "the current corpus and its mathematical value",
         1,
     )
     assert_census_rejected(
-        census, mutated_census, "demand-lattice population distinction"
+        census, mutated_census, "historical demand audit promoted to current corpus"
     )
     checks += 1
 

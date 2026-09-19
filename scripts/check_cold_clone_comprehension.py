@@ -1512,16 +1512,8 @@ def validate_public_semantic_census(
                 f"distinct from the {census['prior_art_review_queue_count']}-node "
                 "public prior-art review queue"
             ),
-            (
-                f"Of {demand['substantial']} substantial Lean propositions "
-                "extracted from hypotheses of conditional theorems, "
-                f"{demand_equivalent} are provably equivalent to an endpoint"
-            ),
-            (
-                f"{demand_equivalent_by_problem['249']} to #249 and "
-                f"{demand_equivalent_by_problem['257']} to the `1/2` "
-                "membership test for #257"
-            ),
+            "historical hypothesis audit",
+            "selected extraction, not the current corpus",
             (
                 f"open-antecedent surface has {open_cluster_total} clusters, "
                 f"of which {open_cluster_equivalent} are marked endpoint-equivalent"
@@ -1541,23 +1533,20 @@ def validate_public_semantic_census(
                 "public prior-art review queue"
             ),
             (
-                f"The `{demand_equivalent}/{demand['substantial']}` count is "
-                "a narrower kernel-checked audit"
+                f"In the historical DemandLedger extraction, {demand['substantial']} "
+                "hypotheses were classified as substantial and "
+                f"{demand_equivalent} were recorded as equivalent to an endpoint"
             ),
             (
-                f"starts from {demand['conditional_declarations_walked']} "
-                "conditional declarations, extracts "
-                f"{demand['closed_props_extracted']} distinct closed "
-                "hypothesis Props"
+                f"{demand_equivalent_by_problem['249']} to #249 and "
+                f"{demand_equivalent_by_problem['257']} to the `1/2` "
+                "membership test for #257"
             ),
             (
-                f"classifies {demand['substantial']} as substantial; "
-                f"{demand_equivalent} of those {demand['substantial']} are "
-                "endpoint-equivalent"
+                "selected audit, not the current corpus or a measure of mathematical value"
             ),
             (
-                f"lists {open_cluster_total} entries, "
-                f"{open_cluster_equivalent} marked endpoint-equivalent"
+                "Regenerating this page does not re-extract hypotheses or rerun their Lean checks"
             ),
             "<!-- END semantic_public_census -->",
         ),
