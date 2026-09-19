@@ -2756,6 +2756,29 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 )
 
         if paper_row.get("anchor_label_allowlist") is not None:
+            # Some reviewed claims are paragraph spans marked only by an
+            # explicit ``\phantomsection\label``.  Admit those spans solely
+            # when the exact label is allowlisted; never turn arbitrary TeX
+            # labels into claim anchors.
+            allowed_labels = set(paper_row.get("anchor_label_allowlist") or [])
+            labels_already_seen = {
+                start["label"] for start in starts if start.get("label")
+            }
+            for match in re.finditer(r"\\label\{(?P<label>[^}]+)\}", text):
+                label = match.group("label")
+                if label not in allowed_labels or label in labels_already_seen:
+                    continue
+                starts.append(
+                    {
+                        "offset": match.start(),
+                        "anchor_kind": "labelled_claim_span",
+                        "title": None,
+                        "label": label,
+                        "environment": None,
+                    }
+                )
+                labels_already_seen.add(label)
+
             first_anchor_offset = min(
                 (start["offset"] for start in starts), default=len(text)
             )
@@ -2968,16 +2991,31 @@ def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
     """
     rows_by_source: dict[str, dict[str, Any]] = {}
 
+    def local_source(row: Mapping[str, Any]) -> str | None:
+        """Resolve the checked-out source independently of its commit pin."""
+        value = row.get("source") or row.get("local_source")
+        return value if isinstance(value, str) and value else None
+
     def add(row: dict[str, Any]) -> None:
-        source = row.get("source")
-        if not isinstance(source, str) or not source:
+        source = local_source(row)
+        if source is None:
             return
         candidate = dict(row)
+        candidate["source"] = source
         existing = rows_by_source.get(source)
         if existing is None:
             rows_by_source[source] = candidate
             return
         for key, value in candidate.items():
+            if key == "anchor_label_allowlist" and isinstance(value, list):
+                if value:
+                    existing[key] = list(dict.fromkeys([
+                        *(existing.get(key) or []), *value,
+                    ]))
+                continue
+            if key == "canonical_source_commit" and key not in existing:
+                existing[key] = value
+                continue
             if existing.get(key) is None and value is not None:
                 existing[key] = value
 
@@ -3008,6 +3046,63 @@ def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "role": note.get("authority_posture") or "dedicated_problem_note",
             }
         )
+    # The paper inventory exports checkout availability as ``local_source``.
+    # Its canonical source commit may intentionally be null while the moving
+    # default-ref source remains present locally; those are separate facts.
+    # Merge it after the claim/problem owners so their established anchor
+    # policy wins; corpus-only papers start with an empty explicit allowlist.
+    for row in load("docs/papers/corpus.json").get("papers", []):
+        if not isinstance(row, dict):
+            continue
+        add({
+            **row,
+            "source": local_source(row),
+            "rendered": row.get("local_pdf"),
+            "formal_source_ref": row.get("canonical_source_commit"),
+            "anchor_label_allowlist": [],
+        })
+    # A newly registered claim can precede legacy companion allowlist refresh.
+    # Make only labels that are both registry-declared and literally present
+    # in this exact local source discoverable as navigation anchors.
+    claim_labels_by_problem: dict[int, list[str]] = {}
+    for claim in claims.get("claims", []):
+        if not isinstance(claim, dict) or not claim.get("paper_label"):
+            continue
+        module_problems = {
+            int(match.group(1))
+            for declaration in claim.get("declarations", [])
+            if isinstance(declaration, dict)
+            for match in [re.search(
+                r"(?:^|/)Erdos(?:Problems/)?Erdos(\d+)(?:/|$)",
+                str(declaration.get("module") or ""),
+            )]
+            if match
+        }
+        if len(module_problems) == 1:
+            problem = next(iter(module_problems))
+            claim_labels_by_problem.setdefault(problem, []).append(
+                str(claim["paper_label"])
+            )
+    literal_sources: dict[str, list[str]] = {}
+    for source, row in rows_by_source.items():
+        path = ROOT / source
+        if not path.is_file():
+            continue
+        subject_match = re.search(r"#(\d+)", str(row.get("subject") or ""))
+        if subject_match is None:
+            continue
+        claim_labels = claim_labels_by_problem.get(int(subject_match.group(1)), [])
+        text = path.read_text(encoding="utf-8")
+        for label in claim_labels:
+            if re.search(rf"\\label\{{{re.escape(label)}\}}", text):
+                literal_sources.setdefault(label, []).append(source)
+    for label, sources in literal_sources.items():
+        if len(sources) != 1:
+            continue
+        row = rows_by_source[sources[0]]
+        row["anchor_label_allowlist"] = list(dict.fromkeys([
+            *(row.get("anchor_label_allowlist") or []), label,
+        ]))
     return list(rows_by_source.values())
 
 

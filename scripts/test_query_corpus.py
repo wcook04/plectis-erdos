@@ -36,6 +36,7 @@ from query_corpus import (
     open_proposition_packet,
     paper_anchor_inventory,
     paper_anchor_packet,
+    public_paper_rows,
     route_packet,
     route_memory_problem_number,
     source_coordinate_packet,
@@ -2854,6 +2855,19 @@ def main() -> int:
         source_lines = (ROOT / paper["source"]).read_text(encoding="utf-8").splitlines()
         anchor_window = "\n".join(source_lines[paper["line"] - 1 : paper["line"] + 1])
         assert re.search(rf"\\label\{{{re.escape(row['paper_label'])}\}}", anchor_window)
+
+    exported_papers = public_paper_rows({
+        "machine_readable_paper": {"paper": {"source": "paper/absent.tex"}},
+        "claims": [],
+    })
+    degree_seven_paper = next(
+        row for row in exported_papers
+        if row.get("paper_id") == "erdos-1041-lemniscate-newton-flow"
+    )
+    assert degree_seven_paper["source"] == (
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
+    )
+    assert degree_seven_paper["canonical_source_commit"] is None
     companion = query("--claim", "transport_curvature_reductions")
     assert companion["paper"] is None
     assert companion["lean_source_identity"] == {
