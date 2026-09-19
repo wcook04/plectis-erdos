@@ -250,11 +250,14 @@ reach `rho -> 1`, and no sharpening of the *constant* will change that:
   `> rho^n` and tends to `2 rho^n`; and `1 + cos^n(pi/n) > 1` at every `n >= 2`.
 
 So a chord — indeed any path that stays near the circle — is *provably* the wrong
-object as `rho -> 1`.  On `z^n - rho^n` the components of `{|f| < 1}` are `n`
-petals meeting only at the centre, and the unique shortest admissible path is the
-pair of radii, of length exactly `2 rho`.  That is the cusp
-`exact_results::near_fekete_cusp_law_and_strict_local_maximality` describes, and
-this note does not touch it.
+object as `rho -> 1`.  For `z^n - rho^n` with `rho < 1`, however, the origin is
+an interior point of `{|f| < 1}`, since `|f(0)| = rho^n < 1`.  The two radial
+segments give an admissible path of length `2 rho`, but for `n >= 3` they meet
+at a genuine corner inside an open neighbourhood, so a sufficiently small
+corner cut gives a shorter admissible path.  Thus this family supports the need
+to move inward; it does not have `n` open petals meeting only at the origin or a
+unique shortest path of length `2 rho`.  This note does not determine its exact
+shortest path.
 
 What the note does supply is the *other* half of that sandwich in an explicit,
 unconditional, all-degree form: a concyclic configuration is handled by a plain

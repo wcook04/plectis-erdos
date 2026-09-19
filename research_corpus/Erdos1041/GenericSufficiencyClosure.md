@@ -392,5 +392,5 @@ Theorem Q turns the unrestricted problem into a single extremal statement about
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_generic_sufficiency_closure.py
-lake env lean research_corpus/Erdos1041/GenericSufficiencyClosure.lean
+./lake env lean research_corpus/Erdos1041/GenericSufficiencyClosure.lean
 ```

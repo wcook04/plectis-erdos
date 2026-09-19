@@ -16,7 +16,7 @@ and [`eventually_length_lt_two`](NearFeketeTransverseClosure.lean#L48-L60).
 Replay the complete Lean module from the repository root with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/NearFeketeTransverseClosure.lean
+./lake env lean research_corpus/Erdos1041/NearFeketeTransverseClosure.lean
 ```
 
 These declarations formalize only the eventual sign inference.  The uniform

@@ -29,6 +29,7 @@ namespace ErdosProblems.Erdos1041
 
 open Set
 open Polynomial
+open Module
 open scoped BigOperators
 
 /-- Hadamard's determinant inequality for real square matrices, stated using
@@ -50,10 +51,10 @@ theorem abs_det_le_prod_euclidean_rowNorm
   have hvolume := o.abs_volumeForm_apply_le v
   have hrobust : o.volumeForm = b.toBasis.det :=
     o.volumeForm_robust b rfl
-  rw [hrobust, Basis.det_apply] at hvolume
+  rw [hrobust, Module.Basis.det_apply] at hvolume
   have hmatrix : b.toBasis.toMatrix v = A.transpose := by
     ext i j
-    simp [b, v, Basis.toMatrix_apply]
+    simp [b, v, Module.Basis.toMatrix_apply]
   rw [hmatrix, Matrix.det_transpose] at hvolume
   exact hvolume
 
@@ -68,11 +69,12 @@ def chebyshevDetScale (n : ℕ) : ℝ :=
   ∏ j : Fin n, (2 : ℝ) ^ ((j : ℕ) - 1)
 
 private theorem sum_fin_tsub_one (n : ℕ) :
-    (∑ j : Fin n, (j : ℕ) - 1) = (n - 1) * (n - 2) / 2 := by
+    (∑ j : Fin n, ((j : ℕ) - 1)) = (n - 1) * (n - 2) / 2 := by
   cases n with
   | zero => simp
   | succ n =>
-      rw [Fin.sum_univ_eq_sum_range, Finset.sum_range_succ']
+      rw [Fin.sum_univ_eq_sum_range (fun j : ℕ ↦ j - 1) (n + 1),
+        Finset.sum_range_succ']
       simp [Finset.sum_range_id]
 
 theorem chebyshevDetScale_eq_pow (n : ℕ) :
@@ -158,7 +160,9 @@ theorem chebyshevDetScale_sq_mul_sq_abs_det_vandermonde_le_pow_card
       _ ≤ ∏ _i : Fin n, (n : ℝ) :=
         Finset.prod_le_prod (fun _ _ ↦ sq_nonneg _) (fun i _ ↦ hrow i)
       _ = (n : ℝ) ^ n := by simp
-  have hscale : 0 ≤ chebyshevDetScale n := by positivity
+  have hscale : 0 ≤ chebyshevDetScale n := by
+    unfold chebyshevDetScale
+    positivity
   rw [show B.det = (Matrix.vandermonde y).det * chebyshevDetScale n by
     simpa [B] using det_chebyshevEvalMatrix y,
     abs_mul, abs_of_nonneg hscale, mul_pow] at hB
@@ -238,7 +242,7 @@ theorem cubic_normalized_vandermonde_sq_le_four
       _ ≤ (1 : ℝ) ^ 2 := (sq_le_sq₀ (abs_nonneg t) zero_le_one).2 ht
       _ = 1 := by norm_num
   have hs0 : 0 ≤ 1 - t ^ 2 := by linarith
-  have hs1 : 1 - t ^ 2 ≤ 1 := by positivity
+  have hs1 : 1 - t ^ 2 ≤ 1 := sub_le_self _ (sq_nonneg t)
   have hs2 : (1 - t ^ 2) * (1 - t ^ 2) ≤ 1 * 1 :=
     mul_self_le_mul_self hs0 hs1
   calc
@@ -408,6 +412,7 @@ theorem CollinearScaleCriticalFamily.exists_straightSegment_bound
     (fun i ↦ ‖p.eval (h.critical i)‖) hM
     h.critical_product_le
   have hbound := CollinearScalePeakCertificate.straightSegment_bound
+    (f := fun z ↦ p.eval z)
     { endpoint_distance_le := h.endpoint_distance_le i
       critical_value_le := hi
       segment_control := fun t ht ↦ h.segment_control i t ht }
@@ -485,9 +490,10 @@ theorem CollinearCriticalFamily.exists_straightSegment_solution
   obtain ⟨i, hi⟩ := exists_norm_lt_one_of_prod_norm_lt_one
     (fun i ↦ p.eval (h.critical i)) h.critical_product_lt_one
   have hsolution := polynomial_straightSegment_solution_of_collinearPeak p
-    { endpoint_distance_lt_two := h.endpoint_distance_lt_two i
-      critical_value_lt_one := hi
-      segment_control := fun t ht ↦ h.segment_control i t ht }
+    (h :=
+      { endpoint_distance_lt_two := h.endpoint_distance_lt_two i
+        critical_value_lt_one := hi
+        segment_control := fun t ht ↦ h.segment_control i t ht })
   exact ⟨i, h.left_isRoot i, h.right_isRoot i, h.roots_ne i,
     hsolution.1, hsolution.2⟩
 
@@ -498,7 +504,7 @@ even for a cubic with three real roots in the open unit disk. -/
 
 /-- A rational real-rooted cubic witnessing failure of the all-gaps
 strengthening. -/
-def unsafeAdjacentGapCubic : ℝ[X] :=
+noncomputable def unsafeAdjacentGapCubic : ℝ[X] :=
   (Polynomial.X - Polynomial.C (-(19 : ℝ) / 20)) *
     (Polynomial.X - Polynomial.C ((9 : ℝ) / 10)) *
       (Polynomial.X - Polynomial.C ((999 : ℝ) / 1000))

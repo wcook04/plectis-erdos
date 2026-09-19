@@ -36,4 +36,3 @@ theorem common_ancestry_discount_exact (β w A B : ℝ) :
   ring
 
 end ErdosProblems.Erdos1041
-

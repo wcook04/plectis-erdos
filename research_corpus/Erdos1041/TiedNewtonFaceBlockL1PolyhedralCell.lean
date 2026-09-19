@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1RationalChart
+import research_corpus.Erdos1041.TiedNewtonFaceBlockL1RationalChart
 
 /-!
 # Erdős #1041: exact consumer kernel for the block-L1 polyhedral chart

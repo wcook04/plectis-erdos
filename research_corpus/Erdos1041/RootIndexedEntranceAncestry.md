@@ -116,4 +116,3 @@ rational distance/level labels, verifies `(RIA1)--(RIA3)` for nonconstant
 integer weights and every subtree block, and replays `(RIA1)` on numerical
 merge trees of actual polynomials.  The Lean companion checks the
 load-bearing scalar factorization and block-product algebra.
-

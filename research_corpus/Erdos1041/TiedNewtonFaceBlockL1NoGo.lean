@@ -75,4 +75,3 @@ theorem blockSpeed_gt_six_of_bounds
 end
 
 end ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1NoGo
-

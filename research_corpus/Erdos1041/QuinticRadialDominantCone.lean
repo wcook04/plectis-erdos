@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.FormACutQuantitativeExpansion
+import research_corpus.Erdos1041.FormACutQuantitativeExpansion
 import Mathlib.Tactic
 
 /-!

@@ -604,7 +604,7 @@ and specialized to `length < 2 * radius` at
 [`#L34-L60`](NearFeketeTransverseClosure.lean#L34-L60). Replay it with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/NearFeketeTransverseClosure.lean
+./lake env lean research_corpus/Erdos1041/NearFeketeTransverseClosure.lean
 ```
 
 Thus the `O(rho^2)` remainder is no longer an open item on a fixed transverse

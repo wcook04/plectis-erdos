@@ -116,4 +116,3 @@ section is therefore compact after phase gauge and pairing.  The next task is
 to cover that compact section by the existing canonical mixed/null-box
 connectors plus finitely many new cells, and then spend their strict margins
 on the origin-anchored \(O(\eta^2|z|)\) remainder.
-

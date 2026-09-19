@@ -166,4 +166,3 @@ motivate the analytic containment theorem but are not promoted to proof.
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_adjacent_hub.py
 ```
-

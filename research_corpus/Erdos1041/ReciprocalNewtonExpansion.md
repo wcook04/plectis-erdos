@@ -281,7 +281,7 @@ the resulting choice of coordinates.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_reciprocal_newton_expansion.py
-lake env lean research_corpus/Erdos1041/ReciprocalNewtonExpansion.lean
+./lake env lean research_corpus/Erdos1041/ReciprocalNewtonExpansion.lean
 ```
 
 The 2026-08-27 exact replay reports `NEWTON`, `COEFFBOUND`, `BRIDGE`,

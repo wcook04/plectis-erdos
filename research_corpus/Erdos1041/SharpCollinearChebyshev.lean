@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SharpCollinearAlternation
+import research_corpus.Erdos1041.SharpCollinearAlternation
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.RootsExtrema
 import Mathlib.RingTheory.Polynomial.ScaleRoots
 import Mathlib.Tactic.FieldSimp

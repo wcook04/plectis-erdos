@@ -151,8 +151,8 @@ The exact checker contains the authority-bearing resultant, root-count,
 boundary-isolation, Rouché, and rational distance certificates:
 
 ```bash
-./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_newton_branch_hub.py
-./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_newton_branch_hub.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_newton_branch_hub.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_newton_branch_hub.py --check
 ```
 
 Its canonical output is

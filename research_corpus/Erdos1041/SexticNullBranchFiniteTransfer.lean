@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticNullBranchSecondOrderAtlas
+import research_corpus.Erdos1041.SexticNullBranchSecondOrderAtlas
 
 /-!
 # Erdős #1041: quantitative finite transfer of the sextic null atlas

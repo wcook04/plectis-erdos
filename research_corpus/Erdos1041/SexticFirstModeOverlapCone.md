@@ -103,4 +103,3 @@ homogeneous tangent set is now a compact mixed annulus with
 but bounded away from zero outside a collar of the pure phase circle.  The
 next atlas only needs to bridge that annulus to the already-proved null-box
 cells; it no longer needs either pure boundary or the near-equal mode region.
-

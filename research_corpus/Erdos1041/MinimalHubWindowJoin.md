@@ -56,28 +56,35 @@ file):
 
 One structural fact about the window is needed, and it is elementary.
 
-> **Lemma 1 (two-root persistence).** Suppose `c*` is simple. Then the
-> component `Ω_t` of `{|f| < t}` containing `c*` holds exactly two roots for
-> every `t ∈ (μ, T*)`, where
+> **Lemma 1 (two-root persistence).** Suppose `c*` is simple **and is the
+> unique critical point attaining `μ`**. Then the component `Ω_t` of
+> `{|f| < t}` containing `c*` holds exactly two roots for every
+> `t ∈ (μ, T*)`, where
 >
 > ```text
 > T*  :=  sup{ t > μ : Ω_t holds exactly two roots }  ∈  (μ, +∞].
 > ```
 >
 > Moreover `T* ≥ ν`, the smallest critical-value modulus strictly greater
-> than `μ` (`T* = +∞` only when `n = 2`).
+> than `μ` (`T* = +∞` only when `n = 2`). If uniqueness fails, `T*` must be
+> imposed as a hypothesis: a simple minimiser does not by itself force a
+> two-root window up to the next distinct modulus.
 
 *Proof.* At a simple critical point the local model of `{|f| < μ}` has
 exactly two sectors meeting at `c*` ((F6) with `m = 2`), lying in two one-root
 lobes ((F5)); for `t > μ` those two lobes are joined through `c*`, so `Ω_t`
-holds exactly two roots for all `t > μ` sufficiently close to `μ`. Root counts
-of components are non-decreasing in `t` and jump only when the boundary
-crosses a critical point of `f` (a component of `{|f| < t}` changes at level
-`|f(c)|` for a critical point `c`); hence the set of levels with exactly two
-roots is an interval `(μ, T*)`. Since no component can change before the next
-distinct critical-value modulus `ν`, the interval reaches at least `ν`, so
-`T* ≥ ν`; it may persist beyond `ν` when that critical level belongs to another
-component. For `n = 2` there is a single critical point, `ν` does not exist, and
+holds exactly two roots for all `t > μ` sufficiently close to `μ` **provided
+no other critical point of modulus `μ` lies in the same nascent component**.
+Uniqueness of the minimiser supplies that proviso. Root counts of components
+are non-decreasing in `t` and jump only when the boundary crosses a critical
+point of `f`; hence the set of levels with exactly two roots is an interval
+`(μ, T*)`. Under uniqueness, no component can change before the next
+distinct critical-value modulus `ν`, so `T* ≥ ν`; it may persist beyond `ν`
+when that critical level belongs to another component. The quartic
+`z^4 − (4/15)z^3 − (4/25)z^2 + 1/750` has two simple minima at the same
+modulus and a first nontrivial component of degree three; see
+[TiedMinimumTwoRootWindow.md](TiedMinimumTwoRootWindow.md). For `n = 2` there
+is a single critical point, `ν` does not exist, and
 `Ω_t` holds both roots for every `t > μ`, so `T* = +∞`. ∎
 
 ## 2. The window factor decreases
@@ -199,8 +206,8 @@ for a join that never leaves `K_μ`.
 the `coth` bound used is `coth u − 1 = 2/(e^{2u} − 1) < 2e^{−2u}`. ∎
 
 > **Corollary 5 (spectral settling criterion).** Let `f` be monic,
-> squarefree, all roots in the closed disk of radius `R`, with a simple
-> minimising critical point. Let `ν₂` be the second-smallest distinct
+> squarefree, all roots in the closed disk of radius `R`, with a **unique**
+> simple minimising critical point. Let `ν₂` be the second-smallest distinct
 > critical-value modulus, and define `x_n*` by
 >
 > ```text
@@ -217,7 +224,8 @@ the `coth` bound used is `coth u − 1 = 2/(e^{2u} − 1) < 2e^{−2u}`. ∎
 > |---|---|---|---|---|---|---|---|---|
 > | `x_n*` | `∞` | `1.6064943…` | `1.4784372…` | `1.4289343…` | `1.4023941…` | `1.3857936…` | `1.3744142…` | `1.3598081…` |
 >
-> strictly decreasing in `n`, tending to `1`.
+> strictly decreasing in `n`, tending to `coth 1` (not to `1`): as `n → ∞`
+> one has `x^{1/n} → 1`, so `Ψ_n(x) = 2` becomes `log((x+1)/(x−1)) = 2`.
 
 *Proof.* Component root-counts are locally constant off the critical-value
 moduli (Lemma 1's proof), and right above `μ` the count is `2`, so

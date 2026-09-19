@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticFirstModeOverlapCone
+import research_corpus.Erdos1041.SexticFirstModeOverlapCone
 import Mathlib.Tactic
 
 /-!
