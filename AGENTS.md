@@ -56,8 +56,8 @@ python3 scripts/query_corpus.py --route browse_claim_status
 ```
 
 If free text returns no semantic cells, use those stable routes; do not replace
-machine evidence with manuscript-only inference. All eight indexed problems
-remain open.
+machine evidence with prose. #1041's total-variation form is refuted;
+historical correspondence remains unreviewed.
 
 ### Lean proof work or source mutation
 
