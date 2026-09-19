@@ -31,8 +31,11 @@ python3 scripts/query_corpus.py --open <id>
 ```
 
 The list is a menu in registry order. It does not rank the questions by
-difficulty or by value. Some rows are one of the eight original problems; the
-others are narrower questions whose answer settles only what the row says.
+difficulty or by value. Some rows are one of the eight original problems. Some
+are restatements that Lean proves equivalent to one of them, so settling such a
+row settles that whole problem. The rest are narrower questions whose answer
+settles only what the row says. Open a row and read the checked results that
+bear on it before judging which kind it is.
 The rest of this guide covers packaging, the pinned wrapper, and the return.
 
 ## Start from a reviewed checkout
