@@ -4,8 +4,7 @@ import ErdosProblems.Erdos257.RadixCloseReturn
 /-!
 # Infinite displacement and the exact arithmetic consumer
 
-Compiled R7 proof candidates against the supplied Lean 4.29.1 tree.
-Unlike the already supplied finite rational tail-budget draft, this file
+Unlike the finite rational tail-budget interface, this file
 uses the actual infinite real support series. All summability hypotheses
 needed to interchange infinite sums are proved from the existing library.
 

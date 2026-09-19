@@ -237,7 +237,7 @@ theorem positiveCover_binary_returns (C : PositiveCoverData)
   linarith only [hret, hε]
 
 /-- FULL short-note `thm:variable-fractional-cover`, including all bases and
-all infinite thinnings. Candidate proof text; no local compilation claimed. -/
+all infinite thinnings. -/
 theorem strengthenedPositiveCoverClaim : StrengthenedPositiveCoverClaim := by
   intro C hC
   exact all_base_hereditary_of_binary_returns C.host (positiveCover_binary_returns C hC)

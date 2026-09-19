@@ -3,9 +3,6 @@ import Mathlib
 /-!
 # Finite interfaces for dyadic-shell synchronisation
 
-Candidate module supplied with the round-5 ordinary proof. NOT COMPILED in
-this return. There are no admitted propositions or added axioms in this file.
-
 These lemmas isolate finite gluing and witness extraction. They do not
 formalise the modular-atom estimate, the countable sums, the weighted
 schedule, or the mixed-support irrationality theorem. Those obligations are

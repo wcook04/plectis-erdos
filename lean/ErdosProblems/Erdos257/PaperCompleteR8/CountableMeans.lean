@@ -3,8 +3,8 @@ import ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel
 /-!
 # Summable families of actual modular tests
 
-NOT COMPILED. This supplies the countable interchange and sampling layer after
-(S), with explicit summability hypotheses. The index type can be a pair of
+This supplies the countable interchange and sampling layer after (S), with
+explicit summability hypotheses. The index type can be a pair of
 indices, so the theorem applies to both frame and conductor indices at once.
 It does not assume a lower bound on the fractional exponents.
 -/

@@ -7,8 +7,8 @@ import ErdosProblems.Erdos257.WeightedSupportAveraging
 Generalises the *repaired existing* binary proof in
 Erdos249257/ReciprocalSupportIrrationality.lean, lines 153--280,
 without changing its finite permutation argument. Unlike the binary result,
-this applies at B=2^α for α arbitrarily close to zero.
-NOT COMPILED in this return. No premise is an irrationality conclusion.
+this applies at B=2^α for α arbitrarily close to zero. No premise is an
+irrationality conclusion.
 -/
 
 noncomputable section

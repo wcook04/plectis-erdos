@@ -3,8 +3,8 @@ import ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence
 /-!
 # Summability and means of the ACTUAL positive-cover potentials
 
-Compiled r8-upgrade proof candidates. Every summability condition here is
-derived from PositiveCoverData and its displayed cost, before an interchange.
+Every summability condition here is derived from PositiveCoverData and its
+displayed cost, before an interchange.
 No extra incidence-majorisation premise or uniform positive exponent is assumed.
 -/
 noncomputable section

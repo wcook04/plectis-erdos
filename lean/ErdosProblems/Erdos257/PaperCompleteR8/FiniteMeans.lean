@@ -4,8 +4,6 @@ import Mathlib.Algebra.BigOperators.Intervals
 /-!
 # Actual finite dyadic observation means
 
-Round 8 proof text against Lean 4.29.1 / Mathlib
-5e932f97dd25535344f80f9dd8da3aab83df0fe6. NOT COMPILED in this return.
 The average samples exactly the positive progression points (m+1)*L.
 No independently chosen existential return is substituted for an average.
 -/

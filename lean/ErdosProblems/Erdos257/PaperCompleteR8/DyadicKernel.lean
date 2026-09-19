@@ -8,7 +8,6 @@ All three regimes refer to the actual modular atom, not abstract error terms.
 The complete-orbit argument is in OrbitBound. The dyadic reciprocal-tail bound
 is reused from the compiled WeightedSupportAveraging module. This file proves
 no-wrap and transition bounds and then assembles the uniform finite estimate.
-NOT COMPILED in this return.
 -/
 
 noncomputable section

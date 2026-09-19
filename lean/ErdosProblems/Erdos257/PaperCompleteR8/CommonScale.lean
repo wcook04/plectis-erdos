@@ -8,7 +8,6 @@ This records an OPTIONAL STRONGER sufficient interface. It is not the exact
 residual of mandate 1b: the cover proof controls a nonlinear test, not its raw
 first moment. MixedGaugeConsumer supplies the corrected interface. Separate
 irrationality conclusions or separate existential return times are never used.
-NOT COMPILED in this return.
 -/
 
 noncomputable section
