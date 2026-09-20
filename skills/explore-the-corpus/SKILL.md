@@ -99,6 +99,14 @@ Hand the direction to the existing workflows. They apply unchanged.
 
 ## 5. Where the work lives
 
+A reusable construction is another possible return. When a proof leaves useful
+choices free, follow the existing mining skill's admissible-choice route:
+inspect the selected proof, state its contract, use or extend the existing
+experiment, then replay its obligations through the workbench. A component can
+be valuable without resolving a target problem; demonstrate useful freedom
+and a compatible new use before claiming that value. Preserve prior-art
+attribution and distinguish authored extraction from automatic synthesis.
+
 A computation or investigation goes under `research/experiments/<name>/` with a
 README that states the question, the exact procedure, the outputs and the
 limits. Lean work goes in a module beside the declarations it uses. A new file

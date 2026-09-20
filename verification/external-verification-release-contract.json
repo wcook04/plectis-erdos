@@ -65,6 +65,29 @@
     "erdos-257-mersenne-support-subseries.pdf",
     "erdos-269-three-prime-running-lcm.pdf",
     "erdos-1041-lemniscate-newton-flow.pdf",
-    "erdos-1049-rational-base-lambert.pdf"
-  ]
+    "erdos-1049-rational-base-lambert.pdf",
+    "verification/comparator-feedback-policy.json",
+    "verification/comparator-feedback-policy-negative-mismatch.json",
+    "verification/ExternalVerification/FeedbackPolicyChallenge.lean",
+    "verification/Solutions/FeedbackPolicy.lean",
+    "verification/NegativeSolutions/FeedbackPolicy.lean",
+    "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean"
+  ],
+  "replay_units": {
+    "feedback-policy": {
+      "positive_config": "verification/comparator-feedback-policy.json",
+      "negative_config": "verification/comparator-feedback-policy-negative-mismatch.json",
+      "theorem": "ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum",
+      "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum'",
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sandbox_modes": [
+        "user-manager",
+        "system-manager-nonprivileged-unit"
+      ]
+    }
+  }
 }

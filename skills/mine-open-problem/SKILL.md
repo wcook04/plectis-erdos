@@ -89,6 +89,32 @@ Await each workbench mutation before writing the same session again; a probe
 reserves its move identifier before Lean finishes, so even a concurrent note
 can invalidate its append.
 
+When a proof contains a useful construction, expose the facts its choices must
+preserve before selecting a search policy. The same compiler can inspect one
+elaborated proof without exporting the environment:
+
+```sh
+python3 scripts/proof_state_compiler.py --module ErdosProblems.Erdos251.ResidueFeedbackCore --inspect-declaration ErdosProblems.Erdos251.ResidueFeedback.feedbackDigit_spec
+```
+
+The existing [feedback experiment](../../research/experiments/sparse_interpolation/README.md#reusable-admissible-choices)
+now constructs every rational interval/residue choice, combines congruences,
+and can require an actual Boolean divisor-support witness. It supplies
+enumeration, random, targeted and evolutionary runners, reusable policies,
+constraint-preserving shrinking and finite Lean certificate output. Start with
+`python3 research/experiments/sparse_interpolation/feedback.py --explore`;
+change its request to the mathematical objective, rather than rebranding the
+development control as research. The relation, checker and certificate must
+agree. A depleted budget is unknown; finite exhaustion is only finite.
+
+Use `proof_workbench.py probe` and `replay` for its emitted Lean source. For a
+separately stated contract, extend a named unit of the existing
+`replay_external_verification.py` runner; the `feedback-policy` unit is the
+worked example. A prepared Comparator unit has no replay verdict. Keep the
+same workbench, research-return and propagation owners. Returned components
+include the request, implementation, source attribution, validation and limits;
+successful reuse can retain a policy without promoting a mathematical claim.
+
 For a construction that appears expensive, distinguish requirements of the
 theorem from constraints imposed by its proof. Try releasing one such
 constraint, then seek a matching obstruction before optimising. For a

@@ -14504,6 +14504,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Synthesis.FactorialJet",
+          "path": "lean/ErdosProblems/Synthesis/FactorialJet.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Synthesis.FeedbackContinuation",
           "path": "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
           "role": "Lean proof module",
@@ -14518,7 +14524,8 @@
           "imports": [
             "ErdosProblems.Synthesis.CongruenceInterpolation",
             "ErdosProblems.Synthesis.DyadicShiftEscape",
-            "ErdosProblems.Synthesis.FeedbackContinuation"
+            "ErdosProblems.Synthesis.FeedbackContinuation",
+            "ErdosProblems.Synthesis.FactorialJet"
           ]
         },
         {
@@ -15475,7 +15482,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
+      "ref": "73daa678714137780e3980e1e6a9e952e5e6c7d7",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

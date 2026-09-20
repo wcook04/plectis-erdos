@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:dfc4f4b4377eb8a3f04d5dee54f50bcc1203160b5427f69e2aadd0445f8e5919",
+    "docs/claims.json": "sha256:b0eabcbd8c03792d6ec95315a6f1936446666d9592cc5c83bde5c8652360a698",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:66a8c634a077ba0e853c0fef2a059a2a6fe6c3f30db5ef6d875ce38bcf891398",
     "docs/publication_contract.json": "sha256:d0a1f3e0c8054c2d40b2668f8866e00446b01bdd383609a2891f64d289a29dad",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:ceb2c38979e8cdab4efb1dd6a0cef4fbef7b050c40e6cc6ea16dc9801bef9582",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:0eb9989fe2c1b0cd7e32b228bf776eac669d15922fa63753b4b39236d25fc2fc",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:5a59416469cebb05aee315fe9d9c11fae829c567c7e5eee532f0c00a8266be19",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:e74b96e92c851a4ab5b74aacf4b876dff5c31f0740c6ae59f5171fd174c0c5d9",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
+      "ref": "73daa678714137780e3980e1e6a9e952e5e6c7d7",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

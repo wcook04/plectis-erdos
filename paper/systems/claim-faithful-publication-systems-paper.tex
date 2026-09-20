@@ -17,11 +17,11 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{147,965}
+\newcommand{\SemanticAuthoredTheoremLike}{147,972}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{8,147}
+\newcommand{\SemanticStructuralOnly}{8,154}
 \newcommand{\SemanticAuthoredPercent}{94.5}
 % END generated_semantic_coverage_macros
 \newcommand{\repolink}[2]{\href{\repobase/blob/1d70482583cc9c662cd3b86f66d75c54bb405aa6/#1}{\texttt{#2}}}
@@ -1291,6 +1291,75 @@ whether an increasingly rich map of what works and what cannot work makes
 future reasoning more efficient and more original, or merely makes the system
 more confident about the territory it already knows.
 
+\subsection{Executable choices recovered from a research construction}
+\label{sec:admissible-constructions}
+
+The existing feedback construction now supports every sequence of admissible
+digits, with its infinite sum and eventual congruences preserved under explicit
+continuation hypotheses. This extension turns one proof's sufficient conditions
+into reusable controls for finite experimentation. It lives in the existing
+feedback experiment, proof-state compiler, workbench, and Comparator runner.
+
+At step $n$, let $C_n$ be the cumulative digit sum and $r_n$ the weighted
+remainder. A permitted digit satisfies
+\[
+0\le d\le A_n,\qquad M_n\mid C_n+d,\qquad
+\ell_{n+1}\le r_n-dw_n\le u_{n+1}.
+\]
+For rational data with $w_n>0$, solving the two inequalities gives an integer
+interval; intersecting it with the required residue class enumerates all
+one-step choices directly. Additional congruences are merged before generation.
+A second mode constructs actual Boolean support witnesses with
+$d_n=\sum_{k\mid n}x_k$, $x_k\in\{0,1\}$. The merged relation may be empty:
+existence for two separate constraints never supplies a common witness.
+
+The Lean continuation argument now assumes only the displayed step relation.
+Nonnegative lower bounds and $u_n\to0$ imply
+$r_N=y-\sum_{n<N}d_nw_n\to0$, hence the prescribed sum. Nested moduli
+eventually containing every positive integer give both eventual congruences.
+The old selector still supplies one-step existence under its overlap
+hypotheses. A finite runner does not establish those hypotheses at all indices.
+The chosen constant-modulus development control does not satisfy cofinality.
+
+Several established ideas guide this implementation. Selected-proof
+generalisation motivates exposing sufficient hypotheses
+\cite{proofgeneralisation}; the present extraction was authored after inspecting
+the proof. Relation-based computation and constrained generation motivate one
+specification with multiple computational uses
+\cite{computingcorrectly,palamedes}. Constraint fusion is inspired by merged
+relations and Palamedes's tupling transformation
+\cite{mergingrelations,palamedes}; the implementation here uses exact rational
+arithmetic and generalised Chinese remainders, not their recursive synthesis
+engines. Programmable testing motivates separating the relation from its
+enumeration, random, targeted and shrinking strategies \cite{programmablepbt}.
+A small evolutionary runner retains choice programmes for later requests,
+drawing on programme evolution \cite{alphaevolve} and the separation between
+active problem solving and consolidation \cite{dreamprover}. None of these
+systems is claimed as a new invention or a drop-in dependency.
+
+The proof-state compiler exposes bounded elaborated expression slices of a
+selected declaration. The experiment emits independently stated finite Lean
+obligations; the existing workbench stores and replays their exact bytes.
+Comparator's existing release contract can now name additional replay units.
+The feedback unit compares a separately expanded continuation statement with
+the implementation and includes a deliberate type mismatch. Building these
+modules locally is distinct from obtaining the isolated Comparator verdict.
+This reuse keeps exploration, kernel evidence, statement comparison, and
+publication with their existing owners.
+
+The recorded eight-step feedback control has 1,393 complete traces and maximum
+energy $\sum d_n^2=284$. Direct construction and generate-and-filter agree on
+the answer, using respectively 2,376 and 8,856 digit proposals. The support
+composition has two traces and maximum energy 11, requiring 19 and 99 proposals.
+Equal proposal-budget runs and the entire policy derivation budget are also
+recorded. These measurements establish finite behaviour, not a research-speed
+gain: implementation, literature reading, verification, wall time and model
+cost are not measured. A prospective evaluation must compare a capable agent
+with the same papers and Lean access, including an arm receiving the same
+mathematics as prose and lemmas. The systems account owns this machinery;
+a ninth mathematical paper would require a substantive result obtained through
+its use, beyond these development controls.
+
 \section{Relation to other approaches}\label{sec:related}
 \small
 
@@ -1618,6 +1687,25 @@ Bounty Based Collaborative Autoformalization With LLM Agents}, 2026,
 \bibitem{dreamprover} Y.~Zhang et al., \emph{DreamProver: Evolving
 Transferable Lemma Libraries via a Wake--Sleep Theorem-Proving Agent}, 2026,
 \href{https://doi.org/10.48550/arXiv.2604.26311}{arXiv}.
+\bibitem{proofgeneralisation} A.~Gandhi, A.~R.~Tadipatri, and T.~Gowers,
+\emph{Automatically Generalizing Proofs and Statements}, ITP 2025,
+\href{https://doi.org/10.4230/LIPIcs.ITP.2025.12}{LIPIcs 352, Article 12}, Section 4.
+\bibitem{palamedes} H.~Goldstein, H.~Peleg, C.~Torczon, D.~Sainati,
+L.~Lampropoulos, and B.~C.~Pierce, \emph{The Search for Constrained Random
+Generators}, PLDI 2026, Sections 3--5,
+\href{https://arxiv.org/abs/2511.12253v2}{arXiv:2511.12253v2}.
+\bibitem{computingcorrectly} Z.~Paraskevopoulou, A.~Eline, and L.~Lampropoulos,
+\emph{Computing Correctly with Inductive Relations}, PLDI 2022,
+\href{https://lemonidas.github.io/pdf/ComputingCorrectly.pdf}{author manuscript}.
+\bibitem{mergingrelations} J.~Prinz and L.~Lampropoulos,
+\emph{Merging Inductive Relations}, PACMPL 7, PLDI (2023), Article 178,
+\href{https://doi.org/10.1145/3591292}{doi:10.1145/3591292}.
+\bibitem{programmablepbt} A.~Keles, J.~Frank, C.~Mert, H.~Goldstein, and
+L.~Lampropoulos, \emph{Programmable Property-Based Testing}, 2026,
+Sections 2 and 6, \href{https://arxiv.org/abs/2602.18545v1}{arXiv:2602.18545v1}.
+\bibitem{alphaevolve} A.~Novikov et al., \emph{AlphaEvolve: A coding agent
+for scientific and algorithmic discovery}, 2025, Section 2,
+\href{https://arxiv.org/abs/2506.13131v1}{arXiv:2506.13131v1}.
 \bibitem{hep} I.~Takahara and T.~Mizoguchi, \emph{Toward Auditable AI
 Scientists: A Hypothesis Evolution Protocol for LLM Agents}, 2026,
 \href{https://doi.org/10.48550/arXiv.2607.09195}{arXiv}.

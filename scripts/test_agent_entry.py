@@ -146,6 +146,8 @@ ROUTE_CASES = {
     "what should I work on": ("choose_open_question", "mine-open-problem"),
     "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
     "find a proof in Lean": ("bounded_research", "mine-open-problem"),
+    "Explore admissible choices in the feedback construction": ("bounded_research", "mine-open-problem"),
+    "Reuse a construction contract for this target": ("bounded_research", "mine-open-problem"),
     "prove this Lean theorem": ("bounded_research", "mine-open-problem"),
     "Attempt one bounded research continuation and prepare a checkable return": (
         "bounded_research",

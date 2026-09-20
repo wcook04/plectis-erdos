@@ -350,6 +350,7 @@ jobs:
               formalization.yaml \
               scripts/build_external_verification.py \
               scripts/run_external_verification.py \
+              scripts/replay_external_verification.py \
               scripts/test_external_verification.py \
               scripts/test_external_verification_release.py \
               .github/workflows/lean.yml; then
@@ -498,6 +499,14 @@ jobs:
           run_comparator verification/ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json \
             > artifacts-249-totient-kernel-negative.log 2>&1
           totient_kernel_negative_exit=$?
+          run_comparator verification/comparator-feedback-policy.json \
+            > artifacts-feedback-policy-positive.log 2>&1
+          feedback_policy_positive_exit=$?
+          run_comparator verification/comparator-feedback-policy-negative-mismatch.json \
+            > artifacts-feedback-policy-negative.log 2>&1
+          feedback_policy_negative_exit=$?
+          echo "feedback_policy_positive_exit=$feedback_policy_positive_exit" >> "$GITHUB_OUTPUT"
+          echo "feedback_policy_negative_exit=$feedback_policy_negative_exit" >> "$GITHUB_OUTPUT"
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
           echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
           echo "local_1049_positive_exit=$local_1049_positive_exit" >> "$GITHUB_OUTPUT"
@@ -541,6 +550,27 @@ jobs:
             --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
             --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
             --landrun-bin "$RUNNER_TEMP/landrun"
+      - name: Enforce the admissible-feedback policy unit
+        if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
+        env:
+          FEEDBACK_POSITIVE_EXIT: ${{ steps.comparator.outputs.feedback_policy_positive_exit }}
+          FEEDBACK_NEGATIVE_EXIT: ${{ steps.comparator.outputs.feedback_policy_negative_exit }}
+        run: |
+          python3 - <<'PYTHON'
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import replay_external_verification as replay
+          selected = replay.select_replay_unit(replay.load_contract(Path.cwd()), 'feedback-policy')
+          replay.validate_unit_configs(Path.cwd(), selected)
+          positive = int(os.environ.get('FEEDBACK_POSITIVE_EXIT') or '-999')
+          negative = int(os.environ.get('FEEDBACK_NEGATIVE_EXIT') or '-999')
+          log = Path('artifacts-feedback-policy-negative.log')
+          text = log.read_text() if log.exists() else ''
+          if not replay.replay_checks_pass(positive, negative, text, selected['expected_negative_diagnostic']):
+              raise SystemExit('feedback-policy Comparator unit did not pass both controls')
+          print('feedback-policy: positive accepted and exact negative statement rejected')
+          PYTHON
       - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -625,6 +655,8 @@ jobs:
           path: |
             artifacts/external-verification-receipt.json
             artifacts/erdos249-totient-kernel-comparator-receipt.json
+            artifacts-feedback-policy-positive.log
+            artifacts-feedback-policy-negative.log
           if-no-files-found: error
 
   first-contact:

@@ -1,0 +1,735 @@
+{
+  "evidence": "exact_finite_arithmetic",
+  "experiment_role": "development_controls_not_prospective_discovery",
+  "implementation_sha256": "295e83303e2232bc794e4f82bdaaa1576f67744980e46ba573160911a45d1e91",
+  "requests": {
+    "feedback": {
+      "label": "feedback-policy-development-control",
+      "target": "4",
+      "steps": [
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/2",
+          "lower": "1",
+          "upper": "3"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/4",
+          "lower": "1/2",
+          "upper": "3/2"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/8",
+          "lower": "1/4",
+          "upper": "3/4"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/16",
+          "lower": "1/8",
+          "upper": "3/8"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/32",
+          "lower": "1/16",
+          "upper": "3/16"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/64",
+          "lower": "1/32",
+          "upper": "3/32"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/128",
+          "lower": "1/64",
+          "upper": "3/64"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/256",
+          "lower": "1/128",
+          "upper": "3/128"
+        }
+      ]
+    },
+    "support-composition": {
+      "label": "Boolean-divisor-support-composition",
+      "target": "1",
+      "support": "divisor-count",
+      "steps": [
+        {
+          "allowance": 1,
+          "modulus": 1,
+          "weight": "1/2",
+          "lower": "0",
+          "upper": "3/2"
+        },
+        {
+          "allowance": 2,
+          "modulus": 1,
+          "weight": "1/4",
+          "lower": "0",
+          "upper": "1"
+        },
+        {
+          "allowance": 3,
+          "modulus": 1,
+          "weight": "1/8",
+          "lower": "0",
+          "upper": "5/8"
+        },
+        {
+          "allowance": 4,
+          "modulus": 1,
+          "weight": "1/16",
+          "lower": "0",
+          "upper": "3/8"
+        },
+        {
+          "allowance": 5,
+          "modulus": 1,
+          "weight": "1/32",
+          "lower": "0",
+          "upper": "7/32"
+        },
+        {
+          "allowance": 6,
+          "modulus": 1,
+          "weight": "1/64",
+          "lower": "0",
+          "upper": "1/8"
+        },
+        {
+          "allowance": 7,
+          "modulus": 1,
+          "weight": "1/128",
+          "lower": "0",
+          "upper": "9/128"
+        },
+        {
+          "allowance": 8,
+          "modulus": 1,
+          "weight": "1/256",
+          "lower": "0",
+          "upper": "5/128"
+        }
+      ]
+    },
+    "transfer": {
+      "label": "feedback-policy-development-control",
+      "target": "7/2",
+      "steps": [
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/2",
+          "lower": "1",
+          "upper": "3"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/4",
+          "lower": "1/2",
+          "upper": "3/2"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/8",
+          "lower": "1/4",
+          "upper": "3/4"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/16",
+          "lower": "1/8",
+          "upper": "3/8"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/32",
+          "lower": "1/16",
+          "upper": "3/16"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/64",
+          "lower": "1/32",
+          "upper": "3/32"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/128",
+          "lower": "1/64",
+          "upper": "3/64"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/256",
+          "lower": "1/128",
+          "upper": "3/128"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/512",
+          "lower": "1/256",
+          "upper": "3/256"
+        },
+        {
+          "allowance": 8,
+          "modulus": 2,
+          "weight": "1/1024",
+          "lower": "1/512",
+          "upper": "3/512"
+        }
+      ]
+    },
+    "incompatible": {
+      "target": "2",
+      "support": "divisor-count",
+      "steps": [
+        {
+          "allowance": 2,
+          "modulus": 2,
+          "weight": "1",
+          "lower": "0",
+          "upper": "0"
+        }
+      ]
+    }
+  },
+  "exhaustive_comparisons": [
+    {
+      "case": "feedback",
+      "runner": "enumerate",
+      "backend": "compiled",
+      "objective": "energy",
+      "seed": 0,
+      "policy": null,
+      "budget": 50000,
+      "proposals": 2376,
+      "valid_transitions": 2376,
+      "dead_ends": 0,
+      "completed_traces": 1393,
+      "distinct_complete_traces": 1393,
+      "exhausted": true,
+      "complete_trace_set_sha256": "c5a80260c707e35407a160b27e8cad4169b3de86c3c0084fe214d8f77a509a89",
+      "status": "finite_optimum",
+      "best": {
+        "digits": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          8
+        ],
+        "score": 284,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 46,
+          "remainder": "1/64",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    },
+    {
+      "case": "feedback",
+      "runner": "enumerate",
+      "backend": "filter",
+      "objective": "energy",
+      "seed": 0,
+      "policy": null,
+      "budget": 50000,
+      "proposals": 8856,
+      "valid_transitions": 2376,
+      "dead_ends": 0,
+      "completed_traces": 1393,
+      "distinct_complete_traces": 1393,
+      "exhausted": true,
+      "complete_trace_set_sha256": "c5a80260c707e35407a160b27e8cad4169b3de86c3c0084fe214d8f77a509a89",
+      "status": "finite_optimum",
+      "best": {
+        "digits": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          8
+        ],
+        "score": 284,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 46,
+          "remainder": "1/64",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    },
+    {
+      "case": "support-composition",
+      "runner": "enumerate",
+      "backend": "compiled",
+      "objective": "energy",
+      "seed": 0,
+      "policy": null,
+      "budget": 50000,
+      "proposals": 19,
+      "valid_transitions": 19,
+      "dead_ends": 8,
+      "completed_traces": 2,
+      "distinct_complete_traces": 2,
+      "exhausted": true,
+      "complete_trace_set_sha256": "251cff882519e29d5a15d1b746cffb0e18df7f9cd0aac5b1f3a357600aed2e54",
+      "status": "finite_optimum",
+      "best": {
+        "digits": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "score": 11,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 9,
+          "remainder": "0",
+          "support_bits": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    },
+    {
+      "case": "support-composition",
+      "runner": "enumerate",
+      "backend": "filter",
+      "objective": "energy",
+      "seed": 0,
+      "policy": null,
+      "budget": 50000,
+      "proposals": 99,
+      "valid_transitions": 19,
+      "dead_ends": 8,
+      "completed_traces": 2,
+      "distinct_complete_traces": 2,
+      "exhausted": true,
+      "complete_trace_set_sha256": "251cff882519e29d5a15d1b746cffb0e18df7f9cd0aac5b1f3a357600aed2e54",
+      "status": "finite_optimum",
+      "best": {
+        "digits": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "score": 11,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 9,
+          "remainder": "0",
+          "support_bits": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    }
+  ],
+  "matched_proposal_budget": [
+    {
+      "runner": "enumerate",
+      "backend": "compiled",
+      "objective": "energy",
+      "seed": 17,
+      "policy": null,
+      "budget": 2048,
+      "proposals": 2048,
+      "valid_transitions": 2048,
+      "dead_ends": 0,
+      "completed_traces": 1199,
+      "distinct_complete_traces": 1199,
+      "exhausted": false,
+      "complete_trace_set_sha256": "42b0edc868495046a5d6d911921babd456e1e823d3858e822d53182b6d72509f",
+      "status": "finite_candidate",
+      "best": {
+        "digits": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          8
+        ],
+        "score": 284,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 46,
+          "remainder": "1/64",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    },
+    {
+      "runner": "random",
+      "backend": "compiled",
+      "objective": "energy",
+      "seed": 17,
+      "policy": null,
+      "budget": 2048,
+      "proposals": 2048,
+      "valid_transitions": 2048,
+      "dead_ends": 0,
+      "completed_traces": 256,
+      "distinct_complete_traces": 234,
+      "exhausted": false,
+      "complete_trace_set_sha256": "5fb4ce8e9ff1e91dba24e5a948057ceba006490c00457c43d144f7c29186e1ce",
+      "status": "finite_candidate",
+      "best": {
+        "digits": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          8
+        ],
+        "score": 284,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 46,
+          "remainder": "1/64",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    },
+    {
+      "runner": "targeted",
+      "backend": "compiled",
+      "objective": "energy",
+      "seed": 17,
+      "policy": null,
+      "budget": 2048,
+      "proposals": 2048,
+      "valid_transitions": 2048,
+      "dead_ends": 0,
+      "completed_traces": 256,
+      "distinct_complete_traces": 1,
+      "exhausted": false,
+      "complete_trace_set_sha256": "ba01b703c943bc02dc65c97811a5f7e26a0e21e793cc4b53f3ed100d2175454d",
+      "status": "finite_candidate",
+      "best": {
+        "digits": [
+          6,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "score": 64,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 20,
+          "remainder": "1/128",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    },
+    {
+      "runner": "evolve",
+      "backend": "compiled",
+      "objective": "energy",
+      "seed": 17,
+      "budget": 2048,
+      "proposals": 2048,
+      "valid_transitions": 2048,
+      "evaluated_programmes": 256,
+      "distinct_complete_traces": 74,
+      "exhausted": false,
+      "status": "finite_candidate",
+      "best": {
+        "digits": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          8,
+          6
+        ],
+        "score": 284,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 46,
+          "remainder": "1/128",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "policy": [
+        "min",
+        "min",
+        "middle",
+        "min",
+        "middle",
+        "min",
+        "max",
+        "previous"
+      ],
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "not_checked",
+      "retention": "candidate policy; rerun on the next request; no proof or novelty promotion"
+    },
+    {
+      "runner": "enumerate",
+      "backend": "filter",
+      "objective": "energy",
+      "seed": 17,
+      "policy": null,
+      "budget": 2048,
+      "proposals": 2048,
+      "valid_transitions": 554,
+      "dead_ends": 0,
+      "completed_traces": 324,
+      "distinct_complete_traces": 324,
+      "exhausted": false,
+      "complete_trace_set_sha256": "281d01d2826c20487abc3e1a2a588f09e779a52228e5f0ea3fb7586a687a948d",
+      "status": "finite_candidate",
+      "best": {
+        "digits": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          8
+        ],
+        "score": 284,
+        "check": {
+          "valid": true,
+          "complete": true,
+          "cumulative": 46,
+          "remainder": "1/64",
+          "support_bits": [],
+          "evidence": "exact_finite_arithmetic",
+          "infinite_continuation": "not_checked"
+        }
+      },
+      "evidence": "exact_finite_arithmetic",
+      "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+    }
+  ],
+  "policy_training": {
+    "runner": "evolve",
+    "backend": "compiled",
+    "objective": "energy",
+    "seed": 17,
+    "budget": 2048,
+    "proposals": 2048,
+    "valid_transitions": 2048,
+    "evaluated_programmes": 256,
+    "distinct_complete_traces": 74,
+    "exhausted": false,
+    "status": "finite_candidate",
+    "best": {
+      "digits": [
+        2,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        6
+      ],
+      "score": 284,
+      "check": {
+        "valid": true,
+        "complete": true,
+        "cumulative": 46,
+        "remainder": "1/128",
+        "support_bits": [],
+        "evidence": "exact_finite_arithmetic",
+        "infinite_continuation": "not_checked"
+      }
+    },
+    "policy": [
+      "min",
+      "min",
+      "middle",
+      "min",
+      "middle",
+      "min",
+      "max",
+      "previous"
+    ],
+    "evidence": "exact_finite_arithmetic",
+    "infinite_continuation": "not_checked",
+    "retention": "candidate policy; rerun on the next request; no proof or novelty promotion"
+  },
+  "policy_reuse": {
+    "runner": "policy",
+    "backend": "compiled",
+    "objective": "energy",
+    "seed": 0,
+    "policy": [
+      "min",
+      "min",
+      "middle",
+      "min",
+      "middle",
+      "min",
+      "max",
+      "previous"
+    ],
+    "budget": 10000,
+    "proposals": 10,
+    "valid_transitions": 10,
+    "dead_ends": 0,
+    "completed_traces": 1,
+    "distinct_complete_traces": 1,
+    "exhausted": false,
+    "complete_trace_set_sha256": "c0d6db9c27a519c7222eadb547c0e740a6d59af21ff8e8cd05946750cc0962db",
+    "status": "finite_candidate",
+    "best": {
+      "digits": [
+        2,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        6,
+        0,
+        2
+      ],
+      "score": 268,
+      "check": {
+        "valid": true,
+        "complete": true,
+        "cumulative": 46,
+        "remainder": "3/512",
+        "support_bits": [],
+        "evidence": "exact_finite_arithmetic",
+        "infinite_continuation": "not_checked"
+      }
+    },
+    "evidence": "exact_finite_arithmetic",
+    "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+  },
+  "incompatible_composition": {
+    "runner": "enumerate",
+    "backend": "compiled",
+    "objective": "energy",
+    "seed": 0,
+    "policy": null,
+    "budget": 10000,
+    "proposals": 0,
+    "valid_transitions": 0,
+    "dead_ends": 0,
+    "completed_traces": 0,
+    "distinct_complete_traces": 0,
+    "exhausted": true,
+    "complete_trace_set_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "status": "finite_incompatible",
+    "best": null,
+    "evidence": "exact_finite_arithmetic",
+    "infinite_continuation": "requires all-step admissibility and vanishing bounds"
+  },
+  "cost_boundary": "proposals count all derivation trials; timings, model tokens, literature reading and implementation cost are not measured",
+  "research_gain": "not_established; requires compute-matched agent and prose/lemma baselines on prospective tasks"
+}

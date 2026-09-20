@@ -1,0 +1,95 @@
+{
+  "starting_commit": "2bd14835b940b3c695a9cc8828c7e2967d65c053",
+  "scope": "Reusable admissible choices integrated into existing public research and assurance owners",
+  "source_sha256": {
+    "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean": "c8c0f02cbe09b5e25563cdd860733a302a2ea9c5b439e8533ee23dd10bf415f5",
+    "research/experiments/sparse_interpolation/feedback.py": "295e83303e2232bc794e4f82bdaaa1576f67744980e46ba573160911a45d1e91",
+    "verification/ExternalVerification/FeedbackPolicyChallenge.lean": "a635d28677c45c1c36e509f938071f5d26145ecc71d0f0fa8efd3c057ff69d59",
+    "verification/Solutions/FeedbackPolicy.lean": "4abb0170178bd209bcc17b63b85e1fcdc168563a7fa8b7c7a40054843026c1a6",
+    "verification/NegativeSolutions/FeedbackPolicy.lean": "85e56d9836d03262e8539f51bb9975d0a67a852bff607e127577b7acb2edaf05"
+  },
+  "strongest_supported_conclusion": "Every digit sequence satisfying the explicit all-step feedback relation, nonnegative lower bounds and vanishing upper bounds has the prescribed sum; nested cofinal moduli give eventual congruences. Exact finite runners can compose this relation with Boolean divisor-support choices.",
+  "input_stage": "selected-proof inspection and literature-informed authored contract",
+  "output_stage": "kernel-checked conditional theorem; finite computation; systems exposition",
+  "human_understanding_delta": "The selector is one witness of a reusable relation. Extra constraints can be composed only with an actual joint witness; local and finite success do not establish infinite continuation.",
+  "verification": {
+    "lean": "Focused build passed for FeedbackContinuation and all three assurance modules; permitted axioms remain propext, Quot.sound and Classical.choice.",
+    "finite": "12 regression tests passed, including 6480 exact one-step cases and exhaustive compiled/filter trace-set agreement.",
+    "workbench": "../../workbench/sessions/admissible-feedback-20260920/replay.json",
+    "comparator": "Named unit configured and modules checked locally; isolated Linux/systemd positive and negative Comparator replay not performed.",
+    "review": "Independent mathematical review and historical novelty not established.",
+    "dependency_export": "Both supported roots built; full elaborated export passed with 16090 nodes and 71782 direct edges. Tracked index and full-export receipt retained."
+  },
+  "consumers": [
+    {
+      "owner": "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
+      "disposition": "update_now",
+      "effect": "Admissibility relation, nonemptiness and selector-independent continuation."
+    },
+    {
+      "owner": "research/experiments/sparse_interpolation/feedback.py",
+      "disposition": "update_now",
+      "effect": "Exact relation compiler, constraint composition, runners, policy retention, shrinking and finite Lean obligations."
+    },
+    {
+      "owner": "scripts/proof_state_compiler.py",
+      "disposition": "update_now",
+      "effect": "Bounded selected-declaration elaborated expression inspection."
+    },
+    {
+      "owner": "scripts/proof_workbench.py",
+      "disposition": "verify_unchanged",
+      "effect": "Existing append-only probe and replay protocol carries accepted and rejected evidence."
+    },
+    {
+      "owner": "scripts/replay_external_verification.py",
+      "disposition": "update_now",
+      "effect": "Named units reuse pinned isolated execution; default release unit preserved."
+    },
+    {
+      "owner": "skills/mine-open-problem/SKILL.md",
+      "disposition": "update_now",
+      "effect": "Normal cold-clone mining route reaches these components and existing research-return route."
+    },
+    {
+      "owner": "paper/systems/claim-faithful-publication-systems-paper.tex",
+      "disposition": "update_now",
+      "effect": "Executable choices subsection explains implementation, attributions and measured limits."
+    },
+    {
+      "owner": "paper/systems/cold-clone-to-proof-receipt.tex",
+      "disposition": "update_now",
+      "effect": "Reader route points to the existing owners and systems account."
+    },
+    {
+      "owner": "docs/claims.json",
+      "disposition": "verify_unchanged",
+      "effect": "No Erd\u0151s endpoint or registered problem status is promoted."
+    },
+    {
+      "owner": "paper/synthesis",
+      "disposition": "defer",
+      "effect": "A ninth mathematical paper needs a substantive subsequent mathematical result; development controls are not that result. Re-enter on a proved new consequence or discriminating counterexample."
+    },
+    {
+      "owner": "verification/comparator-feedback-policy.json",
+      "disposition": "defer",
+      "effect": "Run positive and negative named-unit replay on Linux/systemd at the landed commit and exact tree."
+    },
+    {
+      "owner": ".github/workflows/lean.yml",
+      "disposition": "update_now",
+      "effect": "Existing pinned Linux Comparator job runs both feedback-policy controls, enforces the shared exact-mismatch verdict and retains logs. Remote execution remains unrun in this local session."
+    },
+    {
+      "owner": "skills/propagate-research-consequences/SKILL.md",
+      "disposition": "update_now",
+      "effect": "Before a cold full-corpus rebuild, reuse the exporter in a warm checkout only after proving all formal inputs identical; verify its generated receipt in the isolated snapshot."
+    }
+  ],
+  "appraisal": "A reusable specialisation of established ideas to this corpus; no automatic proof-to-generator extraction, prospective discovery gain, or new mathematical endpoint claimed.",
+  "next_mathematical_test": "Find an infinite support-constrained continuation schedule or a proved obstruction; finite divisor-support success alone is insufficient.",
+  "canonicalization": "Reusable mechanism is retained with its existing owners; development traces and evolved policies remain candidates, not canonical mathematical results.",
+  "general_rule": "Existing mining and propagation skills now distinguish admissibility, joint support witnesses, finite evidence, infinite hypotheses and independently compared statements.",
+  "formal_source_commit": "73daa678714137780e3980e1e6a9e952e5e6c7d7"
+}

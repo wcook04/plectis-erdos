@@ -46,6 +46,8 @@ The paper first separates the repository’s four navigation layers and then sho
 
 This paper owns the navigation and validation case study. The wider [claim-transition lifecycle](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-lifecycle) is described in the systems paper, while the [contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) specifies how an outsider returns a change. These links lead to named destinations in the sibling PDFs rather than to page numbers.
 
+The same proof-state compiler also supports bounded inspection of a selected elaborated proof. The existing feedback experiment uses that route to expose admissible construction choices and emits finite obligations for the same workbench to replay. Comparator can check the separately stated continuation contract through a named unit of its existing runner. The implementation, literature attribution and finite controls are described in the systems paper’s discussion of executable construction choices. These operations extend the existing research route and do not automatically extract a new contract or establish an infinite claim from a finite run.
+
 <a id="sec:layers"></a>
 
 # Four views of the mathematical library
@@ -73,7 +75,7 @@ The dependency index loads the two supported compact roots, extracts direct cons
 
 #### Authored mathematical interpretation.
 
-The semantic graph contains authored statement nodes, typed relations, and an exact source-structural floor. At the audited revision all 147,965 authored theorem-like declarations are linked. Of these, 139,818 (94.5%) participate in authored mathematical interpretations: 3,330 are exact proposition evidence and 136,488 are bounded contextual links to digest- or module-verified families. The remaining 8,147 are grouped only by exact source module and normalised Lean proposition signature. That lower tier is useful navigation, not a mathematical paraphrase. Keeping the tiers visible prevents exhaustive linkage or bulk helper assignment from being misreported as exhaustive direct understanding. A paper-seeded population query continues to rank exact live citations whose best route is structural rather than authored.
+The semantic graph contains authored statement nodes, typed relations, and an exact source-structural floor. At the audited revision all 147,972 authored theorem-like declarations are linked. Of these, 139,818 (94.5%) participate in authored mathematical interpretations: 3,330 are exact proposition evidence and 136,488 are bounded contextual links to digest- or module-verified families. The remaining 8,154 are grouped only by exact source module and normalised Lean proposition signature. That lower tier is useful navigation, not a mathematical paraphrase. Keeping the tiers visible prevents exhaustive linkage or bulk helper assignment from being misreported as exhaustive direct understanding. A paper-seeded population query continues to rank exact live citations whose best route is structural rather than authored.
 
 <a id="reviewed-public-claims."></a>
 

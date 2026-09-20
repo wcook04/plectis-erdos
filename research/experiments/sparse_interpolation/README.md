@@ -105,7 +105,123 @@ maximum rejection depth. The fixed-depth theorem survives. The same script
 checks the odd-index factorial telescope showing why a small allowance merely
 along a subsequence does not imply a null attainable set.
 
-## Evidence and attribution
+## Reusable admissible choices
+
+The feedback argument now applies to **every admissible sequence of choices**,
+not just its original selector. The checked theorem in
+[`FeedbackContinuation.lean`](../../../lean/ErdosProblems/Synthesis/FeedbackContinuation.lean)
+separates bounded digits, cumulative congruences and the remainder interval.
+Nonnegative remainders bounded by a sequence tending to zero give the prescribed
+infinite sum. Nested, cofinal moduli give the eventual digit and prefix
+congruences. All these infinite hypotheses remain explicit.
+
+For exact rational inputs, `feedback.py` compiles the one-step relation into an
+integer interval intersected with a residue class. Extra congruences are merged
+by the generalised Chinese remainder calculation, including non-coprime and
+incompatible cases. The original finite checks remain its no-argument mode.
+
+```sh
+python3 research/experiments/sparse_interpolation/feedback.py --explore
+python3 research/experiments/sparse_interpolation/feedback.py --explore --support divisor-count
+python3 research/experiments/sparse_interpolation/feedback.py --evaluate --output /tmp/feedback-evaluation.json
+python3 research/experiments/sparse_interpolation/test_feedback.py
+```
+
+The second command requires actual Boolean support choices: at index `n`,
+`d_n = sum(x_k for k dividing n)` with every `x_k` either zero or one. This
+constructs a support prefix, instead of treating arbitrary integer coefficients
+as a support. It does not prove an infinite support representation or resolve
+Problem 257. A conjunction can be empty even when each constraint separately
+has a witness; the tests include that case and a valid prefix with no extension.
+
+To supply another finite schedule, pass `--request request.json`. Its fields are
+`target`, `steps`, optional `label`, and `support` (`free` or `divisor-count`).
+Every step has `allowance`, positive `modulus`, positive `weight`, `lower`, and
+`upper`; optional `congruences` contains `[digit_residue, modulus]` pairs.
+The bounds describe the remainder **after** this step. Rational values must be
+integers or fraction strings, never floating-point numbers. The complete
+examples are retained in [`policy-results.json`](policy-results.json).
+
+One relation supports enumeration, random choice, targeted choice, and a small
+evolutionary search over choice programmes. Search scores optimise only the
+selected finite objective (`energy`, `variation`, or `mass`). A programme can
+be retained and reused without re-deriving the construction:
+
+```sh
+python3 research/experiments/sparse_interpolation/feedback.py --explore --runner evolve --budget 2048 --output /tmp/feedback-policy.json
+python3 research/experiments/sparse_interpolation/feedback.py --request request.json --runner policy --policy-result /tmp/feedback-policy.json
+```
+
+The policy language selects the minimum, maximum, middle or a choice near the
+preceding digit, always within the currently admissible set. It is a deliberately
+small native adaptation of programme evolution, not AlphaEvolve itself. The
+Python API also exposes `shrink_trace(request, digits, predicate)`: every accepted
+simplification rechecks the construction and the researcher-supplied predicate.
+A retained candidate is not automatically a proved operation or a new theorem.
+
+### Reuse the existing proof and assurance owners
+
+The proof-state compiler exposes a bounded expression slice for one selected
+declaration, including binders, applications and subterms. It assists reasoning
+about the contract; it does not automatically generalise the proof:
+
+```sh
+python3 scripts/proof_state_compiler.py --module ErdosProblems.Erdos251.ResidueFeedbackCore --inspect-declaration ErdosProblems.Erdos251.ResidueFeedback.feedbackDigit_spec
+python3 research/experiments/sparse_interpolation/feedback.py --explore --lean /tmp/feedback-trace.lean
+python3 scripts/proof_workbench.py open --session feedback-local --intent "Check a finite admissible construction"
+python3 scripts/proof_workbench.py probe --session feedback-local --file /tmp/feedback-trace.lean
+python3 scripts/proof_workbench.py replay --session feedback-local
+```
+
+The emitted Lean file independently states each finite step over real numbers,
+plus any extra congruences and Boolean support identities. The workbench owns
+the probe verdict and replay. A successful finite certificate does not verify
+an infinite schedule, the Python compiler's completeness, or an asymptotic
+property observed during exploration.
+
+Comparator's existing isolated executor now accepts named units in its existing
+release contract. The `feedback-policy` unit has an independently expanded
+statement, a solution using the generalised theorem, and a proved but
+deliberately weaker negative solution. No statement hole was added. Inspect it
+with the same existing command, supplying the exact committed source identity:
+
+```sh
+python3 scripts/replay_external_verification.py plan --unit feedback-policy --source-commit FULL_COMMIT --source-tree FULL_TREE
+python3 scripts/replay_external_verification.py run --unit feedback-policy --source-commit FULL_COMMIT --source-tree FULL_TREE --output /tmp/feedback-comparator.json
+```
+
+`run` retains the existing Linux/systemd isolation and pinned tools. Prepared
+configuration and locally built challenge/solution files are not a Comparator
+verdict. Positive acceptance and the expected negative type rejection must
+both be recorded by that runner. The existing Linux CI Comparator job also
+runs and enforces both controls and retains their logs. Research contributions continue through
+`skills/erdos-research-return/SKILL.md`; no separate component registry is needed.
+
+### What the controls establish
+
+The eight-step feedback control has 1,393 complete traces. Compiled enumeration
+and the direct-predicate baseline agree on that set's size and the optimum
+energy 284; they use 2,376 and 8,856 digit proposals respectively. The Boolean
+support composition has two traces and optimum energy 11, using 19 and 99
+proposals. `--evaluate` also records equal proposal budgets and the cost of
+deriving and reusing a policy. These are development controls, not a prospective
+discovery trial or a compute-matched comparison with a capable reasoning agent.
+Reading, implementation, verification, wall time and model cost must count in
+any later claim of research benefit.
+
+The contract extraction and compiler were authored for this corpus. The
+literature supplies design inspiration: selected proof generalisation,
+relation-based computation, constraint fusion, programmable runners, programme
+evolution and consolidation. Exact sources, sections, versions, adaptations
+and acquisition hashes are in [`literature.json`](literature.json), and the
+systems paper explains this implementation. The retained workbench session is
+[`admissible-feedback-20260920`](../../workbench/sessions/admissible-feedback-20260920),
+and [`policy-propagation.json`](policy-propagation.json) records evidence and
+consumer dispositions. A ninth mathematical paper must
+come from a substantive subsequent result; neither these controls nor the
+earlier coordinate-recovery experiment supply one.
+
+## Earlier mathematical evidence and attribution
 
 - Starting public revision: `cd92136f7f0f03bd78fb8753e4e4f0527dbe3a83`.
 - The operator supplied a mathematical review containing the one-coefficient

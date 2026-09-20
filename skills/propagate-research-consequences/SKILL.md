@@ -167,7 +167,15 @@ base plus the exact owned changes, copy back only owned outputs, and run
 `python3 scripts/check_release_ref.py` on the resulting commit. Choose a
 receipt path whose parent directory is canonical and contains no symlink.
 Preserve unrelated work and reuse exact existing proof receipts when the
-formal sources are unchanged.
+formal sources are unchanged. Before exporting the dependency index in a
+cold snapshot, check for an existing warm checkout of the identical complete
+Lean source inventory, toolchain, manifest, atlas and exporter inputs. Run the
+owner there and carry its index and full-export receipt into the snapshot;
+verify them with the owner's `--check` before landing. If any formal input
+differs, regenerate for the selected source. This preserves the clean
+publication boundary without rebuilding the entire corpus just to isolate
+unrelated paper edits. Never copy mutable build outputs during an active build
+or substitute a focused-build receipt for the full export.
 
 At closeout, carry any reusable failure mode into the owning public workflow
 and its discovery route. A lesson in a private chat cannot guide the next

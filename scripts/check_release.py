@@ -265,6 +265,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
+        "admissible_feedback": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
+        ],
         "mutation_harness": [
             sys.executable,
             str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
@@ -2893,7 +2897,7 @@ def main(argv: list[str] | None = None) -> int:
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "proof_workbench", "computation_replay",
+        "proof_workbench", "computation_replay", "admissible_feedback",
     ):
         result = late_checks[name]
         check(result.returncode == 0,
