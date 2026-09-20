@@ -1,0 +1,517 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% Synthesis note: mathematics whose subject is several of the Erdős Problem
+% Notes read together.  Build with `make -C paper` or
+% `tectonic erdos-synthesis-subsums-across-bases.tex`.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\usepackage{xurl}
+\hypersetup{
+  pdftitle={Rational and irrational subsums of a Lambert series across bases},
+  pdfsubject={Erdős Problem Notes: synthesis across problems 249, 251, 257 and 1049},
+  pdfkeywords={irrationality, Lambert series, subsum sets, achievement sets, Mahler's method, Farey fractions},
+}
+
+% Immutable formal-source revision used by the corpus; this note links no Lean
+% source itself and cites sibling papers by file name.
+\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
+\renewcommand{\commitshort}{99f4bf47422a}
+
+\runninghead{Subsums of a Lambert series across bases}
+\title{Rational and Irrational Subsums\\of a Lambert Series Across Bases}
+\subtitle{Choices against contraction in seven irrationality problems of Erd\H{o}s}
+\author{Will Cook}
+\date{20 September 2026}
+
+\begin{document}
+\maketitle
+\noteprovenance
+
+\begin{abstract}
+Let $a>b\ge1$ be coprime integers with $a^2>b^3$.  We prove that
+$\sum_{n\in S}((a/b)^n-1)^{-1}$ is irrational for every infinite set $S$ of
+positive integers that is totally ordered by divisibility, and transcendental
+at every rational base when $S$ eventually doubles.  For every rational base
+strictly between $1$ and $2$ the same sums take rational values on infinite
+sets $S$; at base $3/2$ the value $1/2$ occurs.  Both facts come from one
+comparison, the number of admissible choices at each level against the
+contraction between levels.  Subsum sets are null when the choices fall short
+by an unbounded factor and contain intervals when every step is at most the
+reach of the later steps, and base $2$ lies exactly on the boundary.  On the
+interval side no property shared by all the competing series can decide
+irrationality; the rational series constructed in the companion notes on
+Erd\H{o}s Problems \#249 and \#251 are instances.  At base $2$ the subsums form
+a Cantor set of measure one.  We prove that the proportion of rationals of
+bounded height that survive a fixed number of greedy steps is forced by the
+equidistribution of Farey fractions, so it carries no information about
+membership, and we state the membership question that remains.
+\end{abstract}
+
+\section{Results}\label{sec:results}
+
+Seven of the eight problems treated in the companion notes ask whether a
+series is irrational: $\sum(n!-1)^{-1}$ in \#68, reciprocal sums of
+near-Sylvester sequences in \#243, $\sum\varphi(n)2^{-n}$ in \#249,
+$\sum p_n2^{-n}$ in \#251, the subseries $\sum_{n\in S}(2^n-1)^{-1}$ in \#257,
+a running least common multiple in \#269, and $\sum(t^n-1)^{-1}$ at rational
+$t$ in \#1049 \cite{erdosgraham1980,erdos1988}.  The eighth, \#1041, is
+geometric and plays no part here.  This note reads the seven together.  Its
+theorems concern the two that share a series.  For real $t>1$ and a set $S$ of
+positive integers put
+\[
+ X_S(t)=\sum_{n\in S}\frac{1}{t^n-1},\qquad
+ w_n=\frac{1}{t^n-1},\qquad R_N=\sum_{n>N}w_n .
+\]
+Problem \#257 asks whether $X_S(t)$ is irrational for every infinite $S$ at
+every integer $t\ge2$ \cite[p.~62]{erdosgraham1980}; Problem \#1049 asks about
+$X_{\N_{>0}}(t)$ at rational $t$.
+
+The comparison behind everything is stated for weights with multiplicities.
+Let $u_n>0$ and integers $D_n\ge1$ satisfy $\sum_nD_nu_n<\infty$, and put
+\[
+ V=\Bigl\{\sum_{n\ge1}\varepsilon_nu_n:\ \varepsilon_n\in\{0,1,\dots,D_n\}\Bigr\},
+ \qquad C_N=\sum_{n>N}D_nu_n .
+\]
+
+\begin{theorem}[choices against contraction]\label{thm:dichotomy}
+\textup{(i)} For every $N$, the Lebesgue measure of $V$ is at most
+$C_N\prod_{n\le N}(D_n+1)$.  If $\liminf_NC_N\prod_{n\le N}(D_n+1)=0$ then $V$
+is null.
+
+\textup{(ii)} If $u_n\le C_n$ for every $n>N_0$, then for each choice of
+$\varepsilon_1,\dots,\varepsilon_{N_0}$ the set $V$ contains the interval
+$[\mu,\mu+C_{N_0}]$, where $\mu=\sum_{n\le N_0}\varepsilon_nu_n$.
+
+\textup{(iii)} For $u_n=\beta^{-n}$ with real $\beta>1$ and $D_n=D$, the bound in
+\textup{(i)} tends to $0$ exactly when $D+1<\beta$, and the hypothesis of
+\textup{(ii)} holds exactly when $D+1\ge\beta$.
+\end{theorem}
+
+Part (ii) is Kakeya's covering argument and part (i) is the standard covering
+bound; both are classical \cite{hornich1941,nitecki2013,fridy1966}, and
+Kova\v{c} and Tao use the higher-dimensional form of (ii) to construct
+rational Ahmes series \cite[Lemma~5.1]{kovactao2024}.  We claim no novelty for
+Theorem~\ref{thm:dichotomy}.  Its use here is to say which side each problem
+lies on.
+
+\begin{theorem}[the subseries across bases]\label{thm:bases}
+Let $t>1$ be real.
+
+\textup{(a)} If $t<2$, let $N_0\ge0$ be least with $t^{-n}\le2-t$ for all
+$n>N_0$.  Then the set of values $X_S(t)$ is the union of the intervals
+$[X_F(t),X_F(t)+R_{N_0}]$ over $F\subseteq\{1,\dots,N_0\}$, where
+$X_F(t)=\sum_{n\in F}w_n$; in particular it contains $[0,R_{N_0}]$.  If moreover
+$t=a/b$ in lowest terms, then every rational in $[0,R_{N_0}]$ whose reduced
+denominator shares a prime factor with $ab$ equals $X_S(t)$ for some $S$, and
+every such $S$ is infinite.  There is an infinite $S\subseteq\{2,3,\dots\}$
+with $X_S(3/2)=1/2$.
+
+\textup{(b)} If $t=2$, every value has exactly one $S$, and the set of values
+is a Cantor set of Lebesgue measure $1$ inside $[0,E]$, where
+$E=\sum_{n\ge1}(2^n-1)^{-1}=1.6066951524\ldots$.
+
+\textup{(c)} If $t>2$, the set of values is null.
+\end{theorem}
+
+Part (b) is proved in the companion note on \#257, Section~7, from Hornich's
+theorem as proved by Nitecki \cite{plectis257,hornich1941,nitecki2013}; Kova\v{c}
+and Tao record the strict inequality $w_N>R_N$ and the Cantor-set conclusion for
+every fixed base $t\ge2$ \cite[Remark~4.1]{kovactao2024}.  Parts (a) and (c) follow
+from Theorem~\ref{thm:dichotomy} in a few lines.  We have not found part (a)
+stated for non-integer bases and it may be known.  It shows that the statement
+asked in \#257 is false at every rational base below $2$, so any proof at base
+$2$ must use more than the shape of the series.
+
+\begin{theorem}[divisibility chains]\label{thm:chains}
+Let $t=a/b>1$ in lowest terms and let $S=\{n_1<n_2<\cdots\}$ be infinite with
+$n_j\mid n_{j+1}$ for every $j$.
+
+\textup{(a)} If $a^2>b^3$, then $X_S(t)$ is irrational.
+
+\textup{(b)} If $n_{j+1}=2n_j$ for all large $j$, then $X_S(t)$ is
+transcendental, with no condition on $a$ and $b$.
+\end{theorem}
+
+The hypothesis $a^2>b^3$ says $\log b/\log a<2/3$.  It holds for every integer
+base, for $3/2$, $5/2$ and $7/3$, and fails for $4/3$ and $5/4$.  At integer
+bases part (a) is contained in the theorem of Erd\H{o}s on supports with
+$\sum_{n\in S}1/n<\infty$ \cite{erdos1968}, proved in full in
+\cite[Theorem~2]{plectis257}.  At base $3/2$ it sits inside the regime of
+Theorem~\ref{thm:bases}(a): rational values occur there, and exact divisibility
+still forces irrationality.  For comparison, the companion note on \#1049 proves the irrationality of the
+full sum $X_{\N_{>0}}(a/b)$ when $\log b/\log a<0.4056\ldots$, using Zudilin's
+linear forms \cite[Theorem~1]{plectis1049}, \cite{zudilin2004}, and proves that
+no family of forms of that shape reaches $1/2$
+\cite[Theorem~5]{plectis1049}.  Thin supports reach further than the full sum
+because the denominators divide one another.
+
+At base $2$ the greedy rule decides membership: starting from $r_0=x$, take
+index $n$ when $r_{n-1}\ge w_n$ and subtract.  Since $w_n>R_n$, a real
+$x\in[0,E]$ is a subsum if and only if no remainder falls strictly between
+$R_n$ and $w_n$; we say $x$ is \emph{rejected at step $n$} when that happens
+first at index $n$.
+
+\begin{theorem}[a forced statistic]\label{thm:forced}
+Fix $N\ge1$.  Among the reduced fractions $p/q\in(0,E]$ with $q\le Q$, the
+proportion not rejected in the first $N$ steps tends to $2^NR_N/E$ as
+$Q\to\infty$, with error $O(2^N\log Q/Q)$.  Consequently the upper limit of
+the proportion that are subsums is at most $1/E=0.62239\ldots$.
+\end{theorem}
+
+The limit $2^NR_N/E$ does not depend on whether \#257 is true.  A count of
+fractions that survive a fixed depth therefore says nothing about membership.
+An exact computation in \cite{plectisinvestigation} first read a surviving
+share near $62\%$ as evidence that most such fractions are subsums;
+Theorem~\ref{thm:forced} is the correction.  Section~\ref{sec:base2} states
+what remains.
+
+\paragraph{Evidence.}  Every proof in this note is an ordinary proof.  Nothing
+here is checked in Lean, and nothing has been reviewed by a specialist.
+Statements quoted from the companion notes carry the status given there, which
+we repeat at each use.  Theorem~\ref{thm:chains} uses Mahler's theorem as an
+external premise in the eventually doubling case, hence in both parts.
+
+\section{Choices against contraction}\label{sec:dichotomy}
+
+\begin{proof}[Proof of Theorem~\ref{thm:dichotomy}]
+(i) A choice of $\varepsilon_1,\dots,\varepsilon_N$ fixes
+$\sum_{n\le N}\varepsilon_nu_n$, and the rest of the sum lies in $[0,C_N]$.
+So $V$ is covered by at most $\prod_{n\le N}(D_n+1)$ intervals of length $C_N$.
+
+(ii) Subtracting $\mu$, it suffices to reach every $y\in[0,C_{N_0}]$ with the
+levels $n>N_0$.  Put $y_{N_0}=y$ and, for $n>N_0$, let
+$\varepsilon_n=\min(D_n,\lfloor y_{n-1}/u_n\rfloor)$ and
+$y_n=y_{n-1}-\varepsilon_nu_n$.  If $0\le y_{n-1}\le C_{n-1}=D_nu_n+C_n$ then
+$0\le y_n\le C_n$: when $\varepsilon_n=D_n$ this is a subtraction, and when
+$\varepsilon_n<D_n$ it holds because $y_n<u_n\le C_n$.  Since $C_n\to0$, the
+sum of the $\varepsilon_nu_n$ is $y$.
+
+(iii) Here $C_n=D\beta^{-n}/(\beta-1)$.  The product in (i) is a constant
+multiple of $((D+1)/\beta)^N$, and $u_n\le C_n$ says $\beta-1\le D$.
+\end{proof}
+
+The reading that matters for irrationality is immediate.  Suppose a family of
+series has values $x_0+\sum\varepsilon_nu_n$ with the $\varepsilon_n$ free as in
+(ii).  The values then fill an interval, which contains rationals and
+irrationals, so a property that all members of the family share implies
+neither.  A proof of irrationality for one member has to use something that
+distinguishes it inside the family.  Two constructions in the companion notes
+are families of this kind.
+
+\emph{Problem \#251.}  Proposition~1 of \cite{plectis251} (ordinary proof),
+applied in its Corollary~2 to the prime gaps, changes the gaps on a set of upper
+Banach density zero, by nonnegative integers below any prescribed function
+tending to infinity, keeping every congruence modulo every fixed $q$ from some
+point on, and reaches every real in an interval.  The resulting positions
+$P_n$ satisfy $P_n\sim n\log n$ and are not asserted to be prime.  In the notation above the $j$-th block has $u_j=M_j2^{-n_j-2}$ and
+$D_j=2^{s_j}-1$, and the inequality verified there is $u_j\le C_j$.  The
+lemma is credited there to \cite{fridy1966}, \cite[Lemma~4]{crmarickovac2025}
+and \cite[Lemma~5.1]{kovactao2024}.  The note also proves that a bounded
+allowance is impossible, so an unbounded one is exactly what is needed.  Hence
+growth, densities of patterns and residues of $p_n$ cannot prove
+$\sum p_n2^{-n}$ irrational.
+
+\emph{Problem \#249.}  Section~5 of \cite{plectis249} gives an integer sequence
+$c$ with $c(n)=\varphi(n)$ for odd $n$, $|c(n)-\varphi(n)|\le2$ for even $n$,
+$0\le c(n)\le n$ and $\sum c(n)2^{-n}=5/4$ (Lean-checked there).  Changing even
+indices by at most $2$ is the case $u_n=2^{-n}$ for even $n$, $D_n=4$, where
+$C_n\ge\tfrac43 2^{-n}>u_n$.
+
+The same comparison appears in Kova\v{c} and Tao's theorem that for integers
+$2\le t_1<\dots<t_m$ with $\sum1/(t_k-1)>1$ there are sets $S_k$, one of them
+infinite, with $\sum_kX_{S_k}(t_k)$ rational \cite[Theorem~2.3]{kovactao2024}:
+merging the weights of the $m$ bases, the sum of all weights below a given
+weight $u$ is at least $(1-O(u))\,u\sum1/(t_k-1)$, which exceeds $u$ once $u$
+is small.
+
+\section{The subseries across bases}\label{sec:bases}
+
+\begin{proof}[Proof of Theorem~\ref{thm:bases}]
+(a) Since $R_n\ge\sum_{k>n}t^{-k}=t^{-n}/(t-1)$ and
+$w_n=t^{-n}/(1-t^{-n})$, the inequality $w_n\le R_n$ holds as soon as
+$t^{-n}\le2-t$.  Theorem~\ref{thm:dichotomy}(ii) with $D_n=1$ gives, for
+each $F\subseteq\{1,\dots,N_0\}$, the interval $[X_F(t),X_F(t)+R_{N_0}]$, and every
+value $X_S(t)$ lies in the one with $F=S\cap[1,N_0]$.  For $t=a/b$ a finite subsum is
+$\sum_{n\in F}b^n/(a^n-b^n)$, whose denominator divides $\prod(a^n-b^n)$ and is
+coprime to $ab$.  A rational whose denominator is not coprime to $ab$ is
+therefore never a finite subsum, and inside the interval it is a subsum.  At
+$t=3/2$ the inequality $t^{-n}\le1/2$ holds for $n\ge2$ and $R_1>1/2$.
+
+(c) For $t>2$, $2^NR_N\le2^Nt^{-N}/((t-1)(1-t^{-1}))\to0$, and
+Theorem~\ref{thm:dichotomy}(i) applies.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:chains}]
+Write $\rho=b/a$, $D_j=a^{n_j}-b^{n_j}$ and
+$S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})$.  Because $n_i\mid n_j$ for
+$i\le j$, each $a^{n_i}-b^{n_i}$ divides $D_j$, so $D_jS_j$ is an integer.  The
+tail satisfies
+\[
+ 0<X_S(t)-S_j\le\sum_{n\ge n_{j+1}}\frac{\rho^n}{1-\rho^n}
+ \le\frac{\rho^{\,n_{j+1}}}{(1-\rho)^2}.
+\]
+Each ratio $n_{j+1}/n_j$ is an integer at least $2$.
+
+Suppose the ratio is at least $3$ for infinitely many $j$.  For those $j$,
+\[
+ 0<D_j\bigl(X_S(t)-S_j\bigr)\le\frac{a^{n_j}\rho^{3n_j}}{(1-\rho)^2}
+ =\frac{1}{(1-\rho)^2}\Bigl(\frac{b^3}{a^2}\Bigr)^{n_j}\longrightarrow0
+\]
+when $a^2>b^3$.  If $X_S(t)=p/q$, then $qD_j(X_S(t)-S_j)$ is a positive
+integer for every $j$, a contradiction.
+
+Otherwise the ratio is $2$ from some index on, which is the case of part (b),
+and $S$ is a finite set together with $\{d,2d,4d,\dots\}$.  With $z=t^{-d}$ the
+infinite part contributes $g(z)$, where
+\[
+ g(z)=\sum_{k\ge0}\frac{z^{2^k}}{1-z^{2^k}},\qquad
+ g(z^2)=g(z)-\frac{z}{1-z}.
+\]
+Mahler's theorem \cite{mahler1929}, in the form given in
+\cite{nishioka1996}, states: if $f\in\Q[[z]]$ converges in the unit disc, is
+transcendental over $\mathbb{C}(z)$, and satisfies
+$f(z^d)=A(z,f(z))/B(z,f(z))$ with $A,B$ coprime polynomials of degree less than
+$d$ in the second variable, then $f(\alpha)$ is transcendental for every
+algebraic $\alpha$ with $0<|\alpha|<1$ such that the resultant of $A$ and $B$ in
+the second variable does not vanish at any $\alpha^{d^k}$.  For $g$ we have
+$d=2$, $A=(1-z)f-z$ and $B=1-z$.  They are coprime, their resultant is a power
+of $1-z$, and $1-z$ is nonzero at every $\rho^{\,d2^k}$.  The function $g$ is transcendental: at a root of unity
+$\zeta$ of order $2^j$ the terms with $k\ge j$ are positive on the ray
+$r\zeta$ and diverge as $r\to1$, while the earlier terms stay bounded, so $g$
+has infinitely many singularities on the unit circle.  An algebraic function
+over $\mathbb{C}(z)$ has only finitely many singular points, so $g$ is
+transcendental over $\mathbb{C}(z)$.  Hence $g(\rho^{\,d})$ is
+transcendental, and adding the rational finite part proves (b) and completes
+(a).
+\end{proof}
+
+We do not know whether $a^2>b^3$ is necessary in (a).  The first open case is
+base $4/3$ with a chain whose ratios are $2$ except for infinitely many $3$s.
+
+\section{Base two}\label{sec:base2}
+
+\begin{proof}[Proof of Theorem~\ref{thm:forced}]
+Fixing the first $N$ digits gives $2^N$ closed intervals of length $R_N$.
+They are pairwise disjoint because $w_n>R_n$, and a real in $[0,E]$ is not
+rejected in the first $N$ steps exactly when it lies in their union $K_N$,
+which has measure $2^NR_N$.  For an interval $I$ of length $\ell$, the number
+of integers $p$ coprime to $q$ with $p/q\in I$ is
+$\varphi(q)\ell+O(2^{\omega(q)})$ by inclusion and exclusion.  Summing over
+$q\le Q$ with $\sum_{q\le Q}\varphi(q)=3Q^2/\pi^2+O(Q\log Q)$ and
+$\sum_{q\le Q}2^{\omega(q)}=O(Q\log Q)$ gives $3Q^2\ell/\pi^2+O(Q\log Q)$.
+Apply this to the $2^N$ intervals of $K_N$ and to $(0,E]$ and divide.  The
+second statement follows because every subsum lies in every $K_N$ and
+$2^NR_N\to1$.
+\end{proof}
+
+The intervals removed at step $n$ are explicit.  Put $g_n=w_n-R_n$, so that
+$g_n=\tfrac23 4^{-n}+O(8^{-n})$.  For a finite nonempty $F$ with largest element
+$n$, the interval $(X_F(2)-g_n,\,X_F(2))$ is removed at step $n$, and
+\[
+ [0,E]\setminus\mathcal A=\bigsqcup_{F\ne\varnothing}\bigl(X_F(2)-g_{\max F},\,X_F(2)\bigr),
+ \qquad\sum_{n\ge1}2^{n-1}g_n=E-1,
+\]
+where $\mathcal A$ is the set of subsums.  By Theorem~\ref{thm:bases}(b) a
+rational with an infinite $S$ is exactly a counterexample to \#257 at base $2$.
+So \#257 at base $2$ holds if and only if every rational in $[0,E]$ that is not
+a finite subsum lies strictly between $X_F(2)-g_{\max F}$ and $X_F(2)$ for some
+finite nonempty $F$.
+This is a one-sided question of approximation by the countable set of finite
+subsums, with an error that shrinks like $4^{-\max F}$.
+
+Under \#257 the only fractions of height at most $Q$ that are subsums are the
+finite subsums, $40$ of the $19{,}653$ fractions with $2\le q\le200$.  A model
+that treats later remainders as equidistributed gives the opposite extreme, a
+proportion tending to $1/E$, because the shares $2^{n-1}g_n/E$ of the removed
+intervals are summable.  That model asserts that \#257 fails for a
+positive proportion of all rationals.  It is a strong claim, and no count can
+support it: by Theorem~\ref{thm:forced} every count at a fixed depth is forced.
+Measure does not decide either.  Boes, Darst and Erd\H{o}s construct symmetric
+Cantor sets of every measure in $[0,1)$ that contain essentially no rationals
+\cite{boesdarsterdos1981}.
+
+The exact computation in \cite{plectisinvestigation} agrees with
+Theorem~\ref{thm:forced} step by step.  Among the $19{,}653$ reduced fractions
+with $2\le q\le200$, the numbers rejected at steps $1$, $2$ and $7$ are $4809$,
+$1470$ and $32$, against $4811$, $1467$ and $32$ from the measures of the
+removed intervals.  The expected number rejected at step $n$ is
+$2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)$, asymptotically $(3Q^2/\pi^2)2^{n-1}g_n$,
+which falls below $1$ once $n>2\log_2Q-3.3$.  Past
+that depth a finite computation at height $Q$ cannot separate membership from
+late rejection, so running deeper adds nothing.  No rational is known to have
+an infinite $S$ at base $2$, and beyond the forced share $1-1/E$ no argument is
+known that rejects a positive proportion of rationals.
+
+\begin{problem}\label{prob:membership}
+Decide whether $1/2$ is a subsum of $\sum(2^n-1)^{-1}$.  By
+\cite[Theorem~7]{plectis257} this holds if and only if the integer remainders
+of the greedy rule fail to increase at infinitely many steps.
+\end{problem}
+
+The literature on rational points of Cantor sets concerns null sets such as the
+middle-third set, where the expected count of rationals of height at most $Q$
+is a power of $Q$ \cite{rstw2019,chowvarjuyu2024}.  The literature on subsum
+sets \cite{nitecki2013} does not discuss rational points.  We found nothing on
+rational points of a subsum set of positive measure, and
+Problem~\ref{prob:membership} is the simplest question of that kind.
+
+\section{Limits on methods}\label{sec:second}
+
+The companion notes prove a second kind of negative result.  Each bounds what
+one method can do, and none follows from Theorem~\ref{thm:dichotomy}, which
+concerns sets of values.
+\begin{itemize}
+\item \#1049, Theorem~5 \cite{plectis1049} (ordinary proof there, with the
+  contradiction step and the comparison with $1/2$ checked in Lean).  A family of
+  linear forms with degrees at most $\delta n^2$ and decay $-\sigma n^2\log x$
+  at every $x>1$ has $\sigma\le\delta$, so its sufficient region
+  $\log b/\log a<\sigma/(\sigma+\delta)$ never reaches $1/2$.
+\item \#269, Theorem~1 \cite{plectis269} (Lean-checked there; Fan posted the
+  two-prime separation \cite{fan2026comment}, and the three-prime statement is
+  proved in the note).  For three primes the reciprocal
+  running-LCM kernel has nonsingular minors of every order, so no finite sum of
+  products separates one exponent from the other two.
+\item \#257, Section~3 \cite{plectis257} (ordinary proof).  Every positive
+  divisor cover costs at least $e$ times the mean of $\log^+$ of its
+  multiplicity, and the averaging method cannot reach the prime support, where
+  irrationality is known at base $2$ by other means \cite{taoteravainen2025}.
+\item \#249, Theorem~9 \cite{plectis249} (Lean-checked there).  Every
+  admissible rank-one quotient stays at distance more than $21/320$ from its
+  target.
+\item \#68, Section~6 \cite{plectis68} (ordinary proof).  The integer-gap
+  comparison cannot hold at cutoffs within a bounded distance of the degree.
+\item \#243, Proposition~17 \cite{plectis243} (Lean-checked there).  A
+  counterexample must have relative errors tending to $0$ with unbounded
+  negative parts, so size conditions on the error do not decide.
+\end{itemize}
+Two of these are inequalities between a cost and a gain: $\sigma\le\delta$ in
+\#1049 and the cover cost in \#257.  Whether one inequality governs both is
+open, and we know of no formulation that covers the other four.
+
+\begin{thebibliography}{99}
+\bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
+  \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old
+  and New Problems and Results in Combinatorial Number Theory}},
+  Monogr. Enseign. Math. 28, Geneva, 1980.
+
+\bibitem{erdos1988} P.~Erd\H{o}s, \emph{On the irrationality of certain series:
+  problems and results}, in A.~Baker (ed.), \emph{New Advances in Transcendence
+  Theory}, Cambridge UP, 1988, pp.~102--109,
+  doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
+
+\bibitem{erdos1968} P.~Erd\H{o}s,
+  \href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\emph{On the
+  irrationality of certain series}}, Math.\ Student 36 (1968), 222--226
+  (issued 1969).
+
+\bibitem{hornich1941}
+H.~Hornich,
+\emph{\"Uber beliebige Teilsummen absolut konvergenter Reihen},
+Monatshefte f\"ur Mathematik und Physik \textbf{49} (1941), 316--320.
+\href{https://doi.org/10.1007/BF01707309}{doi:10.1007/BF01707309}.
+
+\bibitem{nitecki2013} Z.~Nitecki,
+  \href{https://arxiv.org/abs/1106.3779v2}{\emph{Subsum sets: intervals, Cantor
+  sets, and Cantorvals}}, arXiv:1106.3779v2 (2013).
+
+\bibitem{fridy1966} John A. Fridy, \href{https://www.fq.math.ca/Scanned/4-3/fridy.pdf}{\emph{Generalized bases for the real numbers}}.
+  The Fibonacci Quarterly \textbf{4} (1966), no.~3, 193--201.
+
+\bibitem{crmarickovac2025} T.~Crmari\'{c} and V.~Kova\v{c},
+  \href{https://arxiv.org/abs/2504.18712v1}
+  {\emph{On the irrationality of certain super-polynomially decaying series}},
+  Colloq. Math. \textbf{179} (2025), 55--68,
+  doi:\href{https://doi.org/10.4064/cm9628-5-2025}{10.4064/cm9628-5-2025}.
+  Theorem locators follow arXiv:2504.18712v1.
+
+\bibitem{kovactao2024} Vjekoslav Kova\v{c} and Terence Tao, \href{https://arxiv.org/abs/2406.17593v4}{\emph{On several irrationality problems for Ahmes series}}.
+  Acta Mathematica Hungarica \textbf{175} (2025), 572--608, doi:\href{https://doi.org/10.1007/s10474-025-01528-0}{10.1007/s10474-025-01528-0}; arXiv:\href{https://arxiv.org/abs/2406.17593v4}{2406.17593v4}. Statement and section numbers refer to arXiv version 4.
+
+\bibitem{zudilin2004} W.~Zudilin,
+  \href{https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/}{\emph{Heine's
+  basic transform and a permutation group for \(q\)-harmonic series}},
+  Acta Arith. \textbf{111} (2004), no.~2, 153--164,
+  doi:\href{https://doi.org/10.4064/aa111-2-4}{10.4064/aa111-2-4}.
+
+\bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
+  \href{https://arxiv.org/abs/2512.01739v2}{\emph{Quantitative correlations and
+  some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2
+  (submitted December 2025, revised April 2026).
+
+\bibitem{fan2026comment} Steve Fan,
+  \emph{Comment on Erd\H{o}s Problem \#269, thread 269, post 7218} (2026),
+  \href{https://www.erdosproblems.com/forum/thread/269#post-7218}{source}. 26 June 2026.
+
+\bibitem{mahler1929} K.~Mahler, \emph{Arithmetische Eigenschaften der L\"osungen
+  einer Klasse von Funktionalgleichungen}, Math.\ Ann.\ \textbf{101} (1929),
+  342--367.
+
+\bibitem{nishioka1996} Ku.~Nishioka, \emph{Mahler Functions and Transcendence},
+  Lecture Notes in Math.\ 1631, Springer, Berlin, 1996.
+
+\bibitem{boesdarsterdos1981} D.~Boes, R.~Darst and P.~Erd\H{o}s,
+  \href{https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266}{\emph{Fat,
+  symmetric, irrational Cantor sets}}, Amer.\ Math.\ Monthly \textbf{88} (1981),
+  340--341.
+
+\bibitem{rstw2019} A.~Rahm, N.~Solomon, T.~Trauthwein and B.~Weiss,
+  \href{https://arxiv.org/abs/1909.01198}{\emph{The distribution of rational
+  numbers on Cantor's middle thirds set}}, arXiv:1909.01198.
+
+\bibitem{chowvarjuyu2024} S.~Chow, P.~Varj\'u and H.~Yu,
+  \href{https://arxiv.org/abs/2402.18395}{\emph{Counting rationals and
+  diophantine approximation in missing-digit Cantor sets}}, arXiv:2402.18395.
+
+\bibitem{plectis68} W.~Cook,
+  \href{erdos-68-factorial-denominator-irrationality.pdf}{\emph{Two
+  incomparable denominator exclusions for $\sum_{n\ge2}(n!-1)^{-1}$}},
+  Erd\H{o}s Problem Notes, 2026.
+
+\bibitem{plectis243} W.~Cook,
+  \href{erdos-243-reciprocal-tail-rigidity.pdf}{\emph{Bounded
+  increments and rational reciprocal sums}}, Erd\H{o}s Problem Notes, 2026.
+
+\bibitem{plectis249} W.~Cook,
+  \href{erdos-249-binary-totient-series.pdf}{\emph{Bases and
+  integral relations for the $k$-kernel of Euler's totient}}, Erd\H{o}s Problem
+  Notes, 2026.
+
+\bibitem{plectis251} W.~Cook,
+  \href{erdos-251-prime-gap-dyadic-series.pdf}{\emph{Sparse
+  congruence-preserving perturbations of dyadic series}}, Erd\H{o}s Problem
+  Notes, 2026.
+
+\bibitem{plectis257} W.~Cook,
+  \href{erdos-257-mersenne-support-subseries.pdf}{\emph{Weighted
+  support criteria for reciprocal Mersenne subseries}}, Erd\H{o}s Problem Notes,
+  2026.
+
+\bibitem{plectis269} W.~Cook,
+  \href{erdos-269-three-prime-running-lcm.pdf}{\emph{No
+  finite separable representation at three prime generators}}, Erd\H{o}s Problem
+  Notes, 2026.
+
+\bibitem{plectis1049} W.~Cook,
+  \href{erdos-1049-rational-base-lambert.pdf}{\emph{Zudilin's
+  forms at rational bases and the exact normalised Hankel order}}, Erd\H{o}s
+  Problem Notes, 2026.
+
+\bibitem{plectisinvestigation} W.~Cook,
+  \emph{Choices, contraction and rational membership}, exact computation with saved outputs in \texttt{research/experiments/choices\_contraction/} of the repository,
+  2026.
+
+\bibitem{plectisrecord} W.~Cook,
+  \href{erdos-synthesis-reading-together-record.pdf}{\emph{Reading
+  eight Erd\H{o}s problems together: a working record}}, 2026.
+\end{thebibliography}
+
+\section*{Declaration of generative AI use}
+The mathematics and text of this note were produced with large language model
+agents under the direction of the author, who is responsible for every claim.
+Each statement above names its evidence: an ordinary proof printed here, a
+result quoted from a companion note with the status given there, an exact
+computation with saved outputs, or a cited external theorem.  The record
+\cite{plectisrecord} lists what was checked, by which means, and what was found
+to be already known.
+\end{document}

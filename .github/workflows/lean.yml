@@ -669,6 +669,14 @@ jobs:
         run: python3 scripts/test_compact_agent_entry.py
       - name: Ordinary tasks route to complete clone-local skill cards
         run: python3 scripts/test_agent_entry.py
+      # An open-ended request used to fall through to the explanation fallback,
+      # and a finite search is easy to misreport as membership. These two keep
+      # the no-clone edition current and keep "not excluded through depth N"
+      # from turning into a representation claim on any reader-facing page.
+      - name: The reading edition matches the papers it carries
+        run: python3 scripts/build_reading_edition.py --check
+      - name: The open investigation replays and keeps finite evidence finite
+        run: python3 scripts/test_choices_contraction_probe.py
 
   shallow-clone-is-an-environment-problem:
     # `git clone --depth 1` truncates history, and the gates that read pinned

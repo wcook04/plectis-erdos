@@ -1096,6 +1096,20 @@
           "rendered": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #269.",
           "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
+        },
+        {
+          "title": "Rational and Irrational Subsums of a Lambert Series Across Bases",
+          "source": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+          "rendered": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "role": "Synthesis note: mathematics whose subject is the eight problems read together. Ordinary proofs only; it links no Lean source and changes no claim row."
+        },
+        {
+          "title": "Reading Eight Erdős Problems Together",
+          "source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+          "rendered": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "role": "Working record behind the synthesis note: lemmas, the inventory of negative results, eliminated ideas, prior art and open questions."
         }
       ]
     },
@@ -1156,6 +1170,12 @@
             "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #269. Two-prime credit is Steve Fan's; three-prime Lean rank/window versus unproved cofinal escape. The problem remains open."
+          },
+          {
+            "id": "erdos_synthesis_record",
+            "source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "decision": "retain_as_working_record_behind_the_synthesis_note",
+            "thesis": "Working record behind the synthesis note. Its subject is several covered problems read together, not one problem and not a ninth. Two base 2 lemmas, the inventory of negative results across the companion notes with the status each gives them, one computation read wrongly twice and the theorem that replaced it, eliminated ideas, prior art, and open questions. Every proof is ordinary; nothing is checked in Lean."
           }
         ],
         "problem_series": [

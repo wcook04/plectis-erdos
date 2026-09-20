@@ -22,6 +22,28 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Open-ended research must reach its own lane. Before that lane existed,
+    # the first request below fell through to the repository-explanation
+    # fallback, so an agent asked to think was handed a tour instead.
+    "read the corpus and find something worth developing across the papers": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    "Read this body of mathematics and decide what is worth pursuing": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    "Is there a common mechanism across problems that deserves a general theorem?": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    "Explore the mathematics and formulate a new research direction": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    # A named target keeps the existing directed routes.
+    "What should I work on? Choose a problem for me": (
+        "choose_open_question", "mine-open-problem",
+    ),
+    "I want to attack the open problem 249 and find a proof": (
+        "bounded_research", "mine-open-problem",
+    ),
     "Repair CLI error recovery and safe research session creation": (
         "repository_architecture", "maintain-public-infrastructure",
     ),

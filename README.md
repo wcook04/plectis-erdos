@@ -25,6 +25,22 @@ The attribution is recorded in [ani's 7 September 2026 forum post](https://www.e
 
 ## Where to start
 
+**Read the mathematics. Find what comes next.** Use the papers, proofs and
+research records to continue an existing question, or to develop a new result,
+method or direction. Work with your own AI, directly in the repository, or
+without an AI. Work that returns becomes part of the shared account, with its
+sources, checks and credit kept visible.
+
+- **Explore with your AI, no clone needed.** Give your model the
+  [reading edition](docs/reading-edition/README.md): one file with an
+  introduction, a short research instruction and the opening of each paper.
+  [One open investigation](research/experiments/choices_contraction/README.md)
+  shows the route and ends with five ways to continue it.
+- **Work in the repository.** The
+  [agent quickstart](docs/agents/README.md#start-with-current-public-work)
+  provides clone commands and a copyable prompt. Name a question, or ask your
+  agent to read the corpus and decide what is worth developing.
+
 Each programme has a short paper explaining its main argument and a longer
 record with details, computations and approaches that stopped. You can read
 both without Lean or a coding agent. [A reader's way in](docs/READING_GUIDE.md)
@@ -65,6 +81,9 @@ For a first look, start with **#257** for full-support irrationality and
 achievement-set measure, or **#249** for exact kernel rank, finite certificates,
 and recorded routes that stopped. Each paper distinguishes ordinary proofs,
 Lean-checked results and open questions.
+
+**Reading the eight together.** One short note reads the problems side by
+side, with a working record behind it: [synthesis note](paper/synthesis/erdos-synthesis-subsums-across-bases.pdf) · [working record](paper/synthesis/erdos-synthesis-reading-together-record.pdf).
 
 | Problem | Topic | Papers |
 |---|---|---|

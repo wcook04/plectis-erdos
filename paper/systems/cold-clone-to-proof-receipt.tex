@@ -515,6 +515,16 @@ with \texttt{erdos-research-return}; and prepare the proposed upstream change
 with \texttt{submit-pull-request}. Pushing a branch or opening the pull request
 still requires the contributor's authorisation.
 
+The router also has to serve a request that names no target.  The task
+``read the corpus and find something worth developing across the papers''
+matched no cue and fell through to the repository-explanation fallback, so an
+agent asked to think was handed a tour.  The repair followed the method of
+this paper: the observed request became a routing fixture, a lane for open
+reading was added, and the \texttt{explore-the-corpus} skill now hands an
+emerged question to \texttt{mine-open-problem} and the sequence above.  The
+same research instruction is published without a clone in the
+\href{\repobase/blob/main/docs/reading-edition/README.md}{reading edition}.
+
 The sequence is deliberately independent of the agent harness. A contributor
 may use Codex, Claude Code, Cursor, another runner, ordinary scripts, or no
 agent. The shared contract is the starting commit, changed source, evidence,

@@ -67,9 +67,9 @@
       "title": "From a Cold Clone to a Proof Receipt",
       "artifact_class": "agent_navigation_guide",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_content_digest": "sha256:b27abd8baa30b9850fb7b5d71242cb7e76b3467aefba5c9535a6389de22534be",
+      "source_content_digest": "sha256:3540db328568af195701fc6365343774c289a3c56749febc4938916b81e2873d",
       "rendered_path": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "rendered_content_digest": "sha256:9004af8c437661ff6ab1412a32f3a38e7e5c53a285f496845234e74bdee03ed5",
+      "rendered_content_digest": "sha256:5767facdd9b9b4728523443e1dbcbe90fb61d9aef1168992207ebbb43ce3a786",
       "authority_posture": "authored_agent_navigation_and_incremental_validation_guide_not_Lean_proof_authority",
       "claim_scope": "An author-operated prototype case study of zero-build corpus navigation, explicit authority boundaries, replayable agent-session receipts, focused changed-cone builds, and exact cached dependency-index validation in this repository. As of 14 September 2026 no external contributor had completed the tour or documented return path. The degree-seven counterexample to the total-variation formulation of Problem 1041 is due to the erdosproblems.com contributor ani and is formalised in Lean here. The paper does not claim autonomous proving, optimal reasoning, external mathematical novelty, demonstrated outside usability, or transfer to another project.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.agent_native_guides",
@@ -90,9 +90,9 @@
       "title": "From Spare Compute to Cumulative Mathematics",
       "artifact_class": "open_source_research_strategy",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_content_digest": "sha256:15e0e12d4c666ac61417f3bf5350630164df23ce3b5fa3d67c481ac45f712a1b",
+      "source_content_digest": "sha256:3548d9c753a2ccf2d61166fee710d72a50fc4df86937a96f40694df0c79e0f12",
       "rendered_path": "paper/systems/open-source-mathematics-strategy.pdf",
-      "rendered_content_digest": "sha256:d056851e15b1895ceb1697f8fdc63abf31d2d6e268484667112376e7d871dd9f",
+      "rendered_content_digest": "sha256:507973ea076c2142c4b278e7b3159fec2e7cc125df9e2a28a8323a52e39662cd",
       "authority_posture": "authored_open_source_strategy_and_contribution_protocol_not_Lean_proof_authority_and_not_community_acceptance_authority",
       "claim_scope": "A strategy and working-prototype paper for an open research commons that accepts compute, mathematical direction, architecture improvements, cold-clone cleanup, and review. It defines role-bounded contribution packets, a candidate-to-attention funnel, provenance-preserving adoption, and evaluation measures. As of 14 September 2026 no completed external cold clone or accepted external contribution had been recorded. The degree-seven counterexample to the total-variation formulation of Problem 1041 is due to the erdosproblems.com contributor ani and is formalised in Lean here; its correspondence with the historical curve-length question remains unreviewed, and the other seven target problems remain unresolved here. The paper reports no measured discovery-rate improvement, proof of optimal architecture, or community acceptance of a new mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
@@ -416,6 +416,44 @@
         "python3 scripts/check_release.py"
       ],
       "storage_path": "paper/269/erdos269-running-lcm-reasoning-surface.pdf"
+    },
+    {
+      "id": "erdos_synthesis_note",
+      "title": "Rational and Irrational Subsums\\\\of a Lambert Series Across Bases",
+      "artifact_class": "synthesis_note",
+      "source_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+      "source_content_digest": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0",
+      "rendered_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf",
+      "rendered_content_digest": "sha256:18abdc5983f21321bac2f1a75413db4873219ff8fba019aaa60dd47b10bb93e9",
+      "authority_posture": "authored_mathematical_exposition_across_covered_problems_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json",
+      "claim_scope": "Mathematics whose subject is several covered problems read together, not a ninth problem. Every theorem in the note is an ordinary proof printed there; nothing in it is checked in Lean. Results quoted from the companion notes keep the status those notes give them. The note proves irrationality of divisibility-ordered subsums of the Lambert series at rational bases with a^2 > b^3, rational values on infinite sets at every rational base strictly between 1 and 2, and that the proportion of rationals of bounded height surviving a fixed number of greedy steps is forced by Farey equidistribution. It settles neither Erdős #257 nor #1049, and it does not explain the method limits it lists.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
+      "entry_route_id": "instant_orientation",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/build_reading_edition.py --check"
+      ],
+      "storage_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf"
+    },
+    {
+      "id": "erdos_synthesis_record",
+      "title": "Reading Eight Erdős Problems Together",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+      "source_content_digest": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc",
+      "rendered_path": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
+      "rendered_content_digest": "sha256:5fa378ade0a857a24de277b0c9826b8bd0e915c1accb76352380f59459d73031",
+      "authority_posture": "authored_working_research_record_across_covered_problems_not_Lean_proof_authority",
+      "claim_scope": "The working record behind the synthesis note. Every proof in it is an ordinary proof, nothing is checked in Lean, and the computations are exact rational arithmetic with saved outputs. It proves the two base 2 lemmas the note uses without proof, lists the negative results of the seven companion notes with the status each note gives them, records two wrong readings of one computation and the theorem that replaced them, records eliminated ideas and what was already known, and ends with open questions. It settles no Erdős problem.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/build_reading_edition.py --check"
+      ],
+      "storage_path": "paper/synthesis/erdos-synthesis-reading-together-record.pdf"
     }
   ],
   "entrypoints": [

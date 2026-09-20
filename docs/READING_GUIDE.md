@@ -18,6 +18,18 @@ correspondence. The work also proves intermediate theorems, writes out proofs
 of results that were stated but not printed in the literature, checks exact
 finite cases, and records obstructions to tempting shortcuts.
 
+## Two ways to begin
+
+You can continue a particular question, or you can read the mathematics and
+decide what comes next. Both are supported. The second treats the papers as one
+body of work: a method from one problem may explain an obstruction in another,
+a recorded example may suggest a general theorem, and a worthwhile new question
+is itself a contribution. The [reading edition](reading-edition/README.md)
+serves this route without a clone. It is one file to read or to give to an AI
+model, with a short research instruction and the opening of each short paper.
+[Choices, contraction and rational membership](../research/experiments/choices_contraction/README.md)
+is one investigation that began this way.
+
 ## What is here
 
 The [front page](../README.md) lists the eight problems with a short paper and
@@ -65,6 +77,14 @@ those assessments in one place avoids conflicting summaries.
 
 [Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
 <!-- END problem_programme_card -->
+
+If the comparison across the problems is what you are after rather than one of
+them, read the [synthesis note](../paper/synthesis/erdos-synthesis-subsums-across-bases.pdf),
+which proves which subsums of a Lambert series are rational or irrational as
+the base varies. Its
+[working record](../paper/synthesis/erdos-synthesis-reading-together-record.pdf)
+holds the inventory of negative results, the ideas that were eliminated and the
+questions left open.
 
 ## How to read the evidence
 

@@ -14,6 +14,18 @@ does not require Plectis's private system, a hosted service, a new account or a
 particular model provider. Owner-authorised model use and optional Lean builds
 have their own costs and dependencies.
 
+## Or start from the mathematics
+
+A shift does not have to begin from a listed question. You can ask your agent
+to read the corpus and decide what is worth developing: a connection between
+problems, a general theorem behind a recorded example, a change of
+representation, or a new question with evidence for its value. The
+[exploration skill](../skills/explore-the-corpus/SKILL.md) owns that route in a
+clone, and the [reading edition](reading-edition/README.md) serves it without
+one. Once a bounded statement emerges, the rest of this guide applies
+unchanged. A return whose subject is wider than one problem names its subject
+and lists the related problems.
+
 ## Pick a question first
 
 If you already have a clone, this lists every open question in the repository,

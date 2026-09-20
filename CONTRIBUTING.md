@@ -154,9 +154,15 @@ Mathematical errors and overstatements are especially valuable reports. So are
 Lean build failures, broken source or paper links, missing attribution,
 exposition that hides an assumption, counterexamples to intermediate claims,
 and improvements to the clone-local checks. New formal results are welcome,
-but their public description must be no stronger than the evidence, and all
-eight headline Erdős problems remain open unless an extraordinary independent
-mathematical process establishes otherwise.
+and their public description must be no stronger than the evidence. The status
+of the eight headline problems is stated on the [front page](README.md) and
+changes only through the [methodology](docs/METHODOLOGY.md).
+
+A contribution does not have to start from a listed question. Reading the
+papers as one body of work and developing a connection, a general theorem, a
+clearer explanation of an existing proof, or a well-posed new question is
+welcome on the same terms. The [reading edition](docs/reading-edition/README.md)
+supports that route without a clone.
 
 Ordinary prose, citation, and tooling corrections can arrive as normal pull
 requests. A structured research return is useful when the history matters: for
@@ -169,7 +175,9 @@ Architecture proposals and implementations use the same accepted-receipt and
 public-credit rail as mathematical returns, but they do not claim a fictional
 problem number. Their structured frontier declares `track: architecture` and a
 bounded architecture area. The existing `continue_research.py` continuation
-package remains the specialized front door for mathematical problem sessions.
+package remains the specialized front door for mathematical sessions. A
+mathematical return whose subject is wider than one problem names that subject
+and lists the related problems; it never borrows a problem number.
 
 ## For agents and maintainers
 
