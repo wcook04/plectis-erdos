@@ -1,0 +1,15 @@
+import Erdos249257.GapFareyBound
+import Erdos249257.CertificateKernel
+import Erdos249257.TotientMahlerDefect
+import Erdos249257.GcdMomentCalculus
+import ErdosProblems.Erdos249.PaperCompleteR20.SpecifiedTailPeriod
+
+/-! Axiom audit for recovered whole-proposition correspondence. -/
+#print axioms GapFareyBound.farey_gap
+#print axioms Erdos249257.irrational_of_den_mul_abs_sub_tendsto_zero
+#print axioms Erdos249257.linearIndependent_of_separatedMinorCertificate
+#print axioms GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
+#print axioms GcdMomentCalculus.cylinderMass_children_le
+#print axioms GcdMomentCalculus.sternBrocotDepthMass_error
+#print axioms GcdMomentCalculus.tendsto_sternBrocotDepthMass
+#print axioms ErdosProblems.Erdos249.PaperCompleteR20.specified_euler_tail_period
