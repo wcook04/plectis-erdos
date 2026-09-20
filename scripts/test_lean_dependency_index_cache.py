@@ -534,6 +534,26 @@ def check_write_stale_requires_full_check() -> None:
     raise AssertionError("--write-stale without --full-check was accepted")
 
 
+def check_full_exports_enter_shared_owner() -> None:
+    budget = builder.singleflight.worker_timeout_seconds({
+        "command": ["python3", "scripts/build_lean_dependency_index.py"],
+    })
+    require(budget > builder.LEAN_ROOT_BUILD_TIMEOUT_SECONDS + builder.EXPORT_TIMEOUT_SECONDS,
+            "outer worker would kill an export before its child budgets expire")
+    for options, expected in (
+        ([], dict(check=False, full_check=False, write_stale=False)),
+        (["--check", "--full-check"], dict(check=True, full_check=True, write_stale=False)),
+        (["--check", "--full-check", "--write-stale"],
+         dict(check=True, full_check=True, write_stale=True)),
+    ):
+        with patch.object(builder.sys, "argv", ["builder", *options]), \
+             patch.object(builder, "coordinated_export", return_value=75) as owner, \
+             patch.object(builder, "build_packet") as export:
+            require(builder.main() == 75, "resource deferral was not preserved")
+            owner.assert_called_once_with(**expected)
+            require(not export.called, "direct caller exported outside the shared owner")
+
+
 def check_export_timeout_does_not_rewrite_tracked_index() -> None:
     """A 5400s exporter timeout must not relabel the committed index as fresh."""
     with tempfile.TemporaryDirectory() as directory:
@@ -612,6 +632,7 @@ def check_main_classifies_export_timeout_without_fresh_upload() -> None:
                                     "--check",
                                     "--full-check",
                                     "--write-stale",
+                                    "--singleflight-worker",
                                 ],
                             ):
                                 code = builder.main()
@@ -655,6 +676,7 @@ def check_unfinished_outcome_refuses_fresh_export_label() -> None:
 
 
 def main() -> int:
+    check_full_exports_enter_shared_owner()
     check_safe_dependency_input_boundary()
     check_safe_dependency_output_boundary()
     check_exact_receipt_contract()

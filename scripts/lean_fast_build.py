@@ -35,7 +35,12 @@ import lean_package_share
 ROOT = Path(__file__).resolve().parents[1]
 TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 LAKE = TOOLCHAIN_BIN / "lake"
-IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
+IMPORT_RE = re.compile(
+    r"^\s*(?:public\s+)?import\s+"
+    r"([A-Za-z0-9_'.]+(?:\s+[A-Za-z0-9_'.]+)*)\s*(?:--.*)?$"
+)
+IMPORT_KEYWORD_RE = re.compile(r"^\s*(?:public\s+)?import(?:\s|$)")
+MODULE_HEADER_RE = re.compile(r"^\s*module(?:\s|$)")
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 # A single `lake` invocation here can be a cold full-corpus build, whose cost
 # tracks the size of the library rather than the size of a change. The shared
@@ -168,9 +173,18 @@ def local_imports(source: Path, modules: dict[str, Path]) -> set[str]:
                 continue
             match = IMPORT_RE.match(stripped)
             if match:
-                if match.group(1) in modules:
-                    imports.add(match.group(1))
+                imports.update(
+                    module for module in match.group(1).split() if module in modules
+                )
                 continue
+            if IMPORT_KEYWORD_RE.match(stripped):
+                raise RuntimeError(
+                    f"unsupported Lean import header in {source}: {stripped}"
+                )
+            if MODULE_HEADER_RE.match(stripped):
+                raise RuntimeError(
+                    f"unsupported Lean module header in {source}: {stripped}"
+                )
             break
     return imports
 

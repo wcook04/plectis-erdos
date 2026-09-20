@@ -606,12 +606,46 @@ class LeanFastBuildTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "Main.lean"
             source.write_text(
-                "-- import Pkg.Commented\nimport Pkg.Local\nimport Mathlib\n",
+                (
+                    "-- import Pkg.Commented\n"
+                    "import\tPkg.Local\tPkg.Second\tMathlib\n"
+                    "public import Pkg.Public\n"
+                ),
                 encoding="utf-8",
             )
-            modules = {"Pkg.Local": Path(directory) / "Local.lean"}
+            modules = {
+                "Pkg.Local": Path(directory) / "Local.lean",
+                "Pkg.Second": Path(directory) / "Second.lean",
+                "Pkg.Public": Path(directory) / "Public.lean",
+            }
 
-            self.assertEqual(fast.local_imports(source, modules), {"Pkg.Local"})
+            self.assertEqual(
+                fast.local_imports(source, modules),
+                {"Pkg.Local", "Pkg.Second", "Pkg.Public"},
+            )
+
+    def test_local_imports_fails_closed_on_unknown_import_header_syntax(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "Main.lean"
+            modules = {"Pkg.Local": Path(directory) / "Local.lean"}
+            cases = {
+                "punctuated": "import Pkg.Local, Pkg.Other\n",
+                "bare_split": "import\n  Pkg.Local\n",
+                "public_bare_split": "public import\n  Pkg.Local\n",
+            }
+            for name, text in cases.items():
+                with self.subTest(name=name):
+                    source.write_text(text, encoding="utf-8")
+                    with self.assertRaisesRegex(RuntimeError, "unsupported Lean import header"):
+                        fast.local_imports(source, modules)
+
+    def test_local_imports_fails_closed_on_module_header_before_imports(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "Main.lean"
+            source.write_text("module Pkg.Main\nimport Pkg.Local\n", encoding="utf-8")
+            modules = {"Pkg.Local": Path(directory) / "Local.lean"}
+            with self.assertRaisesRegex(RuntimeError, "unsupported Lean module header"):
+                fast.local_imports(source, modules)
 
     def test_local_imports_reads_only_the_lean_header(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

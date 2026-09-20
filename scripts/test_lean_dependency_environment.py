@@ -111,6 +111,126 @@ def main() -> int:
                 "dependency run helper lost its bounded timeout",
             )
 
+            export_file = Path(raw) / "graph.tsv"
+            with patch.object(
+                build_lean_dependency_index.subprocess,
+                "run",
+                return_value=subprocess.CompletedProcess(["fixture"], 0),
+            ) as runner:
+                build_lean_dependency_index.run(
+                    ["fixture"],
+                    cwd=Path(raw),
+                    check=False,
+                    lean_dependency_export_file=export_file,
+                )
+            require(
+                runner.call_args.kwargs["env"][
+                    build_lean_dependency_index.LEAN_DEPENDENCY_EXPORT_FILE_ENV
+                ]
+                == str(export_file),
+                "dependency exporter path was not passed through the clean child environment",
+            )
+
+        diagnostic_log = Path(raw) / "diagnostics.log"
+        observed_export_path: Path | None = None
+
+        def successful_export(*_args: object, **kwargs: object):
+            nonlocal observed_export_path
+            observed_export_path = Path(str(kwargs["lean_dependency_export_file"]))
+            observed_export_path.write_text(
+                "AIW_NODE\tExample.source\tErdosProblems.Example\n"
+                "AIW_INTERNAL_OMISSION\tExample.source\t0\n",
+                encoding="utf-8",
+            )
+            return subprocess.CompletedProcess(
+                ["fixture"], 0, stdout="compiler diagnostic\n", stderr=""
+            )
+
+        with patch.object(build_lean_dependency_index, "run", successful_export), patch.object(
+            build_lean_dependency_index, "EXPORT_DIAGNOSTIC_LOG", diagnostic_log
+        ):
+            nodes, relations, omissions, shapes = (
+                build_lean_dependency_index.export_environment()
+            )
+        require(
+            nodes == {"Example.source": "ErdosProblems.Example"},
+            "file-backed dependency export lost its node",
+        )
+        require(not relations and not shapes, "minimal export grew invented rows")
+        require(omissions == {"Example.source": 0}, "omission row was not parsed")
+        require(
+            observed_export_path is not None and not observed_export_path.exists(),
+            "unique dependency export file survived its temporary lifetime",
+        )
+        require(
+            diagnostic_log.read_text(encoding="utf-8") == "compiler diagnostic\n",
+            "compiler stdout was not retained as diagnostics",
+        )
+
+        rejected_export_paths: list[Path] = []
+        for mode, expected in (
+            ("missing", "readable UTF-8 export"),
+            ("empty", "empty export"),
+            ("whitespace", "empty export"),
+            ("malformed", "malformed export"),
+        ):
+            def rejected_export(*_args: object, **kwargs: object):
+                path = Path(str(kwargs["lean_dependency_export_file"]))
+                rejected_export_paths.append(path)
+                if mode == "empty":
+                    path.write_text("", encoding="utf-8")
+                elif mode == "whitespace":
+                    path.write_text("\n", encoding="utf-8")
+                elif mode == "malformed":
+                    path.write_text("not an exporter row\n", encoding="utf-8")
+                return subprocess.CompletedProcess(
+                    ["fixture"], 0, stdout="", stderr=""
+                )
+
+            with patch.object(build_lean_dependency_index, "run", rejected_export):
+                try:
+                    build_lean_dependency_index.export_environment()
+                except build_lean_dependency_index.ClassifiedExportError as exc:
+                    require(exc.outcome == "export_crash", f"{mode} export misclassified")
+                    require(expected in exc.detail, f"{mode} export detail was not concrete")
+                else:
+                    raise AssertionError(f"{mode} export was accepted")
+        require(
+            len(set(rejected_export_paths)) == len(rejected_export_paths),
+            "dependency exporter reused a previous temporary output path",
+        )
+
+        failed_export_path: Path | None = None
+
+        def failed_export(*_args: object, **kwargs: object):
+            nonlocal failed_export_path
+            failed_export_path = Path(str(kwargs["lean_dependency_export_file"]))
+            failed_export_path.write_text("stale partial row", encoding="utf-8")
+            return subprocess.CompletedProcess(
+                ["fixture"], 7, stdout="compiler stdout\n", stderr="compiler stderr\n"
+            )
+
+        with patch.object(build_lean_dependency_index, "run", failed_export), patch.object(
+            build_lean_dependency_index, "EXPORT_DIAGNOSTIC_LOG", diagnostic_log
+        ):
+            try:
+                build_lean_dependency_index.export_environment()
+            except build_lean_dependency_index.ClassifiedExportError as exc:
+                require(exc.outcome == "export_crash", "failed export misclassified")
+                require("exited 7" in exc.detail, "failed export lost its exit status")
+            else:
+                raise AssertionError("failed dependency export was accepted")
+        require(
+            failed_export_path is not None and not failed_export_path.exists(),
+            "failed dependency export left its partial output behind",
+        )
+        failed_diagnostics = diagnostic_log.read_text(encoding="utf-8")
+        require(
+            "compiler stdout" in failed_diagnostics
+            and "compiler stderr" in failed_diagnostics,
+            "failed dependency export dropped compiler diagnostics",
+        )
+
     require(
         build_lean_dependency_index.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",

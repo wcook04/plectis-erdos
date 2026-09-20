@@ -6,6 +6,17 @@ open Lean
 
 private def corpusRoots : Array Name := #[`Erdos249257, `ErdosProblems]
 
+private def exportPathEnv := "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
+
+private def exportStream : IO IO.FS.Stream := do
+  match ← IO.getEnv exportPathEnv with
+  | some path =>
+      if path.isEmpty then
+        throw <| IO.userError s!"{exportPathEnv} must name a nonempty path"
+      let handle ← IO.FS.Handle.mk path IO.FS.Mode.write
+      return IO.FS.Stream.ofHandle handle
+  | none => IO.getStdout
+
 private def moduleString (env : Environment) (name : Name) : String :=
   (env.getModuleFor? name).map (·.toString) |>.getD ""
 
@@ -81,7 +92,10 @@ normalisation and source-coordinate join.
 -/
 run_cmd do
   let env ← getEnv
-  let stdout ← liftM IO.getStdout
+  -- The builder supplies a unique temporary path so the large row stream does
+  -- not pass through Lean's diagnostic formatting. Direct invocations retain
+  -- the historical stdout interface when the variable is absent.
+  let stdout ← liftM exportStream
   for info in env.constants.map₁.values do
     let source := info.name
     if isCorpusConstant env source && !source.isInternal then
