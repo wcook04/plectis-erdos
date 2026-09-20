@@ -899,15 +899,6 @@ def main(argv: list[str] | None = None) -> int:
             build_waves,
             graph,
         )
-        pending = [
-            [
-                name
-                for name in wave
-                if name in stale_targets and name not in direct_target_names
-            ]
-            for wave in build_waves
-        ]
-        pending = [wave for wave in pending if wave]
     else:
         output_mtimes: dict[str, int | None] = {}
         config_mtime = project_config_mtime_ns(root)
@@ -951,16 +942,11 @@ def main(argv: list[str] | None = None) -> int:
             build_waves,
             graph,
         )
-        pending = [
-            [
-                name
-                for name in wave
-                if name not in direct_target_names
-                and name in stale_targets
-            ]
-            for wave in build_waves
-        ]
-    pending = [wave for wave in pending if wave]
+    # Cached prerequisites are already ready, regardless of their depth in
+    # the full import graph. Re-level only the propagated stale closure so
+    # unrelated rebuilds can share a batch. Propagation above retains every
+    # stale dependent; the final serialized Lake check remains authoritative.
+    pending = waves(stale_targets - direct_target_names, graph)
     print(
         f"lean-fast-build: targets={','.join(target_modules)}; "
         f"{sum(map(len, pending))} stale/missing module(s), jobs={args.jobs}, "

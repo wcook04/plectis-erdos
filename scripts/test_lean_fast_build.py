@@ -1015,6 +1015,44 @@ import Pkg.TooLate
             self.assertEqual(built, [["Pkg.Base"], ["Pkg.Consumer"]])
             self.assertEqual(run.call_count, 1)
 
+    def test_cached_import_depth_does_not_serialize_independent_rebuilds(self) -> None:
+        # A and B are independent stale modules; B happens to import a deeper
+        # current chain. C really depends on B and must remain a later batch.
+        for lake_staleness in (False, True):
+            with self.subTest(lake_staleness=lake_staleness), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                sources = {
+                    "A": "-- independent stale root\n",
+                    "Cached0": "-- current dependency\n",
+                    "Cached1": "import Pkg.Cached0\n",
+                    "B": "import Pkg.Cached1\n",
+                    "C": "import Pkg.B\n",
+                }
+                for name, content in sources.items():
+                    source = root / "Pkg" / f"{name}.lean"
+                    source.parent.mkdir(exist_ok=True)
+                    source.write_text(content, encoding="utf-8")
+                    output = fast.olean(f"Pkg.{name}", root)
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    output.write_text("cached\n", encoding="utf-8")
+                    os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+                    os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+                for name in ("A", "B"):
+                    os.utime(root / "Pkg" / f"{name}.lean", ns=(3_000_000_000, 3_000_000_000))
+                built: list[list[str]] = []
+                with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                    fast, "lake_stale_targets", return_value=["Pkg.A", "Pkg.B"]
+                ), mock.patch.object(
+                    fast, "build_wave",
+                    side_effect=lambda names, jobs, root: built.append(list(names)) or [],
+                ), mock.patch.object(fast, "run_final_authority_check", return_value=0) as authority:
+                    args = ["--jobs", "2", "Pkg.A", "Pkg.C"]
+                    if lake_staleness:
+                        args.insert(0, "--lake-staleness")
+                    self.assertEqual(fast.main(args), 0)
+                self.assertEqual(built, [["Pkg.A", "Pkg.B"], ["Pkg.C"]])
+                authority.assert_called_once_with(["Pkg.A", "Pkg.C"], root)
+
     def test_stale_accepts_precomputed_build_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
