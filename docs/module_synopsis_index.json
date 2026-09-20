@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:7631fa743e2bb4354631b316473ce81936c1fbe35c338190d214d2bde93442c3",
-  "module_count": 1448,
-  "synopsis_count": 1252,
+  "source_fingerprint": "sha256:a0f9e4e5ebf986b227ddebcd3b6c08df3a75b1f58be6833f8c88e075e8cf01a3",
+  "module_count": 1452,
+  "synopsis_count": 1255,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -7216,6 +7216,26 @@
       "id": "ErdosProblems.Skip.verify.V9",
       "path": "lean/ErdosProblems/Skip/verify/V9.lean",
       "synopsis": "Adversarial verification scratch file for `ErdosProblems/Skip/Wire3.lean`. Everything here is *checking* Wire3, not extending it."
+    },
+    {
+      "id": "ErdosProblems.Synthesis.CongruenceInterpolation",
+      "path": "lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean",
+      "synopsis": "Congruence feedback and bounded-carry rigidity The existing #251 `ResidueFeedback` module supplies the constructive side, including the infinite-sum theorem. This module supplies its arithmetic contrast: an unbounded common divisor of radix and correction excludes every positive bounded rational carry orbit. The ordinary factorial support theorem is in `paper/synthesis/optimal-sparse-perturbations.tex`."
+    },
+    {
+      "id": "ErdosProblems.Synthesis.DyadicShiftEscape",
+      "path": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean",
+      "synopsis": "Uniform separation of dyadic tail differences The #251 classifier identifies irrationality with nonintegrality of every positive-length tail difference. The #269 bounded-radix escape theorem turns this qualitative statement into cofinal separation by a common positive constant. The bridge is a change of representation: a fixed-length difference of a dyadic tail orbit is itself an integer-digit dyadic orbit. The constant `1 / 31` is inherited from the #269 theorem for radices at most 30; it is not asserted to be optimal for the radix-two specialization. This composition proves no irrationality assertion about the actual prime series: it gives an exact quantitative form of the existing irrationality criterion."
+    },
+    {
+      "id": "ErdosProblems.Synthesis.FeedbackContinuation",
+      "path": "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
+      "synopsis": "Eventual congruences from the existing feedback construction The #251 feedback theorem supplies bounded digits, their weighted sum, and a prescribed divisor of every cumulative prefix. Nested moduli turn these prefix divisibilities into eventual divisibility of both the individual digits and all preceding cumulative sums. This is the analytic continuation mechanism used by the factorial tail-capacity argument. It does not formalize the choice of factorial allowances, active positions, moduli, or continuation intervals in that ordinary proof. Those inputs remain explicit hypotheses here. No feedback selector is duplicated."
+    },
+    {
+      "id": "ErdosProblems.Synthesis",
+      "path": "lean/ErdosProblems/Synthesis.lean",
+      "synopsis": null
     },
     {
       "id": "ErdosProblems.Three.T1",

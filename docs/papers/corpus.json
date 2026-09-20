@@ -38,9 +38,10 @@
     "claim-faithful-publication-systems",
     "cold-clone-to-proof-receipt",
     "open-source-mathematics-strategy",
-    "plectis-public-system"
+    "plectis-public-system",
+    "optimal-sparse-perturbations"
   ],
-  "paper_count": 23,
+  "paper_count": 24,
   "publication_taxonomy": {
     "generated_by": "docs/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
@@ -65,12 +66,12 @@
     "by_publication_class": {
       "problem_paper": 9,
       "reasoning_surface": 9,
-      "synthesis_paper": 1,
+      "synthesis_paper": 2,
       "methods_paper": 3,
       "software_paper": 1
     },
     "by_manuscript_status": {
-      "technical_report": 13,
+      "technical_report": 14,
       "working_research_record": 9,
       "retired_provenance": 1
     },
@@ -7573,7 +7574,7 @@
       "subject": "Eight Erd\u0151s problems read together",
       "subject_kind": "synthesis",
       "form": "Synthesis note",
-      "owns": "the synthesis exposition of the comparison across the covered problems: choices against contraction, the rational and irrational subsums of one Lambert series across bases, the forced Farey statistic, and the listed method limits it does not explain",
+      "owns": "the synthesis exposition of the comparison across the covered problems: choices against contraction, the rational and irrational subsums of one Lambert series across bases, the fixed-depth Farey statistic and its late-rejection limit, and the listed method limits it does not explain",
       "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, the results it quotes from the companion notes, which belong to those notes, or the status of any of the eight Erd\u0151s problems, which belongs to docs/claims.json in the mathematics repository",
       "publication_state": "pending_source_publication",
       "publication_class": "synthesis_paper",
@@ -7602,7 +7603,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-synthesis-subsums-across-bases.md",
       "local_source": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
-      "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0",
+      "source_sha256": "sha256:41c52787a4f5a9ebdd7d0a3f3fbfa53e54b4237b73941b1cadc9671c77b8f2d8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7643,25 +7644,25 @@
           "level": 1,
           "id": "sec:base2",
           "title": "Base two",
-          "line": 145
+          "line": 151
         },
         {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 174
+          "line": 187
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 248
+          "line": 263
         }
       ],
-      "citations_rendered": 34,
+      "citations_rendered": 33,
       "local_pdf": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf",
-      "pdf_sha256": "sha256:18abdc5983f21321bac2f1a75413db4873219ff8fba019aaa60dd47b10bb93e9",
-      "pdf_byte_count": 89218,
+      "pdf_sha256": "sha256:8bbee5b433ad7f82e5b9bcc6af13c300a2c050a7533544854f4973e3cae4c078",
+      "pdf_byte_count": 91344,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7679,12 +7680,12 @@
           {
             "id": "sec:base2",
             "title": "Base two",
-            "line": 145
+            "line": 151
           },
           {
             "id": "sec:second",
             "title": "Limits on methods",
-            "line": 174
+            "line": 187
           }
         ],
         "unresolved_count": 0
@@ -7727,7 +7728,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-synthesis-reading-together-record.md",
       "local_source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
-      "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc",
+      "source_sha256": "sha256:eee57a27d5696d3f8bc7111c36c83b5f025c0dd7c233e5acd7d048b4e7fc71dc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7761,38 +7762,38 @@
         {
           "level": 1,
           "id": "sec:misread",
-          "title": "One computation read wrongly twice",
+          "title": "The computation and its limits",
           "line": 86
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 98
+          "line": 113
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 112
+          "line": 127
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Questions",
-          "line": 126
+          "line": 141
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 192
+          "line": 220
         }
       ],
       "citations_rendered": 35,
       "local_pdf": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
-      "pdf_sha256": "sha256:5fa378ade0a857a24de277b0c9826b8bd0e915c1accb76352380f59459d73031",
-      "pdf_byte_count": 75141,
+      "pdf_sha256": "sha256:1ec398eddaf52646e5291597a025b33ee579d7bd9a89dfc256d80adffbc073d3",
+      "pdf_byte_count": 83099,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7810,12 +7811,12 @@
           {
             "id": "sec:known",
             "title": "What was already known",
-            "line": 112
+            "line": 127
           },
           {
             "id": "sec:questions",
             "title": "Questions",
-            "line": 126
+            "line": 141
           }
         ],
         "unresolved_count": 0
@@ -7858,7 +7859,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:ce620ecc1475faf0af0fbf035fce1aa46fda8782111706179f9345c13fb1f37d",
+      "source_sha256": "sha256:0eb9989fe2c1b0cd7e32b228bf776eac669d15922fa63753b4b39236d25fc2fc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8156,8 +8157,8 @@
       ],
       "citations_rendered": 28,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:a4492de28657aaef442ffdd94aafc041aeb6daab648fdcf697188605d2d251a0",
-      "pdf_byte_count": 153618,
+      "pdf_sha256": "sha256:ceb2c38979e8cdab4efb1dd6a0cef4fbef7b050c40e6cc6ea16dc9801bef9582",
+      "pdf_byte_count": 153617,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8228,7 +8229,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:3540db328568af195701fc6365343774c289a3c56749febc4938916b81e2873d",
+      "source_sha256": "sha256:f8a92f07b1a3b88496cb6387828d37b9951547480b2ea28a85f3b87911ea3368",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8358,8 +8359,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:5767facdd9b9b4728523443e1dbcbe90fb61d9aef1168992207ebbb43ce3a786",
-      "pdf_byte_count": 87606,
+      "pdf_sha256": "sha256:5f84260de04155f7d5b965071f45ec72e7d8a0fec55607b8d4cb782715c35fd8",
+      "pdf_byte_count": 87613,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8930,6 +8931,134 @@
         ],
         "unresolved_count": 0
       }
+    },
+    {
+      "paper_id": "optimal-sparse-perturbations",
+      "title": "An Exact Capacity Criterion for Series with Eventual Congruences",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "When do summable digit allowances on a strict integer divisibility chain permit interval filling under eventual individual and cumulative congruences?",
+      "subject": "The capacity threshold for divisibility-chain series with eventual congruences",
+      "subject_kind": "synthesis",
+      "form": "Standalone synthesis note",
+      "owns": "the synthesis exposition and ordinary proof of the exact tail-capacity criterion for interval filling under eventual congruences, with the sharp factorial support-gap threshold as a corollary",
+      "not_authority_for": "Lean proof of the complete capacity criterion or support-gap classification, peer review, historical priority, or promotion of any reviewed claim or Erd\u0151s problem status",
+      "publication_state": "pending_source_publication",
+      "publication_class": "synthesis_paper",
+      "publication_class_basis": "owns names 'synthesis exposition'",
+      "manuscript_status": "technical_report",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "An Exact Capacity Criterion for Series with Eventual Congruences",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": null,
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "unversioned_source",
+        "text": "Will Cook (2026). An Exact Capacity Criterion for Series with Eventual Congruences. plectis-erdos. CC-BY-4.0.",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
+      "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
+      "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
+      "source_sha256": "sha256:6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849",
+      "sections": [
+        {
+          "level": 1,
+          "id": "optimal-sparse-perturbations",
+          "title": "An Exact Capacity Criterion for Series with Eventual Congruences",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "id": "abstract",
+          "title": "Abstract",
+          "line": 5
+        },
+        {
+          "level": 1,
+          "id": "the-exact-criterion",
+          "title": "The exact criterion",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "id": "the-sharp-support-threshold",
+          "title": "The sharp support threshold",
+          "line": 37
+        },
+        {
+          "level": 1,
+          "id": "sec:capacity-proof",
+          "title": "Proof of the capacity criterion",
+          "line": 92
+        },
+        {
+          "level": 2,
+          "id": "bounded-capacity-along-a-subsequence",
+          "title": "Bounded capacity along a subsequence",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "id": "one-continuation-interval-for-every-cumulative-residue",
+          "title": "One continuation interval for every cumulative residue",
+          "line": 108
+        },
+        {
+          "level": 2,
+          "id": "from-one-interval-to-every-nonnegative-target",
+          "title": "From one interval to every nonnegative target",
+          "line": 149
+        },
+        {
+          "level": 1,
+          "id": "sec:negative",
+          "title": "Why a large gap prevents interval filling",
+          "line": 163
+        },
+        {
+          "level": 1,
+          "id": "a-digit-that-also-corrects-the-cumulative-residue",
+          "title": "A digit that also corrects the cumulative residue",
+          "line": 189
+        },
+        {
+          "level": 1,
+          "id": "the-positive-direction-and-the-arithmetic-cost",
+          "title": "The positive direction and the arithmetic cost",
+          "line": 223
+        },
+        {
+          "level": 1,
+          "id": "sec:carry",
+          "title": "A common-divisor test for irrationality",
+          "line": 259
+        },
+        {
+          "level": 1,
+          "id": "sec:sources",
+          "title": "Sources, formal correspondence, and further questions",
+          "line": 302
+        }
+      ],
+      "section_count": 13,
+      "citations_rendered": 1,
+      "pdf_sha256": "sha256:0619b82f0ed1b6f09af39cbf9b3bd6000575082564bd4b7a28cd4d0f0a848b95",
+      "pdf_byte_count": 101136
     }
   ]
 }

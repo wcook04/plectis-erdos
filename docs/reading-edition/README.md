@@ -4,15 +4,15 @@
 
 # Reading edition
 
-Edition fingerprint `1604610facdb77ce`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `749aafdb6c1384dc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
 | File | Contents | Size |
 |---|---|---:|
-| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the synthesis note in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 282 KB |
-| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the synthesis note and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 650 KB |
-| Complete edition | All eighteen papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 2,819 KB |
+| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the synthesis note in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 284 KB |
+| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the synthesis note and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 655 KB |
+| Complete edition | All 19 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 2,869 KB |
 
 ```sh
 python3 scripts/build_reading_edition.py --complete plectis-complete-edition.md
@@ -24,8 +24,9 @@ A model with a small context window should take the starter file first and then 
 
 | Problem | Paper | Kind | Size | Raw text |
 |---|---|---|---:|---|
-| Eight together | [Rational and Irrational Subsums of a Lambert Series Across Bases](../../docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) | synthesis note | 27 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) |
-| Eight together | [Reading Eight Erdős Problems Together](../../docs/papers/full-text/erdos-synthesis-reading-together-record.md) | longer record | 20 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-synthesis-reading-together-record.md) |
+| Eight together | [Rational and Irrational Subsums of a Lambert Series Across Bases](../../docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) | synthesis note | 28 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) |
+| Eight together | [Reading Eight Erdős Problems Together](../../docs/papers/full-text/erdos-synthesis-reading-together-record.md) | longer record | 24 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-synthesis-reading-together-record.md) |
+| Eight together | [An Exact Capacity Criterion for Series with Eventual Congruences](../../docs/papers/full-text/optimal-sparse-perturbations.md) | synthesis note | 25 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/optimal-sparse-perturbations.md) |
 | #68 | [Two Incomparable Denominator Exclusions for \sum_{n\ge2}(n!-1)^{-1}](../../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) | short paper | 72 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) |
 | #68 | [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](../../docs/papers/full-text/erdos68-factorial-reasoning-surface.md) | longer record | 173 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) |
 | #243 | [Bounded Increments and Rational Reciprocal Sums](../../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) | short paper | 64 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) |
@@ -40,7 +41,7 @@ A model with a small context window should take the starter file first and then 
 | #269 | [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) | longer record | 175 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) |
 | #1041 | [Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds](../../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) | short paper | 99 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) |
 | #1041 | [Paths in Polynomial Lemniscates: Proofs and Examples](../../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) | longer record | 246 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) |
-| #1049 | [Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order](../../docs/papers/full-text/erdos-1049-rational-base-lambert.md) | short paper | 68 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
-| #1049 | [Zudilin’s Forms at Rational Bases: Proofs and Research Record](../../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) | longer record | 225 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) |
+| #1049 | [Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order](../../docs/papers/full-text/erdos-1049-rational-base-lambert.md) | short paper | 71 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
+| #1049 | [Zudilin’s Forms at Rational Bases: Proofs and Research Record](../../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) | longer record | 242 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) |
 
 The introduction is authored in [INTRODUCTION.md](INTRODUCTION.md). The research instruction is the marked region of [skills/explore-the-corpus/SKILL.md](../../skills/explore-the-corpus/SKILL.md); a clone and this edition therefore give the same instruction. Rebuild with `python3 scripts/build_reading_edition.py`; `--check` fails when any output is stale.

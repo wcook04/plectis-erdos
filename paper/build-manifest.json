@@ -5,9 +5,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:3540db328568af195701fc6365343774c289a3c56749febc4938916b81e2873d"
+        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:f8a92f07b1a3b88496cb6387828d37b9951547480b2ea28a85f3b87911ea3368"
       },
-      "rendered_content_digest": "sha256:5767facdd9b9b4728523443e1dbcbe90fb61d9aef1168992207ebbb43ce3a786",
+      "rendered_content_digest": "sha256:5f84260de04155f7d5b965071f45ec72e7d8a0fec55607b8d4cb782715c35fd8",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
@@ -192,9 +192,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/synthesis/erdos-synthesis-subsums-across-bases.tex": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+        "paper/synthesis/erdos-synthesis-subsums-across-bases.tex": "sha256:41c52787a4f5a9ebdd7d0a3f3fbfa53e54b4237b73941b1cadc9671c77b8f2d8"
       },
-      "rendered_content_digest": "sha256:18abdc5983f21321bac2f1a75413db4873219ff8fba019aaa60dd47b10bb93e9",
+      "rendered_content_digest": "sha256:8bbee5b433ad7f82e5b9bcc6af13c300a2c050a7533544854f4973e3cae4c078",
       "source_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
       "storage_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf"
     },
@@ -203,11 +203,22 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/synthesis/erdos-synthesis-reading-together-record.tex": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+        "paper/synthesis/erdos-synthesis-reading-together-record.tex": "sha256:eee57a27d5696d3f8bc7111c36c83b5f025c0dd7c233e5acd7d048b4e7fc71dc"
       },
-      "rendered_content_digest": "sha256:5fa378ade0a857a24de277b0c9826b8bd0e915c1accb76352380f59459d73031",
+      "rendered_content_digest": "sha256:1ec398eddaf52646e5291597a025b33ee579d7bd9a89dfc256d80adffbc073d3",
       "source_path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
       "storage_path": "paper/synthesis/erdos-synthesis-reading-together-record.pdf"
+    },
+    "factorial_gap_threshold_synthesis": {
+      "inputs": {
+        "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
+        "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+        "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
+        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849"
+      },
+      "rendered_content_digest": "sha256:0619b82f0ed1b6f09af39cbf9b3bd6000575082564bd4b7a28cd4d0f0a848b95",
+      "source_path": "paper/synthesis/optimal-sparse-perturbations.tex",
+      "storage_path": "paper/synthesis/optimal-sparse-perturbations.pdf"
     },
     "human_exposition": {
       "inputs": {
@@ -236,9 +247,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ce620ecc1475faf0af0fbf035fce1aa46fda8782111706179f9345c13fb1f37d"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:0eb9989fe2c1b0cd7e32b228bf776eac669d15922fa63753b4b39236d25fc2fc"
       },
-      "rendered_content_digest": "sha256:a4492de28657aaef442ffdd94aafc041aeb6daab648fdcf697188605d2d251a0",
+      "rendered_content_digest": "sha256:ceb2c38979e8cdab4efb1dd6a0cef4fbef7b050c40e6cc6ea16dc9801bef9582",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }

@@ -1,0 +1,495 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,booktabs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{xurl}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\title{An Exact Capacity Criterion for Series\\with Eventual Congruences}
+\author{Will Cook}
+\date{20 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $Q_n$ be positive integers with $Q_n\mid Q_{n+1}$ and
+$Q_{n+1}\ge2Q_n$, and let $F_n\ge0$ be integer allowances with
+$\sum F_n/Q_n<\infty$. Series whose nonnegative integer digits satisfy these
+bounds eventually and are eventually divisible by every fixed integer
+represent an interval exactly when $Q_N\sum_{n>N}F_n/Q_n\to\infty$.
+In that case every nonnegative real is represented; otherwise the set of
+values is null and meagre. The sufficient direction
+also imposes eventual divisibility of the cumulative digit sums, with
+cutoffs common to every target in the interval. Arbitrary oscillation,
+zero allowances and unbounded denominator ratios are permitted. For
+factorial denominators and allowances $n^c$ on a fixed support, the criterion
+gives the sharp gap threshold $\text{gap}<c$; its contrast with the
+unrestricted threshold $\text{gap}\le c$ occurs exactly at integer exponents.
+The proof combines common continuation intervals for every cumulative residue
+with the arithmetic lattice of prefixes. A separate common-divisor criterion
+isolates an obstruction to rationality for bounded-carry Cantor series.
+\end{abstract}
+
+\section{The exact criterion}
+A factorial expansion usually permits a digit of size about $n$ at position
+$n$. If more digits are allowed, can most positions be discarded? What changes
+if each fixed integer must eventually divide every digit?
+
+Let $Q_n$ be positive integers, $n\ge1$, such that $Q_n\mid Q_{n+1}$ and
+$Q_{n+1}\ge2Q_n$. Let $F_n\in\Z_{\ge0}$ satisfy
+$\sum_nF_n/Q_n<\infty$, and put
+\[
+ U_N=Q_N\sum_{n>N}\frac{F_n}{Q_n}.
+ \tag{C}\label{eq:capacity}
+\]
+Define $E_Q(F)$ to be the set of sums $\sum_{n\ge1}e_n/Q_n$, allowing
+nonnegative integer digits $e_n\le F_n$ eventually and requiring, for each
+fixed $q\ge1$, that $q\mid e_n$ eventually. The cutoffs and finite initial
+digits may depend on the represented value.
+
+\begin{theorem}\label{thm:capacity}
+If $U_N\to\infty$, then $E_Q(F)=[0,\infty)$; otherwise $E_Q(F)$ is null
+and meagre. In particular interval filling is equivalent to $U_N\to\infty$.
+In the positive case, every nonnegative target may be represented with
+$e_n=0$ before any prescribed cutoff, at most one exception to $e_n\le F_n$,
+and
+\[
+ q\mid e_n,\qquad q\mid\sum_{k<n}e_k
+ \quad\text{for all sufficiently large }n,
+\]
+with congruence cutoffs depending on $q$ but independent of the target.
+If the allowance must hold at every position, a nondegenerate interval is
+still represented with both congruences and a common cutoff for each $q$.
+\end{theorem}
+The criterion compares \emph{all} future capacity with the prefix lattice.
+It requires no monotonicity, regular variation or gap bound on the allowances,
+and no upper bound on the denominator ratios. It does not require the $Q_n$
+to clear every rational denominator. Section~\ref{sec:capacity-proof} proves
+the theorem using the same residue-feedback mechanism already present in
+the public Lean repository. The capacity estimates and complete criterion
+are ordinary proofs; the abstract feedback endpoint is kernel-checked
+separately. Both geometric and factorial denominators satisfy the hypotheses.
+
+\subsection{The sharp support threshold}
+Let $S\subseteq\N_{\!>0}$ and $c>0$. Define $E(S,c)$ to be the set of sums
+\[
+ x=\sum_{n\ge1}\frac{e_n}{n!},\qquad e_n\in\Z_{\ge0},\quad
+ e_n=0\ (n\notin S),\quad e_n\le n^c\text{ eventually},
+ \tag{1}\label{eq:class}
+\]
+subject to
+\[
+ \text{for every }q\ge1,\qquad q\mid e_n\text{ for all sufficiently large }n.
+ \tag{2}\label{eq:congruence}
+\]
+The cutoffs and the finite initial digits in this definition may depend on $x$.
+All series converge, since finitely many unrestricted digits do not affect
+convergence. A permitted position need not carry a nonzero digit.
+
+\begin{theorem}\label{thm:main}
+If $S$ is finite, $E(S,c)$ is countable. If $S$ is infinite, enumerate it as
+$n_0<n_1<\cdots$.
+\begin{enumerate}
+\item For $0<c\le1$, $E(S,c)$ is null and meagre.
+\item For $c>1$, $E(S,c)$ contains a nondegenerate interval if and only if
+\[
+ n_j-n_{j-1}<c\qquad\text{for all sufficiently large }j.
+ \tag{3}\label{eq:gaps}
+\]
+If this condition fails, $E(S,c)$ is null and meagre.
+\end{enumerate}
+When \eqref{eq:gaps} holds, one may require $e_n=0$ before any prescribed
+cutoff and impose both
+\[
+ q\mid e_n,\qquad q\mid\sum_{k<n}e_k
+ \tag{4}\label{eq:both}
+\]
+for all sufficiently large $n$, with cutoffs depending on $q$ but independent
+of $x$ throughout the constructed interval.
+\end{theorem}
+The theorem is an ordinary mathematical proof. The associated formal sources
+check the general digit-feedback construction and, separately, the
+common-divisor carry obstruction of Section~\ref{sec:carry}; they do not
+formalise this gap classification or its measure argument. The source and
+attribution account is in Section~\ref{sec:sources}.
+
+For example, with allowance $n^2$, every second position suffices without
+congruences. Under \eqref{eq:congruence}, infinitely many omitted positions
+already force a null set. With allowance $n^{2.01}$, every second position
+again suffices, even under \eqref{eq:both}. Thus the strict inequality in
+\eqref{eq:gaps} is essential.
+
+\begin{corollary}\label{cor:density}
+For $c>1$, the least possible asymptotic density of a fixed permitted support
+that fills an interval under \eqref{eq:congruence} is
+$1/(\lceil c\rceil-1)$. Every such support has lower density at least this
+value, and an arithmetic progression attains it. A density bound alone is
+not sufficient: even rare gaps of length $\lceil c\rceil$ prevent interval
+filling if they occur infinitely often.
+\end{corollary}
+\begin{proof}
+Put $d=\lceil c\rceil-1$. Eventual gaps at most $d$ give
+$\liminf_{N\to\infty}|S\cap[1,N]|/N\ge1/d$. An arithmetic progression of
+step $d$ satisfies the theorem.
+\end{proof}
+
+\section{Proof of the capacity criterion}\label{sec:capacity-proof}
+The necessity and sufficiency use different parts of the expansion. Prefixes
+supply an arithmetic obstruction; a common interval of possible future
+remainders makes the residue choices compatible with exact representation.
+
+\subsection{Bounded capacity along a subsequence}
+If $U_N$ does not tend to infinity, there are a constant $B>0$ and arbitrarily
+large $N$ with $U_N\le B$. Choose one integer $q>B$. Fix a cutoff $K$ after
+which the allowance and divisibility by $q$ hold, and fix the finite prefix,
+of value $y_0$. The set $V$ of resulting sums is compact by summability and
+the finite choices at each remaining position. For every such $N>K$,
+\[
+ V\subseteq y_0+\frac q{Q_N}\Z+[0,B/Q_N].
+\]
+Indeed the scaled prefix after $K$ is a multiple of $q$ and the remaining
+tail is at most $U_N/Q_N$. These grids leave holes inside every fixed open
+interval for all sufficiently large selected $N$, so $V$ is nowhere dense.
+For a bounded interval $J$ they also give
+$|V\cap J|\le(B/q)|J|+2B/Q_N$.
+Passing to the subsequence and covering $V$ by finitely many intervals with
+total length at most $|V|+\varepsilon$ gives
+$|V|\le(B/q)(|V|+\varepsilon)$, hence $|V|=0$.
+A countable union over the cutoffs and integer prefixes covers $E_Q(F)$.
+
+\subsection{One continuation interval for every cumulative residue}
+Suppose $U_N\to\infty$ and put $h_N=\inf_{k\ge N}U_k$. For sufficiently
+large $n$, let $M_n$ be the largest factorial at most
+$\min\{n,\sqrt{h_{\lfloor n/2\rfloor}}\}$, and set the finitely many
+earlier moduli equal to one. These positive integers are nested under
+divisibility, tend to infinity, and are eventually divisible by each fixed
+integer. The delayed lower envelope controls the whole future cost of
+rounding, even when the denominator ratios are unbounded. Indeed,
+$Q_N/Q_k\le2^{N-k}$, so for sufficiently large $N$,
+\[
+ \begin{aligned}
+ C_N:=Q_N\sum_{k>N}\frac{M_k}{Q_k}
+ &\le\sqrt{h_N}\sum_{k=N+1}^{2N}2^{N-k}
+       +\sum_{k>2N}k\,2^{N-k}\\
+ &\le\sqrt{h_N}+(2N+2)2^{-N}.
+ \end{aligned}
+\]
+The first bound uses $\lfloor k/2\rfloor\le N$ when $k\le2N$; the second
+uses $M_k\le k$. Since $U_N\ge h_N\to\infty$ and
+$M_N\le\sqrt{h_N}$, this proves $U_N-2C_N\ge M_N$ for every sufficiently
+large $N$. Start beyond this point and any prescribed cutoff.
+
+Keep only the active positions $S=\{n:F_n\ge2M_n\}$ after this cutoff.
+Define two common tail bounds
+\[
+ \alpha_N=\sum_{\substack{n>N\\n\in S}}\frac{M_n}{Q_n},\qquad
+ \beta_N=\sum_{\substack{n>N\\n\in S}}\frac{F_n-M_n}{Q_n}.
+\]
+Both are nonnegative and tend to zero. Discarding an inactive position loses
+less than $2M_n$; reserving both margins at an active position loses exactly
+$2M_n$. Thus the preceding estimate gives the decisive overlap inequality
+\[
+ Q_N(\beta_N-\alpha_N)\ge U_N-2C_N\ge M_N.
+ \tag{O}\label{eq:overlap}
+\]
+In particular the active set is infinite and each continuation interval
+has positive width.
+
+Choose a target in $[\alpha_{N_0},\beta_{N_0}]$ and set all preceding digits
+to zero. Suppose the current unweighted cumulative sum is $C$ and the
+remaining target before position $n$ lies in
+$[\alpha_{n-1},\beta_{n-1}]$. At an inactive position choose zero.
+At an active position, the permitted digits in the residue class
+$e\equiv-C\pmod{M_n}$, $0\le e\le F_n$, form a nonempty arithmetic
+progression of step $M_n$. Its least digit is less than $M_n$ and its
+greatest digit exceeds $F_n-M_n$. By (O), the intervals
+\[
+ \frac e{Q_n}+[\alpha_n,\beta_n]
+\]
+for these digits overlap. Their union contains
+\[
+ \left[\frac{M_n}{Q_n}+\alpha_n,
+       \frac{F_n-M_n}{Q_n}+\beta_n\right]
+   =[\alpha_{n-1},\beta_{n-1}].
+\]
+Choose a digit whose interval contains the remaining target. The next
+remainder stays between $\alpha_n$ and $\beta_n$, and these bounds tend to
+zero, proving exact representation. This is precisely the common-interval
+feedback construction; no target-independent ordinary block sum is required.
+
+After an active position $n$, the cumulative sum is divisible by $M_n$.
+Each later active digit is divisible by the previous active modulus,
+because both adjacent cumulative sums are; the moduli are nested.
+For a fixed $q$, take one active position with $q\mid M_n$. After that
+position, all individual digits and all preceding cumulative sums are
+divisible by $q$. This cutoff is common to all targets in the interval.
+
+\subsection{From one interval to every nonnegative target}
+The finite-exception convention in $E_Q(F)$ strengthens the conclusion.
+Given $y>0$, choose $N$ arbitrarily late with $\alpha_N<y$ and put
+\[
+ p=M_N\left\lfloor\frac{Q_N(y-\alpha_N)}{M_N}\right\rfloor.
+\]
+Then $p\ge0$, $M_N\mid p$, and (O) gives
+$y-p/Q_N\in[\alpha_N,\beta_N]$. Set $e_N=p$ and all earlier digits to
+zero. Run the same continuation construction after $N$, with initial
+cumulative sum $C=p$; its interval covering worked for every $C$.
+All later digits obey their allowances. The zero target uses zero digits.
+
+The congruence cutoffs can also be common to all $y$. For fixed $q$, choose
+an active position $j$ with $q\mid M_j$. If the target's exceptional index
+$N$ precedes $j$, the repair at $j$ gives the required divisibilities after
+$j$. If $N\ge j$, all preceding digits are zero, $q\mid M_N\mid p$, and
+all subsequent repairs preserve divisibility by $q$. Thus $j+1$ is a valid
+cutoff for every target. The allowance-exception index itself may depend
+on the target. This completes Theorem~\ref{thm:capacity}.
+
+The growth hypothesis has content. If repeated denominators are allowed,
+take $Q_n=2^{\lfloor\sqrt n\rfloor}$ and $F_n=1$. The allowance series
+converges, while $U_N\ge\lfloor\sqrt N\rfloor$ by counting the next complete
+denominator block. Yet eventual divisibility by two forces all sufficiently
+late digits to vanish, so the attainable set is countable. Imposing all
+cumulative congruences as well leaves only zero. Thus nestedness alone does
+not justify the criterion.
+
+\section{Why a large gap prevents interval filling}\label{sec:negative}
+The decisive obstruction is local. At a position $N$, the whole preceding
+factorial sum lies on a lattice of spacing $1/N!$. Eventual divisibility
+widens that spacing to $q/N!$, up to a fixed translation. After a sufficiently
+long gap, all remaining permitted digits reach only a bounded multiple of
+$1/N!$. Choosing one fixed $q$ larger than that bound leaves holes at
+arbitrarily small scales.
+
+Here are the details, including the target-dependent cutoffs in (1)--(2).
+Put $r=\lceil c\rceil$. Suppose infinitely many successive $S$-gaps have
+length at least $r$, and let $N$ run through the positions immediately before
+these gaps. For large $k$,
+\[
+ \frac{(k+1)^c/(k+1)!}{k^c/k!}
+ =\frac{(1+1/k)^c}{k+1}\le\frac12.
+\]
+Consequently, for sufficiently large such $N$,
+\begin{align}
+ N!\sum_{\substack{k>N\\k\in S}}\frac{k^c}{k!}
+ &\le 2N!\frac{(N+r)^c}{(N+r)!}\\
+ &\le 2^{c+1}N^{c-r}\le B,\qquad B=2^{c+1}.
+ \tag{5}\label{eq:tailbound}
+\end{align}
+In the second inequality we used $N\ge r$ and
+$(N+1)\cdots(N+r)\ge N^r$.
+
+The bounded capacity along this subsequence invokes the necessity argument
+of Theorem~\ref{thm:capacity}, with allowances
+$F_n=\lfloor n^c\rfloor$ on $S$ and zero elsewhere. It gives nullity and
+meagreness even with target-dependent congruence and allowance cutoffs.
+
+If $c\le1$, every support gap is at least $r=1$, so this proves the first
+part of Theorem~\ref{thm:main}. If $c>1$ and (3) fails, it proves the negative
+part. Notice that infrequent large gaps are enough; average digit counts do
+not detect this obstruction.
+
+\section{A digit that also corrects the cumulative residue}
+The following construction supplies the positive direction. It is useful
+beyond factorial weights.
+
+\begin{lemma}\label{lem:feedback}
+Let $w_j>0$, let positive integers $M_j$ satisfy $M_{j-1}\mid M_j$, and let
+$F_j\ge0$. Suppose $M_jw_j\to0$ and, for $j\ge1$,
+\[
+ 2M_j\le M_{j-1}\frac{w_{j-1}}{w_j},\qquad
+ 2M_{j-1}\frac{w_{j-1}}{w_j}\le F_j.
+ \tag{7}\label{eq:step}
+\]
+Every $y\in[M_0w_0,2M_0w_0]$ has a representation
+$y=\sum_{j\ge1}b_jw_j$ with integers $0\le b_j\le F_j$ such that
+\[
+ M_j\mid\sum_{i\le j}b_i,\qquad M_{j-1}\mid b_j.
+\]
+\end{lemma}
+\begin{proof}
+Start with residual $R_0=y$ and cumulative sum $C_0=0$. Suppose
+$M_{j-1}w_{j-1}\le R_{j-1}\le2M_{j-1}w_{j-1}$ and
+$M_{j-1}\mid C_{j-1}$. Put $u=R_{j-1}/w_j$ and let
+$v$ be the least nonnegative residue of $-C_{j-1}$ modulo $M_j$. Choose
+\[
+ b_j=v+M_j\left\lfloor\frac{u-M_j-v}{M_j}\right\rfloor.
+ \tag{8}\label{eq:selector}
+\]
+Since $u\ge2M_j$ and $0\le v<M_j$, this integer is nonnegative.
+The floor identity gives $M_j\le u-b_j<2M_j$; also $b_j\le u\le F_j$.
+Thus $R_j=R_{j-1}-b_jw_j$ lies in
+$[M_jw_j,2M_jw_j)$, while $C_j=C_{j-1}+b_j$ is divisible by $M_j$.
+The incoming modulus divides both $C_{j-1}$ and $M_j$, hence also $b_j$.
+Finally $R_j\to0$, so the partial sums converge to $y$.
+\end{proof}
+The residue in (8) may depend on $y$. Only the schedule of moduli needs to
+be common to all targets. Requiring target-independent ordinary block sums
+would impose an unnecessary restriction on the construction.
+
+\section{The positive direction and the arithmetic cost}
+Suppose $c>1$ and the support gaps are eventually at most
+$d=\lceil c\rceil-1$. Discard a finite prefix and write
+\[
+ r_j=\frac{n_j!}{n_{j-1}!},\qquad F_j=n_j^c,\qquad w_j=\frac1{n_j!}.
+\]
+Then $r_j\ge n_j\to\infty$, while $r_j\le n_j^d$ and therefore
+$F_j/r_j\ge n_j^{c-d}\to\infty$. Define
+\[
+ h_j=\inf_{k\ge j}\min\left\{\frac{\sqrt{r_k}}2,
+                                  \frac{F_k}{2r_k}\right\}.
+\]
+This lower envelope is nondecreasing and tends to infinity. Begin sufficiently
+late that $h_1\ge1$, set $M_0=1$, and let $M_j$ be the largest factorial at
+most $h_j$. These moduli are nested and eventually divisible by every fixed
+integer. Moreover,
+\[
+ 2M_j\le\sqrt{r_j}\le r_jM_{j-1},\qquad
+ 2r_jM_{j-1}\le F_j.
+\]
+The second inequality uses $M_{j-1}\le h_j$, also valid for $j=1$.
+Finally,
+$M_j/n_j!\le\sqrt{r_j}/(2n_j!)\le1/(2\sqrt{n_j!})\to0$.
+Lemma~\ref{lem:feedback} fills $[1/n_0!,2/n_0!]$ using the positions $n_j$,
+$j\ge1$. Put zero digits elsewhere. Once $q\mid M_J$, all later digits and
+cumulative sums at the original integer indices have the divisibilities in
+(4). This proves the positive direction, including common cutoffs.
+
+For comparison, remove condition (2) and call the resulting attainable set
+$E_0(S,c)$.
+\begin{proposition}\label{prop:unrestricted}
+For an infinite support and $c\ge1$, $E_0(S,c)$ contains an interval exactly
+when its successive gaps are eventually at most $\lfloor c\rfloor$.
+Otherwise it is null and meagre. For $0<c<1$ it is always null and meagre.
+\end{proposition}
+\begin{proof}
+For necessity repeat Section~\ref{sec:negative} with
+$r=\lfloor c\rfloor+1$. The bound in (5) now tends to zero. With lattice
+spacing $1/N!$, it is eventually bounded by $1/(2N!)$, so the same compact-set
+argument applies with $q=1$, $B=1/2$.
+For sufficiency, $r_j\le n_j^c$ along the support. The ordinary mixed-radix
+expansion using digits $0\le b_j<r_j$ fills $[0,1/n_0!]$. To see this
+directly, the maximum tail after $n_j$ is $1/n_j!$, since
+$(r_k-1)/n_k!=1/n_{k-1}!-1/n_k!$. The adjacent digit intervals therefore
+meet, and their lengths tend to zero.
+\end{proof}
+Thus the difference between the two gap thresholds occurs exactly at integer
+$c$. At $c=m\ge2$, imposing eventual congruences raises the least support
+density from $1/m$ to $1/(m-1)$. At $c=1$ it destroys interval filling entirely.
+With quadratic allowances, deleting only the positions $2^k$ destroys
+interval filling, although the permitted support still has density one.
+This is the simplest example of why support density loses decisive information.
+These statements concern intervals of values on a common permitted support;
+they are not lower bounds for representing one specially chosen value.
+
+\section{A common-divisor test for irrationality}\label{sec:carry}
+The distinction between small and large allowances also appears directly in
+rationality. Let $b_n\ge2$ be integers, put $Q_0=1$ and
+$Q_n=b_1\cdots b_n$, and consider a Cantor series.
+\begin{theorem}\label{thm:gcd}
+Suppose $0\le a_n\le A$ and $e_n\ge0$ are integers, $e_n\le Cb_n$
+eventually, and $a_n+e_n$ is nonzero infinitely often. If
+\[
+ \limsup_{n\to\infty}\gcd(b_n,e_n)=\infty,
+\]
+then $\sum_{n\ge1}(a_n+e_n)/Q_n$ is irrational.
+\end{theorem}
+\begin{proof}
+For large $n$, the scaled tail satisfies
+\[
+ 0<Q_n\sum_{k>n}\frac{a_k+e_k}{Q_k}\le A+2C.
+\]
+Indeed, the bounded $a_k$ contribute at most
+$A\sum_{j\ge1}2^{-j}=A$, and $e_k\le Cb_k$ contributes at most
+$C\sum_{j\ge1}2^{-(j-1)}=2C$.
+If the total were $p/D$, the numbers
+\[
+ T_n=DQ_n\left(\frac pD-\sum_{k\le n}\frac{a_k+e_k}{Q_k}\right)
+\]
+would be positive integers eventually bounded by $D(A+2C)$. No hypothesis
+that $D\mid Q_n$ is needed: the extra factor $D$ clears it. The recurrence
+\[
+ b_nT_{n-1}=D(a_n+e_n)+T_n
+\]
+implies $\gcd(b_n,e_n)\mid Da_n+T_n$. The integer on the right is positive
+and eventually at most $D(2A+2C)$, contradicting the unbounded gcd.
+\end{proof}
+For factorial denominators, $b_n=n$, and eventual divisibility of $e_n$ by
+each fixed integer makes $\gcd(n,e_n)$ arbitrarily large arbitrarily late:
+choose a late multiple of that integer. Hence bounded nonnegative digits that
+are nonzero infinitely often cannot be rationalised by nonnegative $O(n)$
+corrections satisfying (2). Conversely any allowance $F(n)$ with
+$F(n)/n\to\infty$ permits interval filling under (4): apply the positive
+construction with $r_n=n$, replacing $n^c$ by $F(n)$.
+
+The arithmetic hypothesis cannot be replaced by $b_n\to\infty$, even if both
+congruences (4) are retained. Set $a_n=1$, $e_1=2$, and
+$e_n=(n+1)!-n!$ for $n\ge2$, and let $b_n=e_n+2$.
+Then $\sum_{k\le n}e_k=(n+1)!$, so (4) holds, and $e_n<b_n$. Nevertheless
+\[
+ \sum_{n\ge1}\frac{a_n+e_n}{Q_n}
+ =\sum_{n\ge1}\frac{b_n-1}{Q_n}=1.
+\]
+Here $\gcd(b_n,e_n)\le2$. This example separates rapid denominator growth
+from the arithmetic obstruction used in Theorem~\ref{thm:gcd}.
+
+\section{Sources, formal correspondence, and further questions}\label{sec:sources}
+The starting point is the sparse perturbation construction accompanying
+Erd\H{o}s Problem \#251 in this repository, especially its
+\href{../251/erdos-251-prime-gap-dyadic-series.pdf}{short paper} and
+\href{../../lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean}{\texttt{ResidueFeedbackCore.lean}}.
+The latter already proves residue-dependent selection and an abstract infinite
+sum endpoint. An operator-supplied review supplied the form of
+Lemma~\ref{lem:feedback}, the sharp exponential support constants, and the
+linear/superlinear factorial contrast. Those ingredients are credited to that
+review, not presented as discoveries of this note. The extensions developed here are the exact capacity criterion on arbitrary
+strict integer divisibility chains, the factorial support classification and
+its integer-exponent comparison, and the common-divisor formulation.
+
+Airey, Mance and Vandehey already use digit sets eventually divisible by every
+fixed integer while retaining asymptotically full digit entropy
+\cite[Section 6, p.~1321]{amv2015}. Their theorem concerns normality and
+Hausdorff dimension for chosen Cantor bases. Here a fixed divisibility chain and arbitrary summable allowances are given,
+and the conclusion distinguishes interval filling from nullity and meagreness. These are elementary arguments in the
+classical theory of Cantor series and achievement sets; historical novelty of
+the exact classification is not established. Classical interval
+covering is background, rather than a contribution claimed here. A literature
+comparison and the reproducible checks are recorded in
+\href{../../research/experiments/sparse_interpolation/README.md}{the accompanying research record}.
+The work was developed with AI assistance and mathematical cross-checking by
+separate agent passes; that does not constitute independent expert review.
+
+The formal module
+\href{../../lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean}{\texttt{CongruenceInterpolation.lean}}
+uses the existing feedback module and states the common-divisor obstruction
+for a real carry recurrence. The analytic identification of that recurrence
+with the Cantor series, and the capacity and support classifications, are
+the ordinary proofs above. The module
+\href{../../lean/ErdosProblems/Synthesis/FeedbackContinuation.lean}{\texttt{FeedbackContinuation.lean}}
+reuses the existing interval-feedback endpoint and proves eventual individual
+and cumulative divisibility from nested cofinal moduli; choosing the moduli
+and continuation intervals remains part of the ordinary proof. See the research record for the exact build status and source
+revision. No claim about any of the eight Erd\H{o}s programmes changes;
+in particular factorial denominators $n!$ here are not $n!-1$ from \#68.
+
+The capacity criterion already covers non-power and oscillating allowances.
+For factorial gaps of fixed length $m$, a bounded multiple of $n^m$ still
+gives the lattice obstruction, whereas $n^mL(n)$ with $L(n)\to\infty$
+permits interval filling. A further question concerns the null case:
+what finer tail data determine its Hausdorff dimension? The criterion itself
+does not separate dimension zero from full-dimensional null sets. Outside
+integer divisibility chains the prefix lattice changes, so no corresponding
+necessity is asserted here.
+\begin{thebibliography}{9}
+\bibitem{amv2015} D.~Airey, B.~Mance and J.~Vandehey,
+\emph{Normality preserving operations for Cantor series expansions and
+associated fractals. II}, New York J. Math. \textbf{21} (2015), 1311--1326.
+\url{https://nyjm.albany.edu/j/2015/21-60v.pdf}.
+\end{thebibliography}
+\end{document}

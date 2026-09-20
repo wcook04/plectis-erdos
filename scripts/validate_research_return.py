@@ -320,7 +320,7 @@ def git_environment() -> dict[str, str]:
 
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 RETURN_ID_RE = re.compile(r"^rr-[a-z0-9][a-z0-9-]{2,80}$")
-PRIVATE_RE = re.compile(r"(?:/Users/|/home/|[A-Za-z]:\\\\|(?:^|/)ai_workflow(?:/|$))")
+PRIVATE_RE = re.compile(r"(?:/Users/|/home/|\b[A-Za-z]:\\\\|(?:^|/)ai_workflow(?:/|$))")
 SECRET_RE = re.compile(
     r"(?:gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|"
     r"AKIA[0-9A-Z]{16}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)"

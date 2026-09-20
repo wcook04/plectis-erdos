@@ -45,6 +45,54 @@ def run_cli(input_path: Path, *arguments: str) -> subprocess.CompletedProcess[st
 def main() -> int:
     fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
     identity = validator.repository_identity_contract.load_identity()
+    # Lean emits JSON diagnostics inside the JSON workbench receipt.  Its
+    # escaped newline after "this:" must not become a Windows drive path.
+    lean_diagnostic = {
+        "caption": "",
+        "data": (
+            "Try this:\n  [apply] ring_nf\n  \n"
+            "  The `ring` tactic failed to close the goal. "
+            "Use `ring_nf` to obtain a normal form."
+        ),
+        "fileName": "<stdin>",
+        "kind": "[anonymous]",
+        "pos": {"column": 4, "line": 88},
+        "severity": "information",
+    }
+    rejected_probe = {
+        "kind": "probe",
+        "move_id": "m003",
+        "kernel_receipt": {
+            "verdict": "kernel_rejected",
+            "output_tail": json.dumps(lean_diagnostic),
+        },
+    }
+    for probe in (rejected_probe, json.dumps(rejected_probe)):
+        require(
+            not validator.public_safety_errors(probe),
+            "nested Lean 'Try this' diagnostic was mistaken for a private path",
+        )
+    for private_path in (
+        "/Users/alice/proof.lean",
+        "/home/alice/proof.lean",
+        "/repo/ai_workflow/proof.lean",
+        r"C:\private\proof.lean",
+        r"d:\private\proof.lean",
+    ):
+        private_probe = copy.deepcopy(rejected_probe)
+        private_probe["kernel_receipt"]["output_tail"] = json.dumps(
+            {**lean_diagnostic, "data": f"Failed to open {private_path}"}
+        )
+        for probe in (private_probe, json.dumps(private_probe)):
+            require(
+                "contains a private path or private-repository reference"
+                in validator.public_safety_errors(probe),
+                f"nested diagnostic concealed a private path: {private_path}",
+            )
+    require(
+        validator.public_safety_errors("ai_workflow/proof.lean"),
+        "private repository reference at the start of text escaped detection",
+    )
     require(
         validator.PROBLEMS is validator.route_memory_receipt.ROSTER,
         "return selector roster must reuse route-memory authority",

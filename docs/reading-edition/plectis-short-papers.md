@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `1604610facdb77ce`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `749aafdb6c1384dc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -110,7 +110,7 @@ result and the next question it opens.
 
 *Which subseries of the Lambert series sum 1/(t^n-1) are rational or irrational as the base varies, and what can and cannot decide irrationality in the seven arithmetic problems?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/erdos-synthesis-subsums-across-bases.pdf)
 
-Working record: [Reading Eight Erdős Problems Together](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-synthesis-reading-together-record.md) (20 KB as text).
+Working record: [Reading Eight Erdős Problems Together](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-synthesis-reading-together-record.md) (24 KB as text).
 
 <a id="erdos-synthesis-subsums-across-bases--erdos-synthesis-subsums-across-bases"></a>
 
@@ -122,7 +122,7 @@ Working record: [Reading Eight Erdős Problems Together](https://github.com/wcoo
 
 </div>
 
-Let $`a>b\ge1`$ be coprime integers with $`a^2>b^3`$. We prove that $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ is irrational for every infinite set $`S`$ of positive integers that is totally ordered by divisibility, and transcendental at every rational base when $`S`$ eventually doubles. For every rational base strictly between $`1`$ and $`2`$ the same sums take rational values on infinite sets $`S`$; at base $`3/2`$ the value $`1/2`$ occurs. Both facts come from one comparison, the number of admissible choices at each level against the contraction between levels. Subsum sets are null when the choices fall short by an unbounded factor and contain intervals when every step is at most the reach of the later steps, and base $`2`$ lies exactly on the boundary. On the interval side no property shared by all the competing series can decide irrationality; the rational series constructed in the companion notes on Erdős Problems \#249 and \#251 are instances. At base $`2`$ the subsums form a Cantor set of measure one. We prove that the proportion of rationals of bounded height that survive a fixed number of greedy steps is forced by the equidistribution of Farey fractions, so it carries no information about membership, and we state the membership question that remains.
+Let $`a>b\ge1`$ be coprime integers with $`a^2>b^3`$. We prove that $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ is irrational for every infinite set $`S`$ of positive integers that is totally ordered by divisibility, and transcendental at every rational base when $`S`$ eventually doubles. For every rational base strictly between $`1`$ and $`2`$ the same sums take rational values on infinite sets $`S`$; at base $`3/2`$ the value $`1/2`$ occurs. The interval result follows from subsum covering and a denominator observation; the chain result combines nested denominators with Mahler’s method. Subsum sets are null when the choices fall short by an unbounded factor and contain intervals when every step is at most the reach of the later steps, and base $`2`$ lies exactly on the boundary. On the interval side no property shared by all the competing series can decide irrationality; the rational series constructed in the companion notes on Erdős Problems \#249 and \#251 are instances. At base $`2`$ the subsums form a Cantor set of measure one. We determine the limiting proportion of rationals of bounded height not rejected through any fixed number of greedy steps. This proportion does not settle membership; an exact late rejection shows why it gives no deterministic stopping depth for the computation.
 
 <a id="erdos-synthesis-subsums-across-bases--sec:results"></a>
 
@@ -151,7 +151,7 @@ V=\Bigl\{\sum_{n\ge1}\varepsilon_nu_n:\ \varepsilon_n\in\{0,1,\dots,D_n\}\Bigr\}
 
 </div>
 
-Part (ii) is Kakeya’s covering argument and part (i) is the standard covering bound; both are classical \[hornich1941; nitecki2013; fridy1966\], and Kovač and Tao use the higher-dimensional form of (ii) to construct rational Ahmes series \[kovactao2024, Lemma 5.1\]. We claim no novelty for Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:dichotomy" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:dichotomy">1</a>. Its use here is to say which side each problem lies on.
+Part (ii) is Kakeya’s covering argument and part (i) is the standard covering bound; both are classical \[hornich1941; nitecki2013; fridy1966\], and Kovač and Tao give a scalar reciprocal-choice covering lemma \[kovactao2024, Lemma 5.1\]; their higher-dimensional approximation lemma is Lemma 7.2 of the same paper. We claim no novelty for Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:dichotomy" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:dichotomy">1</a>. Its use here is to say which side each problem lies on.
 
 <div id="erdos-synthesis-subsums-across-bases--thm:bases" class="theorem">
 
@@ -177,23 +177,23 @@ Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s 
 
 </div>
 
-The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:bases" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:bases">2</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that no family of forms of that shape reaches $`1/2`$ \[plectis1049, Theorem 5\]. Thin supports reach further than the full sum because the denominators divide one another.
+The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:bases" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:bases">2</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056830213840605\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that the sufficient cutoff supplied by one integer-polynomial family with common leading degree, coefficient-height and decay bounds at every fixed real base $`x>1`$ is at most $`1/2`$ \[plectis1049, Theorem 5\]. This restriction does not exclude stronger estimates at a particular base or a different choice of family there. Thin supports reach further than the full sum because the denominators divide one another.
 
-At base $`2`$ the greedy rule decides membership: starting from $`r_0=x`$, take index $`n`$ when $`r_{n-1}\ge w_n`$ and subtract. Since $`w_n>R_n`$, a real $`x\in[0,E]`$ is a subsum if and only if no remainder falls strictly between $`R_n`$ and $`w_n`$; we say $`x`$ is *rejected at step $`n`$* when that happens first at index $`n`$.
+At base $`2`$ the greedy rule characterises membership and supplies finite certificates of nonmembership: starting from $`r_0=x`$, take index $`n`$ when $`r_{n-1}\ge w_n`$ and subtract. Since $`w_n>R_n`$, a real $`x\in[0,E]`$ is a subsum if and only if no remainder falls strictly between $`R_n`$ and $`w_n`$; we say $`x`$ is *rejected at step $`n`$* when that happens first at index $`n`$.
 
 <div id="erdos-synthesis-subsums-across-bases--thm:forced" class="theorem">
 
-**Theorem 4** (a forced statistic). *Fix $`N\ge1`$. Among the reduced fractions $`p/q\in(0,E]`$ with $`q\le Q`$, the proportion not rejected in the first $`N`$ steps tends to $`2^NR_N/E`$ as $`Q\to\infty`$, with error $`O(2^N\log Q/Q)`$. Consequently the upper limit of the proportion that are subsums is at most $`1/E=0.62239\ldots`$.*
+**Theorem 4** (the fixed-depth rational count). *Fix $`N\ge1`$. Among the reduced fractions $`p/q\in(0,E]`$ with $`q\le Q`$, the proportion not rejected in the first $`N`$ steps tends to $`2^NR_N/E`$ as $`Q\to\infty`$, with error $`O(2^N\log Q/Q)`$. Consequently the upper limit of the proportion that are subsums is at most $`1/E=0.62239\ldots`$.*
 
 </div>
 
-The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. A count of fractions that survive a fixed depth therefore says nothing about membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:forced" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:forced">4</a> is the correction. Section <a href="#erdos-synthesis-subsums-across-bases--sec:base2" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--sec:base2">4</a> states what remains.
+The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with this fixed-depth limiting proportion therefore does not establish membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:forced" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:forced">4</a> is the correction. Section <a href="#erdos-synthesis-subsums-across-bases--sec:base2" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--sec:base2">4</a> states what remains.
 
 <a id="erdos-synthesis-subsums-across-bases--evidence."></a>
 
 ###### Evidence.
 
-Every proof in this note is an ordinary proof. Nothing here is checked in Lean, and nothing has been reviewed by a specialist. Statements quoted from the companion notes carry the status given there, which we repeat at each use. Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:chains" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:chains">3</a> uses Mahler’s theorem as an external premise in the eventually doubling case, hence in both parts.
+Every proof in this note is an ordinary proof. Nothing here is checked in Lean, and nothing has been reviewed by a specialist. Statements quoted from the companion notes carry the status given there, which we repeat at each use. Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:chains" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:chains">3</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually doubling case, hence in both parts.
 
 <a id="erdos-synthesis-subsums-across-bases--sec:dichotomy"></a>
 
@@ -211,7 +211,7 @@ Every proof in this note is an ordinary proof. Nothing here is checked in Lean, 
 
 The reading that matters for irrationality is immediate. Suppose a family of series has values $`x_0+\sum\varepsilon_nu_n`$ with the $`\varepsilon_n`$ free as in (ii). The values then fill an interval, which contains rationals and irrationals, so a property that all members of the family share implies neither. A proof of irrationality for one member has to use something that distinguishes it inside the family. Two constructions in the companion notes are families of this kind.
 
-*Problem \#251.* Proposition 1 of \[plectis251\] (ordinary proof), applied in its Corollary 2 to the prime gaps, changes the gaps on a set of upper Banach density zero, by nonnegative integers below any prescribed function tending to infinity, keeping every congruence modulo every fixed $`q`$ from some point on, and reaches every real in an interval. The resulting positions $`P_n`$ satisfy $`P_n\sim n\log n`$ and are not asserted to be prime. In the notation above the $`j`$-th block has $`u_j=M_j2^{-n_j-2}`$ and $`D_j=2^{s_j}-1`$, and the inequality verified there is $`u_j\le C_j`$. The lemma is credited there to \[fridy1966\], \[crmarickovac2025, Lemma 4\] and \[kovactao2024, Lemma 5.1\]. The note also proves that a bounded allowance is impossible, so an unbounded one is exactly what is needed. Hence growth, densities of patterns and residues of $`p_n`$ cannot prove $`\sum p_n2^{-n}`$ irrational.
+*Problem \#251.* Proposition 1 of \[plectis251\] (ordinary proof), applied in its Corollary 2 to the prime gaps, changes the gaps on a set of upper Banach density zero, by nonnegative integers below any prescribed function tending to infinity, keeping every congruence modulo every fixed $`q`$ from some point on, and reaches every real in an interval. The resulting positions $`P_n`$ satisfy $`P_n\sim n\log n`$ and are not asserted to be prime. In the notation above the $`j`$-th block has $`u_j=M_j2^{-n_j-2}`$ and $`D_j=2^{s_j}-1`$, and the inequality verified there is $`u_j\le C_j`$. The lemma is credited there to \[fridy1966\], \[crmarickovac2025, Lemma 4\] and \[kovactao2024, Lemma 5.1\]. The note also proves that a bounded allowance is impossible under the stated congruences. Thus every allowance tending to infinity suffices, while no bounded allowance does. The specified growth, eventual fixed-modulus congruences and empirical distributions of unnormalised blocks therefore do not suffice to prove $`\sum p_n2^{-n}`$ irrational; neither primality nor every quantitative correlation is preserved.
 
 *Problem \#249.* Section 5 of \[plectis249\] gives an integer sequence $`c`$ with $`c(n)=\varphi(n)`$ for odd $`n`$, $`|c(n)-\varphi(n)|\le2`$ for even $`n`$, $`0\le c(n)\le n`$ and $`\sum c(n)2^{-n}=5/4`$ (Lean-checked there). Changing even indices by at most $`2`$ is the case $`u_n=2^{-n}`$ for even $`n`$, $`D_n=4`$, where $`C_n\ge\tfrac43 2^{-n}>u_n`$.
 
@@ -250,7 +250,13 @@ Otherwise the ratio is $`2`$ from some index on, which is the case of part (b), 
 g(z)=\sum_{k\ge0}\frac{z^{2^k}}{1-z^{2^k}},\qquad
  g(z^2)=g(z)-\frac{z}{1-z}.
 ```
-Mahler’s theorem \[mahler1929\], in the form given in \[nishioka1996\], states: if $`f\in\mathbb{Q}[[z]]`$ converges in the unit disc, is transcendental over $`\mathbb{C}(z)`$, and satisfies $`f(z^d)=A(z,f(z))/B(z,f(z))`$ with $`A,B`$ coprime polynomials of degree less than $`d`$ in the second variable, then $`f(\alpha)`$ is transcendental for every algebraic $`\alpha`$ with $`0<|\alpha|<1`$ such that the resultant of $`A`$ and $`B`$ in the second variable does not vanish at any $`\alpha^{d^k}`$. For $`g`$ we have $`d=2`$, $`A=(1-z)f-z`$ and $`B=1-z`$. They are coprime, their resultant is a power of $`1-z`$, and $`1-z`$ is nonzero at every $`\rho^{\,d2^k}`$. The function $`g`$ is transcendental: at a root of unity $`\zeta`$ of order $`2^j`$ the terms with $`k\ge j`$ are positive on the ray $`r\zeta`$ and diverge as $`r\to1`$, while the earlier terms stay bounded, so $`g`$ has infinitely many singularities on the unit circle. An algebraic function over $`\mathbb{C}(z)`$ has only finitely many singular points, so $`g`$ is transcendental over $`\mathbb{C}(z)`$. Hence $`g(\rho^{\,d})`$ is transcendental, and adding the rational finite part proves (b) and completes (a). ◻
+We use Nishioka’s value theorem for Mahler systems \[nishioka1996\], in the precise form quoted by Adamczewski and Faverjon \[adamczewskifaverjon2016, Theorem 1.1, p. 3\]. At an algebraic regular point it equates the transcendence degree of the function values with that of the functions over $`\overline{\mathbb{Q}}(z)`$. Here the system is
+``` math
+\begin{pmatrix}g(z)\\1\end{pmatrix}
+ =\begin{pmatrix}1&z/(1-z)\\0&1\end{pmatrix}
+  \begin{pmatrix}g(z^2)\\1\end{pmatrix}.
+```
+The matrix and its inverse have no poles at any iterate $`\rho^{\,d2^k}\in(0,1)`$, so $`\rho^d`$ is regular. The function $`g`$ is transcendental: at a root of unity $`\zeta`$ of order $`2^j`$ the terms with $`k\ge j`$ are positive on the ray $`r\zeta`$ and diverge as $`r\to1`$, while the earlier terms stay bounded, so $`g`$ has infinitely many singularities on the unit circle. An algebraic function over $`\mathbb{C}(z)`$ has only finitely many singular points, so $`g`$ is transcendental over $`\mathbb{C}(z)`$. Hence $`g(\rho^{\,d})`$ is transcendental, and adding the rational finite part proves (b) and completes (a). ◻
 
 </div>
 
@@ -268,14 +274,21 @@ We do not know whether $`a^2>b^3`$ is necessary in (a). The first open case is b
 
 The intervals removed at step $`n`$ are explicit. Put $`g_n=w_n-R_n`$, so that $`g_n=\tfrac23 4^{-n}+O(8^{-n})`$. For a finite nonempty $`F`$ with largest element $`n`$, the interval $`(X_F(2)-g_n,\,X_F(2))`$ is removed at step $`n`$, and
 ``` math
-[0,E]\setminus\mathcal A=\bigsqcup_{F\ne\varnothing}\bigl(X_F(2)-g_{\max F},\,X_F(2)\bigr),
+[0,E]\smallsetminus\mathcal A=\bigsqcup_{F\ne\varnothing}\bigl(X_F(2)-g_{\max F},\,X_F(2)\bigr),
  \qquad\sum_{n\ge1}2^{n-1}g_n=E-1,
 ```
 where $`\mathcal A`$ is the set of subsums. By Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:bases" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:bases">2</a>(b) a rational with an infinite $`S`$ is exactly a counterexample to \#257 at base $`2`$. So \#257 at base $`2`$ holds if and only if every rational in $`[0,E]`$ that is not a finite subsum lies strictly between $`X_F(2)-g_{\max F}`$ and $`X_F(2)`$ for some finite nonempty $`F`$. This is a one-sided question of approximation by the countable set of finite subsums, with an error that shrinks like $`4^{-\max F}`$.
 
-Under \#257 the only fractions of height at most $`Q`$ that are subsums are the finite subsums, $`40`$ of the $`19{,}653`$ fractions with $`2\le q\le200`$. A model that treats later remainders as equidistributed gives the opposite extreme, a proportion tending to $`1/E`$, because the shares $`2^{n-1}g_n/E`$ of the removed intervals are summable. That model asserts that \#257 fails for a positive proportion of all rationals. It is a strong claim, and no count can support it: by Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:forced" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:forced">4</a> every count at a fixed depth is forced. Measure does not decide either. Boes, Darst and Erdős construct symmetric Cantor sets of every measure in $`[0,1)`$ that contain essentially no rationals \[boesdarsterdos1981\].
+Under \#257 the only fractions of height at most $`Q`$ that are subsums are the finite subsums, $`40`$ of the $`19{,}653`$ fractions with $`2\le q\le200`$. A model that treats later remainders as equidistributed gives the opposite extreme, a proportion tending to $`1/E`$, because the shares $`2^{n-1}g_n/E`$ of the removed intervals are summable. That model asserts that \#257 fails for a positive proportion of all rationals. The fixed-depth limiting proportion does not distinguish this claim from its negation. An arithmetic argument, or a count with separately justified estimates as both depth and height grow, is needed. Measure does not decide either. Boes, Darst and Erdős construct symmetric Cantor sets of every measure in $`[0,1)`$ that contain essentially no rationals \[boesdarsterdos1981\].
 
-The exact computation in \[plectisinvestigation\] agrees with Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:forced" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:forced">4</a> step by step. Among the $`19{,}653`$ reduced fractions with $`2\le q\le200`$, the numbers rejected at steps $`1`$, $`2`$ and $`7`$ are $`4809`$, $`1470`$ and $`32`$, against $`4811`$, $`1467`$ and $`32`$ from the measures of the removed intervals. The expected number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which falls below $`1`$ once $`n>2\log_2Q-3.3`$. Past that depth a finite computation at height $`Q`$ cannot separate membership from late rejection, so running deeper adds nothing. No rational is known to have an infinite $`S`$ at base $`2`$, and beyond the forced share $`1-1/E`$ no argument is known that rejects a positive proportion of rationals.
+The exact computation in \[plectisinvestigation\] agrees with Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:forced" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:forced">4</a> step by step. Among the $`19{,}653`$ reduced fractions with $`2\le q\le200`$, the numbers rejected at steps $`1`$, $`2`$ and $`7`$ are $`4809`$, $`1470`$ and $`32`$, against $`4811`$, $`1467`$ and $`32`$ from the measures of the removed intervals. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which falls below $`1`$ near $`n=2\log_2Q-2\log_2\pi`$. This is not a deterministic cutoff: the error in Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:forced" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:forced">4</a> does not justify such an extrapolation. For example, $`189/388`$ is first rejected at step $`17`$, beyond this scale for $`Q=388`$. Its selected indices before rejection are $`F=\{2,3,7,9,10,14,15,16\}`$, and exact arithmetic gives
+``` math
+R_{17}\le\frac{196609}{25769803776}
+ <\frac{189}{388}-X_F(2)
+ =\frac{9291822600689}{1217890317075045460}
+ <\frac1{131071}=w_{17}.
+```
+The working record supplies the earlier-step checks. Deeper computation can therefore produce new exclusion certificates; absence of a later rejection still does not prove membership. No rational is known to have an infinite $`S`$ at base $`2`$.
 
 <div id="erdos-synthesis-subsums-across-bases--prob:membership" class="problem">
 
@@ -283,7 +296,7 @@ The exact computation in \[plectisinvestigation\] agrees with Theorem <a href="
 
 </div>
 
-The literature on rational points of Cantor sets concerns null sets such as the middle-third set, where the expected count of rationals of height at most $`Q`$ is a power of $`Q`$ \[rstw2019; chowvarjuyu2024\]. The literature on subsum sets \[nitecki2013\] does not discuss rational points. We found nothing on rational points of a subsum set of positive measure, and Problem <a href="#erdos-synthesis-subsums-across-bases--prob:membership" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--prob:membership">5</a> is the simplest question of that kind.
+The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#erdos-synthesis-subsums-across-bases--prob:membership" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--prob:membership">5</a> asks about one explicit rational point.
 
 <a id="erdos-synthesis-subsums-across-bases--sec:second"></a>
 
@@ -291,7 +304,7 @@ The literature on rational points of Cantor sets concerns null sets such as the 
 
 The companion notes prove a second kind of negative result. Each bounds what one method can do, and none follows from Theorem <a href="#erdos-synthesis-subsums-across-bases--thm:dichotomy" data-reference-type="ref" data-reference="erdos-synthesis-subsums-across-bases--thm:dichotomy">1</a>, which concerns sets of values.
 
-- \#1049, Theorem 5 \[plectis1049\] (ordinary proof there, with the contradiction step and the comparison with $`1/2`$ checked in Lean). A family of linear forms with degrees at most $`\delta n^2`$ and decay $`-\sigma n^2\log x`$ at every $`x>1`$ has $`\sigma\le\delta`$, so its sufficient region $`\log b/\log a<\sigma/(\sigma+\delta)`$ never reaches $`1/2`$.
+- \#1049, Theorem 5 \[plectis1049\] (ordinary proof there, with the contradiction step and the comparison with $`1/2`$ checked in Lean). For one family of nonzero integer-polynomial linear forms, assume degrees at most $`\delta n^2(1+o(1))`$, logarithmic coefficient heights at most $`h n^2(1+o(1))`$, and logarithmic decay $`-\sigma n^2\log x\,(1+o(1))`$ at every fixed real $`x>1`$, with common constants $`\delta,\sigma>0`$ and $`h\ge0`$. Then $`\sigma\le\delta`$, so the sufficient region supplied by these estimates, $`\log b/\log a<\sigma/(\sigma+\delta)`$, never reaches $`1/2`$.
 
 - \#269, Theorem 1 \[plectis269\] (Lean-checked there; Fan posted the two-prime separation \[fan2026comment\], and the three-prime statement is proved in the note). For three primes the reciprocal running-LCM kernel has nonsingular minors of every order, so no finite sum of products separates one exponent from the other two.
 
@@ -299,7 +312,7 @@ The companion notes prove a second kind of negative result. Each bounds what one
 
 - \#249, Theorem 9 \[plectis249\] (Lean-checked there). Every admissible rank-one quotient stays at distance more than $`21/320`$ from its target.
 
-- \#68, Section 6 \[plectis68\] (ordinary proof). The integer-gap comparison cannot hold at cutoffs within a bounded distance of the degree.
+- \#68, Section 6 \[plectis68\] (ordinary proof). Under the displayed cancellation hypotheses, the integer-gap comparison fails at cutoffs $`N=D+O(1)`$ as the cancellation cutoff $`D\to\infty`$.
 
 - \#243, Proposition 17 \[plectis243\] (Lean-checked there). A counterexample must have relative errors tending to $`0`$ with unbounded negative parts, so size conditions on the error do not decide.
 
@@ -330,6 +343,8 @@ T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on p
 Steve Fan, *Comment on Erdős Problem \#269, thread 269, post 7218* (2026), [source](https://www.erdosproblems.com/forum/thread/269#post-7218). 26 June 2026.
 
 K. Mahler, *Arithmetische Eigenschaften der Lösungen einer Klasse von Funktionalgleichungen*, Math. Ann. **101** (1929), 342–367.
+
+B. Adamczewski and C. Faverjon, [*Méthode de Mahler : relations linéaires, transcendance et applications aux nombres automatiques*](https://arxiv.org/abs/1508.07158v2), arXiv:1508.07158v2 (2016), Theorem 1.1, p. 3.
 
 Ku. Nishioka, *Mahler Functions and Transcendence*, Lecture Notes in Math. 1631, Springer, Berlin, 1996.
 
@@ -364,6 +379,10 @@ W. Cook, [*Reading eight Erdős problems together: a working record*](../../../
 ### Declaration of generative AI use
 
 The mathematics and text of this note were produced with large language model agents under the direction of the author, who is responsible for every claim. Each statement above names its evidence: an ordinary proof printed here, a result quoted from a companion note with the status given there, an exact computation with saved outputs, or a cited external theorem. The record \[plectisrecord\] lists what was checked, by which means, and what was found to be already known.
+
+### Further standalone synthesis notes
+
+- [An Exact Capacity Criterion for Series with Eventual Congruences](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/optimal-sparse-perturbations.md): When do summable digit allowances on a strict integer divisibility chain permit interval filling under eventual individual and cumulative congruences?
 
 ## Erdős #68: Two Incomparable Denominator Exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$
 
@@ -5401,7 +5420,7 @@ For the distinct normalised Hankel determinants $`V_N^*`$ in his 2016 constructi
  \qquad [q^{\operatorname{ord}_q V_N^*}]V_N^*
        =\frac{(N!)^2(N+1)!}{2^N}.
 ```
-The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. The rational-base criterion does not include $`3/2`$; neither argument settles irrationality at that base.
+The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. At a fixed base we prove the sharp asymptotic $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$ with an explicit positive constant, where $`B_N`$ and $`C_N`$ are the order and coefficient above, and we factor the moment weights into two finite $`q`$-multinomial sums. The rational-base criterion does not include $`3/2`$; neither the order, the asymptotic nor the factorisation settles irrationality at that base.
 
 <a id="erdos-1049-rational-base-lambert--sec:problem"></a>
 
@@ -5819,18 +5838,43 @@ No other tuple can cancel this coefficient. ◻
 
 The Lean proof uses transformed rows rather than the moment expansion above. It checks both identities at every rank as [the exact order](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173) and [the leading coefficient](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
 
-<a id="erdos-1049-rational-base-lambert--what-the-order-calculation-does-not-imply."></a>
+<a id="erdos-1049-rational-base-lambert--from-formal-order-to-size-at-a-fixed-base."></a>
 
-###### What the order calculation does not imply.
+###### From formal order to size at a fixed base.
 
-Formal order alone does not bound the value at a fixed $`q`$: multiplication by $`(1-q)^{N^3}`$ leaves the first term unchanged but changes its logarithm by a cubic quantity. The long record, Section 3.1, separately proves $`V_N^*(q)>0`$ and
+Formal order alone does not bound the value at a fixed $`q`$: multiplication by $`(1-q)^{N^3}`$ leaves the first term unchanged but changes its logarithm by a cubic quantity. A separate positive-moment argument settles the size.
+
+<div id="erdos-1049-rational-base-lambert--res:sharp-fixed-base" class="theorem">
+
+**Theorem 7** (the size of $`V_N^*`$ at a fixed base). *Fix $`0<q<1`$ and write $`P=(q;q)_\infty`$, $`B_N=N(N-1)(2N-1)/6`$ and $`C_N=(N!)^2(N+1)!/2^N`$. There is a $`K(q)>0`$ with
 ``` math
-\log\!\left(
- \frac{V_N^*(q)}{\bigl((N!)^2(N+1)!/2^N\bigr)
- q^{N(N-1)(2N-1)/6}}\right)=O_q(N)
- \qquad(0<q<1\text{ fixed}).
+V_N^*(q)\sim K(q)\,C_Nq^{B_N}P^{2N}N^{-8F(1/q)}
+ \qquad(N\to\infty).
+```*
+
+</div>
+
+<div class="proof">
+
+*Outline; the full proof is in the long record.* Collecting the moment dependence in $`w=q^{m+1}`$ as above writes $`v_m^*=\sum_{k\ge0}a_kq^{(m+1)k}`$ with $`a_k=[w^k]P^4G_q(w)`$. Two facts about these weights suffice. First, they factor exactly as
+``` math
+a_k=P^4\frac{R_k^{(2)}R_k^{(3)}}{(q;q)_k},
+ \qquad
+ R_k^{(r)}=\sum_{n_1+\cdots+n_r=k}\frac{(q;q)_k}{\prod_j(q;q)_{n_j}},
 ```
-Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.2; Appendix <a href="#erdos-1049-rational-base-lambert--app:index" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--app:index">5</a> records their sources and finite scope.
+which gives $`P^5c_k\le a_k\le P^{-1}c_k`$ and a polynomial bound on the ratios $`a_{k+h}/a_k`$. Second, $`P^4(1-w)^4G_q(w)`$ is analytic past the unit circle with value $`3`$ and derivative $`2+8F(1/q)`$ at $`w=1`$, so $`a_k/c_k=1-8F(1/q)/(k+1)+O_q((k+1)^{-2})`$ and $`\prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8F(1/q)}`$ for a convergent product $`\mathcal A(q)`$.
+
+In Heine’s expansion of the determinant, write each increasing tuple as $`k_i=i+\lambda_i`$ and reverse the shifts to obtain a partition. The least tuple contributes $`q^{B_N}\prod_{k<N}a_k`$ times a Vandermonde factor; the first bound on the weights majorises every other tuple by a summand that is summable over partitions and independent of $`N`$. Dominated convergence then reduces the normalised sum to the case $`a_k\equiv1`$, where Cauchy’s determinant evaluates it, and the limit is $`\mathcal M(q)^3=\prod_{d\ge1}(1-q^d)^{-3d}`$. The constant is $`K(q)=\mathcal A(q)\mathcal M(q)^3`$. ◻
+
+</div>
+
+The limiting factor $`\mathcal M(q)^3`$ comes from the tuples other than the least one, so it is invisible to the order calculation. The long record proves both ingredients in full, including the degree $`\lfloor k^2/4\rfloor+\lfloor k^2/3\rfloor`$ and coefficient sum $`6^k`$ of the product $`R_k^{(2)}R_k^{(3)}`$.
+
+<a id="erdos-1049-rational-base-lambert--what-neither-calculation-implies."></a>
+
+###### What neither calculation implies.
+
+Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">7</a> replaces the earlier band $`O_q(N)`$ by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms and closes no part of the deficit at $`3/2`$, which is exactly $`N(74N^2-117N+41)/41`$ against the extraction requirement recorded in the long record. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.3; Appendix <a href="#erdos-1049-rational-base-lambert--app:index" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--app:index">5</a> records their sources and finite scope.
 
 <a id="erdos-1049-rational-base-lambert--sec:open"></a>
 
@@ -5852,7 +5896,7 @@ Thus it is necessary for the scaled tail to be less than $`1`$, not sufficient. 
 
 <div id="erdos-1049-rational-base-lambert--res:nocorridor" class="theorem">
 
-**Theorem 7** (failure of the stated clearing conditions at $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the [clearing conditions above](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).*
+**Theorem 8** (failure of the stated clearing conditions at $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the [clearing conditions above](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).*
 
 </div>
 
@@ -5865,7 +5909,7 @@ The rational $`\xi`$ is arbitrary; in an irrationality argument it would be a hy
 
 <div id="erdos-1049-rational-base-lambert--res:tailrec" class="theorem">
 
-**Theorem 8** (recurrence for the scaled remainder). *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and define $`U_N`$ as above. Then for every $`N`$ the [recurrence for the scaled remainder](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187) is
+**Theorem 9** (recurrence for the scaled remainder). *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and define $`U_N`$ as above. Then for every $`N`$ the [recurrence for the scaled remainder](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187) is
 ``` math
 U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 ```*
@@ -5876,7 +5920,7 @@ Subtracting successive partial sums proves the identity. Neither convergence nor
 
 <div id="erdos-1049-rational-base-lambert--res:forcing" class="theorem">
 
-**Theorem 9** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
+**Theorem 10** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
 
 1.  *If $`s\ge2`$, $`B\ge1`$ and $`c(N+1)\ge1`$, then $`2^{\,N+1}\le B\,c(N+1)\,s^{\,N+1}`$.*
 
@@ -5904,7 +5948,7 @@ J_{3,R}(P)=H_W(P)\pmod{3^R},\qquad
 
 <div id="erdos-1049-rational-base-lambert--res:bottomjet" class="lemma">
 
-**Lemma 10** (a residue and divisibility by $`3^R`$). *Vanishing of the [residue modulo $`3^R`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
+**Lemma 11** (a residue and divisibility by $`3^R`$). *Vanishing of the [residue modulo $`3^R`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
 
 </div>
 
@@ -5912,7 +5956,7 @@ All four residues of $`(U,V)`$ vanish precisely when $`D=3^R2^S`$ divides both i
 
 <div id="erdos-1049-rational-base-lambert--res:jetkernel" class="theorem">
 
-**Theorem 11** (equal residues for two subset sums). *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
+**Theorem 12** (equal residues for two subset sums). *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
 ``` math
 (\mathbb{Z}/3^R\mathbb{Z})^2\times(\mathbb{Z}/2^S\mathbb{Z})^2,
 ```
@@ -5938,7 +5982,7 @@ The ambient count does not use relations between the two residue coordinates. Va
 
 <div id="erdos-1049-rational-base-lambert--res:plucker-collapse" class="theorem">
 
-**Theorem 12** (vanishing minors and a residue count). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
+**Theorem 13** (vanishing minors and a residue count). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
 ``` math
 A_nB_{n+1}-B_nA_{n+1}=0\qquad(n\ge0).
 ```
@@ -5974,7 +6018,7 @@ The next proposition checks an exponent model, not an approximation construction
 
 <div id="erdos-1049-rational-base-lambert--res:pade" class="proposition">
 
-**Proposition 13** (exponent model: summand bound and exact gap). *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
+**Proposition 14** (exponent model: summand bound and exact gap). *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
 ``` math
 \widetilde{P}(n,k)=2\bigl(k(n-k)+nk\bigr)+k(k-1),
 ```
@@ -5994,7 +6038,7 @@ For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors ar
 
 <div id="erdos-1049-rational-base-lambert--res:content" class="proposition">
 
-**Proposition 14** (rescaling two integer rows). *Multiplying two integer rows by $`c_1`$ and $`c_2`$ multiplies their [determinant](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by $`c_1c_2`$. The [integer identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and its [absolute-value form](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) show that the added divisibility is accompanied by exactly the same factor in the real absolute value.*
+**Proposition 15** (rescaling two integer rows). *Multiplying two integer rows by $`c_1`$ and $`c_2`$ multiplies their [determinant](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by $`c_1c_2`$. The [integer identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and its [absolute-value form](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) show that the added divisibility is accompanied by exactly the same factor in the real absolute value.*
 
 </div>
 
@@ -6029,7 +6073,7 @@ Counting residues within short intervals gives small differences. To keep a diff
 
 <div id="erdos-1049-rational-base-lambert--res:boundedfibre" class="theorem">
 
-**Theorem 15** (equal residues with close, distinct values). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
+**Theorem 16** (equal residues with close, distinct values). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
 ``` math
 \iota(x)=\iota(y)\quad\Longrightarrow\quad |g(x)-g(y)|<\delta.
 ```
@@ -6048,7 +6092,7 @@ f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
 
 Primitivity gives no useful bound on $`k`$: repeated rows $`(1,0)`$ produce the same sum and remainder for every subset of a given size. The application below therefore needs a separate multiplicity estimate.
 
-Fix positive integers $`n,D`$ and $`M`$ primitive integer rows $`(A_j,B_j)`$, indexed by $`0\le j<M`$. Put $`e_j=A_jF(3/2)-B_j`$ and apply Theorem <a href="#erdos-1049-rational-base-lambert--res:boundedfibre" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:boundedfibre">15</a> to binary selectors, with
+Fix positive integers $`n,D`$ and $`M`$ primitive integer rows $`(A_j,B_j)`$, indexed by $`0\le j<M`$. Put $`e_j=A_jF(3/2)-B_j`$ and apply Theorem <a href="#erdos-1049-rational-base-lambert--res:boundedfibre" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:boundedfibre">16</a> to binary selectors, with
 ``` math
 f(\varepsilon)=\sum_j\varepsilon_j(A_j,B_j)\pmod D,
  \qquad g(\varepsilon)=\sum_j\varepsilon_j e_j.
@@ -6070,7 +6114,7 @@ The next question specifies the required integer forms, not an approximation fam
 
 <div id="erdos-1049-rational-base-lambert--prob:kernel" class="problem">
 
-**Problem 16** (a divided linear form with small nonzero remainder). Exhibit an integer constant $`C\ge1`$ and, for every sufficiently large positive integer $`n`$, positive integers $`W_n,R_n,S_n,M_n`$ such that
+**Problem 17** (a divided linear form with small nonzero remainder). Exhibit an integer constant $`C\ge1`$ and, for every sufficiently large positive integer $`n`$, positive integers $`W_n,R_n,S_n,M_n`$ such that
 ``` math
 n^2\le W_n,R_n,S_n\le Cn^2,
  \qquad 4R_n+2S_n\le M_n\le Cn^2,
@@ -6142,7 +6186,7 @@ Vandehey treats signed coefficients in the digit argument \[vandehey2013, Thms.�
 
 ###### Coefficient moments.
 
-The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.2 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. It proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
+The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. It proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
 
 <a id="erdos-1049-rational-base-lambert--functional-equations."></a>
 

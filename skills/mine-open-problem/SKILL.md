@@ -78,6 +78,35 @@ returned material. Agreement between agents is not independent proof.
 7. Return the smallest evidence-bearing change and name the stronger statement
    that remains unproved.
 
+When the papers suggest a connection, test a mathematical transformation,
+not just a shared word. Identify the consumer's exact missing hypothesis and
+ask whether another paper supplies it after a change of variables, scaling,
+indexing, norm, or coefficient class. The existing `proof_state_compiler.py`
+can apply selected Lean declarations and expose the remaining obligations;
+`proof_workbench.py` can replay a complete proof. An application that only
+renames or assumes the missing hypothesis has made no progress.
+Await each workbench mutation before writing the same session again; a probe
+reserves its move identifier before Lean finishes, so even a concurrent note
+can invalidate its append.
+
+For a construction that appears expensive, distinguish requirements of the
+theorem from constraints imposed by its proof. Try releasing one such
+constraint, then seek a matching obstruction before optimising. For a
+transfer to another denominator sequence, recompute the prefix lattice and
+tail recurrence: a shared selector does not imply a shared threshold.
+Likewise, changing a matrix norm can reverse an approximation conclusion
+without changing its exact rank. Use these moves when the mathematics
+suggests them, not as a required checklist.
+
+The worked investigation in
+`research/experiments/premise_exchange/README.md` records a rejected raw
+application and the representation change that makes a cross-paper
+composition close in Lean. Its further examples distinguish an existing
+result rediscovered by the search from a new deduction and an open idea.
+Search the longer records for the proposed conclusion before labelling it a
+new result. The method earns its place through the mathematical difference
+it produces; another workflow or more declarations are not its objective.
+
 The returned delta must be usable by a separate stewardship goal. Name the
 source identity, exact statement or computation, evidence class, relation to
 the previous frontier, failed routes it supersedes, plausible consumers, and

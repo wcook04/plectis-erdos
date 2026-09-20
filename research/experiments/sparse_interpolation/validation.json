@@ -1,0 +1,104 @@
+{
+  "starting_revision": "cd92136f7f0f03bd78fb8753e4e4f0527dbe3a83",
+  "checked_on_revision": "ca5ad952fefb29b50a4e360988fa84f9c7255700",
+  "lean_toolchain": "leanprover/lean4:v4.29.1",
+  "source_sha256": {
+    "lean/ErdosProblems/Synthesis.lean": "21cec2b74dd08a6b91720a40dfce17b1724c979aa3cf5cd69d49d02976c5e47a",
+    "lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean": "a3312131f365fcee6494187998d37c635d564f6325c13f0528ebae76d180035c",
+    "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean": "3920d1c42cb7bb9c65c5247f409ccaedf5ec18516c215223729cfd8940d0cd9f",
+    "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean": "fd2cec73347708924889eeeefd050e31adae154795014c6f7988818134968ff8",
+    "paper/synthesis/optimal-sparse-perturbations.tex": "6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849",
+    "research/experiments/sparse_interpolation/feedback.py": "6eb8d358d4d3dcef6c9f49021b8375b2e61e4f363bc9ad91fb678338207f98af",
+    "research/experiments/sparse_interpolation/late_rejection.py": "153eb5df9aaa394c0ae07b8b3630b0604a110621f88e60ecf14e72665dd10d73",
+    "research/experiments/sparse_interpolation/capacity.py": "23da650822864b53bddb0d669abc8d212c53cf0126c7bce573807ea4985f07fc",
+    "research/experiments/premise_exchange/totient_approximation.py": "86f5d4507ac7191fa2e431e0247f873643e2aceb5d1b07d9915e649164e67ebb",
+    "research/experiments/premise_exchange/totient_approximation.md": "66b41419ba2dfd62d6e555001b374c48a2f4b7dbacdb1731c89b52f47d1af4c0",
+    "research/experiments/premise_exchange/dyadic_shift_request.json": "4a6020809388b70cff5a53a9e35606e7810790a49494010056b580073266de15"
+  },
+  "lean_builds": [
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis.CongruenceInterpolation ErdosProblems.Synthesis.DyadicShiftEscape",
+      "exit_code": 0,
+      "singleflight_key": "1b8c779e183a776699f9c18d9ee589819bec0ad35a9f214a175802e116ecdbc9"
+    },
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis",
+      "exit_code": 0,
+      "singleflight_key_prefix": "516075809b33"
+    }
+  ],
+  "axiom_probe": {
+    "session": "research/workbench/sessions/congruence-support-20260920",
+    "move_id": "m006",
+    "verdict": "kernel_accepted",
+    "error_count": 0,
+    "sorry_count": 0,
+    "principal_endpoint_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "finite_checks": [
+    {
+      "script": "feedback.py",
+      "result": "passed",
+      "evidence": "Exact finite residue and factorial support checks; not an infinite proof"
+    },
+    {
+      "script": "late_rejection.py",
+      "result": "passed",
+      "evidence": "Exact first rejection at 17 for 189/388 and 577/388; 32 telescope stages and 324 target samples"
+    },
+    {
+      "script": "capacity.py",
+      "result": "passed",
+      "selection_steps": 1520,
+      "repeated_denominator_checks": 1001,
+      "evidence": "Finite frozen modulus schedule; every selected transition checked with Fraction"
+    },
+    {
+      "script": "../premise_exchange/totient_approximation.py",
+      "result": "passed",
+      "evidence": "Exact divisor identities, residue factorizations and leading square means through N=256,D=16"
+    }
+  ],
+  "premise_exchange": {
+    "result": "../premise_exchange/results/summary.json",
+    "raw_application": "rejected",
+    "transformed_application": "kernel_checked_closed"
+  },
+  "ordinary_proofs": [
+    "Exact capacity criterion on strict integer divisibility chains, including null/meagre alternative and all-values representation with eventual allowance bounds",
+    "Sharp factorial support classification and integer-exponent contrast",
+    "Analytic Cantor-series interpretation of the unbounded-gcd carry criterion",
+    "Totient uniform finite-rank error 1/2 and explicit mean approximation bound 2/D"
+  ],
+  "not_established": [
+    "Full Lean formalization of the general capacity criterion, measure/category proofs, modulus construction, or factorial asymptotics",
+    "Historical novelty, independent expert review, or field-changing significance",
+    "Any stronger claim about the eight Erdos programme endpoints"
+  ],
+  "repository_checks": [
+    {
+      "check": "Research continuation receipt",
+      "result": "passed",
+      "command": "python3 scripts/continue_research.py check --session congruence-support-20260920"
+    },
+    {
+      "check": "Changed-source build routing",
+      "result": "passed",
+      "tests": 55
+    },
+    {
+      "check": "Reading-edition synthesis registration",
+      "result": "passed",
+      "tests": 4
+    },
+    {
+      "check": "Nested Lean diagnostic path validation",
+      "result": "passed",
+      "evidence": "Regression rejects genuine private paths and accepts escaped compiler prose."
+    }
+  ]
+}

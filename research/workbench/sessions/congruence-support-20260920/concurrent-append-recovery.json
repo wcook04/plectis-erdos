@@ -1,0 +1,36 @@
+{
+  "reason": "A note was appended while the same-session probe was running; both received m005. The completed probe is reindexed to m006 without changing its input or computed kernel receipt. Future mutations are serialized.",
+  "original_ledger_sha256": "87c84357e98bd4db0e69a3f3dee7fffe64db7ba4f14f36fafa76485151653eec",
+  "original_conflicting_rows": [
+    {
+      "at": "2026-09-20T15:40:21+00:00",
+      "falsifier": null,
+      "kind": "note",
+      "move_id": "m005",
+      "note_kind": "observation",
+      "schema": "workbench-move/1",
+      "text": "The factorial gap result generalized twice: all oscillating summable allowances, then every strict integer divisibility chain. Exact criterion U_N=Q_N times remaining allowance tail tending to infinity; otherwise null and meagre. Common continuation intervals with a delayed nested modulus schedule prove both eventual congruences. With eventual allowance bounds, one exceptional digit extends filling to every nonnegative target. This is an audited ordinary proof; Lean checks the reusable interval and congruence core separately. The former oscillating-allowance frontier is now closed at the ordinary-proof level."
+    },
+    {
+      "at": "2026-09-20T15:40:40+00:00",
+      "input_path": "probes/m006.lean",
+      "input_sha256": "f0b1bdddc2a62d7a18b84f834dbb9456e71f4e74eda0bb6cdf694f2d7eed8461",
+      "kernel_receipt": {
+        "detail": null,
+        "duration_seconds": 137.717,
+        "error_count": 0,
+        "exit_code": 0,
+        "output_tail": "{\"caption\":\"\",\"data\":\"'ErdosProblems.Synthesis.CongruenceInterpolation.irrational_of_unbounded_gcd' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":3},\"fileName\":\"<stdin>\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":3},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'ErdosProblems.Synthesis.FeedbackContinuation.exists_feedback_digits_hasSum_eventual_congruences' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":4},\"fileName\":\"<stdin>\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":4},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":5},\"fileName\":\"<stdin>\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":5},\"severity\":\"information\"}",
+        "sorry_count": 0,
+        "verdict": "kernel_accepted"
+      },
+      "kind": "probe",
+      "label": "Checked synthesis endpoints and exact axiom dependencies",
+      "move_id": "m006",
+      "schema": "workbench-move/1"
+    }
+  ],
+  "renumbered_probe": "m006",
+  "kernel_receipt_and_source_unchanged": true,
+  "repaired_ledger_sha256": "aca38692e056a6929d345ddcc3b25434db784be816d489603ad7b8294abf7b2f"
+}

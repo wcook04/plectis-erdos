@@ -170,3 +170,4 @@ import ErdosProblems.Shared.IrrationalRotationStaircase
 This is the supported root for the problem-owned modules. The `Erdos249257`
 library remains available as the reviewed #249/#257 corpus.
 -/
+import ErdosProblems.Synthesis

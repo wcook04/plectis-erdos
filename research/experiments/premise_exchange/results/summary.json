@@ -1,0 +1,29 @@
+{
+  "evidence": "Lean application and remaining-goal traces",
+  "boundary": "Closure proves the displayed conditional statement; it does not establish novelty or any unstated premise.",
+  "transitions": [
+    {
+      "question": "dyadic_shift_uniform_escape_after_representation_change",
+      "candidate": "raw_orbit_does_not_match_shift_goal",
+      "application_accepted": false,
+      "proof_closed": false,
+      "obligations_after_application": [],
+      "remaining_obligations": []
+    },
+    {
+      "question": "dyadic_shift_uniform_escape_after_representation_change",
+      "candidate": "shift_orbit_with_native_nonintegrality_discharge",
+      "application_accepted": true,
+      "proof_closed": true,
+      "obligations_after_application": [
+        {
+          "node_id": "ps_020f5e276d52688f",
+          "case": null,
+          "target": "\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+          "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z"
+        }
+      ],
+      "remaining_obligations": []
+    }
+  ]
+}

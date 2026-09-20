@@ -1110,6 +1110,24 @@
           "rendered": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Working record behind the synthesis note: lemmas, the inventory of negative results, eliminated ideas, prior art and open questions."
+        },
+        {
+          "title": "An Exact Capacity Criterion for Series with Eventual Congruences",
+          "source": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "rendered": "paper/synthesis/optimal-sparse-perturbations.pdf",
+          "role": "Ordinary theorem note: exact capacity criterion on strict integer divisibility chains, factorial support-gap classification and Cantor-series gcd criterion. Lean checks the cited feedback and carry core, not the complete capacity criterion or analytic bridge. No Erdos claim status changes.",
+          "anchor_label_allowlist": [
+            "thm:capacity",
+            "sec:capacity-proof",
+            "thm:main",
+            "cor:density",
+            "lem:feedback",
+            "prop:unrestricted",
+            "thm:gcd",
+            "sec:negative",
+            "sec:carry",
+            "sec:sources"
+          ]
         }
       ]
     },
@@ -14468,6 +14486,41 @@
           ]
         },
         {
+          "id": "ErdosProblems.Synthesis.CongruenceInterpolation",
+          "path": "lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.ResidueFeedbackCore"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Synthesis.DyadicShiftEscape",
+          "path": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+            "ErdosProblems.Erdos269.BoundedRadixTailEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Synthesis.FeedbackContinuation",
+          "path": "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.ResidueFeedbackCore"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Synthesis",
+          "path": "lean/ErdosProblems/Synthesis.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Synthesis.CongruenceInterpolation",
+            "ErdosProblems.Synthesis.DyadicShiftEscape",
+            "ErdosProblems.Synthesis.FeedbackContinuation"
+          ]
+        },
+        {
           "id": "ErdosProblems.Three.T1",
           "path": "lean/ErdosProblems/Three/T1.lean",
           "role": "Lean proof module",
@@ -17069,7 +17122,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 49
+        "line": 54
       }
     },
     {

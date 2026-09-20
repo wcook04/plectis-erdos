@@ -8,7 +8,7 @@
 
 </div>
 
-This record supports the note \[plectisshort\]. It proves the two lemmas about base $`2`$ that the note uses without proof, lists the negative results of the seven companion notes with their locations and status, gives in full the two wrong readings of one computation and the theorem that replaced them, records the ideas that were eliminated together with the statement that eliminated each, records what turned out to be known already, and ends with the questions we think are worth someone’s time. It is a lookup document. Each fact has one home here.
+This record supports the note \[plectisshort\]. It proves the two lemmas about base $`2`$ that the note uses without proof, lists the negative results of the seven companion notes with their locations and status, gives in full the misreadings of one computation, the fixed-depth theorem and an exact late rejection, records the ideas that were eliminated together with the statement that eliminated each, records what turned out to be known already, and ends with the questions we think are worth someone’s time. It is a lookup document. Each fact has one home here.
 
 <a id="sec:map"></a>
 
@@ -21,7 +21,7 @@ This record supports the note \[plectisshort\]. It proves the two lemmas about b
 | Theorem 1.1 (choices against contraction) | Proved in the note. Attribution in Section <a href="#sec:known" data-reference-type="ref" data-reference="sec:known">6</a>. |
 | Theorem 1.2(b), base $`2`$ | Quoted from \[plectis257, Section 7\]. Removed intervals: Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">1</a>. |
 | Theorem 1.3 (chains) | Proved in the note. A wrong citation caught on the way: Section <a href="#sec:eliminated" data-reference-type="ref" data-reference="sec:eliminated">5</a>, item 4. |
-| Theorem 1.4 (forced statistic) | Proved in the note. The readings it corrects: Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">4</a>. |
+| Theorem 1.4 (fixed-depth rational count) | Proved in the note. Its limits and an exact late rejection: Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">4</a>. |
 | Limits on methods | Section <a href="#sec:inventory" data-reference-type="ref" data-reference="sec:inventory">3</a>, with status and sources. |
 
 </div>
@@ -36,7 +36,7 @@ Notation is that of the note at $`t=2`$: $`w_n=(2^n-1)^{-1}`$, $`R_N=\sum_{n>N}w
 
 <div id="lem:gaps" class="lemma">
 
-**Lemma 1** (the removed intervals). *$`[0,E]\setminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
+**Lemma 1** (the removed intervals). *$`[0,E]\smallsetminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
 
 </div>
 
@@ -70,28 +70,43 @@ Status is as stated in each note: L for checked in Lean there, O for an ordinary
 
 | Note | Location | Statement |  |
 |:---|:---|:---|:---|
-| \#68 \[plectis68\] | Section 6 | The integer-gap comparison cannot hold at cutoffs within a bounded distance of the degree. Small tails alone do not give the strict comparison. | O |
-| \#243 \[plectis243\] | Proposition 17 | A counterexample has errors that are eventually nonzero, relatively small, with unbounded negative parts. Size of the error does not decide; the denominators must be used. | L |
+| \#68 \[plectis68\] | Section 6 | Under the displayed cancellation hypotheses, the integer-gap comparison fails at cutoffs $`N=D+O(1)`$ as the cancellation cutoff $`D\to\infty`$. Small tails alone do not give the strict comparison. | O |
+| \#243 \[plectis243\] | Proposition 17 | A counterexample has errors that are eventually nonzero, relatively small, with unbounded negative parts. This necessary profile is formalised; the comparison with scalar profiles and the need for denominator compatibility are ordinary discussion. | L, O |
 | \#249 \[plectis249\] | Section 5 | A rational series with the totient’s values at odd indices, within $`2`$ at even indices, and sum $`5/4`$. Positive tail differences need not be nonintegral. | L |
 | \#249 \[plectis249\] | Theorem 9 | Every admissible rank-one quotient stays more than $`21/320`$ from its target. | L |
-| \#251 \[plectis251\] | Proposition 1, Corollary 2 | Sparse nonnegative corrections below any unbounded allowance reach every real in an interval and keep all congruences. A bounded allowance is impossible. Sources: \[fridy1966\], \[crmarickovac2025, Lemma 4\], \[kovactao2024, Lemma 5.1\], \[vandoornkovac2025\]. | O |
+| \#251 \[plectis251\] | Proposition 1, Corollary 2 | For every allowance $`f(n)\to\infty`$, sparse nonnegative corrections reach every real in an interval while every fixed modulus eventually divides both the corrections and their cumulative sums. A bounded allowance is impossible under these congruences. Sources: \[fridy1966\], \[crmarickovac2025, Lemma 4\], \[kovactao2024, Lemma 5.1\], \[vandoornkovac2025\]. | O |
 | \#257 \[plectis257\] | Section 6 | The small-displacement quantity stays above $`1/2`$ at full support, where the value is irrational \[erdos1948\]. No proof covering full support can rest on it. | L, O |
 | \#257 \[plectis257\] | Section 3 | Every positive divisor cover costs at least $`e`$ times the mean of $`\log^+`$ of its multiplicity. The averaging method cannot reach the prime support, where irrationality is known at base $`2`$ \[taoteravainen2025\]. | O |
 | \#269 \[plectis269\] | Theorem 1 | Nonsingular minors of every order: no finite sum of products separates one exponent from the other two. Fan posted the two-prime separation \[fan2026comment\]; the three-prime statement is the note’s. | L |
-| \#1049 \[plectis1049\] | Theorem 5 | A family of forms with degrees at most $`\delta n^2`$ and decay $`-\sigma n^2\log x`$ at every $`x>1`$ has $`\sigma\le\delta`$; its region never reaches $`\log b/\log a=1/2`$. Ordinary proof, with the contradiction step and the comparison with $`1/2`$ checked in Lean. | O, L |
+| \#1049 \[plectis1049\] | Theorem 5 | One family of nonzero integer-polynomial linear forms with common leading degree, coefficient-height and decay bounds at every fixed real $`x>1`$ has $`\sigma\le\delta`$; the sufficient cutoff $`\sigma/(\sigma+\delta)`$ supplied by those estimates is at most $`1/2`$. Ordinary proof, with the contradiction step and the comparison with $`1/2`$ checked in Lean. | O, L |
 | \#1049 \[plectis1049\] | Theorem 7 | The stated clearing conditions cannot be met at base $`3/2`$. | L |
 
-Rows \#249 Section 5 and \#251 are instances of Theorem 1.1(ii) of the note. The others bound a method. We tried to state one inequality that covers \#1049 Theorem 5 and the cover cost of \#257, a cost of clearing denominators against the decay gained, and did not find a formulation that survives both sets of hypotheses. We do not claim the rows share a cause.
+Theorem 1.1(ii) explains interval filling in the \#251 construction. The \#249 countermodel is a separate explicit construction with its own preserved identities. The \#1049 restriction does not exclude stronger base-specific estimates, different families at different bases, or forms involving several target values. The others bound a method. We tried to state one inequality that covers \#1049 Theorem 5 and the cover cost of \#257, a cost of clearing denominators against the decay gained, and did not find a formulation that survives both sets of hypotheses. We do not claim the rows share a cause.
 
 <a id="sec:misread"></a>
 
-# One computation read wrongly twice
+# The computation and its limits
 
 The computation \[plectisinvestigation\] runs the greedy rule in exact arithmetic on every reduced fraction in $`(0,E]`$ with $`2\le q\le Q`$.
 
 *First reading.* At $`Q=36`$, $`382`$ of $`633`$ fractions are not rejected through step $`160`$ and $`14`$ are finite subsums, a share $`(382+14)/633=0.6256`$ close to $`1/E=0.6224`$. This was read as evidence that about $`62\%`$ of rationals are subsums, hence that \#257 is false. The reading is wrong. By Theorem 1.4 of the note the share at any fixed depth tends to $`2^NR_N/E`$ whatever the truth of \#257, because fractions equidistribute over the $`2^N`$ intervals that survive $`N`$ steps.
 
-*Second reading.* After that correction, the rejections found at steps $`8`$, $`9`$ and $`12`$ once $`Q`$ reached $`200`$ were described as the informative data, and the $`12{,}218`$ fractions not rejected through step $`60`$ as survivors of interest. This is also wrong. The expected number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which is below $`1`$ for $`n>2\log_2Q-2\log_2\pi`$, about step $`12`$ at $`Q=200`$. Survival past that step is forced by counting, and the rejections before it confirm the measures of Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">1</a> and nothing else. The error term $`O(2^N\log Q/Q)`$ of Theorem 1.4 is useful at $`Q=200`$ only for $`N`$ up to about $`5`$. At $`N=12`$ the observed share is $`0.62372`$ against $`2^{12}R_{12}/E=0.62245`$, an agreement better than the theorem guarantees.
+*An incorrect stopping rule.* A subsequent interpretation went too far in the opposite direction, asserting that survival after about $`2\log_2Q-3.3`$ steps was forced. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which is below $`1`$ for $`n>2\log_2Q-2\log_2\pi`$, about step $`12`$ at $`Q=200`$. A main term below $`1`$ does not make the actual count zero. Theorem 1.4 is a fixed-depth asymptotic, and its error $`O(2^N\log Q/Q)`$ does not justify an extrapolation to $`N\sim2\log_2Q`$. Late rejections remain exact nonmembership certificates; the $`12{,}218`$ fractions not rejected through step $`60`$ have only that finite-depth status. At $`N=12`$ the observed share is $`0.62372`$ against $`2^{12}R_{12}/E=0.62245`$.
+
+*An exact rejection at step $`17`$.* The witness $`189/388`$, recorded in the earlier investigation’s Desk B report, contradicts the proposed stopping rule: $`2\log_2 388-2\log_2\pi`$ is about $`13.9`$. The selected indices through step $`16`$ are $`F=\{2,3,7,9,10,14,15,16\}`$. At each skipped earlier index $`n`$, exact rational arithmetic gives a remainder at most $`2^{-n}<R_n`$, so no rejection has yet occurred. The remaining value is
+``` math
+r=\frac{189}{388}-X_F
+  =\frac{9291822600689}{1217890317075045460}.
+```
+Since $`1/(2^k-1)=2^{-k}+4^{-k}/(1-2^{-k})`$ and $`1/(1-2^{-k})\le2`$ for $`k\ge1`$, summing gives
+``` math
+R_n\le2^{-n}+\frac{2}{3\cdot4^n}.
+```
+At $`n=17`$, the exact comparison is
+``` math
+R_{17}\le\frac{196609}{25769803776}<r<\frac1{131071}=w_{17}.
+```
+The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">2</a>. The independent reproduction, including every earlier skipped step, is in `research/experiments/sparse_interpolation/late_rejection.py`. This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
 
 What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">1</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">2</a>.
 
@@ -105,9 +120,9 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 3.  *The share of surviving fractions as evidence.* Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">4</a>.
 
-4.  *A wrong locator.* A draft of Theorem 1.3(b) cited Theorem 1.1 of \[adamczewskifaverjon2026\] as Nishioka’s theorem. That theorem says a value of a Mahler function at an algebraic point is rational or transcendental, which cannot prove irrationality. The proof in the note uses Mahler’s theorem \[mahler1929\], whose hypotheses are checked there.
+4.  *A wrong locator.* A draft of Theorem 1.3(b) cited Theorem 1.1 of \[adamczewskifaverjon2026\] as Nishioka’s theorem. That theorem says a value of a Mahler function at an algebraic point is rational or transcendental, which cannot prove irrationality. The proof in the note uses Nishioka’s value theorem as quoted in \[adamczewskifaverjon2016, Theorem 1.1, p. 3\], applied there to the two-dimensional system for $`(g,1)`$ with regular points in $`(0,1)`$.
 
-5.  *Algebraic independence for \#1049.* With $`g`$ as in the note, $`\sum_{n\ge1}(t^n-1)^{-1}=\sum_{m\ \mathrm{odd}}g(t^{-m})`$, and each $`g(t^{-m})`$ is transcendental for rational $`t>1`$. This gives nothing for the infinite sum: limits of transcendental numbers take every value, and no form of Mahler’s method controls an infinite sum of Mahler values.
+5.  *Algebraic independence for \#1049.* With $`g`$ as in the note, $`\sum_{n\ge1}(t^n-1)^{-1}=\sum_{m\ \mathrm{odd}}g(t^{-m})`$, and each $`g(t^{-m})`$ is transcendental for rational $`t>1`$. This gives nothing for the infinite sum: limits of transcendental numbers take every value. No applicable value theorem for this decomposition is supplied here.
 
 <a id="sec:known"></a>
 
@@ -119,7 +134,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 - A closed set of positive measure can contain essentially no rationals \[boesdarsterdos1981\], so the heuristic of the note’s Section 4 cannot be a consequence of measure.
 
-- Counting rationals of bounded height is studied for null Cantor sets \[rstw2019; chowvarjuyu2024\]. We found no work on rational points of a subsum set of positive measure, and none on rational points in the subsum-set literature. The searches were made on 20 September 2026 and are listed in the repository record.
+- The rational-point counting papers examined here concern null Cantor sets \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. The searches were made on 20 September 2026 and are listed in the repository record.
 
 - One identity with a consequence. Since $`\sum_{n\ge1}\mu(n)/(b^n-1)=1/b`$, the sums of $`(b^n-1)^{-1}`$ over squarefree $`n`$ with an even, respectively odd, number of prime factors are $`\tfrac12(X_{\mathrm{sf}}(b)\pm1/b)`$. Duverney and Tachiya prove that $`X_{\mathrm{sf}}(2^j)`$ is irrational \[duverneytachiya, Corollary 1.2 and Example 1.1\], as quoted in \[plectis257, Section 6\], so both sums are irrational at every base $`2^j`$. Both supports have divergent reciprocal sums. The identity at base $`2`$ is derived in \[plectis249, Section 5\]; the corollary may be known.
 
@@ -135,7 +150,18 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 4.  Is there one inequality behind \#1049 Theorem 5 and the cover cost of \#257?
 
-5.  For factorial radices, is an allowance of order $`n`$ the exact threshold for a rational series within that allowance of a given one? Theorem 1.1 gives an interval when the allowance at level $`n`$ is at least $`n`$ and a null set when it is $`o(n)`$ along a sequence. This would explain why \#68 and \#251 resist opposite methods.
+5.  For factorial denominators, what changes when every fixed modulus must eventually divide both the corrections and their cumulative sums? Without those congruences, the allowance $`F(n)=n-1`$ for $`n\ge2`$ gives the full interval $`[0,1]`$, whereas $`F(n)=o(n)`$ as $`n\to\infty`$ gives a null attainable set. The latter conclusion does not follow from small allowances merely along a subsequence, as the example below shows.
+
+The final question, including arbitrary oscillating allowances, is answered in [*An exact capacity criterion for series with eventual congruences*](../../../paper/synthesis/optimal-sparse-perturbations.pdf). For positive integer denominators with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and integer allowances $`F_n\ge0`$ with $`\sum F_n/Q_n<\infty`$, eventual allowance and eventual divisibility of every digit by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise the attainable set is null and meagre. In the positive case the cumulative congruences also hold, with cutoffs independent of the target. The factorial support-gap threshold is a corollary. This is an ordinary theorem of that note; the complete capacity criterion is not claimed as Lean-checked.
+
+For the nullity assertion, eventually $`F(n)+1\le n/2`$ and $`F(n)\le n`$. Thus the number of prefixes through $`N`$ is at most $`C2^{-N}N!`$ for a fixed $`C`$, while the capacity after $`N`$ is at most $`\sum_{n>N}n/n!\le2/N!`$. The covering bound of Theorem 1.1(i), allowing zero-capacity levels to be omitted, tends to zero.
+
+For the subsequence counterexample put $`F(2k)=0`$ and $`F(2k+1)=(2k)(2k+1)-1`$ for $`k\ge1`$, with $`F(1)=0`$. Then
+``` math
+\frac{F(2k+1)}{(2k+1)!}
+ =\frac1{(2k-1)!}-\frac1{(2k+1)!}.
+```
+The total capacity is $`1`$, and the capacity after each permitted index $`2k+1`$ is exactly $`1/(2k+1)!`$, equal to the spacing between its choices. The interval criterion therefore gives every value in $`[0,1]`$, even though $`F(n)/n=0`$ at every even index. The exact telescoping identities and sample greedy expansions are reproduced by the script cited in Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">4</a>; the interval conclusion follows from this argument, not from the samples.
 
 <div class="thebibliography">
 
@@ -164,6 +190,8 @@ T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on p
 Steve Fan, *Comment on Erdős Problem \#269, thread 269, post 7218* (2026), [source](https://www.erdosproblems.com/forum/thread/269#post-7218). 26 June 2026.
 
 K. Mahler, *Arithmetische Eigenschaften der Lösungen einer Klasse von Funktionalgleichungen*, Math. Ann. **101** (1929), 342–367.
+
+B. Adamczewski and C. Faverjon, [*Méthode de Mahler : relations linéaires, transcendance et applications aux nombres automatiques*](https://arxiv.org/abs/1508.07158v2), arXiv:1508.07158v2 (2016), Theorem 1.1, p. 3.
 
 Boris Adamczewski and Colin Faverjon, *Mahler’s method in several variables and finite automata*, Annals of Mathematics **204**, no. 2 (2026), 455–533, [doi:`10.4007/annals.2026.204.2.1`](https://doi.org/10.4007/annals.2026.204.2.1). Locators refer to the [68-page author manuscript](https://faverjon.perso.math.cnrs.fr/AdamczewskiFaverjon_MahlerFiniteAutomata.pdf).
 

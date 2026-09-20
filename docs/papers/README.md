@@ -8,7 +8,7 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 20 active papers and 1 retired paper and 2 papers awaiting website publication.
+This checkout contains 20 active papers and 1 retired paper and 3 papers awaiting website publication.
 
 ## Project papers
 
@@ -239,7 +239,7 @@ not currently earn scarce first-contact attention.
 
 <a id="problem-portfolio"></a>
 
-## All papers (23)
+## All papers (24)
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
@@ -429,6 +429,12 @@ Start here (selected for this guide): [Results](full-text/erdos-synthesis-subsum
 
 Start here (selected for this guide): [What the note relies on](full-text/erdos-synthesis-reading-together-record.md#sec:map), [Negative results in the companion notes](full-text/erdos-synthesis-reading-together-record.md#sec:inventory), [What was already known](full-text/erdos-synthesis-reading-together-record.md#sec:known), [Questions](full-text/erdos-synthesis-reading-together-record.md#sec:questions).
 
+### When do summable digit allowances on a strict integer divisibility chain permit interval filling under eventual individual and cumulative congruences?
+
+**An Exact Capacity Criterion for Series with Eventual Congruences** · **included here; not yet published on the website**
+
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 13 sections · `optimal-sparse-perturbations` · native to this repository
+
 ## Evidence and limitations
 
 The papers explain the results. To verify a formal proof, use the linked
@@ -460,6 +466,7 @@ responsibility for proof verification, status and explanation as follows:
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
+- `optimal-sparse-perturbations` is not authority for Lean proof of the complete capacity criterion or support-gap classification, peer review, historical priority, or promotion of any reviewed claim or Erdős problem status.
 
 ## For agents
 
