@@ -206,6 +206,62 @@ def main() -> int:
     for marker in ("Architecture", "agent workflow", "conceptualization", "software"):
         require(marker in architecture_human, f"architecture contribution view omitted {marker}")
 
+    # A mathematical contribution across several problems is projected under
+    # its subject and stays reachable from every related problem.
+    subject = "greedy skip mechanisms shared across reciprocal-series problems"
+    _subject_seed_name, subject_receipt, _subject_payload = accepted_source()
+    subject_receipt["return_id"] = "rr-subject-contribution-projection-test"
+    subject_receipt["frontier"] = {
+        "track": "mathematics",
+        "subject": subject,
+        "related_problems": [249, 257],
+        "handle": "subject/greedy-skip-transfer",
+        "bounded_question": "Does one recorded skip mechanism cover both problems?",
+        "stop_condition": "Stop after one bounded comparison.",
+        "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+    }
+    subject_projection = contributions.build_projection(
+        [
+            (
+                "rr-subject-contribution-projection-test.json",
+                subject_receipt,
+                contributions.canonical(subject_receipt),
+            )
+        ]
+    )
+    subject_row = subject_projection["chronological"][0]
+    require(
+        "problem" not in subject_row["frontier"],
+        "subject contribution was assigned a problem number",
+    )
+    require(
+        subject_projection["filters"]["by_track"]
+        == {"mathematics": [subject_receipt["return_id"]]},
+        "subject contribution left the mathematics track",
+    )
+    require(
+        subject_projection["filters"]["by_problem"]
+        == {
+            "249": [subject_receipt["return_id"]],
+            "257": [subject_receipt["return_id"]],
+        },
+        "subject contribution was not reachable from each related problem",
+    )
+    require(
+        subject_projection["filters"]["by_architecture_area"] == {},
+        "subject contribution entered an architecture area",
+    )
+    require(
+        subject_row["public_frontier"]["repository_path"].endswith(
+            "RETURN_PACKAGE_TEMPLATE.md"
+        )
+        and subject_row["public_frontier"]["anchor"] == "subject-frontier",
+        "subject contribution route was not projected",
+    )
+    subject_human = contributions.human_projection(subject_projection).decode("utf-8")
+    for marker in ("Subject", subject, "#249", "#257"):
+        require(marker in subject_human, f"subject contribution view omitted {marker}")
+
     print("build_research_contributions: unaccepted exclusion and human/operator/model/provider projection PASS")
     return 0
 

@@ -30,6 +30,8 @@ JSON_OUTPUT = ROOT / "docs/research-commons/contributions.json"
 MARKDOWN_OUTPUT = ROOT / "docs/research-commons/CONTRIBUTIONS.md"
 SCHEMA = "accepted-research-contributions/1"
 PUBLIC_RESULT_FAMILY_ANCHOR = "current-public-consumer-fan-in"
+PUBLIC_SUBJECT_FRONTIER_PATH = "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
+PUBLIC_SUBJECT_FRONTIER_ANCHOR = "subject-frontier"
 GIT_CONTEXT_KEYS = frozenset(
     {
         "GIT_DIR",
@@ -336,6 +338,38 @@ def public_result_family_route(problem: Any) -> dict[str, str]:
     }
 
 
+def public_subject_frontier_route(frontier: dict[str, Any]) -> dict[str, str]:
+    """Route a subject-shaped mathematics contribution to its public contract.
+
+    A subject return names no problem, so it cannot be routed to one problem's
+    result family.  It routes to the public subject-frontier contract instead;
+    its related problems remain reachable through the problem grouping.
+    """
+    subject = frontier.get("subject")
+    if not isinstance(subject, str) or not subject.strip():
+        raise ValueError(
+            f"subject contribution requires a nonempty subject: {subject!r}"
+        )
+    if not (ROOT / PUBLIC_SUBJECT_FRONTIER_PATH).is_file():
+        raise ValueError("no public subject-frontier contract is present")
+    name = Path(PUBLIC_SUBJECT_FRONTIER_PATH).name
+    return {
+        "repository_path": PUBLIC_SUBJECT_FRONTIER_PATH,
+        "anchor": PUBLIC_SUBJECT_FRONTIER_ANCHOR,
+        "relative_link": f"{name}#{PUBLIC_SUBJECT_FRONTIER_ANCHOR}",
+    }
+
+
+def contribution_related_problems(frontier: dict[str, Any]) -> list[int]:
+    """List the roster problems a mathematics contribution is reachable from."""
+    if contribution_track(frontier) != "mathematics":
+        return []
+    if "problem" in frontier:
+        return [frontier["problem"]]
+    related = frontier.get("related_problems")
+    return list(related) if isinstance(related, list) else []
+
+
 def contribution_track(frontier: Any) -> str:
     """Return the explicit track, with legacy problem receipts remaining mathematical."""
     if not isinstance(frontier, dict):
@@ -351,13 +385,17 @@ def contribution_track(frontier: Any) -> str:
 def contribution_scope_label(frontier: dict[str, Any]) -> str:
     track = contribution_track(frontier)
     if track == "mathematics":
-        return f"Erdős #{frontier['problem']}"
+        if "problem" in frontier:
+            return f"Erdős #{frontier['problem']}"
+        return f"Subject — {frontier['subject']}"
     return f"Architecture — {str(frontier['area']).replace('_', ' ')}"
 
 
 def public_contribution_route(frontier: dict[str, Any]) -> dict[str, str]:
     if contribution_track(frontier) == "mathematics":
-        return public_result_family_route(frontier.get("problem"))
+        if "problem" in frontier:
+            return public_result_family_route(frontier.get("problem"))
+        return public_subject_frontier_route(frontier)
     if not isinstance(frontier.get("area"), str) or frontier.get("area") not in return_validator.ARCHITECTURE_AREAS:
         raise ValueError(f"architecture contribution has an unknown area: {frontier.get('area')!r}")
     return {
@@ -390,22 +428,23 @@ def filter_rows(rows: list[dict[str, Any]], field: str) -> dict[str, list[str]]:
     grouped: dict[str, list[str]] = {}
     for row in rows:
         if field == "problem":
-            if contribution_track(row["frontier"]) != "mathematics":
-                continue
-            key = str(row["frontier"]["problem"])
+            # A subject-shaped row carries no problem number, and stays
+            # reachable from every problem it declares as related.
+            keys = [str(problem) for problem in contribution_related_problems(row["frontier"])]
         elif field == "track":
-            key = contribution_track(row["frontier"])
+            keys = [contribution_track(row["frontier"])]
         elif field == "architecture_area":
             if contribution_track(row["frontier"]) != "architecture":
                 continue
-            key = str(row["frontier"]["area"])
+            keys = [str(row["frontier"]["area"])]
         elif field == "result_class":
-            key = str(row["result"]["class"])
+            keys = [str(row["result"]["class"])]
         elif field == "requested_disposition":
-            key = str(row["result"]["requested_disposition"])
+            keys = [str(row["result"]["requested_disposition"])]
         else:
             raise ValueError(f"unsupported contribution filter {field!r}")
-        grouped.setdefault(key, []).append(row["return_id"])
+        for key in keys:
+            grouped.setdefault(key, []).append(row["return_id"])
     return {key: grouped[key] for key in sorted(grouped)}
 
 
@@ -557,11 +596,13 @@ def human_projection(projection: dict[str, Any]) -> bytes:
         )
         scope_label = contribution_scope_label(row["frontier"])
         track = contribution_track(row["frontier"])
-        route_label = (
-            f"Erdős #{row['frontier']['problem']} current fan-in"
-            if track == "mathematics"
-            else "architecture contribution path"
-        )
+        related_problems = contribution_related_problems(row["frontier"])
+        if track != "mathematics":
+            route_label = "architecture contribution path"
+        elif "problem" in row["frontier"]:
+            route_label = f"Erdős #{row['frontier']['problem']} current fan-in"
+        else:
+            route_label = "subject frontier contract"
         lines.extend(
             [
                 f"### {markdown_text(row['accepted_at'])} — {markdown_text(scope_label)} — {markdown_text(result['class'])}",
@@ -575,6 +616,17 @@ def human_projection(projection: dict[str, Any]) -> bytes:
                 f"- Requested display: {markdown_text(row['attribution']['requested_display'])}",
                 f"- Artifact credit: {markdown_text(artifact_credit_text(row['attribution']['artifact_credit']))}",
                 f"- Track: `{code_text(track)}`",
+                *(
+                    [
+                        "- Related problems: "
+                        + markdown_text(
+                            ", ".join(f"#{problem}" for problem in related_problems)
+                            or "none recorded"
+                        )
+                    ]
+                    if track == "mathematics" and "problem" not in row["frontier"]
+                    else []
+                ),
                 f"- Frontier: `{code_text(row['frontier']['handle'])}`",
                 f"- Public frontier: [{markdown_text(route_label)}]({row['public_frontier']['relative_link']})",
                 f"- Starting commit: `{repository['starting_commit']}`",

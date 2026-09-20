@@ -5,9 +5,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:b27abd8baa30b9850fb7b5d71242cb7e76b3467aefba5c9535a6389de22534be"
+        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:3540db328568af195701fc6365343774c289a3c56749febc4938916b81e2873d"
       },
-      "rendered_content_digest": "sha256:9004af8c437661ff6ab1412a32f3a38e7e5c53a285f496845234e74bdee03ed5",
+      "rendered_content_digest": "sha256:5767facdd9b9b4728523443e1dbcbe90fb61d9aef1168992207ebbb43ce3a786",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
@@ -203,9 +203,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/open-source-mathematics-strategy.tex": "sha256:15e0e12d4c666ac61417f3bf5350630164df23ce3b5fa3d67c481ac45f712a1b"
+        "paper/systems/open-source-mathematics-strategy.tex": "sha256:3548d9c753a2ccf2d61166fee710d72a50fc4df86937a96f40694df0c79e0f12"
       },
-      "rendered_content_digest": "sha256:d056851e15b1895ceb1697f8fdc63abf31d2d6e268484667112376e7d871dd9f",
+      "rendered_content_digest": "sha256:507973ea076c2142c4b278e7b3159fec2e7cc125df9e2a28a8323a52e39662cd",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },

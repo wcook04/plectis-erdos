@@ -756,6 +756,313 @@ def check_partial_workbench_open_retry() -> None:
         require([move["move_id"] for move in moves] == ["m001", "m002"], "retry retained partial ledger entries")
 
 
+def subject_start_command(
+    sessions: Path, session: str, subject: str, related: tuple[int, ...]
+) -> list[str]:
+    """Build one subject-shaped start invocation for the round-trip check."""
+    command = [
+        sys.executable,
+        str(CLI),
+        "--sessions-root",
+        str(sessions),
+        "start",
+        "--session",
+        session,
+        "--subject",
+        subject,
+    ]
+    for problem in related:
+        command.extend(["--related-problem", str(problem)])
+    command.extend(
+        [
+            "--frontier",
+            "fixture/subject-frontier",
+            "--intent",
+            "does one recorded skip mechanism cover the related problems",
+            "--stop-condition",
+            "stop after one bounded comparison",
+            "--contributor",
+            "Subject Contributor",
+            "--model-system",
+            "not_used",
+            "--provider",
+            "not_used",
+            "--allow-dirty",
+            # This checkout's ambient origin is whatever it was cloned from,
+            # so assert the public origin the return is addressed to.
+            "--repository-origin",
+            "https://github.com/wcook04/plectis-erdos",
+        ]
+    )
+    return command
+
+
+def check_subject_frontier_round_trip() -> None:
+    """A contribution across several problems returns without inventing one."""
+    subject = "greedy skip mechanisms shared across reciprocal-series problems"
+    with tempfile.TemporaryDirectory(prefix="continue-subject-frontier-") as temporary:
+        temp = Path(temporary)
+        sessions = temp / "sessions"
+        common = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
+
+        conflicting = subprocess.run(
+            [
+                *subject_start_command(sessions, "subject_conflict", subject, ()),
+                "--problem",
+                "257",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=continue_research.child_environment(),
+            timeout=continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+        )
+        require(
+            conflicting.returncode == 2
+            and "not allowed with argument" in conflicting.stderr,
+            f"start accepted both a problem and a subject: {conflicting.stderr}",
+        )
+
+        stray_related = run(
+            [
+                sys.executable,
+                str(CLI),
+                "--sessions-root",
+                str(sessions),
+                "start",
+                "--session",
+                "subject_stray_related",
+                "--problem",
+                "257",
+                "--related-problem",
+                "249",
+                "--frontier",
+                "fixture/subject-frontier",
+                "--intent",
+                "bounded work",
+                "--stop-condition",
+                "stop after one check",
+                "--contributor",
+                "Subject Contributor",
+                "--allow-dirty",
+            ],
+            expected=1,
+        )
+        require(
+            "--related-problem is only valid with --subject" in stray_related.stderr,
+            f"start accepted a related problem without a subject: {stray_related.stderr}",
+        )
+
+        for session, related in (
+            ("subject_two_related", (257, 249)),
+            ("subject_no_related", ()),
+        ):
+            started = run(subject_start_command(sessions, session, subject, related))
+            start_receipt = json.loads(started.stdout)
+            expected_related = sorted(related)
+            require(
+                start_receipt["problem"] is None
+                and start_receipt["subject"] == subject
+                and start_receipt["related_problems"] == expected_related,
+                f"subject start receipt lost its scope: {start_receipt}",
+            )
+            require(
+                start_receipt["route_memory"]["disposition"]
+                == ("consulted" if related else "no_applicable_route"),
+                f"subject start recorded a fabricated route disposition: {start_receipt}",
+            )
+            manifest = load(sessions / session / "continuation.json")
+            require(
+                manifest["problem"] is None
+                and manifest["related_problems"] == expected_related,
+                f"subject manifest invented a problem number: {manifest}",
+            )
+            consultation = manifest["route_memory"]
+            require(
+                consultation["schema"] == continue_research.SUBJECT_CONSULTATION_SCHEMA
+                and [item["problem"] for item in consultation["consultations"]]
+                == expected_related,
+                f"subject session did not consult one route per related problem: {consultation}",
+            )
+            require(
+                "python3 scripts/query_corpus.py --overview --format json"
+                in manifest["composed_commands"],
+                f"subject session did not consult the corpus-wide overview: {manifest}",
+            )
+            require(
+                [
+                    command
+                    for command in manifest["composed_commands"]
+                    if "query_route_memory.py" in command
+                ]
+                == [
+                    f"python3 scripts/query_route_memory.py --problem {problem}"
+                    for problem in expected_related
+                ],
+                f"subject session recorded a route query it did not run: {manifest}",
+            )
+
+            run(
+                [
+                    sys.executable,
+                    str(WORKBENCH),
+                    "--sessions-root",
+                    str(sessions),
+                    "close",
+                    "--session",
+                    session,
+                    "--outcome",
+                    "open",
+                    "--summary",
+                    "fixture stopped at its declared boundary",
+                ]
+            )
+
+            returned = load(RETURN_FIXTURE)
+            returned["record_kind"] = "submitted_return"
+            returned["return_id"] = f"rr-fixture-{session.replace('_', '-')}"
+            returned["repository"]["starting_commit"] = manifest["starting_commit"]
+            returned["repository"]["origin"] = manifest["repository_origin"]
+            returned["frontier"] = {
+                "track": "mathematics",
+                "subject": subject,
+                "related_problems": expected_related,
+                "handle": "fixture/subject-frontier",
+                "bounded_question": manifest["frontier"]["intent"],
+                "stop_condition": manifest["frontier"]["stop_condition"],
+                "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+            }
+            returned["identity"]["contributor"]["name"] = "Subject Contributor"
+            returned["identity"]["operator"] = {
+                "relationship": "same_as_contributor",
+                "name": "Subject Contributor",
+            }
+            returned["identity"]["model_system"] = {"state": "not_used"}
+            returned["identity"]["provider"] = {"state": "not_used"}
+            returned["identity"]["material_collaborators"] = []
+            returned["attribution"]["artifact_credit"][0]["name"] = "Subject Contributor"
+            return_path = temp / f"{session}-return.json"
+            return_path.write_text(
+                json.dumps(returned, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            sidecar = load(sessions / session / "route-memory-return-template.json")
+            require(
+                sidecar["schema"] == continue_research.SUBJECT_RETURN_SCHEMA
+                and len(sidecar["receipts"]) == len(expected_related),
+                f"subject return template did not match its consultations: {sidecar}",
+            )
+            sidecar["return_id"] = returned["return_id"]
+            for receipt in sidecar["receipts"]:
+                receipt["return_id"] = returned["return_id"]
+            sidecar_path = temp / f"{session}-route-memory.json"
+            sidecar_path.write_text(
+                json.dumps(sidecar, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            checked = run(
+                [
+                    *common,
+                    "check",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(return_path),
+                    "--route-memory-receipt",
+                    str(sidecar_path),
+                ]
+            )
+            check_receipt = json.loads(checked.stdout)
+            require(check_receipt["valid"], check_receipt)
+            require(
+                check_receipt["problem"] is None
+                and check_receipt["subject"] == subject
+                and check_receipt["related_problems"] == expected_related,
+                f"subject check receipt lost its scope: {check_receipt}",
+            )
+
+            foreign_problem = json.loads(json.dumps(returned))
+            foreign_problem["frontier"]["related_problems"] = [68]
+            foreign_path = temp / f"{session}-foreign-related.json"
+            foreign_path.write_text(
+                json.dumps(foreign_problem, ensure_ascii=False), encoding="utf-8"
+            )
+            foreign_check = run(
+                [
+                    *common,
+                    "check",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(foreign_path),
+                    "--route-memory-receipt",
+                    str(sidecar_path),
+                ],
+                expected=1,
+            )
+            require(
+                "frontier.related_problems" in foreign_check.stdout,
+                f"a return changed its related problems after the session opened: {foreign_check.stdout}",
+            )
+
+            package = temp / f"{session}-package"
+            packaged = run(
+                [
+                    *common,
+                    "package",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(return_path),
+                    "--route-memory-receipt",
+                    str(sidecar_path),
+                    "--output",
+                    str(package),
+                ]
+            )
+            require(json.loads(packaged.stdout)["valid"], packaged.stdout)
+            package_manifest = load(package / "package.json")
+            require(
+                package_manifest["problem"] is None
+                and package_manifest["subject"] == subject
+                and package_manifest["related_problems"] == expected_related,
+                f"subject package manifest lost its scope: {package_manifest}",
+            )
+            require(
+                package_manifest["route_memory"]["receipts"] == sidecar["receipts"],
+                f"subject package manifest dropped its route receipts: {package_manifest}",
+            )
+            for row in package_manifest["files"]:
+                data = (package / row["path"]).read_bytes()
+                require(
+                    hashlib.sha256(data).hexdigest() == row["sha256"],
+                    f"subject package hash drifted for {row['path']}",
+                )
+
+            detached = run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/validate_research_return.py"),
+                    str(package / "return.json"),
+                    "--require-submitted",
+                    "--check-git",
+                    "--require-route-memory-receipt",
+                    "--route-memory-receipt",
+                    str(package / "route-memory.json"),
+                ]
+            )
+            detached_receipt = json.loads(detached.stdout)
+            require(detached_receipt["valid"], detached_receipt)
+            require(
+                detached_receipt["route_memory_binding"]["subject"] == subject
+                and detached_receipt["route_memory_binding"]["problem"] is None,
+                f"detached subject validation invented a problem: {detached_receipt}",
+            )
+
+
 def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
     """Exercise the optional replay consumer without launching Lean."""
     session_directory = sessions_root / session
@@ -850,6 +1157,7 @@ def main() -> int:
     check_start_arguments_before_side_effects()
     check_partial_workbench_open_retry()
     check_repository_origin_override()
+    check_subject_frontier_round_trip()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
     ) == "https://github.com/wcook04/plectis-lean-erdos249-257"
@@ -1599,6 +1907,9 @@ def main() -> int:
                     "route_memory_source_final_symlink_and_special_file",
                     "symlink_return_input",
                     "directory_return_input",
+                    "subject_with_problem_selector",
+                    "related_problem_without_subject",
+                    "subject_related_problem_mismatch",
                 ],
             },
             sort_keys=True,

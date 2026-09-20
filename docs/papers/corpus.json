@@ -7968,7 +7968,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:b27abd8baa30b9850fb7b5d71242cb7e76b3467aefba5c9535a6389de22534be",
+      "source_sha256": "sha256:3540db328568af195701fc6365343774c289a3c56749febc4938916b81e2873d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8057,49 +8057,49 @@
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and transfer conditions",
-          "line": 185
+          "line": 187
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "What the architecture guarantees",
-          "line": 203
+          "line": 205
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "How to reproduce the audit",
-          "line": 211
+          "line": 213
         },
         {
           "level": 4,
           "id": "orient-without-compiling-lean.",
           "title": "1. Orient without compiling Lean.",
-          "line": 217
+          "line": 219
         },
         {
           "level": 4,
           "id": "check-a-proof.",
           "title": "2. Check a proof.",
-          "line": 232
+          "line": 234
         },
         {
           "level": 4,
           "id": "check-reuse-of-the-dependency-index.",
           "title": "3. Check reuse of the dependency index.",
-          "line": 241
+          "line": 243
         },
         {
           "level": 4,
           "id": "inspect-the-return-lifecycle.",
           "title": "4. Inspect the return lifecycle.",
-          "line": 253
+          "line": 255
         }
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:9004af8c437661ff6ab1412a32f3a38e7e5c53a285f496845234e74bdee03ed5",
-      "pdf_byte_count": 86223,
+      "pdf_sha256": "sha256:5767facdd9b9b4728523443e1dbcbe90fb61d9aef1168992207ebbb43ce3a786",
+      "pdf_byte_count": 87606,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8127,7 +8127,7 @@
           {
             "id": "sec:limits",
             "title": "Limits and transfer conditions",
-            "line": 185
+            "line": 187
           }
         ],
         "unresolved_count": 0
@@ -8170,7 +8170,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:15e0e12d4c666ac61417f3bf5350630164df23ce3b5fa3d67c481ac45f712a1b",
+      "source_sha256": "sha256:3548d9c753a2ccf2d61166fee710d72a50fc4df86937a96f40694df0c79e0f12",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8193,187 +8193,187 @@
           "level": 2,
           "id": "two-coupled-goals-not-one-endless-agent",
           "title": "Two coupled goals, not one endless agent",
-          "line": 47
+          "line": 49
         },
         {
           "level": 2,
           "id": "what-one-clone-lets-a-contributor-do",
           "title": "What one clone lets a contributor do",
-          "line": 69
+          "line": 71
         },
         {
           "level": 1,
           "id": "sec:model",
           "title": "A production model for mathematical progress",
-          "line": 80
+          "line": 82
         },
         {
           "level": 1,
           "id": "sec:math",
           "title": "Why begin with hard mathematics",
-          "line": 124
+          "line": 126
         },
         {
           "level": 1,
           "id": "sec:object",
           "title": "The public research object",
-          "line": 141
+          "line": 143
         },
         {
           "level": 1,
           "id": "sec:protocol",
           "title": "The contribution protocol",
-          "line": 162
+          "line": 164
         },
         {
           "level": 1,
           "id": "sec:attention",
           "title": "From an agent claim to mathematical attention",
-          "line": 204
+          "line": 206
         },
         {
           "level": 1,
           "id": "sec:credit",
           "title": "Progress, provenance, and credit",
-          "line": 232
+          "line": 234
         },
         {
           "level": 2,
           "id": "record-now-trace-consequences-later",
           "title": "Record now, trace consequences later",
-          "line": 272
+          "line": 274
         },
         {
           "level": 1,
           "id": "sec:security",
           "title": "Distributed compute without distributed authority",
-          "line": 284
+          "line": 286
         },
         {
           "level": 1,
           "id": "sec:prior",
           "title": "Precedents and the missing composition",
-          "line": 300
+          "line": 302
         },
         {
           "level": 4,
           "id": "distributed-compute.",
           "title": "Distributed compute.",
-          "line": 306
+          "line": 308
         },
         {
           "level": 4,
           "id": "distributed-mathematical-insight.",
           "title": "Distributed mathematical insight.",
-          "line": 312
+          "line": 314
         },
         {
           "level": 4,
           "id": "distributed-formalisation.",
           "title": "Distributed formalisation.",
-          "line": 318
+          "line": 320
         },
         {
           "level": 4,
           "id": "multi-agent-formal-research.",
           "title": "Multi-agent formal research.",
-          "line": 324
+          "line": 326
         },
         {
           "level": 4,
           "id": "individual-research-practice.",
           "title": "Individual research practice.",
-          "line": 330
+          "line": 332
         },
         {
           "level": 4,
           "id": "open-agent-platforms.",
           "title": "Open agent platforms.",
-          "line": 336
+          "line": 338
         },
         {
           "level": 4,
           "id": "semi-autonomous-discovery-on-the-erd\u0151s-problems.",
           "title": "Semi-autonomous discovery on the Erd\u0151s problems.",
-          "line": 344
+          "line": 346
         },
         {
           "level": 4,
           "id": "proof-abundance.",
           "title": "Proof abundance.",
-          "line": 352
+          "line": 354
         },
         {
           "level": 1,
           "id": "sec:add-problem",
           "title": "Adding another problem world",
-          "line": 360
+          "line": 362
         },
         {
           "level": 1,
           "id": "sec:growth",
           "title": "Participation and growth",
-          "line": 378
+          "line": 380
         },
         {
           "level": 1,
           "id": "sec:evaluation",
           "title": "Evaluation",
-          "line": 400
+          "line": 402
         },
         {
           "level": 1,
           "id": "sec:learning",
           "title": "Learning from every run",
-          "line": 434
+          "line": 436
         },
         {
           "level": 2,
           "id": "sec:local-to-general",
           "title": "The local-to-general track",
-          "line": 476
+          "line": 478
         },
         {
           "level": 1,
           "id": "sec:science",
           "title": "A bounded transfer hypothesis beyond mathematics",
-          "line": 511
+          "line": 513
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and governance",
-          "line": 521
+          "line": 523
         },
         {
           "level": 1,
           "id": "sec:execution",
           "title": "Execution order",
-          "line": 545
+          "line": 547
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 567
+          "line": 569
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 577
+          "line": 579
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 611
+          "line": 615
         }
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:d056851e15b1895ceb1697f8fdc63abf31d2d6e268484667112376e7d871dd9f",
-      "pdf_byte_count": 145629,
+      "pdf_sha256": "sha256:507973ea076c2142c4b278e7b3159fec2e7cc125df9e2a28a8323a52e39662cd",
+      "pdf_byte_count": 149359,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8386,22 +8386,22 @@
           {
             "id": "sec:protocol",
             "title": "The contribution protocol",
-            "line": 162
+            "line": 164
           },
           {
             "id": "sec:attention",
             "title": "From an agent claim to mathematical attention",
-            "line": 204
+            "line": 206
           },
           {
             "id": "sec:local-to-general",
             "title": "The local-to-general track",
-            "line": 476
+            "line": 478
           },
           {
             "id": "sec:limits",
             "title": "Limits and governance",
-            "line": 521
+            "line": 523
           }
         ],
         "unresolved_count": 0

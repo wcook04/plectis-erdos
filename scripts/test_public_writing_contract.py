@@ -68,6 +68,37 @@ def main() -> None:
         ):
             require(stale not in manuscript, f"{path.name} repeats obsolete corpus status: {stale}")
 
+    # The same blanket split must not survive on the pages a contributor or an
+    # outside model reads first. The guard above covered only the manuscripts,
+    # so CONTRIBUTING.md and the related-problem map kept the obsolete sentence
+    # after the #1041 status changed. The pattern is loose on purpose: it
+    # matches the claim, whatever words surround "eight".
+    import re
+
+    blanket = re.compile(
+        r"\b(?:all|none of the)\s+eight\b[^.]{0,80}?"
+        r"(?:remain(?:s)? open|(?:is|are) (?:solved|resolved|unsolved)|problems? is solved)",
+        re.IGNORECASE,
+    )
+    first_contact = [
+        ROOT / "CONTRIBUTING.md",
+        ROOT / "AGENTS.md",
+        ROOT / "docs/RELATED_PROBLEMS.md",
+        ROOT / "docs/FRONTIER_RELAY.md",
+        ROOT / "docs/agents/README.md",
+        ROOT / "docs/reading-edition/INTRODUCTION.md",
+        *sorted((ROOT / "skills").glob("*/SKILL.md")),
+    ]
+    for path in first_contact:
+        text = " ".join(path.read_text(encoding="utf-8").split())
+        hit = blanket.search(text)
+        require(hit is None, f"{path.relative_to(ROOT)} repeats obsolete corpus status: {hit.group(0) if hit else ''}")
+    for sample in (
+        "all eight headline Erdős problems remain open unless something happens",
+        "None of the eight open problems is solved here.",
+    ):
+        require(blanket.search(sample) is not None, "blanket-status guard lost a known specimen")
+
     # Retired audit infrastructure must not return as a live public capability.
     # These markers came from a two-problem historical sample, not the current
     # integrated claim, semantic-relation, and residual-evaluation owners.

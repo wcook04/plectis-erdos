@@ -38,6 +38,13 @@ PACKAGE_SCHEMA = "research-return-package/1"
 # object here so continuation selection cannot drift from the canonical route
 # authority as the corpus evolves.
 PROBLEMS = route_memory_receipt.ROSTER
+# A contribution that matters across several problems, or that develops a
+# subject no single problem owns, names that subject and the problems it
+# relates to.  Its session consults the corpus-wide overview and holds one
+# ordinary per-problem route consultation for each related problem.
+CORPUS_OVERVIEW_SCHEMA = "research-corpus-overview-consultation/1"
+SUBJECT_CONSULTATION_SCHEMA = "research-route-memory-subject-consultation/1"
+SUBJECT_RETURN_SCHEMA = return_validator.SUBJECT_ROUTE_MEMORY_SCHEMA
 GIT_LOOKUP_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 COMPOSED_COMMAND_TIMEOUT_SECONDS = 120
 PYTHON_AMBIENT_KEYS = (
@@ -237,6 +244,256 @@ def replay_execution_posture(*, replay: bool, probe_count: int) -> dict[str, Any
 def validate_slug(slug: str) -> None:
     if not SLUG_RE.fullmatch(slug):
         raise SystemExit("session must match [a-z0-9][a-z0-9_-]{2,80}")
+
+
+def is_subject_consultation(value: Any) -> bool:
+    """Return whether a stored consultation carries the subject-bundle shape."""
+    return isinstance(value, dict) and value.get("schema") == SUBJECT_CONSULTATION_SCHEMA
+
+
+def consultation_route_ids(consultation: Any) -> list[Any]:
+    """List the consulted route identities for either consultation shape."""
+    if not isinstance(consultation, dict):
+        return []
+    if is_subject_consultation(consultation):
+        consultations = consultation.get("consultations")
+        return [
+            route.get("route_id")
+            for item in (consultations if isinstance(consultations, list) else [])
+            if isinstance(item, dict) and isinstance(item.get("routes"), list)
+            for route in item["routes"]
+            if isinstance(route, dict)
+        ]
+    routes = consultation.get("routes")
+    return [
+        route.get("route_id")
+        for route in (routes if isinstance(routes, list) else [])
+        if isinstance(route, dict)
+    ]
+
+
+def corpus_overview_consultation(overview: dict[str, Any]) -> dict[str, Any]:
+    """Record that the corpus-wide overview was consulted, without copying it.
+
+    The overview carries the whole public corpus, including LaTeX titles whose
+    escapes trip the package's own private-path heuristic.  A subject session
+    records the identity of the consultation and the roster it returned; the
+    corpus itself remains the authority for its own text.
+    """
+    fleet = overview.get("problem_fleet")
+    return {
+        "schema": CORPUS_OVERVIEW_SCHEMA,
+        "command": "python3 scripts/query_corpus.py --overview --format json",
+        "kind": overview.get("kind"),
+        "schema_version": overview.get("schema_version"),
+        "authority_posture": overview.get("authority_posture"),
+        "problem_fleet": sorted(
+            row["erdos_number"]
+            for row in (fleet if isinstance(fleet, list) else [])
+            if isinstance(row, dict) and type(row.get("erdos_number")) is int
+        ),
+    }
+
+
+def subject_consultation(
+    subject: str, related_problems: list[int], consultations: list[dict[str, Any]], digest: str
+) -> dict[str, Any]:
+    """Bundle the per-problem consultations a subject session actually ran."""
+    return {
+        "schema": SUBJECT_CONSULTATION_SCHEMA,
+        "subject": subject,
+        "related_problems": list(related_problems),
+        "route_memory": {
+            "path": route_memory_receipt.ROUTE_MEMORY_PATH,
+            "sha256": digest,
+        },
+        # With no related problem there is no documented route to consult, so
+        # the bundle records that fact exactly as ``--no-applicable-route``
+        # records it for a single-problem session.
+        "disposition": "consulted" if related_problems else "no_applicable_route",
+        "consultations": list(consultations),
+    }
+
+
+def subject_return_template(consultation: dict[str, Any]) -> dict[str, Any]:
+    """Create a fillable subject sidecar without copying route text."""
+    return {
+        "schema": SUBJECT_RETURN_SCHEMA,
+        "return_id": "<set-to-return-id>",
+        "subject": consultation["subject"],
+        "related_problems": list(consultation["related_problems"]),
+        "route_memory": consultation["route_memory"],
+        "disposition": consultation["disposition"],
+        "receipts": [
+            route_memory_receipt.return_receipt_template(item)
+            for item in consultation["consultations"]
+        ],
+    }
+
+
+def return_template(consultation: Any) -> dict[str, Any]:
+    """Return the fillable sidecar template for either consultation shape."""
+    if is_subject_consultation(consultation):
+        return subject_return_template(consultation)
+    return route_memory_receipt.return_receipt_template(consultation)
+
+
+def validate_subject_consultation(value: Any, root: Path) -> list[str]:
+    """Validate a bundle of per-problem consultations held by one subject session."""
+    fields = {
+        "schema",
+        "subject",
+        "related_problems",
+        "route_memory",
+        "disposition",
+        "consultations",
+    }
+    if not isinstance(value, dict) or set(value) != fields:
+        return [
+            "route_memory_consultation: subject consultation must contain exactly "
+            "schema, subject, related_problems, route_memory, disposition, and consultations"
+        ]
+    errors: list[str] = []
+    if value.get("schema") != SUBJECT_CONSULTATION_SCHEMA:
+        errors.append(
+            f"route_memory_consultation.schema: must be {SUBJECT_CONSULTATION_SCHEMA}"
+        )
+    if not isinstance(value.get("subject"), str) or not value["subject"].strip():
+        errors.append("route_memory_consultation.subject: must be a nonempty string")
+    related = value.get("related_problems")
+    if (
+        not isinstance(related, list)
+        or any(type(item) is not int or item not in PROBLEMS for item in related)
+        or sorted(set(related)) != related
+    ):
+        errors.append(
+            "route_memory_consultation.related_problems: must be distinct ascending roster problems"
+        )
+        related = []
+    expected_disposition = "consulted" if related else "no_applicable_route"
+    if value.get("disposition") != expected_disposition:
+        errors.append(
+            "route_memory_consultation.disposition: must be "
+            f"{expected_disposition} for this related-problem set"
+        )
+    try:
+        _records, digest = route_memory_receipt.canonical_corpus(root)
+    except ValueError as exc:
+        errors.append(f"route_memory_consultation.route_memory: {exc}")
+    else:
+        if value.get("route_memory") != {
+            "path": route_memory_receipt.ROUTE_MEMORY_PATH,
+            "sha256": digest,
+        }:
+            errors.append(
+                "route_memory_consultation.route_memory: does not match the current "
+                "canonical route-memory source"
+            )
+    consultations = value.get("consultations")
+    if not isinstance(consultations, list) or len(consultations) != len(related):
+        errors.append(
+            "route_memory_consultation.consultations: must record exactly one "
+            "consultation per related problem"
+        )
+        return errors
+    for index, (problem, consulted) in enumerate(zip(related, consultations)):
+        base = f"route_memory_consultation.consultations[{index}]"
+        errors.extend(
+            f"{base}: {error}"
+            for error in route_memory_receipt.validate_consultation(consulted, root)
+        )
+        if not isinstance(consulted, dict):
+            continue
+        if consulted.get("problem") != problem:
+            errors.append(f"{base}.problem: must equal the related problem it records")
+        if consulted.get("route_memory") != value.get("route_memory"):
+            errors.append(
+                f"{base}.route_memory: must match the subject consultation route-memory source"
+            )
+        if consulted.get("disposition") != "consulted":
+            errors.append(f"{base}.disposition: must record a consulted route")
+    return errors
+
+
+def validate_any_consultation(value: Any, root: Path) -> list[str]:
+    """Validate the consultation a session holds, in either admissible shape."""
+    if is_subject_consultation(value):
+        return validate_subject_consultation(value, root)
+    return route_memory_receipt.validate_consultation(value, root)
+
+
+def validate_subject_return_receipt(
+    value: Any,
+    returned: dict[str, Any],
+    consultation: Any,
+    root: Path,
+) -> list[str]:
+    """Validate a subject sidecar against the consultations the session ran."""
+    errors = validate_subject_consultation(consultation, root)
+    errors.extend(return_validator.subject_route_memory_errors(value, returned, root))
+    if not isinstance(value, dict) or not isinstance(consultation, dict):
+        return errors
+    for field in ("subject", "related_problems", "route_memory", "disposition"):
+        if value.get(field) != consultation.get(field):
+            errors.append(
+                f"route_memory_return.{field}: does not match the opened continuation consultation"
+            )
+    receipts = value.get("receipts")
+    consultations = consultation.get("consultations")
+    if not isinstance(receipts, list) or not isinstance(consultations, list):
+        return errors
+    if len(receipts) != len(consultations):
+        errors.append(
+            "route_memory_return.receipts: must record one receipt per consulted problem"
+        )
+        return errors
+    for index, (receipt, consulted) in enumerate(zip(receipts, consultations)):
+        problem = consulted.get("problem") if isinstance(consulted, dict) else None
+        if not isinstance(problem, int):
+            continue
+        errors.extend(
+            f"route_memory_return.receipts[{index}]: {error}"
+            for error in route_memory_receipt.validate_return_receipt(
+                receipt,
+                return_validator.subject_return_view(returned, problem),
+                consulted,
+                root,
+            )
+        )
+    return errors
+
+
+def validate_any_return_receipt(
+    value: Any,
+    returned: dict[str, Any],
+    consultation: Any,
+    root: Path,
+) -> list[str]:
+    """Validate the sidecar a return carries, in either admissible shape."""
+    if is_subject_consultation(consultation) or return_validator.is_subject_route_memory_receipt(
+        value
+    ):
+        return validate_subject_return_receipt(value, returned, consultation, root)
+    return route_memory_receipt.validate_return_receipt(value, returned, consultation, root)
+
+
+def selected_related_problems(args: argparse.Namespace) -> list[int]:
+    """Return the ascending distinct related problems a subject start declares."""
+    selected = list(args.related_problem)
+    if args.subject is None:
+        if selected:
+            raise SystemExit(
+                "start refused: --related-problem is only valid with --subject"
+            )
+        return []
+    unknown = sorted({problem for problem in selected if problem not in PROBLEMS})
+    if unknown:
+        raise SystemExit(
+            f"related problems must be drawn from {sorted(PROBLEMS)}; found {unknown}"
+        )
+    if len(set(selected)) != len(selected):
+        raise SystemExit("start refused: --related-problem must not repeat a problem")
+    return sorted(selected)
 
 
 def disclosure(value: str) -> dict[str, str]:
@@ -442,13 +699,17 @@ def read_ledger(directory: Path, sessions_root: Path) -> list[dict[str, Any]]:
 
 def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
     validate_slug(args.session)
-    for field in ("frontier", "intent", "stop_condition", "contributor", "model_system", "provider", "operator"):
+    for field in (
+        "frontier", "intent", "stop_condition", "contributor",
+        "model_system", "provider", "operator", "subject",
+    ):
         value = getattr(args, field)
-        if field == "operator" and value is None:
+        if field in {"operator", "subject"} and value is None:
             continue
         if not isinstance(value, str) or not value.strip():
             raise SystemExit(f"start refused: --{field.replace('_', '-')} must be non-empty")
-    if args.problem not in PROBLEMS:
+    related_problems = selected_related_problems(args)
+    if args.subject is None and args.problem not in PROBLEMS:
         raise SystemExit(f"problem must be one of {sorted(PROBLEMS)}")
     directory = session_dir(args.sessions_root, args.session)
     if output_path_has_symlink_component(directory):
@@ -485,51 +746,92 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
     )
     # The corpus navigator is a typed selector surface, not a problem-number
     # CLI.  Keep this adapter on the current public selector so a cold clone
-    # cannot fail before the continuation session is opened.
-    corpus_query = f"Erdős problem {args.problem}"
-    route = run_json_command(
-        [
-            sys.executable,
-            str(SCRIPTS / "query_corpus.py"),
-            "--search",
-            corpus_query,
-            "--format",
-            "json",
-        ]
-    )
-    corpus_results = route.get("results")
-    if not isinstance(corpus_results, list) or not any(
-        isinstance(row, dict) and row.get("erdos_number") == args.problem
-        for row in corpus_results
-    ):
-        raise SystemExit(
-            "corpus query did not return the selected problem: "
-            f"{corpus_query!r}"
+    # cannot fail before the continuation session is opened.  A subject
+    # session has no single problem to select, so it consults the
+    # corpus-wide overview instead.
+    if args.subject is None:
+        corpus_query = f"Erdős problem {args.problem}"
+        corpus_command = (
+            f"python3 scripts/query_corpus.py --search 'Erdős problem {args.problem}' --format json"
         )
-    route_memory_packet = run_json_command(
-        [sys.executable, str(SCRIPTS / "query_route_memory.py"), "--problem", str(args.problem)]
-    )
+        route = run_json_command(
+            [
+                sys.executable,
+                str(SCRIPTS / "query_corpus.py"),
+                "--search",
+                corpus_query,
+                "--format",
+                "json",
+            ]
+        )
+        corpus_results = route.get("results")
+        if not isinstance(corpus_results, list) or not any(
+            isinstance(row, dict) and row.get("erdos_number") == args.problem
+            for row in corpus_results
+        ):
+            raise SystemExit(
+                "corpus query did not return the selected problem: "
+                f"{corpus_query!r}"
+            )
+    else:
+        corpus_command = "python3 scripts/query_corpus.py --overview --format json"
+        overview = run_json_command(
+            [
+                sys.executable,
+                str(SCRIPTS / "query_corpus.py"),
+                "--overview",
+                "--format",
+                "json",
+            ]
+        )
+        if overview.get("kind") != "repository_overview":
+            raise SystemExit(
+                "corpus overview query did not return the public repository overview"
+            )
+        route = corpus_overview_consultation(overview)
     try:
-        route_memory = route_memory_receipt.consultation_for_problem(
-            args.problem,
-            ROOT,
-            no_applicable_route=args.no_applicable_route,
-        )
+        route_records, route_digest = route_memory_receipt.canonical_corpus(ROOT)
     except ValueError as exc:
         raise SystemExit(f"cannot bind route memory: {exc}") from exc
-    queried_problem = route_memory_packet.get("problem")
-    if (
-        not isinstance(queried_problem, dict)
-        or queried_problem.get("erdos_number") != args.problem
-    ):
-        raise SystemExit("route-memory query did not return the selected problem")
+    consulted_problems = [args.problem] if args.subject is None else related_problems
+    route_memory_commands = [
+        f"python3 scripts/query_route_memory.py --problem {problem}"
+        for problem in consulted_problems
+    ]
+    consultations: list[dict[str, Any]] = []
+    for problem in consulted_problems:
+        route_memory_packet = run_json_command(
+            [sys.executable, str(SCRIPTS / "query_route_memory.py"), "--problem", str(problem)]
+        )
+        queried_problem = route_memory_packet.get("problem")
+        if (
+            not isinstance(queried_problem, dict)
+            or queried_problem.get("erdos_number") != problem
+        ):
+            raise SystemExit("route-memory query did not return the selected problem")
+        try:
+            consultations.append(
+                route_memory_receipt.consultation_for_problem(
+                    problem,
+                    ROOT,
+                    no_applicable_route=args.subject is None and args.no_applicable_route,
+                )
+            )
+        except ValueError as exc:
+            raise SystemExit(f"cannot bind route memory: {exc}") from exc
     # query_route_memory.py is the current navigation packet adapter and
     # intentionally reports an unrouted packet when no mathematical programme
     # is registered for a problem. The continuation receipt has a separate
     # canonical eight-problem route corpus, so use that source for the route
     # boundary and keep the two source identities independent.
-    route_records, _ = route_memory_receipt.canonical_corpus(ROOT)
-    route_record = route_records[args.problem]
+    if args.subject is None:
+        route_memory = consultations[0]
+        route_record = route_records[args.problem]
+    else:
+        route_memory = subject_consultation(
+            args.subject, related_problems, consultations, route_digest
+        )
+        route_record = None
     operator = args.operator or args.contributor
     opened = False
     try:
@@ -546,9 +848,15 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             )
         )
         opened = True
-        route_ids = [item["route_id"] for item in route_memory["routes"]]
+        route_ids = consultation_route_ids(route_memory)
+        subject_note = (
+            ""
+            if args.subject is None
+            else f"subject={args.subject}; related_problems={related_problems}; "
+        )
         note_text = (
             f"frontier={args.frontier}; stop_condition={args.stop_condition}; "
+            f"{subject_note}"
             f"route_memory_disposition={route_memory['disposition']}; route_ids={route_ids}"
         )
         planned = run_json_command(
@@ -571,6 +879,8 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             "repository_origin": repository_origin,
             "dirty_at_start": bool(dirty_rows),
             "problem": args.problem,
+            "subject": args.subject,
+            "related_problems": None if args.subject is None else related_problems,
             "frontier": {
                 "handle": args.frontier,
                 "intent": args.intent,
@@ -588,8 +898,8 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
                 "material_collaborators": args.material_collaborator,
             },
             "composed_commands": [
-                f"python3 scripts/query_corpus.py --search 'Erdős problem {args.problem}' --format json",
-                f"python3 scripts/query_route_memory.py --problem {args.problem}",
+                corpus_command,
+                *route_memory_commands,
                 "python3 scripts/proof_workbench.py open ...",
                 "python3 scripts/proof_workbench.py note --kind plan ...",
             ],
@@ -603,7 +913,7 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             dump_json(route_memory), encoding="utf-8"
         )
         (directory / "route-memory-return-template.json").write_text(
-            dump_json(route_memory_receipt.return_receipt_template(route_memory)), encoding="utf-8"
+            dump_json(return_template(route_memory)), encoding="utf-8"
         )
         (directory / "continuation.json").write_text(dump_json(manifest), encoding="utf-8")
     except SystemExit as exc:
@@ -622,21 +932,36 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
         if cleanup_error:
             detail = f"{detail}; {cleanup_error}"
         raise SystemExit(detail) from exc
+    receipt_route_memory: dict[str, Any] = {
+        "disposition": route_memory["disposition"],
+        "path": route_memory["route_memory"]["path"],
+        "digest": route_memory["route_memory"]["sha256"],
+        "route_ids": route_ids,
+    }
+    if route_record is not None:
+        receipt_route_memory["boundary"] = route_record["failure_boundary"]
+        receipt_route_memory["next_obligation"] = route_record["next_obligation"]
+    else:
+        receipt_route_memory["related_problems"] = related_problems
+        receipt_route_memory["routes"] = [
+            {
+                "problem": problem,
+                "route_id": route_records[problem]["route_id"],
+                "boundary": route_records[problem]["failure_boundary"],
+                "next_obligation": route_records[problem]["next_obligation"],
+            }
+            for problem in related_problems
+        ]
     return {
         "schema": "research-continuation-start/1",
         "session": args.session,
         "starting_commit": starting_commit,
         "repository_origin": repository_origin,
         "problem": args.problem,
+        "subject": args.subject,
+        "related_problems": None if args.subject is None else related_problems,
         "frontier": args.frontier,
-        "route_memory": {
-            "disposition": route_memory["disposition"],
-            "path": route_memory["route_memory"]["path"],
-            "digest": route_memory["route_memory"]["sha256"],
-            "route_ids": route_ids,
-            "boundary": route_record["failure_boundary"],
-            "next_obligation": route_record["next_obligation"],
-        },
+        "route_memory": receipt_route_memory,
         "workbench_open_move": opened_receipt.get("move_id"),
         "workbench_plan_move": planned.get("move_id"),
         "next": [
@@ -681,6 +1006,12 @@ def cross_check_return(
             manifest.get("starting_commit"),
         ),
         ("frontier.problem", returned_frontier.get("problem"), manifest.get("problem")),
+        ("frontier.subject", returned_frontier.get("subject"), manifest.get("subject")),
+        (
+            "frontier.related_problems",
+            returned_frontier.get("related_problems"),
+            manifest.get("related_problems"),
+        ),
         (
             "frontier.handle",
             returned_frontier.get("handle"),
@@ -800,16 +1131,23 @@ def check_session(
         ("workbench ledger", ledger),
     ):
         errors.extend(f"{label}: {error}" for error in return_validator.public_safety_errors(value))
-    errors.extend(route_memory_receipt.validate_consultation(consultation, ROOT))
+    errors.extend(validate_any_consultation(consultation, ROOT))
     if persisted_consultation is not None:
-        errors.extend(
-            route_memory_receipt.validate_consultation(persisted_consultation, ROOT)
-        )
+        errors.extend(validate_any_consultation(persisted_consultation, ROOT))
         if persisted_consultation != consultation:
             errors.append(
                 "route-memory consultation: persisted artifact does not match continuation manifest"
             )
-        if (
+        if is_subject_consultation(persisted_consultation):
+            if (
+                persisted_consultation.get("subject") != manifest.get("subject")
+                or persisted_consultation.get("related_problems")
+                != manifest.get("related_problems")
+            ):
+                errors.append(
+                    "route-memory consultation: subject does not match continuation manifest"
+                )
+        elif (
             isinstance(persisted_consultation, dict)
             and persisted_consultation.get("problem") != manifest.get("problem")
         ):
@@ -818,9 +1156,7 @@ def check_session(
             )
     if persisted_template is not None and isinstance(consultation, dict):
         try:
-            expected_template = route_memory_receipt.return_receipt_template(
-                consultation
-            )
+            expected_template = return_template(consultation)
         except (KeyError, TypeError):
             expected_template = None
         if expected_template is not None and persisted_template != expected_template:
@@ -879,7 +1215,7 @@ def check_session(
                 errors.append(f"route-memory receipt: cannot read JSON: {exc}")
             else:
                 errors.extend(
-                    route_memory_receipt.validate_return_receipt(
+                    validate_any_return_receipt(
                         route_receipt, returned, consultation, ROOT
                     )
                 )
@@ -901,12 +1237,14 @@ def check_session(
         "schema": CHECK_SCHEMA,
         "session": slug,
         "starting_commit": manifest["starting_commit"],
-        "problem": manifest["problem"],
+        "problem": manifest.get("problem"),
+        "subject": manifest.get("subject"),
+        "related_problems": manifest.get("related_problems"),
         "frontier": manifest["frontier"]["handle"],
         "route_memory": {
             "path": consultation.get("route_memory", {}).get("path") if isinstance(consultation, dict) else None,
             "digest": consultation.get("route_memory", {}).get("sha256") if isinstance(consultation, dict) else None,
-            "route_ids": [item.get("route_id") for item in consultation.get("routes", [])] if isinstance(consultation, dict) else [],
+            "route_ids": consultation_route_ids(consultation),
             "receipt_supplied": route_memory_receipt_path is not None,
         },
         "valid": not errors,
@@ -1008,19 +1346,30 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
         if safety_errors:
             raise SystemExit(f"package refused: {relative}: {'; '.join(safety_errors)}")
 
+    sidecar = load_json(args.route_memory_receipt)
+    package_route_memory = {
+        "source": manifest["route_memory"]["route_memory"],
+        "disposition": manifest["route_memory"]["disposition"],
+    }
+    if is_subject_consultation(manifest["route_memory"]):
+        package_route_memory["subject"] = manifest["route_memory"]["subject"]
+        package_route_memory["related_problems"] = manifest["route_memory"][
+            "related_problems"
+        ]
+        package_route_memory["receipts"] = sidecar["receipts"]
+    else:
+        package_route_memory["relationships"] = sidecar["relationships"]
     package_manifest = {
         "schema": PACKAGE_SCHEMA,
         "return_id": returned["return_id"],
         "session": args.session,
         "starting_commit": manifest["starting_commit"],
         "repository_origin": manifest["repository_origin"],
-        "problem": manifest["problem"],
+        "problem": manifest.get("problem"),
+        "subject": manifest.get("subject"),
+        "related_problems": manifest.get("related_problems"),
         "frontier": manifest["frontier"]["handle"],
-        "route_memory": {
-            "source": manifest["route_memory"]["route_memory"],
-            "disposition": manifest["route_memory"]["disposition"],
-            "relationships": load_json(args.route_memory_receipt)["relationships"],
-        },
+        "route_memory": package_route_memory,
         "created_at": utc_now(),
         "return_index": {
             "source": "return.json",
@@ -1164,7 +1513,24 @@ def build_parser() -> argparse.ArgumentParser:
 
     start = sub.add_parser("start", help="route and open one attributable bounded session")
     start.add_argument("--session", required=True)
-    start.add_argument("--problem", required=True, type=int)
+    scope = start.add_mutually_exclusive_group(required=True)
+    scope.add_argument("--problem", type=int)
+    scope.add_argument(
+        "--subject",
+        help=(
+            "name the mathematical subject or question this session develops, "
+            "for work that matters beyond one problem; use --related-problem "
+            "for each roster problem it relates to"
+        ),
+    )
+    start.add_argument(
+        "--related-problem",
+        action="append",
+        default=[],
+        type=int,
+        metavar="N",
+        help="record one roster problem this subject relates to; repeat for more than one",
+    )
     start.add_argument("--frontier", required=True)
     start.add_argument("--intent", required=True)
     start.add_argument("--stop-condition", required=True)

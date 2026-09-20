@@ -403,6 +403,65 @@ def main() -> int:
     for marker in ("Architecture", "validation", "conceptualization"):
         require(marker in architecture_human, f"architecture recognition view omitted {marker}")
 
+    # A mathematical contribution across several problems is recognised under
+    # its subject and remains reachable from every related problem.
+    subject = "greedy skip mechanisms shared across reciprocal-series problems"
+    subject_receipt = copy.deepcopy(receipt)
+    subject_receipt["return_id"] = "rr-subject-recognition-test"
+    subject_receipt["frontier"] = {
+        "track": "mathematics",
+        "subject": subject,
+        "related_problems": [249, 257],
+        "handle": "subject/greedy-skip-transfer",
+        "bounded_question": "Does one recorded skip mechanism cover both problems?",
+        "stop_condition": "Stop after one bounded comparison.",
+        "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+    }
+    for review_field in ("structural_validation", "reproduction"):
+        subject_receipt["review"][review_field]["reviewer"] = "Subject Validator"
+        subject_receipt["review"][review_field]["decided_at"] = "2026-08-30T00:00:00Z"
+    subject_payload = contributions.canonical(subject_receipt)
+    subject_errors = return_validator.validate_document(
+        subject_receipt,
+        require_accepted=True,
+        repository_identity=checker.repository_identity_contract.load_identity(),
+    )
+    require(not subject_errors, f"accepted subject fixture failed validation: {subject_errors}")
+    recognition._receipt_source_commit = lambda row: head
+    try:
+        subject_projection = recognition.build_recognition(
+            [("rr-subject-recognition-test.json", subject_receipt, subject_payload)]
+        )
+        recognition.validate_projection(subject_projection)
+    finally:
+        recognition._receipt_source_commit = original_receipt_commit
+    subject_row = subject_projection["chronological"][0]
+    require(subject_row["source"]["problem"] is None, "subject recognition invented a problem")
+    require(
+        subject_row["source"]["track"] == "mathematics",
+        "subject recognition lost its mathematics track",
+    )
+    require(
+        subject_row["source"]["scope_label"] == f"Subject — {subject}",
+        "subject recognition lost its subject scope label",
+    )
+    require(
+        [entry["key"] for entry in subject_projection["aggregates"]["by_problem"]]
+        == ["249", "257"],
+        "subject recognition was not reachable from each related problem",
+    )
+    require(
+        subject_projection["aggregates"]["by_architecture_area"] == [],
+        "subject recognition entered an architecture facet",
+    )
+    require(
+        subject_row["public_frontier"]["anchor"] == "subject-frontier",
+        "subject recognition route was not the public subject-frontier contract",
+    )
+    subject_human = recognition.human_projection(subject_projection).decode("utf-8")
+    for marker in ("Subject", subject, "#249", "#257"):
+        require(marker in subject_human, f"subject recognition view omitted {marker}")
+
     matrix_sources, matrix_head = accepted_result_matrix()
     original_route = contributions.public_result_family_route
     original_receipt_commit = recognition._receipt_source_commit

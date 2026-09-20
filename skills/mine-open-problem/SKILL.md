@@ -9,6 +9,11 @@ This skill turns a cold clone into a bounded research run. It may produce a
 proof, but a correction, counterexample, no-go, exact computation, literature
 connection, or reproducible failed route is also a valid result.
 
+When the request names no target and asks what is worth developing, start with
+`skills/explore-the-corpus/SKILL.md`. Return here once a bounded statement has
+emerged. A target that arose during research is as valid as a listed one;
+record its sources and state it exactly.
+
 ## 1. Recover the current frontier
 
 Do not begin from memory or the first interesting file.

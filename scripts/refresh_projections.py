@@ -104,6 +104,11 @@ BUILDERS = (
     # Normalize the paper corpus before the problem index reads its paper
     # routes and fingerprints it in docs/problem_library.json.
     "docs/papers/build_publication_taxonomy.py",
+    # The no-clone reading edition is assembled from the normalized paper
+    # corpus, the generated paper text and the shared research instruction in
+    # skills/explore-the-corpus/SKILL.md. Listing it here makes the release
+    # gate reject an edition that has drifted from the papers it carries.
+    "scripts/build_reading_edition.py",
     # Reads the refreshed claims and writes docs/problems.json, which the
     # corpus descriptor and external verification builder read.
     "scripts/build_problem_index.py",

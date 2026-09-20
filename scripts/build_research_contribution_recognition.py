@@ -716,10 +716,12 @@ def _entity_descriptor(
         track = contributions.contribution_track(row["frontier"])
         return [(track, track, {"track": track})]
     if facet == "by_problem":
-        if contributions.contribution_track(row["frontier"]) != "mathematics":
-            return []
-        problem = str(row["frontier"]["problem"])
-        return [(problem, f"Erdős #{problem}", {"problem": row["frontier"]["problem"]})]
+        # A subject-shaped row is reachable from every related problem it
+        # declares, and is never assigned a problem number of its own.
+        return [
+            (str(problem), f"Erdős #{problem}", {"problem": problem})
+            for problem in contributions.contribution_related_problems(row["frontier"])
+        ]
     if facet == "by_architecture_area":
         if contributions.contribution_track(row["frontier"]) != "architecture":
             return []
@@ -1673,11 +1675,12 @@ def human_projection(projection: dict[str, Any]) -> bytes:
         provider_text = _disclosure_text(provider)
         scope_label = contributions.contribution_scope_label(row["frontier"])
         track = contributions.contribution_track(row["frontier"])
-        route_label = (
-            f"Erdős #{row['frontier']['problem']} current fan-in"
-            if track == "mathematics"
-            else "architecture contribution path"
-        )
+        if track != "mathematics":
+            route_label = "architecture contribution path"
+        elif "problem" in row["frontier"]:
+            route_label = f"Erdős #{row['frontier']['problem']} current fan-in"
+        else:
+            route_label = "subject frontier contract"
         lines.extend(
             [
                 f"### {_md(row['accepted_at'])} — {_md(scope_label)} — {_md(result['class'])}",
@@ -1689,6 +1692,22 @@ def human_projection(projection: dict[str, Any]) -> bytes:
                 f"- Model/system disclosure: `{_code(model.get('state', 'not_recorded'))}` — {_md(model_text)}",
                 f"- Provider disclosure: `{_code(provider.get('state', 'not_recorded'))}` — {_md(provider_text)}",
                 f"- Track/frontier: `{_code(track)}` — {_md(scope_label)} — `{_code(row['frontier']['handle'])}`",
+                *(
+                    [
+                        "- Related problems: "
+                        + _md(
+                            ", ".join(
+                                f"#{problem}"
+                                for problem in contributions.contribution_related_problems(
+                                    row["frontier"]
+                                )
+                            )
+                            or "none recorded"
+                        )
+                    ]
+                    if track == "mathematics" and "problem" not in row["frontier"]
+                    else []
+                ),
                 f"- Public frontier: [{_md(route_label)}]({row['public_frontier']['relative_link']})",
                 f"- Result and claim ceiling: `{_code(result['class'])}` / `{_code(result['claim_ceiling'])}`",
                 f"- Requested disposition: `{_code(result['requested_disposition'])}`",

@@ -18,6 +18,18 @@ correspondence. The work also proves intermediate theorems, writes out proofs
 of results that were stated but not printed in the literature, checks exact
 finite cases, and records obstructions to tempting shortcuts.
 
+## Two ways to begin
+
+You can continue a particular question, or you can read the mathematics and
+decide what comes next. Both are supported. The second treats the papers as one
+body of work: a method from one problem may explain an obstruction in another,
+a recorded example may suggest a general theorem, and a worthwhile new question
+is itself a contribution. The [reading edition](reading-edition/README.md)
+serves this route without a clone. It is one file to read or to give to an AI
+model, with a short research instruction and the opening of each short paper.
+[Choices, contraction and rational membership](../research/experiments/choices_contraction/README.md)
+is one investigation that began this way.
+
 ## What is here
 
 The [front page](../README.md) lists the eight problems with a short paper and
