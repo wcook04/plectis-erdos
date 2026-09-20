@@ -1,0 +1,36 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+-- Current-source whole-statement audit for Erdős 1041.
+-- 17 paper environments; 15 declaration endpoints.
+
+import ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter
+import ErdosProblems.Erdos1041.CriticalTwoRootProximity
+import ErdosProblems.Erdos1041.CubicQuotientFiberCase
+import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
+import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
+import ErdosProblems.Erdos1041.PaperCubicCompletion
+import ErdosProblems.Erdos1041.PaperCubicFibres
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
+import ErdosProblems.Erdos1041.PaperReflectedCompletion
+import ErdosProblems.Erdos1041.PaperSeparationCounterexample
+import ErdosProblems.Erdos1041.PaperStraightObstructions
+import ErdosProblems.Erdos1041.PaperWeightedRefinementsR10
+import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
+import ErdosProblems.Erdos1041.SharpCollinearChebyshev
+
+#print axioms Erdos1041.Counterexample.erdos1041_ani_degree_seven
+#print axioms ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete
+#print axioms ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic
+#print axioms ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_critical_value
+#print axioms ErdosProblems.Erdos1041.PaperSeparationCounterexample.complete_sep_or_counterexample
+#print axioms ErdosProblems.Erdos1041.PaperStraightObstructions.complete_straight_path_obstructions
+#print axioms ErdosProblems.Erdos1041.SharpCollinearChebyshev.exists_peak_le_comparisonBound
+#print axioms ErdosProblems.Erdos1041.cubic_has_safe_root_spoke
+#print axioms ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean
+#print axioms ErdosProblems.Erdos1041.geometric_row_mean_closed_disc_le
+#print axioms ErdosProblems.Erdos1041.paper_critical_value_mean
+#print axioms ErdosProblems.Erdos1041.paper_weighted_free_point
+#print axioms ErdosProblems.Erdos1041.primitiveInterior_exists_two_tailEnergy_lt_one
+#print axioms ErdosProblems.Erdos1041.translated_samePositiveRay_parameterization

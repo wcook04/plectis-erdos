@@ -1,0 +1,5 @@
+import ErdosProblems.Erdos1041.PaperTrinomialWholeR21
+
+#print axioms ErdosProblems.Erdos1041.PaperTrinomialWholeR21.all_degree_monic_trinomials_whole
+#print axioms ErdosProblems.Erdos1041.PaperTrinomial.all_spokes
+#print axioms ErdosProblems.Erdos1041.PaperTrinomial.complete_trinomial

@@ -1,0 +1,37 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+import ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates
+import ErdosProblems.Erdos68.PaperCompleteMomentHorizon
+import ErdosProblems.Erdos68.PaperCompleteExisting
+import ErdosProblems.Erdos68.PaperCompleteLiminf
+import ErdosProblems.Erdos68.PaperCompleteSupportedBands
+import ErdosProblems.Erdos68.PaperCompletePrimePole
+
+#print axioms Erdos68.factorial_gap_gcd_exact
+#print axioms Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose
+#print axioms ErdosProblems.Erdos68.PaperComplete.divisor_channel_coordinates
+#print axioms ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate
+#print axioms ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate_eq
+#print axioms ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation
+#print axioms ErdosProblems.Erdos68.PaperComplete.uniform_family_boundary
+#print axioms ErdosProblems.Erdos68.PaperComplete.uniform_family_members
+#print axioms ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
+#print axioms ErdosProblems.Erdos68.PaperComplete.carry_characterisation
+#print axioms ErdosProblems.Erdos68.PaperComplete.supported_quotient_band
+#print axioms ErdosProblems.Erdos68.PaperComplete.supported_first_band_cancellation
+#print axioms ErdosProblems.Erdos68.PaperComplete.supported_breakpoint_escape
+#print axioms ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat
+#print axioms ErdosProblems.Erdos68.PaperComplete.companion_orbit_boundary
+#print axioms ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+#print axioms ErdosProblems.Erdos68.PaperComplete.cofinal_first_prime_occurrences
+#print axioms ErdosProblems.Erdos68.PaperComplete.product_lcm_pairwise_gcd
+#print axioms ErdosProblems.Erdos68.PaperComplete.companion_orbit
+#print axioms ErdosProblems.Erdos68.PaperComplete.lower_interval_criterion
+#print axioms ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_prime
+#print axioms ErdosProblems.Erdos68.PaperComplete.supported_integral_normal_form
+#print axioms ErdosProblems.Erdos68.PaperComplete.square_subsequence_radius
+#print axioms ErdosProblems.Erdos68.PaperComplete.radius_no_eventual_ratio_upper
+#print axioms ErdosProblems.Erdos68.PaperComplete.radius_not_littleO
+#print axioms ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf
+#print axioms ErdosProblems.Erdos68.PaperComplete.prime_channel_corrector
