@@ -189,6 +189,52 @@ theorem reverse_carry_word_twoPow_le
     constructor <;> linarith
   linarith
 
+/-! The paper's final clause is a sharpness claim: under a common bound `B` the
+conclusion is `2^L ≤ 2B`, **not** `2^L ≤ B`.  The witness below realises
+`k = 0`, `L = 1`, `B = 1`, where both terminal carries have absolute value `1`
+and `2^L = 2 > 1 = B`. -/
+
+private def sharpCarryU₁ : ℕ → ℤ := fun m => if m ≤ 1 then 0 else -1
+private def sharpCarryU₂ : ℕ → ℤ := fun _ => 1
+private def sharpCarryB₁ : ℕ → ℤ := fun m => if m = 0 then 1 else 0
+private def sharpCarryB₂ : ℕ → ℤ := fun _ => 0
+private def sharpCarryA₁ : ℕ → ℤ :=
+  fun m => sharpCarryB₁ m + 2 * sharpCarryU₁ m - sharpCarryU₁ (m + 1)
+private def sharpCarryA₂ : ℕ → ℤ :=
+  fun m => sharpCarryB₂ m + 2 * sharpCarryU₂ m - sharpCarryU₂ (m + 1)
+
+/-- Long `lem:reverse-carry-word`, final clause: the common-bound conclusion is
+`2^L ≤ 2B` and not `2^L ≤ B`, because a configuration satisfying every
+hypothesis with a common bound `B` can have `B < 2^L`. -/
+theorem reverse_carry_word_common_bound_sharp :
+    ∃ (a₁ b₁ u₁ a₂ b₂ u₂ : ℕ → ℤ) (k L : ℕ) (B : ℝ),
+      (∀ m : ℕ, b₁ m + 2 * u₁ m = a₁ m + u₁ (m + 1)) ∧
+      (∀ m : ℕ, b₂ m + 2 * u₂ m = a₂ m + u₂ (m + 1)) ∧
+      a₁ k = a₂ k ∧ b₁ k - b₂ k = 1 ∧
+      (∀ j : ℕ, j < L → a₁ (k + 1 + j) = a₂ (k + 1 + j)) ∧
+      (∀ j : ℕ, j < L → b₁ (k + 1 + j) = b₂ (k + 1 + j)) ∧
+      |((u₁ (k + L + 1) : ℤ) : ℝ)| ≤ B ∧ |((u₂ (k + L + 1) : ℤ) : ℝ)| ≤ B ∧
+      ¬ ((2 : ℝ) ^ L ≤ B) := by
+  refine ⟨sharpCarryA₁, sharpCarryB₁, sharpCarryU₁, sharpCarryA₂, sharpCarryB₂,
+    sharpCarryU₂, 0, 1, 1, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · intro m; simp only [sharpCarryA₁]; ring
+  · intro m; simp only [sharpCarryA₂]; ring
+  · norm_num [sharpCarryA₁, sharpCarryA₂, sharpCarryB₁, sharpCarryB₂,
+      sharpCarryU₁, sharpCarryU₂]
+  · norm_num [sharpCarryB₁, sharpCarryB₂]
+  · intro j hj
+    have hj0 : j = 0 := by omega
+    subst hj0
+    norm_num [sharpCarryA₁, sharpCarryA₂, sharpCarryB₁, sharpCarryB₂,
+      sharpCarryU₁, sharpCarryU₂]
+  · intro j hj
+    have hj0 : j = 0 := by omega
+    subst hj0
+    norm_num [sharpCarryB₁, sharpCarryB₂]
+  · norm_num [sharpCarryU₁]
+  · norm_num [sharpCarryU₂]
+  · norm_num
+
 /-- The whole of long `lem:reverse-carry-word`, including the common-bound
 specialisation `2^L ≤ 2B`. -/
 theorem paper_reverse_carry_word :
@@ -232,4 +278,5 @@ theorem paper_reverse_carry_word :
 #print axioms paper_largest_false_rank_algebra
 #print axioms largest_false_rank_algebra
 #print axioms paper_reverse_carry_word
+#print axioms reverse_carry_word_common_bound_sharp
 end ErdosProblems.Erdos257.PaperCompleteR21

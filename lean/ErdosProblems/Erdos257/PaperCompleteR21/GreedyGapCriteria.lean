@@ -98,7 +98,75 @@ theorem straddle_all_depths_iff_mem (t : ℝ) :
       have := positiveMersenneSupportSuffix_le_tail A d
       linarith
 
+/-- Long `thm:straddle-closed-set`, the two inputs named in the environment for
+the limiting support: compactness of `𝒜` and `R_d → 0`. -/
+theorem straddle_limiting_support_inputs :
+    IsCompact mersenneAchievementSet ∧
+      Filter.Tendsto mersenneTail Filter.atTop (nhds 0) :=
+  ⟨isCompact_mersenneAchievementSet, tendsto_mersenneTail_zero⟩
+
 /-! ## `lem:fatal-gap-exclusion` -/
+
+/-- Long `lem:fatal-gap-exclusion`, the displayed endpoint computation: for a
+support agreeing with `u` through rank `d`, omitting `d+1` leaves value at most
+the lower endpoint `X_u(2) + R_{d+1}`, while including it gives value at least
+the upper endpoint `X_u(2) + w_{d+1}`. -/
+theorem fatal_gap_endpoint_bounds {A : Set ℕ} {u : Finset ℕ} {d : ℕ}
+    (hu : ∀ n ∈ u, 0 < n ∧ n ≤ d)
+    (hagree : ∀ n : ℕ, 0 < n → n ≤ d → (n ∈ A ↔ n ∈ u)) :
+    (d + 1 ∉ A →
+        positiveMersenneSupportValue A
+          ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1)) ∧
+      (d + 1 ∈ A →
+        positiveMersenneSupportValue (↑u : Set ℕ) + mersenneWeight (d + 1)
+          ≤ positiveMersenneSupportValue A) := by
+  have hp : mersenneSupportPrefix A d = positiveMersenneSupportValue (↑u : Set ℕ) :=
+    mersenneSupportPrefix_eq_coe_finset hu hagree
+  have hsplit := positiveMersenneSupportValue_eq_prefix_add_suffix A (d + 1)
+  change positiveMersenneSupportValue A
+      = mersenneSupportPrefix A (d + 1) + positiveMersenneSupportSuffix A (d + 1)
+    at hsplit
+  have hnn := positiveMersenneSupportSuffix_nonneg A (d + 1)
+  have hle := positiveMersenneSupportSuffix_le_tail A (d + 1)
+  constructor
+  · intro hnot
+    have hsucc := mersenneSupportPrefix_succ A d
+    rw [hp, Set.indicator_of_notMem hnot] at hsucc
+    linarith
+  · intro hmem
+    have hsucc := mersenneSupportPrefix_succ A d
+    rw [hp, Set.indicator_of_mem hmem] at hsucc
+    linarith
+
+/-- Long `lem:fatal-gap-exclusion`, the disjointness of the containing intervals
+of distinct length-`d` prefixes: a target in both intervals forces the two
+prefixes to agree. -/
+theorem depth_prefix_interval_disjoint {t : ℝ} {u v : Finset ℕ} {d : ℕ}
+    (hu : ∀ n ∈ u, 0 < n ∧ n ≤ d) (hv : ∀ n ∈ v, 0 < n ∧ n ≤ d)
+    (hut : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t ∧
+      t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d)
+    (hvt : positiveMersenneSupportValue (↑v : Set ℕ) ≤ t ∧
+      t ≤ positiveMersenneSupportValue (↑v : Set ℕ) + mersenneTail d) :
+    u = v := by
+  have ha := PaperCompleteR20.straddle_agrees_greedy
+    (IsStraddlePrefix.mk hu hut.1 hut.2)
+  have hb := PaperCompleteR20.straddle_agrees_greedy
+    (IsStraddlePrefix.mk hv hvt.1 hvt.2)
+  ext n
+  by_cases hn : 0 < n ∧ n ≤ d
+  · rw [ha n hn.1 hn.2, ← hb n hn.1 hn.2]
+  · exact ⟨fun h => absurd (hu n h) hn, fun h => absurd (hv n h) hn⟩
+
+/-- Long `lem:fatal-gap-exclusion`: the displayed gap lies inside the containing
+interval of its own prefix `u`. -/
+theorem fatal_gap_within_prefix_interval {t : ℝ} {u : Finset ℕ} {d : ℕ}
+    (hlo : positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1) < t)
+    (hhi : t < positiveMersenneSupportValue (↑u : Set ℕ) + mersenneWeight (d + 1)) :
+    positiveMersenneSupportValue (↑u : Set ℕ) ≤ t ∧
+      t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d := by
+  have htail := mersenneTail_eq_weight_add d
+  have hnn := mersenneTail_nonneg (d + 1)
+  exact ⟨by linarith, by linarith⟩
 
 /-- Long `lem:fatal-gap-exclusion`.  A strict gap over the finite prefix `u`
 excludes *every* positive support, not merely those agreeing with `u` through
@@ -140,6 +208,14 @@ theorem skipPositive_iff_lt_weight {k u L a : ℕ} (hk : 1 ≤ k) (hu : 0 < u)
     have ha0 : (0 : ℝ) < a := by nlinarith
     exact_mod_cast ha0
 
+/-- The same equivalence in the paper's second phrasing: `0 < a` says exactly
+that the greedy rule skips the weight `w_k`. -/
+theorem skipPositive_iff_greedy_skips {k u L a : ℕ} (hk : 1 ≤ k) (hu : 0 < u)
+    (hL : 0 < L) (hdecomp : 2 ^ k * u + a = 2 * L + u) :
+    0 < a ↔ ¬ (mersenneWeight k ≤ (u : ℝ) / (2 * L)) := by
+  rw [skipPositive_iff_lt_weight hk hu hL hdecomp]
+  exact not_le.symm
+
 /-- The dyadic sufficient test `ρ ≤ 2^{-k}` is exactly `u ≤ a`. -/
 theorem dyadic_test_iff_le {k u L a : ℕ} (hk : 1 ≤ k) (hu : 0 < u) (hL : 0 < L)
     (hdecomp : 2 ^ k * u + a = 2 * L + u) :
@@ -176,6 +252,10 @@ theorem sharp_test_skipSafe {k u L a : ℕ} (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 
     (hdecomp : 2 ^ k * u + a = 2 * L + u) (hsharp : 2 * u ≤ 3 * a) :
     (u : ℝ) / (2 * L) < mersenneTail k :=
   skipSafe_actualTail_of_two_mul_le_three_mul hk hu ha hdecomp hsharp
+
+/-- Containment: the dyadic test implies the sharp test. -/
+theorem dyadic_test_contained_in_sharp {u a : ℕ} (h : u ≤ a) : 2 * u ≤ 3 * a := by
+  omega
 
 /-- Strict containment of the two sufficient tests on valid rational data:
 `(k, u, L, a) = (2, 7, 13, 5)` satisfies the parity relation and `2u ≤ 3a`,
@@ -220,10 +300,13 @@ theorem paper_sharp_fatal_gap :
     (∀ k u L a : ℕ, 1 ≤ k → 0 < u → 0 < L → 2 ^ k * u + a = 2 * L + u →
         (0 < a ↔ (u : ℝ) / (2 * L) < mersenneWeight k)) ∧
     (∀ k u L a : ℕ, 1 ≤ k → 0 < u → 0 < L → 2 ^ k * u + a = 2 * L + u →
+        (0 < a ↔ ¬ (mersenneWeight k ≤ (u : ℝ) / (2 * L)))) ∧
+    (∀ k u L a : ℕ, 1 ≤ k → 0 < u → 0 < L → 2 ^ k * u + a = 2 * L + u →
         ((u : ℝ) / (2 * L) ≤ 1 / 2 ^ k ↔ u ≤ a)) ∧
     (∀ k : ℕ, (1 : ℝ) / 2 ^ k + 1 / (3 * 4 ^ k) + 1 / (7 * 8 ^ k) < mersenneTail k) ∧
     (∀ k u L a : ℕ, 1 ≤ k → 0 < u → 0 < a → 2 ^ k * u + a = 2 * L + u →
         2 * u ≤ 3 * a → (u : ℝ) / (2 * L) < mersenneTail k) ∧
+    (∀ u a : ℕ, u ≤ a → 2 * u ≤ 3 * a) ∧
     ((2 : ℕ) ^ 2 * 7 + 5 = 2 * 13 + 7 ∧ 2 * 7 ≤ 3 * 5 ∧ ¬ (7 ≤ 5) ∧
       (1 : ℝ) / 2 ^ 2 < (7 : ℝ) / (2 * 13) ∧ (7 : ℝ) / (2 * 13) < mersenneTail 2) ∧
     (∀ k L : ℕ, 1 ≤ k → 2 ^ k * 3 + 2 ≠ 2 * L + 3) ∧
@@ -233,9 +316,11 @@ theorem paper_sharp_fatal_gap :
         mersenneTail k < (u : ℝ) / (2 * L) →
         3 * a < 2 * u ∧ 2 ≤ u ∧ (Odd u → 3 ≤ u)) :=
   ⟨fun _ _ _ _ hk hu hL hd => skipPositive_iff_lt_weight hk hu hL hd,
+    fun _ _ _ _ hk hu hL hd => skipPositive_iff_greedy_skips hk hu hL hd,
     fun _ _ _ _ hk hu hL hd => dyadic_test_iff_le hk hu hL hd,
     three_channel_lt_mersenneTail,
     fun _ _ _ _ hk hu ha hd hs => sharp_test_skipSafe hk hu ha hd hs,
+    fun _ _ h => dyadic_test_contained_in_sharp h,
     sharp_strict_containment,
     fun _ _ hk => three_two_not_realisable _ _ hk,
     fun _ _ _ hk ha hd => unit_numerator_nonfatal hk ha hd,
@@ -243,6 +328,10 @@ theorem paper_sharp_fatal_gap :
 
 #print axioms fatal_absorbing
 #print axioms straddle_all_depths_iff_mem
+#print axioms straddle_limiting_support_inputs
 #print axioms fatal_gap_excludes_every_representation
+#print axioms fatal_gap_endpoint_bounds
+#print axioms depth_prefix_interval_disjoint
+#print axioms fatal_gap_within_prefix_interval
 #print axioms paper_sharp_fatal_gap
 end ErdosProblems.Erdos257.PaperCompleteR21

@@ -85,10 +85,12 @@ theorem singleSkip_seven_le {p D q : ℤ} (hp : 0 < p) (hD : 0 < D) (hq : 0 < q)
 fails the dyadic test: with `q = 2^3 − 1 = 7` the pre-take reciprocal
 `R = 2D/p = 82/17` lies in the band. -/
 theorem singleSkip_band_witness :
-    Odd (17 : ℤ) ∧ Odd (41 : ℤ) ∧ (2 : ℚ) ^ 3 - 1 = 7 ∧
+    Odd (17 : ℤ) ∧ Odd (41 : ℤ) ∧ Odd (7 : ℤ) ∧ (∃ x y : ℤ, x * 17 + y * 41 = 1) ∧
+      (2 : ℚ) ^ 3 - 1 = 7 ∧
       ((7 : ℚ) * (2 * 7 + 1) / (3 * 7 + 1) < (2 * 41 : ℚ) / 17 ∧
         (2 * 41 : ℚ) / 17 < 2 * 7 * (7 + 1) / (3 * 7 + 2)) := by
-  refine ⟨⟨8, by norm_num⟩, ⟨20, by norm_num⟩, by norm_num, ?_, ?_⟩ <;> norm_num
+  refine ⟨⟨8, by norm_num⟩, ⟨20, by norm_num⟩, ⟨3, by norm_num⟩, ⟨-12, 5, by norm_num⟩,
+    by norm_num, ?_, ?_⟩ <;> norm_num
 
 /-- Every asserted clause of long `thm:two-thirds-band`. -/
 theorem paper_two_thirds_band :
@@ -115,7 +117,8 @@ theorem paper_two_thirds_band :
         (q * (2 * q + 1) * p < 2 * D * (3 * q + 1) ∧
           2 * D * (3 * q + 2) < 2 * p * q * (q + 1)) →
         (4 : ℤ) ∣ (6 * D - 2 * p * q) ∧ 7 ≤ p) ∧
-    (Odd (17 : ℤ) ∧ Odd (41 : ℤ) ∧ (2 : ℚ) ^ 3 - 1 = 7 ∧
+    (Odd (17 : ℤ) ∧ Odd (41 : ℤ) ∧ Odd (7 : ℤ) ∧ (∃ x y : ℤ, x * 17 + y * 41 = 1) ∧
+      (2 : ℚ) ^ 3 - 1 = 7 ∧
       ((7 : ℚ) * (2 * 7 + 1) / (3 * 7 + 1) < (2 * 41 : ℚ) / 17 ∧
         (2 * 41 : ℚ) / 17 < 2 * 7 * (7 + 1) / (3 * 7 + 2))) :=
   ⟨fun _ _ hR => dyadic_test_iff_twoPow_le hR _,
