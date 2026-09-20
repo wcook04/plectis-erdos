@@ -361,7 +361,7 @@ Start here (selected for this guide): [A small least critical value](full-text/e
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 30 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 31 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [A region of rational bases at which F is irrational](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero term of Zudilin’s Hankel determinant](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Supplementary arithmetic at 3/2](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
@@ -369,7 +369,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 **Zudilin’s Forms at Rational Bases: Proofs and Research Record**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 58 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 61 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open), [Publication scope](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 

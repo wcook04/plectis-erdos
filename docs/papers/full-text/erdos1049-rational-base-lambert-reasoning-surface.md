@@ -1025,12 +1025,12 @@ The first step isolates what a Hankel determinant needs from its weights. The hy
 
 <div id="long1049:thm:geometric-universality" class="theorem">
 
-**Theorem 13** (determinants of geometric moments). *Let $`a_k>0`$ satisfy, for fixed constants $`C`$ and $`d`$,
+**Theorem 13** (determinants of geometric moments). *Let $`a_k>0`$ satisfy, for fixed constants $`C`$ and $`\kappa`$,
 ``` math
 \frac{a_{k+h}}{a_k}\longrightarrow1\quad(k\to\infty)
  \text{ for each fixed }h\ge0,
  \qquad
- \frac{a_{k+h}}{a_k}\le C(1+h)^d\quad(k,h\ge0).
+ \frac{a_{k+h}}{a_k}\le C(1+h)^\kappa\quad(k,h\ge0).
 ```
 Put $`M_m=\sum_{k\ge0}a_kq^{(m+1)k}`$ and $`D_N=\det(M_{i+j})_{0\le i,j<N}`$. Then
 ``` math
@@ -1042,7 +1042,7 @@ D_N\sim\mathcal M(q)^3\,q^{B_N}P^{2N}\prod_{k=0}^{N-1}a_k
 
 <div class="proof">
 
-*Proof.* Taking $`k=0`$ in the ratio bound gives $`a_h\le Ca_0(1+h)^d`$, so every moment converges. Heine’s expansion, as in Section <a href="#long1049:sec:sharp" data-reference-type="ref" data-reference="long1049:sec:sharp">3</a>, writes
+*Proof.* Taking $`k=0`$ in the ratio bound gives $`a_h\le Ca_0(1+h)^\kappa`$, so every moment converges. Heine’s expansion, as in Section <a href="#long1049:sec:sharp" data-reference-type="ref" data-reference="long1049:sec:sharp">3</a>, writes
 ``` math
 D_N=\sum_{k_0<\cdots<k_{N-1}}
  \prod_{i<N}\bigl(a_{k_i}q^{k_i}\bigr)
@@ -1064,19 +1064,19 @@ W_N(\mu)=
 ```
 because the summand indexed by $`(k_i)`$ has $`q`$-exponent $`B_N+\sum_i(2N-1-2i)\lambda_i`$ and the weight $`2N-1-2i`$ becomes $`2j-1`$ under $`i=N-j`$. Thus $`D_N/(q^{B_N}\Delta_N\prod_{i<N}a_i)=\sum_\mu W_N(\mu)`$.
 
-Let $`\ell`$ be the length of $`\mu`$, that is, the number of positive parts. Only the indices $`j\le\ell`$ contribute a ratio different from $`1`$. For fixed $`j\le\ell`$ the partition is decreasing, so $`k-j+\mu_j-\mu_k\ge k-j`$ for every $`k>j`$; the numerators are at most $`1`$ and the denominators multiply to at least $`P`$. Each of the $`\ell`$ squared factors is therefore at most $`P^{-2}`$, and the weight ratios contribute at most $`\prod_{j\le\ell}C(1+\mu_j)^d`$. Hence
+Let $`\ell`$ be the length of $`\mu`$, that is, the number of positive parts. Only the indices $`j\le\ell`$ contribute a ratio different from $`1`$. For fixed $`j\le\ell`$ the partition is decreasing, so $`k-j+\mu_j-\mu_k\ge k-j`$ for every $`k>j`$; the numerators are at most $`1`$ and the denominators multiply to at least $`P`$. Each of the $`\ell`$ squared factors is therefore at most $`P^{-2}`$, and the weight ratios contribute at most $`\prod_{j\le\ell}C(1+\mu_j)^\kappa`$. Hence
 ``` math
 W_N(\mu)\le(CP^{-2})^{\ell}
- \prod_{j=1}^{\ell}(1+\mu_j)^dq^{(2j-1)\mu_j}
+ \prod_{j=1}^{\ell}(1+\mu_j)^\kappa q^{(2j-1)\mu_j}
  \qquad\text{for every }N.
 ```
 Summing this majorant over all partitions of length exactly $`\ell`$, after dropping the ordering constraint on the positive parts, factorises it into
 ``` math
 (CP^{-2})^{\ell}\prod_{j=1}^{\ell}
- \sum_{u\ge1}(1+u)^dq^{(2j-1)u}
+ \sum_{u\ge1}(1+u)^\kappa q^{(2j-1)u}
  \le C_q^{\ell}q^{\ell^2},
  \qquad
- C_q=CP^{-2}\sum_{u\ge1}(1+u)^dq^{u-1},
+ C_q=CP^{-2}\sum_{u\ge1}(1+u)^\kappa q^{u-1},
 ```
 using $`q^{(2j-1)u}\le q^{2j-1}q^{u-1}`$ and $`\sum_{j\le\ell}(2j-1)=\ell^2`$. The resulting bound is summable in $`\ell`$, and it does not depend on $`N`$.
 
@@ -1105,7 +1105,7 @@ The hypotheses hold for the actual weights $`a_k=P^4\gamma_k`$, and the reason i
 R_k^{(r)}(q)=\sum_{n_1+\cdots+n_r=k}
  \frac{(q;q)_k}{\prod_{j\le r}(q;q)_{n_j}},
 ```
-the sum being over compositions into $`r`$ nonnegative parts, so that $`R_k^{(r)}`$ is the sum of all $`q`$-multinomial coefficients of degree $`k`$ and length $`r`$, equivalently the multivariate Rogers–Szegő polynomial at unit arguments \[vinroot2010\]. For $`r=2`$ it is the Galois number counting the subspaces of a $`k`$-dimensional space over $`\mathbb F_q`$, and for $`r=3`$ it counts the flags $`V_1\subseteq V_2`$ in that space. The source is cited for those identifications; the factorisation below is proved here. Then
+the sum being over compositions into $`r`$ nonnegative parts, so that $`R_k^{(r)}`$ is the sum of all $`q`$-multinomial coefficients of degree $`k`$ and length $`r`$, equivalently the multivariate Rogers–Szegő polynomial at unit arguments \[vinroot2010\]. These are polynomial identities in the indeterminate $`q`$; at a prime power, $`r=2`$ gives the Galois number counting the subspaces of a $`k`$-dimensional space over the field of that order, and $`r=3`$ counts the flags $`V_1\subseteq V_2`$ in that space. The source is cited for those identifications; the factorisation below is proved here. Then
 ``` math
 \gamma_k(q)=\frac{R_k^{(2)}(q)R_k^{(3)}(q)}{(q;q)_k}.
 ```
@@ -1114,7 +1114,7 @@ The product $`R_k^{(2)}R_k^{(3)}`$ lies in $`\mathbb{Z}_{\ge0}[q]`$, has degree 
 P^5c_k\le a_k\le P^{-1}c_k
  \qquad(k\ge0),
 ```
-together with $`a_{k+h}/a_k\le P^{-6}(1+h)^3`$.*
+together with $`a_{k+h}/a_k\le P^{-6}(1+h)^3`$, so the hypotheses of Theorem <a href="#long1049:thm:geometric-universality" data-reference-type="ref" data-reference="long1049:thm:geometric-universality">13</a> hold with $`\kappa=3`$.*
 
 </div>
 
@@ -1125,7 +1125,12 @@ together with $`a_{k+h}/a_k\le P^{-6}(1+h)^3`$.*
 \partial_q^n(fg)(z)=\sum_{j=0}^n\genfrac{[}{]}{0pt}{}{n}{j}_q
  (\partial_q^jf)(q^{n-j}z)\,(\partial_q^{n-j}g)(z).
 ```
-Applying it twice to $`\mathcal E^3`$ and writing $`h_k(z)=\sum_{j=0}^k\genfrac{[}{]}{0pt}{}{k}{j}_q(z;q)_j`$ gives $`\partial_q^k\mathcal E(z)^3=\mathcal E(z)^3h_k(z)`$ up to the displayed shifts, whence
+Write $`h_k(z)=\sum_{j=0}^k\genfrac{[}{]}{0pt}{}{k}{j}_q(z;q)_j`$. Applying the rule to $`\mathcal E\cdot\mathcal E`$ and using $`\mathcal E(q^mz)=(z;q)_m\mathcal E(z)`$ gives $`\partial_q^k\mathcal E(z)^2=\mathcal E(z)^2h_k(z)`$; at $`k=1`$ both sides are $`\mathcal E(z)^2(2-z)`$. Applying it once more, to $`\mathcal E\cdot\mathcal E^2`$, gives
+``` math
+\partial_q^n\mathcal E(z)^3
+ =\mathcal E(z)^3\sum_{k=0}^n\genfrac{[}{]}{0pt}{}{n}{k}_q(z;q)_kh_k(z),
+```
+the power of $`\mathcal E`$ being $`3`$ and not $`2`$ here. Hence
 ``` math
 \sum_{n\ge0}\frac{w^n}{(q;q)_n}\partial_q^n\mathcal E(z)^3
  =\mathcal E(w)\mathcal E(z)^3
@@ -1171,25 +1176,27 @@ equivalently
 
 <div class="proof">
 
-*Proof.* Write $`R(w)=(qw;q)_\infty`$, so that $`(w;q)_\infty=(1-w)R(w)`$, and for $`t\ge1`$ put
+*Proof.* Write $`\Pi(w)=(qw;q)_\infty`$, so that $`(w;q)_\infty=(1-w)\Pi(w)`$, and for $`t\ge1`$ put
 ``` math
 f_t(w)=\frac{(q^tw^2;q)_\infty}{(q;q)_t(q^tw;q)_\infty^2},
  \qquad
- E(w)=\sum_{t\ge1}w^t\bigl(f_t(w)-P^{-1}\bigr).
+ \mathcal S(w)=\sum_{t\ge1}w^t\bigl(f_t(w)-P^{-1}\bigr).
 ```
-On each compact subset of $`|w|<q^{-1}`$ the bracket is $`O_q(q^t)`$ uniformly, so $`E`$ is analytic there. Separating the summand $`t=0`$, whose denominator carries the factor $`(1-w)^2`$, and subtracting the constant part of the remaining summands gives
+On each compact subset of $`|w|<q^{-1}`$ the bracket is $`O_q(q^t)`$ uniformly, so $`\mathcal S`$ is analytic there. Separating the summand $`t=0`$, whose denominator carries the factor $`(1-w)^2`$, and subtracting the constant part of the remaining summands gives
 ``` math
-D(w):=P^4(1-w)^4G_q(w)
- =\frac{P^4}{R(w)^3}
- \left((1+w)\frac{(qw^2;q)_\infty}{R(w)^2}+\frac wP+(1-w)E(w)\right).
+\mathcal D(w):=P^4(1-w)^4G_q(w)
+ =\frac{P^4}{\Pi(w)^3}
+ \left((1+w)\frac{(qw^2;q)_\infty}{\Pi(w)^2}+\frac wP
+       +(1-w)\mathcal S(w)\right).
 ```
-Hence $`D`$ is analytic on a disc of radius greater than $`1`$.
+Hence $`\mathcal D`$ is analytic on a disc of radius greater than $`1`$.
 
-At $`w=1`$ one has $`R(1)=P`$ and $`R'(1)/R(1)=-L`$, since $`R'/R=-\sum_{j\ge1}q^j/(1-q^jw)`$. Also $`(qw^2;q)_\infty`$ equals $`P`$ at $`w=1`$, and the logarithmic derivative of $`(qw^2;q)_\infty/R(w)^2`$ at $`w=1`$ is $`-2L+2L=0`$. Therefore the bracket has value $`3/P`$ and derivative $`(2-L)/P`$ at $`w=1`$; here $`E(1)=L/P`$, because $`f_t(1)=\bigl(P(1-q^t)\bigr)^{-1}`$ and $`\sum_{t\ge1}\bigl((1-q^t)^{-1}-1\bigr)=L`$. Combining with the factor $`P^4R^{-3}`$, whose logarithmic derivative at $`1`$ is $`3L`$, gives
+At $`w=1`$ one has $`\Pi(1)=P`$ and $`\Pi'(1)/\Pi(1)=-L`$, since $`\Pi'/\Pi=-\sum_{j\ge1}q^j/(1-q^jw)`$. Also $`(qw^2;q)_\infty`$ equals $`P`$ at $`w=1`$, and the logarithmic derivative of $`(qw^2;q)_\infty/\Pi(w)^2`$ at $`w=1`$ is $`-2L+2L=0`$. Therefore the bracket has value $`3/P`$ and derivative $`(2-L)/P`$ at $`w=1`$; here $`\mathcal S(1)=L/P`$, because $`f_t(1)=\bigl(P(1-q^t)\bigr)^{-1}`$ and $`\sum_{t\ge1}\bigl((1-q^t)^{-1}-1\bigr)=L`$. Combining with the factor $`P^4\Pi^{-3}`$, whose logarithmic derivative at $`1`$ is $`3L`$, gives
 ``` math
-D(1)=3,\qquad D'(1)=3\left(3L+\frac{2-L}3\right)=2+8L.
+\mathcal D(1)=3,\qquad
+ \mathcal D'(1)=3\left(3L+\frac{2-L}3\right)=2+8L.
 ```
-Subtracting the principal part of $`D(w)(1-w)^{-4}`$ at $`w=1`$ leaves a function analytic on a larger disc, so
+Subtracting the principal part of $`\mathcal D(w)(1-w)^{-4}`$ at $`w=1`$ leaves a function analytic on a larger disc, so
 ``` math
 a_k=3\binom{k+3}3-(2+8L)\binom{k+2}2+O_q(k),
  \qquad
@@ -1209,7 +1216,7 @@ Proposition <a href="#long1049:prop:rogers-factorisation" data-reference-type="
 
 #### What the sharp estimate settles, and what it leaves.
 
-Section 8 of the positive-measure note had recorded this shape as a candidate. The proof, the limiting Gram factor $`\mathcal M(q)^3`$ and the convergent expression for the constant are supplied here; no priority is claimed for the candidate. The estimate replaces the band $`O_q(N)`$ by the explicit terms $`2N\log P`$ and $`-8F(1/q)\log N`$ with an $`o(1)`$ error, and the weights now have an exact finite description rather than an infinite-product representation alone.
+The positive-measure argument of the previous subsection had recorded this shape as a candidate without its constant. The proof, the limiting Gram factor $`\mathcal M(q)^3`$ and the convergent expression for the constant are supplied here. The estimate replaces the band $`O_q(N)`$ by the explicit terms $`2N\log P`$, $`-8F(1/q)\log N`$ and the constant $`\log K(q)`$, with an $`o(1)`$ error, and the weights now have an exact finite description rather than an infinite-product representation alone.
 
 The cubic exponent of $`q`$ is untouched, and so is every prime-power valuation. At $`3/2`$ the deficit is unchanged and is exactly
 ``` math
@@ -2265,7 +2272,7 @@ Q_sP_{s+1}-P_sQ_{s+1}
 ```
 attains both, since its denominator is a unit at every prime dividing $`ab`$.
 
-The consequence for the construction problem is a restriction on one family, not on all of them. Assembling more rationally weighted copies of these same tails changes neither the primitive rows nor the endpoint valuations, so it cannot raise the rank of the congruence system. A genuinely improved system needs primitive rows of a different provenance, whose minors carry extra valuation and whose divided remainders are still nonzero and small.
+The consequence for the construction problem is a restriction on one operation, and only on that one. Rescaling the individual tails and then taking integer combinations stays inside $`\mathbb{Z}\times b\mathbb{Z}`$, so it leaves the minor gcd and the endpoint valuations exactly as above. Rational combinations are a different matter and do leave that lattice: at $`3/2`$ the half-sum of the rows $`(1,0)`$ and $`(1,2)`$ is the primitive row $`(1,1)`$, whose minor against $`(1,0)`$ is $`1`$. What such a combination costs is a denominator in the coefficients, which the proposition does not measure, so escaping the lattice this way is not by itself a saving. A genuinely improved system needs primitive rows of a different provenance, whose minors carry extra valuation and whose divided remainders are still nonzero and small.
 
 <a id="estimating-the-divided-remainder"></a>
 

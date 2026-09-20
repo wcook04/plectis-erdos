@@ -16,7 +16,7 @@ For the distinct normalised Hankel determinants $`V_N^*`$ in his 2016 constructi
  \qquad [q^{\operatorname{ord}_q V_N^*}]V_N^*
        =\frac{(N!)^2(N+1)!}{2^N}.
 ```
-The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. At a fixed base we prove the sharp asymptotic $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$ with an explicit positive constant, where $`B_N`$ and $`C_N`$ are the order and coefficient above, and we factor the moment weights into two finite $`q`$-multinomial sums. The rational-base criterion does not include $`3/2`$; neither the order, the asymptotic nor the factorisation settles irrationality at that base.
+The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. For fixed $`0<q<1`$ we prove that, as $`N\to\infty`$, $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$, where $`B_N`$ and $`C_N`$ are the order and coefficient above and $`K(q)>0`$ is given by a convergent product. We also factor the moment weights into two finite $`q`$-multinomial sums. The rational-base criterion does not include $`3/2`$; neither the order, the asymptotic nor the factorisation settles irrationality at that base.
 
 <a id="sec:problem"></a>
 
@@ -438,7 +438,7 @@ The Lean proof uses transformed rows rather than the moment expansion above. It 
 
 #### From formal order to size at a fixed base.
 
-Formal order alone does not bound the value at a fixed $`q`$: multiplication by $`(1-q)^{N^3}`$ leaves the first term unchanged but changes its logarithm by a cubic quantity. A separate positive-moment argument settles the size.
+Formal order alone does not bound the value at a fixed $`q`$: multiplication by $`(1-q)^{N^3}`$ leaves the first term unchanged but changes its logarithm by a cubic quantity. The long record, Section 3.1, proves separately that $`V_N^*(q)>0`$ and that $`\log(V_N^*(q)/(C_Nq^{B_N}))=O_q(N)`$ for fixed $`0<q<1`$. The same positive-measure argument, carried further, settles the size within that band. The theorem below and its proof are ordinary mathematics; neither is formalised in Lean.
 
 <div id="res:sharp-fixed-base" class="theorem">
 
@@ -460,17 +460,17 @@ a_k=P^4\frac{R_k^{(2)}R_k^{(3)}}{(q;q)_k},
 ```
 which gives $`P^5c_k\le a_k\le P^{-1}c_k`$ and a polynomial bound on the ratios $`a_{k+h}/a_k`$. Second, $`P^4(1-w)^4G_q(w)`$ is analytic past the unit circle with value $`3`$ and derivative $`2+8F(1/q)`$ at $`w=1`$, so $`a_k/c_k=1-8F(1/q)/(k+1)+O_q((k+1)^{-2})`$ and $`\prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8F(1/q)}`$ for a convergent product $`\mathcal A(q)`$.
 
-In Heine’s expansion of the determinant, write each increasing tuple as $`k_i=i+\lambda_i`$ and reverse the shifts to obtain a partition. The least tuple contributes $`q^{B_N}\prod_{k<N}a_k`$ times a Vandermonde factor; the first bound on the weights majorises every other tuple by a summand that is summable over partitions and independent of $`N`$. Dominated convergence then reduces the normalised sum to the case $`a_k\equiv1`$, where Cauchy’s determinant evaluates it, and the limit is $`\mathcal M(q)^3=\prod_{d\ge1}(1-q^d)^{-3d}`$. The constant is $`K(q)=\mathcal A(q)\mathcal M(q)^3`$. ◻
+In Heine’s expansion of the determinant, write each increasing tuple as $`k_i=i+\lambda_i`$ and reverse the shifts to obtain a partition. The least tuple contributes $`q^{B_N}\prod_{k<N}a_k`$ times its own Vandermonde product $`\Delta_N=\prod_{d<N}(1-q^d)^{2(N-d)}`$; the first bound on the weights majorises every other tuple by a summand that is summable over partitions and independent of $`N`$. Dominated convergence then reduces the normalised sum to the case $`a_k\equiv1`$, where Cauchy’s determinant evaluates it, and that sum tends to $`\mathcal M(q)=\prod_{d\ge1}(1-q^d)^{-d}`$. Separately $`\Delta_N/P^{2N}\to\mathcal M(q)^2`$. Writing $`\mathcal A(q)`$ for the convergent product above, the constant is $`K(q)=\mathcal A(q)\mathcal M(q)^3`$. ◻
 
 </div>
 
-The limiting factor $`\mathcal M(q)^3`$ comes from the tuples other than the least one, so it is invisible to the order calculation. The long record proves both ingredients in full, including the degree $`\lfloor k^2/4\rfloor+\lfloor k^2/3\rfloor`$ and coefficient sum $`6^k`$ of the product $`R_k^{(2)}R_k^{(3)}`$.
+One of those three factors of $`\mathcal M(q)`$ comes from the tuples other than the least one, and is therefore invisible to the order calculation; the other two come from comparing the least tuple’s own Vandermonde product with $`P^{2N}`$. The long record proves both ingredients in full, including the degree $`\lfloor k^2/4\rfloor+\lfloor k^2/3\rfloor`$ and coefficient sum $`6^k`$ of the product $`R_k^{(2)}R_k^{(3)}`$.
 
 <a id="what-neither-calculation-implies."></a>
 
 #### What neither calculation implies.
 
-Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">7</a> replaces the earlier band $`O_q(N)`$ by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms and closes no part of the deficit at $`3/2`$, which is exactly $`N(74N^2-117N+41)/41`$ against the extraction requirement recorded in the long record. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.3; Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">5</a> records their sources and finite scope.
+Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">7</a> replaces that band by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms. Against the two proposed degree savings of long Section 3, the shortfall at $`3/2`$ is exactly $`N(74N^2-117N+41)/41>0`$ for $`N\ge2`$, and the new estimate closes no part of it. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.3; Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">5</a> records their sources and finite scope.
 
 <a id="sec:open"></a>
 

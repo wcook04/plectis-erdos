@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `749aafdb6c1384dc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `9bdc86f29b950fdb`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -2516,7 +2516,7 @@ Refinements using the number of roots, logarithmic capacity, or a range of level
 
 *For Erdős #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf)
 
-Longer record: [Zudilin’s Forms at Rational Bases: Proofs and Research Record](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) (242 KB as text).
+Longer record: [Zudilin’s Forms at Rational Bases: Proofs and Research Record](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) (243 KB as text).
 
 <a id="erdos-1049-rational-base-lambert--erdos-1049-rational-base-lambert"></a>
 
@@ -2536,7 +2536,7 @@ For the distinct normalised Hankel determinants $`V_N^*`$ in his 2016 constructi
  \qquad [q^{\operatorname{ord}_q V_N^*}]V_N^*
        =\frac{(N!)^2(N+1)!}{2^N}.
 ```
-The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. At a fixed base we prove the sharp asymptotic $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$ with an explicit positive constant, where $`B_N`$ and $`C_N`$ are the order and coefficient above, and we factor the moment weights into two finite $`q`$-multinomial sums. The rational-base criterion does not include $`3/2`$; neither the order, the asymptotic nor the factorisation settles irrationality at that base.
+The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. For fixed $`0<q<1`$ we prove that, as $`N\to\infty`$, $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$, where $`B_N`$ and $`C_N`$ are the order and coefficient above and $`K(q)>0`$ is given by a convergent product. We also factor the moment weights into two finite $`q`$-multinomial sums. The rational-base criterion does not include $`3/2`$; neither the order, the asymptotic nor the factorisation settles irrationality at that base.
 
 <a id="erdos-1049-rational-base-lambert--sec:problem"></a>
 
