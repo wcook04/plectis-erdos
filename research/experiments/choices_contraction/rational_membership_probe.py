@@ -11,7 +11,7 @@ Every weight exceeds the sum of all later weights, so a represented value has
 exactly one selector and the greedy rule recovers it (short paper for Erdos
 #257, sections "Unique coding and arithmetic membership" and "Greedy membership
 and an integer recurrence").  The probe runs that greedy rule in exact rational
-arithmetic on every reduced fraction p/q in (0, sum of B] with q <= Q, through
+arithmetic on every reduced fraction p/q in (0, sum of B] with 2 <= q <= Q, through
 depth N, and sorts each fraction into exactly one of three outcomes.
 
   excluded            At some index n <= N the remainder r satisfies
@@ -97,7 +97,7 @@ def run(host: str, q_max: int, depth: int, horizon: int) -> dict:
     candidates = 0
     for q in range(2, q_max + 1):
         p = 1
-        while Fraction(p, q) <= total_upper:
+        while Fraction(p, q) <= total_lower:
             if gcd(p, q) == 1:
                 candidates += 1
                 outcome, index = classify(Fraction(p, q), indices, weight, tail_upper, depth)

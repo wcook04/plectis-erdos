@@ -13,14 +13,16 @@ Inputs (all tracked, none hand-copied into the outputs):
 
 Outputs under docs/reading-edition/:
 
-  plectis-reading-edition.md   starter: introduction, research instruction, and
-                               for each problem the abstract and opening
-                               sections of its short paper with its references,
-                               then the worked example in full
-  plectis-short-papers.md      the eight short papers in full, one file
+  plectis-reading-edition.md   starter: introduction, research instruction, the
+                               synthesis note in full, and for each problem the
+                               abstract and opening sections of its short paper
+                               with its references, then the worked example in
+                               full
+  plectis-short-papers.md      the synthesis note and the eight short papers in
+                               full, one file
   README.md                    index of every active mathematical paper with
                                sizes, raw links, and the command that writes
-                               the complete sixteen-paper file on demand
+                               the complete eighteen-paper file on demand
 
 The builder assembles and links.  It never rewrites a mathematical sentence,
 never assigns a status, and never decides that a conjecture is a theorem.
@@ -90,6 +92,35 @@ def mathematical_papers() -> list[dict]:
     if sorted(r["problem"] for r in short) != problems or sorted(r["problem"] for r in long_) != problems:
         raise ReadingEditionError("every problem needs exactly one short paper and one longer record")
     return sorted(rows, key=lambda r: (r["problem"], r["publication_class"]))
+
+
+def synthesis_papers() -> list[dict]:
+    """The pair whose subject is the eight problems read together, note first.
+
+    These carry no problem number, so the eight-problem check above skips them.
+    The pair is required rather than optional: the edition counts its own papers
+    in prose, and a silently missing note would make that count untrue.
+    """
+    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    rows = []
+    for paper in corpus["papers"]:
+        # The pair is carried in this repository's corpus before the website hosts
+        # it ("pending_source_publication"); the text is here either way.
+        if paper.get("subject_kind") != "synthesis" or paper.get("publication_state") not in (
+            "active",
+            "pending_source_publication",
+        ):
+            continue
+        path = ROOT / paper["local_full_text"]
+        if not path.is_file():
+            raise ReadingEditionError(f"missing full text for {paper['paper_id']}")
+        rows.append({**paper, "text_path": path})
+    classes = sorted(r["publication_class"] for r in rows)
+    if classes != ["reasoning_surface", "synthesis_paper"]:
+        raise ReadingEditionError(
+            "the synthesis subject needs exactly one note and one working record"
+        )
+    return sorted(rows, key=lambda r: r["publication_class"] != "synthesis_paper")
 
 
 def fingerprint(papers: list[dict], instruction: str) -> str:
@@ -220,10 +251,32 @@ def paper_heading(row: dict) -> str:
     )
 
 
+def synthesis_heading(row: dict) -> str:
+    """The pair has no problem number, so it is announced by what it does."""
+    rel = row["local_full_text"]
+    return (
+        f"## Reading the eight together: {tex_title(row['title'])}\n\n"
+        f"*{row['question_this_paper_answers']}* "
+        f"[Full text]({BLOB}{rel}) · [PDF]({BLOB}{row['local_pdf']})\n"
+    )
+
+
+def synthesis_entry(rows: list[dict]) -> str:
+    """The note in full, with a pointer to the record that stands behind it."""
+    note, record = rows[0], rows[1]
+    return (
+        synthesis_heading(note)
+        + f"\nWorking record: [{record['title']}]({BLOB}{record['local_full_text']}) "
+        f"({size(record['text_path'])} as text).\n\n"
+        + scope_anchors(demote(note["text_path"].read_text(encoding="utf-8"), 2), note["paper_id"])
+    )
+
+
 def build() -> dict[Path, str]:
     papers = mathematical_papers()
+    synthesis = synthesis_papers()
     instruction = shared_instruction()
-    edition = fingerprint(papers, instruction)
+    edition = fingerprint(synthesis + papers, instruction)
     short = [r for r in papers if r["publication_class"] == "problem_paper"]
     long_ = {r["problem"]: r for r in papers if r["publication_class"] == "reasoning_surface"}
     intro = INTRODUCTION.read_text(encoding="utf-8").split("-->", 2)[-1].strip()
@@ -235,6 +288,7 @@ def build() -> dict[Path, str]:
     ]
 
     starter = list(front)
+    starter.append(synthesis_entry(synthesis))
     starter.append(
         "## The mathematics, problem by problem\n\n"
         "Each entry gives the abstract and the opening sections of the short paper, cut at a "
@@ -264,6 +318,7 @@ def build() -> dict[Path, str]:
     starter.append("## Worked example in full\n\n" + worked_examples())
 
     full_short = list(front)
+    full_short.append(synthesis_entry(synthesis))
     for row in short:
         full_short.append(
             paper_heading(row) + "\n"
@@ -273,7 +328,7 @@ def build() -> dict[Path, str]:
     starter_text = "\n\n".join(starter).rstrip() + "\n"
     short_text = "\n\n".join(full_short).rstrip() + "\n"
 
-    total = sum(r["text_path"].stat().st_size for r in papers)
+    total = sum(r["text_path"].stat().st_size for r in synthesis + papers)
     index = [
         header("Reading edition", edition),
         "Read the mathematics with your own AI model, or without one, and without a clone. "
@@ -281,12 +336,12 @@ def build() -> dict[Path, str]:
         "papers and with each other.\n",
         "| File | Contents | Size |\n|---|---|---:|",
         f"| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, "
-        f"research instruction, the opening sections and references of each short paper, and one worked example in full. "
+        f"research instruction, the synthesis note in full, the opening sections and references of each short paper, and one worked example in full. "
         f"[Raw]({RAW}docs/reading-edition/plectis-reading-edition.md) | {len(starter_text.encode()) / 1024:,.0f} KB |",
-        f"| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with all "
-        f"eight short papers in full. [Raw]({RAW}docs/reading-edition/plectis-short-papers.md) "
+        f"| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the "
+        f"synthesis note and all eight short papers in full. [Raw]({RAW}docs/reading-edition/plectis-short-papers.md) "
         f"| {len(short_text.encode()) / 1024:,.0f} KB |",
-        f"| Complete edition | All sixteen papers below. Written on demand, because it repeats "
+        f"| Complete edition | All eighteen papers below. Written on demand, because it repeats "
         f"`docs/papers/full-text/`. | {total / 1024:,.0f} KB |",
         "\n```sh\npython3 scripts/build_reading_edition.py --complete plectis-complete-edition.md\n```\n",
         "A model with a small context window should take the starter file first and then single "
@@ -294,11 +349,17 @@ def build() -> dict[Path, str]:
         "## Every paper as text\n",
         "| Problem | Paper | Kind | Size | Raw text |\n|---|---|---|---:|---|",
     ]
-    for row in papers:
-        kind = "short paper" if row["publication_class"] == "problem_paper" else "longer record"
+    kinds = {
+        "problem_paper": "short paper",
+        "synthesis_paper": "synthesis note",
+        "reasoning_surface": "longer record",
+    }
+    for row in synthesis + papers:
+        kind = kinds[row["publication_class"]]
+        label = f"#{row['problem']}" if "problem" in row else "Eight together"
         rel = row["local_full_text"]
         index.append(
-            f"| #{row['problem']} | [{row['title']}](../../{rel}) | {kind} | "
+            f"| {label} | [{row['title']}](../../{rel}) | {kind} | "
             f"{size(row['text_path'])} | [raw]({RAW}{rel}) |"
         )
     index.append(
@@ -316,26 +377,32 @@ def build() -> dict[Path, str]:
 
 
 def complete(target: Path) -> None:
-    papers = mathematical_papers()
+    papers = synthesis_papers() + mathematical_papers()
     instruction = shared_instruction()
     edition = fingerprint(papers, instruction)
     intro = INTRODUCTION.read_text(encoding="utf-8").split("-->", 2)[-1].strip()
+
+    def entry(row: dict) -> str:
+        if "problem" in row:
+            return f"- Erdős #{row['problem']}: {row['title']}"
+        return f"- Reading the eight together: {row['title']}"
+
     parts = [
-        header("Plectis complete reading edition: sixteen papers on eight Erdős problems", edition),
+        header("Plectis complete reading edition: eighteen papers on eight Erdős problems", edition),
         intro,
         "## The research instruction\n\n" + instruction,
-        "## Contents\n\n"
-        + "\n".join(f"- Erdős #{r['problem']}: {r['title']}" for r in papers),
+        "## Contents\n\n" + "\n".join(entry(r) for r in papers),
     ]
     for row in papers:
-        parts.append(paper_heading(row) + "\n" + demote(row["text_path"].read_text(encoding="utf-8"), 2))
+        heading = paper_heading(row) if "problem" in row else synthesis_heading(row)
+        parts.append(heading + "\n" + demote(row["text_path"].read_text(encoding="utf-8"), 2))
     target.write_text("\n\n".join(parts).rstrip() + "\n", encoding="utf-8")
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Build or check the no-clone reading edition.")
     ap.add_argument("--check", action="store_true", help="fail when a tracked output is stale")
-    ap.add_argument("--complete", type=Path, help="write the complete sixteen-paper file here")
+    ap.add_argument("--complete", type=Path, help="write the complete eighteen-paper file here")
     args = ap.parse_args(argv)
     try:
         if args.complete:

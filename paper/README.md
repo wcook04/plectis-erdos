@@ -28,6 +28,18 @@ and the research process, go to the [project papers](#project-papers).
 | #1041 | [Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Paths in Polynomial Lemniscates: Proofs and Examples](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
 | #1049 | [Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Zudilin's Forms at Rational Bases: Proofs and Research Record](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
 
+## Reading the eight together
+
+One pair treats the comparison across the problems rather than any single one.
+The note proves which subsums of a Lambert series are rational or irrational as
+the base varies; the working record behind it holds the inventory of negative
+results, the eliminated ideas and the open questions.
+
+| Paper | Manuscript |
+|---|---|
+| Synthesis note | [Rational and Irrational Subsums of a Lambert Series Across Bases](synthesis/erdos-synthesis-subsums-across-bases.pdf) ([source](synthesis/erdos-synthesis-subsums-across-bases.tex)) |
+| Working record | [Reading Eight Erdős Problems Together](synthesis/erdos-synthesis-reading-together-record.pdf) ([source](synthesis/erdos-synthesis-reading-together-record.tex)) |
+
 ## Follow the argument into its evidence
 
 Read the assumptions of the result you want to use, then the proof. The

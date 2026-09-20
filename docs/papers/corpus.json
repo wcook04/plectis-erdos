@@ -33,12 +33,14 @@
     "erdos1041-lemniscate-reasoning-surface",
     "erdos-1049-rational-base-lambert",
     "erdos1049-rational-base-lambert-reasoning-surface",
+    "erdos-synthesis-subsums-across-bases",
+    "erdos-synthesis-reading-together-record",
     "claim-faithful-publication-systems",
     "cold-clone-to-proof-receipt",
     "open-source-mathematics-strategy",
     "plectis-public-system"
   ],
-  "paper_count": 21,
+  "paper_count": 23,
   "publication_taxonomy": {
     "generated_by": "docs/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
@@ -47,6 +49,7 @@
       "publication_class": {
         "problem_paper": "Exposition of a covered Erd\u0151s problem: what is proved, what is not, and where the boundary between them sits.",
         "reasoning_surface": "A long-form record of attempted routes, the routes that closed, and the obligations that survive.",
+        "synthesis_paper": "Mathematics whose subject is several covered problems read together: what is common, what is not, and what the comparison leaves open.",
         "methods_paper": "A systems or methodology argument: how something is built, checked, or navigated.",
         "software_paper": "A description of a released software artefact and what running it does and does not establish."
       },
@@ -61,13 +64,14 @@
     },
     "by_publication_class": {
       "problem_paper": 9,
-      "reasoning_surface": 8,
+      "reasoning_surface": 9,
+      "synthesis_paper": 1,
       "methods_paper": 3,
       "software_paper": 1
     },
     "by_manuscript_status": {
-      "technical_report": 12,
-      "working_research_record": 8,
+      "technical_report": 13,
+      "working_research_record": 9,
       "retired_provenance": 1
     },
     "peer_review": {
@@ -7556,6 +7560,262 @@
             "id": "sec:erdos-1049-complete-family-map",
             "title": "Publication scope",
             "line": 2264
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos-synthesis-subsums-across-bases",
+      "title": "Rational and Irrational Subsums of a Lambert Series Across Bases",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "Which subseries of the Lambert series sum 1/(t^n-1) are rational or irrational as the base varies, and what can and cannot decide irrationality in the seven arithmetic problems?",
+      "subject": "Eight Erd\u0151s problems read together",
+      "subject_kind": "synthesis",
+      "form": "Synthesis note",
+      "owns": "the synthesis exposition of the comparison across the covered problems: choices against contraction, the rational and irrational subsums of one Lambert series across bases, the forced Farey statistic, and the listed method limits it does not explain",
+      "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, the results it quotes from the companion notes, which belong to those notes, or the status of any of the eight Erd\u0151s problems, which belongs to docs/claims.json in the mathematics repository",
+      "publication_state": "pending_source_publication",
+      "publication_class": "synthesis_paper",
+      "publication_class_basis": "owns names 'synthesis exposition'",
+      "manuscript_status": "technical_report",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Rational and Irrational Subsums of a Lambert Series Across Bases",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": null,
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "unversioned_source",
+        "text": "Will Cook (2026). Rational and Irrational Subsums of a Lambert Series Across Bases. plectis-erdos. CC-BY-4.0.",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos-synthesis-subsums-across-bases.md",
+      "local_source": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+      "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
+      "section_count": 8,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos-synthesis-subsums-across-bases",
+          "title": "Rational and Irrational Subsums of a Lambert Series Across Bases",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:results",
+          "title": "Results",
+          "line": 13
+        },
+        {
+          "level": 4,
+          "id": "evidence.",
+          "title": "Evidence.",
+          "line": 78
+        },
+        {
+          "level": 1,
+          "id": "sec:dichotomy",
+          "title": "Choices against contraction",
+          "line": 84
+        },
+        {
+          "level": 1,
+          "id": "sec:bases",
+          "title": "The subseries across bases",
+          "line": 106
+        },
+        {
+          "level": 1,
+          "id": "sec:base2",
+          "title": "Base two",
+          "line": 145
+        },
+        {
+          "level": 1,
+          "id": "sec:second",
+          "title": "Limits on methods",
+          "line": 174
+        },
+        {
+          "level": 1,
+          "id": "declaration-of-generative-ai-use",
+          "title": "Declaration of generative AI use",
+          "line": 248
+        }
+      ],
+      "citations_rendered": 34,
+      "local_pdf": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf",
+      "pdf_sha256": "sha256:18abdc5983f21321bac2f1a75413db4873219ff8fba019aaa60dd47b10bb93e9",
+      "pdf_byte_count": 89218,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection for this guide",
+        "sections": [
+          {
+            "id": "sec:results",
+            "title": "Results",
+            "line": 13
+          },
+          {
+            "id": "sec:bases",
+            "title": "The subseries across bases",
+            "line": 106
+          },
+          {
+            "id": "sec:base2",
+            "title": "Base two",
+            "line": 145
+          },
+          {
+            "id": "sec:second",
+            "title": "Limits on methods",
+            "line": 174
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos-synthesis-reading-together-record",
+      "title": "Reading Eight Erd\u0151s Problems Together",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What was proved, eliminated, rediscovered and left open while reading the eight problems together?",
+      "subject": "Eight Erd\u0151s problems read together",
+      "subject_kind": "synthesis",
+      "form": "Reasoning surface",
+      "owns": "the reasoning surface behind the synthesis note: the two base 2 lemmas, the inventory of negative results across the companion notes with their status, the corrected computation, the eliminated ideas, the prior art, and the open questions",
+      "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, the results it quotes from the companion notes, which belong to those notes, or the status of any of the eight Erd\u0151s problems, which belongs to docs/claims.json in the mathematics repository",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Reading Eight Erd\u0151s Problems Together",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": null,
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "unversioned_source",
+        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0.",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos-synthesis-reading-together-record.md",
+      "local_source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+      "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
+      "section_count": 9,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos-synthesis-reading-together-record",
+          "title": "Reading Eight Erd\u0151s Problems Together",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:map",
+          "title": "What the note relies on",
+          "line": 13
+        },
+        {
+          "level": 1,
+          "id": "sec:lemmas",
+          "title": "Two lemmas at base two",
+          "line": 31
+        },
+        {
+          "level": 1,
+          "id": "sec:inventory",
+          "title": "Negative results in the companion notes",
+          "line": 65
+        },
+        {
+          "level": 1,
+          "id": "sec:misread",
+          "title": "One computation read wrongly twice",
+          "line": 86
+        },
+        {
+          "level": 1,
+          "id": "sec:eliminated",
+          "title": "Eliminated ideas",
+          "line": 98
+        },
+        {
+          "level": 1,
+          "id": "sec:known",
+          "title": "What was already known",
+          "line": 112
+        },
+        {
+          "level": 1,
+          "id": "sec:questions",
+          "title": "Questions",
+          "line": 126
+        },
+        {
+          "level": 1,
+          "id": "declaration-of-generative-ai-use",
+          "title": "Declaration of generative AI use",
+          "line": 192
+        }
+      ],
+      "citations_rendered": 35,
+      "local_pdf": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
+      "pdf_sha256": "sha256:5fa378ade0a857a24de277b0c9826b8bd0e915c1accb76352380f59459d73031",
+      "pdf_byte_count": 75141,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection for this guide",
+        "sections": [
+          {
+            "id": "sec:map",
+            "title": "What the note relies on",
+            "line": 13
+          },
+          {
+            "id": "sec:inventory",
+            "title": "Negative results in the companion notes",
+            "line": 65
+          },
+          {
+            "id": "sec:known",
+            "title": "What was already known",
+            "line": 112
+          },
+          {
+            "id": "sec:questions",
+            "title": "Questions",
+            "line": 126
           }
         ],
         "unresolved_count": 0

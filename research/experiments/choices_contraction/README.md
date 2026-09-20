@@ -5,22 +5,27 @@
 
 Erdős #257 at base 2 is equivalent to a finite-rejection statement: every
 rational number that is not a finite sum of the weights `1/(2^n - 1)` is
-rejected by the greedy rule at some finite index. Exact computation shows that
-12,218 of the 19,653 reduced fractions with denominator at most 200 survive 60
-indices, after which the remaining gaps occupy less than `2^-60` of the
-interval. For the hosts of odd, squarefree and non-multiples-of-3 exponents it
-excludes every rational of denominator at most 36 that is not a finite sum.
-The share of survivors at a fixed depth is forced by equidistribution of
-fractions and carries no information about membership; the late exclusions,
-which occur at exactly the rate the gap measures predict, are the informative
-data.
+rejected by the greedy rule at some finite index. The share of fractions that
+survive a fixed depth is forced by equidistribution of fractions over the
+intervals that remain, so it carries no information about membership, and at
+height `Q` every count past step `2 log2 Q - 3.3` is forced as well. Exact
+computation at denominators up to 200 agrees with the measures of the removed
+intervals step by step and shows no arithmetic effect in either direction. For
+the hosts of odd, squarefree and non-multiples-of-3 exponents it excludes every
+rational of denominator at most 36 that is not a finite sum.
+
+The theorems are in the synthesis note
+[Rational and irrational subsums of a Lambert series across bases](../../../paper/synthesis/erdos-synthesis-subsums-across-bases.pdf)
+and its [working record](../../../paper/synthesis/erdos-synthesis-reading-together-record.pdf),
+which also records how this computation was misread twice.
 
 This investigation started from reading the eight short papers together and
 belongs to no single problem. Its sharpest instance sits inside Erdős #257, and
 its framing draws on #243, #249, #251 and #1049.
 
 **Status.** Ordinary reasoning and exact rational computation. Nothing here is
-checked in Lean. No prior-art search has been carried out. Membership of any
+checked in Lean. A prior-art search was made on 20 September 2026 and its
+findings are in the working record. Membership of any
 specific rational in the infinite achievement set remains open. The counts
 below are reproducible with the script in this directory.
 
@@ -118,19 +123,27 @@ at indices 1, 2 and 7 occupy the shares 0.2448, 0.0747 and 0.00164 of `[0, E]`,
 which predict 4,811, 1,467 and 32 exclusions among 19,653 fractions, against
 4,809, 1,470 and 32 observed.
 
-**Depth adds little once `N` passes about 10. The denominator cutoff is the
-informative variable.** The gaps at index `n` occupy a share close to
-`2^-n / 5` of the interval. At `Q = 36` the expected number of exclusions past
-index 7 is below one, which is why none was seen. At `Q = 200` exclusions
-appear at indices 8, 9 and 12. An earlier version of this investigation read
-"no exclusion after index 7" as evidence of survival. That reading was an
-artefact of the small cutoff.
+**Depth past `2 log2 Q - 3.3` adds nothing.** The gaps at index `n` occupy the
+share `2^(n-1) g_n / E` of the interval, where `g_n = w_n - R_n`, which is
+`2^-n / (3E)` up to a factor `1 + O(2^-n)`. The expected number of fractions of
+height at most `Q` excluded at index `n` is about `(3 Q^2 / pi^2) 2^(n-1) g_n`,
+which falls below one past index `2 log2 Q - 3.3`: index 7 at `Q = 36` and
+index 12 at `Q = 200`, exactly where the last exclusions were seen. Two earlier
+readings of this computation were wrong. The first took the 62% share as
+evidence of membership. The second took the fractions not excluded through
+depth 60 as survivors of interest and the late exclusions as informative.
+Survival past the threshold index is forced by counting, and the exclusions
+before it confirm the gap measures and nothing else.
 
-**Exclusions arrive in families.** If `x` is a candidate then so are `x + 1`
-and `x + 1/3` whenever they stay in range, and they share every later
-remainder. The four exclusions at index 12 are one arithmetic event. Counting
-modulo translation by finite subseries sums is the right unit for the next
-experiment.
+**Exclusions arrive in families.** Let `F` be finite with largest element `n`
+and let `0 <= x <= R_n`. Then the greedy rule on `X_F + x` selects `F` and then
+agrees with the greedy rule on `x`. The condition is `x <= R_n`; it is not
+enough that the translate stays below `E`, since `1/2` is not excluded through
+depth 160 while `1/2 + 1/3 = 5/6` is excluded at index 1. Because `x -> x + 1`
+preserves reduced denominators, the number excluded at every index from 2 on
+is even. The four exclusions at index 12 are `46/183` and its translates by
+`1/3`, `1` and `4/3`, one arithmetic event. Counts should be taken modulo these
+translations.
 
 **Positive measure does not supply rational points.** Remove from `[0, 1]` an
 open interval around each rational, with total length below `1/2`. The closed
@@ -154,11 +167,13 @@ a theorem.
   obligation `c_x(N+1) >= Q_N + β_N` for infinitely many `N`. One such rational
   refutes #257 at base 2, because its greedy support is infinite.
 
-A heuristic that treats later remainders as equidistributed gives each survivor
-a total exclusion probability of order `2^-60`. Under that heuristic almost
-every survivor is a genuine member, and the natural conjecture is that the
-share of rationals of height at most `Q` lying in `𝒜` tends to `1/E`. The
-heuristic is unproved, and the example above shows why it needs proof.
+A model that treats later remainders as equidistributed predicts that the
+share of rationals of height at most `Q` lying in `𝒜` tends to `1/E`. That is
+a strong denial of #257, under which the only members are the finite sums (40
+of the 19,653 fractions at `Q = 200`), and no count supports it: every count
+available is forced. Boes, Darst and Erdős (Amer.
+Math. Monthly 88 (1981) 340-341) construct fat symmetric Cantor sets with
+essentially no rationals, so measure cannot decide.
 
 ## An exact statement for thin hosts
 
@@ -192,9 +207,10 @@ far on their theorem lists alone.
 
 ## Where to continue
 
-1. Search the literature on rational points and intrinsic Diophantine
-   approximation on Cantor sets, beginning with Mahler's 1984 question about
-   the middle-third set. It has not been searched for this investigation.
+1. Extend the literature search. Counting rationals of bounded height is
+   studied for null Cantor sets (Rahm, Solomon, Trauthwein and Weiss; Chow,
+   Varjú and Yu). We found nothing on rational points of a subsum set of
+   positive measure.
 2. Count modulo finite-sum translations and push `Q` further. Compare the
    exclusion counts at each index with the exact gap measures.
 3. Decide membership of `1/2`. The short paper isolates the exact obligation.

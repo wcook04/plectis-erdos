@@ -1,7 +1,7 @@
 {
   "schema": "research-source-attributions/1",
   "scope": {
-    "corpus": "The 21 papers registered in docs/papers/corpus.json, their included source files, and the complete two-library Lean source inventory.",
+    "corpus": "The 23 papers registered in docs/papers/corpus.json, their included source files, and the complete two-library Lean source inventory.",
     "problems": [
       "68",
       "243",

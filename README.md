@@ -82,6 +82,9 @@ achievement-set measure, or **#249** for exact kernel rank, finite certificates,
 and recorded routes that stopped. Each paper distinguishes ordinary proofs,
 Lean-checked results and open questions.
 
+**Reading the eight together.** One short note reads the problems side by
+side, with a working record behind it: [synthesis note](paper/synthesis/erdos-synthesis-subsums-across-bases.pdf) · [working record](paper/synthesis/erdos-synthesis-reading-together-record.pdf).
+
 | Problem | Topic | Papers |
 |---|---|---|
 | [#68](https://www.erdosproblems.com/68) | [Factorial-denominator irrationality](https://wcook04.github.io/plectis/maths/problems/erdos_68.html) | [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf) |

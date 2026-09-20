@@ -22,19 +22,26 @@ PAPERS = erdos1041-lemniscate-reasoning-surface \
   erdos-68-factorial-denominator-irrationality \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
-  erdos-1049-rational-base-lambert
+  erdos-1049-rational-base-lambert \
+  erdos-synthesis-subsums-across-bases \
+  erdos-synthesis-reading-together-record
 NOTES = erdos-68-factorial-denominator-irrationality \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
   erdos-1049-rational-base-lambert
+# The synthesis pair reads several problems together, so neither belongs in
+# NOTES, which is one short standalone note per problem. Both use the same
+# preamble, so they are named here and added to that prerequisite below.
+SYNTHESIS = erdos-synthesis-subsums-across-bases \
+  erdos-synthesis-reading-together-record
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
 REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
 REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
 REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
-VPATH = 68:243:249:251:257:269:1041:1049:systems:archive:.
+VPATH = 68:243:249:251:257:269:1041:1049:synthesis:systems:archive:.
 
 .PHONY: all check clean sync-root
 
@@ -58,8 +65,8 @@ check: all
 257/erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 257
 
-# Short and long problem papers share the preamble.
-$(NOTES:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
+# Short and long problem papers share the preamble, and so does the synthesis pair.
+$(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
 
 # Only the mathematical gateway owns Lean source-link aliases. Keeping every

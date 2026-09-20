@@ -2,7 +2,7 @@
   "artifact_role": "generated_scholarly_source_attribution_and_coverage_view",
   "authority_boundary": "Navigation and source-credit evidence only. It does not establish proof, novelty, endorsement, peer review, or complete historical knowledge. Lean matches are lexical candidates, not attribution.",
   "coverage": {
-    "bibliography_without_curated_link_count": 8,
+    "bibliography_without_curated_link_count": 41,
     "curated_source_count": 290,
     "lean_candidate_awaiting_review_count": 293,
     "unmatched_citation_key_count": 0
@@ -50222,6 +50222,1325 @@
         "source_sha256": "sha256:24185ca24d344389ef0e77daf8481dbd9085344fa6cf001303052b0e9127cdbf"
       },
       {
+        "citation_text": "\\bibitem{plectisshort} W.~Cook, \\href{erdos-synthesis-subsums-across-bases.pdf}{\\emph{Rational and irrational subsums of a Lambert series across bases}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 32,
+            "line_start": 32,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectisshort",
+        "kind": "bibliography_entry",
+        "line_end": 267,
+        "line_start": 262,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectisinvestigation} W.~Cook, \\emph{Choices, contraction and rational membership}, exact computation with saved outputs in \\texttt{research/experiments/choices\\_contraction/} of the repository, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 61,
+            "line_start": 61,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 147,
+            "line_start": 147,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectisinvestigation",
+        "kind": "bibliography_entry",
+        "line_end": 271,
+        "line_start": 267,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{erdos1948} P.~Erd\\H{o}s, \\emph{On arithmetical properties of Lambert series}, J.~Indian Math.\\ Soc.\\ 12 (1948), 63--66.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 131,
+            "line_start": 131,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "erdos1948",
+        "kind": "bibliography_entry",
+        "line_end": 274,
+        "line_start": 271,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{hornich1941} H.~Hornich, \\emph{\\\"Uber beliebige Teilsummen absolut konvergenter Reihen}, Monatshefte f\\\"ur Mathematik und Physik \\textbf{49} (1941), 316--320. \\href{https://doi.org/10.1007/BF01707309}{doi:10.1007/BF01707309}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 213,
+            "line_start": 213,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "hornich1941",
+        "kind": "bibliography_entry",
+        "line_end": 280,
+        "line_start": 274,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-691e9cc3c46273",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{nitecki2013} Z.~Nitecki, \\href{https://arxiv.org/abs/1106.3779v2}{\\emph{Subsum sets: intervals, Cantor sets, and Cantorvals}}, arXiv:1106.3779v2 (2013).",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 213,
+            "line_start": 213,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "nitecki2013",
+        "kind": "bibliography_entry",
+        "line_end": 284,
+        "line_start": 280,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{fridy1966} John A. Fridy, \\href{https://www.fq.math.ca/Scanned/4-3/fridy.pdf}{\\emph{Generalized bases for the real numbers}}. The Fibonacci Quarterly \\textbf{4} (1966), no.~3, 193--201.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 130,
+            "line_start": 130,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 213,
+            "line_start": 213,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "fridy1966",
+        "kind": "bibliography_entry",
+        "line_end": 287,
+        "line_start": 284,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-fb4194cadb150b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{crmarickovac2025} T.~Crmari\\'{c} and V.~Kova\\v{c}, \\href{https://arxiv.org/abs/2504.18712v1} {\\emph{On the irrationality of certain super-polynomially decaying series}}, Colloq. Math. \\textbf{179} (2025), 55--68, doi:\\href{https://doi.org/10.4064/cm9628-5-2025}{10.4064/cm9628-5-2025}. Theorem locators follow arXiv:2504.18712v1.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 130,
+            "line_start": 130,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Lemma~4"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 215,
+            "line_start": 215,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "crmarickovac2025",
+        "kind": "bibliography_entry",
+        "line_end": 294,
+        "line_start": 287,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{kovactao2024} Vjekoslav Kova\\v{c} and Terence Tao, \\href{https://arxiv.org/abs/2406.17593v4}{\\emph{On several irrationality problems for Ahmes series}}. Acta Mathematica Hungarica \\textbf{175} (2025), 572--608, doi:\\href{https://doi.org/10.1007/s10474-025-01528-0}{10.1007/s10474-025-01528-0}; arXiv:\\href{https://arxiv.org/abs/2406.17593v4}{2406.17593v4}. Statement and section numbers refer to arXiv version 4.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 130,
+            "line_start": 130,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Lemma~5.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 215,
+            "line_start": 215,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 218,
+            "line_start": 218,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Remark~4.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "kovactao2024",
+        "kind": "bibliography_entry",
+        "line_end": 297,
+        "line_start": 294,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{vandoornkovac2025} Wouter van Doorn and Vjekoslav Kova\\v{c}, \\href{https://arxiv.org/abs/2509.24971v3}{\\emph{Lacunary sequences whose reciprocal sums represent all rational numbers in an interval}}. Acta Arithmetica \\textbf{223} (2026), 275--295, doi:\\href{https://doi.org/10.4064/aa251001-13-1}{10.4064/aa251001-13-1}; arXiv:\\href{https://arxiv.org/abs/2509.24971v3}{2509.24971v3}. Statement numbers refer to arXiv version 3.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 130,
+            "line_start": 130,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 216,
+            "line_start": 216,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "vandoornkovac2025",
+        "kind": "bibliography_entry",
+        "line_end": 300,
+        "line_start": 297,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-892c567092d6f3",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya, \\href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf} {\\emph{Refinement of the Chowla--Erd\\H{o}s method and linear independence of certain Lambert series}}, Forum Math.\\ 31 (2019), no.~6, 1557--1566, \\href{https://doi.org/10.1515/forum-2018-0299}{DOI}. Page numbers refer to the linked author preprint.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 232,
+            "line_start": 231,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Corollary~1.2 and\n  Example~1.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "duverneytachiya",
+        "kind": "bibliography_entry",
+        "line_end": 308,
+        "line_start": 300,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-317a740451ce03",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{taoteravainen2025} T.~Tao and J.~Ter\\\"av\\\"ainen, \\href{https://arxiv.org/abs/2512.01739v2}{\\emph{Quantitative correlations and some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2 (submitted December 2025, revised April 2026).",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 132,
+            "line_start": 132,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "taoteravainen2025",
+        "kind": "bibliography_entry",
+        "line_end": 313,
+        "line_start": 308,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-685765cbd1ebe2",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{fan2026comment} Steve Fan, \\emph{Comment on Erd\\H{o}s Problem \\#269, thread 269, post 7218} (2026), \\href{https://www.erdosproblems.com/forum/thread/269#post-7218}{source}. 26 June 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 133,
+            "line_start": 133,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "fan2026comment",
+        "kind": "bibliography_entry",
+        "line_end": 317,
+        "line_start": 313,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-21cdeefea4c8ec",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{mahler1929} K.~Mahler, \\emph{Arithmetische Eigenschaften der L\\\"osungen einer Klasse von Funktionalgleichungen}, Math.\\ Ann.\\ \\textbf{101} (1929), 342--367.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 201,
+            "line_start": 201,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "mahler1929",
+        "kind": "bibliography_entry",
+        "line_end": 321,
+        "line_start": 317,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{adamczewskifaverjon2026} Boris Adamczewski and Colin Faverjon, \\emph{Mahler's method in several variables and finite automata}, Annals of Mathematics \\textbf{204}, no.~2 (2026), 455--533, \\href{https://doi.org/10.4007/annals.2026.204.2.1}{doi:\\nolinkurl{10.4007/annals.2026.204.2.1}}. Locators refer to the \\href{https://faverjon.perso.math.cnrs.fr/AdamczewskiFaverjon_MahlerFiniteAutomata.pdf}{68-page author manuscript}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 198,
+            "line_start": 198,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "adamczewskifaverjon2026",
+        "kind": "bibliography_entry",
+        "line_end": 328,
+        "line_start": 321,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": "source-eaeb7980382323",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{boesdarsterdos1981} D.~Boes, R.~Darst and P.~Erd\\H{o}s, \\href{https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266}{\\emph{Fat, symmetric, irrational Cantor sets}}, Amer.\\ Math.\\ Monthly \\textbf{88} (1981), 340--341.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 220,
+            "line_start": 220,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "boesdarsterdos1981",
+        "kind": "bibliography_entry",
+        "line_end": 333,
+        "line_start": 328,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{rstw2019} A.~Rahm, N.~Solomon, T.~Trauthwein and B.~Weiss, \\href{https://arxiv.org/abs/1909.01198}{\\emph{The distribution of rational numbers on Cantor's middle thirds set}}, arXiv:1909.01198.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 223,
+            "line_start": 223,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "rstw2019",
+        "kind": "bibliography_entry",
+        "line_end": 337,
+        "line_start": 333,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{chowvarjuyu2024} S.~Chow, P.~Varj\\'u and H.~Yu, \\href{https://arxiv.org/abs/2402.18395}{\\emph{Counting rationals and diophantine approximation in missing-digit Cantor sets}}, arXiv:2402.18395.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 223,
+            "line_start": 223,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "chowvarjuyu2024",
+        "kind": "bibliography_entry",
+        "line_end": 341,
+        "line_start": 337,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis68} W.~Cook, \\href{erdos-68-factorial-denominator-irrationality.pdf}{\\emph{Two incomparable denominator exclusions for $\\sum_{n\\ge2}(n!-1)^{-1}$}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 126,
+            "line_start": 126,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis68",
+        "kind": "bibliography_entry",
+        "line_end": 346,
+        "line_start": 341,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis243} W.~Cook, \\href{erdos-243-reciprocal-tail-rigidity.pdf}{\\emph{Bounded increments and rational reciprocal sums}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 127,
+            "line_start": 127,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis243",
+        "kind": "bibliography_entry",
+        "line_end": 350,
+        "line_start": 346,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis249} W.~Cook, \\href{erdos-249-binary-totient-series.pdf}{\\emph{Bases and integral relations for the $k$-kernel of Euler's totient}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 128,
+            "line_start": 128,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 129,
+            "line_start": 129,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 235,
+            "line_start": 235,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Section~5"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis249",
+        "kind": "bibliography_entry",
+        "line_end": 355,
+        "line_start": 350,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis251} W.~Cook, \\href{erdos-251-prime-gap-dyadic-series.pdf}{\\emph{Sparse congruence-preserving perturbations of dyadic series}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 130,
+            "line_start": 130,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis251",
+        "kind": "bibliography_entry",
+        "line_end": 360,
+        "line_start": 355,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis257} W.~Cook, \\href{erdos-257-mersenne-support-subseries.pdf}{\\emph{Weighted support criteria for reciprocal Mersenne subseries}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 51,
+            "line_start": 51,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Section~7"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 84,
+            "line_start": 84,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Section~7"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 131,
+            "line_start": 131,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 132,
+            "line_start": 132,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 232,
+            "line_start": 232,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Section~6"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 242,
+            "line_start": 242,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": [
+              "Theorem~7"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis257",
+        "kind": "bibliography_entry",
+        "line_end": 365,
+        "line_start": 360,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis269} W.~Cook, \\href{erdos-269-three-prime-running-lcm.pdf}{\\emph{No finite separable representation at three prime generators}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 133,
+            "line_start": 133,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis269",
+        "kind": "bibliography_entry",
+        "line_end": 370,
+        "line_start": 365,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{plectis1049} W.~Cook, \\href{erdos-1049-rational-base-lambert.pdf}{\\emph{Zudilin's forms at rational bases and the exact normalised Hankel order}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 134,
+            "line_start": 134,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 135,
+            "line_start": 135,
+            "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis1049",
+        "kind": "bibliography_entry",
+        "line_end": 374,
+        "line_start": 370,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_text": "\\bibitem{erdosgraham1980} P.~Erd\\H{o}s and R.~L. Graham, \\href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\\emph{Old and New Problems and Results in Combinatorial Number Theory}}, Monogr. Enseign. Math. 28, Geneva, 1980.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 58,
+            "line_start": 58,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 67,
+            "line_start": 67,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "p.~62"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "erdosgraham1980",
+        "kind": "bibliography_entry",
+        "line_end": 398,
+        "line_start": 393,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-10545f868b3e88",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{erdos1988} P.~Erd\\H{o}s, \\emph{On the irrationality of certain series: problems and results}, in A.~Baker (ed.), \\emph{New Advances in Transcendence Theory}, Cambridge UP, 1988, pp.~102--109, doi:\\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 58,
+            "line_start": 58,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "erdos1988",
+        "kind": "bibliography_entry",
+        "line_end": 403,
+        "line_start": 398,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-b378189f39ed98",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{erdos1968} P.~Erd\\H{o}s, \\href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\\emph{On the irrationality of certain series}}, Math.\\ Student 36 (1968), 222--226 (issued 1969).",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 139,
+            "line_start": 139,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "erdos1968",
+        "kind": "bibliography_entry",
+        "line_end": 408,
+        "line_start": 403,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-7dc956ce55b7a0",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{hornich1941} H.~Hornich, \\emph{\\\"Uber beliebige Teilsummen absolut konvergenter Reihen}, Monatshefte f\\\"ur Mathematik und Physik \\textbf{49} (1941), 316--320. \\href{https://doi.org/10.1007/BF01707309}{doi:10.1007/BF01707309}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 92,
+            "line_start": 92,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 118,
+            "line_start": 118,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "hornich1941",
+        "kind": "bibliography_entry",
+        "line_end": 414,
+        "line_start": 408,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-691e9cc3c46273",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{nitecki2013} Z.~Nitecki, \\href{https://arxiv.org/abs/1106.3779v2}{\\emph{Subsum sets: intervals, Cantor sets, and Cantorvals}}, arXiv:1106.3779v2 (2013).",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 92,
+            "line_start": 92,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 118,
+            "line_start": 118,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 355,
+            "line_start": 355,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "nitecki2013",
+        "kind": "bibliography_entry",
+        "line_end": 418,
+        "line_start": 414,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{fridy1966} John A. Fridy, \\href{https://www.fq.math.ca/Scanned/4-3/fridy.pdf}{\\emph{Generalized bases for the real numbers}}. The Fibonacci Quarterly \\textbf{4} (1966), no.~3, 193--201.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 92,
+            "line_start": 92,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 209,
+            "line_start": 209,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "fridy1966",
+        "kind": "bibliography_entry",
+        "line_end": 421,
+        "line_start": 418,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-fb4194cadb150b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{crmarickovac2025} T.~Crmari\\'{c} and V.~Kova\\v{c}, \\href{https://arxiv.org/abs/2504.18712v1} {\\emph{On the irrationality of certain super-polynomially decaying series}}, Colloq. Math. \\textbf{179} (2025), 55--68, doi:\\href{https://doi.org/10.4064/cm9628-5-2025}{10.4064/cm9628-5-2025}. Theorem locators follow arXiv:2504.18712v1.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 209,
+            "line_start": 209,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Lemma~4"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "crmarickovac2025",
+        "kind": "bibliography_entry",
+        "line_end": 428,
+        "line_start": 421,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{kovactao2024} Vjekoslav Kova\\v{c} and Terence Tao, \\href{https://arxiv.org/abs/2406.17593v4}{\\emph{On several irrationality problems for Ahmes series}}. Acta Mathematica Hungarica \\textbf{175} (2025), 572--608, doi:\\href{https://doi.org/10.1007/s10474-025-01528-0}{10.1007/s10474-025-01528-0}; arXiv:\\href{https://arxiv.org/abs/2406.17593v4}{2406.17593v4}. Statement and section numbers refer to arXiv version 4.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 94,
+            "line_start": 94,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Lemma~5.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 120,
+            "line_start": 120,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Remark~4.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 210,
+            "line_start": 210,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Lemma~5.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 223,
+            "line_start": 223,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Theorem~2.3"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "kovactao2024",
+        "kind": "bibliography_entry",
+        "line_end": 431,
+        "line_start": 428,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-4f5fd0d7405e29",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{zudilin2004} W.~Zudilin, \\href{https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/}{\\emph{Heine's basic transform and a permutation group for \\(q\\)-harmonic series}}, Acta Arith. \\textbf{111} (2004), no.~2, 153--164, doi:\\href{https://doi.org/10.4064/aa111-2-4}{10.4064/aa111-2-4}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 144,
+            "line_start": 144,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "zudilin2004",
+        "kind": "bibliography_entry",
+        "line_end": 437,
+        "line_start": 431,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-120bebce1ffe8c",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{taoteravainen2025} T.~Tao and J.~Ter\\\"av\\\"ainen, \\href{https://arxiv.org/abs/2512.01739v2}{\\emph{Quantitative correlations and some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2 (submitted December 2025, revised April 2026).",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 378,
+            "line_start": 378,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "taoteravainen2025",
+        "kind": "bibliography_entry",
+        "line_end": 442,
+        "line_start": 437,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-685765cbd1ebe2",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{fan2026comment} Steve Fan, \\emph{Comment on Erd\\H{o}s Problem \\#269, thread 269, post 7218} (2026), \\href{https://www.erdosproblems.com/forum/thread/269#post-7218}{source}. 26 June 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 371,
+            "line_start": 371,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "fan2026comment",
+        "kind": "bibliography_entry",
+        "line_end": 446,
+        "line_start": 442,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": "source-21cdeefea4c8ec",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{mahler1929} K.~Mahler, \\emph{Arithmetische Eigenschaften der L\\\"osungen einer Klasse von Funktionalgleichungen}, Math.\\ Ann.\\ \\textbf{101} (1929), 342--367.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 271,
+            "line_start": 271,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "mahler1929",
+        "kind": "bibliography_entry",
+        "line_end": 450,
+        "line_start": 446,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{nishioka1996} Ku.~Nishioka, \\emph{Mahler Functions and Transcendence}, Lecture Notes in Math.\\ 1631, Springer, Berlin, 1996.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 272,
+            "line_start": 272,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "nishioka1996",
+        "kind": "bibliography_entry",
+        "line_end": 453,
+        "line_start": 450,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{boesdarsterdos1981} D.~Boes, R.~Darst and P.~Erd\\H{o}s, \\href{https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266}{\\emph{Fat, symmetric, irrational Cantor sets}}, Amer.\\ Math.\\ Monthly \\textbf{88} (1981), 340--341.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 332,
+            "line_start": 332,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "boesdarsterdos1981",
+        "kind": "bibliography_entry",
+        "line_end": 458,
+        "line_start": 453,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{rstw2019} A.~Rahm, N.~Solomon, T.~Trauthwein and B.~Weiss, \\href{https://arxiv.org/abs/1909.01198}{\\emph{The distribution of rational numbers on Cantor's middle thirds set}}, arXiv:1909.01198.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 354,
+            "line_start": 354,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "rstw2019",
+        "kind": "bibliography_entry",
+        "line_end": 462,
+        "line_start": 458,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{chowvarjuyu2024} S.~Chow, P.~Varj\\'u and H.~Yu, \\href{https://arxiv.org/abs/2402.18395}{\\emph{Counting rationals and diophantine approximation in missing-digit Cantor sets}}, arXiv:2402.18395.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 354,
+            "line_start": 354,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "chowvarjuyu2024",
+        "kind": "bibliography_entry",
+        "line_end": 466,
+        "line_start": 462,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis68} W.~Cook, \\href{erdos-68-factorial-denominator-irrationality.pdf}{\\emph{Two incomparable denominator exclusions for $\\sum_{n\\ge2}(n!-1)^{-1}$}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 382,
+            "line_start": 382,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis68",
+        "kind": "bibliography_entry",
+        "line_end": 471,
+        "line_start": 466,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis243} W.~Cook, \\href{erdos-243-reciprocal-tail-rigidity.pdf}{\\emph{Bounded increments and rational reciprocal sums}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 384,
+            "line_start": 384,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis243",
+        "kind": "bibliography_entry",
+        "line_end": 475,
+        "line_start": 471,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis249} W.~Cook, \\href{erdos-249-binary-totient-series.pdf}{\\emph{Bases and integral relations for the $k$-kernel of Euler's totient}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 215,
+            "line_start": 215,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 379,
+            "line_start": 379,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis249",
+        "kind": "bibliography_entry",
+        "line_end": 480,
+        "line_start": 475,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis251} W.~Cook, \\href{erdos-251-prime-gap-dyadic-series.pdf}{\\emph{Sparse congruence-preserving perturbations of dyadic series}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 202,
+            "line_start": 202,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis251",
+        "kind": "bibliography_entry",
+        "line_end": 485,
+        "line_start": 480,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis257} W.~Cook, \\href{erdos-257-mersenne-support-subseries.pdf}{\\emph{Weighted support criteria for reciprocal Mersenne subseries}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 118,
+            "line_start": 118,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 140,
+            "line_start": 140,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Theorem~2"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 348,
+            "line_start": 348,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Theorem~7"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 375,
+            "line_start": 375,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis257",
+        "kind": "bibliography_entry",
+        "line_end": 490,
+        "line_start": 485,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis269} W.~Cook, \\href{erdos-269-three-prime-running-lcm.pdf}{\\emph{No finite separable representation at three prime generators}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 370,
+            "line_start": 370,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis269",
+        "kind": "bibliography_entry",
+        "line_end": 495,
+        "line_start": 490,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectis1049} W.~Cook, \\href{erdos-1049-rational-base-lambert.pdf}{\\emph{Zudilin's forms at rational bases and the exact normalised Hankel order}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 144,
+            "line_start": 144,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Theorem~1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 146,
+            "line_start": 146,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": [
+              "Theorem~5"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 365,
+            "line_start": 365,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectis1049",
+        "kind": "bibliography_entry",
+        "line_end": 500,
+        "line_start": 495,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectisinvestigation} W.~Cook, \\emph{Choices, contraction and rational membership}, exact computation with saved outputs in \\texttt{research/experiments/choices\\_contraction/} of the repository, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 164,
+            "line_start": 164,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 334,
+            "line_start": 334,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectisinvestigation",
+        "kind": "bibliography_entry",
+        "line_end": 504,
+        "line_start": 500,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_text": "\\bibitem{plectisrecord} W.~Cook, \\href{erdos-synthesis-reading-together-record.pdf}{\\emph{Reading eight Erd\\H{o}s problems together: a working record}}, 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 515,
+            "line_start": 515,
+            "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "plectisrecord",
+        "kind": "bibliography_entry",
+        "line_end": 507,
+        "line_start": 504,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
         "citation_text": "\\bibitem{polya1928} G.~P\\'olya, \\emph{Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenh\\\"angende Gebiete}, Sitzungsberichte der Preussischen Akademie der Wissenschaften, Physikalisch-Mathematische Klasse (1928), printed pp.~228--232 and 280--282. \\url{https://archive.org/details/sitzungsbericht1928preu}.",
         "citation_usages": [
           {
@@ -79534,6 +80853,138 @@
         "paper_id": "erdos-249-binary-totient-series"
       },
       {
+        "key": "boesdarsterdos1981",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "chowvarjuyu2024",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "crmarickovac2025",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "erdos1948",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "kovactao2024",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "mahler1929",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "nitecki2013",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis1049",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis243",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis249",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis251",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis257",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis269",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectis68",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectisinvestigation",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "plectisshort",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "rstw2019",
+        "paper_id": "erdos-synthesis-reading-together-record"
+      },
+      {
+        "key": "boesdarsterdos1981",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "chowvarjuyu2024",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "crmarickovac2025",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "mahler1929",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "nishioka1996",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "nitecki2013",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis1049",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis243",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis249",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis251",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis257",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis269",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectis68",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectisinvestigation",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "plectisrecord",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
+        "key": "rstw2019",
+        "paper_id": "erdos-synthesis-subsums-across-bases"
+      },
+      {
         "key": "elabdalaoui2015",
         "paper_id": "erdos243-reciprocal-tail-reasoning-surface"
       },
@@ -83814,6 +85265,1136 @@
         "source_id": "source-c835bc94aad831",
         "source_role": "authored_manuscript",
         "source_sha256": "sha256:24185ca24d344389ef0e77daf8481dbd9085344fa6cf001303052b0e9127cdbf"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectisshort",
+        "kind": "citation_usage",
+        "line_end": 32,
+        "line_start": 32,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 51,
+        "line_start": 51,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Section~7"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectisinvestigation",
+        "kind": "citation_usage",
+        "line_end": 61,
+        "line_start": 61,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 84,
+        "line_start": 84,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Section~7"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis68",
+        "kind": "citation_usage",
+        "line_end": 126,
+        "line_start": 126,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis243",
+        "kind": "citation_usage",
+        "line_end": 127,
+        "line_start": 127,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis249",
+        "kind": "citation_usage",
+        "line_end": 128,
+        "line_start": 128,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis249",
+        "kind": "citation_usage",
+        "line_end": 129,
+        "line_start": 129,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "crmarickovac2025",
+        "kind": "citation_usage",
+        "line_end": 130,
+        "line_start": 130,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Lemma~4"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "fridy1966",
+        "kind": "citation_usage",
+        "line_end": 130,
+        "line_start": 130,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-fb4194cadb150b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 130,
+        "line_start": 130,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Lemma~5.1"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis251",
+        "kind": "citation_usage",
+        "line_end": 130,
+        "line_start": 130,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "vandoornkovac2025",
+        "kind": "citation_usage",
+        "line_end": 130,
+        "line_start": 130,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-892c567092d6f3",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "erdos1948",
+        "kind": "citation_usage",
+        "line_end": 131,
+        "line_start": 131,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 131,
+        "line_start": 131,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 132,
+        "line_start": 132,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "taoteravainen2025",
+        "kind": "citation_usage",
+        "line_end": 132,
+        "line_start": 132,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-685765cbd1ebe2",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "fan2026comment",
+        "kind": "citation_usage",
+        "line_end": 133,
+        "line_start": 133,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-21cdeefea4c8ec",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis269",
+        "kind": "citation_usage",
+        "line_end": 133,
+        "line_start": 133,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis1049",
+        "kind": "citation_usage",
+        "line_end": 134,
+        "line_start": 134,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis1049",
+        "kind": "citation_usage",
+        "line_end": 135,
+        "line_start": 135,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectisinvestigation",
+        "kind": "citation_usage",
+        "line_end": 147,
+        "line_start": 147,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "adamczewskifaverjon2026",
+        "kind": "citation_usage",
+        "line_end": 198,
+        "line_start": 198,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-eaeb7980382323",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "mahler1929",
+        "kind": "citation_usage",
+        "line_end": 201,
+        "line_start": 201,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "fridy1966",
+        "kind": "citation_usage",
+        "line_end": 213,
+        "line_start": 213,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-fb4194cadb150b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "hornich1941",
+        "kind": "citation_usage",
+        "line_end": 213,
+        "line_start": 213,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-691e9cc3c46273",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "nitecki2013",
+        "kind": "citation_usage",
+        "line_end": 213,
+        "line_start": 213,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "crmarickovac2025",
+        "kind": "citation_usage",
+        "line_end": 215,
+        "line_start": 215,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 215,
+        "line_start": 215,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "vandoornkovac2025",
+        "kind": "citation_usage",
+        "line_end": 216,
+        "line_start": 216,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": "source-892c567092d6f3",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 218,
+        "line_start": 218,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Remark~4.1"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "boesdarsterdos1981",
+        "kind": "citation_usage",
+        "line_end": 220,
+        "line_start": 220,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "chowvarjuyu2024",
+        "kind": "citation_usage",
+        "line_end": 223,
+        "line_start": 223,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "rstw2019",
+        "kind": "citation_usage",
+        "line_end": 223,
+        "line_start": 223,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "duverneytachiya",
+        "kind": "citation_usage",
+        "line_end": 232,
+        "line_start": 231,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Corollary~1.2 and\n  Example~1.1"
+        ],
+        "source_id": "source-317a740451ce03",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 232,
+        "line_start": 232,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Section~6"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis249",
+        "kind": "citation_usage",
+        "line_end": 235,
+        "line_start": 235,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Section~5"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 242,
+        "line_start": 242,
+        "paper_id": "erdos-synthesis-reading-together-record",
+        "path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+        "qualifiers": [
+          "Theorem~7"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "erdos1988",
+        "kind": "citation_usage",
+        "line_end": 58,
+        "line_start": 58,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-b378189f39ed98",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "erdosgraham1980",
+        "kind": "citation_usage",
+        "line_end": 58,
+        "line_start": 58,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-10545f868b3e88",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "erdosgraham1980",
+        "kind": "citation_usage",
+        "line_end": 67,
+        "line_start": 67,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "p.~62"
+        ],
+        "source_id": "source-10545f868b3e88",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "fridy1966",
+        "kind": "citation_usage",
+        "line_end": 92,
+        "line_start": 92,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-fb4194cadb150b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "hornich1941",
+        "kind": "citation_usage",
+        "line_end": 92,
+        "line_start": 92,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-691e9cc3c46273",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "nitecki2013",
+        "kind": "citation_usage",
+        "line_end": 92,
+        "line_start": 92,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 94,
+        "line_start": 94,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Lemma~5.1"
+        ],
+        "source_id": "source-4f5fd0d7405e29",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "hornich1941",
+        "kind": "citation_usage",
+        "line_end": 118,
+        "line_start": 118,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-691e9cc3c46273",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "nitecki2013",
+        "kind": "citation_usage",
+        "line_end": 118,
+        "line_start": 118,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 118,
+        "line_start": 118,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 120,
+        "line_start": 120,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Remark~4.1"
+        ],
+        "source_id": "source-4f5fd0d7405e29",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "erdos1968",
+        "kind": "citation_usage",
+        "line_end": 139,
+        "line_start": 139,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-7dc956ce55b7a0",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 140,
+        "line_start": 140,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Theorem~2"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis1049",
+        "kind": "citation_usage",
+        "line_end": 144,
+        "line_start": 144,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Theorem~1"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "zudilin2004",
+        "kind": "citation_usage",
+        "line_end": 144,
+        "line_start": 144,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-120bebce1ffe8c",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis1049",
+        "kind": "citation_usage",
+        "line_end": 146,
+        "line_start": 146,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Theorem~5"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectisinvestigation",
+        "kind": "citation_usage",
+        "line_end": 164,
+        "line_start": 164,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis251",
+        "kind": "citation_usage",
+        "line_end": 202,
+        "line_start": 202,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "crmarickovac2025",
+        "kind": "citation_usage",
+        "line_end": 209,
+        "line_start": 209,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Lemma~4"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "fridy1966",
+        "kind": "citation_usage",
+        "line_end": 209,
+        "line_start": 209,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-fb4194cadb150b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 210,
+        "line_start": 210,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Lemma~5.1"
+        ],
+        "source_id": "source-4f5fd0d7405e29",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis249",
+        "kind": "citation_usage",
+        "line_end": 215,
+        "line_start": 215,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "kovactao2024",
+        "kind": "citation_usage",
+        "line_end": 223,
+        "line_start": 223,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Theorem~2.3"
+        ],
+        "source_id": "source-4f5fd0d7405e29",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "mahler1929",
+        "kind": "citation_usage",
+        "line_end": 271,
+        "line_start": 271,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "nishioka1996",
+        "kind": "citation_usage",
+        "line_end": 272,
+        "line_start": 272,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "boesdarsterdos1981",
+        "kind": "citation_usage",
+        "line_end": 332,
+        "line_start": 332,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectisinvestigation",
+        "kind": "citation_usage",
+        "line_end": 334,
+        "line_start": 334,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 348,
+        "line_start": 348,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [
+          "Theorem~7"
+        ],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "chowvarjuyu2024",
+        "kind": "citation_usage",
+        "line_end": 354,
+        "line_start": 354,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "rstw2019",
+        "kind": "citation_usage",
+        "line_end": 354,
+        "line_start": 354,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "nitecki2013",
+        "kind": "citation_usage",
+        "line_end": 355,
+        "line_start": 355,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis1049",
+        "kind": "citation_usage",
+        "line_end": 365,
+        "line_start": 365,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis269",
+        "kind": "citation_usage",
+        "line_end": 370,
+        "line_start": 370,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "fan2026comment",
+        "kind": "citation_usage",
+        "line_end": 371,
+        "line_start": 371,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-21cdeefea4c8ec",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis257",
+        "kind": "citation_usage",
+        "line_end": 375,
+        "line_start": 375,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "taoteravainen2025",
+        "kind": "citation_usage",
+        "line_end": 378,
+        "line_start": 378,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": "source-685765cbd1ebe2",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis249",
+        "kind": "citation_usage",
+        "line_end": 379,
+        "line_start": 379,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis68",
+        "kind": "citation_usage",
+        "line_end": 382,
+        "line_start": 382,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectis243",
+        "kind": "citation_usage",
+        "line_end": 384,
+        "line_start": 384,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "plectisrecord",
+        "kind": "citation_usage",
+        "line_end": 515,
+        "line_start": 515,
+        "paper_id": "erdos-synthesis-subsums-across-bases",
+        "path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
       },
       {
         "citation_context": "in_text_citation",
@@ -101118,10 +103699,10 @@
         "role": "authored_reasoning_preamble"
       }
     ],
-    "paper_denominator": 21,
+    "paper_denominator": 23,
     "reasoning_surface_contract": "Generated reasoning roots inline authored files declared by scripts/assemble_reasoning_surfaces.py::PAPERS. Both reader-facing roots and maintained anchors are inventoried and labeled by source_role; shared TeX includes resolve through the manuscript directory and then the public paper root. Counts include intentional root/part duplication.",
-    "root_source_file_denominator": 21,
-    "scanned_source_file_denominator": 73,
+    "root_source_file_denominator": 23,
+    "scanned_source_file_denominator": 75,
     "scanned_source_paths": [
       "docs/papers/mirror/plectis-public-system.tex",
       "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
@@ -101193,6 +103774,8 @@
       "paper/reasoning-parts/erdos68/extended_record.tex",
       "paper/reasoning-parts/erdos68/family_catalogue.tex",
       "paper/reasoning-parts/erdos68/preamble.tex",
+      "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+      "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
       "paper/systems/claim-faithful-publication-systems-paper.tex",
       "paper/systems/cold-clone-to-proof-receipt.tex",
       "paper/systems/open-source-mathematics-strategy.tex"
@@ -101208,6 +103791,8 @@
           "erdos-257-mersenne-support-subseries",
           "erdos-269-three-prime-running-lcm",
           "erdos-68-factorial-denominator-irrationality",
+          "erdos-synthesis-reading-together-record",
+          "erdos-synthesis-subsums-across-bases",
           "erdos1041-lemniscate-reasoning-surface",
           "erdos1049-rational-base-lambert-reasoning-surface",
           "erdos243-reciprocal-tail-reasoning-surface",
@@ -101223,7 +103808,7 @@
   },
   "schema": "research-source-attribution-index/1",
   "scope": {
-    "corpus": "The 21 papers registered in docs/papers/corpus.json, their included source files, and the complete two-library Lean source inventory.",
+    "corpus": "The 23 papers registered in docs/papers/corpus.json, their included source files, and the complete two-library Lean source inventory.",
     "coverage_boundary": "A complete inventory of these files is not a claim to have found all historical antecedents. Bibliography-only sources and unresolved lexical matches remain explicitly reviewable.",
     "maintained_with": "python3 scripts/build_source_attributions.py; --check; --query <name, title, source id, or problem>",
     "private_correspondence": "Names, addresses, mailbox links and message bodies are withheld. Anonymous implementation credit is linked to private app interaction records by the maintainer; naming requires the correspondent to confirm.",
@@ -101240,7 +103825,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:715caa855b817572a1e7d9cbe9c81e125673dc2e07b9ba154ff7fd4402934d50",
+  "source_registry_sha256": "sha256:c42c8ba6d45b4ed97122f469c82844e7204203c74f2f00038e40cbf7d56ee30a",
   "sources": [
     {
       "artifact_coordinates": [],

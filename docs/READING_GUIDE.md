@@ -78,6 +78,14 @@ those assessments in one place avoids conflicting summaries.
 [Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
 <!-- END problem_programme_card -->
 
+If the comparison across the problems is what you are after rather than one of
+them, read the [synthesis note](../paper/synthesis/erdos-synthesis-subsums-across-bases.pdf),
+which proves which subsums of a Lambert series are rational or irrational as
+the base varies. Its
+[working record](../paper/synthesis/erdos-synthesis-reading-together-record.pdf)
+holds the inventory of negative results, the ideas that were eliminated and the
+questions left open.
+
 ## How to read the evidence
 
 The project keeps kinds of evidence apart. A Lean proof tells you a formal

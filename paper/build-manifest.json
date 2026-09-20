@@ -187,6 +187,28 @@
       "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },
+    "erdos_synthesis_note": {
+      "inputs": {
+        "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
+        "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+        "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
+        "paper/synthesis/erdos-synthesis-subsums-across-bases.tex": "sha256:ff44dbb69d85b0599c314af5f53322ba9d6d52d7ffb75bf79f5d3d0604b5f5f0"
+      },
+      "rendered_content_digest": "sha256:18abdc5983f21321bac2f1a75413db4873219ff8fba019aaa60dd47b10bb93e9",
+      "source_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+      "storage_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf"
+    },
+    "erdos_synthesis_record": {
+      "inputs": {
+        "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
+        "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+        "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
+        "paper/synthesis/erdos-synthesis-reading-together-record.tex": "sha256:b36379ee8ed8f41623075ad3e1b6ee5434d9f23a2df7f461c8d9460f7b8bdebc"
+      },
+      "rendered_content_digest": "sha256:5fa378ade0a857a24de277b0c9826b8bd0e915c1accb76352380f59459d73031",
+      "source_path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+      "storage_path": "paper/synthesis/erdos-synthesis-reading-together-record.pdf"
+    },
     "human_exposition": {
       "inputs": {
         "paper/archive/erdos249-257-main-paper.tex": "sha256:60dd9a22f4335145ce3917490d31ee84a6751ff1fe2e7235ecb292426599a570",

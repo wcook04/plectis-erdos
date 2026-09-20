@@ -10,7 +10,8 @@ guess -- and the honest answer is available from data already in the corpus.
 This builder adds, per paper:
 
 ``publication_class``
-    ``problem_paper``, ``reasoning_surface``, ``methods_paper``, or
+    ``problem_paper``, ``reasoning_surface``, ``synthesis_paper``,
+    ``methods_paper``, or
     ``software_paper``, decided by ordered rules over the manuscript's own
     ``owns``, ``title``, and ``home_repository`` fields. The rule that fired is
     recorded in ``publication_class_basis`` so the decision can be audited
@@ -80,6 +81,10 @@ PUBLICATION_CLASSES = {
     "reasoning_surface": (
         "A long-form record of attempted routes, the routes that closed, and "
         "the obligations that survive."
+    ),
+    "synthesis_paper": (
+        "Mathematics whose subject is several covered problems read together: "
+        "what is common, what is not, and what the comparison leaves open."
     ),
     "methods_paper": (
         "A systems or methodology argument: how something is built, checked, "
@@ -163,6 +168,12 @@ def _classify(paper: dict[str, Any]) -> tuple[str, str]:
     # in the paper's own fields.
     if "reasoning surface" in owns:
         return "reasoning_surface", "owns names 'reasoning surface'"
+
+    # Before the problem-paper markers: a paper whose subject is the comparison
+    # across problems is not exposition of one of them, and filing it as a
+    # problem paper would put it in every surface that counts problems.
+    if "synthesis exposition" in owns:
+        return "synthesis_paper", "owns names 'synthesis exposition'"
 
     if home and title.lower().startswith(home.lower()):
         return "software_paper", f"title opens with its released artefact '{home}'"

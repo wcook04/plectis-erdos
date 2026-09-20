@@ -4,15 +4,15 @@
 
 # Reading edition
 
-Edition fingerprint `47d84b453246ea9b`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `1604610facdb77ce`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
 | File | Contents | Size |
 |---|---|---:|
-| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 251 KB |
-| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 621 KB |
-| Complete edition | All sixteen papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 2,773 KB |
+| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the synthesis note in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 282 KB |
+| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the synthesis note and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 650 KB |
+| Complete edition | All eighteen papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 2,819 KB |
 
 ```sh
 python3 scripts/build_reading_edition.py --complete plectis-complete-edition.md
@@ -24,6 +24,8 @@ A model with a small context window should take the starter file first and then 
 
 | Problem | Paper | Kind | Size | Raw text |
 |---|---|---|---:|---|
+| Eight together | [Rational and Irrational Subsums of a Lambert Series Across Bases](../../docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) | synthesis note | 27 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-synthesis-subsums-across-bases.md) |
+| Eight together | [Reading Eight Erdős Problems Together](../../docs/papers/full-text/erdos-synthesis-reading-together-record.md) | longer record | 20 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-synthesis-reading-together-record.md) |
 | #68 | [Two Incomparable Denominator Exclusions for \sum_{n\ge2}(n!-1)^{-1}](../../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) | short paper | 72 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) |
 | #68 | [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](../../docs/papers/full-text/erdos68-factorial-reasoning-surface.md) | longer record | 173 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) |
 | #243 | [Bounded Increments and Rational Reciprocal Sums](../../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) | short paper | 64 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) |

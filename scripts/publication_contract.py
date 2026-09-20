@@ -100,8 +100,13 @@ PUBLICATION_ROLE_SHORT = "short"
 PUBLICATION_ROLE_LONG = "long"
 PUBLICATION_ROLE_ARCHIVAL = "archival_joint_manuscript"
 PUBLICATION_ROLE_SYSTEMS = "systems_guide"
+# A synthesis note reads several covered problems together, so it carries no
+# problem number and cannot take the short role, whose stem rule is
+# ``erdos-<n>-<topic>``. It is mathematics, so it is not a systems guide either.
+PUBLICATION_ROLE_SYNTHESIS = "synthesis"
 ROLE_BY_ARTIFACT_CLASS = {
     "problem_note": PUBLICATION_ROLE_SHORT,
+    "synthesis_note": PUBLICATION_ROLE_SYNTHESIS,
     "mathematical_companion": PUBLICATION_ROLE_LONG,
     ARCHIVAL_JOINT_CLASS: PUBLICATION_ROLE_ARCHIVAL,
     "repository_architecture_guide": PUBLICATION_ROLE_SYSTEMS,

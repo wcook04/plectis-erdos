@@ -17,6 +17,9 @@ Two ways of starting are equally supported.
 - **Read the mathematics and decide what comes next.** The question is then an
   output of your work. The research instruction below describes this route.
 
+For the comparison across problems rather than one of them, start with the
+synthesis note, which is the first paper below.
+
 The degree-seven counterexample found by the erdosproblems.com contributor ani
 refutes the total-variation formulation of Erdős #1041; the repository
 formalises it in Lean. The other seven target problems are not resolved here.
