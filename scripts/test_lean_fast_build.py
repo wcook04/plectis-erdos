@@ -698,6 +698,28 @@ import Pkg.TooLate
             [LAKE, "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
         )
 
+    def test_config_trace_batches_rehash_once(self) -> None:
+        calls: list[tuple[list[str], bool]] = []
+
+        def trace(names, root=fast.ROOT, *, rehash=True):
+            calls.append((list(names), rehash))
+            return [name for name in names if name == "Pkg.C"]
+
+        with mock.patch.object(fast, "lake_stale_targets", side_effect=trace):
+            self.assertEqual(
+                fast.lake_stale_targets_batched(
+                    ["Pkg.A", "Pkg.B", "Pkg.C"],
+                    Path("/tmp/pkg"),
+                    batch_size=2,
+                ),
+                ["Pkg.C"],
+            )
+
+        self.assertEqual(
+            calls,
+            [(["Pkg.A", "Pkg.B"], True), (["Pkg.C"], False)],
+        )
+
     def test_stale_frontier_propagates_to_every_import_dependent(self) -> None:
         graph = {
             "Pkg.A": set(),
@@ -854,6 +876,144 @@ import Pkg.TooLate
             config.write_text("leanprover/lean4:test\n", encoding="utf-8")
             os.utime(config, ns=(3_000_000_000, 3_000_000_000))
             self.assertTrue(fast.stale("Pkg.Leaf", modules, graph, root))
+
+    def test_config_timestamp_only_uses_trace_and_preserves_final_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "Pkg" / "Root.lean"
+            output = root / ".lake" / "build" / "lib" / "lean" / "Pkg" / "Root.olean"
+            source.parent.mkdir()
+            output.parent.mkdir(parents=True)
+            source.write_text("-- source\n", encoding="utf-8")
+            output.write_text("olean\n", encoding="utf-8")
+            os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+            os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+            (root / "lean-toolchain").write_text(
+                "leanprover/lean4:test\n", encoding="utf-8"
+            )
+            os.utime(
+                root / "lean-toolchain",
+                ns=(3_000_000_000, 3_000_000_000),
+            )
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets_batched", return_value=[]
+            ) as traced, mock.patch.object(
+                fast, "build_wave", side_effect=AssertionError(
+                    "content-current config timestamp must not rebuild"
+                )
+            ), mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["Pkg.Root"]), 0)
+
+            traced.assert_called_once_with(["Pkg.Root"], root)
+            self.assertEqual(
+                run.call_args.args[0],
+                [
+                    LAKE,
+                    "--quiet",
+                    "--no-ansi",
+                    "--log-level=error",
+                    "build",
+                    "+Pkg.Root",
+                ],
+            )
+
+    def test_config_content_trace_stale_module_is_prebuilt_before_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "Pkg" / "Root.lean"
+            output = root / ".lake" / "build" / "lib" / "lean" / "Pkg" / "Root.olean"
+            source.parent.mkdir()
+            output.parent.mkdir(parents=True)
+            source.write_text("-- source\n", encoding="utf-8")
+            output.write_text("olean\n", encoding="utf-8")
+            os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+            os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+            (root / "lakefile.toml").write_text("[[lean_lib]]\nname = \"Pkg\"\n")
+            os.utime(root / "lakefile.toml", ns=(3_000_000_000, 3_000_000_000))
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets_batched", return_value=["Pkg.Root"]
+            ), mock.patch.object(
+                fast, "build_wave", return_value=[]
+            ) as build, mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["Pkg.Root"]), 0)
+
+            build.assert_called_once_with(["Pkg.Root"], fast.default_jobs(), root)
+            self.assertEqual(run.call_count, 1)
+
+    def test_source_and_missing_outputs_still_prebuild_before_authority(self) -> None:
+        for changed in ("source", "missing"):
+            with self.subTest(changed=changed), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                source = root / "Pkg" / "Root.lean"
+                output = (
+                    root / ".lake" / "build" / "lib" / "lean" / "Pkg" / "Root.olean"
+                )
+                source.parent.mkdir()
+                output.parent.mkdir(parents=True)
+                source.write_text("-- source\n", encoding="utf-8")
+                output.write_text("olean\n", encoding="utf-8")
+                os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+                os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+                if changed == "source":
+                    os.utime(source, ns=(3_000_000_000, 3_000_000_000))
+                else:
+                    output.unlink()
+                completed = fast.subprocess.CompletedProcess([], 0, "", "")
+                with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                    fast, "lake_stale_targets_batched"
+                ) as traced, mock.patch.object(
+                    fast, "build_wave", return_value=[]
+                ) as build, mock.patch.object(
+                    fast.subprocess, "run", return_value=completed
+                ) as run:
+                    self.assertEqual(fast.main(["Pkg.Root"]), 0)
+
+                traced.assert_not_called()
+                build.assert_called_once_with(["Pkg.Root"], fast.default_jobs(), root)
+                self.assertEqual(run.call_count, 1)
+
+    def test_source_change_prebuilds_import_dependents_before_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            base = root / "Pkg" / "Base.lean"
+            consumer = root / "Pkg" / "Consumer.lean"
+            base.parent.mkdir()
+            base.write_text("-- base\n", encoding="utf-8")
+            consumer.write_text("import Pkg.Base\n", encoding="utf-8")
+            for name, source in (("Base", base), ("Consumer", consumer)):
+                output = (
+                    root
+                    / ".lake"
+                    / "build"
+                    / "lib"
+                    / "lean"
+                    / "Pkg"
+                    / f"{name}.olean"
+                )
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text("olean\n", encoding="utf-8")
+                os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+                os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+            os.utime(base, ns=(3_000_000_000, 3_000_000_000))
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            built: list[list[str]] = []
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast,
+                "build_wave",
+                side_effect=lambda names, jobs, root: built.append(list(names)) or [],
+            ), mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["Pkg.Consumer"]), 0)
+
+            self.assertEqual(built, [["Pkg.Base"], ["Pkg.Consumer"]])
+            self.assertEqual(run.call_count, 1)
 
     def test_stale_accepts_precomputed_build_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

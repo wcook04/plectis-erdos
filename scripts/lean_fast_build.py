@@ -523,6 +523,27 @@ def lake_stale_targets(
     ) + lake_stale_targets(targets[midpoint:], root, rehash=False)
 
 
+def lake_stale_targets_batched(
+    names: Iterable[str],
+    root: Path = ROOT,
+    *,
+    batch_size: int = 128,
+) -> list[str]:
+    """Content-check candidates in bounded argv batches, rehashing only once."""
+
+    targets = list(names)
+    stale_targets: list[str] = []
+    for offset in range(0, len(targets), batch_size):
+        stale_targets.extend(
+            lake_stale_targets(
+                targets[offset : offset + batch_size],
+                root,
+                rehash=offset == 0,
+            )
+        )
+    return stale_targets
+
+
 def propagate_stale_targets(
     initial: Iterable[str],
     build_waves: Iterable[Iterable[str]],
@@ -890,19 +911,52 @@ def main(argv: list[str] | None = None) -> int:
     else:
         output_mtimes: dict[str, int | None] = {}
         config_mtime = project_config_mtime_ns(root)
-        pending = [
-            [
-                name
-                for name in wave
+        definitely_stale: set[str] = set()
+        config_only_candidates: list[str] = []
+        for wave in build_waves:
+            for name in wave:
+                if name in direct_target_names:
+                    continue
+                # A populated olean cache with config=None classifies only
+                # missing outputs and source/dependency timestamp changes.
                 if stale(
                     name,
                     modules,
                     graph,
                     root,
                     cached_olean_mtimes=output_mtimes,
-                    cached_config_mtime_ns=config_mtime,
-                )
-                and name not in direct_target_names
+                    cached_config_mtime_ns=None,
+                ):
+                    definitely_stale.add(name)
+                    continue
+                output_mtime = olean_mtime_ns(name, root, output_mtimes)
+                if (
+                    config_mtime is not None
+                    and output_mtime is not None
+                    and config_mtime > output_mtime
+                ):
+                    config_only_candidates.append(name)
+        # A newer checkout/config timestamp is a conservative hint, not proof
+        # that restored output is stale. Lake's content trace decides these
+        # candidates; the final serialized authority build remains mandatory.
+        config_stale = (
+            set(lake_stale_targets_batched(config_only_candidates, root))
+            if config_only_candidates
+            else set()
+        )
+        if config_only_candidates:
+            staleness_label = "mtime+config-trace"
+        stale_targets = propagate_stale_targets(
+            definitely_stale | config_stale,
+            build_waves,
+            graph,
+        )
+        pending = [
+            [
+                name
+                for name in wave
+                if name not in direct_target_names
+                and name in stale_targets
             ]
             for wave in build_waves
         ]
@@ -919,12 +973,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     for wave in pending:
-        current = (
-            wave
-            if use_lake_staleness
-            else [name for name in wave if stale(name, modules, graph, root)]
-        )
-        failed = build_wave(current, args.jobs, root)
+        failed = build_wave(wave, args.jobs, root)
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
