@@ -611,8 +611,8 @@ coefficient sequence satisfying $c(n)\le n$. The formal proofs use the
 true-tail recurrence and the bound $0\le R^c_N\le N+2$; the residue
 certificate keeps the full finite discrepancy. The tail-period proof uses
 $m\mid2^h-1$ directly, so oddness of $m$ is only needed when choosing a
-period from the denominator. The composition in the next proof remains
-an ordinary argument.
+period from the denominator. The following rational continuation and its
+finite-prefix consequence are also checked.
 \lean{ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.certificate\_sound}{ErdosProblems/Erdos249/PaperCompleteR20/GenericTailCertificates.lean:66}
 \lean{ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.generic\_tail\_period}{ErdosProblems/Erdos249/PaperCompleteR20/GenericTailCertificates.lean:98}
 \end{rem}
@@ -638,7 +638,7 @@ Then:
 \end{enumerate}
 Hence for every $B$ there is a coefficient sequence in the same class,
 agreeing with $\varphi$ on all of $[1,B]$, whose quantified condition is false.
-\coord{binary-digit} \scale{uniform} \ev{Math}
+\coord{binary-digit} \scale{uniform} \ev{Lean}
 \end{thm}
 
 \begin{proof}
@@ -660,6 +660,11 @@ $R^{\gamma}_{N+P} - R^{\gamma}_{N} \in \Z$ for every $N \ge B$, so by
 Lemma~\ref{lem:gsound} no $\mathcal C_\gamma(P,N,L)$ holds for any
 $N \ge B$ and any $L$. Taking $N_0 = B$ refutes the inner existential of
 $\mathrm{Sep}_\gamma$ at $h = P$.
+The formalisation checks the series value, the exact reduced denominator,
+and the failure of the separation condition for this same $\gamma$.
+\lean{ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.exact\_series}{ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodel.lean:108}
+\lean{ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.exact\_denominator}{ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean:39}
+\lean{ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.gamma\_not\_separation}{ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean:69}
 \end{proof}
 
 \begin{cor}[The limit of a finite-prefix argument]
@@ -672,6 +677,7 @@ the fixed arithmetic sequence $\varphi$ together with compatible information
 at arbitrarily large horizons; the theorem gives a different $\gamma_B$ for
 each $B$, not one sequence agreeing with $\varphi$ at every $B$.
 \end{cor}
+\lean{ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.no\_uniform\_prefix\_rule}{ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean:74}
 
 \begin{rem}[Four distinct finite restrictions]
 \label{rem:b1-scope}
