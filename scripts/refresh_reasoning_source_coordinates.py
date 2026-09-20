@@ -9,6 +9,12 @@ the cited file at the commit pinned by the papers' preambles and rewrites the
 machine coordinate to its declaration line.  Module-level and deliberately
 unnamed location citations are left authored, but their files and numeric
 coordinates are still checked against the same commit.
+
+Two pins coexist.  A target without a ``lean/`` prefix is resolved at ``\\commit``,
+whose tree keeps the Lean roots at the top level.  A target written with its
+``lean/`` prefix names a source that postdates that checkpoint; it is resolved at
+``\\latecommit``, whose tree keeps the Lean roots under ``lean/``.  A citation is
+never resolved at a pin that does not contain its file.
 """
 
 from __future__ import annotations
@@ -29,6 +35,8 @@ PARTS_DIRS = (
     ROOT / "paper" / "reasoning-parts" / "erdos257",
 )
 PIN_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
+LATE_PIN_RE = re.compile(r"\\newcommand\{\\latecommit\}\{([0-9a-f]{40})\}")
+LATE_LAYOUT_PREFIX = "lean/"
 LEAN_RE = re.compile(r"\\lean\{([^{}]*)\}\{([^{}]*)\}")
 TARGET_RE = re.compile(r"(.+\.lean)(?::(.*))?")
 DECL_RE = re.compile(
@@ -143,34 +151,60 @@ def strip_lean_comments(text: str) -> str:
     return "".join(output)
 
 
-def pinned_commit() -> str:
+def _shared_pin(pattern: re.Pattern[str], description: str, required: bool) -> str | None:
     pins: dict[Path, str] = {}
     for directory in PARTS_DIRS:
         preamble = directory / "preamble.tex"
-        match = PIN_RE.search(preamble.read_text(encoding="utf-8"))
+        match = pattern.search(preamble.read_text(encoding="utf-8"))
         if not match:
-            raise CoordinateError(f"missing formal-source pin in {preamble.relative_to(ROOT)}")
+            if required:
+                raise CoordinateError(
+                    f"missing {description} in {preamble.relative_to(ROOT)}"
+                )
+            continue
         pins[preamble] = match.group(1)
     values = set(pins.values())
-    if len(values) != 1:
+    if len(values) > 1 or (values and len(pins) != len(PARTS_DIRS)):
         rendered = ", ".join(
             f"{path.relative_to(ROOT)}={pin}" for path, pin in pins.items()
         )
-        raise CoordinateError(f"reasoning papers have different source pins: {rendered}")
-    return values.pop()
+        raise CoordinateError(f"reasoning papers have different {description}s: {rendered}")
+    return values.pop() if values else None
+
+
+def pinned_commit() -> str:
+    pin = _shared_pin(PIN_RE, "formal-source pin", required=True)
+    assert pin is not None
+    return pin
+
+
+def late_pinned_commit() -> str | None:
+    """The pin for sources that postdate ``\\commit``; absent when no paper needs one."""
+
+    return _shared_pin(LATE_PIN_RE, "late formal-source pin", required=False)
 
 
 class Resolver:
-    def __init__(self, pin: str) -> None:
+    def __init__(self, pin: str, late_pin: str | None = None) -> None:
         self.pin = pin
+        self.late_pin = late_pin
         self.cache: dict[str, PinnedSource] = {}
         self.errors: dict[str, str] = {}
 
     @staticmethod
     def repository_path(cited_file: str) -> str:
-        if cited_file.startswith(("ErdosProblems/", "Erdos249257/")):
+        if cited_file.startswith(
+            (LATE_LAYOUT_PREFIX, "ErdosProblems/", "Erdos249257/")
+        ):
             return cited_file
         return f"Erdos249257/{cited_file}"
+
+    def pin_for(self, cited_file: str) -> str | None:
+        """The one pin a citation may be resolved at; ``None`` if that pin is not declared."""
+
+        if cited_file.startswith(LATE_LAYOUT_PREFIX):
+            return self.late_pin
+        return self.pin
 
     @staticmethod
     def _parse_source(repository_path: str, text: str) -> PinnedSource:
@@ -196,9 +230,15 @@ class Resolver:
             if "\n" in cited_file or "\r" in cited_file:
                 self.errors[cited_file] = "source path contains a newline"
                 continue
+            pin = self.pin_for(cited_file)
+            if pin is None:
+                self.errors[cited_file] = (
+                    f"{cited_file} uses the lean/ layout but no \\latecommit pin is declared"
+                )
+                continue
             repository_path = self.repository_path(cited_file)
             rows.append(
-                (cited_file, repository_path, f"{self.pin}:{repository_path}")
+                (cited_file, repository_path, f"{pin}:{repository_path}")
             )
         if not rows:
             return
@@ -275,7 +315,7 @@ class Resolver:
             rendered = ", ".join(f"{name}:{line}" for name, line in candidates)
             reason = f"ambiguous ({rendered})" if candidates else "not found"
             raise CoordinateError(
-                f"{cited_name} in {source.path} at {self.pin}: {reason}"
+                f"{cited_name} in {source.path} at {self.pin_for(cited_file)}: {reason}"
             )
         return candidates[0][1]
 
@@ -330,7 +370,7 @@ def render_file(
 
 def render_all() -> tuple[dict[Path, str], int, int, str]:
     pin = pinned_commit()
-    resolver = Resolver(pin)
+    resolver = Resolver(pin, late_pinned_commit())
     source_texts = {
         path: path.read_text(encoding="utf-8")
         for directory in PARTS_DIRS

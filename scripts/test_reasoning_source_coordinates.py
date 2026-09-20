@@ -159,13 +159,71 @@ def main() -> int:
                 )
             else:
                 raise AssertionError("missing declaration citation was accepted")
+
+            # A source that postdates the first pin lives under lean/ and is cited with
+            # that prefix.  It must resolve at \\latecommit and never at \\commit.
+            late_source = root / "lean" / "ErdosProblems" / "Late.lean"
+            late_source.parent.mkdir(parents=True)
+            late_source.write_text(
+                "namespace Late\n\ntheorem lateDeclaration : True := by trivial\n\nend Late\n",
+                encoding="utf-8",
+            )
+            run_git(root, "add", "lean/ErdosProblems/Late.lean")
+            run_git(root, "commit", "--quiet", "-m", "late source")
+            late_pin = run_git(root, "rev-parse", "HEAD")
+            named.write_text(
+                r"\lean{Sample.pinnedDeclaration}{Sample.lean:4} "
+                r"\lean{Late.lateDeclaration}{lean/ErdosProblems/Late.lean:1}" + "\n",
+                encoding="utf-8",
+            )
+            try:
+                coordinates.render_all()
+            except coordinates.CoordinateError as exc:
+                require(
+                    "latecommit" in str(exc),
+                    "undeclared late pin failure did not name the missing pin",
+                )
+            else:
+                raise AssertionError("lean/ citation was accepted without a late pin")
+            for directory in parts_dirs:
+                (directory / "preamble.tex").write_text(
+                    rf"\newcommand{{\commit}}{{{pin}}}" + "\n"
+                    + rf"\newcommand{{\latecommit}}{{{late_pin}}}" + "\n",
+                    encoding="utf-8",
+                )
+            rendered_late, late_declarations, _, resolved_pin = coordinates.render_all()
+            require(resolved_pin == pin, "the late pin displaced the first pin")
+            require(late_declarations == 2, "late-layout declaration was not counted")
+            require(
+                r"{lean/ErdosProblems/Late.lean:3}" in rendered_late[named],
+                "late-layout declaration coordinate was not refreshed at the late pin",
+            )
+            require(
+                r"{Sample.lean:4}" in rendered_late[named],
+                "first-pin citation changed when a late pin was declared",
+            )
+            (parts_dirs[1] / "preamble.tex").write_text(
+                rf"\newcommand{{\commit}}{{{pin}}}" + "\n"
+                + rf"\newcommand{{\latecommit}}{{{pin}}}" + "\n",
+                encoding="utf-8",
+            )
+            try:
+                coordinates.render_all()
+            except coordinates.CoordinateError as exc:
+                require(
+                    "different late formal-source pin" in str(exc),
+                    "disagreeing late pins were not reported",
+                )
+            else:
+                raise AssertionError("disagreeing late pins were accepted")
         finally:
             coordinates.ROOT = original_root
             coordinates.PARTS_DIRS = original_parts_dirs
 
     print(
         "test_reasoning_source_coordinates: stale declarations refresh to the pinned "
-        "line, authored locations survive, and missing declarations fail"
+        "line, authored locations survive, missing declarations fail, and lean/ "
+        "citations resolve only at the declared late pin"
     )
     return 0
 
