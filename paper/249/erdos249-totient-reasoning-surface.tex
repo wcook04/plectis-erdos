@@ -565,7 +565,7 @@ Definition~\ref{defn:sep}.
 \label{lem:gsound}
 Let $c:\N\to\N$ satisfy $c(n)\le n$ for all $n$. For $h,N,L\in\N$,
 $\mathcal C_c(h,N,L) \Rightarrow R^{c}_{N+h} - R^{c}_{N} \notin \Z$.
-\coord{binary-digit} \scale{uniform} \ev{Math}
+\coord{binary-digit} \scale{uniform} \ev{Lean}
 \end{lem}
 
 \begin{proof}
@@ -594,7 +594,7 @@ $T_c = p/(2^{e}m)$ with $p\in\Z$, $e\ge0$ and $m$ a positive odd integer,
 and if $h\ge1$ satisfies
 $m\mid 2^h-1$, then
 $R^{c}_{N+h} - R^{c}_{N} \in \Z$ for every $N \ge e$.
-\coord{binary-digit} \scale{cofinal} \ev{Math}
+\coord{binary-digit} \scale{cofinal} \ev{Lean}
 \end{lem}
 
 \begin{proof}
@@ -606,14 +606,15 @@ The right side is integral because $2^e\mid2^N$ and $m\mid2^h-1$.
 \end{proof}
 
 \begin{rem}
-Lemmas~\ref{lem:gsound} and~\ref{lem:gperiod} are proved above in
-ordinary mathematics. The linked sources contain their totient instances
-and the generic rationality-to-tail-orbit implication. The composition used
-in the next proof is presented as an ordinary argument, not as a newly
-checked generic Lean theorem.
-\lean{Erdos249257.tail\_diff\_notMem\_int\_of\_certifiedKill}{TotientTailPeriodKiller.lean:262}
-\lean{Erdos249257.eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358}
-\lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:426}
+Lemmas~\ref{lem:gsound} and~\ref{lem:gperiod} are also checked for every
+coefficient sequence satisfying $c(n)\le n$. The formal proofs use the
+true-tail recurrence and the bound $0\le R^c_N\le N+2$; the residue
+certificate keeps the full finite discrepancy. The tail-period proof uses
+$m\mid2^h-1$ directly, so oddness of $m$ is only needed when choosing a
+period from the denominator. The composition in the next proof remains
+an ordinary argument.
+\lean{ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.certificate\_sound}{ErdosProblems/Erdos249/PaperCompleteR20/GenericTailCertificates.lean:66}
+\lean{ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.generic\_tail\_period}{ErdosProblems/Erdos249/PaperCompleteR20/GenericTailCertificates.lean:98}
 \end{rem}
 
 \begin{thm}[A rational sequence agreeing with any finite totient prefix]
