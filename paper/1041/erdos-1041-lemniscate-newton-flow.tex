@@ -452,8 +452,7 @@ Scaling by a containing radius $0<R<1$ gives the strict bound $2R<2$.
 The \href{erdos1041-lemniscate-reasoning-surface.pdf\#two-nearest-root-distance}{companion's full distance argument}
 derives the two displayed estimates without assuming $|f(c)|\le1$.
 The source is
-\href{https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md}{the proof for the two nearest roots}; Lean checks its real-inequality core,
-not the ordinary root-disc reduction.
+\href{https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md}{the proof for the two nearest roots}; Lean now checks the \href{https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean\#L31}{strict distance bound from the critical polynomial}, including the root-disc reduction and the choice of the two nearest indices.
 \end{proof}
 
 The distance estimate alone does not prove containment of either segment.

@@ -3117,8 +3117,7 @@ $(x-1)(x-(n-1))\le0$. This contradiction proves the closed-disc bound.
 For roots in the open unit disc, scaling by a containing radius
 $0<R<1$ gives $d_1+d_2\le2R<2$.
 This is the argument in
-\href{https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md}{the proof for the two nearest roots}; Lean checks its real-inequality core.
-The root-disc reduction above is an ordinary complex-variable argument.
+\href{https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md}{the proof for the two nearest roots}; Lean now checks the \href{https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean\#L31}{strict distance bound from the critical polynomial}, including the root-disc reduction and the choice of the two nearest indices.
 
 This argument selects the two nearest roots but does not put their
 segments inside a polynomial sublevel set. The next calculation supplies
