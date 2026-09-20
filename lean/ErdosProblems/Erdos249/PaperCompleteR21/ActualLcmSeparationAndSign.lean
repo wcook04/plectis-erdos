@@ -1,5 +1,6 @@
 import Erdos249257.TotientActualLcmOrbitSeparation
 import Erdos249257.TotientActualLcmOrbitSign
+import Mathlib.Analysis.SpecificLimits.Normed
 
 /-! Paper-form restatements of the separation and sign block of the long #249
 manuscript: the global-to-local identity (`prop:SEP-01-inv`), the rational
@@ -42,6 +43,36 @@ theorem abs_actualLcmTailOrbit_sub_rawApprox_lt_explicit (a q : ℕ) :
   simpa [actualLcmTailOrbit, actualLcmHeight, actualLcmRawErrorRadius] using
     abs_actualLcmTailOrbit_sub_rawApprox_lt a q
 
+/-- **A rational approximation with an error bound** (`prop:SEP-02-inv`),
+second clause: for fixed `a` the error bound `ε_{a,q} = (2H+2q+3)/2^(2q+1)`
+tends to zero as `q → ∞`.  No optimality is asserted. -/
+theorem tendsto_actualLcmRawErrorRadius_atTop_nhds_zero (a : ℕ) :
+    Filter.Tendsto
+      (fun q : ℕ =>
+        ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1))
+      Filter.atTop (nhds 0) := by
+  have h1 : Filter.Tendsto (fun q : ℕ => ((1 : ℝ) / 4) ^ q)
+      Filter.atTop (nhds 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+  have h2 : Filter.Tendsto (fun q : ℕ => (q : ℝ) * ((1 : ℝ) / 4) ^ q)
+      Filter.atTop (nhds 0) :=
+    tendsto_self_mul_const_pow_of_lt_one (by norm_num) (by norm_num)
+  have hsum :=
+    (h1.const_mul (((2 * periodLcm (2 ^ a) + 3 : ℕ) : ℝ) / 2)).add h2
+  rw [mul_zero, add_zero] at hsum
+  refine hsum.congr (fun q => ?_)
+  have hfour : (4 : ℝ) ^ q = (2 : ℝ) ^ (2 * q) := by
+    rw [pow_mul]; norm_num
+  have hpow : (2 : ℝ) ^ (2 * q + 1) = 2 * 4 ^ q := by
+    rw [hfour, pow_succ]; ring
+  have hone : ((1 : ℝ) / 4) ^ q = 1 / 4 ^ q := by
+    rw [div_pow, one_pow]
+  have hne : (4 : ℝ) ^ q ≠ 0 := by positivity
+  rw [hpow, hone]
+  push_cast
+  field_simp
+  ring
+
 /-! ### `prop:SGN-01` -- unconditional positivity -/
 
 /-- **Unconditional positivity** (`prop:SGN-01`).
@@ -67,9 +98,10 @@ theorem actualLcmTailOrbit_pos {a : ℕ} (ha : 8 ≤ a) :
 Let `a, J, K` with `a ≥ 8`, `H = H(2^a)`, `J+K+(a+6) < 2·2^a` and
 `2H+J+K+2 < 2^K`.  If `R_{2H+J} - R_{H+J} ∈ ℤ`, then
 `D(H, H+J, K) mod 2^K = 2^K - (R_{2H+J+K} - R_{H+J+K})` and
-`0 < R_{2H+J+K} - R_{H+J+K} < 2H+J+K+2`: the later tail difference is a
-positive integer whose least nonnegative residue lies near `2^K`.  Positivity
-alone therefore does not prove nonintegrality. -/
+`0 < R_{2H+J+K} - R_{H+J+K} < 2H+J+K+2`.  The later tail difference is a
+positive integer; its negative is the representative of `D` near zero (final
+clause), while the least nonnegative residue lies near `2^K` (penultimate
+clause).  Positivity alone therefore does not prove nonintegrality. -/
 theorem actualLcm_integral_forces_topEdgeResidue_paper {a J K : ℕ} (ha : 8 ≤ a)
     (hshort : J + K + (a + 6) < 2 * 2 ^ a)
     (hroom : ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ K)
@@ -83,7 +115,14 @@ theorem actualLcm_integral_forces_topEdgeResidue_paper {a J K : ℕ} (ha : 8 ≤
               % (2 : ℤ) ^ K
             = (2 : ℤ) ^ K - e
         ∧ 0 < e
-        ∧ e < ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) := by
+        ∧ e < ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
+        ∧ ((2 : ℤ) ^ K - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
+              < windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K
+                  % (2 : ℤ) ^ K
+            ∧ windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K
+                  % (2 : ℤ) ^ K < (2 : ℤ) ^ K)
+        ∧ (2 : ℤ) ^ K ∣
+            windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K + e := by
   obtain ⟨d, hd⟩ := hint
   obtain ⟨h1, h2, h3⟩ := actualLcm_integral_forces_topEdgeResidue ha hshort hd hroom
   have hd' : (d : ℝ)
@@ -93,14 +132,24 @@ theorem actualLcm_integral_forces_topEdgeResidue_paper {a J K : ℕ} (ha : 8 ≤
         = 2 * periodLcm (2 ^ a) + J from by omega]
     exact hd
   have htrack := carryOrbit_eq_tail_diff hd' K
-  refine ⟨carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) d K, ?_, h1, ?_, ?_⟩
+  refine ⟨carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) d K, ?_, h1, ?_, ?_,
+    ⟨h2, h3⟩, ?_⟩
   · rw [htrack, show periodLcm (2 ^ a) + J + K + periodLcm (2 ^ a)
       = 2 * periodLcm (2 ^ a) + J + K from by omega]
   · linarith
   · linarith
+  · refine ⟨windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K
+      / (2 : ℤ) ^ K + 1, ?_⟩
+    have hdm := Int.emod_add_ediv
+      (windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K)
+      ((2 : ℤ) ^ K)
+    rw [h1] at hdm
+    rw [mul_add, mul_one]
+    linarith
 
 #print axioms actualLcmTailOrbit_global_to_local
 #print axioms abs_actualLcmTailOrbit_sub_rawApprox_lt_explicit
+#print axioms tendsto_actualLcmRawErrorRadius_atTop_nhds_zero
 #print axioms actualLcm_tailDiff_shift_pos_paper
 #print axioms actualLcmTailOrbit_pos
 #print axioms actualLcm_integral_forces_topEdgeResidue_paper

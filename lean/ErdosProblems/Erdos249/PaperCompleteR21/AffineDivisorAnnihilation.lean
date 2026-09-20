@@ -42,6 +42,16 @@ theorem transportResidueKernel_eq_mobiusTermKernel {d N : ℕ}
   field_simp
   ring
 
+/-- **`K_d(mH)` is affine in the multiplier `m`** (`catalogue:mob:e3`,
+second sentence): slope `H/(d(2ᵈ-1))`, intercept `2ᵈ/(2ᵈ-1)²`. -/
+theorem mobiusTermKernel_affine_in_multiplier (d H m : ℕ) :
+    mobiusTermKernel d (m * H)
+      = (m : ℝ) * ((H : ℝ) / ((d : ℝ) * ((2 : ℝ) ^ d - 1)))
+        + (2 : ℝ) ^ d / (((2 : ℝ) ^ d - 1) ^ 2) := by
+  simp only [mobiusTermKernel]
+  push_cast
+  ring
+
 /-- **Affine annihilation** (`catalogue:mob:e3`, second sentence): a finite
 family of real coefficients whose zeroth and first moments vanish kills every
 `K_d` term along the ray `H ↦ mH`. -/
@@ -82,6 +92,36 @@ theorem joint35_coefficient_moments :
       ∧ ((3 : ℝ) * 5 - 3 * 3 - 2 * 5 + 4 = 0)
       ∧ ((9 : ℝ) * 25 - 3 * 9 - 2 * 25 + 4 = 152) := by
   refine ⟨by norm_num, by norm_num, by norm_num, by norm_num, by norm_num, by norm_num⟩
+
+/-- **The finite window `U`** (`catalogue:mob:e3`, second display): the
+four-vertex window is exactly the manuscript's
+`U = ∑_{j=1}^{L} (φ(15H+j) - 3φ(3H+j) - 2φ(5H+j) + 4φ(H+j))·2^{L-j}`. -/
+theorem joint35ConeWindow_eq (H L : ℕ) :
+    joint35ConeWindow H L
+      = ∑ j ∈ Finset.range L,
+          ((Nat.totient (15 * H + (j + 1)) : ℤ)
+            - 3 * (Nat.totient (3 * H + (j + 1)) : ℤ)
+            - 2 * (Nat.totient (5 * H + (j + 1)) : ℤ)
+            + 4 * (Nat.totient (H + (j + 1)) : ℤ)) * 2 ^ (L - (j + 1)) := by
+  unfold joint35ConeWindow windowDiscrepancy
+  rw [Finset.mul_sum, Finset.mul_sum, ← Finset.sum_sub_distrib, ← Finset.sum_sub_distrib]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  have e15 : H + 14 * H + 1 + j = 15 * H + (j + 1) := by omega
+  have e3' : H + 2 * H + 1 + j = 3 * H + (j + 1) := by omega
+  have e5 : H + 4 * H + 1 + j = 5 * H + (j + 1) := by omega
+  have e1 : H + 1 + j = H + (j + 1) := by omega
+  have ep : L - 1 - j = L - (j + 1) := by omega
+  rw [e15, e3', e5, e1, ep]
+  ring
+
+/-- **The tail enclosure `0 ≤ R_n ≤ n+1`** (`catalogue:mob:e3`), the estimate
+from which the error bound is derived. -/
+theorem totientTail_enclosure (n : ℕ) (hn : 1 ≤ n) :
+    0 ≤ totientTail n ∧ totientTail n ≤ (n : ℝ) + 1 := by
+  refine ⟨(totientTail_pos n).le, ?_⟩
+  have h := totientTail_le_succ n hn
+  push_cast at h
+  linarith
 
 /-- **The truncation at depth `L`** (`catalogue:mob:e3`, second display): the
 finite window `U` is `joint35ConeWindow H L`, and
@@ -159,6 +199,9 @@ theorem joint35_nonintegral_of_separated_window {H L : ℕ} (hH : 1 ≤ H)
   exact h
 
 #print axioms transportResidueKernel_eq_mobiusTermKernel
+#print axioms mobiusTermKernel_affine_in_multiplier
+#print axioms joint35ConeWindow_eq
+#print axioms totientTail_enclosure
 #print axioms mobiusTermKernel_moment_annihilation
 #print axioms joint35_mobiusTermKernel_zero
 #print axioms joint35_coefficient_moments

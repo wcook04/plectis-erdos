@@ -18,15 +18,18 @@ open Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine
 
 /-- The integral overlap factor, written with an exact rational division:
 `totientOverlapFactor j x = gcd(j,x)·φ(j)/φ(gcd(j,x))`. -/
+private lemma gcd_pos_of_left_pos {j : ℕ} (x : ℕ) (hj : 0 < j) :
+    0 < Nat.gcd j x := by
+  rcases Nat.eq_zero_or_pos (Nat.gcd j x) with h | h
+  · rw [Nat.gcd_eq_zero_iff] at h
+    omega
+  · exact h
+
 private lemma cast_totientOverlapFactor {j : ℕ} (x : ℕ) (hj : 0 < j) :
     ((totientOverlapFactor j x : ℕ) : ℚ)
       = (Nat.gcd j x : ℚ) * (Nat.totient j : ℚ)
           / (Nat.totient (Nat.gcd j x) : ℚ) := by
-  have hg : 0 < Nat.gcd j x := by
-    rcases Nat.eq_zero_or_pos (Nat.gcd j x) with h | h
-    · rw [Nat.gcd_eq_zero_iff] at h
-      omega
-    · exact h
+  have hg : 0 < Nat.gcd j x := gcd_pos_of_left_pos x hj
   have hdvd : Nat.totient (Nat.gcd j x) ∣ Nat.totient j :=
     Nat.totient_dvd_of_dvd (Nat.gcd_dvd_left j x)
   have hne : ((Nat.totient (Nat.gcd j x) : ℚ)) ≠ 0 := by
@@ -59,6 +62,39 @@ theorem lcmRayArithmeticLetter_eq_totient_difference (t j : ℕ) :
   rw [show periodLcm t + j + periodLcm t = 2 * periodLcm t + j from by omega]
 
 /-! ### `prop:AR-04-inv` -- the exact totient difference on an LCM progression -/
+
+/-- **The exact totient difference on an LCM progression** (`prop:AR-04-inv`),
+the product law the identity follows from:
+`φ(jx) = φ(j)φ(x)gcd(j,x)/φ(gcd(j,x))`, which retains all primes shared by
+`j` and `x`. -/
+theorem totient_mul_eq_totient_mul_gcd_div_totient_gcd {j x : ℕ} (hj : 0 < j)
+    (hx : 0 < x) :
+    (Nat.totient (j * x) : ℚ)
+      = (Nat.totient j : ℚ) * (Nat.totient x : ℚ) * (Nat.gcd j x : ℚ)
+          / (Nat.totient (Nat.gcd j x) : ℚ) := by
+  have h := totient_mul_eq_overlapFactor_mul j x hx
+  have hQ : ((Nat.totient (j * x) : ℕ) : ℚ)
+      = ((totientOverlapFactor j x : ℕ) : ℚ) * (Nat.totient x : ℚ) := by
+    rw [h]; push_cast; ring
+  rw [hQ, cast_totientOverlapFactor x hj]
+  ring
+
+/-- **The exact totient difference on an LCM progression** (`prop:AR-04-inv`),
+well-formedness of the product formula: for a divisor offset `j ∣ H` we have
+`j ≥ 1` because `H > 0`, so both denominators `φ(g₁)` and `φ(g₂)` are
+nonzero. -/
+theorem lcmRay_divisor_denominators_pos {t j : ℕ} (hjdvd : j ∣ periodLcm t) :
+    0 < j
+      ∧ 0 < Nat.totient (Nat.gcd j (periodLcm t / j + 1))
+      ∧ 0 < Nat.totient (Nat.gcd j (2 * (periodLcm t / j) + 1)) := by
+  have hHpos : 0 < periodLcm t := periodLcm_pos t
+  have hjpos : 0 < j := by
+    rcases Nat.eq_zero_or_pos j with rfl | h
+    · exact absurd (Nat.eq_zero_of_zero_dvd hjdvd) hHpos.ne'
+    · exact h
+  exact ⟨hjpos,
+    Nat.totient_pos.mpr (gcd_pos_of_left_pos _ hjpos),
+    Nat.totient_pos.mpr (gcd_pos_of_left_pos _ hjpos)⟩
 
 /-- **The exact totient difference on an LCM progression** (`prop:AR-04-inv`),
 divisor case.  With `H = H(t)`, `j ∣ H`, `a = H/j`,
@@ -244,6 +280,8 @@ theorem weighted_shortWindow_band_iff_certifiedKill (t L : ℕ) :
     exact ⟨by linarith, by linarith⟩
 
 #print axioms lcmRayArithmeticLetter_eq_totient_difference
+#print axioms totient_mul_eq_totient_mul_gcd_div_totient_gcd
+#print axioms lcmRay_divisor_denominators_pos
 #print axioms lcmRay_divisor_product_formula
 #print axioms lcmRay_nondivisor_literal
 #print axioms lcmRay_divisor_clean_formula

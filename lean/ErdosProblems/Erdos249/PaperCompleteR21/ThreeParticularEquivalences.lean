@@ -48,5 +48,14 @@ theorem three_particular_equivalences :
   have h := fullTarget_primeAdjunction_diamond_iff_root H p q hp hq
   simpa only [scaleFullTargetHit_iff_integral, scaleDiagonalTailDifference] using h
 
+/-- **The converse sample's numerical requirement** (`prop:b2` (b)): with the
+two-point sample `T = {N, N+1}` and `P = {(N,N+1),(N+1,N)}`, so `|T| = 2` and
+`|P| = 2`, and with `δ = 9/10`, the counted requirement `2|T|²/5 ≤ |P|δ²`
+reads `8/5 ≤ 2(9/10)²`, and it holds. -/
+theorem two_point_sample_numerical_requirement :
+    2 * ((2 : ℝ)) ^ 2 / 5 = 8 / 5 ∧ (8 : ℝ) / 5 ≤ 2 * (9 / 10) ^ 2 :=
+  ⟨by norm_num, by norm_num⟩
+
 #print axioms three_particular_equivalences
+#print axioms two_point_sample_numerical_requirement
 end ErdosProblems.Erdos249.PaperCompleteR21

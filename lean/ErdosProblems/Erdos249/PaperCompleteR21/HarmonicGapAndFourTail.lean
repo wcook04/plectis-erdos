@@ -125,6 +125,28 @@ theorem four_tail_error_bound (H p L : ℕ) :
   rw [hrw]
   simpa [primeJumpSharpRadius] using hbound
 
+/-- The tail enclosure used for the error bound: `0 ≤ R_n ≤ n + 2`. -/
+theorem totientTail_bounds (n : ℕ) :
+    0 ≤ totientTail n ∧ totientTail n ≤ (n : ℝ) + 2 :=
+  ⟨(totientTail_pos n).le, totientTail_le n⟩
+
+/-- **The converse direction.**  Rationality makes both diagonal differences
+occurring in `J(H(t),p)` integral for every sufficiently large `t`. -/
+theorem rational_forces_four_tail_diagonals_integral
+    (hrat : ¬ Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
+    ∃ t₁ : ℕ, ∀ t, t₁ ≤ t → ∀ p : ℕ, 0 < p →
+      (totientTail (2 * periodLcm t) - totientTail (periodLcm t) ∈
+          Set.range ((↑) : ℤ → ℝ)) ∧
+        (totientTail (2 * (p * periodLcm t)) - totientTail (p * periodLcm t) ∈
+          Set.range ((↑) : ℤ → ℝ)) := by
+  obtain ⟨t₁, hflat⟩ := rational_totient_series_forces_lcm_cone_flatness hrat
+  refine ⟨t₁, fun t ht p hp => ⟨?_, ?_⟩⟩
+  · have hone := hflat t ht 1 1 (by omega)
+    rwa [show 1 * periodLcm t + 1 * periodLcm t = 2 * periodLcm t from by ring,
+      one_mul] at hone
+  · have hpp := hflat t ht p p hp
+    rwa [show p * periodLcm t + p * periodLcm t = 2 * (p * periodLcm t) from by ring] at hpp
+
 /-- **The residue criterion.**  If `B < W mod 2^L < 2^L - B` then
 `J(H,p) ∉ ℤ`. -/
 theorem four_tail_criterion_sound {H p L : ℕ}
@@ -181,6 +203,8 @@ end ErdosProblems.Erdos249.PaperCompleteR21
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.four_tail_window_eq
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.four_tail_combination_eq
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.four_tail_error_bound
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.totientTail_bounds
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.four_tail_criterion_sound
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_four_tail_supply
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.four_tail_checked_instance

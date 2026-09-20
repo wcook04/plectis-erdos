@@ -54,5 +54,40 @@ theorem twoAdic_pulse_construction_never_certifies
   rw [hcastsub] at hleft
   linarith
 
+/-- **The defining congruence and its consequence** (`prop:b4`, second
+sentence): the prime supplied by the pulse construction satisfies
+`p ≡ 1 + 2^{K-1} (mod 2^K)`, hence `p ≥ 1 + 2^{K-1}`. -/
+theorem twoAdic_pulse_defining_congruence (H K B : ℕ) (hK : 2 ≤ K) (hHK : K < H) :
+    ∃ p : ℕ, B < p ∧ H + K < p ∧ p.Prime ∧
+      p ≡ 1 + 2 ^ (K - 1) [MOD 2 ^ K] ∧ 1 + 2 ^ (K - 1) ≤ p := by
+  obtain ⟨p, hpB, hpHK, hp, hcong, -, -⟩ :=
+    exists_prime_totient_twoAdic_pulse_divisors H K B hK hHK
+  refine ⟨p, hpB, hpHK, hp, hcong, ?_⟩
+  have h2 : 2 ≤ 2 ^ (K - 1) := by
+    calc (2 : ℕ) = 2 ^ 1 := (pow_one 2).symm
+      _ ≤ 2 ^ (K - 1) := Nat.pow_le_pow_right (by norm_num) (by omega)
+  have hsplit : (2 : ℕ) ^ K = 2 * 2 ^ (K - 1) := by
+    conv_lhs => rw [show K = (K - 1) + 1 by omega]
+    rw [pow_succ]
+    ring
+  have hlt : 1 + 2 ^ (K - 1) < 2 ^ K := by omega
+  have hmod : (1 + 2 ^ (K - 1)) % 2 ^ K = 1 + 2 ^ (K - 1) := Nat.mod_eq_of_lt hlt
+  have hp' : p % 2 ^ K = 1 + 2 ^ (K - 1) := by
+    have hthis : p % 2 ^ K = (1 + 2 ^ (K - 1)) % 2 ^ K := hcong
+    rw [hthis, hmod]
+  calc 1 + 2 ^ (K - 1) = p % 2 ^ K := hp'.symm
+    _ ≤ p := Nat.mod_le p (2 ^ K)
+
+/-- **The error bound exceeds the residue** (`prop:b4`, third sentence): at
+`N = p - K`, `h = H`, `L = K` the certificate's error bound `N + h + L + 2`
+equals `p + H + 2`, and `p > 2^{K-1}` makes it exceed the residue
+`2^{K-1}`. -/
+theorem twoAdic_pulse_error_bound (H K p : ℕ) (hKp : K ≤ p)
+    (hp : 2 ^ (K - 1) < p) :
+    (p - K) + H + K + 2 = p + H + 2 ∧ 2 ^ (K - 1) < p + H + 2 :=
+  ⟨by omega, by omega⟩
+
 #print axioms twoAdic_pulse_construction_never_certifies
+#print axioms twoAdic_pulse_defining_congruence
+#print axioms twoAdic_pulse_error_bound
 end ErdosProblems.Erdos249.PaperCompleteR21

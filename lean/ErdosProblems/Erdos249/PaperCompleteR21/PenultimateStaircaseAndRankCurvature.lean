@@ -48,7 +48,19 @@ theorem penultimate_shortWindow_difference_eq_half {a J K m : ℕ} (ha : 8 ≤ a
     ((Nat.totient (2 * periodLcm (2 ^ a) + (J + K - 1)) : ℤ)
           - (Nat.totient (periodLcm (2 ^ a) + (J + K - 1)) : ℤ))
         = (2 : ℤ) ^ (m - 1)
-      ∧ (2 : ℤ) ^ m < 2 * ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) := by
+      ∧ (2 : ℤ) ^ m < 2 * ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
+      ∧ (4 : ℤ) ≤ ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
+      ∧ 3 ≤ m := by
+  have hHpos : 0 < periodLcm (2 ^ a) := periodLcm_pos (2 ^ a)
+  have hB4 : (4 : ℤ) ≤ ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) := by
+    have hnat : (4 : ℕ) ≤ 2 * periodLcm (2 ^ a) + J + K + 2 := by omega
+    exact_mod_cast hnat
+  have hm3 : 3 ≤ m := by
+    by_contra hnot
+    have hdvd : (2 : ℤ) ^ m ∣ (2 : ℤ) ^ 2 := pow_dvd_pow 2 (by omega)
+    have hle : (2 : ℤ) ^ m ≤ (2 : ℤ) ^ 2 := Int.le_of_dvd (by norm_num) hdvd
+    norm_num at hle
+    linarith
   have hpunc : ActualLcmTerminalPuncturedDyadicStaircase a J K m := by
     refine ⟨hmPos, hmK, ?_, hroom, ?_⟩
     · intro r hr
@@ -58,15 +70,38 @@ theorem penultimate_shortWindow_difference_eq_half {a J K m : ℕ} (ha : 8 ≤ a
     · rw [staircase_letter_eq_totient_difference]
       exact hlast
   obtain ⟨h1, h2⟩ := puncturedDyadicStaircase_penultimate_eq_half ha hshort hpunc
-  refine ⟨?_, h2⟩
+  refine ⟨?_, h2, hB4, hm3⟩
   rw [staircase_letter_eq_totient_difference] at h1
   exact h1
 
+/-- **The penultimate term of a partial divisibility pattern**
+(`prop:TE-02-inv`), final clause: since the modulus must lie in the strict
+interval `B < 2^m < 2B`, there is at most one possible power of two. -/
+theorem dyadicScale_unique_in_open_interval {B : ℤ} {m₁ m₂ : ℕ}
+    (h₁ : B < (2 : ℤ) ^ m₁) (h₁' : (2 : ℤ) ^ m₁ < 2 * B)
+    (h₂ : B < (2 : ℤ) ^ m₂) (h₂' : (2 : ℤ) ^ m₂ < 2 * B) :
+    m₁ = m₂ := by
+  by_contra hne
+  rcases Nat.lt_or_ge m₁ m₂ with hlt | hge
+  · have hdvd : (2 : ℤ) ^ (m₁ + 1) ∣ (2 : ℤ) ^ m₂ := pow_dvd_pow 2 (by omega)
+    have hle : (2 : ℤ) ^ (m₁ + 1) ≤ (2 : ℤ) ^ m₂ :=
+      Int.le_of_dvd (by positivity) hdvd
+    rw [pow_succ] at hle
+    linarith
+  · have hlt : m₂ < m₁ := by omega
+    have hdvd : (2 : ℤ) ^ (m₂ + 1) ∣ (2 : ℤ) ^ m₁ := pow_dvd_pow 2 (by omega)
+    have hle : (2 : ℤ) ^ (m₂ + 1) ≤ (2 : ℤ) ^ m₁ :=
+      Int.le_of_dvd (by positivity) hdvd
+    rw [pow_succ] at hle
+    linarith
+
 /-! ### `prop:TE-03-inv` -- an equivalent test using two residue bits -/
 
-/-- The mixed dyadic guard is exactly the statement that the two leading bits
-of the depth-`(b+2)` residue are `01` or `10`. -/
-private lemma dyadicMixedGuard_iff_twoBitBand (A : ℤ) (b : ℕ) :
+/-- **An equivalent test using two residue bits** (`prop:TE-03-inv`), the
+bit-reading clause: the mixed dyadic guard is exactly the statement that the
+depth-`(b+2)` residue lies in `[2^b, 3·2^b)`, that is, its two leading bits
+are `01` or `10`. -/
+theorem dyadicMixedGuard_iff_twoBitBand (A : ℤ) (b : ℕ) :
     DyadicMixedGuard A b ↔
       ((2 : ℤ) ^ b ≤ A % (2 : ℤ) ^ (b + 2)
         ∧ A % (2 : ℤ) ^ (b + 2) < 3 * (2 : ℤ) ^ b) := by
@@ -113,6 +148,69 @@ theorem exists_certifiedKill_iff_twoBitResidueTest (h N : ℕ) :
 
 /-! ### `prop:FR-02-inv` -- the factor in a second difference -/
 
+/-- If every prime divisor of `j` divides `x`, then `j` is coprime to `x+1`. -/
+private lemma curvature_gcd_succ_eq_one {j x : ℕ}
+    (hx : ∀ p : ℕ, Nat.Prime p → p ∣ j → p ∣ x) :
+    Nat.gcd j (x + 1) = 1 := by
+  by_contra hne
+  obtain ⟨p, hp, hpd⟩ := Nat.exists_prime_and_dvd hne
+  have hpj : p ∣ j := hpd.trans (Nat.gcd_dvd_left _ _)
+  have hp1 : p ∣ x + 1 := hpd.trans (Nat.gcd_dvd_right _ _)
+  have hpx : p ∣ x := hx p hp hpj
+  have hone : p ∣ 1 := (Nat.dvd_add_right hpx).mp hp1
+  exact hp.one_lt.ne' (Nat.dvd_one.mp hone)
+
+/-- **The factor in a second difference** (`prop:FR-02-inv`), the clean-window
+structure the extra factor of two rests on.  With `A = H_a/j`: the square
+bound gives `j ∣ H_a` and that every prime divisor of `j` divides `A`, hence
+`gcd(j, qA+1) = 1` for `q = 1, 2, 3`; also `2j ≤ 2^a`, so `2j ∣ H_a` and
+`A ≥ 2` is even; the three arguments `qA+1` are therefore odd and greater
+than two, and all three totients are even. -/
+theorem fixedRank_cleanWindow_structure {a j : ℕ} (ha : 4 ≤ a) (hj : 0 < j)
+    (hsq : j * j ≤ 2 ^ a) :
+    j ∣ periodLcm (2 ^ a)
+      ∧ (∀ p : ℕ, Nat.Prime p → p ∣ j → p ∣ periodLcm (2 ^ a) / j)
+      ∧ 2 * j ≤ 2 ^ a
+      ∧ 2 * j ∣ periodLcm (2 ^ a)
+      ∧ 2 ≤ periodLcm (2 ^ a) / j
+      ∧ Even (periodLcm (2 ^ a) / j)
+      ∧ (∀ q : ℕ, 0 < q → q ≤ 3 →
+          Nat.gcd j (q * (periodLcm (2 ^ a) / j) + 1) = 1
+            ∧ Odd (q * (periodLcm (2 ^ a) / j) + 1)
+            ∧ 2 < q * (periodLcm (2 ^ a) / j) + 1
+            ∧ Even (Nat.totient (q * (periodLcm (2 ^ a) / j) + 1))) := by
+  obtain ⟨hjdvd, hclean⟩ := clean_periodLcm_divisor_of_sq_le hj hsq
+  have hHpos : 0 < periodLcm (2 ^ a) := periodLcm_pos (2 ^ a)
+  have hpow16 : (16 : ℕ) ≤ 2 ^ a := by
+    calc (16 : ℕ) = 2 ^ 4 := by norm_num
+      _ ≤ 2 ^ a := Nat.pow_le_pow_right (by norm_num) ha
+  have htwoJLe : 2 * j ≤ 2 ^ a := by
+    rcases Nat.lt_or_ge j 2 with hj2 | hj2
+    · omega
+    · have hjj : 2 * j ≤ j * j := Nat.mul_le_mul hj2 (le_refl j)
+      omega
+  have htwoJdvd : 2 * j ∣ periodLcm (2 ^ a) := dvd_periodLcm (by omega) htwoJLe
+  have h2jle : 2 * j ≤ periodLcm (2 ^ a) := Nat.le_of_dvd hHpos htwoJdvd
+  have hAge2 : 2 ≤ periodLcm (2 ^ a) / j := (Nat.le_div_iff_mul_le hj).2 (by omega)
+  have hAeven : Even (periodLcm (2 ^ a) / j) := by
+    obtain ⟨k, hk⟩ := htwoJdvd
+    have hk' : periodLcm (2 ^ a) = j * (2 * k) := by rw [hk]; ring
+    have hdiv : periodLcm (2 ^ a) / j = 2 * k := by
+      rw [hk', Nat.mul_div_cancel_left _ hj]
+    exact ⟨k, by omega⟩
+  refine ⟨hjdvd, hclean, htwoJLe, htwoJdvd, hAge2, hAeven, ?_⟩
+  intro q hq _hq3
+  have hgcd : Nat.gcd j (q * (periodLcm (2 ^ a) / j) + 1) = 1 :=
+    curvature_gcd_succ_eq_one (fun p hp hpj => (hclean p hp hpj).mul_left q)
+  have hmul : 1 * (periodLcm (2 ^ a) / j) ≤ q * (periodLcm (2 ^ a) / j) :=
+    Nat.mul_le_mul hq (le_refl _)
+  have hqA : 2 ≤ q * (periodLcm (2 ^ a) / j) := by omega
+  have hodd : Odd (q * (periodLcm (2 ^ a) / j) + 1) := by
+    obtain ⟨k, hk⟩ := hAeven
+    refine ⟨q * k, ?_⟩
+    rw [hk]; ring
+  exact ⟨hgcd, hodd, by omega, Nat.totient_even (by omega)⟩
+
 /-- **The factor in a second difference** (`prop:FR-02-inv`).
 Let `a ≥ 4` and `j ≥ 1` with `j² ≤ 2^a`, and put `H_a = H(2^a)`.  Then
 `2φ(j) ∣ φ(3H_a+j) - 2φ(2H_a+j) + φ(H_a+j)`, and the displayed difference
@@ -143,6 +241,9 @@ theorem two_mul_totient_dvd_totient_second_difference {a j : ℕ} (ha : 4 ≤ a)
     exact fixedRankSecondDifference_periodLcm_eq_mul hjdvd hclean
 
 #print axioms penultimate_shortWindow_difference_eq_half
+#print axioms dyadicScale_unique_in_open_interval
+#print axioms dyadicMixedGuard_iff_twoBitBand
 #print axioms exists_certifiedKill_iff_twoBitResidueTest
+#print axioms fixedRank_cleanWindow_structure
 #print axioms two_mul_totient_dvd_totient_second_difference
 end ErdosProblems.Erdos249.PaperCompleteR21

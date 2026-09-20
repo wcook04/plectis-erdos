@@ -110,6 +110,39 @@ theorem cylinder_root_values :
   · norm_num [cylinderMass, PNat.add_coe]
   · norm_num [cylinderMass, PNat.add_coe]
 
+/-- **The normalised split** (`catalogue:mob:a9a`): dividing the three terms
+of the recursion by `M(a,b)` gives exactly the stopping probability
+`(2ᵃ-1)(2ᵇ-1)/(2^{a+b}-1)` and the two transition probabilities
+`(2ᵃ-1)/(2^{a+b}-1)` and `(2ᵇ-1)/(2^{a+b}-1)`. -/
+theorem normalised_split_probabilities (a b : ℕ+) :
+    (1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)) / cylinderMass a b
+        = ((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1)
+          / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+      ∧ cylinderMass (a + b) b / cylinderMass a b
+        = ((2 : ℝ) ^ (a : ℕ) - 1) / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+      ∧ cylinderMass a (a + b) / cylinderMass a b
+        = ((2 : ℝ) ^ (b : ℕ) - 1) / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1) := by
+  have hA := two_le_two_pow_pnat a
+  have hB := two_le_two_pow_pnat b
+  have hApos : (0 : ℝ) < (2 : ℝ) ^ (a : ℕ) - 1 := by linarith
+  have hBpos : (0 : ℝ) < (2 : ℝ) ^ (b : ℕ) - 1 := by linarith
+  have hABpos : (0 : ℝ) < (2 : ℝ) ^ (a : ℕ) * (2 : ℝ) ^ (b : ℕ) - 1 := by nlinarith
+  have hAne : (2 : ℝ) ^ (a : ℕ) - 1 ≠ 0 := ne_of_gt hApos
+  have hBne : (2 : ℝ) ^ (b : ℕ) - 1 ≠ 0 := ne_of_gt hBpos
+  have hABne : (2 : ℝ) ^ (a : ℕ) * (2 : ℝ) ^ (b : ℕ) - 1 ≠ 0 := ne_of_gt hABpos
+  refine ⟨?_, ?_, ?_⟩
+  · unfold cylinderMass
+    rw [pow_add]
+    field_simp
+  · unfold cylinderMass
+    simp only [PNat.add_coe]
+    rw [pow_add]
+    field_simp
+  · unfold cylinderMass
+    simp only [PNat.add_coe]
+    rw [pow_add]
+    field_simp
+
 /-- **The stopping and two transition probabilities sum to one.** -/
 theorem stopping_transition_probabilities_sum_one (a b : ℕ+) :
     ((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1)

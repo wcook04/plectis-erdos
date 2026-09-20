@@ -65,6 +65,45 @@ theorem pair_divisibility_mass (d : ℕ) (hd : 0 < d) :
       = 1 / ((2 : ℝ) ^ d - 1) ^ 2 :=
   tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq d hd
 
+private lemma tsum_pow_succ_of_lt_one' {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1) :
+    ∑' j : ℕ, x ^ (j + 1) = x / (1 - x) := by
+  have hnorm : ‖x‖ < 1 := by
+    rw [Real.norm_eq_abs, abs_of_nonneg hx0]
+    exact hx1
+  rw [div_eq_mul_inv, ← tsum_geometric_of_norm_lt_one hnorm, ← tsum_mul_left]
+  exact tsum_congr fun j => pow_succ' x j
+
+/-- **The one-variable geometric sum** (`catalogue:mob:a7`, second sentence):
+`∑_{k≥1} 2^{-dk} = 1/(2ᵈ-1)`; the squared denominator is the product of two
+copies of it. -/
+theorem tsum_geometric_multiples (d : ℕ) (hd : 0 < d) :
+    ∑' k : ℕ, ((1 : ℝ) / 2) ^ (d * (k + 1)) = 1 / ((2 : ℝ) ^ d - 1) := by
+  have hx0 : (0 : ℝ) ≤ ((1 : ℝ) / 2) ^ d := by positivity
+  have hx1 : ((1 : ℝ) / 2) ^ d < 1 := pow_lt_one₀ (by norm_num) (by norm_num) hd.ne'
+  have hpos : (0 : ℝ) < (2 : ℝ) ^ d := by positivity
+  have hpow : ((1 : ℝ) / 2) ^ d = 1 / (2 : ℝ) ^ d := by rw [div_pow, one_pow]
+  have hden : (1 : ℝ) - ((1 : ℝ) / 2) ^ d = ((2 : ℝ) ^ d - 1) / (2 : ℝ) ^ d := by
+    rw [hpow]
+    field_simp
+  calc ∑' k : ℕ, ((1 : ℝ) / 2) ^ (d * (k + 1))
+      = ∑' k : ℕ, (((1 : ℝ) / 2) ^ d) ^ (k + 1) :=
+        tsum_congr fun k => by rw [← pow_mul]
+    _ = ((1 : ℝ) / 2) ^ d / (1 - ((1 : ℝ) / 2) ^ d) := tsum_pow_succ_of_lt_one' hx0 hx1
+    _ = 1 / ((2 : ℝ) ^ d - 1) := by
+        rw [hden, hpow, div_div_eq_mul_div, one_div_mul_cancel (ne_of_gt hpos)]
+
+/-- **Replacing the weight `1` by `μ`** (`catalogue:mob:a4`, fourth
+sentence): the value becomes `S - 1/2`, the constant of the Möbius-square
+definition. -/
+theorem moebius_weight_value :
+    ∑' d : ℕ+, ((ArithmeticFunction.moebius (d : ℕ) : ℤ) : ℝ)
+        / ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2
+      = (∑' n : ℕ+, (Nat.totient (n : ℕ) : ℝ) * ((1 : ℝ) / 2) ^ (n : ℕ)) - 1 / 2 := by
+  rw [MersenneLambertLadder.tsum_totient_half_pow_eq_half_add_moebius_sq]
+  ring
+
+#print axioms tsum_geometric_multiples
+#print axioms moebius_weight_value
 #print axioms divisor_sum_identity
 #print axioms gcd_moment_identity
 #print axioms pair_divisibility_mass

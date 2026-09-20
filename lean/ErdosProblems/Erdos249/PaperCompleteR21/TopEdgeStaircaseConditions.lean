@@ -42,6 +42,25 @@ theorem upper_endpoint_gap_nonintegral {a J K m : ℕ} (ha : 8 ≤ a)
       Set.range ((↑) : ℤ → ℝ) :=
   actualLcmTailDiff_notMem_int_of_topEdgeResidueGap ha hshort hgap
 
+/-- **The sign theorem forces an integral tail to give a residue in the upper
+endpoint interval.**  If `R_{2H+J} - R_{H+J}` is the integer `d` and the
+modulus is large enough, then `D(H,H+J,K) mod 2^K` lies in
+`(2^K - (2H+J+K+2), 2^K)` — exactly the interval the one-sided test
+excludes. -/
+theorem integral_tail_forces_upper_endpoint_residue {a J K : ℕ} (ha : 8 ≤ a)
+    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
+    (hroom : ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ K)
+    {d : ℤ}
+    (hd : (d : ℝ) =
+      totientTail (2 * periodLcm (2 ^ a) + J) - totientTail (periodLcm (2 ^ a) + J)) :
+    (2 : ℤ) ^ K - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
+        windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ K ∧
+      windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ K <
+        (2 : ℤ) ^ K := by
+  obtain ⟨-, hlow, hhigh⟩ :=
+    actualLcm_integral_forces_topEdgeResidue ha hshort hd hroom
+  exact ⟨hlow, hhigh⟩
+
 /-- **In particular irrationality follows** if for every `a₀` there are
 `a ≥ max(a₀, 8)` and `K, m` with `K + (a+6) < 2·2^a` and `G_a(0,K,m)`. -/
 theorem irrational_of_upper_endpoint_gap_supply
@@ -133,6 +152,37 @@ theorem endpoint_identity {a q : ℕ} (ha : 8 ≤ a)
   rw [show 2 * q + 1 + 1 = 2 * q + 2 from by ring] at h
   exact h
 
+/-- **The estimate that makes the identity decisive.**  Under integrality the
+recurrence equals a positive tail difference strictly smaller than
+`2H + 2q + 3`: `0 < c_{H,H,z}(2q+1) < 2H + 2q + 3`. -/
+theorem integral_carry_strictly_between {a q : ℕ} (ha : 8 ≤ a)
+    (hshort : 2 * q + 2 + (a + 6) < 2 * 2 ^ a)
+    {z : ℤ}
+    (hz : (z : ℝ) = totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) :
+    0 < carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) z (2 * q + 1) ∧
+      carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) z (2 * q + 1) <
+        ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℤ) := by
+  have hz' : (z : ℝ) =
+      totientTail (periodLcm (2 ^ a) + periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a)) := by
+    rw [hz, two_mul]
+  have htrack := carryOrbit_eq_tail_diff hz' (2 * q + 1)
+  have hpos := actualLcmTailDiff_shift_pos (a := a) (J := 2 * q + 1) ha (by omega)
+  have hupper :=
+    (tail_diff_directed_bounds (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + (2 * q + 1))).2
+  rw [← htrack] at hupper
+  constructor
+  · have hR : (0 : ℝ) <
+        (carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) z (2 * q + 1) : ℝ) := by
+      rw [htrack, show periodLcm (2 ^ a) + (2 * q + 1) + periodLcm (2 ^ a)
+        = 2 * periodLcm (2 ^ a) + (2 * q + 1) from by omega]
+      exact hpos
+    exact_mod_cast hR
+  · have hR : (carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) z (2 * q + 1) : ℝ) <
+        ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) := by
+      push_cast at hupper ⊢
+      linarith
+    exact_mod_cast hR
+
 /-- **Either inequality is sufficient for `Ω_a ∉ ℤ`.** -/
 theorem endpoint_criterion_nonintegral {a q : ℕ} (ha : 8 ≤ a)
     (hshort : 2 * q + 2 + (a + 6) < 2 * 2 ^ a)
@@ -160,6 +210,8 @@ end ErdosProblems.Erdos249.PaperCompleteR21
 
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_condition_iff
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_gap_nonintegral
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.integral_tail_forces_upper_endpoint_residue
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.integral_carry_strictly_between
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_upper_endpoint_gap_supply
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.te_chain_relations
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.centeredLift_range

@@ -14,6 +14,16 @@ open Erdos249257.TotientTailPeriodKiller
 
 /-! ### `prop:CP-01-inv` -- carry displacement and tail integrality -/
 
+/-- **Carry displacement and tail integrality** (`prop:CP-01-inv`), the
+identification the test rests on: temperedness gives `u(N) = v R_N`, so the
+displacement is `v(R_{N+k} - R_N)`. -/
+theorem temperedCarry_eq_scaledTail_and_shift {v : ℕ} {u : ℕ → ℤ}
+    (hu : IsTemperedBinaryOrbit Nat.totient v u) (N k : ℕ) :
+    ((u N : ℤ) : ℝ) = (v : ℝ) * totientTail N
+      ∧ ((u (N + k) - u N : ℤ) : ℝ)
+          = (v : ℝ) * (totientTail (N + k) - totientTail N) :=
+  ⟨totient_temperedOrbit_eq_scaledTail hu N, totient_carryShift_cast hu N k⟩
+
 /-- **Carry displacement and tail integrality** (`prop:CP-01-inv`).
 For a positive integer `v` and a tempered integral totient carry `u`,
 `v ∣ u(N+k) - u(N) ↔ R_{N+k} - R_N ∈ ℤ`.  This is a divisibility test for
@@ -97,6 +107,7 @@ theorem canonicalKernel_rank_floor_and_ceiling_consequence :
     have h2 := hg v u hv hu e
     omega
 
+#print axioms temperedCarry_eq_scaledTail_and_shift
 #print axioms carryShift_dvd_iff_tailDiff_integral
 #print axioms rationality_forces_mod_period_and_unbounded_rank
 #print axioms canonicalKernel_rank_floor_and_ceiling_consequence

@@ -62,6 +62,14 @@ theorem irrational_of_short_window_diagonal_supply
   obtain ⟨a, L, ha, hL, hcert⟩ := hsupply a₀
   exact ⟨a, L, ha, hL, (lcmDiagonalArithmeticKill_iff_certifiedKill (2 ^ a) L).2 hcert⟩
 
+/-- Pointwise completeness allows a sufficiently large depth: a non-integral
+tail difference always has some certificate depth.  (It supplies no bound
+below `2·2^a`, which is what the short-window condition adds.) -/
+theorem pointwise_completeness_supplies_some_depth (h N : ℕ)
+    (hnon : totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)) :
+    ∃ L : ℕ, certifiedKill h N L :=
+  exists_certifiedKill_of_tail_diff_notMem_int hnon
+
 /-! ### `prop:SEP-03` — a sufficient approximation condition -/
 
 /-- The paper's prescribed index `q_a = ⌊(⌊log₂ H⌋ + 10)/2⌋`, so that
@@ -83,6 +91,53 @@ theorem oddGuarded_depth_eq_prescribed (a : ℕ) :
     obtain ⟨k, hk⟩ := h
     rw [hc] at hk
     omega
+
+/-- **The approximation estimate.**  The normalised block
+`ρ_{a,q} = (D(H,H,2q+1) + δ_{2^a}(2q+2))/2^{2q+1}` approximates `Ω_a` to
+within `ε_{a,q} = (2H + 2q + 3)/2^{2q+1}`. -/
+theorem abs_orbit_sub_rawApprox_lt (a q : ℕ) :
+    |(totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) -
+        ((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+            diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1)| <
+      ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) := by
+  have h := abs_actualLcmTailOrbit_sub_rawApprox_lt a q
+  unfold actualLcmTailOrbit actualLcmRawApprox actualLcmRawErrorRadius actualLcmHeight at h
+  rw [diagonalAdjacentSuffixRawBlock_eq_windowDiscrepancy_add_terminal,
+    show 2 * q + 1 + 1 = 2 * q + 2 from by ring] at h
+  exact h
+
+/-- **The stated consequence.**  The estimate `|Ω_a - ρ_{a,q}| < ε_{a,q}`
+turns the hypothesis of the proposition into `|ρ_{a,q} - z| > 1/32` for every
+integer `z`, which is the finite residue separation the implication uses. -/
+theorem rawApprox_separation_of_orbit_separation {a q : ℕ}
+    (hsep : ∀ z : ℤ,
+      (1 : ℝ) / 32 + ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) ≤
+        |(totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) - (z : ℝ)|)
+    (z : ℤ) :
+    (1 : ℝ) / 32 <
+      |((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+            diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) -
+        (z : ℝ)| := by
+  have h1 := hsep z
+  have h2 := abs_orbit_sub_rawApprox_lt a q
+  have hsplit :
+      (totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) - (z : ℝ) =
+        ((totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) -
+            ((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+              diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1)) +
+          (((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+              diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) -
+            (z : ℝ)) := by
+    ring
+  rw [hsplit] at h1
+  have htri := abs_add_le
+    ((totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) -
+      ((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+        diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1))
+    (((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+        diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) -
+      (z : ℝ))
+  linarith
 
 /-- **A sufficient approximation condition.**  If for every `a₀` there is
 `a ≥ max(2, a₀)` with `|Ω_a - z| ≥ 1/32 + ε_{a,q_a}` for every integer `z`,
@@ -125,6 +180,10 @@ end ErdosProblems.Erdos249.PaperCompleteR21
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.diagonal_certificate_unfolded
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_short_window_diagonal_supply
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.oddGuarded_depth_eq_prescribed
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.abs_orbit_sub_rawApprox_lt
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.rawApprox_separation_of_orbit_separation
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_diagonal_orbit_separation_supply
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_through_six
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_witnesses
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.pointwise_completeness_supplies_some_depth
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.prescribedOddIndex

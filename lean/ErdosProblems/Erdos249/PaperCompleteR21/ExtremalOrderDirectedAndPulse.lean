@@ -81,6 +81,22 @@ theorem directed_certificate_example :
 
 /-! ### `prop:CP-07` — a sufficient condition at the prescribed mod-four pulses -/
 
+/-- **The stated consequence of a hypothetical eventual period.**  Under
+rationality there are a period `h > 0` and a bound `B` such that at every
+pulse prime `p > B` the tail difference `R_{p+4h} - R_p` is an integer lying
+in the tested class `2 mod 4`. -/
+theorem rational_forces_pulse_class_integrality
+    (hrat : ¬ Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
+    ∃ h : ℕ, 0 < h ∧ ∃ B : ℕ, ∀ p : ℕ, B < p →
+      ((Nat.totient (p + 4 * h) : ℤ) - (Nat.totient p : ℤ)) ≡ (2 : ℤ) [ZMOD 4] →
+      ∃ z : ℤ, (z : ℝ) = totientTail (p + 4 * h) - totientTail p ∧
+        z ≡ (2 : ℤ) [ZMOD 4] := by
+  obtain ⟨h, hh, N₀, hint⟩ := eventual_period_of_not_irrational hrat
+  refine ⟨h, hh, N₀ + 3, fun p hp hpulse => ?_⟩
+  refine integral_four_mul_tailDiff_mod_four_two_of_delta_pulse hp ?_
+    (fun N hN => tail_diff_mul_mem_int hint 4 N hN)
+  simpa [deltaTotient] using hpulse
+
 /-- **A sufficient condition at the prescribed mod-four pulses.**  If for
 every `h ≥ 1` and every `B` there are a prime `p > B` and `K` with
 `φ(p+4h) - φ(p) ≡ 2 (mod 4)` and every integer `z` with `|z| ≤ p+4h+1` and
@@ -122,3 +138,4 @@ end ErdosProblems.Erdos249.PaperCompleteR21
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_iff
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_example
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_modFour_pulse_supply
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
