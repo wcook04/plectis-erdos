@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:17e379ff5868dd376b08d0f3a83e4820ddb4e6a656dd709cd6b72e39a08454c6",
+    "docs/claims.json": "sha256:dfc4f4b4377eb8a3f04d5dee54f50bcc1203160b5427f69e2aadd0445f8e5919",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:66a8c634a077ba0e853c0fef2a059a2a6fe6c3f30db5ef6d875ce38bcf891398",
     "docs/publication_contract.json": "sha256:d0a1f3e0c8054c2d40b2668f8866e00446b01bdd383609a2891f64d289a29dad",
@@ -382,7 +382,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. Irrationality of F((31/4)^r) for every positive integer r is a Lean-checked Zudilin specialization; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "status": "open"
     },
     {
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+      "ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

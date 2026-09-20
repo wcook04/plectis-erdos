@@ -40,7 +40,8 @@
       "target": "ErdosProblems.Skip.LadderT67",
       "exit_code": 0,
       "singleflight_key": "94c5e1379677c216080192d859558bc3af5c285dd21e181a214006b4552ef1a1",
-      "scope": "Corrected finite-versus-eventual comment boundary, unchanged proof tokens; source-bound Lake check passed."
+      "scope": "Corrected finite-versus-eventual comment boundary, unchanged proof tokens; source-bound Lake check passed.",
+      "source_ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35"
     }
   ],
   "axiom_probe": {
@@ -151,8 +152,20 @@
     {
       "check": "Scoped shared build artifacts and exact regression selection",
       "result": "passed",
-      "tests": 7,
-      "evidence": "Publish and hydrate only keyed Lean module artifacts; legacy whole-build seeds cannot replace unrelated present certificates or introduce unrelated absent modules. Reject missing or mismatched scope and changed Lake layout. CLI selectors run exactly one selected mocked test; unknown selectors fail."
+      "tests": 9,
+      "evidence": "Publication and hydration use the selected target import closure, not the all-source identity manifest. Realistic keys include unrelated sources; their existing or absent artifacts remain untouched even in legacy seeds. Sources and transitive imports are hash-checked; standalone checks cannot publish stale unproduced outputs. CLI selector regressions remain passing.",
+      "real_receipt_scope": {
+        "key": "94c5e1379677c216080192d859558bc3af5c285dd21e181a214006b4552ef1a1",
+        "keyed_lean_sources": 1900,
+        "validated_module_closure": 700,
+        "matches_native_import_graph": true,
+        "includes": [
+          "ErdosProblems.Lift.Recon67",
+          "ErdosProblems.Lift.CertT67"
+        ],
+        "excludes": "ErdosProblems.Synthesis and its modules",
+        "inspection": "read_only_without_materialization"
+      }
     },
     {
       "check": "Owned semantic census block validation",
@@ -164,11 +177,20 @@
       "result": "passed",
       "task_fixtures": 92,
       "evidence": "Repair actions paired with cache, census, projection or validator objects route to infrastructure maintenance; neighboring explanation, proof and build requests retain their lanes."
+    },
+    {
+      "check": "Final corrected-source supported-root dependency export",
+      "result": "passed",
+      "singleflight_key": "da699b2a88ac2b9408733cc36fb8a17d935e20559f7208ddebc8ac292fd5f150",
+      "source_ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
+      "nodes": 16081,
+      "edges": 71770,
+      "evidence": "Both supported roots validated and full environment exported after the source-comment correction; statement review reissued for 34 receipts after verifying 98 cited declaration statements byte-identical."
     }
   ],
   "publication_formal_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
   "publication_note": "Final provenance, unique anchor labels and source-pinned links refer to the full-root-checked source revision; mathematical prose was verified unchanged.",
-  "current_lean_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+  "current_lean_source_ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
   "integration_attempts": [
     {
       "singleflight_key": "eadd7a94e0e5a2e318cb621683ac506532a31d58c2677a350d30203c225b217f",
@@ -183,6 +205,12 @@
       "scope": "Elaborated dependency export, after both supported roots built",
       "failure": "Stopped by this task after runtime sampling found the large tab-separated dataset being pretty-printed as one Lean diagnostic; no dependency index was produced.",
       "repair": "Use an explicit raw output file, preserving separate compiler diagnostics and parser semantics."
+    },
+    {
+      "scope": "Shared build cache artifact scope",
+      "failure": "The first repair mistook the broad all-source identity key for validated target coverage; a live focused receipt exposed the distinction.",
+      "repair": "Derive selected targets from the keyed normalized worker command, verify source bytes while traversing native imports, and exclude standalone checks that produced no module outputs.",
+      "validation": "Nine focused regressions plus exact read-only comparison with a real 700-module native closure."
     }
   ],
   "source_comment_correction": {

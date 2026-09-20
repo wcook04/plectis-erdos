@@ -264,15 +264,31 @@ class ValidationSingleflightTests(unittest.TestCase):
             consumer = base / "consumer"
             state_root = base / "state"
             configuration = '[[lean_lib]]\nname = "Pkg"\nsrcDir = "proof_sources"\n'
+            sources = {
+                "proof_sources/Pkg/Proof.lean": "import Pkg.Dependency\ntheorem proof : True := by trivial\n",
+                "proof_sources/Pkg/Dependency.lean": "theorem dependency : True := by trivial\n",
+                "proof_sources/Pkg/ProofExtra.lean": "theorem unrelated : True := by trivial\n",
+                "proof_sources/Certificates/LadderT67.lean": "theorem certificate : True := by trivial\n",
+            }
             for root in (producer, consumer):
                 root.mkdir()
                 (root / "lakefile.toml").write_text(configuration, encoding="utf-8")
+                for relative, content in sources.items():
+                    path = root / relative
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(content, encoding="utf-8")
             inputs = {
                 "validation_class": "lean",
+                "normalized_command": [
+                    sys.executable, "scripts/lean_fast_build.py", "--singleflight-worker",
+                    "--singleflight-state-root", str(state_root), "--jobs", "2",
+                    "--lake-staleness", "Pkg.Proof",
+                ],
+                # Real scheduler keys fingerprint unrelated Lean sources too.
+                # Only the command's import closure was actually validated.
                 "relevant_sources": [
                     {"path": "lakefile.toml", "sha256": singleflight.digest_file(producer / "lakefile.toml")},
-                    {"path": "proof_sources/Pkg/Proof.lean", "sha256": "sha256:fixture"},
-                    {"path": "proof_sources/Pkg/Dependency.lean", "sha256": "sha256:fixture"},
+                    *[{"path": path, "sha256": singleflight.digest_file(producer / path)} for path in sources],
                 ],
             }
             key = singleflight.hashlib.sha256(singleflight.canonical_json(inputs)).hexdigest()
@@ -319,7 +335,8 @@ class ValidationSingleflightTests(unittest.TestCase):
                     self.assertEqual((target / relative).read_text(), "local", relative)
 
                 # Legacy seeds contain an entire foreign build, including outputs
-                # outside the focused key. Hydration must filter those too.
+                # outside the selected closure, despite their sources being in
+                # the broad key. Hydration must filter those too.
                 legacy_extra = "lib/lean/Certificates/AbsentLocally.olean"
                 for relative in unrelated + [legacy_extra]:
                     path = seed / relative
@@ -333,6 +350,16 @@ class ValidationSingleflightTests(unittest.TestCase):
                 for relative in unrelated:
                     self.assertEqual((target / relative).read_text(), "local", relative)
                 self.assertFalse((target / legacy_extra).exists())
+
+                # The source identity must hold for imports as well as targets.
+                dependency = consumer / "proof_sources/Pkg/Dependency.lean"
+                dependency.write_text("-- changed after validation\n" + dependency.read_text())
+                with mock.patch.object(build_share, "_copy_contents") as copy:
+                    rejected = build_share.hydrate(consumer, state_root, key)
+                self.assertEqual(rejected["status"], "unavailable")
+                self.assertIn("differs from keyed bytes", rejected["reason"])
+                copy.assert_not_called()
+                dependency.write_text(sources["proof_sources/Pkg/Dependency.lean"])
 
                 # A different source layout cannot reinterpret an old key's scope.
                 (consumer / "lakefile.toml").write_text(configuration.replace("proof_sources", "other"))
@@ -363,6 +390,79 @@ class ValidationSingleflightTests(unittest.TestCase):
                 self.assertEqual(build_share.hydrate(root, state, key)["status"], "unavailable")
             copy.assert_not_called()
             self.assertEqual(marker.read_text(), "previous validation\n")
+
+    def test_build_share_scope_resolves_command_targets_and_rejects_missing_import_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "checkout"
+            state = Path(directory) / "state"
+            sources = {
+                "lakefile.toml": 'defaultTargets = ["Pkg.Proof"]\n[[lean_lib]]\nname = "Pkg"\nsrcDir = "src"\n',
+                "src/Pkg/Proof.lean": (
+                    "/- outer /- nested -/ import Pkg.Other -/\n"
+                    "-- import Pkg.Other\nimport Pkg.Dependency\n"
+                    "theorem proof : True := by trivial\n"
+                ),
+                "src/Pkg/Dependency.lean": "import Mathlib\ntheorem dependency : True := by trivial\n",
+                "src/Pkg/Other.lean": "theorem other : True := by trivial\n",
+                "scratch/probe.lean": "import Pkg.Proof\nexample : True := by trivial\n",
+            }
+            for relative, content in sources.items():
+                path = root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content, encoding="utf-8")
+            (state / "jobs").mkdir(parents=True)
+
+            def receipt(targets: list[str], omitted: str | None = None) -> str:
+                inputs = {
+                    "validation_class": "lean",
+                    "normalized_command": [
+                        sys.executable, "scripts/lean_fast_build.py", "--singleflight-worker",
+                        "--jobs", "2", *targets,
+                    ],
+                    "relevant_sources": [
+                        {"path": path, "sha256": singleflight.digest_file(root / path)}
+                        for path in sources if path != omitted
+                    ],
+                }
+                key = singleflight.hashlib.sha256(singleflight.canonical_json(inputs)).hexdigest()
+                (state / "jobs" / f"{key}.json").write_text(json.dumps({"key": key, "inputs": inputs}))
+                return key
+
+            for targets in (["Pkg.Proof"], ["src/Pkg/Proof.lean"], []):
+                with self.subTest(targets=targets):
+                    self.assertEqual(
+                        build_share._validated_modules(root, state, receipt(targets)),
+                        {Path("Pkg/Proof"), Path("Pkg/Dependency")},
+                    )
+            self.assertEqual(
+                build_share._validated_modules(root, state, receipt(["Pkg.Proof", "Pkg.Other"])),
+                {Path("Pkg/Proof"), Path("Pkg/Dependency"), Path("Pkg/Other")},
+            )
+            standalone_scope = build_share._validated_modules(root, state, receipt(["scratch/probe.lean"]))
+            self.assertEqual(standalone_scope, {Path("Pkg/Proof"), Path("Pkg/Dependency")})
+            build = root / ".lake/build"
+            for name in ("Pkg/Proof", "Pkg/Dependency", "scratch/probe"):
+                artifact = build / f"lib/lean/{name}.olean"
+                artifact.parent.mkdir(parents=True, exist_ok=True)
+                artifact.write_text("old output", encoding="utf-8")
+            self.assertEqual(
+                build_share._module_artifacts(build, standalone_scope),
+                [Path("lib/lean/Pkg/Dependency.olean"), Path("lib/lean/Pkg/Proof.olean")],
+            )
+            with self.assertRaisesRegex(build_share.BuildShareError, "local import has no keyed source"):
+                build_share._validated_modules(root, state, receipt(["Pkg.Proof"], "src/Pkg/Dependency.lean"))
+            with self.assertRaisesRegex(build_share.BuildShareError, "unsupported normalized worker option"):
+                build_share._validated_modules(root, state, receipt(["--changed-from", "HEAD"]))
+
+    def test_build_share_scope_rejects_unsupported_worker_commands(self) -> None:
+        for command in (
+            None, [], [sys.executable, "different.py", "--singleflight-worker"],
+            [sys.executable, "scripts/lean_fast_build.py", "Pkg.Proof"],
+            [sys.executable, "scripts/lean_fast_build.py", "--singleflight-worker", "--jobs"],
+            [sys.executable, "scripts/lean_fast_build.py", "--singleflight-worker", "--jobs", "0"],
+        ):
+            with self.subTest(command=command), self.assertRaises(build_share.BuildShareError):
+                build_share._worker_targets({"normalized_command": command})
 
     def test_build_seed_retention_is_bounded(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

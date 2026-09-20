@@ -26,7 +26,7 @@
    "lean_module": "ErdosProblems.Skip.LadderT67",
    "declaration": "exists_diagonalKill_le_82",
    "line": 71264,
-   "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+   "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
   },
   "source_inventory": [
    {
@@ -184,8 +184,8 @@
    {
     "source_path": "ErdosProblems/Skip/LadderT67.lean",
     "lean_module": "ErdosProblems.Skip.LadderT67",
-    "bytes": 3841504,
-    "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8",
+    "bytes": 3841580,
+    "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f",
     "certificate_declarations": 3,
     "least_depth_declarations": 3
    },
@@ -1154,14 +1154,14 @@
      "lean_module": "ErdosProblems.Skip.LadderT67",
      "declaration": "certifiedKill_diagonal_t73",
      "line": 71100,
-     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+     "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
     },
     "least_depth": {
      "source_path": "ErdosProblems/Skip/LadderT67.lean",
      "lean_module": "ErdosProblems.Skip.LadderT67",
      "declaration": "t73_minimal_depth",
      "line": 71106,
-     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+     "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
     }
    }
   },
@@ -1185,14 +1185,14 @@
      "lean_module": "ErdosProblems.Skip.LadderT67",
      "declaration": "certifiedKill_diagonal_t79",
      "line": 71177,
-     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+     "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
     },
     "least_depth": {
      "source_path": "ErdosProblems/Skip/LadderT67.lean",
      "lean_module": "ErdosProblems.Skip.LadderT67",
      "declaration": "t79_minimal_depth",
      "line": 71183,
-     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+     "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
     }
    }
   },
@@ -1216,14 +1216,14 @@
      "lean_module": "ErdosProblems.Skip.LadderT67",
      "declaration": "certifiedKill_diagonal_t81",
      "line": 71242,
-     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+     "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
     },
     "least_depth": {
      "source_path": "ErdosProblems/Skip/LadderT67.lean",
      "lean_module": "ErdosProblems.Skip.LadderT67",
      "declaration": "t81_minimal_depth",
      "line": 71248,
-     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+     "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
     }
    }
   }

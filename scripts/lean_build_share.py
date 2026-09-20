@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Share successful local Lean build outputs across equivalent cold clones.
 
-The validation key covers its selected Lean source closure, toolchain, and
-build authorities, not every output in ``.lake/build``. Publish and hydrate only
-module artifacts belonging to that closure: copying an entire focused worker's
-cache can overwrite unrelated, newer certificates in another checkout. Seeds
-remain acceleration only; the normal Lake authority check still creates them.
+The validation key fingerprints all visible Lean sources, but its command may
+validate only one import closure. Publish and hydrate only artifacts belonging
+to that selected closure: neither the broad key manifest nor a worker's entire
+``.lake/build`` proves unrelated cached outputs current. Seeds remain acceleration
+only; the normal Lake authority check still creates them.
 """
 
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -88,8 +89,35 @@ def _load_seed(state_root: Path, key: str) -> Path | None:
     return build
 
 
+def _worker_targets(inputs: dict[str, Any]) -> list[str]:
+    """Read the scheduler's canonical command without guessing unknown modes."""
+    command = inputs.get("normalized_command")
+    if not isinstance(command, list) or len(command) < 3 or not all(isinstance(arg, str) for arg in command):
+        raise BuildShareError("missing normalized Lean worker command")
+    if command[1] != "scripts/lean_fast_build.py" or "--singleflight-worker" not in command[2:]:
+        raise BuildShareError("unsupported normalized Lean worker command")
+    targets = []
+    index = 2
+    while index < len(command):
+        argument = command[index]
+        if argument in {"--singleflight-state-root", "--jobs"}:
+            if index + 1 >= len(command) or command[index + 1].startswith("-"):
+                raise BuildShareError("incomplete normalized worker option")
+            if argument == "--jobs" and (not command[index + 1].isdigit() or int(command[index + 1]) < 1):
+                raise BuildShareError("invalid normalized worker job count")
+            index += 2
+        elif argument in {"--singleflight-worker", "--lake-staleness"}:
+            index += 1
+        elif argument.startswith("-"):
+            raise BuildShareError("unsupported normalized worker option")
+        else:
+            targets.append(argument)
+            index += 1
+    return targets
+
+
 def _validated_modules(root: Path, state_root: Path, key: str) -> set[Path]:
-    """Resolve only the source closure and Lake layout committed to this key."""
+    """Derive the selected import closure from command and hash-verified sources."""
     _validated_key(key)
     receipt = json.loads((state_root / "jobs" / f"{key}.json").read_text(encoding="utf-8"))
     if not isinstance(receipt, dict):
@@ -103,7 +131,7 @@ def _validated_modules(root: Path, state_root: Path, key: str) -> set[Path]:
     if inputs.get("validation_class") != "lean":
         raise BuildShareError("build artifact scope requires a Lean validation receipt")
     rows = inputs.get("relevant_sources", [])
-    source_paths = {row["path"] for row in rows if isinstance(row, dict) and isinstance(row.get("path"), str)}
+    source_rows = {row["path"]: row for row in rows if isinstance(row, dict) and isinstance(row.get("path"), str)}
     lakefile = root / "lakefile.toml"
     lake_bytes = lakefile.read_bytes()
     expected_lake_digest = "sha256:" + hashlib.sha256(lake_bytes).hexdigest()
@@ -118,18 +146,67 @@ def _validated_modules(root: Path, state_root: Path, key: str) -> set[Path]:
     if any(path.is_absolute() or ".." in path.parts for path in source_roots):
         raise BuildShareError("Lake source layout escapes the checkout")
     ordered_roots = sorted(source_roots, key=lambda path: len(path.parts), reverse=True)
-    modules = set()
-    for relative in source_paths:
+    # Lazy import avoids the scheduler -> build-share -> fast-build import cycle.
+    # Reuse the native resolver/header parser, but parse bytes already hashed here.
+    import lean_fast_build as fast_build
+
+    modules = {}
+    for relative in source_rows:
         source = Path(relative)
         if source.is_absolute() or ".." in source.parts:
             raise BuildShareError("validation source path escapes the checkout")
-        if source.suffix == ".lean":
-            prefix = next(path for path in ordered_roots if source.is_relative_to(path))
-            name = ".".join(source.relative_to(prefix).with_suffix("").parts)
-            modules.add(Path(*name.split(".")))
+        if source.suffix != ".lean" or source.name.startswith("_") or any(part.startswith(".") for part in source.parts):
+            continue
+        prefix = next(path for path in ordered_roots if source.is_relative_to(path))
+        name = fast_build.module_name(source, prefix)
+        if name in modules:
+            raise BuildShareError("ambiguous keyed Lean module")
+        modules[name] = root / source
     if not modules:
         raise BuildShareError("validation receipt has no Lean source closure")
-    return modules
+    targets = _worker_targets(inputs)
+    if not targets:
+        # Use the already verified Lake configuration, not a second mutable read.
+        targets = config.get("defaultTargets") or sorted(
+            name for name, source in modules.items() if source.parent == root
+        )
+    if not isinstance(targets, list) or not targets or not all(isinstance(target, str) for target in targets):
+        raise BuildShareError("no selected public root Lean modules")
+    pending = fast_build.resolve_targets(targets, modules, root)
+    # Direct source checks use `lake env lean` without emitting cache artifacts.
+    # Their registered library imports are built and remain eligible for sharing.
+    direct_targets = fast_build.direct_source_targets(pending, modules, root)
+    selected = set()
+    while pending:
+        name = pending.pop()
+        if name in selected:
+            continue
+        source = modules[name]
+        if source.is_symlink() or not source.resolve().is_relative_to(root.resolve()):
+            raise BuildShareError("selected source escapes checkout")
+        data = source.read_bytes()
+        expected = source_rows[source.relative_to(root).as_posix()].get("sha256")
+        if "sha256:" + hashlib.sha256(data).hexdigest() != expected:
+            raise BuildShareError("selected source differs from keyed bytes")
+        selected.add(name)
+        block_depth = 0
+        for line in io.StringIO(data.decode("utf-8")):
+            code, block_depth = fast_build.code_without_comments(line, block_depth)
+            stripped = code.strip()
+            if not stripped or stripped == "prelude":
+                continue
+            match = fast_build.IMPORT_RE.match(stripped)
+            if not match:
+                break
+            imported = match.group(1)
+            if imported in modules and imported not in selected:
+                pending.append(imported)
+            elif imported not in modules and any(
+                (root / prefix / (imported.replace(".", "/") + ".lean")).is_file()
+                for prefix in ordered_roots
+            ):
+                raise BuildShareError("local import has no keyed source")
+    return {Path(*name.split(".")) for name in selected if name not in direct_targets}
 
 
 def _module_artifacts(build: Path, modules: set[Path]) -> list[Path]:
