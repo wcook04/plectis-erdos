@@ -2,7 +2,7 @@
 # Plectis verification: eight Erdős problem programmes
 
 > [!IMPORTANT]
-> **Status boundary:** The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.
+> **Status boundary:** The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.
 > **Review posture:** Self-assessed and agent-checked; no human mathematical peer review is claimed.
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight Erdős problem programmes. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.

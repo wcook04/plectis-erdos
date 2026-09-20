@@ -8,8 +8,9 @@ For each one it holds a short paper, a longer research record, Lean proofs of
 selected statements, finite computations, and a written account of the
 approaches that stopped and why. You do not need Lean to read the papers.
 
-The degree-seven example refutes the total-variation formulation of Erdős
-#1041. The other seven target problems are not resolved here. Independent human
+The degree-seven counterexample found by the erdosproblems.com contributor ani
+refutes the total-variation formulation of Erdős #1041; this repository
+formalises it in Lean. The other seven target problems are not resolved here. Independent human
 review of correspondence with the historical curve-length formulation has not
 been recorded. Comparator checks only its selected exact statements, configured
 axioms and kernel acceptance; it does not assess novelty or historical

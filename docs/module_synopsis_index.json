@@ -1,7 +1,7 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:48d4bca02f035fdb37f4826dee5123408e6f8df2ad8097b25cfdae6bf6b17d64",
+  "source_fingerprint": "sha256:7631fa743e2bb4354631b316473ce81936c1fbe35c338190d214d2bde93442c3",
   "module_count": 1448,
   "synopsis_count": 1252,
   "query_contract": {
@@ -3595,7 +3595,7 @@
     {
       "id": "ErdosProblems.DemandLedger.Basic",
       "path": "lean/ErdosProblems/DemandLedger/Basic.lean",
-      "synopsis": "The demand ledger Machine-extracted from the semantic-corpus snapshot used to build this file. Each recorded antecedent is the type of a named theorem hypothesis binder. Walking that snapshot with `forallTelescope` and retaining closed `Prop` binders produced the entries below; current semantic-corpus totals may be larger. `docs/semantic/frontier.json` currently records 52 open antecedents in prose. This checked-in ledger exposes 101 named closed `Prop`s, of which 23 are labelled substantial statements and the rest are side conditions. Nothing here is transcribed: each entry is `hypOf%` applied to the source theorem, so it is the kernel's own `Expr` or it fails to elaborate. Entries are ordered by statement size, substantial ones first."
+      "synopsis": "Preserved extracted antecedents Each definition below is the type of a named theorem hypothesis binder, extracted by `hypOf%` from the kernel's `ConstantInfo`; it is not transcribed. The collection was produced from an earlier corpus snapshot and is retained so the checked relation theorems continue to compile. It is not a current census of the public corpus, and its authored `substantial`/`small` labels do not rank mathematical value. Current relation navigation is owned by `scripts/query_semantic.py`, while one-sketch equivalence testing is owned by `scripts/residual_evaluator.py`."
     },
     {
       "id": "ErdosProblems.DemandLedger.Hyp",
@@ -3665,7 +3665,7 @@
     {
       "id": "ErdosProblems.DemandLedger",
       "path": "lean/ErdosProblems/DemandLedger.lean",
-      "synopsis": "Demand ledger: the open antecedents as first-class objects, and their order `docs/semantic/frontier.json` records the open antecedents of #249 and #257 in prose. Each one is in fact already a Lean `Prop`: it is the type of a named hypothesis binder on a `conditional_implication` theorem, where nothing can address it. `ErdosProblems/DemandLedger/Hyp.lean` provides `hypOf%`, which lifts such a binder into a named constant taken straight from the kernel's own `ConstantInfo` — extracted, never transcribed. `Basic` holds the 101 closed antecedents obtained that way from the 259 conditional-implication declarations. The `edges` modules hold the implication order over the 23 substantial ones. The order collapses them into 7 equivalence classes. The largest, 14 antecedents of #249, is equivalent to #249 itself (`DemandLedger.G103_iff_erdos249`, resting on the corpus theorem `irrational_totient_series_iff_pointwise_certificates`). The three #257 antecedents `G073 ≡ G075 ≡ G076` are likewise equivalent to `1/2 ∈ mersenneAchievementSet`, via `half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`. No recorded antecedent is *weaker* than the problem it is an antecedent of. Six are strictly stronger so far as the proved edges go — see the caveat in `docs/semantic/frontier.json::demand_lattice.limits`: an absent edge is unproved, not refuted, so the separations are not established."
+      "synopsis": "Checked antecedent relations retained from an earlier extraction This namespace preserves exact propositions extracted from named theorem binders with `hypOf%` and the implications that were proved between them. It is a checked mathematical artifact, not the live statement census, candidate ranking or agent restatement service for the current public corpus. Current agents discover reviewed claims with `scripts/query_corpus.py`, navigate current statement families with `scripts/query_semantic.py`, and compare one proposed reduction with its target using `scripts/residual_evaluator.py`. Specific equivalences in this namespace remain valid at their theorem types; an absent edge remains unproved rather than refuted."
     },
     {
       "id": "ErdosProblems.EightPaperGroupAAudit",
@@ -7250,7 +7250,7 @@
     {
       "id": "ErdosProblems.Three.verify.T3",
       "path": "lean/ErdosProblems/Three/verify/T3.lean",
-      "synopsis": "Adversarial verification support for `ErdosProblems/Three/T3.lean` Computable definitions used by the repository-wide proof-trust and satisfiability audits. The release checker owns proof-trust reporting, while the measured results of the finite probes are recorded in `docs/TRUTH_AUDIT.md`. Keeping this support module quiet makes standalone validation deterministic."
+      "synopsis": "Adversarial verification support for `ErdosProblems/Three/T3.lean` Computable definitions used by the repository-wide proof-trust and satisfiability audits. The release checker owns proof-trust reporting. These definitions support executable checks; their presence alone does not promote a finite probe to a public mathematical claim. Keeping this support module quiet makes standalone validation deterministic."
     },
     {
       "id": "ErdosProblems.Three.verify.T4",

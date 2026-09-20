@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:999376aa7f812a718e01dbc544ff8e7f815e3b934288e9e56067ab8847eeea36",
-  "semantic_corpus_digest": "sha256:4af6f30b8de712536ddb8e416b5133603b5016179ac819f1fc38fb3e4481130b",
+  "declaration_atlas_digest": "sha256:92f96ec519fcd5e4fb2db1d61f8b0a8ad2e23bbd66df71199c8d63fd7d152c85",
+  "semantic_corpus_digest": "sha256:5c81cbce8f96b9d7935a87dbee6eda6b2aef10849f856ed24cf95d36f448a430",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -31,7 +31,7 @@
   "builder_digest": "sha256:fd48a95a9d7a6c8b2568a50668bd1c8b85c88cef79e79094d2041ab8561b938b",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
- "evidence_fingerprint": "sha256:72f640313178061f870fe24014373d9e47d3279f69ccda58e55c325e44be72c3",
+ "evidence_fingerprint": "sha256:12c679a5155efb28d8b4a03aa6668d4d8bba7aacd2160b8e437683a747adb1c5",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
@@ -93,7 +93,7 @@
   "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 10716,
+  "statement_nodes_total": 10715,
   "statement_nodes_explained": 8,
   "explained_fraction": 0.0007,
   "authored_theorem_like": 147957,
@@ -106,7 +106,7 @@
    "representation_normalisation": 161,
    "barrier_no_go": 75,
    "equivalence_or_classification": 105,
-   "infrastructure": 9619,
+   "infrastructure": 9618,
    "generated_certificate_instance": 4
   },
   "outcome_states": {},
@@ -619,7 +619,7 @@
   ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 10708,
+   "count": 10707,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -1300,7 +1300,6 @@
     "Z18::demand_lattice_249_certificate_chain",
     "Z18::demand_lattice_249_problem_class",
     "Z18::demand_lattice_257_chain",
-    "Z18::demand_ledger_extraction",
     "Z18::lcm_jump_kill_from_diagonal",
     "Z19::angle_b2_conditional_contradiction",
     "Z19::angle_b3_large_offset_nonrecurrence",
@@ -11338,7 +11337,7 @@
  },
  "integrity": {
   "declarations_known": 158210,
-  "statement_nodes_known": 10716,
+  "statement_nodes_known": 10715,
   "mechanism_ids": [
    "composite_dilation_defect_accounting",
    "dyadic_odd_core_basis",

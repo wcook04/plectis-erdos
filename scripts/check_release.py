@@ -257,6 +257,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_proof_workbench.py"),
         ],
+        "proof_state_compiler": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_proof_state_compiler.py"),
+        ],
         "computation_replay": [
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
@@ -2340,6 +2344,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "check_semantic_corpus.py"),
             ],
+            "semantic_receipt_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_semantic_corpus_check_receipt.py"),
+            ],
             "semantic_review": [
                 sys.executable,
                 str(ROOT / "scripts" / "semantic_review.py"),
@@ -2383,6 +2391,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
                 "--source-only",
+            ],
+            "concyclic_paper_boundary": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_concyclic_alternation_paper_boundary.py"),
             ],
         }
     )
@@ -2703,6 +2715,12 @@ def main(argv: list[str] | None = None) -> int:
         boundary.returncode == 0,
         "human-facing paper boundary failed: "
         f"{child_output(boundary)}",
+    )
+    concyclic_boundary = mid_checks["concyclic_paper_boundary"]
+    check(
+        concyclic_boundary.returncode == 0,
+        "concyclic paper boundary failed: "
+        f"{child_output(concyclic_boundary)}",
     )
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))

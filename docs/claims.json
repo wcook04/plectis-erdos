@@ -15401,7 +15401,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "f3f54798508b29ded6e854e0fa5784a560bd6cc7",
+      "ref": "135d2077b0e968f421416be5700fe73b3056429d",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -15433,7 +15433,7 @@
     "schema": "erdos-external-verification-packet/1",
     "scope": "all_eight_public_problem_programmes",
     "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-    "boundary": "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
+    "boundary": "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
     "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
     "automation": {
       "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -17037,7 +17037,7 @@
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 122
+        "line": 129
       }
     },
     {

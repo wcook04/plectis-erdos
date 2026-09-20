@@ -1,5 +1,11 @@
 # Erdős 1041 capacity and Green-polarization frontier — 2026-08-28
 
+> **Current-status note (2026-09-20).** This dated frontier predates ani's
+> degree-seven counterexample. The repository now records the universal
+> total-variation formulation as refuted and formalises that counterexample in
+> Lean; correspondence with the historical curve-length question remains
+> unreviewed. Open-status statements below describe the 28 August snapshot.
+
 This is a public, source-current research frontier, not a proof of unrestricted
 Erdős 1041.  The target remains open.
 

@@ -29,30 +29,30 @@
      "consequence": "By the same equivalence, the totient constant is rational."
     }
    ],
-      "current_evidence": [
-        "A diagonal certificate is checked at every t <= 82.",
-        "Historical off-diagonal audit: 125 verified rows represent 123 distinct (h,N,L) certificates in 122 Lean files. This finite roster is asymptotically nondiscriminating.",
-        "Exact arithmetic gives 960/960 certificates on 1 <= N <= 120, 1 <= h <= 8, with first-depth excess 0 through 11 over the admissibility floor (median 1, mean 727/480). Across the 33 distinct LCM scales filling positive t <= 82, checked working-depth excess is 0 through 4 (median 1, mean 40/33), but only five depths are proved least. Finite low excess proves no asymptotic law, bounded-excess theorem, or cofinal supply."
-      ],
+   "current_evidence": [
+    "A diagonal certificate is checked at every t <= 82.",
+    "Historical off-diagonal audit: 125 verified rows represent 123 distinct (h,N,L) certificates in 122 Lean files. This finite roster is asymptotically nondiscriminating.",
+    "Exact arithmetic gives 960/960 certificates on 1 <= N <= 120, 1 <= h <= 8, with first-depth excess 0 through 11 over the admissibility floor (median 1, mean 727/480). Across the 33 distinct LCM scales filling positive t <= 82, checked working-depth excess is 0 through 4 (median 1, mean 40/33), but only five depths are proved least. Finite low excess proves no asymptotic law, bounded-excess theorem, or cofinal supply."
+   ],
    "discriminating_evidence": [
     "A proof producing a diagonal certificate beyond every prescribed scale establishes cofinal_supply.",
     "A rational representation of the totient constant, or a proof that the diagonal predicate fails beyond some scale, establishes eventual_diagonal_failure.",
     "More bounded certificates without an asymptotic argument do not distinguish the alternatives."
    ],
-      "consumer_declarations": [
+   "consumer_declarations": [
     {
      "declaration": "irrational_totient_series_iff_lcm_diagonal_certificate_supply",
      "module": "Erdos249257/LcmConeFlatness.lean",
      "line": 426
     }
-      ],
-      "verification_command": "python3 scripts/query_corpus.py --claim certificate_reduction",
-      "measured_evidence_artifact": "docs/measurements/certificate_supply_probe.json",
-      "measurement_check_command": "python3 scripts/probe_certificate_supply.py --check",
-      "checked_diagonal_depth_artifact": "docs/measurements/checked_diagonal_depth_roster.json",
-      "checked_diagonal_depth_check_command": "python3 scripts/build_checked_diagonal_depth_roster.py --check",
-      "off_diagonal_roster_artifact": "docs/measurements/off_diagonal_certificate_roster.json",
-      "off_diagonal_roster_check_command": "python3 scripts/build_off_diagonal_certificate_roster.py --check"
+   ],
+   "verification_command": "python3 scripts/query_corpus.py --claim certificate_reduction",
+   "measured_evidence_artifact": "docs/measurements/certificate_supply_probe.json",
+   "measurement_check_command": "python3 scripts/probe_certificate_supply.py --check",
+   "checked_diagonal_depth_artifact": "docs/measurements/checked_diagonal_depth_roster.json",
+   "checked_diagonal_depth_check_command": "python3 scripts/build_checked_diagonal_depth_roster.py --check",
+   "off_diagonal_roster_artifact": "docs/measurements/off_diagonal_certificate_roster.json",
+   "off_diagonal_roster_check_command": "python3 scripts/build_off_diagonal_certificate_roster.py --check"
   },
   {
    "id": "XQ249-pivot-decorrelation",
@@ -131,9 +131,9 @@
      "consequence": "The recorded adjacent consumer is not discharged, though a different geometric consumer may exist."
     },
     {
-      "id": "phase_locking",
-      "statement": "For some positive shift there is a cutoff beyond which no admissible block, depth and adjacent pair meet the 19/25 threshold.",
-      "consequence": "This route fails without deciding #249."
+     "id": "phase_locking",
+     "statement": "For some positive shift there is a cutoff beyond which no admissible block, depth and adjacent pair meet the 19/25 threshold.",
+     "consequence": "This route fails without deciding #249."
     }
    ],
    "current_evidence": [
@@ -1510,219 +1510,6 @@
    "reason": "genuine and sharp (it replaces the inverse-system argument by closedness of the achievement set), but it is an error estimate feeding an interface whose antecedent has no producer; kept out of the list to keep it defensible, and cited inside the half-membership engine hierarchy instead."
   }
  ],
- "demand_lattice": {
-  "artifact_role": "kernel-checked implication order over the open antecedents recorded in this file",
-  "method": "Each open antecedent below is already a Lean Prop: it is the type of a named hypothesis binder on a conditional_implication declaration. ErdosProblems/DemandLedger/Hyp.lean provides hypOf%, which lifts such a binder into a named constant taken from the kernel's ConstantInfo -- extracted, not transcribed. Walking the 259 conditional-implication declarations yields 101 distinct closed Props (ErdosProblems/DemandLedger/Basic.lean), of which 23 are substantial statements and the rest are side conditions. This file records the implication order over those 23, proved in ErdosProblems/DemandLedger/edges/.",
-  "counts": {
-   "conditional_declarations_walked": 259,
-   "closed_props_extracted": 101,
-   "substantial": 23,
-   "edges_proved": 144,
-   "edges_direct_not_routed_through_the_problem": 7,
-   "equivalence_classes": 7
-  },
-  "headline": "No recorded antecedent is weaker than the problem it is an antecedent of. Seventeen of the 23 are provably equal in strength to the open problem itself (14 for #249, 3 for #257); the remaining six are at least as strong. The frontier reads as a menu of sub-problems to attack; the order says it is one problem restated many ways, plus six statements that are harder.",
-  "classes": [
-   {
-    "id": "K249-problem",
-    "problem": "249",
-    "members": [
-     "G081",
-     "G082",
-     "G091",
-     "G093",
-     "G094",
-     "G095",
-     "G096",
-     "G097",
-     "G098",
-     "G099",
-     "G100",
-     "G101",
-     "G102",
-     "G103"
-    ],
-    "equivalent_to_problem": true,
-    "evidence": "DemandLedger.Discharge3G103.G103_iff_erdos249 proves G103 <-> Irrational (sum phi(n)/2^n); every other member is mutually implied with G103 by the edges in ErdosProblems/DemandLedger/edges/. The reverse direction rests on the corpus theorem Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_pointwise_certificates: irrationality holds iff a certified kill exists at every positive shift and every position.",
-    "frontier_antecedents": [
-     "OA249-cone-nonflat-menu-supply",
-     "OA249-gap-certificate-supply",
-     "OA249-lcm-cone-kill-supply",
-     "OA249-lcm-diagonal-kill-supply",
-     "OA249-lcm-jump-kill-supply",
-     "OA249-pointwise-kill-supply",
-     "OA249-prime-jump-supply",
-     "OA249-rank2-qray-supply",
-     "OA249-ray-and-multiple-kill-supply"
-    ],
-    "lean_constants": [
-     "DemandLedger.G081",
-     "DemandLedger.G082",
-     "DemandLedger.G091",
-     "DemandLedger.G093",
-     "DemandLedger.G094",
-     "DemandLedger.G095",
-     "DemandLedger.G096",
-     "DemandLedger.G097",
-     "DemandLedger.G098",
-     "DemandLedger.G099",
-     "DemandLedger.G100",
-     "DemandLedger.G101",
-     "DemandLedger.G102",
-     "DemandLedger.G103"
-    ]
-   },
-   {
-    "id": "K257-problem",
-    "problem": "257",
-    "members": [
-     "G073",
-     "G075",
-     "G076"
-    ],
-    "equivalent_to_problem": true,
-    "evidence": "G076 is the antecedent SeamGreedyUnboundedTerminalFalse, and Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse is a corpus iff with 1/2 in mersenneAchievementSet, so this class is the 1/2-membership question itself.",
-    "frontier_antecedents": [
-     "OA257-greedy-carry-upper-bound"
-    ],
-    "lean_constants": [
-     "DemandLedger.G073",
-     "DemandLedger.G075",
-     "DemandLedger.G076"
-    ]
-   },
-   {
-    "id": "K257-blocksafe",
-    "problem": "257",
-    "members": [
-     "G083",
-     "G084"
-    ],
-    "equivalent_to_problem": false,
-    "evidence": "e_G083_G084 / e_G084_G083: block dyadic safety at the displayed half-orbit state and the real dyadic cap are the same statement after clearing denominators.",
-    "frontier_antecedents": [
-     "OA257-channel-cap-at-skips",
-     "OA257-greedy-block-safety-at-every-skip"
-    ],
-    "lean_constants": [
-     "DemandLedger.G083",
-     "DemandLedger.G084"
-    ]
-   },
-   {
-    "id": "K257-twochannel",
-    "problem": "257",
-    "members": [
-     "G085"
-    ],
-    "equivalent_to_problem": false,
-    "evidence": "",
-    "frontier_antecedents": [
-     "OA257-channel-cap-at-skips"
-    ],
-    "lean_constants": [
-     "DemandLedger.G085"
-    ]
-   },
-   {
-    "id": "K249-blockcert",
-    "problem": "249",
-    "members": [
-     "G088"
-    ],
-    "equivalent_to_problem": false,
-    "evidence": "",
-    "frontier_antecedents": [
-     "OA249-block-certificate-supply",
-     "OA249-carry-aware-supply",
-     "OA249-low-carry-supply"
-    ],
-    "lean_constants": [
-     "DemandLedger.G088"
-    ]
-   },
-   {
-    "id": "K249-carryaware",
-    "problem": "249",
-    "members": [
-     "G089"
-    ],
-    "equivalent_to_problem": false,
-    "evidence": "",
-    "frontier_antecedents": [
-     "OA249-block-certificate-supply",
-     "OA249-carry-aware-supply",
-     "OA249-low-carry-supply"
-    ],
-    "lean_constants": [
-     "DemandLedger.G089"
-    ]
-   },
-   {
-    "id": "K249-lowcarry",
-    "problem": "249",
-    "members": [
-     "G090"
-    ],
-    "equivalent_to_problem": false,
-    "evidence": "",
-    "frontier_antecedents": [
-     "OA249-block-certificate-supply",
-     "OA249-carry-aware-supply",
-     "OA249-low-carry-supply"
-    ],
-    "lean_constants": [
-     "DemandLedger.G090"
-    ]
-   }
-  ],
-  "strict_implications_between_classes": [
-   {
-    "from": "K249-blockcert",
-    "to": "K249-carryaware"
-   },
-   {
-    "from": "K249-carryaware",
-    "to": "K249-lowcarry"
-   },
-   {
-    "from": "K249-lowcarry",
-    "to": "K249-problem"
-   },
-   {
-    "from": "K257-blocksafe",
-    "to": "K257-twochannel"
-   },
-   {
-    "from": "K257-twochannel",
-    "to": "K257-problem"
-   }
-  ],
-  "evidence_modules": [
-   "ErdosProblems/DemandLedger/Hyp.lean",
-   "ErdosProblems/DemandLedger/Basic.lean",
-   "ErdosProblems/DemandLedger.lean",
-   "ErdosProblems/DemandLedger/edges/Bridge1.lean",
-   "ErdosProblems/DemandLedger/edges/Bridge2.lean",
-   "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "ErdosProblems/DemandLedger/edges/ClusterA.lean",
-   "ErdosProblems/DemandLedger/edges/ClusterB.lean",
-   "ErdosProblems/DemandLedger/edges/ClusterC.lean",
-   "ErdosProblems/DemandLedger/edges/ClusterD.lean",
-   "ErdosProblems/DemandLedger/edges/ClusterE.lean",
-   "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "ErdosProblems/DemandLedger/edges/Discharge2_G100.lean",
-   "ErdosProblems/DemandLedger/edges/Discharge3_G103.lean"
-  ],
-  "limits": [
-   "An absent edge is unproved, not refuted. The six antecedents outside the two problem-equivalent classes may also be equivalent; nobody proved the converses. Class count 7 is therefore an upper bound on the true collapse, and the strict separations are not established.",
-   "7 of the 144 edges are direct. The other 137 route through the problem itself, which is legitimate (it uses corpus iff theorems) but carries no content beyond 'this antecedent is the problem again'.",
-   "All 101 extracted Props are pairwise distinct up to reducible defeq (scripts/lean/DefEqScan.lean), so no edge here is a definitional accident.",
-   "Nothing here proves or advances #249 or #257.",
-   "Every edge module was independently re-checked with lake env lean: exit 0, empty output, sorry-free, axioms [propext, Classical.choice, Quot.sound]."
-  ]
- },
  "certified_diagonal_band": {
   "artifact_role": "verified extent of the diagonal certificate ladder",
   "measured": "2026-07-26",

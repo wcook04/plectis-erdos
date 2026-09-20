@@ -267,7 +267,11 @@ On the generic stratum where simple nonzero critical values have pairwise
 distinct arguments and moduli, an ordinary slit-sheet theorem identifies the
 inverse-ray root-connection tree but gives no uniform length bound. Lean checks
 Newton-flow decay, ray-separating translations, and perturbative root
-retention. The unrestricted connector problem remains open.
+retention. A degree-seven counterexample due to the erdosproblems.com
+contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861),
+formalised in Lean here, refutes the universal
+total-variation formulation; correspondence with the historical curve-length
+question remains unreviewed.
 
 **[#1049](https://www.erdosproblems.com/1049).** The short paper gives an
 ordinary proof that `F(a/b)` is irrational for coprime integers `a>b≥1` when
@@ -305,7 +309,7 @@ operational procedures live in the [agent workbench](agents/AGENT_WORKBENCH.md).
 
 ## Technical verdict
 
-The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence. The development is neither an empty collection of restatements nor
+The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence. The development is neither an empty collection of restatements nor
 a claim to settle the seven unresolved targets or the unadjudicated historical
 #1041 formulation. For a first mathematical pass, the high-signal spine is:
 
@@ -442,9 +446,17 @@ Only after those theorem-level facts comes the corpus census. The current semant
 
 The nonrecurring view contains 185 unconditional object theorems, 56 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
 
-The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 232 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 7-node public prior-art review queue. 232 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
 
-The [historical hypothesis audit](reference/TRUTH_AUDIT.md) describes a selected extraction, not the current corpus or a measure of mathematical value. Use the problem and theorem routes above to inspect the results and their exact boundaries.
+Agents use the live owners rather than a frozen restatement sample:
+
+- `python3 scripts/query_corpus.py --overview --format card` for reviewed claim status and exact registered Lean interfaces;
+- `python3 scripts/query_corpus.py --route <route_id> --format card` for one problem programme and its open boundary;
+- `python3 scripts/query_semantic.py node <node_id>` and `family-relations <family_id>` for cross-paper statement and relation navigation;
+- `docs/PALOMAR_RESULT_SHOWCASE.json` for the current candidate universe and screening dispositions; and
+- `scripts/residual_evaluator.py` for a kernel-backed comparison of one proposed reduction with its target.
+
+The claim registry covers selected registered claims, not every sentence in every paper. Semantic relations and Palomar screening are navigation and review surfaces; neither is proof, novelty, significance or peer review.
 <!-- END semantic_public_census -->
 
 The large #249 denominator exclusion is a direct, kernel-checked instantiation
@@ -1063,14 +1075,19 @@ core)**
   Erdős #1041. The source-only frontier still records hub selection on the
   ray-separated locus as an open parent carrier
   (`research_corpus/Erdos1041/FRONTIER.md`).
-- Open: unrestricted connectors; the problem remains open. A reported
-  degree-seven counterexample announcement is a separate external claim.
+- Current boundary: a degree-seven counterexample due to the erdosproblems.com
+  contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861),
+  formalised in Lean here, refutes the universal
+  total-variation connector formulation. What remains open here is the precise
+  correspondence with the historical curve-length question, including any
+  required Hausdorff-measure comparison and independent human review.
 
 - Current-source boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
   is the dated route for later source-only research evidence. Read it before
   the generated `STRONGEST_RESULTS.json`: it records certified refutations of
-  several proposed strategies, surviving carriers, and exact open gaps while
-  leaving the unrestricted endpoint open. These rows are not reviewed claim
+  several proposed strategies, surviving carriers, and the gaps open at that
+  snapshot. It predates the checked total-variation counterexample and is not
+  the owner of the current #1041 status. These rows are not reviewed claim
   entries, peer review, priority, novelty, or significance findings; the
   frontier itself flags priority/novelty as unchecked for named new rows.
 
@@ -1321,10 +1338,10 @@ at arbitrarily large scales. The theorem says nothing at `t = 83`.
 
 ### Finite off-diagonal certificates
 
-The historical audit selects 125 verified log rows at positions not constrained
+The source-bound roster records 125 verified rows at positions not constrained
 to equal `periodLcm t`. Two pairs of rows repeat the same `(h,N,L)` triple, so
 the roster contains 123 distinct certificates matched to 123 public Lean
-theorems across 122 files. The largest position in that audited set is:
+theorems across 122 files. Its largest recorded position is:
 
 ```text
 freeKill_64OneHundredFifteenDI :
@@ -1486,98 +1503,30 @@ Their registry identifiers lead to the declarations and current source
 coordinates; operational lookup details live in the
 [agent workbench](agents/AGENT_WORKBENCH.md).
 
-### Demand ledger
+### Current relation and residual routes
 
-A demand is an unproved hypothesis extracted from a conditional theorem and
-stored as a named Lean proposition. `ErdosProblems/DemandLedger/Basic.lean`
-preserves a historical extraction for #249 and #257. The
-[dated audit](reference/TRUTH_AUDIT.md) records its selected population and
-implication graph. Its seventeen endpoint-equivalent hypotheses among
-twenty-three selected substantive demands describe that extraction, not the
-current eight-programme corpus or the value of its results. For example:
+Cross-paper conjectures and reductions are not assigned a score from a frozen
+#249/#257 sample. Use `python3 scripts/query_semantic.py node <node_id>` for one
+current statement, `python3 scripts/query_semantic.py family-relations
+<family_id>` for its registered family relationships, and
+`scripts/residual_evaluator.py` when a proposed reduction needs a kernel-backed
+comparison with its target. Public claim status and exact registered Lean
+interfaces remain owned by `docs/claims.json` and
+`python3 scripts/query_corpus.py --claim <claim_id>`.
 
-- `G103_iff_erdos249` in
-  `ErdosProblems/DemandLedger/edges/Discharge3_G103.lean` proves that the
-  general lcm-window supply `G103` is equivalent to Problem 249 itself.
-- `G103_iff_G097` in the same file identifies two supply formulations.
-- `e_G083_G084` in `edges/ClusterE.lean` records one implication in the
-  Problem 257 chain.
+## Finite evidence policy
 
-The ledger classifies obligations. It does not discharge an obligation merely
-by naming it or proving it equivalent to the target.
+A finite measurement belongs on this page only when the release preserves its
+sample identities, executable owner and rerunnable validation route. Historical
+scans without that chain are omitted; a prose summary is not a substitute for
+the missing evidence. Current registered finite-evidence claims are reached
+through `python3 scripts/query_corpus.py --overview --format card` and their
+emitted source and receipt handles.
 
-## What is measured, not proved
+## Historical corrections retained in source
 
-Only measurements with an explicit tested range and explicit exception set are
-listed here. Counts without preserved sample identities are not promoted to
-release results.
-
-| Measurement | Exact range | Exact failures or mismatches | Status |
-|---|---|---|---|
-| `Recon257.seamExcess s = 2` | `s = 5,…,102` (two overlapping scans, `5…64` and `58…102`) | No occurrence. | MEASURED. This makes the audited uses at `s=D+1`, `D≥60`, unobserved. |
-| Three-row `hcof` on the seven audited survivor values | `D = {101,122,164,314,545,629,1112}` | Fails at all seven values. | MEASURED; every audited case satisfying `hcof` already died by depth 3. |
-| Residual invariant | `s = 6,…,3000`, `d = 2,…,s-1` | Exactly `(s,d)=(13,7)`; residual `524419`, bound `524288`. | The exception is also PROVED by `Three/T1.not_residualInvariant`. |
-| `hlow` and `hhigh` at late pairs | all late pairs with `s = 5,…,600` | `hlow` fails exactly at `(7,5)`; `hhigh` fails exactly at `(5,4)`. | The `hlow` exception is PROVED in `Decl/D4` and `Hlow/H1`. |
-| Remainder-hit/greedy-support correspondence | `s = 5,…,900` | Zero mismatches. | MEASURED. It does not prove infinitely many hits. |
-| `UnboundedLargestSkipLate` row event | `s = 5,…,1500` | Fails exactly at `s = 5,11,12,13`. | MEASURED. A finite interval does not prove eventual or unbounded behaviour. |
-| Residual invariant on adjacent control rows | every rank of rows `s=12` and `s=14` | No failures. | MEASURED anti-vacuity check for the isolated `(13,7)` counterexample. |
-| Diophantine height at one scale | `d=1000` | Denominator bit length `253815`; comparison value `d²/4=250000`. | MEASURED single-scale size check, not an asymptotic theorem. |
-| Relative-margin scan | `d = 2,…,2000` | Record low `1.13×10^-4` at `d=1136`; no danger-zone instance. | MEASURED. It does not establish a positive lower bound. |
-
-For the residual invariant, the maximum ratio away from the exception was
-`0.9999807` at `(606,602)`.
-
-The rows above are carried from a dated audit log whose raw run logs and
-executable scan owners are not preserved in this release. Their stated finite
-domains and exception sets are therefore historical measurement records, not
-independently reproducible artifacts. A reported late-bit scan of about 14,000
-ranks over `s=14,…,400` is omitted from the table because neither its exact
-sample count nor its sample identities were preserved.
-
-The audit also records a selection-biased certificate sample: at depth excess
-`c=2`, 15 of 154 samples failed; at `c=3`, 601 of 5987 failed. The sample
-identities are not preserved in the log, so these counts are not independently
-reconstructible from the release and are not evidence for an equidistribution
-law.
-
-The remaining two measurements are source-backed and reproducible from this
-release.
-
-### Exact endpoint-certificate probe
-
-Exact range: all `960` pairs `1≤N≤120`, `1≤h≤8`, searching `1≤L≤400`;
-additional `h=1` probes at `N=200,500,1000,2000,5000`; exact LCM-diagonal pairs
-`(N,h)=(lcm(1,…,t),lcm(1,…,t))` for `1≤t≤16`.
-
-Exact failures or mismatches: no failures. Relative to the least arithmetically
-admissible depth `L₀=min{L≥1:2ᴸ>2(N+h+L+2)}`, the rectangle's first
-certificates have excess `0…11` (median `1`, mean `727/480`); the 16 indexed
-diagonal rows have excess `0…4` (median `1`, mean `5/4`), and the 11 distinct
-diagonal scales have mean `14/11`.
-
-Status: MEASURED by exact integer arithmetic. Raw depth must grow with scale
-because the certificate interval is empty below `L₀`; the finite excess
-distributions prove no asymptotic law, equidistribution, bounded-excess
-theorem, or cofinal supply. The exact probe remains available as operational
-evidence through the agent workbench.
-
-### Source-backed checked diagonal depths
-
-Exact range: all 33 distinct `periodLcm` scales covering positive `t≤82`.
-
-Exact failures or mismatches: every checked working depth has excess `0…4` over
-`L₀` (median `1`, mean `40/33`). Five rows have proved least depths, with exact
-excess `0…3`; the other 28 values are upper bounds on least-depth excess.
-
-Status: FINITE SOURCE EXTRACTION from explicit Lean theorem signatures. It
-establishes no bounded-excess law at untested scales and no cofinal supply.
-The checked roster remains available as operational evidence through the agent
-workbench.
-
-## What was retracted
-
-The detailed file-by-file record is in
-[`TRUTH_AUDIT.md`](reference/TRUTH_AUDIT.md). The main corrections are:
+The current Lean module headers and declarations retain the operative
+boundaries. The principal corrections were:
 
 - `Lift/AngleB2.lean` no longer says that the survivor set is empty. Its theorem
   is conditional on a false `hcof` instance at each surviving class and on an
@@ -1766,14 +1715,16 @@ positiveMersenneSupportValue_eq_erdosSupportSeries
 
 The repository cannot certify its own human legibility. It therefore exposes a
 second `OPEN` question: can an independent reader, starting from a fresh clone,
-recover the historical #249/#257 audit verdict in at most ten minutes? The request is exact,
-including the response schema, its consumer, payoff, and boundary:
+recover the current eight-problem scope, authority and #1041 credit boundary in
+at most ten minutes? The request is exact, including the response schema, its
+consumer, payoff, and boundary.
 
-This scoped protocol does not assess the full eight-programme corpus. Its
-low-confidence working guess is that a reader will recover both open
-boundaries and the zero Farey delta, but may still underweight the concrete
-non-restatement results. The protocol distinguishes that failure from the
-opposite error—mistaking finite or conditional results for a near-solution.
+The reader replays the current overview, #1041 and semantic-relation routes;
+reports that the total-variation formulation is refuted by ani's degree-seven
+counterexample while the historical curve-length correspondence remains
+unreviewed; identifies the claim registry as selected rather than exhaustive;
+and summarises checked results from at least three distinct problems. This
+replaces the retired protocol built around a frozen #249/#257 binder sample.
 
 A structurally accepted response from an identified independent reader returns
 an explicit rubric for its result summaries, evidence paths and verdict. A

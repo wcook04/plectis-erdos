@@ -580,10 +580,10 @@ def main() -> int:
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
     artifacts = {row["id"]: row for row in contract.get("artifacts", [])}
     claims = json.loads(CLAIMS.read_text(encoding="utf-8")) if CLAIMS.is_file() else None
-    # The paper corpus is exported from the private system repository. A
-    # checkout without it is an environment missing a file, not a problem
-    # index missing an answer, so the paper route reports its own absence
-    # rather than failing the build.
+    # The tracked paper corpus is a public input with a clone-local refresh
+    # route for native papers. A checkout without it is an environment missing
+    # a file, not a problem index missing an answer, so the paper route reports
+    # its own absence rather than failing the build.
     corpus = json.loads(CORPUS.read_text(encoding="utf-8")) if CORPUS.is_file() else None
     matrix = review_matrix_by_number(claims)
     papers = corpus_by_source(corpus)

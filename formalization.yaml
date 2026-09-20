@@ -31,7 +31,7 @@ sources:
     license: "CC-BY-4.0"
     author_endorsement: "n/a"
 status:
-  scope: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
+  scope: "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
   proof_corpus_sorry_count: 0
   sorry_count: 8
   sorry_in_definitions: 0
@@ -913,7 +913,7 @@ review:
   reviewers: []
   notes: "self-assessed and agent-checked; no human mathematical peer review is claimed"
 fidelity:
-  divergences: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
+  divergences: "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
 alignment:
   namespace: "Erdos249257.ExternalVerification"
   statements:
@@ -1621,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:4efc26ba2f1d626b78a92f9fe341a2d5a0e7dfd5c46fa7842bb0c8608a136121"
+  problem_index_digest: "sha256:66a8c634a077ba0e853c0fef2a059a2a6fe6c3f30db5ef6d875ce38bcf891398"
   problem_count: 8
   problems:
     - id: "erdos_68"

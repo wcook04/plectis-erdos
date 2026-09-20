@@ -2,7 +2,7 @@
   "schema": "erdos-external-verification-packet/1",
   "scope": "all_eight_public_problem_programmes",
   "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-  "boundary": "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
+  "boundary": "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
   "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
   "automation": {
     "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:56376eeb6f58b8aec86c172838d8e6a8253d5d38391fb535e372240a1f8c9823",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:4efc26ba2f1d626b78a92f9fe341a2d5a0e7dfd5c46fa7842bb0c8608a136121",
+    "projection_digest": "sha256:66a8c634a077ba0e853c0fef2a059a2a6fe6c3f30db5ef6d875ce38bcf891398",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2888,7 +2888,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:89ca531b10603e0b381862c07b824d327691875b892e1aa5c5290a29e7cde1dc",
+    "lakefile.toml": "sha256:908500f31b84972a088465dbefa35b748beeaaf1fdca47872f0abe8b7fdd5d73",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

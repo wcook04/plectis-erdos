@@ -24,19 +24,20 @@ The theorem list is deliberately ordered by mathematical signal:
 
 The boundary is deliberate.  Lean checks exactly the three displayed
 endpoint declarations; it does not check the ordinary fibre pullback, Abel
-path construction, affine transport, or the unrestricted Erdős problem.
-Erdős #1041 remains open for arbitrary monic polynomials with roots in the
-open unit disc.
+path construction, affine transport, or an unrestricted connector theorem.
+Elsewhere in this repository, a degree-seven counterexample due to the
+erdosproblems.com contributor `ani` is formalised in Lean and refutes the
+total-variation formulation of Erdős #1041.  The precise correspondence with
+the historical curve-length question remains unreviewed; these three solved
+families neither establish nor repair a universal statement.
 
 ## Exact paper routes
 
-The active public paper does not yet contain these results. The routes below
-target the application-ready staged revision
-`ErdosProblems/papers/erdos-1041-critical-value-separation.patch`, which
-dry-applies to public paper base
-`fe5d678bec0111c52059d04e77dfc20130c6176c` with source-file SHA-256
-`d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4`.
-They become live public routes only after authorized promotion.
+The public long-form paper contains these results and their exact scope at
+commit `1e78f5f40900cc13579450602b4af6856d954d3c`.  Its tracked source is
+`paper/1041/erdos1041-lemniscate-reasoning-surface.tex`, with SHA-256
+`4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61`.
+The labels below resolve in that committed source.
 
 | Comparator declaration | Exact checked-kernel label | Ordinary theorem supported | Exact boundary |
 |---|---|---|---|
@@ -58,6 +59,7 @@ negative, and AxiomAudit passed focused Lean replay; all three selected
 endpoints reported exactly `propext`, `Quot.sound`, and `Classical.choice`.
 The supported Comparator runner now includes this positive/deliberate-negative
 pair. Terminal Comparator/NanoDa replay on Linux behind the required systemd
-boundary, authorized paper promotion, and a pinned public source identity
-remain Palomar gates. This package records a high-interest candidate without
-claiming an external validation or submission receipt it does not have.
+boundary remains optional additional assurance.  The paper and package now
+have a pinned public source identity.  This package records a high-interest
+candidate without claiming Palomar submission, registration, external
+validation, or independent mathematical review.

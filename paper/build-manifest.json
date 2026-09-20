@@ -5,31 +5,31 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:50c9a7db580793b118277ec66b39f78461e097e40df1f9c0e70688f2ce1dbea7"
+        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:b27abd8baa30b9850fb7b5d71242cb7e76b3467aefba5c9535a6389de22534be"
       },
-      "rendered_content_digest": "sha256:3a73dfa673229af8c4b404b373f0290685c5c405c2cd69cd8193b67cd2a74540",
+      "rendered_content_digest": "sha256:9004af8c437661ff6ab1412a32f3a38e7e5c53a285f496845234e74bdee03ed5",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
     "erdos_1041_note": {
       "inputs": {
-        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:445fca3fff9aa43172949446c904f7a14b19ee7e8c928924b31a1c2173cde400",
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:ed91d111169683a4ea07a87380e95bab34f83d83d06c4bb41b17be9d35fb204a",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:96898330016c6d569407e78925468d8bb1ed9c7683998cc9cd46a7ba6a5dd7a0",
+      "rendered_content_digest": "sha256:695331598cb7b9f4eb6b292e7fa7ac639baba5b15e75eb347a3b67a7a639eb47",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     "erdos_1041_reasoning_record": {
       "inputs": {
-        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61",
+        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:3a4b5382ce6317f46581faa77ec638c54699b78380c28e04d48cebc2b64f2de7",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:1a66a6e7a70302c368112f3c6580806411822de0fb890a2d670ce3f6bca1d5bf",
+      "rendered_content_digest": "sha256:28033c140f3a62aacb35a6bba2e24af7daac19d425d9ac806d37cf6b2c8a53e9",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
@@ -134,12 +134,12 @@
     },
     "erdos_257_reasoning_record": {
       "inputs": {
-        "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:bfccfee0cb00dea3983414914c1209b3c230872a890884703846cafba3f56fe7",
+        "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:24743da56c54d92bd13dc445d280a1db717d0d9bc6b4a53c2ce42fccdac0d583",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:94b642dab6e6441afcda02164b21e62ec068bca40fb1727ac8452ea988ec8eda",
+      "rendered_content_digest": "sha256:6162e5c2060b2a9cefaf374830fdabf0a2d03bf8578e7cc0e0c6767a8abc8b85",
       "source_path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "storage_path": "paper/257/erdos257-mersenne-reasoning-surface.pdf"
     },
@@ -203,9 +203,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/open-source-mathematics-strategy.tex": "sha256:65d9939bfc7b3e960b9428759a8e4772590d5a6032f56b49bb07d36ce34ee9e6"
+        "paper/systems/open-source-mathematics-strategy.tex": "sha256:15e0e12d4c666ac61417f3bf5350630164df23ce3b5fa3d67c481ac45f712a1b"
       },
-      "rendered_content_digest": "sha256:e6c7115bbe123e1eaeecd424b31ff74db8a038d5044dca6daf19a51f25e5f123",
+      "rendered_content_digest": "sha256:d056851e15b1895ceb1697f8fdc63abf31d2d6e268484667112376e7d871dd9f",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },
@@ -214,9 +214,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:fb70fa61ebef2404ce929738362137dffdb3d6ec230f3ba196b10f9152af335b"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ce620ecc1475faf0af0fbf035fce1aa46fda8782111706179f9345c13fb1f37d"
       },
-      "rendered_content_digest": "sha256:34de0b121fa63fa77daba0d8268cbe9ce4a394a458468e70a602280a43c32b22",
+      "rendered_content_digest": "sha256:a4492de28657aaef442ffdd94aafc041aeb6daab648fdcf697188605d2d251a0",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }

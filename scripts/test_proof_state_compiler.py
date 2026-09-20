@@ -206,7 +206,7 @@ def check_live_pilot() -> dict:
         "expected_unsolved_goal_error_ignored"
     ]
     assert transition["declaration_receipt"]["source_ref"] == (
-        "Erdos249257/TotientTailPeriodKiller.lean:327"
+        "lean/Erdos249257/TotientTailPeriodKiller.lean:327"
     )
     assert blocked["minimal_blocker_cuts"][0]["targets"] == [
         "⊢ r.den ∣ 2 ^ N * (2 ^ h - 1)"

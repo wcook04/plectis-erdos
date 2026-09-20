@@ -673,17 +673,15 @@ def main() -> int:
     checks += 1
 
     mutated_census = copy.deepcopy(census_surfaces)
-    mutated_census["docs/reference/TRUTH_AUDIT.md"] = mutated_census[
-        "docs/reference/TRUTH_AUDIT.md"
+    mutated_census["docs/RESULTS.md"] = mutated_census[
+        "docs/RESULTS.md"
     ].replace(
-        (
-            "selected audit, not the current corpus or a measure of mathematical value"
-        ),
-        "the current corpus and its mathematical value",
+        "python3 scripts/query_semantic.py node <node_id>",
+        "read a frozen restatement report",
         1,
     )
     assert_census_rejected(
-        census, mutated_census, "historical demand audit promoted to current corpus"
+        census, mutated_census, "live semantic route replaced by frozen audit"
     )
     checks += 1
 

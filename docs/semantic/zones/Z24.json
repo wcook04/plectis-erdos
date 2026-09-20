@@ -1630,61 +1630,61 @@
   {
    "declaration": "Isolated",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 30,
+   "line": 31,
    "role": "substrate"
   },
   {
    "declaration": "isolatedRows",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 34,
+   "line": 35,
    "role": "substrate"
   },
   {
    "declaration": "isolationCounterexamples",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 39,
+   "line": 40,
    "role": "substrate"
   },
   {
    "declaration": "parityCensus",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 43,
+   "line": 44,
    "role": "substrate"
   },
   {
    "declaration": "hoverRows",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 50,
+   "line": 51,
    "role": "substrate"
   },
   {
    "declaration": "c1BandRows",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 57,
+   "line": 58,
    "role": "substrate"
   },
   {
    "declaration": "v2",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 63,
+   "line": 64,
    "role": "substrate"
   },
   {
    "declaration": "dyadicRows",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 70,
+   "line": 71,
    "role": "substrate"
   },
   {
    "declaration": "hitCount",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 78,
+   "line": 79,
    "role": "substrate"
   },
   {
    "declaration": "gap",
    "module": "ErdosProblems/Three/verify/T3.lean",
-   "line": 83,
+   "line": 84,
    "role": "substrate"
   },
   {

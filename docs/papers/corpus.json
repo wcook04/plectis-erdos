@@ -4529,10 +4529,10 @@
         "title": "Reciprocal Mersenne Subseries",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Reciprocal Mersenne Subseries. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
+        "text": "Will Cook (2026). Reciprocal Mersenne Subseries. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4543,11 +4543,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:bfccfee0cb00dea3983414914c1209b3c230872a890884703846cafba3f56fe7",
+      "source_sha256": "sha256:24743da56c54d92bd13dc445d280a1db717d0d9bc6b4a53c2ce42fccdac0d583",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 164,
       "sections": [
         {
@@ -5537,8 +5537,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:94b642dab6e6441afcda02164b21e62ec068bca40fb1727ac8452ea988ec8eda",
-      "pdf_byte_count": 832178,
+      "pdf_sha256": "sha256:6162e5c2060b2a9cefaf374830fdabf0a2d03bf8578e7cc0e0c6767a8abc8b85",
+      "pdf_byte_count": 832173,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6104,10 +6104,10 @@
         "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6118,11 +6118,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:445fca3fff9aa43172949446c904f7a14b19ee7e8c928924b31a1c2173cde400",
+      "source_sha256": "sha256:ed91d111169683a4ea07a87380e95bab34f83d83d06c4bb41b17be9d35fb204a",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 39,
       "sections": [
         {
@@ -6362,8 +6362,8 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:96898330016c6d569407e78925468d8bb1ed9c7683998cc9cd46a7ba6a5dd7a0",
-      "pdf_byte_count": 196763,
+      "pdf_sha256": "sha256:695331598cb7b9f4eb6b292e7fa7ac639baba5b15e75eb347a3b67a7a639eb47",
+      "pdf_byte_count": 197623,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6415,10 +6415,10 @@
         "title": "Paths in Polynomial Lemniscates: Proofs and Examples",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Proofs and Examples. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Proofs and Examples. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6429,11 +6429,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
       "local_source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "source_sha256": "sha256:4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61",
+      "source_sha256": "sha256:3a4b5382ce6317f46581faa77ec638c54699b78380c28e04d48cebc2b64f2de7",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 67,
       "sections": [
         {
@@ -6841,8 +6841,8 @@
       ],
       "citations_rendered": 65,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:1a66a6e7a70302c368112f3c6580806411822de0fb890a2d670ce3f6bca1d5bf",
-      "pdf_byte_count": 429305,
+      "pdf_sha256": "sha256:28033c140f3a62aacb35a6bba2e24af7daac19d425d9ac806d37cf6b2c8a53e9",
+      "pdf_byte_count": 429755,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7584,10 +7584,10 @@
         "title": "Problem-Sized Lean Worlds",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Problem-Sized Lean Worlds. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
+        "text": "Will Cook (2026). Problem-Sized Lean Worlds. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7598,11 +7598,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:fb70fa61ebef2404ce929738362137dffdb3d6ec230f3ba196b10f9152af335b",
+      "source_sha256": "sha256:ce620ecc1475faf0af0fbf035fce1aa46fda8782111706179f9345c13fb1f37d",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/claim-faithful-publication-systems-paper.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 48,
       "sections": [
         {
@@ -7896,8 +7896,8 @@
       ],
       "citations_rendered": 28,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:34de0b121fa63fa77daba0d8268cbe9ce4a394a458468e70a602280a43c32b22",
-      "pdf_byte_count": 153465,
+      "pdf_sha256": "sha256:a4492de28657aaef442ffdd94aafc041aeb6daab648fdcf697188605d2d251a0",
+      "pdf_byte_count": 153618,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7954,10 +7954,10 @@
         "title": "From a Cold Clone to a Proof Receipt",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). From a Cold Clone to a Proof Receipt. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
+        "text": "Will Cook (2026). From a Cold Clone to a Proof Receipt. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7968,11 +7968,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:50c9a7db580793b118277ec66b39f78461e097e40df1f9c0e70688f2ce1dbea7",
+      "source_sha256": "sha256:b27abd8baa30b9850fb7b5d71242cb7e76b3467aefba5c9535a6389de22534be",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/cold-clone-to-proof-receipt.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 20,
       "sections": [
         {
@@ -8098,8 +8098,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:3a73dfa673229af8c4b404b373f0290685c5c405c2cd69cd8193b67cd2a74540",
-      "pdf_byte_count": 86077,
+      "pdf_sha256": "sha256:9004af8c437661ff6ab1412a32f3a38e7e5c53a285f496845234e74bdee03ed5",
+      "pdf_byte_count": 86223,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8156,10 +8156,10 @@
         "title": "From Spare Compute to Cumulative Mathematics",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
+        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -8170,11 +8170,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:65d9939bfc7b3e960b9428759a8e4772590d5a6032f56b49bb07d36ce34ee9e6",
+      "source_sha256": "sha256:15e0e12d4c666ac61417f3bf5350630164df23ce3b5fa3d67c481ac45f712a1b",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/open-source-mathematics-strategy.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 32,
       "sections": [
         {
@@ -8372,8 +8372,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:e6c7115bbe123e1eaeecd424b31ff74db8a038d5044dca6daf19a51f25e5f123",
-      "pdf_byte_count": 145395,
+      "pdf_sha256": "sha256:d056851e15b1895ceb1697f8fdc63abf31d2d6e268484667112376e7d871dd9f",
+      "pdf_byte_count": 145629,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

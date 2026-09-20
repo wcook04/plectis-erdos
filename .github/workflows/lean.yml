@@ -873,12 +873,10 @@ jobs:
       - name: Test publication evidence time axis
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_evidence_time_axis.py
-      # The clone-local paper corpus is generated from the private system
-      # repository, so no builder here can refresh it and nothing above notices
-      # when it falls behind. It shipped stale from 2026-07-21: the generated
-      # full text still omitted the generative-AI disclosure that both
-      # manuscripts and both PDFs carried, which is the one drift a reader must
-      # not meet. The checker ships in the corpus it guards; run it.
+      # Native paper text and corpus metadata have a clone-local refresh route;
+      # imported companion records retain their public provenance. The checker
+      # independently proves that every tracked manuscript/PDF digest and every
+      # advertised first-pass route still matches the committed corpus.
       - name: Test clone-local paper corpus is current
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 docs/papers/check_paper_corpus.py

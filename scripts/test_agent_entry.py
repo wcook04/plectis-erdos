@@ -193,6 +193,14 @@ ROUTE_CASES = {
         "repository_architecture",
         "maintain-public-infrastructure",
     ),
+    "look for other documentation drift and replace obsolete checks with the current integrated infrastructure": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "look for other drift similar please": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
     "I cloned the repository and want to prove Erdős problem 249": (
         "bounded_research",
         "mine-open-problem",

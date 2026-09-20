@@ -6,12 +6,15 @@
 Plectis is an open-source, AI-assisted research project. This repository contains
 the papers, Lean proofs, computations, failed approaches, and remaining
 questions, so another researcher can inspect the work and continue from it.
-**The degree-seven example refutes the total-variation formulation of
-Erdős #1041. The other seven target problems are not resolved here. Independent
+**The degree-seven counterexample found by the erdosproblems.com contributor
+ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in
+Lean. The other seven target problems are not resolved here. Independent
 human review of correspondence with the historical curve-length formulation
 has not been recorded. Comparator checks only its selected exact statements,
 configured axioms and kernel acceptance; it does not assess novelty or
 historical correspondence.**
+
+The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
