@@ -1190,6 +1190,12 @@ Attribution. Wilson’s theorem and the Wilson reflection identity are classical
 
 The following links identify the statements used above and related lemmas. Each preserves the original file, declaration, and line reference. The evidence qualifications in the preceding section apply throughout; in particular, source presence alone does not establish inclusion in a checked build.
 
+<a id="long68:sec:coverage"></a>
+
+## Formalisation coverage and remaining dependencies
+
+Every theorem, lemma, proposition and corollary of this record has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`. No result of this record depends on an input that is absent from that development. The concordance after the list below gives the declarations for each result.
+
 - [the factorial-scaled floor of a rational number](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47)
 
 - [eventual zero digits of a rational number](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81)
@@ -1293,6 +1299,48 @@ The following links identify the statements used above and related lemmas. Each 
 - [a finite exponent range suffices for that count](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5277)
 
 - [the exact repeated-power criterion above the factorial base](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5389)
+
+<a id="concordance-of-statements-and-lean-declarations."></a>
+
+#### Concordance of statements and Lean declarations.
+
+Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `181078b6b009`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so.
+
+Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-reference="long68:res:prime-pole">2</a>: [`maximal_prime_power_survival`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117).
+
+Proposition <a href="#long68:res:wilson-cofinality" data-reference-type="ref" data-reference="long68:res:wilson-cofinality">3</a>: [`cofinal_first_prime_occurrences`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180).
+
+Lemma <a href="#long68:res:product-lcm" data-reference-type="ref" data-reference="long68:res:product-lcm">4</a>: [`product_lcm_pairwise_gcd`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189).
+
+Lemma <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a>: [`factorial_gap_gcd_exact`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288).
+
+Lemma <a href="#long68:res:segment" data-reference-type="ref" data-reference="long68:res:segment">6</a> (the Lean statement is stronger): [`factorialGapSegment_log_sum_le_channelLCM_add_choose`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566).
+
+Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a>: [`common_denominator_growth_liminf`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42).
+
+Theorem <a href="#long68:res:carry-equivalence" data-reference-type="ref" data-reference="long68:res:carry-equivalence">8</a>: [`strict_successor_characterisation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77).
+
+Proposition <a href="#long68:res:companion-orbit" data-reference-type="ref" data-reference="long68:res:companion-orbit">9</a>: [`companion_orbit`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38).
+
+Proposition <a href="#long68:res:lower-escape" data-reference-type="ref" data-reference="long68:res:lower-escape">10</a>: [`lower_interval_criterion`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102).
+
+Theorem <a href="#long68:res:shift-family" data-reference-type="ref" data-reference="long68:res:shift-family">11</a>: [`uniform_family_boundary`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123), [`uniform_family_members`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134).
+
+Theorem <a href="#long68:res:global-residue" data-reference-type="ref" data-reference="long68:res:global-residue">12</a>: [`global_complementary_criterion_prime`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L169).
+
+Theorem <a href="#long68:res:normalform" data-reference-type="ref" data-reference="long68:res:normalform">13</a>: [`supported_integral_normal_form`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17).
+
+Theorem <a href="#long68:res:bandbreakpoint" data-reference-type="ref" data-reference="long68:res:bandbreakpoint">14</a>: [`supported_quotient_band`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24), [`supported_first_band_cancellation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42), [`supported_breakpoint_escape`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51).
+
+Theorem <a href="#long68:res:moment-ideal" data-reference-type="ref" data-reference="long68:res:moment-ideal">15</a>: [`exact_moment_ideal_with_primitive_attainment`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242), [`minimumMoment_independent_prime`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321).
+
+Theorem <a href="#long68:res:residual-transparency" data-reference-type="ref" data-reference="long68:res:residual-transparency">16</a>: [`residual_transparency`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116), [`summable_fullResidual`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166), [`zero_moment_residual_integral`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185), [`equal_moment_residual_integer_difference`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195).
+
+Theorem <a href="#long68:res:channel-radius" data-reference-type="ref" data-reference="long68:res:channel-radius">17</a>: [`square_subsequence_radius`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L234), [`radius_no_eventual_ratio_upper`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L258), [`radius_not_littleO`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L277).
+
+Corollary <a href="#long68:res:radius-constant" data-reference-type="ref" data-reference="long68:res:radius-constant">18</a>: [`asymptotic_radius_constant_liminf`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54).
+
+Theorem <a href="#long68:res:translator" data-reference-type="ref" data-reference="long68:res:translator">19</a>: [`prime_channel_corrector`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299).
 
 <a id="long68:sec:extended-record"></a>
 

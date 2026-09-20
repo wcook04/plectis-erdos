@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:8f4e12b606d6e7f127aebc593970445b1550275f5ef66578e2c59cc38d637a85",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:06d72c7125f44a5c262d73dcc5a49ce453b403e513eb0d24659bef35975bcbbb",
+    "projection_digest": "sha256:a2a102817ebb093da7164fb5381049c1b560d7cae72ec260f486fc7bf0f3b7b4",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1758,10 +1758,10 @@
             "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
             "path": "lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
             "present": true,
-            "line_count": 1155,
-            "declaration_count": 56,
-            "theorem_count": 47,
-            "content_digest": "sha256:5bf90115c4391dfa5743053f8ee3c27e3375e0f67c9812e6d86f67c29b232efa"
+            "line_count": 1198,
+            "declaration_count": 58,
+            "theorem_count": 49,
+            "content_digest": "sha256:7fbb70bcd1087d98b0a31cf36d82eb71e787bf00f41d25158848923bd9d09203"
           },
           {
             "module": "ErdosProblems.Erdos68.DivisorFactorialCentre",
@@ -2440,10 +2440,10 @@
             "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "path": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
             "present": true,
-            "line_count": 835,
-            "declaration_count": 54,
-            "theorem_count": 38,
-            "content_digest": "sha256:9a158ddc272a2c59d87aaefcd84352ffa6197d6bed95f965f0de59a119a8b34e"
+            "line_count": 912,
+            "declaration_count": 55,
+            "theorem_count": 39,
+            "content_digest": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
           },
           {
             "module": "ErdosProblems.Erdos269.ResidueEscape",

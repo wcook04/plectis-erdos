@@ -276,7 +276,7 @@ If $`d_1+d_2>2`$, the additional bound $`d_2\le1+t`$ gives $`1-t^2<d_1d_2`$, and
 ``` math
 n<d_2/d_1+(n-1)d_1/d_2\le n.
 ```
-The last inequality follows from $`(x-1)(x-(n-1))\le0`$ for $`x=d_2/d_1\in[1,n-1]`$. Scaling by a containing radius $`0<R<1`$ gives the strict bound $`2R<2`$. The [companion’s full distance argument](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=two-nearest-root-distance) derives the two displayed estimates without assuming $`|f(c)|\le1`$. The source is [the proof for the two nearest roots](https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md); Lean checks its real-inequality core, not the ordinary root-disc reduction. ◻
+The last inequality follows from $`(x-1)(x-(n-1))\le0`$ for $`x=d_2/d_1\in[1,n-1]`$. Scaling by a containing radius $`0<R<1`$ gives the strict bound $`2R<2`$. The [companion’s full distance argument](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=two-nearest-root-distance) derives the two displayed estimates without assuming $`|f(c)|\le1`$. The source is [the proof for the two nearest roots](https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md); Lean now checks the [strict distance bound from the critical polynomial](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L31), including the root-disc reduction and the choice of the two nearest indices. ◻
 
 </div>
 

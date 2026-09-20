@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:c23b2fe9b4ca628ca34d678af17f745d6b17405a9ab800778015f7c7e98dacd9",
+    "docs/claims.json": "sha256:9938d76987fd4b25569702057f484bebed5113057bfb384c755b2a92a5f2b569",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:06d72c7125f44a5c262d73dcc5a49ce453b403e513eb0d24659bef35975bcbbb",
-    "docs/publication_contract.json": "sha256:f8258f5039ac0fabae918b5d79b80d15e3fc3491dd4c36575a08f0ca18ca5fae",
+    "docs/problems.json": "sha256:a2a102817ebb093da7164fb5381049c1b560d7cae72ec260f486fc7bf0f3b7b4",
+    "docs/publication_contract.json": "sha256:a766950c6641908c2921eb094c5137d0e6555d43e8cda4e54840ae9f8ceb655b",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:0aa2b9e0ca5061bce9144fceeb67ada967a90a8bb26b45e9084be5d3c7024b81",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:3932c8c148f3d61acd95ca18c4d2bd5f471361e4d631a3152aa4331849ed5016",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:8f38a10e7ef2ec9fe571f0df1062658d12f4dd346c19eeb99a940369abe81959",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:06d72c7125f44a5c262d73dcc5a49ce453b403e513eb0d24659bef35975bcbbb",
+      "content_digest": "sha256:a2a102817ebb093da7164fb5381049c1b560d7cae72ec260f486fc7bf0f3b7b4",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "1d0d5e5797300d0e7aed1a6c65ec2ac75155f8b1",
+      "ref": "181078b6b009d905809cf2e007ad309386a3d1e0",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
