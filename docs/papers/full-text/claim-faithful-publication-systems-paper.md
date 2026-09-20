@@ -526,24 +526,18 @@ The next evaluation should ask more than how many theorems additional compute pr
 
 <a id="sec:admissible-constructions"></a>
 
-## Executable choices recovered from a research construction
+## Executable construction choices
 
-The existing feedback construction now supports every sequence of admissible digits, with its infinite sum and eventual congruences preserved under explicit continuation hypotheses. This extension turns one proof’s sufficient conditions into reusable controls for finite experimentation. It lives in the existing feedback experiment, proof-state compiler, workbench, and Comparator runner.
-
-At step $`n`$, let $`C_n`$ be the cumulative digit sum and $`r_n`$ the weighted remainder. A permitted digit satisfies
+A feedback digit with cumulative sum $`C_n`$ and remainder $`r_n`$ must satisfy
 ``` math
-0\le d\le A_n,\qquad M_n\mid C_n+d,\qquad
+0\le d\le A_n,\quad M_n\mid C_n+d,\quad
 \ell_{n+1}\le r_n-dw_n\le u_{n+1}.
 ```
-For rational data with $`w_n>0`$, solving the two inequalities gives an integer interval; intersecting it with the required residue class enumerates all one-step choices directly. Additional congruences are merged before generation. A second mode constructs actual Boolean support witnesses with $`d_n=\sum_{k\mid n}x_k`$, $`x_k\in\{0,1\}`$. The merged relation may be empty: existence for two separate constraints never supplies a common witness.
+The generalised Lean theorem preserves the prescribed sum for every such sequence when $`w_n,\ell_n\ge0`$ and $`u_n\to0`$; nested cofinal moduli give eventual congruences. The finite compiler intersects rational intervals and residue classes, and can require Boolean divisor-support witnesses. Separate satisfiability does not imply a common witness or infinite continuation.
 
-The Lean continuation argument now assumes only the displayed step relation. Nonnegative lower bounds and $`u_n\to0`$ imply $`r_N=y-\sum_{n<N}d_nw_n\to0`$, hence the prescribed sum. Nested moduli eventually containing every positive integer give both eventual congruences. The old selector still supplies one-step existence under its overlap hypotheses. A finite runner does not establish those hypotheses at all indices. The chosen constant-modulus development control does not satisfy cofinality.
+Authored contract extraction draws on proof generalisation \[proofgeneralisation\]; relation compilation and fusion on \[computingcorrectly; palamedes; mergingrelations\]; enumeration, random, targeted and shrinking runners on \[programmablepbt\]; reusable choice-policy evolution on \[alphaevolve; dreamprover\]. These are corpus-specific adaptations. The existing proof-state compiler inspects elaborated expressions, the workbench replays finite Lean certificates, and Comparator compares an independently expanded continuation statement with positive and negative controls. Local Lean builds do not supply the isolated Comparator verdict.
 
-Several established ideas guide this implementation. Selected-proof generalisation motivates exposing sufficient hypotheses \[proofgeneralisation\]; the present extraction was authored after inspecting the proof. Relation-based computation and constrained generation motivate one specification with multiple computational uses \[computingcorrectly; palamedes\]. Constraint fusion is inspired by merged relations and Palamedes’s tupling transformation \[mergingrelations; palamedes\]; the implementation here uses exact rational arithmetic and generalised Chinese remainders, not their recursive synthesis engines. Programmable testing motivates separating the relation from its enumeration, random, targeted and shrinking strategies \[programmablepbt\]. A small evolutionary runner retains choice programmes for later requests, drawing on programme evolution \[alphaevolve\] and the separation between active problem solving and consolidation \[dreamprover\]. None of these systems is claimed as a new invention or a drop-in dependency.
-
-The proof-state compiler exposes bounded elaborated expression slices of a selected declaration. The experiment emits independently stated finite Lean obligations; the existing workbench stores and replays their exact bytes. Comparator’s existing release contract can now name additional replay units. The feedback unit compares a separately expanded continuation statement with the implementation and includes a deliberate type mismatch. Building these modules locally is distinct from obtaining the isolated Comparator verdict. This reuse keeps exploration, kernel evidence, statement comparison, and publication with their existing owners.
-
-The recorded eight-step feedback control has 1,393 complete traces and maximum energy $`\sum d_n^2=284`$. Direct construction and generate-and-filter agree on the answer, using respectively 2,376 and 8,856 digit proposals. The support composition has two traces and maximum energy 11, requiring 19 and 99 proposals. Equal proposal-budget runs and the entire policy derivation budget are also recorded. These measurements establish finite behaviour, not a research-speed gain: implementation, literature reading, verification, wall time and model cost are not measured. A prospective evaluation must compare a capable agent with the same papers and Lean access, including an arm receiving the same mathematics as prose and lemmas. The systems account owns this machinery; a ninth mathematical paper would require a substantive result obtained through its use, beyond these development controls.
+The eight-step control has 1,393 traces. Compiled and filtered enumeration agree, using 2,376 and 8,856 proposals. This measures finite behaviour, not research gain. Prospective evaluation must include all costs and a capable agent given the same mathematics as prose and lemmas. Requests, policies, measurements and source attribution are retained in the existing feedback experiment.
 
 <a id="sec:related"></a>
 
