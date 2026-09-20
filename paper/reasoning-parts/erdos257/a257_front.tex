@@ -1375,8 +1375,10 @@ Forward directions are supplied formal (e.g.\ \lean{half\_mem\_mersenneAchieveme
 \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
 \lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}).
 For (d) and (e), the reverse directions use the square depths in
-Lemma~\ref{lem:sqrt-witness}; these derivations are ordinary arguments,
-not separately supplied formal theorems.  For (a), membership gives
+Lemma~\ref{lem:sqrt-witness}.  All six equivalences, including these reverse
+directions, are now Lean-checked in
+\lean{six\_membership\_conditions}{ErdosProblems/Erdos257/PaperCompleteR20/SixMembershipConditions.lean:123}.
+For (a), membership gives
 $C_G(N)\le2\sqrt{N+1}+3\le2\sqrt N+4$ when $N\ge1$, and $C_G(0)=0$.
 The forward implication still needs the greedy inequality $x_G\le1/2$.
 \coord{half-carry recurrence ;  exact-row} \scale{cofinal} \ev{Lean}\ev{Math}
