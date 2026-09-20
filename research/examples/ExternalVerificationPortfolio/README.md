@@ -113,12 +113,14 @@ The base-`3/2` coordinatewise-corridor obstruction remains discoverable in the
 consumer as a subordinate scoped mechanism, not a third endpoint. What is
 still missing for the actual Lambert series is a primitive-normalized,
 noncollapsed coefficient family with surviving local gain and analytic
-remainder control. One candidate source for that family is now excluded: the
+remainder control. One operation on that family is now measured: the
 primitive rows of the reduced partial sums span exactly `Z × bZ` for coprime
 `a > b ≥ 1`, and rational reweighting of an individual tail returns the same
-primitive row, so weighted copies of these tails add no rank and no endpoint
-valuation. That exclusion is an ordinary proof in the long record
-(`long1049:res:tail-lattice`) and is not formalized in this consumer. The
+primitive row, so rescaling and then taking integer combinations adds no rank
+and no endpoint valuation. A rational combination does leave the lattice, at
+the cost of a coefficient denominator that result does not measure. It is an
+ordinary proof in the long record (`long1049:res:tail-lattice`) and is not
+formalized in this consumer. The
 consumer therefore proves no #1049 irrationality and makes no novelty or
 priority claim.
 
