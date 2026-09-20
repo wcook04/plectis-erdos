@@ -17,8 +17,7 @@ length below `2` inside `{|f| < 1}`.
 
 The proof is transported from
 `ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean` in the
-read-only tree `/Users/willcook/.codex/worktrees/plectis-palomar-math-01a0bb15`,
-which is absent from this tree.
+Palomar corpus repository, which is absent from this tree.
 -/
 
 noncomputable section
