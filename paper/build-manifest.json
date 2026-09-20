@@ -35,23 +35,23 @@
     },
     "erdos_1049_note": {
       "inputs": {
-        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:f8b59587ad61a01439462544320099d9f8b9ab7dd6832d366081fb3fbdb886ef",
+        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:fa931ad1cc8ef277c10be7efe7e3c74d45aa8f966e4f3acde23ddb391c93fdef",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:3d07e36122230d52ef230f4216a384383f482071bf70668f65a9c97bba1a3607",
+      "rendered_content_digest": "sha256:0003e9956c745f77d3d69710a1a9104fec2ef2ef603e1cfddb14c600c459d8f0",
       "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },
     "erdos_1049_reasoning_record": {
       "inputs": {
-        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:f3e1cf4921ede415aca5cf510ba6dd2d9d5f53c8e39b0d7479d676830b207a14",
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:f0611511684a34bbff7387b1d0349856cad3b8d4bf7d11ac7b4f8c826d954291",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:bc72e37fe207e83d74be1760126249706ee16fd32acf6de8801e8bc30a3f606a",
+      "rendered_content_digest": "sha256:0788d640e047797abc24bd2993e8ee060a6070dda0885988a2585c07af5632e0",
       "source_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "storage_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf"
     },
