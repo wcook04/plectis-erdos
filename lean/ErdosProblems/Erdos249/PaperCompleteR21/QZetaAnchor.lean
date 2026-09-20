@@ -1,4 +1,5 @@
 import Erdos249257.GcdMomentCalculus
+import Mathlib.NumberTheory.Real.Irrational
 
 /-! The third member of the long #249 manuscript's divisor-sum chain: the
 `q`-zeta reading `∑_{d≥1} 1/(2ᵈ-1)² = ζ_q(2) - ζ_q(1)` at `q = 1/2`, with
@@ -118,5 +119,37 @@ theorem qZeta_half_two_sub_one :
     _ = ∑' d : ℕ+, 1 / ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2 :=
         tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series.symm
 
+/-- **Two irrational numbers can have a rational difference** (`prop:zetaq`,
+last sentence): so separate irrationality of `ζ_q(2)` and of `ζ_q(1)` would
+not by itself give irrationality of their difference. -/
+theorem exists_irrational_pair_with_rational_difference :
+    ∃ x y : ℝ, Irrational x ∧ Irrational y ∧ x ≠ y ∧ ¬ Irrational (x - y) := by
+  refine ⟨Real.sqrt 2 + 1, Real.sqrt 2, ?_, irrational_sqrt_two, ?_, ?_⟩
+  · rintro ⟨q, hq⟩
+    exact irrational_sqrt_two ⟨q - 1, by push_cast; linarith⟩
+  · intro h
+    linarith
+  · have hd : Real.sqrt 2 + 1 - Real.sqrt 2 = 1 := by ring
+    rw [hd]
+    intro h
+    exact h ⟨1, by norm_num⟩
+
+/-- **Irrationality of the value, conditional on the cited theorem**
+(`prop:zetaq`, `catalogue:mob:a4`).  Postelmans and Van Assche prove that
+`1, ζ_q(1), ζ_q(2)` are linearly independent over `ℚ` for `q = 1/p` with an
+integer `p ≥ 2`; that literature result is not formalised in this corpus, so
+it appears here as the explicit hypothesis `hli`, and at `q = 1/2` it gives
+the irrationality of `ζ_q(2) - ζ_q(1)`. -/
+theorem irrational_qZeta_half_difference_of_linearIndependent
+    (hli : ∀ a b c : ℚ,
+      (a : ℝ) * 1 + (b : ℝ) * qZeta ((1 : ℝ) / 2) 1
+        + (c : ℝ) * qZeta ((1 : ℝ) / 2) 2 = 0 → a = 0 ∧ b = 0 ∧ c = 0) :
+    Irrational (qZeta ((1 : ℝ) / 2) 2 - qZeta ((1 : ℝ) / 2) 1) := by
+  rintro ⟨r, hr⟩
+  have h := hli r 1 (-1) (by push_cast; linarith)
+  exact one_ne_zero h.2.1
+
 #print axioms qZeta_half_two_sub_one
+#print axioms exists_irrational_pair_with_rational_difference
+#print axioms irrational_qZeta_half_difference_of_linearIndependent
 end ErdosProblems.Erdos249.PaperCompleteR21
