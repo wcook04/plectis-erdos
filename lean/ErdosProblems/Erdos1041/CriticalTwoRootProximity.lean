@@ -79,11 +79,13 @@ Bernoulli inequality `(1-u)(1+u)^m ≥ (1-u)(1+mu) > 1`.
 
 ## Claim ceiling
 
-**Erdős #1041 remains open.**  The ordinary proof in
+The universal total-variation formulation of **Erdős #1041 is refuted** by
+ani's separate degree-seven counterexample.  The ordinary proof in
 `GlobalCriticalTwoNearestBudget.md`, together with the algebraic consumer here,
-closes the global Euclidean critical-point budget.  It does not prove
-containment; nothing here shows that the selected roots admit a path of that
-length inside `{|f| < 1}`.
+closes only the global Euclidean critical-point budget.  It does not prove
+containment, adjudicate correspondence with the historical curve-length
+question, or show that the selected roots admit a path of that length inside
+`{|f| < 1}`.
 -/
 
 namespace ErdosProblems.Erdos1041
