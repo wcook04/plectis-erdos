@@ -163,6 +163,7 @@ import ErdosProblems.Erdos68.PrimePoleCriterion
 import ErdosProblems.Erdos68.PrimePoleDenominator
 import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
 import ErdosProblems.Shared.IrrationalRotationStaircase
+import ErdosProblems.Synthesis
 
 /-!
 # Problem-centric Erdős research library
@@ -170,4 +171,3 @@ import ErdosProblems.Shared.IrrationalRotationStaircase
 This is the supported root for the problem-owned modules. The `Erdos249257`
 library remains available as the reviewed #249/#257 corpus.
 -/
-import ErdosProblems.Synthesis
