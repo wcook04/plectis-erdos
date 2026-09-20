@@ -1243,6 +1243,8 @@ Observation~\ref{obs:general-target-gap}.
 \lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643};
 \lean{half\_mem\_mersenneAchievementSet\_iff\_no\_existsFatalHalfGap}{HalfCutLocator.lean:654};
 witness type \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526}.
+The general-target statement is checked by
+\lean{paper\_greedy\_survival}{ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean:183}.
 \end{thm}
 
 Two boundary degeneracies are excluded at every rank, unconditionally: $r_{k-1}(1/2)\ne w_k$ by the
@@ -7253,8 +7255,9 @@ Consequently no parity argument or irrationality assertion about
 $E$ is needed for this ordinary general-target dichotomy.
 The restriction to $[0,E]$ is essential to this formulation:
 targets outside the convex hull are already excluded and need not
-lie in an internal gap.  The linked half-target declarations are
-special cases, not a fresh formal verification of this proof.
+lie in an internal gap.  The general-target equivalence and both endpoint
+constructions are Lean-checked in
+\lean{paper\_general\_target\_gap}{ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean:173}.
 \ev{Math}
 \end{obs}
 
