@@ -7373,6 +7373,17 @@
           "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "structural::a0520680ad9c1e0fa050",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "181078b6b009d905809cf2e007ad309386a3d1e0",
+      "reviewed_at": "2026-09-21",
+      "evidence_digest": "sha256:a1dab9ddd58fd17c22a932e7cc4c7fc78bcfded1899edd09aed99a20f9ad4700",
+      "review_scope": "Reviewed on 2026-09-21 because finite_prime_weighted_support became a README headline claim without a reviewed node. The node wording was compared against the cited signature of ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120:divisibilityWeightedClaim and against the definition it inhabits, DivisibilityWeightedClaim in ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean:75. That definition is a conjunction of two clauses. The first quantifies over every base b with 2 <= b and every set A with 0 not in A, A infinite and FinitePrimeWeighted b A, and concludes Irrational (erdosSupportSeries b A); this is the node's fixed-base irrationality clause, at one and the same base in hypothesis and conclusion. The second takes a host H with 0 not in H and FinitePrimeWeighted 2 H, and concludes irrationality of erdosSupportSeries b A for every infinite subset A of H and every base b with 2 <= b; this is the node's binary-cost all-base hereditary clause. FinitePrimeWeighted b A is the existence of a nonempty finite set of primes P whose weighted indicator series over A is summable, so the weighted-mass reading of the hypothesis is exact. The node's closing sentence 'No new analytic target is assumed' was checked against the proof term: divisibilityWeightedClaim is divisibilityWeightedClaim_of_mean_target applied to weightedDyadicMeanTarget, which is proved in the same module from the FinitePrimeWeighted data rather than assumed. The public claim boundary of finite_prime_weighted_support was checked in the same pass. Its statement omitted the positivity hypothesis 0 not in H on the host of the second clause and so read stronger than the theorem; the word 'positive' was restored to the host in docs/claims.json in this pass, and the corrected statement now matches both clauses and keeps the sufficient-criterion boundary against the open universal #257 assertion. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint; not Lean proof authority, independent human mathematical review, or novelty assessment."
     }
   ]
 }

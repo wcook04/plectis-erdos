@@ -394,15 +394,14 @@ python3 scripts/lean_fast_build.py --jobs 2 \
 The wrapper fetches the pinned cache when needed. A focused build uses
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`. With restored `.lake`
 outputs, `--lake-staleness` makes it trust Lake content traces, not checkout
-times. The default path also sends configuration-timestamp-only candidates
-through those traces, so checking out an unchanged `lakefile.toml`, manifest,
-or toolchain file does not rebuild current restored outputs. Source changes,
-missing outputs, and configuration content changes still rebuild when Lake
-marks them stale, and every successful run ends with the serialized Lake
-authority build. Without a target it checks both roots; `--plan` reports waves
-without building. Partial caches stay on that trace-aware path even when a root
-output is absent. One verbose no-build verdict identifies the stale frontier,
-which is expanded through local import dependents; same-wave targets then share
+times. Configuration-timestamp-only candidates go through those traces too, so
+an unchanged `lakefile.toml`, manifest or toolchain file does not rebuild
+restored outputs. Source changes, missing outputs and configuration content
+changes still rebuild when Lake marks them stale, and every successful run ends
+with the serialized Lake authority build. Without a target it checks both roots;
+`--plan` reports waves without building. Partial caches stay on that path even
+when a root output is absent. One verbose no-build verdict identifies the stale
+frontier, expanded through local import dependents; same-wave targets then share
 Lake graph scans in batches capped by `--jobs`.
 A cold clone can navigate before this step; formal editing needs the
 pinned toolchain. Later builds reuse outputs and rebuild only the selected or

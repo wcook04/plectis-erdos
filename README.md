@@ -13,6 +13,9 @@ has not been recorded. Comparator checks only its selected exact statements,
 configured axioms and kernel acceptance; it does not assess novelty or
 historical correspondence.**
 
+This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
+Those seven remain open.
+
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
@@ -139,7 +142,7 @@ downloads Lean and Mathlib. Cloning runs no project code; the
 
 Use the [documentation index](docs/README.md) for the file map and specialist
 guides. [How the repository works](docs/ARCHITECTURE.md) explains the roles of
-proofs, papers and checks. Coding agents start at [AGENTS.md](AGENTS.md) and
+proofs, papers and checks. Coding agents start at [`AGENTS.md`](AGENTS.md) and
 follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md); the
 [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
 explains that design.
@@ -191,8 +194,8 @@ The mathematics and tools in this checkout are self-contained.
 
 ## Citation and licence
 
-Use [CITATION.cff](CITATION.cff) for the release and include your commit for
-work beyond it. Cite the relevant [problem paper](paper/README.md) and its
+Use [CITATION.cff](CITATION.cff) to cite release `v0.10.0`, and give your commit
+for work beyond it. Cite the relevant [problem paper](paper/README.md) and its
 original sources for mathematics. [Prior art](docs/PRIOR_ART.md) and
 [source attributions](docs/research-commons/SOURCE_ATTRIBUTIONS.md) distinguish
 earlier results, formalisation and local use; a repository citation does not
