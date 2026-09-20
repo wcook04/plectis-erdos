@@ -14,7 +14,8 @@
     "research/experiments/premise_exchange/totient_approximation.py": "86f5d4507ac7191fa2e431e0247f873643e2aceb5d1b07d9915e649164e67ebb",
     "research/experiments/premise_exchange/totient_approximation.md": "66b41419ba2dfd62d6e555001b374c48a2f4b7dbacdb1731c89b52f47d1af4c0",
     "research/experiments/premise_exchange/dyadic_shift_request.json": "4a6020809388b70cff5a53a9e35606e7810790a49494010056b580073266de15",
-    "lean/ErdosProblems.lean": "35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627"
+    "lean/ErdosProblems.lean": "35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627",
+    "lean/ErdosProblems/Skip/LadderT67.lean": "7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
   },
   "lean_builds": [
     {
@@ -33,6 +34,13 @@
       "singleflight_key": "0c19d335e9362189cfb719a7cf34132cf3537e2aa1f5f470dcf185205b7cf61b",
       "source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
       "scope": "Full supported ErdosProblems root including the three new synthesis modules and pre-existing certificate prerequisites"
+    },
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness --changed-from HEAD",
+      "target": "ErdosProblems.Skip.LadderT67",
+      "exit_code": 0,
+      "singleflight_key": "94c5e1379677c216080192d859558bc3af5c285dd21e181a214006b4552ef1a1",
+      "scope": "Corrected finite-versus-eventual comment boundary, unchanged proof tokens; source-bound Lake check passed."
     }
   ],
   "axiom_probe": {
@@ -139,6 +147,23 @@
       "availability": "available",
       "resolved_handle": "ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts",
       "edge_policy": "elaborated_value_references_only"
+    },
+    {
+      "check": "Scoped shared build artifacts and exact regression selection",
+      "result": "passed",
+      "tests": 7,
+      "evidence": "Publish and hydrate only keyed Lean module artifacts; legacy whole-build seeds cannot replace unrelated present certificates or introduce unrelated absent modules. Reject missing or mismatched scope and changed Lake layout. CLI selectors run exactly one selected mocked test; unknown selectors fail."
+    },
+    {
+      "check": "Owned semantic census block validation",
+      "result": "passed",
+      "evidence": "The bounded cold-clone suite rejects 187 semantic mutations and checks 10 route-memory behaviors; duplicate commands outside the census cannot hide a damaged block, and missing, duplicate or reversed markers are rejected."
+    },
+    {
+      "check": "Native infrastructure repair routing",
+      "result": "passed",
+      "task_fixtures": 92,
+      "evidence": "Repair actions paired with cache, census, projection or validator objects route to infrastructure maintenance; neighboring explanation, proof and build requests retain their lanes."
     }
   ],
   "publication_formal_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
@@ -159,5 +184,11 @@
       "failure": "Stopped by this task after runtime sampling found the large tab-separated dataset being pretty-printed as one Lean diagnostic; no dependency index was produced.",
       "repair": "Use an explicit raw output file, preserving separate compiler diagnostics and parser semantics."
     }
-  ]
+  ],
+  "source_comment_correction": {
+    "path": "lean/ErdosProblems/Skip/LadderT67.lean",
+    "sha256": "7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f",
+    "change": "Two comments now distinguish finite witnesses against global floor attainment/monotonicity from undecided eventual behavior.",
+    "code_projection": "Identical after removing comment-mask trailing spaces; declaration and proof tokens and all 71355 source lines are preserved."
+  }
 }

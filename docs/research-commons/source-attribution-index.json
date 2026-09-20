@@ -43181,7 +43181,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+        "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -43201,7 +43201,7 @@
         "path": "lean/ErdosProblems/Skip/LadderT67.lean",
         "review": {
           "context": {
-            "excerpt_sha256": "sha256:4d0af8ebdc38f68535add8f527093f47bb04faeae8209fd2954c2c0d001b20d6",
+            "excerpt_sha256": "sha256:827a397814f492bb11f7ebb27e40e7a5c5551335d7612c66f2d72eeb0db95d7d",
             "line_end": 90,
             "line_start": 9
           },
@@ -43210,7 +43210,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+        "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -43230,7 +43230,7 @@
         "path": "lean/ErdosProblems/Skip/LadderT67.lean",
         "review": {
           "context": {
-            "excerpt_sha256": "sha256:4d0af8ebdc38f68535add8f527093f47bb04faeae8209fd2954c2c0d001b20d6",
+            "excerpt_sha256": "sha256:827a397814f492bb11f7ebb27e40e7a5c5551335d7612c66f2d72eeb0db95d7d",
             "line_end": 90,
             "line_start": 9
           },
@@ -43239,7 +43239,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+        "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -43259,7 +43259,7 @@
         "path": "lean/ErdosProblems/Skip/LadderT67.lean",
         "review": {
           "context": {
-            "excerpt_sha256": "sha256:4d0af8ebdc38f68535add8f527093f47bb04faeae8209fd2954c2c0d001b20d6",
+            "excerpt_sha256": "sha256:827a397814f492bb11f7ebb27e40e7a5c5551335d7612c66f2d72eeb0db95d7d",
             "line_end": 90,
             "line_start": 9
           },
@@ -43268,7 +43268,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+        "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -43288,7 +43288,7 @@
         "path": "lean/ErdosProblems/Skip/LadderT67.lean",
         "review": {
           "context": {
-            "excerpt_sha256": "sha256:4d0af8ebdc38f68535add8f527093f47bb04faeae8209fd2954c2c0d001b20d6",
+            "excerpt_sha256": "sha256:827a397814f492bb11f7ebb27e40e7a5c5551335d7612c66f2d72eeb0db95d7d",
             "line_end": 90,
             "line_start": 9
           },
@@ -43297,7 +43297,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+        "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -43326,7 +43326,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+        "source_sha256": "sha256:7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -104035,7 +104035,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:6feac1d40806177389b7841ad74f880bcfd5d9af8c1a7324139fee97ba4336af",
+  "source_registry_sha256": "sha256:e1ab563221e3506a9e9b8868a10e34bfd6eb75b37e533cd00fecaf355fa65efb",
   "sources": [
     {
       "artifact_coordinates": [],

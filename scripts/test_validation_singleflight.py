@@ -40,6 +40,30 @@ class ValidationSingleflightTests(unittest.TestCase):
         self._host_lock_environment.stop()
         self._host_lock_directory.cleanup()
 
+    def test_cli_honors_selected_test_and_rejects_unknown_selector(self) -> None:
+        for selector, successful in (
+            ("ValidationSingleflightTests.test_receipt_only_collect_waits_without_build_materialization", True),
+            ("ValidationSingleflightTests.test_missing_cli_selector", False),
+        ):
+            with self.subTest(selector=selector):
+                completed = subprocess.run(
+                    [sys.executable, str(Path(__file__).resolve()), selector],
+                    cwd=ROOT,
+                    env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+                    capture_output=True,
+                    text=True,
+                    timeout=15,
+                    check=False,
+                )
+                summary = json.loads(completed.stdout.strip().splitlines()[-1])
+                self.assertEqual(completed.returncode, 0 if successful else 1, completed.stderr)
+                self.assertEqual(summary, {
+                    "schema": "public-validation-singleflight-tests/1",
+                    "tests_run": 1,
+                    "successful": successful,
+                })
+                self.assertIn("Ran 1 test", completed.stderr)
+
     @staticmethod
     def _safe_spec(command: list[str]) -> dict[str, object]:
         inputs = {
@@ -234,33 +258,111 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertEqual(bytes_used, 17)
 
     def test_successful_build_seed_hydrates_an_equivalent_clone(self) -> None:
-        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
-            build_share.package_share, "clone_tree"
-        ) as clone:
+        with tempfile.TemporaryDirectory() as directory:
             base = Path(directory)
             producer = base / "producer"
             consumer = base / "consumer"
             state_root = base / "state"
+            configuration = '[[lean_lib]]\nname = "Pkg"\nsrcDir = "proof_sources"\n'
+            for root in (producer, consumer):
+                root.mkdir()
+                (root / "lakefile.toml").write_text(configuration, encoding="utf-8")
+            inputs = {
+                "validation_class": "lean",
+                "relevant_sources": [
+                    {"path": "lakefile.toml", "sha256": singleflight.digest_file(producer / "lakefile.toml")},
+                    {"path": "proof_sources/Pkg/Proof.lean", "sha256": "sha256:fixture"},
+                    {"path": "proof_sources/Pkg/Dependency.lean", "sha256": "sha256:fixture"},
+                ],
+            }
+            key = singleflight.hashlib.sha256(singleflight.canonical_json(inputs)).hexdigest()
+            (state_root / "jobs").mkdir(parents=True)
+            (state_root / "jobs" / f"{key}.json").write_text(
+                json.dumps({"key": key, "inputs": inputs}), encoding="utf-8"
+            )
             source = producer / ".lake/build"
-            source.mkdir(parents=True)
-            (source / "Erdos249257.olean").write_text("checked", encoding="utf-8")
+            target = consumer / ".lake/build"
+            scoped = [
+                "lib/lean/Pkg/Proof.olean", "lib/lean/Pkg/Proof.olean.private",
+                "lib/lean/Pkg/Proof.trace", "lib/lean/Pkg/Dependency.olean",
+                "ir/Pkg/Proof.c", "ir/Pkg/Proof.setup.json",
+            ]
+            unrelated = ["lib/lean/Pkg/ProofExtra.olean", "lib/lean/Certificates/LadderT67.olean"]
+            for relative in scoped + unrelated:
+                for root, content in ((source, "foreign"), (target, "local")):
+                    path = root / relative
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(content, encoding="utf-8")
 
-            def clone_fixture(origin: Path, target: Path) -> None:
-                shutil.copytree(origin, target)
+            def copy_fixture(command: list[str], **_kwargs: object) -> subprocess.CompletedProcess[str]:
+                destination = Path(command[-1])
+                for argument in command[1:-1]:
+                    if not argument.startswith("-"):
+                        path = Path(argument)
+                        shutil.copy2(path, destination / path.name)
+                return subprocess.CompletedProcess(command, 0, "", "")
 
-            clone.side_effect = clone_fixture
-            published = build_share.publish(producer, state_root, "a" * 64)
-            with mock.patch.object(build_share, "_copy_contents") as copy_contents:
-                copy_contents.side_effect = lambda _source, target: target.mkdir(
-                    parents=True, exist_ok=True
-                )
-                hydrated = build_share.hydrate(consumer, state_root, "a" * 64)
-                materialized = build_share.is_materialized(consumer, "a" * 64)
+            with mock.patch.object(build_share.subprocess, "run", side_effect=copy_fixture):
+                published = build_share.publish(producer, state_root, key)
+                self.assertEqual(published["status"], "ready", published)
+                seed, _receipt = build_share.seed_paths(state_root, key)
+                for relative in scoped:
+                    self.assertTrue((seed / relative).is_file(), relative)
+                for relative in unrelated:
+                    self.assertFalse((seed / relative).exists(), relative)
+                hydrated = build_share.hydrate(consumer, state_root, key)
+                self.assertEqual(hydrated["status"], "hydrated", hydrated)
+                self.assertTrue(build_share.is_materialized(consumer, key))
+                for relative in scoped:
+                    self.assertEqual((target / relative).read_text(), "foreign", relative)
+                for relative in unrelated:
+                    self.assertEqual((target / relative).read_text(), "local", relative)
 
-        self.assertEqual(published["status"], "ready")
-        self.assertEqual(hydrated["status"], "hydrated")
-        self.assertTrue(materialized)
-        copy_contents.assert_called_once()
+                # Legacy seeds contain an entire foreign build, including outputs
+                # outside the focused key. Hydration must filter those too.
+                legacy_extra = "lib/lean/Certificates/AbsentLocally.olean"
+                for relative in unrelated + [legacy_extra]:
+                    path = seed / relative
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text("stale foreign certificate", encoding="utf-8")
+                _receipt.write_text(json.dumps({
+                    "schema": build_share.SCHEMA, "status": "ready", "key": key,
+                }), encoding="utf-8")
+                hydrated = build_share.hydrate(consumer, state_root, key)
+                self.assertEqual(hydrated["status"], "hydrated", hydrated)
+                for relative in unrelated:
+                    self.assertEqual((target / relative).read_text(), "local", relative)
+                self.assertFalse((target / legacy_extra).exists())
+
+                # A different source layout cannot reinterpret an old key's scope.
+                (consumer / "lakefile.toml").write_text(configuration.replace("proof_sources", "other"))
+                with mock.patch.object(build_share, "_copy_contents") as copy:
+                    rejected = build_share.hydrate(consumer, state_root, key)
+                self.assertEqual(rejected["status"], "unavailable")
+                copy.assert_not_called()
+
+    def test_build_sharing_rejects_missing_or_unkeyed_artifact_scope(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "checkout"
+            state = Path(directory) / "state"
+            build = root / ".lake/build"
+            build.mkdir(parents=True)
+            marker = build / build_share.MATERIALIZATION_MARKER
+            marker.write_text("previous validation\n", encoding="utf-8")
+            key = "a" * 64
+            seed, receipt = build_share.seed_paths(state, key)
+            seed.mkdir(parents=True)
+            receipt.write_text(json.dumps({"schema": build_share.SCHEMA, "status": "ready", "key": key}))
+            with mock.patch.object(build_share, "_copy_contents") as copy:
+                self.assertEqual(build_share.publish(root, state, key)["status"], "unavailable")
+                self.assertEqual(build_share.hydrate(root, state, key)["status"], "unavailable")
+                (state / "jobs").mkdir()
+                (state / "jobs" / f"{key}.json").write_text(json.dumps({
+                    "key": key, "inputs": {"validation_class": "lean", "relevant_sources": []},
+                }))
+                self.assertEqual(build_share.hydrate(root, state, key)["status"], "unavailable")
+            copy.assert_not_called()
+            self.assertEqual(marker.read_text(), "previous validation\n")
 
     def test_build_seed_retention_is_bounded(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -289,7 +391,7 @@ class ValidationSingleflightTests(unittest.TestCase):
             (target / "other.olean").write_text("other", encoding="utf-8")
             if build_share.package_share.copy_on_write_command(source, target) is None:
                 self.skipTest("copy-on-write cloning is unavailable")
-            build_share._copy_contents(source, target)
+            build_share._copy_contents(source, target, [Path("shared.olean")])
             self.assertEqual((target / "shared.olean").read_text(), "shared")
             self.assertEqual((target / "other.olean").read_text(), "other")
 
@@ -704,10 +806,7 @@ class ValidationSingleflightTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.defaultTestLoader.loadTestsFromTestCase(
-        ValidationSingleflightTests
-    )
-    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    result = unittest.main(exit=False, verbosity=2).result
     print(
         json.dumps(
             {

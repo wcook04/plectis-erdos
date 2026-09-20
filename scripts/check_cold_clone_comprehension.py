@@ -1532,7 +1532,17 @@ def validate_public_semantic_census(
         ),
     }
     for path, phrases in expectations.items():
-        compact = normalized(surfaces[path])
+        text = surfaces[path]
+        begin = "<!-- BEGIN semantic_public_census -->"
+        end = "<!-- END semantic_public_census -->"
+        require(
+            text.count(begin) == 1 and text.count(end) == 1,
+            f"{path} must contain exactly one semantic census block",
+        )
+        start, stop = text.index(begin), text.index(end)
+        require(start < stop, f"{path} semantic census markers are reversed")
+        # Repeated commands elsewhere must not conceal a damaged census.
+        compact = normalized(text[start:stop + len(end)])
         for phrase in phrases:
             require(normalized(phrase) in compact, f"{path} semantic census is stale; missing {phrase!r}")
 

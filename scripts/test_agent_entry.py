@@ -47,6 +47,38 @@ ROUTE_CASES = {
     "Repair CLI error recovery and safe research session creation": (
         "repository_architecture", "maintain-public-infrastructure",
     ),
+    # Repair actions and infrastructure objects need not be adjacent, but
+    # merely mentioning the cache must preserve proof and explanation routes.
+    "Finish bug repairs to shared Lean cache, semantic census and source comment accuracy; validate scoped changes and refresh native projections": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Repair shared Lean caches without changing theorem statements": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Fix public return validators that reject legitimate diagnostics": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Debug stale semantic census counts": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Repair native projections after a source change": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Explain shared Lean cache and semantic census": (
+        "understand_repository", "explain-public-system",
+    ),
+    "Describe how public return validators work": (
+        "understand_repository", "explain-public-system",
+    ),
+    "Prove this Lean theorem using the shared cache": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Repair this Lean proof": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Run a Lean build using the shared cache": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
     "Create a research plan to prove this Lean theorem": (
         "bounded_research", "mine-open-problem",
     ),

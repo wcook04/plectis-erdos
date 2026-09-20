@@ -75,7 +75,7 @@ interfaces. Problem 1041 has ordinary all-degree trinomial containment, a low-cr
 connector of length less than `2` whenever `μ≤13/25`, a scaled connector of
 length less than `(5/2)μ^{1/n}` in `{|f|<(25/13)μ}`, separated-critical-value
 connectors, bounded-radius concyclic, and generic-topology theorems; its sharp
-critical-value mean is Lean-checked, as are supporting Newton-flow inputs. Problem 1049 has an ordinary irrationality
+critical-value mean is Lean-checked, as are supporting Newton-flow inputs. Problem 1049 has a Lean-checked irrationality
 region for rational bases, together with a Lean-checked rational-base tail
 recurrence, height region, and route exclusions. These results leave their corresponding universal targets open; the
 #1041 total-variation counterexample is discussed separately below.

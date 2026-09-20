@@ -763,6 +763,25 @@
         "cli error recovery",
         "research session creation"
       ],
+      "task_intents": [
+        {
+          "actions": [
+            "debug",
+            "fix",
+            "repair",
+            "repairs"
+          ],
+          "objects": [
+            "cache",
+            "caches",
+            "census",
+            "projection",
+            "projections",
+            "validator",
+            "validators"
+          ]
+        }
+      ],
       "skills": [
         "maintain-public-infrastructure"
       ],
