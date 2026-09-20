@@ -19,6 +19,12 @@ private def emitLine (stdout : IO.FS.Stream) (line : String) :
     Lean.Elab.Command.CommandElabM Unit :=
   liftM <| stdout.putStr (line ++ "\n")
 
+private def exportStream : IO IO.FS.Stream := do
+  match ← IO.getEnv "PLECTIS_LEAN_DEPENDENCY_EXPORT_PATH" with
+  | some path =>
+      return IO.FS.Stream.ofHandle (← IO.FS.Handle.mk path .write)
+  | none => IO.getStdout
+
 private partial def conclusionShape (type : Expr) (binderCount : Nat := 0) :
     Nat × Expr :=
   match type with
@@ -81,7 +87,8 @@ normalisation and source-coordinate join.
 -/
 run_cmd do
   let env ← getEnv
-  let stdout ← liftM IO.getStdout
+  -- File transport avoids run_cmd capturing the projection as a diagnostic.
+  let stdout ← liftM exportStream
   for info in env.constants.map₁.values do
     let source := info.name
     if isCorpusConstant env source && !source.isInternal then

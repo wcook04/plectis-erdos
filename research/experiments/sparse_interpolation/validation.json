@@ -7,13 +7,14 @@
     "lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean": "a3312131f365fcee6494187998d37c635d564f6325c13f0528ebae76d180035c",
     "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean": "3920d1c42cb7bb9c65c5247f409ccaedf5ec18516c215223729cfd8940d0cd9f",
     "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean": "fd2cec73347708924889eeeefd050e31adae154795014c6f7988818134968ff8",
-    "paper/synthesis/optimal-sparse-perturbations.tex": "6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849",
+    "paper/synthesis/optimal-sparse-perturbations.tex": "c5668cca98569e90a2707c786d6151eb369600787a14cedd6322051cfe746afa",
     "research/experiments/sparse_interpolation/feedback.py": "6eb8d358d4d3dcef6c9f49021b8375b2e61e4f363bc9ad91fb678338207f98af",
     "research/experiments/sparse_interpolation/late_rejection.py": "153eb5df9aaa394c0ae07b8b3630b0604a110621f88e60ecf14e72665dd10d73",
     "research/experiments/sparse_interpolation/capacity.py": "23da650822864b53bddb0d669abc8d212c53cf0126c7bce573807ea4985f07fc",
     "research/experiments/premise_exchange/totient_approximation.py": "86f5d4507ac7191fa2e431e0247f873643e2aceb5d1b07d9915e649164e67ebb",
     "research/experiments/premise_exchange/totient_approximation.md": "66b41419ba2dfd62d6e555001b374c48a2f4b7dbacdb1731c89b52f47d1af4c0",
-    "research/experiments/premise_exchange/dyadic_shift_request.json": "4a6020809388b70cff5a53a9e35606e7810790a49494010056b580073266de15"
+    "research/experiments/premise_exchange/dyadic_shift_request.json": "4a6020809388b70cff5a53a9e35606e7810790a49494010056b580073266de15",
+    "lean/ErdosProblems.lean": "35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627"
   },
   "lean_builds": [
     {
@@ -25,6 +26,13 @@
       "command": "python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis",
       "exit_code": 0,
       "singleflight_key_prefix": "516075809b33"
+    },
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness ErdosProblems",
+      "exit_code": 0,
+      "singleflight_key": "0c19d335e9362189cfb719a7cf34132cf3537e2aa1f5f470dcf185205b7cf61b",
+      "source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+      "scope": "Full supported ErdosProblems root including the three new synthesis modules and pre-existing certificate prerequisites"
     }
   ],
   "axiom_probe": {
@@ -99,6 +107,57 @@
       "check": "Nested Lean diagnostic path validation",
       "result": "passed",
       "evidence": "Regression rejects genuine private paths and accepts escaped compiler prose."
+    },
+    {
+      "check": "Receipt-only observation of shared validation",
+      "result": "passed",
+      "tests": 5,
+      "evidence": "Explicitly selected regressions check wait and terminal exits without cache hydration, CLI forwarding, and preserved default materialization."
+    },
+    {
+      "check": "Raw-file Lean dependency export transport",
+      "result": "passed",
+      "evidence": "Full dependency-index cache regression suite and clean-environment test pass; exact UTF-8 payload parsing, missing/empty rejection, cleanup, and failure/signal/timeout behavior covered."
+    },
+    {
+      "check": "Full supported-root elaborated Lean dependency export",
+      "result": "passed",
+      "command": "python3 scripts/build_lean_dependency_index.py",
+      "singleflight_key": "473cd8cc292703835c5d93a402604ba91044ebcdaa34acc095c89581f39116d9",
+      "elapsed_seconds": 328.0,
+      "nodes": 16081,
+      "edges": 71770,
+      "evidence": "Both supported roots built; raw-file export parsed and source-joined; tracked full-export receipt regenerated."
+    },
+    {
+      "check": "Elaborated proof-plan and new synthesis proof-cone availability",
+      "result": "passed",
+      "commands": [
+        "python3 scripts/check_cold_clone_comprehension.py --proof-plans-only",
+        "python3 scripts/query_corpus.py --proof-cone ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts --depth 2"
+      ],
+      "availability": "available",
+      "resolved_handle": "ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts",
+      "edge_policy": "elaborated_value_references_only"
+    }
+  ],
+  "publication_formal_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+  "publication_note": "Final provenance, unique anchor labels and source-pinned links refer to the full-root-checked source revision; mathematical prose was verified unchanged.",
+  "current_lean_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+  "integration_attempts": [
+    {
+      "singleflight_key": "eadd7a94e0e5a2e318cb621683ac506532a31d58c2677a350d30203c225b217f",
+      "exit_code": 1,
+      "failure": "Synthesis import was appended after the root module documentation command.",
+      "repair": "Moved the import into the initial header in 8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+      "scope": "New synthesis modules had passed focused builds; this failure belongs to root integration."
+    },
+    {
+      "singleflight_key": "bc12f87e48a8086878583ef8c9a046653a828d395c50060e5e11fdb3b051fcda",
+      "exit_code": 75,
+      "scope": "Elaborated dependency export, after both supported roots built",
+      "failure": "Stopped by this task after runtime sampling found the large tab-separated dataset being pretty-printed as one Lean diagnostic; no dependency index was produced.",
+      "repair": "Use an explicit raw output file, preserving separate compiler diagnostics and parser semantics."
     }
   ]
 }

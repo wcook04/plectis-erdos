@@ -108,6 +108,19 @@ claims and methodology, papers, Comparator or Palomar packets, query routes,
 and generated public projections. Preserve authority and logical reach as
 separate facts.
 
+When Lean sources change, the declaration atlas alone does not refresh the
+elaborated dependency index used by `--proof-plan` and `--proof-cone`. After
+the supported roots build, run `python3 scripts/build_lean_dependency_index.py`
+and retain its generated index and full-export receipt. Then check an affected
+query's availability. An honest `unavailable_or_stale` response is an unfinished
+consumer, not a passing propagation check. Pure prose changes with unchanged
+formal inputs do not require another Lean export.
+Keep root imports inside the initial import block: a module documentation
+command ends that block. Graph reachability alone does not check this syntax.
+When observing another build, use `python3 scripts/validation_singleflight.py collect
+--wait --receipt-only --key <key>`: ordinary collection may restore build outputs into
+the current checkout. Observation alone is not evidence that local outputs exist.
+
 When the delta changes mathematical appraisal, update reader order and future
 work deliberately. The strongest truthful result or mechanism should receive
 the most prominent paper treatment; a worked example may remain prominent for
@@ -139,6 +152,9 @@ moved; if its text changed, investigate the change before restamping it.
 `python3 scripts/reanchor_source_attributions.py` applies this rule to the
 source-attribution registry: a dry run prints every recomputed anchor for
 review, and `--write` saves the registry once every anchor resolves. Use
+`python3 docs/papers/refresh_paper_corpus.py --write --paper <paper-id>`
+after a native manuscript or PDF edit, including provenance-only changes: this
+owner refreshes the full text and source/PDF digests. Then run
 `python3 scripts/refresh_projections.py` for the registered projection chain,
 then inspect the affected query response. If a required export owner is absent
 from the clone, record that exact unfinished consumer for the maintainer;

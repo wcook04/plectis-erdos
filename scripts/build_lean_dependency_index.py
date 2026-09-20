@@ -13,6 +13,7 @@ import os
 import subprocess
 import stat
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -32,6 +33,7 @@ ENVIRONMENT_VALIDATION_POSTURE = (
     "export_so_source_fingerprint_and_loaded_olean_state_are_current"
 )
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
+DEPENDENCY_EXPORT_PATH_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_PATH"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
@@ -244,10 +246,14 @@ def safe_output_text(
     safe_output_bytes(path, content.encode("utf-8"), root=root)
 
 
-def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
+def run(
+    *args: Any, dependency_export_path: Path | None = None, **kwargs: Any,
+) -> subprocess.CompletedProcess[str]:
     """Run Lean dependency commands in the bounded validation time domain."""
     environment = singleflight.command_environment()
     environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
+    if dependency_export_path is not None:
+        environment[DEPENDENCY_EXPORT_PATH_ENV] = str(dependency_export_path)
     kwargs["env"] = environment
     # Both callers elaborate Lean state. A cold runner can legitimately take
     # longer than the short timeout used for metadata-only Git queries, so keep
@@ -762,6 +768,17 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
+    # Lean opens the file itself, avoiding open-temporary-file locks on Windows.
+    with tempfile.TemporaryDirectory(prefix="plectis-lean-dependency-export-") as directory:
+        return _export_environment_file(Path(directory) / "environment.tsv")
+
+
+def _export_environment_file(output_path: Path) -> tuple[
+    dict[str, str],
+    dict[tuple[str, str], set[str]],
+    dict[str, int],
+    dict[str, dict[str, Any]],
+]:
     try:
         completed = run(
             ["lake", "env", "lean", str(EXPORTER)],
@@ -771,6 +788,7 @@ def export_environment() -> tuple[
             stderr=subprocess.PIPE,
             check=False,
             timeout=EXPORT_TIMEOUT_SECONDS,
+            dependency_export_path=output_path,
         )
     except subprocess.TimeoutExpired as exc:
         stdout = decode_captured(exc.stdout)
@@ -811,7 +829,22 @@ def export_environment() -> tuple[
             stdout=completed.stdout or "",
             stderr=completed.stderr or "",
         )
-    return parse_environment_output(completed.stdout)
+    preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
+    try:
+        output = safe_dependency_text(output_path, root=output_path.parent)
+    except (OSError, UnicodeError, UnsafeDependencyInput) as exc:
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            f"Lean dependency exporter did not produce readable file output: {exc}",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        ) from exc
+    if not output.strip():
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            "Lean dependency exporter produced empty file output",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        )
+    return parse_environment_output(output)
 
 
 def parse_environment_output(

@@ -1117,17 +1117,18 @@
           "rendered": "paper/synthesis/optimal-sparse-perturbations.pdf",
           "role": "Ordinary theorem note: exact capacity criterion on strict integer divisibility chains, factorial support-gap classification and Cantor-series gcd criterion. Lean checks the cited feedback and carry core, not the complete capacity criterion or analytic bridge. No Erdos claim status changes.",
           "anchor_label_allowlist": [
-            "thm:capacity",
-            "sec:capacity-proof",
-            "thm:main",
-            "cor:density",
-            "lem:feedback",
-            "prop:unrestricted",
-            "thm:gcd",
-            "sec:negative",
-            "sec:carry",
-            "sec:sources"
-          ]
+            "capacity:thm:capacity",
+            "capacity:sec:capacity-proof",
+            "capacity:thm:main",
+            "capacity:cor:density",
+            "capacity:lem:feedback",
+            "capacity:prop:unrestricted",
+            "capacity:thm:gcd",
+            "capacity:sec:negative",
+            "capacity:sec:carry",
+            "capacity:sec:sources"
+          ],
+          "formal_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d"
         }
       ]
     },
@@ -15474,7 +15475,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "48a784e620262fbd63104deeab9b62b7e84ad4f1",
+      "ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

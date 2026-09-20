@@ -6,47 +6,62 @@
     {
       "consumer": "lean/ErdosProblems/Synthesis.lean and lean/ErdosProblems.lean",
       "disposition": "update_now",
-      "action": "Connect three checked reusable modules through the supported public root."
+      "action": "Connect three checked reusable modules through the supported public root.",
+      "completion": "completed"
     },
     {
       "consumer": "paper/synthesis/optimal-sparse-perturbations.tex",
       "disposition": "update_now",
-      "action": "Lead with general capacity criterion; derive factorial support consequences and separate the checked arithmetic core from ordinary analysis."
+      "action": "Lead with general capacity criterion; derive factorial support consequences and separate the checked arithmetic core from ordinary analysis.",
+      "completion": "completed"
     },
     {
       "consumer": "Existing synthesis short paper and reading-together record",
       "disposition": "update_now",
-      "action": "Correct false maximum rejection depth and subsequence-capacity claim, pin exact Mahler attribution, reconcile all-base scope, and replace the oscillating-allowance frontier with the general criterion."
+      "action": "Correct false maximum rejection depth and subsequence-capacity claim, pin exact Mahler attribution, reconcile all-base scope, and replace the oscillating-allowance frontier with the general criterion.",
+      "completion": "completed"
     },
     {
       "consumer": "Publication contract, corpus, PDF bindings, full texts and reading editions",
       "disposition": "update_now",
-      "action": "Register one standalone synthesis note within existing roles; preserve the original short/long entry pair and include extra notes in the complete edition."
+      "action": "Register one standalone synthesis note within existing roles; preserve the original short/long entry pair and include extra notes in the complete edition.",
+      "completion": "completed"
     },
     {
       "consumer": "Module graph, declaration atlas and generated navigation",
       "disposition": "update_now",
-      "action": "Rebuild with native owners; rebind unchanged semantic review wording only when the owner proves that only its atlas fingerprint moved."
+      "action": "Rebuild with native owners; rebind unchanged semantic review wording only when the owner proves that only its atlas fingerprint moved.",
+      "completion": "completed"
+    },
+    {
+      "consumer": "Elaborated Lean dependency index and proof-plan queries",
+      "disposition": "update_now",
+      "action": "Re-export from the built supported roots after the Lean source change; a fresh declaration atlas alone does not make proof-plan queries current.",
+      "completion": "completed"
     },
     {
       "consumer": "#249 and #269 papers and registered claims",
       "disposition": "verify_unchanged",
-      "action": "The totient approximation note is an ordinary cross-paper consequence, with priority unassessed. The normalized #269 uniform barrier was already present and is credited as existing."
+      "action": "The totient approximation note is an ordinary cross-paper consequence, with priority unassessed. The normalized #269 uniform barrier was already present and is credited as existing.",
+      "completion": "verified_unchanged"
     },
     {
       "consumer": "Eight problem endpoints, Comparator and Palomar statuses",
       "disposition": "verify_unchanged",
-      "action": "No claim status is changed. New conditional criteria and ordinary series results do not discharge their unresolved endpoints."
+      "action": "No claim status is changed. New conditional criteria and ordinary series results do not discharge their unresolved endpoints.",
+      "completion": "verified_unchanged"
     },
     {
       "consumer": "skills/mine-open-problem/SKILL.md",
       "disposition": "update_now",
-      "action": "Teach paper-selected representation changes, premise discharge, topology sensitivity and rediscovery controls; serialize same-session workbench mutations."
+      "action": "Teach paper-selected representation changes, premise discharge, topology sensitivity and rediscovery controls; serialize same-session workbench mutations.",
+      "completion": "completed"
     },
     {
       "consumer": "Native proof-return validator and changed-source Lean build discovery",
       "disposition": "update_now",
-      "action": "Preserve failed probes as research evidence. Correct escaped diagnostic prose misclassified as a private Windows path, and exclude stored workbench probes from automatic production build targets while retaining explicit probe selection. Focused regression tests pass."
+      "action": "Preserve failed probes as research evidence. Correct escaped diagnostic prose misclassified as a private Windows path, and exclude stored workbench probes from automatic production build targets while retaining explicit probe selection. Focused regression tests pass.",
+      "completion": "completed"
     },
     {
       "consumer": "Full formal capacity criterion and totient approximation theorem",
@@ -66,5 +81,7 @@
       "action": "The geometric certificate-completeness problem needs its own proof; shared wording does not supply a mathematical transfer."
     }
   ],
-  "authority_boundary": "This receipt records dispositions and does not establish proof, novelty, acceptance or public claim promotion."
+  "authority_boundary": "This receipt records dispositions and does not establish proof, novelty, acceptance or public claim promotion.",
+  "validated_lean_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+  "validation_record": "../sparse_interpolation/validation.json"
 }

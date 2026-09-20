@@ -17354,7 +17354,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:3c664e83f57f32252ea2d71691bd046cece57d86510fb301d26de1f4220b2523"
+        "source_sha256": "sha256:35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -17383,7 +17383,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:3c664e83f57f32252ea2d71691bd046cece57d86510fb301d26de1f4220b2523"
+        "source_sha256": "sha256:35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -17426,13 +17426,13 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:3c664e83f57f32252ea2d71691bd046cece57d86510fb301d26de1f4220b2523"
+        "source_sha256": "sha256:35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627"
       },
       {
         "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:69f43da3fcc8d64822212a7d32ab1be5d3dc7b4462cf66cd9dd72754b4fd3583",
-        "line_end": 168,
-        "line_start": 168,
+        "line_end": 169,
+        "line_start": 169,
         "matches": [
           {
             "match_kind": "curated_author_surname",
@@ -17461,15 +17461,15 @@
         "review": {
           "context": {
             "excerpt_sha256": "sha256:3ce0d6c3361e3b38dee534f3a752dba0c64c9b6efcb7ac5335ad63375474d1d0",
-            "line_end": 172,
-            "line_start": 167
+            "line_end": 173,
+            "line_start": 168
           },
           "disposition": "not_bibliographic",
           "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:3c664e83f57f32252ea2d71691bd046cece57d86510fb301d26de1f4220b2523"
+        "source_sha256": "sha256:35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -80621,8 +80621,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 457,
-            "line_start": 457,
+            "line_end": 469,
+            "line_start": 469,
             "path": "paper/synthesis/optimal-sparse-perturbations.tex",
             "qualifiers": [
               "Section 6, p.~1321"
@@ -80632,13 +80632,13 @@
         "equivalent_source_coordinates": [],
         "key": "amv2015",
         "kind": "bibliography_entry",
-        "line_end": 494,
-        "line_start": 490,
+        "line_end": 506,
+        "line_start": 502,
         "paper_id": "optimal-sparse-perturbations",
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849"
+        "source_sha256": "sha256:c5668cca98569e90a2707c786d6151eb369600787a14cedd6322051cfe746afa"
       },
       {
         "citation_text": "\\bibitem{runeson2009} Per Runeson and Martin H\\\"ost. ``Guidelines for Conducting and Reporting Case Study Research in Software Engineering.'' \\emph{Empirical Software Engineering}, 14(2):131--164, 2009. \\href{https://doi.org/10.1007/s10664-008-9102-8}{doi:10.1007/s10664-008-9102-8}.",
@@ -103230,8 +103230,8 @@
         "command": "cite",
         "key": "amv2015",
         "kind": "citation_usage",
-        "line_end": 457,
-        "line_start": 457,
+        "line_end": 469,
+        "line_start": 469,
         "paper_id": "optimal-sparse-perturbations",
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "qualifiers": [
@@ -103239,7 +103239,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849"
+        "source_sha256": "sha256:c5668cca98569e90a2707c786d6151eb369600787a14cedd6322051cfe746afa"
       },
       {
         "citation_context": "in_text_citation",
@@ -104035,7 +104035,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:1a289a5e21a494a0c8c6fe7db3034eaa8bd0ed82c8a51e4ae74a9bc45ebd280c",
+  "source_registry_sha256": "sha256:6feac1d40806177389b7841ad74f880bcfd5d9af8c1a7324139fee97ba4336af",
   "sources": [
     {
       "artifact_coordinates": [],

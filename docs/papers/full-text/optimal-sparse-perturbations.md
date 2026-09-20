@@ -17,11 +17,11 @@ A factorial expansion usually permits a digit of size about $`n`$ at position $`
 Let $`Q_n`$ be positive integers, $`n\ge1`$, such that $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$. Let $`F_n\in\mathbb Z_{\ge0}`$ satisfy $`\sum_nF_n/Q_n<\infty`$, and put
 ``` math
 U_N=Q_N\sum_{n>N}\frac{F_n}{Q_n}.
- \tag{C}\label{eq:capacity}
+ \tag{C}\label{capacity:eq:capacity}
 ```
 Define $`E_Q(F)`$ to be the set of sums $`\sum_{n\ge1}e_n/Q_n`$, allowing nonnegative integer digits $`e_n\le F_n`$ eventually and requiring, for each fixed $`q\ge1`$, that $`q\mid e_n`$ eventually. The cutoffs and finite initial digits may depend on the represented value.
 
-<div id="thm:capacity" class="theorem">
+<div id="capacity:thm:capacity" class="theorem">
 
 **Theorem 1**. *If $`U_N\to\infty`$, then $`E_Q(F)=[0,\infty)`$; otherwise $`E_Q(F)`$ is null and meagre. In particular interval filling is equivalent to $`U_N\to\infty`$. In the positive case, every nonnegative target may be represented with $`e_n=0`$ before any prescribed cutoff, at most one exception to $`e_n\le F_n`$, and
 ``` math
@@ -32,7 +32,7 @@ with congruence cutoffs depending on $`q`$ but independent of the target. If the
 
 </div>
 
-The criterion compares *all* future capacity with the prefix lattice. It requires no monotonicity, regular variation or gap bound on the allowances, and no upper bound on the denominator ratios. It does not require the $`Q_n`$ to clear every rational denominator. Section <a href="#sec:capacity-proof" data-reference-type="ref" data-reference="sec:capacity-proof">2</a> proves the theorem using the same residue-feedback mechanism already present in the public Lean repository. The capacity estimates and complete criterion are ordinary proofs; the abstract feedback endpoint is kernel-checked separately. Both geometric and factorial denominators satisfy the hypotheses.
+The criterion compares *all* future capacity with the prefix lattice. It requires no monotonicity, regular variation or gap bound on the allowances, and no upper bound on the denominator ratios. It does not require the $`Q_n`$ to clear every rational denominator. Section <a href="#capacity:sec:capacity-proof" data-reference-type="ref" data-reference="capacity:sec:capacity-proof">2</a> proves the theorem using the same residue-feedback mechanism already present in the public Lean repository. The capacity estimates and complete criterion are ordinary proofs; the abstract feedback endpoint is kernel-checked separately. Both geometric and factorial denominators satisfy the hypotheses.
 
 <a id="the-sharp-support-threshold"></a>
 
@@ -42,16 +42,16 @@ Let $`S\subseteq\mathbb N_{\!>0}`$ and $`c>0`$. Define $`E(S,c)`$ to be the set 
 ``` math
 x=\sum_{n\ge1}\frac{e_n}{n!},\qquad e_n\in\mathbb Z_{\ge0},\quad
  e_n=0\ (n\notin S),\quad e_n\le n^c\text{ eventually},
- \tag{1}\label{eq:class}
+ \tag{1}\label{capacity:eq:class}
 ```
 subject to
 ``` math
 \text{for every }q\ge1,\qquad q\mid e_n\text{ for all sufficiently large }n.
- \tag{2}\label{eq:congruence}
+ \tag{2}\label{capacity:eq:congruence}
 ```
 The cutoffs and the finite initial digits in this definition may depend on $`x`$. All series converge, since finitely many unrestricted digits do not affect convergence. A permitted position need not carry a nonzero digit.
 
-<div id="thm:main" class="theorem">
+<div id="capacity:thm:main" class="theorem">
 
 **Theorem 2**. *If $`S`$ is finite, $`E(S,c)`$ is countable. If $`S`$ is infinite, enumerate it as $`n_0<n_1<\cdots`$.*
 
@@ -60,26 +60,26 @@ The cutoffs and the finite initial digits in this definition may depend on $`x`$
 2.  *For $`c>1`$, $`E(S,c)`$ contains a nondegenerate interval if and only if
     ``` math
     n_j-n_{j-1}<c\qquad\text{for all sufficiently large }j.
-     \tag{3}\label{eq:gaps}
+     \tag{3}\label{capacity:eq:gaps}
     ```
     If this condition fails, $`E(S,c)`$ is null and meagre.*
 
-*When <a href="#eq:gaps" data-reference-type="eqref" data-reference="eq:gaps">[eq:gaps]</a> holds, one may require $`e_n=0`$ before any prescribed cutoff and impose both
+*When <a href="#capacity:eq:gaps" data-reference-type="eqref" data-reference="capacity:eq:gaps">[capacity:eq:gaps]</a> holds, one may require $`e_n=0`$ before any prescribed cutoff and impose both
 ``` math
 q\mid e_n,\qquad q\mid\sum_{k<n}e_k
- \tag{4}\label{eq:both}
+ \tag{4}\label{capacity:eq:both}
 ```
 for all sufficiently large $`n`$, with cutoffs depending on $`q`$ but independent of $`x`$ throughout the constructed interval.*
 
 </div>
 
-The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#sec:sources" data-reference-type="ref" data-reference="sec:sources">7</a>.
+The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#capacity:sec:carry" data-reference-type="ref" data-reference="capacity:sec:carry">6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">7</a>.
 
-For example, with allowance $`n^2`$, every second position suffices without congruences. Under <a href="#eq:congruence" data-reference-type="eqref" data-reference="eq:congruence">[eq:congruence]</a>, infinitely many omitted positions already force a null set. With allowance $`n^{2.01}`$, every second position again suffices, even under <a href="#eq:both" data-reference-type="eqref" data-reference="eq:both">[eq:both]</a>. Thus the strict inequality in <a href="#eq:gaps" data-reference-type="eqref" data-reference="eq:gaps">[eq:gaps]</a> is essential.
+For example, with allowance $`n^2`$, every second position suffices without congruences. Under <a href="#capacity:eq:congruence" data-reference-type="eqref" data-reference="capacity:eq:congruence">[capacity:eq:congruence]</a>, infinitely many omitted positions already force a null set. With allowance $`n^{2.01}`$, every second position again suffices, even under <a href="#capacity:eq:both" data-reference-type="eqref" data-reference="capacity:eq:both">[capacity:eq:both]</a>. Thus the strict inequality in <a href="#capacity:eq:gaps" data-reference-type="eqref" data-reference="capacity:eq:gaps">[capacity:eq:gaps]</a> is essential.
 
-<div id="cor:density" class="corollary">
+<div id="capacity:cor:density" class="corollary">
 
-**Corollary 3**. *For $`c>1`$, the least possible asymptotic density of a fixed permitted support that fills an interval under <a href="#eq:congruence" data-reference-type="eqref" data-reference="eq:congruence">[eq:congruence]</a> is $`1/(\lceil c\rceil-1)`$. Every such support has lower density at least this value, and an arithmetic progression attains it. A density bound alone is not sufficient: even rare gaps of length $`\lceil c\rceil`$ prevent interval filling if they occur infinitely often.*
+**Corollary 3**. *For $`c>1`$, the least possible asymptotic density of a fixed permitted support that fills an interval under <a href="#capacity:eq:congruence" data-reference-type="eqref" data-reference="capacity:eq:congruence">[capacity:eq:congruence]</a> is $`1/(\lceil c\rceil-1)`$. Every such support has lower density at least this value, and an arithmetic progression attains it. A density bound alone is not sufficient: even rare gaps of length $`\lceil c\rceil`$ prevent interval filling if they occur infinitely often.*
 
 </div>
 
@@ -89,7 +89,7 @@ For example, with allowance $`n^2`$, every second position suffices without cong
 
 </div>
 
-<a id="sec:capacity-proof"></a>
+<a id="capacity:sec:capacity-proof"></a>
 
 # Proof of the capacity criterion
 
@@ -128,7 +128,7 @@ Keep only the active positions $`S=\{n:F_n\ge2M_n\}`$ after this cutoff. Define 
 Both are nonnegative and tend to zero. Discarding an inactive position loses less than $`2M_n`$; reserving both margins at an active position loses exactly $`2M_n`$. Thus the preceding estimate gives the decisive overlap inequality
 ``` math
 Q_N(\beta_N-\alpha_N)\ge U_N-2C_N\ge M_N.
- \tag{O}\label{eq:overlap}
+ \tag{O}\label{capacity:eq:overlap}
 ```
 In particular the active set is infinite and each continuation interval has positive width.
 
@@ -156,11 +156,11 @@ p=M_N\left\lfloor\frac{Q_N(y-\alpha_N)}{M_N}\right\rfloor.
 ```
 Then $`p\ge0`$, $`M_N\mid p`$, and (O) gives $`y-p/Q_N\in[\alpha_N,\beta_N]`$. Set $`e_N=p`$ and all earlier digits to zero. Run the same continuation construction after $`N`$, with initial cumulative sum $`C=p`$; its interval covering worked for every $`C`$. All later digits obey their allowances. The zero target uses zero digits.
 
-The congruence cutoffs can also be common to all $`y`$. For fixed $`q`$, choose an active position $`j`$ with $`q\mid M_j`$. If the target’s exceptional index $`N`$ precedes $`j`$, the repair at $`j`$ gives the required divisibilities after $`j`$. If $`N\ge j`$, all preceding digits are zero, $`q\mid M_N\mid p`$, and all subsequent repairs preserve divisibility by $`q`$. Thus $`j+1`$ is a valid cutoff for every target. The allowance-exception index itself may depend on the target. This completes Theorem <a href="#thm:capacity" data-reference-type="ref" data-reference="thm:capacity">1</a>.
+The congruence cutoffs can also be common to all $`y`$. For fixed $`q`$, choose an active position $`j`$ with $`q\mid M_j`$. If the target’s exceptional index $`N`$ precedes $`j`$, the repair at $`j`$ gives the required divisibilities after $`j`$. If $`N\ge j`$, all preceding digits are zero, $`q\mid M_N\mid p`$, and all subsequent repairs preserve divisibility by $`q`$. Thus $`j+1`$ is a valid cutoff for every target. The allowance-exception index itself may depend on the target. This completes Theorem <a href="#capacity:thm:capacity" data-reference-type="ref" data-reference="capacity:thm:capacity">1</a>.
 
 The growth hypothesis has content. If repeated denominators are allowed, take $`Q_n=2^{\lfloor\sqrt n\rfloor}`$ and $`F_n=1`$. The allowance series converges, while $`U_N\ge\lfloor\sqrt N\rfloor`$ by counting the next complete denominator block. Yet eventual divisibility by two forces all sufficiently late digits to vanish, so the attainable set is countable. Imposing all cumulative congruences as well leaves only zero. Thus nestedness alone does not justify the criterion.
 
-<a id="sec:negative"></a>
+<a id="capacity:sec:negative"></a>
 
 # Why a large gap prevents interval filling
 
@@ -177,14 +177,14 @@ Consequently, for sufficiently large such $`N`$,
  N!\sum_{\substack{k>N\\k\in S}}\frac{k^c}{k!}
  &\le 2N!\frac{(N+r)^c}{(N+r)!}\\
  &\le 2^{c+1}N^{c-r}\le B,\qquad B=2^{c+1}.
- \tag{5}\label{eq:tailbound}
+ \tag{5}\label{capacity:eq:tailbound}
 \end{align}
 ```
 In the second inequality we used $`N\ge r`$ and $`(N+1)\cdots(N+r)\ge N^r`$.
 
-The bounded capacity along this subsequence invokes the necessity argument of Theorem <a href="#thm:capacity" data-reference-type="ref" data-reference="thm:capacity">1</a>, with allowances $`F_n=\lfloor n^c\rfloor`$ on $`S`$ and zero elsewhere. It gives nullity and meagreness even with target-dependent congruence and allowance cutoffs.
+The bounded capacity along this subsequence invokes the necessity argument of Theorem <a href="#capacity:thm:capacity" data-reference-type="ref" data-reference="capacity:thm:capacity">1</a>, with allowances $`F_n=\lfloor n^c\rfloor`$ on $`S`$ and zero elsewhere. It gives nullity and meagreness even with target-dependent congruence and allowance cutoffs.
 
-If $`c\le1`$, every support gap is at least $`r=1`$, so this proves the first part of Theorem <a href="#thm:main" data-reference-type="ref" data-reference="thm:main">2</a>. If $`c>1`$ and (3) fails, it proves the negative part. Notice that infrequent large gaps are enough; average digit counts do not detect this obstruction.
+If $`c\le1`$, every support gap is at least $`r=1`$, so this proves the first part of Theorem <a href="#capacity:thm:main" data-reference-type="ref" data-reference="capacity:thm:main">2</a>. If $`c>1`$ and (3) fails, it proves the negative part. Notice that infrequent large gaps are enough; average digit counts do not detect this obstruction.
 
 <a id="a-digit-that-also-corrects-the-cumulative-residue"></a>
 
@@ -192,13 +192,13 @@ If $`c\le1`$, every support gap is at least $`r=1`$, so this proves the first pa
 
 The following construction supplies the positive direction. It is useful beyond factorial weights.
 
-<div id="lem:feedback" class="lemma">
+<div id="capacity:lem:feedback" class="lemma">
 
 **Lemma 4**. *Let $`w_j>0`$, let positive integers $`M_j`$ satisfy $`M_{j-1}\mid M_j`$, and let $`F_j\ge0`$. Suppose $`M_jw_j\to0`$ and, for $`j\ge1`$,
 ``` math
 2M_j\le M_{j-1}\frac{w_{j-1}}{w_j},\qquad
  2M_{j-1}\frac{w_{j-1}}{w_j}\le F_j.
- \tag{7}\label{eq:step}
+ \tag{7}\label{capacity:eq:step}
 ```
 Every $`y\in[M_0w_0,2M_0w_0]`$ has a representation $`y=\sum_{j\ge1}b_jw_j`$ with integers $`0\le b_j\le F_j`$ such that
 ``` math
@@ -212,7 +212,7 @@ M_j\mid\sum_{i\le j}b_i,\qquad M_{j-1}\mid b_j.
 *Proof.* Start with residual $`R_0=y`$ and cumulative sum $`C_0=0`$. Suppose $`M_{j-1}w_{j-1}\le R_{j-1}\le2M_{j-1}w_{j-1}`$ and $`M_{j-1}\mid C_{j-1}`$. Put $`u=R_{j-1}/w_j`$ and let $`v`$ be the least nonnegative residue of $`-C_{j-1}`$ modulo $`M_j`$. Choose
 ``` math
 b_j=v+M_j\left\lfloor\frac{u-M_j-v}{M_j}\right\rfloor.
- \tag{8}\label{eq:selector}
+ \tag{8}\label{capacity:eq:selector}
 ```
 Since $`u\ge2M_j`$ and $`0\le v<M_j`$, this integer is nonnegative. The floor identity gives $`M_j\le u-b_j<2M_j`$; also $`b_j\le u\le F_j`$. Thus $`R_j=R_{j-1}-b_jw_j`$ lies in $`[M_jw_j,2M_jw_j)`$, while $`C_j=C_{j-1}+b_j`$ is divisible by $`M_j`$. The incoming modulus divides both $`C_{j-1}`$ and $`M_j`$, hence also $`b_j`$. Finally $`R_j\to0`$, so the partial sums converge to $`y`$. ◻
 
@@ -238,11 +238,11 @@ This lower envelope is nondecreasing and tends to infinity. Begin sufficiently l
 2M_j\le\sqrt{r_j}\le r_jM_{j-1},\qquad
  2r_jM_{j-1}\le F_j.
 ```
-The second inequality uses $`M_{j-1}\le h_j`$, also valid for $`j=1`$. Finally, $`M_j/n_j!\le\sqrt{r_j}/(2n_j!)\le1/(2\sqrt{n_j!})\to0`$. Lemma <a href="#lem:feedback" data-reference-type="ref" data-reference="lem:feedback">4</a> fills $`[1/n_0!,2/n_0!]`$ using the positions $`n_j`$, $`j\ge1`$. Put zero digits elsewhere. Once $`q\mid M_J`$, all later digits and cumulative sums at the original integer indices have the divisibilities in (4). This proves the positive direction, including common cutoffs.
+The second inequality uses $`M_{j-1}\le h_j`$, also valid for $`j=1`$. Finally, $`M_j/n_j!\le\sqrt{r_j}/(2n_j!)\le1/(2\sqrt{n_j!})\to0`$. Lemma <a href="#capacity:lem:feedback" data-reference-type="ref" data-reference="capacity:lem:feedback">4</a> fills $`[1/n_0!,2/n_0!]`$ using the positions $`n_j`$, $`j\ge1`$. Put zero digits elsewhere. Once $`q\mid M_J`$, all later digits and cumulative sums at the original integer indices have the divisibilities in (4). This proves the positive direction, including common cutoffs.
 
 For comparison, remove condition (2) and call the resulting attainable set $`E_0(S,c)`$.
 
-<div id="prop:unrestricted" class="proposition">
+<div id="capacity:prop:unrestricted" class="proposition">
 
 **Proposition 5**. *For an infinite support and $`c\ge1`$, $`E_0(S,c)`$ contains an interval exactly when its successive gaps are eventually at most $`\lfloor c\rfloor`$. Otherwise it is null and meagre. For $`0<c<1`$ it is always null and meagre.*
 
@@ -250,19 +250,19 @@ For comparison, remove condition (2) and call the resulting attainable set $`E_0
 
 <div class="proof">
 
-*Proof.* For necessity repeat Section <a href="#sec:negative" data-reference-type="ref" data-reference="sec:negative">3</a> with $`r=\lfloor c\rfloor+1`$. The bound in (5) now tends to zero. With lattice spacing $`1/N!`$, it is eventually bounded by $`1/(2N!)`$, so the same compact-set argument applies with $`q=1`$, $`B=1/2`$. For sufficiency, $`r_j\le n_j^c`$ along the support. The ordinary mixed-radix expansion using digits $`0\le b_j<r_j`$ fills $`[0,1/n_0!]`$. To see this directly, the maximum tail after $`n_j`$ is $`1/n_j!`$, since $`(r_k-1)/n_k!=1/n_{k-1}!-1/n_k!`$. The adjacent digit intervals therefore meet, and their lengths tend to zero. ◻
+*Proof.* For necessity repeat Section <a href="#capacity:sec:negative" data-reference-type="ref" data-reference="capacity:sec:negative">3</a> with $`r=\lfloor c\rfloor+1`$. The bound in (5) now tends to zero. With lattice spacing $`1/N!`$, it is eventually bounded by $`1/(2N!)`$, so the same compact-set argument applies with $`q=1`$, $`B=1/2`$. For sufficiency, $`r_j\le n_j^c`$ along the support. The ordinary mixed-radix expansion using digits $`0\le b_j<r_j`$ fills $`[0,1/n_0!]`$. To see this directly, the maximum tail after $`n_j`$ is $`1/n_j!`$, since $`(r_k-1)/n_k!=1/n_{k-1}!-1/n_k!`$. The adjacent digit intervals therefore meet, and their lengths tend to zero. ◻
 
 </div>
 
 Thus the difference between the two gap thresholds occurs exactly at integer $`c`$. At $`c=m\ge2`$, imposing eventual congruences raises the least support density from $`1/m`$ to $`1/(m-1)`$. At $`c=1`$ it destroys interval filling entirely. With quadratic allowances, deleting only the positions $`2^k`$ destroys interval filling, although the permitted support still has density one. This is the simplest example of why support density loses decisive information. These statements concern intervals of values on a common permitted support; they are not lower bounds for representing one specially chosen value.
 
-<a id="sec:carry"></a>
+<a id="capacity:sec:carry"></a>
 
 # A common-divisor test for irrationality
 
 The distinction between small and large allowances also appears directly in rationality. Let $`b_n\ge2`$ be integers, put $`Q_0=1`$ and $`Q_n=b_1\cdots b_n`$, and consider a Cantor series.
 
-<div id="thm:gcd" class="theorem">
+<div id="capacity:thm:gcd" class="theorem">
 
 **Theorem 6**. *Suppose $`0\le a_n\le A`$ and $`e_n\ge0`$ are integers, $`e_n\le Cb_n`$ eventually, and $`a_n+e_n`$ is nonzero infinitely often. If
 ``` math
@@ -297,17 +297,17 @@ The arithmetic hypothesis cannot be replaced by $`b_n\to\infty`$, even if both c
 \sum_{n\ge1}\frac{a_n+e_n}{Q_n}
  =\sum_{n\ge1}\frac{b_n-1}{Q_n}=1.
 ```
-Here $`\gcd(b_n,e_n)\le2`$. This example separates rapid denominator growth from the arithmetic obstruction used in Theorem <a href="#thm:gcd" data-reference-type="ref" data-reference="thm:gcd">6</a>.
+Here $`\gcd(b_n,e_n)\le2`$. This example separates rapid denominator growth from the arithmetic obstruction used in Theorem <a href="#capacity:thm:gcd" data-reference-type="ref" data-reference="capacity:thm:gcd">6</a>.
 
-<a id="sec:sources"></a>
+<a id="capacity:sec:sources"></a>
 
 # Sources, formal correspondence, and further questions
 
-The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](../../lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#lem:feedback" data-reference-type="ref" data-reference="lem:feedback">4</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this note. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, and the common-divisor formulation.
+The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#capacity:lem:feedback" data-reference-type="ref" data-reference="capacity:lem:feedback">4</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this note. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, and the common-divisor formulation.
 
-Airey, Mance and Vandehey already use digit sets eventually divisible by every fixed integer while retaining asymptotically full digit entropy \[amv2015, Section 6, p. 1321\]. Their theorem concerns normality and Hausdorff dimension for chosen Cantor bases. Here a fixed divisibility chain and arbitrary summable allowances are given, and the conclusion distinguishes interval filling from nullity and meagreness. These are elementary arguments in the classical theory of Cantor series and achievement sets; historical novelty of the exact classification is not established. Classical interval covering is background, rather than a contribution claimed here. A literature comparison and the reproducible checks are recorded in [the accompanying research record](../../research/experiments/sparse_interpolation/README.md). The work was developed with AI assistance and mathematical cross-checking by separate agent passes; that does not constitute independent expert review.
+Airey, Mance and Vandehey already use digit sets eventually divisible by every fixed integer while retaining asymptotically full digit entropy \[amv2015, Section 6, p. 1321\]. Their theorem concerns normality and Hausdorff dimension for chosen Cantor bases. Here a fixed divisibility chain and arbitrary summable allowances are given, and the conclusion distinguishes interval filling from nullity and meagreness. These are elementary arguments in the classical theory of Cantor series and achievement sets; historical novelty of the exact classification is not established. Classical interval covering is background, rather than a contribution claimed here. A literature comparison and the reproducible checks are recorded in [the accompanying research record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/README.md). The work was developed with AI assistance and mathematical cross-checking by separate agent passes; that does not constitute independent expert review.
 
-The formal module [`CongruenceInterpolation.lean`](../../lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean) uses the existing feedback module and states the common-divisor obstruction for a real carry recurrence. The analytic identification of that recurrence with the Cantor series, and the capacity and support classifications, are the ordinary proofs above. The module [`FeedbackContinuation.lean`](../../lean/ErdosProblems/Synthesis/FeedbackContinuation.lean) reuses the existing interval-feedback endpoint and proves eventual individual and cumulative divisibility from nested cofinal moduli; choosing the moduli and continuation intervals remains part of the ordinary proof. See the research record for the exact build status and source revision. No claim about any of the eight Erdős programmes changes; in particular factorial denominators $`n!`$ here are not $`n!-1`$ from \#68.
+The formal module [`CongruenceInterpolation.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean) uses the existing feedback module and states the common-divisor obstruction for a real carry recurrence. The analytic identification of that recurrence with the Cantor series, and the capacity and support classifications, are the ordinary proofs above. The module [`FeedbackContinuation.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Synthesis/FeedbackContinuation.lean) reuses the existing interval-feedback endpoint and proves eventual individual and cumulative divisibility from nested cofinal moduli; choosing the moduli and continuation intervals remains part of the ordinary proof. See the research record for the exact build status and source revision. No claim about any of the eight Erdős programmes changes; in particular factorial denominators $`n!`$ here are not $`n!-1`$ from \#68.
 
 The capacity criterion already covers non-power and oscillating allowances. For factorial gaps of fixed length $`m`$, a bounded multiple of $`n^m`$ still gives the lattice obstruction, whereas $`n^mL(n)`$ with $`L(n)\to\infty`$ permits interval filling. A further question concerns the null case: what finer tail data determine its Hausdorff dimension? The criterion itself does not separate dimension zero from full-dimensional null sets. Outside integer divisibility chains the prefix lattice changes, so no corresponding necessity is asserted here.
 

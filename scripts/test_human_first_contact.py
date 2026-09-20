@@ -31,11 +31,45 @@ def prose_words(text: str) -> list[str]:
     return words(re.sub(r"```.*?```", "", text, flags=re.DOTALL))
 
 
+def markdown_link_prose(text: str) -> str:
+    """Exclude code, including native Pandoc inline and fenced math.
+
+    Preserve surrounding link syntax: a code span in a real link's label
+    does not stop that link from being checked.
+    """
+    lines: list[str] = []
+    fence = ""
+    for line in text.splitlines(keepends=True):
+        if fence:
+            if re.fullmatch(
+                rf" {{0,3}}{re.escape(fence[0])}{{{len(fence)},}}[ \t]*",
+                line.rstrip("\r\n"),
+            ):
+                fence = ""
+            lines.append("\n")
+            continue
+        opening = re.match(r" {0,3}(`{3,}|~{3,})(.*)", line)
+        if opening and not (
+            opening[1].startswith("`") and "`" in opening[2]
+        ):
+            fence = opening[1]
+            lines.append("\n")
+        else:
+            lines.append(line)
+    return re.sub(
+        r"(?<!`)(`+)(?!`)(.*?)(?<!`)\1(?!`)",
+        lambda match: " " * len(match[0]),
+        "".join(lines),
+        flags=re.DOTALL,
+    )
+
+
 def local_markdown_targets(path: Path) -> list[Path]:
     """Resolve clone-local Markdown links from the document that owns them."""
 
     targets: list[Path] = []
-    for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
+    prose = markdown_link_prose(path.read_text(encoding="utf-8"))
+    for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", prose):
         target = raw.split("#", 1)[0]
         if not target or "://" in target or target.startswith("mailto:"):
             continue
@@ -64,8 +98,21 @@ def test_checkout_link_boundary() -> None:
         ignored.write_bytes(b"Local evidence is not shipped")
         source.write_text(
             "[public](public.md#section) [private](private-evidence.pdf) "
-            "[absent](missing.md) [remote](https://example.org/paper.pdf)\n",
+            "[absent](missing.md) [remote](https://example.org/paper.pdf)\n"
+            r"For the bounds, write $`b_k^{(r)}=[z^k](z;q)_\infty^{-r}`$."
+            "\n`[inline example](not-a-link.md)`\n"
+            "``[example with ` inside](also-not-a-link.md)``\n"
+            "``` math\n[z^k](z;q)_\\infty^{-r}\n```\n"
+            "~~~~ text\n[tilde example](not-a-link.md)\n~~~~\n"
+            "```` text\n```\n[nested fence](not-a-link.md)\n````\n"
+            "[`public code label`](public.md)\n"
+            "`unmatched opener [still a link](public.md)\n",
             encoding="utf-8",
+        )
+        require(
+            local_markdown_targets(source)
+            == [public, ignored, root / "missing.md", public, public],
+            "math and code examples must not become links or hide real links",
         )
         require(
             missing_checkout_targets(source, {source, public})

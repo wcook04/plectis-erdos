@@ -4,7 +4,8 @@
 ``submit`` starts at most one detached process group for one exact validation
 input.  Equivalent callers receive its shared future or terminal receipt;
 ``run`` is the one-command submit/join/collect path; ``collect --wait`` resumes
-an already known future.  The command
+an already known future. Add ``--receipt-only`` to observe its result without
+materializing Lean build outputs in this checkout. The command
 does not interpret a validator's result: its terminal exit code is the exit
 code from the existing validator, including 75 for unavailable environments.
 """
@@ -1504,13 +1505,18 @@ def status(state_root: Path, key: str) -> dict[str, Any]:
     return receipt
 
 
-def collect(state_root: Path, key: str, wait: bool, timeout_seconds: float) -> tuple[dict[str, Any], int]:
+def collect(
+    state_root: Path, key: str, wait: bool, timeout_seconds: float,
+    *, receipt_only: bool = False,
+) -> tuple[dict[str, Any], int]:
+    """Collect a result, optionally observing it without materializing outputs."""
     deadline = time.monotonic() + timeout_seconds
     while True:
         receipt = status(state_root, key)
         if receipt.get("state") == "terminal":
             if (
-                requires_lean_build_materialization(receipt)
+                not receipt_only
+                and requires_lean_build_materialization(receipt)
                 and receipt.get("exit_code") == 0
                 and not lean_build_share.is_materialized(ROOT, key)
             ):
@@ -1785,6 +1791,11 @@ def build_parser() -> argparse.ArgumentParser:
         if name == "collect":
             child.add_argument("--wait", action="store_true")
             child.add_argument(
+                "--receipt-only",
+                action="store_true",
+                help="observe the receipt without copying Lean build outputs into this checkout",
+            )
+            child.add_argument(
                 "--timeout-seconds",
                 type=float,
                 default=DEFAULT_COLLECT_TIMEOUT_SECONDS,
@@ -1833,7 +1844,10 @@ def main(argv: list[str] | None = None) -> int:
             emit(receipt if args.full else status_card(receipt))
             return 0
         if args.action == "collect":
-            receipt, code = collect(args.state_root, args.key, args.wait, args.timeout_seconds)
+            receipt, code = collect(
+                args.state_root, args.key, args.wait, args.timeout_seconds,
+                receipt_only=args.receipt_only,
+            )
             emit(receipt)
             return code
         if args.action == "cleanup":

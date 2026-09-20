@@ -479,6 +479,60 @@ class ValidationSingleflightTests(unittest.TestCase):
                 self.assertEqual(live.call_count, 1)
                 self.assertEqual(reads.call_count, 2)
 
+    def test_receipt_only_collect_waits_without_build_materialization(self) -> None:
+        for exit_code in (0, 1):
+            with self.subTest(exit_code=exit_code), tempfile.TemporaryDirectory() as directory:
+                state_root = Path(directory) / "state"
+                specification = self._safe_spec([sys.executable, "scripts/lean_fast_build.py"])
+                running = {**specification, "state": "running", "live": True}
+                terminal = {
+                    **specification,
+                    "state": "terminal",
+                    "exit_code": exit_code,
+                    "exit_state": "passed" if exit_code == 0 else "failed",
+                }
+                with (
+                    mock.patch.object(singleflight, "status", side_effect=[running, terminal]) as status,
+                    mock.patch.object(singleflight.time, "sleep") as sleep,
+                    mock.patch.object(build_share, "is_materialized") as materialized,
+                    mock.patch.object(build_share, "hydrate") as hydrate,
+                    mock.patch.object(singleflight, "open_lock") as lock,
+                ):
+                    observed, code = singleflight.collect(
+                        state_root, specification["key"], True, 10,
+                        receipt_only=True,
+                    )
+                self.assertEqual(code, exit_code)
+                self.assertEqual(observed, terminal)
+                self.assertEqual(status.call_count, 2)
+                sleep.assert_called_once_with(0.05)
+                materialized.assert_not_called()
+                hydrate.assert_not_called()
+                lock.assert_not_called()
+                self.assertNotIn("build_materialization", observed)
+
+    def test_collect_cli_receipt_only_is_explicit_and_forwarded(self) -> None:
+        for receipt_only in (False, True):
+            with self.subTest(receipt_only=receipt_only), tempfile.TemporaryDirectory() as directory:
+                state_root = Path(directory) / "state"
+                receipt = {"key": "a" * 64, "state": "terminal", "exit_code": 0}
+                arguments = [
+                    "--state-root", str(state_root), "collect", "--key", receipt["key"],
+                    "--wait", "--timeout-seconds", "12",
+                ]
+                if receipt_only:
+                    arguments.append("--receipt-only")
+                with (
+                    mock.patch.object(singleflight, "collect", return_value=(receipt, 0)) as collect,
+                    mock.patch.object(singleflight, "emit") as emit,
+                ):
+                    self.assertEqual(singleflight.main(arguments), 0)
+                collect.assert_called_once_with(
+                    state_root, receipt["key"], True, 12.0,
+                    receipt_only=receipt_only,
+                )
+                emit.assert_called_once_with(receipt)
+
     def test_raced_terminal_still_requires_successful_lean_materialization(self) -> None:
         for hydration_status, expected_code in (("hydrated", 0), ("missing", 75)):
             with self.subTest(hydration_status=hydration_status), tempfile.TemporaryDirectory() as directory:

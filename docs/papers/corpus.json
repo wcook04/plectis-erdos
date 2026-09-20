@@ -8998,7 +8998,7 @@
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "source_sha256": "sha256:6c3e17264f54adde654e1f4cf9d887ff9a58b662d3ce3acb6c0b1abbaf61c849",
+      "source_sha256": "sha256:c5668cca98569e90a2707c786d6151eb369600787a14cedd6322051cfe746afa",
       "sections": [
         {
           "level": 1,
@@ -9026,7 +9026,7 @@
         },
         {
           "level": 1,
-          "id": "sec:capacity-proof",
+          "id": "capacity:sec:capacity-proof",
           "title": "Proof of the capacity criterion",
           "line": 92
         },
@@ -9050,7 +9050,7 @@
         },
         {
           "level": 1,
-          "id": "sec:negative",
+          "id": "capacity:sec:negative",
           "title": "Why a large gap prevents interval filling",
           "line": 163
         },
@@ -9068,21 +9068,21 @@
         },
         {
           "level": 1,
-          "id": "sec:carry",
+          "id": "capacity:sec:carry",
           "title": "A common-divisor test for irrationality",
           "line": 259
         },
         {
           "level": 1,
-          "id": "sec:sources",
+          "id": "capacity:sec:sources",
           "title": "Sources, formal correspondence, and further questions",
           "line": 302
         }
       ],
       "section_count": 13,
       "citations_rendered": 1,
-      "pdf_sha256": "sha256:0619b82f0ed1b6f09af39cbf9b3bd6000575082564bd4b7a28cd4d0f0a848b95",
-      "pdf_byte_count": 101136
+      "pdf_sha256": "sha256:66f5664f323a37f79987f2d4bccd4659acb3a94635ce95df080e9c64af817c20",
+      "pdf_byte_count": 111114
     }
   ]
 }
