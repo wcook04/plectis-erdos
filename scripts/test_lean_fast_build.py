@@ -635,18 +635,25 @@ import Pkg.TooLate
 
             self.assertEqual(fast.local_imports(source, modules), {"Pkg.Local"})
 
-    def test_build_wave_reports_only_failed_modules(self) -> None:
-        results = {
-            "Pkg.Good": ("Pkg.Good", 0, 0.1),
-            "Pkg.Bad": ("Pkg.Bad", 1, 0.2),
-        }
-        with mock.patch.object(fast, "build_batch", return_value=(1, 0.3)), mock.patch.object(
-            fast, "build_one", side_effect=lambda name, root=fast.ROOT: results[name]
-        ):
+    def test_failed_batch_is_not_replayed_to_isolate_diagnostics(self) -> None:
+        with mock.patch.object(fast, "build_batch", return_value=(1, 0.3)) as batch, mock.patch.object(
+            fast, "build_one", side_effect=AssertionError("unchanged failure must not be replayed")
+        ) as single:
             self.assertEqual(
                 fast.build_wave(["Pkg.Good", "Pkg.Bad"], jobs=2),
-                ["Pkg.Bad"],
+                ["Pkg.Good", "Pkg.Bad"],
             )
+            batch.assert_called_once()
+            single.assert_not_called()
+
+    def test_failed_batch_does_not_skip_independent_ready_batches(self) -> None:
+        with mock.patch.object(fast, "build_batch", side_effect=[(1, 0.3), (0, 0.2)]) as batch:
+            self.assertEqual(
+                fast.build_wave(["Pkg.A", "Pkg.B", "Pkg.C"], jobs=2),
+                ["Pkg.A", "Pkg.B"],
+            )
+            self.assertEqual([call.args[0] for call in batch.call_args_list],
+                             [["Pkg.A", "Pkg.B"], ["Pkg.C"]])
 
     def test_build_wave_batches_at_the_worker_bound(self) -> None:
         batches: list[list[str]] = []
@@ -662,6 +669,25 @@ import Pkg.TooLate
             )
 
         self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C", "Pkg.D"]])
+
+    def test_failure_blocks_only_its_dependents_and_preserves_independent_work(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sources = {"A": "", "B": "import A\n", "C": "", "D": "import C\n",
+                       "E": "import B\n", "Root": "import E\nimport D\n"}
+            for name, text in sources.items():
+                (root / (name + ".lean")).write_text(text, encoding="utf-8")
+            built = []
+            def wave(names, jobs, root):
+                built.extend(names)
+                return [name for name in names if name == "A"]
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "build_wave", side_effect=wave
+            ), mock.patch.object(fast, "run_final_authority_check") as final:
+                with self.assertRaisesRegex(RuntimeError, "module batch prebuild failed"):
+                    fast.main(["Root", "--lake-staleness"])
+            self.assertEqual(built, ["A", "C", "D"])
+            final.assert_not_called()
 
     def test_partial_cache_starts_from_missing_outputs_before_final_lake(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

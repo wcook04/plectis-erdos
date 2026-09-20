@@ -609,8 +609,10 @@ def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
     Earlier dependency waves are already current, so Lake can elaborate at
     most the modules named in each batch. This preserves the memory/process
     ceiling while amortizing Lake's workspace and dependency-graph scan across
-    up to ``jobs`` targets. A failed batch is retried one module at a time so
-    the final diagnostic still names the exact failures.
+    up to ``jobs`` targets. Preserve Lake's original failure diagnostics and
+    report every target in a failed batch conservatively. Replaying unchanged
+    failures just to isolate their names wastes a second elaboration; the next
+    source-repair run already uses Lake traces to reuse successful outputs.
     """
 
     modules = list(names)
@@ -631,15 +633,7 @@ def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
             flush=True,
         )
         if code:
-            for name in batch:
-                name, single_code, single_duration = build_one(name, root)
-                print(
-                    f"lean-fast-build: retry {name} -> {single_code} "
-                    f"({single_duration:.1f}s)",
-                    flush=True,
-                )
-                if single_code:
-                    failed.append(name)
+            failed.extend(batch)
     return failed
 
 
@@ -958,10 +952,21 @@ def main(argv: list[str] | None = None) -> int:
             print(line, flush=True)
         return 0
 
+    failed: set[str] = set()
+    blocked: set[str] = set()
     for wave in pending:
-        failed = build_wave(wave, args.jobs, root)
-        if failed:
-            raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
+        skipped = {name for name in wave if graph.get(name, set()) & blocked}
+        blocked.update(skipped)
+        ready = [name for name in wave if name not in skipped]
+        wave_failures = set(build_wave(ready, args.jobs, root))
+        failed.update(wave_failures)
+        blocked.update(wave_failures)
+        if skipped:
+            print("lean-fast-build: skipped failed-dependency targets: " +
+                  ",".join(sorted(skipped)), flush=True)
+    if failed:
+        raise RuntimeError("module batch prebuild failed (see Lake diagnostics): " +
+                           ", ".join(sorted(failed)))
 
     lake_target_names = list(
         dict.fromkeys(
