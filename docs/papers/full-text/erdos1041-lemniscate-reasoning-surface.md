@@ -61,6 +61,8 @@ Write $`E_f=\{z\in\mathbb C:|f(z)|<1\}`$. The first theorem gives a prescribed p
 
 </div>
 
+Lean: [all spokes](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperTrinomial.lean#L26), [complete trinomial](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperTrinomial.lean#L38).
+
 <div class="proof">
 
 *Proof.* Vieta’s formula gives $`|b|<1`$. At a zero $`\zeta`$ the root equation $`\zeta^n+a\zeta^m+b=0`$ eliminates the middle coefficient:
@@ -130,6 +132,8 @@ is the least critical-value modulus.
 
 </div>
 
+Not formalised: the degree-two case and the exact rational arithmetic of the stopping-time comparison are checked, and the analytic argument in higher degrees is not. See the [coverage section](#sec:coverage).
+
 For $`f(z)=z^n-b`$ with $`0<|b|<1`$, the only critical point is $`0`$ and $`\mu=|b|`$. Thus this criterion includes $`|b|\le13/25`$ but excludes $`13/25<|b|<1`$, although the trinomial theorem gives the required path in both ranges. Its value is that it also applies to polynomials with arbitrary coefficient patterns, including roots outside the unit disc. For example, $`(z-3)^n-1/2`$, $`n\ge2`$, has $`\mu=1/2`$ and all its roots satisfy $`|z|>2`$. The required containment is $`|f(z)|<1`$, not $`|z|<1`$.
 
 <div id="res:low-critical-scale-free" class="corollary">
@@ -137,6 +141,8 @@ For $`f(z)=z^n-b`$ with $`0<|b|<1`$, the only critical point is $`0`$ and $`\mu=
 **Corollary 5** (scale-free form). *Every squarefree monic $`f`$ of degree $`n\ge2`$ has two distinct roots joined inside $`\{|f|<(25/13)\mu\}`$ by a curve of length below $`2\bigl((25/13)\mu\bigr)^{1/n}`$.*
 
 </div>
+
+Lean: [scaled low critical of low critical](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L460). Conditional on Theorem <a href="#res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="res:low-critical-thirteen-twentyfifths">4</a> as stated; see the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -222,6 +228,8 @@ where $`\operatorname{clamp}`$ truncates its argument to $`[-1,1]`$.*
 
 </div>
 
+Lean: [circle slice packing](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L563), [cosh dist polar](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L141), [dist polar i](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L166), [exists polar](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L177), and 2 further declarations in the [coverage section](#sec:coverage).
+
 <div class="proof">
 
 *Proof.* The open balls $`B_j=B_{\mathrm{hyp}}(b_j,D/2)`$ are pairwise disjoint, since a common point would force $`d(b_i,b_j)<D`$. Fix $`r>0`$. By the hyperbolic law of cosines the point of the hyperbolic circle of radius $`r`$ at angle $`\theta`$ lies in $`B_j`$ exactly when $`\cosh d_j\cosh r-\sinh d_j\sinh r\cos(\theta-\theta_j)<\cosh(D/2)`$. The set of angles satisfying this inequality has measure $`2w(d_j,r)`$: clamping gives measure zero for an empty intersection and $`2\pi`$ for a full circle, with tangent endpoint sets of measure zero. The intersections of the balls with this circle are disjoint, so their angular measures sum to at most $`2\pi`$. ◻
@@ -240,6 +248,8 @@ U=\sup_{d\ge d_{\mathrm{low}}(a)}
 If $`U>0`$, then failure forces $`k\ge(x-\pi\Sigma)/U`$.*
 
 </div>
+
+Lean: [dual arity floor sup](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L594), [dual arity floor](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L579), [le of lam le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L506), [cosh dist polar](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L141), and 1 further declaration. Conditional on the radius and budget bound that this proof derives from the standing failure hypothesis; see the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -379,6 +389,8 @@ The analytic chain above is ordinary mathematics. Its general inputs are the Rie
 
 </div>
 
+Lean: [scaled low critical five halves of low critical](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L491). Conditional on Theorem <a href="#res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="res:low-critical-thirteen-twentyfifths">4</a> as stated, and only in degrees above two; see the [coverage section](#sec:coverage).
+
 <div class="proof">
 
 *Proof.* For $`n\ge3`$, apply Theorem <a href="#res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="res:low-critical-thirteen-twentyfifths">4</a> to $`g(z)=s^{-n}f(sz)`$ with $`s=((25/13)\mu)^{1/n}`$. Its least critical modulus is $`13/25`$; rescaling gives length less than $`2(25/13)^{1/n}\mu^{1/n}<(5/2)\mu^{1/n}`$, since $`25/13<(5/4)^3`$. For $`n=2`$, write $`f(z)=(z-h)^2-d^2`$. The two radial segments through $`h`$ have total length $`2|d|=2\mu^{1/2}`$ and lie in the closed level $`\mu`$, which is inside the stated open level. ◻
@@ -406,6 +418,8 @@ K_t=\{z:|f(z)|\le t\},\qquad
 inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If $`\mu\le1/2`$, the construction may be chosen inside $`\{|f|<1\}`$ with length at most $`5.7`$.*
 
 </div>
+
+Lean: [cfa constant factor path](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L677), [cfa bracket two three twentieths lt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L355), [cfa bracket five point seven](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L393), [cfa degenerate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L313), and 3 further declarations. Conditional on the level and direction averaging construction that this proof produces; see the [coverage section](#sec:coverage).
 
 The constant is the rationally certified specialization of a two-parameter bound. If the selected component contains $`k\ge2`$ roots, then for every $`r\in(0,1)`$ and $`\lambda>1`$ the proof constructs a path in $`K_{\lambda\mu}`$ whose length is at most
 ``` math
@@ -491,6 +505,8 @@ The number of roots in the first merged component can be much smaller than the d
 
 </div>
 
+Lean: [cfa arity criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L765), [cfa arity bracket case one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L440), [cfa arity bracket case two](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L455), [cfa arity bracket case three](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L470), and 2 further declarations. Conditional on the level and direction averaging construction in the proof of Theorem <a href="#res:constant-factor-path" data-reference-type="ref" data-reference="res:constant-factor-path">9</a>; see the [coverage section](#sec:coverage).
+
 <div class="proof">
 
 *Proof.* If $`\mu=0`$, a repeated zero gives the constant path. Assume henceforth $`\mu>0`$. Every selected component $`C_t`$ in the proof of Theorem <a href="#res:constant-factor-path" data-reference-type="ref" data-reference="res:constant-factor-path">9</a> contains the first-merge component, so $`k\ge k_0`$. For the first case take $`\lambda=2`$, $`r=13/100`$; then $`(2\mu)^{1/n}\le1`$ and $`\rho\le1`$, and the exact bounds $`\sqrt2<283/200`$, $`\sqrt{\log(200/13)}<5/3`$ and $`\pi/\sqrt{\log2}<(22/7)/(104/125)=1375/364`$ make the bracket in (CF) at most $`15668813/2755116`$, whose square is $`34-12570881068535/7590664173456<34`$. Hence $`k_0\ge17`$ gives squared length below $`(2/17)\cdot34=4`$. For the second case take $`\lambda=4`$, $`r=3/25`$: the bracket is below $`6075221/1273888`$, whose square is $`24-2038665078215/1622790636544<24`$, and $`2/k_0\le1/6`$ gives squared length below $`4`$. For the third take $`\lambda=8`$, $`r=11/100`$: the bracket is below $`55629121/12475575`$, whose square is $`20-18200328379859/155639971580625<20`$, and $`2/k_0\le1/5`$ again gives squared length below $`4`$. In each case $`\lambda\mu\le1`$, so the freedom in the choice of the regular level $`t`$ keeps $`t<1`$ and the containment strict. ◻
@@ -509,6 +525,8 @@ The next criterion uses logarithmic capacity, a measure of the size of a compact
 then Erdős #1041 holds for $`f`$. In particular $`\kappa\le1/3`$ suffices for every root count $`k_0\ge2`$, and the rational cutoffs $`2/5,\,12/25,\,1/2,\,7/12,\,16/25,\,2/3,\,7/10`$ suffice at $`k_0=3,\ldots,9`$, rising to $`39/40`$ at $`k_0=16`$.*
 
 </div>
+
+Lean: [cfa capacity criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L538), [cfa tau third](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L583), [cfa tau cutoffs](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L591), [cfa tau ge of sq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L572), and 2 further declarations. Conditional on the level and direction averaging construction in the proof of Theorem <a href="#res:constant-factor-path" data-reference-type="ref" data-reference="res:constant-factor-path">9</a>, together with the area-capacity inequality; see the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -587,6 +605,8 @@ for every $`0<\sigma<\mu`$ and every component $`C`$ of $`\{|f|\le\sigma\}`$. Th
 
 </div>
 
+Lean: [subcritical perimeter path paper](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean#L265), [subcritical perimeter path](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean#L245), [connected at most half perimeter](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean#L203), [half perimeter join of jordan arc datum](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean#L216), and 4 further declarations. Conditional on the two-component split at the first critical level that this proof constructs; see the [coverage section](#sec:coverage).
+
 <div class="proof">
 
 *Proof.*
@@ -631,6 +651,8 @@ Theorem <a href="#res:constant-factor-path" data-reference-type="ref" data-refe
 **Theorem 14** (the cubic case). *Let $`f(z)=\prod_{j=1}^{3}(z-z_j)`$ with $`|z_j|<1`$, the roots listed with multiplicity. Then two listed root occurrences are joined inside $`\{|f|<1\}`$ by a polygonal path of length strictly below $`2`$. If $`f`$ is squarefree the two are distinct.*
 
 </div>
+
+Lean: [cubic paper complete](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCubicCompletion.lean#L297).
 
 <div class="proof">
 
@@ -702,6 +724,8 @@ Consequently the connector is shorter than $`2`$ whenever
 ```*
 
 </div>
+
+Lean: [disc sep separation long](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L344), [disc sep squared length le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L305), [disc sep length lt two](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L334), [disc sep bergman factor](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L179), and 2 further declarations. Conditional on the connector and area construction that this proof produces; see the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -813,6 +837,8 @@ for every other critical point $`d`$, then two roots of $`f`$ are joined inside 
 
 </div>
 
+Lean: [disc sep coefficient lt two](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L645), [disc sep uniform radius](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L702), [disc sep ratio le branch](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L629), [disc sep branch le seven](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L637). Conditional on the connector and area construction in the proof of Theorem <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">15</a>; see the [coverage section](#sec:coverage).
+
 <div class="proof">
 
 *Proof.* For $`S\ge4/3`$ and $`p\ge0`$,
@@ -895,6 +921,8 @@ Suppose $`p(-1)=p(1)=0`$ and $`p(c_i)p(c_{i+1})<0`$ for $`0\le i<m`$. Then
 
 </div>
 
+Lean: [exists peak le comparison bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean#L133).
+
 This is exactly the statement selected as [the formal Chebyshev endpoint](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ExternalVerification1041SolvedFamilies/Solution.lean#L74). It proves the finite alternation inequality; it does not yet construct the segment between two roots.
 
 All real-rooted polynomials, and their images under rotations and translations, satisfy the collinearity hypothesis. Three noncollinear roots already fall outside it. The gain is an explicit sharp bound for the modulus along one adjacent-root segment, not a bound obtained by assuming that segment is contained.
@@ -909,6 +937,8 @@ All real-rooted polynomials, and their images under rotations and translations, 
 The constant in *(9)* is best possible in every degree. Equality is attained by affine images of the zeros of $`T_n`$ whose extreme zeros have distance $`D`$.*
 
 </div>
+
+Lean: [sharp collinear root diameter](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367), [sharp collinear root diameter monic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L967), [exists collinear factorisation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L928), [exists gap le comparison bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L212), and 5 further declarations in the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -938,6 +968,8 @@ These are the zeros of $`q_*`$, have extremes $`\pm1`$, and every adjacent gap c
 **Corollary 19** (collinear Erdős case). *If the zero occurrences of a monic polynomial of degree $`n\ge2`$ lie on one line in the open unit disc, two of them are joined by a curve of length strictly below $`2`$ inside $`\{|f|<1\}`$.*
 
 </div>
+
+Lean: [collinear erdos 1041](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L515), [collinear erdos 1041 monic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L984), [exists collinear factorisation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L928), [sharp collinear root diameter](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367).
 
 <div class="proof">
 
@@ -986,6 +1018,8 @@ Then at least one of the ten pairs $`0\le i<j\le4`$ satisfies $`E_i<1`$ and $`E_
 
 </div>
 
+Lean: [primitive interior exists two tail energy lt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean#L272).
+
 This is the exact finite conclusion selected as [the formal two-index inequality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ExternalVerification1041SolvedFamilies/Solution.lean#L24). It selects two distinct indices. It does not assert that the corresponding complex root values are distinct.
 
 The polynomial must have no $`z^3`$ or $`z^2`$ term in the coordinates used here. For example, $`z^5+bz+c`$ is included, but a general quintic with all coefficients nonzero is not. The root-location assumption alone does not imply the three moment identities. Those identities are precisely what lets the finite inequality find two radial segments.
@@ -1005,6 +1039,8 @@ If $`a\ne0`$, two indices can be chosen with strict inequalities. If $`a=0`$, ev
 *For open-disc zeros, two zero occurrences are joined inside $`\{|p|<1\}`$ by a curve of length below $`2`$: use the two radial spokes through $`0`$ when their values are distinct, and the constant path when the selected occurrences have the same value.*
 
 </div>
+
+Lean: [primitive quintic two tail](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/PrimitiveQuinticClosedDisc.lean#L260), [primitive quintic two tail of polynomial](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/PrimitiveQuinticClosedDisc.lean#L313), [two tails closed disc of ne zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/PrimitiveQuinticClosedDisc.lean#L93), [tail le one and eq iff of leading zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/PrimitiveQuinticClosedDisc.lean#L199), and 1 further declaration in the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -1091,6 +1127,8 @@ For $`f(z)=P((z-h)^q)`$, the roots associated with a nonzero root of $`P`$ form 
 
 </div>
 
+Lean: [cubic has safe root spoke](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean#L161).
+
 This is exactly [the formal cubic segment inequality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ExternalVerification1041SolvedFamilies/Solution.lean#L14).
 
 <div id="thm:translated-cubic-quotient-fibres" class="theorem">
@@ -1106,6 +1144,8 @@ If every zero of $`f`$ lies in the open unit disc and $`f`$ has at least two dis
 in every degree $`3q\ge6`$.*
 
 </div>
+
+Lean: [complete translated cubic quotient fibres](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240).
 
 <div class="proof">
 
@@ -1455,6 +1495,8 @@ The constant is attained by $`f(z)=(z-\tau)^n-\lambda`$ with enclosing disk cent
 
 </div>
 
+Lean: [critical value three budgets](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/CriticalMeanWhole.lean#L14), [critical value three budgets sharp](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/CriticalMeanWhole.lean#L36).
+
 The finite inequality behind the theorem concerns arbitrary points of the disk, without asking them to arise as critical points. Its quadratic form is
 ``` math
 \sum_{j=1}^m\left(\prod_{k=1}^m
@@ -1474,6 +1516,8 @@ The following pointwise bound explains why these finite inequalities control cri
 ```*
 
 </div>
+
+Lean: [reflected critical value](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperReflectedCompletion.lean#L254).
 
 [The reflected-derivative inequality is checked in Lean, including closed-disc roots and critical-point multiplicities.](https://github.com/wcook04/plectis-erdos/blob/bb4e24651b37cd096d3749ef299c3317930b3a3b/ErdosProblems/Erdos1041/PaperReflectedCompletion.lean#L254)
 
@@ -1934,6 +1978,8 @@ where $`f'(z(t))\ne0`$. Let $`I\subseteq\mathbb R`$ be an interval on which thes
 
 </div>
 
+Lean: [newton real value whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52).
+
 The computation is one line: $`w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w`$. The kernel checks the local complex-parameter chain rule as [the derivative of the polynomial value along a Newton trajectory](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50), together with the differential form of the first integral, [the derivative of the exponentially rescaled value](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64):
 ``` math
 \frac{d}{dt}\Bigl(e^{t}f(z(t))\Bigr)=0.
@@ -1953,6 +1999,8 @@ f(z(b))=e^{a-b}f(z(a)).
 If these endpoint values are nonzero, they lie on one positive ray. Therefore critical points with values on distinct positive rays cannot be endpoints of such a finite connection. The trajectory in the $`z`$ plane need not be radial.*
 
 </div>
+
+Lean: [newton real endpoint whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69).
 
 The interior identity passes to the endpoints by continuity, not by evaluating $`-f/f'`$ at a critical endpoint. The candidate declarations [value decay at continuous endpoints](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean) and [no finite connection of distinct value rays](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean) in [the trajectory endpoint source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean) make these premises explicit. Their compilation and axiom checks are not reported here. They construct no trajectories and supply no global monodromy theorem. Kozen and Stefánsson draw the same ray consequence for the Newtonian graph: under $`f`$, every edge maps onto a segment of a ray through the origin whose endpoints are $`0`$ or critical values \[kozen-stefansson1997, §2\].
 
@@ -1985,6 +2033,8 @@ A common translation of distinct values can separate their arguments. The next c
 ```*
 
 </div>
+
+Lean: [translated same positive ray parameterization](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107).
 
 Indeed, write $`b+\beta=r(a+\beta)`$ with $`r>0`$. Since $`a\ne b`$, one has $`r\ne1`$, and solving for $`\beta`$ gives the displayed formula. Equivalently, $`\beta=-a+(a-b)/(1-r)`$, so the forbidden translations lie on the real affine line through $`-a`$ and $`-b`$.
 
@@ -2059,6 +2109,8 @@ The assumptions exclude a component containing a multiple critical point or two 
 *Small neighbourhoods of the saddles can be chosen with diameter $`O(\sqrt\delta)`$ at value radius $`\delta`$.*
 
 </div>
+
+Not formalised: the ray-disjointness, level-separation and saddle-scale steps of the proof are checked, and the Morse, monodromy and strip statements are not. See the [coverage section](#sec:coverage).
 
 <div class="proof">
 
@@ -2348,6 +2400,10 @@ No source-link reachability check or fresh kernel build is implied by these snap
 <a id="sec:coverage"></a>
 
 ## Formalisation coverage and remaining dependencies
+
+<div id="coverage">
+
+</div>
 
 Every theorem, lemma, proposition and corollary of this record other than those listed below has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`. This includes Lemma <a href="#res:circle-slice-packing" data-reference-type="ref" data-reference="res:circle-slice-packing">6</a>.
 

@@ -27,6 +27,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import validation_singleflight as singleflight
+from lean_source import LeanDeclarationError, declaration_line
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -36,8 +37,12 @@ PARTS_DIRS = (
 )
 PIN_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
 LATE_PIN_RE = re.compile(r"\\newcommand\{\\latecommit\}\{([0-9a-f]{40})\}")
+LEDGER_PIN_RE = re.compile(r"\\newcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
 LATE_LAYOUT_PREFIX = "lean/"
 LEAN_RE = re.compile(r"\\lean\{([^{}]*)\}\{([^{}]*)\}")
+# The generated statement note.  Its file is named below lean/ and always
+# resolves at \ledgercommit, which is the revision the coverage ledger read.
+LPROOF_RE = re.compile(r"\\lproof\{([^{}]*)\}\{(\d+)\}\{([^{}]*)\}")
 TARGET_RE = re.compile(r"(.+\.lean)(?::(.*))?")
 DECL_RE = re.compile(
     r"^[ \t]*(?:@\[[^\]\n]*\][ \t]*)*"
@@ -182,6 +187,12 @@ def late_pinned_commit() -> str | None:
     """The pin for sources that postdate ``\\commit``; absent when no paper needs one."""
 
     return _shared_pin(LATE_PIN_RE, "late formal-source pin", required=False)
+
+
+def ledger_pinned_commit() -> str | None:
+    """The pin the generated statement notes resolve at; absent when none are present."""
+
+    return _shared_pin(LEDGER_PIN_RE, "ledger source pin", required=False)
 
 
 class Resolver:
@@ -332,14 +343,57 @@ class Resolver:
                 )
 
 
+class LedgerResolver(Resolver):
+    """Generated ``\\lproof`` targets: one pin, and the nested ``lean/`` layout.
+
+    The declaration name is resolved by ``lean_source``, which is also what the
+    generator of these notes uses, so the refreshed coordinate and the generated
+    one cannot drift apart through two readings of the same file.
+    """
+
+    @staticmethod
+    def repository_path(cited_file: str) -> str:
+        if cited_file.startswith(LATE_LAYOUT_PREFIX):
+            return cited_file
+        return LATE_LAYOUT_PREFIX + cited_file
+
+    def pin_for(self, cited_file: str) -> str | None:
+        return self.pin
+
+    def declaration_line(self, cited_file: str, cited_name: str) -> int:
+        source = self.source(cited_file)
+        try:
+            return declaration_line(source.text, cited_name)
+        except LeanDeclarationError as exc:
+            raise CoordinateError(f"{source.path} at {self.pin}: {exc}") from exc
+
+
 def render_file(
     path: Path,
     resolver: Resolver,
     text: str | None = None,
+    ledger: Resolver | None = None,
 ) -> tuple[str, int, int]:
     text = path.read_text(encoding="utf-8") if text is None else text
     declarations = 0
     locations = 0
+
+    def replace_generated(match: re.Match[str]) -> str:
+        nonlocal declarations
+        cited_file, _line, name = match.groups()
+        if ledger is None:
+            line_number = text.count("\n", 0, match.start()) + 1
+            raise CoordinateError(
+                f"{path.relative_to(ROOT)}:{line_number}: a generated statement link "
+                "needs a \\ledgercommit pin"
+            )
+        try:
+            resolved = ledger.declaration_line(normalize(cited_file), normalize(name))
+        except CoordinateError as exc:
+            line_number = text.count("\n", 0, match.start()) + 1
+            raise CoordinateError(f"{path.relative_to(ROOT)}:{line_number}: {exc}") from exc
+        declarations += 1
+        return f"\\lproof{{{cited_file}}}{{{resolved}}}{{{name}}}"
 
     def replace(match: re.Match[str]) -> str:
         nonlocal declarations, locations
@@ -365,30 +419,38 @@ def render_file(
         declarations += 1
         return f"\\lean{{{raw_name}}}{{{cited_file}:{declaration_line}}}"
 
-    return LEAN_RE.sub(replace, text), declarations, locations
+    return LPROOF_RE.sub(replace_generated, LEAN_RE.sub(replace, text)), declarations, locations
 
 
 def render_all() -> tuple[dict[Path, str], int, int, str]:
     pin = pinned_commit()
     resolver = Resolver(pin, late_pinned_commit())
+    ledger_pin = ledger_pinned_commit()
+    ledger = LedgerResolver(ledger_pin) if ledger_pin else None
     source_texts = {
         path: path.read_text(encoding="utf-8")
         for directory in PARTS_DIRS
         for path in sorted(directory.glob("*.tex"))
     }
     cited_files = []
+    generated_files = []
     for text in source_texts.values():
         for match in LEAN_RE.finditer(text):
             target_match = TARGET_RE.fullmatch(normalize(match.group(2)))
             if target_match is not None:
                 cited_files.append(target_match.group(1))
+        generated_files.extend(
+            normalize(match.group(1)) for match in LPROOF_RE.finditer(text)
+        )
     resolver.preload(cited_files)
+    if ledger is not None:
+        ledger.preload(generated_files)
     rendered: dict[Path, str] = {}
     declarations = 0
     locations = 0
     for path, text in source_texts.items():
         updated, declaration_count, location_count = render_file(
-            path, resolver, text
+            path, resolver, text, ledger
         )
         rendered[path] = updated
         declarations += declaration_count
