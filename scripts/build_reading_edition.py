@@ -39,6 +39,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import quote, unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "reading-edition"
@@ -216,20 +217,48 @@ def tex_title(title: str) -> str:
     return re.sub(r"(\\[A-Za-z]+.*)$", lambda m: "$`" + m.group(1) + "`$", title)
 
 
+def public_links(markdown: str, source: str | Path) -> str:
+    """Keep source-relative links usable after moving text into an edition."""
+    base = (ROOT / source).parent
+
+    def absolute(match: re.Match) -> str:
+        target = match.group("target")
+        if target is None:
+            return match.group(0)
+        parts = urlsplit(target)
+        if parts.scheme or parts.netloc or not parts.path:
+            return match.group(0)
+        try:
+            resolved = (base / unquote(parts.path)).resolve().relative_to(ROOT.resolve())
+        except ValueError as error:
+            raise ReadingEditionError(f"link outside the repository in {source}: {target}") from error
+        url = BLOB + quote(resolved.as_posix(), safe="/")
+        if parts.query:
+            url += "?" + parts.query
+        if parts.fragment:
+            url += "#" + parts.fragment
+        return f"]({url})"
+
+    # Coefficient notation such as [z^k](z;q) is not a Markdown link inside
+    # mathematics. Preserve code spans, fenced blocks and math delimiters
+    # before considering the link-target alternative.
+    return re.sub(
+        r"(?P<ticks>`+).*?(?P=ticks)|(?P<tildes>~{3,}).*?(?P=tildes)"
+        r"|(?P<dollars>\${1,2}).*?(?P=dollars)|\]\((?P<target>[^)\s]+)\)",
+        absolute, markdown, flags=re.DOTALL,
+    )
+
+
+def paper_text(row: dict) -> str:
+    return public_links(row["text_path"].read_text(encoding="utf-8"), row["text_path"])
+
+
 def worked_examples() -> str:
     parts = []
     for rel in WORKED_EXAMPLES:
         text = (ROOT / rel).read_text(encoding="utf-8")
         text = re.sub(r"^<!--.*?-->\n", "", text, flags=re.MULTILINE).strip()
-        base = Path(rel).parent
-        def absolute(match: re.Match) -> str:
-            target = match.group(1)
-            if target.startswith(("http://", "https://", "#")):
-                return match.group(0)
-            path, _, fragment = target.partition("#")
-            resolved = (ROOT / base / path).resolve().relative_to(ROOT.resolve()).as_posix()
-            return f"]({BLOB}{resolved}" + (f"#{fragment}" if fragment else "") + ")"
-        text = re.sub(r"\]\(([^)\s]+)\)", absolute, text)
+        text = public_links(text, rel)
         parts.append(scope_anchors(demote(text, 2), Path(rel).parent.name))
     return "\n\n".join(parts)
 
@@ -281,7 +310,7 @@ def synthesis_entry(rows: list[dict]) -> str:
         synthesis_heading(note)
         + f"\nWorking record: [{record['title']}]({BLOB}{record['local_full_text']}) "
         f"({size(record['text_path'])} as text).\n\n"
-        + scope_anchors(demote(note["text_path"].read_text(encoding="utf-8"), 2), note["paper_id"])
+        + scope_anchors(demote(paper_text(note), 2), note["paper_id"])
         + further
     )
 
@@ -311,7 +340,7 @@ def build() -> dict[Path, str]:
     )
     for row in short:
         record = long_[row["problem"]]
-        text = row["text_path"].read_text(encoding="utf-8")
+        text = paper_text(row)
         body, truncated = opening(text)
         note = (
             f"*This entry ends here, at a section boundary. Later sections of the paper, and "
@@ -336,7 +365,7 @@ def build() -> dict[Path, str]:
     for row in short:
         full_short.append(
             paper_heading(row) + "\n"
-            + scope_anchors(demote(row["text_path"].read_text(encoding="utf-8"), 2), row["paper_id"])
+            + scope_anchors(demote(paper_text(row), 2), row["paper_id"])
         )
 
     starter_text = "\n\n".join(starter).rstrip() + "\n"
@@ -409,7 +438,7 @@ def complete(target: Path) -> None:
     ]
     for row in papers:
         heading = paper_heading(row) if "problem" in row else synthesis_heading(row)
-        parts.append(heading + "\n" + demote(row["text_path"].read_text(encoding="utf-8"), 2))
+        parts.append(heading + "\n" + scope_anchors(demote(paper_text(row), 2), row["paper_id"]))
     target.write_text("\n\n".join(parts).rstrip() + "\n", encoding="utf-8")
 
 

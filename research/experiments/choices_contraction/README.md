@@ -5,12 +5,12 @@
 
 Erdős #257 at base 2 is equivalent to a finite-rejection statement: every
 rational number that is not a finite sum of the weights `1/(2^n - 1)` is
-rejected by the greedy rule at some finite index. The share of fractions that
-survive a fixed depth is forced by equidistribution of fractions over the
-intervals that remain, so it carries no information about membership, and at
-height `Q` every count past step `2 log2 Q - 3.3` is forced as well. Exact
-computation at denominators up to 200 agrees with the measures of the removed
-intervals step by step and shows no arithmetic effect in either direction. For
+rejected by the greedy rule at some finite index. Equidistribution explains
+the limiting share not rejected at each fixed depth as the denominator bound
+grows; it supplies neither a membership test nor a stopping depth. The exact
+rejection of `189/388` at step 17 disproves the proposed cutoff near
+`2 log2 Q - 3.3`. Computation at denominators up to 200 agrees closely with
+the measures of the removed intervals. For
 the hosts of odd, squarefree and non-multiples-of-3 exponents it excludes every
 rational of denominator at most 36 that is not a finite sum.
 
@@ -111,29 +111,48 @@ the latest at index 22, 26 and 11 respectively.
 
 ## What the counts show and what they leave open
 
-**The share near 62% at fixed depth is forced, and it says nothing about
-membership.** The fractions not excluded through depth `N` are exactly those in
+**The limiting share at fixed depth does not establish membership.** For the
+exact greedy criterion, the fractions not rejected through depth `N` lie in
 the `2^N` closed intervals of length `R_N` obtained by fixing the first `N`
 digits. That union has measure `2^N R_N`, which exceeds 1 and tends to 1.
 Reduced fractions of denominator at most `Q` equidistribute as `Q` grows, so
 for fixed `N` the share of fractions not excluded tends to `2^N R_N / E`. The
-observed shares 0.629, 0.6244 and 0.6237 approach `1/E = 0.6224` for this
-reason. The level-by-level counts agree with the gap measures as well: the gaps
+observed shares 0.629, 0.6244 and 0.6237 are close to `1/E = 0.6224`, but these
+finite counts are not fixed by the limiting law. The level-by-level counts
+agree closely with the gap measures as well: the gaps
 at indices 1, 2 and 7 occupy the shares 0.2448, 0.0747 and 0.00164 of `[0, E]`,
 which predict 4,811, 1,467 and 32 exclusions among 19,653 fractions, against
 4,809, 1,470 and 32 observed.
 
-**Depth past `2 log2 Q - 3.3` adds nothing.** The gaps at index `n` occupy the
+**The measure-based estimate is not a stopping rule.** The gaps at index `n` occupy the
 share `2^(n-1) g_n / E` of the interval, where `g_n = w_n - R_n`, which is
-`2^-n / (3E)` up to a factor `1 + O(2^-n)`. The expected number of fractions of
-height at most `Q` excluded at index `n` is about `(3 Q^2 / pi^2) 2^(n-1) g_n`,
-which falls below one past index `2 log2 Q - 3.3`: index 7 at `Q = 36` and
-index 12 at `Q = 200`, exactly where the last exclusions were seen. Two earlier
-readings of this computation were wrong. The first took the 62% share as
-evidence of membership. The second took the fractions not excluded through
-depth 60 as survivors of interest and the late exclusions as informative.
-Survival past the threshold index is forced by counting, and the exclusions
-before it confirm the gap measures and nothing else.
+`2^-n / (3E)` up to a factor `1 + O(2^-n)`. The measure-based main term for the
+number of fractions of height at most `Q` excluded at index `n` is
+`(3 Q^2 / pi^2) 2^(n-1) g_n`. It falls below one near
+`n = 2 log2 Q - 2 log2 pi`, approximately `2 log2 Q - 3.3`.
+A main term below one does not make the actual integer count zero. The
+fixed-depth equidistribution estimate does not justify this extrapolation to
+a depth growing with `Q`.
+
+For example, `189/388` is first rejected at step 17, beyond the proposed scale
+of about 13.9. Before rejection, the greedy rule selects indices
+`{2,3,7,9,10,14,15,16}`. Every earlier skipped step has remainder at most
+`2^-n < R_n`. At step 17 the remaining value satisfies
+
+```text
+R_17 <= 196609/25769803776
+     < 9291822600689/1217890317075045460
+     < 1/131071 = w_17.
+```
+
+The upper bound follows by summing
+`1/(2^k - 1) <= 2^-k + 2*4^-k` over `k > 17`.
+The existing [exact certificate](../sparse_interpolation/late_rejection.py)
+checks every earlier skip and the final gap, both for `189/388` and its
+translate `577/388`. The [probe regression](../../../scripts/test_choices_contraction_probe.py)
+also checks that both fractions are undecided at depth 16 and excluded at
+depth 17. Thus deeper computation can produce new nonmembership certificates;
+survival through any finite depth remains only finite evidence.
 
 **Exclusions arrive in families.** Let `F` be finite with largest element `n`
 and let `0 <= x <= R_n`. Then the greedy rule on `X_F + x` selects `F` and then
@@ -170,8 +189,8 @@ a theorem.
 A model that treats later remainders as equidistributed predicts that the
 share of rationals of height at most `Q` lying in `𝒜` tends to `1/E`. That is
 a strong denial of #257, under which the only members are the finite sums (40
-of the 19,653 fractions at `Q = 200`), and no count supports it: every count
-available is forced. Boes, Darst and Erdős (Amer.
+of the 19,653 fractions at `Q = 200`). The finite-depth counts do not justify
+that infinite-membership prediction. Boes, Darst and Erdős (Amer.
 Math. Monthly 88 (1981) 340-341) construct fat symmetric Cantor sets with
 essentially no rationals, so measure cannot decide.
 

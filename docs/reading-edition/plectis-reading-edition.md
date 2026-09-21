@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `bf1c67b072bd3939`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `ba104459a401eab0`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -354,23 +354,23 @@ A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of ratio
 
 S. Chow, P. Varjú and H. Yu, [*Counting rationals and diophantine approximation in missing-digit Cantor sets*](https://arxiv.org/abs/2402.18395), arXiv:2402.18395.
 
-W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](../../../paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bounded increments and rational reciprocal sums*](../../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bounded increments and rational reciprocal sums*](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](../../../paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](../../../paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*No finite separable representation at three prime generators*](../../../paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*No finite separable representation at three prime generators*](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](../../../paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
 
 W. Cook, *Choices, contraction and rational membership*, exact computation with saved outputs in `research/experiments/choices_contraction/` of the repository, 2026.
 
-W. Cook, [*Reading eight Erdős problems together: a working record*](../../../paper/synthesis/erdos-synthesis-reading-together-record.pdf), 2026.
+W. Cook, [*Reading eight Erdős problems together: a working record*](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/erdos-synthesis-reading-together-record.pdf), 2026.
 
 </div>
 
@@ -2388,7 +2388,7 @@ In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.*
 
 ###### Proof outline for the $`13/25`$ criterion.
 
-The contradiction has two steps. Failure of a short path forces roots to be separated in a conformal disc. Packing then forces enough roots in a component to make its area grow faster than Pólya’s inequality allows. [Section 3 of the companion record](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=section.3) gives the complete analytic estimates and the rational comparison; we describe their dependence here.
+The contradiction has two steps. Failure of a short path forces roots to be separated in a conformal disc. Packing then forces enough roots in a component to make its area grow faster than Pólya’s inequality allows. [Section 3 of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=section.3) gives the complete analytic estimates and the rational comparison; we describe their dependence here.
 
 Suppose no curve of length less than $`2`$ joins two roots below level $`1`$. For a regular level $`\mu<t<1`$, let $`C_t`$ be the component of the open set $`\{|f|<t\}`$ containing a pair that first joins at level $`\mu`$, and put $`a=\operatorname{Area}(C_t)/\pi`$. An inverse-map length estimate turns the failure assumption into pairwise hyperbolic separation of the roots in a Riemann disc. We use the normalisation $`d_{\mathrm{hyp}}(0,s)=2\operatorname{artanh}s`$. The map can be centred at a point $`h`$ on the two inverse arcs to the merging critical point whose intrinsic distance from every root is at least $`1`$. Otherwise the disjoint intrinsic open balls of radius $`1`$ about the roots would cover a connected set containing two roots. Here intrinsic distance means the infimum of lengths of curves in $`C_t`$. In particular $`|f(h)|\le\mu`$.
 
@@ -2896,12 +2896,12 @@ P. Erdős, *On the irrationality of certain series: problems and results*, in A
 
 Erdős #257 at base 2 is equivalent to a finite-rejection statement: every
 rational number that is not a finite sum of the weights `1/(2^n - 1)` is
-rejected by the greedy rule at some finite index. The share of fractions that
-survive a fixed depth is forced by equidistribution of fractions over the
-intervals that remain, so it carries no information about membership, and at
-height `Q` every count past step `2 log2 Q - 3.3` is forced as well. Exact
-computation at denominators up to 200 agrees with the measures of the removed
-intervals step by step and shows no arithmetic effect in either direction. For
+rejected by the greedy rule at some finite index. Equidistribution explains
+the limiting share not rejected at each fixed depth as the denominator bound
+grows; it supplies neither a membership test nor a stopping depth. The exact
+rejection of `189/388` at step 17 disproves the proposed cutoff near
+`2 log2 Q - 3.3`. Computation at denominators up to 200 agrees closely with
+the measures of the removed intervals. For
 the hosts of odd, squarefree and non-multiples-of-3 exponents it excludes every
 rational of denominator at most 36 that is not a finite sum.
 
@@ -3002,29 +3002,48 @@ the latest at index 22, 26 and 11 respectively.
 
 #### What the counts show and what they leave open
 
-**The share near 62% at fixed depth is forced, and it says nothing about
-membership.** The fractions not excluded through depth `N` are exactly those in
+**The limiting share at fixed depth does not establish membership.** For the
+exact greedy criterion, the fractions not rejected through depth `N` lie in
 the `2^N` closed intervals of length `R_N` obtained by fixing the first `N`
 digits. That union has measure `2^N R_N`, which exceeds 1 and tends to 1.
 Reduced fractions of denominator at most `Q` equidistribute as `Q` grows, so
 for fixed `N` the share of fractions not excluded tends to `2^N R_N / E`. The
-observed shares 0.629, 0.6244 and 0.6237 approach `1/E = 0.6224` for this
-reason. The level-by-level counts agree with the gap measures as well: the gaps
+observed shares 0.629, 0.6244 and 0.6237 are close to `1/E = 0.6224`, but these
+finite counts are not fixed by the limiting law. The level-by-level counts
+agree closely with the gap measures as well: the gaps
 at indices 1, 2 and 7 occupy the shares 0.2448, 0.0747 and 0.00164 of `[0, E]`,
 which predict 4,811, 1,467 and 32 exclusions among 19,653 fractions, against
 4,809, 1,470 and 32 observed.
 
-**Depth past `2 log2 Q - 3.3` adds nothing.** The gaps at index `n` occupy the
+**The measure-based estimate is not a stopping rule.** The gaps at index `n` occupy the
 share `2^(n-1) g_n / E` of the interval, where `g_n = w_n - R_n`, which is
-`2^-n / (3E)` up to a factor `1 + O(2^-n)`. The expected number of fractions of
-height at most `Q` excluded at index `n` is about `(3 Q^2 / pi^2) 2^(n-1) g_n`,
-which falls below one past index `2 log2 Q - 3.3`: index 7 at `Q = 36` and
-index 12 at `Q = 200`, exactly where the last exclusions were seen. Two earlier
-readings of this computation were wrong. The first took the 62% share as
-evidence of membership. The second took the fractions not excluded through
-depth 60 as survivors of interest and the late exclusions as informative.
-Survival past the threshold index is forced by counting, and the exclusions
-before it confirm the gap measures and nothing else.
+`2^-n / (3E)` up to a factor `1 + O(2^-n)`. The measure-based main term for the
+number of fractions of height at most `Q` excluded at index `n` is
+`(3 Q^2 / pi^2) 2^(n-1) g_n`. It falls below one near
+`n = 2 log2 Q - 2 log2 pi`, approximately `2 log2 Q - 3.3`.
+A main term below one does not make the actual integer count zero. The
+fixed-depth equidistribution estimate does not justify this extrapolation to
+a depth growing with `Q`.
+
+For example, `189/388` is first rejected at step 17, beyond the proposed scale
+of about 13.9. Before rejection, the greedy rule selects indices
+`{2,3,7,9,10,14,15,16}`. Every earlier skipped step has remainder at most
+`2^-n < R_n`. At step 17 the remaining value satisfies
+
+```text
+R_17 <= 196609/25769803776
+     < 9291822600689/1217890317075045460
+     < 1/131071 = w_17.
+```
+
+The upper bound follows by summing
+`1/(2^k - 1) <= 2^-k + 2*4^-k` over `k > 17`.
+The existing [exact certificate](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/sparse_interpolation/late_rejection.py)
+checks every earlier skip and the final gap, both for `189/388` and its
+translate `577/388`. The [probe regression](https://github.com/wcook04/plectis-erdos/blob/main/scripts/test_choices_contraction_probe.py)
+also checks that both fractions are undecided at depth 16 and excluded at
+depth 17. Thus deeper computation can produce new nonmembership certificates;
+survival through any finite depth remains only finite evidence.
 
 **Exclusions arrive in families.** Let `F` be finite with largest element `n`
 and let `0 <= x <= R_n`. Then the greedy rule on `X_F + x` selects `F` and then
@@ -3061,8 +3080,8 @@ a theorem.
 A model that treats later remainders as equidistributed predicts that the
 share of rationals of height at most `Q` lying in `𝒜` tends to `1/E`. That is
 a strong denial of #257, under which the only members are the finite sums (40
-of the 19,653 fractions at `Q = 200`), and no count supports it: every count
-available is forced. Boes, Darst and Erdős (Amer.
+of the 19,653 fractions at `Q = 200`). The finite-depth counts do not justify
+that infinite-membership prediction. Boes, Darst and Erdős (Amer.
 Math. Monthly 88 (1981) 340-341) construct fat symmetric Cantor sets with
 essentially no rationals, so measure cannot decide.
 

@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `bf1c67b072bd3939`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `ba104459a401eab0`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -354,23 +354,23 @@ A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of ratio
 
 S. Chow, P. Varjú and H. Yu, [*Counting rationals and diophantine approximation in missing-digit Cantor sets*](https://arxiv.org/abs/2402.18395), arXiv:2402.18395.
 
-W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](../../../paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bounded increments and rational reciprocal sums*](../../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bounded increments and rational reciprocal sums*](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](../../../paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](../../../paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*No finite separable representation at three prime generators*](../../../paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*No finite separable representation at three prime generators*](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](../../../paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
 
 W. Cook, *Choices, contraction and rational membership*, exact computation with saved outputs in `research/experiments/choices_contraction/` of the repository, 2026.
 
-W. Cook, [*Reading eight Erdős problems together: a working record*](../../../paper/synthesis/erdos-synthesis-reading-together-record.pdf), 2026.
+W. Cook, [*Reading eight Erdős problems together: a working record*](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/erdos-synthesis-reading-together-record.pdf), 2026.
 
 </div>
 
@@ -1142,7 +1142,7 @@ Moubariz Z. Garaev, Florian Luca and Igor E. Shparlinski. [Character sums and co
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 ## Erdős #243: Bounded Increments and Rational Reciprocal Sums
 
@@ -1839,7 +1839,7 @@ P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](h
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 ## Erdős #249: Bases and Integral Relations for the k-Kernel of Euler’s Totient
 
@@ -2386,7 +2386,7 @@ Each link retains its repository, commit and line reference. The main checkpoint
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 ## Erdős #251: Sparse Congruence-Preserving Perturbations of Dyadic Series
 
@@ -2811,7 +2811,7 @@ Paul Erdős, [*Sur certaines séries à valeur irrationnelle*](https://users.ren
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 ## Erdős #257: Weighted Support Criteria for Reciprocal Mersenne Subseries
 
@@ -3685,7 +3685,7 @@ H. Hornich, *Über beliebige Teilsummen absolut konvergenter Reihen*, Monatshef
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 ## Erdős #269: No Finite Separable Representation at Three Prime Generators
 
@@ -4391,7 +4391,7 @@ The following index retains every original declaration link. Line numbers refer 
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 ## Erdős #1041: Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds
 
@@ -4517,7 +4517,7 @@ In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.*
 
 ###### Proof outline for the $`13/25`$ criterion.
 
-The contradiction has two steps. Failure of a short path forces roots to be separated in a conformal disc. Packing then forces enough roots in a component to make its area grow faster than Pólya’s inequality allows. [Section 3 of the companion record](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=section.3) gives the complete analytic estimates and the rational comparison; we describe their dependence here.
+The contradiction has two steps. Failure of a short path forces roots to be separated in a conformal disc. Packing then forces enough roots in a component to make its area grow faster than Pólya’s inequality allows. [Section 3 of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=section.3) gives the complete analytic estimates and the rational comparison; we describe their dependence here.
 
 Suppose no curve of length less than $`2`$ joins two roots below level $`1`$. For a regular level $`\mu<t<1`$, let $`C_t`$ be the component of the open set $`\{|f|<t\}`$ containing a pair that first joins at level $`\mu`$, and put $`a=\operatorname{Area}(C_t)/\pi`$. An inverse-map length estimate turns the failure assumption into pairwise hyperbolic separation of the roots in a Riemann disc. We use the normalisation $`d_{\mathrm{hyp}}(0,s)=2\operatorname{artanh}s`$. The map can be centred at a point $`h`$ on the two inverse arcs to the merging critical point whose intrinsic distance from every root is at least $`1`$. Otherwise the disjoint intrinsic open balls of radius $`1`$ about the roots would cover a connected set containing two roots. Here intrinsic distance means the infimum of lengths of curves in $`C_t`$. In particular $`|f(h)|\le\mu`$.
 
@@ -4675,7 +4675,7 @@ If $`d_1+d_2>2`$, the additional bound $`d_2\le1+t`$ gives $`1-t^2<d_1d_2`$, and
 ``` math
 n<d_2/d_1+(n-1)d_1/d_2\le n.
 ```
-The last inequality follows from $`(x-1)(x-(n-1))\le0`$ for $`x=d_2/d_1\in[1,n-1]`$. Scaling by a containing radius $`0<R<1`$ gives the strict bound $`2R<2`$. The [companion’s full distance argument](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=two-nearest-root-distance) derives the two displayed estimates without assuming $`|f(c)|\le1`$. The source is [the proof for the two nearest roots](https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md); Lean checks its real-inequality core, not the ordinary root-disc reduction. ◻
+The last inequality follows from $`(x-1)(x-(n-1))\le0`$ for $`x=d_2/d_1\in[1,n-1]`$. Scaling by a containing radius $`0<R<1`$ gives the strict bound $`2R<2`$. The [companion’s full distance argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=two-nearest-root-distance) derives the two displayed estimates without assuming $`|f(c)|\le1`$. The source is [the proof for the two nearest roots](https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md); Lean checks its real-inequality core, not the ordinary root-disc reduction. ◻
 
 </div>
 
@@ -4844,7 +4844,7 @@ The hypothesis $`|v|<1`$ is required: normalised separation controls a connector
 
 *Proof of the separation estimate.* Normalise by $`P(w)=f(c+|v|^{1/n}w)/v`$. Then $`P(0)=1`$, its leading coefficient has modulus one, and $`0`$ is a simple critical point. The component $`U`$ of $`P^{-1}(D(w_0,S))`$ containing $`0`$ has just that one simple ramification point. At regular inner radii $`1-w_0<S'<S`$, the component count in the proof of \[eks2010, Proposition 2.1\] gives degree two; exhaustion gives the same degree on $`U`$ even if its outer level is critical. Taking a square root of $`1-P`$ resolves the branching and identifies $`U`$ with $`\{\xi:|\xi^2-(1-w_0)|<S\}`$. Its inverse sends $`[-1,1]`$ to a path between the two distinct points over $`P=0`$.
 
-The explicit disc map in [Section 6 of the companion](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=section.6) takes that interval to $`[-q,q]`$, where
+The explicit disc map in [Section 6 of the companion](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=section.6) takes that interval to $`[-q,q]`$, where
 ``` math
 q^2=\frac{S}{S^2+p}<1,
  \qquad S^2-S+p=(S-w_0)(S-(1-w_0))>0.
@@ -4900,7 +4900,7 @@ The whole proposition, including the least-modulus assertion rather than a suppl
 
 This example also lies below every critical-value modulus: its critical points satisfy $`c^7=3/16`$ and $`p(c)=-(21/16)c`$, so $`\mu^7=3\cdot21^7/16^8>1`$. Thus the level $`1`$ is globally subcritical.
 
-The addendum \[revision2026, Proposition 2\] reports a Runge construction of monic level-one components with one zero and arbitrarily long analytic boundaries, without a root-disc restriction; its proof was unavailable. The displayed example refutes the Gamma constant, not every uniform bound. Suppose one constant $`\beta`$ works for all squarefree monic $`f`$ of degree $`n\ge2`$, bounding every inverse branch $`f(\phi(w))=\sigma w`$ by $`\int_0^{2\pi}|\phi'(e^{it})|\,dt\le\beta\sigma^{1/n}`$ at each $`0<\sigma<\mu(f)`$, where all branches are unramified. The [companion’s geometric proof](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=perimeter-to-path) then joins two distinct roots in $`K_\mu`$ with length at most $`\beta\mu^{1/n}`$, using half of each of two component perimeters. Existence of such a $`\beta`$ is not proved here. Necessarily $`\beta\ge2\pi`$, by $`z^N-az`$ with fixed $`a>1`$ and $`N\to\infty`$, then $`a\downarrow1`$; $`z^N-z`$ at level $`1`$ does not give an isolated component. Neither general path theorem uses the rejected arbitrary-component bound.
+The addendum \[revision2026, Proposition 2\] reports a Runge construction of monic level-one components with one zero and arbitrarily long analytic boundaries, without a root-disc restriction; its proof was unavailable. The displayed example refutes the Gamma constant, not every uniform bound. Suppose one constant $`\beta`$ works for all squarefree monic $`f`$ of degree $`n\ge2`$, bounding every inverse branch $`f(\phi(w))=\sigma w`$ by $`\int_0^{2\pi}|\phi'(e^{it})|\,dt\le\beta\sigma^{1/n}`$ at each $`0<\sigma<\mu(f)`$, where all branches are unramified. The [companion’s geometric proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=perimeter-to-path) then joins two distinct roots in $`K_\mu`$ with length at most $`\beta\mu^{1/n}`$, using half of each of two component perimeters. Existence of such a $`\beta`$ is not proved here. Necessarily $`\beta\ge2\pi`$, by $`z^N-az`$ with fixed $`a>1`$ and $`N\to\infty`$, then $`a\downarrow1`$; $`z^N-z`$ at level $`1`$ does not give an isolated component. Neither general path theorem uses the rejected arbitrary-component bound.
 
 The next example concerns successive mergers of sublevel components; the roots themselves do not move. A component containing two roots just after the first merger can acquire a third root before level $`2\mu`$. Consider the component at that later level containing the first pair. For this monic cubic, its normalised capacity is its logarithmic capacity divided by $`(2\mu)^{1/3}`$. The whole filled lemniscate has capacity $`(2\mu)^{1/3}`$, so a normalised value of $`1`$ gives no improvement over the whole set.
 
@@ -5009,7 +5009,7 @@ and replaces the saddle by a three-ended neighbourhood having one connected lowe
 
 This independently diagnoses a proof step, but the Cassini witness above also refutes the proposition’s statement. A different route might cut an adjoining regular annulus along a separatrix or regular flow arc before forming the block, retain a four-pronged saddle neighbourhood and change the assembly, or replace the local construction by the ray-cut decomposition proposed below. But no repair can retain <a href="#erdos-1041-lemniscate-newton-flow--eq:prop12-bound" data-reference-type="eqref" data-reference="erdos-1041-lemniscate-newton-flow--eq:prop12-bound">[eq:prop12-bound]</a>; it must pay a positive attachment cost, select only one short pair instead of spanning every root, or use a different global metric inequality. The shorter descriptions of the same three-ended block do not repair the four-sector topology.
 
-Within a component, distinct critical-value arguments exclude finite Newton connections between its saddles by Corollary <a href="#erdos-1041-lemniscate-newton-flow--res:ray" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:ray">19</a>. The [companion’s inverse-sheet theorem](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=inverse-sheet-component) supplies the corresponding component-wise construction. Its topology does not provide the missing length estimate or quantitative gluing.
+Within a component, distinct critical-value arguments exclude finite Newton connections between its saddles by Corollary <a href="#erdos-1041-lemniscate-newton-flow--res:ray" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:ray">19</a>. The [companion’s inverse-sheet theorem](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=inverse-sheet-component) supplies the corresponding component-wise construction. Its topology does not provide the missing length estimate or quantitative gluing.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:finite"></a>
 
@@ -5043,7 +5043,7 @@ with the maximum at the midpoint; hence the first construction has precisely the
 ```
 The radius $`t`$ is maximal: a larger crossing chord already escapes at its midpoint. Contracting that chord to radius $`\lambda t`$ with $`0<\lambda<1`$ makes the containment strict while keeping the two radial connections and the strict length bound. For $`n=2`$, the adjacent-root diameter is already a strict path of length $`2r<2`$.
 
-The [companion’s binomial chord calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=binomial-chord-calculation) proves, for every $`0<s\le r`$,
+The [companion’s binomial chord calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=binomial-chord-calculation) proves, for every $`0<s\le r`$,
 ``` math
 \max_{z\in[s,s\omega]}|z^n-r^n|=r^n+(sc)^n.
 ```
@@ -5095,7 +5095,7 @@ Erdős, Herzog and Piranian already give a contained root segment in the colline
 
 The chosen gap maxima are the moduli of the ordered critical sequence $`(q(c_1),\ldots,q(c_{n-1}))`$, with $`c_1<\cdots<c_{n-1}`$. That sequence determines a real-rooted polynomial up to an increasing affine change \[eremenko-yuditskii, Theorem 1\]; the proof here needs only alternation. The comparison $`q_*`$ is the monic minimax polynomial on $`[-1/r_n,1/r_n]`$ \[eremenko-yuditskii, §1\], and all its critical values have modulus $`C_n`$.
 
-The [companion’s collinear discussion](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=collinear-source-comparison) gives the full comparison with critical points on an extremal level curve \[eremenko-hayman, Lemma 5\] and with the derivative bound on connected lemniscates \[eremenko-lempert, Theorem 1\], including its equality family \[eremenko-markov, Theorem A\]. Those theorems optimise boundary length or derivative size, not the internal root-to-root path considered here.
+The [companion’s collinear discussion](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=collinear-source-comparison) gives the full comparison with critical points on an extremal level curve \[eremenko-hayman, Lemma 5\] and with the derivative bound on connected lemniscates \[eremenko-lempert, Theorem 1\], including its equality family \[eremenko-markov, Theorem A\]. Those theorems optimise boundary length or derivative size, not the internal root-to-root path considered here.
 
 If $`D<2`$, the displayed level is below one and this segment lies in the open lemniscate. For $`n\ge3`$, the same strict level holds already at $`D=2`$; degree two is the exact boundary case. Lean checks the alternation count and the Chebyshev comparison; the change of variables and its application to the polynomial remain ordinary steps. Bounded computational tests do not replace those steps. The result does not say that every adjacent gap lies in the lemniscate, and the proof gives no noncollinear analogue: its sign changes depend on the order of the real roots.
 
@@ -5138,7 +5138,7 @@ Poisson majorisation of $`|g|^2`$ at the $`c_j`$, followed by orthogonality of c
 \sum_jw_jG(c_j)^2\le\int |g|^2P\,dm
  =1-\sum_{\nu\ge1}(2\nu-1)|a_\nu|^2\le1.
 ```
-For boundary points, replace $`c_j`$ by $`rc_j`$. The coefficient of degree $`\nu`$ becomes $`r^\nu a_\nu`$. Retain any finite nonnegative coefficient sum and let $`r\uparrow1`$; continuity gives the same bound at the boundary. Equality forces all $`a_\nu=0`$, so $`\sum_jw_j\overline{c_j}/(1-\overline{c_j}z)=0`$ near zero. Grouping repeated points, any nonzero point gives a pole of nonzero positive total weight, a contradiction. All points zero give equality. Finally apply Cauchy–Schwarz and take equal weights for the linear consequence. The companion’s [weighted Poisson proof](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=weighted-poisson-proof) gives the termwise integration and boundary passage, including zero weights. ◻
+For boundary points, replace $`c_j`$ by $`rc_j`$. The coefficient of degree $`\nu`$ becomes $`r^\nu a_\nu`$. Retain any finite nonnegative coefficient sum and let $`r\uparrow1`$; continuity gives the same bound at the boundary. Equality forces all $`a_\nu=0`$, so $`\sum_jw_j\overline{c_j}/(1-\overline{c_j}z)=0`$ near zero. Grouping repeated points, any nonzero point gives a pole of nonzero positive total weight, a contradiction. All points zero give equality. Finally apply Cauchy–Schwarz and take equal weights for the linear consequence. The companion’s [weighted Poisson proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=weighted-poisson-proof) gives the termwise integration and boundary passage, including zero weights. ◻
 
 </div>
 
@@ -5273,7 +5273,7 @@ where $`\gamma\subset\{|f|\le1\}`$ joins two different listed root occurrences. 
 
 ###### Passing a length bound to a limit.
 
-The function $`\Lambda`$ is lower semicontinuous, and a finite infimum is attained. Indeed, near-minimising curves of bounded length can be parametrised on $`[0,1]`$ with a common Lipschitz bound. Arzelà–Ascoli, convergence of root multisets and lower semicontinuity of length give a contained limiting curve, even if the two endpoint occurrences coalesce. [The fixed-degree limits subsection of the companion](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=closed-class-limits) gives the full argument, also recorded in [the compactness proof](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md).
+The function $`\Lambda`$ is lower semicontinuous, and a finite infimum is attained. Indeed, near-minimising curves of bounded length can be parametrised on $`[0,1]`$ with a common Lipschitz bound. Arzelà–Ascoli, convergence of root multisets and lower semicontinuity of length give a contained limiting curve, even if the two endpoint occurrences coalesce. [The fixed-degree limits subsection of the companion](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=closed-class-limits) gives the full argument, also recorded in [the compactness proof](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md).
 
 Thus a bound $`\Lambda\le2`$ on a dense class would extend to its closure. For an open-disc polynomial, rescaling a containing radius $`R<1`$ would give length at most $`2R<2`$ in $`\{|f|\le R^n\}\subset\{|f|<1\}`$. The binomial $`z^n-1`$ has $`\Lambda=2`$: its root sectors meet only at zero, and the radial paths attain this length. These facts explain the historical reduction; they do not prove the required dense-class bound. A counterexample to the original question would refute the universal bound on the closed class as well. The reduction remains available on separately specified polynomial classes.
 
@@ -5302,7 +5302,7 @@ The permitted directions therefore form an interval about $`\pi`$ of width $`2\a
 
 ###### Which information is insufficient.
 
-The sextic of Proposition <a href="#erdos-1041-lemniscate-newton-flow--res:sextic-spoke" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:sextic-spoke">2</a> excludes automatic control of every prescribed root-to-origin segment once further partial sums occur. The exact Cassini example in Section <a href="#erdos-1041-lemniscate-newton-flow--sec:gap" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:gap">11</a> excludes the historical global tree-length estimate even after the local saddle model is corrected. The examples in Section <a href="#erdos-1041-lemniscate-newton-flow--sec:exact-obstructions" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:exact-obstructions">7</a> show that the least critical modulus and the separation test with radius $`2`$ do not cover all polynomials, and that the number of roots at the first merger does not control capacity after subsequent mergers. The critical-value inequalities bound sums of powers of the moduli; they do not choose inverse branches that join to form the required path. The ordinary [note on powers of Blaschke products](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md) gives fixed-degree tests of these limitations and separate asymptotic results for the shortest contained path. The family, certificate scope, centroid restriction and two distinct parameter regimes are given in [the Blaschke-product subsection of the companion](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=blaschke-product-examples), after the compactness functional is defined. Neither a failed sufficient condition nor a fixed-degree certificate settles an asymptotic path estimate.
+The sextic of Proposition <a href="#erdos-1041-lemniscate-newton-flow--res:sextic-spoke" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:sextic-spoke">2</a> excludes automatic control of every prescribed root-to-origin segment once further partial sums occur. The exact Cassini example in Section <a href="#erdos-1041-lemniscate-newton-flow--sec:gap" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:gap">11</a> excludes the historical global tree-length estimate even after the local saddle model is corrected. The examples in Section <a href="#erdos-1041-lemniscate-newton-flow--sec:exact-obstructions" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:exact-obstructions">7</a> show that the least critical modulus and the separation test with radius $`2`$ do not cover all polynomials, and that the number of roots at the first merger does not control capacity after subsequent mergers. The critical-value inequalities bound sums of powers of the moduli; they do not choose inverse branches that join to form the required path. The ordinary [note on powers of Blaschke products](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md) gives fixed-degree tests of these limitations and separate asymptotic results for the shortest contained path. The family, certificate scope, centroid restriction and two distinct parameter regimes are given in [the Blaschke-product subsection of the companion](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=blaschke-product-examples), after the compactness functional is defined. Neither a failed sufficient condition nor a fixed-degree certificate settles an asymptotic path estimate.
 
 The earlier note gives a near-regular-pentagon family for which *all* origin segments escape \[revision2026, Proposition A of the preserved earlier note\]. The long record gives the two-scale proof along the five segments, including the open-disc contraction. The addendum reports a stronger failure for every critical joining point, but its proof was not supplied or available for checking in this revision. Failure at the origin, which is not a critical point of this family, does not establish that stronger assertion. Neither straight-segment claim excludes a different vertex, curved inverse-ray arms or an arbitrary contained connector.
 
@@ -5394,7 +5394,7 @@ These links retain the original source files and line numbers at the commit fixe
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 [^1]: Lean checks this instance in [`erdos1041_ani_degree_seven`](https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean#L25). The formal result concerns one polynomial; it does not formalise the reported small-parameter family or a Hausdorff-measure comparison, and its correspondence with the historical formulation has not received independent human review.
 
@@ -6258,4 +6258,4 @@ P. Erdős, *On the irrationality of certain series: problems and results*, in A
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.

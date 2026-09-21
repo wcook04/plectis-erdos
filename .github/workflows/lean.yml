@@ -707,6 +707,8 @@ jobs:
       # from turning into a representation claim on any reader-facing page.
       - name: The reading edition matches the papers it carries
         run: python3 scripts/build_reading_edition.py --check
+      - name: Reading editions retain usable paper links and unique anchors
+        run: python3 scripts/test_reading_edition_synthesis.py
       - name: The open investigation replays and keeps finite evidence finite
         run: python3 scripts/test_choices_contraction_probe.py
 

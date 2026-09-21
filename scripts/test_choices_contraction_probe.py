@@ -26,6 +26,11 @@ PROMOTION_RE = re.compile(
     r"|(?:is|are) (?:therefore )?(?:represented|members?)\b(?! of the (?:list|team))",
     re.IGNORECASE,
 )
+STOPPING_RULE_RE = re.compile(
+    r"\*\*Depth past[^\n]*adds nothing"
+    r"|Survival past the threshold index is forced by counting",
+    re.IGNORECASE,
+)
 READER_SURFACES = (
     HOME / "README.md",
     ROOT / "docs" / "reading-edition" / "INTRODUCTION.md",
@@ -69,6 +74,29 @@ def main() -> int:
     # 1/2 is undecided in the paper; the probe must report exactly that.
     assert probe.classify(Fraction(1, 2), indices, weight, tail_upper, 160) == ("not_excluded", None)
 
+    # Independent analytic tail bounds certify these first rejections.  They
+    # occur beyond the discarded measure-based stopping scale (about 13.9),
+    # so the production probe must keep searching when the requested depth
+    # crosses that scale.  The certificate also checks every earlier skip.
+    certificate_spec = importlib.util.spec_from_file_location(
+        "late_rejection", HOME.parent / "sparse_interpolation" / "late_rejection.py"
+    )
+    certificate_module = importlib.util.module_from_spec(certificate_spec)
+    assert certificate_spec.loader is not None
+    certificate_spec.loader.exec_module(certificate_module)
+    for target in (Fraction(189, 388), Fraction(577, 388)):
+        certificate = certificate_module.certify_late_rejection(target)
+        assert certificate["first_rejection"] == 17
+        assert tail_upper[17] <= Fraction(certificate["tail_upper_bound"])
+        for depth in (13, 14, 16):
+            assert probe.classify(target, indices, weight, tail_upper, depth) == (
+                "not_excluded", None
+            ), (target, depth)
+        for depth in (17, 60):
+            assert probe.classify(target, indices, weight, tail_upper, depth) == (
+                "excluded", 17
+            ), (target, depth)
+
     # The large-cutoff table in the README is the saved computation.
     sweep = json.loads(
         (HOME / "results" / "full_host_q60_120_200_depth60.json").read_text(encoding="utf-8")
@@ -85,10 +113,13 @@ def main() -> int:
         text = surface.read_text(encoding="utf-8")
         hit = PROMOTION_RE.search(text)
         assert hit is None, (str(surface.relative_to(ROOT)), hit.group(0))
+        hit = STOPPING_RULE_RE.search(text)
+        assert hit is None, (str(surface.relative_to(ROOT)), hit.group(0))
     assert "not excluded through depth" in readme
     assert "no membership claim" in readme
 
-    print("choices-and-contraction probe: saved counts replay; outcomes partition; no promotion of finite survival")
+    print("choices-and-contraction probe: saved counts replay; outcomes partition; "
+          "late rejections certified; no promotion of finite survival or deterministic cutoff")
     return 0
 
 
