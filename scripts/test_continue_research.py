@@ -1146,6 +1146,7 @@ def check_architecture_frontier_round_trip() -> None:
         command = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
         started = run([*command, "start", "--session", "architecture_test", "--area", "navigation",
                        "--starting-path", "scripts/agent_entry.py", "--validation-plan", "Replay contributor paraphrases",
+                       "--repository-origin", "https://github.com/wcook04/plectis-erdos",
                        "--frontier", "fixture/router", "--intent", "Improve the paper contributor journey",
                        "--stop-condition", "Stop after a bounded routing comparison", "--contributor", "Fixture Contributor",
                        "--model-system", "not_used", "--provider", "not_used", "--allow-dirty"])
