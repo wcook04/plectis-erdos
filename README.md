@@ -84,10 +84,13 @@ need human judgement.
 
 ## Problem papers
 
-For a first look, start with **#257** for full-support irrationality and
-achievement-set measure, or **#249** for exact kernel rank, finite certificates,
-and recorded routes that stopped. Each paper distinguishes ordinary proofs,
-Lean-checked results and open questions.
+For a first look, start with **#249** for bases and exact ranks of totient
+kernels: the sequences obtained by restricting Euler's totient to arithmetic
+progressions. Or start with **#257** for weighted conditions on the exponents
+that force reciprocal Mersenne subseries to be irrational, and for
+achievement-set measure. Each paper distinguishes ordinary proofs,
+Lean-checked results and open questions; the results guide covers all eight
+programmes.
 
 **Reading the eight together.** The whole collection is also material for new
 mathematics: reusable constructions, connections between problems and questions
