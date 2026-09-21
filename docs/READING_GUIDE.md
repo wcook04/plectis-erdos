@@ -105,8 +105,9 @@ interfaces under fixed assumptions. It is not peer review and does not
 establish novelty. The [Palomar guide](verification/PALOMAR_QUALIFICATION.md)
 distinguishes local packaging from recorded service submission or acceptance.
 
-This is a self-contained public record. File, declaration and computation
-counts do not measure mathematical importance.
+This is a self-contained public record, not an entrypoint into any private
+development system. File, declaration and computation counts do not measure
+mathematical importance.
 
 ## Reviewing one result
 
