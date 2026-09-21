@@ -1,0 +1,34 @@
+import Erdos249257.CertificateKernel
+import Erdos249257.DyadicPrefixCompression
+import Erdos249257.GenericTailOrbitRigidity
+import Erdos249257.MersenneLambertLadder
+import Erdos249257.MobiusSignSupportNoGo
+import Erdos249257.RationalDenominatorSurvival
+
+/-!
+# Additive Erdos 257 paper-correspondence audit
+
+This source-current audit covers the eleven long-paper environments bound after
+`PaperCorrespondenceAudit.lean` was frozen for validation.  Each declaration
+below is a canonical source supplier for one of those complete environments.
+-/
+
+#print axioms Erdos249257.irrational_erdosSum_factorial_support
+#print axioms Erdos249257.irrational_erdosSum_two_pow_support
+#print axioms Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support
+#print axioms Erdos249257.irrational_erdosSupportSeries_multiples
+#print axioms Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
+#print axioms Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero
+#print axioms Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero
+#print axioms MersenneLambertLadder.tsum_moebius_div_two_pow_sub_one_eq_half
+#print axioms Erdos249257.MobiusSignSupportNoGo.tsum_negativeMobius_eq_half_add_positiveMobiusTail
+#print axioms Erdos249257.MobiusSignSupportNoGo.half_lt_tsum_negativeMobius
+#print axioms Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit
+#print axioms Erdos249257.temperedBinaryOrbit_eq_scaledTail
+#print axioms Erdos249257.irrational_erdosSupportSeries_of_tail
+#print axioms Erdos249257.irrational_erdosSupportSeries_tail_of_irrational
+#print axioms Erdos249257.divInt_le_nextDyadic_iff_excess_nonpos
+#print axioms Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess
+#print axioms Erdos249257.dyadicResidual_denominator_sandwich
+#print axioms Erdos249257.RationalDenominatorSurvival.divisor_dvd_divInt_den
+#print axioms Erdos249257.RationalDenominatorSurvival.survivingDivisor_dvd_scaled_divInt_den

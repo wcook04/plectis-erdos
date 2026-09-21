@@ -7261,6 +7261,20 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             search_rank(query, discovery_term, route_haystack)
             for discovery_term in row.get("discovery_terms", [])
         )
+        # A query that is exactly a claim or open-proposition id this route owns
+        # is a typed-handle lookup of the route itself, so it ranks as an exact
+        # match. Without this the id reached the route only through the
+        # haystack, at rank 3, where any Lean declaration whose name merely
+        # contains the id outranked it and pushed the owning route out of the
+        # first page. Partial matches are deliberately not promoted here; they
+        # keep the weaker haystack rank.
+        owned_handles = (
+            *row.get("problem_target_claim_ids", []),
+            *row.get("core_claim_ids", []),
+            *row.get("remaining_open_proposition_ids", []),
+        )
+        needle = query.casefold()
+        ranks.extend(0 for handle in owned_handles if handle.casefold() == needle)
         rank = min((value for value in ranks if value is not None), default=None)
         if (
             status_target

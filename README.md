@@ -16,6 +16,9 @@ historical correspondence.**
 
 The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
 
+This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
+Those seven remain open.
+
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
@@ -153,8 +156,10 @@ others find it and we make progress together instead of hoarding partial
 results out of fear of being scooped, or rebuilding the same infrastructure
 instead of improving one cumulatively.
 
-**Experts:** email me any insight. I will do the work and fully credit you
-for the insight and whatever follows from it.
+**Experts:** corrections, methods and directions are welcome. Accepted work
+gets a public receipt naming the contribution and its author; later work
+records how it used that contribution. See the
+[credit policy](docs/research-commons/CREDIT_POLICY.md).
 
 <a id="citation-and-prior-work"></a>
 
@@ -167,7 +172,7 @@ downloads Lean and Mathlib. Cloning runs no project code; the
 
 Use the [documentation index](docs/README.md) for the file map and specialist
 guides. [How the repository works](docs/ARCHITECTURE.md) explains the roles of
-proofs, papers and checks. Coding agents start at [AGENTS.md](AGENTS.md) and
+proofs, papers and checks. Coding agents start at [`AGENTS.md`](AGENTS.md) and
 follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md); the
 [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
 explains that design.
@@ -181,12 +186,12 @@ explains that design.
 
 The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 463 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 90% of the 159,181 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 88% of the 162,543 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,453 |
-| Formal results and supporting lemmas | 155,959 |
+| Lean modules (the two library roots) | 1,770 |
+| Formal results and supporting lemmas | 158,837 |
 | Curated claim records | 148 |
 | Contribution families | 33 |
 
@@ -219,8 +224,8 @@ The mathematics and tools in this checkout are self-contained.
 
 ## Citation and licence
 
-Use [CITATION.cff](CITATION.cff) for the release and include your commit for
-work beyond it. Cite the relevant [problem paper](paper/README.md) and its
+Use [CITATION.cff](CITATION.cff) to cite release `v0.10.0`, and give your commit
+for work beyond it. Cite the relevant [problem paper](paper/README.md) and its
 original sources for mathematics. [Prior art](docs/PRIOR_ART.md) and
 [source attributions](docs/research-commons/SOURCE_ATTRIBUTIONS.md) distinguish
 earlier results, formalisation and local use; a repository citation does not

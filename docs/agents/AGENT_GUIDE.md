@@ -426,7 +426,12 @@ in the gate output. Common drilldowns are
 `python3 scripts/build_module_graph.py --check`,
 `python3 scripts/refresh_source_coordinates.py --check`,
 `python3 scripts/build_publication_entry_packet.py --check`, and
-`python3 scripts/test_query_corpus.py`.
+`python3 scripts/test_query_corpus.py`. Agent-entry and architecture-guide
+failures drill down through `python3 scripts/agent_entry.py --entry "<task>"`,
+`python3 scripts/agent_entry.py --skills`,
+`python3 scripts/agent_skill_catalog.py --check`,
+`python3 scripts/check_architecture_guide.py`, and
+`python3 scripts/test_architecture_guide.py`.
 
 When the shared worktree contains unrelated in-progress edits, validate the
 committed snapshot without cleaning or stashing anyone's files:

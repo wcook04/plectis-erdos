@@ -844,7 +844,17 @@ def _export_environment_file(output_path: Path) -> tuple[
             "Lean dependency exporter produced empty file output",
             stdout=completed.stdout or "", stderr=completed.stderr or "",
         )
-    return parse_environment_output(output)
+    try:
+        parsed = parse_environment_output(output)
+        if not parsed[0]:
+            raise RuntimeError("export contains no dependency nodes")
+        return parsed
+    except (RuntimeError, ValueError) as exc:
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            f"Lean dependency exporter wrote a malformed export: {exc}",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        ) from exc
 
 
 def parse_environment_output(

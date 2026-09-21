@@ -170,7 +170,7 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertIn("tree", fingerprint)
         self.assertIn("dirty_fingerprint", fingerprint)
 
-    def test_lean_key_ignores_whole_tree_fingerprint_and_covers_all_sources(
+    def test_lean_key_ignores_whole_tree_fingerprint_and_covers_target_closure(
         self,
     ) -> None:
         with mock.patch.object(
@@ -187,15 +187,100 @@ class ValidationSingleflightTests(unittest.TestCase):
         repository = specification["inputs"]["repository"]
         self.assertEqual(
             repository["identity_policy"],
-            "all_visible_lean_content_and_build_authorities_checkout_independent",
+            "target_transitive_lean_content_and_build_authorities_checkout_independent",
         )
         paths = {
             row["path"] for row in specification["inputs"]["relevant_sources"]
         }
-        self.assertIn("lean/Erdos249257.lean", paths)
+        self.assertIn("lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean", paths)
+        self.assertIn("lean/Erdos249257/LcmDiagonalReduction.lean", paths)
         self.assertIn("scripts/validation_singleflight.py", paths)
         self.assertIn("scripts/lean_package_share.py", paths)
         self.assertNotIn("README.md", paths)
+        self.assertNotIn(
+            "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean",
+            paths,
+        )
+
+    def test_lean_key_tracks_target_imports_and_toolchain_but_not_unrelated_lean(
+        self,
+    ) -> None:
+        target = ROOT / "lean/Erdos249257.lean"
+        imported = ROOT / "lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+        unrelated = ROOT / "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean"
+        content: dict[Path, str] = {}
+
+        def digest(path: Path) -> str:
+            return "sha256:" + content.get(path, path.as_posix())
+
+        with (
+            mock.patch.object(singleflight, "resolve_lean_target", return_value=target),
+            mock.patch.object(
+                singleflight,
+                "lean_dependency_source_paths",
+                return_value=[target, imported],
+            ),
+            mock.patch.object(singleflight, "digest_file", side_effect=digest),
+        ):
+            def key() -> str:
+                return singleflight.validator_spec(
+                    "lean", ["Fixture.Target"], None, Path("/tmp/key-fixture")
+                )["key"]
+
+            original = key()
+            content[unrelated] = "unrelated-change"
+            self.assertEqual(key(), original)
+            content[imported] = "import-change"
+            after_import = key()
+            self.assertNotEqual(after_import, original)
+            content[target] = "target-change"
+            after_target = key()
+            self.assertNotEqual(after_target, after_import)
+            content[ROOT / "lean-toolchain"] = "toolchain-change"
+            self.assertNotEqual(key(), after_target)
+
+    def test_lean_dependency_key_material_uses_complete_filesystem_import_closure(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sources = {
+                "Pkg.Main": "import Pkg.Left Pkg.Right\n",
+                "Pkg.Left": "public import Pkg.Base\n",
+                "Pkg.Right": "-- right\n",
+                "Pkg.Base": "-- base v1\n",
+                "Other.Unrelated": "-- unrelated v1\n",
+            }
+            for name, text in sources.items():
+                path = root / Path(*name.split(".")).with_suffix(".lean")
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(text, encoding="utf-8")
+
+            with (
+                mock.patch.object(singleflight, "ROOT", root),
+                mock.patch.object(fast_build, "ROOT", root),
+            ):
+                closure = singleflight.lean_dependency_source_paths(["Pkg.Main"])
+                first = singleflight.regular_digest_rows(closure)
+                unrelated = root / "Other/Unrelated.lean"
+                unrelated.write_text("-- unrelated v2\n", encoding="utf-8")
+                self.assertEqual(
+                    singleflight.regular_digest_rows(
+                        singleflight.lean_dependency_source_paths(["Pkg.Main"])
+                    ),
+                    first,
+                )
+                base = root / "Pkg/Base.lean"
+                base.write_text("-- base v2\n", encoding="utf-8")
+                second = singleflight.regular_digest_rows(
+                    singleflight.lean_dependency_source_paths(["Pkg.Main"])
+                )
+
+            self.assertEqual(
+                {row["path"] for row in first},
+                {"Pkg/Main.lean", "Pkg/Left.lean", "Pkg/Right.lean", "Pkg/Base.lean"},
+            )
+            self.assertNotEqual(second, first)
 
     def test_declared_lake_source_roots_resolve_for_singleflight(self) -> None:
         expected = {
@@ -852,6 +937,182 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertEqual(terminal["automatic_resume_count"], 1)
         self.assertEqual(terminal["external_termination_exits"], [-15])
         self.assertIn("automatically resuming partial build", terminal["stderr"]["tail"])
+
+    def test_owned_cancel_stops_child_without_retry_and_releases_host_lock(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            singleflight, "automatic_cleanup", return_value={"status": "fixture"}
+        ):
+            state_root = Path(directory) / "state"
+            marker = Path(directory) / "child-ready"
+            code = (
+                "import pathlib,time; "
+                f"pathlib.Path({str(marker)!r}).write_text('ready'); "
+                "time.sleep(60)"
+            )
+            specification = self._safe_spec([sys.executable, "-c", code])
+            submitted = singleflight.submit(specification, state_root)
+            deadline = singleflight.time.monotonic() + 10
+            while not marker.exists() and singleflight.time.monotonic() < deadline:
+                singleflight.time.sleep(0.02)
+            self.assertTrue(marker.exists())
+
+            result = singleflight.cancel(
+                state_root, submitted["key"], "focused validation has priority", 10
+            )
+            terminal = singleflight.load_receipt(
+                singleflight.ensure_state_root(state_root), submitted["key"]
+            )
+            self.assertEqual(result["status"], "cancelled", result)
+            self.assertEqual(terminal["exit_state"], "cancelled")
+            self.assertEqual(terminal["exit_code"], singleflight.CANCELLED_EXIT_CODE)
+            self.assertEqual(terminal["attempt_count"], 1)
+            self.assertEqual(terminal["automatic_resume_count"], 0)
+            self.assertEqual(terminal["cancel_request"]["reason"], "focused validation has priority")
+
+            state = singleflight.ensure_state_root(state_root)
+            host_lock = singleflight.open_lock(
+                singleflight.resource_lock_path(state, "lean-host"), blocking=False
+            )
+            self.assertIsNotNone(host_lock)
+            assert host_lock is not None
+            singleflight.fcntl.flock(host_lock, singleflight.fcntl.LOCK_UN)
+            os.close(host_lock)
+
+    def test_cancel_during_retry_delay_does_not_spawn_another_validator(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            singleflight, "automatic_cleanup", return_value={"status": "fixture"}
+        ), mock.patch.object(
+            singleflight, "EXTERNAL_TERMINATION_RETRY_DELAY_SECONDS", 1.0
+        ):
+            state_root = Path(directory) / "state"
+            attempts = Path(directory) / "attempts"
+            code = (
+                "import os,pathlib,signal; "
+                f"p=pathlib.Path({str(attempts)!r}); "
+                "p.write_text(p.read_text() + 'x' if p.exists() else 'x'); "
+                "os.kill(os.getpid(), signal.SIGTERM)"
+            )
+            specification = self._safe_spec([sys.executable, "-c", code])
+            submitted = singleflight.submit(specification, state_root)
+            state = singleflight.ensure_state_root(state_root)
+            deadline = singleflight.time.monotonic() + 10
+            while singleflight.time.monotonic() < deadline:
+                observed = singleflight.load_receipt(state, submitted["key"])
+                if observed is not None and observed.get("state") == "retrying_external_termination":
+                    break
+                singleflight.time.sleep(0.02)
+            else:
+                self.fail("worker never entered its retry delay")
+            result = singleflight.cancel(
+                state_root, submitted["key"], "cancel during retry delay", 10
+            )
+            terminal = singleflight.load_receipt(state, submitted["key"])
+            self.assertEqual(result["status"], "cancelled", result)
+            self.assertEqual(terminal["exit_state"], "cancelled")
+            self.assertEqual(terminal["attempt_count"], 1)
+            self.assertEqual(attempts.read_text(), "x")
+
+    def test_cancel_refuses_reused_or_unverifiable_owner_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            state = singleflight.ensure_state_root(state_root)
+            specification = self._safe_spec([sys.executable, "-c", "pass"])
+            receipt = {
+                **specification,
+                "state": "running",
+                "launch_token": "launch",
+                "owner": {"pid": 123, "pgid": 123, "start_token": "expected"},
+                "child": None,
+            }
+            singleflight.write_receipt(state, specification["key"], receipt)
+            with (
+                mock.patch.object(
+                    singleflight,
+                    "process_identity",
+                    return_value={"pid": 123, "pgid": 123, "start_token": "reused"},
+                ),
+                mock.patch.object(singleflight.os, "killpg") as killpg,
+            ):
+                result = singleflight.cancel(
+                    state_root, specification["key"], "fixture", 0
+                )
+            self.assertEqual(result["status"], "refused_owner_identity_mismatch")
+            killpg.assert_not_called()
+            self.assertFalse(singleflight.cancel_request_path(state, specification["key"]).exists())
+
+    def test_cancel_never_signals_a_replacement_launch_for_the_same_key(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            state = singleflight.ensure_state_root(state_root)
+            specification = self._safe_spec([sys.executable, "-c", "pass"])
+            original_owner = {
+                "pid": 123,
+                "pgid": 123,
+                "start_token": "original-owner",
+            }
+            original = {
+                **specification,
+                "state": "running",
+                "launch_token": "original-launch",
+                "owner": original_owner,
+                "child": None,
+            }
+            replacement = {
+                **specification,
+                "state": "running",
+                "launch_token": "replacement-launch",
+                "owner": {
+                    "pid": 456,
+                    "pgid": 456,
+                    "start_token": "replacement-owner",
+                },
+                "child": {
+                    "pid": 789,
+                    "pgid": 789,
+                    "start_token": "replacement-child",
+                },
+            }
+            singleflight.write_receipt(state, specification["key"], original)
+            with (
+                mock.patch.object(
+                    singleflight,
+                    "load_receipt",
+                    side_effect=[original, replacement],
+                ),
+                mock.patch.object(
+                    singleflight,
+                    "process_identity",
+                    return_value=original_owner,
+                ),
+                mock.patch.object(singleflight.os, "killpg") as killpg,
+            ):
+                result = singleflight.cancel(
+                    state_root, specification["key"], "fixture", 0
+                )
+            self.assertEqual(result["status"], "refused_launch_changed")
+            killpg.assert_not_called()
+
+    def test_cancelled_terminal_is_never_reused_as_success(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            singleflight, "automatic_cleanup", return_value={"status": "fixture"}
+        ):
+            state_root = Path(directory) / "state"
+            state = singleflight.ensure_state_root(state_root)
+            specification = self._safe_spec([sys.executable, "-c", "pass"])
+            cancelled = {
+                **specification,
+                "state": "terminal",
+                "exit_code": singleflight.CANCELLED_EXIT_CODE,
+                "exit_state": "cancelled",
+                "completed_at": singleflight.utc_now(),
+            }
+            singleflight.write_receipt(state, specification["key"], cancelled)
+            relaunched = {**specification, "state": "future", "attempt": 2}
+            with mock.patch.object(
+                singleflight, "launch_worker", return_value=relaunched
+            ) as launch:
+                self.assertEqual(singleflight.submit(specification, state_root), relaunched)
+            launch.assert_called_once_with(state, specification, cancelled)
 
     def test_public_fast_build_enters_singleflight_before_lake(self) -> None:
         specification = {"key": "f" * 64}

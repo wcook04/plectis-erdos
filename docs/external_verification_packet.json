@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:56376eeb6f58b8aec86c172838d8e6a8253d5d38391fb535e372240a1f8c9823",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:66a8c634a077ba0e853c0fef2a059a2a6fe6c3f30db5ef6d875ce38bcf891398",
+    "projection_digest": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2441,10 +2441,10 @@
             "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "path": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
             "present": true,
-            "line_count": 835,
-            "declaration_count": 54,
-            "theorem_count": 38,
-            "content_digest": "sha256:9a158ddc272a2c59d87aaefcd84352ffa6197d6bed95f965f0de59a119a8b34e"
+            "line_count": 912,
+            "declaration_count": 55,
+            "theorem_count": 39,
+            "content_digest": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
           },
           {
             "module": "ErdosProblems.Erdos269.ResidueEscape",

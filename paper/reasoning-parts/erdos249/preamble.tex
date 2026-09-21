@@ -60,6 +60,10 @@
 \newcommand{\PK}{Erdos249257}
 \newcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
+% Sources that postdate \commit are cited with their lean/ path and resolve at \latecommit,
+% whose tree keeps the Lean roots under lean/.
+\newcommand{\latecommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
+\newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
 % never typeset: \allowbreak and spaces are stripped, an ErdosProblems/
@@ -75,10 +79,14 @@
     \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#1} }
     \regex_replace_all:nnN { \\allowbreak } { } \l__leanlink_arg_tl
     \regex_replace_all:nnN { \s+ } { } \l__leanlink_arg_tl
-    \tl_set:Nx \l__leanlink_url_tl { \repobase }
-    \exp_args:NnV \regex_match:nnTF { \A (ErdosProblems|Erdos249257)/ } \l__leanlink_arg_tl
-      { }
-      { \tl_put_right:Nx \l__leanlink_url_tl { / \PK } }
+    \exp_args:NnV \regex_match:nnTF { \A lean/ } \l__leanlink_arg_tl
+      { \tl_set:Nx \l__leanlink_url_tl { \laterepobase } }
+      {
+        \tl_set:Nx \l__leanlink_url_tl { \repobase }
+        \exp_args:NnV \regex_match:nnTF { \A (ErdosProblems|Erdos249257)/ } \l__leanlink_arg_tl
+          { }
+          { \tl_put_right:Nx \l__leanlink_url_tl { / \PK } }
+      }
     \exp_args:NnV \regex_extract_once:nnNTF { (.*\.lean) :? (.*) } \l__leanlink_arg_tl \l__leanlink_split_seq
       {
         \tl_put_right:Nx \l__leanlink_url_tl { / \seq_item:Nn \l__leanlink_split_seq { 2 } }
@@ -97,6 +105,22 @@
   }
 \newcommand{\lean}[2]{\leanlink{#2}}
 \ExplSyntaxOff
+
+% ===========================================================================
+% Statement-level proof links.  The exact endpoints the coverage ledger binds
+% were written after both pins above, so a third immutable pin carries them.
+% \ledgercommit is the public revision whose Lean sources the ledger resolved
+% its declarations against; every file it names is byte-identical to that
+% revision.  The note printed under each statement is generated from that
+% ledger and verified by scripts/check_generated_lean_notes.py.  Do not edit a
+% \leannote by hand: regenerate it.
+% ===========================================================================
+\newcommand{\ledgercommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
+\newcommand{\ledgerbase}{https://github.com/wcook04/plectis-erdos/blob/\ledgercommit}
+\newcommand{\lproof}[3]{\href{\ledgerbase/lean/#1\#L#2}{\texttt{#3}}}
+\newcommand{\leannote}[1]{%
+  \par\nobreak\vspace{-0.3\baselineskip}%
+  \noindent{\small #1\par}\vspace{0.15\baselineskip}}
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in
 % running prose too. Rather than police every occurrence, make the command

@@ -425,9 +425,24 @@ def _project_paper(paper: dict[str, Any]) -> dict[str, Any]:
     return rebuilt
 
 
+def _is_unavailable(paper: dict[str, Any]) -> bool:
+    """A registry paper whose manuscript is absent from the exported checkout.
+
+    The exporter records it as ``unavailable_at_build`` with no title and no
+    ``owns`` text, so there is nothing to classify.  It is carried through
+    untouched and left out of the taxonomy counts: a paper that lives on another
+    branch must not stop the export of the papers that are here, and must not be
+    filed under a class nobody chose for it.
+    """
+    return paper.get("availability") == "unavailable_at_build"
+
+
 def build(corpus: dict[str, Any], root: Path) -> dict[str, Any]:
-    papers = [_project_paper(paper) for paper in corpus.get("papers", [])]
-    summary = _summary(papers, root)
+    papers = [
+        paper if _is_unavailable(paper) else _project_paper(paper)
+        for paper in corpus.get("papers", [])
+    ]
+    summary = _summary([paper for paper in papers if not _is_unavailable(paper)], root)
 
     rebuilt: dict[str, Any] = {}
     for key, value in corpus.items():

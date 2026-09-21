@@ -42,3 +42,45 @@ The interval certificate bounds π with Machin's formula and alternating arctang
 ## Formal-status boundary
 
 No Lean executable or lake build was run. The kernel-status discussion in the papers concerns the supplied indexed source and historical CI evidence, not these Python files. Historical rank-seven, reconstruction and direction checks from the earlier project are not presented as fresh reruns here.
+
+## `finite_coefficients.json` — reconstructed 2026-09-20
+
+The paper cites `computations/finite_coefficients.json` and
+`computations/check_finite_coefficients.py`. Neither path existed in this
+repository or anywhere in its git history; `git log --all` over those paths is
+empty, and the only history hits for the string are the commits that introduced
+the citing prose. The *data* was present all along, split across the sixteen
+`certificates/s_hankel_rank<N>_shift<h>.json` files written by `reproduce.py`.
+What was missing was the two cited filenames, not the computation.
+
+The two files were therefore written fresh on 2026-09-20, from the definitions
+in `paper/reasoning-parts/erdos1049/core.tex` (lines 1790–1896) and in
+`lean/ErdosProblems/Erdos1049/PaperR20/CoefficientPencil.lean`. They are new
+artefacts, not recovered originals. Both use the Python standard library only —
+exact integers, no SymPy, no floating point — so they are an implementation path
+independent of `polynomials.py` and `reproduce.py`.
+
+```sh
+python3 computations/finite_coefficients_generate.py   # writes finite_coefficients.json
+python3 computations/check_finite_coefficients.py      # checks it, independently
+```
+
+`finite_coefficients_generate.py` builds `s_m` from the Gaussian-binomial
+q-Pascal recursion and computes every `D_{N,h}` twice: once by a division-free
+Laplace expansion over column subsets, once by the paper's Desnanot–Jacobi
+condensation with all 56 divisions asserted to leave zero remainder. The two
+routes are required to agree, and large products use Kronecker substitution,
+which is exact. Runtime 71 s at rank eight.
+
+`check_finite_coefficients.py` imports nothing from the generator. It rebuilds
+`s_m` from the Gaussian-binomial *product* formula by exact division, cross-checks
+`R_m` against Van Assche's positive expansion and `s_m(1)` against `(m!)^3`,
+derives the degree bound by brute-force maximisation over all `N!` permutations
+rather than from the paper's closed form, and then connects the stored list to
+`D_{N,h}` by exact integer evaluation at more distinct bases than that degree
+bound, against Bareiss fraction-free elimination of the integer Hankel matrix.
+Agreement at `deg + 9` bases between two polynomials of degree at most `deg` is
+an identity in `Z[p]`, not a sample. Runtime 16 s.
+
+Both agree with the paper's degree table, with the count of 8824 strictly
+positive coefficients, and with the sixteen existing per-rank files.
