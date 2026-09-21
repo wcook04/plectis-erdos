@@ -147,6 +147,13 @@ artifacts retain the filenames belonging to their recorded revision.
 
 ## Validate behavior, not decoration
 
+When integrating concurrent implementations of one owner, reconcile its API,
+environment variables and diagnostics before regenerating its consumers. Run
+the relevant tests from both parent revisions on the combined implementation;
+a clean merge or a passing test from only one parent does not establish that
+the combined contract works. For corpus-wide contribution changes, exercise
+all eight programmes and each supported contribution track.
+
 During the edit, run the narrow owner checks:
 
 ```sh

@@ -33,7 +33,7 @@ ENVIRONMENT_VALIDATION_POSTURE = (
     "export_so_source_fingerprint_and_loaded_olean_state_are_current"
 )
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
-DEPENDENCY_EXPORT_PATH_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_PATH"
+LEAN_DEPENDENCY_EXPORT_FILE_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
@@ -247,13 +247,13 @@ def safe_output_text(
 
 
 def run(
-    *args: Any, dependency_export_path: Path | None = None, **kwargs: Any,
+    *args: Any, lean_dependency_export_file: Path | None = None, **kwargs: Any,
 ) -> subprocess.CompletedProcess[str]:
     """Run Lean dependency commands in the bounded validation time domain."""
     environment = singleflight.command_environment()
     environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
-    if dependency_export_path is not None:
-        environment[DEPENDENCY_EXPORT_PATH_ENV] = str(dependency_export_path)
+    if lean_dependency_export_file is not None:
+        environment[LEAN_DEPENDENCY_EXPORT_FILE_ENV] = str(lean_dependency_export_file)
     kwargs["env"] = environment
     # Both callers elaborate Lean state. A cold runner can legitimately take
     # longer than the short timeout used for metadata-only Git queries, so keep
@@ -788,7 +788,7 @@ def _export_environment_file(output_path: Path) -> tuple[
             stderr=subprocess.PIPE,
             check=False,
             timeout=EXPORT_TIMEOUT_SECONDS,
-            dependency_export_path=output_path,
+            lean_dependency_export_file=output_path,
         )
     except subprocess.TimeoutExpired as exc:
         stdout = decode_captured(exc.stdout)
@@ -835,13 +835,13 @@ def _export_environment_file(output_path: Path) -> tuple[
     except (OSError, UnicodeError, UnsafeDependencyInput) as exc:
         raise ClassifiedExportError(
             "export_crash", EXIT_CRASH,
-            f"Lean dependency exporter did not produce readable file output: {exc}",
+            f"Lean dependency exporter did not write a readable UTF-8 export: {exc}",
             stdout=completed.stdout or "", stderr=completed.stderr or "",
         ) from exc
     if not output.strip():
         raise ClassifiedExportError(
             "export_crash", EXIT_CRASH,
-            "Lean dependency exporter produced empty file output",
+            "Lean dependency exporter wrote an empty export",
             stdout=completed.stdout or "", stderr=completed.stderr or "",
         )
     try:

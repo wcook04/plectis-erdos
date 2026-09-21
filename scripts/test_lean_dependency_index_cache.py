@@ -563,19 +563,19 @@ def check_export_file_transport_preserves_raw_data_and_clean_environment() -> No
 
     def export_to_file(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
         environment = kwargs["env"]
-        output = Path(environment[builder.DEPENDENCY_EXPORT_PATH_ENV])
+        output = Path(environment[builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV])
         paths.append(output)
         require(output.is_absolute() and not output.exists(), "export file was already open or relative")
         expected = builder.singleflight.command_environment()
         expected["PATH"] = os.pathsep.join((str(builder.TOOLCHAIN_BIN), expected["PATH"]))
-        expected[builder.DEPENDENCY_EXPORT_PATH_ENV] = str(output)
+        expected[builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV] = str(output)
         require(environment == expected, "export transport admitted ambient environment selectors")
         require(kwargs["timeout"] == builder.EXPORT_TIMEOUT_SECONDS, "export timeout changed")
         output.write_bytes(raw.encode("utf-8"))
         return subprocess.CompletedProcess(command, 0, "Lean stdout diagnostic\n", "Lean stderr diagnostic\n")
 
     with patch.dict(os.environ, {
-        builder.DEPENDENCY_EXPORT_PATH_ENV: "/wrong/ambient/output",
+        builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV: "/wrong/ambient/output",
         "GIT_DIR": "/wrong/git", "PYTHONPATH": "/wrong/python",
     }), patch.object(builder.subprocess, "run", side_effect=export_to_file), \
          patch.object(builder, "preserve_export_diagnostics") as diagnostics, \
@@ -593,7 +593,7 @@ def check_export_file_transport_rejects_missing_or_empty_output() -> None:
         paths = []
 
         def empty_export(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
-            output = Path(kwargs["env"][builder.DEPENDENCY_EXPORT_PATH_ENV])
+            output = Path(kwargs["env"][builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV])
             paths.append(output)
             if payload is not None:
                 output.write_bytes(payload)
@@ -619,7 +619,7 @@ def check_export_file_transport_cleans_partial_output_on_failure() -> None:
         paths = []
 
         def failed_export(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
-            output = Path(kwargs["env"][builder.DEPENDENCY_EXPORT_PATH_ENV])
+            output = Path(kwargs["env"][builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV])
             paths.append(output)
             output.write_text("AIW_NODE\tpartial\tPkg\n", encoding="utf-8")
             if failure == "timeout":

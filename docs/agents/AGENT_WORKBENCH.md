@@ -4,10 +4,9 @@ This corpus is agent-native. The agent or human researcher supplies the
 conjectures, search choices and judgment. The tools check exact statements
 and keep records another researcher can inspect and replay.
 
-Use this page for agent operations. Start with [CONTRIBUTING.md](../../CONTRIBUTING.md)
-before proposing a correction, strengthening, claim change, or release change;
-then use the authority and validation contract in [AGENTS.md](AGENT_GUIDE.md).
-Reader introductions belong in the README and results guide rather than here.
+Use this page for agent operations. Before proposing changes, read
+[CONTRIBUTING.md](../../CONTRIBUTING.md) and the authority and validation
+contract in [AGENTS.md](AGENT_GUIDE.md). Readers can start with the README.
 
 For clone setup and a copyable task prompt, see the
 [agent quickstart](README.md#start-with-current-public-work).
@@ -87,11 +86,8 @@ source-level evidence, not reviewed claim rows. The route is navigation
 evidence only; it does not promote problem-owned notes into reviewed claims or
 close an open problem.
 
-For the reviewed #249/#257 core, begin with `docs/orientation.json` and one
-typed `query_corpus.py` route. For #68, #243, #251, #269, and #1049, use the
-corresponding generated row and complete return matrix to reach the
-checked-result inventory, principal checked module, paper/source record, and
-exact unresolved producer. For #1041, read the dated
+For the reviewed #249/#257 core, `docs/orientation.json` supplies typed routes.
+For #1041, also read the dated
 [`FRONTIER.md`](../../research_corpus/Erdos1041/FRONTIER.md) before its machine
 result map: it contains current refutations and surviving premise families
 that the older paper note does not enumerate. None of these dispatches

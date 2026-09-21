@@ -6,6 +6,17 @@ open Lean
 
 private def corpusRoots : Array Name := #[`Erdos249257, `ErdosProblems]
 
+private def exportPathEnv := "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
+
+private def exportStream : IO IO.FS.Stream := do
+  match ← IO.getEnv exportPathEnv with
+  | some path =>
+      if path.isEmpty then
+        throw <| IO.userError s!"{exportPathEnv} must name a nonempty path"
+      let handle ← IO.FS.Handle.mk path IO.FS.Mode.write
+      return IO.FS.Stream.ofHandle handle
+  | none => IO.getStdout
+
 private def moduleString (env : Environment) (name : Name) : String :=
   (env.getModuleFor? name).map (·.toString) |>.getD ""
 
@@ -18,12 +29,6 @@ private def isCorpusConstant (env : Environment) (name : Name) : Bool :=
 private def emitLine (stdout : IO.FS.Stream) (line : String) :
     Lean.Elab.Command.CommandElabM Unit :=
   liftM <| stdout.putStr (line ++ "\n")
-
-private def exportStream : IO IO.FS.Stream := do
-  match ← IO.getEnv "PLECTIS_LEAN_DEPENDENCY_EXPORT_PATH" with
-  | some path =>
-      return IO.FS.Stream.ofHandle (← IO.FS.Handle.mk path .write)
-  | none => IO.getStdout
 
 private partial def conclusionShape (type : Expr) (binderCount : Nat := 0) :
     Nat × Expr :=
@@ -87,7 +92,9 @@ normalisation and source-coordinate join.
 -/
 run_cmd do
   let env ← getEnv
-  -- File transport avoids run_cmd capturing the projection as a diagnostic.
+  -- The builder supplies a unique temporary path so the large row stream does
+  -- not pass through Lean's diagnostic formatting. Direct invocations retain
+  -- the historical stdout interface when the variable is absent.
   let stdout ← liftM exportStream
   for info in env.constants.map₁.values do
     let source := info.name
