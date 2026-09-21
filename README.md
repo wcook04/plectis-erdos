@@ -3,9 +3,11 @@
 
 # Plectis: research on eight Erdős problem programmes
 
-Plectis is an open-source, AI-assisted research project. This repository contains
-the papers, Lean proofs, computations, failed approaches, and remaining
-questions, so another researcher can inspect the work and continue from it.
+Plectis is an open-source, AI-assisted prototype for turning mathematical
+exposition into further research. Eight Erdős programmes each have a short
+expository paper, a longer research record and associated Lean source. The aim
+is to make results, methods and useful failures understandable enough for
+others to question, extend and reuse.
 **The degree-seven counterexample found by the erdosproblems.com contributor
 ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in
 Lean. The other seven target problems are not resolved here. Independent
@@ -44,9 +46,11 @@ sources, checks and credit kept visible.
   provides clone commands and a copyable prompt. Name a question, or ask your
   agent to read the corpus and decide what is worth developing.
 
-Each programme has a short paper explaining its main argument and a longer
-record with details, computations and approaches that stopped. You can read
-both without Lean or a coding agent. [A reader's way in](docs/READING_GUIDE.md)
+The short papers are the main exposition: the question, the strongest results,
+the ideas behind their proofs and what remains open. The longer records keep
+the details, computations and approaches that stopped. You can read both
+without Lean or a coding agent. The website brings these papers, their evidence
+and ways to contribute into one reading experience. [A reader's way in](docs/READING_GUIDE.md)
 introduces the questions; [Results and limits](docs/RESULTS.md) puts the results
 beside their remaining open questions.
 
@@ -85,8 +89,14 @@ achievement-set measure, or **#249** for exact kernel rank, finite certificates,
 and recorded routes that stopped. Each paper distinguishes ordinary proofs,
 Lean-checked results and open questions.
 
-**Reading the eight together.** One short note reads the problems side by
-side, with a working record behind it: [synthesis note](paper/synthesis/erdos-synthesis-subsums-across-bases.pdf) · [working record](paper/synthesis/erdos-synthesis-reading-together-record.pdf).
+**Reading the eight together.** The whole collection is also material for new
+mathematics: reusable constructions, connections between problems and questions
+that go beyond the original targets. Start with the
+[synthesis note](paper/synthesis/erdos-synthesis-subsums-across-bases.pdf), its
+[working record](paper/synthesis/erdos-synthesis-reading-together-record.pdf),
+and the [capacity and interpolation paper](paper/synthesis/optimal-sparse-perturbations.pdf).
+The [synthesis guide](paper/synthesis/README.md) explains how to develop this work
+from the papers and Lean corpus, with each result's evidence and limits intact.
 
 | Problem | Topic | Papers |
 |---|---|---|
@@ -130,6 +140,11 @@ unreleased work.
 An idea, a correction, a counterexample, a failed route with a checkable
 reason, or a clearer explanation can help. You do not need to solve a problem.
 Directions and infrastructure suggestions receive credit too.
+
+You can contribute an insight without writing Lean. Will can work with you to
+develop its argument and formalisation; the idea, explanation and proof work
+keep their respective attribution. A contribution may advance one problem or
+open a direction across the whole collection.
 
 Start with [a paper](docs/CONTRIBUTE_BY_PAPER.md),
 [develop a method](paper/synthesis/README.md), or

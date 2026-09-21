@@ -6,7 +6,9 @@
 This repository follows eight problem programmes associated with Paul Erdős.
 For each one it holds a short paper, a longer research record, Lean proofs of
 selected statements, finite computations, and a written account of the
-approaches that stopped and why. You do not need Lean to read the papers.
+approaches that stopped and why. Plectis is a prototype for making this work
+understandable, reusable and open to further insight. The website brings the
+collection together; you do not need Lean to read the papers.
 
 The degree-seven counterexample found by the erdosproblems.com contributor ani
 refutes the total-variation formulation of Erdős #1041; this repository
@@ -20,9 +22,8 @@ finite cases, and records obstructions to tempting shortcuts.
 
 ## Two ways to begin
 
-You can continue a particular question, or you can read the mathematics and
-decide what comes next. Both are supported. The second treats the papers as one
-body of work: a method from one problem may explain an obstruction in another,
+You can continue a particular question or read the papers as one body of work:
+a method from one problem may explain an obstruction in another,
 a recorded example may suggest a general theorem, and a worthwhile new question
 is itself a contribution. The [reading edition](reading-edition/README.md)
 serves this route without a clone. It is one file to read or to give to an AI
@@ -33,25 +34,27 @@ is one investigation that began this way.
 ## What is here
 
 The [front page](../README.md) lists the eight problems with a short paper and
-a longer paper for each. The short paper is the first read. The longer record
-keeps failed routes, finite experiments, and the exact obligations that
+a longer paper for each. The short paper is the main exposition: it introduces
+the question, states the strongest results and explains the ideas behind the
+arguments for a mathematical reader. The longer record keeps technical detail,
+failed routes, finite experiments, and the exact obligations that
 survive. The [paper catalogue](../paper/README.md) groups the manuscripts and
-their sources by problem, with three further papers on how the project is run.
+their sources, including the systems papers.
 
 The [results guide](RESULTS.md) states the strongest checked result for each
 problem next to what still blocks its endpoint. [Prior work](PRIOR_ART.md)
-records earlier arguments and attribution. [Scope](SCOPE.md) lists the claims
-the project does not make. The [architecture guide](ARCHITECTURE.md) explains
-the checks and generated indexes; it is not needed for the mathematics.
+records earlier arguments and attribution. [Scope](SCOPE.md) states the project's
+limits; the [architecture guide](ARCHITECTURE.md) explains its machinery.
 
 ## What formalisation adds
 
-Lean checks a precise statement against a precise proof. That forces
-assumptions, quantifiers, and dependencies into the open. It does not decide
-whether a theorem is new, important, or the right way to attack an open
-problem, and it does not turn a conditional result into an unconditional one.
-Many results here are ordinary mathematical arguments with no Lean proof; each
-paper says which is which.
+Lean checks a precise statement against a precise proof, exposing assumptions,
+quantifiers and dependencies. It does not establish novelty or importance,
+or turn a conditional result into an unconditional one.
+Each paper distinguishes ordinary mathematical arguments, formalised results
+and remaining gaps. Follow a statement's source link and verification record
+to see what has been checked; a build alone does not establish that every
+argument in a paper has been formalised.
 
 ## The eight problems in brief
 
@@ -84,35 +87,33 @@ which proves which subsums of a Lambert series are rational or irrational as
 the base varies. Its
 [working record](../paper/synthesis/erdos-synthesis-reading-together-record.pdf)
 holds the inventory of negative results, the ideas that were eliminated and the
-questions left open.
+questions left open. The
+[capacity and interpolation paper](../paper/synthesis/optimal-sparse-perturbations.pdf)
+develops another direction. This is a central use of the collection: read the
+papers and Lean corpus together, look for a construction or obstruction that
+survives in a more general setting, and develop the mathematics it suggests.
+The [synthesis guide](../paper/synthesis/README.md) gives ways to begin.
 
 ## How to read the evidence
 
-The project keeps kinds of evidence apart. A Lean proof tells you a formal
-statement was checked. A claim record tells you how that statement may be
-described in public and what remains open. A paper supplies motivation and an
-argument a mathematician can read. A finite calculation covers only the range
-it reached.
+A Lean proof checks a formal statement; a claim record gives its public status
+and limits. A paper supplies motivation and a readable argument. A finite
+calculation covers only the range it reached.
 
-Comparator gives selected statements a second, independently declared formal
-interface under a fixed set of assumptions, and reports whether the two agree.
-It exposes mismatches between formal surfaces. It is not peer review and does
-not establish novelty. The [Palomar guide](verification/PALOMAR_QUALIFICATION.md)
-links the separately pinned repository units and explains how to check local
-packaging. Service submission, registration and acceptance require their own
-recorded evidence; local readiness does not establish them.
+Comparator compares selected statements with independently declared formal
+interfaces under fixed assumptions. It is not peer review and does not
+establish novelty. The [Palomar guide](verification/PALOMAR_QUALIFICATION.md)
+distinguishes local packaging from recorded service submission or acceptance.
 
-This repository is a self-contained public record. It is not an entrypoint
-into any private development system. The number of files, declarations, or
-computed cases does not measure the importance of a result.
+This is a self-contained public record. File, declaration and computation
+counts do not measure mathematical importance.
 
 ## Reviewing one result
 
-Pick one statement in a short paper. Read its assumptions and the step that
-does the work, then open the longer record if you want the attempts that led
-there. If a hard step is compressed, a routine step gets too much space, or
-you cannot tell where an idea came from, that is useful feedback. A checked
-proof still needs an explanation a mathematician can understand and reuse.
+Pick a statement in a short paper, read its assumptions and the step that does
+the work, then follow the longer record. Missing motivation, compressed hard
+steps and unclear attribution are useful feedback: a checked proof still needs
+an explanation others can understand and reuse.
 
 ## Contributing
 
@@ -126,3 +127,9 @@ to an intermediate claim, or an earlier reference. The
 [contributor guide](../CONTRIBUTING.md) explains how to send that back with its
 evidence and credit intact. If this work helps you solve one of the eight, the
 solution and the credit are yours.
+
+An insight is welcome before it has a formal proof. Will can work with you to
+develop the argument and formalise it, with the originating insight credited
+separately from subsequent exposition and proof work. Clearer understanding,
+reusable methods and new questions across the corpus also count as
+contributions; they need not close an original problem.
