@@ -62,7 +62,16 @@ LIBRARY_PREFIX = "ErdosProblems"
 # ``ErdosProblems``, which is what every existing note writes.
 SIBLING_LIBRARIES = ("Erdos249257",)
 
+LEDGER_ARTIFACT_CLASSES = (NOTE_ARTIFACT_CLASS, "mathematical_companion")
 COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
+LEDGER_COMMIT_RE = re.compile(r"\\newcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
+NOTE_LEDGER_COMMIT_RE = re.compile(r"\\renewcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
+# The generated statement note.  Its file is named below lean/ and resolves at
+# \ledgercommit, which is the revision the coverage ledger read its declarations
+# from; a note-wide \commit predates the nested layout and does not carry them.
+LPROOF_RE = re.compile(
+    r"\\lproof\{(?P<file>[^{}]+)\}\{(?P<line>\d+)\}\{(?P<decl>[^{}]+)\}"
+)
 NOTE_COMMIT_RE = re.compile(
     r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}"
 )
@@ -227,6 +236,92 @@ def pinned_commit() -> str:
             f"{PREAMBLE.relative_to(ROOT)}: no pinned \\commit is declared"
         )
     return match.group(1)
+
+
+def ledger_commit() -> str | None:
+    """The corpus-wide pin the generated statement notes resolve at."""
+    match = LEDGER_COMMIT_RE.search(safe_worktree_text(PREAMBLE))
+    return None if match is None else match.group(1)
+
+
+def ledger_sources() -> list[str]:
+    """Every registered manuscript that may carry generated statement notes."""
+    contract = json.loads(safe_worktree_text(CONTRACT))
+    return [
+        row["source_path"]
+        for row in contract.get("artifacts", [])
+        if row.get("artifact_class") in LEDGER_ARTIFACT_CLASSES
+    ]
+
+
+def generated_links(text: str) -> list[tuple[str, int, str]]:
+    return [
+        (match.group("file"), int(match.group("line")), match.group("decl"))
+        for match in LPROOF_RE.finditer(strip_comments(text))
+    ]
+
+
+def generated_note_failures(default_ledger: str | None) -> tuple[list[str], int]:
+    """Resolve every generated statement link against its own immutable pin.
+
+    These links are written by the coverage ledger's generator rather than by
+    hand, and they name a revision that postdates the notes' own ``\\commit``.
+    Checking them here keeps one verifier for every printed source coordinate,
+    whichever pin it resolves at.
+    """
+    failures: list[str] = []
+    checked = 0
+    cache: dict[tuple[str, str], list[str]] = {}
+    requests: list[tuple[str, str, list[tuple[str, int, str]]]] = []
+    for source in ledger_sources():
+        try:
+            text = safe_worktree_text(ROOT / source)
+        except UnsafeSourceInput as error:
+            failures.append(f"{source}: {error}")
+            continue
+        found = generated_links(text)
+        if not found:
+            continue
+        override = NOTE_LEDGER_COMMIT_RE.search(strip_comments(text))
+        commit = override.group(1) if override else default_ledger
+        if commit is None:
+            failures.append(
+                f"{source}: generated statement links without a \\ledgercommit pin"
+            )
+            continue
+        requests.append((source, commit, found))
+    snapshot_lines_batch(
+        {(commit, library_relative(name))
+         for _source, commit, found in requests
+         for name, _line, _declaration in found},
+        cache,
+    )
+    for source, commit, found in requests:
+        if git_run("cat-file", "-e", f"{commit}^{{commit}}").returncode != 0:
+            failures.append(f"{source}: ledger commit is absent: {commit}")
+            continue
+        for file_name, line_number, declaration in found:
+            checked += 1
+            relative = library_relative(file_name)
+            lines = snapshot_lines(commit, relative, cache)
+            if not lines:
+                failures.append(
+                    f"{source}: {relative} is absent from the ledger snapshot"
+                )
+                continue
+            if not 1 <= line_number <= len(lines):
+                failures.append(
+                    f"{source}: {relative}:{line_number} is outside the ledger "
+                    f"snapshot ({len(lines)} lines)"
+                )
+                continue
+            if not declares_at(lines, line_number - 1, declaration):
+                failures.append(
+                    f"{source}: {relative}:{line_number} does not declare "
+                    f"{declaration!r} at {commit[:12]}; the pinned line reads "
+                    f"{lines[line_number - 1].strip()[:72]!r}"
+                )
+    return failures, checked
 
 
 def pinned_commitshort() -> str:
@@ -496,6 +591,12 @@ def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
         for file_name, _line, declaration in links(note_text)
         if declaration is not None
     }
+    # Generated statement notes reach the same declarations, at their own pin;
+    # generated_note_failures() has already resolved each one in that snapshot.
+    linked.update(
+        (library_relative(file_name), declaration)
+        for file_name, _line, declaration in generated_links(note_text)
+    )
     # A local result may use its own immutable source pin without changing the
     # note-wide pin. Count it only after checking the named declaration there.
     explicit = re.compile(
@@ -804,6 +905,9 @@ def main() -> int:
             elif args.list:
                 print(f"  {declaration}  <-  {relative}:{line_number}")
 
+    generated_failures, generated_checked = generated_note_failures(ledger_commit())
+    errors.extend(generated_failures)
+
     report: list[str] = []
     if args.coverage:
         report, coverage_failures = coverage_report(default_commit)
@@ -819,7 +923,8 @@ def main() -> int:
 
     print(
         f"check_problem_note_sources: {checked} link(s) across {len(sources)} note(s) "
-        f"resolve against {len(resolved_commits)} pinned commit(s)"
+        f"resolve against {len(resolved_commits)} pinned commit(s); "
+        f"{generated_checked} generated statement link(s) resolve at the ledger pin"
     )
     for line in report:
         print(line)
