@@ -3,15 +3,19 @@
 
 # Mathematics that emerges between the problems
 
-The synthesis papers are a place for insights that arise while working with
-this corpus: connections between problems, reusable constructions, obstructions,
-new intermediate objects and questions worth investigating. A contribution can
-matter without settling one of the eight Erdős problems. Read the existing
-[synthesis note](erdos-synthesis-subsums-across-bases.pdf) and its
-[long record](erdos-synthesis-reading-together-record.pdf) as starting points;
-the [capacity and interpolation account](optimal-sparse-perturbations.pdf)
-develops another direction. Their statements retain their own proof and evidence
-boundaries; this invitation makes no new mathematical claim.
+[Reading Eight Erdős Problems Together](optimal-sparse-perturbations.pdf)
+([source](optimal-sparse-perturbations.tex)) is the single cross-problem paper.
+It brings together the capacity and congruence criterion, Lambert subsums,
+method obstructions, exact computations and the research record behind them.
+The principal proofs are ordinary mathematical arguments; cited formal
+ingredients retain their stated scope. This paper consolidates the former
+synthesis note, working record and capacity account. Their earlier versions
+remain in Git history.
+
+The paper is a place for insights that arise while working with the full
+corpus: connections between problems, reusable constructions, obstructions,
+new intermediate objects and questions worth investigating. A contribution
+can matter without settling one of the eight Erdős problems.
 
 Begin with an example or question you understand. Follow a construction to
 another setting, identify an assumption that prevents its reuse, or explain

@@ -95,9 +95,7 @@ programmes.
 **Reading the eight together.** The whole collection is also material for new
 mathematics: reusable constructions, connections between problems and questions
 that go beyond the original targets. Start with the
-[synthesis note](paper/synthesis/erdos-synthesis-subsums-across-bases.pdf), its
-[working record](paper/synthesis/erdos-synthesis-reading-together-record.pdf),
-and the [capacity and interpolation paper](paper/synthesis/optimal-sparse-perturbations.pdf).
+[cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesis/optimal-sparse-perturbations.pdf). It joins the capacity and congruence results, Lambert subsums, method limits and their research record.
 The [synthesis guide](paper/synthesis/README.md) explains how to develop this work
 from the papers and Lean corpus, with each result's evidence and limits intact.
 

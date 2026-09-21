@@ -418,53 +418,15 @@
       "storage_path": "paper/269/erdos269-running-lcm-reasoning-surface.pdf"
     },
     {
-      "id": "erdos_synthesis_note",
-      "title": "Rational and Irrational Subsums\\\\of a Lambert Series Across Bases",
-      "artifact_class": "synthesis_note",
-      "source_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
-      "source_content_digest": "sha256:41c52787a4f5a9ebdd7d0a3f3fbfa53e54b4237b73941b1cadc9671c77b8f2d8",
-      "rendered_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf",
-      "rendered_content_digest": "sha256:b15c80b7255381755ca5a4c8367f4a4f59cfb180af1c23fc07356cac44a3c469",
-      "authority_posture": "authored_mathematical_exposition_across_covered_problems_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json",
-      "claim_scope": "Mathematics whose subject is several covered problems read together, not a ninth problem. Every theorem in the note is an ordinary proof printed there; nothing in it is checked in Lean. Results quoted from the companion notes keep the status those notes give them. The note proves irrationality of divisibility-ordered subsums of the Lambert series at rational bases with a^2 > b^3, rational values on infinite sets at every rational base strictly between 1 and 2, and that the fixed-depth limiting proportion of rationals not rejected by the greedy rule follows from Farey equidistribution; the exact step-17 rejection of 189/388 shows this gives no deterministic stopping depth. It settles neither Erdős #257 nor #1049, and it does not explain the method limits it lists.",
-      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
-      "entry_route_id": "instant_orientation",
-      "validation": [
-        "python3 scripts/check_rendered_paper_boundary.py",
-        "python3 scripts/check_publication_contract.py",
-        "python3 scripts/build_reading_edition.py --check"
-      ],
-      "storage_path": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf"
-    },
-    {
-      "id": "erdos_synthesis_record",
-      "title": "Reading Eight Erdős Problems Together",
-      "artifact_class": "mathematical_companion",
-      "source_path": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
-      "source_content_digest": "sha256:eee57a27d5696d3f8bc7111c36c83b5f025c0dd7c233e5acd7d048b4e7fc71dc",
-      "rendered_path": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
-      "rendered_content_digest": "sha256:37527e92eb19efd47a2b9dac0af4c71140c660d5c40b2e63b5abb65eb27dc7f5",
-      "authority_posture": "authored_working_research_record_across_covered_problems_not_Lean_proof_authority",
-      "claim_scope": "The working record behind the synthesis note. Every proof in it is an ordinary proof, nothing is checked in Lean, and the computations are exact rational arithmetic with saved outputs. It proves the two base 2 lemmas the note uses without proof, lists the negative results of the seven companion notes with the status each note gives them, corrects the fixed-depth statistical interpretations with an exact late rejection, gives the factorial subsequence counterexample, and points to the separate ordinary capacity criterion for divisibility-chain series with eventual congruences. It records eliminated ideas and what was already known, and ends with further questions. It settles no Erdős problem.",
-      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
-      "entry_route_id": "follow_one_claim",
-      "validation": [
-        "python3 scripts/check_rendered_paper_boundary.py",
-        "python3 scripts/check_publication_contract.py",
-        "python3 scripts/build_reading_edition.py --check"
-      ],
-      "storage_path": "paper/synthesis/erdos-synthesis-reading-together-record.pdf"
-    },
-    {
       "id": "factorial_gap_threshold_synthesis",
-      "title": "An Exact Capacity Criterion for Series\\\\with Eventual Congruences",
+      "title": "Reading Eight Erdős Problems Together",
       "artifact_class": "synthesis_note",
       "source_path": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_content_digest": "sha256:c5668cca98569e90a2707c786d6151eb369600787a14cedd6322051cfe746afa",
+      "source_content_digest": "sha256:1c34dc599349794d24826815537ad2dcf74bb38b20479c1856b9516350666ebd",
       "rendered_path": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "rendered_content_digest": "sha256:0e57117a445888989196312d82ac1d0b44d9e27694a39eb2f272a6bab3abfd1b",
+      "rendered_content_digest": "sha256:0d9102a7c37c5d4fd60f1f58d410a0f927b02d733c570d3ef492615b25d210aa",
       "authority_posture": "authored_mathematical_exposition_across_covered_problems_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json",
-      "claim_scope": "Ordinary proof that, for positive integer denominators Q_n with Q_n dividing Q_(n+1) and Q_(n+1) at least 2Q_n, and summable nonnegative integer digit allowances F_n, eventual allowance and eventual divisibility by every fixed integer permit interval filling exactly when Q_N times the allowance tail tends to infinity. In that case every nonnegative real is represented; otherwise the attainable set is null and meagre. The positive construction also preserves eventual cumulative congruences with target-independent cutoffs. The note derives the sharp factorial support-gap threshold and a common-divisor carry obstruction. The associated Lean ingredients do not formalise the capacity criterion or its measure argument. No Erdős problem or reviewed claim is promoted.",
+      "claim_scope": "One cross-problem paper: capacity and congruence constructions, Lambert subsums across bases, rational-point counts, method obstructions, exact computations and unsuccessful approaches. Principal arguments are ordinary proofs. Cited Lean ingredients retain their exact scope; no original problem status or historical novelty is promoted.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
       "entry_route_id": "instant_orientation",
       "validation": [
@@ -603,7 +565,9 @@
     }
   ],
   "rejected_artifact_ids": [
-    "additional_erdos249_companion"
+    "additional_erdos249_companion",
+    "erdos_synthesis_note",
+    "erdos_synthesis_record"
   ],
   "reproducibility": {
     "problem_note_source_links": "python3 scripts/check_problem_note_sources.py --coverage",

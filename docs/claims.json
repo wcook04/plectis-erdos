@@ -1098,35 +1098,50 @@
           "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
         },
         {
-          "title": "Rational and Irrational Subsums of a Lambert Series Across Bases",
-          "source": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
-          "rendered": "paper/synthesis/erdos-synthesis-subsums-across-bases.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Synthesis note: mathematics whose subject is the eight problems read together. Ordinary proofs only; it links no Lean source and changes no claim row."
-        },
-        {
           "title": "Reading Eight Erdős Problems Together",
-          "source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
-          "rendered": "paper/synthesis/erdos-synthesis-reading-together-record.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Working record behind the synthesis note: lemmas, the inventory of negative results, eliminated ideas, prior art and open questions."
-        },
-        {
-          "title": "An Exact Capacity Criterion for Series with Eventual Congruences",
           "source": "paper/synthesis/optimal-sparse-perturbations.tex",
           "rendered": "paper/synthesis/optimal-sparse-perturbations.pdf",
-          "role": "Ordinary theorem note: exact capacity criterion on strict integer divisibility chains, factorial support-gap classification and Cantor-series gcd criterion. Lean checks the cited feedback and carry core, not the complete capacity criterion or analytic bridge. No Erdos claim status changes.",
+          "role": "One cross-problem paper: capacity and congruence constructions, Lambert subsums across bases, rational-point counts, method obstructions, exact computations and unsuccessful approaches. Principal arguments are ordinary proofs. Cited Lean ingredients retain their exact scope; no original problem status or historical novelty is promoted.",
           "anchor_label_allowlist": [
+            "sec:map",
+            "capacity:sec:criterion",
+            "capacity:eq:capacity",
             "capacity:thm:capacity",
-            "capacity:sec:capacity-proof",
+            "capacity:eq:class",
+            "capacity:eq:congruence",
             "capacity:thm:main",
+            "capacity:eq:gaps",
+            "capacity:eq:both",
             "capacity:cor:density",
-            "capacity:lem:feedback",
-            "capacity:prop:unrestricted",
-            "capacity:thm:gcd",
+            "capacity:sec:capacity-proof",
+            "capacity:eq:overlap",
             "capacity:sec:negative",
+            "capacity:eq:tailbound",
+            "capacity:lem:feedback",
+            "capacity:eq:step",
+            "capacity:eq:selector",
+            "capacity:prop:unrestricted",
             "capacity:sec:carry",
-            "capacity:sec:sources"
+            "capacity:thm:gcd",
+            "sec:results",
+            "thm:dichotomy",
+            "thm:bases",
+            "thm:chains",
+            "thm:forced",
+            "sec:dichotomy",
+            "sec:bases",
+            "sec:base2",
+            "sec:lemmas",
+            "lem:gaps",
+            "lem:translate",
+            "prob:membership",
+            "sec:second",
+            "sec:inventory",
+            "sec:misread",
+            "sec:eliminated",
+            "sec:known",
+            "capacity:sec:sources",
+            "sec:questions"
           ],
           "formal_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d"
         }
@@ -1189,12 +1204,6 @@
             "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #269. Two-prime credit is Steve Fan's; three-prime Lean rank/window versus unproved cofinal escape. The problem remains open."
-          },
-          {
-            "id": "erdos_synthesis_record",
-            "source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
-            "decision": "retain_as_working_record_behind_the_synthesis_note",
-            "thesis": "Working record behind the synthesis note. Its subject is several covered problems read together, not one problem and not a ninth. Two base 2 lemmas, the inventory of negative results across the companion notes with the status each gives them, one computation read wrongly twice and the theorem that replaced it, eliminated ideas, prior art, and open questions. Every proof is ordinary; nothing is checked in Lean."
           }
         ],
         "problem_series": [
@@ -1253,6 +1262,16 @@
             "source": "paper/erdos249-transport-curvature-companion-note.tex",
             "decision": "retired_one_sided_companion",
             "thesis": "The former one-sided Erdős Problem 249 specialist note is not an active mathematical paper; its archived predecessor is historical evidence only, and the registered Lean claims remain queryable from the claim registry."
+          },
+          {
+            "source": "paper/synthesis/erdos-synthesis-subsums-across-bases.tex",
+            "decision": "consolidated_into_one_cross_problem_paper",
+            "thesis": "Content retained in paper/synthesis/optimal-sparse-perturbations.tex; prior versions remain in Git history."
+          },
+          {
+            "source": "paper/synthesis/erdos-synthesis-reading-together-record.tex",
+            "decision": "consolidated_into_one_cross_problem_paper",
+            "thesis": "Content retained in paper/synthesis/optimal-sparse-perturbations.tex; prior versions remain in Git history."
           }
         ],
         "architecture_guides": [
@@ -1282,6 +1301,16 @@
             "id": "additional_erdos249_companion",
             "decision": "do_not_create",
             "reason": "The certificate and diagonal-pincer material is the mathematical centre of the gateway; the retained transport paper already owns the distinct specialist #249 thesis."
+          },
+          {
+            "id": "erdos_synthesis_note",
+            "decision": "consolidated_into_one_cross_problem_paper",
+            "reason": "The results and research record now belong to optimal-sparse-perturbations; do not publish a separate companion."
+          },
+          {
+            "id": "erdos_synthesis_record",
+            "decision": "consolidated_into_one_cross_problem_paper",
+            "reason": "The results and research record now belong to optimal-sparse-perturbations; do not publish a separate companion."
           }
         ]
       },

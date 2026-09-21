@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Keep the original synthesis pair while admitting standalone theorem notes."""
+"""Keep one complete cross-problem paper in every reading edition."""
 
 import json
 from pathlib import Path
@@ -20,8 +20,7 @@ class SynthesisReadingTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.corpus = self.root / "corpus.json"
         self.rows = [
-            self.row(edition.SYNTHESIS_NOTE_ID, "synthesis_paper"),
-            self.row(edition.SYNTHESIS_RECORD_ID, "reasoning_surface"),
+            self.row(edition.SYNTHESIS_PAPER_ID, "synthesis_paper"),
         ]
 
     def row(self, paper_id, publication_class):
@@ -43,30 +42,27 @@ class SynthesisReadingTests(unittest.TestCase):
         with patch.object(edition, "ROOT", self.root), patch.object(edition, "CORPUS", self.corpus):
             return edition.synthesis_papers()
 
-    def test_original_pair_remains_in_order(self):
-        rows = self.load(list(reversed(self.rows)))
-        self.assertEqual([r["paper_id"] for r in rows], [r["paper_id"] for r in self.rows])
+    def test_one_paper_contains_the_complete_record(self):
+        rows = self.load(self.rows)
+        self.assertEqual([r["paper_id"] for r in rows], [edition.SYNTHESIS_PAPER_ID])
+        rendered = edition.synthesis_entry(rows)
+        self.assertIn("A mathematical statement.", rendered)
+        self.assertNotIn("Working record:", rendered)
 
-    def test_standalone_note_needs_no_fabricated_record(self):
-        extra = self.row("factorial-gap-theorem", "synthesis_paper")
-        rows = self.load([extra, *reversed(self.rows)])
-        self.assertEqual([r["paper_id"] for r in rows],
-                         [edition.SYNTHESIS_NOTE_ID, edition.SYNTHESIS_RECORD_ID, extra["paper_id"]])
-        # Entry selection must identify the original pair, not use list order.
-        rendered = edition.synthesis_entry(list(reversed(rows)))
-        self.assertIn(f"Working record: [{edition.SYNTHESIS_RECORD_ID}]", rendered)
-        self.assertIn("Further standalone synthesis notes", rendered)
-        self.assertIn(f"[{extra['title']}]", rendered)
-
-    def test_original_record_is_still_required(self):
-        extra = self.row("factorial-gap-theorem", "synthesis_paper")
-        with self.assertRaisesRegex(edition.ReadingEditionError, "missing original synthesis"):
-            self.load([self.rows[0], extra])
-
-    def test_unpaired_extra_record_is_not_silently_assigned(self):
-        extra = self.row("unrelated-record", "reasoning_surface")
-        with self.assertRaisesRegex(edition.ReadingEditionError, "standalone synthesis notes"):
+    def test_second_synthesis_is_rejected(self):
+        extra = self.row("duplicate-record", "reasoning_surface")
+        with self.assertRaisesRegex(edition.ReadingEditionError, "exactly one"):
             self.load([*self.rows, extra])
+
+    def test_missing_or_wrong_canonical_paper_is_rejected(self):
+        for rows in ([], [self.row("other-paper", "synthesis_paper")]):
+            with self.subTest(rows=rows), self.assertRaisesRegex(edition.ReadingEditionError, "exactly one"):
+                self.load(rows)
+
+    def test_retired_predecessor_is_not_reintroduced(self):
+        retired = self.row("old-record", "reasoning_surface")
+        retired["publication_state"] = "retired"
+        self.assertEqual(len(self.load([retired, *self.rows])), 1)
 
 
 class ReadingLinkTests(unittest.TestCase):
@@ -130,8 +126,7 @@ class ReadingLinkTests(unittest.TestCase):
 
         papers = [row("short257", "problem_paper", 257),
                   row("long257", "reasoning_surface", 257)]
-        synthesis = [row(edition.SYNTHESIS_NOTE_ID, "synthesis_paper"),
-                     row(edition.SYNTHESIS_RECORD_ID, "reasoning_surface")]
+        synthesis = [row(edition.SYNTHESIS_PAPER_ID, "synthesis_paper")]
         out = self.root / "docs/reading-edition"
         out.mkdir()
         intro = out / "INTRODUCTION.md"

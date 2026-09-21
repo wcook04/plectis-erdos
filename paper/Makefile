@@ -23,18 +23,15 @@ PAPERS = erdos1041-lemniscate-reasoning-surface \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
   erdos-1049-rational-base-lambert \
-  erdos-synthesis-subsums-across-bases \
-  erdos-synthesis-reading-together-record optimal-sparse-perturbations
+  optimal-sparse-perturbations
 NOTES = erdos-68-factorial-denominator-irrationality \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
   erdos-1049-rational-base-lambert
-# Synthesis notes and records read several problems together, so they do not
-# belong in NOTES, which is one short standalone note per problem. Keep their
-# build prerequisites together, including standalone mathematical notes.
-SYNTHESIS = erdos-synthesis-subsums-across-bases \
-  erdos-synthesis-reading-together-record optimal-sparse-perturbations
+# One cross-problem paper joins the synthesis results and research record.
+# NOTES remains the eight problem-owned short papers.
+SYNTHESIS = optimal-sparse-perturbations
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
 REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py

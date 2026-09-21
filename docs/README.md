@@ -17,7 +17,7 @@ argument and continue from it.
 |---|---|---|
 | Understand the project without installing anything | [A reader's way in](READING_GUIDE.md) | The eight questions, what formalisation adds, and how to read the evidence. |
 | Read the mathematics | [The papers](../paper/README.md) | A short paper for each problem, then a longer record when you need the details. |
-| Read the comparison across problems | [The synthesis note](../paper/synthesis/erdos-synthesis-subsums-across-bases.pdf) | Which subsums of a Lambert series are rational or irrational as the base varies, and what cannot decide irrationality. |
+| Read the comparison across problems | [The cross-problem paper](../paper/synthesis/optimal-sparse-perturbations.pdf) | Capacity and congruences, Lambert subsums, method obstructions and their full research record. |
 | Find what has been established and what is missing | [Results and limits](RESULTS.md) | The results beside their remaining open questions, with routes to the evidence. |
 | Check a result yourself | [Reproducibility](REPRODUCIBILITY.md) | Inspect one claim without Lean, then install the pinned environment if you want to rebuild proofs. |
 | Continue the work or send a correction | [Contributing](../CONTRIBUTING.md) | A plain-language issue or a focused pull request, with evidence and credit. |

@@ -1,20 +1,34 @@
 <a id="optimal-sparse-perturbations"></a>
 
-# An Exact Capacity Criterion for Series with Eventual Congruences
+# Reading Eight Erdős Problems Together
 
-<a id="abstract"></a>
+<div class="center">
 
-## Abstract
+<span class="smallcaps">Abstract</span>
 
-Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let $`F_n\ge0`$ be integer allowances with $`\sum F_n/Q_n<\infty`$. Series whose nonnegative integer digits satisfy these bounds eventually and are eventually divisible by every fixed integer represent an interval exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$. In that case every nonnegative real is represented; otherwise the set of values is null and meagre. The sufficient direction also imposes eventual divisibility of the cumulative digit sums, with cutoffs common to every target in the interval. Arbitrary oscillation, zero allowances and unbounded denominator ratios are permitted. For factorial denominators and allowances $`n^c`$ on a fixed support, the criterion gives the sharp gap threshold $`\text{gap}<c`$; its contrast with the unrestricted threshold $`\text{gap}\le c`$ occurs exactly at integer exponents. The proof combines common continuation intervals for every cumulative residue with the arithmetic lattice of prefixes. A separate common-divisor criterion isolates an obstruction to rationality for bounded-carry Cantor series.
+</div>
 
-<a id="the-exact-criterion"></a>
+We study series values under restrictions on digits, supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; eventually doubling chains give transcendence at every rational base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
 
-# The exact criterion
+<a id="sec:map"></a>
+
+# From individual problems to reusable questions
+
+Seven of the eight programmes ask whether a series is irrational: $`\sum(n!-1)^{-1}`$ in \#68, reciprocal sums of near-Sylvester sequences in \#243, $`\sum\varphi(n)2^{-n}`$ in \#249, $`\sum p_n2^{-n}`$ in \#251, $`\sum_{n\in S}(2^n-1)^{-1}`$ in \#257, reciprocal running least common multiples in \#269, and $`\sum(t^n-1)^{-1}`$ at rational $`t`$ in \#1049 \[erdosgraham1980; erdos1988\]. The eighth, \#1041, concerns polynomial lemniscates. It supplies no premise for the series arguments below.
+
+What can the freedom to choose digits preserve, and when does arithmetic remove that freedom? Sparse corrections in the \#251 paper motivate the capacity criterion of Section <a href="#capacity:sec:criterion" data-reference-type="ref" data-reference="capacity:sec:criterion">2</a>. Its proof makes one interval of possible continuations work for every cumulative residue. The factorial examples show that the arithmetic restrictions change a sharp support-gap threshold. Factorial denominators $`n!`$ in this construction are not the denominators $`n!-1`$ in \#68.
+
+The common Lambert series in \#257 and \#1049 gives a second comparison in Section <a href="#sec:results" data-reference-type="ref" data-reference="sec:results">3</a>: a base below two permits rational subsums, while nested denominators force irrationality on certain thin supports. Neither interval filling nor a measure estimate decides whether one specified rational is a subsum at base two. Sections <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">3.3</a> and <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">5</a> explain that obstruction, including the exact computation that disproved a proposed stopping rule. Section <a href="#sec:second" data-reference-type="ref" data-reference="sec:second">4</a> retains the other method limits without claiming that they have one common cause.
+
+The proofs presented here are ordinary mathematical arguments. Cited Lean results establish specified ingredients and quoted results, not the complete capacity classification or Lambert-chain theorem. The sources and originating review are credited in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">8</a>. Historical novelty and independent expert review are not established.
+
+<a id="capacity:sec:criterion"></a>
+
+# An exact capacity criterion
 
 A factorial expansion usually permits a digit of size about $`n`$ at position $`n`$. If more digits are allowed, can most positions be discarded? What changes if each fixed integer must eventually divide every digit?
 
-Let $`Q_n`$ be positive integers, $`n\ge1`$, such that $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$. Let $`F_n\in\mathbb Z_{\ge0}`$ satisfy $`\sum_nF_n/Q_n<\infty`$, and put
+Let $`Q_n`$ be positive integers, $`n\ge1`$, such that $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$. Let $`F_n\in\mathbb{Z}_{\ge0}`$ satisfy $`\sum_nF_n/Q_n<\infty`$, and put
 ``` math
 U_N=Q_N\sum_{n>N}\frac{F_n}{Q_n}.
  \tag{C}\label{capacity:eq:capacity}
@@ -32,15 +46,15 @@ with congruence cutoffs depending on $`q`$ but independent of the target. If the
 
 </div>
 
-The criterion compares *all* future capacity with the prefix lattice. It requires no monotonicity, regular variation or gap bound on the allowances, and no upper bound on the denominator ratios. It does not require the $`Q_n`$ to clear every rational denominator. Section <a href="#capacity:sec:capacity-proof" data-reference-type="ref" data-reference="capacity:sec:capacity-proof">2</a> proves the theorem using the same residue-feedback mechanism already present in the public Lean repository. The capacity estimates and complete criterion are ordinary proofs; the abstract feedback endpoint is kernel-checked separately. Both geometric and factorial denominators satisfy the hypotheses.
+The criterion compares *all* future capacity with the prefix lattice. It requires no monotonicity, regular variation or gap bound on the allowances, and no upper bound on the denominator ratios. It does not require the $`Q_n`$ to clear every rational denominator. Section <a href="#capacity:sec:capacity-proof" data-reference-type="ref" data-reference="capacity:sec:capacity-proof">2.2</a> proves the theorem using the same residue-feedback mechanism already present in the public Lean repository. The capacity estimates and complete criterion are ordinary proofs; the abstract feedback endpoint is kernel-checked separately. Both geometric and factorial denominators satisfy the hypotheses.
 
 <a id="the-sharp-support-threshold"></a>
 
 ## The sharp support threshold
 
-Let $`S\subseteq\mathbb N_{\!>0}`$ and $`c>0`$. Define $`E(S,c)`$ to be the set of sums
+Let $`S\subseteq\mathbb{N}_{\!>0}`$ and $`c>0`$. Define $`E(S,c)`$ to be the set of sums
 ``` math
-x=\sum_{n\ge1}\frac{e_n}{n!},\qquad e_n\in\mathbb Z_{\ge0},\quad
+x=\sum_{n\ge1}\frac{e_n}{n!},\qquad e_n\in\mathbb{Z}_{\ge0},\quad
  e_n=0\ (n\notin S),\quad e_n\le n^c\text{ eventually},
  \tag{1}\label{capacity:eq:class}
 ```
@@ -73,7 +87,7 @@ for all sufficiently large $`n`$, with cutoffs depending on $`q`$ but independen
 
 </div>
 
-The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#capacity:sec:carry" data-reference-type="ref" data-reference="capacity:sec:carry">6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">7</a>.
+The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#capacity:sec:carry" data-reference-type="ref" data-reference="capacity:sec:carry">2.6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">8</a>.
 
 For example, with allowance $`n^2`$, every second position suffices without congruences. Under <a href="#capacity:eq:congruence" data-reference-type="eqref" data-reference="capacity:eq:congruence">[capacity:eq:congruence]</a>, infinitely many omitted positions already force a null set. With allowance $`n^{2.01}`$, every second position again suffices, even under <a href="#capacity:eq:both" data-reference-type="eqref" data-reference="capacity:eq:both">[capacity:eq:both]</a>. Thus the strict inequality in <a href="#capacity:eq:gaps" data-reference-type="eqref" data-reference="capacity:eq:gaps">[capacity:eq:gaps]</a> is essential.
 
@@ -91,23 +105,23 @@ For example, with allowance $`n^2`$, every second position suffices without cong
 
 <a id="capacity:sec:capacity-proof"></a>
 
-# Proof of the capacity criterion
+## Proof of the capacity criterion
 
 The necessity and sufficiency use different parts of the expansion. Prefixes supply an arithmetic obstruction; a common interval of possible future remainders makes the residue choices compatible with exact representation.
 
 <a id="bounded-capacity-along-a-subsequence"></a>
 
-## Bounded capacity along a subsequence
+### Bounded capacity along a subsequence
 
 If $`U_N`$ does not tend to infinity, there are a constant $`B>0`$ and arbitrarily large $`N`$ with $`U_N\le B`$. Choose one integer $`q>B`$. Fix a cutoff $`K`$ after which the allowance and divisibility by $`q`$ hold, and fix the finite prefix, of value $`y_0`$. The set $`V`$ of resulting sums is compact by summability and the finite choices at each remaining position. For every such $`N>K`$,
 ``` math
-V\subseteq y_0+\frac q{Q_N}\mathbb Z+[0,B/Q_N].
+V\subseteq y_0+\frac q{Q_N}\mathbb{Z}+[0,B/Q_N].
 ```
 Indeed the scaled prefix after $`K`$ is a multiple of $`q`$ and the remaining tail is at most $`U_N/Q_N`$. These grids leave holes inside every fixed open interval for all sufficiently large selected $`N`$, so $`V`$ is nowhere dense. For a bounded interval $`J`$ they also give $`|V\cap J|\le(B/q)|J|+2B/Q_N`$. Passing to the subsequence and covering $`V`$ by finitely many intervals with total length at most $`|V|+\varepsilon`$ gives $`|V|\le(B/q)(|V|+\varepsilon)`$, hence $`|V|=0`$. A countable union over the cutoffs and integer prefixes covers $`E_Q(F)`$.
 
 <a id="one-continuation-interval-for-every-cumulative-residue"></a>
 
-## One continuation interval for every cumulative residue
+### One continuation interval for every cumulative residue
 
 Suppose $`U_N\to\infty`$ and put $`h_N=\inf_{k\ge N}U_k`$. For sufficiently large $`n`$, let $`M_n`$ be the largest factorial at most $`\min\{n,\sqrt{h_{\lfloor n/2\rfloor}}\}`$, and set the finitely many earlier moduli equal to one. These positive integers are nested under divisibility, tend to infinity, and are eventually divisible by each fixed integer. The delayed lower envelope controls the whole future cost of rounding, even when the denominator ratios are unbounded. Indeed, $`Q_N/Q_k\le2^{N-k}`$, so for sufficiently large $`N`$,
 ``` math
@@ -148,7 +162,7 @@ After an active position $`n`$, the cumulative sum is divisible by $`M_n`$. Each
 
 <a id="from-one-interval-to-every-nonnegative-target"></a>
 
-## From one interval to every nonnegative target
+### From one interval to every nonnegative target
 
 The finite-exception convention in $`E_Q(F)`$ strengthens the conclusion. Given $`y>0`$, choose $`N`$ arbitrarily late with $`\alpha_N<y`$ and put
 ``` math
@@ -162,7 +176,7 @@ The growth hypothesis has content. If repeated denominators are allowed, take $`
 
 <a id="capacity:sec:negative"></a>
 
-# Why a large gap prevents interval filling
+## Why a large gap prevents interval filling
 
 The decisive obstruction is local. At a position $`N`$, the whole preceding factorial sum lies on a lattice of spacing $`1/N!`$. Eventual divisibility widens that spacing to $`q/N!`$, up to a fixed translation. After a sufficiently long gap, all remaining permitted digits reach only a bounded multiple of $`1/N!`$. Choosing one fixed $`q`$ larger than that bound leaves holes at arbitrarily small scales.
 
@@ -188,7 +202,7 @@ If $`c\le1`$, every support gap is at least $`r=1`$, so this proves the first pa
 
 <a id="a-digit-that-also-corrects-the-cumulative-residue"></a>
 
-# A digit that also corrects the cumulative residue
+## A digit that also corrects the cumulative residue
 
 The following construction supplies the positive direction. It is useful beyond factorial weights.
 
@@ -222,7 +236,7 @@ The residue in (8) may depend on $`y`$. Only the schedule of moduli needs to be 
 
 <a id="the-positive-direction-and-the-arithmetic-cost"></a>
 
-# The positive direction and the arithmetic cost
+## The positive direction and the arithmetic cost
 
 Suppose $`c>1`$ and the support gaps are eventually at most $`d=\lceil c\rceil-1`$. Discard a finite prefix and write
 ``` math
@@ -250,7 +264,7 @@ For comparison, remove condition (2) and call the resulting attainable set $`E_0
 
 <div class="proof">
 
-*Proof.* For necessity repeat Section <a href="#capacity:sec:negative" data-reference-type="ref" data-reference="capacity:sec:negative">3</a> with $`r=\lfloor c\rfloor+1`$. The bound in (5) now tends to zero. With lattice spacing $`1/N!`$, it is eventually bounded by $`1/(2N!)`$, so the same compact-set argument applies with $`q=1`$, $`B=1/2`$. For sufficiency, $`r_j\le n_j^c`$ along the support. The ordinary mixed-radix expansion using digits $`0\le b_j<r_j`$ fills $`[0,1/n_0!]`$. To see this directly, the maximum tail after $`n_j`$ is $`1/n_j!`$, since $`(r_k-1)/n_k!=1/n_{k-1}!-1/n_k!`$. The adjacent digit intervals therefore meet, and their lengths tend to zero. ◻
+*Proof.* For necessity repeat Section <a href="#capacity:sec:negative" data-reference-type="ref" data-reference="capacity:sec:negative">2.3</a> with $`r=\lfloor c\rfloor+1`$. The bound in (5) now tends to zero. With lattice spacing $`1/N!`$, it is eventually bounded by $`1/(2N!)`$, so the same compact-set argument applies with $`q=1`$, $`B=1/2`$. For sufficiency, $`r_j\le n_j^c`$ along the support. The ordinary mixed-radix expansion using digits $`0\le b_j<r_j`$ fills $`[0,1/n_0!]`$. To see this directly, the maximum tail after $`n_j`$ is $`1/n_j!`$, since $`(r_k-1)/n_k!=1/n_{k-1}!-1/n_k!`$. The adjacent digit intervals therefore meet, and their lengths tend to zero. ◻
 
 </div>
 
@@ -258,7 +272,7 @@ Thus the difference between the two gap thresholds occurs exactly at integer $`c
 
 <a id="capacity:sec:carry"></a>
 
-# A common-divisor test for irrationality
+## A common-divisor test for irrationality
 
 The distinction between small and large allowances also appears directly in rationality. Let $`b_n\ge2`$ be integers, put $`Q_0=1`$ and $`Q_n=b_1\cdots b_n`$, and consider a Cantor series.
 
@@ -299,20 +313,401 @@ The arithmetic hypothesis cannot be replaced by $`b_n\to\infty`$, even if both c
 ```
 Here $`\gcd(b_n,e_n)\le2`$. This example separates rapid denominator growth from the arithmetic obstruction used in Theorem <a href="#capacity:thm:gcd" data-reference-type="ref" data-reference="capacity:thm:gcd">6</a>.
 
+<a id="why-a-small-allowance-along-a-subsequence-is-insufficient"></a>
+
+## Why a small allowance along a subsequence is insufficient
+
+Without eventual congruences, the allowance $`F(n)=n-1`$ for $`n\ge2`$ gives the full interval $`[0,1]`$, whereas $`F(n)=o(n)`$ as $`n\to\infty`$ gives a null attainable set. The latter conclusion does not follow from small allowances merely along a subsequence, as the example below shows.
+
+For the nullity assertion, eventually $`F(n)+1\le n/2`$ and $`F(n)\le n`$. Thus the number of prefixes through $`N`$ is at most $`C2^{-N}N!`$ for a fixed $`C`$, while the capacity after $`N`$ is at most $`\sum_{n>N}n/n!\le2/N!`$. The covering bound of Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(i), allowing zero-capacity levels to be omitted, tends to zero.
+
+For the subsequence counterexample put $`F(2k)=0`$ and $`F(2k+1)=(2k)(2k+1)-1`$ for $`k\ge1`$, with $`F(1)=0`$. Then
+``` math
+\frac{F(2k+1)}{(2k+1)!}
+ =\frac1{(2k-1)!}-\frac1{(2k+1)!}.
+```
+The total capacity is $`1`$, and the capacity after each permitted index $`2k+1`$ is exactly $`1/(2k+1)!`$, equal to the spacing between its choices. The interval criterion therefore gives every value in $`[0,1]`$, even though $`F(n)/n=0`$ at every even index. The exact telescoping identities and sample greedy expansions are reproduced by the script cited in Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">5</a>; the interval conclusion follows from this argument, not from the samples.
+
+<a id="sec:results"></a>
+
+# Lambert subsums across bases
+
+For real $`t>1`$ and a set $`S`$ of positive integers put
+``` math
+X_S(t)=\sum_{n\in S}\frac{1}{t^n-1},\qquad
+ w_n=\frac{1}{t^n-1},\qquad R_N=\sum_{n>N}w_n .
+```
+Problem \#257 asks whether $`X_S(t)`$ is irrational for every infinite $`S`$ at every integer $`t\ge2`$ \[erdosgraham1980, p. 62\]; Problem \#1049 asks about $`X_{\mathbb{N}_{>0}}(t)`$ at rational $`t`$.
+
+The comparison behind everything is stated for weights with multiplicities. Let $`u_n>0`$ and integers $`D_n\ge1`$ satisfy $`\sum_nD_nu_n<\infty`$, and put
+``` math
+V=\Bigl\{\sum_{n\ge1}\varepsilon_nu_n:\ \varepsilon_n\in\{0,1,\dots,D_n\}\Bigr\},
+ \qquad C_N=\sum_{n>N}D_nu_n .
+```
+
+<div id="thm:dichotomy" class="theorem">
+
+**Theorem 7** (choices against contraction). *<span class="upright">(i)</span> For every $`N`$, the Lebesgue measure of $`V`$ is at most $`C_N\prod_{n\le N}(D_n+1)`$. If $`\liminf_NC_N\prod_{n\le N}(D_n+1)=0`$ then $`V`$ is null.*
+
+*<span class="upright">(ii)</span> If $`u_n\le C_n`$ for every $`n>N_0`$, then for each choice of $`\varepsilon_1,\dots,\varepsilon_{N_0}`$ the set $`V`$ contains the interval $`[\mu,\mu+C_{N_0}]`$, where $`\mu=\sum_{n\le N_0}\varepsilon_nu_n`$.*
+
+*<span class="upright">(iii)</span> For $`u_n=\beta^{-n}`$ with real $`\beta>1`$ and $`D_n=D`$, the bound in <span class="upright">(i)</span> tends to $`0`$ exactly when $`D+1<\beta`$, and the hypothesis of <span class="upright">(ii)</span> holds exactly when $`D+1\ge\beta`$.*
+
+</div>
+
+Part (ii) is Kakeya’s covering argument and part (i) is the standard covering bound; both are classical \[hornich1941; nitecki2013; fridy1966\], and Kovač and Tao give a scalar reciprocal-choice covering lemma \[kovactao2024, Lemma 5.1\]; their higher-dimensional approximation lemma is Lemma 7.2 of the same paper. We claim no novelty for Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>. Its use here is to say which side each problem lies on.
+
+<div id="thm:bases" class="theorem">
+
+**Theorem 8** (the subseries across bases). *Let $`t>1`$ be real.*
+
+*<span class="upright">(a)</span> If $`t<2`$, let $`N_0\ge0`$ be least with $`t^{-n}\le2-t`$ for all $`n>N_0`$. Then the set of values $`X_S(t)`$ is the union of the intervals $`[X_F(t),X_F(t)+R_{N_0}]`$ over $`F\subseteq\{1,\dots,N_0\}`$, where $`X_F(t)=\sum_{n\in F}w_n`$; in particular it contains $`[0,R_{N_0}]`$. If moreover $`t=a/b`$ in lowest terms, then every rational in $`[0,R_{N_0}]`$ whose reduced denominator shares a prime factor with $`ab`$ equals $`X_S(t)`$ for some $`S`$, and every such $`S`$ is infinite. There is an infinite $`S\subseteq\{2,3,\dots\}`$ with $`X_S(3/2)=1/2`$.*
+
+*<span class="upright">(b)</span> If $`t=2`$, every value has exactly one $`S`$, and the set of values is a Cantor set of Lebesgue measure $`1`$ inside $`[0,E]`$, where $`E=\sum_{n\ge1}(2^n-1)^{-1}=1.6066951524\ldots`$.*
+
+*<span class="upright">(c)</span> If $`t>2`$, the set of values is null.*
+
+</div>
+
+Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s theorem as proved by Nitecki \[plectis257; hornich1941; nitecki2013\]; Kovač and Tao record the strict inequality $`w_N>R_N`$ and the Cantor-set conclusion for every fixed base $`t\ge2`$ \[kovactao2024, Remark 4.1\]. Parts (a) and (c) follow from Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a> in a few lines. We have not found part (a) stated for non-integer bases and it may be known. It shows that the statement asked in \#257 is false at every rational base below $`2`$, so any proof at base $`2`$ must use more than the shape of the series.
+
+<div id="thm:chains" class="theorem">
+
+**Theorem 9** (divisibility chains). *Let $`t=a/b>1`$ in lowest terms and let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
+
+*<span class="upright">(a)</span> If $`a^2>b^3`$, then $`X_S(t)`$ is irrational.*
+
+*<span class="upright">(b)</span> If $`n_{j+1}=2n_j`$ for all large $`j`$, then $`X_S(t)`$ is transcendental, with no condition on $`a`$ and $`b`$.*
+
+</div>
+
+The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#thm:bases" data-reference-type="ref" data-reference="thm:bases">8</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056830213840605\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that the sufficient cutoff supplied by one integer-polynomial family with common leading degree, coefficient-height and decay bounds at every fixed real base $`x>1`$ is at most $`1/2`$ \[plectis1049, Theorem 5\]. This restriction does not exclude stronger estimates at a particular base or a different choice of family there. Thin supports reach further than the full sum because the denominators divide one another.
+
+At base $`2`$ the greedy rule characterises membership and supplies finite certificates of nonmembership: starting from $`r_0=x`$, take index $`n`$ when $`r_{n-1}\ge w_n`$ and subtract. Since $`w_n>R_n`$, a real $`x\in[0,E]`$ is a subsum if and only if no remainder falls strictly between $`R_n`$ and $`w_n`$; we say $`x`$ is *rejected at step $`n`$* when that happens first at index $`n`$.
+
+<div id="thm:forced" class="theorem">
+
+**Theorem 10** (the fixed-depth rational count). *Fix $`N\ge1`$. Among the reduced fractions $`p/q\in(0,E]`$ with $`q\le Q`$, the proportion not rejected in the first $`N`$ steps tends to $`2^NR_N/E`$ as $`Q\to\infty`$, with error $`O(2^N\log Q/Q)`$. Consequently the upper limit of the proportion that are subsums is at most $`1/E=0.62239\ldots`$.*
+
+</div>
+
+The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with this fixed-depth limiting proportion therefore does not establish membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a> is the correction. Section <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">3.3</a> states what remains.
+
+<a id="evidence."></a>
+
+#### Evidence.
+
+The proofs of Theorems <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>–<a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a> are ordinary proofs. Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">9</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually doubling case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
+
+<a id="sec:dichotomy"></a>
+
+## Choices against contraction
+
+<div class="proof">
+
+*Proof of Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>.* (i) A choice of $`\varepsilon_1,\dots,\varepsilon_N`$ fixes $`\sum_{n\le N}\varepsilon_nu_n`$, and the rest of the sum lies in $`[0,C_N]`$. So $`V`$ is covered by at most $`\prod_{n\le N}(D_n+1)`$ intervals of length $`C_N`$.
+
+\(ii\) Subtracting $`\mu`$, it suffices to reach every $`y\in[0,C_{N_0}]`$ with the levels $`n>N_0`$. Put $`y_{N_0}=y`$ and, for $`n>N_0`$, let $`\varepsilon_n=\min(D_n,\lfloor y_{n-1}/u_n\rfloor)`$ and $`y_n=y_{n-1}-\varepsilon_nu_n`$. If $`0\le y_{n-1}\le C_{n-1}=D_nu_n+C_n`$ then $`0\le y_n\le C_n`$: when $`\varepsilon_n=D_n`$ this is a subtraction, and when $`\varepsilon_n<D_n`$ it holds because $`y_n<u_n\le C_n`$. Since $`C_n\to0`$, the sum of the $`\varepsilon_nu_n`$ is $`y`$.
+
+\(iii\) Here $`C_n=D\beta^{-n}/(\beta-1)`$. The product in (i) is a constant multiple of $`((D+1)/\beta)^N`$, and $`u_n\le C_n`$ says $`\beta-1\le D`$. ◻
+
+</div>
+
+The reading that matters for irrationality is immediate. Suppose a family of series has values $`x_0+\sum\varepsilon_nu_n`$ with the $`\varepsilon_n`$ free as in (ii). The values then fill an interval, which contains rationals and irrationals, so a property that all members of the family share implies neither. A proof of irrationality for one member has to use something that distinguishes it inside the family. Two constructions in the companion notes are families of this kind.
+
+*Problem \#251.* Proposition 1 of \[plectis251\] (ordinary proof), applied in its Corollary 2 to the prime gaps, changes the gaps on a set of upper Banach density zero, by nonnegative integers below any prescribed function tending to infinity, keeping every congruence modulo every fixed $`q`$ from some point on, and reaches every real in an interval. The resulting positions $`P_n`$ satisfy $`P_n\sim n\log n`$ and are not asserted to be prime. In the notation above the $`j`$-th block has $`u_j=M_j2^{-n_j-2}`$ and $`D_j=2^{s_j}-1`$, and the inequality verified there is $`u_j\le C_j`$. The lemma is credited there to \[fridy1966\], \[crmarickovac2025, Lemma 4\] and \[kovactao2024, Lemma 5.1\]. The note also proves that a bounded allowance is impossible under the stated congruences. Thus every allowance tending to infinity suffices, while no bounded allowance does. The specified growth, eventual fixed-modulus congruences and empirical distributions of unnormalised blocks therefore do not suffice to prove $`\sum p_n2^{-n}`$ irrational; neither primality nor every quantitative correlation is preserved.
+
+*Problem \#249.* Section 5 of \[plectis249\] gives an integer sequence $`c`$ with $`c(n)=\varphi(n)`$ for odd $`n`$, $`|c(n)-\varphi(n)|\le2`$ for even $`n`$, $`0\le c(n)\le n`$ and $`\sum c(n)2^{-n}=5/4`$ (Lean-checked there). Changing even indices by at most $`2`$ is the case $`u_n=2^{-n}`$ for even $`n`$, $`D_n=4`$, where $`C_n\ge\tfrac43 2^{-n}>u_n`$.
+
+The same comparison appears in Kovač and Tao’s theorem that for integers $`2\le t_1<\dots<t_m`$ with $`\sum1/(t_k-1)>1`$ there are sets $`S_k`$, one of them infinite, with $`\sum_kX_{S_k}(t_k)`$ rational \[kovactao2024, Theorem 2.3\]: merging the weights of the $`m`$ bases, the sum of all weights below a given weight $`u`$ is at least $`(1-O(u))\,u\sum1/(t_k-1)`$, which exceeds $`u`$ once $`u`$ is small.
+
+<a id="sec:bases"></a>
+
+## The subseries across bases
+
+<div class="proof">
+
+*Proof of Theorem <a href="#thm:bases" data-reference-type="ref" data-reference="thm:bases">8</a>.* (a) Since $`R_n\ge\sum_{k>n}t^{-k}=t^{-n}/(t-1)`$ and $`w_n=t^{-n}/(1-t^{-n})`$, the inequality $`w_n\le R_n`$ holds as soon as $`t^{-n}\le2-t`$. Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(ii) with $`D_n=1`$ gives, for each $`F\subseteq\{1,\dots,N_0\}`$, the interval $`[X_F(t),X_F(t)+R_{N_0}]`$, and every value $`X_S(t)`$ lies in the one with $`F=S\cap[1,N_0]`$. For $`t=a/b`$ a finite subsum is $`\sum_{n\in F}b^n/(a^n-b^n)`$, whose denominator divides $`\prod(a^n-b^n)`$ and is coprime to $`ab`$. A rational whose denominator is not coprime to $`ab`$ is therefore never a finite subsum, and inside the interval it is a subsum. At $`t=3/2`$ the inequality $`t^{-n}\le1/2`$ holds for $`n\ge2`$ and $`R_1>1/2`$.
+
+\(c\) For $`t>2`$, $`2^NR_N\le2^Nt^{-N}/((t-1)(1-t^{-1}))\to0`$, and Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(i) applies. ◻
+
+</div>
+
+<div class="proof">
+
+*Proof of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">9</a>.* Write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
+``` math
+0<X_S(t)-S_j\le\sum_{n\ge n_{j+1}}\frac{\rho^n}{1-\rho^n}
+ \le\frac{\rho^{\,n_{j+1}}}{(1-\rho)^2}.
+```
+Each ratio $`n_{j+1}/n_j`$ is an integer at least $`2`$.
+
+Suppose the ratio is at least $`3`$ for infinitely many $`j`$. For those $`j`$,
+``` math
+0<D_j\bigl(X_S(t)-S_j\bigr)\le\frac{a^{n_j}\rho^{3n_j}}{(1-\rho)^2}
+ =\frac{1}{(1-\rho)^2}\Bigl(\frac{b^3}{a^2}\Bigr)^{n_j}\longrightarrow0
+```
+when $`a^2>b^3`$. If $`X_S(t)=p/q`$, then $`qD_j(X_S(t)-S_j)`$ is a positive integer for every $`j`$, a contradiction.
+
+Otherwise the ratio is $`2`$ from some index on, which is the case of part (b), and $`S`$ is a finite set together with $`\{d,2d,4d,\dots\}`$. With $`z=t^{-d}`$ the infinite part contributes $`g(z)`$, where
+``` math
+g(z)=\sum_{k\ge0}\frac{z^{2^k}}{1-z^{2^k}},\qquad
+ g(z^2)=g(z)-\frac{z}{1-z}.
+```
+We use Nishioka’s value theorem for Mahler systems \[nishioka1996\], in the precise form quoted by Adamczewski and Faverjon \[adamczewskifaverjon2016, Theorem 1.1, p. 3\]. At an algebraic regular point it equates the transcendence degree of the function values with that of the functions over $`\overline{\mathbb{Q}}(z)`$. Here the system is
+``` math
+\begin{pmatrix}g(z)\\1\end{pmatrix}
+ =\begin{pmatrix}1&z/(1-z)\\0&1\end{pmatrix}
+  \begin{pmatrix}g(z^2)\\1\end{pmatrix}.
+```
+The matrix and its inverse have no poles at any iterate $`\rho^{\,d2^k}\in(0,1)`$, so $`\rho^d`$ is regular. The function $`g`$ is transcendental: at a root of unity $`\zeta`$ of order $`2^j`$ the terms with $`k\ge j`$ are positive on the ray $`r\zeta`$ and diverge as $`r\to1`$, while the earlier terms stay bounded, so $`g`$ has infinitely many singularities on the unit circle. An algebraic function over $`\mathbb{C}(z)`$ has only finitely many singular points, so $`g`$ is transcendental over $`\mathbb{C}(z)`$. Hence $`g(\rho^{\,d})`$ is transcendental, and adding the rational finite part proves (b) and completes (a). ◻
+
+</div>
+
+We do not know whether $`a^2>b^3`$ is necessary in (a). The first open case is base $`4/3`$ with a chain whose ratios are $`2`$ except for infinitely many $`3`$s.
+
+<a id="sec:base2"></a>
+
+## Base two
+
+<a id="sec:lemmas"></a>
+
+### Removed intervals and finite translations
+
+For the remainder of this subsection, take $`t=2`$: $`w_n=(2^n-1)^{-1}`$, $`R_N=\sum_{n>N}w_n`$, $`g_n=w_n-R_n>0`$, $`X_F=\sum_{n\in F}w_n`$ for finite $`F`$, and $`\mathcal A`$ is the set of all subsums.
+
+<div id="lem:gaps" class="lemma">
+
+**Lemma 11** (the removed intervals). *$`[0,E]\smallsetminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Fix the digits $`\varepsilon_1,\dots,\varepsilon_{n-1}`$ and let $`s=\sum_{i<n}\varepsilon_iw_i`$. The values with these digits lie in $`[s,s+R_{n-1}]`$, and they split into $`[s,s+R_n]`$ and $`[s+w_n,s+w_n+R_n]`$. The interval between them is $`(s+R_n,s+w_n)`$. Its right end is $`X_F`$ with $`F=\{i<n:\varepsilon_i=1\}\cup\{n\}`$ and its length is $`g_n`$. Every finite nonempty $`F`$ arises once. The total length is $`E`$ minus the measure of $`\mathcal A`$, which is $`1`$ \[plectis257, Section 7\]. The series for $`g_n`$ follows from $`w_n=\sum_{j\ge1}2^{-jn}`$ and $`R_n=\sum_{j\ge1}2^{-jn}/(2^j-1)`$. ◻
+
+</div>
+
+<div id="lem:translate" class="lemma">
+
+**Lemma 12** (translation by a finite subsum). *Let $`F`$ be finite with largest element $`n`$ and let $`0\le x\le R_n`$. The greedy rule applied to $`X_F+x`$ selects exactly $`F`$ among the indices up to $`n`$ and then agrees with the greedy rule applied to $`x`$. In particular $`X_F+x\in\mathcal A`$ if and only if $`x\in\mathcal A`$, and $`X_F+x`$ is rejected at a step $`m>n`$ exactly when $`x`$ is.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* At an index $`i\le n`$ the remainder is $`X_{F\cap[i,n]}+x`$. If $`i\in F`$ it is at least $`w_i`$ and the index is taken. If $`i\notin F`$ it is at most $`R_i-R_n+x\le R_i<w_i`$, so the index is skipped and nothing is rejected. After index $`n`$ the remainder is $`x`$. ◻
+
+</div>
+
+Two consequences. The map $`x\mapsto x+1`$ preserves reduced denominators, so at every step $`n\ge2`$ the number of fractions of height at most $`Q`$ rejected at that step is even; every saved table has this property. The condition is $`x\le R_{\max F}`$. It is not enough that $`X_F+x\le E`$: $`x=1/2`$ is not rejected through step $`160`$, while $`1/2+1/3=5/6`$ lies in $`(R_1,1)`$ and is rejected at step $`1`$. Counts of rejections should therefore be taken modulo these translations. At height $`200`$ the four fractions rejected at step $`12`$ are $`46/183`$ and its translates by $`1/3`$, $`1`$ and $`4/3`$, one event.
+
+A finite subsum has odd denominator, since $`\prod_{n\in F}(2^n-1)`$ is odd. So a rational with even denominator is never a finite subsum, and if it is a subsum at all its set $`S`$ is infinite.
+
+<a id="fixed-depth-rational-counts"></a>
+
+### Fixed-depth rational counts
+
+<div class="proof">
+
+*Proof of Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a>.* Fixing the first $`N`$ digits gives $`2^N`$ closed intervals of length $`R_N`$. They are pairwise disjoint because $`w_n>R_n`$, and a real in $`[0,E]`$ is not rejected in the first $`N`$ steps exactly when it lies in their union $`K_N`$, which has measure $`2^NR_N`$. For an interval $`I`$ of length $`\ell`$, the number of integers $`p`$ coprime to $`q`$ with $`p/q\in I`$ is $`\varphi(q)\ell+O(2^{\omega(q)})`$ by inclusion and exclusion. Summing over $`q\le Q`$ with $`\sum_{q\le Q}\varphi(q)=3Q^2/\pi^2+O(Q\log Q)`$ and $`\sum_{q\le Q}2^{\omega(q)}=O(Q\log Q)`$ gives $`3Q^2\ell/\pi^2+O(Q\log Q)`$. Apply this to the $`2^N`$ intervals of $`K_N`$ and to $`(0,E]`$ and divide. The second statement follows because every subsum lies in every $`K_N`$ and $`2^NR_N\to1`$. ◻
+
+</div>
+
+The intervals removed at step $`n`$ are explicit. Put $`g_n=w_n-R_n`$, so that $`g_n=\tfrac23 4^{-n}+O(8^{-n})`$. For a finite nonempty $`F`$ with largest element $`n`$, the interval $`(X_F(2)-g_n,\,X_F(2))`$ is removed at step $`n`$, and
+``` math
+[0,E]\smallsetminus\mathcal A=\bigsqcup_{F\ne\varnothing}\bigl(X_F(2)-g_{\max F},\,X_F(2)\bigr),
+ \qquad\sum_{n\ge1}2^{n-1}g_n=E-1,
+```
+where $`\mathcal A`$ is the set of subsums. By Theorem <a href="#thm:bases" data-reference-type="ref" data-reference="thm:bases">8</a>(b) a rational with an infinite $`S`$ is exactly a counterexample to \#257 at base $`2`$. So \#257 at base $`2`$ holds if and only if every rational in $`[0,E]`$ that is not a finite subsum lies strictly between $`X_F(2)-g_{\max F}`$ and $`X_F(2)`$ for some finite nonempty $`F`$. This is a one-sided question of approximation by the countable set of finite subsums, with an error that shrinks like $`4^{-\max F}`$.
+
+Under \#257 the only fractions of height at most $`Q`$ that are subsums are the finite subsums, $`40`$ of the $`19{,}653`$ fractions with $`2\le q\le200`$. A model that treats later remainders as equidistributed gives the opposite extreme, a proportion tending to $`1/E`$, because the shares $`2^{n-1}g_n/E`$ of the removed intervals are summable. That model asserts that \#257 fails for a positive proportion of all rationals. The fixed-depth limiting proportion does not distinguish this claim from its negation. An arithmetic argument, or a count with separately justified estimates as both depth and height grow, is needed. Measure does not decide either. Boes, Darst and Erdős construct symmetric Cantor sets of every measure in $`[0,1)`$ that contain essentially no rationals \[boesdarsterdos1981\].
+
+The exact computation in \[plectisinvestigation\] agrees with Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a> step by step. Among the $`19{,}653`$ reduced fractions with $`2\le q\le200`$, the numbers rejected at steps $`1`$, $`2`$ and $`7`$ are $`4809`$, $`1470`$ and $`32`$, against $`4811`$, $`1467`$ and $`32`$ from the measures of the removed intervals. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which falls below $`1`$ near $`n=2\log_2Q-2\log_2\pi`$. This is not a deterministic cutoff: the error in Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a> does not justify such an extrapolation. For example, $`189/388`$ is first rejected at step $`17`$, beyond this scale for $`Q=388`$. Its selected indices before rejection are $`F=\{2,3,7,9,10,14,15,16\}`$, and exact arithmetic gives
+``` math
+R_{17}\le\frac{196609}{25769803776}
+ <\frac{189}{388}-X_F(2)
+ =\frac{9291822600689}{1217890317075045460}
+ <\frac1{131071}=w_{17}.
+```
+Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">5</a> supplies the earlier-step checks. Deeper computation can therefore produce new exclusion certificates; absence of a later rejection still does not prove membership. No rational is known to have an infinite $`S`$ at base $`2`$.
+
+<div id="prob:membership" class="problem">
+
+**Problem 13**. Decide whether $`1/2`$ is a subsum of $`\sum(2^n-1)^{-1}`$. By \[plectis257, Theorem 7\] this holds if and only if the integer remainders of the greedy rule fail to increase at infinitely many steps.
+
+</div>
+
+The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#prob:membership" data-reference-type="ref" data-reference="prob:membership">13</a> asks about one explicit rational point.
+
+<a id="sec:second"></a>
+
+# Limits on methods
+
+<span id="sec:inventory" label="sec:inventory"></span>
+
+Status is as stated in each note: L for checked in Lean there, O for an ordinary proof there, C for cited there.
+
+| Note | Location | Statement |  |
+|:---|:---|:---|:---|
+| \#68 \[plectis68\] | Section 6 | Under the displayed cancellation hypotheses, the integer-gap comparison fails at cutoffs $`N=D+O(1)`$ as the cancellation cutoff $`D\to\infty`$. Small tails alone do not give the strict comparison. | O |
+| \#243 \[plectis243\] | Proposition 17 | A counterexample has errors that are eventually nonzero, relatively small, with unbounded negative parts. This necessary profile is formalised; the comparison with scalar profiles and the need for denominator compatibility are ordinary discussion. | L, O |
+| \#249 \[plectis249\] | Section 5 | A rational series with the totient’s values at odd indices, within $`2`$ at even indices, and sum $`5/4`$. Positive tail differences need not be nonintegral. | L |
+| \#249 \[plectis249\] | Theorem 9 | Every admissible rank-one quotient stays more than $`21/320`$ from its target. | L |
+| \#251 \[plectis251\] | Proposition 1, Corollary 2 | For every allowance $`f(n)\to\infty`$, sparse nonnegative corrections reach every real in an interval while every fixed modulus eventually divides both the corrections and their cumulative sums. A bounded allowance is impossible under these congruences. Sources: \[fridy1966\], \[crmarickovac2025, Lemma 4\], \[kovactao2024, Lemma 5.1\], \[vandoornkovac2025\]. | O |
+| \#257 \[plectis257\] | Section 6 | The small-displacement quantity stays above $`1/2`$ at full support, where the value is irrational \[erdos1948\]. No proof covering full support can rest on it. | L, O |
+| \#257 \[plectis257\] | Section 3 | Every positive divisor cover costs at least $`e`$ times the mean of $`\log^+`$ of its multiplicity. The averaging method cannot reach the prime support, where irrationality is known at base $`2`$ \[taoteravainen2025\]. | O |
+| \#269 \[plectis269\] | Theorem 1 | Nonsingular minors of every order: no finite sum of products separates one exponent from the other two. Fan posted the two-prime separation \[fan2026comment\]; the three-prime statement is the note’s. | L |
+| \#1049 \[plectis1049\] | Theorem 5 | One family of nonzero integer-polynomial linear forms with common leading degree, coefficient-height and decay bounds at every fixed real $`x>1`$ has $`\sigma\le\delta`$; the sufficient cutoff $`\sigma/(\sigma+\delta)`$ supplied by those estimates is at most $`1/2`$. Ordinary proof, with the contradiction step and the comparison with $`1/2`$ checked in Lean. | O, L |
+| \#1049 \[plectis1049\] | Theorem 7 | The stated clearing conditions cannot be met at base $`3/2`$. | L |
+
+Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(ii) explains interval filling in the \#251 construction. The \#249 countermodel is a separate explicit construction with its own preserved identities. The \#1049 restriction does not exclude stronger base-specific estimates, different families at different bases, or forms involving several target values. The others bound a method. We tried to state one inequality that covers \#1049 Theorem 5 and the cover cost of \#257, a cost of clearing denominators against the decay gained, and did not find a formulation that survives both sets of hypotheses. We do not claim the rows share a cause.
+
+<a id="sec:misread"></a>
+
+# The computation and its limits
+
+The computation \[plectisinvestigation\] runs the greedy rule in exact arithmetic on every reduced fraction in $`(0,E]`$ with $`2\le q\le Q`$.
+
+*First reading.* At $`Q=36`$, $`382`$ of $`633`$ fractions are not rejected through step $`160`$ and $`14`$ are finite subsums, a share $`(382+14)/633=0.6256`$ close to $`1/E=0.6224`$. This was read as evidence that about $`62\%`$ of rationals are subsums, hence that \#257 is false. The reading is wrong. By Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a> above the share at any fixed depth tends to $`2^NR_N/E`$ whatever the truth of \#257, because fractions equidistribute over the $`2^N`$ intervals that survive $`N`$ steps.
+
+*An incorrect stopping rule.* A subsequent interpretation went too far in the opposite direction, asserting that survival after about $`2\log_2Q-3.3`$ steps was forced. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which is below $`1`$ for $`n>2\log_2Q-2\log_2\pi`$, about step $`12`$ at $`Q=200`$. A main term below $`1`$ does not make the actual count zero. Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">10</a> is a fixed-depth asymptotic, and its error $`O(2^N\log Q/Q)`$ does not justify an extrapolation to $`N\sim2\log_2Q`$. Late rejections remain exact nonmembership certificates; the $`12{,}218`$ fractions not rejected through step $`60`$ have only that finite-depth status. At $`N=12`$ the observed share is $`0.62372`$ against $`2^{12}R_{12}/E=0.62245`$.
+
+*An exact rejection at step $`17`$.* The witness $`189/388`$, recorded in the earlier investigation’s Desk B report, contradicts the proposed stopping rule: $`2\log_2 388-2\log_2\pi`$ is about $`13.9`$. The selected indices through step $`16`$ are $`F=\{2,3,7,9,10,14,15,16\}`$. At each skipped earlier index $`n`$, exact rational arithmetic gives a remainder at most $`2^{-n}<R_n`$, so no rejection has yet occurred. The remaining value is
+``` math
+r=\frac{189}{388}-X_F
+  =\frac{9291822600689}{1217890317075045460}.
+```
+Since $`1/(2^k-1)=2^{-k}+4^{-k}/(1-2^{-k})`$ and $`1/(1-2^{-k})\le2`$ for $`k\ge1`$, summing gives
+``` math
+R_n\le2^{-n}+\frac{2}{3\cdot4^n}.
+```
+At $`n=17`$, the exact comparison is
+``` math
+R_{17}\le\frac{196609}{25769803776}<r<\frac1{131071}=w_{17}.
+```
+The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">12</a>. The independent reproduction, including every earlier skipped step, is in `research/experiments/sparse_interpolation/late_rejection.py`. This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
+
+What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">11</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">12</a>.
+
+<a id="sec:eliminated"></a>
+
+# Eliminated ideas
+
+1.  *If the reachable values form a null set, no rational value is reachable.* False. Take the binary series with digit $`1`$ everywhere except digit $`0`$ at positions $`n_1<n_2<\cdots`$, and allow each of those digits to be changed to $`1`$. The reachable values form a null set when the positions are sparse, by Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(i), yet changing all of them gives $`\sum2^{-n}=1`$. So no count of choices against contraction, and no depth depending only on sparsity, excludes a particular rational.
+
+2.  *Every infinite subset of a host with null subsum set has an irrational sum.* A host is a set $`B`$ of allowed indices, and its subsum set is $`\{X_S(2):S\subseteq B\}`$. For hosts chosen without reference to the target this is open and is a form of \#257 itself. As a universal statement it cannot be a route: the support of any rational subsum with infinite $`S`$ would be such a host. The subsum set of a host $`B`$ has positive measure exactly when the complement of $`B`$ is finite, by Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(i) and the measure at full support.
+
+3.  *The share of surviving fractions as evidence.* Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">5</a>.
+
+4.  *A wrong locator.* A draft of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">9</a>(b) cited Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a> of \[adamczewskifaverjon2026\] as Nishioka’s theorem. That theorem says a value of a Mahler function at an algebraic point is rational or transcendental, which cannot prove irrationality. The proof in Section <a href="#sec:bases" data-reference-type="ref" data-reference="sec:bases">3.2</a> uses Nishioka’s value theorem as quoted in \[adamczewskifaverjon2016, Theorem 1.1, p. 3\], applied there to the two-dimensional system for $`(g,1)`$ with regular points in $`(0,1)`$.
+
+5.  *Algebraic independence for \#1049.* With $`g`$ as in Section <a href="#sec:bases" data-reference-type="ref" data-reference="sec:bases">3.2</a>, $`\sum_{n\ge1}(t^n-1)^{-1}=\sum_{m\ \mathrm{odd}}g(t^{-m})`$, and each $`g(t^{-m})`$ is transcendental for rational $`t>1`$. This gives nothing for the infinite sum: limits of transcendental numbers take every value. No applicable value theorem for this decomposition is supplied here.
+
+<a id="sec:known"></a>
+
+# What was already known
+
+- The covering argument of Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">7</a>(ii) goes back to Kakeya; see \[hornich1941; nitecki2013; fridy1966\]. Its use to build rational series inside a class defined by soft data is the method of Kovač and Tao \[kovactao2024\], of Crmarić and Kovač \[crmarickovac2025\] and of van Doorn and Kovač \[vandoornkovac2025\].
+
+- That the subsums of $`\sum(t^n-1)^{-1}`$ form a Cantor set at fixed $`t\ge2`$ is \[kovactao2024, Remark 4.1\].
+
+- A closed set of positive measure can contain essentially no rationals \[boesdarsterdos1981\], so the heuristic of Section <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">3.3</a> cannot be a consequence of measure.
+
+- The rational-point counting papers examined here concern null Cantor sets \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. The searches were made on 20 September 2026 and are listed in the repository record.
+
+- One identity with a consequence. Since $`\sum_{n\ge1}\mu(n)/(b^n-1)=1/b`$, the sums of $`(b^n-1)^{-1}`$ over squarefree $`n`$ with an even, respectively odd, number of prime factors are $`\tfrac12(X_{\mathrm{sf}}(b)\pm1/b)`$. Duverney and Tachiya prove that $`X_{\mathrm{sf}}(2^j)`$ is irrational \[duverneytachiya, Corollary 1.2 and Example 1.1\], as quoted in \[plectis257, Section 6\], so both sums are irrational at every base $`2^j`$. Both supports have divergent reciprocal sums. The identity at base $`2`$ is derived in \[plectis249, Section 5\]; the corollary may be known.
+
 <a id="capacity:sec:sources"></a>
 
-# Sources, formal correspondence, and further questions
+# Sources and formal correspondence
 
-The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#capacity:lem:feedback" data-reference-type="ref" data-reference="capacity:lem:feedback">4</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this note. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, and the common-divisor formulation.
+The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#capacity:lem:feedback" data-reference-type="ref" data-reference="capacity:lem:feedback">4</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, and the common-divisor formulation.
 
 Airey, Mance and Vandehey already use digit sets eventually divisible by every fixed integer while retaining asymptotically full digit entropy \[amv2015, Section 6, p. 1321\]. Their theorem concerns normality and Hausdorff dimension for chosen Cantor bases. Here a fixed divisibility chain and arbitrary summable allowances are given, and the conclusion distinguishes interval filling from nullity and meagreness. These are elementary arguments in the classical theory of Cantor series and achievement sets; historical novelty of the exact classification is not established. Classical interval covering is background, rather than a contribution claimed here. A literature comparison and the reproducible checks are recorded in [the accompanying research record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/README.md). The work was developed with AI assistance and mathematical cross-checking by separate agent passes; that does not constitute independent expert review.
 
 The formal module [`CongruenceInterpolation.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean) uses the existing feedback module and states the common-divisor obstruction for a real carry recurrence. The analytic identification of that recurrence with the Cantor series, and the capacity and support classifications, are the ordinary proofs above. The module [`FeedbackContinuation.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Synthesis/FeedbackContinuation.lean) reuses the existing interval-feedback endpoint and proves eventual individual and cumulative divisibility from nested cofinal moduli; choosing the moduli and continuation intervals remains part of the ordinary proof. See the research record for the exact build status and source revision. No claim about any of the eight Erdős programmes changes; in particular factorial denominators $`n!`$ here are not $`n!-1`$ from \#68.
 
+<a id="sec:questions"></a>
+
+# Further questions
+
+1.  Is $`1/2`$ a subsum of $`\sum(2^n-1)^{-1}`$? The exact obligation is in \[plectis257, Theorem 7\]. By Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">11</a> the general question is one-sided approximation of a rational by finite subsums $`X_F`$ to within $`g_{\max F}`$.
+
+2.  Does the count of fractions of height at most $`Q`$ rejected at step $`n`$ stay close to $`(3Q^2/\pi^2)2^{n-1}g_n`$ in the joint range $`n\le(2-\varepsilon)\log_2Q`$, counted modulo the translations of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">12</a>? A persistent excess would be the first sign of an arithmetic mechanism for \#257.
+
+3.  Is $`a^2>b^3`$ necessary in Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">9</a>(a)? First case: base $`4/3`$, a chain with ratios $`2`$ and infinitely many ratios $`3`$.
+
+4.  Is there one inequality behind \#1049 Theorem 5 and the cover cost of \#257?
+
 The capacity criterion already covers non-power and oscillating allowances. For factorial gaps of fixed length $`m`$, a bounded multiple of $`n^m`$ still gives the lattice obstruction, whereas $`n^mL(n)`$ with $`L(n)\to\infty`$ permits interval filling. A further question concerns the null case: what finer tail data determine its Hausdorff dimension? The criterion itself does not separate dimension zero from full-dimensional null sets. Outside integer divisibility chains the prefix lattice changes, so no corresponding necessity is asserted here.
 
 <div class="thebibliography">
 
-9 D. Airey, B. Mance and J. Vandehey, *Normality preserving operations for Cantor series expansions and associated fractals. II*, New York J. Math. **21** (2015), 1311–1326. <https://nyjm.albany.edu/j/2015/21-60v.pdf>.
+99 P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980.
+
+P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009).
+
+P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969).
+
+H. Hornich, *Über beliebige Teilsummen absolut konvergenter Reihen*, Monatshefte für Mathematik und Physik **49** (1941), 316–320. [doi:10.1007/BF01707309](https://doi.org/10.1007/BF01707309).
+
+Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013).
+
+John A. Fridy, [*Generalized bases for the real numbers*](https://www.fq.math.ca/Scanned/4-3/fridy.pdf). The Fibonacci Quarterly **4** (1966), no. 3, 193–201.
+
+T. Crmarić and V. Kovač, [*On the irrationality of certain super-polynomially decaying series*](https://arxiv.org/abs/2504.18712v1), Colloq. Math. **179** (2025), 55–68, doi:[10.4064/cm9628-5-2025](https://doi.org/10.4064/cm9628-5-2025). Theorem locators follow arXiv:2504.18712v1.
+
+Vjekoslav Kovač and Terence Tao, [*On several irrationality problems for Ahmes series*](https://arxiv.org/abs/2406.17593v4). Acta Mathematica Hungarica **175** (2025), 572–608, doi:[10.1007/s10474-025-01528-0](https://doi.org/10.1007/s10474-025-01528-0); arXiv:[2406.17593v4](https://arxiv.org/abs/2406.17593v4). Statement and section numbers refer to arXiv version 4.
+
+W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4).
+
+T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026).
+
+Steve Fan, *Comment on Erdős Problem \#269, thread 269, post 7218* (2026), [source](https://www.erdosproblems.com/forum/thread/269#post-7218). 26 June 2026.
+
+K. Mahler, *Arithmetische Eigenschaften der Lösungen einer Klasse von Funktionalgleichungen*, Math. Ann. **101** (1929), 342–367.
+
+B. Adamczewski and C. Faverjon, [*Méthode de Mahler : relations linéaires, transcendance et applications aux nombres automatiques*](https://arxiv.org/abs/1508.07158v2), arXiv:1508.07158v2 (2016), Theorem 1.1, p. 3.
+
+Ku. Nishioka, *Mahler Functions and Transcendence*, Lecture Notes in Math. 1631, Springer, Berlin, 1996.
+
+D. Boes, R. Darst and P. Erdős, [*Fat, symmetric, irrational Cantor sets*](https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266), Amer. Math. Monthly **88** (1981), 340–341.
+
+A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of rational numbers on Cantor’s middle thirds set*](https://arxiv.org/abs/1909.01198), arXiv:1909.01198.
+
+S. Chow, P. Varjú and H. Yu, [*Counting rationals and diophantine approximation in missing-digit Cantor sets*](https://arxiv.org/abs/2402.18395), arXiv:2402.18395.
+
+W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](../../../paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, [*Bounded increments and rational reciprocal sums*](../../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](../../../paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](../../../paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, [*No finite separable representation at three prime generators*](../../../paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](../../../paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
+
+W. Cook, *Choices, contraction and rational membership*, exact computation with saved outputs in `research/experiments/choices_contraction/` of the repository, 2026.
+
+P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. 12 (1948), 63–66.
+
+Wouter van Doorn and Vjekoslav Kovač, [*Lacunary sequences whose reciprocal sums represent all rational numbers in an interval*](https://arxiv.org/abs/2509.24971v3). Acta Arithmetica **223** (2026), 275–295, doi:[10.4064/aa251001-13-1](https://doi.org/10.4064/aa251001-13-1); arXiv:[2509.24971v3](https://arxiv.org/abs/2509.24971v3). Statement numbers refer to arXiv version 3.
+
+D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint.
+
+Boris Adamczewski and Colin Faverjon, *Mahler’s method in several variables and finite automata*, Annals of Mathematics **204**, no. 2 (2026), 455–533, [doi:`10.4007/annals.2026.204.2.1`](https://doi.org/10.4007/annals.2026.204.2.1). Locators refer to the [68-page author manuscript](https://faverjon.perso.math.cnrs.fr/AdamczewskiFaverjon_MahlerFiniteAutomata.pdf).
+
+D. Airey, B. Mance and J. Vandehey, *Normality preserving operations for Cantor series expansions and associated fractals. II*, New York J. Math. **21** (2015), 1311–1326. <https://nyjm.albany.edu/j/2015/21-60v.pdf>.
 
 </div>
+
+<a id="declaration-of-generative-ai-use"></a>
+
+# Declaration of generative AI use
+
+The mathematics and text were developed with large language model agents under Will Cook’s direction. The first-page disclosure states his review boundary. The earlier synthesis record reports separate agent proof checks, independent reruns of the exact computations, and source checks on 20 September 2026; the failed citation is retained in Section <a href="#sec:eliminated" data-reference-type="ref" data-reference="sec:eliminated">6</a>. This consolidation preserves those arguments and their evidence classes. It is not an independent mathematical review.

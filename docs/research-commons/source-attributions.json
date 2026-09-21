@@ -2402,8 +2402,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1357,
-          "line_end": 1362,
+          "line_start": 1346,
+          "line_end": 1351,
           "expected_text": "\\bibitem{acmartifact}",
           "excerpt_sha256": "sha256:82ba5ed7e06a2f42df45b4196b5caba7c6b634aab7fa76273b92a7cc6bf3768e"
         }
@@ -3023,8 +3023,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1317,
-          "line_end": 1323,
+          "line_start": 1306,
+          "line_end": 1312,
           "expected_text": "\\bibitem{runeson2009}",
           "excerpt_sha256": "sha256:4ece33472f9eb3ee10b399b4e65ea39cee778bd9cd7f3f8e4f59aca5de46732f"
         }
@@ -3282,8 +3282,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1345,
-          "line_end": 1351,
+          "line_start": 1334,
+          "line_end": 1340,
           "expected_text": "\\bibitem{gsn}",
           "excerpt_sha256": "sha256:18a8d4297efae6feb71647744dd95041e21981acc49c27a0e1687c67df212362"
         }
@@ -3658,8 +3658,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1329,
-          "line_end": 1335,
+          "line_start": 1318,
+          "line_end": 1324,
           "expected_text": "\\bibitem{barr2015}",
           "excerpt_sha256": "sha256:0b4c870e91ea3111d69ea85b7c94783a709618f7b2b3124f463426effcfb8ffc"
         }
@@ -4949,8 +4949,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1383,
-          "line_end": 1389,
+          "line_start": 1367,
+          "line_end": 1373,
           "expected_text": "\\bibitem{leanvalidation}",
           "excerpt_sha256": "sha256:848005fb515337995c8dbc8192771103fe3414debe3bde5da05f345ee7b14055"
         }
@@ -6340,8 +6340,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1367,
-          "line_end": 1372,
+          "line_start": 1356,
+          "line_end": 1361,
           "expected_text": "\\bibitem{nisthashfunctions}",
           "excerpt_sha256": "sha256:8f4293a0a02295b79306f2dd39994ae87fe5e3c104ae2b67eeec226a473b145e"
         }
@@ -11018,8 +11018,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1335,
-          "line_end": 1340,
+          "line_start": 1324,
+          "line_end": 1329,
           "expected_text": "\\bibitem{rosenthal1979}",
           "excerpt_sha256": "sha256:8c9e993b368de8fbbc0268799b73c63a9a57820cb67067d572137c49613f2ef8"
         }
@@ -12013,8 +12013,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1323,
-          "line_end": 1329,
+          "line_start": 1312,
+          "line_end": 1318,
           "expected_text": "\\bibitem{nasem2019}",
           "excerpt_sha256": "sha256:f06c40636e471872b987aaee6322971311baed24c1120af1f18cddd808e50e98"
         }
@@ -12042,8 +12042,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1351,
-          "line_end": 1357,
+          "line_start": 1340,
+          "line_end": 1346,
           "expected_text": "\\bibitem{nisobadging2021}",
           "excerpt_sha256": "sha256:afa42db0c4dfb2114be595de4a2efc8acb377b5e1bb8f446e52f2791f475b1eb"
         }
@@ -12071,8 +12071,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1362,
-          "line_end": 1367,
+          "line_start": 1351,
+          "line_end": 1356,
           "expected_text": "\\bibitem{nistfips1804}",
           "excerpt_sha256": "sha256:53b40a353a433ace78f48f685ef15ac1819dc844bcf364ec37ff3b127cdfeaba"
         }
@@ -12529,8 +12529,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1372,
-          "line_end": 1376,
+          "line_start": 1361,
+          "line_end": 1365,
           "expected_text": "\\bibitem{nasa8739}",
           "excerpt_sha256": "sha256:e451a824e41d073b225ae1abab1c62ca244baecf39aa9ed66d457b7b7eae3586"
         }
@@ -12620,8 +12620,8 @@
       "artifact_links": [
         {
           "path": "docs/papers/mirror/plectis-public-system.tex",
-          "line_start": 1340,
-          "line_end": 1345,
+          "line_start": 1329,
+          "line_end": 1334,
           "expected_text": "\\bibitem{omgsacm2023}",
           "excerpt_sha256": "sha256:b72eaf7771719b0f871cf252ff08d155c348754cbbc333e06e0587f20db646de"
         }

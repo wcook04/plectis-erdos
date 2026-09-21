@@ -30,15 +30,13 @@ and the research process, go to the [project papers](#project-papers).
 
 ## Reading the eight together
 
-One pair treats the comparison across the problems rather than any single one.
-The note proves which subsums of a Lambert series are rational or irrational as
-the base varies; the working record behind it holds the inventory of negative
-results, the eliminated ideas and the open questions.
+One cross-problem paper develops the mathematics that arises from reading the
+programmes together. It contains the capacity and congruence criterion,
+Lambert-subsum results, full proofs, exact computations, method limits and
+unsuccessful approaches.
 
-| Paper | Manuscript |
-|---|---|
-| Synthesis note | [Rational and Irrational Subsums of a Lambert Series Across Bases](synthesis/erdos-synthesis-subsums-across-bases.pdf) ([source](synthesis/erdos-synthesis-subsums-across-bases.tex)) |
-| Working record | [Reading Eight Erdős Problems Together](synthesis/erdos-synthesis-reading-together-record.pdf) ([source](synthesis/erdos-synthesis-reading-together-record.tex)) |
+[Reading Eight Erdős Problems Together](synthesis/optimal-sparse-perturbations.pdf)
+([source](synthesis/optimal-sparse-perturbations.tex)).
 
 ## Follow the argument into its evidence
 

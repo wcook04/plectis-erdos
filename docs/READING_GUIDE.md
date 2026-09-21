@@ -81,18 +81,13 @@ those assessments in one place avoids conflicting summaries.
 [Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1049).
 <!-- END problem_programme_card -->
 
-If the comparison across the problems is what you are after rather than one of
-them, read the [synthesis note](../paper/synthesis/erdos-synthesis-subsums-across-bases.pdf),
-which proves which subsums of a Lambert series are rational or irrational as
-the base varies. Its
-[working record](../paper/synthesis/erdos-synthesis-reading-together-record.pdf)
-holds the inventory of negative results, the ideas that were eliminated and the
-questions left open. The
-[capacity and interpolation paper](../paper/synthesis/optimal-sparse-perturbations.pdf)
-develops another direction. This is a central use of the collection: read the
-papers and Lean corpus together, look for a construction or obstruction that
-survives in a more general setting, and develop the mathematics it suggests.
-The [synthesis guide](../paper/synthesis/README.md) gives ways to begin.
+The [cross-problem paper, Reading Eight Erdős Problems Together](../paper/synthesis/optimal-sparse-perturbations.pdf)
+joins the interval/capacity criterion, Lambert subsums across bases, method
+limits, exact computations and unsuccessful approaches in one account. This
+is a central use of the collection: read the papers and Lean corpus together,
+find constructions or obstructions that survive in a more general setting,
+and develop the mathematics they suggest. The
+[synthesis guide](../paper/synthesis/README.md) gives ways to begin.
 
 ## How to read the evidence
 

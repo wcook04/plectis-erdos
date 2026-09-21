@@ -8,7 +8,7 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 20 active papers and 1 retired paper and 3 papers awaiting website publication.
+This checkout contains 20 active papers and 1 retired paper and 1 paper awaiting website publication.
 
 ## Project papers
 
@@ -239,7 +239,7 @@ not currently earn scarce first-contact attention.
 
 <a id="problem-portfolio"></a>
 
-## All papers (24)
+## All papers (22)
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
@@ -413,27 +413,13 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 
 The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 
-### Which subseries of the Lambert series sum 1/(t^n-1) are rational or irrational as the base varies, and what can and cannot decide irrationality in the seven arithmetic problems?
-
-**Rational and Irrational Subsums of a Lambert Series Across Bases** · **included here; not yet published on the website**
-
-[full text](full-text/erdos-synthesis-subsums-across-bases.md) · [PDF](../../paper/synthesis/erdos-synthesis-subsums-across-bases.pdf) · [LaTeX source](../../paper/synthesis/erdos-synthesis-subsums-across-bases.tex) · 8 sections · `erdos-synthesis-subsums-across-bases` · native to this repository
-
-Start here (selected for this guide): [Results](full-text/erdos-synthesis-subsums-across-bases.md#sec:results), [The subseries across bases](full-text/erdos-synthesis-subsums-across-bases.md#sec:bases), [Base two](full-text/erdos-synthesis-subsums-across-bases.md#sec:base2), [Limits on methods](full-text/erdos-synthesis-subsums-across-bases.md#sec:second).
-
-### What was proved, eliminated, rediscovered and left open while reading the eight problems together?
+### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
 
 **Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
 
-[full text](full-text/erdos-synthesis-reading-together-record.md) · [PDF](../../paper/synthesis/erdos-synthesis-reading-together-record.pdf) · [LaTeX source](../../paper/synthesis/erdos-synthesis-reading-together-record.tex) · 9 sections · `erdos-synthesis-reading-together-record` · native to this repository
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 27 sections · `optimal-sparse-perturbations` · native to this repository
 
-Start here (selected for this guide): [What the note relies on](full-text/erdos-synthesis-reading-together-record.md#sec:map), [Negative results in the companion notes](full-text/erdos-synthesis-reading-together-record.md#sec:inventory), [What was already known](full-text/erdos-synthesis-reading-together-record.md#sec:known), [Questions](full-text/erdos-synthesis-reading-together-record.md#sec:questions).
-
-### When do summable digit allowances on a strict integer divisibility chain permit interval filling under eventual individual and cumulative congruences?
-
-**An Exact Capacity Criterion for Series with Eventual Congruences** · **included here; not yet published on the website**
-
-[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 13 sections · `optimal-sparse-perturbations` · native to this repository
+Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
 
 ## Evidence and limitations
 
@@ -460,13 +446,11 @@ responsibility for proof verification, status and explanation as follows:
 - `erdos1041-lemniscate-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or the current status of Erdős #1041 and the correspondence between its historical curve-length formulation and the checked total-variation formulation; those distinctions belong to docs/claims.json in the mathematics repository.
 - `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
-- `erdos-synthesis-subsums-across-bases` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, the results it quotes from the companion notes, which belong to those notes, or the status of any of the eight Erdős problems, which belongs to docs/claims.json in the mathematics repository.
-- `erdos-synthesis-reading-together-record` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, the results it quotes from the companion notes, which belong to those notes, or the status of any of the eight Erdős problems, which belongs to docs/claims.json in the mathematics repository.
+- `optimal-sparse-perturbations` is not authority for a solution to any original Erdős target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
-- `optimal-sparse-perturbations` is not authority for Lean proof of the complete capacity criterion or support-gap classification, peer review, historical priority, or promotion of any reviewed claim or Erdős problem status.
 
 ## For agents
 
