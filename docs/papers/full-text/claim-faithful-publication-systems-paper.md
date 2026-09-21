@@ -8,13 +8,13 @@
 
 </div>
 
-This paper presents an executable architecture for AI-assisted mathematics under proof abundance. It separates six things that are commonly collapsed: cognition authority, permission to change shared state, validation capacity, evidence class, public-claim authority, and reviewer attention. Work advances only when the next gate matches the evidence. A failed route may change later search or validation without being relabelled as a theorem.
+This paper presents an executable architecture for AI-assisted mathematics under proof abundance. It separates six things that are commonly collapsed: cognition authority, permission to change shared state, validation capacity, evidence class, public-claim authority, and reviewer attention.
 
 The architecture organises work around *problem-sized mathematical worlds*, not isolated theorem files. Each world joins formal declarations, experiments, source literature, failed mechanisms, open obligations, and a reviewed public boundary. Formal dependencies, authored mathematical meaning, and public claims remain separate graphs, so a dense connection cannot make a claim stronger. An agent enters a world through a compiled comprehension packet: it federates the corpora by content digest, states the endpoint and claim ceiling before any route, separates proved results from open producers and closed routes, and declares both what it omitted and when it exceeded its context budget. The contribution is an implemented architecture that connects research state, scoped changes, formal checks, and public explanation while keeping their evidential roles distinct; the related-work section compares it with neighbouring systems along stated dimensions and claims no priority.
 
-The mathematical workflow keeps conjecture, computation, formal proof, interpretation, public wording, and external review distinct. Computation may reject a route or supply finite evidence; it does not prove an unbounded theorem. Lean verifies that a proof establishes the formal statement written in the source; it does not verify whether that statement captures the intended mathematics or whether the paper describes it well. Comparator checks selected propositions and their axiom boundary; a local review-selection layer prepares result families for external registration and review. Neither decides novelty, importance, acceptance, or whether an open problem has been solved.
+Computation supplies finite evidence; Lean checks a formal statement; Comparator checks selected propositions and their axiom boundary. These checks do not establish intended meaning, novelty, importance or external acceptance.
 
-The public repository is a self-contained output whose Lean source, claim record, papers, navigation, and release checks can be inspected from a fresh clone. A worked example follows a finite certificate for Erdős Problem 249 and shows why a checked finite range cannot become an unbounded conclusion. This is a working prototype rather than a validated multi-user service. As of 14 September 2026, the author had not recorded a completed external cold-clone use or an accepted external contribution. The rule is simple: each stage may pass forward only the claim its evidence supports, together with the boundary it does not cross. The paper does not claim a solution to any of them.
+The public repository is a self-contained output whose Lean source, claim record, papers, navigation, and release checks can be inspected from a fresh clone. A worked example follows a finite certificate for Erdős Problem 249 and shows why a checked finite range cannot become an unbounded conclusion. This is a working prototype rather than a validated multi-user service. As of 14 September 2026, the author had not recorded a completed external cold-clone use or an accepted external contribution. The paper does not claim a solution to any of them.
 
 <div class="center">
 
@@ -48,7 +48,7 @@ Suppose an AI system proposes a proof of a mathematical statement. Several diffe
 
 6.  Has anyone outside the producing system reviewed, accepted, or absorbed the result?
 
-No single test answers all six. A numerical experiment can expose a false conjecture without proving a universal one. Lean can certify a theorem while remaining silent about the prose around it. A release checker can preserve a reviewed sentence without making the review correct. External attention can signal interest without validating a proof. The architecture exists to keep these questions separate while allowing work to move between them.
+The architecture keeps these questions separate. A numerical experiment can refute a conjecture; Lean can check a formal theorem; a release checker can preserve reviewed wording. None establishes all six answers.
 
 The gap between these questions has been measured on the same problem family. Feng et al. ran an agent built on Gemini Deep Think over 700 open Erdős problems and had humans grade 200 candidate solutions: 63 were technically correct and 13 were meaningfully correct, the rest having answered a misread or mistranscribed statement, and their Erdős-75 appendix documents a correct proof of a formulation that was itself flawed \[aletheia\]. They report that deciding novelty and intent took longer than checking correctness, and that formal verification helps with neither. Those findings predate this paper and motivate the separation it implements.
 
@@ -58,7 +58,7 @@ The [public repository studied here](https://github.com/wcook04/plectis-erdos) c
 
 #### The novelty claim and its ceiling.
 
-This paper does not claim to have invented agents, queues, file locks, theorem graphs, Lean checking, pull requests, or credit records. Its candidate contribution is an executable *claim-transition architecture*. It models reasoning, mutation, validation, interpretation, publication, and review as separately scarce and separately authorised operations. The operations are recombined only at explicit fan-in gates. The same machinery carries proofs, counterexamples, no-gos, and unresolved obligations while preserving their different evidence classes. Crucially, a local failure may alter the next agent’s route, context, lease, experiment, or validator, but never the truth status of a mathematical statement.
+The candidate contribution is an executable *claim-transition architecture*, combining existing agents, queues, locks, theorem graphs, proof checking and credit records. Reasoning, mutation, validation, interpretation, publication and review meet at explicit gates. An operational failure may change a later route, experiment or validator, but cannot change mathematical truth status.
 
 Four status words are used deliberately. *Implemented* means source and an executable check or receipt exist. *Projection* means a generated view over more authoritative records. *Inactive* means implemented machinery was not running at the reported snapshot. *Hypothesis* means a proposed experiment, not a reported capability. Thus the router, work leases, corpus maps, Lean gates, Comparator, review-selection records, and release checks are implemented; dashboards and graph views are projections; the resident maintenance daemon was inactive at one recorded snapshot; and mass frontier-model mining or training on the no-go graph remain hypotheses.
 
@@ -70,7 +70,7 @@ Four status words are used deliberately. *Implemented* means source and an execu
 
 #### A problem is a mathematical world, not a folder.
 
-For an agent, the useful unit is neither the repository nor one theorem. It is a bounded neighbourhood inside a problem-sized world. The neighbourhood begins with the exact endpoint and current claim ceiling, then selects established premises, nearby declarations, open producers, consumers, alternative coordinates, executable experiments, scoped falsifiers and no-gos, source literature, and public boundaries. Every returned edge says why it exists and what authority it lacks; the packet says what it omitted and where to expand. This makes deep corpora navigable without converting file proximity, lexical similarity, or model interpretation into proof.
+An agent receives a bounded neighbourhood inside a problem-sized world: the endpoint and claim ceiling, established premises, nearby declarations, open obligations, alternatives, experiments, obstructions and literature. Each edge states its authority; each packet states its omissions and expansion routes. Proximity and model interpretation do not become proof.
 
 <a id="authority-is-separated-before-it-is-recombined."></a>
 
@@ -93,7 +93,7 @@ The six non-fungible resources of the claim-transition architecture.
 
 </div>
 
-There are consequently two coupled graphs with a guarded crossing. Mathematical evidence changes the mathematical graph: theorem, counterexample, no-go, or bounded experiment, each with its own class. Operational evidence changes the control graph: a route miss, stale view, repeated workaround, validation failure, or resource conflict may justify a new router, skill, check, or standard after a generalisation guard. Reviewed claim and publication artefacts connect the two. Neither graph may rewrite the other by implication.
+There are two coupled graphs with a guarded crossing. The mathematical graph records evidence as theorems, counterexamples, no-gos or bounded experiments. The control graph records justified changes to routes, checks and working methods. Reviewed claim and publication artefacts connect them. Neither graph may rewrite the other by implication.
 
 <a id="sec:lifecycle"></a>
 
@@ -103,7 +103,7 @@ There are consequently two coupled graphs with a guarded crossing. Mathematical 
 
 </div>
 
-Figure <a href="#fig:lifecycle" data-reference-type="ref" data-reference="fig:lifecycle">1</a> shows the main path. It is a loop rather than a one-way publishing pipeline: failed proofs, reviewer objections, and public drift can all return a precise lesson to an earlier stage. What may move backward is information about an error or a better method. What may not move backward is authority: a paper cannot make an unproved statement true, and an external review route cannot alter what Lean checked.
+Figure <a href="#fig:lifecycle" data-reference-type="ref" data-reference="fig:lifecycle">1</a> shows the loop. Failed proofs, reviewer objections and publication drift return information to earlier stages; they do not confer proof authority.
 
 <figure id="fig:lifecycle" data-latex-placement="!t">
 

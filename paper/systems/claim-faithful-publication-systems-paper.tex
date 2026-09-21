@@ -42,9 +42,7 @@
 This paper presents an executable architecture for AI-assisted mathematics
 under proof abundance. It separates six things that are commonly collapsed:
 cognition authority, permission to change shared state, validation capacity,
-evidence class, public-claim authority, and reviewer attention. Work advances
-only when the next gate matches the evidence. A failed route may change later
-search or validation without being relabelled as a theorem.
+evidence class, public-claim authority, and reviewer attention.
 
 The architecture organises work around \emph{problem-sized mathematical
 worlds}, not isolated theorem files. Each world joins formal declarations,
@@ -60,16 +58,9 @@ research state, scoped changes, formal checks, and public explanation while
 keeping their evidential roles distinct; the related-work section compares it
 with neighbouring systems along stated dimensions and claims no priority.
 
-The mathematical workflow keeps conjecture, computation, formal proof,
-interpretation, public wording, and external review distinct. Computation may
-reject a route or supply finite evidence; it does not prove an unbounded
-theorem. Lean verifies that a proof establishes the formal statement written in
-the source; it does not verify whether that statement captures the intended
-mathematics or whether the paper describes it
-well. Comparator checks selected propositions and their axiom boundary; a
-local review-selection layer prepares result families for external
-registration and review. Neither decides novelty, importance, acceptance, or
-whether an open problem has been solved.
+Computation supplies finite evidence; Lean checks a formal statement;
+Comparator checks selected propositions and their axiom boundary. These checks
+do not establish intended meaning, novelty, importance or external acceptance.
 
 The public repository is a self-contained output whose Lean source, claim
 record, papers, navigation, and release checks can be inspected from a fresh
@@ -78,8 +69,6 @@ and shows why a checked finite range cannot become an unbounded conclusion.
 This is a working prototype rather than a validated multi-user service. As of
 14 September 2026, the author had not recorded a completed external cold-clone use
 or an accepted external contribution.
-The rule is simple: each stage may pass forward only the claim its evidence
-supports, together with the boundary it does not cross.
 The paper does not claim a solution to any of them.
 \end{abstract}
 
@@ -109,12 +98,9 @@ different questions immediately arise.
       the result?
 \end{enumerate}
 
-No single test answers all six. A numerical experiment can expose a false
-conjecture without proving a universal one. Lean can certify a theorem while
-remaining silent about the prose around it. A release checker can preserve a
-reviewed sentence without making the review correct. External attention can
-signal interest without validating a proof. The architecture exists to keep
-these questions separate while allowing work to move between them.
+The architecture keeps these questions separate. A numerical experiment can
+refute a conjecture; Lean can check a formal theorem; a release checker can
+preserve reviewed wording. None establishes all six answers.
 
 The gap between these questions has been measured on the same problem family.
 Feng et al.\ ran an agent built on Gemini Deep Think over 700 open
@@ -139,16 +125,11 @@ certificates, and no-go results. Private development explains the provenance;
 public claims rely only on the published evidence.
 
 \paragraph{The novelty claim and its ceiling.}
-This paper does not claim to have invented agents, queues, file locks, theorem
-graphs, Lean checking, pull requests, or credit records. Its candidate
-contribution is an executable \emph{claim-transition architecture}. It models
-reasoning, mutation, validation, interpretation, publication, and review as
-separately scarce and separately authorised operations. The operations are
-recombined only at explicit fan-in gates. The same machinery carries proofs,
-counterexamples, no-gos, and unresolved obligations while preserving their
-different evidence classes. Crucially, a local failure may alter the next
-agent's route, context, lease, experiment, or validator, but never the truth
-status of a mathematical statement.
+The candidate contribution is an executable \emph{claim-transition architecture},
+combining existing agents, queues, locks, theorem graphs, proof checking and
+credit records. Reasoning, mutation, validation, interpretation, publication and
+review meet at explicit gates. An operational failure may change a later route,
+experiment or validator, but cannot change mathematical truth status.
 
 Four status words are used deliberately. \emph{Implemented} means source and
 an executable check or receipt exist. \emph{Projection} means a generated view
@@ -163,15 +144,11 @@ frontier-model mining or training on the no-go graph remain hypotheses.
 \subsection{Two architectural claims}
 
 \paragraph{A problem is a mathematical world, not a folder.}
-For an agent, the useful unit is neither the repository nor one theorem. It is
-a bounded neighbourhood inside a problem-sized world. The neighbourhood begins
-with the exact endpoint and current claim ceiling, then selects established
-premises, nearby declarations, open producers, consumers, alternative
-coordinates, executable experiments, scoped falsifiers and no-gos, source
-literature, and public boundaries. Every returned edge says why it exists and
-what authority it lacks; the packet says what it omitted and where to expand.
-This makes deep corpora navigable without converting file proximity, lexical
-similarity, or model interpretation into proof.
+An agent receives a bounded neighbourhood inside a problem-sized world: the
+endpoint and claim ceiling, established premises, nearby declarations, open
+obligations, alternatives, experiments, obstructions and literature. Each edge
+states its authority; each packet states its omissions and expansion routes.
+Proximity and model interpretation do not become proof.
 
 \paragraph{Authority is separated before it is recombined.}
 The architecture treats six resources as non-fungible. More reasoning cannot
@@ -200,23 +177,18 @@ Reviewer attention & Ranked packet and recorded human outcome & Proof authority 
 \label{tab:nonfungible}
 \end{table}
 
-There are consequently two coupled graphs with a guarded crossing. Mathematical
-evidence changes the mathematical graph: theorem, counterexample, no-go, or
-bounded experiment, each with its own class. Operational evidence changes the
-control graph: a route miss, stale view, repeated workaround, validation
-failure, or resource conflict may justify a new router, skill, check, or
-standard after a generalisation guard. Reviewed claim and publication artefacts
-connect the two. Neither graph may rewrite the other by implication.
+There are two coupled graphs with a guarded crossing. The mathematical graph
+records evidence as theorems, counterexamples, no-gos or bounded experiments.
+The control graph records justified changes to routes, checks and working
+methods. Reviewed claim and publication artefacts connect them.
+Neither graph may rewrite the other by implication.
 
 \section{The whole lifecycle in one picture}\label{sec:lifecycle}
 \papersectiontarget{systems-lifecycle}
 
-Figure~\ref{fig:lifecycle} shows the main path. It is a loop rather than a
-one-way publishing pipeline: failed proofs, reviewer objections, and public
-drift can all return a precise lesson to an earlier stage. What may move
-backward is information about an error or a better method. What may not move
-backward is authority: a paper cannot make an unproved statement true, and an
-external review route cannot alter what Lean checked.
+Figure~\ref{fig:lifecycle} shows the loop. Failed proofs, reviewer objections and
+publication drift return information to earlier stages; they do not confer
+proof authority.
 
 \begin{figure}[!t]
 \centering
