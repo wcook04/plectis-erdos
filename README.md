@@ -126,7 +126,13 @@ unreleased work.
 
 An idea, a correction, a counterexample, a failed route with a checkable
 reason, or a clearer explanation can help. You do not need to solve a problem.
-Infra suggestions also get credit!
+Directions and infrastructure suggestions receive credit too.
+
+Start with [a paper](docs/CONTRIBUTE_BY_PAPER.md),
+[develop a method](paper/synthesis/README.md), or
+[improve the machinery](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+The same [submission and credit process](CONTRIBUTING.md#return-what-you-learned)
+serves all three, including contributions by email and work without a clone.
 
 - **Ideas, corrections or review:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)

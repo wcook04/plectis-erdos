@@ -104,6 +104,16 @@ class Step:
                 and self.lower <= r <= self.upper
                 and all((digit - a) % m == 0 for a, m in self.congruences))
 
+    def digit_lattice(self, cumulative):
+        """The contract's bounded digit set before imposing remainder bounds."""
+        residue, modulus = -cumulative % self.modulus, self.modulus
+        for a, m in self.congruences:
+            merged = merge_residues(residue, modulus, a, m)
+            if merged is None:
+                return Progression(0, 1, 0)
+            residue, modulus = merged
+        return Progression(residue, modulus, max(0, (self.allowance - residue) // modulus + 1))
+
     def choices(self, cumulative, remainder):
         """Compile interval + congruences without generate-and-filter."""
         lowq = (remainder - self.upper) / self.weight
@@ -118,6 +128,64 @@ class Step:
             residue, modulus = merged
         first = low + (residue - low) % modulus
         return Progression(first, modulus, max(0, (high - first) // modulus + 1))
+
+
+def remainder_cover(step, cumulative, *, bits=(), support='free'):
+    """Exact union of translated continuation intervals, compressed as a lattice.
+
+    When at least two digits survive, the hull is covered iff stride * weight
+    <= upper - lower. No statement about a later stage is inferred.
+    """
+    digits = step.digit_lattice(cumulative)
+    if support == 'divisor-count':
+        if any(type(bit) is not int or bit not in (0, 1) for bit in bits):
+            raise ValueError('support history must contain Boolean integers')
+        if cumulative != sum(sum(bits[k-1] for k in range(1, n+1) if n % k == 0)
+                             for n in range(1, len(bits)+1)):
+            raise ValueError('cumulative state disagrees with the support history')
+        base = divisor_base(bits)
+        selected = [d for d in (base, base + 1) if digits.contains(d)]
+        digits = Progression(selected[0], 1, len(selected)) if selected else Progression(0, 1, 0)
+    elif support != 'free':
+        raise ValueError('unsupported support relation')
+    if not digits:
+        return {'nonempty': False, 'count': 0, 'hull_covered': False,
+                'evidence': 'exact_one_step_cover', 'infinite_continuation': 'not_checked'}
+    gap = max(Fraction(0), digits.stride * step.weight - (step.upper - step.lower)) if digits.count > 1 else Fraction(0)
+    return {'nonempty': True, 'first_digit': digits.first, 'stride': digits.stride,
+            'count': digits.count,
+            'first_interval': [str(digits.first * step.weight + step.lower),
+                               str(digits.first * step.weight + step.upper)],
+            'translation': str(digits.stride * step.weight),
+            'hull': [str(digits.first * step.weight + step.lower),
+                     str(digits.at(digits.count - 1) * step.weight + step.upper)],
+            'hull_covered': gap == 0, 'gap_width': str(gap),
+            'uncovered_length': str((digits.count - 1) * gap),
+            'evidence': 'exact_one_step_cover', 'infinite_continuation': 'not_checked'}
+
+
+def request_digest(request):
+    return hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()
+
+
+def verify_result(request, result):
+    """Check a submitted candidate against the receiver's request, never its own.
+
+    Search scores, completeness of exploration and embedded verdicts are not
+    trusted. The certificate emitter takes this same independent request.
+    """
+    read_request(request)
+    if not isinstance(result, dict) or not isinstance(result.get('best'), dict):
+        return {'valid': False, 'reason': 'no candidate trace'}
+    if result.get('request_sha256') != request_digest(request) or result.get('request') != request:
+        return {'valid': False, 'reason': 'candidate is bound to a different request'}
+    digits = result['best'].get('digits')
+    if not isinstance(digits, list):
+        return {'valid': False, 'reason': 'candidate digits must be a list'}
+    checked = check_trace(request, digits)
+    return {**checked, 'valid': bool(checked.get('valid') and checked.get('complete')),
+            'request_sha256': request_digest(request),
+            'optimality': 'not_checked', 'kernel_status': 'not_run'}
 
 
 def read_request(request):
@@ -449,7 +517,7 @@ def run_request(args):
     if args.policy_result:
         result['policy_parent_sha256'] = hashlib.sha256(args.policy_result.read_bytes()).hexdigest()
     result['request'] = request
-    result['request_sha256'] = hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()
+    result['request_sha256'] = request_digest(request)
     result['implementation_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     if args.lean:
         if result['best'] is None:
@@ -577,10 +645,28 @@ if __name__ == "__main__":
     parser.add_argument('--objective', choices=('energy', 'variation', 'mass'), default='energy')
     parser.add_argument('--support', choices=('free', 'divisor-count'), default='free')
     parser.add_argument('--budget', type=int, default=10000)
+    parser.add_argument('--verify-result', type=Path, help='replay returned digits against mandatory independent --request')
+    parser.add_argument('--cover', action='store_true', help='inspect the exact one-step cover at the initial state')
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--lean', type=Path)
     args = parser.parse_args()
+    if args.verify_result or args.cover:
+        if args.request is None:
+            parser.error('--verify-result and --cover require an independent --request file')
+        request = json.loads(args.request.read_text())
+        target, steps, support = read_request(request)
+        if args.verify_result:
+            candidate = json.loads(args.verify_result.read_text())
+            result = verify_result(request, candidate)
+            if args.lean and result['valid']:
+                args.lean.write_text(lean_certificate(request, candidate['best']['digits']))
+        else:
+            result = remainder_cover(steps[0], 0, support=support)
+        if args.output:
+            args.output.write_text(json.dumps(result, indent=2) + '\n')
+        print(json.dumps(result, indent=2))
+        raise SystemExit(0 if result.get('valid', True) else 1)
     if args.evaluate:
         result = evaluate()
         if args.output:

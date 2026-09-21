@@ -97,6 +97,11 @@ Hand the direction to the existing workflows. They apply unchanged.
   mathematics affects. Link the standalone account from the others.
 - Lean checks: `skills/lean-concurrent-validation/SKILL.md`.
 
+The [synthesis pair](../../paper/synthesis/README.md) is the shared home for
+insights whose subject emerges from this work. Do not require a ninth Erdős
+problem, an endpoint solution, or a new infrastructure framework. Develop the
+mathematics first and place it in an existing account when that serves readers.
+
 ## 5. Where the work lives
 
 A reusable construction is another possible return. When a proof leaves useful

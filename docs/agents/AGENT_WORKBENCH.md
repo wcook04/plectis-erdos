@@ -281,6 +281,21 @@ python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
 python3 scripts/agent_entry.py --skills
 ```
 
+For an explicit starting intention, use `--purpose research`, `--purpose method`
+or `--purpose infrastructure`; `--scope` preserves the paper, problem or
+experiment identity without letting that identity override the intention.
+For example:
+
+```sh
+python3 scripts/agent_entry.py --entry "Improve how this proof is inspected" \
+  --purpose infrastructure --scope "problem:257"
+```
+
+The packet keeps the original request and alternative routes. `write`, `return`
+and `reproduce` are also available as explicit purposes. Structured architecture
+sessions use `continue_research.py start --area` with starting paths and a
+validation plan; see the [architecture guide](../research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+
 Skills run from the clone root. `scripts/install_agent_skills.py --list` only
 exposes them to an agent harness. Read
 [`AGENTS.md`](../../AGENTS.md), then the bounded

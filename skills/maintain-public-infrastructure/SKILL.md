@@ -31,7 +31,12 @@ not just whether one relevant skill appears. Test natural modifiers and plural
 objects as well as the exact failed wording. Registry `task_intents` can require
 an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
-Check neighboring tasks that should retain their original lane.
+Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
+while research, method development or infrastructure work identifies the action.
+Explicit `agent_entry.py --purpose` must win over words in `--scope`, and the
+handoff must retain the original request. Exercise the complete architecture
+session, validation and package path as well as the mathematics path; a receipt
+schema alone does not prove that contributors can produce a valid return.
 
 For reports that an outside agent missed recent capabilities, inspect the
 checkout provenance returned by `agent_entry.py` before repairing the router.

@@ -2310,6 +2310,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_contribution_entry.py"),
             ],
+            "continuation_journeys": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_continue_research.py"),
+            ],
             "contribution_contract_agreement": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_contribution_contract_agreement.py"),
@@ -2444,6 +2448,9 @@ def main(argv: list[str] | None = None) -> int:
         "public contribution and credit entry failed: "
         f"{child_output(contribution_entry_check)}",
     )
+    continuation_check = mid_checks["continuation_journeys"]
+    check(continuation_check.returncode == 0,
+          f"contribution continuation journeys failed: {child_output(continuation_check)}")
     source_attribution_fixture_check = mid_checks["source_attribution_fixtures"]
     check(
         source_attribution_fixture_check.returncode == 0,

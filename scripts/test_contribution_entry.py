@@ -37,6 +37,28 @@ def local_markdown_links(path: str) -> list[Path]:
 
 
 def main() -> int:
+    catalog = load_catalog()
+    for task, lane in (
+        ("I want to work on problem 257 using the existing papers and Lean sources", "bounded_research"),
+        ("I want to improve the infrastructure for executable construction mining", "repository_architecture"),
+        ("Refine contributor journeys starting from our papers", "repository_architecture"),
+        ("Develop a reusable method from the corpus", "explore_corpus"),
+    ):
+        packet = entry_packet(catalog, task)
+        require(packet["primary_lane"]["id"] == lane, f"contributor journey misrouted: {task}: {packet['primary_lane']}")
+    packet = entry_packet(catalog, "Refine the proof paper", purpose="infrastructure", scope="problem:257")
+    require(packet["primary_lane"]["id"] == "repository_architecture" and packet["scope"] == "problem:257", "explicit purpose or scope lost")
+    require(packet["task"] == "Refine the proof paper", "original request lost")
+    guide = text("docs/CONTRIBUTE_BY_PAPER.md")
+    from urllib.parse import parse_qs, urlparse
+    for row in json.loads(text("docs/problems.json"))["problems"]:
+        number = row["erdos_number"]
+        require(f"## Problem {number}" in guide, f"missing paper entry {number}")
+        require(row["open_obligations"][0]["statement"] in guide, f"missing owned question {number}")
+        issue_links = re.findall(r"\[Return work on #" + str(number) + r"\]\(([^)]+)\)", guide)
+        require(len(issue_links) == 1, f"missing return route {number}")
+        fields = parse_qs(urlparse(issue_links[0]).query)
+        require(fields.get("question") == [f"Erdős #{number}: {row['question']}"], f"return scope lost {number}")
     contributing = text("CONTRIBUTING.md")
     human, marker, mechanics = contributing.partition("## For agents and maintainers")
     require(bool(marker), "contributor guide does not separate human meaning from agent mechanics")
@@ -85,6 +107,7 @@ def main() -> int:
 
     for source in (
         "CONTRIBUTING.md",
+        "docs/CONTRIBUTE_BY_PAPER.md",
         "docs/READING_GUIDE.md",
         "docs/research-commons/README.md",
         "docs/research-commons/CREDIT_POLICY.md",

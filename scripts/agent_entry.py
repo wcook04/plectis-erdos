@@ -122,15 +122,25 @@ def skill_card(catalog: dict[str, Any], skill_id: str) -> dict[str, Any]:
     }
 
 
-def entry_packet(catalog: dict[str, Any], task: str) -> dict[str, Any]:
+def entry_packet(catalog: dict[str, Any], task: str, *, purpose: str | None = None, scope: str | None = None) -> dict[str, Any]:
     ranked = rank_lanes(catalog, task)
+    if purpose is not None:
+        selected = [row for row in ranked if purpose in row.get("entry_purposes", [])]
+        if len(selected) != 1:
+            raise SkillCatalogError(f"unknown entry purpose {purpose!r}; inspect --skills")
+        ranked = [selected[0], *[row for row in ranked if row is not selected[0]]]
+    if scope is not None and not scope.strip():
+        raise SkillCatalogError("scope must be nonempty")
     primary = ranked[0]
     alternatives = [row for row in ranked[1:] if row["score"] > 0][:2]
     skills = skill_map(catalog)
     return {
         "schema": "plectis-agent-entry/2",
         "task": task,
-        "route_status": "fallback" if primary.get("fallback") else "matched",
+        "purpose": purpose,
+        "scope": scope,
+        "selection_reason": "explicit purpose" if purpose else "task language",
+        "route_status": "explicit" if purpose else "fallback" if primary.get("fallback") else "matched",
         "primary_lane": {
             key: primary[key]
             for key in (
@@ -166,6 +176,10 @@ def render_entry(packet: dict[str, Any]) -> str:
         f"Task: {packet['task']}",
         f"Lane: {lane['id']} — {lane['title']}",
     ]
+    if packet.get("scope"):
+        lines.append(f"Scope: {packet['scope']}")
+    if packet.get("purpose"):
+        lines.append(f"Purpose: {packet['purpose']} (explicit; scope does not override purpose)")
     if "checkout" in packet:
         lines.extend(("", render_checkout(packet["checkout"])))
     if packet["route_status"] == "fallback":
@@ -259,6 +273,8 @@ def parser() -> argparse.ArgumentParser:
 
     action.add_argument("--checkout", action="store_true", help="show checkout provenance without routing a task")
     result.add_argument("--check-upstream", action="store_true", help="compare with public main over the network (no fetch or checkout changes)")
+    result.add_argument("--purpose", help="explicit workflow purpose: research, method, infrastructure, write, return, reproduce")
+    result.add_argument("--scope", help="paper, problem, declaration or experiment to keep in the handoff")
     result.add_argument("--json", action="store_true", help="emit machine-readable JSON")
     return result
 
@@ -267,6 +283,8 @@ def main() -> int:
     args = parser().parse_args()
     if args.check_upstream and not (args.checkout or args.entry is not None):
         parser().error("--check-upstream requires --checkout or --entry")
+    if (args.purpose or args.scope) and args.entry is None:
+        parser().error("--purpose and --scope require --entry")
     if args.checkout:
         card = checkout_card(check_upstream=args.check_upstream)
         print(json.dumps(card, indent=2) if args.json else render_checkout(card))
@@ -274,7 +292,7 @@ def main() -> int:
     try:
         catalog = load_catalog()
         if args.entry is not None:
-            value: Any = entry_packet(catalog, args.entry)
+            value: Any = entry_packet(catalog, args.entry, purpose=args.purpose, scope=args.scope)
             value["checkout"] = checkout_card(check_upstream=args.check_upstream)
             output = json.dumps(value, indent=2) if args.json else render_entry(value)
         elif args.skills:

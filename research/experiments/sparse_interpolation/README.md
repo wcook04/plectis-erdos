@@ -40,6 +40,16 @@ from the permitted positions destroys interval filling, although the support
 still has density one. For allowance `n^(2+epsilon)`, the even positions fill
 an interval. Counting the total number of digits misses this distinction.
 
+## Extend this component and return the result
+
+The [interval-cover calculation and contribution guide](coverage.md) explains
+the exact effect of combined congruences, the contract/implementation/policy
+boundary, and how a recipient checks a returned result against a separately
+saved request. It includes the ordinary proof and the precise remaining
+infinite-continuation obligations. Policies and new constraints use the same
+[submission and credit path](../../../CONTRIBUTING.md#return-what-you-learned)
+as a paper correction.
+
 ## How the question changed
 
 The #251 construction already had a checked one-position feedback mechanism in

@@ -61,21 +61,21 @@ the main arguments, their formalisation and the questions left open. Keeping
 those assessments in one place avoids conflicting summaries.
 
 <!-- BEGIN problem_programme_card -->
-[Problem 68](../paper/68/erdos-68-factorial-denominator-irrationality.pdf). Is the series sum_{n >= 2} 1/(n! - 1) irrational?
+[Problem 68](../paper/68/erdos-68-factorial-denominator-irrationality.pdf). Is the series sum_{n >= 2} 1/(n! - 1) irrational? [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-68).
 
-[Problem 243](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
+[Problem 243](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually? [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-243).
 
-[Problem 249](../paper/249/erdos-249-binary-totient-series.pdf). Is the binary Lambert series sum phi(n)/2^n irrational?
+[Problem 249](../paper/249/erdos-249-binary-totient-series.pdf). Is the binary Lambert series sum phi(n)/2^n irrational? [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-249).
 
-[Problem 251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf). Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
+[Problem 251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf). Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-251).
 
-[Problem 257](../paper/257/erdos-257-mersenne-support-subseries.pdf). Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?
+[Problem 257](../paper/257/erdos-257-mersenne-support-subseries.pdf). Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational? [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-257).
 
-[Problem 269](../paper/269/erdos-269-three-prime-running-lcm.pdf). For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.
+[Problem 269](../paper/269/erdos-269-three-prime-running-lcm.pdf). For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-269).
 
-[Problem 1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.
+[Problem 1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1041).
 
-[Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
+[Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1049).
 <!-- END problem_programme_card -->
 
 If the comparison across the problems is what you are after rather than one of

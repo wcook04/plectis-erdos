@@ -1138,6 +1138,56 @@ def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
     ]
 
 
+def check_architecture_frontier_round_trip() -> None:
+    """A tooling idea travels start -> check -> package without fictional math."""
+    with tempfile.TemporaryDirectory(prefix="continue-architecture-") as temporary:
+        temp = Path(temporary)
+        sessions = temp / "sessions"
+        command = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
+        started = run([*command, "start", "--session", "architecture_test", "--area", "navigation",
+                       "--starting-path", "scripts/agent_entry.py", "--validation-plan", "Replay contributor paraphrases",
+                       "--frontier", "fixture/router", "--intent", "Improve the paper contributor journey",
+                       "--stop-condition", "Stop after a bounded routing comparison", "--contributor", "Fixture Contributor",
+                       "--model-system", "not_used", "--provider", "not_used", "--allow-dirty"])
+        start = json.loads(started.stdout)
+        assert start["track"] == "architecture" and "problem" not in start
+        manifest = load(sessions / "architecture_test" / "continuation.json")
+        assert "route_memory" not in manifest
+        assert not (sessions / "architecture_test" / "route-memory-return-template.json").exists()
+        assert json.loads(run([*command, "check", "--session", "architecture_test"]).stdout)["valid"]
+        run([sys.executable, str(WORKBENCH), "--sessions-root", str(sessions), "close",
+             "--session", "architecture_test", "--outcome", "open", "--summary", "Bounded proposal ready for review"])
+        returned = load(RETURN_FIXTURE)
+        returned["record_kind"] = "submitted_return"
+        returned["repository"].update(starting_commit=manifest["starting_commit"], origin=manifest["repository_origin"])
+        returned["frontier"] = {"track": "architecture", "area": "navigation", "handle": "fixture/router",
+                                "bounded_question": manifest["frontier"]["intent"],
+                                "stop_condition": manifest["frontier"]["stop_condition"],
+                                "starting_paths": ["scripts/agent_entry.py"]}
+        returned["result"].update(claim_ceiling="architecture_proposal", surviving_boundary="Routing proposal; no mathematical claim.")
+        returned["evidence"][0]["command"] = "python3 scripts/test_agent_entry.py"
+        path = temp / "return.json"
+        path.write_text(json.dumps(returned))
+        checked = json.loads(run([*command, "check", "--session", "architecture_test", "--return-json", str(path)]).stdout)
+        assert checked["valid"], checked
+        for field, value in (("track", "mathematics"), ("area", "tooling"), ("starting_paths", ["README.md"])):
+            altered = json.loads(json.dumps(returned))
+            altered["frontier"][field] = value
+            assert continue_research.cross_check_return(manifest, altered), field
+        package = temp / "package"
+        run([*command, "package", "--session", "architecture_test", "--return-json", str(path), "--output", str(package)])
+        packed = load(package / "package.json")
+        assert packed["track"] == "architecture" and "route_memory" not in packed
+        assert not (package / "route-memory.json").exists()
+        assert "--require-route-memory-receipt" not in packed["validation"]["repository_backed"]["command"]
+        run([sys.executable, str(ROOT / "scripts/validate_research_return.py"), str(package / "return.json"), "--require-submitted", "--check-git"])
+        consultation = sessions / "architecture_test" / "workflow-consultation.json"
+        changed = load(consultation); changed["validation_plan"] = "Changed after the return"
+        consultation.write_text(json.dumps(changed))
+        rejected = json.loads(run([*command, "check", "--session", "architecture_test"], expected=1).stdout)
+        assert any("does not match" in error for error in rejected["errors"])
+
+
 def main() -> int:
     require(
         continue_research.PROBLEMS is continue_research.route_memory_receipt.ROSTER,
@@ -1158,6 +1208,7 @@ def main() -> int:
     check_partial_workbench_open_retry()
     check_repository_origin_override()
     check_subject_frontier_round_trip()
+    check_architecture_frontier_round_trip()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
     ) == "https://github.com/wcook04/plectis-lean-erdos249-257"

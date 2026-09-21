@@ -4,10 +4,15 @@
 """Behavioural checks against independent bounded specifications."""
 import itertools
 import unittest
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
 from fractions import Fraction as Q
 
 from feedback import (Step, check_trace, demo_request, explore, lean_certificate,
-                      merge_residues, read_request, shrink_trace)
+                      merge_residues, read_request, shrink_trace, remainder_cover, request_digest, verify_result)
 
 
 class FeedbackTests(unittest.TestCase):
@@ -24,6 +29,67 @@ class FeedbackTests(unittest.TestCase):
                 self.assertEqual(list(step.choices(c, r)), expected)
                 cases += 1
         self.assertEqual(cases, 6480)
+
+    def test_sharp_cover_against_direct_predicate(self):
+        for a, m, c, width in itertools.product(range(5), range(1, 4), range(3), (Q(0), Q(1, 2), Q(1), Q(3))):
+            step = Step(a, m, Q(1, 2), Q(1, 3), Q(1, 3) + width, ((1, 2),))
+            cover = remainder_cover(step, c)
+            allowed = [d for d in range(a+1) if (c+d) % m == 0 and d % 2 == 1]
+            self.assertEqual(cover['count'], len(allowed))
+            if not allowed:
+                continue
+            left, right = map(Q, cover['hull'])
+            # Endpoints and midpoints of every elementary interval give an
+            # independent exact coverage oracle, including zero-width intervals.
+            endpoints = sorted({left, right, *[d*step.weight+x for d in allowed for x in (step.lower, step.upper)]})
+            probes = endpoints + [(a+b)/2 for a,b in zip(endpoints, endpoints[1:])]
+            covered = all(any(step.check(c, r, d) for d in allowed) for r in probes)
+            self.assertEqual(cover['hull_covered'], covered)
+
+    def test_added_congruence_opens_exact_holes(self):
+        original = Step(8, 2, Q(1, 2), Q(1), Q(3))
+        refined = Step(8, 2, Q(1, 2), Q(1), Q(3), ((0, 3),))
+        self.assertTrue(remainder_cover(original, 0)['hull_covered'])
+        cover = remainder_cover(refined, 0)
+        self.assertEqual((cover['count'], cover['gap_width'], cover['hull']), (2, '1', ['1', '6']))
+        self.assertFalse(any(refined.check(0, Q(7, 2), d) for d in range(9)))
+        self.assertEqual(remainder_cover(Step(0, 1, Q(1), Q(0), Q(0)), 0)['hull_covered'], True)
+
+    def test_returned_search_cannot_weaken_receiver_contract(self):
+        request = demo_request(3)
+        result = explore(request)
+        result.update(request=request, request_sha256=request_digest(request))
+        self.assertTrue(verify_result(request, result)['valid'])
+        weakened = {**request, 'target': '0'}
+        self.assertFalse(verify_result(weakened, result)['valid'])
+        result['best']['digits'][0] = -1
+        result['best']['check'] = {'valid': True, 'complete': True}
+        self.assertFalse(verify_result(request, result)['valid'])
+
+    def test_contributor_policy_reuse_and_receiver_cli(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            script = Path(__file__).with_name('feedback.py')
+            policy = root / 'policy.json'
+            policy.write_text(json.dumps({'policy': ['max', 'middle', 'previous']}))
+            request_path = root / 'request.json'
+            output = root / 'result.json'
+            for depth, target in ((4, '4'), (7, '7/2')):
+                request = demo_request(depth); request['target'] = target
+                request_path.write_text(json.dumps(request))
+                completed = subprocess.run([sys.executable, str(script), '--request', str(request_path),
+                    '--runner', 'policy', '--policy-result', str(policy), '--output', str(output)],
+                    capture_output=True, text=True, timeout=15)
+                self.assertEqual(completed.returncode, 0, completed.stderr)
+                replay = subprocess.run([sys.executable, str(script), '--request', str(request_path),
+                    '--verify-result', str(output)], capture_output=True, text=True, timeout=15)
+                self.assertEqual(replay.returncode, 0, replay.stdout + replay.stderr)
+                self.assertTrue(json.loads(replay.stdout)['complete'])
+            request['target'] = '0'; request_path.write_text(json.dumps(request))
+            rejected = subprocess.run([sys.executable, str(script), '--request', str(request_path),
+                '--verify-result', str(output)], capture_output=True, text=True, timeout=15)
+            self.assertEqual(rejected.returncode, 1)
+            self.assertIn('different request', rejected.stdout)
 
     def test_crt_non_coprime_and_empty(self):
         self.assertEqual(merge_residues(2, 4, 4, 6), (10, 12))

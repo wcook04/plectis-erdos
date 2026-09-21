@@ -101,3 +101,18 @@ For a later correction, retain the earlier receipt and add explicit lineage
 that says whether the earlier artifact is retained, superseded, or withdrawn.
 Credit is evidence-bound and historical; it is not a leaderboard and is not
 erased by ordinary revision.
+
+## Architecture and mixed returns
+
+For infrastructure work, `continue_research.py start --area <area>` records the
+same attribution and session lifecycle as mathematical work. Supply repeatable
+`--starting-path` flags and `--validation-plan`. Do not supply a mathematical
+problem, subject, or route-memory sidecar. Follow the example in
+`docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md`; its consultation is a plan,
+not execution evidence. `check` and `package` bind an architecture return to it.
+
+A contribution received by email uses the same public-safe artifact and accepted
+credit record after naming permission is confirmed. Directions and references
+receive their precise role; integration or implementation is credited separately.
+For mixed work use one coherent submission and linked receipts where necessary,
+without promoting the mathematical claim because the software check passed.

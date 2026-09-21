@@ -107,3 +107,5 @@ matter, and check examples from the repository root. Keep mathematical
 hypotheses, evidence and open boundaries exact when changing the prose.
 For a generated page, change its source and run its owning builder;
 [Contributing](../CONTRIBUTING.md) explains how to return the improvement.
+
+[Work on a paper](CONTRIBUTE_BY_PAPER.md) joins the existing question, paper, source and return routes for every programme.

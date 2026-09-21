@@ -198,7 +198,10 @@
         "python3 scripts/verify_claims.py --list",
         "python3 scripts/verify_claims.py --claim <claim_id>"
       ],
-      "boundary": "Verify the recorded claim trail at the reported checkout commit; this does not run Lean, prove a new theorem, or establish novelty."
+      "boundary": "Verify the recorded claim trail at the reported checkout commit; this does not run Lean, prove a new theorem, or establish novelty.",
+      "entry_purposes": [
+        "reproduce"
+      ]
     },
     {
       "id": "understand_repository",
@@ -326,6 +329,22 @@
             "subject",
             "theory"
           ]
+        },
+        {
+          "actions": [
+            "develop",
+            "reuse",
+            "extend",
+            "discover"
+          ],
+          "objects": [
+            "method",
+            "methods",
+            "component",
+            "components",
+            "policy",
+            "policies"
+          ]
         }
       ],
       "skills": [
@@ -342,7 +361,10 @@
         "python3 scripts/query_corpus.py --overview --format card",
         "python3 scripts/query_corpus.py --papers"
       ],
-      "boundary": "The recorded sources fix what may be claimed about existing work. The question, subject and form of the contribution may emerge during the research. A new direction stays a candidate until its evidence and prior-art search are returned."
+      "boundary": "The recorded sources fix what may be claimed about existing work. The question, subject and form of the contribution may emerge during the research. A new direction stays a candidate until its evidence and prior-art search are returned.",
+      "entry_purposes": [
+        "method"
+      ]
     },
     {
       "id": "choose_open_question",
@@ -434,7 +456,26 @@
         "python3 scripts/query_corpus.py --goal-support \"<goal>\"",
         "python3 scripts/query_corpus.py --proof-plan \"<goal>\" --depth 4"
       ],
-      "boundary": "Select one published frontier and return the smallest checkable delta; a reduction or finite computation is not a solution."
+      "boundary": "Select one published frontier and return the smallest checkable delta; a reduction or finite computation is not a solution.",
+      "entry_purposes": [
+        "research"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "work",
+            "investigate",
+            "study",
+            "tackle"
+          ],
+          "objects": [
+            "problem",
+            "paper",
+            "question",
+            "lemma"
+          ]
+        }
+      ]
     },
     {
       "id": "sustained_research",
@@ -579,6 +620,9 @@
             "papers"
           ]
         }
+      ],
+      "entry_purposes": [
+        "write"
       ]
     },
     {
@@ -641,7 +685,10 @@
         "python3 scripts/continue_research.py --help",
         "python3 scripts/validate_research_return.py --help"
       ],
-      "boundary": "Preserve the starting commit, original delta, evidence limits, and contributor credit."
+      "boundary": "Preserve the starting commit, original delta, evidence limits, and contributor credit.",
+      "entry_purposes": [
+        "return"
+      ]
     },
     {
       "id": "submit_change",
@@ -788,6 +835,27 @@
             "validator",
             "validators"
           ]
+        },
+        {
+          "actions": [
+            "improve",
+            "refine",
+            "repair",
+            "fix",
+            "extend",
+            "integrate"
+          ],
+          "objects": [
+            "infrastructure",
+            "machinery",
+            "tooling",
+            "journey",
+            "journeys",
+            "router",
+            "contributor",
+            "session",
+            "sessions"
+          ]
         }
       ],
       "skills": [
@@ -802,7 +870,10 @@
         "python3 scripts/test_compact_agent_entry.py",
         "python3 scripts/check_cold_clone_comprehension.py --quick"
       ],
-      "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections."
+      "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",
+      "entry_purposes": [
+        "infrastructure"
+      ]
     }
   ]
 }
