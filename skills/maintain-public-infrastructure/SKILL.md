@@ -154,6 +154,11 @@ a clean merge or a passing test from only one parent does not establish that
 the combined contract works. For corpus-wide contribution changes, exercise
 all eight programmes and each supported contribution track.
 
+For publication growth, conservation means preserving each existing artifact's
+identity and download name while admitting newly registered papers. Test a
+valid addition as well as a removed or renamed publication; equality of the
+old and new inventories would prevent the corpus from growing.
+
 During the edit, run the narrow owner checks:
 
 ```sh

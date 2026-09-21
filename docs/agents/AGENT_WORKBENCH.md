@@ -6,7 +6,7 @@ and keep records another researcher can inspect and replay.
 
 Use this page for agent operations. Before proposing changes, read
 [CONTRIBUTING.md](../../CONTRIBUTING.md) and the authority and validation
-contract in [AGENTS.md](AGENT_GUIDE.md). Readers can start with the README.
+contract in [AGENTS.md](AGENT_GUIDE.md). Reader introductions belong in the README.
 
 For clone setup and a copyable task prompt, see the
 [agent quickstart](README.md#start-with-current-public-work).
