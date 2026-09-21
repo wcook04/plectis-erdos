@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.CriticalTwoRootProximity
+import research_corpus.Erdos1041.CriticalTwoRootProximity
 
 /-!
 # Erdős 1041: strict critical budget with an explicit slack certificate

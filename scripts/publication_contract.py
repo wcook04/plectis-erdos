@@ -1580,7 +1580,17 @@ def validate_publication_contract(
     for artifact in artifacts:
         if artifact.get("artifact_class") != NOTE_ARTIFACT_CLASS:
             continue
-        if "unregistered_expansion_module" not in artifact.get("authority_posture", ""):
+        # Two postures say it.  A note over modules with no reviewed claim says the
+        # modules are unregistered.  A note whose results now carry reviewed claims
+        # says instead that public status is owned per claim by docs/claims.json.
+        # Either way the note must disclaim proof authority in words.
+        posture = artifact.get("authority_posture", "")
+        disclaims = "not_Lean_proof_authority" in posture
+        names_owner = (
+            "unregistered_expansion_module" in posture
+            or "public_status_is_owned_per_claim_by_docs/claims.json" in posture
+        )
+        if not (disclaims and names_owner):
             errors.append(
                 f"problem note {artifact.get('id')!r} lost its unregistered-module posture"
             )

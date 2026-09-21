@@ -41,7 +41,7 @@ LEAN_REF = (
     "CubicCriticalHub.lean"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "source-provenance://private-authoring-project/receipts/"
+    "research_corpus/Erdos1041/"
     "erdos1041_cubic_critical_hub_receipt.json"
 )
 

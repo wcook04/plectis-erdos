@@ -1,5 +1,5 @@
 import ErdosProblems.Erdos68.CompanionOrbitRationality
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
 import ErdosProblems.Erdos68.FactorialShiftFamilyOrbit
 import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
 import ErdosProblems.Erdos68.PrimePoleCriterion
@@ -11,10 +11,8 @@ import ErdosProblems.Erdos68.PrimeUnitTranslator
 /-!
 # Paper-complete assemblies for Erdős 68
 
-Packet: round 7, live source 48953f39dfcae869741242a8cb4815b29bce46b7.
 These declarations group the exact displayed conclusions rather than citing
-only one constituent lemma. All mathematical inputs are supplied library
-results. The new assembly file has NOT been compiled in the return environment.
+only one constituent lemma. All mathematical inputs are imported results.
 No parent irrationality theorem without its explicit cofinal premise is added.
 
 `¬ Irrational x` is the library's rationality predicate. `facFloor x m` is

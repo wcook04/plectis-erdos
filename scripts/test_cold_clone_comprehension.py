@@ -677,14 +677,13 @@ def main() -> int:
         "docs/reference/TRUTH_AUDIT.md"
     ].replace(
         (
-            f"The `{census['demand_equivalent_total']}/"
-            f"{census['demand_lattice_counts']['substantial']}` count"
+            "selected audit, not the current corpus or a measure of mathematical value"
         ),
-        "The `0/0` count",
+        "the current corpus and its mathematical value",
         1,
     )
     assert_census_rejected(
-        census, mutated_census, "demand-lattice population distinction"
+        census, mutated_census, "historical demand audit promoted to current corpus"
     )
     checks += 1
 
@@ -742,7 +741,10 @@ def main() -> int:
 
     for token, label in (
         ("## Eight-problem cold-start card", "agent direct fleet card"),
-        (r"\sum_{n\ge1}p_n/2^n", "agent #251 mathematical statement"),
+        (next(row["question"] for row in json.loads(
+            diagnostic.read("docs/problem_index_source.json")
+        )["problems"] if row["problem_id"] == "erdos_251"),
+         "agent #251 mathematical statement"),
         ("`ai_workflow`", "agent standalone boundary"),
     ):
         try:

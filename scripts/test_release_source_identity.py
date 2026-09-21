@@ -137,6 +137,38 @@ def main() -> int:
         original_root = check_release.ROOT
         check_release.ROOT = root
         try:
+            publication = {
+                "ref": new_ref,
+                "ref_kind": "commit",
+                "publication_state": "committed_checkpoint_pending_remote_publication",
+                "relationship_to_last_tag": "post_tag_checkpoint",
+                "public_tag": None,
+            }
+            require(not check_release.formal_source_publication_errors(publication),
+                    "an honest committed candidate requires premature publication")
+            tag = "formal-source-2026-09-19-r2"
+            publication["public_tag"] = tag
+            require(bool(check_release.formal_source_publication_errors(publication)),
+                    "pending publication claimed a public tag")
+            publication["publication_state"] = "published_committed_checkpoint"
+            require(bool(check_release.formal_source_publication_errors(publication)),
+                    "published source accepted an absent tag")
+            git(root, "tag", tag, new_ref)
+            require(bool(check_release.formal_source_publication_errors(publication)),
+                    "published source accepted a lightweight tag")
+            git(root, "tag", "-d", tag)
+            git(root, "tag", "-a", tag, new_ref, "-m", "fixture checkpoint")
+            require(not check_release.formal_source_publication_errors(publication),
+                    "published source rejected its matching annotated tag")
+            publication["ref"] = old_ref
+            require(bool(check_release.formal_source_publication_errors(publication)),
+                    "published source accepted a tag for different source")
+            publication["public_tag"] = None
+            require(bool(check_release.formal_source_publication_errors(publication)),
+                    "published source accepted a missing identity")
+            publication["publication_state"] = "unknown"
+            require(bool(check_release.formal_source_publication_errors(publication)),
+                    "unknown publication status was accepted")
             cache: dict[tuple[str, str | None], list[str] | None] = {}
             require(
                 check_release.module_lines(cache, "Erdos249257/PostRef.lean", old_ref)

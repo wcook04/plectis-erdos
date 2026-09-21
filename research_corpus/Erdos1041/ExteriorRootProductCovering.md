@@ -219,5 +219,5 @@ theorem. **Erdős #1041 remains open.**
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_exterior_root_product_covering.py
-lake env lean research_corpus/Erdos1041/ExteriorRootProductCovering.lean
+./lake env lean research_corpus/Erdos1041/ExteriorRootProductCovering.lean
 ```

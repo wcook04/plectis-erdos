@@ -31,7 +31,7 @@ and the general logarithmic-balance theorem is
 Replay the complete Lean module from the repository root with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
+./lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
 ```
 
 Those declarations establish a Euclidean budget for a nearest pair selected by

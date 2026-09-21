@@ -155,4 +155,3 @@ some proper merge node crosses (8) or (9), or combine failure of every such
 crossing with one of the terminal/combined-charge/near-Fekete consumers.  A
 pure abstract merge tree cannot force the crossing because adjacent critical
 levels can coalesce; the required next input must retain polynomial geometry.
-

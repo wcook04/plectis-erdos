@@ -59,7 +59,7 @@ SEARCH_REF = (
 )
 DEFAULT_OUTPUT = (
     REPO_ROOT
-    / "source-provenance://private-authoring-project/receipts/"
+    / "research_corpus/Erdos1041/"
     "erdos1041_legacy_minimum_critical_descent_regression_receipt.json"
 )
 

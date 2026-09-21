@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticCanonicalMixedSlice
+import research_corpus.Erdos1041.SexticCanonicalMixedSlice
 
 /-!
 # Erdős #1041: the pure cubic sextic face forces a radius-zero stratum

@@ -155,4 +155,3 @@ atlas on the resulting compact coefficient section, and absorb the
 origin-anchored \(O(\eta^2|z|)\) remainder.  The present theorem must be used
 as the complementary low-mode branch; it does not itself claim the finite
 transfer, all sextics, or unrestricted Erdős #1041.
-

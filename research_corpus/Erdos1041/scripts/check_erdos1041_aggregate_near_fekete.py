@@ -78,7 +78,7 @@ PACKET_REF = (
     "research_corpus/Erdos1041/research_packet.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "source-provenance://private-authoring-project/receipts/"
+    "research_corpus/Erdos1041/"
     "erdos1041_aggregate_near_fekete_receipt.json"
 )
 

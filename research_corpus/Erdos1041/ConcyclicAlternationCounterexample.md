@@ -84,5 +84,5 @@ requires all certificates to be positive.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py
-lake env lean research_corpus/Erdos1041/ConcyclicAlternationCounterexample.lean
+./lake env lean research_corpus/Erdos1041/ConcyclicAlternationCounterexample.lean
 ```

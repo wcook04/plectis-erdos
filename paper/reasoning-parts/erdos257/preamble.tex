@@ -56,6 +56,10 @@
 \newcommand{\PK}{Erdos249257}
 \newcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
+% Sources that postdate \commit are cited with their lean/ path and resolve at \latecommit,
+% whose tree keeps the Lean roots under lean/.
+\newcommand{\latecommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
+\newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}
 % This macro family is pinned to \commit. Paper-local links at a different immutable
 % revision are inventoried separately; aggregate historical link counts are not PDF audits.
 % \lean declaration file:line forms a hyperlink to the pinned public
@@ -73,10 +77,14 @@
     \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#1} }
     \regex_replace_all:nnN { \\allowbreak } { } \l__leanlink_arg_tl
     \regex_replace_all:nnN { \s+ } { } \l__leanlink_arg_tl
-    \tl_set:Nx \l__leanlink_url_tl { \repobase }
-    \exp_args:NnV \regex_match:nnTF { \A (ErdosProblems|Erdos249257)/ } \l__leanlink_arg_tl
-      { }
-      { \tl_put_right:Nx \l__leanlink_url_tl { / \PK } }
+    \exp_args:NnV \regex_match:nnTF { \A lean/ } \l__leanlink_arg_tl
+      { \tl_set:Nx \l__leanlink_url_tl { \laterepobase } }
+      {
+        \tl_set:Nx \l__leanlink_url_tl { \repobase }
+        \exp_args:NnV \regex_match:nnTF { \A (ErdosProblems|Erdos249257)/ } \l__leanlink_arg_tl
+          { }
+          { \tl_put_right:Nx \l__leanlink_url_tl { / \PK } }
+      }
     \exp_args:NnV \regex_extract_once:nnNTF { (.*\.lean) :? (.*) } \l__leanlink_arg_tl \l__leanlink_split_seq
       {
         \tl_put_right:Nx \l__leanlink_url_tl { / \seq_item:Nn \l__leanlink_split_seq { 2 } }

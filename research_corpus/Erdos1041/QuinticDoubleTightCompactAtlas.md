@@ -150,4 +150,3 @@ traces (with the two hub arms paired at each point).  Its sign still needs
 an effective interval-Newton/DT-Lip cover, or a new analytic inequality.
 This note does not prove that residual, `EX-W`, `EX-U`, the model-to-real
 transfer, degree five, or unrestricted Erdős 1041.
-

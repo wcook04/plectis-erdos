@@ -1,0 +1,56 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+-- Current-source whole-statement audit for Erdős 243.
+-- 36 paper environments; 34 declaration endpoints.
+
+import ErdosProblems.Erdos243.DynamicCancellation
+import ErdosProblems.Erdos243.FiniteHorizonResidue
+import ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord
+import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
+import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup
+import ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy
+import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
+import ErdosProblems.Erdos243.PaperCompleteR7.Limits
+import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
+import ErdosProblems.Erdos243.PaperCompleteR7.Reduction
+import ErdosProblems.Erdos243.ReciprocalTailRigidity
+
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.arithmetic_weighted_record_dichotomy
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_inclusive_logLog_criterion
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_negativeError_limsup_gt_one
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_quantitative_record_dichotomy
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_recordTheta_eq_zero_iff
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_recordTheta_gt_one
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_recordTheta_zero_or_gt_one
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.fixed_offsets_periodic_lowerDensity
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.bounded_negative_endpoint_eventual_multiplier
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.canonical_frontier
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.canonical_tail_ratio_quantitative
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.error_identities
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.finite_negative_mass_paper
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.persistent_coprimality
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.reduced_second_order_int
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.sparse_gcd_changes
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.state_scale
+#print axioms ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually
+#print axioms ErdosProblems.Erdos243.cancellationFree_curvature_square
+#print axioms ErdosProblems.Erdos243.centeredState_zero_absorbing
+#print axioms ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
+#print axioms ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples
+#print axioms ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial
+#print axioms ErdosProblems.Erdos243.nextTailState_eq_sub_centered
+#print axioms ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance
+#print axioms ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState
+#print axioms ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero
+#print axioms ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero

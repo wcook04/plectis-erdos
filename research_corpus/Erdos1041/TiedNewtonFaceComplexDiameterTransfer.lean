@@ -1,5 +1,5 @@
-import ErdosProblems.Erdos1041.ReciprocalNewtonExpansion
-import ErdosProblems.Erdos1041.TiedNewtonFaceComplexDiameterTube
+import research_corpus.Erdos1041.ReciprocalNewtonExpansion
+import research_corpus.Erdos1041.TiedNewtonFaceComplexDiameterTube
 import Mathlib.Tactic
 
 /-!

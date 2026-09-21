@@ -1654,6 +1654,8 @@ T_1=\frac{N-D}{D},\qquad \gcd(N-D,D)=\gcd(N,D).
 ```
 The supplied `PaperR7RationalBridge.lean` proves this translation, which preserves the denominator, its smooth factor and the clearing onset. These comparisons use the attached sources; they are not a new build or verification of all historical link targets.
 
+Two displayed statements also have direct current-source counterparts. The threshold-column rank formula is [finite cut rank](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182); its range equality allows repeated columns and arbitrary ordering. The uniform modular-minor statement is [uniform modular minors](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133); its row and column indices are chosen before the modulus and layer. The two modules compiled under Lean 4.29.1 during this source migration.
+
 | informal statement | linked Lean source |
 |:---|:---|
 | integer represented by an exponent triple | [](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L32) |
@@ -1779,6 +1781,8 @@ The supplied `PaperR7RationalBridge.lean` proves this translation, which preserv
 | small-form criterion | [](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/PurePowerIrrationality.lean#L94) |
 | irrationality from clearing and small nonzero gaps | [](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/PurePowerIrrationality.lean#L156) |
 | indices giving the threshold staircase | [staircase indices](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Shared/IrrationalRotationStaircase.lean#L271) |
+| finite threshold-column rank, including the extreme-column defect | [finite cut rank](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182) |
+| uniform admissible modular minors, with indices chosen before modulus and layer | [uniform modular minors](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133) |
 
 <a id="sec:erdos-269-complete-family-map"></a>
 
@@ -1791,7 +1795,7 @@ The main arguments have different inputs and different conclusions. In particula
 | Result | Dependency and limit |
 |:---|:---|
 | Height and cells | Prime-power divisibility and unique factorisation. Their geometry alone gives no irrationality statement. |
-| Two-prime values | Earlier factorisation plus the cited external Hecke–Mahler value theorem; not formalised here. |
+| Two-prime values | Earlier factorisation plus the cited external Hecke–Mahler value theorem. The reduction to that theorem is checked in Lean; the theorem itself is a cited input (Section <a href="#long269:sec:coverage" data-reference-type="ref" data-reference="long269:sec:coverage">[long269:sec:coverage]</a>). |
 | Arbitrary-order rank | Diagonal rescaling, separate one-dimensional densities and a staircase determinant; selected supplied formal evidence. |
 | Tail recurrence | Counting the original multiplicities, normalising by half the boundary height, and convergence; an abstract recurrence would not identify the sum. |
 | Denominator reduction | A finite prefix with cleared denominators and an upper bound for positive integer tails. The first valid index is determined by an ordinary proof. |
@@ -1802,6 +1806,86 @@ The main arguments have different inputs and different conclusions. In particula
 </div>
 
 A source link identifies code; a build record reports what was run; an axiom audit concerns logical dependencies; and a finite computation checks its stated inputs. None substitutes for a proof of the remaining irrationality assertion.
+
+<a id="long269:sec:coverage"></a>
+
+## Formalisation coverage and remaining dependencies
+
+Every theorem, lemma, proposition and corollary of this record other than the one named below has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`.
+
+The exception is Theorem <a href="#long269:res:lead-two-prime" data-reference-type="ref" data-reference="long269:res:lead-two-prime">1</a>. The development verifies its reduction to the transcendence of the Hecke–Mahler boundary sum at an irrational $`\theta\in(0,1)`$ and nonzero algebraic $`\beta,\alpha`$ with $`|\beta|<1`$ and $`|\beta||\alpha|^\theta<1`$, which is Theorem 1.1 of Bugeaud and Laurent \[bugeaudlaurent2023\] in the case $`\rho=0`$, due to Loxton and van der Poorten \[loxtonvdp1977, Theorem 8, p. 40\]. A formal proof of that input is not included in the verified development, so this endpoint remains conditional on it. Everything the proof adds is checked: the running least-common-multiple identity, the selection of the single power of $`q`$ between consecutive powers of $`p`$, the factorisation of the repeated sum, the identification of the distinct running values, the telescoping identity, the boundary identity <a href="#long269:eq:hecke-mahler-boundary" data-reference-type="eqref" data-reference="long269:eq:hecke-mahler-boundary">[long269:eq:hecke-mahler-boundary]</a> expressing $`A`$ through the Hecke–Mahler sum, the irrationality of $`\log p/\log q`$, and each side condition verified before the value theorem is applied. The two identities expressing $`\mathcal D_{\{p,q\}}`$ and $`\mathcal R_{\{p,q\}}`$ as polynomials in $`A`$ are unconditional and carry no additional input.
+
+A theorem whose own statement is conditional is formalised exactly as stated. Theorem <a href="#long269:res:lead-two-prime" data-reference-type="ref" data-reference="long269:res:lead-two-prime">1</a> is asserted unconditionally in this record, and its Lean counterpart carries the additional named input described here.
+
+<a id="concordance-of-statements-and-lean-declarations."></a>
+
+#### Concordance of statements and Lean declarations.
+
+Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `181078b6b009`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so.
+
+Theorem <a href="#long269:res:lcm" data-reference-type="ref" data-reference="long269:res:lcm">2</a> (the Lean statement is stronger): [`running_lcm_real_cutoff_exact`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L49).
+
+Proposition <a href="#long269:res:cell" data-reference-type="ref" data-reference="long269:res:cell">3</a> (the Lean statement is stronger): [`realPrefixLcm_eq_of_sameLogCell`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L65), [`realPrefixLcm_jump_first`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L87), [`realPrefixLcm_jump_second`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L117), [`realPrefixLcm_jump_third`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L129), [`threePrimeKernelQ_eq_of_sameRealLogCell`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L142).
+
+Proposition <a href="#long269:res:count" data-reference-type="ref" data-reference="long269:res:count">4</a>: [`paper_jump_count`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L69).
+
+Proposition <a href="#long269:res:fibre" data-reference-type="ref" data-reference="long269:res:fibre">5</a>: [`finiteSmoothKernelSum_groupedByHeight`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407).
+
+Lemma <a href="#long269:res:short" data-reference-type="ref" data-reference="long269:res:short">6</a> (the Lean statement is stronger): [`exponent_unique_real_base_short_interval`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealBaseShortInterval.lean#L10).
+
+Proposition <a href="#long269:res:drop" data-reference-type="ref" data-reference="long269:res:drop">7</a> (the Lean statement is stronger): [`realSmoothExponentShell_bounds`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L285).
+
+Proposition <a href="#long269:res:two-prime-rank" data-reference-type="ref" data-reference="long269:res:two-prime-rank">8</a> (the Lean statement is stronger): [`real_two_prime_separation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealTwoPrimeKernel.lean#L63).
+
+Proposition <a href="#long269:res:rank" data-reference-type="ref" data-reference="long269:res:rank">9</a>: [`paper_two_by_two_fixture`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102).
+
+Theorem <a href="#long269:res:infinite-rank" data-reference-type="ref" data-reference="long269:res:infinite-rank">10</a> (the Lean statement is stronger): [`paper_uniform_rank_and_nonseparation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22).
+
+Proposition <a href="#long269:res:finite-cut-rank" data-reference-type="ref" data-reference="long269:res:finite-cut-rank">11</a> (the Lean statement is stronger): [`rank_cutMatrix`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182).
+
+Theorem <a href="#long269:res:uniform-rank" data-reference-type="ref" data-reference="long269:res:uniform-rank">12</a> (the Lean statement is stronger): [`uniform_rank_complete`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR8UniformRank.lean#L321).
+
+Proposition <a href="#long269:res:dyadic-alphabet" data-reference-type="ref" data-reference="long269:res:dyadic-alphabet">13</a>: [`dyadicBlockBase235`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L751), [`dyadicInternalPower_exponent_unique`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L669), [`exists_dyadicInternalPower_iff_log_succ`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L701), [`log_dyadic_succ_eq_of_no_internalPower`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L734), [`threePrimeHeight_dyadicBlock_succ`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L781), [`radix_eq_height_ratio`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L56), [`dyadicBlockBase235_cases`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L762), [`dyadicBlockBase235_mem_interval`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L774).
+
+Theorem <a href="#long269:res:actual-orbit" data-reference-type="ref" data-reference="long269:res:actual-orbit">14</a>: [`long_actual_orbit`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L189).
+
+Lemma <a href="#long269:res:literal-triangle" data-reference-type="ref" data-reference="long269:res:literal-triangle">15</a> (the Lean statement is stronger): [`literal_triangle_whole`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/LiteralTriangleReal.lean#L193).
+
+Proposition <a href="#long269:res:actual-dichotomy" data-reference-type="ref" data-reference="long269:res:actual-dichotomy">16</a> (the Lean statement is stronger): [`scaled_integer_or_cofinal_separation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L132).
+
+Theorem <a href="#long269:res:actual-tail-bound" data-reference-type="ref" data-reference="long269:res:actual-tail-bound">17</a> (the Lean statement is stronger): [`actual_tail_rank_bound`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR8RankMajorant.lean#L357).
+
+Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">18</a> (the Lean statement is stronger): [`long_all_scale_lattice_exact`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/BoundedLatticeCollision.lean#L56).
+
+Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">19</a> (the Lean statement is stronger): [`long_fixed_split_bridgeR11`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/LongWindowCapR11.lean#L37), [`longPaperCap_le_three_squareR11`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/LongWindowCapR11.lean#L26).
+
+Proposition <a href="#long269:res:exact-denominator" data-reference-type="ref" data-reference="long269:res:exact-denominator">20</a>: [`exact_denominators_and_minimal_clearing`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L334), [`scaled_state_is_integer_iff_firstClearingIndex_le`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L309), [`clearingCondition_iff_max`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L166), [`firstClearingIndex_spec`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L203), [`firstClearingIndex_minimal`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L208), [`firstClearingIndex_le_sufficient`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L213).
+
+Proposition <a href="#long269:res:pinning" data-reference-type="ref" data-reference="long269:res:pinning">21</a> (the Lean statement is stronger): [`paper_pinning_and_eight_scale_rigidity`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/EightScaleRigidity.lean#L77).
+
+Proposition <a href="#long269:res:jump-constrained-bound" data-reference-type="ref" data-reference="long269:res:jump-constrained-bound">22</a> (the Lean statement is stronger): [`actual_sharp_tail_bound`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ActualSharpTailMajorantR10.lean#L339).
+
+Proposition <a href="#long269:res:consumer" data-reference-type="ref" data-reference="long269:res:consumer">23</a> (the Lean statement is stronger): [`no_bounded_positive_int_state_of_leastPositiveResidue`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ResidueEscape.lean#L110).
+
+Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">24</a> (the Lean statement is stronger): [`octic_escape_whole`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/OcticEscapeWhole.lean#L50).
+
+Proposition <a href="#long269:res:residue-limit" data-reference-type="ref" data-reference="long269:res:residue-limit">25</a> (the Lean statement is stronger): [`eventually_fixedStartResidue_formula`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperFixedStartResidueR14.lean#L172), [`fixedStartResidue_ratio_tendsto`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperFixedStartResidueR14.lean#L205), [`eventually_fixedStartResidue_eq_tail_of_integral`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperFixedStartResidueR14.lean#L231).
+
+Proposition <a href="#long269:res:window-growth" data-reference-type="ref" data-reference="long269:res:window-growth">26</a> (the Lean statement is stronger): [`long_window_growth`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L196).
+
+Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">27</a> (the Lean statement is stronger): [`long_no_bounded_length`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L267).
+
+Lemma <a href="#long269:res:weighted-shift-identity" data-reference-type="ref" data-reference="long269:res:weighted-shift-identity">28</a> (the Lean statement is stronger): [`weighted_shift_whole`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/WeightedShiftValue.lean#L216).
+
+Proposition <a href="#long269:res:strip-decomposition" data-reference-type="ref" data-reference="long269:res:strip-decomposition">29</a> (the Lean statement is stronger): [`actual_weighted_strip_decomposition`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/PhaseStripDecomposition.lean#L132), [`actual_cubic_no_crossing_strips`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/PhaseStripDecomposition.lean#L172).
+
+Proposition <a href="#long269:res:fixed-base-recoding" data-reference-type="ref" data-reference="long269:res:fixed-base-recoding">31</a> (the Lean statement is stronger): [`fixed_base_recoding_whole`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/FixedBaseRecoding.lean#L154).
+
+Proposition <a href="#long269:res:tails-equivalence" data-reference-type="ref" data-reference="long269:res:tails-equivalence">33</a> (the Lean statement is stronger): [`allReducedTailsNonintegral_iff`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L214).
+
+Proposition <a href="#long269:long:denominator-reduction" data-reference-type="ref" data-reference="long269:long:denominator-reduction">35</a> (the Lean statement is stronger): [`conditional_denominator_reduction_real_bound`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealBoundDenominatorReduction.lean#L25).
+
+Proposition <a href="#long269:long:windowconsumer" data-reference-type="ref" data-reference="long269:long:windowconsumer">36</a> (the Lean statement is stronger): [`no_positive_reducedCarry_of_cofinalLocalWindowEscape`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L645).
 
 <div class="thebibliography">
 

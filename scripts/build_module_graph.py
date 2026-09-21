@@ -39,6 +39,19 @@ ROOT_FILES = tuple(
 AUXILIARY_ROOT_PREFIXES = (
     "ErdosProblems.Bit.",
     "ErdosProblems.Decl.",
+    # Eight-paper coverage lane. The R7/R8/R11/R16/R18/R20/R21 paper modules and
+    # the per-problem correspondence audits are the source the coverage ledger
+    # binds to. No supported root imports them, so the graph reaches them
+    # through this forest instead. Only the audit aggregators and the audit
+    # leaves that nothing imports are named here: each entry is an exact module
+    # id, never a namespace, so a core problem module that later falls out of a
+    # supported root still fails the release gate rather than being absorbed
+    # here. Every module these roots reach has a build product newer than its
+    # source in this tree; the two top aggregators were built green under the
+    # governed build as jobs 46406d26 and 6bb86e19. The remaining entries appear
+    # below in alphabetical position and belong to this same lane.
+    "ErdosProblems.EightPaperR21Audit",
+    "ErdosProblems.EightPaperRecoveryAudit",
     # The #1041 selector and tail-case modules are published and type-check
     # against the pinned toolchain, and no supported root imports them, so the
     # module graph could not reach them at all. They are exactly what this
@@ -49,24 +62,46 @@ AUXILIARY_ROOT_PREFIXES = (
     # smoke and axiom-audit leaves stay outside the root import environment.
     "ErdosProblems.Erdos1049.AllRow.Audit",
     "ErdosProblems.Erdos1049.AllRow.Smoke",
+    # Eight-paper coverage lane, continued.
+    "ErdosProblems.Erdos1049.PaperCorrespondenceAudit",
+    "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
+    "ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit",
+    "ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit",
+    "ErdosProblems.Erdos243.PaperCorrespondenceAudit",
+    "ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit",
+    "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint",
+    "ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface",
+    "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
+    "ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction",
+    "ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition",
+    "ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence",
+    "ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing",
+    "ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence",
+    "ErdosProblems.Erdos249.PaperCorrespondenceAudit",
+    "ErdosProblems.Erdos251.PaperCompleteR20.ExactDenominator",
+    "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
+    "ErdosProblems.Erdos251.PaperCompleteR20.LocalTargetInterval",
+    "ErdosProblems.Erdos251.PaperCompleteR20.SparseConstructionAudit",
+    "ErdosProblems.Erdos251.PaperCorrespondenceAudit",
+    "ErdosProblems.Erdos257.PaperCompleteR20.AchievementGeometry",
+    "ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse",
+    "ErdosProblems.Erdos257.PaperCompleteR20.GeneralRepairCorrespondence",
+    "ErdosProblems.Erdos257.PaperCompleteR20.MersenneConstantDecimal",
+    "ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal",
+    "ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence",
+    "ErdosProblems.Erdos257.PaperCorrespondenceAudit",
+    "ErdosProblems.Erdos269.PaperCompleteR20.UniformRankAudit",
+    "ErdosProblems.Erdos269.PaperCorrespondenceAudit",
     # Uncompiled #68 size-floor kernel certificates: independently checkable,
     # but they must not enter the default Lake/CI import environment.
     "ErdosProblems.Erdos68.FiniteLeadBlocks.",
     "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
     "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
-    # Duplicate #68 plateau core: FactorialGapPlateauCore and FactorialZeroPlateau
-    # both define factorialGapStepCarry. Root.lean already uses ZeroPlateau, so
-    # the Core fork and every module that joins the two stay auxiliary.
-    "ErdosProblems.Erdos68.FactorialGapPlateauCore",
-    "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
-    "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
-    "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement",
-    "ErdosProblems.Erdos68.SecondLayerDigit",
-    "ErdosProblems.Erdos68.CompanionConstantBridge",
-    "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
-    "ErdosProblems.Erdos68.CompanionOrbitRationality",
-    "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
-    "ErdosProblems.Erdos68.PaperCompleteExisting",
+    # Eight-paper coverage lane, continued.
+    "ErdosProblems.Erdos68.PaperCorrespondenceAudit",
     "ErdosProblems.FreePosition.",
     "ErdosProblems.Half.",
     "ErdosProblems.Hlow.",

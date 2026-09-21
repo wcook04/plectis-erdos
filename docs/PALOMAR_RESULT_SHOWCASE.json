@@ -8,7 +8,7 @@
     "comparator_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
     "comparator_theorem_count": 51,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
+    "source_review_matrix_sha256": "1d11c2faca8d84bf665593d99c0dbb17b35f3855340b3317e28bf357757cfa87",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -64,7 +64,13 @@
       "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
       "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
     ],
-    "all_eight_programmes_remain_open": true
+    "all_eight_programmes_remain_open": true,
+    "review_matrix_binding_review": {
+      "reviewed_at": "2026-09-19",
+      "previous_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
+      "reviewed_claims_commit": "1d0d5e5797300d0e7aed1a6c65ec2ac75155f8b1",
+      "scope": "Reviewed the matrix delta from b4dfa966: relocated paper paths; existing #68 LCM and #249 all-base source results; #269 prior attribution and established carry bridge; #1041 distinction between pointwise Lean statements and interval synthesis. Family membership and the selected full-support Comparator interface are unchanged. This updates selection metadata, not proof or external review evidence."
+    }
   },
   "selection_contract": {
     "authority_basis": "Every source family is read from the exact committed HEAD:docs/claims.json review matrix plus the explicitly recorded theorem-forest discoveries; the exact committed HEAD:verification/comparator.json roster is a nested evidence/admission screen. Uncommitted Comparator edits, roster order, and ease of qualification are not selection evidence.",
@@ -520,7 +526,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
+    "source_review_matrix_sha256": "1d11c2faca8d84bf665593d99c0dbb17b35f3855340b3317e28bf357757cfa87",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",

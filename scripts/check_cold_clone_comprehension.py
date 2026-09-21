@@ -583,6 +583,17 @@ def quick_summary() -> dict[str, Any]:
     }
 
 
+@lru_cache(maxsize=1)
+def release_status_boundary() -> str:
+    claims = json.loads(read("docs/claims.json"))
+    boundary = claims.get("external_verification_packet", {}).get("boundary")
+    require(
+        isinstance(boundary, str) and boundary.strip(),
+        "docs/claims.json lacks the release status boundary",
+    )
+    return boundary
+
+
 def validate_route_memory_descriptor(descriptor: dict[str, Any]) -> None:
     """Keep the CI first-contact descriptor bound to the route-memory rail."""
     compact_graph = descriptor.get("compact_graph")
@@ -774,21 +785,21 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["not an entrypoint into any private development system"],
         ],
         "state_problem_frontier": [
-            ["All eight problems remain open"],
-            ["S = ∑ φ(n)/2ⁿ"],
-            ["∑_{n∈A} 1/(2ⁿ - 1)"],
+            [release_status_boundary()],
+            ["S = ∑ φ(n)/2ⁿ", "Is the binary Lambert series sum phi(n)/2^n irrational?"],
+            ["∑_{n∈A} 1/(2ⁿ - 1)", "sum of 1/(2^n-1) over every infinite set"],
             ["every infinite", "for every infinite"],
         ],
         "recover_blank_slate_problem_card": [
             ["#68"],
             ["n!−1", "n!-1"],
             ["#243"],
-            ["rapidly growing"],
+            ["rapidly growing", "rapid-growth"],
             ["Sylvester recurrence"],
             ["#249"],
             ["∑ φ(n)/2ⁿ"],
             ["#251"],
-            ["∑ p_n/2ⁿ"],
+            ["∑ p_n/2ⁿ", "sum p_n/2^n"],
             ["#257"],
             ["every infinite"],
             ["#269"],
@@ -1179,7 +1190,7 @@ def validate_human_first_contact(
     require("```" not in readme_prefix, "README front page carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
     require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
     require(
-        "![Eight open problems:" in readme_prefix[:positions[0]]
+        "![Eight Erdős problem programmes:" in readme_prefix[:positions[0]]
         and "](.github/system-map.png)" in readme_prefix[:positions[0]],
         "README opening lost the mathematical research-record banner",
     )
@@ -1262,7 +1273,10 @@ def validate_human_first_contact(
                 f"{alternatives}")
 
     scope = surfaces["docs/SCOPE.md"]
-    require(contains_any(scope, ["does not prove", "does not solve"]), "cold-clone comprehension invariant")
+    require(
+        contains_any(scope, [release_status_boundary()]),
+        "scope lost the authority-owned release status boundary",
+    )
     require(contains_any(scope, ["formal-source checkpoint"]), "cold-clone comprehension invariant")
     orientation = surfaces["docs/ORIENTATION.md"]
     for status in (
@@ -1512,16 +1526,8 @@ def validate_public_semantic_census(
                 f"distinct from the {census['prior_art_review_queue_count']}-node "
                 "public prior-art review queue"
             ),
-            (
-                f"Of {demand['substantial']} substantial Lean propositions "
-                "extracted from hypotheses of conditional theorems, "
-                f"{demand_equivalent} are provably equivalent to an endpoint"
-            ),
-            (
-                f"{demand_equivalent_by_problem['249']} to #249 and "
-                f"{demand_equivalent_by_problem['257']} to the `1/2` "
-                "membership test for #257"
-            ),
+            "historical hypothesis audit",
+            "selected extraction, not the current corpus",
             (
                 f"open-antecedent surface has {open_cluster_total} clusters, "
                 f"of which {open_cluster_equivalent} are marked endpoint-equivalent"
@@ -1541,23 +1547,20 @@ def validate_public_semantic_census(
                 "public prior-art review queue"
             ),
             (
-                f"The `{demand_equivalent}/{demand['substantial']}` count is "
-                "a narrower kernel-checked audit"
+                f"In the historical DemandLedger extraction, {demand['substantial']} "
+                "hypotheses were classified as substantial and "
+                f"{demand_equivalent} were recorded as equivalent to an endpoint"
             ),
             (
-                f"starts from {demand['conditional_declarations_walked']} "
-                "conditional declarations, extracts "
-                f"{demand['closed_props_extracted']} distinct closed "
-                "hypothesis Props"
+                f"{demand_equivalent_by_problem['249']} to #249 and "
+                f"{demand_equivalent_by_problem['257']} to the `1/2` "
+                "membership test for #257"
             ),
             (
-                f"classifies {demand['substantial']} as substantial; "
-                f"{demand_equivalent} of those {demand['substantial']} are "
-                "endpoint-equivalent"
+                "selected audit, not the current corpus or a measure of mathematical value"
             ),
             (
-                f"lists {open_cluster_total} entries, "
-                f"{open_cluster_equivalent} marked endpoint-equivalent"
+                "Regenerating this page does not re-extract hypotheses or rerun their Lean checks"
             ),
             "<!-- END semantic_public_census -->",
         ),
@@ -1655,14 +1658,6 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "docs/claims.json",
         "Eight-problem cold-start card",
         "must not already know a query command",
-        "All eight indexed problems remain open",
-        "Sylvester recurrence",
-        r"\sum_{n\ge1}\varphi(n)/2^n",
-        r"\sum_{n\ge1}p_n/2^n",
-        r"\sum_{n\in A}1/(2^n-1)",
-        "running lcms of the smooth numbers",
-        "open unit lemniscate",
-        "first resistant explicit base here is",
         "erdos-68-factorial-denominator-irrationality.pdf",
         "erdos-243-reciprocal-tail-rigidity.pdf",
         "erdos-249-binary-totient-series.pdf",
@@ -1676,6 +1671,22 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "not an entrypoint into any private development system",
     ):
         require(contains_any(agents, [token]), f"docs/agents/AGENT_GUIDE.md lost shared invariant {token!r}")
+    # The card is generated from the same authored questions and claim owner
+    # as the query index. Check every exact question and boundary, rather than
+    # freezing a second set of mathematical spellings in this validator.
+    source = json.loads(read("docs/problem_index_source.json"))
+    claims = {row["id"]: row for row in json.loads(read("docs/claims.json"))["claims"]}
+    for row in source["problems"]:
+        require(contains_any(agents, [row["question"]]),
+                f"agent card lost question {row['problem_id']}")
+        target = claims.get(row["programme_claim_id"])
+        require(target is not None, f"agent card lacks registered target {row['problem_id']}")
+        require(contains_any(agents, [target["statement"]]),
+                f"agent card lost programme boundary {row['problem_id']}")
+    require(
+        contains_any(agents, [release_status_boundary()]),
+        "docs/agents/AGENT_GUIDE.md lost the authority-owned release status boundary",
+    )
     require("@AGENTS.md" in claude, "Claude must import the shared compact entry")
     require("docs/agents/AGENT_GUIDE.md" in claude, "Claude lost the deep-guide route")
     require("## First read" not in claude, "Claude duplicated the shared manual")

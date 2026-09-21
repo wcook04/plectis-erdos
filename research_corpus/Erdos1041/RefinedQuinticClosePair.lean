@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.ClosePairCyclicQuotientCase
+import research_corpus.Erdos1041.ClosePairCyclicQuotientCase
 
 /-!
 # Erdős #1041: the refined quintic close-pair kernel

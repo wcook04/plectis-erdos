@@ -130,5 +130,5 @@ all `0<s<=1`.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py
-lake env lean research_corpus/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.lean
+./lake env lean research_corpus/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.lean
 ```

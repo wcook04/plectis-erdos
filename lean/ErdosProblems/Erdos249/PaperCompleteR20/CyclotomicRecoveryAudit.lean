@@ -1,0 +1,15 @@
+-- Source-current audit of the recovered whole polynomial statements.
+import Erdos249257.CyclotomicProjectionOfShadow
+import Erdos249257.PrimePowerJumpDynamics
+import Erdos249257.RepunitMobiusNumerator
+import ErdosProblems.Erdos249.PaperCompleteR20.NumeratorEvaluation
+
+#print axioms Erdos249257.CyclotomicProjectionOfShadow.cyclotomic_dvd_mobiusNumeratorPolynomial_sub
+#print axioms Erdos249257.CyclotomicProjectionOfShadow.jordanTotientTwo_eq_prod_primeFactors
+#print axioms Erdos249257.CyclotomicProjectionOfShadow.mobiusNumerator_mod_cyclotomicEval
+#print axioms Erdos249257.PrimePowerJumpDynamics.cyclotomic_dvd_primeJump_new_fibre
+#print axioms Erdos249257.PrimePowerJumpDynamics.cyclotomic_dvd_primeJump_old_fibre
+#print axioms Erdos249257.RepunitMobiusNumerator.mobiusNumeratorPolynomial_coeff
+#print axioms Erdos249257.RepunitMobiusNumerator.mobiusNumeratorPolynomial_coeff_pos
+#print axioms Erdos249257.RepunitMobiusNumerator.mobiusNumeratorPolynomial_eval_two
+#print axioms ErdosProblems.Erdos249.PaperCompleteR20.numerator_eval_two_divisors

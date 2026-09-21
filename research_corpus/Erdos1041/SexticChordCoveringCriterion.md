@@ -1,9 +1,17 @@
-# The chord-covering criterion decouples, and the residual band closes at |A| = |B|
+# The chord-covering criterion and its complete normalized range
 
 Status: complete homogeneous tangent-model theorems with exact replay
 (`scripts/check_erdos1041_sextic_chord_covering_criterion.py`, 16/16 arms) and a
 Lean scalar landing, 2026-08-25. The nonlinear actual-polynomial transfer and
 the away-from-Fekete regimes remain open, so Erdős #1041 remains open.
+
+Update 2026-09-05: [SexticChordRecessionClosure.md](SexticChordRecessionClosure.md)
+closes the remaining range \(|A|\ge1\), \(|B|=1\), by an ordinary recession
+argument and a complete exact interval/Bernstein certificate. Together with
+Theorem 3 below, every \(A,C\) at \(|B|=1\) has an adjacent unit chord with
+\(\mathcal H\le-1/256\). The new certificate is not Lean checked. Sections
+4–6 retain the boundaries of the older constructions; they no longer define
+an open chord band.
 
 Write the paired homogeneous sextic tangent model as
 
@@ -249,11 +257,11 @@ The true extremal value of (11) is \(-32\sqrt3\), attained when the six
 \(\chi_j\) land on the multiples of \(\pi/3\); (11) is the provable form, not the
 sharp one.
 
-## 7. What is now open in this lane
+## 7. The former middle band and its closure
 
-The desk residual is closed.  The exact remaining gap of the *chord* programme
-is the band \(1<|A|<12.46\) at \(|B|=1\), where neither Theorem 3 nor Theorem 6
-applies.  That band is already covered by the landed first-mode ray chart
+The original gap of the *chord* programme was the band \(1<|A|<12.46\) at
+\(|B|=1\), where neither Theorem 3 nor Theorem 6 applies. That band was already
+covered by the landed first-mode ray chart
 (\(|A|\ge\tfrac34|B|\)), so nothing is uncovered — but the chord connector there
 is only supported by a labelled numerical diagnostic, never by proof:
 
@@ -266,10 +274,14 @@ is only supported by a labelled numerical diagnostic, never by proof:
 | \(3.0\) | \(-256.73\) | mixed |
 | \(5.0\) | \(-454.39\) | mixed |
 
-Mixed pairs take over at \(|A|\approx1\), and the criterion is monotonically
-more negative afterwards.  This is *evidence for a producer, not a theorem*: no
-uniform claim is made from it.  The producer is stated in
-`research_packet.json` as `sextic_unrestricted_chord_covering_band`.
+In this diagnostic mixed pairs take over at \(|A|\approx1\), and the recorded
+criterion becomes more negative afterwards. These measurements alone prove
+neither monotonicity nor covering. The later recession certificate supplies
+the missing uniform theorem: at every phase pair there is an opposite-parity
+pair whose unit-magnitude thresholds have nonpositive sum and whose separate
+recession bounds also have nonpositive sum. The same pair covers all larger
+magnitudes. The former producer `sextic_unrestricted_chord_covering_band` is
+therefore closed at the exact-computational evidence class.
 
 ## 8. The transfer constant
 
@@ -288,11 +300,16 @@ After Theorem 3 the picture is:
 | \(\|A\|\le\|B\|=1\) | adjacent unit chord | \(1\) | \(1\) | \(1/256\) |
 | \(\|A\|>\|B\|=1\) | truncated spokes | \(31/16\) | \(1/16\) | \(\ge1/768\) |
 
-So the honest global constant is \(1/768\), set by the ray chart just above
+At that stage the global constant was \(1/768\), set by the ray chart just above
 \(|A|=1\), and the chord chart now owns the whole band where the first mode does
 not dominate.  The ray-chart row restates
 `SexticFirstModeThreeQuarterOverlap.md` as written; its proof was not
 re-derived here.
+
+The recession closure now replaces both rows, on this normalized homogeneous
+model, by an adjacent chord of length one, length slack one, and uniform
+margin \(1/256\) for all \(A,C\) when \(|B|=1\). This improves the interface
+to a future transfer theorem; it does not prove the nonlinear transfer.
 
 ## 9. Falsification, and one trap the checker had to be rebuilt around
 

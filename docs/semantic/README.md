@@ -20,13 +20,12 @@ docs/declaration_atlas.json          exhaustive declaration inventory
 docs/semantic_corpus.json.gz            statement nodes, typed relations, coverage receipt
 docs/semantic_corpus_check.json      content-addressed fast-check receipt
     ↓  selected_as
-docs/claims.json                     curated ledger: 100 reviewed claims
+docs/claims.json                     curated public claim ledger
     ↓  rendered_as
 problem notes · README · packets
 ```
 
-The atlas knows that a declaration exists. The claims ledger knows that 300
-declarations were reviewed and published. Neither knows that a theorem is a
+The atlas knows that a declaration exists. The claims ledger records the selected public declarations and their status. Neither knows that a theorem is a
 reformulation of the open problem, that a finite computation instantiates an
 infinite family nobody has proved, or that a barrier closes two engines and
 leaves a third alive.
@@ -249,6 +248,16 @@ Unreceipted nodes remain authored navigation. Use
 `python3 scripts/query_semantic.py semantic-reviews` to inspect the reviewed
 subjects and `python3 scripts/semantic_review.py --check` for the focused
 freshness gate.
+
+After unrelated source additions change the atlas fingerprint, use
+`python3 scripts/semantic_review.py --rebind` to check whether every reviewed
+subject is unchanged; add `--apply` only after that comparison passes. During
+a merge, the incoming receipts may belong to the other parent's corpus. Use
+`--baseline-ref <commit>` to read that immutable corpus directly, without
+choosing a generated conflict file by hand. The command records the resolved
+commit, reproduces each old receipt digest, and rejects changed wording,
+evidence or boundaries. Then run `python3 scripts/refresh_projections.py`.
+A selected baseline never substitutes for a new semantic review.
 
 The generated corpus keeps two different identities separate. Its
 `source_provenance.formal_source` is the committed Lean source anchor declared

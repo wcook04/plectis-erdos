@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TetranomialL2Selector
+import research_corpus.Erdos1041.TetranomialL2Selector
 
 /-!
 # Erdős #1041: product-sensitive tetranomial L2 selector

@@ -111,8 +111,8 @@ The independent exact checker works in
 `Q(ω)=Q[x]/(x²+x+1)` and records all three pair certificates:
 
 ```bash
-./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_all_straight_segments.py
-./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_all_straight_segments.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_all_straight_segments.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_all_straight_segments.py --check
 ```
 
 Its canonical output is

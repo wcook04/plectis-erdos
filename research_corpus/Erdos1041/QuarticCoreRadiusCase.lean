@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.QuarticQuotientFiberCase
+import research_corpus.Erdos1041.QuarticQuotientFiberCase
 
 /-!
 # Erdős #1041: quartic-core factor and radius budgets
@@ -90,19 +90,19 @@ def quarticCoreWitnessFifth : QuarticCoreRat := (9 / 10, 0)
 theorem quarticCoreWitness_core_radius :
     ∀ i, qcNormSq
       (qcSub (quarticCoreWitnessCore i) quarticCoreWitnessCenter) = (3 / 5) ^ 2 := by
-  native_decide
+  decide +kernel
 
 /-- The unselected fifth root is at distance `6/5` from the core centre. -/
 theorem quarticCoreWitness_fifth_distance :
     qcNormSq
       (qcSub quarticCoreWitnessFifth quarticCoreWitnessCenter) = (6 / 5) ^ 2 := by
-  native_decide
+  decide +kernel
 
 /-- Every root of the exact witness lies strictly inside the unit disk. -/
 theorem quarticCoreWitness_roots_inside :
     (∀ i, qcNormSq (quarticCoreWitnessCore i) < 1) ∧
       qcNormSq quarticCoreWitnessFifth < 1 := by
-  native_decide
+  decide +kernel
 
 /-- No pair of witness roots satisfies the existing squared-distance
 `5/9` quintic close-pair certificate. -/
@@ -113,13 +113,13 @@ theorem quarticCoreWitness_pairwiseSeparated :
     (∀ i,
       (5 : ℚ) / 9 < qcNormSq
         (qcSub (quarticCoreWitnessCore i) quarticCoreWitnessFifth)) := by
-  native_decide
+  decide +kernel
 
 /-- The full quintic factor budget of the exact witness is only
 `(3/5)^4 (9/5) = 729/3125`. -/
 theorem quarticCoreWitness_factor_budget :
     (3 / 5 : ℚ) ^ 4 * (9 / 5) = 729 / 3125 ∧
       (729 / 3125 : ℚ) < 1 := by
-  native_decide
+  decide +kernel
 
 end ErdosProblems.Erdos1041

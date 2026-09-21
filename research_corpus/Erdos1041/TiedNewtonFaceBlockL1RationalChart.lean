@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1RationalRescue
+import research_corpus.Erdos1041.TiedNewtonFaceBlockL1RationalRescue
 
 /-!
 # Erdős #1041: perturbation kernel for the rational block-L1 chart

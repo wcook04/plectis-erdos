@@ -402,22 +402,27 @@ def semantic_public_census_region(census: dict, *, truth_audit: bool) -> str:
         f"{census['open_antecedent_endpoint_equivalent_count']} are marked "
         "endpoint-equivalent. None of these populations is a novelty census."
     )
-    # The demand lattice is the strongest thing this census has to say and it
-    # was computed, stored, and then never rendered: the public snapshot named
-    # the open-antecedent clusters but not how many of the extracted hypotheses
-    # are provably equivalent to an endpoint, which is the sentence a reviewer
-    # is looking for. The cold-clone contract asks for it by name.
+    # DemandLedger is a selected historical extraction, not the population of
+    # current results. Regenerating navigation does not rerun that Lean audit.
+    if not truth_audit:
+        return "\n\n".join((prefix, table, tier_detail, detail, (
+            "The [historical hypothesis audit](reference/TRUTH_AUDIT.md) "
+            "describes a selected extraction, not the current corpus or a "
+            "measure of mathematical value. Use the problem and theorem "
+            "routes above to inspect the results and their exact boundaries."
+        )))
     demand = census.get("demand_lattice_counts", {})
     demand_lattice = (
-        f"Of {demand.get('substantial', 0)} substantial Lean propositions "
-        "extracted from hypotheses of conditional theorems, "
-        f"{census.get('demand_equivalent_total', 0)} are provably equivalent to "
+        f"In the historical DemandLedger extraction, {demand.get('substantial', 0)} "
+        "hypotheses were classified as substantial and "
+        f"{census.get('demand_equivalent_total', 0)} were recorded as equivalent to "
         "an endpoint: "
         f"{census.get('demand_equivalent_by_problem', {}).get('249', 0)} to #249 "
         f"and {census.get('demand_equivalent_by_problem', {}).get('257', 0)} to "
-        "the `1/2` membership test for #257. Equivalence here is kernel-checked "
-        "against the extracted proposition, not a claim that either endpoint is "
-        "settled."
+        "the `1/2` membership test for #257. These counts describe that "
+        "selected audit, not the current corpus or a measure of mathematical "
+        "value. Regenerating this page does not re-extract hypotheses or rerun "
+        "their Lean checks; the recorded equivalences do not settle either endpoint."
     )
     return "\n\n".join((prefix, table, tier_detail, detail, demand_lattice))
 

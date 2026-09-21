@@ -3,8 +3,8 @@
 # Refresh: python3 scripts/build_external_verification.py
 version: "v0.4"
 project:
-  name: "Eight open Erdős problems: checked subsidiary mathematics"
-  description: "Lean 4 formalization of subsidiary mathematics for eight open Erdős problems, including unconditional irrationality theorems for structured Mersenne supports, exact conditional endpoint reductions, arithmetic classifications, and method barriers; none of the eight open problems is claimed solved."
+  name: "Eight Erdős problem programmes: checked mathematics"
+  description: "Lean 4 formalization across eight Erdős problem programmes, including unconditional theorems, exact conditional endpoint reductions, arithmetic classifications, counterexamples, and method barriers. The precise release boundary is recorded below."
   authors:
     - "Will Cook"
   license: "Apache-2.0"
@@ -31,10 +31,7 @@ sources:
     license: "CC-BY-4.0"
     author_endorsement: "n/a"
 status:
-  scope: >-
-    All eight covered Erdős problems remain open. This repository checks
-    subsidiary theorems, formalises selected known results, verifies finite
-    instances, and records conditional reductions and method barriers.
+  scope: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
   proof_corpus_sorry_count: 0
   sorry_count: 8
   sorry_in_definitions: 0
@@ -916,8 +913,7 @@ review:
   reviewers: []
   notes: "self-assessed and agent-checked; no human mathematical peer review is claimed"
 fidelity:
-  divergences: >-
-    The checked results are subsidiary results or formalised prior mathematics; none is the open problem statement. Comparator checks formal statement identity and axioms, not informal significance, novelty, or source fidelity.
+  divergences: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
 alignment:
   namespace: "Erdos249257.ExternalVerification"
   statements:
@@ -1625,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:28facf7677ab602eb59ff6a87e01c103a791eb92b1a4ec0dc8ff38e089344a23"
+  problem_index_digest: "sha256:a2a102817ebb093da7164fb5381049c1b560d7cae72ec260f486fc7bf0f3b7b4"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1633,66 +1629,66 @@ external_verification:
       status: "open"
       checked_frontier: "The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally."
       open_frontier: "Irrationality of the factorial-denominator series."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_243"
       erdos_number: 243
       status: "open"
       checked_frontier: "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables."
       open_frontier: "The unrestricted problem."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_249"
       erdos_number: 249
       status: "open"
       checked_frontier: "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1."
       open_frontier: "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_251"
       erdos_number: 251
       status: "open"
       checked_frontier: "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise."
       open_frontier: "The target irrationality."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
       checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
       open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "programme_only"
     - id: "erdos_269"
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
       open_frontier: "Irrationality or transcendence in any three-prime case."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
-      checked_frontier: "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w."
-      open_frontier: "Erdos Problem 1041 in unrestricted degree."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      checked_frontier: "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation."
+      open_frontier: "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation."
+      claim_registry_status: "registered_declarations"
       research_frontier:
         directory: "research_corpus/Erdos1041"
         authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
-        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
+        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims."
         frontier: "research_corpus/Erdos1041/FRONTIER.md"
         strongest_results: "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
         manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
         checkpoint: "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
         content_digests:
-          frontier: "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
-          strongest_results: "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
-          manifest: "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3"
-          checkpoint: "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef"
-        activated_result_count: 45
-        source_checkpoint: "867638684907b4ebd4ab2ef7b5de22dafda71e36"
-        source_subtree_tree: "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d"
+          frontier: "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
+          strongest_results: "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
+          manifest: "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6"
+          checkpoint: "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c"
+        activated_result_count: 294
+        source_checkpoint: "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac"
+        source_subtree_tree: null
         promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_1049"
       erdos_number: 1049
       status: "open"
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
   trusted_challenge_holes: 8
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

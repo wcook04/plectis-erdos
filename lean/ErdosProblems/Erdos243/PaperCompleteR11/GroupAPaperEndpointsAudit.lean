@@ -1,0 +1,28 @@
+import ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord
+import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+import ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy
+
+/-!
+# Group A paper-endpoint audit for Erdős 243
+
+This audit names the closed R11 dependency cone for five current paper
+statements.  It is proof evidence only after the pinned Lean command reaches a
+terminal success.  The declarations retain their written hypotheses: none
+settles the unrestricted Erdős problem.
+-/
+
+#check ErdosProblems.Erdos243.PaperCompleteR11.fixed_offsets_periodic_lowerDensity
+#check ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess
+#check ErdosProblems.Erdos243.PaperCompleteR11.arithmetic_weighted_record_dichotomy
+#check ErdosProblems.Erdos243.PaperCompleteR11.canonical_quantitative_record_dichotomy
+#check ErdosProblems.Erdos243.PaperCompleteR11.canonical_inclusive_logLog_criterion
+
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.fixed_offsets_periodic_lowerDensity
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.arithmetic_weighted_record_dichotomy
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_recordTheta_gt_one
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_recordTheta_zero_or_gt_one
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_recordTheta_eq_zero_iff
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_quantitative_record_dichotomy
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_negativeError_limsup_gt_one
+#print axioms ErdosProblems.Erdos243.PaperCompleteR11.canonical_inclusive_logLog_criterion

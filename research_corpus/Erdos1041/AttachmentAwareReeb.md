@@ -420,5 +420,5 @@ residual has the explicit cyclic-order form of Corollary 4a.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_attachment_aware_reeb.py
-lake env lean research_corpus/Erdos1041/AttachmentAwareReeb.lean
+./lake env lean research_corpus/Erdos1041/AttachmentAwareReeb.lean
 ```

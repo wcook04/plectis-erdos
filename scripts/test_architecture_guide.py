@@ -97,18 +97,30 @@ def main() -> int:
 
     mutations = (
         (
-            guide.replace(
-                "All eight mathematical problems remain open", ""
+            reflow_tolerant_replace(
+                guide, checker.external_status_boundary(), ""
             ),
             "open-problem boundary removed",
         ),
         (
             reflow_tolerant_replace(
                 guide,
+                "reviewed claim registry covers #68, #243, #249, #251, #257, #269, #1041 and #1049",
                 "reviewed claim registry covers #249 and #257",
-                "claim registry covers the project",
             ),
-            "reviewed-versus-expansion boundary removed",
+            "obsolete two-problem registry scope restored",
+        ),
+        (
+            guide.replace("#1049.", "#1049 and #9999.", 1),
+            "unregistered problem added to reviewed scope",
+        ),
+        (
+            guide.replace("comparator_assurance", "unrelated_route"),
+            "Comparator inspection route removed",
+        ),
+        (
+            guide.replace("palomar_qualification", "unrelated_route"),
+            "Palomar qualification route removed",
         ),
         (
             guide.replace("Lean decides whether a formal proof", "Software decides"),
@@ -240,8 +252,9 @@ def main() -> int:
 
     try:
         checker.validate_entry_links(
-            readme.replace(
-                "All eight problems remain open.",
+            reflow_tolerant_replace(
+                readme,
+                checker.external_status_boundary(),
                 "A conditional producer would be required",
             ),
             agents,

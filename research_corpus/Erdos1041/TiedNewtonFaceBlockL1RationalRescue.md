@@ -128,4 +128,3 @@ signs, the radical bounds, the tail endpoint/monotonicity consumer, and the
 strict metric budget. The ordinary proof supplies Bernstein convex-hull
 containment and the component-passport link already established in the no-go
 source.
-

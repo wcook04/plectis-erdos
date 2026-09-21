@@ -45,6 +45,24 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_qualification_follows_selection_without_claiming_service_status(self) -> None:
+        authority = builder.load_signal_authority()
+        original = builder.render_qualification(authority)
+        selection = authority["candidate_selection"]
+        selection["statement"] = "A changed exact statement."
+        selection["open_boundary"] = "A changed open boundary."
+        selection["declaration"] = "Fixture.selected"
+        updated = builder.render_qualification(authority)
+        self.assertNotEqual(original, updated)
+        for value in (selection["statement"], selection["open_boundary"], selection["declaration"]):
+            self.assertIn(value, updated)
+        self.assertNotIn("Status: **READY**", updated)
+        self.assertIn("Inspect `ok` as well as the recorded `decision`", updated)
+        self.assertIn("No command above submits or registers a result", updated)
+        del selection["declaration"]
+        with self.assertRaises(KeyError):
+            builder.render_qualification(authority)
+
     def test_generated_human_signal_spine_is_frontier_first(self) -> None:
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
         spine_start = human.index("## Mathematical signal spine")
@@ -78,6 +96,22 @@ class ExternalVerificationContractTest(unittest.TestCase):
             [68, 243, 249, 251, 257, 269, 1041, 1049],
         )
         self.assertEqual({row["status"] for row in index["problems"]}, {"open"})
+        owner_boundary = json.loads(
+            (ROOT / "docs/claims.json").read_text(encoding="utf-8")
+        )["external_verification_packet"]["boundary"]
+        self.assertEqual(packet["boundary"], owner_boundary)
+        self.assertIn(
+            f"  scope: {builder.quote(owner_boundary)}",
+            (ROOT / "formalization.yaml").read_text(encoding="utf-8"),
+        )
+        self.assertIn(
+            f"> **Status boundary:** {owner_boundary}",
+            (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8"),
+        )
+        self.assertIn(
+            owner_boundary,
+            (ROOT / "docs/reference/OUTREACH_EVIDENCE_CAPSULES.md").read_text(encoding="utf-8"),
+        )
         self.assertIn("not_a_reviewed_claim_registry", index["authority_posture"])
         self.assertEqual(
             packet["challenge_import_closure"]["internal_paths"],
@@ -122,7 +156,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
         self.assertIn("> [!IMPORTANT]", human)
-        self.assertIn("# Plectis verification: eight open Erdős programmes", human)
+        self.assertIn("# Plectis verification: eight Erdős problem programmes", human)
         self.assertIn("## Mathematical signal spine", human)
         self.assertIn("**Completed direct results:**", human)
         self.assertIn("**Conditional endpoint routes:**", human)

@@ -1,6 +1,6 @@
-import ErdosProblems.Erdos1041.QuinticEqualityCubicExtension
-import ErdosProblems.Erdos1041.QuinticFinitePerturbationTransfer
-import ErdosProblems.Erdos1041.QuinticMixedGlobalAtlas
+import research_corpus.Erdos1041.QuinticEqualityCubicExtension
+import research_corpus.Erdos1041.QuinticFinitePerturbationTransfer
+import research_corpus.Erdos1041.QuinticMixedGlobalAtlas
 import Mathlib.Tactic
 
 /-!

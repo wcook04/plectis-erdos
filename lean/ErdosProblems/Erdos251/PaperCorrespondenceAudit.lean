@@ -1,0 +1,53 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+-- Current-source whole-statement audit for Erdős 251.
+-- 30 paper environments; 34 declaration endpoints.
+
+import ErdosProblems.Erdos251.LogarithmicCarryAsymptoticsR8
+import ErdosProblems.Erdos251.OrderLatticeDiagonal
+import ErdosProblems.Erdos251.PaperBoundedCarryR7
+import ErdosProblems.Erdos251.PaperCoreR7
+import ErdosProblems.Erdos251.PaperFiniteCertificatesR7
+import ErdosProblems.Erdos251.PaperNonconcentrationR7
+import ErdosProblems.Erdos251.PaperTailBoundsR7
+import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos251.RealPrimeGapTail
+import ErdosProblems.Erdos251.ShiftedGapCountingR9
+import ErdosProblems.Erdos251.SparseAmbientR9
+import ErdosProblems.Erdos251.SparsePaperR11
+
+#print axioms ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform
+#print axioms ErdosProblems.Erdos251.PaperR7.actual_free_pair_criterion
+#print axioms ErdosProblems.Erdos251.PaperR7.affine_circularity_bundle
+#print axioms ErdosProblems.Erdos251.PaperR7.bounded_recurring_values_countermodel
+#print axioms ErdosProblems.Erdos251.PaperR7.cofinal_escape_of_finite_truncation
+#print axioms ErdosProblems.Erdos251.PaperR7.denominator_floor_both
+#print axioms ErdosProblems.Erdos251.PaperR7.denominator_floor_decimal
+#print axioms ErdosProblems.Erdos251.PaperR7.explicit_remainder_certificate
+#print axioms ErdosProblems.Erdos251.PaperR7.finite_perturbation_stability
+#print axioms ErdosProblems.Erdos251.PaperR7.finite_small_pair
+#print axioms ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity
+#print axioms ErdosProblems.Erdos251.PaperR7.irrational_prime_series_of_finite_truncation
+#print axioms ErdosProblems.Erdos251.PaperR7.irrationality_reformulation
+#print axioms ErdosProblems.Erdos251.PaperR7.polynomial_countermodel
+#print axioms ErdosProblems.Erdos251.PaperR7.prime_gaps_not_eventually_periodic
+#print axioms ErdosProblems.Erdos251.PaperR7.rational_bounded_perturbation
+#print axioms ErdosProblems.Erdos251.PaperR7.rational_small_pair_bundle
+#print axioms ErdosProblems.Erdos251.PaperR7.rationality_classification
+#print axioms ErdosProblems.Erdos251.PaperR7.real_block_identity
+#print axioms ErdosProblems.Erdos251.PaperR7.real_signed_two_window
+#print axioms ErdosProblems.Erdos251.PaperR7.real_small_pair_prime_endpoint
+#print axioms ErdosProblems.Erdos251.PaperR8.LogCarry.exists_logarithmic_recurring_values_countermodel
+#print axioms ErdosProblems.Erdos251.PaperR9.ShiftCounting.shifted_count_bound
+#print axioms ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform
+#print axioms ErdosProblems.Erdos251.carryPartialSum_eq
+#print axioms ErdosProblems.Erdos251.dyadicPartialSumQ_eq_start_add_differences
+#print axioms ErdosProblems.Erdos251.irrational_initial_iff_all_lcmDiagonal_nonintegral
+#print axioms ErdosProblems.Erdos251.irrational_realPrimeGapTail_zero_iff
+#print axioms ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
+#print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
+#print axioms ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps
+#print axioms ErdosProblems.Erdos251.realPrimeGapTail_recurrence
+#print axioms ErdosProblems.Erdos251.realPrimeGapTail_zero
+#print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den

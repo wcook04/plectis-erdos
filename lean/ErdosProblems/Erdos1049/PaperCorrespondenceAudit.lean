@@ -1,0 +1,47 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+-- Current-source whole-statement audit for Erdős 1049.
+-- 37 paper environments; 29 declaration endpoints.
+
+import ErdosProblems.Erdos1049.AdelicHeightBridge
+import ErdosProblems.Erdos1049.AllRow.Producer
+import ErdosProblems.Erdos1049.PaperFiniteAssembliesR7
+import ErdosProblems.Erdos1049.PaperLongCapR9
+import ErdosProblems.Erdos1049.PaperNoDecayR9
+import ErdosProblems.Erdos1049.PaperOmegaIndicatorR7
+import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
+import ErdosProblems.Erdos1049.PaperShortCapR9
+import ErdosProblems.Erdos1049.QuantitativeSelectorEscape
+import ErdosProblems.Erdos1049.RationalBaseLambert
+import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+
+#print axioms ErdosProblems.Erdos1049.PaperR17.thirtyone_four_powers
+#print axioms ErdosProblems.Erdos1049.PaperR7.charge_ceilings
+#print axioms ErdosProblems.Erdos1049.PaperR7.endpoint_residues
+#print axioms ErdosProblems.Erdos1049.PaperR7.endpoint_scalar_content_exclusion
+#print axioms ErdosProblems.Erdos1049.PaperR7.forcing_term
+#print axioms ErdosProblems.Erdos1049.PaperR7.fourJet_paper_statement
+#print axioms ErdosProblems.Erdos1049.PaperR7.height_and_hankel_deficits
+#print axioms ErdosProblems.Erdos1049.PaperR7.integer_scalar_content
+#print axioms ErdosProblems.Erdos1049.PaperR7.omega_indicator
+#print axioms ErdosProblems.Erdos1049.PaperR7.pade_summand_bound_and_gap
+#print axioms ErdosProblems.Erdos1049.PaperR7.plucker_paper_statement
+#print axioms ErdosProblems.Erdos1049.PaperR7.power_bracket
+#print axioms ErdosProblems.Erdos1049.PaperR7.rank_fortyone
+#print axioms ErdosProblems.Erdos1049.PaperR7.scalar_margin
+#print axioms ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero
+#print axioms ErdosProblems.Erdos1049.PaperR9.long_record_archcap
+#print axioms ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap
+#print axioms ErdosProblems.Erdos1049.bottomJet3_eq_zero_iff_dvd
+#print axioms ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat
+#print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
+#print axioms ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear
+#print axioms ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul
+#print axioms ErdosProblems.Erdos1049.exists_ne_map_eq_map_ne_of_card_mul_lt
+#print axioms ErdosProblems.Erdos1049.exists_small_real_escape_of_conditional_multiplicity
+#print axioms ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all
+#print axioms ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ
+#print axioms ErdosProblems.Erdos1049.sevenHalves_archimedean_height_condition
+#print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
+#print axioms ErdosProblems.Erdos1049.three_mul_lt_two_pow_succ

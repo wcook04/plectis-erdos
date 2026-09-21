@@ -491,11 +491,31 @@ DeclarationKey = tuple[str, str]
 
 def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
     """Module-qualified declarations linked by one problem note."""
-    return {
+    linked = {
         (library_relative(file_name), declaration)
         for file_name, _line, declaration in links(note_text)
         if declaration is not None
     }
+    # A local result may use its own immutable source pin without changing the
+    # note-wide pin. Count it only after checking the named declaration there.
+    explicit = re.compile(
+        r"\\href\{https://github\.com/wcook04/plectis-erdos/blob/"
+        r"(?P<commit>[0-9a-f]{40})/"
+        r"(?P<path>(?:lean/)?(?:ErdosProblems|Erdos249257)/[A-Za-z0-9_/.-]+\.lean)"
+        r"\\?#L(?P<line>[1-9][0-9]*)\}\{\\texttt\{(?P<name>[^{}]+)\}\}"
+    )
+    cache: dict[tuple[str, str], list[str]] = {}
+    for match in explicit.finditer(strip_comments(note_text)):
+        relative = library_relative(match.group("path").removeprefix("lean/"))
+        declaration = match.group("name").replace(r"\_", "_")
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_'.]*", declaration):
+            continue
+        raw = snapshot_lines(match.group("commit"), relative, cache)
+        source = strip_lean_comments("\n".join(raw)).splitlines()
+        index = int(match.group("line")) - 1
+        if 0 <= index < len(source) and declares_at(source, index, declaration):
+            linked.add((relative, declaration))
+    return linked
 
 
 def declarations_for_module(relative: str, text: str) -> list[DeclarationKey]:
@@ -557,6 +577,11 @@ def required_note_declaration_failures(
             )
             continue
         key = (module_relative(module), declaration)
+        current_module = anchor.get("current_module", module)
+        if not isinstance(current_module, str) or not current_module:
+            failures.append(f"{row['problem_id']}: required note declaration has invalid current module")
+            continue
+        current_key = (module_relative(current_module), declaration)
         if key in seen:
             failures.append(
                 f"{row['problem_id']}: duplicate required note declaration "
@@ -564,15 +589,15 @@ def required_note_declaration_failures(
             )
             continue
         seen.add(key)
-        if key[0] not in allowed_modules:
+        if current_key[0] not in allowed_modules:
             failures.append(
                 f"{row['problem_id']}: required note declaration module "
-                f"{key[0]} is outside the indexed problem modules"
+                f"{current_key[0]} is outside the indexed problem modules"
             )
-        elif key not in current:
+        elif current_key not in current:
             failures.append(
                 f"{row['problem_id']}: required note declaration "
-                f"{key[0]}::{key[1]} is absent from current source"
+                f"{current_key[0]}::{key[1]} is absent from current source"
             )
         elif key not in linked:
             failures.append(

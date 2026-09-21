@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826
+import research_corpus.Erdos1041.SparseDefectSurvivorSelector20260826
 
 /-!
 # Erdős 1041: Orlicz--Gram Pareto selector kernels

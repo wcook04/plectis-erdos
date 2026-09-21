@@ -1,0 +1,30 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+import Erdos249257.BooleanMobiusCofinalExactRows
+import Erdos249257.BooleanMobiusSkipRowCofinal
+import Erdos249257.BooleanMobiusCriticalCapacityCofinal
+import Erdos249257.HalfCarryReachability
+
+/-!
+# Eleventh additive Erdos 257 paper-correspondence audit
+
+This source-current audit batches exact-row compactness, cofinal positive
+skips, the critical quotient supply, and the protected-row induction. It adds
+no theorem and changes no mathematical claim.
+-/
+
+#print axioms Erdos249257.CofinalExactLocalMersenneHalfRows
+#print axioms Erdos249257.abs_exactLocalMersenneRowValue_sub_half_le
+#print axioms Erdos249257.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows
+#print axioms Erdos249257.HalfCarryReachability.finite_boolSupport_ne_half
+#print axioms Erdos249257.CofinalPositiveHalfGreedySkips
+#print axioms Erdos249257.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
+#print axioms Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips
+#print axioms Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+#print axioms Erdos249257.cofinalPositiveHalfGreedySkips_iff_half_mem
+#print axioms Erdos249257.SkippedCoreCriticalQuotientSupply
+#print axioms Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
+#print axioms Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply
+#print axioms Erdos249257.ProtectedExactLocalMersenneRow
+#print axioms Erdos249257.exists_laterProtectedExactLocalMersenneRow

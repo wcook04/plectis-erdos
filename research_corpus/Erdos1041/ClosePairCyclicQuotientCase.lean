@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.QuarticQuotientFiberCase
+import research_corpus.Erdos1041.QuarticQuotientFiberCase
 
 /-!
 # Erdős #1041: the arbitrary-degree close-pair cyclic quotient case

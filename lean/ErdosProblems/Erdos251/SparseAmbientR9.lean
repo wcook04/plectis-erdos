@@ -150,15 +150,23 @@ theorem ambient_eventual_congruences (c d : ℕ → ℕ) (hc : StrictMono c)
     have hp' := hp (cut c hc N - 1) (by omega)
     simpa only [Nat.sub_add_cancel (by omega : 1 ≤ cut c hc N)] using hp'
 
+/-- The modulus cutoff depends only on the envelope, seed and modulus.
+In particular it is chosen before the target value and the correction digits. -/
+def congruenceCutoff (f : ℕ → ℝ) (hf : Tendsto f atTop atTop)
+    (start q : ℕ) : ℕ :=
+  if hq : 0 < q then
+    centre f start ((every_modulus_eventually f hf start q hq).choose + 1) + 1
+  else 0
+
 /-- The complete ambient word for any already-ready seed. This preserves
 its named support so that quantitative bounds can be attached later. -/
-theorem generated_ambient_filling (f : ℕ → ℝ) (hf : Tendsto f atTop atTop)
+theorem generated_ambient_filling_uniform (f : ℕ → ℝ) (hf : Tendsto f atTop atTop)
     (start : ℕ) (hready : Ready f start 0) {y : ℝ}
     (hyl : lowerTail f start 0 ≤ y) (hyu : y ≤ upperTail f start 0) :
     ∃ e : ℕ → ℕ,
       (∀ n, e n ≠ 0 → n ∈ Set.range (centre f start)) ∧
       (∀ᶠ n : ℕ in atTop, (e n : ℝ) ≤ f n) ∧
-      (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop,
+      (∀ q : ℕ, 0 < q → ∀ n, congruenceCutoff f hf start q ≤ n →
         q ∣ e n ∧ q ∣ ∑ i ∈ range n, e i) ∧
       HasSum (fun n : ℕ => (e n : ℝ) / 2 ^ (n + 1)) y := by
   let c := centre f start
@@ -179,14 +187,32 @@ theorem generated_ambient_filling (f : ℕ → ℝ) (hf : Tendsto f atTop atTop)
       have hnonneg : (0 : ℝ) ≤ amplitude 0 := Nat.cast_nonneg _
       simpa only [Nat.cast_zero] using hnonneg.trans hfpos
   · intro q hq
-    obtain ⟨J, hJ⟩ := every_modulus_eventually f hf start q hq
+    let J := (every_modulus_eventually f hf start q hq).choose
+    have hJ := (every_modulus_eventually f hf start q hq).choose_spec
     have hpq : ∀ j, J ≤ j → q ∣ ∑ i ∈ range (j + 1), d i := by
       intro j hj
       have hM : modulus f start j ∣ ∑ i ∈ range (j + 1), d i := by
         exact_mod_cast hp j
       exact (hJ j hj).trans hM
-    exact Filter.eventually_atTop.mpr
-      ⟨c (J + 1) + 1, ambient_eventual_congruences c d hc q J hpq⟩
+    simpa only [congruenceCutoff, dif_pos hq] using
+      ambient_eventual_congruences c d hc q J hpq
+
+/-- The complete ambient word for any already-ready seed. This preserves
+its named support so that quantitative bounds can be attached later. -/
+theorem generated_ambient_filling (f : ℕ → ℝ) (hf : Tendsto f atTop atTop)
+    (start : ℕ) (hready : Ready f start 0) {y : ℝ}
+    (hyl : lowerTail f start 0 ≤ y) (hyu : y ≤ upperTail f start 0) :
+    ∃ e : ℕ → ℕ,
+      (∀ n, e n ≠ 0 → n ∈ Set.range (centre f start)) ∧
+      (∀ᶠ n : ℕ in atTop, (e n : ℝ) ≤ f n) ∧
+      (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop,
+        q ∣ e n ∧ q ∣ ∑ i ∈ range n, e i) ∧
+      HasSum (fun n : ℕ => (e n : ℝ) / 2 ^ (n + 1)) y := by
+  obtain ⟨e, heS, hef, heq, hes⟩ :=
+    generated_ambient_filling_uniform f hf start hready hyl hyu
+  refine ⟨e, heS, hef, ?_, hes⟩
+  intro q hq
+  exact Filter.eventually_atTop.mpr ⟨congruenceCutoff f hf start q, heq q hq⟩
 
 /-- End-to-end discharge of the R8 ambient target, for an arbitrary
 (non-monotone) divergent envelope. The support is chosen before the value. -/
@@ -238,6 +264,39 @@ theorem arbitrary_word_sparse_rationalisation (a : ℕ → ℕ) {A : ℝ}
   funext n
   rw [Nat.cast_add, add_div]
 
+/-- The full arbitrary-envelope statement with the cutoff function outside
+both the target and correction quantifiers. -/
+theorem arbitrary_word_sparse_rationalisation_uniform (a : ℕ → ℕ) {A : ℝ}
+    (ha : HasSum (fun n => (a n : ℝ) / 2 ^ (n + 1)) A)
+    (f : ℕ → ℝ) (hf : Tendsto f atTop atTop) (K : ℕ) :
+    ∃ S : Set ℕ, ∃ l u : ℝ, ∃ Nq : ℕ → ℕ,
+      S ⊆ Set.Ici K ∧ UpperBanachZero S ∧ A < l ∧ l < u ∧
+      ∀ r : ℝ, l ≤ r → r ≤ u → ∃ e : ℕ → ℕ,
+        (∀ n, e n ≠ 0 → n ∈ S) ∧
+        (∀ᶠ n : ℕ in atTop, (e n : ℝ) ≤ f n) ∧
+        (∀ q : ℕ, 0 < q → ∀ n, Nq q ≤ n →
+          q ∣ e n ∧ q ∣ ∑ i ∈ range n, e i) ∧
+        HasSum (fun n => ((a n + e n : ℕ) : ℝ) / 2 ^ (n + 1)) r := by
+  obtain ⟨start, hK, hready, hSK, hSZ, hbudget⟩ :=
+    exists_sparse_budgeted_support f hf K
+  refine ⟨Set.range (centre f start), A + lowerTail f start 0,
+    A + upperTail f start 0, congruenceCutoff f hf start,
+    hSK, hSZ, ?_, ?_, ?_⟩
+  · linarith [lowerTail_positive f start hready]
+  · linarith [generated_interval_nonempty f start hready]
+  · intro r hrl hru
+    obtain ⟨e, heS, hef, heq, hes⟩ := generated_ambient_filling_uniform f hf start hready
+      (y := r - A) (by linarith) (by linarith)
+    refine ⟨e, heS, hef, heq, ?_⟩
+    have hsum := ha.add hes
+    have hv : A + (r - A) = r := by ring
+    rw [hv] at hsum
+    convert hsum using 1
+    funext n
+    rw [Nat.cast_add, add_div]
+
+#print axioms generated_ambient_filling_uniform
+#print axioms arbitrary_word_sparse_rationalisation_uniform
 #print axioms arbitrary_envelope_ambient_interval
 #print axioms arbitrary_word_sparse_rationalisation
 end ErdosProblems.Erdos251.PaperR9.SparseAmbient
