@@ -17,6 +17,7 @@ import json
 import re
 import subprocess
 import sys
+import tempfile
 from collections.abc import Callable
 from pathlib import Path
 from unittest.mock import patch
@@ -2474,7 +2475,47 @@ def validate_module_synopsis_owner_adoption() -> None:
     assert packet["module"]["authored_synopsis"] == index[module]
 
 
+def check_pinned_source_link_layouts() -> None:
+    """A cold clone links the pinned tree, even after the local layout moves."""
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory) / "source"
+        root.mkdir()
+        def git(*args: str) -> str:
+            return subprocess.check_output(
+                ["git", "-C", str(root), *args], text=True,
+                env=query_corpus.command_environment(), stderr=subprocess.DEVNULL,
+            ).strip()
+        git("init", "-q")
+        git("config", "user.name", "Fixture")
+        git("config", "user.email", "fixture@example.invalid")
+        path = "ErdosProblems/Example.lean"
+        (root / path).parent.mkdir()
+        (root / path).write_text("theorem example : True := True.intro\n")
+        git("add", path)
+        git("commit", "-qm", "flat source")
+        flat = git("rev-parse", "HEAD")
+        (root / "lean").mkdir()
+        git("mv", "ErdosProblems", "lean/")
+        git("commit", "-qm", "nested source")
+        nested = git("rev-parse", "HEAD")
+        clone = Path(directory) / "clone"
+        git("clone", "-q", "--no-local", str(root), str(clone))
+        repository = "https://github.com/example/mathematics"
+        claims = {"release": {"repository": repository, "formal_source": {"ref": flat}}}
+        with patch.object(query_corpus, "ROOT", clone):
+            assert query_corpus.formal_source_url(claims, path, 1) == f"{repository}/blob/{flat}/{path}#L1"
+            claims["release"]["formal_source"]["ref"] = nested
+            assert query_corpus.formal_source_url(claims, path, 1) == f"{repository}/blob/{nested}/lean/{path}#L1"
+            assert query_corpus.formal_source_url(claims, "ErdosProblems/Missing.lean", 1) is None
+            claims["release"]["formal_source"]["blob_repository"] = "https://github.com/example/history"
+            assert query_corpus.formal_source_url(claims, path, 1).startswith("https://github.com/example/history/blob/")
+            for absent in ("0" * 40, "--help"):
+                claims["release"]["formal_source"]["ref"] = absent
+                assert query_corpus.formal_source_url(claims, path, 1) is None
+
+
 def main() -> int:
+    check_pinned_source_link_layouts()
     validate_in_process_query_dispatch()
     validate_blank_selectors()
     validate_slash_problem_scope()
@@ -3249,9 +3290,9 @@ def main() -> int:
     assert declaration["matches"][0]["claim_ids"] == ["denominator_exclusion"]
     assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
     assert declaration["matches"][0]["source_url"].startswith(
-        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        claims_document["release"]["repository"] + "/blob/"
         + formal_source["ref"]
-        + "/"
+        + "/lean/"
     )
     assert declaration["matches"][0]["lean_source_identity"] == adelic["lean_source_identity"]
     assert declaration["matches"][0]["attached_claims"][0]["paper"]["label"] == "res:farey"

@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -341,6 +342,24 @@ def substantive_material(material: dict) -> dict:
     }
 
 
+def revision_review_material(material: dict) -> dict:
+    """Ignore line movement only for the separate statement-checked re-review.
+
+    The ordinary fingerprint rebind still requires exact coordinates. Across
+    revisions, declaration kind and signature are compared below before any
+    receipt can be re-issued; module/name, resolution and meaning stay fixed.
+    """
+    result = substantive_material(material)
+    if "evidence" in result:
+        result["evidence"] = [
+            {**row, "id": re.sub(r"^(.*\.lean):[1-9][0-9]*:(.+)$", r"\1:\2", row["id"])}
+            if row.get("resolved") is True and isinstance(row.get("id"), str)
+            else row
+            for row in result["evidence"]
+        ]
+    return result
+
+
 def material_for(
     subject_kind: str,
     subject: dict,
@@ -656,7 +675,7 @@ def rereview_moved_revision(
             kind, new_subject, evidence_fingerprint=new_fingerprint, reviewed_revision=old_revision
         )
         changed = _field_changes(
-            substantive_material(old_material), substantive_material(new_material_old_rev)
+            revision_review_material(old_material), revision_review_material(new_material_old_rev)
         )
         if changed:
             refusals.append(

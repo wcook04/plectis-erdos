@@ -31,7 +31,12 @@ not just whether one relevant skill appears. Test natural modifiers and plural
 objects as well as the exact failed wording. Registry `task_intents` can require
 an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
-Check neighboring tasks that should retain their original lane.
+Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
+while research, method development or infrastructure work identifies the action.
+Explicit `agent_entry.py --purpose` must win over words in `--scope`, and the
+handoff must retain the original request. Exercise the complete architecture
+session, validation and package path as well as the mathematics path; a receipt
+schema alone does not prove that contributors can produce a valid return.
 
 For reports that an outside agent missed recent capabilities, inspect the
 checkout provenance returned by `agent_entry.py` before repairing the router.
@@ -141,6 +146,18 @@ manifests, CI, source registries and their builders together. Pinned historical
 artifacts retain the filenames belonging to their recorded revision.
 
 ## Validate behavior, not decoration
+
+When integrating concurrent implementations of one owner, reconcile its API,
+environment variables and diagnostics before regenerating its consumers. Run
+the relevant tests from both parent revisions on the combined implementation;
+a clean merge or a passing test from only one parent does not establish that
+the combined contract works. For corpus-wide contribution changes, exercise
+all eight programmes and each supported contribution track.
+
+For publication growth, conservation means preserving each existing artifact's
+identity and download name while admitting newly registered papers. Test a
+valid addition as well as a removed or renamed publication; equality of the
+old and new inventories would prevent the corpus from growing.
 
 During the edit, run the narrow owner checks:
 

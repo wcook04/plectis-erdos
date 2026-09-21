@@ -1,0 +1,52 @@
+{
+  "disposition": "consulted",
+  "receipts": [
+    {
+      "disposition": "consulted",
+      "problem": 68,
+      "relationships": [
+        {
+          "changed_evidence": [],
+          "observed_status": "still_open",
+          "relationship": "unrelated",
+          "route_id": "erdos_68_two_cylinder_exclusion"
+        }
+      ],
+      "return_id": "<set-to-return-id>",
+      "route_memory": {
+        "path": "docs/research-commons/route-memory/route_memory.json",
+        "sha256": "sha256:9eb742ea16127852b4e7ea2735f783412d27aa3c75002b026930f5ef202fa880"
+      },
+      "schema": "research-route-memory-return/1"
+    },
+    {
+      "disposition": "consulted",
+      "problem": 251,
+      "relationships": [
+        {
+          "changed_evidence": [],
+          "observed_status": "conditional_endpoint_reduction",
+          "relationship": "unrelated",
+          "route_id": "erdos_251_small_mismatch_criterion"
+        }
+      ],
+      "return_id": "<set-to-return-id>",
+      "route_memory": {
+        "path": "docs/research-commons/route-memory/route_memory.json",
+        "sha256": "sha256:9eb742ea16127852b4e7ea2735f783412d27aa3c75002b026930f5ef202fa880"
+      },
+      "schema": "research-route-memory-return/1"
+    }
+  ],
+  "related_problems": [
+    68,
+    251
+  ],
+  "return_id": "<set-to-return-id>",
+  "route_memory": {
+    "path": "docs/research-commons/route-memory/route_memory.json",
+    "sha256": "sha256:9eb742ea16127852b4e7ea2735f783412d27aa3c75002b026930f5ef202fa880"
+  },
+  "schema": "research-route-memory-subject-return/1",
+  "subject": "Factorial support thresholds and paper-informed discovery across the Lean corpus"
+}

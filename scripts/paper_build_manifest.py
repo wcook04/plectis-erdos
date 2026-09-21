@@ -319,6 +319,11 @@ def record_builds(
     reader = WorktreeReader(root)
     manifest = load_manifest(reader) or empty_manifest()
     builds = manifest.setdefault("builds", {})
+    contract_bytes = _read(reader, CONTRACT_PATH)
+    if contract_bytes is not None:
+        retired = json.loads(contract_bytes.decode("utf-8")).get("rejected_artifact_ids", [])
+        for artifact_id in retired:
+            builds.pop(artifact_id, None)
     for artifact, rendered in built:
         builds[artifact["id"]] = build_record(reader, artifact, rendered)
     return manifest

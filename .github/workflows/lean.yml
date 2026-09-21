@@ -309,10 +309,10 @@ jobs:
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-24.04
-    # Four isolated checks now run here: headline positive and mismatch, then
-    # the focused #1049 positive and mismatch. Each retains its own 20 minute
-    # ceiling, so the job ceiling must cover the full serial trust sequence.
-    timeout-minutes: 100
+    # Eight isolated checks run serially. The headline positive includes a
+    # cold build of the full selected-statement closure; allow 45 minutes for
+    # it and 20 for each remaining control, plus tool setup and receipt upload.
+    timeout-minutes: 210
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -350,6 +350,7 @@ jobs:
               formalization.yaml \
               scripts/build_external_verification.py \
               scripts/run_external_verification.py \
+              scripts/replay_external_verification.py \
               scripts/test_external_verification.py \
               scripts/test_external_verification_release.py \
               .github/workflows/lean.yml; then
@@ -464,13 +465,14 @@ jobs:
           echo "sandbox_mode=$sandbox_mode" >> "$GITHUB_OUTPUT"
           run_comparator() {
             config="$1"
+            time_limit="${2:-20m}"
             if [[ "$sandbox_mode" == user-manager ]]; then
-              timeout 20m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
+              timeout "$time_limit" systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
                 -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
                 -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
                 --working-directory="$(pwd)" -- lake env "$comparator" "$config"
             elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
-              timeout 20m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
+              timeout "$time_limit" sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
                 --uid="$(id -un)" --gid="$(id -gn)" --pipe \
                 -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
                 -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
@@ -480,7 +482,7 @@ jobs:
               return 125
             fi
           }
-          run_comparator verification/comparator.json \
+          run_comparator verification/comparator.json 45m \
             > artifacts-positive.log 2>&1
           positive_exit=$?
           run_comparator verification/comparator-negative-mismatch.json \
@@ -498,6 +500,14 @@ jobs:
           run_comparator verification/ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json \
             > artifacts-249-totient-kernel-negative.log 2>&1
           totient_kernel_negative_exit=$?
+          run_comparator verification/comparator-feedback-policy.json \
+            > artifacts-feedback-policy-positive.log 2>&1
+          feedback_policy_positive_exit=$?
+          run_comparator verification/comparator-feedback-policy-negative-mismatch.json \
+            > artifacts-feedback-policy-negative.log 2>&1
+          feedback_policy_negative_exit=$?
+          echo "feedback_policy_positive_exit=$feedback_policy_positive_exit" >> "$GITHUB_OUTPUT"
+          echo "feedback_policy_negative_exit=$feedback_policy_negative_exit" >> "$GITHUB_OUTPUT"
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
           echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
           echo "local_1049_positive_exit=$local_1049_positive_exit" >> "$GITHUB_OUTPUT"
@@ -541,6 +551,27 @@ jobs:
             --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
             --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
             --landrun-bin "$RUNNER_TEMP/landrun"
+      - name: Enforce the admissible-feedback policy unit
+        if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
+        env:
+          FEEDBACK_POSITIVE_EXIT: ${{ steps.comparator.outputs.feedback_policy_positive_exit }}
+          FEEDBACK_NEGATIVE_EXIT: ${{ steps.comparator.outputs.feedback_policy_negative_exit }}
+        run: |
+          python3 - <<'PYTHON'
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import replay_external_verification as replay
+          selected = replay.select_replay_unit(replay.load_contract(Path.cwd()), 'feedback-policy')
+          replay.validate_unit_configs(Path.cwd(), selected)
+          positive = int(os.environ.get('FEEDBACK_POSITIVE_EXIT') or '-999')
+          negative = int(os.environ.get('FEEDBACK_NEGATIVE_EXIT') or '-999')
+          log = Path('artifacts-feedback-policy-negative.log')
+          text = log.read_text() if log.exists() else ''
+          if not replay.replay_checks_pass(positive, negative, text, selected['expected_negative_diagnostic']):
+              raise SystemExit('feedback-policy Comparator unit did not pass both controls')
+          print('feedback-policy: positive accepted and exact negative statement rejected')
+          PYTHON
       - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -625,6 +656,14 @@ jobs:
           path: |
             artifacts/external-verification-receipt.json
             artifacts/erdos249-totient-kernel-comparator-receipt.json
+            artifacts-positive.log
+            artifacts-negative.log
+            artifacts-1049-positive.log
+            artifacts-1049-negative.log
+            artifacts-249-totient-kernel-positive.log
+            artifacts-249-totient-kernel-negative.log
+            artifacts-feedback-policy-positive.log
+            artifacts-feedback-policy-negative.log
           if-no-files-found: error
 
   first-contact:
@@ -669,6 +708,16 @@ jobs:
         run: python3 scripts/test_compact_agent_entry.py
       - name: Ordinary tasks route to complete clone-local skill cards
         run: python3 scripts/test_agent_entry.py
+      # An open-ended request used to fall through to the explanation fallback,
+      # and a finite search is easy to misreport as membership. These two keep
+      # the no-clone edition current and keep "not excluded through depth N"
+      # from turning into a representation claim on any reader-facing page.
+      - name: The reading edition matches the papers it carries
+        run: python3 scripts/build_reading_edition.py --check
+      - name: Reading editions retain usable paper links and unique anchors
+        run: python3 scripts/test_reading_edition_synthesis.py
+      - name: The open investigation replays and keeps finite evidence finite
+        run: python3 scripts/test_choices_contraction_probe.py
 
   shallow-clone-is-an-environment-problem:
     # `git clone --depth 1` truncates history, and the gates that read pinned
@@ -873,12 +922,10 @@ jobs:
       - name: Test publication evidence time axis
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_evidence_time_axis.py
-      # The clone-local paper corpus is generated from the private system
-      # repository, so no builder here can refresh it and nothing above notices
-      # when it falls behind. It shipped stale from 2026-07-21: the generated
-      # full text still omitted the generative-AI disclosure that both
-      # manuscripts and both PDFs carried, which is the one drift a reader must
-      # not meet. The checker ships in the corpus it guards; run it.
+      # Native paper text and corpus metadata have a clone-local refresh route;
+      # imported companion records retain their public provenance. The checker
+      # independently proves that every tracked manuscript/PDF digest and every
+      # advertised first-pass route still matches the committed corpus.
       - name: Test clone-local paper corpus is current
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 docs/papers/check_paper_corpus.py

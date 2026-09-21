@@ -764,6 +764,54 @@ def test_replay_plan() -> None:
         raise AssertionError("floating branch name was accepted as a replay commit")
 
 
+def test_named_construction_replay_unit() -> None:
+    diagnostic = 'exact theorem mismatch'
+    require(replay.replay_checks_pass(0, 1, diagnostic, diagnostic), 'valid comparison rejected')
+    for code in (0, -999, -9, 124, 125, 126, 127):
+        require(not replay.replay_checks_pass(0, code, diagnostic, diagnostic),
+                'infrastructure failure accepted as semantic rejection')
+    require(not replay.replay_checks_pass(1, 1, diagnostic, diagnostic), 'failed positive accepted')
+    require(not replay.replay_checks_pass(0, 1, 'other failure', diagnostic), 'wrong diagnostic accepted')
+    plan = replay.replay_plan('a' * 40, 'b' * 40, 'feedback-policy')
+    require(plan['unit'] == 'feedback-policy', 'selected unit was lost')
+    require(plan['statement_contract']['theorem'].endswith('feedbackPolicy_preserves_sum'),
+            'construction replay selected a portfolio theorem')
+    contract = replay.load_contract(replay.ROOT)
+    selected = replay.select_replay_unit(contract, 'feedback-policy')
+    positive, negative = replay.validate_unit_configs(replay.ROOT, selected)
+    require(positive['solution_module'] != negative['solution_module'], 'negative is not independent')
+    for unit in ('absent', '../feedback-policy'):
+        try:
+            replay.select_replay_unit(contract, unit)
+        except replay.ReplayError:
+            pass
+        else:
+            raise AssertionError('unknown unit was accepted')
+    bad = copy.deepcopy(contract)
+    bad['replay_units']['feedback-policy']['positive_config'] = '../outside.json'
+    try:
+        replay.select_replay_unit(bad, 'feedback-policy')
+    except replay.ReplayError:
+        pass
+    else:
+        raise AssertionError('unit escaped repository boundary')
+    for mutate in ('axioms', 'solution', 'challenge'):
+        altered = copy.deepcopy(negative)
+        if mutate == 'axioms':
+            altered['permitted_axioms'] = ['sorryAx']
+        elif mutate == 'solution':
+            altered['solution_module'] = positive['solution_module']
+        else:
+            altered['challenge_module'] = 'Wrong.Challenge'
+        with patch.object(replay, 'load_json', side_effect=[positive, altered]):
+            try:
+                replay.validate_unit_configs(replay.ROOT, selected)
+            except replay.ReplayError:
+                pass
+            else:
+                raise AssertionError(f'accepted altered negative {mutate}')
+
+
 def test_public_problem_artifact_coverage() -> None:
     """Keep the immutable release envelope visible across the full problem fleet."""
     live_contract = release.contract(release.ROOT)
@@ -877,6 +925,7 @@ def main() -> int:
     test_replay_subprocess_environment()
     test_tracked_artifact_path_prefers_nested_storage()
     test_replay_plan()
+    test_named_construction_replay_unit()
     test_public_problem_artifact_coverage()
     test_release_manifest()
     print(

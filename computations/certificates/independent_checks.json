@@ -18,6 +18,24 @@
       "moment_determinants_checked": 16,
       "Stieltjes_coefficients_checked": 15,
       "series_order_checked": 15
+    },
+    {
+      "p": "3",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "5",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "11",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
     }
   ],
   "exhaustive_permutation_residue_checks": 40,

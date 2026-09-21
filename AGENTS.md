@@ -126,7 +126,7 @@ their machine inventory. `--ask` routes ordinary paper questions.
 For publication mutation, open `docs/publication_entry_packet.json`, then the
 publication contract or emitted handle. These own organisation, not Lean proof.
 
-### Explain, install, mine, validate, propagate, or add a problem
+### Explore, explain, install, mine, validate, propagate, or add a problem
 
 Do not guess from filenames. Run `python3 scripts/agent_entry.py --skills`, or
 route with `--entry`, before opening one `skills/<id>/SKILL.md`. The mining

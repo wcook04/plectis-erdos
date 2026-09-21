@@ -1,0 +1,17 @@
+{
+  "authority_posture": "bounded_public_orientation_not_proof_authority",
+  "command": "python3 scripts/query_corpus.py --overview --format json",
+  "kind": "repository_overview",
+  "problem_fleet": [
+    68,
+    243,
+    249,
+    251,
+    257,
+    269,
+    1041,
+    1049
+  ],
+  "schema": "research-corpus-overview-consultation/1",
+  "schema_version": "erdos249257-repository-overview/2"
+}

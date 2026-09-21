@@ -218,7 +218,9 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "claim-transition architecture",
         "six things that are commonly collapsed",
         "after a proof is found, what exactly may move into a reviewed public claim",
-        "All eight problems remain open",
+        "refutes the total-variation formulation of Problem 1041",
+        "historical curve-length question has not had independent human review",
+        "other seven target problems remain unresolved",
         "does not claim a solution to any of them",
     ),
     "problem_worlds_and_nonfungible_authority": (

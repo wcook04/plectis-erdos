@@ -25,15 +25,54 @@ def require(condition: bool, message: object) -> None:
         raise AssertionError(message)
 
 
-def hosted_basenames_from_contract(payload: dict) -> list[str]:
-    return [
-        artifact_hosted_filename(artifact)
+def hosted_basenames_from_contract(payload: dict) -> dict[str, str]:
+    return {
+        artifact["id"]: artifact_hosted_filename(artifact)
         for artifact in payload.get("artifacts", [])
         if isinstance(artifact, dict)
-    ]
+    }
+
+
+def require_hosted_conservation(mainline: dict, current: dict) -> None:
+    """Keep each published artifact's download name while permitting additions."""
+    published = hosted_basenames_from_contract(mainline)
+    proposed = hosted_basenames_from_contract(current)
+    for artifact_id, basename in published.items():
+        require(
+            proposed.get(artifact_id) == basename,
+            ("published download changed", artifact_id, basename, proposed.get(artifact_id)),
+        )
+
+
+def check_hosted_conservation_regressions() -> None:
+    def contract(*rows: tuple[str, str]) -> dict:
+        return {
+            "artifacts": [
+                {"id": artifact_id, "rendered_path": f"paper/{name}"}
+                for artifact_id, name in rows
+            ]
+        }
+
+    mainline = contract(("first", "first.pdf"), ("second", "second.pdf"))
+    # Reading order and new registered papers do not change existing URLs.
+    require_hosted_conservation(
+        mainline,
+        contract(("new", "new.pdf"), ("second", "second.pdf"), ("first", "first.pdf")),
+    )
+    for changed in (
+        contract(("first", "first.pdf")),
+        contract(("first", "renamed.pdf"), ("second", "second.pdf")),
+        contract(("first", "second.pdf"), ("second", "first.pdf")),
+    ):
+        try:
+            require_hosted_conservation(mainline, changed)
+        except AssertionError:
+            continue
+        raise AssertionError(f"changed published download accepted: {changed}")
 
 
 def main() -> int:
+    check_hosted_conservation_regressions()
     root_pdfs = sorted(path.name for path in ROOT.glob("*.pdf") if path.is_file())
     require(not root_pdfs, f"root PDFs must be empty: {root_pdfs}")
 
@@ -58,12 +97,7 @@ def main() -> int:
     )
     if completed.returncode == 0 and completed.stdout:
         mainline = json.loads(completed.stdout)
-        main_hosted = []
-        for artifact in mainline.get("artifacts", []):
-            rendered = artifact.get("rendered_path", "")
-            storage = artifact.get("storage_path", rendered)
-            main_hosted.append(Path(str(storage or rendered)).name)
-        require(hosted == main_hosted, (hosted, main_hosted))
+        require_hosted_conservation(mainline, contract)
 
     claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
     graph = claims["machine_readable_paper"]["module_graph"]

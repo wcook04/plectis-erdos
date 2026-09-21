@@ -2,7 +2,7 @@
   "schema": "erdos-external-verification-packet/1",
   "scope": "all_eight_public_problem_programmes",
   "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-  "boundary": "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
+  "boundary": "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
   "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
   "automation": {
     "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:8f4e12b606d6e7f127aebc593970445b1550275f5ef66578e2c59cc38d637a85",
+    "owner_digest": "sha256:56376eeb6f58b8aec86c172838d8e6a8253d5d38391fb535e372240a1f8c9823",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:a2a102817ebb093da7164fb5381049c1b560d7cae72ec260f486fc7bf0f3b7b4",
+    "projection_digest": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2040,11 +2040,12 @@
           "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
           "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
           "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
-          "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
+          "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon.",
+          "From a strictly increasing positive integer sequence, a rational reciprocal sum and a_(n+1)/a_n^2 tending to one, canonical_integer_tail_normalized derives eventual strict centring and normalised vanishing of the exact integer tail."
         ],
         "what_is_not_checked": [
           "The unrestricted problem.",
-          "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
+          "A uniform lower bound on the centred error for every sequence in the original problem; the canonical tail transfer does not supply this additional hypothesis.",
           "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
           "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
         ],
@@ -2229,7 +2230,7 @@
         "erdos_number": 251,
         "short_title": "The prime-gap dyadic series",
         "status": "open",
-        "question": "Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
+        "question": "Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "registered_declarations",
         "claim_registration": {
@@ -2266,7 +2267,7 @@
         "what_is_checked": [
           "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.",
           "The factor-of-two normalisation between the two displayed indexings, at every finite horizon.",
-          "Conditional on summability of the prime dyadic series, the exact infinite prime-gap identity and the equivalence of irrationality of the prime and prime-gap series.",
+          "The unconditional prime-to-gap identity, using an elementary polynomial bound on primes to prove summability; irrationality of the prime series is equivalent to irrationality of the prime-gap series.",
           "For an abstract integer-digit dyadic tail recurrence: the exact block identity, and that a shift of fixed length is integral exactly when an explicit scaled state is.",
           "That one integral shift propagates to every later index.",
           "That repeated doubling removes the power-of-two denominator, so every rational-valued dyadic recurrence has one fixed positive shift integral at all sufficiently late indices.",
@@ -2278,7 +2279,7 @@
         ],
         "what_is_not_checked": [
           "The target irrationality.",
-          "The definition and recurrence of the concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level. Summability of the concrete prime series is Lean-checked unconditionally via an elementary polynomial prime bound.",
+          "A cofinal nonintegrality theorem for the concrete prime-gap tails; defining the series and proving its recurrence do not supply this.",
           "A theorem supplying cofinally many adjacent actual-prime-gap tail shifts in the open unit interval with the required gap mismatch.",
           "Any theorem forcing periodicity or automaticity of the prime gaps from rationality; the free-carry identity disconfirms that route."
         ],
@@ -2360,12 +2361,12 @@
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
-          "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
-          "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
-          "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
+          "Irrationality at every integer base for the classical full support, reciprocal-summable supports, and the finite-prime weighted supports in divisibilityWeightedClaim.",
+          "Every infinite subset of the union of a finite base-two weighted-mass host and a strengthened positive-cover host has irrational series at every integer base (mixedSupportClaim).",
+          "Unique Mersenne coding on every support; compactness and nowhere density; perfection for infinite support; finite-complement measure 2^(-|F|), otherwise zero."
         ],
         "what_is_not_checked": [
-          "The universal irrationality problem, or irrationality for any new infinite support.",
+          "Universal irrationality over all infinite supports, or the proposed rational values 1/2 and 1/21.",
           "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
           "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
         ],
@@ -2518,14 +2519,13 @@
           "That the smallest {2,3,5} kernel rectangle has determinant exactly -1/15, so its two-by-two matrix has rank two over the rationals and no rank-one separation exists.",
           "The canonical least-positive-residue interval and congruence facts, including the zero-residue representative.",
           "The exact local-window identity for an integral carry.",
-          "A denominator-dependent CofinalLocalWindowEscape proposition and the full theorem that it rules out every positive reduced integral carry satisfying the matching bound.",
+          "For the actual {2,3,5} series, rationality produces a positive reduced carry; cofinal local-window escape rules out such carries under the recorded bound.",
           "A bounded-radix dichotomy: under a bounded positive digit alphabet, a nonzero scaled tail must be separated from the integers cofinally.",
           "Exact three-channel block-nullity as a coboundary condition, and extinction of a bounded carry lift under two independent anchors.",
           "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
         ],
         "what_is_not_checked": [
           "Irrationality or transcendence in any three-prime case.",
-          "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
           "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
           "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
           "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -2888,7 +2888,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:89ca531b10603e0b381862c07b824d327691875b892e1aa5c5290a29e7cde1dc",
+    "lakefile.toml": "sha256:908500f31b84972a088465dbefa35b748beeaaf1fdca47872f0abe8b7fdd5d73",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

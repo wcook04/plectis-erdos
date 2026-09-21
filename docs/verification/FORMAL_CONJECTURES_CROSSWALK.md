@@ -90,7 +90,7 @@ Local question: Is the binary Lambert series sum phi(n)/2^n irrational?
 
 ### Erdős #251
 
-Local question: Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
+Local question: Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
 
 - Canonical local return route: `python3 scripts/query_corpus.py --route erdos_251` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 

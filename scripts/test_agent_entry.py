@@ -22,8 +22,62 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Open-ended research must reach its own lane. Before that lane existed,
+    # the first request below fell through to the repository-explanation
+    # fallback, so an agent asked to think was handed a tour instead.
+    "read the corpus and find something worth developing across the papers": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    "Read this body of mathematics and decide what is worth pursuing": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    "Is there a common mechanism across problems that deserves a general theorem?": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    "Explore the mathematics and formulate a new research direction": (
+        "explore_corpus", "explore-the-corpus",
+    ),
+    # A named target keeps the existing directed routes.
+    "What should I work on? Choose a problem for me": (
+        "choose_open_question", "mine-open-problem",
+    ),
+    "I want to attack the open problem 249 and find a proof": (
+        "bounded_research", "mine-open-problem",
+    ),
     "Repair CLI error recovery and safe research session creation": (
         "repository_architecture", "maintain-public-infrastructure",
+    ),
+    # Repair actions and infrastructure objects need not be adjacent, but
+    # merely mentioning the cache must preserve proof and explanation routes.
+    "Finish bug repairs to shared Lean cache, semantic census and source comment accuracy; validate scoped changes and refresh native projections": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Repair shared Lean caches without changing theorem statements": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Fix public return validators that reject legitimate diagnostics": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Debug stale semantic census counts": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Repair native projections after a source change": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Explain shared Lean cache and semantic census": (
+        "understand_repository", "explain-public-system",
+    ),
+    "Describe how public return validators work": (
+        "understand_repository", "explain-public-system",
+    ),
+    "Prove this Lean theorem using the shared cache": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Repair this Lean proof": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Run a Lean build using the shared cache": (
+        "lean_validation", "lean-concurrent-validation",
     ),
     "Create a research plan to prove this Lean theorem": (
         "bounded_research", "mine-open-problem",
@@ -92,6 +146,8 @@ ROUTE_CASES = {
     "what should I work on": ("choose_open_question", "mine-open-problem"),
     "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
     "find a proof in Lean": ("bounded_research", "mine-open-problem"),
+    "Explore admissible choices in the feedback construction": ("bounded_research", "mine-open-problem"),
+    "Reuse a construction contract for this target": ("bounded_research", "mine-open-problem"),
     "prove this Lean theorem": ("bounded_research", "mine-open-problem"),
     "Attempt one bounded research continuation and prepare a checkable return": (
         "bounded_research",
@@ -190,6 +246,14 @@ ROUTE_CASES = {
         "maintain-public-infrastructure",
     ),
     "dogfood instruction drift without private infrastructure": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "look for other documentation drift and replace obsolete checks with the current integrated infrastructure": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "look for other drift similar please": (
         "repository_architecture",
         "maintain-public-infrastructure",
     ),

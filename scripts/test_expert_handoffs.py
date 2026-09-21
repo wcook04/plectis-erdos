@@ -20,23 +20,33 @@ def valid_response() -> dict:
         "clone_revision": "1" * 40,
         "prior_project_context": False,
         "elapsed_seconds": 537,
-        "problem_249_status": "OPEN",
-        "problem_257_status": "OPEN",
-        "farey_bound_provenance": "classical_farey_mediant",
-        "farey_numerical_delta": 0,
-        "equivalent_antecedents": 17,
-        "substantial_antecedents": 23,
-        "nonrestatement_results_249": [
-            "Exact finite-level independence of the dyadic totient sections.",
-            "A finite-rank shift countermodel that rules out a proof-strategy class.",
+        "indexed_problem_count": 8,
+        "total_variation_formulation_status": "REFUTED",
+        "counterexample_finder": "ani",
+        "historical_curve_length_correspondence": "UNREVIEWED",
+        "claim_registry_scope": "SELECTED_REGISTERED_CLAIMS",
+        "result_summaries": [
+            {
+                "problem_number": 68,
+                "summary": "The factorial-gap series has an exact carry characterisation.",
+            },
+            {
+                "problem_number": 249,
+                "summary": "Rationality forces an orbit-level carry anti-compression condition.",
+            },
+            {
+                "problem_number": 257,
+                "summary": "Every eventually periodic nonnegative support has an irrational sum.",
+            },
         ],
-        "nonrestatement_results_257": [
-            "Exact noncollapse of the reduced-denominator period for finite sums.",
-            "Irrationality for every eventually periodic support.",
+        "routes_replayed": [
+            "python3 scripts/query_corpus.py --overview --format card",
+            "python3 scripts/query_corpus.py --route erdos_1041 --format card",
+            "python3 scripts/query_semantic.py family-relations first_harmonic_pivot_decomposition",
         ],
         "verdict_summary": (
-            "The project contains checked results and barriers while openly "
-            "identifying many equivalent reformulations; neither problem is closed."
+            "The repository exposes selected checked results across eight problems, "
+            "credits ani's refutation, and leaves the historical #1041 correspondence unreviewed."
         ),
         "source_paths_used": ["README.md", "docs/RESULTS.md"],
         "first_confusing_surface": "",
@@ -158,6 +168,10 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
         "proof_status"
     ]
     assert "containment" in candidate_family["open_boundary"]
+    assert "total-variation formulation" in candidate_family["open_boundary"]
+    assert "refuted" in candidate_family["open_boundary"]
+    assert "historical curve-length" in candidate_family["open_boundary"]
+    assert "Erdős #1041 remains open" not in candidate_family["open_boundary"]
     assert "reciprocal critical balance" in candidate["hard_mechanism"]
     assert "sharp constant-2" in candidate["hard_mechanism"]
     declarations = {
@@ -782,23 +796,21 @@ def main() -> int:
     too_slow = deepcopy(response)
     too_slow["elapsed_seconds"] = 601
     mutations.append(too_slow)
-    wrong_farey = deepcopy(response)
-    wrong_farey["farey_numerical_delta"] = 1
-    mutations.append(wrong_farey)
-    restatement_only = deepcopy(response)
-    restatement_only["nonrestatement_results_249"] = []
-    mutations.append(restatement_only)
+    wrong_credit = deepcopy(response)
+    wrong_credit["counterexample_finder"] = "Plectis"
+    mutations.append(wrong_credit)
+    narrow_scope = deepcopy(response)
+    narrow_scope["result_summaries"] = narrow_scope["result_summaries"][:2]
+    mutations.append(narrow_scope)
     wrong_endpoint = deepcopy(response)
-    wrong_endpoint["problem_257_status"] = "CLOSED"
+    wrong_endpoint["total_variation_formulation_status"] = "OPEN"
     mutations.append(wrong_endpoint)
     empty_verdict = deepcopy(response)
     empty_verdict["verdict_summary"] = ""
     mutations.append(empty_verdict)
-    duplicate_result = deepcopy(response)
-    duplicate_result["nonrestatement_results_257"][1] = (
-        duplicate_result["nonrestatement_results_257"][0]
-    )
-    mutations.append(duplicate_result)
+    missing_route = deepcopy(response)
+    missing_route["routes_replayed"] = missing_route["routes_replayed"][:2]
+    mutations.append(missing_route)
     nonexistent_source = deepcopy(response)
     nonexistent_source["source_paths_used"] = ["docs/does-not-exist.md"]
     mutations.append(nonexistent_source)

@@ -9,7 +9,9 @@ work on, the [research-shift guide](../FRONTIER_RELAY.md) explains how to choose
 a question, record what happened and return the work.
 
 These guides are for the next step, once you have a problem, statement or tool
-to inspect.
+to inspect. Without a clone, give your model the
+[reading edition](../reading-edition/README.md); it carries the same research
+instruction as the clone.
 
 ## Start with current public work
 
@@ -44,7 +46,8 @@ the capabilities actually available to your agent.
 
 Give the agent this prompt, replacing the bracketed task:
 
-> Read the root AGENTS.md. My task is [a concrete question or change]. Route it
+> Read the root AGENTS.md. My task is [a concrete question or change, or: read
+> the corpus and decide what is worth developing]. Route it
 > with scripts/agent_entry.py and follow the selected skill. Record the checkout
 > commit and local modifications; check public main if I asked for latest work.
 > Read the smallest relevant source set, do the task, and run its relevant
@@ -52,11 +55,13 @@ Give the agent this prompt, replacing the bracketed task:
 > remaining assumptions or unresolved step. Preserve unrelated work. Prepare
 > proposed contributions using this repository's contribution workflow.
 
-Start with one of these bounded tasks:
+Start with one of these tasks. The first two are the two ways to begin research:
+with a listed question, or with the mathematics itself.
 
 | Task to give your agent | Useful result |
 |---|---|
 | Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
+| Read the corpus and decide what is worth developing | A direction stated early with its reason, the sources it rests on, what was proved, computed or conjectured, the prior work found, and the next question. [One investigation](../../research/experiments/choices_contraction/README.md) shows the shape |
 | Explain how this repo works to a newcomer | A source-linked map and one relevant next action |
 | Independently reproduce the checked claim `eb_full_support` | Verifier output, checkout commit, assumptions and remaining open boundary |
 | Improve cold clone navigation | One reproduced failure, a focused repair and the corresponding regression check |

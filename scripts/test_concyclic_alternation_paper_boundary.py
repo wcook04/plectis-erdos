@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPER = ROOT / "paper" / "erdos-1041-lemniscate-newton-flow.tex"
+PAPER = ROOT / "paper" / "1041" / "erdos1041-lemniscate-reasoning-surface.tex"
 PROOF = ROOT / "research_corpus" / "Erdos1041" / "ConcyclicAlternation.md"
 EXACT_CHECK = (
     ROOT
@@ -35,6 +35,7 @@ def test_public_corpus_keeps_the_proof_and_both_finite_checks() -> None:
         "Theorem C (concyclic alternation)",
         "Lemma S: the chord never beats its own arc",
         "rho <= 2^{-1/n}",
+        "Status, 2026-08-24",
         "Erdős #1041 itself remains open",
     ):
         assert fragment in proof
@@ -46,11 +47,13 @@ def test_individual_paper_exposes_the_result_without_formalising_it() -> None:
         "A bounded-radius concyclic class",
         r"2\rho^n\le1",
         r"2\rho\sin(\pi/n)<2",
-        "complete ordinary proof",
-        "This is not a Lean theorem",
-        "tests finitely many",
+        "The argument is an ordinary proof outside Lean",
+        "exact-rational checker",
+        "checks finitely many identities",
         "regression and stress-test evidence",
-        "unrestricted concyclic case and Erd\\H{o}s~\\#1041 remain open",
+        "degree-seven counterexample due to the",
+        "refutes the universal total-variation",
+        "historical curve-length question has not received independent human",
     ):
         assert fragment in paper
     for source in (

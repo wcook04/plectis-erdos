@@ -1,0 +1,232 @@
+{
+  "kind": "selected_proof_inspection",
+  "status": "inspected",
+  "module": "ErdosProblems.Erdos251.ResidueFeedbackCore",
+  "environment_fingerprint": {
+    "repository_head": "2bd14835b940b3c695a9cc8828c7e2967d65c053",
+    "lean_version": "Lean (version 4.29.1, arm64-apple-darwin24.6.0, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)",
+    "lean_toolchain_digest": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "lake_manifest_digest": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "lakefile_digest": "sha256:908500f31b84972a088465dbefa35b748beeaaf1fdca47872f0abe8b7fdd5d73",
+    "fingerprint": "sha256:d871f647e0aff893b721383215cf91ca13a442b3a4277a99a0282adfd1632a16"
+  },
+  "source_digest": "sha256:3b9464bfcb3300448f224608205aae9abc1e79dc7756773c9a1a6f06aeaccb74",
+  "nodes_per_tree": 80,
+  "depth": 10,
+  "expression": {
+    "declaration": "ErdosProblems.Erdos251.ResidueFeedback.feedbackDigit_spec",
+    "type": {
+      "binder": "A",
+      "body": {
+        "binder": "M",
+        "body": {
+          "binder": "C",
+          "body": {
+            "binder": "w",
+            "body": {
+              "binder": "lo",
+              "body": {
+                "binder": "hi",
+                "body": {
+                  "binder": "x",
+                  "body": {
+                    "binder": "hM",
+                    "body": {
+                      "binder": "hA",
+                      "body": {
+                        "binder": "hw",
+                        "body": {
+                          "omitted": "depth"
+                        },
+                        "kind": "forall",
+                        "type": {
+                          "omitted": "depth"
+                        }
+                      },
+                      "kind": "forall",
+                      "type": {
+                        "argument": {
+                          "omitted": "depth"
+                        },
+                        "function": {
+                          "omitted": "depth"
+                        },
+                        "kind": "app"
+                      }
+                    },
+                    "kind": "forall",
+                    "type": {
+                      "argument": {
+                        "index": 5,
+                        "kind": "bound_variable"
+                      },
+                      "function": {
+                        "argument": {
+                          "omitted": "depth"
+                        },
+                        "function": {
+                          "omitted": "depth"
+                        },
+                        "kind": "app"
+                      },
+                      "kind": "app"
+                    }
+                  },
+                  "kind": "forall",
+                  "type": {
+                    "kind": "const",
+                    "levels": 0,
+                    "name": "Real"
+                  }
+                },
+                "kind": "forall",
+                "type": {
+                  "kind": "const",
+                  "levels": 0,
+                  "name": "Real"
+                }
+              },
+              "kind": "forall",
+              "type": {
+                "kind": "const",
+                "levels": 0,
+                "name": "Real"
+              }
+            },
+            "kind": "forall",
+            "type": {
+              "kind": "const",
+              "levels": 0,
+              "name": "Real"
+            }
+          },
+          "kind": "forall",
+          "type": {
+            "kind": "const",
+            "levels": 0,
+            "name": "Nat"
+          }
+        },
+        "kind": "forall",
+        "type": {
+          "kind": "const",
+          "levels": 0,
+          "name": "Nat"
+        }
+      },
+      "kind": "forall",
+      "type": {
+        "kind": "const",
+        "levels": 0,
+        "name": "Nat"
+      }
+    },
+    "value": {
+      "binder": "A",
+      "body": {
+        "binder": "M",
+        "body": {
+          "binder": "C",
+          "body": {
+            "binder": "w",
+            "body": {
+              "binder": "lo",
+              "body": {
+                "binder": "hi",
+                "body": {
+                  "binder": "x",
+                  "body": {
+                    "binder": "hM",
+                    "body": {
+                      "binder": "hA",
+                      "body": {
+                        "binder": "hw",
+                        "body": {
+                          "omitted": "depth"
+                        },
+                        "kind": "lambda",
+                        "type": {
+                          "omitted": "depth"
+                        }
+                      },
+                      "kind": "lambda",
+                      "type": {
+                        "argument": {
+                          "omitted": "depth"
+                        },
+                        "function": {
+                          "omitted": "depth"
+                        },
+                        "kind": "app"
+                      }
+                    },
+                    "kind": "lambda",
+                    "type": {
+                      "argument": {
+                        "index": 5,
+                        "kind": "bound_variable"
+                      },
+                      "function": {
+                        "argument": {
+                          "omitted": "depth"
+                        },
+                        "function": {
+                          "omitted": "depth"
+                        },
+                        "kind": "app"
+                      },
+                      "kind": "app"
+                    }
+                  },
+                  "kind": "lambda",
+                  "type": {
+                    "kind": "const",
+                    "levels": 0,
+                    "name": "Real"
+                  }
+                },
+                "kind": "lambda",
+                "type": {
+                  "kind": "const",
+                  "levels": 0,
+                  "name": "Real"
+                }
+              },
+              "kind": "lambda",
+              "type": {
+                "kind": "const",
+                "levels": 0,
+                "name": "Real"
+              }
+            },
+            "kind": "lambda",
+            "type": {
+              "kind": "const",
+              "levels": 0,
+              "name": "Real"
+            }
+          },
+          "kind": "lambda",
+          "type": {
+            "kind": "const",
+            "levels": 0,
+            "name": "Nat"
+          }
+        },
+        "kind": "lambda",
+        "type": {
+          "kind": "const",
+          "levels": 0,
+          "name": "Nat"
+        }
+      },
+      "kind": "lambda",
+      "type": {
+        "kind": "const",
+        "levels": 0,
+        "name": "Nat"
+      }
+    }
+  },
+  "authority": "elaborated_expression_inspection_not_extraction_or_proof_of_a_new_contract"
+}

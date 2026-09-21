@@ -33,6 +33,7 @@ ENVIRONMENT_VALIDATION_POSTURE = (
     "export_so_source_fingerprint_and_loaded_olean_state_are_current"
 )
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
+LEAN_DEPENDENCY_EXPORT_FILE_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
@@ -47,7 +48,6 @@ CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
 CI_OUTCOME_SCHEMA = "erdos249257-lean-dependency-index-outcome/1"
 CI_OUTCOME_PATH = CHECK_RECEIPT.parent / "lean_dependency_index_outcome.json"
 EXPORT_DIAGNOSTIC_LOG = CHECK_RECEIPT.parent / "lean_dependency_export_diagnostics.log"
-LEAN_DEPENDENCY_EXPORT_FILE_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
 EXIT_STALE = 1
 EXIT_INPUTS_CHANGED = 2
 EXIT_TIMEOUT = 3
@@ -246,13 +246,14 @@ def safe_output_text(
     safe_output_bytes(path, content.encode("utf-8"), root=root)
 
 
-def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
+def run(
+    *args: Any, lean_dependency_export_file: Path | None = None, **kwargs: Any,
+) -> subprocess.CompletedProcess[str]:
     """Run Lean dependency commands in the bounded validation time domain."""
     environment = singleflight.command_environment()
     environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
-    export_file = kwargs.pop("lean_dependency_export_file", None)
-    if export_file is not None:
-        environment[LEAN_DEPENDENCY_EXPORT_FILE_ENV] = str(export_file)
+    if lean_dependency_export_file is not None:
+        environment[LEAN_DEPENDENCY_EXPORT_FILE_ENV] = str(lean_dependency_export_file)
     kwargs["env"] = environment
     # Both callers elaborate Lean state. A cold runner can legitimately take
     # longer than the short timeout used for metadata-only Git queries, so keep
@@ -767,93 +768,93 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
-    with tempfile.TemporaryDirectory(prefix="plectis-lean-dependency-export-") as raw:
-        export_file = Path(raw) / "environment.tsv"
-        try:
-            completed = run(
-                ["lake", "env", "lean", str(EXPORTER)],
-                cwd=ROOT,
-                text=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                check=False,
-                timeout=EXPORT_TIMEOUT_SECONDS,
-                lean_dependency_export_file=export_file,
+    # Lean opens the file itself, avoiding open-temporary-file locks on Windows.
+    with tempfile.TemporaryDirectory(prefix="plectis-lean-dependency-export-") as directory:
+        return _export_environment_file(Path(directory) / "environment.tsv")
+
+
+def _export_environment_file(output_path: Path) -> tuple[
+    dict[str, str],
+    dict[tuple[str, str], set[str]],
+    dict[str, int],
+    dict[str, dict[str, Any]],
+]:
+    try:
+        completed = run(
+            ["lake", "env", "lean", str(EXPORTER)],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            timeout=EXPORT_TIMEOUT_SECONDS,
+            lean_dependency_export_file=output_path,
+        )
+    except subprocess.TimeoutExpired as exc:
+        stdout = decode_captured(exc.stdout)
+        stderr = decode_captured(exc.stderr)
+        sys.stderr.write(stdout)
+        sys.stderr.write(stderr)
+        preserve_export_diagnostics(stdout, stderr)
+        raise ClassifiedExportError(
+            "export_timeout",
+            EXIT_TIMEOUT,
+            (
+                "Lean dependency exporter timed out after "
+                f"{EXPORT_TIMEOUT_SECONDS} seconds; tracked index was not rewritten"
+            ),
+            stdout=stdout,
+            stderr=stderr,
+        ) from exc
+    if completed.returncode:
+        sys.stderr.write(completed.stdout)
+        sys.stderr.write(completed.stderr)
+        if singleflight.is_external_termination_exit(completed.returncode):
+            signal_exit = (
+                128 + abs(completed.returncode)
+                if completed.returncode < 0
+                else completed.returncode
             )
-        except subprocess.TimeoutExpired as exc:
-            stdout = decode_captured(exc.stdout)
-            stderr = decode_captured(exc.stderr)
-            sys.stderr.write(stdout)
-            sys.stderr.write(stderr)
-            preserve_export_diagnostics(stdout, stderr)
-            raise ClassifiedExportError(
-                "export_timeout",
-                EXIT_TIMEOUT,
-                (
-                    "Lean dependency exporter timed out after "
-                    f"{EXPORT_TIMEOUT_SECONDS} seconds; tracked index was not rewritten"
-                ),
-                stdout=stdout,
-                stderr=stderr,
-            ) from exc
-        if completed.returncode:
-            sys.stderr.write(completed.stdout)
-            sys.stderr.write(completed.stderr)
-            if singleflight.is_external_termination_exit(completed.returncode):
-                signal_exit = (
-                    128 + abs(completed.returncode)
-                    if completed.returncode < 0
-                    else completed.returncode
-                )
-                print(
-                    "Lean dependency exporter was externally terminated; "
-                    f"preserving signal exit {signal_exit} for owner recovery",
-                    file=sys.stderr,
-                )
-                raise SystemExit(signal_exit)
-            preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
-            raise ClassifiedExportError(
-                "export_crash",
-                EXIT_CRASH,
-                f"Lean dependency exporter exited {completed.returncode}",
-                stdout=completed.stdout or "",
-                stderr=completed.stderr or "",
+            print(
+                "Lean dependency exporter was externally terminated; "
+                f"preserving signal exit {signal_exit} for owner recovery",
+                file=sys.stderr,
             )
-        if completed.stdout or completed.stderr:
-            sys.stderr.write(completed.stdout or "")
-            sys.stderr.write(completed.stderr or "")
-            preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
-        try:
-            payload = export_file.read_text(encoding="utf-8")
-        except (OSError, UnicodeError) as exc:
-            raise ClassifiedExportError(
-                "export_crash",
-                EXIT_CRASH,
-                f"Lean dependency exporter did not write a readable UTF-8 export: {exc}",
-                stdout=completed.stdout or "",
-                stderr=completed.stderr or "",
-            ) from exc
-        if not payload.strip():
-            raise ClassifiedExportError(
-                "export_crash",
-                EXIT_CRASH,
-                "Lean dependency exporter wrote an empty export",
-                stdout=completed.stdout or "",
-                stderr=completed.stderr or "",
-            )
-        try:
-            parsed = parse_environment_output(payload)
-            if not parsed[0]:
-                raise RuntimeError("export contains no dependency nodes")
-            return parsed
-        except (RuntimeError, ValueError) as exc:
-            raise ClassifiedExportError(
-                "export_crash",
-                EXIT_CRASH,
-                f"Lean dependency exporter wrote a malformed export: {exc}",
-                stdout=completed.stdout or "",
-                stderr=completed.stderr or "",
-            ) from exc
+            raise SystemExit(signal_exit)
+        preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
+        raise ClassifiedExportError(
+            "export_crash",
+            EXIT_CRASH,
+            f"Lean dependency exporter exited {completed.returncode}",
+            stdout=completed.stdout or "",
+            stderr=completed.stderr or "",
+        )
+    preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
+    try:
+        output = safe_dependency_text(output_path, root=output_path.parent)
+    except (OSError, UnicodeError, UnsafeDependencyInput) as exc:
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            f"Lean dependency exporter did not write a readable UTF-8 export: {exc}",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        ) from exc
+    if not output.strip():
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            "Lean dependency exporter wrote an empty export",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        )
+    try:
+        parsed = parse_environment_output(output)
+        if not parsed[0]:
+            raise RuntimeError("export contains no dependency nodes")
+        return parsed
+    except (RuntimeError, ValueError) as exc:
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            f"Lean dependency exporter wrote a malformed export: {exc}",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        ) from exc
 
 
 def parse_environment_output(

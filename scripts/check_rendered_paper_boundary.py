@@ -82,7 +82,8 @@ FIRST_MINUTE_CONTRACT = {
             "six things that are commonly collapsed",
             "more reasoning cannot buy a write lease",
             "lean verifies that a proof establishes the formal statement written in the source",
-            "eight problems remain open",
+            "degree-seven counterexample due to ani is formalised in lean here and refutes the total-variation formulation of problem 1041",
+            "other seven target problems remain unresolved",
         ),
         (3, 6): (
             "type a and type b",

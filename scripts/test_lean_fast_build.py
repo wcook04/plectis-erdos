@@ -58,6 +58,53 @@ class LeanFastBuildTests(unittest.TestCase):
                 ["Pkg.Proof"],
             )
 
+    def test_changed_targets_exclude_only_stored_workbench_probes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            registered = root / "lean" / "Pkg" / "Proof.lean"
+            scratch = root / "scratch" / "Trial.lean"
+            session = root / "research" / "workbench" / "sessions" / "replay-case"
+            rejected_probe = session / "probes" / "m003.lean"
+            standalone_near_probe = session / "probes" / "Draft.lean"
+            standalone_other_tree = root / "research" / "experiments" / "probes" / "m003.lean"
+            sources = [registered, scratch, rejected_probe, standalone_near_probe,
+                       standalone_other_tree]
+            for source in sources:
+                source.parent.mkdir(parents=True, exist_ok=True)
+                source.write_text("example : True := True.intro\n", encoding="utf-8")
+            rejected_probe.write_text(
+                "example : False := True.intro\n", encoding="utf-8"
+            )
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\nsrcDir = "lean"\n', encoding="utf-8"
+            )
+            modules = fast.discover(root)
+            names = {source: name for name, source in modules.items()}
+            results = [
+                fast.subprocess.CompletedProcess(
+                    [], 0, "\n".join(str(p.relative_to(root)) for p in sources[:3]), ""
+                ),
+                fast.subprocess.CompletedProcess(
+                    [], 0, "\n".join(str(p.relative_to(root)) for p in sources[3:]), ""
+                ),
+            ]
+            with mock.patch.object(fast.subprocess, "run", side_effect=results):
+                self.assertEqual(
+                    fast.changed_targets("HEAD", modules, root),
+                    sorted(names[p] for p in sources if p != rejected_probe),
+                )
+            # The exclusion belongs only to changed-from discovery. A user
+            # may still explicitly select a stored probe or a standalone file.
+            self.assertEqual(
+                fast.resolve_targets(
+                    [str(p.relative_to(root)) for p in (rejected_probe, scratch)],
+                    modules,
+                    root,
+                ),
+                [names[rejected_probe], names[scratch]],
+            )
+            self.assertTrue(fast.is_registered_lake_module(names[registered], root))
+
     def test_declared_defaults_resolve_roots_under_srcdir(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -12,20 +12,20 @@ project:
   responsible_maintainers: ["Will Cook"]
 
 palomar_qualification:
-  status: "high_interest_candidate_paper_revision_applied_axiom_audit_replayed_in_this_public_repository_pending_commit_pin"
+  status: "high_interest_candidate_paper_published_axiom_audit_replayed_public_identity_pinned"
   selected_project: "."
   comparator_config: "ExternalVerification1041SolvedFamilies/comparator.json"
   formalization_metadata: "ExternalVerification1041SolvedFamilies/formalization.yaml"
-  repository_scope: "prepared_in_this_public_repository_pending_commit_pin"
+  repository_scope: "public_repo_at_1e78f5f40900cc13579450602b4af6856d954d3c"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "challenge_solution_and_axiom_audit_replayed_in_this_repository_with_exactly_propext_Classical_choice_and_Quot_sound_on_all_three_selected_endpoints_terminal_Comparator_NanoDa_is_run_by_Palomar_not_the_submitter"
   research_interest_status: "three_strong_checked_kernels_with_ordinary_solved_family_assemblies"
-  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
-  blockers:
-    - "the packet is present in this public repository but its pinning commit SHA is not yet created"
+  submission_authorization: "operator_only_not_performed"
+  blockers: []
   resolved_blockers:
     - "the critical-value-separation and solved-families revision is applied to paper/erdos-1041-lemniscate-newton-flow.tex in this repository; thm:sharp-collinear-diameter, thm:primitive-quintic-two-tail, thm:translated-cubic-quotient-fibres, and bdry:solved-polynomial-families all resolve"
     - "the three Erdos1041 source modules and the packet are present in this public repository and replay under its own lakefile"
+    - "the exact long-form paper source containing all three checked-kernel labels is pinned at 1e78f5f40900cc13579450602b4af6856d954d3c"
   not_a_blocker:
     - "A local terminal Comparator/NanoDa replay is our own assurance standard, not a Palomar submitter requirement. Palomar writes its own NanoDa-enabled protected configuration, runs the mechanical review, and registers nothing until the submitter chooses registration after seeing that review. The supported local runner additionally requires a Linux systemd boundary and returns typed exit 75 on macOS."
   note: >-
@@ -108,22 +108,21 @@ status:
         node locations, and the end-to-end path theorem are ordinary
         mathematics.
       paper_alignment:
-        paper_id: "erdos-1041-lemniscate-newton-flow"
-        source_path: "paper/erdos-1041-lemniscate-newton-flow.tex"
-        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/fe5d678bec0111c52059d04e77dfc20130c6176c/paper/erdos-1041-lemniscate-newton-flow.tex"
-        authoritative_base_commit: "fe5d678bec0111c52059d04e77dfc20130c6176c"
-        authoritative_base_file_sha256: "d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4"
-        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-critical-value-separation.patch"
+        paper_id: "erdos1041-lemniscate-reasoning-surface"
+        source_path: "paper/1041/erdos1041-lemniscate-reasoning-surface.tex"
+        source_url: "https://github.com/wcook04/plectis-erdos/blob/1e78f5f40900cc13579450602b4af6856d954d3c/paper/1041/erdos1041-lemniscate-reasoning-surface.tex"
+        authoritative_base_commit: "1e78f5f40900cc13579450602b4af6856d954d3c"
+        authoritative_base_file_sha256: "4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61"
         checked_kernel_label: "prop:sharp-collinear-chebyshev-comparator"
         ordinary_result_label: "thm:sharp-collinear-diameter"
         target_corollary_label: "cor:collinear-erdos-1041"
         boundary_label: "rem:sharp-collinear-formal-boundary"
         shared_boundary_label: "bdry:solved-polynomial-families"
         relation: "exact_checked_kernel_supporting_stronger_ordinary_sharp_theorem"
-        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        status: "published_in_public_paper_at_pinned_revision"
         note: >-
-          The pinned URL is the clean public-paper base and does not yet
-          contain these labels. The local patch adds them.
+          The pinned public long-form paper contains the checked endpoint,
+          ordinary theorem, target corollary, and formal-boundary labels.
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies"
       file: "ExternalVerification1041SolvedFamilies/Solution.lean"
@@ -142,21 +141,20 @@ status:
         Rotation, derivation of root moments, the root-tail identity, Abel
         summation, and zero-occurrence path assembly are ordinary mathematics.
       paper_alignment:
-        paper_id: "erdos-1041-lemniscate-newton-flow"
-        source_path: "paper/erdos-1041-lemniscate-newton-flow.tex"
-        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/fe5d678bec0111c52059d04e77dfc20130c6176c/paper/erdos-1041-lemniscate-newton-flow.tex"
-        authoritative_base_commit: "fe5d678bec0111c52059d04e77dfc20130c6176c"
-        authoritative_base_file_sha256: "d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4"
-        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-critical-value-separation.patch"
+        paper_id: "erdos1041-lemniscate-reasoning-surface"
+        source_path: "paper/1041/erdos1041-lemniscate-reasoning-surface.tex"
+        source_url: "https://github.com/wcook04/plectis-erdos/blob/1e78f5f40900cc13579450602b4af6856d954d3c/paper/1041/erdos1041-lemniscate-reasoning-surface.tex"
+        authoritative_base_commit: "1e78f5f40900cc13579450602b4af6856d954d3c"
+        authoritative_base_file_sha256: "4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61"
         checked_kernel_label: "prop:primitive-quintic-two-tail-energy-selector"
         ordinary_result_label: "thm:primitive-quintic-two-tail"
         boundary_label: "rem:primitive-quintic-formal-boundary"
         shared_boundary_label: "bdry:solved-polynomial-families"
         relation: "exact_checked_finite_selector_supporting_ordinary_sparse_quintic_theorem"
-        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        status: "published_in_public_paper_at_pinned_revision"
         note: >-
-          The pinned URL is the clean public-paper base and does not yet
-          contain these labels. The local patch adds them.
+          The pinned public long-form paper contains the checked endpoint,
+          ordinary theorem, and formal-boundary labels.
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
       file: "ExternalVerification1041SolvedFamilies/Solution.lean"
@@ -174,21 +172,20 @@ status:
         Finite q-fibre construction, root-of-unity averaging, zero-root
         fallback, pullback, and path assembly are ordinary mathematics.
       paper_alignment:
-        paper_id: "erdos-1041-lemniscate-newton-flow"
-        source_path: "paper/erdos-1041-lemniscate-newton-flow.tex"
-        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/fe5d678bec0111c52059d04e77dfc20130c6176c/paper/erdos-1041-lemniscate-newton-flow.tex"
-        authoritative_base_commit: "fe5d678bec0111c52059d04e77dfc20130c6176c"
-        authoritative_base_file_sha256: "d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4"
-        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-critical-value-separation.patch"
+        paper_id: "erdos1041-lemniscate-reasoning-surface"
+        source_path: "paper/1041/erdos1041-lemniscate-reasoning-surface.tex"
+        source_url: "https://github.com/wcook04/plectis-erdos/blob/1e78f5f40900cc13579450602b4af6856d954d3c/paper/1041/erdos1041-lemniscate-reasoning-surface.tex"
+        authoritative_base_commit: "1e78f5f40900cc13579450602b4af6856d954d3c"
+        authoritative_base_file_sha256: "4edc86a215d5627896799824e09c1d7ea7a426866e5d7fde6629d412e4756b61"
         checked_kernel_label: "lem:cubic-safe-root-spoke"
         ordinary_result_label: "thm:translated-cubic-quotient-fibres"
         boundary_label: "rem:cubic-quotient-formal-boundary"
         shared_boundary_label: "bdry:solved-polynomial-families"
         relation: "exact_checked_cubic_selector_supporting_ordinary_infinite_fibre_family"
-        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        status: "published_in_public_paper_at_pinned_revision"
         note: >-
-          The pinned URL is the clean public-paper base and does not yet
-          contain these labels. The local patch adds them.
+          The pinned public long-form paper contains the checked endpoint,
+          ordinary theorem, and formal-boundary labels.
       literature_dependencies: []
 
 automation:
@@ -229,20 +226,20 @@ alignment:
       paper_checked_kernel_label: "prop:sharp-collinear-chebyshev-comparator"
       paper_ordinary_result_label: "thm:sharp-collinear-diameter"
       paper_boundary_label: "rem:sharp-collinear-formal-boundary"
-      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-staged"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-published"
     - source: "ErdosProblems.Erdos1041.primitiveInterior_exists_two_tailEnergy_lt_one"
       lean: "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies"
       module: "ExternalVerification1041SolvedFamilies/Challenge.lean"
       paper_checked_kernel_label: "prop:primitive-quintic-two-tail-energy-selector"
       paper_ordinary_result_label: "thm:primitive-quintic-two-tail"
       paper_boundary_label: "rem:primitive-quintic-formal-boundary"
-      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-staged"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-published"
     - source: "ErdosProblems.Erdos1041.cubic_has_safe_root_spoke"
       lean: "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
       module: "ExternalVerification1041SolvedFamilies/Challenge.lean"
       paper_checked_kernel_label: "lem:cubic-safe-root-spoke"
       paper_ordinary_result_label: "thm:translated-cubic-quotient-fibres"
       paper_boundary_label: "rem:cubic-quotient-formal-boundary"
-      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-staged"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-published"
 
 acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

@@ -1,33 +1,33 @@
 {
   "schema": "plectis_expert_review_protocol_v1",
-  "artifact_role": "Authored cross-domain handoff contract. Mathematical inputs remain owned by docs/semantic/frontier.json; this file records external evaluations that the repository cannot perform on itself.",
+  "artifact_role": "Authored cross-domain handoff contract. Mathematical inputs remain owned by docs/claims.json and the current query surfaces; this file records external evaluations that the repository cannot perform on itself.",
   "questions": [
     {
       "id": "XQSYS-ten-minute-hostile-reader",
       "domain": "systems",
       "classification": "external_validation",
       "status": "OPEN",
-      "exact_ask": "Starting from a fresh public clone and no prior project context, spend at most 600 seconds following the advertised human reading route. Record reviewer and clone provenance, then return the structured response below: the status of both Erdős problems, the provenance and numerical delta of the finite Farey bound, the 17/23 self-diagnosis, at least two non-restatement results for each problem in your own words, the resulting one-sentence verdict, the paths used, and the first confusing surface.",
-      "payoff": "When the response is supplied by an identified independent reviewer who followed the protocol, acceptance is evidence that the public first-contact layer communicated the intended verdict within ten minutes. A rejected response yields field-level repair targets rather than a vague readability complaint.",
-      "boundary": "This evaluates discoverability and claim calibration only. The validator does not authenticate the reviewer or elapsed time, and it does not establish mathematical correctness, priority, novelty, or either open problem.",
-      "known_obstruction": "The repository's cold-clone checker is self-authored and can verify that facts are present, but it cannot certify that an independent human actually finds and interprets them in time. That independence remains an external provenance requirement.",
-      "current_hypothesis": "An independent reader will recover that both problems are open and that the Farey delta is zero, but may still underweight the concrete non-restatement results within 600 seconds. Confidence is low because the only external verdict predates the rewritten entry surfaces.",
+      "exact_ask": "Start from a fresh public clone and no prior project context. Spend at most 600 seconds following the advertised human route and replay the current overview, Erdős #1041 and semantic-relation commands. Return the structured response below: the number of indexed problems; the status and credit boundary for the refuted total-variation formulation of #1041; the scope of the claim registry; at least three concrete result summaries from distinct indexed problems; the commands and paths used; a one-sentence verdict; and the first confusing surface.",
+      "payoff": "When an identified independent reviewer supplies an accepted response, it is evidence that the current eight-problem public route communicates its status, credit and authority boundaries within ten minutes. A rejected response yields field-level repair targets rather than a vague readability complaint.",
+      "boundary": "This protocol evaluates discoverability and claim calibration in the current public clone. The validator checks structure and repository-local scalar expectations; it cannot authenticate reviewer or timing provenance, judge the mathematical summaries, or establish correctness, priority, novelty, significance, peer review or resolution of a historical problem.",
+      "known_obstruction": "The repository's cold-clone checker is self-authored and can verify that facts and commands are present, but it cannot certify that an independent human actually finds and interprets them in time. That independence remains an external provenance requirement.",
+      "current_hypothesis": "A fresh reader will recover the eight-problem scope, ani's counterexample credit, the distinction between the refuted total-variation formulation and the unreviewed historical correspondence, and the selected-claim ceiling. Confidence remains low until an independent post-rewrite timed review is recorded.",
       "hypothesis_confidence": "low",
       "plausible_alternatives": [
         {
           "id": "calibrated_verdict",
-          "statement": "The reader recovers the open boundaries, Farey provenance, 17/23 self-diagnosis and at least two concrete results per problem.",
-          "consequence": "The current first-contact route earns the intended neither-near-solution-nor-nothing-here verdict."
+          "statement": "The reader recovers the current scope, #1041 credit and formulation boundary, selected-claim ceiling, and concrete results from multiple problems.",
+          "consequence": "The current first-contact route communicates what is checked without compressing the repository into one historical two-problem audit."
         },
         {
-          "id": "nothing_here_compression",
-          "statement": "The reader recovers the concessions but cannot identify substantive non-restatement content.",
-          "consequence": "The entry ordering still erases the work and needs another theorem-first compression pass."
+          "id": "scope_compression",
+          "statement": "The reader still treats the repository as only #249/#257 or mistakes a selected registry for every statement in every paper.",
+          "consequence": "The entry ordering or authority wording still carries legacy scope drift."
         },
         {
-          "id": "near_solution_inflation",
-          "statement": "The reader mistakes finite bounds, certificate bands or half-value reductions for proximity to either endpoint.",
-          "consequence": "The claim boundaries remain too weak or too distant from their headlines."
+          "id": "status_or_credit_error",
+          "statement": "The reader attributes the degree-seven counterexample to this repository, calls the historical #1041 correspondence settled, or misses that the total-variation formulation is refuted.",
+          "consequence": "The #1041 status and credit boundary is still too weak or too far from first contact."
         },
         {
           "id": "route_timeout",
@@ -36,14 +36,14 @@
         }
       ],
       "current_evidence": [
-        "The recorded external verdict compressed the earlier release toward Farey-easy and restatement-only.",
-        "The public entry surfaces have since been reordered and corrected, but no independent post-rewrite timed review is recorded.",
-        "The internal cold-clone checker verifies presence and consistency, not human retrieval or interpretation."
+        "The earlier timed protocol was coupled to a historical #249/#257 DemandLedger sample and no longer represented the public corpus.",
+        "The public entry surfaces now route the current eight-problem registry, #1041 formulation boundary, semantic relations and residual evaluator.",
+        "The internal cold-clone checker verifies presence and consistency, not independent human retrieval or interpretation."
       ],
       "discriminating_evidence": [
         "A provenance-bound response completed within 600 seconds and accepted under the manual rubric establishes calibrated_verdict for that reader.",
-        "Correct scalar fields paired with weak or incorrect result summaries identifies nothing_here_compression.",
-        "Any endpoint overclaim in the verdict or summaries identifies near_solution_inflation.",
+        "Correct scalar fields paired with weak, duplicated or single-problem result summaries identifies scope_compression.",
+        "Incorrect #1041 status, finder credit or historical-correspondence wording identifies status_or_credit_error.",
         "Elapsed time above 600 seconds or an incomplete response identifies route_timeout."
       ],
       "input_template": {
@@ -53,14 +53,13 @@
         "clone_revision": null,
         "prior_project_context": null,
         "elapsed_seconds": null,
-        "problem_249_status": null,
-        "problem_257_status": null,
-        "farey_bound_provenance": null,
-        "farey_numerical_delta": null,
-        "equivalent_antecedents": null,
-        "substantial_antecedents": null,
-        "nonrestatement_results_249": [],
-        "nonrestatement_results_257": [],
+        "indexed_problem_count": null,
+        "total_variation_formulation_status": null,
+        "counterexample_finder": null,
+        "historical_curve_length_correspondence": null,
+        "claim_registry_scope": null,
+        "result_summaries": [],
+        "routes_replayed": [],
         "verdict_summary": null,
         "source_paths_used": [],
         "first_confusing_surface": ""
@@ -68,24 +67,27 @@
       "acceptance": {
         "maximum_elapsed_seconds": 600,
         "prior_project_context": false,
-        "problem_status": "OPEN",
-        "farey_bound_provenance": "classical_farey_mediant",
-        "farey_numerical_delta": 0,
-        "equivalent_antecedents": 17,
-        "substantial_antecedents": 23,
-        "minimum_nonrestatement_results_per_problem": 2
+        "indexed_problem_count": 8,
+        "total_variation_formulation_status": "REFUTED",
+        "counterexample_finder": "ani",
+        "historical_curve_length_correspondence": "UNREVIEWED",
+        "claim_registry_scope": "SELECTED_REGISTERED_CLAIMS",
+        "minimum_distinct_result_problems": 3,
+        "required_routes": [
+          "python3 scripts/query_corpus.py --overview --format card",
+          "python3 scripts/query_corpus.py --route erdos_1041 --format card",
+          "python3 scripts/query_semantic.py family-relations first_harmonic_pivot_decomposition"
+        ]
       },
       "manual_review_fields": [
-        "nonrestatement_results_249",
-        "nonrestatement_results_257",
+        "result_summaries",
         "verdict_summary",
         "first_confusing_surface"
       ],
       "manual_review_rubric": {
-        "problem_249_summaries_faithful": "Each #249 summary identifies a reviewed non-restatement result in its own words, associates it with #249, and does not turn a finite result, barrier, or coefficient theorem into irrationality.",
-        "problem_257_summaries_faithful": "Each #257 summary identifies a reviewed non-restatement result in its own words, associates it with #257, and does not turn a support-family theorem, barrier, or half-value reduction into universal #257.",
-        "verdict_calibrated": "The verdict says both problems remain open, recognizes concrete checked non-restatement content, recognizes the self-diagnosed endpoint-equivalent reformulations, and makes no unsupported novelty claim.",
-        "evidence_paths_support_response": "The listed repository paths actually support the scalar answers, summaries, and verdict.",
+        "result_summaries_faithful": "Each summary identifies a checked result in its own words, names its indexed problem, and preserves conditional, finite-evidence and endpoint boundaries.",
+        "verdict_calibrated": "The verdict distinguishes the refuted total-variation formulation from the unreviewed historical #1041 correspondence, credits ani for the counterexample, treats the registry as selected rather than exhaustive, and makes no unsupported novelty claim.",
+        "evidence_paths_support_response": "The listed repository paths and replayed routes actually support the scalar answers, summaries and verdict.",
         "confusion_report_actionable": "The first confusing surface is named precisely enough to reproduce, or is explicitly recorded as none."
       },
       "review_template": {
@@ -96,8 +98,7 @@
         "reviewer_provenance_verified": null,
         "timing_provenance_verified": null,
         "criteria": {
-          "problem_249_summaries_faithful": null,
-          "problem_257_summaries_faithful": null,
+          "result_summaries_faithful": null,
           "verdict_calibrated": null,
           "evidence_paths_support_response": null,
           "confusion_report_actionable": null

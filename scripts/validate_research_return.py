@@ -78,31 +78,161 @@ PYTHON_STABILITY_KEYS = frozenset({"PYTHONHASHSEED", "PYTHONOPTIMIZE", "PYTHONUT
 LOCALE_KEYS = frozenset({"LC_ALL", "LANG", "LANGUAGE"})
 
 
+def is_subject_route_memory_receipt(value: Any) -> bool:
+    """Return whether a route-memory sidecar carries the subject-bundle shape."""
+    return isinstance(value, dict) and value.get("schema") == SUBJECT_ROUTE_MEMORY_SCHEMA
+
+
+def route_memory_relationship_rows(value: Any) -> list[dict[str, Any]]:
+    """Return sidecar relationship rows for the single and subject shapes."""
+    if not isinstance(value, dict):
+        return []
+    if is_subject_route_memory_receipt(value):
+        receipts = value.get("receipts")
+        rows: list[dict[str, Any]] = []
+        if isinstance(receipts, list):
+            for receipt in receipts:
+                if not isinstance(receipt, dict):
+                    continue
+                relationships = receipt.get("relationships")
+                if isinstance(relationships, list):
+                    rows.extend(
+                        item for item in relationships if isinstance(item, dict)
+                    )
+        return rows
+    relationships = value.get("relationships")
+    if not isinstance(relationships, list):
+        return []
+    return [item for item in relationships if isinstance(item, dict)]
+
+
 def route_memory_binding_summary(value: dict[str, Any]) -> dict[str, Any]:
     """Expose verified route identity without copying route prose or locators."""
     binding = value.get("route_memory")
-    relationships = value.get("relationships")
     route_ids: list[str] = []
     evidence_paths: set[str] = set()
-    if isinstance(relationships, list):
-        for relationship in relationships:
-            if not isinstance(relationship, dict):
-                continue
-            route_id = relationship.get("route_id")
-            if isinstance(route_id, str):
-                route_ids.append(route_id)
-            changed = relationship.get("changed_evidence")
-            if isinstance(changed, list):
-                evidence_paths.update(
-                    item for item in changed if isinstance(item, str)
-                )
-    return {
+    for relationship in route_memory_relationship_rows(value):
+        route_id = relationship.get("route_id")
+        if isinstance(route_id, str):
+            route_ids.append(route_id)
+        changed = relationship.get("changed_evidence")
+        if isinstance(changed, list):
+            evidence_paths.update(
+                item for item in changed if isinstance(item, str)
+            )
+    summary = {
         "problem": value.get("problem"),
         "disposition": value.get("disposition"),
         "route_ids": route_ids,
         "route_memory": copy.deepcopy(binding),
         "evidence_paths": sorted(evidence_paths),
     }
+    if is_subject_route_memory_receipt(value):
+        summary["subject"] = value.get("subject")
+        summary["related_problems"] = value.get("related_problems")
+    return summary
+
+
+def subject_return_view(returned: Any, problem: int) -> dict[str, Any]:
+    """Present one related problem to the single-problem sidecar validator.
+
+    A subject frontier records no problem, while ``route_memory_receipt``
+    binds a sidecar to exactly one frontier problem.  Validating each related
+    problem's relationship against this view keeps every existing check
+    (return id, canonical digest, route identity, observed status, and
+    changed-evidence containment) without writing a problem number into the
+    return itself.
+    """
+    if not isinstance(returned, dict):
+        return {"frontier": {"problem": problem}}
+    frontier = returned.get("frontier")
+    frontier = frontier if isinstance(frontier, dict) else {}
+    return {**returned, "frontier": {**frontier, "problem": problem}}
+
+
+def subject_route_memory_errors(value: Any, returned: Any, root: Path) -> list[str]:
+    """Validate a subject-shaped route-memory sidecar against its return."""
+    fields = {
+        "schema",
+        "return_id",
+        "subject",
+        "related_problems",
+        "route_memory",
+        "disposition",
+        "receipts",
+    }
+    if not isinstance(value, dict) or set(value) != fields:
+        return [
+            "route_memory_return: subject sidecar must contain exactly schema, "
+            "return_id, subject, related_problems, route_memory, disposition, "
+            "and receipts"
+        ]
+    errors: list[str] = []
+    returned_map = returned if isinstance(returned, dict) else {}
+    frontier = returned_map.get("frontier")
+    frontier = frontier if isinstance(frontier, dict) else {}
+    if value.get("return_id") != returned_map.get("return_id"):
+        errors.append("route_memory_return.return_id: must equal return.json return_id")
+    if not isinstance(value.get("subject"), str) or not value["subject"].strip():
+        errors.append("route_memory_return.subject: must be a nonempty string")
+    elif value["subject"] != frontier.get("subject"):
+        errors.append(
+            "route_memory_return.subject: must equal the return frontier subject"
+        )
+    related = value.get("related_problems")
+    if (
+        not isinstance(related, list)
+        or any(type(item) is not int or item not in PROBLEMS for item in related)
+        or sorted(set(related)) != related
+    ):
+        errors.append(
+            "route_memory_return.related_problems: must be distinct ascending roster problems"
+        )
+        related = []
+    elif related != frontier.get("related_problems"):
+        errors.append(
+            "route_memory_return.related_problems: must equal the return frontier related problems"
+        )
+    expected_disposition = "consulted" if related else "no_applicable_route"
+    if value.get("disposition") != expected_disposition:
+        errors.append(
+            "route_memory_return.disposition: must be "
+            f"{expected_disposition} for this related-problem set"
+        )
+    try:
+        _records, digest = route_memory_receipt.canonical_corpus(root)
+    except ValueError as exc:
+        errors.append(f"route_memory_return.route_memory: {exc}")
+    else:
+        if value.get("route_memory") != {
+            "path": route_memory_receipt.ROUTE_MEMORY_PATH,
+            "sha256": digest,
+        }:
+            errors.append(
+                "route_memory_return.route_memory: does not match the current "
+                "canonical route-memory source"
+            )
+    receipts = value.get("receipts")
+    if not isinstance(receipts, list) or len(receipts) != len(related):
+        errors.append(
+            "route_memory_return.receipts: must record exactly one receipt per related problem"
+        )
+        return sorted(set(errors))
+    for index, (problem, receipt) in enumerate(zip(related, receipts)):
+        base = f"route_memory_return.receipts[{index}]"
+        if isinstance(receipt, dict) and receipt.get("route_memory") != value.get(
+            "route_memory"
+        ):
+            errors.append(
+                f"{base}.route_memory: must match the subject sidecar route-memory source"
+            )
+        errors.extend(
+            f"{base}: {error}"
+            for error in route_memory_receipt.validate_detached_return_receipt(
+                receipt, subject_return_view(returned, problem), root
+            )
+        )
+    return sorted(set(errors))
 
 
 def path_has_symlink_component(path: Path) -> bool:
@@ -190,7 +320,7 @@ def git_environment() -> dict[str, str]:
 
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 RETURN_ID_RE = re.compile(r"^rr-[a-z0-9][a-z0-9-]{2,80}$")
-PRIVATE_RE = re.compile(r"(?:/Users/|/home/|[A-Za-z]:\\\\|(?:^|/)ai_workflow(?:/|$))")
+PRIVATE_RE = re.compile(r"(?:/Users/|/home/|\b[A-Za-z]:\\\\|(?:^|/)ai_workflow(?:/|$))")
 SECRET_RE = re.compile(
     r"(?:gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|"
     r"AKIA[0-9A-Z]{16}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)"
@@ -209,6 +339,11 @@ PROBLEM_SELECTOR_RE = re.compile(r"(?<![A-Za-z0-9_])--problem(?:=|\s+)(\d+)(?!\d
 # Reusing it keeps selector validation aligned with the canonical route
 # authority instead of maintaining a second set that can drift.
 PROBLEMS = route_memory_receipt.ROSTER
+# A mathematical contribution can matter across several problems, or develop a
+# subject no single Erdős problem owns.  Such a return names its subject and
+# lists the problems it relates to, and its route-memory sidecar carries one
+# ordinary single-problem receipt per related problem.
+SUBJECT_ROUTE_MEMORY_SCHEMA = "research-route-memory-subject-return/1"
 ARCHITECTURE_AREAS = {
     "agent_workflow",
     "navigation",
@@ -432,6 +567,33 @@ def _relative_path(value: Any, path: str, check: Validation) -> None:
         check.error(path, "must not target Git internals")
 
 
+def _related_problems(frontier: dict[str, Any], check: Validation) -> list[int]:
+    """Validate the roster problems a subject-shaped return relates to."""
+    if "related_problems" not in frontier:
+        check.error("frontier.related_problems", "is required with frontier.subject")
+        return []
+    value = frontier.get("related_problems")
+    if not isinstance(value, list):
+        check.error("frontier.related_problems", "must be an array")
+        return []
+    numbers: list[int] = []
+    for index, item in enumerate(value):
+        if type(item) is not int or item not in PROBLEMS:
+            check.error(
+                f"frontier.related_problems[{index}]",
+                f"must be one of {sorted(PROBLEMS)}",
+            )
+        else:
+            numbers.append(item)
+    if len(numbers) != len(value):
+        return []
+    if len(set(numbers)) != len(numbers):
+        check.error("frontier.related_problems", "must not contain duplicates")
+    if numbers != sorted(numbers):
+        check.error("frontier.related_problems", "must be sorted in ascending order")
+    return numbers
+
+
 def _decision(value: Any, name: str, check: Validation) -> dict[str, Any] | None:
     path = f"review.{name}"
     required = {"state", "reviewer", "decided_at", "authority_ref", "notes"}
@@ -644,7 +806,10 @@ def validate_document(
         if len(changed_paths) != len(set(changed_paths)):
             check.error("repository.changed_paths", "must not contain duplicates")
 
-    frontier_fields = {"track", "problem", "area", "handle", "bounded_question", "stop_condition", "starting_paths"}
+    frontier_fields = {
+        "track", "problem", "subject", "related_problems", "area", "handle",
+        "bounded_question", "stop_condition", "starting_paths",
+    }
     frontier_required = {"handle", "bounded_question", "stop_condition", "starting_paths"}
     frontier = check.object(root.get("frontier"), "frontier", frontier_required, frontier_fields)
     contribution_track: str | None = None
@@ -657,13 +822,34 @@ def validate_document(
         else:
             check.error("frontier.track", "must be mathematics or architecture")
         if contribution_track == "mathematics":
-            if type(frontier.get("problem")) is not int or frontier.get("problem") not in PROBLEMS:
-                check.error("frontier.problem", f"must be one of {sorted(PROBLEMS)}")
+            # One mathematics return names exactly one problem, or names the
+            # subject it develops together with the problems it relates to.
+            # The legacy track-absent form stays bound to an integer problem.
+            if "problem" in frontier and "subject" in frontier:
+                check.error(
+                    "frontier.subject",
+                    "must not accompany frontier.problem; name one problem or one subject",
+                )
+            elif "subject" in frontier:
+                check.string(frontier.get("subject"), "frontier.subject")
+                _related_problems(frontier, check)
+            else:
+                if type(frontier.get("problem")) is not int or frontier.get("problem") not in PROBLEMS:
+                    check.error("frontier.problem", f"must be one of {sorted(PROBLEMS)}")
+                if "related_problems" in frontier:
+                    check.error(
+                        "frontier.related_problems",
+                        "is only valid with frontier.subject",
+                    )
             if "area" in frontier:
                 check.error("frontier.area", "is reserved for architecture contributions")
         elif contribution_track == "architecture":
-            if "problem" in frontier:
-                check.error("frontier.problem", "must be omitted for architecture contributions")
+            for field in ("problem", "subject", "related_problems"):
+                if field in frontier:
+                    check.error(
+                        f"frontier.{field}",
+                        "must be omitted for architecture contributions",
+                    )
             if frontier.get("area") not in ARCHITECTURE_AREAS:
                 check.error("frontier.area", f"must be one of {sorted(ARCHITECTURE_AREAS)}")
         for field in ("handle", "bounded_question", "stop_condition"):
@@ -778,6 +964,28 @@ def validate_document(
         check.error("evidence", "must be a non-empty array")
     else:
         evidence_fields = {"command", "exit_state", "exit_code", "observed", "environment", "artifacts", "replay_state"}
+        # Bind any recorded ``--problem`` selector to what the frontier
+        # actually selects: the single problem, or the related problems a
+        # subject-shaped return declares.  An empty related-problem list
+        # admits no such selector at all.
+        selector_scope: tuple[str, set[int]] | None = None
+        selected_problem = frontier.get("problem") if isinstance(frontier, dict) else None
+        if isinstance(selected_problem, int) and selected_problem in PROBLEMS:
+            selector_scope = ("problem", {selected_problem})
+        elif (
+            isinstance(frontier, dict)
+            and contribution_track == "mathematics"
+            and isinstance(frontier.get("subject"), str)
+            and isinstance(frontier.get("related_problems"), list)
+        ):
+            selector_scope = (
+                "subject",
+                {
+                    item
+                    for item in frontier["related_problems"]
+                    if type(item) is int and item in PROBLEMS
+                },
+            )
         for index, item in enumerate(evidence):
             base = f"evidence[{index}]"
             row = check.object(item, base, evidence_fields, evidence_fields)
@@ -786,17 +994,30 @@ def validate_document(
             command = check.string(row.get("command"), f"{base}.command")
             for field in ("observed", "environment"):
                 check.string(row.get(field), f"{base}.{field}")
-            if command is not None and isinstance(frontier, dict):
-                selected_problem = frontier.get("problem")
-                if isinstance(selected_problem, int) and selected_problem in PROBLEMS:
-                    for match in PROBLEM_SELECTOR_RE.finditer(command):
-                        recorded_problem = int(match.group(1))
-                        if recorded_problem != selected_problem:
-                            check.error(
-                                f"{base}.command",
-                                f"problem selector must match frontier.problem {selected_problem}; "
-                                f"found {recorded_problem}",
-                            )
+            if command is not None and selector_scope is not None:
+                selector_kind, admitted_problems = selector_scope
+                for match in PROBLEM_SELECTOR_RE.finditer(command):
+                    recorded_problem = int(match.group(1))
+                    if recorded_problem in admitted_problems:
+                        continue
+                    if selector_kind == "problem":
+                        check.error(
+                            f"{base}.command",
+                            f"problem selector must match frontier.problem {selected_problem}; "
+                            f"found {recorded_problem}",
+                        )
+                    elif admitted_problems:
+                        check.error(
+                            f"{base}.command",
+                            "problem selector must name one of frontier.related_problems "
+                            f"{sorted(admitted_problems)}; found {recorded_problem}",
+                        )
+                    else:
+                        check.error(
+                            f"{base}.command",
+                            "problem selector is not admissible when "
+                            f"frontier.related_problems is empty; found {recorded_problem}",
+                        )
             state = row.get("exit_state")
             code = row.get("exit_code")
             if state not in {"passed", "failed", "not_run"}:
@@ -1213,11 +1434,16 @@ def main(argv: list[str] | None = None) -> int:
                 route_memory_errors.append("route_memory_receipt: return input must be an object")
             else:
                 route_memory_data = loaded_route_memory
-                route_memory_errors.extend(
-                    route_memory_receipt.validate_detached_return_receipt(
-                        loaded_route_memory, data, ROOT
+                if is_subject_route_memory_receipt(loaded_route_memory):
+                    route_memory_errors.extend(
+                        subject_route_memory_errors(loaded_route_memory, data, ROOT)
                     )
-                )
+                else:
+                    route_memory_errors.extend(
+                        route_memory_receipt.validate_detached_return_receipt(
+                            loaded_route_memory, data, ROOT
+                        )
+                    )
     errors.extend(route_memory_errors)
     contract_path = ROOT / identity_contract["contracts"]["current_schema_path"]
     receipt = {

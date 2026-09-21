@@ -31,7 +31,7 @@ sources:
     license: "CC-BY-4.0"
     author_endorsement: "n/a"
 status:
-  scope: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
+  scope: "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
   proof_corpus_sorry_count: 0
   sorry_count: 8
   sorry_in_definitions: 0
@@ -913,7 +913,7 @@ review:
   reviewers: []
   notes: "self-assessed and agent-checked; no human mathematical peer review is claimed"
 fidelity:
-  divergences: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
+  divergences: "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
 alignment:
   namespace: "Erdos249257.ExternalVerification"
   statements:
@@ -1621,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:a2a102817ebb093da7164fb5381049c1b560d7cae72ec260f486fc7bf0f3b7b4"
+  problem_index_digest: "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1651,8 +1651,8 @@ external_verification:
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
-      checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
-      open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
+      checked_frontier: "Irrationality at every integer base for the classical full support, reciprocal-summable supports, and the finite-prime weighted supports in divisibilityWeightedClaim."
+      open_frontier: "Universal irrationality over all infinite supports, or the proposed rational values 1/2 and 1/21."
       claim_registry_status: "programme_only"
     - id: "erdos_269"
       erdos_number: 269

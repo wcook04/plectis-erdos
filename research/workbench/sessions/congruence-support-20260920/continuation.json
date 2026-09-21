@@ -1,0 +1,90 @@
+{
+  "authority_boundary": "The route is navigation and the workbench records a session; neither changes Lean proof, docs/claims.json, mathematical review, or release authority.",
+  "composed_commands": [
+    "python3 scripts/query_corpus.py --overview --format json",
+    "python3 scripts/query_route_memory.py --problem 68",
+    "python3 scripts/query_route_memory.py --problem 251",
+    "python3 scripts/proof_workbench.py open ...",
+    "python3 scripts/proof_workbench.py note --kind plan ..."
+  ],
+  "created_at": "2026-09-20T15:02:43+00:00",
+  "dirty_at_start": true,
+  "frontier": {
+    "handle": "Classify congruence-preserving factorial interpolation, then test a broader paper-informed Lean composition experiment",
+    "intent": "Develop proved mathematics and a concrete research operation that improves cross-corpus reasoning",
+    "stop_condition": "Validated sharp theorem, reproducible mechanism experiment, and explicit evidence boundary; pivot if a candidate fails"
+  },
+  "identity": {
+    "contributor": {
+      "name": "AI-assisted contribution under Will Cook"
+    },
+    "material_collaborators": [],
+    "model_system": {
+      "name": "Codex",
+      "state": "disclosed"
+    },
+    "operator": {
+      "name": "Will Cook",
+      "relationship": "named"
+    },
+    "provider": {
+      "name": "OpenAI",
+      "state": "disclosed"
+    }
+  },
+  "problem": null,
+  "related_problems": [
+    68,
+    251
+  ],
+  "repository_origin": "https://github.com/wcook04/plectis-erdos",
+  "route_memory": {
+    "consultations": [
+      {
+        "disposition": "consulted",
+        "problem": 68,
+        "route_memory": {
+          "path": "docs/research-commons/route-memory/route_memory.json",
+          "sha256": "sha256:9eb742ea16127852b4e7ea2735f783412d27aa3c75002b026930f5ef202fa880"
+        },
+        "routes": [
+          {
+            "route_id": "erdos_68_two_cylinder_exclusion",
+            "status": "still_open"
+          }
+        ],
+        "schema": "research-route-memory-consultation/1"
+      },
+      {
+        "disposition": "consulted",
+        "problem": 251,
+        "route_memory": {
+          "path": "docs/research-commons/route-memory/route_memory.json",
+          "sha256": "sha256:9eb742ea16127852b4e7ea2735f783412d27aa3c75002b026930f5ef202fa880"
+        },
+        "routes": [
+          {
+            "route_id": "erdos_251_small_mismatch_criterion",
+            "status": "conditional_endpoint_reduction"
+          }
+        ],
+        "schema": "research-route-memory-consultation/1"
+      }
+    ],
+    "disposition": "consulted",
+    "related_problems": [
+      68,
+      251
+    ],
+    "route_memory": {
+      "path": "docs/research-commons/route-memory/route_memory.json",
+      "sha256": "sha256:9eb742ea16127852b4e7ea2735f783412d27aa3c75002b026930f5ef202fa880"
+    },
+    "schema": "research-route-memory-subject-consultation/1",
+    "subject": "Factorial support thresholds and paper-informed discovery across the Lean corpus"
+  },
+  "schema": "research-continuation-session/1",
+  "session": "congruence-support-20260920",
+  "starting_commit": "cd92136f7f0f03bd78fb8753e4e4f0527dbe3a83",
+  "subject": "Factorial support thresholds and paper-informed discovery across the Lean corpus"
+}

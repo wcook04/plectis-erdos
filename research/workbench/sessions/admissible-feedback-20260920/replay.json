@@ -1,0 +1,26 @@
+{
+  "all_match": true,
+  "at": "2026-09-20T22:40:02+00:00",
+  "environment_fingerprint": {
+    "dirty_path_count": 67,
+    "git_head": "2bd14835b940b3c695a9cc8828c7e2967d65c053",
+    "lean_toolchain": "leanprover/lean4:v4.29.1"
+  },
+  "probes_replayed": 2,
+  "results": [
+    {
+      "move_id": "m002",
+      "recorded_verdict": "kernel_accepted",
+      "replay": "match",
+      "replayed_verdict": "kernel_accepted"
+    },
+    {
+      "move_id": "m004",
+      "recorded_verdict": "kernel_rejected",
+      "replay": "match",
+      "replayed_verdict": "kernel_rejected"
+    }
+  ],
+  "schema": "workbench-replay-receipt/1",
+  "session": "admissible-feedback-20260920"
+}

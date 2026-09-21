@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Reading routes and source imports must survive publication changes."""
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -8,6 +9,28 @@ from unittest.mock import patch
 import build_problem_index as builder
 
 class ProblemLibraryTests(unittest.TestCase):
+    def test_question_inventory_follows_owner_in_both_reader_guides(self):
+        row = {"erdos_number": 68, "question": "Before | correction?",
+               "note": {"rendered_path": "paper/before.pdf"}}
+        body = f"Authored context\n{builder.CARD_BEGIN}\n{builder.CARD_END}\nAuthored proof\n"
+        old = builder.update_programme_card(body, builder.render_problem_questions({"problems": [row]}))
+        row["question"] = "Corrected question?"
+        row["note"]["rendered_path"] = "paper/current.pdf"
+        current = builder.update_programme_card(old, builder.render_problem_questions({"problems": [row]}))
+        self.assertNotIn("Before", current)
+        self.assertNotIn("before.pdf", current)
+        self.assertIn("../paper/current.pdf", current)
+        self.assertTrue(current.endswith("Authored proof\n"))
+        payload = builder.build(
+            json.loads(builder.SOURCE.read_text()),
+            {row["id"]: row for row in json.loads(builder.CONTRACT.read_text())["artifacts"]},
+            json.loads(builder.CLAIMS.read_text()),
+            json.loads(builder.CORPUS.read_text()),
+        )
+        for path in (builder.RESULTS, builder.READING_GUIDE):
+            card = builder.render_problem_questions(payload, prose=path == builder.READING_GUIDE)
+            self.assertEqual(path.read_text(), builder.update_programme_card(path.read_text(), card))
+
     def test_card_regenerates_status_and_preserves_authored_surroundings(self):
         row = {"erdos_number": 68, "problem_id": "erdos_68", "question": "Exact question?",
                "claim_registration": {"programme_claim_id": "target", "programme_statement": "Old boundary."},

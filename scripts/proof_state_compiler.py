@@ -14,6 +14,7 @@ with no remaining goals is a proof receipt.
 from __future__ import annotations
 
 import argparse
+import fcntl
 import hashlib
 import itertools
 import json
@@ -1205,6 +1206,79 @@ def _load_request(args: argparse.Namespace) -> dict[str, Any] | None:
     return None
 
 
+def inspection_source(module: str, declaration: str, nodes: int = 160,
+                      depth: int = 12) -> str:
+    """Bounded elaborated expressions for one selected proof, not an environment dump."""
+    identifier = r"[A-Za-z_][A-Za-z_0-9']*(?:\.[A-Za-z_][A-Za-z_0-9']*)*"
+    if not all(re.fullmatch(identifier, name) for name in (module, declaration)):
+        raise RequestError('inspection requires exact Lean module and declaration names')
+    if not (1 <= nodes <= 400 and 1 <= depth <= 40):
+        raise RequestError('inspection limits: 1..400 nodes and 1..40 depth')
+    # Recursion is structural in fuel. A shared counter bounds total nodes,
+    # including type/value subtrees, independently of term size.
+    return f'''import {module}
+import Lean
+open Lean
+private def exprSlice : Nat → Expr → StateM Nat Json
+  | 0, _ => pure (Json.mkObj [("omitted", toJson "depth")])
+  | fuel + 1, e => do
+    let left ← get
+    if left == 0 then return Json.mkObj [("omitted", toJson "nodes")]
+    set (left - 1)
+    match e with
+    | .const n ls => return Json.mkObj [("kind", toJson "const"), ("name", toJson n.toString), ("levels", toJson ls.length)]
+    | .app f a => return Json.mkObj [("kind", toJson "app"), ("function", ← exprSlice fuel f), ("argument", ← exprSlice fuel a)]
+    | .lam n t b _ => return Json.mkObj [("kind", toJson "lambda"), ("binder", toJson n.toString), ("type", ← exprSlice fuel t), ("body", ← exprSlice fuel b)]
+    | .forallE n t b _ => return Json.mkObj [("kind", toJson "forall"), ("binder", toJson n.toString), ("type", ← exprSlice fuel t), ("body", ← exprSlice fuel b)]
+    | .letE n t v b _ => return Json.mkObj [("kind", toJson "let"), ("binder", toJson n.toString), ("type", ← exprSlice fuel t), ("value", ← exprSlice fuel v), ("body", ← exprSlice fuel b)]
+    | .bvar i => return Json.mkObj [("kind", toJson "bound_variable"), ("index", toJson i)]
+    | .fvar _ => return Json.mkObj [("kind", toJson "free_variable")]
+    | .mvar _ => return Json.mkObj [("kind", toJson "metavariable")]
+    | .sort _ => return Json.mkObj [("kind", toJson "sort")]
+    | .lit (.natVal n) => return Json.mkObj [("kind", toJson "natural_literal"), ("value", toJson n)]
+    | .lit (.strVal s) => return Json.mkObj [("kind", toJson "string_literal"), ("value", toJson (s.take 120).toString)]
+    | .mdata _ v => exprSlice fuel v
+    | .proj n i v => return Json.mkObj [("kind", toJson "projection"), ("name", toJson n.toString), ("index", toJson i), ("value", ← exprSlice fuel v)]
+run_cmd do
+  let info ← getConstInfo `{declaration}
+  let (ty, _) := (exprSlice {depth} info.type).run {nodes}
+  let value := info.value?.map (fun e => ((exprSlice {depth} e).run {nodes}).1)
+  let result := Json.mkObj [("declaration", toJson "{declaration}"), ("type", ty), ("value", value.getD Json.null)]
+  logInfo ("PLECTIS_INSPECTION " ++ result.compress)
+'''
+
+
+def inspect_declaration(module: str, declaration: str, *, repo_root: Path = ROOT,
+                        nodes: int = 160, depth: int = 12,
+                        timeout_seconds: float = 90.0) -> dict[str, Any]:
+    source = inspection_source(module, declaration, nodes, depth)
+    environment = environment_fingerprint(repo_root, timeout_seconds=timeout_seconds)
+    lock_path = singleflight.resource_lock_path({}, 'lean-host')
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with lock_path.open('a+') as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return {'kind': 'selected_proof_inspection', 'status': 'validation_deferred',
+                    'reason': 'lean_host_busy', 'exit_code': 75}
+        completed = subprocess.run(['lake', 'env', 'lean', '--stdin', '--json'],
+            cwd=repo_root, env=_lean_environment(), input=source, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout_seconds)
+    messages, _ = _parse_lean_messages(completed.stdout)
+    slices = [str(row.get('data', '')) for row in messages
+              if str(row.get('data', '')).startswith('PLECTIS_INSPECTION ')]
+    if completed.returncode or len(slices) != 1:
+        raise RequestError('selected-proof inspection failed: ' + completed.stdout[-4000:])
+    packet = {'kind': 'selected_proof_inspection', 'status': 'inspected',
+              'module': module, 'environment_fingerprint': environment,
+              'source_digest': _sha256_text(source), 'nodes_per_tree': nodes,
+              'depth': depth, 'expression': json.loads(slices[0].split(' ', 1)[1]),
+              'authority': 'elaborated_expression_inspection_not_extraction_or_proof_of_a_new_contract'}
+    if len(json.dumps(packet).encode()) > MAX_PACKET_BYTES:
+        raise RequestError('inspection packet too large; reduce nodes/depth')
+    return packet
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
@@ -1228,6 +1302,10 @@ def main() -> int:
         action="store_true",
         help="read one proof-state request JSON object from stdin",
     )
+    mode.add_argument('--inspect-declaration', help='inspect selected elaborated type and proof expressions')
+    parser.add_argument('--module', help='one module to import for selected-proof inspection')
+    parser.add_argument('--expression-nodes', type=int, default=160)
+    parser.add_argument('--expression-depth', type=int, default=12)
     parser.add_argument(
         "--repo-root",
         type=Path,
@@ -1242,6 +1320,19 @@ def main() -> int:
     )
     parser.add_argument("--compact", action="store_true")
     args = parser.parse_args()
+
+    if args.inspect_declaration:
+        if not args.module:
+            parser.error('--inspect-declaration requires --module')
+        try:
+            packet = inspect_declaration(args.module, args.inspect_declaration,
+                repo_root=args.repo_root, nodes=args.expression_nodes, depth=args.expression_depth,
+                timeout_seconds=args.timeout_seconds)
+        except (ToolchainUnavailable, RequestError, subprocess.TimeoutExpired) as exc:
+            print(f'REFUSED: {exc}', file=sys.stderr)
+            return 2
+        print(json.dumps(packet, indent=2))
+        return packet.get('exit_code', 0)
 
     request = _load_request(args)
     try:

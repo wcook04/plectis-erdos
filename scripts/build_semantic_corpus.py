@@ -6,8 +6,8 @@
 The repository already had the two ends of a three-layer stack and nothing in
 the middle.  ``docs/declaration_atlas.json`` is the exhaustive phone book: every
 declaration, its kind, its coordinates, its signature.  ``docs/claims.json`` is
-the small curated publication ledger: 100 reviewed claims linking 300
-declarations.  Between them sat no owner for a more limited question: *what
+the selected curated publication ledger; its size changes as reviewed claims
+are registered.  Between them sat no owner for a more limited question: *what
 does the selected interpreted subset state, and how are those statements
 related?*  That question could only be answered by rereading hundreds of
 modules, and was in practice answered selectively and wrongly.
@@ -75,7 +75,6 @@ TRACKED_CHECK_RECEIPT = ROOT / "docs" / "semantic_corpus_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-semantic-corpus-check/1"
 PROBLEM_INDEX = ROOT / "docs" / "problems.json"
 RESULTS = ROOT / "docs" / "RESULTS.md"
-TRUTH_AUDIT = ROOT / "docs/reference" / "TRUTH_AUDIT.md"
 COLD_CLONE_PAPER = ROOT / "paper" / "systems" / "cold-clone-to-proof-receipt.tex"
 SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
 MD_CENSUS_BEGIN = "<!-- BEGIN semantic_public_census -->"
@@ -358,38 +357,24 @@ def markdown_census_table(census: dict) -> str:
     return "\n".join(lines)
 
 
-def semantic_public_census_region(census: dict, *, truth_audit: bool) -> str:
+def semantic_public_census_region(census: dict) -> str:
     table = markdown_census_table(census)
     prefix = (
-        "At this checkpoint the semantic graph yields three diagnostic views "
-        "across every indexed Erdős problem:"
-        if truth_audit
-        else (
-            "Only after those theorem-level facts comes the corpus census. The "
-            "current semantic graph provides three diagnostic views across every "
-            "indexed Erdős problem:"
-        )
+        "Only after those theorem-level facts comes the corpus census. The "
+        "current semantic graph provides three diagnostic views across every "
+        "indexed Erdős problem:"
     )
-    if truth_audit:
-        tier_detail = (
-            f"The graph contains {census['authored_statement_node_count']:,} "
-            "authored statement nodes above "
-            f"{census['source_structural_family_node_count']:,} exact "
-            "source-structural families. The views overlap and are not a "
-            "partition of either tier."
-        )
-    else:
-        classes = census["nonrecurring_by_logical_class"]
-        tier_detail = (
-            "The nonrecurring view contains "
-            f"{classes.get('unconditional_object_theorem', 0)} unconditional "
-            "object theorems, "
-            f"{classes.get('barrier_no_go', 0)} scoped barriers, and "
-            f"{classes.get('reduction_or_transport', 0)} reductions or "
-            "transports after aliases, open antecedents, bare equivalences, "
-            "finite/generated instances, infrastructure, classical results, "
-            "and routine corollaries are removed."
-        )
+    classes = census["nonrecurring_by_logical_class"]
+    tier_detail = (
+        "The nonrecurring view contains "
+        f"{classes.get('unconditional_object_theorem', 0)} unconditional "
+        "object theorems, "
+        f"{classes.get('barrier_no_go', 0)} scoped barriers, and "
+        f"{classes.get('reduction_or_transport', 0)} reductions or "
+        "transports after aliases, open antecedents, bare equivalences, "
+        "finite/generated instances, infrastructure, classical results, "
+        "and routine corollaries are removed."
+    )
     detail = (
         f"The internal adjudicated frontier shortlist contains "
         f"{census['reviewed_frontier_shortlist_count']} nodes; it is distinct "
@@ -402,29 +387,23 @@ def semantic_public_census_region(census: dict, *, truth_audit: bool) -> str:
         f"{census['open_antecedent_endpoint_equivalent_count']} are marked "
         "endpoint-equivalent. None of these populations is a novelty census."
     )
-    # DemandLedger is a selected historical extraction, not the population of
-    # current results. Regenerating navigation does not rerun that Lean audit.
-    if not truth_audit:
-        return "\n\n".join((prefix, table, tier_detail, detail, (
-            "The [historical hypothesis audit](reference/TRUTH_AUDIT.md) "
-            "describes a selected extraction, not the current corpus or a "
-            "measure of mathematical value. Use the problem and theorem "
-            "routes above to inspect the results and their exact boundaries."
-        )))
-    demand = census.get("demand_lattice_counts", {})
-    demand_lattice = (
-        f"In the historical DemandLedger extraction, {demand.get('substantial', 0)} "
-        "hypotheses were classified as substantial and "
-        f"{census.get('demand_equivalent_total', 0)} were recorded as equivalent to "
-        "an endpoint: "
-        f"{census.get('demand_equivalent_by_problem', {}).get('249', 0)} to #249 "
-        f"and {census.get('demand_equivalent_by_problem', {}).get('257', 0)} to "
-        "the `1/2` membership test for #257. These counts describe that "
-        "selected audit, not the current corpus or a measure of mathematical "
-        "value. Regenerating this page does not re-extract hypotheses or rerun "
-        "their Lean checks; the recorded equivalences do not settle either endpoint."
+    current_routes = (
+        "Agents use the live owners rather than a frozen restatement sample:\n\n"
+        "- `python3 scripts/query_corpus.py --overview --format card` for reviewed "
+        "claim status and exact registered Lean interfaces;\n"
+        "- `python3 scripts/query_corpus.py --route <route_id> --format card` for "
+        "one problem programme and its open boundary;\n"
+        "- `python3 scripts/query_semantic.py node <node_id>` and `family-relations "
+        "<family_id>` for cross-paper statement and relation navigation;\n"
+        "- `docs/PALOMAR_RESULT_SHOWCASE.json` for the current candidate universe "
+        "and screening dispositions; and\n"
+        "- `scripts/residual_evaluator.py` for a kernel-backed comparison of one "
+        "proposed reduction with its target.\n\n"
+        "The claim registry covers selected registered claims, not every sentence "
+        "in every paper. Semantic relations and Palomar screening are navigation "
+        "and review surfaces; neither is proof, novelty, significance or peer review."
     )
-    return "\n\n".join((prefix, table, tier_detail, detail, demand_lattice))
+    return "\n\n".join((prefix, table, tier_detail, detail, current_routes))
 
 
 def semantic_coverage_macro_region(payload: dict) -> str:
@@ -1250,22 +1229,6 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
             bool(row.get("equivalent_to_the_open_problem"))
             for row in frontier.get("open_antecedents", [])
         ),
-        "demand_lattice_counts": frontier.get("demand_lattice", {}).get(
-            "counts", {}
-        ),
-        "demand_equivalent_total": sum(
-            len(row.get("members", []))
-            for row in frontier.get("demand_lattice", {}).get("classes", [])
-            if row.get("equivalent_to_problem")
-        ),
-        "demand_equivalent_by_problem": {
-            problem: sum(
-                len(row.get("members", []))
-                for row in frontier.get("demand_lattice", {}).get("classes", [])
-                if row.get("equivalent_to_problem") and row.get("problem") == problem
-            )
-            for problem in ("249", "257")
-        },
     }
 
     payload = {
@@ -1541,13 +1504,7 @@ def generated_surface_texts(payload: dict) -> dict[Path, str]:
             safe_read_text(RESULTS),
             begin=MD_CENSUS_BEGIN,
             end=MD_CENSUS_END,
-            body=semantic_public_census_region(census, truth_audit=False),
-        ),
-        TRUTH_AUDIT: replace_generated_region(
-            safe_read_text(TRUTH_AUDIT),
-            begin=MD_CENSUS_BEGIN,
-            end=MD_CENSUS_END,
-            body=semantic_public_census_region(census, truth_audit=True),
+            body=semantic_public_census_region(census),
         ),
         COLD_CLONE_PAPER: replace_generated_region(
             safe_read_text(COLD_CLONE_PAPER),
@@ -1626,7 +1583,7 @@ def load_cached_check() -> dict | None:
         output_digest = file_digest(OUTPUT)
         surface_digests = {
             path.relative_to(ROOT).as_posix(): file_digest(path)
-            for path in (RESULTS, TRUTH_AUDIT, COLD_CLONE_PAPER, SYSTEMS_PAPER)
+            for path in (RESULTS, COLD_CLONE_PAPER, SYSTEMS_PAPER)
         }
     except (OSError, UnsafeSemanticCorpusInput):
         return None

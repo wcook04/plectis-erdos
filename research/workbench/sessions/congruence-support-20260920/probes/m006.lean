@@ -1,0 +1,5 @@
+import ErdosProblems.Synthesis
+
+#print axioms ErdosProblems.Synthesis.CongruenceInterpolation.irrational_of_unbounded_gcd
+#print axioms ErdosProblems.Synthesis.FeedbackContinuation.exists_feedback_digits_hasSum_eventual_congruences
+#print axioms ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts

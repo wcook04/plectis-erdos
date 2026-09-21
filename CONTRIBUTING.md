@@ -9,10 +9,43 @@ problem. A corrected proof step, a counterexample, a failed route with a reason
 another person can check, a clearer boundary, or a repaired public check can
 all save future work.
 
-If you want to help but do not yet have a target, begin with the pinned
-[eight-frontier issue](https://github.com/wcook04/plectis-erdos/issues/105).
-It links each problem paper and lists useful contributions beyond complete
-proofs.
+## Choose where to begin
+
+**Work on a paper.** Open [one problem's contribution page](docs/CONTRIBUTE_BY_PAPER.md)
+for the short and long accounts, a source result to inspect, and current
+questions. You can send an ordinary mathematical argument without cloning,
+using Lean, or using an AI.
+
+**Develop a reusable method.** Start from the [synthesis papers](paper/synthesis/README.md)
+or the [admissible-choice experiment](research/experiments/sparse_interpolation/README.md).
+A connection, obstruction, new question, construction or useful intermediate
+idea is welcome even when it does not attack one of the eight problems.
+
+**Improve the machinery.** Describe a concrete difficulty in finding, running,
+checking or returning work through the [architecture contribution path](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+An actionable idea is enough; code is optional.
+
+These are ways to enter the same contribution process. Change direction when
+the work requires it. A mixed contribution can remain one pull request, with
+mathematical and software claims reviewed separately and linked credit records
+when the receipt format calls for them.
+
+## Return what you learned
+
+Use the [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml),
+a pull request, or [email Will](https://wcook04.github.io/plectis/#contact).
+Say what you investigated, what changed or became clearer, what another person
+can inspect, what remains uncertain, and how you want to be credited. Include
+the paper edition or starting commit if you know it. You do not need an account
+or a patch to contribute by email.
+
+Directions, references, corrections and explanations deserve attribution as
+well as proofs and code. For email, say whether your name and the relevant
+idea may appear publicly, or request anonymous credit. Maintainers retain the
+origin of an adopted idea in its public artifact and credit record, distinguish
+subsequent implementation work, and do not publish the private correspondence.
+The [credit policy](docs/research-commons/CREDIT_POLICY.md) applies whichever
+channel you use.
 
 ## A first contribution
 
@@ -154,9 +187,15 @@ Mathematical errors and overstatements are especially valuable reports. So are
 Lean build failures, broken source or paper links, missing attribution,
 exposition that hides an assumption, counterexamples to intermediate claims,
 and improvements to the clone-local checks. New formal results are welcome,
-but their public description must be no stronger than the evidence, and all
-eight headline Erdős problems remain open unless an extraordinary independent
-mathematical process establishes otherwise.
+and their public description must be no stronger than the evidence. The status
+of the eight headline problems is stated on the [front page](README.md) and
+changes only through the [methodology](docs/METHODOLOGY.md).
+
+A contribution does not have to start from a listed question. Reading the
+papers as one body of work and developing a connection, a general theorem, a
+clearer explanation of an existing proof, or a well-posed new question is
+welcome on the same terms. The [reading edition](docs/reading-edition/README.md)
+supports that route without a clone.
 
 Ordinary prose, citation, and tooling corrections can arrive as normal pull
 requests. A structured research return is useful when the history matters: for
@@ -168,8 +207,10 @@ that lifecycle without requiring you to read a schema.
 Architecture proposals and implementations use the same accepted-receipt and
 public-credit rail as mathematical returns, but they do not claim a fictional
 problem number. Their structured frontier declares `track: architecture` and a
-bounded architecture area. The existing `continue_research.py` continuation
-package remains the specialized front door for mathematical problem sessions.
+bounded architecture area. The optional session helper supports both tracks; architecture sessions name
+an area, starting files and a validation plan. A
+mathematical return whose subject is wider than one problem names that subject
+and lists the related problems; it never borrows a problem number.
 
 ## For agents and maintainers
 

@@ -16,6 +16,7 @@ import gzip
 import hashlib
 import json
 import re
+import subprocess
 import sys
 import unicodedata
 from collections import Counter, deque
@@ -34,6 +35,7 @@ from lean_source import (
     library_storage_path,
     library_storage_variants,
 )
+from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
 
 
 def checkout_lean_file(relative: str) -> Path:
@@ -2378,12 +2380,39 @@ def formal_source_identity(claims: dict[str, Any]) -> dict[str, Any]:
 
 
 def formal_source_blob_repository(claims: dict[str, Any]) -> str:
-    """Host for pinned-SHA blob URLs. That SHA never had a ``lean/`` prefix."""
+    """Use the release owner, retaining an explicit historical host override."""
     formal = claims["release"].get("formal_source") or {}
     return str(
         formal.get("blob_repository")
-        or "https://github.com/wcook04/plectis-lean-erdos249-257"
+        or claims["release"]["repository"]
     )
+
+
+@lru_cache(maxsize=16)
+def pinned_source_paths(root: Path, revision: str) -> frozenset[str]:
+    """Read one immutable tree; a shallow clone may not carry that revision."""
+    if not re.fullmatch(r"[0-9a-f]{40}", revision):
+        return frozenset()
+    try:
+        result = subprocess.run(
+            ["git", "ls-tree", "-r", "--name-only", "-z", revision, "--"],
+            cwd=root, capture_output=True, text=True,
+            timeout=GIT_COMMAND_TIMEOUT_SECONDS, env=command_environment(),
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return frozenset()
+    return frozenset(result.stdout.split("\0")) if result.returncode == 0 else frozenset()
+
+
+def formal_source_url(claims: dict[str, Any], module: str, line: int) -> str | None:
+    """Link only to a path found at the selected formal-source commit."""
+    revision = str(claims["release"]["formal_source"]["ref"])
+    paths = pinned_source_paths(ROOT, revision)
+    matches = [path for path in library_storage_variants(module) if path in paths]
+    if len(matches) != 1 or type(line) is not int or line < 1:
+        return None
+    repository = formal_source_blob_repository(claims).rstrip("/")
+    return f"{repository}/blob/{revision}/{matches[0]}#L{line}"
 
 
 def lean_source_identity_for_paper(
@@ -3673,8 +3702,6 @@ def decorate_declaration_rows(
     label_index = paper_label_index()
     sigil_by_path = {row["path"]: row["sigil"] for row in aliases}
     lean_source_identity = formal_source_identity(claims)
-    repository = formal_source_blob_repository(claims).rstrip("/")
-    source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
     declarations_by_module = declaration_row_indexes()["by_module"]
     decorated = []
@@ -3697,10 +3724,7 @@ def decorate_declaration_rows(
                     match
                 ),
                 "source_ref": f"{library_identity_path(match['module'])}:{match['line']}",
-                "source_url": (
-                    f"{repository}/blob/{source_ref}/"
-                    f"{library_identity_path(match['module'])}#L{match['line']}"
-                ),
+                "source_url": formal_source_url(claims, match["module"], match["line"]),
                 "lean_source_identity": dict(lean_source_identity),
                 "paper_sigil": sigil_by_path.get(library_identity_path(match["module"]))
                 or sigil_by_path.get(match["module"]),
@@ -4435,8 +4459,6 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     after = [row for row in module_declarations if row["line"] > line]
     roles = module_roles(claims)
     lean_source_identity = formal_source_identity(claims)
-    repository = formal_source_blob_repository(claims).rstrip("/")
-    source_ref = lean_source_identity["ref"]
     public_module = library_identity_path(module_path)
     return {
         "kind": "source_coordinate",
@@ -4445,7 +4467,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
             "module": public_module,
             "line": line,
             "source_ref": f"{public_module}:{line}",
-            "source_url": f"{repository}/blob/{source_ref}/{public_module}#L{line}",
+            "source_url": formal_source_url(claims, module_path, line),
             "lean_source_identity": lean_source_identity,
             "module_id": module["id"],
             "module_role": roles.get(module["id"], "Unclassified module"),
@@ -7385,8 +7407,6 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     declarations = declaration_row_indexes()["by_source"]
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
-    repository = formal_source_blob_repository(claims).rstrip("/")
-    source_ref = identity["ref"]
     witnesses = []
     for handle in claim.get("declarations", []):
         key = (handle["name"], handle["module"], handle["line"])
@@ -7405,10 +7425,8 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
                 "source_ref": (
                     f"{library_identity_path(declaration['module'])}:{declaration['line']}"
                 ),
-                "source_url": (
-                    f"{repository}/blob/{source_ref}/"
-                    f"{library_identity_path(declaration['module'])}"
-                    f"#L{declaration['line']}"
+                "source_url": formal_source_url(
+                    claims, declaration["module"], declaration["line"]
                 ),
                 "docstring": declaration.get("docstring"),
                 "lean_source_identity": dict(identity),

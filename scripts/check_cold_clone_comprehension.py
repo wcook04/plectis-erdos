@@ -179,8 +179,8 @@ PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = (
     + PAPER_LIBRARY_BYTES_PER_PAPER
     * len(json.loads(safe_read_text("docs/papers/corpus.json"))["papers"])
 )
-# Volatile semantic counts live on the audit surfaces, not the compact README.
-CENSUS_SURFACES = ("docs/RESULTS.md", "docs/reference/TRUTH_AUDIT.md")
+# Volatile semantic counts live on the generated results surface, not the compact README.
+CENSUS_SURFACES = ("docs/RESULTS.md",)
 INCREMENTAL_BUILD_SURFACES = (
     "README.md",
     # The build contract moved off the front page with the rest of the detail
@@ -799,7 +799,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["#249"],
             ["∑ φ(n)/2ⁿ"],
             ["#251"],
-            ["∑ p_n/2ⁿ", "sum p_n/2^n"],
+            ["∑ p_n/2ⁿ", "sum p_n/2^n", "dyadic series of consecutive primes"],
             ["#257"],
             ["every infinite"],
             ["#269"],
@@ -1452,11 +1452,6 @@ def semantic_census_from_public(public: dict[str, Any]) -> dict[str, Any]:
         "open_antecedent_equivalent_total": public[
             "open_antecedent_endpoint_equivalent_count"
         ],
-        "demand_lattice_counts": public["demand_lattice_counts"],
-        "demand_equivalent_total": public["demand_equivalent_total"],
-        "demand_equivalent_by_problem": Counter(
-            public["demand_equivalent_by_problem"]
-        ),
     }
 
 
@@ -1483,11 +1478,6 @@ def validate_public_semantic_census(
     classical = census["classical_by_problem"]
     total = census["nonrecurring_total"]
     unassessed = census["nonrecurring_not_assessed"]
-    demand = census["demand_lattice_counts"]
-    demand_equivalent = census["demand_equivalent_total"]
-    demand_equivalent_by_problem = census[
-        "demand_equivalent_by_problem"
-    ]
     open_cluster_total = census["open_antecedent_cluster_total"]
     open_cluster_equivalent = census[
         "open_antecedent_equivalent_total"
@@ -1526,47 +1516,33 @@ def validate_public_semantic_census(
                 f"distinct from the {census['prior_art_review_queue_count']}-node "
                 "public prior-art review queue"
             ),
-            "historical hypothesis audit",
-            "selected extraction, not the current corpus",
+            "Agents use the live owners rather than a frozen restatement sample",
+            "python3 scripts/query_corpus.py --overview --format card",
+            "python3 scripts/query_corpus.py --route <route_id> --format card",
+            "python3 scripts/query_semantic.py node <node_id>",
+            "family-relations <family_id>",
+            "docs/PALOMAR_RESULT_SHOWCASE.json",
+            "scripts/residual_evaluator.py",
+            "The claim registry covers selected registered claims, not every sentence in every paper",
             (
                 f"open-antecedent surface has {open_cluster_total} clusters, "
                 f"of which {open_cluster_equivalent} are marked endpoint-equivalent"
             ),
             "<!-- END semantic_public_census -->",
         ),
-        "docs/reference/TRUTH_AUDIT.md": (
-            "<!-- BEGIN semantic_public_census -->",
-            census_row("mechanically nonrecurring candidates", nonrecurring),
-            census_row("classical/prior-art formalisations", classical),
-            census_row("bare open-problem equivalences", bare),
-            f"{unassessed} nonrecurring candidates remain unassessed",
-            (
-                f"frontier shortlist contains "
-                f"{census['reviewed_frontier_shortlist_count']} nodes; it is "
-                f"distinct from the {census['prior_art_review_queue_count']}-node "
-                "public prior-art review queue"
-            ),
-            (
-                f"In the historical DemandLedger extraction, {demand['substantial']} "
-                "hypotheses were classified as substantial and "
-                f"{demand_equivalent} were recorded as equivalent to an endpoint"
-            ),
-            (
-                f"{demand_equivalent_by_problem['249']} to #249 and "
-                f"{demand_equivalent_by_problem['257']} to the `1/2` "
-                "membership test for #257"
-            ),
-            (
-                "selected audit, not the current corpus or a measure of mathematical value"
-            ),
-            (
-                "Regenerating this page does not re-extract hypotheses or rerun their Lean checks"
-            ),
-            "<!-- END semantic_public_census -->",
-        ),
     }
     for path, phrases in expectations.items():
-        compact = normalized(surfaces[path])
+        text = surfaces[path]
+        begin = "<!-- BEGIN semantic_public_census -->"
+        end = "<!-- END semantic_public_census -->"
+        require(
+            text.count(begin) == 1 and text.count(end) == 1,
+            f"{path} must contain exactly one semantic census block",
+        )
+        start, stop = text.index(begin), text.index(end)
+        require(start < stop, f"{path} semantic census markers are reversed")
+        # Repeated commands elsewhere must not conceal a damaged census.
+        compact = normalized(text[start:stop + len(end)])
         for phrase in phrases:
             require(normalized(phrase) in compact, f"{path} semantic census is stale; missing {phrase!r}")
 
@@ -3098,12 +3074,11 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     scalar_answer_fields = (
         "prior_project_context",
         "elapsed_seconds",
-        "problem_249_status",
-        "problem_257_status",
-        "farey_bound_provenance",
-        "farey_numerical_delta",
-        "equivalent_antecedents",
-        "substantial_antecedents",
+        "indexed_problem_count",
+        "total_variation_formulation_status",
+        "counterexample_finder",
+        "historical_curve_length_correspondence",
+        "claim_registry_scope",
     )
     require(all(
         systems_handoff["input_template"][field] is None

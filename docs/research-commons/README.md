@@ -15,6 +15,14 @@ and implementations for workflows, navigation, validation, reproducibility,
 tooling, governance, and contributor experience without assigning them a fake
 Erdős problem number.
 
+A mathematical contribution may matter beyond the problem it started from. A
+general theorem, a new representation, a cross-problem mechanism, or a new
+research question with evidence can be returned under its own
+[subject frontier](RETURN_PACKAGE_TEMPLATE.md#subject-frontier). Name the
+subject in ordinary words and list the roster problems it relates to, which may
+be none. Do not invent a problem number for work that does not belong to one
+problem.
+
 A contributor starts from a particular public commit and follows a bounded
 question. They might return a proof, correction, counterexample, negative
 result, useful stopping point, or tooling improvement. The return says where

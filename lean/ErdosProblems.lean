@@ -57,6 +57,7 @@ import ErdosProblems.Erdos243.ProtectedEpochEnergy
 import ErdosProblems.Erdos243.RecordIncrementBarrier
 import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
+import ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification
 import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
@@ -162,6 +163,7 @@ import ErdosProblems.Erdos68.PrimePoleCriterion
 import ErdosProblems.Erdos68.PrimePoleDenominator
 import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
 import ErdosProblems.Shared.IrrationalRotationStaircase
+import ErdosProblems.Synthesis
 
 /-!
 # Problem-centric Erdős research library

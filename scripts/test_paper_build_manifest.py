@@ -298,6 +298,23 @@ def test_checker_and_pdf_sync_read_the_same_inputs() -> None:
         require(checker == synced, (artifact["id"], checker, synced))
 
 
+def test_only_explicitly_retired_build_rows_are_removed() -> None:
+    with tempfile.TemporaryDirectory(prefix="build-manifest-retire-") as raw:
+        root = Path(raw)
+        artifacts = recorded_repository(root)
+        contract = {"artifacts": artifacts[:1], "rejected_artifact_ids": ["beta"]}
+        (root / manifest.CONTRACT_PATH).write_text(json.dumps(contract))
+        prior = manifest.load_manifest(manifest.WorktreeReader(root))
+        prior["builds"]["unexpected"] = prior["builds"]["beta"]
+        manifest.write_manifest(root, prior)
+        refreshed = manifest.record_builds(root, [])
+        require("beta" not in refreshed["builds"], "retired paper kept a current build row")
+        require("alpha" in refreshed["builds"], "active build was lost")
+        require("unexpected" in refreshed["builds"], "unknown build was silently erased")
+        manifest.write_manifest(root, refreshed)
+        require(any("unexpected" in error for error in errors_at(root)), errors_at(root))
+
+
 def main() -> int:
     test_fresh_builds_are_recorded()
     test_rebased_source_with_restamped_digests_is_refused()
@@ -309,6 +326,7 @@ def main() -> int:
     test_stale_leftover_output_of_an_unchanged_paper_is_reused()
     test_committed_snapshot_reader_resolves_inputs()
     test_checker_and_pdf_sync_read_the_same_inputs()
+    test_only_explicitly_retired_build_rows_are_removed()
     print(
         "test_paper_build_manifest: a rebased source, a changed input and a "
         "hand-copied PDF are refused; the sync records fresh builds, refuses "

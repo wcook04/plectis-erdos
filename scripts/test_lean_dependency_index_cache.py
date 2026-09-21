@@ -554,6 +554,95 @@ def check_full_exports_enter_shared_owner() -> None:
             require(not export.called, "direct caller exported outside the shared owner")
 
 
+def check_export_file_transport_preserves_raw_data_and_clean_environment() -> None:
+    raw = (
+        "AIW_NODE\tErdosProblems.δ\tErdosProblems.Fixture\n"
+        "AIW_INTERNAL_OMISSION\tErdosProblems.δ\t2\n"
+    )
+    paths = []
+
+    def export_to_file(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        environment = kwargs["env"]
+        output = Path(environment[builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV])
+        paths.append(output)
+        require(output.is_absolute() and not output.exists(), "export file was already open or relative")
+        expected = builder.singleflight.command_environment()
+        expected["PATH"] = os.pathsep.join((str(builder.TOOLCHAIN_BIN), expected["PATH"]))
+        expected[builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV] = str(output)
+        require(environment == expected, "export transport admitted ambient environment selectors")
+        require(kwargs["timeout"] == builder.EXPORT_TIMEOUT_SECONDS, "export timeout changed")
+        output.write_bytes(raw.encode("utf-8"))
+        return subprocess.CompletedProcess(command, 0, "Lean stdout diagnostic\n", "Lean stderr diagnostic\n")
+
+    with patch.dict(os.environ, {
+        builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV: "/wrong/ambient/output",
+        "GIT_DIR": "/wrong/git", "PYTHONPATH": "/wrong/python",
+    }), patch.object(builder.subprocess, "run", side_effect=export_to_file), \
+         patch.object(builder, "preserve_export_diagnostics") as diagnostics, \
+         patch.object(builder, "parse_environment_output", wraps=builder.parse_environment_output) as parse:
+        nodes, _relations, omissions, _shapes = builder.export_environment()
+    parse.assert_called_once_with(raw)
+    require(nodes == {"ErdosProblems.δ": "ErdosProblems.Fixture"}, "file projection changed")
+    require(omissions == {"ErdosProblems.δ": 2}, "file projection lost omission counts")
+    diagnostics.assert_called_once_with("Lean stdout diagnostic\n", "Lean stderr diagnostic\n")
+    require(len(paths) == 1 and not paths[0].parent.exists(), "successful transport was not cleaned")
+
+
+def check_export_file_transport_rejects_missing_or_empty_output() -> None:
+    for payload in (None, b"", b" \n"):
+        paths = []
+
+        def empty_export(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+            output = Path(kwargs["env"][builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV])
+            paths.append(output)
+            if payload is not None:
+                output.write_bytes(payload)
+            # Even valid legacy stdout must not conceal a broken file transport.
+            return subprocess.CompletedProcess(command, 0, "AIW_NODE\tx\tPkg\n", "")
+
+        with patch.object(builder.subprocess, "run", side_effect=empty_export), \
+             patch.object(builder, "preserve_export_diagnostics"), \
+             patch.object(builder, "parse_environment_output") as parse:
+            try:
+                builder.export_environment()
+            except builder.ClassifiedExportError as exc:
+                require(exc.outcome == "export_crash" and exc.exit_code == builder.EXIT_CRASH,
+                        "missing or empty file did not receive the export-crash classification")
+            else:
+                raise AssertionError("missing or empty transport was accepted")
+        parse.assert_not_called()
+        require(len(paths) == 1 and not paths[0].parent.exists(), "invalid transport was not cleaned")
+
+
+def check_export_file_transport_cleans_partial_output_on_failure() -> None:
+    for failure in (1, -15, "timeout"):
+        paths = []
+
+        def failed_export(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+            output = Path(kwargs["env"][builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV])
+            paths.append(output)
+            output.write_text("AIW_NODE\tpartial\tPkg\n", encoding="utf-8")
+            if failure == "timeout":
+                raise subprocess.TimeoutExpired(command, 1, output=b"timeout diagnostic")
+            return subprocess.CompletedProcess(command, failure, "failure diagnostic\n", "")
+
+        with patch.object(builder.subprocess, "run", side_effect=failed_export), \
+             patch.object(builder, "preserve_export_diagnostics"), \
+             patch.object(builder, "parse_environment_output") as parse:
+            try:
+                builder.export_environment()
+            except builder.ClassifiedExportError as exc:
+                require(failure != -15, "signal exit was incorrectly reclassified")
+                expected = "export_timeout" if failure == "timeout" else "export_crash"
+                require(exc.outcome == expected, "export failure classification changed")
+            except SystemExit as exc:
+                require(failure == -15 and exc.code == 143, "signal exit was not preserved")
+            else:
+                raise AssertionError("failed export was accepted")
+        parse.assert_not_called()
+        require(len(paths) == 1 and not paths[0].parent.exists(), "partial transport was not cleaned")
+
+
 def check_export_timeout_does_not_rewrite_tracked_index() -> None:
     """A 5400s exporter timeout must not relabel the committed index as fresh."""
     with tempfile.TemporaryDirectory() as directory:
@@ -688,6 +777,9 @@ def main() -> int:
     check_environment_build_is_bounded()
     check_plain_check_never_builds()
     check_write_stale_requires_full_check()
+    check_export_file_transport_preserves_raw_data_and_clean_environment()
+    check_export_file_transport_rejects_missing_or_empty_output()
+    check_export_file_transport_cleans_partial_output_on_failure()
     check_export_timeout_does_not_rewrite_tracked_index()
     check_main_classifies_export_timeout_without_fresh_upload()
     check_unfinished_outcome_refuses_fresh_export_label()

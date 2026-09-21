@@ -1,0 +1,1450 @@
+{
+  "schema": "plectis-choices-contraction-probe/1",
+  "outcome_vocabulary": {
+    "excluded": "outside the achievement set, with a finite certificate",
+    "finite_representation": "an explicit finite subseries sum",
+    "not_excluded": "no exclusion and no finite sum through the stated depth; no claim beyond it"
+  },
+  "rows": [
+    {
+      "host": "all",
+      "q_max": 12,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 10,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 73,
+      "counts": {
+        "excluded": 21,
+        "finite_representation": 6,
+        "not_excluded": 46
+      },
+      "latest_exclusion_index": 2,
+      "exclusions_by_index": {
+        "1": 17,
+        "2": 4
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 12,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 20,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 73,
+      "counts": {
+        "excluded": 21,
+        "finite_representation": 6,
+        "not_excluded": 46
+      },
+      "latest_exclusion_index": 2,
+      "exclusions_by_index": {
+        "1": 17,
+        "2": 4
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 12,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 40,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 73,
+      "counts": {
+        "excluded": 21,
+        "finite_representation": 6,
+        "not_excluded": 46
+      },
+      "latest_exclusion_index": 2,
+      "exclusions_by_index": {
+        "1": 17,
+        "2": 4
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 12,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 80,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 73,
+      "counts": {
+        "excluded": 21,
+        "finite_representation": 6,
+        "not_excluded": 46
+      },
+      "latest_exclusion_index": 2,
+      "exclusions_by_index": {
+        "1": 17,
+        "2": 4
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 12,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 160,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 73,
+      "counts": {
+        "excluded": 21,
+        "finite_representation": 6,
+        "not_excluded": 46
+      },
+      "latest_exclusion_index": 2,
+      "exclusions_by_index": {
+        "1": 17,
+        "2": 4
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 24,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 10,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 287,
+      "counts": {
+        "excluded": 109,
+        "finite_representation": 10,
+        "not_excluded": 168
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 71,
+        "2": 20,
+        "3": 10,
+        "4": 4,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 24,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 20,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 287,
+      "counts": {
+        "excluded": 109,
+        "finite_representation": 10,
+        "not_excluded": 168
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 71,
+        "2": 20,
+        "3": 10,
+        "4": 4,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 24,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 40,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 287,
+      "counts": {
+        "excluded": 109,
+        "finite_representation": 10,
+        "not_excluded": 168
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 71,
+        "2": 20,
+        "3": 10,
+        "4": 4,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 24,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 80,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 287,
+      "counts": {
+        "excluded": 109,
+        "finite_representation": 10,
+        "not_excluded": 168
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 71,
+        "2": 20,
+        "3": 10,
+        "4": 4,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 24,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 160,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 287,
+      "counts": {
+        "excluded": 109,
+        "finite_representation": 10,
+        "not_excluded": 168
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 71,
+        "2": 20,
+        "3": 10,
+        "4": 4,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 36,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 10,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 633,
+      "counts": {
+        "excluded": 237,
+        "finite_representation": 14,
+        "not_excluded": 382
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 157,
+        "2": 46,
+        "3": 20,
+        "4": 8,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 36,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 20,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 633,
+      "counts": {
+        "excluded": 237,
+        "finite_representation": 14,
+        "not_excluded": 382
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 157,
+        "2": 46,
+        "3": 20,
+        "4": 8,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 36,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 40,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 633,
+      "counts": {
+        "excluded": 237,
+        "finite_representation": 14,
+        "not_excluded": 382
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 157,
+        "2": 46,
+        "3": 20,
+        "4": 8,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 36,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 80,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 633,
+      "counts": {
+        "excluded": 237,
+        "finite_representation": 14,
+        "not_excluded": 382
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 157,
+        "2": 46,
+        "3": 20,
+        "4": 8,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 36,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 160,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 633,
+      "counts": {
+        "excluded": 237,
+        "finite_representation": 14,
+        "not_excluded": 382
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 157,
+        "2": 46,
+        "3": 20,
+        "4": 8,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 12,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 7,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 66,
+      "counts": {
+        "excluded": 54,
+        "finite_representation": 4,
+        "not_excluded": 8
+      },
+      "latest_exclusion_index": 5,
+      "exclusions_by_index": {
+        "1": 24,
+        "2": 20,
+        "5": 10
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 12,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 14,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 66,
+      "counts": {
+        "excluded": 62,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 24,
+        "2": 20,
+        "5": 10,
+        "11": 4,
+        "13": 2,
+        "17": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 12,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 27,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 66,
+      "counts": {
+        "excluded": 62,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 24,
+        "2": 20,
+        "5": 10,
+        "11": 4,
+        "13": 2,
+        "17": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 12,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 54,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 66,
+      "counts": {
+        "excluded": 62,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 24,
+        "2": 20,
+        "5": 10,
+        "11": 4,
+        "13": 2,
+        "17": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 12,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 107,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 66,
+      "counts": {
+        "excluded": 62,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 24,
+        "2": 20,
+        "5": 10,
+        "11": 4,
+        "13": 2,
+        "17": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 24,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 7,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 259,
+      "counts": {
+        "excluded": 237,
+        "finite_representation": 6,
+        "not_excluded": 16
+      },
+      "latest_exclusion_index": 10,
+      "exclusions_by_index": {
+        "1": 99,
+        "2": 80,
+        "4": 20,
+        "5": 24,
+        "7": 2,
+        "8": 10,
+        "10": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 24,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 14,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 259,
+      "counts": {
+        "excluded": 253,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 99,
+        "2": 80,
+        "4": 20,
+        "5": 24,
+        "7": 2,
+        "8": 10,
+        "10": 2,
+        "11": 10,
+        "13": 2,
+        "17": 4
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 24,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 27,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 259,
+      "counts": {
+        "excluded": 253,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 99,
+        "2": 80,
+        "4": 20,
+        "5": 24,
+        "7": 2,
+        "8": 10,
+        "10": 2,
+        "11": 10,
+        "13": 2,
+        "17": 4
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 24,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 54,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 259,
+      "counts": {
+        "excluded": 253,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 99,
+        "2": 80,
+        "4": 20,
+        "5": 24,
+        "7": 2,
+        "8": 10,
+        "10": 2,
+        "11": 10,
+        "13": 2,
+        "17": 4
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 24,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 107,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 259,
+      "counts": {
+        "excluded": 253,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 17,
+      "exclusions_by_index": {
+        "1": 99,
+        "2": 80,
+        "4": 20,
+        "5": 24,
+        "7": 2,
+        "8": 10,
+        "10": 2,
+        "11": 10,
+        "13": 2,
+        "17": 4
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 36,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 7,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 571,
+      "counts": {
+        "excluded": 529,
+        "finite_representation": 8,
+        "not_excluded": 34
+      },
+      "latest_exclusion_index": 10,
+      "exclusions_by_index": {
+        "1": 219,
+        "2": 176,
+        "4": 36,
+        "5": 56,
+        "7": 16,
+        "8": 20,
+        "10": 6
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 36,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 14,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 571,
+      "counts": {
+        "excluded": 561,
+        "finite_representation": 8,
+        "not_excluded": 2
+      },
+      "latest_exclusion_index": 20,
+      "exclusions_by_index": {
+        "1": 219,
+        "2": 176,
+        "4": 36,
+        "5": 56,
+        "7": 16,
+        "8": 20,
+        "10": 6,
+        "11": 12,
+        "13": 10,
+        "14": 2,
+        "17": 6,
+        "20": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 36,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 27,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 571,
+      "counts": {
+        "excluded": 563,
+        "finite_representation": 8,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 22,
+      "exclusions_by_index": {
+        "1": 219,
+        "2": 176,
+        "4": 36,
+        "5": 56,
+        "7": 16,
+        "8": 20,
+        "10": 6,
+        "11": 12,
+        "13": 10,
+        "14": 2,
+        "17": 6,
+        "20": 2,
+        "22": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 36,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 54,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 571,
+      "counts": {
+        "excluded": 563,
+        "finite_representation": 8,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 22,
+      "exclusions_by_index": {
+        "1": 219,
+        "2": 176,
+        "4": 36,
+        "5": 56,
+        "7": 16,
+        "8": 20,
+        "10": 6,
+        "11": 12,
+        "13": 10,
+        "14": 2,
+        "17": 6,
+        "20": 2,
+        "22": 2
+      }
+    },
+    {
+      "host": "not_divisible_by_3",
+      "q_max": 36,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 107,
+      "host_sum_lower": 1.4457289681002294,
+      "candidates": 571,
+      "counts": {
+        "excluded": 563,
+        "finite_representation": 8,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 22,
+      "exclusions_by_index": {
+        "1": 219,
+        "2": 176,
+        "4": 36,
+        "5": 56,
+        "7": 16,
+        "8": 20,
+        "10": 6,
+        "11": 12,
+        "13": 10,
+        "14": 2,
+        "17": 6,
+        "20": 2,
+        "22": 2
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 12,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 7,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 68,
+      "counts": {
+        "excluded": 56,
+        "finite_representation": 4,
+        "not_excluded": 8
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 22,
+        "2": 10,
+        "3": 20,
+        "5": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 12,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 13,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 68,
+      "counts": {
+        "excluded": 62,
+        "finite_representation": 4,
+        "not_excluded": 2
+      },
+      "latest_exclusion_index": 19,
+      "exclusions_by_index": {
+        "1": 22,
+        "2": 10,
+        "3": 20,
+        "5": 2,
+        "7": 2,
+        "17": 2,
+        "19": 4
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 12,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 26,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 68,
+      "counts": {
+        "excluded": 64,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 22,
+        "2": 10,
+        "3": 20,
+        "5": 2,
+        "7": 2,
+        "17": 2,
+        "19": 4,
+        "26": 2
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 12,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 50,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 68,
+      "counts": {
+        "excluded": 64,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 22,
+        "2": 10,
+        "3": 20,
+        "5": 2,
+        "7": 2,
+        "17": 2,
+        "19": 4,
+        "26": 2
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 12,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 98,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 68,
+      "counts": {
+        "excluded": 64,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 22,
+        "2": 10,
+        "3": 20,
+        "5": 2,
+        "7": 2,
+        "17": 2,
+        "19": 4,
+        "26": 2
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 24,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 7,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 274,
+      "counts": {
+        "excluded": 252,
+        "finite_representation": 6,
+        "not_excluded": 16
+      },
+      "latest_exclusion_index": 10,
+      "exclusions_by_index": {
+        "1": 84,
+        "2": 48,
+        "3": 68,
+        "5": 4,
+        "6": 22,
+        "7": 24,
+        "10": 2
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 24,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 13,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 274,
+      "counts": {
+        "excluded": 264,
+        "finite_representation": 6,
+        "not_excluded": 4
+      },
+      "latest_exclusion_index": 19,
+      "exclusions_by_index": {
+        "1": 84,
+        "2": 48,
+        "3": 68,
+        "5": 4,
+        "6": 22,
+        "7": 24,
+        "10": 2,
+        "11": 2,
+        "17": 4,
+        "19": 6
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 24,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 26,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 274,
+      "counts": {
+        "excluded": 268,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 84,
+        "2": 48,
+        "3": 68,
+        "5": 4,
+        "6": 22,
+        "7": 24,
+        "10": 2,
+        "11": 2,
+        "17": 4,
+        "19": 6,
+        "26": 4
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 24,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 50,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 274,
+      "counts": {
+        "excluded": 268,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 84,
+        "2": 48,
+        "3": 68,
+        "5": 4,
+        "6": 22,
+        "7": 24,
+        "10": 2,
+        "11": 2,
+        "17": 4,
+        "19": 6,
+        "26": 4
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 24,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 98,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 274,
+      "counts": {
+        "excluded": 268,
+        "finite_representation": 6,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 84,
+        "2": 48,
+        "3": 68,
+        "5": 4,
+        "6": 22,
+        "7": 24,
+        "10": 2,
+        "11": 2,
+        "17": 4,
+        "19": 6,
+        "26": 4
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 36,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 7,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 606,
+      "counts": {
+        "excluded": 568,
+        "finite_representation": 8,
+        "not_excluded": 30
+      },
+      "latest_exclusion_index": 10,
+      "exclusions_by_index": {
+        "1": 184,
+        "2": 104,
+        "3": 138,
+        "5": 22,
+        "6": 38,
+        "7": 72,
+        "10": 10
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 36,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 13,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 606,
+      "counts": {
+        "excluded": 588,
+        "finite_representation": 8,
+        "not_excluded": 10
+      },
+      "latest_exclusion_index": 19,
+      "exclusions_by_index": {
+        "1": 184,
+        "2": 104,
+        "3": 138,
+        "5": 22,
+        "6": 38,
+        "7": 72,
+        "10": 10,
+        "11": 6,
+        "17": 8,
+        "19": 6
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 36,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 26,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 606,
+      "counts": {
+        "excluded": 598,
+        "finite_representation": 8,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 184,
+        "2": 104,
+        "3": 138,
+        "5": 22,
+        "6": 38,
+        "7": 72,
+        "10": 10,
+        "11": 6,
+        "17": 8,
+        "19": 6,
+        "22": 4,
+        "26": 6
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 36,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 50,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 606,
+      "counts": {
+        "excluded": 598,
+        "finite_representation": 8,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 184,
+        "2": 104,
+        "3": 138,
+        "5": 22,
+        "6": 38,
+        "7": 72,
+        "10": 10,
+        "11": 6,
+        "17": 8,
+        "19": 6,
+        "22": 4,
+        "26": 6
+      }
+    },
+    {
+      "host": "squarefree",
+      "q_max": 36,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 98,
+      "host_sum_lower": 1.5338856414743807,
+      "candidates": 606,
+      "counts": {
+        "excluded": 598,
+        "finite_representation": 8,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 26,
+      "exclusions_by_index": {
+        "1": 184,
+        "2": 104,
+        "3": 138,
+        "5": 22,
+        "6": 38,
+        "7": 72,
+        "10": 10,
+        "11": 6,
+        "17": 8,
+        "19": 6,
+        "22": 4,
+        "26": 6
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 12,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 5,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 53,
+      "counts": {
+        "excluded": 51,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 37,
+        "3": 10,
+        "5": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 12,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 10,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 53,
+      "counts": {
+        "excluded": 51,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 37,
+        "3": 10,
+        "5": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 12,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 20,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 53,
+      "counts": {
+        "excluded": 51,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 37,
+        "3": 10,
+        "5": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 12,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 40,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 53,
+      "counts": {
+        "excluded": 51,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 37,
+        "3": 10,
+        "5": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 12,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 80,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 53,
+      "counts": {
+        "excluded": 51,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 37,
+        "3": 10,
+        "5": 2,
+        "7": 2
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 24,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 5,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 211,
+      "counts": {
+        "excluded": 209,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 147,
+        "3": 46,
+        "5": 8,
+        "7": 4,
+        "9": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 24,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 10,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 211,
+      "counts": {
+        "excluded": 209,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 147,
+        "3": 46,
+        "5": 8,
+        "7": 4,
+        "9": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 24,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 20,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 211,
+      "counts": {
+        "excluded": 209,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 147,
+        "3": 46,
+        "5": 8,
+        "7": 4,
+        "9": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 24,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 40,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 211,
+      "counts": {
+        "excluded": 209,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 147,
+        "3": 46,
+        "5": 8,
+        "7": 4,
+        "9": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 24,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 80,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 211,
+      "counts": {
+        "excluded": 209,
+        "finite_representation": 2,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 147,
+        "3": 46,
+        "5": 8,
+        "7": 4,
+        "9": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 36,
+      "depth": 10,
+      "horizon": 260,
+      "host_indices_through_depth": 5,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 468,
+      "counts": {
+        "excluded": 460,
+        "finite_representation": 4,
+        "not_excluded": 4
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 322,
+        "3": 84,
+        "5": 28,
+        "7": 18,
+        "9": 8
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 36,
+      "depth": 20,
+      "horizon": 260,
+      "host_indices_through_depth": 10,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 468,
+      "counts": {
+        "excluded": 464,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 11,
+      "exclusions_by_index": {
+        "1": 322,
+        "3": 84,
+        "5": 28,
+        "7": 18,
+        "9": 8,
+        "11": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 36,
+      "depth": 40,
+      "horizon": 260,
+      "host_indices_through_depth": 20,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 468,
+      "counts": {
+        "excluded": 464,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 11,
+      "exclusions_by_index": {
+        "1": 322,
+        "3": 84,
+        "5": 28,
+        "7": 18,
+        "9": 8,
+        "11": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 36,
+      "depth": 80,
+      "horizon": 260,
+      "host_indices_through_depth": 40,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 468,
+      "counts": {
+        "excluded": 464,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 11,
+      "exclusions_by_index": {
+        "1": 322,
+        "3": 84,
+        "5": 28,
+        "7": 18,
+        "9": 8,
+        "11": 4
+      }
+    },
+    {
+      "host": "odd",
+      "q_max": 36,
+      "depth": 160,
+      "horizon": 260,
+      "host_indices_through_depth": 80,
+      "host_sum_lower": 1.185597466381868,
+      "candidates": 468,
+      "counts": {
+        "excluded": 464,
+        "finite_representation": 4,
+        "not_excluded": 0
+      },
+      "latest_exclusion_index": 11,
+      "exclusions_by_index": {
+        "1": 322,
+        "3": 84,
+        "5": 28,
+        "7": 18,
+        "9": 8,
+        "11": 4
+      }
+    }
+  ]
+}

@@ -595,9 +595,11 @@ def critical_pair_metric_scale_candidate_handoff(
                 "selector follows."
             ),
             "open_boundary": (
-                "Erdős #1041 remains open: containment/selection requires a "
-                "curved branch, admissible hub, visibility overlap, or grouped "
-                "monodromy producer."
+                "The universal total-variation formulation of Erdős #1041 is "
+                "refuted by ani's degree-seven counterexample. This metric result "
+                "does not adjudicate correspondence with the historical curve-length "
+                "question; its containment/selection mechanisms remain auxiliary "
+                "open questions, not a route to restoring the refuted formulation."
             ),
         },
         "hard_mechanism": (
@@ -2496,21 +2498,15 @@ def protocol_errors() -> list[str]:
         ) != set(rubric):
             errors.append(f"{qid}: review criteria drifted from manual rubric")
         if isinstance(acceptance, dict):
-            lattice = frontier.get("demand_lattice", {})
-            expected_substantial = lattice.get("counts", {}).get("substantial")
-            expected_equivalent = sum(
-                len(group.get("members", []))
-                for group in lattice.get("classes", [])
-                if group.get("equivalent_to_problem") is True
-            )
-            if acceptance.get("substantial_antecedents") != expected_substantial:
-                errors.append(
-                    f"{qid}: substantial antecedent count drifted from demand lattice"
-                )
-            if acceptance.get("equivalent_antecedents") != expected_equivalent:
-                errors.append(
-                    f"{qid}: endpoint-equivalent count drifted from demand lattice"
-                )
+            if acceptance.get("indexed_problem_count") != len(FROZEN_PROBLEMS):
+                errors.append(f"{qid}: indexed problem count drifted from public routes")
+            required_routes = acceptance.get("required_routes")
+            if (
+                not isinstance(required_routes, list)
+                or not required_routes
+                or any(not isinstance(route, str) or not route for route in required_routes)
+            ):
+                errors.append(f"{qid}: invalid required_routes")
     return errors
 
 
@@ -2554,40 +2550,55 @@ def validate_response(response: Any) -> list[str]:
         )
 
     expected_scalars = {
-        "prior_project_context": acceptance["prior_project_context"],
-        "problem_249_status": acceptance["problem_status"],
-        "problem_257_status": acceptance["problem_status"],
-        "farey_bound_provenance": acceptance["farey_bound_provenance"],
-        "farey_numerical_delta": acceptance["farey_numerical_delta"],
-        "equivalent_antecedents": acceptance["equivalent_antecedents"],
-        "substantial_antecedents": acceptance["substantial_antecedents"],
+        field: acceptance[field]
+        for field in (
+            "prior_project_context",
+            "indexed_problem_count",
+            "total_variation_formulation_status",
+            "counterexample_finder",
+            "historical_curve_length_correspondence",
+            "claim_registry_scope",
+        )
     }
     if not isinstance(response.get("prior_project_context"), bool):
         errors.append("prior_project_context must be a boolean")
-    for field in (
-        "farey_numerical_delta",
-        "equivalent_antecedents",
-        "substantial_antecedents",
-    ):
-        if not _is_int(response.get(field)):
-            errors.append(f"{field} must be an integer")
+    if not _is_int(response.get("indexed_problem_count")):
+        errors.append("indexed_problem_count must be an integer")
     for field, expected in expected_scalars.items():
         if response.get(field) != expected:
             errors.append(
                 f"{field}: expected {expected!r}, got {response.get(field)!r}"
             )
 
-    minimum = acceptance["minimum_nonrestatement_results_per_problem"]
-    for problem in ("249", "257"):
-        field = f"nonrestatement_results_{problem}"
-        values = response.get(field)
-        if not isinstance(values, list) or any(
-            not isinstance(value, str) or not value.strip() for value in values
-        ):
-            errors.append(f"{field} must be an array of nonempty descriptions")
-            continue
-        if len({value.strip().casefold() for value in values}) < minimum:
-            errors.append(f"{field} must name at least {minimum} distinct results")
+    summaries = response.get("result_summaries")
+    if not isinstance(summaries, list) or any(
+        not isinstance(value, dict)
+        or set(value) != {"problem_number", "summary"}
+        or str(value.get("problem_number")) not in FROZEN_PROBLEMS
+        or not isinstance(value.get("summary"), str)
+        or not value["summary"].strip()
+        for value in summaries
+    ):
+        errors.append(
+            "result_summaries must contain problem_number/summary objects for indexed problems"
+        )
+    else:
+        distinct_problems = {str(value["problem_number"]) for value in summaries}
+        if len(distinct_problems) < acceptance["minimum_distinct_result_problems"]:
+            errors.append(
+                "result_summaries must cover at least "
+                f"{acceptance['minimum_distinct_result_problems']} distinct problems"
+            )
+
+    routes = response.get("routes_replayed")
+    if not isinstance(routes, list) or any(
+        not isinstance(route, str) or not route for route in routes
+    ):
+        errors.append("routes_replayed must be an array of nonempty commands")
+    else:
+        missing_routes = sorted(set(acceptance["required_routes"]) - set(routes))
+        if missing_routes:
+            errors.append(f"routes_replayed is missing required commands: {missing_routes}")
 
     paths = response.get("source_paths_used")
     if not isinstance(paths, list) or not paths or any(

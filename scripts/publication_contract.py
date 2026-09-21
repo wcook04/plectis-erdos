@@ -100,8 +100,13 @@ PUBLICATION_ROLE_SHORT = "short"
 PUBLICATION_ROLE_LONG = "long"
 PUBLICATION_ROLE_ARCHIVAL = "archival_joint_manuscript"
 PUBLICATION_ROLE_SYSTEMS = "systems_guide"
+# A synthesis note reads several covered problems together, so it carries no
+# problem number and cannot take the short role, whose stem rule is
+# ``erdos-<n>-<topic>``. It is mathematics, so it is not a systems guide either.
+PUBLICATION_ROLE_SYNTHESIS = "synthesis"
 ROLE_BY_ARTIFACT_CLASS = {
     "problem_note": PUBLICATION_ROLE_SHORT,
+    "synthesis_note": PUBLICATION_ROLE_SYNTHESIS,
     "mathematical_companion": PUBLICATION_ROLE_LONG,
     ARCHIVAL_JOINT_CLASS: PUBLICATION_ROLE_ARCHIVAL,
     "repository_architecture_guide": PUBLICATION_ROLE_SYSTEMS,
@@ -1564,10 +1569,8 @@ def validate_publication_contract(
         errors.append(
             "publication agent-navigation guides drifted from docs/claims.json"
         )
-    # A problem note expounds the expansion library, whose declarations carry no
-    # reviewed claim status.  The class is compared like the others so that a
-    # note cannot be shipped without a matching registry row, and its posture is
-    # required to say in words that it is not proof authority for a public claim.
+    # A paper can discuss registered and unregistered statements. Its artifact
+    # class grants no formal status: the claim registry owns status per statement.
     problem_note_sources = {
         row["source"] for row in architecture.get("problem_series", [])
     }
@@ -1580,19 +1583,15 @@ def validate_publication_contract(
     for artifact in artifacts:
         if artifact.get("artifact_class") != NOTE_ARTIFACT_CLASS:
             continue
-        # Two postures say it.  A note over modules with no reviewed claim says the
-        # modules are unregistered.  A note whose results now carry reviewed claims
-        # says instead that public status is owned per claim by docs/claims.json.
-        # Either way the note must disclaim proof authority in words.
+        # A paper may mix reviewed and unregistered statements. Only the claim
+        # registry can assign their individual statuses; neither a blanket
+        # unregistered label nor the paper's artifact class can do that.
         posture = artifact.get("authority_posture", "")
         disclaims = "not_Lean_proof_authority" in posture
-        names_owner = (
-            "unregistered_expansion_module" in posture
-            or "public_status_is_owned_per_claim_by_docs/claims.json" in posture
-        )
+        names_owner = "public_status_is_owned_per_claim_by_docs/claims.json" in posture
         if not (disclaims and names_owner):
             errors.append(
-                f"problem note {artifact.get('id')!r} lost its unregistered-module posture"
+                f"problem note {artifact.get('id')!r} must defer formal status to individual claims"
             )
 
     rejected_ids = set(contract.get("rejected_artifact_ids", []))

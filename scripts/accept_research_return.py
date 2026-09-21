@@ -83,36 +83,39 @@ def route_memory_binding_errors(
     if not isinstance(submitted, dict):
         # The submitted-return validator supplies the authoritative shape error.
         return value, [], False
-    errors = route_memory_receipt.validate_detached_return_receipt(
-        value, submitted, ROOT
-    )
+    if return_validator.is_subject_route_memory_receipt(value):
+        errors = return_validator.subject_route_memory_errors(value, submitted, ROOT)
+    else:
+        errors = route_memory_receipt.validate_detached_return_receipt(
+            value, submitted, ROOT
+        )
     return value, errors, False
 
 
 def route_memory_binding_summary(value: dict[str, Any]) -> dict[str, Any]:
     """Expose the verified route identity without copying it into the receipt."""
     binding = value.get("route_memory")
-    relationships = value.get("relationships")
     route_ids: list[str] = []
     evidence_paths: set[str] = set()
-    if isinstance(relationships, list):
-        for relationship in relationships:
-            if not isinstance(relationship, dict):
-                continue
-            route_id = relationship.get("route_id")
-            if isinstance(route_id, str):
-                route_ids.append(route_id)
-            changed = relationship.get("changed_evidence")
-            if isinstance(changed, list):
-                evidence_paths.update(
-                    item for item in changed if isinstance(item, str)
-                )
-    return {
+    for relationship in return_validator.route_memory_relationship_rows(value):
+        route_id = relationship.get("route_id")
+        if isinstance(route_id, str):
+            route_ids.append(route_id)
+        changed = relationship.get("changed_evidence")
+        if isinstance(changed, list):
+            evidence_paths.update(
+                item for item in changed if isinstance(item, str)
+            )
+    summary = {
         "problem": value.get("problem"),
         "route_ids": route_ids,
         "route_memory": copy.deepcopy(binding),
         "evidence_paths": sorted(evidence_paths),
     }
+    if return_validator.is_subject_route_memory_receipt(value):
+        summary["subject"] = value.get("subject")
+        summary["related_problems"] = value.get("related_problems")
+    return summary
 
 
 def acceptance_chronology_errors(submitted: dict[str, Any], review: Any) -> list[str]:

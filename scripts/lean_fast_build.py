@@ -5,7 +5,8 @@ The optional targets may be module names or ``.lean`` paths. With no targets,
 each supported public root is built serially. Focused targets keep the
 edit/test loop from paying for every public certificate module while preserving
 a bounded Lake authority check. ``--changed-from`` derives those focused
-targets from Git, including untracked Lean files. ``--lake-staleness`` asks
+targets from Git, including untracked Lean files but excluding stored workbench
+replay probes. Explicit probe paths remain selectable. ``--lake-staleness`` asks
 Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
 
@@ -41,6 +42,9 @@ IMPORT_RE = re.compile(
 )
 IMPORT_KEYWORD_RE = re.compile(r"^\s*(?:public\s+)?import(?:\s|$)")
 MODULE_HEADER_RE = re.compile(r"^\s*module(?:\s|$)")
+STORED_WORKBENCH_PROBE_RE = re.compile(
+    r"research/workbench/sessions/[^/]+/probes/m[0-9]{3,}\.lean"
+)
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 # A single `lake` invocation here can be a cold full-corpus build, whose cost
 # tracks the size of the library rather than the size of a change. The shared
@@ -359,8 +363,20 @@ def changed_targets_from_paths(
     # Discovery already resolved Lake srcDir. Reconstructing module names from
     # repository-relative paths silently drops every module under lean/.
     names_by_path = {source.resolve(): name for name, source in modules.items()}
-    return sorted({names_by_path[path.resolve()] for path in changed_paths
-                   if path.resolve() in names_by_path})
+    resolved_root = root.resolve()
+    targets = set()
+    for source in changed_paths:
+        path = source.resolve()
+        if path not in names_by_path:
+            continue
+        # proof_workbench stores replay inputs as sessions/<slug>/probes/mNNN.lean.
+        # They may intentionally fail; only explicit selection should build them.
+        if path.is_relative_to(resolved_root) and STORED_WORKBENCH_PROBE_RE.fullmatch(
+            path.relative_to(resolved_root).as_posix()
+        ):
+            continue
+        targets.add(names_by_path[path])
+    return sorted(targets)
 
 
 def changed_targets(

@@ -8,7 +8,7 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 20 active papers and 1 retired paper.
+This checkout contains 20 active papers and 1 retired paper and 1 paper awaiting website publication.
 
 ## Project papers
 
@@ -239,7 +239,7 @@ not currently earn scarce first-contact attention.
 
 <a id="problem-portfolio"></a>
 
-## All papers (21)
+## All papers (22)
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
@@ -361,7 +361,7 @@ Start here (selected for this guide): [A small least critical value](full-text/e
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 30 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 31 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [A region of rational bases at which F is irrational](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero term of Zudilin’s Hankel determinant](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Supplementary arithmetic at 3/2](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
@@ -369,7 +369,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 **Zudilin’s Forms at Rational Bases: Proofs and Research Record**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 60 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 63 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open), [Publication scope](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 
@@ -377,7 +377,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 48 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 49 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The mathematical reasoning loop](full-text/claim-faithful-publication-systems-paper.md#sec:mathloop), [One complete boundary: finite is not unbounded](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
 
@@ -413,6 +413,14 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 
 The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 
+### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
+
+**Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
+
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 27 sections · `optimal-sparse-perturbations` · native to this repository
+
+Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
+
 ## Evidence and limitations
 
 The papers explain the results. To verify a formal proof, use the linked
@@ -438,6 +446,7 @@ responsibility for proof verification, status and explanation as follows:
 - `erdos1041-lemniscate-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or the current status of Erdős #1041 and the correspondence between its historical curve-length formulation and the checked total-variation formulation; those distinctions belong to docs/claims.json in the mathematics repository.
 - `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
+- `optimal-sparse-perturbations` is not authority for a solution to any original Erdős target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.

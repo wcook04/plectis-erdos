@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification.FeedbackPolicyChallenge",
+  "solution_module": "NegativeSolutions.FeedbackPolicy",
+  "theorem_names": [
+    "ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}
