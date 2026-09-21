@@ -309,10 +309,10 @@ jobs:
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-24.04
-    # Four isolated checks now run here: headline positive and mismatch, then
-    # the focused #1049 positive and mismatch. Each retains its own 20 minute
-    # ceiling, so the job ceiling must cover the full serial trust sequence.
-    timeout-minutes: 100
+    # Eight isolated checks run serially. The headline positive includes a
+    # cold build of the full selected-statement closure; allow 45 minutes for
+    # it and 20 for each remaining control, plus tool setup and receipt upload.
+    timeout-minutes: 210
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -465,13 +465,14 @@ jobs:
           echo "sandbox_mode=$sandbox_mode" >> "$GITHUB_OUTPUT"
           run_comparator() {
             config="$1"
+            time_limit="${2:-20m}"
             if [[ "$sandbox_mode" == user-manager ]]; then
-              timeout 20m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
+              timeout "$time_limit" systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
                 -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
                 -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
                 --working-directory="$(pwd)" -- lake env "$comparator" "$config"
             elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
-              timeout 20m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
+              timeout "$time_limit" sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
                 --uid="$(id -un)" --gid="$(id -gn)" --pipe \
                 -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
                 -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
@@ -481,7 +482,7 @@ jobs:
               return 125
             fi
           }
-          run_comparator verification/comparator.json \
+          run_comparator verification/comparator.json 45m \
             > artifacts-positive.log 2>&1
           positive_exit=$?
           run_comparator verification/comparator-negative-mismatch.json \
@@ -655,6 +656,12 @@ jobs:
           path: |
             artifacts/external-verification-receipt.json
             artifacts/erdos249-totient-kernel-comparator-receipt.json
+            artifacts-positive.log
+            artifacts-negative.log
+            artifacts-1049-positive.log
+            artifacts-1049-negative.log
+            artifacts-249-totient-kernel-positive.log
+            artifacts-249-totient-kernel-negative.log
             artifacts-feedback-policy-positive.log
             artifacts-feedback-policy-negative.log
           if-no-files-found: error
