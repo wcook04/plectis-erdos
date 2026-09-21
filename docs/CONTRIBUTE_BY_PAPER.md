@@ -6,6 +6,10 @@ Start with a question you understand. Each entry links its short paper, long rec
 an inspectable result and the existing open obligations. These are research questions,
 not difficulty ratings: some are equivalent to the original problem.
 
+The programme entry module is one starting point, not the source of every result.
+Follow the papers' inline Lean notes and the [full source map](SOURCE_MAP.md)
+for the declarations behind a particular statement.
+
 A correction, argument, useful reference, failed route or explanation can be returned
 without running Lean. You can also [develop a method](../paper/synthesis/README.md)
 or [improve the machinery](research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
@@ -23,7 +27,7 @@ The irrationality of the factorial-denominator series remains open in this relea
 
 [Long record](../paper/68/erdos68-factorial-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos68-factorial-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -54,7 +58,7 @@ The eventual Sylvester recurrence assertion remains open in this release; the bo
 
 [Long record](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -83,7 +87,7 @@ Not proved by this release. The reductions convert it into the unboundedness of 
 
 [Long record](../paper/249/erdos249-totient-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos249-totient-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -114,7 +118,7 @@ The prime-index dyadic series remains open in this release; the exact tail-shift
 
 [Long record](../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -143,7 +147,7 @@ Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved b
 
 [Long record](../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -171,7 +175,7 @@ The running-LCM reciprocal sum remains unresolved from three or more primes in t
 
 [Short paper](../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Read as text](../docs/papers/full-text/erdos-269-three-prime-running-lcm.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -201,7 +205,7 @@ The historical curve-length formulation remains an unadjudicated programme targe
 
 [Long record](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -233,7 +237,7 @@ For rational bases in the Zudilin contour region, including every positive integ
 
 [Long record](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md)
 
-[Inspect the principal Lean source](../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 

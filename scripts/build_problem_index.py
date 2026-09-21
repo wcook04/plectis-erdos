@@ -238,6 +238,9 @@ def render_contribution_guide(payload: dict, corpus: dict) -> str:
              "Start with a question you understand. Each entry links its short paper, long record,",
              "an inspectable result and the existing open obligations. These are research questions,",
              "not difficulty ratings: some are equivalent to the original problem.", "",
+             "The programme entry module is one starting point, not the source of every result.",
+             "Follow the papers' inline Lean notes and the [full source map](SOURCE_MAP.md)",
+             "for the declarations behind a particular statement.", "",
              "A correction, argument, useful reference, failed route or explanation can be returned",
              "without running Lean. You can also [develop a method](../paper/synthesis/README.md)",
              "or [improve the machinery](research-commons/ARCHITECTURE_CONTRIBUTIONS.md).",
@@ -253,7 +256,8 @@ def render_contribution_guide(payload: dict, corpus: dict) -> str:
             role = "Long record" if paper.get("form") == "Reasoning surface" else "Short paper"
             lines += [f"[{role}](../{paper['local_pdf']}) · [Read as text](../{paper['local_full_text']})", ""]
         principal = row["modules"][0]
-        lines += [f"[Inspect the principal Lean source](../{principal['path']}) · "
+        lines += [f"[Programme entry module](../{principal['path']}) · "
+                  f"[Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · "
                   f"[Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)", "", "Existing questions:", ""]
         for obligation in row["open_obligations"]:
             lines += [f"- {obligation['statement']}"]
