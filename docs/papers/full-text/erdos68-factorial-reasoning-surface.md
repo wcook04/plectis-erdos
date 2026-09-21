@@ -63,6 +63,8 @@ The need to check cancellation is already visible in $`1/3+1/15=2/5`$: the commo
 
 </div>
 
+Lean: [maximal prime power survival](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117).
+
 <div class="proof">
 
 *Proof.* Write $`L_M=p^eW`$ with $`p\nmid W`$. If $`v_p(d_n)<e`$, then $`p\mid L_M/d_n`$. If $`n\in J`$, then $`u_n(L_M/d_n)=W`$, so $`L_M/d_n\equiv Wu_n^{-1}\pmod p`$. Summing over $`2\le n\le M`$ gives
@@ -121,6 +123,8 @@ We next ask where a prime first divides a denominator $`d_m`$. This means it div
 
 </div>
 
+Lean: [cofinal first prime occurrences](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180).
+
 <div class="proof">
 
 *Proof.* Choose a prime $`q\ge B!+5`$. Wilson’s theorem gives $`(q-2)!\equiv1\pmod q`$, so there is a least index $`m\ge2`$ with $`q\mid m!-1`$, and $`m\le q-2`$. If $`m\le B`$, then $`q\le m!-1\le B!-1`$, contradicting the choice of $`q`$. Hence $`m>B`$, and minimality gives the coprimality assertions. ◻
@@ -148,6 +152,8 @@ Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-referen
 
 </div>
 
+Lean: [product lcm pairwise gcd](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189).
+
 <div class="proof">
 
 *Proof.* Fix a prime $`r`$ and relabel so that $`a_1\le\cdots\le a_k`$, where $`a_i=v_r(x_i)`$. The right-hand side has $`r`$-valuation $`a_k+\sum_{i<j}\min(a_i,a_j)=a_k+\sum_{i=1}^{k-1}(k-i)a_i`$, and the left-hand side has $`\sum_{i=1}^{k}a_i`$. The difference is $`\sum_{i=1}^{k-1}(k-i-1)a_i`$, which is nonnegative. ◻
@@ -163,6 +169,8 @@ The earlier spacing method of Erdős and Stewart \[erdos-stewart1976, §3, pp. 
 **Lemma 5** (factorial-gap gcd). *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
 </div>
+
+Lean: [factorial gap gcd exact](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288).
 
 <div class="proof">
 
@@ -183,6 +191,8 @@ The earlier spacing method of Erdős and Stewart \[erdos-stewart1976, §3, pp. 
 
 </div>
 
+Lean: [factorial gap segment log sum le channel lcm add choose](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566).
+
 <div class="proof">
 
 *Proof.* Apply Lemma <a href="#long68:res:product-lcm" data-reference-type="ref" data-reference="long68:res:product-lcm">4</a> to $`x_n=d_n`$ for $`N-k+1\le n\le N`$. Their least common multiple divides $`L_N`$. By Lemma <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a> each pairwise gcd is smaller than $`N^{\,j-i}`$, and over a block of $`k`$ consecutive indices
@@ -202,6 +212,8 @@ Taking logarithms of the resulting divisibility gives <a href="#long68:eq:segmen
 ```*
 
 </div>
+
+Lean: [common denominator growth liminf](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42).
 
 <div class="proof">
 
@@ -326,6 +338,8 @@ If $`S=a/q`$ with $`a\in\mathbb{Z}`$, $`q\ge1`$ and $`b_m\ne1`$, then $`q\nmid(m
 
 </div>
 
+Lean: [strict successor characterisation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77).
+
 <div class="proof">
 
 *Proof.* From $`m!H_m=mZ_{m-1}-m\Delta_m+1+\varepsilon_m`$ one gets $`b_m=\lceil m\Delta_m-1-\varepsilon_m\rceil`$ with $`-1\le b_m\le m-1`$, which gives both equivalences in <a href="#long68:eq:unit-window" data-reference-type="eqref" data-reference="long68:eq:unit-window">[long68:eq:unit-window]</a>, endpoints included.
@@ -387,6 +401,8 @@ S\in\mathbb{Q}
 
 </div>
 
+Lean: [companion orbit](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38).
+
 <div class="proof">
 
 *Proof.* Put $`J_m=\sum_{k=0}^{m}m!/k!`$. Then $`J_m`$ is an integer, every summand with $`k<m`$ is divisible by $`m`$ and the summand at $`k=m`$ is $`1`$, so $`J_m\equiv1\pmod m`$; and $`0<m!\,e-J_m<1`$ for $`m\ge2`$.
@@ -437,6 +453,8 @@ For $`m\ge3`$ the finite condition
 implies the escape inequality in <a href="#long68:eq:lower-escape" data-reference-type="eqref" data-reference="long68:eq:lower-escape">[long68:eq:lower-escape]</a>. Cofinally many instances of <a href="#long68:eq:finite-escape" data-reference-type="eqref" data-reference="long68:eq:finite-escape">[long68:eq:finite-escape]</a> therefore imply $`S\notin\mathbb{Q}`$.*
 
 </div>
+
+Lean: [lower interval criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102).
 
 <div class="proof">
 
@@ -504,6 +522,8 @@ for all sufficiently large $`m`$, and irrational exactly when that residue is mi
 
 </div>
 
+Lean: [uniform family boundary](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123), [uniform family members](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134).
+
 <div class="proof">
 
 *Proof.* Put $`Y=-tC_t`$, so that $`S_t=Y+e-2`$. The proof of Proposition <a href="#long68:res:companion-orbit" data-reference-type="ref" data-reference="long68:res:companion-orbit">9</a> applies to any real $`Y`$: rationality of $`Y+e-2`$ forces $`\lfloor m!Y\rfloor\equiv-2\pmod m`$ eventually. Conversely, that congruence forces the canonical digits of $`Y`$ to equal $`m-2`$ eventually; adding the factorial series of $`e-2`$ leaves an eventually telescoping tail, hence a rational sum. Finally $`\lceil t m!C_t\rceil=-\lfloor m!Y\rfloor`$ translates the congruence. Negation gives the cofinal statement. For $`t=0`$, the left side is zero, which is not congruent to $`2`$ for $`m\ge3`$. ◻
@@ -570,6 +590,8 @@ The tail estimate in the proof below gives $`C_3(S-H_5)<7/1080<6791/13685`$. Thi
 Then $`S`$ is irrational.*
 
 </div>
+
+Lean: [global complementary criterion prime](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L169).
 
 <div class="proof">
 
@@ -651,6 +673,8 @@ Beyond the support, $`V_d(c)=M(c)`$, so this series converges absolutely. Cancel
 
 </div>
 
+Lean: [supported integral normal form](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17).
+
 <div class="proof">
 
 *Proof.* By <a href="#long68:eq:channel-congruence" data-reference-type="eqref" data-reference="long68:eq:channel-congruence">[long68:eq:channel-congruence]</a>, $`d!-1`$ divides $`V_d(c)-M(c)`$. Thus $`k=(V_d(c)-M(c))/(d!-1)`$ is an integer and gives the identity. The modulus is positive also at $`d=2`$, when it equals one. ◻
@@ -671,6 +695,8 @@ In the next theorem, the parameters $`d,k`$ and the support indices are integers
 **Theorem 14** (constant values of the floor in the weights). *Let $`d\ge2`$ and $`k\ge0`$, and suppose every supported index $`i`$ satisfies $`kd\le i<(k+1)d`$. Then $`M(c)=(d!)^kV_{d}(c)`$. In particular, cancellation on the interval $`d\le i<2d`$ forces $`M(c)=0`$; and if every supported index is at least $`d`$ while $`M(c)\ne0`$ and $`V_{d}(c)=0`$, then some supported index is at least $`2d`$.*
 
 </div>
+
+Lean: [supported quotient band](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24), [supported first band cancellation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42), [supported breakpoint escape](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51).
 
 <div class="proof">
 
@@ -744,6 +770,8 @@ The moments of finite integer vectors supported on $`n\ge2`$ and cancelling all 
 
 </div>
 
+Lean: [exact moment ideal with primitive attainment](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242), [minimum moment independent prime](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321).
+
 <div class="proof">
 
 *Proof.* By <a href="#long68:eq:finite-horizon" data-reference-type="eqref" data-reference="long68:eq:finite-horizon">[long68:eq:finite-horizon]</a>, $`G_D>0`$ is the gcd of the whole tail $`\{u_n:n>D\}`$, and $`H<2D^2`$. Thus the finite integer combinations in <a href="#long68:eq:low-channel-support" data-reference-type="eqref" data-reference="long68:eq:low-channel-support">[long68:eq:low-channel-support]</a> form $`G_D\mathbb{Z}`$, so that the equation is soluble exactly when $`G_D\mid ta_D`$. Dividing by $`\gcd(G_D,a_D)`$ shows that $`t`$ is a multiple of $`G_D/\gcd(G_D,a_D)`$, and <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a> gives the displayed moment ideal. Bezout coefficients attain its positive generator. If an attaining vector had a nontrivial common coefficient divisor, division by that divisor would produce a smaller positive attainable moment. Hence its coefficients have gcd one. Since the set of attainable moments does not depend on the chosen prime, neither does its least positive element. ◻
@@ -772,6 +800,8 @@ We can now express the remainder using the basis coefficients in <a href="#long6
 The residual series converges for every finite vector supported away from index zero. A zero-moment vector has integral residual, and any two finite vectors with the same factorial moment have residuals differing by an integer.*
 
 </div>
+
+Lean: [residual transparency](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116), [summable full residual](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166), [zero moment residual integral](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185), [equal moment residual integer difference](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195).
 
 <div class="proof">
 
@@ -804,6 +834,8 @@ t\ge2^{32},\qquad M>0,\qquad L_{2t^2}\mid M,\qquad M<(R+1)!-1 .
 Then $`3t^3<2(R+1)`$. Consequently no family satisfying these hypotheses for all sufficiently large $`t`$ has $`(R(t)+1)/t^3\le3/2`$ eventually, and none has $`R(t)=o(t^3)`$.*
 
 </div>
+
+Lean: [square subsequence radius](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L234), [radius no eventual ratio upper](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L258), [radius not little o](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L277).
 
 <div class="proof">
 
@@ -841,6 +873,8 @@ Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-referen
 
 </div>
 
+Lean: [asymptotic radius constant liminf](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54).
+
 <div class="proof">
 
 *Proof.* Put $`r=R(t)+1`$, so $`L_{2t^2}\le M(t)<r!`$ and $`\log L_{2t^2}<r\log r`$. Since
@@ -871,6 +905,8 @@ At a prime index, the two-term vector $`T_p`$ already changes only one weighted 
 **Theorem 19** (changing just one weighted sum). *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
 </div>
+
+Lean: [prime channel corrector](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299).
 
 <div class="proof">
 
@@ -1193,6 +1229,10 @@ The following links identify the statements used above and related lemmas. Each 
 <a id="long68:sec:coverage"></a>
 
 ## Formalisation coverage and remaining dependencies
+
+<div id="coverage">
+
+</div>
 
 Every theorem, lemma, proposition and corollary of this record has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`. No result of this record depends on an input that is absent from that development. The concordance after the list below gives the declarations for each result.
 

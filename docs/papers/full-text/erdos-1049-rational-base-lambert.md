@@ -73,6 +73,8 @@ Then $`F(a/b)`$ is irrational.*
 
 </div>
 
+Lean: [printed contour short](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L440), [printed mu](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L461), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 7 further declarations in the [coverage section of the companion record](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=coverage).
+
 The condition holds for every integer base, since $`b=1`$ gives $`\log b/\log a=0`$. For a fixed denominator $`b>1`$, it requires $`a>b^{2.46497868\ldots}`$, much more than $`a>b`$; nevertheless it gives infinitely many reduced noninteger rational bases for each such $`b`$. The base $`31/4`$ satisfies the condition, and taking a common positive integer power of the numerator and denominator leaves their logarithmic ratio unchanged. The base $`3/2`$ is excluded since $`\theta^*<1/2<\log2/\log3`$. At equality $`\log b/\log a=\theta^*`$ the quadratic exponent vanishes, so the estimates below give no conclusion.
 
 <div class="proof">
@@ -220,6 +222,8 @@ The coefficient is negative under the theorem’s hypothesis. The positive value
 
 </div>
 
+Lean: [thirtyone four powers](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117).
+
 <div class="proof">
 
 *Proof.* The exact inequalities $`31^2<4^5`$ and $`4^{200}<31^{81}`$ give $`2/5<\log4/\log31<81/200`$. The first term of each trigamma difference yields
@@ -246,6 +250,8 @@ Finally, the logarithmic ratio and coprimality are preserved by a common positiv
 Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $`|\xi-p/q|<q^{-\nu}`$ has infinitely many reduced rational solutions. In particular, $`\mu_{\rm irr}(F((31/4)^r))<301`$ for every $`r\ge1`$.*
 
 </div>
+
+Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
 
 <div class="proof">
 
@@ -337,6 +343,8 @@ The next restriction requires one polynomial family and common leading degree, h
 
 </div>
 
+Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162).
+
 <div class="proof">
 
 *Proof.* For real $`x>1`$, the sum of the absolute values of the coefficients gives $`|U_n(x)|,|V_n(x)|\le\max(H(U_n),H(V_n))x^{d_n}`$. Suppose $`\sigma>\delta`$ and choose an integer $`p\ge2`$ with $`(\sigma-\delta)\log p>h`$. Set $`a_n=U_n(p)`$, $`b_n=V_n(p)`$ and $`L_n=a_n F(p)-b_n`$. Hypotheses on height and degree give $`|a_n|\le\exp((h+\delta\log p)n^2+o(n^2))`$, while $`|L_n|=\exp(-\sigma\log p\,n^2+o(n^2))`$. The adjacent integer
@@ -389,6 +397,8 @@ and the coefficient of the first nonzero monomial is
 ```*
 
 </div>
+
+Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
 
 <div class="proof">
 
@@ -499,6 +509,8 @@ Subtracting successive partial sums proves the identity. Neither convergence nor
 
 </div>
 
+Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
+
 <div class="proof">
 
 *Proof.* In the first case, $`2^{N+1}\le s^{N+1}\le Bc(N+1)s^{N+1}`$. The second case follows by substituting $`s=1`$. ◻
@@ -539,6 +551,8 @@ In particular, if $`R>0`$ and $`4R+2S\le M`$, such a collision exists.*
 
 </div>
 
+Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
+
 <div class="proof">
 
 *Proof.* Send each subset to the sum of the residue vectors of its members. The pigeonhole principle gives two distinct subsets with the same image. The target size is the product of its four moduli. For $`R>0`$,
@@ -564,6 +578,8 @@ Then every pairwise minor $`A_iB_j-B_iA_j`$ vanishes. In particular, take $`R_0=
 Thus $`S+2R`$ rows suffice, in place of the sufficient bound $`2S+4R`$ from the ambient two-coordinate count.*
 
 </div>
+
+Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
 
 <div class="proof">
 
@@ -605,6 +621,8 @@ Then, for integers $`n,k,m`$:*
 
 </div>
 
+Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
+
 For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors are nonnegative. Substituting $`j=n-m-1`$ gives the second identity for every integer $`m`$.
 
 <div id="res:content" class="proposition">
@@ -612,6 +630,8 @@ For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors ar
 **Proposition 14** (rescaling two integer rows). *Multiplying two integer rows by $`c_1`$ and $`c_2`$ multiplies their [determinant](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by $`c_1c_2`$. The [integer identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and its [absolute-value form](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) show that the added divisibility is accompanied by exactly the same factor in the real absolute value.*
 
 </div>
+
+Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
 
 For nonzero row contents $`c_1,c_2`$, write $`r_i=c_ir_i^{\rm prim}`$. Then $`\det(r_1,r_2)=c_1c_2\det(r_1^{\rm prim},r_2^{\rm prim})`$ and $`r_i\cdot(\xi,-1)=c_i r_i^{\rm prim}\cdot(\xi,-1)`$. These identities concern multiplication or division of whole integer rows, not cancellation of a polynomial factor before specialisation. Nor does dividing different rows by different contents preserve a fixed residue relation: $`(1,1)+(5,5)`$ is zero modulo $`6`$, but the sum of the primitive rows is $`(2,2)`$. Even contents coprime to the modulus require the residue map to be formed again after row-by-row normalisation.
 
@@ -654,6 +674,8 @@ f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
 ```*
 
 </div>
+
+Lean: [exists small real escape of conditional multiplicity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79).
 
 <div class="proof">
 

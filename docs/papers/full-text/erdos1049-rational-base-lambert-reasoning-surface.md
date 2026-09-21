@@ -95,6 +95,8 @@ the weight that \[zudilin2004, p. 162\] attaches to the six-tuple $`c=(13,14,12
 
 </div>
 
+Lean: [omega indicator](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297).
+
 <div class="proof">
 
 *Proof.* Each of the three expressions inside the maximum is constant on every interval between consecutive elements of $`\{k/c: c\in\{12,13,14,15\},\ 0\le k\le c\}`$, since those are the only points at which one of the four floor functions changes. There are $`48`$ such intervals in $`[0,1)`$; evaluating $`\omega`$ at the midpoint of each gives the value $`1`$ on the thirteen listed half-open intervals and $`0`$ elsewhere, and the thirteen listed intervals are unions of consecutive cells. Each floor function is right-continuous, so a cell has the same value at its left endpoint as at its midpoint. This also verifies the half-open endpoint convention. All evaluations use exact rational arithmetic. ◻
@@ -121,6 +123,8 @@ b^{\mu}<a,
 Then $`F(a/b)=\sum_{m\ge1}(( a/b)^{m}-1)^{-1}`$ is irrational.*
 
 </div>
+
+Lean: [printed contour](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L418), [contour enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L487), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 3 further declarations in the [coverage section](#long1049:sec:coverage).
 
 The proof has three steps. We cancel the common polynomial factors using Zudilin’s integrality argument \[zudilin2004, pp. 156–161\]. We then compute the degree of the remaining polynomials, using his cyclotomic limits and the reciprocal-interval method of \[zudilin2002, Lemma 1, p. 466\]. Finally, we evaluate at $`a/b`$ and show that the positive remainder still decays after multiplication by the required power of $`b`$. These steps occupy Sections <a href="#long1049:sec:source-forms" data-reference-type="ref" data-reference="long1049:sec:source-forms">2.1</a>–<a href="#long1049:sec:integer-forms" data-reference-type="ref" data-reference="long1049:sec:integer-forms">2.4</a>. The construction, direction and constants are Zudilin’s; the rational specialisation and its degree and remainder estimates are proved below.
 
@@ -343,6 +347,8 @@ with $`\mu_{\mathrm{BV}}=2\pi^{2}/(\pi^{2}-2)=2.508284761994\ldots`$, so $`31/4`
 
 </div>
 
+Lean: [printed log ratio](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L118), [printed bv cutoff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L195), [printed bv mu](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L218), [printed four rpow bv mu](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L308), and 9 further declarations in the [coverage section](#long1049:sec:coverage).
+
 <div class="proof">
 
 *Proof.* The comparison $`\log4/\log31<81/200`$ is the integer certificate $`4^{200}<31^{81}`$, checked as [the power certificate](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L26), and the membership it yields is [$`31/4`$ satisfies the inequality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L45); the ratio $`\log b/\log a`$ is invariant under $`(a,b)\mapsto(a^{r},b^{r})`$, which gives the [power family](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L59), and $`(31^{r},4^{r})`$ are coprime. The exclusion from the earlier region is [$`31/4`$ is outside the earlier region](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L91). That exclusion also has a two-line rational certificate: $`31^{2}<4^{5}`$ gives $`\log4/\log31>2/5`$, and $`\pi^{2}<10`$ gives $`1/2-1/\pi^{2}<2/5`$, so
@@ -363,6 +369,8 @@ The remaining comparison $`81/200<\theta^{*}`$ is proved in Section <a href="#l
 Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $`|\xi-p/q|<q^{-\nu}`$ has infinitely many reduced rational solutions. In particular, $`\mu_{\rm irr}(F((31/4)^r))<301`$ for every $`r\ge1`$.*
 
 </div>
+
+Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
 
 <div class="proof">
 
@@ -521,6 +529,8 @@ Consequently the homogenised forms tend to zero whenever $`\log b/\log a<\sigma/
 
 </div>
 
+Lean: [long record archcap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean#L411).
+
 <div class="proof">
 
 *Proof.* The coefficient-height bound controls evaluation at an integer base. For every fixed $`p>1`$,
@@ -551,6 +561,8 @@ Hypothesis (2) yields the stated upper limit and sufficient region. Since $`\si
 **Corollary 6** (nondecay when $`b<a<b^2`$). *Under the hypotheses of Theorem <a href="#long1049:res:archcap" data-reference-type="ref" data-reference="long1049:res:archcap">5</a>, for positive integers $`a,b`$ with $`b<a<b^2`$, the undivided forms $`b^{d_n}\Lambda_n(a/b)`$ do not tend to zero. No limit of $`d_n/n^2`$ is assumed.*
 
 </div>
+
+Lean: [cleared below square not tendsto zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69).
 
 <div class="proof">
 
@@ -588,6 +600,8 @@ For the family of Section <a href="#long1049:sec:source-forms" data-reference-t
 **Lemma 7** (coefficient heights of the constructed polynomials). *There is a constant $`h`$ with $`\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}`$ for every $`n\ge1`$, where $`U_n`$ and $`V_n`$ are the polynomials of <a href="#long1049:eq:integer-polynomial-pair" data-reference-type="eqref" data-reference="long1049:eq:integer-polynomial-pair">[long1049:eq:integer-polynomial-pair]</a>.*
 
 </div>
+
+Lean: [exists quadratic source height bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean#L49), [max pair height source eq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean#L40).
 
 <div class="proof">
 
@@ -711,6 +725,8 @@ Consequently
 
 </div>
 
+Lean: [power bracket](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L24).
+
 <div class="proof">
 
 *Proof.* Direct evaluation gives
@@ -753,6 +769,8 @@ where $`\Theta_{\mathrm{HP}}`$ is the rectangular exponent threshold. Moreover
 
 </div>
 
+Lean: [height and hankel deficits](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L34).
+
 <div class="proof">
 
 *Proof.* The first inequality follows from $`41/65-2/5=3/13`$, Theorem <a href="#long1049:res:powerbracket" data-reference-type="ref" data-reference="long1049:res:powerbracket">8</a>, and $`1/2-1/\pi^2<2/5`$. The polynomial calculation in Section <a href="#long1049:sec:open" data-reference-type="ref" data-reference="long1049:sec:open">10</a> proves $`\Theta_{\mathrm{HP}}(\rho,\sigma)\le1/2-1/\pi^2`$ on the stated domain, which gives the second inequality. The final inequality is a direct rearrangement of $`\log3/\log2<65/41`$. ◻
@@ -776,6 +794,8 @@ For every integer $`N\ge2`$,
 Hence the same strict inequalities hold with the left side replaced by $`41E`$ whenever, respectively, $`E\le N^3-N`$ or $`E\le2N^3-N`$.*
 
 </div>
+
+Lean: [charge ceilings](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L44).
 
 <div class="proof">
 
@@ -820,6 +840,8 @@ All product denominators have constant term $`1`$, so their inverses exist in $`
 
 </div>
 
+Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
+
 The source proves the order inequality and also gives $`|V_N^*(q)|\le |q|^{N^3/3}\exp(O(N^2))`$, referring to additional estimates for the passage from formal order to analytic size \[zudilin2016, Sec. 4, p. 7\]. Equality in the order bound rules out a further initial power of $`q`$ at $`x=z=1`$; it does not itself prove a fixed-$`q`$ estimate. For $`0<q<1`$, the positive-measure argument below gives both positivity and a two-sided comparison with the leading term, with logarithmic error $`O_q(N)`$. It refines the subleading control, not the cubic exponent of $`q`$.
 
 <a id="the-row-identity."></a>
@@ -848,6 +870,8 @@ The lemma allows arbitrary coefficients $`a_s(q)\in\mathbb{Z}[[q]]`$; the only n
 ```*
 
 </div>
+
+Lean: [all row initial](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L213), [all row initial reciprocal](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L242), [all row initial dvd](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L255), [paper e eq row exponent](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L116), and 3 further declarations in the [coverage section](#long1049:sec:coverage).
 
 <div class="proof">
 
@@ -1093,6 +1117,8 @@ Write $`A_N=(\alpha_{i+j})_{0\le i,j<N}`$ and $`B_N=(\beta_{i+j})_{0\le i,j<N}`$
 
 </div>
 
+Not formalised: the coefficient positivity of the eight unshifted determinants is established by an exact integer computation outside the Lean kernel, and the passage through the eigenvalues and the interlacing of the pencil roots are not formalised. See the [coverage section](#long1049:sec:coverage).
+
 <div class="proof">
 
 *Proof.* The leading principal minors of $`(s_{i+j})_{i,j<N}`$ are exactly $`D_{k,0}(p)`$ for $`1\le k\le N`$; their coefficient positivity proved above, together with Sylvester’s criterion, gives positive definiteness. The diagonal congruence gives $`A_N>0`$. The real symmetric matrix $`A_N^{-1/2}B_NA_N^{-1/2}`$ has these pencil roots as eigenvalues, and $`F(p)I-A_N^{-1/2}B_NA_N^{-1/2}>0`$ puts them strictly below $`F(p)`$. The minimum–maximum principle for $`x^{\mathsf T}B_Nx/(x^{\mathsf T}A_Nx)`$ on nested coordinate subspaces gives non-strict interlacing. These are subspaces for the original pencils; the separately conjugated symmetric matrices need not be principal submatrices of one another. ◻
@@ -1247,6 +1273,8 @@ In particular $`c_nc_m`$ divides the scaled determinant. Multiplication by these
 
 </div>
 
+Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
+
 <div class="proof">
 
 *Proof.* Expand the linear form and use the bilinearity of the determinant. The original integer determinant is the quotient witnessing divisibility; it need not be primitive. ◻
@@ -1292,6 +1320,8 @@ Consequently a unit constant coefficient prevents divisibility by $`3`$, and a u
 
 </div>
 
+Lean: [endpoint residues](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L74).
+
 <div class="proof">
 
 *Proof.* Modulo $`3`$, every summand with $`i>0`$ vanishes; modulo $`2`$, every summand with $`i<W`$ vanishes. The remaining powers are units in the corresponding residue fields. ◻
@@ -1335,6 +1365,8 @@ In the following proposition, a unit top endpoint means that the coefficient at 
 
 </div>
 
+Lean: [common multiplier not two not three of endpoint units](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L398).
+
 <div class="proof">
 
 *Proof.* If $`2\mid c`$, then $`2\mid H_W(U)`$, contrary to the unit coefficient at index $`W`$ and Theorem <a href="#long1049:res:endpoints" data-reference-type="ref" data-reference="long1049:res:endpoints">16</a>. Similarly, $`3\mid c`$ would imply $`3\mid H_W(V)`$, contrary to the unit constant coefficient. ◻
@@ -1359,6 +1391,8 @@ Here $`\gcd(21,49)=7`$. The endpoint assumptions therefore allow a nontrivial co
 
 </div>
 
+Lean: [endpoint scalar content exclusion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L220).
+
 <div class="proof">
 
 *Proof.* The common-divisor assertion is Proposition <a href="#long1049:res:commonmult" data-reference-type="ref" data-reference="long1049:res:commonmult">18</a>. By Theorem <a href="#long1049:res:content" data-reference-type="ref" data-reference="long1049:res:content">14</a>, rescaling the two rows by $`c_n,c_m`$ multiplies their errors by $`c_n,c_m`$, respectively, and their $`2\times2`$ determinant by $`c_nc_m`$. For nonzero scalars, the introduced divisor has the same absolute value as the introduced factor in that determinant. Dividing out that factor restores the original determinant, including its original divisor-to-size comparison. ◻
@@ -1372,6 +1406,8 @@ One further consequence of Theorem <a href="#long1049:res:endpoints" data-refer
 **Proposition 21** (coprimality of homogenised cyclotomic values). *Let $`a>b\ge1`$ with $`\gcd(a,b)=1`$ and let $`m\ge1`$. Then $`\gcd(\Phi_m(a,b),ab)=1`$. In particular $`\gcd(\Phi_m(3,2),6)=1`$ for every $`m`$.*
 
 </div>
+
+Lean: [cyclotomic hom eval is coprime mul](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L302).
 
 <div class="proof">
 
@@ -1417,6 +1453,8 @@ In particular, if $`R>0`$ and $`4R+2S\le M`$, such a collision exists.*
 
 </div>
 
+Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
+
 <div class="proof">
 
 *Proof.* Send each subset to the sum of the residue vectors of its members. The pigeonhole principle gives two distinct subsets with the same residue vector. The number of possible vectors is the product of the four moduli. For $`R>0`$,
@@ -1439,6 +1477,8 @@ The power bracket improves the generic coefficient $`4R`$ when the depth $`R`$ i
 No exact-optimality assertion is made here for $`T>1`$.*
 
 </div>
+
+Lean: [rank fortyone](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L149).
 
 <div class="proof">
 
@@ -1475,6 +1515,8 @@ Thus, when $`f`$ records the four residues and $`g`$ records the real remainder,
 
 </div>
 
+Lean: [exists ne map eq map ne of card mul lt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean#L1832).
+
 <div class="proof">
 
 *Proof.* If every pair in a common $`f`$-fibre also had the same $`g`$-value, each $`f`$-fibre would lie in one $`g`$-fibre and hence have size at most $`k`$. Summing over the at most $`|B|`$ fibres of $`f`$ would give $`|A|\le |B|k`$, contrary to the hypothesis. ◻
@@ -1500,6 +1542,8 @@ Then every pairwise minor $`A_iB_j-B_iA_j`$ vanishes. In particular, take $`R_0=
 Thus $`S+2R`$ rows suffice. The ambient two-coordinate argument gives the sufficient bound $`2S+4R`$.*
 
 </div>
+
+Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
 
 <div class="proof">
 
@@ -1547,6 +1591,8 @@ C_0\log3-C_1\log2< -\frac{17}{41}C_0\log2.
 ```*
 
 </div>
+
+Lean: [scalar margin](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L177).
 
 <div class="proof">
 
@@ -1610,6 +1656,8 @@ b^{\,N+K+1}<a\,(N+K).
 
 </div>
 
+Lean: [coordinatewise corridor implies pow lt linear](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L121).
+
 <div class="proof">
 
 *Proof.* Since $`QD>0`$ and $`a^{K}\mid QD`$, we have $`a^{K}\le QD`$, and $`D\le N+K`$ gives $`a^{K}\le Q(N+K)`$. Hence
@@ -1643,6 +1691,8 @@ The failure at $`3/2`$ is useful because it already occurs at the weaker, necess
 
 </div>
 
+Lean: [three mul lt two pow succ](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L142).
+
 <div class="proof">
 
 *Proof.* Induct on $`x`$, starting from $`6<8`$ at $`x=2`$. For the step, $`2^{x+1}\ge2^{2}>3`$ when $`x\ge1`$, so $`3(x+1)=3x+3<2^{x+1}+2^{x+1}=2^{x+2}`$. ◻
@@ -1656,6 +1706,8 @@ Formalised as the [exponential comparison](https://github.com/wcook04/plectis-er
 **Theorem 32** (failure of the stated clearing conditions at $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the clearing conditions.*
 
 </div>
+
+Lean: [three halves no coordinatewise corridor](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).
 
 <div class="proof">
 
@@ -1691,6 +1743,8 @@ U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 
 </div>
 
+Lean: [rational base cleared tail q succ](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187).
+
 <div class="proof">
 
 *Proof.* Expanding $`P_{N+1}=P_N+c(N+1)s^{N+1}/r^{N+1}`$ and $`r^{N+1}=r^{N}\cdot r`$ in the definition of $`U_{N+1}`$ and clearing the denominator $`r^{N+1}`$, which is nonzero, gives the identity. ◻
@@ -1710,6 +1764,8 @@ For a reduced positive base $`r/s>1`$, the forcing term $`Bc(N+1)s^{N+1}`$ conta
 2.  *If $`s=1`$, then $`B\,c(N+1)\,s^{\,N+1}=B\,c(N+1)`$.*
 
 </div>
+
+Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
 
 <div class="proof">
 
@@ -1759,6 +1815,8 @@ At $`q=7/2`$ the Archimedean parameter is $`\lambda=\log 7/\log(7/2)`$. The crit
 ```*
 
 </div>
+
+Lean: [seven halves archimedean height condition](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83).
 
 <div class="proof">
 
@@ -1835,6 +1893,8 @@ Then, for integers $`n,k,m`$:*
 3.  *if $`n\ge0`$ and $`m\ge1`$, then $`\widetilde{Q}(n,m)\le\widetilde{E}_n`$.*
 
 </div>
+
+Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
 
 Part (1) is the [summand exponent bound](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30), part (2) the [exact gap identity](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L52), and part (3) the [maximal exponent bound](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L60). The gap in (2) is an identity in $`\mathbb{Z}[n,m]`$, so (3) follows from $`m(m-1)\ge0`$ and $`n\ge0`$. The range $`m\ge1`$ is sufficient, not necessary for this polynomial inequality: for integer $`m`$, one also has $`m(m-1)\ge0`$ when $`m\le0`$. No claim about a summand of an unspecified approximation is needed.
 
@@ -2072,6 +2132,8 @@ There is no finite-dimensional $`\mathbb{Q}(z)`$-vector space that contains $`\m
 
 </div>
 
+Lean: [no finite simultaneous two three system](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean#L1140), [mahler of stable](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean#L228), [is mahler subs](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean#L203), [divisor lambert subs not rational](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean#L909), and 8 further declarations. Conditional on the rationality theorem of Adamczewski and Bell; see the [coverage section](#long1049:sec:coverage).
+
 <div class="proof">
 
 *Proof.* Suppose $`V`$ were such a space, of dimension $`d`$. Stability under $`z\mapsto z^2`$ places the $`d+1`$ elements $`\mathcal L(z),\mathcal L(z^2),\dots,\mathcal
@@ -2244,6 +2306,10 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 <a id="long1049:sec:coverage"></a>
 
 ## Formalisation coverage and remaining dependencies
+
+<div id="coverage">
+
+</div>
 
 Every theorem, lemma, proposition and corollary of this record other than the two listed below has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`.
 

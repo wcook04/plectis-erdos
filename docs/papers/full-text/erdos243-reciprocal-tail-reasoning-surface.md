@@ -56,6 +56,8 @@ The rate in the next theorem is much more specific than $`a_{n+1}/a_n^2\to1`$: b
 
 </div>
 
+Lean: [cubic rate irrationality of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L270). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+
 For a concrete sequence satisfying the hypothesis, take
 ``` math
 a_1=8,\qquad a_{n+1}=\left\lceil\frac{n a_n^2}{n+3}\right\rceil
@@ -84,6 +86,8 @@ Then for every $`A\in\mathbb{Q}_{>0}`$ and every $`B\in\mathbb{Q}`$,
 In particular no such orbit satisfies $`C_n=A\,n(n+1)(n+2)+B`$ for all large $`n`$.*
 
 </div>
+
+Lean: [cubic exclusion of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L256). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
 
 The irrationality theorem needs only exclusion of eventual equality. Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a> proves more: disagreement with the proposed cubic has positive lower density. The lower bound may depend on the orbit and the cubic; it is not a uniform numerical constant.
 
@@ -121,6 +125,8 @@ For $`S\subseteq\mathbb{N}`$ write $`\underline d(S)=\liminf_X\#(S\cap[1,X])/X`$
 
 </div>
 
+Lean: [fixed offsets periodic lower density](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean#L156).
+
 <div class="proof">
 
 *Proof.* There are $`X/h+O(1)`$ relevant starting indices below $`X`$. Their witnesses lie below $`X+O(1)`$ because the offsets are fixed, and each element of $`S`$ serves as a witness for at most $`L`$ starting indices. Hence $`L\#(S\cap[1,X])\ge X/h-O(1)`$, which gives the claimed lower density. ◻
@@ -155,6 +161,8 @@ and there are $`m\in\mathbb{Z}_{>0}`$ and $`c\in\{-1,1\}`$ with
 
 </div>
 
+Lean: [cubic profile gcd stabilisation and primitive shape](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicProfileGcdShape.lean#L103).
+
 <div class="proof">
 
 *Proof.* Equation <a href="#long243:eq:cubicorbit" data-reference-type="eqref" data-reference="long243:eq:cubicorbit">[long243:eq:cubicorbit]</a> gives $`G_n\mid G_{n+1}`$ and $`G_n\mid C_t`$ for every $`t\ge n`$. Since $`\underline d(S)=0`$, beyond every threshold there is a block of four consecutive indices disjoint from $`S`$: otherwise every block of four would meet $`S`$ and $`\underline d(S)\ge1/4`$. On such a block $`\Delta^3C_t=\Delta^3P(t)=6A`$, and $`G_n`$ divides each of the four values, hence divides $`6A`$. So $`6A`$ is a positive integer and the divisibility chain $`(G_n)`$ is bounded and stabilises at some $`g`$.
@@ -179,6 +187,8 @@ so $`\ell`$ divides both $`Q(n)`$ and $`Q(n+1)`$. Agreement at both indices woul
 
 </div>
 
+Lean: [primitive zero density paper multiplier lemma](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean#L244).
+
 <div class="proof">
 
 *Proof.* A prime dividing $`a_n`$ and $`v_n`$ would divide $`u_{n+1}`$ and $`v_{n+1}`$, against $`\gcd(u_{n+1},v_{n+1})=1`$; and every earlier multiplier divides every later $`v_n`$, so distinct multipliers are coprime. If $`a_n=1`$ for all large $`n`$ then $`v_n`$ is eventually a positive constant and $`u_{n+1}=u_n-v_n`$ decreases without bound, against positivity. So infinitely many distinct primes divide late multipliers.
@@ -199,6 +209,8 @@ At a prime dividing a middle numerator, the two-step recurrence forces the negat
 
 </div>
 
+Lean: [square specialisation of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L211). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+
 <div class="proof">
 
 *Proof.* Suppose not. Put $`K=\mathbb{Q}(\alpha)`$ and choose $`\beta`$ with $`\beta^2=H(\alpha)`$, so $`K(\beta)/K`$ is quadratic. Take a finite Galois extension $`L/\mathbb{Q}`$ containing $`K(\beta)`$ and $`\sigma\in\mathop{\mathrm{Gal}}(L/K)`$ restricting nontrivially to $`K(\beta)`$, so that $`\sigma\alpha=\alpha`$ and $`\sigma\beta=-\beta`$. By the Chebotarev density theorem in the form stated by Stevenhagen and Lenstra \[stevenhagenlenstra1996, §3, p. 15\], there are infinitely many unramified rational primes whose Frobenius class in $`\mathop{\mathrm{Gal}}(L/\mathbb{Q})`$ is that of $`\sigma`$; only the infinitude is used. Discard the finitely many primes dividing denominators or the discriminant, the prime $`2`$, and those at which $`\beta`$ reduces to zero. The Frobenius elements at the primes of $`L`$ above a fixed $`\ell`$ form that conjugacy class, so one of those primes has Frobenius exactly $`\sigma`$. At this prime the residue field satisfies $`\overline\alpha^{\,\ell}=\overline\alpha`$ and $`\overline\beta^{\,\ell}=-\overline\beta`$, so $`\overline\alpha\in\mathbb{F}_\ell`$ while $`\overline\beta\notin\mathbb{F}_\ell`$. Then $`H(\overline\alpha)=\overline\beta^{\,2}`$ is a nonsquare in $`\mathbb{F}_\ell`$ at a root of the reduction of $`f`$, against the hypothesis. ◻
@@ -212,6 +224,8 @@ The hypothesis is needed at every root and at all but finitely many primes. A fa
 **Proposition 8** (the square forced by the numerator recurrence). *Write $`\kappa=m/6`$ and $`\eta=6c/m`$, so that $`Q_{m,c}(n)=\kappa f(n+1)`$ for $`f(T)=T^3-T+\eta`$. Then $`\alpha^2-1`$ is a square in $`\mathbb{Q}(\alpha)^\times`$ for a root $`\alpha`$ of $`f`$.*
 
 </div>
+
+Lean: [transport square of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L240). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
 
 <div class="proof">
 
@@ -255,6 +269,8 @@ If $`r^2-1`$ were a nonsquare modulo $`\ell`$, then so would be the right side o
 **Lemma 9** (classification of the scales). *Let $`m`$ be a positive integer, let $`c\in\{-1,1\}`$ and $`\eta=6c/m`$, and suppose $`T^3-T+\eta`$ is irreducible over $`\mathbb{Q}`$ with a root $`\alpha`$ such that $`\alpha^2-1`$ is a square in $`\mathbb{Q}(\alpha)^\times`$. Then $`m=12`$.*
 
 </div>
+
+Lean: [scale twelve of square in root field](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/ScaleTwelve.lean#L36).
 
 <div class="proof">
 
@@ -342,6 +358,8 @@ The square condition uses three consecutive numerators. The last step also uses 
 
 </div>
 
+Lean: [plus one forbidden word](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L18), [minus one forbidden word](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L38).
+
 <div class="proof">
 
 *Proof.* Reduce modulo $`7`$. For $`c=1`$ the values of $`Q_{12,1}`$ at $`n=0,1,2,3`$ are $`1,13,49,121`$, that is
@@ -408,6 +426,8 @@ Then $`\lambda`$ is an integer $`d\ge2`$, and there are $`A\in\mathbb{Q}_{>0}`$ 
 
 </div>
 
+Lean: [regular rate extraction](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L874), [regular rate extraction cubic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L1151).
+
 <div class="proof">
 
 *Proof.* Put $`F_n=\Gamma(n+\lambda)/\Gamma(n)`$, so that $`F_{n+1}/F_n=1+\lambda/n`$ exactly and $`F_n\sim n^\lambda`$ by the gamma-ratio asymptotic \[dlmf_gamma, 5.11.12\]. Write $`\varepsilon_n=o(n^{-\lambda})`$ for the error in <a href="#long243:eq:regularrate" data-reference-type="eqref" data-reference="long243:eq:regularrate">[long243:eq:regularrate]</a> and $`z_n=C_n/F_n`$, so that $`z_{n+1}/z_n=1+\varepsilon_n/(1+\lambda/n)`$. Since $`\lambda>1`$ the errors are absolutely summable, so the product converges and $`z_n\to K`$ for some $`K>0`$, with $`z_n-K=o(n^{1-\lambda})`$. To see the stated error, put $`\eta_n=\sup_{k\ge n}k^\lambda|\varepsilon_k|\to0`$; the tail of the logarithmic product has absolute value at most $`O(\eta_n\sum_{k\ge n}k^{-\lambda})=o(n^{1-\lambda})`$. The factors are positive eventually, so the limiting product is nonzero. Hence
@@ -450,6 +470,8 @@ The precision in <a href="#long243:eq:regularrate" data-reference-type="eqref" d
 ```*
 
 </div>
+
+Lean: [canonical tail ratio quantitative](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204).
 
 <div class="proof">
 
@@ -584,6 +606,8 @@ Consequently, every exact orbit satisfies $`C_{n+1}=C_n-E_n`$.*
 
 </div>
 
+Lean: [next tail state eq sub centered](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57).
+
 <div class="proof">
 
 *Proof.* $`C-\bigl(D-(a-1)C\bigr)=aC-D`$. ◻
@@ -649,6 +673,8 @@ sD-(a-1)sC=s\,[D-(a-1)C].
 
 </div>
 
+Lean: [state scale](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L31).
+
 The three identities are formalised for the [denominator](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L65), [numerator](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L70) and [error](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L75). Multiplying the numerator and denominator by the same factor therefore preserves the recurrence and scales the error by that factor. When the factor divides all entries, we can divide it out instead. This is used in the finite calculation of Appendix <a href="#long243:app:residue" data-reference-type="ref" data-reference="long243:app:residue">16</a> and in the induction in Theorem <a href="#long243:res:periodic" data-reference-type="ref" data-reference="long243:res:periodic">44</a>.
 
 <a id="long243:sec:defect"></a>
@@ -674,6 +700,8 @@ the [Sylvester defect](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696
 that is, $`\Delta_n\,C_{n+1}=a_n^{2}E_n-E_{n+1}`$.*
 
 </div>
+
+Lean: [sylvester defect mul next tail state](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1775).
 
 <div class="proof">
 
@@ -703,6 +731,8 @@ then $`a'=a^2-a+1`$.*
 
 </div>
 
+Lean: [sylvester next eq of centered zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787).
+
 <div class="proof">
 
 *Proof.* Theorem <a href="#long243:res:defect" data-reference-type="ref" data-reference="long243:res:defect">16</a> gives $`[a'-(a^2-a+1)]\,(aC-D)=0`$. The second factor is nonzero, so the first factor must vanish. ◻
@@ -731,6 +761,8 @@ Then $`a^2u+hh_1u_2=h(a+a_1)u_1`$.*
 
 </div>
 
+Lean: [reduced second order int](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L42).
+
 <div class="proof">
 
 *Proof.* Multiply the first equation by $`a`$, replace $`av`$ using the second equation, and then replace $`h_1u_2+v_1`$ using the third. The remaining terms factor as the displayed right-hand side. ◻
@@ -753,6 +785,8 @@ q^2+\bigl(pp_2-p_1^2\bigr)=(a_1-a)pp_1.
 ```*
 
 </div>
+
+Lean: [cancellation free curvature square](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/DynamicCancellation.lean#L309).
 
 <div class="proof">
 
@@ -804,6 +838,8 @@ The identities hold under the local hypotheses displayed in their statements. It
 
 </div>
 
+Lean: [unit word saturates old modulus](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L39).
+
 <div class="proof">
 
 *Proof.* Set $`v_i\equiv0\pmod M`$ and choose $`a_i\equiv r_{i+1}r_i^{-1}\pmod M`$. Then $`r_{i+1}+v_i\equiv a_ir_i`$ and $`v_{i+1}\equiv a_iv_i`$. Eliminating $`v_i`$ gives the two-step identity automatically. ◻
@@ -818,6 +854,8 @@ This is finite residue compatibility, not existence of a positive integer orbit,
 
 </div>
 
+Lean: [sylvester next eventually of centered zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805).
+
 The sequence form is formalised as the [eventual Sylvester recurrence](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805). Take the larger of the two thresholds and apply Theorem <a href="#long243:res:step" data-reference-type="ref" data-reference="long243:res:step">18</a> at each later index. This is the final step of the criteria below that force $`E_n`$ to vanish eventually.
 
 The defect identity has a second consequence, which is what makes a single vanishing error worth having.
@@ -827,6 +865,8 @@ The defect identity has a second consequence, which is what makes a single vanis
 **Theorem 23** (zero is absorbing). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ be an exact orbit of natural numbers, so $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and let $`E_n=D_n-(a_n-1)C_n`$. Suppose the centring is strict, $`|E_n|<C_n`$ for every $`n`$. If $`E_n=0`$ then $`E_{n+1}=0`$.*
 
 </div>
+
+Lean: [centered state zero absorbing](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227).
 
 <div class="proof">
 
@@ -885,6 +925,8 @@ Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\in
 
 </div>
 
+Lean: [arithmetic weighted record dichotomy](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/ArithmeticWeightedRecord.lean#L264).
+
 <div class="proof">
 
 *Proof.* A bounded integer running maximum increases only finitely many times, so bounded $`U_n`$ gives a finite sum. Suppose instead that $`U_n`$ is unbounded. There are infinitely many record rises, each with $`\rho_n=1`$. Its multiplier is greater than one because $`d_n=(a_n-1)U_n-L_n>0`$. If $`r<s`$ are record indices, then $`a_r\mid L_s`$ and $`\gcd(a_s,L_s)=1`$, hence $`\gcd(a_r,a_s)=1`$. The record multipliers are therefore distinct and pairwise coprime. For any fixed $`B\ge1`$, choose $`B`$ of them greater than $`B`$, and take $`T`$ after their indices. These earlier multipliers $`m_0,\ldots,m_{B-1}`$ all divide $`L_T`$.
@@ -918,6 +960,8 @@ Only the lower centring bound was used. In particular, neither vanishing relativ
 ```*
 
 </div>
+
+Lean: [canonical weighted record excess](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202).
 
 <div class="proof">
 
@@ -1054,6 +1098,8 @@ In particular $`\nu_p(v')\le\max(r,s)`$. A strict loss relative to $`s`$ require
 
 </div>
 
+Lean: [reduced denominator valuation transition](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L244), [reduced denominator valuation le max](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L262), [reduced denominator valuation strict loss](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L279).
+
 <div class="proof">
 
 *Proof.* Always $`\nu_p(v')=r+s-\min(t,r+s)`$. If $`r\ne s`$, primitivity implies $`t=\min(r,s)`$: when $`s>0`$, $`u`$ is a $`p`$-adic unit, and when $`s=0<r`$, $`v`$ is a unit. If $`r=s>0`$, both terms in $`au-v`$ are divisible by $`p^s`$, so $`t\ge s`$; substituting gives the second case. If $`r=s=0`$, the same formula gives zero without needing $`u`$ to be a unit. ◻
@@ -1067,6 +1113,8 @@ Cancellation is not the same as a fall in the reduced denominator valuation. For
 **Corollary 27** (persistence of a prime power). *Suppose $`p^k\mid v_s`$. If $`w_n<p^{k+1}`$ at every step from $`s`$ through $`t-1`$, then $`p^k\mid v_t`$.*
 
 </div>
+
+Lean: [prime power persists](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/PowerPersistence.lean#L27).
 
 <div class="proof">
 
@@ -1086,6 +1134,8 @@ These are ordinary local calculations. They explain the persistence threshold us
 
 </div>
 
+Lean: [canonical quantitative record dichotomy](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [canonical record theta zero or gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L308), [canonical record theta eq zero iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L321), [canonical record theta gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L54).
+
 The constant in the next condition is measured against a double logarithm, not against $`C_n`$. This grows much more slowly than any positive power of $`C_n`$. Every fixed bound on $`(-E_n)_+`$ satisfies it on a nonzero tail because $`C_n\to\infty`$; it also permits unbounded negative parts on the double-logarithmic scale, with the coefficient specified below. In contrast, an error of size $`\sqrt{C_n}`$ has relative size tending to zero but violates the condition. These are comparisons of bounds, not constructions of reciprocal tails.
 
 <div id="long243:res:loglogboundary" class="corollary">
@@ -1100,6 +1150,8 @@ then the sequence is eventually Sylvester. Every counterexample therefore satisf
 ```*
 
 </div>
+
+Lean: [canonical inclusive log log criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129), [canonical negative error limsup gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L108).
 
 <div class="proof">
 
@@ -1186,11 +1238,15 @@ No upper bound on $`\Theta`$ is proved. If $`G_n`$ is unbounded, the theorem for
 
 </div>
 
+Lean: [record amplified](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L975), [amp bdd above iff sylvester](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L931), [rdelta bdd above iff amp](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L948), [eventually sylvester of amp le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L587), and 6 further declarations in the [coverage section](#long243:sec:coverage).
+
 <div id="long243:res:criticalrate" class="corollary">
 
 **Corollary 31** (the critical rate). *Under the standing hypotheses and $`\delta_n=O(1/n)`$, with no convergence of $`n\delta_n`$ assumed, eventual Sylvester behaviour is equivalent to $`u_n=O(n)`$ and to $`(-\tilde e_n)_+=O(1)`$. A counterexample at the critical rate therefore has $`\limsup_nu_n/n=\infty`$ and $`\limsup_n(-\tilde e_n)_+=\infty`$.*
 
 </div>
+
+Lean: [critical rate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1033), [critical rate counterexample](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1197), [r le of u le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1016).
 
 <div class="proof">
 
@@ -1227,6 +1283,8 @@ The prime $`p`$ may depend on $`n`$; no stable-gcd or prime-arrival assumption i
 
 </div>
 
+Lean: [odd prime power supply](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L790), [odd prime power supply nat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L718).
+
 <div class="proof">
 
 *Proof.* The denominator grows too fast for all its odd prime-power factors to remain small compared with $`H_n`$. Indeed, the estimate for the rational tail gives $`C_{n+1}/C_n\to1`$, hence $`\log H_n=o(n)`$. Since $`x_n=u_n/v_n\le2/a_n`$ and $`u_n\ge1`$, $`v_n\ge a_n/2`$. Also $`v_n\mid L_n=\operatorname{lcm}(q,a_0,\ldots,a_{n-1})`$, so the $`2`$-primary part of $`v_n`$ is at most $`\max(q,a_{n-1})=a_{n-1}`$ for all large $`n`$. Its odd part $`W_n`$ therefore satisfies
@@ -1250,6 +1308,8 @@ The argument compares the logarithm of the odd denominator part with the logarit
 
 </div>
 
+Lean: [unit record increment sylvester next](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L846), [unit record increment criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L950).
+
 <div class="proof">
 
 *Proof.* Suppose the orbit is not eventually Sylvester. Absorption gives $`\tilde e_n\ne0`$ on a late tail, so vanishing relative error and integrality give $`u_n\to\infty`$. Choose $`s`$ beyond the unit-increment and centring thresholds and the threshold in Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a> with $`A=3`$. Since $`H_s\ge R_s\ge1`$, it supplies an odd $`Q=p^k\mid v_s`$ with $`Q>(H_s+2)^3>4(R_s+2)`$ and $`Q\ge16`$. Let $`Y`$ be the least multiple of $`p`$ above $`R_s`$. Then $`Y\le R_s+p< Q/4+p\le5Q/4`$. At the first $`t>s`$ with $`u_t\ge Y`$, the integral unit-record increment forces $`u_t=Y`$. Before $`t`$, one has $`w_n<3u_n/2<15Q/8<pQ=p^{k+1}`$. Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">27</a> therefore gives $`p^k\mid v_t`$. But $`p\mid u_t=Y`$, contradicting $`\gcd(u_t,v_t)=1`$. The converse follows because a Sylvester tail has $`u_n=1`$ eventually. ◻
@@ -1270,6 +1330,8 @@ The two-unit criterion discussed below bounds the actual jump at each record ste
 
 </div>
 
+Lean: [epoch energy named crossing set](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L149), [mem barrier idx iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L34).
+
 <div class="proof">
 
 *Proof of Theorem <a href="#long243:res:epochenergy" data-reference-type="ref" data-reference="long243:res:epochenergy">34</a>.* For $`s\le n<\tau`$, one has $`u_n<L`$ and $`w_n<3u_n/2<3pQ/4<p^{\ell+1}`$, since $`Q=p^{\ell}`$. Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">27</a> gives $`Q\mid v_t`$ throughout $`[s,\tau]`$, so $`p\nmid u_t`$ there. A first crossing of a level above $`R_s`$ is a record step. If $`h_n\ge2`$ then $`u_{n+1}=w_n/h_n<3u_n/4`$, so every such record step has $`h_n=1`$. An odd multiple of $`p`$ cannot be landed on. A jump of size $`1`$ crossing it would land on it; a jump of size $`2`$ avoiding the landing would have two even endpoints, contrary to $`\gcd(u_n,u_{n+1})=1`$. Thus every $`n\in J`$ has $`d_n\ge3`$. It remains to count these levels. The interval $`(L/2,L]`$ has length $`pQ/4`$, and odd multiples of $`p`$ are spaced by $`2p`$, so it contains at least $`Q/8-1`$ of them. The levels first crossed by a step of size $`d_n`$ have the same spacing, so there are at most $`1+d_n/(2p)`$ of them. Summing over $`J`$ gives
@@ -1288,6 +1350,8 @@ The next series ignores record jumps of size at most two, apart from finitely ma
 +(d_n-2)_+u_n^{-1}\bigr)`$ is finite if and only if the sequence is eventually Sylvester; and $`\sum_{n\ \mathrm{record}}(d_n-2)_+u_n^{-1/2}`$ is finite if and only if the sequence is eventually Sylvester.*
 
 </div>
+
+Lean: [energy criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L468), [energy summable iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L414), [energy sqrt summable iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L455), [energy le two energy sqrt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L161), and 2 further declarations in the [coverage section](#long243:sec:coverage).
 
 <div class="proof">
 
@@ -1327,6 +1391,8 @@ The separate release contains [the integer inequality counting crossings before 
 **Theorem 36** (slow negative part). *Let $`(a,C,D)`$ be an exact orbit of natural numbers with $`a_n>1`$, $`C_n>0`$, $`D_0\ge1`$, under vanishing relative error. Suppose that for some $`\delta\in(0,1)`$ and all large $`n`$ with $`E_n<0`$ one has $`-E_n\le(1-\delta)\ell(C_n)`$. Then $`E_n=0`$ for all large $`n`$, and $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$.*
 
 </div>
+
+Lean: [slow negative eventually zero and sylvester next unconditional](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L559), [exact orbit record theta gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363), [exact orbit one le record theta](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L522), [exact orbit unbounded of error not eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L288), and 3 further declarations in the [coverage section](#long243:sec:coverage).
 
 Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a> is the case of a constant bound, since a constant is eventually below $`(1-\delta)\ell(C_n)`$ on a nonzero tail, where $`C_n\to\infty`$.
 
@@ -1368,6 +1434,8 @@ Q_n\le\frac{1-\delta}{q}\,
 ```*
 
 </div>
+
+Lean: [original coordinate bounded defect](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211), [original coordinate slow growth defect](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L155), [record theta le of slow negative](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L61), [prefix ratio le canonical numerator](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L111).
 
 For the bounded clause, use the stated denominator $`q`$, put $`P_n=\prod_{j<n}a_j`$, $`x_n=\sum_{k\ge n}1/a_k`$, and form the integer tail $`D_n=qP_n`$, $`C_n=D_nx_n`$, $`E_n=D_n-(a_n-1)C_n`$. Exact cancellation gives
 ``` math
@@ -1415,6 +1483,8 @@ then $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$. The same conclusion holds if, 
 In particular the one-sided bound by $`1/n`$ is included.*
 
 </div>
+
+Lean: [original coordinate strict one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean#L92), [original coordinate inclusive one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [original coordinate inclusive one pointwise](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225).
 
 <div class="proof">
 
@@ -1474,6 +1544,8 @@ Its least common multiple includes $`a_n`$ but not the clearing denominator $`q`
 
 </div>
 
+Lean: [overlap debt dvd gcd](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L206), [canonical error div overlap debt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L225), [growth defect eq neg relative error add shifted correction](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L325), [canonical growth defect identity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L415), and 8 further declarations in the [coverage section](#long243:sec:coverage).
+
 <div class="proof">
 
 *Proof.* Since both $`C_n=D_nx_n`$ and $`L_nx_n`$ are integers, $`M_n=D_n/L_n`$ divides $`C_n`$ as well as $`D_n`$. It therefore divides $`G_n`$. For <a href="#long243:eq:shiftedsign" data-reference-type="eqref" data-reference="long243:eq:shiftedsign">[long243:eq:shiftedsign]</a>, write $`\theta_n=E_n/C_n`$; Proposition <a href="#long243:res:update" data-reference-type="ref" data-reference="long243:res:update">13</a> gives $`C_{n+1}=C_n(1-\theta_n)`$ and $`D_n/C_n=a_n-1+\theta_n`$, so $`a_{n+1}-1+\theta_{n+1}=a_nD_n/C_{n+1}=a_n(a_n-1+\theta_n)/(1-\theta_n)`$. Multiplying the asserted identity by $`a_{n+1}`$ and substituting reduces it to $`a_{n+1}+a_n-1+\theta_{n+1}=a_n^2/(1-\theta_n)`$, which is the displayed relation with $`a_n`$ added to both sides. The bound follows from $`\theta_n\to0`$ and $`a_{n+1}\ge a_n^2/2`$. On Sylvester’s sequence $`\theta_n=0`$ and $`a_{n+1}=a_n^2-a_n+1`$, so $`a_n^2/a_{n+1}-1=(a_n-1)/a_{n+1}=\Lambda_n>0`$. ◻
@@ -1498,6 +1570,8 @@ m_i\nmid u_n\quad\text{for every }i\ge T\text{ and every }n,
 ```*
 
 </div>
+
+Lean: [exists avoiding in window](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L201), [exists slow rise avoiding sequence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L423).
 
 <div class="proof">
 
@@ -1545,6 +1619,8 @@ We return to zero-based indexing for the exact recurrences. If $`E_n\ge0`$, the 
 
 </div>
 
+Lean: [centered state eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1843).
+
 <div class="proof">
 
 *Proof.* The recurrence gives $`C_{n+1}\le C_n`$. Choose an index at which the natural-number sequence reaches its minimum. Every later value equals that minimum, and $`C_{n+1}+E_n=C_n`$ then gives $`E_n=0`$. ◻
@@ -1579,6 +1655,8 @@ Together with $`D_{n+1}=a_nD_n`$ this is a closed system in $`(a,D)`$. It has no
 **Theorem 43** (no constant negative magnitude). *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and <a href="#long243:eq:shape" data-reference-type="eqref" data-reference="long243:eq:shape">[long243:eq:shape]</a>. The same holds if the shape equation only begins at some index.*
 
 </div>
+
+Lean: [no constant negative shape equation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L38), [no eventually constant negative shape equation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L52).
 
 <div class="proof">
 
@@ -1626,6 +1704,8 @@ and suppose $`e_{n+h}=e_n`$ and $`C_{n+h}=C_n+M`$ for some $`h>0`$ and $`M>0`$. 
 
 </div>
 
+Lean: [no periodic negative shape equation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L68).
+
 <div class="proof">
 
 *Proof.* We use strong induction on the drift $`M`$. A prime divisor of $`M`$ that recurs among the multipliers need not give an immediate contradiction. It instead divides the whole orbit, allowing us to reduce $`M`$ by that prime and apply the induction hypothesis.
@@ -1668,6 +1748,8 @@ Periodicity is still a strong assumption. Removing it needs a different kind of 
 
 </div>
 
+Lean: [exists shifted block consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26).
+
 <div class="proof">
 
 *Proof.* Standard Chinese remaindering: solve $`t\equiv-i \pmod{m_i}`$ simultaneously, then add multiples of $`\prod_i m_i`$ to pass the bound. ◻
@@ -1689,6 +1771,8 @@ Lemma <a href="#long243:res:crt" data-reference-type="ref" data-reference="long
 **Theorem 47** (bounded increases and coprimality to earlier moduli). *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity with $`u_{n+1}\le u_n+B`$ for a fixed integer $`B\ge1`$. Then $`u`$ cannot remain coprime to infinitely many fresh pairwise coprime moduli: there is no family of pairwise coprime $`m_i\ge2`$, one for each index, such that $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
 </div>
+
+Lean: [no bounded rise coprime to earlier moduli](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44).
 
 The CRT block must lie above the initial segment where some moduli are not yet available. No monotonicity of $`u`$ is assumed.
 
@@ -1720,6 +1804,8 @@ Here $`u`$ is the numerator and $`v`$ the denominator: the two recurrences are t
 
 </div>
 
+Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
+
 <div class="proof">
 
 *Proof.* A common prime divisor of $`a_n`$ and $`v_n`$ would divide both $`u_{n+1}=a_nu_n-v_n`$ and $`v_{n+1}=a_nv_n`$, contradicting their coprimality. Hence $`\gcd(a_n,v_n)=1`$. For $`i<t`$, the denominator recurrence gives $`a_i\mid v_t`$. Combining this with $`\gcd(a_t,v_t)=1`$ proves that $`a_i`$ and $`a_t`$ are coprime; combining it with $`\gcd(u_t,v_t)=1`$ proves that $`a_i`$ and $`u_t`$ are coprime. ◻
@@ -1741,6 +1827,8 @@ An arbitrary orbit of Section <a href="#long243:sec:state" data-reference-type=
 **Proposition 50** (the tail gcd stabilises). *Let $`(a,D,C)`$ be an exact orbit of natural numbers, that is, a triple of $`\mathbb{N}`$-valued sequences with $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, whose error is $`E_n=D_n-(a_n-1)C_n`$. Suppose some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`\gcd(C_n,D_n)`$ is eventually constant, and beyond that index the orbit divided by the stable gcd is a reduced exact tail.*
 
 </div>
+
+Lean: [gcd stabilises and reduces](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
 
 <div class="proof">
 
@@ -1770,6 +1858,8 @@ G_n=G_{n+1}=\cdots=G_{n+L}.
 ```*
 
 </div>
+
+Lean: [sparse gcd changes](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean#L97).
 
 The first assertion is the [sublinear strict-growth theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2186); the second is the [arbitrarily late constant-block theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2202). The proof first converts vanishing relative error into subexponential growth of $`C_n`$. Each strict divisibility increase of $`G_n`$ contributes a factor of at least $`2`$, so $`2^{\Gamma(N)}G_0\le G_N\le C_N`$. Taking logarithms gives $`\Gamma(N)=o(N)`$. For $`L=0`$ the second assertion is immediate. For $`L\ge1`$, if every block of $`L`$ successive transitions beyond $`B`$ contained a strict increase, disjoint such blocks would give $`\Gamma(N)\ge(N-B)/L-O(1)`$, a contradiction.
 
@@ -1803,6 +1893,8 @@ The denominator recurrence is essential. For a scalar sequence, $`C_n=c+bn`$ and
 
 </div>
 
+Lean: [eventually bounded negative part eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360).
+
 <div class="proof">
 
 *Proof.* Suppose the error is not eventually zero. Absorption implies that $`|E_n|\ge1`$ after a sufficiently late centring threshold. Condition (6) therefore gives $`C_n\to\infty`$.
@@ -1818,6 +1910,8 @@ The theorem is [formalised with hypotheses (4) and (5) holding eventually](htt
 **Corollary 53**. *Under the hypotheses of Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a>, together with $`C_{n+1}\ne0`$ for all large $`n`$, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
 
 </div>
+
+Lean: [bounded negative part sylvester next eventually](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412).
 
 <div class="proof">
 
@@ -1846,6 +1940,8 @@ Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference
 then $`E_n=0`$ eventually. For an exact reciprocal-tail orbit this implies $`a_{n+1}=a_n^2-a_n+1`$ eventually. No hypothesis $`|E_n|/C_n\to0`$ is required.*
 
 </div>
+
+Lean: [finite negative mass paper](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84).
 
 </div>
 
@@ -1907,6 +2003,8 @@ and
 In particular, negative indices occur infinitely often. Thus the remaining regime consists of unbounded negative errors along exact reciprocal tails for which the sum of relative increases diverges.*
 
 </div>
+
+Lean: [canonical frontier](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
 
 <div class="proof">
 
@@ -2079,6 +2177,8 @@ Thus the bounded-increment hypothesis of Theorem <a href="#long243:res:barrier"
 
 </div>
 
+Lean: [exists sparse prime coprime sequence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L862).
+
 <div class="proof">
 
 *Proof.* Choose increasing primes $`p_i>\max\{\exp(\exp((i+2)^2)),2^{i+3}\}`$, for $`i\ge0`$. Primes of arbitrarily large size suffice; no distribution theorem is used. Then $`\theta=\sum_i1/p_i<1/4`$ and $`k(z)=\#\{i:p_i\le z\}\le\sqrt{\log\log z}`$ whenever $`z`$ is large. For integer $`x`$ put $`L(x)=\lceil4\sqrt{\log\log(x+e^e)}+8\rceil`$. Since $`L(x)=o(x)`$, eventually $`L(x)>k(x+L(x))/(1-\theta)`$. The elementary window bound of Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">40</a> leaves an integer in $`[x,x+L(x))`$ divisible by no $`p_i`$. The set of such integers is therefore unbounded. Enumerate it increasingly as $`(u_n)`$ and apply the same bound with $`x=u_n+1`$ to obtain $`u_{n+1}-u_n\le L(u_n+1)`$. For prime moduli nondivisibility is exactly coprimality, proving every claim. The moduli are deliberately much sparser than the scale used in the next theorem. ◻
@@ -2096,6 +2196,8 @@ We now keep the full family of moduli, rather than discarding a prefix as in Pro
 This is a statement about avoidance of multiples of whole moduli. It is not a statement about coprimality to composite $`m_j`$, or about integer tail orbits.*
 
 </div>
+
+Lean: [maximal gap limsup eq inv sigma](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/MaximalGapConstant.lean#L1041).
 
 <div class="proof">
 
@@ -2178,6 +2280,10 @@ The main-repository links retain revision `3d6d938d696f`; other links specify th
 <a id="long243:sec:coverage"></a>
 
 ## Formalisation coverage and remaining dependencies
+
+<div id="coverage">
+
+</div>
 
 Every theorem, lemma, proposition and corollary of this record other than the four listed below has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`.
 
@@ -2302,6 +2408,8 @@ the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696
 **Theorem 63** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 
 </div>
+
+Lean: [forced orbit survives iff of factorial mod eq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForcedOrbitResidueHorizon.lean#L21), [forced survives iff of mod eq factorial](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134).
 
 <div class="proof">
 
