@@ -82,7 +82,7 @@ those assessments in one place avoids conflicting summaries.
 <!-- END problem_programme_card -->
 
 The [cross-problem paper, Reading Eight Erdős Problems Together](../paper/synthesis/optimal-sparse-perturbations.pdf)
-joins the interval/capacity criterion, Lambert subsums across bases, method
+joins the capacity criterion, Lambert subsums across bases, method
 limits, exact computations and unsuccessful approaches in one account. This
 is a central use of the collection: read the papers and Lean corpus together,
 find constructions or obstructions that survive in a more general setting,
