@@ -577,7 +577,7 @@ def check_export_file_transport_preserves_raw_data_and_clean_environment() -> No
     with patch.dict(os.environ, {
         builder.LEAN_DEPENDENCY_EXPORT_FILE_ENV: "/wrong/ambient/output",
         "GIT_DIR": "/wrong/git", "PYTHONPATH": "/wrong/python",
-    }), patch.object(builder.subprocess, "run", side_effect=export_to_file), \
+    }), patch.object(builder.singleflight, "run_bounded", side_effect=export_to_file), \
          patch.object(builder, "preserve_export_diagnostics") as diagnostics, \
          patch.object(builder, "parse_environment_output", wraps=builder.parse_environment_output) as parse:
         nodes, _relations, omissions, _shapes = builder.export_environment()
@@ -600,7 +600,7 @@ def check_export_file_transport_rejects_missing_or_empty_output() -> None:
             # Even valid legacy stdout must not conceal a broken file transport.
             return subprocess.CompletedProcess(command, 0, "AIW_NODE\tx\tPkg\n", "")
 
-        with patch.object(builder.subprocess, "run", side_effect=empty_export), \
+        with patch.object(builder.singleflight, "run_bounded", side_effect=empty_export), \
              patch.object(builder, "preserve_export_diagnostics"), \
              patch.object(builder, "parse_environment_output") as parse:
             try:
@@ -626,7 +626,7 @@ def check_export_file_transport_cleans_partial_output_on_failure() -> None:
                 raise subprocess.TimeoutExpired(command, 1, output=b"timeout diagnostic")
             return subprocess.CompletedProcess(command, failure, "failure diagnostic\n", "")
 
-        with patch.object(builder.subprocess, "run", side_effect=failed_export), \
+        with patch.object(builder.singleflight, "run_bounded", side_effect=failed_export), \
              patch.object(builder, "preserve_export_diagnostics"), \
              patch.object(builder, "parse_environment_output") as parse:
             try:
