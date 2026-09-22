@@ -13,9 +13,10 @@ the eventual recurrence $a_{n+1}=a_n^2-a_n+1$ under the more general limit
 $a_{n+1}/a_n^2\to1$. They control either increases of an integer tail
 numerator or a convergent sum at steps setting new maxima. The paper
 gives the underlying recurrences, their relation to earlier work, and
-examples separating numerical growth bounds from the exact recurrences. The cubic
-proof and the further written arguments are distinguished from the
-specific theorems formalised in Lean. None of the additional bounds is
+examples separating numerical growth bounds from the exact recurrences. The
+cubic-rate theorem is checked in Lean, together with every lemma used in its
+proof. The further written arguments are distinguished from the specific
+theorems formalised in Lean. None of the additional bounds is
 derived for every rational reciprocal sum in Erd\H{o}s Problem~\#243.
 \end{abstract}
 
@@ -332,6 +333,24 @@ $\overline\beta\notin\Fp_\ell$.  Then $H(\overline\alpha)=\overline\beta^{\,2}$
 is a nonsquare in $\Fp_\ell$ at a root of the reduction of $f$, against the
 hypothesis.
 \end{proof}
+
+The Lean proof of Lemma~\ref{long243:res:squarespec}
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean\#L184}{square specialisation})
+avoids the Chebotarev density theorem. It uses only the fact that an
+algebraic integer $b$ of a number field $K$ that is not a square in $K$ is
+zero or a nonsquare modulo infinitely many primes of $K$ of degree one. If
+$H(\alpha)$ is not a square in $K=\Q(\alpha)$, this applies to
+$b=m^2H(\alpha)$, where the nonzero integer $m$ makes $b$ an algebraic
+integer, and the residue map at such a prime, of norm $\ell$, sends $\alpha$
+to a root $r\in\Fp_\ell$ of the reduction of $f$ at which $H(r)$ is not a
+nonzero square. That fact
+(\href{\laterepobase/lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean\#L40}{nonsquares modulo primes})
+is proved from the simple pole of the Dedekind zeta function at $s=1$, which
+is in Mathlib. If $b$ were a nonzero square modulo all but finitely many
+primes of degree one, these primes would split in $K(\sqrt b)$, and for real
+$s>1$ near $1$ the zeta function of $K(\sqrt b)$ would be at least a positive
+constant times the square of the zeta function of $K$, which the two simple
+poles forbid.
 
 The hypothesis is needed at every root and at all but finitely many primes.  A
 favourable finite set of tested primes would not suffice.
@@ -667,12 +686,14 @@ the image $\{0,2,5,6\}$ modulo $7$ and the condition
 $(r^2+s^2)^2\mid48$ have been calculated above. The public checkpoint
 also contains formalised polynomial extraction, primitive cubic
 normalisation and finite transport results, including
-\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean\#L112}{the primitive-shape theorem}. These are components, not an assembled proof of
-Theorem~\ref{long243:res:cubicrate}. No declaration of that complete
-irrationality implication has been identified in the supplied source index.
-Lemma~\ref{long243:res:squarespec} uses the classical finite-Galois
-Chebotarev theorem; its use must be justified by the number-field argument,
-not by finite residue computations.
+\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean\#L112}{the primitive-shape theorem}. These are components of the proof of
+Theorem~\ref{long243:res:cubicrate}. The complete irrationality implication
+is also a Lean theorem,
+\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean\#L70}{cubic-rate irrationality},
+whose only hypotheses are those of Theorem~\ref{long243:res:cubicrate}.
+Lemma~\ref{long243:res:squarespec} is proved above from the classical
+finite-Galois Chebotarev theorem, and its Lean proof uses the simple pole of
+the Dedekind zeta function instead.
 
 Theorem~\ref{long243:res:cubicrate} assumes neither rationality nor an
 integer orbit: these enter only under the supposition that the reciprocal
@@ -926,9 +947,11 @@ existing formal proof of Erd\H{o}s~\#243.
 
 \paragraph{Results and proof status.}
 The cubic-rate theorem (Theorem~\ref{long243:res:cubicrate}) and the three
-results its proof passes through are checked in the development, with the
-input of Lemma~\ref{long243:res:squarespec} as their only assumption;
-Section~\ref{long243:sec:coverage} states that assumption in full. The
+results its proof passes through, Theorem~\ref{long243:res:cubicexclusion},
+Proposition~\ref{long243:res:transportsquare} and
+Lemma~\ref{long243:res:squarespec}, are checked in the development with no
+additional hypothesis; Section~\ref{long243:sec:coverage} gives the
+revision. The
 bounded-negative theorem
 (Theorem~\ref{long243:res:bounded}) and the scalar summability theorem
 (Theorem~\ref{long243:res:mass}) have checked declarations. The checked
@@ -3792,29 +3815,20 @@ hypotheses, checked by the Lean kernel using only the axioms
 \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, in the
 development at revision \texttt{181078b6b009}.
 
-The exceptions are one chain of results with one shared input.  The
-development verifies the reduction of Lemma~\ref{long243:res:squarespec},
+The four are Lemma~\ref{long243:res:squarespec},
 Proposition~\ref{long243:res:transportsquare},
 Theorem~\ref{long243:res:cubicexclusion} and
-Theorem~\ref{long243:res:cubicrate} to the following input: for a finite
-Galois extension of $\Q$, a prescribed element $\sigma$ of its Galois group
-and a nonzero algebraic integer of the extension, there are arbitrarily large
-rational primes at which $\sigma$ is a Frobenius element and at which that
-integer has nonzero reduction.  The first clause is the Chebotarev density
-theorem in the form cited in the proof of
-Lemma~\ref{long243:res:squarespec}~\cite[\S3, p.~15]{stevenhagenlenstra1996};
-the second is the elementary fact that a nonzero algebraic integer is
-divisible by only finitely many rational primes.  A formal proof of that
-input is not included in the verified development; these four endpoints
-therefore remain conditional on it.  Everything the chain adds to it is
-checked: the square forced modulo a prime dividing a middle numerator, the
-passage from that congruence to a square in the cubic field, the exclusion of
-the proposed cubic orbit, and the irrationality conclusion.
-
-A theorem whose own statement is conditional is formalised exactly as stated,
-with its hypothesis intact.  The four results above are asserted
-unconditionally in this record, and their Lean counterparts carry the
-additional named input described here.
+Theorem~\ref{long243:res:cubicrate}, one chain of results proved later.
+Each has a Lean statement of the same assertion, checked by the Lean kernel
+using only those three axioms, at revision \texttt{e4ba6841dfdb}
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean\#L35}{the four statements}).
+The Lean proof of Lemma~\ref{long243:res:squarespec} replaces the Chebotarev
+density theorem, used in the proof printed here, by the simple pole of the
+Dedekind zeta function at $s=1$, as described after that proof.  The other
+three are deduced from the lemma in Lean through the square forced modulo a
+prime dividing a middle numerator, the passage from that congruence to a
+square in the cubic field, the exclusion of the proposed cubic orbit, and the
+irrationality conclusion.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -4074,8 +4088,9 @@ The tail estimate and finite differences of the Gamma ratio force an
 eventual cubic polynomial for the integer numerator. The recurrence and
 Chebotar\"ev then force a square in the cubic field. The trace calculation
 leaves $m=12$, and both possible signs are excluded modulo seven.
-This is an ordinary proof. Finite checks and component sources do not
-constitute a formal proof of the complete cubic-rate theorem.
+The complete cubic-rate theorem is also checked in Lean, where the square in
+the cubic field comes from the simple pole of the Dedekind zeta function in
+place of Chebotar\"ev's theorem.
 
 \paragraph{Static barriers.}
 For sufficiently sparse prime moduli, a coprime integer sequence can

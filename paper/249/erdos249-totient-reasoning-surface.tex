@@ -62,7 +62,7 @@
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
 % Sources that postdate \commit are cited with their lean/ path and resolve at \latecommit,
 % whose tree keeps the Lean roots under lean/.
-\newcommand{\latecommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
+\newcommand{\latecommit}{e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8}
 \newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -8162,7 +8162,20 @@ the claimed bound follows.
 \end{proof}
 
 \noindent
-\ev{Math} for this deduction. The cited inputs are the fixed-$u$
+\ev{Lean} for the whole proposition,
+\lean{ErdosProblems.Erdos249.PaperCompleteR21.prop\_dickman}{lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean:556}.
+The Lean proof uses no smooth-number asymptotic. For large $X$,
+$y_X^2>2X+t-1$, so an integer in $(X+t-1,2X+t-1]$ that is not
+$y_X$-smooth has exactly one prime factor above $y_X$, and
+\[
+ \Psi(2X+t-1,y_X)-\Psi(X+t-1,y_X)
+ =X-\sum_{y_X<p\le2X+t-1}
+ \left(\left\lfloor\frac{2X+t-1}{p}\right\rfloor
+      -\left\lfloor\frac{X+t-1}{p}\right\rfloor\right).
+\]
+Mertens' theorems, proved in the development with explicit constants,
+then give $(1-\log2)X+O(X/\log X)$. The written proof above
+cites instead the fixed-$u$
 asymptotic~\cite[(1.1), p.~268]{granville-smooth} and the value
 $\rho(u)=1-\log u$ on $[1,2]$~\cite[(1.3), p.~268]{granville-smooth}.
 No effective crossover scale or exact density for the unassigned indices
@@ -9542,6 +9555,11 @@ hypotheses, checked by the Lean kernel using only the axioms
 \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, in the
 development at revision \texttt{181078b6b009}.
 
+Proposition~\ref{prop:dickman}, one of the five, was proved later.  It has a
+Lean statement of the same assertion, checked by the Lean kernel using only
+those three axioms, at revision \texttt{e4ba6841dfdb}; the paragraph after
+its proof describes the Lean argument.
+
 Propositions~\ref{prop:zetaq} and~\ref{catalogue:mob:a4} share one input. The
 displayed three-term identity is unconditional and checked in both. The
 development verifies the reduction of the irrationality clause to the theorem
@@ -9557,18 +9575,16 @@ Nesterenko's theorem on the algebraic independence of the three Eisenstein
 values at an algebraic point of the punctured unit
 disc~\cite[Cor.~2, p.~1320]{nesterenko1996}.
 
-Propositions~\ref{prop:dickman} and~\ref{prop:badcof} are incomplete in a
-different way: part of each proof is formalised and a named later step is not.
-For Proposition~\ref{prop:dickman} the bound $P(n)\le y_X$ at an unassigned
-index is checked; the passage from it to the count of smooth integers in the
-two intervals, and the fixed-parameter asymptotic evaluating that count, are
-not. For Proposition~\ref{prop:badcof} the development carries the counting
-function of indices with excluded cofactor, and neither Schoenberg's theorem
-nor the partial summation over $m\le\sqrt X/2$ is formalised.
+Proposition~\ref{prop:badcof} is incomplete in a different way: part of its
+proof is formalised and a named later step is not. The development carries
+the counting function of indices with excluded cofactor, and neither
+Schoenberg's theorem nor the partial summation over $m\le\sqrt X/2$ is
+formalised.
 
 A theorem whose own statement is conditional is formalised exactly as stated.
-The five results above are asserted unconditionally in this record; the first
-three have Lean counterparts carrying a named input, and for the last two only
+Propositions~\ref{prop:zetaq}, \ref{catalogue:mob:a4}, \ref{prop:D7-inv}
+and~\ref{prop:badcof} are asserted unconditionally in this record; the first
+three have Lean counterparts carrying a named input, and for the last only
 part of the argument is formalised.
 
 % BEGIN GENERATED CONCORDANCE (claude_lane/build_concordance.py; do not edit by hand)
