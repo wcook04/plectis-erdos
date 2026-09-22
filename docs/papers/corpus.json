@@ -7707,10 +7707,10 @@
         "title": "Reading Eight Erd\u0151s Problems Together",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.tex",
+        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7721,12 +7721,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:1c34dc599349794d24826815537ad2dcf74bb38b20479c1856b9516350666ebd",
+      "source_sha256": "sha256:15e5174aa5a2cf6268cd28f0fc353e212ba2fff64561c230325d36d56f90e34d",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/synthesis/optimal-sparse-perturbations.tex",
-      "section_count": 27,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
+      "section_count": 34,
       "sections": [
         {
           "level": 1,
@@ -7742,163 +7742,205 @@
         },
         {
           "level": 1,
+          "id": "capacity:sec:jets-intro",
+          "title": "Prescribing a value and its derivatives",
+          "line": 27
+        },
+        {
+          "level": 1,
           "id": "capacity:sec:criterion",
           "title": "An exact capacity criterion",
-          "line": 25
+          "line": 73
         },
         {
           "level": 2,
           "id": "the-sharp-support-threshold",
           "title": "The sharp support threshold",
-          "line": 51
+          "line": 99
         },
         {
           "level": 2,
           "id": "capacity:sec:capacity-proof",
           "title": "Proof of the capacity criterion",
-          "line": 106
+          "line": 154
         },
         {
           "level": 3,
           "id": "bounded-capacity-along-a-subsequence",
           "title": "Bounded capacity along a subsequence",
-          "line": 112
+          "line": 160
         },
         {
           "level": 3,
           "id": "one-continuation-interval-for-every-cumulative-residue",
           "title": "One continuation interval for every cumulative residue",
-          "line": 122
+          "line": 170
         },
         {
           "level": 3,
           "id": "from-one-interval-to-every-nonnegative-target",
           "title": "From one interval to every nonnegative target",
-          "line": 163
+          "line": 211
         },
         {
           "level": 2,
           "id": "capacity:sec:negative",
           "title": "Why a large gap prevents interval filling",
-          "line": 177
+          "line": 225
         },
         {
           "level": 2,
           "id": "a-digit-that-also-corrects-the-cumulative-residue",
           "title": "A digit that also corrects the cumulative residue",
-          "line": 203
+          "line": 251
         },
         {
           "level": 2,
           "id": "the-positive-direction-and-the-arithmetic-cost",
           "title": "The positive direction and the arithmetic cost",
-          "line": 237
+          "line": 285
         },
         {
           "level": 2,
           "id": "capacity:sec:carry",
           "title": "A common-divisor test for irrationality",
-          "line": 273
+          "line": 321
         },
         {
           "level": 2,
           "id": "why-a-small-allowance-along-a-subsequence-is-insufficient",
           "title": "Why a small allowance along a subsequence is insufficient",
-          "line": 316
+          "line": 364
+        },
+        {
+          "level": 1,
+          "id": "capacity:sec:jets-proof",
+          "title": "Proof of the derivative interpolation theorem",
+          "line": 379
+        },
+        {
+          "level": 2,
+          "id": "nullity-at-and-below-the-critical-exponent",
+          "title": "Nullity at and below the critical exponent",
+          "line": 385
+        },
+        {
+          "level": 2,
+          "id": "lifting-a-scalar-interval-to-an-open-set",
+          "title": "Lifting a scalar interval to an open set",
+          "line": 399
+        },
+        {
+          "level": 2,
+          "id": "the-upper-bound-for-hausdorff-dimension",
+          "title": "The upper bound for Hausdorff dimension",
+          "line": 422
+        },
+        {
+          "level": 2,
+          "id": "a-separated-construction-attaining-the-dimension",
+          "title": "A separated construction attaining the dimension",
+          "line": 428
+        },
+        {
+          "level": 1,
+          "id": "capacity:sec:rational-jets",
+          "title": "The arithmetic threshold for rational derivatives",
+          "line": 476
         },
         {
           "level": 1,
           "id": "sec:results",
           "title": "Lambert subsums across bases",
-          "line": 331
+          "line": 524
         },
         {
           "level": 4,
           "id": "evidence.",
           "title": "Evidence.",
-          "line": 396
+          "line": 589
         },
         {
           "level": 2,
           "id": "sec:dichotomy",
           "title": "Choices against contraction",
-          "line": 402
+          "line": 595
         },
         {
           "level": 2,
           "id": "sec:bases",
           "title": "The subseries across bases",
-          "line": 424
+          "line": 617
         },
         {
           "level": 2,
           "id": "sec:base2",
           "title": "Base two",
-          "line": 469
+          "line": 662
         },
         {
           "level": 3,
           "id": "sec:lemmas",
           "title": "Removed intervals and finite translations",
-          "line": 473
+          "line": 666
         },
         {
           "level": 3,
           "id": "fixed-depth-rational-counts",
           "title": "Fixed-depth rational counts",
-          "line": 507
+          "line": 700
         },
         {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 543
+          "line": 736
         },
         {
           "level": 1,
           "id": "sec:misread",
           "title": "The computation and its limits",
-          "line": 566
+          "line": 759
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 593
+          "line": 786
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 607
+          "line": 800
         },
         {
           "level": 1,
           "id": "capacity:sec:sources",
           "title": "Sources and formal correspondence",
-          "line": 621
+          "line": 814
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Further questions",
-          "line": 631
+          "line": 832
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 709
+          "line": 910
         }
       ],
-      "citations_rendered": 57,
+      "citations_rendered": 59,
       "fallback_title_drift": {
         "registry_fallback": "An Exact Capacity Criterion for Series with Eventual Congruences",
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:0d9102a7c37c5d4fd60f1f58d410a0f927b02d733c570d3ef492615b25d210aa",
-      "pdf_byte_count": 163286,
+      "pdf_sha256": "sha256:d02daa8e8c171768e02fc97513c6c0515781c42774631293f416e06072f4054b",
+      "pdf_byte_count": 198886,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7911,17 +7953,17 @@
           {
             "id": "capacity:sec:criterion",
             "title": "An exact capacity criterion",
-            "line": 25
+            "line": 73
           },
           {
             "id": "sec:results",
             "title": "Lambert subsums across bases",
-            "line": 331
+            "line": 524
           },
           {
             "id": "sec:questions",
             "title": "Further questions",
-            "line": 631
+            "line": 832
           }
         ],
         "unresolved_count": 0

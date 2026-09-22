@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "exact_checks": 3167,
+  "covers": [
+    "all tested carry powers and derivative orders",
+    "finite carry endpoint terms",
+    "integer annihilators",
+    "moving Taylor coordinates",
+    "infinite tail majorant",
+    "quotient prefix and complementary tail identities",
+    "fractional and saturated entropy allocations"
+  ],
+  "boundary": "finite algebra and one uniform tail certificate; the general theorem is an ordinary proof",
+  "schema": "factorial-jet-validation/2",
+  "ordinary_theorems": [
+    "capacity:thm:jets",
+    "capacity:thm:rational-jets"
+  ],
+  "proof_boundary": "The complete dimension, interior, nullity and rational-derivative rigidity theorems have ordinary proofs. This command checks finite identities and a uniform tail majorant; it does not invoke Lean or verify the complete theorems.",
+  "sources": {
+    "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:15e5174aa5a2cf6268cd28f0fc353e212ba2fff64561c230325d36d56f90e34d",
+    "paper/synthesis/optimal-sparse-perturbations.pdf": "sha256:d02daa8e8c171768e02fc97513c6c0515781c42774631293f416e06072f4054b",
+    "lean/ErdosProblems/Synthesis/FactorialJet.lean": "sha256:9dde1d09e5e65f29c8ce4d0b9c8c3aa19ce52ace2641b3c8e9e42a91872f4514",
+    "research/experiments/sparse_interpolation/jets.py": "sha256:f400a015ef7938743f0b4dbe702d0005a454ff8885486baf31b2cd4ab7678682"
+  }
+}

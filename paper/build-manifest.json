@@ -192,9 +192,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b",
-        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:1c34dc599349794d24826815537ad2dcf74bb38b20479c1856b9516350666ebd"
+        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:15e5174aa5a2cf6268cd28f0fc353e212ba2fff64561c230325d36d56f90e34d"
       },
-      "rendered_content_digest": "sha256:0d9102a7c37c5d4fd60f1f58d410a0f927b02d733c570d3ef492615b25d210aa",
+      "rendered_content_digest": "sha256:d02daa8e8c171768e02fc97513c6c0515781c42774631293f416e06072f4054b",
       "source_path": "paper/synthesis/optimal-sparse-perturbations.tex",
       "storage_path": "paper/synthesis/optimal-sparse-perturbations.pdf"
     },

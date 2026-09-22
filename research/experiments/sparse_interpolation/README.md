@@ -1,7 +1,51 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
-# An exact capacity criterion for eventual congruences
+# Capacity, dimension, and derivative interpolation
+
+The revised [synthesis paper](../../../paper/synthesis/optimal-sparse-perturbations.tex)
+proves the following joint theorem. For
+`f(z) = sum e_n z^n/n!`, with nonnegative integer `e_n <= n^c` eventually
+and `q | e_n` eventually for every fixed positive integer `q`, the attainable
+vectors `(f(1), ..., f^(d-1)(1))` have Hausdorff dimension `min(c,d)`.
+They contain an open set exactly when `c > d`; when `c <= d` they are null
+and meagre. At the critical exponent the set is full-dimensional and null.
+The lower bound and the open set can be constructed with the allowance at
+every position, any prescribed initial zero segment, and common congruence
+cutoffs. This is an ordinary proof, with finite carry ingredients checked
+in [FactorialJet.lean](../../../lean/ErdosProblems/Synthesis/FactorialJet.lean).
+
+There is a matching arithmetic theorem. If signed integer coefficients
+`a_n = O(n^d)` are eventually divisible by every fixed integer, rationality
+of `f(1), ..., f^(d-1)(1)` forces `f` to be a polynomial. In the nonnegative
+class above, a nonpolynomial function with all these derivatives rational
+therefore exists exactly when `c > d`. For example, at growth `n^2`, a
+nonpolynomial function with rational value at 1 must have irrational first
+derivative there; growth `n^(2+epsilon)` permits both to be rational.
+The full theorem has an ordinary proof, not a Lean formalisation.
+
+The new proof uses a factorial carry as multiplication of an exponential
+generating function by `(z-1)`. Repeating it supplies higher derivatives
+without changing lower ones. At the critical exponent, eventual evenness
+alone forces measure zero. Moving Taylor coordinates then separate
+the codes needed for the dimension lower bound. In the reverse direction,
+division by `(z-1)^d` preserves integer factorial coefficients and eventual
+divisibility. A complementary tail formula bounds the quotient's coefficients,
+forcing them eventually to vanish. See
+[the proof review](jet-review.md) for the exact scope, attribution and
+remaining novelty boundary. No claim of a field-changing discovery is made.
+
+## Extend this component and return the result
+
+The [interval-cover calculation and contribution guide](coverage.md) explains
+the exact effect of combined congruences, the contract/implementation/policy
+boundary, and how a recipient checks a returned result against a separately
+saved request. It includes the ordinary proof and the precise remaining
+infinite-continuation obligations. Policies and new constraints use the same
+[submission and credit path](../../../CONTRIBUTING.md#return-what-you-learned)
+as a paper correction.
+
+## Scalar theorem used by the derivative construction
 
 For positive integer denominators `Q_n | Q_(n+1)` with
 `Q_(n+1) >= 2 Q_n`, and nonnegative integer allowances with
@@ -39,16 +83,6 @@ The strongest simple example is quadratic: removing only the powers of two
 from the permitted positions destroys interval filling, although the support
 still has density one. For allowance `n^(2+epsilon)`, the even positions fill
 an interval. Counting the total number of digits misses this distinction.
-
-## Extend this component and return the result
-
-The [interval-cover calculation and contribution guide](coverage.md) explains
-the exact effect of combined congruences, the contract/implementation/policy
-boundary, and how a recipient checks a returned result against a separately
-saved request. It includes the ordinary proof and the precise remaining
-infinite-continuation obligations. Policies and new constraints use the same
-[submission and credit path](../../../CONTRIBUTING.md#return-what-you-learned)
-as a paper correction.
 
 ## How the question changed
 
@@ -91,6 +125,7 @@ From the repository root:
 python3 research/experiments/sparse_interpolation/feedback.py
 python3 research/experiments/sparse_interpolation/capacity.py
 python3 research/experiments/sparse_interpolation/late_rejection.py
+python3 research/experiments/sparse_interpolation/jets.py
 python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis
 ```
 
@@ -267,8 +302,7 @@ earlier coordinate-recovery experiment supply one.
 - No Erdős endpoint, Comparator status, Palomar status, or novelty claim is
   changed by this experiment.
 
-The next substantial question is the Hausdorff dimension in the null case.
-The criterion distinguishes interval filling from nullity and meagreness;
-it does not classify the dimensions of those null sets. Extending outside
-integer divisibility chains would require a new replacement for the prefix
-lattice argument.
+The derivative theorem now gives the exact dimension for full factorial
+support with power allowances. Dimension for arbitrary supports and summable
+allowances remains outside that theorem. Extending outside integer
+divisibility chains would require a replacement for the prefix lattice.

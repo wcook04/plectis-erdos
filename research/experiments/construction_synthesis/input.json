@@ -1,0 +1,35 @@
+{
+  "source": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+  "definitions": [
+    {
+      "name": "sylvesterNext",
+      "arguments": [
+        "a"
+      ],
+      "body": "a ^ 2 - a + 1",
+      "line": 37,
+      "definition_sha256": "e54e7c7d06b389b4fa3b34da5841423124ed3aaa6fc83efa8456a9bdcaabef13"
+    },
+    {
+      "name": "nextDenState",
+      "arguments": [
+        "a",
+        "D"
+      ],
+      "body": "a * D",
+      "line": 41,
+      "definition_sha256": "c0c0bb4925e27e1b9fe4302ad9fe5653863072371c4b26b9c490f1c57a3d2efa"
+    },
+    {
+      "name": "nextTailState",
+      "arguments": [
+        "a",
+        "D",
+        "C"
+      ],
+      "body": "a * C - D",
+      "line": 45,
+      "definition_sha256": "e89863b104dd672f73663428e6c06ee824277b083a73720efc15805e392ae6a5"
+    }
+  ]
+}
