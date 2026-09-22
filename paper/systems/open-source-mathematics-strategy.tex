@@ -24,7 +24,7 @@
 \title{From Spare Compute to Cumulative Mathematics}
 \subtitle{An open-source strategy for agent-assisted research on hard problems}
 \author{Will Cook}
-\date{August 2026}
+\date{September 2026}
 
 \begin{document}
 \maketitle
@@ -65,7 +65,10 @@ counterexample due to the erdosproblems.com contributor
 formalised in Lean in this repository, refutes the total-variation formulation
 of Problem 1041; correspondence with its historical curve-length question
 remains unreviewed. The other seven
-targets remain unresolved here. The repository is a proof of concept for cumulative research
+targets remain unresolved here. In the 257 lane, the repository formalises
+the classical irrationality theorem for the full-support Mersenne series at
+every integer base at least two; the arbitrary-support question remains open.
+The repository is a proof of concept for cumulative research
 infrastructure, not evidence that distributed agents already outperform
 mathematicians or that additional compute will solve a named problem. As of
 14 September 2026, the author had not recorded a completed external cold-clone use
@@ -153,6 +156,19 @@ repository carries one such investigation in full, including the step at which
 it corrected its own first reading of its data
 (\repolink{research/experiments/choices_contraction/README.md}{choices,
 contraction and rational membership}).
+
+A second cross-problem investigation gives a small example of why returned
+work needs an exact limit. The rational number $189/388$ survives the first
+sixteen steps of a Mersenne greedy test and is rejected at step seventeen by
+exact rational arithmetic. This refutes a proposed extrapolation from a
+fixed-depth counting theorem; it does not make finite survival a certificate
+of membership. The
+\href{\repobase/blob/61e2e6a6b852d5250f0c722132531d7784664bbe/research/experiments/sparse_interpolation/late_rejection.py}{reproduction program}
+and the
+\href{\repobase/blob/61e2e6a6b852d5250f0c722132531d7784664bbe/paper/synthesis/optimal-sparse-perturbations.tex}{synthesis paper}
+give the arithmetic and the surviving theorem. It is a contribution even
+though it closes no listed endpoint: the next run no longer starts from the
+false stopping rule.
 
 \subsection*{Two coupled goals, not one endless agent}
 \papersectiontarget{strategy-coupled-goals}
@@ -456,6 +472,18 @@ declaration or find that the two statements disagree.  A literature reader
 may locate a theorem that closes or invalidates a route.  The contribution is
 the exact returned object and its limitation, not the prestige of the problem
 number.
+
+The different evidence classes matter in this portfolio. The classical
+full-support theorem in the 257 lane is formalised for every integer base at
+least two, but does not answer the question for arbitrary infinite supports.
+The 249 lane checks certificates at every lcm-diagonal scale through $82$;
+the unbounded supply needed for irrationality has not been proved. In the
+1041 lane, the explicit degree-seven example due to \texttt{ani} refutes the
+total-variation formulation, while its relation to the historical
+curve-length question awaits independent human review. A participant can
+advance any of these worlds by supplying the next mathematical fact, a
+correction, an exact computation, or a review that keeps those boundaries
+visible.
 
 \section{The public research object}\label{sec:object}
 
