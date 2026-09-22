@@ -103,6 +103,11 @@ selected area and the same starting paths. The helper verifies the contributor,
 scope and starting commit before packaging. Acceptance remains a separate
 maintainer decision.
 
+On pull requests, the research-return intake check validates an architecture
+`return.json` without `route-memory.json`. A mathematical return still requires
+its route-memory sidecar. Both tracks must pass submitted-return and Git
+validation; neither check records acceptance or adds a credit receipt.
+
 If you use the [structured research return form](../../.github/ISSUE_TEMPLATE/research_return.yml),
 name the architecture area in its frontier field, leave the optional
 route-memory field empty, and attach or link the complete recoverable package.

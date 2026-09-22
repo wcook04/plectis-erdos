@@ -21,6 +21,8 @@ on:
       - "route-memory.json"
       - "docs/research-commons/**"
       - "scripts/accept_research_return.py"
+      - "scripts/check_research_return_intake.py"
+      - "scripts/test_research_return_intake.py"
       - "scripts/build_research_contributions.py"
       - "scripts/continue_research.py"
       - "scripts/test_continue_research.py"
@@ -65,6 +67,8 @@ on:
       - "route-memory.json"
       - "docs/research-commons/**"
       - "scripts/accept_research_return.py"
+      - "scripts/check_research_return_intake.py"
+      - "scripts/test_research_return_intake.py"
       - "scripts/build_research_contributions.py"
       - "scripts/continue_research.py"
       - "scripts/test_continue_research.py"
@@ -163,6 +167,8 @@ jobs:
           python3 -O scripts/test_contribution_entry.py
           python3 scripts/test_contribution_contract_agreement.py
           python3 -O scripts/test_contribution_contract_agreement.py
+          python3 scripts/test_research_return_intake.py
+          python3 -O scripts/test_research_return_intake.py
 
       - name: Keep unaccepted GitHub returns out of promotion and recognition
         run: |
@@ -224,18 +230,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: |
           set -euo pipefail
-          if test -f route-memory.json && ! test -f return.json; then
-            echo "route-memory.json requires its return.json intake artifact" >&2
-            exit 1
-          fi
-          if test -f return.json && ! test -f route-memory.json; then
-            echo "return.json requires its route-memory.json intake receipt" >&2
-            exit 1
-          fi
-          if test -f return.json; then
-            validation_command=(python3 scripts/validate_research_return.py return.json --require-submitted --check-git --require-route-memory-receipt --route-memory-receipt route-memory.json)
-            "${validation_command[@]}"
-          fi
+          python3 scripts/check_research_return_intake.py
 
       - name: Keep transient intake artifacts out of accepted history
         if: ${{ github.event_name != 'pull_request' }}

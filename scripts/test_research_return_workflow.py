@@ -77,6 +77,8 @@ REQUIRED_COMMANDS = (
     "python3 -O scripts/test_research_return_workflow.py",
     "python3 scripts/test_contribution_entry.py",
     "python3 -O scripts/test_contribution_entry.py",
+    "python3 scripts/test_research_return_intake.py",
+    "python3 -O scripts/test_research_return_intake.py",
     "python3 scripts/test_research_contribution_recognition.py",
     "python3 -O scripts/test_research_contribution_recognition.py",
     "python3 scripts/check_research_contribution_recognition.py",
@@ -175,6 +177,11 @@ def workflow_errors(text: str) -> list[str]:
         errors.append("workflow must reject transient return artifacts on main")
     if "github.event_name == 'pull_request'" not in text:
         errors.append("return.json validation must remain pull-request scoped")
+    if text.count("python3 scripts/check_research_return_intake.py") != 1:
+        errors.append("pull-request intake must select track-specific route-memory validation exactly once")
+    for path in ("scripts/check_research_return_intake.py", "scripts/test_research_return_intake.py"):
+        if text.count(f'      - "{path}"') != 2:
+            errors.append(f"workflow must watch track-specific intake changes on pull requests and pushes: {path}")
     return errors
 
 
@@ -304,6 +311,10 @@ def main() -> int:
     require_rejection(
         workflow.replace("          python3 scripts/test_proof_workbench.py\n", "", 1),
         "must run exactly once: python3 scripts/test_proof_workbench.py",
+    )
+    require_rejection(
+        workflow.replace("          python3 scripts/check_research_return_intake.py\n", "", 1),
+        "track-specific route-memory validation",
     )
     require_rejection(
         workflow.replace('      - "scripts/proof_workbench.py"\n', "", 1),
