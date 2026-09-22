@@ -398,7 +398,7 @@ def main() -> int:
         "all_pass": not failures,
     }
     dest = pathlib.Path(
-        "source-provenance://private-authoring-project/receipts/"
+        "research_corpus/Erdos1041/"
         "erdos1041_sextic_chord_covering_criterion_receipt.json"
     )
     dest.parent.mkdir(parents=True, exist_ok=True)

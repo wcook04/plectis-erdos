@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Reading routes and source imports must survive publication changes."""
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -8,6 +9,66 @@ from unittest.mock import patch
 import build_problem_index as builder
 
 class ProblemLibraryTests(unittest.TestCase):
+    def test_question_inventory_follows_owner_in_both_reader_guides(self):
+        row = {"erdos_number": 68, "question": "Before | correction?",
+               "note": {"rendered_path": "paper/before.pdf"}}
+        body = f"Authored context\n{builder.CARD_BEGIN}\n{builder.CARD_END}\nAuthored proof\n"
+        old = builder.update_programme_card(body, builder.render_problem_questions({"problems": [row]}))
+        row["question"] = "Corrected question?"
+        row["note"]["rendered_path"] = "paper/current.pdf"
+        current = builder.update_programme_card(old, builder.render_problem_questions({"problems": [row]}))
+        self.assertNotIn("Before", current)
+        self.assertNotIn("before.pdf", current)
+        self.assertIn("../paper/current.pdf", current)
+        self.assertTrue(current.endswith("Authored proof\n"))
+        payload = builder.build(
+            json.loads(builder.SOURCE.read_text()),
+            {row["id"]: row for row in json.loads(builder.CONTRACT.read_text())["artifacts"]},
+            json.loads(builder.CLAIMS.read_text()),
+            json.loads(builder.CORPUS.read_text()),
+        )
+        for path in (builder.RESULTS, builder.READING_GUIDE):
+            card = builder.render_problem_questions(payload, prose=path == builder.READING_GUIDE)
+            self.assertEqual(path.read_text(), builder.update_programme_card(path.read_text(), card))
+
+    def test_card_regenerates_status_and_preserves_authored_surroundings(self):
+        row = {"erdos_number": 68, "problem_id": "erdos_68", "question": "Exact question?",
+               "claim_registration": {"programme_claim_id": "target", "programme_statement": "Old boundary."},
+               "what_is_checked": ["A finite result."],
+               "note": {"rendered_path": "paper/short.pdf", "source_path": "paper/short.tex"}}
+        claims = {"external_verification_packet": {"boundary": "No implicit claim promotion."}}
+        document = f"Authored preface\n{builder.CARD_BEGIN}\n{builder.CARD_END}\nAuthored conclusion\n"
+        first = builder.update_programme_card(document, builder.render_programme_card({"problems": [row]}, claims))
+        row["claim_registration"]["programme_statement"] = "New exact boundary."
+        second = builder.update_programme_card(first, builder.render_programme_card({"problems": [row]}, claims))
+        self.assertIn("New exact boundary.", second)
+        self.assertNotIn("Old boundary.", second)
+        self.assertTrue(second.startswith("Authored preface\n"))
+        self.assertTrue(second.endswith("Authored conclusion\n"))
+        self.assertEqual(second, builder.update_programme_card(second, builder.render_programme_card({"problems": [row]}, claims)))
+        row["claim_registration"]["programme_claim_id"] = None
+        with self.assertRaisesRegex(ValueError, "no registered programme boundary"):
+            builder.render_programme_card({"problems": [row]}, claims)
+        with self.assertRaisesRegex(ValueError, "one programme-card region"):
+            builder.update_programme_card("missing region", "content")
+
+    def test_registration_follows_claim_coordinates_not_library_names(self):
+        modules = [{"path": "lean/ErdosProblems/Erdos68/Main.lean"}]
+        claims = {"claims": [
+            {"id": "target", "status": "open", "statement": "Exact target boundary.", "declarations": []},
+            {"id": "matched", "declarations": [{"module": "ErdosProblems/Erdos68/Main.lean", "name": "a"}]},
+            {"id": "elsewhere", "declarations": [{"module": "ErdosProblems/Erdos68/Other.lean", "name": "b"}]},
+        ]}
+        result = builder.claim_registration("target", modules, claims)
+        self.assertEqual(result["registered_claim_ids"], ["matched"])
+        self.assertEqual(result["programme_status"], "open")
+        self.assertEqual(result["programme_statement"], "Exact target boundary.")
+        claims["claims"].pop(1)
+        self.assertEqual(builder.claim_registration("target", modules, claims)["state"], "programme_only")
+        claims["claims"].pop(0)
+        self.assertEqual(builder.claim_registration("target", modules, claims)["state"], "not_registered")
+        self.assertEqual(builder.claim_registration("target", modules, None)["state"], "unknown")
+
     def test_papers_follow_identity_and_map_follows_source(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

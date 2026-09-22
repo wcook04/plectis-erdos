@@ -2,7 +2,7 @@ import ErdosProblems.Erdos249.TypeBReturnV8.PeripheralAssembly
 import ErdosProblems.Erdos249.TypeBReturnV8.FiniteFirstHarmonic
 import ErdosProblems.Erdos249.TypeBReturnV8.CenteringCounterexample
 
-/-! UNRUN audit target. These commands are not an axiom receipt until executed. -/
+/-! Axiom audit. -/
 #print axioms ErdosProblems.Erdos249.TypeBReturnV8.card_pivotFiber_eq_card_supplierPrimes
 #print axioms ErdosProblems.Erdos249.TypeBReturnV8.dtw_of_eventual_peripheral_and_cofinal_centered
 #print axioms ErdosProblems.Erdos249.TypeBReturnV8.irrational_of_eventual_peripheral_and_cofinal_centered

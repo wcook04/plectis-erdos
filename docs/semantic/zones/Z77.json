@@ -45,17 +45,17 @@
         {
           "declaration": "two_mul_le_of_dvd_of_lt",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1206
+          "line": 1212
         },
         {
           "declaration": "strictGrowthCount_add",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1281
+          "line": 1287
         },
         {
           "declaration": "strictGrowthCount_pos_of_event",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1300
+          "line": 1306
         }
       ]
     },
@@ -79,7 +79,7 @@
         {
           "declaration": "reducedTail_coprime",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1474
+          "line": 1480
         }
       ]
     },
@@ -103,7 +103,7 @@
         {
           "declaration": "eventually_const_mul_pow_lt_const_mul_pow",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2066
+          "line": 2072
         }
       ]
     }
@@ -112,35 +112,35 @@
     {
       "declaration": "two_mul_le_of_dvd_of_lt",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1206,
+      "line": 1212,
       "role": "engine",
       "statement_node": "strict_divisibility_growth_has_exact_binary_and_interval_accounting"
     },
     {
       "declaration": "strictGrowthCount_add",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1281,
+      "line": 1287,
       "role": "engine",
       "statement_node": "strict_divisibility_growth_has_exact_binary_and_interval_accounting"
     },
     {
       "declaration": "strictGrowthCount_pos_of_event",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1300,
+      "line": 1306,
       "role": "engine",
       "statement_node": "strict_divisibility_growth_has_exact_binary_and_interval_accounting"
     },
     {
       "declaration": "reducedTail_coprime",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1474,
+      "line": 1480,
       "role": "representation",
       "statement_node": "exact_tail_gcd_reduction_produces_primitive_coordinates"
     },
     {
       "declaration": "eventually_const_mul_pow_lt_const_mul_pow",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2066,
+      "line": 2072,
       "role": "engine",
       "statement_node": "a_larger_positive_exponential_base_eventually_beats_fixed_prefactors"
     }

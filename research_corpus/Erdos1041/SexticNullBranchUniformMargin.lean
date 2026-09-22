@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticNullBranchCompanion
+import research_corpus.Erdos1041.SexticNullBranchCompanion
 
 /-!
 # Erdős #1041: a uniform tube around the positive sextic null branch

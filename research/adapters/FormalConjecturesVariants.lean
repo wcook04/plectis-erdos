@@ -51,7 +51,9 @@ Martin, and of the Mersenne measure results against the Kovač–Tao line, is
 unresolved here and gates the wording of any upstream docstring — not whether
 the theorem may be offered.
 
-None of these settles any of the eight problems.  All eight remain open.
+None of these declarations resolves the other seven target problems or
+adjudicates correspondence with the historical curve-length formulation of
+Erdős #1041.
 -/
 
 namespace Erdos249257.FormalConjecturesVariants

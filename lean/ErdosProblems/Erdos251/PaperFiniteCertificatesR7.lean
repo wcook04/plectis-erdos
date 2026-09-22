@@ -4,7 +4,7 @@ import ErdosProblems.Erdos251.KernelDenominatorFloor
 /-!
 # Exact finite certificates appearing in the long record
 
-New proof source, not compiled in the return environment. All numerical
+All numerical
 claims below use exact arithmetic. No numerical approximation to an
 infinite tail is used: the Farey bracket is proved from the supplied
 kernel-verifiable certificate and its unconditional tail bound.

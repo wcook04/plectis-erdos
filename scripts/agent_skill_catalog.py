@@ -155,6 +155,14 @@ def load_catalog() -> dict[str, Any]:
         normalized_cues = [normalize(value) for value in task_cues]
         if "" in normalized_cues or len(normalized_cues) != len(set(normalized_cues)):
             raise SkillCatalogError(f"lane {lane_id} has empty or duplicate normalized task cues")
+        purposes = lane.get("entry_purposes", [])
+        if not isinstance(purposes, list) or any(
+            not isinstance(value, str) or not TOKEN_RE.fullmatch(value) for value in purposes
+        ):
+            raise SkillCatalogError(f"lane {lane_id} entry_purposes must be lowercase tokens")
+        other_purposes = [purpose for prior in lanes for purpose in prior.get("entry_purposes", [])]
+        if len(set(purposes)) != len(purposes) or set(purposes).intersection(other_purposes):
+            raise SkillCatalogError(f"lane {lane_id} has duplicate entry purposes")
         task_intents = lane.get("task_intents", [])
         if not isinstance(task_intents, list):
             raise SkillCatalogError(f"lane {lane_id} task_intents must be a list")

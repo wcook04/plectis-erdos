@@ -1,0 +1,259 @@
+{
+  "schema": "formal_math_source_verification_v1",
+  "problem_id": "erdos_1041",
+  "verification_date": "2026-09-08",
+  "module": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+  "source_declarations": [
+    "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete"
+  ],
+  "toolchain": "leanprover/lean4:v4.29.1",
+  "manifest_sha256": "742c0e1042fd1e6c8b8024fd3c96d87916370420f2ae36315936907152dd8bd8",
+  "local_dependency_closure": {
+    "ErdosProblems.Erdos1041.PaperCubicCompletion": {
+      "path": "research_corpus/Erdos1041/PaperCubicCompletion.lean",
+      "sha256": "a81fea096a4cc11d80409805c8871ca8afadc4aabd8e974cbc03d6dbe881fddd"
+    },
+    "ErdosProblems.Erdos1041.PaperCubicSchur": {
+      "path": "research_corpus/Erdos1041/PaperCubicSchur.lean",
+      "sha256": "644e96503f8476c353eabdbce16d3511629cbc0752462fb0cc38593864d3132f"
+    },
+    "ErdosProblems.Erdos1041.PaperAnalyticTargets": {
+      "path": "research_corpus/Erdos1041/PaperAnalyticTargets.lean",
+      "sha256": "31d8b92295c6a688a2e6ce98e907605906842cb41b58363ad5619e38424a5591"
+    },
+    "ErdosProblems.Erdos1041.PaperCurveAssembly": {
+      "path": "research_corpus/Erdos1041/PaperCurveAssembly.lean",
+      "sha256": "6b0a747147efd63870273fb25c4c364050d905900deaf704f9e082b3413bcced"
+    },
+    "ErdosProblems.Erdos1041.PaperCubicFibres": {
+      "path": "research_corpus/Erdos1041/PaperCubicFibres.lean",
+      "sha256": "7db51b695c38bbe266d7a4ba357dc6f83ff90b4054d58a5ab20c9fb53fcd7298"
+    },
+    "ErdosProblems.Erdos1041.CubicQuotientFiberCase": {
+      "path": "research_corpus/Erdos1041/CubicQuotientFiberCase.lean",
+      "sha256": "8d48e206629d9d6283b7f1c66aa01651d9ff45314c0ed541f566c329131fa6dd"
+    },
+    "ErdosProblems.Erdos1041.CyclicFiberMeanSquare": {
+      "path": "research_corpus/Erdos1041/CyclicFiberMeanSquare.lean",
+      "sha256": "c89981921481ea853334602feb37d9c9a1ebb956a6f1791a8aace3a8588a1a11"
+    },
+    "ErdosProblems.Erdos1041.TetranomialL2Selector": {
+      "path": "research_corpus/Erdos1041/TetranomialL2Selector.lean",
+      "sha256": "883371f85bd3033a69dbe09bf53d0f9bec202c31ef4b14c4ae78cb0f904ce978"
+    },
+    "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase": {
+      "path": "research_corpus/Erdos1041/CyclicTetranomialCoefficientCase.lean",
+      "sha256": "7a0de6ca9655f8fd75be23cd24daae5907184ed8fa6594f3429cc03df3574053"
+    },
+    "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase": {
+      "path": "research_corpus/Erdos1041/CyclicTrinomialFiberCase.lean",
+      "sha256": "6c7d5f5bbdae7466b61dea88bd628ca7d4e49d28f9a4267302a0a0f6df68b853"
+    },
+    "ErdosProblems.Erdos1041.PaperReflectedCompletion": {
+      "path": "research_corpus/Erdos1041/PaperReflectedCompletion.lean",
+      "sha256": "a0033ce6b96f80a37ca47968311bbe9e759cbf9583767c89fad34c9dedd0361d"
+    },
+    "ErdosProblems.Erdos1041.PaperReflectedBoundary": {
+      "path": "research_corpus/Erdos1041/PaperReflectedBoundary.lean",
+      "sha256": "9743ede771bd840ed83a1a422af674b8e34dd7cd6738d983b836626cfd782150"
+    },
+    "ErdosProblems.Erdos1041.CubicCriticalHub": {
+      "path": "research_corpus/Erdos1041/CubicCriticalHub.lean",
+      "sha256": "b72d2f20eaee2613ce52f1a8a5334bde51ee89b1fd7ab80153b2cf92158d40a8"
+    }
+  },
+  "focused_build": {
+    "target": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+    "exit_code": 0,
+    "status": "focused_build_pass",
+    "source_sha256": "a81fea096a4cc11d80409805c8871ca8afadc4aabd8e974cbc03d6dbe881fddd",
+    "seconds": 42.26,
+    "log": "public-source-redacted://00_ErdosProblems.Erdos1041.PaperCubicCompletion.log"
+  },
+  "axiom_audit": {
+    "schema": "lean_axiom_audit_v0",
+    "permitted_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "module": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+    "namespace": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+    "result": {
+      "audited": [
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_coefficients",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.critical_pair",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_small_critical",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.hub_from_critical_expansion",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_distinct_hub",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.squarefree_enumeration_injective",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_product_domination",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_polar_interior",
+          "permitted_only": true
+        },
+        {
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "declaration": "ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_critical_value",
+          "permitted_only": true
+        }
+      ],
+      "exit_code": 0,
+      "not_reported": [],
+      "requested": [
+        "cubic_coefficients",
+        "critical_pair",
+        "cubic_small_critical",
+        "hub_from_critical_expansion",
+        "cubic_distinct_hub",
+        "squarefree_enumeration_injective",
+        "cubic_paper_complete",
+        "ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_product_domination",
+        "ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_polar_interior",
+        "ErdosProblems.Erdos1041.PaperReflectedCompletion.reflected_critical_value"
+      ],
+      "status": "clean",
+      "violations": []
+    },
+    "boundary": "An axiom audit reports what a declaration rests on. It is not a build and it does not judge whether the statement is the intended one."
+  },
+  "statement_review": {
+    "schema": "r8_exact_statement_review_v1",
+    "problem": 1041,
+    "module": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+    "declaration": "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete",
+    "compiled_source_sha256": "a81fea096a4cc11d80409805c8871ca8afadc4aabd8e974cbc03d6dbe881fddd",
+    "hypotheses": [
+      "p is exactly the product of three listed linear factors (monicity and degree follow)",
+      "Every listed root has modulus strictly below one"
+    ],
+    "conclusion": [
+      "Distinct root occurrence indices i and j",
+      "Explicit two-segment hub with global continuity and bounded variation on [0,2]",
+      "Every point along the hub has |p|<1",
+      "Actual extended total variation is strictly less than2",
+      "Squarefree p implies distinct endpoint values; duplicate roots admit the constant curve"
+    ],
+    "definition_review": {
+      "RootEnumeration": "polynomial equality, not a desired geometric property",
+      "HubBelow": "pointwise sublevel containment and actual eVariationOn bound",
+      "ConnectedBelow": "a continuous rectifiable curve with specified endpoints and strict total-variation bound"
+    },
+    "proof_mechanism": [
+      "Factor the derivative into its two critical occurrences, retaining multiplicity",
+      "Use Gauss-Lucas, a polar boundary estimate, and regularized maximum modulus to control reflected critical values on the closed disc",
+      "Choose a nonzero critical point of maximal modulus to force some critical value strictly below1, with the zero pair treated by |p(0)|<1",
+      "Choose the smaller critical value and normalize its cubic expansion",
+      "Apply the algebraic closed-disc root-count theorem, including its equality boundary",
+      "Use the exact spoke identity and the scale |p(c)|^(1/3)<1 to construct a strict short hub",
+      "Treat repeated roots separately; squarefreeness discharges endpoint-value distinctness"
+    ],
+    "difference_from_ordinary_record": "The formal root count is algebraic through Schur inequalities, replacing the ordinary record's Rouche/homotopy supplier; the conclusion is preserved. The repeated critical case is retained by the same normalized construction, without a distinct-critical assumption.",
+    "excluded_claims": [
+      "general degree path theorem",
+      "quartic theorem",
+      "novelty or priority"
+    ],
+    "verification_state": "focused_build_pass_and_clean_axiom_audit",
+    "paper_destination": {
+      "claim_id": "erdos1041.cubic_case_complete",
+      "packet_result_id": "cubic_minimal_critical_value_short_hub"
+    }
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary cubic proof and round8 candidate",
+    "output_stage": "kernel-checked complete degree-three construction",
+    "artifact": "ErdosProblems/Erdos1041/PaperCubicCompletion.lean",
+    "human_understanding_delta": "An algebraic closed-disc root count and regularized reflected estimate discharge every supplier of the explicit short hub.",
+    "verification_state": "focused build passed; ten cubic/reflected declarations axiom audited clean",
+    "publication_or_review_state": "public publication preparation in progress; no independent review claimed",
+    "canonicalization_state": "canonical research packet now binds the exact final theorem",
+    "unresolved_downstream_bottleneck": "public build and immutable pin, paper links and comparator replay",
+    "next_stage_owner": "r8 release conductor"
+  },
+  "paper_assimilation": {
+    "paper": "Erdos1041 long record",
+    "section": "res:degree-three",
+    "canonical_mechanism_family": "minimal critical value and two normalized root spokes",
+    "relation": "formalizes complete degree-three proof",
+    "understanding_delta": "The equality boundary and repeated-root cases are retained without extra analytic suppliers.",
+    "evidence_boundary": "Cubics; no claim of general-degree solution or novelty",
+    "hard_step": "Two normalized roots in the closed unit disc and small critical value",
+    "meaningful_failed_route": "The previous formal endpoint assumed the root-count supplier",
+    "open_remainder": "General degree; release propagation of this verified cubic result"
+  }
+}

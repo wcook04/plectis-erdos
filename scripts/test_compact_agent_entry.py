@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -79,7 +80,7 @@ def main() -> int:
     # test_human_first_contact.py / test_downstream_example_contract.py.
     readme = README.read_text(encoding="utf-8")
     workbench = WORKBENCH.read_text(encoding="utf-8")
-    assert "[`AGENTS.md`](AGENTS.md)" in readme
+    assert re.search(r"\[`?AGENTS\.md`?\]\(AGENTS\.md\)", readme)
     assert "docs/agents/AGENT_WORKBENCH.md" in readme
     assert "```" not in readme
     assert "Use this page for agent operations" in workbench

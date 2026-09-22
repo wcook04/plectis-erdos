@@ -79,6 +79,44 @@ consulted. Keep the generated originals unchanged. `start` does not create the
 main `return.json`; [fill and package the return](#fill-and-package-the-structured-return)
 after recording the work and its outcome.
 
+## Subject frontier
+
+A mathematical contribution may matter beyond the problem it started from. A
+general theorem, a new representation, a cross-problem mechanism, or a new
+research question with evidence can be returned under its own subject. Such a
+return sets `"track": "mathematics"`, omits `problem`, names its `subject` in
+ordinary words, and lists the roster problems it relates to in
+`related_problems`. That list is sorted in ascending order, contains no
+repeats, and may be empty. Do not invent a problem number for work that does
+not belong to one problem.
+
+Open such a session with `--subject` in place of `--problem`, and repeat
+`--related-problem` once for each roster problem:
+
+```sh
+python3 scripts/continue_research.py start \
+  --session "$SESSION" \
+  --subject '<the subject or question, in ordinary words>' \
+  --related-problem '<roster problem>' \
+  --frontier '<exact frontier handle>' \
+  --intent '<bounded question>' \
+  --stop-condition '<when to stop>' \
+  --contributor '<name or handle>'
+```
+
+The session consults the corpus-wide overview in place of one problem's query,
+and consults route memory once for each related problem. With no related
+problem it records that no documented route applies. The generated
+`route-memory-return-template.json` then carries one ordinary receipt per
+consulted problem; fill each one with the same `return_id` and the actual
+relationship. An evidence command that carries the public `--problem` selector
+must name one of the related problems, and no such selector is admissible when
+the list is empty.
+
+An accepted subject return appears in the generated credit views under its
+subject and stays reachable from each related problem's grouping. It is never
+assigned a problem number of its own.
+
 ## Formal handoff from exposition
 
 Resolve the public navigation handle before filling the bounded route. For a
@@ -169,6 +207,9 @@ this package.
 ## 2. Bounded route
 
 - **Erdős problem:** `#<68|243|249|251|257|269|1041|1049>`
+- **Subject and related problems, when the work names no single problem:**
+  `<subject in ordinary words>` / `<ascending roster problems, possibly none>`
+  (see the [subject frontier](#subject-frontier))
 - **Exact problem/claim/open handle:** `<identifier and command or file>`
 - **Publication family and significance rank:** `<exact family id and rank from the complete family query, or “not applicable”>`
 - **Bounded question:** `<one sentence with a stop condition>`

@@ -1,0 +1,87 @@
+{
+  "schema": "plectis-choices-contraction-probe/1",
+  "outcome_vocabulary": {
+    "excluded": "outside the achievement set, with a finite certificate",
+    "finite_representation": "an explicit finite subseries sum",
+    "not_excluded": "no exclusion and no finite sum through the stated depth; no claim beyond it"
+  },
+  "rows": [
+    {
+      "host": "all",
+      "q_max": 60,
+      "depth": 60,
+      "horizon": 160,
+      "host_indices_through_depth": 60,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 1768,
+      "counts": {
+        "excluded": 656,
+        "finite_representation": 14,
+        "not_excluded": 1098
+      },
+      "latest_exclusion_index": 7,
+      "exclusions_by_index": {
+        "1": 434,
+        "2": 132,
+        "3": 54,
+        "4": 18,
+        "5": 12,
+        "6": 2,
+        "7": 4
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 120,
+      "depth": 60,
+      "horizon": 160,
+      "host_indices_through_depth": 60,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 7044,
+      "counts": {
+        "excluded": 2646,
+        "finite_representation": 30,
+        "not_excluded": 4368
+      },
+      "latest_exclusion_index": 9,
+      "exclusions_by_index": {
+        "1": 1726,
+        "2": 530,
+        "3": 210,
+        "4": 88,
+        "5": 48,
+        "6": 26,
+        "7": 12,
+        "8": 4,
+        "9": 2
+      }
+    },
+    {
+      "host": "all",
+      "q_max": 200,
+      "depth": 60,
+      "horizon": 160,
+      "host_indices_through_depth": 60,
+      "host_sum_lower": 1.6066951524152917,
+      "candidates": 19653,
+      "counts": {
+        "excluded": 7395,
+        "finite_representation": 40,
+        "not_excluded": 12218
+      },
+      "latest_exclusion_index": 12,
+      "exclusions_by_index": {
+        "1": 4809,
+        "2": 1470,
+        "3": 600,
+        "4": 268,
+        "5": 132,
+        "6": 66,
+        "7": 32,
+        "8": 8,
+        "9": 6,
+        "12": 4
+      }
+    }
+  ]
+}

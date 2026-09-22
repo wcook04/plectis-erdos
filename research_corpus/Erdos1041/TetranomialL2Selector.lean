@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
+import research_corpus.Erdos1041.CyclicTetranomialCoefficientCase
 
 /-!
 # Erdős #1041: an L2 selector for cyclic tetranomials

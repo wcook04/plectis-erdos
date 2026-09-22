@@ -24,7 +24,7 @@ import Erdos249257.FirstHarmonicPivot
 import Erdos249257.TotientActualLcmOrbitSign
 import Erdos249257.ActualForeignResidueProjection
 import Erdos249257.TropicalCurvatureCarry
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
@@ -482,7 +482,10 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
   · intro a C D magnitude B hB ha hCpos hC hD hRise hmagnitude hvanish hnegative
     exact ErdosProblems.Erdos243.no_cofinallyBoundedNegative_of_normalizedVanishes
       a C D magnitude B hB ha hCpos hC hD hRise hmagnitude hvanish hnegative
-  · exact ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit
+  · intro a D C e N h M hh hM ha hepos helt hD hC hshape hperiod hphase
+    exact ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit a D C e N h M hh hM
+      (fun n _ => ha n) hepos helt (fun n _ => hD n) (fun n _ => hC n)
+      (fun n _ => hshape n) hperiod hphase
   · intro u m N B hB hm hpair havoid hrise huTop
     exact ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance
       u m N B hB hm hpair havoid hrise huTop

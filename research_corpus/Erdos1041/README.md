@@ -1,8 +1,12 @@
+[Read the full current mathematical frontier and proof sources](FRONTIER.md). No clone or Python needed.
+
 # Erdős 1041 research corpus
 
 This directory is the complete public-safe committed research corpus for
-Erdős Problem 1041 at source checkpoint `867638684907b4ebd4ab2ef7b5de22dafda71e36`. The unrestricted
-problem remains open; these files contain proved conditional reductions,
+Erdős Problem 1041 at source checkpoint `fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac`. The exact
+universal total-variation formulation is refuted by an explicit degree-seven
+counterexample; correspondence with the historical curve-length formulation
+and Hausdorff-measure comparisons remain separate review questions; these files contain proved conditional reductions,
 Lean-checked statements, exact computations, counterexamples, no-go results,
 assimilation records, and live proof-frontier notes. No navigation label or
 experimental receipt upgrades a statement beyond its own hypotheses.

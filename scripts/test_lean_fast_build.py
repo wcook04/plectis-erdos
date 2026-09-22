@@ -43,6 +43,90 @@ class LeanFastBuildTests(unittest.TestCase):
                 {"Examples": root / "examples" / "Examples.lean"},
             )
 
+    def test_changed_targets_use_discovered_names_under_srcdir(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "lean" / "Pkg" / "Proof.lean"
+            source.parent.mkdir(parents=True)
+            source.write_text("-- proof\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\nsrcDir = "lean"\n', encoding="utf-8"
+            )
+            modules = fast.discover(root)
+            self.assertEqual(
+                fast.changed_targets_from_paths([source, root / "unknown.lean"], modules, root),
+                ["Pkg.Proof"],
+            )
+
+    def test_changed_targets_exclude_only_stored_workbench_probes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            registered = root / "lean" / "Pkg" / "Proof.lean"
+            scratch = root / "scratch" / "Trial.lean"
+            session = root / "research" / "workbench" / "sessions" / "replay-case"
+            rejected_probe = session / "probes" / "m003.lean"
+            standalone_near_probe = session / "probes" / "Draft.lean"
+            standalone_other_tree = root / "research" / "experiments" / "probes" / "m003.lean"
+            sources = [registered, scratch, rejected_probe, standalone_near_probe,
+                       standalone_other_tree]
+            for source in sources:
+                source.parent.mkdir(parents=True, exist_ok=True)
+                source.write_text("example : True := True.intro\n", encoding="utf-8")
+            rejected_probe.write_text(
+                "example : False := True.intro\n", encoding="utf-8"
+            )
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\nsrcDir = "lean"\n', encoding="utf-8"
+            )
+            modules = fast.discover(root)
+            names = {source: name for name, source in modules.items()}
+            results = [
+                fast.subprocess.CompletedProcess(
+                    [], 0, "\n".join(str(p.relative_to(root)) for p in sources[:3]), ""
+                ),
+                fast.subprocess.CompletedProcess(
+                    [], 0, "\n".join(str(p.relative_to(root)) for p in sources[3:]), ""
+                ),
+            ]
+            with mock.patch.object(fast.subprocess, "run", side_effect=results):
+                self.assertEqual(
+                    fast.changed_targets("HEAD", modules, root),
+                    sorted(names[p] for p in sources if p != rejected_probe),
+                )
+            # The exclusion belongs only to changed-from discovery. A user
+            # may still explicitly select a stored probe or a standalone file.
+            self.assertEqual(
+                fast.resolve_targets(
+                    [str(p.relative_to(root)) for p in (rejected_probe, scratch)],
+                    modules,
+                    root,
+                ),
+                [names[rejected_probe], names[scratch]],
+            )
+            self.assertTrue(fast.is_registered_lake_module(names[registered], root))
+
+    def test_declared_defaults_resolve_roots_under_srcdir(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "lean").mkdir()
+            (root / "examples").mkdir()
+            for relative in ("lean/Main.lean", "examples/Examples.lean"):
+                (root / relative).write_text("-- root\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                'defaultTargets = ["Main"]\n'
+                '[[lean_lib]]\nname = "Main"\nsrcDir = "lean"\n'
+                '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
+                encoding="utf-8",
+            )
+            self.assertEqual(fast.resolve_targets([], fast.discover(root), root), ["Main"])
+
+    def test_missing_declared_default_does_not_silently_skip_build(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "lakefile.toml").write_text('defaultTargets = ["Missing"]\n')
+            with self.assertRaisesRegex(ValueError, "declared default Lean roots not found"):
+                fast.default_root_targets({}, root)
+
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
             encoding="utf-8"
@@ -569,12 +653,46 @@ class LeanFastBuildTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "Main.lean"
             source.write_text(
-                "-- import Pkg.Commented\nimport Pkg.Local\nimport Mathlib\n",
+                (
+                    "-- import Pkg.Commented\n"
+                    "import\tPkg.Local\tPkg.Second\tMathlib\n"
+                    "public import Pkg.Public\n"
+                ),
                 encoding="utf-8",
             )
-            modules = {"Pkg.Local": Path(directory) / "Local.lean"}
+            modules = {
+                "Pkg.Local": Path(directory) / "Local.lean",
+                "Pkg.Second": Path(directory) / "Second.lean",
+                "Pkg.Public": Path(directory) / "Public.lean",
+            }
 
-            self.assertEqual(fast.local_imports(source, modules), {"Pkg.Local"})
+            self.assertEqual(
+                fast.local_imports(source, modules),
+                {"Pkg.Local", "Pkg.Second", "Pkg.Public"},
+            )
+
+    def test_local_imports_fails_closed_on_unknown_import_header_syntax(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "Main.lean"
+            modules = {"Pkg.Local": Path(directory) / "Local.lean"}
+            cases = {
+                "punctuated": "import Pkg.Local, Pkg.Other\n",
+                "bare_split": "import\n  Pkg.Local\n",
+                "public_bare_split": "public import\n  Pkg.Local\n",
+            }
+            for name, text in cases.items():
+                with self.subTest(name=name):
+                    source.write_text(text, encoding="utf-8")
+                    with self.assertRaisesRegex(RuntimeError, "unsupported Lean import header"):
+                        fast.local_imports(source, modules)
+
+    def test_local_imports_fails_closed_on_module_header_before_imports(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "Main.lean"
+            source.write_text("module Pkg.Main\nimport Pkg.Local\n", encoding="utf-8")
+            modules = {"Pkg.Local": Path(directory) / "Local.lean"}
+            with self.assertRaisesRegex(RuntimeError, "unsupported Lean module header"):
+                fast.local_imports(source, modules)
 
     def test_local_imports_reads_only_the_lean_header(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -598,18 +716,25 @@ import Pkg.TooLate
 
             self.assertEqual(fast.local_imports(source, modules), {"Pkg.Local"})
 
-    def test_build_wave_reports_only_failed_modules(self) -> None:
-        results = {
-            "Pkg.Good": ("Pkg.Good", 0, 0.1),
-            "Pkg.Bad": ("Pkg.Bad", 1, 0.2),
-        }
-        with mock.patch.object(fast, "build_batch", return_value=(1, 0.3)), mock.patch.object(
-            fast, "build_one", side_effect=lambda name, root=fast.ROOT: results[name]
-        ):
+    def test_failed_batch_is_not_replayed_to_isolate_diagnostics(self) -> None:
+        with mock.patch.object(fast, "build_batch", return_value=(1, 0.3)) as batch, mock.patch.object(
+            fast, "build_one", side_effect=AssertionError("unchanged failure must not be replayed")
+        ) as single:
             self.assertEqual(
                 fast.build_wave(["Pkg.Good", "Pkg.Bad"], jobs=2),
-                ["Pkg.Bad"],
+                ["Pkg.Good", "Pkg.Bad"],
             )
+            batch.assert_called_once()
+            single.assert_not_called()
+
+    def test_failed_batch_does_not_skip_independent_ready_batches(self) -> None:
+        with mock.patch.object(fast, "build_batch", side_effect=[(1, 0.3), (0, 0.2)]) as batch:
+            self.assertEqual(
+                fast.build_wave(["Pkg.A", "Pkg.B", "Pkg.C"], jobs=2),
+                ["Pkg.A", "Pkg.B"],
+            )
+            self.assertEqual([call.args[0] for call in batch.call_args_list],
+                             [["Pkg.A", "Pkg.B"], ["Pkg.C"]])
 
     def test_build_wave_batches_at_the_worker_bound(self) -> None:
         batches: list[list[str]] = []
@@ -625,6 +750,25 @@ import Pkg.TooLate
             )
 
         self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C", "Pkg.D"]])
+
+    def test_failure_blocks_only_its_dependents_and_preserves_independent_work(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sources = {"A": "", "B": "import A\n", "C": "", "D": "import C\n",
+                       "E": "import B\n", "Root": "import E\nimport D\n"}
+            for name, text in sources.items():
+                (root / (name + ".lean")).write_text(text, encoding="utf-8")
+            built = []
+            def wave(names, jobs, root):
+                built.extend(names)
+                return [name for name in names if name == "A"]
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "build_wave", side_effect=wave
+            ), mock.patch.object(fast, "run_final_authority_check") as final:
+                with self.assertRaisesRegex(RuntimeError, "module batch prebuild failed"):
+                    fast.main(["Root", "--lake-staleness"])
+            self.assertEqual(built, ["A", "C", "D"])
+            final.assert_not_called()
 
     def test_partial_cache_starts_from_missing_outputs_before_final_lake(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -659,6 +803,28 @@ import Pkg.TooLate
         self.assertEqual(
             run.call_args.args[0],
             [LAKE, "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
+        )
+
+    def test_config_trace_batches_rehash_once(self) -> None:
+        calls: list[tuple[list[str], bool]] = []
+
+        def trace(names, root=fast.ROOT, *, rehash=True):
+            calls.append((list(names), rehash))
+            return [name for name in names if name == "Pkg.C"]
+
+        with mock.patch.object(fast, "lake_stale_targets", side_effect=trace):
+            self.assertEqual(
+                fast.lake_stale_targets_batched(
+                    ["Pkg.A", "Pkg.B", "Pkg.C"],
+                    Path("/tmp/pkg"),
+                    batch_size=2,
+                ),
+                ["Pkg.C"],
+            )
+
+        self.assertEqual(
+            calls,
+            [(["Pkg.A", "Pkg.B"], True), (["Pkg.C"], False)],
         )
 
     def test_stale_frontier_propagates_to_every_import_dependent(self) -> None:
@@ -817,6 +983,182 @@ import Pkg.TooLate
             config.write_text("leanprover/lean4:test\n", encoding="utf-8")
             os.utime(config, ns=(3_000_000_000, 3_000_000_000))
             self.assertTrue(fast.stale("Pkg.Leaf", modules, graph, root))
+
+    def test_config_timestamp_only_uses_trace_and_preserves_final_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "Pkg" / "Root.lean"
+            output = root / ".lake" / "build" / "lib" / "lean" / "Pkg" / "Root.olean"
+            source.parent.mkdir()
+            output.parent.mkdir(parents=True)
+            source.write_text("-- source\n", encoding="utf-8")
+            output.write_text("olean\n", encoding="utf-8")
+            os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+            os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+            (root / "lean-toolchain").write_text(
+                "leanprover/lean4:test\n", encoding="utf-8"
+            )
+            os.utime(
+                root / "lean-toolchain",
+                ns=(3_000_000_000, 3_000_000_000),
+            )
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets_batched", return_value=[]
+            ) as traced, mock.patch.object(
+                fast, "build_wave", side_effect=AssertionError(
+                    "content-current config timestamp must not rebuild"
+                )
+            ), mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["Pkg.Root"]), 0)
+
+            traced.assert_called_once_with(["Pkg.Root"], root)
+            self.assertEqual(
+                run.call_args.args[0],
+                [
+                    LAKE,
+                    "--quiet",
+                    "--no-ansi",
+                    "--log-level=error",
+                    "build",
+                    "+Pkg.Root",
+                ],
+            )
+
+    def test_config_content_trace_stale_module_is_prebuilt_before_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "Pkg" / "Root.lean"
+            output = root / ".lake" / "build" / "lib" / "lean" / "Pkg" / "Root.olean"
+            source.parent.mkdir()
+            output.parent.mkdir(parents=True)
+            source.write_text("-- source\n", encoding="utf-8")
+            output.write_text("olean\n", encoding="utf-8")
+            os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+            os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+            (root / "lakefile.toml").write_text("[[lean_lib]]\nname = \"Pkg\"\n")
+            os.utime(root / "lakefile.toml", ns=(3_000_000_000, 3_000_000_000))
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets_batched", return_value=["Pkg.Root"]
+            ), mock.patch.object(
+                fast, "build_wave", return_value=[]
+            ) as build, mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["Pkg.Root"]), 0)
+
+            build.assert_called_once_with(["Pkg.Root"], fast.default_jobs(), root)
+            self.assertEqual(run.call_count, 1)
+
+    def test_source_and_missing_outputs_still_prebuild_before_authority(self) -> None:
+        for changed in ("source", "missing"):
+            with self.subTest(changed=changed), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                source = root / "Pkg" / "Root.lean"
+                output = (
+                    root / ".lake" / "build" / "lib" / "lean" / "Pkg" / "Root.olean"
+                )
+                source.parent.mkdir()
+                output.parent.mkdir(parents=True)
+                source.write_text("-- source\n", encoding="utf-8")
+                output.write_text("olean\n", encoding="utf-8")
+                os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+                os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+                if changed == "source":
+                    os.utime(source, ns=(3_000_000_000, 3_000_000_000))
+                else:
+                    output.unlink()
+                completed = fast.subprocess.CompletedProcess([], 0, "", "")
+                with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                    fast, "lake_stale_targets_batched"
+                ) as traced, mock.patch.object(
+                    fast, "build_wave", return_value=[]
+                ) as build, mock.patch.object(
+                    fast.subprocess, "run", return_value=completed
+                ) as run:
+                    self.assertEqual(fast.main(["Pkg.Root"]), 0)
+
+                traced.assert_not_called()
+                build.assert_called_once_with(["Pkg.Root"], fast.default_jobs(), root)
+                self.assertEqual(run.call_count, 1)
+
+    def test_source_change_prebuilds_import_dependents_before_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            base = root / "Pkg" / "Base.lean"
+            consumer = root / "Pkg" / "Consumer.lean"
+            base.parent.mkdir()
+            base.write_text("-- base\n", encoding="utf-8")
+            consumer.write_text("import Pkg.Base\n", encoding="utf-8")
+            for name, source in (("Base", base), ("Consumer", consumer)):
+                output = (
+                    root
+                    / ".lake"
+                    / "build"
+                    / "lib"
+                    / "lean"
+                    / "Pkg"
+                    / f"{name}.olean"
+                )
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text("olean\n", encoding="utf-8")
+                os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+                os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+            os.utime(base, ns=(3_000_000_000, 3_000_000_000))
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            built: list[list[str]] = []
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast,
+                "build_wave",
+                side_effect=lambda names, jobs, root: built.append(list(names)) or [],
+            ), mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["Pkg.Consumer"]), 0)
+
+            self.assertEqual(built, [["Pkg.Base"], ["Pkg.Consumer"]])
+            self.assertEqual(run.call_count, 1)
+
+    def test_cached_import_depth_does_not_serialize_independent_rebuilds(self) -> None:
+        # A and B are independent stale modules; B happens to import a deeper
+        # current chain. C really depends on B and must remain a later batch.
+        for lake_staleness in (False, True):
+            with self.subTest(lake_staleness=lake_staleness), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                sources = {
+                    "A": "-- independent stale root\n",
+                    "Cached0": "-- current dependency\n",
+                    "Cached1": "import Pkg.Cached0\n",
+                    "B": "import Pkg.Cached1\n",
+                    "C": "import Pkg.B\n",
+                }
+                for name, content in sources.items():
+                    source = root / "Pkg" / f"{name}.lean"
+                    source.parent.mkdir(exist_ok=True)
+                    source.write_text(content, encoding="utf-8")
+                    output = fast.olean(f"Pkg.{name}", root)
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    output.write_text("cached\n", encoding="utf-8")
+                    os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+                    os.utime(output, ns=(2_000_000_000, 2_000_000_000))
+                for name in ("A", "B"):
+                    os.utime(root / "Pkg" / f"{name}.lean", ns=(3_000_000_000, 3_000_000_000))
+                built: list[list[str]] = []
+                with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                    fast, "lake_stale_targets", return_value=["Pkg.A", "Pkg.B"]
+                ), mock.patch.object(
+                    fast, "build_wave",
+                    side_effect=lambda names, jobs, root: built.append(list(names)) or [],
+                ), mock.patch.object(fast, "run_final_authority_check", return_value=0) as authority:
+                    args = ["--jobs", "2", "Pkg.A", "Pkg.C"]
+                    if lake_staleness:
+                        args.insert(0, "--lake-staleness")
+                    self.assertEqual(fast.main(args), 0)
+                self.assertEqual(built, [["Pkg.A", "Pkg.B"], ["Pkg.C"]])
+                authority.assert_called_once_with(["Pkg.A", "Pkg.C"], root)
 
     def test_stale_accepts_precomputed_build_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

@@ -672,21 +672,38 @@ def main() -> int:
     )
     checks += 1
 
-    mutated_census = copy.deepcopy(census_surfaces)
-    mutated_census["docs/reference/TRUTH_AUDIT.md"] = mutated_census[
-        "docs/reference/TRUTH_AUDIT.md"
-    ].replace(
-        (
-            f"The `{census['demand_equivalent_total']}/"
-            f"{census['demand_lattice_counts']['substantial']}` count"
-        ),
-        "The `0/0` count",
-        1,
+    route = "python3 scripts/query_semantic.py node <node_id>"
+    begin = "<!-- BEGIN semantic_public_census -->"
+    end = "<!-- END semantic_public_census -->"
+    text = census_surfaces["docs/RESULTS.md"]
+    start, stop = text.index(begin), text.index(end)
+    block = text[start:stop]
+    require(route in block, "semantic route mutation must change its owned block")
+    duplicated_route = copy.deepcopy(census_surfaces)
+    duplicated_route["docs/RESULTS.md"] = text + "\n" + route + "\n"
+    diagnostic.validate_public_semantic_census(census, duplicated_route)
+    checks += 1
+    mutated_census = copy.deepcopy(duplicated_route)
+    mutated_census["docs/RESULTS.md"] = (
+        text[:start]
+        + block.replace(route, "read a frozen restatement report", 1)
+        + text[stop:] + "\n" + route + "\n"
     )
     assert_census_rejected(
-        census, mutated_census, "demand-lattice population distinction"
+        census, mutated_census, "live semantic route replaced by frozen audit"
     )
     checks += 1
+
+    for label, malformed in (
+        ("missing census marker", text.replace(begin, "", 1)),
+        ("duplicated census marker", begin + "\n" + text),
+        ("reversed census markers", text.replace(begin, "CENSUS_BEGIN_PLACEHOLDER", 1)
+         .replace(end, begin, 1).replace("CENSUS_BEGIN_PLACEHOLDER", end, 1)),
+    ):
+        mutated_census = copy.deepcopy(census_surfaces)
+        mutated_census["docs/RESULTS.md"] = malformed
+        assert_census_rejected(census, mutated_census, label)
+        checks += 1
 
     mutated_paper = remove_semantic_anchor(
         gateway_paper, "An unbounded certificate supply"
@@ -742,7 +759,10 @@ def main() -> int:
 
     for token, label in (
         ("## Eight-problem cold-start card", "agent direct fleet card"),
-        (r"\sum_{n\ge1}p_n/2^n", "agent #251 mathematical statement"),
+        (next(row["question"] for row in json.loads(
+            diagnostic.read("docs/problem_index_source.json")
+        )["problems"] if row["problem_id"] == "erdos_251"),
+         "agent #251 mathematical statement"),
         ("`ai_workflow`", "agent standalone boundary"),
     ):
         try:

@@ -1,0 +1,60 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+-- Current-source whole-statement audit for Erdős 269.
+-- 27 paper environments; 38 declaration endpoints.
+
+import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
+import ErdosProblems.Erdos269.LongWindowCapR11
+import ErdosProblems.Erdos269.PaperExactDenominatorR13
+import ErdosProblems.Erdos269.PaperFixedStartResidueR14
+import ErdosProblems.Erdos269.PaperR7ActualOrbit
+import ErdosProblems.Erdos269.PaperR7BasicAssembly
+import ErdosProblems.Erdos269.PaperR7FiniteCutRank
+import ErdosProblems.Erdos269.PaperR7ModularMinors
+import ErdosProblems.Erdos269.PaperR7RationalBridge
+import ErdosProblems.Erdos269.PaperR7SeriesIdentification
+import ErdosProblems.Erdos269.PaperR7WindowResults
+import ErdosProblems.Erdos269.PaperR8RankMajorant
+import ErdosProblems.Erdos269.ResidueEscape
+import ErdosProblems.Erdos269.RestrictedFloorSum
+import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+
+#print axioms ErdosProblems.Erdos269.PaperR10.actual_sharp_tail_bound
+#print axioms ErdosProblems.Erdos269.PaperR11.longPaperCap_le_three_squareR11
+#print axioms ErdosProblems.Erdos269.PaperR11.long_fixed_split_bridgeR11
+#print axioms ErdosProblems.Erdos269.PaperR13.clearingCondition_iff_max
+#print axioms ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing
+#print axioms ErdosProblems.Erdos269.PaperR13.firstClearingIndex_le_sufficient
+#print axioms ErdosProblems.Erdos269.PaperR13.firstClearingIndex_minimal
+#print axioms ErdosProblems.Erdos269.PaperR13.firstClearingIndex_spec
+#print axioms ErdosProblems.Erdos269.PaperR13.scaled_state_is_integer_iff_firstClearingIndex_le
+#print axioms ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_eq_tail_of_integral
+#print axioms ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_formula
+#print axioms ErdosProblems.Erdos269.PaperR14.fixedStartResidue_ratio_tendsto
+#print axioms ErdosProblems.Erdos269.PaperR7.admissible_modular_minors
+#print axioms ErdosProblems.Erdos269.PaperR7.allReducedTailsNonintegral_iff
+#print axioms ErdosProblems.Erdos269.PaperR7.long_actual_orbit
+#print axioms ErdosProblems.Erdos269.PaperR7.long_no_bounded_length
+#print axioms ErdosProblems.Erdos269.PaperR7.long_window_growth
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_jump_count
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_two_by_two_fixture
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation
+#print axioms ErdosProblems.Erdos269.PaperR7.radix_eq_height_ratio
+#print axioms ErdosProblems.Erdos269.PaperR7.rank_cutMatrix
+#print axioms ErdosProblems.Erdos269.PaperR7.scaled_integer_or_cofinal_separation
+#print axioms ErdosProblems.Erdos269.PaperR7.short_actual_orbit
+#print axioms ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge
+#print axioms ErdosProblems.Erdos269.PaperR7.short_window_equivalence
+#print axioms ErdosProblems.Erdos269.PaperR8.actual_tail_rank_bound
+#print axioms ErdosProblems.Erdos269.dyadicBlockBase235
+#print axioms ErdosProblems.Erdos269.dyadicBlockBase235_cases
+#print axioms ErdosProblems.Erdos269.dyadicBlockBase235_mem_interval
+#print axioms ErdosProblems.Erdos269.dyadicInternalPower_exponent_unique
+#print axioms ErdosProblems.Erdos269.exists_dyadicInternalPower_iff_log_succ
+#print axioms ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight
+#print axioms ErdosProblems.Erdos269.log_dyadic_succ_eq_of_no_internalPower
+#print axioms ErdosProblems.Erdos269.no_bounded_positive_int_state_of_leastPositiveResidue
+#print axioms ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+#print axioms ErdosProblems.Erdos269.threePrimeHeight_dyadicBlock_succ

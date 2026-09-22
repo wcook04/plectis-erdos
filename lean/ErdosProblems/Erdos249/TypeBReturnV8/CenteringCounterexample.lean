@@ -1,7 +1,7 @@
 import Mathlib.Analysis.Complex.Basic
 import Mathlib.Tactic
 
-/-! UNRUN candidate. A generic finite countermodel to an inference, not a
+/-! A generic finite countermodel to an inference, not a
 counterexample to the arithmetic totient-centred predicate. -/
 namespace ErdosProblems.Erdos249.TypeBReturnV8
 noncomputable section

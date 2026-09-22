@@ -19,6 +19,17 @@ The first is reusable dynamics; the second is a model-specific no-go. Neither
 constructs the primitive-normalized coefficient family and controlled analytic
 remainder needed for the actual base-`3/2` Lambert series. This module proves
 no #1049 irrationality statement and makes no novelty or priority claim.
+
+One operation on that missing family is now measured. For coprime
+`a > b ≥ 1`, the primitive integer rows of the reduced partial sums span
+exactly `Z × bZ`, with Smith invariants `(1, b)`; at `3/2` the first three rows
+`(1,0)`, `(1,2)`, `(5,14)` already attain it. Multiplying an individual tail by
+a rational weight returns the same primitive row up to sign, so rescaling the
+tails and taking integer combinations leaves the minor gcd and the endpoint
+valuations unchanged. A rational combination does leave the lattice, at the
+cost of a coefficient denominator the result does not measure. The proof is
+ordinary mathematics in the long record, `long1049:res:tail-lattice`; it is not
+formalized here.
 -/
 
 namespace ExternalVerificationPortfolio.Problem1049

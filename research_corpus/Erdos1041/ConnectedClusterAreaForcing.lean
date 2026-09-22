@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.ConnectedClusterBergman
+import research_corpus.Erdos1041.ConnectedClusterBergman
 import Mathlib.Tactic
 
 /-!

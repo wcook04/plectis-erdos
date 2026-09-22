@@ -7,10 +7,13 @@ from __future__ import annotations
 
 import re
 import os
+import subprocess
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import check_architecture_guide as checker
+import check_release
 
 
 def assert_rejected(text: str, label: str) -> None:
@@ -73,7 +76,37 @@ def check_safe_input_boundary() -> None:
                 raise AssertionError("architecture FIFO input escaped the non-blocking boundary")
 
 
+def check_public_root_inventory() -> None:
+    with tempfile.TemporaryDirectory(prefix="public-root-layout-") as raw:
+        root = Path(raw)
+        def git(*args):
+            return subprocess.run(["git", "-C", str(root), *args], check=True,
+                                  capture_output=True, env=check_release.clean_environment())
+        git("init", "-q")
+        (root / ".gitignore").write_text("tmp/\nstate/\n.validation-singleflight/\n")
+        (root / "README.md").write_text("Public entry\n")
+        git("add", ".gitignore", "README.md")
+        for name in ("tmp", "state", ".validation-singleflight"):
+            (root / name).mkdir()
+            (root / name / "local.json").write_text("{}\n")
+        def errors():
+            with patch.object(check_release, "ROOT", root), patch.object(check_release, "ERRORS", []):
+                check_release.check_root_layout()
+                return list(check_release.ERRORS)
+        assert not errors(), "ignored local caches were treated as published documents"
+        (root / "DUPLICATE.md").write_text("Unclassified candidate\n")
+        assert any("DUPLICATE.md" in error for error in errors())
+        (root / "DUPLICATE.md").unlink()
+        git("add", "-f", "state/local.json")
+        assert any("state" in error for error in errors()), "ignore rule hid a staged public file"
+        git("rm", "--cached", "state/local.json")
+        (root / "ErdosProblems").mkdir()
+        (root / "ErdosProblems" / "Loose.lean").write_text("def x := 1\n")
+        assert any("loose corpus" in error for error in errors())
+
+
 def main() -> int:
+    check_public_root_inventory()
     check_safe_input_boundary()
     guide = checker.GUIDE.read_text(encoding="utf-8")
     readme = checker.README.read_text(encoding="utf-8")
@@ -97,18 +130,30 @@ def main() -> int:
 
     mutations = (
         (
-            guide.replace(
-                "All eight mathematical problems remain open", ""
+            reflow_tolerant_replace(
+                guide, checker.external_status_boundary(), ""
             ),
             "open-problem boundary removed",
         ),
         (
             reflow_tolerant_replace(
                 guide,
+                "reviewed claim registry covers #68, #243, #249, #251, #257, #269, #1041 and #1049",
                 "reviewed claim registry covers #249 and #257",
-                "claim registry covers the project",
             ),
-            "reviewed-versus-expansion boundary removed",
+            "obsolete two-problem registry scope restored",
+        ),
+        (
+            guide.replace("#1049.", "#1049 and #9999.", 1),
+            "unregistered problem added to reviewed scope",
+        ),
+        (
+            guide.replace("comparator_assurance", "unrelated_route"),
+            "Comparator inspection route removed",
+        ),
+        (
+            guide.replace("palomar_qualification", "unrelated_route"),
+            "Palomar qualification route removed",
         ),
         (
             guide.replace("Lean decides whether a formal proof", "Software decides"),
@@ -240,8 +285,9 @@ def main() -> int:
 
     try:
         checker.validate_entry_links(
-            readme.replace(
-                "All eight problems remain open.",
+            reflow_tolerant_replace(
+                readme,
+                checker.external_status_boundary(),
                 "A conditional producer would be required",
             ),
             agents,

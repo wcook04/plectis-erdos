@@ -149,4 +149,3 @@ checks `(ER3)--(ER6)` numerically.  The numerical rows are regression evidence;
 the proof of `(ER3)` is the exact telescoping calculation above.  The Lean
 companion checks the load-bearing discounted-square identity and its sharp
 upper/lower scalar consumers.
-

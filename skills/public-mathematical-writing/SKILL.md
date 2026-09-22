@@ -124,6 +124,37 @@ formulation. The short paper should sustain its principal argument; the long
 record should explain the additional mechanisms and retain technical material
 in a navigable order. Do not make both versions equal-weight inventories.
 
+## Short paper, long record, and synthesis
+
+Use this same skill for all three. A short paper sustains one principal argument:
+question, motivating example, strongest accurate result, key proof idea, hard
+step and precise remainder. The long record makes the proof inspectable and
+keeps technical details, worthwhile failed routes and reproduction information
+in a navigable order. It is not a chronological transcript. Check the statements
+and evidence classes in both directions before refreshing their projections.
+
+The synthesis pair can develop an insight arising anywhere in the corpus:
+a transfer, construction, obstruction, better intermediate object or new
+question. It need not solve an original problem. Put a result that changes one
+problem's answer in that problem's paper too. Keep an elementary tool as a
+subordinate explanation; do not turn it into a new theory through naming or
+inflate an engineering improvement into a mathematical discovery.
+
+Apply this compact review adapted from [Tao's writing advice](https://terrytao.wordpress.com/advice-on-writing-papers/)
+and [Gowers's examples-first principle](https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/):
+
+- Describe the result accurately, motivate it, and explain its relation to prior work.
+- Introduce a concrete example before an unfamiliar abstraction when that example
+  gives the reader a useful mental model. Identify where the analogy stops.
+- Supply the proof's map and explain the hard transition; choose detail and notation
+  for this reader. Delete notation that does no repeated work.
+- Read from a cold start, resolve unexplained jumps, proofread, and compile the final
+  document. Preserve an effective authorial voice instead of enforcing a formula.
+
+These are practical adaptations, not endorsements or a claim that a passing
+check establishes good mathematical writing. Credit supplied examples, directions,
+proof ideas and corrections at their actual points of use.
+
 ## Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,

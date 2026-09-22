@@ -16,6 +16,7 @@ import gzip
 import hashlib
 import json
 import re
+import subprocess
 import sys
 import unicodedata
 from collections import Counter, deque
@@ -34,6 +35,7 @@ from lean_source import (
     library_storage_path,
     library_storage_variants,
 )
+from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
 
 
 def checkout_lean_file(relative: str) -> Path:
@@ -2378,12 +2380,39 @@ def formal_source_identity(claims: dict[str, Any]) -> dict[str, Any]:
 
 
 def formal_source_blob_repository(claims: dict[str, Any]) -> str:
-    """Host for pinned-SHA blob URLs. That SHA never had a ``lean/`` prefix."""
+    """Use the release owner, retaining an explicit historical host override."""
     formal = claims["release"].get("formal_source") or {}
     return str(
         formal.get("blob_repository")
-        or "https://github.com/wcook04/plectis-lean-erdos249-257"
+        or claims["release"]["repository"]
     )
+
+
+@lru_cache(maxsize=16)
+def pinned_source_paths(root: Path, revision: str) -> frozenset[str]:
+    """Read one immutable tree; a shallow clone may not carry that revision."""
+    if not re.fullmatch(r"[0-9a-f]{40}", revision):
+        return frozenset()
+    try:
+        result = subprocess.run(
+            ["git", "ls-tree", "-r", "--name-only", "-z", revision, "--"],
+            cwd=root, capture_output=True, text=True,
+            timeout=GIT_COMMAND_TIMEOUT_SECONDS, env=command_environment(),
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return frozenset()
+    return frozenset(result.stdout.split("\0")) if result.returncode == 0 else frozenset()
+
+
+def formal_source_url(claims: dict[str, Any], module: str, line: int) -> str | None:
+    """Link only to a path found at the selected formal-source commit."""
+    revision = str(claims["release"]["formal_source"]["ref"])
+    paths = pinned_source_paths(ROOT, revision)
+    matches = [path for path in library_storage_variants(module) if path in paths]
+    if len(matches) != 1 or type(line) is not int or line < 1:
+        return None
+    repository = formal_source_blob_repository(claims).rstrip("/")
+    return f"{repository}/blob/{revision}/{matches[0]}#L{line}"
 
 
 def lean_source_identity_for_paper(
@@ -2756,6 +2785,29 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 )
 
         if paper_row.get("anchor_label_allowlist") is not None:
+            # Some reviewed claims are paragraph spans marked only by an
+            # explicit ``\phantomsection\label``.  Admit those spans solely
+            # when the exact label is allowlisted; never turn arbitrary TeX
+            # labels into claim anchors.
+            allowed_labels = set(paper_row.get("anchor_label_allowlist") or [])
+            labels_already_seen = {
+                start["label"] for start in starts if start.get("label")
+            }
+            for match in re.finditer(r"\\label\{(?P<label>[^}]+)\}", text):
+                label = match.group("label")
+                if label not in allowed_labels or label in labels_already_seen:
+                    continue
+                starts.append(
+                    {
+                        "offset": match.start(),
+                        "anchor_kind": "labelled_claim_span",
+                        "title": None,
+                        "label": label,
+                        "environment": None,
+                    }
+                )
+                labels_already_seen.add(label)
+
             first_anchor_offset = min(
                 (start["offset"] for start in starts), default=len(text)
             )
@@ -2968,16 +3020,31 @@ def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
     """
     rows_by_source: dict[str, dict[str, Any]] = {}
 
+    def local_source(row: Mapping[str, Any]) -> str | None:
+        """Resolve the checked-out source independently of its commit pin."""
+        value = row.get("source") or row.get("local_source")
+        return value if isinstance(value, str) and value else None
+
     def add(row: dict[str, Any]) -> None:
-        source = row.get("source")
-        if not isinstance(source, str) or not source:
+        source = local_source(row)
+        if source is None:
             return
         candidate = dict(row)
+        candidate["source"] = source
         existing = rows_by_source.get(source)
         if existing is None:
             rows_by_source[source] = candidate
             return
         for key, value in candidate.items():
+            if key == "anchor_label_allowlist" and isinstance(value, list):
+                if value:
+                    existing[key] = list(dict.fromkeys([
+                        *(existing.get(key) or []), *value,
+                    ]))
+                continue
+            if key == "canonical_source_commit" and key not in existing:
+                existing[key] = value
+                continue
             if existing.get(key) is None and value is not None:
                 existing[key] = value
 
@@ -3008,6 +3075,63 @@ def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "role": note.get("authority_posture") or "dedicated_problem_note",
             }
         )
+    # The paper inventory exports checkout availability as ``local_source``.
+    # Its canonical source commit may intentionally be null while the moving
+    # default-ref source remains present locally; those are separate facts.
+    # Merge it after the claim/problem owners so their established anchor
+    # policy wins; corpus-only papers start with an empty explicit allowlist.
+    for row in load("docs/papers/corpus.json").get("papers", []):
+        if not isinstance(row, dict):
+            continue
+        add({
+            **row,
+            "source": local_source(row),
+            "rendered": row.get("local_pdf"),
+            "formal_source_ref": row.get("canonical_source_commit"),
+            "anchor_label_allowlist": [],
+        })
+    # A newly registered claim can precede legacy companion allowlist refresh.
+    # Make only labels that are both registry-declared and literally present
+    # in this exact local source discoverable as navigation anchors.
+    claim_labels_by_problem: dict[int, list[str]] = {}
+    for claim in claims.get("claims", []):
+        if not isinstance(claim, dict) or not claim.get("paper_label"):
+            continue
+        module_problems = {
+            int(match.group(1))
+            for declaration in claim.get("declarations", [])
+            if isinstance(declaration, dict)
+            for match in [re.search(
+                r"(?:^|/)Erdos(?:Problems/)?Erdos(\d+)(?:/|$)",
+                str(declaration.get("module") or ""),
+            )]
+            if match
+        }
+        if len(module_problems) == 1:
+            problem = next(iter(module_problems))
+            claim_labels_by_problem.setdefault(problem, []).append(
+                str(claim["paper_label"])
+            )
+    literal_sources: dict[str, list[str]] = {}
+    for source, row in rows_by_source.items():
+        path = ROOT / source
+        if not path.is_file():
+            continue
+        subject_match = re.search(r"#(\d+)", str(row.get("subject") or ""))
+        if subject_match is None:
+            continue
+        claim_labels = claim_labels_by_problem.get(int(subject_match.group(1)), [])
+        text = path.read_text(encoding="utf-8")
+        for label in claim_labels:
+            if re.search(rf"\\label\{{{re.escape(label)}\}}", text):
+                literal_sources.setdefault(label, []).append(source)
+    for label, sources in literal_sources.items():
+        if len(sources) != 1:
+            continue
+        row = rows_by_source[sources[0]]
+        row["anchor_label_allowlist"] = list(dict.fromkeys([
+            *(row.get("anchor_label_allowlist") or []), label,
+        ]))
     return list(rows_by_source.values())
 
 
@@ -3467,8 +3591,101 @@ def open_proposition_packet(open_id: str) -> dict[str, Any]:
         "linked_claims": linked_claims,
         "advancing_claims": advancing_claims,
         "paper_anchor": paper_anchor,
+        "current_problem_paper": open_proposition_current_paper(proposition),
         "route_memory": route_memory,
         "follow": "python3 scripts/query_corpus.py --claim <claim_id>",
+        "source": "docs/claims.json::remaining_open_propositions",
+        "validation": "python3 scripts/check_release.py",
+    }
+
+
+OPEN_INDEX_SELECTOR = "__all_open_propositions__"
+
+
+def open_proposition_problem(proposition: dict[str, Any]) -> str:
+    """Read the problem number from the open target claim id."""
+    match = re.search(r"\d+", proposition["open_target_claim"])
+    return match.group(0) if match else "other"
+
+
+def open_proposition_current_paper(proposition: dict[str, Any]) -> dict[str, Any] | None:
+    """Use the problem index for reading; retain exact older anchors as provenance."""
+    problem = open_proposition_problem(proposition)
+    row = next((row for row in load("docs/problems.json")["problems"]
+                if str(row["erdos_number"]) == problem), None)
+    paper = (row or {}).get("paper") or {}
+    source = paper.get("source")
+    if paper.get("resolution") != "resolved" or not isinstance(source, str):
+        return None
+    path = Path(source)
+    if path.is_absolute() or ".." in path.parts or "archive" in path.parts:
+        return None
+    if not (ROOT / path).is_file():
+        return None
+    return {
+        **paper,
+        "authority_posture": "current_reading_route_not_exact_statement_or_proof_identity",
+        "owner": "docs/problems.json::problems.paper",
+    }
+
+
+def open_proposition_index_packet() -> dict[str, Any]:
+    """List every registered remaining-open proposition, grouped by problem.
+
+    This is the answer to "what can I work on?".  Rows keep registry order
+    inside each problem; the listing is a menu, not a ranking.
+    """
+    claims = load("docs/claims.json")
+    advancing = Counter(
+        edge["remaining_open_effect"]["remaining_open_proposition_id"]
+        for edge in claims["machine_readable_paper"]["argument_graph"]["edges"]
+        if edge.get("remaining_open_effect")
+    )
+    rows = []
+    for order, proposition in enumerate(claims["remaining_open_propositions"]):
+        anchor = proposition.get("paper_anchor") or {}
+        rows.append(
+            {
+                "id": proposition["id"],
+                "problem": open_proposition_problem(proposition),
+                "statement": proposition["statement"],
+                "open_target_claim": proposition["open_target_claim"],
+                "current_problem_paper": open_proposition_current_paper(proposition),
+                "paper_anchor": (
+                    {
+                        "source": anchor.get("source"),
+                        "line": anchor.get("line"),
+                        "title": anchor.get("title"),
+                    }
+                    if anchor
+                    else None
+                ),
+                "advancing_claim_count": advancing.get(proposition["id"], 0),
+                "follow": f"python3 scripts/query_corpus.py --open {proposition['id']}",
+                "registry_order": order,
+            }
+        )
+
+    def problem_key(problem: str) -> tuple[int, int]:
+        return (0, int(problem)) if problem.isdigit() else (1, 0)
+
+    rows.sort(key=lambda row: (problem_key(row["problem"]), row["registry_order"]))
+    return {
+        "kind": "open_proposition_index",
+        "authority_posture": "authored_open_boundary_navigation_not_proof_authority",
+        "count": len(rows),
+        "problems": sorted({row["problem"] for row in rows}, key=problem_key),
+        "ordering": (
+            "problem number, then registry order; not a ranking of difficulty "
+            "or mathematical value"
+        ),
+        "open_propositions": rows,
+        "boundary": (
+            "Each row is an authored statement of what remains open. Settling a "
+            "row settles only what its statement says; its --open packet gives "
+            "the checked results that bear on it and its exact boundary."
+        ),
+        "follow": "python3 scripts/query_corpus.py --open <id>",
         "source": "docs/claims.json::remaining_open_propositions",
         "validation": "python3 scripts/check_release.py",
     }
@@ -3485,8 +3702,6 @@ def decorate_declaration_rows(
     label_index = paper_label_index()
     sigil_by_path = {row["path"]: row["sigil"] for row in aliases}
     lean_source_identity = formal_source_identity(claims)
-    repository = formal_source_blob_repository(claims).rstrip("/")
-    source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
     declarations_by_module = declaration_row_indexes()["by_module"]
     decorated = []
@@ -3509,10 +3724,7 @@ def decorate_declaration_rows(
                     match
                 ),
                 "source_ref": f"{library_identity_path(match['module'])}:{match['line']}",
-                "source_url": (
-                    f"{repository}/blob/{source_ref}/"
-                    f"{library_identity_path(match['module'])}#L{match['line']}"
-                ),
+                "source_url": formal_source_url(claims, match["module"], match["line"]),
                 "lean_source_identity": dict(lean_source_identity),
                 "paper_sigil": sigil_by_path.get(library_identity_path(match["module"]))
                 or sigil_by_path.get(match["module"]),
@@ -4247,8 +4459,6 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     after = [row for row in module_declarations if row["line"] > line]
     roles = module_roles(claims)
     lean_source_identity = formal_source_identity(claims)
-    repository = formal_source_blob_repository(claims).rstrip("/")
-    source_ref = lean_source_identity["ref"]
     public_module = library_identity_path(module_path)
     return {
         "kind": "source_coordinate",
@@ -4257,7 +4467,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
             "module": public_module,
             "line": line,
             "source_ref": f"{public_module}:{line}",
-            "source_url": f"{repository}/blob/{source_ref}/{public_module}#L{line}",
+            "source_url": formal_source_url(claims, module_path, line),
             "lean_source_identity": lean_source_identity,
             "module_id": module["id"],
             "module_role": roles.get(module["id"], "Unclassified module"),
@@ -7051,6 +7261,20 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             search_rank(query, discovery_term, route_haystack)
             for discovery_term in row.get("discovery_terms", [])
         )
+        # A query that is exactly a claim or open-proposition id this route owns
+        # is a typed-handle lookup of the route itself, so it ranks as an exact
+        # match. Without this the id reached the route only through the
+        # haystack, at rank 3, where any Lean declaration whose name merely
+        # contains the id outranked it and pushed the owning route out of the
+        # first page. Partial matches are deliberately not promoted here; they
+        # keep the weaker haystack rank.
+        owned_handles = (
+            *row.get("problem_target_claim_ids", []),
+            *row.get("core_claim_ids", []),
+            *row.get("remaining_open_proposition_ids", []),
+        )
+        needle = query.casefold()
+        ranks.extend(0 for handle in owned_handles if handle.casefold() == needle)
         rank = min((value for value in ranks if value is not None), default=None)
         if (
             status_target
@@ -7183,8 +7407,6 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     declarations = declaration_row_indexes()["by_source"]
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
-    repository = formal_source_blob_repository(claims).rstrip("/")
-    source_ref = identity["ref"]
     witnesses = []
     for handle in claim.get("declarations", []):
         key = (handle["name"], handle["module"], handle["line"])
@@ -7203,10 +7425,8 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
                 "source_ref": (
                     f"{library_identity_path(declaration['module'])}:{declaration['line']}"
                 ),
-                "source_url": (
-                    f"{repository}/blob/{source_ref}/"
-                    f"{library_identity_path(declaration['module'])}"
-                    f"#L{declaration['line']}"
+                "source_url": formal_source_url(
+                    claims, declaration["module"], declaration["line"]
                 ),
                 "docstring": declaration.get("docstring"),
                 "lean_source_identity": dict(identity),
@@ -9037,6 +9257,47 @@ def render_problem_reader_answer(answer: dict[str, Any]) -> list[str]:
 
 
 @lru_cache(maxsize=256)
+def routes_index_packet() -> dict[str, Any]:
+    """List every stable route id, so a reader never has to guess one."""
+    claims = load("docs/claims.json")
+    rows = [
+        {
+            "id": route["id"],
+            "route_kind": route.get("route_kind") or "orientation",
+            "title": route.get("title") or route.get("intent") or "",
+            "follow": f"python3 scripts/query_corpus.py --route {route['id']}",
+        }
+        for route in all_entrypoints(claims)
+    ]
+    problems = sorted(
+        {
+            int(open_proposition_problem(row))
+            for row in claims["remaining_open_propositions"]
+            if open_proposition_problem(row).isdigit()
+        }
+    )
+    for number in problems:
+        route_id = f"erdos_{number}"
+        if problem_registry_route(route_id) is None:
+            continue
+        rows.append(
+            {
+                "id": route_id,
+                "route_kind": "problem",
+                "title": f"Erdős #{number}: the question, status, results and what remains",
+                "follow": f"python3 scripts/query_corpus.py --route {route_id}",
+            }
+        )
+    return {
+        "kind": "route_index",
+        "authority_posture": "navigation_index_not_claim_or_proof_authority",
+        "count": len(rows),
+        "routes": rows,
+        "follow": "python3 scripts/query_corpus.py --route <id>",
+        "source": "docs/claims.json and docs/orientation.json reading routes",
+    }
+
+
 def route_packet(route_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     route = next(
@@ -9050,7 +9311,10 @@ def route_packet(route_id: str) -> dict[str, Any]:
     if route is None:
         problem_route = problem_registry_route(route_id)
         if problem_route is None:
-            raise KeyError(f"unknown route id: {route_id}")
+            raise KeyError(
+                f"unknown route id: {route_id}; list the route ids with "
+                "python3 scripts/query_corpus.py --routes"
+            )
         problem_number = int(problem_route["erdos_number"])
         signal = mathematical_signal_spine(claims, include_programme_detail=True)
         programme_signal = next(
@@ -10790,7 +11054,46 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| linked_claims={len(packet['linked_claims'])} "
             f"| advancing_claims={len(packet['advancing_claims'])}"
         )
-        return _append_route_memory_resumes(card, packet.get("route_memory"))
+        card = _append_route_memory_resumes(card, packet.get("route_memory"))
+        if paper := packet.get("current_problem_paper"):
+            card += f" | current paper={paper['source']}"
+        return card
+    if kind == "open_proposition_index":
+        rows = [
+            f"open propositions | {packet['count']} across "
+            f"{len(packet['problems'])} problems | {packet['ordering']}"
+        ]
+        current = None
+        for row in packet["open_propositions"]:
+            if row["problem"] != current:
+                current = row["problem"]
+                rows.append(f"#{current}" if current.isdigit() else current)
+            statement = row["statement"]
+            if len(statement) > 220:
+                statement = statement[:217].rstrip() + "..."
+            rows.append(
+                f"  {row['id']} | checked results bearing on it="
+                f"{row['advancing_claim_count']}"
+            )
+            rows.append(f"    {statement}")
+            paper = row.get("current_problem_paper")
+            if paper:
+                rows.append(f"    current paper: {paper['source']}")
+            anchor = row["paper_anchor"]
+            if anchor and anchor.get("source"):
+                role = "archived statement anchor" if "archive" in Path(anchor['source']).parts else "statement anchor"
+                rows.append(f"    {role}: {anchor['source']}:{anchor.get('line')}")
+        rows.append(f"next: {packet['follow']}")
+        return "\n".join(rows)
+    if kind == "route_index":
+        rows = [f"routes | {packet['count']} stable route ids"]
+        for row in packet["routes"]:
+            line = f"  {row['id']} | {row['route_kind']}"
+            if row["title"]:
+                line += f" | {row['title']}"
+            rows.append(line)
+        rows.append(f"next: {packet['follow']}")
+        return "\n".join(rows)
     if kind == "module":
         module = packet["module"]
         dependency = packet["dependency_neighbourhood"]["receipt"]
@@ -10893,6 +11196,17 @@ def render_card(packet: dict[str, Any]) -> str:
             f"witness_edges={len(packet['minimal_witness_subgraph']['edges'])} "
             f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
         )
+        if not packet["semantic_cells"]:
+            # An empty slice used to end here in silence.  Name the stable
+            # surfaces instead of leaving the reader to guess a route id.
+            rows.extend(
+                (
+                    "no cells matched this wording; the stable surfaces are:",
+                    "  python3 scripts/query_corpus.py --open      # every open question",
+                    "  python3 scripts/query_corpus.py --routes    # every stable route id",
+                    "  python3 scripts/query_corpus.py --overview --format card",
+                )
+            )
         return "\n".join(rows)
     if kind == "finite_computation_replay":
         replay = packet["default_replay"]
@@ -11154,9 +11468,9 @@ def render_card(packet: dict[str, Any]) -> str:
                 "run Lean."
             ),
             (
-                f"Indexed problems: {problem_ids}. "
-                f"{scale['indexed_open_problem_count']} of "
-                f"{scale['indexed_problem_count']} remain open."
+                f"Indexed problems: {problem_ids}. Historical programme targets "
+                f"marked open: {scale['indexed_open_problem_count']} of "
+                f"{scale['indexed_problem_count']}."
             ),
             (
                 f"For another problem, replace {lead['problem']} in the result "
@@ -11206,7 +11520,17 @@ def query_args_packet(
     group.add_argument("--paper-label", type=nonempty_selector, metavar="LABEL")
     group.add_argument("--paper-source", type=nonempty_selector, metavar="SOURCE_PATH")
     group.add_argument("--paper-anchor", type=nonempty_selector, metavar="LABEL_OR_SOURCE_REF")
-    group.add_argument("--open", type=nonempty_selector, metavar="ID")
+    group.add_argument(
+        "--open",
+        type=nonempty_selector,
+        nargs="?",
+        const=OPEN_INDEX_SELECTOR,
+        metavar="ID",
+        help=(
+            "one remaining-open proposition; with no ID, list every open "
+            "proposition grouped by problem"
+        ),
+    )
     group.add_argument("--declaration", type=nonempty_selector, metavar="NAME")
     group.add_argument("--goal-support", type=nonempty_selector, metavar="LEAN_OR_MATHEMATICAL_GOAL")
     group.add_argument("--proof-plan", type=nonempty_selector, metavar="LEAN_OR_MATHEMATICAL_GOAL")
@@ -11230,6 +11554,9 @@ def query_args_packet(
     group.add_argument("--module", type=nonempty_selector, metavar="PATH_OR_ID")
     group.add_argument("--connections", type=nonempty_selector, metavar="MODULE_OR_DECLARATION")
     group.add_argument("--route", type=nonempty_selector, metavar="ID")
+    group.add_argument(
+        "--routes", action="store_true", help="list every stable route id"
+    )
     group.add_argument("--status", type=nonempty_selector, metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", type=nonempty_selector, metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
@@ -11285,6 +11612,10 @@ def query_args_packet(
         packet = paper_source_packet(args.paper_source)
     elif args.paper_anchor:
         packet = paper_anchor_packet(args.paper_anchor)
+    elif args.open == OPEN_INDEX_SELECTOR:
+        packet = open_proposition_index_packet()
+        if not args.format:
+            output_format = "card"
     elif args.open:
         packet = open_proposition_packet(args.open)
     elif args.declaration:
@@ -11326,6 +11657,10 @@ def query_args_packet(
         packet = connection_card(args.connections, args.limit, args.query)
     elif args.route:
         packet = route_packet(args.route)
+    elif args.routes:
+        packet = routes_index_packet()
+        if not args.format:
+            output_format = "card"
     elif args.status:
         packet = claim_status_packet(args.status, args.limit)
     elif args.publication_family:

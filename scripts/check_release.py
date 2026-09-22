@@ -66,6 +66,7 @@ from lean_source import (
     library_storage_variants,
     lean_code_without_comments_and_strings,
 )
+from paper_build_manifest import manifest_errors as paper_build_manifest_errors
 from publication_contract import (
     RepositoryReader,
     mutation_fixture_failures as publication_mutation_fixture_failures,
@@ -256,9 +257,17 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_proof_workbench.py"),
         ],
+        "proof_state_compiler": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_proof_state_compiler.py"),
+        ],
         "computation_replay": [
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
+        ],
+        "admissible_feedback": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
         ],
         "mutation_harness": [
             sys.executable,
@@ -540,6 +549,13 @@ def flattened(text: str) -> str:
     return " ".join(text.split())
 
 
+def has_release_status_boundary(text: str, claims: dict) -> bool:
+    """Require the current owner statement, including its formulation limits."""
+    boundary = claims.get("external_verification_packet", {}).get("boundary")
+    return (isinstance(boundary, str) and bool(boundary.strip())
+            and flattened(boundary) in flattened(text))
+
+
 def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
@@ -739,6 +755,17 @@ def module_lines(
                     text=True,
                     check=False,
                 )
+            storage = library_storage_path(historical)
+            if completed.returncode != 0 and storage not in {historical, rel}:
+                # A pin taken after both libraries moved under lean/ stores the
+                # module at its storage spelling, not at the identity path.
+                completed = run(
+                    ["git", "show", f"{source_ref}:{storage}"],
+                    cwd=ROOT,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
             cache[key] = completed.stdout.splitlines() if completed.returncode == 0 else None
     return cache[key]
 
@@ -776,6 +803,44 @@ def _ls_tree_identity_blobs(formal_ref: str) -> dict[str, str] | None:
             continue
         blobs[library_identity_path(parts[3])] = parts[2]
     return blobs
+
+
+def formal_source_publication_errors(formal_source: dict) -> list[str]:
+    """Validate publication identity independently of source/proof validation.
+
+    A local candidate has a committed source ref but no public tag. Published
+    checkpoints retain the stronger annotated, immutable tag contract.
+    """
+    errors: list[str] = []
+    if formal_source.get("ref_kind") != "commit":
+        errors.append("release.formal_source.ref_kind must be 'commit'")
+    if formal_source.get("relationship_to_last_tag") not in {
+        "at_last_tag", "post_tag_checkpoint",
+    }:
+        errors.append("release.formal_source has an unsupported relationship_to_last_tag")
+    state = formal_source.get("publication_state")
+    public_tag = formal_source.get("public_tag")
+    if state == "committed_checkpoint_pending_remote_publication":
+        if public_tag is not None:
+            errors.append("pending formal-source publication must have public_tag: null")
+        return errors
+    if state != "published_committed_checkpoint":
+        errors.append("release.formal_source has an unsupported publication_state")
+        return errors
+    if not isinstance(public_tag, str) or re.fullmatch(
+        r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?", public_tag,
+    ) is None:
+        errors.append("published formal source requires a dated formal-source tag, "
+                      "optionally with a positive correction revision")
+        return errors
+    options = dict(cwd=ROOT, capture_output=True, text=True, check=False)
+    tag_kind = run(["git", "cat-file", "-t", public_tag], **options)
+    if tag_kind.returncode != 0 or tag_kind.stdout.strip() != "tag":
+        errors.append("release.formal_source.public_tag must resolve to an annotated tag")
+    resolved_tag = run(["git", "rev-parse", f"{public_tag}^{{}}"], **options)
+    if resolved_tag.returncode != 0 or resolved_tag.stdout.strip() != formal_source.get("ref"):
+        errors.append("release.formal_source.public_tag does not peel to formal_source.ref")
+    return errors
 
 
 def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]:
@@ -1085,6 +1150,7 @@ APPROVED_ROOT_DIRS = {
     ".agents": "host-discovery entrypoints used by integrations",
     ".github": "CI and hosted repository metadata",
     "LICENSES": "SPDX licence texts",
+    "computations": "exact finite computer-algebra certificates cited by the #1049 notes, not Lean",
     "docs": "human and machine documentation",
     "lean": "proof-corpus Lean sources (Lake srcDir)",
     "paper": "manuscripts, nested by problem or purpose",
@@ -1115,18 +1181,34 @@ FORBIDDEN_LOOSE_ROOT_DIRS = (
 
 def check_root_layout() -> None:
     """Keep the public root a purpose-named tree, not a dump of PDFs and libraries."""
+    # A used clone also contains ignored build products and local evidence.
+    # Inspect the publication candidate; a tracked file remains in scope even
+    # when its pathname matches an ignore rule.
+    entries = {path.name for path in ROOT.iterdir()}
+    git_root = subprocess.run(
+        ["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"],
+        capture_output=True, text=True, env=clean_environment(), check=False,
+    )
+    if git_root.returncode == 0 and Path(git_root.stdout.strip()).resolve() == ROOT.resolve():
+        inventory = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+            capture_output=True, text=True, env=clean_environment(), check=False,
+        )
+        check(inventory.returncode == 0, "public root candidate inventory could not be read")
+        if inventory.returncode != 0:
+            return
+        entries = {rel.split("/", 1)[0] for rel in inventory.stdout.split("\0") if rel}
     root_pdfs = sorted(
-        path.name for path in ROOT.glob("*.pdf") if path.is_file() and not path.name.startswith(".")
+        name for name in entries if name.endswith(".pdf") and not name.startswith(".")
     )
     check(not root_pdfs, f"root PDFs are forbidden after the layout migration: {root_pdfs}")
     for name in FORBIDDEN_LOOSE_ROOT_DIRS:
         check(
-            not (ROOT / name).exists(),
+            name not in entries,
             f"loose corpus or verification library must not sit at repository root: {name}",
         )
     unexplained: list[str] = []
-    for path in ROOT.iterdir():
-        name = path.name
+    for name in entries:
         if name in {".git", ".lake"}:
             continue
         if name in APPROVED_ROOT_FILES or name in APPROVED_ROOT_DIRS:
@@ -1289,6 +1371,11 @@ def main(argv: list[str] | None = None) -> int:
         not publication_errors,
         "publication artifact contract failed: " + "; ".join(publication_errors),
     )
+    paper_build_errors = paper_build_manifest_errors(publication_reader)
+    check(
+        not paper_build_errors,
+        "paper build manifest failed: " + "; ".join(paper_build_errors),
+    )
     publication_fixture_failures = publication_mutation_fixture_failures(
         publication_reader
     )
@@ -1423,55 +1510,8 @@ def main(argv: list[str] | None = None) -> int:
     version, tag = release["version"], release["tag"]
     check(tag == f"v{version}", f"release tag {tag} does not match version {version}")
     if isinstance(formal_source, dict):
-        check(formal_source.get("ref_kind") == "commit",
-              "release.formal_source.ref_kind must be 'commit'")
-        check(formal_source.get("publication_state") in {
-            "committed_checkpoint_pending_remote_publication",
-            "published_committed_checkpoint",
-        }, "release.formal_source has an unsupported publication_state")
-        check(formal_source.get("relationship_to_last_tag") in {
-            "at_last_tag", "post_tag_checkpoint",
-        }, "release.formal_source has an unsupported relationship_to_last_tag")
-        public_tag = formal_source.get("public_tag")
-        check(
-            isinstance(public_tag, str)
-            and re.fullmatch(
-                r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?",
-                public_tag,
-            )
-            is not None,
-            "release.formal_source.public_tag must be a dated formal-source "
-            "tag, optionally with a positive correction revision",
-        )
-        if isinstance(public_tag, str):
-            tag_kind = run(
-                ["git", "cat-file", "-t", public_tag],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            check(
-                tag_kind.returncode == 0 and tag_kind.stdout.strip() == "tag",
-                "release.formal_source.public_tag must resolve to an annotated tag",
-            )
-            resolved_tag = run(
-                ["git", "rev-parse", f"{public_tag}^{{}}"],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            check(
-                resolved_tag.returncode == 0
-                and resolved_tag.stdout.strip() == formal_ref,
-                "release.formal_source.public_tag does not peel to formal_source.ref",
-            )
-            check(
-                formal_source.get("publication_state")
-                == "published_committed_checkpoint",
-                "a public formal-source tag requires published_committed_checkpoint state",
-            )
+        for error in formal_source_publication_errors(formal_source):
+            check(False, error)
     public_projection = release.get("public_projection")
     check(isinstance(public_projection, dict),
           "release must name its public_projection provenance posture")
@@ -1705,7 +1745,7 @@ def main(argv: list[str] | None = None) -> int:
             check(
                 all(claim_index[target_id]["status"] == "open"
                     for target_id in target_ids if target_id in claim_index),
-                f"programme route {route.get('id')!r} target claims must remain open",
+                f"programme route {route.get('id')!r} target claims must carry canonical status=open",
             )
             check(not (core_ids - claim_id_set),
                   f"programme route {route.get('id')!r} has unknown core claims: "
@@ -2015,10 +2055,13 @@ def main(argv: list[str] | None = None) -> int:
         pinned_requests,
         pinned_cache,
     )
+    # Record only hits: a miss at the identity path may still resolve at the
+    # lean/ storage spelling, which module_lines tries when it reads the tree.
     cache.update(
         {
-            (rel, ref): lines or None
+            (rel, ref): lines
             for (ref, rel), lines in pinned_cache.items()
+            if lines
         }
     )
 
@@ -2060,12 +2103,13 @@ def main(argv: list[str] | None = None) -> int:
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
           f"docs/SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
-    check("does not prove" in flattened(scope),
+    check(has_release_status_boundary(scope, data),
           "docs/SCOPE.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
-    check(tag in readme, f"README does not state the release tag {tag}")
+    check("CITATION.cff" in readme,
+          "README must route readers to the checked release citation owner")
     check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     check(
@@ -2090,11 +2134,7 @@ def main(argv: list[str] | None = None) -> int:
         re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
     )
     check(
-        "does not solve" in flattened(readme)
-        or bool(re.search(
-            rf"all\s+(?:{count_pattern})\s+problems\s+remain\s+open",
-            flattened(readme).casefold(),
-        )),
+        has_release_status_boundary(readme, data),
         "README must state the open boundary in plain language",
     )
     check(
@@ -2233,12 +2273,8 @@ def main(argv: list[str] | None = None) -> int:
         "Erdos249257.lean",
         "ErdosProblems.lean",
         "scripts/check_release.py",
-        "scripts/check_architecture_guide.py",
-        "scripts/test_architecture_guide.py",
-            "scripts/agent_entry.py",
-            "scripts/agent_skill_catalog.py",
-            "scripts/test_agent_entry.py",
-            "skills/maintain-public-infrastructure/SKILL.md",
+        "scripts/test_agent_entry.py",
+        "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"docs/agents/AGENT_GUIDE.md does not route through {required}")
@@ -2273,6 +2309,10 @@ def main(argv: list[str] | None = None) -> int:
             "contribution_entry": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_contribution_entry.py"),
+            ],
+            "continuation_journeys": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_continue_research.py"),
             ],
             "contribution_contract_agreement": [
                 sys.executable,
@@ -2312,6 +2352,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "check_semantic_corpus.py"),
             ],
+            "semantic_receipt_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_semantic_corpus_check_receipt.py"),
+            ],
             "semantic_review": [
                 sys.executable,
                 str(ROOT / "scripts" / "semantic_review.py"),
@@ -2320,6 +2364,18 @@ def main(argv: list[str] | None = None) -> int:
             "semantic_review_fixtures": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_semantic_review.py"),
+            ],
+            "semantic_rebind_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_semantic_review_rebind.py"),
+            ],
+            "formal_source_identity_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_release_source_identity.py"),
+            ],
+            "palomar_qualification_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_palomar_qualification.py"),
             ],
             "theory_lab_contract": [
                 sys.executable,
@@ -2343,6 +2399,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
                 "--source-only",
+            ],
+            "concyclic_paper_boundary": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_concyclic_alternation_paper_boundary.py"),
             ],
         }
     )
@@ -2388,6 +2448,9 @@ def main(argv: list[str] | None = None) -> int:
         "public contribution and credit entry failed: "
         f"{child_output(contribution_entry_check)}",
     )
+    continuation_check = mid_checks["continuation_journeys"]
+    check(continuation_check.returncode == 0,
+          f"contribution continuation journeys failed: {child_output(continuation_check)}")
     source_attribution_fixture_check = mid_checks["source_attribution_fixtures"]
     check(
         source_attribution_fixture_check.returncode == 0,
@@ -2507,6 +2570,11 @@ def main(argv: list[str] | None = None) -> int:
         semantic_review_fixtures.returncode == 0,
         "semantic review mutation fixtures: "
         f"{child_output(semantic_review_fixtures)}",
+    )
+    semantic_rebind_fixtures = mid_checks["semantic_rebind_fixtures"]
+    check(
+        semantic_rebind_fixtures.returncode == 0,
+        f"semantic review rebind guards: {child_output(semantic_rebind_fixtures)}",
     )
 
     # The theory lab is the layer that makes predictive claims -- which mechanism
@@ -2658,6 +2726,12 @@ def main(argv: list[str] | None = None) -> int:
         boundary.returncode == 0,
         "human-facing paper boundary failed: "
         f"{child_output(boundary)}",
+    )
+    concyclic_boundary = mid_checks["concyclic_paper_boundary"]
+    check(
+        concyclic_boundary.returncode == 0,
+        "concyclic paper boundary failed: "
+        f"{child_output(concyclic_boundary)}",
     )
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))
@@ -2830,7 +2904,7 @@ def main(argv: list[str] | None = None) -> int:
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "proof_workbench", "computation_replay",
+        "proof_workbench", "computation_replay", "admissible_feedback",
     ):
         result = late_checks[name]
         check(result.returncode == 0,

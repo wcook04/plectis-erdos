@@ -105,4 +105,3 @@ connected chain materially wider than the fixed-centre seed.  It does not yet
 cover the remainder of the four regular rational `t` domains, the other
 carrier branches, the cusp collar, the complete double-tight atlas, `EX-W`,
 `EX-U`, degree five, or unrestricted Erdős 1041.
-

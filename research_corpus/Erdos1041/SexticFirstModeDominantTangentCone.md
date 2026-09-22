@@ -130,4 +130,3 @@ machinery, but uniform all-phase perturbations must still be proved.  After
 that finite homogeneous closure, the strict model margins must absorb the
 origin-anchored \(O(\eta^2|z|)\) remainder.  This note does not claim that
 transfer has already been completed.
-

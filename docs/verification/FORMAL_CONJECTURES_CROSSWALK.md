@@ -90,7 +90,7 @@ Local question: Is the binary Lambert series sum phi(n)/2^n irrational?
 
 ### Erdős #251
 
-Local question: Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
+Local question: Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
 
 - Canonical local return route: `python3 scripts/query_corpus.py --route erdos_251` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 
@@ -135,7 +135,7 @@ Local question: For a finite set of at least two primes, is the sum of reciproca
 
 ### Erdős #1041
 
-Local question: For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?
+Local question: For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.
 
 - Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1041` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 

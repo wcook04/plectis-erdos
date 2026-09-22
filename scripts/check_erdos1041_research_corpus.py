@@ -30,6 +30,18 @@ GENERATED_ENVELOPE = {
     f"{PUBLIC_PREFIX}/README.md",
     f"{PUBLIC_PREFIX}/STRONGEST_RESULTS.json",
 }
+SCHEMA_ENVELOPES = {
+    (
+        "erdos1041_public_research_corpus_manifest_v1",
+        "erdos1041_strongest_result_activation_map_v1",
+        "plectis_public_problem_corpus_checkpoint_v1",
+    ): "legacy_v1",
+    (
+        "plectis_public_research_corpus_manifest_v2",
+        "plectis_strongest_result_activation_map_v2",
+        "plectis_public_problem_corpus_checkpoint_v2",
+    ): "generic_v2",
+}
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 PRIVATE_PATH_MARKERS = (
@@ -114,7 +126,17 @@ def require(condition: bool, message: str) -> None:
 def private_path_leaks(data: bytes) -> list[str]:
     """Return portable local-path markers found in one public artifact."""
     folded = data.lower()
-    return [label for label, marker in PRIVATE_PATH_MARKERS if marker.lower() in folded]
+    leaks = []
+    for label, marker in PRIVATE_PATH_MARKERS:
+        marker = marker.lower()
+        if marker not in folded:
+            continue
+        if marker in {b"/users/", b"/home/", b"/root/", b"/private/var/"} and not re.search(
+            rb"(?<![a-z0-9_.-])" + re.escape(marker), folded
+        ):
+            continue
+        leaks.append(label)
+    return leaks
 
 
 def safe_public_path(raw: Any) -> tuple[str, Path]:
@@ -126,6 +148,74 @@ def safe_public_path(raw: Any) -> tuple[str, Path]:
     return raw, safe_public_file(path, raw)
 
 
+def envelope_version(
+    manifest: dict[str, Any], strongest: dict[str, Any], checkpoint: dict[str, Any]
+) -> str:
+    """Accept one coherent legacy or generic envelope, never a mixed tuple."""
+    schemas = (
+        manifest.get("schema"), strongest.get("schema"), checkpoint.get("schema")
+    )
+    require(schemas in SCHEMA_ENVELOPES, f"unknown or mixed corpus schemas: {schemas}")
+    return SCHEMA_ENVELOPES[schemas]
+
+
+def strongest_result_id(result: dict[str, Any], version: str) -> str:
+    """Return the row identity without conflating activation and packet rows."""
+    result_id = result.get("result_id")
+    source_result_id = result.get("source_result_id")
+    if version == "legacy_v1":
+        require(
+            isinstance(result_id, str) and result_id and source_result_id is None,
+            "legacy strongest-result row must have result_id only",
+        )
+        return result_id
+    require(
+        (isinstance(result_id, str) and result_id and source_result_id is None)
+        or (
+            isinstance(source_result_id, str)
+            and source_result_id
+            and result_id is None
+        ),
+        "generic strongest-result row must have exactly one of result_id or source_result_id",
+    )
+    return str(result_id or source_result_id)
+
+
+def validate_result_authority(
+    result: dict[str, Any], version: str, result_id: str
+) -> list[Any]:
+    """Require either manifest-bound public sources or an explicit no-authority row."""
+    public_paths = result.get("public_authority_paths")
+    require(isinstance(public_paths, list), f"{result_id} has malformed public authority paths")
+    authority_binding = result.get("authority_binding")
+    if version == "legacy_v1":
+        require(public_paths, f"{result_id} lacks public authority paths")
+    elif public_paths:
+        require(
+            isinstance(authority_binding, dict)
+            and authority_binding.get("status") == "bound_public_source",
+            f"{result_id} has paths without a bound public-source receipt",
+        )
+    else:
+        require(
+            result.get("source_result_id") == result_id,
+            f"{result_id} activation row lacks public authority paths",
+        )
+        require(
+            isinstance(authority_binding, dict)
+            and authority_binding.get("status") == "unresolved_source_locator"
+            and authority_binding.get("posture")
+            == "source_status_only_not_public_authority"
+            and authority_binding.get("reason")
+            in {
+                "unresolved_declaration_locator",
+                "research_packet_row_has_no_resolved_source_locator",
+            },
+            f"{result_id} has empty authority without an explicit unresolved binding",
+        )
+    return public_paths
+
+
 def check() -> tuple[int, int, int]:
     manifest_path = CORPUS / "CORPUS_MANIFEST.json"
     strongest_path = CORPUS / "STRONGEST_RESULTS.json"
@@ -134,15 +224,18 @@ def check() -> tuple[int, int, int]:
     strongest = load_json(strongest_path)
     checkpoint = load_json(checkpoint_path)
 
-    require(manifest.get("schema") == "erdos1041_public_research_corpus_manifest_v1", "unknown corpus manifest schema")
-    require(strongest.get("schema") == "erdos1041_strongest_result_activation_map_v1", "unknown strongest-result schema")
-    require(checkpoint.get("schema") == "plectis_public_problem_corpus_checkpoint_v1", "unknown public checkpoint schema")
+    version = envelope_version(manifest, strongest, checkpoint)
     require(manifest.get("problem_id") == strongest.get("problem_id") == checkpoint.get("problem_id") == "erdos_1041", "problem identity mismatch")
     source_commit = manifest.get("source_checkpoint")
     require(isinstance(source_commit, str) and COMMIT_RE.fullmatch(source_commit) is not None, "source checkpoint is not a full commit")
     require(strongest.get("source_checkpoint") == source_commit, "strongest-result map source checkpoint differs from manifest")
     require(checkpoint.get("source_commit") == source_commit, "public checkpoint source commit differs from manifest")
     require(manifest.get("public_prefix") == PUBLIC_PREFIX, "manifest public prefix mismatch")
+    if version == "generic_v2":
+        require(
+            manifest.get("sanitization_profile") == "erdos1041_public_coordinates",
+            "generic corpus sanitization profile mismatch",
+        )
 
     files = manifest.get("files")
     require(isinstance(files, list) and files, "manifest files must be a nonempty list")
@@ -190,8 +283,11 @@ def check() -> tuple[int, int, int]:
             require(not path.is_symlink(), f"symlinked corpus directory: {path.relative_to(ROOT)}")
             continue
         actual.add(safe_public_file(path, str(path.relative_to(ROOT))).relative_to(ROOT).as_posix())
-    require(actual == seen | GENERATED_ENVELOPE, f"untracked corpus files: {sorted(actual - seen - GENERATED_ENVELOPE)}; missing: {sorted((seen | GENERATED_ENVELOPE) - actual)}")
-    for public_path in sorted(GENERATED_ENVELOPE):
+    generated_envelope = set(GENERATED_ENVELOPE)
+    if version == "generic_v2":
+        generated_envelope.add(f"{PUBLIC_PREFIX}/FRONTIER.md")
+    require(actual == seen | generated_envelope, f"untracked corpus files: {sorted(actual - seen - generated_envelope)}; missing: {sorted((seen | generated_envelope) - actual)}")
+    for public_path in sorted(generated_envelope):
         _, path = safe_public_path(public_path)
         leaked = private_path_leaks(read_public_bytes(path, public_path))
         require(not leaked, f"private local-path marker in {public_path}: {leaked}")
@@ -202,17 +298,24 @@ def check() -> tuple[int, int, int]:
     require(strongest_pointer.get("sha256") == sha256(strongest_path), "strongest-result digest mismatch")
     require(checkpoint.get("strongest_result_map_sha256") == sha256(strongest_path), "checkpoint strongest-result digest mismatch")
     require(checkpoint.get("corpus_manifest_sha256") == sha256(manifest_path), "checkpoint manifest digest mismatch")
+    require(checkpoint.get("corpus_manifest_path") == f"{PUBLIC_PREFIX}/CORPUS_MANIFEST.json", "checkpoint manifest path mismatch")
+    require(checkpoint.get("strongest_result_map_path") == f"{PUBLIC_PREFIX}/STRONGEST_RESULTS.json", "checkpoint strongest-result path mismatch")
+    if version == "generic_v2":
+        frontier_pointer = manifest.get("browser_frontier")
+        require(isinstance(frontier_pointer, dict), "generic corpus frontier pointer missing")
+        require(frontier_pointer.get("path") == f"{PUBLIC_PREFIX}/FRONTIER.md", "frontier path mismatch")
+        require(frontier_pointer.get("sha256") == sha256(CORPUS / "FRONTIER.md"), "frontier digest mismatch")
+        require(frontier_pointer.get("source") == "exported research_packet.json", "frontier source mismatch")
     results = strongest.get("results")
     require(isinstance(results, list) and results, "strongest-result map is empty")
     require(strongest_pointer.get("result_count") == len(results), "strongest-result count mismatch")
     result_ids: set[str] = set()
     for result in results:
         require(isinstance(result, dict), "strongest-result row must be an object")
-        result_id = result.get("result_id")
-        require(isinstance(result_id, str) and result_id and result_id not in result_ids, "missing or duplicate strongest-result id")
+        result_id = strongest_result_id(result, version)
+        require(result_id not in result_ids, "missing or duplicate strongest-result id")
         result_ids.add(result_id)
-        public_paths = result.get("public_authority_paths")
-        require(isinstance(public_paths, list) and public_paths, f"{result_id} lacks public authority paths")
+        public_paths = validate_result_authority(result, version, result_id)
         for raw in public_paths:
             public_path, _ = safe_public_path(raw)
             require(public_path in seen, f"{result_id} authority is absent from manifest: {public_path}")
@@ -228,18 +331,12 @@ def check() -> tuple[int, int, int]:
 # `native_decide` could land here and no gate in the repository would notice.
 #
 # `sorry`, `admit`, and project-defined axioms have no justification in a
-# published corpus and are rejected outright.  `native_decide` is a different
-# case: nine uses are already here and are load-bearing for the finite
-# counterexample evidence.  Deleting them is a mathematical decision, not a
-# hygiene one, so they are pinned instead — the exact files and the exact count.
-# A tenth use, or a use in a new file, fails until the pin is updated
-# deliberately.  Note that `native_decide` disqualifies a result from Palomar
-# (its Comparator forbids `Lean.ofReduceBool`), so this pin also marks exactly
-# which sources are ineligible for that route.
-NATIVE_DECIDE_PIN = {
-    f"{PUBLIC_PREFIX}/CentroidHubCounterexample.lean": 4,
-    f"{PUBLIC_PREFIX}/QuarticCoreRadiusCase.lean": 5,
-}
+# published corpus and are rejected outright. The committed source refresh
+# replaces the former nine native decisions in CentroidHubCounterexample and
+# QuarticCoreRadiusCase with `decide +kernel`. Pin the now-empty native surface:
+# any reintroduction fails. This token check is not an elaboration receipt or
+# evidence of Palomar acceptance.
+NATIVE_DECIDE_PIN: dict[str, int] = {}
 FORBIDDEN_TOKEN_RE = re.compile(r"\bsorry\b|\badmit\b|(?<![\w.])axiom\s+")
 NATIVE_DECIDE_RE = re.compile(r"native_decide|\+native\b")
 

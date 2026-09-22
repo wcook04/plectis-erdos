@@ -20,6 +20,12 @@ and each one must be refused by name.
 from __future__ import annotations
 
 import semantic_review as sr
+import json
+import subprocess
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
+from semantic_corpus_storage import encode_corpus
 
 REVISION = "9e231ce4371fcda607f81c4520d29b16dcb4482e"
 OLD_FINGERPRINT = "sha256:" + "a" * 64
@@ -332,6 +338,7 @@ def check_moved_revision_with_identical_statements_is_reissued() -> None:
     reissues, refusals = rereview(registry, committed, candidate)
     require(not refusals, f"identical statements across a move were refused: {refusals}")
     require(len(reissues) == 3, f"expected every receipt re-issued, got {len(reissues)}")
+
     sr.apply_rereviews(reissues, new_revision=NEW_REVISION, today="2026-09-04")
     for review in registry["reviews"]:
         require(review["reviewed_revision"] == NEW_REVISION, "revision was not moved")
@@ -349,6 +356,32 @@ def check_moved_revision_with_identical_statements_is_reissued() -> None:
         reviewed_revision=NEW_REVISION,
     )
     require(registry["reviews"][0]["evidence_digest"] == expected, "re-issued digest is wrong")
+
+
+def check_moved_coordinates_require_identical_statements() -> None:
+    committed = cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = cited_corpus(NEW_FINGERPRINT)
+    for node in candidate["statement_nodes"]:
+        node["evidence"][0]["id"] = "Erdos257/Example.lean:120:example_theorem"
+    reissues, refusals = rereview(registry, committed, candidate)
+    require(not refusals and len(reissues) == 3, f"line-only move refused: {refusals}")
+    _, refusals, _ = rebind(registry, committed, candidate)
+    require(bool(refusals), "ordinary fingerprint rebind accepted changed coordinates")
+    changed = {next(iter(CITED)): ("theorem", "theorem example_theorem : False")}
+    for signatures in (changed, {}):
+        reissues, refusals = rereview(registry, committed, candidate, new=signatures)
+        require(not reissues and bool(refusals), "line move hid a changed or missing statement")
+    for replacement in ("Erdos257/Other.lean:120:example_theorem",
+                        "Erdos257/Example.lean:120:other_theorem",
+                        "Erdos257/Example.lean:unknown:example_theorem"):
+        candidate["statement_nodes"][0]["evidence"][0]["id"] = replacement
+        _, refusals = rereview(registry, committed, candidate)
+        require(bool(refusals), f"changed evidence identity accepted: {replacement}")
+    candidate["statement_nodes"][0]["evidence"][0].update(
+        id="Erdos257/Example.lean:120:example_theorem", resolved=False)
+    _, refusals = rereview(registry, committed, candidate)
+    require(bool(refusals), "unresolved evidence accepted across a line move")
 
 
 def check_moved_revision_with_changed_statement_is_refused() -> None:
@@ -405,7 +438,95 @@ def check_substantive_projection_excludes_only_the_pin() -> None:
     )
 
 
+def layout_cited_corpus(fingerprint: str) -> dict:
+    corpus = cited_corpus(fingerprint)
+    for node in corpus["statement_nodes"]:
+        for evidence in node["evidence"]:
+            evidence["module"] = "Erdos249257/Example.lean"
+            evidence["id"] = "Erdos249257/Example.lean:3:example_theorem"
+    return corpus
+
+
+def check_moved_revision_across_layout_move_is_reissued() -> None:
+    """A formal-source move across the ``lean/`` storage migration is not a statement change.
+
+    The atlas at a pre-migration revision spells modules at the repository
+    root and the rebuilt atlas spells them under ``lean/``. Observed on the
+    2026-09-15 move from 92b88dc1 to 0b500c7c: every receipt was refused with
+    byte-identical signatures because the two atlases keyed the same module
+    under different spellings.
+    """
+    statement = ("theorem", "theorem example_theorem : True")
+    old = {("Erdos249257/Example.lean", "example_theorem"): statement}
+    new = {("lean/Erdos249257/Example.lean", "example_theorem"): statement}
+    committed = layout_cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = layout_cited_corpus(NEW_FINGERPRINT)
+    reissues, refusals = rereview(registry, committed, candidate, old=old, new=new)
+    require(not refusals, f"a layout-only move was refused: {refusals}")
+    require(len(reissues) == 3, f"expected every receipt re-issued, got {len(reissues)}")
+
+    changed = {
+        ("lean/Erdos249257/Example.lean", "example_theorem"):
+            ("theorem", "theorem example_theorem : False")
+    }
+    registry = sample_registry(committed)
+    reissues, refusals = rereview(registry, committed, candidate, old=old, new=changed)
+    require(not reissues, "a changed statement was re-issued across a layout move")
+    require(
+        refusals and all("statement differs" in refusal for refusal in refusals),
+        f"a changed statement across a layout move was not refused by name: {refusals}",
+    )
+
+
+def check_explicit_committed_baseline() -> None:
+    """An independent clone can rebind after a merge without trusting its conflict file."""
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        def git(*args):
+            return subprocess.run(["git", *args], cwd=root, check=True,
+                capture_output=True, env=sr.command_environment()).stdout.decode().strip()
+        git("init", "-q")
+        git("config", "user.name", "Fixture")
+        git("config", "user.email", "fixture@example.invalid")
+        corpus_path = root / "docs/semantic_corpus.json.gz"
+        corpus_path.parent.mkdir()
+        old = sample_corpus(OLD_FINGERPRINT)
+        corpus_path.write_bytes(encode_corpus(json.dumps(old)))
+        git("add", "docs/semantic_corpus.json.gz")
+        git("commit", "-qm", "baseline")
+        revision = git("rev-parse", "HEAD")
+        corpus_path.write_bytes(b"conflicted worktree bytes")
+        with patch.object(sr, "ROOT", root):
+            loaded, resolved = sr.rebind_baseline(revision)
+            require(loaded == old and resolved == revision, "baseline did not use immutable Git bytes")
+            records, failures, _ = sr.rebind_receipts(sample_registry(old), loaded,
+                sample_corpus(NEW_FINGERPRINT), reviewed_revision=REVISION)
+            require(records and not failures, "unchanged merge material could not rebind")
+            changed = sample_corpus(NEW_FINGERPRINT)
+            changed["statement_nodes"][0]["canonical_statement"] = "Different mathematics."
+            _, failures, _ = sr.rebind_receipts(sample_registry(old), loaded, changed,
+                reviewed_revision=REVISION)
+            require(failures, "explicit baseline bypassed substantive review")
+            for bad in ("missing-ref", "--help"):
+                try:
+                    sr.rebind_baseline(bad)
+                except subprocess.CalledProcessError:
+                    pass
+                else:
+                    raise AssertionError("invalid baseline was accepted")
+            git("add", "docs/semantic_corpus.json.gz")
+            git("commit", "-qm", "invalid compressed corpus")
+            try:
+                sr.rebind_baseline("HEAD")
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("corrupt baseline was accepted")
+
+
 def main() -> int:
+    check_explicit_committed_baseline()
     check_fingerprint_only_move_is_allowed()
     check_changed_mathematics_is_refused()
     check_changed_relation_basis_is_refused()
@@ -415,8 +536,10 @@ def main() -> int:
     check_corpus_lagging_a_rebind_is_not_alarming()
     check_substantive_projection_excludes_only_the_pin()
     check_moved_revision_with_identical_statements_is_reissued()
+    check_moved_coordinates_require_identical_statements()
     check_moved_revision_with_changed_statement_is_refused()
     check_moved_revision_with_vanished_declaration_is_refused()
+    check_moved_revision_across_layout_move_is_reissued()
     check_unmoved_revision_is_not_rereviewed()
     print(
         "semantic review rebind guard: PASS; a rebind moves the declaration-atlas "

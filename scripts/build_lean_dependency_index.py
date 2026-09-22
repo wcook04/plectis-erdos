@@ -13,6 +13,7 @@ import os
 import subprocess
 import stat
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -33,6 +34,7 @@ ENVIRONMENT_VALIDATION_POSTURE = (
     "export_so_source_fingerprint_and_loaded_olean_state_are_current"
 )
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
+LEAN_DEPENDENCY_EXPORT_FILE_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
@@ -245,10 +247,14 @@ def safe_output_text(
     safe_output_bytes(path, content.encode("utf-8"), root=root)
 
 
-def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
+def run(
+    *args: Any, lean_dependency_export_file: Path | None = None, **kwargs: Any,
+) -> subprocess.CompletedProcess[str]:
     """Run Lean dependency commands in the bounded validation time domain."""
     environment = singleflight.command_environment()
     environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
+    if lean_dependency_export_file is not None:
+        environment[LEAN_DEPENDENCY_EXPORT_FILE_ENV] = str(lean_dependency_export_file)
     kwargs["env"] = environment
     # Both callers elaborate Lean state. A cold runner can legitimately take
     # longer than the short timeout used for metadata-only Git queries, so keep
@@ -766,7 +772,9 @@ def ensure_elaborated_environment() -> None:
 # development host and the index could not be rebuilt at all, which left every
 # proof plan reporting itself unavailable. This is the export's own budget; the
 # shared worker budget still governs the shorter calls around it.
-EXPORT_TIMEOUT_SECONDS = 5_400
+# The 15 September 2026 root additions (the #1049 all-row producer and four #1041
+# modules) pushed the elaborated export past 5400 seconds on the hosted runner.
+EXPORT_TIMEOUT_SECONDS = 10_800
 
 
 def module_id(path: str) -> str:
@@ -782,6 +790,17 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
+    # Lean opens the file itself, avoiding open-temporary-file locks on Windows.
+    with tempfile.TemporaryDirectory(prefix="plectis-lean-dependency-export-") as directory:
+        return _export_environment_file(Path(directory) / "environment.tsv")
+
+
+def _export_environment_file(output_path: Path) -> tuple[
+    dict[str, str],
+    dict[tuple[str, str], set[str]],
+    dict[str, int],
+    dict[str, dict[str, Any]],
+]:
     try:
         completed = run(
             ["lake", "env", "lean", str(EXPORTER)],
@@ -791,6 +810,7 @@ def export_environment() -> tuple[
             stderr=subprocess.PIPE,
             check=False,
             timeout=EXPORT_TIMEOUT_SECONDS,
+            lean_dependency_export_file=output_path,
         )
     except subprocess.TimeoutExpired as exc:
         stdout = decode_captured(exc.stdout)
@@ -831,7 +851,32 @@ def export_environment() -> tuple[
             stdout=completed.stdout or "",
             stderr=completed.stderr or "",
         )
-    return parse_environment_output(completed.stdout)
+    preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
+    try:
+        output = safe_dependency_text(output_path, root=output_path.parent)
+    except (OSError, UnicodeError, UnsafeDependencyInput) as exc:
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            f"Lean dependency exporter did not write a readable UTF-8 export: {exc}",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        ) from exc
+    if not output.strip():
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            "Lean dependency exporter wrote an empty export",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        )
+    try:
+        parsed = parse_environment_output(output)
+        if not parsed[0]:
+            raise RuntimeError("export contains no dependency nodes")
+        return parsed
+    except (RuntimeError, ValueError) as exc:
+        raise ClassifiedExportError(
+            "export_crash", EXIT_CRASH,
+            f"Lean dependency exporter wrote a malformed export: {exc}",
+            stdout=completed.stdout or "", stderr=completed.stderr or "",
+        ) from exc
 
 
 def parse_environment_output(
@@ -1232,6 +1277,29 @@ def encoded(packet: dict[str, Any]) -> str:
     ) + "\n"
 
 
+def coordinated_export(*, check: bool, full_check: bool, write_stale: bool) -> int:
+    """Hold the existing host owner across root preparation and environment export."""
+    state_root = singleflight.default_state_root()
+    specification = singleflight.validator_spec(
+        "dependency-index", [], None, state_root, check=check,
+        dependency_full_check=full_check, dependency_write_stale=write_stale,
+    )
+    receipt = singleflight.submit(specification, state_root)
+    terminal, code = singleflight.collect(
+        state_root, receipt["key"], True, LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
+    )
+    if terminal.get("state") != "terminal":
+        print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+        return code
+    for stream, destination in (("stdout", sys.stdout), ("stderr", sys.stderr)):
+        output = terminal.get(stream, {}).get("tail")
+        if output:
+            print(output, end="" if output.endswith("\n") else "\n", file=destination)
+    print(f"dependency-index: shared validation key={receipt['key'][:12]} exit={code}",
+          file=sys.stderr)
+    return code
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
@@ -1314,6 +1382,10 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
+    if not args.singleflight_worker:
+        return coordinated_export(
+            check=args.check, full_check=args.full_check, write_stale=args.write_stale,
+        )
     singleflight.install_child_termination_forwarding()
     try:
         notice = lean_source.describe_unindexed_library_sources(ROOT)

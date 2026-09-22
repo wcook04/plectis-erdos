@@ -57,3 +57,23 @@ navigation evidence, not an accepted-contribution receipt, authorship transfer,
 mathematical review, or endorsement. Private correspondence remains anonymous
 until the contributor confirms public naming; its private evidence stays out
 of this repository.
+
+## Directions, email, and work across tracks
+
+A useful direction, reference, correction, example or explanation can be the
+contribution. Describe that contribution precisely; conceptualization and
+methodology credit do not depend on supplying code or finishing the proof.
+The person who develops an idea later has a different role. Retain both when
+both materially contributed, including when one return has mathematical and
+architecture receipts.
+
+The intake channel does not determine credit. For an email contribution,
+maintainers record the date, the contributor's preferred public name or
+anonymous designation, a public-safe account of the idea, and the permission
+to publish that account. Confirm naming and quotation preferences before
+publishing private correspondence; retain the message outside the public
+repository. Put adopted substance and its attribution in a tracked artifact,
+then use the same acceptance and recognition builders as for a GitHub return.
+The public record can cite that artifact without exposing an email address.
+An unadopted suggestion remains acknowledged as a suggestion, not an accepted
+result. A receipt never grants authorship of unspecified future consequences.

@@ -45,6 +45,54 @@ def run_cli(input_path: Path, *arguments: str) -> subprocess.CompletedProcess[st
 def main() -> int:
     fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
     identity = validator.repository_identity_contract.load_identity()
+    # Lean emits JSON diagnostics inside the JSON workbench receipt.  Its
+    # escaped newline after "this:" must not become a Windows drive path.
+    lean_diagnostic = {
+        "caption": "",
+        "data": (
+            "Try this:\n  [apply] ring_nf\n  \n"
+            "  The `ring` tactic failed to close the goal. "
+            "Use `ring_nf` to obtain a normal form."
+        ),
+        "fileName": "<stdin>",
+        "kind": "[anonymous]",
+        "pos": {"column": 4, "line": 88},
+        "severity": "information",
+    }
+    rejected_probe = {
+        "kind": "probe",
+        "move_id": "m003",
+        "kernel_receipt": {
+            "verdict": "kernel_rejected",
+            "output_tail": json.dumps(lean_diagnostic),
+        },
+    }
+    for probe in (rejected_probe, json.dumps(rejected_probe)):
+        require(
+            not validator.public_safety_errors(probe),
+            "nested Lean 'Try this' diagnostic was mistaken for a private path",
+        )
+    for private_path in (
+        "/Users/alice/proof.lean",
+        "/home/alice/proof.lean",
+        "/repo/ai_workflow/proof.lean",
+        r"C:\private\proof.lean",
+        r"d:\private\proof.lean",
+    ):
+        private_probe = copy.deepcopy(rejected_probe)
+        private_probe["kernel_receipt"]["output_tail"] = json.dumps(
+            {**lean_diagnostic, "data": f"Failed to open {private_path}"}
+        )
+        for probe in (private_probe, json.dumps(private_probe)):
+            require(
+                "contains a private path or private-repository reference"
+                in validator.public_safety_errors(probe),
+                f"nested diagnostic concealed a private path: {private_path}",
+            )
+    require(
+        validator.public_safety_errors("ai_workflow/proof.lean"),
+        "private repository reference at the start of text escaped detection",
+    )
     require(
         validator.PROBLEMS is validator.route_memory_receipt.ROSTER,
         "return selector roster must reuse route-memory authority",
@@ -128,6 +176,156 @@ def main() -> int:
     require(
         any("unknown roles" in error for error in validator.validate_document(architecture_bad_role)),
         "architecture receipt accepted an unknown credit role",
+    )
+
+    # A mathematical contribution that matters across several problems, or that
+    # develops a subject no single problem owns, names its subject and the
+    # problems it relates to instead of inventing a problem number.
+    subject_fixture = copy.deepcopy(fixture)
+    subject_fixture["return_id"] = "rr-subject-validator-test"
+    subject_fixture["frontier"] = {
+        "track": "mathematics",
+        "subject": "greedy skip mechanisms shared across reciprocal-series problems",
+        "related_problems": [249, 257],
+        "handle": "subject/greedy-skip-transfer",
+        "bounded_question": "Does one recorded skip mechanism cover both problems?",
+        "stop_condition": "Stop after one bounded comparison.",
+        "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+    }
+    require(
+        not validator.validate_document(
+            subject_fixture,
+            require_submitted=True,
+            repository_identity=identity,
+        ),
+        "subject-shaped mathematics receipt did not validate",
+    )
+
+    unrelated_subject = copy.deepcopy(subject_fixture)
+    unrelated_subject["frontier"]["related_problems"] = []
+    unrelated_subject["evidence"][0]["command"] = (
+        "python3 scripts/query_corpus.py --overview --format json"
+    )
+    require(
+        not validator.validate_document(
+            unrelated_subject,
+            require_submitted=True,
+            repository_identity=identity,
+        ),
+        "subject receipt with no related problem did not validate",
+    )
+
+    subject_and_problem = copy.deepcopy(subject_fixture)
+    subject_and_problem["frontier"]["problem"] = 257
+    require(
+        any(
+            "frontier.subject" in error
+            for error in validator.validate_document(subject_and_problem)
+        ),
+        "a receipt naming both a problem and a subject was accepted",
+    )
+
+    neither_selector = copy.deepcopy(subject_fixture)
+    del neither_selector["frontier"]["subject"]
+    del neither_selector["frontier"]["related_problems"]
+    require(
+        any(
+            "frontier.problem" in error
+            for error in validator.validate_document(neither_selector)
+        ),
+        "a mathematics receipt naming neither a problem nor a subject was accepted",
+    )
+
+    implicit_subject_track = copy.deepcopy(subject_fixture)
+    del implicit_subject_track["frontier"]["track"]
+    require(
+        any(
+            "frontier.track" in error
+            for error in validator.validate_document(implicit_subject_track)
+        ),
+        "a subject receipt inferred the mathematics track without declaring it",
+    )
+
+    off_roster_related = copy.deepcopy(subject_fixture)
+    off_roster_related["frontier"]["related_problems"] = [249, 1000]
+    require(
+        any(
+            "frontier.related_problems[1]" in error
+            for error in validator.validate_document(off_roster_related)
+        ),
+        "a related problem outside the public roster was accepted",
+    )
+
+    unsorted_related = copy.deepcopy(subject_fixture)
+    unsorted_related["frontier"]["related_problems"] = [257, 249]
+    require(
+        any(
+            "must be sorted in ascending order" in error
+            for error in validator.validate_document(unsorted_related)
+        ),
+        "an unsorted related-problem list was accepted",
+    )
+
+    duplicate_related = copy.deepcopy(subject_fixture)
+    duplicate_related["frontier"]["related_problems"] = [249, 249]
+    require(
+        any(
+            "must not contain duplicates" in error
+            for error in validator.validate_document(duplicate_related)
+        ),
+        "a repeated related problem was accepted",
+    )
+
+    missing_related = copy.deepcopy(subject_fixture)
+    del missing_related["frontier"]["related_problems"]
+    require(
+        any(
+            "is required with frontier.subject" in error
+            for error in validator.validate_document(missing_related)
+        ),
+        "a subject receipt without a related-problem list was accepted",
+    )
+
+    related_with_problem = copy.deepcopy(fixture)
+    related_with_problem["frontier"]["related_problems"] = [249]
+    require(
+        any(
+            "is only valid with frontier.subject" in error
+            for error in validator.validate_document(related_with_problem)
+        ),
+        "a related-problem list accompanied a single problem number",
+    )
+
+    architecture_with_subject = copy.deepcopy(architecture_fixture)
+    architecture_with_subject["frontier"]["subject"] = "a mathematical subject"
+    require(
+        any(
+            "frontier.subject" in error
+            for error in validator.validate_document(architecture_with_subject)
+        ),
+        "an architecture receipt claimed a mathematical subject",
+    )
+
+    foreign_selector = copy.deepcopy(subject_fixture)
+    foreign_selector["evidence"][0]["command"] = (
+        "python3 scripts/query_corpus.py --problem 1041"
+    )
+    require(
+        any(
+            "must name one of frontier.related_problems" in error
+            for error in validator.validate_document(foreign_selector)
+        ),
+        "an evidence selector outside the related problems was accepted",
+    )
+
+    empty_related_selector = copy.deepcopy(subject_fixture)
+    empty_related_selector["frontier"]["related_problems"] = []
+    require(
+        any(
+            "is not admissible when frontier.related_problems is empty" in error
+            for error in validator.validate_document(empty_related_selector)
+        ),
+        "an evidence selector was admitted with no related problems",
     )
 
     negative_fixture = json.loads(

@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TetranomialTailProductSelector
+import research_corpus.Erdos1041.TetranomialTailProductSelector
 
 /-!
 # Erdős #1041: the second elementary-symmetric tail selector

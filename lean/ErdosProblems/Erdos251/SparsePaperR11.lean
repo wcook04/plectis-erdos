@@ -1,7 +1,7 @@
 import ErdosProblems.Erdos251.GrowingBlocksR11
 
 /-! # End-to-end sparse rationalisation and growing-block preservation
-Candidate source, UNRUN. One support is chosen before the target value.
+One support is chosen before the target value.
 There is no density, overlap or statistical conclusion among the inputs.
 -/
 noncomputable section
@@ -130,6 +130,69 @@ theorem polylogarithmic_word_interval (a : ℕ → ℕ) {A ε : ℝ}
       exact ⟨growing_block_TV a (fun n => a n + e n) hε start hchange m hm,
         growing_block_tests_uniform a (fun n => a n + e n) hε start hchange m hm⟩
 
+/-- The printed polylogarithmic statement, retaining the exact finite-window
+bound and choosing every congruence cutoff before the target. The statistical
+limit is uniform over all words changed on the common support; it therefore
+applies uniformly to the corrections in the final clause. -/
+theorem polylogarithmic_word_interval_uniform (a : ℕ → ℕ) {A ε : ℝ}
+    (ha : HasSum (fun n => (a n : ℝ) / 2 ^ (n + 1)) A)
+    (hε : 0 < ε) (K : ℕ) :
+    ∃ start : ℕ, ∃ l u C : ℝ, ∃ Nq : ℕ → ℕ,
+      (Set.range (centre (polylog ε) start) ⊆ Set.Ici K) ∧
+      UpperBanachZero (Set.range (centre (polylog ε) start)) ∧
+      A < l ∧ l < u ∧ 0 < C ∧
+      (∃ X₀ : ℕ, ∀ X L : ℕ, X₀ ≤ X → L ≤ 2 * X →
+        ((supportSlice (centre (polylog ε) start) X L).card : ℝ) ≤ C * X / iterlog X) ∧
+      (∀ m : ℕ → ℕ,
+        Tendsto (fun X => (m X : ℝ) / Real.log (Real.log (X : ℝ))) atTop (𝓝 0) →
+        ∀ η : ℝ, 0 < η → ∀ᶠ X : ℕ in atTop,
+          ∀ b : ℕ → ℕ,
+            (∀ n, a n ≠ b n → n ∈ Set.range (centre (polylog ε) start)) →
+            blockTV a b X (m X) < η) ∧
+      ∀ r : ℝ, l ≤ r → r ≤ u → ∃ e : ℕ → ℕ,
+        (∀ n, e n ≠ 0 → n ∈ Set.range (centre (polylog ε) start)) ∧
+        (∀ᶠ n : ℕ in atTop, (e n : ℝ) ≤ polylog ε n) ∧
+        (∀ q : ℕ, 0 < q → ∀ n, Nq q ≤ n →
+          q ∣ e n ∧ q ∣ ∑ i ∈ range n, e i) ∧
+        (∀ n < K, a n + e n = a n) ∧
+        HasSum (fun n => ((a n + e n : ℕ) : ℝ) / 2 ^ (n + 1)) r ∧
+        ∀ X m : ℕ, blockTV a (fun n => a n + e n) X m ≤
+          (m : ℝ) * (supportSlice (centre (polylog ε) start) X (X + m)).card / X := by
+  have hf := polylog_tendsto_atTop hε
+  obtain ⟨start, hK, hready, hSK, hSZ, hbudget⟩ :=
+    exists_sparse_budgeted_support (polylog ε) hf K
+  obtain ⟨C, hC, hrate⟩ := polylog_extended_rate hε start
+  refine ⟨start, A + lowerTail (polylog ε) start 0,
+    A + upperTail (polylog ε) start 0, C, congruenceCutoff (polylog ε) hf start,
+    hSK, hSZ, ?_, ?_, hC, hrate, ?_, ?_⟩
+  · linarith [lowerTail_positive (polylog ε) start hready]
+  · linarith [generated_interval_nonempty (polylog ε) start hready]
+  · intro m hm η hη
+    filter_upwards [growing_block_TV_uniform (α := ℕ) hε start m
+      (small_blocks_shifted_iterlog m hm) η hη] with X hX
+    exact hX a
+  · intro r hrl hru
+    obtain ⟨e, heS, hef, heq, hes⟩ := generated_ambient_filling_uniform (polylog ε) hf
+      start hready (y := r - A) (by linarith) (by linarith)
+    have hchange : ∀ n, a n ≠ a n + e n → n ∈ Set.range (centre (polylog ε) start) := by
+      intro n hn
+      apply heS n
+      intro he
+      exact hn (by simp [he])
+    refine ⟨e, heS, hef, heq, ?_, ?_, ?_⟩
+    · intro n hn
+      have he : e n = 0 := by
+        by_contra hne
+        exact (not_le_of_gt hn) (hSK (heS n hne))
+      simp [he]
+    · have hsum := ha.add hes
+      have hv : A + (r - A) = r := by ring
+      rw [hv] at hsum
+      convert hsum using 1
+      funext n
+      rw [Nat.cast_add, add_div]
+    · exact fun X m => blockTV_le_supportSlice a (fun n => a n + e n) _ hchange X m
+
 /-- Every fixed congruence profile of the cumulative positions is preserved. -/
 theorem cumulative_modEq (a e : ℕ → ℕ) (p₀ q n : ℕ)
     (he : q ∣ ∑ i ∈ range n, e i) :
@@ -138,6 +201,7 @@ theorem cumulative_modEq (a e : ℕ → ℕ) (p₀ q n : ℕ)
   obtain ⟨z, hz⟩ := he
   simp [Nat.ModEq, hz, Nat.add_mod, Nat.mul_mod, Nat.add_assoc]
 
+#print axioms polylogarithmic_word_interval_uniform
 #print axioms arbitrary_word_sparse_rational_target
 #print axioms polylogarithmic_word_interval
 end ErdosProblems.Erdos251.PaperR11.SparsePaper

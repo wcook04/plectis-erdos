@@ -14,13 +14,13 @@ import Mathlib.Tactic.Ring
 # Erdős #269: the three-prime running-LCM coordinate
 
 This module starts the problem-owned formalization of the first unresolved
-three-prime case. It records the exact computational height used by the
+three-prime case.  It records the exact computational height used by the
 running-LCM representation, its cubic majorant, the smallest non-separation
 fixture for `{2,3,5}`, the variable-base tail-state update, and the uniform
 quadratic bound for actual filtered smooth-number shells.
 
 No declaration here asserts irrationality or transcendence of a three-prime
-value. The missing producer is still an infinite residue-escape or genuinely
+value.  The missing producer is still an infinite residue-escape or genuinely
 higher-dimensional analytic theorem.
 -/
 
@@ -33,7 +33,7 @@ def smooth3Val (p q r i j k : ℕ) : ℕ :=
   p ^ i * q ^ j * r ^ k
 
 /-- The product of the largest pure `p`-, `q`-, and `r`-powers not exceeding
-`x`. For a `{p,q,r}`-smooth `x`, this is the running LCM of the smooth prefix. -/
+`x`.  For a `{p,q,r}`-smooth `x`, this is the running LCM of the smooth prefix. -/
 def threePrimeHeight (p q r x : ℕ) : ℕ :=
   p ^ Nat.log p x * q ^ Nat.log q x * r ^ Nat.log r x
 
@@ -818,6 +818,83 @@ theorem threePrimeHeight_dyadicBlock_succ (a : ℕ) :
       rw [h2, h3Log, h5Log]
       simp [dyadicBlockBase235, h3, h5]
       ring
+
+/-- The literal smooth-prefix LCM has the same exact dyadic radix. -/
+theorem smoothPrefixLcm235_dyadicBlock_succ (a : ℕ) :
+    smoothPrefixLcm 2 3 5 (2 ^ (a + 1)) =
+      dyadicBlockBase235 a * smoothPrefixLcm 2 3 5 (2 ^ a) := by
+  rw [smoothPrefixLcm_eq_threePrimeHeight
+      (p := 2) (q := 3) (r := 5) (x := 2 ^ (a + 1))
+      (by decide) (by decide) (by decide)
+      (by norm_num) (by norm_num) (by norm_num) (by positivity),
+    smoothPrefixLcm_eq_threePrimeHeight
+      (p := 2) (q := 3) (r := 5) (x := 2 ^ a)
+      (by decide) (by decide) (by decide)
+      (by norm_num) (by norm_num) (by norm_num) (by positivity)]
+  exact threePrimeHeight_dyadicBlock_succ a
+
+/-- The first dyadic block has only its terminal factor `2`. -/
+@[simp] theorem dyadicBlockBase235_zero : dyadicBlockBase235 0 = 2 := by
+  have h := threePrimeHeight_dyadicBlock_succ 0
+  have h2 : Nat.log 2 2 = 1 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
+  have h3 : Nat.log 3 2 = 0 := Nat.log_of_lt (by norm_num)
+  have h5 : Nat.log 5 2 = 0 := Nat.log_of_lt (by norm_num)
+  norm_num [threePrimeHeight, h2, h3, h5] at h ⊢
+  omega
+
+/-- The block `(2,4)` also contains the internal power `3`. -/
+@[simp] theorem dyadicBlockBase235_one : dyadicBlockBase235 1 = 6 := by
+  have h := threePrimeHeight_dyadicBlock_succ 1
+  have h2two : Nat.log 2 2 = 1 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
+  have h3two : Nat.log 3 2 = 0 := Nat.log_of_lt (by norm_num)
+  have h5two : Nat.log 5 2 = 0 := Nat.log_of_lt (by norm_num)
+  have h2four : Nat.log 2 4 = 2 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 2
+  have h3four : Nat.log 3 4 = 1 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  have h5four : Nat.log 5 4 = 0 := Nat.log_of_lt (by norm_num)
+  norm_num [threePrimeHeight, h2two, h3two, h5two,
+    h2four, h3four, h5four] at h ⊢
+  omega
+
+/-- The block `(4,8)` also contains the internal power `5`. -/
+@[simp] theorem dyadicBlockBase235_two : dyadicBlockBase235 2 = 10 := by
+  have h := threePrimeHeight_dyadicBlock_succ 2
+  have h2four : Nat.log 2 4 = 2 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 2
+  have h3four : Nat.log 3 4 = 1 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  have h5four : Nat.log 5 4 = 0 := Nat.log_of_lt (by norm_num)
+  have h2eight : Nat.log 2 8 = 3 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 3
+  have h3eight : Nat.log 3 8 = 1 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  have h5eight : Nat.log 5 8 = 1 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  norm_num [threePrimeHeight, h2four, h3four, h5four,
+    h2eight, h3eight, h5eight] at h ⊢
+  omega
+
+/-- The block `(16,32)` contains internal powers from both odd channels. -/
+@[simp] theorem dyadicBlockBase235_four : dyadicBlockBase235 4 = 30 := by
+  have h := threePrimeHeight_dyadicBlock_succ 4
+  have h2sixteen : Nat.log 2 16 = 4 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 4
+  have h3sixteen : Nat.log 3 16 = 2 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  have h5sixteen : Nat.log 5 16 = 1 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  have h2thirtytwo : Nat.log 2 32 = 5 := by
+    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 5
+  have h3thirtytwo : Nat.log 3 32 = 3 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  have h5thirtytwo : Nat.log 5 32 = 2 :=
+    Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
+  norm_num [threePrimeHeight, h2sixteen, h3sixteen, h5sixteen,
+    h2thirtytwo, h3thirtytwo, h5thirtytwo] at h ⊢
+  omega
 
 /-! ## Exact rank-two certificate -/
 

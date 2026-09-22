@@ -6,7 +6,7 @@ import Mathlib.Topology.MetricSpace.Pseudo.Defs
 /-!
 # Cumulative n log n growth for the value-6 word
 
-New UNCOMPILED source. This file uses only the synthetic factorial spike
+This file uses only the synthetic factorial spike
 sets. It does NOT assume the prime number theorem. The baseline mean is
 proved using Stirling's factorial bound, and the sparse modification error
 is controlled by the proved zero density of the factorial sites.

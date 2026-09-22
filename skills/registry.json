@@ -17,7 +17,7 @@
     {
       "id": "research",
       "title": "Research and expansion",
-      "description": "Select a bounded frontier, sustain discovery, or add a sourced problem world while preserving open boundaries."
+      "description": "Read the corpus to decide what is worth developing, select a bounded frontier, sustain discovery, or add a sourced problem world while preserving open boundaries."
     },
     {
       "id": "validation",
@@ -106,6 +106,20 @@
       ]
     },
     {
+      "id": "explore-the-corpus",
+      "path": "skills/explore-the-corpus/SKILL.md",
+      "family": "research",
+      "stage": "open-discovery",
+      "status": "active",
+      "composes_with": [
+        "mine-open-problem",
+        "run-coupled-research-goals",
+        "public-mathematical-writing",
+        "propagate-research-consequences",
+        "erdos-research-return"
+      ]
+    },
+    {
       "id": "mine-open-problem",
       "path": "skills/mine-open-problem/SKILL.md",
       "family": "research",
@@ -161,6 +175,34 @@
     }
   ],
   "lanes": [
+    {
+      "id": "reproduce_claim",
+      "title": "Independently reproduce a recorded claim trail without Lean",
+      "task_cues": [
+        "reproduce a claim",
+        "reproduce one checked claim",
+        "reproduce the checked claim",
+        "independently reproduce",
+        "verify a claim",
+        "verify the claim",
+        "verify_claims",
+        "claim trail"
+      ],
+      "skills": [
+        "explain-public-system"
+      ],
+      "read": [
+        "skills/explain-public-system/SKILL.md#reproduce-one-recorded-claim"
+      ],
+      "commands": [
+        "python3 scripts/verify_claims.py --list",
+        "python3 scripts/verify_claims.py --claim <claim_id>"
+      ],
+      "boundary": "Verify the recorded claim trail at the reported checkout commit; this does not run Lean, prove a new theorem, or establish novelty.",
+      "entry_purposes": [
+        "reproduce"
+      ]
+    },
     {
       "id": "understand_repository",
       "title": "Understand or explain the public system",
@@ -242,6 +284,143 @@
       "boundary": "Reconstruct the requested public candidate universe, compare logical reach and exact evidence, distinguish useful reductions from reformulations, then propagate a source-pinned selection without claiming a fresh proof replay."
     },
     {
+      "id": "explore_corpus",
+      "title": "Read the corpus and decide what to develop",
+      "task_cues": [
+        "worth developing",
+        "worth pursuing",
+        "find something worth",
+        "read the corpus",
+        "read the papers and",
+        "read this body of mathematics",
+        "explore the corpus",
+        "explore the mathematics",
+        "across the papers",
+        "across problems",
+        "across the problems",
+        "cross-problem",
+        "connect the problems",
+        "connections between the problems",
+        "common mechanism",
+        "general theorem",
+        "new direction",
+        "new research question",
+        "new research direction",
+        "what comes next",
+        "open-ended research",
+        "theory building",
+        "standalone result",
+        "reading edition"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "develop",
+            "discover",
+            "explore",
+            "formulate"
+          ],
+          "objects": [
+            "corpus",
+            "direction",
+            "mathematics",
+            "mechanism",
+            "papers",
+            "subject",
+            "theory"
+          ]
+        },
+        {
+          "actions": [
+            "develop",
+            "reuse",
+            "extend",
+            "discover"
+          ],
+          "objects": [
+            "method",
+            "methods",
+            "component",
+            "components",
+            "policy",
+            "policies"
+          ]
+        }
+      ],
+      "skills": [
+        "explore-the-corpus",
+        "mine-open-problem",
+        "public-mathematical-writing",
+        "propagate-research-consequences"
+      ],
+      "read": [
+        "skills/explore-the-corpus/SKILL.md",
+        "docs/reading-edition/README.md"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --overview --format card",
+        "python3 scripts/query_corpus.py --papers"
+      ],
+      "boundary": "The recorded sources fix what may be claimed about existing work. The question, subject and form of the contribution may emerge during the research. A new direction stays a candidate until its evidence and prior-art search are returned.",
+      "entry_purposes": [
+        "method"
+      ]
+    },
+    {
+      "id": "choose_open_question",
+      "title": "Choose an open question to work on",
+      "task_cues": [
+        "what should i work on",
+        "what can i work on",
+        "what to work on",
+        "something to work on",
+        "where can i help",
+        "how can i help",
+        "open questions",
+        "open propositions",
+        "what is open",
+        "what remains open",
+        "pick a problem",
+        "choose a problem",
+        "choose a question",
+        "find an open problem",
+        "find me an open problem",
+        "easiest open problem",
+        "most promising",
+        "unsolved lemma",
+        "make progress on something"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "choose",
+            "pick",
+            "recommend",
+            "suggest"
+          ],
+          "objects": [
+            "frontier",
+            "lemma",
+            "problem",
+            "question",
+            "target",
+            "task"
+          ]
+        }
+      ],
+      "skills": [
+        "mine-open-problem"
+      ],
+      "read": [
+        "docs/FRONTIER_RELAY.md"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --open",
+        "python3 scripts/query_corpus.py --open <id>"
+      ],
+      "boundary": "The list is a menu of authored open statements, not a ranking. Choose one row, open its packet, and keep its exact boundary: settling a sub-question settles only what its statement says."
+    },
+    {
       "id": "bounded_research",
       "title": "Attack one bounded open frontier",
       "task_cues": [
@@ -259,7 +438,11 @@
         "research shift",
         "research continuation",
         "bounded continuation",
-        "checkable return"
+        "checkable return",
+        "admissible choices",
+        "reusable construction",
+        "feedback policy",
+        "construction contract"
       ],
       "skills": [
         "mine-open-problem",
@@ -269,10 +452,30 @@
         "skills/mine-open-problem/SKILL.md"
       ],
       "commands": [
+        "python3 scripts/query_corpus.py --open",
         "python3 scripts/query_corpus.py --goal-support \"<goal>\"",
         "python3 scripts/query_corpus.py --proof-plan \"<goal>\" --depth 4"
       ],
-      "boundary": "Select one published frontier and return the smallest checkable delta; a reduction or finite computation is not a solution."
+      "boundary": "Select one published frontier and return the smallest checkable delta; a reduction or finite computation is not a solution.",
+      "entry_purposes": [
+        "research"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "work",
+            "investigate",
+            "study",
+            "tackle"
+          ],
+          "objects": [
+            "problem",
+            "paper",
+            "question",
+            "lemma"
+          ]
+        }
+      ]
     },
     {
       "id": "sustained_research",
@@ -417,6 +620,9 @@
             "papers"
           ]
         }
+      ],
+      "entry_purposes": [
+        "write"
       ]
     },
     {
@@ -479,7 +685,10 @@
         "python3 scripts/continue_research.py --help",
         "python3 scripts/validate_research_return.py --help"
       ],
-      "boundary": "Preserve the starting commit, original delta, evidence limits, and contributor credit."
+      "boundary": "Preserve the starting commit, original delta, evidence limits, and contributor credit.",
+      "entry_purposes": [
+        "return"
+      ]
     },
     {
       "id": "submit_change",
@@ -569,9 +778,15 @@
         "improve skills",
         "skill drift",
         "instruction drift",
+        "documentation drift",
+        "docs drift",
+        "drift similar",
         "dogfood",
         "maintain infrastructure",
         "infrastructure maintenance",
+        "obsolete infrastructure",
+        "stale infrastructure",
+        "align current infrastructure",
         "public infrastructure",
         "generated projection",
         "private dependency",
@@ -603,6 +818,46 @@
         "cli error recovery",
         "research session creation"
       ],
+      "task_intents": [
+        {
+          "actions": [
+            "debug",
+            "fix",
+            "repair",
+            "repairs"
+          ],
+          "objects": [
+            "cache",
+            "caches",
+            "census",
+            "projection",
+            "projections",
+            "validator",
+            "validators"
+          ]
+        },
+        {
+          "actions": [
+            "improve",
+            "refine",
+            "repair",
+            "fix",
+            "extend",
+            "integrate"
+          ],
+          "objects": [
+            "infrastructure",
+            "machinery",
+            "tooling",
+            "journey",
+            "journeys",
+            "router",
+            "contributor",
+            "session",
+            "sessions"
+          ]
+        }
+      ],
       "skills": [
         "maintain-public-infrastructure"
       ],
@@ -615,7 +870,10 @@
         "python3 scripts/test_compact_agent_entry.py",
         "python3 scripts/check_cold_clone_comprehension.py --quick"
       ],
-      "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections."
+      "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",
+      "entry_purposes": [
+        "infrastructure"
+      ]
     }
   ]
 }

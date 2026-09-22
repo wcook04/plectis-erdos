@@ -13,7 +13,7 @@ has the free Z-module on ALL channels as its domain and the actual integral
 span as its codomain. Its kernel has the unit-pivot basis, not just a spanning
 set. Maximal reductions are identified by uniqueness of canonical coordinates.
 
-No local compilation was possible. Pinned Mathlib source comments identify
+Pinned Mathlib source comments identify
 APIs opened at 5e932f97dd25535344f80f9dd8da3aab83df0fe6.
 -/
 

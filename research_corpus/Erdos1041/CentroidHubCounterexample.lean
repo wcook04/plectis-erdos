@@ -68,19 +68,19 @@ def centroidWitnessSpokeValueSq (j : Fin 5) (t : ℚ) : ℚ :=
 /-- The five parametrized directions lie exactly on the rational unit circle. -/
 theorem centroidWitnessDirections_unit :
     ∀ j, grNormSq (centroidWitnessDirections j) = 1 := by
-  native_decide
+  decide +kernel
 
 /-- Every scaled witness root lies strictly inside the unit disk. -/
 theorem centroidWitnessRoots_inside :
     ∀ j, grNormSq (centroidWitnessRoots j) < 1 := by
-  native_decide
+  decide +kernel
 
 /-- The witness remains in the separated branch of the refined quintic
 close-pair theorem. -/
 theorem centroidWitness_pairwiseSeparated :
     ∀ i j, i ≠ j →
       (5 : ℚ) / 9 < grNormSq (grSub (centroidWitnessRoots i) (centroidWitnessRoots j)) := by
-  native_decide
+  decide +kernel
 
 /-- Four exact rational waypoints certify escape on four distinct centroid
 spokes.  Consequently at most one complete centroid spoke can be safe. -/
@@ -89,6 +89,6 @@ theorem centroidWitness_four_spokes_escape :
     (1 : ℚ) + 1 / 5000 < centroidWitnessSpokeValueSq 2 (1 / 4) ∧
     (1 : ℚ) + 1 / 5000 < centroidWitnessSpokeValueSq 3 (1 / 8) ∧
     (1 : ℚ) + 1 / 5000 < centroidWitnessSpokeValueSq 4 (3 / 10) := by
-  native_decide
+  decide +kernel
 
 end ErdosProblems.Erdos1041

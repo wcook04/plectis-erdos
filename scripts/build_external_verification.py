@@ -38,6 +38,7 @@ OUTPUTS = {
     "packet": ROOT / "docs/external_verification_packet.json",
     "human": ROOT / "docs/EXTERNAL_VERIFICATION.md",
     "outreach": ROOT / "docs/reference/OUTREACH_EVIDENCE_CAPSULES.md",
+    "qualification": ROOT / "docs/verification/PALOMAR_QUALIFICATION.md",
 }
 
 IMPORT_LINE_RE = re.compile(r"^import\s+([^\n]+)$", re.M)
@@ -178,6 +179,9 @@ def load_owner() -> tuple[dict, dict, dict, dict]:
         raise ValueError("docs/claims.json lacks external_verification_packet")
     if packet.get("scope") != "all_eight_public_problem_programmes":
         raise ValueError("external verification scope must cover all eight programmes")
+    boundary = packet.get("boundary")
+    if not isinstance(boundary, str) or not boundary.strip():
+        raise ValueError("external verification packet must state its status boundary")
     source = json.loads(safe_text(PROBLEM_SOURCE_PATH))
     projection = json.loads(safe_text(PROBLEM_PROJECTION_PATH))
     expected_ids = packet.get("problem_ids")
@@ -187,8 +191,11 @@ def load_owner() -> tuple[dict, dict, dict, dict]:
         raise ValueError("external verification problem_ids must match both canonical problem indexes")
     if source.get("problem_count", len(source_ids)) != 8 or projection.get("problem_count") != 8:
         raise ValueError("canonical problem indexes must cover exactly eight programmes")
-    if any(row.get("status") != "open" for row in projection["problems"]):
-        raise ValueError("every canonical problem-index row must retain status=open")
+    claim_rows = {row["id"]: row for row in claims["claims"]}
+    for source_row, projected in zip(source["problems"], projection["problems"]):
+        target = claim_rows.get(source_row.get("programme_claim_id", source_row["problem_id"]))
+        if target is None or projected.get("status") != target.get("status"):
+            raise ValueError("canonical problem-index status must match its registered programme claim")
     return claims, packet, source, projection
 
 
@@ -217,11 +224,18 @@ def load_signal_authority() -> dict:
         not isinstance(name, str) or not name for name in declarations
     ):
         raise ValueError("Palomar candidate_ranking declarations must be unique")
+    selection = showcase.get("candidate_selection")
+    if not isinstance(selection, dict) or not all(
+        isinstance(selection.get(field), str) and selection[field].strip()
+        for field in ("statement", "declaration", "source_declaration", "open_boundary", "attribution")
+    ):
+        raise ValueError("Palomar result showcase lacks its exact candidate selection")
     return {
         "selection_contract": contract,
         "candidate_ranking": ranking,
         "candidate_screening": screening,
         "candidate_universe": universe,
+        "candidate_selection": selection,
     }
 
 
@@ -355,8 +369,9 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
         if not required:
             errors.append(f"problem {row['erdos_number']} has no required note declarations")
         for declaration in required:
-            source = declaration["module"].replace(".", "/") + ".lean"
-            full_name = declaration["module"].rsplit(".", 1)[0] + "." + declaration["declaration"]
+            module = declaration.get("current_module", declaration["module"])
+            source = module.replace(".", "/") + ".lean"
+            full_name = module.rsplit(".", 1)[0] + "." + declaration["declaration"]
             if not declaration_exists(source, full_name):
                 errors.append(
                     f"problem {row['erdos_number']} required declaration is missing: "
@@ -539,8 +554,8 @@ def render_formalization(
         "# Refresh: python3 scripts/build_external_verification.py",
         f"version: {quote(packet['formalization_schema']['version'])}",
         "project:",
-        "  name: \"Eight open Erdős problems: checked subsidiary mathematics\"",
-        "  description: \"Lean 4 formalization of subsidiary mathematics for eight open Erdős problems, including unconditional irrationality theorems for structured Mersenne supports, exact conditional endpoint reductions, arithmetic classifications, and method barriers; none of the eight open problems is claimed solved.\"",
+        "  name: \"Eight Erdős problem programmes: checked mathematics\"",
+        "  description: \"Lean 4 formalization across eight Erdős problem programmes, including unconditional theorems, exact conditional endpoint reductions, arithmetic classifications, counterexamples, and method barriers. The precise release boundary is recorded below.\"",
         "  authors:",
         "    - \"Will Cook\"",
         "  license: \"Apache-2.0\"",
@@ -570,10 +585,7 @@ def render_formalization(
         "    license: \"CC-BY-4.0\"",
         "    author_endorsement: \"n/a\"",
         "status:",
-        "  scope: >-",
-        "    All eight covered Erdős problems remain open. This repository checks",
-        "    subsidiary theorems, formalises selected known results, verifies finite",
-        "    instances, and records conditional reductions and method barriers.",
+        f"  scope: {quote(packet['boundary'])}",
         f"  proof_corpus_sorry_count: {census['corpus_total']}",
         f"  sorry_count: {census['total']}",
         "  sorry_in_definitions: 0",
@@ -638,8 +650,7 @@ def render_formalization(
         "  reviewers: []",
         f"  notes: {quote(packet['review_status'])}",
         "fidelity:",
-        "  divergences: >-",
-        "    The checked results are subsidiary results or formalised prior mathematics; none is the open problem statement. Comparator checks formal statement identity and axioms, not informal significance, novelty, or source fidelity.",
+        f"  divergences: {quote(packet['boundary'])}",
         "alignment:",
         "  namespace: \"Erdos249257.ExternalVerification\"",
         "  statements:",
@@ -1487,15 +1498,15 @@ def render_human(
     human = "\n".join(
         [
             "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
-            "# Plectis verification: eight open Erdős programmes",
+            "# Plectis verification: eight Erdős problem programmes",
             "",
             "> [!IMPORTANT]",
-            "> **Status:** All eight public problem programmes remain open.",
+            f"> **Status boundary:** {packet['boundary']}",
             f"> **Review posture:** {packet['review_status'][0].upper() + packet['review_status'][1:]}.",
             "",
             (
                 "**What this is.** Plectis is an AI-assisted research system. This public "
-                "surface shows one checked frontier for each of eight open Erdős problems. "
+                "surface shows one checked frontier for each of eight Erdős problem programmes. "
                 "For each programme, read the question, the exact checked object, and the "
                 "remaining open step before opening the technical registry."
             ),
@@ -1573,7 +1584,7 @@ def render_outreach(packet: dict) -> str:
         "",
         "## Post-green generic capsule",
         "",
-        "> To make the formal part easy to inspect, the repository includes a root `formalization.yaml` recording its provenance, automation, current review status, and the checked frontier for all eight covered problems. A small Comparator packet checks the theorem named above against a separately declared statement and axiom budget, then Lean's kernel checks the submitted proof. The attached CI receipt is bound to the repository commit. It does not claim that any of the eight Erdős problems is solved.",
+        f"> To make the formal part easy to inspect, the repository includes a root `formalization.yaml` recording its provenance, automation, current review status, and the checked frontier for all eight covered programmes. A small Comparator packet checks the theorem named above against a separately declared statement and axiom budget, then Lean's kernel checks the submitted proof. The attached CI receipt is bound to the repository commit. {packet['boundary']}",
         "",
         "## #249 boundary capsule",
         "",
@@ -1640,6 +1651,56 @@ def render_packet(
     return json.dumps(result, indent=2, ensure_ascii=False) + "\n"
 
 
+def render_qualification(signal_authority: dict) -> str:
+    """Project the selected interface; never infer a current service outcome."""
+    selected = signal_authority["candidate_selection"]
+    return f'''<!-- SPDX-FileCopyrightText: 2026 Will Cook -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Generated by scripts/build_external_verification.py; edit its owners. -->
+
+# Palomar qualification and repository units
+
+Use the public [eight per-problem units](https://github.com/wcook04/plectis-erdos-lean)
+for their pinned sources, Comparator configurations, replay instructions and
+recorded external status. Each unit has its own identity; a check of this
+repository does not validate a different repository or revision.
+
+To check this checkout's recorded candidate and packaging requirements:
+
+```sh
+python3 scripts/query_corpus.py --route palomar_qualification
+python3 scripts/check_palomar_qualification.py --json
+```
+
+The checker reads committed `HEAD` inputs and reports its source commit,
+structural deficits and errors. Inspect `ok` as well as the recorded `decision`.
+`READY` is repository-local packaging readiness. It does not report a new
+kernel replay, service submission, editorial review, registration or acceptance.
+
+## Selected interface in this repository
+
+{selected['statement']}
+
+- Comparator declaration: `{selected['declaration']}`.
+- Source declaration: `{selected['source_declaration']}`.
+- Boundary: {selected['open_boundary']}
+- Attribution: {selected['attribution']}
+
+[The selection record](../PALOMAR_RESULT_SHOWCASE.json) owns the candidate,
+alternatives and rationale. [The policy record](../PALOMAR_POLICY_RECONCILIATION.json)
+pins the requirements used by the checker; those captures are dated evidence,
+not an assertion that the external service's policy is unchanged today.
+[Comparator replay](EXTERNAL_VERIFICATION_REPLAY.md) checks selected statements
+and configured axioms. [The verification dossier](../EXTERNAL_VERIFICATION.md)
+lists the interfaces and their mathematical limits.
+
+The [13 September campaign record](../reference/PALOMAR_QUALIFICATION_2026-09-13.md)
+preserves the earlier selection analysis and submission history. Current
+external status belongs to the separately identified repository units and
+service receipts. No command above submits or registers a result.
+'''
+
+
 def build_outputs(
     packet: dict,
     problem_source: dict,
@@ -1667,6 +1728,7 @@ def build_outputs(
             packet, problem_source, problem_projection, signal_authority
         ).encode(),
         OUTPUTS["outreach"]: render_outreach(packet).encode(),
+        OUTPUTS["qualification"]: render_qualification(signal_authority).encode(),
     }
 
 

@@ -152,7 +152,7 @@ def main() -> int:
     command_documents[return_template] = (ROOT / return_template).read_text(encoding="utf-8")
     validate_advertised_python_commands(command_documents)
 
-    assert "[`AGENTS.md`](AGENTS.md)" in readme
+    assert re.search(r"\[[^]]+\]\(AGENTS\.md(?:#[^)]*)?\)", readme)
     assert "](CONTRIBUTING.md)" in readme
     assert 'agent_entry.py --entry "<task in ordinary language>"' in entry
     assert "agent_entry.py --skills" in entry

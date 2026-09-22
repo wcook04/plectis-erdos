@@ -6,6 +6,12 @@
 % This flat manuscript is generated from reviewable parts below.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+% Compatibility labels for statements moved from the short paper.
+% amsmath permits only one ordinary label per equation. Its preserved kernel
+% label writer lets the aliases share the same number and PDF anchor.
+\makeatletter
+\newcommand{\compatlabel}[1]{\ltx@label{#1}}
+\makeatother
 \usepackage[htt]{hyphenat}
 \usepackage{newunicodechar}
 \newunicodechar{ℕ}{\ensuremath{\N}}
@@ -14,19 +20,19 @@
 \newunicodechar{₀}{\ensuremath{{}_0}}
 % Problem-specific source pin: #251 advances independently of the corpus
 % default, while the #249/#257 notes retain their own separately pinned snapshot.
-\renewcommand{\commit}{ee650b32b8b2cb98b94e5500df5370d85f7403b8}
-\renewcommand{\commitshort}{ee650b32b8b2}
+\renewcommand{\commit}{3d6d938d696fed0fb71dd55115a18a73738ff223}
+\renewcommand{\commitshort}{3d6d938d696f}
 \hypersetup{
-  pdftitle={Prime gaps and dyadic tails: complete reasoning record for Erdős Problem 251},
+  pdftitle={Prime-gap dyadic series: perturbations, exact criteria and certificates},
   pdfsubject={Erdős Problem Notes: Problem 251},
   pdfkeywords={irrationality, prime gaps, dyadic series, summation by parts, Lean 4},
 }
 
-\runninghead{Erd\H{o}s \#251: complete reasoning record}
-\title{Prime Gaps and Dyadic Tails: Complete Reasoning Record}
-\subtitle{Erd\H{o}s Problem~\#251}
+\runninghead{Erd\H{o}s \#251: perturbations, criteria and certificates}
+\title{Prime-Gap Dyadic Series:\\Perturbations, Exact Criteria and Certificates}
+\subtitle{Proofs, counterexamples and computations for Erd\H{o}s Problem~\#251}
 \author{Will Cook}
-\date{July 2026}
+\date{September 2026}
 
 \setlength{\emergencystretch}{2em}
 \def\UrlBreaks{\do\.\do\_\do\/}

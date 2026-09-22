@@ -13,12 +13,15 @@ mathematical priority. Formalisation/software dependencies are recorded in
 [CITATION.cff](../CITATION.cff); the Erdős Problems catalogue supplies
 numbering and status context rather than mathematical priority.
 
-The [exposition](../paper/archive/erdos249-257-main-paper.tex) carries the
-mathematics bibliography. [CITATION.cff](../CITATION.cff) is intentionally
-selected release/software citation metadata: it supplies the recommended
-citation for this version and selected foundational or software references,
-not a duplicate bibliography. This map explains why the principal sources are
-credited.
+Each current [problem paper and research record](../paper/README.md) carries
+its own bibliography and credits sources at the point of use. The
+[joint #249/#257 exposition](../paper/archive/erdos249-257-main-paper.tex) is
+archival. [CITATION.cff](../CITATION.cff) supplies the software release citation
+and selected mathematical and software references; it is not a duplicate of
+all the paper bibliographies. Its linked source records explain the local use
+and limits of the selected references. When citing work added after that
+release, also record the commit used. This map explains why the principal
+sources are credited.
 
 ## Browse all source credits
 
@@ -49,6 +52,16 @@ not evidence of novelty. Lean source checked by the pinned Lean kernel remains
 proof authority; this bibliography and its search history are authored
 attribution evidence only.
 
+## Erdős #249: attribution update, 16 September 2026
+
+The finite-level result is an explicit basis, rank \(k^e+1\) for \(k\ge2,e\ge1\), and an integral basis of all relations among the totient sections. Coons’s non-regularity theorem and Martin’s affine-independence theorem are antecedents, not new claims of this release. For composite bases the retained condition is \(k\nmid r\).
+
+Yazdani’s Theorem 2 and proof (2001, pp. 652–653) use CRT–Dirichlet separation and explicitly credit Shallit; this is the method antecedent of the evaluation-matrix proof. Yazdani’s Corollary 4 (p. 654) already gives non-automaticity of totient residues modulo every m≥3 in every base. Allouche–Shallit–Yassawi’s survey (published 2022; arXiv v1 2021, Theorem 3, Example 4 and Remark 7) explains that result. The fixed-base-2 bounded-residue irrationality theorem requires a separate carrying argument; Wong’s earlier base-equals-modulus theorem remains credited.
+
+Bell–Smertnig (2026 preprint, Theorem 1.3) proves that a characteristic-zero Mahler series with multiplicative coefficients is regular, and explicitly excludes the totient series from every Mahler base. Bell–Bruin–Coons (2012, Theorems 1.5–1.6) supplies the earlier algebraic and D-finite classification context. These are generating-function statements, not proofs about the value at 1/2. Adamczewski–Drmota–Müllner (2022; arXiv v2 2021, Theorem 1.4 and Remark 1.5) provides the automatic-prime density context, with local conditions rather than unconditional positive density for every state.
+
+Primary sources: [Yazdani](https://www.numdam.org/item/JTNB_2001__13_2_651_0/); [Allouche–Shallit–Yassawi](https://arxiv.org/abs/2104.13072v1); [Bell–Smertnig](https://arxiv.org/abs/2603.23456v1); [Bell–Bruin–Coons](https://arxiv.org/abs/1003.2221v2); [Adamczewski–Drmota–Müllner](https://arxiv.org/abs/2009.14773v2); [Martin](https://arxiv.org/abs/math/0603053v1). No priority claim for the local normal form is certified by this comparison.
+
 ## Principal sources
 
 Each entry gives the source, then its relationship to this release, then the
@@ -76,13 +89,15 @@ boundary of that relationship.
 
   **Pairwise-coprime support theorem.** Printed p. 222 states that if `n_1 < n_2 < ...` are pairwise coprime and `Σ 1/n_i < ∞`, then `Σ_i 1/(t^(n_i)-1)` is irrational for every integer `t ≥ 2`; the proof occupies printed pp. 223–225.
 
-  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details; printed p. 226 also says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
+  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details, and that `Σ 1/n_i < ∞` could be replaced by an unstated weaker but more complicated condition; printed p. 226 suggests `Σ_{n_i<x} 1/n_i = o(log log x)` via Brun's method for pairwise coprime supports and says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
 
 - D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series* (2019)](https://doi.org/10.1515/forum-2018-0299) ([author preprint](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf); [read source closure](primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md))
 
   **Squarefree-support antecedent.** Corollary 1.2 (PDF p. 4; proof pp. 10–11), specialised to `E` equal to the primes, `s=2`, `ell=1`, and `q=2`, proves linear independence of `1` and the squarefree Lambert values at bases `2^j`; Example 1.1 displays the family using `|mu(n)|`.
 
-  **Boundary.** The condition `|q|^L <= s` is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
+  **Averaging antecedent.** The proof of Theorem 1.1 (Section 2, (2.3)–(2.9), PDF pp. 5–6) selects its index by averaging a local coefficient mass over an arithmetic progression and taking a term attaining the minimum. The #257 note cites this after its weighted-support theorem as the antecedent of the selection step in its displacement averaging.
+
+  **Boundary.** The condition `|q| L <= s`, a product with `L = lcm(1,...,ell)`, is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. With `s = infinity` it covers the perfect `i`th-power supports at every integer base. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
 
 - P. B. Borwein, [*On the irrationality of ∑ 1/(q^n+r)* (1991)](https://doi.org/10.1016/S0022-314X(05)80041-1) ([publisher record](https://www.sciencedirect.com/science/article/pii/S0022314X05800411); [read source closure](primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md))
 
@@ -100,7 +115,9 @@ boundary of that relationship.
 
   Nearby current work proving irrationality for sparse series such as \(\sum d(n)^k/t^{\varphi(n)}\).
 
-  **Boundary.** Here \(\varphi(n)\) occurs in the exponent. It does not treat the coefficient-weighted constant \(\sum\varphi(n)/2^n\), its denominator bound, or its tail-certificate equivalence.
+  **Averaged-tail antecedent for #257.** The quantity \(R_c(q,x,z)\) of (1.7) (PDF p. 3) and Lemmas 1–2 (PDF pp. 6–8) derive irrationality from scaled tails that are small on average. The #257 note cites them beside its weighted-support theorem. There the divisor-incidence coefficients are positive on every multiple of \(\min A\), so the scaled tail is at least the series value and the note averages the displacement instead.
+
+  **Boundary.** Here \(\varphi(n)\) occurs in the exponent. It does not treat the coefficient-weighted constant \(\sum\varphi(n)/2^n\), its denominator bound, or its tail-certificate equivalence. The counting hypotheses of Theorems 1 and 3 fail for divisor-incidence coefficients, so these criteria do not apply to Mersenne–Lambert subseries.
 
 - T. M. Apostol, [*Introduction to Analytic Number Theory* (1976)](https://doi.org/10.1007/978-1-4757-5579-4); M. Merca, [*The Lambert series factorization theorem* (2017)](https://doi.org/10.1007/s11139-016-9856-3); M. Merca and M. D. Schmidt, [*Generating Special Arithmetic Functions by Lambert Series Factorizations* (2019)](https://doi.org/10.55016/ojs/cdm.v14i1.62425) ([official journal PDF](https://cdm.ucalgary.ca/article/download/62425/53773); [read source closure](primary-sources/totient-kernel/merca-schmidt-2017-lambert-factorizations-source-closure.md))
 
@@ -134,9 +151,15 @@ boundary of that relationship.
 
 - M. Coons, [*(Non)Automaticity of number theoretic functions* (Journal de Théorie des Nombres de Bordeaux 22 (2010), no. 2, 339--352)](https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.718/) ([official PDF](https://jtnb.centre-mersenne.org/item/10.5802/jtnb.718.pdf); [read source closure](primary-sources/totient-kernel/coons-2010-source-closure.md))
 
-  **Global totient-kernel boundary.** Coons's Theorem 3.2, printed p. 349, proves that Euler's totient function is not \(k\)-regular for any \(k\ge2\), using the Dirichlet-series identity \(\sum_{n\ge1}\varphi(n)n^{-s}=\zeta(s-1)/\zeta(s)\). This is the prior-art source for the release's global non-finite-generation context; it does not state the finite-level rank, explicit basis, or relation normal form proved or discussed locally.
+  **Global totient-kernel boundary.** Coons's Theorem 3.2, stated on printed p. 348 and proved on p. 349, shows that Euler's totient function is not \(k\)-regular for any \(k\ge2\), using the Dirichlet-series identity \(\sum_{n\ge1}\varphi(n)n^{-s}=\zeta(s-1)/\zeta(s)\) and the pole-counting criterion of Corollary 3.1. This is the prior-art source for the release's global non-finite-generation context; it does not state the finite-level rank, explicit basis, or relation normal form proved or discussed locally.
 
-  **Boundary.** The release's implication from global non-\(k\)-regularity to infinite-dimensionality of its integer-valued totient-kernel span is a separately authored/formalised bridge. Coons does not prove the release's Lean declarations, dyadic rank \(2^e+1\), CRT--Dirichlet--determinant construction, or Erdős Problem #249. No novelty or priority claim is made for either the cited theorem or the local finite-level results.
+  **Boundary.** For integer-valued sequences, finite generation of the \(\mathbb Z\)-module generated by the kernel is equivalent to finite dimension of its rational span: if the span has dimension \(d\), some \(d\) evaluations embed it in \(\mathbb Q^d\) and the module in \(\mathbb Z^d\). The #249 short note states this in §1, so the infinite-dimensionality of the totient-kernel span is Coons's theorem in another form, and the exact ranks recover it. Coons does not prove the release's Lean declarations, dyadic rank \(2^e+1\), CRT--Dirichlet--determinant construction, or Erdős Problem #249. No novelty or priority claim is made for either the cited theorem or the local finite-level results.
+
+- M. Coons, [*Regular sequences and the joint spectral radius* (International Journal of Foundations of Computer Science 28 (2017), no. 2, 135--140)](https://doi.org/10.1142/S0129054117500095) ([arXiv:1511.07535](https://arxiv.org/abs/1511.07535); [read source closure](primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md))
+
+  **Basis versus spanning family for regular sequences.** For a \(k\)-regular sequence, Theorem 1 identifies the growth exponent with the base-\(k\) logarithm of the joint spectral radius of matrices associated to a basis of the kernel span; Proposition 4 gives the upper bound for any spanning set, Corollary 7 compares the two, and the example after it shows that a redundant spanning set can overestimate. Appendix A shows that the evaluation vectors of a basis of sequences span the coefficient space. The #249 short note cites these results for the basis-versus-spanning-family distinction and for the evaluation argument in the equivalence above.
+
+  **Boundary.** The source concerns regular sequences and does not mention Euler's totient, which is not regular, so its growth theorem is not applied to the totient. It does not state the release's finite-level basis, ranks, section-map description, relation module, or Lean declarations. Statement numbers follow arXiv:1511.07535v1. No novelty or priority claim is made.
 
 - J. Farey, [*On a Curious Property of Vulgar Fractions* (1816)](https://doi.org/10.1080/14786441608628487)
 
@@ -186,17 +209,35 @@ grouped by the problem whose note they serve.
 
 ### #68
 
-- Koepf–Schmersau, doi:10.1524/anly.2011.1094; D. Duverney (2001), https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf; Barreto–Kang–Kim–Kovač–Zhang (2026); Hančl–Tijdeman
+- J. Louwsma and J. Martino, *Rational numbers with odd greedy expansion of fixed length*, [arXiv:2309.07280v1](https://arxiv.org/abs/2309.07280v1)
 
-  Four cited irrationality criteria, each checked in the note *not* to apply to `∑ 1/(n!−1)` at a named boundary.
+  Lemma 4.1, p. 10, is the reciprocal-sum valuation formula. The notes' maximal prime-power survival test is its top valuation layer, written out for the denominators `n!−1`; the 139 and 2593 cancellations are the notes' own exact computations.
+
+  **Boundary.** The lemma concerns finite sums of reciprocals and gives no statement about the infinite series.
+
+- J. Hančl and R. Tijdeman, *On the irrationality of factorial series*, Acta Arith. 118 (2005), [doi:10.4064/aa118-4-5](https://doi.org/10.4064/aa118-4-5); W. Koepf and D. Schmersau, *Irrationality of certain infinite series II*, Analysis 31 (2011), [doi:10.1524/anly.2011.1094](https://doi.org/10.1524/anly.2011.1094)
+
+  Hančl–Tijdeman Lemma 2.1 and the following remark (p. 385) give the factorial-tail integrality argument behind the finite-denominator implication. Koepf–Schmersau Example 3.2 (p. 121) states the irrationality direction of the factorial-digit criterion, whose analogue for the companion `C = S − e + 2` the notes prove. The long record compares the Hančl–Tijdeman polynomial-coefficient classification (Theorem 3.1) and the Oppenheim criterion they reproduce (Lemma 2.2), naming the unmet hypothesis of each.
+
+  **Boundary.** The carry characterisation is proved directly in the notes; no source theorem supplies the needed cofinal event.
+
+- F. Luca and I. E. Shparlinski, Bull. London Math. Soc. 37 (2005), [doi:10.1112/S0024609305004923](https://doi.org/10.1112/S0024609305004923); L. Lai, *On the largest prime divisor of n!+1*, Bull. Aust. Math. Soc. 113 (2026), [doi:10.1017/S0004972725100543](https://doi.org/10.1017/S0004972725100543)
+
+  The factorial-gap gcd bound is the case `P = −1` of the subtraction that Luca and Shparlinski use in the proof of their Lemma 5 and Lai uses at display (2.5); Lai's Lemma 2.1 supplies the non-vanishing cutoff for polynomial shifts.
+
+  **Boundary.** The terminal-block optimisation and the resulting lcm growth theorem are the notes' own argument.
+
+- P. Erdős, *Some problems and results on the irrationality of the sum of infinite series* (1975), Theorem 1; D. Duverney (2001), [journal PDF](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf); Barreto–Kang–Kim–Kovač–Zhang, [arXiv:2601.21442v3](https://arxiv.org/abs/2601.21442v3)
+
+  Rapid-growth and fast-series irrationality criteria, each checked in the long record against `n!−1` with the unmet hypothesis named.
 
   **Boundary.** Non-applicability results; no criterion is claimed to transfer.
 
-- Garaev–Luca–Shparlinski (Trans. AMS 356), doi:10.1090/S0002-9947-04-03612-8; C. L. Stewart (Publ. Math. Debrecen 65)
+- M. Z. Garaev, F. Luca and I. E. Shparlinski (Trans. AMS 356), doi:10.1090/S0002-9947-04-03612-8; C. L. Stewart (Publ. Math. Debrecen 65), doi:10.5486/PMD.2004.3190
 
-  Growth and divisor inputs for the collision-core layer, derived and source-verified in the note.
+  Multiplicity (Theorem 12) and Wilson-reflection and least-prime-factor inputs (pp. 462–464) for the collision-core layer and the superseded lcm deduction.
 
-  **Boundary.** Not kernel-checked; explicitly load-bearing for nothing beyond the stated uses.
+  **Boundary.** Not kernel-checked; load-bearing for nothing beyond the stated uses.
 
 ### #243
 
@@ -250,23 +291,47 @@ grouped by the problem whose note they serve.
 
   **Boundary.** Every #251 declaration in this release is unconditional and was proved independently of it. A proof conditional on a prime-tuples conjecture leaves Erdős #251 open unconditionally.
 
+- S. Ringer, *Local gap statistics, telescoping, and normality* (preprint, 11 September 2026, [github.com/StefanRinger/erdos-251](https://github.com/StefanRinger/erdos-251)), with a Lean formalisation whose conditional endpoint theorems take Kuperberg's Conjecture 1.3 as an explicit hypothesis
+
+  Corollary 1.2 deduces from Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture that `∑_(n≥1) p_n B^(-n)` is normal to base `B` for each integer `B ≥ 2`, which gives irrationality at `B = 2`. Appendix C proves unconditionally that `∑_(n≥1) p_n B^(-S_n)` with `S_n = ∑_(j≤n) ⌈log_B log(j+3)⌉` is normal to base `B`. The preprint was submitted as a partial proof claim on the problem page on 13 September 2026. The #251 note and reasoning record both cite it.
+
+  **Boundary.** Every #251 declaration in this release is unconditional and was proved independently of it. A normality proof conditional on a prime-tuples conjecture leaves Erdős #251 open unconditionally.
+
+- W. van Doorn and V. Kovač, [*Lacunary sequences whose reciprocal sums represent all rational numbers in an interval* (Acta Arith. 223 (2026), 275–295)](https://doi.org/10.4064/aa251001-13-1) ([arXiv:2509.24971v3](https://arxiv.org/abs/2509.24971v3); [read source closure](primary-sources/reciprocal-tail/van-doorn-kovac-2026-source-closure.md))
+
+  Proposition 8 proves that the finite reciprocal sums take every rational value in an interval, combining the dense filling of Lemma 7 with a divisibility chain among distinguished terms that eventually absorbs every positive integer. The #251 note and reasoning record cite both statements beside the interval-filling and divisibility-chain steps of the sparse rationalisation construction.
+
+  **Boundary.** The source concerns finite sums of unit fractions and has no prime numerators. The #251 construction uses its own factorial moduli and does not invoke Proposition 8.
+
 ### #269
 
-- Y. Bugeaud and M. Laurent, Hecke–Mahler transcendence (Theorem 1.1 as cited in the #269 note), doi:10.4064/aa220323-18-1
+- J. H. Loxton and A. J. van der Poorten, *Arithmetic properties of certain functions in several variables III*, Bull. Austral. Math. Soc. 16 (1977), [doi:10.1017/S0004972700022978](https://doi.org/10.1017/S0004972700022978); Y. Bugeaud and M. Laurent, *Transcendence and continued fraction expansion of values of Hecke–Mahler series*, Acta Arith. 209 (2023), [doi:10.4064/aa220323-18-1](https://doi.org/10.4064/aa220323-18-1)
 
-  External transcendence engine for the note's two-prime theorems: both the de-duplicated and repeated running-lcm reciprocal sums are transcendental for every pair of distinct primes, by a paper argument.
+  The Hecke–Mahler value theorem (Loxton–van der Poorten Theorem 8, p. 40, in the modern form of Bugeaud–Laurent Theorem 1.1) is the transcendence input for the note's two-prime theorems: both the de-duplicated and repeated running-lcm reciprocal sums are transcendental for every pair of distinct primes, by a paper argument.
 
   **Boundary.** The two-prime theorems are deliberately not Lean declarations; nothing follows for three or more primes.
 
-- S. Fan, [comment on Erdős Problem #269](https://www.erdosproblems.com/forum/thread/269), 26 June 2026
+- S. Fan, [comment on Erdős Problem #269](https://www.erdosproblems.com/forum/thread/269#post-7218), 26 June 2026
 
-  Earlier public disclosure of the same two-channel factorisation, Hecke–Mahler reduction, and transcendence conclusion; later comments extend it to coprime pairs. This note first appeared on 22 July 2026, 26 days later.
+  Public forum post giving the same two-channel factorisation, Hecke–Mahler reduction and transcendence conclusion, and the running-LCM identity for every prime set; later comments extend it to coprime pairs. The note first appeared on 22 July 2026, 26 days later.
 
-  **Boundary.** No priority claim for the two-prime result. The paper argument was developed independently but is not first and is not a Lean theorem; a broader search would be needed to identify the first public proof.
+  **Boundary.** Priority for the two-prime result is Fan's. The note's argument was developed independently and is not a Lean theorem; a broader search would be needed to identify the earliest public proof.
+
+- P. Erdős and E. G. Straus, *On the irrationality of certain series*, Pacific J. Math. 55 (1974), [doi:10.2140/pjm.1974.55.85](https://doi.org/10.2140/pjm.1974.55.85); J. Hančl and R. Tijdeman, *On the irrationality of Cantor and Ahmes series*, Publ. Math. Debrecen 65 (2004), [doi:10.5486/PMD.2004.3254](https://doi.org/10.5486/PMD.2004.3254)
+
+  The literal `{2,3,5}` value is a Cantor series whose normalised tails obey an integer carry recurrence, the classical setting of Erdős–Straus Theorem 2.1 and the Hančl–Tijdeman tail criteria (§§2–3, Theorem 3.1).
+
+  **Boundary.** Both criteria assume a small-numerator hypothesis that fails for this series, so the recurrence, the bounds and the denominator clearing are proved directly in the notes.
+
+- P. Erdős and S. J. Taylor, Proc. London Math. Soc. (3) 7 (1957), Theorem 1; S. Fan, *Strongly complete sets and a conjecture of Erdős*, [arXiv:2607.14071v1](https://arxiv.org/abs/2607.14071v1), Lemma 3.1
+
+  For an unbounded integer sequence with bounded successive ratios, the reals whose multiples by that sequence approach integers form a countable set; the note uses this to identify the integral branch of the bounded-radix alternative.
+
+  **Boundary.** Used only to identify that branch; it gives no irrationality statement.
 
 - P. Erdős, letter of 1 January 1973 (printed p. 335 as cited in the #269 note)
 
-  Asserted the de-duplicated two-prime irrationality without a printed proof; the note's route is an independent modern argument, not a recovery of the unprinted one.
+  Asserted the de-duplicated irrationality for given primes without a printed proof; the note's route is an independent modern argument.
 
   **Boundary.** Historical formulation and priority context only.
 
@@ -288,6 +353,12 @@ grouped by the problem whose note they serve.
   remains open.
 
 ### #1049
+
+- W. Zudilin, [*Heine's basic transform and a permutation group for $q$-harmonic series* (2004)](https://doi.org/10.4064/aa111-2-4) ([read source closure](primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md)); W. Zudilin, [*On the irrationality of generalized $q$-logarithm* (2016)](https://doi.org/10.1007/s40993-016-0042-x) ([read source closure](primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md))
+
+  The 2004 paper supplies the linear forms, Lemma 7 with display (23) on p. 161, the direction `(14, 12, 14; 27)`, the thirteen intervals, and the constant `C_1/C_0 = 2.46497868...` printed on p. 162 as an integer-base exponent bound, which defines the rational-base region of the #1049 notes. The 2016 paper proves the `q`-order inequality for the normalised Hankel determinant and remarks in its Section 2, on p. 4, that its results can be given at non-integer rational bases under a computable height restriction.
+
+  **Boundary.** Both papers state their theorems for integer bases, and the 2016 remark computes no constant. The rational specialisation, its denominator accounting, the explicit region and the equality case of the Hankel order are argued in the #1049 notes, and no priority claim is attached to them.
 
 - P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2, [official Numdam PDF](https://numdam.org/item/CM_1994__91_2_175_0.pdf) ([read source closure](primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md))
 

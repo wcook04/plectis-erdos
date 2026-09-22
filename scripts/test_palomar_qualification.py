@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import check_palomar_qualification as checker
 
@@ -170,6 +171,24 @@ def test_pinned_classification_authorities_are_required() -> None:
     assert any("schema/formalization.schema.json" in error for error in errors)
 
 
+def test_committed_module_layout_is_the_only_path_authority() -> None:
+    identity = "ExternalVerification/Challenge.lean"
+    for prefix in ("", "verification"):
+        config = f'[[lean_lib]]\nname = "ExternalVerification"\nsrcDir = "{prefix}"\n'
+        with patch.object(checker, "committed_text", return_value=config) as read:
+            resolved = checker.committed_lean_path(ROOT, identity)
+            assert resolved == f"{prefix}/{identity}".lstrip("/")
+            read.assert_called_once_with(ROOT, "lakefile.toml")
+    for config in ('', '[[lean_lib]]\nname="ExternalVerification"\nsrcDir="../private"'):
+        with patch.object(checker, "committed_text", return_value=config):
+            try:
+                checker.committed_lean_path(ROOT, identity)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("missing or escaping committed library was accepted")
+
+
 def test_repository_intake_contract() -> None:
     facts = checker.repository_intake_evidence(ROOT)
     assert checker.repository_intake_errors(facts) == []
@@ -177,7 +196,7 @@ def test_repository_intake_contract() -> None:
     assert facts["git_submodules"] == []
     assert facts["git_lfs_pointers"] == []
     assert facts["compiled_artifacts"] == []
-    assert facts["challenge_path"] == "ExternalVerification/Challenge.lean"
+    assert facts["challenge_path"] == checker.committed_lean_path(ROOT, "ExternalVerification/Challenge.lean")
     committed_challenge = checker.committed_bytes(ROOT, facts["challenge_path"])
     assert facts["challenge_bytes"] == len(committed_challenge)
     assert facts["challenge_lines"] == len(committed_challenge.splitlines())
@@ -573,7 +592,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "069245dfa77c55565611f04f9269707e0c31ce24"
     )
     assert "CofinalLocalWindowEscape" in " ".join(carry_escape["exact_hypotheses"])
-    assert "rationality-to-carry" in " ".join(carry_escape["limitations"])
+    assert "cofinal" in " ".join(carry_escape["limitations"])
+    assert "actual" in " ".join(carry_escape["limitations"])
     assert "not an Erdős #269 endpoint" in carry_escape["conclusion"]
     committed = {
         row["candidate_id"]: row
@@ -683,7 +703,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "source_landscape_rank_relative_to"
     ]
     assert "nonintegrality" in " ".join(strict_prime["contrary_evidence"])
-    qualification_text = (ROOT / "docs/verification" / "PALOMAR_QUALIFICATION.md").read_text(
+    qualification_text = (ROOT / "docs/reference" / "PALOMAR_QUALIFICATION_2026-09-13.md").read_text(
         encoding="utf-8"
     )
     qualification_text_compact = " ".join(qualification_text.split())
@@ -1052,6 +1072,7 @@ def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
 
 if __name__ == "__main__":
     test_safe_input_boundary()
+    test_committed_module_layout_is_the_only_path_authority()
     test_normal_and_optimised_checker_agree()
     test_v04_profile_rejects_missing_source_relationship()
     test_generated_formalization_reads_committed_head_only()

@@ -14,6 +14,7 @@ from unittest.mock import patch
 
 from publication_contract import (
     CONTRACT_PATH,
+    NOTE_ARTIFACT_CLASS,
     ENVIRONMENT_CONTRACT,
     RepositoryReader,
     load_json,
@@ -144,6 +145,20 @@ def main() -> int:
     assert_worktree_special_file_boundary()
     reader = RepositoryReader(ROOT, args.git_ref)
     assert_problem_note_route_template(reader)
+    contract = load_json(reader, CONTRACT_PATH)
+    for posture in (
+        "authored_unregistered_expansion_module_not_Lean_proof_authority",
+        "all_statements_Lean_checked",
+        "authored_mathematical_exposition_not_Lean_proof_authority",
+    ):
+        mutated = copy.deepcopy(contract)
+        note = next(row for row in mutated["artifacts"] if row["artifact_class"] == NOTE_ARTIFACT_CLASS)
+        note["authority_posture"] = posture
+        require(
+            any("must defer formal status to individual claims" in error for error in
+                validate_publication_contract(reader, contract_override=mutated)),
+            f"blanket or unowned paper status accepted: {posture}",
+        )
     baseline_errors = validate_publication_contract(reader)
     fixture_failures = mutation_fixture_failures(reader) if not baseline_errors else []
     if baseline_errors or fixture_failures:

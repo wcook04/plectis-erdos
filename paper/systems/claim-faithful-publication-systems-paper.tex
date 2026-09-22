@@ -17,12 +17,12 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{145,515}
-\newcommand{\SemanticAuthoredInterpreted}{139,817}
-\newcommand{\SemanticDirectEvidence}{3,329}
+\newcommand{\SemanticAuthoredTheoremLike}{150,850}
+\newcommand{\SemanticAuthoredInterpreted}{139,818}
+\newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{5,698}
-\newcommand{\SemanticAuthoredPercent}{96.1}
+\newcommand{\SemanticStructuralOnly}{11,032}
+\newcommand{\SemanticAuthoredPercent}{92.7}
 % END generated_semantic_coverage_macros
 \newcommand{\repolink}[2]{\href{\repobase/blob/1d70482583cc9c662cd3b86f66d75c54bb405aa6/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
@@ -42,9 +42,7 @@
 This paper presents an executable architecture for AI-assisted mathematics
 under proof abundance. It separates six things that are commonly collapsed:
 cognition authority, permission to change shared state, validation capacity,
-evidence class, public-claim authority, and reviewer attention. Work advances
-only when the next gate matches the evidence. A failed route may change later
-search or validation without being relabelled as a theorem.
+evidence class, public-claim authority, and reviewer attention.
 
 The architecture organises work around \emph{problem-sized mathematical
 worlds}, not isolated theorem files. Each world joins formal declarations,
@@ -60,16 +58,9 @@ research state, scoped changes, formal checks, and public explanation while
 keeping their evidential roles distinct; the related-work section compares it
 with neighbouring systems along stated dimensions and claims no priority.
 
-The mathematical workflow keeps conjecture, computation, formal proof,
-interpretation, public wording, and external review distinct. Computation may
-reject a route or supply finite evidence; it does not prove an unbounded
-theorem. Lean verifies that a proof establishes the formal statement written in
-the source; it does not verify whether that statement captures the intended
-mathematics or whether the paper describes it
-well. Comparator checks selected propositions and their axiom boundary; a
-local review-selection layer prepares result families for external
-registration and review. Neither decides novelty, importance, acceptance, or
-whether an open problem has been solved.
+Computation supplies finite evidence; Lean checks a formal statement;
+Comparator checks selected propositions and their axiom boundary. These checks
+do not establish intended meaning, novelty, importance or external acceptance.
 
 The public repository is a self-contained output whose Lean source, claim
 record, papers, navigation, and release checks can be inspected from a fresh
@@ -78,9 +69,6 @@ and shows why a checked finite range cannot become an unbounded conclusion.
 This is a working prototype rather than a validated multi-user service. As of
 14 September 2026, the author had not recorded a completed external cold-clone use
 or an accepted external contribution.
-The rule is simple: each stage may pass forward only the claim its evidence
-supports, together with the boundary it does not cross. All eight problems
-remain open.
 The paper does not claim a solution to any of them.
 \end{abstract}
 
@@ -110,34 +98,38 @@ different questions immediately arise.
       the result?
 \end{enumerate}
 
-No single test answers all six. A numerical experiment can expose a false
-conjecture without proving a universal one. Lean can certify a theorem while
-remaining silent about the prose around it. A release checker can preserve a
-reviewed sentence without making the review correct. External attention can
-signal interest without validating a proof. The architecture exists to keep
-these questions separate while allowing work to move between them.
+The architecture keeps these questions separate. A numerical experiment can
+refute a conjecture; Lean can check a formal theorem; a release checker can
+preserve reviewed wording. None establishes all six answers.
+
+The gap between these questions has been measured on the same problem family.
+Feng et al.\ ran an agent built on Gemini Deep Think over 700 open
+Erd\H{o}s problems and had humans grade 200 candidate solutions: 63 were
+technically correct and 13 were meaningfully correct, the rest having answered
+a misread or mistranscribed statement, and their Erd\H{o}s-75 appendix
+documents a correct proof of a formulation that was itself flawed
+\cite{aletheia}. They report that deciding novelty and intent took longer
+than checking correctness, and that formal verification helps with neither.
+Those findings predate this paper and motivate the separation it
+implements.
 
 The \href{\repobase}{public repository studied here} contains Lean source,
-papers, and release machinery around eight open Erd\H{o}s problems. At this
-revision all eight problems remain open. The repository contains substantial
+papers, and release machinery around eight Erd\H{o}s problem programmes. The
+degree-seven counterexample due to
+\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}}
+is formalised in Lean here and refutes the total-variation formulation of
+Problem 1041. Its correspondence with the historical curve-length question has not had
+independent human review; the other seven target problems remain unresolved here. The repository also contains
 intermediate theorems, exact reformulations, conditional reductions, finite
-certificates, and no-go results. The surrounding private workbench is broader:
-it supports research, agent coordination, computational experiments,
-formalisation, exposition, and controlled public projection. Private machinery
-explains how the work was produced; it supplies no hidden proof authority to
-the public clone.
+certificates, and no-go results. Private development explains the provenance;
+public claims rely only on the published evidence.
 
 \paragraph{The novelty claim and its ceiling.}
-This paper does not claim to have invented agents, queues, file locks, theorem
-graphs, Lean checking, pull requests, or credit records. Its candidate
-contribution is an executable \emph{claim-transition architecture}. It models
-reasoning, mutation, validation, interpretation, publication, and review as
-separately scarce and separately authorised operations. The operations are
-recombined only at explicit fan-in gates. The same machinery carries proofs,
-counterexamples, no-gos, and unresolved obligations while preserving their
-different evidence classes. Crucially, a local failure may alter the next
-agent's route, context, lease, experiment, or validator, but never the truth
-status of a mathematical statement.
+The candidate contribution is an executable \emph{claim-transition architecture},
+combining existing agents, queues, locks, theorem graphs, proof checking and
+credit records. Reasoning, mutation, validation, interpretation, publication and
+review meet at explicit gates. An operational failure may change a later route,
+experiment or validator, but cannot change mathematical truth status.
 
 Four status words are used deliberately. \emph{Implemented} means source and
 an executable check or receipt exist. \emph{Projection} means a generated view
@@ -152,15 +144,11 @@ frontier-model mining or training on the no-go graph remain hypotheses.
 \subsection{Two architectural claims}
 
 \paragraph{A problem is a mathematical world, not a folder.}
-For an agent, the useful unit is neither the repository nor one theorem. It is
-a bounded neighbourhood inside a problem-sized world. The neighbourhood begins
-with the exact endpoint and current claim ceiling, then selects established
-premises, nearby declarations, open producers, consumers, alternative
-coordinates, executable experiments, scoped falsifiers and no-gos, source
-literature, and public boundaries. Every returned edge says why it exists and
-what authority it lacks; the packet says what it omitted and where to expand.
-This makes deep corpora navigable without converting file proximity, lexical
-similarity, or model interpretation into proof.
+An agent receives a bounded neighbourhood inside a problem-sized world: the
+endpoint and claim ceiling, established premises, nearby declarations, open
+obligations, alternatives, experiments, obstructions and literature. Each edge
+states its authority; each packet states its omissions and expansion routes.
+Proximity and model interpretation do not become proof.
 
 \paragraph{Authority is separated before it is recombined.}
 The architecture treats six resources as non-fungible. More reasoning cannot
@@ -189,23 +177,18 @@ Reviewer attention & Ranked packet and recorded human outcome & Proof authority 
 \label{tab:nonfungible}
 \end{table}
 
-There are consequently two coupled graphs with a guarded crossing. Mathematical
-evidence changes the mathematical graph: theorem, counterexample, no-go, or
-bounded experiment, each with its own class. Operational evidence changes the
-control graph: a route miss, stale view, repeated workaround, validation
-failure, or resource conflict may justify a new router, skill, check, or
-standard after a generalisation guard. Reviewed claim and publication artefacts
-connect the two. Neither graph may rewrite the other by implication.
+There are two coupled graphs with a guarded crossing. The mathematical graph
+records evidence as theorems, counterexamples, no-gos or bounded experiments.
+The control graph records justified changes to routes, checks and working
+methods. Reviewed claim and publication artefacts connect them.
+Neither graph may rewrite the other by implication.
 
 \section{The whole lifecycle in one picture}\label{sec:lifecycle}
 \papersectiontarget{systems-lifecycle}
 
-Figure~\ref{fig:lifecycle} shows the main path. It is a loop rather than a
-one-way publishing pipeline: failed proofs, reviewer objections, and public
-drift can all return a precise lesson to an earlier stage. What may move
-backward is information about an error or a better method. What may not move
-backward is authority: a paper cannot make an unproved statement true, and an
-external review route cannot alter what Lean checked.
+Figure~\ref{fig:lifecycle} shows the loop. Failed proofs, reviewer objections and
+publication drift return information to earlier stages; they do not confer
+proof authority.
 
 \begin{figure}[!t]
 \centering
@@ -879,7 +862,9 @@ this separately stated Lean interface under this axiom budget?'' It does not
 answer whether the interface is the right translation of an informal problem,
 whether the theorem is new or important, or whether an independent human has
 reviewed the proof. ``Comparator-checked'' is accurate; ``independently
-verified'' is not.
+verified'' is not. Prove2Me applies the same exact-type requirement to every
+proof submitted to its platform \cite{prove2me}; here it is applied to a
+selected interface at release time.
 
 \subsection{Review selection, and what the Palomar registry is not}
 
@@ -958,7 +943,14 @@ The remaining design choices follow the same programme. Tool use is disclosed;
 models are not listed as authors; human contributors retain differentiated
 credit; references and source paths are inspectable; automatic checks filter
 work without impersonating peer review; and theorem counts do not determine
-value. The repository turns those recommendations into an implementation
+value. Feng et al.\ state the rule in both of their reports: humans author
+mathematics papers even when generated content is correct, because
+authorship carries accountability for validity and attribution
+\cite{aletheia,autonomousmath}. Henkel stated it earlier, treating the model
+as an interactive instrument and leaving ownership and responsibility for
+verification with the human author \cite{henkel}. The provenance note on the
+first page follows that rule. The
+repository turns those recommendations into an implementation
 experiment: it asks how a small project can
 prepare for proof abundance without confusing abundant output with collective
 mathematical progress.
@@ -1271,6 +1263,36 @@ whether an increasingly rich map of what works and what cannot work makes
 future reasoning more efficient and more original, or merely makes the system
 more confident about the territory it already knows.
 
+\subsection{Executable construction choices}
+\label{sec:admissible-constructions}
+
+A feedback digit with cumulative sum $C_n$ and remainder $r_n$ must satisfy
+\[
+0\le d\le A_n,\quad M_n\mid C_n+d,\quad
+\ell_{n+1}\le r_n-dw_n\le u_{n+1}.
+\]
+The generalised Lean theorem preserves the prescribed sum for every such
+sequence when $w_n,\ell_n\ge0$ and $u_n\to0$; nested cofinal moduli give
+eventual congruences. The finite compiler intersects rational intervals and
+residue classes, and can require Boolean divisor-support witnesses.
+Separate satisfiability does not imply a common witness or infinite continuation.
+
+Authored contract extraction draws on proof generalisation
+\cite{proofgeneralisation}; relation compilation and fusion on
+\cite{computingcorrectly,palamedes,mergingrelations}; enumeration, random,
+targeted and shrinking runners on \cite{programmablepbt}; reusable choice-policy
+evolution on \cite{alphaevolve,dreamprover}. These are corpus-specific adaptations.
+The existing proof-state compiler inspects elaborated expressions, the workbench
+replays finite Lean certificates, and Comparator compares an independently
+expanded continuation statement with positive and negative controls.
+Local Lean builds do not supply the isolated Comparator verdict.
+
+The eight-step control has 1,393 traces. Compiled and filtered enumeration agree,
+using 2,376 and 8,856 proposals. This measures finite behaviour, not research gain.
+Prospective evaluation must include all costs and a capable agent given the
+same mathematics as prose and lemmas. Requests, policies, measurements and
+source attribution are retained in the existing feedback experiment.
+
 \section{Relation to other approaches}\label{sec:related}
 \small
 
@@ -1282,10 +1304,91 @@ workers, independent verifiers, compact working memory, a larger repository,
 and Lean feedback \cite{openprover}. Agent Hunt already studies concurrent
 formalisation with locks, bounties, guarded ownership, and collaborative
 agents \cite{agenthunt}. DreamProver learns a compact reusable lemma library
-through wake--sleep cycles \cite{dreamprover}. These are baselines for proof
-interaction, parallel search, and learned proof memory. Here those mechanisms
+through wake--sleep cycles \cite{dreamprover}. Aletheia separates a
+generator, verifier, and reviser in natural language and credits the
+separated verifier, which may decline, for its accuracy
+\cite{autonomousmath}. Henkel grounds the same separation in measurement:
+in the Open Proof Corpus judgement matrix each model scores lowest when
+grading proofs it generated itself, which he reads as a reason to use
+different models for generation and verification
+\cite{henkel,openproofcorpus}. These are baselines for proof interaction,
+parallel search, verification structure, and learned proof memory. Here those mechanisms
 sit upstream of a different question: after a proof is found, what exactly may
 move into a reviewed public claim?
+
+\paragraph{Open formalisation platforms.}
+Prove2Me is a hosted platform on which anyone with a coding agent submits
+theorems and proofs, and it implements several of this paper's boundaries as
+platform primitives \cite{prove2me}. A statement is an immutable object that
+may carry many proofs; a proof submission must declare a term of exactly the
+target's type with no \texttt{sorry} and no new axiom; a disproof is a proof
+of the negation. That is the check Comparator performs here for a selected
+interface at each release (Section~\ref{sec:assurance}); Prove2Me applies it
+to every submission on the server. Its audited missions confine human review
+to a curated core of goal, definitions, and milestone lemmas while agents add
+intermediate lemmas without audit, and a sub-agent read-back renders each
+Lean statement back into ordinary mathematics without sight of the source so
+that a human compares two informal statements. A proof-sketch imports
+statements that are still open and is verified exactly when they are. The
+first public version of this paper (July 2026) predates Prove2Me (August
+2026) and the two designs were developed independently. Prove2Me is the
+published reference for statement--proof separation, audited cores, and
+read-back auditing as hosted platform mechanisms, and this paper claims no
+priority over it. The designs differ in scope. Prove2Me verifies submissions
+centrally and its reported completed missions formalise proofs that already
+exist. The corpus here is a clone with no service behind it, its endpoints are
+open problems, and its records carry failed routes, obstruction theorems, and
+claim ceilings alongside proved statements.
+
+\paragraph{Semi-autonomous discovery studies.}
+Feng et al.\ describe a hybrid pipeline in which an automated
+natural-language verifier narrows an agent's candidates before a small expert
+team grades them, a four-way outcome taxonomy (autonomous resolution, partial
+solution, independent rediscovery, literature identification), revised
+problem statements as a deliverable, and the risk that a model reproduces a
+training-set argument without attribution \cite{aletheia}. Those are the
+distinctions this architecture records as typed fields: evidence class, claim
+ceiling, source locator, and reviewed wording. Their study is a one-time
+sweep by one organisation, reported after human rewriting; the corpus here is
+a persistent public record over eight problems, none of which appears in
+their results. Their companion report proposes reporting AI-assisted results
+on two public axes, autonomy and mathematical significance, and holds that
+the significance axis can be set only by domain experts
+\cite{autonomousmath}; the review-selection ranking of
+Section~\ref{sec:assurance} allocates attention on the near side of that
+line and never fills the significance axis. It also proposes an
+interaction card, each human query and model return with raw prompts
+published; the receipt here carries those fields plus evidence class and
+validation receipts. Its appendices show three of
+these boundaries kept by hand: a solution graded down for citing results
+that likely do not exist, a defective step repaired in an authors' footnote
+on an accepted proof, and a footnote noting that the statement solved
+differed from the statement of record by one noun. Here those are the
+source-locator class, the annotated open obligation, and Comparator. The
+same report concludes that formal verification cannot yet formulate the
+questions of interest on most research frontiers and so chooses informal
+verification. This architecture accepts the bound and builds for the
+minority: a problem-sized world exists because its endpoint can be stated in
+Lean, and Comparator certifies that the stated interface is what was
+checked; where no such statement exists the world still records
+experiments, sources, and failed routes, and its Lean layer is empty.
+Li et al.\ published a human-in-the-loop protocol for research mathematics
+a year before this paper, with a released prompt library \cite{lihai}. The
+human fixes the statement, the assumptions, and the acceptance criteria;
+the model supplies candidate lemmas, constants, and counterexamples; and
+generation and validation are held apart by a local check of each claim
+under the stated assumptions and a global check of its fit in the argument.
+Their prove-or-disprove prompt runs a proof branch and a disproof branch
+together and keeps both records, and their discovery loop abstracts
+surviving results into a portable schema for transfer to adjacent settings.
+Their workflow uses no proof assistant; its checks are numerical scripts on
+a seed set and line-by-line reading, so the distinction between a
+computation receipt and a kernel receipt does not arise there. This paper
+claims no priority over that protocol. Tao's
+community wiki of AI contributions to the Erd\H{o}s problems is the public
+register such a result would reach \cite{taowiki}; the reviewed claim record
+here is what a wiki line would point back to. The paper claims no priority
+over their taxonomy and makes no comparison of the review processes.
 
 \paragraph{Graphs and checked exposition.}
 Proof blueprints connect informal proof plans to named Lean declarations.
@@ -1463,6 +1566,27 @@ Formalization}, 2026, \href{https://doi.org/10.48550/arXiv.2604.16347}{arXiv}.
 \bibitem{econcs} N.~Garg, \emph{EconCSLib: AI-Assisted Lean Formalization for
 Economics \& Computation Research}, 2026,
 \href{https://doi.org/10.48550/arXiv.2606.13306}{arXiv}.
+\bibitem{prove2me} S.~Chen, K.~Marwaha, X.~Lu, H.~Yuen, and T.~Peng,
+\emph{Prove2Me: An Open Collaborative Platform for Scaling Math
+Formalization}, 2026, \href{https://doi.org/10.48550/arXiv.2608.28433}{arXiv}.
+\bibitem{aletheia} T.~Feng, T.~Trinh, G.~Bingham, et al., \emph{Semi-Autonomous
+Mathematics Discovery with Gemini: A Case Study on the Erd\H{o}s Problems},
+2026, \href{https://doi.org/10.48550/arXiv.2601.22401}{arXiv}.
+\bibitem{autonomousmath} T.~Feng, T.~H.~Trinh, G.~Bingham, et al.,
+\emph{Towards Autonomous Mathematics Research}, 2026,
+\href{https://doi.org/10.48550/arXiv.2602.10177}{arXiv}.
+\bibitem{henkel} J.~Henkel, \emph{The Mathematician's Assistant:
+Integrating AI into Research Practice}, 2025,
+\href{https://doi.org/10.48550/arXiv.2508.20236}{arXiv}.
+\bibitem{openproofcorpus} J.~Dekoninck et al., \emph{The Open Proof
+Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs}, 2025,
+\href{https://doi.org/10.48550/arXiv.2506.21621}{arXiv}.
+\bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \emph{Advancing
+Mathematical Research via Human-AI Interactive Theorem Proving}, 2025,
+\href{https://doi.org/10.48550/arXiv.2512.09443}{arXiv}.
+\bibitem{taowiki} T.~Tao, \emph{AI contributions to Erd\H{o}s problems},
+\href{https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems}{GitHub},
+accessed September 2026.
 \bibitem{isadof} A.~D.~Brucker and B.~Wolff, \emph{Isabelle/DOF: Design and
 Implementation}, in \emph{Software Engineering and Formal Methods}, 2019,
 pp.~275--293.
@@ -1496,6 +1620,25 @@ Bounty Based Collaborative Autoformalization With LLM Agents}, 2026,
 \bibitem{dreamprover} Y.~Zhang et al., \emph{DreamProver: Evolving
 Transferable Lemma Libraries via a Wake--Sleep Theorem-Proving Agent}, 2026,
 \href{https://doi.org/10.48550/arXiv.2604.26311}{arXiv}.
+\bibitem{proofgeneralisation} A.~Gandhi, A.~R.~Tadipatri, and T.~Gowers,
+\emph{Automatically Generalizing Proofs and Statements}, ITP 2025,
+\href{https://doi.org/10.4230/LIPIcs.ITP.2025.12}{LIPIcs 352, Article 12}, Section 4.
+\bibitem{palamedes} H.~Goldstein, H.~Peleg, C.~Torczon, D.~Sainati,
+L.~Lampropoulos, and B.~C.~Pierce, \emph{The Search for Constrained Random
+Generators}, PLDI 2026, Sections 3--5,
+\href{https://arxiv.org/abs/2511.12253v2}{arXiv:2511.12253v2}.
+\bibitem{computingcorrectly} Z.~Paraskevopoulou, A.~Eline, and L.~Lampropoulos,
+\emph{Computing Correctly with Inductive Relations}, PLDI 2022,
+\href{https://lemonidas.github.io/pdf/ComputingCorrectly.pdf}{author manuscript}.
+\bibitem{mergingrelations} J.~Prinz and L.~Lampropoulos,
+\emph{Merging Inductive Relations}, PACMPL 7, PLDI (2023), Article 178,
+\href{https://doi.org/10.1145/3591292}{doi:10.1145/3591292}.
+\bibitem{programmablepbt} A.~Keles, J.~Frank, C.~Mert, H.~Goldstein, and
+L.~Lampropoulos, \emph{Programmable Property-Based Testing}, 2026,
+Sections 2 and 6, \href{https://arxiv.org/abs/2602.18545v1}{arXiv:2602.18545v1}.
+\bibitem{alphaevolve} A.~Novikov et al., \emph{AlphaEvolve: A coding agent
+for scientific and algorithmic discovery}, 2025, Section 2,
+\href{https://arxiv.org/abs/2506.13131v1}{arXiv:2506.13131v1}.
 \bibitem{hep} I.~Takahara and T.~Mizoguchi, \emph{Toward Auditable AI
 Scientists: A Hypothesis Evolution Protocol for LLM Agents}, 2026,
 \href{https://doi.org/10.48550/arXiv.2607.09195}{arXiv}.

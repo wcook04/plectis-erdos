@@ -4,10 +4,12 @@ This corpus is agent-native. The agent or human researcher supplies the
 conjectures, search choices and judgment. The tools check exact statements
 and keep records another researcher can inspect and replay.
 
-Use this page for agent operations. Start with [CONTRIBUTING.md](../../CONTRIBUTING.md)
-before proposing a correction, strengthening, claim change, or release change;
-then use the authority and validation contract in [AGENTS.md](AGENT_GUIDE.md).
-Reader introductions belong in the README and results guide rather than here.
+Use this page for agent operations. Before proposing changes, read
+[CONTRIBUTING.md](../../CONTRIBUTING.md) and the authority and validation
+contract in [AGENTS.md](AGENT_GUIDE.md). Reader introductions belong in the README.
+
+For clone setup and a copyable task prompt, see the
+[agent quickstart](README.md#start-with-current-public-work).
 
 ## Design thesis
 
@@ -73,22 +75,17 @@ coverage, and exact open-obligation handles. Follow the matching row in
 `problems.json` for its `modules`, `paper`, `note.source_path`,
 `note.rendered_path`, and exact open-obligation statements, then use the
 [complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
-for the strongest checked source, paper/source record, and exact frontier
-route. For #249 and #257, the matrix continues to the reviewed result route
-and its registered claim/paper/source reverse links. For #68, #243, #251,
-#269, and #1049, use the matrix together with the generated problem-index row:
-its `what_is_checked` and `what_is_not_checked` lists expose the complete
-checked-result inventory and evidence ceiling, while the matrix supplies the
-principal checked module and unresolved producer. These results remain
-source-level evidence, not reviewed claim rows. The route is navigation
-evidence only; it does not promote problem-owned notes into reviewed claims or
-close an open problem.
+for source entry points, paper records and exact frontier routes. Read each
+row's `what_is_checked`, `what_is_not_checked` and `claim_registration` together.
+Follow `registered_claim_ids` into `docs/claims.json` for each statement's
+status and declarations. A library name does not determine review status;
+unlisted declarations gain no status from sharing a module with a registered
+claim. For #249 and #257, also follow the reviewed core routes and their
+claim/paper/source links. A programme entry module is not the complete result
+inventory, and navigation does not close an open problem.
 
-For the reviewed #249/#257 core, begin with `docs/orientation.json` and one
-typed `query_corpus.py` route. For #68, #243, #251, #269, and #1049, use the
-corresponding generated row and complete return matrix to reach the
-checked-result inventory, principal checked module, paper/source record, and
-exact unresolved producer. For #1041, read the dated
+For the reviewed #249/#257 core, `docs/orientation.json` supplies typed routes.
+For #1041, also read the dated
 [`FRONTIER.md`](../../research_corpus/Erdos1041/FRONTIER.md) before its machine
 result map: it contains current refutations and surviving premise families
 that the older paper note does not enumerate. None of these dispatches
@@ -142,14 +139,6 @@ forest; exact dependency neighborhoods cover both compact roots. Entry:
 ```sh
 python3 scripts/query_semantic.py inventory
 ```
-
-The corpus is the quiet load-bearing one. This environment is deep
-rather than broad: decades-hard problems, attacked far past the first
-wall, with the failures formalized alongside the successes. Depth is
-what makes probes decisive. When an agent conjectures here, the corpus
-usually answers back — with a landed counterexample, a no-go theorem,
-or an exact boundary — instead of with silence. A broad shallow corpus
-cannot do that.
 
 ## The move grammar
 
@@ -286,6 +275,10 @@ python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
 python3 scripts/agent_entry.py --skills
 ```
 
+Use `--purpose research|method|infrastructure` with
+`--scope "problem:257"`; purpose wins over scope words. Architecture sessions use `continue_research.py start --area`; see the
+[session example](../research-commons/ARCHITECTURE_CONTRIBUTIONS.md#optional-resumable-session).
+
 Skills run from the clone root. `scripts/install_agent_skills.py --list` only
 exposes them to an agent harness. Read
 [`AGENTS.md`](../../AGENTS.md), then the bounded
@@ -399,11 +392,15 @@ python3 scripts/lean_fast_build.py --jobs 2 \
 The wrapper fetches the pinned cache when needed. A focused build uses
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`. With restored `.lake`
 outputs, `--lake-staleness` makes it trust Lake content traces, not checkout
-times. Without a target it checks both roots; `--plan` reports waves without
-building. Partial caches stay on that trace-aware path even when a root output
-is absent. One verbose no-build verdict identifies the stale frontier, which is
-expanded through local import dependents; same-wave targets then share Lake
-graph scans in batches capped by `--jobs`.
+times. Configuration-timestamp-only candidates go through those traces too, so
+an unchanged `lakefile.toml`, manifest or toolchain file does not rebuild
+restored outputs. Source changes, missing outputs and configuration content
+changes still rebuild when Lake marks them stale, and every successful run ends
+with the serialized Lake authority build. Without a target it checks both roots;
+`--plan` reports waves without building. Partial caches stay on that path even
+when a root output is absent. One verbose no-build verdict identifies the stale
+frontier, expanded through local import dependents; same-wave targets then share
+Lake graph scans in batches capped by `--jobs`.
 A cold clone can navigate before this step; formal editing needs the
 pinned toolchain. Later builds reuse outputs and rebuild only the selected or
 stale dependency cone; `--changed-from <git-ref>` selects changed modules.

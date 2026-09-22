@@ -24,7 +24,11 @@ exact routes for any claim the operator wants to inspect.
 
 Before either goal works, record the shared starting commit, ultimate open
 endpoint, current bounded frontier, claim ceiling, and available compute or
-human-review budget. For a resumable attributable session, use the tracked
+human-review budget. The endpoint may be one of the listed open problems or an
+emerging subject reached through `skills/explore-the-corpus/SKILL.md`. For an
+emerging subject, state it in words, list the related problems, and revise the
+record when the research changes the subject. Stewardship then also judges
+whether the subject still deserves attention. For a resumable attributable session, use the tracked
 continuation owner rather than inventing a chat-local ledger:
 
 ```sh

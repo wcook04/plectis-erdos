@@ -14,6 +14,42 @@ does not require Plectis's private system, a hosted service, a new account or a
 particular model provider. Owner-authorised model use and optional Lean builds
 have their own costs and dependencies.
 
+## Or start from the mathematics
+
+A shift does not have to begin from a listed question. You can ask your agent
+to read the corpus and decide what is worth developing: a connection between
+problems, a general theorem behind a recorded example, a change of
+representation, or a new question with evidence for its value. The
+[exploration skill](../skills/explore-the-corpus/SKILL.md) owns that route in a
+clone, and the [reading edition](reading-edition/README.md) serves it without
+one. Once a bounded statement emerges, the rest of this guide applies
+unchanged. A return whose subject is wider than one problem names its subject
+and lists the related problems.
+
+## Pick a question first
+
+If you already have a clone, this lists every open question in the repository,
+grouped by problem, each with its statement and its place in the paper:
+
+```sh
+python3 scripts/query_corpus.py --open
+```
+
+Choose one row and open it. The packet names the checked results that bear on
+the question and the routes that have already been recorded for it:
+
+```sh
+python3 scripts/query_corpus.py --open <id>
+```
+
+The list is a menu in registry order. It does not rank the questions by
+difficulty or by value. Some rows are one of the eight original problems. Some
+are restatements that Lean proves equivalent to one of them, so settling such a
+row settles that whole problem. The rest are narrower questions whose answer
+settles only what the row says. Open a row and read the checked results that
+bear on it before judging which kind it is.
+The rest of this guide covers packaging, the pinned wrapper, and the return.
+
 ## Start from a reviewed checkout
 
 The portable wrapper lives at
@@ -107,6 +143,7 @@ invitation to relabel an equivalence or finite certificate as a solution.
 
 ```sh
 cd "$RESEARCH_DIR"
+python3 scripts/query_corpus.py --open
 python3 scripts/query_corpus.py --route erdos249_certificate_story
 # Alternative, not an instruction to attempt both:
 python3 scripts/query_corpus.py --route erdos257_half_story

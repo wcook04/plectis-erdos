@@ -36,6 +36,15 @@ lock lives in a host-wide namespace above the repository-specific receipt
 cache. This also lets an independent authoring checkout implement the same
 small filesystem protocol without importing private code into this repository.
 
+Build-output sharing is restricted to the selected targets and their verified
+transitive imports. The receipt key covers all Lean sources for identity; that
+does not make them all validated by a focused build. A focused success does not
+validate the worker's entire `.lake/build` directory. Publication and hydration
+both enforce that scope,
+including when reading older whole-directory seeds, so unrelated certificate
+outputs in the receiving clone are preserved. Receipt-only collection observes
+the result without materializing any outputs.
+
 The owner also prepares `.lake/packages` through
 `scripts/lean_package_share.py`. The first compatible checkout publishes an
 immutable host seed with copy-on-write cloning; later cold clones receive an

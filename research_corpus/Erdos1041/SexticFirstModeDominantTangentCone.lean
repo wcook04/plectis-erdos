@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticCubicTransitionCone
+import research_corpus.Erdos1041.SexticCubicTransitionCone
 import Mathlib.Tactic
 
 /-!

@@ -235,4 +235,3 @@ the rational Gram and star formulas and exhaustively checks (SL1) on a finite
 rational grid.  The determinant continuity step, grouped merge geometry, and
 general finite AM--GM proof above are ordinary mathematics.  No numerical
 trace is promoted to a counterexample or endpoint theorem.
-

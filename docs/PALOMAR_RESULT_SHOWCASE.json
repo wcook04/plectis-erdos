@@ -8,7 +8,7 @@
     "comparator_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
     "comparator_theorem_count": 51,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
+    "source_review_matrix_sha256": "1d11c2faca8d84bf665593d99c0dbb17b35f3855340b3317e28bf357757cfa87",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -64,7 +64,13 @@
       "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
       "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
     ],
-    "all_eight_programmes_remain_open": true
+    "all_eight_programmes_remain_open": true,
+    "review_matrix_binding_review": {
+      "reviewed_at": "2026-09-19",
+      "previous_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
+      "reviewed_claims_commit": "1d0d5e5797300d0e7aed1a6c65ec2ac75155f8b1",
+      "scope": "Reviewed the matrix delta from b4dfa966: relocated paper paths; existing #68 LCM and #249 all-base source results; #269 prior attribution and established carry bridge; #1041 distinction between pointwise Lean statements and interval synthesis. Family membership and the selected full-support Comparator interface are unchanged. This updates selection metadata, not proof or external review evidence."
+    }
   },
   "selection_contract": {
     "authority_basis": "Every source family is read from the exact committed HEAD:docs/claims.json review matrix plus the explicitly recorded theorem-forest discoveries; the exact committed HEAD:verification/comparator.json roster is a nested evidence/admission screen. Uncommitted Comparator edits, roster order, and ease of qualification are not selection evidence.",
@@ -520,7 +526,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
+    "source_review_matrix_sha256": "1d11c2faca8d84bf665593d99c0dbb17b35f3855340b3317e28bf357757cfa87",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -1063,7 +1069,7 @@
         ],
         "conclusion": "Distinct positive critical-value rays exclude the stated finite Newton connection; this is a local route obstruction, not the global Erdős #1041 theorem.",
         "hard_mechanism": "The Newton-value first integral preserves argument because its endpoint multiplier is positive real. Turning that invariant around makes ray separation an exact obstruction rather than a metric estimate.",
-        "attribution": "These source-current Lean declarations are in NewtonFlowRaySeparation.lean:306,315 and are canonically bound to ray_separation by Claims commit 06198c0a. No novelty, priority, significance, or external-review claim is made.",
+        "attribution": "These source-current Lean declarations are in NewtonFlowRaySeparation.lean:325,334 and are canonically bound to ray_separation by Claims commit 06198c0a. No novelty, priority, significance, or external-review claim is made.",
         "limitations": [
           "The result does not construct a global assignment of pairwise distinct critical-value rays or show that a chosen perturbation preserves all required geometry.",
           "The Comparator rows for translation avoidance and root retention are supporting local inputs, not transports of this exact source-only ray theorem.",
@@ -2568,7 +2574,7 @@
       "problem": 1049,
       "status": "open",
       "frontier_summary": "The coordinatewise corridor is impossible at base 3/2 and the exact rational-base cleared-tail recurrence is checked.",
-      "open_boundary": "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem.",
+      "open_boundary": "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
         "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",

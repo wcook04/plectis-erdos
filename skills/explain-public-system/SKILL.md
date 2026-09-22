@@ -15,6 +15,27 @@ progress**, first use the audit mode in
 Do not simply repeat the overview's ranking or the current result guide. A
 plain explanation of one already selected theorem does not need a corpus audit.
 
+## Reproduce one recorded claim
+
+For an independent reproduction request, take this bounded branch before the
+whole-repository explanation. Use Git and Python 3; Lean is not required.
+
+1. Record the revision and local changes with
+   `python3 scripts/agent_entry.py --checkout`. For latest-work requests, add
+   `--check-upstream`; for a historical reproduction, use the requested tag.
+2. Run `python3 scripts/verify_claims.py --list` if no claim was supplied.
+   Otherwise use the given claim ID directly, for example
+   `python3 scripts/verify_claims.py --claim eb_full_support`.
+3. Inspect the returned declaration, assumptions, evidence and remaining open
+   boundary. Report the exact command, exit status, Python version and commit.
+   A failed check is a useful result: preserve its output and source location.
+4. Return the report using `CONTRIBUTING.md`. A passing trail check is not a
+   fresh Lean build or independent mathematical review. If the task needs
+   proof elaboration, continue through `lean-concurrent-validation`.
+
+Do not turn a first reproduction into installing the proof toolchain or reading
+every paper. Stop when the requested claim trail and its limitations are clear.
+
 ## Build the explanation from the clone
 
 1. Read `README.md` and `docs/READING_GUIDE.md` for the public promise.

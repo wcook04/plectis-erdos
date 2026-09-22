@@ -3,6 +3,22 @@ import Erdos249257.FirstHarmonicPivot
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientKernelIndex
 import Erdos249257.TotientKernelReduction
+import ErdosProblems.Erdos1049.AllRow.Producer
+import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
+import ErdosProblems.Erdos1041.PaperCubicFibres
+import ErdosProblems.Erdos251.SparseAmbientR9
+import ErdosProblems.Erdos251.SparsePaperR11
+import ErdosProblems.Erdos251.PaperTailBoundsR7
+import ErdosProblems.Erdos251.ActualPrimePaperR11
+import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
+import ErdosProblems.Erdos68.PaperCompleteLiminf
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
+import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
+import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -162,3 +178,36 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos257.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted
 #print axioms ErdosProblems.Erdos257.exists_omega_ge_block
 #print axioms ErdosProblems.Erdos257.exists_digitwise_block_squarefreeShiftedSupport
+
+/-! ## Significance leads admitted to the supported root -/
+
+#print axioms ErdosProblems.Erdos1049.zudilinSharpHankelOrderAndCoeff_all
+#print axioms ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all
+#print axioms ErdosProblems.Erdos1049.leadingCoeff_zudilinNormalizedHankelDet_all
+#print axioms ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat
+#print axioms ErdosProblems.Erdos1049.zudilinNormalizedHankelDet_ne_zero_all
+#print axioms ErdosProblems.Erdos1041.paper_critical_value_mean
+#print axioms ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres
+#print axioms ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation
+#print axioms ErdosProblems.Erdos251.PaperR11.SparsePaper.arbitrary_word_sparse_rational_target
+#print axioms ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval
+#print axioms ErdosProblems.Erdos251.PaperR11.GrowingBlocks.growing_block_TV
+#print axioms ErdosProblems.Erdos251.PaperR11.GrowingBlocks.growing_block_tests_uniform
+#print axioms ErdosProblems.Erdos251.PaperR7.not_realIntegral_of_error_bound
+#print axioms ErdosProblems.Erdos251.PaperR7.cofinal_escape_of_finite_truncation
+#print axioms ErdosProblems.Erdos251.PaperR11.PrimeSource.prime_bounded_nonconcentration
+#print axioms ErdosProblems.Erdos249.PaperCompleteR8.integral_maximal_reduction_row
+#print axioms ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form
+#print axioms ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
+#print axioms ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf
+#print axioms ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually
+#print axioms ErdosProblems.Erdos243.protected_epoch_energy_integer
+#print axioms ErdosProblems.Erdos243.recordIncrementOne_sylvesterNext_eventually
+#print axioms ErdosProblems.Erdos243.recordAmplified_error_after_cancellation
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic
+#print axioms ErdosProblems.Erdos1049.PaperR17.actual_cancelled_supply
+#print axioms ErdosProblems.Erdos1049.PaperR17.actual_contour_source_supply
+#print axioms ErdosProblems.Erdos1049.PaperR17.rational_base_region
+#print axioms ErdosProblems.Erdos1049.PaperR17.thirtyone_four_powers
+#print axioms ErdosProblems.Erdos1049.PaperR17.thirtyone_four

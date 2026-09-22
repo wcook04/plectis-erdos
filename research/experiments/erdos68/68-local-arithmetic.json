@@ -1,0 +1,62 @@
+{
+  "schema": "erdos68_local_arithmetic_checks_v1",
+  "evidence_class": "finite_exact_checks",
+  "cancellation_examples": [
+    {
+      "prime": 139,
+      "prefix_end": 138,
+      "all_hits": [
+        {
+          "n": 69,
+          "unit_cofactor": 6,
+          "inverse": 116
+        },
+        {
+          "n": 122,
+          "unit_cofactor": 49,
+          "inverse": 122
+        },
+        {
+          "n": 137,
+          "unit_cofactor": 73,
+          "inverse": 40
+        }
+      ],
+      "maximum_valuation": 1,
+      "inverse_sum_mod_q": 0
+    },
+    {
+      "prime": 2593,
+      "prefix_end": 2592,
+      "all_hits": [
+        {
+          "n": 349,
+          "unit_cofactor": 1508,
+          "inverse": 1367
+        },
+        {
+          "n": 2243,
+          "unit_cofactor": 1566,
+          "inverse": 356
+        },
+        {
+          "n": 2591,
+          "unit_cofactor": 1678,
+          "inverse": 870
+        }
+      ],
+      "maximum_valuation": 1,
+      "inverse_sum_mod_q": 0
+    }
+  ],
+  "gap_pattern_checks": 262125,
+  "gap_total_maximum": 18,
+  "joint_fibre_checks": {
+    "prime_upper_bound_exclusive": 200,
+    "joint_gap_identities": 53,
+    "joint_fibre_inequalities": 660,
+    "implementation": "scalar Python, independent of NumPy recurrence scan"
+  },
+  "scope_warning": "The finite gap test checks only the selection bounds, not the unresolved nonvanishing under factorial congruences. No asymptotic conjecture is proved by these scans.",
+  "implementation_sha256": "fc56fc7fbfc63f14dd6b032cca01f7fa789470839ba061cc6d4e931d974f1126"
+}

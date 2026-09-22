@@ -1,0 +1,45 @@
+{
+  "schema": "independent_finite_cross_checks_v1",
+  "fraction_elimination_samples": [
+    {
+      "p": "1",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "3/2",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "2",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "3",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "5",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    },
+    {
+      "p": "11",
+      "moment_determinants_checked": 16,
+      "Stieltjes_coefficients_checked": 15,
+      "series_order_checked": 15
+    }
+  ],
+  "exhaustive_permutation_residue_checks": 40,
+  "invalid_input_checks": 6,
+  "nonempty_output_guard_under_optimised_python": true,
+  "scope": "Pointwise cross-checks do not independently prove polynomial identities; the full coefficient calculation is the primary finite certificate. No Lean run."
+}

@@ -51,7 +51,7 @@ and the general root-selection consumer is
 Replay the Lean module from the repository root with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
+./lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
 ```
 
 This closes the Euclidean metric subproblem B1. It still does not prove that

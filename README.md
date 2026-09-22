@@ -1,50 +1,72 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: research on eight open Erdős problems
+# Plectis: research on eight Erdős problem programmes
 
-Plectis is an open-source, AI-assisted research project. This repository contains
-the papers, Lean proofs, computations, failed approaches, and questions
-that remain, so another researcher can inspect the work and continue from it.
-**All eight problems remain open.**
+Plectis is an open-source, AI-assisted prototype for turning mathematical
+exposition into further research. Eight Erdős programmes each have a short
+expository paper, a longer research record and associated Lean source. The aim
+is to make results, methods and useful failures understandable enough for
+others to question, extend and reuse.
+**The degree-seven counterexample found by the erdosproblems.com contributor
+ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in
+Lean. The other seven target problems are not resolved here. Independent
+human review of correspondence with the historical curve-length formulation
+has not been recorded. Comparator checks only its selected exact statements,
+configured axioms and kernel acceptance; it does not assess novelty or
+historical correspondence.**
+
+The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
+
+This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
+Those seven remain open.
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
 [Contact me](https://wcook04.github.io/plectis/#contact)
 
-![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
+![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
 ## Where to start
 
-The numbers below identify questions in [Erdős Problems](https://www.erdosproblems.com/),
-a collection of mathematical problems associated with Paul Erdős.
-Lean is a proof assistant: software that verifies whether a formal proof
-establishes its stated conclusion from its assumptions. You can read the
-arguments in ordinary mathematical notation in the papers, which identify
-the results with Lean proofs.
+**Read the mathematics. Find what comes next.** Use the papers, proofs and
+research records to continue an existing question, or to develop a new result,
+method or direction. Work with your own AI, directly in the repository, or
+without an AI. Work that returns becomes part of the shared account, with its
+sources, checks and credit kept visible.
 
-You do not need Lean or a coding agent to read the papers.
-[A reader's way in](docs/READING_GUIDE.md) introduces the questions and the
-different kinds of evidence. Each problem below has a short paper to start
-with and a longer research record. [Results and limits](docs/RESULTS.md)
-states what each proof or computation establishes and what remains missing.
+- **Explore with your AI, no clone needed.** Give your model the
+  [reading edition](docs/reading-edition/README.md): one file with an
+  introduction, a short research instruction and the opening of each paper.
+  [One open investigation](research/experiments/choices_contraction/README.md)
+  shows the route and ends with five ways to continue it.
+- **Work in the repository.** The
+  [agent quickstart](docs/agents/README.md#start-with-current-public-work)
+  provides clone commands and a copyable prompt. Name a question, or ask your
+  agent to read the corpus and decide what is worth developing.
 
-For the mathematics, choose a [problem paper](#problem-papers), then use the
-[source map](docs/SOURCE_MAP.md) to locate the cited Lean declarations.
-For computer science or AI, read [how the repository works](docs/ARCHITECTURE.md)
-and the [project papers](paper/README.md#project-papers): how researchers and
-coding agents select a question, record their work, and compare public
-statements with the proofs and computations they cite. Runnable workflow
-components are in the separate [Plectis software toolkit](https://github.com/wcook04/plectis).
+The short papers are the main exposition: the question, the strongest results,
+the ideas behind their proofs and what remains open. The longer records keep
+the details, computations and approaches that stopped. You can read both
+without Lean or a coding agent. The website brings these papers, their evidence
+and ways to contribute into one reading experience. [A reader's way in](docs/READING_GUIDE.md)
+introduces the questions; [Results and limits](docs/RESULTS.md) puts the results
+beside their remaining open questions.
 
-To continue from where I left off, see [CONTRIBUTING](CONTRIBUTING.md).
-Use a coding agent if you like. This is the part I am most excited about.
+Read a [problem paper](#problem-papers), then use the [source map](docs/SOURCE_MAP.md)
+to follow a statement into Lean, the proof assistant that checks its formal
+proof. You can also use the record to compare methods, find a connection,
+explain an obstruction, repair a formalisation gap, or propose a correction.
+[CONTRIBUTING](CONTRIBUTING.md) explains how to return that work with credit.
 
-To inspect one recorded statement and its cited source, [follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean)
-using Git and Python. You do not need a Lean installation or model account.
-The clone is hundreds of megabytes; the separate proof-build route downloads
-a larger Lean and Mathlib environment.
+### Bring your own agent
+
+The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
+provides clone commands, a copyable prompt and small first tasks. Start new work
+from current public `main`; keep the starting commit when returning a result.
+Navigation needs Git and Python 3. Proof builds have separate setup. No model
+account or private system is required to [follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
 
 ## Why this exists
 
@@ -62,10 +84,20 @@ need human judgement.
 
 ## Problem papers
 
-For a first look, start with **#257** for full-support irrationality and
-achievement-set measure, or **#249** for exact kernel rank, finite certificates,
-and recorded routes that stopped. Each paper distinguishes ordinary proofs,
-Lean-checked results and open questions.
+For a first look, start with **#249** for bases and exact ranks of totient
+kernels: the sequences obtained by restricting Euler's totient to arithmetic
+progressions. Or start with **#257** for weighted conditions on the exponents
+that force reciprocal Mersenne subseries to be irrational, and for
+achievement-set measure. Each paper distinguishes ordinary proofs,
+Lean-checked results and open questions; the results guide covers all eight
+programmes.
+
+**Reading the eight together.** The whole collection is also material for new
+mathematics: reusable constructions, connections between problems and questions
+that go beyond the original targets. Start with the
+[cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesis/optimal-sparse-perturbations.pdf). It joins the capacity and congruence results, Lambert subsums, method limits and their research record.
+The [synthesis guide](paper/synthesis/README.md) explains how to develop this work
+from the papers and Lean corpus, with each result's evidence and limits intact.
 
 | Problem | Topic | Papers |
 |---|---|---|
@@ -108,7 +140,18 @@ unreleased work.
 
 An idea, a correction, a counterexample, a failed route with a checkable
 reason, or a clearer explanation can help. You do not need to solve a problem.
-Infra suggestions also get credit!
+Directions and infrastructure suggestions receive credit too.
+
+You can contribute an insight without writing Lean. Will can work with you to
+develop its argument and formalisation; the idea, explanation and proof work
+keep their respective attribution. A contribution may advance one problem or
+open a direction across the whole collection.
+
+Start with [a paper](docs/CONTRIBUTE_BY_PAPER.md),
+[develop a method](paper/synthesis/README.md), or
+[improve the machinery](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+The same [submission and credit process](CONTRIBUTING.md#return-what-you-learned)
+serves all three, including contributions by email and work without a clone.
 
 - **Ideas, corrections or review:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
@@ -129,37 +172,26 @@ others find it and we make progress together instead of hoarding partial
 results out of fear of being scooped, or rebuilding the same infrastructure
 instead of improving one cumulatively.
 
-**Experts:** email me any insight. I will do the work and fully credit you
-for the insight and whatever follows from it.
+**Experts:** corrections, methods and directions are welcome. Accepted work
+gets a public receipt naming the contribution and its author; later work
+records how it used that contribution. See the
+[credit policy](docs/research-commons/CREDIT_POLICY.md).
+
+<a id="citation-and-prior-work"></a>
 
 ## Read or verify locally
 
-Use [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) for commands to clone the
-repository, inspect claim records and compile proofs. Choose other guides
-from the [documentation index](docs/README.md). For the roles of the source
-files, claim records and release programs, read
-[how the repository works](docs/ARCHITECTURE.md); it assumes no Lean knowledge
-or project history.
+[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) owns clone, claim-inspection and proof
+build instructions. The clone is hundreds of megabytes; building proofs also
+downloads Lean and Mathlib. Cloning runs no project code; the
+[security policy](.github/SECURITY.md) explains the execution boundary.
 
-| Location | What you will find |
-|---|---|
-| [`paper/`](paper/README.md) | PDFs and manuscript sources, grouped by problem. |
-| [`lean/`](lean/) | The Lean proofs. |
-| [`docs/`](docs/README.md) | Reading guides, results, prior art and evidence records. |
-| [`research/`](research/) | Additional research libraries and experiments. |
-| [`research_corpus/`](research_corpus/Erdos1041/CORPUS_MANIFEST.json) | The separate source-only research record for #1041. |
-| [`verification/`](verification/) | Comparator interfaces, certificates and failed-route records. |
-| [`scripts/`](scripts/) | Navigation, build and release tools. |
-| [`skills/`](skills/README.md) | Optional workflows for coding agents. |
-
-Coding agents start at [`AGENTS.md`](AGENTS.md). `CLAUDE.md` loads that same
-entry for Claude Code; the detailed commands live in the
-[agent workbench](docs/agents/AGENT_WORKBENCH.md). The
+Use the [documentation index](docs/README.md) for the file map and specialist
+guides. [How the repository works](docs/ARCHITECTURE.md) explains the roles of
+proofs, papers and checks. Coding agents start at [`AGENTS.md`](AGENTS.md) and
+follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md); the
 [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
-explains the design.
-
-Cloning runs no project code. Proof builds use the pinned Lean toolchain and
-Mathlib. See the [security policy](.github/SECURITY.md) for the execution boundary.
+explains that design.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
@@ -168,16 +200,16 @@ Mathlib. See the [security policy](.github/SECURITY.md) for the execution bounda
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 141 curated claim records in 30 contribution families, reaching Lean source through 451 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 463 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 91% of the 156,245 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 88% of the 162,543 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,274 |
-| Formal results and supporting lemmas | 153,502 |
-| Curated claim records | 141 |
-| Contribution families | 30 |
+| Lean modules (the two library roots) | 1,770 |
+| Formal results and supporting lemmas | 158,837 |
+| Curated claim records | 148 |
+| Contribution families | 33 |
 
 Generated shards are counted as formal source and never as separate
 mathematical claims. Claim records cover every status, including cited and
@@ -198,22 +230,24 @@ order without asking you to decode Lean declaration names first.
 
 ## About the project
 
-Read [From Spare Compute to Cumulative Mathematics](paper/systems/open-source-mathematics-strategy.pdf)
-for the open-source research process and the ways to contribute.
+[From Spare Compute to Cumulative Mathematics](paper/systems/open-source-mathematics-strategy.pdf)
+explains the collaborative research process.
 [Problem-Sized Lean Worlds](paper/systems/claim-faithful-publication-systems-paper.pdf)
-describes how researchers publish mathematical claims with their proofs,
-source references and validation records.
-
-For the wider project, see the [Plectis software repository](https://github.com/wcook04/plectis).
-The maths papers and proofs here are self-contained. A smaller repository,
-[plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), carries the
-Comparator entries prepared for external review; [Results and limits](docs/RESULTS.md)
-names it where a result is replayed there.
+describes the publication system. Runnable workflow components live in the
+[Plectis software toolkit](https://github.com/wcook04/plectis); selected external
+verification entries live in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean).
+The mathematics and tools in this checkout are self-contained.
 
 ## Citation and licence
 
-Cite release `v0.10.0` via [CITATION.cff](CITATION.cff). Code, scripts and
-documentation are Apache-2.0; manuscript sources and PDFs are CC-BY-4.0.
-[REUSE.toml](REUSE.toml) records the file-level licences and exceptions.
-[Scope](docs/SCOPE.md), [privacy](docs/PRIVACY.md) and the
-[code of conduct](.github/CODE_OF_CONDUCT.md) are available in the documentation.
+Use [CITATION.cff](CITATION.cff) to cite release `v0.10.0`, and give your commit
+for work beyond it. Cite the relevant [problem paper](paper/README.md) and its
+original sources for mathematics. [Prior art](docs/PRIOR_ART.md) and
+[source attributions](docs/research-commons/SOURCE_ATTRIBUTIONS.md) distinguish
+earlier results, formalisation and local use; a repository citation does not
+replace the original author's credit.
+
+Code, scripts and documentation are Apache-2.0; manuscript sources and PDFs
+are CC-BY-4.0. [REUSE.toml](REUSE.toml) records exceptions. See also
+[scope](docs/SCOPE.md), [privacy](docs/PRIVACY.md) and the
+[code of conduct](.github/CODE_OF_CONDUCT.md).

@@ -20,6 +20,7 @@ PAPER_README = ROOT / "paper" / "README.md"
 SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
 SYSTEMS_PDF = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf"
 PUBLICATION_CONTRACT = ROOT / "docs" / "publication_contract.json"
+CLAIMS = ROOT / "docs" / "claims.json"
 MAX_GUIDE_BYTES = 18_000
 # Keep the architecture paper bounded without accumulating one-off magic-number
 # raises.  Its legitimate explanatory load grows with the canonical publication
@@ -47,7 +48,10 @@ MAX_GUIDE_BYTES = 18_000
 # reasons over before it reaches the mathematics. The paper was first tightened
 # and a duplicated drill-down ladder was cut, so the raise covers the new
 # architecture and nothing else.
-SYSTEMS_PAPER_BASE_BYTES = 73_000
+# Raised from 73_000 on 2026-09-14 after the related-work section absorbed
+# five prior-art citations (Prove2Me, two Feng et al. reports, Henkel, Li et
+# al.) that the paper had been missing; the text was trimmed twice first.
+SYSTEMS_PAPER_BASE_BYTES = 75_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 
@@ -118,10 +122,7 @@ SECTION_ORDER = (
 
 REQUIRED_ANCHOR_GROUPS = {
     "purpose_and_boundary": (
-        "eight unsolved problems in mathematics",
-        "reviewed claim registry covers #249 and #257",
-        "All eight mathematical problems remain open",
-        "does not claim a solution to any of them",
+        "eight mathematical problem programmes",
         "self-contained public release",
     ),
     "three_decisions": (
@@ -135,6 +136,10 @@ REQUIRED_ANCHOR_GROUPS = {
         "docs/methodology.json",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
+        "verification/comparator.json",
+        "PALOMAR_POLICY_RECONCILIATION.json",
+        "--route comparator_assurance",
+        "--route palomar_qualification",
     ),
     "worked_example": (
         "certified_kill_instances",
@@ -164,6 +169,9 @@ REQUIRED_PATHS = (
     "docs/methodology.json",
     "docs/publication_contract.json",
     "docs/publication_evidence.json",
+    "verification/comparator.json",
+    "docs/verification/PALOMAR_QUALIFICATION.md",
+    "docs/PALOMAR_POLICY_RECONCILIATION.json",
     "docs/ORIENTATION.md",
     "docs/SOURCE_MAP.md",
     "scripts/check_release.py",
@@ -210,7 +218,9 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "claim-transition architecture",
         "six things that are commonly collapsed",
         "after a proof is found, what exactly may move into a reviewed public claim",
-        "All eight problems remain open",
+        "refutes the total-variation formulation of Problem 1041",
+        "historical curve-length question has not had independent human review",
+        "other seven target problems remain unresolved",
         "does not claim a solution to any of them",
     ),
     "problem_worlds_and_nonfungible_authority": (
@@ -348,6 +358,29 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def validate_claim_scope(text: str, claims: dict) -> None:
+    """Compare the guide's scope with registry identities, not a frozen slogan."""
+    registered = {
+        int(match.group(1))
+        for problem_id in claims.get("external_verification_packet", {}).get("problem_ids", [])
+        if (match := re.fullmatch(r"erdos_(\d+)", str(problem_id)))
+    }
+    scope = re.search(r"reviewed claim registry covers ([^.]+)\.", normalise(text))
+    require(scope is not None, "architecture guide must state its reviewed claim scope")
+    stated = {int(number) for number in re.findall(r"#(\d+)", scope.group(1))}
+    require(bool(registered) and stated == registered, (
+        f"architecture claim scope differs from docs/claims.json: "
+        f"stated={sorted(stated)}, registered={sorted(registered)}"
+    ))
+def external_status_boundary() -> str:
+    claims = json.loads(safe_architecture_text(CLAIMS))
+    packet = claims.get("external_verification_packet", {})
+    boundary = packet.get("boundary")
+    require(isinstance(boundary, str) and boundary.strip(),
+            "docs/claims.json lacks the external verification status boundary")
+    return normalise(boundary)
+
+
 def validate_guide(text: str) -> None:
     size = len(text.encode("utf-8"))
     require(size <= MAX_GUIDE_BYTES, (
@@ -359,8 +392,11 @@ def validate_guide(text: str) -> None:
         f"architecture guide lost section sequence {SECTION_ORDER}"
     ))
     require(positions == sorted(positions), "architecture guide sections are out of order")
+    validate_claim_scope(text, json.loads(safe_architecture_text(ROOT / "docs/claims.json")))
 
     compact = normalise_tex(text)
+    require(external_status_boundary().casefold() in compact.casefold(),
+            "architecture guide lost the authority-owned status boundary")
     for group_id, anchors in REQUIRED_ANCHOR_GROUPS.items():
         for anchor in anchors:
             require(normalise(anchor).casefold() in compact.casefold(), (
@@ -372,9 +408,15 @@ def validate_guide(text: str) -> None:
             f"architecture guide exposes private or evaluation shorthand {pattern.pattern!r}"
         ))
 
+    local_targets = {
+        (GUIDE.parent / target.split("#", 1)[0]).resolve()
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text)
+        if not target.startswith(("http://", "https://", "#"))
+    }
     for rel in REQUIRED_PATHS:
         require((ROOT / rel).exists(), f"architecture guide names missing path {rel}")
-        require(rel in text, f"architecture guide no longer routes through {rel}")
+        require((ROOT / rel).resolve() in local_targets or rel in text,
+                f"architecture guide no longer links to {rel}")
 
     for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
         if target.startswith(("http://", "https://", "#")):
@@ -451,6 +493,11 @@ def validate_entry_links(
 ) -> None:
     readme_first_impression = (
         readme.encode("utf-8")[:6_000].decode("utf-8", errors="ignore")
+    )
+    require(
+        external_status_boundary().casefold()
+        in normalise(readme_first_impression).casefold(),
+        "README first impression lost the authority-owned status boundary",
     )
     require("](docs/ARCHITECTURE.md)" in readme,
             "README lost the architecture guide entry link")

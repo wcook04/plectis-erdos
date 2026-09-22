@@ -59,4 +59,3 @@ theorem constant_weight_pair_is_square
   ring
 
 end ErdosProblems.Erdos1041.RootIndexedEntranceAncestry
-

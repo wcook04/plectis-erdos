@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticSecondModePhaseCircle
+import research_corpus.Erdos1041.SexticSecondModePhaseCircle
 import Mathlib.Tactic
 
 /-!

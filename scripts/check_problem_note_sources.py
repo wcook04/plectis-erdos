@@ -39,7 +39,12 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import validation_singleflight as singleflight
-from lean_source import library_storage_path
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_identity_path,
+    library_storage_path,
+    library_storage_variants,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
@@ -57,7 +62,16 @@ LIBRARY_PREFIX = "ErdosProblems"
 # ``ErdosProblems``, which is what every existing note writes.
 SIBLING_LIBRARIES = ("Erdos249257",)
 
+LEDGER_ARTIFACT_CLASSES = (NOTE_ARTIFACT_CLASS, "mathematical_companion")
 COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
+LEDGER_COMMIT_RE = re.compile(r"\\newcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
+NOTE_LEDGER_COMMIT_RE = re.compile(r"\\renewcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
+# The generated statement note.  Its file is named below lean/ and resolves at
+# \ledgercommit, which is the revision the coverage ledger read its declarations
+# from; a note-wide \commit predates the nested layout and does not carry them.
+LPROOF_RE = re.compile(
+    r"\\lproof\{(?P<file>[^{}]+)\}\{(?P<line>\d+)\}\{(?P<decl>[^{}]+)\}"
+)
 NOTE_COMMIT_RE = re.compile(
     r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}"
 )
@@ -224,6 +238,92 @@ def pinned_commit() -> str:
     return match.group(1)
 
 
+def ledger_commit() -> str | None:
+    """The corpus-wide pin the generated statement notes resolve at."""
+    match = LEDGER_COMMIT_RE.search(safe_worktree_text(PREAMBLE))
+    return None if match is None else match.group(1)
+
+
+def ledger_sources() -> list[str]:
+    """Every registered manuscript that may carry generated statement notes."""
+    contract = json.loads(safe_worktree_text(CONTRACT))
+    return [
+        row["source_path"]
+        for row in contract.get("artifacts", [])
+        if row.get("artifact_class") in LEDGER_ARTIFACT_CLASSES
+    ]
+
+
+def generated_links(text: str) -> list[tuple[str, int, str]]:
+    return [
+        (match.group("file"), int(match.group("line")), match.group("decl"))
+        for match in LPROOF_RE.finditer(strip_comments(text))
+    ]
+
+
+def generated_note_failures(default_ledger: str | None) -> tuple[list[str], int]:
+    """Resolve every generated statement link against its own immutable pin.
+
+    These links are written by the coverage ledger's generator rather than by
+    hand, and they name a revision that postdates the notes' own ``\\commit``.
+    Checking them here keeps one verifier for every printed source coordinate,
+    whichever pin it resolves at.
+    """
+    failures: list[str] = []
+    checked = 0
+    cache: dict[tuple[str, str], list[str]] = {}
+    requests: list[tuple[str, str, list[tuple[str, int, str]]]] = []
+    for source in ledger_sources():
+        try:
+            text = safe_worktree_text(ROOT / source)
+        except UnsafeSourceInput as error:
+            failures.append(f"{source}: {error}")
+            continue
+        found = generated_links(text)
+        if not found:
+            continue
+        override = NOTE_LEDGER_COMMIT_RE.search(strip_comments(text))
+        commit = override.group(1) if override else default_ledger
+        if commit is None:
+            failures.append(
+                f"{source}: generated statement links without a \\ledgercommit pin"
+            )
+            continue
+        requests.append((source, commit, found))
+    snapshot_lines_batch(
+        {(commit, library_relative(name))
+         for _source, commit, found in requests
+         for name, _line, _declaration in found},
+        cache,
+    )
+    for source, commit, found in requests:
+        if git_run("cat-file", "-e", f"{commit}^{{commit}}").returncode != 0:
+            failures.append(f"{source}: ledger commit is absent: {commit}")
+            continue
+        for file_name, line_number, declaration in found:
+            checked += 1
+            relative = library_relative(file_name)
+            lines = snapshot_lines(commit, relative, cache)
+            if not lines:
+                failures.append(
+                    f"{source}: {relative} is absent from the ledger snapshot"
+                )
+                continue
+            if not 1 <= line_number <= len(lines):
+                failures.append(
+                    f"{source}: {relative}:{line_number} is outside the ledger "
+                    f"snapshot ({len(lines)} lines)"
+                )
+                continue
+            if not declares_at(lines, line_number - 1, declaration):
+                failures.append(
+                    f"{source}: {relative}:{line_number} does not declare "
+                    f"{declaration!r} at {commit[:12]}; the pinned line reads "
+                    f"{lines[line_number - 1].strip()[:72]!r}"
+                )
+    return failures, checked
+
+
 def pinned_commitshort() -> str:
     match = COMMIT_SHORT_RE.search(safe_worktree_text(PREAMBLE))
     if match is None:
@@ -276,6 +376,23 @@ def git_run(*args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+def snapshot_blob_candidates(relative: str) -> tuple[str, ...]:
+    """Identity path first, then nested ``lean/`` storage, then any alias.
+
+    Problem notes pin some snapshots before the nested-layout move and some
+    after it.  The cache key stays the identity path used in diagnostics;
+    Git is asked for every on-disk spelling that can hold that blob.
+    """
+    ordered: list[str] = []
+    seen: set[str] = set()
+    identity = library_identity_path(relative)
+    for path in (relative, identity, *library_storage_variants(relative)):
+        if path and path not in seen:
+            seen.add(path)
+            ordered.append(path)
+    return tuple(ordered)
+
+
 def snapshot_lines(
     commit: str,
     relative: str,
@@ -284,12 +401,48 @@ def snapshot_lines(
     key = (commit, relative)
     if key in cache:
         return cache[key]
-    completed = git_run("show", f"{commit}:{relative}")
-    if completed.returncode != 0:
-        cache[key] = []
-    else:
-        cache[key] = completed.stdout.splitlines()
+    for candidate in snapshot_blob_candidates(relative):
+        completed = git_run("show", f"{commit}:{candidate}")
+        if completed.returncode == 0:
+            cache[key] = completed.stdout.splitlines()
+            return cache[key]
+    cache[key] = []
     return cache[key]
+
+
+def _parse_cat_file_batch(
+    queries: list[tuple[str, str]], output: bytes
+) -> dict[tuple[str, str], list[str]]:
+    """Decode one ``git cat-file --batch`` body into per-query line lists."""
+    blobs: dict[tuple[str, str], list[str]] = {}
+    position = 0
+    for key in queries:
+        header_end = output.find(b"\n", position)
+        if header_end < 0:
+            blobs[key] = []
+            continue
+        header = output[position:header_end]
+        position = header_end + 1
+        if header.endswith(b" missing"):
+            blobs[key] = []
+            continue
+        fields = header.rsplit(b" ", 2)
+        if len(fields) != 3 or fields[1] != b"blob":
+            blobs[key] = []
+            continue
+        try:
+            size = int(fields[2])
+        except ValueError:
+            blobs[key] = []
+            continue
+        end = position + size
+        if end > len(output):
+            blobs[key] = []
+            position = len(output)
+            continue
+        blobs[key] = output[position:end].decode("utf-8").splitlines()
+        position = end + 1
+    return blobs
 
 
 def snapshot_lines_batch(
@@ -300,10 +453,18 @@ def snapshot_lines_batch(
     missing = sorted(set(requests) - set(cache))
     if not missing:
         return
+    queries: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for commit, relative in missing:
+        for candidate in snapshot_blob_candidates(relative):
+            git_key = (commit, candidate)
+            if git_key not in seen:
+                seen.add(git_key)
+                queries.append(git_key)
     completed = subprocess.run(
         ["git", "cat-file", "--batch"],
         cwd=ROOT,
-        input="".join(f"{commit}:{relative}\n" for commit, relative in missing).encode(),
+        input="".join(f"{commit}:{path}\n" for commit, path in queries).encode(),
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
@@ -315,44 +476,26 @@ def snapshot_lines_batch(
             cache[key] = []
         return
 
-    output = completed.stdout
-    position = 0
-    for key in missing:
-        header_end = output.find(b"\n", position)
-        if header_end < 0:
-            cache[key] = []
-            continue
-        header = output[position:header_end]
-        position = header_end + 1
-        if header.endswith(b" missing"):
-            cache[key] = []
-            continue
-        fields = header.rsplit(b" ", 2)
-        if len(fields) != 3 or fields[1] != b"blob":
-            cache[key] = []
-            continue
-        try:
-            size = int(fields[2])
-        except ValueError:
-            cache[key] = []
-            continue
-        end = position + size
-        if end > len(output):
-            cache[key] = []
-            position = len(output)
-            continue
-        cache[key] = output[position:end].decode("utf-8").splitlines()
-        position = end + 1
+    blobs = _parse_cat_file_batch(queries, completed.stdout)
+    for commit, relative in missing:
+        lines: list[str] = []
+        for candidate in snapshot_blob_candidates(relative):
+            hit = blobs.get((commit, candidate), [])
+            if hit:
+                lines = hit
+                break
+        cache[(commit, relative)] = lines
 
 
 def library_relative(file_name: str) -> str:
     """Repository path for a link target named in a note.
 
     Unqualified names stay relative to the expansion library; a name whose
-    first segment is a sibling library is already repository-relative.
+    first segment is already a corpus root (or a sibling library) is the
+    identity path and must not be prefixed again.
     """
     head = file_name.split("/", 1)[0]
-    if head in SIBLING_LIBRARIES:
+    if head in LIBRARY_ROOTS or head in SIBLING_LIBRARIES:
         return file_name
     return f"{LIBRARY_PREFIX}/{file_name}"
 
@@ -443,11 +586,37 @@ DeclarationKey = tuple[str, str]
 
 def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
     """Module-qualified declarations linked by one problem note."""
-    return {
+    linked = {
         (library_relative(file_name), declaration)
         for file_name, _line, declaration in links(note_text)
         if declaration is not None
     }
+    # Generated statement notes reach the same declarations, at their own pin;
+    # generated_note_failures() has already resolved each one in that snapshot.
+    linked.update(
+        (library_relative(file_name), declaration)
+        for file_name, _line, declaration in generated_links(note_text)
+    )
+    # A local result may use its own immutable source pin without changing the
+    # note-wide pin. Count it only after checking the named declaration there.
+    explicit = re.compile(
+        r"\\href\{https://github\.com/wcook04/plectis-erdos/blob/"
+        r"(?P<commit>[0-9a-f]{40})/"
+        r"(?P<path>(?:lean/)?(?:ErdosProblems|Erdos249257)/[A-Za-z0-9_/.-]+\.lean)"
+        r"\\?#L(?P<line>[1-9][0-9]*)\}\{\\texttt\{(?P<name>[^{}]+)\}\}"
+    )
+    cache: dict[tuple[str, str], list[str]] = {}
+    for match in explicit.finditer(strip_comments(note_text)):
+        relative = library_relative(match.group("path").removeprefix("lean/"))
+        declaration = match.group("name").replace(r"\_", "_")
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_'.]*", declaration):
+            continue
+        raw = snapshot_lines(match.group("commit"), relative, cache)
+        source = strip_lean_comments("\n".join(raw)).splitlines()
+        index = int(match.group("line")) - 1
+        if 0 <= index < len(source) and declares_at(source, index, declaration):
+            linked.add((relative, declaration))
+    return linked
 
 
 def declarations_for_module(relative: str, text: str) -> list[DeclarationKey]:
@@ -509,6 +678,11 @@ def required_note_declaration_failures(
             )
             continue
         key = (module_relative(module), declaration)
+        current_module = anchor.get("current_module", module)
+        if not isinstance(current_module, str) or not current_module:
+            failures.append(f"{row['problem_id']}: required note declaration has invalid current module")
+            continue
+        current_key = (module_relative(current_module), declaration)
         if key in seen:
             failures.append(
                 f"{row['problem_id']}: duplicate required note declaration "
@@ -516,15 +690,15 @@ def required_note_declaration_failures(
             )
             continue
         seen.add(key)
-        if key[0] not in allowed_modules:
+        if current_key[0] not in allowed_modules:
             failures.append(
                 f"{row['problem_id']}: required note declaration module "
-                f"{key[0]} is outside the indexed problem modules"
+                f"{current_key[0]} is outside the indexed problem modules"
             )
-        elif key not in current:
+        elif current_key not in current:
             failures.append(
                 f"{row['problem_id']}: required note declaration "
-                f"{key[0]}::{key[1]} is absent from current source"
+                f"{current_key[0]}::{key[1]} is absent from current source"
             )
         elif key not in linked:
             failures.append(
@@ -567,8 +741,13 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 failures.append(f"{row['problem_id']}: {error}")
                 continue
             current.extend(declarations_for_module(relative, live))
-            pinned = git_run("show", f"{commit}:{relative}")
-            if pinned.returncode != 0 or pinned.stdout != live:
+            pinned_text = None
+            for candidate in snapshot_blob_candidates(relative):
+                pinned = git_run("show", f"{commit}:{candidate}")
+                if pinned.returncode == 0:
+                    pinned_text = pinned.stdout
+                    break
+            if pinned_text is None or pinned_text != live:
                 moved.append(relative)
         if not current:
             continue
@@ -615,9 +794,14 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
             ahead = 0
             for module in modules:
                 relative = module_relative(module)
-                shown = git_run("show", f"{upstream}:{relative}")
-                if shown.returncode == 0:
-                    ahead += len(declarations_in(shown.stdout))
+                shown_text = None
+                for candidate in snapshot_blob_candidates(relative):
+                    shown = git_run("show", f"{upstream}:{candidate}")
+                    if shown.returncode == 0:
+                        shown_text = shown.stdout
+                        break
+                if shown_text is not None:
+                    ahead += len(declarations_in(shown_text))
             if ahead > len(current):
                 lines.append(
                     f"      upstream {upstream} is {ahead - len(current)} "
@@ -721,6 +905,9 @@ def main() -> int:
             elif args.list:
                 print(f"  {declaration}  <-  {relative}:{line_number}")
 
+    generated_failures, generated_checked = generated_note_failures(ledger_commit())
+    errors.extend(generated_failures)
+
     report: list[str] = []
     if args.coverage:
         report, coverage_failures = coverage_report(default_commit)
@@ -736,7 +923,8 @@ def main() -> int:
 
     print(
         f"check_problem_note_sources: {checked} link(s) across {len(sources)} note(s) "
-        f"resolve against {len(resolved_commits)} pinned commit(s)"
+        f"resolve against {len(resolved_commits)} pinned commit(s); "
+        f"{generated_checked} generated statement link(s) resolve at the ledger pin"
     )
     for line in report:
         print(line)

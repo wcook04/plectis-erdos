@@ -1,0 +1,222 @@
+{
+  "starting_revision": "cd92136f7f0f03bd78fb8753e4e4f0527dbe3a83",
+  "checked_on_revision": "ca5ad952fefb29b50a4e360988fa84f9c7255700",
+  "lean_toolchain": "leanprover/lean4:v4.29.1",
+  "source_sha256": {
+    "lean/ErdosProblems/Synthesis.lean": "21cec2b74dd08a6b91720a40dfce17b1724c979aa3cf5cd69d49d02976c5e47a",
+    "lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean": "a3312131f365fcee6494187998d37c635d564f6325c13f0528ebae76d180035c",
+    "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean": "3920d1c42cb7bb9c65c5247f409ccaedf5ec18516c215223729cfd8940d0cd9f",
+    "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean": "fd2cec73347708924889eeeefd050e31adae154795014c6f7988818134968ff8",
+    "paper/synthesis/optimal-sparse-perturbations.tex": "c5668cca98569e90a2707c786d6151eb369600787a14cedd6322051cfe746afa",
+    "research/experiments/sparse_interpolation/feedback.py": "6eb8d358d4d3dcef6c9f49021b8375b2e61e4f363bc9ad91fb678338207f98af",
+    "research/experiments/sparse_interpolation/late_rejection.py": "153eb5df9aaa394c0ae07b8b3630b0604a110621f88e60ecf14e72665dd10d73",
+    "research/experiments/sparse_interpolation/capacity.py": "23da650822864b53bddb0d669abc8d212c53cf0126c7bce573807ea4985f07fc",
+    "research/experiments/premise_exchange/totient_approximation.py": "86f5d4507ac7191fa2e431e0247f873643e2aceb5d1b07d9915e649164e67ebb",
+    "research/experiments/premise_exchange/totient_approximation.md": "66b41419ba2dfd62d6e555001b374c48a2f4b7dbacdb1731c89b52f47d1af4c0",
+    "research/experiments/premise_exchange/dyadic_shift_request.json": "4a6020809388b70cff5a53a9e35606e7810790a49494010056b580073266de15",
+    "lean/ErdosProblems.lean": "35d8fb251aefcc202fe0fd08cf79ccf26f3110c3c67c1d647913e183ba28c627",
+    "lean/ErdosProblems/Skip/LadderT67.lean": "7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f"
+  },
+  "lean_builds": [
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis.CongruenceInterpolation ErdosProblems.Synthesis.DyadicShiftEscape",
+      "exit_code": 0,
+      "singleflight_key": "1b8c779e183a776699f9c18d9ee589819bec0ad35a9f214a175802e116ecdbc9"
+    },
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis",
+      "exit_code": 0,
+      "singleflight_key_prefix": "516075809b33"
+    },
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness ErdosProblems",
+      "exit_code": 0,
+      "singleflight_key": "0c19d335e9362189cfb719a7cf34132cf3537e2aa1f5f470dcf185205b7cf61b",
+      "source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+      "scope": "Full supported ErdosProblems root including the three new synthesis modules and pre-existing certificate prerequisites"
+    },
+    {
+      "command": "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness --changed-from HEAD",
+      "target": "ErdosProblems.Skip.LadderT67",
+      "exit_code": 0,
+      "singleflight_key": "94c5e1379677c216080192d859558bc3af5c285dd21e181a214006b4552ef1a1",
+      "scope": "Corrected finite-versus-eventual comment boundary, unchanged proof tokens; source-bound Lake check passed.",
+      "source_ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35"
+    }
+  ],
+  "axiom_probe": {
+    "session": "research/workbench/sessions/congruence-support-20260920",
+    "move_id": "m006",
+    "verdict": "kernel_accepted",
+    "error_count": 0,
+    "sorry_count": 0,
+    "principal_endpoint_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "finite_checks": [
+    {
+      "script": "feedback.py",
+      "result": "passed",
+      "evidence": "Exact finite residue and factorial support checks; not an infinite proof"
+    },
+    {
+      "script": "late_rejection.py",
+      "result": "passed",
+      "evidence": "Exact first rejection at 17 for 189/388 and 577/388; 32 telescope stages and 324 target samples"
+    },
+    {
+      "script": "capacity.py",
+      "result": "passed",
+      "selection_steps": 1520,
+      "repeated_denominator_checks": 1001,
+      "evidence": "Finite frozen modulus schedule; every selected transition checked with Fraction"
+    },
+    {
+      "script": "../premise_exchange/totient_approximation.py",
+      "result": "passed",
+      "evidence": "Exact divisor identities, residue factorizations and leading square means through N=256,D=16"
+    }
+  ],
+  "premise_exchange": {
+    "result": "../premise_exchange/results/summary.json",
+    "raw_application": "rejected",
+    "transformed_application": "kernel_checked_closed"
+  },
+  "ordinary_proofs": [
+    "Exact capacity criterion on strict integer divisibility chains, including null/meagre alternative and all-values representation with eventual allowance bounds",
+    "Sharp factorial support classification and integer-exponent contrast",
+    "Analytic Cantor-series interpretation of the unbounded-gcd carry criterion",
+    "Totient uniform finite-rank error 1/2 and explicit mean approximation bound 2/D"
+  ],
+  "not_established": [
+    "Full Lean formalization of the general capacity criterion, measure/category proofs, modulus construction, or factorial asymptotics",
+    "Historical novelty, independent expert review, or field-changing significance",
+    "Any stronger claim about the eight Erdos programme endpoints"
+  ],
+  "repository_checks": [
+    {
+      "check": "Research continuation receipt",
+      "result": "passed",
+      "command": "python3 scripts/continue_research.py check --session congruence-support-20260920"
+    },
+    {
+      "check": "Changed-source build routing",
+      "result": "passed",
+      "tests": 55
+    },
+    {
+      "check": "Reading-edition synthesis registration",
+      "result": "passed",
+      "tests": 4
+    },
+    {
+      "check": "Nested Lean diagnostic path validation",
+      "result": "passed",
+      "evidence": "Regression rejects genuine private paths and accepts escaped compiler prose."
+    },
+    {
+      "check": "Receipt-only observation of shared validation",
+      "result": "passed",
+      "tests": 5,
+      "evidence": "Explicitly selected regressions check wait and terminal exits without cache hydration, CLI forwarding, and preserved default materialization."
+    },
+    {
+      "check": "Raw-file Lean dependency export transport",
+      "result": "passed",
+      "evidence": "Full dependency-index cache regression suite and clean-environment test pass; exact UTF-8 payload parsing, missing/empty rejection, cleanup, and failure/signal/timeout behavior covered."
+    },
+    {
+      "check": "Full supported-root elaborated Lean dependency export",
+      "result": "passed",
+      "command": "python3 scripts/build_lean_dependency_index.py",
+      "singleflight_key": "473cd8cc292703835c5d93a402604ba91044ebcdaa34acc095c89581f39116d9",
+      "elapsed_seconds": 328.0,
+      "nodes": 16081,
+      "edges": 71770,
+      "evidence": "Both supported roots built; raw-file export parsed and source-joined; tracked full-export receipt regenerated."
+    },
+    {
+      "check": "Elaborated proof-plan and new synthesis proof-cone availability",
+      "result": "passed",
+      "commands": [
+        "python3 scripts/check_cold_clone_comprehension.py --proof-plans-only",
+        "python3 scripts/query_corpus.py --proof-cone ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts --depth 2"
+      ],
+      "availability": "available",
+      "resolved_handle": "ErdosProblems.Synthesis.DyadicShiftEscape.irrational_initial_iff_cofinal_separated_tailShifts",
+      "edge_policy": "elaborated_value_references_only"
+    },
+    {
+      "check": "Scoped shared build artifacts and exact regression selection",
+      "result": "passed",
+      "tests": 9,
+      "evidence": "Publication and hydration use the selected target import closure, not the all-source identity manifest. Realistic keys include unrelated sources; their existing or absent artifacts remain untouched even in legacy seeds. Sources and transitive imports are hash-checked; standalone checks cannot publish stale unproduced outputs. CLI selector regressions remain passing.",
+      "real_receipt_scope": {
+        "key": "94c5e1379677c216080192d859558bc3af5c285dd21e181a214006b4552ef1a1",
+        "keyed_lean_sources": 1900,
+        "validated_module_closure": 700,
+        "matches_native_import_graph": true,
+        "includes": [
+          "ErdosProblems.Lift.Recon67",
+          "ErdosProblems.Lift.CertT67"
+        ],
+        "excludes": "ErdosProblems.Synthesis and its modules",
+        "inspection": "read_only_without_materialization"
+      }
+    },
+    {
+      "check": "Owned semantic census block validation",
+      "result": "passed",
+      "evidence": "The bounded cold-clone suite rejects 187 semantic mutations and checks 10 route-memory behaviors; duplicate commands outside the census cannot hide a damaged block, and missing, duplicate or reversed markers are rejected."
+    },
+    {
+      "check": "Native infrastructure repair routing",
+      "result": "passed",
+      "task_fixtures": 92,
+      "evidence": "Repair actions paired with cache, census, projection or validator objects route to infrastructure maintenance; neighboring explanation, proof and build requests retain their lanes."
+    },
+    {
+      "check": "Final corrected-source supported-root dependency export",
+      "result": "passed",
+      "singleflight_key": "da699b2a88ac2b9408733cc36fb8a17d935e20559f7208ddebc8ac292fd5f150",
+      "source_ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
+      "nodes": 16081,
+      "edges": 71770,
+      "evidence": "Both supported roots validated and full environment exported after the source-comment correction; statement review reissued for 34 receipts after verifying 98 cited declaration statements byte-identical."
+    }
+  ],
+  "publication_formal_source_ref": "8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+  "publication_note": "Final provenance, unique anchor labels and source-pinned links refer to the full-root-checked source revision; mathematical prose was verified unchanged.",
+  "current_lean_source_ref": "27e42aa3b3fd77589527cfe6f2d560bd23dd6d35",
+  "integration_attempts": [
+    {
+      "singleflight_key": "eadd7a94e0e5a2e318cb621683ac506532a31d58c2677a350d30203c225b217f",
+      "exit_code": 1,
+      "failure": "Synthesis import was appended after the root module documentation command.",
+      "repair": "Moved the import into the initial header in 8d6596fbde2c4aacf946adec4b0226ba1a97545d",
+      "scope": "New synthesis modules had passed focused builds; this failure belongs to root integration."
+    },
+    {
+      "singleflight_key": "bc12f87e48a8086878583ef8c9a046653a828d395c50060e5e11fdb3b051fcda",
+      "exit_code": 75,
+      "scope": "Elaborated dependency export, after both supported roots built",
+      "failure": "Stopped by this task after runtime sampling found the large tab-separated dataset being pretty-printed as one Lean diagnostic; no dependency index was produced.",
+      "repair": "Use an explicit raw output file, preserving separate compiler diagnostics and parser semantics."
+    },
+    {
+      "scope": "Shared build cache artifact scope",
+      "failure": "The first repair mistook the broad all-source identity key for validated target coverage; a live focused receipt exposed the distinction.",
+      "repair": "Derive selected targets from the keyed normalized worker command, verify source bytes while traversing native imports, and exclude standalone checks that produced no module outputs.",
+      "validation": "Nine focused regressions plus exact read-only comparison with a real 700-module native closure."
+    }
+  ],
+  "source_comment_correction": {
+    "path": "lean/ErdosProblems/Skip/LadderT67.lean",
+    "sha256": "7baa0902174c28265287372586abc75d400cfb548af47ed428378622be0c228f",
+    "change": "Two comments now distinguish finite witnesses against global floor attainment/monotonicity from undecided eventual behavior.",
+    "code_projection": "Identical after removing comment-mask trailing spaces; declaration and proof tokens and all 71355 source lines are preserved."
+  }
+}

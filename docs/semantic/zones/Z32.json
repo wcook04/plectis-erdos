@@ -236,7 +236,7 @@
         {
           "declaration": "kernel_235_minor_eq_neg_one_fifteen",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 827
+          "line": 904
         }
       ]
     },
@@ -691,7 +691,7 @@
     {
       "declaration": "kernel_235_minor_eq_neg_one_fifteen",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 827,
+      "line": 904,
       "role": "statement",
       "statement_node": "kernel_235_has_exact_negative_one_fifteen_minor"
     },

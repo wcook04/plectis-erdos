@@ -14,17 +14,17 @@
       "root": "Erdos249257.lean",
       "role": "reviewed_corpus",
       "claim_registry": "docs/claims.json",
-      "note": "Declarations under this root carry reviewed public claim status recorded in the claim registry."
+      "note": "Public status is assigned per claim and declaration in docs/claims.json. Library membership and a kernel build do not imply reviewed correspondence or publication status."
     },
     {
       "root": "ErdosProblems.lean",
       "role": "problem_owned_expansion",
-      "claim_registry": null,
-      "note": "Declarations under this root are exact Lean propositions accepted by the pinned kernel. They are not reviewed public mathematical claims, and kernel checking this root does not promote them into one."
+      "claim_registry": "docs/claims.json",
+      "note": "Public status is assigned per claim and declaration in docs/claims.json. Library membership and a kernel build do not imply reviewed correspondence or publication status."
     }
   ],
   "status_vocabulary": {
-    "open": "The Erdős problem is open and nothing in this repository closes it.",
+    "open": "The historical programme target remains open in the registry. An exact formalisation may separately prove or refute one stated formulation; consult the claim record and external-verification boundary before inferring programme status.",
     "checked": "The pinned Lean kernel accepts the exact proposition named, with no sorry, no added axiom, and no unchecked evaluation.",
     "finite_evidence": "An exact finite computation. It constrains, and does not decide, an unbounded question.",
     "no_go": "A proof that some specific strategy cannot work. It removes a route, not the problem.",
@@ -59,11 +59,15 @@
       "required_note_declarations": [
         {
           "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
-          "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+          "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+          "current_module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+          "relocation_boundary": "The paper retains its immutable monolith citation. The declaration signature is unchanged in the split core; the old module re-exports it."
         },
         {
           "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
-          "declaration": "irrational_factorialGapSeries_of_cofinal_nonunit_carries"
+          "declaration": "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+          "current_module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+          "relocation_boundary": "The paper retains its immutable monolith citation. The declaration signature is unchanged in the split core; the old module re-exports it."
         },
         {
           "module": "ErdosProblems.Erdos68.PrimeZeroBranch",
@@ -85,7 +89,7 @@
         "Integral channel congruences, the lcm tax, the prime unit translator, and factorial-grid Cramer residual identities.",
         "Weighted projection and factor-split rigidity consumers with their exact modular and Archimedean hypotheses.",
         "The zero-plateau and first-exit carry dichotomy, prime-power prefix obstructions, and exact doubled-prime branch characterisations.",
-        "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; an independently regenerated exact GMP certificate at m = 300000 supplies the finite input."
+        "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; a fresh exact GMP certificate at m = 300000 supplies the finite input used by the papers; the event-trace and unit carries match the previously retained receipt."
       ],
       "what_is_not_checked": [
         "Irrationality of the factorial-denominator series.",
@@ -116,8 +120,9 @@
           "statement": "Construct an unbounded factorial-grid family whose exact Cramer residual is nonintegral, using a determinant, valuation, cancellation, or gcd-of-minors certificate that controls the finite sign-changing block."
         }
       ],
-      "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement.",
-      "source_priority_note": "Comparator isolation in this checkout is FactorialGapPlateauCore; FactorialZeroPlateau is the default-root duplicate. Required note links remain ZeroPlateau because Core is absent from pin 99f4bf47."
+      "finite_search": "A retained exact GMP receipt through m = 300000 records a non-unit carry at that index, so every positive rational denominator satisfies q ∤ 299999!. A byte-identical regeneration of that receipt with the current driver is outstanding in this revision; a separate exact replay through 4000 reproduces the unit-carry prefix. The Lean consumer turns one non-unit carry at m into q >= m; it does not prove a cofinal statement. An independent continued-fraction enclosure gives q ≥ 2^39990. At the prime 12487 and gap 12, exact polynomial arithmetic exhibits two critical roots 4626 and 7848, so the small-prime pattern of at most one critical root is not uniform; those roots have factorial values 442 and 6300, not 1.",
+      "source_priority_note": "Comparator isolation in this checkout is FactorialGapPlateauCore; FactorialZeroPlateau is the default-root duplicate. Required note links remain ZeroPlateau because Core is absent from pin 99f4bf47.",
+      "programme_claim_id": "erdos_68"
     },
     {
       "problem_id": "erdos_243",
@@ -189,11 +194,12 @@
         "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
         "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
         "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
-        "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
+        "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon.",
+        "From a strictly increasing positive integer sequence, a rational reciprocal sum and a_(n+1)/a_n^2 tending to one, canonical_integer_tail_normalized derives eventual strict centring and normalised vanishing of the exact integer tail."
       ],
       "what_is_not_checked": [
         "The unrestricted problem.",
-        "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
+        "A uniform lower bound on the centred error for every sequence in the original problem; the canonical tail transfer does not supply this additional hypothesis.",
         "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
         "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
       ],
@@ -211,7 +217,8 @@
           "statement": "Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses."
         }
       ],
-      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
+      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
+      "programme_claim_id": "erdos_243"
     },
     {
       "problem_id": "erdos_249",
@@ -319,14 +326,15 @@
           "statement": "Prove the sharp cusp asymptotic and then supply a non-formal bridge from the geometric parameter regime to the exact totient value."
         }
       ],
-      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate."
+      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate.",
+      "programme_claim_id": "erdos_249"
     },
     {
       "problem_id": "erdos_251",
       "erdos_number": 251,
       "short_title": "The prime-gap dyadic series",
       "status": "open",
-      "question": "Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
+      "question": "Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
       "directory": "lean/ErdosProblems/Erdos251",
       "principal_module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
       "companion_modules": [],
@@ -396,7 +404,7 @@
       "what_is_checked": [
         "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.",
         "The factor-of-two normalisation between the two displayed indexings, at every finite horizon.",
-        "Conditional on summability of the prime dyadic series, the exact infinite prime-gap identity and the equivalence of irrationality of the prime and prime-gap series.",
+        "The unconditional prime-to-gap identity, using an elementary polynomial bound on primes to prove summability; irrationality of the prime series is equivalent to irrationality of the prime-gap series.",
         "For an abstract integer-digit dyadic tail recurrence: the exact block identity, and that a shift of fixed length is integral exactly when an explicit scaled state is.",
         "That one integral shift propagates to every later index.",
         "That repeated doubling removes the power-of-two denominator, so every rational-valued dyadic recurrence has one fixed positive shift integral at all sufficiently late indices.",
@@ -408,7 +416,7 @@
       ],
       "what_is_not_checked": [
         "The target irrationality.",
-        "The definition and recurrence of the concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level. Summability of the concrete prime series is Lean-checked unconditionally via an elementary polynomial prime bound.",
+        "A cofinal nonintegrality theorem for the concrete prime-gap tails; defining the series and proving its recurrence do not supply this.",
         "A theorem supplying cofinally many adjacent actual-prime-gap tail shifts in the open unit interval with the required gap mismatch.",
         "Any theorem forcing periodicity or automaticity of the prime gaps from rationality; the free-carry identity disconfirms that route."
       ],
@@ -428,7 +436,8 @@
       ],
       "finite_search": null,
       "note_coverage_floor": 0.53,
-      "note_coverage_rationale": "The long note links 64 theorem-level declarations across the complete current 120-declaration cited source family. Exporting the final twelve-declaration polynomial countermodel block lowered the raw linked fraction from 59% to 53% without removing any link; 0.53 records that larger honest denominator while named source links and required headline declarations remain mandatory."
+      "note_coverage_rationale": "The long note links 64 theorem-level declarations across the complete current 120-declaration cited source family. Exporting the final twelve-declaration polynomial countermodel block lowered the raw linked fraction from 59% to 53% without removing any link; 0.53 records that larger honest denominator while named source links and required headline declarations remain mandatory.",
+      "programme_claim_id": "erdos_251"
     },
     {
       "problem_id": "erdos_257",
@@ -455,12 +464,12 @@
         }
       ],
       "what_is_checked": [
-        "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
-        "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
-        "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
+        "Irrationality at every integer base for the classical full support, reciprocal-summable supports, and the finite-prime weighted supports in divisibilityWeightedClaim.",
+        "Every infinite subset of the union of a finite base-two weighted-mass host and a strengthened positive-cover host has irrational series at every integer base (mixedSupportClaim).",
+        "Unique Mersenne coding on every support; compactness and nowhere density; perfection for infinite support; finite-complement measure 2^(-|F|), otherwise zero."
       ],
       "what_is_not_checked": [
-        "The universal irrationality problem, or irrationality for any new infinite support.",
+        "Universal irrationality over all infinite supports, or the proposed rational values 1/2 and 1/21.",
         "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
         "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
       ],
@@ -474,7 +483,8 @@
           "statement": "Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "programme_claim_id": "universal_257"
     },
     {
       "problem_id": "erdos_269",
@@ -600,14 +610,13 @@
         "That the smallest {2,3,5} kernel rectangle has determinant exactly -1/15, so its two-by-two matrix has rank two over the rationals and no rank-one separation exists.",
         "The canonical least-positive-residue interval and congruence facts, including the zero-residue representative.",
         "The exact local-window identity for an integral carry.",
-        "A denominator-dependent CofinalLocalWindowEscape proposition and the full theorem that it rules out every positive reduced integral carry satisfying the matching bound.",
+        "For the actual {2,3,5} series, rationality produces a positive reduced carry; cofinal local-window escape rules out such carries under the recorded bound.",
         "A bounded-radix dichotomy: under a bounded positive digit alphabet, a nonzero scaled tail must be separated from the integers cofinally.",
         "Exact three-channel block-nullity as a coboundary condition, and extinction of a bounded carry lift under two independent anchors.",
         "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
       ],
       "what_is_not_checked": [
         "Irrationality or transcendence in any three-prime case.",
-        "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
         "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
         "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -632,17 +641,20 @@
         }
       ],
       "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
-      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it."
+      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it.",
+      "programme_claim_id": "erdos_269"
     },
     {
       "problem_id": "erdos_1041",
       "erdos_number": 1041,
       "short_title": "Short connections inside polynomial lemniscates",
       "status": "open",
-      "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?",
+      "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.",
       "directory": "lean/ErdosProblems/Erdos1041",
-      "principal_module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
-      "companion_modules": [],
+      "principal_module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+      "companion_modules": [
+        "ErdosProblems.Erdos1041.NewtonFlowRaySeparation"
+      ],
       "note_artifact_id": "erdos_1041_note",
       "required_note_declarations": [
         {
@@ -668,9 +680,14 @@
         {
           "module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
           "declaration": "no_newtonConnection_of_not_samePositiveRay"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+          "declaration": "erdos1041_ani_degree_seven"
         }
       ],
       "what_is_checked": [
+        "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.",
         "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.",
         "The exponentially rescaled polynomial value is a first integral, so the value of a Newton trajectory remains on one oriented ray.",
         "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
@@ -679,35 +696,40 @@
         "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
       ],
       "what_is_not_checked": [
-        "Erdos Problem 1041 in unrestricted degree.",
+        "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation.",
+        "Independent human review adjudicating whether the checked total-variation formulation exactly represents the historical question.",
         "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
         "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
         "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
-        "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
+        "A corrected restricted-family or alternative-metric gluing theorem; universal sub-two total-variation gluing is ruled out by the degree-seven counterexample."
       ],
       "open_obligations": [
+        {
+          "id": "historical_curve_length_correspondence",
+          "statement": "Determine the precise correspondence between the historical curve-length question and the refuted total-variation formulation, including any required Hausdorff-measure comparison and independent human review."
+        },
         {
           "id": "repair_or_refute_saddle_block",
           "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
         },
         {
           "id": "compact_ray_cut_strip_decomposition",
-          "statement": "Build a compact strip or cell decomposition after cutting along critical-value rays, without presupposing the unproved local valence count."
+          "statement": "Construct and verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses, as auxiliary structure for restricted families or a correspondence-adjusted historical formulation. It does not imply a universal sub-two total-variation connector."
         },
         {
-          "id": "metric_gluing_below_two",
-          "statement": "Glue the local pieces with strict quantitative slack while preserving the sharp one-over-two-pi length bookkeeping."
+          "id": "corrected_metric_gluing_for_restricted_families",
+          "statement": "The degree-seven counterexample rules out universal total-variation gluing below two. For a stated restricted family or different historical length notion, derive a metric gluing inequality with all positive attachment costs explicit; the false printed 1/(2π) coefficient may not be retained."
         },
         {
           "id": "two_stage_stable_perturbation",
-          "statement": "First separate critical values, then apply the checked small translation, while retaining roots, the selected component, collars, ray separation, and a strict length margin."
+          "statement": "Given a polynomial/component and an already selected connector with explicit strict slack, quantify a two-stage perturbation preserving roots, that component, collars, ray separation, and the stated slack. No universal existence or sub-two conclusion is asserted."
         },
         {
           "id": "relative_global_newton_flow_theorem",
-          "statement": "Prove the global relative Newton-flow theorem that turns the checked ray separation into the required root-to-root curve inside the original open lemniscate."
+          "statement": "Under explicit relative component, saddle, and corrected metric hypotheses, derive the corresponding root-to-root Newton-flow connector. The theorem must state its restricted hypotheses and cannot imply a sub-two total-variation connector for every polynomial."
         }
       ],
-      "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
+      "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence and is separate from the exact degree-seven total-variation counterexample checked in Lean.",
       "research_corpus": {
         "directory": "research_corpus/Erdos1041",
         "frontier": "research_corpus/Erdos1041/FRONTIER.md",
@@ -715,8 +737,9 @@
         "manifest": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
         "checkpoint": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
         "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
-        "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
-      }
+        "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims."
+      },
+      "programme_claim_id": "erdos_1041"
     },
     {
       "problem_id": "erdos_1049",
@@ -848,7 +871,7 @@
         "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1."
       ],
       "what_is_not_checked": [
-        "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem.",
+        "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.",
         "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
         "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
         "The source analytic irrationality theorem inside the 81/200 height region; only its elementary parameter specialisations are formalised.",
@@ -863,7 +886,8 @@
           "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "programme_claim_id": "erdos_1049"
     }
   ],
   "reviewed_problems": [

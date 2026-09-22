@@ -1,0 +1,120 @@
+{
+  "evidence": "exact finite arithmetic",
+  "feedback": [
+    {
+      "gap": 1,
+      "allowance_exponent": 2,
+      "targets": [
+        {
+          "initial_scaled_target": "1",
+          "stages": 400,
+          "last_index": 500,
+          "maximum_modulus": 6,
+          "final_scaled_residual": "6"
+        },
+        {
+          "initial_scaled_target": "7/6",
+          "stages": 400,
+          "last_index": 500,
+          "maximum_modulus": 6,
+          "final_scaled_residual": "6"
+        },
+        {
+          "initial_scaled_target": "3/2",
+          "stages": 400,
+          "last_index": 500,
+          "maximum_modulus": 6,
+          "final_scaled_residual": "6"
+        },
+        {
+          "initial_scaled_target": "2",
+          "stages": 400,
+          "last_index": 500,
+          "maximum_modulus": 6,
+          "final_scaled_residual": "6"
+        }
+      ]
+    },
+    {
+      "gap": 2,
+      "allowance_exponent": 3,
+      "targets": [
+        {
+          "initial_scaled_target": "1",
+          "stages": 400,
+          "last_index": 900,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        },
+        {
+          "initial_scaled_target": "7/6",
+          "stages": 400,
+          "last_index": 900,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        },
+        {
+          "initial_scaled_target": "3/2",
+          "stages": 400,
+          "last_index": 900,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        },
+        {
+          "initial_scaled_target": "2",
+          "stages": 400,
+          "last_index": 900,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        }
+      ]
+    },
+    {
+      "gap": 3,
+      "allowance_exponent": 4,
+      "targets": [
+        {
+          "initial_scaled_target": "1",
+          "stages": 400,
+          "last_index": 1300,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        },
+        {
+          "initial_scaled_target": "7/6",
+          "stages": 400,
+          "last_index": 1300,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        },
+        {
+          "initial_scaled_target": "3/2",
+          "stages": 400,
+          "last_index": 1300,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        },
+        {
+          "initial_scaled_target": "2",
+          "stages": 400,
+          "last_index": 1300,
+          "maximum_modulus": 120,
+          "final_scaled_residual": "120"
+        }
+      ]
+    }
+  ],
+  "rational_counterexample": {
+    "stages": 25,
+    "identity": "partial = 1 - 1/Q_n",
+    "cumulative_identity": "sum(e_k,k<=n) = (n+1)!",
+    "gcd_bound": 2
+  },
+  "density_trap": {
+    "description": "all positive integers except powers of two",
+    "cutoff": 4096,
+    "permitted_positions": 4083,
+    "gaps_of_length_two": 10,
+    "infinite_conclusion": "proved in paper, not inferred from this sample"
+  }
+}

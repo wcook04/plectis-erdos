@@ -72,9 +72,9 @@ plateau transfer stops: the band cannot be pushed further without a new certific
 
 Two negatives come out of this table, and both are theorems here rather than commentary.
 
-* `ladder_excess_not_monotone` — the excess over the arithmetic floor is not eventually `0`
-  (the `t = 73`, `79`, `81` cells all miss their floors) and not monotone (`67 ↦ 2`,
-  `71 ↦ 0`, `73 ↦ 2`, `79 ↦ 3`, `81 ↦ 1`).
+* `ladder_excess_not_monotone` — the measured excess is neither identically `0` nor monotone:
+  `67 ↦ 2`, `71 ↦ 0`, `73 ↦ 2`, `79 ↦ 3`, `81 ↦ 1`.  These finite cells do not decide
+  whether the excess is eventually zero or eventually monotone.
 * `rung_depth_not_strictly_increasing` — the minimal certified depth is **not** strictly
   increasing along the rung ladder.  `H 81 = 3 · H 79`, so the modulus triples and the floor
   rises from `117` to `119`, yet both cells fire at exactly `120`.  A law of the form "each
@@ -71305,12 +71305,12 @@ theorem t83_depth_floor {L : ℕ} (h : certifiedKill (periodLcm 83) (periodLcm 8
 
 /-! ## 8. What the five-rung sample measures -/
 
-/-- **The excess over the arithmetic floor is neither eventually zero nor monotone.**
+/-- **Finite witnesses: the measured excess is neither identically zero nor monotone.**
 `t = 71` fires exactly at its floor `105`; `t = 73` has floor `111` and fires only at `113`;
 `t = 79` has floor `117` and fires only at `120`; `t = 81` has floor `119` and fires at
 `120`.  The excesses read `2, 0, 2, 3, 1` at `t = 67, 71, 73, 79, 81`: the sample contains
-strict decreases and strict increases, so neither "the floor is eventually attained" nor
-"the excess is monotone" survives. -/
+strict decreases and strict increases.  This rules out uniform floor attainment and
+monotonicity on these rungs; eventual floor attainment and monotonicity remain undecided. -/
 theorem ladder_excess_not_monotone :
     certifiedKill (periodLcm 71) (periodLcm 71) 105 ∧
       ¬ certifiedKill (periodLcm 73) (periodLcm 73) 112 ∧

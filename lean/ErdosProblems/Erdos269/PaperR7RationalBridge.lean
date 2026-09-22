@@ -9,7 +9,7 @@ The existing bridge existentially chooses a split and a carry. The paper fixes
 This file proves those equality data rather than citing a nearby existential.
 The long-record sharper `Q`-cap remains a separate obligation.
 
-Validation: authored, not compiled. No admissions.
+No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

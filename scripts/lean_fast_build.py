@@ -5,7 +5,8 @@ The optional targets may be module names or ``.lean`` paths. With no targets,
 each supported public root is built serially. Focused targets keep the
 edit/test loop from paying for every public certificate module while preserving
 a bounded Lake authority check. ``--changed-from`` derives those focused
-targets from Git, including untracked Lean files. ``--lake-staleness`` asks
+targets from Git, including untracked Lean files but excluding stored workbench
+replay probes. Explicit probe paths remain selectable. ``--lake-staleness`` asks
 Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
 
@@ -35,7 +36,15 @@ import lean_package_share
 ROOT = Path(__file__).resolve().parents[1]
 TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 LAKE = TOOLCHAIN_BIN / "lake"
-IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
+IMPORT_RE = re.compile(
+    r"^\s*(?:public\s+)?import\s+"
+    r"([A-Za-z0-9_'.]+(?:\s+[A-Za-z0-9_'.]+)*)\s*(?:--.*)?$"
+)
+IMPORT_KEYWORD_RE = re.compile(r"^\s*(?:public\s+)?import(?:\s|$)")
+MODULE_HEADER_RE = re.compile(r"^\s*module(?:\s|$)")
+STORED_WORKBENCH_PROBE_RE = re.compile(
+    r"research/workbench/sessions/[^/]+/probes/m[0-9]{3,}\.lean"
+)
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 # A single `lake` invocation here can be a cold full-corpus build, whose cost
 # tracks the size of the library rather than the size of a change. The shared
@@ -172,9 +181,18 @@ def local_imports(source: Path, modules: dict[str, Path]) -> set[str]:
                 continue
             match = IMPORT_RE.match(stripped)
             if match:
-                if match.group(1) in modules:
-                    imports.add(match.group(1))
+                imports.update(
+                    module for module in match.group(1).split() if module in modules
+                )
                 continue
+            if IMPORT_KEYWORD_RE.match(stripped):
+                raise RuntimeError(
+                    f"unsupported Lean import header in {source}: {stripped}"
+                )
+            if MODULE_HEADER_RE.match(stripped):
+                raise RuntimeError(
+                    f"unsupported Lean module header in {source}: {stripped}"
+                )
             break
     return imports
 
@@ -295,6 +313,15 @@ def direct_source_lake_imports(
 def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
     """Return the package roots without relying on Lake's unbounded default."""
 
+    lakefile = root / "lakefile.toml"
+    if lakefile.is_file():
+        config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+        declared = config.get("defaultTargets")
+        if isinstance(declared, list) and declared:
+            missing = [name for name in declared if name not in modules]
+            if missing:
+                raise ValueError(f"declared default Lean roots not found: {missing}")
+            return list(dict.fromkeys(declared))
     resolved_root = root.resolve()
     targets = sorted(
         name
@@ -337,17 +364,23 @@ def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
 def changed_targets_from_paths(
     changed_paths: Iterable[Path], modules: dict[str, Path], root: Path = ROOT
 ) -> list[str]:
+    # Discovery already resolved Lake srcDir. Reconstructing module names from
+    # repository-relative paths silently drops every module under lean/.
+    names_by_path = {source.resolve(): name for name, source in modules.items()}
     resolved_root = root.resolve()
-    changed: set[str] = set()
-    for path in changed_paths:
-        resolved_path = path.resolve()
-        try:
-            name = module_name(resolved_path, resolved_root)
-        except ValueError:
+    targets = set()
+    for source in changed_paths:
+        path = source.resolve()
+        if path not in names_by_path:
             continue
-        if name in modules and modules[name].resolve() == resolved_path:
-            changed.add(name)
-    return sorted(changed)
+        # proof_workbench stores replay inputs as sessions/<slug>/probes/mNNN.lean.
+        # They may intentionally fail; only explicit selection should build them.
+        if path.is_relative_to(resolved_root) and STORED_WORKBENCH_PROBE_RE.fullmatch(
+            path.relative_to(resolved_root).as_posix()
+        ):
+            continue
+        targets.add(names_by_path[path])
+    return sorted(targets)
 
 
 def changed_targets(
@@ -524,6 +557,27 @@ def lake_stale_targets(
     ) + lake_stale_targets(targets[midpoint:], root, rehash=False)
 
 
+def lake_stale_targets_batched(
+    names: Iterable[str],
+    root: Path = ROOT,
+    *,
+    batch_size: int = 128,
+) -> list[str]:
+    """Content-check candidates in bounded argv batches, rehashing only once."""
+
+    targets = list(names)
+    stale_targets: list[str] = []
+    for offset in range(0, len(targets), batch_size):
+        stale_targets.extend(
+            lake_stale_targets(
+                targets[offset : offset + batch_size],
+                root,
+                rehash=offset == 0,
+            )
+        )
+    return stale_targets
+
+
 def propagate_stale_targets(
     initial: Iterable[str],
     build_waves: Iterable[Iterable[str]],
@@ -589,8 +643,10 @@ def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
     Earlier dependency waves are already current, so Lake can elaborate at
     most the modules named in each batch. This preserves the memory/process
     ceiling while amortizing Lake's workspace and dependency-graph scan across
-    up to ``jobs`` targets. A failed batch is retried one module at a time so
-    the final diagnostic still names the exact failures.
+    up to ``jobs`` targets. Preserve Lake's original failure diagnostics and
+    report every target in a failed batch conservatively. Replaying unchanged
+    failures just to isolate their names wastes a second elaboration; the next
+    source-repair run already uses Lake traces to reuse successful outputs.
     """
 
     modules = list(names)
@@ -611,15 +667,7 @@ def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
             flush=True,
         )
         if code:
-            for name in batch:
-                name, single_code, single_duration = build_one(name, root)
-                print(
-                    f"lean-fast-build: retry {name} -> {single_code} "
-                    f"({single_duration:.1f}s)",
-                    flush=True,
-                )
-                if single_code:
-                    failed.append(name)
+            failed.extend(batch)
     return failed
 
 
@@ -882,35 +930,54 @@ def main(argv: list[str] | None = None) -> int:
             build_waves,
             graph,
         )
-        pending = [
-            [
-                name
-                for name in wave
-                if name in stale_targets and name not in direct_target_names
-            ]
-            for wave in build_waves
-        ]
-        pending = [wave for wave in pending if wave]
     else:
         output_mtimes: dict[str, int | None] = {}
         config_mtime = project_config_mtime_ns(root)
-        pending = [
-            [
-                name
-                for name in wave
+        definitely_stale: set[str] = set()
+        config_only_candidates: list[str] = []
+        for wave in build_waves:
+            for name in wave:
+                if name in direct_target_names:
+                    continue
+                # A populated olean cache with config=None classifies only
+                # missing outputs and source/dependency timestamp changes.
                 if stale(
                     name,
                     modules,
                     graph,
                     root,
                     cached_olean_mtimes=output_mtimes,
-                    cached_config_mtime_ns=config_mtime,
-                )
-                and name not in direct_target_names
-            ]
-            for wave in build_waves
-        ]
-    pending = [wave for wave in pending if wave]
+                    cached_config_mtime_ns=None,
+                ):
+                    definitely_stale.add(name)
+                    continue
+                output_mtime = olean_mtime_ns(name, root, output_mtimes)
+                if (
+                    config_mtime is not None
+                    and output_mtime is not None
+                    and config_mtime > output_mtime
+                ):
+                    config_only_candidates.append(name)
+        # A newer checkout/config timestamp is a conservative hint, not proof
+        # that restored output is stale. Lake's content trace decides these
+        # candidates; the final serialized authority build remains mandatory.
+        config_stale = (
+            set(lake_stale_targets_batched(config_only_candidates, root))
+            if config_only_candidates
+            else set()
+        )
+        if config_only_candidates:
+            staleness_label = "mtime+config-trace"
+        stale_targets = propagate_stale_targets(
+            definitely_stale | config_stale,
+            build_waves,
+            graph,
+        )
+    # Cached prerequisites are already ready, regardless of their depth in
+    # the full import graph. Re-level only the propagated stale closure so
+    # unrelated rebuilds can share a batch. Propagation above retains every
+    # stale dependent; the final serialized Lake check remains authoritative.
+    pending = waves(stale_targets - direct_target_names, graph)
     print(
         f"lean-fast-build: targets={','.join(target_modules)}; "
         f"{sum(map(len, pending))} stale/missing module(s), jobs={args.jobs}, "
@@ -922,15 +989,21 @@ def main(argv: list[str] | None = None) -> int:
             print(line, flush=True)
         return 0
 
+    failed: set[str] = set()
+    blocked: set[str] = set()
     for wave in pending:
-        current = (
-            wave
-            if use_lake_staleness
-            else [name for name in wave if stale(name, modules, graph, root)]
-        )
-        failed = build_wave(current, args.jobs, root)
-        if failed:
-            raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
+        skipped = {name for name in wave if graph.get(name, set()) & blocked}
+        blocked.update(skipped)
+        ready = [name for name in wave if name not in skipped]
+        wave_failures = set(build_wave(ready, args.jobs, root))
+        failed.update(wave_failures)
+        blocked.update(wave_failures)
+        if skipped:
+            print("lean-fast-build: skipped failed-dependency targets: " +
+                  ",".join(sorted(skipped)), flush=True)
+    if failed:
+        raise RuntimeError("module batch prebuild failed (see Lake diagnostics): " +
+                           ", ".join(sorted(failed)))
 
     lake_target_names = list(
         dict.fromkeys(

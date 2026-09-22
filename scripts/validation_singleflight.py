@@ -4,7 +4,8 @@
 ``submit`` starts at most one detached process group for one exact validation
 input.  Equivalent callers receive its shared future or terminal receipt;
 ``run`` is the one-command submit/join/collect path; ``collect --wait`` resumes
-an already known future.  The command
+an already known future. Add ``--receipt-only`` to observe its result without
+materializing Lean build outputs in this checkout. The command
 does not interpret a validator's result: its terminal exit code is the exit
 code from the existing validator, including 75 for unavailable environments.
 """
@@ -72,6 +73,7 @@ EXTERNAL_TERMINATION_EXIT_CODES = frozenset(
     }
 )
 WORKER_TIMEOUT_EXIT_CODE = 124
+CANCELLED_EXIT_CODE = 130
 DEFAULT_MAX_BYTES = 1 << 30
 DEFAULT_MAX_INODES = 10_000
 AUTOMATIC_CLEANUP_INTERVAL_SECONDS = 60 * 60
@@ -457,6 +459,31 @@ def artifact_directory(state: dict[str, Path], key: str) -> Path:
     return safe_child(state["artifacts"], key)
 
 
+def cancel_request_path(state: dict[str, Path], key: str) -> Path:
+    return safe_child(artifact_directory(state, key), "cancel-request.json")
+
+
+def load_cancel_request(
+    state: dict[str, Path], key: str, launch_token: str
+) -> dict[str, Any] | None:
+    path = cancel_request_path(state, key)
+    if not os.path.lexists(path):
+        return None
+    regular_file(path, "cancel request")
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValidationError(f"cannot read validation cancel request {key}") from exc
+    if (
+        not isinstance(value, dict)
+        or value.get("schema") != "repository-validation-singleflight-cancel-request/1"
+        or value.get("key") != key
+        or value.get("launch_token") != launch_token
+    ):
+        return None
+    return value
+
+
 def load_receipt(state: dict[str, Path], key: str) -> dict[str, Any] | None:
     path = receipt_path(state, key)
     if not os.path.lexists(path):
@@ -712,11 +739,17 @@ def validator_spec(
     *,
     lean_jobs: int = 2,
     lean_lake_staleness: bool = False,
+    dependency_full_check: bool = False,
+    dependency_write_stale: bool = False,
 ) -> dict[str, Any]:
     if kind not in ROSTER_VALIDATORS:
         raise ValidationError(f"unknown validation class: {kind}")
     if check and kind != "dependency-index":
         raise ValidationError("--check is only valid for dependency-index validation")
+    if dependency_full_check and (kind != "dependency-index" or not check):
+        raise ValidationError("--full-check requires dependency-index --check")
+    if dependency_write_stale and not dependency_full_check:
+        raise ValidationError("--write-stale requires --check --full-check")
     if kind == "toolchain-cache":
         if targets or ref:
             raise ValidationError("toolchain-cache validation accepts no targets or ref arguments")
@@ -884,6 +917,10 @@ def validator_spec(
         command = [sys.executable, "scripts/build_lean_dependency_index.py"]
         if check:
             command.append("--check")
+        if dependency_full_check:
+            command.append("--full-check")
+        if dependency_write_stale:
+            command.append("--write-stale")
         command.append("--singleflight-worker")
         authority_paths = [
             ROOT / "scripts/build_lean_dependency_index.py",
@@ -934,14 +971,13 @@ def validator_spec(
 
     relevant_sources = regular_digest_rows(authority_paths)
     if kind == "lean":
-        # Lean sharing follows mathematical/build inputs, not an unrelated
-        # README, paper, or generated-doc edit. Hash every visible Lean source
-        # (including deletions) plus the explicit toolchain/build authorities.
-        # This remains conservative across modules without coupling the
-        # scheduler to Lake's evolving dependency graph.
+        # The builder owns local import parsing and target resolution. Reuse
+        # its exact transitive closure so an unrelated paper module does not
+        # invalidate a focused validation, while every imported source and
+        # the explicit toolchain/build authorities remain key inputs.
         relevant_sources = merge_digest_rows(
             relevant_sources,
-            git_content_digest_rows([":(glob)**/*.lean"]),
+            regular_digest_rows(lean_dependency_source_paths(targets)),
         )
         identity_path = ROOT / "docs/repository_identity.json"
         repository = {
@@ -949,7 +985,7 @@ def validator_spec(
                 digest_file(identity_path) if identity_path.is_file() else None
             ),
             "identity_policy": (
-                "all_visible_lean_content_and_build_authorities_"
+                "target_transitive_lean_content_and_build_authorities_"
                 "checkout_independent"
             ),
         }
@@ -1004,6 +1040,24 @@ def requires_lean_build_materialization(receipt: Mapping[str, Any]) -> bool:
     )
 
 
+def lean_dependency_source_paths(targets: Iterable[str]) -> list[Path]:
+    """Use the build owner's import graph for the exact requested closure."""
+
+    # Import locally because lean_fast_build uses this module as its scheduler.
+    # By the time a validation specification is requested this module is fully
+    # initialized, so the import reuses the existing module rather than
+    # creating a second parser or a circular initialization dependency.
+    import lean_fast_build
+
+    modules = lean_fast_build.discover(ROOT)
+    roots = lean_fast_build.resolve_targets(targets, modules, ROOT)
+    graph = lean_fast_build.reachable_graph(roots, modules)
+    return sorted(
+        (modules[name] for name in lean_fast_build.reachable(roots, graph)),
+        key=lambda path: path.relative_to(ROOT).as_posix(),
+    )
+
+
 def process_identity(pid: int) -> dict[str, Any] | None:
     try:
         os.kill(pid, 0)
@@ -1054,6 +1108,21 @@ def owner_is_live(owner: Any) -> bool:
     if not isinstance(observed_token, str) or not observed_token:
         return True
     return observed_token == expected_token
+
+
+def exact_owned_process_group(identity: Any) -> int | None:
+    """Return an exactly identified isolated process group, or fail closed."""
+
+    if not isinstance(identity, dict):
+        return None
+    pid = identity.get("pid")
+    token = identity.get("start_token")
+    if not isinstance(pid, int) or pid <= 0 or not isinstance(token, str) or not token:
+        return None
+    observed = process_identity(pid)
+    if observed != identity or observed.get("pgid") != pid:
+        return None
+    return pid
 
 
 def receipt_is_live(receipt: dict[str, Any]) -> bool:
@@ -1323,7 +1392,10 @@ def reap_orphaned_lean_processes(root: Path, *, stream: Any = sys.stderr) -> lis
 # killed it at that mark with every module it had reached reporting 0 -- not a
 # failure, a clock. It gets its own bound; every other class keeps the shared
 # one, because for them a thirty-minute worker really is a hang.
-WORKER_TIMEOUT_SECONDS_BY_KIND = {"lean": 3 * 60 * 60}
+WORKER_TIMEOUT_SECONDS_BY_KIND = {
+    "lean": 3 * 60 * 60,
+    "dependency-index": 5 * 60 * 60 + 60,
+}
 
 
 def worker_timeout_seconds(receipt: dict[str, Any] | None) -> float:
@@ -1443,6 +1515,10 @@ def launch_worker(state: dict[str, Path], specification: dict[str, Any], previou
     if artifact.exists() and artifact.is_symlink():
         raise ValidationError("artifact root is a symbolic link")
     secure_directory(artifact)
+    stale_cancel = cancel_request_path(state, key)
+    if os.path.lexists(stale_cancel):
+        regular_file(stale_cancel, "cancel request")
+        stale_cancel.unlink()
     initial = {
         **specification,
         "state": "launching",
@@ -1493,6 +1569,8 @@ def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
     try:
         existing = load_receipt(state, key)
         if existing is not None and existing.get("state") == "terminal":
+            if existing.get("exit_state") == "cancelled":
+                return launch_worker(state, specification, existing)
             if existing.get("exit_state") == "resource_busy":
                 return launch_worker(state, specification, existing)
             if existing.get("exit_code") != 0:
@@ -1528,6 +1606,118 @@ def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
         os.close(lock)
 
 
+def cancel(
+    state_root: Path,
+    key: str,
+    reason: str,
+    timeout_seconds: float = 5.0,
+) -> dict[str, Any]:
+    """Cancel one exactly identified detached validator without retrying it."""
+
+    reason_text = reason.strip()
+    if not reason_text:
+        raise ValidationError("cancellation reason must not be empty")
+    state = ensure_state_root(state_root)
+    lock = open_lock(job_lock_path(state, key))
+    assert lock is not None
+    try:
+        receipt = load_receipt(state, key)
+        if receipt is None:
+            raise ValidationError(f"unknown validation key: {key}")
+        if receipt.get("state") == "terminal":
+            return {
+                "schema": "repository-validation-singleflight-cancel/1",
+                "key": key,
+                "status": "already_terminal",
+                "state": "terminal",
+                "exit_state": receipt.get("exit_state"),
+            }
+        owner_group = exact_owned_process_group(receipt.get("owner"))
+        if owner_group is None:
+            return {
+                "schema": "repository-validation-singleflight-cancel/1",
+                "key": key,
+                "status": "refused_owner_identity_mismatch",
+                "state": receipt.get("state"),
+            }
+        launch_token = receipt.get("launch_token")
+        if not isinstance(launch_token, str) or not launch_token:
+            return {
+                "schema": "repository-validation-singleflight-cancel/1",
+                "key": key,
+                "status": "refused_missing_launch_token",
+                "state": receipt.get("state"),
+            }
+        request = {
+            "schema": "repository-validation-singleflight-cancel-request/1",
+            "key": key,
+            "launch_token": launch_token,
+            "owner": receipt.get("owner"),
+            "reason": reason_text,
+            "requested_at": utc_now(),
+            "requester_pid": os.getpid(),
+        }
+        atomic_write(cancel_request_path(state, key), canonical_json(request) + b"\n")
+    finally:
+        fcntl.flock(lock, fcntl.LOCK_UN)
+        os.close(lock)
+
+    deadline = time.monotonic() + max(0.0, timeout_seconds)
+    signalled_child: dict[str, Any] | None = None
+    while True:
+        current = load_receipt(state, key)
+        if current is None:
+            raise ValidationError(f"validation receipt disappeared during cancellation: {key}")
+        if current.get("state") == "terminal":
+            return {
+                "schema": "repository-validation-singleflight-cancel/1",
+                "key": key,
+                "status": (
+                    "cancelled"
+                    if current.get("exit_state") == "cancelled"
+                    else "completed_during_cancellation"
+                ),
+                "state": "terminal",
+                "exit_code": current.get("exit_code"),
+                "exit_state": current.get("exit_state"),
+                "signalled_child": signalled_child,
+            }
+        if (
+            current.get("launch_token") != launch_token
+            or current.get("owner") != request["owner"]
+        ):
+            return {
+                "schema": "repository-validation-singleflight-cancel/1",
+                "key": key,
+                "status": "refused_launch_changed",
+                "state": current.get("state"),
+            }
+        child = current.get("child")
+        if child is not None and child != signalled_child:
+            child_group = exact_owned_process_group(child)
+            if child_group is None:
+                return {
+                    "schema": "repository-validation-singleflight-cancel/1",
+                    "key": key,
+                    "status": "refused_child_identity_mismatch",
+                    "state": current.get("state"),
+                }
+            try:
+                os.killpg(child_group, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            signalled_child = child
+        if time.monotonic() >= deadline:
+            return {
+                "schema": "repository-validation-singleflight-cancel/1",
+                "key": key,
+                "status": "cancellation_requested",
+                "state": current.get("state"),
+                "signalled_child": signalled_child,
+            }
+        time.sleep(0.02)
+
+
 def worker(state_root: Path, key: str, token: str) -> int:
     state = ensure_state_root(state_root)
     artifact = artifact_directory(state, key)
@@ -1554,6 +1744,7 @@ def worker(state_root: Path, key: str, token: str) -> int:
     started = utc_now()
     timed_out = False
     build_seed: dict[str, Any] | None = None
+    cancellation_request: dict[str, Any] | None = None
     try:
         if resource_group:
             receipt.update(
@@ -1585,6 +1776,10 @@ def worker(state_root: Path, key: str, token: str) -> int:
             last_attempt_code = 75
             external_termination_exits: list[int] = []
             while attempt < MAX_EXTERNAL_TERMINATION_ATTEMPTS:
+                cancellation_request = load_cancel_request(state, key, token)
+                if cancellation_request is not None:
+                    last_attempt_code = CANCELLED_EXIT_CODE
+                    break
                 attempt += 1
                 child = subprocess.Popen(
                     receipt["command"],
@@ -1605,12 +1800,22 @@ def worker(state_root: Path, key: str, token: str) -> int:
                     }
                 )
                 write_receipt(state, key, receipt)
+                cancellation_request = load_cancel_request(state, key, token)
+                if cancellation_request is not None:
+                    try:
+                        os.killpg(child.pid, signal.SIGTERM)
+                    except ProcessLookupError:
+                        pass
                 last_attempt_code, timed_out = wait_for_worker(child, receipt)
                 if timed_out:
                     stderr.write(
                         "validation worker timed out after "
                         f"{worker_timeout_seconds(receipt):.0f} seconds\n".encode()
                     )
+                    break
+                cancellation_request = load_cancel_request(state, key, token)
+                if cancellation_request is not None:
+                    last_attempt_code = CANCELLED_EXIT_CODE
                     break
                 if not is_external_termination_exit(last_attempt_code):
                     break
@@ -1643,9 +1848,13 @@ def worker(state_root: Path, key: str, token: str) -> int:
                 write_receipt(state, key, receipt)
                 time.sleep(EXTERNAL_TERMINATION_RETRY_DELAY_SECONDS)
             code = (
-                75
-                if is_external_termination_exit(last_attempt_code)
-                else last_attempt_code
+                CANCELLED_EXIT_CODE
+                if cancellation_request is not None
+                else (
+                    75
+                    if is_external_termination_exit(last_attempt_code)
+                    else last_attempt_code
+                )
             )
             receipt["attempt_count"] = attempt
             receipt["last_attempt_exit_code"] = last_attempt_code
@@ -1676,9 +1885,13 @@ def worker(state_root: Path, key: str, token: str) -> int:
         "started_at": started,
         "exit_code": code,
         "exit_state": (
-            "timeout"
-            if timed_out
-            else ("passed" if code == 0 else ("environment_unavailable" if code == 75 else "failed"))
+            "cancelled"
+            if cancellation_request is not None
+            else (
+                "timeout"
+                if timed_out
+                else ("passed" if code == 0 else ("environment_unavailable" if code == 75 else "failed"))
+            )
         ),
         "stdout": {"path": f"artifacts/{key}/stdout.log", "sha256": digest_file(stdout_path), "tail": bounded_tail(stdout_path)},
         "stderr": {"path": f"artifacts/{key}/stderr.log", "sha256": digest_file(stderr_path), "tail": bounded_tail(stderr_path)},
@@ -1688,6 +1901,8 @@ def worker(state_root: Path, key: str, token: str) -> int:
     }
     if build_seed is not None:
         terminal["build_seed"] = build_seed
+    if cancellation_request is not None:
+        terminal["cancel_request"] = cancellation_request
     write_receipt(state, key, terminal)
     return code
 
@@ -1709,13 +1924,18 @@ def status(state_root: Path, key: str) -> dict[str, Any]:
     return receipt
 
 
-def collect(state_root: Path, key: str, wait: bool, timeout_seconds: float) -> tuple[dict[str, Any], int]:
+def collect(
+    state_root: Path, key: str, wait: bool, timeout_seconds: float,
+    *, receipt_only: bool = False,
+) -> tuple[dict[str, Any], int]:
+    """Collect a result, optionally observing it without materializing outputs."""
     deadline = time.monotonic() + timeout_seconds
     while True:
         receipt = status(state_root, key)
         if receipt.get("state") == "terminal":
             if (
-                requires_lean_build_materialization(receipt)
+                not receipt_only
+                and requires_lean_build_materialization(receipt)
                 and receipt.get("exit_code") == 0
                 and not lean_build_share.is_materialized(ROOT, key)
             ):
@@ -1960,6 +2180,8 @@ def add_validation_request_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--ref")
     parser.add_argument("--format", dest="output_format", choices=("card", "json"))
     parser.add_argument("--check", action="store_true", help="check generated output instead of replacing it")
+    parser.add_argument("--full-check", action="store_true", help="with dependency-index --check, rerun the environment exporter")
+    parser.add_argument("--write-stale", action="store_true", help="with --check --full-check, preserve fresh stale output while retaining failure")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -1976,7 +2198,7 @@ def build_parser() -> argparse.ArgumentParser:
         default=24 * 60 * 60,
         help="maximum attached collection time; the detached owner continues after timeout",
     )
-    for name in ("status", "collect"):
+    for name in ("status", "collect", "cancel"):
         child = commands.add_parser(name, help=f"read a validation receipt{' or explicitly wait' if name == 'collect' else ''}")
         child.add_argument("--key", type=parse_key, required=True)
         if name == "status":
@@ -1988,10 +2210,18 @@ def build_parser() -> argparse.ArgumentParser:
         if name == "collect":
             child.add_argument("--wait", action="store_true")
             child.add_argument(
+                "--receipt-only",
+                action="store_true",
+                help="observe the receipt without copying Lean build outputs into this checkout",
+            )
+            child.add_argument(
                 "--timeout-seconds",
                 type=float,
                 default=DEFAULT_COLLECT_TIMEOUT_SECONDS,
             )
+        if name == "cancel":
+            child.add_argument("--reason", required=True)
+            child.add_argument("--timeout-seconds", type=float, default=5.0)
     clean = commands.add_parser("cleanup", help="remove only terminal stale cache trees under explicit budgets")
     clean.add_argument("--ttl-seconds", type=float, default=DEFAULT_TTL_SECONDS)
     clean.add_argument("--max-bytes", type=int, default=DEFAULT_MAX_BYTES)
@@ -2015,6 +2245,8 @@ def main(argv: list[str] | None = None) -> int:
                     args.state_root,
                     args.output_format,
                     args.check,
+                    dependency_full_check=args.full_check,
+                    dependency_write_stale=args.write_stale,
                 ),
                 args.state_root,
             )
@@ -2034,9 +2266,16 @@ def main(argv: list[str] | None = None) -> int:
             emit(receipt if args.full else status_card(receipt))
             return 0
         if args.action == "collect":
-            receipt, code = collect(args.state_root, args.key, args.wait, args.timeout_seconds)
+            receipt, code = collect(
+                args.state_root, args.key, args.wait, args.timeout_seconds,
+                receipt_only=args.receipt_only,
+            )
             emit(receipt)
             return code
+        if args.action == "cancel":
+            result = cancel(args.state_root, args.key, args.reason, args.timeout_seconds)
+            emit(result)
+            return 0 if result.get("status") in {"cancelled", "already_terminal"} else 75
         if args.action == "cleanup":
             emit(cleanup(args.state_root, args.ttl_seconds, args.max_bytes, args.max_inodes, args.recent_seconds))
             return 0

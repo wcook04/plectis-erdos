@@ -5,7 +5,7 @@ import Mathlib.Data.Nat.Factorial.Basic
 # The long record's bounded recurring-values countermodel
 
 Target: `xr:boundedpolignac`, including the complete infinite tails.
-This is NEW proof source, not a compilation receipt.
+
 
 The factorial occurrences in the paper are read with their stated range
 k >= 3. The distinct logarithmically growing countermodel `res:polignacfail`

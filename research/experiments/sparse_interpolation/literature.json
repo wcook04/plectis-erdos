@@ -1,0 +1,176 @@
+{
+  "purpose": "Maintained source attribution for the existing feedback experiment; metadata is not proof authority.",
+  "acquired_on": "2026-09-20",
+  "offline_replay": "No paper download, private cache or model provider is required for the checked components or development controls.",
+  "sources": [
+    {
+      "id": "2511.12253",
+      "version_read": "2511.12253v2",
+      "title": "The Search for Constrained Random Generators",
+      "authors": [
+        "Harrison Goldstein",
+        "Hila Peleg",
+        "Cassia Torczon",
+        "Daniel Sainati",
+        "Leonidas Lampropoulos",
+        "Benjamin C. Pierce"
+      ],
+      "url": "https://arxiv.org/html/2511.12253v2",
+      "api_returned_version": "2511.12253v2",
+      "sections_read": "Sections 3, 4.4 and 5",
+      "adaptation": "One admissibility relation and compiled support; native interval/CRT specialisation, no Palamedes API dependency.",
+      "code_copied": false,
+      "acquisition": {
+        "route": "existing arxiv_api.py get/fetch; PDF fallback when e-print unavailable",
+        "version_boundary": "fetch normalises version suffixes; downloaded bytes are hash-bound, pinned HTML was read separately",
+        "artifacts": [
+          {
+            "filename": "2511.12253.pdf",
+            "sha256": "a3011562e5af2b8983c335b6f1b3a6e98416ecf6f43dfac2f25120ecccbf88b6",
+            "bytes": 1085013
+          }
+        ]
+      }
+    },
+    {
+      "id": "2602.18545",
+      "version_read": "2602.18545v1",
+      "title": "Programmable Property-Based Testing",
+      "authors": [
+        "Alperen Keles",
+        "Justine Frank",
+        "Ceren Mert",
+        "Harrison Goldstein",
+        "Leonidas Lampropoulos"
+      ],
+      "url": "https://arxiv.org/html/2602.18545v1",
+      "api_returned_version": "2602.18545v2",
+      "sections_read": "Sections 2.2, 3 and 6.4",
+      "adaptation": "Separate runners and constraint-preserving shrinking by exact replay; no DBAS implementation.",
+      "code_copied": false,
+      "acquisition": {
+        "route": "existing arxiv_api.py get/fetch; PDF fallback when e-print unavailable",
+        "version_boundary": "fetch normalises version suffixes; downloaded bytes are hash-bound, pinned HTML was read separately",
+        "artifacts": [
+          {
+            "filename": "2602.18545.pdf",
+            "sha256": "b2751b5595b2fdb73bb2e11409c8086be8243ad81f68b7f042c3337e754d629c",
+            "bytes": 1295580
+          }
+        ]
+      }
+    },
+    {
+      "id": "2506.13131",
+      "version_read": "2506.13131v1",
+      "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+      "authors": [
+        "Alexander Novikov",
+        "Ng\u00e2n V\u0169",
+        "Marvin Eisenberger",
+        "Emilien Dupont",
+        "Po-Sen Huang",
+        "Adam Zsolt Wagner",
+        "Sergey Shirobokov",
+        "Borislav Kozlovskii",
+        "Francisco J. R. Ruiz",
+        "Abbas Mehrabian",
+        "M. Pawan Kumar",
+        "Abigail See",
+        "Swarat Chaudhuri",
+        "George Holland",
+        "Alex Davies",
+        "Sebastian Nowozin",
+        "Pushmeet Kohli",
+        "Matej Balog"
+      ],
+      "url": "https://arxiv.org/html/2506.13131v1",
+      "api_returned_version": "2506.13131v1",
+      "sections_read": "Methods: evolutionary algorithm, evaluation and programme database",
+      "adaptation": "Bounded choice-programme mutation, crossover and diversity; no LLM coding agent or claimed reproduction.",
+      "code_copied": false,
+      "acquisition": {
+        "route": "existing arxiv_api.py get/fetch; PDF fallback when e-print unavailable",
+        "version_boundary": "fetch normalises version suffixes; downloaded bytes are hash-bound, pinned HTML was read separately",
+        "artifacts": [
+          {
+            "filename": "2506.13131.tar.gz",
+            "sha256": "a3ea37c5b6fe967fba459f0daca8548a78e2a1eac45e5c2aac83051ef113f21d",
+            "bytes": 2635462
+          }
+        ]
+      }
+    },
+    {
+      "id": "2604.26311",
+      "version_read": "2604.26311v1",
+      "title": "DreamProver: Evolving Transferable Lemma Libraries via a Wake-Sleep Theorem-Proving Agent",
+      "authors": [
+        "Youyuan Zhang",
+        "Jialiang Sun",
+        "Hangrui Bi",
+        "Chuqin Geng",
+        "Wenjie Ma",
+        "Zhaoyu Li",
+        "Xujie Si"
+      ],
+      "url": "https://arxiv.org/html/2604.26311v1",
+      "api_returned_version": "2604.26311v1",
+      "sections_read": "Wake-sleep framework and library consolidation",
+      "adaptation": "Retain a candidate reusable policy with derivation cost and replay; no autonomous lemma-library learning claim.",
+      "code_copied": false,
+      "acquisition": {
+        "route": "existing arxiv_api.py get/fetch; PDF fallback when e-print unavailable",
+        "version_boundary": "fetch normalises version suffixes; downloaded bytes are hash-bound, pinned HTML was read separately",
+        "artifacts": [
+          {
+            "filename": "2604.26311.tar.gz",
+            "sha256": "d3a50bc745d93db0cc7e78233495bb9edf73160811cefa6c66353dc97a6a382f",
+            "bytes": 617475
+          }
+        ]
+      }
+    },
+    {
+      "id": "10.4230/LIPIcs.ITP.2025.12",
+      "title": "Automatically Generalizing Proofs and Statements",
+      "authors": [
+        "Anshula Gandhi",
+        "Anand Rao Tadipatri",
+        "Timothy Gowers"
+      ],
+      "version_read": "ITP 2025 published version",
+      "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol352-itp2025/html/LIPIcs.ITP.2025.12/LIPIcs.ITP.2025.12.html",
+      "sections_read": "Section 4; abstraction of relevant hypotheses",
+      "adaptation": "Bounded selected expression inspection and authored selector generalisation. Their automatic transformation algorithm is not implemented.",
+      "code_copied": false
+    },
+    {
+      "id": "computing-correctly-2022",
+      "title": "Computing Correctly with Inductive Relations",
+      "authors": [
+        "Zoe Paraskevopoulou",
+        "Aaron Eline",
+        "Leonidas Lampropoulos"
+      ],
+      "version_read": "PLDI 2022 author manuscript",
+      "url": "https://lemonidas.github.io/pdf/ComputingCorrectly.pdf",
+      "sections_read": "Framework and derivation algorithm, including input/output modes",
+      "adaptation": "Common relation for production/checking; finite translation validation and unknown on depleted budget. No Coq code ported.",
+      "code_copied": false
+    },
+    {
+      "id": "10.1145/3591292",
+      "title": "Merging Inductive Relations",
+      "authors": [
+        "Jacob Prinz",
+        "Leonidas Lampropoulos"
+      ],
+      "version_read": "PLDI 2023 author manuscript",
+      "url": "https://lemonidas.github.io/pdf/MergingInductiveRelations.pdf",
+      "sections_read": "Introduction and relation-merging algorithm",
+      "adaptation": "Solve joint congruences before generation and construct a shared Boolean support witness. CRT is not their recursive merging algorithm.",
+      "code_copied": false
+    }
+  ]
+}

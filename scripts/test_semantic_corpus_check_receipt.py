@@ -48,8 +48,17 @@ def main() -> int:
         "compact receipt lost the public nonrecurring census",
     )
     require(
-        census["demand_equivalent_total"] == public["demand_equivalent_total"],
-        "compact receipt lost the demand-equivalence census",
+        census["indexed_problem_ids"] == public["indexed_problem_ids"],
+        "compact receipt lost the current indexed-problem scope",
+    )
+    require(
+        census["open_antecedent_equivalent_total"]
+        == public["open_antecedent_endpoint_equivalent_count"],
+        "compact receipt lost the live open-antecedent relation census",
+    )
+    require(
+        not any(key.startswith("demand_") for key in public),
+        "compact receipt restored the retired DemandLedger aggregate census",
     )
     print("semantic corpus check receipt: exact-match and mutation checks pass")
     return 0

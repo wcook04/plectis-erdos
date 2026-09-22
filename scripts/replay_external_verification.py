@@ -207,6 +207,47 @@ def bounded_tail(text: str) -> str:
     )
 
 
+def replay_checks_pass(positive_exit: int, negative_exit: int,
+                       negative_text: str, expected_diagnostic: str) -> bool:
+    """Shared CI/local verdict: infrastructure failure is never a negative proof."""
+    return (positive_exit == 0 and negative_exit > 0
+            and negative_exit not in (124, 125, 126, 127)
+            and expected_diagnostic in negative_text)
+
+
+def select_replay_unit(contract: dict[str, Any], unit: str = 'default') -> dict[str, Any]:
+    """Reuse the pinned Comparator executor for another independently stated contract."""
+    value = contract.get('replay') if unit == 'default' else contract.get('replay_units', {}).get(unit)
+    if not isinstance(value, dict):
+        raise ReplayError(f'unknown Comparator replay unit: {unit}')
+    for field in ('positive_config', 'negative_config'):
+        path = value.get(field)
+        if (not isinstance(path, str) or not path or Path(path).is_absolute()
+                or '..' in Path(path).parts):
+            raise ReplayError(f'replay.{field} is not a safe repository-relative path')
+    theorem = value.get('theorem')
+    if not isinstance(theorem, str) or not theorem.strip():
+        raise ReplayError('replay unit lacks an exact theorem')
+    diagnostic = f"Challenge and solution theorem statement do not match: '{theorem}'"
+    if value.get('expected_negative_diagnostic') != diagnostic:
+        raise ReplayError('replay unit negative diagnostic is not its exact theorem mismatch')
+    return value
+
+
+def validate_unit_configs(root: Path, unit: dict[str, Any]) -> tuple[dict, dict]:
+    positive = load_json(root / unit['positive_config'], root=root)
+    negative = load_json(root / unit['negative_config'], root=root)
+    for label, config in (('positive', positive), ('negative', negative)):
+        if config.get('theorem_names') != [unit['theorem']]:
+            raise ReplayError(f'{label} replay config is not the contracted one-theorem unit')
+        if config.get('permitted_axioms') != unit['permitted_axioms']:
+            raise ReplayError(f'{label} replay axiom budget differs from contract')
+    if (positive.get('challenge_module') != negative.get('challenge_module') or
+            positive.get('solution_module') == negative.get('solution_module')):
+        raise ReplayError('negative replay must compare a distinct solution against the same challenge')
+    return positive, negative
+
+
 def load_contract(root: Path) -> dict[str, Any]:
     value = load_json(root / CONTRACT_RELATIVE, root=root)
     if value.get("schema") != "erdos-external-verification-release-contract/1":
@@ -472,6 +513,7 @@ def execute(
     source_tree: str,
     output: Path,
     workspace: Path | None,
+    unit: str = 'default',
 ) -> tuple[dict[str, Any], int]:
     full_sha(source_commit, "source_commit")
     full_sha(source_tree, "source_tree")
@@ -504,17 +546,11 @@ def execute(
         source_contract = load_contract(source)
         if source_contract != bootstrap_contract:
             raise ReplayError("bootstrap contract differs from the commit-pinned source contract")
-        positive_config = source_contract["replay"]["positive_config"]
-        negative_config = source_contract["replay"]["negative_config"]
-        positive = load_json(source / positive_config, root=source)
-        negative = load_json(source / negative_config, root=source)
-        expected_theorem = source_contract["replay"]["theorem"]
-        if positive.get("theorem_names") != [expected_theorem]:
-            raise ReplayError("positive replay config is not the contracted one-theorem unit")
-        if negative.get("theorem_names") != [expected_theorem]:
-            raise ReplayError("negative replay config is not the contracted one-theorem unit")
-        if positive.get("permitted_axioms") != source_contract["replay"]["permitted_axioms"]:
-            raise ReplayError("positive replay axiom budget differs from contract")
+        selected = select_replay_unit(source_contract, unit)
+        positive_config = selected['positive_config']
+        negative_config = selected['negative_config']
+        positive, negative = validate_unit_configs(source, selected)
+        expected_theorem = selected['theorem']
         checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
         tools, observed_revisions = prepare_tools(workspace, source_contract)
         mode = sandbox_mode(source)
@@ -538,13 +574,10 @@ def execute(
         )
         positive_row = result_row(positive_run)
         negative_row = result_row(negative_run)
-        expected_diagnostic = source_contract["replay"]["expected_negative_diagnostic"]
+        expected_diagnostic = selected['expected_negative_diagnostic']
         negative_text = negative_run.stdout + negative_run.stderr
-        passed = (
-            positive_run.returncode == 0
-            and negative_run.returncode != 0
-            and expected_diagnostic in negative_text
-        )
+        passed = replay_checks_pass(positive_run.returncode,
+            negative_run.returncode, negative_text, expected_diagnostic)
         receipt.update(
             {
                 "result": "pass" if passed else "fail",
@@ -571,6 +604,7 @@ def execute(
                     },
                 },
                 "statement_contract": {
+                    "unit": unit,
                     "theorem": expected_theorem,
                     "permitted_axioms": positive["permitted_axioms"],
                     "positive_config": positive_config,
@@ -604,10 +638,12 @@ def execute(
     return receipt, exit_code
 
 
-def replay_plan(source_commit: str, source_tree: str) -> dict[str, Any]:
+def replay_plan(source_commit: str, source_tree: str, unit: str = 'default') -> dict[str, Any]:
     full_sha(source_commit, "source_commit")
     full_sha(source_tree, "source_tree")
     value = load_contract(ROOT)
+    selected = select_replay_unit(value, unit)
+    validate_unit_configs(ROOT, selected)
     return {
         "schema": "erdos-external-verification-independent-replay-plan/1",
         "execution_surface": "reviewer_local_linux_outside_github_actions",
@@ -617,7 +653,8 @@ def replay_plan(source_commit: str, source_tree: str) -> dict[str, Any]:
             "tree": source_tree,
         },
         "toolchain": value["toolchain"],
-        "statement_contract": value["replay"],
+        "statement_contract": selected,
+        "unit": unit,
         "security": {
             "requires_linux_systemd_transient_unit": True,
             "network_disabled_inside_comparator": True,
@@ -634,6 +671,7 @@ def parser() -> argparse.ArgumentParser:
         sub = subparsers.add_parser(name)
         sub.add_argument("--source-commit", required=True)
         sub.add_argument("--source-tree", required=True)
+        sub.add_argument('--unit', default='default', help='named replay unit in the existing release contract')
         if name == "run":
             sub.add_argument("--output", type=Path, required=True)
             sub.add_argument("--workspace", type=Path)
@@ -644,13 +682,14 @@ def main() -> int:
     args = parser().parse_args()
     try:
         if args.command == "plan":
-            print(json.dumps(replay_plan(args.source_commit, args.source_tree), indent=2))
+            print(json.dumps(replay_plan(args.source_commit, args.source_tree, args.unit), indent=2))
             return 0
         receipt, exit_code = execute(
             source_commit=args.source_commit,
             source_tree=args.source_tree,
             output=args.output,
             workspace=args.workspace.resolve() if args.workspace else None,
+            unit=args.unit,
         )
         print(args.output)
         if exit_code != 0:

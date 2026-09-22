@@ -134,6 +134,6 @@ should explicitly include the new cubic no-go and forbid `(PEC)` as a producer.
 
 ```sh
 python3 research_corpus/Erdos1041/scripts/check_erdos1041_first_critical_pair_energy_no_go.py
-./repo-python source-provenance://private-authoring-project/scripts/check_problem_corpus_index.py --json
+python3 scripts/check_erdos1041_research_corpus.py
 ./repo-python -m system.lib.formal_math_frontier_integrity --repo-root . --check-currency
 ```

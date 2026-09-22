@@ -10,6 +10,11 @@ A missing build output is not a success just because an older destination
 PDF still exists. Verified unchanged-artifact reuse is a separate mode: the
 complete relevant source inputs and the published PDF must still match the
 approved build record.
+
+Every copied build is recorded in ``paper/build-manifest.json`` with the
+digests of the TeX inputs it was compiled from, and a build output older than
+one of those inputs is refused. ``paper_build_manifest.py`` fails the release
+checks when a committed PDF is not the recorded build of its committed inputs.
 """
 
 from __future__ import annotations
@@ -17,22 +22,27 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import shutil
 import sys
 from pathlib import Path
 from typing import Any
 
+from paper_build_manifest import (
+    MANIFEST_PATH,
+    SHARED_PAPER_RESOURCES,
+    TEX_INPUT_RE,
+    WorktreeReader,
+    load_manifest,
+    newer_inputs,
+    record_builds,
+    recorded_build_matches,
+    write_manifest,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 CONTRACT = ROOT / "docs" / "publication_contract.json"
 PAPER = ROOT / "paper"
 BUILD_OUTPUT_DIR = PAPER
-TEX_INPUT_RE = re.compile(r"\\(?:input|include)\{([^}]+)\}")
-SHARED_PAPER_RESOURCES = (
-    "paper/paper-house-style.sty",
-    "paper/problem-note-preamble.tex",
-    "paper/module-aliases.tex",
-)
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -121,6 +131,12 @@ def verified_reuse(root: Path, artifact: dict[str, Any], dest: Path) -> tuple[bo
         return False, "approved source record is missing"
     if sha256_bytes(source.read_bytes()) != expected_source:
         return False, "manuscript source does not match the approved source digest"
+    try:
+        recorded_builds = load_manifest(WorktreeReader(root))
+    except ValueError:
+        recorded_builds = None
+    if recorded_build_matches(WorktreeReader(root), artifact, recorded_builds):
+        return True, f"verified unchanged-artifact reuse of the build recorded in {MANIFEST_PATH}"
     current_closure = source_input_closure_digest(root, artifact)
     recorded_closure = artifact.get("source_input_closure_digest")
     extras = [
@@ -142,19 +158,34 @@ def verified_reuse(root: Path, artifact: dict[str, Any], dest: Path) -> tuple[bo
 
 def synchronize_publication_pdfs(root: Path, contract: dict[str, Any]) -> tuple[int, str]:
     reused: list[str] = []
-    copy_plan: list[tuple[str, Path, Path]] = []
+    copy_plan: list[tuple[dict[str, Any], Path, Path]] = []
     for artifact in contract["artifacts"]:
         artifact_id = artifact.get("id", "<unknown>")
         storage = artifact["storage_path"]
         built = build_output_pdf(root, artifact)
         dest = root / storage
+        stale: list[str] = []
         if built.is_file():
-            copy_plan.append((artifact_id, built, dest))
-            continue
+            # An output older than one of its inputs was compiled from an
+            # earlier revision of that input (a rebase or a later edit rewrote
+            # it), so recording it would bind the new TeX to an old PDF.
+            stale = newer_inputs(root, artifact, built)
+            if not stale:
+                copy_plan.append((artifact, built, dest))
+                continue
         ok, reason = verified_reuse(root, artifact, dest)
         if ok:
             reused.append(artifact_id)
             continue
+        if stale:
+            return (
+                1,
+                (
+                    f"build output for {artifact_id} is older than its input(s) "
+                    f"{', '.join(stale)}: {built.as_posix()} ({reason}); rebuild "
+                    f"it with `make -C paper {built.name}` before synchronizing"
+                ),
+            )
         return (
             1,
             (
@@ -163,11 +194,21 @@ def synchronize_publication_pdfs(root: Path, contract: dict[str, Any]) -> tuple[
                 "the existing destination PDF cannot substitute"
             ),
         )
+    fresh_builds = [
+        (artifact, built.read_bytes())
+        for artifact, built, _ in copy_plan
+        if artifact.get("id") and isinstance(artifact.get("source_path"), str)
+    ]
+    updated_manifest = record_builds(root, fresh_builds) if fresh_builds else None
     for _, built, dest in copy_plan:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(built, dest)
+    if updated_manifest is not None:
+        write_manifest(root, updated_manifest)
     if reused and not copy_plan:
         return 0, "publication PDFs reused from approved unchanged-artifact record"
+    if updated_manifest is not None:
+        return 0, f"publication PDFs synchronized to storage_path and recorded in {MANIFEST_PATH}"
     return 0, "publication PDFs synchronized to storage_path"
 
 

@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from paper_build_manifest import manifest_errors as paper_build_manifest_errors
 from publication_contract import (
     RepositoryReader,
     apply_artifact_digest_restamps,
@@ -91,7 +92,12 @@ def main() -> int:
         parser.error("--restamp rewrites the worktree registry, so it takes no --git-ref")
     if args.restamp:
         return restamp_command(apply_changes=args.apply)
-    errors = validate_publication_contract(RepositoryReader(ROOT, args.git_ref))
+    reader = RepositoryReader(ROOT, args.git_ref)
+    errors = validate_publication_contract(reader)
+    # The two contract digests are independent, so a PDF built before a rebase
+    # passes them once both are restamped. The build manifest binds each PDF
+    # to the TeX inputs it was compiled from.
+    errors.extend(paper_build_manifest_errors(reader))
     if errors:
         print(f"check_publication_contract: {len(errors)} failure(s)")
         for error in errors:

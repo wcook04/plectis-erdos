@@ -1,0 +1,68 @@
+{
+  "schema_version": "erdos249257-proof-state-request/1",
+  "goal_id": "dyadic_shift_uniform_escape_after_representation_change",
+  "imports": [
+    "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+    "ErdosProblems.Erdos269.BoundedRadixTailEscape"
+  ],
+  "opens": [
+    "ErdosProblems.Erdos251",
+    "ErdosProblems.Erdos269"
+  ],
+  "context": [
+    {
+      "name": "g",
+      "binder": "(g : ℕ → ℤ)",
+      "role": "term"
+    },
+    {
+      "name": "T",
+      "binder": "(T : ℕ → ℝ)",
+      "role": "term"
+    },
+    {
+      "name": "hrec",
+      "binder": "(hrec : RealDyadicTailRecurrence g T)",
+      "role": "assumption"
+    },
+    {
+      "name": "hirr",
+      "binder": "(hirr : Irrational (T 0))",
+      "role": "assumption"
+    },
+    {
+      "name": "h",
+      "binder": "(h : ℕ)",
+      "role": "term"
+    },
+    {
+      "name": "hh",
+      "binder": "(hh : 0 < h)",
+      "role": "assumption"
+    }
+  ],
+  "target": "∀ N₀ : ℕ, ∃ N : ℕ, N₀ ≤ N ∧ ∀ z : ℤ, (1 : ℝ) / 31 ≤ |realTailShift T h N - (z : ℝ)|",
+  "candidates": [
+    {
+      "candidate_id": "raw_orbit_does_not_match_shift_goal",
+      "declaration": "Or.resolve_left",
+      "arguments": [
+        "(ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far (fun _ => 2) (fun N => g (N + 1)) T (fun _ => by norm_num) (fun _ => by norm_num) (by intro N; simpa using hrec N))"
+      ],
+      "discharge_tactics": [],
+      "proposal_receipt": "Negative control: #269 bounded-radix escape applied to T itself does not establish the target about T(N+h)-T(N). No expected verdict is supplied to Lean."
+    },
+    {
+      "candidate_id": "shift_orbit_with_native_nonintegrality_discharge",
+      "declaration": "Or.resolve_left",
+      "arguments": [
+        "(ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => by norm_num) (fun _ => by norm_num) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : ℤ) : ℝ); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring))"
+      ],
+      "discharge_tactics": [
+        "rintro ⟨N, z, hz⟩",
+        "exact ((irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1 hirr h hh N) ⟨z, hz⟩"
+      ],
+      "proposal_receipt": "Compose PrimeGapDyadicTail.lean:1551 with BoundedRadixTailEscape.lean:89 after deriving the shifted recurrence. The new endpoint module is not imported; the integral alternative is discharged from the existing #251 theorem."
+    }
+  ]
+}

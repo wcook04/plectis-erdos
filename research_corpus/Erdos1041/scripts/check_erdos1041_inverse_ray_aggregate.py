@@ -60,11 +60,11 @@ EXACT_COUNTEREXAMPLE_ANALYSIS_REF = (
     "NewtonBranchHubCounterexampleComputationalLab.md"
 )
 EXACT_COUNTEREXAMPLE_RECEIPT_REF = (
-    "source-provenance://private-authoring-project/receipts/"
+    "research_corpus/Erdos1041/"
     "erdos1041_newton_branch_hub_counterexample_receipt.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "source-provenance://private-authoring-project/receipts/"
+    "research_corpus/Erdos1041/"
     "erdos1041_inverse_ray_aggregate_receipt.json"
 )
 

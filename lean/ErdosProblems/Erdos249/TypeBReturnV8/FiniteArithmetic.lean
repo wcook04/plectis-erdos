@@ -1,7 +1,7 @@
 import Erdos249257.FirstHarmonicPivot
 import Mathlib.Tactic
 
-/-! UNRUN candidate. All arithmetic decisions below are intended to be kernel
+/-! All arithmetic decisions below are intended to be kernel
 reduction or proof-producing tactics; no native_decide and no custom axioms. -/
 namespace ErdosProblems.Erdos249.TypeBReturnV8
 open Erdos249257.TotientTailPeriodKiller

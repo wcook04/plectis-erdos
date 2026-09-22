@@ -27,6 +27,31 @@ y : Nat
     assert [goal["target"] for goal in goals] == ["⊢ x = x", "⊢ y ≤ y"]
 
 
+def check_selected_inspection_contract() -> None:
+    for module, name, nodes, depth in [
+        ('Mathlib\nrun_cmd panic! "x"', 'Nat.add_comm', 10, 4),
+        ('Mathlib', 'Nat.add_comm\n', 10, 4),
+        ('Mathlib', 'Nat.add_comm', 401, 4),
+        ('Mathlib', 'Nat.add_comm', 10, 41),
+    ]:
+        try:
+            compiler.inspection_source(module, name, nodes, depth)
+        except compiler.RequestError:
+            pass
+        else:
+            raise AssertionError('inspection accepted injected/unbounded input')
+    output = json.dumps({'severity': 'information', 'data':
+        'PLECTIS_INSPECTION ' + json.dumps({'declaration': 'Nat.add_comm', 'type': {}, 'value': {}})})
+    with tempfile.TemporaryDirectory() as raw, \
+            mock.patch.object(compiler, 'environment_fingerprint', return_value={}), \
+            mock.patch.object(singleflight, 'resource_lock_path', return_value=Path(raw)/'host.lock'), \
+            mock.patch.object(compiler.subprocess, 'run', return_value=
+                              compiler.subprocess.CompletedProcess([], 0, output)):
+        result = compiler.inspect_declaration('Mathlib', 'Nat.add_comm')
+    assert result['expression']['declaration'] == 'Nat.add_comm'
+    assert result['status'] == 'inspected'
+
+
 def check_minimal_cuts() -> None:
     residuals = [{"a", "b"}, {"b", "c"}]
     cuts = compiler.minimal_hitting_sets(residuals)
@@ -206,7 +231,7 @@ def check_live_pilot() -> dict:
         "expected_unsolved_goal_error_ignored"
     ]
     assert transition["declaration_receipt"]["source_ref"] == (
-        "Erdos249257/TotientTailPeriodKiller.lean:327"
+        "lean/Erdos249257/TotientTailPeriodKiller.lean:327"
     )
     assert blocked["minimal_blocker_cuts"][0]["targets"] == [
         "⊢ r.den ∣ 2 ^ N * (2 ^ h - 1)"
@@ -253,6 +278,7 @@ def check_typed_rejection() -> None:
 
 def main() -> int:
     check_goal_parser()
+    check_selected_inspection_contract()
     check_minimal_cuts()
     check_subprocess_environment()
     check_toolchain_absence_is_a_clean_skip_signal()

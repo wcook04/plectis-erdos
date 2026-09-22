@@ -6,7 +6,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.Ring
 /-!
 The actual convergent full channel residual, not a newly defined surrogate.
 Finite corrections are summed only after proving their finite support.
-New Lean compilation and axiom checks: UNRUN.
+
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 open scoped BigOperators

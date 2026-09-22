@@ -9,7 +9,7 @@ Absolute series transport through normalized circle integration. This is the
 infinite interchange step needed for Taylor energy: it applies to the double
 index `(n,k)` once a geometric coefficient majorant has been established.
 No energy inequality or final integral identity is an assumed hypothesis.
-Candidate source, not yet compiled.
+
 -/
 noncomputable section
 namespace ErdosProblems.Erdos1041

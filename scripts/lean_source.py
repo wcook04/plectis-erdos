@@ -37,6 +37,10 @@ class LibraryLayoutError(ValueError):
     """The checked revision's corpus layout is missing or ambiguous."""
 
 
+class LeanDeclarationError(ValueError):
+    """A declaration name does not resolve to exactly one line of a Lean source."""
+
+
 def _lakefile_corpus_src_dirs(root: Path) -> dict[str, str] | None:
     """Read corpus ``srcDir`` values from this revision's lakefile, if present."""
     lakefile = root / "lakefile.toml"
@@ -397,6 +401,95 @@ def library_source_paths(
 
 
 NON_NEWLINE_RE = re.compile(r"[^\n]")
+
+DECLARATION_HEAD_RE = re.compile(
+    r"^[ \t]*(?:@\[[^\]\n]*\][ \t]*)*"
+    r"(?:(?:private|protected|noncomputable|nonrec|scoped|local|unsafe|partial)[ \t]+)*"
+    r"(?:theorem|lemma|def|abbrev|instance|structure|class|inductive|opaque|axiom)"
+    r"(?:[ \t]+([A-Za-z_À-ɏͰ-Ͽ][\w'.À-ɏͰ-Ͽ]*))?"
+    r"(?![\w'.])"
+)
+NAMESPACE_RE = re.compile(r"^[ \t]*namespace[ \t]+([A-Za-z_][\w'.]*)")
+SECTION_RE = re.compile(r"^[ \t]*(?:noncomputable[ \t]+)?section(?:[ \t]|$)")
+END_RE = re.compile(r"^[ \t]*end(?:[ \t]+[A-Za-z_][\w'.]*)?[ \t]*$")
+NAME_ONLY_RE = re.compile(r"^[ \t]*([A-Za-z_À-ɏͰ-Ͽ][\w'.À-ɏͰ-Ͽ]*)")
+
+
+def qualified_declaration_lines(text: str) -> dict[str, list[int]]:
+    """Map every fully qualified declaration name to the lines that declare it.
+
+    The identity of a published link target is the fully qualified name, so the
+    ``namespace``/``section``/``end`` nesting is reconstructed rather than
+    trusting a basename: two problems in this corpus declare short names that
+    collide across namespaces, and a basename match silently links the wrong
+    theorem.  Comments and strings are blanked first, line for line, so a
+    declaration shown inside a docstring is not mistaken for a real one.  When
+    the keyword and the identifier sit on consecutive lines, the keyword line is
+    reported, which is where a reader lands.
+    """
+
+    lines = lean_code_without_comments_and_strings(text).splitlines()
+    stack: list[str | None] = []
+    found: dict[str, list[int]] = {}
+    for index, raw in enumerate(lines):
+        namespace = NAMESPACE_RE.match(raw)
+        if namespace is not None:
+            stack.append(namespace.group(1))
+            continue
+        if SECTION_RE.match(raw):
+            stack.append(None)
+            continue
+        if END_RE.match(raw):
+            if stack:
+                stack.pop()
+            continue
+        head = DECLARATION_HEAD_RE.match(raw)
+        if head is None:
+            continue
+        declared = head.group(1)
+        if declared is None:
+            follow = next(
+                (line for line in lines[index + 1 : index + 4] if line.strip()), ""
+            )
+            name = NAME_ONLY_RE.match(follow)
+            if name is None:
+                continue
+            declared = name.group(1)
+        if declared.startswith("_root_."):
+            qualified = declared.removeprefix("_root_.")
+        else:
+            prefix = ".".join(part for part in stack if part is not None)
+            qualified = f"{prefix}.{declared}" if prefix else declared
+        found.setdefault(qualified, []).append(index + 1)
+    return found
+
+
+def declaration_line(text: str, declaration: str) -> int:
+    """Return the single line declaring ``declaration``; raise when it is not unique.
+
+    A fully qualified name is resolved as given.  A name that the source declares
+    only under a longer namespace prefix (an alias the papers already use) is
+    accepted when exactly one qualified name ends with it.
+    """
+
+    index = qualified_declaration_lines(text)
+    hits = index.get(declaration)
+    if hits is None:
+        suffix = f".{declaration}"
+        candidates = {
+            name: lines
+            for name, lines in index.items()
+            if name.endswith(suffix) or declaration.endswith(f".{name}")
+        }
+        if len(candidates) != 1:
+            rendered = ", ".join(sorted(candidates)) or "no match"
+            raise LeanDeclarationError(f"{declaration}: {rendered}")
+        hits = next(iter(candidates.values()))
+    if len(hits) != 1:
+        raise LeanDeclarationError(
+            f"{declaration}: declared on lines {', '.join(str(line) for line in hits)}"
+        )
+    return hits[0]
 
 
 def _blank_non_newlines(text: str) -> str:

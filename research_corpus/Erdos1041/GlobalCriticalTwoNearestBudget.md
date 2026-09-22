@@ -119,7 +119,7 @@ consumer is the adjacent declaration
 The focused replay is
 
 ```sh
-lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
+./lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
 ```
 
 This formal source checks the metric-budget declarations only; it does not

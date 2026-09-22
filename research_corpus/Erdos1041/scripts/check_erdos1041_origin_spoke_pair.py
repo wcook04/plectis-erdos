@@ -42,7 +42,7 @@ PACKET_REF = (
     "research_packet.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "source-provenance://private-authoring-project/receipts/"
+    "research_corpus/Erdos1041/"
     "erdos1041_origin_spoke_pair_counterexample_receipt.json"
 )
 

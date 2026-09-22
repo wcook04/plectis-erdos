@@ -540,4 +540,181 @@ theorem sylvesterNext_eventually_of_summable_negativeRelativeMass
   · refine ⟨0, fun n _hn ↦ ?_⟩
     exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))
 
+/-! ## Scalar finite mass, without normalised vanishing
+
+Type B r2 (file 05, Proposition J) observed that the product bound already
+caps `C_n`, so a strict integer rise costs a definite relative mass `≥ 1/K`
+and only finitely many rises can occur.  After the last rise the tail is
+nonincreasing, hence eventually constant by
+`antitone_nat_eventually_constant`.  Normalised vanishing is not used. -/
+
+theorem bounded_of_summable_negativeRelativeMass
+    (C : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n)
+    (hsum : Summable (negativeRelativeMass C E)) :
+    ∃ M : ℕ, ∀ n, C n ≤ M := by
+  have hδ : ∀ n, 0 ≤ negativeRelativeMass C E n := fun n =>
+    div_nonneg (by positivity) (by positivity)
+  have hgrowth :=
+    tail_growth_le_one_add_negativeRelativeMass C E hCpos hstep
+  have hCprod : ∀ N,
+      (C N : ℝ) ≤
+        C 0 * (∏ i ∈ Finset.range N, (1 + negativeRelativeMass C E i)) := by
+    intro N
+    induction N with
+    | zero => simp
+    | succ N ih =>
+        calc
+          (C (N + 1) : ℝ) ≤ C N * (1 + negativeRelativeMass C E N) :=
+            hgrowth N
+          _ ≤ (C 0 *
+                (∏ i ∈ Finset.range N, (1 + negativeRelativeMass C E i))) *
+              (1 + negativeRelativeMass C E N) :=
+                mul_le_mul_of_nonneg_right ih (by linarith [hδ N])
+          _ = C 0 *
+              (∏ i ∈ Finset.range (N + 1), (1 + negativeRelativeMass C E i)) := by
+                rw [Finset.prod_range_succ]
+                ring
+  have hmulti : Multipliable (fun n ↦ 1 + negativeRelativeMass C E n) :=
+    Real.multipliable_one_add_of_summable hsum
+  obtain ⟨R, hRpos, s, hs⟩ :=
+    hmulti.eventually_bounded_finset_prod
+  obtain ⟨N₀, hsRange⟩ := Finset.exists_nat_subset_range s
+  obtain ⟨Mtail, hMtail⟩ :=
+    exists_nat_gt ((C 0 : ℝ) * R)
+  let Mprefix := (Finset.range (N₀ + 1)).sup C
+  refine ⟨max Mprefix Mtail, fun n => ?_⟩
+  by_cases hn : n ≤ N₀
+  · have hmem : n ∈ Finset.range (N₀ + 1) :=
+      Finset.mem_range.mpr (Nat.lt_succ_of_le hn)
+    exact (Finset.le_sup hmem).trans (le_max_left _ _)
+  · have hn₀ : N₀ ≤ n := Nat.le_of_not_ge hn
+    have hprod :
+        (∏ i ∈ Finset.range n, (1 + negativeRelativeMass C E i)) ≤ R := by
+      apply hs
+      exact hsRange.trans (Finset.range_mono hn₀)
+    have hCnReal : (C n : ℝ) < Mtail := by
+      calc
+        (C n : ℝ) ≤
+            C 0 * (∏ i ∈ Finset.range n, (1 + negativeRelativeMass C E i)) :=
+              hCprod n
+        _ ≤ C 0 * R :=
+              mul_le_mul_of_nonneg_left hprod (by positivity)
+        _ < Mtail := hMtail
+    have hCn : C n ≤ Mtail := by
+      exact_mod_cast (le_of_lt hCnReal)
+    exact hCn.trans (le_max_right _ _)
+
+/-- Finite negative mass forces an eventually constant positive integer tail,
+with no normalised-vanishing or multiplier hypothesis. -/
+theorem eventually_zero_of_summable_negativeRelativeMass_scalar
+    (C : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n)
+    (hsum : Summable (negativeRelativeMass C E)) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 := by
+  obtain ⟨M, hM⟩ :=
+    bounded_of_summable_negativeRelativeMass C E hCpos hstep hsum
+  have hMpos : 0 < M :=
+    (hCpos 0).trans_le (hM 0)
+  have hδ : ∀ n, 0 ≤ negativeRelativeMass C E n := fun n =>
+    div_nonneg (by positivity) (by positivity)
+  have hto : Filter.Tendsto (negativeRelativeMass C E) Filter.atTop (nhds 0) :=
+    hsum.tendsto_atTop_zero
+  have hpos : 0 < (1 : ℝ) / M := by positivity
+  obtain ⟨N₀, hN₀⟩ :
+      ∃ N₀, ∀ n, N₀ ≤ n →
+        negativeRelativeMass C E n < (1 : ℝ) / M := by
+    have hball := Metric.tendsto_atTop.mp hto ((1 : ℝ) / M) hpos
+    obtain ⟨N₀, hN₀⟩ := hball
+    refine ⟨N₀, fun n hn => ?_⟩
+    have habs : |negativeRelativeMass C E n| < (1 : ℝ) / M := by
+      simpa [Real.dist_eq] using hN₀ n hn
+    rwa [abs_of_nonneg (hδ n)] at habs
+  have hanti : ∀ n, N₀ ≤ n → C (n + 1) ≤ C n := by
+    intro n hn
+    have hδlt := hN₀ n hn
+    by_contra hnot
+    have hrise : C n < C (n + 1) := Nat.lt_of_not_ge hnot
+    have hneg : E n < 0 := by
+      have hE : E n = (C n : ℤ) - (C (n + 1) : ℤ) := by
+        have := hstep n
+        omega
+      have : (C n : ℤ) < C (n + 1) := Int.ofNat_lt.mpr hrise
+      omega
+    have hmass : (1 : ℝ) / M ≤ negativeRelativeMass C E n := by
+      have hmin : min (E n) 0 = E n := min_eq_left hneg.le
+      have habspos : 1 ≤ Int.natAbs (E n) := by
+        have : (E n).natAbs ≠ 0 := Int.natAbs_ne_zero.mpr (ne_of_lt hneg)
+        exact Nat.succ_le_of_lt (Nat.pos_of_ne_zero this)
+      have hCpos' : (0 : ℝ) < C n := by exact_mod_cast (hCpos n)
+      have hge :
+          (Int.natAbs (min (E n) 0) : ℝ) / C n ≥ (1 : ℝ) / C n := by
+        rw [hmin]
+        exact div_le_div_of_nonneg_right (by exact_mod_cast habspos) hCpos'.le
+      have hCle : (C n : ℝ) ≤ M := by exact_mod_cast (hM n)
+      have hrecip : (1 : ℝ) / M ≤ (1 : ℝ) / C n :=
+        one_div_le_one_div_of_le hCpos' hCle
+      exact le_trans hrecip hge
+    exact (not_le_of_gt hδlt) hmass
+  have hshift : ∀ k, C (N₀ + k + 1) ≤ C (N₀ + k) := fun k =>
+    hanti _ (Nat.le_add_right _ _)
+  obtain ⟨K, hK⟩ :=
+    antitone_nat_eventually_constant (fun k => C (N₀ + k)) hshift
+  refine ⟨N₀ + K, fun n hn => ?_⟩
+  have hNle : N₀ ≤ n := (Nat.le_add_right N₀ K).trans hn
+  have hnK : K ≤ n - N₀ := Nat.le_sub_of_add_le (by
+    simpa [Nat.add_comm N₀ K] using hn)
+  have hconst : C n = C (N₀ + K) := by
+    have hnk : n = N₀ + (n - N₀) := (Nat.add_sub_of_le hNle).symm
+    rw [hnk]
+    exact hK (n - N₀) hnK
+  have hconst' : C (n + 1) = C (N₀ + K) := by
+    have hle : N₀ + K ≤ n + 1 := hn.trans (Nat.le_succ n)
+    have hNle' : N₀ ≤ n + 1 := hNle.trans (Nat.le_succ n)
+    have hn1 : K ≤ (n + 1) - N₀ := Nat.le_sub_of_add_le (by
+      simpa [Nat.add_comm N₀ K] using hle)
+    have hnk : n + 1 = N₀ + ((n + 1) - N₀) := (Nat.add_sub_of_le hNle').symm
+    rw [hnk]
+    exact hK ((n + 1) - N₀) hn1
+  have hCeq : C (n + 1) = C n := hconst'.trans hconst.symm
+  have := hstep n
+  have : (C (n + 1) : ℤ) = C n := by exact_mod_cast hCeq
+  omega
+
+/-- Exact-orbit consumer: finite negative mass forces the Sylvester recurrence
+with no normalised-vanishing hypothesis. -/
+theorem sylvesterNext_eventually_of_summable_negativeRelativeMass_scalar
+    (a D : ℕ → ℤ) (C : ℕ → ℕ)
+    (hD : ∀ n, D (n + 1) = nextDenState (a n) (D n))
+    (hC :
+      ∀ n, (C (n + 1) : ℤ) =
+        nextTailState (a n) (D n) (C n))
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) =
+        (C n : ℤ) - centeredState (a n) (D n) (C n))
+    (hsum :
+      Summable
+        (negativeRelativeMass C
+          (fun n ↦ centeredState (a n) (D n) (C n)))) :
+    ∃ N, ∀ n, N ≤ n →
+      a (n + 1) = sylvesterNext (a n) := by
+  have hzero :
+      ∃ N, ∀ n, N ≤ n →
+        centeredState (a n) (D n) (C n) = 0 :=
+    eventually_zero_of_summable_negativeRelativeMass_scalar
+      C (fun n ↦ centeredState (a n) (D n) (C n))
+      hCpos hstep hsum
+  apply sylvesterNext_eventually_of_centered_zero
+    a D (fun n ↦ (C n : ℤ)) hD
+  · intro n
+    exact hC n
+  · exact hzero
+  · refine ⟨0, fun n _hn ↦ ?_⟩
+    exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))
+
 end ErdosProblems.Erdos243

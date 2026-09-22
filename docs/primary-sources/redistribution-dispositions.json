@@ -17,17 +17,20 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 28,
-    "artifact_count": 28,
+    "working_tree_only_count": 31,
+    "artifact_count": 31,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 28,
+    "link_and_digest_only_count": 31,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
   "source_record_coverage": {
     "citation_only_source_records": [
       "docs/primary-sources/reciprocal-tail/chowla-1947-source-closure.md",
+      "docs/primary-sources/reciprocal-tail/van-doorn-li-tang-2026-source-closure.md",
+      "docs/primary-sources/reciprocal-tail/koizumi-yokoi-2026-source-closure.md",
+      "docs/primary-sources/reciprocal-tail/van-doorn-kovac-2026-source-closure.md",
       "docs/primary-sources/totient-kernel/nesterenko-1996-source-closure.md"
     ]
   },
@@ -153,6 +156,27 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius.pdf",
+      "sha256": "03fbaca88796cc63f376d2e6e4680ec94632143794df871066df501b5675e7ef",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/1511.07535",
+        "https://arxiv.org/pdf/1511.07535v1",
+        "https://doi.org/10.48550/arXiv.1511.07535",
+        "https://doi.org/10.1142/S0129054117500095"
+      ],
+      "source_record": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     },
@@ -500,6 +524,46 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group.pdf",
+      "sha256": "0948a67eda0310b1fc354f417007317898b3c7582f992260763e85a4e138700e",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://doi.org/10.4064/aa111-2-4",
+        "https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm.pdf",
+      "sha256": "53947bb2fc82e853c12ccfdb293a526229f6fe2ac99d9c991d2170ae6e1266e3",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/1601.02688",
+        "https://arxiv.org/pdf/1601.02688v2",
+        "https://link.springer.com/article/10.1007/s40993-016-0042-x",
+        "https://doi.org/10.1007/s40993-016-0042-x"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     },

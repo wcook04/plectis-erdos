@@ -18,12 +18,15 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
+import subprocess
 import sys
 from pathlib import Path
-from semantic_corpus_storage import load_corpus
+from semantic_corpus_storage import decode_corpus, load_corpus
 from typing import Iterable
 
 from lean_source import library_identity_path
+from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -339,6 +342,24 @@ def substantive_material(material: dict) -> dict:
     }
 
 
+def revision_review_material(material: dict) -> dict:
+    """Ignore line movement only for the separate statement-checked re-review.
+
+    The ordinary fingerprint rebind still requires exact coordinates. Across
+    revisions, declaration kind and signature are compared below before any
+    receipt can be re-issued; module/name, resolution and meaning stay fixed.
+    """
+    result = substantive_material(material)
+    if "evidence" in result:
+        result["evidence"] = [
+            {**row, "id": re.sub(r"^(.*\.lean):[1-9][0-9]*:(.+)$", r"\1:\2", row["id"])}
+            if row.get("resolved") is True and isinstance(row.get("id"), str)
+            else row
+            for row in result["evidence"]
+        ]
+    return result
+
+
 def material_for(
     subject_kind: str,
     subject: dict,
@@ -616,6 +637,19 @@ def rereview_moved_revision(
         }
     if old_signatures is None:
         old_signatures = _atlas_signatures_at(old_revision)
+    # The atlas spells each module by its storage path, which gained a
+    # ``lean/`` prefix when both libraries moved under ``lean/``, while corpus
+    # evidence cites the identity path. Key both sides by identity so that a
+    # layout move alone never reads as a changed statement; kind and signature
+    # are still compared byte for byte.
+    old_signatures = {
+        (library_identity_path(module), name): value
+        for (module, name), value in old_signatures.items()
+    }
+    new_signatures = {
+        (library_identity_path(module), name): value
+        for (module, name), value in new_signatures.items()
+    }
 
     reissues: list[dict] = []
     for review in reviews:
@@ -641,7 +675,7 @@ def rereview_moved_revision(
             kind, new_subject, evidence_fingerprint=new_fingerprint, reviewed_revision=old_revision
         )
         changed = _field_changes(
-            substantive_material(old_material), substantive_material(new_material_old_rev)
+            revision_review_material(old_material), revision_review_material(new_material_old_rev)
         )
         if changed:
             refusals.append(
@@ -758,13 +792,40 @@ def _rereview_command(*, apply_changes: bool) -> int:
     return 0
 
 
-def _rebind_command(*, apply_changes: bool) -> int:
+def rebind_baseline(ref: str | None) -> tuple[dict, str | None]:
+    """Read the old corpus without replacing a conflicted generated worktree file.
+
+    The existing digest and material comparisons remain the acceptance gate.
+    A Git ref selects evidence; it never supplies a new review.
+    """
+    if ref is None:
+        return load(CORPUS), None
+    options = dict(cwd=ROOT, capture_output=True, check=True,
+                   env=command_environment(), timeout=GIT_COMMAND_TIMEOUT_SECONDS)
+    revision = subprocess.run(
+        ["git", "rev-parse", "--verify", "--end-of-options", ref + "^{commit}"],
+        **options,
+    ).stdout.decode("ascii").strip()
+    raw = subprocess.run(
+        ["git", "show", f"{revision}:docs/semantic_corpus.json.gz"], **options,
+    ).stdout
+    corpus = json.loads(decode_corpus(raw))
+    if not isinstance(corpus, dict):
+        raise ValueError("semantic rebind baseline must contain a JSON object")
+    return corpus, revision
+
+
+def _rebind_command(*, apply_changes: bool, baseline_ref: str | None = None) -> int:
     # Imported here, not at module scope: build_semantic_corpus imports this
     # module, so a top-level import would be circular.
     import build_semantic_corpus
 
     registry = load(REGISTRY)
-    committed_corpus = load(CORPUS)
+    try:
+        committed_corpus, baseline_revision = rebind_baseline(baseline_ref)
+    except (ValueError, OSError, subprocess.SubprocessError) as error:
+        print(f"semantic review rebind: FAIL: cannot read baseline: {error}")
+        return 1
     claims = load(CLAIMS)
     revision = formal_source_revision(claims)
 
@@ -813,6 +874,8 @@ def _rebind_command(*, apply_changes: bool) -> int:
         "because the declaration-atlas source fingerprint moved"
     )
     print(f"  from {committed_corpus.get('evidence_fingerprint')}")
+    if baseline_revision:
+        print(f"  baseline commit {baseline_revision}")
     print(f"    to {candidate_corpus.get('evidence_fingerprint')}")
     print(
         "  reviewed wording, evidence coordinates, boundaries, and the pinned "
@@ -829,6 +892,9 @@ def _rebind_command(*, apply_changes: bool) -> int:
         return 0
 
     apply_rebindings(rebindings)
+    if baseline_revision:
+        for record in rebindings:
+            record["review"]["evidence_rebindings"][-1]["baseline_commit"] = baseline_revision
     REGISTRY.write_text(
         json.dumps(registry, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
@@ -857,6 +923,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         ),
     )
     parser.add_argument(
+        "--baseline-ref",
+        help="with --rebind, read the prior corpus from this committed revision (for merges)",
+    )
+    parser.add_argument(
         "--rereview-moved-revision",
         action="store_true",
         help=(
@@ -876,9 +946,11 @@ def main(argv: Iterable[str] | None = None) -> int:
         parser.error("--apply is only meaningful with --rebind or --rereview-moved-revision")
     if args.rebind and args.rereview_moved_revision:
         parser.error("--rebind and --rereview-moved-revision are mutually exclusive")
+    if args.baseline_ref is not None and not args.rebind:
+        parser.error("--baseline-ref is only meaningful with --rebind")
 
     if args.rebind:
-        return _rebind_command(apply_changes=args.apply)
+        return _rebind_command(apply_changes=args.apply, baseline_ref=args.baseline_ref)
     if args.rereview_moved_revision:
         return _rereview_command(apply_changes=args.apply)
 

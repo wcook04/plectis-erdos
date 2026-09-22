@@ -178,6 +178,12 @@
       "properties": {
         "track": {"enum": ["mathematics", "architecture"]},
         "problem": {"enum": [68, 243, 249, 251, 257, 269, 1041, 1049]},
+        "subject": {"type": "string", "minLength": 1},
+        "related_problems": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": [68, 243, 249, 251, 257, 269, 1041, 1049]}
+        },
         "area": {
           "enum": [
             "agent_workflow",
@@ -202,12 +208,31 @@
       "oneOf": [
         {
           "required": ["problem"],
-          "properties": {"track": {"enum": ["mathematics"]}}
+          "properties": {"track": {"enum": ["mathematics"]}},
+          "not": {
+            "anyOf": [
+              {"required": ["subject"]},
+              {"required": ["related_problems"]}
+            ]
+          }
+        },
+        {
+          "required": ["track", "subject", "related_problems"],
+          "properties": {"track": {"const": "mathematics"}},
+          "not": {
+            "anyOf": [{"required": ["problem"]}, {"required": ["area"]}]
+          }
         },
         {
           "required": ["track", "area"],
           "properties": {"track": {"const": "architecture"}},
-          "not": {"required": ["problem"]}
+          "not": {
+            "anyOf": [
+              {"required": ["problem"]},
+              {"required": ["subject"]},
+              {"required": ["related_problems"]}
+            ]
+          }
         }
       ]
     },

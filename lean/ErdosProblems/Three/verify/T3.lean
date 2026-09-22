@@ -9,9 +9,10 @@ import ErdosProblems.Three.T3
 # Adversarial verification support for `ErdosProblems/Three/T3.lean`
 
 Computable definitions used by the repository-wide proof-trust and
-satisfiability audits. The release checker owns proof-trust reporting, while
-the measured results of the finite probes are recorded in `docs/TRUTH_AUDIT.md`.
-Keeping this support module quiet makes standalone validation deterministic.
+satisfiability audits. The release checker owns proof-trust reporting. These
+definitions support executable checks; their presence alone does not promote a
+finite probe to a public mathematical claim. Keeping this support module quiet
+makes standalone validation deterministic.
 -/
 
 namespace ErdosProblems.ThreeT3.Verify

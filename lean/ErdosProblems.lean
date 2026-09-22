@@ -25,9 +25,18 @@ import ErdosProblems.Erdos68.PrimeThresholdParity
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
 import ErdosProblems.Erdos243.RepairEntropy
 import ErdosProblems.Erdos243.NewtonV8.NewtonClassificationAudit
--- AllRow / ZudilinSharpHankelCoefficient does not elaborate against the
--- current AdelicHeightBridge surface; keep it in the auxiliary forest.
+import ErdosProblems.Erdos1049.AllRow.Producer
+import ErdosProblems.Erdos1049.PaperFiniteAssembliesR7
+import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
+import ErdosProblems.Erdos1049.QuantitativeSelectorEscape
+import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
+import ErdosProblems.Erdos1041.PaperCubicFibres
+import ErdosProblems.Erdos1041.PaperStraightObstructions
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
+import ErdosProblems.Erdos1041.PaperSeparationCounterexample
 import ErdosProblems.Erdos1049.RationalBaseContour
+import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
 import ErdosProblems.Erdos243.CubicNeighbourIdentity
 import ErdosProblems.Erdos243.LcmRecordExcess
 import ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity
@@ -44,7 +53,12 @@ import ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification
 import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
 import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
 import ErdosProblems.Erdos243.SlowRiseBarrier
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
+import ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification
+import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
 import ErdosProblems.Erdos249.TypeBReturnV8.Audit
@@ -79,6 +93,7 @@ import ErdosProblems.Erdos251.PrimeSourceR11
 import ErdosProblems.Erdos251.RealPrimeGapTail
 import ErdosProblems.Erdos251.ResidueFeedbackCore
 import ErdosProblems.Erdos251.ReturnedSparseWindow
+import ErdosProblems.Erdos251.ShiftedGapCountingR9
 import ErdosProblems.Erdos251.SparseAmbientR9
 import ErdosProblems.Erdos251.SparseIntervalR8
 import ErdosProblems.Erdos251.SparsePaperR11
@@ -86,6 +101,7 @@ import ErdosProblems.Erdos251.SparsePolylogR11
 import ErdosProblems.Erdos251.SparseRationalisationCore
 import ErdosProblems.Erdos251.SparseScheduleDensityR8
 import ErdosProblems.Erdos251.SparseScheduleR8
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
 import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
 import ErdosProblems.Erdos269.BlockMassEngines
 import ErdosProblems.Erdos269.CertificateRangeR11
@@ -96,6 +112,7 @@ import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
 import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
 import ErdosProblems.Erdos269.DyadicRadixTailEscape
 import ErdosProblems.Erdos269.DyadicShellSummability
+import ErdosProblems.Erdos269.FiniteCutRank
 import ErdosProblems.Erdos269.IntegralBranchExtinction
 import ErdosProblems.Erdos269.IntegralBranchWidth
 import ErdosProblems.Erdos269.JumpConstraintMajorant
@@ -105,6 +122,8 @@ import ErdosProblems.Erdos269.NormalizedStateWidth
 import ErdosProblems.Erdos269.PaperR12WaveAAxiomAudit
 import ErdosProblems.Erdos269.PaperR7ActualOrbit
 import ErdosProblems.Erdos269.PaperR7BasicAssembly
+import ErdosProblems.Erdos269.PaperR7FiniteCutRank
+import ErdosProblems.Erdos269.PaperR7ModularMinors
 import ErdosProblems.Erdos269.PaperR7RationalBridge
 import ErdosProblems.Erdos269.PaperR7SeriesIdentification
 import ErdosProblems.Erdos269.PaperR7SharpShellBound
@@ -144,6 +163,7 @@ import ErdosProblems.Erdos68.PrimePoleCriterion
 import ErdosProblems.Erdos68.PrimePoleDenominator
 import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
 import ErdosProblems.Shared.IrrationalRotationStaircase
+import ErdosProblems.Synthesis
 
 /-!
 # Problem-centric Erdős research library

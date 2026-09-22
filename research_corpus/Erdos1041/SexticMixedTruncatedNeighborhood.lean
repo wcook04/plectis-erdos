@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticMixedOriginSpokeNoGo
+import research_corpus.Erdos1041.SexticMixedOriginSpokeNoGo
 import Mathlib.Tactic
 
 /-!

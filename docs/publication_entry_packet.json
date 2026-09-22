@@ -107,19 +107,19 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:35c663096e9bb34d7dd733bd6073fe29440b0a515f444af8fae81110cb1755fb",
+    "docs/claims.json": "sha256:f8145283ea9dc1eaa3082169d83b93b2ce1353cb8f17c7636dbe061ffd933c95",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
-    "docs/publication_contract.json": "sha256:3063ea4300073f129f75bc109efe00d252642d93a9702a4897c99503772f900d",
+    "docs/problems.json": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
+    "docs/publication_contract.json": "sha256:d6dffd8852b03515832958587d6c3c335026cdbb5211b0d938380d0d70a1dc66",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:78aa190d7bbc136eca3d811bfd3aca22d1a005bebba791c82c607763f57e0667",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:150c86c04846f660d3ec09507a456b9c7c222ed32c00c946e45fce4d36451ff9",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:9fec309258f31f1ea0834f28f5243a799904e6b170e032b812b91e58fde51b0b",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
-    "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
-    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef",
-    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
+    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
+    "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
+    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c",
+    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f",
     "scripts/run_publication_mutations.py": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7"
   },
   "five_sentence_summary": [
@@ -131,8 +131,8 @@
   ],
   "historical_checker_example": {
     "current_owner_snapshot": {
-      "contribution_family_count": 30,
-      "curated_claim_count": 141,
+      "contribution_family_count": 33,
+      "curated_claim_count": 148,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -270,7 +270,7 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 36,
+        "line": 32,
         "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "title": "Erdős #68"
       },
@@ -294,7 +294,7 @@
       "open_target_claim": "erdos_251",
       "paper_anchor": {
         "environment": "section",
-        "line": 47,
+        "line": 49,
         "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 892,
+        "line": 1100,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -354,7 +354,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 58,
+        "line": 48,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "Introduction"
       },
@@ -366,11 +366,11 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 126,
+        "line": 131,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
-      "statement": "Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.",
+      "statement": "Determine the precise correspondence between the historical curve-length question and the checked total-variation formulation, which ani’s explicit degree-seven example refutes. A Hausdorff-measure comparison is not formalised, and independent human review of historical correspondence is not recorded; the refuted total-variation assertion itself is no longer an open proof obligation.",
       "status": "open"
     },
     {
@@ -378,11 +378,11 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 52,
+        "line": 54,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. Irrationality of F((31/4)^r) for every positive integer r is a Lean-checked Zudilin specialization; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "status": "open"
     },
     {
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 125,
+        "line": 135,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -402,9 +402,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 564,
+        "line": 587,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "exact nonintegrality of every reduced tail"
+        "title": "no reduced tail is an integer"
       },
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
       "status": "open"
@@ -414,9 +414,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 570,
+        "line": 593,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "actual cofinal local-window escape"
+        "title": "residue inequalities after every starting index"
       },
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "status": "open"
@@ -426,9 +426,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 579,
-        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "function-faithful two-dimensional representation"
+        "line": 2253,
+        "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "title": "an exact function representing the distinct-height sum"
       },
       "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
       "status": "open"
@@ -438,9 +438,9 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 604,
+        "line": 815,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-        "title": "global overlap-height growth"
+        "title": "growth of repeated denominator factors"
       },
       "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
       "status": "open"
@@ -450,9 +450,9 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 599,
+        "line": 717,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
-        "title": "first-harmonic anti-concentration on supplier fibres"
+        "title": "Four estimates for the first-harmonic sum"
       },
       "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
       "status": "open"
@@ -462,9 +462,9 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 906,
+        "line": 1116,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-        "title": "weakest native recurrence criterion"
+        "title": "bounded returns of the scaled remainder"
       },
       "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
       "status": "open"
@@ -474,9 +474,9 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 915,
+        "line": 1125,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-        "title": "actual-orbit invariant"
+        "title": "arithmetic tests for the greedy sequence"
       },
       "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
       "status": "open"
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 925,
+        "line": 1136,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -497,26 +497,26 @@
   "research_frontier": {
     "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
     "checkpoint_summary": {
-      "exported_source_file_count": 839,
-      "source_subtree_tree": "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d",
+      "exported_source_file_count": 952,
+      "source_subtree_tree": null,
       "status": "source_current_problem_snapshot"
     },
     "directory": "research_corpus/Erdos1041",
     "files": {
       "checkpoint": {
-        "content_digest": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef",
+        "content_digest": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c",
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
-        "content_digest": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
+        "content_digest": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
-        "content_digest": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
+        "content_digest": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
         "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
       },
       "strongest_results": {
-        "content_digest": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
+        "content_digest": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f",
         "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
       }
     },
@@ -529,14 +529,14 @@
       "CORPUS_MANIFEST.json",
       "PUBLIC_CORPUS_CHECKPOINT.json"
     ],
-    "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
+    "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
+      "content_digest": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
-      "result_count": 45,
-      "source_checkpoint": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
+      "result_count": 294,
+      "source_checkpoint": "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac",
       "status": "open"
     }
   },
@@ -544,9 +544,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-10-r2",
-      "publication_state": "published_committed_checkpoint",
-      "ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334",
+      "public_tag": null,
+      "publication_state": "committed_checkpoint_pending_remote_publication",
+      "ref": "b55efae3c053cf507c8b489e0f0f25b9136fe8f5",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

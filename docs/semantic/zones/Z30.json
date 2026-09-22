@@ -64,12 +64,12 @@
         {
           "declaration": "cancellationFactor_sandwich",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1100
+          "line": 1106
         },
         {
           "declaration": "cancellationFactor_eq_one_iff",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1182
+          "line": 1188
         }
       ]
     },
@@ -92,22 +92,22 @@
         {
           "declaration": "strictGrowthCount",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1201
+          "line": 1207
         },
         {
           "declaration": "pow_strictGrowthCount_mul_le",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1219
+          "line": 1225
         },
         {
           "declaration": "pow_strictGrowthCountFrom_mul_le",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1244
+          "line": 1250
         },
         {
           "declaration": "strictGrowthCount_sublinear_of_subexponential",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1256
+          "line": 1262
         }
       ]
     },
@@ -133,17 +133,17 @@
         {
           "declaration": "exists_aligned_noStrictGrowthBlock_of_count_bound",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1314
+          "line": 1320
         },
         {
           "declaration": "exists_arbitrarilyLate_noStrictGrowthBlock_of_sublinear",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1362
+          "line": 1368
         },
         {
           "declaration": "exists_arbitrarilyLate_constBlock_of_sublinear",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1394
+          "line": 1400
         }
       ]
     },
@@ -166,22 +166,22 @@
         {
           "declaration": "tailGcdGrowthFactor",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1469
+          "line": 1475
         },
         {
           "declaration": "dynamicReducedTail_step",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1481
+          "line": 1487
         },
         {
           "declaration": "tailGcdGrowthFactor_sandwich",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1547
+          "line": 1553
         },
         {
           "declaration": "tailGcdGrowthFactor_eq_one_iff",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1565
+          "line": 1571
         }
       ]
     },
@@ -207,27 +207,27 @@
         {
           "declaration": "tailState_localNearUnitGrowth",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1986
+          "line": 1992
         },
         {
           "declaration": "tailState_eventually_localNearUnitGrowth_of_normalizedVanishes",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2011
+          "line": 2017
         },
         {
           "declaration": "exists_nearUnitPower_rate",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2028
+          "line": 2034
         },
         {
           "declaration": "subexponential_of_eventually_nearUnitGrowth",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2105
+          "line": 2111
         },
         {
           "declaration": "tailState_subexponential_of_normalizedVanishes",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2164
+          "line": 2170
         }
       ]
     },
@@ -254,17 +254,17 @@
         {
           "declaration": "tailGcd_strictGrowthCount_sublinear_of_tailSubexponential",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1439
+          "line": 1445
         },
         {
           "declaration": "tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2180
+          "line": 2186
         },
         {
           "declaration": "tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 2196
+          "line": 2202
         }
       ]
     },
@@ -410,147 +410,147 @@
     {
       "declaration": "cancellationFactor_sandwich",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1100,
+      "line": 1106,
       "role": "statement",
       "statement_node": "cancellation_factor_is_trapped_by_old_prime_overlap"
     },
     {
       "declaration": "cancellationFactor_eq_one_iff",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1182,
+      "line": 1188,
       "role": "statement",
       "statement_node": "cancellation_factor_is_trapped_by_old_prime_overlap"
     },
     {
       "declaration": "strictGrowthCount",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1201,
+      "line": 1207,
       "role": "concept",
       "statement_node": "strict_divisibility_growth_spends_exponential_size"
     },
     {
       "declaration": "pow_strictGrowthCount_mul_le",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1219,
+      "line": 1225,
       "role": "statement",
       "statement_node": "strict_divisibility_growth_spends_exponential_size"
     },
     {
       "declaration": "pow_strictGrowthCountFrom_mul_le",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1244,
+      "line": 1250,
       "role": "statement",
       "statement_node": "strict_divisibility_growth_spends_exponential_size"
     },
     {
       "declaration": "strictGrowthCount_sublinear_of_subexponential",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1256,
+      "line": 1262,
       "role": "statement",
       "statement_node": "strict_divisibility_growth_spends_exponential_size"
     },
     {
       "declaration": "exists_aligned_noStrictGrowthBlock_of_count_bound",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1314,
+      "line": 1320,
       "role": "engine",
       "statement_node": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks"
     },
     {
       "declaration": "exists_arbitrarilyLate_noStrictGrowthBlock_of_sublinear",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1362,
+      "line": 1368,
       "role": "statement",
       "statement_node": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks"
     },
     {
       "declaration": "exists_arbitrarilyLate_constBlock_of_sublinear",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1394,
+      "line": 1400,
       "role": "statement",
       "statement_node": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks"
     },
     {
       "declaration": "tailGcdGrowthFactor",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1469,
+      "line": 1475,
       "role": "concept",
       "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
     },
     {
       "declaration": "dynamicReducedTail_step",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1481,
+      "line": 1487,
       "role": "representation",
       "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
     },
     {
       "declaration": "tailGcdGrowthFactor_sandwich",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1547,
+      "line": 1553,
       "role": "statement",
       "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
     },
     {
       "declaration": "tailGcdGrowthFactor_eq_one_iff",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1565,
+      "line": 1571,
       "role": "statement",
       "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
     },
     {
       "declaration": "tailState_localNearUnitGrowth",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1986,
+      "line": 1992,
       "role": "engine",
       "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
     },
     {
       "declaration": "tailState_eventually_localNearUnitGrowth_of_normalizedVanishes",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2011,
+      "line": 2017,
       "role": "statement",
       "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
     },
     {
       "declaration": "exists_nearUnitPower_rate",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2028,
+      "line": 2034,
       "role": "engine",
       "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
     },
     {
       "declaration": "subexponential_of_eventually_nearUnitGrowth",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2105,
+      "line": 2111,
       "role": "statement",
       "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
     },
     {
       "declaration": "tailState_subexponential_of_normalizedVanishes",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2164,
+      "line": 2170,
       "role": "statement",
       "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
     },
     {
       "declaration": "tailGcd_strictGrowthCount_sublinear_of_tailSubexponential",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1439,
+      "line": 1445,
       "role": "statement",
       "statement_node": "normalised_vanishing_makes_tail_gcd_growth_sparse"
     },
     {
       "declaration": "tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2180,
+      "line": 2186,
       "role": "statement",
       "statement_node": "normalised_vanishing_makes_tail_gcd_growth_sparse"
     },
     {
       "declaration": "tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 2196,
+      "line": 2202,
       "role": "statement",
       "statement_node": "normalised_vanishing_makes_tail_gcd_growth_sparse"
     },

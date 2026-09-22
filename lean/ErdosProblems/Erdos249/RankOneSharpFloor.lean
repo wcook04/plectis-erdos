@@ -20,6 +20,18 @@ open scoped BigOperators
 open ArithmeticFunction
 open Erdos249257.SignedQMomentObstruction
 
+/-- Positivity of the denominator in the paper's quotient Q(e,Y).
+This is stated separately so the quotient bounds cannot silently stand in for it. -/
+theorem rankOne_denominator_pos {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    0 < mobiusMersennePrefix Y (2 * e + 2) := by
+  have hr : 3 ≤ 2 * e + 2 := by omega
+  have hlow := mobiusMersenneTheta_ge_alpha hr
+  have herr := abs_mobiusMersenneTheta_sub_prefix_le hY hr
+  have hup := (abs_le.mp herr).2
+  linarith
+
+#print axioms rankOne_denominator_pos
+
 /-! ## Möbius atoms `d = 1, …, 7` -/
 
 private lemma moebius_one : moebius 1 = 1 := moebius_apply_one

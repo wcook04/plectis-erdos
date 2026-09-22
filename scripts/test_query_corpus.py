@@ -17,6 +17,7 @@ import json
 import re
 import subprocess
 import sys
+import tempfile
 from collections.abc import Callable
 from pathlib import Path
 from unittest.mock import patch
@@ -36,6 +37,7 @@ from query_corpus import (
     open_proposition_packet,
     paper_anchor_inventory,
     paper_anchor_packet,
+    public_paper_rows,
     route_packet,
     route_memory_problem_number,
     source_coordinate_packet,
@@ -590,8 +592,8 @@ def validate_indexed_problem_routes() -> None:
                         "totient_carry_modEq_geometric_of_dvd_multiplier",
                     }
                 )
-                assert carry_anchor["canonical_handle"] == carry_anchor["source_ref"]
-                assert carry_anchor["canonical_handle"].startswith(
+                assert carry_anchor["canonical_handle"] == "res:rank"
+                assert carry_anchor["source_ref"].startswith(
                     "paper/249/erdos-249-binary-totient-series.tex:"
                 )
             if expected["id"] == "weighted_phase_carry_observer":
@@ -850,7 +852,7 @@ def validate_agent_tour() -> None:
         "--tour --format json",
     ):
         assert f"{command} {arguments}" in card.stdout
-    assert "8 of 8 remain open." in card.stdout
+    assert "Historical programme targets marked open: 8 of 8." in card.stdout
     assert "does not run Lean" in card.stdout
     assert run("--tour").stdout == card.stdout
     source = query("--declaration", lead["source_declaration"])["matches"][0]
@@ -893,7 +895,7 @@ def validate_agent_tour_card_lead() -> None:
     assert "Source theorem: python3 scripts/query_corpus.py --declaration Example.source_theorem" in card
     assert "--connections Example.source_theorem" in card
     assert "--route erdos_249" in card
-    assert "Indexed problems: #249, #257. 1 of 2 remain open." in card
+    assert "Indexed problems: #249, #257. Historical programme targets marked open: 1 of 2." in card
     assert "Example.Comparator.wrapper" not in card
     assert "completed_direct_result" not in card
     assert "formalisation of an existing theorem" not in card
@@ -1728,6 +1730,43 @@ def validate_route_memory_cards() -> None:
         "arithmetic_obstruction_interfaces"
     ) in open_card
 
+    # Bare --open is the answer to "what can I work on?": it must list every
+    # registered open proposition exactly once, and each row must resolve.
+    registered_open = load("docs/claims.json")["remaining_open_propositions"]
+    index_view, index_format = query_corpus.query_args_packet(["--open"])
+    assert index_format == "card", index_format
+    assert index_view["kind"] == "open_proposition_index"
+    assert index_view["count"] == len(registered_open)
+    assert sorted(row["id"] for row in index_view["open_propositions"]) == sorted(
+        row["id"] for row in registered_open
+    )
+    index_card = query_corpus.render_card(index_view)
+    for row in index_view["open_propositions"]:
+        assert row["problem"].isdigit(), row
+        assert row["id"] in index_card, row["id"]
+        assert open_proposition_packet(row["id"])["open_proposition"]["id"] == row["id"]
+        current_paper = row["current_problem_paper"]
+        assert current_paper and current_paper["resolution"] == "resolved", row
+        assert "archive" not in Path(current_paper["source"]).parts, row
+        assert f"current paper: {current_paper['source']}" in index_card
+        packet = open_proposition_packet(row["id"])
+        assert packet["current_problem_paper"] == current_paper
+        assert current_paper["source"] in query_corpus.render_card(packet)
+    assert "not a ranking" in index_card
+    json_view, json_format = query_corpus.query_args_packet(["--open", "--format", "json"])
+    assert json_format == "json" and json_view == index_view
+    single_view, _ = query_corpus.query_args_packet(
+        ["--open", "remaining_open.unbounded_certificate_supply"]
+    )
+    assert single_view["kind"] == "open_proposition"
+    # The exact old statement stays inspectable; it is no longer the only
+    # reading route for a live open question.
+    assert single_view["open_proposition"]["paper_anchor"]["source"].startswith("paper/archive/")
+    assert single_view["current_problem_paper"]["source"] == (
+        "paper/249/erdos-249-binary-totient-series.tex"
+    )
+    assert "archived statement anchor:" in index_card
+
     module_view = query_corpus.module_packet(
         "Erdos249257/CertificateKernel.lean", 20
     )
@@ -2036,9 +2075,8 @@ def validate_claim_status_packets() -> None:
         if status == "open":
             # Derived from the claim registry, not listed here. This assertion
             # used to name erdos_249 and universal_257 by hand, from when those
-            # were the whole corpus; it has been eight problems for a while and
-            # every one of them is open, but the assertion sat behind earlier
-            # failures and never ran to notice.
+            # were the whole corpus; the assertion sat behind earlier failures
+            # and never ran to notice.
             registry_open = {
                 row["id"]
                 for row in claims_document["claims"]
@@ -2046,8 +2084,7 @@ def validate_claim_status_packets() -> None:
             }
             assert len(registry_open) >= 2, (
                 "the claim registry reports fewer than two open claims, which "
-                "would make this check vacuous; the repository states that all "
-                "eight Erdős problems remain open"
+                "would make this check vacuous for the registry's open-status packet"
             )
             assert {row["id"] for row in packet["claims"]} == registry_open, (
                 "the open-status packet disagrees with docs/claims.json: "
@@ -2438,7 +2475,47 @@ def validate_module_synopsis_owner_adoption() -> None:
     assert packet["module"]["authored_synopsis"] == index[module]
 
 
+def check_pinned_source_link_layouts() -> None:
+    """A cold clone links the pinned tree, even after the local layout moves."""
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory) / "source"
+        root.mkdir()
+        def git(*args: str) -> str:
+            return subprocess.check_output(
+                ["git", "-C", str(root), *args], text=True,
+                env=query_corpus.command_environment(), stderr=subprocess.DEVNULL,
+            ).strip()
+        git("init", "-q")
+        git("config", "user.name", "Fixture")
+        git("config", "user.email", "fixture@example.invalid")
+        path = "ErdosProblems/Example.lean"
+        (root / path).parent.mkdir()
+        (root / path).write_text("theorem example : True := True.intro\n")
+        git("add", path)
+        git("commit", "-qm", "flat source")
+        flat = git("rev-parse", "HEAD")
+        (root / "lean").mkdir()
+        git("mv", "ErdosProblems", "lean/")
+        git("commit", "-qm", "nested source")
+        nested = git("rev-parse", "HEAD")
+        clone = Path(directory) / "clone"
+        git("clone", "-q", "--no-local", str(root), str(clone))
+        repository = "https://github.com/example/mathematics"
+        claims = {"release": {"repository": repository, "formal_source": {"ref": flat}}}
+        with patch.object(query_corpus, "ROOT", clone):
+            assert query_corpus.formal_source_url(claims, path, 1) == f"{repository}/blob/{flat}/{path}#L1"
+            claims["release"]["formal_source"]["ref"] = nested
+            assert query_corpus.formal_source_url(claims, path, 1) == f"{repository}/blob/{nested}/lean/{path}#L1"
+            assert query_corpus.formal_source_url(claims, "ErdosProblems/Missing.lean", 1) is None
+            claims["release"]["formal_source"]["blob_repository"] = "https://github.com/example/history"
+            assert query_corpus.formal_source_url(claims, path, 1).startswith("https://github.com/example/history/blob/")
+            for absent in ("0" * 40, "--help"):
+                claims["release"]["formal_source"]["ref"] = absent
+                assert query_corpus.formal_source_url(claims, path, 1) is None
+
+
 def main() -> int:
+    check_pinned_source_link_layouts()
     validate_in_process_query_dispatch()
     validate_blank_selectors()
     validate_slash_problem_scope()
@@ -2668,14 +2745,8 @@ def main() -> int:
     assert descriptor["identity"]["formal_source"]["public_tag"] == (
         formal_source["public_tag"]
     )
-    resolved_public_tag = subprocess.run(
-        ["git", "rev-parse", f"{formal_source['public_tag']}^{{}}"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
-    ).stdout.strip()
-    assert resolved_public_tag == formal_source["ref"]
+    from check_release import formal_source_publication_errors
+    assert not formal_source_publication_errors(formal_source)
 
     claim = query("--claim", "denominator_exclusion")
     assert claim["claim"]["status"] == "formalised here"
@@ -2856,6 +2927,43 @@ def main() -> int:
         source_lines = (ROOT / paper["source"]).read_text(encoding="utf-8").splitlines()
         anchor_window = "\n".join(source_lines[paper["line"] - 1 : paper["line"] + 1])
         assert re.search(rf"\\label\{{{re.escape(row['paper_label'])}\}}", anchor_window)
+
+    exported_papers = public_paper_rows({
+        "machine_readable_paper": {"paper": {"source": "paper/absent.tex"}},
+        "claims": [],
+    })
+    degree_seven_paper = next(
+        row for row in exported_papers
+        if row.get("paper_id") == "erdos-1041-lemniscate-newton-flow"
+    )
+    assert degree_seven_paper["source"] == (
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
+    )
+    inventory_paper = next(
+        row for row in load("docs/papers/corpus.json")["papers"]
+        if row.get("paper_id") == degree_seven_paper["paper_id"]
+    )
+    assert degree_seven_paper["canonical_source_commit"] == (
+        inventory_paper["canonical_source_commit"]
+    )
+    # A source remains discoverable before and after publication assigns its
+    # immutable pin; exercise both states independently of today's inventory.
+    for source_pin in (None, "a" * 40):
+        fixture_paper = {
+            "paper_id": "unlisted-note",
+            "local_source": "paper/unlisted-note.tex",
+            "canonical_source_commit": source_pin,
+        }
+        with patch.object(query_corpus, "load", side_effect=lambda path: {
+            "docs/problems.json": {"problems": []},
+            "docs/papers/corpus.json": {"papers": [fixture_paper]},
+        }[path]):
+            fixture_rows = public_paper_rows({
+                "machine_readable_paper": {"paper": {}}, "claims": [],
+            })
+        assert len(fixture_rows) == 1
+        assert fixture_rows[0]["source"] == "paper/unlisted-note.tex"
+        assert fixture_rows[0]["canonical_source_commit"] == source_pin
     companion = query("--claim", "transport_curvature_reductions")
     assert companion["paper"] is None
     assert companion["lean_source_identity"] == {
@@ -3182,9 +3290,9 @@ def main() -> int:
     assert declaration["matches"][0]["claim_ids"] == ["denominator_exclusion"]
     assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
     assert declaration["matches"][0]["source_url"].startswith(
-        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        claims_document["release"]["repository"] + "/blob/"
         + formal_source["ref"]
-        + "/"
+        + "/lean/"
     )
     assert declaration["matches"][0]["lean_source_identity"] == adelic["lean_source_identity"]
     assert declaration["matches"][0]["attached_claims"][0]["paper"]["label"] == "res:farey"
@@ -3427,7 +3535,21 @@ def main() -> int:
         "Finite dyadic-totient rank and certificate interface"
     )
     assert totient_mahler["dependency_neighbourhood"]["receipt"]["imports_total"] == 0
-    assert totient_mahler["dependency_neighbourhood"]["receipt"]["importers_total"] == 3
+    expected_totient_mahler_importers = {
+        row["id"]
+        for row in query_corpus.load("docs/declaration_atlas.json")["modules"]
+        if "Erdos249257.TotientMahlerDefect" in row.get("imports", [])
+    }
+    totient_mahler_neighbourhood = totient_mahler["dependency_neighbourhood"]
+    assert totient_mahler_neighbourhood["receipt"]["importers_total"] == len(
+        expected_totient_mahler_importers
+    )
+    assert {
+        row["id"] for row in totient_mahler_neighbourhood["importers"]
+    } <= expected_totient_mahler_importers
+    assert totient_mahler_neighbourhood["receipt"]["importers_omitted"] == max(
+        len(expected_totient_mahler_importers) - 3, 0
+    )
 
     aliases = json.loads((ROOT / "paper" / "module-aliases.json").read_text(encoding="utf-8"))
     assert aliases["alias_count"] == len(aliases["aliases"])

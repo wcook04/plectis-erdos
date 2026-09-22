@@ -9,8 +9,8 @@ its argument and the question that remains. Use the longer record when you
 want to recover a detailed step, inspect a computation, or follow an approach
 that stopped. You do not need Lean or a coding agent to read either.
 
-All eight problems remain open. The papers report partial results, failed or
-equivalent routes, finite evidence, and the exact obligations that survive.
+The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence. The papers report partial results, failed or equivalent routes,
+finite evidence, and the exact obligations that survive.
 If the problem numbers or formalisation are unfamiliar, read
 [a reader's way in](../docs/READING_GUIDE.md) first. For the design of the tools
 and the research process, go to the [project papers](#project-papers).
@@ -19,14 +19,24 @@ and the research process, go to the [project papers](#project-papers).
 
 | Problem | Short paper | Complete reasoning record |
 |---|---|---|
-| #68 | [Two Incomparable Denominator Exclusions for ∑ₙ≥₂ 1/(n!−1)](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex)) | [The Factorial-Denominator Series: Complete Reasoning Record](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex)) |
-| #243 | [Excluding the Bounded Negative Part](243/erdos-243-reciprocal-tail-rigidity.pdf) ([source](243/erdos-243-reciprocal-tail-rigidity.tex)) | [Reciprocal-Tail Rigidity: Complete Reasoning Record](243/erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](243/erdos243-reciprocal-tail-reasoning-surface.tex)) |
-| #249 | [A Basis for the 2-Kernel of Euler's Totient](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex)) |
-| #251 | [A Countermodel for Growth-and-Parity Arguments on the Prime-Gap Dyadic Series](251/erdos-251-prime-gap-dyadic-series.pdf) ([source](251/erdos-251-prime-gap-dyadic-series.tex)) | [Prime Gaps and Dyadic Tails: Complete Reasoning Record](251/erdos251-prime-gap-reasoning-surface.pdf) ([source](251/erdos251-prime-gap-reasoning-surface.tex)) |
+| #68 | [Two Incomparable Denominator Exclusions for ∑ₙ≥₂ 1/(n!−1)](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex)) | [Denominators and Rationality Criteria for ∑ₙ≥₂ 1/(n!−1)](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex)) |
+| #243 | [Bounded Increments and Rational Reciprocal Sums](243/erdos-243-reciprocal-tail-rigidity.pdf) ([source](243/erdos-243-reciprocal-tail-rigidity.tex)) | [Reciprocal-Tail Rigidity: Theorems, Proofs and Questions](243/erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](243/erdos243-reciprocal-tail-reasoning-surface.tex)) |
+| #249 | [Bases and Integral Relations for the k-Kernel of Euler's Totient](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex)) |
+| #251 | [Sparse Congruence-Preserving Perturbations of Dyadic Series](251/erdos-251-prime-gap-dyadic-series.pdf) ([source](251/erdos-251-prime-gap-dyadic-series.tex)) | [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](251/erdos251-prime-gap-reasoning-surface.pdf) ([source](251/erdos251-prime-gap-reasoning-surface.tex)) |
 | #257 | [Weighted Support Criteria for Reciprocal Mersenne Subseries](257/erdos-257-mersenne-support-subseries.pdf) ([source](257/erdos-257-mersenne-support-subseries.tex)) | [Reciprocal Mersenne Subseries](257/erdos257-mersenne-reasoning-surface.pdf) ([source](257/erdos257-mersenne-reasoning-surface.tex)) |
-| #269 | [No Finite Separable Representation at Three Prime Generators](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex)) | [The Three-Prime Running LCM: Complete Reasoning Record](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex)) |
-| #1041 | [Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Lemniscates and Newton Flow: Complete Reasoning Record](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
-| #1049 | [Irrationality of F(31/4) and the Exact Normalized Hankel Order](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Rational-Base Lambert Series: Complete Reasoning Record](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
+| #269 | [No Finite Separable Representation at Three Prime Generators](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex)) | [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex)) |
+| #1041 | [Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Paths in Polynomial Lemniscates: Proofs and Examples](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
+| #1049 | [Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Zudilin's Forms at Rational Bases: Proofs and Research Record](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
+
+## Reading the eight together
+
+One cross-problem paper develops the mathematics that arises from reading the
+programmes together. It contains the capacity and congruence criterion,
+Lambert-subsum results, full proofs, exact computations, method limits and
+unsuccessful approaches.
+
+[Reading Eight Erdős Problems Together](synthesis/optimal-sparse-perturbations.pdf)
+([source](synthesis/optimal-sparse-perturbations.tex)).
 
 ## Follow the argument into its evidence
 
@@ -74,11 +84,10 @@ CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) at the repository root.
 <details>
 <summary>Source note for the #251 sparse construction</summary>
 
-For #251, the elementary pair identities live in
-`SparseRationalisationCore.lean`; the ordinary schedule sketch is Proposition
-1.1 of the short paper. There is no separately published
-`SparseRationalisation.md`. End-to-end sparse Lean candidates are labelled
-UNRUN and are not presented as verified.
+For #251, [the results guide](../docs/RESULTS.md#strongest-checked-results-by-problem)
+identifies the formal sparse construction and the differences in quantifier
+order between it and the printed proof. The short paper's attribution section
+explains those differences before its source index.
 
 </details>
 
@@ -131,6 +140,13 @@ The Makefile builds the manuscripts registered in
 [`docs/publication_contract.json`](../docs/publication_contract.json) and
 copies the PDFs into their problem or systems directory under `paper/`.
 The temporary build PDFs in `paper/` are not the published copies.
+
+To rebuild one paper, run `make -C paper <stem>.pdf` and then
+`python3 scripts/sync_publication_pdfs.py`, which copies the fresh PDF into
+place. Each copy is recorded in [`build-manifest.json`](build-manifest.json)
+with the digest of the PDF and of every TeX input it was compiled from, and a
+build output older than one of its inputs is refused. The release checks fail
+when a committed PDF is not the recorded build of its committed inputs.
 
 After editing a manuscript, rebuild its PDF before updating its recorded
 digests. The following command previews digest changes; add `--apply` only

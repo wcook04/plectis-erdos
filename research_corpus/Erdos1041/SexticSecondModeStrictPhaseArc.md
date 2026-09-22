@@ -95,4 +95,3 @@ between:
 
 This theorem does not itself supply all four overlap constants or the final
 nonlinear remainder transfer.
-

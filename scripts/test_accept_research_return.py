@@ -136,6 +136,73 @@ def main() -> int:
     )
     require(binding is None and binding_errors, "required route-memory receipt was optional")
 
+    # A subject-shaped return carries one ordinary route receipt per related
+    # problem, and acceptance must bind every one of them without inventing a
+    # problem number for the return itself.
+    subject_submission = copy.deepcopy(submission)
+    subject_submission["return_id"] = "rr-acceptance-test-subject"
+    subject_submission["frontier"] = {
+        "track": "mathematics",
+        "subject": "greedy skip mechanisms shared across reciprocal-series problems",
+        "related_problems": [249, 257],
+        "handle": "subject/greedy-skip-transfer",
+        "bounded_question": "Does one recorded skip mechanism cover both problems?",
+        "stop_condition": "Stop after one bounded comparison.",
+        "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+    }
+    _records, route_digest = acceptor.route_memory_receipt.canonical_corpus(ROOT)
+    subject_sidecar = {
+        "schema": acceptor.return_validator.SUBJECT_ROUTE_MEMORY_SCHEMA,
+        "return_id": subject_submission["return_id"],
+        "subject": subject_submission["frontier"]["subject"],
+        "related_problems": [249, 257],
+        "route_memory": {
+            "path": acceptor.route_memory_receipt.ROUTE_MEMORY_PATH,
+            "sha256": route_digest,
+        },
+        "disposition": "consulted",
+        "receipts": [],
+    }
+    for problem in subject_sidecar["related_problems"]:
+        consultation = acceptor.route_memory_receipt.consultation_for_problem(problem, ROOT)
+        receipt = acceptor.route_memory_receipt.return_receipt_template(consultation)
+        receipt["return_id"] = subject_submission["return_id"]
+        subject_sidecar["receipts"].append(receipt)
+    with tempfile.TemporaryDirectory() as directory:
+        sidecar_path = Path(directory) / "route-memory.json"
+        sidecar_path.write_bytes(acceptor.canonical(subject_sidecar))
+        subject_binding, subject_errors, _ = acceptor.route_memory_binding_errors(
+            subject_submission,
+            sidecar_path,
+            required=True,
+        )
+        require(
+            not subject_errors,
+            f"subject route-memory sidecar was rejected at acceptance: {subject_errors}",
+        )
+        summary = acceptor.route_memory_binding_summary(subject_binding)
+        require(
+            summary["problem"] is None
+            and summary["subject"] == subject_submission["frontier"]["subject"]
+            and summary["related_problems"] == [249, 257]
+            and len(summary["route_ids"]) == 2,
+            f"subject acceptance summary lost its route identity: {summary}",
+        )
+
+        foreign_sidecar_path = Path(directory) / "foreign-route-memory.json"
+        foreign_sidecar = copy.deepcopy(subject_sidecar)
+        foreign_sidecar["related_problems"] = [249, 1041]
+        foreign_sidecar_path.write_bytes(acceptor.canonical(foreign_sidecar))
+        _foreign_binding, foreign_errors, _ = acceptor.route_memory_binding_errors(
+            subject_submission,
+            foreign_sidecar_path,
+            required=True,
+        )
+        require(
+            any("related_problems" in error for error in foreign_errors),
+            f"a subject sidecar naming other problems was accepted: {foreign_errors}",
+        )
+
     with tempfile.TemporaryDirectory() as directory:
         output = Path(directory) / "accepted.json"
         submitted_input = Path(directory) / "submitted.json"

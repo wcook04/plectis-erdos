@@ -164,4 +164,3 @@ radical bounds, and the monotonicity step producing `L>6`.  The proper-cover
 component passport, the fibre factorization, and analytic inverse-branch
 calculus are ordinary exact mathematics here.  The symbolic checker replays
 those algebraic identities and the total-ramification count.
-

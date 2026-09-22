@@ -1,0 +1,29 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+import Erdos249257.HalfCylinderFullShellSeamBridge
+import Erdos249257.HalfCarryReachability
+import Erdos249257.CofinalStripReturn
+import Erdos249257.BooleanMobiusCriticalCapacityCofinal
+import Erdos249257.GreedyAchievementSet
+
+/-!
+# Tenth additive Erdos 257 paper-correspondence audit
+
+This source-current audit batches the aligned frozen-margin equivalence, the
+square-root carry endpoint, cofinal returns of the fixed greedy carry, and the
+infinite-skip criterion. It adds no theorem and changes no mathematical claim.
+-/
+
+#print axioms Erdos249257.HalfGreedySkippedSeamAlignmentZero
+#print axioms Erdos249257.HalfGreedySkippedFullShellNonnegative
+#print axioms Erdos249257.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos
+#print axioms Erdos249257.greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment
+#print axioms Erdos249257.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative
+#print axioms Erdos249257.HalfCarryReachability.greedy_mobiusCenteredHalfCarry_nonneg
+#print axioms Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+#print axioms Erdos249257.HalfCarryReachability.GreedyHalfCarryCofinalStripReturn
+#print axioms Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+#print axioms Erdos249257.halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage
+#print axioms Erdos249257.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
+#print axioms Erdos249257.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite

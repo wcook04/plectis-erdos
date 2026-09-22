@@ -40,11 +40,11 @@ order `∑_{j<N} j²`.  What was missing there, and is supplied here, is:
   *and* the sharp leading coefficient of `V_N^*` from it.
 
 The row hypothesis is discharged here for rows `j = 0`, `j = 1` and `j = 2`
-(`zudilinRowInitialMonomial_of_le_two`); rows `j ≥ 3` remain open, so
-`zudilinSharpHankelOrderAndCoeff_of_rowInitialMonomial` is deliberately
-conditional and no unconditional determinant claim is made.  The row `j = 2`
-initial monomial `18·q^(2l+3)` is new relative to `AdelicHeightBridge.lean`,
-which stopped at row `j = 1`.
+(`zudilinRowInitialMonomial_of_le_two`), and for every row by
+`zudilinRowInitialMonomial_all` in `AllRow/Producer.lean`, which states the
+unconditional order and leading coefficient (`zudilinSharpHankelOrderAndCoeff_all`).
+The row `j = 2` initial monomial `18·q^(2l+3)` is new relative to
+`AdelicHeightBridge.lean`, which stopped at row `j = 1`.
 
 No theorem here decides the arithmetic nature of the Lambert value at `3 / 2`.
 -/
@@ -1307,7 +1307,7 @@ theorem order_zudilinTransformedNormalizedMoment_two (l : ℕ) :
 
 /-- **Complete second transformed-row initial monomial, in every column.**  This
 is the first row beyond `zudilinTransformedNormalizedMoment_one_initialMonomial`
-of `AdelicHeightBridge.lean`; rows `j ≥ 3` remain open. -/
+of `AdelicHeightBridge.lean`; `AllRow/Producer.lean` treats every row. -/
 theorem zudilinTransformedNormalizedMoment_two_initialMonomial (l : ℕ) :
     PowerSeries.order (zudilinTransformedNormalizedMoment 2 l) = 2 * l + 3 ∧
       PowerSeries.coeff (2 * l + 3)
@@ -1315,16 +1315,16 @@ theorem zudilinTransformedNormalizedMoment_two_initialMonomial (l : ℕ) :
   ⟨order_zudilinTransformedNormalizedMoment_two l,
     coeff_zudilinTransformedNormalizedMoment_two_first l⟩
 
-/-! ## The conditional sharp endpoint
+/-! ## The sharp endpoint from the row input
 
-The only input still missing is the row initial monomial for `j ≥ 3`.  Stating
-it as a hypothesis makes the remaining gap exact and machine-checked, and the
-determinant-level deduction below is unconditional.
+The row initial monomial is the single input of the deduction below.  This file
+proves it for `j ≤ 2`; `AllRow/Producer.lean` proves it for every row and
+applies this deduction to state the unconditional endpoint.
 -/
 
 /-- The source-row input: in every column, transformed row `j` has initial
 monomial `(-1)^j (j+1)²(j+2)/2 · q^{j(j+1)/2 + jl}`.  Rows `j ≤ 2` are proved
-(`zudilinRowInitialMonomial_of_le_two`); rows `j ≥ 3` are open. -/
+here (`zudilinRowInitialMonomial_of_le_two`); all rows by `zudilinRowInitialMonomial_all`. -/
 def ZudilinRowInitialMonomial (j : ℕ) : Prop :=
   ∀ l : ℕ,
     (∀ d, d < j * (j + 1) / 2 + j * l →

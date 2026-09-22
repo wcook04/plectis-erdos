@@ -8,7 +8,9 @@ This module removes `hselected` from the paper endpoint.  The five occurrences
 are obtained from the fundamental theorem of algebra.  Missing coefficients
 supply the three Newton moments by exact five-point interpolation.  A unit
 rotation feeds the existing harmonic separator, then the existing Abel and
-variation lemmas assemble the path.  All elaboration and axiom checks: UNRUN.
+variation lemmas assemble the path.  Focused `lake build` of this module on Lean 4.29.1 succeeded in the
+  2026-09-16 eight-paper refinement replay; axiom prints live in
+  `ErdosProblems.AxiomAudit`.
 -/
 
 noncomputable section

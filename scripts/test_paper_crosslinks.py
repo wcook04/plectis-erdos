@@ -70,7 +70,7 @@ def main() -> int:
         text = source(tex)
         actual = set(re.findall(r"\\papersectiontarget\{([^}]+)\}", text))
         require(expected <= actual, f"{tex} omits targets {sorted(expected - actual)}")
-        require("31 August 2026" in text, f"{tex} omits the dated prototype boundary")
+        require("14 September 2026" in text, f"{tex} omits the dated prototype boundary")
         require("external" in text.lower(), f"{tex} omits the external-use boundary")
         for target in actual:
             key = (pdf, target)

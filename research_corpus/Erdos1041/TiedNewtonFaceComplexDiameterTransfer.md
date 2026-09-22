@@ -162,4 +162,3 @@ length implication. The exact checker replays the factor `1/2` in (8), the
 outer-collar budget. Uniform convergence in (6), the reciprocal tail
 rescaling (9), moving-direction convergence, and assembly of the three path
 ranges are ordinary analytic mathematics proved above.
-

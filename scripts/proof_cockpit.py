@@ -223,7 +223,7 @@ def build_cockpit(
                 }
                 for row in problem_rows
             ],
-            "boundary": "All eight indexed Erdős problems remain open.",
+            "boundary": claims["external_verification_packet"]["boundary"],
         },
         "workbench": workbench_state(root),
         "selected_problem": selected_problem(problems, problem_number),
@@ -266,13 +266,13 @@ def render_card(packet: dict[str, Any]) -> str:
             f"toolchain {packet['release']['lean_toolchain']}"
         ),
         (
-            f"corpus: {corpus['problem_count']} open problems | "
+            f"corpus: {corpus['problem_count']} historical programme targets marked open | "
             f"{corpus['claim_count']} claims | {corpus['module_count']} modules | "
             f"{corpus['declaration_count']} declarations | {corpus['paper_count']} papers"
         ),
         (
             f"frontier: {frontier['headline_open_proposition_count']} exact headline open "
-            "propositions; all eight indexed problems remain open"
+            f"propositions | {frontier['boundary']}"
         ),
         (
             f"workbench: {workbench['session_count']} recorded sessions | "

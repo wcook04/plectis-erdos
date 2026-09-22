@@ -13,7 +13,7 @@ and the coefficient-only case theorem
 Replay the complete Lean module from the repository root with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/CyclicTetranomialCoefficientCase.lean
+./lake env lean research_corpus/Erdos1041/CyclicTetranomialCoefficientCase.lean
 ```
 
 These declarations certify the Abel decomposition and strict spoke estimate;

@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TiedNewtonFaceRationalHubRescue
+import research_corpus.Erdos1041.TiedNewtonFaceRationalHubRescue
 import Mathlib.Data.Complex.Basic
 import Mathlib.Tactic
 

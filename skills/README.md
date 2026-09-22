@@ -19,18 +19,20 @@ silently become a second catalog.
 Enter, explain, and optionally install the public workflows without requiring a private system.
 
 - [explain-public-system](explain-public-system/SKILL.md) — Explain this public mathematical research system to a lay reader, mathematician, formaliser, compute contributor, reviewer, or infrastructure contributor from clone-local evidence.
-  Routed by: Understand or explain the public system, Inspect theorem status or mathematical progress
+  Routed by: Independently reproduce a recorded claim trail without Lean, Understand or explain the public system, Inspect theorem status or mathematical progress
 - [install-clone-skills](install-clone-skills/SKILL.md) — Preview, install, or verify the public Plectis skills in Codex, Claude, or another directory-based agent harness.
   Routed by: Install clone-local skills into an agent harness
 
 ## Research and expansion
 
-Select a bounded frontier, sustain discovery, or add a sourced problem world while preserving open boundaries.
+Read the corpus to decide what is worth developing, select a bounded frontier, sustain discovery, or add a sourced problem world while preserving open boundaries.
 
 - [add-open-problem](add-open-problem/SKILL.md) — Add a sourced mathematical problem as a new public problem world without silently promoting expansion work into a reviewed claim or pretending that the indexed roster is fixed.
   Routed by: Add or incubate another open problem
+- [explore-the-corpus](explore-the-corpus/SKILL.md) — Read the public papers and proofs as one body of mathematics, decide what is worth developing, and grow that direction into a substantive contribution whose question, subject and form may emerge during the work.
+  Routed by: Read the corpus and decide what to develop
 - [mine-open-problem](mine-open-problem/SKILL.md) — Select and attack one bounded open mathematical route from this clone using reading, computation, analytic reasoning, Lean, and optional subagents, then return the smallest evidence-bearing delta without overclaiming it.
-  Routed by: Attack one bounded open frontier, Run sustained discovery with corpus stewardship
+  Routed by: Read the corpus and decide what to develop, Choose an open question to work on, Attack one bounded open frontier, Run sustained discovery with corpus stewardship
 - [run-coupled-research-goals](run-coupled-research-goals/SKILL.md) — Coordinate an event-driven discovery goal and corpus-stewardship goal over one public mathematical frontier without collapsing proof, appraisal, exposition, or work-allocation authority.
   Routed by: Run sustained discovery with corpus stewardship
 
@@ -48,7 +50,7 @@ Return work from any clone, preserve attribution, reconcile it with current main
 - [erdos-research-return](erdos-research-return/SKILL.md) — Prepare, validate, assimilate, or update a provenance-preserving public research contribution in this Lean repository.
   Routed by: Package or assimilate research from a clone
 - [propagate-research-consequences](propagate-research-consequences/SKILL.md) — Audit whether result summaries represent the strongest supported mathematics in a public clone, or propagate a stable result through its downstream consumers while preserving exact evidence and open boundaries.
-  Routed by: Audit strongest substantive result summaries, Run sustained discovery with corpus stewardship, Propagate a stable result or architecture change, Write reader-facing mathematics, Package or assimilate research from a clone
+  Routed by: Audit strongest substantive result summaries, Read the corpus and decide what to develop, Run sustained discovery with corpus stewardship, Propagate a stable result or architecture change, Write reader-facing mathematics, Package or assimilate research from a clone
 - [submit-pull-request](submit-pull-request/SKILL.md) — Prepare, validate, commit, and, only when explicitly authorised, push and open a pull request that returns a mathematical, architecture, exposition, or clone-experience contribution to the public repository.
   Routed by: Package or assimilate research from a clone, Prepare a contribution or pull request
 
@@ -57,7 +59,7 @@ Return work from any clone, preserve attribution, reconcile it with current main
 Explain checked mathematics in reader-facing prose without outrunning the evidence.
 
 - [public-mathematical-writing](public-mathematical-writing/SKILL.md) — Write or revise reader-facing mathematics in this public Lean repository without outrunning checked source, claim status, or the exact open boundary.
-  Routed by: Write reader-facing mathematics
+  Routed by: Read the corpus and decide what to develop, Write reader-facing mathematics
 
 ## Infrastructure stewardship
 

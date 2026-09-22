@@ -4,7 +4,7 @@ import ErdosProblems.Erdos1041.PaperAnalyticTargets
 /-!
 # B4: the polar boundary inequality and the reflected-value consumer
 
-Uncompiled at Lean 4.29.1 / Mathlib
+Pinned to Lean 4.29.1 / Mathlib
 5e932f97dd25535344f80f9dd8da3aab83df0fe6.
 
 The finite product logarithmic derivative and the boundary norm comparison

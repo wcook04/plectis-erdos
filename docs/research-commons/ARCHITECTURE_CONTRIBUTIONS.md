@@ -77,3 +77,28 @@ The generated [accepted contributions](CONTRIBUTIONS.md) and
 [contribution recognition](CONTRIBUTION_RECOGNITION.md) views remain
 non-scalar: they answer who contributed what, with which evidence and review
 state, without turning commits, lines, receipts, or compute into a score.
+
+## Optional resumable session
+
+An ordinary issue, pull request or email is enough. For a session another agent
+should resume, record an architecture area without inventing a problem number:
+
+```sh
+python3 scripts/continue_research.py start --session improve-routing \
+  --area navigation --starting-path scripts/agent_entry.py \
+  --frontier contributor-routing \
+  --intent "Route paper contributors to their intended work" \
+  --validation-plan "Replay contributor paraphrases and neighboring tasks" \
+  --stop-condition "Stop when those routes pass or expose a missing owner" \
+  --contributor "Your chosen name"
+```
+
+The session records a workflow consultation and the intended checks. It never
+runs the validation plan or treats it as successful evidence. Record the checks
+you actually run in the return. Close the session with the workbench, then use
+`continue_research.py check` and `package` with `--return-json`; architecture
+sessions omit the mathematical `--route-memory-receipt`. Use the existing
+[return template](RETURN_PACKAGE_TEMPLATE.md) with `track: architecture`, the
+selected area and the same starting paths. The helper verifies the contributor,
+scope and starting commit before packaging. Acceptance remains a separate
+maintainer decision.

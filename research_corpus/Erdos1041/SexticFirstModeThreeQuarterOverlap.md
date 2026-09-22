@@ -5,6 +5,14 @@ focused Lean formalization, 2026-08-25. It strengthens the previous rational
 threshold from \(4/5\) to \(3/4\). The remaining mixed atlas and nonlinear
 actual-polynomial transfer are still open.
 
+Update 2026-09-05: [SexticNaturalScaleRaySelector.md](SexticNaturalScaleRaySelector.md)
+proves a strictly larger paired-model cone when \(0\le|E_2|\le1\),
+\(E_1\ne0\): \(|E_1|\ge K|E_2|^{5/4}\), where
+\(K=(49152/9765625)^{1/8}<13/25\). It selects two non-antipodal rays and
+joins them at a sufficiently small radius; their pair need not be adjacent.
+This is an ordinary analytic proof with exact symbolic checks, not a new Lean
+landing. The present theorem retains its explicit adjacent-chord margin.
+
 Write the paired ray model as
 
 \[
