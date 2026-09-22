@@ -102,3 +102,7 @@ sessions omit the mathematical `--route-memory-receipt`. Use the existing
 selected area and the same starting paths. The helper verifies the contributor,
 scope and starting commit before packaging. Acceptance remains a separate
 maintainer decision.
+
+If you use the [structured research return form](../../.github/ISSUE_TEMPLATE/research_return.yml),
+name the architecture area in its frontier field, leave the optional
+route-memory field empty, and attach or link the complete recoverable package.
