@@ -147,6 +147,7 @@ jobs:
           installer_dir="$RUNNER_TEMP/elan-installer"
           mkdir -p "$installer_dir"
           curl --fail --location --proto '=https' --tlsv1.2 \
+            --retry 5 --retry-all-errors --retry-delay 10 \
             --output "$archive" "$ELAN_ARCHIVE_URL"
           printf '%s  %s\n' "$ELAN_ARCHIVE_SHA256" "$archive" | sha256sum --check -
           tar --extract --gzip --file "$archive" --directory "$installer_dir"
