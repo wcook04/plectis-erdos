@@ -8744,12 +8744,15 @@
             "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
             "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
             "ErdosProblems.Erdos1041.PaperCompleteR21.DiskFamilySeparationThreshold",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.GammaQuarterBound",
             "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicCirclePacking",
             "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
             "ErdosProblems.Erdos1041.PaperCompleteR21.InverseSheetRayKernels",
             "ErdosProblems.Erdos1041.PaperCompleteR21.LobeAndArity",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.LobeUnconditional",
             "ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport",
             "ErdosProblems.Erdos1041.PaperCompleteR21.MergerScaleOrlicz",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.PlanePerimeterBound",
             "ErdosProblems.Erdos1041.PaperCompleteR21.PrimitiveQuinticClosedDisc",
             "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
             "ErdosProblems.Erdos1041.PaperCompleteR21.StoppingTimeCertificate",
@@ -8759,6 +8762,7 @@
             "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogConstants",
             "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
             "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystem",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystemUnconditional",
             "ErdosProblems.Erdos1049.PaperCompleteR21.SourceCoefficientHeights",
             "ErdosProblems.Erdos243.PaperCompleteR21.AmplifiedRecordEquivalence",
             "ErdosProblems.Erdos243.PaperCompleteR21.ChebotarevSquareSpecialisation",
@@ -8836,6 +8840,7 @@
             "ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue",
             "ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion",
             "ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseCertificateFailure",
+            "ErdosProblems.Erdos249.PaperCompleteR21.UnassignedSmoothCount",
             "ErdosProblems.Erdos249.PaperCompleteR21.UnassignedSmoothCut",
             "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel",
             "ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions",
@@ -8890,7 +8895,9 @@
             "ErdosProblems.Erdos257.PaperCompleteR21.TruncatedRungWitnessHorizon",
             "ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate",
             "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+            "ErdosProblems.PaperCompleteR21Audit.P1041_gamma_uncond",
             "ErdosProblems.PaperCompleteR21Audit.P1049_a",
+            "ErdosProblems.PaperCompleteR21Audit.P1049_nomahler_uncond",
             "ErdosProblems.PaperCompleteR21Audit.P243_02",
             "ErdosProblems.PaperCompleteR21Audit.P243_b",
             "ErdosProblems.PaperCompleteR21Audit.P243_f",
@@ -9283,14 +9290,6 @@
           "imports": []
         },
         {
-          "id": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
-          "path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
-          "role": "Lean proof module",
-          "imports": [
-            "ErdosProblems.Erdos1041.Counterexample.Assembly"
-          ]
-        },
-        {
           "id": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
           "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
           "role": "Lean proof module",
@@ -9529,6 +9528,12 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.PaperCompleteR21.GammaQuarterBound",
+          "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/GammaQuarterBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicCirclePacking",
           "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicCirclePacking.lean",
           "role": "Lean proof module",
@@ -9555,6 +9560,16 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.PaperCompleteR21.LobeUnconditional",
+          "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.LobeAndArity",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.PlanePerimeterBound",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.GammaQuarterBound"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport",
           "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean",
           "role": "Lean proof module",
@@ -9565,6 +9580,12 @@
         {
           "id": "ErdosProblems.Erdos1041.PaperCompleteR21.MergerScaleOrlicz",
           "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCompleteR21.PlanePerimeterBound",
+          "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/PlanePerimeterBound.lean",
           "role": "Lean proof module",
           "imports": []
         },
@@ -10438,6 +10459,15 @@
           "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystemUnconditional",
+          "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystem",
+            "ErdosProblems.Erdos1049.PaperR16.MahlerBoundary"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1049.PaperCompleteR21.SourceCoefficientHeights",
@@ -12824,6 +12854,15 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.TotientTwoAdicPulseBlock"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR21.UnassignedSmoothCount",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR21.UnassignedSmoothCut",
+            "ErdosProblems.Shared.MertensSecond"
           ]
         },
         {
@@ -17303,11 +17342,27 @@
           ]
         },
         {
+          "id": "ErdosProblems.PaperCompleteR21Audit.P1041_gamma_uncond",
+          "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1041_gamma_uncond.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.LobeUnconditional"
+          ]
+        },
+        {
           "id": "ErdosProblems.PaperCompleteR21Audit.P1049_a",
           "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1049_a.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogConstants"
+          ]
+        },
+        {
+          "id": "ErdosProblems.PaperCompleteR21Audit.P1049_nomahler_uncond",
+          "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1049_nomahler_uncond.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystemUnconditional"
           ]
         },
         {
@@ -17489,7 +17544,6 @@
             "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
             "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
-            "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
             "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
             "ErdosProblems.Erdos1049.AdelicHeightBridge",
@@ -17570,6 +17624,12 @@
         {
           "id": "ErdosProblems.Shared.IrrationalRotationStaircase",
           "path": "lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Shared.MertensSecond",
+          "path": "lean/ErdosProblems/Shared/MertensSecond.lean",
           "role": "Lean proof module",
           "imports": []
         },
@@ -18739,7 +18799,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "0ee31b3a99ef93d2b679a427b474b23710597bad",
+      "ref": "e2ebc44d16100df13dab9635cb489be4b9365d19",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
