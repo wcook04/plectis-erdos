@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:2a1efffae371a320f02987a177eb88928f3ed3522952925dad05e5ad9a6a5911",
-  "module_count": 1770,
-  "synopsis_count": 1526,
+  "source_fingerprint": "sha256:03b166997e567d0e6eb9f7218736e369ba6bf69779ab5fc7218d34505602095e",
+  "module_count": 1771,
+  "synopsis_count": 1527,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3796,6 +3796,11 @@
       "id": "ErdosProblems.Erdos1041.Counterexample.Defs",
       "path": "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
       "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of the shared interface (constants, polynomials, target statement, and the slice obligations S1-S5 consumed by S6) from `ani_degree7_counterexample.tex`. Erdős problem #1041: one concrete degree-seven counterexample Erdős, Herzog and Piranian (1958, Problem 5) asked whether a monic polynomial with all zeros in the open unit disc must admit a path of length less than two inside `{z : ‖p z‖ < 1}` joining two of its zeros. The external paper answers this negatively with a one-parameter family `f_s`. This file fixes the single parameter value `s = 10⁻⁶` and carries the resulting concrete objects. What this file is This file supplies the shared constants, polynomials and proposition-level interface. Its three elementary value identities are proved here. The formalisation is cut into six proof slices; each slice proves its own obligations in its own file, and `Assembly.lean` composes those checked results. No admitted theorem is introduced here. | slice | file | owns | |---|---|---| | S1 | `Algebra.lean` | the exact identities and rational inequalities of §3 | | S2 | `Components.lean` | Lemma 2.1 part (i) only | | S3 | `Bottleneck.lean` | Lemma 2.3 and Corollary 2.4 for an arbitrary polynomial | | S4 | `InstanceCritical.lean` | the concrete root and critical-point data for `f` | | S5 | `InstanceConnectivity.lean` | the two explicit paths inside `Ω(f)` | | S7 | `InstanceBarriers.lean` | two explicit barriers in `{‖f‖ ≥ 1}` | | S6 | `Assembly.lean` | `erdos1041_counterexample` from S1-S5 and S7 | "
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026."
     },
     {
       "id": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",

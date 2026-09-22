@@ -9283,6 +9283,14 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Assembly"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
           "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
           "role": "Lean proof module",
@@ -17481,6 +17489,7 @@
             "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
             "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+            "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
             "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
             "ErdosProblems.Erdos1049.AdelicHeightBridge",
@@ -18730,7 +18739,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "b55efae3c053cf507c8b489e0f0f25b9136fe8f5",
+      "ref": "0ee31b3a99ef93d2b679a427b474b23710597bad",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
