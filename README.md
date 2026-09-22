@@ -45,6 +45,15 @@ sources, checks and credit kept visible.
   [agent quickstart](docs/agents/README.md#start-with-current-public-work)
   provides clone commands and a copyable prompt. Name a question, or ask your
   agent to read the corpus and decide what is worth developing.
+- **Check one result with Python 3, no Lean.** From a clone, run
+  `python3 research/experiments/sparse_interpolation/late_rejection.py`.
+  Exact rational arithmetic checks that `189/388` passes the earlier greedy
+  decisions but is first rejected at step 17: its remainder is greater than
+  the sum of all later weights and smaller than the step-17 weight. Read the
+  [investigation](research/experiments/choices_contraction/README.md) for why
+  this example matters. It rules out this one rational as a subsum of
+  `1/(2^n-1)`; finite survival never proves membership, and this calculation
+  does not settle Problem 257.
 
 The short papers are the main exposition: the question, the strongest results,
 the ideas behind their proofs and what remains open. The longer records keep
