@@ -299,7 +299,7 @@
         "disposition"
       ],
       "properties": {
-        "prior_return_reference": {"type": "string", "minLength": 1},
+        "prior_return_reference": {"type": "string", "pattern": "^(none|rr-[a-z0-9][a-z0-9-]{2,80})$"},
         "affected_paths": {
           "type": "array",
           "minItems": 1,

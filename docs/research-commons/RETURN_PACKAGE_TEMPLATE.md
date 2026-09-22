@@ -480,7 +480,11 @@ revision. A later correction is append-only: it must preserve the earlier
 return, contributor credit, evidence, and result boundary rather than silently
 strengthening or replacing them.
 
-- **Prior return reference:** `<none for an original return, or exact path/ref>`
+- **Prior return reference:** `none` only for an original correction requesting
+  review; otherwise use the exact `rr-*` ID of a committed accepted receipt in
+  `docs/research-commons/returns/`. A URL or free-text description is not an ID.
+  Include the committed receipt link in the human explanation so a reviewer
+  can inspect the prior decision.
 - **Affected paths and starting generation:** `<exact public paths and commit>`
 - **Changed evidence or wording:** `<what was corrected and why>`
 - **Correction reason:** `<source, replay, attribution, or wording reason>`
