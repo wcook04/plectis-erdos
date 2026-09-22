@@ -8784,6 +8784,8 @@
             "ErdosProblems.Erdos243.PaperCompleteR21.ShiftedSignComparison",
             "ErdosProblems.Erdos243.PaperCompleteR21.SlowGrowthProductIncrements",
             "ErdosProblems.Erdos243.PaperCompleteR21.SlowNegativePartRecord",
+            "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind",
+            "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional",
             "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance",
             "ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmDiagonalConditions",
             "ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmSeparationAndSign",
@@ -8897,6 +8899,7 @@
             "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
             "ErdosProblems.PaperCompleteR21Audit.P1041_gamma_uncond",
             "ErdosProblems.PaperCompleteR21Audit.P1049_a",
+            "ErdosProblems.PaperCompleteR21Audit.P1049_finite_pencil",
             "ErdosProblems.PaperCompleteR21Audit.P1049_nomahler_uncond",
             "ErdosProblems.PaperCompleteR21Audit.P243_02",
             "ErdosProblems.PaperCompleteR21Audit.P243_b",
@@ -10182,6 +10185,16 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.ActualPositiveMeasureR16",
+          "path": "lean/ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.QBinomialAnalyticR16",
+            "ErdosProblems.Erdos1049.PositiveSeriesFubiniR16",
+            "ErdosProblems.Erdos1049.InfiniteMomentPositivityR10"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.ActualSourceAnalyticIdentityR14",
           "path": "lean/ErdosProblems/Erdos1049/ActualSourceAnalyticIdentityR14.lean",
           "role": "Lean proof module",
@@ -10378,6 +10391,12 @@
         {
           "id": "ErdosProblems.Erdos1049.HermitePadeNoGo",
           "path": "lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.InfiniteMomentPositivityR10",
+          "path": "lean/ErdosProblems/Erdos1049/InfiniteMomentPositivityR10.lean",
           "role": "Lean proof module",
           "imports": []
         },
@@ -10637,6 +10656,34 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.PaperR20.CoefficientPencilAssembly",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/CoefficientPencilAssembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil",
+            "ErdosProblems.Erdos1049.PaperR20.Sylvester",
+            "ErdosProblems.Erdos1049.PaperR20.PencilRootInterlacing",
+            "ErdosProblems.Erdos1049.ActualPositiveMeasureR16",
+            "ErdosProblems.Erdos1049.PaperR16.LambertBasic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.FinitePencil",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/FinitePencil.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.FinitePencilProposition",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.CoefficientPencilAssembly",
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadeAnalyticRemainder",
+            "ErdosProblems.Erdos1049.PaperR20.HankelKroneckerCertificate"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.PaperR20.FiniteRemainderCertificateConsumer",
           "path": "lean/ErdosProblems/Erdos1049/PaperR20/FiniteRemainderCertificateConsumer.lean",
           "role": "Lean proof module",
@@ -10651,6 +10698,45 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1049.PaperR16.LambertBasic",
+            "ErdosProblems.Erdos1049.ActualMomentGeneratingR12"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.HankelKroneckerCertificate",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil",
+            "ErdosProblems.Erdos1049.PaperR20.KroneckerCoefficientBound",
+            "ErdosProblems.Erdos1049.PaperR20.TriangularPrefix"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.KernelZeroCorrection",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/KernelZeroCorrection.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.KroneckerCoefficientBound",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/KroneckerCoefficientBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.LambertPolynomialPartLimit",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/LambertPolynomialPartLimit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.PolynomialPartUniqueness",
+            "ErdosProblems.Erdos1049.PaperR20.MomentAtInfinity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.MomentAtInfinity",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/MomentAtInfinity.lean",
+          "role": "Lean proof module",
+          "imports": [
             "ErdosProblems.Erdos1049.ActualMomentGeneratingR12"
           ]
         },
@@ -10671,6 +10757,35 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.PaperR20.PencilRootInterlacing",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/PencilRootInterlacing.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.FinitePencil",
+            "ErdosProblems.Erdos1049.PaperR20.PencilInterlacing",
+            "ErdosProblems.Erdos1049.PaperR20.PencilSpectralInertia"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.PencilSpectralInertia",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/PencilSpectralInertia.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.PencilInterlacing",
+            "ErdosProblems.Erdos1049.PaperR20.FinitePencil"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.PolynomialPartUniqueness",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/PolynomialPartUniqueness.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil",
+            "ErdosProblems.Erdos1049.ActualMomentGeneratingR12",
+            "ErdosProblems.Erdos1049.PaperR16.LambertBasic"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.PaperR20.QuadraticInertia",
           "path": "lean/ErdosProblems/Erdos1049/PaperR20/QuadraticInertia.lean",
           "role": "Lean proof module",
@@ -10685,6 +10800,94 @@
             "ErdosProblems.Erdos1049.PaperR20.PencilInterlacing",
             "ErdosProblems.Erdos1049.PaperR20.FiniteRemainderCertificateConsumer",
             "ErdosProblems.Erdos1049.PaperR18.QzCarrier"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeAnalytic",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeAnalytic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadeCorrection",
+            "ErdosProblems.Erdos1049.PaperR20.LambertPolynomialPartLimit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeAnalyticRemainder",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeAnalyticRemainder.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadeAnalytic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeCorrection",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeCorrection.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadePartialFraction",
+            "ErdosProblems.Erdos1049.PaperR20.KernelZeroCorrection"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeGenerating",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeGenerating.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.GaussianDegreeR12"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadePartialFraction",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadePartialFraction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadePoleEvaluation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadePoleEvaluation",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadePoleEvaluation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadeQuotient",
+            "ErdosProblems.Erdos1049.PaperR20.FiniteRemainderCertificateConsumer"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeQuotient",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeQuotient.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadeGenerating",
+            "ErdosProblems.Erdos1049.PaperR20.SourcePadeResidues"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeResidues",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeResidues.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.Sylvester",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/Sylvester.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.TriangularCertificate",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/TriangularCertificate.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperR20.TriangularPrefix",
+          "path": "lean/ErdosProblems/Erdos1049/PaperR20/TriangularPrefix.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.TriangularCertificate"
           ]
         },
         {
@@ -10705,6 +10908,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.PositiveSeriesFubiniR16",
+          "path": "lean/ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PositiveSeriesR16"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.PositiveSeriesR16",
           "path": "lean/ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
           "role": "Lean proof module",
@@ -10717,6 +10928,15 @@
           "path": "lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.QBinomialAnalyticR16",
+          "path": "lean/ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PositiveSeriesR16",
+            "ErdosProblems.Erdos1049.ActualMomentGeneratingR12"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
@@ -11849,6 +12069,23 @@
           "imports": [
             "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "ErdosProblems.Erdos243.PaperCompleteR21.SlowGrowthProductIncrements"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Shared.NonsquareModuloPrimes"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain",
+            "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind"
           ]
         },
         {
@@ -17358,6 +17595,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.PaperCompleteR21Audit.P1049_finite_pencil",
+          "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1049_finite_pencil.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperR20.FinitePencilProposition"
+          ]
+        },
+        {
           "id": "ErdosProblems.PaperCompleteR21Audit.P1049_nomahler_uncond",
           "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1049_nomahler_uncond.lean",
           "role": "Lean proof module",
@@ -17622,6 +17867,18 @@
           ]
         },
         {
+          "id": "ErdosProblems.Shared.DirichletPoleComparison",
+          "path": "lean/ErdosProblems/Shared/DirichletPoleComparison.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Shared.IdealCountingEuler",
+          "path": "lean/ErdosProblems/Shared/IdealCountingEuler.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Shared.IrrationalRotationStaircase",
           "path": "lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean",
           "role": "Lean proof module",
@@ -17630,6 +17887,22 @@
         {
           "id": "ErdosProblems.Shared.MertensSecond",
           "path": "lean/ErdosProblems/Shared/MertensSecond.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Shared.NonsquareModuloPrimes",
+          "path": "lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Shared.DirichletPoleComparison",
+            "ErdosProblems.Shared.IdealCountingEuler",
+            "ErdosProblems.Shared.QuadraticSplitPrimes"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Shared.QuadraticSplitPrimes",
+          "path": "lean/ErdosProblems/Shared/QuadraticSplitPrimes.lean",
           "role": "Lean proof module",
           "imports": []
         },
@@ -18799,7 +19072,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "e2ebc44d16100df13dab9635cb489be4b9365d19",
+      "ref": "e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
