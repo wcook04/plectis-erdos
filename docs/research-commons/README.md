@@ -47,6 +47,10 @@ routes. Palomar is a formal registry and automated filter rather than human
 peer review, and this repository cannot grant novelty, endorsement, or broad
 mathematical acceptance.
 
+For a source-bound, offline example of preparing one #249 theorem for
+Prove2Me and recording later external responses, see the
+[Prove2Me compatibility path](PROVE2ME_COMPAT.md).
+
 A contributor can open an ordinary [pull request](../../CONTRIBUTING.md) or
 [research-progress issue](../../.github/ISSUE_TEMPLATE/research_progress.yml)
 and describe the work in their own words. Include the starting commit, changed
