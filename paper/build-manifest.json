@@ -57,23 +57,23 @@
     },
     "erdos_243_note": {
       "inputs": {
-        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:64608f5ddf5a21c732995811596fba56fff3027aba0b5298dccb804c71cf4dc7",
+        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:1d077267ac3b9950ea8a3954f8ffd930b895a3a55eaabd0e7ca7758f86729fd0",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:b60585b0fd540c139a292cbcdf64326dc0ce6bcef60a9d4f7e1628c31cef6c12",
+      "rendered_content_digest": "sha256:62de7244ab4264a2fd9573328c272d76be8d5a7a814d81e099154d6b7a94de4a",
       "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "storage_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf"
     },
     "erdos_243_reasoning_record": {
       "inputs": {
-        "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:54ce76a8575d2a3becb7017d872881edece128098fde55bcbd858043dd768379",
+        "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:22dd3e97ecd46216686e76daec2f328f38cfe3d51a6c86adb7435ed0597e507e",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:298acb191d37a991aae94d4fc9040d6f66964347560f98505aa529c6f6445d01",
+      "rendered_content_digest": "sha256:443e5050ab30cce408151e9f7a212e7633b48e8d1326fb1fad41c475b35650ad",
       "source_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "storage_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf"
     },

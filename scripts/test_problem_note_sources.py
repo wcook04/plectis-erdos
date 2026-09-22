@@ -329,7 +329,65 @@ def test_explicit_immutable_headline_links_require_exact_source() -> None:
         require(key not in linked_declaration_keys(note), "commented declaration counted")
 
 
+def test_printed_links_are_checked_exactly_as_rendered() -> None:
+    commit, ledger = "a" * 40, "b" * 40
+    note = (
+        r"\renewcommand{\commit}{" + commit + "}\n"
+        r"\lword{Erdos243/Tail.lean}{3}{tail}{the tail}" "\n"
+        r"\mref{Erdos249257/Old.lean}{4}{old}" "\n"
+        r"\lproof{ErdosProblems/Erdos243/Tail.lean}{5}{tail}" "\n"
+        r"\iffalse \lrefx{Erdos243/Hidden.lean}{1}{hidden} \ifx\a\b x\fi \fi" "\n"
+        r"% \lword{Erdos243/Commented.lean}{1}{c}{c}" "\n"
+    )
+    targets, problems = scanner.rendered_link_targets(note, "c" * 40, ledger, "ErdosProblems")
+    require(problems == [], f"unexpected problems {problems!r}")
+    require((commit, "ErdosProblems/Erdos243/Tail.lean") in targets, "\\lword not rendered under \\PX")
+    require((commit, "Erdos249257/Old.lean") in targets, "\\mref not rendered repository-relative")
+    require(
+        (ledger, "lean/ErdosProblems/Erdos243/Tail.lean") in targets,
+        "\\lproof not rendered under lean/ at the ledger pin",
+    )
+    require(
+        not any("Hidden" in path or "Commented" in path for _commit, path in targets),
+        "a link TeX never prints was checked",
+    )
+    moved = note.replace("\n", "\n\\renewcommand{\\PX}{lean/ErdosProblems}\n", 1)
+    relocated, _ = scanner.rendered_link_targets(moved, "c" * 40, ledger, "ErdosProblems")
+    require(
+        (commit, "lean/ErdosProblems/Erdos243/Tail.lean") in relocated,
+        "a note's \\PX override was ignored",
+    )
+    _targets, foreign = scanner.rendered_link_targets(
+        r"\renewcommand{\repobase}{https://example.org/\commit}", commit, ledger, "ErdosProblems"
+    )
+    require(bool(foreign), "an unrecognised \\repobase override passed silently")
+
+
+def test_printed_path_absent_at_pin_fails_with_relocation_hint() -> None:
+    commit = "a" * 40
+    note = r"\renewcommand{\commit}{" + commit + r"}\lword{Erdos243/Tail.lean}{3}{tail}{the tail}"
+
+    def fake_text(path):
+        return r"\newcommand{\PX}{ErdosProblems}" if path == scanner.PREAMBLE else note
+
+    # The pinned snapshot holds the file only under lean/, as 3d6d938d did for #243.
+    def fake_present(keys):
+        return {key for key in keys if key[1].startswith("lean/")}
+
+    with patch.object(scanner, "ledger_sources", return_value=["paper/synthetic.tex"]), \
+            patch.object(scanner, "safe_worktree_text", side_effect=fake_text), \
+            patch.object(scanner, "objects_present", side_effect=fake_present):
+        failures, checked = scanner.rendered_link_failures(commit, None)
+    require(checked == 1, f"expected one printed URL, got {checked}")
+    require(
+        len(failures) == 1 and "404" in failures[0] and "under lean/" in failures[0],
+        f"a printed 404 was not reported with its fix: {failures!r}",
+    )
+
+
 def main() -> int:
+    test_printed_links_are_checked_exactly_as_rendered()
+    test_printed_path_absent_at_pin_fails_with_relocation_hint()
     test_explicit_immutable_headline_links_require_exact_source()
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()

@@ -1751,10 +1751,10 @@
         "title": "Bounded Increments and Rational Reciprocal Sums",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Bounded Increments and Rational Reciprocal Sums. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "text": "Will Cook (2026). Bounded Increments and Rational Reciprocal Sums. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1765,11 +1765,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:64608f5ddf5a21c732995811596fba56fff3027aba0b5298dccb804c71cf4dc7",
+      "source_sha256": "sha256:1d077267ac3b9950ea8a3954f8ffd930b895a3a55eaabd0e7ca7758f86729fd0",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 20,
       "sections": [
         {
@@ -1895,8 +1895,8 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:b60585b0fd540c139a292cbcdf64326dc0ce6bcef60a9d4f7e1628c31cef6c12",
-      "pdf_byte_count": 142636,
+      "pdf_sha256": "sha256:62de7244ab4264a2fd9573328c272d76be8d5a7a814d81e099154d6b7a94de4a",
+      "pdf_byte_count": 142641,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1962,7 +1962,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:54ce76a8575d2a3becb7017d872881edece128098fde55bcbd858043dd768379",
+      "source_sha256": "sha256:22dd3e97ecd46216686e76daec2f328f38cfe3d51a6c86adb7435ed0597e507e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -2350,8 +2350,8 @@
       ],
       "citations_rendered": 65,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:298acb191d37a991aae94d4fc9040d6f66964347560f98505aa529c6f6445d01",
-      "pdf_byte_count": 399224,
+      "pdf_sha256": "sha256:443e5050ab30cce408151e9f7a212e7633b48e8d1326fb1fad41c475b35650ad",
+      "pdf_byte_count": 399206,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
