@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "seconds": 111.90013829200325,
+  "lock_wait_seconds": 98.27127612500044,
+  "verification_seconds": 13.628862917001243,
+  "proof_sha256": "492297ab7217c15f05fcd90a3a5a4a369c952145af7fa2fd7e56c170087192f2",
+  "toolchain": "leanprover/lean4:v4.29.1",
+  "manifest_sha256": "ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+  "import_olean_sha256": "3bac18165cff104f535928d442f65ee0f4f4114aa9d483c1bcb3c153d4d44e5b",
+  "stdout": "'ConstructionSynthesis.coordinate0_transport' depends on axioms: [propext]\n'ConstructionSynthesis.coordinate1_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.coordinate2_transport' depends on axioms: [propext]\n'ConstructionSynthesis.coordinate3_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.coordinate4_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.coordinate5_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.ratio0_1_transport' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ConstructionSynthesis.ratio2_3_transport' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "negative_control": {
+    "intervention": "increase recovered multiplier exponent by one",
+    "exit_code": 1,
+    "rejected_for_unsolved_goals": true,
+    "stdout": "'ConstructionSynthesis.coordinate0_transport' depends on axioms: [propext]\n'ConstructionSynthesis.coordinate1_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.coordinate2_transport' depends on axioms: [propext]\n'ConstructionSynthesis.coordinate3_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.coordinate4_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.coordinate5_transport' depends on axioms: [propext, Quot.sound]\n'ConstructionSynthesis.ratio0_1_transport' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ConstructionSynthesis.ratio2_3_transport' depends on axioms: [propext, Classical.choice, Quot.sound]\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n<stdin>:87:30: error: unsolved goals\na D C : \u2124\n\u22a2 -(a ^ 2 * C) - a ^ 2 * D + a ^ 3 * C = -(a ^ 3 * C) - a ^ 3 * D + a ^ 4 * C\n",
+    "stderr": ""
+  }
+}

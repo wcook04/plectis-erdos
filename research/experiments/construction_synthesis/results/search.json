@@ -1,0 +1,255 @@
+{
+  "schema": "construction-synthesis-control/1",
+  "source": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+  "input_definitions": [
+    {
+      "name": "sylvesterNext",
+      "arguments": [
+        "a"
+      ],
+      "body": "a ^ 2 - a + 1",
+      "line": 37,
+      "definition_sha256": "e54e7c7d06b389b4fa3b34da5841423124ed3aaa6fc83efa8456a9bdcaabef13"
+    },
+    {
+      "name": "nextDenState",
+      "arguments": [
+        "a",
+        "D"
+      ],
+      "body": "a * D",
+      "line": 41,
+      "definition_sha256": "c0c0bb4925e27e1b9fe4302ad9fe5653863072371c4b26b9c490f1c57a3d2efa"
+    },
+    {
+      "name": "nextTailState",
+      "arguments": [
+        "a",
+        "D",
+        "C"
+      ],
+      "body": "a * C - D",
+      "line": 45,
+      "definition_sha256": "e89863b104dd672f73663428e6c06ee824277b083a73720efc15805e392ae6a5"
+    }
+  ],
+  "excluded_from_generator": [
+    "centeredState",
+    "sylvesterDefect",
+    "proofs",
+    "paper text"
+  ],
+  "search_class": "polynomials of total degree <= 2; cofactors a^k for 0 <= k <= 4",
+  "coordinates": [
+    {
+      "power": 1,
+      "expr": "D",
+      "matrix_shape": [
+        19,
+        10
+      ],
+      "matrix_rank": 8,
+      "declaration": "ConstructionSynthesis.coordinate0_transport"
+    },
+    {
+      "power": 1,
+      "expr": "a - 1",
+      "matrix_shape": [
+        19,
+        10
+      ],
+      "matrix_rank": 8,
+      "declaration": "ConstructionSynthesis.coordinate1_transport"
+    },
+    {
+      "power": 2,
+      "expr": "D**2",
+      "matrix_shape": [
+        12,
+        10
+      ],
+      "matrix_rank": 6,
+      "declaration": "ConstructionSynthesis.coordinate2_transport"
+    },
+    {
+      "power": 2,
+      "expr": "C*a - C - D",
+      "matrix_shape": [
+        12,
+        10
+      ],
+      "matrix_rank": 6,
+      "declaration": "ConstructionSynthesis.coordinate3_transport"
+    },
+    {
+      "power": 2,
+      "expr": "D*a - D",
+      "matrix_shape": [
+        12,
+        10
+      ],
+      "matrix_rank": 6,
+      "declaration": "ConstructionSynthesis.coordinate4_transport"
+    },
+    {
+      "power": 2,
+      "expr": "a**2 - 2*a + 1",
+      "matrix_shape": [
+        12,
+        10
+      ],
+      "matrix_rank": 6,
+      "declaration": "ConstructionSynthesis.coordinate5_transport"
+    }
+  ],
+  "independent_ratios": [
+    {
+      "numerator": 0,
+      "denominator": 1,
+      "formula": "D/(a - 1)"
+    },
+    {
+      "numerator": 2,
+      "denominator": 3,
+      "formula": "D**2/(C*a - C - D)"
+    }
+  ],
+  "quadratic_coefficient_sweep": [
+    {
+      "b": -2,
+      "c": -2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -2,
+      "c": -1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -2,
+      "c": 0,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -2,
+      "c": 1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -2,
+      "c": 2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -1,
+      "c": -2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -1,
+      "c": -1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -1,
+      "c": 0,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": -1,
+      "c": 1,
+      "coordinates_involving_C": [
+        "C*a - C - D"
+      ]
+    },
+    {
+      "b": -1,
+      "c": 2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 0,
+      "c": -2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 0,
+      "c": -1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 0,
+      "c": 0,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 0,
+      "c": 1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 0,
+      "c": 2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 1,
+      "c": -2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 1,
+      "c": -1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 1,
+      "c": 0,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 1,
+      "c": 1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 1,
+      "c": 2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 2,
+      "c": -2,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 2,
+      "c": -1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 2,
+      "c": 0,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 2,
+      "c": 1,
+      "coordinates_involving_C": []
+    },
+    {
+      "b": 2,
+      "c": 2,
+      "coordinates_involving_C": []
+    }
+  ],
+  "seconds": 1.4230704580040765,
+  "generated_sha256": "492297ab7217c15f05fcd90a3a5a4a369c952145af7fa2fd7e56c170087192f2",
+  "evidence": "exact symbolic computation; Lean validation recorded separately",
+  "limitations": [
+    "selected dynamics and search grammar authored by a human/agent",
+    "reconstruction control; algorithmic and mathematical novelty not claimed",
+    "no polynomial found means only absence within the bounded search class",
+    "generator sees only selected definitions; its designer knew the existing coordinate"
+  ]
+}

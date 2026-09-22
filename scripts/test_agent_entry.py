@@ -22,6 +22,20 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Presentation and contributor setup requests must reach infrastructure
+    # even when they mention proofs.
+    "Prepare Lean repository for Show HN: newcomer clone setup runnable proof demo README drift readiness": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Improve the outsider experience of this research repository": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Improve the infrastructure so others can continue the proofs": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Improve the contributor experience for someone using this repository for the first time": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
     # Open-ended research must reach its own lane. Before that lane existed,
     # the first request below fell through to the repository-explanation
     # fallback, so an agent asked to think was handed a tour instead.

@@ -755,6 +755,10 @@
       "title": "Improve cold-clone architecture or agent navigation",
       "priority": 50,
       "task_cues": [
+        "show hn",
+        "outsider experience",
+        "newcomer setup",
+        "improve the infrastructure",
         "architecture",
         "agent entry",
         "cold clone",
