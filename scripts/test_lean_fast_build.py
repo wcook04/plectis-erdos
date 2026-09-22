@@ -88,7 +88,7 @@ class LeanFastBuildTests(unittest.TestCase):
                     [], 0, "\n".join(str(p.relative_to(root)) for p in sources[3:]), ""
                 ),
             ]
-            with mock.patch.object(fast.subprocess, "run", side_effect=results):
+            with mock.patch.object(fast.singleflight, "run_bounded", side_effect=results):
                 self.assertEqual(
                     fast.changed_targets("HEAD", modules, root),
                     sorted(names[p] for p in sources if p != rejected_probe),
@@ -1010,7 +1010,7 @@ import Pkg.TooLate
                     "content-current config timestamp must not rebuild"
                 )
             ), mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(fast.main(["Pkg.Root"]), 0)
 
@@ -1046,7 +1046,7 @@ import Pkg.TooLate
             ), mock.patch.object(
                 fast, "build_wave", return_value=[]
             ) as build, mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(fast.main(["Pkg.Root"]), 0)
 
@@ -1077,7 +1077,7 @@ import Pkg.TooLate
                 ) as traced, mock.patch.object(
                     fast, "build_wave", return_value=[]
                 ) as build, mock.patch.object(
-                    fast.subprocess, "run", return_value=completed
+                    fast.singleflight, "run_bounded", return_value=completed
                 ) as run:
                     self.assertEqual(fast.main(["Pkg.Root"]), 0)
 
@@ -1115,7 +1115,7 @@ import Pkg.TooLate
                 "build_wave",
                 side_effect=lambda names, jobs, root: built.append(list(names)) or [],
             ), mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(fast.main(["Pkg.Consumer"]), 0)
 
