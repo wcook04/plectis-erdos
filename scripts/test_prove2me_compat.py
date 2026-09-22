@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused offline round-trip tests for the single #249 Prove2Me candidate."""
+"""Focused offline round-trip tests for the preferred #257 and legacy #249 packets."""
 
 import copy
 import unittest
@@ -12,13 +12,30 @@ class Prove2MeCompatTests(unittest.TestCase):
     def setUpClass(cls):
         cls.packet = compat.prepare()
 
-    def test_prepare_binds_public_source_and_open_boundary(self):
+    def test_prepare_prefers_source_bound_257_theorem(self):
         packet = self.packet
-        self.assertEqual(packet["claim_id"], compat.CLAIM_ID)
+        self.assertEqual(packet["unit"], compat.DEFAULT_UNIT)
+        self.assertEqual(packet["claim_id"], "reciprocal_summable_support")
+        self.assertEqual(packet["paper_label"], "res:reciprocal-support")
+        self.assertIn("remaining_open.universal_257_all_infinite_supports", packet["remaining_open_proposition_ids"])
+        self.assertEqual(packet["native_draft"]["theorem_name"],
+                         "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal")
+        self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395", packet["native_draft"]["source"])
+        self.assertIn("plectis-erdos/blob/", packet["native_draft"]["source"])
+        self.assertIn("erdos-257-mersenne-support-subseries.tex#L90", packet["native_draft"]["paper_source"])
+        self.assertEqual(packet["mathlib_rev"], "5e932f97dd25535344f80f9dd8da3aab83df0fe6")
+
+    def test_249_remains_selectable_with_its_own_source_and_boundary(self):
+        packet = compat.prepare("erdos249_all_base_totient_kernel_paper_theorem")
+        self.assertEqual(packet["claim_id"], "all_base_totient_kernel_index_reduction")
         self.assertEqual(packet["paper_label"], "thm:kkernelrank")
         self.assertIn("remaining_open.erdos_249_irrationality", packet["remaining_open_proposition_ids"])
         self.assertIn("FullKernelAssemblies.lean#L", packet["native_draft"]["source"])
-        self.assertEqual(packet["mathlib_rev"], "5e932f97dd25535344f80f9dd8da3aab83df0fe6")
+        self.assertIn("unconditional_rank_declaration", packet["local_attachment"])
+        self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
+        swapped = copy.deepcopy(packet)
+        swapped["unit"] = compat.DEFAULT_UNIT
+        self.assertIn("source_or_claim_mismatch", compat.validate(swapped)["blockers"])
 
     def test_validate_blocks_environment_source_and_type_mismatch(self):
         missing = compat.validate(self.packet)
@@ -29,7 +46,7 @@ class Prove2MeCompatTests(unittest.TestCase):
         stage = {"source_sha256": "wrong", "original_type": "α", "staged_type": "β",
                  "declaration_graph_receipt": "graph", "sketch_info_receipt": "sketch",
                  "compiled_exact_upload_text": True, "compiled_solution": True,
-                 "formal_statement": f"theorem {compat.THEOREM} (n : Nat) : n = n := by sorry",
+                 "formal_statement": f"theorem {self.packet['native_draft']['theorem_name']} (n : Nat) : n = n := by sorry",
                  "preamble": "import Mathlib", "solution": "theorem solution (n : Nat) : n = n := by rfl"}
         bad = compat.validate(self.packet, env, stage)
         self.assertIn("environment_mismatch", bad["blockers"])
@@ -37,11 +54,11 @@ class Prove2MeCompatTests(unittest.TestCase):
         self.assertIn("type_mismatch_or_missing", bad["blockers"])
         env["environments"][0] = {"mathlib_rev": self.packet["mathlib_rev"],
                                    "toolchain": self.packet["lean_toolchain"]}
-        stage["source_sha256"] = self.packet["sources_sha256"][compat.LEAN_SOURCE]
+        stage["source_sha256"] = self.packet["sources_sha256"][compat.UNITS[compat.DEFAULT_UNIT]["lean_source"]]
         stage["staged_type"] = stage["original_type"]
         self.assertEqual(compat.validate(self.packet, env, stage)["status"], "draft_for_review")
         tampered = copy.deepcopy(self.packet)
-        tampered["sources_sha256"][compat.LEAN_SOURCE] = "0" * 64
+        tampered["sources_sha256"][compat.UNITS[compat.DEFAULT_UNIT]["lean_source"]] = "0" * 64
         self.assertIn("source_or_claim_mismatch", compat.validate(tampered)["blockers"])
         tampered = copy.deepcopy(self.packet)
         tampered["native_draft"]["natural_language_statement"] = "unrelated theorem"

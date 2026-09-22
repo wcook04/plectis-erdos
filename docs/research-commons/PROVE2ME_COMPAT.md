@@ -1,88 +1,109 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Offline Prove2Me compatibility: one #249 theorem
+# Offline Prove2Me compatibility: one theorem at a time
 
-`scripts/prove2me_compat.py` prepares a source-bound candidate for the
-**unconditional finite-level all-base totient-kernel theorem** in the #249
-paper. It reads `docs/claims.json`, the paper, the Lean theorem and its
-unconditional rank dependency. It writes derived JSON outside the checkout.
-It does not use a Prove2Me account or change any claim, proof, paper or
-accepted-contribution record.
+`scripts/prove2me_compat.py` prepares a source-bound, **offline** candidate for
+one theorem. Its preferred showcase is the #257 reciprocal-summable support
+result: if an infinite set of positive integers $A$ satisfies
+$\sum_{a\in A}1/a<\infty$, then $\sum_{a\in A}1/(b^a-1)$ is irrational for
+every integer base $b\ge2$. The exact Lean declaration is
+`Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal` in
+`lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean`; the paper states
+it at `res:reciprocal-support` in
+`paper/257/erdos-257-mersenne-support-subseries.tex`. The registered claim is
+`reciprocal_summable_support`, with status `formalised here`. Erdős stated
+this all-base extension after his pairwise-coprime case; the paper supplies
+an averaging proof. The hypothesis does not cover every infinite support, so
+the universal #257 assertion remains open.
 
-The chosen paper theorem is `thm:kkernelrank`, backed by
-`ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel` in
-`lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean`.
-`Erdos249257.finrank_allBaseThroughLevelFamily_eq` in
-`lean/Erdos249257/AllBaseTotientKernel.lean` proves the exact rank
-unconditionally. The registry claim
-`all_base_totient_kernel_index_reduction` also documents a *separate*
-conditional reusable interface. Neither object proves the irrationality of
-the binary totient series. The paper credits Martin's broader affine
-independence theorem as prior work; that theorem is not an axiom of this Lean
-proof.
+The earlier #249 finite-level totient-kernel theorem remains selectable as a
+technical prototype with `--unit erdos249_all_base_totient_kernel_paper_theorem`.
+Its registered claim is `all_base_totient_kernel_index_reduction`, and it does
+not settle the irrationality of the binary totient series. Each packet binds
+one unit, claim row, Lean source, paper anchor, source hashes, local pin and
+public-main source commit. The adapter never changes a mathematical claim,
+proof, paper or accepted-contribution record.
 
 ## Field map
 
-| Local fact | Prove2Me object | Kept locally or omitted |
+| Local fact | Prove2Me object | Local attachment or exclusion |
 | --- | --- | --- |
-| Bounded paper theorem, statement, title, source, tags | One native theorem via `submit-problem`; after publication, one proof via `verify` | Source file hashes, exact declaration, paper label and local claim ID remain attached to the packet. |
-| Submission and verification responses | Native publish job, theorem ID and proof submission ID | The local response ledger retains status, error and correction lineage. A queued job is never treated as a theorem. |
-| Paper passage, Martin credit, conditional-interface distinction and #249 open boundary | Source citation and human explanation where suitable | Full source hashes and the precise limitations remain local. |
-| Failed research route or future open #249 continuation | A discussion reference or mission could be chosen in a later scoped project | No mission is created for this already-proved finite-level theorem. |
-| Private parent state, credentials, novelty, priority and peer-review claims | None | Intentionally omitted. |
+| Selected theorem statement, title, source and tags | One native theorem via `submit-problem`; after publication, one proof via `verify` | Source hashes, exact declaration, paper label and claim ID stay in the packet. |
+| Submission and verification responses | Native publish job, theorem ID and proof submission ID | Local response state retains status, error and correction lineage. A queued job is not a theorem. |
+| Paper passage, Erdős attribution and exact open boundary | Source citation and human explanation where suitable | The full evidence and limitations stay local. |
+| Private parent state, credentials, novelty, priority and peer-review claims | None | Omitted. |
 
-Prove2Me already supports native [theorem and proof publication](https://github.com/prove2me/prove2me_workspace/blob/main/SKILL.md),
+Prove2Me documents native [theorem and proof publication](https://github.com/prove2me/prove2me_workspace/blob/main/SKILL.md),
 [asynchronous publish jobs and correction/deprecation](https://github.com/prove2me/prove2me_workspace/blob/main/references/contribute.md),
 and [verification verdicts](https://github.com/prove2me/prove2me_workspace/blob/main/references/prove.md).
-This adapter maps to those objects; it does not recreate them.
+The adapter maps to those objects; it does not recreate them.
 
 ## Prepare and validate
 
-From a clone with `origin/main` available:
+From a clone with `origin/main` available, write the preferred #257 packet
+outside the checkout:
 
 ```sh
-python3 scripts/prove2me_compat.py prepare --out /tmp/erdos249-p2m/packet.json
+python3 scripts/prove2me_compat.py prepare --out /tmp/erdos257-p2m/packet.json
 python3 scripts/prove2me_compat.py validate \
-  --packet /tmp/erdos249-p2m/packet.json \
-  --out /tmp/erdos249-p2m/validation.json
+  --packet /tmp/erdos257-p2m/packet.json \
+  --out /tmp/erdos257-p2m/validation.json
 ```
 
-The second command exits `2` with blockers today. The local pin is Lean
+For the earlier #249 packet, use:
+
+```sh
+python3 scripts/prove2me_compat.py prepare \
+  --unit erdos249_all_base_totient_kernel_paper_theorem \
+  --out /tmp/erdos249-p2m/packet.json
+```
+
+The bare validation command exits `2` with blockers. The local pin is Lean
 v4.29.1 and Mathlib `5e932f97dd25535344f80f9dd8da3aab83df0fe6`.
-Prove2Me's public documentation shows other example environments; the live
-list is the authenticated `GET /api/v1/environments` response. A matching
-environment has not been observed for this source pin. Record an actual
-response in an environment JSON file with `source_url` set to
+An authenticated, read-only `GET /api/v1/environments` on 23 September 2026
+(UK time) returned these available pairs:
+
+| Lean | Mathlib revision |
+| --- | --- |
+| v4.33.1 | `0df444a360eaa60ab8c11dca51a86af692955474` |
+| v4.29.0-rc3 | `777aaa61dcd2a1258d2b4962dbe983ede4d23b2e` |
+| v4.30.0 | `c5ea00351c28e24afc9f0f84379aa41082b1188f` |
+
+None matches the repository pin. The available environments can change; check
+the live endpoint again before a staged port. For a local validation receipt,
+record an actual response with `source_url` set to
 `https://prove2.me/api/v1/environments`,
-`captured_with_authenticated_request: true`, and the returned
-`environments` array. That flag is an operator-supplied provenance note,
-not cryptographic attestation. Do not invent a matching row.
+`captured_with_authenticated_request: true`, and its returned `environments`
+array. This is a provenance note, not cryptographic attestation. Do not invent
+a matching row or treat a different environment as compatible. No theorem or
+proof was submitted during this compatibility check.
 
 The [official whole-project import guide](https://github.com/prove2me/prove2me_workspace/blob/main/references/upload_full_project.md)
-requires a matching environment, compiled declaration graph and sketch
-spans, skeleton subtraction, a locally compiled staged tree, and an exact
-original-versus-staged Lean type comparison. This script does **not**
-perform those transformations. A staged JSON may supply
-`source_sha256`, `declaration_graph_receipt`, `sketch_info_receipt`,
-`original_type`, `staged_type`, `compiled_exact_upload_text`,
-`compiled_solution`, `formal_statement`, `preamble`, and `solution`.
-`validate --environment ... --staged ...` checks the pins, source hash,
-type equality and presence of those supplied receipts. It cannot attest
-that the named Lean work actually ran; the operator must inspect the
-receipts and replay the exact upload text before any submission.
+requires a matching environment, compiled declaration graph and sketch spans,
+skeleton subtraction, a locally compiled staged tree, and an exact
+original-versus-staged Lean type comparison. This script does **not** perform
+those transformations. A staged JSON may supply `source_sha256`,
+`declaration_graph_receipt`, `sketch_info_receipt`, `original_type`,
+`staged_type`, `compiled_exact_upload_text`, `compiled_solution`,
+`formal_statement`, `preamble`, and `solution`. `validate --environment ...
+--staged ...` checks the selected theorem name, source hash, pin, type equality
+and presence of those supplied receipts. It cannot attest that the named Lean
+work actually ran or that the staged statement represents the source theorem;
+the operator must inspect the extractor output and replay the exact upload
+text before any submission.
 
-`export` uses the same gates and writes a **draft for review** containing
-the prospective `submit-problem` fields and a separate solution string.
-It never sends either. The draft is blocked when the source, environment,
-type or required receipt is missing or mismatched:
+`export` uses the same gates and writes a **draft for review** containing the
+prospective `submit-problem` fields and a separate solution string. It never
+sends either. The draft is blocked when the source, environment, type or
+required receipt is missing or mismatched:
 
 ```sh
 python3 scripts/prove2me_compat.py export \
-  --packet /tmp/erdos249-p2m/packet.json \
-  --environment /tmp/erdos249-p2m/environments.json \
-  --staged /tmp/erdos249-p2m/staged.json \
-  --out /tmp/erdos249-p2m/export.json
+  --packet /tmp/erdos257-p2m/packet.json \
+  --environment /tmp/erdos257-p2m/environments.json \
+  --staged /tmp/erdos257-p2m/staged.json \
+  --out /tmp/erdos257-p2m/export.json
 ```
 
 ## Record a later external response
@@ -92,12 +113,12 @@ and reconcile it into a packet-specific local attachment:
 
 ```sh
 python3 scripts/prove2me_compat.py status --kind publish_job \
-  --response /tmp/erdos249-p2m/job-response.json \
-  --out /tmp/erdos249-p2m/job-event.json
+  --response /tmp/erdos257-p2m/job-response.json \
+  --out /tmp/erdos257-p2m/job-event.json
 python3 scripts/prove2me_compat.py reconcile \
-  --packet /tmp/erdos249-p2m/packet.json \
-  --event /tmp/erdos249-p2m/job-event.json \
-  --state /tmp/erdos249-p2m/external-state.json
+  --packet /tmp/erdos257-p2m/packet.json \
+  --event /tmp/erdos257-p2m/job-event.json \
+  --state /tmp/erdos257-p2m/external-state.json
 ```
 
 Use `--kind verification` for a saved `GET /verify?submission_id=...`
@@ -118,4 +139,4 @@ These local statuses are imported evidence, not independent verification of
 response authenticity. `ACCEPTED` records a Prove2Me proof verdict;
 `SKETCH_ACCEPTED` records a reduction with open children. Neither changes
 the mathematical claim in `docs/claims.json`, grants a novelty verdict, or
-marks the #249 irrationality question solved.
+marks the universal #257 or #249 question solved.

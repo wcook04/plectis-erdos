@@ -91,15 +91,14 @@ The counts in the corpus inventory are navigation counts, not novelty claims.
 
 ## Problem papers
 
-For a first look, start with **#257**. A Lean-checked theorem proves that for
-every integer base $b\ge2$, an infinite exponent set $A$ with
-$\sum_{a\in A}1/a<\infty$ gives an irrational sum
-$\sum_{a\in A}1/(b^a-1)$. Erdős stated this extension; the paper gives its
-proof and shows where the unrestricted support question remains open. Then
-read **#249** for exact ranks of totient kernels, the sequences obtained by
-restricting Euler's totient to arithmetic progressions. Each paper separates
-ordinary proofs, Lean-checked results and open questions; the results guide
-covers all eight programmes.
+For a first look, start with **#257**: a Lean-checked weighted condition makes
+reciprocal Mersenne subseries irrational at every integer base, even for some
+supports whose reciprocal sum diverges. A simpler checked theorem covers every
+infinite support $A$ with $\sum_{a\in A}1/a<\infty$; Erdős stated that
+extension. The unrestricted support question remains open. Then read **#249**
+for exact ranks of totient kernels, obtained by restricting Euler's totient to
+arithmetic progressions. Each paper separates ordinary proofs, Lean-checked
+results and open questions; the results guide covers all eight programmes.
 
 **Reading the eight together.** The whole collection is also material for new
 mathematics: reusable constructions, connections between problems and questions

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline, source-bound Prove2Me handoff for one public #249 theorem.
+"""Offline, source-bound Prove2Me handoff for one selected public theorem.
 
 This prepares a candidate and reconciles recorded API responses. It never
 contacts Prove2Me, compiles Lean, or changes the local mathematical claim.
@@ -17,12 +17,63 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "plectis_prove2me_compat_v1"
-CLAIM_ID = "all_base_totient_kernel_index_reduction"
-THEOREM = "ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel"
-LEAN_SOURCE = "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean"
-RANK_SOURCE = "lean/Erdos249257/AllBaseTotientKernel.lean"
-PAPER_SOURCE = "paper/249/erdos-249-binary-totient-series.tex"
-SOURCE_PATHS = (LEAN_SOURCE, RANK_SOURCE, PAPER_SOURCE)
+DEFAULT_UNIT = "erdos257_reciprocal_summable_support"
+UNITS = {
+    DEFAULT_UNIT: {
+        "claim_id": "reciprocal_summable_support",
+        "claim_status": "formalised here",
+        "registered_declaration": True,
+        "theorem": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal",
+        "lean_source": "lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+        "paper_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "paper_label": "res:reciprocal-support",
+        "remaining_open": "remaining_open.universal_257_all_infinite_supports",
+        "title": "Reciprocal-summable support irrationality at every integer base",
+        "statement": (
+            "Let $A$ be an infinite set of positive integers with "
+            "$\\sum_{a\\in A}1/a<\\infty$. For every integer base $b\\ge 2$, "
+            "$\\sum_{a\\in A}1/(b^a-1)$ is irrational. The reciprocal-summability "
+            "hypothesis is part of this theorem; it does not settle "
+            "the question for every infinite support."
+        ),
+        "tags": ["number-theory", "irrationality", "erdos-257"],
+        "attachment": {
+            "open_boundary": "Irrationality for every infinite support in Erdős #257 remains open.",
+            "prior_credit": "Erdős stated the all-base reciprocal-summable extension after proving the pairwise-coprime case; the paper gives a complete averaging proof.",
+            "excluded": ["universal #257 irrationality as a proved theorem", "weaker auxiliary lemmas as standalone missions", "novelty or priority verdict"],
+        },
+    },
+    "erdos249_all_base_totient_kernel_paper_theorem": {
+        "claim_id": "all_base_totient_kernel_index_reduction",
+        "claim_status": "proved here",
+        "theorem": "ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel",
+        "lean_source": "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean",
+        "dependency_source": "lean/Erdos249257/AllBaseTotientKernel.lean",
+        "dependency_needle": "theorem finrank_allBaseThroughLevelFamily_eq ",
+        "paper_source": "paper/249/erdos-249-binary-totient-series.tex",
+        "paper_label": "thm:kkernelrank",
+        "remaining_open": "remaining_open.erdos_249_irrationality",
+        "title": "All-base finite-level totient-kernel basis and rank",
+        "statement": (
+            "Let $k\\ge 2$ be an integer base, $e\\ge 1$ a depth, and "
+            "$F_{j,r}^{(k)}(n)=\\varphi(k^j n+r)$ the Euler-totient sections. "
+            "Let $V_{k,e}$ be their rational span for $0\\le j\\le e$ and "
+            "$0\\le r<k^j$. Then\n\n"
+            "$$\\dim_{\\mathbb Q} V_{k,e}=k^e+1.$$\n\n"
+            "The canonical family consisting of the two zero-residue channels "
+            "and the sections with $1\\le r<k^j$ and $k\\nmid r$ is a basis; "
+            "every omitted section has the explicit scalar reduction in the "
+            "cited paper. This finite-level kernel theorem does not establish "
+            "irrationality of the binary totient series."
+        ),
+        "tags": ["number-theory", "totient", "erdos-249"],
+        "attachment": {
+            "prior_credit": "Martin, Theorem 1, is a broader affine-independence antecedent; the Lean proof is independent.",
+            "open_boundary": "Irrationality of ∑ φ(n)/2ⁿ remains open.",
+            "excluded": ["#249 irrationality as a proved theorem", "bulk implementation lemmas as standalone missions", "novelty or priority verdict"],
+        },
+    },
+}
 PUBLISH_STATES = {"PENDING", "COMPILING", "PUBLISHED", "FAILED", "ERROR"}
 VERIFY_STATES = {"PENDING", "ACCEPTED", "SKETCH_ACCEPTED", "CE", "WA", "SORRY", "FAILED", "ERROR"}
 TERMINAL = {"PUBLISHED", "FAILED", "ERROR", "ACCEPTED", "SKETCH_ACCEPTED", "CE", "WA", "SORRY"}
@@ -61,34 +112,49 @@ def source_line(path: str, needle: str) -> int:
     return matches[0]
 
 
-def prepare() -> dict:
+def prepare(unit: str = DEFAULT_UNIT) -> dict:
+    if unit not in UNITS:
+        raise ValueError(f"unknown theorem unit {unit!r}")
+    config = UNITS[unit]
+    lean_source = config["lean_source"]
+    paper_source = config["paper_source"]
+    source_paths = (lean_source, paper_source) + ((config["dependency_source"],) if "dependency_source" in config else ())
     claims = read_json(ROOT / "docs/claims.json")["claims"]
-    matches = [row for row in claims if row.get("id") == CLAIM_ID]
+    matches = [row for row in claims if row.get("id") == config["claim_id"]]
     if len(matches) != 1:
-        raise ValueError(f"expected one claim {CLAIM_ID}")
+        raise ValueError(f"expected one claim {config['claim_id']}")
     claim = matches[0]
-    if claim.get("paper_label") != "thm:kkernelrank" or "remaining_open.erdos_249_irrationality" not in claim.get("remaining_open_proposition_ids", []):
-        raise ValueError("the #249 claim/paper/open-boundary mapping changed")
-    line = source_line(LEAN_SOURCE, "theorem displayed_all_base_kernel ")
-    rank_line = source_line(RANK_SOURCE, "theorem finrank_allBaseThroughLevelFamily_eq ")
-    paper_line = source_line(PAPER_SOURCE, "\\label{thm:kkernelrank}")
-    sources = {path: digest((ROOT / path).read_bytes()) for path in SOURCE_PATHS}
+    if (claim.get("paper_label") != config["paper_label"]
+            or config["remaining_open"] not in claim.get("remaining_open_proposition_ids", [])
+            or claim.get("status") != config["claim_status"]
+            or (config.get("registered_declaration") and not any(
+                row.get("name") == config["theorem"].split(".")[-1]
+                and row.get("module") == lean_source.removeprefix("lean/")
+                for row in claim.get("declarations", [])))):
+        raise ValueError("the claim/declaration/paper/open-boundary mapping changed")
+    line = source_line(lean_source, f"theorem {config['theorem'].split('.')[-1]}")
+    if config.get("registered_declaration") and not any(
+            row.get("name") == config["theorem"].split(".")[-1] and row.get("line") == line
+            for row in claim["declarations"]):
+        raise ValueError("the claim declaration line changed")
+    paper_line = source_line(paper_source, f"\\label{{{config['paper_label']}}}")
+    sources = {path: digest((ROOT / path).read_bytes()) for path in source_paths}
     head = git("rev-parse", "HEAD")
     public_commit = git("rev-parse", "origin/main")
     public_source_matches = all(
         digest(subprocess.check_output(["git", "-C", str(ROOT), "show", f"{public_commit}:{path}"])) == sources[path]
-        for path in (LEAN_SOURCE, RANK_SOURCE, PAPER_SOURCE)
+        for path in source_paths
     )
     manifest = read_json(ROOT / "lake-manifest.json")
     mathlib = next(pkg for pkg in manifest["packages"] if pkg["name"] == "mathlib")
     packet = {
         "schema": SCHEMA,
-        "unit": "erdos249_all_base_totient_kernel_paper_theorem",
+        "unit": unit,
         "local_commit": head,
         "public_source_commit": public_commit if public_source_matches else None,
         "sources_sha256": sources,
         "claim_record_sha256": digest(canonical(claim)),
-        "claim_id": CLAIM_ID,
+        "claim_id": config["claim_id"],
         "claim_status": claim["status"],
         "paper_label": claim["paper_label"],
         "remaining_open_proposition_ids": claim["remaining_open_proposition_ids"],
@@ -96,40 +162,29 @@ def prepare() -> dict:
         "mathlib_rev": mathlib["rev"],
         "native_draft": {
             "object": "theorem_then_proof",
-            "theorem_name": THEOREM,
-            "theorem_title": "All-base finite-level totient-kernel basis and rank",
-            "natural_language_statement": (
-                "Let $k\\ge 2$ be an integer base, $e\\ge 1$ a depth, and "
-                "$F_{j,r}^{(k)}(n)=\\varphi(k^j n+r)$ the Euler-totient sections. "
-                "Let $V_{k,e}$ be their rational span for $0\\le j\\le e$ and "
-                "$0\\le r<k^j$. Then\n\n"
-                "$$\\dim_{\\mathbb Q} V_{k,e}=k^e+1.$$\n\n"
-                "The canonical family consisting of the two zero-residue channels "
-                "and the sections with $1\\le r<k^j$ and $k\\nmid r$ is a basis; "
-                "every omitted section has the explicit scalar reduction in the "
-                "cited paper. This finite-level kernel theorem does not establish "
-                "irrationality of the binary totient series."
-            ),
-            "source": (f"https://github.com/wcook04/plectis-erdos-integration/blob/{public_commit}/"
-                       f"{LEAN_SOURCE}#L{line}" if public_source_matches else None),
-            "paper_source": (f"https://github.com/wcook04/plectis-erdos-integration/blob/{public_commit}/"
-                             f"{PAPER_SOURCE}#L{paper_line}" if public_source_matches else None),
-            "tags": ["number-theory", "totient", "erdos-249"],
+            "theorem_name": config["theorem"],
+            "theorem_title": config["title"],
+            "natural_language_statement": config["statement"],
+            "source": (f"https://github.com/wcook04/plectis-erdos/blob/{public_commit}/"
+                       f"{lean_source}#L{line}" if public_source_matches else None),
+            "paper_source": (f"https://github.com/wcook04/plectis-erdos/blob/{public_commit}/"
+                             f"{paper_source}#L{paper_line}" if public_source_matches else None),
+            "tags": config["tags"],
         },
         "local_attachment": {
-            "source_declaration": f"{LEAN_SOURCE}:{line}",
-            "unconditional_rank_declaration": f"{RANK_SOURCE}:{rank_line}",
-            "paper_statement": f"{PAPER_SOURCE}:{paper_line}",
-            "prior_credit": "Martin, Theorem 1, is a broader affine-independence antecedent; the Lean proof is independent.",
-            "open_boundary": "Irrationality of ∑ φ(n)/2ⁿ remains open.",
-            "excluded": ["#249 irrationality as a proved theorem", "bulk implementation lemmas as standalone missions", "novelty or priority verdict"],
+            "source_declaration": f"{lean_source}:{line}",
+            "paper_statement": f"{paper_source}:{paper_line}",
+            **config["attachment"],
         },
         "mapping": {
             "native": ["theorem statement", "natural-language statement", "source citation", "proof submission verdict", "external job and theorem IDs"],
-            "local_attachment": ["source hashes", "paper passage", "conditional-interface distinction", "open boundary", "Martin credit", "type and replay receipts"],
-            "omitted": ["private parent state", "service credentials", "mission for already-proved rank", "irrationality or acceptance claims"],
+            "local_attachment": ["source hashes", "paper passage", "prior credit", "open boundary", "type and replay receipts"],
+            "omitted": ["private parent state", "service credentials", "mission for an already-proved theorem", "unsupported acceptance claims"],
         },
     }
+    if "dependency_source" in config:
+        dependency_line = source_line(config["dependency_source"], config["dependency_needle"])
+        packet["local_attachment"]["unconditional_rank_declaration"] = f"{config['dependency_source']}:{dependency_line}"
     packet["packet_id"] = digest(canonical({"unit": packet["unit"], "sources": sources,
                                             "claim_record": packet["claim_record_sha256"]}))
     return packet
@@ -141,10 +196,10 @@ def validate(packet: dict, environment: dict | None = None, staged: dict | None 
         blockers.append("unsupported_packet_schema")
         return {"status": "blocked", "blockers": blockers}
     try:
-        current = prepare()
+        current = prepare(packet.get("unit"))
         if packet.get("packet_id") != current["packet_id"] or packet.get("sources_sha256") != current["sources_sha256"]:
             blockers.append("source_or_claim_mismatch")
-        for field in ("claim_record_sha256", "claim_id", "claim_status", "paper_label", "remaining_open_proposition_ids",
+        for field in ("unit", "public_source_commit", "claim_record_sha256", "claim_id", "claim_status", "paper_label", "remaining_open_proposition_ids",
                       "lean_toolchain", "mathlib_rev", "native_draft", "local_attachment", "mapping"):
             if packet.get(field) != current.get(field):
                 blockers.append("packet_metadata_mismatch")
@@ -165,7 +220,8 @@ def validate(packet: dict, environment: dict | None = None, staged: dict | None 
     if staged is None:
         blockers.append("platformized_source_missing")
     else:
-        if staged.get("source_sha256") != packet.get("sources_sha256", {}).get(LEAN_SOURCE):
+        config = UNITS.get(packet.get("unit"), {})
+        if staged.get("source_sha256") != packet.get("sources_sha256", {}).get(config.get("lean_source")):
             blockers.append("staged_source_mismatch")
         if staged.get("original_type") != staged.get("staged_type") or not staged.get("original_type"):
             blockers.append("type_mismatch_or_missing")
@@ -175,7 +231,7 @@ def validate(packet: dict, environment: dict | None = None, staged: dict | None 
             blockers.append("staged_compile_receipts_missing")
         formal = staged.get("formal_statement", "")
         solution = staged.get("solution", "")
-        if not formal.startswith(f"theorem {THEOREM} ") or not formal.rstrip().endswith(":= by sorry"):
+        if not formal.startswith(f"theorem {config.get('theorem')} ") or not formal.rstrip().endswith(":= by sorry"):
             blockers.append("formal_statement_missing_or_wrong_name")
         if "theorem solution " not in solution or "sorry" in solution:
             blockers.append("solution_missing_or_contains_sorry")
@@ -266,6 +322,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     prep = sub.add_parser("prepare")
+    prep.add_argument("--unit", choices=tuple(UNITS), default=DEFAULT_UNIT)
     prep.add_argument("--out", type=Path, required=True)
     for name in ("validate", "export"):
         cmd = sub.add_parser(name)
@@ -285,7 +342,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         if args.command == "prepare":
-            value = prepare()
+            value = prepare(args.unit)
             write_json(args.out, value)
         elif args.command in ("validate", "export"):
             packet = read_json(args.packet)
