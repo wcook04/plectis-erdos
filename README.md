@@ -55,11 +55,9 @@ sources, checks and credit kept visible.
   `1/(2^n-1)`; finite survival never proves membership, and this calculation
   does not settle Problem 257.
 
-The short papers are the main exposition: the question, the strongest results,
-the ideas behind their proofs and what remains open. The longer records keep
-the details, computations and approaches that stopped. You can read both
-without Lean or a coding agent. The website brings these papers, their evidence
-and ways to contribute into one reading experience. [A reader's way in](docs/READING_GUIDE.md)
+The short papers explain the questions and results; the longer records keep
+calculations and failed routes. Both are readable without Lean. The website
+joins them with evidence and ways to contribute. [A reader's way in](docs/READING_GUIDE.md)
 introduces the questions; [Results and limits](docs/RESULTS.md) puts the results
 beside their remaining open questions.
 
@@ -81,25 +79,27 @@ account or private system is required to [follow one claim](docs/REPRODUCIBILITY
 
 I prioritised expository quality and a collaborative structure over trying to
 solve the problems; I hope to now solve them with others rather than alone.
-The idea is to turn intermediary findings into something reusable by
-mathematicians who actually understand the material. That includes the routes
-that stopped and the reasons they stopped.
+The aim is to make intermediate results and failed routes reusable by
+mathematicians who understand the material.
 
 I am responsible for all claims, sources and the release. Plectis is an
 independent, AI-assisted prototype, not something I am declaring finished.
 It has had no independent mathematical review (trying to get this), and I
 need help to get anywhere near "done". Meaning, novelty and significance still
 need human judgement.
+The counts in the corpus inventory are navigation counts, not novelty claims.
 
 ## Problem papers
 
-For a first look, start with **#249** for bases and exact ranks of totient
-kernels: the sequences obtained by restricting Euler's totient to arithmetic
-progressions. Or start with **#257** for weighted conditions on the exponents
-that force reciprocal Mersenne subseries to be irrational, and for
-achievement-set measure. Each paper distinguishes ordinary proofs,
-Lean-checked results and open questions; the results guide covers all eight
-programmes.
+For a first look, start with **#257**. A Lean-checked theorem proves that for
+every integer base $b\ge2$, an infinite exponent set $A$ with
+$\sum_{a\in A}1/a<\infty$ gives an irrational sum
+$\sum_{a\in A}1/(b^a-1)$. Erdős stated this extension; the paper gives its
+proof and shows where the unrestricted support question remains open. Then
+read **#249** for exact ranks of totient kernels, the sequences obtained by
+restricting Euler's totient to arithmetic progressions. Each paper separates
+ordinary proofs, Lean-checked results and open questions; the results guide
+covers all eight programmes.
 
 **Reading the eight together.** The whole collection is also material for new
 mathematics: reusable constructions, connections between problems and questions

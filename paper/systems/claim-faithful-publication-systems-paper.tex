@@ -58,7 +58,8 @@ research state, scoped changes, formal checks, and public explanation while
 keeping their evidential roles distinct; the related-work section compares it
 with neighbouring systems along stated dimensions and claims no priority.
 
-Computation supplies finite evidence; Lean checks a formal statement;
+Computation supplies finite evidence; Lean verifies that a proof establishes
+the formal statement written in the source;
 Comparator checks selected propositions and their axiom boundary. These checks
 do not establish intended meaning, novelty, importance or external acceptance.
 
@@ -72,8 +73,8 @@ or an accepted external contribution.
 The 257 lane formalises the classical full-support irrationality theorem, but
 not the arbitrary-support question. The degree-seven example due to
 \texttt{ani} refutes the total-variation formulation of 1041; correspondence
-with the historical curve-length question remains unreviewed. No universal
-endpoint for the other seven programmes is claimed solved here.
+with the historical curve-length question remains unreviewed. For the other
+seven programmes, it does not claim a solution to any of them.
 \end{abstract}
 
 \begin{paperresult}{Main contribution and claim ceiling}
@@ -1144,34 +1145,19 @@ through the same proof and publication gates. More compute increases the
 number and diversity of attempts; it does not relax the meaning of a passing
 receipt.
 
-This suggests a ``result mining'' mode. Workers select bounded frontier
-objects, explore proofs, counterexamples, computations, or literature, and
-return exact artefacts. Fan-in then checks Lean, reconciles statements, records
-negative evidence, and ranks the mathematically strongest surviving result
-families. The useful unit is not a model answer or a theorem count. It is a
-result packet with provenance, scope, formal status, mathematical role, and a
-nearest stronger open statement. Local review selection can allocate scarce
-expert attention to those packets; Comparator can protect selected exact
-interfaces; neither is replaced by scale.
+In ``result mining'', workers return bounded proofs, counterexamples,
+computations, or source findings. Persistent stewardship checks each stable
+delta against the complete candidate universe, reconciles statements, records
+negative evidence, and reranks the frontier. Its unit is a result packet with
+provenance, scope, formal status, mathematical role, and the nearest stronger
+open statement. Several miners can share one steward if each write and
+mathematical object has an owner. A short obstruction may outrank many lemmas;
+more output is not a measure of mathematical value. Review selection allocates
+expert attention, while Comparator protects selected exact interfaces.
 
-At scale, fan-in is a persistent stewardship role rather than an end-of-run
-cleanup task. It consumes each stable delta, compares it with the complete
-candidate universe, updates the paper hierarchy and assurance interfaces when
-warranted, and returns a newly ranked frontier to the mining fleet. Several
-miners may therefore share one stewardship goal, and one steward may consume
-results from several problems, provided every write and mathematical object
-still has one owner. The steward is allowed to say that a large run produced
-no new mathematical family, or that a short negative result should outrank
-many formal lemmas. This prevents compute volume and theorem count from
-becoming accidental editorial policy.
-
-Fleet size and validation capacity are deliberately different variables. In
-principle, many logical agents can search disjoint mathematical neighbourhoods;
-in practice, the controller admits work according to path conflicts, memory,
-CPU, disk pressure, and the expected value of the lane. Cheap reading and
-computation may fan out widely while mutation remains path-leased and heavy
-Lean work is narrower. This prevents ``more agents'' from meaning ``more
-processes contending for the same compiler and checkout.''
+Fleet size and validation capacity differ. The controller admits disjoint
+search according to path conflicts, resources, and expected value. Cheap work
+may fan out; writes remain path-leased and heavy Lean work remains narrower.
 
 Lean validation uses a semantic single-flight queue. A request is identified
 by the reachable source, logical targets, toolchain, dependency lock, and
@@ -1186,13 +1172,9 @@ detached process owns the queued build. Thus the fleet may grow much wider
 than the expensive validator without corrupting the evidence or wasting every
 agent as a queue supervisor.
 
-There are consequently four separate scaling limits: logical search width,
-safe concurrent mutation, mechanical validation throughput, and scarce expert
-review. Path leases govern the second, the Lean queue governs the third, and
-review-selection ranking governs the fourth. Fan-in joins their outputs only after
-the appropriate receipts exist. This separation is what allows additional
-models and compute to enlarge exploration without silently enlarging any
-model's authority.
+The four separate scaling limits are search width, safe mutation, validation throughput, and
+expert review. Path leases, the Lean queue, and review ranking govern the last
+three; fan-in joins outputs only after their receipts exist.
 
 The return path is already public. A person can fork or clone the repository,
 work from a named public commit, and open a pull request or research-progress

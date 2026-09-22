@@ -20,6 +20,7 @@ import itertools
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 from pathlib import Path
@@ -584,20 +585,32 @@ def _run_candidate(
 ) -> dict[str, Any]:
     source, positions = _render_probe(request, candidate)
     try:
-        completed = subprocess.run(
+        with subprocess.Popen(
             ["lake", "env", "lean", "--stdin", "--json"],
             cwd=repo_root,
             env=_lean_environment(),
-            input=source,
             text=True,
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            check=False,
-            timeout=timeout_seconds,
-        )
-        timed_out = False
-        output = completed.stdout
-        return_code = completed.returncode
+            start_new_session=True,
+        ) as process:
+            try:
+                output, _ = process.communicate(
+                    input=source, timeout=timeout_seconds
+                )
+                timed_out = False
+                return_code = process.returncode
+            except subprocess.TimeoutExpired:
+                # Lake launches Lean as a child. Killing only Lake leaves Lean
+                # elaborating after this probe has reported a timeout.
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                output, _ = process.communicate()
+                timed_out = True
+                return_code = None
     except FileNotFoundError as error:
         raise ToolchainUnavailable(
             "`lake` was not found while running a Lean transition probe "
@@ -607,10 +620,6 @@ def _run_candidate(
             "https://leanprover-community.github.io/get_started.html -- "
             "then re-run this check."
         ) from error
-    except subprocess.TimeoutExpired as exc:
-        timed_out = True
-        output = (exc.stdout or "") + (exc.stderr or "")
-        return_code = None
 
     messages, non_json = _parse_lean_messages(output)
     initial_trace = _trace_at(

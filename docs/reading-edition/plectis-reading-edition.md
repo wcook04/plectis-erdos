@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `9055ad8cab1e8782`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `33a547d62549806b`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -3576,10 +3576,10 @@ the measures of the removed intervals. For
 the hosts of odd, squarefree and non-multiples-of-3 exponents it excludes every
 rational of denominator at most 36 that is not a finite sum.
 
-The theorems are in the synthesis note
-[Rational and irrational subsums of a Lambert series across bases](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/erdos-synthesis-subsums-across-bases.pdf)
-and its [working record](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/erdos-synthesis-reading-together-record.pdf),
-which also records how this computation was misread twice.
+The theorems and the record of how this computation was misread twice are in
+the consolidated synthesis paper
+[Reading Eight Erdős Problems Together](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.pdf)
+([source](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.tex)).
 
 This investigation started from reading the eight short papers together and
 belongs to no single problem. Its sharpest instance sits inside Erdős #257, and
@@ -3587,7 +3587,7 @@ its framing draws on #243, #249, #251 and #1049.
 
 **Status.** Ordinary reasoning and exact rational computation. Nothing here is
 checked in Lean. A prior-art search was made on 20 September 2026 and its
-findings are in the working record. Membership of any
+findings are in that synthesis paper. Membership of any
 specific rational in the infinite achievement set remains open. The counts
 below are reproducible with the script in this directory.
 
