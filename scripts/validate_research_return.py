@@ -732,6 +732,7 @@ def validate_document(
     require_accepted: bool = False,
     require_submitted: bool = False,
     check_git: bool = False,
+    require_complete_proposed_diff: bool = False,
     repository_identity: dict[str, Any] | None = None,
 ) -> list[str]:
     check = Validation()
@@ -798,6 +799,11 @@ def validate_document(
             _commit(value, f"repository.{field}", check, nullable=field != "starting_commit")
             if isinstance(value, str) and COMMIT_RE.fullmatch(value):
                 commits.append((field, value))
+        if require_complete_proposed_diff and repository.get("proposed_commit") is None:
+            check.error(
+                "repository.proposed_commit",
+                "complete proposed-diff validation requires a proposed commit",
+            )
         changed_paths = check.string_list(
             repository.get("changed_paths"), "repository.changed_paths", nonempty=True
         )
@@ -1290,6 +1296,13 @@ def validate_document(
                             "repository.changed_paths",
                             f"paths are absent from the starting-to-{field} Git diff: {absent_paths}",
                         )
+                    if field == "proposed_commit" and require_complete_proposed_diff:
+                        omitted_paths = sorted(git_paths - set(changed_paths))
+                        if omitted_paths:
+                            check.error(
+                                "repository.changed_paths",
+                                f"paths omitted from the complete proposed Git diff: {omitted_paths}",
+                            )
                 proposed_commit = repository.get("proposed_commit")
                 accepted_commit = repository.get("accepted_commit")
                 if (
@@ -1335,6 +1348,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="verify every recorded commit against local Git history",
     )
     parser.add_argument(
+        "--require-complete-proposed-diff",
+        action="store_true",
+        help="reject omitted paths in the starting-to-proposed Git diff (requires --check-git and a proposed commit)",
+    )
+    parser.add_argument(
         "--repository-identity",
         type=Path,
         default=IDENTITY_PATH,
@@ -1356,6 +1374,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.require_complete_proposed_diff and not args.check_git:
+        raise SystemExit("--require-complete-proposed-diff requires --check-git")
     unsafe_inputs = []
     if path_has_symlink_component(args.input):
         unsafe_inputs.append("input path must not traverse symbolic links")
@@ -1408,6 +1428,7 @@ def main(argv: list[str] | None = None) -> int:
         require_accepted=args.require_accepted,
         require_submitted=args.require_submitted,
         check_git=args.check_git,
+        require_complete_proposed_diff=args.require_complete_proposed_diff,
         repository_identity=identity_contract,
     )
     route_memory_receipt_path = args.route_memory_receipt

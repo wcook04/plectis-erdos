@@ -41,7 +41,11 @@ python3 scripts/continue_research.py package --help
 
 Use `scripts/continue_research.py check` before packaging. Then use
 `scripts/continue_research.py package` to emit `return.json`,
-`route-memory.json`, and the package manifest. Validate the pair with
+`route-memory.json`, the declared `source/` file set (including deletion
+records), and the package manifest. A return naming a proposed commit must
+list its complete starting-to-proposed changed-path set. A clean uncommitted
+session also rejects observed tracked and nonignored untracked edits omitted
+from that list. Validate the pair with
 the exact package pair:
 
 ```sh
@@ -49,6 +53,8 @@ python3 scripts/validate_research_return.py return.json \
   --route-memory-receipt route-memory.json \
   --require-submitted --check-git --require-route-memory-receipt
 ```
+
+Add `--require-complete-proposed-diff` when the return names a proposed commit.
 
 A pull request may carry the pair as transient intake artifacts; they do not
 belong on the accepted main branch.

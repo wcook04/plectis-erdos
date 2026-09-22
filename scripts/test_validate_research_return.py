@@ -121,6 +121,42 @@ def main() -> int:
     )
     require(not errors, f"committed submitted fixture should validate: {errors}")
     require(
+        any(
+            "complete proposed-diff validation requires a proposed commit" in error
+            for error in validator.validate_document(
+                fixture, require_complete_proposed_diff=True,
+                repository_identity=identity,
+            )
+        ),
+        "complete-diff mode accepted a return without a proposed commit",
+    )
+    committed_return = copy.deepcopy(fixture)
+    committed_return["repository"]["proposed_commit"] = "a" * 40
+    listed = set(committed_return["repository"]["changed_paths"])
+    with mock.patch.object(validator, "_git_commit_exists", return_value=True), \
+         mock.patch.object(validator, "_git_is_ancestor", return_value=True), \
+         mock.patch.object(validator, "_git_path_exists", return_value=True), \
+         mock.patch.object(validator, "_git_changed_paths", return_value=listed):
+        require(
+            not validator.validate_document(
+                committed_return, require_submitted=True, check_git=True,
+                require_complete_proposed_diff=True, repository_identity=identity,
+            ),
+            "complete proposed diff was rejected",
+        )
+    with mock.patch.object(validator, "_git_commit_exists", return_value=True), \
+         mock.patch.object(validator, "_git_is_ancestor", return_value=True), \
+         mock.patch.object(validator, "_git_path_exists", return_value=True), \
+         mock.patch.object(validator, "_git_changed_paths", return_value=listed | {"docs/omitted.txt"}):
+        omissions = validator.validate_document(
+            committed_return, require_submitted=True, check_git=True,
+            require_complete_proposed_diff=True, repository_identity=identity,
+        )
+        require(
+            any("paths omitted from the complete proposed Git diff" in error for error in omissions),
+            f"validator accepted an omitted changed path: {omissions}",
+        )
+    require(
         validator.validate_document(
             fixture,
             require_accepted=True,
