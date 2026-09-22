@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `88d20e0f007f5440`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `6edf2851891bca6f`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -832,7 +832,7 @@ Each entry gives the abstract and the opening sections of the short paper, cut a
 
 *Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf)
 
-Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (186 KB as text).
+Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (188 KB as text).
 
 <a id="erdos-68-factorial-denominator-irrationality--erdos-68-factorial-denominator-irrationality"></a>
 
@@ -1167,7 +1167,7 @@ Moubariz Z. Garaev, Florian Luca and Igor E. Shparlinski. [Character sums and co
 
 *If a reciprocal sum is rational and a_{n+1}/a_n^2→1, what increment bound forces the Sylvester recurrence, and why does that not settle Erdős #243?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
 
-Longer record: [Reciprocal-Tail Rigidity: Theorems, Proofs and Questions](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) (271 KB as text).
+Longer record: [Reciprocal-Tail Rigidity: Theorems, Proofs and Questions](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) (277 KB as text).
 
 <a id="erdos-243-reciprocal-tail-rigidity--erdos-243-reciprocal-tail-rigidity"></a>
 
@@ -1450,7 +1450,7 @@ P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](h
 
 *What explicit basis and integral relations does the totient k-kernel have at every integer base, and why does that not decide Erdős #249?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-249-binary-totient-series.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.pdf)
 
-Longer record: [The Binary Totient Series](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos249-totient-reasoning-surface.md) (710 KB as text).
+Longer record: [The Binary Totient Series](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos249-totient-reasoning-surface.md) (730 KB as text).
 
 <a id="erdos-249-binary-totient-series--erdos-249-binary-totient-series"></a>
 
@@ -1694,7 +1694,7 @@ The preceding proof fixes its coefficient bound before choosing the zero blocks.
 
 *Which sparse congruence-preserving corrections can rationalise a dyadic series, and why does that not prove Erdős #251 irrational?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf)
 
-Longer record: [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) (197 KB as text).
+Longer record: [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) (201 KB as text).
 
 <a id="erdos-251-prime-gap-dyadic-series--erdos-251-prime-gap-dyadic-series"></a>
 
@@ -1871,7 +1871,7 @@ Paul Erdős, [*Sur certaines séries à valeur irrationnelle*](https://users.ren
 
 *Which weighted-support Mersenne subseries are proved irrational, and what still blocks the universal Erdős #257 question?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf)
 
-Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) (659 KB as text).
+Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) (674 KB as text).
 
 <a id="erdos-257-mersenne-support-subseries--erdos-257-mersenne-support-subseries"></a>
 
@@ -2324,7 +2324,7 @@ H. Hornich, *Über beliebige Teilsummen absolut konvergenter Reihen*, Monatshef
 
 *Why does the Erdős #269 running-LCM kernel admit no finite separable representation, and which residue inequalities remain for {2,3,5}?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.pdf)
 
-Longer record: [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) (202 KB as text).
+Longer record: [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) (206 KB as text).
 
 <a id="erdos-269-three-prime-running-lcm--erdos-269-three-prime-running-lcm"></a>
 
@@ -2718,7 +2718,7 @@ Lean: [exact denominators and minimal clearing](https://github.com/wcook04/plect
 
 *Which explicit short paths and critical-value bounds are proved for Erdős #1041, and which hypotheses do they require?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.pdf)
 
-Longer record: [Paths in Polynomial Lemniscates: Proofs and Examples](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) (276 KB as text).
+Longer record: [Paths in Polynomial Lemniscates: Proofs and Examples](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) (278 KB as text).
 
 <a id="erdos-1041-lemniscate-newton-flow--erdos-1041-lemniscate-newton-flow"></a>
 
@@ -2978,7 +2978,7 @@ Refinements using the number of roots, logarithmic capacity, or a range of level
 
 *For Erdős #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf)
 
-Longer record: [Zudilin’s Forms at Rational Bases: Proofs and Research Record](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) (270 KB as text).
+Longer record: [Zudilin’s Forms at Rational Bases: Proofs and Research Record](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) (274 KB as text).
 
 <a id="erdos-1049-rational-base-lambert--erdos-1049-rational-base-lambert"></a>
 
