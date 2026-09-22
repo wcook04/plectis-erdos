@@ -324,6 +324,168 @@ def generated_note_failures(default_ledger: str | None) -> tuple[list[str], int]
     return failures, checked
 
 
+# A printed link is checked exactly as its macro renders it.  The declaration
+# checks read a snapshot through every storage spelling of a file, which is right
+# for finding the declaration and wrong for the URL: on 22 Sep 2026 the #243 notes
+# pinned a commit that keeps the Lean roots under lean/, \lword printed the root
+# spelling, and 110 links answered 404 while every declaration check passed.
+PX_RE = re.compile(r"\\newcommand\{\\PX\}\{([^{}]+)\}")
+NOTE_PX_RE = re.compile(r"\\renewcommand\{\\PX\}\{([^{}]+)\}")
+NOTE_PK_RE = re.compile(r"\\(?:re)?newcommand\{\\PK\}\{([^{}]+)\}")
+NOTE_REPOBASE_RE = re.compile(r"\\renewcommand\{\\repobase\}\{([^{}]+)\}")
+STANDARD_REPOBASE = r"https://github.com/wcook04/plectis-erdos/blob/\commit"
+RENDERED_MACRO_RE = re.compile(
+    r"\\(?P<macro>lword|lrefx|lref|lloc|mword|mref|mloc|lproof)"
+    r"\{(?P<file>[^{}]+)\}\{[0-9]+\}"
+)
+PINNED_BASE_RE = re.compile(r"\\(?:repobase|sourceurl)/(?P<path>[^\s{}#\\]+)")
+LITERAL_SOURCE_RE = re.compile(
+    r"https://github\.com/wcook04/plectis-erdos/(?:blob|tree)/"
+    r"(?P<commit>[0-9a-f]{40})/(?P<path>[^\s{}#\\]+)"
+)
+
+
+CONDITIONAL_RE = re.compile(r"\\(?:if[A-Za-z@]*|fi)(?![A-Za-z@])")
+
+
+def strip_unrendered(text: str) -> str:
+    """Drop ``\\iffalse ... \\fi`` blocks, which TeX reads and never prints.
+
+    Several notes keep their exhaustive source manifest inside one, for the
+    declaration checks above; nothing in it reaches the PDF, so it prints no URL.
+    """
+    kept: list[str] = []
+    position = 0
+    for opener in re.finditer(r"\\iffalse(?![A-Za-z@])", text):
+        if opener.start() < position:
+            continue
+        kept.append(text[position : opener.start()])
+        depth = 0
+        position = len(text)  # an unclosed block runs to the end, as in TeX
+        for token in CONDITIONAL_RE.finditer(text, opener.start()):
+            depth += -1 if token.group(0) == "\\fi" else 1
+            if depth == 0:
+                position = token.end()
+                break
+    kept.append(text[position:])
+    return "".join(kept)
+
+
+def rendered_link_targets(
+    text: str,
+    default_commit: str,
+    default_ledger: str | None,
+    default_px: str,
+) -> tuple[list[tuple[str, str]], list[str]]:
+    """Every (commit, repository path) one manuscript prints as a source URL."""
+    text = strip_unrendered(strip_comments(text))
+    targets: list[tuple[str, str]] = []
+    problems: list[str] = []
+    override = NOTE_REPOBASE_RE.search(text)
+    if override is not None and override.group(1) != STANDARD_REPOBASE:
+        return [], [f"\\repobase is redefined as {override.group(1)!r}, which this check cannot render"]
+    commit = note_pinned_commit(text, default_commit)
+    ledger_override = NOTE_LEDGER_COMMIT_RE.search(text)
+    ledger = ledger_override.group(1) if ledger_override else default_ledger
+    px_override = NOTE_PX_RE.search(text)
+    px = px_override.group(1) if px_override else default_px
+    pk = NOTE_PK_RE.search(text)
+    for match in RENDERED_MACRO_RE.finditer(text):
+        macro, name = match.group("macro"), match.group("file")
+        if macro in ("lword", "lref", "lloc"):
+            targets.append((commit, f"{px}/{name}"))
+        elif macro in ("mword", "mref", "mloc"):
+            targets.append((commit, name))
+        elif macro == "lproof":
+            # generated_note_failures() already reports a missing ledger pin.
+            if ledger is not None:
+                targets.append((ledger, f"lean/{name}"))
+        elif pk is not None:
+            targets.append((commit, f"{pk.group(1)}/{name}"))
+        else:
+            problems.append(f"\\lrefx{{{name}}} is used without a \\PK prefix")
+    targets.extend((commit, match.group("path")) for match in PINNED_BASE_RE.finditer(text))
+    targets.extend(
+        (match.group("commit"), match.group("path"))
+        for match in LITERAL_SOURCE_RE.finditer(text)
+    )
+    return targets, problems
+
+
+def objects_present(keys: Iterable[tuple[str, str]]) -> set[tuple[str, str]]:
+    """The (commit, path) pairs that name an object, read in one Git process."""
+    ordered = sorted(set(keys))
+    if not ordered:
+        return set()
+    completed = subprocess.run(
+        ["git", "cat-file", "--batch-check"],
+        cwd=ROOT,
+        input="".join(f"{commit}:{path}\n" for commit, path in ordered).encode(),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+    answers = completed.stdout.decode("utf-8", "replace").splitlines()
+    if completed.returncode != 0 or len(answers) != len(ordered):
+        raise SystemExit(
+            "check_problem_note_sources: git cat-file --batch-check failed: "
+            + completed.stderr.decode("utf-8", "replace").strip()[:200]
+        )
+    return {
+        key
+        for key, answer in zip(ordered, answers)
+        if not answer.endswith((" missing", " ambiguous"))
+    }
+
+
+def rendered_link_failures(
+    default_commit: str, default_ledger: str | None
+) -> tuple[list[str], int]:
+    """Require every printed plectis-erdos source URL to exist as printed."""
+    failures: list[str] = []
+    preamble = safe_worktree_text(PREAMBLE)
+    px_match = PX_RE.search(strip_comments(preamble))
+    default_px = px_match.group(1) if px_match else LIBRARY_PREFIX
+    wanted: dict[tuple[str, str], set[str]] = {}
+    preamble_name = str(PREAMBLE.relative_to(ROOT))
+    for match in LITERAL_SOURCE_RE.finditer(strip_comments(preamble)):
+        wanted.setdefault((match.group("commit"), match.group("path")), set()).add(preamble_name)
+    for source in ledger_sources():
+        try:
+            text = safe_worktree_text(ROOT / source)
+        except UnsafeSourceInput as error:
+            failures.append(f"{source}: {error}")
+            continue
+        targets, problems = rendered_link_targets(
+            text, default_commit, default_ledger, default_px
+        )
+        failures.extend(f"{source}: {problem}" for problem in problems)
+        for key in targets:
+            wanted.setdefault(key, set()).add(source)
+    present = objects_present(wanted)
+    missing: dict[tuple[str, str], list[str]] = {}
+    for (commit, path), sources in sorted(wanted.items()):
+        if (commit, path) not in present:
+            for source in sorted(sources):
+                missing.setdefault((source, commit), []).append(path)
+    relocated = objects_present(
+        (commit, f"lean/{path}")
+        for (_source, commit), paths in missing.items()
+        for path in paths
+    )
+    for (source, commit), paths in sorted(missing.items()):
+        hint = ""
+        if all((commit, f"lean/{path}") in relocated for path in paths):
+            hint = "; every one exists under lean/ at that commit, so the note's \\PX is wrong"
+        failures.append(
+            f"{source}: {len(paths)} printed source link(s) name a path absent at "
+            f"{commit[:12]} and would answer 404, e.g. {paths[0]}{hint}"
+        )
+    return failures, len(wanted)
+
+
 def pinned_commitshort() -> str:
     match = COMMIT_SHORT_RE.search(safe_worktree_text(PREAMBLE))
     if match is None:
@@ -907,6 +1069,10 @@ def main() -> int:
 
     generated_failures, generated_checked = generated_note_failures(ledger_commit())
     errors.extend(generated_failures)
+    rendered_failures, rendered_checked = rendered_link_failures(
+        default_commit, ledger_commit()
+    )
+    errors.extend(rendered_failures)
 
     report: list[str] = []
     if args.coverage:
@@ -924,7 +1090,8 @@ def main() -> int:
     print(
         f"check_problem_note_sources: {checked} link(s) across {len(sources)} note(s) "
         f"resolve against {len(resolved_commits)} pinned commit(s); "
-        f"{generated_checked} generated statement link(s) resolve at the ledger pin"
+        f"{generated_checked} generated statement link(s) resolve at the ledger pin; "
+        f"{rendered_checked} printed source URL(s) exist exactly as rendered"
     )
     for line in report:
         print(line)
