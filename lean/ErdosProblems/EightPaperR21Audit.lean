@@ -163,6 +163,7 @@ import ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate
 import ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums
 import ErdosProblems.PaperCompleteR21Audit.P1041_gamma_uncond
 import ErdosProblems.PaperCompleteR21Audit.P1049_a
+import ErdosProblems.PaperCompleteR21Audit.P1049_finite_pencil
 import ErdosProblems.PaperCompleteR21Audit.P1049_nomahler_uncond
 import ErdosProblems.PaperCompleteR21Audit.P243_02
 import ErdosProblems.PaperCompleteR21Audit.P243_b
