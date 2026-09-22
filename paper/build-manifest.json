@@ -90,12 +90,12 @@
     },
     "erdos_249_reasoning_record": {
       "inputs": {
-        "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:ced11aa00062b8f0d6cfc21f013c2f1cd7967c3043a415027167818c20c9f7ff",
+        "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:07e1bd58979d51a60f36ff9c9349661b1456a48d21268631384dd9ce759bc92c",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:8d6a7ad9047729d95fabd3d1c66ba79ed26d169b190631e608df2708014b03a4",
+      "rendered_content_digest": "sha256:771c1089b1ae88a7fb4064e423934467af0d638a9285b4ee2705d6473a8ead82",
       "source_path": "paper/249/erdos249-totient-reasoning-surface.tex",
       "storage_path": "paper/249/erdos249-totient-reasoning-surface.pdf"
     },
@@ -134,12 +134,12 @@
     },
     "erdos_257_reasoning_record": {
       "inputs": {
-        "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:631c58fa6b643772b850a5c02472387dc77ed4e7e778ace7518dcc043e9b619e",
+        "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:b64addecfcbd27c6d00acb23bbba92f282140eb6dbf56f55f2319a3ee76cc2ae",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:f133cf2fdd2817deaadde0d9a345536865a549b699102847d7769cba3af9fe6b",
+      "rendered_content_digest": "sha256:054c562dc43d4113e47ec620ed2dc9e9581a98acab9b554535c4b0de16f83be0",
       "source_path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "storage_path": "paper/257/erdos257-mersenne-reasoning-surface.pdf"
     },
