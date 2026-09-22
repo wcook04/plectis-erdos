@@ -22,6 +22,7 @@ from pathlib import Path
 
 from lean_source import (
     LIBRARY_ROOTS,
+    describe_unindexed_library_sources,
     library_dir,
     library_module_id,
     library_root_file,
@@ -525,6 +526,10 @@ def main() -> int:
     args = parser.parse_args()
     if args.full_check and not args.check:
         parser.error("--full-check requires --check")
+    if args.full_check or not args.check:
+        notice = describe_unindexed_library_sources(ROOT)
+        if notice:
+            print(f"declaration atlas: {notice}", file=sys.stderr)
     if args.check:
         actual = safe_atlas_text(OUTPUT) if OUTPUT.is_file() else ""
         if not actual:

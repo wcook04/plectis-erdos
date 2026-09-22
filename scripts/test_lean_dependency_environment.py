@@ -82,8 +82,8 @@ def main() -> int:
                 "dependency child process inherited a hostile selector or lost elan",
             )
             with patch.object(
-                build_lean_dependency_index.subprocess,
-                "run",
+                build_lean_dependency_index.singleflight,
+                "run_bounded",
                 return_value=subprocess.CompletedProcess(["fixture"], 0),
             ) as runner:
                 observed = build_lean_dependency_index.run(
@@ -113,8 +113,8 @@ def main() -> int:
 
             export_file = Path(raw) / "graph.tsv"
             with patch.object(
-                build_lean_dependency_index.subprocess,
-                "run",
+                build_lean_dependency_index.singleflight,
+                "run_bounded",
                 return_value=subprocess.CompletedProcess(["fixture"], 0),
             ) as runner:
                 build_lean_dependency_index.run(
