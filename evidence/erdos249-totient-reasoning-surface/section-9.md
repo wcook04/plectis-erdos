@@ -6,7 +6,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 ## Theorem 9.4 (A real-part bound gives a certificate), page 84
 
-> *[`exists_certifiedKill_of_first_harmonic_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicGap.lean#L128). <span class="sans-serif">\[Lean\]</span>. <span class="sans-serif">\[uniform\]</span>. . For all $`h,X,L`$ with $`0<X`$ and the room condition $`16(2X{+}h{+}L{+}2)\le 2^L`$, if
+> *For all $`h,X,L`$ with $`0<X`$ and the room condition $`16(2X{+}h{+}L{+}2)\le 2^L`$, if
 > ``` math
 > \sum_{N=X}^{2X-1} \operatorname{Re}E(h,N,L) \;\le\; \tfrac{9}{10}\,X ,
 > ```
@@ -52,11 +52,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.5 (The same implication for a nonempty subset), page 84
 
-> *[`exists_certifiedKill_of_first_harmonic_gap_subset`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicGap.lean#L104). <span class="sans-serif">\[Lean\]</span>. <span class="sans-serif">\[uniform\]</span>. . For any nonempty finite $`T\subseteq\mathbb N`$ with $`T\subset[0,2X)`$ and the same room condition, if
+> *For any nonempty finite $`T\subseteq\mathbb N`$ with $`T\subset[0,2X)`$ and the same room condition, if
 > ``` math
 > \sum_{N\in T} \operatorname{Re}E(h,N,L) \;\le\; \tfrac{9}{10}\,|T| ,
 > ```
-> then $`\exists N\in T`$ with $`\mathcal{C}\ h\ N\ L`$. This generalises Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">216</a>: $`T`$ can be *any* explicitly chosen nonempty finite subset of the dyadic block, not the whole block, and the proof (an averaging pigeonhole, §below) never uses that $`T`$ has positive density or comes from a partition.*
+> then $`\exists N\in T`$ with $`\mathcal{C}\ h\ N\ L`$. This generalises Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">214</a>: $`T`$ can be *any* explicitly chosen nonempty finite subset of the dyadic block, not the whole block, and the proof (an averaging pigeonhole) never uses that $`T`$ has positive density or comes from a partition.*
 
 The Lean declarations below together state this result.
 
@@ -105,7 +105,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.6 (A norm bound gives the real-part criterion), page 84
 
-> *[`exists_certifiedKill_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L53) and [`irrational_totient_series_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L83). <span class="sans-serif">\[Lean\]</span> for both implications; the hypothesis $`block norm condition`$ is <span class="sans-serif">\[Open\]</span>. The complex norm bound implies the real-part bound ($`|z|\ge\mathrm{Re}(z)`$, and $`21/25 < 9/10`$ absorbs the slack), so it composes through Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">216</a> to the same certificate. Define
+> *The complex norm bound implies the real-part bound ($`|z|\ge\mathrm{Re}(z)`$, and $`21/25 < 9/10`$ absorbs the slack), so it composes through Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">214</a> to the same certificate. Define
 > ``` math
 > \text{block norm condition} :\Leftrightarrow\;
 >   \forall h{>}0\ \forall X_0\ \exists X, L,\ \max(X_0,1)\le X\ \wedge\ 16(2X{+}h{+}L{+}2)\le 2^L\ \wedge
@@ -113,12 +113,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \Bigl\|\ \sum_{N=X}^{2X-1}E(h,N,L)\ \Bigr\| \;\le\; \tfrac{21}{25}\,X .
 > ```
-> . <span class="sans-serif">\[cofinal\]</span> (this is the open target itself). Then
+> This condition is unproved; it is the open target itself. Then
 > ``` math
 > \text{block norm condition} \;\Longrightarrow\; \mathrm{Irrational}\Bigl(\sum_{n\ge 0}
 >   \tfrac{\varphi(n)}{2^n}\Bigr),
 > ```
-> proved in full, with no further gap, by chaining Theorem <a href="#thm:hgap-norm" data-reference-type="ref" data-reference="thm:hgap-norm">218</a>$`\to`$Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">216</a>$`\to`$ [`irrational_totient_series_of_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L394).*
+> proved in full, with no further gap, by chaining Theorem <a href="#thm:hgap-norm" data-reference-type="ref" data-reference="thm:hgap-norm">216</a>$`\to`$Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">214</a>$`\to`$ Theorem <a href="#catalogue:cert:a10" data-reference-type="ref" data-reference="catalogue:cert:a10">96</a>.*
 
 The Lean declarations below together state this result.
 
@@ -176,6 +176,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.10, page 85
 
+> *For every $`a\ge 8`$ and every $`J`$ with $`J+(a{+}6) < 2\cdot 2^a`$,
+> ``` math
+> 0 \;<\; {R}(2H{+}J) - {R}(H{+}J), \qquad H={H}(2^a).
+> ```
+> Hence $`0 < \Omega_a`$ for every $`a\ge 8`$. The proof is genuinely uniform in $`a`$: it rests on two facts proved for all $`a\ge 8`$ and $`0<j<2^{a+1}`$, namely $`\delta_{2^a}(j)>0`$ and $`H<8\cdot 2^a\,\delta_{2^a}(j)`$, by a two-case structural split (divisor letter vs. foreign prime power), with absolute constants $`4,8,32`$ and no lookup table.*
+
 The Lean declarations below together state this result.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.actualLcm_corridor_pos`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean#L39)
@@ -218,7 +224,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-proved-implications"></a>
 
-## Theorem 9.12, page 86
+## Theorem 9.12 (The proved implications), page 86
+
+> *For every $`a\ge 8`$ and every $`J,K,m`$ inside the sign corridor ($`J{+}K{+}(a{+}6) < 2\cdot 2^a`$), a one-sided residue gap at precision $`m\le K`$ (room $`2H{+}J{+}K{+}2 < 2^m`$ and $`D(H,H+J,K)\bmod 2^m \le 2^m - (2H{+}J{+}K{+}2)`$) already forces $`{R}(2H{+}J) - {R}(H{+}J)\notin\mathbb Z`$. No lower margin at all is demanded. The proof chain is complete: the theorem holds for every $`a\ge 8`$, and *$`\text{cofinal upper-endpoint condition}`$ $`\Rightarrow`$ Irrational $`S`$* is proved.*
 
 The Lean declarations below together state this result.
 
@@ -278,9 +286,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 9.14 (Five sufficient conditions), page 86
 
-> *Each of the five conditions below suffices for irrationality. The first four imply the upper-endpoint condition [`PowerTwoActualLcmTopEdgeResidueGapSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1325); the fifth gives nonintegrality directly by the endpoint identity. These are not asserted to form a linear hierarchy. Here $`H=H(2^a)`$, and every condition quantifies over arbitrarily large exponents $`a`$.*
+> *Each of the five conditions below suffices for irrationality; none of them is proved. The first four imply the upper-endpoint condition; the fifth gives nonintegrality directly by the endpoint identity. These are not asserted to form a linear hierarchy. Here $`H=H(2^a)`$, and every condition quantifies over arbitrarily large exponents $`a`$.*
 > 
-> 1.  *[`ErdosProblems.Erdos249.PaperCompleteR21.PaperAdjacentSuffixMidbandSupply`](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean#L46) (<span class="sans-serif">\[Open\]</span>, <span class="sans-serif">\[cofinal\]</span>):
+> 1.  **Adjacent-suffix band*:
 >     ``` math
 >     \forall a_0\ \exists a,m,\ a_0\le a \wedge 8\le a \wedge m{+}1{+}(a{+}6)<2\cdot 2^a \wedge
 >           2H{+}m{+}3 < 2^m \wedge
@@ -290,19 +298,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >     ```
 >     (a two-sided band on the adjacent-suffix residue directly, one candidate depth $`m`$).*
 > 
-> 2.  *[`PowerTwoOddGuardTopEdgeHalfWordBandSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1349) (<span class="sans-serif">\[Open\]</span>, <span class="sans-serif">\[cofinal\]</span>): at the odd guarded depth $`2q{+}1`$, a two-sided band of half-width $`H{+}q{+}2`$ on the half-word residue modulo $`4^q`$. The depth is fixed by the stated guard; it cannot be chosen independently of $`a`$.*
+> 2.  **Guarded odd-prefix band*: at the odd guarded depth $`2q{+}1`$, a two-sided band of half-width $`H{+}q{+}2`$ on the half-word residue modulo $`4^q`$. The depth is fixed by the stated guard; it cannot be chosen independently of $`a`$.*
 > 
-> 3.  *[`PowerTwoActualFinalTopEdgeMagnitudeSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1471) (<span class="sans-serif">\[Open\]</span>, <span class="sans-serif">\[cofinal\]</span>), *proved equivalent* to the previous one via [`topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1479):
+> 3.  **Guarded centred-magnitude bound*, *proved equivalent* to the previous one:
 >     ``` math
 >     \forall a_0\ \exists a,q,\ \max(14,a_0)\le a \wedge q=q_a
 >           \wedge H{+}q{+}2 \le |u_{a,q}| .
 >     ```*
 > 
-> 4.  *[`PowerTwoFlexibleActualTopEdgeMagnitudeSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1927) (<span class="sans-serif">\[Open\]</span>, <span class="sans-serif">\[cofinal\]</span>): the same magnitude bound with the depth restriction relaxed from “canonical guarded” to any odd $`2q{+}1`$ satisfying the half-cell fit $`2(H{+}q{+}2)\le 4^q`$ and the sign-corridor room $`2q{+}2{+}(a{+}6)<2\cdot 2^a`$.*
+> 4.  **Flexible centred-magnitude bound*: the same magnitude bound with the depth restriction relaxed from “canonical guarded” to any odd $`2q{+}1`$ satisfying the half-cell fit $`2(H{+}q{+}2)\le 4^q`$ and the sign-corridor room $`2q{+}2{+}(a{+}6)<2\cdot 2^a`$.*
 > 
-> 5.  *[`PowerTwoFlexibleActualTerminalDominanceSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1908): under the same bounds as item 4, $`\delta_{2^a}(2q+2)\le2u_{a,q}`$. This is a different one-sided comparison, treated immediately below.*
+> 5.  **Terminal dominance*: under the same bounds as item 4, $`\delta_{2^a}(2q+2)\le2u_{a,q}`$. This is a different one-sided comparison, treated immediately below.*
 > 
-> *For the first four conditions, the relevant implications into [`PowerTwoActualLcmTopEdgeResidueGapSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1325) are as follows: midband $`\to`$ residue-gap at [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L2109); half-word-band $`\to`$ midband at [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L2058); final-magnitude $`\Leftrightarrow`$ half-word-band at [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1479); flexible-magnitude $`\to`$ midband at [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L2008); final-magnitude $`\to`$ flexible-magnitude at [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1993).*
+> *For the first four conditions, the relevant implications into the upper-endpoint condition are as follows: adjacent-suffix band $`\to`$ upper-endpoint condition; guarded odd-prefix band $`\to`$ adjacent-suffix band; guarded centred-magnitude bound $`\Leftrightarrow`$ guarded odd-prefix band; flexible centred-magnitude bound $`\to`$ adjacent-suffix band; guarded centred-magnitude bound $`\to`$ flexible centred-magnitude bound.*
 
 The Lean declarations below together state this result.
 
@@ -549,7 +557,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-proved-implication"></a>
 
-## Theorem 9.16, page 87
+## Theorem 9.16 (The proved implication), page 87
+
+> *The dominance hypothesis at a single odd rank already excludes integrality of $`\Omega_a`$, and the terminal dominance condition implies $`S\notin\mathbb Q`$.*
 
 The Lean declarations below together state this result.
 
@@ -586,7 +596,10 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension"></a>
 
-## Proposition 9.18, page 88
+## Proposition 9.18 (A sufficient extension), page 88
+
+> *Either of the following suffices: (i) the lower-escape branch cofinally, as displayed just above; or (ii) the two-sided magnitude form (item 4 of Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">224</a>), which asks only $`H{+}q{+}2 \le
+> |u_{a,q}|`$ and which the Lean source proves implies corridor escape via a clean sign split (positive branch escapes above the terminal letter, negative branch escapes below the directed bound), without prescribing the sign of the centred representative. Neither branch is supplied by the conditional sign identity itself.*
 
 The Lean declarations below together state this result.
 
@@ -641,6 +654,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-separation-rational-approximation"></a>
 
 ## Theorem 9.19, page 88
+
+> *Unconditionally, for every $`a`$ and $`q`$,
+> ``` math
+> \bigl|\, \Omega_a - \rho_{a,q} \,\bigr|
+>   \;<\; \frac{4H + 2(2q{+}1) + 4}{2^{2q+2}} ,
+> ```
+> where $`\rho_{a,q}`$ is an explicit finite computable rational block. For fixed $`a`$, the error tends to zero as $`q`$ grows. In the quantified condition below, however, the depth is prescribed, so increasing $`q`$ is not a free way to satisfy the separation hypothesis.*
 
 The Lean declarations below together state this result.
 
@@ -699,6 +719,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.22, page 88
 
+> *``` math
+> \forall a_0\le 6,\ \exists a,L,\ a_0\le a \wedge L < 2\cdot 2^a \wedge
+>   \mathcal C(H_{2^a},H_{2^a},L)
+> ```
+> The single witness $`(a,L)=(6,93)`$ works for every threshold $`a_0\le6`$. Its certificate is verified by exact integer arithmetic on the finite totient windows. This proves the displayed bounded statement. It does not construct witnesses for unbounded thresholds; further finite checks would extend the verified range, not establish the universally quantified condition below.*
+
 The Lean declarations below together state this result.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.shortWindowSupply_through_six_paper`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ShortWindowSupplyAndSixteenShifts.lean#L29)
@@ -740,6 +766,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-diagonal-certificate-table"></a>
 
 ## Theorem 9.24, page 89
+
+> *``` math
+> \forall t\in\{1,2,3,4,5,7,8,9,11,13,16,17\},\ \exists L,\
+>   \mathcal{C}\ ({H}\ t)\ ({H}\ t)\ L
+> ```
+> at depths $`\{6,5,7,7,9,14,15,14,21,22,23,26\}`$ respectively, extended by separate computations to 28 historical values through $`t=64`$. The later aggregate theorem closes every scale $`t\le82`$ with no holes. Each witness is checked by exact integer arithmetic on two finite totient windows. For example, $`H_{17}=12252240`$ and $`L=26`$ use $`\varphi(H_{17}+i)`$ and $`\varphi(2H_{17}+i)`$ for $`1\le i\le26`$, not every totient between the endpoints $`12252241`$ and $`24504506`$. These computations verify the listed cases; they do not give a formula producing a certificate for every $`t`$.*
 
 The Lean declarations below together state this result.
 
@@ -815,7 +847,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension-2"></a>
 
-## Proposition 9.26, page 89
+## Proposition 9.26 (A sufficient extension), page 89
+
+> *``` math
+> \exists C\ \forall t_0\ \exists t\ge t_0\ \exists L\le \log_2(4\cdot{H}\ t)+C,\quad
+>   \mathcal{C}\ ({H}\ t)\ ({H}\ t)\ L .
+> ```
+> This asks for a certificate within a fixed additive constant of the necessary logarithmic depth bound. The uniform constant is an additional requirement, not a consequence of the finite data.*
 
 The Lean declarations below together state this result.
 
@@ -852,6 +890,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-one-common-certificate-sixteen-shifts"></a>
 
 ## Theorem 9.27, page 89
+
+> *``` math
+> \mathcal C(h,14,9)\qquad(h\in\{1,\ldots,16\}).
+> ```
+> The basepoint $`14`$ and depth $`9`$ are common to all sixteen shifts. Consequently, $`S\ne r`$ whenever $`r\in\mathbb Q`$ and $`\operatorname{den}(r)\mid2^{14}(2^h-1)`$ for some integer $`h`$ with $`1\le h\le16`$. The exact computation uses two nine-term windows for each shift and reduces their discrepancy modulo $`2^9`$. The earlier eight-shift computation uses basepoint $`12`$ and depth $`16`$.*
 
 The Lean declarations below together state this result.
 
@@ -892,7 +935,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-simultaneous-certificates-unrestricted-depth"></a>
 
-## Proposition 9.29, page 90
+## Proposition 9.29 (Simultaneous certificates with unrestricted depth), page 90
+
+> *The existence of a function $`f:\mathbb{N}\to\mathbb{N}`$ with $`f(N)\to\infty`$ such that
+> ``` math
+> \forall N_0\ \exists N\ge N_0\ \exists L\ 
+>  \forall h\in\{1,\ldots,f(N)\},\quad \mathcal C(h,N,L)
+> ```
+> is equivalent to irrationality of $`S`$. Under irrationality, one can take $`f(N)=N+1`$, and every $`N`$ has a suitable depth.*
 
 The Lean declarations below together state this result.
 
@@ -938,6 +988,8 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-fixed-farey-bound"></a>
 
 ## Theorem 9.30, page 90
+
+> *If $`S`$ is rational, its reduced denominator exceeds $`7.963\,964\,664\,670\,137\,532\,335\allowbreak\,577\,487\,583\,105\,3\times 10^{34}`$. This is the finite denominator exclusion in the corpus, logically independent of the certificate-supply reduction.*
 
 The Lean declarations below together state this result.
 
@@ -998,7 +1050,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension-3"></a>
 
-## Proposition 9.33, page 91
+## Proposition 9.33 (A sufficient extension), page 91
+
+> *Suppose $`g(K)\to\infty`$ and, for every $`K`$, the $`(N=1,K)`$ gap check excludes every rational of reduced denominator at most $`g(K)`$. Then $`S`$ is irrational: any rational value of $`S`$ would have a fixed finite denominator, contradicted at a sufficiently large $`K`$. Only unbounded exclusion bounds along a sequence of windows are needed for this argument. No equivalence with a bound for the continued-fraction denominators of $`S`$ is asserted; such a comparison would require its own proof connecting those convergents to the certified intervals.*
 
 The Lean declarations below together state this result.
 
@@ -1036,6 +1090,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-two-adic-congruence-that-does"></a>
 
 ## Theorem 9.34, page 91
+
+> *The theorem is unconditional and holds for *every* $`K`$, $`H`$, $`B`$. For every $`K\ge 2`$, every $`H>K`$, and every bound $`B`$, there are primes $`p>B`$ with a length-$`(K{-}1)`$ zero prefix and a terminal half-modulus, giving
+> ``` math
+> D(H,p-K,K) \equiv 2^{K-1} \pmod{2^K}.
+> ```
+> Under eventual integrality this transfers to an integer $`z`$ with $`(z:\mathbb R) =
+> {R}(p{+}H) - R_{p}`$ and $`z\equiv 2^{K-1}\pmod{2^K}`$.*
 
 The Lean declarations below together state this result.
 
@@ -1076,7 +1137,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-accumulated-residue-condition"></a>
 
-## Proposition 9.36, page 92
+## Proposition 9.36 (A sufficient accumulated-residue condition), page 92
+
+> *Suppose that for every integer $`h\ge1`$ and every $`N_0\in\mathbb N`$ there are $`N\ge N_0`$ and $`L\ge1`$ such that
+> ``` math
+> D(h,N,L)\equiv2^{L-1}\pmod{2^L},\qquad
+>  N+h+L+2<2^{L-1}.
+> ```
+> Then $`S\notin\mathbb Q`$: these two inequalities imply $`\mathcal C(h,N,L)`$, and the full quantified certificate condition applies. The half-modulus condition here is imposed on the accumulated weighted sum $`D(h,N,L)`$, not on a single totient difference. An unbounded set of triples with no control of the shift does not supply the displayed quantifiers. The required family remains unproved.*
 
 The Lean declarations below together state this result.
 
@@ -1120,7 +1188,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-arbitrarily-large-prime-power-lcm"></a>
 
-## Theorem 9.37, page 92
+## Theorem 9.37 (Arbitrarily large prime-power LCM jumps), page 92
+
+> *For every $`t_0\in\mathbb N`$ there is $`t\ge t_0`$ with $`H(t)<H(t+1)`$. One may take $`t=p-1`$ for any prime $`p>t_0`$. The positions $`t=2^a-1`$ are also strict LCM jumps for $`a\ge1`$: $`2^a`$ is the next required power of $`2`$. The restriction excludes $`a=0`$, since $`H(0)=H(1)=1`$. The second condition in the next definition asks for the additional residue margin along this explicit sequence. Knowing these jump positions does not establish that margin.*
 
 The Lean declarations below together state this result.
 
@@ -1168,7 +1238,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-inequality"></a>
 
-## Proposition 9.40, page 93
+## Proposition 9.40 (A sufficient inequality), page 93
+
+> *If, for every $`a_0\in\mathbb N`$, there is $`a\ge\max(2,a_0)`$ with $`\sigma_{2^a}\ge0`$, then $`S\notin\mathbb Q`$. This is the sufficient condition defined above, not a claim that the inequality holds at arbitrarily large indices. Equality at the edge is allowed: the condition is nonnegativity, not strict positivity.*
 
 The Lean declarations below together state this result.
 
@@ -1215,6 +1287,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-certificate-four-tail-combination"></a>
 
 ## Theorem 9.41, page 93
+
+> *Use $`J(H,p)`$, $`W(H,p,L)`$ and $`B(H,p,L)`$ from Theorem <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a>. For all $`H,p,L\in\mathbb N`$,
+> ``` math
+> B(H,p,L)<W(H,p,L)\bmod2^L<2^L-B(H,p,L)
+>  \quad\Longrightarrow\quad J(H,p)\notin\mathbb Z.
+> ```
+> The bound $`B(H,p,L)=3pH+(p+1)(L+2)`$ follows by grouping the nonnegative remainders as in that theorem. Compared with the $`4pH+(p+1)(L+2)`$ bound obtained by treating the two diagonal differences separately, it saves $`pH`$. This is a strict improvement when $`pH>0`$; optimality for totient tails is not asserted.*
 
 The Lean declarations below together state this result.
 
@@ -1264,7 +1343,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-one-explicit-witness"></a>
 
-## Theorem 9.42, page 93
+## Theorem 9.42 (One explicit witness), page 93
+
+> *For $`H=H(4)=12`$, $`p=5`$ and $`L=15`$, direct integer evaluation gives
+> ``` math
+> W(12,5,15)=149906,\qquad
+>  W(12,5,15)\bmod32768=18834,\qquad B(12,5,15)=282.
+> ```
+> Thus $`282<18834<32486`$, and $`J(12,5)\notin\mathbb Z`$. This is the one instance singled out in Theorem <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a>, not a claim of uniqueness or of the smallest possible height. The implication from a quantified family is Theorem <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a>.*
 
 The Lean declarations below together state this result.
 
@@ -1316,6 +1402,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-denominators-mobius-sums"></a>
 
 ## Theorem 9.44, page 93
+
+> *For every integer $`t\ge5`$, with $`\mathcal P_t=\{p\text{ prime}:t/2<p\le t\}`$ as above,
+> ``` math
+> 2^{\lfloor t/2\rfloor}
+>  \le\prod_{p\in\mathcal P_t}(2^p-1)
+>  \le\operatorname{den}(H_t\beta_{H_t}).
+> ```
+> Moreover, some $`p\in\mathcal P_t`$ satisfies
+> ``` math
+> 2^{\lfloor t/2\rfloor}\le2^p-1<2^t,
+>  \qquad 2^p-1\mid\operatorname{den}(H_t\beta_{H_t}).
+> ```
+> Indeed, Bertrand’s postulate makes $`\mathcal P_t`$ nonempty. Its members satisfy $`p-1\ge\lfloor t/2\rfloor`$ and $`p\le t`$, giving the size bounds. The divisibility follows from Proposition <a href="#catalogue:mob:b6" data-reference-type="ref" data-reference="catalogue:mob:b6">55</a>; divisibility of a positive reduced denominator also gives the product inequality.*
 
 The Lean declarations below together state this result.
 
@@ -1407,7 +1506,16 @@ theorem exists_upperHalf_channel_paper {t : ℕ} (ht : 5 ≤ t) :
 
 <a id="prop-additional-approximation-hypothesis"></a>
 
-## Proposition 9.46, page 94
+## Proposition 9.46 (The additional approximation hypothesis), page 94
+
+> *A sequence of rationals $`u_t`$ proves irrationality of $`S`$ if
+> ``` math
+> u_t\ne S\quad\text{for all sufficiently large }t,
+>  \qquad \operatorname{den}(u_t)|S-u_t|\longrightarrow0.
+> ```
+> This is the rational-separation criterion of Proposition <a href="#catalogue:cert:d1" data-reference-type="ref" data-reference="catalogue:cert:d1">71</a>: if $`S=a/b`$ were reduced, every unequal $`u_t`$ would instead satisfy $`\operatorname{den}(u_t)|S-u_t|\ge1/b`$. An upper bound tending to zero for this product is needed. A lower bound for the denominator cannot establish it; improving a lower bound does not change the actual approximation error.*
+> 
+> *A different argument could deduce a residue certificate from the surviving divisor and further information about the complementary term. The denominator theorem alone contains no such separation statement. Neither sufficient argument is established by its lower bound, and these are not claimed to exhaust possible approaches.*
 
 The Lean declarations below together state this result.
 
@@ -1445,6 +1553,8 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="thm-rationality-carry-rank"></a>
 
 ## Theorem 9.47, page 94
+
+> *For every $`e\ge1`$, the retained dyadic totient sections form a basis for all sections through level $`e`$, of dimension $`2^e+1`$. The proof uses the Chinese remainder theorem and Dirichlet’s theorem. The complete level-zero truncation, consisting only of $`\varphi`$, has dimension one.*
 
 The Lean declarations below together state this result.
 
@@ -1497,6 +1607,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.48, page 94
 
+> *If $`S\in\mathbb{Q}`$, choose an integer $`v>0`$ with $`vS\in\mathbb{Z}`$ and put $`u_N=vR_N`$. Then $`u_N\in\mathbb{Z}`$, $`u_{N+1}=2u_N-v\varphi(N+1)`$, and $`0\le u_N\le v(N+2)`$. For every $`e\ge0`$,
+> ``` math
+> \dim_{\mathbb{Q}}\operatorname{span}
+>  \{n\mapsto u_{2^j n+r}:1\le j\le e,\ 0\le r<2^j\}\ge2^e-1.
+> ```
+> The proof is given in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>.*
+
 The Lean declaration below states this result.
 
 [`ErdosProblems.Erdos249.PaperCompleteR21.rationalValue_integral_carry_and_rank_floor`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/DyadicSectionBasisAndRationalCarry.lean#L129)
@@ -1526,7 +1643,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-additional-hypothesis-totient-specific-rank"></a>
 
-## Proposition 9.50, page 95
+## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 95
+
+> *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition <a href="#prop:period-not-rank" data-reference-type="ref" data-reference="prop:period-not-rank">7</a> records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
 
 The Lean declarations below together state a result at least as strong as this one. For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\le c(n)\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.
 

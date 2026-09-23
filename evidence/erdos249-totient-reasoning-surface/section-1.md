@@ -6,7 +6,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 ## Theorem 1.3 (Denominator exclusion from a fixed Farey window), page 5
 
-> *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds $`Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}`$. Equivalently, $`S`$ differs from every rational number whose reduced denominator is at most $`Q_0`$. The bound is sharp for this window: $`q = Q_0 + 1`$ is the exact first failing denominator. It is the denominator of the mediant of two explicit unimodular Farey neighbours. <span class="sans-serif">\[bounded\]</span> <span class="sans-serif">\[Lean\]</span> [`Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18384) [`Erdos249257.gap_check_window_1_240_first_failure`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L225)*
+> *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds $`Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}`$. Equivalently, $`S`$ differs from every rational number whose reduced denominator is at most $`Q_0`$. The bound is sharp for this window: $`q = Q_0 + 1`$ is the exact first failing denominator. It is the denominator of the mediant of two explicit unimodular Farey neighbours.*
 
 The Lean declarations below together state this result.
 
@@ -50,7 +50,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.4 (Finite certificate computations), page 5
 
-> *$`\mathcal{C}`$ has been verified at: the $`28`$ diagonal instances of the least-common-multiple diagonal through $`t = 64`$ ([`Erdos249257.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967), endpoint [`Erdos249257.certifiedKill_diagonal_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1928)); all shifts $`h \in [1,16]`$ simultaneously at $`(N,L) = (14,9)`$, by `decide` ([`Erdos249257.certifiedKill_all_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L574)); and eight further period examples at $`N = 300`$. These are historical subsets of the examples. The supplied source also proves a complete diagonal band for $`1\le t\le82`$, with no omitted scales ([`exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Skip/LadderT67.lean#L71264)). This is bounded coverage, not a cofinal diagonal family. Note the quantifier order: the simultaneous small-shift example uses one pair $`N,L`$ for every $`1\le h\le16`$. In symbols, it proves $`\exists N\,\exists L\,\forall h\,(1\le h\le16\Rightarrow\mathcal C(h,N,L))`$. In contrast, $`\mathrm{Sep}`$ requires arbitrarily large $`N`$ for each positive $`h`$; neither the shift range nor the basepoint threshold is bounded. <span class="sans-serif">\[fixed\]</span> <span class="sans-serif">\[Lean\]</span>*
+> *$`\mathcal{C}`$ has been verified at: the $`28`$ diagonal instances of the least-common-multiple diagonal through $`t = 64`$; all shifts $`h \in [1,16]`$ simultaneously at $`(N,L) = (14,9)`$, by `decide`; and eight further period examples at $`N = 300`$. These are historical subsets of the examples. The supplied source also proves a complete diagonal band for $`1\le t\le82`$, with no omitted scales. This is bounded coverage, not a cofinal diagonal family. Note the quantifier order: the simultaneous small-shift example uses one pair $`N,L`$ for every $`1\le h\le16`$. In symbols, it proves $`\exists N\,\exists L\,\forall h\,(1\le h\le16\Rightarrow\mathcal C(h,N,L))`$. In contrast, $`\mathrm{Sep}`$ requires arbitrarily large $`N`$ for each positive $`h`$; neither the shift range nor the basepoint threshold is bounded.*
 
 The Lean declarations below together state this result.
 
@@ -224,7 +224,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > R_{2H_a+J}-R_{H_a+J}>0.
 > ```
-> This needs no irrationality hypothesis ([`Erdos257PeriodNoncollapse.actualLcmTailDiff_shift_pos`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L39), [`Erdos257PeriodNoncollapse.actualLcmTailOrbit_pos`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L144)). If this difference is an integer and $`K\ge0`$ satisfies
+> This needs no irrationality hypothesis. If this difference is an integer and $`K\ge0`$ satisfies
 > ``` math
 > J+K+(a+6)<2\cdot2^a,\qquad 2H_a+J+K+2<2^K,
 > ```
@@ -233,7 +233,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > D(H_a,H_a+J,K)\bmod2^K
 >    =2^K-\bigl(R_{2H_a+J+K}-R_{H_a+J+K}\bigr)
 > ```
-> lies strictly between $`2^K-(2H_a+J+K+2)`$ and $`2^K`$ ([`Erdos257PeriodNoncollapse.actualLcm_integral_forces_topEdgeResidue`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L211)). The later tail difference is a positive integer. Its negative, not the carry itself, is the representative near zero. Thus positivity locates the residue near the upper endpoint; it does not establish the central-residue inequalities. Both restrictions on $`K`$ are part of this conclusion. <span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span>*
+> lies strictly between $`2^K-(2H_a+J+K+2)`$ and $`2^K`$. The later tail difference is a positive integer. Its negative, not the carry itself, is the representative near zero. Thus positivity locates the residue near the upper endpoint; it does not establish the central-residue inequalities. Both restrictions on $`K`$ are part of this conclusion.*
 
 The Lean declarations below together state this result.
 
@@ -294,7 +294,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.6 (Rationality forces unbounded carry rank), page 6
 
-> *If $`S`$ is rational then, for every $`e`$, the carry sections $`n\mapsto u_{2^jn+r}`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a rational vector space of dimension at least $`2^{e}-1`$ ([`Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientCarryKernelRigidity.lean#L300)). The lower bound holds at every depth. It comes from the linear independence of the $`2^e+1`$ retained dyadic totient sections for $`e\ge1`$, proved using the Chinese remainder theorem and Dirichlet’s theorem ([`Erdos249257.linearIndependent_canonicalTotientKernelFamily`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L935)), so the full family spans an infinite-dimensional space ([`Erdos249257.not_finiteDimensional_span_fullTotientKernel`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1145)), the case $`k=2`$ of Coons’s non-regularity theorem (§<a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>). <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span>*
+> *If $`S`$ is rational then, for every $`e`$, the carry sections $`n\mapsto u_{2^jn+r}`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a rational vector space of dimension at least $`2^{e}-1`$. The lower bound holds at every depth. It comes from the linear independence of the $`2^e+1`$ retained dyadic totient sections for $`e\ge1`$, proved using the Chinese remainder theorem and Dirichlet’s theorem, so the full family spans an infinite-dimensional space, the case $`k=2`$ of Coons’s non-regularity theorem (§<a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>).*
 
 The Lean declaration below states this result.
 
@@ -342,7 +342,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 > ``` math
 > u_{2^j(n+h)+r}\equiv u_{2^jn+r}\pmod v.
 > ```
-> The rank and periodicity assertions hold together ([`Erdos257PeriodNoncollapse.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L224)). This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The separate $`5/4`$ control supplies a concrete counterexample to the generic rationality-driven rank ceiling; see the detailed comparison in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>. <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span>*
+> The rank and periodicity assertions hold together. This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The separate $`5/4`$ control supplies a concrete counterexample to the generic rationality-driven rank ceiling; see the detailed comparison in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>.*
 
 The Lean declaration below states this result.
 
@@ -376,11 +376,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.8 (Equivalent certificate conditions), page 6
 
-> *Put $`H_t=\operatorname{lcm}(1,\ldots,t)`$. Several variations of Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a> are equivalent to $`S\notin\mathbb Q`$. One may allow a positive multiple of each prescribed shift, still requiring certificates beyond every basepoint threshold (Theorem <a href="#catalogue:cert:b2" data-reference-type="ref" data-reference="catalogue:cert:b2">99</a>; [`periodMultipleKillSupply_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L432)). Alternatively, one may use the original quantified condition ([`irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412)) or restrict to $`h=N=H_t`$ at arbitrarily large $`t`$ (Theorem <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">100</a>; [`irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426)). Replacing the symmetric residue test by
+> *Put $`H_t=\operatorname{lcm}(1,\ldots,t)`$. Several variations of Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a> are equivalent to $`S\notin\mathbb Q`$. One may allow a positive multiple of each prescribed shift, still requiring certificates beyond every basepoint threshold (Theorem <a href="#catalogue:cert:b2" data-reference-type="ref" data-reference="catalogue:cert:b2">97</a>). Alternatively, one may use the original quantified condition or restrict to $`h=N=H_t`$ at arbitrarily large $`t`$ (Theorem <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">98</a>). Replacing the symmetric residue test by
 > ``` math
 > N+L+2\le D(h,N,L)\bmod2^L\le2^L-(N+h+L+2)
 > ```
-> also gives equivalent quantified conditions, including its restriction to $`h=N=H_t`$ at arbitrarily large $`t`$ ([`Erdos257PeriodNoncollapse.CofinalDirectedLcmCertificateSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L866)). Finally, the counted phase-separation condition in Proposition <a href="#prop:b2" data-reference-type="ref" data-reference="prop:b2">16</a>(b) is equivalent to irrationality ([`Erdos249257.dtwWindowSeparatedPairs_iff_irrational_totient_series`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1765)). These equivalences change the form of the arithmetic question, not its logical strength. <span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span>*
+> also gives equivalent quantified conditions, including its restriction to $`h=N=H_t`$ at arbitrarily large $`t`$. Finally, the counted phase-separation condition in Proposition <a href="#prop:b2" data-reference-type="ref" data-reference="prop:b2">16</a>(b) is equivalent to irrationality. These equivalences change the form of the arithmetic question, not its logical strength.*
 
 The Lean declarations below together state this result.
 
@@ -444,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 6
 
-> *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ explicit carry pulses beyond $`N`$, pairwise separated by more than $`G`$; and yet $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$ ([`Erdos257PeriodNoncollapse.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientParityCoboundaryCountermodel.lean#L637); sum at `:359`, aperiodicity at `:487`, parity match at `:194`; `#print axioms` clean). <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span>*
+> *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ explicit carry pulses beyond $`N`$, pairwise separated by more than $`G`$; and yet $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$.*
 
 The Lean declarations below together state this result.
 

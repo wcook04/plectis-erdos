@@ -342,7 +342,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-two-nearest-roots"></a>
 
-## Corollary 4.2, page 8
+## Corollary 4.2 (two nearest roots), page 8
+
+> *If the roots lie in the open unit disc and $`c`$ is a non-root critical point, the two nearest roots to $`c`$ have total distance strictly below $`2`$.*
 
 The Lean declarations below together state this result.
 
@@ -1021,7 +1023,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-complementary-binomial-chords"></a>
 
-## Theorem 13.1, page 18
+## Theorem 13.1 (complementary binomial chords), page 18
+
+> *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r<r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint and therefore lies only in the closed lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
 
 The Lean declarations below together state this result.
 

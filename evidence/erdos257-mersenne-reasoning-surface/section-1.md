@@ -28,8 +28,6 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 >  \sum_{a\in A}\frac{b^{m\bmod a}-1}{b^a-1},
 > ```
 > for every $`\varepsilon>0`$ and every $`N`$ there is an $`m\ge N`$ with $`0<\Delta_{b,A}(m)<\varepsilon`$.*
-> 
-> *<span class="sans-serif">\[Math\]</span><span class="sans-serif">(uniform)</span>*divisibility-weighted**
 
 The Lean declarations below together state a result at least as strong as this one. The first conjunct of the Lean claim and the displacement statement are the printed irrationality of $X_A(b)$ and the cofinal returns $0<\Delta_{b,A}(m)<\varepsilon$; the Lean claim adds a second conjunct, that if a set $H\subseteq\mathbb N_{>0}$ has finite weighted mass at $b=2$, then $X_A(b)$ is irrational for every $b\ge2$ and every infinite $A\subseteq H$.
 
@@ -164,8 +162,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 1.7 (Achievement-set geometry), page 20
 
-> *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support. *achievement-set* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Sources:* [`isCompact_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L656), [`perfect_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1656), [`isTotallyDisconnected_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1672), [`isNowhereDense_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1681), [`volume_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L996), [`positiveMersenneDigitValue_injective`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1582).*
+> *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 
 The Lean declaration below states this result.
 
@@ -196,8 +193,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 1.8 (Support-restricted refinement), page 20
 
-> *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite. *achievement-set* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Sources:* [`volume_supportedMersenneAchievementSet_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L397), [`volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L368), [`perfect_supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L167), [`supportedMersenneDigitValue_injective`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L54).*
+> *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
 The Lean declarations below together state a result at least as strong as this one. The four Lean statements give the printed claims with the same zero-based coordinates: measure $2^{-|\N\smallsetminus J|}$ when $\N\smallsetminus J$ is finite, measure $0$ when it is infinite, injectivity of the coding map for every $J$, and perfectness for infinite $J$.
 
@@ -258,8 +254,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > x\in\mathcal A\quad\Longleftrightarrow\quad
 >  x\ge0\ \text{ and }\ r_n(x)\le R_n\ \text{for every }n\ge0.
 > ```
-> For every $`x\in[0,E]`$, nonmembership is equivalent to a finite strict gap between the two next-prefix intervals; see Observation <a href="#obs:general-target-gap" data-reference-type="ref" data-reference="obs:general-target-gap">244</a>. *greedy recurrence* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Sources:* [`mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1458); [`half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L623); [`existsFatalHalfGap_iff_half_not_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L643); [`half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L654); witness type [`ExistsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L526). The general-target statement is checked by [`paper_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean#L183).*
+> For every $`x\in[0,E]`$, nonmembership is equivalent to a finite strict gap between the two next-prefix intervals; see Observation <a href="#obs:general-target-gap" data-reference-type="ref" data-reference="obs:general-target-gap">244</a>.*
 
 The Lean declaration below states this result.
 

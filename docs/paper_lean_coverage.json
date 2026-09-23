@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "c91562bd574a387cde904481e609c7b4cacebb14",
-  "content_digest": "sha256:b99c833ae15a48dcc348d737041a0dd873b98a1698da5ef9b72998fdb1e7447c",
+  "content_digest": "sha256:514b72f952067b668b020d7d67f3a935ddb3b314ae5cb85c91299730350fbfb6",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -1948,7 +1948,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:5deb5eaac428d65e2ba0ec7848adb44d7a3ff27fee98d7c7ddda9d489e587339",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:572",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:574",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -1991,7 +1991,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:659",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:661",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2038,7 +2038,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:17e70c7e375db04ec58fa70163814efca251acb652fb73b84d84a07a3a15760d",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:823",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:825",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2074,7 +2074,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:1e26929c04e4cdb30205d6e796ec3468b8d8b4f47e55c359f519551798631bce",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:945",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:947",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2129,7 +2129,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:506643145304e5fdb1a5ddbceac6a0b992d1929726a7d86ff093f2f6c01152c5",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:987",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:989",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2165,7 +2165,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1052",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1054",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -24661,7 +24661,7 @@
       "environment": "thm",
       "kind": "theorem",
       "statement_sha256": "sha256:1608690852b38cdcf432dcb9cb2bbf06e3317278647255653739821be87c33b8",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8766",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8767",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -24701,7 +24701,7 @@
       "environment": "cor",
       "kind": "corollary",
       "statement_sha256": "sha256:177a9d8c7b8df8b6f00d6e3e01729e46f14cd0cb880be7a56b61914cfa160530",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8923",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8924",
       "other_labels": [
         "eq:257-arithmetic-cover-lower"
       ],
@@ -24748,7 +24748,7 @@
       "environment": "prop",
       "kind": "proposition",
       "statement_sha256": "sha256:120ddbe88665e55839f46fb2b0825e72470ebe726d2d1132d3d38a69e98afcc1",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8964",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8965",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [

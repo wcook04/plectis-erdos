@@ -4,7 +4,9 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-rational-series-preserving-totient-parity"></a>
 
-## Proposition 10.1, page 96
+## Proposition 10.1 (A rational series preserving totient parity and the stated separation properties), page 96
+
+> *There exists $`c:\mathbb N\to\mathbb N`$ such that: $`c(n)\le6`$ for all $`n`$; $`c(n)\le n`$; $`c(n)\equiv\varphi(n)\pmod2`$ for every $`n`$; for every $`N,G,K`$ there is a block of $`K`$ explicit $`(6,0)`$ carry-pulse pairs beyond $`N`$, each pair separated by more than $`G`$; and $`\sum_n c(n)/2^n = 3/2`$.*
 
 The Lean declarations below together state this result.
 
@@ -65,7 +67,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-complement-divisibility-after-multiplication"></a>
 
-## Lemma 10.2, page 98
+## Lemma 10.2 (Complement divisibility after multiplication), page 98
+
+> *Write $`x=a/b`$ in lowest terms, where $`a\in\mathbb{Z}`$ and $`b\ge1`$. Let $`c\in\mathbb{Z}`$ and let $`H`$ be a positive divisor of $`b`$. If the reduced denominator of $`cx`$ divides $`H`$, then
+> ``` math
+> b/H\mid c.
+> ```*
 
 The Lean declaration below states this result.
 
@@ -90,7 +97,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-nonvanishing-unique-largest-denominator-exponent"></a>
 
-## Lemma 10.3, page 99
+## Lemma 10.3 (Nonvanishing from a unique largest denominator exponent), page 99
+
+> *Let $`I`$ be a finite set, let $`u_i\in\mathbb{Z}`$ and $`e_i\in\mathbb{N}`$ for $`i\in I`$, and suppose that $`m\in I`$ satisfies $`e_i<e_m`$ for every $`i\ne m`$. If $`u_m`$ is odd, then
+> ``` math
+> 2^{e_m}\sum_{i\in I}\frac{u_i}{2^{e_i}}
+>    =\sum_{i\in I}u_i2^{e_m-e_i}\equiv1\pmod2.
+> ```
+> In particular, the sum is nonzero.*
 
 The Lean declarations below together state this result.
 
@@ -138,7 +152,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-nonzero-minor-survives-inverse-phase"></a>
 
-## Proposition 10.4, page 100
+## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 100
+
+> *Let $`d\ge1`$ be an integer, let $`e_0,\ldots,e_{d-1}`$ be nonnegative integers, and let $`z_0,\ldots,z_{d-1}`$ be nonzero complex numbers. Write $`P_{ij}=z_j^{e_i}`$, and suppose $`e_{i_0}=1`$ for some $`i_0`$. Multiplying column $`j`$ by $`W_j=z_j^{-1}`$ gives
+> ``` math
+> (P\operatorname{diag}(W))_{i_0j}=1,\qquad
+>  \det(P\operatorname{diag}(W))=\det(P)\prod_{j=0}^{d-1}z_j^{-1}.
+> ```
+> Thus a nonzero determinant remains nonzero while row $`i_0`$ becomes constant. If all $`|z_j|=1`$, its absolute value is also unchanged.*
 
 The Lean declaration below states this result.
 
@@ -170,7 +191,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-tail-integrality-lcm-grid"></a>
 
-## Proposition 10.5, page 100
+## Proposition 10.5 (Tail integrality on an LCM grid), page 100
+
+> *$`S\in\mathbb Q \implies \exists t_1,\ \forall t\ge t_1,\
+> \forall q,m:\mathbb N,\ 0<q \implies {R}(q\cdot
+> {H}(t)+m\cdot{H}(t)) -
+> {R}(q\cdot{H}(t)) \in
+> \mathbb Z`$.*
 
 The Lean declaration below states this result.
 
@@ -196,7 +223,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-finite-grid-certificate-gives-nonintegral"></a>
 
-## Proposition 10.6, page 100
+## Proposition 10.6 (A finite-grid certificate gives a nonintegral pair), page 100
+
+> *Let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. For each $`q\in Q`$, put $`A_q=\sum_{j=1}^{L}\varphi(qH+j)2^{L-j}`$ and $`B_q=qH+L+2`$. Suppose $`B_q<2^L`$ for every $`q\in Q`$ and
+> ``` math
+> \forall q_i\in Q\ \exists q_j\in Q,\qquad
+>  B_{q_j}<(A_{q_i}-A_{q_j})\bmod2^L.
+> ```
+> Then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$. The proof and a four-point example are given in Theorem <a href="#catalogue:cert:b10a" data-reference-type="ref" data-reference="catalogue:cert:b10a">105</a>.*
 
 The Lean declarations below together state this result.
 
@@ -230,7 +264,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-exact-dyadic-rank-infinite-dimensionality"></a>
 
-## Theorem 10.7, page 101
+## Theorem 10.7 (Exact dyadic rank and infinite-dimensionality), page 101
+
+> *For every $`e\ge1`$, the family
+> ``` math
+> \{n\mapsto\varphi(n),\ n\mapsto\varphi(2n)\}
+>  \ \cup\ \{n\mapsto\varphi(2^j n+r):1\le j\le e,\ 0<r<2^j,\ r\text{ odd}\}
+> ```
+> is linearly independent over $`\mathbb{Q}`$. It contains $`2^e+1`$ sequences and spans the sections through level $`e`$ by the zero- and even-residue reductions.*
 
 The Lean declarations below together state this result.
 

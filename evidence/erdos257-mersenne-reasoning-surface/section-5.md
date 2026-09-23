@@ -10,8 +10,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 > ``` math
 > \sum_{k=0}^{\infty} \frac{1}{b^{k+1}-1} \quad \text{is irrational.}
 > ```
-> **Hypotheses:** $`b \in \mathbb{N}`$, $`b \ge 2`$. **Conclusion:** unconditional irrationality of the full-support Erdős–Borwein-type series at every base, not merely base $`2`$. *full-support* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Source:* [`irrational_erdosSum_full_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328) (‘$`b : \mathbb{N}`$, hb : $`2 \le b`$’), recorded via a certificate machine (bounded Bertrand/CRT first-block frame, middle-window divisor-pair average with pigeonhole selection, explicit parameter closure). The base-$`2`$ instance recovering the classical Erdős–Borwein constant’s irrationality is [`irrational_erdosBorwein_series`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8335), a one-line corollary.*
+> **Hypotheses:** $`b \in \mathbb{N}`$, $`b \ge 2`$. **Conclusion:** unconditional irrationality of the full-support Erdős–Borwein-type series at every base, not merely base $`2`$. The base-$`2`$ instance recovering the classical Erdős–Borwein constant’s irrationality is a one-line corollary.*
 
 The Lean declaration below states this result.
 
@@ -34,7 +33,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-purely-periodic-support"></a>
 
-## Theorem 5.5, page 36
+## Theorem 5.5 (Purely periodic support), page 36
+
+> *For integers $`b\ge2`$ and $`m\ge1`$, and every $`m`$-periodic $`A\subseteq\mathbb N`$ (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n`$) containing a positive element, the support series $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`A`$ $`m`$-periodic, $`\exists a > 0,\ a \in A`$.*
 
 The Lean declaration below states this result.
 
@@ -60,7 +61,10 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-eventually-periodic-support"></a>
 
-## Theorem 5.6, page 36
+## Theorem 5.6 (Eventually periodic support), page 36
+
+> *For integers $`b\ge2`$ and $`m\ge1`$, if $`A\subseteq\mathbb N`$ is infinite and its membership is $`m`$-periodic from some threshold $`N_0`$ on (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n \ge N_0`$), then $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational, by transferring irrationality across the finite symmetric difference from the shifted purely periodic set $`A_{\mathrm{pure}} := \{n : n + m N_0 \in
+> A\}`$. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`N_0 \in \mathbb{N}`$, eventual $`m`$-periodicity from $`N_0`$, $`A`$ infinite.*
 
 The Lean declaration below states this result.
 
@@ -86,7 +90,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-residue-class-support"></a>
 
-## Theorem 5.7, page 36
+## Theorem 5.7 (Residue-class support), page 36
+
+> *For integers $`b\ge2`$, $`m\ge1`$ and $`c`$, the series $`\sum_{n\ge1,\ n\equiv c\pmod m}(b^n-1)^{-1}`$ is irrational.*
 
 The Lean declaration below states this result.
 
@@ -111,7 +117,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-odd-support"></a>
 
-## Theorem 5.8, page 36
+## Theorem 5.8 (Odd support), page 36
+
+> *For every integer $`b\ge2`$, the series $`\sum_{n\ge1,\ n\text{ odd}}(b^n-1)^{-1}`$ is irrational. This density-$`1/2`$ support is the case treated explicitly by Luca and Tachiya \[lucatachiya2017, Example 2, p. 140\].*
 
 The Lean declaration below states this result.
 
@@ -136,8 +144,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 5.9 (Achievement-set topology and measure), page 36
 
-> *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">26</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. *achievement-set-topology* <span class="sans-serif">(n/a)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Source:* [`isCompact_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L656), [`isClosed_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L660), [`perfect_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1656), [`isTotallyDisconnected_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1672), [`isNowhereDense_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1681), [`volume_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L996). Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
+> *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">26</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
 > *Use:* Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a> below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*
 
 The Lean declarations below together state this result.
@@ -184,8 +191,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > x\in\mathcal A\quad\Longleftrightarrow\quad
 >  x\ge0\ \text{and}\ r_n(x)\le R_n\text{ for every }n\ge0.
 > ```
-> The inequality says that the unselected tail has enough total mass at every rank. A failure at any one rank excludes membership; the inequalities at all ranks give a representation. *greedy-survival* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Source:* [`mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1458) (forward direction [`greedy_survives_of_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1375), reverse [`mem_mersenneAchievementSet_of_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1394)).*
+> The inequality says that the unselected tail has enough total mass at every rank. A failure at any one rank excludes membership; the inequalities at all ranks give a representation.*
 
 The Lean declarations below together state this result.
 
@@ -236,13 +242,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \tag{I}
 > \end{equation*}
 > ```
-> Here the take and skip sets, capacity and remainder are those defined at the start of this subsection. The identity separates the contribution of the full exponent range from that of the omitted ranks. It makes no claim that there are few omitted ranks; controlling their sum is a separate part of any application. *quotient-row ; integer-greedy (Mersenne weights, binary digits of $`K`$)* <span class="sans-serif">(fixed)</span> <span class="sans-serif">\[Math\]</span><span class="sans-serif">\[Cert\]</span>\
+> Here the take and skip sets, capacity and remainder are those defined at the start of this subsection. The identity separates the contribution of the full exponent range from that of the omitted ranks. It makes no claim that there are few omitted ranks; controlling their sum is a separate part of any application.\
 > **Proof.** For $`d=n`$ the quotient is $`2^n+1`$, and for $`n<d\le2n`$ it is $`2^{2n-d}`$. Hence
 > ``` math
 > \sum_{d=n}^{2n}\left\lfloor\frac{4^n}{2^d-1}\right\rfloor
 >  =2^n+1+\sum_{j=0}^{n-1}2^j=2^{n+1}.
 > ```
-> Substitute this in the definition of $`K(2n)`$, split $`\{2,\ldots,n-1\}=D_n\sqcup\mathrm{Skip}_n`$, and use $`\Delta_n=2^{2n-1}-2^{n+1}-\sum_{d\in D_n}w(n,d)`$. This gives (I). **Certification:** verified rows $`6\le n\le200`$, zero mismatches, reported as reproduced in two separate computations (§<a href="#ssec:anchors" data-reference-type="ref" data-reference="ssec:anchors">5.7</a>).\
+> Substitute this in the definition of $`K(2n)`$, split $`\{2,\ldots,n-1\}=D_n\sqcup\mathrm{Skip}_n`$, and use $`\Delta_n=2^{2n-1}-2^{n+1}-\sum_{d\in D_n}w(n,d)`$. This gives (I). **Certification:** rows $`6\le n\le200`$ rechecked with zero mismatches by an exact [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_master_identity.py) (§<a href="#ssec:anchors" data-reference-type="ref" data-reference="ssec:anchors">5.7</a>).\
 > *Use:* (I) permits substitution of information about $`K(2n)`$. A resulting estimate for $`\Delta_n`$ must also retain or bound the skip-set sum; information about $`K`$ alone need not control their cancellation.*
 
 The Lean declaration below states this result.
@@ -293,7 +299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > The tail bounds $`2^{-(n-1)}<R_{n-1}\le
 > 2^{-(n-1)}+\tfrac23 4^{-(n-1)}`$ and $`|D_n|\le n-2`$ show $`0<\eta_n<n+2/3<2n+2`$.*
 > 
-> ***Use of the error bound.** For $`H>2n+2`$, the condition $`|\sum_{d\in\mathrm{Skip}_n}x_d-C|>(H+2n+2)/4^n`$ is sufficient for $`|\Delta_n|>H`$. Conversely, $`|\Delta_n|>H`$ implies $`|\sum_{d\in\mathrm{Skip}_n}x_d-C|>(H-2n-2)/4^n`$. Thus a square-root-exponential deviation corresponds to a separation of order $`2^{-3n/2}`$, with the displayed additive error retained. This is not an exact equivalence after simply discarding that error. *real approximation and integer remainder* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Math\]</span>\
+> ***Use of the error bound.** For $`H>2n+2`$, the condition $`|\sum_{d\in\mathrm{Skip}_n}x_d-C|>(H+2n+2)/4^n`$ is sufficient for $`|\Delta_n|>H`$. Conversely, $`|\Delta_n|>H`$ implies $`|\sum_{d\in\mathrm{Skip}_n}x_d-C|>(H-2n-2)/4^n`$. Thus a square-root-exponential deviation corresponds to a separation of order $`2^{-3n/2}`$, with the displayed additive error retained. This is not an exact equivalence after simply discarding that error.\
 > **Note:** $`C = E - 3/2`$ is Mersenne-specific, but the shape “scaled deviation $`=`$ $`4^n \cdot`$(finite skip-sum $`-`$ target constant) $`+ O(n)`$” is a template, not yet matched to any analogous constant on the \#249 side.*
 
 The Lean declarations below together state this result.
@@ -387,8 +393,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \end{cases}
 >  \tag{III}
 > \end{equation*}
-> ```
-> *integer quotient recurrences*<span class="sans-serif">(uniform)</span><span class="sans-serif">\[Math\]</span>*
+> ```*
 
 The Lean declarations below together state this result.
 

@@ -14,8 +14,6 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 >    =\frac{2^r-1}{\gcd(|P_r(2)|,2^r-1)}.
 > ```
 > The first equality follows from the definition of $`\beta_H`$; the second is ordinary reduction of an integer fraction. Multiplication by $`H/\operatorname{rad}(H)`$ can cause further cancellation. No coprimality assumption is included in either identity.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`scaledMobiusShadow_eq_radicalBase`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RadicalMobiusShadow.lean#L125) [`baseMobiusShadow_den`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RadicalMobiusShadow.lean#L150)*
 
 The Lean declaration below states this result.
 
@@ -51,8 +49,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \Phi_m(2)\mid P_r(2)-\mu(m)J_2(r/m).
 > ```*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`cyclotomic_dvd_mobiusNumeratorPolynomial_sub`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CyclotomicProjectionOfShadow.lean#L299) [`mobiusNumerator_mod_cyclotomicEval`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CyclotomicProjectionOfShadow.lean#L310)*
 
 The Lean declarations below together state this result.
 
@@ -127,8 +123,6 @@ theorem mobiusNumerator_mod_cyclotomicEval
 > ``` math
 > P_{rp}(X)\equiv-P_r(X^p)\pmod{\Phi_{mp}(X)}.
 > ```*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`cyclotomic_dvd_primeJump_new_fibre`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimePowerJumpDynamics.lean#L281) [`cyclotomic_dvd_primeJump_new_fibre_constant`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimePowerJumpDynamics.lean#L347)*
 
 The Lean declaration below states this result.
 
@@ -160,8 +154,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > P_{rp}(X)\equiv(p^2-1)P_r(X)\pmod{\Phi_m(X)}.
 > ```*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`cyclotomic_dvd_primeJump_old_fibre`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimePowerJumpDynamics.lean#L310)*
 
 The Lean declaration below states this result.
 
@@ -196,8 +188,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > L(f)=\sum_{m\ge1}\frac{(f*1)(m)}{2^m}.
 > ```
 > In particular, if $`\alpha=\varphi*\mu`$, then $`\alpha*1=\varphi`$ and $`L(\alpha)=S`$. The table distinguishes this value from four other Lambert-series values. The identity changes the coefficients and the form of the denominator; it does not transfer an irrationality theorem for one weight to another.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`tsum_totient_div_pow_two_eq_pnat_half_pow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18415)*
 
 The Lean declarations below together state this result.
 
@@ -268,9 +258,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 19H+5L+5<U\bmod2^L<2^L-(19H+5L+5)
 > ```
-> is sufficient for this four-tail combination to be nonintegral. The bound is derived from these tail enclosures; no optimality for the actual totient tails is asserted. Obtaining such certificates at the required unbounded family of LCM heights remains unproved, as in Theorems <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">111</a> and <a href="#catalogue:cert:b6" data-reference-type="ref" data-reference="catalogue:cert:b6">103</a>.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`oldChannel_affine_moment_annihilation`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/JointExponentTransport.lean#L36) [`joint35_oldChannel_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/JointExponentTransport.lean#L71) [`sharpJoint35ConeRadius`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/JointExponentTransport.lean#L124)*
+> is sufficient for this four-tail combination to be nonintegral. The bound is derived from these tail enclosures; no optimality for the actual totient tails is asserted. Obtaining such certificates at the required unbounded family of LCM heights remains unproved, as in Theorems <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a> and <a href="#catalogue:cert:b6" data-reference-type="ref" data-reference="catalogue:cert:b6">101</a>.*
 
 The Lean declarations below together state this result.
 
@@ -406,9 +394,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{\substack{a\in A\\a\ge1}}\frac1{2^a-1}
 >  =\sum_{n\ge1}\frac{d_A(n)}{2^n}.
 > ```
-> For the totient series the required divisor-convolution weight is instead $`\alpha=\varphi*\mu`$, since $`\alpha*1=\varphi`$, as in Proposition <a href="#catalogue:cert:d7" data-reference-type="ref" data-reference="catalogue:cert:d7">94</a>. Weighting all divisors by $`\varphi`$ would give $`\sum_{d\mid n}\varphi(d)=n`$, not $`\varphi(n)`$; already at $`n=2`$ these values are $`2`$ and $`1`$. A weighted version must retain the weights of the new divisors, so it cannot be obtained by substituting $`A=\mathbb N`$ in this unweighted formula. Also $`\alpha(p)=p-2`$ for primes $`p`$, so $`\alpha`$ is unbounded and is not a periodic weight.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`supportCoeff_mul_eq_add_defect`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L30) [`compositeDilationDefect_eq_zero_of_prime_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L103) [`supportCoeff_mul_prime_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L119)*
+> For the totient series the required divisor-convolution weight is instead $`\alpha=\varphi*\mu`$, since $`\alpha*1=\varphi`$, as in Proposition <a href="#catalogue:cert:d7" data-reference-type="ref" data-reference="catalogue:cert:d7">92</a>. Weighting all divisors by $`\varphi`$ would give $`\sum_{d\mid n}\varphi(d)=n`$, not $`\varphi(n)`$; already at $`n=2`$ these values are $`2`$ and $`1`$. A weighted version must retain the weights of the new divisors, so it cannot be obtained by substituting $`A=\mathbb N`$ in this unweighted formula. Also $`\alpha(p)=p-2`$ for primes $`p`$, so $`\alpha`$ is unbounded and is not a periodic weight.*
 
 The Lean declarations below together state this result.
 
@@ -563,8 +549,6 @@ theorem totient_convolution_weight_not_periodic :
 ## Theorem 6.47 (The quantified certificate condition is equivalent to irrationality), page 37
 
 > *$`\big(\forall h:\mathbb{N},\ 0<h \to \forall N_0:\mathbb{N},\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}(h,N,L)\big) \leftrightarrow S\notin\mathbb Q`$. The quantified-condition side is exactly $`\mathcal{C}(h,N,L)`$ quantified as $`\forall h\ge1\ \forall N_0\ge0\ \exists N\ge N_0\ \exists L`$. The universally quantified assertion remains unproved. The equivalence identifies the finite witnesses that suffice; it does not establish their existence beyond every threshold.*
-> 
-> *(equivalence proved; supply <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412)*
 
 The Lean declaration below states this result.
 
@@ -591,9 +575,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.48 (It suffices to use multiples of a period), page 37
 
-> *$`\big(\forall h_0>0,\ \forall N_0,\ \exists m>0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}(m\cdot h_0, N, L)\big) \to S\notin\mathbb Q`$. The shift may be any positive multiple of a prescribed period. This enlarges the choice of finite witness: Theorem <a href="#catalogue:cert:a10" data-reference-type="ref" data-reference="catalogue:cert:a10">98</a> gives the condition with $`m=1`$. Conversely, rationality would make all such tail differences integral after a fixed starting index. The displayed implication therefore makes this quantified condition equivalent to irrationality; its truth remains unproved.*
-> 
-> *(implication proved; hypothesis <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_of_multiple_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L502)*
+> *$`\big(\forall h_0>0,\ \forall N_0,\ \exists m>0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}(m\cdot h_0, N, L)\big) \to S\notin\mathbb Q`$. The shift may be any positive multiple of a prescribed period. This enlarges the choice of finite witness: Theorem <a href="#catalogue:cert:a10" data-reference-type="ref" data-reference="catalogue:cert:a10">96</a> gives the condition with $`m=1`$. Conversely, rationality would make all such tail differences integral after a fixed starting index. The displayed implication therefore makes this quantified condition equivalent to irrationality; its truth remains unproved.*
 
 The Lean declarations below together state this result.
 
@@ -649,8 +631,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.49 (The diagonal condition is equivalent to irrationality), page 37
 
 > *$`\big(\forall t_0:\mathbb{N},\ \exists t\ge t_0,\ \exists L,\ \mathcal{C}({H}(t), {H}(t), L)\big) \leftrightarrow S\notin\mathbb Q`$. For a fixed hypothetical rational value, sufficiently large $`t`$ makes both its dyadic denominator and its odd-part period admissible at $`N=h={H}(t)`$. Conversely, irrationality and pointwise completeness supply a witness for every prescribed $`t`$. This is an equivalent condition with one scale parameter; the verified cases $`t\le82`$ do not establish it at arbitrarily large scales.*
-> 
-> *(equivalence proved; supply <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426)*
 
 The Lean declaration below states this result.
 
@@ -678,8 +658,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Lemma 6.50 (Nondivisors in a short LCM window), page 37
 
 > *Let $`t\ge1`$ and $`1\le j<2t`$ be integers. If $`j\nmid H(t)`$, then $`j=p^a>t`$ for a prime $`p`$ and an integer $`a\ge1`$. Indeed, a prime-power divisor of $`j`$ must exceed $`t`$, and $`j<2t`$ leaves no room for a cofactor larger than $`1`$. This classifies the exceptional offsets in this short window; it does not bound their contribution to a weighted sum of totient differences.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`eq_prime_pow_of_not_dvd_periodLcm`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmDiagonalReduction.lean#L137)*
 
 The Lean declaration below states this result.
 
@@ -711,8 +689,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >                  \varphi\bigl(q(H(t)/j)+1\bigr).
 > ```
 > The two factors in $`qH(t)+j=j\bigl(q(H(t)/j)+1\bigr)`$ are coprime: the second is $`1`$ modulo each prime dividing $`j`$. Totient multiplicativity gives the identity. The extra prime-divisor hypothesis is not automatic from $`j\mid H(t)`$; for example, it fails at $`t=j=2`$, where $`\varphi(H(2)+2)=2`$ but the proposed product would be $`1`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`totient_periodLcm_ray_split`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmDiagonalReduction.lean#L208)*
 
 The Lean declarations below together state this result.
 
@@ -754,9 +730,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > R_{(q+m)H(t)}-R_{qH(t)}\in\mathbb Z.
 > ```
-> Thus all tails at positive multiples of $`H(t)`$ have the same fractional part once $`t\ge t_1`$. A certificate at one fixed scale does not refute rationality: the threshold $`t_1`$ depends on the hypothetical rational value. At a shift $`mH(t)>0`$ and basepoint $`qH(t)`$, such a certificate excludes rational values whose reduced denominator divides $`2^{qH(t)}(2^{mH(t)}-1)`$. Certificates at arbitrarily large scales, as required in Theorem <a href="#catalogue:cert:b7" data-reference-type="ref" data-reference="catalogue:cert:b7">104</a>, exclude every hypothetical rational value.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`rational_totient_series_forces_lcm_cone_flatness`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19002)*
+> Thus all tails at positive multiples of $`H(t)`$ have the same fractional part once $`t\ge t_1`$. A certificate at one fixed scale does not refute rationality: the threshold $`t_1`$ depends on the hypothetical rational value. At a shift $`mH(t)>0`$ and basepoint $`qH(t)`$, such a certificate excludes rational values whose reduced denominator divides $`2^{qH(t)}(2^{mH(t)}-1)`$. Certificates at arbitrarily large scales, as required in Theorem <a href="#catalogue:cert:b7" data-reference-type="ref" data-reference="catalogue:cert:b7">102</a>, exclude every hypothetical rational value.*
 
 The Lean declarations below together state this result.
 
@@ -818,11 +792,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \mathcal C(mH_t,qH_t,L).
 > ```
-> Then $`S\notin\mathbb Q`$. Rationality would make the corresponding tail difference integral at every sufficiently large scale, contradicting Proposition <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">69</a>. A successful certificate necessarily has $`m>0`$, since the discrepancy vanishes at shift zero.*
+> Then $`S\notin\mathbb Q`$. Rationality would make the corresponding tail difference integral at every sufficiently large scale, contradicting Proposition <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">67</a>. A successful certificate necessarily has $`m>0`$, since the discrepancy vanishes at shift zero.*
 > 
-> *The diagonal choice is $`q=m=1`$; consecutive grid points have $`m=1`$, and for $`p\ge2`$ the pair $`(H_t,pH_t)`$ has $`(q,m)=(1,p-1)`$. The diagonal equivalence in Theorem <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">100</a> also gives the converse from irrationality to the displayed quantified condition.*
-> 
-> *(implication proved; hypothesis <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_of_lcm_cone_window_kill_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19014)*
+> *The diagonal choice is $`q=m=1`$; consecutive grid points have $`m=1`$, and for $`p\ge2`$ the pair $`(H_t,pH_t)`$ has $`(q,m)=(1,p-1)`$. The diagonal equivalence in Theorem <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">98</a> also gives the converse from irrationality to the displayed quantified condition; that condition remains unproved.*
 
 The Lean declarations below together state this result.
 
@@ -862,9 +834,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > R_{2H_t}-R_{H_t}\notin\mathbb Z
 >  \qquad\text{for arbitrarily large integers }t.
 > ```
-> Equivalently, for arbitrarily large $`t`$ there are integers $`q\ge1`$ and $`m\ge1`$ with $`R_{(q+m)H_t}-R_{qH_t}\notin\mathbb Z`$. Apply the pointwise equivalence of Theorem <a href="#catalogue:cert:a7" data-reference-type="ref" data-reference="catalogue:cert:a7">70</a> to Theorems <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">100</a> and <a href="#catalogue:cert:b7" data-reference-type="ref" data-reference="catalogue:cert:b7">104</a>, respectively. These are equivalent statements of the irrationality question; the required unbounded sets of scales are not established.*
-> 
-> *(implication proved; hypothesis <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_of_lcm_diagonal_nonintegrality_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19034) [`irrational_totient_series_of_lcm_cone_nonintegrality_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19046)*
+> Equivalently, for arbitrarily large $`t`$ there are integers $`q\ge1`$ and $`m\ge1`$ with $`R_{(q+m)H_t}-R_{qH_t}\notin\mathbb Z`$. Apply the pointwise equivalence of Theorem <a href="#catalogue:cert:a7" data-reference-type="ref" data-reference="catalogue:cert:a7">68</a> to Theorems <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">98</a> and <a href="#catalogue:cert:b7" data-reference-type="ref" data-reference="catalogue:cert:b7">102</a>, respectively. These are equivalent statements of the irrationality question; the required unbounded sets of scales are not established.*
 
 The Lean declarations below together state this result.
 
@@ -932,8 +902,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \end{aligned}
 > ```
 > then $`R_{N+2h}-2R_{N+h}+R_N\notin\mathbb Z`$. The numerator is the second difference of the finite windows. Subtracting the two tail identities leaves an error of absolute value at most $`2(N+2h+L+2)`$, which explains the radius in the hypothesis. At $`(h,N)=(1,8)`$, the first-difference test holds at depth $`8`$, whereas the second-difference test fails at every depth $`L\le8`$ and holds at $`L=9`$. A historical probe over $`t\le20`$ reported that the first-difference test was at least as shallow in $`30`$ of $`40`$ sampled cases. This finite comparison is not a uniform ordering of the depths.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`second_diff_notMem_int_of_certifiedRank2Kill`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L493) (the certified $`(1,8)`$ comparison: [`totient_tail_rank_two_kill_sound_but_not_shallower_cell`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19090)).*
 
 The Lean declarations below together state this result.
 
@@ -998,8 +966,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  B_{q_j}<(A_{q_i}-A_{q_j})\bmod2^L.
 > ```
 > Then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`exists_nonintegral_pair_of_coneNonflatCert`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeNonflat.lean#L126)*
 
 The Lean declarations below together state this result.
 
@@ -1035,9 +1001,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.57 (A sufficient quantified finite-grid condition), page 39
 
-> *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem <a href="#catalogue:cert:b10a" data-reference-type="ref" data-reference="catalogue:cert:b10a">107</a> hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
-> 
-> *(implication proved; hypothesis <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_of_lcm_cone_nonflat_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19140)*
+> *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem <a href="#catalogue:cert:b10a" data-reference-type="ref" data-reference="catalogue:cert:b10a">105</a> hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
 
 The Lean declarations below together state this result.
 
@@ -1084,8 +1048,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > |c_z(i)|\ge N+i+h+2.
 > ```
 > Then $`R_{N+h}-R_N\notin\mathbb Z`$. Indeed, an integral value of the tail difference would be one of the $`2(N+h+1)+1`$ initial candidates. Its recurrence would satisfy $`c_z(i)=R_{N+h+i}-R_{N+i}`$ and hence $`|c_z(i)|<N+i+h+2`$ at every step, contrary to the finite test. The excluded strip is open: equality at its boundary already suffices. This proposition proves soundness for a specified $`h,N,K`$; an irrationality argument still needs the quantified family of tests.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`survivorKill`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L412) [`tail_diff_notMem_int_of_survivorKill`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L428)*
 
 The Lean declarations below together state this result.
 
@@ -1139,8 +1101,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \left\lVert\sum_{X\le N<2X}E(h,N,L)\right\rVert\le\frac{21}{25}X.
 > ```
 > Then $`S\notin\mathbb Q`$. Indeed, the norm bound implies the real-part bound $`\operatorname{Re}\sum E(h,N,L)\le(9/10)X`$. Under the displayed size condition, this latter bound already gives a finite residue certificate, by $`\cos(\pi/8)>9/10`$ and averaging. The argument uses this specific numerical gap; an unspecified saving below $`X`$ is not the stated hypothesis.*
-> 
-> *(conditional theorem proved; hypothesis <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L83) [`exists_certifiedKill_of_first_harmonic_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicGap.lean#L128)*
 
 The Lean declarations below together state this result.
 
@@ -1227,8 +1187,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > (R_{2pH+L}+pR_{H+L})-(R_{pH+L}+pR_{2H+L}).
 > ```
 > Each parenthesis is nonnegative and at most $`B(H,p,L)`$, by $`0\le R_n\le n+2`$. Their difference therefore has absolute value at most $`B(H,p,L)`$. This proves the bound without asserting optimality for the actual totient tails. Primality of $`p`$ is not required by the criterion; a prime $`p`$ is useful when comparing consecutive LCM heights. The checked instance is $`(H,p,L)=(12,5,15)`$, for which $`W(H,p,L)\bmod2^L=18834`$ and $`B(H,p,L)=282`$.*
-> 
-> *(conditional theorem + <span class="sans-serif">\[Cert\]</span> witness; supply <span class="sans-serif">\[Open\]</span>) <span class="sans-serif">\[cofinal\]</span> [`irrational_totient_series_of_primeJumpSharpKill_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimeJumpWindow.lean#L193) [`primeJumpSharpKill_twelve_five`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimeJumpWindow.lean#L186)*
 
 The Lean declarations below together state this result.
 
@@ -1350,8 +1308,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \forall a_0\in\mathbb N\ \exists a\ge a_0,\ \Omega_a\notin\mathbb Z.
 > ```
 > This is an exact reformulation of irrationality, not a weaker theorem about a finite set of scales. The later sufficient conditions seek a finite inequality that establishes the right-hand side.*
-> 
-> *(equivalence) [`irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitNonintegrality.lean#L37)*
 
 The Lean declaration below states this result.
 
@@ -1385,10 +1341,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  <D(H_{2^a},H_{2^a},L)\bmod2^L
 >  <2^L-(2H_{2^a}+L+2).
 > ```
-> It places the residue away from both endpoints of the modulus interval. The examples at $`a=4,6`$ establish the bounded statement in Proposition <a href="#prop:SK-02" data-reference-type="ref" data-reference="prop:SK-02">118</a>, not the condition for every threshold. Pointwise completeness allows a sufficiently large depth but does not supply a depth below $`2\cdot2^a`$.*
-> 
-> *<span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Open\]</span> \
-> [`PowerTwoActualLcmShortArithmeticKillSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitArithmetic.lean#L2107)*
+> It places the residue away from both endpoints of the modulus interval. The examples at $`a=4,6`$ establish the bounded statement in Proposition <a href="#prop:SK-02" data-reference-type="ref" data-reference="prop:SK-02">116</a>, not the condition for every threshold. Pointwise completeness allows a sufficiently large depth but does not supply a depth below $`2\cdot2^a`$.*
 
 The Lean declarations below together state this result.
 
@@ -1441,10 +1394,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \forall a_0\in\mathbb N\ \exists a\ge\max(2,a_0)\ \forall z\in\mathbb Z,
 >  \qquad |\Omega_a-z|\ge\frac1{32}+\varepsilon_{a,q_a}.
 > ```
-> Then $`S\notin\mathbb Q`$. The estimate $`|\Omega_a-\rho_{a,q_a}|<\varepsilon_{a,q_a}`$ implies $`|\rho_{a,q_a}-z|>1/32`$ for every integer $`z`$, and hence the finite residue separation used by the linked implication. This is a fixed separation condition along an unbounded family of LCM scales. It is not an irrationality-measure theorem for arbitrary rational approximants, and nonintegrality alone does not give the stated margin. The depth is prescribed, not an additional free witness.*
-> 
-> *<span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Open\]</span> \
-> [`irrational_totientSeries_of_actualLcmOrbitSeparationSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSeparation.lean#L305)*
+> Then $`S\notin\mathbb Q`$. The estimate $`|\Omega_a-\rho_{a,q_a}|<\varepsilon_{a,q_a}`$ implies $`|\rho_{a,q_a}-z|>1/32`$ for every integer $`z`$, and hence the finite residue separation from which the proof derives irrationality. This is a fixed separation condition along an unbounded family of LCM scales. It is not an irrationality-measure theorem for arbitrary rational approximants, and nonintegrality alone does not give the stated margin. The depth is prescribed, not an additional free witness.*
 
 The Lean declarations below together state this result.
 
@@ -1523,8 +1473,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > Then $`\mathcal G_a(J,K,m)`$ implies $`R_{2H+J}-R_{H+J}\notin\mathbb Z`$. In particular, irrationality follows if for every $`a_0`$ there are $`a\ge\max(a_0,8)`$ and $`K,m`$ satisfying $`K+(a+6)<2\cdot2^a`$ and $`\mathcal G_a(0,K,m)`$.*
 > 
 > *The sign theorem forces an integral tail to give a residue in the upper endpoint interval. This one-sided test excludes that interval; it does not require a lower residue bound. Both the sign-range hypothesis and the strict modulus bound are essential premises of this implication. The required unbounded family is not established.*
-> 
-> *(implication; quantified hypothesis <span class="sans-serif">\[Open\]</span>) [`PowerTwoActualLcmTopEdgeResidueGapSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1325)*
 
 The Lean declarations below together state this result.
 
@@ -1602,9 +1550,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >    \ \Longrightarrow\ \text{upper-endpoint test}.
 >  \end{aligned}
 > ```
-> There is also a separate sufficient argument: terminal dominance and flexible centred magnitude each imply the two-sided exclusion in Proposition <a href="#prop:TE-06" data-reference-type="ref" data-reference="prop:TE-06">117</a>, which implies diagonal nonintegrality. These statements refer to the quantified versions, with the bounds on $`a,q`$ and the depth retained. The detailed conditions and sources appear in Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">226</a>. No reverse implication between terminal dominance and flexible magnitude is asserted, and none of the required unbounded families is proved here.*
-> 
-> *(implications; hypotheses <span class="sans-serif">\[Open\]</span>) [`powerTwoActualLcmTopEdgeResidueGapSupply_of_adjacentSuffixMidband`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L2108)*
+> There is also a separate sufficient argument: terminal dominance and flexible centred magnitude each imply the two-sided exclusion in Proposition <a href="#prop:TE-06" data-reference-type="ref" data-reference="prop:TE-06">115</a>, which implies diagonal nonintegrality. These statements refer to the quantified versions, with the bounds on $`a,q`$ and the depth retained. The detailed conditions and sources appear in Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">224</a>. No reverse implication between terminal dominance and flexible magnitude is asserted, and none of the required unbounded families is proved here.*
 
 The Lean declaration below states this result.
 
@@ -1658,8 +1604,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \end{aligned}
 > ```
 > is sufficient for $`\Omega_a\notin\mathbb Z`$. Under integrality the recurrence equals a positive tail difference strictly smaller than $`2H+2q+3`$, and the identity rules out both displayed inequalities. The identity is exact; the resulting nonintegrality criterion is only sufficient. Its converse is not asserted.*
-> 
-> *[`two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L1678)*
 
 The Lean declarations below together state this result.
 
@@ -1747,10 +1691,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  a\ge a_0,\quad L<2\cdot2^a,\quad
 >  \mathcal C(H_{2^a},H_{2^a},L).
 > ```
-> The witnesses at $`(a,L)=(4,23)`$ and $`(6,93)`$ give this bounded family. A witness with $`a\ge7`$ would extend the verified range, but any finite extension would still leave the assertion for arbitrarily large thresholds in Proposition <a href="#prop:AR-07" data-reference-type="ref" data-reference="prop:AR-07">113</a> unproved.*
-> 
-> *<span class="sans-serif">\[bounded\]</span> <span class="sans-serif">\[Lean (finite prefix only)\]</span> \
-> [`powerTwoActualLcmShortArithmeticKillSupply_through_six`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmShortKill.lean#L54)*
+> The witnesses at $`(a,L)=(4,23)`$ and $`(6,93)`$ give this bounded family. A witness with $`a\ge7`$ would extend the verified range, but any finite extension would still leave the assertion for arbitrarily large thresholds in Proposition <a href="#prop:AR-07" data-reference-type="ref" data-reference="prop:AR-07">111</a> unproved.*
 
 The Lean declarations below together state this result.
 
@@ -1795,8 +1736,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > If instead the middle value is strictly larger than both outer values, the displayed second difference is negative. In each case the claim follows by adding the two strict differences. No lower bound on their sizes is needed.*
 > 
-> *For $`H=H_{2^a}`$, this reduces nonvanishing of one second difference to an ordering of three totient values. For a prescribed $`j`$, the remaining question is whether either strict ordering occurs for arbitrarily large $`a`$. The elementary implication does not establish those occurrences. <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span> \
-> [`MiddleRankTotientExtremal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientFixedRankLcmAsymptotic.lean#L267)*
+> *For $`H=H_{2^a}`$, this reduces nonvanishing of one second difference to an ordering of three totient values. For a prescribed $`j`$, the remaining question is whether either strict ordering occurs for arbitrarily large $`a`$. The elementary implication does not establish those occurrences.*
 
 The Lean declarations below together state this result.
 
@@ -1898,10 +1838,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Then $`S\notin\mathbb Q`$. Under a hypothetical eventual period $`h`$, the proved congruence argument at a sufficiently large such prime forces $`R_{p+4h}-R_p`$ to be an integer in the tested residue class. The finite test excludes every candidate in that class, a contradiction.*
 > 
-> *The mod-four congruence is supplied by Proposition <a href="#prop:CP-05-inv" data-reference-type="ref" data-reference="prop:CP-05-inv">142</a>; exclusion at the same prime is not. Restricting to $`2\pmod4`$ retains one residue class out of four, not necessarily exactly one quarter of the candidates in a finite interval. The quantifier over every bound $`B`$ cannot be replaced by one fixed prime for each $`h`$.*
-> 
-> *<span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span> \
-> [`irrational_totientSeries_of_cofinal_modFourPulseSurvivorKill`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L1066)*
+> *The mod-four congruence is supplied by Proposition <a href="#prop:CP-05-inv" data-reference-type="ref" data-reference="prop:CP-05-inv">140</a>; exclusion at the same prime is not. Restricting to $`2\pmod4`$ retains one residue class out of four, not necessarily exactly one quarter of the candidates in a finite interval. The quantifier over every bound $`B`$ cannot be replaced by one fixed prime for each $`h`$.*
 
 The Lean declarations below together state this result.
 
@@ -1947,8 +1884,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \big(\forall h\ge 1,\ \forall N_0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}\ h\ N\ L\big)
 > \iff S\notin\mathbb Q.
 > ```
-> This is exactly the quantifier structure $`\forall h\ge1\ \forall N_0\ \exists N\ge N_0\ \exists L\ \mathcal{C}(h,N,L)`$. The quantified condition is not supplied here. The equivalence specifies exactly what a residue-based proof would need beyond the finite examples. <span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span> (equivalence; supply <span class="sans-serif">\[Open\]</span>) \
-> [`irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412)*
+> This is exactly the quantifier structure $`\forall h\ge1\ \forall N_0\ \exists N\ge N_0\ \exists L\ \mathcal{C}(h,N,L)`$. The quantified condition is not supplied here. The equivalence specifies exactly what a residue-based proof would need beyond the finite examples.*
 
 The Lean declaration below states this result.
 

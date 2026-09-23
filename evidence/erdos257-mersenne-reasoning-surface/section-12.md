@@ -11,7 +11,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 > \mathrm{CPGS}\ :=\ \forall N,\ \exists c\ge N,\ c\ \text{skipped by the rational half-greedy
 > orbit}\ \wedge\ 0<\ensuremath{r}(1/2)(c-1)
 > ```
-> ([`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22)). The positivity conjunct is unconditionally true for every skipped $`c`$ ([`localMersennePrefixValue_halfGreedy_lt_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L138), <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">(uniform)</span>; an odd-denominator parity fact), hence deletable without changing the Prop’s meaning. What survives, $`\forall N\,\exists c\ge N`$ skipped, is exactly $`(\mathtt{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}`$, so
+> The positivity conjunct is unconditionally true for every skipped $`c`$ (an odd-denominator parity fact), hence deletable without changing the Prop’s meaning. What survives, $`\forall N\,\exists c\ge N`$ skipped, is exactly $`(\mathtt{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}`$, so
 > ``` math
 > \mathrm{CPGS}\ \Longleftrightarrow\ \mathrm{HALF}.
 > ```*
@@ -59,7 +59,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > |\operatorname{ihc}(D,M-1)|\le2\lfloor\sqrt M\rfloor+4.
 > ```
-> This is the exact terminal-strip condition in [`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34). It is equivalent to $`1/2\in\mathcal A`$: the forward direction follows from the displayed finite-approximation estimate; for the converse, truncate an achieving support at $`M=k^2`$ and apply Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">17</a>. Thus constant $`4`$ already suffices at cofinally many depths. The relaxed constant $`6`$ gives a bound at every depth, using $`\sqrt M\le\lfloor\sqrt M\rfloor+1`$, but that relaxation is not needed for the cofinal statement.*
+> This is the exact terminal-strip condition. It is equivalent to $`1/2\in\mathcal A`$: the forward direction follows from the displayed finite-approximation estimate; for the converse, truncate an achieving support at $`M=k^2`$ and apply Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">17</a>. Thus constant $`4`$ already suffices at cofinally many depths. The relaxed constant $`6`$ gives a bound at every depth, using $`\sqrt M\le\lfloor\sqrt M\rfloor+1`$, but that relaxation is not needed for the cofinal statement.*
 
 The Lean declarations below together state this result.
 

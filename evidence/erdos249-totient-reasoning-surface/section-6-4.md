@@ -10,8 +10,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 > ``` math
 > \forall t\in\mathbb N,\quad t\le82\ \Longrightarrow\ P\,t,
 > ```
-> where $`P\,t`$ is the diagonal certificate predicate in Proposition <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">123</a>. The earlier aggregate covered 28 explicit cases through $`64`$, including $`1,2,3,4,5,7,8,9,11,13,16,17`$; the later theorem fills the gaps and extends the range through $`82`$. Each instance reduces to exact finite arithmetic with the displayed totient values, using the prime-power factorisations and Lucas primality certificates in the source. This proves neither $`P\,83`$ nor infinitely many instances, and therefore does not establish the quantified conditions in Propositions <a href="#prop:A10" data-reference-type="ref" data-reference="prop:A10">122</a>, <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">123</a> and <a href="#prop:B7" data-reference-type="ref" data-reference="prop:B7">124</a>. <span class="sans-serif">\[bounded\]</span> <span class="sans-serif">\[Cert\]</span> \
-> [`certifiedKill_diagonal_all_imported`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificates.lean#L2870) [`ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Skip/LadderT67.lean#L71264)*
+> where $`P\,t`$ is the diagonal certificate predicate in Proposition <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">121</a>. The earlier aggregate covered 28 explicit cases through $`64`$, including $`1,2,3,4,5,7,8,9,11,13,16,17`$; the later theorem fills the gaps and extends the range through $`82`$. Each instance reduces to exact finite arithmetic with the displayed totient values, using the prime-power factorisations and Lucas primality certificates in the source. This proves neither $`P\,83`$ nor infinitely many instances, and therefore does not establish the quantified conditions in Propositions <a href="#prop:A10" data-reference-type="ref" data-reference="prop:A10">120</a>, <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">121</a> and <a href="#prop:B7" data-reference-type="ref" data-reference="prop:B7">122</a>.*
 
 The Lean declarations below together state this result.
 
@@ -54,8 +53,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \sum_{\substack{a,b\ge1\\\gcd(a,b)=1}}2^{-(a+b)}=S-\frac12.
 > ```
-> For independent random variables $`X,Y`$ with $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$, $`n\ge1`$, the left side is $`\Pr(\gcd(X,Y)=1)`$. Thus $`S-1/2`$ has a coprimality-probability interpretation. This identity does not supply an estimate for the binary digits or tail residues used elsewhere in the paper. <span class="sans-serif">\[n/a\]</span> <span class="sans-serif">\[Lean\]</span> \
-> [`tsum_pos_coprime_pair_pow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GeometricCoprimality.lean#L182)*
+> For independent random variables $`X,Y`$ with $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$, $`n\ge1`$, the left side is $`\Pr(\gcd(X,Y)=1)`$. Thus $`S-1/2`$ has a coprimality-probability interpretation. This identity does not supply an estimate for the binary digits or tail residues used elsewhere in the paper.*
 
 The Lean declarations below together state this result.
 
@@ -126,7 +124,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-values-exponents-one-two"></a>
 
-## Theorem 6.121, page 59
+## Theorem 6.121 (The values at exponents one and two), page 59
+
+> *The first two values are $`\Theta_1=1/2`$ and $`\Theta_2=S-1/2`$.*
 
 The Lean declaration below states this result.
 
@@ -151,7 +151,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-first-two-summands-give-positive"></a>
 
-## Theorem 6.122, page 59
+## Theorem 6.122 (The first two summands give a positive Hankel gap), page 59
+
+> *$`(1-3^{-(r+1)})^2 - (1-3^{-r})(1-3^{-(r+2)}) = 4/3^{r+2}`$, so the rational sequence $`1-3^{-r}`$ is strictly log-concave for every integer $`r\ge1`$.*
 
 The Lean declarations below together state this result.
 
@@ -185,7 +187,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-strict-log-concavity-all-integer"></a>
 
-## Theorem 6.123, page 59
+## Theorem 6.123 (Strict log-concavity for all integer $`r\ge1`$), page 59
+
+> *For every integer $`r\ge1`$,
+> ``` math
+> \Theta_r\Theta_{r+2}<\Theta_{r+1}^2.
+> ```
+> Equivalently, the determinant of $`\left(\begin{smallmatrix}\Theta_r&\Theta_{r+1}\\
+> \Theta_{r+1}&\Theta_{r+2}\end{smallmatrix}\right)`$ is negative. The two-summand comparison gives an elementary proof, detailed below; the same strict inequality is also proved in Lean.*
 
 The Lean declarations below together state this result.
 
@@ -237,8 +246,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > For each fixed $`v`$, such a sequence is unique and equals
 > ``` math
 > u(N)=vR^c_N,\qquad R^c_N=\sum_{j\ge1}\frac{c(N+j)}{2^j}.
-> ```
-> [`Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L426) [`Erdos249257.temperedBinaryOrbit_eq_scaledTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L339) .*
+> ```*
 
 The Lean declarations below together state this result.
 
@@ -273,7 +281,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-uniqueness-under-growth-condition"></a>
 
-## Proposition 6.126, page 60
+## Proposition 6.126 (Uniqueness under the growth condition), page 60
+
+> *A real sequence $`d`$ with $`d(N{+}1)=2d(N)`$ and $`d(N)=o(2^N)`$ is identically zero.*
 
 The Lean declaration below states this result.
 
@@ -299,7 +309,18 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-exact-rational-approximation-formula"></a>
 
-## Proposition 6.128, page 61
+## Proposition 6.128 (An exact rational approximation formula), page 61
+
+> *For integers $`H,D\ge0`$, with the integer prefixes $`\Phi_N`$ defined above,
+> ``` math
+> \begin{aligned}
+>  R_{2H}-R_H
+>  &-\left[\Phi_H-\Phi_{2H}
+>    +2^H(2^H-1)\left(\frac12+\sum_{d=1}^{D}\frac{\mu(d)}{(2^d-1)^2}\right)\right]\\
+>  &=2^H(2^H-1)\sum_{d>D}\frac{\mu(d)}{(2^d-1)^2}.
+> \end{aligned}
+> ```
+> This follows by substituting the squared-denominator identity for $`S`$ into $`R_{2H}-R_H=2^H(2^H-1)S+\Phi_H-\Phi_{2H}`$. There is no required ordering between $`D`$ and $`H`$.*
 
 The Lean declarations below together state this result.
 
@@ -364,7 +385,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-geometric-tail-bound"></a>
 
-## Proposition 6.129, page 61
+## Proposition 6.129 (A geometric tail bound), page 61
+
+> *For every integer $`D\ge0`$,
+> ``` math
+> \left|\sum_{d>D}\frac{\mu(d)}{(2^d-1)^2}\right|
+>  \le \frac{4}{3(2^{D+1}-1)^2}.
+> ```
+> Indeed, $`|\mu(d)|\le1`$ and $`2^{D+1+j}-1\ge2^j(2^{D+1}-1)`$ for $`j\ge0`$. The sum of the resulting geometric majorant is $`\sum_{j\ge0}4^{-j}=4/3`$.*
 
 The Lean declarations below together state this result.
 
@@ -413,7 +441,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sum-over-divisor-indices"></a>
 
-## Proposition 6.131, page 62
+## Proposition 6.131 (The sum over divisor indices), page 62
+
+> *For integers $`H>0`$ and $`s\ge0`$, the part of the Möbius expansion indexed by divisors of $`H`$ is
+> ``` math
+> \sum_{\substack{d\mid H\\d\mid s}}\mu(d)\frac Hd
+>        =H\frac{\varphi(\gcd(H,s))}{\gcd(H,s)}.
+> ```
+> This is the standard identity $`\sum_{d\mid g}\mu(d)/d=\varphi(g)/g`$ at $`g=\gcd(H,s)>0`$. The formal statement writes the same value after extracting $`H/\operatorname{rad}(H)`$, where $`\operatorname{rad}(H)=\prod_{p\mid H}p`$.*
 
 The Lean declarations below together state this result.
 
@@ -485,7 +520,19 @@ theorem squarefreeKernel_eq_prod_primeFactors (H : ℕ) :
 
 <a id="prop-divisor-sum-complement"></a>
 
-## Proposition 6.132, page 62
+## Proposition 6.132 (The divisor sum and its complement), page 62
+
+> *For integers $`H>0`$ and $`s\ge0`$,
+> ``` math
+> \begin{aligned}
+>  \varphi(2H+s)-\varphi(H+s)
+>  &=H\frac{\varphi(\gcd(H,s))}{\gcd(H,s)}\\
+>  &\quad+\sum_{\substack{1\le d\le2H+s\\d\nmid H}}
+>  \mu(d)\left(\frac{2H+s}{d}\,\mathbf1_{d\mid2H+s}
+>            -\frac{H+s}{d}\,\mathbf1_{d\mid H+s}\right).
+> \end{aligned}
+> ```
+> Here $`\mathbf1`$ is the indicator of the stated divisibility condition. The identity follows by expanding both totients as $`\varphi(n)=\sum_{d\mid n}\mu(d)n/d`$ and separating the indices $`d\mid H`$. Such an index divides either endpoint precisely when it divides $`s`$, and its difference is then $`\mu(d)H/d`$.*
 
 The Lean declarations below together state this result.
 
@@ -538,7 +585,17 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-doubling-full-totient-difference"></a>
 
-## Theorem 6.133, page 62
+## Theorem 6.133 (Doubling the full totient difference), page 62
+
+> *For nonnegative integers $`H,r`$ with $`H`$ even,
+> ``` math
+> \varphi(4H+2r)-\varphi(2H+2r)=
+>  \begin{cases}
+>  2\bigl(\varphi(2H+r)-\varphi(H+r)\bigr),&r\text{ even},\\
+>  \varphi(2H+r)-\varphi(H+r),&r\text{ odd}.
+>  \end{cases}
+> ```
+> This applies to the full difference, not just its divisor contribution. It follows from $`\varphi(2n)=2\varphi(n)`$ for even $`n`$ and $`\varphi(2n)=\varphi(n)`$ for odd $`n`$.*
 
 The Lean declarations below together state this result.
 
@@ -582,7 +639,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-doubling-identity-two-portions-sum"></a>
 
-## Proposition 6.135, page 63
+## Proposition 6.135 (A doubling identity for two portions of the sum), page 63
+
+> *Let $`H>0`$, $`s\ge0`$ and $`d\ge1`$, with $`d\nmid H`$ and $`d\mid H+s`$. The $`d`$-summands in the complementary sums at offsets $`s`$ and $`2s`$ are, respectively,
+> ``` math
+> -\mu(d)\frac{H+s}{d}
+>  \qquad\text{and}\qquad
+>  2\mu(d)\frac{H+s}{d}.
+> ```
+> For the second expression, $`d\mid2H+2s`$ and $`d\nmid H+2s`$; otherwise $`d`$ would divide their difference $`H`$. Thus the second contribution is $`-2`$ times the first, including the zero case $`\mu(d)=0`$. The two terms have different binary weights in a window sum, so this identity alone is not a cancellation of their weighted contributions.*
 
 The Lean declaration below states this result.
 
@@ -611,7 +676,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-positive-coefficients-numerator-polynomial"></a>
 
-## Theorem 6.136, page 63
+## Theorem 6.136 (Positive coefficients of the numerator polynomial), page 63
+
+> *For a squarefree integer $`r\ge1`$, the numerator polynomial has the explicit expression
+> ``` math
+> \sum_{d\mid r}\mu(d)\frac rd\sum_{j=0}^{r/d-1}X^{dj}
+>    =\sum_{k=0}^{r-1}
+>         \frac r{\gcd(r,k)}\varphi(\gcd(r,k))X^k.
+> ```
+> Every coefficient for $`0\le k<r`$ is positive, and the higher coefficients are zero. Extracting $`X^k`$ on the left gives $`\sum_{d\mid\gcd(r,k)}\mu(d)r/d`$, which proves the formula. The squarefree assumption identifies this divisor sum with the subset-of-primes definition in the formal source.*
 
 The Lean declarations below together state this result.
 
@@ -674,6 +747,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 6.137, page 63
 
+> *For the same squarefree $`r`$, evaluation at $`X=2`$ gives the integer
+> ``` math
+> \sum_{d\mid r}\mu(d)\frac rd\frac{2^r-1}{2^d-1}.
+> ```
+> Each quotient is an integer because $`d\mid r`$.*
+
 The Lean declarations below together state this result.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean#L111)
@@ -717,7 +796,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-geometric-remainder-bound"></a>
 
-## Proposition 6.139, page 64
+## Proposition 6.139 (The geometric remainder bound), page 64
+
+> *The remainder after the first two geometric terms of $`1/(2^n-1)`$ is
+> ``` math
+> \frac1{2^n-1}-2^{-n}-4^{-n}
+>    =\frac{8^{-n}}{1-2^{-n}}
+>    \le \frac43\,8^{-n}\qquad(n\ge2).
+> ```
+> Indeed, $`1-2^{-n}\ge3/4`$. Summing over $`n>m`$, for an integer $`m\ge1`$, gives
+> ``` math
+> \sum_{n>m}\left(\frac1{2^n-1}-2^{-n}-4^{-n}\right)
+>  \le\frac43\sum_{n>m}8^{-n}=\frac4{21}\,8^{-m}.
+> ```*
 
 The Lean declarations below together state this result.
 
@@ -779,7 +870,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-squared-distance-phase-one"></a>
 
-## Proposition 6.140, page 64
+## Proposition 6.140 (Squared distance from the phase one), page 64
+
+> *``` math
+> \begin{aligned}
+> \sum_{N\in T}\|{E}(h,N,L)-1\|^2
+>   &= 2|T|-2\sum_{N\in T}\operatorname{Re}E(h,N,L).
+> \end{aligned}
+> ```*
 
 The Lean declaration below states this result.
 
@@ -803,7 +901,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-squared-distance-bound-separated-pairs"></a>
 
-## Lemma 6.141, page 64
+## Lemma 6.141 (Squared-distance bound for separated pairs), page 64
+
+> *For a finite family $`z:T\to\mathbb{C}`$, a real number $`\delta\ge0`$, and any set of pairs $`P\subseteq
+> T\times T`$ each separated by $`\ge\delta`$, $`|P|\cdot\delta^2 \le
+> \sum_{i,j\in T}\|z_i-z_j\|^2`$.*
 
 The Lean declaration below states this result.
 
@@ -829,7 +931,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-finite-divisor-sum"></a>
 
-## Proposition 6.142, page 65
+## Proposition 6.142 (The finite divisor sum), page 65
+
+> *For an integer $`H>0`$, the contribution of the divisor indices to $`R_{2H}-R_H`$ is
+> ``` math
+> A_H=H\sum_{d\mid H}\frac{\mu(d)}{d(2^d-1)}.
+> ```
+> For $`d\mid H`$, both $`a_d(H)`$ and $`a_d(2H)`$ equal $`d`$. Hence $`\kappa_d(2H)-\kappa_d(H)=H\mu(d)/(d(2^d-1))`$. Summing over the divisors gives $`A_H`$, not the whole tail difference: the nondivisor terms must still be included.*
 
 The Lean declarations below together state this result.
 
@@ -886,7 +994,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-separation-larger-than-error-implies"></a>
 
-## Proposition 6.143, page 65
+## Proposition 6.143 (Separation larger than the error implies exclusion), page 65
+
+> *Suppose
+> ``` math
+> \bigl|(R_{2H}-R_H)-(A_H+P_{H,D})\bigr|\le\varepsilon_{H,D},
+>  \qquad
+>  |A_H+P_{H,D}-z|>\varepsilon_{H,D}\quad\hbox{for every }z\in\mathbb{Z}.
+> ```
+> Then $`R_{2H}-R_H\notin\mathbb{Z}`$.*
 
 The Lean declarations below together state this result.
 
@@ -937,7 +1053,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-coprime-pair-counting-totient"></a>
 
-## Theorem 6.144, page 66
+## Theorem 6.144 (Coprime-pair counting and the totient), page 66
+
+> *For every $`n\in\mathbb N`$, $`\#\{(a,b)\in\mathbb N^2:a+b=n,\ a>0,\ \gcd(a,b)=1\}=\varphi(n)`$. Here $`b=0`$ is allowed: the boundary pair $`(1,0)`$ accounts for the value $`\varphi(1)=1`$.*
 
 The Lean declarations below together state this result.
 
@@ -972,7 +1090,23 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-two-lattice-sums"></a>
 
-## Proposition 6.145, page 66
+## Proposition 6.145 (Two lattice sums), page 66
+
+> *For $`0\le r<1`$, the two choices of boundary give
+> ``` math
+> \begin{aligned}
+>  \sum_{\substack{a\ge1,\ b\ge0\\\gcd(a,b)=1}}r^{a+b}
+>    &=\sum_{n\ge1}\varphi(n)r^n,\\
+>  \sum_{\substack{a,b\ge1\\\gcd(a,b)=1}}r^{a+b}
+>    &=\sum_{n\ge1}\varphi(n)r^n-r.
+> \end{aligned}
+> ```
+> The removed pair is $`(1,0)`$. Partitioning all strictly positive pairs by their greatest common divisor gives
+> ``` math
+> \sum_{g\ge1}\ \sum_{\substack{a,b\ge1\\\gcd(a,b)=1}}
+>        r^{g(a+b)}=\left(\frac r{1-r}\right)^2.
+> ```
+> This total is $`1`$ exactly when $`r=1/2`$.*
 
 The Lean declarations below together state this result.
 
@@ -1043,7 +1177,10 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-classical-coprime-pair-lambert-identity"></a>
 
-## Theorem 6.146, page 67
+## Theorem 6.146 (The classical coprime-pair Lambert identity), page 67
+
+> *For every $`0\le r<1`$, $`\sum_{(a,b)\ \mathrm{coprime},\, a,b\ge 1}
+> \dfrac{r^{a+b}}{1-r^{a+b}} = \Bigl(\dfrac{r}{1-r}\Bigr)^2`$, an elementary rational function of $`r`$, hence rational at every rational $`r`$ including $`r=1/2`$. This is the classical visible-point identity, and its Lean proof is a formalisation of it rather than a new result: writing each pair $`(A,B)`$ of positive integers uniquely as $`g\cdot(a,b)`$ with $`\gcd(a,b)=1`$ converts the quadrant sum $`\sum_{A,B\ge1}r^{A+B}=(r/(1-r))^2`$ into the displayed sum over visible points. With the plain weight $`r^{a+b}`$, the same strictly positive index set instead sums to $`\sum_{n\ge1}\varphi(n)r^n-r`$. Thus at $`r=1/2`$ the Lambert-weighted sum is $`1`$, whereas the plain-weight sum is $`S-1/2`$, not $`S`$. Adding the boundary pair $`(1,0)`$ recovers $`S`$ in the plain-weight sum.*
 
 The Lean declarations below together state this result.
 
@@ -1121,7 +1258,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-nondivisors-short-lcm-window"></a>
 
-## Theorem 6.149, page 67
+## Theorem 6.149 (Nondivisors in a short LCM window), page 67
+
+> *Let $`t\ge1`$. If $`1\le j<2t`$ and $`j\nmid H_t`$, then $`j=p^a>t`$ for a prime $`p`$ and an integer $`a\ge1`$. Every integer $`1\le j\le t`$ divides $`H_t`$. To see the first claim, some prime-power divisor $`p^a`$ of $`j`$ exceeds $`t`$; otherwise every prime-power divisor would divide $`H_t`$. Since $`j<2t<2p^a`$, its remaining cofactor is $`1`$.*
+> 
+> *If $`j\mid H_t`$ and every prime divisor of $`j`$ also divides $`H_t/j`$, then, for every integer $`q\ge0`$,
+> ``` math
+> \varphi(qH_t+j)=\varphi(j)\varphi\bigl(q(H_t/j)+1\bigr).
+> ```
+> Indeed, the second factor’s argument is coprime to $`j`$, so totient multiplicativity applies. The hypothesis is essential to this factorisation: at $`t=2`$, $`j=2`$, $`q=1`$ the left side is $`\varphi(4)=2`$ but the displayed product would be $`1`$.*
 
 The Lean declarations below together state this result.
 
@@ -1173,7 +1318,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-unbounded-prime-support-mersenne-factors"></a>
 
-## Theorem 6.151, page 68
+## Theorem 6.151 (Unbounded prime support in Mersenne factors), page 68
+
+> *Every prime divisor $`p`$ of $`2^q-1`$, for prime $`q`$, satisfies $`q\mid p-1`$ (the order of $`2`$ mod $`p`$ is exactly $`q`$, by Fermat/Lagrange in $`(\mathbb{Z}/p)^\times`$); consequently the prime divisors appearing in the layers $`\{2^n-1\}`$ are unbounded, unconditionally, with no cyclotomic resultant hypothesis left open.*
 
 The Lean declarations below together state this result.
 
@@ -1205,7 +1352,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-prime-satisfying-stated-cyclotomic-conditions"></a>
 
-## Theorem 6.152, page 68
+## Theorem 6.152 (A prime satisfying the stated cyclotomic conditions), page 68
+
+> *For every period $`h>0`$ and threshold $`N_0`$, there exist a prime $`q`$ and a prime factor $`p`$ of $`|\Phi_{hq}(2)|`$ (the binary cyclotomic layer) with $`p`$ coprime to $`hq`$, $`hq\mid p-1`$, and $`p-1\ge N_0`$. The characteristic-prime exceptional case in the cyclotomic order decomposition is eliminated directly, by choosing $`q>2^h`$ (rules out $`p=q`$) and $`q>h`$ (rules out $`p\mid h`$).*
 
 The Lean declarations below together state this result.
 
@@ -1240,7 +1389,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-sufficient-order-hypothesis-unbounded-prime"></a>
 
-## Theorem 6.155, page 68
+## Theorem 6.155 (A sufficient order hypothesis for unbounded prime support), page 68
+
+> *Let $`C:\mathbb{N}\to\mathbb{N}`$, and fix integers $`m\ge1`$ and $`d\ge0`$. Suppose that for every pair of primes $`q,p`$ with $`p\mid C(mq)`$ there is an integer $`k`$ such that
+> ``` math
+> 1\le k\le d,\qquad mq\mid p^k-1.
+> ```
+> The divisibility forces $`\gcd(p,mq)=1`$. For such $`p`$, existence of $`k`$ in the displayed range is equivalent to $`\operatorname{ord}_{mq}(p)\le d`$. It also gives $`mq<p^d`$. Hence every fixed finite set of primes is disjoint from the prime divisors of $`C(mq)`$ for all sufficiently large prime $`q`$. If, in addition, for all sufficiently large prime $`q`$ one has $`C(mq)>1`$ and $`\gcd(C(mq),mq)=1`$, then for every $`B,N_0`$ there are primes $`q\ge N_0`$ and $`p>B`$ with $`p\mid C(mq)`$.*
+> 
+> *Indeed, the divisibility gives $`mq\le p^k-1<p^k\le p^d`$. For a finite set of primes, take $`q`$ larger than all their $`d`$-th powers; for the last assertion, take a prime divisor of the nontrivial value $`C(mq)`$ after this threshold. The stated coprimality is included in the formal source’s layer hypothesis, although this last extraction argument uses only $`C(mq)>1`$. For $`C(n)=2^n-1`$, the first theorem above supplies the hypothesis with $`m=d=1`$: here $`\operatorname{ord}_q(p)=1`$, whereas $`\operatorname{ord}_p(2)=q`$. For $`C(n)=|\Phi_n(2)|`$ and a general fixed $`m>0`$, the source uses the *eventual* version: the divisibility is required only for prime $`q`$ above a fixed threshold. The same proof then applies after that threshold. It is not valid to replace this by an all-prime assertion: $`\Phi_6(2)=3`$, but $`6\nmid3-1`$. For the binary cyclotomic family, choosing $`q>\max(m,2^m)`$ removes these exceptional indices. Other families require their own proof of the divisibility and nontriviality assumptions.*
 
 The Lean declarations below together state this result.
 
@@ -1381,7 +1538,18 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-uniform-positive-gap-rank-one"></a>
 
-## Theorem 6.156, page 69
+## Theorem 6.156 (A uniform positive gap for rank-one quotients), page 69
+
+> *For integers $`r\ge2`$ and $`Y\ge1`$, write
+> ``` math
+> \Theta_r=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^r},
+>  \qquad t(Y,r)=\sum_{d=1}^{Y}\frac{\mu(d)}{(2^d-1)^r}.
+> ```
+> For every $`e\ge1`$ and $`Y\ge4`$,
+> ``` math
+> \frac{t(Y,e+2)^2}{t(Y,2e+2)}-\Theta_2>\frac1{480}.
+> ```
+> Here $`\Theta_2=S-1/2`$. For $`r\ge3`$, the proof uses $`1429/1512\le\Theta_r<1`$ and $`|t(Y,r)-\Theta_r|\le1/3584`$ when $`Y\ge4`$. In particular, these inequalities make the denominator positive.*
 
 The Lean declarations below together state this result.
 
@@ -1452,7 +1620,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-bound-preserved-positive-normalised-averaging"></a>
 
-## Proposition 6.157, page 69
+## Proposition 6.157 (The bound is preserved by positive normalised averaging), page 69
+
+> *For a nonempty finite family of admissible quotients with positive weights summing to $`1`$, the weighted average still exceeds $`\Theta_2`$ by more than $`1/480`$. If an admissible quotient is $`p/q`$ in lowest terms, with $`q>0`$, then $`|q\Theta_2-p|>q/480`$.*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean average bound holds for any positive weights, dividing the weighted sum by the total weight, so the printed case of weights summing to $1$ follows; the Lean bound $|q\Theta_2-p|>q/480$ holds for every representation of an admissible quotient as $p/q$ with $q\ge1$, of which lowest terms is a case.
 
@@ -1497,7 +1667,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-concatenation-specified-period-multiples"></a>
 
-## Theorem 6.159, page 70
+## Theorem 6.159 (Concatenation and specified period multiples), page 70
+
+> *For nonnegative integers $`a,b,N`$, define the integer block sum
+> ``` math
+> Q_{a,N}=\sum_{j=1}^{a}\varphi(N+j)2^{a-j}.
+> ```
+> Splitting a block after its first $`a`$ terms gives
+> ``` math
+> Q_{a+b,N}=2^bQ_{a,N}+Q_{b,N+a}.
+> ```
+> In particular, $`Q_{2h,N}=2^hQ_{h,N}+Q_{h,N+h}`$. The corresponding cyclotomic identity is $`\Phi_4(2^h)=2^{2h}+1=\Phi_2(2^{2h})`$: the order-four factor at height $`h`$ is the order-two factor at height $`2h`$.*
+> 
+> *The order-three factor is different: $`\Phi_3(2^h)=2^{2h}+2^h+1`$ comes from tripling the period. It is not generally part of the doubling sequence. For example, $`\Phi_3(2)=7`$ divides none of $`2^{2^j}-1`$, because the order of $`2`$ modulo $`7`$ is $`3`$, which does not divide $`2^j`$. Thus the block identities relate specified period multiples; they do not put all the order-two, order-three and order-four factors into one doubling chain.*
 
 The Lean declarations below together state this result.
 

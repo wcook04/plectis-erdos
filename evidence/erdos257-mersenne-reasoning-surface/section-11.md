@@ -221,13 +221,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-squarefree"></a>
 
-## Proposition 11.4 (Squarefree support: exact engine ceiling, not an open value), page 126
+## Proposition 11.4 (Squarefree support: a limit of the certificate method, not an open value), page 126
 
 > *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then
 > ``` math
 > c_{A}(n)=2^{\omega(n)}-1,
 > ```
-> which is odd for every $`n\ge2`$. Consequently neither the digitwise nor the carry-aware divisibility-first block-certificate schema has an instance at any even base. The two exact no-go theorems are [`ErdosProblems.Erdos257.SquarefreeSupportIncidence.not_exists_carry_certificates_squarefreeSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L274) and [`ErdosProblems.Erdos257.SquarefreeSupportIncidence.not_exists_digitwise_certificates_squarefreeSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L292).*
+> which is odd for every $`n\ge2`$. Consequently neither the digitwise nor the carry-aware divisibility-first block-certificate schema has an instance at any even base.*
 
 The Lean declaration below states this result.
 

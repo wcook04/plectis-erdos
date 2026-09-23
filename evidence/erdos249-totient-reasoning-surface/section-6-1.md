@@ -11,8 +11,6 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 > R_{N+h}-R_N\in\mathbb Z\qquad(N\ge c),\qquad h=\varphi(v)>0.
 > ```
 > Euler’s theorem gives $`v\mid2^h-1`$, and the prefix-tail identity then makes $`2^N(2^h-1)S`$ integral. Thus rationality supplies a positive shift for which all sufficiently late tail differences are integral.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`eventual_period_of_not_irrational`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L358)*
 
 The Lean declaration below states this result.
 
@@ -49,8 +47,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > and, for every $`e\ge0`$, the sequences $`n\mapsto u(2^jn+r)`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a space of $`\mathbb Q`$-dimension at least $`2^e-1`$.*
 > 
 > *The recurrence is the one obtained from the scaled tails after clearing a hypothetical denominator of $`S`$. The formal term *tempered* means exactly $`u(N)/2^N\to0`$ here, not a separate assumption of subexponential growth. This rank lower bound is a necessary consequence of rationality, not a contradiction. An upper bound using additional properties of the actual totient coefficients would be needed; the later rational comparison rules out such a bound for arbitrary rational coefficient series.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientCarryKernelRigidity.lean#L300)*
 
 The Lean declaration below states this result.
 
@@ -102,8 +98,6 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 > is linearly independent over $`\mathbb Q`$ and has $`2^e+1`$ members. At $`e=0`$ this family still contains $`\varphi(2n)`$; it is not the full level-zero truncation, which consists only of $`\varphi(n)`$. For $`e\ge1`$ it is the basis of the full truncated dyadic family.*
 > 
 > *The proof separates one section at a time: the Chinese remainder theorem forces suitable prime divisors in the other affine arguments, while Dirichlet’s theorem makes the selected argument prime. This proves independence, not just the displayed cardinality. In particular, the span of all dyadic sections is infinite-dimensional; that conclusion alone says nothing about rationality of their weighted sum.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`card_totientCanonicalIndex`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L61) [`linearIndependent_canonicalTotientKernelFamily`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L935)*
 
 The Lean declaration below states this result.
 
@@ -136,8 +130,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.4 (Denominator divisibility forces tail integrality), page 25
 
 > *If $`S=a/q`$ in lowest terms with $`q>0`$ and $`q\mid2^N(2^h-1)`$, then $`R_{N+h}-R_N\in\mathbb Z`$. Indeed, the prefix identity expresses that difference as $`2^N(2^h-1)S`$ minus an integer. This is the contradiction used by a nonintegrality certificate to exclude the rational value $`a/q`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`tail_diff_int_of_den_dvd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L327)*
 
 The Lean declaration below states this result.
 
@@ -169,9 +161,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \gcd\bigl(|P_r(2)|,|\Phi_r(2)|\bigr)=1,
 >  \qquad |\Phi_r(2)|\mid\operatorname{den}(b_r).
 > ```
-> Here $`\Phi_r`$ is the $`r`$-th cyclotomic polynomial. Proposition <a href="#catalogue:mob:b4" data-reference-type="ref" data-reference="catalogue:mob:b4">91</a> gives $`P_r\equiv\mu(r)\pmod{\Phi_r}`$, and $`\mu(r)=\pm1`$ because $`r`$ is squarefree. This proves that the indicated cyclotomic factor cannot cancel from $`b_r`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`mobiusNumerator_gcd_cyclotomicValue`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CyclotomicProjectionOfShadow.lean#L350) [`cyclotomicValue_dvd_baseMobiusShadow_den`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CyclotomicProjectionOfShadow.lean#L389)*
+> Here $`\Phi_r`$ is the $`r`$-th cyclotomic polynomial. Proposition <a href="#catalogue:mob:b4" data-reference-type="ref" data-reference="catalogue:mob:b4">89</a> gives $`P_r\equiv\mu(r)\pmod{\Phi_r}`$, and $`\mu(r)=\pm1`$ because $`r`$ is squarefree. This proves that the indicated cyclotomic factor cannot cancel from $`b_r`$.*
 
 The Lean declarations below together state this result.
 
@@ -247,8 +237,6 @@ theorem cyclotomicValue_dvd_baseMobiusShadow_den
 >        \ \mid\ \operatorname{den}(H_t\beta_{H_t})
 > ```
 > remains after cancellation. More generally, the source gives the same product-divisibility conclusion for a multiplier coprime to that product; it also supplies a sufficient condition on the multiplier’s prime factors. For the multiplier $`H_t/r_t`$, those prime factors are at most $`t`$, and the LCM result above follows.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`upperHalfPrimes`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowCyclotomicNoncollapse.lean#L914) [`upperHalfChannel_product_dvd_den_of_scale_primeFactors_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowCyclotomicNoncollapse.lean#L809) [`lcmHeight_upperHalf_product_dvd_den`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowCyclotomicNoncollapse.lean#L983)*
 
 The Lean declarations below together state this result.
 
@@ -350,9 +338,7 @@ theorem upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
 >  \le \prod_{p\in\mathcal P_t}(2^p-1)
 >  \le \operatorname{den}(H_t\beta_{H_t}).
 > ```
-> Bertrand’s postulate supplies a prime in $`\mathcal P_t`$; its factor is at least $`2^{\lfloor t/2\rfloor}`$. Proposition <a href="#catalogue:mob:b6" data-reference-type="ref" data-reference="catalogue:mob:b6">57</a> then gives the second inequality. The complementary term in the real tail decomposition can still cancel this rational contribution, so denominator growth alone does not prove irrationality of $`S`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`upperHalfMersenneProduct_lower_bound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowDenominatorGrowth.lean#L60)*
+> Bertrand’s postulate supplies a prime in $`\mathcal P_t`$; its factor is at least $`2^{\lfloor t/2\rfloor}`$. Proposition <a href="#catalogue:mob:b6" data-reference-type="ref" data-reference="catalogue:mob:b6">55</a> then gives the second inequality. The complementary term in the real tail decomposition can still cancel this rational contribution, so denominator growth alone does not prove irrationality of $`S`$.*
 
 The Lean declaration below states this result.
 
@@ -395,8 +381,6 @@ theorem upper_half_product_denominator_bounds {t : ℕ} (ht : 5 ≤ t) :
 >        \prod_{\substack{p\mid r_t\\p\ \mathrm{odd\ prime}}}(p^2-1)\right)}.
 > ```
 > The product is $`1`$ when there is no odd prime divisor. This gives the exact cancellation, including the multiplier $`H_t/r_t`$, rather than merely a lower bound for the denominator. For example, $`H_5=60`$ and $`r_5=30`$, and the denominator is $`(2^{30}-1)/3`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`lcmHeight_scaledMobiusShadow_den_exact`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowDenominatorGrowth.lean#L147)*
 
 The Lean declarations below together state this result.
 
@@ -461,8 +445,6 @@ theorem lcmHeight_five_scaledMobiusShadow_den_exact :
 >        =\sum_{i\in I}u_i2^{e_m-e_i}\equiv1\pmod2.
 > ```
 > Indeed, every summand other than $`u_m`$ is even. The sum is therefore nonzero. In the determinant application, the rectangular Cauchy–Binet formula produces such finite signed sums from truncated moments. The result tests a specified configuration; it does not show that a suitable maximal-exponent term exists at arbitrarily large scales.*
-> 
-> *<span class="sans-serif">\[bounded\]</span> [`scaled_dyadic_sum_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SignedQMomentObstruction.lean#L96) [`det_mul_rectangular`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SignedQMomentObstruction.lean#L29)*
 
 The Lean declarations below together state this result.
 
@@ -514,9 +496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For each integer $`1\le h\le8`$, the finite test $`\mathcal C(h,12,16)`$ holds. Each discrepancy uses two 16-term windows. Across all eight shifts, only the 24 distinct totient values at $`13\le n\le36`$ are needed, since the windows overlap. The source verifies the eight integer residue inequalities by exact computation.*
 > 
-> *Consequently, if $`a/b`$ is a reduced fraction with $`b>0`$ and $`b\mid2^{12}(2^h-1)`$ for at least one $`1\le h\le8`$, then $`S\ne a/b`$. This follows from Propositions <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">69</a> and <a href="#catalogue:cert:a8" data-reference-type="ref" data-reference="catalogue:cert:a8">55</a>.*
-> 
-> *<span class="sans-serif">\[fixed\]</span> [`certifiedKill_all_small`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L404) [`totient_series_ne_rat_of_den_dvd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L416)*
+> *Consequently, if $`a/b`$ is a reduced fraction with $`b>0`$ and $`b\mid2^{12}(2^h-1)`$ for at least one $`1\le h\le8`$, then $`S\ne a/b`$. This follows from Propositions <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">67</a> and <a href="#catalogue:cert:a8" data-reference-type="ref" data-reference="catalogue:cert:a8">53</a>.*
 
 The Lean declarations below together state this result.
 
@@ -553,8 +533,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.11 (A common certificate for sixteen shifts), page 26
 
 > *For each integer $`1\le h\le16`$, one has $`\mathcal C(h,14,9)`$. The common basepoint is $`14`$ and the depth is $`9`$; these parameters have different roles. The two windows for each shift use only the 25 distinct totient values at $`15\le n\le39`$ across the whole family. Thus $`S\ne a/b`$ for every reduced fraction with $`b>0`$ such that $`b\mid2^{14}(2^h-1)`$ for at least one $`1\le h\le16`$.*
-> 
-> *<span class="sans-serif">\[fixed\]</span> [`totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18890)*
 
 The Lean declarations below together state this result.
 
@@ -600,11 +578,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > the corresponding depths begin $`6,5,7,7,9,14,15,14,21,22,23,26,\ldots`$. Each entry is a finite kernel computation on explicit totient values. The factorisations use checked prime-power blocks and Lucas primality certificates. Thus the table proves a finite list of instances of $`P(t)`$; it does not prove that $`P(t)`$ holds for infinitely many $`t`$.*
 > 
-> *<span class="sans-serif">\[fixed\]</span> [`certifiedKill_diagonal_all_imported`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificates.lean#L2870) [`diagonalPincerKillDepth`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificates.lean#L2854) [`certifiedKill_diagonal_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificateT64Endpoint.lean#L1928)*
-> 
 > *The historical 28 examples are now a strict subset of the aggregate theorem $`\forall t\le82,\ P(t)`$. That theorem closes the finite interval without holes but supplies neither $`P(83)`$ nor a cofinal family.*
-> 
-> *<span class="sans-serif">\[bounded\]</span> [`ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Skip/LadderT67.lean#L71264)*
 
 The Lean declarations below together state this result.
 
@@ -649,8 +623,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \qquad \Phi_N=\sum_{n\le N}\varphi(n)2^{N-n}\in\mathbb Z.
 > ```
 > Thus $`R_N`$ and $`2^NS`$ have the same fractional part. Subtracting the identities at $`N+h`$ and $`N`$ gives the tail-difference congruence used in the irrationality criterion.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`two_pow_mul_totient_series_eq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L150)*
 
 The Lean declarations below together state this result.
 
@@ -701,8 +673,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 2(N+h+L+2)<2^L.
 > ```
 > Indeed, its lower residue bound must be smaller than its upper bound. Thus $`L>1+\log_2(N+h+L+2)`$ whenever a certificate holds. In particular, a fixed depth cannot accommodate unbounded $`N+h`$. This is a necessary depth bound, not an upper bound for finding a certificate.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`certifiedKill_depth_floor`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L79)*
 
 The Lean declarations below together state this result.
 
@@ -748,8 +718,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \mathcal C(h,N,L)\ \Longrightarrow\ R_{N+h}-R_N\notin\mathbb Z.
 > ```
 > The scaled truncation error satisfies $`|2^L(R_{N+h}-R_N)-D(h,N,L)|\le N+h+L+2`$. If the tail difference were integral, $`D(h,N,L)`$ would therefore lie within that distance of a multiple of $`2^L`$, contrary to the two strict residue inequalities.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`tail_diff_notMem_int_of_certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L262)*
 
 The Lean declarations below together state this result.
 
@@ -788,9 +756,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > (\exists L\in\mathbb N,\ \mathcal C(h,N,L))
 >  \quad\Longleftrightarrow\quad R_{N+h}-R_N\notin\mathbb Z.
 > ```
-> For the converse to Proposition <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">69</a>, fix a positive distance from the nonintegral tail difference to the nearest integer. The normalised error $`(N+h+L+2)/2^L`$ tends to zero, so a sufficiently large truncation preserves that distance. This is a pointwise equivalence; irrationality requires the stated quantifiers over the shift and basepoint.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`exists_certifiedKill_iff_tail_diff_notMem_int`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L316)*
+> For the converse to Proposition <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">67</a>, fix a positive distance from the nonintegral tail difference to the nearest integer. The normalised error $`(N+h+L+2)/2^L`$ tends to zero, so a sufficiently large truncation preserves that distance. This is a pointwise equivalence; irrationality requires the stated quantifiers over the shift and basepoint.*
 
 The Lean declaration below states this result.
 
@@ -825,8 +791,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > s=d(rb-as)+b(cs-rd)\ge d+b.
 > ```
 > In particular, a rational $`r/s`$ strictly between the Farey neighbours $`a/b`$ and $`c/d`$, with positive denominator, has denominator at least $`b+d`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`farey_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L51)*
 
 The Lean declaration below states this result.
 
@@ -856,8 +820,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.22 (An irrationality criterion from rational approximations), page 29
 
 > *Let $`x\in\mathbb R`$ and let $`u_k=p_k/q_k\in\mathbb Q`$ be in lowest terms, with $`q_k>0`$. If $`u_k\ne x`$ for every sufficiently large $`k`$ and $`q_k|x-u_k|\to0`$, then $`x`$ is irrational. Indeed, if $`x=a/b`$ with $`a\in\mathbb Z`$ and $`b\ge1`$, a nonzero integer numerator gives $`q_k|x-u_k|=|a q_k-b p_k|/b\ge1/b`$, a contradiction. This elementary criterion requires both nonvanishing and the scaled error estimate. Convergence $`u_k\to x`$ alone is insufficient, and the approximants need not be continued-fraction convergents.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`irrational_of_den_mul_abs_sub_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5371)*
 
 The Lean declaration below states this result.
 
@@ -891,8 +853,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > Then $`\xi`$ is irrational: if $`\xi=a/b`$ with $`b\ge1`$, every nonzero such difference is at least $`1/b`$. Restricting the multiplier to powers $`m=b_0^n`$ of a fixed integer base $`b_0\ge2`$ gives a sufficient special case, not a hypothesis satisfied by every irrational number. The strict lower bound excludes exact integer hits; the upper bound must be available for arbitrarily large $`q`$.*
 > 
 > *For a binary example, form a number by concatenating the blocks $`10`$ at square indices $`k\ge1`$ and $`01`$ at the other indices. Its binary expansion is not eventually periodic, since the block sequence has increasingly long gaps between the square indices, so the number is irrational. There are no three consecutive equal digits. Every fractional part after a binary shift therefore lies in $`[1/8,7/8]`$, and the multiples $`2^n\xi`$ do not approach the integers. This verifies that the restriction to base powers is genuinely stronger. This example is an ordinary mathematical argument, not an additional claim about the linked formalisation.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`irrational_of_int_mul_near_int`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6120) [`irrational_of_pow_mul_near_int`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6149)*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean lower bound $|m\xi-z|\ge1/\operatorname{den}(\xi)$ uses the reduced denominator of $\xi$, which divides $b$ whenever $\xi=a/b$, so the printed bound $1/b$ follows. The near-integer criterion, its base-power case and the square-block example (irrationality, no three consecutive equal digits, fractional parts of $2^n\xi$ in $[1/8,7/8]$) are the remaining Lean statements as printed.
 
@@ -1093,8 +1053,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \det\bigl(f_j(n_i)\bigr)_{i,j\in I}\ne0,
 > ```
 > then the family $`(f_j)_{j\in I}`$ is linearly independent over $`\mathbb Q`$. A relation among the functions, evaluated at the $`n_i`$, gives a vector in the kernel of this nonsingular matrix, so all coefficients vanish. Finiteness is required to form the displayed determinant. In the totient application the arithmetic work is to construct these evaluation points; the implication itself is ordinary linear algebra.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`SeparatedMinorCertificate`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L83) [`linearIndependent_of_separatedMinorCertificate`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L91)*
 
 The Lean declaration below states this result.
 
@@ -1126,8 +1084,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \frac cd-\frac ab=\frac{bc-ad}{bd}\ge\frac1{bd}.
 > ```
 > The numerator $`bc-ad`$ is a positive integer. Thus an upper bound on a positive rational error gives a lower bound on the product of the reduced denominators. A large denominator in an unreduced displayed expression need not be the reduced denominator appearing in this conclusion.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`positive_rational_difference_lower_bound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimitiveRationalGapSupply.lean#L31)*
 
 The Lean declarations below together state this result.
 
@@ -1189,8 +1145,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >   =\frac12+\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}.
 > ```
 > For the first rearrangement use $`\varphi(n)=\sum_{d\mid n}\mu(d)n/d`$. For the second use $`2^d=(2^d-1)+1`$ and the classical identity $`\sum_{d\ge1}\mu(d)/(2^d-1)=1/2`$. These are identities of values, not transfers of irrationality from a Lambert series with a different weight.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`tsum_totient_half_pow_eq_half_add_moebius_sq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L665) [`totientSeries_eq_pnat_half_pow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquaredMersenneDiagonalEnclosure.lean#L72) [`mobius_square_series_eq_partial_add_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquaredMersenneDiagonalEnclosure.lean#L94)*
 
 The Lean declarations below together state this result.
 
@@ -1232,9 +1186,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \quad\Longleftrightarrow\quad
 >  \sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}\notin\mathbb Q.
 > ```
-> This is the same irrationality question in a different series representation. The notation $`L_2(\mu)`$ for the right-hand series is introduced in Definition <a href="#catalogue:mob:a3" data-reference-type="ref" data-reference="catalogue:mob:a3">80</a>.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`tsum_totient_half_pow_eq_half_add_moebius_sq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L665)*
+> This is the same irrationality question in a different series representation. The notation $`L_2(\mu)`$ for the right-hand series is introduced in Definition <a href="#catalogue:mob:a3" data-reference-type="ref" data-reference="catalogue:mob:a3">78</a>.*
 
 The Lean declaration below states this result.
 
@@ -1267,8 +1219,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  =\sum_{n\ge1}\left(\sum_{d\mid n}w(d)\left(\frac nd-1\right)\right)r^n.
 > ```
 > Expand $`(x/(1-x))^2=\sum_{j\ge1}(j-1)x^j`$ and group terms by $`n=dj`$. Absolute convergence follows from the bound on $`w`$ and geometric decay. The cases $`w=\mu`$, $`w=1`$ and $`w=\varphi`$ give the next three series; the same algebra applies to each, but their arithmetic values differ.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`tsum_lambert_linear_weight_sq_pure`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L105)*
 
 The Lean declaration below states this result.
 
@@ -1297,9 +1247,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.30 (Weight one and divisor sums), page 30
 
-> *$`\sum_{d:\mathbb{N}^+}' 1/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' \big(\sigma(n)-\tau(n)\big)\cdot(1/2)^n = \zeta_q(2) - \zeta_q(1)`$ at $`q=1/2`$. The displayed identity is formalised. Irrationality of its value follows from the cited linear independence result of Postelmans and Van Assche, as explained in Proposition <a href="#prop:zetaq" data-reference-type="ref" data-reference="prop:zetaq">48</a>; that literature result is not formalised here. Replacing the weight $`1`$ by $`\mu`$ changes the value to that of Definition <a href="#catalogue:mob:a3" data-reference-type="ref" data-reference="catalogue:mob:a3">80</a>. Observation <a href="#catalogue:mob:a6" data-reference-type="ref" data-reference="catalogue:mob:a6">83</a> compares the two choices of weight.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L216)*
+> *$`\sum_{d:\mathbb{N}^+}' 1/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' \big(\sigma(n)-\tau(n)\big)\cdot(1/2)^n = \zeta_q(2) - \zeta_q(1)`$ at $`q=1/2`$. The displayed identity is formalised. Irrationality of its value follows from the cited linear independence result of Postelmans and Van Assche, as explained in Proposition <a href="#prop:zetaq" data-reference-type="ref" data-reference="prop:zetaq">46</a>; that literature result is not formalised here. Replacing the weight $`1`$ by $`\mu`$ changes the value to that of Definition <a href="#catalogue:mob:a3" data-reference-type="ref" data-reference="catalogue:mob:a3">78</a>. Observation <a href="#catalogue:mob:a6" data-reference-type="ref" data-reference="catalogue:mob:a6">81</a> compares the two choices of weight.*
 
 The Lean proof assumes the linear independence theorem of Postelmans and Van Assche. Lean takes this input as a hypothesis (`q_Pade_linear_independence`); it is not proved in Lean.
 
@@ -1356,9 +1304,7 @@ theorem moebius_weight_value :
 
 ## Proposition 6.31 (Totient weight and gcd moments), page 31
 
-> *$`\sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n`$, where $`P = \varphi * \mathrm{Id}`$ (Pillai’s gcd-sum function). It also equals $`\mathbb E[\gcd(X,Y)]`$ when $`X,Y`$ are independent and $`\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}`$ for $`n\ge1`$; see Proposition <a href="#prop:pillai" data-reference-type="ref" data-reference="prop:pillai">49</a>. This is a different weighted series. Its rationality is not settled by the identities proved here.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`tsum_totient_div_mersenne_sq_eq_gcd_moment_series`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L235)*
+> *$`\sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n`$, where $`P = \varphi * \mathrm{Id}`$ (Pillai’s gcd-sum function). It also equals $`\mathbb E[\gcd(X,Y)]`$ when $`X,Y`$ are independent and $`\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}`$ for $`n\ge1`$; see Proposition <a href="#prop:pillai" data-reference-type="ref" data-reference="prop:pillai">47</a>. This is a different weighted series. Its rationality is not settled by the identities proved here.*
 
 The Lean declarations below together state this result.
 
@@ -1430,8 +1376,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \mathbb P(d\mid X,\ d\mid Y)=\frac1{(2^d-1)^2}.
 > ```
 > This follows by multiplying the two geometric sums $`\sum_{k\ge1}2^{-dk}=1/(2^d-1)`$. It explains the squared denominator in the preceding Möbius identity.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L266)*
 
 The Lean declarations below together state this result.
 
@@ -1481,9 +1425,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{\substack{a,b\ge1\\\gcd(a,b)=1}}
 >                   \frac1{2^{a+b}-1}=1.
 > ```
-> To see the normalisation, write every pair of positive integers uniquely as $`(ka,kb)`$ with $`\gcd(a,b)=1`$, and sum $`2^{-k(a+b)}`$ over $`k\ge1`$. The total is $`(\sum_{n\ge1}2^{-n})^2=1`$. This base-two normalisation is used in Proposition <a href="#catalogue:mob:a9a" data-reference-type="ref" data-reference="catalogue:mob:a9a">86</a>.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`tsum_pos_coprime_inv_mersenne_eq_one`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L349)*
+> To see the normalisation, write every pair of positive integers uniquely as $`(ka,kb)`$ with $`\gcd(a,b)=1`$, and sum $`2^{-k(a+b)}`$ over $`k\ge1`$. The total is $`(\sum_{n\ge1}2^{-n})^2=1`$. This base-two normalisation is used in Proposition <a href="#catalogue:mob:a9a" data-reference-type="ref" data-reference="catalogue:mob:a9a">84</a>.*
 
 The Lean declaration below states this result.
 
@@ -1526,8 +1468,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \frac{2^b-1}{2^{a+b}-1}.
 > ```
 > They sum to one. The stopping probability is at least $`1/3`$, which gives the next proposition’s geometric error bound. Also $`M(a,b)=\mathbb P(a\mid X)\mathbb P(b\mid Y)`$ for the independent geometric variables used above. The identity does not describe a conservative mass split between the two children alone.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`cylinderMass_split`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L474)*
 
 The Lean declarations below together state this result.
 
@@ -1617,13 +1557,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.36 (Convergence with an explicit error), page 32
 
-> *In the splitting identity of Proposition <a href="#catalogue:mob:a9a" data-reference-type="ref" data-reference="catalogue:mob:a9a">86</a>, the sum of the two child terms is at most $`2/3`$ of the parent term. If $`M_d(a,b)`$ is the sum of the contributions removed during the first $`d`$ levels, then
+> *In the splitting identity of Proposition <a href="#catalogue:mob:a9a" data-reference-type="ref" data-reference="catalogue:mob:a9a">84</a>, the sum of the two child terms is at most $`2/3`$ of the parent term. If $`M_d(a,b)`$ is the sum of the contributions removed during the first $`d`$ levels, then
 > ``` math
 > |M(a,b)-M_d(a,b)|\le(2/3)^d M(a,b).
 > ```
 > In particular, $`M_d(a,b)\to M(a,b)`$. This convergence statement is separate from identifying the limit with a sum over any independently defined infinite set of descendants; no additional identification is asserted here.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`sternBrocotDepthMass_error`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L525) [`tendsto_sternBrocotDepthMass`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L560)*
 
 The Lean declarations below together state this result.
 
@@ -1677,8 +1615,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \end{cases}
 > ```
 > For $`k<r`$, extracting the coefficient gives $`\sum_{d\mid\gcd(r,k)}\mu(d)r/d`$; the usual divisor formula for $`\varphi`$ evaluates this sum. All coefficients in the range $`0\le k<r`$ are positive. Thus a signed sum of geometric polynomials has an explicit positive-coefficient expression. The squarefree hypothesis is retained as in the cited formal statements.*
-> 
-> *<span class="sans-serif">\[n/a\]</span> [`mobiusNumeratorPolynomial_eq_gcdWord`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RepunitMobiusNumerator.lean#L205) [`mobiusNumeratorPolynomial_coeff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RepunitMobiusNumerator.lean#L217) [`mobiusNumeratorPolynomial_coeff_pos`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RepunitMobiusNumerator.lean#L234)*
 
 The Lean declarations below together state this result.
 
@@ -1719,8 +1655,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >                          \frac{2^r-1}{2^d-1}.
 > ```
 > Each quotient is an integer because $`d\mid r`$. The formal definition sums over subsets of the prime divisors of $`r`$; for squarefree $`r`$ these are exactly its divisors. This identifies the polynomial calculation with the numerator used in $`b_r`$.*
-> 
-> *<span class="sans-serif">\[uniform\]</span> [`mobiusNumeratorPolynomial_eval_two`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RepunitMobiusNumerator.lean#L445) [`mobiusNumerator`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RadicalMobiusShadow.lean#L101)*
 
 The Lean declarations below together state this result.
 

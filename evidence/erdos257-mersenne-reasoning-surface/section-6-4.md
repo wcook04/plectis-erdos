@@ -11,8 +11,6 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 > \sum_{d\mid n}\mu(d)c_A(n/d)=\mathbf1_A(n),
 > ```
 > where $`\mu`$ is the Möbius function and $`c_A(n)`$ counts the positive elements of $`A`$ dividing $`n`$. Thus the divisor counts determine the positive support exactly. In particular their Möbius transform takes only the values $`0`$ and $`1`$. The identity does not depend on a base.*
-> 
-> *<span class="sans-serif">(uniform)</span> *mobius-inversion* [`moebius_mul_supportCoeffAF`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L95) [`mobius_supportCoeff_boolean`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L118) [`card_divisors_le_two_mul_sqrt`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L209)*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, with the identity written as the Dirichlet convolution $\mu*c_A=\mathbf 1_A$ on the positive integers. Separate statements give that the transform equals $1$ exactly on $A$ and takes only the values $0$ and $1$.
 
@@ -60,8 +58,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >        =\sum_{n\ge1}\frac{c_A(n)}{2^n}.
 > ```
 > Expanding each denominator as a geometric series and interchanging nonnegative sums gives the identity. Since $`c_A(n)\le\tau(n)\le n`$, Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> applies. Together with Theorem <a href="#record:257bm-i-mob" data-reference-type="ref" data-reference="record:257bm-i-mob">149</a>, it expresses rationality through an integer recurrence whose coefficients all come from the same support.*
-> 
-> *<span class="sans-serif">(uniform)</span> *divisor counts and finite sums* [`erdosSupportSeries_two_eq_binaryCoeffSeries`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L377) [`erdosSupportSeries_rational_iff_exists_temperedCarry`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L384)*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, for every set $A\subseteq\mathbb N$; an element $0$ contributes to neither side. They also give $c_A(n)\le\tau(n)$, $c_A(n)\le n$, and the resulting criterion that $X_A(2)$ is rational exactly when, for some positive integer $v$, the recurrence $u(N+1)=2u(N)-v\,c_A(N+1)$ has an integer solution with $u(N)/2^N\to0$.
 
@@ -112,8 +108,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.108 (A restriction on dyadic rational values), page 72
 
 > *If an infinite support $`A\subseteq\mathbb{N}_{>0}`$ has $`X_A(2)=p/2^c`$ for integers $`p`$ and $`c\ge0`$, then $`\sum_{a\in A}1/a`$ either diverges or converges to a value greater than $`1`$. The cited proof averages the shifted integer recurrence and uses a common multiple of two distinct support elements. Thus a convergent reciprocal sum of at most $`1`$ is excluded. This is a separate necessary condition: the reciprocal-summable criterion proved earlier already excludes every support with a convergent reciprocal sum, not just those whose sum is at most $`1`$.*
-> 
-> *<span class="sans-serif">(uniform)</span> *cesaro-tail* [`dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2210) [`one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2124)*
 
 The Lean declarations below together state a result at least as strong as this one. The first Lean statement replaces infinitude by the presence of two distinct positive elements of $A$: if $X_A(2)=p/2^c$ and $\sum_{a\in A}1/a$ converges, then $\sum_{a\in A}1/a>1$; the printed statement for infinite $A$ is the second Lean statement.
 
@@ -160,8 +154,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > u(n+1)+v c_A(c+n+1)=2u(n)\qquad(n\ge0).
 > ```
 > Then $`u`$ is unbounded. Indeed, under a proposed bound $`u(n)\le B`$, choose $`2B+1`$ distinct support elements and a common multiple larger than $`c`$. At the corresponding index the divisor count is at least $`2B+1`$, contradicting the recurrence. This does not conflict with Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a>, whose condition is $`u(n)/2^n\to0`$, not boundedness. An unbounded sequence can still satisfy that limit.*
-> 
-> *<span class="sans-serif">(uniform)</span> *common-multiple-forcing* [`shifted_state_unbounded_of_infinite_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2327) [`exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2383) [`one_add_mul_card_le_two_mul_shifted_state`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2237)*
 
 The Lean declarations below together state a result at least as strong as this one. The unboundedness of $u$ is the second Lean statement as printed; the Lean statements add the quantitative bound $1+v\,|F|\le2u(L-c-1)$ for every finite $F\subseteq A$ whose elements divide some $L>c$, which drives the proof, and, whenever $X_A(2)=p/(2^cv)$, the existence of such a positive unbounded sequence, $u(n)=v\sum_{r\ge1}c_A(c+n+r)2^{-r}$.
 
@@ -222,8 +214,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.110 (Bounds for intervals with zero divisor counts), page 72
 
 > *Suppose that $`X_A(2)=p/(2^cv)`$ for an infinite positive support $`A`$ and an odd positive integer $`v`$. For every $`\varepsilon>0`$ there is $`B`$ such that, for $`N\ge1`$, a run of $`h`$ zero divisor counts starting after $`c+N`$ satisfies $`h\le\varepsilon\log_2N+B`$. In fact this conclusion holds without rationality: fix any $`a\in A`$. Every $`a`$ consecutive positive integers include a multiple of $`a`$, where $`c_A`$ is positive. Hence $`h\le a-1`$, so one can take $`B=a-1`$. The zero-run conclusion therefore imposes no additional restriction on a fixed nonempty support, regardless of the tail estimates used in the linked proof.*
-> 
-> *<span class="sans-serif">(uniform)</span> *divisor-envelope* [`supportCoeffZeroWindow_length_le_eps_logb`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SublogDivisorCoverage.lean#L435)*
 
 The Lean declarations below together state this result.
 
@@ -266,8 +256,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.111 (A subpower bound for divisor counts), page 72
 
 > *For positive integers $`n,k`$, $`\tau(n)^k \le (k^{2^k})^k\cdot n`$, or equivalently $`\tau(n)\le k^{2^k}n^{1/k}`$. The constant absorbs the finitely many primes below $`2^k`$; for larger primes, $`(\nu+1)^k\le p^\nu`$ controls each factor of the divisor product. This estimate is independent of the support problem. The elementary zero-run bound above already follows from a single positive support element, without this estimate or a recurrence.*
-> 
-> *<span class="sans-serif">(uniform)</span> *divisor-envelope* [`card_divisors_pow_le_divisorSubpowerConst_pow_mul`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SublogDivisorCoverage.lean#L107)*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, with the constant $k^{2^k}$; the second form also holds at $n=0$.
 
@@ -305,8 +293,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.112 (Two distinct prime-power differences commute), page 72
 
 > *Lemma <a href="#lem:mixed-prime-power-layer" data-reference-type="ref" data-reference="lem:mixed-prime-power-layer">100</a> gives the four-term expansion and its divisor-count interpretation. Commutation is elementary for arbitrary positive multipliers. The extraction formula uses distinct primes, *positive* exponents $`e,f`$ and $`\gcd(n,pq)=1`$. The example $`A=\{12\}`$ shows the extracted coefficient explicitly. No rationality statement about multiplicative subsequences follows from commutation alone.*
-> 
-> *<span class="sans-serif">(uniform)</span> *mobius-inversion* [`mixedPrimePowerLayerTwo_supportCoeffInt`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MaximalOmegaLayer.lean#L39) [`primePowerLayer_comm`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MaximalOmegaLayer.lean#L29)*
 
 The Lean declarations below together state this result.
 
@@ -361,8 +347,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >        <X_{E\cap[2,c]}(2),\qquad c\ge4.
 > ```
 > Positivity of the summands makes the partial sums increasing. Their odd reduced denominators exclude equality with $`1/2`$, so the first crossing is strict on both sides. Finally $`w_2+w_3=10/21<1/2`$, which excludes a crossing before rank $`4`$. This is the finite crossing data used in the later exact-row constructions; the lower bound on $`c`$ and strictness are specific to these weights.*
-> 
-> *<span class="sans-serif">(uniform)</span> *binary digits* [`exists_first_localMersenne_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L31)*
 
 The Lean declaration below states this result.
 
@@ -406,8 +390,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >      +\sum_{r\ge1}c_A(N+1+r)2^{-r}>0.
 > ```
 > The first term is strictly positive and the tail is nonnegative. Since the half-carry is an integer, it is at least $`1`$; subtracting $`1`$ proves the centred bound. Nonnegativity alone, without this strictness and integrality step, would only give $`C_A(N)\ge-1`$. The argument supplies the lower bound used with the conditional upper bound in Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">127</a>.*
-> 
-> *<span class="sans-serif">(uniform)</span> *mobius-centred-carry* [`integerHalfCarry_eq_scaled_residual_add_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L871) [`mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L94)*
 
 The Lean declarations below together state this result.
 
@@ -447,8 +429,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.116 (Three possibilities at a skipped endpoint), page 73
 
 > *For a rank $`s\ge5`$ omitted by the real greedy support, let $`H_s`$ and $`f_s`$ be as in Lemma <a href="#lem:skipped-endpoint-trichotomy" data-reference-type="ref" data-reference="lem:skipped-endpoint-trichotomy">88</a>. That lemma identifies the actual prefix as $`D_s`$ when $`f_s\le0`$ and as $`B_s`$ when $`f_s>0`$, with the exact remainder or overshoot in each case. To obtain the nonnegative-margin condition in Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">124</a>, the negative case would still have to be excluded at every required skipped rank. The trichotomy itself does not exclude it. In particular, the value $`-3`$ excluded for $`C_D`$ under the all-right-tail hypothesis of Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">87</a> is not an exclusion for $`f_s`$: the coordinates and the hypotheses are different.*
-> 
-> *<span class="sans-serif">(uniform)</span> *frozen-margin* [`halfGreedy_skipped_endpoint_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246)*
 
 The Lean declaration below states this result.
 
@@ -492,8 +472,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{n>N}g_n\le\frac29\,4^{-N}+\frac37\,8^{-N},
 > ```
 > which tends to zero. The estimate follows by summing the per-level bound; it counts one length per level. It does not, by itself, bound the measure of the union of all gaps, because there are $`2^{n-1}`$ disjoint translated gaps at level $`n`$.*
-> 
-> *<span class="sans-serif">(uniform)</span> *summed-gap-mass* [`summable_mersenneGap_shift`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGapMass.lean#L69) [`mersenneGap_tail_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGapMass.lean#L83) [`tendsto_mersenneGap_tail_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGapMass.lean#L104) [`mersenneGap_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGapMass.lean#L40)*
 
 The Lean declarations below together state this result.
 
@@ -556,8 +534,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > The inequality $`2u\le3a`$ gives $`\rho\le3/(3t-1)`$, proving the claim. The first two terms alone would not prove this comparison. This is a sufficient exclusion of the current tail-mass deficit, not an exact test for membership in the remaining achievement set.*
 > 
 > *The sufficient condition is weaker than $`u\le a`$. A realizable example is $`(k,u,L,a)=(2,7,13,5)`$; it passes $`2u\le3a`$ but not $`u\le a`$. The linked scalar example $`(u,a)=(3,2)`$ proves strict containment of the inequalities, but is not integral rational data for this substitution. For comparison, the exact mass threshold is $`a/u\ge R_k^{-1}-(2^k-1)`$; its right-hand side lies strictly between $`0`$ and $`2/3`$. None of these comparisons asserts that the half-greedy orbit satisfies the sufficient inequality at every skipped rank.*
-> 
-> *<span class="sans-serif">(uniform)</span> *lambert-bound* [`skipSafe_of_two_mul_le_three_mul`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L107) [`sharp_of_dyadic`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L197) [`sharp_strictly_stronger`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L200) [`skipSafe_actualTail_of_two_mul_le_three_mul`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L235)*
 
 The Lean declarations below together state this result.
 
@@ -663,9 +639,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.121 (Two unconditional safety cases), page 75
 
-> *Under the positive-integer and skipped-step hypotheses of Theorem <a href="#record:257hg-i4" data-reference-type="ref" data-reference="record:257hg-i4">163</a>, $`u=1`$ implies $`a\ge1`$, so the current remainder is less than $`R_k`$. Conversely, a fatal tail-mass deficit forces $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd. These are statements about the current step, not infinite survival. The exact declaration names are linked below.*
-> 
-> *<span class="sans-serif">(uniform)</span> *lambert-bound* [`unitNumerator_skipSafe`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L135) [`two_le_of_fatal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L161) [`three_le_of_fatal_of_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L173) [`unitNumerator_skipSafe_actualTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L246)*
+> *Under the positive-integer and skipped-step hypotheses of Theorem <a href="#record:257hg-i4" data-reference-type="ref" data-reference="record:257hg-i4">163</a>, $`u=1`$ implies $`a\ge1`$, so the current remainder is less than $`R_k`$. Conversely, a fatal tail-mass deficit forces $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd. These are statements about the current step, not infinite survival.*
 
 The Lean declarations below together state this result.
 
@@ -766,13 +740,11 @@ theorem unitNumerator_skipSafe_actualTail {k u L a : ℕ}
 
 ## Theorem 6.122 (Two-sided dyadic bounds), page 75
 
-> *Under the local hypothesis excluding the specified three middle cells and imposing the right-pulse bound, induction (base case at row 5 verified by `decide`) propagates it to the universal two-sided bound
+> *Under the local hypothesis excluding the specified three middle cells and imposing the right-pulse bound, induction (base case at row 5 verified by direct computation) propagates it to the universal two-sided bound
 > ``` math
 > \forall s\ge5,\quad \min(\mathrm{rem}(s),\ \mathrm{overshoot}(s)) \;\le\; 2^s.
 > ```
 > This conditional bound says that at least one of the remainder and the adjacent overshoot is at most $`2^s`$. It does not assert that both are at most $`2^s`$; that stronger assertion would replace the minimum by a maximum. It is not needed for the charge bound at an actual upper reset: Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">123</a> obtains that bound directly from the upper-reset identity. Applying the inductive argument to another recurrence would require its own transition and separation estimates.*
-> 
-> *<span class="sans-serif">(uniform)</span> *dyadic-scale* [`SeamTwoSidedDyadicCellEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4374) [`SeamTwoSidedDyadicCellEscape.step`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4398) [`SeamTwoSidedDyadicCellEscape.twoSided`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448)*
 
 The Lean declaration below states this result.
 
@@ -800,8 +772,6 @@ theorem paper_two_sided_dyadic_bound
 > \mathrm{resetCharge}+2(d+j)\le2^{d-j+1}.
 > ```
 > It computes the successor remainder at each row $`d+1`$, from $`\mathrm{rem}(14)=392`$ through $`\mathrm{rem}(31)=4187487147`$. This proves the required condition on a finite range, not the universal condition for all $`d\ge13`$. A proof for unbounded reset indices must supply a further argument; repeatedly extending the table alone does not establish that statement.*
-> 
-> *<span class="sans-serif">(fixed)</span> *dyadic-boundary* [`SeamUpperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4566) [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78) [`half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790)*
 
 The Lean declarations below together state this result.
 
@@ -879,8 +849,6 @@ theorem paper_universal_band_condition_would_close_half
 > *Let the old integer values be separated by at least $`g\ge1`$, and let the update be $`t(x)=4s(x)+p(x)`$ with $`0\le p(x)\le B<g`$. Suppose $`x_-`$ and $`x_+`$ are the adjacent old values on either side of capacity $`C`$. Theorem <a href="#thm:perturbed-family-maximality" data-reference-type="ref" data-reference="thm:perturbed-family-maximality">105</a> gives the largest admissible updated value at capacity $`4C+g`$ and the exact three-branch remainder after testing the extra weight $`2g+4`$.*
 > 
 > *The underlying structure in Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">104</a> assumes only $`B<3g`$; that suffices for order preservation, but the cited maximality application has the additional hypothesis $`B<g`$. The counterexample after Theorem <a href="#thm:perturbed-family-maximality" data-reference-type="ref" data-reference="thm:perturbed-family-maximality">105</a> shows what can fail without it. For a maximum over both choices of the extra weight, rather than the stated two-stage rule, one also needs a separation argument; $`4g-B\ge2g+4`$ suffices, as shown after that theorem.*
-> 
-> *<span class="sans-serif">(uniform)</span> *abstract-perturbed-greedy* [`PerturbedFamily`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderIntegerGreedy.lean#L1286) [`prefixChoice_maximal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderIntegerGreedy.lean#L1390) [`nextRemainder_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderIntegerGreedy.lean#L1463)*
 
 The Lean declarations below together state this result.
 
@@ -1074,8 +1042,6 @@ theorem prefixChoice_eq_below {α : Type*} (F : PerturbedFamily α) {C : ℕ}
 ## Theorem 6.125 (Spacing of compatible reverse-carry words), page 75
 
 > *Consider two integer carry recurrences $`b_i(m)+2u_i(m)=a_i(m)+u_i(m+1)`$, $`i=1,2`$. If $`a_1(k)=a_2(k)`$ and the output bits at $`k`$ are $`1`$ and $`0`$, then the carry difference at $`k+1`$ is odd. If the coefficients and bits agree for the following $`L`$ positions, the difference at $`k+L+1`$ is $`2^L`$ times that odd integer. Consequently absolute terminal bounds $`B_1,B_2`$ give $`2^L\le B_1+B_2`$. Lemma <a href="#lem:reverse-carry-word" data-reference-type="ref" data-reference="lem:reverse-carry-word">89</a> states the exact identity and proves it by subtraction. The linked formal statements encode these agreements; they do not supply terminal bounds for an unrelated digit system.*
-> 
-> *<span class="sans-serif">(uniform)</span> *reverse-carry-word* [`ReverseCarryWord`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfTrappingReturnCarry.lean#L70) [`overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfTrappingReturnCarry.lean#L124) [`overlappingReverseCarryWords_twoPow_le_realBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfTrappingReturnCarry.lean#L191) [`overlappingMidpointReturns_twoPow_le_realBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfTrappingReturnCarry.lean#L244)*
 
 The Lean declarations below together state this result.
 
@@ -1185,8 +1151,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.126 (Changing one support bit at a doubled rank), page 76
 
 > *Let two supports agree except that the second includes $`N+1`$ while the first does not. At the argument $`2(N+1)`$ their divisor counts differ by exactly $`1`$, because $`N+1`$ divides $`2(N+1)`$. More generally the difference at a positive argument $`m`$ is $`\mathbf1_{N+1\mid m}`$. The linked statements apply this identity to the finite supports in their hypotheses. No conclusion about a different coefficient sequence follows without identifying its own support change.*
-> 
-> *<span class="sans-serif">(uniform)</span> *half-divisor* [`supportCoeff_extend_true_eq_false_add_one_at_double`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfDivisorUnitDrop.lean#L20) [`supportCoeff_boundaryPair_unitDrop_at_double`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfDivisorUnitDrop.lean#L35)*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean identity $c_{A\cup\{d\}}(m)=c_A(m)+\mathbf 1_{d\mid m}$ holds for every positive $m$, every set $A$, finite or infinite, and every $d\notin A$; the printed statement is its case $d=N+1$. `supportCoeff_insert_divisor` is the case $d\mid m$, and the two statements on half words give the difference $1$ at $m=2(N+1)$ for finite binary words.
 
@@ -1245,13 +1209,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.127 (A bounded model of the doubling-or-return alternative), page 76
 
 > *The dichotomy $`\mathrm{ExactLocalMersenneHalfRow}(2n{-}1) \vee \exists c,\,4\le c\le n\wedge
-> \mathrm{ExactLocalMersenneHalfRow}(2c{-}2)`$ (proved for $`n\ge6`$ at Theorem <a href="#record:257bm-k-dich" data-reference-type="ref" data-reference="record:257bm-k-dich">171</a> below) is not by itself enough for cofinality. Countermodel: $`\mathrm{boundedDoubleOrRecycleModel}(n) := (n=6)`$ satisfies exactly the same two-branch transition shape (seed at 6, and `boundedDoubleOrRecycleModel_transition` reproduces the $`\vee`$ shape by always taking the recycle branch with $`c=4`$, conclusion back at $`2\cdot4-2=6`$), yet
+> \mathrm{ExactLocalMersenneHalfRow}(2c{-}2)`$ (proved for $`n\ge6`$ at Theorem <a href="#record:257bm-k-dich" data-reference-type="ref" data-reference="record:257bm-k-dich">171</a> below) is not by itself enough for cofinality. Countermodel: $`\mathrm{boundedDoubleOrRecycleModel}(n) := (n=6)`$ satisfies exactly the same two-branch transition shape (seed at 6, and the model reproduces the $`\vee`$ shape by always taking the recycle branch with $`c=4`$, conclusion back at $`2\cdot4-2=6`$), yet
 > ``` math
 > \neg\big(\forall N,\ \exists n\ge N,\ \mathrm{boundedDoubleOrRecycleModel}(n)\big) \qquad \text{(not cofinal ;  only ever true at } n=6\text{)}.
 > ```
-> Packaged existentially as `exists_seeded_bounded_double_or_recycle_model`. The double-or-recycle transition shape, even together with an endpoint-six seed, is logically insufficient to conclude cofinal exact rows. A genuinely new progress input (strict endpoint growth, or an independent cofinality argument) is required. The countermodel retains only the seed and this transition rule. It therefore tests those premises, not additional arithmetic information that a more structured induction may use.*
-> 
-> *<span class="sans-serif">(fixed)</span> *meta-logical* [`boundedDoubleOrRecycleModel`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L58) [`boundedDoubleOrRecycleModel_transition`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L64) [`boundedDoubleOrRecycleModel_not_cofinal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L79) [`exists_seeded_bounded_double_or_recycle_model`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L91)*
+> The double-or-recycle transition shape, even together with an endpoint-six seed, is logically insufficient to conclude cofinal exact rows. A genuinely new progress input (strict endpoint growth, or an independent cofinality argument) is required. The countermodel retains only the seed and this transition rule. It therefore tests those premises, not additional arithmetic information that a more structured induction may use.*
 
 The Lean declarations below together state this result.
 
@@ -1299,9 +1261,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \mathrm{ExactLocalMersenneHalfRow}(2n-1) \;\vee\; \exists c,\ 4\le c\le n \wedge \mathrm{ExactLocalMersenneHalfRow}(2c-2).
 > ```
-> Every exact row of depth at least $`6`$ has at least one of the two asserted continuations. The proof separates the below-half case from the above-half case, but the two existential conclusions need not be exclusive. The returned depth $`2c-2`$ is not claimed to exceed $`n`$. The finite Mersenne value cannot equal $`1/2`$, by Observation <a href="#record:257bm-k11" data-reference-type="ref" data-reference="record:257bm-k11">181</a> (`finiteErdosSum_den_odd`); this says nothing about equality of the returned and original depths. For example, at $`n=6`$, the support $`\{2,3,6\}`$ is an exact row, and so is $`\{2,3,6,7,11\}`$ at depth $`11`$. The second conclusion also holds with $`c=4`$, since $`2c-2=6`$. Thus both conclusions hold in this example, and the second allows no depth increase. What is missing, per Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a>, is not another dichotomy but strict endpoint progress in the recycle branch, or a proof the below-half branch recurs ; re-deriving this disjunction without an additional progress argument would not establish cofinality.*
-> 
-> *<span class="sans-serif">(bounded)</span> *divisor counts and finite sums* [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26)*
+> Every exact row of depth at least $`6`$ has at least one of the two asserted continuations. The proof separates the below-half case from the above-half case, but the two existential conclusions need not be exclusive. The returned depth $`2c-2`$ is not claimed to exceed $`n`$. The finite Mersenne value cannot equal $`1/2`$, by Observation <a href="#record:257bm-k11" data-reference-type="ref" data-reference="record:257bm-k11">181</a>; this says nothing about equality of the returned and original depths. For example, at $`n=6`$, the support $`\{2,3,6\}`$ is an exact row, and so is $`\{2,3,6,7,11\}`$ at depth $`11`$. The second conclusion also holds with $`c=4`$, since $`2c-2=6`$. Thus both conclusions hold in this example, and the second allows no depth increase. What is missing, per Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a>, is not another dichotomy but strict endpoint progress in the recycle branch, or a proof the below-half branch recurs ; re-deriving this disjunction without an additional progress argument would not establish cofinality.*
 
 The Lean declarations below together state this result.
 
@@ -1359,9 +1319,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{d\in D\cup\{5\}}\frac{2^8\bmod(2^d-1)}{2^d-1}
 >  =\frac{757}{651}>1.
 > ```
-> The linked `norm_num` proof checks this example. Thus the combined fractional-mass bound by $`1`$, which suffices for the sharp capacity estimate, is not necessary for that estimate. Thus the fractional-mass bound cannot hold at every real crossing core. A proof using it would need to handle the exceptional cores separately; the example does not rule out all uses of fractional-mass estimates. Theorem <a href="#record:257rig-k6" data-reference-type="ref" data-reference="record:257rig-k6">176</a> identifies the support at a critical crossing with a real greedy prefix, but does not prove the missing bound on those prefixes.*
-> 
-> *<span class="sans-serif">(fixed)</span> *divisor counts and finite sums* [`splitFractionMass_one_bound_not_necessary_fixture`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L183)*
+> The linked Lean proof checks this example by direct computation. Thus the combined fractional-mass bound by $`1`$, which suffices for the sharp capacity estimate, is not necessary for that estimate. Thus the fractional-mass bound cannot hold at every real crossing core. A proof using it would need to handle the exceptional cores separately; the example does not rule out all uses of fractional-mass estimates. Theorem <a href="#record:257rig-k6" data-reference-type="ref" data-reference="record:257rig-k6">176</a> identifies the support at a critical crossing with a real greedy prefix, but does not prove the missing bound on those prefixes.*
 
 The Lean declarations below together state this result.
 
@@ -1408,9 +1366,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.131 (The returning endpoint need not be larger), page 77
 
-> *Theorem <a href="#record:257bm-c10" data-reference-type="ref" data-reference="record:257bm-c10">121</a> (`exists_skippedCoreExactRow_of_value_above`) is unconditional, but its witness is $`\exists c\le n`$, not $`\exists c`$ large: $`2c-2`$ may be $`\le n`$, so the endpoint need not grow. Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a>’s `exists_seeded_bounded_double_or_recycle_model` is the explicit falsifier of the naive hope that growth comes for free: $`\mathrm{boundedDoubleOrRecycleModel}(n):=(n=6)`$ satisfies the same transition schema plus a seed and is not cofinal. Growth is recovered only inside $`\mathrm{ProtectedExactLocalMersenneRow}`$ (Theorem <a href="#record:257bm-c5" data-reference-type="ref" data-reference="record:257bm-c5">114</a>), whose invariants $`\mathrm{endpoint}<2\cdot\mathrm{cutoff}`$ and $`\mathrm{new\_above\_cutoff}`$ force $`c>\mathrm{cutoff}`$ hence $`2c-2>\mathrm{endpoint}`$ ; and maintaining those invariants is precisely what needs the strict-upper (sharp capacity) fill of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> rather than this general recycling theorem.*
-> 
-> *<span class="sans-serif">(bounded)</span> *binary digits* [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155)*
+> *Theorem <a href="#record:257bm-c10" data-reference-type="ref" data-reference="record:257bm-c10">121</a> is unconditional, but its witness is $`\exists c\le n`$, not $`\exists c`$ large: $`2c-2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a> is the explicit falsifier of the naive hope that growth comes for free: $`\mathrm{boundedDoubleOrRecycleModel}(n):=(n=6)`$ satisfies the same transition schema plus a seed and is not cofinal. Growth is recovered only inside $`\mathrm{ProtectedExactLocalMersenneRow}`$ (Theorem <a href="#record:257bm-c5" data-reference-type="ref" data-reference="record:257bm-c5">114</a>), whose invariants $`\mathrm{endpoint}<2\cdot\mathrm{cutoff}`$ and $`\mathrm{new\_above\_cutoff}`$ force $`c>\mathrm{cutoff}`$ hence $`2c-2>\mathrm{endpoint}`$ ; and maintaining those invariants is precisely what needs the strict-upper (sharp capacity) fill of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> rather than this general recycling theorem.*
 
 The Lean declarations below together state this result.
 
@@ -1483,8 +1439,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > D \;=\; \mathrm{halfGreedyPrefixSupport}(c-1).
 > ```
 > Thus $`D=G\cap\{1,\ldots,c-1\}`$: at a critical crossing the support is fixed by $`c`$. The proof uses the strict inequality between each Mersenne weight and the sum of all later weights, as in Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a>. Consequently, the support quantifier in Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> does not allow arbitrary choices of $`D`$. This reduces that hypothesis to a statement about the actual greedy sequence. It does not rule out proving a new bound for that sequence.*
-> 
-> *<span class="sans-serif">(uniform)</span> *greedy recurrence* [`eq_halfGreedyPrefixSupport_of_critical_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L50)*
 
 The Lean declaration below states this result.
 
@@ -1514,8 +1468,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 78
 
 > *Let $`V`$ be a vector space over $`\mathbb{Q}`$, let $`e:V\to\mathbb{Q}`$ be linear, and let $`(\ell_j)_{j\in\iota}`$ be a finite family of linear functionals vanishing on $`\ker e`$. For any vectors $`(v_i)_{i\in\iota}`$, the matrix $`(\ell_j(v_i))_{i,j\in\iota}`$ has rank at most one, so every square minor of size at least two vanishes. Indeed, the functionals descend to $`V/\ker e`$, which has dimension at most one. This elementary linear-algebra argument applies at every matrix size. It does not cover additional functionals that fail to vanish on $`\ker e`$.*
-> 
-> *<span class="sans-serif">(uniform)</span> *linear-algebra* [`relationInvariantLinearChannels_det_eq_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfTrappingReturnCarry.lean#L42)*
 
 The Lean declarations below together state this result.
 
@@ -1558,8 +1510,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.139 (Excluding the cell with value minus three), page 79
 
 > *At a middle row $`D\ge13`$ followed only by right transitions, $`4\,\mathrm{rem}(D)-p_D^--4\ne-3`$, by Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">87</a>. Its proof uses the nonnegative centred carry for the completed support, not a finite search. The values $`-2,-1`$ remain among the three exceptional negative cells. Excluding them under this extra tail assumption would still not exclude nonnegative values of the coordinate, or establish the all-middle-row and right-branch hypotheses in Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a>. The complete remaining tail inequality is stated in Remark <a href="#rem:tail-dominance-open" data-reference-type="ref" data-reference="rem:tail-dominance-open">260</a>.*
-> 
-> *<span class="sans-serif">(uniform)</span> *mobius-centred-carry* [`finalMiddleCell_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L587) [`mobiusCenteredHalfCarry_add_two`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L39) [`cofiniteRightTail_ne_zero_centeredEndpoint`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L547)*
 
 The Lean declarations below together state this result.
 
@@ -1627,7 +1577,12 @@ theorem paper_cofiniteRightTail_ne_zero_centeredEndpoint
 
 <a id="prop-unsafe-middle-range-exactly-three"></a>
 
-## Proposition 6.140, page 79
+## Proposition 6.140 (The unsafe middle range is exactly three integers), page 79
+
+> *For $`s\ge5`$, write $`R=\mathrm{rem}(s)`$ and $`P=p_s^-`$. Since $`4R-P-4`$ is an integer,
+> ``` math
+> \neg(4R-P-4\le-4\ \vee\ 0\le 4R-P-4)\ \Longleftrightarrow\ 4R-P-4\in\{-3,-2,-1\}
+> ```*
 
 The Lean declaration below states this result.
 
@@ -1660,6 +1615,8 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 <a id="prop-finite-approximations-without-compatibility"></a>
 
 ## Proposition 6.142, page 81
+
+> *Every shared-prefix family just defined at depth $`N`$ contains a finite support $`A`$ with $`|K_A(N)|\le B(N)`$, and at a feedback row this survives *both* outputs of the corpus’s total feedback theorem; full-cylinder advance or a localized one-hole seam, which can delete at most one of carries $`3,4`$.*
 
 The Lean declarations below together state this result.
 
@@ -1761,7 +1718,9 @@ theorem paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 
 <a id="prop-exact-lebesgue-measure-dichotomy"></a>
 
-## Proposition 6.146, page 83
+## Proposition 6.146 (Exact Lebesgue-measure dichotomy), page 83
+
+> *Either $`J=F^c`$ for a finite $`F`$, and $`\mathrm{vol}(\mathcal A_J)=2^{-|F|}`$ exactly, or $`J^c`$ is infinite and the volume is exactly $`0`$.*
 
 The Lean declaration below states this result.
 

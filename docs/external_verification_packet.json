@@ -1740,7 +1740,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9566f4f34589af8270e519ee1d622fbaea7afb6075d6e77e5ede2203ec1e3502",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
+    "projection_digest": "sha256:ccb100b427c8ac4908396863f6ff32c3d62aa28b5bf86a66c8e7fd913c28df37",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2722,7 +2722,7 @@
         "finite_search": "Raster tests through degree ten suggest candidate bounds only; they are separate from the exact degree-seven Lean counterexample.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
+          "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",

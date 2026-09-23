@@ -14,8 +14,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 > 
 > 3.  *Let positive integer weights $`v_1,\ldots,v_k`$ satisfy $`v_i\ge g+\sum_{j>i}v_j`$ for a positive integer $`g`$. For a nonnegative integer target $`T`$, let $`y^*`$ be the word obtained by visiting these weights in order and taking each when it fits. An admissible Boolean word $`y`$ has $`0\le T-\sum_i y_iv_i<g`$ if and only if $`y=y^*`$ and $`0\le T-\sum_i y_i^*v_i<g`$.*
 > 
-> *Part (iii) gives uniqueness under the small-remainder condition, not existence. Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> gives a one-weight counterexample to dropping that condition. *straddle-prefix ; integer-greedy* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Sources:* [`IsStraddlePrefix.half_agrees_greedy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L442); [`eq_halfGreedyPrefixSupport_of_critical_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L50); [`remainder_lt_gap_iff_eq_integerGreedyBits`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusGreedyReduction.lean#L918).*
+> *Part (iii) gives uniqueness under the small-remainder condition, not existence. Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> gives a one-weight counterexample to dropping that condition.*
 
 The Lean declarations below together state a result at least as strong as this one. Items (i), (ii) and (iii) are, in order, `IsStraddlePrefix.half_agrees_greedy`, `eq_halfGreedyPrefixSupport_of_critical_crossing` and `remainder_lt_gap_iff_eq_integerGreedyBits`, with the printed hypotheses. In (ii) the Lean conclusion is equality with the greedy prefix for $1/2$ computed in exact rational arithmetic through $c-1$; `paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc` identifies that prefix with $G\cap\{2,\ldots,c-1\}$, which equals $G\cap\{1,\ldots,c-1\}$ because $w_1=1>1/2$ keeps $1$ out of $G$.
 
@@ -68,8 +67,7 @@ theorem remainder_lt_gap_iff_eq_integerGreedyBits
 > \operatorname{ihc}(A,N) \;=\; 2^{N+1}\,\delta \;+\; \mathrm{T}(N+1),
 >   \qquad 0 \;\le\; \mathrm{T}(N+1) \;\le\; 2\sqrt{N+1} + 4 ,
 > ```
-> where $`\mathrm T(m)=\sum_{r\ge1}c_A(m+r)2^{-r}`$. *half-carry recurrence* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>\
-> *Sources:* [`integerHalfCarry_eq_scaled_residual_add_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L871); [`binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L78); [`binaryCoeffTail_supportCoeff_le_two_sqrt_add_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L290).*
+> where $`\mathrm T(m)=\sum_{r\ge1}c_A(m+r)2^{-r}`$.*
 
 The Lean declarations below together state a result at least as strong as this one. The Lean identity $\operatorname{ihc}(A,N)=2^{N+1}\delta+\mathrm T(N+1)$ is as printed for $1\notin A$; the Lean bounds $0\le\mathrm T(m)\le2\sqrt m+4$ hold for every $A\subseteq\N$ and every $m$, without the hypothesis $1\notin A$, and the printed bounds are their case $m=N+1$.
 
@@ -157,8 +155,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > *Suppose $`x_A = 1/2`$ and $`1 \notin A`$. Then for every $`k \ge 1`$,
 > ``` math
 > \operatorname{ihc}(A, k^2 - 1) \;=\; \mathrm{T}(k^2) \;\le\; 2k + 4 \;=\; \ensuremath{B}(k^2).
-> ```
-> *half-carry recurrence* <span class="sans-serif">(cofinal)</span> <span class="sans-serif">\[Math\]</span>*
+> ```*
 
 The Lean declaration below states this result.
 
@@ -189,19 +186,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Each of the following is logically *equivalent* to $`1/2 \in \mathcal{A}`$, not strictly weaker:*
 > 
-> 1.  *$`C_G(N)\le2\sqrt N+4`$ for every $`N\ge0`$ ([`greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L834); [`greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L953));*
+> 1.  *$`C_G(N)\le2\sqrt N+4`$ for every $`N\ge0`$;*
 > 
-> 2.  *there are arbitrarily large positive exponents outside $`G`$ ([`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22));*
+> 2.  *there are arbitrarily large positive exponents outside $`G`$;*
 > 
-> 3.  *at arbitrarily large depths $`n`$, some $`D\subseteq\{2,\ldots,n\}`$ satisfies $`Q(D,n)=2^{n-1}-1`$ ([`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38)); no agreement between the sets $`D`$ at different depths is required;*
+> 3.  *at arbitrarily large depths $`n`$, some $`D\subseteq\{2,\ldots,n\}`$ satisfies $`Q(D,n)=2^{n-1}-1`$; no agreement between the sets $`D`$ at different depths is required;*
 > 
-> 4.  *at arbitrarily large $`M`$, $`\operatorname{ihc}(G,M)\le B(M+1)`$ ([`GreedyHalfCarryCofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L76));*
+> 4.  *at arbitrarily large $`M`$, $`\operatorname{ihc}(G,M)\le B(M+1)`$;*
 > 
-> 5.  *at arbitrarily large positive depths $`M`$, some $`D\subseteq\{2,\ldots,M\}`$ satisfies $`|\operatorname{ihc}(D,M-1)|\le B(M)`$ ([`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34));*
+> 5.  *at arbitrarily large positive depths $`M`$, some $`D\subseteq\{2,\ldots,M\}`$ satisfies $`|\operatorname{ihc}(D,M-1)|\le B(M)`$;*
 > 
-> 6.  *the half-target greedy remainder never exceeds the full remaining tail, so no finite fatal gap exists ([`ExistsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L526)); the seven equivalent forms in the later classification express this same condition.*
+> 6.  *the half-target greedy remainder never exceeds the full remaining tail, so no finite fatal gap exists; the seven equivalent forms in the later classification express this same condition.*
 > 
-> *Forward directions are supplied formal (e.g. [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583), [`half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71), [`existsFatalHalfGap_iff_half_not_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L643)). For (d) and (e), the reverse directions use the square depths in Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">17</a>. All six equivalences, including these reverse directions, are now Lean-checked in [`six_membership_conditions`](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos257/PaperCompleteR20/SixMembershipConditions.lean#L123). For (a), membership gives $`C_G(N)\le2\sqrt{N+1}+3\le2\sqrt N+4`$ when $`N\ge1`$, and $`C_G(0)=0`$. The forward implication still needs the greedy inequality $`x_G\le1/2`$. *half-carry recurrence ; exact-row* <span class="sans-serif">(cofinal)</span> <span class="sans-serif">\[Lean\]</span><span class="sans-serif">\[Math\]</span>*
+> *For (d) and (e), the reverse directions use the square depths in Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">17</a>. For (a), membership gives $`C_G(N)\le2\sqrt{N+1}+3\le2\sqrt N+4`$ when $`N\ge1`$, and $`C_G(0)=0`$. The forward implication still needs the greedy inequality $`x_G\le1/2`$.*
 
 The Lean declaration below states this result.
 
@@ -236,12 +233,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 2.8 (Limits of the specified local summaries), page 27
 
-> *(i) After $`L`$ common steps the endpoint residue mod $`2^L`$ of an affine binary orbit is *independent* of the initial carry: $`u(L) - v(L) = 2^L(u_0 - v_0)`$ ([`affineBinaryOrbit_mod_twoPow_eq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L307)). (ii) Fix $`m\ge2`$ and put $`h=\lfloor(m+1)/2\rfloor`$. Consider the coefficient sequences
+> *(i) After $`L`$ common steps the endpoint residue mod $`2^L`$ of an affine binary orbit is *independent* of the initial carry: $`u(L) - v(L) = 2^L(u_0 - v_0)`$. (ii) Fix $`m\ge2`$ and put $`h=\lfloor(m+1)/2\rfloor`$. Consider the coefficient sequences
 > ``` math
 > c_r(m)=h-r,\qquad c_r(m+1)=2r,\qquad
 >  c_r(j)=0\ (j\ne m,m+1),\qquad 0\le r\le h.
 > ```
-> Their binary sums are all $`h2^{-m}`$, and their scaled tails before position $`m`$ agree, but their scaled tails immediately after $`m`$ are $`r`$. Thus any exact label-and-decoder system recovering those latter tails must have at least $`h+1=\lfloor(m+1)/2\rfloor+1`$ labels. A state determined only by the common preceding history, with no new input, cannot distinguish them ([`balancedPulse_no_autonomous_decoder`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L247)). (iii) For any starting carry and any finite list of prescribed valuations and odd unit residues modulo $`2^u`$, with $`u\ge1`$, there are integer input coefficients with those data whose successor carries lie in their prescribed centred intervals. The unrestricted higher bits of the input coefficients may be chosen separately at each step, as in Proposition <a href="#prop:2adic-nogo" data-reference-type="ref" data-reference="prop:2adic-nogo">256</a> ([`fixedPrecisionTropicalNoGo`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TropicalCurvatureCarry.lean#L137)), so these fixed-precision symbols alone do not exclude a completion in that specified family. This says nothing about extra constraints imposed by divisor counts from one common support. *carry* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span>*
+> Their binary sums are all $`h2^{-m}`$, and their scaled tails before position $`m`$ agree, but their scaled tails immediately after $`m`$ are $`r`$. Thus any exact label-and-decoder system recovering those latter tails must have at least $`h+1=\lfloor(m+1)/2\rfloor+1`$ labels. A state determined only by the common preceding history, with no new input, cannot distinguish them. (iii) For any starting carry and any finite list of prescribed valuations and odd unit residues modulo $`2^u`$, with $`u\ge1`$, there are integer input coefficients with those data whose successor carries lie in their prescribed centred intervals. The unrestricted higher bits of the input coefficients may be chosen separately at each step, as in Proposition <a href="#prop:2adic-nogo" data-reference-type="ref" data-reference="prop:2adic-nogo">256</a>, so these fixed-precision symbols alone do not exclude a completion in that specified family. This says nothing about extra constraints imposed by divisor counts from one common support.*
 
 The Lean declarations below together state a result at least as strong as this one. For (i) the identity $u(L)-v(L)=2^L(u_0-v_0)$ holds for every $L$ and every integer input sequence, and its residue form modulo $2^L$ is stated separately. For (ii), with $m\ge2$ and $0\le r\le h$, the Lean statements give the coefficients $c_r$, their common binary sum $h2^{-m}$, the common scaled tail $h2^{-(m-N)}$ at every $N<m$, the tail $r$ at $m$, the lower bound of $h+1$ labels for any exact label-and-decoder system, and the absence of a decoder from a state that is the same for every $r$. Item (iii) is the cited centred-completion statement, with $|e_{i+1}|\le2^{v_i+u-1}$ for every successor carry.
 
@@ -338,7 +335,7 @@ theorem balancedPulse_common_history (m : ℕ) (hm : 2 ≤ m) (r : ℕ)
 > \log_2D_n\le\sum_{d\in\mathrm{Skip}_n}\log_2(2^d-1)
 >  \le\sum_{d\in\mathrm{Skip}_n}d\le\frac{n(n-1)}2-1.
 > ```
-> The middle inequality is strict when the skip set is nonempty; for an empty skip set both sums are zero. This is an upper bound, not a quadratic asymptotic for $`D_n`$. Combined with the cited fixed irrationality-measure exponent, it does not supply the required $`2^{-3n/2}`$-scale estimate. Even an asymptotic for the exponent sum would need additional information about the skip distribution. *diophantine* <span class="sans-serif">(cofinal)</span> <span class="sans-serif">\[Math\]</span>*
+> The middle inequality is strict when the skip set is nonempty; for an empty skip set both sums are zero. This is an upper bound, not a quadratic asymptotic for $`D_n`$. Combined with the cited fixed irrationality-measure exponent, it does not supply the required $`2^{-3n/2}`$-scale estimate. Even an asymptotic for the exponent sum would need additional information about the skip distribution.*
 
 The Lean declarations below together state this result.
 
@@ -379,7 +376,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 2.11 (One-sidedness), page 28
 
-> *Non-membership of $`1/2`$ in $`\mathcal A`$ has an effectively checkable finite-certificate formulation, hence a $`\Sigma^0_1`$ formulation. Membership has the complementary $`\Pi^0_1`$ formulation. Survival through a tested finite depth alone does not establish membership; a uniform theorem or inductive invariant could. The arithmetical-hierarchy form by itself proves neither undecidability nor the absence of finite proofs. *meta* <span class="sans-serif">(uniform)</span> <span class="sans-serif">\[Lean\]</span><span class="sans-serif">\[Math\]</span> The linked declarations establish the fatal-gap equivalences. The arithmetical-hierarchy classification also uses the effective tail estimate explained below; it is an ordinary computability deduction, not a separately replayed Lean theorem.*
+> *Non-membership of $`1/2`$ in $`\mathcal A`$ has an effectively checkable finite-certificate formulation, hence a $`\Sigma^0_1`$ formulation. Membership has the complementary $`\Pi^0_1`$ formulation. Survival through a tested finite depth alone does not establish membership; a uniform theorem or inductive invariant could. The arithmetical-hierarchy form by itself proves neither undecidability nor the absence of finite proofs.*
 
 The Lean declarations below together state this result.
 
