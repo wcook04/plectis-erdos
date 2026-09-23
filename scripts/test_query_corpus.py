@@ -833,6 +833,11 @@ def validate_agent_tour() -> None:
     assert card.returncode == 0
     lines = card.stdout.strip().splitlines()
     signal = packet["mathematical_signal_spine"]
+    assert signal["source_result_spine"]["ranked_claim_ids"] == [
+        "finite_prime_weighted_support",
+        "zudilin_rational_base_region",
+        "ani_degree_seven_total_variation_counterexample",
+    ]
     lead = signal["ranked_frontier"][0]
     assert len(lines) <= 16
     assert len(card.stdout.encode("utf-8")) <= 4096
@@ -2131,6 +2136,20 @@ def validate_mathematical_signal_spine() -> None:
     assert keys.index("mathematical_signal_spine") < keys.index("problem_fleet")
     signal = overview["mathematical_signal_spine"]
     showcase = load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    source_results = signal["source_result_spine"]["ranked_results"]
+    assert [(row["problem"], row["claim_id"]) for row in source_results] == [
+        (257, "finite_prime_weighted_support"),
+        (1049, "zudilin_rational_base_region"),
+        (1041, "ani_degree_seven_total_variation_counterexample"),
+    ]
+    assert all((ROOT / row["source_file"]).is_file() for row in source_results)
+    assert all(row["exact_boundary"] for row in source_results)
+    overview_card = query_corpus.render_card(overview)
+    assert [
+        line.split("claim=", 1)[1].split(" | ", 1)[0]
+        for line in overview_card.splitlines()
+        if line.startswith("source_signal #")
+    ] == [row["claim_id"] for row in source_results]
     expected = sorted(showcase["candidate_ranking"], key=lambda row: row["rank"])
     frontier = signal["ranked_frontier"]
     assert [row["rank"] for row in frontier] == list(range(1, len(expected) + 1))
@@ -2228,6 +2247,7 @@ def validate_mathematical_signal_spine() -> None:
     ]:
         problem["families"].reverse()
     adversarial_showcase = copy.deepcopy(showcase)
+    adversarial_showcase["selection_contract"]["source_result_spine"]["ranked_results"].reverse()
     adversarial_showcase["candidate_ranking"].reverse()
     adversarial_showcase["candidate_screening"].reverse()
     reordered = query_corpus.mathematical_signal_spine(
@@ -2237,6 +2257,9 @@ def validate_mathematical_signal_spine() -> None:
     )
     assert [row["declaration"] for row in reordered["ranked_frontier"]] == [
         row["declaration"] for row in expected
+    ]
+    assert [row["claim_id"] for row in reordered["source_result_spine"]["ranked_results"]] == [
+        row["claim_id"] for row in source_results
     ]
 
     programme_spines = {

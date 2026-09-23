@@ -76,6 +76,36 @@
   },
   "selection_contract": {
     "authority_basis": "Every source family is read from the exact committed HEAD:docs/claims.json review matrix plus the explicitly recorded theorem-forest discoveries; the exact committed HEAD:verification/comparator.json roster is a nested evidence/admission screen. Uncommitted Comparator edits, roster order, and ease of qualification are not selection evidence.",
+    "source_result_spine": {
+      "role": "Cross-programme reading order for the strongest currently registered public results. The claim registry and named Lean declarations own status and mathematical truth; this order is an editorial appraisal, not novelty, priority, or peer review.",
+      "comparator_boundary": "candidate_ranking remains the separate Comparator-qualified theorem roster. A result absent from that roster can appear here only with its actual source and evidence class stated; this spine does not confer Comparator admission.",
+      "ranked_results": [
+        {
+          "rank": 1,
+          "problem": 257,
+          "claim_id": "finite_prime_weighted_support",
+          "source_declaration": "divisibilityWeightedClaim",
+          "why_here": "The finite-prime weighted-mass criterion proves irrationality for an infinite positive support at a fixed integer base, with a binary-mass hypothesis giving every infinite subset irrationality at every integer base. Its checked weighted-return construction covers support classes beyond the classical full support.",
+          "boundary": "This is a sufficient weighted-mass criterion. Irrationality for every infinite support remains open."
+        },
+        {
+          "rank": 2,
+          "problem": 1049,
+          "claim_id": "zudilin_rational_base_region",
+          "source_declaration": "rational_base_region",
+          "why_here": "The constructed polynomial forms, nonvanishing, and asymptotic bounds give Lean-checked irrationality and an irrationality-exponent bound throughout the stated Zudilin contour region, including every positive integral power of 31/4.",
+          "boundary": "This formalises a stated analytic region; it does not prove the universal rational-base conjecture. The base 3/2 lies outside the region and remains unresolved."
+        },
+        {
+          "rank": 3,
+          "problem": 1041,
+          "claim_id": "ani_degree_seven_total_variation_counterexample",
+          "source_declaration": "erdos1041_counterexample_hausdorff",
+          "why_here": "For ani's explicit degree-seven polynomial, Lean proves a one-dimensional Hausdorff-measure lower bound for every preconnected strict-lemniscate set joining distinct roots. This refutes the exact Formal Conjectures path-image-length statement; a separate total-variation bound is checked.",
+          "boundary": "Ani supplied the polynomial. The reported small-parameter family is not formalised, and correspondence with the 1958 wording has not received independent human review."
+        }
+      ]
+    },
     "ranking_axes": [
       {
         "axis": "mathematical_nontriviality",
@@ -2615,8 +2645,8 @@
     {
       "problem": 1041,
       "status": "open",
-      "frontier_summary": "Finite translation avoidance and quantified root retention are checked as isolated inputs to the incomplete Newton-flow route.",
-      "open_boundary": "The unrestricted polynomial lemniscate connection problem.",
+      "frontier_summary": "For ani's explicit degree-seven polynomial, Lean proves the preconnected-set Hausdorff-measure bound above two, refuting the exact Formal Conjectures path-image-length statement; a separate total-variation bound is checked. The listed Comparator declarations are supporting Newton-flow and perturbation inputs, not transports of that counterexample.",
+      "open_boundary": "Ani's reported small-parameter family is not formalised, and independent human review of correspondence between the refuted formal statement and the 1958 wording is not recorded.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
         "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
@@ -2626,7 +2656,7 @@
     {
       "problem": 1049,
       "status": "open",
-      "frontier_summary": "The coordinatewise corridor is impossible at base 3/2 and the exact rational-base cleared-tail recurrence is checked.",
+      "frontier_summary": "Lean proves irrationality and an irrationality-exponent bound throughout the stated Zudilin contour region, including every positive integral power of 31/4. The listed Comparator declarations cover separate recurrence and model-boundary results, not a transport of the contour-region theorem.",
       "open_boundary": "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",

@@ -4,6 +4,6 @@
   "atlas_source_fingerprint": "sha256:45c21a53e1d9d76ba5be9f1f1d473fcd8ea9e0b6278b0d94d98ff6e5651106ed",
   "implementation_sha256": {
     "scripts/build_declaration_search_index.py": "sha256:8e1e37a15fd183489ce6a03e63c49f559d3dc3c3c3d06d544520c75745695b21",
-    "scripts/query_corpus.py": "sha256:bf2122908acfe54252affa7fc8e4183eaa650718a2397135b73ce287953af3d3"
+    "scripts/query_corpus.py": "sha256:890a3539394c61614f768a2545372357f9d23475ede6d7b892ee0aaf8a467003"
   }
 }

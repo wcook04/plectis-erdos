@@ -28,21 +28,23 @@ authored navigation: it does not strengthen a claim, replace
 `docs/claims.json`, or close an exact remaining-open proposition. Erdős #249
 and the universal form of #257 remain open.
 
-## Signal-first reviewed spine
+## Source result and Comparator spines
 
 Use the repository-local [result selection record](PALOMAR_RESULT_SHOWCASE.json)
-for the source-reviewed family universe and its selected, represented,
-subordinate, deferred, rejected, and long-tail dispositions. It records a
-possible Palomar submission, not an external service decision, claim count,
-or proof authority. The generated [verification dossier](EXTERNAL_VERIFICATION.md#mathematical-signal-spine)
-expands the same spine with exact declarations, hard mechanisms, evidence
-classes, and surviving boundaries. Its ranked path starts with the
-Lean-checked finite-prime weighted-support #257 theorem, followed by the
-classical full-support and pairwise-coprime #257 results. Later ranks include
-conditional #249 producer routes and exact structural reductions; use the
-matrix below to return to all eight programmes.
-Support lemmas remain subordinate to their family, and every conditional
-producer or bridge remains explicit.
+for two related reading orders. It records a possible Palomar submission, not
+an external service decision, claim count, or proof authority. Its
+`source_result_spine` leads with the checked finite-prime weighted #257
+irrationality criterion, then the formalised Zudilin-region #1049
+irrationality theorem (including powers of 31/4), then ani's degree-seven
+#1041 counterexample to the exact Formal Conjectures path-image statement.
+Universal arbitrary-support #257 and rational-base #1049 remain open;
+correspondence between the #1041 formal statement and the 1958 wording awaits
+independent human review. The separate `candidate_ranking` orders
+Comparator-qualified declarations. The generated [verification dossier](EXTERNAL_VERIFICATION.md#mathematical-signal-spine)
+expands that Comparator spine with exact declarations, mechanisms, and
+boundaries. These selections are navigation and appraisal, not proof authority
+or novelty judgements; `docs/claims.json` and the named Lean sources own the
+exact claims. Support lemmas and conditional producers stay subordinate.
 
 ## #1041 / source-current frontier
 
