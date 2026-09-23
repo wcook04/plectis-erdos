@@ -40,8 +40,9 @@ a longer paper for each. The short paper is the main exposition: it introduces
 the question, states the strongest results and explains the ideas behind the
 arguments for a mathematical reader. The longer record keeps technical detail,
 failed routes, finite experiments, and the exact obligations that
-survive. The [paper catalogue](../paper/README.md) groups the manuscripts and
-their sources, including the systems papers.
+survive. The other seven target problems are not resolved here; those papers
+make their surviving questions explicit. The [paper catalogue](../paper/README.md)
+groups the manuscripts and their sources, including the systems papers.
 
 The [results guide](RESULTS.md) states the strongest checked result for each
 problem next to what still blocks its endpoint. [Prior work](PRIOR_ART.md)
@@ -57,6 +58,8 @@ Each paper distinguishes ordinary mathematical arguments, formalised results
 and remaining gaps. Follow a statement's source link and verification record
 to see what has been checked; a build alone does not establish that every
 argument in a paper has been formalised.
+Independent human review of correspondence with the historical curve-length
+formulation has not been recorded.
 
 ## The eight problems in brief
 

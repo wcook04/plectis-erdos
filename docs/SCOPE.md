@@ -16,8 +16,8 @@ historical correspondence.
 The reported small-parameter family is not formalised. This release does not
 prove Erdős #68, #243, #249, #251, #257, #269, or #1049. Claims use only the
 immutable formal-source checkpoint in [`docs/claims.json`](claims.json); the
-last release tag is its citation identity, not a substitute for an exact
-proof-source identity.
+last release tag is its citation identity,
+not a substitute for an exact proof-source identity.
 
 Lean source checked by the pinned kernel is proof authority. Unreleased work, private repositories, generated/provider output, and hidden sketches are not public proof artefact. Committed `research_corpus/Erdos1041` is source-only and extends neither the checkpoint nor `docs/claims.json`; it makes no peer-review, priority, novelty, or significance claim. Later work is out of scope even if locally checked; a later tag is a separate citation action.
 
