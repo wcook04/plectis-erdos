@@ -89188,8 +89188,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1073,
-            "line_start": 1073,
+            "line_end": 1075,
+            "line_start": 1075,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89197,35 +89197,35 @@
         "equivalent_source_coordinates": [],
         "key": "tao2026",
         "kind": "bibliography_entry",
-        "line_end": 1604,
-        "line_start": 1600,
+        "line_end": 1606,
+        "line_start": 1602,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{boinc} D. P. Anderson, \\emph{BOINC: A Platform for Volunteer Computing}, Journal of Grid Computing 18 (2020), 99--122, \\href{https://doi.org/10.1007/s10723-019-09497-9}{DOI}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 564,
-            "line_start": 564,
+            "line_end": 566,
+            "line_start": 566,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 893,
-            "line_start": 893,
+            "line_end": 895,
+            "line_start": 895,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 951,
-            "line_start": 951,
+            "line_end": 953,
+            "line_start": 953,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89233,16 +89233,52 @@
         "equivalent_source_coordinates": [],
         "key": "boinc",
         "kind": "bibliography_entry",
-        "line_end": 1609,
-        "line_start": 1604,
+        "line_end": 1611,
+        "line_start": 1606,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{gimps} Great Internet Mersenne Prime Search, \\emph{GIMPS}, project documentation and discovery-credit record, \\href{https://www.mersenne.org/}{mersenne.org}, accessed August 2026.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 566,
+            "line_start": 566,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 898,
+            "line_start": 898,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 953,
+            "line_start": 953,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "gimps",
+        "kind": "bibliography_entry",
+        "line_end": 1616,
+        "line_start": 1611,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "source_id": "source-cc1c19967d418f",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
+      },
+      {
+        "citation_text": "\\bibitem{polymath} Polymath Project, \\emph{General polymath rules}, \\href{https://polymathprojects.org/general-polymath-rules/}{project rules}, accessed August 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -89253,44 +89289,8 @@
           },
           {
             "command": "cite",
-            "line_end": 896,
-            "line_start": 896,
-            "path": "paper/systems/open-source-mathematics-strategy.tex",
-            "qualifiers": []
-          },
-          {
-            "command": "cite",
-            "line_end": 951,
-            "line_start": 951,
-            "path": "paper/systems/open-source-mathematics-strategy.tex",
-            "qualifiers": []
-          }
-        ],
-        "equivalent_source_coordinates": [],
-        "key": "gimps",
-        "kind": "bibliography_entry",
-        "line_end": 1614,
-        "line_start": 1609,
-        "paper_id": "open-source-mathematics-strategy",
-        "path": "paper/systems/open-source-mathematics-strategy.tex",
-        "source_id": "source-cc1c19967d418f",
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
-      },
-      {
-        "citation_text": "\\bibitem{polymath} Polymath Project, \\emph{General polymath rules}, \\href{https://polymathprojects.org/general-polymath-rules/}{project rules}, accessed August 2026.",
-        "citation_usages": [
-          {
-            "command": "cite",
-            "line_end": 562,
-            "line_start": 562,
-            "path": "paper/systems/open-source-mathematics-strategy.tex",
-            "qualifiers": []
-          },
-          {
-            "command": "cite",
-            "line_end": 959,
-            "line_start": 959,
+            "line_end": 961,
+            "line_start": 961,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89298,28 +89298,28 @@
         "equivalent_source_coordinates": [],
         "key": "polymath",
         "kind": "bibliography_entry",
-        "line_end": 1619,
-        "line_start": 1614,
+        "line_end": 1621,
+        "line_start": 1616,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-af9e99293e9dd0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{mathlib} Lean community, \\emph{Contributing to mathlib}, \\href{https://leanprover-community.github.io/contribute/index.html}{contributor guide}, accessed August 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 966,
-            "line_start": 966,
+            "line_end": 968,
+            "line_start": 968,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1373,
-            "line_start": 1373,
+            "line_end": 1375,
+            "line_start": 1375,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89327,21 +89327,21 @@
         "equivalent_source_coordinates": [],
         "key": "mathlib",
         "kind": "bibliography_entry",
-        "line_end": 1624,
-        "line_start": 1619,
+        "line_end": 1626,
+        "line_start": 1621,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{carleson} L. Becker et al., \\emph{A Blueprint for the Formalization of Carleson's Theorem on Convergence of Fourier Series}, 2025, \\href{https://arxiv.org/abs/2405.06423}{arXiv:2405.06423}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 966,
-            "line_start": 966,
+            "line_end": 968,
+            "line_start": 968,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89349,13 +89349,13 @@
         "equivalent_source_coordinates": [],
         "key": "carleson",
         "kind": "bibliography_entry",
-        "line_end": 1629,
-        "line_start": 1624,
+        "line_end": 1631,
+        "line_start": 1626,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-984f2b78d220ea",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{erdosproblems} T. F. Bloom, \\emph{Erd\\H{o}s Problems}, problem database, sources, and forum, \\href{https://www.erdosproblems.com/}{erdosproblems.com}, accessed August 2026.",
@@ -89369,8 +89369,8 @@
           },
           {
             "command": "cite",
-            "line_end": 758,
-            "line_start": 758,
+            "line_end": 760,
+            "line_start": 760,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89378,13 +89378,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdosproblems",
         "kind": "bibliography_entry",
-        "line_end": 1634,
-        "line_start": 1629,
+        "line_end": 1636,
+        "line_start": 1631,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{lean4} L. de Moura and S. Ullrich, \\emph{The Lean 4 Theorem Prover and Programming Language}, Automated Deduction---CADE 28 (2021), 625--635, \\href{https://doi.org/10.1007/978-3-030-79876-5_37}{DOI}.",
@@ -89400,13 +89400,13 @@
         "equivalent_source_coordinates": [],
         "key": "lean4",
         "kind": "bibliography_entry",
-        "line_end": 1639,
-        "line_start": 1634,
+        "line_end": 1641,
+        "line_start": 1636,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{formalconjectures} Google DeepMind, \\emph{formal-conjectures}, \\href{https://github.com/google-deepmind/formal-conjectures}{software repository}, accessed August 2026.",
@@ -89420,8 +89420,8 @@
           },
           {
             "command": "cite",
-            "line_end": 969,
-            "line_start": 969,
+            "line_end": 971,
+            "line_start": 971,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89429,13 +89429,13 @@
         "equivalent_source_coordinates": [],
         "key": "formalconjectures",
         "kind": "bibliography_entry",
-        "line_end": 1644,
-        "line_start": 1639,
+        "line_end": 1646,
+        "line_start": 1641,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{palomar} Palomar Registry, \\emph{About Palomar} and \\emph{Contribution policy}, \\href{https://palomar-registry.org/about}{registry documentation} and \\href{https://github.com/PalomarRegistry/PalomarPolicy/blob/main/CONTRIBUTING.md}{submission standard}, accessed August 2026.",
@@ -89449,8 +89449,8 @@
           },
           {
             "command": "cite",
-            "line_end": 754,
-            "line_start": 754,
+            "line_end": 756,
+            "line_start": 756,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89458,38 +89458,16 @@
         "equivalent_source_coordinates": [],
         "key": "palomar",
         "kind": "bibliography_entry",
-        "line_end": 1650,
-        "line_start": 1644,
+        "line_end": 1652,
+        "line_start": 1646,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-9733ab875d6048",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{agenthunt} C. E. Brown, C. Kaliszyk, and J. Urban, \\emph{Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents}, 2026, \\href{https://arxiv.org/abs/2603.06737}{arXiv:2603.06737}.",
-        "citation_usages": [
-          {
-            "command": "cite",
-            "line_end": 974,
-            "line_start": 974,
-            "path": "paper/systems/open-source-mathematics-strategy.tex",
-            "qualifiers": []
-          }
-        ],
-        "equivalent_source_coordinates": [],
-        "key": "agenthunt",
-        "kind": "bibliography_entry",
-        "line_end": 1655,
-        "line_start": 1650,
-        "paper_id": "open-source-mathematics-strategy",
-        "path": "paper/systems/open-source-mathematics-strategy.tex",
-        "source_id": "source-ae5cc4ddfa6af5",
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
-      },
-      {
-        "citation_text": "\\bibitem{leanatlas} B. Yanahama and A. Sannai, \\emph{Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization}, 2026, \\href{https://arxiv.org/abs/2604.16347}{arXiv:2604.16347}.",
         "citation_usages": [
           {
             "command": "cite",
@@ -89500,37 +89478,59 @@
           }
         ],
         "equivalent_source_coordinates": [],
+        "key": "agenthunt",
+        "kind": "bibliography_entry",
+        "line_end": 1657,
+        "line_start": 1652,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "source_id": "source-ae5cc4ddfa6af5",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
+      },
+      {
+        "citation_text": "\\bibitem{leanatlas} B. Yanahama and A. Sannai, \\emph{Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization}, 2026, \\href{https://arxiv.org/abs/2604.16347}{arXiv:2604.16347}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 978,
+            "line_start": 978,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
         "key": "leanatlas",
         "kind": "bibliography_entry",
-        "line_end": 1660,
-        "line_start": 1655,
+        "line_end": 1662,
+        "line_start": 1657,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{prove2me} S. Chen, K. Marwaha, X. Lu, H. Yuen, and T. Peng, \\emph{Prove2Me: An Open Collaborative Platform for Scaling Math Formalization}, 2026, \\href{https://arxiv.org/abs/2608.28433}{arXiv:2608.28433}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 865,
-            "line_start": 865,
+            "line_end": 867,
+            "line_start": 867,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 907,
-            "line_start": 907,
+            "line_end": 909,
+            "line_start": 909,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 995,
-            "line_start": 995,
+            "line_end": 997,
+            "line_start": 997,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89538,42 +89538,42 @@
         "equivalent_source_coordinates": [],
         "key": "prove2me",
         "kind": "bibliography_entry",
-        "line_end": 1665,
-        "line_start": 1660,
+        "line_end": 1667,
+        "line_start": 1662,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{aletheia} T. Feng, T. Trinh, G. Bingham, et al., \\emph{Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erd\\H{o}s Problems}, 2026, \\href{https://arxiv.org/abs/2601.22401}{arXiv:2601.22401}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 711,
-            "line_start": 711,
+            "line_end": 713,
+            "line_start": 713,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 791,
-            "line_start": 791,
+            "line_end": 793,
+            "line_start": 793,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 822,
-            "line_start": 822,
+            "line_end": 824,
+            "line_start": 824,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1033,
-            "line_start": 1033,
+            "line_end": 1035,
+            "line_start": 1035,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89581,49 +89581,49 @@
         "equivalent_source_coordinates": [],
         "key": "aletheia",
         "kind": "bibliography_entry",
-        "line_end": 1670,
-        "line_start": 1665,
+        "line_end": 1672,
+        "line_start": 1667,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{autonomousmath} T. Feng, T. H. Trinh, G. Bingham, et al., \\emph{Towards Autonomous Mathematics Research}, 2026, \\href{https://arxiv.org/abs/2602.10177}{arXiv:2602.10177}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 662,
-            "line_start": 662,
+            "line_end": 664,
+            "line_start": 664,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 722,
-            "line_start": 722,
+            "line_end": 724,
+            "line_start": 724,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 800,
-            "line_start": 800,
+            "line_end": 802,
+            "line_start": 802,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 928,
-            "line_start": 928,
+            "line_end": 930,
+            "line_start": 930,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1045,
-            "line_start": 1045,
+            "line_end": 1047,
+            "line_start": 1047,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89631,50 +89631,21 @@
         "equivalent_source_coordinates": [],
         "key": "autonomousmath",
         "kind": "bibliography_entry",
-        "line_end": 1675,
-        "line_start": 1670,
+        "line_end": 1677,
+        "line_start": 1672,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{henkel} J. Henkel, \\emph{The Mathematician's Assistant: Integrating AI into Research Practice}, 2025, \\href{https://arxiv.org/abs/2508.20236}{arXiv:2508.20236}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 748,
-            "line_start": 748,
-            "path": "paper/systems/open-source-mathematics-strategy.tex",
-            "qualifiers": []
-          },
-          {
-            "command": "cite",
-            "line_end": 985,
-            "line_start": 985,
-            "path": "paper/systems/open-source-mathematics-strategy.tex",
-            "qualifiers": []
-          }
-        ],
-        "equivalent_source_coordinates": [],
-        "key": "henkel",
-        "kind": "bibliography_entry",
-        "line_end": 1680,
-        "line_start": 1675,
-        "paper_id": "open-source-mathematics-strategy",
-        "path": "paper/systems/open-source-mathematics-strategy.tex",
-        "source_id": "source-0d338bb41b8987",
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
-      },
-      {
-        "citation_text": "\\bibitem{openproofcorpus} J. Dekoninck et al., \\emph{The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs}, 2025, \\href{https://arxiv.org/abs/2506.21621}{arXiv:2506.21621}.",
-        "citation_usages": [
-          {
-            "command": "cite",
-            "line_end": 748,
-            "line_start": 748,
+            "line_end": 750,
+            "line_start": 750,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
@@ -89687,23 +89658,52 @@
           }
         ],
         "equivalent_source_coordinates": [],
+        "key": "henkel",
+        "kind": "bibliography_entry",
+        "line_end": 1682,
+        "line_start": 1677,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "source_id": "source-0d338bb41b8987",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
+      },
+      {
+        "citation_text": "\\bibitem{openproofcorpus} J. Dekoninck et al., \\emph{The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs}, 2025, \\href{https://arxiv.org/abs/2506.21621}{arXiv:2506.21621}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 750,
+            "line_start": 750,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 989,
+            "line_start": 989,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
         "key": "openproofcorpus",
         "kind": "bibliography_entry",
-        "line_end": 1685,
-        "line_start": 1680,
+        "line_end": 1687,
+        "line_start": 1682,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-a38774d9a4f1f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{taowiki} T. Tao, \\emph{AI contributions to Erd\\H{o}s problems}, community wiki, \\href{https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems}{GitHub wiki page}, accessed September 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1063,
-            "line_start": 1063,
+            "line_end": 1065,
+            "line_start": 1065,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89711,21 +89711,21 @@
         "equivalent_source_coordinates": [],
         "key": "taowiki",
         "kind": "bibliography_entry",
-        "line_end": 1690,
-        "line_start": 1685,
+        "line_end": 1692,
+        "line_start": 1687,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-e99ce64694b554",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{credit} NISO, \\emph{CRediT: Contributor Roles Taxonomy}, \\href{https://credit.niso.org/contributor-roles-defined/}{role definitions}, accessed August 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 813,
-            "line_start": 813,
+            "line_end": 815,
+            "line_start": 815,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89733,21 +89733,21 @@
         "equivalent_source_coordinates": [],
         "key": "credit",
         "kind": "bibliography_entry",
-        "line_end": 1695,
-        "line_start": 1690,
+        "line_end": 1697,
+        "line_start": 1692,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-d517c8a2d6f84d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{githubsecurity} GitHub, \\emph{Preventing pwn requests}, GitHub Actions security guidance, \\href{https://docs.github.com/en/actions/reference/security/secure-use}{documentation}, accessed August 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 913,
-            "line_start": 913,
+            "line_end": 915,
+            "line_start": 915,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89755,21 +89755,21 @@
         "equivalent_source_coordinates": [],
         "key": "githubsecurity",
         "kind": "bibliography_entry",
-        "line_end": 1700,
-        "line_start": 1695,
+        "line_end": 1702,
+        "line_start": 1697,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-9ef9271dbecbce",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{documentationtest} M. Yuan et al., \\emph{End-to-End Testing of Open-Source Hardware Documentation Developed in Large Collaborations}, 2023, \\href{https://arxiv.org/abs/2309.05942}{arXiv:2309.05942}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1219,
-            "line_start": 1219,
+            "line_end": 1221,
+            "line_start": 1221,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -89777,13 +89777,13 @@
         "equivalent_source_coordinates": [],
         "key": "documentationtest",
         "kind": "bibliography_entry",
-        "line_end": 1705,
-        "line_start": 1700,
+        "line_end": 1707,
+        "line_start": 1702,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "arxiv_2309_05942",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_text": "\\bibitem{erdosgraham1980} P.~Erd\\H{o}s and R.~L. Graham, \\href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\\emph{Old and New Problems and Results in Combinatorial Number Theory}}, Monogr. Enseign. Math. 28, Geneva, 1980.",
@@ -112055,7 +112055,7 @@
         "qualifiers": [],
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
@@ -112069,7 +112069,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
@@ -112083,7 +112083,7 @@
         "qualifiers": [],
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
@@ -112097,7 +112097,7 @@
         "qualifiers": [],
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
@@ -112111,525 +112111,525 @@
         "qualifiers": [],
         "source_id": "source-9733ab875d6048",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "polymath",
         "kind": "citation_usage",
-        "line_end": 562,
-        "line_start": 562,
+        "line_end": 564,
+        "line_start": 564,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-af9e99293e9dd0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "boinc",
         "kind": "citation_usage",
-        "line_end": 564,
-        "line_start": 564,
+        "line_end": 566,
+        "line_start": 566,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gimps",
         "kind": "citation_usage",
-        "line_end": 564,
-        "line_start": 564,
+        "line_end": 566,
+        "line_start": 566,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "autonomousmath",
         "kind": "citation_usage",
-        "line_end": 662,
-        "line_start": 662,
+        "line_end": 664,
+        "line_start": 664,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "aletheia",
         "kind": "citation_usage",
-        "line_end": 711,
-        "line_start": 711,
+        "line_end": 713,
+        "line_start": 713,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "autonomousmath",
         "kind": "citation_usage",
-        "line_end": 722,
-        "line_start": 722,
+        "line_end": 724,
+        "line_start": 724,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "henkel",
         "kind": "citation_usage",
-        "line_end": 748,
-        "line_start": 748,
+        "line_end": 750,
+        "line_start": 750,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-0d338bb41b8987",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "openproofcorpus",
         "kind": "citation_usage",
-        "line_end": 748,
-        "line_start": 748,
+        "line_end": 750,
+        "line_start": 750,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a38774d9a4f1f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "palomar",
         "kind": "citation_usage",
-        "line_end": 754,
-        "line_start": 754,
+        "line_end": 756,
+        "line_start": 756,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-9733ab875d6048",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "erdosproblems",
         "kind": "citation_usage",
-        "line_end": 758,
-        "line_start": 758,
+        "line_end": 760,
+        "line_start": 760,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "aletheia",
         "kind": "citation_usage",
-        "line_end": 791,
-        "line_start": 791,
+        "line_end": 793,
+        "line_start": 793,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "autonomousmath",
         "kind": "citation_usage",
-        "line_end": 800,
-        "line_start": 800,
+        "line_end": 802,
+        "line_start": 802,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "credit",
         "kind": "citation_usage",
-        "line_end": 813,
-        "line_start": 813,
+        "line_end": 815,
+        "line_start": 815,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-d517c8a2d6f84d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "aletheia",
         "kind": "citation_usage",
-        "line_end": 822,
-        "line_start": 822,
+        "line_end": 824,
+        "line_start": 824,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "prove2me",
         "kind": "citation_usage",
-        "line_end": 865,
-        "line_start": 865,
+        "line_end": 867,
+        "line_start": 867,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "boinc",
         "kind": "citation_usage",
-        "line_end": 893,
-        "line_start": 893,
+        "line_end": 895,
+        "line_start": 895,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gimps",
         "kind": "citation_usage",
-        "line_end": 896,
-        "line_start": 896,
+        "line_end": 898,
+        "line_start": 898,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "prove2me",
         "kind": "citation_usage",
-        "line_end": 907,
-        "line_start": 907,
+        "line_end": 909,
+        "line_start": 909,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "githubsecurity",
         "kind": "citation_usage",
-        "line_end": 913,
-        "line_start": 913,
+        "line_end": 915,
+        "line_start": 915,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-9ef9271dbecbce",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "autonomousmath",
         "kind": "citation_usage",
-        "line_end": 928,
-        "line_start": 928,
+        "line_end": 930,
+        "line_start": 930,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "boinc",
         "kind": "citation_usage",
-        "line_end": 951,
-        "line_start": 951,
+        "line_end": 953,
+        "line_start": 953,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gimps",
         "kind": "citation_usage",
-        "line_end": 951,
-        "line_start": 951,
+        "line_end": 953,
+        "line_start": 953,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "polymath",
         "kind": "citation_usage",
-        "line_end": 959,
-        "line_start": 959,
+        "line_end": 961,
+        "line_start": 961,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-af9e99293e9dd0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "carleson",
         "kind": "citation_usage",
-        "line_end": 966,
-        "line_start": 966,
+        "line_end": 968,
+        "line_start": 968,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-984f2b78d220ea",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "mathlib",
         "kind": "citation_usage",
-        "line_end": 966,
-        "line_start": 966,
+        "line_end": 968,
+        "line_start": 968,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "formalconjectures",
         "kind": "citation_usage",
-        "line_end": 969,
-        "line_start": 969,
+        "line_end": 971,
+        "line_start": 971,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "agenthunt",
         "kind": "citation_usage",
-        "line_end": 974,
-        "line_start": 974,
+        "line_end": 976,
+        "line_start": 976,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "leanatlas",
         "kind": "citation_usage",
-        "line_end": 976,
-        "line_start": 976,
+        "line_end": 978,
+        "line_start": 978,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "henkel",
         "kind": "citation_usage",
-        "line_end": 985,
-        "line_start": 985,
+        "line_end": 987,
+        "line_start": 987,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-0d338bb41b8987",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "openproofcorpus",
         "kind": "citation_usage",
-        "line_end": 987,
-        "line_start": 987,
+        "line_end": 989,
+        "line_start": 989,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a38774d9a4f1f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "prove2me",
         "kind": "citation_usage",
-        "line_end": 995,
-        "line_start": 995,
+        "line_end": 997,
+        "line_start": 997,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "aletheia",
         "kind": "citation_usage",
-        "line_end": 1033,
-        "line_start": 1033,
+        "line_end": 1035,
+        "line_start": 1035,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "autonomousmath",
         "kind": "citation_usage",
-        "line_end": 1045,
-        "line_start": 1045,
+        "line_end": 1047,
+        "line_start": 1047,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "taowiki",
         "kind": "citation_usage",
-        "line_end": 1063,
-        "line_start": 1063,
+        "line_end": 1065,
+        "line_start": 1065,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-e99ce64694b554",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "tao2026",
         "kind": "citation_usage",
-        "line_end": 1073,
-        "line_start": 1073,
+        "line_end": 1075,
+        "line_start": 1075,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "documentationtest",
         "kind": "citation_usage",
-        "line_end": 1219,
-        "line_start": 1219,
+        "line_end": 1221,
+        "line_start": 1221,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "arxiv_2309_05942",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "mathlib",
         "kind": "citation_usage",
-        "line_end": 1373,
-        "line_start": 1373,
+        "line_end": 1375,
+        "line_start": 1375,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+        "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
       },
       {
         "citation_context": "in_text_citation",
@@ -114406,7 +114406,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:3f37884319c906c8a943b0507a5501024589a7dd366cdfb8cca4a10e16dd206d",
+  "source_registry_sha256": "sha256:cb7a134824951741f8ab0b318a904ab205f0fe509fa97c8f6f43ff136760eb1c",
   "sources": [
     {
       "artifact_coordinates": [],
@@ -116161,10 +116161,10 @@
         {
           "excerpt_sha256": "sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44",
           "expected_text": "\\bibitem{erdosproblems}",
-          "line_end": 1634,
-          "line_start": 1629,
+          "line_end": 1636,
+          "line_start": 1631,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         },
         {
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed",
@@ -116423,8 +116423,8 @@
         {
           "excerpt_sha256": "sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44",
           "expected_text": "\\bibitem{erdosproblems}",
-          "line_end": 1634,
-          "line_start": 1629,
+          "line_end": 1636,
+          "line_start": 1631,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         },
         {
@@ -119178,10 +119178,10 @@
         {
           "excerpt_sha256": "sha256:6ab1870a7b04b9f3cc30d59640dcc05a0b6fcd49f9ea44245ecb129aba0f4c4e",
           "expected_text": "\\bibitem{henkel}",
-          "line_end": 1680,
-          "line_start": 1675,
+          "line_end": 1682,
+          "line_start": 1677,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -119195,8 +119195,8 @@
         {
           "excerpt_sha256": "sha256:6ab1870a7b04b9f3cc30d59640dcc05a0b6fcd49f9ea44245ecb129aba0f4c4e",
           "expected_text": "\\bibitem{henkel}",
-          "line_end": 1680,
-          "line_start": 1675,
+          "line_end": 1682,
+          "line_start": 1677,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -126375,10 +126375,10 @@
         {
           "excerpt_sha256": "sha256:c89d595871311eec76167add03b720a82202963564fd46493036b4e96b08de98",
           "expected_text": "\\bibitem{prove2me}",
-          "line_end": 1665,
-          "line_start": 1660,
+          "line_end": 1667,
+          "line_start": 1662,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -126392,8 +126392,8 @@
         {
           "excerpt_sha256": "sha256:c89d595871311eec76167add03b720a82202963564fd46493036b4e96b08de98",
           "expected_text": "\\bibitem{prove2me}",
-          "line_end": 1665,
-          "line_start": 1660,
+          "line_end": 1667,
+          "line_start": 1662,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -131033,18 +131033,18 @@
         {
           "excerpt_sha256": "sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d",
           "expected_text": "\\bibitem{formalconjectures}",
-          "line_end": 1644,
-          "line_start": 1639,
+          "line_end": 1646,
+          "line_start": 1641,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d",
           "expected_text": "\\bibitem{formalconjectures}",
-          "line_end": 1644,
-          "line_start": 1639,
+          "line_end": 1646,
+          "line_start": 1641,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -135422,10 +135422,10 @@
         {
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a",
           "expected_text": "\\bibitem{tao2026}",
-          "line_end": 1604,
-          "line_start": 1600,
+          "line_end": 1606,
+          "line_start": 1602,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -135439,8 +135439,8 @@
         {
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a",
           "expected_text": "\\bibitem{tao2026}",
-          "line_end": 1604,
-          "line_start": 1600,
+          "line_end": 1606,
+          "line_start": 1602,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -136236,10 +136236,10 @@
         {
           "excerpt_sha256": "sha256:35c50b80ea4e9bece2ad431b8db8fe260367c76ed945564205813263b357e81f",
           "expected_text": "\\bibitem{aletheia}",
-          "line_end": 1670,
-          "line_start": 1665,
+          "line_end": 1672,
+          "line_start": 1667,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -136253,8 +136253,8 @@
         {
           "excerpt_sha256": "sha256:35c50b80ea4e9bece2ad431b8db8fe260367c76ed945564205813263b357e81f",
           "expected_text": "\\bibitem{aletheia}",
-          "line_end": 1670,
-          "line_start": 1665,
+          "line_end": 1672,
+          "line_start": 1667,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -140156,18 +140156,18 @@
         {
           "excerpt_sha256": "sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd",
           "expected_text": "\\bibitem{boinc}",
-          "line_end": 1609,
-          "line_start": 1604,
+          "line_end": 1611,
+          "line_start": 1606,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd",
           "expected_text": "\\bibitem{boinc}",
-          "line_end": 1609,
-          "line_start": 1604,
+          "line_end": 1611,
+          "line_start": 1606,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -140709,18 +140709,18 @@
         {
           "excerpt_sha256": "sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162",
           "expected_text": "\\bibitem{palomar}",
-          "line_end": 1650,
-          "line_start": 1644,
+          "line_end": 1652,
+          "line_start": 1646,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162",
           "expected_text": "\\bibitem{palomar}",
-          "line_end": 1650,
-          "line_start": 1644,
+          "line_end": 1652,
+          "line_start": 1646,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -140856,10 +140856,10 @@
         {
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e",
           "expected_text": "\\bibitem{carleson}",
-          "line_end": 1629,
-          "line_start": 1624,
+          "line_end": 1631,
+          "line_start": 1626,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -140873,8 +140873,8 @@
         {
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e",
           "expected_text": "\\bibitem{carleson}",
-          "line_end": 1629,
-          "line_start": 1624,
+          "line_end": 1631,
+          "line_start": 1626,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -141817,18 +141817,18 @@
         {
           "excerpt_sha256": "sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da",
           "expected_text": "\\bibitem{githubsecurity}",
-          "line_end": 1700,
-          "line_start": 1695,
+          "line_end": 1702,
+          "line_start": 1697,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da",
           "expected_text": "\\bibitem{githubsecurity}",
-          "line_end": 1700,
-          "line_start": 1695,
+          "line_end": 1702,
+          "line_start": 1697,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -141871,10 +141871,10 @@
         {
           "excerpt_sha256": "sha256:17dfc81b2347996ae518d9ae35b9f4cbbe428802c4df971c821bb500a90d87de",
           "expected_text": "\\bibitem{autonomousmath}",
-          "line_end": 1675,
-          "line_start": 1670,
+          "line_end": 1677,
+          "line_start": 1672,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -141888,8 +141888,8 @@
         {
           "excerpt_sha256": "sha256:17dfc81b2347996ae518d9ae35b9f4cbbe428802c4df971c821bb500a90d87de",
           "expected_text": "\\bibitem{autonomousmath}",
-          "line_end": 1675,
-          "line_start": 1670,
+          "line_end": 1677,
+          "line_start": 1672,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -142057,10 +142057,10 @@
         {
           "excerpt_sha256": "sha256:d7199ff140a739a7be732b44e20113885c623918791626d0f99bd6c7e2a83cc2",
           "expected_text": "\\bibitem{openproofcorpus}",
-          "line_end": 1685,
-          "line_start": 1680,
+          "line_end": 1687,
+          "line_start": 1682,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -142074,8 +142074,8 @@
         {
           "excerpt_sha256": "sha256:d7199ff140a739a7be732b44e20113885c623918791626d0f99bd6c7e2a83cc2",
           "expected_text": "\\bibitem{openproofcorpus}",
-          "line_end": 1685,
-          "line_start": 1680,
+          "line_end": 1687,
+          "line_start": 1682,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -142741,10 +142741,10 @@
         {
           "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe",
           "expected_text": "\\bibitem{leanatlas}",
-          "line_end": 1660,
-          "line_start": 1655,
+          "line_end": 1662,
+          "line_start": 1657,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -142765,8 +142765,8 @@
         {
           "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe",
           "expected_text": "\\bibitem{leanatlas}",
-          "line_end": 1660,
-          "line_start": 1655,
+          "line_end": 1662,
+          "line_start": 1657,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -142819,10 +142819,10 @@
         {
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68",
           "expected_text": "\\bibitem{agenthunt}",
-          "line_end": 1655,
-          "line_start": 1650,
+          "line_end": 1657,
+          "line_start": 1652,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -142836,8 +142836,8 @@
         {
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68",
           "expected_text": "\\bibitem{agenthunt}",
-          "line_end": 1655,
-          "line_start": 1650,
+          "line_end": 1657,
+          "line_start": 1652,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -143224,18 +143224,18 @@
         {
           "excerpt_sha256": "sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02",
           "expected_text": "\\bibitem{polymath}",
-          "line_end": 1619,
-          "line_start": 1614,
+          "line_end": 1621,
+          "line_start": 1616,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02",
           "expected_text": "\\bibitem{polymath}",
-          "line_end": 1619,
-          "line_start": 1614,
+          "line_end": 1621,
+          "line_start": 1616,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -145549,10 +145549,10 @@
         {
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0",
           "expected_text": "\\bibitem{lean4}",
-          "line_end": 1639,
-          "line_start": 1634,
+          "line_end": 1641,
+          "line_start": 1636,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         },
         {
           "excerpt_sha256": "sha256:ad96b93897cb722f9a63aa344b11a333231b11971c032d6bf1a0781e0d6ded9f",
@@ -145602,8 +145602,8 @@
         {
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0",
           "expected_text": "\\bibitem{lean4}",
-          "line_end": 1639,
-          "line_start": 1634,
+          "line_end": 1641,
+          "line_start": 1636,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         },
         {
@@ -146433,10 +146433,10 @@
         {
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432",
           "expected_text": "\\bibitem{mathlib}",
-          "line_end": 1624,
-          "line_start": 1619,
+          "line_end": 1626,
+          "line_start": 1621,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -146450,8 +146450,8 @@
         {
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432",
           "expected_text": "\\bibitem{mathlib}",
-          "line_end": 1624,
-          "line_start": 1619,
+          "line_end": 1626,
+          "line_start": 1621,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -147474,18 +147474,18 @@
         {
           "excerpt_sha256": "sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd",
           "expected_text": "\\bibitem{gimps}",
-          "line_end": 1614,
-          "line_start": 1609,
+          "line_end": 1616,
+          "line_start": 1611,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd",
           "expected_text": "\\bibitem{gimps}",
-          "line_end": 1614,
-          "line_start": 1609,
+          "line_end": 1616,
+          "line_start": 1611,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -148775,18 +148775,18 @@
         {
           "excerpt_sha256": "sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182",
           "expected_text": "\\bibitem{credit}",
-          "line_end": 1695,
-          "line_start": 1690,
+          "line_end": 1697,
+          "line_start": 1692,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182",
           "expected_text": "\\bibitem{credit}",
-          "line_end": 1695,
-          "line_start": 1690,
+          "line_end": 1697,
+          "line_start": 1692,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -150795,10 +150795,10 @@
         {
           "excerpt_sha256": "sha256:4fa78969a75193c23aeb06cdd0323df94e0a5887673d1bf5c44d740748d12774",
           "expected_text": "\\bibitem{taowiki}",
-          "line_end": 1690,
-          "line_start": 1685,
+          "line_end": 1692,
+          "line_start": 1687,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:4d551e421035aaa3655b61b33f880946b87ec5a4f259aac348fc923877d37274"
+          "sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
         }
       ],
       "artifact_links": [
@@ -150812,8 +150812,8 @@
         {
           "excerpt_sha256": "sha256:4fa78969a75193c23aeb06cdd0323df94e0a5887673d1bf5c44d740748d12774",
           "expected_text": "\\bibitem{taowiki}",
-          "line_end": 1690,
-          "line_start": 1685,
+          "line_end": 1692,
+          "line_start": 1687,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
