@@ -62,14 +62,16 @@ contains papers, formal source, explicit open boundaries, corpus queries,
 validation programs, and structured return paths. The degree-seven
 counterexample due to the erdosproblems.com contributor
 \href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}},
-formalised in Lean in this repository, refutes the Formal Conjectures 1041
-one-dimensional Hausdorff path-image claim; relation to the 1958 question
-remains unreviewed. The other seven
-targets remain unresolved here. In the 257 lane, the repository proves
-all-base irrationality for full support, infinite reciprocal-summable supports,
-and supports meeting a base-two finite-prime weighted condition. The arbitrary
-infinite-support question remains open.
-The repository is a proof of concept for cumulative research
+formalised in Lean here for one degree-seven polynomial, gives a
+one-dimensional Hausdorff-measure bound and refutes the exact Formal
+Conjectures path-image-length statement of Problem 1041. The separate
+total-variation bound is also checked. The reported family is not formalised,
+and correspondence with the 1958 curve-length wording remains unreviewed.
+The other seven targets remain unresolved here. In the 257 lane, the repository
+proves all-base irrationality for full support, infinite reciprocal-summable
+supports, and supports meeting a base-two finite-prime weighted condition.
+The arbitrary infinite-support question remains open. The repository is a proof
+of concept for cumulative research
 infrastructure, not evidence that distributed agents already outperform
 mathematicians or that additional compute will solve a named problem. As of
 14 September 2026, the author had not recorded a completed external cold-clone use
@@ -1006,9 +1008,12 @@ implementation and is the prior published design.
 
 The two differ in what the shared object is.  Prove2Me is a hosted service
 with server-side verification, and its reported completed missions formalise
-results whose proofs already exist in a paper or textbook.  The commons here
-is a git repository with no service behind it, and its eight endpoints are
-open research problems whose proofs do not exist.  The unit of credit here is
+results whose proofs already exist in a paper or textbook. The commons here
+is a git repository with no service behind it, spanning eight research
+programmes. Seven original endpoints remain unresolved here. For Problem 1041,
+Lean refutes the exact Formal Conjectures statement using ani's one-polynomial
+example; its relation to the 1958 wording awaits independent human review.
+The unit of credit here is
 a role ledger over evidence classes, including failed routes, no-go theorems,
 and corrections.  This paper does not claim that the second design is better.
 Which contributor experience scales is an open question and one of the
@@ -1041,8 +1046,10 @@ project accepts that bound and works the other side of it: each problem
 world exists because its endpoint can be stated exactly, and the Lean layer
 is empty wherever it cannot.  The report also concedes that benchmark
 results may be contaminated by training data and mitigates this by
-perturbing known problems; a genuinely open endpoint has no solution to
-memorise, which is one more reason to work on open problems.
+perturbing known problems. For the seven still-open targets here, there is no
+known solution to memorise. The refuted exact Formal Conjectures statement for
+Problem 1041 instead tests counterexample recognition and fidelity to the
+historical wording.
 
 Tao's community wiki of AI contributions to the Erd\H{o}s problems is the
 existing public register in this exact domain \cite{taowiki}.  It records
@@ -1416,9 +1423,10 @@ data.  Autonomous physical experimentation is not a present project goal.
 
 The present strategy has substantial limits.
 
-First, the Formal Conjectures Hausdorff path-image refutation for Problem 1041 does not
-establish correspondence with the historical question, and the other seven
-targets remain unresolved here. The repository contains intermediate
+First, the Lean-checked Hausdorff-length refutation of the exact Formal
+Conjectures statement for Problem 1041 uses one polynomial from ani's
+construction; correspondence with the 1958 question remains unreviewed.
+The other seven targets remain unresolved here. The repository contains intermediate
 mathematics and deep records of failed routes, but no evidence
 that a distributed run will solve any problem.  The claim that infrastructure
 improves the conversion from compute to mathematics has not yet been measured
