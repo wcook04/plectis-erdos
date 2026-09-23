@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ExternalVerification.Solution
+import Erdos249257.AllBaseReciprocalSupportIrrationality
 
 /-!
 # Solved-variant candidates for Formal Conjectures
@@ -672,3 +673,19 @@ theorem erdos_257_variants_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
   Erdos249257.irrational_erdosSum_two_pow_support b hb
 
 end Erdos249257.FormalConjecturesErdos257
+
+/-! ## Erdős 257 reciprocal-summable supports -/
+
+namespace Erdos257
+
+theorem erdos_257.variants.summable_reciprocal_support
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hsum : Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)))) :
+    Irrational (∑' a : ℕ,
+      Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a) := by
+  have hsum' : Summable (Erdos249257.reciprocalSupportTerm A) := by
+    simpa [Erdos249257.reciprocalSupportTerm] using hsum
+  simpa [Erdos249257.erdosSupportSeries] using
+    Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal b A hb hA hsum'
+
+end Erdos257
