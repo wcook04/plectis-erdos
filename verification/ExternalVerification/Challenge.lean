@@ -527,15 +527,9 @@ theorem exists_small_translation_separating_arguments
         ¬ SamePositiveRay (c i + shift) (c j + shift) :=
   (portfolioClaims ι).problem1041 c hc hε
 
-theorem constant_perturbation_roots_in_unitDisk
-    (f : Polynomial ℂ) (hf : f.Monic) (hdeg : 0 < f.natDegree)
-    (hsplit : f.Splits) {ρ ε : ℝ} (hρ : 0 ≤ ρ)
-    (hroots : ∀ b ∈ f.roots, ‖b‖ ≤ ρ) (hε : 0 < ε)
-    (hmargin : ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1)
-    {shift : ℂ} (hshift : ‖shift‖ < ε) :
-    ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1 :=
-  (portfolioClaims Unit).problem1041Roots f hf hdeg hsplit hρ hroots hε
-    hmargin hshift
+theorem constant_perturbation_roots_in_unitDisk :
+    ConstantPerturbationRootsInUnitDiskStatement :=
+  (portfolioClaims Unit).problem1041Roots
 
 theorem exists_two_roots_dist_sum_le_two_mul_geomMean
     {n : ℕ} (hn : 2 ≤ n) (z : Fin n → ℂ) (c : ℂ)

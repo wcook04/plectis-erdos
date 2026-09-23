@@ -1131,6 +1131,18 @@ def TotientCarryAntiCompressionStatement : Prop :=
         ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
           CarrySectionsEventuallyPeriodicMod v h N₀ u
 
+/-- Shared Comparator proposition for the quantified root-retention theorem.
+The proof-only imports must not choose different implicit instances while
+elaborating this exported statement in Challenge and Solution. -/
+def ConstantPerturbationRootsInUnitDiskStatement : Prop :=
+  ∀ (f : Polynomial ℂ), f.Monic → 0 < f.natDegree → f.Splits →
+    ∀ {ρ ε : ℝ}, 0 ≤ ρ →
+      (∀ b ∈ f.roots, ‖b‖ ≤ ρ) →
+      0 < ε →
+      ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1 →
+      ∀ {shift : ℂ}, ‖shift‖ < ε →
+        ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1
+
 /-- One trusted challenge witness carries the exact interfaces selected for
 the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
@@ -1537,14 +1549,7 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
           (∀ i, c i + shift ≠ 0) ∧
           ∀ i j, i ≠ j →
             ¬ SamePositiveRay (c i + shift) (c j + shift)
-  problem1041Roots :
-    ∀ (f : Polynomial ℂ), f.Monic → 0 < f.natDegree → f.Splits →
-      ∀ { ρ ε : ℝ }, 0 ≤ ρ →
-      (∀ b ∈ f.roots, ‖b‖ ≤ ρ) →
-      0 < ε →
-      ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1 →
-      ∀ { shift : ℂ }, ‖shift‖ < ε →
-      ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1
+  problem1041Roots : ConstantPerturbationRootsInUnitDiskStatement
   /-- Lean-checked critical-balance kernel for the sharp Euclidean scale.
   The closed-unit-disc nearest-pair assembly and path containment are not part
   of this statement-isolated theorem. -/
