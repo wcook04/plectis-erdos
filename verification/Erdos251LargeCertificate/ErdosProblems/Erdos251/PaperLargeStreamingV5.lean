@@ -1,6 +1,6 @@
 import ErdosProblems.Erdos251.StreamingChunksV5.Chunk0250
 
-/-! Large endpoint via restartable kernel candidates. UNRUN.
+/-! Large endpoint via the restartable kernel blocks.
 The old monolithic PaperLargeCertificateR7 module is NOT imported.
 All primes/count/prefix conditions are replayed by the block chain.
 The stronger exponent is a separate V5 result, not a restatement of 39997. -/

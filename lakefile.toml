@@ -48,11 +48,22 @@ srcDir = "lean"
 weakLeanArgs = ["--tstack=65536"]
 
 # Restartable #251 large finite certificate (250 kernel chunks + printed-floor
-# transport). Not a default target: a clean root/CI build must not re-elaborate
-# this chain. Admit it separately after the supported closure.
+# transport). Not a default target: CI builds it by naming
+# ErdosProblems.Erdos251.PaperLargeAuditR7, which imports the whole chain.
+# Its modules are named ErdosProblems.Erdos251.*, and Lake assigns a module to
+# the last declared library that claims it, so the globs below claim them for
+# this library and this block must stay after the ErdosProblems block.
 [[lean_lib]]
 name = "Erdos251LargeCertificate"
 srcDir = "verification/Erdos251LargeCertificate"
+globs = [
+  "ErdosProblems.Erdos251.GcdPrimality",
+  "ErdosProblems.Erdos251.PaperStreamingCertificateV5",
+  "ErdosProblems.Erdos251.StreamingChunksV5.+",
+  "ErdosProblems.Erdos251.PaperLargeStreamingV5",
+  "ErdosProblems.Erdos251.PaperLargeCertificateR7",
+  "ErdosProblems.Erdos251.PaperLargeAuditR7",
+]
 weakLeanArgs = ["--tstack=262144"]
 
 # Downstream consumer example (examples/Examples.lean). Not a default target:
