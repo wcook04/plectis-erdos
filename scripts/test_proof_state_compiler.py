@@ -6,7 +6,9 @@ from __future__ import annotations
 import copy
 import json
 import os
+import subprocess
 import tempfile
+import time
 from pathlib import Path
 from unittest import mock
 
@@ -188,6 +190,54 @@ def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
         compiler._require_lean_dependencies(root)
 
 
+def check_timeout_reaps_lean_child() -> None:
+    """A timed-out Lake wrapper must not leave its Lean child running."""
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        lake = root / "lake"
+        lake.write_text(
+            "#!/bin/sh\nsleep 30 &\nprintf 'child=%s\\n' \"$!\"\nwait\n",
+            encoding="utf-8",
+        )
+        lake.chmod(0o755)
+        environment = dict(os.environ)
+        environment["PATH"] = os.pathsep.join((raw, os.defpath))
+        request = compiler.pilot_requests()[0]
+        started = time.monotonic()
+        with mock.patch.object(
+            compiler, "_lean_environment", return_value=environment
+        ):
+            transition = compiler._run_candidate(
+                request,
+                request["candidates"][0],
+                repo_root=root,
+                environment={"fingerprint": "timeout-fixture"},
+                timeout_seconds=1.5,
+            )
+        receipt = transition["lean_run_receipt"]
+        assert receipt["timed_out"] and receipt["return_code"] is None
+        assert time.monotonic() - started < 8
+        child_line = next(
+            line for line in receipt["non_json_output"]
+            if line.startswith("child=")
+        )
+        child_pid = int(child_line.split("=", 1)[1])
+        # A killed, reparented child may briefly be a zombie while init reaps
+        # it; both absence and zombie state mean it is no longer elaborating.
+        for _ in range(20):
+            state = subprocess.run(
+                ["ps", "-o", "stat=", "-p", str(child_pid)],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if state.returncode != 0 or state.stdout.strip().startswith("Z"):
+                break
+            time.sleep(0.05)
+        else:
+            raise AssertionError("timed-out Lake left its child running")
+
+
 def check_live_pilot() -> dict:
     packet = compiler.compile_pilot_suite()
     assert packet["schema_version"] == compiler.PILOT_SCHEMA
@@ -257,6 +307,7 @@ def check_live_pilot() -> dict:
 def check_typed_rejection() -> None:
     request = copy.deepcopy(compiler.pilot_requests()[0])
     request["goal_id"] = "deliberately_incompatible_candidate"
+    request["imports"] = ["Erdos249257.CurvatureCarry"]
     request["candidates"][0] = {
         "candidate_id": "wrong_shape",
         "declaration": (
@@ -283,6 +334,7 @@ def main() -> int:
     check_subprocess_environment()
     check_toolchain_absence_is_a_clean_skip_signal()
     check_unfetched_dependencies_are_a_clean_skip_signal()
+    check_timeout_reaps_lean_child()
     try:
         packet = check_live_pilot()
         check_typed_rejection()

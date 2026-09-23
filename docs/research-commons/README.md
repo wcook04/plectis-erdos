@@ -47,6 +47,10 @@ routes. Palomar is a formal registry and automated filter rather than human
 peer review, and this repository cannot grant novelty, endorsement, or broad
 mathematical acceptance.
 
+For a source-bound, offline example of preparing one #257 theorem for
+Prove2Me and recording later external responses, see the
+[Prove2Me compatibility path](PROVE2ME_COMPAT.md).
+
 A contributor can open an ordinary [pull request](../../CONTRIBUTING.md) or
 [research-progress issue](../../.github/ISSUE_TEMPLATE/research_progress.yml)
 and describe the work in their own words. Include the starting commit, changed
@@ -58,9 +62,11 @@ from a clean checkout before editing. `continue_research.py start` records the
 current commit, question and identities under `research/workbench/sessions/<session>/`.
 After the work, [fill the return files, close the session and package them](RETURN_PACKAGE_TEMPLATE.md#fill-and-package-the-structured-return).
 The output directory contains `return.json`, `route-memory.json`, session
-records and a `package.json` manifest listing the packaged files and hashes.
-Keep the proposed commit or patch with the package: the packager does not copy
-every changed source file. The template also gives the recipient's
+records, a `source/` snapshot of every declared changed path, and a
+`package.json` manifest listing the packaged files and hashes. The packager
+rejects omitted changed paths against a proposed commit, or against observed
+tracked and nonignored untracked worktree edits when the session began clean.
+The template gives the recipient's
 [replay instructions](RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay).
 
 When maintainers accept returned work, a committed receipt ties it to the

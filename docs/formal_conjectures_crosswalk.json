@@ -317,7 +317,7 @@
       "local_navigation": {
         "route": "python3 scripts/query_corpus.py --route erdos_1041",
         "surface": "canonical problem packet",
-        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+        "return_contract": "Returns the local problem packet with the exact Formal Conjectures Hausdorff refutation, credited source, papers, declarations and historical-review boundary."
       },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/1041.lean",
@@ -339,16 +339,25 @@
         ]
       },
       "comparison": {
-        "statement_scope": "Both surfaces ask for two roots connected inside the open unit lemniscate by a curve with a bound below two, but the exact formal notion of length needs review.",
+        "statement_scope": "The local Hausdorff theorem refutes the exact Formal Conjectures path-image-length proposition for ani's degree-seven polynomial. The 1958 curve-length wording remains a separate historical correspondence audit.",
         "indexing": "There is no series indexing issue. The upstream theorem quantifies polynomial degree n >= 2 and selects roots through multiset containment, including multiplicity.",
-        "casts_and_ambient_types": "The path lies in Complex; length is defined as one-dimensional Hausdorff measure of the path range in ENNReal, not directly as parameterized rectifiable path length.",
-        "answer_and_proof_status": "The upstream component lemma and open theorem both have sorry proofs.",
+        "casts_and_ambient_types": "Both formal statements use a Complex path whose image lies in the strict unit lemniscate; length is one-dimensional Hausdorff measure of Set.range γ in ENNReal. The older local total-variation theorem is separate.",
+        "answer_and_proof_status": "The pinned upstream declaration still has answer(sorry) and a sorry proof. Local Lean proves the standalone negation of its exact Hausdorff formulation and the answer(False) form; no upstream change or human historical adjudication is recorded here.",
         "conservative_verdict": "statement_level_alignment_only",
-        "machine_checked_equivalence": "none"
+        "machine_checked_equivalence": "none",
+        "local_formal_refutation": {
+          "source_file": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "source_commit": "7380b7871687b6bcc41ca0143c61f232e8af6500",
+          "preconnected_set_theorem": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+          "negation_theorem": "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+          "answer_false_theorem": "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false",
+          "credit": "ani, erdosproblems.com forum thread 1041, 7 September 2026",
+          "boundary": "Exact Formal Conjectures path-image formulation refuted; independent review of correspondence with the 1958 wording remains open."
+        }
       },
       "adapter": {
         "status": "not_a_candidate",
-        "reason": "The local Newton-flow results leave the global topology and metric gluing unresolved."
+        "reason": "The pinned upstream theorem still uses answer(sorry). This local result proves the standalone answer(False) restatement, but no upstream adapter or answer change has been submitted; human review of the 1958 wording remains required."
       },
       "human_semantic_review_required": true,
       "submission_status": "not_ready_to_submit"

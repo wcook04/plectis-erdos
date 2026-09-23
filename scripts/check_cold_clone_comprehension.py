@@ -1875,9 +1875,26 @@ def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
     index. Skipping when a plan is unavailable would convert that hard failure
     into a silent pass and the spine below would never be checked again.
     """
+    def require_available(packet: dict[str, Any], label: str) -> None:
+        if packet.get("availability") == "available":
+            return
+        index = json.loads(read("docs/lean_dependency_index.json"))
+        atlas = json.loads(read("docs/declaration_atlas.json"))
+        require(
+            False,
+            f"{label} proof plan reports availability "
+            f"{packet.get('availability')!r}; elaborated dependency index "
+            f"source_fingerprint={index.get('source_fingerprint')!r}, "
+            f"current declaration atlas "
+            f"source_fingerprint={atlas.get('source_fingerprint')!r}. "
+            "Run `python3 scripts/build_lean_dependency_index.py --check`; "
+            "if stale, export and commit the index with its exact check receipt "
+            "from a built Lean environment.",
+        )
+
     blocked = proof_plans["blocked_integer_tail"]
     require(blocked["kind"] == "formal_proof_plan", "cold-clone comprehension invariant")
-    require(blocked["availability"] == "available", "cold-clone comprehension invariant")
+    require_available(blocked, "blocked_integer_tail")
     require(blocked["terminal_candidate"]["name"] == "tail_diff_int_of_den_dvd", "cold-clone comprehension invariant")
     require(blocked["plan_status"] == (
         "blocked_by_unmatched_proposition_obligations"
@@ -1895,7 +1912,7 @@ def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
 
     ready = proof_plans["context_ready_curvature"]
     require(ready["kind"] == "formal_proof_plan", "cold-clone comprehension invariant")
-    require(ready["availability"] == "available", "cold-clone comprehension invariant")
+    require_available(ready, "context_ready_curvature")
     require(ready["terminal_candidate"]["name"] == (
         "irrational_totientSeries_of_sharpCurvatureSupply"
     ), "cold-clone comprehension invariant")

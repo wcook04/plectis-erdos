@@ -27,6 +27,7 @@ from run_external_verification import (
     EXPECTED_1049_MISMATCH,
     EXPECTED_MISMATCH,
     is_expected_negative_rejection,
+    runtime_statement_contract,
 )
 import validation_singleflight as singleflight
 
@@ -45,6 +46,15 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_unconditional_ranked_result_remains_direct(self) -> None:
+        candidate = {
+            "selection_status": "represented",
+            "why_not_ranked_first": "An unconditional direct theorem.",
+        }
+        self.assertEqual(builder._ranked_candidate_tier(candidate), "completed")
+        candidate["why_not_ranked_first"] = "A conditional theorem."
+        self.assertEqual(builder._ranked_candidate_tier(candidate), "conditional")
+
     def test_qualification_follows_selection_without_claiming_service_status(self) -> None:
         authority = builder.load_signal_authority()
         original = builder.render_qualification(authority)
@@ -294,6 +304,12 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         selected = [row["wrapper_declaration"] for row in packet["main_results"]]
         self.assertTrue(set(selected) <= set(names))
+
+        _, owner, _, _ = load_owner()
+        receipt_contract = runtime_statement_contract(owner, packet)
+        self.assertEqual(receipt_contract["theorem_names"], names)
+        self.assertEqual(receipt_contract["permitted_axioms"], comparator["permitted_axioms"])
+        self.assertGreater(len(names), len(selected))
 
         formalization = (ROOT / "formalization.yaml").read_text(encoding="utf-8")
         self.assertIn("comparator:\n", formalization)

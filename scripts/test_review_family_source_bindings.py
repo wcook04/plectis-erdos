@@ -70,7 +70,7 @@ FAMILY_BINDINGS = {
             "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt",
             "ErdosProblems.Erdos1041.newtonFlow_scaledValue_hasDerivAt_zero",
         ],
-        "boundary": "does not give a short connecting curve",
+        "boundary": "does not construct a global trajectory or give a short connecting curve",
         "sources": [
             "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
             "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
@@ -90,7 +90,7 @@ FAMILY_BINDINGS = {
             "ErdosProblems.Erdos1041.samePositiveRay_of_real_exp_decay",
             "ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay",
         ],
-        "boundary": "route obstruction, not the global theorem",
+        "boundary": "neither global trajectory existence nor geometric length control",
         "sources": [
             "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
             "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
@@ -112,7 +112,7 @@ FAMILY_BINDINGS = {
             "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
             "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic",
         ],
-        "boundary": "do not provide the missing divisibility bridge",
+        "boundary": "counting input, not an escape producer",
         "sources": [
             "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
             "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
@@ -182,7 +182,7 @@ def test_review_family_declarations_match_current_lean_bytes() -> None:
         sources = expected["sources"]
         assert len(declarations) == len(sources), family_id
         for qualified_name, source in zip(declarations, sources, strict=True):
-            lines = (ROOT / source).read_text(encoding="utf-8").splitlines()
+            lines = (ROOT / "lean" / source).read_text(encoding="utf-8").splitlines()
             short_name = qualified_name.rsplit(".", 1)[-1]
             matches = [
                 index

@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:181730398762819e6aab471d3ddf9b8dfbff9b85090a57e4603d95edf0d5f8ad",
+    "docs/claims.json": "sha256:7201377500126e427fc9ca01bc729acd9afee89c223e46f2e404239eed9be289",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
-    "docs/publication_contract.json": "sha256:f1545c96c5f3108a1e99faaa6709d9f8407bc64c44ae1a5b6751a9be505ccfc1",
+    "docs/problems.json": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
+    "docs/publication_contract.json": "sha256:7023617c558127ebeca4fa0570c29f0a1d522adfed52401d4989d85b48affe16",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:0c20c7a1d1365e76506189f495c5f5e50b05ee8667e4b67e7159c1b7fbf8a3b5",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:659af2151c1b31d032d8dd1a26561aa983a418be9cdad6285720414322c0ce63",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:50220fb4bc8ad5e80a64b841383556d3fc6d8cc50498d049f4df8d0f88560e72",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:2194a8959c61090d7f21f097fb3df02a816a7fff434516273439405f63128c98",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 33,
-      "curated_claim_count": 148,
+      "curated_claim_count": 150,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -366,11 +366,11 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 131,
+        "line": 132,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
-      "statement": "Determine the precise correspondence between the historical curve-length question and the checked total-variation formulation, which ani’s explicit degree-seven example refutes. A Hausdorff-measure comparison is not formalised, and independent human review of historical correspondence is not recorded; the refuted total-variation assertion itself is no longer an open proof obligation.",
+      "statement": "Independently review whether the 1958 curve-length wording matches the exact Formal Conjectures path-image-length statement, whose negation is now Lean-checked using ani's explicit degree-seven polynomial. The checked one-dimensional Hausdorff-measure bound settles that formal statement negatively; the reported small-parameter family is not formalised.",
       "status": "open"
     },
     {
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 58,
+        "line": 61,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 141,
+        "line": 149,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 836,
+        "line": 860,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "growth of repeated denominator factors"
       },
@@ -529,9 +529,9 @@
       "CORPUS_MANIFEST.json",
       "PUBLIC_CORPUS_CHECKPOINT.json"
     ],
-    "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims.",
+    "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
+      "content_digest": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "035c414b25fda09ae0d2e56358b8716d321ebd99",
+      "ref": "168bf6727758f918a430ef056a1c93d3160b53a6",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

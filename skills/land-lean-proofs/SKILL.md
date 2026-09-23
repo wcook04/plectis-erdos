@@ -47,6 +47,11 @@ ledger, or in `docs/paper_lean_docstring_exemptions.json` with a reason.
    `\href{https://github.com/wcook04/plectis-erdos/blob/<commit>/lean/<file>\#L<line>}{\texttt{<name>}}`.
    Remove every name the row no longer binds: the check reports those as
    stale links.
+   When a long-record claim span changes after its concordance was generated,
+   refresh its entry from the ledger with
+   `python3 scripts/refresh_paper_lean_concordance.py --row <row-id> --write`.
+   The same command without `--write` checks that entry. Reassemble the flat
+   long paper afterwards.
 
 4. **Correct the status prose.** Search both papers for "Conditional on",
    "conditional", "Not formalised" and "no Lean statement" near the result,

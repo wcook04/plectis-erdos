@@ -1117,7 +1117,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:fdba1a0980d42632460bcc6f4fa1cfb212a06c2d7c1287b134074d65781d5f3f",
+      "pdf_sha256": "sha256:716fb3ce41869a41e117876adc4cab5c974bb725a83fc1402b9fc533615b28a1",
       "pdf_byte_count": 457557,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -1371,7 +1371,7 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:0ed36a9e695edf14cad59679f0d33652a7333167df969afcbd4167d8c1c7523c",
+      "pdf_sha256": "sha256:192accb2827196bbf6e7e60e47bb97796b6f86a58e3d31b65a35b1faba1ad1ba",
       "pdf_byte_count": 142706,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1698,7 +1698,7 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:46b4945cf7eac486725582787607f0f5562f21ac65682d1d73f076a2a777ac93",
+      "pdf_sha256": "sha256:90f3b1babdee5a0ec682edac0741d2cff2c7964089ab11c6cefe90dda40a930c",
       "pdf_byte_count": 305380,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1730,13 +1730,13 @@
     },
     {
       "paper_id": "erdos-243-reciprocal-tail-rigidity",
-      "title": "Bounded Increments and Rational Reciprocal Sums",
+      "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
       "title_source": "manuscript",
-      "question_this_paper_answers": "If a reciprocal sum is rational and a_{n+1}/a_n^2\u21921, what increment bound forces the Sylvester recurrence, and why does that not settle Erd\u0151s #243?",
+      "question_this_paper_answers": "Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erd\u0151s #243?",
       "subject": "Erd\u0151s #243",
       "subject_kind": "problem",
       "form": "Problem note",
-      "owns": "the problem-specific exposition for Erd\u0151s #243: the centred integer state, negative-part exclusions, conditional theorem, and remaining analytic obligations",
+      "owns": "the problem-specific exposition for Erd\u0151s #243: cubic-rate irrationality under its exact hypothesis, the ordinary index bridge, the bounded-increment recurrence criterion, and the remaining open regime",
       "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #243, which remains open",
       "publication_state": "active",
       "publication_class": "problem_paper",
@@ -1748,13 +1748,13 @@
       "preferred_citation": {
         "author": "Will Cook",
         "year": "2026",
-        "title": "Bounded Increments and Rational Reciprocal Sums",
+        "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
         "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Bounded Increments and Rational Reciprocal Sums. plectis-erdos. CC-BY-4.0.",
+        "text": "Will Cook (2026). Cubic-Rate Irrationality and Reciprocal-Tail Rigidity. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1765,7 +1765,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:1e9a3ab22bf1b3bb60d60d587ce1d17121c39b6a5db79404e0275e5f38d72be6",
+      "source_sha256": "sha256:9a064db20f9f82e223eef246d626b7b22eb5fe1db29a9be11db351c34f7de575",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1775,128 +1775,128 @@
         {
           "level": 1,
           "id": "erdos-243-reciprocal-tail-rigidity",
-          "title": "Bounded Increments and Rational Reciprocal Sums",
+          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
           "line": 1
         },
         {
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction",
-          "line": 13
+          "line": 15
         },
         {
           "level": 1,
           "id": "sec:bounded",
           "title": "Proof under a lower bound on the error",
-          "line": 93
+          "line": 95
         },
         {
           "level": 1,
           "id": "sec:state",
           "title": "The arithmetic ingredients",
-          "line": 125
+          "line": 127
         },
         {
           "level": 2,
           "id": "sec:defect",
           "title": "Error, absorption and descent",
-          "line": 131
+          "line": 133
         },
         {
           "level": 2,
           "id": "sec:barrier",
           "title": "The first-crossing obstruction",
-          "line": 185
+          "line": 187
         },
         {
           "level": 2,
           "id": "reduction-and-stabilisation",
           "title": "Reduction and stabilisation",
-          "line": 227
+          "line": 229
         },
         {
           "level": 1,
           "id": "sec:transfer",
           "title": "Constructing the integers from a reciprocal series",
-          "line": 264
+          "line": 266
         },
         {
           "level": 4,
           "id": "an-example-with-positive-limiting-increments.",
           "title": "An example with positive limiting increments.",
-          "line": 312
+          "line": 314
         },
         {
           "level": 1,
           "id": "sec:mass",
           "title": "Finite total relative increase",
-          "line": 326
+          "line": 328
         },
         {
           "level": 1,
           "id": "sec:lcmrecords",
           "title": "A criterion using new maxima of an LCM numerator",
-          "line": 359
+          "line": 361
         },
         {
           "level": 1,
           "id": "sec:secondaryrate",
-          "title": "Further consequences",
-          "line": 481
+          "title": "Cubic-rate irrationality and further consequences",
+          "line": 483
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining arithmetic estimate",
-          "line": 544
+          "line": 548
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 631
+          "line": 635
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Sources and related methods",
-          "line": 637
+          "line": 641
         },
         {
           "level": 4,
           "id": "recorded-coverage.",
           "title": "Recorded coverage.",
-          "line": 643
+          "line": 647
         },
         {
           "level": 4,
           "id": "earlier-remainder-methods-and-related-problems.",
           "title": "Earlier remainder methods and related problems.",
-          "line": 651
+          "line": 655
         },
         {
           "level": 4,
           "id": "main-criterion-and-arithmetic-lemmas.",
           "title": "Main criterion and arithmetic lemmas.",
-          "line": 657
+          "line": 661
         },
         {
           "level": 4,
           "id": "the-scalar-criterion.",
           "title": "The scalar criterion.",
-          "line": 667
+          "line": 671
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 675
+          "line": 679
         }
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:a55321e15e0eac42633177e6572113ed02b0ff354e18f9d1064a25b76881b22a",
-      "pdf_byte_count": 144821,
+      "pdf_sha256": "sha256:18520d3b03e74e203a93d13addbc8a3224165f6b1b7738a3198789e0f9542bdd",
+      "pdf_byte_count": 147009,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1904,22 +1904,22 @@
           {
             "id": "sec:problem",
             "title": "Introduction",
-            "line": 13
+            "line": 15
+          },
+          {
+            "id": "sec:secondaryrate",
+            "title": "Cubic-rate irrationality and further consequences",
+            "line": 483
           },
           {
             "id": "sec:bounded",
             "title": "Proof under a lower bound on the error",
-            "line": 93
-          },
-          {
-            "id": "sec:barrier",
-            "title": "The first-crossing obstruction",
-            "line": 185
+            "line": 95
           },
           {
             "id": "sec:open",
             "title": "The remaining arithmetic estimate",
-            "line": 544
+            "line": 548
           }
         ],
         "unresolved_count": 0
@@ -1962,7 +1962,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:5cb3f168714dd3d9658a7830be41d213b9493c4bc3046421b40586cc676bc5ea",
+      "source_sha256": "sha256:96efe00f21f23a1f0db034faf6d9076171cbc48520b87c529346889e5f41e0e6",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1991,367 +1991,367 @@
           "level": 4,
           "id": "the-integer-tail.",
           "title": "The integer tail.",
-          "line": 96
+          "line": 107
         },
         {
           "level": 2,
           "id": "reduction-under-the-zero-lower-density-assumption",
           "title": "Reduction under the zero lower-density assumption",
-          "line": 116
+          "line": 127
         },
         {
           "level": 2,
           "id": "a-square-condition-from-three-consecutive-numerators",
           "title": "A square condition from three consecutive numerators",
-          "line": 200
+          "line": 211
         },
         {
           "level": 2,
           "id": "the-square-condition-forces-m12",
           "title": "The square condition forces m=12",
-          "line": 265
+          "line": 278
         },
         {
           "level": 2,
           "id": "long243:sec:modseven",
           "title": "The two remaining cubics fail modulo seven",
-          "line": 353
+          "line": 366
         },
         {
           "level": 2,
           "id": "from-an-asymptotic-ratio-to-an-exact-polynomial",
           "title": "From an asymptotic ratio to an exact polynomial",
-          "line": 412
+          "line": 425
         },
         {
           "level": 1,
           "id": "long243:sec:priorwork",
           "title": "Prior work and formalisation",
-          "line": 514
+          "line": 527
         },
         {
           "level": 4,
           "id": "classical-criteria-and-pseudo-greedy-expansions.",
           "title": "Classical criteria and pseudo-greedy expansions.",
-          "line": 518
+          "line": 531
         },
         {
           "level": 4,
           "id": "results-and-proof-status.",
           "title": "Results and proof status.",
-          "line": 579
+          "line": 592
         },
         {
           "level": 1,
           "id": "long243:sec:state",
           "title": "Integer numerators, denominators and errors",
-          "line": 589
+          "line": 602
         },
         {
           "level": 4,
           "id": "construction-from-the-reciprocal-sum.",
           "title": "Construction from the reciprocal sum.",
-          "line": 641
+          "line": 654
         },
         {
           "level": 1,
           "id": "long243:sec:defect",
           "title": "When a zero error forces the Sylvester recurrence",
-          "line": 682
+          "line": 695
         },
         {
           "level": 2,
           "id": "relations-among-three-consecutive-numerators",
           "title": "Relations among three consecutive numerators",
-          "line": 746
+          "line": 759
         },
         {
           "level": 1,
           "id": "long243:sec:lcmrecords",
           "title": "A criterion using new maxima of an LCM numerator",
-          "line": 883
+          "line": 896
         },
         {
           "level": 4,
           "id": "formalisation.",
           "title": "Formalisation.",
-          "line": 889
+          "line": 902
         },
         {
           "level": 4,
           "id": "integer-coefficients.",
           "title": "Integer coefficients.",
-          "line": 1003
+          "line": 1016
         },
         {
           "level": 1,
           "id": "long243:sec:records",
           "title": "New maxima of reduced numerators",
-          "line": 1022
+          "line": 1035
         },
         {
           "level": 4,
           "id": "fractions-in-lowest-terms.",
           "title": "Fractions in lowest terms.",
-          "line": 1028
+          "line": 1041
         },
         {
           "level": 4,
           "id": "comparison-with-duverneys-reduced-parameters.",
           "title": "Comparison with Duverney\u2019s reduced parameters.",
-          "line": 1067
+          "line": 1080
         },
         {
           "level": 2,
           "id": "how-fast-the-running-maximum-must-increase",
           "title": "How fast the running maximum must increase",
-          "line": 1129
+          "line": 1142
         },
         {
           "level": 4,
           "id": "formalisation.-1",
           "title": "Formalisation.",
-          "line": 1225
+          "line": 1238
         },
         {
           "level": 2,
           "id": "bounds-that-allow-for-cancellation-and-earlier-decreases",
           "title": "Bounds that allow for cancellation and earlier decreases",
-          "line": 1233
+          "line": 1246
         },
         {
           "level": 2,
           "id": "counting-jumps-before-a-prime-power-can-be-lost",
           "title": "Counting jumps before a prime power can be lost",
-          "line": 1325
+          "line": 1338
         },
         {
           "level": 4,
           "id": "formalisation.-2",
           "title": "Formalisation.",
-          "line": 1381
+          "line": 1394
         },
         {
           "level": 2,
           "id": "bounds-on-the-error-and-on-the-original-sequence",
           "title": "Bounds on the error and on the original sequence",
-          "line": 1387
+          "line": 1400
         },
         {
           "level": 4,
           "id": "formalisation.-3",
           "title": "Formalisation.",
-          "line": 1412
+          "line": 1425
         },
         {
           "level": 4,
           "id": "attribution.",
           "title": "Attribution.",
-          "line": 1466
+          "line": 1479
         },
         {
           "level": 2,
           "id": "signs-of-the-error-and-of-the-growth-ratio",
           "title": "Signs of the error and of the growth ratio",
-          "line": 1522
+          "line": 1535
         },
         {
           "level": 4,
           "id": "a-comparison-with-mathcal-b-free-integers.",
           "title": "A comparison with \\mathcal B-free integers.",
-          "line": 1559
+          "line": 1572
         },
         {
           "level": 4,
           "id": "conditions-on-a-possible-counterexample.",
           "title": "Conditions on a possible counterexample.",
-          "line": 1601
+          "line": 1614
         },
         {
           "level": 1,
           "id": "long243:sec:descent",
           "title": "Descent when the error is nonnegative",
-          "line": 1612
+          "line": 1625
         },
         {
           "level": 1,
           "id": "long243:sec:constant",
           "title": "When the negative error is constant",
-          "line": 1636
+          "line": 1649
         },
         {
           "level": 1,
           "id": "long243:sec:periodic",
           "title": "When the negative error is periodic",
-          "line": 1687
+          "line": 1700
         },
         {
           "level": 1,
           "id": "long243:sec:barrier",
           "title": "Bounded increases and coprimality to earlier moduli",
-          "line": 1741
+          "line": 1754
         },
         {
           "level": 1,
           "id": "long243:sec:bounded",
           "title": "A lower bound on the error forces eventual zero",
-          "line": 1870
+          "line": 1883
         },
         {
           "level": 1,
           "id": "long243:sec:mass",
           "title": "Finite total relative increase",
-          "line": 1928
+          "line": 1941
         },
         {
           "level": 1,
           "id": "long243:sec:open",
           "title": "Complements and further questions",
-          "line": 1986
+          "line": 1999
         },
         {
           "level": 4,
           "id": "a-scalar-profile-need-not-satisfy-the-recurrences.",
           "title": "A scalar profile need not satisfy the recurrences.",
-          "line": 2046
+          "line": 2059
         },
         {
           "level": 2,
           "id": "growth-of-the-factors-repeated-in-the-denominator",
           "title": "Growth of the factors repeated in the denominator",
-          "line": 2052
+          "line": 2065
         },
         {
           "level": 2,
           "id": "cancellation-before-a-numerator-regains-its-former-value",
           "title": "Cancellation before a numerator regains its former value",
-          "line": 2062
+          "line": 2075
         },
         {
           "level": 2,
           "id": "the-direct-analytic-question",
           "title": "The direct analytic question",
-          "line": 2146
+          "line": 2159
         },
         {
           "level": 2,
           "id": "what-changes-when-upward-increments-are-not-bounded",
           "title": "What changes when upward increments are not bounded",
-          "line": 2167
+          "line": 2180
         },
         {
           "level": 2,
           "id": "formalisation-targets",
           "title": "Formalisation targets",
-          "line": 2236
+          "line": 2249
         },
         {
           "level": 4,
           "id": "erd\u0151sstraus.",
           "title": "Erd\u0151s\u2013Straus.",
-          "line": 2240
+          "line": 2253
         },
         {
           "level": 4,
           "id": "duverney.",
           "title": "Duverney.",
-          "line": 2246
+          "line": 2259
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 2252
+          "line": 2265
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 2256
+          "line": 2269
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 2264
+          "line": 2277
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 2270
+          "line": 2283
         },
         {
           "level": 1,
           "id": "long243:app:index",
           "title": "Guide to the formal sources",
-          "line": 2276
+          "line": 2289
         },
         {
           "level": 2,
           "id": "long243:sec:coverage",
           "title": "Formalisation coverage and remaining dependencies",
-          "line": 2282
+          "line": 2295
         },
         {
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 2294
+          "line": 2309
         },
         {
           "level": 1,
           "id": "long243:app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 2404
+          "line": 2419
         },
         {
           "level": 1,
           "id": "sec:erdos-243-complete-family-map",
           "title": "Result map and proof dependencies",
-          "line": 2436
+          "line": 2451
         },
         {
           "level": 4,
           "id": "bounded-upward-increments.",
           "title": "Bounded upward increments.",
-          "line": 2442
+          "line": 2457
         },
         {
           "level": 4,
           "id": "a-convergent-sum-of-relative-increases.",
           "title": "A convergent sum of relative increases.",
-          "line": 2448
+          "line": 2463
         },
         {
           "level": 4,
           "id": "new-maxima-and-prime-power-persistence.",
           "title": "New maxima and prime-power persistence.",
-          "line": 2454
+          "line": 2469
         },
         {
           "level": 4,
           "id": "cubic-rate.",
           "title": "Cubic rate.",
-          "line": 2460
+          "line": 2475
         },
         {
           "level": 4,
           "id": "static-barriers.",
           "title": "Static barriers.",
-          "line": 2466
+          "line": 2481
         },
         {
           "level": 4,
           "id": "what-remains.",
           "title": "What remains.",
-          "line": 2472
+          "line": 2487
         }
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:bfc39464a1952a3c0dead923231b40d7a8a681d4935cc1a1918ae698225afca3",
-      "pdf_byte_count": 401761,
+      "pdf_sha256": "sha256:98c5c0bb310892d222ae08e910e01239709e109cbe2d39eaad9329b4c2ec67c9",
+      "pdf_byte_count": 405928,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2364,17 +2364,17 @@
           {
             "id": "long243:sec:bounded",
             "title": "A lower bound on the error forces eventual zero",
-            "line": 1870
+            "line": 1883
           },
           {
             "id": "long243:sec:open",
             "title": "Complements and further questions",
-            "line": 1986
+            "line": 1999
           },
           {
             "id": "sec:erdos-243-complete-family-map",
             "title": "Result map and proof dependencies",
-            "line": 2436
+            "line": 2451
           }
         ],
         "unresolved_count": 0
@@ -2539,8 +2539,8 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:2cc17b37c97ec5f0a778bdbfd771a10d6bb977c258fd866d171aa70ff25897ea",
-      "pdf_byte_count": 144917,
+      "pdf_sha256": "sha256:170ef6a6ee76a969a6ee49ab94c887692f5eeb421487358da94456bd109fbdc7",
+      "pdf_byte_count": 144915,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3594,7 +3594,7 @@
       ],
       "citations_rendered": 48,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:665563c429de8144b47ceac8adbcccc36ab92a4e15733c39fd512f663220bd7b",
+      "pdf_sha256": "sha256:bfa02c1a8c1665a2401ddfe3ade7ebf70254115bdac09c712c0ba604ac050005",
       "pdf_byte_count": 897354,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3749,7 +3749,7 @@
       ],
       "citations_rendered": 36,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:2acf5dd6cdb7c847ba4ad6c8e1bbb75b8264dd6a883e347dad98cf299c4fa85d",
+      "pdf_sha256": "sha256:fa87b8736685085583063b5ae6bcb7162b6fa171440b998800e0d271616768b4",
       "pdf_byte_count": 125991,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4222,8 +4222,8 @@
       ],
       "citations_rendered": 66,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:9bc5520587d901778f0ded2a9eb21cece20fc964b2ed6a3e573851f076485feb",
-      "pdf_byte_count": 311370,
+      "pdf_sha256": "sha256:5acca88f1d5f55828a5b32f9544aa02efe6a192498d350af8377e2b6583d1c09",
+      "pdf_byte_count": 311372,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4527,8 +4527,8 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:7c3a9f0e131f3506b297b06c124e238518c29cf224f97f6a12be145f81b09691",
-      "pdf_byte_count": 176943,
+      "pdf_sha256": "sha256:b2148523e8acf40ce7573c88278cb11f3589b079451b42160461f4f2db9f2e9b",
+      "pdf_byte_count": 176941,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5600,7 +5600,7 @@
       ],
       "citations_rendered": 43,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:c61671bd3187b28574842a88556cf7475476f40bec6adb92d78aeee5a0d9e071",
+      "pdf_sha256": "sha256:5cedb510c5fa7d1d56516b86d8cc775279b3fa09a7b454d4d7d304aee348c8b5",
       "pdf_byte_count": 936901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -5953,8 +5953,8 @@
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:e788a73f1123502118991cad781d5843bf0cfe564e1f1441448fe1af7433309d",
-      "pdf_byte_count": 322660,
+      "pdf_sha256": "sha256:bacdc3b07ac45b639b722b96b97ab9e3ede2a15b80f056fbe9ae4111af150eb6",
+      "pdf_byte_count": 322659,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6126,7 +6126,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:26a71ee2f71f1e85be4f58631ab92b8b7c657e0a9e8c3227eafcf3d6154e8570",
+      "pdf_sha256": "sha256:c24247fe42cbe0a5252ef52a2260b55faf842a28750dbda7befad8031d43a46b",
       "pdf_byte_count": 122901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6193,7 +6193,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:a5a6f75b996d2d8b6751e064414516d42c6ded18ac8c0818431bfd715fab1744",
+      "source_sha256": "sha256:c10b43eed3c2954e3e0c878f2868b3d5c876fa1da2abc15f49d4a55a52bcd5ef",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -6437,8 +6437,8 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:c9a872c5cf064d34b16a2110b3a95a279db06bb085d984323e72e4aab074ed83",
-      "pdf_byte_count": 206036,
+      "pdf_sha256": "sha256:7aef50a699c91cd097ca089ad29e2cc3e322a9fa5fc2403f82e56793c52e0835",
+      "pdf_byte_count": 206926,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6504,7 +6504,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
       "local_source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "source_sha256": "sha256:91cac94ec9296e643a61bd89580a294c44fbae5cf17afd6975682a3b2522f76b",
+      "source_sha256": "sha256:bdddc472edcff62dd91155af8353f6fc8451dce625f96c7edea057cf71bbc576",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -6911,25 +6911,25 @@
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 2418
+          "line": 2420
         },
         {
           "level": 1,
           "id": "sec:record-circle-slice",
           "title": "Numerical estimates for the packing inequality",
-          "line": 2456
+          "line": 2458
         },
         {
           "level": 1,
           "id": "sec:erdos-1041-complete-family-map",
           "title": "Guide to the results",
-          "line": 2508
+          "line": 2510
         }
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:ab0fdf566fd5467e7e50789c13f41b18e0917181665dc108832661078077b8f7",
-      "pdf_byte_count": 453689,
+      "pdf_sha256": "sha256:ca7d8555f201ff714b46cb873edec1bd4dd672895935e6d7e5a60bc6a1d2e4f8",
+      "pdf_byte_count": 454851,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6952,7 +6952,7 @@
           {
             "id": "sec:erdos-1041-complete-family-map",
             "title": "Guide to the results",
-            "line": 2508
+            "line": 2510
           }
         ],
         "unresolved_count": 0
@@ -6962,11 +6962,11 @@
       "paper_id": "erdos-1049-rational-base-lambert",
       "title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order",
       "title_source": "manuscript",
-      "question_this_paper_answers": "For Erd\u0151s #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?",
+      "question_this_paper_answers": "For Erd\u0151s #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?",
       "subject": "Erd\u0151s #1049",
       "subject_kind": "problem",
       "form": "Problem note",
-      "owns": "the problem-specific exposition for Erd\u0151s #1049: the ordinary rational-base irrationality theorem and uniform exponent bound for the (31/4)^r family, the exact normalised Hankel order and leading coefficient, the content and endpoint obstructions, and the remaining approximant and remainder construction at 3/2",
+      "owns": "the problem-specific exposition for Erd\u0151s #1049: the Zudilin contour-region irrationality and exponent bounds, all-rank normalized Hankel formulas, the finite rank-eight coefficient pencil, and the remaining obstruction at 3/2",
       "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #1049, which remains open",
       "publication_state": "active",
       "publication_class": "problem_paper",
@@ -6995,7 +6995,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:6b9be4257d56c1cca8d2879cd762cc063e1646dccf2c7773b2187240f7f61a6d",
+      "source_sha256": "sha256:330172cff7ad691440144905e20a9773fac8ad3d6f2c62460ee4e39284b47c19",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7195,8 +7195,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:8d0f47cc2f70c1dd7de4cd619d48ea72a023fc1f2919fa3a667882950e2477cd",
-      "pdf_byte_count": 164536,
+      "pdf_sha256": "sha256:89ee544ebc7db75fe2596ea2a55ce0c6aec794fb3b63d97d92697bf9f6d99507",
+      "pdf_byte_count": 164882,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7229,7 +7229,7 @@
       "paper_id": "erdos1049-rational-base-lambert-reasoning-surface",
       "title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record",
       "title_source": "manuscript",
-      "question_this_paper_answers": "What all-rank Zudilin specialisations and Hankel formulae are proved at rational bases, and which clearing arguments still fail at 3/2?",
+      "question_this_paper_answers": "Which rational-base and all-rank Hankel results are proved, what does the Lean-checked coefficient pencil establish through rank eight, and why does 3/2 remain open?",
       "subject": "Erd\u0151s #1049",
       "subject_kind": "problem",
       "form": "Reasoning surface",
@@ -7262,7 +7262,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
       "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-      "source_sha256": "sha256:f7cb4e621d9720c9cb72b0f9b1a4783662a10bd3dc23fbcd94a219f362d35c47",
+      "source_sha256": "sha256:a3aadb660376ef5a79703a227bf5b74c47e4af66429c6defdab7bdb0b380529e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7549,103 +7549,103 @@
           "level": 2,
           "id": "estimating-the-divided-remainder",
           "title": "Estimating the divided remainder",
-          "line": 2352
+          "line": 2354
         },
         {
           "level": 2,
           "id": "a-restriction-on-mahler-functional-equations",
           "title": "A restriction on Mahler functional equations",
-          "line": 2374
+          "line": 2376
         },
         {
           "level": 2,
           "id": "a-limitation-of-the-rectangular-exponent-model",
           "title": "A limitation of the rectangular exponent model",
-          "line": 2417
+          "line": 2419
         },
         {
           "level": 1,
           "id": "related-work-and-comparison-of-constructions",
           "title": "Related work and comparison of constructions",
-          "line": 2493
+          "line": 2495
         },
         {
           "level": 4,
           "id": "functional-nonrationality-is-not-value-irrationality.",
           "title": "Functional nonrationality is not value irrationality.",
-          "line": 2499
+          "line": 2501
         },
         {
           "level": 4,
           "id": "pad\u00e9-and-orthogonal-polynomial-constructions.",
           "title": "Pad\u00e9 and orthogonal-polynomial constructions.",
-          "line": 2509
+          "line": 2511
         },
         {
           "level": 4,
           "id": "related-series-and-their-different-recurrences.",
           "title": "Related series and their different recurrences.",
-          "line": 2515
+          "line": 2517
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 2545
+          "line": 2547
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 2549
+          "line": 2551
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 2555
+          "line": 2557
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 2561
+          "line": 2563
         },
         {
           "level": 1,
           "id": "long1049:app:index",
           "title": "Guide to the formal sources",
-          "line": 2567
+          "line": 2569
         },
         {
           "level": 2,
           "id": "long1049:sec:coverage",
           "title": "Formalisation coverage and remaining dependencies",
-          "line": 2571
+          "line": 2573
         },
         {
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 2585
+          "line": 2587
         },
         {
           "level": 4,
           "id": "the-lambert-identity-and-the-integer-case.",
           "title": "The Lambert identity and the integer case.",
-          "line": 2653
+          "line": 2655
         },
         {
           "level": 4,
           "id": "the-hypotheses-in-the-modular-row-argument.",
           "title": "The hypotheses in the modular row argument.",
-          "line": 2667
+          "line": 2669
         },
         {
           "level": 1,
           "id": "sec:erdos-1049-complete-family-map",
           "title": "Publication scope",
-          "line": 2673
+          "line": 2675
         }
       ],
       "citations_rendered": 98,
@@ -7654,8 +7654,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:952c0c2650ddb412e152cc29441a144ebd67c2f96ee39dbdefe06d8c4e51d714",
-      "pdf_byte_count": 441595,
+      "pdf_sha256": "sha256:ee42f2c7afd8fdf0253a00664991973fe9730092092dcca5754b3297b96c3700",
+      "pdf_byte_count": 441705,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7671,6 +7671,11 @@
             "line": 818
           },
           {
+            "id": "a-finite-spectral-consequence.",
+            "title": "A finite spectral consequence.",
+            "line": 1339
+          },
+          {
             "id": "long1049:sec:open",
             "title": "Complements and further questions",
             "line": 2140
@@ -7678,7 +7683,7 @@
           {
             "id": "sec:erdos-1049-complete-family-map",
             "title": "Publication scope",
-            "line": 2673
+            "line": 2675
           }
         ],
         "unresolved_count": 0
@@ -7939,7 +7944,7 @@
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:73afa662ed72690ac9200cfc83f67ccf509fbe00af6f4b8f93a9821216ea03cf",
+      "pdf_sha256": "sha256:dc0b2dc3a22f6b235d8e9a677cc6be9c60afecbc00523fa4014ef015659a3aa8",
       "pdf_byte_count": 198888,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8006,7 +8011,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:659af2151c1b31d032d8dd1a26561aa983a418be9cdad6285720414322c0ce63",
+      "source_sha256": "sha256:2194a8959c61090d7f21f097fb3df02a816a7fff434516273439405f63128c98",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8203,115 +8208,115 @@
           "level": 1,
           "id": "sec:trust",
           "title": "What can be trusted",
-          "line": 438
+          "line": 439
         },
         {
           "level": 1,
           "id": "sec:scaling",
           "title": "Scaling from one clone to a search network",
-          "line": 477
+          "line": 478
         },
         {
           "level": 2,
           "id": "clone-attach-compute-and-mine-bounded-results",
           "title": "Clone, attach compute, and mine bounded results",
-          "line": 485
+          "line": 486
         },
         {
           "level": 2,
           "id": "the-no-go-graph-as-a-new-mathematical-object",
           "title": "The no-go graph as a new mathematical object",
-          "line": 511
+          "line": 512
         },
         {
           "level": 2,
           "id": "an-experimental-agenda",
           "title": "An experimental agenda",
-          "line": 521
+          "line": 522
         },
         {
           "level": 2,
           "id": "sec:admissible-constructions",
           "title": "Executable construction choices",
-          "line": 527
+          "line": 528
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to other approaches",
-          "line": 542
+          "line": 543
         },
         {
           "level": 4,
           "id": "theorem-proving-agents.",
           "title": "Theorem-proving agents.",
-          "line": 546
+          "line": 547
         },
         {
           "level": 4,
           "id": "open-formalisation-platforms.",
           "title": "Open formalisation platforms.",
-          "line": 552
+          "line": 553
         },
         {
           "level": 4,
           "id": "semi-autonomous-discovery-studies.",
           "title": "Semi-autonomous discovery studies.",
-          "line": 558
+          "line": 559
         },
         {
           "level": 4,
           "id": "graphs-and-checked-exposition.",
           "title": "Graphs and checked exposition.",
-          "line": 564
+          "line": 565
         },
         {
           "level": 4,
           "id": "auditable-scientific-agents.",
           "title": "Auditable scientific agents.",
-          "line": 574
+          "line": 575
         },
         {
           "level": 4,
           "id": "contribution-and-limits.",
           "title": "Contribution and limits.",
-          "line": 582
+          "line": 583
         },
         {
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 588
+          "line": 589
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 594
+          "line": 595
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 606
+          "line": 607
         },
         {
           "level": 4,
           "id": "public-first-contact.",
           "title": "Public first contact.",
-          "line": 610
+          "line": 611
         },
         {
           "level": 4,
           "id": "dated-navigation-counts.",
           "title": "Dated navigation counts.",
-          "line": 621
+          "line": 622
         }
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:0c20c7a1d1365e76506189f495c5f5e50b05ee8667e4b67e7159c1b7fbf8a3b5",
-      "pdf_byte_count": 158765,
+      "pdf_sha256": "sha256:50220fb4bc8ad5e80a64b841383556d3fc6d8cc50498d049f4df8d0f88560e72",
+      "pdf_byte_count": 160048,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8339,7 +8344,7 @@
           {
             "id": "sec:trust",
             "title": "What can be trusted",
-            "line": 438
+            "line": 439
           }
         ],
         "unresolved_count": 0
@@ -8382,7 +8387,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:2fab2d8e9ca755301df758f5a96b57a9ac0b1a5658ce0f574fa419f7ad9e08d9",
+      "source_sha256": "sha256:b1ed4142bfc78343481c3560c9e5661a93b62e4ca12cef9712e9180d1a5aa680",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8512,8 +8517,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:de3f11c198838bdf7f7d14a9c6741f9ed60a1fa10c3a773d4979305997b1d9a9",
-      "pdf_byte_count": 88175,
+      "pdf_sha256": "sha256:18853ae4a992af42a67465513113f6b659b4b321a6b5032e6f26b3c4ba504ea0",
+      "pdf_byte_count": 88216,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8570,10 +8575,10 @@
         "title": "From Spare Compute to Cumulative Mathematics",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
+        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -8584,11 +8589,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:3548d9c753a2ccf2d61166fee710d72a50fc4df86937a96f40694df0c79e0f12",
+      "source_sha256": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/open-source-mathematics-strategy.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 32,
       "sections": [
         {
@@ -8607,187 +8612,187 @@
           "level": 2,
           "id": "two-coupled-goals-not-one-endless-agent",
           "title": "Two coupled goals, not one endless agent",
-          "line": 49
+          "line": 51
         },
         {
           "level": 2,
           "id": "what-one-clone-lets-a-contributor-do",
           "title": "What one clone lets a contributor do",
-          "line": 71
+          "line": 73
         },
         {
           "level": 1,
           "id": "sec:model",
           "title": "A production model for mathematical progress",
-          "line": 82
+          "line": 84
         },
         {
           "level": 1,
           "id": "sec:math",
           "title": "Why begin with hard mathematics",
-          "line": 126
+          "line": 128
         },
         {
           "level": 1,
           "id": "sec:object",
           "title": "The public research object",
-          "line": 143
+          "line": 147
         },
         {
           "level": 1,
           "id": "sec:protocol",
           "title": "The contribution protocol",
-          "line": 164
+          "line": 168
         },
         {
           "level": 1,
           "id": "sec:attention",
           "title": "From an agent claim to mathematical attention",
-          "line": 206
+          "line": 210
         },
         {
           "level": 1,
           "id": "sec:credit",
           "title": "Progress, provenance, and credit",
-          "line": 234
+          "line": 238
         },
         {
           "level": 2,
           "id": "record-now-trace-consequences-later",
           "title": "Record now, trace consequences later",
-          "line": 274
+          "line": 278
         },
         {
           "level": 1,
           "id": "sec:security",
           "title": "Distributed compute without distributed authority",
-          "line": 286
+          "line": 290
         },
         {
           "level": 1,
           "id": "sec:prior",
           "title": "Precedents and the missing composition",
-          "line": 302
+          "line": 306
         },
         {
           "level": 4,
           "id": "distributed-compute.",
           "title": "Distributed compute.",
-          "line": 308
+          "line": 312
         },
         {
           "level": 4,
           "id": "distributed-mathematical-insight.",
           "title": "Distributed mathematical insight.",
-          "line": 314
+          "line": 318
         },
         {
           "level": 4,
           "id": "distributed-formalisation.",
           "title": "Distributed formalisation.",
-          "line": 320
+          "line": 324
         },
         {
           "level": 4,
           "id": "multi-agent-formal-research.",
           "title": "Multi-agent formal research.",
-          "line": 326
+          "line": 330
         },
         {
           "level": 4,
           "id": "individual-research-practice.",
           "title": "Individual research practice.",
-          "line": 332
+          "line": 336
         },
         {
           "level": 4,
           "id": "open-agent-platforms.",
           "title": "Open agent platforms.",
-          "line": 338
+          "line": 342
         },
         {
           "level": 4,
           "id": "semi-autonomous-discovery-on-the-erd\u0151s-problems.",
           "title": "Semi-autonomous discovery on the Erd\u0151s problems.",
-          "line": 346
+          "line": 350
         },
         {
           "level": 4,
           "id": "proof-abundance.",
           "title": "Proof abundance.",
-          "line": 354
+          "line": 358
         },
         {
           "level": 1,
           "id": "sec:add-problem",
           "title": "Adding another problem world",
-          "line": 362
+          "line": 366
         },
         {
           "level": 1,
           "id": "sec:growth",
           "title": "Participation and growth",
-          "line": 380
+          "line": 384
         },
         {
           "level": 1,
           "id": "sec:evaluation",
           "title": "Evaluation",
-          "line": 402
+          "line": 406
         },
         {
           "level": 1,
           "id": "sec:learning",
           "title": "Learning from every run",
-          "line": 436
+          "line": 440
         },
         {
           "level": 2,
           "id": "sec:local-to-general",
           "title": "The local-to-general track",
-          "line": 478
+          "line": 482
         },
         {
           "level": 1,
           "id": "sec:science",
           "title": "A bounded transfer hypothesis beyond mathematics",
-          "line": 513
+          "line": 517
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and governance",
-          "line": 523
+          "line": 527
         },
         {
           "level": 1,
           "id": "sec:execution",
           "title": "Execution order",
-          "line": 547
+          "line": 551
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 569
+          "line": 573
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 579
+          "line": 583
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 615
+          "line": 619
         }
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:5bd4c823fe8f329f89b564ca4d852862142759699dc2bb20d1452863a8b494c2",
-      "pdf_byte_count": 149359,
+      "pdf_sha256": "sha256:6d23ee9c5ab52aae71c90384a3d96d5e587ba140a9f090bca51813c2900594a3",
+      "pdf_byte_count": 155197,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8800,22 +8805,22 @@
           {
             "id": "sec:protocol",
             "title": "The contribution protocol",
-            "line": 164
+            "line": 168
           },
           {
             "id": "sec:attention",
             "title": "From an agent claim to mathematical attention",
-            "line": 206
+            "line": 210
           },
           {
             "id": "sec:local-to-general",
             "title": "The local-to-general track",
-            "line": 478
+            "line": 482
           },
           {
             "id": "sec:limits",
             "title": "Limits and governance",
-            "line": 523
+            "line": 527
           }
         ],
         "unresolved_count": 0

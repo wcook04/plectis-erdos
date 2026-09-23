@@ -1189,6 +1189,93 @@ def check_architecture_frontier_round_trip() -> None:
         assert any("does not match" in error for error in rejected["errors"])
 
 
+def check_source_snapshot_detached_recipient() -> None:
+    """Recover the exact proposed tree without giving the recipient its commit."""
+    with tempfile.TemporaryDirectory(prefix="continue-source-recovery-") as temporary:
+        temp = Path(temporary)
+        author = temp / "author"
+        recipient = temp / "recipient"
+        author.mkdir()
+
+        def git(repo: Path, *args: str) -> str:
+            completed = subprocess.run(
+                ["git", *args], cwd=repo, capture_output=True, text=True,
+                check=False, env=continue_research.git_environment(), timeout=30,
+            )
+            require(completed.returncode == 0, (args, completed.stderr))
+            return completed.stdout.strip()
+
+        git(author, "init", "-q")
+        git(author, "config", "user.name", "Return Fixture")
+        git(author, "config", "user.email", "return-fixture@example.invalid")
+        (author / "a.txt").write_text("before\n", encoding="utf-8")
+        (author / "b.txt").write_text("delete me\n", encoding="utf-8")
+        git(author, "add", "a.txt", "b.txt")
+        git(author, "commit", "-qm", "starting tree")
+        starting = git(author, "rev-parse", "HEAD")
+        git(temp, "clone", "-q", "--no-local", str(author), str(recipient))
+        require(git(recipient, "rev-parse", "HEAD") == starting, "recipient lost starting commit")
+
+        (author / "a.txt").write_text("after\n", encoding="utf-8")
+        (author / "b.txt").unlink()
+        (author / "c.txt").write_text("new file\n", encoding="utf-8")
+        git(author, "add", "-A")
+        git(author, "commit", "-qm", "bounded return")
+        proposed = git(author, "rev-parse", "HEAD")
+        missing = subprocess.run(
+            ["git", "cat-file", "-e", f"{proposed}^{{commit}}"], cwd=recipient,
+            capture_output=True, check=False, env=continue_research.git_environment(), timeout=30,
+        )
+        require(missing.returncode != 0, "recipient already had the proposed commit")
+
+        returned = {"repository": {
+            "starting_commit": starting, "proposed_commit": proposed,
+            "changed_paths": ["a.txt", "b.txt", "c.txt"],
+        }}
+        files, artifact = continue_research.source_artifact_files(returned, author)
+        require(artifact["coverage"] == "exact_proposed_git_diff", artifact)
+        require({entry["path"] for entry in artifact["entries"]} == set(returned["repository"]["changed_paths"]), artifact)
+        for entry in artifact["entries"]:
+            target = recipient / entry["path"]
+            if entry["state"] == "deleted":
+                target.unlink()
+            else:
+                data = files[entry["package_path"]]
+                require(hashlib.sha256(data).hexdigest() == entry["sha256"], entry)
+                target.write_bytes(data)
+                target.chmod(0o755 if entry["mode"] == "100755" else 0o644)
+        git(recipient, "add", "-A")
+        require(
+            git(recipient, "write-tree") == git(author, "rev-parse", f"{proposed}^{{tree}}"),
+            "source snapshot did not reproduce the proposed tree",
+        )
+        omitted = json.loads(json.dumps(returned))
+        omitted["repository"]["changed_paths"].remove("c.txt")
+        try:
+            continue_research.source_artifact_files(omitted, author)
+        except SystemExit as exc:
+            require("omitted=['c.txt']" in str(exc), exc)
+        else:
+            raise AssertionError("package accepted a changed file omitted from the return")
+
+        uncommitted = json.loads(json.dumps(returned))
+        uncommitted["repository"].update(
+            starting_commit=proposed, proposed_commit=None, changed_paths=["a.txt"]
+        )
+        (author / "a.txt").write_text("working tree edit\n", encoding="utf-8")
+        (author / "unlisted.txt").write_text("untracked edit\n", encoding="utf-8")
+        try:
+            continue_research.source_artifact_files(uncommitted, author)
+        except SystemExit as exc:
+            require("unlisted.txt" in str(exc), exc)
+        else:
+            raise AssertionError("clean-start package omitted an untracked changed file")
+        _, limited = continue_research.source_artifact_files(
+            uncommitted, author, dirty_at_start=True
+        )
+        require(limited["omission_check"] == "unavailable_preexisting_dirt", limited)
+
+
 def main() -> int:
     require(
         continue_research.PROBLEMS is continue_research.route_memory_receipt.ROSTER,
@@ -1210,6 +1297,7 @@ def main() -> int:
     check_repository_origin_override()
     check_subject_frontier_round_trip()
     check_architecture_frontier_round_trip()
+    check_source_snapshot_detached_recipient()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
     ) == "https://github.com/wcook04/plectis-lean-erdos249-257"
@@ -1543,6 +1631,13 @@ def main() -> int:
             "accepted_commit": returned["repository"]["accepted_commit"],
             "changed_paths": returned["repository"]["changed_paths"],
         }
+        source_artifact = package_manifest["source_artifact"]
+        assert source_artifact["schema"] == continue_research.SOURCE_ARTIFACT_SCHEMA
+        assert source_artifact["coverage"] == "declared_worktree_snapshot"
+        assert {row["path"] for row in source_artifact["entries"]} == set(returned["repository"]["changed_paths"])
+        for row in source_artifact["entries"]:
+            if row["state"] == "present":
+                assert (package / row["package_path"]).read_bytes() == (ROOT / row["path"]).read_bytes()
         assert return_index["result"] == {
             "class": returned["result"]["class"],
             "claim_ceiling": returned["result"]["claim_ceiling"],
@@ -1571,6 +1666,7 @@ def main() -> int:
         assert '"$CHECKOUT/scripts/validate_research_return.py"' in repository_validation["command"]
         assert '"$PACKAGE_DIR/return.json"' in repository_validation["command"]
         assert '"$PACKAGE_DIR/route-memory.json"' in repository_validation["command"]
+        assert "source_artifact.entries" in validation["source_recovery"]
         assert "pull_request_receipt_path" not in package_manifest["github_intake"]
         assert package_manifest["public_guidance"] == {
             "continuation_guide": "docs/agents/AGENT_WORKBENCH.md",

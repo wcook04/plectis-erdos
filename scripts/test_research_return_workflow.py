@@ -77,6 +77,8 @@ REQUIRED_COMMANDS = (
     "python3 -O scripts/test_research_return_workflow.py",
     "python3 scripts/test_contribution_entry.py",
     "python3 -O scripts/test_contribution_entry.py",
+    "python3 scripts/test_research_return_intake.py",
+    "python3 -O scripts/test_research_return_intake.py",
     "python3 scripts/test_research_contribution_recognition.py",
     "python3 -O scripts/test_research_contribution_recognition.py",
     "python3 scripts/check_research_contribution_recognition.py",
@@ -175,20 +177,35 @@ def workflow_errors(text: str) -> list[str]:
         errors.append("workflow must reject transient return artifacts on main")
     if "github.event_name == 'pull_request'" not in text:
         errors.append("return.json validation must remain pull-request scoped")
+    if text.count("python3 scripts/check_research_return_intake.py") != 1:
+        errors.append("pull-request intake must select track-specific route-memory validation exactly once")
+    for path in ("scripts/check_research_return_intake.py", "scripts/test_research_return_intake.py"):
+        if text.count(f'      - "{path}"') != 2:
+            errors.append(f"workflow must watch track-specific intake changes on pull requests and pushes: {path}")
     return errors
 
 
 def issue_form_errors(text: str) -> list[str]:
     """Require public intake to carry machine-readable, reviewable evidence."""
     errors: list[str] = []
+    fields = {
+        match.group(1): match.group(0)
+        for match in re.finditer(
+            r"(?ms)^  - type: [^\n]+\n    id: ([a-z_]+)\n.*?(?=^  - type: |\Z)",
+            text,
+        )
+    }
     required_markers = (
+        "research_progress.yml",
         "id: return_json",
         "render: json",
         "scripts/validate_research_return.py",
         "--require-submitted --check-git",
         "id: route_memory_json",
         "--require-route-memory-receipt",
+        "id: frontier_route",
         "id: formal_navigation",
+        "id: source_artifact",
         "id: correction_lineage",
         "id: public_safety",
         "id: acceptance_boundary",
@@ -200,6 +217,41 @@ def issue_form_errors(text: str) -> list[str]:
         errors.append("issue form must have exactly one machine-readable return field")
     if text.count("    id: route_memory_json") != 1:
         errors.append("issue form must have exactly one route-memory field")
+    route_memory = fields.get("route_memory_json", "")
+    if "required: false" not in route_memory:
+        errors.append("route-memory field must be optional for architecture returns")
+    if "required for a mathematical problem or subject" not in route_memory.lower():
+        errors.append("route-memory field lost mathematical-track requirement")
+    if "architecture return" not in route_memory.lower():
+        errors.append("route-memory field lost architecture absence guidance")
+    return_json = fields.get("return_json", "")
+    for marker in (
+        "--require-submitted --check-git",
+        "--require-complete-proposed-diff",
+        "Architecture packages do not have route-memory.json",
+    ):
+        if marker not in return_json:
+            errors.append(f"return JSON field lost track-specific validation: {marker}")
+    frontier = fields.get("frontier_route", "")
+    for marker in ("numbered problem", "subject", "architecture", "do not assign a fictional"):
+        if marker not in frontier:
+            errors.append(f"frontier field lost a supported track: {marker}")
+    if "    id: problem_route" in text:
+        errors.append("issue form still requires a fictional problem route")
+    formal = fields.get("formal_navigation", "")
+    if "For architecture, write not applicable" not in formal:
+        errors.append("formal navigation still forces mathematics on architecture")
+    source = fields.get("source_artifact", "")
+    if "required: true" not in source or "including its `source/`" not in source:
+        errors.append("issue form must request a recoverable source package")
+    correction = fields.get("correction_lineage", "")
+    for marker in ("committed receipt link", "For an original correction", "Maintainers verify"):
+        if marker not in correction:
+            errors.append(f"correction field lost lineage boundary: {marker}")
+    result_class = fields.get("result_class", "")
+    for marker in ("Checked positive", "Negative", "Inconclusive", "Correction"):
+        if f"- {marker}" not in result_class:
+            errors.append(f"issue form lost result class {marker}")
     if "ai_workflow" in text:
         errors.append("issue form must not expose a private repository dependency")
     return errors
@@ -232,6 +284,16 @@ def main() -> int:
     require(not issue_form_errors(issue_form), "live research-return issue form violates its contract")
     require(not issue_form_link_errors(issue_form), "live research-return issue form has a dead local link")
 
+    for mutated, marker in (
+        (issue_form.replace("required: false", "required: true", 1), "route-memory field must be optional"),
+        (issue_form.replace("id: frontier_route", "id: problem_route", 1), "fictional problem route"),
+        (issue_form.replace("For architecture, write not applicable", "For architecture, give a Lean route", 1), "formal navigation still forces"),
+        (issue_form.replace("id: source_artifact", "id: missing_source", 1), "recoverable source package"),
+        (issue_form.replace("committed receipt link", "unverified reference"), "correction field lost lineage"),
+    ):
+        errors = issue_form_errors(mutated)
+        require(any(marker in error for error in errors), f"issue form mutation escaped: {marker}")
+
     require_rejection(workflow.replace(CHECKOUT_SHA, "v4", 1), "not pinned to a full commit")
     require_rejection(workflow.replace("contents: read", "contents: write", 1), "write permission")
     require_rejection(
@@ -251,6 +313,10 @@ def main() -> int:
         "must run exactly once: python3 scripts/test_proof_workbench.py",
     )
     require_rejection(
+        workflow.replace("          python3 scripts/check_research_return_intake.py\n", "", 1),
+        "track-specific route-memory validation",
+    )
+    require_rejection(
         workflow.replace('      - "scripts/proof_workbench.py"\n', "", 1),
         "must watch workbench changes",
     )
@@ -258,7 +324,7 @@ def main() -> int:
     print(
         "research-return workflow contract: green; "
         f"{len(REQUIRED_COMMANDS)} required consumers, "
-        f"{len(REPRODUCIBILITY_ENV)} environment pins, 10 adversarial mutations rejected"
+        f"{len(REPRODUCIBILITY_ENV)} environment pins, 15 adversarial mutations rejected"
     )
     return 0
 

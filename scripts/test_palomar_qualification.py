@@ -256,10 +256,11 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
     assert showcase["candidate_selection"]["declaration"] == (
-        "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+        "Erdos249257.ExternalVerification.divisibilityWeightedClaim"
     )
-    assert showcase["candidate_selection"]["family_id"] == "known_irrational_supports"
-    assert showcase["candidate_selection"]["exact_hypotheses"] == ["2 <= b"]
+    assert showcase["candidate_selection"]["family_id"] == "finite_prime_weighted_support"
+    assert any("finite" in hypothesis.lower()
+               for hypothesis in showcase["candidate_selection"]["exact_hypotheses"])
     assert showcase["candidate_selection"]["open_boundary"]
     assert showcase["candidate_selection"]["limitations"]
     assert showcase["candidate_universe"]["declarations"] == comparator["theorem_names"]
@@ -325,7 +326,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     ]["family_id"] == "prime_gap_reformulation"
     assert ranked_by_declaration[
         "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
-    ]["rank"] == 12
+    ]["rank"] == 13
     assert (
         "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
         not in screened
@@ -428,7 +429,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
-    assert "rank 12" in negative_mass["source_landscape_rank_relative_to"].lower()
+    assert "rank 13" in negative_mass["source_landscape_rank_relative_to"].lower()
     assert "centered_state_dynamics" in negative_mass["ranked_below"]
     assert "weighted_phase_carry_observer" in negative_mass["ranked_above"]
     strict_prime = landscape_by_id["strict_prime_tail_orbit_gap"]
@@ -837,8 +838,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     ranked_by_family = {
         row["family_id"]: row for row in showcase["candidate_ranking"]
     }
-    assert ranked_by_family["totient_carry_anti_compression"]["rank"] == 10
-    assert ranked_by_family["half_membership_seam_classification"]["rank"] == 11
+    assert ranked_by_family["totient_carry_anti_compression"]["rank"] == 11
+    assert ranked_by_family["half_membership_seam_classification"]["rank"] == 12
     assert "totient_kernel_rank" not in ranked_by_family
     anti_screen = [
         row for row in showcase["candidate_screening"]

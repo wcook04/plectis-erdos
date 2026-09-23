@@ -85,6 +85,22 @@ def assert_proof_plan_rejected(proof_plans: dict, label: str) -> None:
 
 def check_proof_plan_mutations(proof_plans: dict) -> int:
     mutated = copy.deepcopy(proof_plans)
+    mutated["blocked_integer_tail"]["availability"] = "unavailable_or_stale"
+    try:
+        diagnostic.validate_proof_plan_packets(mutated)
+    except AssertionError as error:
+        message = str(error)
+        require(
+            "blocked_integer_tail proof plan reports availability "
+            "'unavailable_or_stale'" in message
+            and "source_fingerprint=" in message
+            and "build_lean_dependency_index.py --check" in message,
+            "stale proof-plan failure lost its exact-index repair diagnostic",
+        )
+    else:
+        raise AssertionError("stale proof-plan index escaped cold-clone validation")
+
+    mutated = copy.deepcopy(proof_plans)
     mutated["blocked_integer_tail"]["application"]["obligations"] = [
         row
         for row in mutated["blocked_integer_tail"]["application"][
@@ -103,7 +119,7 @@ def check_proof_plan_mutations(proof_plans: dict) -> int:
     assert_proof_plan_rejected(
         mutated, "proof-plan exact dependency spine"
     )
-    return 2
+    return 3
 
 
 def assert_human_rejected(summary: dict, surfaces: dict[str, str], label: str) -> None:

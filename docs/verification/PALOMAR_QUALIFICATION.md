@@ -23,12 +23,12 @@ kernel replay, service submission, editorial review, registration or acceptance.
 
 ## Selected interface in this repository
 
-For every integer base b >= 2, the full-support Erdős–Borwein series sum over k >= 0 of 1/(b^(k+1)-1) is irrational.
+For every integer base b ≥ 2, every infinite positive support A of finite prime-weighted mass in base b has an irrational support series. If a positive host H has finite prime-weighted mass in base 2, every infinite subset of H has an irrational support series at every integer base b ≥ 2.
 
-- Comparator declaration: `Erdos249257.ExternalVerification.irrational_erdosSum_full_support`.
-- Source declaration: `Erdos249257.irrational_erdosSum_full_support`.
-- Boundary: This proves the full-support series only; irrationality for every infinite support in Erdős #257 remains open.
-- Attribution: The source docstring records Erdős (1948) for the full-support theorem; the local Lean proof is the proof authority, while the cited source and repository prior-art ledger supply attribution and statement-fidelity context.
+- Comparator declaration: `Erdos249257.ExternalVerification.divisibilityWeightedClaim`.
+- Source declaration: `ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`.
+- Boundary: Finite prime-weighted mass is a sufficient support condition; universal irrationality for all infinite supports in Erdős #257 remains open.
+- Attribution: The theorem is proved locally in Lean at WeightedReturn.lean:120. Novelty, priority, significance, and independent human mathematical review are not asserted.
 
 [The selection record](../PALOMAR_RESULT_SHOWCASE.json) owns the candidate,
 alternatives and rationale. [The policy record](../PALOMAR_POLICY_RECONCILIATION.json)

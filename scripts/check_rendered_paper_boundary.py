@@ -78,11 +78,11 @@ FIRST_MINUTE_CONTRACT = {
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 3): (
             "problem-sized lean worlds",
-            "the contribution is an implemented architecture that connects research state",
+            "the prototype keeps six authorities separate",
             "six things that are commonly collapsed",
             "more reasoning cannot buy a write lease",
-            "lean verifies that a proof establishes the formal statement written in the source",
-            "degree-seven counterexample due to ani is formalised in lean here and refutes the total-variation formulation of problem 1041",
+            "lean checks the written formal statement",
+            "degree-seven example due to ani refutes the formal conjectures 1041 claim about one-dimensional hausdorff measure of path images",
             "other seven target problems remain unresolved",
         ),
         (3, 6): (
@@ -124,7 +124,7 @@ FIRST_MINUTE_CONTRACT = {
             # phrase pins the same sentence and cannot break at a hyphen.
             "mathlib resource are serialized",
             "four separate scaling limits",
-            "only an accepted receipt enters",
+            "accepted work receives a public receipt tied to exact artifacts",
             "no-go graph as a new mathematical object",
         ),
     },

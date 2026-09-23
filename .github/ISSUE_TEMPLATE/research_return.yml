@@ -23,16 +23,14 @@ body:
         [resume and replay state](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay),
         [bounded frontier route](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#2-bounded-route), and
         [accepted contributions](../../docs/research-commons/CONTRIBUTIONS.md).
-        Before selecting a problem frontier, inspect every material result family
-        and its exact open boundary in the tracked [problem index](../../docs/problems.json),
-        then use the [eight-problem result-family front door](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#formal-handoff-from-exposition)
-        and the matching return package's current fan-in. Run
-        `python3 scripts/query_corpus.py --search "all result families"` to enumerate
-        the complete ranked census, then
-        `python3 scripts/query_corpus.py --publication-family <family_id>` to
-        resolve one family's claims, paper label, source route, and open boundary.
-        This keeps the complete
-        public frontier visible; it does not turn activity into scientific credit.
+        Choose the frontier recorded in `return.json`: one numbered problem, a
+        mathematical subject spanning zero or more problems, or an architecture
+        area. A subject or architecture return must not invent a problem number.
+        For a numbered problem, inspect its material result families and exact
+        open boundary in the [problem index](../../docs/problems.json). For a
+        subject, use the [subject frontier](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#subject-frontier).
+        For architecture, use the [architecture contribution path](../../docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md#architecture-contribution-path).
+        These routes navigate the work; they do not turn activity into credit.
         After acceptance, inspect the [accepted-receipt recognition and impact
         view](../../docs/research-commons/CONTRIBUTION_RECOGNITION.md) and its
         [machine-readable projection](../../docs/research-commons/contribution-recognition.json).
@@ -42,11 +40,12 @@ body:
         for session and package transitions and
         [`scripts/validate_research_return.py`](../../scripts/validate_research_return.py)
         before submitting. If the return would change a reviewed claim, consult
-        the [methodology](../../docs/methodology.json). For a correction-class
-        return, use the [broken source or paper link](broken_link.yml) form for
-        navigation defects, or the [mathematical discrepancy](math_discrepancy.yml)
-        form for disagreements about a checked proposition or authority
-        interpretation.
+        the [methodology](../../docs/methodology.json). To report a defect
+        without a return package, use the [broken source or paper link](broken_link.yml)
+        form for navigation defects, or the
+        [mathematical discrepancy](math_discrepancy.yml) form for disagreements
+        about a checked proposition or authority interpretation. Submit a
+        packaged correction here.
   - type: textarea
     id: return_json
     attributes:
@@ -54,13 +53,15 @@ body:
       description: >-
         Paste the complete `return.json` produced by
         `scripts/continue_research.py package`, or an equivalent document
-        conforming to the tracked receipt schema. Before submission, run
+        conforming to the tracked receipt schema. For every track, run
         `python3 scripts/validate_research_return.py return.json
-        --require-submitted --check-git --require-route-memory-receipt
-        --route-memory-receipt route-memory.json` locally so the starting and
-        proposed commits, ancestry, changed public paths, and canonical
-        route-memory sidecar are checked together against this repository
-        checkout.
+        --require-submitted --check-git`. For a mathematical problem or subject,
+        also pass `--require-route-memory-receipt --route-memory-receipt
+        route-memory.json`. Architecture packages do not have route-memory.json.
+        When `proposed_commit` is set, also pass
+        `--require-complete-proposed-diff`. Validate in the contributor checkout
+        containing the recorded commits; issue submission itself does not run
+        these commands or accept the return.
       render: json
     validations:
       required: true
@@ -76,33 +77,37 @@ body:
     attributes:
       label: Route-memory receipt
       description: >-
-        Paste the complete `route-memory.json` produced beside `return.json`
-        by `scripts/continue_research.py package`. Before submission, validate
-        both files with `python3 scripts/validate_research_return.py return.json
-        --require-submitted --check-git --require-route-memory-receipt
-        --route-memory-receipt route-memory.json` so the consulted route IDs
-        and checked route-memory digest remain bound to this return.
+        Required for a mathematical problem or subject return: paste the
+        complete `route-memory.json` produced beside `return.json`. Validate
+        the pair with `--require-route-memory-receipt --route-memory-receipt
+        route-memory.json`. Leave this field empty for an architecture return:
+        its package contains a workflow consultation instead. GitHub issue
+        forms cannot require this field conditionally; maintainers check the
+        track-specific package before acceptance.
       render: json
     validations:
-      required: true
+      required: false
   - type: input
     id: starting_commit
     attributes:
       label: Starting commit
       description: >-
-        The full commit from which this return starts (`git rev-parse HEAD`).
+        The full commit from which this return started, matching
+        `return.json`'s `repository.starting_commit`. It may differ from the
+        current checkout HEAD after work is committed.
       placeholder: 40-character commit hash
     validations:
       required: true
   - type: input
-    id: problem_route
+    id: frontier_route
     attributes:
-      label: Problem and exact route
+      label: Frontier and exact route
       description: >-
-        Name one problem and its public claim, declaration, or remaining-open
-        handle. For an open frontier, include the exact `problem.open_obligations`
-        or reviewed `remaining_open.*` id that the next contributor can replay.
-      placeholder: "#249 — remaining_open.unbounded_certificate_supply (or problem.open_obligations[0].id)"
+        For a numbered problem, name its claim or remaining-open handle. For a
+        subject, name the subject and related problems (which may be none). For
+        architecture, name the area, starting paths, and workflow consultation;
+        do not assign a fictional Erdős number.
+      placeholder: "Problem: #249 and remaining_open...; subject: <name>, related [249,257]; or architecture: navigation, scripts/agent_entry.py"
     validations:
       required: true
   - type: input
@@ -111,8 +116,8 @@ body:
       label: Result family and significance rank
       description: >-
         Record the exact publication-family id and significance rank from the
-        complete family census, or write not applicable with the source-only or
-        non-family boundary that makes no publication family apply.
+        complete family census. For subject, architecture, or source-only work
+        without a publication family, write not applicable and explain why.
       placeholder: "erdos249_gap_certificate_supply (rank 17), or not applicable — source-only route"
     validations:
       required: true
@@ -131,17 +136,18 @@ body:
     attributes:
       label: Formal navigation and evidence handles
       description: >-
-        Record the exact public paper anchor, problem, open-frontier,
-        module, claim, qualified declaration, and source-coordinate queries
-        used to connect this return to formal evidence and the next bounded
-        action. Write not applicable only when no formal route exists, and
-        explain that boundary in the evidence field. Use --paper-anchor only
+        For a numbered problem or subject with formal evidence, record the
+        applicable paper, problem, open-frontier, module, claim, declaration,
+        and source-coordinate queries. A subject with no related problems must
+        not invent a problem selector. For architecture, write not applicable
+        and name its workflow consultation and planned checks; do not invent
+        mathematical formal evidence. Use --paper-anchor only
         with a canonical label returned by the claim packet; a note title,
         source_path, or paper.source_ref is a reading locator, not a selector.
-        For a source-only route, mark paper and claim not applicable and
-        retain the problem, open-frontier, module, declaration, and source
-        handles.
+        For a source-only route, mark paper and claim not applicable and retain
+        the available problem, open-frontier, module, declaration, and source handles.
       placeholder: |-
+        For mathematical work, list only the applicable route handles:
         python3 scripts/query_corpus.py --paper-anchor <canonical_paper_label>
         python3 scripts/query_corpus.py --problem <number>
         python3 scripts/query_corpus.py --search "all result families"
@@ -154,6 +160,7 @@ body:
         next: use scripts/continue_research.py start/check for the bounded continuation package
         boundary: canonical paper label only; source-only: paper/claim not applicable
         observed: <exact route output and authority boundary>
+        For architecture: not applicable — workflow consultation <id>; planned checks <commands>
       render: text
     validations:
       required: true
@@ -163,6 +170,18 @@ body:
       label: Public artifact and changed paths
       description: List only public paths and describe what a cold reader can inspect.
       placeholder: "docs/...\nArtifact: ..."
+    validations:
+      required: true
+  - type: textarea
+    id: source_artifact
+    attributes:
+      label: Recoverable source package or public patch
+      description: >-
+        Attach or link the complete structured package (including its `source/`
+        files and `package.json`), a public proposed commit, or a reviewable
+        patch. Name the return ID and explain how another checkout recovers
+        every declared changed path. A pasted `return.json` alone does not carry
+        the source change. Do not include private or unpublished material.
     validations:
       required: true
   - type: dropdown
@@ -215,12 +234,17 @@ body:
     attributes:
       label: Correction lineage
       description: >-
-        For an original or later correction, preserve the earlier return and
-        state the prior return reference, affected paths and starting
-        generation, changed evidence or wording, correction reason, and
-        disposition. For a non-correction return, write not applicable.
+        For a corrective return, copy the exact `correction_lineage` values from
+        return.json: prior return reference, affected paths and starting commit,
+        changed evidence or wording, reason, and disposition. If an earlier
+        accepted return is superseded or withdrawn, give its exact return ID
+        and committed receipt link; a free-text reference alone is not proof
+        that it exists. For an original correction, use `none` and request review
+        rather than silently superseding a prior artifact. For a non-correction
+        return, write not applicable. Maintainers verify the prior receipt and
+        public claim transition before acceptance.
       placeholder: |-
-        Prior return reference: <none or exact path/ref>
+        Prior return reference: <none for original correction, or exact rr-id and committed receipt link>
         Affected paths and starting generation: <paths and commit>
         Changed evidence or wording: <what changed>
         Correction reason: <reason or not applicable>

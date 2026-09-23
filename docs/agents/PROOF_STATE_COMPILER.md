@@ -39,6 +39,10 @@ The pilot contains three causally related controls:
 
 This is stronger than repeating the static telescope: Lean supplies the
 instantiated child goals and decides whether the replay closes.
+Run the live pilot after any host-wide Lean build has finished. A candidate
+timeout is a validation failure, not a mathematical refutation; the compiler
+kills and reaps both Lake and its Lean child so a timed-out probe cannot keep
+using memory while later controls run.
 
 ## Explicit requests
 

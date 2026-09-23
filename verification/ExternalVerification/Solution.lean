@@ -32,6 +32,7 @@ import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.WeightedPhaseCarry
@@ -823,6 +824,23 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.volume_mersenneAchievementSet
   · intro b hb
     simpa using Erdos249257.irrational_erdosSum_full_support b hb
+  · simpa [DivisibilityWeightedClaim, FinitePrimeWeighted,
+      primeWeightedTerm, primeSetPart, erdosSupportSeries,
+      ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim,
+      ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+      ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+      ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart,
+      Erdos249257.erdosSupportSeries] using
+      ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
+  · intro b H hb hH0 hH
+    have hH' : ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted b H := by
+      simpa [FinitePrimeWeighted, primeWeightedTerm, primeSetPart,
+        ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+        ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+        ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart] using hH
+    simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
+      ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary
+        b H hb hH0 hH'
   · intro b A hb hA hpair hsum
     simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
       Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
@@ -1038,18 +1056,9 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
 the Comparator roster.  Each is a projection of the corresponding field of
 the exact `PortfolioClaims` proof above. -/
 
-theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
-    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
-    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
-      IsTemperedBinaryOrbit Nat.totient v u ∧
-        (∀ e : ℕ,
-          2 ^ e - 1 ≤
-            Module.finrank ℚ
-              (Submodule.span ℚ
-                (Set.range (canonicalCarryKernelFamily u e)))) ∧
-        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
-          CarrySectionsEventuallyPeriodicMod v h N₀ u :=
-  (portfolioClaims Unit).problem249CarryAntiCompression hirr
+theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank :
+    TotientCarryAntiCompressionStatement :=
+  (portfolioClaims Unit).problem249CarryAntiCompression
 
 theorem fixedPrecisionTropicalNoGo
     (u : ℕ) (hu : 0 < u)
@@ -1101,12 +1110,9 @@ theorem half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse :
       SeamGreedyUnboundedTerminalFalse :=
   (portfolioClaims Unit).problem257HalfMembershipSeamClassification
 
-theorem rectangular_hp_threshold_eq_classical_iff
-    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
-    hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
-      rho = 0 ∧ sigma = 1 :=
-  (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff rho sigma
-    hrho hsigma
+theorem rectangular_hp_threshold_eq_classical_iff :
+    RectangularHpThresholdEqClassicalIffStatement :=
+  (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff
 
 theorem image_pivotSupplierPrimes_eq_pivotFiber
     {X L s m : ℕ} (hm : 0 < m) (hmsmall : m ≤ Nat.sqrt X / 2) :
@@ -1268,36 +1274,28 @@ theorem sylvesterNext_eventually_of_summable_negativeRelativeMass
     ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass
       a D C hD hC hCpos hstep hvanish hsum
 
-theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
-    finrank ℚ
-      (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
-        2 ^ e + 1 := by
+theorem finrank_totientKernelThroughLevelFamily_eq :
+    TotientFiniteKernelRankStatement := by
+  intro e he
   simpa [totientKernelThroughLevelFamily, totientKernelSeq,
     Erdos249257.totientKernelThroughLevelFamily,
     Erdos249257.totientKernelSeq] using
     Erdos249257.finrank_totientKernelThroughLevelFamily_eq e he
 
 theorem not_finiteDimensional_span_fullTotientKernel :
-    ¬ FiniteDimensional ℚ
-      (Submodule.span ℚ (Set.range fullTotientKernelFamily)) := by
+    TotientInfiniteKernelRankStatement := by
   simpa [fullTotientKernelFamily, totientKernelSeq,
     Erdos249257.fullTotientKernelFamily,
     Erdos249257.totientKernelSeq] using
     Erdos249257.not_finiteDimensional_span_fullTotientKernel
 
 theorem exists_totientDyadicSectionBasis :
-    Nonempty
-      (Basis TotientOddCoreIndex ℚ
-        (Submodule.span ℚ (Set.range fullTotientKernelFamily))) :=
+    TotientDyadicSectionBasisStatement :=
   (portfolioClaims Unit).problem249Basis
 
-theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
-    (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
-    (hcanon : LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e)) :
-    finrank ℚ
-      (Submodule.span ℚ
-        (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
-      k ^ e + 1 := by
+theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent :
+    AllBaseTotientFiniteKernelRankStatement := by
+  intro k e hk he hcanon
   simpa using (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
 
 theorem tsum_pos_coprime_inv_mersenne_eq_one :
@@ -1358,6 +1356,16 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) := by
   simpa using Erdos249257.irrational_erdosSum_full_support b hb
+
+theorem divisibilityWeightedClaim : DivisibilityWeightedClaim :=
+  (portfolioClaims Unit).problem257WeightedSupport
+
+theorem finitePrimeWeighted_fixedBase_hereditary
+    (b : ℕ) (H : Set ℕ) (hb : 2 ≤ b) (hH0 : 0 ∉ H)
+    (hH : FinitePrimeWeighted b H) :
+    ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+      Irrational (erdosSupportSeries b A) :=
+  (portfolioClaims Unit).problem257FixedBaseWeightedHereditary b H hb hH0 hH
 
 theorem irrational_erdosSupportSeries_pairwise_coprime
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
@@ -1538,37 +1546,21 @@ theorem exists_small_translation_separating_arguments
         ¬ SamePositiveRay (c i + shift) (c j + shift) :=
   (portfolioClaims ι).problem1041 c hc hε
 
-theorem constant_perturbation_roots_in_unitDisk
-    (f : Polynomial ℂ) (hf : f.Monic) (hdeg : 0 < f.natDegree)
-    (hsplit : f.Splits) {ρ ε : ℝ} (hρ : 0 ≤ ρ)
-    (hroots : ∀ b ∈ f.roots, ‖b‖ ≤ ρ) (hε : 0 < ε)
-    (hmargin : ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1)
-    {shift : ℂ} (hshift : ‖shift‖ < ε) :
-    ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1 :=
-  (portfolioClaims Unit).problem1041Roots f hf hdeg hsplit hρ hroots hε
-    hmargin hshift
+theorem constant_perturbation_roots_in_unitDisk :
+    ConstantPerturbationRootsInUnitDiskStatement :=
+  (portfolioClaims Unit).problem1041Roots
 
-theorem exists_two_roots_dist_sum_le_two_mul_geomMean
-    {n : ℕ} (hn : 2 ≤ n) (z : Fin n → ℂ) (c : ℂ)
-    (hne : ∀ k, c - z k ≠ 0)
-    (hcrit : ∑ k, (c - z k)⁻¹ = 0)
-    {r : ℝ} (hr : 0 < r) (hrn : r ^ n = ∏ k, ‖c - z k‖) :
-    ∃ i j : Fin n,
-      i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r :=
+theorem exists_two_roots_dist_sum_le_two_mul_geomMean :
+    CriticalPairMetricScaleStatement :=
   (portfolioClaims Unit).problem1041CriticalPairMetricScale
-    hn z c hne hcrit hr hrn
 
-theorem threeHalves_no_coordinatewiseCorridor
-    {N K Q digit : ℕ} (hN : 1 ≤ N) (hK : 1 ≤ K) :
-    ¬ CoordinatewiseCorridor 3 2 N K Q digit :=
-  (portfolioClaims Unit).problem1049 hN hK
+theorem threeHalves_no_coordinatewiseCorridor :
+    ThreeHalvesNoCoordinatewiseCorridorStatement :=
+  (portfolioClaims Unit).problem1049
 
-theorem rationalBaseClearedTailQ_succ
-    {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :
-    rationalBaseClearedTailQ r s B F coeff (N + 1) =
-      r * rationalBaseClearedTailQ r s B F coeff N -
-        B * coeff (N + 1) * s ^ (N + 1) :=
-  (portfolioClaims Unit).problem1049Recurrence hr N
+theorem rationalBaseClearedTailQ_succ :
+    RationalBaseClearedTailQSuccStatement :=
+  (portfolioClaims Unit).problem1049Recurrence
 
 theorem tailOrbitBlockGap_of_nonpositiveBlockDensity
     (hdensity : TotientTailOrbitNonpositiveBlockDensity) :
