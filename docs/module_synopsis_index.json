@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:3ed5638e54c4fefe7ed55fe5e83d3332e0939e02882ea4a3b41ead399c4628fa",
-  "module_count": 1812,
-  "synopsis_count": 1565,
+  "source_fingerprint": "sha256:45c21a53e1d9d76ba5be9f1f1d473fcd8ea9e0b6278b0d94d98ff6e5651106ed",
+  "module_count": 1816,
+  "synopsis_count": 1569,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -4533,6 +4533,16 @@
       "synopsis": "Erdős #1049: the rational-base threshold in its paper form Paper restatements of * `res:rational-base-threshold` / `long1049:res:region` (the rational-base region, stated with the paper's hypothesis `b^μ < a` and with the paper's \"equivalently\" `b^μ < a ↔ log b / log a < θ*` proved, not assumed); * `long1049:res:31over4` (the base `31/4`, its powers, and the two displayed chains `1/2 - 1/π² < log 4 / log 31 < 81/200 < θ*` and `4^μ < 31 < 4^{μ_BV}` with `μ_BV = 2π²/(π²-2)`); * `cor:rational-base-measure` / `long1049:cor:rational-base-measure` (the irrationality measure uniform over powers). Nothing here assumes an external theorem: the supplier comes from `PaperR17.SourceConsumers`, which is itself proved in the tree. The truncated decimal displays printed in those environments (`θ* = 0.40568302138406054…`, `μ = 2.4649786835749750…`, `log 4 / log 31 = 0.4036981731641997…`, `4^μ = 30.483515…`, `4^{μ_BV} = 32.369642…`, `μ_BV = 2.508284761994…`, `1/2 - 1/π² = 0.3986788163576622…`) are NOT proved here; only the bracketing inequalities below are."
     },
     {
+      "id": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation",
+      "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
+      "synopsis": "Erdős #1049: the moment weights as a product of two finite sums Paper restatement of `long1049:prop:rogers-factorisation` (core.tex, subsection \"The size of `V_N^*` at a fixed base\"), in the form the paper states it: polynomial identities in the indeterminate `q`. The objects * `ℚ⟦q⟧` is `PowerSeries ℚ` with indeterminate `qq`; `(q;q)_n` is the tree's finite `q`-Pochhammer `qPochhammer q q n` (`qfac`). * `ℚ⟦q⟧⟦w⟧` is `PowerSeries (PowerSeries ℚ)` with indeterminate `ww`, carrying the product (coefficientwise) topology; `(x;q)_∞ = ∏'_{i ≥ 0} (1 - x q^i)` is a genuine infinite product there (`qPochInf`, multipliable for every `x`). * `G_q(w) = (w;q)_∞^{-3} ∑'_{t ≥ 0} w^t/(q;q)_t · (q^t w^2;q)_∞/(q^t w;q)_∞^2` (`momentGenFun`), and `γ_k(q) = [w^k] G_q(w) ∈ ℚ⟦q⟧` (`momentWeight`). * `R_k^{(r)}(q) = ∑_{n_1+⋯+n_r=k} (q;q)_k / ∏_{j ≤ r} (q;q)_{n_j}` (`rogersR`), the sum over `Finset.Nat.antidiagonalTuple r k`. The proof Euler's product formula is proved for `(a w^j; q)_∞` by the functional equation and a `q`-adic uniqueness argument (`qPochInf_C_mul_pow`). The `w^2`-product is removed by a finite `q`-binomial identity (`qbinomial_w`), which gives `G_q = E(w)^2 ∑_{t,d} w^{t+d}/((q;q)_t (q;q)_d) E(q^{t+d} w) E(q^t w)` with `E = 1/(w;q)_∞`. On the other side, `∑_k R_k^{(2)} R_k^{(3)}/(q;q)_k w^k = ∑_r w^r/(q;q)_r ∂_q^r E(w)^3`, and two applications of the `q`-Leibniz rule for the `q`-derivative `∂_q` (`qD_iter_eE_mul`) give the same double sum. The polynomial statements reuse the tree's Gaussian-binomial lemmas (nonnegative coefficients, monic of degree `k(n-k)`, value `binom n k` at"
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic",
+      "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
+      "synopsis": "Erdős #1049: the moment weights as a product of two finite sums, at real `q` Completes `long1049:prop:rogers-factorisation` (core.tex, subsection \"The size of `V_N^*` at a fixed base\"): the formal clauses are `rogers_factorisation` in `RogersFactorisation.lean`; this file adds every clause stated for a fixed real `0 < q < 1`, and `rogers_factorisation_proposition` states the whole proposition. Objects at real `q` The paper fixes `0 < q < 1`, writes `P = (q;q)_∞`, `c_k = (k+1)^2 (k+2)/2`, `G_q(w) = (w;q)_∞^{-3} ∑_{t ≥ 0} w^t/(q;q)_t · (q^t w^2;q)_∞/(q^t w;q)_∞^2` and `γ_k = [w^k] G_q(w)`. Here `G_q(w)` is the tree's `PaperR12.actualGeneratingFunction q w`, and `(x;q)_n`, `(x;q)_∞` are the tree's `PaperR10.qPochhammerFinite x q n` and `PaperR10.qPochhammerInfinity x q` (proved to be the limit of the finite products for `0 ≤ x < 1`). The coefficient sequence of `G_q` on `[0,1)` is unique (`eq_of_hasSum_on_unit_interval`), so the theorem quantifies over every `γ` with `∑_k γ_k w^k = G_q(w)` on `[0,1)`, and shows that one exists. How the formal identity is evaluated * `hasSum_qBinomialRatio`: the real `q`-binomial theorem, from the tree's functional-equation lemmas `PaperR16.coeffEval_functional_equation` and `PaperR16.coeffEval_tendsto_geometric`; Euler's `∑ x^n/(q;q)_n = 1/(x;q)_∞` is its case `a = 0`. * `absConv q`: the subring of `ℚ⟦X⟧` of series absolutely convergent at `q`, with the evaluation ring homomorphism `evq q`. Every `1/(q;q)_n` lies in it. * `formB_real`: the formal identity `rogersSeries_eq_formB` (a form of `G_q` with nonnegative coefficients, derived from `mom"
+    },
+    {
       "id": "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystem",
       "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean",
       "synopsis": "Erdős #1049: no finite simultaneous `2`/`3`-system Lean form of `long1049:res:nomahler` (`paper/reasoning-parts/erdos1049/core.tex`, line 3569): > Let `ℒ(z) = ∑_{n ≥ 1} zⁿ/(1 - zⁿ)`. There is no finite-dimensional > `ℚ(z)`-vector space that contains `ℒ` and is stable under both `z ↦ z²` and > `z ↦ z³`. The ambient space is the field `ℚ((z))` of formal Laurent series, a vector space over `ℚ(z)`, exactly as the paragraph above the proposition states; in Mathlib this is `ℚ⸨X⸩ = HahnSeries ℤ ℚ`, a module over `RatFunc ℚ`. Stability means that substituting `z^k` for `z` sends the subspace into itself; that substitution is the ring homomorphism `subs k` below, and it is not `ℚ(z)`-linear. `ℒ` is the divisor generating series. The paper introduces it in this very subsection as `𝓛(z) = ∑_{n ≥ 1} τ(n) zⁿ` and then displays it in the Lambert form; the two are the same series. `divisorLambert` is that series, and `divisorReal_partial_lower` records the Lambert relation in the direction the boundary estimate uses: for real `0 < s < 1` and every `N`, `∑_{d ≤ N} s^d/(1 - s^d) ≤ ∑ₙ τ(n) sⁿ`. What is proved and what is assumed Everything in the paper's proof is proved here except one cited external theorem. `AdamczewskiBell` is the hypothesis form of B. Adamczewski and J. P. Bell, *A problem about Mahler functions*, Thm. 1.1, p. 6 (cited as `[adamczewskibell2013]` in the paper): a Laurent series that is both `k`-Mahler and `l`-Mahler, for multiplicatively independent `k, l ≥ 2`, is a rational function. It is absent from Mathlib and from this tree, and the paper states the proposition uncon"
@@ -4546,6 +4556,11 @@
       "id": "ErdosProblems.Erdos1049.PaperCompleteR21.SourceCoefficientHeights",
       "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean",
       "synopsis": "Erdős #1049: quadratic logarithmic coefficient heights of the constructed pair Paper restatement of `long1049:res:sourceheight`: > There is a constant `h` with `log max(H(U_n), H(V_n)) ≤ h n²` for every > `n ≥ 1`, where `U_n` and `V_n` are the polynomials of > `long1049:eq:integer-polynomial-pair`. Correspondence of the objects. * `U_n` is `PaperR11.sourceU n`. The paper's `U_n = X^{-M_n}(D_N/Ω_n)A_n` is the tree's `PaperR11.actual_A_polynomial_inclusion`, which proves `D_N · A_n = Ω_n · X^{M_n} · sourceU n`. * `V_n` is `PaperR13.sourceV n`. The paper's `V_n = X^{-M_n}(D_N/Ω_n)B_n` is the tree's `PaperR13.actual_Omega_remainder_zero` together with `sourceBWithoutMonomial n = Ω_n · sourceV n`; the divisibility is proved in the tree, not assumed from Zudilin's Lemma 7. * `H(P)` is `PaperR9.maxCoeffNat P = sup_i |[X^i]P|`, the naive height, and `max(H(U_n), H(V_n))` is `PaperR9.maxPairHeight sourceU sourceV n`. The tree already proves the eventual form `log H_n ≤ ε n²` for every `ε > 0` (`PaperR14.actual_maxPairHeight_log_upper_zero`). What is added here is the paper's uniform statement: one constant, valid at *every* `n ≥ 1`. The sentence following the environment in the paper — \"Lemma `long1049:res:sourceheight` is an ordinary proof and is not kernel-checked\" — is a status remark about the manuscript, not a mathematical clause, so it is not formalised."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperCompleteR21.TailPrefixLattice",
+      "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/TailPrefixLattice.lean",
+      "synopsis": "Erdős #1049: the prefix lattice of the tails Paper restatement of `long1049:res:tail-lattice` (the proposition \"the prefix lattice of the tails\" in the lattice section of the #1049 reasoning paper). For coprime `a > b ≥ 1` the partial sums `S_m(b/a) = ∑_{r ≤ m} (b/a)^r / (1 - (b/a)^r)` are written in lowest terms as `P_m / Q_m`, `Q_m > 0`; `(Q_m, P_m)` is the primitive integer row of the `m`th tail. The main theorem `tail_prefix_lattice` proves every clause of the proposition: `Q_m` is coprime to `ab`, `b ∣ P_m`, the span of every prefix containing `m = 0, 1` is `ℤ × bℤ`, its Smith invariants are `1, b`, the gcd of the `2 × 2` minors is `b`, the image modulo `D ≥ 1` has `D² / gcd(b, D)` elements, and a nonzero rational weight leaves the primitive row of a tail unchanged up to sign. The Smith invariants are stated with Mathlib's `Module.Basis.SmithNormalForm`, which does not impose the divisibility chain; the theorem therefore gives existence of the diagonal `(1, b)`, that every Smith normal form has two entries, and uniqueness up to units under `d₁ ∣ d₂`."
     },
     {
       "id": "ErdosProblems.Erdos1049.PaperCorrespondenceAudit",
@@ -4590,7 +4605,7 @@
     {
       "id": "ErdosProblems.Erdos1049.PaperR16.MahlerBoundary",
       "path": "lean/ErdosProblems/Erdos1049/PaperR16/MahlerBoundary.lean",
-      "synopsis": "From a literal polynomial Mahler equation to every boundary row Candidate source; every new Lean check is UNRUN. The input is the equation on the open complex unit disc, not a radial-limit hypothesis, not a family of rows, and not a nonvanishing determinant premise. The concluding theorem invokes the supplied R11 consumer verbatim."
+      "synopsis": "From a literal polynomial Mahler equation to every boundary row Checked in the eight-paper audit build (EightPaperR21Audit). The input is the equation on the open complex unit disc, not a radial-limit hypothesis, not a family of rows, and not a nonvanishing determinant premise. The concluding theorem invokes the supplied R11 consumer verbatim."
     },
     {
       "id": "ErdosProblems.Erdos1049.PaperR16.PrimitiveRadial",
@@ -4610,7 +4625,7 @@
     {
       "id": "ErdosProblems.Erdos1049.PaperR16.RootOrders",
       "path": "lean/ErdosProblems/Erdos1049/PaperR16/RootOrders.lean",
-      "synopsis": "Exact orders, primitive-root counts, and an injective family of test roots Candidate source; new Lean checks UNRUN. One primitive root of each of infinitely many pairwise distinct orders suffices for the polynomial argument; no lower bound for Euler's totient and no prime-distribution theorem is needed."
+      "synopsis": "Exact orders, primitive-root counts, and an injective family of test roots Checked in the eight-paper audit build. One primitive root of each of infinitely many pairwise distinct orders suffices for the polynomial argument; no lower bound for Euler's totient and no prime-distribution theorem is needed."
     },
     {
       "id": "ErdosProblems.Erdos1049.PaperR16.RowScaling",
@@ -5416,6 +5431,11 @@
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicRateExclusionChain.lean",
       "synopsis": "Erdős 243: from the square specialisation to cubic-rate irrationality Development file: the three paper environments downstream of `long243:res:squarespec`, proved from that lemma taken as the hypothesis `SquareSpecialisation`."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean",
+      "synopsis": "Erdős #243: the double-logarithmic implication for an exact orbit Paper restatement of the displayed implication in the section \"Further consequences\" (`sec:secondaryrate`) of the short #243 paper: under the hypotheses of Theorem 1.2 (`res:bounded`) other than (5), `limsup_n (-E_n)_+ / log₂ log₂ max(4, C_n) ≤ 1 ⟹ E_n = 0 eventually`. The paper says that its two steps are Lean theorems and that only their combination was missing. This file supplies that combination: * `exactOrbit_recordTheta_gt_one` (strict record bound): if `E_n` is not eventually zero, then `1 < limsup_n (H_{n+1} - H_n) / log₂ log₂ max(4, H_n)` with `H_n = max_{j ≤ n} C_j`; * `recordTheta_le_negativeError_limsup` (comparison with the negative part): that limit superior is at most the one in the display; * `D₀ ≥ 1`, which follows from (6): if `D₀ = 0` then every `D_n = 0`, so `|E_n| = (a_n - 1) C_n ≥ C_n`, contradicting (6) with `K = 1`. The limit superior is taken in the extended reals `EReal`, so an unbounded quotient has limit superior `+∞` rather than a junk real value. Hypothesis (4) follows from (6) with `K = 1` and is not used separately."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
