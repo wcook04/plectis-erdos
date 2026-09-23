@@ -11,6 +11,9 @@ exemption lists honest.  A check that cannot fail proves nothing.
 from __future__ import annotations
 
 import copy
+import subprocess
+import tempfile
+from pathlib import Path
 from typing import Any
 
 import check_lean_paper_propagation as check
@@ -434,6 +437,28 @@ def test_introduced_debt_matches_the_committed_baseline() -> None:
     require(listed <= check.INTRODUCED_DEBT, "the committed baseline lists debt it was not introduced with")
 
 
+def test_clause_a_reads_only_tracked_lean_files_of_a_separately_built_library() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        library = root / "verification" / "Cert"
+        (library / "Sub").mkdir(parents=True)
+        for relative in ("verification/Cert/Sub/Tracked.lean", "verification/Cert/Sub/Untracked.lean",
+                         "verification/Other.lean", "verification/Cert/notes.md"):
+            (root / relative).write_text("theorem t : True := trivial\n", encoding="utf-8")
+        subprocess.run(["git", "init", "-q", str(root)], check=True)
+        subprocess.run(["git", "-C", str(root), "add", "verification/Cert/Sub/Tracked.lean",
+                        "verification/Other.lean", "verification/Cert/notes.md"], check=True)
+        found = check.checked_library_sources(root, ("verification/Cert",))
+        require(found == {"verification/Cert/Sub/Tracked.lean"},
+                f"only tracked Lean files of the library may count: {sorted(found)}")
+    # The #251 large certificate is such a library; its theorem resolves in this checkout.
+    problem = check.LeanSources().declaration_problem(
+        "verification/Erdos251LargeCertificate/ErdosProblems/Erdos251/PaperLargeCertificateR7.lean",
+        "ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both",
+    )
+    require(problem is None, f"the #251 certificate theorem does not resolve: {problem}")
+
+
 def main() -> int:
     tests = [
         test_repaired_fixture_passes,
@@ -448,6 +473,7 @@ def main() -> int:
         test_currency_detects_changed_moved_and_unrecorded_statements,
         test_baseline_only_shrinks,
         test_introduced_debt_matches_the_committed_baseline,
+        test_clause_a_reads_only_tracked_lean_files_of_a_separately_built_library,
     ]
     for test in tests:
         test()
