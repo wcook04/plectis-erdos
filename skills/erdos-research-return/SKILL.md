@@ -106,6 +106,16 @@ the contribution and its credit arrive in the same history. Do not perform a
 push, publication, registration, or outreach action unless the current task
 authorizes that external effect.
 
+An accepted receipt lands in two pull requests.
+`scripts/build_research_contribution_recognition.py` links each receipt to the
+newest first-parent commit that carries the receipt bytes, and a pull-request
+check runs on the merge commit GitHub prepares for that pull request. The pull
+request that adds the receipt therefore fails
+`scripts/check_research_contribution_recognition.py` on its own merge commit.
+After it merges, run `python3 scripts/build_research_contribution_recognition.py`
+on main and land the re-anchored views in a follow-up pull request, as #206 did
+for #205.
+
 For a later correction, retain the earlier receipt and add explicit lineage
 that says whether the earlier artifact is retained, superseded, or withdrawn.
 Credit is evidence-bound and historical; it is not a leaderboard and is not
