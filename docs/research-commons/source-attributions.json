@@ -1468,8 +1468,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1791,
-          "line_end": 1796,
+          "line_start": 1794,
+          "line_end": 1799,
           "expected_text": "\\bibitem{june2026}",
           "excerpt_sha256": "sha256:de6f7f3e7ce0991e2f6ce37362689f9baf718419396e29df27966f24fa9d4a1f"
         },
@@ -1607,8 +1607,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1787,
-          "line_end": 1791,
+          "line_start": 1790,
+          "line_end": 1794,
           "expected_text": "\\bibitem{march2026}",
           "excerpt_sha256": "sha256:372ad8d3f82ff0212ee04c7dd5a7269a56a5c9a52cae45f7d05245ccae260a87"
         },
@@ -2490,8 +2490,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1851,
-          "line_end": 1857,
+          "line_start": 1854,
+          "line_end": 1860,
           "expected_text": "\\bibitem{polya1928}",
           "excerpt_sha256": "sha256:550b981b3e8c869d0df50cfb0dea1be1b90d0f2ad814088a1f8a1a3ac9ffade8"
         },
@@ -6084,8 +6084,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1783,
-          "line_end": 1787,
+          "line_start": 1786,
+          "line_end": 1790,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:eacde95a2a008044b34dad3bc740d3a6e33953232b7364e5c222730a382b3f1e"
         },
@@ -10201,8 +10201,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1820,
-          "line_end": 1825,
+          "line_start": 1823,
+          "line_end": 1828,
           "expected_text": "\\bibitem{eremenko-hayman}",
           "excerpt_sha256": "sha256:03547751579bddb06550186cbd4cd5363e790e059ff80b147b313232f2329016"
         }
@@ -10262,8 +10262,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1825,
-          "line_end": 1829,
+          "line_start": 1828,
+          "line_end": 1832,
           "expected_text": "\\bibitem{eremenko-yuditskii}",
           "excerpt_sha256": "sha256:97ed6ed938a762a7aa078c24d5e27afbbef833b6e4baddc2c4ebde5eff3f4607"
         },
@@ -10328,8 +10328,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1834,
-          "line_end": 1840,
+          "line_start": 1837,
+          "line_end": 1843,
           "expected_text": "\\bibitem{eremenko-markov}",
           "excerpt_sha256": "sha256:9b66ac2741824a4fb126ce6c85cdddc7806daa4534b4f393e06ebf1a210dbd9c"
         },
@@ -10389,8 +10389,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1829,
-          "line_end": 1834,
+          "line_start": 1832,
+          "line_end": 1837,
           "expected_text": "\\bibitem{eremenko-lempert}",
           "excerpt_sha256": "sha256:a3161ac11344fd8199bdbbb63800da9443a64e2a1d3fdd2007366848b954d26f"
         },
@@ -10467,8 +10467,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1840,
-          "line_end": 1846,
+          "line_start": 1843,
+          "line_end": 1849,
           "expected_text": "\\bibitem{bishop-eremenko-lazebnik}",
           "excerpt_sha256": "sha256:bfae70e92b17ff0eb46d5a89787ab01a60a09ee1c2fa3385ddf8b2ff8854f038"
         },
@@ -12122,8 +12122,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1796,
-          "line_end": 1802,
+          "line_start": 1799,
+          "line_end": 1805,
           "expected_text": "\\bibitem{pendyala2026shortest}",
           "excerpt_sha256": "sha256:82d28a8215cfaad9830f9c69ac73ab8a39b6b8fde4ba10c62ec7be6337dc3ff0"
         }
@@ -12562,8 +12562,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1846,
-          "line_end": 1851,
+          "line_start": 1849,
+          "line_end": 1854,
           "expected_text": "\\bibitem{dubinin}",
           "excerpt_sha256": "sha256:ada915f17a1ed537b753f4f88aa73ca8631254a748c99e5c556dd0dcde0016c1"
         },
@@ -12862,8 +12862,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1807,
-          "line_end": 1813,
+          "line_start": 1810,
+          "line_end": 1816,
           "expected_text": "\\bibitem{crane}",
           "excerpt_sha256": "sha256:cd02a3f4bd4ab2831d4e82f0258f2e99b98627ee1ba71dc7fcd33aaae61f7342"
         }
@@ -13999,8 +13999,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1781,
-          "line_end": 1783,
+          "line_start": 1784,
+          "line_end": 1786,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed"
         },
@@ -17788,8 +17788,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1802,
-          "line_end": 1807,
+          "line_start": 1805,
+          "line_end": 1810,
           "expected_text": "\\bibitem{kozen-stefansson1997}",
           "excerpt_sha256": "sha256:ed2e1d97e25042a1c3cc333a2f890caed82f4b663b8b32c55aee9808f3380583"
         },
@@ -17862,8 +17862,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1813,
-          "line_end": 1820,
+          "line_start": 1816,
+          "line_end": 1823,
           "expected_text": "\\bibitem{eks2010}",
           "excerpt_sha256": "sha256:0b086dc6c508b56a163e9e87eadee8f83406883c0bb951c90f8c3195b296ef03"
         },
@@ -17952,8 +17952,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1881,
-          "line_end": 1886,
+          "line_start": 1884,
+          "line_end": 1889,
           "expected_text": "\\bibitem{dubinin2006capacity}",
           "excerpt_sha256": "sha256:72718134788b958a62bff3e97274b643933433c7df05bbba88477d8e130e3199"
         }
@@ -22211,8 +22211,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1861,
-          "line_end": 1866,
+          "line_start": 1864,
+          "line_end": 1869,
           "expected_text": "\\bibitem{crane2007smale}",
           "excerpt_sha256": "sha256:dd81dda92210816aa997d12725fdd2b3d2f7a70097cbd438d5ef8102c0c13e44"
         },
@@ -22286,8 +22286,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1857,
-          "line_end": 1861,
+          "line_start": 1860,
+          "line_end": 1864,
           "expected_text": "\\bibitem{dubinin2006critical}",
           "excerpt_sha256": "sha256:e71562d62b7120e70fe7b834f65baa80911382d9eec508f8396928584ab1dacf"
         },
@@ -22356,8 +22356,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1866,
-          "line_end": 1869,
+          "line_start": 1869,
+          "line_end": 1872,
           "expected_text": "\\bibitem{dubinin2013fourpoint}",
           "excerpt_sha256": "sha256:a2ea0b0d9fe464fd26b77c94c6b482f3c945b98a5fd53c85d7624d1728340989"
         },
@@ -22428,8 +22428,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1869,
-          "line_end": 1874,
+          "line_start": 1872,
+          "line_end": 1877,
           "expected_text": "\\bibitem{kuznetsova2003}",
           "excerpt_sha256": "sha256:9976334d2d074f47b0f36053eafc88c2da992e02c4c4c2eb6956f0ecc319a48b"
         },
@@ -22480,8 +22480,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1877,
-          "line_end": 1881,
+          "line_start": 1880,
+          "line_end": 1884,
           "expected_text": "\\bibitem{revision2026}",
           "excerpt_sha256": "sha256:39a146bf8942c0ebb786121a43c32dbc5f98a38f4e25cf1cd5d5a0c9459ff405"
         },
@@ -22578,8 +22578,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1874,
-          "line_end": 1877,
+          "line_start": 1877,
+          "line_end": 1880,
           "expected_text": "\\bibitem{tischler1989}",
           "excerpt_sha256": "sha256:6aaf6da69e5a056c56565ce65b93dc9624cd8a22480a7b32eacbb405f875508a"
         },

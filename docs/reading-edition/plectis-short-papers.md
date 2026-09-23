@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `70f9ab6e26c01b19`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `0a9dc01770410035`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -5311,7 +5311,7 @@ Pairwise separation gives disjoint hyperbolic balls about the mapped roots. On e
 
 A second averaging argument converts the root count into area growth. Lift a common value ray from each root to the boundary and join adjacent endpoints by boundary arcs. Under the failure assumption, each of the $`k`$ resulting paths has length at least $`2`$; their total length counts every lift twice and the boundary once. Coarea therefore gives a lower bound on area growth. The comparison combines the circle intersections with three other root-count bounds, derived in the companion, and exceeds $`\operatorname{Area}(C_t)\le\pi t^{2/n}`$ before $`t=1`$. The circle-intersection bound alone does not yield the stated cutoff.
 
-The rational comparison reaches this contradiction when $`\mu\le13/25`$. Its recorded stopping time also supports $`\mu\le529/1000`$; the [supplement](#erdos-1041-lemniscate-newton-flow--certificate-stopping-time) gives that calculation. The certificate has not been rerun for this revision, and no optimality of either cutoff is asserted.
+The rational comparison reaches this contradiction when $`\mu\le13/25`$. Its recorded stopping time also supports $`\mu\le529/1000`$; the [supplement](#erdos-1041-lemniscate-newton-flow--certificate-stopping-time) gives that calculation. A rerun of the certificate on 23 September 2026 reproduced the recorded stopping time exactly. No optimality of either cutoff is asserted.
 
 <div id="erdos-1041-lemniscate-newton-flow--supplementary-results">
 
@@ -5355,7 +5355,7 @@ The [complete area-growth argument and rational certificate](https://github.com/
 ``` math
 (529/1000)e^X<0.998996547<1,
 ```
-so the same recorded output also covers $`\mu\le529/1000`$; $`13/25`$ is the simpler stated constant. The certificate has not been rerun for this revision, and no optimality of either cutoff is asserted.
+so the same recorded output also covers $`\mu\le529/1000`$; $`13/25`$ is the simpler stated constant. On 23 September 2026 the full-mode certificate, unchanged since the recorded run, was rerun and returned $`X=635762889599/10^{12}`$ exactly. Its dual weights come from a SciPy linear program; without SciPy the uniform fallback weights certify $`\mu\le51/100`$. No optimality of either cutoff is asserted.
 
 <a id="erdos-1041-lemniscate-newton-flow--an-independent-area-proof."></a>
 

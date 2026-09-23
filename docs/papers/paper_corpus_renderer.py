@@ -939,10 +939,49 @@ def _fold_custom_verbatim_environments(tex: str) -> str:
     return tex
 
 
+_DESCRIPTION_OPTIONS_RE = re.compile(r'\\begin\{description\}[ \t]*\n?[ \t]*\[')
+
+
+def _strip_description_list_options(tex: str) -> str:
+    """Drop the enumitem option list that follows ``\\begin{description}``.
+
+    Pandoc reads ``\\begin{description}[leftmargin=*,style=nextline]`` as a
+    generic div and discards every ``\\item[...]`` label, so the rendered list
+    keeps each body and loses the term it describes. The eight labels of the
+    closing description list of the #249 reasoning surface went missing this
+    way. The options only set PDF layout, so they are removed before
+    conversion; the PDF is unaffected.
+    """
+    parts: list[str] = []
+    index = 0
+    for match in _DESCRIPTION_OPTIONS_RE.finditer(tex):
+        if match.start() < index:
+            continue
+        depth = 0
+        close_index = None
+        for position in range(match.end(), len(tex)):
+            char = tex[position]
+            if char == '{':
+                depth += 1
+            elif char == '}':
+                depth -= 1
+            elif char == ']' and depth == 0:
+                close_index = position
+                break
+        if close_index is None:
+            raise ValueError('unterminated option list after \\begin{description}')
+        parts.append(tex[index : match.start()])
+        parts.append('\\begin{description}')
+        index = close_index + 1
+    parts.append(tex[index:])
+    return ''.join(parts)
+
+
 def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     """LaTeX -> markdown, section index with line numbers, and front matter."""
     source = _preserve_path_macros(tex_path.read_text())
     source = _fold_custom_verbatim_environments(source)
+    source = _strip_description_list_options(source)
     source = _preserve_declaration_macros(source)
     source = _preserve_lean_citation_macros(source)
     source = _preserve_generated_note_macros(source, tex_path)

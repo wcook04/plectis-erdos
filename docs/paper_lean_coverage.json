@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "e6c2d8f77ac24753c5216a49f4daf7f7388b309f",
-  "content_digest": "sha256:845f502737d5d9f90f82e58a0040a91169755822f9387366f93a34d873f5f438",
+  "content_digest": "sha256:1ae334800e94742a5d9ae092ed608015633e6beeda6b80d3873268c5968ef0fc",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -2870,7 +2870,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:830717a7165a2c2289118678d75ed660c3b480d52dfd72a0965ad9a9b16278c6",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:334",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:337",
       "lean": {
         "status": "modulo_named_input",
         "declarations": [
@@ -2924,7 +2924,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:539eb373a88a2951a83fa9493e6781709b5ccecb96189a02da265b457efca4a9",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:419",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:422",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2960,7 +2960,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:fe95d93d506822bce3e2c8f6d26990199fa08f2ad6a80d644f21d03a6aed8766",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:453",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:456",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3000,7 +3000,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:c130c906313c528387ed0f3046ed29bf237480d4d6978f02a3b177f0df78b8c1",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:484",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:487",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3036,7 +3036,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:8d290f23e6cfc22ec1c63ea42d933018c17c3393d9e6892a4c71b481da93ad5d",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:552",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:555",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3072,7 +3072,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:e55812a8c5ed86d438c6e68307f07292a32c9f857587ffcab60007ff76fccdce",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:612",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:615",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3108,7 +3108,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:53bca44a6bc720aebcea87201a82e9b4afc60ebc21b6bd739d82fa302d34d2b0",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:678",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:681",
       "other_labels": [
         "eq:disk-family-length"
       ],
@@ -3157,7 +3157,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:b6c19cd59ee8bbf12b7215d9a96ca4fd3202764038199670af19371001077065",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:704",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:707",
       "lean": {
         "status": "modulo_named_input",
         "declarations": [
@@ -3199,7 +3199,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:664f3dcc468dda1d41796a9ddaa5e72b95fc6c996f0bc8ac991ef8412fb266d2",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:718",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:721",
       "lean": {
         "status": "modulo_named_input",
         "declarations": [
@@ -3241,7 +3241,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:8a36887f6a688d248d95723002649973d5575c93a68627270e5e0c7fd2d46a1b",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:819",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:822",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3277,7 +3277,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:cbe1140b4bd2266156b67d9018db401a834452826a5852d0b3a979c2cae704b6",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:835",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:838",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3313,7 +3313,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:30be0ca593be5b6fe619bf3b07cc8e9c90f7c997baac5953d04c6740f7050ee7",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:873",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:876",
       "lean": {
         "status": "none",
         "counted": true,
@@ -3336,7 +3336,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:13b66d69e613f84d6adf4dc7028c9cb5ac97a4441afe43fdf31b2d0d1e7055bd",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:894",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:897",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -3372,7 +3372,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:207266dc2e92b9b7bfe0e64bc4dc27f7dfae044ffdc6ab84f4e754699db9b5f5",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:929",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:932",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -3408,7 +3408,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0c95d8f8f1c5f9c785b8530b5c7a9b128edcd2ee4dc828d4bfa39d6ea31d883e",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:976",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:979",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3444,7 +3444,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:fe2d8a0d8a8929af921361926a36e199841f085a80738cf43af67542f888fd42",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1133",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1136",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3504,7 +3504,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:3d07d6165daf5a6815d7658ce65f7cc047060e404876d51334eff0504ebc640b",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1190",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1193",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -3573,7 +3573,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:7fae9a9498cbfbebd1ec6cdfa0f83cff833ac2e02dec7d5461e1c449fdd46e59",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1285",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1288",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3614,7 +3614,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:14061e40e266714c0417546f71d378bb877457596ef879b312255948be2885cb",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1374",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1377",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3650,7 +3650,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:dce7a2f9d1f399fc5f827efdca28a0b23c936b2b1c8ee8e12c520151969615a2",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1474",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1477",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
