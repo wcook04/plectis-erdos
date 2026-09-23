@@ -239,7 +239,7 @@ jobs:
         # validation key, so every supported target is named here instead.
         # ErdosProblems.Erdos251.PaperLargeAuditR7 imports the whole #251
         # large certificate (lakefile library Erdos251LargeCertificate).
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants FC243CubicRate ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
       - name: Verify a separate Lake project can use the library
         if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/check_downstream_reuse.py

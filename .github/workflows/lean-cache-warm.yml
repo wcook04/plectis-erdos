@@ -165,7 +165,7 @@ jobs:
         if: steps.lean-inputs.outputs.changed == 'true'
         # Warm exactly the target set consumed by the required build job under
         # one planner/singleflight owner, including its non-default consumers.
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants FC243CubicRate ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
 
       # Writes the exact dependency-index receipt into `.lake`. `lean.yml`
       # reuses it on an exact cache restore; without it in the saved cache the
