@@ -28,7 +28,8 @@ theorem erdos_1049_variants_rational_base_region_81_200 :
   change ZudilinHeightRegion a b at hr
   have hsource := rational_base_region a b hb hab
     (zudilinContourRegion_of_zudilinHeightRegion hr)
-  rw [tsum_pnat_eq_tsum_succ]
+  rw [tsum_pnat_eq_tsum_succ
+    (f := fun n : ℕ => (1 : ℝ) / ((((a : ℝ) / b) ^ n) - 1))]
   exact hsource
 
 #print axioms erdos_1049_variants_rational_base_region_81_200
