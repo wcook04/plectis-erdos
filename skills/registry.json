@@ -754,6 +754,18 @@
         {
           "actions": ["return", "package", "assimilate"],
           "objects": ["contribution", "patch", "receipt"]
+        },
+        {
+          "actions": [
+            "submit",
+            "submitting",
+            "send",
+            "sending"
+          ],
+          "objects": [
+            "proof",
+            "proofs"
+          ]
         }
       ],
       "skills": [
