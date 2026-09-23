@@ -802,7 +802,10 @@ and continuity of Lebesgue measure from above gives the same limit.
 Kova\v{c}--Tao record this strict-tail inequality and the Cantor conclusion in the fixed-base setting~\cite[Remark~4.1]{kovactao}.
 For a specified rational target, the useful consequence here is
 uniqueness of its possible selector.  Restricted-set dimension and
-measure calculations are given in the companion, Section~1.8.
+measure calculations are given in the companion, Section~1.8; Lean proves
+the \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L30}{comparison of each restricted tail with the preceding weight},
+the \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L54}{injectivity of the restricted digit map} and the
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L397}{measure dichotomy}.
 
 \section{Greedy membership and an integer recurrence}\label{sec:actual-repairs}
 For $x\ge0$, the greedy rule starts with $r_0=x$ and, at rank $n\ge1$,

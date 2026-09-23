@@ -847,6 +847,28 @@ def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
         index = int(match.group("line")) - 1
         if 0 <= index < len(source) and declares_at(source, index, declaration):
             linked.add((relative, declaration))
+    # A pinned link may name its declaration in words ("the measure dichotomy").
+    # It reaches the declaration its target line declares at that pin.
+    worded = re.compile(
+        r"\\href\{https://github\.com/wcook04/plectis-erdos/blob/"
+        r"(?P<commit>[0-9a-f]{40})/"
+        r"(?P<path>(?:lean/)?(?:ErdosProblems|Erdos249257)/[A-Za-z0-9_/.-]+\.lean)"
+        r"\\?#L(?P<line>[1-9][0-9]*)\}\{(?!\\texttt\{)"
+    )
+    head = re.compile(
+        r"(?:(?:private|protected|noncomputable|nonrec)\s+)*"
+        r"(?:theorem|lemma|def|abbrev|instance|structure|inductive|class)\s+([A-Za-z_][A-Za-z0-9_'.]*)"
+    )
+    for match in worded.finditer(strip_comments(note_text)):
+        relative = library_relative(match.group("path").removeprefix("lean/"))
+        raw = snapshot_lines(match.group("commit"), relative, cache)
+        source = strip_lean_comments("\n".join(raw)).splitlines()
+        index = int(match.group("line")) - 1
+        if not 0 <= index < len(source):
+            continue
+        found = head.match(ATTRIBUTE_RE.sub("", source[index]).strip())
+        if found and declares_at(source, index, found.group(1)):
+            linked.add((relative, found.group(1)))
     return linked
 
 
