@@ -4,7 +4,7 @@ import ErdosProblems.Erdos1049.PaperR16.RowScaling
 /-!
 # From a literal polynomial Mahler equation to every boundary row
 
-Candidate source; every new Lean check is UNRUN.
+Checked in the eight-paper audit build (EightPaperR21Audit).
 
 The input is the equation on the open complex unit disc, not a radial-limit
 hypothesis, not a family of rows, and not a nonvanishing determinant premise.
