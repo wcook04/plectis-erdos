@@ -9,7 +9,7 @@ expository paper, a longer research record and associated Lean source. The aim
 is to make results, methods and useful failures understandable enough for
 others to question, extend and reuse.
 
-For a first mathematical result, start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
+Start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
 If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
 the Lean-checked theorem proves irrationality at every integer base for each
 infinite support `A` with finite base-two weighted mass
@@ -17,6 +17,18 @@ infinite support `A` with finite base-two weighted mass
 `∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
 [Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
 or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+
+Start here: [read the paper](paper/257/erdos-257-mersenne-support-subseries.pdf),
+[run one exact-rational experiment](research/experiments/sparse_interpolation/late_rejection.py),
+and [return a question or correction](CONTRIBUTING.md#return-what-you-learned).
+This tests one proposed rational subsum, not the weighted theorem.
+
+**[All papers](paper/README.md)** ·
+[Reading edition](docs/reading-edition/README.md) ·
+[Reproduce one result](docs/REPRODUCIBILITY.md) ·
+[Contribute or correct](CONTRIBUTING.md)
+
+![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
 **Using the degree-seven polynomial constructed by the erdosproblems.com
 contributor ani, Lean proves that every preconnected strict-lemniscate set
@@ -29,13 +41,6 @@ statements, axioms and kernel acceptance; it does not assess novelty or
 historical correspondence.**
 
 The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
-
-**[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
-[Website](https://wcook04.github.io/plectis/) ·
-[All papers](paper/README.md) ·
-[Contact me](https://wcook04.github.io/plectis/#contact)
-
-![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
 ## Where to start
 
