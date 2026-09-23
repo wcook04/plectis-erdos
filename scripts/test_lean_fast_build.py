@@ -24,6 +24,9 @@ LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 
 LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 
+# The module that imports the whole #251 large certificate; CI builds it.
+LARGE_CERTIFICATE_ROOT = "ErdosProblems.Erdos251.PaperLargeAuditR7"
+
 
 class LeanFastBuildTests(unittest.TestCase):
     def test_discovery_uses_declared_lake_source_roots(self) -> None:
@@ -142,6 +145,46 @@ class LeanFastBuildTests(unittest.TestCase):
             problem_libraries[0].get("weakLeanArgs"),
             ["--tstack=65536"],
         )
+
+    def test_large_certificate_library_owns_its_modules_and_ci_reaches_them(self) -> None:
+        # The certificate modules are named ErdosProblems.Erdos251.*, so the
+        # ErdosProblems library claims them by prefix as well. Lake assigns a
+        # module to the last declared library that claims it: without the
+        # globs, or with this block before ErdosProblems, `lake build` looks
+        # for the certificate under lean/ and fails.
+        lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
+            encoding="utf-8"
+        ))
+        names = [library.get("name") for library in lakefile["lean_lib"]]
+        self.assertLess(
+            names.index("ErdosProblems"), names.index("Erdos251LargeCertificate")
+        )
+        library = lakefile["lean_lib"][names.index("Erdos251LargeCertificate")]
+        source_root = fast.ROOT / library["srcDir"]
+        modules = {
+            fast.module_name(path, source_root)
+            for path in source_root.rglob("*.lean")
+        }
+        globs = library.get("globs", [])
+
+        def claims(glob: str, module: str) -> bool:
+            if glob.endswith(".+"):
+                return module.startswith(glob[:-1])
+            if glob.endswith(".*"):
+                return module == glob[:-2] or module.startswith(glob[:-1])
+            return module == glob
+
+        self.assertIn("ErdosProblems.Erdos251.GcdPrimality", modules)
+        self.assertEqual(
+            sorted(m for m in modules if not any(claims(g, m) for g in globs)), []
+        )
+        self.assertEqual(
+            [g for g in globs if not any(claims(g, m) for m in modules)], []
+        )
+        # The CI root imports every certificate module, so building it
+        # kernel-checks the whole chain.
+        graph = fast.reachable_graph([LARGE_CERTIFICATE_ROOT], fast.discover(fast.ROOT))
+        self.assertEqual(sorted(modules - set(graph)), [])
 
     def test_automatic_worker_default_is_memory_bounded(self) -> None:
         with mock.patch.dict(os.environ, {}, clear=True), mock.patch.object(
@@ -274,6 +317,7 @@ class LeanFastBuildTests(unittest.TestCase):
             "FormalConjecturesAdapter",
             "FormalConjecturesVariants",
             "ResidualBench",
+            LARGE_CERTIFICATE_ROOT,
         )
         for relative in (
             ".github/workflows/lean.yml",

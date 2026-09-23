@@ -746,7 +746,27 @@
         "send work back",
         "reviewed and credited",
         "package evidence",
-        "resume work"
+        "resume work",
+        "return it for acceptance",
+        "public contribution round trip"
+      ],
+      "task_intents": [
+        {
+          "actions": ["return", "package", "assimilate"],
+          "objects": ["contribution", "patch", "receipt"]
+        },
+        {
+          "actions": [
+            "submit",
+            "submitting",
+            "send",
+            "sending"
+          ],
+          "objects": [
+            "proof",
+            "proofs"
+          ]
+        }
       ],
       "skills": [
         "erdos-research-return",

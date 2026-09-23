@@ -29,7 +29,9 @@ ledger, or in `docs/paper_lean_docstring_exemptions.json` with a reason.
 
 2. **Update each ledger row.** Set `lean.status` to `exact`,
    `exact_or_stronger`, or `modulo_named_input` with its `named_inputs`, and
-   list every declaration by full name with its file under `lean/`. For an
+   list every declaration by full name with its file under `lean/`, or under
+   `verification/Erdos251LargeCertificate/` for the #251 large certificate,
+   a separately built library the check also reads. For an
    exact row that Comparator has not compared, set `comparator` to
    `{"status": "pending", "queued_at": "<YYYY-MM-DD>"}` and `palomar` to
    `{"status": "pending"}`. Then run

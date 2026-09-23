@@ -804,22 +804,19 @@ def _render_routing_item(family: dict) -> list[str]:
 
 
 def _ranked_candidate_tier(candidate: dict) -> str:
-    """Project the ranking into reader tiers without creating a second ranking."""
-    if candidate["selection_status"] == "subordinate":
-        return "structural"
-    conditional_text = " ".join(
-        str(candidate.get(key, ""))
-        for key in (
-            "consequence_and_endpoint_proximity",
-            "mechanism_depth_and_natural_friction",
-            "overclaim_risk",
-            "why_not_ranked_first",
+    """Render the authored reader tier without inferring it from prose."""
+    tier_names = {
+        "completed_direct_result": "completed",
+        "conditional_endpoint_route": "conditional",
+        "exact_reduction_or_structural_result": "structural",
+    }
+    tier = candidate.get("reader_tier")
+    if not isinstance(tier, str) or tier not in tier_names:
+        raise ValueError(
+            "Palomar ranked candidate "
+            f"{candidate.get('family_id')!r} has invalid reader_tier"
         )
-    ).lower()
-    if re.search(r"\b(?:conditional|unresolved|missing producer|not constructed)\b",
-                 conditional_text):
-        return "conditional"
-    return "completed"
+    return tier_names[tier]
 
 
 def _render_ranked_candidate(candidate: dict, result: dict) -> list[str]:
@@ -1255,7 +1252,8 @@ def _render_signal_spine(packet: dict, signal_authority: dict) -> list[str]:
         "## Mathematical signal spine",
         "",
         (
-            "This order projects Palomar's mathematical `candidate_ranking`; it is independent "
+            "This order projects the repository's authored `candidate_ranking` for a possible "
+            "Palomar submission; it is independent "
             "of Comparator roster order, programme number, insertion time, theorem count, and "
             "qualification convenience. Comparator coverage is the exhaustive evidence inventory, "
             "not a significance ranking. Checked propositions are therefore given unequal reader "

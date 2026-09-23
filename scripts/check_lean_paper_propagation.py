@@ -11,7 +11,9 @@ prepare-only Palomar entry (``palomar``).  This program fails when a Lean
 result has not propagated:
 
   (a) a row names a declaration that its Git-tracked file in this checkout
-      does not declare, exactly once, under that full name;
+      does not declare, exactly once, under that full name.  The file is a
+      corpus source under ``lean/`` or a source of one of the separately built
+      libraries in ``CHECKED_LIBRARY_DIRS``;
   (b) a row with Lean declarations whose environment carries no rendered link
       naming each of them.  Rendered links are the ``\\leannote`` printed after
       the environment, the row's entry in the generated concordance of a long
@@ -63,6 +65,7 @@ import datetime
 import hashlib
 import json
 import re
+import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Iterable
@@ -92,6 +95,12 @@ EXEMPTIONS = ROOT / "docs" / "paper_lean_docstring_exemptions.json"
 LEDGER_SCHEMA = "plectis-paper-lean-coverage/1"
 BASELINE_SCHEMA = "plectis-paper-lean-propagation-baseline/1"
 EXEMPTION_SCHEMA = "plectis-paper-lean-docstring-exemptions/1"
+
+# Lean libraries outside the two corpus roots whose declarations a row may
+# bind.  Each is a Lake library of its own that CI builds and kernel-checks by
+# name (lakefile.toml); the #251 large certificate is kept out of the default
+# build this way.
+CHECKED_LIBRARY_DIRS = ("verification/Erdos251LargeCertificate",)
 
 EXACT = ("exact", "exact_or_stronger")
 LEAN_STATUSES = (*EXACT, "modulo_named_input", "none")
@@ -799,6 +808,39 @@ def propagation_failures(
 # =============================================================================
 
 
+def checked_library_sources(
+    root: Path, directories: Iterable[str] = CHECKED_LIBRARY_DIRS
+) -> set[str]:
+    """Git-tracked ``.lean`` files of the separately built libraries a row may bind.
+
+    Outside a Git worktree (a tarball or a test root) every ``.lean`` file on
+    disk counts, as it does for the corpus roots.
+    """
+    found: set[str] = set()
+    for directory in directories:
+        base = root / directory
+        if not base.is_dir():
+            continue
+        try:
+            completed = subprocess.run(
+                ["git", "-C", str(root), "ls-files", "-z", "--", directory],
+                capture_output=True,
+                check=False,
+                timeout=60,
+            )
+        except FileNotFoundError:
+            completed = None
+        if completed is not None and completed.returncode == 0:
+            found.update(
+                name
+                for name in completed.stdout.decode("utf-8").split("\0")
+                if name.endswith(".lean")
+            )
+        else:
+            found.update(path.relative_to(root).as_posix() for path in base.rglob("*.lean"))
+    return found
+
+
 class LeanSources:
     """Git-tracked Lean sources of this checkout, read on demand."""
 
@@ -812,7 +854,7 @@ class LeanSources:
         if self._tracked is None:
             self._tracked = {
                 path.relative_to(self.root).as_posix() for path in library_source_paths(self.root)
-            }
+            } | checked_library_sources(self.root)
         return self._tracked
 
     def text(self, relative: str) -> str | None:

@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `695e3398c5034a2f`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `21cdcbb4e472a7a8`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -891,7 +891,7 @@ At $`n=17`$, the exact comparison is
 ``` math
 R_{17}\le\frac{196609}{25769803776}<r<\frac1{131071}=w_{17}.
 ```
-The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">14</a>. The independent reproduction, including every earlier skipped step, is in `research/experiments/sparse_interpolation/late_rejection.py`. This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
+The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">14</a>. The independent reproduction, including every earlier skipped step, is in [`research/experiments/sparse_interpolation/late_rejection.py`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/late_rejection.py). This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
 
 What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#optimal-sparse-perturbations--lem:gaps" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:gaps">13</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">14</a>.
 
@@ -1897,7 +1897,7 @@ The preceding proof fixes its coefficient bound before choosing the zero blocks.
 
 *Which sparse congruence-preserving corrections can rationalise a dyadic series, and why does that not prove Erdős #251 irrational?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf)
 
-Longer record: [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) (201 KB as text).
+Longer record: [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) (204 KB as text).
 
 <a id="erdos-251-prime-gap-dyadic-series--erdos-251-prime-gap-dyadic-series"></a>
 

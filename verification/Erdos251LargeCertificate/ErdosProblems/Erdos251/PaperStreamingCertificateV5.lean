@@ -1,15 +1,15 @@
-import ErdosProblems.Erdos251.KernelDenominatorFloor
+import ErdosProblems.Erdos251.GcdPrimality
 
 /-!
 # Restartable streaming prime certificate
 
-UNRUN proof-source candidate.  Unlike primeSumLoop, the integer prefix is
-accumulated by Horner's rule: A <- 2*A+p when a prime is encountered.
-Fixed-size blocks can be compiled separately and their endpoint equalities
-chained.  Generated endpoint literals are not trusted: each block must
-succeed with `decide +kernel`.  Neither native_decide nor an external
-primality oracle is used.  This is a scheduling/representation repair, not
-a claim of measured compilation performance.
+Unlike primeSumLoop, the integer prefix is accumulated by Horner's rule:
+A <- 2*A+p when a prime is encountered.  Fixed-size blocks can be compiled
+separately and their endpoint equalities chained.  Generated endpoint
+literals are not trusted: each block must succeed with `decide +kernel`.
+Neither native_decide nor an external primality oracle is used.  Primality
+is decided by `Fast.isPrimeG` (`GcdPrimality`), which equals the
+trial-division test `isPrimeTD` and costs one gcd per scanned integer.
 -/
 
 open scoped BigOperators
@@ -34,7 +34,7 @@ theorem primeHorner_prefix (n : ℕ) :
       <;> ring
 
 def step (m : ℕ) (s : ℕ × ℕ) : ℕ × ℕ :=
-  if isPrimeTD m then (s.1 + 1, 2 * s.2 + m) else s
+  if Fast.isPrimeG m then (s.1 + 1, 2 * s.2 + m) else s
 
 def primePrefix : ℕ → ℕ × ℕ
   | 0 => (0, 0)
@@ -53,11 +53,11 @@ theorem prefix_semantics (X : ℕ) :
   | zero => simp [primePrefix, primeHorner]
   | succ X ih =>
       by_cases hp : Nat.Prime X
-      · have hb : isPrimeTD X = true := (isPrimeTD_eq_true_iff X).2 hp
+      · have hb : Fast.isPrimeG X = true := (Fast.isPrimeG_eq_true_iff X).2 hp
         have hnth : prime0 (Nat.count Nat.Prime X) = X := Nat.nth_count hp
         simp [primePrefix, step, hb, ih, Nat.count_succ, hp, primeHorner, hnth]
-      · have hb : isPrimeTD X = false := by
-          rw [← Bool.not_eq_true, isPrimeTD_eq_true_iff]
+      · have hb : Fast.isPrimeG X = false := by
+          rw [← Bool.not_eq_true, Fast.isPrimeG_eq_true_iff]
           exact hp
         simp [primePrefix, step, hb, ih, Nat.count_succ, hp]
 

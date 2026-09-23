@@ -76,7 +76,15 @@ def main() -> int:
     require(committed == NEGATIVE.read_bytes(), "tracked negative fixture differs from HEAD")
 
     tracked = builder.load_receipts(builder.RETURNS, require_committed=True)
-    require(not tracked, "a non-accepted current receipt entered attribution authority")
+    tracked_ids = {receipt["return_id"] for _name, receipt, _payload in tracked}
+    require(
+        json.loads(committed)["return_id"] not in tracked_ids,
+        "committed negative fixture entered attribution authority",
+    )
+    require(
+        all(receipt["record_kind"] == "accepted_receipt" for _name, receipt, _payload in tracked),
+        "non-accepted receipt entered attribution authority",
+    )
     recognition_projection = recognition.build_recognition(
         builder.load_receipts(
             builder.RETURNS,
@@ -85,14 +93,17 @@ def main() -> int:
         )
     )
     recognition.validate_projection(recognition_projection)
+    recognized_ids = {
+        row["return_id"] for row in recognition_projection["chronological"]
+    }
     require(
-        recognition_projection["accepted_receipt_count"] == 0,
-        "committed source set entered accepted recognition authority",
+        recognition_projection["accepted_receipt_count"] == len(tracked)
+        and recognized_ids == tracked_ids,
+        "accepted recognition does not match committed accepted sources",
     )
     github_return_id = json.loads(GITHUB_UNACCEPTED.read_text(encoding="utf-8"))["return_id"]
     require(
-        github_return_id
-        not in {row["return_id"] for row in recognition_projection["chronological"]},
+        github_return_id not in recognized_ids,
         "GitHub submitted return entered committed recognition",
     )
 

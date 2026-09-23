@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:4f7ee907f9ffc15c360ad3329c68ab749afe259ac08aed8a8250e7f0083746bf",
+    "docs/claims.json": "sha256:4855ddc1dd086a191d6d9fed0d8f7be7fb262e252c1f9bce1f23131cce506bce",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
-    "docs/publication_contract.json": "sha256:4ce5af4b81f199005e46a2eedd1eec408ced3854a49448936c038a5156c79eda",
+    "docs/publication_contract.json": "sha256:6bc80da6eca2847cd392e424efae436889883bc7ef8f4cf1381b98784b864bc5",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:b6bae9f8a23844fe75aa69f735402adad5b452070130bca39fb4c86b565d2b9b",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ca080090b44d030a7795db8c78c62e65d11b76f98db76ea617f835f10e547171",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:9e1729130374c094651b0bca84bf4062386d7530cf716653f6b7772c73bf1bc3",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ed5fa4f7d83bd51ada80ca4ac0e8d3d513d9b645e2d4c41718e13d0ab68a4db5",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "76f44c5329c0e207f5376062c7d79125485fbceb",
+      "ref": "e6c2d8f77ac24753c5216a49f4daf7f7388b309f",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

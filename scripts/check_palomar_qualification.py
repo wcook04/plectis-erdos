@@ -35,6 +35,11 @@ SELECTION_AXES = {
     "overclaim_risk",
 }
 VALUE_DISPOSITIONS = {"selected", "represented", "deferred", "subordinate", "rejected", "long_tail"}
+PALOMAR_READER_TIERS = {
+    "completed_direct_result",
+    "conditional_endpoint_route",
+    "exact_reduction_or_structural_result",
+}
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 SOURCE_TYPES = {
@@ -990,6 +995,12 @@ def candidate_selection_errors(
             if not isinstance(row, dict):
                 errors.append(f"candidate ranking row {index} is not an object")
                 continue
+            reader_tier = row.get("reader_tier")
+            if (
+                not isinstance(reader_tier, str)
+                or reader_tier not in PALOMAR_READER_TIERS
+            ):
+                errors.append(f"candidate ranking row {index} has invalid reader_tier")
             missing = sorted(
                 field
                 for field in required_prose

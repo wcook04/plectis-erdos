@@ -426,7 +426,20 @@ def validate_problem_reader_journey() -> None:
         results = answer["result_evidence"]
         assert 1 <= len(results) <= 3
         assert answer["omitted_result_family_count"] == len(families) - len(results)
-        for result, family in zip(results, families):
+        family_by_id = {family["id"]: family for family in families}
+        signal_order = list(dict.fromkeys(
+            row["family_id"]
+            for row in packet["mathematical_signal_spine"]["results"]
+        ))
+        assert set(signal_order) <= set(family_by_id)
+        expected_order = signal_order + [
+            family["id"] for family in families if family["id"] not in signal_order
+        ]
+        assert [result["id"] for result in results] == expected_order[:3]
+        assert answer["result_selection"] == "palomar_programme_signal_then_registry_fallback"
+        assert "order=Palomar programme signal" in card.stdout
+        for result in results:
+            family = family_by_id[result["id"]]
             for field in ("id", "summary", "contribution_class", "evidence_mode", "boundary"):
                 assert result[field] == family[field]
                 assert str(result[field]) in card.stdout
@@ -438,6 +451,11 @@ def validate_problem_reader_journey() -> None:
                 assert witness["source_ref"] in card.stdout
                 assert int(line) > 0
                 assert declaration_packet(witness["qualified_name"], 1)["matches"]
+        if number == 257:
+            assert results[0]["id"] == "finite_prime_weighted_support"
+            assert results[0]["declaration_preview"]["qualified_name"] == (
+                "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim"
+            )
         expected_open = [
             row for row in claims["remaining_open_propositions"]
             if row["open_target_claim"] in {route_id, f"universal_{number}"}
@@ -467,6 +485,35 @@ def validate_problem_reader_journey() -> None:
             assert result["boundary"] in question_card.stdout
         for row in expected_open:
             assert row["statement"] in question_card.stdout
+
+    # A future signal projection may name fewer families than the registry.
+    # Duplicate signal rows are one family, and registry-only families still
+    # supply the bounded preview without losing the full open boundary.
+    packet = copy.deepcopy(query("--route", "erdos_257", "--format", "json"))
+    first_signal = packet["mathematical_signal_spine"]["results"][0]
+    packet["mathematical_signal_spine"]["results"] = [first_signal, first_signal]
+    with patch.object(query_corpus, "route_packet", return_value=packet):
+        query_corpus.problem_reader_answer.cache_clear()
+        fallback_answer = query_corpus.problem_reader_answer("erdos_257")
+    query_corpus.problem_reader_answer.cache_clear()
+    assert [row["id"] for row in fallback_answer["result_evidence"]] == [
+        "finite_prime_weighted_support",
+        *[family["id"] for family in packet["route"]["result_families"][:2]],
+    ]
+    assert fallback_answer["result_family_count"] == len(packet["route"]["result_families"])
+    assert fallback_answer["exact_open_records"]
+
+    misbound_packet = copy.deepcopy(query("--route", "erdos_257", "--format", "json"))
+    misbound_packet["mathematical_signal_spine"]["results"][0]["source_declaration"] = (
+        misbound_packet["mathematical_signal_spine"]["results"][1]["source_declaration"]
+    )
+    with patch.object(query_corpus, "route_packet", return_value=misbound_packet):
+        query_corpus.problem_reader_answer.cache_clear()
+        misbound_answer = query_corpus.problem_reader_answer("erdos_257")
+    query_corpus.problem_reader_answer.cache_clear()
+    assert misbound_answer["result_evidence"][0]["declaration_preview"]["name"] == (
+        "weightedDyadicMeanTarget"
+    )
 
     # Exercise the installed script from outside the checkout, not only the
     # in-process helper that requests JSON for machine tests.
@@ -833,6 +880,11 @@ def validate_agent_tour() -> None:
     assert card.returncode == 0
     lines = card.stdout.strip().splitlines()
     signal = packet["mathematical_signal_spine"]
+    assert signal["source_result_spine"]["ranked_claim_ids"] == [
+        "finite_prime_weighted_support",
+        "zudilin_rational_base_region",
+        "ani_degree_seven_total_variation_counterexample",
+    ]
     lead = signal["ranked_frontier"][0]
     assert len(lines) <= 16
     assert len(card.stdout.encode("utf-8")) <= 4096
@@ -2131,6 +2183,20 @@ def validate_mathematical_signal_spine() -> None:
     assert keys.index("mathematical_signal_spine") < keys.index("problem_fleet")
     signal = overview["mathematical_signal_spine"]
     showcase = load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    source_results = signal["source_result_spine"]["ranked_results"]
+    assert [(row["problem"], row["claim_id"]) for row in source_results] == [
+        (257, "finite_prime_weighted_support"),
+        (1049, "zudilin_rational_base_region"),
+        (1041, "ani_degree_seven_total_variation_counterexample"),
+    ]
+    assert all((ROOT / row["source_file"]).is_file() for row in source_results)
+    assert all(row["exact_boundary"] for row in source_results)
+    overview_card = query_corpus.render_card(overview)
+    assert [
+        line.split("claim=", 1)[1].split(" | ", 1)[0]
+        for line in overview_card.splitlines()
+        if line.startswith("source_signal #")
+    ] == [row["claim_id"] for row in source_results]
     expected = sorted(showcase["candidate_ranking"], key=lambda row: row["rank"])
     frontier = signal["ranked_frontier"]
     assert [row["rank"] for row in frontier] == list(range(1, len(expected) + 1))
@@ -2142,6 +2208,41 @@ def validate_mathematical_signal_spine() -> None:
         "conditional_endpoint_route",
         "exact_reduction_or_structural_result",
     }
+    expected_reader_tiers = {
+        "finite_prime_weighted_support": "completed_direct_result",
+        "known_irrational_supports": "completed_direct_result",
+        "pairwise_coprime_support": "completed_direct_result",
+        "orthogonal_petal_sunflower_reduction": "conditional_endpoint_route",
+        "periodic_nonnegative_weight_irrationality": "completed_direct_result",
+        "actual_lcm_orbit_separation": "conditional_endpoint_route",
+        "first_harmonic_pivot_decomposition": "conditional_endpoint_route",
+        "strict_prime_tail_orbit_gap": "conditional_endpoint_route",
+        "factorial_carry_characterisation": "exact_reduction_or_structural_result",
+        "prime_gap_reformulation": "exact_reduction_or_structural_result",
+        "totient_carry_anti_compression": "exact_reduction_or_structural_result",
+        "half_membership_seam_classification": "exact_reduction_or_structural_result",
+        "negative_mass_recovery": "conditional_endpoint_route",
+    }
+    assert {
+        row["family_id"]: row["reader_tier"] for row in frontier
+    } == expected_reader_tiers
+    assert [row["reader_tier"] for row in frontier] == [
+        row["reader_tier"] for row in expected
+    ]
+    for row in expected:
+        prose_changed = copy.deepcopy(row)
+        prose_changed["why_not_ranked_first"] = "conditional or unconditional wording"
+        assert query_corpus._signal_reader_tier(prose_changed) == row["reader_tier"]
+    invalid_tier_showcase = copy.deepcopy(showcase)
+    invalid_tier_showcase["candidate_ranking"][1]["reader_tier"] = "unreviewed_tier"
+    try:
+        query_corpus.mathematical_signal_spine(
+            load("docs/claims.json"), invalid_tier_showcase
+        )
+    except ValueError as exc:
+        assert "invalid reader_tier" in str(exc)
+    else:
+        raise AssertionError("invalid Palomar reader tier was projected")
     assert all(row["source_file"] and row["exact_boundary"] for row in frontier)
     for row in frontier:
         declaration = query("--declaration", row["source_declaration"])
@@ -2193,6 +2294,7 @@ def validate_mathematical_signal_spine() -> None:
     ]:
         problem["families"].reverse()
     adversarial_showcase = copy.deepcopy(showcase)
+    adversarial_showcase["selection_contract"]["source_result_spine"]["ranked_results"].reverse()
     adversarial_showcase["candidate_ranking"].reverse()
     adversarial_showcase["candidate_screening"].reverse()
     reordered = query_corpus.mathematical_signal_spine(
@@ -2202,6 +2304,9 @@ def validate_mathematical_signal_spine() -> None:
     )
     assert [row["declaration"] for row in reordered["ranked_frontier"]] == [
         row["declaration"] for row in expected
+    ]
+    assert [row["claim_id"] for row in reordered["source_result_spine"]["ranked_results"]] == [
+        row["claim_id"] for row in source_results
     ]
 
     programme_spines = {
@@ -2325,16 +2430,15 @@ def validate_mathematical_signal_spine() -> None:
             ],
         ),
     ):
-        # Exhaustive source-ranked order stays in the JSON packet; the human
-        # card is a bounded reviewed-family preview with an explicit drilldown.
+        # The exhaustive authored signal order stays in JSON; the human card
+        # shows its first three families with an explicit full-route drilldown.
         packet = route_packet(route_id)
         assert [row["family_id"] for row in packet["mathematical_signal_spine"]["results"]] == expected_families
         route_card = query_corpus.render_card(packet)
         result_lines = [line for line in route_card.splitlines() if line.startswith("result ")]
-        assert [line.split(" |", 1)[0].split(" ", 1)[1] for line in result_lines] == [
-            family["id"]
-            for family in packet["route"]["result_families"][:query_corpus.PROBLEM_READER_RESULT_LIMIT]
-        ]
+        assert [line.split(" |", 1)[0].split(" ", 1)[1] for line in result_lines] == (
+            expected_families[:query_corpus.PROBLEM_READER_RESULT_LIMIT]
+        )
         assert f"--route {route_id} --format json" in route_card
 
     friction_ids = {

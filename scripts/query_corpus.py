@@ -9164,23 +9164,66 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
 def problem_reader_answer(route_id: str) -> dict[str, Any]:
     """Select a small source-grounded result preview and the entire open boundary.
 
-    Family order and wording come from the claim registry. A declaration preview
-    is a navigation witness, not a new elaboration or a promotion of a conditional
-    result. The full JSON route retains every family and signal-spine row.
+    Palomar's programme signal orders families; the claim registry owns their
+    wording and boundaries. A declaration preview is a navigation witness, not
+    a new elaboration or a promotion of a conditional result. The full JSON route
+    retains every family and signal-spine row.
     """
-    route = route_packet(route_id)["route"]
+    packet = route_packet(route_id)
+    route = packet["route"]
     families = route["result_families"]
+    families_by_id = {family["id"]: family for family in families}
+    signal_by_id = {}
+    ordered_family_ids = []
+    for row in packet["mathematical_signal_spine"]["results"]:
+        family_id = row["family_id"]
+        if family_id not in families_by_id:
+            raise ValueError(f"programme signal lacks registry family: {family_id}")
+        if family_id not in signal_by_id:
+            signal_by_id[family_id] = row
+            ordered_family_ids.append(family_id)
+    ordered_family_ids.extend(
+        family["id"] for family in families if family["id"] not in signal_by_id
+    )
+    claims = load("docs/claims.json")
+    comparator_family_by_source = {
+        row["original_declaration"]: row["review_family"]
+        for row in claims["external_verification_packet"]["main_results"]
+        if row.get("original_declaration") and row.get("review_family")
+    }
     results = []
-    for family in families[:PROBLEM_READER_RESULT_LIMIT]:
+    for family_id in ordered_family_ids[:PROBLEM_READER_RESULT_LIMIT]:
+        family = families_by_id[family_id]
+        signal_row = signal_by_id.get(family_id)
+        source_declaration = signal_row["source_declaration"] if signal_row else None
         declaration_rows = [
             row
             for name in family["declarations"]
             for row in declaration_rows_for_handle(name)
         ]
-        witness = next(
-            (row for row in declaration_rows if row["kind"] in ("theorem", "lemma")),
-            next(iter(declaration_rows), None),
+        registered_row_ids = {row["id"] for row in declaration_rows}
+        source_rows = (
+            declaration_rows_for_handle(source_declaration)
+            if source_declaration and not source_declaration.startswith("review_family:")
+            else []
         )
+        witness = next(
+            (
+                row for row in source_rows
+                if row["kind"] in ("theorem", "lemma")
+                and qualified_declaration_name(row) == source_declaration
+                and (
+                    row["id"] in registered_row_ids
+                    or comparator_family_by_source.get(source_declaration) == family_id
+                )
+            ),
+            None,
+        )
+        if witness is None:
+            witness = next(
+                (row for row in declaration_rows if row["kind"] in ("theorem", "lemma")),
+                next(iter(declaration_rows), None),
+            )
         preview = compact_declaration(witness) if witness else None
         if preview:
             source_path = checkout_lean_file(witness["module"]).relative_to(ROOT).as_posix()
@@ -9194,7 +9237,6 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
             "declaration_preview": preview,
             "declaration_count": len(family["declarations"]),
         })
-    claims = load("docs/claims.json")
     targets = {route_id, f"universal_{route['erdos_number']}"}
     exact_open = [
         {
@@ -9212,7 +9254,7 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         "source_directory": route["directory"],
         "paper_source": (route.get("paper") or {}).get("source"),
         "result_evidence": results,
-        "result_selection": "claim_registry_review_matrix_order_bounded_preview",
+        "result_selection": "palomar_programme_signal_then_registry_fallback",
         "result_family_count": len(families),
         "omitted_result_family_count": max(0, len(families) - len(results)),
         "exact_open_records": exact_open,
@@ -9231,7 +9273,7 @@ def render_problem_reader_answer(answer: dict[str, Any]) -> list[str]:
     rows = [
         f"source={answer['source_directory']} | paper={answer['paper_source'] or 'unavailable'}",
         f"results={len(answer['result_evidence'])}/{answer['result_family_count']} "
-        "| order=claim-registry review matrix",
+        "| order=Palomar programme signal",
     ]
     for result in answer["result_evidence"]:
         rows.append(f"result {result['id']} | {result['contribution_class']} | {result['summary']}")
@@ -9554,30 +9596,22 @@ def publication_architecture_packet() -> dict[str, Any]:
     }
 
 
+PALOMAR_READER_TIERS = frozenset({
+    "completed_direct_result",
+    "conditional_endpoint_route",
+    "exact_reduction_or_structural_result",
+})
+
+
 def _signal_reader_tier(candidate: Mapping[str, Any]) -> str:
-    """Project an authored rank into a reader role without changing the rank."""
-    if candidate.get("selection_status") == "subordinate":
-        return "exact_reduction_or_structural_result"
-    conditional_text = " ".join(
-        str(candidate.get(key, ""))
-        for key in (
-            "consequence_and_endpoint_proximity",
-            "mechanism_depth_and_natural_friction",
-            "overclaim_risk",
-            "why_not_ranked_first",
+    """Project the reviewed reader role of an authored ranked candidate."""
+    tier = candidate.get("reader_tier")
+    if not isinstance(tier, str) or tier not in PALOMAR_READER_TIERS:
+        raise ValueError(
+            "Palomar ranked candidate "
+            f"{candidate.get('family_id')!r} has invalid reader_tier"
         )
-    ).casefold()
-    if any(
-        marker in conditional_text
-        for marker in (
-            "conditional",
-            "unresolved",
-            "missing producer",
-            "not constructed",
-        )
-    ):
-        return "conditional_endpoint_route"
-    return "completed_direct_result"
+    return tier
 
 
 def _signal_presentation_contract(
@@ -9893,6 +9927,44 @@ def mathematical_signal_spine(
     if sorted(ranks) != list(range(1, len(ranking) + 1)):
         raise ValueError("Palomar candidate ranks must be unique and contiguous")
 
+    source_spine = contract.get("source_result_spine")
+    if not isinstance(source_spine, Mapping):
+        raise ValueError("Palomar showcase lacks its claim-bound source result spine")
+    if not source_spine.get("comparator_boundary"):
+        raise ValueError("Palomar source result spine lacks its Comparator boundary")
+    source_candidates = source_spine.get("ranked_results")
+    if not isinstance(source_candidates, list) or not source_candidates:
+        raise ValueError("Palomar source result spine has no ranked claims")
+    if sorted(row.get("rank") for row in source_candidates) != list(
+        range(1, len(source_candidates) + 1)
+    ):
+        raise ValueError("Palomar source result ranks must be unique and contiguous")
+    claims_by_id = {claim["id"]: claim for claim in claims["claims"]}
+    ranked_source_results = []
+    for candidate in sorted(source_candidates, key=lambda row: row["rank"]):
+        claim = claims_by_id.get(candidate["claim_id"])
+        if claim is None or claim["status"] != "formalised here":
+            raise ValueError("Palomar source result lacks a formalised registry claim")
+        declaration = next(
+            (
+                row for row in claim["declarations"]
+                if row["name"] == candidate["source_declaration"]
+            ),
+            None,
+        )
+        if declaration is None:
+            raise ValueError("Palomar source result lacks its registered declaration")
+        ranked_source_results.append(
+            {
+                "rank": candidate["rank"],
+                "problem": candidate["problem"],
+                "claim_id": candidate["claim_id"],
+                "source_declaration": declaration["name"],
+                "source_file": "lean/" + declaration["module"],
+                "exact_boundary": candidate["boundary"],
+            }
+        )
+
     packet = claims["external_verification_packet"]
     result_by_declaration = {
         row["wrapper_declaration"]: row for row in packet["main_results"]
@@ -10071,6 +10143,11 @@ def mathematical_signal_spine(
         ]
     return {
         "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking",
+        "source_result_spine": {
+            "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract.source_result_spine",
+            "claim_authority": "docs/claims.json::claims",
+            "ranked_results": ranked_source_results,
+        },
         "ordering_contract": (
             "Explicit mathematical rank, never Comparator roster order, problem "
             "number, insertion order, theorem count, or qualification ease."
@@ -10531,6 +10608,12 @@ def agent_tour_packet() -> dict[str, Any]:
         str(row["erdos_number"]): row for row in reviewed_family_census
     }
     mathematical_signal = mathematical_signal_spine(claims)
+    source_result_rows = mathematical_signal["source_result_spine"]["ranked_results"]
+    mathematical_signal["source_result_spine"] = {
+        "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract.source_result_spine",
+        "projection": "compact_claim_order_for_tour",
+        "ranked_claim_ids": [row["claim_id"] for row in source_result_rows],
+    }
     return {
         "kind": "agent_corpus_tour",
         "schema_version": "agent-corpus-tour/2",
@@ -11329,6 +11412,13 @@ def render_card(packet: dict[str, Any]) -> str:
         rows = [card]
         rows.extend(
             (
+                f"source_signal #{row['rank']} | problem=#{row['problem']} "
+                f"| claim={row['claim_id']} | boundary={row['exact_boundary']}"
+            )
+            for row in signal["source_result_spine"]["ranked_results"]
+        )
+        rows.extend(
+            (
                 f"global_signal #{row['rank']} | problem=#{row['problem']} "
                 f"| tier={row['reader_tier']} | family={row['family_id']} "
                 f"| boundary={row['exact_boundary']}"
@@ -11387,10 +11477,17 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"| exact_open={coverage['remaining_open_proposition_count']}"
             ),
             (
-                "signal rule | explicit Palomar mathematical rank before exhaustive "
-                "inventory; Comparator roster order is not significance"
+                "signal rule | claim-bound source results first, then the separate "
+                "Comparator-qualified Palomar rank; neither order confers significance"
             ),
         ]
+        rows.extend(
+            (
+                f"source_signal #{row['rank']} | problem=#{row['problem']} "
+                f"| claim={row['claim_id']} | declaration={row['source_declaration']}"
+            )
+            for row in signal["source_result_spine"]["ranked_results"]
+        )
         rows.extend(
             (
                 f"signal #{candidate['rank']} | {candidate['reader_tier']} "
