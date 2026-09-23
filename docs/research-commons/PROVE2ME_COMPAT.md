@@ -3,9 +3,18 @@
 
 # Offline Prove2Me compatibility: one theorem at a time
 
+The stronger public #257 showcase is the **finite-prime weighted-support
+theorem** (`res:weighted-support` in
+`paper/257/erdos-257-mersenne-support-subseries.tex`). It proves irrationality
+at every integer base for supports satisfying the base-two weighted condition,
+including the paper's explicit support $A_\star=\{2^km:k\ge1,\ m\text{ odd},\
+m\le2^{2^k}\}$: its reciprocal mass diverges, while its weighted mass
+converges. This criterion still does not cover every infinite support.
+
 `scripts/prove2me_compat.py` prepares a source-bound, **offline** candidate for
-one theorem. Its preferred showcase is the #257 reciprocal-summable support
-result: if an infinite set of positive integers $A$ satisfies
+one theorem. Its first portability pilot is the narrower #257
+reciprocal-summable support result: if an infinite set of positive integers $A$
+satisfies
 $\sum_{a\in A}1/a<\infty$, then $\sum_{a\in A}1/(b^a-1)$ is irrational for
 every integer base $b\ge2$. The exact Lean declaration is
 `Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal` in
@@ -14,8 +23,9 @@ it at `res:reciprocal-support` in
 `paper/257/erdos-257-mersenne-support-subseries.tex`. The registered claim is
 `reciprocal_summable_support`, with status `formalised here`. Erdős stated
 this all-base extension after his pairwise-coprime case; the paper supplies
-an averaging proof. The hypothesis does not cover every infinite support, so
-the universal #257 assertion remains open.
+an averaging proof. This adapter choice does not rank the result above the
+weighted theorem or imply that either theorem has been ported or submitted to
+Prove2Me. The universal #257 assertion remains open.
 
 The earlier #249 finite-level totient-kernel theorem remains selectable as a
 technical prototype with `--unit erdos249_all_base_totient_kernel_paper_theorem`.
