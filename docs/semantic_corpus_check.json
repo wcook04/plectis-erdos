@@ -1,10 +1,10 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:09ca8f64a2622c73a09d0e23c39c329412cde7ed247dd8b3c0fe2175d120fd41",
-  "output_digest": "sha256:eb25d8245647fbd80efaff81d0e353737fbcec3ffe5abfb8ebd4533c7ad752f5",
+  "input_fingerprint": "sha256:e65eaf97f8af2d52c14e89bcfca1ceaafab6f031f53160769c2226bd553c2a4a",
+  "output_digest": "sha256:7042ac251d72a7166977e240972f9522cabb0ed394f0874e49aa918dd5fcd247",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
-    "declarations": 163517,
+    "declarations": 163562,
     "orphan_count": 0,
     "public_semantic_census": {
       "authored_statement_node_count": 1125,
@@ -28,7 +28,7 @@
         "equivalence_or_classification": 107,
         "finite_instance": 87,
         "generated_certificate_instance": 4,
-        "infrastructure": 13235,
+        "infrastructure": 13277,
         "reduction_or_transport": 94,
         "representation_normalisation": 161,
         "unconditional_object_theorem": 360
@@ -79,16 +79,16 @@
       "open_antecedent_endpoint_equivalent_count": 10,
       "prior_art_not_assessed": {
         "1041": 1763,
-        "1049": 1917,
+        "1049": 1921,
         "243": 1122,
-        "249": 1078,
+        "249": 1116,
         "251": 597,
         "257": 1254,
         "269": 555,
         "68": 1068,
         "both": 0,
         "shared_substrate": 4393,
-        "total": 13747
+        "total": 13789
       },
       "prior_art_review_queue": {
         "1041": 0,
@@ -109,14 +109,14 @@
         "257": 6
       },
       "reviewed_frontier_shortlist_count": 11,
-      "source_structural_family_node_count": 13204
+      "source_structural_family_node_count": 13246
     },
-    "statement_nodes": 14332
+    "statement_nodes": 14374
   },
   "surface_digests": {
-    "docs/RESULTS.md": "sha256:bc01bbc5452b86c12da76dccce74a5ecf78baa0df874c647b6526aac0d5f35a8",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:a0e03e686e547433bc2b63a6fd6b782b986c26bee09b0efeb2702cd67267fa52",
-    "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:d13cb06f9f1a97af6e702f2b629961283f34c519c1330d7dc170f91614d53fd5"
+    "docs/RESULTS.md": "sha256:d7507204a8dc9cf07de233875ad89832b6344c01faa3693c7231738776edb458",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ed5fa4f7d83bd51ada80ca4ac0e8d3d513d9b645e2d4c41718e13d0ab68a4db5",
+    "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:9179c5617f1eb0f17299fdb1655b4f00984cb6edf6140dc713d705cbbf195034"
   },
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
 }

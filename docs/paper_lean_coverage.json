@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "168bf6727758f918a430ef056a1c93d3160b53a6",
-  "content_digest": "sha256:1b5d7ea33b649cc2fc2c152525c87e9b8d399a4bf33dcbcd0757cc3c815d4462",
+  "content_digest": "sha256:ef1f3c0fd208ee80ac2ab020408eb167dca815f5126c379bb4bf180453f6794e",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -15,22 +15,22 @@
   "summary": {
     "rows": 674,
     "lean": {
-      "exact": 504,
+      "exact": 505,
       "exact_or_stronger": 140,
-      "modulo_named_input": 23,
-      "none": 7
+      "modulo_named_input": 24,
+      "none": 5
     },
     "comparator": {
       "compared": 582,
-      "pending": 62,
-      "not_applicable": 30
+      "pending": 63,
+      "not_applicable": 29
     },
     "palomar": {
       "prepared": 582,
-      "pending": 62,
-      "not_applicable": 30
+      "pending": 63,
+      "not_applicable": 29
     },
-    "uncounted_rows": 1
+    "uncounted_rows": 0
   },
   "papers": [
     {
@@ -3995,17 +3995,22 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:1349309f67f011606cc4e67e5ae8c6845b070eeb7390409fcc6e74b20af79588",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:739",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:740",
       "lean": {
-        "status": "none",
-        "counted": false,
-        "declarations": []
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base_exists",
+            "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean"
+          }
+        ]
       },
       "comparator": {
-        "status": "not_applicable"
+        "status": "pending",
+        "queued_at": "2026-09-23"
       },
       "palomar": {
-        "status": "not_applicable"
+        "status": "pending"
       }
     },
     {
@@ -4017,7 +4022,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:ceb24f47288c7bb1a437f6383505b6e23ea67dc6b16a75b93d7cf277cec584ab",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:828",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:830",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -4053,7 +4058,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:c085a143f5d9ecfcfa8da60b513f9984cfcbe3b6b8f0ecf0b4fe23c35af45f8d",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:842",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:844",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -4089,7 +4094,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:fdf990eb1858bfdd6b97c91017ac12de5a978d16821d1e1ba5bc88d4b5e79a95",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:855",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:857",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -4125,7 +4130,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:28bfe2922817a8aadbea950d31cc82cf75fb0a6e5533d56c47b55c3336b8bb14",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:892",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:894",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -4161,7 +4166,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:9fde96fd48a5320a44a4b19fc3e254396b2acba03852e752684bec48f9a4cb55",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:906",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:908",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -4197,7 +4202,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:3ac2a9e70eb0f2f0d8cda4b498fa486452f4648ea4433a8aaf4d2776354a53eb",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:939",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:941",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -4224,7 +4229,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:3679199afd1c37d097561b3c9528669d698721c701f5ecb75d96d551ccf05b08",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:990",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:992",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -4260,7 +4265,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:71fcc460785b3c3ca11ef8ea4ce0ef31773de6cef26535e0bff1b66ad98251f2",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:1016",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:1018",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -4296,7 +4301,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:bae78c3e067984f139f2ddd683a43d33740e37a2622ca72160134da1581642fe",
-      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:1076",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:1078",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -15933,10 +15938,17 @@
       "statement_sha256": "sha256:5b991b941eba63e7622c12bb86a6531db6c618ec45224176fc48723702ecacfe",
       "source": "paper/reasoning-parts/erdos249/a249_front.tex:7991",
       "lean": {
-        "status": "none",
-        "counted": true,
-        "declarations": [],
-        "reason": "the counting function of indices with excluded cofactor is carried by the development, and neither Schoenberg's density theorem nor the partial summation over the cofactors is formalised"
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem"
+        ],
+        "scope": "the prime number theorem"
       },
       "comparator": {
         "status": "not_applicable"
@@ -15954,7 +15966,7 @@
       "environment": "prop",
       "kind": "proposition",
       "statement_sha256": "sha256:6652b2361d80c18bfdf3609aef0f346294121dfe9c87db2a758863b45bc7bf3d",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:8291",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:8296",
       "lean": {
         "status": "exact",
         "declarations": [
