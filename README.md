@@ -99,9 +99,11 @@ For a more specialised theorem, **#243** gives irrationality for strictly
 increasing positive integer sequences under the precise cubic-rate hypothesis
 `a_n²/a_(n+1) = 1 + 3/n + o(n⁻³)`. Lean checks the zero-indexed theorem;
 the paper transfers its one-based form by an ordinary finite-prefix argument.
-The unrestricted Sylvester-recurrence question remains open. **#1049** has a separate
-Lean-checked coefficient pencil through rank eight; this does not establish
-irrationality at `3/2`.
+The unrestricted Sylvester-recurrence question remains open. For **#1049**,
+Lean checks that `F(31/4)` and `F((31/4)^r)` for every positive integer `r`
+are irrational, using rational-base forms built from Zudilin's construction.
+A coefficient pencil through rank eight is also checked. Irrationality at
+`3/2` and the all-rational-base claim remain open.
 
 **Reading the eight together.** The whole collection is also material for new
 mathematics: reusable constructions, connections between problems and questions

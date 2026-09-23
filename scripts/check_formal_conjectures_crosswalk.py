@@ -42,6 +42,13 @@ UPSTREAM_COMMIT = "f2de2ed5841e2105009be778ada0c40c08980125"
 EXPECTED_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
 ADAPTER_CANDIDATES = {257, 1049}
 NOT_READY = "not_ready_to_submit"
+LOCAL_1041_REFUTATION = {
+    "source_file": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+    "source_commit": "7380b7871687b6bcc41ca0143c61f232e8af6500",
+    "preconnected_set_theorem": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+    "negation_theorem": "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+    "answer_false_theorem": "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false",
+}
 
 # Submission status ladder.  The earlier contract fixed every row at
 # NOT_READY, which was correct while no adapter existed but made the true
@@ -408,6 +415,42 @@ def render_checked(value: Any) -> str:
     )
 
 
+def local_1041_refutation_errors(row: dict[str, Any], root: Path) -> list[str]:
+    """Keep the exact FC Hausdorff refutation distinct from historical review."""
+    label = "#1041"
+    comparison = row.get("comparison", {})
+    evidence = comparison.get("local_formal_refutation")
+    if not isinstance(evidence, dict):
+        return [f"{label}: local Formal Conjectures refutation evidence is missing"]
+    errors = [
+        f"{label}: local refutation {key} drifted"
+        for key, expected in LOCAL_1041_REFUTATION.items()
+        if evidence.get(key) != expected
+    ]
+    if "Hausdorff" not in comparison.get("statement_scope", "") or "refutes" not in comparison.get("statement_scope", ""):
+        errors.append(f"{label}: statement scope must record the exact Hausdorff refutation")
+    if "answer(False)" not in comparison.get("answer_and_proof_status", ""):
+        errors.append(f"{label}: answer/proof status must record answer(False)")
+    if "1958" not in evidence.get("boundary", "") or "ani" not in evidence.get("credit", ""):
+        errors.append(f"{label}: attribution or historical-review boundary drifted")
+    if row.get("human_semantic_review_required") is not True:
+        errors.append(f"{label}: historical correspondence still requires human review")
+    try:
+        source = safe_crosswalk_text(root / LOCAL_1041_REFUTATION["source_file"], root)
+    except (OSError, UnsafeCrosswalkInput) as error:
+        return errors + [f"{label}: local refutation source unreadable: {error}"]
+    if "namespace Erdos1041.Counterexample" not in source:
+        errors.append(f"{label}: local refutation namespace drifted")
+    for key in ("preconnected_set_theorem", "negation_theorem", "answer_false_theorem"):
+        name = LOCAL_1041_REFUTATION[key]
+        local = name.rsplit(".", 1)[-1]
+        if re.search(rf"^theorem {re.escape(local)}\b", source, re.M) is None:
+            errors.append(f"{label}: local refutation source does not declare {name}")
+        if f"#print axioms {name}" not in source:
+            errors.append(f"{label}: local refutation source has no axiom audit for {name}")
+    return errors
+
+
 def crosswalk_errors(
     manifest: dict[str, Any],
     problem_index: dict[str, Any],
@@ -485,10 +528,15 @@ def crosswalk_errors(
                 errors.append(f"{label}: local navigation route drifted")
             if local_navigation.get("surface") != "canonical problem packet":
                 errors.append(f"{label}: local navigation surface drifted")
-            if local_navigation.get("return_contract") != (
+            expected_return = (
+                "Returns the local problem packet with the exact Formal Conjectures "
+                "Hausdorff refutation, credited source, papers, declarations and "
+                "historical-review boundary."
+                if problem == 1041 else
                 "Returns the local problem packet with result families, declarations, "
                 "papers and sources, and the exact open boundary."
-            ):
+            )
+            if local_navigation.get("return_contract") != expected_return:
                 errors.append(f"{label}: local navigation return contract drifted")
 
         source = row.get("upstream_source", {})
@@ -519,6 +567,8 @@ def crosswalk_errors(
         )
         if comparison.get("conservative_verdict") != expected_verdict:
             errors.append(f"{label}: conservative verdict drifted")
+        if problem == 1041:
+            errors.extend(local_1041_refutation_errors(row, root))
 
         if row.get("human_semantic_review_required") is not True:
             errors.append(f"{label}: human semantic review must remain required")
@@ -656,7 +706,7 @@ def render_markdown(
         f"**Upstream:** [{repository}]({repository}) at exact commit "
         f"[`{commit}`]({repository}/commit/{commit}). Source hashes are SHA-256 over exact file bytes.",
         "",
-        "**Boundary:** this is statement-identity and adapter-review metadata, not a Lean equivalence proof, novelty finding, contribution claim, or submission-readiness decision. Every problem remains open. Every row is `not_ready_to_submit`.",
+        "**Boundary:** this records statement identity, local proof evidence and adapter status; it does not establish novelty, historical correspondence or upstream acceptance. The exact Formal Conjectures #1041 Hausdorff path-image statement is refuted by ani's one-polynomial example, while correspondence with the 1958 wording still needs independent review. The other seven original targets remain open. Submission status belongs to each row below.",
         "",
         "| Problem | Upstream primary declaration | Adapter |",
         "|---:|---|---|",
@@ -716,10 +766,17 @@ def render_markdown(
                 f"- Answer/proof status: {comparison['answer_and_proof_status']}",
                 f"- Conservative verdict: `{comparison['conservative_verdict']}`.",
                 f"- Machine-checked equivalence: {render_checked(comparison['machine_checked_equivalence'])}",
-                f"- Submission status: `{row['submission_status']}`.",
-                "",
             ]
         )
+        if problem == 1041:
+            refutation = comparison["local_formal_refutation"]
+            lines.append(
+                f"- Local refutation: `{refutation['negation_theorem']}` and "
+                f"`{refutation['answer_false_theorem']}` at "
+                f"`{refutation['source_commit']}`; {refutation['credit']}. "
+                f"{refutation['boundary']}"
+            )
+        lines.extend([f"- Submission status: `{row['submission_status']}`.", ""])
 
     lines.extend(["## Adapter candidates", ""])
     for row in manifest["problems"]:

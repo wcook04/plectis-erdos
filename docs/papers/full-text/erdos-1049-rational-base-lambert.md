@@ -73,7 +73,7 @@ Then $`F(a/b)`$ is irrational.*
 
 </div>
 
-Lean: [printed contour short](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L440), [printed mu](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L461), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 7 further declarations in the [coverage section of the companion record](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=coverage).
+Lean: [printed contour short](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L440), [printed mu](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L461), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 7 further declarations in the [coverage section of the companion record](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=coverage).
 
 The condition holds for every integer base, since $`b=1`$ gives $`\log b/\log a=0`$. For a fixed denominator $`b>1`$, it requires $`a>b^{2.46497868\ldots}`$, much more than $`a>b`$; nevertheless it gives infinitely many reduced noninteger rational bases for each such $`b`$. The base $`31/4`$ satisfies the condition, and taking a common positive integer power of the numerator and denominator leaves their logarithmic ratio unchanged. The base $`3/2`$ is excluded since $`\theta^*<1/2<\log2/\log3`$. At equality $`\log b/\log a=\theta^*`$ the quadratic exponent vanishes, so the estimates below give no conclusion.
 
@@ -222,7 +222,7 @@ The coefficient is negative under the theorem’s hypothesis. The positive value
 
 </div>
 
-Lean: [thirtyone four powers](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117).
+Lean: [thirtyone four powers](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117).
 
 <div class="proof">
 
@@ -251,7 +251,7 @@ Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $
 
 </div>
 
-Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
+Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
 
 <div class="proof">
 
@@ -343,7 +343,7 @@ The next restriction requires one polynomial family and common leading degree, h
 
 </div>
 
-Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162).
+Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162).
 
 <div class="proof">
 
@@ -398,7 +398,7 @@ and the coefficient of the first nonzero monomial is
 
 </div>
 
-Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
+Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
 
 <div class="proof">
 
@@ -534,7 +534,7 @@ Subtracting successive partial sums proves the identity. Neither convergence nor
 
 </div>
 
-Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
+Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
 
 <div class="proof">
 
@@ -576,7 +576,7 @@ In particular, if $`R>0`$ and $`4R+2S\le M`$, such a collision exists.*
 
 </div>
 
-Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
+Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
 
 <div class="proof">
 
@@ -604,7 +604,7 @@ Thus $`S+2R`$ rows suffice, in place of the sufficient bound $`2S+4R`$ from the 
 
 </div>
 
-Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
+Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
 
 <div class="proof">
 
@@ -646,7 +646,7 @@ Then, for integers $`n,k,m`$:*
 
 </div>
 
-Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
+Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
 
 For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors are nonnegative. Substituting $`j=n-m-1`$ gives the second identity for every integer $`m`$.
 
@@ -656,7 +656,7 @@ For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors ar
 
 </div>
 
-Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
+Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
 
 For nonzero row contents $`c_1,c_2`$, write $`r_i=c_ir_i^{\rm prim}`$. Then $`\det(r_1,r_2)=c_1c_2\det(r_1^{\rm prim},r_2^{\rm prim})`$ and $`r_i\cdot(\xi,-1)=c_i r_i^{\rm prim}\cdot(\xi,-1)`$. These identities concern multiplication or division of whole integer rows, not cancellation of a polynomial factor before specialisation. Nor does dividing different rows by different contents preserve a fixed residue relation: $`(1,1)+(5,5)`$ is zero modulo $`6`$, but the sum of the primitive rows is $`(2,2)`$. Even contents coprime to the modulus require the residue map to be formed again after row-by-row normalisation.
 
@@ -700,7 +700,7 @@ f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
 
 </div>
 
-Lean: [exists small real escape of conditional multiplicity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79).
+Lean: [exists small real escape of conditional multiplicity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79).
 
 <div class="proof">
 
@@ -804,13 +804,13 @@ Vandehey treats signed coefficients in the digit argument \[vandehey2013, Thms.�
 
 #### Coefficient moments.
 
-The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. The unshifted eight determinant certificates and their finite pencil consequence now have Lean proofs: for real $`p>1`$ and $`1\le N\le8`$, $`A_N`$ is positive definite, every root of $`\det(YA_N-B_N)`$ is real and less than $`F(p)`$, and consecutive ranks interlace non-strictly. The proposition is [`coefficientPencil_finitePencil`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43). The shifted eight certificates remain separately computed in this account. That section also proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
+The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. For the unshifted family, positivity through rank eight at every real $`p\ge1`$ is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean#L458). The [finite-pencil proposition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43) proves that for real $`p>1`$ and every rank $`N\le8`$, $`A_N`$ is positive definite, all roots of $`\det(YA_N-B_N)`$ are real and less than $`F(p)`$, and roots at adjacent ranks interlace non-strictly. The shifted eight certificates remain separately computed in this account. Long Section 3.3 also proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
 
 <a id="functional-equations."></a>
 
 #### Functional equations.
 
-Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\] excludes $`k`$-Mahler equations for $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ when $`k\ge2`$: there is no polynomial-coefficient relation among $`L(z),L(z^k),\ldots,L(z^{k^d})`$ with a nonzero coefficient of $`L(z)`$. Long Section 10.3 explains this functional obstruction; it gives no irrationality statement for $`L(2/3)=F(3/2)`$.
+Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\] excludes $`k`$-Mahler equations for $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ when $`k\ge2`$: there is no polynomial-coefficient relation among $`L(z),L(z^k),\ldots,L(z^{k^d})`$ with a nonzero coefficient of $`L(z)`$. The single-base exclusion is also a Lean theorem, in the form that for every $`k\ge2`$ no finite-dimensional $`\mathbb{Q}(z)`$-subspace of $`\mathbb{Q}((z))`$ containing $`L`$ is stable under $`z\mapsto z^k`$ ([single-base statement](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean#L263)). Long Section 10.3 explains this functional obstruction; it gives no irrationality statement for $`L(2/3)=F(3/2)`$.
 
 <a id="formal-sources-and-finite-computations."></a>
 
@@ -818,7 +818,7 @@ Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the conse
 
 In the supplied snapshot, `PaperR17/SourceConsumers.lean` constructs the cancelled forms and proves the irrationality and measure results; `AllRow/Producer.lean` constructs the transformed rows and proves the all-rank determinant formulas.
 
-The historical index distinguishes reported public, parallel-release and unbuilt material at its pinned snapshot. The later finite-pencil declaration is linked separately above. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. The sixteen historical certificate lists and reproduction scripts remain in the long record. The unshifted rank-eight positivity and finite pencil proposition have separate Lean proofs at the PR revision; this does not promote the shifted certificates or any all-rank coefficient claim. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
+The historical index distinguishes reported public, parallel-release and unbuilt material at its pinned snapshot; no new Lean run is claimed by that index. The later finite-pencil declaration is linked separately above. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. The sixteen historical certificate lists and reproduction scripts remain in the long record. The unshifted rank-eight positivity and finite pencil proposition have separate Lean proofs at the source checkpoint; this does not promote the shifted certificates or any all-rank coefficient claim. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
 
 <a id="sec:pinned-lean-sources"></a>
 

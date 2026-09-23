@@ -1,0 +1,6 @@
+{
+ "schema": "plectis-paper-lean-propagation-baseline/1",
+ "rule": "Each entry is one ledger row that failed clause (b) or (c) of scripts/check_lean_paper_propagation.py when the check was introduced, with the exact names that failed and why. A failure outside this list fails the check. A listed name that now passes also fails the check, so the change that repairs a row removes its entry and the list only shrinks. The check also refuses any entry outside the set it was introduced with.",
+ "recorded": "2026-09-23",
+ "entries": []
+}

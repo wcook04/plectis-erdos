@@ -58,7 +58,7 @@
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
 % Sources that postdate \commit are cited with their lean/ path and resolve at \latecommit,
 % whose tree keeps the Lean roots under lean/.
-\newcommand{\latecommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
+\newcommand{\latecommit}{e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8}
 \newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}
 % This macro family is pinned to \commit. Paper-local links at a different immutable
 % revision are inventoried separately; aggregate historical link counts are not PDF audits.
@@ -105,15 +105,11 @@
 \ExplSyntaxOff
 
 % ===========================================================================
-% Statement-level proof links.  The exact endpoints the coverage ledger binds
-% were written after both pins above, so a third immutable pin carries them.
-% \ledgercommit is the public revision whose Lean sources the ledger resolved
-% its declarations against; every file it names is byte-identical to that
-% revision.  The note printed under each statement is generated from that
-% ledger and verified by scripts/check_generated_lean_notes.py.  Do not edit a
-% \leannote by hand: regenerate it.
+% Statement-level proof links.  The declarations cited under the statements
+% resolve at their own immutable pin, \ledgercommit.  The note printed under
+% each statement is generated.  Do not edit a \leannote by hand.
 % ===========================================================================
-\newcommand{\ledgercommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
+\newcommand{\ledgercommit}{a25cb360bef8dd818dde14b5fb752244304af354}
 \newcommand{\ledgerbase}{https://github.com/wcook04/plectis-erdos/blob/\ledgercommit}
 \newcommand{\lproof}[3]{\href{\ledgerbase/lean/#1\#L#2}{\texttt{#3}}}
 \newcommand{\leannote}[1]{%
