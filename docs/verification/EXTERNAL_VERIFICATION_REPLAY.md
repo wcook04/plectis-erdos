@@ -9,6 +9,32 @@ replay command below lets a reviewer execute one bounded interface on a separate
 Linux machine. Neither is mathematical peer review, a novelty assessment, or a
 claim that an open Erdős problem has been solved.
 
+## Pull-request merge gate
+
+Before merging a release candidate, record the pull-request head commit and
+tree. Wait for the latest `Lean CI` run for that exact head to conclude
+`success`, and inspect the final conclusions of every applicable job and matrix
+leg: `change_scope`, `build`, `external-verification`, `first-contact`,
+`shallow-clone-is-an-environment-problem`, and `release-surfaces`. Accept a
+skipped job only when the workflow's change-scope rule explicitly explains it.
+If the head changes, repeat this check; queued, running, cancelled, or missing
+conclusions are not a merge gate.
+
+When `external-verification` applies, require its successful final conclusion
+and download `external-verification-receipt-<head-commit>`. Its
+`external-verification-receipt.json` must have `phase: final`, `result: pass`,
+`repository_commit` and `expected_repository_commit` equal to that head,
+`repository_tree` equal to its tree, and passing positive and adversarial
+Comparator controls under the pinned toolchain and axiom budget. Retain the
+receipt with the review record. An artifact upload or a green run for a
+different commit does not satisfy this check.
+
+`gh pr merge --auto --merge` does not enforce this order when branch protection
+has no required status checks: the pull request can merge while CI is still
+running. Complete the checks above before requesting merge. Required status
+checks can enforce the order at GitHub, but their configuration must be
+verified rather than inferred from the workflow file.
+
 The bounded replay compares
 `Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq`
 against the separately declared statement in `ExternalVerification.Challenge`.
