@@ -117854,7 +117854,7 @@
           "line_end": 79,
           "line_start": 67,
           "path": "lakefile.toml",
-          "sha256": "sha256:1dfa73e634bdd635ffdd11c6f661495adc3ce2acd7553faf3c5d816b9fd23841"
+          "sha256": "sha256:19ec077c63a2ac70c40c5d5ff7ebab7f9a68207dbbbb7d6d033da692c6082501"
         }
       ],
       "artifact_links": [
@@ -118002,7 +118002,7 @@
           "line_end": 35,
           "line_start": 32,
           "path": "lakefile.toml",
-          "sha256": "sha256:1dfa73e634bdd635ffdd11c6f661495adc3ce2acd7553faf3c5d816b9fd23841"
+          "sha256": "sha256:19ec077c63a2ac70c40c5d5ff7ebab7f9a68207dbbbb7d6d033da692c6082501"
         },
         {
           "excerpt_sha256": "sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc",
