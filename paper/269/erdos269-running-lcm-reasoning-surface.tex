@@ -1667,8 +1667,7 @@ supplies the unbounded quantifiers.
 The three rows below record individual instances of the residue
 inequality~\eqref{long269:eq:actual-escape}.  The integer-only
 \href{\sourceurl/scripts/check_erdos269_dyadic_windows.py}{dyadic-window
-checker} is their historical source; exact enumeration independently
-reproduces them.  For each required shell, enumerate the pairs with
+checker} computes them, and exact enumeration reproduces them.  For each required shell, enumerate the pairs with
 $3^j5^k<2^{a+1}$, choose the unique exponent $i$ that puts $2^i3^j5^k$ in
 $[2^a,2^{a+1})$, and add $P_{a+1}/(2\hgt(2^i3^j5^k))$.
 All powers and comparisons are integral.  The recursions for $W$ and $F$
@@ -1784,9 +1783,12 @@ $B_{\max}=\lfloor(W-1)/184{,}560{,}461{,}211\rfloor$.  If
 $B\le B_{\max}$ and integers $f_j=Ws_j-2BF_j$ satisfy $0<f_j\le Bw_j$,
 each $\sum_jc_{ij}f_j$ is a multiple of $W$ of absolute value less than
 $W$, hence zero, and invertibility of $C$ forces every $f_j$ to vanish,
-a contradiction.  The reduction from a rational value $N/(MB)$ to the
-$64$ window inequalities uses the window identity at full height and is
-not machine-checked.
+a contradiction.  The weights bound the tails: since $n_b\le2.07b$,
+Theorem~\ref{long269:res:actual-tail-bound} gives
+$2X_b\le2Q(n_b)\le b^2+6b+11$ for every $b\ge0$.  The reduction from a
+rational value $N/(MB)$ to the $64$ window inequalities, with
+$s_j=2BX_{a_j}$ and $f_j=2BX_{a_j+128}$, uses the window identity at full
+height and is not machine-checked.
 
 \paragraph{Continued-fraction exclusion.}
 \label{long269:res:cf-exclusion}
@@ -2459,9 +2461,9 @@ large numerical exclusions have published witnesses and exact checkers,
 and the larger scan has a published saved run.  None of these records proves escape beyond every prescribed
 starting index.
 
-\paragraph{Artefact and data availability.} The
-\href{\sourceurl}{historical source revision} is the original repository
-reference for the formal sources and the dyadic-window checker.  The
+\paragraph{Artefact and data availability.} The links in the
+source inventory and to the dyadic-window checker open a
+\href{\sourceurl}{fixed revision} of the repository.  The
 witnesses and exact checkers for the two large numerical exclusions and
 the saved larger scan are in the
 \href{https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations}{large-computation directory}.
@@ -2485,15 +2487,15 @@ manuscript; it also records the elementary running-LCM identity for finite
 prime sets~\cite{fan2026comment}.  The
 transcendence input is due to Yann Bugeaud and Michel Laurent and to the
 earlier work of Loxton and van der Poorten cited by them.  The
-problem numbering and historical status snapshot are taken from the
+problem numbering and its status as of 28 July 2026 are taken from the
 Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 % Part: extended_record
 \section{Further examples, conditional lemmas and source references}
 \label{long269:long:extended}
 
 This section collects the historical details, the integer recurrence
-lemmas in their general form, worked examples and the original formal
-source links.  The reported large computations remain unverified here.
+lemmas in their general form, worked examples and an inventory of the
+formal sources.
 
 \subsection{The historical and catalogue record}\label{long269:long:history}
 
@@ -2717,7 +2719,7 @@ its radix falls back to the terminal factor alone.
 
 The larger scan described in Section~\ref{long269:sec:evidence}
 covers $B\le5000$ coprime to $30$ and $100\le\ell\le3000$, with search
-depth $24$.  Its saved rerun
+depth $24$.  Its saved run
 (\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations/receipts/scan-5000-100-3000.json}{scan-5000-100-3000.json})
 gives $3{,}869{,}934$ pairs, an escape in every case, and the following
 first-success histogram:
@@ -2927,7 +2929,8 @@ half the boundary height, and convergence; an abstract recurrence would
 not identify the sum.\\
 Denominator reduction & A finite prefix with cleared denominators and
 an upper bound for positive integer tails.  The first valid index is
-determined by an ordinary proof.\\
+determined exactly (Proposition~\ref{long269:res:exact-denominator}); checked
+in Lean.\\
 Residue criterion & The actual recurrence, a dominating bound and window
 products comparable to $8^h$; escape at arbitrarily late starts remains
 unproved.\\
@@ -2935,7 +2938,9 @@ Weighted differences & Exact reindexing and the contributions of the
 new boundary strips; integer enumeration checks the displayed
 counterexample to third-difference cancellation.\\
 Finite computations & Direct checks settle only their individual
-windows; the large reports cannot be verified without their missing data.\\\hline
+windows.  The two large exclusions have published witnesses and exact
+checkers, and the larger scan a published saved run; none is a theorem
+input.\\\hline
 \end{tabular}
 \end{center}
 None of these results proves the remaining irrationality assertion.

@@ -213,8 +213,9 @@ The restrictions $c\ne0,1$ exclude a zero column or identical columns;
 they hold for $c=1/r$ over $\mathbb Q$.  In one fixed layer $k$, ordering
 the sampled row phases puts every column in the stated form.  The formula
 therefore determines the rank of each nonempty rectangular sample.  For
-fixed row and column indices this rank is independent of $k$.  The
-companion, Section~4, gives the exact rational comparisons.
+fixed row and column indices this rank is independent of $k$.
+Section~4 of the companion paper, \emph{The Three-Prime Running LCM: Kernel
+Rank and Tail Arithmetic}, gives the exact rational comparisons.
 
 
 \paragraph{Exact rank is not an approximation obstruction.}
@@ -606,8 +607,6 @@ these proofs nor the finite calculations supply the required windows for
 every eligible denominator and arbitrarily late starts.
 
 \paragraph{Artefact and data availability.}
-The links in Appendix~\ref{sec:pinned-lean-sources} point to a fixed
-earlier revision of the Lean sources.
 The companion contains the detailed bounds and supplementary arguments;
 its source inventory explains the normalisation conventions of the Lean
 sources.  AI agents carried out most of the research
@@ -616,8 +615,8 @@ review.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.
-\paragraph{Acknowledgements.} The problem numbering and the historical
-status snapshot are taken from the Erd\H{o}s Problems catalogue maintained
+\paragraph{Acknowledgements.} The problem numbering and its status as of
+28 July 2026 are taken from the Erd\H{o}s Problems catalogue maintained
 by Thomas Bloom~\cite{erdosproblems}.  Earlier mathematical inputs are
 credited at their points of use.  We thank Wouter van Doorn for advice on
 exposition, especially on unexplained terminology, unnecessary notation
@@ -632,8 +631,15 @@ argument uses the shell coefficients, the tail recurrence, denominator
 clearing and least positive residues.  The Lean proof of
 Theorem~\ref{res:windowconsumer} establishes the equivalence of the
 residue condition with irrationality; it does not establish the residue
-condition itself.  Appendix~\ref{sec:pinned-lean-sources} lists the Lean
-declarations cited by an earlier version of this note.
+condition itself.
+
+\paragraph{Library declarations.}
+The margin marks link each result to its Lean proof.  The main steps rest on
+the following library declarations, each opened at a fixed revision.
+Running LCM: \lword{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}{the exact height formula}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{constancy on each logarithmic cell}; the jumps by \lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{$p$}, \lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{$q$} and \lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{$r$}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{exactly $3\,\mathrm{count}+1$ jump values}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{the quadratic bound on exponent shells}.
+Dyadic blocks: \lword{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}{at most one internal pure-power jump per channel}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{the radix is $2$, $6$, $10$ or $30$}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}{the radix lies in $[2,30]$}.
+Kernel rank: \lword{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}{the kernel is not of rank one}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{721}{kernel_235_minor_eq_neg_one_fifteen}{the smallest $2\times2$ minor equals $-1/15$}; \lword{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}{the tail-state recurrence}.
+Residues and carries: \lword{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape}{no bounded positive state represents an escaping residue} (\lword{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue}{integer form}); \lword{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}{the local-window escape condition} and \lword{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{its exclusion of a positive reduced carry}; \lword{Erdos269/BoundedRadixTailEscape.lean}{89}{boundedRadix_zero_or_cofinal_far}{a bounded-radix orbit is integral or cofinally far from the integers}; \lword{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}{no uniformly bounded nonzero carry lift}; \lword{Erdos269/ThreeChannelBlockRigidity.lean}{59}{channelBlockNull_iff_channelPotential}{block-null words are channel coboundaries}; \lword{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}{the carry as a residue digit plus a coboundary}; \lword{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}{a finite-dimensional factorisation gives a finite realised span}.
 
 \paragraph{Scope of the supplementary literature.}
 The companion develops the comparisons omitted from the main argument.
@@ -658,99 +664,6 @@ For broader background, the companion distinguishes work on fixed-prime
 semigroups~\cite{tijdemanmeijer1974,languasco2025} from other unit-fraction
 irrationality problems~\cite{kovactao2024}.  No estimate from those papers
 is used in this note's counting argument.
-
-% BEGIN pin-faithful-source-inventory
-\section{Index of Lean declarations}
-\label{sec:pinned-lean-sources}
-The following index links the Lean declarations cited by an earlier
-version of this note, at a fixed earlier revision of the Lean sources.
-\begin{itemize}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{59}{smooth3Val_dvd_threePrimeHeight_of_mem}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{243}{threePrimePositiveJumpSet}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{273}{threePrimeJumpSetWithOrigin}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{662}{DyadicInternalPower}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}
-\item \lref{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue}
-\item \lref{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le}
-\item \lref{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq}
-\item \lref{Erdos269/ResidueEscape.lean}{71}{ResidueEscapesWindow}
-\item \lref{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape}
-\item \lref{Erdos269/ResidueEscape.lean}{96}{residue_le_bound_of_bounded_positive_state}
-\item \lref{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{469}{windowForcing_const_mul}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{548}{smooth3Val_dvd_threePrimeHeight_of_le}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{581}{integralCarry_cancel_commonFactor}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{601}{reducedCarry_pos_le_of_commonFactor}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{612}{reducedIntegralCarry_window}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}
-\item \lref{Erdos269/ThreePrimeRunningLcm.lean}{721}{kernel_235_minor_eq_neg_one_fifteen}
-\item \lref{Erdos269/ResidueEscape.lean}{138}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}
-\item \lref{Erdos269/BoundedRadixTailEscape.lean}{89}{boundedRadix_zero_or_cofinal_far}
-\item \lref{Erdos269/RestrictedFloorSum.lean}{497}{leastPositiveResidue_windowForcing_eq_carry}
-\item \lref{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}
-\item \lref{Erdos269/WeightedPhaseCarry.lean}{293}{CartierRealisation}
-\item \lref{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}
-\item \lref{Erdos269/WeightedPhaseCarry.lean}{150}{carryResidue_mem_interval}
-\item \lref{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}
-\item \lref{Erdos269/ThreeChannelBlockRigidity.lean}{59}{channelBlockNull_iff_channelPotential}
-\item \lref{Erdos269/CarryLiftExtinction.lean}{178}{no_carryLift_of_errorBound_below_twoPow}
-\item \lref{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}
-\item \lref{Erdos269/CarryLiftExtinction.lean}{289}{binaryLift_twoAnchors_force_firstBlock_sum_one}
-\item \lref{Erdos269/CarryLiftExtinction.lean}{308}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}
-\end{itemize}
-% END pin-faithful-source-inventory
 
 \begin{thebibliography}{99}
 \bibitem{erdosgraham1980} Paul Erd\H{o}s and Ronald L. Graham,

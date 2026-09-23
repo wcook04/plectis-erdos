@@ -38,7 +38,8 @@ literature.  Sections~5--8 develop the finite arithmetic used in the
 rational-membership tests.  Sections~9--12 distinguish the hypotheses
 of conditional implications from the finite evidence for them.
 Section~13 proves the arithmetic-sampling counterexample cited in the
-short paper.  The global notation below is supplemented by definitions
+short paper \emph{Weighted Support Criteria for Reciprocal Mersenne
+Subseries}.  The global notation below is supplemented by definitions
 where each specialised recurrence is used.
 
 A sufficient condition need not be necessary; an equivalent condition
@@ -133,8 +134,8 @@ Theorem~1.2. Erd\H{o}s's
 \href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{1968 paper, p.~222}
 proves the pairwise-coprime case at every integer base and states the removal
 of coprimality without printing the details. The proof below gives the stated extension by averaging; no comparison
-with the omitted proof is possible.  The linked pairwise-coprime theorem
-retains that extra hypothesis. The same
+with the omitted proof is possible.  The pairwise-coprime case,
+Theorem~\ref{thm:pairwise-coprime}, retains that extra hypothesis. The same
 paper says that $\sum1/n_i<\infty$ could be replaced by a weaker but more
 complicated condition (p.~222), and suggests that for pairwise coprime
 supports Brun's method could probably replace it by
@@ -190,14 +191,14 @@ $\varepsilon$. Its strict positivity contradicts the rational lattice.
 This proves the assertion.  The exact all-base statement, with hypotheses
 $b\ge2$, infinitude of $A$, and summability of $a\mapsto\mathbf1_A(a)/a$,
 has a
-\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{kernel-checked Lean proof}.
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{kernel-checked Lean proof}.
 
 The order of the two limits matters: the observation length increases with
 $Q_t$ fixed before $t$ increases. No independence of different divisibility
 events is assumed. The mechanism also has a definite limit. At base two and
 full support, the contribution of exponents $a>N$ alone gives
 $\Delta_{2,\mathbb N_{>0}}(N)>1-2^{-N}\ge1/2$. Full-support irrationality
-therefore uses a different argument; its checked form appears below.
+therefore uses a different argument; see Theorem~\ref{thm:full-support}.
 
 \subsection{A weighted condition on the support}
 The reciprocal-summable case is a useful model, but powers of a fixed prime
@@ -541,11 +542,8 @@ For that length the geometric sum and convexity give
  \le\frac{2L}{d(B-1)}.
 \]
 Summing the main terms and these two error budgets proves~\eqref{eq:257-mixed-finite-kernel}.
-The argument displayed here is an ordinary proof.  Lean sources exist for
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L207}{the full estimate}
-and for
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L130}{its complete-period and no-wrap ingredients};
-no new compilation of them is claimed here.
+The argument displayed here is an ordinary proof; the estimate is also
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean\#L206}{proved in Lean}.
 Nonnegative interchange permits summation against any coefficients $c_d$
 with $\sum_dc_d/d<\infty$.
 
@@ -694,12 +692,11 @@ the fixed rational lattice then excludes rationality.
 The positive-weight variant of
 Theorem~\ref{thm:257-variable-fractional-cover}, with its hereditary
 all-base conclusion, also has a
-\href{https://github.com/wcook04/plectis-erdos/blob/f3f54798508b29ded6e854e0fa5784a560bd6cc7/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L19}{kernel-checked Lean proof}.
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L19}{kernel-checked Lean proof}.
 Theorem~\ref{thm:257-mixed-supports} does not establish strict enlargement
-over both individual classes.  A Lean source
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L16}{constructs a weighted support with no strengthened cover};
-a support with such a cover but no finite weighted mass is not constructed
-here.  The theorem also leaves universal irrationality and the quantitative
+over both individual classes.  No separation between the two classes is
+proved here: neither a weighted support with no strengthened cover nor a
+support with such a cover but no finite weighted mass is constructed.  The theorem also leaves universal irrationality and the quantitative
 and prime-power thinning claims open.
 
 With arbitrary positive cover weights, the class of subsets of such mixed
@@ -1035,12 +1032,12 @@ $\log_2(4^k(R_k-r_{k-1}(1/2)))$ at a safe skip.
 These are different normalisations, not one common margin statistic.
 Truncation rungs $J = 3,\dots,22$ all \emph{proved} to survive (not merely computed). Seam orbit
 certified to row $200{,}000$: branch counts $\mathrm{R{:}M{:}U} = 100197{:}49899{:}49898$, the
-target inequality failing at exactly one reset row, $r = 7$; maximal pure-R run $19$, attained at
-row $158{,}096$.
+target inequality failing at exactly one reset row $6\le r\le200{,}000$, namely $r = 7$; maximal pure-R run $19$, following
+the reset at row $158{,}096$.
 
 Independently, rows $6 \le n \le 2500$: $1209$ resets, zero classification
-anomalies, minimum in-scope margin $+1.1119$ bits at row $14$ growing to $\approx 1246$ bits by row
-$2500$ (mean $627$), never re-approaching the threshold.
+anomalies, minimum in-scope margin $+1.1119$ bits at row $14$ growing to $\approx 1246$ bits at row
+$2499$ (mean $627$), never re-approaching the threshold.
 
 Sharp tail margin, ranks $2$ to $3000$: no
 fatal skip, take fraction $0.4992$, tightest take-margin $+0.0340$ bits at rank $7$ (the near-tie
@@ -1500,16 +1497,6 @@ $62\%$, and is simultaneously nowhere dense, perfect and totally disconnected. T
 together. They do not yield competing theorems about specified rationals. Showing that
 $\mathcal{A}$ is ``small'' cannot decide (U) by measure: it is $62\%$ of its ambient interval.
 
-\textbf{A probabilistic heuristic.}
-An earlier heuristic calculation reports an expected count of about
-$2\times10^{-4}$ beyond $n=31$ in a Bernoulli$(1/2)$ digit model.
-This number is not a probability assigned to membership of the fixed
-point $1/2$.  Such an interpretation would require a specified
-probability space, a definition of the failure events, and a link
-between those events and the deterministic greedy orbit.  None is
-provided here.  Section~\ref{sec:invent-R1} separates a reproducible
-finite phase experiment from its unproved probabilistic application.
-
 \subsection{Hypotheses of the CRT block-certificate argument}
 \label{bar:box}
 
@@ -1529,7 +1516,8 @@ pairwise coprimality.
 certificate theorem to arbitrary infinite $A$ without establishing its
 hypotheses.  Shared factors impose compatibility conditions on the
 prescribed residues; they do not make every CRT construction impossible.
-The cited proof uses the tail budget in one step.  Deleting that assumption
+The certificate proof of Theorem~\ref{thm:pairwise-coprime} uses the tail
+budget in one step.  Deleting that assumption
 does not complete the proof: one needs a replacement estimate for that step.
 This leaves open different constructions and different averaging arguments.
 
@@ -1564,16 +1552,6 @@ and one concerns reproducing an already known prime-support theorem.
 They are not an exhaustive list of possible approaches.  The relevant
 question in each case is what must be proved, and whether the cited
 obstruction applies to that particular statement.
-
-\subsection*{A claimed quantitative support condition}
-An analytic supplement that is not available here claims a second
-criterion admitting reciprocal-divergent supports.
-Put $H_A(x)=\sum_{a\in A,\ a\le x}1/a$, $T_0=2$, $T_{j+1}=2^{T_j}$,
-and $\ell(x)=\min\{j:x\le T_j\}$.  The condition
-$H_A(x)=o(\ell(x))$ is claimed to imply all-base irrationality, with no
-positive density assumption on $A$.  Neither a proof of this implication
-nor the claimed sharper rational-phase lower bound is available here.
-
 
 \subsection*{Two further analytic tests}
 Small displacements at a real base do not by themselves give the fixed
@@ -1648,8 +1626,8 @@ from it to half-membership is proved here.
   membership.  A run-length estimate is a possible way to approach
   this bound, not an established exact reformulation of it.
 \item \emph{Band avoidance at resets, already proved to imply membership.}
-  For every reset $d \ge 13$ whose successor carries satisfy the hypotheses
-  of Section~\ref{sec:o4} and every $j \le d$, the reset charge
+  For every upper reset $d \ge 13$ (branch $\mathrm U$ of
+  Theorem~\ref{thm:dynamics}) and every $j \le d$, the reset charge
   $4\cdot\text{overshoot} + \text{abovePulse}$ avoids the linear-width band
   $(2^{d-j+1} - 2(d+j),\, 2^{d-j+1}]$.
 \item \emph{Sign law alone.} At every reset, M-resets have $\mathrm{dev} > 0$ and U-resets have
@@ -1688,7 +1666,7 @@ the proposed bound concerns the actual greedy sequence.  It does not
 require alternative supports for the same target.
 
 \textbf{Run lengths.} The record reports a maximum right-branch run of
-length $19$ at row $158{,}096$, far below the proposed threshold
+length $19$ after the reset at row $158{,}096$, far below the proposed threshold
 $(r-3)/2=79{,}046.5$ there.  Observing larger runs at larger ranks does not
 refute the existence of some uniform finite bound.  Neither a uniform
 bound nor the weaker asymptotic assertion $L_r=o(r)$ is proved by these
@@ -1782,10 +1760,9 @@ analytic and is cited here; it is not formalised in Lean.
 
 The local pairwise-coprime certificate theorem still does not cover the
 primes because it assumes summability of $\sum_p1/p$.  That is a boundary of
-this certificate theorem, not a boundary of the mathematics.  The previously
-proposed windowed-tail repair is therefore withdrawn as a research
-contribution.  It may remain useful as a test of whether the existing Lean
-certificate theorem can reproduce the known theorem, but reproducing a cited
+this certificate theorem, not a boundary of the mathematics.  A
+windowed-tail repair of that theorem can test whether the Lean
+certificate theorem reproduces the known theorem; reproducing a cited
 result is not new progress on \#257.  After Theorem~1.3 the authors state the
 prime-support extension to every integer base $b\ge2$ and, separately,
 the full prime-power result at base $2$, leaving those modifications to
@@ -1963,8 +1940,8 @@ hypotheses.
 Beyond full support ($A = \{1,2,3,\dots\}$, i.e.\ $m=1$ below), the following named infinite
 families are proved irrational for every integer base $b\ge2$.  The purely
 periodic, eventually periodic, residue-class and odd supports follow from the periodic theorem of
-Luca and Tachiya~\cite[Theorem~A, p.~139]{lucatachiya2017}, and the declarations below are formal
-proofs of these cases:
+Luca and Tachiya~\cite[Theorem~A, p.~139]{lucatachiya2017}; these cases also have Lean proofs
+(margin):
 
 \begin{thm}[Purely periodic support]\label{thm:purely-periodic-support}
 For integers $b\ge2$ and $m\ge1$, and every $m$-periodic $A\subseteq\mathbb N$ (i.e.\
@@ -2252,12 +2229,6 @@ the condition $\mathrm U$; its remainder is then too small to take
 the terminal weight.  Otherwise the lower word is used, and
 comparison with the terminal weight gives $\mathrm M$ or
 $\mathrm R$.  Substitution yields the displayed formulas.
-Lean sources give the corresponding
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/Erdos257PeriodNoncollapse/HalfCylinderIntegerGreedy.lean\#L1463}{abstract adjacent-cut identity}
-and
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/Erdos257PeriodNoncollapse/HalfCylinderConcreteSeamAdapter.lean\#L699}{its identification with the concrete greedy row};
-they were inspected for this proof, and no new compilation of them is
-claimed.
 \end{proof}
 
 Only the $\mathrm M$ and $\mathrm R$ formulas have the asserted
@@ -2293,7 +2264,7 @@ the conditional reset square-root estimate.
 The following values and finite ranges come from exact integer
 computations for the quotient-greedy sequence of Section~\ref{ssec:seam-model}.
 They provide test cases for the formulas above. The low-row remainders
-at $n=14,15,32$ are exact integer values. Each larger range has a
+at $n=14,15,32$ are exact integer values. Each larger certified range has a
 \href{https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257}{published program and saved run}.
 
 \begin{obs}[Exact low-row values]
@@ -2301,13 +2272,13 @@ at $n=14,15,32$ are exact integer values. Each larger range has a
 At row $n=14$: $\mathrm{rem}(14) = 392$, with take set $D_{14} = \{2,3,6,7\}$. At row $n=15$:
 $\mathrm{rem}(15) = 34333$. At row $n=32$: $\mathrm{rem}(32) = 3865046005$ and $\Delta_{32} =
 -429921291$.\\
-\textit{Source:} the linked proof
-\lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}
-uses exact successor remainders at rows $14$--$31$ to verify the
-band-escape condition for reset indices $13\le d\le30$.
+\textit{Source:} the values at rows $14$--$31$ are proved in Lean by direct
+evaluation (Theorem~\ref{thm:upper-reset-band}), which uses them to verify the
+band-escape condition for reset indices $13\le d\le30$
+\lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}.
 The two ranges differ by one: the remainder used for reset $d$ is at
-row $d+1$. The Lean proof evaluates these values directly in the
-kernel; it was not recompiled for this record.
+row $d+1$. The take set $D_{14}$, $\mathrm{rem}(32)$ and $\Delta_{32}$ are
+exact integer computations with the greedy rule of Section~\ref{ssec:seam-model}.
 \end{obs}
 
 \begin{obs}[Depths of the reported computations]
@@ -3216,7 +3187,7 @@ all-middle-row hypothesis of Theorem~\ref{thm:two-sided-dyadic}.
 To see the contradiction, complete $D_D$ by all ranks greater than $D$.
 The resulting support $B=D_D\cup\{D+1,D+2,\ldots\}$ has
 $X_B(2)<1/2$ under the all-right assumption.  The exact carry identity
-in the cited proof gives $C_B(2D+1)=C_D+3$.  If $C_D=-3$, this is zero.
+of the Lean proof (margin) gives $C_B(2D+1)=C_D+3$.  If $C_D=-3$, this is zero.
 The recurrence
 $C_B(N+1)=2C_B(N)+1-c_B(N+2)$ and nonnegativity from
 Theorem~\ref{thm:mobius-centred-nonneg} first force $C_B(2D+2)=0$:
@@ -5429,7 +5400,8 @@ Corollary~8 of the
 \href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md}{truncation-rung note}).
 & open branch (a): $\exists^\infty J,\ \mathrm{HalfRung}(J)$ \\
 Reset square-root escape, a sufficient all-reset hypothesis (unproved).
-A Lean source gives the conditional implication; the run-length
+Theorem~\ref{thm:lower-bound-every-reset} gives the conditional
+implication; the run-length
 comparison is discussed separately in Section~\ref{sec:o4}.
 & $\forall r\ge10$ that are resets,
 $|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}$ \\
@@ -5533,7 +5505,7 @@ terms.  Its denominator $q$ is odd, because every $2^d-1$ is odd
 traced to \lean{finiteErdosSum\_den\_odd}{DyadicPrefixCompression.lean:1513}). Hence the residual
 after any finite prefix is $\rho=\tfrac12-\tfrac pq=\tfrac{q-2p}{2q}$: its reduced denominator
 is \emph{even}. Every weight $x_k=1/(2^k-1)$ has \emph{odd} denominator. An even-denominator
-rational can never equal an odd-denominator rational, so $\rho=x_k$ is impossible at any rank ;
+rational can never equal an odd-denominator rational, so $\rho=x_k$ is impossible at any rank:
 the take comparison is never a tie.
 
 \emph{Skip-safety boundary excluded (irrationality).} The tail past rank $k$ is
@@ -5970,7 +5942,7 @@ to this linear bound; no converse is asserted.
 \lean{SeamMiddleProducerSqrtEscape}{HalfCylinderLastProducerContradiction.lean:84},
 its implication to the exact tail bound,
 \lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerSqrtEscape}{HalfCylinderLastProducerContradiction.lean:458}.
-\textbf{Conclusion.} If at every late middle row $2\sqrt{2s+2}+4 < \mathrm{producerCarry}(s)$, then
+\textbf{Conclusion.} If at every late middle row $s$ the producer carry exceeds $2\sqrt{2s+2}+4$, then
 $1/2 \in \ensuremath{\mathcal A}$; the producer carry equals the middle coordinate
 $4\,\mathrm{rem}-\mathrm{belowPulse}-4$
 (\lean{}{HalfCylinderProducerLowerBound.lean:150}), so the requirement is essentially
@@ -6050,18 +6022,18 @@ it at every later row.
 \begin{obs}[Reported computation through row 200{,}000]
 \textbf{Conclusion.} Exact integer arithmetic to row 200{,}000
 (\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{saved run}); branch counts $R\!:\!M\!:\!U =
-100197\!:\!49899\!:\!49898$; for $r\ge6$ the obligation \emph{fails only at} $r=7$; maximum R-run $19$ at row
+100197\!:\!49899\!:\!49898$; for $r\ge6$ the obligation \emph{fails only at} $r=7$; maximum R-run $19$ after the reset at row
 $158{,}096$ against the required threshold $\approx (r-3)/2 \approx 79{,}000$ (margin
 $\sim\!4000\times$). Independently: 1209 resets checked to row 2500
 (\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json}{saved run}), zero classification
-anomalies, exactly two crossing cells ever ($s{=}7,d{=}5$ and $s{=}10,d{=}7$), both below hypothesis
+anomalies, exactly two crossing cells in rows $6\le s\le2500$ ($s{=}7,d{=}5$ and $s{=}10,d{=}7$), both below hypothesis
 scope.
 \textbf{Parameter range.} fixed-scale exhaustive verification versus a statement
 at every reset $r \ge 31$.  This is the difference between a finite and an unbounded
 parameter range: a finite verified list supplies no witnesses at unbounded depths, however
 large the margin.
 \textbf{Missing step.} Nothing computational; only a theorem. The certificate's value is fixing the
-true constant ($r \ge 31$, sole violation $r=7$) so the theorem's scope can be stated exactly.
+true constant ($r \ge 31$, sole violation among reset rows $6\le r\le200{,}000$ at $r=7$) so the theorem's scope can be stated exactly.
 \end{obs}
 
 \begin{obs}[Structure of resets after long runs]
@@ -6084,7 +6056,7 @@ requirement.  Neither step alone proves a global exclusion.
 \begin{obs}[The sign condition and growth of the margin]
 \textbf{Conclusion.} At all 1209 observed resets, M $\Rightarrow$ deviation $>0$ and U $\Rightarrow$
 deviation $<0$, with zero exceptions; the margin over the $2^{(r+5)/2}$ threshold grows from
-1.11 bits at $r=14$ to $\sim$1246 bits at $r=2500$. The record isolates this as a separate,
+1.11 bits at $r=14$ to $\sim$1246 bits at $r=2499$. The record isolates this as a separate,
 possibly more tractable target than the full square-root escape.
 \textbf{Different restrictions.} The upper sign follows from the
 positive reset charge: $w_{r+1}=-(4o_r+p_r^+)<0$.
@@ -6102,8 +6074,9 @@ The exact finite procedure in
 Theorem~\ref{thm:tr-finite-decision} verifies the twenty truncations
 $3\le J\le22$.  The proof combines finite integer certificates with a
 witness bound valid beyond the finite search horizon; it does not infer
-an infinite statement from a long finite run.  The certificates accompany
-that computation.
+an infinite statement from a long finite run.  Saved runs for
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-3-16.json}{$3\le J\le16$} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-17-22.json}{$17\le J\le22$} reproduce it.
 Representations for an unbounded sequence of $J$ would yield a
 representation of $1/2$ for the full weights by the compactness estimate
 following that theorem.  That unbounded-index premise remains unproved.
@@ -6190,7 +6163,7 @@ contributes $2/3+4/7+32/63 \approx 1.746 > 1$, so the doubled row is strictly \e
 Iterating the cheap arm is therefore impossible from the only recorded seed; the chain is forced
 into the capacity-gated recycle arm at step one.
 \textbf{Missing step.} Cofinally many below-half exact rows; $\forall N\ \exists n \ge N\ \exists D$
-exact at $n$ with $\mathrm{localFractionMass}\,D\,n < 1$. A single such row at each of cofinally
+exact at $n$ with $\sum_{d\in D}2^{n\bmod d}/(2^d-1) < 1$. A single such row at each of cofinally
 many $n$ makes doubling unnecessary; a self-reproducing one closes everything.
 \end{obs}
 
@@ -6298,7 +6271,7 @@ not greedy prefixes.
 \lean{HalfTerminalOnlyStripWitness}{TerminalOnlyCofinal.lean:24},
 \lean{exists\_infinite\_support\_half\_of\_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:192}.
 \textbf{Conclusion.} Cofinally many depths $M$ carrying a finite normalized word $a$ with
-$|\ensuremath{\operatorname{ihc}}(\mathrm{wordSupport}\,a)(M{-}1)| \le \ensuremath{B}\,M
+$|\ensuremath{\operatorname{ihc}}(\operatorname{supp}a)(M{-}1)| \le \ensuremath{B}\,M
 \Rightarrow \exists A$ infinite with $X_{A}(2)=1/2$. Same architecture
 as the obligation: cofinal, no coherence, mutually incompatible witnesses allowed.
 
@@ -6330,16 +6303,16 @@ existence theorem.
 (Theorem~\ref{record:257rig-c18}), or a pointwise $2\sqrt N+4$ bound on the M\"obius-centred
 carry (Theorem~\ref{record:257rig-c16}), each give an infinite support with value exactly $1/2$.
 \textbf{Comparison.} These bound the carry of the \emph{infinite}
-greedy support $\mathrm{greedyMersenneSupport}(1/2)$; sharp capacity is about the \emph{frozen
+greedy support $G$ of $1/2$; sharp capacity is about the \emph{frozen
 finite prefix} $\mathrm{halfGreedyPrefixSupport}(c{-}1)$. The two carries agree only at index $k$
 (inside \lean{greedyHalfFrozenMargin\_eq\_actual\_skip\_margin}{HalfCylinderFiniteShadow.lean:1120}),
 not at depth $2c{-}3$ where the fill needs it. The bridge is already recorded:
 \lean{halfGreedy\_precriticalSuffix\_lt\_iff\_futureSkipCoverage}{BooleanMobiusCriticalCapacityCofinal.lean:949}:
-sharp capacity $\Leftrightarrow \ensuremath{C}\,G\,(2c{-}4) \le
-\mathrm{futureSkipCapacity}\,G\,c\,(c{-}3)$; transport costs exactly the future-skip capacity
-term.
+sharp capacity $\Leftrightarrow \ensuremath{C}\,G\,(2c{-}4) \le \Phi_c$, where
+$\Phi_c=\sum_{i=1}^{c-3}2^{c-3-i}\mathbf 1[c+i\notin G]$ is the future-skip capacity;
+transport costs exactly this term.
 \textbf{Missing step.} Either a strip bound stated for the frozen prefix rather than the live orbit,
-or $\mathrm{futureSkipCapacity}\,G\,c\,(c{-}3) \ge \ensuremath{B}(2c{-}3)$; holds as
+or $\Phi_c \ge \ensuremath{B}(2c{-}3)$; holds as
 soon as one skip occurs early in $[c{+}1,\,2c{-}4]$, since the capacity is dyadically weighted.
 Same input as the bounded-gap precritical bound above.
 \end{obs}
@@ -6390,8 +6363,8 @@ does not rule out other assumptions that also force unbounded depths.
 \textbf{Conclusion.} $\forall b\ge2,\ \forall A\subseteq\mathbb N$ (no infinitude, no structure
 hypothesis at all): if $\forall q>0\ \exists N,K,L,C$ with $K\le L$, $b^r \mid
 c_{A}(N{+}r)$ for $r\in[1,K]$, $\sum_{r=K+1}^L c_{A}(N{+}r)
-b^{L-r}\le C$, $\exists t,\ 0<c_{A}(N{+}L{+}1{+}t)$, and $q(C{+}N{+}L{+}2)<b^L$
-;  then $X_{A}(b)$ is irrational. The cited full-support, multiples, periodic, residue-class,
+b^{L-r}\le C$, $\exists t,\ 0<c_{A}(N{+}L{+}1{+}t)$, and $q(C{+}N{+}L{+}2)<b^L$,
+then $X_{A}(b)$ is irrational. The cited full-support, multiples, periodic, residue-class,
 pairwise-coprime and fixed-core constructions use this criterion.  No
 such factorisation is asserted for the weighted support theorem in
 Section~\ref{sec:257-problem}.
@@ -6447,9 +6420,9 @@ lemma has its own \lean{finiteErdosSum\_den\_odd}{DyadicPrefixCompression.lean:1
 parity lemma (the reduced denominator of a finite sum is odd) holds for every finite support.
 \textbf{The same argument in general.} For every rational $t$ with even reduced denominator
 and every finite $A$ with $0\notin A$, $X_{A}(2) \ne t$; the proof is the same. Thus a represented rational with even reduced denominator would refute universal
-\#257 at $b=2$. The converse is not established. If $\mathrm{FinVal}$ denotes the finite-support
+\#257 at $b=2$. The converse is not established. If $\mathcal F$ denotes the set of finite-support
 values, the exact unrestricted condition is
-$(\mathbb Q\cap\ensuremath{\mathcal A})\smallsetminus\mathrm{FinVal}\ne\varnothing$.
+$(\mathbb Q\cap\ensuremath{\mathcal A})\smallsetminus\mathcal F\ne\varnothing$.
 \end{obs}
 
 \begin{obs}[The denominator in the reciprocal-mass estimate]
@@ -6466,7 +6439,7 @@ conclusion is already recorded for arbitrary $(v,h,L,F)$.
 $h=$ multiplicative order of $2$ mod $v$, giving $\rho(A) \ge
 \mathrm{doublingWrapCount}(p,v,h)/h + 1/\mathrm{lcm}(a,b)$ for every rational value. The one
 genuinely new step: for $v{>}1$ the excess can be $0$, so strictness needs $1 \le
-\mathrm{doublingWrapCount}(p,v,h)/h + \mathrm{booleanCollisionSurplus}\,|F|/L$ (equivalently: the
+\mathrm{doublingWrapCount}(p,v,h)/h + \lfloor|F|/2\rfloor/L$ (equivalently: the
 mean least residue of $p\cdot2^n \bmod v$ is $\ge v(1-|F|/2L)$).
 \end{obs}
 
@@ -6524,15 +6497,13 @@ series is irrational.
 generalises pairwise-coprime supports but still demands globally pairwise-coprime, summable
 petals; it inherits the exclusion of the primes noted in the preceding observation and adds
 nothing in the divisor-dense regime. (ii) On the selector: the tail-selection hypothesis must
-hold at every precision and is unproved.  Despite the name of the source file, it contains no
-dichotomy theorem.
+hold at every precision and is unproved.
 
 \par\medskip
 
 \textbf{Missing step.} For the selector, $\forall K{>}0\ \exists N$, $2^K \mid$ the carried first
-block $\wedge\ \mathrm{binaryCoeffTail}(c_{A})(N{+}K)\le16$, from the
-bouquet's persistent-reduced-modulus averaging; the file states this is what that averaging
-argument is supposed to give. For the class: the assertion that every infinite $A$ admits a
+block $\wedge\ \sum_{j\ge1}c_{A}(N{+}K{+}j)2^{-j}\le16$, from the
+bouquet's persistent-reduced-modulus averaging. For the class: the assertion that every infinite $A$ admits a
 bouquet structure is \emph{false} (take $A=$ all multiples of 6: there is no coprime
 petal decomposition).  A theorem for every infinite support would
 therefore require a different structural hypothesis, not merely a
@@ -6725,11 +6696,11 @@ so removing it again requires the missing supply of certificates for arbitrary s
 
 \subsection{Three combined conditional arguments}
 
-The first conditional implication also has a Lean source, identified
-below.  The other two entries are
-ordinary mathematical arguments about what the stated hypotheses
-would imply.  None establishes its unproved orbit hypothesis or
-decides~\#257.
+Entry A has a Lean proof, and entry B is an ordinary argument about what
+its hypotheses would imply.  The facts behind entry C, the survival equivalence of
+Theorem~\ref{thm:greedy-survival-record} and the one-sided certificates,
+are proved in Lean.  None of the three establishes an unproved orbit
+hypothesis or decides~\#257.
 
 \begin{thm}[A: a sufficient lower bound at every reset]\label{thm:lower-bound-every-reset}
 Assume that
@@ -6764,10 +6735,10 @@ do not by themselves make dangerous resets unlikely; the open step is excluding 
 values.  This is an ordinary argument.
 \end{rem}
 
-\begin{thm}[C ;  the one-sided finite decision boundary]\label{thm:one-sided-finite-decision-boundary}
+\begin{thm}[C: the one-sided finite decision boundary]\label{thm:one-sided-finite-decision-boundary}
 The equivalence of Theorem~\ref{thm:greedy-survival-record} separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is
 a finite certificate that $1/2\notin\mathcal A$. By contrast, membership requires survival at
-every rank; the corpus supplies no finite certificate that the orbit survives forever and no
+every rank; this paper supplies no finite certificate that the orbit survives forever and no
 completion theorem turning a long surviving prefix into membership.
 
 The reset-crossing hypotheses, truncation-rung ladder, and sharp-capacity inequalities feed
@@ -7463,7 +7434,7 @@ an eventual ceiling, not automatically the required finite initial
 cases.  An exact computation
 (\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{saved run})
 gives a maximum run of length
-$19$ through row $200{,}000$, attained at row $158{,}096$.
+$19$ through row $200{,}000$, following the reset at row $158{,}096$.
 That observation is finite evidence, not an asymptotic theorem.
 
 \emph{Form (ii), band avoidance, already proved to imply membership.}  For every
@@ -7478,7 +7449,7 @@ conditional implication to membership
 \lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}.
 The $\forall j\le d$ band check collapses to a single nearest-boundary index per row by
 \lean{dyadicBandEscape_iff_exists_critical}{HalfUpperResetCriticalBand.lean:108}, and rows
-$13\le d\le 30$ are verified in the cited source by
+$13\le d\le 30$ are verified in Lean by
 \lean{seamUpperResetDyadicBandEscape_through_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}.
 
 \emph{Form (iii), the sign of the reset deviation.}
@@ -7488,7 +7459,7 @@ r \text{ is an } M\text{-reset}\Rightarrow w_{r+1}>0,
 \qquad
 r \text{ is a } U\text{-reset}\Rightarrow w_{r+1}<0 .
 \]
-The finite recomputation for this record verifies these signs
+A finite recomputation (\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json}{saved run}) verifies these signs
 at all $1209$ resets in rows $6$--$2500$, with $605$ middle and $604$ upper resets.
 The upper sign follows directly from the exact branch identity below.
 The middle sign remains an unproved assertion about the orbit; neither
@@ -7706,8 +7677,7 @@ Proportion$/t$ & $2.267$ & $2.378$ & $2.514$ & $2.560$ & $3.031$\\
 \hline
 \end{tabular}
 \end{center}
-These counts were reproduced for this record; the experiment
-samples consecutive integers, not reset rows.  Its median distance
+The experiment samples consecutive integers, not reset rows.  Its median distance
 is $0.24470815549\ldots$, compared with $1/4$ for a uniform
 fractional part.  A uniform fractional part has probability $2t$
 of distance less than $t$, for $0<t\le1/2$, which explains the
@@ -7745,8 +7715,8 @@ surely, not zero failures at every index.  Neither the finite
 histogram nor its fit to a uniform-phase model proves these
 probability bounds, identifies their events with reset failures,
 or defines a probability for the actual deterministic orbit.
-In particular, no membership conclusion is drawn from the fitted
-small expected counts reported in the earlier record.  The counts are
+In particular, no membership conclusion is drawn from small
+expected counts computed in such a model.  The counts are
 exact finite computations; the error and probability inequalities are
 ordinary arguments; an application to resets is unproved.
 
@@ -7780,9 +7750,7 @@ This sign already follows from the exact upper-branch identity;
 only the middle sign needs further orbit information.  On a right
 transition the corresponding formula is
 $w_{s+1}=4w_s-4-p_s$.
-The same middle and upper deviation identities appear in a
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/Erdos257PeriodNoncollapse/HalfResetSqrtEscapeScaleProducers.lean#L79-L144}{Lean source},
-which was not recompiled for this record.  They separate the
+These identities separate the
 sign calculation from the unproved magnitude estimate needed for square-root escape.  At the
 reported middle step $s=14$, for example,
 $\mathrm{rem}(14)=392$, $p_{14}=3$ and
@@ -7980,13 +7948,13 @@ By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lea
 \[
 \bigl(\ensuremath{\operatorname{ihc}}\ A\ N:\R\bigr)
 = 2^{\,N+1}\Bigl(\tfrac12-X_{A}(2)\Bigr)
-+\mathtt{binaryCoeffTail}\ (c_{A})\ (N+1),
++\sum_{j\ge1}c_{A}(N+1+j)2^{-j},
 \]
 and the first term vanishes by hypothesis. Take $N=k^{2}-1$, so $N+1=k^{2}$. By
 \lean{binaryCoeffTail_supportCoeff_le_two_sqrt_add_four}{BooleanMobiusCarry.lean:290}
 (unconditional) the tail at $k^2$ is at most $2\sqrt{k^{2}}+4=2k+4$, and by
 \lean{halfStripBound}{HalfCarryReachability.lean:32}, $\ensuremath{B}\ n
-= 2\,\mathtt{Nat.sqrt}\ n+4$, which at $n=k^{2}$ equals $2k+4$ exactly. Non-negativity of the tail
+= 2\lfloor\sqrt n\rfloor+4$, which at $n=k^{2}$ equals $2k+4$ exactly. Non-negativity of the tail
 (\lean{binaryCoeffTail_nonneg}{GenericTailOrbitRigidity.lean:78}) gives the lower side.
 \end{proof}
 
@@ -8153,10 +8121,9 @@ normality, independence, a random sampling model, or an infinite
 anti-concentration estimate.  A statement about ``sampling noise'' would
 require a specified probabilistic model that is not supplied here.
 
-The previously reported exceptional row $r=7$ and crossing $(s,d)=(10,7)$
-are likewise statements about the tested range only.  The exact range and
-reproduction artefacts must accompany them before they are used as
-numerical evidence outside this historical record.  No claim that this is
+The exceptional row $r=7$ and the crossing $(s,d)=(10,7)$ are likewise
+statements about the tested ranges only: reset rows $6\le r\le200{,}000$
+and rows $s\le2500$ (\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json}{saved run}).  No claim that this is
 the only exceptional row of the infinite orbit is made.
 
 These representations all descend from the same greedy carry;
@@ -8199,8 +8166,7 @@ Instantiating the present block-certificate method at a general support is block
 universal side, by Proposition~\ref{prop:squarefree}. Survival through any tested finite depth does
 not by itself establish membership; a fatal-gap certificate would establish non-membership. These
 facts do not decide rational-target membership, and they do not yield an impossibility theorem for
-all probabilistic, measure-theoretic or averaging methods.  Each recorded obstruction, unlike a
-failed attempt, can be reused; that is what this part contributes.
+all probabilistic, measure-theoretic or averaging methods.
 % ; - part a257_p5 ; -
 \clearpage
 \part*{V. Outstanding obligations and provenance}
@@ -8317,7 +8283,7 @@ $(\mathtt{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}$, so
 \mathrm{CPGS}\ \Longleftrightarrow\ \mathrm{HALF}.
 \]
 \end{prop}
-The proof is an ordinary argument.  The cited implication
+The implication
 \lean{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84}
 therefore gives an equivalent formulation, not a proof of membership.
 
@@ -8337,7 +8303,7 @@ cofinally many depths.  The relaxed constant $6$ gives a bound at every
 depth, using $\sqrt M\le\lfloor\sqrt M\rfloor+1$, but that relaxation is
 not needed for the cofinal statement.
 \end{prop}
-The proof is an ordinary argument.  This corrects the claim that the existence condition is logically weaker.
+The existence condition is therefore not logically weaker than half-membership.
 An equivalent formulation may still be useful for finding a proof.
 
 \begin{obs}
@@ -8428,7 +8394,7 @@ One possible cofinal supply is therefore the following exclusion
 of a specified integer interval:
 \[
 \begin{gathered}
-\text{(O3-supply)}\qquad \forall N\ \exists c\ge\max(N,4)\ \exists D\subseteq\{2,\ldots,c-1\},\\
+\text{(capacity band)}\qquad \forall N\ \exists c\ge\max(N,4)\ \exists D\subseteq\{2,\ldots,c-1\},\\
 0<1/2-V(D)<w_c,\qquad
 S(D,1,2c-2)\notin[\,2^{c-2},\,2^{c-2}+c-3\,].
 \end{gathered}
@@ -8510,8 +8476,8 @@ is outside both proposed late ranges; that fact alone does not
 justify replacing the initial threshold $10$ by $31$.
 
 \emph{Finite evidence.} Exact integer arithmetic to row $200{,}000$ shows that the
-target inequality holds at every reset row $6\le r\le200{,}000$ except $r=7$; the maximum observed R-run is $19$, at
-row $158{,}096$, against a required threshold there of $\approx79{,}046$, a margin of about
+target inequality holds at every reset row $6\le r\le200{,}000$ except $r=7$; the maximum observed R-run is $19$, after
+the reset at row $158{,}096$, against a required threshold there of $\approx79{,}046$, a margin of about
 $4000$ times.  This is a finite verified list; it supplies no witnesses at unbounded depths.
 
 \begin{obs}[The sign of the reset deviation]
@@ -8630,7 +8596,7 @@ Infinitely many greedy skips (Proposition~\ref{prop:cpgs-equiv}) & $\Leftrightar
 Terminal-only strip (Prop.~\ref{prop:strip-equiv}) & $\Leftrightarrow$ half-membership & open, equivalent condition \\
 The centred square-root bound for $G$ & $\Leftrightarrow$ half-membership & open, equivalent condition \\
 Exact finite sums at unbounded depths & $\Leftrightarrow$ half-membership (Prop.~\ref{prop:collapsed-list}(c)); Lean proves $\Rightarrow$ & open, equivalent condition \\
-(O3-supply) linear-width capacity band & $\Rightarrow$ exact sums at unbounded depths (Lean, given a lemma) & open \\
+Linear-width capacity band & $\Rightarrow$ exact sums at unbounded depths (Lean, given a lemma) & open \\
 The quotient condition on skipped greedy prefixes & $\Rightarrow$ exact sums at unbounded depths (Lean) & open; no strict comparison asserted \\
 Reset square-root bound & $\Rightarrow$ half-membership (Lean); no run-length equivalence asserted & open \\
 The reset sign condition & no implication to half-membership stated & open \\
@@ -8685,8 +8651,8 @@ $1/21$.  The conditions surveyed here have different logical roles.
 Those equivalent to half-membership, including exact sums at unbounded
 depths by Proposition~\ref{prop:collapsed-list}(c), do not establish
 membership merely by reformulating it.  The sufficient conditions (the
-reset bound, the remaining middle-cell exclusions and the capacity band
-(O3-supply)) have not been established at unboundedly many indices, and
+reset bound, the remaining middle-cell exclusions and the capacity band)
+have not been established at unboundedly many indices, and
 no converse is proved for them.  The proposed universal certificate
 strengthening $\mathrm{O1'}$ is a separate, rejected statement: it is
 already false on squarefree support.  Finite computational checks,
@@ -8702,12 +8668,13 @@ Positive fractional covers retain their geometric-kernel estimate, but their
 optimised cost cannot be bounded uniformly by a positive logarithmic divisor
 cost.  The obstruction occurs on complete arithmetic periods, rather than
 only in incomplete-period errors.  We give the construction and the surviving
-initial-interval estimate here; the short note records their consequences
-beside its cube-family calculation.
+initial-interval estimate here; the short paper records their consequences
+beside its bound for the family $F(q,P)$.
 
 The proofs in this section are ordinary arguments, first worked out in
-an AI-assisted note of 17 September 2026 and given here in full; they
-have not had independent review.
+an AI-assisted note of 17 September 2026 and given here in full.  All
+three results also have Lean proofs, each compared independently
+(margin); the ordinary proofs have not had independent human review.
 For the underlying Lambert subseries, Kova\v{c}--Tao treat the same fixed-base
 object in~\cite[Section~2.1.2 and Remark~4.1]{kovactao}; their strict-tail
 argument gives distinct support coding and Cantor topology.
@@ -8724,8 +8691,8 @@ Those results provide context, not an arithmetic logarithmic estimate or a
 solution of fixed-base rational membership.  The proof dependencies below
 are positive divisor majorisation, elementary prime selection, the Chinese
 remainder theorem, and the original kernel estimate
-\eqref{eq:257-mixed-finite-kernel}.  The short note's logarithmic lower bound
-and cube-family calculation concern the same fractional-cover cost; their
+\eqref{eq:257-mixed-finite-kernel}.  The short paper's logarithmic lower bound
+and its bound for $F(q,P)$ concern the same fractional-cover cost; their
 structured upper bound is not a uniform logarithmic converse.
 
 \subsection{The two finite costs}
@@ -8761,7 +8728,8 @@ $\sum_j\eta_j=1$, and coefficients $c_{j,d}\ge0$ satisfying
 $f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}$ for every $n\ge1$.
 The covering sets need not be disjoint or contained in $F$.  Covers of infinite
 cost do not lower the infimum, and a finite-cost cover exists, for example
-the single set $F$ with exponent one.  This is the manuscript's fractional cost,
+the single set $F$ with exponent one.  This is the fractional cost of
+Theorem~\ref{thm:257-variable-fractional-cover},
 not a redefinition of the logarithmic cost.
 
 \begin{thm}[arithmetic logarithmic counterexample]\label{thm:257-logarithmic-counterexample}
@@ -9002,11 +8970,12 @@ The proposition also bounds every $L=1$ dyadic observation window, since
 such a window averages ordinary initial-interval means.  It does not bound
 conditional arithmetic sampling uniformly in $L$.  Freezing a finite
 initial support in the irrationality argument requires exactly that
-arithmetic restriction.  The proposed logarithmic-tail irrationality
-corollary therefore loses this proof; its conclusion is not disproved.
+arithmetic restriction.  An irrationality criterion with logarithmic
+divisor costs in place of fractional ones therefore does not follow from
+this proof; it is not disproved either.
 The corollary above separates finite functionals, not infinite-support
 irrationality classes.  The weighted, fractional-cover, mixed and
-finite-period noncollapse results are unchanged.  No conclusion here
+finite-period noncollapse results are not affected.  No conclusion here
 decides universal \#257 or membership of $1/2$ or $1/21$.
 
 \clearpage

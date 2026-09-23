@@ -53,8 +53,8 @@ $a_{n+1}/a_n^2\to1$. They control either increases of an integer tail
 numerator or a convergent sum at steps setting new maxima. The paper
 gives the underlying recurrences, their relation to earlier work, and
 examples separating numerical growth bounds from the exact recurrences. The
-cubic-rate theorem is checked in Lean, together with every lemma used in its
-proof, and so is every other theorem, proposition, lemma and corollary
+cubic-rate theorem, in its zero-indexed form, is checked in Lean, together
+with every lemma used in its proof, and so is every other theorem, proposition, lemma and corollary
 below. None of the additional bounds is
 derived for every rational reciprocal sum in Erd\H{o}s Problem~\#243.
 \end{abstract}
@@ -81,7 +81,7 @@ Then $a_n=a_{n-1}^{2}-a_{n-1}+1$ for all sufficiently large $n$.
 \end{problem}
 
 \noindent See~\cite[p.~64]{erdosgraham1980} and~\cite[p.~105]{erdos1988}.
-The supplied catalogue snapshot lists the problem as
+Bloom's catalogue, accessed 28 July 2026, lists the problem as
 open~\cite{erdosproblems}.
 Below we index the same recurrence as
 $a_{n+1}=a_n^{2}-a_n+1$, which is the shift the formal sources use; the two
@@ -816,7 +816,7 @@ the original theorem. With $A_r=\operatorname{lcm}(a_1,\ldots,a_{r-1})$
 and $r=n+1$, its expression is exactly
 $(A_r/a_r)(a_r^2/a_{r+1}-1)$, the LCM quantity in the short note.
 The index change is not an additional difference between those two
-criteria. Erd\H{o}s's 1988 survey, followed by the supplied
+criteria. Erd\H{o}s's 1988 survey, followed by the
 catalogue summary, instead prints $a_n^2/a_{n+1}-1$ in the second factor while
 retaining the same prefix-LCM quotient; that displayed summary is off by one
 and is not followed here~\cite[p.~105]{erdos1988}\cite{erdosproblems}.
@@ -1583,8 +1583,8 @@ for some $B$. The original hypotheses do not currently supply this
 finiteness. In particular, termwise convergence to zero is insufficient.
 A Lean formulation of this comparison, with the sufficient constant $16$
 in place of $3$ and the summand of \eqref{long243:eq:weightedgrowth} at
-record indices and zero elsewhere, is in
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/GrowthDebtSummability.lean\#L234}{the separate release};
+record indices and zero elsewhere, is in the companion Lean repository
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/GrowthDebtSummability.lean\#L234}{\texttt{plectis-erdos-lean}};
 it is not covered by the evidence record.
 
 The crossed heights lie above $R_n$, but the divisibility argument uses
@@ -2119,7 +2119,7 @@ But $p\mid u_t=Y$, contradicting $\gcd(u_t,v_t)=1$.
 The converse follows because a Sylvester tail has $u_n=1$ eventually.
 \end{proof}
 
-The separate release contains the
+The \texttt{plectis-erdos-lean} repository contains the
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/RecordIncrementBarrier.lean\#L329}{unit-increment landing lemma} and the
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/RecordIncrementBarrier.lean\#L425}{one-unit record-increment implication};
 they assume the existence of the prime power that
@@ -2223,7 +2223,7 @@ and convergence in the converse direction again follows from eventual Sylvester 
 \end{proof}
 
 \paragraph{Formalisation.}
-The separate release contains
+The \texttt{plectis-erdos-lean} repository contains
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/ProtectedEpochEnergy.lean\#L185}{the integer inequality counting crossings before a prime power is lost}
 and its counting lemmas.
 In Lean,
@@ -3220,7 +3220,7 @@ and $E_n=1$, the increments are integers but positivity fails.
 \lword{Erdos243/SparseResetRecovery.lean}{612}{eventually_zero_of_summable_negativeRelativeMass_scalar}{the eventual vanishing for a positive integer sequence};
 its exact-orbit consequence is
 \lword{Erdos243/SparseResetRecovery.lean}{690}{sylvesterNext_eventually_of_summable_negativeRelativeMass_scalar}{the scalar recurrence from a convergent sum}.
-The separate release contains a
+The \texttt{plectis-erdos-lean} repository contains a
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalNegativeMass.lean\#L19}{formulation for the rational-tail numerators using a convergent sum},
 not covered by the evidence record. Summability remains
 an assumption; the elementary scalar implication needs neither growth nor
@@ -3718,22 +3718,22 @@ funding.  The author declares no competing interests.
 
 \paragraph{Acknowledgements.} I thank Wouter van Doorn for advice on
 exposition, including the explanation of restrictive hypotheses and the
-removal of unnecessary terminology. The problem numbering follows the
-supplied Erd\H{o}s Problems catalogue snapshot~\cite{erdosproblems}.
+removal of unnecessary terminology. The problem numbering follows
+Bloom's Erd\H{o}s Problems catalogue~\cite{erdosproblems}.
 
 \appendix
 \section{Guide to the formal sources}\label{long243:app:index}
 
-Links to the main repository use revision \texttt{\commitshort};
-other links name their repository and revision. The recurrence identities
+The recurrence identities
 and arithmetic exclusions are in \texttt{ReciprocalTailRigidity.lean}, the
 scalar convergence theorem is in \texttt{SparseResetRecovery.lean}, and
 the bounds on cancelled factors are in \texttt{RepairEntropy.lean}.
 The Lean statement excluding a periodic error assumes $e_n<a_n$;
 Section~\ref{long243:sec:periodic} derives this bound eventually for a
-periodic positive error magnitude. The bounded-negative statement lists
-strict centring and vanishing relative error separately;
-the latter implies the former eventually by taking $K=1$.
+periodic positive error magnitude. The printed bounded-negative theorem
+lists strict centring and vanishing relative error separately; its Lean
+statement omits strict centring, which vanishing relative error supplies
+eventually by taking $K=1$.
 Sections~\ref{long243:sec:priorwork} and~\ref{long243:sec:bounded} give the
 construction from a rational reciprocal sum.
 
@@ -4004,7 +4004,7 @@ counterexample. The static examples and local identities supply neither.
   Locators refer to this published version.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/243}{\emph{Erd\H{o}s Problem \#243}},
-  supplied snapshot of 28 July 2026; not a live status verification.
+  accessed 28 July 2026.
 \bibitem{formalconjectures243} The Formal Conjectures Authors,
   \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{243}}},

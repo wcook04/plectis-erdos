@@ -452,8 +452,7 @@ fixed base $b\ge2$, the number in the latter statement is
 $\sum_{n\ge0}p_n b^{-(n+1)}$, and normality is to base $b$.
 Changing $b$ changes the number; this is not absolute normality of a
 single constant.  The authors
-supply formalisation material, which has not been independently rebuilt
-for this revision.  The uniform hypothesis in
+supply formalisation material, which we have not rebuilt.  The uniform hypothesis in
 \cite[Conjecture~1.3]{kuperberg2023} counts prime translates of every
 nonempty admissible tuple of $k\le(\log\log x)^3$ distinct integer shifts
 in $[0,(\log x)^2]$.  Its main term is the tuple's singular series times
@@ -1312,35 +1311,24 @@ general form.  Lean proves the
 and derives the theorem as stated from it, using only Lean's three
 standard axioms.
 
-A second, independent certificate was computed outside Lean by an
-integer-arithmetic program that uses no floating-point arithmetic.  It
-encloses $\Pi$ between the sum of its first $80128$ terms and that sum plus
-$1250P(80128)/2^{80128}$, with the primes taken from a sieve below
-$1\,200\,000$; the added term bounds the omitted terms by
-$p_n\le1250(n+1)^4$ and the identity $2P(x)=(x+1)^4+P(x+1)$ in the proof of
-Proposition~\ref{long251:res:explicit-remainder}.  Rounding the lower endpoint down and the upper
-endpoint up to multiples of $2^{-80000}$ gives integers $L$ and $U=L+1$ with
-$L2^{-80000}\le\Pi\le U2^{-80000}$.  The continued fractions of these two
-endpoints agree in their first $23369$ partial quotients, and their last two
-common convergents, ordered as $s/t<s'/t'$, satisfy
-\[
- s't-st'=1,\qquad
- s\,2^{80000}<Lt,\qquad Ut'<s'\,2^{80000},\qquad
- t+t'\ge2^{39998}.
-\]
-The same determinant calculation gives $q\ge2^{39998}$.
+An independent
+\href{https://github.com/wcook04/plectis-erdos/blob/beaf0866976c908539fba0a96075374dd658f44a/research/experiments/erdos251/exact_replay.py}{program}
+outside Lean, in exact integer arithmetic, recomputes $A$ from a prime sieve
+and checks the four comparisons; it finds the same $23407$ common partial
+quotients and a sum $v+v'$ of bit length $40062$
+(\href{https://github.com/wcook04/plectis-erdos/blob/beaf0866976c908539fba0a96075374dd658f44a/research/experiments/erdos251/receipts/251-exact-replay.json}{recorded output}).
 
-The constants $2^{39997}$ and $10^{12040}$ in the statement come from the
-original computation, which used the best-approximation property of
+The constants $2^{39997}$ and $10^{12040}$ in the statement come from a
+separate computation with a bracket of width $2^{-80000}$, which used the best-approximation property of
 convergents \cite[\S6, Theorems~16 and~17]{khinchin1964}; Short gives an
 accessible statement and proof~\cite[Theorem~1.1]{short2009}.  Its
 \href{https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/research/experiments/erdos251/receipts/certified-cf.json}{recorded output}
 lists the generating program and its digest and a last convergent whose
 denominator has bit length $39998$, hence is at least $2^{39997}$; the
 program also checked its arithmetic against the known expansions of $e$
-and $\pi$.  That bit length describes one convergent only; the bounds for
-every rational in the enclosure come from the certified sums $v+v'$ and
-$t+t'$ above, and $2^{39997}>10^{12040}$ is a separate integer comparison.
+and $\pi$.  That bit length describes one convergent only; the bound for
+every rational in the enclosure comes from the certified sum $v+v'$
+above, and $2^{39997}>10^{12040}$ is a separate integer comparison.
 
 A rational number may have a denominator beyond either bound.  Extending
 the computation can exclude a larger finite range, but a longer prefix
@@ -1935,7 +1923,7 @@ by itself bound that error.  Neither search says anything beyond its
 range.  The exact certificates are
 Proposition~\ref{long251:res:finite-smallpair} and the two denominator
 bounds of Section~\ref{long251:sec:denominator-floor}, all checked by the
-Lean kernel.  The searches have not been rerun for this edition.
+Lean kernel.
 
 Over the $6\,841\,648$ primes below $1.2\times10^{8}$ and offsets
 $h=1,\ldots,16$, the scan records hits for the reduced two-window event of
@@ -1966,10 +1954,10 @@ moduli nor witnesses beyond every prescribed cutoff.  Its
 is public.
 The \href{https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/research/experiments/erdos251/README.md}{computation guide}
 gives the programs, dependencies and commands to rerun both searches and
-the original continued-fraction calculation of
+the $80000$-bit continued-fraction calculation of
 Section~\ref{long251:sec:denominator-floor}.
 Appendix~\ref{long251:sec:xr-corrections} corrects the stated
-justification of the tail bound in the earlier $4096$-bit program.
+justification of the tail bound in the free-pair program.
 
 \section{Remaining prime-gap estimates}\label{long251:sec:open}
 
@@ -2080,10 +2068,10 @@ check.  Formal checking does not establish novelty or attribution.  The
 programs for the searches of Section~\ref{long251:sec:measurements} are
 listed in the
 \href{https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/research/experiments/erdos251/README.md}{computation guide}.
-For this edition the program in Appendix~\ref{long251:app:certificates},
-which checks the adjacent pair and the bound $2^{589}$, and the
-independent program of Section~\ref{long251:sec:denominator-floor} for
-the $80000$-bit enclosure were rerun; the frequency scans were not.
+The program in Appendix~\ref{long251:app:certificates} checks the
+adjacent pair and the bound $2^{589}$; the independent program of
+Section~\ref{long251:sec:denominator-floor} checks the certificate of
+Theorem~\ref{long251:res:cfexclusion}.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.
@@ -2221,12 +2209,13 @@ The finite certificates use the same polynomial bound to control the
 omitted terms.  The counterexamples concern other coefficient sequences
 and construct no new primes.
 
-Three results assume published inputs that the Lean development does not
-prove.  Theorem~\ref{long251:res:sparse} assumes Schlage-Puchta's
+The Lean proofs of three results assume published inputs that the Lean
+development does not prove.  The Lean proof of
+Theorem~\ref{long251:res:sparse} assumes Schlage-Puchta's
 Lemma~4 \cite[Lemma~4, pp.~5--6]{schlagepuchta2011}; for a fixed nonzero
 integer polynomial in a fixed block of consecutive prime gaps, it states
 that the set of indices where the polynomial vanishes has density zero.
-Corollaries~\ref{long251:res:nonconc-primes}
+Those of Corollaries~\ref{long251:res:nonconc-primes}
 and~\ref{long251:res:jointcountermodel} assume that lemma and the prime
 number theorem in the form $p_n\sim n\log n$~\cite[Chapter~6]{mv2007}.
 What each statement adds to these inputs is checked, including the
@@ -2668,10 +2657,10 @@ only an upper bound; it predicts neither a monotone decline nor an
 asymptotic proportion.  The finite-band ratios therefore do not
 establish an asymptotic rate.
 
-\subsection{Corrections to earlier records}\label{long251:sec:xr-corrections}
+\subsection{Two corrections}\label{long251:sec:xr-corrections}
 
-\paragraph{The earlier tail-bound calculation.}
-The $4096$-bit program linked through
+\paragraph{The tail bound in the free-pair program.}
+The $4096$-bit free-pair program linked through
 Section~\ref{long251:sec:measurements} bounds $T_s$ by summing the first
 $400$ terms of $1250(s+j+2)^4 2^{-j}$ after rounding each down, then
 adding $1$.  This does not necessarily bound that polynomial series:
@@ -2696,20 +2685,14 @@ Thus the rounding issue is in the stated majorant argument, not a
 failure of the returned enclosure.  This argument justifies the
 analytic bound; it is not a rerun of the denominator-exclusion search.
 
-\paragraph{An earlier exclusion record.}
-An earlier internal record gave a denominator exclusion at $10^{602}$.
-Theorem~\ref{long251:res:cfexclusion}, whose certificate the Lean kernel
-checks, supersedes it; the original continued-fraction program was not
-executed for this edition.
-
-\paragraph{An insufficient proposed condition.}  An earlier record named
-Hardy-Littlewood $k$-tuple correlation of consecutive gaps at a fixed offset as
-the missing input.  With the offset freed by Theorem~\ref{long251:res:freepair} the
-route needs, for each modulus $t$, cofinally many congruent pairs with
-certified nonintegral tail difference.  A further record proposed that two even
-values differing by $2$, each occurring infinitely often inside a common index
-residue class, would supply the two-condition form.  Theorem~\ref{long251:res:polignacfail} shows that this implication is false
-for integer-coefficient recurrences.  That entry is withdrawn.
+\paragraph{An insufficient condition.}  With the offset freed by
+Theorem~\ref{long251:res:freepair}, the route needs, for each modulus $t$,
+cofinally many congruent pairs with certified nonintegral tail difference.
+Two even values differing by $2$, each occurring infinitely often inside a
+common index residue class, do not imply this two-condition form for
+integer-coefficient recurrences: the sequence of
+Theorem~\ref{long251:res:polignacfail} has both properties and only
+integral tail shifts.
 
 % Part: part family_catalogue
 \section{Arithmetic-progression reformulations of integrality}
@@ -2894,9 +2877,9 @@ exclusions do not establish that conclusion.
 \bibitem{zhang2014} Yitang Zhang, \href{https://doi.org/10.4007/annals.2014.179.3.7}{\emph{Bounded gaps between primes}}.
   Annals of Mathematics \textbf{179} (2014), 1121--1174, doi:\href{https://doi.org/10.4007/annals.2014.179.3.7}{10.4007/annals.2014.179.3.7}.
 \bibitem{erdosproblems} Thomas F. Bloom, \href{https://www.erdosproblems.com/251}{\emph{Erd\H{o}s Problem \#251}}.
-  2026. Catalogue snapshot accessed 6 September 2026.
+  2026. Accessed 6 September 2026.
 \bibitem{erdosproblems251thread} {Erdős Problems contributors}, \href{https://www.erdosproblems.com/forum/thread/251}{\emph{Erd\H{o}s Problem \#251 discussion thread}}.
-  2026. Snapshot accessed 6 September 2026: Tao comment of 7 October 2025 and Land comments of 6 September 2026.
+  2026. Accessed 6 September 2026: Tao comment of 7 October 2025 and Land comments of 6 September 2026.
 \bibitem{kovac2026} {ChatGPT 5.4 Pro (orchestrated by Vjeko Kova\v{c})}, \href{https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf}{\emph{On the Erd\H{o}s problem \#251}}.
   Unpublished note, Department of Mathematics, University of Zagreb, 2026. Accessed 6 September 2026.
 \bibitem{formalconjectures251} {The Formal Conjectures Authors}, \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean}{\emph{FormalConjectures.ErdosProblems.251}}.

@@ -396,11 +396,8 @@ For that length the geometric sum and convexity give
 For the last inequality, use
 $(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}$ and $B\le2$.
 Summing the main terms and the two error bounds proves~\eqref{eq:mixed-finite-kernel}.
-This is an ordinary proof.  Lean sources exist for
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L207}{the full estimate}
-and for
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L130}{its complete-period and no-wrap ingredients};
-no new compilation of them is claimed here.
+This is an ordinary proof; the estimate is also
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean\#L206}{proved in Lean}.
 Nonnegative interchange permits summation against any coefficients $c_d$
 with $\sum_dc_d/d<\infty$.
 
@@ -486,10 +483,11 @@ can also be required to be arbitrarily large.
 The same proof permits any positive weights $\eta_j$ with $\sum_j\eta_j=1$:
 replace $2^{j\alpha_j}$ in~\eqref{eq:strengthened-cover} by
 $\eta_j^{-\alpha_j}$ and take $t_j=\varepsilon\eta_j$.
-The earlier condition
+The stronger condition
 $\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty$
-implies~\eqref{eq:strengthened-cover}, since each old summand is the
-new one multiplied by $2^{\alpha_j}/(2^{\alpha_j}-1)>1$.
+implies~\eqref{eq:strengthened-cover}, since each of its summands is the
+corresponding summand of~\eqref{eq:strengthened-cover} multiplied by
+$2^{\alpha_j}/(2^{\alpha_j}-1)>1$.
 This proves inclusion of the hypotheses for a given cover, not strict
 inclusion of the resulting support classes after optimisation over
 all covers.  No separating construction is proved here.
@@ -519,8 +517,8 @@ The periodic left side tends to $\mathbb E_F\Psi(f_F)$, proving
 the first inequality; the covering moduli need not divide
 $\operatorname{lcm}(F)$.  Convexity gives $2^\alpha-1\le\alpha$, and
 $e^u/u\ge e$ proves the second.  Those scalar steps, including the bound
-$t^\alpha/(2^\alpha-1)\ge e\log t$, have
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L170}{Lean sources};
+$t^\alpha/(2^\alpha-1)\ge e\log t$, are
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean\#L170}{proved in Lean};
 the assembled averaging argument is an ordinary proof.
 
 This bound survives optimisation over all covers.  For
@@ -555,15 +553,13 @@ majorant by a logarithmic one need not control averages along the
 multiples of a prescribed modulus.  A counterexample and the distinct
 bound for ordinary initial intervals are proved in the companion, Section~13;
 those proofs were first worked out in an AI-assisted note of 17 September
-2026 and have not had independent review.  Those arguments concern finite
+2026.  The three results of that section also have Lean proofs, each
+compared independently by Comparator; the ordinary proofs have not had
+independent human review.  Those arguments concern finite
 functionals, not a comparison of the infinite-support irrationality
-classes.
-
-A Lean source
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L16}{constructs a weighted support with no strengthened cover}.
-The reverse separation is not established here, so two-way
-incomparability is not asserted.  This construction is distinct
-from the finite-functional counterexample just cited.
+classes.  No separation between the weighted supports of
+Theorem~\ref{res:weighted-support} and the cover supports of
+Theorem~\ref{thm:variable-fractional-cover} is proved here.
 
 \subsection{Combining the two support criteria}
 Separate small-displacement witnesses need not occur at the same index.
@@ -728,7 +724,7 @@ Precisely, Dirichlet convolution gives
 $\mu*c_A=\mathbf1_A$, where $\mu$ is the M\"obius function.
 A putative recurrence with integral forcing must therefore satisfy
 $(\mu*c_A)(n)\in\{0,1\}$ for all $n$.
-The long record gives the integer-recurrence criterion, its telescoping
+The companion gives the integer-recurrence criterion, its telescoping
 proof, M\"obius inversion, and the coefficient-series identity in
 Theorems~6.105--6.107, under \emph{Bounds for a general coefficient
 sequence}.  The example $A=\{2\}$ there has value $1/3$.
@@ -759,7 +755,7 @@ Graham stated here as Problem~\ref{res:problem}.
 The zero-window obstruction for one normalised certificate scheme concerns
 that scheme's hypotheses.  It gives no obstruction to irrationality of the
 value.  The precise normalisation counterexamples are retained in the
-long record, together with the complete catalogue of known support families.
+companion, together with the complete catalogue of known support families.
 
 A growth-only criterion gives a different class: if
 $A=\{c_1<c_2<\cdots\}$ and $\limsup_n c_n/2^n=\infty$, then
@@ -837,8 +833,6 @@ For every real $x\ge0$, the following are equivalent:
 \]
 \end{theorem}
 
-The following is an ordinary proof.
-
 \begin{proof}
 Strict domination of each Mersenne weight over its tail implies that a
 represented target is recovered by the greedy rule.  For such a target,
@@ -899,7 +893,7 @@ are six-periodic.  Thus the unresolved arithmetic input is
  \quad}\label{eq:actual-selector-obligation}
 \end{equation}
 Both $Q_N$ and $c_x$ must arise from the same greedy selector.
-The long record retains exact counterexamples to fixed-multiplier repair
+The companion retains exact counterexamples to fixed-multiplier repair
 schedules and the finite phase masks used to test them.
 Neither target is decided here.
 
@@ -1066,7 +1060,7 @@ Choosing one member from each family gives the terminal bound in
 Theorem~\ref{res:terminalhalf}, proving the conclusion.  The shared-prefix
 conditions are needed for the proposed construction of the families,
 not for this final compactness step.  Such a construction at unbounded
-depths would refute Problem~\#257; none is proved here.
+depths would refute Problem~\ref{res:problem}; none is proved here.
 
 \begin{problem}[membership of 1/21 in the Mersenne achievement set]
 \label{prob:one-over-twenty-one-membership}
@@ -1179,7 +1173,7 @@ proof dependency.
 
 The evidence record lists the Lean declarations behind each marked
 result, with their versions and independent checks.  The Lean sources
-for the supplementary statements quoted from the long record (finite
+for the supplementary statements quoted from the companion (finite
 sums and denominators, the achievement set and its restrictions,
 squarefree divisor counts, half-membership and the tests for $1/21$) are
 linked beside the corresponding statements there.

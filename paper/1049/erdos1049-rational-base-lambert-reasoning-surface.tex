@@ -152,6 +152,8 @@ comparisons follow, and Appendix~\ref{long1049:app:index} separates
 formal proofs from finite computations.
 
 \evidenceparagraph{\evidencerecordurl}
+Links in the running text go to Lean proofs of single steps, such as a
+finite inequality; such a link does not cover the surrounding argument.
 
 All logarithms are natural. Empty products and determinants equal
 $1$. A subscripted constant in $O_x(\cdot)$ may depend on the fixed
@@ -611,16 +613,16 @@ Theorem~\ref{long1049:res:region}.
 
 \begin{proof}
 The comparison $\log4/\log31<81/200$ is the integer certificate
-$4^{200}<31^{81}$, checked as
-\lword{Erdos1049/ZudilinHeightRegion.lean}{26}{thirtyoneFour_power_certificate}{the
-power certificate}, and the membership it yields is
-\lword{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}{$31/4$ satisfies the inequality};
-the ratio $\log b/\log a$ is invariant under $(a,b)\mapsto(a^{r},b^{r})$, which
-gives the
-\lword{Erdos1049/ZudilinHeightRegion.lean}{59}{thirtyoneFour_power_mem_zudilinHeightRegion}{power
-family}, and $(31^{r},4^{r})$ are coprime.  The exclusion from the earlier
-region is
-\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{$31/4$ is outside the earlier region}.
+$4^{200}<31^{81}$, which Lean
+\lword{Erdos1049/ZudilinHeightRegion.lean}{26}{thirtyoneFour_power_certificate}{checks},
+and Lean also checks that it places
+\lword{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}{$31/4$ in the region $\log b/\log a<81/200$}.
+The ratio $\log b/\log a$ is invariant under $(a,b)\mapsto(a^{r},b^{r})$,
+which places
+\lword{Erdos1049/ZudilinHeightRegion.lean}{59}{thirtyoneFour_power_mem_zudilinHeightRegion}{every
+power of $31/4$} in the same region, and $(31^{r},4^{r})$ are coprime.
+Lean also checks that
+\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{$31/4$ lies outside the earlier region}.
 That exclusion also has a two-line rational certificate: $31^{2}<4^{5}$ gives
 $\log4/\log31>2/5$, and $\pi^{2}<10$ gives $1/2-1/\pi^{2}<2/5$, so
 \[
@@ -715,7 +717,12 @@ inequalities $\rho<0.4036982$ and $\theta^*>0.40568$ suffice:
 \]
 Here the quotient is increasing in $\rho$ and decreasing in $\theta^*$
 because $\rho<\theta^*<1$. The finer enclosure also certifies the
-displayed decimal approximation; neither calculation is a new Lean theorem.
+displayed decimal approximation. Lean checks the coarser calculation,
+including $2981509/9909<301$, and proves enclosures of $\theta^*$ and
+$\rho$ sharper than the finer ones displayed above
+(Section~\ref{long1049:sec:regionbracket} and
+Theorem~\ref{long1049:res:31over4}); the $256$-summand calculation is an
+exact computation outside Lean.
 \end{proof}
 
 \subsection{The rational bracket around \texorpdfstring{$\theta^{*}$}{theta*}}\label{long1049:sec:regionbracket}
@@ -760,16 +767,21 @@ It also checks that
 \lword{Erdos1049/RationalBaseContour.lean}{266}{thirtyoneFour_mem_zudilinContourRegion}{$31/4$ belongs to the region},
 that \lword{Erdos1049/RationalBaseContour.lean}{279}{thirtyoneFour_power_mem_zudilinContourRegion}{every positive integral power does too},
 and that \lword{Erdos1049/RationalBaseContour.lean}{296}{threeHalves_outside_zudilinContourRegion}{$3/2$ is excluded}.
-These comparisons use the defined constant; they do not supply the
-analytic estimates in Theorem~\ref{long1049:res:region}. The sharper
-interval in the preceding proof instead comes from the stated
+These comparisons use the defined constant; the analytic estimates belong
+to the proof of Theorem~\ref{long1049:res:region}, which Lean also checks.
+Lean also proves
+$0.40568302138406054100\le\theta^*\le0.40568302138406054104$ and
+enclosures of $J$ and $C_0$ (\href{\evidencerecordurl}{evidence record},
+Theorem~\ref{long1049:res:region}). The sharper
+interval in the preceding proof comes from the stated
 exact-arithmetic certificate with $256$ summands per trigamma
 difference. It does not rely on the historical thousand-term decimal
 evaluation reported in Section~\ref{long1049:sec:receipts}.
 
 The shorter interval above suffices for the bound $301$ but does not
-certify all digits printed in the cutoff. For those digits, a separate
-integer-arithmetic calculation gives
+certify all digits printed in the cutoff. Lean's enclosure of $\theta^*$
+implies the following bounds, and a separate integer-arithmetic
+calculation reproduces them independently of Lean:
 \[
 \begin{aligned}
 0.4056830213840605403&<\theta^*<0.4056830213840605417,\\
@@ -1234,7 +1246,8 @@ numerical reports. The polynomial reconstruction below covers
 $n=1,2,3,4$, and the preceding parameter search has an exact
 comparison for every tuple in its finite box. Both exact checks are
 public, with the other finite calculations of this paper, in the
-\href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/README.md}{reproduction guide}, and \texttt{python3 research/experiments/erdos1049/replay.py}
+\href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/README.md}{reproduction guide}, and a
+\href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/replay.py}{single script}
 reruns them and compares each with its recorded result. The historical
 high-precision evaluations were not rerun. None of these finite
 calculations proves a statement for all indices, and none is a Lean proof. The
@@ -1294,7 +1307,7 @@ rounded digits, supports the numerical inequality.
 
 The main term $K_n\log b-(K_n-W_n)\log a$ at $31/4$ is negative
 for every $1\le n\le400$, as verified by exact rational logarithm
-enclosures and exact totient sums (\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/main_term_31_4.py}{program}). Dividing by $n^2$ gives, to three
+enclosures and exact totient sums (\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/main_term_31_4.py}{program}, \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/main-term-31-4.json}{result}). Dividing by $n^2$ gives, to three
 decimal places, $-58.478,-10.280,-4.297,-3.863$ at
 $n=1,10,100,400$. This finite sign check does not assert negativity at
 every index. The proved limit is
@@ -1355,11 +1368,6 @@ Dividing this inequality by $65\log3$ and by $41\log2$, respectively,
 gives the two stated logarithmic bounds; both divisors are positive.
 \end{proof}
 
-\noindent The integer sides are checked as
-\lword{Erdos1049/AdelicHeightBridge.lean}{61}{threePow_fortyOne_lt_twoPow_sixtyFive}{the upper certificate}
-and
-\lword{Erdos1049/AdelicHeightBridge.lean}{64}{twoPow_sixtyFour_lt_threePow_fortyOne}{the sharp lower certificate}.
-
 The upper power bound gives $\log2/\log3>41/65$, a sharper lower
 bound than $81/200$. In particular,
 $41/65-2/5=3/13$. Combining this with
@@ -1398,11 +1406,6 @@ domain, which gives the second inequality.  The final inequality is a direct
 rearrangement of $\log3/\log2<65/41$.
 \end{proof}
 
-\noindent Separate formal statements check the
-\lword{Erdos1049/AdelicHeightBridge.lean}{103}{threeHalves_rectangular_hp_gap_gt_threeThirteenths}{bound for the rectangular expression}
-and the
-\lword{Erdos1049/AdelicHeightBridge.lean}{114}{threeHalves_hankelChargeThreshold_lt_eightFortyOne}{logarithmic bound $8/41$}.
-
 The next inequalities compare two proposed savings in the denominator
 exponent with the exponent $4N^3-3N^2$ before division. Here $E$ denotes
 the exponent saved. The statement assumes the bounds $E\le N^3-N$ or
@@ -1436,11 +1439,6 @@ $N\ge1$. The second becomes
 Its quadratic factor is $74(N-2)^2+179(N-2)+103$, positive for
 $N\ge2$. The assertions for $E$ follow by monotonicity.
 \end{proof}
-
-\noindent The inequalities under an upper bound on the saving are
-\lword{Erdos1049/AdelicHeightBridge.lean}{140}{zudilinScalarContent_cannot_meet_required_charge}{the first degree bound}
-and
-\lword{Erdos1049/AdelicHeightBridge.lean}{170}{zudilinScalarPlusBorder_cannot_meet_required_charge}{the second degree bound}.
 
 An application of these degree bounds must separately
 prove that its proposed divisor satisfies one of the stated bounds.
@@ -2234,10 +2232,12 @@ $D_{0,h}=1$ and $D_{1,h}=s_h$, the Desnanot--Jacobi identity gives
 The degree argument below shows that each denominator is nonzero.
 The computation checks that every division has zero remainder, then
 substitutes $p=1+t$ and tests every coefficient. All $8824$ coefficients
-in the sixteen polynomials are strictly positive. The full lists are in
-\path{computations/finite_coefficients.json}, computed by
-\path{computations/finite_coefficients_generate.py}.
-An independent program, \path{computations/check_finite_coefficients.py},
+in the sixteen polynomials are strictly positive. A
+\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/computations/finite_coefficients_generate.py}{program}
+computes the
+\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/computations/finite_coefficients.json}{full lists}.
+An
+\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/computations/check_finite_coefficients.py}{independent checker}
 evaluates each stored polynomial at more integer bases than its degree and
 compares the values with fraction-free determinants of the integer Hankel
 matrices, which identifies the stored list with $D_{N,h}(1+t)$ in $\Z[t]$.
@@ -2529,7 +2529,9 @@ $d\le8$; the displayed complete factorisations contain no other
 cyclotomic factors, so the nonnegative assignment bound is zero at
 all remaining $d$. The power of $p$ is not cyclotomic content.
 
-For the table, the script computes the full polynomials
+For the table, an exact
+\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/cyclotomic_content.py}{program}
+computes the full polynomials
 $\mathcal H_N(Y_0;p)$ at $Y_0=0,\ldots,N$ by fraction-free
 elimination, checking every polynomial division. Their monic gcd in
 $\Q[p]$ is $\operatorname{cont}_Y\mathcal H_N$: evaluation gives one
@@ -2537,7 +2539,7 @@ divisibility direction, and interpolation of the degree-at-most-$N$
 polynomial in $Y$ gives the other. The calculation includes every
 factor, not just a prescribed list of cyclotomic candidates.
 
-The same script produces a nonzero residue witness for every pair
+The same program produces a nonzero residue witness for every pair
 \[
  1\le N\le8,\qquad 1\le d\le\max(8,2N-2).
 \]
@@ -2553,7 +2555,7 @@ $\left(\begin{smallmatrix}0&2\\2&5\end{smallmatrix}\right)$,
 $e_{2,1}=4$, and $\Gamma_{2,1}(0)=-9$.
 
 The source coefficients, determinant-value polynomials and witnesses
-are computed by \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/cyclotomic_content.py}{a public program}, which also repeats the direct
+are computed by that program, which also repeats the direct
 determinant checks; its \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/cyclotomic-content.json}{recorded result} lists every witness. At ranks six to eight
 these certificates cover only the stated cyclotomic-index window;
 complete coefficient contents are computed only through rank five.
@@ -2650,9 +2652,9 @@ scaling}, the determinant identity in
 \lword{Erdos1049/RationalPadeArithmetic.lean}{94}{rationalPadeExteriorDet_mul_contents}{content
 factorisation}, the exact absolute-height identity in
 \lword{Erdos1049/RationalPadeArithmetic.lean}{104}{natAbs_rationalPadeExteriorDet_mul_contents}{absolute
-determinant scaling}, and the divisor statement in
+determinant scaling}, the divisor statement in
 \lword{Erdos1049/RationalPadeArithmetic.lean}{116}{contentProduct_dvd_rationalPadeExteriorDet}{content-product
-divisibility}.  The elimination identity is the checked
+divisibility}, and the elimination identity in
 \lword{Erdos1049/RationalPadeArithmetic.lean}{124}{rationalPadeExteriorDet_cast_eq}{exterior
 determinant identity}.
 
@@ -2772,7 +2774,7 @@ $3\mid c$ would imply $3\mid H_W(V)$, contrary to the unit constant
 coefficient.
 \end{proof}
 
-\noindent This is the checked
+\noindent Lean checks this
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{398}{commonMultiplier_not_two_not_three_of_endpoint_units}{common-divisor
 exclusion}.  The proposition does not say that the two evaluations are coprime;
 it says only that every common divisor is coprime to $6$. It gives
@@ -2865,8 +2867,8 @@ vanishing is exactly the requested divisibility:
  J_{3,R}(P)=0\iff 3^R\mid H_W(P),\qquad
  J_{2,S}(P)=0\iff 2^S\mid H_W(P).
 \]
-These are the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{191}{bottomJet3_eq_zero_iff_dvd}{criterion for divisibility by $3^R$} and
+Lean checks both, as the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{191}{bottomJet3_eq_zero_iff_dvd}{criterion for divisibility by $3^R$} and the
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{197}{topJet2_eq_zero_iff_dvd}{criterion for divisibility by $2^S$}.
 
 The \emph{vector of four residues} of a coefficient pair
@@ -3062,9 +3064,9 @@ remainders, Theorem~\ref{long1049:res:boundedfibre} additionally needs
 a bound on how often the same real value occurs. Such a bound is not
 proved here for the $q$-Ap\'ery or Zudilin remainder family.
 
-\noindent The target count is the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{131}{fourJetSignature_card}{cardinality of the residue space}; the abstract collision is the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{142}{exists_distinct_binary_selectors_same_fourJet}{pigeonhole argument for the residue map}, and the linear sufficient condition is the checked
+\noindent Lean checks the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{131}{fourJetSignature_card}{cardinality of the residue space}, the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{142}{exists_distinct_binary_selectors_same_fourJet}{pigeonhole argument for the residue map} and the
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{161}{exists_distinct_binary_selectors_same_fourJet_of_rank}{sufficient row count for equal residues}. The pigeonhole argument gives
 divisibility, not nonvanishing.  Pigeonhole cancellation itself requires no
 independence.  Additional information about the input family is needed to
@@ -3105,10 +3107,11 @@ If $C_0>0$ and $2C_0\le C_1$, use $3^{41}<2^{65}$ to obtain
 \end{proof}
 
 \noindent Written multiplicatively, the conclusion is \(3^{C_0}<2^{C_1}\).
-The inequality is the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{428}{three_two_scalar_margin_neg}{three-halves
-scalar margin}.  The positive-branch deficit is the checked
-\lword{Erdos1049/AdelicHeightBridge.lean}{1763}{three_two_scalar_margin_lt_explicit}{$17/41$ margin}.
+Lean checks the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{428}{three_two_scalar_margin_neg}{inequality}
+and the
+\lword{Erdos1049/AdelicHeightBridge.lean}{1763}{three_two_scalar_margin_lt_explicit}{$17/41$ margin}
+of the positive branch.
 The scope of this elementary inequality matters.  The primary Zudilin
 theorem~\cite[Theorem~1, p.~154; Sec.~5, pp.~161--162]{zudilin2004} supplies an integer-base
 irrationality-exponent estimate on its parameter cone, and the elementary
@@ -3442,17 +3445,15 @@ elementary memberships and exclusions.  In particular,
  <\frac{\log2}{\log3}.
 \]
 The first two comparisons come respectively from $31^2<4^5$ and
-$4^{200}<31^{81}$; the last comes from $3^{81}<2^{200}$.  The lower bound is
-the checked theorem
-\lword{Erdos1049/ZudilinHeightRegion.lean}{65}{twoFifths_lt_thirtyoneFour_log_ratio}{two-fifths
-lower bound}.  Consequently $31/4$, and every positive power $(31/4)^r$, lies
-in the enlarged region
-(\lword{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}{$31/4$ satisfies the inequality},
-\lword{Erdos1049/ZudilinHeightRegion.lean}{59}{thirtyoneFour_power_mem_zudilinHeightRegion}{power family}).
-The same base lies strictly outside the earlier
-Bundschuh--V\"a\"an\"anen region
-(\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{$31/4$ is outside the earlier region}),
-so the $81/200$ inequality defines a strict set-theoretic enlargement of the
+$4^{200}<31^{81}$; the last comes from $3^{81}<2^{200}$.  Lean checks the
+\lword{Erdos1049/ZudilinHeightRegion.lean}{65}{twoFifths_lt_thirtyoneFour_log_ratio}{lower
+bound}.  Consequently $31/4$
+\lword{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}{lies in the enlarged region},
+and so does
+\lword{Erdos1049/ZudilinHeightRegion.lean}{59}{thirtyoneFour_power_mem_zudilinHeightRegion}{every positive power $(31/4)^r$}.
+The same base
+\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{lies strictly outside}
+the earlier Bundschuh--V\"a\"an\"anen region, so the $81/200$ inequality defines a strict set-theoretic enlargement of the
 earlier recorded logarithmic region.  Combined with the bracket
 $81/200<\theta^{*}$, these memberships are exactly the finite input to
 Theorem~\ref{long1049:res:31over4}, which is where the irrationality of $F(31/4)$ and of

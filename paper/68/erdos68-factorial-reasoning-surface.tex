@@ -885,9 +885,6 @@ $\Lc_p^{\mathrm{blk}}=C_pR_p$, now give
 $C_p(\Ser-H_{2p-1})<\rho_p/R_p$, a contradiction.
 \end{proof}
 
-\noindent The formal statement for natural-number parameters is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean\#L156-L168}{comparison of the tail with the next integer}.
-
 Cancelling $R_p$ in \eqref{long68:eq:global-scale} through
 \eqref{long68:eq:core-normalisation} displays the quantitative issue directly:
 \begin{equation}\label{long68:eq:core-gap-scale}
@@ -1577,8 +1574,8 @@ The carry census is the program \path{scripts/check_erdos68_strict_successor.py}
 with the GMP backend \path{scripts/check_erdos68_strict_successor_gmp.cpp}; its
 output \path{verification/erdos68-strict-successor.json} records the scale and
 guard bits above, the unit carries, an event-trace digest and the final
-enclosure. The SHA-256 digests of the program, the backend and the output
-payload are
+enclosure. The SHA-256 digests of the program and the backend, and the
+payload digest recorded in the output, are
 \begin{quote}\footnotesize
 Program: \path{f25b5bd8ffbfd66bdbb42ca6a07a936aab9b4eb7d3a57446725be55acb642191}.\\
 Backend: \path{43308ddc3902dd537b789ae6e0648054a0d752adf07e5d6e1d829811e9342083}.\\
@@ -2000,7 +1997,7 @@ and
 \lword{Erdos68/FactorialShiftFamilyOrbit.lean}{211}{irrational_exp_one_of_family_boundary}{the irrationality of $e$}\\
 Theorem~\ref{long68:res:global-residue} &
 \lword{Erdos68/EndpointWeightedPrivateSupport.lean}{6164}{irrational_factorialGapSeries_of_cofinal_global_complementaryTail}{the prime-parameter specialization};
-the natural-parameter statement is linked after the proof;
+the margin mark gives the natural-parameter statement;
 \lword{Erdos68/EndpointWeightedPrivateSupport.lean}{4209}{factorialBlockTailNumerator_coprime_privateModulus}{the coprimality}
 \eqref{long68:eq:gap-normalisation}\\
 Equation~\eqref{long68:eq:factor-split} &

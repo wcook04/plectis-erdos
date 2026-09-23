@@ -43,6 +43,8 @@ $S=\sum_{n\ge1}\varphi(n)2^{-n}$. They do not establish that $S$ is
 irrational.
 \end{abstract}
 \evidenceparagraph{\evidencerecordurl}
+Equivalent formulation~\ref{res:canonicalmersenne} carries no mark and is
+proved in Lean; the link follows its proof.
 
 
 \section{A basis and all its relations}\label{sec:results}
@@ -164,9 +166,7 @@ The reductions give spanning and the count is
 \[
  2+\sum_{j=1}^e(k^j-k^{j-1})=k^e+1.
 \]
-This proves Theorem~\ref{thm:kkernelrank}. The linked formal statement gives
-the same scalar reduction at level $j-t$, with its Euler product written out:
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean#L226}{reduction by the largest power of the base dividing the residue}.
+This proves Theorem~\ref{thm:kkernelrank}.
 
 The relation to the earlier CRT argument and the alternative proof from
 Martin's theorem are discussed in Appendix~\ref{app:sources}.
@@ -461,9 +461,6 @@ and $B=31$, verifies the hypothesis at $d=1,N=12$. The theorem gives
 infinitely many certificates with depth equal to the shift for this pair,
 not for every $d,N$.
 
-\noindent Formal sources: \lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{a certificate in each sufficiently late pair of multipliers};
-\lword{Erdos249/FullDepthRayAmplifier.lean}{406}{apFullDepthEscape_iff_irrational}{the equivalence after quantifying over all shifts and basepoints}.
-
 \subsection{An equivalent residue condition for each hypothetical denominator}\label{sec:frontier}
 For $c\ge0$, odd $v\ge1$ and a positive multiple $H$ of $\ph(v)$, put
 \[
@@ -503,8 +500,9 @@ $a/(2^cv)$ fails the test for that same $c,v$, whereas irrationality gives
 it for every sufficiently large allowed $H$. The proof does not find such
 an $H$ without assuming irrationality.
 
-The separate formal release states this equivalence using $vM=2^H-1$,
-together with the formal counterpart to Lemma~\ref{lem:bounded-pulse}.
+This equivalence is
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean\#L3165}{proved in Lean},
+with the modulus written as $vM=2^H-1$.
 The finite residues also satisfy
 \[
  \rho_{H,N+1,M}=
@@ -577,12 +575,12 @@ are integers and satisfy
 In particular $u_N/2^N\to0$, the condition called temperedness in the
 formal sources. Its dyadic sections $n\mapsto u_{2^jn+r}$ have rational rank at
 least $2^e-1$ through level $e$ and a common eventual period modulo $v$.
-These properties concern the same carry and are compatible; neither
-supplies a contradiction.
+Both properties are
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{proved in Lean for the same carry};
+they are compatible, and neither supplies a contradiction.
 
-\noindent Formal sources: \mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{same-carry rank and modular-period theorem}.
-
-The linked formal source constructs a rational comparison sequence with
+The companion, \emph{The Binary Totient Series}, constructs a rational
+comparison sequence with
 $c(n)=\ph(n)$ for odd $n$, $|c(n)-\ph(n)|\le2$ for even $n$, $0\le c(n)\le n$,
 and
 \[
@@ -615,10 +613,8 @@ absolutely convergent. Amiram Eldar posted the corresponding formula
 $S=\tfrac12+\sum_{d\ge1}\mu(d)/(2^d-1)^2$, together with its coprimality
 interpretation, to OEIS A256936 on 15 March 2026~\cite{eldar2026oeis}, and
 Steve Fan posted the formula on the problem's forum thread on
-16 May 2026~\cite{fan2026totient}. The following exact extremum is
-stated as the rank-one lower-bound theorem in the long record; its proof is
-\lword{Erdos249/RankOneSharpFloor.lean}{534}{rankOneSubrankQuotient_eq_one_five_iff}{the sharp lower-bound argument}
-in the linked source.
+16 May 2026~\cite{fan2026totient}. The companion proves the lower bound $1/480$ for these quotients; the
+following theorem gives the exact extremum.
 
 \begin{theorem}[A lower bound for the rank-one quotients]\label{res:rankonefloor}
 For $e\ge1$ and $Y\ge4$, the denominator of $Q(e,Y)$ is positive, and the
@@ -629,10 +625,6 @@ nonempty finite positive weighted average of such quotients satisfies
 \]
 The uniform bound $Q-\Theta_2>1/15$ is false already at $(1,5)$.
 \end{theorem}
-The unique minimiser and the
-\lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{uniform lower bound $21/320$}
-are in the linked source; the $1/15$ bound
-\lword{Erdos249/RankOneSharpFloor.lean}{645}{not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen}{already fails at $(1,5)$}.
 This theorem treats averages after the quotients are formed. Signed
 coefficients, coupling before the quotient, and higher-rank kernels require
 separate arguments. For rational approximants $p_j/q_j$ in lowest terms, with $q_j>0$, a sufficient arithmetic target is
@@ -661,7 +653,7 @@ $L\ge h$ such that
 Here $D_{h,N,L}$ is the integer window sum from Section~\ref{sec:carry-rank}.
 The room inequality makes the truncation error small, whereas the
 cosine bound forces at least one residue away from the integer lattice.
-The long record proves that these quantified inequalities would imply
+The companion proves that these quantified inequalities would imply
 irrationality. The modulus grows with $L$, and the coefficients inside
 the phase are totient differences; ordinary information about the
 distribution of prime factors does not give this estimate.
@@ -719,16 +711,20 @@ $X_0$, there are $X,L$ with
 \]
 for which those four bounds hold?
 \end{problem}
-The long record gives the same decomposition, and the
+The companion gives the same decomposition, and the
 \mword{Erdos249257/FirstHarmonicPivot.lean}{543}{PivotBudgetAt}{four simultaneous inequalities}
 are defined in the linked source. All four bounds must hold on the \emph{same} block
 with the same parameters. The permitted blocks need only be arbitrarily
 large, but $L$ must also make the truncation error small enough for the
-residue test. The long record proves the unassigned and excluded-cofactor
+residue test. The companion proves the unassigned and excluded-cofactor
 bounds at minimal admissible depth, using smooth-number asymptotics and
 the distribution of $\ph(m)/m$. The unassigned bound is also a
 \href{\laterepobase/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean\#L556}{Lean theorem},
 whose proof replaces the smooth-number asymptotics by Mertens' theorems.
+The excluded-cofactor bound is
+\href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L654}{proved in Lean}
+with the prime number theorem and the existence of the density of
+$\{m:\ph(m)<\eta m\}$ taken as hypotheses.
 An elementary mean-value estimate also
 gives the explicit sufficient cutoff $\eta=1/1000$ for the
 excluded-cofactor bound. The two remaining estimates concern the group
@@ -840,37 +836,14 @@ to a basis element itself.
 
 Erd\H{o}s and Graham list the irrationality question for $S$~\cite[p.~61]{erdosgraham1980}.
 
-\subsection*{Formal verification and finite certificates}
-\begin{enumerate}
-\item\label{res:rank}
-\textbf{Rank in every integer base.} Theorem~\ref{thm:kkernelrank} proves
-that the sections through level $e\ge1$ have rank $k^e+1$ for every $k\ge2$.
-The formal proof separates the dimension count from the independence
-argument. An older theorem assumes independence; the linked
-Chinese-remainder and Dirichlet argument proves that assumption.
-The resulting rank theorem is unconditional and does not use Martin's
-theorem as an axiom. The sources are
-\mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{exact finite-truncation rank};
-\mword{Erdos249257/TotientKernelConditional.lean}{215}{finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent}{the same count from an independent family};
-\href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/Erdos249257/AllBaseTotientKernel.lean#L1118}{the independence argument in every base};
-\href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/Erdos249257/AllBaseTotientKernel.lean#L1239}{complete truncation rank}.
-\end{enumerate}
-
-The long record also gives the exact Farey-interval certificate at
+\subsection*{A finite denominator exclusion}
+The companion also gives the exact Farey-interval certificate at
 window $K=240$, excluding $S=a/q$ for integers $a$ and
 $0<q\le Q_0\approx7.96\times10^{34}$. This finite exclusion is separate
 from the quantified irrationality conditions.
 
-\noindent Formal sources: \mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{dyadic finite-level rank $2^e+1$};
-\lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{propagation with depth equal to the shift};
-\lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{lower bound for the rank-one quotients};
-\href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/Erdos249257/AllBaseTotientKernel.lean#L1239}{the unconditional all-base rank theorem};
-\mword{Erdos249257/TotientKernelConditional.lean}{215}{finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent}{Rank from an independent all-base family};
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{3165}{fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational}{the equivalent residue condition}.
-
 \subsection*{Source guide}
-Each link below opens a Lean declaration, and its text says what the
-declaration states. A conditional theorem verifies an implication; its hypothesis remains
+Each link below opens a Lean declaration. A conditional theorem verifies an implication; its hypothesis remains
 unproved.
 
 \medskip\noindent\textbf{Bases and relations.}\par\smallskip
@@ -919,7 +892,7 @@ unproved.
 \lword{Erdos249/FullDepthRayAmplifier.lean}{421}{cofinalFullDepthKillSupply_iff_periodMultipleKillSupply}{equivalence after setting depth equal to the shift};
 \lword{Erdos249/FullDepthRayAmplifier.lean}{438}{cofinalFullDepthKillSupply_iff_irrational}{irrationality and arbitrarily large certificates};
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{300}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the carry-rank lower bound under rationality};
-\mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}};
+\mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{carry rank at least $2^e-1$ from independent totient sections};
 \mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{modular periodicity and the rank lower bound for the same carry};
 \mword{Erdos249257/TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
 \mword{Erdos249257/TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction};
@@ -986,12 +959,12 @@ unproved.
 \mword{Erdos249257/LcmConeFlatness.lean}{412}{irrational_totient_series_iff_certificate_supply}{cofinal at each shift};
 \mword{Erdos249257/LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{$\lcm$ diagonal};
 \mword{Erdos249257/TotientActualLcmShortKill.lean}{18}{lcmDiagonalArithmeticKill_two_pow_four}{the certificate at \(t=2^4\) and depth \(23\)};
-\mword{Erdos249257/TotientActualLcmShortKill.lean}{27}{lcmDiagonalArithmeticKill_two_pow_six}{the \(t=2^6\), length-\(93\) kill};
+\mword{Erdos249257/TotientActualLcmShortKill.lean}{27}{lcmDiagonalArithmeticKill_two_pow_six}{the certificate at \(t=2^6\) and depth \(93\)};
 \mword{Erdos249257/TotientActualLcmShortKill.lean}{35}{actualLcmTailOrbit_four_and_six_notMem_int}{actual-orbit non-integrality at both heights};
-\mword{Erdos249257/TotientActualLcmShortKill.lean}{54}{powerTwoActualLcmShortArithmeticKillSupply_through_six}{but explicitly stops at that finite prefix};
-\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{141}{abs_actualLcmTailOrbit_sub_rawApprox_lt}{recorded here};
-\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{179}{actualLcmRawApprox_eq_half_div_fourPow}{by the normalization identity};
-\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{208}{halfWordBandAt_of_rawApprox_integerSeparation}{through the exact threshold lemma};
+\mword{Erdos249257/TotientActualLcmShortKill.lean}{54}{powerTwoActualLcmShortArithmeticKillSupply_through_six}{certificates beyond every threshold \(a_0\le6\)};
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{141}{abs_actualLcmTailOrbit_sub_rawApprox_lt}{an explicit approximation error};
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{179}{actualLcmRawApprox_eq_half_div_fourPow}{the approximation as an integer over \(4^q\)};
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{208}{halfWordBandAt_of_rawApprox_integerSeparation}{distance at least \(1/32\) from every integer};
 \mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{254}{PowerTwoActualLcmOrbitSeparationSupply}{the cofinal separation hypothesis};
 \mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{305}{irrational_totientSeries_of_actualLcmOrbitSeparationSupply}{the conditional endpoint theorem};
 \mword{Erdos249257/TotientActualLcmTopEdgeStaircase.lean}{251}{not_actualLcmTerminalDyadicStaircase_of_room}{the staircase is impossible under the stated room hypothesis};

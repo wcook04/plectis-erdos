@@ -87,18 +87,15 @@ subset of its strict unit lemniscate containing two distinct roots has
 one-dimensional Hausdorff measure greater than~$2$.  In particular, the image
 of every continuous root-to-root path has this measure, and Lean proves the
 negation and \texttt{answer(False)} forms of the exact Formal Conjectures
-statement.\footnote{The one-polynomial Hausdorff theorem and formal-statement
-negation are
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L283}{\texttt{erdos1041\_counterexample\_hausdorff}} and
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L407}{\texttt{erdos1041\_hausdorff\_negation}}.
-The corresponding
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L449}{\texttt{erdos1041\_hausdorff\_answer\_false}}
-proves the \texttt{answer(False)} form.
+statement.\footnote{Lean proves the
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L283}{preconnected-set theorem} and the
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L407}{negation of the Formal Conjectures statement}, and a
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L449}{third Lean theorem} proves the \texttt{answer(False)} form.
 \href{https://github.com/google-deepmind/formal-conjectures/tree/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems}{Formal Conjectures} is a public Lean repository of formal
 statements of open problems, among them many Erd\H{o}s problems.
 Lean separately proves the
 \href{https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean\#L25}{total-variation formulation}.
-The reported small-parameter family is not formalised, and independent human
+The small-parameter family that \texttt{ani} reported is not formalised, and independent human
 review has not adjudicated correspondence with the 1958 wording.}
 
 The next two sections give sufficient conditions under which two roots
@@ -114,6 +111,8 @@ retain the other estimates and the obstructions to prescribed
 constructions.
 
 \evidenceparagraph{\evidencerecordurl}
+Links in the running text go to Lean proofs of single steps, such as a
+finite inequality; such a link does not cover the surrounding argument.
 No independent review of the analytic arguments is recorded.
 
 \section{Monic trinomials, in every degree}
@@ -284,8 +283,7 @@ The circle-intersection bound alone does not yield the stated cutoff.
 The rational comparison reaches this contradiction when $\mu\le13/25$.
 Its recorded stopping time also supports $\mu\le529/1000$; the
 \hyperlink{certificate-stopping-time}{supplement} gives that calculation.
-A rerun of the certificate on 23 September 2026 reproduced the recorded
-stopping time exactly. No optimality of either cutoff is asserted.
+No optimality of either cutoff is asserted.
 
 \clearpage
 \hypertarget{supplementary-results}{}
@@ -335,11 +333,8 @@ The companion's rational exponential estimate gives
  (529/1000)e^X<0.998996547<1,
 \]
 so the same recorded output also covers $\mu\le529/1000$; $13/25$ is
-the simpler stated constant. On 23 September 2026 the full-mode
-certificate, unchanged since the recorded run, was rerun and returned
-$X=635762889599/10^{12}$ exactly. Its dual weights come from a SciPy
-linear program; without SciPy the uniform fallback weights certify
-$\mu\le51/100$. No optimality of either cutoff is asserted.
+the simpler stated constant. A coarser run of the same program gives
+$X=664373027131/10^{12}$ and the weaker threshold $51/100$.
 
 \paragraph{An independent area proof.}
 The next theorem gives a weaker numerical bound through an argument that
@@ -413,13 +408,14 @@ at $\mu=1/2$.
 
 Refinements using the number of roots, logarithmic capacity, or a range
 of levels during which a component still has two roots are given in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md}{the detailed area argument} and
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/MinimalHubWindowJoin.md}{the two-root component argument}.
+research notes on the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md}{area argument} and on
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/MinimalHubWindowJoin.md}{components with two roots}.
 Their length-$2$ conclusions under $\mu\le1/2$ already follow from
 Theorem~\ref{res:low-critical-thirteen-twentyfifths}; their additional content
 is control of a specified component or a specified descent arc.
 A simple critical point need not be the unique point at the least
-critical level. The two-root component argument keeps these assumptions
+critical level. The second note keeps these assumptions
 separate, since another merger can occur at the same level.
 
 \section{Critical proximity and straight-path obstructions}
@@ -462,9 +458,7 @@ Indeed, $\log(2t^{(n-1)/n}/(1+t))$ vanishes at $t=1$ and has derivative
 $(n-1-t)/(nt(1+t))\ge0$ on that interval.  Consequently
 $d_i+d_j\le2(d_i d_j^{\,n-1})^{1/n}\le2r$.
 Without the reciprocal balance, the required restriction on $t$ would be
-missing.  The complete complex theorem,
-including the choice of two indices and both inequalities, is checked as
-\lword{Erdos1041/CriticalTwoRootProximity.lean}{291}{exists_two_roots_dist_sum_le_two_mul_geomMean}{the bound for the sum of two root distances}.
+missing.
 
 \begin{corollary}[two nearest roots]\label{res:two-nearest-roots}
 If the roots lie in the open unit disc and $c$ is a non-root critical point,
@@ -488,8 +482,6 @@ $(x-1)(x-(n-1))\le0$ for $x=d_2/d_1\in[1,n-1]$.
 Scaling by a containing radius $0<R<1$ gives the strict bound $2R<2$.
 The \href{erdos1041-lemniscate-reasoning-surface.pdf\#two-nearest-root-distance}{companion's full distance argument}
 derives the two displayed estimates without assuming $|f(c)|\le1$.
-The source is
-\href{https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md}{the proof for the two nearest roots}.
 \end{proof}
 
 The distance estimate alone does not prove containment of either segment.
@@ -538,12 +530,9 @@ All three roots have modulus $99/100$.
 
 Uniqueness in the quintic rules out repairing that example by breaking a
 tie differently. The cubic excludes every direct root-to-root segment,
-not a curved path. The two exact evaluations are checked as
-\lword{Erdos1041/CriticalTwoRootProximity.lean}{440}{nearestSpoke_unique_nearest_spoke_escapes}{escape along the segment to a uniquely nearest root} and
-\lword{Erdos1041/CriticalTwoRootProximity.lean}{571}{allStraightCubic_every_pair_midpoint_escapes}{escape at all three root-pair midpoints}.
-\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178}{The complete straight-path statement} also includes the polynomial,
-root-disc, critical-point and unique-nearest-root assertions, rather than
-only the two evaluations.
+not a curved path. Lean checks the whole proposition: the polynomials,
+the root locations, the critical point, uniqueness of the nearest root
+and both escapes.
 
 \section{Solved polynomial families}
 \label{sec:solved-families}
@@ -652,10 +641,6 @@ Vieta's formula gives $|c|<1$, and $|w|<1$, so every term being averaged
 has modulus below one. The value at $t=1$ is zero. Two selected segments
 have total length $|w_i|+|w_j|<2$; coincident occurrences instead give
 the constant path.
-Lean checks
-\lword{Erdos1041/PrimitiveQuinticBoundaryTail.lean}{200}{primitiveBoundary_exists_two_tailEnergy_lt_one}{the selection for roots on the unit circle}
-and
-\lword{Erdos1041/PrimitiveQuinticInteriorTail.lean}{272}{primitiveInterior_exists_two_tailEnergy_lt_one}{the selection for roots in the closed disc}.
 
 \subsection{Sharp collinear roots}\label{bdry:solved-polynomial-families}
 
@@ -736,8 +721,9 @@ $|v|<1$ when $v$ has minimum modulus and the roots lie in the open unit
 disc. An arbitrary selected critical value need not satisfy this bound.
 The hypothesis is sufficient, not necessary: it does not assert that some
 critical value always admits such a disk.  The cubic
-$z^3+(3/100)z-3/4$ shows in particular that the older separation-two
-condition does not cover all polynomials.
+$z^3+(3/100)z-3/4$ shows in particular that the condition
+$|1-f(d)/v|\ge2$ for every other critical point $d$ does not cover all
+polynomials.
 
 \begin{proof}[Proof of the separation estimate]
 Normalise by $P(w)=f(c+|v|^{1/n}w)/v$. Then $P(0)=1$, its leading
@@ -769,9 +755,9 @@ integral on $[-q,q]^2$.
 
 The area estimate must concern this two-sheeted component, not merely
 the whole preimage. For $1-w_0<S'<S$, its regular inner components
-$U'$ contain two zeros of $P-w_0$. The estimate proved in
-\href{https://github.com/wcook04/plectis-erdos/blob/8efbccc235df64a38d83f5dc7b1949e2ad18270d/research_corpus/Erdos1041/problem/ExteriorBlaschkeFibreCapacityGap.md}{Theorem~2 and Corollary~3 of the component-capacity proof}
-gives $\operatorname{cap}(\overline{U'})^n/S'<1/(n-1)$.
+$U'$ contain two zeros of $P-w_0$. Theorem~2 and Corollary~3 of a
+\href{https://github.com/wcook04/plectis-erdos/blob/8efbccc235df64a38d83f5dc7b1949e2ad18270d/research_corpus/Erdos1041/problem/ExteriorBlaschkeFibreCapacityGap.md}{research note on component capacity}
+give $\operatorname{cap}(\overline{U'})^n/S'<1/(n-1)$.
 P\'olya's area--capacity inequality \cite[printed pp.~280--282]{polya1928},
 in the form \cite[Theorem~6]{crane}, and exhaustion as $S'\uparrow S$
 then give $\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}$.
@@ -794,8 +780,8 @@ $4|v|^{2/n}<4$ under the corollary's hypotheses.  The cubic constant follows
 from $(3/5)^{2/3}\log11<2$.
 
 \paragraph{Scope.}\label{bdry:critical-value-separation}
-The proof above is also written out in the
-\href{https://github.com/wcook04/plectis-erdos/blob/8efbccc235df64a38d83f5dc7b1949e2ad18270d/research_corpus/Erdos1041/problem/DiskFamilyCriticalValueSeparation.md}{proof of the critical-value separation theorem}.
+The proof above is also written out in a
+\href{https://github.com/wcook04/plectis-erdos/blob/8efbccc235df64a38d83f5dc7b1949e2ad18270d/research_corpus/Erdos1041/problem/DiskFamilyCriticalValueSeparation.md}{research note}.
 Only the chosen critical point must be simple; other critical points may
 be multiple and their values may cluster outside the isolating disc.
 Existence of such an isolated value is not asserted.
@@ -810,10 +796,10 @@ every degree $n\ge3$ and supplies an explicit inverse-map length estimate.
 
 These examples do not refute the root-to-root assertion. They show why
 particular sufficient conditions cannot be assumed for every polynomial.
-The rational calculations are given in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/RevisionR2ExactCores.lean}{the formal calculations}; the ordinary
-arguments are in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ExactObstructionsR2.md}{the accompanying proofs}.
+The rational calculations are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/RevisionR2ExactCores.lean}{checked in Lean}, and a
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ExactObstructionsR2.md}{research note}
+gives the ordinary arguments.
 
 \begin{proposition}[failure of two critical-value criteria to cover all polynomials]
 \label{res:sep-or-false}
@@ -905,11 +891,11 @@ $w'=-w$, and
 
 \noindent The local computation is one line:
 $w'=f'(z)z'=-f(z)=-w$.  Multiplication by $e^t$ and integration on $I$
-give the displayed identity.  Lean checks the local complex-parameter
-chain rule as
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the Newton-flow value equation}
-and its scaled zero-derivative form as
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{vanishing of the exponentially scaled value}.
+give the displayed identity.  Lean checks both conclusions. The
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{local chain rule}
+and the
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{zero derivative of $e^{t}f(z(t))$}
+are also separate Lean lemmas.
 
 For an existing trajectory with nonzero initial value, the value moves
 inward on one positive ray.  A zero value remains zero and has no argument.
@@ -940,9 +926,11 @@ cannot be the endpoints of such a finite connection.
 
 \noindent Apply the value equation inside $(a,b)$ and pass to the
 endpoints by continuity.  This does not evaluate $-f/f'$ at a critical
-endpoint.  Lean checks the algebraic contradiction from an assumed
-exponential endpoint relation in
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{334}{no_newtonConnection_of_not_samePositiveRay}{the distinct-ray endpoint implication}.
+endpoint.  Lean checks the whole corollary, including the endpoint
+relation $f(z(b))=e^{a-b}f(z(a))$, assuming only that $f\circ z$ is
+continuous on $[a,b]$. Its last step, that values on distinct positive
+rays cannot satisfy this relation, is also a
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{334}{no_newtonConnection_of_not_samePositiveRay}{separate Lean lemma}.
 Kozen and Stef\'ansson draw the same consequence for the Newtonian graph:
 under $f$, every edge maps onto a segment of a ray through the origin whose
 endpoints are $0$ or critical values \cite[\S2]{kozen-stefansson1997}.  The
@@ -986,8 +974,7 @@ one has $r\ne1$, and solving for $\beta$ gives the displayed formula.
 Equivalently, $\beta=-a+(a-b)/(1-r)$, so the forbidden translations
 lie on the real affine line through $-a$ and $-b$.
 
-\noindent Each pair of critical values contributes such a forbidden subset, as checked in
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{107}{translated_samePositiveRay_parameterization}{the ray-collision parameterization}.
+\noindent Each pair of critical values contributes such a forbidden subset.
 These loci lie on finitely many real lines. Excluding those lines and
 the finitely many translations that make a value zero still leaves a
 point in every open disc. Accordingly,
@@ -1025,10 +1012,9 @@ expresses the local level geometry through the reciprocal power sums.  If $q=|z|
 the tail after $N$ has modulus at most
 $nq^{N+1}/((N+1)(1-q))$; differentiated geometric series give the
 corresponding first and second derivative bounds.
-The linked derivation gives recurrences for these reciprocal power sums
-and tests based on the first two derivatives for a locally contained
-piecewise path:
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md}{the reciprocal-root expansion}.
+A \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md}{research note}
+gives recurrences for these reciprocal power sums and tests based on the
+first two derivatives for a locally contained piecewise path.
 The assumption $|z|<r$ is essential: this disc contains no zero of $f$,
 so a logarithm exists there. The expansion does not continue through a
 root and does not select a pair of roots to join. A proposed local path
@@ -1036,8 +1022,8 @@ must still satisfy the containment inequalities.
 
 \section{Why the proposed spanning-tree estimate fails}\label{sec:gap}
 
-The March manuscript's Proposition~12 claims the following
-estimate.  For $u=-\log|f|$, a connected component $V$ of $\{u>c\}$ carrying
+Proposition~12 of the manuscript posted by \texttt{shtuka} in March 2026
+\cite{march2026} claims the following estimate.  For $u=-\log|f|$, a connected component $V$ of $\{u>c\}$ carrying
 $m\ge2$ simple zeros, and the regularity and Morse hypotheses in that proposition, it
 constructs, for every $\varepsilon>0$, an embedded spanning tree
 $G_\varepsilon\subset V$ with
@@ -1048,8 +1034,7 @@ $G_\varepsilon\subset V$ with
 \]
 Here $P_V(t)=\mathcal H^1(V\cap\{u=t\})$ is the length of the level
 set in $V$, and $\alpha>0$ is the truncation parameter in the proposed
-estimate. The final theorem depends on this bound.  An unattributed local revision repeats the same estimate as Proposition~7;
-that repetition supplies no independent proof.
+estimate. The final theorem depends on this bound.
 
 The estimate itself is false.  Take the Cassini polynomial
 $f_a(z)=z^2-a^2$ at $a=9/10$, with $2\alpha=-\log a$ and
@@ -1502,8 +1487,8 @@ The integral can then be arbitrarily small relative to the logarithmic
 contribution, even for
 fixed $k$. Any estimate along a chain of mergers must retain this nonlinear
 dependence. Related weighted Jensen estimates and a lemma selecting two
-roots with small total logarithmic contribution are given in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.md}{the proof and related integral inequalities}.
+roots with small total logarithmic contribution are given in a
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.md}{research note}.
 Those inequalities do not by themselves construct pieces of a contained
 path that meet one another.
 
@@ -1524,8 +1509,7 @@ attained. Indeed, near-minimising curves of bounded length can be
 parametrised on $[0,1]$ with a common Lipschitz bound. Arzel\`a--Ascoli,
 convergence of root multisets and lower semicontinuity of length give a
 contained limiting curve, even if the two endpoint occurrences coalesce.
-\href{erdos1041-lemniscate-reasoning-surface.pdf\#closed-class-limits}{The fixed-degree limits subsection of the companion} gives the full argument, also recorded in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md}{the compactness proof}.
+\href{erdos1041-lemniscate-reasoning-surface.pdf\#closed-class-limits}{The fixed-degree limits subsection of the companion} gives the full argument.
 
 Thus a bound $\Lambda\le2$ on a dense class would extend to its closure.
 For an open-disc polynomial, rescaling a containing radius $R<1$ would
@@ -1534,7 +1518,7 @@ The binomial $z^n-1$ has $\Lambda=2$: its root sectors meet only at zero,
 and the radial paths attain this length. These facts explain the
 historical reduction. They also show that the bound fails in degree
 seven: if $R<1$ exceeds the root moduli of the polynomial $f$ of
-Section~\ref{sec:problem}, then $R^{-7}f(Rz)$ lies in $\mathcal K_7$ and
+\texttt{ani} in Section~\ref{sec:problem}, then $R^{-7}f(Rz)$ lies in $\mathcal K_7$ and
 has $\Lambda>2$, because a contained curve of length at most $2$ would
 rescale to a curve in $\{|f|<1\}$ of length below $2$, whose image has
 one-dimensional Hausdorff measure below $2$. The reduction remains
@@ -1544,8 +1528,8 @@ available on separately specified polynomial classes.
 For polynomials whose critical points are simple and whose critical values
 are nonzero, with pairwise distinct arguments and moduli, cutting the
 value plane along critical rays gives the finite inverse-sheet construction
-recorded in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAwareReeb.md}{the decomposition into inverse sheets}.
+of a
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAwareReeb.md}{research note}.
 The underlying inverse-sheet construction is classical: Dubinin
 \cite[\S1, pp.~1169--1170]{dubinin2006critical} cuts outward from the
 critical values and describes the resulting sheet adjacency tree;
@@ -1597,7 +1581,7 @@ in Section~\ref{sec:exact-obstructions} show that the least critical modulus
 and the separation test with radius $2$ do not cover all polynomials, and that the number of roots at the first merger
 does not control capacity after subsequent mergers.  The critical-value inequalities bound sums of powers of the moduli; they
 do not choose inverse branches that join to form the required path.
-The ordinary
+A research
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md}{note on powers of Blaschke products}
 gives fixed-degree tests of these limitations and separate asymptotic
 results for the shortest contained path. The family, certificate scope,
@@ -1607,11 +1591,11 @@ Neither a failed sufficient condition nor a fixed-degree certificate
 settles an asymptotic path estimate.
 
 The earlier note gives a near-regular-pentagon family for which
-\emph{all} origin segments escape \cite[Proposition~A of the preserved earlier
+\emph{all} origin segments escape \cite[Proposition~A of the earlier
 note]{revision2026}. The long record gives the two-scale proof along the
 five segments, including the open-disc contraction.
 The addendum reports a stronger failure for every critical joining point,
-but its proof was not supplied or available for checking in this revision.
+but its proof is not available.
 Failure at the origin, which is not a critical point of this family,
 does not establish that stronger assertion. Neither straight-segment
 claim excludes a different vertex, curved inverse-ray arms or an
@@ -1774,8 +1758,8 @@ endorsed the mathematics of the present paper.
   J. Complexity \textbf{5} (1989), no.~4, 438--456.
 \bibitem{revision2026} W.~Cook / Plectis,
   \emph{Three refinements for the lemniscate-path programme}, 16 September 2026,
-  accompanying unreviewed research note, Sections~1--3, with the earlier
-  \emph{Structural obstructions} note preserved in the same revision bundle.
+  unreviewed research note, Sections~1--3, together with the earlier
+  note \emph{Structural obstructions}.
 \bibitem{dubinin2006capacity} V.~N. Dubinin,
   \emph{Lemniscates and inequalities for the logarithmic capacities of
   continua}, Mat. Zametki \textbf{80} (2006), no.~1, 33--37;

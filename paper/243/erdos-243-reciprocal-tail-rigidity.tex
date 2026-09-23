@@ -170,7 +170,9 @@ Problem~\#243~\cite{erdosproblems}.
 Sections~\ref{sec:bounded}--\ref{sec:transfer} contain the main proof:
 the arithmetic argument, its gcd and CRT lemmas, and the construction
 from the reciprocal series. The later sections give extensions and
-state the estimate still needed for the unrestricted problem.
+state the estimate still needed for the unrestricted problem. Further
+proofs and examples are in the companion paper, \emph{Reciprocal-Tail
+Rigidity: Theorems, Proofs and Questions}.
 
 \evidenceparagraph{\evidencerecordurl}
 
@@ -816,12 +818,10 @@ eventually zero
 and that this limit superior is at most the one displayed above
 (\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L100}{comparison with the negative part}).
 The displayed implication is the contrapositive of the two combined, which
-also uses $D_0\ge1$, a consequence of~(6). Versions with a coefficient
-below $1$ are proved in
-\href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md}{a note on slowly growing negative parts}
-and, for LCM numerators with the bound imposed only at late record steps,
-in \href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md\#5-record-only-subcritical-log-log-bound}
-{a note on record steps}.
+also uses $D_0\ge1$, a consequence of~(6). The companion's
+Theorem~7.11 proves the version with a coefficient below~$1$; for LCM
+numerators with the bound imposed only at late record steps, see
+\href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md\#5-record-only-subcritical-log-log-bound}{a note on record steps}.
 These results do not establish the general bound on the sum at record steps.
 
 \section{The remaining arithmetic estimate}\label{sec:open}
@@ -862,9 +862,9 @@ at infinitely many indices?
 \end{problem}
 Section~\ref{sec:transfer} gives $C_{n+1}/C_n\to1$; averaging logarithms
 therefore gives $\log C_n=o(n)$. Since $1\le M_n\le C_n$, every such
-orbit already satisfies $\log M_n/n\to0$. A positive answer would
-therefore be a contradiction: proving it from failure of Sylvester
-behaviour would exclude every counterexample.
+orbit already satisfies $\log M_n/n\to0$. A positive answer therefore
+holds exactly when no such orbit exists: proving it from failure of
+Sylvester behaviour would exclude every counterexample.
 
 For $B\ge0$ put
 \[
@@ -942,9 +942,7 @@ terminology and notation.
 \section{Sources and related methods}\label{app:index}
 
 The mathematical arguments above are independent of the source code.
-Each linked phrase below opens its declaration at an immutable revision;
-the checkpoint is \texttt{\commitshort} unless the destination identifies
-a separate release, an older research note or a later revision.
+The links below open Lean declarations at fixed revisions of the sources.
 
 \paragraph{Earlier remainder methods and related problems.}
 The integer-remainder method predates this argument
@@ -1203,7 +1201,7 @@ Example~9.1 of the companion gives the further search details.
   Locators refer to this published version.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/243}{\emph{Erd\H{o}s Problem \#243}},
-  supplied snapshot of 28 July 2026; not a live status verification.
+  accessed 28 July 2026.
 \bibitem{erdosstraus1974} P.~Erd\H{o}s and E.~G. Straus,
   \href{https://msp.org/pjm/1974/55-1/pjm-v55-n1-p08-s.pdf}
   {\emph{On the irrationality of certain series}}, Pacific J. Math.
