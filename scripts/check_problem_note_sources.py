@@ -703,6 +703,34 @@ def library_relative(file_name: str) -> str:
     return f"{LIBRARY_PREFIX}/{file_name}"
 
 
+EVIDENCE_MAP = ROOT / "evidence" / "paper_evidence.json"
+
+
+def margin_mark_declaration_keys(note_source: str, evidence: dict[str, Any]) -> set[DeclarationKey]:
+    """Declarations a note reaches through its margin marks.
+
+    A result with a whole-result Lean proof carries a margin mark that links its
+    declaration, or the section of the evidence record listing every declaration
+    that states it, at the Lean pin.  Each such declaration is reached by the
+    note, under the name its module declares it by (any dotted suffix of the full
+    name).
+    """
+    paper_id = Path(note_source).stem
+    keys: set[DeclarationKey] = set()
+    for paper in evidence.get("papers", []):
+        if paper.get("paper_id") != paper_id:
+            continue
+        for result in paper.get("results", []):
+            lean = result.get("lean") or {}
+            if not lean.get("mark"):
+                continue
+            for declaration in lean.get("declarations", []):
+                relative = library_relative(declaration["path"].removeprefix("lean/"))
+                parts = declaration["name"].split(".")
+                keys.update((relative, ".".join(parts[i:])) for i in range(len(parts)))
+    return keys
+
+
 def module_relative(module_name: str) -> str:
     """Repository path for a dotted Lean module name."""
     return "/".join(module_name.split(".")) + ".lean"
@@ -924,12 +952,13 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
     lines: list[str] = []
     failures: list[str] = []
     index = json.loads(safe_worktree_text(INDEX_SOURCE))
+    evidence = json.loads(safe_worktree_text(EVIDENCE_MAP)) if EVIDENCE_MAP.is_file() else {}
     floor, floor_failures = validated_coverage_floor(index)
     failures.extend(floor_failures)
     for row, source in note_for_problem():
         note_text = safe_worktree_text(ROOT / source)
         commit = note_pinned_commit(note_text, default_commit)
-        linked = linked_declaration_keys(note_text)
+        linked = linked_declaration_keys(note_text) | margin_mark_declaration_keys(source, evidence)
         modules = [row["principal_module"], *row.get("companion_modules", [])]
         current: list[DeclarationKey] = []
         moved: list[str] = []

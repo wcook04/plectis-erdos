@@ -109,8 +109,8 @@
   "content_hashes": {
     "docs/claims.json": "sha256:ca0b7f55338a9e78982f47c27116fa23b2bd8d51d484c44afe1f0f9ad235d66a",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:ccb100b427c8ac4908396863f6ff32c3d62aa28b5bf86a66c8e7fd913c28df37",
-    "docs/publication_contract.json": "sha256:c043c460b8f395e99277180545dba4a318651f0d18769e7a842d0c21ca55262d",
+    "docs/problems.json": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
+    "docs/publication_contract.json": "sha256:07bafc7413eecb9a62ff217069be32bcf62a9d953d3da1c0ac63053ee571916d",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:87955b0c00f856cf4f6ce2866af7d5e32691b05c7e6a8455d78f3548049b4c82",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:ccb100b427c8ac4908396863f6ff32c3d62aa28b5bf86a66c8e7fd913c28df37",
+      "content_digest": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
