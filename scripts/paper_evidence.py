@@ -186,8 +186,12 @@ class LeanFile:
 
 
 def _statement_end(blank: str, start: int) -> int:
-    """Offset of the `:=` (or `where`) that ends the statement starting at `start`."""
+    """Offset of the `:=` (or `where`) that ends the statement starting at `start`.
+
+    A `let` (or `letI`, `have`, `haveI`) inside the statement owns the next top-level `:=`.
+    """
     depth = 0
+    lets = 0
     i = start
     n = len(blank)
     opening, closing = "([{⟨", ")]}⟩"
@@ -198,7 +202,16 @@ def _statement_end(blank: str, start: int) -> int:
         elif c in closing:
             depth = max(0, depth - 1)
         elif depth == 0:
+            binder = re.match(r"(?:let|letI|have|haveI)\s", blank[i:i + 6])
+            if binder and (i == 0 or not (blank[i - 1].isalnum() or blank[i - 1] in "_'.")):
+                lets += 1
+                i += binder.end()
+                continue
             if blank.startswith(":=", i):
+                if lets:
+                    lets -= 1
+                    i += 2
+                    continue
                 return i
             if blank.startswith("where", i) and (i == 0 or not blank[i - 1].isalnum()) and \
                     (i + 5 >= n or not (blank[i + 5].isalnum() or blank[i + 5] in "_'")):

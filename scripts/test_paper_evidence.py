@@ -300,6 +300,14 @@ def test_outputs_are_deterministic_and_checkable(f: Fixture) -> None:
     require("Comparator: passed" in record and "receipt-E1.json" in record, "the record omits the check")
 
 
+def test_statement_with_let_is_read_whole() -> None:
+    text = ("theorem t (a : Nat) :\n    let C := a + 1\n    C = a + 1 ∧\n    letI := 0\n"
+            "    True := by\n  exact ⟨rfl, trivial⟩\n")
+    got = pe.lean_declaration(pe.LeanFile(text), "lean/T.lean", "t", allow_suffix=False)
+    require(got.statement.rstrip().endswith("True"),
+            f"a statement containing let was cut at the let's := : {got.statement!r}")
+
+
 def main() -> int:
     tests = [
         test_sound_fixture_resolves,
@@ -313,6 +321,7 @@ def main() -> int:
         test_relation_notes_are_required_and_bound,
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
+        test_statement_with_let_is_read_whole,
     ]
     for test in tests:
         test()

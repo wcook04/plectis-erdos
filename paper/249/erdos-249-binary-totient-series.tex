@@ -42,6 +42,7 @@ residue series and conditions for irrationality of
 $S=\sum_{n\ge1}\varphi(n)2^{-n}$. They do not establish that $S$ is
 irrational.
 \end{abstract}
+\evidenceparagraph{\evidencerecordurl}
 
 
 \section{A basis and all its relations}\label{sec:results}
@@ -222,9 +223,7 @@ any integer. There are
 \[
  (1+k+\cdots+k^e)-(k^e+1)=\sum_{j=1}^{e-1}k^j
 \]
-omitted sections. The formal statement combines the integral coordinate
-basis, these two-term relation vectors, and their exact rank.
-This complete integral normal form is \href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398}{kernel-checked in Lean}.
+omitted sections.
 \end{proof}
 
 For example, at base $2$ and depth $2$, retain
@@ -504,9 +503,8 @@ $a/(2^cv)$ fails the test for that same $c,v$, whereas irrationality gives
 it for every sufficiently large allowed $H$. The proof does not find such
 an $H$ without assuming irrationality.
 
-The separate formal release states this equivalence using $vM=2^H-1$.
-Its proof and the replay receipt are identified with the formal counterpart
-to Lemma~\ref{lem:bounded-pulse}.
+The separate formal release states this equivalence using $vM=2^H-1$,
+together with the formal counterpart to Lemma~\ref{lem:bounded-pulse}.
 The finite residues also satisfy
 \[
  \rho_{H,N+1,M}=
@@ -843,16 +841,6 @@ to a basis element itself.
 Erd\H{o}s and Graham list the irrationality question for $S$~\cite[p.~61]{erdosgraham1980}.
 
 \subsection*{Formal verification and finite certificates}
-\paragraph{Formal support.}
-The dyadic infinite-basis corollary and the periodic-coefficient corollary
-have ordinary proofs above; no additional formal declarations are asserted
-for them. For Lemma~\ref{lem:bounded-pulse}, the supplied release records
-acceptance by the Lean kernel and by NanoDa at Palomar's Comparator stage.
-No new replay was performed for this revision.
-
-\noindent Formal sources: \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E249/Challenge.lean#L572}{\texttt{wcook04/plectis-erdos-lean}};
-\href{https://github.com/wcook04/plectis-erdos-lean/actions/runs/34782407633}{run 34782407633}.
-
 \begin{enumerate}
 \item\label{res:rank}
 \textbf{Rank in every integer base.} Theorem~\ref{thm:kkernelrank} proves
@@ -881,11 +869,9 @@ from the quantified irrationality conditions.
 \lword{Erdos249/CyclotomicAnchoredKill.lean}{3165}{fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational}{the equivalent residue condition}.
 
 \subsection*{Source guide}
-Each link retains its repository, commit and line reference. The main
-checkpoint is \texttt{\commitshort}; the all-base independence and rank
-statements also use \texttt{25ef6245d15a}. Conditional theorems verify
-implications, not their unproved hypotheses. The ordinary proofs and
-scope statements precede this guide.
+Each link below opens a Lean declaration, and its text says what the
+declaration states. A conditional theorem verifies an implication; its hypothesis remains
+unproved.
 
 \medskip\noindent\textbf{Bases and relations.}\par\smallskip
 \mword{Erdos249257/TotientMahlerDefect.lean}{160}{totientKernel_zero_residue}{reduction of sections with residue zero};

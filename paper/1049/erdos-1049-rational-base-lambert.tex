@@ -31,32 +31,32 @@
 \noteprovenance
 
 \begin{abstract}
-For coprime integers $a>b\ge1$, we prove that
-$F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}$ is irrational when
-$\log b/\log a<0.4056830213840605\ldots$, with the cutoff defined
-exactly below. This includes every positive integral power of $31/4$,
-with irrationality exponent less than $301$. We use Zudilin's 2004
-forms and constants, cancel common cyclotomic factors before rational
-evaluation, and compute the remaining denominator cost.
+Let $F(t)=\sum_{n\ge1}(t^n-1)^{-1}$. Zudilin's 2004 forms bound the
+irrationality exponent of $F$ at integer bases. In 2016 he remarked that
+his results for the generalized $q$-logarithm, of which $F$ is a special
+value, extend to rational bases $a/b$ with $\log a>c\log b$ for a
+computable $c$, which he did not compute. We carry out this
+specialisation for $F$ with his 2004 forms and constants, cancelling
+common cyclotomic factors before rational evaluation and computing the
+remaining denominator cost: for coprime $a>b\ge1$, $F(a/b)$ is
+irrational when $\log b/\log a<0.4056830213840605\ldots$, the cutoff
+defined exactly below. This includes every positive integral power of
+$31/4$, with irrationality exponent less than $301$, and excludes $3/2$.
 
-For the distinct normalised Hankel determinants $V_N^*$ in his 2016
-construction, with auxiliary parameters $x=z=1$, we prove
+For the normalised Hankel determinants $V_N^*$ of his 2016
+construction, with auxiliary parameters $x=z=1$, we prove at every rank
 \[
  \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
  \qquad [q^{\operatorname{ord}_q V_N^*}]V_N^*
-       =\frac{(N!)^2(N+1)!}{2^N}.
+       =\frac{(N!)^2(N+1)!}{2^N},
 \]
-The order is the least exponent with nonzero coefficient; a unique
-least-order term in the moment expansion gives both formulas.
-For fixed $0<q<1$ we prove that, as $N\to\infty$,
-$V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}$, where $B_N$ and
-$C_N$ are the order and coefficient above and $K(q)>0$ is given by a
-convergent product. We also factor the moment weights into two finite
-$q$-multinomial sums. For every real $p>1$, a separate Lean-checked finite
-coefficient pencil has positive definite first matrix and real roots below
-$F(p)$ through rank eight; roots at adjacent ranks interlace non-strictly.
-The rational-base criterion does not include $3/2$; none of these finite
-spectral facts settles irrationality at that base.
+so his lower bound for the order is sharp, and for fixed $0<q<1$ that
+$V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}$ as
+$N\to\infty$, where $B_N$ and $C_N$ are the order and coefficient above
+and $K(q)>0$ is a convergent product. Separately, and only through rank
+eight, Lean checks that a finite coefficient pencil has positive
+definite first matrix and real roots below $F(p)$ for every real $p>1$.
+None of these results settles irrationality at $3/2$.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -113,6 +113,8 @@ congruence-based arguments at $3/2$.
 The companion \emph{Zudilin's Forms at Rational Bases: Proofs and
 Research Record}, called the long record below, gives the additional
 moment calculations, source comparisons and computational certificates.
+
+\evidenceparagraph{\evidencerecordurl}
 
 Throughout, logarithms are natural. Empty products and determinants
 have value $1$, and a subscripted constant in $O_x(\cdot)$ may depend
@@ -208,7 +210,7 @@ These are the intervals $\mathcal I$ used to define $J$.
 The function $\omega$, these thirteen intervals and the exponents
 $\nu_\ell=\omega(n/\ell)$ of the source's~(22) are printed at
 \cite[pp.~161--162]{zudilin2004}.
-The zero-one values and the interval decomposition are checked in
+Lean checks the zero-one values and this
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297}{interval formula for $\omega$}.
 
 \paragraph{The positive source expression.}
@@ -364,9 +366,9 @@ Since $0\le1-\nu_\ell\le1$, it follows that
 
 \paragraph{Homogenisation.}
 Because $U_n,V_n$ are integral polynomials of degree at most $W_n$,
-$b^{W_n}U_n(a/b)$ and $b^{W_n}V_n(a/b)$ are integers.
-That integrality and the cleared linear-form identity it produces are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61}{cleared linear form identity}.
+$b^{W_n}U_n(a/b)$ and $b^{W_n}V_n(a/b)$ are integers; Lean checks this
+integrality and the resulting
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61}{cleared linear-form identity}.
 Moreover
 \[
 \begin{split}
@@ -378,9 +380,10 @@ Moreover
 The coefficient is negative under the theorem's hypothesis. The positive
 values of these integer-coefficient forms therefore tend to zero.
 If $F(a/b)=r/s$ with integers $r,s$ and $s\ne0$, every nonzero value
-would have absolute value at least $1/|s|$, a contradiction.
-The separation bound for a nonzero integral form at a rational target is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128}{rational integer linear form gap}.
+would have absolute value at least $1/|s|$, a contradiction; Lean checks
+this
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128}{separation bound}
+for a nonzero integral form at a rational target.
 \end{proof}
 
 \begin{corollary}\label{res:thirtyone-four}
@@ -483,16 +486,12 @@ series and tail bounds, and the cutoff-digit certificate. These are
 exact computations, not additional Lean declarations.
 \end{proof}
 
-\paragraph{Formal sources.} The linked Lean sources prove Theorem~\ref{res:rational-base-threshold} as
-\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113}{the rational-base region},
-and Corollary~\ref{res:thirtyone-four} as
-\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117}{the powers of $31/4$},
-with
-\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L121}{the base $31/4$}
-as the case $r=1$. They construct the coefficient polynomials and prove
-the remainder estimates rather than assuming them. Of Zudilin's two
-constructions \cite{zudilin2004,zudilin2016}, the argument here uses
-the 2004 forms; Section~\ref{sec:hankel-order} uses the 2016 sequence.
+\paragraph{Formal sources.} The Lean proofs of
+Theorem~\ref{res:rational-base-threshold} and its two corollaries
+construct the cancelled coefficient polynomials and prove the remainder
+estimates. Of Zudilin's two constructions \cite{zudilin2004,zudilin2016},
+the argument here uses the 2004 forms; Section~\ref{sec:hankel-order}
+uses the 2016 sequence.
 
 \paragraph{Comparison and scope.}
 Bundschuh and V\"a\"an\"anen's Theorem~2 at $\alpha=-1$
@@ -711,10 +710,8 @@ and leading coefficient
 No other tuple can cancel this coefficient.
 \end{proof}
 
-\noindent The Lean proof uses transformed rows rather than the
-moment expansion above. It checks both identities at every rank as
-\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173}{the exact order} and
-\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199}{the leading coefficient}.
+\noindent The Lean proof follows a different route, through Zudilin's
+transformed rows.
 
 \paragraph{From formal order to size at a fixed base.}
 Formal order alone does not bound the value at a fixed $q$: multiplication
@@ -722,14 +719,13 @@ by $(1-q)^{N^3}$ leaves the first term unchanged but changes its logarithm
 by a cubic quantity. The long record, Section~3.1, proves separately that
 $V_N^*(q)>0$ and that $\log(V_N^*(q)/(C_Nq^{B_N}))=O_q(N)$ for fixed
 $0<q<1$. The same positive-measure argument, carried further, settles the
-size within that band. The theorem below is a
-\href{https://github.com/wcook04/plectis-erdos/blob/76f44c5329c0e207f5376062c7d79125485fbceb/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean\#L53}{Lean theorem},
-derived there from the long record's
+size within that band. Lean derives the theorem below from the long
+record's
 \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean\#L990}{form}
-with the explicit constant $K(q)=\mathcal A(q)\mathcal M(q)^3$. That proof uses the
+with the explicit constant $K(q)=\mathcal A(q)\mathcal M(q)^3$, using the
 \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean\#L1312}{exact factorisation}
 of the moment weights, from which it also obtains the second-order
-behaviour of $a_k/c_k$, and the
+behaviour of $a_k/c_k$, and a
 \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean\#L1324}{determinant limit}
 for weights of this shape.
 
@@ -786,10 +782,9 @@ Against the two proposed degree savings of long Section~3, the shortfall at
 $3/2$ is exactly $N(74N^2-117N+41)/41>0$ for $N\ge2$, and the new estimate
 closes no part of it. Neither assertion supplies the cyclotomic divisibility proved
 for a different recurrence in \cite[Prop.~4, pp.~14--15]{krvz2009}.
-The separate coefficient and content calculations are in long
-Section~3.3. Its finite pencil proposition is now Lean-checked through
-rank eight, including positivity, root location and non-strict interlacing;
-Appendix~\ref{app:index} records the precise source and finite scope.
+Long Section~3.3 gives the separate coefficient and content
+calculations; Appendix~\ref{app:index} separates its fixed-rank Lean
+results from its finite computations.
 
 \section{Supplementary arithmetic at \texorpdfstring{$3/2$}{3/2}}
 \label{sec:open}
@@ -924,8 +919,6 @@ image. The target size is the product of its four moduli.  For \(R>0\),
  (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^M,
 \]
 which proves the stated sufficient threshold.
-The cardinality formula, the collision, the signed \(\{-1,0,1\}\) vector and
-the sufficient number of rows are formalised together in \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248}{the residue-count statement}.
 \end{proof}
 
 The ambient count does not use relations between the two residue
@@ -963,8 +956,6 @@ and take at most $2^S3^R$ values.  Finally
  2^S3^R<2^S4^R=2^{S+2R}\le2^k,
 \]
 and pigeonhole gives the two selectors.
-The special cases requiring an invertible second coordinate are
-formalised together in \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269}{the vanishing-minor and residue-count statement}.
 \end{proof}
 
 Primitive integer rows are unimodular modulo every modulus: for
@@ -1167,9 +1158,10 @@ Section~10.
 
 \subsection*{Statements and declarations}
 
-\paragraph{Artefact and data availability.} The
-\href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
-fixed toolchain, and the library manifest used in the verification.  The ordinary proofs used here are printed with their hypotheses.
+\paragraph{Data availability.} The
+\href{\sourceurl}{formal-source revision} contains the Lean sources, the
+toolchain and the library manifest; the
+\href{\evidencerecordurl}{evidence record} lists every declaration and check.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.
@@ -1183,7 +1175,7 @@ mathematical review or endorsement of the results here.
 
 
 \appendix
-\section{Source comparisons and formal verification}\label{app:index}
+\section{Source comparisons and finite computations}\label{app:index}
 
 \paragraph{Integer-base methods.}
 Vandehey treats signed coefficients in the digit argument
@@ -1198,21 +1190,26 @@ section; they are not inputs to the rational specialisation in Section~2.
 \paragraph{Coefficient moments.}
 The coefficient polynomials in \cite[Sec.~3, p.~5]{zudilin2016} give a
 moment problem different from the remainder moments in Section~3.
-Long Section~3.3 checks the two leading Hankel families through rank eight,
-not the all-rank criterion in \cite[Lemma~2.1, p.~4]{wangzhu2016}.
-For the unshifted family, positivity through rank eight at every real
-$p\ge1$ is also a
-\href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean\#L458}{Lean theorem}.
-The \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean\#L43}{finite-pencil proposition} proves that for real $p>1$ and every rank $N\le8$,
-$A_N$ is positive definite, all roots of $\det(YA_N-B_N)$ are real and
-less than $F(p)$, and roots at adjacent ranks interlace non-strictly.
-The shifted eight certificates remain separately computed in this account.
-Long Section~3.3 also proves a finite moment representation and discusses $(m!)^3$ at the
-endpoint \cite[Thm.~5.1]{berg2007}, formal continued fractions and finite
-quadrature \cite{sw2024,golubwelsch1969}. It also gives complete polynomial
-contents through rank five and specified cyclotomic residue tests through
-rank eight. These finite results do not assert all-rank coefficient
-positivity or divisibility.
+Long Section~3.3 treats it at fixed ranks only; the all-rank criterion
+of \cite[Lemma~2.1, p.~4]{wangzhu2016} is not addressed. Write $A_N$ and
+$B_N$ for the $N\times N$ Hankel matrices of the coefficients
+$\alpha_m,\beta_m$ in $v_m^*=\alpha_mF(p)-\beta_m$, where $p=1/q$. Lean
+proves the
+\href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean\#L43}{finite-pencil proposition}:
+for real $p>1$ and every rank $N\le8$, $A_N$ is positive definite, all
+roots of $\det(YA_N-B_N)$ are real and less than $F(p)$, and roots at
+adjacent ranks interlace non-strictly. It also proves the
+\href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean\#L458}{positivity of the leading Hankel determinants}
+behind the first conclusion, through rank eight at every real $p\ge1$.
+The other finite results are exact computations outside Lean, with
+their certificate lists and reproduction scripts in the long record:
+positivity of the shifted Hankel determinants through rank eight,
+complete polynomial contents through rank five and specified cyclotomic
+residue tests through rank eight. From these the long record proves a
+finite moment representation, and it discusses $(m!)^3$ at the endpoint
+\cite[Thm.~5.1]{berg2007}, formal continued fractions and finite
+quadrature \cite{sw2024,golubwelsch1969}. None of these results
+asserts all-rank coefficient positivity or divisibility.
 
 \paragraph{Functional equations.}
 Bell and Smertnig's classification
@@ -1227,29 +1224,6 @@ containing $L$ is stable under $z\mapsto z^k$
 Long Section~10.3 explains this functional obstruction; it gives no
 irrationality statement for $L(2/3)=F(3/2)$.
 
-\paragraph{Formal sources and finite computations.}
-\begingroup
-\raggedright
-In the supplied snapshot, \texttt{PaperR17/SourceConsumers.lean}
-constructs the cancelled forms
-and proves the irrationality and measure results;
-\texttt{AllRow/Producer.lean} constructs the transformed rows and
-proves the all-rank determinant formulas.
-
-The historical index distinguishes reported public, parallel-release and
-unbuilt material at its pinned snapshot; no new Lean run is claimed by that
-index. The later finite-pencil declaration is linked separately above.
-The linked invertible-coordinate
-theorem is weaker than the ordinary unimodular-row theorem.
-The sixteen historical certificate lists and reproduction scripts remain
-in the long record. The unshifted rank-eight positivity and finite pencil
-proposition have separate Lean proofs at the source checkpoint; this does not
-promote the shifted certificates or any all-rank coefficient claim.
-Historical links retain their original revisions and line numbers,
-which have not been revalidated. Long Appendix~A records the snapshot
-identifiers and gives the full source guide.
-\par\endgroup
-
 % The linked source manifest below is a printed appendix, separate from
 % the principal arguments. Its original targets are retained for traceability.
 % Historical hidden declaration table is preserved in the pass-one provenance.
@@ -1257,8 +1231,8 @@ identifiers and gives the full source guide.
 % BEGIN pin-faithful-source-inventory
 \section{Additional formal statements}
 \label{sec:pinned-lean-sources}
-Each link below retains its original revision and line number.
-Appendix~\ref{app:index} explains the supplied snapshot and verification scope.
+Each link below retains its original revision and line number and is
+labelled by the mathematics it states.
 
 \paragraph{Comparison of the two diagonals}
 \lword{Erdos1049/QAperyDiagonalNonEquivalence.lean}{33}{vanAsscheDiagonal_initial_values}{initial values of Van Assche's diagonal};

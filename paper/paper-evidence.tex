@@ -83,7 +83,8 @@
 
 % A plain remark after a result, for what its mark alone cannot say: the input
 % a conditional Lean proof assumes, or what is and is not checked for a result
-% without a mark.
+% without a mark.  The skip after the result is replaced by one that cannot
+% break, so the remark never starts a page away from its result.
 \newcommand{\evidenceremark}[1]{%
-  \par\nobreak\vspace{-0.3\baselineskip}%
+  \par\removelastskip\nobreak\vspace{0.3\baselineskip}%
   \noindent{\small #1\par}\vspace{0.15\baselineskip}}
