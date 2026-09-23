@@ -1199,11 +1199,12 @@ def retired_apparatus(ledger: dict[str, Any], texts: dict[str, str]) -> list[str
     found = []
     for paper in ledger.get("papers", []):
         for path in paper.get("sources", []):
-            view = counter_view(texts.get(path, ""))
+            raw = texts.get(path, "")
+            view = counter_view(raw)
             if NOTE_OPEN in view:
                 found.append(f"{path}: a generated \\leannote; evidence is placed by paper/evidence/, "
                              "regenerate it with scripts/paper_evidence.py")
-            if CONCORDANCE_BEGIN in view:
+            if CONCORDANCE_BEGIN in raw:  # the block's markers are TeX comments
                 found.append(f"{path}: a generated concordance block; the evidence record under "
                              "evidence/ replaces it")
     return found

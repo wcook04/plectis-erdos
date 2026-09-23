@@ -12,7 +12,8 @@ classifies each changed pair:
 
   presentation   the bodies agree once labels, inline Lean citations (\\lean{..}{..}),
                  status tags (\\ev, \\coord, \\scale), `Sources:` sentences and layout are
-                 removed;
+                 removed, together with what removing them leaves (parentheses holding only
+                 separators, a space before punctuation, a closing line or paragraph break);
   reviewed       any other change, admitted only when the review file names the row, the
                  exact old and new digests, and a reason that the mathematics is unchanged.
 
@@ -90,6 +91,13 @@ def presentation_form(body: str) -> str:
         text = _strip_command(text, name, arity)
     text = re.sub(r"\\textit\{Sources:\}[^\n]*(?:\n(?!\s*\n)[^\n]*)*", "", text)
     text = re.sub(r"~", " ", text)
+    text = " ".join(text.split())
+    # What the removed tags leave behind: parentheses holding only separators, a space
+    # before punctuation, and a line break or paragraph break that closed a tag line.
+    text = re.sub(r"\(\s*(?:[;,:]\s*)*\)", "", text)
+    text = re.sub(r"\s+([.,;:])", r"\1", text)
+    text = re.sub(r"(?:\s*(?:\\par(?![A-Za-z])|\\\\|\\noindent(?![A-Za-z])))+\s*$", "", text)
+    text = re.sub(r"^\s*(?:(?:\\par|\\noindent)(?![A-Za-z])\s*)+", "", text)
     return " ".join(text.split())
 
 
@@ -106,10 +114,19 @@ def bodies(pairs: list[tuple[str, str]], spans: list[dict]) -> list[dict]:
     """inventory() plus each environment's raw body, per file in document order."""
     found = chk.inventory(pairs, spans)
     texts = {path: chk.counter_view(text) for path, text in pairs}
+    by_label = {span["label"]: span for span in spans}
     for env in found:
         text = texts[env["path"]]
         if env["environment"] is None:
+            # A labelled claim span: the text from its opening phrase to its closing one.
+            span = by_label.get(env["labels"][0]) if env["labels"] else None
             env["body"] = None
+            if span:
+                at = text.find("\\label{" + span["label"] + "}")
+                start = text.find(span["start"], at)
+                finish = text.find(span["end"], start)
+                if at >= 0 and start >= 0 and finish >= start:
+                    env["body"] = text[start:finish + len(span["end"])]
             continue
         offset = sum(len(l) for l in text.splitlines(keepends=True)[: env["line"] - 1])
         start = chk.BEGIN_RE.search(text, offset)

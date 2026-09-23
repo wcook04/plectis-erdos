@@ -941,8 +941,10 @@ def main(argv: list[str] | None = None) -> int:
     b.add_argument("--allow-missing-relations", action="store_true")
     c = sub.add_parser("check")
     c.add_argument("--corpus-repo", type=Path)
+    for p in (b, c):
+        p.add_argument("--root", type=Path, default=ROOT, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
-    root = ROOT
+    root = args.root
     problems = Problems()
     config = load_json(root / CONFIG)
     previous = load_json(root / EVIDENCE_MAP) if (root / EVIDENCE_MAP).is_file() else None
