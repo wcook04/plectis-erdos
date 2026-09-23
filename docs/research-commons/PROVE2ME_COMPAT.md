@@ -3,18 +3,27 @@
 
 # Offline Prove2Me compatibility: one theorem at a time
 
-The stronger public #257 showcase is the **finite-prime weighted-support
-theorem** (`res:weighted-support` in
-`paper/257/erdos-257-mersenne-support-subseries.tex`). It proves irrationality
-at every integer base for supports satisfying the base-two weighted condition,
-including the paper's explicit support $A_\star=\{2^km:k\ge1,\ m\text{ odd},\
-m\le2^{2^k}\}$: its reciprocal mass diverges, while its weighted mass
-converges. This criterion still does not cover every infinite support.
+The default offline candidate is the **finite-prime weighted-support theorem**,
+a direct irrationality result that applies to some supports with divergent
+reciprocal sums (`res:weighted-support` in
+`paper/257/erdos-257-mersenne-support-subseries.tex`). Its exact Lean
+declaration is `ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`
+at `lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120`;
+the registered claim is `finite_prime_weighted_support`, status
+`formalised here`. Lean checks the weighted criterion. The paper verifies an
+explicit reciprocal-divergent support to which it applies; this example is
+ordinary paper mathematics, not a separate Lean named-instance theorem.
+The separately checked mixed weighted-cover result (`res:mixed-supports`)
+covers further hosts under its additional cover hypotheses. Neither theorem
+settles the universal #257 assertion for every infinite support. The exact
+weighted hypothesis and two Lean clauses are in
+[`PROVE2ME_WEIGHTED_257_PACKET.md`](PROVE2ME_WEIGHTED_257_PACKET.md).
 
 `scripts/prove2me_compat.py` prepares a source-bound, **offline** candidate for
-one theorem. Its first portability pilot is the narrower #257
-reciprocal-summable support result: if an infinite set of positive integers $A$
-satisfies
+one theorem. The narrower #257 reciprocal-summable support result remains a
+selectable portability pilot with
+`--unit erdos257_reciprocal_summable_support`. If an infinite set of positive
+integers $A$ satisfies
 $\sum_{a\in A}1/a<\infty$, then $\sum_{a\in A}1/(b^a-1)$ is irrational for
 every integer base $b\ge2$. The exact Lean declaration is
 `Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal` in
@@ -23,9 +32,8 @@ it at `res:reciprocal-support` in
 `paper/257/erdos-257-mersenne-support-subseries.tex`. The registered claim is
 `reciprocal_summable_support`, with status `formalised here`. Erdős stated
 this all-base extension after his pairwise-coprime case; the paper supplies
-an averaging proof. This adapter choice does not rank the result above the
-weighted theorem or imply that either theorem has been ported or submitted to
-Prove2Me. The universal #257 assertion remains open.
+an averaging proof. Neither theorem has been ported or submitted to
+Prove2Me.
 
 The earlier #249 finite-level totient-kernel theorem remains selectable as a
 technical prototype with `--unit erdos249_all_base_totient_kernel_paper_theorem`.
@@ -47,18 +55,28 @@ proof, paper or accepted-contribution record.
 Prove2Me documents native [theorem and proof publication](https://github.com/prove2me/prove2me_workspace/blob/main/SKILL.md),
 [asynchronous publish jobs and correction/deprecation](https://github.com/prove2me/prove2me_workspace/blob/main/references/contribute.md),
 and [verification verdicts](https://github.com/prove2me/prove2me_workspace/blob/main/references/prove.md).
-The adapter maps to those objects; it does not recreate them.
+The adapter maps to those objects; it does not recreate them. No Prove2Me
+mission has been matched to this exact theorem. This offline pilot is not a
+mission selection or submission claim.
 
 ## Prepare and validate
 
-From a clone with `origin/main` available, write the preferred #257 packet
-outside the checkout:
+From a clone with `origin/main` available, write the default weighted #257
+packet outside the checkout:
 
 ```sh
 python3 scripts/prove2me_compat.py prepare --out /tmp/erdos257-p2m/packet.json
 python3 scripts/prove2me_compat.py validate \
   --packet /tmp/erdos257-p2m/packet.json \
   --out /tmp/erdos257-p2m/validation.json
+```
+
+For the smaller reciprocal-summable portability pilot, select it explicitly:
+
+```sh
+python3 scripts/prove2me_compat.py prepare \
+  --unit erdos257_reciprocal_summable_support \
+  --out /tmp/erdos257-reciprocal-p2m/packet.json
 ```
 
 For the earlier #249 packet, use:
@@ -89,11 +107,13 @@ v4.29.1 / `5e932f97...` pair. The selected Lean files first appeared later:
 | --- | --- | --- |
 | #249 unconditional all-base rank (`AllBaseTotientKernel.lean`) | `c418a63a` (11 September) | v4.29.1 / `5e932f97...` |
 | #257 reciprocal-summable support (`AllBaseReciprocalSupportIrrationality.lean`) | `e060dcf7` (14 September) | v4.29.1 / `5e932f97...` |
+| #257 weighted support (`WeightedReturn.lean`) | `b10da4c0` (19 September) | v4.29.1 / `5e932f97...` |
 | #249 displayed paper theorem (`FullKernelAssemblies.lean`) | `7d7b5968` (19 September) | v4.29.1 / `5e932f97...` |
 
-At the 23 September audit, local `501262d2` and public `origin/main`
-`402497d8` had all three files under that pair. No #249 or #257
-artifact in the available history exactly matches a supported pair.
+At the 23 September audit, the selected files in the available history
+all used that pair. No #249 or #257 artifact in that audited history
+exactly matched a supported pair. Refresh both the local pin and live
+environment list before any later port.
 In particular, v4.29.0-rc3 / Mathlib `777aaa61...` is distinct from
 v4.29.1 / Mathlib `5e932f97...`.
 

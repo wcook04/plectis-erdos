@@ -980,6 +980,18 @@ def test_adversarial_candidate_universe_drop_is_not_silently_accepted() -> None:
     )
 
 
+def test_adversarial_ranked_reader_tier_is_rejected() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    comparator = json.loads(
+        subprocess.check_output(["git", "show", "HEAD:verification/comparator.json"], cwd=ROOT)
+    )
+    for invalid in (None, "unreviewed_tier", ["completed_direct_result"]):
+        damaged = copy.deepcopy(showcase)
+        damaged["candidate_ranking"][1]["reader_tier"] = invalid
+        errors = checker.candidate_selection_errors(comparator, damaged)
+        assert any("invalid reader_tier" in error for error in errors)
+
+
 def test_adversarial_selection_semantics_drop_is_not_silently_accepted() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(
@@ -1082,6 +1094,7 @@ if __name__ == "__main__":
     test_repository_intake_contract()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_candidate_universe_drop_is_not_silently_accepted()
+    test_adversarial_ranked_reader_tier_is_rejected()
     test_adversarial_selection_semantics_drop_is_not_silently_accepted()
     test_adversarial_value_disposition_drift_is_not_silently_accepted()
     test_adversarial_roster_drop_is_not_silently_accepted()

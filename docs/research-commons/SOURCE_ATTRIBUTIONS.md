@@ -665,7 +665,7 @@ Public implementation or evidence coordinates:
 - [formalization.yaml](../../formalization.yaml#L1-L60) — lines `1–60`; excerpt `sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f`
 - [verification/comparator.json](../../verification/comparator.json#L1-L40) — lines `1–40`; excerpt `sha256:8b08466c661aa5a0f1977d62d091fd0a355dd90ba5d7d74a51ca6c578639737f`
 - [verification/comparator-negative-mismatch.json](../../verification/comparator-negative-mismatch.json#L1-L13) — lines `1–13`; excerpt `sha256:43aca5f4da7f5f42baf826e53324c045e4fa11acd20ffd1743609e20b5084157`
-- [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L4-L14) — lines `4–14`; excerpt `sha256:6b3caa9f62da7417df8563c5f97b088eaa7230d976b5b1854d6652b46565b9fc`
+- [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L4-L14) — lines `4–14`; excerpt `sha256:d38bbf38909250ed6425efc908bf466dd7da14f8cbd8020fdd3021ef1548b592`
 
 <a id="source-correspondence-002"></a>
 
@@ -3023,7 +3023,7 @@ Paper citation usages:
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4357](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4357-L4357), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4358](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4358-L4358), [cite at paper/reasoning-parts/erdos1049/core.tex:4327](../../paper/reasoning-parts/erdos1049/core.tex#L4327-L4327), [cite at paper/reasoning-parts/erdos1049/core.tex:4328](../../paper/reasoning-parts/erdos1049/core.tex#L4328-L4328)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:749](../../paper/archive/erdos249-257-main-paper.tex#L749-L749)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1525](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1525-L1525), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3520](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3520-L3520), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1321](../../paper/reasoning-parts/erdos257/a257_front.tex#L1321-L1321), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:3316](../../paper/reasoning-parts/erdos257/a257_front.tex#L3316-L3316)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1361](../../paper/synthesis/optimal-sparse-perturbations.tex#L1361-L1362)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1362](../../paper/synthesis/optimal-sparse-perturbations.tex#L1362-L1363)
 
 <a id="source-source-318b37ba5af2eb"></a>
 
@@ -3745,7 +3745,7 @@ Paper citation usages:
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:329](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L329-L329), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:554](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L554-L554), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:667](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L667-L667), [cite at paper/reasoning-parts/erdos251/core.tex:289](../../paper/reasoning-parts/erdos251/core.tex#L289-L289), [cite at paper/reasoning-parts/erdos251/core.tex:514](../../paper/reasoning-parts/erdos251/core.tex#L514-L514), [cite at paper/reasoning-parts/erdos251/core.tex:627](../../paper/reasoning-parts/erdos251/core.tex#L627-L627)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9692](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9692-L9692), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9488](../../paper/reasoning-parts/erdos257/a257_front.tex#L9488-L9488)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:157](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L157-L157), [cite at paper/reasoning-parts/erdos269/core.tex:112](../../paper/reasoning-parts/erdos269/core.tex#L112-L112)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:868](../../paper/synthesis/optimal-sparse-perturbations.tex#L868-L868), [cite at paper/synthesis/optimal-sparse-perturbations.tex:895](../../paper/synthesis/optimal-sparse-perturbations.tex#L895-L895), [cite at paper/synthesis/optimal-sparse-perturbations.tex:989](../../paper/synthesis/optimal-sparse-perturbations.tex#L989-L989), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1005](../../paper/synthesis/optimal-sparse-perturbations.tex#L1005-L1005), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1346](../../paper/synthesis/optimal-sparse-perturbations.tex#L1346-L1346), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1349](../../paper/synthesis/optimal-sparse-perturbations.tex#L1349-L1349)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:868](../../paper/synthesis/optimal-sparse-perturbations.tex#L868-L868), [cite at paper/synthesis/optimal-sparse-perturbations.tex:895](../../paper/synthesis/optimal-sparse-perturbations.tex#L895-L895), [cite at paper/synthesis/optimal-sparse-perturbations.tex:989](../../paper/synthesis/optimal-sparse-perturbations.tex#L989-L989), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1005](../../paper/synthesis/optimal-sparse-perturbations.tex#L1005-L1005), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1347](../../paper/synthesis/optimal-sparse-perturbations.tex#L1347-L1347), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1350](../../paper/synthesis/optimal-sparse-perturbations.tex#L1350-L1350)
 
 <a id="source-source-5122572a1e7312"></a>
 
@@ -4584,7 +4584,7 @@ Paper citation usages:
 
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:812](../../paper/257/erdos-257-mersenne-support-subseries.tex#L812-L812)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:10023](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L10023-L10023), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9819](../../paper/reasoning-parts/erdos257/a257_front.tex#L9819-L9819)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:866](../../paper/synthesis/optimal-sparse-perturbations.tex#L866-L866), [cite at paper/synthesis/optimal-sparse-perturbations.tex:893](../../paper/synthesis/optimal-sparse-perturbations.tex#L893-L893), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1344](../../paper/synthesis/optimal-sparse-perturbations.tex#L1344-L1344)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:866](../../paper/synthesis/optimal-sparse-perturbations.tex#L866-L866), [cite at paper/synthesis/optimal-sparse-perturbations.tex:893](../../paper/synthesis/optimal-sparse-perturbations.tex#L893-L893), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1345](../../paper/synthesis/optimal-sparse-perturbations.tex#L1345-L1345)
 
 <a id="source-source-6a5bf83735fdef"></a>
 
@@ -5675,7 +5675,7 @@ Paper citation usages:
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:788](../../paper/257/erdos-257-mersenne-support-subseries.tex#L788-L788)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:278](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L278-L278), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:558](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L558-L558), [cite at paper/reasoning-parts/erdos251/core.tex:238](../../paper/reasoning-parts/erdos251/core.tex#L238-L238), [cite at paper/reasoning-parts/erdos251/core.tex:518](../../paper/reasoning-parts/erdos251/core.tex#L518-L518)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9699](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9699-L9699), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9495](../../paper/reasoning-parts/erdos257/a257_front.tex#L9495-L9495)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1229](../../paper/synthesis/optimal-sparse-perturbations.tex#L1229-L1229), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1347](../../paper/synthesis/optimal-sparse-perturbations.tex#L1347-L1347)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1229](../../paper/synthesis/optimal-sparse-perturbations.tex#L1229-L1229), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1348](../../paper/synthesis/optimal-sparse-perturbations.tex#L1348-L1348)
 
 <a id="source-source-8935df46fb4693"></a>
 
@@ -8265,7 +8265,7 @@ Paper citation usages:
 
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:706](../../paper/269/erdos-269-three-prime-running-lcm.tex#L706-L706)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2327](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2327-L2327), [cite at paper/reasoning-parts/erdos269/core.tex:2282](../../paper/reasoning-parts/erdos269/core.tex#L2282-L2282)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1327](../../paper/synthesis/optimal-sparse-perturbations.tex#L1327-L1327)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1328](../../paper/synthesis/optimal-sparse-perturbations.tex#L1328-L1328)
 
 <a id="source-source-eca9e699590922"></a>
 
@@ -8788,7 +8788,7 @@ Paper citation usages:
 
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:207](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L207-L207), [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:330](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L330-L330)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:328](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L328-L328), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:552](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L552-L552), [cite at paper/reasoning-parts/erdos251/core.tex:288](../../paper/reasoning-parts/erdos251/core.tex#L288-L288), [cite at paper/reasoning-parts/erdos251/core.tex:512](../../paper/reasoning-parts/erdos251/core.tex#L512-L512)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:866](../../paper/synthesis/optimal-sparse-perturbations.tex#L866-L866), [cite at paper/synthesis/optimal-sparse-perturbations.tex:988](../../paper/synthesis/optimal-sparse-perturbations.tex#L988-L988), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1344](../../paper/synthesis/optimal-sparse-perturbations.tex#L1344-L1344)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:866](../../paper/synthesis/optimal-sparse-perturbations.tex#L866-L866), [cite at paper/synthesis/optimal-sparse-perturbations.tex:988](../../paper/synthesis/optimal-sparse-perturbations.tex#L988-L988), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1345](../../paper/synthesis/optimal-sparse-perturbations.tex#L1345-L1345)
 
 <a id="source-source-fb64da05c3acc7"></a>
 

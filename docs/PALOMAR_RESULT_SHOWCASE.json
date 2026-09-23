@@ -524,7 +524,8 @@
     ],
     "anti_underclaim_boundary": "Do not select a timid proxy merely because it is easy to qualify: an unconditional direct theorem with a visible hard mechanism must remain eligible even when it is classical or leaves the universal problem open.",
     "anti_hype_boundary": "No selected result closes universal Erdős #257 or any other open programme; exact hypotheses, prior-art attribution, proof authority, limitations, and the surviving open boundary remain part of the result.",
-    "reversal_evidence": "Reverse the choice only if a newly committed, source-checked Comparator row has a strictly stronger direct consequence at the same or closer endpoint, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis or overclaim risk; uncommitted dirt or a row count cannot reverse it."
+    "reversal_evidence": "Reverse the choice only if a newly committed, source-checked Comparator row has a strictly stronger direct consequence at the same or closer endpoint, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis or overclaim risk; uncommitted dirt or a row count cannot reverse it.",
+    "reader_tier_rule": "Each ranked candidate carries an explicit reader_tier; the query layer projects this reviewed status without inferring conditionality from prose. Rank and reader tier are independent."
   },
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
@@ -2007,7 +2008,8 @@
       "proof_digestion_value": "Readers can inspect the literal weighted term and see how finite weighted mass yields fixed-base irrationality, while base-two mass yields the stronger all-base hereditary clause.",
       "evidence_certainty": "The source theorem is Lean-checked in PaperCompleteR8/WeightedReturn.lean:120. This packet adds a separately declared Comparator interface and thin transport; external Comparator replay remains pending.",
       "overclaim_risk": "The finite-prime weighted-summability hypothesis and 0 ∉ support condition must stay visible. The theorem does not prove irrationality for arbitrary infinite support, novelty, priority, or external human review.",
-      "why_ranked_first": "It has the broadest unconditional direct irrationality conclusion among the selected #257 support criteria, with a concrete checked weighted-return mechanism and a binary-mass all-base hereditary clause."
+      "why_ranked_first": "It has the broadest unconditional direct irrationality conclusion among the selected #257 support criteria, with a concrete checked weighted-return mechanism and a binary-mass all-base hereditary clause.",
+      "reader_tier": "completed_direct_result"
     },
     {
       "rank": 2,
@@ -2022,7 +2024,8 @@
       "proof_digestion_value": "It gives a reader a complete certificate-to-irrationality story and identifies the mechanism that differs from arbitrary-support routes.",
       "evidence_certainty": "The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.",
       "overclaim_risk": "Low only under the stated boundary: this is full support, not all infinite supports, and local proof plus Comparator is not a novelty or human-review claim.",
-      "why_not_ranked_first": "The theorem gives an unconditional classical full-support endpoint with a completed certificate proof, but the finite-prime weighted criterion covers a broad family of supports and has an all-base hereditary clause under binary weighted mass."
+      "why_not_ranked_first": "The theorem gives an unconditional classical full-support endpoint with a completed certificate proof, but the finite-prime weighted criterion covers a broad family of supports and has an all-base hereditary clause under binary weighted mass.",
+      "reader_tier": "completed_direct_result"
     },
     {
       "rank": 3,
@@ -2037,7 +2040,8 @@
       "proof_digestion_value": "Excellent mechanism case study, but its extra support hypotheses make the universal boundary easier to misunderstand.",
       "evidence_certainty": "The exact source theorem is committed at Erdos249257/CertificateKernel.lean:10768-10782 and is transported by the committed Challenge/Solution pair.",
       "overclaim_risk": "Moderate unless infinitude, pairwise coprimality, and summable reciprocal mass stay visible in every projection.",
-      "why_not_ranked_first": "It is broader in support-class language but less direct as the canonical full-support endpoint and carries more restrictive hypotheses."
+      "why_not_ranked_first": "It is broader in support-class language but less direct as the canonical full-support endpoint and carries more restrictive hypotheses.",
+      "reader_tier": "completed_direct_result"
     },
     {
       "rank": 4,
@@ -2052,7 +2056,8 @@
       "proof_digestion_value": "High conditional-route value, but not a complete mechanism-to-endpoint package.",
       "evidence_certainty": "Exact committed source and Comparator transport are available.",
       "overclaim_risk": "High if the bouquet and uniform tail-selection hypotheses are silently treated as automatic.",
-      "why_not_ranked_first": "The unresolved selector makes it less certain and less broadly applicable than the unconditional full-support result."
+      "why_not_ranked_first": "The unresolved selector makes it less certain and less broadly applicable than the unconditional full-support result.",
+      "reader_tier": "conditional_endpoint_route"
     },
     {
       "rank": 5,
@@ -2067,7 +2072,8 @@
       "proof_digestion_value": "Useful bridge from periodic weights to support questions.",
       "evidence_certainty": "Exact committed source and Comparator transport are available.",
       "overclaim_risk": "Moderate if the mixed-sign or arbitrary-support cases are inferred.",
-      "why_not_ranked_first": "Its coefficient hypotheses are farther from the canonical arbitrary-support question than full support."
+      "why_not_ranked_first": "Its coefficient hypotheses are farther from the canonical arbitrary-support question than full support.",
+      "reader_tier": "completed_direct_result"
     },
     {
       "rank": 6,
@@ -2082,7 +2088,8 @@
       "proof_digestion_value": "It exposes how quantitative orbit separation would feed the irrationality theorem and identifies the exact producer a future proof must supply.",
       "evidence_certainty": "The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.",
       "overclaim_risk": "High unless the two cofinal supply clauses stay attached: the implication is source-faithful and checked, but the supply itself is not proved here.",
-      "why_not_ranked_first": "It has exceptional endpoint proximity and a deep mechanism, but it is conditional on the missing cofinal producer; the selected finite-prime weighted theorem is an unconditional completed endpoint with lower hidden-premise risk."
+      "why_not_ranked_first": "It has exceptional endpoint proximity and a deep mechanism, but it is conditional on the missing cofinal producer; the selected finite-prime weighted theorem is an unconditional completed endpoint with lower hidden-premise risk.",
+      "reader_tier": "conditional_endpoint_route"
     },
     {
       "rank": 7,
@@ -2097,7 +2104,8 @@
       "proof_digestion_value": "It explains exactly how a cofinal decorrelation theorem would close the endpoint and why global pivot isolation is too strong.",
       "evidence_certainty": "The source theorem, canonical review family, and exact Comparator endpoint wrapper are committed; the cofinal decorrelation producer is explicitly absent.",
       "overclaim_risk": "High unless DTWPivotResidualDecorrelation remains attached as an unproved cofinal premise; this is not an unconditional #249 result.",
-      "why_not_ranked_first": "Its endpoint consequence and mechanism are exceptional, but the selected #257 theorem is unconditional and the rank-5 actual-LCM route is the closer source-specific #249 producer interface."
+      "why_not_ranked_first": "Its endpoint consequence and mechanism are exceptional, but the selected #257 theorem is unconditional and the rank-5 actual-LCM route is the closer source-specific #249 producer interface.",
+      "reader_tier": "conditional_endpoint_route"
     },
     {
       "rank": 8,
@@ -2112,7 +2120,8 @@
       "proof_digestion_value": "It exposes the 11/100 to 89/100 to 9/10 chain and the adaptive prime escape rather than flattening both branches into a generic conditional endpoint.",
       "evidence_certainty": "The exact source declarations, canonical strict_prime_tail_orbit_gap family, and Comparator representative are committed at Claims ddbe2870 and transport e7a58bb3.",
       "overclaim_risk": "High unless the unproved density, cofinal natural-prime strict-gap, uniform-margin, and cofinal nonpositive-prime-shift producers stay explicit; no unconditional #249, novelty, priority, significance, or external-review claim follows.",
-      "why_not_ranked_first": "It ranks below actual_lcm_orbit_separation and first_harmonic_pivot_decomposition because their source-specific quantitative sockets are stronger, but above finite certificate equivalences because it contributes a distinct producer mechanism rather than only an endpoint normal form."
+      "why_not_ranked_first": "It ranks below actual_lcm_orbit_separation and first_harmonic_pivot_decomposition because their source-specific quantitative sockets are stronger, but above finite certificate equivalences because it contributes a distinct producer mechanism rather than only an endpoint normal form.",
+      "reader_tier": "conditional_endpoint_route"
     },
     {
       "rank": 9,
@@ -2127,7 +2136,8 @@
       "proof_digestion_value": "Excellent for routing future work to the actual missing producer.",
       "evidence_certainty": "Exact committed source and Comparator transport are available.",
       "overclaim_risk": "High if the equivalence is mistaken for a cofinal carry proof.",
-      "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected finite-prime weighted theorem."
+      "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected finite-prime weighted theorem.",
+      "reader_tier": "exact_reduction_or_structural_result"
     },
     {
       "rank": 10,
@@ -2142,7 +2152,8 @@
       "proof_digestion_value": "Useful connective tissue, not a headline endpoint result.",
       "evidence_certainty": "Exact committed source and Comparator transport are available.",
       "overclaim_risk": "High if equivalence is read as irrationality.",
-      "why_not_ranked_first": "It is a reduction rather than a proved irrationality consequence."
+      "why_not_ranked_first": "It is a reduction rather than a proved irrationality consequence.",
+      "reader_tier": "exact_reduction_or_structural_result"
     },
     {
       "rank": 11,
@@ -2157,7 +2168,8 @@
       "proof_digestion_value": "It shows simultaneously what rationality would regularize and why that regularity does not compress the carry enough to contradict rank growth.",
       "evidence_certainty": "The exact source theorem, canonical review family, and Comparator representative are committed; the missing finite-rank contradiction is explicit.",
       "overclaim_risk": "High if modular periodicity and unbounded canonical-kernel rank are reported as incompatible; the source proves no such upper bound and no #249 irrationality.",
-      "why_not_ranked_first": "It outranks coefficient-side kernel inventory because it is tied directly to hypothetical rationality, but remains below the producer-side strict-prime, first-harmonic, and actual-LCM routes because it supplies neither a contradiction nor a certificate producer."
+      "why_not_ranked_first": "It outranks coefficient-side kernel inventory because it is tied directly to hypothetical rationality, but remains below the producer-side strict-prime, first-harmonic, and actual-LCM routes because it supplies neither a contradiction nor a certificate producer.",
+      "reader_tier": "exact_reduction_or_structural_result"
     },
     {
       "rank": 12,
@@ -2172,7 +2184,8 @@
       "proof_digestion_value": "It prevents future work from mistaking a convenient seam formulation or finite exact row for the missing global producer.",
       "evidence_certainty": "The exact source iff, canonical claims family, and committed Comparator representative are available; the absent occurrence producer is explicit.",
       "overclaim_risk": "High if an iff is described as a half-membership witness or if finite exact rows are treated as cofinal supply; it proves no universal #257 result.",
-      "why_not_ranked_first": "It is promoted as the strongest underweighted survivor, but stays beneath all unconditional #257 endpoints and the producer-side #249 routes because it classifies rather than supplies its global endpoint condition."
+      "why_not_ranked_first": "It is promoted as the strongest underweighted survivor, but stays beneath all unconditional #257 endpoints and the producer-side #249 routes because it classifies rather than supplies its global endpoint condition.",
+      "reader_tier": "exact_reduction_or_structural_result"
     },
     {
       "rank": 13,
@@ -2187,7 +2200,8 @@
       "proof_digestion_value": "It identifies finite normalized negative mass as a precise analytic condition future #243 work would need to verify or refute, rather than obscuring the missing producer behind a generic recurrence claim.",
       "evidence_certainty": "The exact source theorem, canonical review family, and committed Comparator representative are available at Claims 6bedcde3 and transport 39d0c4bd.",
       "overclaim_risk": "High if the conditional summability criterion is reported as applying to the original reciprocal-tail orbit; it proves no unconditional #243 endpoint, prime-specific producer, or reciprocal-tail irrationality.",
-      "why_not_ranked_first": "It deserves ranked visibility over routine screening rows because its analytic mechanism is distinct and reusable, but remains below the #257 seam classification's exact endpoint socket and all direct/producer-side routes because every original-orbit hypothesis remains open."
+      "why_not_ranked_first": "It deserves ranked visibility over routine screening rows because its analytic mechanism is distinct and reusable, but remains below the #257 seam classification's exact endpoint socket and all direct/producer-side routes because every original-orbit hypothesis remains open.",
+      "reader_tier": "conditional_endpoint_route"
     }
   ],
   "candidate_selection": {

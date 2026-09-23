@@ -2142,6 +2142,41 @@ def validate_mathematical_signal_spine() -> None:
         "conditional_endpoint_route",
         "exact_reduction_or_structural_result",
     }
+    expected_reader_tiers = {
+        "finite_prime_weighted_support": "completed_direct_result",
+        "known_irrational_supports": "completed_direct_result",
+        "pairwise_coprime_support": "completed_direct_result",
+        "orthogonal_petal_sunflower_reduction": "conditional_endpoint_route",
+        "periodic_nonnegative_weight_irrationality": "completed_direct_result",
+        "actual_lcm_orbit_separation": "conditional_endpoint_route",
+        "first_harmonic_pivot_decomposition": "conditional_endpoint_route",
+        "strict_prime_tail_orbit_gap": "conditional_endpoint_route",
+        "factorial_carry_characterisation": "exact_reduction_or_structural_result",
+        "prime_gap_reformulation": "exact_reduction_or_structural_result",
+        "totient_carry_anti_compression": "exact_reduction_or_structural_result",
+        "half_membership_seam_classification": "exact_reduction_or_structural_result",
+        "negative_mass_recovery": "conditional_endpoint_route",
+    }
+    assert {
+        row["family_id"]: row["reader_tier"] for row in frontier
+    } == expected_reader_tiers
+    assert [row["reader_tier"] for row in frontier] == [
+        row["reader_tier"] for row in expected
+    ]
+    for row in expected:
+        prose_changed = copy.deepcopy(row)
+        prose_changed["why_not_ranked_first"] = "conditional or unconditional wording"
+        assert query_corpus._signal_reader_tier(prose_changed) == row["reader_tier"]
+    invalid_tier_showcase = copy.deepcopy(showcase)
+    invalid_tier_showcase["candidate_ranking"][1]["reader_tier"] = "unreviewed_tier"
+    try:
+        query_corpus.mathematical_signal_spine(
+            load("docs/claims.json"), invalid_tier_showcase
+        )
+    except ValueError as exc:
+        assert "invalid reader_tier" in str(exc)
+    else:
+        raise AssertionError("invalid Palomar reader tier was projected")
     assert all(row["source_file"] and row["exact_boundary"] for row in frontier)
     for row in frontier:
         declaration = query("--declaration", row["source_declaration"])

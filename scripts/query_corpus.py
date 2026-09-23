@@ -9554,30 +9554,22 @@ def publication_architecture_packet() -> dict[str, Any]:
     }
 
 
+PALOMAR_READER_TIERS = frozenset({
+    "completed_direct_result",
+    "conditional_endpoint_route",
+    "exact_reduction_or_structural_result",
+})
+
+
 def _signal_reader_tier(candidate: Mapping[str, Any]) -> str:
-    """Project an authored rank into a reader role without changing the rank."""
-    if candidate.get("selection_status") == "subordinate":
-        return "exact_reduction_or_structural_result"
-    conditional_text = " ".join(
-        str(candidate.get(key, ""))
-        for key in (
-            "consequence_and_endpoint_proximity",
-            "mechanism_depth_and_natural_friction",
-            "overclaim_risk",
-            "why_not_ranked_first",
+    """Project the reviewed reader role of an authored ranked candidate."""
+    tier = candidate.get("reader_tier")
+    if not isinstance(tier, str) or tier not in PALOMAR_READER_TIERS:
+        raise ValueError(
+            "Palomar ranked candidate "
+            f"{candidate.get('family_id')!r} has invalid reader_tier"
         )
-    ).casefold()
-    if any(
-        marker in conditional_text
-        for marker in (
-            "conditional",
-            "unresolved",
-            "missing producer",
-            "not constructed",
-        )
-    ):
-        return "conditional_endpoint_route"
-    return "completed_direct_result"
+    return tier
 
 
 def _signal_presentation_contract(
