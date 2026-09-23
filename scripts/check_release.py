@@ -315,6 +315,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "check_paper_evidence_pdfs.py"),
         ],
+        "paper_evidence_pdf_fixtures": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_check_paper_evidence_pdfs.py"),
+        ],
         "clone_footprint": [
             sys.executable,
             str(ROOT / "scripts" / "test_clone_footprint.py"),
