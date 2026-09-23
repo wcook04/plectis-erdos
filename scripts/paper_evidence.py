@@ -137,7 +137,8 @@ class LeanDeclaration:
     docstring: str | None
     statement: str          # as written, docstring and proof excluded
     normalised: str         # comments removed, layout collapsed
-    unfolds: tuple = ()     # ((name, line, text), ...) definitions the statement's type names
+    unfolds: tuple = ()     # ((name, path, line, text), ...) definitions the statement's type names
+    named: str | None = None  # the identifier the statement's type consists of, if it is one
 
 
 def named_proposition(normalised: str) -> str | None:
@@ -258,8 +259,35 @@ def lean_declaration(source: LeanFile, path: str, declaration: str, *, allow_suf
             body = (tail[: stop.start()] if stop else tail).rstrip()
             if body.count("\n") <= 60 and re.match(r"\s*(?:@\[[^\]]*\]\s*)*(?:noncomputable\s+)?(?:def|abbrev)\b",
                                                    blank[dstart:dstart + len(body)]):
-                unfolds = ((hits[0][0], dline, body),)
-    return LeanDeclaration(declaration, path, line, kind, docstring, statement, normalised, unfolds)
+                unfolds = ((hits[0][0], path, dline, body),)
+    return LeanDeclaration(declaration, path, line, kind, docstring, statement, normalised, unfolds, named)
+
+
+def definition_body(source: LeanFile, line: int) -> str | None:
+    """The text of the def or abbrev on `line`, up to the next blank line, if it is short."""
+    start = source.offsets[line - 1]
+    tail = source.text[start:]
+    stop = re.search(r"\n\s*\n", tail)
+    body = (tail[: stop.start()] if stop else tail).rstrip()
+    if body.count("\n") > 60 or not re.match(
+            r"\s*(?:@\[[^\]]*\]\s*)*(?:noncomputable\s+)?(?:def|abbrev)\b",
+            source.blank[start:start + len(body)]):
+        return None
+    return body
+
+
+def tex_to_markdown(text: str | None, numbers: dict[str, tuple[str, str]]) -> str | None:
+    """A ledger scope or reason, written in TeX, as Markdown a reader can follow."""
+    if not text:
+        return text
+    def number(label: str) -> str:
+        found = numbers.get(label)
+        return found[0] if found and found[0] else "above"
+    out = re.sub(r"\\eqref\{([^}]*)\}", lambda m: f"({number(m.group(1))})", text)
+    out = re.sub(r"\\ref\{([^}]*)\}", lambda m: number(m.group(1)), out)
+    out = re.sub(r"\\emph\{([^}]*)\}", r"*\1*", out)
+    out = re.sub(r"\\texttt\{([^}]*)\}", r"`\1`", out)
+    return out.replace("~", " ").replace("\\ ", " ")
 
 
 # --------------------------------------------------------------------------- inputs
@@ -428,6 +456,58 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
     pin_files: dict[str, LeanFile | None] = {}
     corpus_files: dict[str, LeanFile | None] = {}
 
+    def_index: dict[str, list[tuple[str, int]]] = {}
+
+    def pin_definition(named: str, near: str = "") -> tuple[str, str, int, str] | None:
+        """(qualified name, path, line, text) of the definition `named` refers to at the pin.
+
+        A name with several definitions (the external-verification library restates some)
+        resolves to the one in the Lean library, and then to the one sharing the longest
+        namespace with `near`, the declaration that uses it; a tie is left unresolved.
+        """
+        if named in ("let", "True", "False", "fun"):
+            return None
+        if not def_index:
+            done = subprocess.run(
+                ["git", "-C", str(root), "grep", "-n", "-E",
+                 r"^[[:space:]]*(@\[[^]]*\][[:space:]]*)*(noncomputable[[:space:]]+)?(def|abbrev)[[:space:]]+[A-Za-z_]",
+                 pin, "--", "lean",
+                 "verification"], capture_output=True, text=True)
+            for line in done.stdout.splitlines():
+                _rev, path, number, text = line.split(":", 3)
+                m = re.search(r"\b(?:def|abbrev)\s+([A-Za-z_][\w'.]*)", text)
+                if m:
+                    def_index.setdefault(m.group(1).rsplit(".", 1)[-1], []).append((path, int(number)))
+            def_index.setdefault("", [])
+        found = []
+        for path, _number in def_index.get(named.rsplit(".", 1)[-1], []):
+            if path not in pin_files:
+                text = here.text(pin, path)
+                pin_files[path] = None if text is None else LeanFile(text)
+            source = pin_files[path]
+            if source is None:
+                continue
+            for qualified, lines in source.index.items():
+                if (qualified == named or qualified.endswith("." + named)) and len(lines) == 1:
+                    found.append((qualified, path, lines[0], source))
+        if len(found) > 1:
+            in_library = [f for f in found if f[1].startswith("lean/")]
+            found = in_library or found
+        if len(found) > 1 and near:
+            def shared(qualified: str) -> int:
+                a, b = qualified.split("."), near.split(".")
+                k = 0
+                while k < min(len(a), len(b)) and a[k] == b[k]:
+                    k += 1
+                return k
+            best = max(shared(f[0]) for f in found)
+            found = [f for f in found if shared(f[0]) == best]
+        if len(found) != 1:
+            return None
+        qualified, path, line, source = found[0]
+        body = definition_body(source, line)
+        return None if body is None else (qualified, path, line, body)
+
     def pin_decl(name: str, path: str, where: str) -> LeanDeclaration | None:
         key = (path, name)
         if key not in lean_cache:
@@ -506,6 +586,8 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             env = row.get("environment")
             printed_kind = ENVIRONMENT_NAMES.get(env or "", "Result") if env else "Passage"
             prev = previous_rows.get(row["id"], {})
+            numbers_for_row_all = numbers or {r.get("label"): (r.get("number"), r.get("page"))
+                                              for r in previous_rows.values() if r.get("label")}
             if env is None:
                 # A labelled claim span has no heading of its own: it is cited by page.
                 numbers_for_row = {label: (None, numbers[label][1])} if label in numbers else {}
@@ -635,14 +717,20 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                     "status": status,
                     "mark": mark,
                     "named_inputs": row["lean"].get("named_inputs"),
+                    "named_input_definitions": [
+                        {"name": u[0], "path": u[1], "line": u[2], "text": u[3]}
+                        for u in (pin_definition(n) for n in (row["lean"].get("named_inputs") or [])) if u],
                     "scope": row["lean"].get("scope"),
+                    "scope_markdown": tex_to_markdown(row["lean"].get("scope"), numbers_for_row_all),
                     "reason": row["lean"].get("reason"),
+                    "reason_markdown": tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all),
                     "relation_note": relation,
                     "declarations": [
                         {"name": d.name, "path": d.path, "line": d.line, "kind": d.kind,
                          "docstring": d.docstring, "statement": d.statement,
                          "statement_sha256": sha256_hex(d.normalised.encode()),
-                         "unfolds": [{"name": u[0], "line": u[1], "text": u[2]} for u in d.unfolds]}
+                         "unfolds": [{"name": u[0], "path": u[1], "line": u[2], "text": u[3]}
+                                     for u in (d.unfolds or ((pin_definition(d.named, d.name),) if d.named and pin_definition(d.named, d.name) else ()))]}
                         for d in decls
                     ],
                 },
@@ -789,7 +877,9 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
         status = lean["status"]
         decls = lean["declarations"]
         if status == "none":
-            out.append(f"**No Lean proof of the whole statement.** {lean.get('reason') or ''}".rstrip())
+            reason = lean.get("reason_markdown") or lean.get("reason") or ""
+            out.append(f"**No Lean proof of the whole statement.** In Lean, {reason}.".rstrip()
+                       if reason else "**No Lean proof of the whole statement.**")
             out.append("")
             continue
         many = len(decls) > 1
@@ -802,9 +892,10 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
             if lean.get("relation_note"):
                 lead += " " + lean["relation_note"]
         else:
-            inputs = ", ".join(f"`{n}`" for n in (lean.get("named_inputs") or []))
-            lead = (f"The Lean proof assumes {lean.get('scope') or 'a named input'}, stated in Lean as {inputs}; "
-                    "that input is not proved in Lean.")
+            inputs = ", ".join(f"`{n.rsplit('.', 1)[-1]}`" for n in (lean.get("named_inputs") or []))
+            scope = lean.get("scope_markdown") or lean.get("scope") or "a named input"
+            lead = (f"The Lean proof assumes {scope}. Lean takes this input as a hypothesis ({inputs}); "
+                    "it is not proved in Lean.")
         out.append(lead)
         out.append("")
         for i, d in enumerate(decls, 1):
@@ -814,10 +905,15 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
             out.append(_md_code(d["statement"]))
             out.append("")
             for u in d.get("unfolds") or []:
-                out.append(f"where [`{u['name'].rsplit('.', 1)[-1]}`]({lean_url(pin, d['path'], u['line'])}) is")
+                out.append(f"where [`{u['name'].rsplit('.', 1)[-1]}`]({lean_url(pin, u.get('path') or d['path'], u['line'])}) is")
                 out.append("")
                 out.append(_md_code(u["text"]))
                 out.append("")
+        for u in lean.get("named_input_definitions") or []:
+            out.append(f"The assumed input [`{u['name'].rsplit('.', 1)[-1]}`]({lean_url(pin, u['path'], u['line'])}) is")
+            out.append("")
+            out.append(_md_code(u["text"]))
+            out.append("")
         cmp = r["comparator"]
         out.append(f'<a id="{r["anchor"]}-comparator"></a>')
         out.append("")
