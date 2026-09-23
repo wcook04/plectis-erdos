@@ -84,6 +84,20 @@ RESULT_TO_CLOSE_OUTCOME = {
     "corrective": {"established"},
 }
 
+
+def allowed_close_outcomes(track: str | None, result_class: str | None) -> set[str]:
+    """Keep Lean proof closure separate from validated architecture results.
+
+    The workbench reserves ``established`` for a kernel-accepted Lean probe.
+    An architecture return can instead carry passed source checks in its
+    evidence while its workbench closes ``open`` pending maintainer review.
+    """
+    outcomes = RESULT_TO_CLOSE_OUTCOME.get(result_class, set())
+    if track == "architecture" and result_class in {"checked_positive", "corrective"}:
+        return outcomes | {"open"}
+    return outcomes
+
+
 # ``check --replay`` and ``package --replay`` invoke the existing workbench's
 # one-input stdin probe.  This is intentionally not a repository build or a
 # release validator: the workbench owns the per-probe timeout, while this
@@ -1321,7 +1335,7 @@ def check_session(
                 errors.append("workbench session: package requires proof_workbench.py close")
             else:
                 result_class = returned.get("result", {}).get("class")
-                allowed_outcomes = RESULT_TO_CLOSE_OUTCOME.get(result_class, set())
+                allowed_outcomes = allowed_close_outcomes(manifest.get("track"), result_class)
                 if closed.get("outcome") not in allowed_outcomes:
                     errors.append(
                         f"workbench session: close outcome {closed.get('outcome')!r} is inconsistent with result class {result_class!r}"
