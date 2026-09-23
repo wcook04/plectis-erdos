@@ -44,22 +44,21 @@ under proof abundance. It separates six things that are commonly collapsed:
 cognition authority, permission to change shared state, validation capacity,
 evidence class, public-claim authority, and reviewer attention.
 
-Problem-sized worlds join formal declarations, experiments, sources, failed
-mechanisms, and open obligations. Separate graphs record formal dependencies,
-mathematical meaning, and public claims. A compiled entry packet states the
-endpoint, claim ceiling, omissions, and context-budget overflow. The implemented
-architecture connects scoped research changes, checks, and reviewed public
-wording without transferring authority between them. The related-work section
+Problem worlds join proofs, experiments, failed routes and open obligations.
+Separate graphs track formal dependencies, meaning and claims. A bounded entry
+packet names the endpoint, claim ceiling, omissions and context overflow. The
+architecture connects scoped changes, checks and reviewed wording without
+transferring authority. The related-work section
 compares it with neighbouring systems along stated dimensions and claims no
 priority.
 
-Computation supplies finite evidence; Lean verifies that a proof establishes
-the formal statement written in the source;
-Comparator checks selected propositions and their axiom boundary. These checks
-do not establish intended meaning, novelty, importance or external acceptance.
+Computation supplies finite evidence; Lean checks the written formal statement;
+Comparator checks selected propositions and their axiom boundary. None
+establishes intended meaning, novelty, importance or external acceptance.
 
-The public Lean repository contains papers, claims, navigation, and release
-checks that a fresh clone can inspect. Problem 257 has a Lean-checked
+A fresh public clone gives each of eight problems a short paper, longer record
+and Lean source, plus a cross-problem synthesis, claims and release checks.
+Problem 257 has a Lean-checked
 finite-prime weighted criterion: a convergent base-two weighted mass makes its
 subseries irrational at every integer base at least two, even for some supports
 with divergent reciprocal sum. Arbitrary infinite supports remain open. A
@@ -114,16 +113,15 @@ than checking correctness, and that formal verification helps with neither.
 Those findings predate this paper and motivate the separation it
 implements.
 
-The \href{\repobase}{public repository studied here} contains Lean source,
-papers, and release machinery around eight Erd\H{o}s problem programmes. The
-degree-seven counterexample due to
-\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}}
-is formalised in Lean here and refutes the Formal Conjectures 1041
-Hausdorff path-image claim. Its relation to the 1958 question has not had
-independent human review; the other seven target problems remain unresolved here. The repository also contains
-intermediate theorems, exact reformulations, conditional reductions, finite
-certificates, and no-go results. Private development explains the provenance;
-public claims rely only on the published evidence.
+The \href{\repobase}{public repository} contains paired papers, Lean source
+and release checks for eight Erd\H{o}s programmes. It formalises the
+degree-seven example due to
+\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}},
+refuting the Formal Conjectures 1041 Hausdorff path-image claim. Its relation
+to the 1958 question lacks independent human review; the other seven target
+problems remain unresolved here. The corpus also records partial theorems,
+reductions, certificates and no-go results. Private development explains
+provenance; public claims rely on published evidence.
 
 \paragraph{The novelty claim and its ceiling.}
 The candidate contribution is an executable \emph{claim-transition architecture},
@@ -1049,23 +1047,27 @@ Question & Start here \\
 \midrule
 How does the public repository fit together? &
 \repolink{docs/ARCHITECTURE.md}{docs/ARCHITECTURE.md} \\
-What may the project say, and what remains open? &
+What is proved and open? &
 \repolink{docs/claims.json}{docs/claims.json} and
 \repolink{docs/methodology.json}{docs/methodology.json} \\
 Where is the checked mathematics? &
 \repolink{lean/Erdos249257.lean}{lean/Erdos249257.lean} and
 \repolink{lean/ErdosProblems.lean}{lean/ErdosProblems.lean} \\
-How can I navigate without reading the whole corpus? &
+How can I navigate the corpus? &
 \repolink{docs/ORIENTATION.md}{docs/ORIENTATION.md} and
 \repolink{scripts/query_corpus.py}{scripts/query\_corpus.py} \\
 What exactly does Comparator check? &
 \repolink{docs/EXTERNAL_VERIFICATION.md}{docs/EXTERNAL\_VERIFICATION.md} and
 \repolink{verification/comparator.json}{verification/comparator.json} \\
-What does the local review selection qualify? &
+What is locally qualified? &
 \repolink{docs/verification/PALOMAR_QUALIFICATION.md}{PALOMAR\_QUALIFICATION.md} and
 \repolink{docs/PALOMAR_RESULT_SHOWCASE.json}{docs/PALOMAR\_RESULT\_SHOWCASE.json} \\
-Which papers exist and what question does each answer? &
-\repolink{docs/papers/README.md}{docs/papers/README.md} \\
+Which papers exist? &
+\repolink{docs/papers/README.md}{paper index},
+\repolink{paper/257/erdos-257-mersenne-support-subseries.pdf}{\#257 short paper},
+\repolink{paper/257/erdos257-mersenne-reasoning-surface.pdf}{long record} \\
+What can I test without Lean? &
+\repolink{research/experiments/sparse_interpolation/late_rejection.py}{exact-rational probe} \\
 Which checks gate a release? &
 \repolink{scripts/check_release.py}{scripts/check\_release.py} and
 \repolink{.github/workflows/lean.yml}{.github/workflows/lean.yml} \\
