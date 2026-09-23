@@ -10,13 +10,15 @@ approaches that stopped and why. Plectis is a prototype for making this work
 understandable, reusable and open to further insight. The website brings the
 collection together; you do not need Lean to read the papers.
 
-The degree-seven counterexample found by the erdosproblems.com contributor ani
-refutes the total-variation formulation of Erdős #1041; this repository
-formalises it in Lean. The other seven target problems are not resolved here. Independent human
-review of correspondence with the historical curve-length formulation has not
-been recorded. Comparator checks only its selected exact statements, configured
-axioms and kernel acceptance; it does not assess novelty or historical
-correspondence. The work also proves intermediate theorems, writes out proofs
+For one degree-seven polynomial constructed by the erdosproblems.com contributor
+ani, Lean proves that every preconnected strict-lemniscate set joining two
+distinct roots has one-dimensional Hausdorff measure greater than two. This
+refutes the exact Formal Conjectures path-image-length statement; the separate
+total-variation bound is also checked. The other seven target problems are not
+resolved here. Independent human review of correspondence with the 1958
+curve-length wording has not been recorded. Comparator checks only selected
+exact statements, axioms and kernel acceptance; it does not assess novelty or
+historical correspondence. The work also proves intermediate theorems, writes out proofs
 of results that were stated but not printed in the literature, checks exact
 finite cases, and records obstructions to tempting shortcuts.
 
@@ -76,7 +78,7 @@ those assessments in one place avoids conflicting summaries.
 
 [Problem 269](../paper/269/erdos-269-three-prime-running-lcm.pdf). For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-269).
 
-[Problem 1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1041).
+[Problem 1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1041).
 
 [Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1049).
 <!-- END problem_programme_card -->

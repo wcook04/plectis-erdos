@@ -15,8 +15,10 @@ obstructions related to eight Erdős problem programmes —
 [#1049](https://www.erdosproblems.com/1049).
 Each problem has a short paper and a longer reasoning record; the retired
 combined #249/#257 manuscript is archive/provenance only, not a current
-gateway. The degree-seven example refutes the total-variation formulation of
-#1041; its correspondence with the historical curve-length problem has no
+gateway. Using ani's degree-seven polynomial, Lean refutes the exact Formal
+Conjectures path-image-length statement for #1041 by a one-dimensional
+Hausdorff-measure bound on every preconnected connecting set. The separate
+total-variation bound also holds. Correspondence with the 1958 wording has no
 recorded independent human review. The other seven targets remain open.
 
 Lean source checked by the pinned Lean kernel is proof authority. The audit log
@@ -278,11 +280,13 @@ On the generic stratum where simple nonzero critical values have pairwise
 distinct arguments and moduli, an ordinary slit-sheet theorem identifies the
 inverse-ray root-connection tree but gives no uniform length bound. Lean checks
 Newton-flow decay, ray-separating translations, and perturbative root
-retention. A degree-seven counterexample due to the erdosproblems.com
-contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861),
-formalised in Lean here, refutes the universal
-total-variation formulation; correspondence with the historical curve-length
-question remains unreviewed.
+retention. Using one degree-seven polynomial constructed by the
+erdosproblems.com contributor
+[`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861), Lean proves
+that every preconnected strict-lemniscate set joining two distinct roots has
+one-dimensional Hausdorff measure greater than two. This refutes the exact
+Formal Conjectures path-image-length statement and the separate total-variation
+formulation; correspondence with the 1958 wording remains unreviewed.
 
 **[#1049](https://www.erdosproblems.com/1049).** For positive integers
 `0<b<a` in the exact Zudilin contour region, Lean checks irrationality and
@@ -319,7 +323,15 @@ operational procedures live in the [agent workbench](agents/AGENT_WORKBENCH.md).
 
 ## Technical verdict
 
-The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence. The development is neither an empty collection of restatements nor
+Using the degree-seven polynomial constructed by erdosproblems.com contributor
+ani, Lean proves that every preconnected strict-lemniscate set joining two
+distinct roots has one-dimensional Hausdorff measure greater than two. This
+refutes the exact Formal Conjectures path-image-length statement; the separate
+total-variation bound is also checked. The other seven targets remain open.
+Independent human review of correspondence with the 1958 wording has not been
+recorded. Comparator checks only selected exact statements, axioms and kernel
+acceptance; it does not assess novelty or historical correspondence. The
+development is neither an empty collection of restatements nor
 a claim to settle the seven unresolved targets or the unadjudicated historical
 #1041 formulation. For a first mathematical pass, the high-signal spine is:
 
@@ -1089,12 +1101,15 @@ core)**
   Erdős #1041. The source-only frontier still records hub selection on the
   ray-separated locus as an open parent carrier
   (`research_corpus/Erdos1041/FRONTIER.md`).
-- Current boundary: a degree-seven counterexample due to the erdosproblems.com
-  contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861),
-  formalised in Lean here, refutes the universal
-  total-variation connector formulation. What remains open here is the precise
-  correspondence with the historical curve-length question, including any
-  required Hausdorff-measure comparison and independent human review.
+- Checked counterexample: using the explicit degree-seven polynomial of
+  erdosproblems.com contributor
+  [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861),
+  Lean proves that every preconnected strict-lemniscate set containing two
+  distinct roots has one-dimensional Hausdorff measure greater than two. The
+  path-image case refutes the exact Formal Conjectures statement, and the
+  separate total-variation bound remains checked. The formal proof covers one
+  polynomial, not ani's reported small-parameter family. Independent human
+  review of correspondence with the 1958 curve-length wording remains open.
 
 - Current-source boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
   is the dated route for later source-only research evidence. Read it before
@@ -1734,8 +1749,9 @@ at most ten minutes? The request is exact, including the response schema, its
 consumer, payoff, and boundary.
 
 The reader replays the current overview, #1041 and semantic-relation routes;
-reports that the total-variation formulation is refuted by ani's degree-seven
-counterexample while the historical curve-length correspondence remains
+reports that ani's degree-seven counterexample refutes the exact Formal
+Conjectures path-image-length statement and the total-variation formulation,
+while the historical curve-length correspondence remains
 unreviewed; identifies the claim registry as selected rather than exhaustive;
 and summarises checked results from at least three distinct problems. This
 replaces the retired protocol built around a frozen #249/#257 binder sample.
@@ -1817,7 +1833,7 @@ _Questions generated from `docs/problem_index_source.json`._
 | [#251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) | Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? |
 | [#257](../paper/257/erdos-257-mersenne-support-subseries.pdf) | Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational? |
 | [#269](../paper/269/erdos-269-three-prime-running-lcm.pdf) | For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. |
-| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question. |
+| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded. |
 | [#1049](../paper/1049/erdos-1049-rational-base-lambert.pdf) | For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. |
 <!-- END problem_programme_card -->
 

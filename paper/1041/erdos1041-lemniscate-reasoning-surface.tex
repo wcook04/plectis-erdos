@@ -36,7 +36,7 @@
 \title{Paths in Polynomial Lemniscates: Proofs and Examples}
 \subtitle{Erd\H{o}s Problem~\#1041}
 \author{Will Cook}
-\date{17 September 2026}
+\date{23 September 2026}
 
 \begin{document}
 % ---- part core ----
@@ -45,13 +45,13 @@
 \noteprovenance
 
 \begin{abstract}
-A degree-seven counterexample due to the erdosproblems.com contributor
+For one degree-seven polynomial constructed by the erdosproblems.com contributor
 \href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}},
-formalised in Lean here, refutes the universal total-variation
-formulation: every continuous path inside the strict unit lemniscate joining
-two distinct roots has total variation greater than $2$.  Its correspondence
-with the historical curve-length question has not received independent human
-review.
+Lean proves that every preconnected subset of its strict unit lemniscate
+containing two distinct roots has one-dimensional Hausdorff measure greater
+than $2$.  This refutes the exact path-image-length formulation in Formal
+Conjectures, as well as the total-variation formulation.  Independent human
+review of correspondence with the 1958 curve-length wording is not recorded.
 For a monic trinomial with roots in the open unit disc, the root equation
 bounds the polynomial along every root-to-origin segment. Any two distinct roots
 are therefore joined inside $\{|f|<1\}$ by a path of length less than $2$.
@@ -124,17 +124,24 @@ squarefree.
 
 \noindent The problem numbering follows Bloom's Erd\H{o}s problem catalogue
 \cite{bloom}.  \phantomsection\label{res:ani-degree-seven-counterexample-long}
-A degree-seven counterexample due to the
-\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{erdosproblems.com contributor \texttt{ani}} makes the unrestricted total-variation assertion false.  For
-one explicit monic polynomial of degree seven whose roots are distinct and
-lie in the open unit disc, every continuous path in the strict unit lemniscate
-joining two distinct roots has total variation greater than~$2$.\footnote{Lean
-checks this instance in
-\href{https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean\#L25}{\texttt{erdos1041\_ani\_degree\_seven}}.
-The formal result concerns one polynomial; it does not formalise the reported
-small-parameter family or a Hausdorff-measure comparison, and its correspondence
-with the historical formulation has not received independent human review.}
-Thus this polynomial has no continuous root-to-root parametrisation of total variation less than~$2$.
+The degree-seven polynomial constructed by
+\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{erdosproblems.com contributor \texttt{ani}}
+has distinct roots in the open unit disc.  Lean proves that every preconnected
+subset of its strict unit lemniscate containing two distinct roots has
+one-dimensional Hausdorff measure greater than~$2$.  Hence the image of every
+continuous root-to-root path has Hausdorff length greater than~$2$, and the
+exact Formal Conjectures statement is false.\footnote{The checked
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L283}{preconnected-set theorem} yields the
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L407}{negation} and
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L449}{\texttt{answer(False)}} forms of the Formal Conjectures proposition.
+This formalises one polynomial, not ani's reported small-parameter family.
+Independent human review has not adjudicated correspondence with the 1958
+wording.}
+The new Hausdorff bound uses a bottleneck: a preconnected set joining the two
+roots must cross radial circles in two disjoint sheets near a critical point.
+The distance coordinate is one-Lipschitz on each sheet, and the resulting
+lower bounds for their disjoint portions add to more than~$2$.  This is
+stronger than a bound only on the variation of a parametrisation.
 The original source is Problem~5 on printed p.~139 of
 Erd\H{o}s--Herzog--Piranian \cite[Problem~5, p.~139]{ehp1958}; the preceding paragraph records the
 known input that one component of the lemniscate contains at least two zeros.
@@ -4538,6 +4545,12 @@ Theorem~\ref{res:attachment-aware-reeb} carry no such input; for each of them
 part of the argument is formalised and the rest is not.  A theorem whose own
 statement is conditional is formalised exactly as stated; the results listed
 here are asserted unconditionally.
+
+The concordance below is pinned to an earlier checkpoint and records the
+total-variation version of the degree-seven counterexample.  The stronger
+Hausdorff-measure theorem and the exact Formal Conjectures negation are linked
+in Section~\ref{sec:problem}; the earlier Comparator receipt does not review
+those later declarations.
 
 % The exact former declaration list is retained in the editorial transfer archive.
 % Part: extended record

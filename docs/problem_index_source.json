@@ -650,10 +650,11 @@
       "erdos_number": 1041,
       "short_title": "Short connections inside polynomial lemniscates",
       "status": "open",
-      "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.",
+      "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded.",
       "directory": "lean/ErdosProblems/Erdos1041",
-      "principal_module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+      "principal_module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
       "companion_modules": [
+        "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
         "ErdosProblems.Erdos1041.NewtonFlowRaySeparation"
       ],
       "note_artifact_id": "erdos_1041_note",
@@ -685,10 +686,14 @@
         {
           "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
           "declaration": "erdos1041_ani_degree_seven"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+          "declaration": "erdos1041_hausdorff_negation"
         }
       ],
       "what_is_checked": [
-        "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.",
+        "For ani's explicit monic degree-seven polynomial with distinct roots in the open unit disc, every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than two. Lean refutes the exact Formal Conjectures path-image-length statement and also checks the total-variation bound.",
         "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.",
         "The exponentially rescaled polynomial value is a first integral, so the value of a Newton trajectory remains on one oriented ray.",
         "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
@@ -697,8 +702,8 @@
         "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
       ],
       "what_is_not_checked": [
-        "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation.",
-        "Independent human review adjudicating whether the checked total-variation formulation exactly represents the historical question.",
+        "The full small-parameter family reported by ani; only one explicit polynomial is formalised.",
+        "Independent human review adjudicating whether the exact Formal Conjectures path-image-length statement represents the 1958 curve-length wording.",
         "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
         "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
         "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
@@ -707,7 +712,7 @@
       "open_obligations": [
         {
           "id": "historical_curve_length_correspondence",
-          "statement": "Determine the precise correspondence between the historical curve-length question and the refuted total-variation formulation, including any required Hausdorff-measure comparison and independent human review."
+          "statement": "Independently review correspondence between the 1958 curve-length wording and the refuted Formal Conjectures statement, which measures the one-dimensional Hausdorff measure of the path image."
         },
         {
           "id": "repair_or_refute_saddle_block",

@@ -8,13 +8,15 @@ exposition into further research. Eight Erdős programmes each have a short
 expository paper, a longer research record and associated Lean source. The aim
 is to make results, methods and useful failures understandable enough for
 others to question, extend and reuse.
-**The degree-seven counterexample found by the erdosproblems.com contributor
-ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in
-Lean. The other seven target problems are not resolved here. Independent
-human review of correspondence with the historical curve-length formulation
-has not been recorded. Comparator checks only its selected exact statements,
-configured axioms and kernel acceptance; it does not assess novelty or
-historical correspondence.**
+**Using one degree-seven polynomial constructed by the erdosproblems.com contributor
+ani, Lean proves that every preconnected subset of its strict unit lemniscate
+joining two distinct roots has one-dimensional Hausdorff measure greater than
+two. This refutes the exact path-image-length statement in Formal Conjectures;
+the separate total-variation bound is also checked. The other seven target
+problems are not resolved here. Independent human review of correspondence
+with the 1958 curve-length wording has not been recorded. Comparator checks
+only selected exact statements, axioms and kernel acceptance; it does not
+assess novelty or historical correspondence.**
 
 The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
 
@@ -227,7 +229,7 @@ explains that design.
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 463 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 466 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
 The rest is engineering inventory. About 87% of the 163,066 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 

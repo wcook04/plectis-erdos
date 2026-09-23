@@ -195,28 +195,28 @@ python3 scripts/query_route_memory.py --problem 269
 
 ## Problem 1041
 
-For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.
+For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded.
 
-An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.
+For ani's explicit monic degree-seven polynomial with distinct roots in the open unit disc, every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than two. Lean refutes the exact Formal Conjectures path-image-length statement and also checks the total-variation bound.
 
-The historical curve-length formulation remains an unadjudicated programme target in this registry. The separate checked degree-seven example refutes the universal formulation using total variation of continuous paths in the strict unit lemniscate. No Hausdorff-measure comparison or independent human review of historical correspondence is recorded.
+Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.
 
 [Short paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Read as text](../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md)
 
 [Long record](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
-- Determine the precise correspondence between the historical curve-length question and the refuted total-variation formulation, including any required Hausdorff-measure comparison and independent human review.
+- Independently review correspondence between the 1958 curve-length wording and the refuted Formal Conjectures statement, which measures the one-dimensional Hausdorff measure of the path image.
 - The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality.
 - Construct and verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses, as auxiliary structure for restricted families or a correspondence-adjusted historical formulation. It does not imply a universal sub-two total-variation connector.
 - The degree-seven counterexample rules out universal total-variation gluing below two. For a stated restricted family or different historical length notion, derive a metric gluing inequality with all positive attachment costs explicit; the false printed 1/(2π) coefficient may not be retained.
 - Given a polynomial/component and an already selected connector with explicit strict slack, quantify a two-stage perturbation preserving roots, that component, collars, ray separation, and the stated slack. No universal existence or sub-two conclusion is asserted.
 - Under explicit relative component, saddle, and corrected metric hypotheses, derive the corresponding root-to-root Newton-flow connector. The theorem must state its restricted hypotheses and cannot imply a sub-two total-variation connector for every polynomial.
 
-[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+For+a+monic+polynomial+whose+roots+lie+in+the+open+unit+disc%2C+must+two+roots+be+joinable+by+a+curve+of+length+less+than+two+inside+the+open+unit+lemniscate%3F+The+registry+has+not+adjudicated+whether+the+checked+total-variation+formulation+exactly+matches+this+historical+curve-length+question.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+For+a+monic+polynomial+whose+roots+lie+in+the+open+unit+disc%2C+must+two+roots+be+joinable+by+a+curve+of+length+less+than+two+inside+the+open+unit+lemniscate%3F+Lean+refutes+the+exact+Formal+Conjectures+path-image-length+statement+using+ani%27s+degree-seven+polynomial%3B+independent+review+of+correspondence+with+the+1958+wording+is+not+recorded.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 

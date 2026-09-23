@@ -31,7 +31,7 @@ sources:
     license: "CC-BY-4.0"
     author_endorsement: "n/a"
 status:
-  scope: "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
+  scope: "Using the degree-seven polynomial constructed by the erdosproblems.com contributor ani, Lean proves that every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure greater than two. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. The other seven targets remain open. Independent human review of correspondence with the 1958 wording has not been recorded. Comparator checks only selected exact statements, axioms and kernel acceptance; it does not assess novelty or historical correspondence."
   proof_corpus_sorry_count: 0
   sorry_count: 8
   sorry_in_definitions: 0
@@ -947,7 +947,7 @@ review:
   reviewers: []
   notes: "self-assessed and agent-checked; no human mathematical peer review is claimed"
 fidelity:
-  divergences: "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
+  divergences: "Using the degree-seven polynomial constructed by the erdosproblems.com contributor ani, Lean proves that every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure greater than two. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. The other seven targets remain open. Independent human review of correspondence with the 1958 wording has not been recorded. Comparator checks only selected exact statements, axioms and kernel acceptance; it does not assess novelty or historical correspondence."
 alignment:
   namespace: "Erdos249257.ExternalVerification"
   statements:
@@ -1713,8 +1713,8 @@ external_verification:
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
-      checked_frontier: "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation."
-      open_frontier: "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation."
+      checked_frontier: "For ani's explicit monic degree-seven polynomial with distinct roots in the open unit disc, every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than two. Lean refutes the exact Formal Conjectures path-image-length statement and also checks the total-variation bound."
+      open_frontier: "The full small-parameter family reported by ani; only one explicit polynomial is formalised."
       claim_registry_status: "registered_declarations"
       research_frontier:
         directory: "research_corpus/Erdos1041"

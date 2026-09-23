@@ -2,7 +2,7 @@
 # Plectis verification: eight Erdős problem programmes
 
 > [!IMPORTANT]
-> **Status boundary:** The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.
+> **Status boundary:** Using the degree-seven polynomial constructed by the erdosproblems.com contributor ani, Lean proves that every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure greater than two. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. The other seven targets remain open. Independent human review of correspondence with the 1958 wording has not been recorded. Comparator checks only selected exact statements, axioms and kernel acceptance; it does not assess novelty or historical correspondence.
 > **Review posture:** Self-assessed and agent-checked; no human mathematical peer review is claimed.
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight Erdős problem programmes. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
@@ -1183,11 +1183,11 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-1041"></a>
 ## #1041: Short connections inside polynomial lemniscates
 
-**Question.** For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.
+**Question.** For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded.
 
-**Checked frontier.** An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.
+**Checked frontier.** For ani's explicit monic degree-seven polynomial with distinct roots in the open unit disc, every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than two. Lean refutes the exact Formal Conjectures path-image-length statement and also checks the total-variation bound.
 
-**Open boundary.** A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation.
+**Open boundary.** The full small-parameter family reported by ani; only one explicit polynomial is formalised.
 
 **Read.** [Programme paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Lean source](../lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
 
