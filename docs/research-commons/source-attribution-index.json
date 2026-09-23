@@ -59930,13 +59930,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdosgraham1980",
         "kind": "bibliography_entry",
-        "line_end": 812,
-        "line_start": 809,
+        "line_end": 815,
+        "line_start": 812,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{erdos1988} Paul Erd\\H{o}s, \\emph{On the irrationality of certain series: problems and results}, in \\emph{New Advances in Transcendence Theory}, Cambridge University Press (1988), 102--109, \\href{https://doi.org/10.1017/CBO9780511897184.009}{doi:\\nolinkurl{10.1017/CBO9780511897184.009}}.",
@@ -59954,13 +59954,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1988",
         "kind": "bibliography_entry",
-        "line_end": 815,
-        "line_start": 812,
+        "line_end": 818,
+        "line_start": 815,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{erdos1974letter} Paul Erd\\H{o}s, \\emph{Letter to the Editor}, Fibonacci Quarterly \\textbf{12}, no.~4 (1974), 335, \\href{https://www.fq.math.ca/Scanned/12-4/letter.pdf}{source}.",
@@ -59976,21 +59976,21 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1974letter",
         "kind": "bibliography_entry",
-        "line_end": 818,
-        "line_start": 815,
+        "line_end": 821,
+        "line_start": 818,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-22aba734190d65",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{erdosproblems} Thomas F. Bloom, \\emph{Erd\\H{o}s Problem \\#269} (2026), \\href{https://www.erdosproblems.com/269}{source}. Catalogue snapshot cited in the supplied manuscript: 28 July 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 649,
-            "line_start": 649,
+            "line_end": 651,
+            "line_start": 651,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -59998,13 +59998,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdosproblems",
         "kind": "bibliography_entry",
-        "line_end": 821,
-        "line_start": 818,
+        "line_end": 824,
+        "line_start": 821,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{bugeaudlaurent2023} Yann Bugeaud and Michel Laurent, \\emph{Transcendence and continued fraction expansion of values of Hecke--Mahler series}, Acta Arithmetica \\textbf{209} (2023), 59--90, \\href{https://doi.org/10.4064/aa220323-18-1}{doi:\\nolinkurl{10.4064/aa220323-18-1}}; arXiv:\\href{https://arxiv.org/abs/2203.12901}{2203.12901}.",
@@ -60022,13 +60022,13 @@
         "equivalent_source_coordinates": [],
         "key": "bugeaudlaurent2023",
         "kind": "bibliography_entry",
-        "line_end": 824,
-        "line_start": 821,
+        "line_end": 827,
+        "line_start": 824,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-b9d7160919621f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{loxtonvdp1977} John H. Loxton and Alfred J. van der Poorten, \\emph{Arithmetic properties of certain functions in several variables III}, Bulletin of the Australian Mathematical Society \\textbf{16} (1977), 15--47, \\href{https://doi.org/10.1017/S0004972700022978}{doi:\\nolinkurl{10.1017/S0004972700022978}}.",
@@ -60046,13 +60046,13 @@
         "equivalent_source_coordinates": [],
         "key": "loxtonvdp1977",
         "kind": "bibliography_entry",
-        "line_end": 827,
-        "line_start": 824,
+        "line_end": 830,
+        "line_start": 827,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-fcf73a15ff9c7c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{fan2026comment} Steve Fan, \\emph{Comment on Erd\\H{o}s Problem \\#269, thread 269, post 7218} (2026), \\href{https://www.erdosproblems.com/forum/thread/269#post-7218}{source}. 26 June 2026, thread 269, post 7218; priority retained from the supplied record.",
@@ -60075,13 +60075,13 @@
         "equivalent_source_coordinates": [],
         "key": "fan2026comment",
         "kind": "bibliography_entry",
-        "line_end": 830,
-        "line_start": 827,
+        "line_end": 833,
+        "line_start": 830,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{erdosstraus1974} Paul Erd\\H{o}s and Ernst G. Straus, \\emph{On the irrationality of certain series}, Pacific Journal of Mathematics \\textbf{55}, no.~1 (1974), 85--92, \\href{https://doi.org/10.2140/pjm.1974.55.85}{doi:\\nolinkurl{10.2140/pjm.1974.55.85}}.",
@@ -60099,13 +60099,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdosstraus1974",
         "kind": "bibliography_entry",
-        "line_end": 833,
-        "line_start": 830,
+        "line_end": 836,
+        "line_start": 833,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{hancltijdeman2004} Jaroslav Han\\v{c}l and Robert Tijdeman, \\emph{On the irrationality of Cantor and Ahmes series}, Publicationes Mathematicae Debrecen \\textbf{65}, no.~3--4 (2004), 371--380, \\href{https://doi.org/10.5486/PMD.2004.3254}{doi:\\nolinkurl{10.5486/PMD.2004.3254}}.",
@@ -60123,21 +60123,21 @@
         "equivalent_source_coordinates": [],
         "key": "hancltijdeman2004",
         "kind": "bibliography_entry",
-        "line_end": 836,
-        "line_start": 833,
+        "line_end": 839,
+        "line_start": 836,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-1a7535a5e17a8c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{erdostaylor1957} Paul Erd\\H{o}s and S. James Taylor, \\emph{On the set of points of convergence of a lacunary trigonometric series and the equidistribution properties of related sequences}, Proceedings of the London Mathematical Society \\textbf{s3-7}, no.~1 (1957), 598--615, \\href{https://doi.org/10.1112/plms/s3-7.1.598}{doi:\\nolinkurl{10.1112/plms/s3-7.1.598}}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 693,
-            "line_start": 693,
+            "line_end": 696,
+            "line_start": 696,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": [
               "Theorem~1, p.~600"
@@ -60147,21 +60147,21 @@
         "equivalent_source_coordinates": [],
         "key": "erdostaylor1957",
         "kind": "bibliography_entry",
-        "line_end": 839,
-        "line_start": 836,
+        "line_end": 842,
+        "line_start": 839,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-62ee65065db497",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{fan2026strongly} Steve Fan, \\emph{Strongly complete sets and a conjecture of Erd\\H{o}s} (2026), \\href{https://arxiv.org/abs/2607.14071v1}{source}; arXiv:\\href{https://arxiv.org/abs/2607.14071}{2607.14071}. The cited Lemma~3.1 is in arXiv v1, 15 July 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 694,
-            "line_start": 694,
+            "line_end": 697,
+            "line_start": 697,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": [
               "Lemma~3.1, p.~7"
@@ -60171,21 +60171,21 @@
         "equivalent_source_coordinates": [],
         "key": "fan2026strongly",
         "kind": "bibliography_entry",
-        "line_end": 842,
-        "line_start": 839,
+        "line_end": 845,
+        "line_start": 842,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-71fb76f6e1363b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{hancltijdeman2008} Jaroslav Han\\v{c}l and Robert Tijdeman, \\emph{On the irrationality of polynomial Cantor series}, Acta Arithmetica \\textbf{133}, no.~1 (2008), 37--52, \\href{https://doi.org/10.4064/aa133-1-3}{doi:\\nolinkurl{10.4064/aa133-1-3}}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 696,
-            "line_start": 696,
+            "line_end": 699,
+            "line_start": 699,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": [
               "Theorems~2.2, 3.1 and 4.2"
@@ -60195,21 +60195,21 @@
         "equivalent_source_coordinates": [],
         "key": "hancltijdeman2008",
         "kind": "bibliography_entry",
-        "line_end": 845,
-        "line_start": 842,
+        "line_end": 848,
+        "line_start": 845,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-77ddbf43e364f7",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{lucaouaknineworrell2025} Florian Luca, Jo\\\"{e}l Ouaknine and James Worrell, \\emph{Transcendence of Hecke--Mahler Series}, Bulletin of the London Mathematical Society \\textbf{57}, no.~5 (2025), 1360--1368, \\href{https://doi.org/10.1112/blms.70033}{doi:\\nolinkurl{10.1112/blms.70033}}; arXiv:\\href{https://arxiv.org/abs/2412.07908}{2412.07908}. Numbered references use the published article.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 702,
-            "line_start": 702,
+            "line_end": 705,
+            "line_start": 705,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": [
               "Definition~5, Theorems~6 and 8, Claim~10"
@@ -60219,21 +60219,21 @@
         "equivalent_source_coordinates": [],
         "key": "lucaouaknineworrell2025",
         "kind": "bibliography_entry",
-        "line_end": 848,
-        "line_start": 845,
+        "line_end": 851,
+        "line_start": 848,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-29bdada58b414a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{kebis2024echoing} Pavol Kebis, Florian Luca, Jo\\\"{e}l Ouaknine, Andrew Scoones and James Worrell, \\emph{On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words}, in \\emph{51st International Colloquium on Automata, Languages, and Programming (ICALP 2024)}, Leibniz International Proceedings in Informatics \\textbf{297}, Schloss Dagstuhl -- Leibniz-Zentrum f\\\"{u}r Informatik (2024), 144:1--144:15, \\href{https://doi.org/10.4230/LIPIcs.ICALP.2024.144}{doi:\\nolinkurl{10.4230/LIPIcs.ICALP.2024.144}}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 704,
-            "line_start": 704,
+            "line_end": 707,
+            "line_start": 707,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -60241,21 +60241,21 @@
         "equivalent_source_coordinates": [],
         "key": "kebis2024echoing",
         "kind": "bibliography_entry",
-        "line_end": 851,
-        "line_start": 848,
+        "line_end": 854,
+        "line_start": 851,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-7a9657920d576b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{tijdemanmeijer1974} Robert Tijdeman and H. G. Meijer, \\emph{On integers generated by a finite number of fixed primes}, Compositio Mathematica \\textbf{29}, no.~3 (1974), 273--286, \\href{https://www.numdam.org/article/CM_1974__29_3_273_0.pdf}{source}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 710,
-            "line_start": 710,
+            "line_end": 713,
+            "line_start": 713,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -60263,21 +60263,21 @@
         "equivalent_source_coordinates": [],
         "key": "tijdemanmeijer1974",
         "kind": "bibliography_entry",
-        "line_end": 854,
-        "line_start": 851,
+        "line_end": 857,
+        "line_start": 854,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-ab6d6d6b890f57",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{languasco2025} Alessandro Languasco, Florian Luca, Pieter Moree and Alain Togb\\'{e}, \\emph{Sequences of integers generated by two fixed primes}, Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg \\textbf{95} (2025), 123--148, \\href{https://doi.org/10.1007/s12188-025-00293-9}{doi:\\nolinkurl{10.1007/s12188-025-00293-9}}; arXiv:\\href{https://arxiv.org/abs/2309.12806}{2309.12806}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 710,
-            "line_start": 710,
+            "line_end": 713,
+            "line_start": 713,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -60285,21 +60285,21 @@
         "equivalent_source_coordinates": [],
         "key": "languasco2025",
         "kind": "bibliography_entry",
-        "line_end": 857,
-        "line_start": 854,
+        "line_end": 860,
+        "line_start": 857,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-bbb68df5b83380",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{kovactao2024} Vjekoslav Kova\\v{c} and Terence Tao, \\emph{On several irrationality problems for Ahmes series}, Acta Mathematica Hungarica \\textbf{175} (2025), 572--608, \\href{https://doi.org/10.1007/s10474-025-01528-0}{doi:\\nolinkurl{10.1007/s10474-025-01528-0}}; arXiv:\\href{https://arxiv.org/abs/2406.17593}{2406.17593}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 711,
-            "line_start": 711,
+            "line_end": 714,
+            "line_start": 714,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -60307,21 +60307,21 @@
         "equivalent_source_coordinates": [],
         "key": "kovactao2024",
         "kind": "bibliography_entry",
-        "line_end": 860,
-        "line_start": 857,
+        "line_end": 863,
+        "line_start": 860,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{afperdosstraus2020} Angeliki Koutsoukou-Argyraki and Wenda Li, \\emph{Irrationality Criteria for Series by Erd\\H{o}s and Straus}, Archive of Formal Proofs (2020), \\href{https://isa-afp.org/entries/Irrational_Series_Erdos_Straus.html}{source}. Entry dated 12 May 2020; proof-document version consulted: 6 February 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 698,
-            "line_start": 698,
+            "line_end": 701,
+            "line_start": 701,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -60329,21 +60329,21 @@
         "equivalent_source_coordinates": [],
         "key": "afperdosstraus2020",
         "kind": "bibliography_entry",
-        "line_end": 863,
-        "line_start": 860,
+        "line_end": 866,
+        "line_start": 863,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-c6e97d89c9fa5f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{adamczewskibugeaud2007} Boris Adamczewski and Yann Bugeaud, \\emph{On the complexity of algebraic numbers I. Expansions in integer bases}, Annals of Mathematics \\textbf{165}, no.~2 (2007), 547--565, \\href{https://doi.org/10.4007/annals.2007.165.547}{doi:\\nolinkurl{10.4007/annals.2007.165.547}}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 705,
-            "line_start": 705,
+            "line_end": 708,
+            "line_start": 708,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": [
               "Theorem~1"
@@ -60353,21 +60353,21 @@
         "equivalent_source_coordinates": [],
         "key": "adamczewskibugeaud2007",
         "kind": "bibliography_entry",
-        "line_end": 867,
-        "line_start": 863,
+        "line_end": 870,
+        "line_start": 866,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-7c8ba4ea6eea79",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{adamczewskifaverjon2026} Boris Adamczewski and Colin Faverjon, \\emph{Mahler's method in several variables and finite automata}, Annals of Mathematics \\textbf{204}, no.~2 (2026), 455--533, \\href{https://doi.org/10.4007/annals.2026.204.2.1}{doi:\\nolinkurl{10.4007/annals.2026.204.2.1}}. Online 13 September 2026; locators here refer to the \\href{https://faverjon.perso.math.cnrs.fr/AdamczewskiFaverjon_MahlerFiniteAutomata.pdf}{68-page author manuscript}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 706,
-            "line_start": 706,
+            "line_end": 709,
+            "line_start": 709,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "qualifiers": []
           }
@@ -60375,13 +60375,13 @@
         "equivalent_source_coordinates": [],
         "key": "adamczewskifaverjon2026",
         "kind": "bibliography_entry",
-        "line_end": 873,
-        "line_start": 867,
+        "line_end": 876,
+        "line_start": 870,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "source_id": "source-eaeb7980382323",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_text": "\\bibitem{erdos1988} Paul Erd{\\H o}s. \\href{https://doi.org/10.1017/CBO9780511897184.009}{On the irrationality of certain series: problems and results}. In Alan Baker (ed.), \\emph{New Advances in Transcendence Theory}, Cambridge University Press (1988), pp.~102--109.",
@@ -95435,7 +95435,7 @@
         ],
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95451,7 +95451,7 @@
         ],
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95465,7 +95465,7 @@
         "qualifiers": [],
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95479,7 +95479,7 @@
         "qualifiers": [],
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95495,7 +95495,7 @@
         ],
         "source_id": "source-b9d7160919621f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95511,7 +95511,7 @@
         ],
         "source_id": "source-fcf73a15ff9c7c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95525,7 +95525,7 @@
         "qualifiers": [],
         "source_id": "source-22aba734190d65",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95541,7 +95541,7 @@
         ],
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -95557,29 +95557,29 @@
         ],
         "source_id": "source-1a7535a5e17a8c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "erdosproblems",
         "kind": "citation_usage",
-        "line_end": 649,
-        "line_start": 649,
+        "line_end": 651,
+        "line_start": 651,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "erdostaylor1957",
         "kind": "citation_usage",
-        "line_end": 693,
-        "line_start": 693,
+        "line_end": 696,
+        "line_start": 696,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [
@@ -95587,15 +95587,15 @@
         ],
         "source_id": "source-62ee65065db497",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "fan2026strongly",
         "kind": "citation_usage",
-        "line_end": 694,
-        "line_start": 694,
+        "line_end": 697,
+        "line_start": 697,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [
@@ -95603,15 +95603,15 @@
         ],
         "source_id": "source-71fb76f6e1363b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "hancltijdeman2008",
         "kind": "citation_usage",
-        "line_end": 696,
-        "line_start": 696,
+        "line_end": 699,
+        "line_start": 699,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [
@@ -95619,29 +95619,29 @@
         ],
         "source_id": "source-77ddbf43e364f7",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "afperdosstraus2020",
         "kind": "citation_usage",
-        "line_end": 698,
-        "line_start": 698,
+        "line_end": 701,
+        "line_start": 701,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "source-c6e97d89c9fa5f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "lucaouaknineworrell2025",
         "kind": "citation_usage",
-        "line_end": 702,
-        "line_start": 702,
+        "line_end": 705,
+        "line_start": 705,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [
@@ -95649,29 +95649,29 @@
         ],
         "source_id": "source-29bdada58b414a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "kebis2024echoing",
         "kind": "citation_usage",
-        "line_end": 704,
-        "line_start": 704,
+        "line_end": 707,
+        "line_start": 707,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "source-7a9657920d576b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "adamczewskibugeaud2007",
         "kind": "citation_usage",
-        "line_end": 705,
-        "line_start": 705,
+        "line_end": 708,
+        "line_start": 708,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [
@@ -95679,63 +95679,63 @@
         ],
         "source_id": "source-7c8ba4ea6eea79",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "adamczewskifaverjon2026",
         "kind": "citation_usage",
-        "line_end": 706,
-        "line_start": 706,
+        "line_end": 709,
+        "line_start": 709,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "source-eaeb7980382323",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "languasco2025",
         "kind": "citation_usage",
-        "line_end": 710,
-        "line_start": 710,
+        "line_end": 713,
+        "line_start": 713,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "source-bbb68df5b83380",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "tijdemanmeijer1974",
         "kind": "citation_usage",
-        "line_end": 710,
-        "line_start": 710,
+        "line_end": 713,
+        "line_start": 713,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "source-ab6d6d6b890f57",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "kovactao2024",
         "kind": "citation_usage",
-        "line_end": 711,
-        "line_start": 711,
+        "line_end": 714,
+        "line_start": 714,
         "paper_id": "erdos-269-three-prime-running-lcm",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "qualifiers": [],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+        "source_sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
       },
       {
         "citation_context": "in_text_citation",
@@ -114902,7 +114902,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:a1d57dfa28f55f6a6237fc6c7106416576063dacb64b58d551eb01de635e7c2c",
+  "source_registry_sha256": "sha256:7def6e5bb814e5a04885cd6948afa26c2cd1c94504e2f3cff198429c07fbc882",
   "sources": [
     {
       "artifact_coordinates": [],
@@ -116617,10 +116617,10 @@
         {
           "excerpt_sha256": "sha256:29dac9d4258d940e744c9f183d2563013f54887e62491308cf386e555621ff55",
           "expected_text": "\\bibitem{erdosproblems}",
-          "line_end": 821,
-          "line_start": 818,
+          "line_end": 824,
+          "line_start": 821,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed",
@@ -116884,8 +116884,8 @@
         {
           "excerpt_sha256": "sha256:29dac9d4258d940e744c9f183d2563013f54887e62491308cf386e555621ff55",
           "expected_text": "\\bibitem{erdosproblems}",
-          "line_end": 821,
-          "line_start": 818,
+          "line_end": 824,
+          "line_start": 821,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -120620,10 +120620,10 @@
         {
           "excerpt_sha256": "sha256:8466f5a9dd4ced1a4f291d5d67e847f3b2fca1cf34f259ca712ff23fe61bbc42",
           "expected_text": "\\bibitem{erdosgraham1980}",
-          "line_end": 812,
-          "line_start": 809,
+          "line_end": 815,
+          "line_start": 812,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:851267bb83e0426f3dc46e58eca0ec223ffefbf930eeba52eeeccf56d165f807",
@@ -120748,8 +120748,8 @@
         {
           "excerpt_sha256": "sha256:8466f5a9dd4ced1a4f291d5d67e847f3b2fca1cf34f259ca712ff23fe61bbc42",
           "expected_text": "\\bibitem{erdosgraham1980}",
-          "line_end": 812,
-          "line_start": 809,
+          "line_end": 815,
+          "line_start": 812,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -122649,10 +122649,10 @@
         {
           "excerpt_sha256": "sha256:102b617cbf408f358626ce785399d55baf63d64228a12995ce76a5747cad8bfb",
           "expected_text": "\\bibitem{hancltijdeman2004}",
-          "line_end": 836,
-          "line_start": 833,
+          "line_end": 839,
+          "line_start": 836,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:d7d4cedfe807acd8fbf6994b4c4ea185099dead717184730b0485ff8e4adf7fe",
@@ -122675,8 +122675,8 @@
         {
           "excerpt_sha256": "sha256:102b617cbf408f358626ce785399d55baf63d64228a12995ce76a5747cad8bfb",
           "expected_text": "\\bibitem{hancltijdeman2004}",
-          "line_end": 836,
-          "line_start": 833,
+          "line_end": 839,
+          "line_start": 836,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -123167,10 +123167,10 @@
         {
           "excerpt_sha256": "sha256:cf8585af0cb481ca30a6e5ac45913052ead0e0e5ceae275a06d522f0825578f7",
           "expected_text": "\\bibitem{fan2026comment}",
-          "line_end": 830,
-          "line_start": 827,
+          "line_end": 833,
+          "line_start": 830,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:cf8585af0cb481ca30a6e5ac45913052ead0e0e5ceae275a06d522f0825578f7",
@@ -123220,8 +123220,8 @@
         {
           "excerpt_sha256": "sha256:cf8585af0cb481ca30a6e5ac45913052ead0e0e5ceae275a06d522f0825578f7",
           "expected_text": "\\bibitem{fan2026comment}",
-          "line_end": 830,
-          "line_start": 827,
+          "line_end": 833,
+          "line_start": 830,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -123312,10 +123312,10 @@
         {
           "excerpt_sha256": "sha256:c96fc6ec675af873515b2c54bc711717a8fc43e0ef49d8237f9f330492b2bfa1",
           "expected_text": "\\bibitem{erdos1974letter}",
-          "line_end": 818,
-          "line_start": 815,
+          "line_end": 821,
+          "line_start": 818,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:c96fc6ec675af873515b2c54bc711717a8fc43e0ef49d8237f9f330492b2bfa1",
@@ -123344,8 +123344,8 @@
         {
           "excerpt_sha256": "sha256:c96fc6ec675af873515b2c54bc711717a8fc43e0ef49d8237f9f330492b2bfa1",
           "expected_text": "\\bibitem{erdos1974letter}",
-          "line_end": 818,
-          "line_start": 815,
+          "line_end": 821,
+          "line_start": 818,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -124378,10 +124378,10 @@
         {
           "excerpt_sha256": "sha256:c38b879eb5217d10f2aed8b52d4612ade541384e4d3e5da0fc7060cf204a573b",
           "expected_text": "\\bibitem{lucaouaknineworrell2025}",
-          "line_end": 848,
-          "line_start": 845,
+          "line_end": 851,
+          "line_start": 848,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:c38b879eb5217d10f2aed8b52d4612ade541384e4d3e5da0fc7060cf204a573b",
@@ -124404,8 +124404,8 @@
         {
           "excerpt_sha256": "sha256:c38b879eb5217d10f2aed8b52d4612ade541384e4d3e5da0fc7060cf204a573b",
           "expected_text": "\\bibitem{lucaouaknineworrell2025}",
-          "line_end": 848,
-          "line_start": 845,
+          "line_end": 851,
+          "line_start": 848,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -128791,10 +128791,10 @@
         {
           "excerpt_sha256": "sha256:9c3c5db10d94904b54c40a45565db137f38253e6cc98c36fb7f0446f37302911",
           "expected_text": "\\bibitem{kovactao2024}",
-          "line_end": 860,
-          "line_start": 857,
+          "line_end": 863,
+          "line_start": 860,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         }
       ],
       "artifact_links": [
@@ -129002,8 +129002,8 @@
         {
           "excerpt_sha256": "sha256:9c3c5db10d94904b54c40a45565db137f38253e6cc98c36fb7f0446f37302911",
           "expected_text": "\\bibitem{kovactao2024}",
-          "line_end": 860,
-          "line_start": 857,
+          "line_end": 863,
+          "line_start": 860,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         }
       ],
@@ -132435,10 +132435,10 @@
         {
           "excerpt_sha256": "sha256:a90c5dfbfb8e145cf527f538fca7dae79167bd3b9090eb55e85806bc4d0edba4",
           "expected_text": "\\bibitem{erdostaylor1957}",
-          "line_end": 839,
-          "line_start": 836,
+          "line_end": 842,
+          "line_start": 839,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:a90c5dfbfb8e145cf527f538fca7dae79167bd3b9090eb55e85806bc4d0edba4",
@@ -132461,8 +132461,8 @@
         {
           "excerpt_sha256": "sha256:a90c5dfbfb8e145cf527f538fca7dae79167bd3b9090eb55e85806bc4d0edba4",
           "expected_text": "\\bibitem{erdostaylor1957}",
-          "line_end": 839,
-          "line_start": 836,
+          "line_end": 842,
+          "line_start": 839,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -135127,10 +135127,10 @@
         {
           "excerpt_sha256": "sha256:89365f17cd5c9375bfee104214e4355cd14808bfdc25bae5d0d57d71698246ad",
           "expected_text": "\\bibitem{fan2026strongly}",
-          "line_end": 842,
-          "line_start": 839,
+          "line_end": 845,
+          "line_start": 842,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:4fd45772ff7add1f64a2a0aceb707abf3ec134b84b8189985e359c4a31876a7b",
@@ -135151,10 +135151,10 @@
         {
           "excerpt_sha256": "sha256:38bc71f698002b6838a9f3a313c1ae74f93d90a94f65db0715526a6b8d4b3506",
           "expected_text": "{fan2026strongly}",
-          "line_end": 694,
-          "line_start": 694,
+          "line_end": 697,
+          "line_start": 697,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         }
       ],
       "artifact_links": [
@@ -135168,8 +135168,8 @@
         {
           "excerpt_sha256": "sha256:89365f17cd5c9375bfee104214e4355cd14808bfdc25bae5d0d57d71698246ad",
           "expected_text": "\\bibitem{fan2026strongly}",
-          "line_end": 842,
-          "line_start": 839,
+          "line_end": 845,
+          "line_start": 842,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -135189,8 +135189,8 @@
         {
           "excerpt_sha256": "sha256:38bc71f698002b6838a9f3a313c1ae74f93d90a94f65db0715526a6b8d4b3506",
           "expected_text": "{fan2026strongly}",
-          "line_end": 694,
-          "line_start": 694,
+          "line_end": 697,
+          "line_start": 697,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         }
       ],
@@ -136218,10 +136218,10 @@
         {
           "excerpt_sha256": "sha256:45604844b23b875721c499f1d941719928dcc2b6bb269b97c8564702e5d3051b",
           "expected_text": "\\bibitem{hancltijdeman2008}",
-          "line_end": 845,
-          "line_start": 842,
+          "line_end": 848,
+          "line_start": 845,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:45604844b23b875721c499f1d941719928dcc2b6bb269b97c8564702e5d3051b",
@@ -136265,8 +136265,8 @@
         {
           "excerpt_sha256": "sha256:45604844b23b875721c499f1d941719928dcc2b6bb269b97c8564702e5d3051b",
           "expected_text": "\\bibitem{hancltijdeman2008}",
-          "line_end": 845,
-          "line_start": 842,
+          "line_end": 848,
+          "line_start": 845,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -136812,10 +136812,10 @@
         {
           "excerpt_sha256": "sha256:b9e2249bc4d01297697400d9029b3c8e7883b75d69de50546f4bde27319bc74f",
           "expected_text": "\\bibitem{kebis2024echoing}",
-          "line_end": 851,
-          "line_start": 848,
+          "line_end": 854,
+          "line_start": 851,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:b9e2249bc4d01297697400d9029b3c8e7883b75d69de50546f4bde27319bc74f",
@@ -136838,8 +136838,8 @@
         {
           "excerpt_sha256": "sha256:b9e2249bc4d01297697400d9029b3c8e7883b75d69de50546f4bde27319bc74f",
           "expected_text": "\\bibitem{kebis2024echoing}",
-          "line_end": 851,
-          "line_start": 848,
+          "line_end": 854,
+          "line_start": 851,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -137052,10 +137052,10 @@
         {
           "excerpt_sha256": "sha256:2d8e8e60c166ca01ea9461e45af9157b2f035c8a50a7d38749db5dbf50c5e728",
           "expected_text": "\\bibitem{adamczewskibugeaud2007}",
-          "line_end": 867,
-          "line_start": 863,
+          "line_end": 870,
+          "line_start": 866,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:ef78f91a2a53616a917a9b8d574a5da55953d5024938b45990e8decb1515b07b",
@@ -137092,8 +137092,8 @@
         {
           "excerpt_sha256": "sha256:2d8e8e60c166ca01ea9461e45af9157b2f035c8a50a7d38749db5dbf50c5e728",
           "expected_text": "\\bibitem{adamczewskibugeaud2007}",
-          "line_end": 867,
-          "line_start": 863,
+          "line_end": 870,
+          "line_start": 866,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -137374,10 +137374,10 @@
         {
           "excerpt_sha256": "sha256:38cd73fc723cb87858bf5ad1ff85bc3a6aed38bc336429f816ee84816442c7d9",
           "expected_text": "\\bibitem{erdosstraus1974}",
-          "line_end": 833,
-          "line_start": 830,
+          "line_end": 836,
+          "line_start": 833,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:38cd73fc723cb87858bf5ad1ff85bc3a6aed38bc336429f816ee84816442c7d9",
@@ -137514,8 +137514,8 @@
         {
           "excerpt_sha256": "sha256:38cd73fc723cb87858bf5ad1ff85bc3a6aed38bc336429f816ee84816442c7d9",
           "expected_text": "\\bibitem{erdosstraus1974}",
-          "line_end": 833,
-          "line_start": 830,
+          "line_end": 836,
+          "line_start": 833,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -143020,10 +143020,10 @@
         {
           "excerpt_sha256": "sha256:56c3313573f1c66b97e759caddfa08857ff02beecce742ca74aa60516751dfb8",
           "expected_text": "\\bibitem{tijdemanmeijer1974}",
-          "line_end": 854,
-          "line_start": 851,
+          "line_end": 857,
+          "line_start": 854,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:56c3313573f1c66b97e759caddfa08857ff02beecce742ca74aa60516751dfb8",
@@ -143046,8 +143046,8 @@
         {
           "excerpt_sha256": "sha256:56c3313573f1c66b97e759caddfa08857ff02beecce742ca74aa60516751dfb8",
           "expected_text": "\\bibitem{tijdemanmeijer1974}",
-          "line_end": 854,
-          "line_start": 851,
+          "line_end": 857,
+          "line_start": 854,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -144760,10 +144760,10 @@
         {
           "excerpt_sha256": "sha256:a170cdfc562020c04faf65c58a81863df6e925b08eae36eba6e3fe186dbf1eb0",
           "expected_text": "\\bibitem{erdos1988}",
-          "line_end": 815,
-          "line_start": 812,
+          "line_end": 818,
+          "line_start": 815,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:46dc589925f18c98a38b701dc32978cf7bf47298f8b19fc97e2d6eb3b37ddaf2",
@@ -144945,8 +144945,8 @@
         {
           "excerpt_sha256": "sha256:a170cdfc562020c04faf65c58a81863df6e925b08eae36eba6e3fe186dbf1eb0",
           "expected_text": "\\bibitem{erdos1988}",
-          "line_end": 815,
-          "line_start": 812,
+          "line_end": 818,
+          "line_start": 815,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -146458,10 +146458,10 @@
         {
           "excerpt_sha256": "sha256:3566f4017e8d66bd416398ee1ff4829b468fbfc27cdd460a22f7d3c1443a3892",
           "expected_text": "\\bibitem{bugeaudlaurent2023}",
-          "line_end": 824,
-          "line_start": 821,
+          "line_end": 827,
+          "line_start": 824,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:3566f4017e8d66bd416398ee1ff4829b468fbfc27cdd460a22f7d3c1443a3892",
@@ -146497,8 +146497,8 @@
         {
           "excerpt_sha256": "sha256:3566f4017e8d66bd416398ee1ff4829b468fbfc27cdd460a22f7d3c1443a3892",
           "expected_text": "\\bibitem{bugeaudlaurent2023}",
-          "line_end": 824,
-          "line_start": 821,
+          "line_end": 827,
+          "line_start": 824,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -146697,10 +146697,10 @@
         {
           "excerpt_sha256": "sha256:4882a3b299d75653e0733b29ff553b0c30bef3f7e4584c239baa2dc69d719f05",
           "expected_text": "\\bibitem{languasco2025}",
-          "line_end": 857,
-          "line_start": 854,
+          "line_end": 860,
+          "line_start": 857,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:d2de58d8a1aef218af5e1cbe7a8d2d2e6c1b7fa33cca90bcee80d5265ac4b37f",
@@ -146723,8 +146723,8 @@
         {
           "excerpt_sha256": "sha256:4882a3b299d75653e0733b29ff553b0c30bef3f7e4584c239baa2dc69d719f05",
           "expected_text": "\\bibitem{languasco2025}",
-          "line_end": 857,
-          "line_start": 854,
+          "line_end": 860,
+          "line_start": 857,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -147278,10 +147278,10 @@
         {
           "excerpt_sha256": "sha256:997988654d9ef70ccc079da055de714cc3514f6ed4822ee4b84eab7c073da669",
           "expected_text": "\\bibitem{afperdosstraus2020}",
-          "line_end": 863,
-          "line_start": 860,
+          "line_end": 866,
+          "line_start": 863,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         }
       ],
       "artifact_links": [
@@ -147323,8 +147323,8 @@
         {
           "excerpt_sha256": "sha256:997988654d9ef70ccc079da055de714cc3514f6ed4822ee4b84eab7c073da669",
           "expected_text": "\\bibitem{afperdosstraus2020}",
-          "line_end": 863,
-          "line_start": 860,
+          "line_end": 866,
+          "line_start": 863,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         }
       ],
@@ -151348,10 +151348,10 @@
         {
           "excerpt_sha256": "sha256:f0b413584f891c1a725c23699a9efae2e7cbaba89e97347422243d21325f0020",
           "expected_text": "\\bibitem{adamczewskifaverjon2026}",
-          "line_end": 873,
-          "line_start": 867,
+          "line_end": 876,
+          "line_start": 870,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:f0b413584f891c1a725c23699a9efae2e7cbaba89e97347422243d21325f0020",
@@ -151374,8 +151374,8 @@
         {
           "excerpt_sha256": "sha256:f0b413584f891c1a725c23699a9efae2e7cbaba89e97347422243d21325f0020",
           "expected_text": "\\bibitem{adamczewskifaverjon2026}",
-          "line_end": 873,
-          "line_start": 867,
+          "line_end": 876,
+          "line_start": 870,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {
@@ -153678,10 +153678,10 @@
         {
           "excerpt_sha256": "sha256:c0c58cb7c064ff51cdf457f20ba15d04a78eb43f30bbf3764f9162de257e6a00",
           "expected_text": "\\bibitem{loxtonvdp1977}",
-          "line_end": 827,
-          "line_start": 824,
+          "line_end": 830,
+          "line_start": 827,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "sha256": "sha256:bc1d183a2accf273b46c64c014c1f9f0b3c5f0d009a7548d0dec6632094d6726"
+          "sha256": "sha256:4094d3936e1c1e919520724c8602eaff04f585590c1b6d04b66c70df68ec4991"
         },
         {
           "excerpt_sha256": "sha256:c0c58cb7c064ff51cdf457f20ba15d04a78eb43f30bbf3764f9162de257e6a00",
@@ -153717,8 +153717,8 @@
         {
           "excerpt_sha256": "sha256:c0c58cb7c064ff51cdf457f20ba15d04a78eb43f30bbf3764f9162de257e6a00",
           "expected_text": "\\bibitem{loxtonvdp1977}",
-          "line_end": 827,
-          "line_start": 824,
+          "line_end": 830,
+          "line_start": 827,
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
         },
         {

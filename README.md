@@ -17,6 +17,7 @@ infinite support `A` with finite base-two weighted mass
 `∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
 [Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
 or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+Other seven programmes: [results guide](docs/RESULTS.md#problem-by-problem-guide).
 
 Start here: [read the paper](paper/257/erdos-257-mersenne-support-subseries.pdf),
 [run one exact-rational experiment](research/experiments/sparse_interpolation/late_rejection.py),
@@ -91,14 +92,12 @@ still need human judgement; corpus counts are navigation counts, not novelty cla
 
 ## Problem papers
 
-For a first look, start with **#257**: a Lean-checked weighted condition makes
-reciprocal Mersenne subseries irrational at every integer base, even for some
-supports whose reciprocal sum diverges. A simpler checked theorem covers every
-infinite support $A$ with $\sum_{a\in A}1/a<\infty$; Erdős stated that
-extension. The unrestricted support question remains open. Then read **#249**
-for exact ranks of totient kernels, obtained by restricting Euler's totient to
-arithmetic progressions. Each paper separates ordinary proofs, Lean-checked
-results and open questions; the results guide covers all eight programmes.
+For a first look, start with **#257**: Lean checks weighted support conditions
+for irrational reciprocal Mersenne subseries at every integer base, including
+some supports with divergent reciprocal sum. Erdős stated the simpler
+reciprocal-summable extension; Lean checks it here. The unrestricted question
+remains open. **#249** gives exact ranks of totient kernels. Each paper names
+its ordinary proofs, Lean-checked results and open questions.
 
 For a more specialised theorem, **#243** gives irrationality for strictly
 increasing positive integer sequences under the precise cubic-rate hypothesis
