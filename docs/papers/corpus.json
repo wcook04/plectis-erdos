@@ -1117,7 +1117,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:955f629304601022927e88567c55f7660ca02bcbb9537533dbedaefd4454bbcc",
+      "pdf_sha256": "sha256:fdba1a0980d42632460bcc6f4fa1cfb212a06c2d7c1287b134074d65781d5f3f",
       "pdf_byte_count": 457557,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -1371,7 +1371,7 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:0d7461e9463803a500255e5fcfb23ce83559219f3e327c5d6045422235301a7e",
+      "pdf_sha256": "sha256:0ed36a9e695edf14cad59679f0d33652a7333167df969afcbd4167d8c1c7523c",
       "pdf_byte_count": 142706,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1698,7 +1698,7 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:2db6e31f6b93431f9da1df0c70732d38932e5f70b66a073beef4237fefb56dfd",
+      "pdf_sha256": "sha256:46b4945cf7eac486725582787607f0f5562f21ac65682d1d73f076a2a777ac93",
       "pdf_byte_count": 305380,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1895,7 +1895,7 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:29bbe6d04471b1501a71df2a42725360809d139451b60ee920afe713ce2327f3",
+      "pdf_sha256": "sha256:a55321e15e0eac42633177e6572113ed02b0ff354e18f9d1064a25b76881b22a",
       "pdf_byte_count": 144821,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2350,7 +2350,7 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:fc6f335a0f963b3932080c2df3f331033abaa18b8a248e544e6f184cde4cda79",
+      "pdf_sha256": "sha256:bfc39464a1952a3c0dead923231b40d7a8a681d4935cc1a1918ae698225afca3",
       "pdf_byte_count": 401761,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2539,8 +2539,8 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:abc0a6bd21c195b2bb94038ce95c5f9f6007ce5ca0b7e99051f027c1c654a266",
-      "pdf_byte_count": 144915,
+      "pdf_sha256": "sha256:2cc17b37c97ec5f0a778bdbfd771a10d6bb977c258fd866d171aa70ff25897ea",
+      "pdf_byte_count": 144917,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3594,8 +3594,8 @@
       ],
       "citations_rendered": 48,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:231bf0dd6a2c1e9b15d306e6507b403e4db732d8026b0d34c1f5fab371f3ce9f",
-      "pdf_byte_count": 897355,
+      "pdf_sha256": "sha256:665563c429de8144b47ceac8adbcccc36ab92a4e15733c39fd512f663220bd7b",
+      "pdf_byte_count": 897354,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3749,7 +3749,7 @@
       ],
       "citations_rendered": 36,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:d512118f9f9d0361477e802a8ce7064f735a832d14b0a8e633f9f8d7669fa94e",
+      "pdf_sha256": "sha256:2acf5dd6cdb7c847ba4ad6c8e1bbb75b8264dd6a883e347dad98cf299c4fa85d",
       "pdf_byte_count": 125991,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4222,7 +4222,7 @@
       ],
       "citations_rendered": 66,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:3c4a5ea7c5a7bdbacb7695e0d3d50620631be5c0a2a4af6f4cb82ddc2918638f",
+      "pdf_sha256": "sha256:9bc5520587d901778f0ded2a9eb21cece20fc964b2ed6a3e573851f076485feb",
       "pdf_byte_count": 311370,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4527,8 +4527,8 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:95f168afb0ba518cb006c95a2c6472f7a183ce4d6f3f7da578508b745cdf5891",
-      "pdf_byte_count": 176941,
+      "pdf_sha256": "sha256:7c3a9f0e131f3506b297b06c124e238518c29cf224f97f6a12be145f81b09691",
+      "pdf_byte_count": 176943,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5600,7 +5600,7 @@
       ],
       "citations_rendered": 43,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a25f594be618482edbcc4932f92e532a5f26e0a0f7f53160e70ef4c0eab32a46",
+      "pdf_sha256": "sha256:c61671bd3187b28574842a88556cf7475476f40bec6adb92d78aeee5a0d9e071",
       "pdf_byte_count": 936901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -5953,7 +5953,7 @@
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:acf7425d3652d461365dc7d0616fe5b09e6b5f00296bd81abc43aa26d9de9256",
+      "pdf_sha256": "sha256:e788a73f1123502118991cad781d5843bf0cfe564e1f1441448fe1af7433309d",
       "pdf_byte_count": 322660,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6126,7 +6126,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:045a2df983ac9e746d1b1971b9527421216fe96349704b6070c25c88bd201c20",
+      "pdf_sha256": "sha256:26a71ee2f71f1e85be4f58631ab92b8b7c657e0a9e8c3227eafcf3d6154e8570",
       "pdf_byte_count": 122901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6437,8 +6437,8 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:7a93f5bca52c7ae21011285629d5e555e52c84cf54a19f0313ea485813f12b29",
-      "pdf_byte_count": 206034,
+      "pdf_sha256": "sha256:c9a872c5cf064d34b16a2110b3a95a279db06bb085d984323e72e4aab074ed83",
+      "pdf_byte_count": 206036,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6928,7 +6928,7 @@
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8001e67246c93b14d0a219ce4616941c92188052e21e949bd37232d8f5df56bd",
+      "pdf_sha256": "sha256:ab0fdf566fd5467e7e50789c13f41b18e0917181665dc108832661078077b8f7",
       "pdf_byte_count": 453689,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6995,7 +6995,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:7444fdc6ce71c5b49487e0bfc58bdbd974d75918b5e0b7cafee946a551f556b9",
+      "source_sha256": "sha256:6b9be4257d56c1cca8d2879cd762cc063e1646dccf2c7773b2187240f7f61a6d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7195,8 +7195,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:cfdbd910f8116254e1fb646d6f324e23195838e5452306377673d5b8c6de001f",
-      "pdf_byte_count": 164126,
+      "pdf_sha256": "sha256:8d0f47cc2f70c1dd7de4cd619d48ea72a023fc1f2919fa3a667882950e2477cd",
+      "pdf_byte_count": 164536,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7262,7 +7262,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
       "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-      "source_sha256": "sha256:feb1594783aaa4db000596f35cfc4bb09cef6c804455dbe4da84015fd23fc3cf",
+      "source_sha256": "sha256:f7cb4e621d9720c9cb72b0f9b1a4783662a10bd3dc23fbcd94a219f362d35c47",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7417,235 +7417,235 @@
           "level": 4,
           "id": "what-the-sharp-estimate-settles-and-what-it-leaves.",
           "title": "What the sharp estimate settles, and what it leaves.",
-          "line": 1250
+          "line": 1252
         },
         {
           "level": 2,
           "id": "long1049:sec:coefficient-questions",
           "title": "Coefficient moments and cyclotomic content",
-          "line": 1263
+          "line": 1265
         },
         {
           "level": 4,
           "id": "a-positive-expansion-is-not-a-moment-representation.",
           "title": "A positive expansion is not a moment representation.",
-          "line": 1285
+          "line": 1287
         },
         {
           "level": 4,
           "id": "finite-certificates-and-an-all-rank-degree-check.",
           "title": "Finite certificates and an all-rank degree check.",
-          "line": 1301
+          "line": 1303
         },
         {
           "level": 4,
           "id": "a-finite-spectral-consequence.",
           "title": "A finite spectral consequence.",
-          "line": 1337
+          "line": 1339
         },
         {
           "level": 4,
           "id": "formal-continued-fractions-and-finite-quadrature.",
           "title": "Formal continued fractions and finite quadrature.",
-          "line": 1365
+          "line": 1367
         },
         {
           "level": 4,
           "id": "testing-for-additional-cyclotomic-factors.",
           "title": "Testing for additional cyclotomic factors.",
-          "line": 1403
+          "line": 1405
         },
         {
           "level": 1,
           "id": "long1049:sec:primitive",
           "title": "Rescaling integer rows",
-          "line": 1463
+          "line": 1465
         },
         {
           "level": 1,
           "id": "long1049:sec:endpoints",
           "title": "Congruences after evaluation at 3/2",
-          "line": 1523
+          "line": 1525
         },
         {
           "level": 1,
           "id": "long1049:sec:corridor",
           "title": "Failure of the stated clearing conditions at 3/2",
-          "line": 1840
+          "line": 1842
         },
         {
           "level": 4,
           "id": "erd\u0151ss-integer-base-argument-in-outline.",
           "title": "Erd\u0151s\u2019s integer-base argument, in outline.",
-          "line": 1844
+          "line": 1846
         },
         {
           "level": 4,
           "id": "the-direct-cut-and-clear-attempt-studied-here.",
           "title": "The direct cut-and-clear attempt studied here.",
-          "line": 1850
+          "line": 1852
         },
         {
           "level": 1,
           "id": "long1049:sec:tail",
           "title": "Successive scaled remainders",
-          "line": 1951
+          "line": 1953
         },
         {
           "level": 1,
           "id": "long1049:sec:sevenhalves",
           "title": "The height criterion at 7/2",
-          "line": 2027
+          "line": 2029
         },
         {
           "level": 2,
           "id": "the-81200-logarithmic-region",
           "title": "The 81/200 logarithmic region",
-          "line": 2072
+          "line": 2074
         },
         {
           "level": 1,
           "id": "long1049:sec:pade",
           "title": "A denominator-exponent model for Pad\u00e9-type forms",
-          "line": 2098
+          "line": 2100
         },
         {
           "level": 1,
           "id": "long1049:sec:open",
           "title": "Complements and further questions",
-          "line": 2138
+          "line": 2140
         },
         {
           "level": 4,
           "id": "why-the-choice-of-family-matters.",
           "title": "Why the choice of family matters.",
-          "line": 2182
+          "line": 2184
         },
         {
           "level": 2,
           "id": "a-congruence-relation-with-nonzero-remainder",
           "title": "A congruence relation with nonzero remainder",
-          "line": 2206
+          "line": 2208
         },
         {
           "level": 4,
           "id": "selector-spans-and-multiplicities.",
           "title": "Selector spans and multiplicities.",
-          "line": 2287
+          "line": 2289
         },
         {
           "level": 4,
           "id": "the-lattice-after-evaluation.",
           "title": "The lattice after evaluation.",
-          "line": 2297
+          "line": 2299
         },
         {
           "level": 4,
           "id": "the-lattice-spanned-by-the-actual-tails.",
           "title": "The lattice spanned by the actual tails.",
-          "line": 2318
+          "line": 2320
         },
         {
           "level": 2,
           "id": "estimating-the-divided-remainder",
           "title": "Estimating the divided remainder",
-          "line": 2350
+          "line": 2352
         },
         {
           "level": 2,
           "id": "a-restriction-on-mahler-functional-equations",
           "title": "A restriction on Mahler functional equations",
-          "line": 2372
+          "line": 2374
         },
         {
           "level": 2,
           "id": "a-limitation-of-the-rectangular-exponent-model",
           "title": "A limitation of the rectangular exponent model",
-          "line": 2415
+          "line": 2417
         },
         {
           "level": 1,
           "id": "related-work-and-comparison-of-constructions",
           "title": "Related work and comparison of constructions",
-          "line": 2491
+          "line": 2493
         },
         {
           "level": 4,
           "id": "functional-nonrationality-is-not-value-irrationality.",
           "title": "Functional nonrationality is not value irrationality.",
-          "line": 2497
+          "line": 2499
         },
         {
           "level": 4,
           "id": "pad\u00e9-and-orthogonal-polynomial-constructions.",
           "title": "Pad\u00e9 and orthogonal-polynomial constructions.",
-          "line": 2507
+          "line": 2509
         },
         {
           "level": 4,
           "id": "related-series-and-their-different-recurrences.",
           "title": "Related series and their different recurrences.",
-          "line": 2513
+          "line": 2515
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 2543
+          "line": 2545
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 2547
+          "line": 2549
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 2553
+          "line": 2555
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 2559
+          "line": 2561
         },
         {
           "level": 1,
           "id": "long1049:app:index",
           "title": "Guide to the formal sources",
-          "line": 2565
+          "line": 2567
         },
         {
           "level": 2,
           "id": "long1049:sec:coverage",
           "title": "Formalisation coverage and remaining dependencies",
-          "line": 2569
+          "line": 2571
         },
         {
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 2583
+          "line": 2585
         },
         {
           "level": 4,
           "id": "the-lambert-identity-and-the-integer-case.",
           "title": "The Lambert identity and the integer case.",
-          "line": 2651
+          "line": 2653
         },
         {
           "level": 4,
           "id": "the-hypotheses-in-the-modular-row-argument.",
           "title": "The hypotheses in the modular row argument.",
-          "line": 2665
+          "line": 2667
         },
         {
           "level": 1,
           "id": "sec:erdos-1049-complete-family-map",
           "title": "Publication scope",
-          "line": 2671
+          "line": 2673
         }
       ],
       "citations_rendered": 98,
@@ -7654,8 +7654,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:5dc5e0d72aa75bd56132ef842330fa7cdbbddbe09ae2fe1fbfa28e15b89c0bf7",
-      "pdf_byte_count": 440646,
+      "pdf_sha256": "sha256:952c0c2650ddb412e152cc29441a144ebd67c2f96ee39dbdefe06d8c4e51d714",
+      "pdf_byte_count": 441595,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7673,12 +7673,12 @@
           {
             "id": "long1049:sec:open",
             "title": "Complements and further questions",
-            "line": 2138
+            "line": 2140
           },
           {
             "id": "sec:erdos-1049-complete-family-map",
             "title": "Publication scope",
-            "line": 2671
+            "line": 2673
           }
         ],
         "unresolved_count": 0
@@ -7939,7 +7939,7 @@
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:cb33471ceed8355315e4ec9382d762c5c4c8e594869880aabb557fa90d1274f7",
+      "pdf_sha256": "sha256:73afa662ed72690ac9200cfc83f67ccf509fbe00af6f4b8f93a9821216ea03cf",
       "pdf_byte_count": 198888,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8006,7 +8006,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:fefda86309ab84283d9fb87bfa0a4334796eb8a4ab2562ef16664095225beb7d",
+      "source_sha256": "sha256:659af2151c1b31d032d8dd1a26561aa983a418be9cdad6285720414322c0ce63",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8310,7 +8310,7 @@
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:9c2d3409f332ef1bed981da3d27d16178f164c0714916f7c18fde57f8a213a35",
+      "pdf_sha256": "sha256:0c20c7a1d1365e76506189f495c5f5e50b05ee8667e4b67e7159c1b7fbf8a3b5",
       "pdf_byte_count": 158765,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8382,7 +8382,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:c1803808df7ee8142298820360a887283ee2ace7c61b9930ad99477a188bea5a",
+      "source_sha256": "sha256:2fab2d8e9ca755301df758f5a96b57a9ac0b1a5658ce0f574fa419f7ad9e08d9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8512,8 +8512,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:a95f9001e3399a5d4867d92ecec825e9f69cbf24acdaed39e40c6c9ed15894b8",
-      "pdf_byte_count": 88179,
+      "pdf_sha256": "sha256:de3f11c198838bdf7f7d14a9c6741f9ed60a1fa10c3a773d4979305997b1d9a9",
+      "pdf_byte_count": 88175,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8786,8 +8786,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:8dcdb4ecf8fc75f5e164268935fda8cc8b73c882d5d4007bed244f4ccc0289ff",
-      "pdf_byte_count": 149360,
+      "pdf_sha256": "sha256:5bd4c823fe8f329f89b564ca4d852862142759699dc2bb20d1452863a8b494c2",
+      "pdf_byte_count": 149359,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
