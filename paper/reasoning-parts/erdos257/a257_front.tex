@@ -4057,13 +4057,10 @@ Then $G$ is infinite and $X_G(2)=1/2$.  Unlike
 Theorem~\ref{record:257rig-c16}, this hypothesis bounds the actual greedy
 carry only at unboundedly many indices.  It still concerns the same fixed
 support $G$, not independently chosen finite supports.
-The Lean proof also compares this carry with the carry obtained by
-fixing a finite prefix. Its comparison includes a contribution from
-later omitted ranks. No equivalence with the finite-support hypothesis
+Comparing this carry with the carry obtained by fixing a finite prefix introduces a contribution from later omitted ranks. No equivalence with the finite-support hypothesis
 of Theorem~\ref{record:257bm-c7} follows without controlling that
-additional contribution.
+additional contribution. The hypothesis is not established.
 \end{thm}
-The hypothesis is not established.
 
 \subsubsection*{A margin at an unspecified later horizon}
 
@@ -6718,7 +6715,7 @@ Here is the role of the constants.  Put
 \[
  B(r)=2^{\lfloor(r+4)/2\rfloor}+2r+3.
 \]
-For $r\ge10$, the source proves $B(r)^2\le2^{r+5}$.
+For $r\ge10$, one has $B(r)^2\le2^{r+5}$.
 A right branch at the first crossing of the largest omitted rank $r$
 would force $|\Delta_{r+1}|\le B(r)$, by tracing the exact affine
 recurrence back to that reset.  The assumed strict lower bound
@@ -6743,8 +6740,7 @@ values.  This is an ordinary argument.
 \end{rem}
 
 \begin{thm}[C ;  the one-sided finite decision boundary]\label{thm:one-sided-finite-decision-boundary}
-The checked equivalence
-separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is
+The equivalence of Theorem~\ref{thm:greedy-survival-record} separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is
 a finite certificate that $1/2\notin\mathcal A$. By contrast, membership requires survival at
 every rank; the corpus supplies no finite certificate that the orbit survives forever and no
 completion theorem turning a long surviving prefix into membership.
@@ -6756,7 +6752,7 @@ give at most a semi-decision procedure for \emph{nonmembership of the specific v
 Halting does not prove the universal statement in \#257, and non-halting does not prove that
 $1/2$ is represented. In particular, neither truth nor falsity of the universal problem is
 shown semi-decidable here. Deeper negative search alone establishes nothing beyond the tested
-finite ranks; this is the quantifier boundary recorded above.
+finite ranks; this is the quantifier boundary of Theorem~\ref{thm:one-sided}.
 \end{thm}
 
 \subsection{Four limitations of the stated implications}

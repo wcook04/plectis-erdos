@@ -2610,7 +2610,7 @@ has $m>0$, since the discrepancy vanishes at shift zero.
 The diagonal choice is $q=m=1$; consecutive grid points have $m=1$,
 and for $p\ge2$ the pair $(H_t,pH_t)$ has $(q,m)=(1,p-1)$. The diagonal equivalence
 in Theorem~\ref{catalogue:cert:b3} also gives the converse from
-irrationality to the displayed quantified condition.
+irrationality to the displayed quantified condition; that condition remains unproved.
 \end{thm}
 
 \begin{cor}[Equivalent conditions stated without certificates]\label{catalogue:cert:b8}
@@ -2871,7 +2871,7 @@ $\varepsilon_{a,q_a}$ defined above. Suppose
 Then $S\notin\mathbb Q$. The estimate
 $|\Omega_a-\rho_{a,q_a}|<\varepsilon_{a,q_a}$ implies
 $|\rho_{a,q_a}-z|>1/32$ for every integer $z$, and hence the finite
-residue separation used by the linked implication.
+residue separation from which the proof derives irrationality.
 This is a fixed separation condition along an unbounded family of LCM
 scales. It is not an irrationality-measure theorem for arbitrary
 rational approximants, and nonintegrality alone does not give the
@@ -3144,8 +3144,7 @@ residue tests. Each gives either an exact expression or a bound that
 can be used when studying those tests.
 
 \begin{prop}[The exact totient difference on an LCM progression]\label{prop:AR-04-inv}
-Put $H=H(t)$. For every $j\ge0$, the arithmetic expression in the
-linked source equals $\delta_t(j)=\varphi(2H+j)-\varphi(H+j)$.
+Put $H=H(t)$. For every $j\ge0$, the arithmetic expression in the piecewise form given below equals $\delta_t(j)=\varphi(2H+j)-\varphi(H+j)$.
 For a divisor $j\mid H$, this assertion contains a useful product
 formula, not merely a change of notation. Set
 \[
@@ -3167,7 +3166,7 @@ $\varphi(j)\bigl(\varphi(2a+1)-\varphi(a+1)\bigr)$.
 For example, at $H=j=2$ the two gcds are $g_1=2$ and $g_2=1$;
 the exact difference is $\varphi(6)-\varphi(4)=0$, whereas discarding
 the gcd factors would give $1$.
-For $j\nmid H$, the source retains the literal totient difference.
+For $j\nmid H$, that expression is the literal totient difference.
 Thus no coprimality assumption is imposed on the full expression.
 
 \end{prop}
@@ -4057,7 +4056,7 @@ Equivalently, the determinant of
 $\left(\begin{smallmatrix}\Theta_r&\Theta_{r+1}\\
 \Theta_{r+1}&\Theta_{r+2}\end{smallmatrix}\right)$ is negative.
 The two-summand comparison gives an elementary proof, detailed below;
-the linked declarations prove the same strict inequality.
+the same strict inequality is also proved in Lean.
 \end{thm}
 \begin{proof}[A quantitative comparison]
 For this proof put $a_r=1-3^{-r}$ and $\varepsilon_r=1/(2^r(2^r-1))$.
@@ -4579,8 +4578,7 @@ This total is $1$ exactly when $r=1/2$.
 For every $0\le r<1$, $\sum_{(a,b)\ \mathrm{coprime},\, a,b\ge 1}
 \dfrac{r^{a+b}}{1-r^{a+b}} = \Bigl(\dfrac{r}{1-r}\Bigr)^2$, an elementary
 rational function of $r$, hence rational at every rational $r$ including
-$r=1/2$. This is the classical visible-point identity, and the Lean
-declaration is a formalisation of it rather than a new result: writing each
+$r=1/2$. This is the classical visible-point identity, and its Lean proof is a formalisation of it rather than a new result: writing each
 pair $(A,B)$ of positive integers uniquely as $g\cdot(a,b)$ with
 $\gcd(a,b)=1$ converts the quadrant sum $\sum_{A,B\ge1}r^{A+B}=(r/(1-r))^2$
 into the displayed sum over visible points. With the plain weight
@@ -5435,7 +5433,7 @@ For any nonempty finite $T\subseteq\mathbb N$ with $T\subset[0,2X)$ and the same
 \]
 then $\exists N\in T$ with $\mathcal{C}\ h\ N\ L$. This generalises
 Theorem~\ref{thm:hgap-real}: $T$ can be \emph{any} explicitly chosen nonempty finite subset of the
-dyadic block, not the whole block, and the proof (an averaging pigeonhole, \S below) never uses
+dyadic block, not the whole block, and the proof (an averaging pigeonhole) never uses
 that $T$ has positive density or comes from a partition.
 \end{thm}
 
@@ -5451,7 +5449,7 @@ Theorem~\ref{thm:hgap-real} to the same certificate. Define
 \[
   \Bigl\|\ \sum_{N=X}^{2X-1}E(h,N,L)\ \Bigr\| \;\le\; \tfrac{21}{25}\,X .
 \]
-Then
+This condition is unproved; it is the open target itself. Then
 \[
   \text{block norm condition} \;\Longrightarrow\; \mathrm{Irrational}\Bigl(\sum_{n\ge 0}
   \tfrac{\varphi(n)}{2^n}\Bigr),
@@ -5460,8 +5458,6 @@ proved in full, with no further gap, by chaining
 Theorem~\ref{thm:hgap-norm}$\to$Theorem~\ref{thm:hgap-real}$\to$
 Theorem~\ref{catalogue:cert:a10}.
 \end{thm}
-\evidenceremark{The block norm condition is unproved; it is the open
-target itself.}
 
 \begin{obs}[What remains unproved]
 \label{obs:no-instance}
@@ -5521,7 +5517,7 @@ For every $a\ge 8$ and every $J$ with $J+(a{+}6) < 2\cdot 2^a$,
   0 \;<\; {R}(2H{+}J) - {R}(H{+}J), \qquad H={H}(2^a).
 \]
 Hence $0 < \Omega_a$ for every $a\ge 8$. The proof is genuinely uniform in
-$a$: it rests on two facts proved for all $a\ge 8$ by a two-case structural split (divisor letter
+$a$: it rests on two facts proved for all $a\ge 8$ and $0<j<2^{a+1}$, namely $\delta_{2^a}(j)>0$ and $H<8\cdot 2^a\,\delta_{2^a}(j)$, by a two-case structural split (divisor letter
 vs.\ foreign prime power), with absolute constants $4,8,32$ and no lookup table.
 \end{thm}
 
@@ -5547,7 +5543,7 @@ hypotheses, rather than a claimed strict weakening of irrationality.
 
 \begin{thm}[The proved implications]\label{thm:proved-implications}
 For every $a\ge 8$ and every $J,K,m$ inside the sign corridor
-($J{+}K{+}(a{+}6) < 2\cdot 2^a$), a one-sided residue gap at precision $m\le K$; room $2H{+}J{+}K{+}2 < 2^m$ and $D(H,H+J,K)\bmod 2^m \le 2^m - (2H{+}J{+}K{+}2)$; already
+($J{+}K{+}(a{+}6) < 2\cdot 2^a$), a one-sided residue gap at precision $m\le K$ (room $2H{+}J{+}K{+}2 < 2^m$ and $D(H,H+J,K)\bmod 2^m \le 2^m - (2H{+}J{+}K{+}2)$) already
 forces ${R}(2H{+}J) - {R}(H{+}J)\notin\mathbb Z$. No lower margin
 at all is demanded. The proof chain is complete: the theorem holds for every $a\ge 8$, and
 \emph{\m{\text{cofinal upper-endpoint condition}} $\Rightarrow$ Irrational $S$} is proved.
@@ -5569,7 +5565,7 @@ $\delta_{2^a}(j)$ in the sum $D(H,H,K)$
 
 \begin{prop}[Five sufficient conditions]
 \label{prop:te-chain}
-Each of the five conditions below suffices for irrationality. The first
+Each of the five conditions below suffices for irrationality; none of them is proved. The first
 four imply the upper-endpoint condition;
 the fifth gives nonintegrality directly by the endpoint identity. These
 are not asserted to form a linear hierarchy. Here $H=H(2^a)$, and every
@@ -5607,7 +5603,6 @@ $\Leftrightarrow$ guarded odd-prefix band;
 flexible centred-magnitude bound $\to$ adjacent-suffix band;
 guarded centred-magnitude bound $\to$ flexible centred-magnitude bound.
 \end{prop}
-\evidenceremark{All five conditions are unproved.}
 
 \subsubsection{A bound on the last totient difference}
 
@@ -5658,7 +5653,7 @@ conditional bounds are proved in Lean
 \end{obs}
 
 \begin{prop}[A sufficient extension]\label{prop:sufficient-extension}
-Either (i) the lower-escape branch cofinally; as displayed just above; or (ii) the two-sided
+Either of the following suffices: (i) the lower-escape branch cofinally, as displayed just above; or (ii) the two-sided
 magnitude form
 (item 4 of Proposition~\ref{prop:te-chain}), which asks only $H{+}q{+}2 \le
 |u_{a,q}|$ and which the Lean source proves
@@ -6045,7 +6040,7 @@ For $H=H(4)=12$, $p=5$ and $L=15$, direct integer evaluation gives
  W(12,5,15)\bmod32768=18834,\qquad B(12,5,15)=282.
 \]
 Thus $282<18834<32486$, and $J(12,5)\notin\mathbb Z$.
-This is the one instance singled out by the cited declaration, not a
+This is the one instance singled out in Theorem~\ref{catalogue:mob:e2}, not a
 claim of uniqueness or of the smallest possible height. The implication
 from a quantified family is Theorem~\ref{catalogue:mob:e2}.
 \end{thm}
