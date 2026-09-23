@@ -1,7 +1,7 @@
 {
  "schema": "plectis-paper-page-baseline/1",
  "rule": "Page count of each of the sixteen problem papers as published at the frozen release base, same typography. No rebuilt paper may be longer; scripts/check_paper_evidence_pdfs.py enforces it.",
- "base": "6917e15ec4abc2623512254da93221e446eeb707",
+ "base": "147f3f1da400a84dcb3013ea6cef75dc8f382b09",
  "pages": {
   "erdos-68-factorial-denominator-irrationality": 19,
   "erdos-243-reciprocal-tail-rigidity": 19,

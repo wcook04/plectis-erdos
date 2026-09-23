@@ -860,10 +860,14 @@ The next example concerns successive mergers of sublevel components;
 the roots themselves do not move. A component containing two roots just
 after the first merger can acquire a third root before level $2\mu$.
 Consider the component at that later level containing the first pair.
-For this monic cubic, its normalised capacity is its logarithmic capacity
-divided by $(2\mu)^{1/3}$. The whole filled lemniscate has capacity
-$(2\mu)^{1/3}$, so a normalised value of $1$ gives no improvement over
-the whole set.
+For this monic cubic, its normalised capacity is its capacity divided by
+$(2\mu)^{1/3}$. Here the capacity of a compact set is its transfinite
+diameter, the limit as $N\to\infty$ of the largest geometric mean of the
+$N(N-1)/2$ distances between $N$ of its points; by the Fekete--Szeg\H{o}
+theorem~\cite[p.~153]{ransford1995} it equals the logarithmic capacity. The
+whole filled lemniscate has capacity $(2\mu)^{1/3}$
+\cite[Theorem~5.2.5]{ransford1995}, so a normalised value of $1$ gives no
+improvement over the whole set.
 
 \begin{proposition}[root count does not force a capacity gap]
 \label{res:arity-not-capacity}
@@ -872,11 +876,10 @@ $\mu=187/2000\le1/2$. The first merger joins two root components, so
 $k_0=2$, but the component at level $2\mu$ containing that pair has
 normalised capacity $1$.
 \end{proposition}
-\evidenceremark{No Lean proof covers the whole proposition. Lean checks
-that the roots lie in the open unit disc and that $\mu=187/2000\le1/2$.
-The root count $k_0=2$ is not checked, and neither is the capacity
-clause, which needs logarithmic capacity, a notion Mathlib does not
-define.}
+\evidenceremark{The Lean proof assumes the classical value $t^{1/n}$ of
+the transfinite diameter of the filled lemniscate $\{|p|\le t\}$ of a
+monic polynomial $p$ of degree $n$, and uses it only in the capacity
+clause; the root count $k_0=2$ is proved outright.}
 
 \section{The Newton value equation}\label{sec:newton}
 
@@ -1778,6 +1781,10 @@ endorsed the mathematics of the present paper.
   continua}, Mat. Zametki \textbf{80} (2006), no.~1, 33--37;
   English translation, Math. Notes \textbf{80} (2006), no.~1, 31--35,
   doi:\href{https://doi.org/10.1007/s11006-006-0105-8}{10.1007/s11006-006-0105-8}.
+\bibitem{ransford1995} T.~Ransford,
+  \emph{Potential Theory in the Complex Plane}, London Mathematical Society
+  Student Texts~28, Cambridge University Press, Cambridge, 1995,
+  doi:\href{https://doi.org/10.1017/CBO9780511623776}{10.1017/CBO9780511623776}.
 \end{thebibliography}
 
 
