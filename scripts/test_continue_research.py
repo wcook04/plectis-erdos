@@ -1140,6 +1140,15 @@ def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
 
 def check_architecture_frontier_round_trip() -> None:
     """A tooling idea travels start -> check -> package without fictional math."""
+    assert continue_research.allowed_close_outcomes(
+        "architecture", "checked_positive"
+    ) == {"established", "open"}
+    assert continue_research.allowed_close_outcomes(
+        "architecture", "corrective"
+    ) == {"established", "open"}
+    assert continue_research.allowed_close_outcomes(
+        "mathematics", "checked_positive"
+    ) == {"established"}
     with tempfile.TemporaryDirectory(prefix="continue-architecture-") as temporary:
         temp = Path(temporary)
         sessions = temp / "sessions"
@@ -1182,6 +1191,29 @@ def check_architecture_frontier_round_trip() -> None:
         assert not (package / "route-memory.json").exists()
         assert "--require-route-memory-receipt" not in packed["validation"]["repository_backed"]["command"]
         run([sys.executable, str(ROOT / "scripts/validate_research_return.py"), str(package / "return.json"), "--require-submitted", "--check-git"])
+        positive = json.loads(json.dumps(returned))
+        positive["return_id"] = "rr-fixture-valid-architecture-positive"
+        positive["result"]["class"] = "checked_positive"
+        positive["result"].update(
+            claim_ceiling="validated_architecture_change",
+            summary="The bounded navigation fixture passes its local check.",
+            requested_disposition="consider_architecture_adoption",
+        )
+        positive["evidence"][0].update(
+            exit_state="passed", exit_code=0, replay_state="reproduced",
+            observed="Synthetic fixture for a passed architecture check; no Lean proof asserted.",
+        )
+        positive_path = temp / "positive-return.json"
+        positive_path.write_text(json.dumps(positive))
+        positive_package = temp / "positive-package"
+        run([
+            *command, "package", "--session", "architecture_test",
+            "--return-json", str(positive_path), "--output", str(positive_package),
+        ])
+        assert (
+            load(positive_package / "return.json")["result"]["claim_ceiling"]
+            == "validated_architecture_change"
+        )
         consultation = sessions / "architecture_test" / "workflow-consultation.json"
         changed = load(consultation); changed["validation_plan"] = "Changed after the return"
         consultation.write_text(json.dumps(changed))

@@ -17,9 +17,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "plectis_prove2me_compat_v1"
-DEFAULT_UNIT = "erdos257_reciprocal_summable_support"
+DEFAULT_UNIT = "erdos257_finite_prime_weighted_support"
 UNITS = {
-    DEFAULT_UNIT: {
+    "erdos257_reciprocal_summable_support": {
         "claim_id": "reciprocal_summable_support",
         "claim_status": "formalised here",
         "registered_declaration": True,
@@ -41,6 +41,37 @@ UNITS = {
             "open_boundary": "Irrationality for every infinite support in Erdős #257 remains open.",
             "prior_credit": "Erdős stated the all-base reciprocal-summable extension after proving the pairwise-coprime case; the paper gives a complete averaging proof.",
             "excluded": ["universal #257 irrationality as a proved theorem", "weaker auxiliary lemmas as standalone missions", "novelty or priority verdict"],
+        },
+    },
+    DEFAULT_UNIT: {
+        "claim_id": "finite_prime_weighted_support",
+        "claim_status": "formalised here",
+        "registered_declaration": True,
+        "theorem": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+        "lean_source": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+        "claim_interface_source": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
+        "claim_interface_needle": "def DivisibilityWeightedClaim : Prop :=",
+        "paper_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "paper_label": "res:weighted-support",
+        "remaining_open": "remaining_open.universal_257_all_infinite_supports",
+        "title": "Finite-prime weighted support irrationality",
+        "statement": (
+            "Let $P$ be a finite nonempty set of primes and put "
+            "$h_P(a)=\\prod_{p\\in P}p^{v_p(a)}$. For an integer base $b\\ge 2$ "
+            "and an infinite set $A$ of positive integers, if "
+            "$\\sum_{a\\in A}h_P(a)/[a(b^{h_P(a)}-1)]<\\infty$, then "
+            "$\\sum_{a\\in A}1/(b^a-1)$ is irrational. If a host $H$ "
+            "of positive integers has finite weighted mass at base $2$ "
+            "for some such $P$, then every infinite $A\\subseteq H$ has an "
+            "irrational support series at every integer base $b\\ge 2$. "
+            "These are sufficient conditions; irrationality for every "
+            "infinite support remains open."
+        ),
+        "tags": ["number-theory", "irrationality", "erdos-257", "weighted-support"],
+        "attachment": {
+            "open_boundary": "Universal Erdős #257 irrationality for every infinite support remains open.",
+            "prior_credit": "The weighted criterion and its Lean proof are given in the cited paper and source; novelty and priority have not been externally adjudicated.",
+            "excluded": ["universal #257 irrationality as a proved theorem", "a mission claiming the proved theorem as an open goal", "novelty or priority verdict"],
         },
     },
     "erdos249_all_base_totient_kernel_paper_theorem": {
@@ -118,7 +149,11 @@ def prepare(unit: str = DEFAULT_UNIT) -> dict:
     config = UNITS[unit]
     lean_source = config["lean_source"]
     paper_source = config["paper_source"]
-    source_paths = (lean_source, paper_source) + ((config["dependency_source"],) if "dependency_source" in config else ())
+    source_paths = (lean_source, paper_source)
+    if "dependency_source" in config:
+        source_paths += (config["dependency_source"],)
+    if "claim_interface_source" in config:
+        source_paths += (config["claim_interface_source"],)
     claims = read_json(ROOT / "docs/claims.json")["claims"]
     matches = [row for row in claims if row.get("id") == config["claim_id"]]
     if len(matches) != 1:
@@ -185,6 +220,9 @@ def prepare(unit: str = DEFAULT_UNIT) -> dict:
     if "dependency_source" in config:
         dependency_line = source_line(config["dependency_source"], config["dependency_needle"])
         packet["local_attachment"]["unconditional_rank_declaration"] = f"{config['dependency_source']}:{dependency_line}"
+    if "claim_interface_source" in config:
+        interface_line = source_line(config["claim_interface_source"], config["claim_interface_needle"])
+        packet["local_attachment"]["claim_type_definition"] = f"{config['claim_interface_source']}:{interface_line}"
     packet["packet_id"] = digest(canonical({"unit": packet["unit"], "sources": sources,
                                             "claim_record": packet["claim_record_sha256"]}))
     return packet

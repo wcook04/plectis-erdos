@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused offline round-trip tests for the preferred #257 and legacy #249 packets."""
+"""Focused offline round-trip tests for the selectable #257 and #249 packets."""
 
 import copy
 import unittest
@@ -12,18 +12,30 @@ class Prove2MeCompatTests(unittest.TestCase):
     def setUpClass(cls):
         cls.packet = compat.prepare()
 
-    def test_prepare_prefers_source_bound_257_theorem(self):
+    def test_prepare_defaults_to_strongest_weighted_257_theorem(self):
         packet = self.packet
         self.assertEqual(packet["unit"], compat.DEFAULT_UNIT)
-        self.assertEqual(packet["claim_id"], "reciprocal_summable_support")
-        self.assertEqual(packet["paper_label"], "res:reciprocal-support")
+        self.assertEqual(packet["claim_id"], "finite_prime_weighted_support")
+        self.assertEqual(packet["paper_label"], "res:weighted-support")
         self.assertIn("remaining_open.universal_257_all_infinite_supports", packet["remaining_open_proposition_ids"])
         self.assertEqual(packet["native_draft"]["theorem_name"],
-                         "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal")
-        self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395", packet["native_draft"]["source"])
+                         "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim")
+        self.assertIn("WeightedReturn.lean#L120", packet["native_draft"]["source"])
         self.assertIn("plectis-erdos/blob/", packet["native_draft"]["source"])
-        self.assertIn("erdos-257-mersenne-support-subseries.tex#L90", packet["native_draft"]["paper_source"])
+        self.assertIn("erdos-257-mersenne-support-subseries.tex#L54", packet["native_draft"]["paper_source"])
         self.assertEqual(packet["mathlib_rev"], "5e932f97dd25535344f80f9dd8da3aab83df0fe6")
+
+    def test_reciprocal_257_remains_selectable_as_portability_pilot(self):
+        packet = compat.prepare("erdos257_reciprocal_summable_support")
+        self.assertEqual(packet["claim_id"], "reciprocal_summable_support")
+        self.assertEqual(packet["paper_label"], "res:reciprocal-support")
+        self.assertEqual(packet["native_draft"]["theorem_name"],
+                         "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal")
+        self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395",
+                      packet["native_draft"]["source"])
+        self.assertIn("erdos-257-mersenne-support-subseries.tex#L90",
+                      packet["native_draft"]["paper_source"])
+        self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
 
     def test_249_remains_selectable_with_its_own_source_and_boundary(self):
         packet = compat.prepare("erdos249_all_base_totient_kernel_paper_theorem")
@@ -36,6 +48,28 @@ class Prove2MeCompatTests(unittest.TestCase):
         swapped = copy.deepcopy(packet)
         swapped["unit"] = compat.DEFAULT_UNIT
         self.assertIn("source_or_claim_mismatch", compat.validate(swapped)["blockers"])
+
+    def test_weighted_257_packet_preserves_both_clauses_and_interface(self):
+        unit = compat.DEFAULT_UNIT
+        packet = compat.prepare(unit)
+        self.assertEqual(packet["claim_id"], "finite_prime_weighted_support")
+        self.assertEqual(packet["paper_label"], "res:weighted-support")
+        self.assertEqual(packet["native_draft"]["theorem_name"],
+                         "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim")
+        statement = packet["native_draft"]["natural_language_statement"]
+        self.assertIn("finite nonempty set of primes", statement)
+        self.assertIn("every infinite $A\\subseteq H$", statement)
+        self.assertIn("every integer base $b\\ge 2$", statement)
+        self.assertIn("universal_257_all_infinite_supports",
+                      packet["remaining_open_proposition_ids"][0])
+        self.assertIn("WeightedReturn.lean:120", packet["local_attachment"]["source_declaration"])
+        self.assertIn("AnalyticTargets.lean:75", packet["local_attachment"]["claim_type_definition"])
+        self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
+        self.assertIn("platformized_source_missing", compat.validate(packet)["blockers"])
+        tampered = copy.deepcopy(packet)
+        interface = compat.UNITS[unit]["claim_interface_source"]
+        tampered["sources_sha256"][interface] = "0" * 64
+        self.assertIn("source_or_claim_mismatch", compat.validate(tampered)["blockers"])
 
     def test_validate_blocks_environment_source_and_type_mismatch(self):
         missing = compat.validate(self.packet)

@@ -1531,12 +1531,16 @@ def human_projection(projection: dict[str, Any]) -> bytes:
         "# Accepted contribution recognition and impact",
         "",
         "This generated public view answers which contributor or disclosed system "
-        "contributed which accepted artifact, to which bounded problem, with what "
+        "contributed which accepted artifact, to which bounded research or architecture question, with what "
         "evidence and review state. It consumes accepted receipts only.",
         "",
-        "Each accepted row carries a `public_frontier` route to the complete result-family "
-        "fan-in and exact surviving boundary for its problem. That route is navigation "
-        "context only; it does not create credit or promote the returned claim.",
+        "Each accepted row carries a `public_frontier` route to its problem result family, "
+        "cross-problem subject frontier, or architecture contribution path. The receipt "
+        "retains the exact surviving boundary; the route is navigation context only and "
+        "does not create credit or promote the returned claim.",
+        "",
+        "Result summaries and limitations record the submission-time evidence; review "
+        "fields record the later acceptance decision.",
         "",
         "The aggregate counts below are factual accepted-receipt counts with the "
         "stated denominator. They are not rankings, measures of mathematical "

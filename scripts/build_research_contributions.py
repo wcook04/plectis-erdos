@@ -634,12 +634,12 @@ def human_projection(projection: dict[str, Any]) -> bytes:
                 f"- Accepted commit: `{repository['accepted_commit']}`",
                 f"- Public repository: `{code_text(repository['origin'])}`",
                 f"- Changed public paths: {markdown_text(', '.join(repository['changed_paths']))}",
-                f"- Result: {markdown_text(result['summary'])}",
+                f"- Result as submitted: {markdown_text(result['summary'])}",
                 f"- Claim ceiling: `{code_text(result['claim_ceiling'])}`",
-                f"- Surviving boundary: {markdown_text(result['surviving_boundary'])}",
+                f"- Submission-time surviving boundary: {markdown_text(result['surviving_boundary'])}",
                 f"- Evidence/replay states: {markdown_text(evidence_text)}",
                 f"- Review states: {markdown_text(review_text)}",
-                f"- Limitations: {markdown_text('; '.join(result['limitations']))}",
+                f"- Submission-time limitations: {markdown_text('; '.join(result['limitations']))}",
                 f"- Requested disposition: `{code_text(result['requested_disposition'])}`",
                 *(
                     [

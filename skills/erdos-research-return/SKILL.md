@@ -40,13 +40,12 @@ python3 scripts/continue_research.py package --help
 ```
 
 Use `scripts/continue_research.py check` before packaging. Then use
-`scripts/continue_research.py package` to emit `return.json`,
-`route-memory.json`, the declared `source/` file set (including deletion
-records), and the package manifest. A return naming a proposed commit must
-list its complete starting-to-proposed changed-path set. A clean uncommitted
-session also rejects observed tracked and nonignored untracked edits omitted
-from that list. Validate the pair with
-the exact package pair:
+`scripts/continue_research.py package` to emit `return.json`, the declared
+`source/` file set (including deletion records), and the package manifest.
+Mathematical returns also include `route-memory.json`. A return naming a
+proposed commit must list its complete starting-to-proposed changed-path set.
+A clean uncommitted session also rejects observed tracked and nonignored
+untracked edits omitted from that list. Validate a mathematical pair with:
 
 ```sh
 python3 scripts/validate_research_return.py return.json \
@@ -55,9 +54,9 @@ python3 scripts/validate_research_return.py return.json \
 ```
 
 Add `--require-complete-proposed-diff` when the return names a proposed commit.
-
-A pull request may carry the pair as transient intake artifacts; they do not
-belong on the accepted main branch.
+An architecture return uses `--require-submitted --check-git` without the
+route-memory flags. A pull request may carry these package files as transient
+intake artifacts; they do not belong on the accepted main branch.
 
 Before packaging a stable result, run
 `skills/propagate-research-consequences/SKILL.md`. The return should distinguish
@@ -68,11 +67,15 @@ re-entry condition, or outside scope.
 
 Upstream may advance while a contributor works. The recorded starting commit
 remains the evidence context and common ancestor for the original delta. First
-replay and inspect the contribution against that commit. Then integrate the
-reviewed change onto current main with the ordinary Git operation appropriate
-to the history: merge, rebase, or a focused commit transplant. Do not apply an
-old patch blindly, and do not require access to a private backup. Fetch the
-public history if a shallow clone does not contain the starting commit.
+replay and inspect the contribution against that commit. If the submitted return
+names `repository.proposed_commit`, integrate it so that exact commit remains an
+ancestor of `repository.accepted_commit`, usually by merge. A rebase or focused
+commit transplant changes that identity and fails accepted-receipt validation.
+Use one only when no proposed commit was recorded, or amend the submitted return
+to name the rewritten commit and revalidate its evidence and complete changed
+path set before acceptance. Do not apply an old patch blindly, and do not
+require access to a private backup. Fetch the public history if a shallow clone
+does not contain the starting commit.
 
 If the histories conflict, treat the resolution as a new integration delta.
 Preserve the contributor's original authorship and credit the maintainer who
@@ -116,6 +119,11 @@ same attribution and session lifecycle as mathematical work. Supply repeatable
 problem, subject, or route-memory sidecar. Follow the example in
 `docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md`; its consultation is a plan,
 not execution evidence. `check` and `package` bind an architecture return to it.
+Validate an architecture return with `--require-submitted --check-git` and no
+route-memory flags. A `checked_positive` or `corrective` architecture return may
+close the workbench `open` when its recorded source checks passed; this does not
+assert a kernel-accepted Lean proof. Mathematical `checked_positive` and
+`corrective` returns still require `established`.
 
 A contribution received by email uses the same public-safe artifact and accepted
 credit record after naming permission is confirmed. Directions and references

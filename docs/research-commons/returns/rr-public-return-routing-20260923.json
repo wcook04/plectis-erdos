@@ -1,0 +1,223 @@
+{
+  "attribution": {
+    "artifact_credit": [
+      {
+        "artifact_paths": [
+          "scripts/continue_research.py",
+          "scripts/test_agent_entry.py",
+          "scripts/test_continue_research.py",
+          "skills/registry.json"
+        ],
+        "contribution_roles": [
+          "software",
+          "validation"
+        ],
+        "name": "OpenAI Codex"
+      }
+    ],
+    "existing_corpus_authorship_preserved": true,
+    "requested_display": "OpenAI Codex — public contribution return routing and validated architecture packaging"
+  },
+  "evidence": [
+    {
+      "artifacts": [
+        "skills/registry.json"
+      ],
+      "command": "python3 scripts/agent_skill_catalog.py --check",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "Registry valid and generated catalog current: 13 skills, 6 families, 17 lanes.",
+      "replay_state": "reproduced"
+    },
+    {
+      "artifacts": [
+        "scripts/test_agent_entry.py",
+        "skills/registry.json"
+      ],
+      "command": "python3 scripts/test_agent_entry.py",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "105 task fixtures passed, including the observed return-for-acceptance failure and neighboring route controls.",
+      "replay_state": "reproduced"
+    },
+    {
+      "artifacts": [
+        "scripts/test_agent_entry.py",
+        "skills/registry.json"
+      ],
+      "command": "python3 scripts/test_contribution_entry.py",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "Contribution entry prose, clone-local return, provenance, credit, and update route passed.",
+      "replay_state": "reproduced"
+    },
+    {
+      "artifacts": [
+        "scripts/test_agent_entry.py"
+      ],
+      "command": "python3 scripts/test_compact_agent_entry.py",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "Compact agent entry passed with 7984-byte seed.",
+      "replay_state": "reproduced"
+    },
+    {
+      "artifacts": [
+        "skills/registry.json"
+      ],
+      "command": "python3 scripts/test_clone_skills.py",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "Clone skill discovery and live CLI grammar checks passed.",
+      "replay_state": "reproduced"
+    },
+    {
+      "artifacts": [
+        "skills/registry.json"
+      ],
+      "command": "python3 scripts/check_cold_clone_comprehension.py --quick",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "Committed human and agent first-contact projections verified; no Lean build or corpus-query sweep run.",
+      "replay_state": "reproduced"
+    },
+    {
+      "artifacts": [
+        "scripts/continue_research.py",
+        "scripts/test_continue_research.py"
+      ],
+      "command": "python3 scripts/test_continue_research.py",
+      "environment": "Public checkout 582871aa49a4029b216055a1b7a87996695e8524; Python 3 standard library on macOS.",
+      "exit_code": 0,
+      "exit_state": "passed",
+      "observed": "Start, check, package, and adversarial cases passed; a synthetic checked-positive architecture return now packages with workbench outcome open while mathematical checked-positive closure remains established-only.",
+      "replay_state": "reproduced"
+    }
+  ],
+  "frontier": {
+    "area": "navigation",
+    "bounded_question": "Route an ordinary-language request to return a bounded public tooling contribution for acceptance into the existing research-return workflow",
+    "handle": "public-contribution-return-entry",
+    "starting_paths": [
+      "scripts/test_agent_entry.py",
+      "skills/registry.json"
+    ],
+    "stop_condition": "Stop when a clean clone selects return_research for an explicit return-for-acceptance request while generic contribution discovery still selects submit_change",
+    "track": "architecture"
+  },
+  "identity": {
+    "contributor": {
+      "name": "OpenAI Codex"
+    },
+    "material_collaborators": [],
+    "model_system": {
+      "name": "GPT-6",
+      "state": "disclosed"
+    },
+    "operator": {
+      "name": "OpenAI Codex",
+      "relationship": "same_as_contributor"
+    },
+    "provider": {
+      "name": "OpenAI",
+      "state": "disclosed"
+    }
+  },
+  "record_kind": "accepted_receipt",
+  "repository": {
+    "accepted_commit": "8cec1bb66576a7582fb8dc076cbbced166ed196b",
+    "changed_paths": [
+      "scripts/continue_research.py",
+      "scripts/test_agent_entry.py",
+      "scripts/test_continue_research.py",
+      "skills/registry.json"
+    ],
+    "origin": "https://github.com/wcook04/plectis-erdos",
+    "proposed_commit": "582871aa49a4029b216055a1b7a87996695e8524",
+    "starting_commit": "a08529a329578d172a9a2e602bacba4a8cc760cd"
+  },
+  "result": {
+    "claim_ceiling": "validated_architecture_change",
+    "class": "checked_positive",
+    "limitations": [
+      "Focused public checks passed; no full release gate or independent external clone replay is claimed.",
+      "The proposed commits are detached and not in public main; a maintainer must review the code, identity, and credit wording after PR201 reconciliation."
+    ],
+    "requested_disposition": "consider_architecture_adoption",
+    "summary": "An ordinary-language request to return a bounded public tooling contribution now reaches return_research, and the native packager accepts a checked-positive architecture return with passed source checks while its Lean-only workbench outcome remains open.",
+    "surviving_boundary": "The detached source commits and local return package are candidates only; maintainer review, public acceptance, release inclusion, and all mathematical claims remain separate."
+  },
+  "return_id": "rr-public-return-routing-20260923",
+  "review": {
+    "accepted_handoff": {
+      "authority_ref": "git:8cec1bb66576a7582fb8dc076cbbced166ed196b",
+      "decided_at": "2026-09-23T07:36:38Z",
+      "notes": "Local maintainer-operated decision to adopt this bounded architecture change into the detached integration history. Exact proposed commit 582871aa remains an ancestor. No public push, pull request, human review, tagged release, or mathematical claim transition is asserted.",
+      "reviewer": "OpenAI Codex (maintainer-operated; same contributor)",
+      "state": "accepted"
+    },
+    "claim_boundary_review": {
+      "authority_ref": null,
+      "decided_at": null,
+      "notes": "No mathematical claim transition requested.",
+      "reviewer": null,
+      "state": "not_required"
+    },
+    "core_promotion": {
+      "authority_ref": null,
+      "decided_at": null,
+      "notes": "No core mathematical promotion requested.",
+      "reviewer": null,
+      "state": "not_requested"
+    },
+    "mathematical_review": {
+      "authority_ref": null,
+      "decided_at": null,
+      "notes": "Architecture navigation change; no mathematical claim changed.",
+      "reviewer": null,
+      "state": "not_required"
+    },
+    "problem_owned_proposition": {
+      "authority_ref": null,
+      "decided_at": null,
+      "notes": "No problem proposition requested.",
+      "reviewer": null,
+      "state": "not_requested"
+    },
+    "reproduction": {
+      "authority_ref": "git:8cec1bb66576a7582fb8dc076cbbced166ed196b",
+      "decided_at": "2026-09-23T07:36:38Z",
+      "notes": "The seven recorded no-Lean evidence commands and focused acceptance, return-validator, recognition, and architecture-guide tests passed on the integration tree. This replay was performed by OpenAI Codex, the same contributor/operator; no independent external clone replay is claimed.",
+      "reviewer": "OpenAI Codex (maintainer-operated; same contributor)",
+      "state": "reproduced"
+    },
+    "structural_validation": {
+      "authority_ref": "git:8cec1bb66576a7582fb8dc076cbbced166ed196b",
+      "decided_at": "2026-09-23T07:36:38Z",
+      "notes": "Native submitted-return validation with complete proposed diff passed; package hashes, exact changed paths, merge ancestry, resolved documentation, and focused public tests inspected. This is same-agent validation, not independent human review.",
+      "reviewer": "OpenAI Codex (maintainer-operated; same contributor)",
+      "state": "valid"
+    },
+    "tagged_release_inclusion": {
+      "authority_ref": null,
+      "decided_at": null,
+      "notes": "No tagged release inclusion requested.",
+      "reviewer": null,
+      "state": "not_requested"
+    }
+  },
+  "safety": {
+    "credentials_removed": true,
+    "evidence_truthfully_reported": true,
+    "no_claim_overreach": true,
+    "private_material_removed": true
+  },
+  "schema": "research-return-receipt/2",
+  "submitted_at": "2026-09-23T06:12:56Z"
+}
