@@ -46,14 +46,22 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
-    def test_unconditional_ranked_result_remains_direct(self) -> None:
+    def test_ranked_reader_tier_is_explicit_and_prose_independent(self) -> None:
         candidate = {
-            "selection_status": "represented",
+            "family_id": "known_irrational_supports",
+            "reader_tier": "completed_direct_result",
             "why_not_ranked_first": "An unconditional direct theorem.",
         }
         self.assertEqual(builder._ranked_candidate_tier(candidate), "completed")
-        candidate["why_not_ranked_first"] = "A conditional theorem."
+        candidate["why_not_ranked_first"] = "The scope is conditional on full support."
+        self.assertEqual(builder._ranked_candidate_tier(candidate), "completed")
+        candidate["reader_tier"] = "conditional_endpoint_route"
         self.assertEqual(builder._ranked_candidate_tier(candidate), "conditional")
+        candidate["reader_tier"] = "exact_reduction_or_structural_result"
+        self.assertEqual(builder._ranked_candidate_tier(candidate), "structural")
+        candidate["reader_tier"] = "unknown"
+        with self.assertRaisesRegex(ValueError, "invalid reader_tier"):
+            builder._ranked_candidate_tier(candidate)
 
     def test_qualification_follows_selection_without_claiming_service_status(self) -> None:
         authority = builder.load_signal_authority()
@@ -85,6 +93,18 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("**Reader tier.** completed direct result", spine)
         self.assertIn("**Reader tier.** conditional endpoint route", spine)
         self.assertIn("**Reader tier.** exact reduction or structural result", spine)
+        self.assertIn("repository's authored `candidate_ranking` for a possible Palomar submission", spine)
+        self.assertNotIn("Palomar's mathematical `candidate_ranking`", spine)
+        for rank, title, tier in (
+            (2, "Known irrational supports", "completed direct result"),
+            (7, "First harmonic pivot decomposition", "conditional endpoint route"),
+            (8, "Strict prime tail orbit gap", "conditional endpoint route"),
+            (11, "Totient carry anti compression", "exact reduction or structural result"),
+            (12, "Half membership seam classification", "exact reduction or structural result"),
+        ):
+            start = spine.index(f"{rank}. **{title}**")
+            end = spine.index("\n\n", start)
+            self.assertIn(f"**Reader tier.** {tier}", spine[start:end])
         self.assertIn("### Natural friction and no-go boundaries", spine)
         self.assertIn("### Complete inventory, kept subordinate", spine)
         for family_id in (

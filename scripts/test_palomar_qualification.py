@@ -980,6 +980,18 @@ def test_adversarial_candidate_universe_drop_is_not_silently_accepted() -> None:
     )
 
 
+def test_adversarial_ranked_reader_tier_is_rejected() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    comparator = json.loads(
+        subprocess.check_output(["git", "show", "HEAD:verification/comparator.json"], cwd=ROOT)
+    )
+    for invalid in (None, "unreviewed_tier", ["completed_direct_result"]):
+        damaged = copy.deepcopy(showcase)
+        damaged["candidate_ranking"][1]["reader_tier"] = invalid
+        errors = checker.candidate_selection_errors(comparator, damaged)
+        assert any("invalid reader_tier" in error for error in errors)
+
+
 def test_adversarial_selection_semantics_drop_is_not_silently_accepted() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(
@@ -1055,6 +1067,36 @@ def test_adversarial_source_declaration_drift_is_not_silently_accepted() -> None
     assert any("source_declaration" in error for error in errors)
 
 
+def test_cross_programme_source_result_spine_is_claim_bound() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    claims = json.loads((ROOT / "docs/claims.json").read_text())
+    rows = showcase["selection_contract"]["source_result_spine"]["ranked_results"]
+    assert [row["rank"] for row in rows] == [1, 2, 3]
+    assert [(row["problem"], row["claim_id"]) for row in rows] == [
+        (257, "finite_prime_weighted_support"),
+        (1049, "zudilin_rational_base_region"),
+        (1041, "ani_degree_seven_total_variation_counterexample"),
+    ]
+    claims_by_id = {claim["id"]: claim for claim in claims["claims"]}
+    for row in rows:
+        claim = claims_by_id[row["claim_id"]]
+        assert claim["status"] == "formalised here"
+        source = next(
+            declaration for declaration in claim["declarations"]
+            if declaration["name"] == row["source_declaration"]
+        )
+        source_text = (ROOT / "lean" / source["module"]).read_text()
+        assert f'theorem {source["name"]}' in source_text
+        assert row["why_here"] and row["boundary"]
+    assert "every infinite support remains open" in rows[0]["boundary"]
+    assert "3/2" in rows[1]["boundary"]
+    assert "Ani supplied the polynomial" in rows[2]["boundary"]
+    assert "1958 wording" in rows[2]["boundary"]
+    source_map = (ROOT / "docs/SOURCE_MAP.md").read_text()
+    assert "`source_result_spine`" in source_map
+    assert "`candidate_ranking`" in source_map
+
+
 def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(
@@ -1082,7 +1124,9 @@ if __name__ == "__main__":
     test_repository_intake_contract()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_candidate_universe_drop_is_not_silently_accepted()
+    test_adversarial_ranked_reader_tier_is_rejected()
     test_adversarial_selection_semantics_drop_is_not_silently_accepted()
     test_adversarial_value_disposition_drift_is_not_silently_accepted()
     test_adversarial_roster_drop_is_not_silently_accepted()
+    test_cross_programme_source_result_spine_is_claim_bound()
     print("palomar qualification tests: ok")

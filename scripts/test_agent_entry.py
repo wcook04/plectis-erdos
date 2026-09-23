@@ -214,7 +214,31 @@ ROUTE_CASES = {
         "return_research",
         "erdos-research-return",
     ),
+    "Contribute a bounded public tooling improvement and return it for acceptance": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "I have a finished navigation patch and need to return the contribution for acceptance": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "Complete one honest public contribution round trip with a source patch and credit": (
+        "return_research",
+        "erdos-research-return",
+    ),
     "I cloned this repository, made mathematical progress, and want to send it back so it can be reviewed, assimilated, propagated, and credited": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "I have a mathematical proof to submit for review": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "I have proofs from this clone to submit for review": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "I am submitting a mathematical proof for review": (
         "return_research",
         "erdos-research-return",
     ),

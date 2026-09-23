@@ -192,9 +192,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:edd02f834e4e568fbd58c6d2cd8f9e18ca645e7099249a291f55ed980fd7fb50",
-        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:15e5174aa5a2cf6268cd28f0fc353e212ba2fff64561c230325d36d56f90e34d"
+        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:4c7bb3bfc2e00668ce4a85e35486f7b408706d38d564e49ffc4d3e4b5beb4ee8"
       },
-      "rendered_content_digest": "sha256:8ae6e71e61852b4ffe9115a36e6dd65baa1c0a9666680447a9ccf2484549f6f2",
+      "rendered_content_digest": "sha256:26315c85419ebf90d2643fc282c3390afff4015e3eb355ef88c3b5fc05c568b5",
       "source_path": "paper/synthesis/optimal-sparse-perturbations.tex",
       "storage_path": "paper/synthesis/optimal-sparse-perturbations.pdf"
     },
@@ -214,9 +214,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:edd02f834e4e568fbd58c6d2cd8f9e18ca645e7099249a291f55ed980fd7fb50",
-        "paper/systems/open-source-mathematics-strategy.tex": "sha256:233effed36447608dec182b8b5b998e92de6745cbbbafaa8928e55b9b237bdc1"
+        "paper/systems/open-source-mathematics-strategy.tex": "sha256:de20fa3f408466e70d8250bb0d795abda07356de2144b36fe91ddf60d36dba71"
       },
-      "rendered_content_digest": "sha256:8c8e5815822fd34e783ad56b89970c078395643fdffb487b1dfebb89d1f3a505",
+      "rendered_content_digest": "sha256:2e3aca356bf09cba2ca90b5e7b9a037f9cc0db224cb8312323a5f20ffaf99c8d",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },
@@ -225,9 +225,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:edd02f834e4e568fbd58c6d2cd8f9e18ca645e7099249a291f55ed980fd7fb50",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ee368113f5db7d18cc0814ee1afc44adf8f45bb198b8b795ba6f99f33d9cea5e"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:a0e03e686e547433bc2b63a6fd6b782b986c26bee09b0efeb2702cd67267fa52"
       },
-      "rendered_content_digest": "sha256:836d19e4aa309879686c9c245ff17b08dc11a772fafcd04721bf014379f7f540",
+      "rendered_content_digest": "sha256:7b62f78d3fa43e88f26da46abb9edd2d80c9883f62f441dd24f3aa4e42df5f35",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
