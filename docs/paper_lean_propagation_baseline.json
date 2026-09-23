@@ -1,0 +1,194 @@
+{
+  "schema": "plectis-paper-lean-propagation-baseline/1",
+  "rule": "Each entry is one ledger row that failed clause (b) or (c) of scripts/check_lean_paper_propagation.py when the check was introduced, with the exact names that failed and why. A failure outside this list fails the check. A listed name that now passes also fails the check, so the change that repairs a row removes its entry and the list only shrinks. The check also refuses any entry outside the set it was introduced with.",
+  "recorded": "2026-09-23",
+  "entries": [
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:one-root-gamma-false",
+      "clause": "b",
+      "names": [
+        "ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.one_root_gamma_false_unconditional"
+      ],
+      "reason": "Lean proves this proposition with no hypothesis in one_root_gamma_false_unconditional (public main since pull request 197). The note under the proposition still prints the earlier conditional declarations, so nothing in this paper links the new theorem."
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:nomahler",
+      "clause": "b",
+      "names": [
+        "ErdosProblems.Erdos1049.PaperCompleteR21.no_finite_simultaneous_two_three_system_unconditional"
+      ],
+      "reason": "Lean proves this proposition with no hypothesis in no_finite_simultaneous_two_three_system_unconditional (public main since pull request 197). The note still prints the version conditional on the Adamczewski and Bell theorem."
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:dickman",
+      "clause": "b",
+      "names": [
+        "ErdosProblems.Erdos249.PaperCompleteR21.prop_dickman"
+      ],
+      "reason": "Lean proves the whole proposition in prop_dickman (public main since pull request 197). The note under it still reads Not formalised, so the record links no declaration for it."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i16",
+      "clause": "b",
+      "names": [
+        "ErdosProblems.Erdos257.PaperCompleteR21.paper_reverse_carry_word"
+      ],
+      "reason": "The count added paper_reverse_carry_word to this record after its author links were written. The statement carries no generated note because those links covered the earlier binding, so nothing prints the added declaration; regenerating the notes adds one."
+    },
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:one-root-gamma-false",
+      "clause": "c",
+      "names": [
+        "ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean::one_root_gamma_false",
+        "ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean::lobe_unique_zero",
+        "ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean::lobe_nhd_of_closed_disc",
+        "ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean::lobe_perimeter_gt"
+      ],
+      "reason": "The note still prints the conditional chain one_root_gamma_false, lobe_unique_zero, lobe_nhd_of_closed_disc and lobe_perimeter_gt, which the row no longer binds now that one_root_gamma_false_unconditional states the proposition. Regenerating the note replaces them."
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:ani-degree-seven-counterexample-long",
+      "clause": "c",
+      "names": [
+        "ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean::erdos1041_ani_degree_seven"
+      ],
+      "reason": "The maintainer count has not read the current text of this claim: the text changed after the count when the contributor link moved to the forum post, so the ledger binds nothing to it while the concordance names erdos1041_ani_degree_seven. The recount restamps the row."
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:nomahler",
+      "clause": "c",
+      "names": [
+        "ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean::no_finite_simultaneous_two_three_system",
+        "ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean::mahler_of_stable",
+        "ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean::isMahler_subs",
+        "ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean::divisorLambert_subs_not_rational"
+      ],
+      "reason": "The note prints no_finite_simultaneous_two_three_system with mahler_of_stable, isMahler_subs and divisorLambert_subs_not_rational, the chain that assumes the Adamczewski and Bell theorem. The row now binds the unconditional theorem alone; regenerating the note replaces them."
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:SEP-03",
+      "clause": "c",
+      "names": [
+        "ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean::prescribedOddIndex"
+      ],
+      "reason": "The note and the concordance entry name the definition prescribedOddIndex, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#prop:local-void",
+      "clause": "c",
+      "names": [
+        "Erdos249257/TropicalCurvatureCarry.lean::fixedPrecisionTropicalNoGo"
+      ],
+      "reason": "The concordance entry was generated when this row bound fixedPrecisionTropicalNoGo. The count now binds paper_centred_completion_of_fixed_precision in its place, and the note already counts it; regenerating the concordance fixes the entry."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c1",
+      "clause": "c",
+      "names": [
+        "Erdos249257/BooleanMobiusCofinalExactRows.lean::CofinalExactLocalMersenneHalfRows"
+      ],
+      "reason": "The note and the concordance entry name the definition CofinalExactLocalMersenneHalfRows, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c14",
+      "clause": "c",
+      "names": [
+        "Erdos249257/HalfCylinderFullShellSeamBridge.lean::HalfGreedySkippedSeamAlignmentZero",
+        "Erdos249257/HalfCylinderFullShellSeamBridge.lean::HalfGreedySkippedFullShellNonnegative"
+      ],
+      "reason": "The note and the concordance entry name the definitions HalfGreedySkippedSeamAlignmentZero and HalfGreedySkippedFullShellNonnegative, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the names."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c2",
+      "clause": "c",
+      "names": [
+        "Erdos249257/BooleanMobiusSkipRowCofinal.lean::CofinalPositiveHalfGreedySkips"
+      ],
+      "reason": "The note and the concordance entry name the definition CofinalPositiveHalfGreedySkips, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c4",
+      "clause": "c",
+      "names": [
+        "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean::SkippedCoreCriticalQuotientSupply"
+      ],
+      "reason": "The note and the concordance entry name the definition SkippedCoreCriticalQuotientSupply, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c6",
+      "clause": "c",
+      "names": [
+        "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean::HalfGreedySkippedCriticalQuotientSupply"
+      ],
+      "reason": "The note and the concordance entry name the definition HalfGreedySkippedCriticalQuotientSupply, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i-cross2",
+      "clause": "c",
+      "names": [
+        "Erdos249257/BooleanMobiusExactRowCrossing.lean::localMersenneCrossingRanks"
+      ],
+      "reason": "The note and the concordance entry name the definition localMersenneCrossingRanks, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i-t7",
+      "clause": "c",
+      "names": [
+        "Erdos249257/GenericTailOrbitRigidity.lean::binaryCoeffSeries",
+        "Erdos249257/GenericTailOrbitRigidity.lean::IsTemperedBinaryOrbit"
+      ],
+      "reason": "The note and the concordance entry name the definitions binaryCoeffSeries and IsTemperedBinaryOrbit, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the names."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i12",
+      "clause": "c",
+      "names": [
+        "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean::localMersenneGeometricQuotient"
+      ],
+      "reason": "The note and the concordance entry name the definition localMersenneGeometricQuotient, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i16",
+      "clause": "c",
+      "names": [
+        "Erdos249257/HalfTrappingReturnCarry.lean::ReverseCarryWord"
+      ],
+      "reason": "The concordance entry names the structure ReverseCarryWord, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Regenerating the concordance from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257rig-c18",
+      "clause": "c",
+      "names": [
+        "Erdos249257/CofinalStripReturn.lean::GreedyHalfCarryCofinalStripReturn"
+      ],
+      "reason": "The concordance entry names the definition GreedyHalfCarryCofinalStripReturn, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Regenerating the concordance from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#record:257rig-i4b",
+      "clause": "c",
+      "names": [
+        "Erdos249257/SublogDivisorCoverage.lean::divisorSubpowerConst"
+      ],
+      "reason": "The note and the concordance entry name the definition divisorSubpowerConst, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    },
+    {
+      "row": "erdos257-mersenne-reasoning-surface#thm:one-sided",
+      "clause": "c",
+      "names": [
+        "ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean::computablePred_halfFatalCertificateCode",
+        "ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean::half_not_mem_iff_exists_halfFatalCertificateCode",
+        "ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean::half_mem_iff_forall_not_halfFatalCertificateCode",
+        "ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean::finite_depth_survival_not_sufficient"
+      ],
+      "reason": "The note and the concordance entry were generated from an earlier binding of this theorem to the half-fatal certificate code declarations. The count now binds paper_one_sidedness with the fatal-gap certificate lemmas; regenerating both renderings removes the four earlier names."
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:dyadic-alphabet",
+      "clause": "c",
+      "names": [
+        "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean::dyadicBlockBase235"
+      ],
+      "reason": "The note and the concordance entry name the definition dyadicBlockBase235, which the count no longer binds to this result: statement rows now bind only the theorems that state them. Both renderings predate that rebinding; regenerating them from the ledger removes the name."
+    }
+  ]
+}

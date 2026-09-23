@@ -35,6 +35,9 @@ This script verifies that every other public surface agrees with it:
      agree with the typed publication-evidence receipt.
  12. Digest-bound semantic review receipts remain attached to the exact
      statement or relation that was reviewed.
+ 13. Every Lean declaration that states a paper result is linked in each
+     paper that states it and queued for Comparator
+     (scripts/check_lean_paper_propagation.py).
 Stdlib only; run from the repository root:  python3 scripts/check_release.py
 """
 
@@ -284,6 +287,14 @@ def late_check_commands() -> dict[str, list[str]]:
         "proof_cockpit": [
             sys.executable,
             str(ROOT / "scripts" / "test_proof_cockpit.py"),
+        ],
+        "lean_paper_propagation": [
+            sys.executable,
+            str(ROOT / "scripts" / "check_lean_paper_propagation.py"),
+        ],
+        "lean_paper_propagation_fixtures": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_check_lean_paper_propagation.py"),
         ],
         "clone_footprint": [
             sys.executable,

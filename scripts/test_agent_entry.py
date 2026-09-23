@@ -335,6 +335,24 @@ ROUTE_CASES = {
         "lean_validation",
         "lean-concurrent-validation",
     ),
+    # Observed 23 September 2026: three paper results were proved in Lean and
+    # published while their papers still printed the conditional notes.
+    "Lean now proves a paper statement; land it in every paper that states it and queue it for Comparator": (
+        "land_lean_proof",
+        "land-lean-proofs",
+    ),
+    "Link the new Lean declaration in the short paper and the long record": (
+        "land_lean_proof",
+        "land-lean-proofs",
+    ),
+    "check_lean_paper_propagation fails after my new Lean proof": (
+        "land_lean_proof",
+        "land-lean-proofs",
+    ),
+    "Which proved rows are still waiting for Comparator replay?": (
+        "land_lean_proof",
+        "land-lean-proofs",
+    ),
 }
 
 

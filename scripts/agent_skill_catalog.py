@@ -287,7 +287,7 @@ def render_skill_index(catalog: dict[str, Any]) -> str:
     for family in catalog["families"]:
         lines.extend((f"## {family['title']}", "", family["description"], ""))
         for skill in by_family[family["id"]]:
-            lines.append(f"- [{skill['id']}]({skill['id']}/SKILL.md) — {skill['description']}")
+            lines.append(f"- [{skill['id']}]({skill['id']}/SKILL.md): {skill['description']}")
             route_titles = [
                 lane["title"]
                 for lane in catalog["lanes"]
