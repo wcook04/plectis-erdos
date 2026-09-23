@@ -121,6 +121,42 @@ def main() -> int:
     )
     require(not errors, f"committed submitted fixture should validate: {errors}")
     require(
+        any(
+            "complete proposed-diff validation requires a proposed commit" in error
+            for error in validator.validate_document(
+                fixture, require_complete_proposed_diff=True,
+                repository_identity=identity,
+            )
+        ),
+        "complete-diff mode accepted a return without a proposed commit",
+    )
+    committed_return = copy.deepcopy(fixture)
+    committed_return["repository"]["proposed_commit"] = "a" * 40
+    listed = set(committed_return["repository"]["changed_paths"])
+    with mock.patch.object(validator, "_git_commit_exists", return_value=True), \
+         mock.patch.object(validator, "_git_is_ancestor", return_value=True), \
+         mock.patch.object(validator, "_git_path_exists", return_value=True), \
+         mock.patch.object(validator, "_git_changed_paths", return_value=listed):
+        require(
+            not validator.validate_document(
+                committed_return, require_submitted=True, check_git=True,
+                require_complete_proposed_diff=True, repository_identity=identity,
+            ),
+            "complete proposed diff was rejected",
+        )
+    with mock.patch.object(validator, "_git_commit_exists", return_value=True), \
+         mock.patch.object(validator, "_git_is_ancestor", return_value=True), \
+         mock.patch.object(validator, "_git_path_exists", return_value=True), \
+         mock.patch.object(validator, "_git_changed_paths", return_value=listed | {"docs/omitted.txt"}):
+        omissions = validator.validate_document(
+            committed_return, require_submitted=True, check_git=True,
+            require_complete_proposed_diff=True, repository_identity=identity,
+        )
+        require(
+            any("paths omitted from the complete proposed Git diff" in error for error in omissions),
+            f"validator accepted an omitted changed path: {omissions}",
+        )
+    require(
         validator.validate_document(
             fixture,
             require_accepted=True,
@@ -333,6 +369,13 @@ def main() -> int:
             encoding="utf-8"
         )
     )
+    committed_fixture_sources = validator.committed_prior_receipts(negative_fixture["return_id"])
+    require(
+        committed_fixture_sources is not None
+        and len(committed_fixture_sources) == 1
+        and committed_fixture_sources[0][0] == "docs/research-commons/returns/negative-example.json",
+        "prior lookup did not use the committed public receipt owner path",
+    )
     require(
         not validator.validate_document(negative_fixture, repository_identity=identity),
         "the committed negative fixture should validate before mutation",
@@ -362,6 +405,106 @@ def main() -> int:
             )
         ),
         "accepted mutation without accepted/proposed commits was not rejected",
+    )
+    corrective = copy.deepcopy(fixture)
+    corrective["record_kind"] = "submitted_return"
+    corrective["return_id"] = "rr-correction-lineage-fixture"
+    corrective["result"].update(
+        {
+            "class": "corrective",
+            "claim_ceiling": "documentation_correction",
+            "requested_disposition": "review_correction",
+        }
+    )
+    corrective["evidence"][0].update(
+        {"exit_state": "passed", "exit_code": 0, "replay_state": "reproduced"}
+    )
+    corrective["correction_lineage"] = {
+        "prior_return_reference": "none",
+        "affected_paths": corrective["repository"]["changed_paths"],
+        "starting_commit": corrective["repository"]["starting_commit"],
+        "changed_evidence_or_wording": "Corrected a bounded explanation.",
+        "reason": "The prior wording omitted its assumption.",
+        "disposition": "request_review",
+    }
+    require(
+        not validator.validate_document(corrective, require_submitted=True),
+        "an original correction requesting review should validate with no prior receipt",
+    )
+    for reference in ("anything", "docs/research-commons/returns/a.json", "https://example.org/claim"):
+        bad_reference = copy.deepcopy(corrective)
+        bad_reference["correction_lineage"]["prior_return_reference"] = reference
+        require(
+            any("must be none or an exact rr-* return ID" in error for error in validator.validate_document(bad_reference)),
+            f"arbitrary correction reference escaped: {reference}",
+        )
+    unhashable_reference = copy.deepcopy(corrective)
+    unhashable_reference["correction_lineage"]["prior_return_reference"] = []
+    require(
+        any("prior_return_reference" in error for error in validator.validate_document(unhashable_reference)),
+        "an unhashable correction reference crashed or escaped validation",
+    )
+    missing_prior = copy.deepcopy(corrective)
+    missing_prior["correction_lineage"]["prior_return_reference"] = "rr-no-such-accepted-return"
+    missing_prior["correction_lineage"]["disposition"] = "supersede"
+    missing_prior["result"]["requested_disposition"] = "no_promotion"
+    require(
+        any("exactly one committed public accepted receipt" in error for error in validator.validate_document(missing_prior)),
+        "a syntactically valid but unaccepted reference escaped",
+    )
+    unaccepted_prior = copy.deepcopy(missing_prior)
+    unaccepted_prior["correction_lineage"]["prior_return_reference"] = negative_fixture["return_id"]
+    require(
+        any("is not an accepted receipt" in error for error in validator.validate_document(unaccepted_prior)),
+        "a committed validation fixture was treated as an accepted prior receipt",
+    )
+    from test_research_contribution_recognition import accepted_source
+
+    prior_name, accepted_prior, _prior_bytes, _head = accepted_source()
+    for review_field in ("structural_validation", "reproduction"):
+        accepted_prior["review"][review_field].update(
+            {"reviewer": "Prior Receipt Reviewer", "decided_at": "2026-08-30T00:00:00Z"}
+        )
+    accepted_correction = copy.deepcopy(missing_prior)
+    accepted_correction["correction_lineage"]["prior_return_reference"] = accepted_prior["return_id"]
+    prior_source = (f"docs/research-commons/returns/{prior_name}", accepted_prior)
+    with mock.patch.object(validator, "committed_prior_receipts", return_value=[prior_source]):
+        require(
+            not validator.validate_document(accepted_correction, require_submitted=True),
+            "a correction linked to an accepted prior receipt should validate",
+        )
+        invalid_prior = copy.deepcopy(accepted_prior)
+        invalid_prior["review"]["accepted_handoff"]["state"] = "pending"
+        with mock.patch.object(validator, "committed_prior_receipts", return_value=[(prior_source[0], invalid_prior)]):
+            require(
+                any("fails accepted receipt validation" in error for error in validator.validate_document(accepted_correction)),
+                "an invalid accepted prior receipt was trusted",
+            )
+        with mock.patch.object(validator, "committed_prior_receipts", return_value=[prior_source, prior_source]):
+            require(
+                any("exactly one committed public accepted receipt" in error for error in validator.validate_document(accepted_correction)),
+                "ambiguous duplicate accepted IDs were trusted",
+            )
+        cyclic_prior = copy.deepcopy(accepted_prior)
+        cyclic_prior["result"].update(
+            {"class": "corrective", "claim_ceiling": "documentation_correction", "requested_disposition": "no_promotion"}
+        )
+        cyclic_prior["correction_lineage"] = {
+            **accepted_correction["correction_lineage"],
+            "prior_return_reference": accepted_correction["return_id"],
+            "affected_paths": cyclic_prior["repository"]["changed_paths"],
+            "starting_commit": cyclic_prior["repository"]["starting_commit"],
+        }
+        with mock.patch.object(validator, "committed_prior_receipts", return_value=[(prior_source[0], cyclic_prior)]):
+            require(
+                any("lineage cycle" in error for error in validator.validate_document(accepted_correction)),
+                "a cycle through an accepted prior receipt was trusted",
+            )
+    nonoriginal_none = copy.deepcopy(missing_prior)
+    nonoriginal_none["correction_lineage"]["prior_return_reference"] = "none"
+    require(
+        any("none is permitted only" in error for error in validator.validate_document(nonoriginal_none)),
+        "superseding correction accepted no prior return",
     )
     mutated_paths = copy.deepcopy(fixture)
     mutated_paths["repository"]["changed_paths"] = ["../outside.json"]

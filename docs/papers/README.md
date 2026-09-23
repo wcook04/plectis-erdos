@@ -34,7 +34,17 @@ disposition-aware spine.
 
 ### Ranked frontier
 
-#### 1. Erdős #257 — `known_irrational_supports`
+#### 1. Erdős #257 — `finite_prime_weighted_support`
+
+**Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
+  **Checked interface:** `Erdos249257.ExternalVerification.divisibilityWeightedClaim`
+  **Source declaration:** `ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim` via [Lean source](../../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean)
+  **Result:** For every integer base b ≥ 2 it proves irrationality on every infinite positive support of finite prime-weighted mass; a positive host of finite binary weighted mass gives irrationality for every infinite subset at every integer base.
+  **Hard mechanism:** The source proof builds a concrete weighted dyadic-mean producer with divisibility and scale control, obtains cofinal close returns, and consumes them in the irrationality criterion. The separate fixed-base hereditary theorem restricts the nonnegative weighted summability witness to subsets.
+  **Evidence:** The source theorem is Lean-checked in PaperCompleteR8/WeightedReturn.lean:120. This packet adds a separately declared Comparator interface and thin transport; external Comparator replay remains pending.
+  **Boundary:** The finite-prime weighted-summability premise is explicit in both clauses. This criterion does not cover every infinite support or settle universal Erdős #257; no novelty, priority, significance, or external human-review claim is made.
+
+#### 2. Erdős #257 — `known_irrational_supports`
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSum_full_support`
@@ -44,7 +54,7 @@ disposition-aware spine.
   **Evidence:** The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.
   **Boundary:** This is the classical full-support theorem, not universal Erdos #257.
 
-#### 2. Erdős #257 — `pairwise_coprime_support`
+#### 3. Erdős #257 — `pairwise_coprime_support`
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime`
@@ -54,7 +64,7 @@ disposition-aware spine.
   **Evidence:** The exact source theorem is committed at Erdos249257/CertificateKernel.lean:10768-10782 and is transported by the committed Challenge/Solution pair.
   **Boundary:** This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
 
-#### 3. Erdős #257 — `orthogonal_petal_sunflower_reduction`
+#### 4. Erdős #257 — `orthogonal_petal_sunflower_reduction`
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet`
@@ -64,7 +74,7 @@ disposition-aware spine.
   **Evidence:** Exact committed source and Comparator transport are available.
   **Boundary:** This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem.
 
-#### 4. Erdős #257 — `periodic_nonnegative_weight_irrationality`
+#### 5. Erdős #257 — `periodic_nonnegative_weight_irrationality`
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic`
@@ -74,7 +84,7 @@ disposition-aware spine.
   **Evidence:** Exact committed source and Comparator transport are available.
   **Boundary:** This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed.
 
-#### 5. Erdős #249 — `actual_lcm_orbit_separation`
+#### 6. Erdős #249 — `actual_lcm_orbit_separation`
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
@@ -84,7 +94,7 @@ disposition-aware spine.
   **Evidence:** The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.
   **Boundary:** The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open.
 
-#### 6. Erdős #249 — `first_harmonic_pivot_decomposition`
+#### 7. Erdős #249 — `first_harmonic_pivot_decomposition`
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation`
@@ -94,7 +104,7 @@ disposition-aware spine.
   **Evidence:** The source theorem, canonical review family, and exact Comparator endpoint wrapper are committed; the cofinal decorrelation producer is explicitly absent.
   **Boundary:** The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed.
 
-#### 7. Erdős #249 — `strict_prime_tail_orbit_gap`
+#### 8. Erdős #249 — `strict_prime_tail_orbit_gap`
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`
@@ -104,7 +114,7 @@ disposition-aware spine.
   **Evidence:** The exact source declarations, canonical strict_prime_tail_orbit_gap family, and Comparator representative are committed at Claims ddbe2870 and transport e7a58bb3.
   **Boundary:** The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families.
 
-#### 8. Erdős #68 — `factorial_carry_characterisation`
+#### 9. Erdős #68 — `factorial_carry_characterisation`
 
 **Paper route:** [erdos-68-factorial-denominator-irrationality](full-text/erdos-68-factorial-denominator-irrationality.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries`
@@ -114,7 +124,7 @@ disposition-aware spine.
   **Evidence:** Exact committed source and Comparator transport are available.
   **Boundary:** The equivalence does not supply a cofinal carry producer.
 
-#### 9. Erdős #251 — `prime_gap_reformulation`
+#### 10. Erdős #251 — `prime_gap_reformulation`
 
 **Paper route:** [erdos-251-prime-gap-dyadic-series](full-text/erdos-251-prime-gap-dyadic-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap`
@@ -124,7 +134,7 @@ disposition-aware spine.
   **Evidence:** Exact committed source and Comparator transport are available.
   **Boundary:** The equivalence does not prove irrationality of either series.
 
-#### 10. Erdős #249 — `totient_carry_anti_compression`
+#### 11. Erdős #249 — `totient_carry_anti_compression`
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
@@ -134,7 +144,7 @@ disposition-aware spine.
   **Evidence:** The exact source theorem, canonical review family, and Comparator representative are committed; the missing finite-rank contradiction is explicit.
   **Boundary:** This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open.
 
-#### 11. Erdős #257 — `half_membership_seam_classification`
+#### 12. Erdős #257 — `half_membership_seam_classification`
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`
@@ -144,7 +154,7 @@ disposition-aware spine.
   **Evidence:** The exact source iff, canonical claims family, and committed Comparator representative are available; the absent occurrence producer is explicit.
   **Boundary:** This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made.
 
-#### 12. Erdős #243 — `negative_mass_recovery`
+#### 13. Erdős #243 — `negative_mass_recovery`
 
 **Paper route:** [erdos-243-reciprocal-tail-rigidity](full-text/erdos-243-reciprocal-tail-rigidity.md)
   **Checked interface:** `Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass`
@@ -236,6 +246,7 @@ not currently earn scarce first-contact attention.
 - `translation_avoidance`: `Erdos249257.ExternalVerification.exists_small_translation_separating_arguments`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 - `root_retention`: `Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 - `rational_base_tail_recurrence`: `Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
+- `finite_prime_weighted_support`: `Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 
 <a id="problem-portfolio"></a>
 
@@ -261,13 +272,13 @@ Start here (selected for this guide): [The denominator exclusions](full-text/erd
 
 Start here (selected for this guide): [Rationality and the next integer above a scaled partial sum](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:carry), [Finite denominator exclusions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:finite), [The remaining arithmetic inputs](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:open), [Relations among the criteria](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
-### If a reciprocal sum is rational and a_{n+1}/a_n^2→1, what increment bound forces the Sylvester recurrence, and why does that not settle Erdős #243?
+### Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?
 
-**Bounded Increments and Rational Reciprocal Sums**
+**Cubic-Rate Irrationality and Reciprocal-Tail Rigidity**
 
 [full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 20 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Proof under a lower bound on the error](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [The first-crossing obstruction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:barrier), [The remaining arithmetic estimate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
+Start here (selected for this guide): [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Cubic-rate irrationality and further consequences](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:secondaryrate), [Proof under a lower bound on the error](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [The remaining arithmetic estimate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
 ### Which growth hypotheses make a reciprocal sum irrational, and which sufficient conditions force the Sylvester recurrence without settling Erdős #243?
 
@@ -357,7 +368,7 @@ Start here (selected for this guide): [Monic trinomials, in every degree](full-t
 
 Start here (selected for this guide): [A small least critical value](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:low-critical-closure), [Collinear roots and two sparse polynomial families](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:solved-polynomial-families), [Why the proposed spanning-tree estimate fails](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Guide to the results](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
-### For Erdős #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?
+### For Erdős #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
@@ -365,13 +376,13 @@ Start here (selected for this guide): [A small least critical value](full-text/e
 
 Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [A region of rational bases at which F is irrational](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero term of Zudilin’s Hankel determinant](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Supplementary arithmetic at 3/2](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
-### What all-rank Zudilin specialisations and Hankel formulae are proved at rational bases, and which clearing arguments still fail at 3/2?
+### Which rational-base and all-rank Hankel results are proved, what does the Lean-checked coefficient pencil establish through rank eight, and why does 3/2 remain open?
 
 **Zudilin’s Forms at Rational Bases: Proofs and Research Record**
 
 [full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 63 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
-Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open), [Publication scope](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
+Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open), [Publication scope](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 
 ### How does a research system turn agent work into inspectable mathematical claims?
 

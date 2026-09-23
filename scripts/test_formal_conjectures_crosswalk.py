@@ -84,6 +84,17 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
                 self.assertTrue(
                     submission["url"].startswith(crosswalk.UPSTREAM_PR_PREFIX)
                 )
+        self.assertNotIn("Every problem remains open", self.projection)
+        self.assertIn("#1041 Hausdorff path-image statement is refuted", self.projection)
+
+    def test_1041_refutation_and_historical_boundary_are_required(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        row = next(item for item in mutated["problems"] if item["problem"] == 1041)
+        row["comparison"]["statement_scope"] = "The exact formal notion of length needs review."
+        row["comparison"]["local_formal_refutation"]["answer_false_theorem"] = "none"
+        errors = self.errors(mutated)
+        self.assertTrue(any("exact Hausdorff refutation" in error for error in errors))
+        self.assertTrue(any("answer_false_theorem drifted" in error for error in errors))
 
     def test_commit_pin_mutation_is_rejected(self) -> None:
         mutated = copy.deepcopy(self.manifest)

@@ -1,15 +1,15 @@
 {
   "schema": "plectis-palomar-result-showcase/1",
-  "captured_at": "2026-08-30",
+  "captured_at": "2026-09-23",
   "source_authority": {
     "claim_registry": "docs/claims.json",
     "proof_authority": "Lean source checked by the pinned kernel",
     "comparator_authority": "HEAD:verification/comparator.json",
-    "comparator_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-    "comparator_theorem_count": 51,
+    "comparator_sha256": "c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
+    "comparator_theorem_count": 53,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1d11c2faca8d84bf665593d99c0dbb17b35f3855340b3317e28bf357757cfa87",
-    "source_review_family_count": 70,
+    "source_review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
+    "source_review_family_count": 71,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -43,6 +43,8 @@
       "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
@@ -69,7 +71,7 @@
       "reviewed_at": "2026-09-19",
       "previous_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
       "reviewed_claims_commit": "1d0d5e5797300d0e7aed1a6c65ec2ac75155f8b1",
-      "scope": "Reviewed the matrix delta from b4dfa966: relocated paper paths; existing #68 LCM and #249 all-base source results; #269 prior attribution and established carry bridge; #1041 distinction between pointwise Lean statements and interval synthesis. Family membership and the selected full-support Comparator interface are unchanged. This updates selection metadata, not proof or external review evidence."
+      "scope": "The 2026-09-19 matrix review is historical. The 2026-09-23 packet adds the exact finite-prime weighted support family and independently ranks its checked theorem as the broadest direct #257 lead; no novelty, priority, external human review, or universal endpoint is inferred from this update."
     }
   },
   "selection_contract": {
@@ -357,6 +359,7 @@
       {
         "problem": 257,
         "family_ids": [
+          "finite_prime_weighted_support",
           "known_irrational_supports",
           "pairwise_coprime_support",
           "orthogonal_petal_sunflower_reduction",
@@ -526,8 +529,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1d11c2faca8d84bf665593d99c0dbb17b35f3855340b3317e28bf357757cfa87",
-    "source_review_family_count": 70,
+    "source_review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
+    "source_review_family_count": 71,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -573,6 +576,7 @@
       "shifted_odd_tail_state",
       "composite_dilation_defect_identity",
       "known_irrational_supports",
+      "finite_prime_weighted_support",
       "pairwise_coprime_support",
       "periodic_nonnegative_weight_irrationality",
       "orthogonal_petal_sunflower_reduction",
@@ -697,7 +701,8 @@
       "coordinatewise_corridor_no_go": "rejected",
       "rational_base_tail_recurrence": "represented",
       "seven_halves_irrationality": "long_tail",
-      "height_and_pade_arithmetic": "represented"
+      "height_and_pade_arithmetic": "represented",
+      "finite_prime_weighted_support": "represented"
     },
     "targeted_theorem_forest_discoveries": [
       {
@@ -768,11 +773,11 @@
     ],
     "comparator_screen": {
       "authority": "HEAD:verification/comparator.json",
-      "comparator_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-      "theorem_count": 51,
+      "comparator_sha256": "c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
+      "theorem_count": 53,
       "roster_field": "candidate_universe.declarations",
       "partition": "candidate_value_dispositions.eligible_groups",
-      "semantic_role": "Exact 51-row evidence/eligibility/admission screen nested inside the wider source universe; it does not define candidate-universe membership."
+      "semantic_role": "Exact 53-row evidence/eligibility/admission screen nested inside the wider source universe; it does not define candidate-universe membership."
     },
     "declarations": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -806,6 +811,8 @@
       "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
@@ -849,25 +856,26 @@
       {
         "disposition": "selected",
         "declarations": [
-          "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+          "Erdos249257.ExternalVerification.divisibilityWeightedClaim"
         ],
-        "reason": "The unconditional full-support irrationality theorem has the clearest direct endpoint, a completed certificate mechanism, exact source identity, and the lowest overclaim risk when its b >= 2 and non-universal boundary remain visible."
+        "reason": "The exact finite-prime weighted criterion gives the broadest unconditional direct #257 support-class result, including a binary-mass all-base hereditary clause; its finite weighted-mass premise and the open universal boundary remain explicit."
       },
       {
         "disposition": "represented",
         "declarations": [
+          "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
           "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
           "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
           "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet"
         ],
-        "reason": "These are genuinely distinct #257 support/coefficient routes and are represented in the high-signal spine; their exact structured or conditional hypotheses are part of their value and are not silently generalized."
+        "reason": "The classical full-support, pairwise-coprime, periodic-weight, and conditional sunflower rows remain distinct #257 evidence below the broader finite-prime weighted lead."
       },
       {
         "disposition": "represented",
         "declarations": [
           "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
         ],
-        "reason": "The committed wrapper represents the one coherent actual_lcm_orbit_separation family. Its source-level sign, true-survivor, and top-edge mechanisms remain documented in the source-landscape record, while the cofinal separation supply and top-edge exclusion remain open; it stays below the unconditional full-support selection and is not duplicated."
+        "reason": "The committed wrapper represents the one coherent actual_lcm_orbit_separation family. Its source-level sign, true-survivor, and top-edge mechanisms remain documented in the source-landscape record, while the cofinal separation supply and top-edge exclusion remain open; it stays below the unconditional finite-prime weighted selection and is not duplicated."
       },
       {
         "disposition": "represented",
@@ -959,7 +967,8 @@
           "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
           "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
           "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
-          "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+          "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
+          "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary"
         ],
         "reason": "These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking."
       }
@@ -1311,7 +1320,7 @@
           "The canonical claims matrix binds this as one coherent family; the supporting carry-kernel rank and modular mechanisms must not be counted as separate families or confused with the coefficient-side totient_kernel family."
         ],
         "source_landscape_rank_relative_to": "Provisional endpoint-facing review: below completed unconditional endpoint families and below actual-LCM/first-harmonic conditional producer routes, but above routine coefficient-side rank inventory because it isolates a distinct orbit-level modular-periodicity plus anti-compression conjunction.",
-        "ranking_status": "Canonical source-landscape family with committed Comparator evidence. It is represented for ranked review, is not selected, and does not replace the full-support selection.",
+        "ranking_status": "Canonical source-landscape family with committed Comparator evidence. It is represented for ranked review, is not selected, and does not replace the finite-prime weighted selection.",
         "ranked_below": [
           "known_irrational_supports",
           "actual_lcm_orbit_separation",
@@ -1586,7 +1595,7 @@
         "limitations": [
           "An equivalence classifies the endpoint but does not produce a single unbounded certificate or a new source of certificates.",
           "It is not a committed Comparator declaration and must not be counted as Comparator evidence.",
-          "The open certificate supply remains the mathematical boundary, so completeness does not replace the selected full-support theorem."
+          "The open certificate supply remains the mathematical boundary, so completeness does not replace the selected finite-prime weighted theorem."
         ],
         "reason": "Subordinate after value review: this exact endpoint equivalence is already represented by the certificate interface and adds no distinct executable producer; it remains valuable consolidation rather than a competing family.",
         "reversal_evidence": "Only a genuinely new unbounded certificate producer or a materially new executable consequence would elevate this route; another equivalent reformulation would remain subordinate."
@@ -1886,7 +1895,7 @@
           "It supplies no prime-specific producer, no unconditional #243 endpoint, and no reciprocal-tail irrationality result; any surviving canonical orbit must have divergent normalized negative mass.",
           "It is distinct from centered_state_dynamics because summability replaces the uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
         ],
-        "source_landscape_rank_relative_to": "Rank 12: below the #257 seam classification and direct/producer-side endpoint routes because every original-orbit premise remains open, but above routine finite searches and generic screening because it replaces the uniform lower-bound route with a distinct summability mechanism.",
+        "source_landscape_rank_relative_to": "Rank 13: below the #257 seam classification and direct/producer-side endpoint routes because every original-orbit premise remains open, but above routine finite searches and generic screening because it replaces the uniform lower-bound route with a distinct summability mechanism.",
         "ranked_below": [
           "half_membership_seam_classification",
           "centered_state_dynamics"
@@ -1987,9 +1996,24 @@
   "candidate_ranking": [
     {
       "rank": 1,
+      "declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "family_id": "finite_prime_weighted_support",
+      "selection_status": "selected",
+      "mathematical_nontriviality": "An unconditional finite-prime weighted support criterion, with both fixed-base irrationality and a binary-cost all-base hereditary conclusion.",
+      "consequence_and_endpoint_proximity": "For every integer base b ≥ 2 it proves irrationality on every infinite positive support of finite prime-weighted mass; a positive host of finite binary weighted mass gives irrationality for every infinite subset at every integer base.",
+      "mechanism_depth_and_natural_friction": "The source proof builds a concrete weighted dyadic-mean producer with divisibility and scale control, obtains cofinal close returns, and consumes them in the irrationality criterion. The separate fixed-base hereditary theorem restricts the nonnegative weighted summability witness to subsets.",
+      "genuinely_distinct_content_and_independence": "Its analytic weighted-mass hypothesis covers a general support class and is not the classical full-support theorem or the pairwise-coprime certificate.",
+      "external_review_value": "The exact statement exposes the finite prime set, weighted series, support positivity, infinitude, base, and two hereditary quantifier patterns to independent statement and axiom comparison.",
+      "proof_digestion_value": "Readers can inspect the literal weighted term and see how finite weighted mass yields fixed-base irrationality, while base-two mass yields the stronger all-base hereditary clause.",
+      "evidence_certainty": "The source theorem is Lean-checked in PaperCompleteR8/WeightedReturn.lean:120. This packet adds a separately declared Comparator interface and thin transport; external Comparator replay remains pending.",
+      "overclaim_risk": "The finite-prime weighted-summability hypothesis and 0 ∉ support condition must stay visible. The theorem does not prove irrationality for arbitrary infinite support, novelty, priority, or external human review.",
+      "why_ranked_first": "It has the broadest unconditional direct irrationality conclusion among the selected #257 support criteria, with a concrete checked weighted-return mechanism and a binary-mass all-base hereditary clause."
+    },
+    {
+      "rank": 2,
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
       "family_id": "known_irrational_supports",
-      "selection_status": "selected",
+      "selection_status": "represented",
       "mathematical_nontriviality": "Unconditional irrationality of the full-support Erdős–Borwein series, with a completed certificate machine rather than a finite computation or a formal restatement.",
       "consequence_and_endpoint_proximity": "Directly settles the canonical full-support member of Erdős #257 for every integer base b >= 2, while leaving universal arbitrary-support irrationality open.",
       "mechanism_depth_and_natural_friction": "The source exposes the bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail bounds, and explicit parameter closure.",
@@ -1998,10 +2022,10 @@
       "proof_digestion_value": "It gives a reader a complete certificate-to-irrationality story and identifies the mechanism that differs from arbitrary-support routes.",
       "evidence_certainty": "The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.",
       "overclaim_risk": "Low only under the stated boundary: this is full support, not all infinite supports, and local proof plus Comparator is not a novelty or human-review claim.",
-      "why_ranked_first": "It dominates the current spine on combined direct consequence, completed mechanism, endpoint clarity, and evidence certainty; its classical status is disclosed rather than treated as a reason to hide it."
+      "why_not_ranked_first": "The theorem gives an unconditional classical full-support endpoint with a completed certificate proof, but the finite-prime weighted criterion covers a broad family of supports and has an all-base hereditary clause under binary weighted mass."
     },
     {
-      "rank": 2,
+      "rank": 3,
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "family_id": "pairwise_coprime_support",
       "selection_status": "represented",
@@ -2016,7 +2040,7 @@
       "why_not_ranked_first": "It is broader in support-class language but less direct as the canonical full-support endpoint and carries more restrictive hypotheses."
     },
     {
-      "rank": 3,
+      "rank": 4,
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
       "family_id": "orthogonal_petal_sunflower_reduction",
       "selection_status": "represented",
@@ -2031,7 +2055,7 @@
       "why_not_ranked_first": "The unresolved selector makes it less certain and less broadly applicable than the unconditional full-support result."
     },
     {
-      "rank": 4,
+      "rank": 5,
       "declaration": "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "family_id": "periodic_nonnegative_weight_irrationality",
       "selection_status": "represented",
@@ -2046,7 +2070,7 @@
       "why_not_ranked_first": "Its coefficient hypotheses are farther from the canonical arbitrary-support question than full support."
     },
     {
-      "rank": 5,
+      "rank": 6,
       "declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "family_id": "actual_lcm_orbit_separation",
       "selection_status": "represented",
@@ -2058,10 +2082,10 @@
       "proof_digestion_value": "It exposes how quantitative orbit separation would feed the irrationality theorem and identifies the exact producer a future proof must supply.",
       "evidence_certainty": "The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.",
       "overclaim_risk": "High unless the two cofinal supply clauses stay attached: the implication is source-faithful and checked, but the supply itself is not proved here.",
-      "why_not_ranked_first": "It has exceptional endpoint proximity and a deep mechanism, but it is conditional on the missing cofinal producer; the selected full-support theorem is an unconditional completed endpoint with lower hidden-premise risk."
+      "why_not_ranked_first": "It has exceptional endpoint proximity and a deep mechanism, but it is conditional on the missing cofinal producer; the selected finite-prime weighted theorem is an unconditional completed endpoint with lower hidden-premise risk."
     },
     {
-      "rank": 6,
+      "rank": 7,
       "declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
       "family_id": "first_harmonic_pivot_decomposition",
       "selection_status": "represented",
@@ -2076,7 +2100,7 @@
       "why_not_ranked_first": "Its endpoint consequence and mechanism are exceptional, but the selected #257 theorem is unconditional and the rank-5 actual-LCM route is the closer source-specific #249 producer interface."
     },
     {
-      "rank": 7,
+      "rank": 8,
       "declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "family_id": "strict_prime_tail_orbit_gap",
       "selection_status": "represented",
@@ -2091,7 +2115,7 @@
       "why_not_ranked_first": "It ranks below actual_lcm_orbit_separation and first_harmonic_pivot_decomposition because their source-specific quantitative sockets are stronger, but above finite certificate equivalences because it contributes a distinct producer mechanism rather than only an endpoint normal form."
     },
     {
-      "rank": 8,
+      "rank": 9,
       "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
       "family_id": "factorial_carry_characterisation",
       "selection_status": "subordinate",
@@ -2103,10 +2127,10 @@
       "proof_digestion_value": "Excellent for routing future work to the actual missing producer.",
       "evidence_certainty": "Exact committed source and Comparator transport are available.",
       "overclaim_risk": "High if the equivalence is mistaken for a cofinal carry proof.",
-      "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected full-support theorem."
+      "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected finite-prime weighted theorem."
     },
     {
-      "rank": 9,
+      "rank": 10,
       "declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "family_id": "prime_gap_reformulation",
       "selection_status": "subordinate",
@@ -2121,7 +2145,7 @@
       "why_not_ranked_first": "It is a reduction rather than a proved irrationality consequence."
     },
     {
-      "rank": 10,
+      "rank": 11,
       "declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
       "family_id": "totient_carry_anti_compression",
       "selection_status": "represented",
@@ -2136,7 +2160,7 @@
       "why_not_ranked_first": "It outranks coefficient-side kernel inventory because it is tied directly to hypothetical rationality, but remains below the producer-side strict-prime, first-harmonic, and actual-LCM routes because it supplies neither a contradiction nor a certificate producer."
     },
     {
-      "rank": 11,
+      "rank": 12,
       "declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
       "family_id": "half_membership_seam_classification",
       "selection_status": "represented",
@@ -2151,7 +2175,7 @@
       "why_not_ranked_first": "It is promoted as the strongest underweighted survivor, but stays beneath all unconditional #257 endpoints and the producer-side #249 routes because it classifies rather than supplies its global endpoint condition."
     },
     {
-      "rank": 12,
+      "rank": 13,
       "declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
       "family_id": "negative_mass_recovery",
       "selection_status": "represented",
@@ -2169,29 +2193,36 @@
   "candidate_selection": {
     "selected": true,
     "problem": 257,
-    "family_id": "known_irrational_supports",
-    "claim_id": "eb_full_support",
-    "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
-    "source_declaration": "Erdos249257.irrational_erdosSum_full_support",
-    "source_file": "Erdos249257/CertificateKernel.lean",
-    "source_anchor": "8323-8331",
-    "statement": "For every integer base b >= 2, the full-support Erdős–Borwein series sum over k >= 0 of 1/(b^(k+1)-1) is irrational.",
+    "family_id": "finite_prime_weighted_support",
+    "claim_id": "finite_prime_weighted_support",
+    "declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+    "source_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+    "source_file": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+    "source_anchor": "120",
+    "statement": "For every integer base b ≥ 2, every infinite positive support A of finite prime-weighted mass in base b has an irrational support series. If a positive host H has finite prime-weighted mass in base 2, every infinite subset of H has an irrational support series at every integer base b ≥ 2.",
     "exact_hypotheses": [
-      "2 <= b"
+      "A finite nonempty set P of primes witnesses summability over the support of primeSetPart(P,a)/(a(b^primeSetPart(P,a)-1)).",
+      "In the first clause: 2 ≤ b, 0 ∉ A, and A is infinite.",
+      "In the hereditary clause: 0 ∉ H, finite weighted mass is in base 2, A ⊆ H, and A is infinite."
     ],
-    "conclusion": "Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))",
-    "open_boundary": "This proves the full-support series only; irrationality for every infinite support in Erdős #257 remains open.",
-    "hard_mechanism": "The source proof closes a weighted divisor-block certificate pipeline: a bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail control, and explicit parameter closure. The local theorem is the final consumer of that completed machine.",
-    "why_this_is_the_showcase": "It is the strongest direct and unconditional endpoint result in the committed Comparator spine: a canonical full-support member of Erdős #257 with a visible completed mechanism and a clean statement-isolated Challenge type. Its classical attribution is disclosed, not hidden, and does not diminish its review value.",
-    "attribution": "The source docstring records Erdős (1948) for the full-support theorem; the local Lean proof is the proof authority, while the cited source and repository prior-art ledger supply attribution and statement-fidelity context.",
+    "conclusion": "Both conjuncts of DivisibilityWeightedClaim hold: fixed-base weighted irrationality and binary-mass all-base hereditary irrationality.",
+    "open_boundary": "Finite prime-weighted mass is a sufficient support condition; universal irrationality for all infinite supports in Erdős #257 remains open.",
+    "hard_mechanism": "A concrete weighted dyadic mean on one sampling scheme supplies arbitrarily close displacement returns. The source consumes those returns for fixed-base irrationality and uses binary returns for the all-base hereditary clause.",
+    "why_this_is_the_showcase": "The weighted theorem has the broadest unconditional direct support-class conclusion in the checked #257 packet. Its two clauses and the exact weighted-mass premise are visible in the statement-isolated Challenge.",
+    "attribution": "The theorem is proved locally in Lean at WeightedReturn.lean:120. Novelty, priority, significance, and independent human mathematical review are not asserted.",
     "limitations": [
-      "It proves only the full-support series, not irrationality for every infinite support.",
-      "It does not solve universal Erdős #257.",
-      "The base condition b >= 2 is part of the theorem and no other base or support interpretation is implicit.",
-      "Comparator establishes statement identity and configured axiom use, not novelty or editorial significance."
+      "Neither clause covers every infinite support.",
+      "The all-base hereditary clause requires finite binary weighted mass; weighted mass at another base yields only the same-base hereditary theorem.",
+      "Comparator transport is configured here; an external Comparator receipt is not claimed until replay succeeds."
     ]
   },
   "selection_comparison": [
+    {
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "family_id": "known_irrational_supports",
+      "disposition": "not_selected_alternative",
+      "reason": "The classical full-support theorem is unconditional and has a completed certificate proof, but the selected finite-prime weighted criterion gives irrationality for a broader support class and an all-base hereditary consequence from binary weighted mass."
+    },
     {
       "declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "family_id": "actual_lcm_orbit_separation",
@@ -2202,7 +2233,7 @@
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "family_id": "pairwise_coprime_support",
       "disposition": "not_selected_alternative",
-      "reason": "It is the nearest alternative and remains a high-value distinct result, but its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses cover a narrower support class; the selected full-support theorem has the more canonical direct endpoint and a completed divisor-block certificate pipeline."
+      "reason": "The pairwise-coprime theorem remains a distinct non-dilation result, but its support and summable-reciprocal hypotheses are narrower than the finite-prime weighted criterion selected as the broad direct lead."
     },
     {
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
@@ -2463,6 +2494,12 @@
       "family_id": "actual_foreign_residue_projection",
       "disposition": "supporting_conditional_reduction",
       "reason": "The committed representative exposes the exact finite foreign/divisor partition, geometric tail control, and generic separated-projection consumer for the canonical actual_foreign_residue_projection family; its controlled-projection bridge and unbounded supply remain open, so it is represented conditional evidence rather than a #249 endpoint."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
+      "family_id": "finite_prime_weighted_support",
+      "disposition": "supporting_auxiliary",
+      "reason": "The exact same-base hereditary theorem extends fixed-base weighted irrationality to every infinite subset of a positive host, using restriction of the nonnegative summability witness. It is subordinate to the two-clause weighted lead and does not infer all-base irrationality from weighted mass at an arbitrary base."
     }
   ],
   "frontier_by_problem": [
@@ -2529,11 +2566,15 @@
     {
       "problem": 257,
       "status": "open",
-      "frontier_summary": "The checked frontier combines achievement-set geometry, full and structured support irrationality, finite-period noncollapse, state extraction, composite-dilation defects, exact-row conditional dynamics, and the sharp two-adic band bound.",
+      "frontier_summary": "The checked frontier leads with finite-prime weighted irrationality and its binary-mass all-base hereditary clause, alongside classical and other structured supports, achievement-set geometry, finite-period noncollapse, exact carry reductions, and conditional half-value routes.",
       "open_boundary": "Universal irrationality for every infinite support, including the unresolved half and 1/21 membership routes.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
         "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+        "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+        "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
+        "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+        "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
         "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
         "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
         "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
@@ -2542,9 +2583,7 @@
         "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
         "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
         "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
-        "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
-        "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
-        "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic"
+        "Erdos249257.ExternalVerification.seven_le_of_intBand_odd"
       ]
     },
     {
@@ -2584,7 +2623,7 @@
   ],
   "release_boundary": {
     "qualification": "READY",
-    "why": "The committed public checkout satisfies the repository-local Palomar structural contract for the current 51-declaration Comparator roster. This local result does not claim that any external review, submission, registration, or publication has occurred.",
+    "why": "The committed public checkout satisfies the repository-local Palomar structural contract for its current Comparator roster. This local result does not claim that any external review, submission, registration, or publication has occurred.",
     "not_claimed": [
       "universal Erdős #257 solved",
       "any of the eight open problems solved",

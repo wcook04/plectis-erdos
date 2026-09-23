@@ -234,11 +234,25 @@ def accepted_result_matrix() -> tuple[list[tuple[str, dict, bytes]], str]:
                 "disposition": "supersede",
             }
         payload = contributions.canonical(receipt)
-        errors = return_validator.validate_document(
-            receipt,
-            require_accepted=True,
-            repository_identity=checker.repository_identity_contract.load_identity(),
-        )
+        if result_class == "corrective":
+            # The matrix is in-memory; its positive row stands in for a
+            # committed accepted source in the validator's public lookup.
+            with patch.object(
+                return_validator,
+                "committed_prior_receipts",
+                return_value=[(f"docs/research-commons/returns/{sources[0][0]}", sources[0][1])],
+            ):
+                errors = return_validator.validate_document(
+                    receipt,
+                    require_accepted=True,
+                    repository_identity=checker.repository_identity_contract.load_identity(),
+                )
+        else:
+            errors = return_validator.validate_document(
+                receipt,
+                require_accepted=True,
+                repository_identity=checker.repository_identity_contract.load_identity(),
+            )
         require(not errors, f"accepted {result_class} fixture failed intake validation: {errors}")
         sources.append((f"{receipt['return_id']}.json", receipt, payload))
     return sources, head

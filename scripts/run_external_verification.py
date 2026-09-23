@@ -257,6 +257,18 @@ def is_expected_negative_rejection(
     return exit_code != 0 and expected in log_text
 
 
+def runtime_statement_contract(owner: dict, packet: dict) -> dict:
+    """Bind the receipt to every Comparator interface, including auxiliary ones."""
+    return {
+        "config": owner["comparator"]["config"],
+        "config_digest": packet["config_digest"],
+        "challenge_import_closure": packet["challenge_import_closure"],
+        "trusted_build_inputs": packet["trusted_build_inputs"],
+        "theorem_names": packet["comparator"]["theorem_names"],
+        "permitted_axioms": owner["comparator"]["permitted_axioms"],
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", default="final")
@@ -369,14 +381,7 @@ def main() -> int:
             "problem_ids": owner["problem_ids"],
             "all_statuses_open": all_statuses_open,
         },
-        "statement_contract": {
-            "config": owner["comparator"]["config"],
-            "config_digest": packet["config_digest"],
-            "challenge_import_closure": packet["challenge_import_closure"],
-            "trusted_build_inputs": packet["trusted_build_inputs"],
-            "theorem_names": [row["wrapper_declaration"] for row in owner["main_results"]],
-            "permitted_axioms": owner["comparator"]["permitted_axioms"],
-        },
+        "statement_contract": runtime_statement_contract(owner, packet),
         "checks": {
             "projection_and_isolation_check_exit": projection_check,
             "positive_comparator_exit": args.positive_exit,

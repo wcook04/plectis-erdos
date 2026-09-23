@@ -9523,8 +9523,16 @@ def publication_architecture_packet() -> dict[str, Any]:
     claims = load("docs/claims.json")
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     family_index = []
+    shared_route_memory_posture = None
     for row in assembly["contribution_families"]:
-        family_route_memory = publication_family_packet(row["id"])["route_memory"]
+        family_route_memory = dict(publication_family_packet(row["id"])["route_memory"])
+        # This posture is common to every family; publish it once so growth in
+        # the family index does not spend the cold-clone packet budget on repeats.
+        posture = family_route_memory.pop("authority_posture")
+        if shared_route_memory_posture is None:
+            shared_route_memory_posture = posture
+        elif posture != shared_route_memory_posture:
+            raise ValueError("publication family route-memory authority postures disagree")
         family_index.append(
             {
                 "id": row["id"],
@@ -9538,6 +9546,7 @@ def publication_architecture_packet() -> dict[str, Any]:
     return {
         "kind": "publication_architecture",
         "authority_posture": "authored_editorial_topology_not_proof_authority",
+        "family_route_memory_authority_posture": shared_route_memory_posture,
         "architecture": assembly["publication_architecture"],
         "family_index": family_index,
         "coverage_rule": assembly["coverage_rule"],

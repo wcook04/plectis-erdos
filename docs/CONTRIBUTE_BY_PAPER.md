@@ -50,7 +50,7 @@ python3 scripts/query_route_memory.py --problem 68
 
 Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
 
-The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.
+Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.
 
 The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
 
@@ -62,8 +62,8 @@ The eventual Sylvester recurrence assertion remains open in this release; the bo
 
 Existing questions:
 
-- Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part.
-- Derive eventual strict centring and normalised vanishing from the growth hypothesis and rationality, or show that they do not follow.
+- Exclude or construct exact orbits with infinitely many unbounded negative centred excursions. Checked exclusions assume bounded negative part, a fixed period, or fixed prime divisors.
+- Derive a lower bound on centred error from the original growth and rational-sum hypotheses, control unbounded negative excursions another way, or construct a counterexample.
 - Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses.
 
 [Return work on #243](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23243&question=Erd%C5%91s+%23243%3A+Under+a+rapid-growth+hypothesis+on+an+integer+sequence%2C+does+rationality+of+its+reciprocal+sum+force+the+sequence+to+satisfy+the+Sylvester+recurrence+eventually%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
@@ -195,28 +195,28 @@ python3 scripts/query_route_memory.py --problem 269
 
 ## Problem 1041
 
-For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.
+Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.
 
-An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.
+For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound.
 
-The historical curve-length formulation remains an unadjudicated programme target in this registry. The separate checked degree-seven example refutes the universal formulation using total variation of continuous paths in the strict unit lemniscate. No Hausdorff-measure comparison or independent human review of historical correspondence is recorded.
+Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.
 
 [Short paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Read as text](../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md)
 
 [Long record](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
-- Determine the precise correspondence between the historical curve-length question and the refuted total-variation formulation, including any required Hausdorff-measure comparison and independent human review.
-- The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality.
-- Construct and verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses, as auxiliary structure for restricted families or a correspondence-adjusted historical formulation. It does not imply a universal sub-two total-variation connector.
-- The degree-seven counterexample rules out universal total-variation gluing below two. For a stated restricted family or different historical length notion, derive a metric gluing inequality with all positive attachment costs explicit; the false printed 1/(2π) coefficient may not be retained.
-- Given a polynomial/component and an already selected connector with explicit strict slack, quantify a two-stage perturbation preserving roots, that component, collars, ray separation, and the stated slack. No universal existence or sub-two conclusion is asserted.
-- Under explicit relative component, saddle, and corrected metric hypotheses, derive the corresponding root-to-root Newton-flow connector. The theorem must state its restricted hypotheses and cannot imply a sub-two total-variation connector for every polynomial.
+- Independently review whether the 1958 curve-length wording matches the refuted Formal Conjectures path-image Hausdorff statement.
+- Repair or replace the false Proposition 12 spanning-tree estimate; account for positive attachment costs or use another metric inequality.
+- Verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses for restricted families; it gives no universal sub-two connector.
+- For a restricted family or different historical length notion, prove a metric gluing inequality that pays every positive attachment cost; universal sub-two total-variation gluing is refuted.
+- Given a selected connector with strict slack, quantify a two-stage perturbation preserving roots, component, collars, ray separation, and slack; no universal existence claim follows.
+- Under explicit component, saddle, and corrected metric hypotheses, derive a restricted root-to-root Newton-flow connector without a universal sub-two claim.
 
-[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+For+a+monic+polynomial+whose+roots+lie+in+the+open+unit+disc%2C+must+two+roots+be+joinable+by+a+curve+of+length+less+than+two+inside+the+open+unit+lemniscate%3F+The+registry+has+not+adjudicated+whether+the+checked+total-variation+formulation+exactly+matches+this+historical+curve-length+question.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+Must+two+roots+of+a+monic+polynomial+in+the+open+unit+disc+be+joined+by+a+sub-two-length+curve+inside+its+unit+lemniscate%3F+Ani%E2%80%99s+degree-seven+example+refutes+the+exact+Formal+Conjectures+statement%3B+correspondence+with+the+1958+wording+awaits+human+review.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -229,7 +229,7 @@ python3 scripts/query_route_memory.py --problem 1041
 
 For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
 
-That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
+Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2.
 
 For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.
 
@@ -241,7 +241,7 @@ For rational bases in the Zudilin contour region, including every positive integ
 
 Existing questions:
 
-- After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction.
+- After rowwise primitive normalisation, exhibit at least 4R_n+2S_n coefficient pairs at positive quadratic depths from a non-collapsed deformation; preserve the two- and three-adic gain; then show that one checked {-1,0,1} collision has a nonzero polynomial pair outside the analytic remainder nullspace, or prove an exact rank obstruction.
 
 [Return work on #1049](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231049&question=Erd%C5%91s+%231049%3A+For+which+rational+bases+is+the+corresponding+series+irrational%3F+The+first+resistant+explicit+base+is+three+halves.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
 

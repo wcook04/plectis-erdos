@@ -33,6 +33,8 @@
     "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
     "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+    "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+    "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
     "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
     "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
     "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",

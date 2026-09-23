@@ -18,6 +18,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -36,6 +37,7 @@ DEFAULT_SESSIONS_ROOT = ROOT / "research" / "workbench" / "sessions"
 SESSION_SCHEMA = "research-continuation-session/1"
 CHECK_SCHEMA = "research-continuation-check/1"
 PACKAGE_SCHEMA = "research-return-package/1"
+SOURCE_ARTIFACT_SCHEMA = "research-return-source-snapshot/1"
 # The route-memory receipt owns the frozen public roster.  Reuse that exact
 # object here so continuation selection cannot drift from the canonical route
 # authority as the corpus evolves.
@@ -1290,6 +1292,11 @@ def check_session(
                 returned,
                 require_submitted=True,
                 check_git=True,
+                require_complete_proposed_diff=(
+                    require_closed
+                    and isinstance(returned.get("repository"), dict)
+                    and returned["repository"].get("proposed_commit") is not None
+                ),
             )
         )
         errors.extend(cross_check_return(manifest, returned))
@@ -1378,6 +1385,118 @@ def _sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _source_git(root: Path, *args: str) -> bytes:
+    """Read public Git source with the same bounded, scrubbed command boundary."""
+    try:
+        completed = subprocess.run(
+            ["git", *args], cwd=root, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, check=False, env=git_environment(),
+            timeout=GIT_LOOKUP_TIMEOUT_SECONDS,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise SystemExit(f"package source Git lookup failed: {exc}") from exc
+    if completed.returncode != 0:
+        detail = completed.stderr.decode("utf-8", errors="replace").strip()
+        raise SystemExit(f"package source Git lookup failed: {detail or 'unknown Git error'}")
+    return completed.stdout
+
+
+def source_artifact_files(
+    returned: dict[str, Any], root: Path = ROOT, *, dirty_at_start: bool = False,
+) -> tuple[dict[str, bytes], dict[str, Any]]:
+    """Bundle every claimed source path, including deletions, for another clone.
+
+    A proposed commit gives an exact Git delta boundary. A clean uncommitted
+    start can also detect omitted tracked and nonignored untracked paths. Dirt
+    present before session start has no recorded path baseline, so that case
+    remains an explicitly limited declared-content snapshot.
+    """
+    repository = returned["repository"]
+    starting = repository["starting_commit"]
+    proposed = repository["proposed_commit"]
+    declared = repository["changed_paths"]
+    if proposed is not None:
+        observed = {
+            item.decode("utf-8", errors="surrogateescape")
+            for item in _source_git(
+                root, "diff", "--name-only", "--no-renames", "-z",
+                starting, proposed, "--",
+            ).split(b"\0") if item
+        }
+        omitted = sorted(observed - set(declared))
+        unsupported = sorted(set(declared) - observed)
+        if omitted or unsupported:
+            raise SystemExit(
+                "package source changed_paths must equal the complete proposed Git diff; "
+                f"omitted={omitted}; absent_from_diff={unsupported}"
+            )
+    elif not dirty_at_start:
+        observed = {
+            item.decode("utf-8", errors="surrogateescape")
+            for command in (
+                ("diff", "--name-only", "--no-renames", "-z", starting, "--"),
+                ("ls-files", "--others", "--exclude-standard", "-z"),
+            )
+            for item in _source_git(root, *command).split(b"\0") if item
+        }
+        omitted = sorted(observed - set(declared))
+        if omitted:
+            raise SystemExit(
+                f"package source changed_paths omit clean-start worktree paths: {omitted}"
+            )
+
+    files: dict[str, bytes] = {}
+    entries: list[dict[str, Any]] = []
+    for path in sorted(declared):
+        package_path = f"source/{path}"
+        if proposed is not None:
+            tree_rows = [
+                row for row in _source_git(root, "ls-tree", "-z", proposed, "--", path).split(b"\0")
+                if row
+            ]
+            if not tree_rows:
+                entries.append({"path": path, "state": "deleted", "package_path": None})
+                continue
+            if len(tree_rows) != 1 or b"\t" not in tree_rows[0]:
+                raise SystemExit(f"package source has ambiguous Git tree entry: {path}")
+            metadata, found_path = tree_rows[0].split(b"\t", 1)
+            if found_path.decode("utf-8", errors="surrogateescape") != path:
+                raise SystemExit(f"package source Git tree path differs from declared path: {path}")
+            mode = metadata.split(b" ", 1)[0].decode("ascii")
+            if mode not in {"100644", "100755"}:
+                raise SystemExit(f"package source requires a regular file: {path} ({mode})")
+            data = _source_git(root, "show", f"{proposed}:{path}")
+        else:
+            target = root / path
+            if return_validator.path_has_symlink_component(target):
+                raise SystemExit(f"package source path must not traverse symbolic links: {path}")
+            if not target.exists():
+                _source_git(root, "cat-file", "-e", f"{starting}:{path}")
+                entries.append({"path": path, "state": "deleted", "package_path": None})
+                continue
+            if not target.is_file() or not stat.S_ISREG(target.stat().st_mode):
+                raise SystemExit(f"package source requires a regular file: {path}")
+            mode = "100755" if target.stat().st_mode & 0o111 else "100644"
+            data = target.read_bytes()
+        files[package_path] = data
+        entries.append({
+            "path": path, "state": "present", "package_path": package_path,
+            "mode": mode, "sha256": _sha256(data), "bytes": len(data),
+        })
+    return files, {
+        "schema": SOURCE_ARTIFACT_SCHEMA,
+        "starting_commit": starting,
+        "proposed_commit": proposed,
+        "coverage": "exact_proposed_git_diff" if proposed else "declared_worktree_snapshot",
+        "omission_check": (
+            "exact_proposed_git_diff" if proposed else
+            "clean_start_worktree" if not dirty_at_start else
+            "unavailable_preexisting_dirt"
+        ),
+        "entries": entries,
+    }
+
+
 def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
     receipt, returned = check_session(
         args.sessions_root,
@@ -1421,6 +1540,10 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
     else:
         files["session/route-memory-consultation.json"] = session_artifact_bytes(directory / "route-memory-consultation.json", args.sessions_root, "route-memory consultation")
         files["route-memory.json"] = args.route_memory_receipt.read_bytes()
+    source_files, source_artifact = source_artifact_files(
+        returned, dirty_at_start=bool(manifest.get("dirty_at_start"))
+    )
+    files.update(source_files)
     probes_dir = directory / "probes"
     if probes_dir.is_dir():
         if has_symlink_component(probes_dir, args.sessions_root):
@@ -1470,6 +1593,7 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
         **({"track": "architecture", "area": manifest["area"], "workflow_consultation": manifest["workflow_consultation"]}
            if architecture else {"route_memory": package_route_memory}),
         "created_at": utc_now(),
+        "source_artifact": source_artifact,
         "return_index": {
             "source": "return.json",
             "identity": returned["identity"],
@@ -1529,6 +1653,13 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
                     '--route-memory-receipt "$PACKAGE_DIR/route-memory.json"'
                 ),
             },
+            "source_recovery": (
+                "Start at source_artifact.starting_commit in a public checkout. For each "
+                "source_artifact.entries row, copy the hashed package_path to path with "
+                "the recorded mode, or remove path when state is deleted. This restores "
+                "the returned file tree without requiring the proposed commit. Read "
+                "source_artifact.omission_check for the completeness boundary."
+            ),
         },
         "github_intake": {
             "issue_form": ".github/ISSUE_TEMPLATE/research_return.yml",
@@ -1572,6 +1703,10 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
         )
         package_manifest["github_intake"].pop("pull_request_route_memory_receipt")
         package_manifest["github_intake"]["local_validation"] = command
+    if returned["repository"]["proposed_commit"] is not None:
+        suffix = " --require-complete-proposed-diff"
+        package_manifest["validation"]["repository_backed"]["command"] += suffix
+        package_manifest["github_intake"]["local_validation"] += suffix
     files["package.json"] = dump_json(package_manifest).encode("utf-8")
     created_output = False
     try:

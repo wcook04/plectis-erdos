@@ -5,7 +5,7 @@ Bind the eight public Erdős programmes to the exact Formal Conjectures source s
 
 **Upstream:** [https://github.com/google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures) at exact commit [`f2de2ed5841e2105009be778ada0c40c08980125`](https://github.com/google-deepmind/formal-conjectures/commit/f2de2ed5841e2105009be778ada0c40c08980125). Source hashes are SHA-256 over exact file bytes.
 
-**Boundary:** this is statement-identity and adapter-review metadata, not a Lean equivalence proof, novelty finding, contribution claim, or submission-readiness decision. Every problem remains open. Every row is `not_ready_to_submit`.
+**Boundary:** this records statement identity, local proof evidence and adapter status; it does not establish novelty, historical correspondence or upstream acceptance. The exact Formal Conjectures #1041 Hausdorff path-image statement is refuted by ani's one-polynomial example, while correspondence with the 1958 wording still needs independent review. The other seven original targets remain open. Submission status belongs to each row below.
 
 | Problem | Upstream primary declaration | Adapter |
 |---:|---|---|
@@ -135,17 +135,18 @@ Local question: For a finite set of at least two primes, is the sum of reciproca
 
 ### Erdős #1041
 
-Local question: For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.
+Local question: Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.
 
-- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1041` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1041` (canonical problem packet); Returns the local problem packet with the exact Formal Conjectures Hausdorff refutation, credited source, papers, declarations and historical-review boundary.
 
 - Upstream declaration: [`Erdos1041.erdos_1041`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/1041.lean#L67) at `FormalConjectures/ErdosProblems/1041.lean:67`; proof status `sorry`.
-- Statement scope: Both surfaces ask for two roots connected inside the open unit lemniscate by a curve with a bound below two, but the exact formal notion of length needs review.
+- Statement scope: The local Hausdorff theorem refutes the exact Formal Conjectures path-image-length proposition for ani's degree-seven polynomial. The 1958 curve-length wording remains a separate historical correspondence audit.
 - Indexing: There is no series indexing issue. The upstream theorem quantifies polynomial degree n >= 2 and selects roots through multiset containment, including multiplicity.
-- Casts and ambient types: The path lies in Complex; length is defined as one-dimensional Hausdorff measure of the path range in ENNReal, not directly as parameterized rectifiable path length.
-- Answer/proof status: The upstream component lemma and open theorem both have sorry proofs.
+- Casts and ambient types: Both formal statements use a Complex path whose image lies in the strict unit lemniscate; length is one-dimensional Hausdorff measure of Set.range γ in ENNReal. The older local total-variation theorem is separate.
+- Answer/proof status: The pinned upstream declaration still has answer(sorry) and a sorry proof. Local Lean proves the standalone negation of its exact Hausdorff formulation and the answer(False) form; no upstream change or human historical adjudication is recorded here.
 - Conservative verdict: `statement_level_alignment_only`.
 - Machine-checked equivalence: `none`.
+- Local refutation: `Erdos1041.Counterexample.erdos1041_hausdorff_negation` and `Erdos1041.Counterexample.erdos1041_hausdorff_answer_false` at `7380b7871687b6bcc41ca0143c61f232e8af6500`; ani, erdosproblems.com forum thread 1041, 7 September 2026. Exact Formal Conjectures path-image formulation refuted; independent review of correspondence with the 1958 wording remains open.
 - Submission status: `not_ready_to_submit`.
 
 ### Erdős #1049

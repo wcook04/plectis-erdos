@@ -2611,6 +2611,13 @@ def main() -> int:
         "bound",
         "unbound",
     }
+    assert architecture["family_route_memory_authority_posture"] == (
+        "derived_resume_handoff_not_claim_or_proof_authority"
+    )
+    assert all(
+        "authority_posture" not in row["route_memory"]
+        for row in architecture["family_index"]
+    )
     assert all(
         set(row["route_memory"]) >= {"status", "bindings", "boundary"}
         for row in architecture["family_index"]

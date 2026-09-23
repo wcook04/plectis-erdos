@@ -395,6 +395,7 @@ DISPOSITIONS = {
     "not_requested",
 }
 CORRECTION_DISPOSITIONS = {"retain", "supersede", "withdraw", "request_review"}
+PUBLIC_RETURN_RECEIPTS = "docs/research-commons/returns"
 REVIEW_STATES = {
     "structural_validation": {"pending", "valid", "invalid"},
     "reproduction": {"pending", "reproduced", "not_reproduced", "not_required"},
@@ -726,13 +727,55 @@ def _validate_correction_lineage(value: Any, check: Validation) -> dict[str, Any
     return lineage
 
 
+def committed_prior_receipts(return_id: str) -> list[tuple[str, dict[str, Any]]] | None:
+    """Find a prior return by exact ID in committed public receipt blobs only.
+
+    `HEAD` supplies both the source inventory and payload. Working-tree files,
+    including an uncommitted acceptance decision, cannot establish lineage.
+    None means the Git inventory itself could not be inspected.
+    """
+    listed = _run_git(
+        ["ls-tree", "-r", "-z", "--name-only", "HEAD", "--", PUBLIC_RETURN_RECEIPTS],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+    )
+    if listed is None or listed.returncode != 0:
+        return None
+    matches: list[tuple[str, dict[str, Any]]] = []
+    for raw_path in listed.stdout.split(b"\0"):
+        if not raw_path:
+            continue
+        try:
+            path = raw_path.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        if Path(path).parent.as_posix() != PUBLIC_RETURN_RECEIPTS or not path.endswith(".json"):
+            continue
+        blob = _run_git(
+            ["show", f"HEAD:{path}"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+        )
+        if blob is None or blob.returncode != 0:
+            return None
+        try:
+            value = json.loads(blob.stdout)
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            continue
+        if isinstance(value, dict) and value.get("return_id") == return_id:
+            matches.append((path, value))
+    return matches
+
+
 def validate_document(
     data: Any,
     *,
     require_accepted: bool = False,
     require_submitted: bool = False,
     check_git: bool = False,
+    require_complete_proposed_diff: bool = False,
     repository_identity: dict[str, Any] | None = None,
+    _lineage_seen: frozenset[str] = frozenset(),
 ) -> list[str]:
     check = Validation()
     try:
@@ -798,6 +841,11 @@ def validate_document(
             _commit(value, f"repository.{field}", check, nullable=field != "starting_commit")
             if isinstance(value, str) and COMMIT_RE.fullmatch(value):
                 commits.append((field, value))
+        if require_complete_proposed_diff and repository.get("proposed_commit") is None:
+            check.error(
+                "repository.proposed_commit",
+                "complete proposed-diff validation requires a proposed commit",
+            )
         changed_paths = check.string_list(
             repository.get("changed_paths"), "repository.changed_paths", nonempty=True
         )
@@ -934,11 +982,58 @@ def validate_document(
                 "correction_lineage.starting_commit",
                 "must equal repository.starting_commit",
             )
-        if correction_lineage.get("prior_return_reference") == return_id:
+        prior_reference = correction_lineage.get("prior_return_reference")
+        if isinstance(prior_reference, str) and (
+            prior_reference == return_id or prior_reference in _lineage_seen
+        ):
             check.error(
                 "correction_lineage.prior_return_reference",
-                "must identify a prior return rather than this return_id",
+                "must identify an earlier return without a lineage cycle",
             )
+        elif prior_reference == "none":
+            if correction_lineage.get("disposition") != "request_review":
+                check.error(
+                    "correction_lineage.prior_return_reference",
+                    "none is permitted only for an original correction requesting review",
+                )
+        elif not isinstance(prior_reference, str) or not RETURN_ID_RE.fullmatch(prior_reference):
+            check.error(
+                "correction_lineage.prior_return_reference",
+                "must be none or an exact rr-* return ID from a committed public accepted receipt",
+            )
+        else:
+            prior_matches = committed_prior_receipts(prior_reference)
+            if prior_matches is None:
+                check.error(
+                    "correction_lineage.prior_return_reference",
+                    "could not inspect committed public receipt sources",
+                )
+            elif len(prior_matches) != 1:
+                check.error(
+                    "correction_lineage.prior_return_reference",
+                    "must identify exactly one committed public accepted receipt",
+                )
+            else:
+                prior_path, prior_receipt = prior_matches[0]
+                if prior_receipt.get("record_kind") != "accepted_receipt":
+                    check.error(
+                        "correction_lineage.prior_return_reference",
+                        f"{prior_path} is not an accepted receipt",
+                    )
+                else:
+                    prior_errors = validate_document(
+                        prior_receipt,
+                        require_accepted=True,
+                        repository_identity=identity_contract,
+                        _lineage_seen=_lineage_seen | {return_id}
+                        if isinstance(return_id, str)
+                        else _lineage_seen,
+                    )
+                    if prior_errors:
+                        check.error(
+                            "correction_lineage.prior_return_reference",
+                            f"{prior_path} fails accepted receipt validation: {prior_errors[0]}",
+                        )
         requests_review = correction_lineage.get("disposition") == "request_review"
         routed_for_review = result.get("requested_disposition") == "review_correction"
         if requests_review and not routed_for_review:
@@ -1290,6 +1385,13 @@ def validate_document(
                             "repository.changed_paths",
                             f"paths are absent from the starting-to-{field} Git diff: {absent_paths}",
                         )
+                    if field == "proposed_commit" and require_complete_proposed_diff:
+                        omitted_paths = sorted(git_paths - set(changed_paths))
+                        if omitted_paths:
+                            check.error(
+                                "repository.changed_paths",
+                                f"paths omitted from the complete proposed Git diff: {omitted_paths}",
+                            )
                 proposed_commit = repository.get("proposed_commit")
                 accepted_commit = repository.get("accepted_commit")
                 if (
@@ -1335,6 +1437,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="verify every recorded commit against local Git history",
     )
     parser.add_argument(
+        "--require-complete-proposed-diff",
+        action="store_true",
+        help="reject omitted paths in the starting-to-proposed Git diff (requires --check-git and a proposed commit)",
+    )
+    parser.add_argument(
         "--repository-identity",
         type=Path,
         default=IDENTITY_PATH,
@@ -1356,6 +1463,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.require_complete_proposed_diff and not args.check_git:
+        raise SystemExit("--require-complete-proposed-diff requires --check-git")
     unsafe_inputs = []
     if path_has_symlink_component(args.input):
         unsafe_inputs.append("input path must not traverse symbolic links")
@@ -1408,6 +1517,7 @@ def main(argv: list[str] | None = None) -> int:
         require_accepted=args.require_accepted,
         require_submitted=args.require_submitted,
         check_git=args.check_git,
+        require_complete_proposed_diff=args.require_complete_proposed_diff,
         repository_identity=identity_contract,
     )
     route_memory_receipt_path = args.route_memory_receipt

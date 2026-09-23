@@ -218,10 +218,11 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "claim-transition architecture",
         "six things that are commonly collapsed",
         "after a proof is found, what exactly may move into a reviewed public claim",
-        "refutes the total-variation formulation of Problem 1041",
-        "historical curve-length question has not had independent human review",
+        "refutes the Formal Conjectures 1041 claim about one-dimensional Hausdorff measure of path images",
+        "its relation to the 1958 question remains unreviewed",
         "other seven target problems remain unresolved",
-        "does not claim a solution to any of them",
+        "The other programmes are not claimed solved",
+        "Arbitrary infinite supports remain open",
     ),
     "problem_worlds_and_nonfungible_authority": (
         "A problem is a mathematical world, not a folder",
@@ -305,11 +306,12 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "design target rather than a reported benchmark",
     ),
     "public_return_and_credit": (
-        "fork or clone the repository",
-        "pull request or research-progress issue",
-        "Only an accepted receipt enters",
-        "Acceptance, mathematical claim status, and release inclusion remain separate",
-        "Attribution and pull requests are standard practice",
+        "plain-language research-progress issue or email",
+        "No clone, proof, code, or receipt schema is required",
+        "Accepted work receives a public receipt tied to exact artifacts",
+        "Acceptance does not establish theorem status, novelty, or release inclusion",
+        "Corrections append history",
+        "Infrastructure has its own",
     ),
     "real_public_routes": (
         "docs/ARCHITECTURE.md",
@@ -319,7 +321,8 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "docs/verification/PALOMAR_QUALIFICATION.md",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
-        "docs/research-commons/CONTRIBUTIONS.md",
+        "docs/research-commons/CREDIT_POLICY.md",
+        "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
     ),
 }
 

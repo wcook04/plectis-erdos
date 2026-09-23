@@ -272,6 +272,18 @@ git diff --cached --check
 git diff --cached --stat
 ```
 
+For a structured package, `package.json::source_artifact.entries` is the
+source file set. Verify every present entry's SHA-256 against its `source/`
+file, then copy it to `path` in the starting checkout with the recorded mode;
+remove each `state: deleted` path. Stage the paths and compare `git write-tree`
+with the proposed commit's tree if that commit is available. The package
+preserves source content without requiring the proposed commit to be fetched.
+Its manifest distinguishes `exact_proposed_git_diff` from a
+`declared_worktree_snapshot`. For a clean uncommitted start, the packager also
+rejects observed tracked and nonignored untracked edits omitted from `changed_paths`.
+Pre-existing dirty work has no recorded path baseline; its omission check is
+marked unavailable in the manifest.
+
 For a proposed commit, fetch that commit from the public remote named in the
 return, verify that it descends from the recorded base, and select it instead
 of applying a patch:
@@ -384,6 +396,10 @@ python3 scripts/continue_research.py package \
   --output "$RETURN_DIR/package"
 ```
 
+When `repository.proposed_commit` is set, add
+`--require-complete-proposed-diff` to the standalone validator command. The
+packager applies the same check for a proposed commit.
+
 Run the next command only if the previous command succeeds. `check` validates
 session/return agreement but does not require closure; `package` also requires
 a closed session with a compatible outcome. Add `--replay` to `check` or
@@ -392,10 +408,19 @@ It does not apply the proposed patch or run every command listed in
 `return.json`.
 
 The package directory must not already exist. The command copies the filled
-inputs as `return.json` and `route-memory.json`, copies selected session
-records and probe files, and writes `package.json` with file hashes. Keep the
-proposed source commit, patch or file attachments beside this directory;
-packaging does not copy every changed source file or publish the return.
+inputs as `return.json` and `route-memory.json`, selected session records and
+probe files, and a `source/` snapshot of every declared changed path. Deleted
+paths have explicit deletion entries. `package.json` hashes each bundled file
+and lists the source entries and original file modes. In a checkout at the
+starting commit, copy each present source entry to its recorded path and remove
+each deleted path; this recovers the returned file tree even if the proposed
+commit is unavailable there. Inspect the entries and hashes before applying
+them. When a proposed commit is present, packaging requires `changed_paths` to
+equal its complete Git diff from the starting commit. With a null proposed
+commit, the snapshot recovers the declared working-tree paths. A clean session
+also checks observed tracked and nonignored untracked edits for omissions; a session that
+started dirty cannot prove complete coverage. Packaging does not publish or
+accept the return.
 
 Record the exact `route_memory.sha256`, `return_id`, route relationship, and
 changed-evidence paths from the sidecar; the validator rejects a different
@@ -455,7 +480,11 @@ revision. A later correction is append-only: it must preserve the earlier
 return, contributor credit, evidence, and result boundary rather than silently
 strengthening or replacing them.
 
-- **Prior return reference:** `<none for an original return, or exact path/ref>`
+- **Prior return reference:** `none` only for an original correction requesting
+  review; otherwise use the exact `rr-*` ID of a committed accepted receipt in
+  `docs/research-commons/returns/`. A URL or free-text description is not an ID.
+  Include the committed receipt link in the human explanation so a reviewer
+  can inspect the prior decision.
 - **Affected paths and starting generation:** `<exact public paths and commit>`
 - **Changed evidence or wording:** `<what was corrected and why>`
 - **Correction reason:** `<source, replay, attribution, or wording reason>`

@@ -56,8 +56,8 @@ python3 scripts/query_corpus.py --route browse_claim_status
 ```
 
 If free text returns no semantic cells, use those stable routes; do not replace
-machine evidence with prose. #1041's total-variation form is refuted;
-historical correspondence remains unreviewed.
+machine evidence with prose. Lean refutes the Formal Conjectures #1041
+path-image claim; 1958 correspondence remains unreviewed.
 Choose work: `python3 scripts/query_corpus.py --open`.
 
 ### Lean proof work or source mutation
@@ -119,9 +119,9 @@ review. `palomar_qualification` reports repository-local policy readiness
 and its remaining operator-only decisions; it does not confer acceptance,
 registration, publication, or external endorsement.
 
-After choosing a paper, follow its typed claim and source handles; prose is not
-authority. `docs/papers/README.md` indexes papers; `docs/papers/corpus.json` owns
-their machine inventory. `--ask` routes ordinary paper questions.
+After choosing a paper, follow its typed claim and source handles.
+`docs/papers/README.md` indexes papers; `docs/papers/corpus.json` owns their
+machine inventory.
 
 For publication mutation, open `docs/publication_entry_packet.json`, then the
 publication contract or emitted handle. These own organisation, not Lean proof.
@@ -153,9 +153,8 @@ propagation. A material conflict resolution is a separately credited change.
 
 ### General Plectis machinery
 
-The companion [`plectis`](https://github.com/wcook04/plectis) repository owns
-the runnable machinery; this one owns the public mathematical corpus. Neither
-repository's authority follows from the other, and no command above needs the
+The companion [`plectis`](https://github.com/wcook04/plectis) owns runnable
+machinery; this checkout owns the mathematical corpus. Its commands require no
 companion checkout.
 
 ## Authority order

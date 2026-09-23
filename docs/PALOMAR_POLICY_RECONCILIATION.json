@@ -163,8 +163,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-        "committed_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-        "theorem_name_count": 51,
+        "committed_sha256": "c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
+        "theorem_name_count": 53,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
@@ -210,18 +210,18 @@
     "showcase_path": "docs/PALOMAR_RESULT_SHOWCASE.json",
     "disposition_record": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_value_dispositions",
     "authority": "HEAD:verification/comparator.json",
-    "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
-    "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
-    "selected_family_id": "known_irrational_supports",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 51-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection, #243 bounded-rise, and #1041 Newton-value/ray discoveries are represented below completed endpoints, without turning missing cofinal, bounded-rise, global-flow, topology, or metric-gluing producers into Comparator evidence.",
-    "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
-    "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
+    "selected_declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+    "selected_source_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+    "selected_family_id": "finite_prime_weighted_support",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 71 families and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 53-row Comparator roster is a nested statement and axiom screen. The selected finite-prime weighted theorem has fixed-base irrationality and a binary-mass all-base hereditary clause under explicit summability and positive-support hypotheses. External Comparator replay remains pending; the source-only #68, #243, and #1041 discoveries remain below completed endpoints without promoting their missing producers into evidence.",
+    "anti_underclaim": "The weighted support criterion is stated at its full two-clause strength, including binary-mass all-base heredity, while the classical full-support theorem remains visible as a distinct proved result.",
+    "anti_hype": "Finite prime-weighted mass is a sufficient hypothesis, not universal Erdős #257. The selected theorem is not novelty, human review, registration, or completed external Comparator evidence.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "c619cdab56f6ff5388b753d425b615af2ecc173e40b7c32670928eb8456a8296",
-      "review_family_count": 70,
+      "review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
+      "review_family_count": 71,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
         "first_harmonic_pivot",
@@ -631,7 +631,7 @@
           "The canonical claims matrix binds this as one coherent family; the supporting carry-kernel rank and modular mechanisms must not be counted as separate families or confused with the coefficient-side totient_kernel family."
         ],
         "source_landscape_rank_relative_to": "Provisional endpoint-facing review: below completed unconditional endpoint families and below actual-LCM/first-harmonic conditional producer routes, but above routine coefficient-side rank inventory because it isolates a distinct orbit-level modular-periodicity plus anti-compression conjunction.",
-        "ranking_status": "Canonical source-landscape family with committed Comparator evidence. It is represented for ranked review, is not selected, and does not replace the full-support selection.",
+        "ranking_status": "Canonical source-landscape family with committed Comparator evidence. It is represented for ranked review, is not selected, and does not replace the finite-prime weighted selection.",
         "ranked_below": ["known_irrational_supports", "actual_lcm_orbit_separation", "first_harmonic_pivot_decomposition"],
         "ranked_above": ["totient_kernel_rank"],
         "prerequisite_evidence": ["Hypothetical non-irrationality supplies the positive multiplier and tempered integral carry used by the representative."],
@@ -815,7 +815,7 @@
         "ranked_above": ["dyadic_tail_integrality_classification", "coefficient_only_no_go"],
         "prerequisite_evidence": ["The exact DyadicTailRecurrence for the actual prime-gap digit stream and the fixed h-shift are part of the source statement."],
         "support_evidence": ["prime_gap_reformulation supplies the exact #251 target normalization, while dyadic_tail_integrality_classification explains why eventual tail-shift integrality is the relevant obstruction."],
-        "conditional_peer_evidence": ["negative_mass_recovery is a distinct rank-12 analytic recovery theorem with all original-orbit summability premises still open; neither family supplies the other's producer."],
+        "conditional_peer_evidence": ["negative_mass_recovery is a distinct rank-13 analytic recovery theorem with all original-orbit summability premises still open; neither family supplies the other's producer."],
         "contrary_evidence": ["coefficient_only_no_go shows that finite rational carry identities and coefficient irregularity alone cannot provide the actual-prime small-mismatch supply.", "rationalPrimeGapTail_has_positive_shift_not_eventually_small is a rational-state boundary, not the cofinal producer."],
         "reason": "Placed first in the conditional-endpoint-leverage tier as an actual-prime, endpoint-adjacent obstruction. The exact adjacent-pair zero mechanism is stronger than abstract or synthetic screening, but the cofinal small-mismatch/smallness producer remains absent, so this is not a #251 endpoint result.",
         "reversal_evidence": "A proof of the exact cofinal small-mismatch/smallness producer or a direct #251 irrationality theorem would justify promotion; another finite gap computation or coefficient-only row would not."
@@ -940,7 +940,7 @@
       "id": "informal_account_and_boundaries",
       "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
       "status": "pass",
-      "evidence": "PALOMAR_RESULT_SHOWCASE.json and PALOMAR_QUALIFICATION.md expose the all-row value-selection record, exact full-support hypotheses, completed mechanism, attribution, limitations, and the universal #257 open boundary.",
+      "evidence": "PALOMAR_RESULT_SHOWCASE.json and PALOMAR_QUALIFICATION.md expose the all-row value-selection record, the exact two-clause finite-prime weighted hypotheses, the source mechanism, and the universal #257 open boundary. External Comparator replay is pending.",
       "disposition": "product_surface_satisfied"
     },
     {
@@ -974,7 +974,7 @@
   ],
   "qualification_decision": {
     "decision": "READY",
-    "reason": "The repository-local Palomar product binds the complete committed Comparator candidate universe to a deliberate full-support selection and satisfies the current v0.4 structural and metadata profile.",
+    "reason": "The repository-local Palomar product binds the complete Comparator candidate universe to the exact finite-prime weighted selection and the v0.4 structural and metadata profile; an external Comparator replay remains pending.",
     "readiness_rule": "READY means the committed public checkout satisfies every repository-local structural requirement. External review, submission, registration, and publication are separately reported actions, not local qualification gates; Comparator theorem-name count alone never substitutes for qualification.",
     "safe_local_repairs_remaining": [],
     "external_follow_on": [

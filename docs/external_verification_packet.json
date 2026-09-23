@@ -2,7 +2,7 @@
   "schema": "erdos-external-verification-packet/1",
   "scope": "all_eight_public_problem_programmes",
   "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-  "boundary": "The degree-seven counterexample found by the erdosproblems.com contributor ani refutes the total-variation formulation of Erdős #1041; this repository formalises it in Lean. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
+  "boundary": "Using the degree-seven polynomial constructed by the erdosproblems.com contributor ani, Lean proves that every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure greater than two. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. The other seven targets remain open. Independent human review of correspondence with the 1958 wording has not been recorded. Comparator checks only selected exact statements, axioms and kernel acceptance; it does not assess novelty or historical correspondence.",
   "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
   "automation": {
     "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -42,7 +42,7 @@
       "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     },
     "roster_source": "verification/comparator.json",
-    "theorem_name_count": 51,
+    "theorem_name_count": 53,
     "theorem_names": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
@@ -75,6 +75,8 @@
       "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
@@ -596,6 +598,35 @@
       "statement": "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.",
       "boundary": "This is the classical full-support theorem, not universal Erdos #257.",
       "canonical_claim_status": "supports_registered_claim_family:eb_full_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "finite_prime_weighted_support",
+      "problem": 257,
+      "review_family": "finite_prime_weighted_support",
+      "claim_id": "finite_prime_weighted_support",
+      "contribution_class": "locally proved result; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+      "original_source": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "statement": "For every base b >= 2, an infinite positive support A with finite prime-weighted mass in base b has irrational support series; if a positive host H has finite prime-weighted mass in base 2, every infinite subset of H has irrational support series at every base b >= 2.",
+      "boundary": "The finite-prime weighted-summability premise is explicit in both clauses. This criterion does not cover every infinite support or settle universal Erdős #257; no novelty, priority, significance, or external human-review claim is made.",
+      "canonical_claim_status": "supports_registered_claim_family:finite_prime_weighted_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "finite_prime_weighted_fixed_base_hereditary",
+      "problem": 257,
+      "review_family": "finite_prime_weighted_support",
+      "contribution_class": "locally proved result; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary",
+      "original_source": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
+      "statement": "For every base b >= 2, if a positive host H has finite prime-weighted mass in base b, every infinite subset A of H has irrational support series in the same base b.",
+      "boundary": "This hereditary result retains the same-base weighted-summability hypothesis; it does not infer all-base irrationality from weighted mass at an arbitrary base, or settle universal Erdős #257.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -1392,6 +1423,14 @@
           "boundary": "Structured known families do not cover arbitrary infinite supports."
         },
         {
+          "id": "finite_prime_weighted_support",
+          "contribution_class": "locally proved result; novelty unassessed",
+          "summary": "Finite prime-weighted mass gives fixed-base irrationality for infinite positive supports; binary weighted mass gives all-base irrationality for every infinite subset of a positive host, while weighted mass at another fixed base gives same-base hereditary irrationality.",
+          "evidence_mode": "Lean kernel; exact Comparator transport configured, external replay pending",
+          "comparator_disposition": "targeted_exact_weighted_and_hereditary_interfaces_pending_replay",
+          "boundary": "Each clause retains its exact finite-prime weighted-summability and positive-support hypotheses. Binary mass is required for the all-base hereditary clause; arbitrary infinite supports remain open."
+        },
+        {
           "id": "pairwise_coprime_support",
           "contribution_class": "formalisation of an existing theorem",
           "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
@@ -1699,9 +1738,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:56376eeb6f58b8aec86c172838d8e6a8253d5d38391fb535e372240a1f8c9823",
+    "owner_digest": "sha256:9566f4f34589af8270e519ee1d622fbaea7afb6075d6e77e5ede2203ec1e3502",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2",
+    "projection_digest": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2024,12 +2063,13 @@
         ],
         "note": {
           "artifact_id": "erdos_243_note",
-          "title": "Bounded Increments and Rational Reciprocal Sums",
+          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
           "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
+          "Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.",
           "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
           "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
           "That eventual vanishing of the centred state, with the next tail state nonvanishing, forces the Sylvester recurrence eventually.",
@@ -2047,16 +2087,16 @@
           "The unrestricted problem.",
           "A uniform lower bound on the centred error for every sequence in the original problem; the canonical tail transfer does not supply this additional hypothesis.",
           "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
-          "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
+          "The Erdős–Straus weighted criterion and Duverney's conditional characterisation, which are cited rather than formalised here."
         ],
         "open_obligations": [
           {
             "id": "unbounded_negative_excursions",
-            "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
+            "statement": "Exclude or construct exact orbits with infinitely many unbounded negative centred excursions. Checked exclusions assume bounded negative part, a fixed period, or fixed prime divisors."
           },
           {
-            "id": "derive_the_two_analytic_hypotheses",
-            "statement": "Derive eventual strict centring and normalised vanishing from the growth hypothesis and rationality, or show that they do not follow."
+            "id": "derive_negative_part_bound",
+            "statement": "Derive a lower bound on centred error from the original growth and rational-sum hypotheses, control unbounded negative excursions another way, or construct a counterexample."
           },
           {
             "id": "formalise_the_published_criteria",
@@ -2066,7 +2106,7 @@
         "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
         "paper": {
           "paper_id": "erdos-243-reciprocal-tail-rigidity",
-          "title": "Bounded Increments and Rational Reciprocal Sums",
+          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
@@ -2391,10 +2431,10 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 14,
+          "family_count": 15,
           "by_class": {
             "not_applicable": 1,
-            "targeted": 13
+            "targeted": 14
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
@@ -2404,6 +2444,7 @@
             "shifted_odd_tail_state": "targeted",
             "composite_dilation_defect_identity": "targeted",
             "known_irrational_supports": "targeted_full_support_representative",
+            "finite_prime_weighted_support": "targeted_exact_weighted_and_hereditary_interfaces_pending_replay",
             "pairwise_coprime_support": "targeted_pairwise_coprime_support",
             "periodic_nonnegative_weight_irrationality": "targeted_strongest_nonnegative_rational_weight",
             "orthogonal_petal_sunflower_reduction": "targeted_conditional_sunflower_reduction",
@@ -2583,7 +2624,7 @@
         "erdos_number": 1041,
         "short_title": "Short connections inside polynomial lemniscates",
         "status": "open",
-        "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.",
+        "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "registered_declarations",
         "claim_registration": {
@@ -2596,10 +2637,19 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The historical curve-length formulation remains an unadjudicated programme target in this registry. The separate checked degree-seven example refutes the universal formulation using total variation of continuous paths in the strict unit lemniscate. No Hausdorff-measure comparison or independent human review of historical correspondence is recorded."
+          "programme_statement": "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded."
         },
         "directory": "lean/ErdosProblems/Erdos1041",
         "modules": [
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+            "present": true,
+            "line_count": 460,
+            "declaration_count": 10,
+            "theorem_count": 9,
+            "content_digest": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4"
+          },
           {
             "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
             "path": "lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean",
@@ -2627,7 +2677,7 @@
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
-          "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.",
+          "For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound.",
           "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.",
           "The exponentially rescaled polynomial value is a first integral, so the value of a Newton trajectory remains on one oriented ray.",
           "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
@@ -2636,8 +2686,8 @@
           "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
         ],
         "what_is_not_checked": [
-          "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation.",
-          "Independent human review adjudicating whether the checked total-variation formulation exactly represents the historical question.",
+          "The full small-parameter family reported by ani; only one explicit polynomial is formalised.",
+          "Independent human review adjudicating whether the exact Formal Conjectures path-image-length statement represents the 1958 curve-length wording.",
           "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
           "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
           "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
@@ -2646,30 +2696,30 @@
         "open_obligations": [
           {
             "id": "historical_curve_length_correspondence",
-            "statement": "Determine the precise correspondence between the historical curve-length question and the refuted total-variation formulation, including any required Hausdorff-measure comparison and independent human review."
+            "statement": "Independently review whether the 1958 curve-length wording matches the refuted Formal Conjectures path-image Hausdorff statement."
           },
           {
             "id": "repair_or_refute_saddle_block",
-            "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
+            "statement": "Repair or replace the false Proposition 12 spanning-tree estimate; account for positive attachment costs or use another metric inequality."
           },
           {
             "id": "compact_ray_cut_strip_decomposition",
-            "statement": "Construct and verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses, as auxiliary structure for restricted families or a correspondence-adjusted historical formulation. It does not imply a universal sub-two total-variation connector."
+            "statement": "Verify a compact ray-cut strip or cell decomposition under explicit local-valence hypotheses for restricted families; it gives no universal sub-two connector."
           },
           {
             "id": "corrected_metric_gluing_for_restricted_families",
-            "statement": "The degree-seven counterexample rules out universal total-variation gluing below two. For a stated restricted family or different historical length notion, derive a metric gluing inequality with all positive attachment costs explicit; the false printed 1/(2π) coefficient may not be retained."
+            "statement": "For a restricted family or different historical length notion, prove a metric gluing inequality that pays every positive attachment cost; universal sub-two total-variation gluing is refuted."
           },
           {
             "id": "two_stage_stable_perturbation",
-            "statement": "Given a polynomial/component and an already selected connector with explicit strict slack, quantify a two-stage perturbation preserving roots, that component, collars, ray separation, and the stated slack. No universal existence or sub-two conclusion is asserted."
+            "statement": "Given a selected connector with strict slack, quantify a two-stage perturbation preserving roots, component, collars, ray separation, and slack; no universal existence claim follows."
           },
           {
             "id": "relative_global_newton_flow_theorem",
-            "statement": "Under explicit relative component, saddle, and corrected metric hypotheses, derive the corresponding root-to-root Newton-flow connector. The theorem must state its restricted hypotheses and cannot imply a sub-two total-variation connector for every polynomial."
+            "statement": "Under explicit component, saddle, and corrected metric hypotheses, derive a restricted root-to-root Newton-flow connector without a universal sub-two claim."
           }
         ],
-        "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence and is separate from the exact degree-seven total-variation counterexample checked in Lean.",
+        "finite_search": "Raster tests through degree ten suggest candidate bounds only; they are separate from the exact degree-seven Lean counterexample.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
           "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
@@ -2699,7 +2749,7 @@
         "research_corpus": {
           "directory": "research_corpus/Erdos1041",
           "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
-          "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims.",
+          "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
@@ -2817,6 +2867,8 @@
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
+          "Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2.",
+          "For p>1 and N≤8, Lean checks positive definite coefficient matrices, real finite-pencil roots below F(p), and non-strict interlacing at adjacent ranks. Neither all-rank positivity nor irrationality at 3/2 follows.",
           "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.",
           "The exact denominator-cleared rational-base tail recurrence, including its forcing term.",
           "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
@@ -2837,16 +2889,15 @@
           "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.",
           "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
           "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
-          "The source analytic irrationality theorem inside the 81/200 height region; only its elementary parameter specialisations are formalised.",
           "A sufficiently large primitive-normalised, non-collapsed coefficient family meeting the checked n >= 4R+2S threshold at the required quadratic depths.",
           "That one of the resulting bounded-coefficient collision vectors has a nonzero polynomial pair, lies outside the analytic remainder nullspace, and has sufficient local gain.",
-          "Positivity or decay of the elementary Padé remainder; only its exponent arithmetic is checked.",
-          "Any general recurrence, endpoint, lattice, valuation, denominator, or irrationality conclusion from the n = 0 q-Apery residual; it proves only that the named scalar recurrence does not transfer to Van Assche's diagonal."
+          "The elementary Padé pilot checks exponent arithmetic only; it lacks remainder positivity or decay and does not qualify the separate Zudilin contour result.",
+          "The n=0 q-Apéry residual gives no general recurrence, lattice, valuation, denominator, or irrationality result; it only blocks the named scalar transfer."
         ],
         "open_obligations": [
           {
             "id": "three_halves_growing_rank_endpoint_jet_kernel",
-            "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
+            "statement": "After rowwise primitive normalisation, exhibit at least 4R_n+2S_n coefficient pairs at positive quadratic depths from a non-collapsed deformation; preserve the two- and three-adic gain; then show that one checked {-1,0,1} collision has a nonzero polynomial pair outside the analytic remainder nullspace, or prove an exact rank obstruction."
           }
         ],
         "finite_search": null,
@@ -2884,7 +2935,7 @@
       "verification/ExternalVerification/Challenge.lean",
       "verification/ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:62aef0c007bb211ed45ceb59aed94316cf60f38d37bb1e8fe9006a4c3d635a5d",
+    "digest": "sha256:af141d5f59605cd284d6be041ff93fef53554b1e58492f2c91059aaf6ff20f2a",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2892,6 +2943,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-  "solution_source_digest": "sha256:a6d0163b48cd6617e3d7fcab2d5336e9c7bf94012f8a8b38008bdabd5975b227"
+  "config_digest": "sha256:c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
+  "solution_source_digest": "sha256:cbe59f49b5b34dcd8e4b1ee2073c6cdbcff59b58ca901466855e0a4eeedb99d8"
 }

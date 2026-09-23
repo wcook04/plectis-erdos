@@ -7,6 +7,7 @@ import Mathlib.Data.Nat.Totient
 import Mathlib.Data.Nat.Fib.Basic
 import Mathlib.Data.Nat.Log
 import Mathlib.Data.Nat.Prime.Nth
+import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Analysis.Complex.Basic
 import Mathlib.Analysis.Complex.Polynomial.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Summable
@@ -525,6 +526,28 @@ noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
 
 noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
   ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+
+/-! ## Finite-prime weighted support for Erdős #257 -/
+
+def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
+  ∏ p ∈ P, p ^ a.factorization p
+
+noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
+  (primeSetPart P a : ℝ) /
+    ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1))
+
+def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
+  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
+    Summable (Set.indicator A (primeWeightedTerm b P))
+
+/-- The fixed-base weighted irrationality theorem and its all-base hereditary
+consequence from finite binary weighted mass, with the original hypotheses. -/
+def DivisibilityWeightedClaim : Prop :=
+  (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
+    FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧
+  (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →
+    ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
 
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
@@ -1070,8 +1093,84 @@ def CofinalLocalWindowEscape
           (-((B : ℤ) *
             windowForcing (fun n => b n) (fun n => m n) lo len))
 
-/-- One trusted challenge witness carries the twenty-five exact interfaces selected
-for the eight-problem external-verification portfolio.  The named theorems in
+/-- Stable exported proposition for the finite totient-kernel rank.  Keeping
+this type in the shared statement module avoids proof-only imports changing
+the elaborated instance arguments in the Comparator-facing theorem type. -/
+def TotientFiniteKernelRankStatement : Prop :=
+  ∀ e : ℕ, 1 ≤ e →
+    finrank ℚ
+      (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
+        2 ^ e + 1
+
+def TotientInfiniteKernelRankStatement : Prop :=
+  ¬ FiniteDimensional ℚ
+    (Submodule.span ℚ (Set.range fullTotientKernelFamily))
+
+def TotientDyadicSectionBasisStatement : Prop :=
+  Nonempty
+    (Basis TotientOddCoreIndex ℚ
+      (Submodule.span ℚ (Set.range fullTotientKernelFamily)))
+
+def AllBaseTotientFiniteKernelRankStatement : Prop :=
+  ∀ (k e : ℕ), 2 ≤ k → 1 ≤ e →
+    LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e) →
+    finrank ℚ
+      (Submodule.span ℚ
+        (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
+      k ^ e + 1
+
+def TotientCarryAntiCompressionStatement : Prop :=
+  (¬ Irrational (binaryCoeffSeries Nat.totient)) →
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          CarrySectionsEventuallyPeriodicMod v h N₀ u
+
+/-- Shared Comparator proposition for the quantified root-retention theorem.
+The proof-only imports must not choose different implicit instances while
+elaborating this exported statement in Challenge and Solution. -/
+def ConstantPerturbationRootsInUnitDiskStatement : Prop :=
+  ∀ (f : Polynomial ℂ), f.Monic → 0 < f.natDegree → f.Splits →
+    ∀ {ρ ε : ℝ}, 0 ≤ ρ →
+      (∀ b ∈ f.roots, ‖b‖ ≤ ρ) →
+      0 < ε →
+      ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1 →
+      ∀ {shift : ℂ}, ‖shift‖ < ε →
+        ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1
+
+/-- Shared Comparator proposition for the critical-pair metric scale. -/
+def CriticalPairMetricScaleStatement : Prop :=
+  ∀ {n : ℕ}, 2 ≤ n →
+    ∀ (z : Fin n → ℂ) (c : ℂ),
+      (∀ k, c - z k ≠ 0) →
+      (∑ k, (c - z k)⁻¹ = 0) →
+      ∀ {r : ℝ}, 0 < r → r ^ n = ∏ k, ‖c - z k‖ →
+        ∃ i j : Fin n,
+          i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r
+
+/-- Shared Comparator propositions for the remaining #1049 exports. -/
+def ThreeHalvesNoCoordinatewiseCorridorStatement : Prop :=
+  ∀ {N K Q digit : ℕ}, 1 ≤ N → 1 ≤ K →
+    ¬ CoordinatewiseCorridor 3 2 N K Q digit
+
+def RationalBaseClearedTailQSuccStatement : Prop :=
+  ∀ {r s B F : ℚ} {coeff : ℕ → ℚ}, r ≠ 0 → ∀ N : ℕ,
+    rationalBaseClearedTailQ r s B F coeff (N + 1) =
+      r * rationalBaseClearedTailQ r s B F coeff N -
+        B * coeff (N + 1) * s ^ (N + 1)
+
+def RectangularHpThresholdEqClassicalIffStatement : Prop :=
+  ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
+    (hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
+      rho = 0 ∧ sigma = 1)
+
+/-- One trusted challenge witness carries the exact interfaces selected for
+the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
 structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
@@ -1370,6 +1469,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem257FullSupport :
     ∀ b : ℕ, 2 ≤ b →
       Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))
+  problem257WeightedSupport : DivisibilityWeightedClaim
+  problem257FixedBaseWeightedHereditary :
+    ∀ (b : ℕ) (H : Set ℕ), 2 ≤ b → 0 ∉ H →
+      FinitePrimeWeighted b H →
+        ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+          Irrational (erdosSupportSeries b A)
   problem257PairwiseCoprime :
     ∀ (b : ℕ) (A : Set ℕ),
       2 ≤ b →
@@ -1470,33 +1575,13 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
           (∀ i, c i + shift ≠ 0) ∧
           ∀ i j, i ≠ j →
             ¬ SamePositiveRay (c i + shift) (c j + shift)
-  problem1041Roots :
-    ∀ (f : Polynomial ℂ), f.Monic → 0 < f.natDegree → f.Splits →
-      ∀ { ρ ε : ℝ }, 0 ≤ ρ →
-      (∀ b ∈ f.roots, ‖b‖ ≤ ρ) →
-      0 < ε →
-      ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1 →
-      ∀ { shift : ℂ }, ‖shift‖ < ε →
-      ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1
+  problem1041Roots : ConstantPerturbationRootsInUnitDiskStatement
   /-- Lean-checked critical-balance kernel for the sharp Euclidean scale.
   The closed-unit-disc nearest-pair assembly and path containment are not part
   of this statement-isolated theorem. -/
-  problem1041CriticalPairMetricScale :
-    ∀ {n : ℕ}, 2 ≤ n →
-      ∀ (z : Fin n → ℂ) (c : ℂ),
-        (∀ k, c - z k ≠ 0) →
-        (∑ k, (c - z k)⁻¹ = 0) →
-        ∀ {r : ℝ}, 0 < r → r ^ n = ∏ k, ‖c - z k‖ →
-          ∃ i j : Fin n,
-            i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r
-  problem1049 :
-    ∀ {N K Q digit : ℕ}, 1 ≤ N → 1 ≤ K →
-      ¬ CoordinatewiseCorridor 3 2 N K Q digit
-  problem1049Recurrence :
-    ∀ {r s B F : ℚ} {coeff : ℕ → ℚ}, r ≠ 0 → ∀ N : ℕ,
-      rationalBaseClearedTailQ r s B F coeff (N + 1) =
-        r * rationalBaseClearedTailQ r s B F coeff N -
-          B * coeff (N + 1) * s ^ (N + 1)
+  problem1041CriticalPairMetricScale : CriticalPairMetricScaleStatement
+  problem1049 : ThreeHalvesNoCoordinatewiseCorridorStatement
+  problem1049Recurrence : RationalBaseClearedTailQSuccStatement
   problem1049RectangularHpGapNonpos :
     ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
       hpClearedGap rho sigma ≤ 0
@@ -1507,9 +1592,7 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
       hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2
   problem1049RectangularHpThresholdEqClassicalIff :
-    ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
-      (hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
-        rho = 0 ∧ sigma = 1)
+    RectangularHpThresholdEqClassicalIffStatement
   problem249TailOrbitBlockGapOfNonpositiveDensity :
     TotientTailOrbitNonpositiveBlockDensity →
       TotientTailOrbitBlockGap
