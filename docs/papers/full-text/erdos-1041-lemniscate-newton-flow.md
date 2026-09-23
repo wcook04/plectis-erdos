@@ -100,7 +100,7 @@ Here $`\mu>0`$ for a squarefree polynomial. A positive level $`t`$ is regular wh
 
 </div>
 
-Not formalised: the degree-two case and the exact rational arithmetic of the stopping-time comparison are checked, and the analytic argument in higher degrees is not. See the [coverage section of the companion record](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Not formalised: the degree-two case and the closing inequality $`(13/25)e^X<1`$ at the recorded stopping time $`X=635762889599/10^{12}`$ are checked; the computation that certifies $`X`$ and the analytic argument in higher degrees are not. See the [coverage section of the companion record](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 The condition $`\mu\le13/25`$ is sufficient, not necessary. For $`f(z)=z^n-b`$ with $`0<|b|<1`$, one has $`\mu=|b|`$, so this criterion covers $`|b|\le13/25`$ and excludes $`13/25<|b|<1`$, even though the trinomial argument gives the required path throughout that family. Unlike that argument, the present criterion imposes no coefficient pattern and no root-location assumption. For example, $`(z-3)^n-1/2`$ has $`\mu=1/2`$ for every $`n\ge2`$, yet all its roots satisfy $`|z|>2`$. The conclusion concerns $`|f(z)|<1`$, not containment in $`|z|<1`$.
 
@@ -541,7 +541,7 @@ The next example concerns successive mergers of sublevel components; the roots t
 
 </div>
 
-Not formalised: the pinned library has no logarithmic capacity of a compact plane set and no notion of the level at which two sublevel components merge, so neither remaining clause can yet be stated. See the [coverage section of the companion record](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Not formalised: the location of the roots in the open unit disc and the value $`\mu=187/2000\le1/2`$ are checked, and the root count $`k_0=2`$ and the capacity clause are not; the root count, taken in the component of $`K_\mu`$ containing the critical point at level $`\mu`$, can be stated in the pinned library, and the capacity clause needs a logarithmic capacity, which that library does not define. See the [coverage section of the companion record](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 <a id="sec:newton"></a>
 
