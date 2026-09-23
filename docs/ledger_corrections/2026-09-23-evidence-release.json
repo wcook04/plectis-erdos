@@ -408,6 +408,23 @@
     "status": "pending"
    },
    "reason": "The prepared corpus entries state only the declarations bound before this correction."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#thm:upper-reset-band",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+    "Erdos249257.seamUpperResetDyadicBandEscape_through_thirty"
+   ],
+   "new": [
+    "Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+    "Erdos249257.seamUpperResetDyadicBandEscape_through_thirty",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone"
+   ],
+   "files": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone": "lean/ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean"
+   },
+   "reason": "The printed theorem also states the successor remainders rem(14)=392 through rem(31)=4187487147; neither bound declaration states them, and paper_successor_remainders_fourteen_through_thirtyone does."
   }
  ]
 }

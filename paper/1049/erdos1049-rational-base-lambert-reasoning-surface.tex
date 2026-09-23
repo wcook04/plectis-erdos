@@ -787,9 +787,8 @@ $(M+u)^{-1}-(M+v)^{-1}$. Summing these rational intervals and using
 Machin's alternating-series bounds for $\pi$ gives the displayed
 bounds on $\theta^*$ and its reciprocal. The coefficient
 $225-J$ is positive, so the interval endpoints for $C_0$ have the
-claimed order. This verifies the displayed decimal truncations. The
-program that carried out the calculation is not published with this
-edition. The proofs use the exact definitions and never these decimal values.
+claimed order. This verifies the displayed decimal truncations; \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/threshold_digits.py}{the program} and
+its \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/threshold-digits.json}{recorded result} are public. The proofs use the exact definitions and never these decimal values.
 
 \subsection{Proofs, earlier work and limitations}
 
@@ -1141,8 +1140,8 @@ $\theta^*$; the smallest excluded ratio is that of $52/5$, namely
 $0.4073243836\ldots$, which exceeds the cutoff by $0.001641$.
 A calculation with rational bounds for logarithms and for the cutoff
 checks all $1101$ reduced fractions in the stated range, these rounded
-margins and the four fixed-denominator comparisons below; its program
-is not published with this edition. The
+margins and the four fixed-denominator comparisons below
+(\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/rational_base_examples.py}{program}, \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/rational-base-examples.json}{result}). The
 bases in this region and outside the region of \cite{bv1994} are those in the strip
 $s^{\mu}<r\le s^{\mu_{\mathrm{BV}}}$, which is empty for $s=2$ and $s=3$, is
 $\{31\}$ for $s=4$, and is $\{53,54,56\}$ for $s=5$.  The strip is infinite:
@@ -1209,9 +1208,10 @@ $266$ for $A$ and $265$ for $B$. Its decrease by $1$ exactly cancels
 the increase $3(J_B-J_A)/\pi^2=1$. Thus $C_0$ also agrees.
 
 A calculation compares every tuple of the box with interval bounds,
-and a second implementation repeats it with $512$ tail terms and a
-different enumeration order. Neither program is published with this
-edition. The calculation proves optimality only in the displayed finite box. No
+and a second implementation repeats it with $512$ summands before the
+tail and a different enumeration order; both are in
+\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/parameter_box.py}{one program}, with its \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/parameter-box.json}{recorded result}.
+The calculation proves optimality only in the displayed finite box. No
 bound on a direction outside that box follows, and this calculation
 is not needed for the irrationality theorem.
 
@@ -1232,14 +1232,16 @@ it is not an application at $3/2$.
 This subsection separates exact checks from historical
 numerical reports. The polynomial reconstruction below covers
 $n=1,2,3,4$, and the preceding parameter search has an exact
-comparison for every tuple in its finite box. The programs for these
-two exact checks are not published with this edition. The historical
+comparison for every tuple in its finite box. Both exact checks are
+public, with the other finite calculations of this paper, in the
+\href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/README.md}{reproduction guide}, and \texttt{python3 research/experiments/erdos1049/replay.py}
+reruns them and compares each with its recorded result. The historical
 high-precision evaluations were not rerun. None of these finite
 calculations proves a statement for all indices, and none is a Lean proof. The
 rank-eight tests and the rational interval certificate are described
 separately.
 
-The \href{https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/README.md}{public reproduction guide} gives the command and dependency pin for
+The \href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/README.md}{public reproduction guide} gives the command and dependency pin for
 \href{https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/direction_search.py}{the direction-search program}.
 Run it with \texttt{--bound 30} and the output path named there; adding
 \texttt{--check} compares the result without replacing the
@@ -1250,7 +1252,7 @@ interval certificate in that historical record. The separate rational
 certificate above verifies the maximisers in the stated finite box;
 the archived program itself still uses numerical comparisons.
 
-A computer-algebra calculation reconstructs the forms of
+An exact integer calculation (\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/source_polynomials.py}{program}, \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/source-polynomials.json}{every coefficient}) reconstructs the forms of
 Section~\ref{long1049:sec:source-forms}
 directly in $\Z[X]$ from the displayed source formulas. It checks
 division by $\Omega_n$ and $X^{M_n}$ with zero remainder and computes
@@ -1292,7 +1294,7 @@ rounded digits, supports the numerical inequality.
 
 The main term $K_n\log b-(K_n-W_n)\log a$ at $31/4$ is negative
 for every $1\le n\le400$, as verified by exact rational logarithm
-enclosures and exact totient sums. Dividing by $n^2$ gives, to three
+enclosures and exact totient sums (\href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/main_term_31_4.py}{program}). Dividing by $n^2$ gives, to three
 decimal places, $-58.478,-10.280,-4.297,-3.863$ at
 $n=1,10,100,400$. This finite sign check does not assert negativity at
 every index. The proved limit is
@@ -1797,7 +1799,8 @@ The Lean proof of Theorem~\ref{long1049:res:zudilin-sharp-qorder} uses
 the first nonzero term of every transformed row, which
 for row $1$ has order exactly $l+1$ and coefficient exactly $-6$ in every
 column.  Independently of the proof, the order and the
-leading coefficient were computed exactly for $1\le N\le7$, giving orders
+leading coefficient were computed exactly for $1\le N\le7$
+(\href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/hankel_qorder.py}{program}, \href{https://github.com/wcook04/plectis-erdos/blob/f5c9e560df38cd32e9b49473a409384aab00d9ae/research/experiments/erdos1049/receipts/hankel-qorder.json}{result}), giving orders
 $0,1,5,14,30,55,91$ and leading coefficients
 $1,6,108,4320,324000,40824000,8001504000$, each matching the closed forms.
 
@@ -2550,8 +2553,8 @@ $\left(\begin{smallmatrix}0&2\\2&5\end{smallmatrix}\right)$,
 $e_{2,1}=4$, and $\Gamma_{2,1}(0)=-9$.
 
 The source coefficients, determinant-value polynomials and witnesses
-were computed by a program that also repeats the direct determinant
-checks; it is not published with this edition. At ranks six to eight
+are computed by \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/cyclotomic_content.py}{a public program}, which also repeats the direct
+determinant checks; its \href{https://github.com/wcook04/plectis-erdos/blob/4beca4ad0c00a626def9c73f2420e20ebf8d1968/research/experiments/erdos1049/receipts/cyclotomic-content.json}{recorded result} lists every witness. At ranks six to eight
 these certificates cover only the stated cyclotomic-index window;
 complete coefficient contents are computed only through rank five.
 
