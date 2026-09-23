@@ -5,9 +5,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:edd02f834e4e568fbd58c6d2cd8f9e18ca645e7099249a291f55ed980fd7fb50",
-        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:5e66e194e7b9b5287f957b07835098ab6335fdea044e75f08edea7111f61a3f4"
+        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:c1803808df7ee8142298820360a887283ee2ace7c61b9930ad99477a188bea5a"
       },
-      "rendered_content_digest": "sha256:def158503a7f389a06d29196fca4755e9177dbda5329f597a454c8122a6c357f",
+      "rendered_content_digest": "sha256:b587819b2dccf0c5d2c190b7db41585a4abbddd2d01606bcf4de64eddee93f2e",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
@@ -225,9 +225,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:edd02f834e4e568fbd58c6d2cd8f9e18ca645e7099249a291f55ed980fd7fb50",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:9aa52abddac78288213a8f156d868caa823d5e9b151e992432610c6980fda225"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:fefda86309ab84283d9fb87bfa0a4334796eb8a4ab2562ef16664095225beb7d"
       },
-      "rendered_content_digest": "sha256:9a1dcbdcb10594a2105b3c936a34adbdab0eb91308975ef938f62a3fd5abd617",
+      "rendered_content_digest": "sha256:73e10d99275ff3e3f0b5d65e1321b0d9e43013980cf5a3c9e26b2ccdaa7241c3",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
