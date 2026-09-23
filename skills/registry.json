@@ -748,6 +748,20 @@
         "package evidence",
         "resume work"
       ],
+      "task_intents": [
+        {
+          "actions": [
+            "submit",
+            "submitting",
+            "send",
+            "sending"
+          ],
+          "objects": [
+            "proof",
+            "proofs"
+          ]
+        }
+      ],
       "skills": [
         "erdos-research-return",
         "propagate-research-consequences",

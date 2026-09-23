@@ -33,6 +33,10 @@ an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
 Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
+An existing mathematical proof offered for review belongs to the research-return
+lane, which preserves provenance and credit before pull-request preparation.
+A request to find or prove a theorem remains research work; a generic pull
+request remains contribution submission. Keep all three as route fixtures.
 Explicit `agent_entry.py --purpose` must win over words in `--scope`, and the
 handoff must retain the original request. Exercise the complete architecture
 session, validation and package path as well as the mathematics path; a receipt

@@ -218,6 +218,18 @@ ROUTE_CASES = {
         "return_research",
         "erdos-research-return",
     ),
+    "I have a mathematical proof to submit for review": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "I have proofs from this clone to submit for review": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "I am submitting a mathematical proof for review": (
+        "return_research",
+        "erdos-research-return",
+    ),
     "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
     "I want to make my first useful contribution but I do not know where to start": (
         "submit_change",
