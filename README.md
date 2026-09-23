@@ -138,8 +138,13 @@ results and their relationship to the work here.
 
 Comparator compares a separately declared statement with the statement
 established by its Lean solution, using an explicit list of allowed assumptions.
-[`formalization.yaml`](formalization.yaml) lists the **selected statements**;
-the comparison does not cover every theorem in this repository. The
+In the problem papers, a result with a Lean proof carries a **Lean** link in
+the margin, and a result compared in
+[plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean) a
+**Comparator** link to its entry in the paper's
+[evidence record](evidence/README.md).
+[`formalization.yaml`](formalization.yaml) lists the **selected statements**
+compared inside this repository; neither comparison covers every theorem. The
 [verification dossier](docs/EXTERNAL_VERIFICATION.md) identifies the selected
 statements across all eight problems and the limits of the comparison.
 

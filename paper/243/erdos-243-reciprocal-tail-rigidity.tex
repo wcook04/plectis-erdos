@@ -37,14 +37,12 @@
 
 \begin{abstract}
 We prove that every strictly increasing sequence of positive integers with
-$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$ has an irrational reciprocal sum. The
-integer numerators of a hypothetical rational tail would eventually have a
-cubic profile; a number-field square-specialisation argument and congruences
-modulo seven exclude it. The square-specialisation step and the resulting
-irrationality theorem have unconditional Lean declarations for zero-indexed
-positive sequences, using the simple pole of the Dedekind zeta function
-rather than a Chebotarev premise. The one-based statement follows by the
-finite-prefix argument below.
+$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$ has an irrational reciprocal sum. If the
+sum were rational, the integer numerators of its tails would eventually
+agree with a cubic polynomial in $n$; a square condition in a cubic number
+field and congruences modulo seven exclude every such cubic. The Lean
+proof, for sequences indexed from zero, uses the simple pole of the
+Dedekind zeta function in place of the Chebotarev density theorem.
 
 We also prove that, when $a_{n+1}/a_n^2\to1$ and the reciprocal sum is
 rational, an eventual upper bound on the increments of
@@ -55,9 +53,6 @@ remains open.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
-The cubic-rate theorem in Section~\ref{sec:secondaryrate} gives irrationality
-for a precise subclass of the growth sequences in Erd\H{o}s Problem~\#243.
-The main recurrence criterion below treats a different subclass.
 For integers $a_n>1$, the Sylvester recurrence
 $a_{n+1}=a_n^2-a_n+1$ gives the telescoping identity
 \[
@@ -65,9 +60,22 @@ $a_{n+1}=a_n^2-a_n+1$ gives the telescoping identity
 \]
 We call a sequence that satisfies this recurrence eventually a
 \emph{Sylvester tail}. Its reciprocal sum from any index $n$ in that
-tail onwards is $1/(a_n-1)$. Erd\H{o}s Problem~\#243 asks whether rationality and
-$a_{n+1}\sim a_n^2$ force this recurrence. We prove the following
-sufficient condition.
+tail onwards is $1/(a_n-1)$. Erd\H{o}s Problem~\#243
+(Problem~\ref{res:problem} below) asks whether rationality of
+$\sum1/a_n$ and $a_{n+1}\sim a_n^2$ force this recurrence.
+
+Theorem~\ref{res:cubicrate} settles the problem for one class of
+sequences: every strictly increasing sequence of positive integers with
+\[
+ \frac{a_n^2}{a_{n+1}}=1+\frac3n+o(n^{-3})
+\]
+has an irrational reciprocal sum. Such a sequence has
+$a_{n+1}\sim a_n^2$ and is never a Sylvester tail, for which
+$a_n^2/a_{n+1}-1=O(1/a_n)$. If its sum were rational, the integer
+numerators $C_n$ of Section~\ref{sec:transfer} would eventually agree with a
+cubic polynomial in $n$; a square condition in a cubic number field
+and congruences modulo seven exclude every such cubic.
+For the recurrence itself we prove the following sufficient condition.
 
 \begin{corollary}[bounded increments of $P_n/a_n$]\label{res:originalbounded}
 Let $a_1<a_2<\cdots$ be positive integers, $a_{n+1}/a_n^2\to1$, and
@@ -163,7 +171,8 @@ Sections~\ref{sec:bounded}--\ref{sec:transfer} contain the main proof:
 the arithmetic argument, its gcd and CRT lemmas, and the construction
 from the reciprocal series. The later sections give extensions and
 state the estimate still needed for the unrestricted problem.
-Appendix~\ref{app:index} records the formal correspondences separately.
+
+\evidenceparagraph{\evidencerecordurl}
 
 \section{Proof under a lower bound on the error}\label{sec:bounded}
 We first assemble the argument. Section~\ref{sec:state} proves its
@@ -484,9 +493,7 @@ Instead of multiplying all earlier denominators, one can clear the
 rational tail with their least common multiple. We will sum only at steps
 where the resulting numerator exceeds all its earlier values. This allows
 some increases to be omitted from the sum and others to receive smaller
-weights. The proof is given below. The separate release contains
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalWeightedRecords.lean\#L268}{the real-weight criterion}; it is outside the checked main-repository build documented here.
-Set
+weights. Set
 \[
  L_n=\operatorname{lcm}(q,a_1,\ldots,a_{n-1}),\quad
  M_n=D_n/L_n,\quad U_n=C_n/M_n,\quad V_n=E_n/M_n.
@@ -664,12 +671,10 @@ are pairwise coprime the two weights agree; repeated prime factors can
 make the LCM much smaller. This comparison does not assert the existence
 of a non-Sylvester rational example satisfying one bound but not the other.
 
-Lean checks Corollary~\ref{res:lcmbounded} as
-\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49}{the LCM condition for the reciprocal sequence}.
-That declaration takes the rational reciprocal sum and the quadratic growth
-limit as hypotheses, with the finite upper limsup recorded as an eventual
-upper bound on the expression in the corollary. It does not assume that
-$q$ divides the least common multiple of the earlier $a_j$.
+The Lean statement of Corollary~\ref{res:lcmbounded} records the finite
+upper limit as an eventual upper bound on the expression in the corollary.
+It does not assume that $q$ divides the least common multiple of the
+earlier $a_j$.
 
 For comparison, the all-positive, absolute-convergence specialisation
 of Duverney's signed-series criterion
@@ -695,7 +700,7 @@ constancy. Section~6 of the companion, under ``Integer coefficients'',
 proves these two assertions separately, without assuming centring for
 the boundedness assertion. For positive $b_n$, compare Badea
 \cite[p.~316]{badea1993} and Tijdeman--Yuan \cite{tijdemanyuan2002}.
-The pinned
+The
 \href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/CoefficientUniformBoundedHeight.md}
 {coefficient proof supplement} also gives finite examples separating
 boundedness from stationarity.
@@ -720,7 +725,7 @@ The first product telescopes and the second is bounded, giving $t_n=O(n)$.
 Since $(\gamma_n)_+=O(1/n)$, the increment $t_n\gamma_n$ is bounded
 above. This supplies the extra hypothesis of Corollary~\ref{res:originalbounded}.
 \end{proof}
-This is a written consequence of the bounded-increment criterion. It does not
+This is a consequence of the bounded-increment criterion. It does not
 assert that the weaker condition $\limsup n(\gamma_n)_+\le1$ suffices;
 a vanishing but nonsummable excess over $1/n$ is not covered by this proof.
 
@@ -748,25 +753,25 @@ finite-prefix argument.
 Under rationality, Section~\ref{sec:transfer} gives
 $C_{n+1}/C_n=1+3/n+o(n^{-3})$. Integer finite differences then give
 $C_n=An(n+1)(n+2)+B$ eventually, with $A\in\Q_{>0}$ and $B\in\Q$.
-The fixed-cubic exclusion contradicts this profile. The complete ordinary
-argument, including the finite-difference extraction and the cubic-field
-step, is in Section~2 of the
+No positive integer solution of $C_{n+1}=a_nC_n-D_n$, $D_{n+1}=a_nD_n$
+agrees eventually with such a cubic. Dividing out the eventual gcd of
+$C_n$ and $D_n$ reduces the cubic to $(m/6)\,n(n+1)(n+2)\pm1$ with $m$
+a positive integer; a square condition at primes dividing a middle
+numerator, read in a cubic number field, forces $m=12$; and both
+remaining cubics fail the recurrences modulo seven. The
+complete argument, including the finite-difference extraction, is in
+Section~2 of the
 \href{https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf}{companion reasoning paper}.
-The companion gives an ordinary proof of the field step using the classical
-Chebotarev theorem~\cite[Section~3, author version]{stevenhagenlenstra1996}.
-The Lean proof instead derives the square-specialisation lemma from the simple
-pole of the Dedekind zeta function and applies it to the full cubic-rate
-implication. This paragraph is a proof by the stated companion argument.
+There the field step, that a polynomial value which is a square modulo
+almost every prime at every root is a square in the cubic field, is proved
+with the Chebotarev density
+theorem~\cite[Section~3, author version]{stevenhagenlenstra1996}. The Lean
+proof assumes no form of that theorem: it derives the field step from the
+simple pole of the Dedekind zeta function at $s=1$, which Mathlib provides.
 \end{proof}
 
-\noindent The zero-indexed form of Theorem~\ref{res:cubicrate} is also a Lean theorem,
-\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean\#L70}{cubic-rate irrationality},
-with the stated rate and no Chebotarev premise. The one-based conclusion uses the ordinary finite-prefix bridge above. In the Lean proof, the field
-step uses the simple pole of the Dedekind zeta function at $s=1$, which
-Mathlib provides, in place of Chebotarev's theorem.
-
 For example, $a_1=8$ and $a_{n+1}=\lceil n a_n^2/(n+3)\rceil$
-give this rate and product-ratio increments of order $n^2$. Thus the
+give this rate, and the increments of $P_n/a_n$ are of order $n^2$. Thus the
 bounded-increment criterion does not apply, but
 Theorem~\ref{res:cubicrate} gives irrationality. The rounding estimates
 are in the companion's Section~2; its Section~7 treats the general
@@ -793,8 +798,8 @@ Theorem~\ref{res:bounded} other than (5),
  \frac{(-E_n)_+}{\log_2\log_2\max(4,C_n)}\le1
  \quad\Longrightarrow\quad E_n=0\text{ eventually}.
 \]
-This implication is a Lean theorem,
-\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean\#L45}{double-logarithmic bound},
+This implication has a Lean proof
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean\#L45}{double-logarithmic bound})
 with no hypothesis beyond these.
 The companion's Theorem~7.3 and Corollary~7.4 prove this inclusive
 bound by controlling the height of a CRT block. A fixed bound satisfies
@@ -811,11 +816,12 @@ eventually zero
 and that this limit superior is at most the one displayed above
 (\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L100}{comparison with the negative part}).
 The displayed implication is the contrapositive of the two combined, which
-also uses $D_0\ge1$, a consequence of~(6). Subcritical versions are given in
-\href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md}{the slow-negative proof}
-and \href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md\#5-record-only-subcritical-log-log-bound}
-{the record-only extension}, the latter for LCM numerators with the bound
-imposed only at late record steps.
+also uses $D_0\ge1$, a consequence of~(6). Versions with a coefficient
+below $1$ are proved in
+\href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md}{a note on slowly growing negative parts}
+and, for LCM numerators with the bound imposed only at late record steps,
+in \href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md\#5-record-only-subcritical-log-log-bound}
+{a note on record steps}.
 These results do not establish the general bound on the sum at record steps.
 
 \section{The remaining arithmetic estimate}\label{sec:open}
@@ -838,8 +844,9 @@ The profile is a necessary condition, not a construction. For a zero-indexed exa
 with $a_n>1$, $C_n>0$, $D_n\ge0$ and $E_n/C_n\to0$, the companion's
 Section~4 proves that $D_n>0$, $C_n/D_n\to0$ and
 $\sum_n1/a_n=C_0/D_0$; it also derives quadratic growth. Thus these
-global orbit assumptions already supply reciprocal-series realisation.
-A scalar numerical profile or a finite admissible prefix does not.
+global orbit assumptions already make the orbit the integer tail of a
+reciprocal series. A scalar numerical profile or a finite admissible
+prefix does not.
 
 \begin{problem}[growth of repeated denominator factors]\label{res:lcmheight}
 For every rational-tail orbit satisfying the hypotheses but not the conclusion of Problem~\ref{res:problem},
@@ -855,15 +862,9 @@ at infinitely many indices?
 \end{problem}
 Section~\ref{sec:transfer} gives $C_{n+1}/C_n\to1$; averaging logarithms
 therefore gives $\log C_n=o(n)$. Since $1\le M_n\le C_n$, every such
-orbit already satisfies $\log M_n/n\to0$. The proposed positive upper limit
-is therefore a contradiction target: proving it from failure of
-Sylvester behaviour would exclude every counterexample, not describe
-an additional possible growth regime.
-
-The necessary profile is proved above and is formalised as
-\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean\#L151}{the necessary conditions on a counterexample}. The formal statement assumes the rational reciprocal sum, the
-quadratic growth limit and failure of eventual Sylvester behaviour; the
-last hypothesis is essential to all of its nontermination conclusions.
+orbit already satisfies $\log M_n/n\to0$. A positive answer would
+therefore be a contradiction: proving it from failure of Sylvester
+behaviour would exclude every counterexample.
 
 For $B\ge0$ put
 \[
@@ -945,30 +946,6 @@ Each linked phrase below opens its declaration at an immutable revision;
 the checkpoint is \texttt{\commitshort} unless the destination identifies
 a separate release, an older research note or a later revision.
 
-\paragraph{Recorded coverage.}
-The supplied index records checked proofs of the bounded-negative theorem,
-its product and LCM consequences, the scalar convergence criterion and
-necessary conditions on a counterexample. The rational-tail construction
-has its own formalised estimates; it is not merely an interpretation of
-an abstract recurrence. The \href{https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean\#L87}{weighted criterion is checked in both directions}, with the real cutoff used in Lemma~\ref{res:weights}. The zero-indexed cubic-rate theorem has an unconditional Lean declaration at the pinned revision; the one-based finite-prefix bridge above is an ordinary argument. The companion's double-logarithmic results, its Theorem~7.3 and Corollary~7.4, are Lean theorems for the integer tails of a rational reciprocal sum
-(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean\#L340}{record dichotomy},
-\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L129}{double-logarithmic criterion}).
-For an orbit satisfying the hypotheses of Theorem~\ref{res:bounded} other
-than (5), the double-logarithmic bound of Section~\ref{sec:secondaryrate}
-is a Lean theorem as well
-(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean\#L45}{double-logarithmic bound}).
-The companion supplies the written proofs of
-both arguments, including the growth and modulus-counting arguments.
-
-The recorded main build is at \texttt{6b78209ab63a}; links retain their
-original pins, including \texttt{\commitshort}. The linked weighted criterion also has a fresh Lean check; this does not
-certify the remaining exposition as a whole. Finite certificates
-and unsuccessful extensions are retained in the companion, not counted
-as proofs of assembled arguments. The earlier Isabelle/HOL development
-of Koutsoukou-Argyraki and Li \cite{kouli2020} verifies older irrationality
-criteria, not Problem~\#243. None of these records supplies the missing
-increment bound or global record estimate.
-
 \paragraph{Earlier remainder methods and related problems.}
 The integer-remainder method predates this argument
 \cite[Theorem~2.1, pp.~85--86]{erdosstraus1974}.
@@ -976,14 +953,15 @@ Han\v{c}l and Tijdeman characterise rationality of polynomial Cantor
 series by a finite decomposition and a shifted polynomial sum
 \cite[Theorem~2.2 and its derivation, pp.~39--40]{hancltijdeman2008};
 the polynomial hypotheses justify that rearrangement. Neither comparison
-supplies the lower-bound CRT argument. The freely selectable series of
+supplies the lower-bound CRT argument. The Isabelle/HOL
+development of Koutsoukou-Argyraki and Li \cite{kouli2020} formalises
+older irrationality criteria of Erd\H{o}s and Straus; it does not treat
+Problem~\#243. The freely selectable series of
 Problem~\#270 \cite[Theorems~1--2]{crmarickovac2025} are discussed in
 the companion's Section~3, but are not used for the fixed recurrence here.
 
 \paragraph{Main criterion and arithmetic lemmas.}
-The formalisation checks \href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean\#L211}{the reciprocal-series corollary and its integer-tail construction}
-(Corollary~\ref{res:originalbounded}).
-The proof of \lword{Erdos243/ReciprocalTailRigidity.lean}{2360}{eventuallyBoundedNegativePart_eventually_zero}{eventual vanishing under a lower error bound}
+The Lean proof of \lword{Erdos243/ReciprocalTailRigidity.lean}{2360}{eventuallyBoundedNegativePart_eventually_zero}{eventual vanishing under a lower error bound}
 (Theorem~\ref{res:bounded}) shifts past the two thresholds and applies the \lword{Erdos243/ReciprocalTailRigidity.lean}{2271}{boundedNegativePart_eventually_zero}{vanishing result under a bound on the negative part}
 with centring and the lower bound at every index.
 
@@ -1017,12 +995,8 @@ dynamics and vanishing relative error give \lword{Erdos243/SparseResetRecovery.l
 \lword{Erdos243/SparseResetRecovery.lean}{488}{eventually_zero_of_summable_negativeRelativeMass}{eventual zero error under the convergence assumption},
 and \lword{Erdos243/SparseResetRecovery.lean}{510}{sylvesterNext_eventually_of_summable_negativeRelativeMass}{the resulting Sylvester recurrence}.
 
-The state dynamics and arithmetic exclusions are in
-\texttt{ReciprocalTailRigidity.lean}; the scalar criterion is in
-\texttt{SparseResetRecovery.lean}. The product and least-common-multiple
-criteria and the necessary conditions on a counterexample are in
-\texttt{PaperCompleteR7}.
-The checked periodic theorem assumes that each error magnitude is smaller
+The Lean theorem excluding a periodic negative error (Theorem~10.1 of the
+companion) assumes that each error magnitude is smaller
 than its multiplier. For periodic positive magnitudes and multipliers
 $a_n\ge2$, the companion derives this bound eventually from the exact
 recurrences. For general errors, vanishing relative error supplies

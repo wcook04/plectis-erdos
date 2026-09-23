@@ -54,8 +54,8 @@ numerator or a convergent sum at steps setting new maxima. The paper
 gives the underlying recurrences, their relation to earlier work, and
 examples separating numerical growth bounds from the exact recurrences. The
 cubic-rate theorem is checked in Lean, together with every lemma used in its
-proof. The further written arguments are distinguished from the specific
-theorems formalised in Lean. None of the additional bounds is
+proof, and so is every other theorem, proposition, lemma and corollary
+below. None of the additional bounds is
 derived for every rational reciprocal sum in Erd\H{o}s Problem~\#243.
 \end{abstract}
 
@@ -114,8 +114,8 @@ for a convergent sum of relative increases. The constant and periodic
 cases appear in Sections~\ref{long243:sec:constant}
 and~\ref{long243:sec:periodic}.
 
-Section~\ref{long243:sec:priorwork} compares the results with prior work
-and identifies their formalisation status. Section~\ref{long243:sec:open}
+Section~\ref{long243:sec:priorwork} compares the results with prior work,
+including earlier formal work. Section~\ref{long243:sec:open}
 separates questions about reciprocal tails from examples that merely
 avoid prescribed moduli. Appendices~\ref{long243:app:index}
 and~\ref{long243:app:residue} give source locations and a finite residue
@@ -126,6 +126,8 @@ recurrence, but not for the coefficients in a higher-order rate. In
 particular, the index $n$ in $1+3/n+o(n^{-3})$ is kept fixed throughout
 the cubic proof. The recurrence sections also use zero-based indexing,
 with that convention stated where the integer sequences are introduced.
+
+\evidenceparagraph{\evidencerecordurl}
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; Ahmes series; Sylvester's sequence;
@@ -151,7 +153,7 @@ $a_n^2/a_{n+1}=1+3/n+o(n^{-3})$, then $\sum_n1/a_n$ is irrational.
 \end{theorem}
 
 
-\noindent\emph{Index translation for formal coverage.} The Lean declaration
+\noindent\emph{Index translation for the Lean statement.} The Lean declaration
 uses $b:\N\to\N$, including a positive $b_0$, whereas the theorem above
 starts at $a_1$. A simple shift would change $3/n$ by order $n^{-2}$,
 so it would lose the stated $o(n^{-3})$ precision. Instead choose a
@@ -170,7 +172,7 @@ for every $n\ge N$. Moreover
 The series converge by the stated rapid-growth rate. If the original
 sum were rational, so would be the sum for $b$, contradicting the
 zero-indexed Lean theorem. This finite-prefix implication is proved
-here in ordinary mathematics; the linked Lean declaration checks the
+here in ordinary mathematics; the Lean declaration checks the
 zero-indexed theorem itself.
 
 For a concrete sequence satisfying the hypothesis, take
@@ -393,7 +395,6 @@ hypothesis.
 \end{proof}
 
 The Lean proof of Lemma~\ref{long243:res:squarespec}
-(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean\#L184}{square specialisation})
 avoids the Chebotarev density theorem. It uses only the fact that an
 algebraic integer $b$ of a number field $K$ that is not a square in $K$ is
 zero or a nonsquare modulo infinitely many primes of $K$ of degree one. If
@@ -736,18 +737,19 @@ No restriction on the rational normalisation was assumed: the proof
 derives the permitted primitive leading coefficient. The two residue
 patterns \eqref{long243:eq:wordplus} and \eqref{long243:eq:wordminus},
 the image $\{0,2,5,6\}$ modulo $7$ and the condition
-$(r^2+s^2)^2\mid48$ have been calculated above. The public checkpoint
-also contains formalised polynomial extraction, primitive cubic
-normalisation and finite transport results, including
-\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean\#L112}{the primitive-shape theorem}. These are components of the proof of
-Theorem~\ref{long243:res:cubicrate}. The zero-indexed irrationality
-implication is also a Lean theorem,
-\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean\#L70}{cubic-rate irrationality},
-with the stated rate and no Chebotarev premise; the one-based conclusion
-uses the finite-prefix argument above. The ordinary proof of
-Lemma~\ref{long243:res:squarespec} uses the classical finite-Galois
-Chebotarev theorem, and its Lean proof uses the simple pole of the Dedekind
-zeta function instead.
+$(r^2+s^2)^2\mid48$ have been calculated above.
+
+The Lean proofs of Lemma~\ref{long243:res:squarespec},
+Proposition~\ref{long243:res:transportsquare},
+Theorem~\ref{long243:res:cubicexclusion} and
+Theorem~\ref{long243:res:cubicrate} assume no form of the Chebotarev
+theorem. The ordinary proof of Lemma~\ref{long243:res:squarespec} above
+uses the classical finite-Galois Chebotarev theorem; its Lean proof uses
+the simple pole of the Dedekind zeta function instead, as described after
+that proof, and the Lean proofs of the other three pass through the
+lemma. The Lean statement
+of Theorem~\ref{long243:res:cubicrate} is indexed from zero; the
+one-based conclusion uses the finite-prefix argument above.
 
 Theorem~\ref{long243:res:cubicrate} assumes neither rationality nor an
 integer orbit: these enter only under the supposition that the reciprocal
@@ -899,8 +901,6 @@ Under the standing rational-tail and growth hypotheses, however, either
 inequality imposed eventually forces a Sylvester tail and hence the
 other. Their eventual forms are equivalent in this setting; that fact
 does not supply either condition for a general signed error.
-The general positive-coefficient criterion is not identified as a checked
-theorem in the supplied evidence.
 
 Koizumi's pseudo-greedy expansion~\cite{koizumi2025} chooses $a_n$ by
 rounding $x_n^{-1}+1$ to the nearest integer, with a half-integer rounded
@@ -988,40 +988,15 @@ unproved declaration, up to its zero-based indexing
 \texttt{Summable} hypothesis asserts the existence of a sum in $\Q$; the
 finite indexing shift changes that sum only by a rational prefix.  The
 declaration therefore does encode the rationality premise, but its proof is
-\texttt{sorry}.  Its role here is statement-level prior art; it supplies no
-proof authority, and the development in this note is independent of it.
-The checked results in this project include the state implications and the
-specified theorems about the reciprocal sequence; they are not confined to
-the state system. Earlier formal work on the remainder method should also be
+\texttt{sorry}.  It states the problem without proving it, and the
+development in this note is independent of it. Earlier formal work on the remainder method should also be
 distinguished from a solution of this problem: Koutsoukou-Argyraki and Li's
 Archive of Formal Proofs entry \cite{kouli2020} records an Isabelle/HOL
 formalisation of Erd\H{o}s--Straus (1974), Theorem~2.1, Corollary~2.10 and
 Theorem~3.1. That is formal prior art for those classical criteria, not an
 existing formal proof of Erd\H{o}s~\#243.
 
-\paragraph{Results and proof status.}
-The cubic-rate theorem (Theorem~\ref{long243:res:cubicrate}) and the three
-results its proof passes through, Theorem~\ref{long243:res:cubicexclusion},
-Proposition~\ref{long243:res:transportsquare} and
-Lemma~\ref{long243:res:squarespec}, are checked in the development with no
-additional hypothesis; Section~\ref{long243:sec:coverage} gives the
-revision. The
-bounded-negative theorem
-(Theorem~\ref{long243:res:bounded}) and the scalar summability theorem
-(Theorem~\ref{long243:res:mass}) have checked declarations. The checked
-theorems include the estimates for rational tails, proved from a product bound
-and from the least common multiple of the denominators.
-The complete weighted-record statement (Theorem~\ref{long243:res:weightedrecord})
-is kernel-checked in the main development, alongside its earlier proof source
-in the separate release.
-For the further record criteria, each evidence paragraph identifies the
-ordinary argument and the checked lemma it uses. In particular,
-Lemma~\ref{long243:res:oddpowersupply} below proves that the reduced
-denominator supplies arbitrarily large odd prime powers, and that proof is
-kernel-checked in the main development. The static-model conclusions in
-Section~\ref{long243:sec:open} are proved by ordinary arguments and are
-checked in the development as well.
-
+\paragraph{Status.}
 The additional bound or convergence assumption is not derived from the
 problem's hypotheses. An equivalence between convergence and the desired
 recurrence does not prove either of them. In the stable-gcd case the record-increment theorem
@@ -1115,15 +1090,14 @@ $T_n=1/(a_n-1)$ exactly, so $D_n=(a_n-1)C_n$ and $E_n=0$: the error
 measures deviation from the Sylvester tail identity, and it vanishes
 identically on the Sylvester orbit.
 
-The elementary identities in \texttt{ReciprocalTailRigidity.lean} are stated
-for an abstract integer system. Their reciprocal-tail interpretation
-is supplied separately by the checked \texttt{PaperCompleteR7} modules,
-including \href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean\#L211}{the product condition for a rational reciprocal sum}. The natural-state identities used in this passage include the
+In Lean, the elementary identities are stated for an abstract integer
+system, and their application to a rational reciprocal sum has separate
+statements, including
+\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean\#L211}{the product condition for a rational reciprocal sum}.
+This passage uses the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1869}{natTail_eq_nextTailState}{tail realisation},
-the \lword{Erdos243/ReciprocalTailRigidity.lean}{1881}{natDen_eq_nextDenState}{denominator realisation},
+the \lword{Erdos243/ReciprocalTailRigidity.lean}{1881}{natDen_eq_nextDenState}{denominator realisation}
 and the \lword{Erdos243/ReciprocalTailRigidity.lean}{1978}{natTail_eq_sub_centeredState}{signed update}.
-Thus the abstract integer identities and their application to a rational
-reciprocal sum have separate formal statements.
 
 Conversely, the recurrences identify a reciprocal sum when the ratio
 $C_n/D_n$ tends to zero. Regard that ratio as a real number, the
@@ -1448,16 +1422,6 @@ The first-crossing proof permits a fixed amount to be subtracted from
 each such increase. The equivalence is not a proof of convergence under
 the original hypotheses.
 
-\paragraph{Formalisation.}
-The proof below is ordinary mathematics. The first-crossing arithmetic has
-formalised components in \texttt{LcmRecordExcess.lean}. In addition, the
-separate release contains
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalWeightedRecords.lean\#L268}{the complete criterion for real-valued weights} and its natural-weight version. These release sources contain proof
-bodies, but they are outside the supplied successful main-repository build;
-a Comparator configuration alone is not a replay receipt. The finite-orbit
-data retained with the source are diagnostic examples, not a proof of
-termination for all rational seeds.
-
 The sum counts only steps setting new maxima and subtracts the same
 fixed amount from each actual jump. Unlike Koizumi's eventual-nonnegative
 case in Proposition~1(2), it permits both signs of the error.
@@ -1617,19 +1581,11 @@ Consequently Theorem~\ref{long243:res:weightedrecord} is equivalent to finitenes
 \end{equation}
 for some $B$. The original hypotheses do not currently supply this
 finiteness. In particular, termwise convergence to zero is insufficient.
-The corresponding formal comparison starts from the same positive,
-strictly increasing integer sequence, its rational reciprocal sum and
-the near-quadratic growth limit. It uses the summand in
-\eqref{long243:eq:weightedgrowth} at record indices and zero elsewhere,
-with the same class of weights and existential choice of $B$.
-The formal estimate uses the same ratio-test argument, with the sufficient
-constant $16$ in place of $3$. This transfers the criterion; it does not
-supply the required finiteness from the original hypotheses.
-The separate-release source
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/GrowthDebtSummability.lean\#L234}{\texttt{GrowthDebtSummability.lean}}
-contains the factored-growth formulation. It is outside the documented
-main-repository build. The on-page comparison above is an ordinary proof;
-this prose revision does not constitute a new Lean check of that release.
+A Lean formulation of this comparison, with the sufficient constant $16$
+in place of $3$ and the summand of \eqref{long243:eq:weightedgrowth} at
+record indices and zero elsewhere, is in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/GrowthDebtSummability.lean\#L234}{the separate release};
+it is not covered by the evidence record.
 
 The crossed heights lie above $R_n$, but the divisibility argument uses
 the starting numerator $U_n$ and the full jump $U_{n+1}-U_n$. Replacing
@@ -1772,16 +1728,6 @@ unreduced choice in the original theorem. An upper bound on $q_n-p_n$ controls t
 in the reduced coordinates. To transfer that bound directly to
 $(-E_n)_+=G_n(q_n-p_n)_+$ would also require control of $G_n$.
 
-The source references distinguish complete Lean proofs from written
-arguments that use formalised lemmas. The supplied index records a build
-of the listed public modules at revision \texttt{6b78209ab63a}; the links
-below retain their original revisions. It separately records successful
-Comparator checks for specified theorems in the release, not a build of
-that release as a whole. A challenge statement containing \texttt{sorry}
-is not a proof, and a configuration entry alone does not record a successful
-check. Citing a formalised lemma does not discharge the extra hypotheses
-or steps of the written argument using it.
-
 \begin{lemma}[the denominator valuation transition]\label{long243:res:valuationtransition}
 Let $u,v,a$ be positive integers, $\gcd(u,v)=1$, and $w=au-v>0$.
 Put $h=\gcd(w,av)$ and $v'=av/h$. For a prime $p$, write
@@ -1819,8 +1765,7 @@ At a first loss of divisibility by $p^k$, the current exponent is some
 $j\ge k$ and the valuation lemma forces $\nu_p(w_n)>j$. This would give
 $w_n\ge p^{j+1}\ge p^{k+1}$, contrary to the hypothesis.
 \end{proof}
-These are ordinary local calculations. They explain the persistence
-threshold used below without identifying any new Lean declaration.
+These local calculations explain the persistence threshold used below.
 
 \subsection{How fast the running maximum must increase}
 
@@ -1991,12 +1936,7 @@ Finally,
 Together with $\ell(C_n)\le\ell(H_n)$, this proves the corollary.
 \end{proof}
 
-\paragraph{Formalisation.}
-Theorem~\ref{long243:res:recorddichotomy} and
-Corollary~\ref{long243:res:loglogboundary} are Lean theorems for the
-integer tails of a rational reciprocal sum under the standing hypotheses
-(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean\#L340}{record dichotomy},
-\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L129}{double-logarithmic criterion}).
+\paragraph{Exact orbits.}
 The strict bound $\Theta>1$ is also a Lean theorem for any exact orbit
 with $a_n>1$, $C_n>0$, $D_0\ge1$ and vanishing relative error whose error
 is not eventually zero
@@ -2007,17 +1947,16 @@ theorem for any exact orbit with $a_n>1$, $C_n>0$ and vanishing relative
 error
 (\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean\#L45}{double-logarithmic bound for an exact orbit});
 there $D_0\ge1$ follows from the vanishing relative error.
-The supplied formal sources also contain persistence and pointwise-rise
-versions of the arithmetic steps:
+The Lean sources also contain pointwise-rise versions of the arithmetic
+steps:
 \lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of
-a common divisor}, the
-\lword{Erdos243/SlowRiseBarrier.lean}{51}{exists_consecutiveMultiples_between}{bounded
-CRT block}, the
-\lword{Erdos243/SlowRiseBarrier.lean}{194}{slowRise_landing}{slow-rise landing
-lemma}, and the
-\lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{coprime-block
-exclusion}.  These four declarations verify their own arithmetic
-statements; their landing bound controls increments of $C_n$, and the
+a common divisor}, a
+\lword{Erdos243/SlowRiseBarrier.lean}{51}{exists_consecutiveMultiples_between}{CRT
+block starting in $[P,2P)$}, the
+\lword{Erdos243/SlowRiseBarrier.lean}{194}{slowRise_landing}{landing of a slowly
+rising numerator in that block} and the
+\lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{resulting
+exclusion}. Their landing bound controls increments of $C_n$; the
 argument above controls increments of $H_n$.
 
 No upper bound on $\Theta$ is proved. If $G_n$ is unbounded, the theorem
@@ -2098,10 +2037,7 @@ nonnegative, their limits superior can only be $0$ or $+\infty$.
 
 The estimate at the first later negative error is the lemma in the release,
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/SaturatedSquareTransport.lean\#L378}{negative error scaled by the previous maximum after cancellation}: at the first later negative error,
-$u_t\le u_{s+1}$ and $u_su_t\le R_t|\tilde e_t|u_{s+1}$.
-The supplied index also records this lemma in a built public module.
-That evidence concerns the lemma, not a formal verification of the complete
-proof above. The exact example
+$u_t\le u_{s+1}$ and $u_su_t\le R_t|\tilde e_t|u_{s+1}$. The exact example
 $15/134=1/10+1/85+1/5695$, with steps in reduced fractions
 $(15,134)\to(4,335)\to(1,5695)$ and $\mathcal A_1=15/4$,
 attains equality in the displayed bound.
@@ -2185,11 +2121,9 @@ The converse follows because a Sylvester tail has $u_n=1$ eventually.
 
 The separate release contains the
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/RecordIncrementBarrier.lean\#L329}{unit-increment landing lemma} and the
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/RecordIncrementBarrier.lean\#L425}{one-unit record-increment implication}.
-The supplied index also records these statements in a built public
-module. Their assumption about the existence of a prime power is proved
-here by the preceding written lemma. The complete theorem about the
-rational tail is not thereby an assembled Lean theorem.
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/RecordIncrementBarrier.lean\#L425}{one-unit record-increment implication};
+they assume the existence of the prime power that
+Lemma~\ref{long243:res:oddpowersupply} supplies.
 
 
 The two-unit criterion discussed below bounds the actual jump at each
@@ -2292,18 +2226,11 @@ and convergence in the converse direction again follows from eventual Sylvester 
 The separate release contains
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/ProtectedEpochEnergy.lean\#L185}{the integer inequality counting crossings before a prime power is lost}
 and its counting lemmas.
-The supplied index also records the integer inequality in a built
-public module. The existence of the required prime power, the real-valued
-bound and the complete equivalence above have written proofs; the Lean inequality is the checked
-integer form, not a checked transcription of the whole assembled theorem.
-The checked main-repository declaration
+In Lean,
 \lword{Erdos243/PrimitiveRecordBarrier.lean}{435}{recordRiseTwo_sylvesterNext_eventually}{the two-unit record-rise implication}
-retains a supply premise: arbitrarily late $s$ admit an odd
-$p^k\mid v_s$ with $3R_s<p^k$.
-Lemma~\ref{long243:res:oddpowersupply} supplies this premise in ordinary
-mathematics. The declaration itself has not thereby become a complete
-checked theorem about rational tails. This distinction is about formal coverage, not
-an unfilled mathematical supply argument in the text.
+assumes that arbitrarily late $s$ admit an odd $p^k\mid v_s$ with
+$3R_s<p^k$; Lemma~\ref{long243:res:oddpowersupply} supplies such prime
+powers.
 
 \subsection{Bounds on the error and on the original sequence}
 
@@ -2333,19 +2260,15 @@ for all large $n$, a contradiction. Thus $E_n=0$ eventually, and
 Theorem~\ref{long243:res:eventual} gives the Sylvester recurrence.
 \end{proof}
 
-\paragraph{Formalisation.}
-Theorem~\ref{long243:res:slownegative} is a Lean theorem with the
-hypotheses printed above
-(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean\#L559}{slow negative part}).
 The corresponding pointwise-rise argument also has formalised arithmetic
 lemmas:
 \lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of
-a common divisor}, the
-\lword{Erdos243/SlowRiseBarrier.lean}{162}{multiplierOverlap_dvd_laterCenteredState}{overlap
-transport}, the
+a common divisor},
+\lword{Erdos243/SlowRiseBarrier.lean}{162}{multiplierOverlap_dvd_laterCenteredState}{divisibility
+of every later error by $\gcd(a_n,D_n)$}, the
 \lword{Erdos243/SlowRiseBarrier.lean}{194}{slowRise_landing}{landing lemma} and
 the
-\lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{coprime-block
+\lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{resulting
 exclusion}.  The count of indices and the simultaneous choice of constants are
 written out in the earlier proof. Corollary~\ref{long243:res:loglogboundary} includes the
 boundary coefficient $1$, while the preceding theorem on the running
@@ -2417,9 +2340,7 @@ $C_n\sim qP_n/a_n$ implies
 For $0<\delta<1$, the assumed bound and $E_n+qQ_n=o(1)$ consequently give
 $(-E_n)_+\le(1-\delta/2)\ell(C_n)$ eventually. This contradicts
 Theorem~\ref{long243:res:slownegative}. If $\delta\ge1$, the hypothesis gives
-$Q_n\le0$ eventually and the bounded clause already applies. The growth
-argument used in this deduction is a written argument, not an additional
-assembled Lean theorem.
+$Q_n\le0$ eventually and the bounded clause already applies.
 
 The same comparison permits any positive real clearing factor
 $F_n\le qP_n$: multiplying $E_n+qQ_n=o(1)$ by $F_n/(qP_n)$ gives
@@ -2449,8 +2370,6 @@ in the short note's LCM corollary.
 
 The comparison $E_n+qQ_n=o(1)$ has its classical predecessor in
 Koizumi's proof of Corollary~4(1) \cite[(11)--(12), p.~15]{koizumi2025}.
-The bounded clause uses the checked rational-tail estimates; the
-slow-growth deduction above is an ordinary written argument.
 
 \begin{corollary}[the $1/n$ threshold]\label{long243:res:onethreshold}
 Let $a_1<a_2<\cdots$ be positive integers with $a_{n+1}/a_n^2\to1$
@@ -3099,7 +3018,7 @@ For any $n$, choose $t\ge n$ with $-B\le E_t<0$. Then
 The entire positive divisibility chain is therefore bounded and eventually
 constant, by
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1605}{dvdChain_eventuallyConstant_of_cofinally_bounded}{stabilisation of a bounded divisibility chain}.
-This is the supplied
+In Lean this is the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1636}{tailGcd_eventuallyConstant_of_cofinally_boundedNegative}{gcd stabilisation result}.
 Dividing both sequences by the eventual value preserves the recurrences
 and gives coprime numerator and denominator at every later index.
@@ -3107,8 +3026,7 @@ and gives coprime numerator and denominator at every later index.
 
 Other negative errors may exceed $B$ in magnitude. Gcd stabilisation
 uses the bounded witnesses, whereas the CRT application needs a bound
-on \emph{every} upward increment. The supplied declaration proves
-stabilisation; division by the stable gcd gives the reduced tail.
+on \emph{every} upward increment.
 
 Vanishing relative error also gives sparsity of the strict gcd increases.
 The next proposition asserts long finite intervals of constancy, not
@@ -3289,8 +3207,8 @@ follows from Theorem~\ref{long243:res:eventual}, since \(C_n>0\).
 
 The same proof allows any positive real $C_0$, provided $E_n\in\Z$:
 after the finitely many rises, the bounded positive values lie in the
-finite set $(C_0+\Z)\cap(0,K]$, so they stabilise. The linked formal
-statement retains integer-valued $C_n$.
+finite set $(C_0+\Z)\cap(0,K]$, so they stabilise. The Lean statement
+retains integer-valued $C_n$.
 
 The two indispensable features of this argument are positivity and
 discrete increments. With $C_n=1+1/(n+1)$ and
@@ -3303,7 +3221,8 @@ and $E_n=1$, the increments are integers but positivity fails.
 its exact-orbit consequence is
 \lword{Erdos243/SparseResetRecovery.lean}{690}{sylvesterNext_eventually_of_summable_negativeRelativeMass_scalar}{the scalar recurrence from a convergent sum}.
 The separate release contains a
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalNegativeMass.lean\#L19}{formulation for the rational-tail numerators using a convergent sum}, outside the main-repository build identified here. Summability remains
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalNegativeMass.lean\#L19}{formulation for the rational-tail numerators using a convergent sum},
+not covered by the evidence record. Summability remains
 an assumption; the elementary scalar implication needs neither growth nor
 vanishing relative error.
 
@@ -3383,11 +3302,9 @@ eventually nonnegative error.  Theorem~\ref{long243:res:bounded} excludes a boun
 negative part, and Theorem~\ref{long243:res:mass} excludes convergence of the sum of relative increases.  These statements are unchanged by deleting a finite prefix.
 \end{proof}
 
-\noindent Lean checks Proposition~\ref{long243:res:frontier} as
-\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151}{the necessary conditions on a counterexample},
-from the rational reciprocal sum, the quadratic growth limit, and the failure
-of eventual Sylvester behaviour.  The divergent sum of relative increases is
-recorded there as divergence of the partial sums.
+\noindent In the Lean statement of Proposition~\ref{long243:res:frontier},
+the divergent sum of relative increases is recorded as divergence of the
+partial sums.
 
 Proposition~\ref{long243:res:frontier} does not assert infinitely many
 prime divisors of the error magnitudes. Nor are its numerical conditions
@@ -3787,23 +3704,14 @@ as an already verified formalisation target.
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
 
-\paragraph{Artefact and data availability.} The
-\href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
-fixed toolchain and library manifest for the formalised results. Each
-declaration establishes its stated implication. Results that also need
-written arguments are identified separately in the manuscript.
-
-The supplied source index records a successful build of the listed
-main-repository modules at revision \texttt{6b78209ab63a}, using the
-identical-file evidence described there. The links in this manuscript
-retain their original pins, including \texttt{\commitshort}; this build
-record is not a new verification of every linked revision. The kernel
-checks and axioms stated in Appendix~\ref{long243:app:index} belong to the
-revisions named there, and the separate release is not covered as a
-whole. A source link is not a build receipt.
-The external formal-conjecture entry states the problem rather than proving
-it. The ordinary proofs and their exposition require mathematical review
-independently of the recorded checks.
+\paragraph{Artefact and data availability.} The Lean sources, with their
+fixed toolchain and library manifest, are in the
+\href{\sourceurl}{public repository}. The
+\href{\evidencerecordurl}{evidence record} gives, for every result, the
+Lean declarations, the version checked and the independent Comparator
+check. The external formal-conjecture entry states the problem without
+proving it. The ordinary proofs and their exposition require mathematical
+review independently of these checks.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.
@@ -3816,68 +3724,18 @@ supplied Erd\H{o}s Problems catalogue snapshot~\cite{erdosproblems}.
 \appendix
 \section{Guide to the formal sources}\label{long243:app:index}
 
-The main-repository links retain revision \texttt{\commitshort};
-other links specify their repository and revision. The supplied source
-index records a main-repository build at \texttt{6b78209ab63a} and sixty
-theorem-specific Comparator checks in the separate release.
-The label \emph{release only} distinguishes the repositories and build
-records; it does not deny those sixty checks.
-The principal state theorem is in \texttt{ReciprocalTailRigidity.lean}.
-The scalar convergence theorem is in \texttt{SparseResetRecovery.lean},
-and the bounds on cancelled factors are in \texttt{RepairEntropy.lean}.
-The rational-tail estimates are separate checked declarations in
-\texttt{PaperCompleteR7}, not consequences of the abstract state module
-alone. The checked periodic statement assumes $e_n<a_n$;
+Links to the main repository use revision \texttt{\commitshort};
+other links name their repository and revision. The recurrence identities
+and arithmetic exclusions are in \texttt{ReciprocalTailRigidity.lean}, the
+scalar convergence theorem is in \texttt{SparseResetRecovery.lean}, and
+the bounds on cancelled factors are in \texttt{RepairEntropy.lean}.
+The Lean statement excluding a periodic error assumes $e_n<a_n$;
 Section~\ref{long243:sec:periodic} derives this bound eventually for a
 periodic positive error magnitude. The bounded-negative statement lists
 strict centring and vanishing relative error separately;
 the latter implies the former eventually by taking $K=1$.
 Sections~\ref{long243:sec:priorwork} and~\ref{long243:sec:bounded} give the
 construction from a rational reciprocal sum.
-
-\subsection*{Formalisation coverage and remaining dependencies}
-\label{long243:sec:coverage}
-\papersectiontarget{coverage}
-
-In an earlier formal version, the square-specialisation lemma and its
-three consumers were formalised only under a named Chebotarev input.
-At the pinned revision, the lemma has an unconditional
-statement in \texttt{SquareSpecialisationDedekind.lean}, and the transport,
-cubic-exclusion and cubic-rate theorems have unconditional statements in
-\texttt{SquareSpecialisationUnconditional.lean}. Their shared analytic input
-is Mathlib's simple pole for the Dedekind zeta function. The proof compares
-ideal-counting Dirichlet series in a quadratic extension to produce a prime
-at which a nonsquare has zero or nonsquare reduction; it then contradicts
-the lemma's hypothesis at every modular root. The four Lean theorem
-statements have no Chebotarev premise. The cubic-rate Lean statement is
-indexed from zero; the one-based paper theorem follows by
-the ordinary finite-prefix construction above. The ordinary Chebotarev proof
-printed above is retained as a second mathematical proof, not as a formal
-dependency.
-
-The four are Lemma~\ref{long243:res:squarespec},
-Proposition~\ref{long243:res:transportsquare},
-Theorem~\ref{long243:res:cubicexclusion} and
-Theorem~\ref{long243:res:cubicrate}, one chain of results proved later.
-Each has a Lean statement of the same assertion, checked by the Lean kernel
-using only \texttt{propext}, \texttt{Classical.choice} and
-\texttt{Quot.sound}, at revision \texttt{7380b7871687}
-(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean\#L35}{the four statements}).
-The Lean proof of Lemma~\ref{long243:res:squarespec} replaces the Chebotarev
-density theorem, used in the proof printed here, by the simple pole of the
-Dedekind zeta function at $s=1$, as described after that proof. The other
-three are deduced from the lemma in Lean through the square forced modulo a
-prime dividing a middle numerator, the passage from that congruence to a
-square in the cubic field, the exclusion of the proposed cubic orbit, and the
-irrationality conclusion. The one-based paper theorem uses the ordinary
-finite-prefix bridge above.
-
-The historical source links in the generated concordance below remain a
-record of the older snapshot. The theorem notes identify the later
-unconditional declarations at the pinned revision. The original Erd\H{o}s
-problem remains open: the cubic rate is a specific irrational subclass, not
-a proof of eventual Sylvester recurrence under the unrestricted growth and
-rationality hypotheses.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -4025,8 +3883,7 @@ The reduction remains useful because its shrinking-modulus argument
 applies to other recurrences defined by polynomial division.
 % ; - part family_catalogue ; -
 \section{Result map and proof dependencies}\label{sec:erdos-243-complete-family-map}
-The following map records proof dependencies. A checked component does
-not confer that status on an assembled ordinary theorem.
+The following map records proof dependencies.
 The short note contains its bounded-increment proof in Sections~2--4.
 Details kept here rather than repeated there are the signed-series
 comparison in Section~\ref{long243:sec:priorwork}, the integer-coefficient
@@ -4040,17 +3897,14 @@ Theorem~\ref{long243:res:recorddichotomy}, respectively.
 \paragraph{Bounded upward increments.}
 Vanishing relative error gives eventual absorption. Bounded negative
 values at arbitrarily late indices give a stable gcd; CRT then excludes
-the unbounded reduced tail with bounded upward increments. The state
-theorem and rational-tail construction have supplied main-repository
-build evidence. The increment bound is an extra hypothesis.
+the unbounded reduced tail with bounded upward increments. The increment
+bound is an extra hypothesis.
 
 \paragraph{A convergent sum of relative increases.}
 The inequality $C_{n+1}\le C_n(1+(-E_n)_+/C_n)$ turns summability into a
 uniform bound on $C_n$. Integrality then permits only finitely many rises,
 after which the numerator stabilises.
-No vanishing relative error is needed. The scalar and exact-orbit results
-have cited main-repository declarations; the linked rational-tail
-formulation is outside that build record.
+No vanishing relative error is needed.
 
 \paragraph{New maxima and prime-power persistence.}
 A bound on the negative reduced error scaled by the previous maximum
@@ -4063,10 +3917,7 @@ The LCM numerator gives weighted first-crossing estimates. A prime power
 dividing the reduced denominator persists while the unreduced next
 numerator stays below the threshold in
 Corollary~\ref{long243:res:powerpersistence}. Crossings can be counted
-before that threshold is reached. The large odd prime powers and
-convergence equivalences have written proofs. Separate-release integer
-lemmas and main-repository conditional record declarations establish
-only their stated conclusions.
+before that threshold is reached.
 
 \paragraph{Cubic rate.}
 The tail estimate and finite differences of the Gamma ratio force an
@@ -4074,8 +3925,7 @@ eventual cubic polynomial for the integer numerator. The recurrence forces a mod
 lemma lifts to the cubic field. The ordinary proof uses Chebotarev; the Lean
 proof obtains the same implication from a Dedekind-zeta pole comparison.
 The trace calculation leaves $m=12$, and both possible signs are excluded
-modulo seven. The full cubic-rate implication has an unconditional Lean
-declaration at the pinned revision.
+modulo seven.
 
 \paragraph{Static barriers.}
 For sufficiently sparse prime moduli, a coprime integer sequence can
