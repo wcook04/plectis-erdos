@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:e5c8646ab0122519e67a1963ae52bf9f1f85871648b5ec72a3fde182798cd802",
+    "docs/claims.json": "sha256:0fb2a8d97de4111fa04b8d99a27c732f8066b68699fe69ff61b18b788c7f11f3",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:3c46d69f05b576636265e9c210959b6a1643e7bde9d4864839235381291f5fa3",
-    "docs/publication_contract.json": "sha256:c59abf252e72a27f5697e00a9ae251caa216a0bed63dadf361dbc927dfb12ded",
+    "docs/problems.json": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
+    "docs/publication_contract.json": "sha256:1f4890f9655f497f1a7839a173b2363eb8cbbdb64406ef65cf2305bbc484243c",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:1d5ebdcd636e9c22c6e69d5d27c05b1d8a17b8ce37227f0e6fea1be9a459b3ea",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 33,
-      "curated_claim_count": 148,
+      "curated_claim_count": 150,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -370,7 +370,7 @@
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
-      "statement": "Determine the precise correspondence between the historical curve-length question and the checked total-variation formulation, which ani’s explicit degree-seven example refutes. A Hausdorff-measure comparison is not formalised, and independent human review of historical correspondence is not recorded; the refuted total-variation assertion itself is no longer an open proof obligation.",
+      "statement": "Independently review whether the 1958 curve-length wording matches the exact Formal Conjectures path-image-length statement, whose negation is now Lean-checked using ani's explicit degree-seven polynomial. The checked one-dimensional Hausdorff-measure bound settles that formal statement negatively; the reported small-parameter family is not formalised.",
       "status": "open"
     },
     {
@@ -529,9 +529,9 @@
       "CORPUS_MANIFEST.json",
       "PUBLIC_CORPUS_CHECKPOINT.json"
     ],
-    "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims.",
+    "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:3c46d69f05b576636265e9c210959b6a1643e7bde9d4864839235381291f5fa3",
+      "content_digest": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

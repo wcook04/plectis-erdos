@@ -8,6 +8,16 @@ exposition into further research. Eight Erdős programmes each have a short
 expository paper, a longer research record and associated Lean source. The aim
 is to make results, methods and useful failures understandable enough for
 others to question, extend and reuse.
+
+For a first mathematical result, start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
+If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
+the Lean-checked theorem proves irrationality at every integer base for each
+infinite support `A` with finite base-two weighted mass
+`∑_{a∈A} h_P(a)/(a(2^{h_P(a)}−1))`. Some such supports have divergent
+`∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
+[Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
+or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+
 **Using one degree-seven polynomial constructed by the erdosproblems.com contributor
 ani, Lean proves that every preconnected subset of its strict unit lemniscate
 joining two distinct roots has one-dimensional Hausdorff measure greater than
@@ -22,15 +32,6 @@ The attribution is recorded in [ani's 7 September 2026 forum post](https://www.e
 
 This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
 Those seven remain open.
-
-For a first mathematical result, start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
-If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
-the Lean-checked theorem proves irrationality at every integer base for each
-infinite support `A` with finite base-two weighted mass
-`∑_{a∈A} h_P(a)/(a(2^{h_P(a)}−1))`. Some such supports have divergent
-`∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
-[Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
-or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
@@ -229,7 +230,7 @@ explains that design.
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 466 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 150 curated claim records in 33 contribution families, reaching Lean source through 468 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
 The rest is engineering inventory. About 87% of the 163,066 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
@@ -237,7 +238,7 @@ The rest is engineering inventory. About 87% of the 163,066 declarations (142,66
 |---|---:|
 | Lean modules (the two library roots) | 1,812 |
 | Formal results and supporting lemmas | 159,253 |
-| Curated claim records | 148 |
+| Curated claim records | 150 |
 | Contribution families | 33 |
 
 Generated shards are counted as formal source and never as separate

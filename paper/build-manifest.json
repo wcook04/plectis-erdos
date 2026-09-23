@@ -35,45 +35,45 @@
     },
     "erdos_1049_note": {
       "inputs": {
-        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:2564a04c23846decbcc83c0d517a1cdd5cff056568f86b3ed47e2a21fe46817e",
+        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:c93d5be214450ac069ea1397e99b1fe8a0a73d131b19a48673147a5633f015aa",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:9dc71a104647a25715fde0d38b94e6b8b56b76439836822439e794c051863873",
+      "rendered_content_digest": "sha256:2645a384867791271c8dfc37cbedf9970c297f0bf273c93bd4251b1753402c91",
       "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },
     "erdos_1049_reasoning_record": {
       "inputs": {
-        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:13fae04ecb22dad8ab472cd3caa9f03f5bb5c59560a7d442f567bb9b94f37684",
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:570f710bf2d1db9e1133b97e4e0c4b06ed6b87a48ff88c93ab0e0cabd9a6c6ea",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:8f0121af8b874ca5ad1e31968b86e7b034d5657b59a40af6cbbc7f296187447f",
+      "rendered_content_digest": "sha256:c114057fa4b12d809ab959a22e6cd84c4f0aa7ef6d7255ee212fb067da020795",
       "source_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "storage_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf"
     },
     "erdos_243_note": {
       "inputs": {
-        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:b2389088002b5cfd0a738e71d233de503d3f570142f788bcf3e9f2526e0c22d7",
+        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:856fd284d90e4e38cd9db8242e7a2aa4df0dec09efb70bb539ef7643b4cb7979",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:fa9c496e52f49a9178c60a3144d1b1d215a1347d1b16e16cc152b7907a65f8e6",
+      "rendered_content_digest": "sha256:18130133a6d70958185039b097a6ccd64ca1eb46cf6e06351494715e156abfab",
       "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "storage_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf"
     },
     "erdos_243_reasoning_record": {
       "inputs": {
-        "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:1429af81e448d4a2ccb35fc068fb7baea5578d7c7a773fbee7f396e7c8b046e5",
+        "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:533dcf4fac6fe2a930b03077b5743669648cd3ea036b770f71c311021280ac0c",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:8716a3cc25fbab6b969acfea5e9ca3ce30893fbdb0e70b6a08bb4477dab76ffa",
+      "rendered_content_digest": "sha256:8e005f0da94f50c70d27eea700c7f7f7438b368e52ccbb919ae278dbc5b2f2b6",
       "source_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "storage_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf"
     },

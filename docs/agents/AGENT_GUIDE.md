@@ -47,7 +47,7 @@ One recorded result: The exact integral normal form: the series is irrational if
 
 The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
 
-One recorded result: The zero-indexed positive StrictMono cubic-rate theorem: if a_n²/a_(n+1) = 1 + 3/n + o(n^-3), the reciprocal sum is irrational (cubic_rate_irrationality_unconditional). The one-based paper statement uses an ordinary finite-prefix bridge; unrestricted Erdős #243 remains open.
+One recorded result: Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.
 
 [Short paper](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [Source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex)
 
@@ -83,11 +83,11 @@ One recorded result: That for three pairwise distinct primes the least common mu
 
 [Short paper](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Source](../../paper/269/erdos-269-three-prime-running-lcm.tex)
 
-**#1041 — For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded.**
+**#1041 — Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.**
 
 Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.
 
-One recorded result: For ani's explicit monic degree-seven polynomial with distinct roots in the open unit disc, every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than two. Lean refutes the exact Formal Conjectures path-image-length statement and also checks the total-variation bound.
+One recorded result: For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound.
 
 [Short paper](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Source](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex)
 

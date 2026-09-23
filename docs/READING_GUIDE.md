@@ -78,7 +78,7 @@ those assessments in one place avoids conflicting summaries.
 
 [Problem 269](../paper/269/erdos-269-three-prime-running-lcm.pdf). For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-269).
 
-[Problem 1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1041).
+[Problem 1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1041).
 
 [Problem 1049](../paper/1049/erdos-1049-rational-base-lambert.pdf). For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-1049).
 <!-- END problem_programme_card -->

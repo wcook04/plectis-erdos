@@ -1671,7 +1671,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:3c46d69f05b576636265e9c210959b6a1643e7bde9d4864839235381291f5fa3"
+  problem_index_digest: "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1683,7 +1683,7 @@ external_verification:
     - id: "erdos_243"
       erdos_number: 243
       status: "open"
-      checked_frontier: "The zero-indexed positive StrictMono cubic-rate theorem: if a_n²/a_(n+1) = 1 + 3/n + o(n^-3), the reciprocal sum is irrational (cubic_rate_irrationality_unconditional). The one-based paper statement uses an ordinary finite-prefix bridge; unrestricted Erdős #243 remains open."
+      checked_frontier: "Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open."
       open_frontier: "The unrestricted problem."
       claim_registry_status: "registered_declarations"
     - id: "erdos_249"
@@ -1713,13 +1713,13 @@ external_verification:
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
-      checked_frontier: "For ani's explicit monic degree-seven polynomial with distinct roots in the open unit disc, every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than two. Lean refutes the exact Formal Conjectures path-image-length statement and also checks the total-variation bound."
+      checked_frontier: "For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound."
       open_frontier: "The full small-parameter family reported by ani; only one explicit polynomial is formalised."
       claim_registry_status: "registered_declarations"
       research_frontier:
         directory: "research_corpus/Erdos1041"
         authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
-        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims."
+        reading_rule: "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims."
         frontier: "research_corpus/Erdos1041/FRONTIER.md"
         strongest_results: "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
         manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"

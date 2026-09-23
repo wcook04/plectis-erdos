@@ -1833,7 +1833,7 @@ _Questions generated from `docs/problem_index_source.json`._
 | [#251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) | Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? |
 | [#257](../paper/257/erdos-257-mersenne-support-subseries.pdf) | Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational? |
 | [#269](../paper/269/erdos-269-three-prime-running-lcm.pdf) | For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. |
-| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Lean refutes the exact Formal Conjectures path-image-length statement using ani's degree-seven polynomial; independent review of correspondence with the 1958 wording is not recorded. |
+| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review. |
 | [#1049](../paper/1049/erdos-1049-rational-base-lambert.pdf) | For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. |
 <!-- END problem_programme_card -->
 

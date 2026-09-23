@@ -16099,8 +16099,8 @@
         {
           "path": "verification/comparator.json",
           "line_start": 1,
-          "line_end": 38,
-          "excerpt_sha256": "sha256:59da13809c33a93943095066b40909da907617aa28592c6201635ba1b55d5e81"
+          "line_end": 40,
+          "excerpt_sha256": "sha256:8b08466c661aa5a0f1977d62d091fd0a355dd90ba5d7d74a51ca6c578639737f"
         },
         {
           "path": "verification/comparator-negative-mismatch.json",
@@ -16112,7 +16112,7 @@
           "path": "docs/EXTERNAL_VERIFICATION.md",
           "line_start": 4,
           "line_end": 14,
-          "excerpt_sha256": "sha256:fafca997e350a5a279460590366dedd0a0311ef6af154e3c155315b2a343532c"
+          "excerpt_sha256": "sha256:6b3caa9f62da7417df8563c5f97b088eaa7230d976b5b1854d6652b46565b9fc"
         }
       ],
       "relation": "Implemented advice to classify each selected result, expose exact statements, proof provenance, novelty status, sorry count, axiom budget, and boundaries in formalization.yaml, and to provide a cheap Comparator inspection route with an altered-statement rejection fixture. The current public surface has evolved beyond the original interface count; the durable implementation is the manifest-plus-Comparator pattern and its explicit scope ceiling.",
@@ -16171,8 +16171,8 @@
         },
         {
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "line_start": 522,
-          "line_end": 532,
+          "line_start": 529,
+          "line_end": 539,
           "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b"
         }
       ],
