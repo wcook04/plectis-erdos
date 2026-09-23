@@ -81,6 +81,8 @@ I prioritised expository quality and a collaborative structure over trying to
 solve the problems; I hope to now solve them with others rather than alone.
 The aim is to make intermediate results and failed routes reusable by
 mathematicians who understand the material.
+The records include routes that stopped at a precise obstruction, where
+another researcher can test a different idea or repair the argument.
 
 I am responsible for all claims, sources and the release. Plectis is an
 independent, AI-assisted prototype, not something I am declaring finished.
