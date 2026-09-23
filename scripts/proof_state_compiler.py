@@ -1057,7 +1057,7 @@ def pilot_requests() -> list[dict[str, Any]]:
     blocked = {
         "schema_version": REQUEST_SCHEMA,
         "goal_id": "integer_tail_without_divisibility",
-        "imports": ["Erdos249257"],
+        "imports": ["Erdos249257.TotientTailPeriodKiller"],
         "opens": [
             "Erdos249257",
             "Erdos249257.TotientTailPeriodKiller",
@@ -1091,7 +1091,7 @@ def pilot_requests() -> list[dict[str, Any]]:
     curvature = {
         "schema_version": REQUEST_SCHEMA,
         "goal_id": "curvature_supply_control",
-        "imports": ["Erdos249257"],
+        "imports": ["Erdos249257.CurvatureCarry"],
         "opens": [
             "Erdos249257",
             "Erdos249257.TotientTailPeriodKiller",

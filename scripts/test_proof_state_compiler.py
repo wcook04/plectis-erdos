@@ -307,6 +307,7 @@ def check_live_pilot() -> dict:
 def check_typed_rejection() -> None:
     request = copy.deepcopy(compiler.pilot_requests()[0])
     request["goal_id"] = "deliberately_incompatible_candidate"
+    request["imports"] = ["Erdos249257.CurvatureCarry"]
     request["candidates"][0] = {
         "candidate_id": "wrong_shape",
         "declaration": (
