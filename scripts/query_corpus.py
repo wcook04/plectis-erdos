@@ -9164,23 +9164,66 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
 def problem_reader_answer(route_id: str) -> dict[str, Any]:
     """Select a small source-grounded result preview and the entire open boundary.
 
-    Family order and wording come from the claim registry. A declaration preview
-    is a navigation witness, not a new elaboration or a promotion of a conditional
-    result. The full JSON route retains every family and signal-spine row.
+    Palomar's programme signal orders families; the claim registry owns their
+    wording and boundaries. A declaration preview is a navigation witness, not
+    a new elaboration or a promotion of a conditional result. The full JSON route
+    retains every family and signal-spine row.
     """
-    route = route_packet(route_id)["route"]
+    packet = route_packet(route_id)
+    route = packet["route"]
     families = route["result_families"]
+    families_by_id = {family["id"]: family for family in families}
+    signal_by_id = {}
+    ordered_family_ids = []
+    for row in packet["mathematical_signal_spine"]["results"]:
+        family_id = row["family_id"]
+        if family_id not in families_by_id:
+            raise ValueError(f"programme signal lacks registry family: {family_id}")
+        if family_id not in signal_by_id:
+            signal_by_id[family_id] = row
+            ordered_family_ids.append(family_id)
+    ordered_family_ids.extend(
+        family["id"] for family in families if family["id"] not in signal_by_id
+    )
+    claims = load("docs/claims.json")
+    comparator_family_by_source = {
+        row["original_declaration"]: row["review_family"]
+        for row in claims["external_verification_packet"]["main_results"]
+        if row.get("original_declaration") and row.get("review_family")
+    }
     results = []
-    for family in families[:PROBLEM_READER_RESULT_LIMIT]:
+    for family_id in ordered_family_ids[:PROBLEM_READER_RESULT_LIMIT]:
+        family = families_by_id[family_id]
+        signal_row = signal_by_id.get(family_id)
+        source_declaration = signal_row["source_declaration"] if signal_row else None
         declaration_rows = [
             row
             for name in family["declarations"]
             for row in declaration_rows_for_handle(name)
         ]
-        witness = next(
-            (row for row in declaration_rows if row["kind"] in ("theorem", "lemma")),
-            next(iter(declaration_rows), None),
+        registered_row_ids = {row["id"] for row in declaration_rows}
+        source_rows = (
+            declaration_rows_for_handle(source_declaration)
+            if source_declaration and not source_declaration.startswith("review_family:")
+            else []
         )
+        witness = next(
+            (
+                row for row in source_rows
+                if row["kind"] in ("theorem", "lemma")
+                and qualified_declaration_name(row) == source_declaration
+                and (
+                    row["id"] in registered_row_ids
+                    or comparator_family_by_source.get(source_declaration) == family_id
+                )
+            ),
+            None,
+        )
+        if witness is None:
+            witness = next(
+                (row for row in declaration_rows if row["kind"] in ("theorem", "lemma")),
+                next(iter(declaration_rows), None),
+            )
         preview = compact_declaration(witness) if witness else None
         if preview:
             source_path = checkout_lean_file(witness["module"]).relative_to(ROOT).as_posix()
@@ -9194,7 +9237,6 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
             "declaration_preview": preview,
             "declaration_count": len(family["declarations"]),
         })
-    claims = load("docs/claims.json")
     targets = {route_id, f"universal_{route['erdos_number']}"}
     exact_open = [
         {
@@ -9212,7 +9254,7 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         "source_directory": route["directory"],
         "paper_source": (route.get("paper") or {}).get("source"),
         "result_evidence": results,
-        "result_selection": "claim_registry_review_matrix_order_bounded_preview",
+        "result_selection": "palomar_programme_signal_then_registry_fallback",
         "result_family_count": len(families),
         "omitted_result_family_count": max(0, len(families) - len(results)),
         "exact_open_records": exact_open,
@@ -9231,7 +9273,7 @@ def render_problem_reader_answer(answer: dict[str, Any]) -> list[str]:
     rows = [
         f"source={answer['source_directory']} | paper={answer['paper_source'] or 'unavailable'}",
         f"results={len(answer['result_evidence'])}/{answer['result_family_count']} "
-        "| order=claim-registry review matrix",
+        "| order=Palomar programme signal",
     ]
     for result in answer["result_evidence"]:
         rows.append(f"result {result['id']} | {result['contribution_class']} | {result['summary']}")
