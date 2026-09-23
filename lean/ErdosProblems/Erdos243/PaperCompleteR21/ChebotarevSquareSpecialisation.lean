@@ -24,7 +24,7 @@ What is proved here is the whole residue-field half of the paper's proof
 of its Galois group fixing `α` and negating a square root `β` of `H (α)`, and
 the Chebotarev input, the paper's modular hypothesis is contradicted.  The
 remaining half is the purely Galois-theoretic construction of that `Lg` and `σ`
-from "`H (α)` is not a square in `ℚ(α)`"; it is not done here.
+(`GaloisSignFlipClosure.lean`); `SquareSpecialisationDedekind.lean` needs no Chebotarev.
 -/
 
 noncomputable section
