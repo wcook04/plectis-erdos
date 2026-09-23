@@ -1,0 +1,556 @@
+{
+ "schema": "plectis-statement-migration/1",
+ "base": "6917e15ec4abc2623512254da93221e446eeb707",
+ "rule": "Rows whose statement digest changed between the base and this revision. presentation: equal once labels, inline Lean citations, status tags, Sources sentences and layout are removed. reviewed: a stated reason that the mathematics is unchanged. Lean, Comparator and Palomar evidence is carried over unchanged.",
+ "counts": {
+  "unchanged": 606,
+  "presentation": 68,
+  "reviewed": 0
+ },
+ "rows": [
+  {
+   "old_id": "erdos-1041-lemniscate-newton-flow#fe95d93d506822bc",
+   "new_id": "erdos-1041-lemniscate-newton-flow#res:two-nearest-roots",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:fe95d93d506822bce3e2c8f6d26990199fa08f2ad6a80d644f21d03a6aed8766",
+   "new_statement_sha256": "sha256:dce059e10a3f789d6b29f8ac3ce549f9411ed035f5330643ff72c27b06b511f1",
+   "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:451"
+  },
+  {
+   "old_id": "erdos-1041-lemniscate-newton-flow#fe2d8a0d8a8929af",
+   "new_id": "erdos-1041-lemniscate-newton-flow#res:complementary-binomial-chords",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:fe2d8a0d8a8929af921361926a36e199841f085a80738cf43af67542f888fd42",
+   "new_statement_sha256": "sha256:fe00ceb9e53225458770dee04599d52eebcb1144779475c1f39a3d94eef44b28",
+   "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1118"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#98023f948eaeafa9",
+   "new_id": "erdos249-totient-reasoning-surface#thm:values-exponents-one-two",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:98023f948eaeafa90b3704bdf4e1c64f49ebff0c97c42aa35ab6d3a6660f0a8b",
+   "new_statement_sha256": "sha256:3089ca4c52e6cc80083e1fcaa455c7bf555746a1fcff6a111a173a8be763b067",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4162"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#3d4c13d4e809a7b9",
+   "new_id": "erdos249-totient-reasoning-surface#thm:first-two-summands-give-positive",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:3d4c13d4e809a7b973b8e4d06ce659beee51f412d0faeea8695b9c5d99950b8d",
+   "new_statement_sha256": "sha256:f80bbe497d7f8b94920324c2f21ecbd0d5f6ad24565c19c42307d1640e3c901b",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4172"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#e0cb6d93f24a5fcc",
+   "new_id": "erdos249-totient-reasoning-surface#thm:strict-log-concavity-all-integer",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:e0cb6d93f24a5fccbb6f13711fdc742aa758d10e7fb694077c6a9465f02edad1",
+   "new_statement_sha256": "sha256:1ba49dc6027fbee6db62157f7c0023e013f6e51c66ad1fc9f0fcba16f644832a",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4179"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#9cf41f070786e393",
+   "new_id": "erdos249-totient-reasoning-surface#prop:uniqueness-under-growth-condition",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:9cf41f070786e3936b1c24f136541684756cf539a69b68e055876805707d1b08",
+   "new_statement_sha256": "sha256:97f640ac03f9d8e72abffebaa087412d51ac5b15b117956c8cc2c4b2207bfb69",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4290"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#578b600d66354c2c",
+   "new_id": "erdos249-totient-reasoning-surface#prop:exact-rational-approximation-formula",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:578b600d66354c2cc0d8f2d3e633c52a47c5016f81b25798e7cab5588c02cfc8",
+   "new_statement_sha256": "sha256:eabade7cb58f21c7fe1640623f8f46951a176b6b3841bfaaa8e82ee8a6f80aa9",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4350"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#773a0af890c73a7f",
+   "new_id": "erdos249-totient-reasoning-surface#prop:geometric-tail-bound",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:773a0af890c73a7f098185d00dec43f2703cdf98a47c697853f412b2357e169c",
+   "new_statement_sha256": "sha256:d616a88ec4509f35fd8c537942f2bee7b0f08efd0e384b0afc7297dffa737f20",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4367"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#6ded4fa77be32c6d",
+   "new_id": "erdos249-totient-reasoning-surface#prop:sum-over-divisor-indices",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:6ded4fa77be32c6d43ccb56b5c59cc936904bdb6e607d7d2549f36752b34927c",
+   "new_statement_sha256": "sha256:5533e00303d2f15bf51b6c2fa2f8bf3ae97537b38930eb117c21ed17b402611a",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4418"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#4874937b49ce83b1",
+   "new_id": "erdos249-totient-reasoning-surface#prop:divisor-sum-complement",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:4874937b49ce83b1d0552c40c1de24d0c3e69057b8e0471d7ea45e3a9d074b44",
+   "new_statement_sha256": "sha256:bdadce48916691cd725f41b1ee08e07138385e50e0d0183fee56e48139fa1803",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4434"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#00029a9e69275ff7",
+   "new_id": "erdos249-totient-reasoning-surface#thm:doubling-full-totient-difference",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:00029a9e69275ff758512f16813a9678c408e7530fde59898545f07d4a01ff8c",
+   "new_statement_sha256": "sha256:fb52e37d4e0b54c7c2806509eb6d199088a37cad55f6a0ab157957303e1164ee",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4454"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#36a0349d08469966",
+   "new_id": "erdos249-totient-reasoning-surface#prop:doubling-identity-two-portions-sum",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:36a0349d08469966b5983337f7ece44a75802442a83b4339d3dbe1dd17f829ad",
+   "new_statement_sha256": "sha256:0d68381a0135acf0d26b0f251eaefc44c29087b794568edd84d6eebafe8d5c8b",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4483"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#9c06b8ea4f796e18",
+   "new_id": "erdos249-totient-reasoning-surface#thm:positive-coefficients-numerator-polynomial",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:9c06b8ea4f796e18e41f8583120c5a32236e2cb04140f1c7018e58a8376e1e3c",
+   "new_statement_sha256": "sha256:111bc1c5f1f85d4927dc32b8f73e3fb237ab861557db9ba129fe0fc13b6be50b",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4504"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#1aba8ef26e7606ff",
+   "new_id": "erdos249-totient-reasoning-surface#cor:numerator-polynomial-explicit-positive-coefficients",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:1aba8ef26e7606ffeb744eeb5281561279d804bd6a828bd921e42781105432b2",
+   "new_statement_sha256": "sha256:188bef0735c7ac233a00cf0e195662b765082167f918b1ba96806552d6d37215",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4522"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#bb5438eb649579cb",
+   "new_id": "erdos249-totient-reasoning-surface#prop:geometric-remainder-bound",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:bb5438eb649579cb081b75e2a75daad2b39f2e5c27b946f2ca101fac2a0ddc32",
+   "new_statement_sha256": "sha256:6d643e8a8420317f8453e059b77dffcb7244f5dbd034a92a297f55b1fd4f4676",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4554"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#d529b18dc05b8eed",
+   "new_id": "erdos249-totient-reasoning-surface#prop:squared-distance-phase-one",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:d529b18dc05b8eedcc0c36fa3e119fc9c4e635e7840b23ce88c2fea0b3a17d8b",
+   "new_statement_sha256": "sha256:10b44fb7235f75f1fb5606194d4621348003c95a0b628492a72e3d82c9815a69",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4580"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#d0788559871558c8",
+   "new_id": "erdos249-totient-reasoning-surface#lem:squared-distance-bound-separated-pairs",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:d0788559871558c8a61bcfe7298cebac84cdb49934106a5d0bc2e1ca7671e98d",
+   "new_statement_sha256": "sha256:f744ed7c51fcaaf165441305ba410c346e02eed98e2affb4ec9fc05cdcefce05",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4592"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#8095e1f12bcf3a87",
+   "new_id": "erdos249-totient-reasoning-surface#prop:finite-divisor-sum",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:8095e1f12bcf3a87ce3e93b78e253ecc357b00f5f317bf9515c018b2eb6b7dcb",
+   "new_statement_sha256": "sha256:e14c1ea164585ff6b105c75a6ebd7b7d3c626eefeae2cc7d980860c89ab3f08b",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4630"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#20b74cbc80542f99",
+   "new_id": "erdos249-totient-reasoning-surface#prop:separation-larger-than-error-implies",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:20b74cbc80542f9961c7f33bf1022f7986740da76792225738dda4405008a4ef",
+   "new_statement_sha256": "sha256:086054d8ec0130bc18004a0bf4bfd86231fb1e5b94f0d4e90db46fc52560a611",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4657"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#dded313bee0eee3d",
+   "new_id": "erdos249-totient-reasoning-surface#thm:coprime-pair-counting-totient",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:dded313bee0eee3d94c0b14512f849abcf7bedb44acb23dccf1d0c5df0cdd5be",
+   "new_statement_sha256": "sha256:f076c7ac0c1e3ce2f7217f67c150b8a5a34134bf9824973a3f84dc88134bd8bd",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4727"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#010701372c349e0f",
+   "new_id": "erdos249-totient-reasoning-surface#prop:two-lattice-sums",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:010701372c349e0ffe2ccfcebaff0f798fa936d7a6fc8fffb939f3807e1398e5",
+   "new_statement_sha256": "sha256:3e618da3d51eee373c0665986dee62da9ad3d1e19635a83738b3ca70de19f671",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4736"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#232d572d8c3babe4",
+   "new_id": "erdos249-totient-reasoning-surface#thm:classical-coprime-pair-lambert-identity",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:232d572d8c3babe4ab36df60086adf3bca776a693432f938e97ba64899473f6a",
+   "new_statement_sha256": "sha256:e50004087dbe07d9d9382def9d8bb83da57c176846aa98d571b98bad52dd79d9",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4759"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#6191d39da71bbe8e",
+   "new_id": "erdos249-totient-reasoning-surface#thm:nondivisors-short-lcm-window",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:6191d39da71bbe8e2f8f160f91dfaa9cac49770d3160c5934217ebd6015e0cc3",
+   "new_statement_sha256": "sha256:d9332bc189ab94f19d51681dfff6479390125ecc36d86dab3d004576a5281714",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4805"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#6e378f0ec6c66c20",
+   "new_id": "erdos249-totient-reasoning-surface#thm:unbounded-prime-support-mersenne-factors",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:6e378f0ec6c66c20367acf38993abb6737e55e2a80175d9e1ce50199aab54207",
+   "new_statement_sha256": "sha256:c3e8c6899257e7cad7614f562c512bdae5dfd3176f653913cb0a459261b88203",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4854"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#5297436c68f5c123",
+   "new_id": "erdos249-totient-reasoning-surface#thm:prime-satisfying-stated-cyclotomic-conditions",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:5297436c68f5c123159efad178cf53a699e7d06ec6f525db07a87c6cbdfaa778",
+   "new_statement_sha256": "sha256:b47850463136d6fd7f48ba4e261152d2ca1ebaa6d20ce28e63a51a87f71ac655",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4865"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#77ae5c1e134c17d5",
+   "new_id": "erdos249-totient-reasoning-surface#thm:sufficient-order-hypothesis-unbounded-prime",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:77ae5c1e134c17d581e2e33374fa3a4d18dce404ea6b2cbbd94f9fad2d8731ac",
+   "new_statement_sha256": "sha256:05510936664d9ea7580ff60b835f3e063889fda471d3c3e8ef2227fd0e9f1c92",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4914"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#7c3ace19567f4604",
+   "new_id": "erdos249-totient-reasoning-surface#thm:uniform-positive-gap-rank-one",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:7c3ace19567f4604d76ae704b9a65a784ae346aa7d91225df2c0cae3fbbf4095",
+   "new_statement_sha256": "sha256:adf0fb45b90c2c9d5a9bbd73bea8317c349a6d074e608e8b8f5f82056e1c4428",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4958"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#b0cb7ca02640bdd7",
+   "new_id": "erdos249-totient-reasoning-surface#prop:bound-preserved-positive-normalised-averaging",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:b0cb7ca02640bdd7efb154c42d2a2a0944ada10c7d596bbed44a5fcfab04da3b",
+   "new_statement_sha256": "sha256:62868d7c02faad467eb43de41f07ce0de4bbd1845774410e820878fe1a458470",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:4977"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#661378a7ea4a3688",
+   "new_id": "erdos249-totient-reasoning-surface#thm:concatenation-specified-period-multiples",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:661378a7ea4a368856bbdb91b7ac5a36807f7f3c0bcf70cff45becc9345109cf",
+   "new_statement_sha256": "sha256:31d55e52c63e37c678daa357996fbfcb71618268f3c3a990eb5df87371d480b4",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5005"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#f1520b262b31fe4b",
+   "new_id": "erdos249-totient-reasoning-surface#thm:positivity-remaining-residue-inequality",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:f1520b262b31fe4b136f140f7a811f92f2d8398ab99dfda36cf2c46892e72f6a",
+   "new_statement_sha256": "sha256:5e398e50b3e3dec1ac93f30840193abadc3b90ddbba5d1c6d341c7c3f5fc1b27",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5745"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#97ce2202d94bc43f",
+   "new_id": "erdos249-totient-reasoning-surface#thm:proved-implications",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:97ce2202d94bc43f7e234e957f7151b1e432738e5f74beeb1ab9b5772fa0dbd0",
+   "new_statement_sha256": "sha256:9cb0da719940ef8c771f563f639c972671b4ddc0f7d4608f050002f3323a6bb5",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5781"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#e1813bd33c05ac43",
+   "new_id": "erdos249-totient-reasoning-surface#thm:proved-implication",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:e1813bd33c05ac434a7c1a9557dd777ee82b606e43e889a1365a7562513e7a56",
+   "new_statement_sha256": "sha256:fc13bba33c51e53dcea7c2334d49e738574d80fac95f5232a99ea612a21e8d53",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5871"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#16e99b88a31e93fb",
+   "new_id": "erdos249-totient-reasoning-surface#prop:sufficient-extension",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:16e99b88a31e93fb8208701b9162611c2364bbc7a2d1975e8a4177fe5a6b692e",
+   "new_statement_sha256": "sha256:9ac8e67c5288d5e2ec474eab5ca056133fa56ac5e536f7c788b93d6e84904961",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5903"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#81919f6b5144c8fd",
+   "new_id": "erdos249-totient-reasoning-surface#thm:separation-rational-approximation",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:81919f6b5144c8fd4e4c5b741e55d8038955f8aaf108726dcc447e19d25e1b4e",
+   "new_statement_sha256": "sha256:9e03466936a5ede6bb85df5508269eb4cc6ed104f620291892a236dff9598dfe",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5916"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#d6f45a571aaeba3a",
+   "new_id": "erdos249-totient-reasoning-surface#thm:short-window-examples-through-exponent",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:d6f45a571aaeba3ad880ff5a95fd49653af8be9ea6b058bcd1947e1d5aba42e0",
+   "new_statement_sha256": "sha256:26c6ede8441bfac5a8d231a65972998629c3d3e3f4eed3ebcd339112d7b29894",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:5964"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#c48e72cdf4757ab2",
+   "new_id": "erdos249-totient-reasoning-surface#thm:diagonal-certificate-table",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:c48e72cdf4757ab27d78c3ef9487d431ffa261de0d8e9cc9f0bbe447cb3eb3b2",
+   "new_statement_sha256": "sha256:9e5ad7f3df52893bc5f32b50806b565641e3f35a45700bf490c2530ba5dac116",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6005"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#614fb28d06c932f4",
+   "new_id": "erdos249-totient-reasoning-surface#prop:sufficient-extension-2",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:614fb28d06c932f46943cb7ccbc9f85f47c9c15311aa2af1ef8a04e3a14be638",
+   "new_statement_sha256": "sha256:d1c266ac4faec09c5d541f0f8b6b3ad0cbcfcf84f1b30b0e392ae01ab7764cb2",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6034"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#55434545e6306b9a",
+   "new_id": "erdos249-totient-reasoning-surface#thm:one-common-certificate-sixteen-shifts",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:55434545e6306b9a7a70078f69c698579695f4f62cc6bfd1ea06f03b530262ee",
+   "new_statement_sha256": "sha256:d369a28073dfdd7798a2d6e4b0d51ed37673883d953bc131a06aa93d17646ec9",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6046"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#d4b4cf1c88de8793",
+   "new_id": "erdos249-totient-reasoning-surface#prop:simultaneous-certificates-unrestricted-depth",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:d4b4cf1c88de87931e808996b57d1cd966e9dbfe1878829fd6f49b96aa728b22",
+   "new_statement_sha256": "sha256:13850856b0cc71fb49242a58b99eb806ca4bdc884136939ef3a7fa7fcb690598",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6072"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#e0088a4173ef2a46",
+   "new_id": "erdos249-totient-reasoning-surface#thm:fixed-farey-bound",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:e0088a4173ef2a466ef68cf0d9cf821ce4e1697029ef410e077339bfa1ba36ad",
+   "new_statement_sha256": "sha256:9d4b00d604c9bf3e26f98c385ab1eac4e201faa1272dd62a5350494c9d2b41e8",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6113"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#900cd4d2cc36bb60",
+   "new_id": "erdos249-totient-reasoning-surface#prop:sufficient-extension-3",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:900cd4d2cc36bb60273c1dbf419ac4f8629858ea27d660edded3d42416c395fd",
+   "new_statement_sha256": "sha256:c57c55138376f6e2ab9c4a6d8af05b94563a905a03f5efdcd8ac788a1d216e3b",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6162"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#e5201e0f943c8678",
+   "new_id": "erdos249-totient-reasoning-surface#thm:two-adic-congruence-that-does",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:e5201e0f943c8678b14d940b4eeb5bcbe6dc7a4189a7a829d820f5d72f496d3f",
+   "new_statement_sha256": "sha256:dff1bb3e16922e92ef778ea5d8dc5ff71ed267b87317f4dc1eb4c7c3facfa639",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6176"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#64d338d6c3d037b1",
+   "new_id": "erdos249-totient-reasoning-surface#prop:sufficient-accumulated-residue-condition",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:64d338d6c3d037b19096fa87bfcf02330904508b66e95a089a7f3dd8163891aa",
+   "new_statement_sha256": "sha256:5614367b0dbdf8e940f57328f596e1afc25ef4465a528c99500a1b3497cf322e",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6206"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#9b809ed9dcad0bda",
+   "new_id": "erdos249-totient-reasoning-surface#thm:arbitrarily-large-prime-power-lcm",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:9b809ed9dcad0bdaa8a6736a0ac9020c9ed87a54a8ce878b1f8332379795d4aa",
+   "new_statement_sha256": "sha256:1b760ab8d73fb9e29bf0ce3ae0757a7b232159e85341d28db16f0f62d9ede6c9",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6223"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#519d0b4d36a2c36f",
+   "new_id": "erdos249-totient-reasoning-surface#prop:sufficient-inequality",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:519d0b4d36a2c36f9838adf72af4955f51b94e69f0c37d26c071f84a18ccdb81",
+   "new_statement_sha256": "sha256:5030a831e06c8aa2b3db65783232432936d54f292f7160af5eced444639da8ab",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6286"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#c3e694410757f100",
+   "new_id": "erdos249-totient-reasoning-surface#thm:certificate-four-tail-combination",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:c3e694410757f100030d20cf579a0a491038962e9fe8adb5cc75fde4a76cf0ea",
+   "new_statement_sha256": "sha256:ab95bfac7b12386afae05e3c95258283dbe5033306f63a869829667fde37b4cb",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6296"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#e20cca460f22937a",
+   "new_id": "erdos249-totient-reasoning-surface#thm:one-explicit-witness",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:e20cca460f22937a6591462a307c68362e848cfeb2335f87fe390f7b61a617c0",
+   "new_statement_sha256": "sha256:913da3180737bd6cdd7dc68baf09a0b1c0a455fb821c6e3bd31d04272f583b86",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6312"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#6818675acca63a09",
+   "new_id": "erdos249-totient-reasoning-surface#thm:denominators-mobius-sums",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:6818675acca63a0990cb479014c18be286f96c48b5cf51f4bb509f1b62e1e265",
+   "new_statement_sha256": "sha256:ff1a75d93c2a276fb948942e7853c3c1cf995aebc00a7647f69ce7c841511b3d",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6345"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#03272f73595802e1",
+   "new_id": "erdos249-totient-reasoning-surface#prop:additional-approximation-hypothesis",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:03272f73595802e1fcd5d12a83243ed257c393cb3240d44d081969ca6403d594",
+   "new_statement_sha256": "sha256:dc9d8a105672583bb154858e5a07a02809850fcbf87c69c059da8aced0cd9327",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6380"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#2e67fcb025e18410",
+   "new_id": "erdos249-totient-reasoning-surface#thm:rationality-carry-rank",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:2e67fcb025e18410bcdb03ab51508f2c1632a1198d264087e535d47d18963919",
+   "new_statement_sha256": "sha256:80793b0251e5b6b2d8c9bb384b945752aaf50258eee5a1aedfa1240816e4ec06",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6408"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#88636df414ec77f8",
+   "new_id": "erdos249-totient-reasoning-surface#thm:rationality-carry-rank-2",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:88636df414ec77f88567cd90a7c9d7f2754d3fa91943994bcd5619f94058c22c",
+   "new_statement_sha256": "sha256:a9d72a09226fda0dd2906d62153492298e2e92cfb132657d135c6f1f4afec440",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6416"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#9cb702de31620ab7",
+   "new_id": "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:9cb702de31620ab7f7dc965a261ff2d28acf5a2ca02d4c76f2e91cb17cc89305",
+   "new_statement_sha256": "sha256:ccd094e903a19f9be23989a9b6420465f7cc08382936598bf4d840cc24257623",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6443"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#ace46788b840c8c4",
+   "new_id": "erdos249-totient-reasoning-surface#prop:rational-series-preserving-totient-parity",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:ace46788b840c8c44df4593fb5cf83e199400190932e82905cd377fa46a84c24",
+   "new_statement_sha256": "sha256:21902706928d5e705cfd896dd5c79639a5e6795698d5e1aabad22bb5bfa58054",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6555"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#4b342ea43ba30236",
+   "new_id": "erdos249-totient-reasoning-surface#lem:complement-divisibility-after-multiplication",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:4b342ea43ba30236ae2b3d0f38a137a9130811e8a65af5a58f3ee6eb50c40295",
+   "new_statement_sha256": "sha256:da1461e5013bae2ff3f3e6e75275258d7447b8265ad0292c7397f60b97566da4",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6651"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#d15bd2c564c303eb",
+   "new_id": "erdos249-totient-reasoning-surface#lem:nonvanishing-unique-largest-denominator-exponent",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:d15bd2c564c303eb1795911941889cf5b7fc8f0fcbb6c5e6b644cabbbdfa1548",
+   "new_statement_sha256": "sha256:ffc9ded673255b110ccfcefb19a23d01a49dc0e838b800e0bb777b365a3d3b2d",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6733"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#666f96cbf06c4868",
+   "new_id": "erdos249-totient-reasoning-surface#prop:nonzero-minor-survives-inverse-phase",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:666f96cbf06c4868832d9c4941450a4180523789c6eb3bc0a692484b8071d961",
+   "new_statement_sha256": "sha256:8ddd066561560f612dd7157495b316e3dc26012e02c9e1d577a967d76cb3d012",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6783"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#6a12ad02e524a6fe",
+   "new_id": "erdos249-totient-reasoning-surface#prop:tail-integrality-lcm-grid",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:6a12ad02e524a6feb29c728add987157764979286b6a3e4b97b95791cc25fd7d",
+   "new_statement_sha256": "sha256:ae68a31146e01556ec101b987abe4322df2038ff2184ba7cbc3bd6ac97b10cbf",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6829"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#d1191c7888c9dbc2",
+   "new_id": "erdos249-totient-reasoning-surface#prop:finite-grid-certificate-gives-nonintegral",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:d1191c7888c9dbc2dd95ca470347f10171c0059e6e399f9e16d9740c0b0247cd",
+   "new_statement_sha256": "sha256:9cdaf3cc7e1ed80e2707ba99b1a43014868c81dfa066145efefcd7a72ff017ae",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6846"
+  },
+  {
+   "old_id": "erdos249-totient-reasoning-surface#483661afd2b888e2",
+   "new_id": "erdos249-totient-reasoning-surface#thm:exact-dyadic-rank-infinite-dimensionality",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:483661afd2b888e2d6884c13320d4da928bb12758f27b4174ca046f6ecf30115",
+   "new_statement_sha256": "sha256:cf5226156fcaabdfa3f74c412551d07f9c23783df46560ec6714ef2d281abd6d",
+   "source": "paper/reasoning-parts/erdos249/a249_front.tex:6911"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#662bb9310eb617dc",
+   "new_id": "erdos257-mersenne-reasoning-surface#thm:purely-periodic-support",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:662bb9310eb617dcc5e8f6d018fb00cc8497be4d7800c4f36d3f3bcadfbd905d",
+   "new_statement_sha256": "sha256:5ebc1782b8084149deacb407e3f51283ccbda80e3ccc141d30a7af8e91aeefb0",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2070"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#54877d25dac690de",
+   "new_id": "erdos257-mersenne-reasoning-surface#thm:eventually-periodic-support",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:54877d25dac690debc6c4f2c221c7a9df2d8c08e50f4e2908a552654423a6273",
+   "new_statement_sha256": "sha256:89c71f69ef0e9581e3f90cbb986073b1167f0a61f6e72e9c1456aba4a8dc0c47",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2078"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#08d58be680490754",
+   "new_id": "erdos257-mersenne-reasoning-surface#thm:residue-class-support",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:08d58be6804907540b7e1349af3fffe19f66a298fa55c03be7d40f4f7d910fb5",
+   "new_statement_sha256": "sha256:1a89ae24bee861b25c9caee43ffb05f8e334645981c48ca7bf7c8869c72ce92f",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2088"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#7efac47a9ac9d9ad",
+   "new_id": "erdos257-mersenne-reasoning-surface#thm:odd-support",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:7efac47a9ac9d9ad718bae1389b7bbfe220deba24772acb8d956055c496c658e",
+   "new_statement_sha256": "sha256:28bc5d8fba2c52645bc562972ee6525d7ee8c150bf326d07a998931ab3a649af",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2095"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#45bb90fa3f1e9b91",
+   "new_id": "erdos257-mersenne-reasoning-surface#prop:unsafe-middle-range-exactly-three",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:45bb90fa3f1e9b9150529ccfddf44d254b09f02a1c9b0a7faa9c2a10c08fa936",
+   "new_statement_sha256": "sha256:9c74e3adb178a35c3c5b7d197fc2e2ae4e7af9f6eb4522b0df281353b1281e51",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5318"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#e465fe9eaeafe6d4",
+   "new_id": "erdos257-mersenne-reasoning-surface#prop:finite-approximations-without-compatibility",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:e465fe9eaeafe6d44b51c8428f570863388dfdec3d9a8398bbee93c6682b15b2",
+   "new_statement_sha256": "sha256:826779b6ac92f1a463830717fafeb67c20187f5e76eda5488da90703b7c4d365",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5431"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#cb247be3c4072b49",
+   "new_id": "erdos257-mersenne-reasoning-surface#prop:exact-lebesgue-measure-dichotomy",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:cb247be3c4072b49be44cf131fe2f395fd7148578aa044e261eb9fa7e2a2652f",
+   "new_statement_sha256": "sha256:f7573af8ebf275fa302249ff0fbed8edc08915688469dba59fec21b13e176a0b",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5566"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#877bcaf710f3107b",
+   "new_id": "erdos257-mersenne-reasoning-surface#thm:lower-bound-every-reset",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:877bcaf710f3107bcb3e107d86fec72a46b55a849c70282ffde59711cad3c504",
+   "new_statement_sha256": "sha256:e2b14aa3094b8a80b0fd8aba7bd58254d0bbbc6f58a3c56a91be87412d06a8e0",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7139"
+  },
+  {
+   "old_id": "erdos257-mersenne-reasoning-surface#537aa4f47d30c154",
+   "new_id": "erdos257-mersenne-reasoning-surface#thm:one-sided-finite-decision-boundary",
+   "class": "presentation",
+   "old_statement_sha256": "sha256:537aa4f47d30c1540518d94dbdbf5acca38f8b8dc60ab028b9459efd4ac19713",
+   "new_statement_sha256": "sha256:712057659d6256289d4d75cbc7dfd1ce0f61e4a06424ce258f364290d47b3114",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7176"
+  }
+ ]
+}

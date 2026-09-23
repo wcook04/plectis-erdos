@@ -1,0 +1,97 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T15:40:51Z",
+  "entry": "E257_09",
+  "github": {
+    "sha": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+    "ref": "refs/heads/palomar/statement-coverage-20260921",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35882032091",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_09",
+  "theorem_count": 1,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresBJ.eventually_seamSupport_agrees"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "801df4b6dafe434a22293ba1d5eb72f85a5e8c1661a2fe07cc50613e0420f514",
+    "comparator.json": "341ef43f6ef086ce2ecfc7b9ed969d7b946af83440ccc81fecf7c1d647227f3b",
+    "formalization.yaml": "243995a33afb1f1d13e49a2c527bfecc9487fd72b069e724517de6665b4a14ef"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_09.lean": "21c5154378cae4a70d22c530d86d4a901322770cc0091f9f493db75a0ffabe79",
+      "Solutions/PalomarCorpus/E257_09/PaperStructuresBJ.lean": "d693675aceed39318d7ff0f5c6bd8647a7f50b00827a6a913312ef64f5fe92ca",
+      "Solutions/PalomarCorpus/E257_09/Statement.lean": "283313581bcfead761be1e6c605d7fb4dc544f0d1223a0455ac30675b03e4154"
+    },
+    "sha256": "131f979311afdffb88abc0eeb55992db9594c496663e0ed1626067b86993f9b0"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 7.336
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 4.64
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 27.985,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 5.905
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

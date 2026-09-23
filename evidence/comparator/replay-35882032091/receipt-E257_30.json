@@ -1,0 +1,127 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T15:36:02Z",
+  "entry": "E257_30",
+  "github": {
+    "sha": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+    "ref": "refs/heads/palomar/statement-coverage-20260921",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35882032091",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_30.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_30",
+  "theorem_count": 23,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.paper_dyadic_skip_test_iff",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_gives_three_over_three_t_sub_one",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_skip_safe_lb3",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_strictly_weaker_realizable",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_weaker_than_dyadic",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_three_channel_margin_identity",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_two_channels_insufficient",
+    "PalomarCorpus.E257.PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow",
+    "PalomarCorpus.E257.PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul",
+    "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb",
+    "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem",
+    "PalomarCorpus.E257.PaperStatementsAM.mersenneGap_le",
+    "PalomarCorpus.E257.PaperStatementsAM.paper_exact_mass_threshold",
+    "PalomarCorpus.E257.PaperStatementsAM.paper_sharp_skip_safe_actual_tail",
+    "PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_shift",
+    "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture",
+    "PalomarCorpus.E257.PaperStatementsAR.exists_first_localMersenne_crossing",
+    "PalomarCorpus.E257.PaperStatementsAV.one_add_mul_card_le_two_mul_shifted_state",
+    "PalomarCorpus.E257.PaperStatementsAV.shifted_state_unbounded_of_infinite_support",
+    "PalomarCorpus.E257.PaperStructuresH.three_le_of_fatal_of_odd",
+    "PalomarCorpus.E257.PaperStructuresH.two_le_of_fatal",
+    "PalomarCorpus.E257.PaperStructuresH.unitNumerator_skipSafe",
+    "PalomarCorpus.E257.PaperStructuresV.unitNumerator_skipSafe_actualTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "af5bfbbc9ddd34d6d29e11ee542e63d3ff02fbdef59d79c2250c9e193593eb2b",
+    "comparator.json": "b34d86c14ce932ec8734d21f69c2b6a7757c08de58357d3f2d4c749f57c554c2",
+    "formalization.yaml": "3658a993d43db1f3361dfda2b948d18f2bc82a3fbbd813d33586118e0434997b"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_30.lean": "da62ff2f1521921c189c90ba402b683605c3cce4ea169b689a9317dc08733afc",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean": "b00cf866a98f3e9564d49aba598999946d11a38cc2fea70d5052a147290377bd",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAF.lean": "c658bc0e76dfbbda612f4aa25945b4019f83b6878d431732354eb235236d8497",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAL.lean": "a619285e9b0e671fd153bd210ebc3e17dbc2ba3ee9491b8c40d1cebfbf8f72db",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAM.lean": "d685af8edcb334efd40d0a9971bf3ab81d1fa91a147ba7111b4075e95f948600",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAO.lean": "cf7bffe59d494bd76dee62d44868ba03b448223cd517b268c35ee94a4cb3e1f1",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAR.lean": "81283eaef7e9e03c60d950b75394ef31594292a6e54241cc45749e7abfb27800",
+      "Solutions/PalomarCorpus/E257_30/PaperStatementsAV.lean": "4543908c0ae75d325fe4bccb93554c5773221e5a5502171151583577d5061d16",
+      "Solutions/PalomarCorpus/E257_30/PaperStructuresH.lean": "884ecfcceaa1d8f671b9ea55e67195add407d7acf8ec83201452fc711b6bddab",
+      "Solutions/PalomarCorpus/E257_30/PaperStructuresV.lean": "1162fbdf8c1bb2b98fb5127d6921bc47be8507d42b047a0338ccd556e8a21805",
+      "Solutions/PalomarCorpus/E257_30/Statement.lean": "dba0f1d48f2b75ec9404529f4b0747a604f9483e9dbcf3a81fa1e8d36e972b29"
+    },
+    "sha256": "1085efa32d3a706ef5d93846de6c6173740b72c16d05de10ab61e002e8e92a06"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 28.563
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 6.527
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 59.027,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.24
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T15:42:25Z",
+  "entry": "E257_25",
+  "github": {
+    "sha": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+    "ref": "refs/heads/palomar/statement-coverage-20260921",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35882032091",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_25.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_25",
+  "theorem_count": 15,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresBK.exists_seamWord_minimal_above",
+    "PalomarCorpus.E257.PaperStructuresBK.half_mem_mersenneAchievementSet_of_resetSqrtEscape",
+    "PalomarCorpus.E257.PaperStructuresBK.integerGreedyBits_length",
+    "PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_forces_remainder_band",
+    "PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_implies_full_shell_nonnegative",
+    "PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_minimal",
+    "PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_strict",
+    "PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresBK.seamWeights_length_eq",
+    "PalomarCorpus.E257.PaperStructuresBK.wordPulse_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "1e6c73abaae4ba9ce631443858bea15f9f7510f4663eb62de5b0e13131fe421b",
+    "comparator.json": "8eacae06a2b9ad863497fc43984268c157889b832c684ea45eb5b8c7497d0126",
+    "formalization.yaml": "9c97e5414c34db9cd8ffbaac660af8fecb25ffcda205593f274c72f56f6b2273"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_25.lean": "e063f19f3adb2193730bcc7d796084f1e1891970857361b609737952b79f5d1c",
+      "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean": "21e3df006c51ef6e6ace557b32d0779725cbc8803924650476740b91cbe392b6",
+      "Solutions/PalomarCorpus/E257_25/Statement.lean": "45d32411984da600f26a6d44d8585f23f9f2d280e7614fe63303b606117ce599"
+    },
+    "sha256": "3f224a67832299cc3288f39d57a25c99a232891e74969dcf71b07c1139bc8365"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 7.841
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 4.33
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 41.653,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 5.835
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T15:47:42Z",
+  "entry": "E257_03",
+  "github": {
+    "sha": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+    "ref": "refs/heads/palomar/statement-coverage-20260921",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35882032091",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_03",
+  "theorem_count": 7,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_nonneg",
+    "PalomarCorpus.E257.PaperStatementsAU.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_half_of_cofinal_upper_carry",
+    "PalomarCorpus.E257.PaperStatementsE.half_of_cofinal_absolute_carry",
+    "PalomarCorpus.E257.PaperStatementsE.integerHalfCarry_eq_scaled_residual_add_tail",
+    "PalomarCorpus.E257.PaperStatementsK.six_membership_conditions",
+    "PalomarCorpus.E257.PaperStatementsL.square_depth_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "6e31fa3e8e1bd7f8609ff124041cd0af14a3593f77b523a7e7603c96ae7370ec",
+    "comparator.json": "d4084f0e04b2651b808657a918bd99827929f2be280f5e14133ff31bf2349075",
+    "formalization.yaml": "620ba541ba4abbab005b92624e11caed816fa1276b63c27257793852f7dc4525"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_03.lean": "8139f9870cb3483d3e545fa88ccf319d79786825a80d905dcc3c2d8ea82b1466",
+      "Solutions/PalomarCorpus/E257_03/PaperStatementsAE.lean": "6d5d9ae512e4727ddbc4015e03cd3bb5ce26ce7983352a86f56d1937434c3d64",
+      "Solutions/PalomarCorpus/E257_03/PaperStatementsAU.lean": "1d8f6674692ea2bb9d85a8e06730bf70b3551e95fe653644573f73e9e9f2a3e6",
+      "Solutions/PalomarCorpus/E257_03/PaperStatementsD.lean": "7de6679839f761002bb60688e0f0b5c60f3148361a295992655c129798165500",
+      "Solutions/PalomarCorpus/E257_03/PaperStatementsE.lean": "6b8b33c36e9a39fb7750b4463cc325db53bd41dd8ea792377da9b14c92d02dc7",
+      "Solutions/PalomarCorpus/E257_03/PaperStatementsK.lean": "df17ac9d4beee261a67f3e995bc5046c3101f44648546f97de7158c20f5f505b",
+      "Solutions/PalomarCorpus/E257_03/PaperStatementsL.lean": "00510d4a7167b77a4954ffcb4d5004cec5568b53f619f2f8555f0b27b266a543",
+      "Solutions/PalomarCorpus/E257_03/Statement.lean": "748ba70a3a96894ea169c34ef2bc2e8fe1928484e15579a148cd1ee7c16bd4d6"
+    },
+    "sha256": "62f3b0f67640b485636bee0340ea5e18995ee00f4f5bc3f8b02aef51ae00d550"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.212
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 6.704
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 172.626,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.229
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

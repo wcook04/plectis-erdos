@@ -1,0 +1,5 @@
+{
+ "schema": "plectis-paper-evidence-relations/1",
+ "rule": "For each exact_or_stronger result: one sentence saying how the Lean statement implies the printed one. statement_sha256 and lean_statements record what the sentence was written against; a change to either invalidates it.",
+ "rows": {}
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T15:43:20Z",
+  "entry": "E68_03",
+  "github": {
+    "sha": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+    "ref": "refs/heads/palomar/statement-coverage-20260921",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35882032091",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E68_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_03",
+  "theorem_count": 7,
+  "theorem_names": [
+    "PalomarCorpus.E68.PaperStatementsB.radius_no_eventual_ratio_upper",
+    "PalomarCorpus.E68.PaperStatementsB.radius_not_littleO",
+    "PalomarCorpus.E68.PaperStatementsB.square_subsequence_radius",
+    "PalomarCorpus.E68.ResidualIntegerClass.equal_moment_residual_integer_difference",
+    "PalomarCorpus.E68.ResidualIntegerClass.residual_transparency",
+    "PalomarCorpus.E68.ResidualIntegerClass.summable_fullResidual",
+    "PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "adbad02f80c7bb0f13694ab40a942431c2d7598c66697474e6a3dd43367485ca",
+    "comparator.json": "1c56b8bc8fd2135c74f42051df60934d936a94d46d24a6e640368f3e958474cb",
+    "formalization.yaml": "8bbe093fe75bdec5b9c4f1d0aa5dbcfd21f91643074530039007bb4511ad7f64"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E68_03.lean": "9b4dfc590c993a2c96de1cf105a9de22afa41c9923b32dd8ce76621ab772543a",
+      "Solutions/PalomarCorpus/E68_03/PaperStatementsB.lean": "243628a9635f83259b58ec1235fc5068c15bb22a00f9201e535daf6c71c39ac7",
+      "Solutions/PalomarCorpus/E68_03/ResidualIntegerClass.lean": "ab9d17e84bd59009810ee9971caa5fd22743d6e25a88a7b93f76b5e7ad770a3f",
+      "Solutions/PalomarCorpus/E68_03/Statement.lean": "e7f89171f2397669655f4c39a815331510cb7075b234c4795685ef8c98d4bb7c"
+    },
+    "sha256": "a8546f79bc37386a70f738225e997266b00eedee97cddd29950036d36f4edafe"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.927
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 6.909
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 125.318,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.619
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

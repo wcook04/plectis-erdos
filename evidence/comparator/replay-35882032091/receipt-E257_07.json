@@ -1,0 +1,99 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T15:38:58Z",
+  "entry": "E257_07",
+  "github": {
+    "sha": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+    "ref": "refs/heads/palomar/statement-coverage-20260921",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35882032091",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_07",
+  "theorem_count": 2,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAM.abs_supportValue_sub_le_mersenneTail",
+    "PalomarCorpus.E257.PaperStatementsN.fatal_absorbing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "8b73967feca90cf46f7150aa49761c59d89e9c02e2e54c29e47740aeece30cab",
+    "comparator.json": "bab97f96079e6ba4929b5644ed81fa5d4671d681831b3021316aefdda2aefdac",
+    "formalization.yaml": "337b6094e27d96619b86a8b32a87577fffc925b01e89e1dae7d13a1f382b82f5"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_07.lean": "58921d1d5741a76e47be08bb88458acf4f93995c37bd0014b84d4c89835635ab",
+      "Solutions/PalomarCorpus/E257_07/PaperStatementsAM.lean": "2f780a89864027de24d7a7454b1f9eb9d11015d1e55ac52db8f502d0d4f16b9c",
+      "Solutions/PalomarCorpus/E257_07/PaperStatementsN.lean": "31686c32a3928b08e6e596fb44e9156e188cf1590d21aa679669ce97fcc61069",
+      "Solutions/PalomarCorpus/E257_07/Statement.lean": "ffc3d581eed39df1ce33c28927038167a2b7bc27e984ebd36457871551ccd79f"
+    },
+    "sha256": "531d006eb3f18a2a3e339017e0499b47b0728309426998bf6805e13cb568d764"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 7.846
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 4.787
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 29.57,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 6.386
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}
