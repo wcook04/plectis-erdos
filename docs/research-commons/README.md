@@ -47,7 +47,7 @@ routes. Palomar is a formal registry and automated filter rather than human
 peer review, and this repository cannot grant novelty, endorsement, or broad
 mathematical acceptance.
 
-For a source-bound, offline example of preparing one #249 theorem for
+For a source-bound, offline example of preparing one #257 theorem for
 Prove2Me and recording later external responses, see the
 [Prove2Me compatibility path](PROVE2ME_COMPAT.md).
 

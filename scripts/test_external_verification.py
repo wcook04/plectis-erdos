@@ -27,6 +27,7 @@ from run_external_verification import (
     EXPECTED_1049_MISMATCH,
     EXPECTED_MISMATCH,
     is_expected_negative_rejection,
+    runtime_statement_contract,
 )
 import validation_singleflight as singleflight
 
@@ -303,6 +304,12 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         selected = [row["wrapper_declaration"] for row in packet["main_results"]]
         self.assertTrue(set(selected) <= set(names))
+
+        _, owner, _, _ = load_owner()
+        receipt_contract = runtime_statement_contract(owner, packet)
+        self.assertEqual(receipt_contract["theorem_names"], names)
+        self.assertEqual(receipt_contract["permitted_axioms"], comparator["permitted_axioms"])
+        self.assertGreater(len(names), len(selected))
 
         formalization = (ROOT / "formalization.yaml").read_text(encoding="utf-8")
         self.assertIn("comparator:\n", formalization)
