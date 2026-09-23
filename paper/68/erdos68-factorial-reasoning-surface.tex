@@ -1994,11 +1994,12 @@ packet. The same outside-build qualification applies to the candidate
 finite-size certificate.
 
 The build receipt refers to a successful Lean build at an earlier commit;
-the Lean build step at the supplied public pin was skipped. No Lean build
-or axiom audit was run for this prose revision. A source declaration, a
-recorded proof-checking result, and a numerical computation are different
-kinds of evidence. Descriptions below of checked statements refer to the
-supplied records, not to a new compilation.  Theorem~\ref{long68:res:lcm-growth} and
+the Lean build step at the supplied public pin was skipped. The kernel
+checks and axioms stated in the coverage subsection of
+Appendix~\ref{long68:app:sources} belong to the revisions named there. A
+source declaration, a recorded proof-checking result, and a numerical
+computation are different kinds of evidence. Descriptions in this section
+of checked statements refer to the supplied records.  Theorem~\ref{long68:res:lcm-growth} and
 Corollary~\ref{long68:res:radius-constant} are ordinary proofs given in full above,
 with corresponding Lean source statements
 \href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42}{the liminf bound for the common denominator} and
@@ -2107,7 +2108,9 @@ congruence statement. In the supplied public snapshot,
 \nolinkurl{exists_channelCorrection} (line 127). The former states
 $(d!-1)\mid M(c)-V_d(c)$; negating the integer quotient gives the sign
 convention of Theorem~\ref{long68:res:normalform}. These are source
-correspondences, not a fresh build or axiom audit.
+correspondences. The kernel checks and axioms stated in the coverage
+subsection of Appendix~\ref{long68:app:sources} belong to the revisions
+named there.
 
 Attribution.  Wilson's theorem and the Wilson reflection identity are
 classical, the latter recorded by Stewart \cite[p.~462, (4)]{stewart2004}.
