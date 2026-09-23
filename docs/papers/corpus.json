@@ -1117,7 +1117,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:766232495be811349bfb7f719050bb3825c720aa4bcd57394e8c5f8bb7c14816",
+      "pdf_sha256": "sha256:dffb8b04f752a6e2c783de365a8a0bcf12bb4323fcc6e63bda631e641e70e8f4",
       "pdf_byte_count": 457559,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -1371,8 +1371,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:e4374bbec58a3b3fa88a96f36149cf46c48227a09e2a7a5315f7caf7a32d12e7",
-      "pdf_byte_count": 142708,
+      "pdf_sha256": "sha256:507c757180ff98b9ca6fb22ae9cb74a2472cbe79a830e0bf68c762190d46058c",
+      "pdf_byte_count": 142706,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1698,8 +1698,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:16f67c4594a6c8e3bdead0dfcad4cd501c72f9fd5c5ec6cc0711dbd0e962b009",
-      "pdf_byte_count": 305381,
+      "pdf_sha256": "sha256:ac37873b0f075a275da18e0ca23e822e5f542be64cb77c400199c01c2ce7b4ad",
+      "pdf_byte_count": 305380,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1895,7 +1895,7 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:e488c775ad4714e24bfc0afb615ff6c1c46f731f7229d21d337172416147d112",
+      "pdf_sha256": "sha256:c37c8f288518a3d43f9a5c23b0a75c469b0dc4e2cf4524e1e65c1dfb2c97ee5a",
       "pdf_byte_count": 147008,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2350,7 +2350,7 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:4959fe8dc60d420ca8860b2364bd20b7a3f7cf2bc0c34438f0f4e31f7b0ca5d6",
+      "pdf_sha256": "sha256:1b45fb80cb24b8b3c6ccc0d139409dfb1a5bc3f277a197cfb2ed905eac114ddb",
       "pdf_byte_count": 406474,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2539,8 +2539,8 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:30bc8f69ec4642bc21eea1c9dc8b541a214c0f9c88b1326dfe3b70ffc3b5cbf7",
-      "pdf_byte_count": 144916,
+      "pdf_sha256": "sha256:bbfd6803f3b8972cfd1b7b19664919bb135a1e3f1e252de8afd3fa191f8594f4",
+      "pdf_byte_count": 144915,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2965,636 +2965,636 @@
           "level": 2,
           "id": "binary-tails-and-m\u00f6bius-sums",
           "title": "Binary tails and M\u00f6bius sums",
-          "line": 4655
+          "line": 4659
         },
         {
           "level": 1,
           "id": "index-of-unproved-conditions",
           "title": "Index of unproved conditions",
-          "line": 4667
+          "line": 4671
         },
         {
           "level": 2,
           "id": "how-to-use-the-index",
           "title": "How to use the index",
-          "line": 4673
+          "line": 4677
         },
         {
           "level": 2,
           "id": "ssec:headline",
           "title": "The exponential-sum criterion",
-          "line": 4687
+          "line": 4691
         },
         {
           "level": 2,
           "id": "proved-results-and-the-additional-assumptions-they-need",
           "title": "Proved results and the additional assumptions they need",
-          "line": 4788
+          "line": 4792
         },
         {
           "level": 3,
           "id": "positivity-and-the-remaining-residue-inequality",
           "title": "Positivity and the remaining residue inequality",
-          "line": 4794
+          "line": 4798
         },
         {
           "level": 3,
           "id": "an-exact-endpoint-identity",
           "title": "An exact endpoint identity",
-          "line": 4827
+          "line": 4831
         },
         {
           "level": 3,
           "id": "a-bound-on-the-last-totient-difference",
           "title": "A bound on the last totient difference",
-          "line": 4884
+          "line": 4888
         },
         {
           "level": 3,
           "id": "separation-of-a-rational-approximation",
           "title": "Separation of a rational approximation",
-          "line": 4935
+          "line": 4939
         },
         {
           "level": 3,
           "id": "the-short-window-examples-through-exponent-6",
           "title": "The short-window examples through exponent 6",
-          "line": 4972
+          "line": 4976
         },
         {
           "level": 3,
           "id": "the-diagonal-certificate-table",
           "title": "The diagonal certificate table",
-          "line": 5002
+          "line": 5006
         },
         {
           "level": 3,
           "id": "one-common-certificate-for-sixteen-shifts",
           "title": "One common certificate for sixteen shifts",
-          "line": 5038
+          "line": 5042
         },
         {
           "level": 3,
           "id": "the-fixed-farey-bound",
           "title": "The fixed Farey bound",
-          "line": 5094
+          "line": 5098
         },
         {
           "level": 3,
           "id": "a-two-adic-congruence-that-does-not-give-a-certificate",
           "title": "A two-adic congruence that does not give a certificate",
-          "line": 5128
+          "line": 5132
         },
         {
           "level": 3,
           "id": "the-residue-margin-at-an-lcm-jump",
           "title": "The residue margin at an LCM jump",
-          "line": 5165
+          "line": 5169
         },
         {
           "level": 3,
           "id": "a-certificate-for-a-four-tail-combination",
           "title": "A certificate for a four-tail combination",
-          "line": 5207
+          "line": 5211
         },
         {
           "level": 3,
           "id": "denominators-of-m\u00f6bius-sums",
           "title": "Denominators of M\u00f6bius sums",
-          "line": 5245
+          "line": 5249
         },
         {
           "level": 3,
           "id": "rationality-and-carry-rank",
           "title": "Rationality and carry rank",
-          "line": 5291
+          "line": 5295
         },
         {
           "level": 2,
           "id": "what-the-preceding-comparisons-show",
           "title": "What the preceding comparisons show",
-          "line": 5332
+          "line": 5336
         },
         {
           "level": 1,
           "id": "counterexamples-to-proposed-deductions",
           "title": "Counterexamples to proposed deductions",
-          "line": 5342
+          "line": 5346
         },
         {
           "level": 2,
           "id": "changing-the-coefficients-after-a-finite-prefix",
           "title": "Changing the coefficients after a finite prefix",
-          "line": 5348
+          "line": 5352
         },
         {
           "level": 2,
           "id": "sec:parity-countermodel",
           "title": "A rational series with matching totient parity",
-          "line": 5360
+          "line": 5364
         },
         {
           "level": 2,
           "id": "what-the-square-crt-construction-proves",
           "title": "What the square-CRT construction proves",
-          "line": 5394
+          "line": 5398
         },
         {
           "level": 2,
           "id": "sec:adelic-height",
           "title": "The cost of clearing a rational denominator",
-          "line": 5414
+          "line": 5418
         },
         {
           "level": 2,
           "id": "signed-moments-and-parity",
           "title": "Signed moments and parity",
-          "line": 5456
+          "line": 5460
         },
         {
           "level": 2,
           "id": "column-rescaling-does-not-certify-cancellation",
           "title": "Column rescaling does not certify cancellation",
-          "line": 5481
+          "line": 5485
         },
         {
           "level": 2,
           "id": "tail-integrality-on-an-lcm-grid",
           "title": "Tail integrality on an LCM grid",
-          "line": 5510
+          "line": 5514
         },
         {
           "level": 2,
           "id": "sec:mahler-defect",
           "title": "Exact dyadic rank and the limits of a rank argument",
-          "line": 5557
+          "line": 5561
         },
         {
           "level": 4,
           "id": "integral-relations.",
           "title": "Integral relations.",
-          "line": 5582
+          "line": 5586
         },
         {
           "level": 2,
           "id": "further-counterexamples-and-sharp-bounds",
           "title": "Further counterexamples and sharp bounds",
-          "line": 5633
+          "line": 5637
         },
         {
           "level": 1,
           "id": "sec:promotion-audit",
           "title": "Why the stated hypotheses cannot be omitted",
-          "line": 5689
+          "line": 5693
         },
         {
           "level": 2,
           "id": "implications-concerning-the-totient-series",
           "title": "Implications concerning the totient series",
-          "line": 5695
+          "line": 5699
         },
         {
           "level": 4,
           "id": "cancellation-versus-a-certificate.",
           "title": "Cancellation versus a certificate.",
-          "line": 5699
+          "line": 5703
         },
         {
           "level": 4,
           "id": "sign-versus-distance-from-an-integer.",
           "title": "Sign versus distance from an integer.",
-          "line": 5705
+          "line": 5709
         },
         {
           "level": 4,
           "id": "an-error-bound-versus-a-separated-approximation.",
           "title": "An error bound versus a separated approximation.",
-          "line": 5711
+          "line": 5715
         },
         {
           "level": 4,
           "id": "denominator-growth-versus-approximation-quality.",
           "title": "Denominator growth versus approximation quality.",
-          "line": 5717
+          "line": 5721
         },
         {
           "level": 4,
           "id": "a-rank-lower-bound-versus-a-contradiction.",
           "title": "A rank lower bound versus a contradiction.",
-          "line": 5723
+          "line": 5727
         },
         {
           "level": 2,
           "id": "related-source-comparisons-for-problem-257",
           "title": "Related source comparisons for Problem\u00a0#257",
-          "line": 5729
+          "line": 5733
         },
         {
           "level": 4,
           "id": "quantifiers-must-be-checked-independently.",
           "title": "Quantifiers must be checked independently.",
-          "line": 5743
+          "line": 5747
         },
         {
           "level": 1,
           "id": "additional-mathematics-required-by-the-sufficient-conditions",
           "title": "Additional mathematics required by the sufficient conditions",
-          "line": 5749
+          "line": 5753
         },
         {
           "level": 2,
           "id": "the-doubling-identity",
           "title": "The doubling identity",
-          "line": 5765
+          "line": 5769
         },
         {
           "level": 2,
           "id": "the-full-block-exponential-sum-estimate",
           "title": "The full-block exponential-sum estimate",
-          "line": 5869
+          "line": 5873
         },
         {
           "level": 4,
           "id": "the-required-inequality.",
           "title": "The required inequality.",
-          "line": 5873
+          "line": 5877
         },
         {
           "level": 4,
           "id": "the-discrepancy-in-terms-of-the-doubling-map.",
           "title": "The discrepancy in terms of the doubling map.",
-          "line": 5884
+          "line": 5888
         },
         {
           "level": 4,
           "id": "relevant-comparison-estimates.",
           "title": "Relevant comparison estimates.",
-          "line": 5901
+          "line": 5905
         },
         {
           "level": 4,
           "id": "the-unresolved-estimate.",
           "title": "The unresolved estimate.",
-          "line": 5929
+          "line": 5933
         },
         {
           "level": 4,
           "id": "the-size-of-the-required-saving.",
           "title": "The size of the required saving.",
-          "line": 5966
+          "line": 5970
         },
         {
           "level": 2,
           "id": "sub:pivot",
           "title": "The four-term decomposition",
-          "line": 5972
+          "line": 5976
         },
         {
           "level": 4,
           "id": "the-simultaneous-inequalities.",
           "title": "The simultaneous inequalities.",
-          "line": 5976
+          "line": 5980
         },
         {
           "level": 4,
           "id": "an-upper-bound-for-the-unassigned-terms.",
           "title": "An upper bound for the unassigned terms.",
-          "line": 5995
+          "line": 5999
         },
         {
           "level": 4,
           "id": "the-growing-dyadic-modulus.",
           "title": "The growing dyadic modulus.",
-          "line": 6090
+          "line": 6094
         },
         {
           "level": 4,
           "id": "the-remaining-prime-weighted-correlation.",
           "title": "The remaining prime-weighted correlation.",
-          "line": 6102
+          "line": 6106
         },
         {
           "level": 4,
           "id": "averaging-over-the-block-parameter.",
           "title": "Averaging over the block parameter.",
-          "line": 6127
+          "line": 6131
         },
         {
           "level": 2,
           "id": "separation-along-prime-positions",
           "title": "Separation along prime positions",
-          "line": 6143
+          "line": 6147
         },
         {
           "level": 4,
           "id": "the-quantified-prime-condition.",
           "title": "The quantified prime condition.",
-          "line": 6147
+          "line": 6151
         },
         {
           "level": 4,
           "id": "its-meaning-for-the-doubling-map.",
           "title": "Its meaning for the doubling map.",
-          "line": 6159
+          "line": 6163
         },
         {
           "level": 4,
           "id": "what-the-prime-condition-adds.",
           "title": "What the prime condition adds.",
-          "line": 6165
+          "line": 6169
         },
         {
           "level": 4,
           "id": "finite-comparison.",
           "title": "Finite comparison.",
-          "line": 6171
+          "line": 6175
         },
         {
           "level": 4,
           "id": "an-average-over-a-prescribed-prime-sample.",
           "title": "An average over a prescribed prime sample.",
-          "line": 6177
+          "line": 6181
         },
         {
           "level": 2,
           "id": "depth-equal-to-a-period-multiple",
           "title": "Depth equal to a period multiple",
-          "line": 6210
+          "line": 6214
         },
         {
           "level": 4,
           "id": "the-quantified-residue-condition.",
           "title": "The quantified residue condition.",
-          "line": 6214
+          "line": 6218
         },
         {
           "level": 4,
           "id": "the-condition-in-terms-of-binary-digits.",
           "title": "The condition in terms of binary digits.",
-          "line": 6224
+          "line": 6228
         },
         {
           "level": 4,
           "id": "comparison-with-digit-complexity.",
           "title": "Comparison with digit complexity.",
-          "line": 6247
+          "line": 6251
         },
         {
           "level": 4,
           "id": "finite-examples.",
           "title": "Finite examples.",
-          "line": 6253
+          "line": 6257
         },
         {
           "level": 4,
           "id": "a-possible-heuristic-not-an-estimate.",
           "title": "A possible heuristic, not an estimate.",
-          "line": 6259
+          "line": 6263
         },
         {
           "level": 2,
           "id": "sub:generic-carry-rank",
           "title": "Why rationality does not bound carry rank",
-          "line": 6265
+          "line": 6269
         },
         {
           "level": 4,
           "id": "the-comparison-with-value-54.",
           "title": "The comparison with value 5/4.",
-          "line": 6279
+          "line": 6283
         },
         {
           "level": 4,
           "id": "the-rank-quantities.",
           "title": "The rank quantities.",
-          "line": 6310
+          "line": 6314
         },
         {
           "level": 2,
           "id": "sub:shape",
           "title": "What the available results suggest",
-          "line": 6333
+          "line": 6337
         },
         {
           "level": 4,
           "id": "comparison-of-conditions.",
           "title": "Comparison of conditions.",
-          "line": 6339
+          "line": 6343
         },
         {
           "level": 4,
           "id": "quantitative-estimates.",
           "title": "Quantitative estimates.",
-          "line": 6359
+          "line": 6363
         },
         {
           "level": 4,
           "id": "additional-arithmetic-information.",
           "title": "Additional arithmetic information.",
-          "line": 6365
+          "line": 6369
         },
         {
           "level": 4,
           "id": "scope-of-the-comparison.",
           "title": "Scope of the comparison.",
-          "line": 6373
+          "line": 6377
         },
         {
           "level": 1,
           "id": "remaining-arithmetic-questions",
           "title": "Remaining arithmetic questions",
-          "line": 6379
+          "line": 6383
         },
         {
           "level": 2,
           "id": "certificate-completeness",
           "title": "Certificate completeness",
-          "line": 6400
+          "line": 6404
         },
         {
           "level": 2,
           "id": "the-original-quantified-residue-condition",
           "title": "The original quantified residue condition",
-          "line": 6413
+          "line": 6417
         },
         {
           "level": 2,
           "id": "multiples-diagonals-and-lcm-grids",
           "title": "Multiples, diagonals, and LCM grids",
-          "line": 6433
+          "line": 6437
         },
         {
           "level": 4,
           "id": "multiples-of-a-period.",
           "title": "Multiples of a period.",
-          "line": 6439
+          "line": 6443
         },
         {
           "level": 4,
           "id": "the-diagonal.",
           "title": "The diagonal.",
-          "line": 6452
+          "line": 6456
         },
         {
           "level": 4,
           "id": "the-lcm-grid.",
           "title": "The LCM grid.",
-          "line": 6470
+          "line": 6474
         },
         {
           "level": 4,
           "id": "equivalent-nonintegrality-statements",
           "title": "Equivalent nonintegrality statements",
-          "line": 6491
+          "line": 6495
         },
         {
           "level": 2,
           "id": "the-block-exponential-sum-condition",
           "title": "The block exponential-sum condition",
-          "line": 6505
+          "line": 6509
         },
         {
           "level": 2,
           "id": "the-actual-tail-difference-on-the-lcm-diagonal",
           "title": "The actual tail difference on the LCM diagonal",
-          "line": 6532
+          "line": 6536
         },
         {
           "level": 4,
           "id": "an-impossible-complete-divisibility-pattern",
           "title": "An impossible complete divisibility pattern",
-          "line": 6547
+          "line": 6551
         },
         {
           "level": 4,
           "id": "the-remaining-upper-endpoint-residue",
           "title": "The remaining upper-endpoint residue",
-          "line": 6573
+          "line": 6577
         },
         {
           "level": 4,
           "id": "five-sufficient-conditions-for-that-residue-inequality",
           "title": "Five sufficient conditions for that residue inequality",
-          "line": 6618
+          "line": 6622
         },
         {
           "level": 4,
           "id": "a-further-sufficient-terminal-carry-condition",
           "title": "A further sufficient terminal-carry condition",
-          "line": 6678
+          "line": 6682
         },
         {
           "level": 4,
           "id": "certificates-in-short-windows",
           "title": "Certificates in short windows",
-          "line": 6701
+          "line": 6705
         },
         {
           "level": 4,
           "id": "a-sufficient-approximation-bound",
           "title": "A sufficient approximation bound",
-          "line": 6722
+          "line": 6726
         },
         {
           "level": 2,
           "id": "an-equivalent-test-using-two-leading-residue-bits",
           "title": "An equivalent test using two leading residue bits",
-          "line": 6743
+          "line": 6747
         },
         {
           "level": 2,
           "id": "farey-growth-and-the-failed-generic-rank-argument",
           "title": "Farey growth and the failed generic rank argument",
-          "line": 6754
+          "line": 6758
         },
         {
           "level": 4,
           "id": "the-hypothetical-rank-bound.",
           "title": "The hypothetical rank bound.",
-          "line": 6760
+          "line": 6764
         },
         {
           "level": 4,
           "id": "growth-of-the-farey-denominator-bound.",
           "title": "Growth of the Farey denominator bound.",
-          "line": 6778
+          "line": 6782
         },
         {
           "level": 2,
           "id": "summary-of-implications",
           "title": "Summary of implications",
-          "line": 6794
+          "line": 6798
         },
         {
           "level": 2,
           "id": "what-remains-to-be-proved",
           "title": "What remains to be proved",
-          "line": 6850
+          "line": 6854
         },
         {
           "level": 4,
           "id": "exponential-sums.",
           "title": "Exponential sums.",
-          "line": 6856
+          "line": 6860
         },
         {
           "level": 4,
           "id": "the-last-totient-difference.",
           "title": "The last totient difference.",
-          "line": 6867
+          "line": 6871
         },
         {
           "level": 1,
           "id": "declarations",
           "title": "Declarations",
-          "line": 6878
+          "line": 6882
         },
         {
           "level": 4,
           "id": "further-background.",
           "title": "Further background.",
-          "line": 6882
+          "line": 6886
         },
         {
           "level": 4,
           "id": "sources-and-data.",
           "title": "Sources and data.",
-          "line": 6892
+          "line": 6896
         },
         {
           "level": 2,
           "id": "sec:coverage",
           "title": "Formalisation coverage and remaining dependencies",
-          "line": 6898
+          "line": 6902
         },
         {
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 6916
+          "line": 6920
         },
         {
           "level": 4,
           "id": "verification-scope.",
           "title": "Verification scope.",
-          "line": 7280
+          "line": 7284
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 7286
+          "line": 7290
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 7292
+          "line": 7296
         }
       ],
       "citations_rendered": 48,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:58b914a045114e217a2fa38ebac97fb729430f9781f2d1c9326ebc4f30148183",
+      "pdf_sha256": "sha256:a1f2f69a568a26a93710879442270232314b8a53bf15d4480c3b2a7ff39153e2",
       "pdf_byte_count": 897881,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3618,7 +3618,7 @@
           {
             "id": "sec:mahler-defect",
             "title": "Exact dyadic rank and the limits of a rank argument",
-            "line": 5557
+            "line": 5561
           }
         ],
         "unresolved_count": 0
@@ -3749,7 +3749,7 @@
       ],
       "citations_rendered": 36,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:bf593133a5c5b78d3b5ee33036cd582daa89a1432e7570d6df1bf4db424d962b",
+      "pdf_sha256": "sha256:72a5f4c01bb8284d08364e95e3f51a0dce107bc55dbfa2b86c89227e81e042e0",
       "pdf_byte_count": 125991,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4222,7 +4222,7 @@
       ],
       "citations_rendered": 66,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:5338a3744362495bb58f14cc27c845b68ace9c633b875ce4c1370b109641427c",
+      "pdf_sha256": "sha256:714ef00cedcee006cadc62b657fe3f1a8800b6f60a4563284966954439d8378c",
       "pdf_byte_count": 315916,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4527,7 +4527,7 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:7140248c8d6c3ed0281716709abcf3bdab6b1924d2a5ce01bb35431e8dc0d3ad",
+      "pdf_sha256": "sha256:3abc40fdc2bbf3d2816a9ef29e8208630b35c730d03707564d38a11c6f0139b9",
       "pdf_byte_count": 176941,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -5600,7 +5600,7 @@
       ],
       "citations_rendered": 43,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:33cac6a6a970b9eff7c97e3301458c3239eea8c71ec1d76e8e9446fd3f7425a2",
+      "pdf_sha256": "sha256:6cdc8f98dca924ba4d493bc83d1240116640653ee1cbf016edd07a927b4712f7",
       "pdf_byte_count": 938444,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -5953,7 +5953,7 @@
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:d0f84dc7cb1c8b97f70c5d3e4be168941a35d2e9b765a118c176113e21d8b553",
+      "pdf_sha256": "sha256:1de0c2d2c6ec562b0a0e25dffed6651718729664c9d33f527cdb82703d9e48a7",
       "pdf_byte_count": 322660,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6126,7 +6126,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:fad521f0ab9f532be69f5fcf6c7d2be4c16130031cb07bd1a321572f03264212",
+      "pdf_sha256": "sha256:2b079b1501f6849b70a20c13ffb711810fe105a8f73f06cd102a72f513423495",
       "pdf_byte_count": 122901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6193,7 +6193,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:0c099fc0bd3c37c4de591a488cba49c26a5cdddf93ae68c9661f0b23e7e309d6",
+      "source_sha256": "sha256:d7fd2856ce070f661f4ba9e81df3f53f6689a1c5da798a7411bd745a2ee7fd49",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -6437,8 +6437,8 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:a1896ed81cde3e721c4b6a38e38d8a324eda5f92212cd18e004fe126acfc5ab7",
-      "pdf_byte_count": 207689,
+      "pdf_sha256": "sha256:9e7a6b6a54666b3b761a4003d859e22d75e153e2cffc3f7d780d090d40967495",
+      "pdf_byte_count": 208006,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6928,8 +6928,8 @@
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:ff4d374b3ba012edcf1325c2f589436e4fb4bfadb5a5f5e0cd25f77e91632128",
-      "pdf_byte_count": 455850,
+      "pdf_sha256": "sha256:8344d912aad0019d7437a1a7997bc22c07cd795ddac2987df0046865c800b5e6",
+      "pdf_byte_count": 455846,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7195,8 +7195,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:88b17670465cb63dde065bddd95dddbf44e87aefc520707933aae0f18c0cc052",
-      "pdf_byte_count": 166001,
+      "pdf_sha256": "sha256:a225fbbcda07ce2dee76b2e056827c7bec0f78b9f90786dd5586c605647cb9fc",
+      "pdf_byte_count": 166013,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7654,7 +7654,7 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8cc46f1aa5aeb4209dad79bb63b865bee854d599f918b58cc81f4dc2f7372bec",
+      "pdf_sha256": "sha256:8a5cb3c622753dd5a2e3cfad50662e57c50e0191f78efc740f32c22948a280c6",
       "pdf_byte_count": 444437,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7944,8 +7944,8 @@
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:636de4e6528c350a98429ac972a7e460743dafa75c5ded74363d16468c1ff180",
-      "pdf_byte_count": 199021,
+      "pdf_sha256": "sha256:8a8469eedfc0f9663c3f628a57f426e4f2c539bb13d80eba8723ee9fc18ce462",
+      "pdf_byte_count": 199020,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8315,7 +8315,7 @@
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:ec728736bcf16bbf15163c9cc3377d3b887c268cd159b5d4b9d7c5d78205f130",
+      "pdf_sha256": "sha256:5442aae9a20ea959befce9cc4ff69823bc81fccdf3792af1eadc4086fbce06d4",
       "pdf_byte_count": 160188,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8517,7 +8517,7 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:ab5146cc92186dc0815694b91fa9d1e1d72effb45cb33db2a13cd8f410008000",
+      "pdf_sha256": "sha256:ed06c610cd01b4951b5770c173af198c508eaca3cfbe9aefb8aadee152e77274",
       "pdf_byte_count": 88211,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8791,7 +8791,7 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:3df71b588c8ef2217d5a456c15a2a4f4494d7eadb0af05640e7d84c920534973",
+      "pdf_sha256": "sha256:28578a580e3863a3833c35a81aab40ea83445be5fd72e2fee4eb161f6a1bcc6a",
       "pdf_byte_count": 155498,
       "first_pass": {
         "stated_by_the_paper": false,

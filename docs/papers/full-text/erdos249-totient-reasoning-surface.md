@@ -4619,20 +4619,23 @@ The missing arithmetic inputs include the stated constant-saving exponential-sum
 
 The formulas below express the same series through binary tails, Möbius sums, rational approximations and exponential sums. Each identity permits a change of variables or representation. A limitation of one proposed argument does not automatically apply after that change: its hypotheses must be checked for the new objects. The last subsection illustrates this distinction with finite-state decoding and polynomial denominator identities.
 
-<div class="description">
-
+Binary-weighted series and tails.  
 The coefficients in $`S=\sum_{n\ge1}\varphi(n)2^{-n}`$ are unbounded; this expression is not the base-two digit expansion of $`S`$. The tail $`R_N`$, finite difference numerator $`D(h,N,L)`$ and test $`\mathcal C(h,N,L)`$ retain this coefficient information. The identity
 ``` math
 S=\frac12+\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}
 ```
 [`tsum_totient_half_pow_eq_half_add_moebius_sq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L665) and its partial-sum version [`mobius_square_series_eq_partial_add_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquaredMersenneDiagonalEnclosure.lean#L94) express the same value by Möbius sums. An equality of values does not by itself transfer a claim about the original coefficient subsequences.
 
+Lambert sums and finite numerator polynomials.  
 The Lambert identities for $`\mu`$, $`1`$ and $`\varphi`$ give the series relations in Section <a href="#sec:series" data-reference-type="ref" data-reference="sec:series">5</a>. For a finite divisor sum, the polynomial evaluation [`mobiusNumeratorPolynomial_eval_two`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RepunitMobiusNumerator.lean#L445) and the definition [`mobiusNumerator`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RadicalMobiusShadow.lean#L101) put its numerator into integer polynomial arithmetic. This evaluates a finite contribution, not the complementary infinite tail.
 
+Coprimality probability.  
 Let $`X,Y`$ be independent with $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$ for $`n\ge1`$. Then $`S-\tfrac12=\Pr(\gcd(X,Y)=1)`$. The divisibility probabilities are $`\Pr(d\mid X,\ d\mid Y)=(2^d-1)^{-2}`$ [`tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L266). Möbius inversion converts these to the coprimality probability. The decomposition by the greatest common divisor also gives the weighted coprime-pair identity [`tsum_pos_coprime_inv_mersenne_eq_one`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L349). Counting coprime pairs by their sum gives the totient expression directly [`tsum_coprime_pair_pow_eq_tsum_totient_mul_pow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GeometricCoprimality.lean#L120).
 
+Cyclotomic factors of finite denominators.  
 The coefficient formula for $`P_r`$ [`mobiusNumeratorPolynomial_coeff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RepunitMobiusNumerator.lean#L217) and the cyclotomic divisibility statement [`cyclotomicValue_dvd_baseMobiusShadow_den`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CyclotomicProjectionOfShadow.lean#L389) identify factors in the reduced denominators of the specified finite sums. The product-divisibility theorem [`upperHalfChannel_product_dvd_den_of_scale_primeFactors_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowCyclotomicNoncollapse.lean#L809) is used in the exact denominator formula [`lcmHeight_scaledMobiusShadow_den_exact`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneShadowDenominatorGrowth.lean#L147). Growing finite denominators alone do not exclude cancellation with the remaining tail.
 
+Numerator divisibility and denominator bounds.  
 Write $`x=a/b`$ in lowest terms, with $`b>0`$. For $`c\in\mathbb{Z}`$ and a positive divisor $`H`$ of $`b`$, if the reduced denominator of $`cx`$ divides $`H`$, then $`b/H\mid c`$ [`scalarLocalization_complement_dvd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/AdelicHeightObstruction.lean#L23). In particular, $`|c|\ge b/H`$ when $`c\ne0`$. A related bound is
 ``` math
 0<\frac ab<\frac2{2^n-1},\quad 2^r\mid a,\quad n\ge1
@@ -4640,17 +4643,18 @@ Write $`x=a/b`$ in lowest terms, with $`b>0`$. For $`c\in\mathbb{Z}`$ and a posi
 ```
 for integers $`r\ge0`$ [`positiveRat_mersenne_height`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/AdelicHeightObstruction.lean#L103). Here positivity gives $`a\ge2^r`$; the size inequality then gives the conclusion. These are arithmetic bounds on a reduced fraction, not irrationality criteria without an additional approximation estimate.
 
+Farey intervals.  
 The denominator bound [`farey_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L51) applied to the explicit window $`(N,K)=(1,240)`$ gives [`gap_check_window_1_240_le_79639646646701375323355774875831053`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L176) and hence $`S\ne p/q`$ for integers $`p`$ and $`1\le q\le Q_0`$. The finite input is a totient numerator modulo $`2^{240}`$. Its exact first failing denominator is $`Q_0+1`$, the denominator of the relevant Farey mediant [`gap_check_window_1_240_first_failure`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L225). This last assertion concerns this fixed window.
 
+Differences at least-common-multiple shifts.  
 For $`H_t=\operatorname{lcm}(1,\ldots,t)`$ [`periodLcm`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L515), a jump in $`H_t`$ can occur only at a prime power [`eq_prime_pow_of_not_dvd_periodLcm`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmDiagonalReduction.lean#L137). The identities [`lcmRayArithmeticLetter_eq_deltaTotient`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitArithmetic.lean#L298) and [`diagonalWindowIncrement_eq_lcmRayArithmeticLetter`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitArithmetic.lean#L310) identify the coefficient difference as $`\delta_t(j)=\varphi(2H_t+j)-\varphi(H_t+j)`$ and give $`D(H_t,H_t,L)=\sum_{j=1}^L\delta_t(j)2^{L-j}`$. Thus these arithmetic formulas concern particular instances of the same finite residue test; additional window restrictions remain in force.
 
+Exponential sums of the window residues.  
 For integers $`h,X\ge1`$, the relevant block statistic is
 ``` math
 \sum_{N=X}^{2X-1}\cos\!\left(2\pi\frac{D(h,N,L)}{2^L}\right).
 ```
 A bound by $`9X/10`$, together with $`L\ge h`$ and $`16(2X+h+L+2)\le2^L`$, yields a certificate in the block [`exists_certifiedKill_of_first_harmonic_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicGap.lean#L128). The linked irrationality implication uses the stronger complex norm bound $`21X/25`$, for every $`h`$ on arbitrarily late blocks satisfying the same size inequality [`irrational_totient_series_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L83). The finite implication uses $`\cos(\pi/8)>9/10`$; the required cancellation bound is still unproved. The norm bound on the complex exponential sum is sufficient for the displayed real-part bound, but is stronger.
-
-</div>
 
 <a id="binary-tails-and-möbius-sums"></a>
 
