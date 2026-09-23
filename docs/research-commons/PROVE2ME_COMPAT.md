@@ -70,6 +70,23 @@ An authenticated, read-only `GET /api/v1/environments` on 23 September 2026
 | v4.29.0-rc3 | `777aaa61dcd2a1258d2b4962dbe983ede4d23b2e` |
 | v4.30.0 | `c5ea00351c28e24afc9f0f84379aa41082b1188f` |
 
+The repository has only one `lean-toolchain` and one `lake-manifest.json`.
+Inspection of every commit that changed either pin file in the available Git
+history (8 July, 9 July, 31 August and 8 September 2026) found the same
+v4.29.1 / `5e932f97...` pair. The selected Lean files first appeared later:
+
+| Source artifact | First recorded addition | Pin at that commit |
+| --- | --- | --- |
+| #249 unconditional all-base rank (`AllBaseTotientKernel.lean`) | `c418a63a` (11 September) | v4.29.1 / `5e932f97...` |
+| #257 reciprocal-summable support (`AllBaseReciprocalSupportIrrationality.lean`) | `e060dcf7` (14 September) | v4.29.1 / `5e932f97...` |
+| #249 displayed paper theorem (`FullKernelAssemblies.lean`) | `7d7b5968` (19 September) | v4.29.1 / `5e932f97...` |
+
+At the 23 September audit, local `501262d2` and public `origin/main`
+`402497d8` had all three files under that pair. No #249 or #257
+artifact in the available history exactly matches a supported pair.
+In particular, v4.29.0-rc3 / Mathlib `777aaa61...` is distinct from
+v4.29.1 / Mathlib `5e932f97...`.
+
 None matches the repository pin. The available environments can change; check
 the live endpoint again before a staged port. For a local validation receipt,
 record an actual response with `source_url` set to
@@ -78,6 +95,13 @@ record an actual response with `source_url` set to
 array. This is a provenance note, not cryptographic attestation. Do not invent
 a matching row or treat a different environment as compatible. No theorem or
 proof was submitted during this compatibility check.
+
+The actionable path is a separate source-bound port to a pair returned by a
+fresh authenticated environment response, followed by the official extractor,
+staged compile and elaborated-type comparison below. Preserve the original
+source commit and its claim boundary; only a checked port can supply a staged
+packet. Until then `validate` and `export` remain blocked. The historical pin
+audit does not predict whether a port will compile or preserve the type.
 
 The [official whole-project import guide](https://github.com/prove2me/prove2me_workspace/blob/main/references/upload_full_project.md)
 requires a matching environment, compiled declaration graph and sketch spans,
