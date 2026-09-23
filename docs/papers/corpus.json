@@ -1117,8 +1117,8 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:21cf1d229bb1e0d925d3d680a2726a4176f04e23d8e60ac68532428267140069",
-      "pdf_byte_count": 457559,
+      "pdf_sha256": "sha256:eaa141de1c4e372040bb1bee94839e9b00d028c0e7d6bd58ac0072c45722034d",
+      "pdf_byte_count": 457557,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1371,7 +1371,7 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:9ac26f5b3ebd9d0ba1c7175e90a9c1623aa6752c430c8f436ab3810a841fb10d",
+      "pdf_sha256": "sha256:d9278c1773deea973ecc6c9c6f52f21be7de14ab1b1b946058c3740605550f02",
       "pdf_byte_count": 142706,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1698,8 +1698,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:0c7d4b1eb58a53dcc5ee26f8d52924495b2df653a1e839860d12a7ff074728f2",
-      "pdf_byte_count": 305381,
+      "pdf_sha256": "sha256:00b0b1a5f7ed02a2a14bece7ccfe7459efa4d3c6c1c09b3aae9a2fa88d5d2486",
+      "pdf_byte_count": 305380,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1895,7 +1895,7 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:51c10d6d2ca6914dbac40d5ae28f5a6acac8f80576aa63094f137efafc900af2",
+      "pdf_sha256": "sha256:917ea772c62bf26e6c14512f757ba3f217daf87312458596be02708860807ba3",
       "pdf_byte_count": 147008,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2350,7 +2350,7 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8ceecf0219b532895570bdefa73748ec94314859ea8e0b9f7087c3b3e3133a7a",
+      "pdf_sha256": "sha256:43a8064ae42942617dc8b036e0916e542871eccd5be04e0b2ecc632e4e6eea7a",
       "pdf_byte_count": 405928,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2539,7 +2539,7 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:5ecaea63c987359d6a908d5bba994b41a59b61b9894f53065e54b7c1849ff92a",
+      "pdf_sha256": "sha256:555252e0500270fb23f9e3d9fc941bef21bfe739462765a382eaeae25f75d235",
       "pdf_byte_count": 144916,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3594,7 +3594,7 @@
       ],
       "citations_rendered": 48,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:0c45d7d5871a5fc8a095f02d17096a6e8a47ee7213f1435ebf0f057e259d6dd8",
+      "pdf_sha256": "sha256:4b1a32501e516b80fa0f07a04e7fdae19eb116a2c4e841e8bffd33c753847fcf",
       "pdf_byte_count": 897776,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3749,7 +3749,7 @@
       ],
       "citations_rendered": 36,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:dc312e8ea6d2e632e4cce83a56f8052e6727100070354cd433b642464c799a63",
+      "pdf_sha256": "sha256:68fb005e91f96cacd911a998a4433bab06aa662f5c7b696496cdc3122b02873d",
       "pdf_byte_count": 125991,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3816,7 +3816,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
       "local_source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-      "source_sha256": "sha256:d151bccef2113d3131ad8f8980bc1a9336e79ccf12e5a20a2490040638728c38",
+      "source_sha256": "sha256:9ab6473e919099a0616ca41822542150c8479f03e07c77b9c076f9cabf6278f6",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -3941,289 +3941,289 @@
           "level": 1,
           "id": "long251:sec:obstructions",
           "title": "What cannot supply the missing input",
-          "line": 748
+          "line": 761
         },
         {
           "level": 2,
           "id": "bounded-residue-preserving-perturbations",
           "title": "Bounded residue-preserving perturbations",
-          "line": 754
+          "line": 767
         },
         {
           "level": 2,
           "id": "algebraic-nonconcentration-survives-the-rationalising-perturbation",
           "title": "Algebraic nonconcentration survives the rationalising perturbation",
-          "line": 776
+          "line": 789
         },
         {
           "level": 2,
           "id": "the-two-window-event-has-density-zero",
           "title": "The two-window event has density zero",
-          "line": 896
+          "line": 909
         },
         {
           "level": 2,
           "id": "recurring-gap-values-differing-by-two-do-not-suffice",
           "title": "Recurring gap values differing by two do not suffice",
-          "line": 927
+          "line": 940
         },
         {
           "level": 2,
           "id": "long251:res:all-residue-log-countermodel",
           "title": "A rational series with recurring values in every residue class",
-          "line": 977
+          "line": 990
         },
         {
           "level": 2,
           "id": "polynomial-coefficients-and-telescoping-sums",
           "title": "Polynomial coefficients and telescoping sums",
-          "line": 1029
+          "line": 1042
         },
         {
           "level": 1,
           "id": "long251:sec:measurements",
           "title": "Finite numerical searches",
-          "line": 1074
+          "line": 1087
         },
         {
           "level": 1,
           "id": "long251:sec:open",
           "title": "Remaining prime-gap estimates",
-          "line": 1084
+          "line": 1097
         },
         {
           "level": 4,
           "id": "verification-boundary.",
           "title": "Verification boundary.",
-          "line": 1128
+          "line": 1141
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1134
+          "line": 1147
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1138
+          "line": 1151
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1148
+          "line": 1161
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1154
+          "line": 1167
         },
         {
           "level": 1,
           "id": "long251:app:prime-bound",
           "title": "An elementary polynomial bound for the primes",
-          "line": 1160
+          "line": 1173
         },
         {
           "level": 1,
           "id": "long251:app:certificates",
           "title": "Integer certificates",
-          "line": 1184
+          "line": 1197
         },
         {
           "level": 1,
           "id": "long251:app:index",
           "title": "Guide to the formal sources",
-          "line": 1250
+          "line": 1263
         },
         {
           "level": 2,
           "id": "long251:sec:coverage",
           "title": "Formalisation coverage and remaining dependencies",
-          "line": 1258
+          "line": 1271
         },
         {
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 1274
+          "line": 1285
         },
         {
           "level": 4,
           "id": "sparse-construction.",
           "title": "Sparse construction.",
-          "line": 1344
+          "line": 1355
         },
         {
           "level": 4,
           "id": "finite-shifted-gap-count.",
           "title": "Finite shifted-gap count.",
-          "line": 1350
+          "line": 1361
         },
         {
           "level": 4,
           "id": "finite-summation-by-parts.",
           "title": "Finite summation by parts.",
-          "line": 1356
+          "line": 1367
         },
         {
           "level": 4,
           "id": "prime-gap-summation-by-parts.",
           "title": "Prime-gap summation by parts.",
-          "line": 1362
+          "line": 1373
         },
         {
           "level": 4,
           "id": "convergence-and-the-infinite-identity.",
           "title": "Convergence and the infinite identity.",
-          "line": 1368
+          "line": 1379
         },
         {
           "level": 4,
           "id": "the-irrationality-equivalences.",
           "title": "The irrationality equivalences.",
-          "line": 1374
+          "line": 1385
         },
         {
           "level": 4,
           "id": "the-general-recurrence.",
           "title": "The general recurrence.",
-          "line": 1380
+          "line": 1391
         },
         {
           "level": 4,
           "id": "iteration-of-the-recurrence.",
           "title": "Iteration of the recurrence.",
-          "line": 1386
+          "line": 1397
         },
         {
           "level": 4,
           "id": "two-consecutive-small-differences.",
           "title": "Two consecutive small differences.",
-          "line": 1392
+          "line": 1403
         },
         {
           "level": 4,
           "id": "congruent-indices.",
           "title": "Congruent indices.",
-          "line": 1398
+          "line": 1409
         },
         {
           "level": 4,
           "id": "denominators-and-integral-shifts.",
           "title": "Denominators and integral shifts.",
-          "line": 1404
+          "line": 1415
         },
         {
           "level": 4,
           "id": "rationality-of-the-initial-value.",
           "title": "Rationality of the initial value.",
-          "line": 1410
+          "line": 1421
         },
         {
           "level": 1,
           "id": "long251:sec:erdos-251-extended-record",
           "title": "Further criteria, examples and computational details",
-          "line": 1416
+          "line": 1427
         },
         {
           "level": 2,
           "id": "long251:sec:xr-totient",
           "title": "Totient-length shifts and persistence of integrality",
-          "line": 1422
+          "line": 1433
         },
         {
           "level": 2,
           "id": "long251:sec:xr-truncation",
           "title": "The finite truncation criterion",
-          "line": 1458
+          "line": 1469
         },
         {
           "level": 2,
           "id": "long251:sec:xr-divisorhit",
           "title": "Nonintegral differences at multiples of each shift",
-          "line": 1520
+          "line": 1531
         },
         {
           "level": 2,
           "id": "long251:sec:xr-compression",
           "title": "Repeated tail values and congruent indices",
-          "line": 1536
+          "line": 1547
         },
         {
           "level": 4,
           "id": "repeated-tail-values.",
           "title": "Repeated tail values.",
-          "line": 1542
+          "line": 1553
         },
         {
           "level": 4,
           "id": "the-interval-condition-at-congruent-indices.",
           "title": "The interval condition at congruent indices.",
-          "line": 1586
+          "line": 1597
         },
         {
           "level": 2,
           "id": "long251:sec:xr-boundedpolignac",
           "title": "A bounded companion to the recurring-values countermodel",
-          "line": 1592
+          "line": 1603
         },
         {
           "level": 2,
           "id": "long251:sec:xr-densities",
           "title": "Numerical counts and proportions",
-          "line": 1614
+          "line": 1625
         },
         {
           "level": 2,
           "id": "long251:sec:xr-corrections",
           "title": "Corrections to earlier records",
-          "line": 1640
+          "line": 1651
         },
         {
           "level": 4,
           "id": "the-earlier-tail-bound-calculation.",
           "title": "The earlier tail-bound calculation.",
-          "line": 1644
+          "line": 1655
         },
         {
           "level": 4,
           "id": "two-different-improvements-to-the-exclusion-record.",
           "title": "Two different improvements to the exclusion record.",
-          "line": 1661
+          "line": 1672
         },
         {
           "level": 4,
           "id": "an-insufficient-proposed-condition.",
           "title": "An insufficient proposed condition.",
-          "line": 1667
+          "line": 1678
         },
         {
           "level": 4,
           "id": "the-formal-boundary.",
           "title": "The formal boundary.",
-          "line": 1673
+          "line": 1684
         },
         {
           "level": 1,
           "id": "long251:app:affine-detail",
           "title": "Arithmetic-progression reformulations of integrality",
-          "line": 1679
+          "line": 1690
         },
         {
           "level": 1,
           "id": "sec:erdos-251-complete-family-map",
           "title": "Conclusions",
-          "line": 1771
+          "line": 1782
         }
       ],
       "citations_rendered": 66,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:e3cff97eedaab5e3f27900fa338a0f8b71e608bc1a3b2015d7ed6a0295e38b94",
-      "pdf_byte_count": 311370,
+      "pdf_sha256": "sha256:f8eefbb1e3eb7ae345c00552660d4679192b381355747cf77c69a8ab72f87fa2",
+      "pdf_byte_count": 315916,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4236,17 +4236,17 @@
           {
             "id": "long251:sec:obstructions",
             "title": "What cannot supply the missing input",
-            "line": 748
+            "line": 761
           },
           {
             "id": "long251:sec:open",
             "title": "Remaining prime-gap estimates",
-            "line": 1084
+            "line": 1097
           },
           {
             "id": "sec:erdos-251-complete-family-map",
             "title": "Conclusions",
-            "line": 1771
+            "line": 1782
           }
         ],
         "unresolved_count": 0
@@ -4527,8 +4527,8 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:3566f2d343fd6eeaea44fc4f35fa0942f223990cf9e4e4ea69dae93f1c19fa3f",
-      "pdf_byte_count": 176945,
+      "pdf_sha256": "sha256:ceffb391d8064f13a791f3a0ae36051f0fbd197f0579f40dd76df347bef71daa",
+      "pdf_byte_count": 176941,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5600,7 +5600,7 @@
       ],
       "citations_rendered": 43,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a2bb39cab81780b6d516fabf6c8cff170bef33df2d85bee58ff4f8fe6d59c1ef",
+      "pdf_sha256": "sha256:b0f39edd399030b9d937947638670e87b1c894b81f048ae18d3a52d57a8dd498",
       "pdf_byte_count": 936901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -5953,8 +5953,8 @@
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:014c5390f45b962695de1d0f77b4b94ec6e816b31555353e35dd097575c10fad",
-      "pdf_byte_count": 322659,
+      "pdf_sha256": "sha256:3216782e87ed48c782db03df46a9fb3b9a7c7601dd68ff1884f502bbc89d9dc0",
+      "pdf_byte_count": 322660,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6126,7 +6126,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:25c73bada4b5ca9440f5609923f045cc49bf0976a7badd67e6b0b12c4944a98f",
+      "pdf_sha256": "sha256:d527a6705e56fa95f372e93ea40ad42e334c48325562f687c562d139bbfcb692",
       "pdf_byte_count": 122901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6437,7 +6437,7 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:4d4588e66bc05eafba69fa884fedbdc16dfd4d864367db654d5c491ffaf7af4b",
+      "pdf_sha256": "sha256:2ebfe9c1283cffbcfec9d56e2adff9a5fab009d3f3c7d9e9c9808c05e20ad782",
       "pdf_byte_count": 206926,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6928,8 +6928,8 @@
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:27d83e8bf58fd9334059a3cbf02a02887464c163cb179fd64d5727e29287660f",
-      "pdf_byte_count": 454852,
+      "pdf_sha256": "sha256:f190390fac2a2d8a201d630bf4db881623a067df3d7ccac1f445cebeb282a81b",
+      "pdf_byte_count": 454843,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7195,7 +7195,7 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:71b0e82adda31f93193f4da21f499acff5a1480a891af1c335d6ed5d78726731",
+      "pdf_sha256": "sha256:a1ae3fc9065fca61c0146ae5d075461c9a0523b3178571753385a9fb6d7b698e",
       "pdf_byte_count": 166003,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7654,8 +7654,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:d10b5672f94641ceb388c8a3dd7725797014174d7386260a676538f131ce782d",
-      "pdf_byte_count": 444127,
+      "pdf_sha256": "sha256:63677cd580c18a971fdbc441fc1f6f1fec63cd936c8dd541441c1edbe709151d",
+      "pdf_byte_count": 444128,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7944,7 +7944,7 @@
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:6bbb33d7b54e2468269e1116400ccc1810445673b6bf7603d14f567a81feef32",
+      "pdf_sha256": "sha256:64c8f43e8a35936d0439e8edde85792679aa759806179d7ee335df1b4973dbb4",
       "pdf_byte_count": 199021,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8315,7 +8315,7 @@
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:48a8ba5baa49e3c2c52cdf0506f82b55a27ed3ab22c1a97b3dec06a40719e6fc",
+      "pdf_sha256": "sha256:9e1729130374c094651b0bca84bf4062386d7530cf716653f6b7772c73bf1bc3",
       "pdf_byte_count": 160188,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8517,7 +8517,7 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:0c8c2089f6a41204591feb09d65e51300cbc258b62a58b14ea5fca54a2155d88",
+      "pdf_sha256": "sha256:ae7b0ce343075a6a08da2d9ed20c39773b36c4c173e7c44df9ff0cda1c708c4a",
       "pdf_byte_count": 88211,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8791,7 +8791,7 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:c802a98a601db3e9fc207b4253b958b0b82b333bd2888d47cef21176471c5b09",
+      "pdf_sha256": "sha256:59f841ffae96a395ef69ec5a1337fe81644f0ac1dc6522466563ca0e063a86dc",
       "pdf_byte_count": 155498,
       "first_pass": {
         "stated_by_the_paper": false,

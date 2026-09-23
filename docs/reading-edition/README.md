@@ -4,7 +4,7 @@
 
 # Reading edition
 
-Edition fingerprint `0d13c40bf6e6673f`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `21cdcbb4e472a7a8`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
@@ -12,7 +12,7 @@ Read the mathematics with your own AI model, or without one, and without a clone
 |---|---|---:|
 | [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 362 KB |
 | [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 768 KB |
-| Complete edition | All 17 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,564 KB |
+| Complete edition | All 17 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,567 KB |
 
 ```sh
 python3 scripts/build_reading_edition.py --complete plectis-complete-edition.md
@@ -32,7 +32,7 @@ A model with a small context window should take the starter file first and then 
 | #249 | [Bases and Integral Relations for the k-Kernel of Euler’s Totient](../../docs/papers/full-text/erdos-249-binary-totient-series.md) | short paper | 82 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-249-binary-totient-series.md) |
 | #249 | [The Binary Totient Series](../../docs/papers/full-text/erdos249-totient-reasoning-surface.md) | longer record | 734 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos249-totient-reasoning-surface.md) |
 | #251 | [Sparse Congruence-Preserving Perturbations of Dyadic Series](../../docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) | short paper | 61 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) |
-| #251 | [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](../../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) | longer record | 201 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) |
+| #251 | [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](../../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) | longer record | 204 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) |
 | #257 | [Weighted Support Criteria for Reciprocal Mersenne Subseries](../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md) | short paper | 94 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) |
 | #257 | [Reciprocal Mersenne Subseries](../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) | longer record | 671 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) |
 | #269 | [No Finite Separable Representation at Three Prime Generators](../../docs/papers/full-text/erdos-269-three-prime-running-lcm.md) | short paper | 56 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) |
