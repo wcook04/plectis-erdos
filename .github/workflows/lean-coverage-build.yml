@@ -1,0 +1,269 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Compile the paper-coverage Lean modules
+
+# The required `build` job in `lean.yml` compiles the supported roots:
+# Erdos249257, ErdosProblems, Examples, the two Formal Conjectures libraries,
+# ResidualBench and the #251 large-certificate audit. The paper-coverage
+# modules sit outside that import environment: the PaperComplete* trees, the
+# per-problem correspondence audits, and the aggregators EightPaperR21Audit
+# and EightPaperRecoveryAudit. `scripts/build_module_graph.py` records them
+# as an auxiliary forest, and `docs/lean_dependency_index.json` lists their
+# declarations as `not_present_in_loaded_root_environment`. The required
+# build never reaches them: on #210 it reported "0 stale/missing module(s)"
+# for a pull request that added one.
+#
+# This workflow compiles every paper root of that forest on main whenever a
+# merge changes a Lean input, and on manual dispatch. It stays off the
+# pull-request path and reports no status a pull request waits on, so the
+# supported root set, and the dependency index exported from it, keep their
+# meaning.
+#
+# `scripts/test_lean_fast_build.py`, which the required build job runs, pins
+# the target list below. Every module holding a declaration that
+# `docs/paper_lean_coverage.json` names in an exact, exact_or_stronger or
+# modulo_named_input row must be reached by the supported roots or by these
+# targets, and every coverage-lane auxiliary root of the module graph in
+# `docs/claims.json` must be named here. The one exclusion is
+# ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate, the #68
+# size-floor certificate. Its source records that it has not been kernel
+# checked, and `scripts/build_module_graph.py` keeps it and the
+# FiniteLeadBlocks leaves it imports out of the default Lake and CI import
+# environment.
+
+on:
+  push:
+    branches:
+      - main
+    # A path filter decides whether a push runs at all. Every run that starts
+    # therefore compiles the whole target set at its commit, and a later
+    # documentation-only push cannot take the place of a pending Lean run.
+    paths:
+      - "lean/**"
+      - lakefile.toml
+      - lakefile.lean
+      - lake-manifest.json
+      - lean-toolchain
+      - scripts/lean_fast_build.py
+      - scripts/lean_build_share.py
+      - scripts/lean_package_share.py
+      - scripts/validation_singleflight.py
+      - .github/workflows/lean-coverage-build.yml
+  workflow_dispatch:
+
+concurrency:
+  group: lean-coverage-build-${{ github.ref }}
+  # A newer run compiles the complete target set at a newer commit, so it may
+  # wait; an in-flight build is never discarded.
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  coverage:
+    runs-on: ubuntu-24.04
+    # The singleflight worker bounds one Lean build at three hours; the rest
+    # covers cache transfer, toolchain setup and dependency artifacts.
+    timeout-minutes: 240
+    # The same environment-neutral command contract as lean.yml and
+    # lean-cache-warm.yml; scripts/test_lean_workflow_environment.py keeps the
+    # three identical.
+    env:
+      GIT_CONFIG_NOSYSTEM: "1"
+      GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
+      GIT_OPTIONAL_LOCKS: "0"
+      GIT_NO_REPLACE_OBJECTS: "1"
+      # Set to the empty string: a namespaced ref view or a shifted
+      # replace-ref base would change what the pinned-history gates resolve,
+      # and the environment contract requires both to be empty.
+      GIT_NAMESPACE: ""
+      GIT_REPLACE_REF_BASE: ""
+      GIT_PAGER: cat
+      GIT_TERMINAL_PROMPT: "0"
+      GIT_ASKPASS: /bin/false
+      GIT_TRACE2: ""
+      GIT_TRACE2_EVENT: ""
+      GIT_TRACE2_PERF: ""
+      PYTHONHOME: ""
+      PYTHONPATH: ""
+      PYTHONSTARTUP: ""
+      PYTHONUSERBASE: ""
+      PYTHONBREAKPOINT: ""
+      PYTHONWARNINGS: ""
+      PYTHONOPTIMIZE: ""
+      PATH: /usr/local/bin:/usr/bin:/bin
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      LANGUAGE: C.UTF-8
+      PYTHONHASHSEED: "0"
+      PYTHONNOUSERSITE: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Install the pinned Python runtime
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.9"
+
+      - name: Test post-merge workflow command environment
+        run: |
+          python3 scripts/test_lean_cache_warm_environment.py
+          python3 -O scripts/test_lean_cache_warm_environment.py
+
+      # The coverage cache has its own `lake-coverage-` prefix. lean.yml and
+      # lean-cache-warm.yml restore by the `lake-<os>-<arch>` prefix, so they
+      # never pick up an entry saved here, which lacks the dependency-index
+      # receipt lean-cache-warm stores. This run prefers the newest coverage
+      # entry, which already holds the coverage modules, and otherwise starts
+      # from the newest main cache, which holds the supported roots.
+      - name: Restore project Lean cache
+        id: restore-cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake
+          key: lake-coverage-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: |
+            lake-coverage-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+            lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+
+      - name: Install pinned Lean toolchain
+        env:
+          ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
+          ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/elan-x86_64-unknown-linux-gnu.tar.gz"
+          installer_dir="$RUNNER_TEMP/elan-installer"
+          mkdir -p "$installer_dir"
+          curl --fail --location --proto '=https' --tlsv1.2 \
+            --retry 5 --retry-all-errors --retry-delay 10 \
+            --output "$archive" "$ELAN_ARCHIVE_URL"
+          printf '%s  %s\n' "$ELAN_ARCHIVE_SHA256" "$archive" | sha256sum --check -
+          tar --extract --gzip --file "$archive" --directory "$installer_dir"
+          "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
+          "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch pinned dependency build artifacts
+        run: |
+          set -euo pipefail
+          lake exe cache get
+
+      # One wrapper call owns the coverage build. It prebuilds stale modules
+      # in batches of two, then runs the serialized Lake check on each target,
+      # which remains the proof-authority check. No target is a supported root
+      # or is reached by one, so this call never duplicates the required build.
+      - name: Memory-bounded coverage build
+        id: coverage-build
+        run: >-
+          python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness
+          ErdosProblems.EightPaperR21Audit
+          ErdosProblems.EightPaperRecoveryAudit
+          ErdosProblems.Erdos1041.PaperCorrespondenceAudit
+          ErdosProblems.Erdos1041.PaperTrinomialCoverageAuditR20
+          ErdosProblems.Erdos1049.PaperCorrespondenceAudit
+          ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit
+          ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit
+          ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit
+          ErdosProblems.Erdos243.PaperCorrespondenceAudit
+          ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit
+          ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit
+          ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence
+          ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch
+          ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint
+          ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface
+          ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
+          ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction
+          ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition
+          ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence
+          ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing
+          ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence
+          ErdosProblems.Erdos249.PaperCorrespondenceAudit
+          ErdosProblems.Erdos249.PaperCorrespondenceAuditAdditive
+          ErdosProblems.Erdos249.PaperCorrespondenceAuditRecovery
+          ErdosProblems.Erdos251.PaperCompleteR20.ExactDenominator
+          ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation
+          ErdosProblems.Erdos251.PaperCompleteR20.LocalTargetInterval
+          ErdosProblems.Erdos251.PaperCompleteR20.SparseConstructionAudit
+          ErdosProblems.Erdos251.PaperCorrespondenceAudit
+          ErdosProblems.Erdos257.PaperCompleteR20.AchievementGeometry
+          ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse
+          ErdosProblems.Erdos257.PaperCompleteR20.GeneralRepairCorrespondence
+          ErdosProblems.Erdos257.PaperCompleteR20.MersenneConstantDecimal
+          ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal
+          ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence
+          ErdosProblems.Erdos257.PaperCorrespondenceAudit
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditive
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave2
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave3
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave4
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave5
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave6
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave7
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave8
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave9
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave10
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave11
+          ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave12
+          ErdosProblems.Erdos269.PaperCompleteR20.UniformRankAudit
+          ErdosProblems.Erdos269.PaperCorrespondenceAudit
+          ErdosProblems.Erdos68.PaperCorrespondenceAudit
+          ErdosProblems.Erdos68.PaperCorrespondenceAuditAdditive
+
+      # Saved even after a failed build: Lake's content traces decide what is
+      # current, so a partial tree only shortens the next run.
+      - name: Save the coverage Lean cache
+        if: always() && steps.restore-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake
+          key: lake-coverage-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
+
+      # The wrapper prints only the last 16 kB of Lake output. The singleflight
+      # store keeps up to 4 MiB per stream, enough for the first error of every
+      # failing module; print it and keep it with the run.
+      - name: Print the complete coverage build log
+        if: >-
+          always() &&
+          (steps.coverage-build.outcome == 'failure' ||
+          steps.coverage-build.outcome == 'cancelled')
+        run: |
+          set -euo pipefail
+          state_root="$(python3 -c 'import sys; sys.path.insert(0, "scripts"); import validation_singleflight; print(validation_singleflight.default_state_root())')"
+          mkdir -p coverage-build-logs
+          if [[ -d "$state_root/artifacts" ]]; then
+            cp -R "$state_root/artifacts/." coverage-build-logs/
+          fi
+          for log in coverage-build-logs/*/stdout.log coverage-build-logs/*/stderr.log; do
+            [[ -f "$log" ]] || continue
+            echo "::group::$log"
+            cat "$log"
+            echo "::endgroup::"
+          done
+          {
+            echo "### Failed coverage build batches"
+            echo '```'
+            grep -h -E '^lean-fast-build: \[.*\] -> [1-9]' coverage-build-logs/*/*.log || true
+            echo '```'
+            echo "### Error lines (first 200)"
+            echo '```'
+            grep -h -E '^error: ' coverage-build-logs/*/*.log | head -n 200 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload the complete coverage build log
+        if: >-
+          always() &&
+          (steps.coverage-build.outcome == 'failure' ||
+          steps.coverage-build.outcome == 'cancelled')
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-coverage-build-log-${{ github.sha }}
+          path: coverage-build-logs/
+          if-no-files-found: warn
+          # A re-run attempt on the same commit replaces the earlier log.
+          overwrite: true
