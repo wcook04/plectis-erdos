@@ -6,16 +6,17 @@ import ErdosProblems.Erdos1041.PaperAnalyticTargets
 Two propositions of the short paper's section "Three limits of the sufficient
 conditions" (`paper/1041/erdos-1041-lemniscate-newton-flow.tex`).
 
-## `res:one-root-gamma-false` (line 806)
+## `res:one-root-gamma-false` (line 838)
 
 `p(z) = z^8 - (3/2)z`, `C` the component of `{|p| ≤ 1}` containing the origin:
 `C` contains exactly one zero and a neighbourhood of the closed disc of radius
 `5/8`, so `H^1(∂C) > 5π/4`; and `Γ(1/4)^2/(2√π) ≤ (π/2)(1+√2) < 5π/4`.
 
 The component clauses ("exactly one zero", "a neighbourhood of the closed
-`5/8` disc") and the final numerical gap are proved here outright.  Two inputs
-are external to Mathlib and to this tree and appear as explicit, named
-hypotheses, so the assembled proposition is `covered_modulo_external`:
+`5/8` disc") and the final numerical gap are proved here outright.  Two
+classical inputs enter `one_root_gamma_false` as explicit, named hypotheses.
+Both are now theorems of this tree, and `LobeUnconditional.lean` states the
+proposition with no hypotheses:
 
 * `PlanePerimeterBound`: the classical plane encircling bound — the
   one-dimensional Hausdorff measure of the boundary of a bounded planar set
@@ -26,19 +27,20 @@ hypotheses, so the assembled proposition is `covered_modulo_external`:
   classical constant `Γ(1/4) = 3.625609908…`.  Mathlib has `Real.Gamma` but no
   numerical evaluation of it, and no lemniscate/AGM identity.
 
-## `res:arity-not-capacity` (line 843)
+## `res:arity-not-capacity` (line 880)
 
 `g(z) = z^3 - (3/400)z - 3/32`: all roots in the open unit disc and
 `μ = 187/2000 ≤ 1/2`; the first merger joins two root components, so `k₀ = 2`,
 but the component at level `2μ` containing that pair has normalised capacity
-`1`.  The root-disc clause and the least-critical-value clause (including that
-`187/2000` really is the minimum, not a supplied value) are proved here.  The
-merger clause and the capacity clause are NOT stated: logarithmic capacity,
-transfinite diameter and sublevel-component merger levels are absent from
-Mathlib and from this tree, so this row stays `needs_new_proof`.  The extra
-theorem `arity_critical_values_lt_double_mu` records the fact that makes the
-capacity clause true (both critical values lie strictly below the level `2μ`,
-so the filled lemniscate at that level is the whole sublevel set).
+`1`.  This module proves the root-disc clause and the least-critical-value
+clause, including that `187/2000` is the least critical-value modulus.
+`ArityNotCapacity.lean` states and proves the whole proposition as
+`Arity.arity_not_capacity`: the merger clause and `k₀ = 2` outright, and the
+capacity clause modulo the named hypothesis `LemniscateTransfiniteDiameter`,
+the classical value `t^{1/n}` of the transfinite diameter of the filled
+lemniscate `{|p| ≤ t}` of a monic polynomial `p` of degree `n`.  The extra
+theorem `arity_critical_values_lt_double_mu` records that both critical values
+lie strictly below the level `2μ`.
 -/
 
 set_option autoImplicit false
@@ -362,19 +364,21 @@ theorem arity_criticalMinimum :
 /-- **Clause 2, second half.** `μ ≤ 1/2`. -/
 theorem arity_mu_le_half : (187 / 2000 : ℝ) ≤ 1 / 2 := by norm_num
 
-/-- Both critical values lie strictly below the level `2μ`: this is why the
-level-`2μ` sublevel set is the whole filled lemniscate, which is the content
-of the (not yet formalised) capacity clause. -/
+/-- Both critical values lie strictly below the level `2μ`, so every critical
+point lies in `{|g| < 2μ}`.  That set is connected, and its closure is the whole
+filled lemniscate `{|g| ≤ 2μ}`: see `Arity.closure_doubleLevelComponent` in
+`ArityNotCapacity.lean`. -/
 theorem arity_critical_values_lt_double_mu (c : ℂ) (hc : G.derivative.eval c = 0) :
     ‖G.eval c‖ < 2 * (187 / 2000 : ℝ) := by
   rcases (all_critical_points c).mp hc with rfl | rfl
   · rw [norm_value_plus]; norm_num
   · rw [norm_value_minus]; norm_num
 
-/-- The elementary part of `res:arity-not-capacity`.  The merger clause
-(`k₀ = 2`) and the normalised-capacity clause are not stated: logarithmic
-capacity and sublevel-component merger levels are absent from Mathlib and from
-this tree. -/
+/-- The elementary part of `res:arity-not-capacity`: `g` is a monic cubic whose
+roots lie in the open unit disc, whose critical points are `±1/20`, and whose
+least critical-value modulus is `μ = 187/2000 ≤ 1/2`.  `Arity.arity_not_capacity`
+in `ArityNotCapacity.lean` states the whole proposition, including `k₀ = 2` and
+the normalised-capacity clause. -/
 theorem arity_elementary_clauses :
     G.Monic ∧ G.natDegree = 3 ∧
       PaperAnalyticTargets.RootsInOpenUnitDisc G ∧
