@@ -708,13 +708,14 @@ boundaries kept together.
   is not finite-dimensional. These are coefficient-space facts, not a
   rationality-to-finite-rank bridge or an irrationality proof.
 - For every base `k ≥ 2` and level `e ≥ 1`, an all-base extension has an
-  explicit canonical spanning family; under its stated linear-independence
-  hypothesis, the level-`e` span has dimension `kᵉ + 1`
+  explicit canonical spanning family. Its reusable conditional theorem gives
+  dimension `kᵉ + 1` under a linear-independence hypothesis
   (`finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent`,
   `Erdos249257/TotientKernelConditional.lean:215`; claims registry:
-  `all_base_totient_kernel_conditional_rank`). The independence is an
-  external affine-ordering input not proved here, and this conditional rank
-  statement does not prove irrationality of `S`.
+  `all_base_totient_kernel_conditional_rank`). The separate
+  `AllBaseTotientKernel.lean` proof discharges that hypothesis and gives the
+  unconditional rank and basis stated in the table below. This remains a
+  coefficient-space result, not an irrationality proof for `S`.
 - A scalar-localisation height lemma transfers, rather than discards, denominator
   information: under its displayed divisibility hypotheses,
   `scalarLocalization_complement_dvd` bounds the complementary factor of a
@@ -1326,15 +1327,18 @@ numerator, so it is not uniform across supports (`SublogDivisorCoverage.lean:392
 claims registry: `sublog_zero_windows`). This is a genuine restriction on a
 possible rational support, not a contradiction or a proof of universal #257.
 
-The squarefree support remains open. Its divisor incidence is proved to be
-`2^ω(n)-1`, hence odd at every `n≥2`. The certificate engines in this
-development begin by selecting an even-incidence block, so they cannot act on
-that support at any block position. The checked declarations
+The squarefree-support value is already known to be irrational at every
+power-of-two base `2^j` by Duverney–Tachiya (2019, cited here, not
+formalised); their cited result does not decide the other integer bases.
+Its divisor incidence is proved to be `2^ω(n)-1`, hence odd at every `n≥2`.
+The certificate engines in this development begin by selecting an
+even-incidence block, so they cannot act on that support at any block
+position. The checked declarations
 `card_squarefreeDivisors`, `squarefreeIncidence_eq`, and
 `odd_squarefreeIncidence` are in
 `ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean`. This is a limitation
-of the named engines, not evidence that the squarefree-support value is
-rational or irrational.
+of the named engines, not a statement about the value's irrationality or the
+universal #257 question.
 
 ### The reduction chain for the one-half test case of Problem 257
 
