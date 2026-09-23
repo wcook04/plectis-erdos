@@ -2935,7 +2935,7 @@
       "verification/ExternalVerification/Challenge.lean",
       "verification/ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:47cdface4721644db7ebfa3b8b417deed5c80d3a24b9c2d40476db6697a3fc98",
+    "digest": "sha256:2e95d6b3cef135fb568860bba3aa3aa02ce25fd8c7614cc3c4fc47d5b7a5d7e6",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {

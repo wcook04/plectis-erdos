@@ -1093,10 +1093,6 @@ def CofinalLocalWindowEscape
           (-((B : ℤ) *
             windowForcing (fun n => b n) (fun n => m n) lo len))
 
-/-- One trusted challenge witness carries the twenty-five exact interfaces selected
-for the eight-problem external-verification portfolio.  The named theorems in
-`Challenge` and `Solution` project these fields, so Comparator still compares
-each statement separately while the trusted challenge contains one hole. -/
 /-- Stable exported proposition for the finite totient-kernel rank.  Keeping
 this type in the shared statement module avoids proof-only imports changing
 the elaborated instance arguments in the Comparator-facing theorem type. -/
@@ -1135,6 +1131,10 @@ def TotientCarryAntiCompressionStatement : Prop :=
         ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
           CarrySectionsEventuallyPeriodicMod v h N₀ u
 
+/-- One trusted challenge witness carries the exact interfaces selected for
+the eight-problem external-verification portfolio.  The named theorems in
+`Challenge` and `Solution` project these fields, so Comparator still compares
+each statement separately while the trusted challenge contains one hole. -/
 structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem68 :
     Irrational factorialGapSeries ↔
