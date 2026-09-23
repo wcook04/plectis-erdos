@@ -4,7 +4,7 @@
  "rows": {
   "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample": {
    "note": "The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\\{|f|<1\\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\\{|f|<1\\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.",
-   "statement_key": "sha256:cbf65b81acb410f537a48afcaba22eeabe9b862f4f8bd28555ded88734cf5f91",
+   "statement_key": "sha256:9bb99c85d46d47f11b2387ff931abe5a15b19d1733536a92f5dc97f1adfb9a7b",
    "lean_statements": {
     "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
     "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
@@ -922,7 +922,7 @@
   },
   "erdos257-mersenne-reasoning-surface#thm:one-sided-finite-decision-boundary": {
    "note": "The Lean statement gives the mathematical facts behind the theorem, for every real $x$: the survival equivalence, that a rank with $r_n(x)>R_n$ certifies $x\\notin\\mathcal A$, and that membership forces $r_n(x)\\le R_n$ at every rank. The remaining sentences describe what the corpus and its searches establish and have no Lean counterpart.",
-   "statement_key": "sha256:04748181a8a909f371def88965a340909a751fdf1b9754594c3cb0f86266a771",
+   "statement_key": "sha256:f87ab314af4a922fef6778b3ccce4bc33c6fbd51a21374ed7e6cb8c49e7c05c8",
    "lean_statements": {
     "ErdosProblems.Erdos257.PaperCompleteR21.paper_one_sided_finite_decision_boundary": "1c07ca5c48568b56e8e14cce0dbb23d917517d1075a520466b2a0dde5cf48839"
    }

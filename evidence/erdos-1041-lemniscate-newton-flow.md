@@ -1,4 +1,4 @@
-# Formal evidence: Paths in Polynomial Lemniscates:\\Trinomials and Critical-Value Bounds
+# Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample\\and Two Short-Path Criteria
 
 This record belongs to the paper [erdos-1041-lemniscate-newton-flow.pdf](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
@@ -12,7 +12,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 ## Passage (beginning “The degree-seven polynomial constructed by…”), page 2
 
-The Lean declarations below together state a result at least as strong as this one. The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\{|f|<1\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\{|f|<1\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.
+The Lean declarations below together state this result or one that implies it. The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\{|f|<1\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\{|f|<1\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.
 
 1. [`Erdos1041.Counterexample.erdos1041_counterexample`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean#L319)
 
@@ -70,7 +70,7 @@ theorem erdos1041_hausdorff_answer_false :
 > ```
 > with every zero in the open unit disc. For any zero $`\zeta`$, the entire segment $`[0,\zeta]`$ lies in $`\{|f|<1\}`$. Distinct zeros $`\zeta_1,\zeta_2`$ are therefore joined by the broken line $`\zeta_1\to0\to\zeta_2`$ of length $`\|\zeta_1\|+\|\zeta_2\|<2`$ inside the open unit lemniscate.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos1041.PaperTrinomialWholeR21.all_degree_monic_trinomials_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23)
 
@@ -114,7 +114,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > lies in the open unit disc, yet the radial spoke from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\{|f_r|\le1\}$; the printed statement needs only a point with $|f_r|\ge1$.
+The Lean declaration below states this result or one that implies it. The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\{|f_r|\le1\}$; the printed statement needs only a point with $|f_r|\ge1$.
 
 [`ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9)
 
@@ -205,7 +205,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-constant-factor-path"></a>
 
-## Theorem 3.3 (a uniform path bound at level $`2\mu`$), page 7
+## Theorem 3.3 (a uniform path bound at level $`2\mu`$), page 6
 
 > *For every monic polynomial $`f`$ of degree $`n\ge2`$, two zero occurrences are joined by a possibly degenerate path of length at most
 > ``` math
@@ -469,7 +469,7 @@ theorem complete_translated_cubic_quotient_fibres
 
 <a id="res-primitive-quintic"></a>
 
-## Theorem 5.2 (quintics with two missing coefficients), page 11
+## Theorem 5.2 (quintics with two missing coefficients), page 10
 
 > *Let
 > ``` math
@@ -513,7 +513,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-critical-value-separation"></a>
 
-## Theorem 6.1 (separation of one simple critical value), page 12
+## Theorem 6.1 (separation of one simple critical value), page 11
 
 > *Let $`f`$ be monic of degree $`n\ge3`$, let $`c`$ be a simple critical point, and put $`v=f(c)\ne0`$. Fix $`w_0\in[0,1]`$ and $`S>\max(w_0,1-w_0)`$. Suppose every other critical point $`d`$ satisfies
 > ``` math
@@ -782,7 +782,7 @@ def CriticalValueSeparationTheorem : Prop :=
 
 <a id="res-sep-or-false"></a>
 
-## Proposition 7.1 (failure of two critical-value criteria to cover all polynomials), page 14
+## Proposition 7.1 (failure of two critical-value criteria to cover all polynomials), page 13
 
 > *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 > ``` math
@@ -819,7 +819,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-one-root-gamma-false"></a>
 
-## Proposition 7.2 (a counterexample to the proposed one-root perimeter bound), page 14
+## Proposition 7.2 (a counterexample to the proposed one-root perimeter bound), page 13
 
 > *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
 
@@ -920,14 +920,14 @@ def LemniscateTransfiniteDiameter : Prop :=
 
 <a id="res-value"></a>
 
-## Theorem 8.1 (value equation), page 15
+## Theorem 8.1 (value equation), page 14
 
 > *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 > ``` math
 > f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement allows any function $f$ with a complex derivative at each point $z(t)$, $t\in I$, of which a polynomial is a case; its conclusions are $w'=-w$ on $I$ and $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\in I$.
+The Lean declaration below states this result or one that implies it. The Lean statement allows any function $f$ with a complex derivative at each point $z(t)$, $t\in I$, of which a polynomial is a case; its conclusions are $w'=-w$ on $I$ and $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\in I$.
 
 [`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52)
 
@@ -963,7 +963,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > If the endpoint values are nonzero, they lie on the same positive ray. In particular, critical points whose values lie on distinct positive rays cannot be the endpoints of such a finite connection.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, and assumes only that $f\circ z$ is continuous on $[a,b]$, which holds when $f$ is a polynomial and $z$ is continuous. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.
+The Lean declaration below states this result or one that implies it. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, and assumes only that $f\circ z$ is continuous on $[a,b]$, which holds when $f$ is a polynomial and $z$ is continuous. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.
 
 [`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69)
 
@@ -1151,7 +1151,7 @@ theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 
 > ```
 > The constant is sharp: equality is attained by the affine images of the scaled Chebyshev root configuration with extreme roots at distance $`D`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The bound is proved for every monic $f$ of degree $n\ge2$ whose zeros lie on one line, and the chosen pair is adjacent on that line, with no zero strictly between them (`sharp_collinear_root_diameter_monic`). The Chebyshev configuration with extreme roots at distance $D$, placed on any line by a translation and a rotation, attains $C_n(D/2)^n$ on every gap between adjacent roots (`sharp_collinear_equality_attained`), and no constant smaller than $C_n$ gives the adjacent-pair bound (`sharpConstant_le_of_collinearDiameterBound`).
+The Lean declarations below together state this result or one that implies it. The bound is proved for every monic $f$ of degree $n\ge2$ whose zeros lie on one line, and the chosen pair is adjacent on that line, with no zero strictly between them (`sharp_collinear_root_diameter_monic`). The Chebyshev configuration with extreme roots at distance $D$, placed on any line by a translation and a rotation, attains $C_n(D/2)^n$ on every gap between adjacent roots (`sharp_collinear_equality_attained`), and no constant smaller than $C_n$ gives the adjacent-pair bound (`sharpConstant_le_of_collinearDiameterBound`).
 
 1. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367)
 
@@ -1281,7 +1281,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fp-weighted-all-degree"></a>
 
-## Theorem 15.1 (a weighted inequality for points in a disc), page 21
+## Theorem 15.1 (a weighted inequality for points in a disc), page 20
 
 > *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
 > ``` math
@@ -1408,7 +1408,7 @@ theorem paper_critical_value_mean (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → �
 > ```
 > In particular, no positive universal constant bounds $`I_k(r)`$ below by that constant times $`k^{-1}\log(1/r)`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements prove $\Phi$ strictly increasing on $[0,\infty)$, which contains the printed monotonicity on $(0,\infty)$, and the integrand $1/\log(\coth t)$ continuous on $\mathbb R$ with value $0$ at $t=0$, which is the printed convention. The identity (O1), strict convexity on $(0,\infty)$, (O2), (O3) and the absence of a universal constant are stated as printed.
+The Lean declarations below together state this result or one that implies it. The Lean statements prove $\Phi$ strictly increasing on $[0,\infty)$, which contains the printed monotonicity on $(0,\infty)$, and the integrand $1/\log(\coth t)$ continuous on $\mathbb R$ with value $0$ at $t=0$, which is the printed convention. The identity (O1), strict convexity on $(0,\infty)$, (O2), (O3) and the absence of a universal constant are stated as printed.
 
 1. [`ErdosProblems.Erdos1041.PaperCompleteR21.orlicz_currency`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L374)
 

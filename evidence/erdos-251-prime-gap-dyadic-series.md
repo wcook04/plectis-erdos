@@ -26,7 +26,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 > ```
 > In particular the distance tends to zero for every integer-valued $`m=m(X)\ge1`$ with $`m(X)=o(\log\log X)`$, uniformly over target values.*
 
-The Lean declarations below together state a result at least as strong as this one. For a general $f$ the construction holds with $I=[l,u]$, $A<l<u$ and cutoffs $N_q$ chosen before the target $r$ (`arbitrary_word_sparse_rationalisation_uniform`). For $f(n)=(\log(n+3))^\varepsilon$ the construction also satisfies the displayed total-variation bound for all $X$ and $m$, and $|S\cap[X,X+L)|\le CX/\log\log(X+3)$ for all large $X$ and every $L\le2X$, which gives the printed count at $L=X$ (`polylogarithmic_word_interval_uniform`). The same statement proves $d_{\rm TV}\to0$ for every integer-valued $m(X)=o(\log\log X)$, uniformly over all sequences that differ from $a$ only on $S$, a class that contains $a+e$ for every target $r$.
+The Lean declarations below together state this result or one that implies it. For a general $f$ the construction holds with $I=[l,u]$, $A<l<u$ and cutoffs $N_q$ chosen before the target $r$ (`arbitrary_word_sparse_rationalisation_uniform`). For $f(n)=(\log(n+3))^\varepsilon$ the construction also satisfies the displayed total-variation bound for all $X$ and $m$, and $|S\cap[X,X+L)|\le CX/\log\log(X+3)$ for all large $X$ and every $L\le2X$, which gives the printed count at $L=X$ (`polylogarithmic_word_interval_uniform`). The same statement proves $d_{\rm TV}\to0$ for every integer-valued $m(X)=o(\log\log X)$, uniformly over all sequences that differ from $a$ only on $S$, a class that contains $a+e$ for every target $r$.
 
 1. [`ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269)
 
@@ -394,7 +394,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > then $`\Pi`$ is irrational.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed standing assumption $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is irrationality of $\Pi$.
+The Lean declaration below states this result or one that implies it. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed standing assumption $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is irrationality of $\Pi$.
 
 [`ErdosProblems.Erdos251.PaperR7.irrational_prime_series_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273)
 
@@ -423,7 +423,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
 
-The Lean declarations below together state a result at least as strong as this one. The second Lean statement gives the equivalence of irrationality of $\Pi$ and $G$, and the first gives convergence of both series; the Lean statements add the identity $\Pi=2+G$ and the same equivalence for $\sum_{n\ge0}p_n2^{-n}=4+2G$.
+The Lean declarations below together state this result or one that implies it. The second Lean statement gives the equivalence of irrationality of $\Pi$ and $G$, and the first gives convergence of both series; the Lean statements add the identity $\Pi=2+G$ and the same equivalence for $\sum_{n\ge0}p_n2^{-n}=4+2G$.
 
 1. [`ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47)
 

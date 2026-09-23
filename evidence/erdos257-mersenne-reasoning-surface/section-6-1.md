@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-two-channel-cap"></a>
 
-## Theorem 6.3 (Two-channel and dyadic cap sufficiency), page 43
+## Theorem 6.3 (Two-channel and dyadic cap sufficiency), page 42
 
 > *Suppose that for every $`n\ge0`$ at which the next weight is skipped,
 > ``` math
@@ -184,7 +184,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > then $`1/2\in\mathcal A`$. These are exact rational inequalities because the target and every finite greedy remainder are rational. The cited finite calculation establishes them for $`1\le n\le6`$; it therefore suffices to prove them for every $`n\ge7`$.*
 > 
-> *Unlike Theorem <a href="#thm:two-channel-cap" data-reference-type="ref" data-reference="thm:two-channel-cap">46</a>, this hypothesis concerns every positive rank, not only skipped ranks. It excludes an explicit interval around $`1/3`$. For example, $`P_n\notin(0,1)`$ implies the displayed inequality when $`n\ge2`$, but no such avoidance theorem for the whole orbit is proved here.*
+> *Unlike Theorem 6.3, this hypothesis concerns every positive rank, not only skipped ranks. It excludes an explicit interval around $`1/3`$. For example, $`P_n\notin(0,1)`$ implies the displayed inequality when $`n\ge2`$, but no such avoidance theorem for the whole orbit is proved here.*
 
 The Lean declarations below together state this result.
 
@@ -262,7 +262,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.6 (Keeping the largest skipped rank beyond two thirds), page 43
 
-> *Let $`D_s\subseteq\{2,\ldots,s-1\}`$ be the support of the integer-greedy row defined in Section <a href="#ssec:seam-model" data-reference-type="ref" data-reference="ssec:seam-model">5.4</a>. Assume the following implication for every $`s\ge14`$ and every largest omitted rank $`d=\max(\{2,\ldots,s-1\}\smallsetminus D_s)`$:
+> *Let $`D_s\subseteq\{2,\ldots,s-1\}`$ be the support of the integer-greedy row defined in Section 5.4. Assume the following implication for every $`s\ge14`$ and every largest omitted rank $`d=\max(\{2,\ldots,s-1\}\smallsetminus D_s)`$:
 > ``` math
 > 2s<3d\quad\Longrightarrow\quad
 >  2(s+1)<3d\quad\text{or}\quad s\notin D_{s+1}.
@@ -350,9 +350,9 @@ theorem half_mem_mersenneAchievementSet_of_middleProducerRowEscape
 > C_D=4\,\mathrm{rem}(D)-p_D^--4,\qquad
 >  \Theta_D=\sum_{j\ge1}c_{F_D}(2D+2+j)2^{-j}.
 > ```
-> Then $`C_D<\Theta_D`$. Since $`0\le\Theta_D\le|F_D|`$, an estimate in the opposite direction would exclude this scenario. No such reverse estimate is assumed or proved here. Remark <a href="#rem:tail-dominance-open" data-reference-type="ref" data-reference="rem:tail-dominance-open">260</a> states the corresponding sufficient hypothesis with the value $`-3`$ excepted.*
+> Then $`C_D<\Theta_D`$. Since $`0\le\Theta_D\le|F_D|`$, an estimate in the opposite direction would exclude this scenario. No such reverse estimate is assumed or proved here. Remark 10.8 states the corresponding sufficient hypothesis with the value $`-3`$ excepted.*
 
-The Lean declarations below together state a result at least as strong as this one. The hypotheses are the printed ones: row $D$ is middle through its two branch inequalities, where the natural-number subtraction is exact since $p_D^-<2^{D+1}$, and each later row $s$ is right, written as $D_{s+1}=D_s\cup\{s\}$. Under them the Lean statements prove $C_D<\Theta_D$, with $C_D=4\,\mathrm{rem}(D)-p_D^--4$ identified separately, and the bounds $0\le\Theta_D\le|F_D|$; they add a second conclusion, $\tfrac12-X_{D_D}(2)<w_D$.
+The Lean declarations below together state this result or one that implies it. The hypotheses are the printed ones: row $D$ is middle through its two branch inequalities, where the natural-number subtraction is exact since $p_D^-<2^{D+1}$, and each later row $s$ is right, written as $D_{s+1}=D_s\cup\{s\}$. Under them the Lean statements prove $C_D<\Theta_D$, with $C_D=4\,\mathrm{rem}(D)-p_D^--4$ identified separately, and the bounds $0\le\Theta_D\le|F_D|$; they add a second conclusion, $\tfrac12-X_{D_D}(2)<w_D$.
 
 1. [`Erdos249257.middleProducer_allRight_forces_carry_lt_tail`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1814)
 
@@ -446,7 +446,7 @@ theorem binaryCoeffTail_supportCoeff_coe_finset_le_card
 > ```
 > The first hypothesis concerns only middle transitions. The second concerns only right transitions at which the old overshoot is at most $`2^s`$. Neither condition is asserted here for the whole sequence.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean hypothesis is the printed pair of conditions at every row $s\ge5$, with the branches $\mathrm M$ and $\mathrm R$ written as their defining inequalities, and the conclusion $\mathrm{rem}(s)\le2^s$ or $o_s\le2^s$ at every row $s\ge5$ is the printed one.
+The Lean declaration below states this result or one that implies it. The Lean hypothesis is the printed pair of conditions at every row $s\ge5$, with the branches $\mathrm M$ and $\mathrm R$ written as their defining inequalities, and the conclusion $\mathrm{rem}(s)\le2^s$ or $o_s\le2^s$ at every row $s\ge5$ is the printed one.
 
 [`Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448)
 
@@ -475,7 +475,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > *The upper-reset dyadic-band escape condition requires the following at every actual upper reset $`d\ge13`$: for every $`0\le j\le d`$, the reset charge avoids a linear-width band immediately below the dyadic power $`2^{d-j+1}`$ ($`2^{d-j+1}<\mathrm{resetCharge}`$ or $`\mathrm{resetCharge}+2(d+j)\le 2^{d-j+1}`$). Granted this, $`1/2\in
 > \ensuremath{\mathcal A}`$. The linked proof verifies this condition for $`13\le d\le30`$, using exact successor remainders at rows $`14`$–$`31`$ (for example, $`\mathrm{rem}(14)=392`$ and $`\mathrm{rem}(31)=4187487147`$). This finite verification does not supply the hypothesis for every $`d\ge13`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The first Lean statement is the printed implication from the band condition to $1/2\in\mathcal A$. The second gives the band disjunction, with reset charge $4o_d+p_d^+$, at every actual upper reset $13\le d\le30$ and every $0\le j\le d$, and the third states the successor remainders $\mathrm{rem}(14)=392$ through $\mathrm{rem}(31)=4187487147$. Together they have the printed hypotheses and conclusions.
+The Lean declarations below together state this result or one that implies it. The first Lean statement is the printed implication from the band condition to $1/2\in\mathcal A$. The second gives the band disjunction, with reset charge $4o_d+p_d^+$, at every actual upper reset $13\le d\le30$ and every $0\le j\le d$, and the third states the successor remainders $\mathrm{rem}(14)=392$ through $\mathrm{rem}(31)=4187487147$. Together they have the printed hypotheses and conclusions.
 
 1. [`Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790)
 
@@ -581,7 +581,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > C_G(N)\le2\sqrt N+4\qquad\text{for every }N\ge0,
 > ```
-> then $`G`$ has infinitely many skipped indices and $`X_G(2)=1/2`$. The unresolved part is the upper bound along this particular orbit. The carry identity explains its strength: a positive gap $`1/2-X_G(2)`$ would contribute a term of order $`2^N`$, which cannot satisfy a square-root bound. This is distinct from the reset-deviation hypothesis of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a>; no equivalence between the two hypotheses is asserted.*
+> then $`G`$ has infinitely many skipped indices and $`X_G(2)=1/2`$. The unresolved part is the upper bound along this particular orbit. The carry identity explains its strength: a positive gap $`1/2-X_G(2)`$ would contribute a term of order $`2^N`$, which cannot satisfy a square-root bound. This is distinct from the reset-deviation hypothesis of Theorem 6.10; no equivalence between the two hypotheses is asserted.*
 
 The Lean declarations below together state this result.
 
@@ -719,7 +719,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For every integer $`b\ge2`$ and every infinite pairwise-coprime support $`A\subseteq\mathbb{N}_{>0}`$ with summable reciprocals, $`\sum_{a\in A} 1/(b^a-1)`$ is irrational.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one; its set $A$ may formally contain $0$, which no infinite pairwise-coprime set does, since $\gcd(0,a)=a$.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one; its set $A$ may formally contain $0$, which no infinite pairwise-coprime set does, since $\gcd(0,a)=a$.
 
 [`Erdos249257.irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L10776)
 
@@ -821,7 +821,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > are irrational. These are instances of the preceding theorem. For the factorial support the preceding least common multiple is $`k!`$ when $`k\ge1`$, so the gap is $`k\,k!`$. For the powers of two it is $`2^{k-1}`$, so the gap is $`2^{k-1}`$. Both tend to infinity. The conclusion concerns these two supports, not every infinite support.*
 
-The Lean declarations below together state a result at least as strong as this one. The two Lean statements are the two irrationality claims for every $b\ge2$, indexed as printed by $k\ge0$. The remarks on the preceding least common multiples and gaps are elementary identities outside the Lean statements: $\operatorname{lcm}(1!,\ldots,k!)=k!$ with $(k+1)!-k!=k\,k!$, and $\operatorname{lcm}(1,2,\ldots,2^{k-1})=2^{k-1}$ with $2^k-2^{k-1}=2^{k-1}$.
+The Lean declarations below together state this result or one that implies it. The two Lean statements are the two irrationality claims for every $b\ge2$, indexed as printed by $k\ge0$. The remarks on the preceding least common multiples and gaps are elementary identities outside the Lean statements: $\operatorname{lcm}(1!,\ldots,k!)=k!$ with $(k+1)!-k!=k\,k!$, and $\operatorname{lcm}(1,2,\ldots,2^{k-1})=2^{k-1}$ with $2^k-2^{k-1}=2^{k-1}$.
 
 1. [`Erdos249257.irrational_erdosSum_factorial_support`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L6035)
 
@@ -856,9 +856,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > X_{d\mathbb{N}_{>0}}(b)=\sum_{k\ge1}\frac1{(b^d)^k-1}
 > ```
-> is irrational. This is the full-support result (Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>) at the integer base $`b^d`$; no new support argument is required.*
+> is irrational. This is the full-support result (Theorem 6.14) at the integer base $`b^d`$; no new support argument is required.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements give the printed identity and irrationality for $b\ge2$ and $d\ge1$. The Lean set of multiples of $d$ also contains $0$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.
+The Lean declarations below together state this result or one that implies it. The Lean statements give the printed identity and irrationality for $b\ge2$ and $d\ge1$. The Lean set of multiples of $d$ also contains $0$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.
 
 1. [`Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L9054)
 
@@ -895,7 +895,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > *The indicator of $`A`$ is a nonzero purely periodic integer weight, so this follows from Luca and Tachiya’s theorem stated above. The linked declaration supplies a separate formal proof. At $`m=1`$ the only nonempty periodic support is full support; residue classes and unions of residue classes give the other immediate examples.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement asks for periodicity from $n=0$ on a set $A\subseteq\N$ with a positive element. For the printed $A$, apply it to $A$, or to $A\cup\{0\}$ when $m\in A$; the term at $0$ is $0$ under the convention $1/0=0$, so $X_A(b)$ is unchanged.
+The Lean declaration below states this result or one that implies it. The Lean statement asks for periodicity from $n=0$ on a set $A\subseteq\N$ with a positive element. For the printed $A$, apply it to $A$, or to $A\cup\{0\}$ when $m\in A$; the term at $0$ is $0$ under the convention $1/0=0$, so $X_A(b)$ is unchanged.
 
 [`Erdos249257.irrational_erdosSupportSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L11590)
 
@@ -923,7 +923,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Let $`b\ge2`$ and $`m\ge1`$ be integers. An infinite support whose membership is $`m`$-periodic from some threshold $`N_0`$ onward has irrational $`X_A(b)`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one and also allows $0\in A$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one and also allows $0\in A$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.
 
 [`Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L11604)
 
@@ -951,7 +951,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For integers $`b\ge2`$, $`m\ge1`$ and a residue $`c`$, $`\sum_{\substack{n\ge1\\n\equiv c\pmod m}}(b^n-1)^{-1}`$ is irrational. Specializing $`m=2,c=1`$: $`\sum_{n\text{ odd}} 1/(b^n-1)`$ is irrational for every $`b\ge 2`$, the case treated explicitly in \[lucatachiya2017, Example 2, p. 140\].*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue $c$ taken in $\N$, which covers every class modulo $m$. The Lean class also contains $0$ when $m\mid c$, and that term is $0$ under the convention $1/0=0$.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue $c$ taken in $\N$, which covers every class modulo $m$. The Lean class also contains $0$ when $m\mid c$, and that term is $0$ under the convention $1/0=0$.
 
 1. [`Erdos249257.irrational_erdosSupportSeries_residueClass`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L11672)
 
@@ -990,7 +990,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > The cited formal argument gives the dichotomy that $`x`$ is irrational or $`b^kx\in\mathbb{Z}`$ for some integer $`k\ge0`$. It excludes the latter alternative if $`c_w`$ has one sign throughout and is nonzero at arbitrarily large indices. These sign assumptions concern $`c_w`$, not $`w`$. As noted above, Luca and Tachiya’s theorem already excludes the terminating alternative for every nonzero periodic $`w`$, without either sign restriction. The zero weight gives $`x=0`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The dichotomy and the two sign versions, with $c_w(n)\ge0$ for every $n\ge1$ or $c_w(n)\le0$ for every $n\ge1$ and $c_w$ nonzero at arbitrarily large $n$, are the three Lean statements. The Lean weight is defined on $\N$ and periodic from $0$, which for the printed $w$ means setting $w(0)=w(m)$; the term at $a=0$ is $0$ under the convention $1/0=0$, and $c_w(n)$ uses only positive divisors.
+The Lean declarations below together state this result or one that implies it. The dichotomy and the two sign versions, with $c_w(n)\ge0$ for every $n\ge1$ or $c_w(n)\le0$ for every $n\ge1$ and $c_w$ nonzero at arbitrarily large $n$, are the three Lean statements. The Lean weight is defined on $\N$ and periodic from $0$, which for the printed $w$ means setting $w(0)=w(m)$; the term at $a=0$ is $0$ under the convention $1/0=0$, and $c_w(n)$ uses only positive divisors.
 
 1. [`Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L14175)
 
@@ -1044,7 +1044,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \frac{C}{\gcd(C,h)}\ \bigm|\ \operatorname{den}\bigl(hB(r)\bigr).
 > ```
-> In particular, $`C`$ divides this reduced denominator when $`\gcd(C,h)=1`$. The factors in $`C`$ are pairwise coprime, since $`\gcd(2^p-1,2^q-1)=2^{\gcd(p,q)}-1=1`$ for distinct primes. The assertion concerns this finite signed sum; it does not replace the approximation hypotheses in Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>.*
+> In particular, $`C`$ divides this reduced denominator when $`\gcd(C,h)=1`$. The factors in $`C`$ are pairwise coprime, since $`\gcd(2^p-1,2^q-1)=2^{\gcd(p,q)}-1=1`$ for distinct primes. The assertion concerns this finite signed sum; it does not replace the approximation hypotheses in Theorem 6.14.*
 
 The Lean declarations below together state this result.
 
@@ -1300,7 +1300,7 @@ theorem lcmHeight_scaledMobiusShadow_den_exact (t : ℕ) :
 > ```
 > This classical identity is also recorded in \[duverneytachiya, Example 1.1, p. 4\]. Expand each denominator geometrically and interchange the absolutely convergent sums. The coefficient of $`2^{-n}`$ is $`\sum_{d\mid n}\mu(d)`$, equal to $`1`$ for $`n=1`$ and $`0`$ otherwise. This proves the identity. Its coefficients are $`-1,0,1`$, not indicators of a support; the identity therefore does not represent $`1/2`$ as a subseries with all coefficients in $`\{0,1\}`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement is the printed identity, summed over the positive integers. Absolute convergence follows from $|\mu(d)|/(2^d-1)\le2^{1-d}$.
+The Lean declaration below states this result or one that implies it. The Lean statement is the printed identity, summed over the positive integers. Absolute convergence follows from $|\mu(d)|/(2^d-1)\le2^{1-d}$.
 
 [`MersenneLambertLadder.tsum_moebius_div_two_pow_sub_one_eq_half`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/MersenneLambertLadder.lean#L587)
 
@@ -1323,7 +1323,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 6.29 (Negative-Möbius Boolean support overshoots $`1/2`$), page 49
 
-> *Let $`N=\{d\ge2:\mu(d)=-1\}`$. Isolating the $`d=1`$ term in Theorem <a href="#thm:mobius-lambert-identity" data-reference-type="ref" data-reference="thm:mobius-lambert-identity">71</a> gives
+> *Let $`N=\{d\ge2:\mu(d)=-1\}`$. Isolating the $`d=1`$ term in Theorem 6.28 gives
 > ``` math
 > X_N(2)=\frac12+
 >        \sum_{\substack{d\ge2\\\mu(d)=1}}\frac1{2^d-1}
@@ -1331,7 +1331,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > since $`\mu(6)=1`$. This rules out the particular candidate $`N`$. It does not rule out other infinite supports representing $`1/2`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements give the identity $X_N(2)=\frac12+\sum_{d\ge2,\,\mu(d)=1}1/(2^d-1)$ and the conclusion $X_N(2)>\frac12$. The intermediate bound $X_N(2)\ge\frac12+\frac1{63}$ follows from the identity, since every term of the sum is nonnegative and the term at $d=6$ is $1/63$.
+The Lean declarations below together state this result or one that implies it. The Lean statements give the identity $X_N(2)=\frac12+\sum_{d\ge2,\,\mu(d)=1}1/(2^d-1)$ and the conclusion $X_N(2)>\frac12$. The intermediate bound $X_N(2)\ge\frac12+\frac1{63}$ follows from the identity, since every term of the sum is nonnegative and the term at $d=6$ is $1/63$.
 
 1. [`Erdos249257.MobiusSignSupportNoGo.tsum_negativeMobius_eq_half_add_positiveMobiusTail`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/MobiusSignSupportNoGo.lean#L111)
 
@@ -1370,7 +1370,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > where $`G`$ is the greedy support for $`1/2`$. In the forward direction, finitely many skipped exponents would express the full Mersenne sum as $`1/2`$ plus a finite rational sum, contradicting Erdős’s full-support irrationality theorem. The reverse implication uses the greedy tail criterion: once a remainder exceeds the whole available tail, every later exponent is selected. Infinitely many skips exclude that failure. The equivalence does not establish that infinitely many skips actually occur.*
 
-The Lean declarations below together state a result at least as strong as this one. The equivalence is stated as printed, with $\N_{>0}\smallsetminus G$ written as the set of positive exponents omitted by the greedy rule for $1/2$. Irrationality of the full Mersenne sum $\sum_{n\ge1}1/(2^n-1)$, used in the forward direction, is the second Lean statement.
+The Lean declarations below together state this result or one that implies it. The equivalence is stated as printed, with $\N_{>0}\smallsetminus G$ written as the set of positive exponents omitted by the greedy rule for $1/2$. Irrationality of the full Mersenne sum $\sum_{n\ge1}1/(2^n-1)$, used in the forward direction, is the second Lean statement.
 
 1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/GreedyAchievementSet.lean#L2583)
 
@@ -1418,7 +1418,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > 7.  *The real half-greedy rule has no last omitted positive rank.*
 
-The Lean declarations below together state a result at least as strong as this one. Items (1) to (5) and (7) are each proved equivalent to $1/2\in\mathcal A$, with branch $\mathrm R$ at row $s$ written as $D_{s+1}=D_s\cup\{s\}$ and the omitted ranks in (5) read off the greedy word of row $s_j$. Item (6) follows by combining the equivalence for (2) with the Lean equivalence between (2) and (6).
+The Lean declarations below together state this result or one that implies it. Items (1) to (5) and (7) are each proved equivalent to $1/2\in\mathcal A$, with branch $\mathrm R$ at row $s$ written as $D_{s+1}=D_s\cup\{s\}$ and the omitted ranks in (5) read off the greedy word of row $s_j$. Item (6) follows by combining the equivalence for (2) with the Lean equivalence between (2) and (6).
 
 1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
 
@@ -1484,9 +1484,9 @@ theorem half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip :
 
 ## Lemma 6.33 (The values on either side of an eventual right continuation), page 51
 
-> *If the seam eventually always extends “true” (right branch) from some row $`S`$ on with a fixed lower prefix $`u`$, the resulting cofinite-support value stays strictly below $`1/2`$; the matching alternative “upper competitor” word gives a strict excess *above* $`1/2`$. Neither of these two cofinite continuations represents $`1/2`$. This does not rule out an eventually-right integer orbit; it describes the two values in that case. The inequalities are used in Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">87</a>.*
+> *If the seam eventually always extends “true” (right branch) from some row $`S`$ on with a fixed lower prefix $`u`$, the resulting cofinite-support value stays strictly below $`1/2`$; the matching alternative “upper competitor” word gives a strict excess *above* $`1/2`$. Neither of these two cofinite continuations represents $`1/2`$. This does not rule out an eventually-right integer orbit; it describes the two values in that case. The inequalities are used in Theorem 6.44.*
 
-The Lean declarations below together state a result at least as strong as this one. With the seam right from row $S\ge5$ on and support $u\cup\{D+1,\ldots,S-1\}$ at row $S$, where $u\subseteq\{2,\ldots,D-1\}$ and $2\le D<S$, the Lean statements prove $X_u(2)+R_D<\frac12$ for the cofinite continuation $u\cup\{D+1,D+2,\ldots\}$ and $\frac12<X_{u\cup\{D\}}(2)$ for the upper competitor.
+The Lean declarations below together state this result or one that implies it. With the seam right from row $S\ge5$ on and support $u\cup\{D+1,\ldots,S-1\}$ at row $S$, where $u\subseteq\{2,\ldots,D-1\}$ and $2\le D<S$, the Lean statements prove $X_u(2)+R_D<\frac12$ for the cofinite continuation $u\cup\{D+1,D+2,\ldots\}$ and $\frac12<X_{u\cup\{D\}}(2)$ for the upper competitor.
 
 1. [`Erdos249257.prefix_add_mersenneTail_lt_half_of_eventually_right`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/HalfCylinderFatalGapRightTail.lean#L402)
 
@@ -1542,7 +1542,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > *It is not available for the totient weights $`\varphi(n)/2^n`$: the terms at indices $`4`$ and $`5`$ already sum to $`2/16+4/32=1/4=\varphi(3)/2^3`$, and the remaining tail is positive. A general strict-tail argument therefore cannot be transferred to that sequence without a different hypothesis or proof.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean lower bound is $2^{-n}+\tfrac13\,4^{-n}<R_n$, sharper than the printed $2^{-n}<R_n$, and this bound, the identity $R_n=w_{n+1}+R_{n+1}$ and $R_n\le2w_{n+1}$ hold for every $n\ge0$; the printed statement takes $n\ge1$, where $2w_{n+1}<w_n$ and $R_n<w_n$ are as printed. The remark on the totient weights is the arithmetic $\varphi(4)/2^4+\varphi(5)/2^5=\frac14=\varphi(3)/2^3$, outside the Lean statements.
+The Lean declarations below together state this result or one that implies it. The Lean lower bound is $2^{-n}+\tfrac13\,4^{-n}<R_n$, sharper than the printed $2^{-n}<R_n$, and this bound, the identity $R_n=w_{n+1}+R_{n+1}$ and $R_n\le2w_{n+1}$ hold for every $n\ge0$; the printed statement takes $n\ge1$, where $2w_{n+1}<w_n$ and $R_n<w_n$ are as printed. The remark on the totient weights is the arithmetic $\varphi(4)/2^4+\varphi(5)/2^5=\frac14=\varphi(3)/2^3$, outside the Lean statements.
 
 1. [`Erdos249257.mersenneTail_eq_weight_add`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/GreedyAchievementSet.lean#L114)
 

@@ -29,7 +29,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 > ```
 > for every $`\varepsilon>0`$ and every $`N`$ there is an $`m\ge N`$ with $`0<\Delta_{b,A}(m)<\varepsilon`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The first conjunct of the Lean claim and the displacement statement are the printed irrationality of $X_A(b)$ and the cofinal returns $0<\Delta_{b,A}(m)<\varepsilon$; the Lean claim adds a second conjunct, that if a set $H\subseteq\mathbb N_{>0}$ has finite weighted mass at $b=2$, then $X_A(b)$ is irrational for every $b\ge2$ and every infinite $A\subseteq H$.
+The Lean declarations below together state this result or one that implies it. The first conjunct of the Lean claim and the displacement statement are the printed irrationality of $X_A(b)$ and the cofinal returns $0<\Delta_{b,A}(m)<\varepsilon$; the Lean claim adds a second conjunct, that if a set $H\subseteq\mathbb N_{>0}$ has finite weighted mass at $b=2$, then $X_A(b)$ is irrational for every $b\ge2$ and every infinite $A\subseteq H$.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120)
 
@@ -86,7 +86,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > then $`X_A(b)`$ is irrational for every infinite $`A\subseteq\bigcup_jF_j`$ and every integer $`b\ge2`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one, with $F_j\subseteq\Npos$ written as $0\notin F_j$ and the index $j\ge1$ shifted to start at $0$. Lean assumes each $C_j$ finite, which the printed summability hypothesis already implies.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, with $F_j\subseteq\Npos$ written as $0\notin F_j$ and the index $j\ge1$ shifted to start at $0$. Lean assumes each $C_j$ finite, which the printed summability hypothesis already implies.
 
 [`ErdosProblems.Erdos257.PaperCompleteR8.strengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241)
 
@@ -117,9 +117,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 1.3 (mixed weighted and cover supports), page 15
 
-> *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass <a href="#eq:257-weighted-mass" data-reference-type="eqref" data-reference="eq:257-weighted-mass">[eq:257-weighted-mass]</a> at $`b=2`$ for a finite nonempty prime set $`\mathcal P`$. Suppose also that $`V\subseteq\bigcup_jF_j`$ for sets and majorants satisfying Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">2</a>, with <a href="#eq:257-strengthened-cover" data-reference-type="eqref" data-reference="eq:257-strengthened-cover">[eq:257-strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+> *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass (1) at $`b=2`$ for a finite nonempty prime set $`\mathcal P`$. Suppose also that $`V\subseteq\bigcup_jF_j`$ for sets and majorants satisfying Theorem 1.2, with (13) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying the summability condition of the cover theorem, with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying the summability condition of the cover theorem, with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126)
 
@@ -195,7 +195,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
-The Lean declarations below together state a result at least as strong as this one. The four Lean statements give the printed claims with the same zero-based coordinates: measure $2^{-|\N\smallsetminus J|}$ when $\N\smallsetminus J$ is finite, measure $0$ when it is infinite, injectivity of the coding map for every $J$, and perfectness for infinite $J$.
+The Lean declarations below together state this result or one that implies it. The four Lean statements give the printed claims with the same zero-based coordinates: measure $2^{-|\N\smallsetminus J|}$ when $\N\smallsetminus J$ is finite, measure $0$ when it is infinite, injectivity of the coding map for every $J$, and perfectness for infinite $J$.
 
 1. [`ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L397)
 
@@ -254,7 +254,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > x\in\mathcal A\quad\Longleftrightarrow\quad
 >  x\ge0\ \text{ and }\ r_n(x)\le R_n\ \text{for every }n\ge0.
 > ```
-> For every $`x\in[0,E]`$, nonmembership is equivalent to a finite strict gap between the two next-prefix intervals; see Observation <a href="#obs:general-target-gap" data-reference-type="ref" data-reference="obs:general-target-gap">244</a>.*
+> For every $`x\in[0,E]`$, nonmembership is equivalent to a finite strict gap between the two next-prefix intervals; see Observation 9.44.*
 
 The Lean declaration below states this result.
 

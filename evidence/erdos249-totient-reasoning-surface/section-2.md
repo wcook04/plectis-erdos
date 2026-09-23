@@ -200,7 +200,7 @@ theorem no_certificate_after_prefix (B P : ℕ) (hBP : B < P) :
 
 ## Corollary 2.5 (The limit of a finite-prefix argument), page 8
 
-> *No proof rule uniform over all $`c:\mathbb{N}\to\mathbb{N}`$ with $`c(n)\le n`$ can establish $`\mathrm{Sep}`$ from a single fixed prefix $`\{c(n):n\le B\}`$: Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> supplies a rational countermodel with that same prefix. This does *not* invalidate an argument that uses the fixed arithmetic sequence $`\varphi`$ together with compatible information at arbitrarily large horizons; the theorem gives a different $`\gamma_B`$ for each $`B`$, not one sequence agreeing with $`\varphi`$ at every $`B`$.*
+> *No proof rule uniform over all $`c:\mathbb{N}\to\mathbb{N}`$ with $`c(n)\le n`$ can establish $`\mathrm{Sep}`$ from a single fixed prefix $`\{c(n):n\le B\}`$: Theorem 2.4 supplies a rational countermodel with that same prefix. This does *not* invalidate an argument that uses the fixed arithmetic sequence $`\varphi`$ together with compatible information at arbitrarily large horizons; the theorem gives a different $`\gamma_B`$ for each $`B`$, not one sequence agreeing with $`\varphi`$ at every $`B`$.*
 
 The Lean declarations below together state this result.
 
@@ -247,7 +247,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >     ```
 >     is equivalent to $`R_{2H}-R_H\in\mathbb{Z}`$ alone. The affine transport identity for $`H\mapsto kH`$ preserves integrality, so the three additional conditions add no restriction. Neither $`p`$ nor $`q`$ need be prime.*
 > 
-> *These three equivalences explain why these particular reformulations retain the original arithmetic question. They do not rule out useful weaker intermediate lemmas. The full-block and fixed-margin conditions in §<a href="#sec:survivors" data-reference-type="ref" data-reference="sec:survivors">3</a> ask for additional quantitative information that the three arguments above do not supply.*
+> *These three equivalences explain why these particular reformulations retain the original arithmetic question. They do not rule out useful weaker intermediate lemmas. The full-block and fixed-margin conditions in §3 ask for additional quantitative information that the three arguments above do not supply.*
 
 The Lean declarations below together state this result.
 
@@ -430,7 +430,7 @@ theorem fixed_precision_carry_completion (u : ℕ) (hu : 0 < u)
 
 > *The following four constructions have different limitations. They must not be read as a claim that every finite family of totient sections is independent: the full family has the explicit relations described in the short paper.*
 > 
-> 1.  **Dyadic sections and an integer identity.* The retained family of $`2^e+1`$ dyadic sections is linearly independent over $`\mathbb{Q}`$ for $`e\ge1`$ (Proposition <a href="#prop:rank" data-reference-type="ref" data-reference="prop:rank">6</a>). Separately, positive integers $`Q,v`$ and integers $`A,b`$ cannot satisfy
+> 1.  **Dyadic sections and an integer identity.* The retained family of $`2^e+1`$ dyadic sections is linearly independent over $`\mathbb{Q}`$ for $`e\ge1`$ (Proposition 1.6). Separately, positive integers $`Q,v`$ and integers $`A,b`$ cannot satisfy
 >     ``` math
 >     A\ne0,\qquad QvA=b,\qquad |b|<Qv,
 >     ```
@@ -444,15 +444,15 @@ theorem fixed_precision_carry_completion (u : ℕ) (hu : 0 < u)
 >     ```
 >     Consequently this particular bound cannot be less than $`1`$, whatever the size of the evaluation matrix.*
 > 
-> 4.  **Finite combinations of shifts.* The synthetic sequence in Observation <a href="#prop:B4b-kill" data-reference-type="ref" data-reference="prop:B4b-kill">164</a> has the prescribed differences $`a_{(q-1)H-1}=\varphi(H)`$ for $`2\le q<t`$, where $`H=\operatorname{lcm}(1,\ldots,t)`$. It is of the form $`a_i=2c_i-c_{i+1}`$, and every finite integer combination of its shifts has the same form with a correspondingly shifted state. Thus these linear operations alone do not remove the compatible carry recurrence. Their uniform bounds depend on the absolute coefficient sum, as made explicit in that observation. The construction does not assert that $`a_i`$ equals the actual totient difference at other indices.*
+> 4.  **Finite combinations of shifts.* The synthetic sequence in Observation 6.115 has the prescribed differences $`a_{(q-1)H-1}=\varphi(H)`$ for $`2\le q<t`$, where $`H=\operatorname{lcm}(1,\ldots,t)`$. It is of the form $`a_i=2c_i-c_{i+1}`$, and every finite integer combination of its shifts has the same form with a correspondingly shifted state. Thus these linear operations alone do not remove the compatible carry recurrence. Their uniform bounds depend on the absolute coefficient sum, as made explicit in that observation. The construction does not assert that $`a_i`$ equals the actual totient difference at other indices.*
 > 
 > *A further limitation concerns quotients of the finite sums $`t(Y,r)=\sum_{d=1}^{Y}\mu(d)/(2^d-1)^r`$. For $`e\ge1`$ and $`Y\ge4`$,
 > ``` math
 > \frac{t(Y,e+2)^2}{t(Y,2e+2)}-(S-\tfrac12)>\frac1{480}.
 > ```
-> The proof bounds each infinite sum $`\sum_{d\ge1}\mu(d)/(2^d-1)^r`$, $`r\ge3`$, between $`1429/1512`$ and $`1`$, and its truncation error after $`Y\ge4`$ terms by $`1/3584`$. Thus the lower bound holds for every stated pair $`e,Y`$, not just a finite list of computed examples. These results concern the listed matrices, estimates, and comparison sequence. The fourth item has the explicit construction and source theorem given in Observation <a href="#prop:B4b-kill" data-reference-type="ref" data-reference="prop:B4b-kill">164</a>. A different finite-dimensional argument, or one using further arithmetic assumptions, is not excluded. Proposition <a href="#prop:period-not-rank" data-reference-type="ref" data-reference="prop:period-not-rank">7</a> is conditional on rationality of $`S`$ and is not, by itself, a counterexample. The separate rational $`5/4`$ comparison supplies the counterexample to the generic rank bound.*
+> The proof bounds each infinite sum $`\sum_{d\ge1}\mu(d)/(2^d-1)^r`$, $`r\ge3`$, between $`1429/1512`$ and $`1`$, and its truncation error after $`Y\ge4`$ terms by $`1/3584`$. Thus the lower bound holds for every stated pair $`e,Y`$, not just a finite list of computed examples. These results concern the listed matrices, estimates, and comparison sequence. The fourth item has the explicit construction and source theorem given in Observation 6.115. A different finite-dimensional argument, or one using further arithmetic assumptions, is not excluded. Proposition 1.7 is conditional on rationality of $`S`$ and is not, by itself, a counterexample. The separate rational $`5/4`$ comparison supplies the counterexample to the generic rank bound.*
 
-The Lean declarations below together state a result at least as strong as this one. Independence of the $2^e+1$ retained dyadic sections is proved for every $e\ge0$, and item (i) takes $e\ge1$; the synthetic sequence of item (iv) is built for $t\ge3$, the range of the observation it cites. In item (iii) the bound $\sum_i|w_i|(3x_i+4)$ is the Lean definition of the two-tail cost, obtained by writing $\varphi(x)=2R_{x-1}-R_x$ and using $R_M\le M+2$ for each tail; the Lean statement proves the two displayed inequalities and that this cost is at least $3$. The remaining items, the bounds $1429/1512\le\sum_{d\ge1}\mu(d)/(2^d-1)^r<1$ for $r\ge3$ with truncation error at most $1/3584$ for $Y\ge4$, and the $1/480$ inequality are stated as printed.
+The Lean declarations below together state this result or one that implies it. Independence of the $2^e+1$ retained dyadic sections is proved for every $e\ge0$, and item (i) takes $e\ge1$; the synthetic sequence of item (iv) is built for $t\ge3$, the range of the observation it cites. In item (iii) the bound $\sum_i|w_i|(3x_i+4)$ is the Lean definition of the two-tail cost, obtained by writing $\varphi(x)=2R_{x-1}-R_x$ and using $R_M\le M+2$ for each tail; the Lean statement proves the two displayed inequalities and that this cost is at least $3$. The remaining items, the bounds $1429/1512\le\sum_{d\ge1}\mu(d)/(2^d-1)^r<1$ for $r\ge3$ with truncation error at most $1/3584$ for $Y\ge4$, and the $1/480$ inequality are stated as printed.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.b6_retained_dyadic_sections_independent`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/FourLinearConstructionLimits.lean#L72)
 
@@ -628,7 +628,7 @@ theorem b6_mobius_incidence_unimodular_and_injective (N : ℕ) :
 
 ## Proposition 2.13 (The coefficient properties of the rational example), page 12
 
-> *The rational sequence in Proposition <a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> satisfies uniform boundedness, $`c(n)\le n`$, agreement with $`\varphi(n)`$ modulo $`2`$ at every index, and the stated separated-carry form of aperiodicity. Consequently, those properties alone cannot imply irrationality of a dyadic series. The example does not exclude arguments using further totient identities, including its multiplicative relations.*
+> *The rational sequence in Proposition 1.9 satisfies uniform boundedness, $`c(n)\le n`$, agreement with $`\varphi(n)`$ modulo $`2`$ at every index, and the stated separated-carry form of aperiodicity. Consequently, those properties alone cannot imply irrationality of a dyadic series. The example does not exclude arguments using further totient identities, including its multiplicative relations.*
 
 The Lean declarations below together state this result.
 

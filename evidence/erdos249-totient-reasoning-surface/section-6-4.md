@@ -10,7 +10,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 > ``` math
 > \forall t\in\mathbb N,\quad t\le82\ \Longrightarrow\ P\,t,
 > ```
-> where $`P\,t`$ is the diagonal certificate predicate in Proposition <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">121</a>. The earlier aggregate covered 28 explicit cases through $`64`$, including $`1,2,3,4,5,7,8,9,11,13,16,17`$; the later theorem fills the gaps and extends the range through $`82`$. Each instance reduces to exact finite arithmetic with the displayed totient values, using the prime-power factorisations and Lucas primality certificates in the source. This proves neither $`P\,83`$ nor infinitely many instances, and therefore does not establish the quantified conditions in Propositions <a href="#prop:A10" data-reference-type="ref" data-reference="prop:A10">120</a>, <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">121</a> and <a href="#prop:B7" data-reference-type="ref" data-reference="prop:B7">122</a>.*
+> where $`P\,t`$ is the diagonal certificate predicate in Proposition 6.72. The earlier aggregate covered 28 explicit cases through $`64`$, including $`1,2,3,4,5,7,8,9,11,13,16,17`$; the later theorem fills the gaps and extends the range through $`82`$. Each instance reduces to exact finite arithmetic with the displayed totient values, using the prime-power factorisations and Lucas primality certificates in the source. This proves neither $`P\,83`$ nor infinitely many instances, and therefore does not establish the quantified conditions in Propositions 6.71, 6.72 and 6.73.*
 
 The Lean declarations below together state this result.
 
@@ -1624,7 +1624,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For a nonempty finite family of admissible quotients with positive weights summing to $`1`$, the weighted average still exceeds $`\Theta_2`$ by more than $`1/480`$. If an admissible quotient is $`p/q`$ in lowest terms, with $`q>0`$, then $`|q\Theta_2-p|>q/480`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean average bound holds for any positive weights, dividing the weighted sum by the total weight, so the printed case of weights summing to $1$ follows; the Lean bound $|q\Theta_2-p|>q/480$ holds for every representation of an admissible quotient as $p/q$ with $q\ge1$, of which lowest terms is a case.
+The Lean declarations below together state this result or one that implies it. The Lean average bound holds for any positive weights, dividing the weighted sum by the total weight, so the printed case of weights summing to $1$ follows; the Lean bound $|q\Theta_2-p|>q/480$ holds for every representation of an admissible quotient as $p/q$ with $q\ge1$, of which lowest terms is a case.
 
 1. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean#L300)
 

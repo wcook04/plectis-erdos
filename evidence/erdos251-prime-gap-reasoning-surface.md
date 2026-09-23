@@ -628,7 +628,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.6 (a certified adjacent pair), page 18
 
-> *For the actual prime gaps, $`h=1`$ and $`N=2`$ satisfy the three hypotheses of Theorem <a href="#long251:res:smallpair" data-reference-type="ref" data-reference="long251:res:smallpair">13</a>: both $`\sigma_1(2)`$ and $`\sigma_1(3)`$ lie in $`(-1,1)`$ and are nonintegral, and $`g_4=2\ne4=g_3`$.*
+> *For the actual prime gaps, $`h=1`$ and $`N=2`$ satisfy the three hypotheses of Theorem 6.1: both $`\sigma_1(2)`$ and $`\sigma_1(3)`$ lie in $`(-1,1)`$ and are nonintegral, and $`g_4=2\ne4=g_3`$.*
 
 The Lean declaration below states this result.
 
@@ -805,7 +805,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-nonconcentration"></a>
 
-## Theorem 8.3 (nonconcentration is perturbation-stable), page 23
+## Theorem 8.3 (nonconcentration is perturbation-stable), page 22
 
 > *Let $`a:\mathbb{N}\to\mathbb{Z}`$ have fixed-block nonconcentration, let $`E\subset\mathbb{Z}`$ be finite, and let $`b_n=a_n+e_n`$ with $`e_n\in E`$ for every $`n`$. Then $`b`$ has fixed-block nonconcentration.*
 
@@ -843,7 +843,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 8.4 (nonconcentration does not force irrationality), page 23
 
-> *Fix $`M\ge1`$ and $`K\ge0`$, and let $`b`$ be the perturbed sequence supplied by Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">22</a> at the actual prime gaps. Then $`\sum_{n\ge0}b_n2^{-(n+1)}`$ is rational, $`b_n=g_n`$ for $`n<K`$, $`b_n-g_n\in\{0,M\}`$ and $`b_n\equiv g_n\pmod M`$ for every $`n`$, $`b`$ has fixed-block nonconcentration, and the cumulative sequence $`P_n=2+\sum_{i<n}b_i`$ satisfies $`p_n\le P_n\le p_n+Mn`$ and hence $`P_n\sim n\log n`$.*
+> *Fix $`M\ge1`$ and $`K\ge0`$, and let $`b`$ be the perturbed sequence supplied by Theorem 8.1 at the actual prime gaps. Then $`\sum_{n\ge0}b_n2^{-(n+1)}`$ is rational, $`b_n=g_n`$ for $`n<K`$, $`b_n-g_n\in\{0,M\}`$ and $`b_n\equiv g_n\pmod M`$ for every $`n`$, $`b`$ has fixed-block nonconcentration, and the cumulative sequence $`P_n=2+\sum_{i<n}b_i`$ satisfies $`p_n\le P_n\le p_n+Mn`$ and hence $`P_n\sim n\log n`$.*
 
 The Lean proof assumes Schlage-Puchta's density lemma and the prime number theorem. Lean takes this input as a hypothesis (`PrimeNumberTheorem`, `SchlagePuchtaLemma4`); it is not proved in Lean.
 
@@ -1019,7 +1019,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 ## Theorem 8.7 (sparsity of the two-window event), page 25
 
-> *Fix $`h\ge1`$. The set of $`N\ge1`$ at which the three hypotheses of Theorem <a href="#long251:res:smallpair" data-reference-type="ref" data-reference="long251:res:smallpair">13</a> hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*
+> *Fix $`h\ge1`$. The set of $`N\ge1`$ at which the three hypotheses of Theorem 6.1 hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*
 
 The Lean proof assumes Schlage-Puchta's density lemma. Lean takes this input as a hypothesis (`SchlagePuchtaLemma4`); it is not proved in Lean.
 
@@ -1228,9 +1228,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > S_{h,N,L}=\sum_{j=1}^{L}\frac{g_{N+h+j}-g_{N+j}}{2^{\,j}},\qquad
 >  R_{h,N,L}(M)=\sum_{j>L}\frac{M(N+h+j)+M(N+j)}{2^{\,j}} .
 > ```
-> If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the nonintegrality condition in Problem <a href="#long251:prob:escape" data-reference-type="ref" data-reference="long251:prob:escape">32</a> holds.*
+> If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the nonintegrality condition in Problem 10.1 holds.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed hypothesis $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is the nonintegrality condition of the escape problem for every $h\ge1$.
+The Lean declaration below states this result or one that implies it. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed hypothesis $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is the nonintegrality condition of the escape problem for every $h\ge1$.
 
 [`ErdosProblems.Erdos251.PaperR7.cofinal_escape_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261)
 
@@ -1263,7 +1263,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-complete-truncation"></a>
 
-## Proposition D.4 (completeness of finite separation), page 36
+## Proposition D.4 (completeness of finite separation), page 35
 
 > *Suppose $`D\in\mathbb{R}`$, $`S_L\in\mathbb{R}`$ and $`R_L\ge0`$ satisfy $`|D-S_L|\le R_L`$ and $`R_L\to0`$. Then
 > ``` math
@@ -1299,7 +1299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$. For every $`k\ge3`$, the value $`2`$ occurs at index $`k!`$ and the value $`4`$ at index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos251.PaperR7.bounded_recurring_values_countermodel`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/PaperBoundedCarryR7.lean#L179)
 

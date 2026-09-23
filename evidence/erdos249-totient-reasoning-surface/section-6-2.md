@@ -258,7 +258,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 19H+5L+5<U\bmod2^L<2^L-(19H+5L+5)
 > ```
-> is sufficient for this four-tail combination to be nonintegral. The bound is derived from these tail enclosures; no optimality for the actual totient tails is asserted. Obtaining such certificates at the required unbounded family of LCM heights remains unproved, as in Theorems <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a> and <a href="#catalogue:cert:b6" data-reference-type="ref" data-reference="catalogue:cert:b6">101</a>.*
+> is sufficient for this four-tail combination to be nonintegral. The bound is derived from these tail enclosures; no optimality for the actual totient tails is asserted. Obtaining such certificates at the required unbounded family of LCM heights remains unproved, as in Theorems 6.60 and 6.52.*
 
 The Lean declarations below together state this result.
 
@@ -394,7 +394,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{\substack{a\in A\\a\ge1}}\frac1{2^a-1}
 >  =\sum_{n\ge1}\frac{d_A(n)}{2^n}.
 > ```
-> For the totient series the required divisor-convolution weight is instead $`\alpha=\varphi*\mu`$, since $`\alpha*1=\varphi`$, as in Proposition <a href="#catalogue:cert:d7" data-reference-type="ref" data-reference="catalogue:cert:d7">92</a>. Weighting all divisors by $`\varphi`$ would give $`\sum_{d\mid n}\varphi(d)=n`$, not $`\varphi(n)`$; already at $`n=2`$ these values are $`2`$ and $`1`$. A weighted version must retain the weights of the new divisors, so it cannot be obtained by substituting $`A=\mathbb N`$ in this unweighted formula. Also $`\alpha(p)=p-2`$ for primes $`p`$, so $`\alpha`$ is unbounded and is not a periodic weight.*
+> For the totient series the required divisor-convolution weight is instead $`\alpha=\varphi*\mu`$, since $`\alpha*1=\varphi`$, as in Proposition 6.43. Weighting all divisors by $`\varphi`$ would give $`\sum_{d\mid n}\varphi(d)=n`$, not $`\varphi(n)`$; already at $`n=2`$ these values are $`2`$ and $`1`$. A weighted version must retain the weights of the new divisors, so it cannot be obtained by substituting $`A=\mathbb N`$ in this unweighted formula. Also $`\alpha(p)=p-2`$ for primes $`p`$, so $`\alpha`$ is unbounded and is not a periodic weight.*
 
 The Lean declarations below together state this result.
 
@@ -575,7 +575,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.48 (It suffices to use multiples of a period), page 37
 
-> *$`\big(\forall h_0>0,\ \forall N_0,\ \exists m>0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}(m\cdot h_0, N, L)\big) \to S\notin\mathbb Q`$. The shift may be any positive multiple of a prescribed period. This enlarges the choice of finite witness: Theorem <a href="#catalogue:cert:a10" data-reference-type="ref" data-reference="catalogue:cert:a10">96</a> gives the condition with $`m=1`$. Conversely, rationality would make all such tail differences integral after a fixed starting index. The displayed implication therefore makes this quantified condition equivalent to irrationality; its truth remains unproved.*
+> *$`\big(\forall h_0>0,\ \forall N_0,\ \exists m>0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}(m\cdot h_0, N, L)\big) \to S\notin\mathbb Q`$. The shift may be any positive multiple of a prescribed period. This enlarges the choice of finite witness: Theorem 6.47 gives the condition with $`m=1`$. Conversely, rationality would make all such tail differences integral after a fixed starting index. The displayed implication therefore makes this quantified condition equivalent to irrationality; its truth remains unproved.*
 
 The Lean declarations below together state this result.
 
@@ -730,7 +730,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > R_{(q+m)H(t)}-R_{qH(t)}\in\mathbb Z.
 > ```
-> Thus all tails at positive multiples of $`H(t)`$ have the same fractional part once $`t\ge t_1`$. A certificate at one fixed scale does not refute rationality: the threshold $`t_1`$ depends on the hypothetical rational value. At a shift $`mH(t)>0`$ and basepoint $`qH(t)`$, such a certificate excludes rational values whose reduced denominator divides $`2^{qH(t)}(2^{mH(t)}-1)`$. Certificates at arbitrarily large scales, as required in Theorem <a href="#catalogue:cert:b7" data-reference-type="ref" data-reference="catalogue:cert:b7">102</a>, exclude every hypothetical rational value.*
+> Thus all tails at positive multiples of $`H(t)`$ have the same fractional part once $`t\ge t_1`$. A certificate at one fixed scale does not refute rationality: the threshold $`t_1`$ depends on the hypothetical rational value. At a shift $`mH(t)>0`$ and basepoint $`qH(t)`$, such a certificate excludes rational values whose reduced denominator divides $`2^{qH(t)}(2^{mH(t)}-1)`$. Certificates at arbitrarily large scales, as required in Theorem 6.53, exclude every hypothetical rational value.*
 
 The Lean declarations below together state this result.
 
@@ -792,9 +792,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \mathcal C(mH_t,qH_t,L).
 > ```
-> Then $`S\notin\mathbb Q`$. Rationality would make the corresponding tail difference integral at every sufficiently large scale, contradicting Proposition <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">67</a>. A successful certificate necessarily has $`m>0`$, since the discrepancy vanishes at shift zero.*
+> Then $`S\notin\mathbb Q`$. Rationality would make the corresponding tail difference integral at every sufficiently large scale, contradicting Proposition 6.18. A successful certificate necessarily has $`m>0`$, since the discrepancy vanishes at shift zero.*
 > 
-> *The diagonal choice is $`q=m=1`$; consecutive grid points have $`m=1`$, and for $`p\ge2`$ the pair $`(H_t,pH_t)`$ has $`(q,m)=(1,p-1)`$. The diagonal equivalence in Theorem <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">98</a> also gives the converse from irrationality to the displayed quantified condition; that condition remains unproved.*
+> *The diagonal choice is $`q=m=1`$; consecutive grid points have $`m=1`$, and for $`p\ge2`$ the pair $`(H_t,pH_t)`$ has $`(q,m)=(1,p-1)`$. The diagonal equivalence in Theorem 6.49 also gives the converse from irrationality to the displayed quantified condition; that condition remains unproved.*
 
 The Lean declarations below together state this result.
 
@@ -834,7 +834,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > R_{2H_t}-R_{H_t}\notin\mathbb Z
 >  \qquad\text{for arbitrarily large integers }t.
 > ```
-> Equivalently, for arbitrarily large $`t`$ there are integers $`q\ge1`$ and $`m\ge1`$ with $`R_{(q+m)H_t}-R_{qH_t}\notin\mathbb Z`$. Apply the pointwise equivalence of Theorem <a href="#catalogue:cert:a7" data-reference-type="ref" data-reference="catalogue:cert:a7">68</a> to Theorems <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">98</a> and <a href="#catalogue:cert:b7" data-reference-type="ref" data-reference="catalogue:cert:b7">102</a>, respectively. These are equivalent statements of the irrationality question; the required unbounded sets of scales are not established.*
+> Equivalently, for arbitrarily large $`t`$ there are integers $`q\ge1`$ and $`m\ge1`$ with $`R_{(q+m)H_t}-R_{qH_t}\notin\mathbb Z`$. Apply the pointwise equivalence of Theorem 6.19 to Theorems 6.49 and 6.53, respectively. These are equivalent statements of the irrationality question; the required unbounded sets of scales are not established.*
 
 The Lean declarations below together state this result.
 
@@ -1001,7 +1001,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.57 (A sufficient quantified finite-grid condition), page 39
 
-> *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem <a href="#catalogue:cert:b10a" data-reference-type="ref" data-reference="catalogue:cert:b10a">105</a> hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
+> *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem 6.56 hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
 
 The Lean declarations below together state this result.
 
@@ -1341,7 +1341,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  <D(H_{2^a},H_{2^a},L)\bmod2^L
 >  <2^L-(2H_{2^a}+L+2).
 > ```
-> It places the residue away from both endpoints of the modulus interval. The examples at $`a=4,6`$ establish the bounded statement in Proposition <a href="#prop:SK-02" data-reference-type="ref" data-reference="prop:SK-02">116</a>, not the condition for every threshold. Pointwise completeness allows a sufficiently large depth but does not supply a depth below $`2\cdot2^a`$.*
+> It places the residue away from both endpoints of the modulus interval. The examples at $`a=4,6`$ establish the bounded statement in Proposition 6.67, not the condition for every threshold. Pointwise completeness allows a sufficiently large depth but does not supply a depth below $`2\cdot2^a`$.*
 
 The Lean declarations below together state this result.
 
@@ -1550,7 +1550,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >    \ \Longrightarrow\ \text{upper-endpoint test}.
 >  \end{aligned}
 > ```
-> There is also a separate sufficient argument: terminal dominance and flexible centred magnitude each imply the two-sided exclusion in Proposition <a href="#prop:TE-06" data-reference-type="ref" data-reference="prop:TE-06">115</a>, which implies diagonal nonintegrality. These statements refer to the quantified versions, with the bounds on $`a,q`$ and the depth retained. The detailed conditions and sources appear in Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">224</a>. No reverse implication between terminal dominance and flexible magnitude is asserted, and none of the required unbounded families is proved here.*
+> There is also a separate sufficient argument: terminal dominance and flexible centred magnitude each imply the two-sided exclusion in Proposition 6.66, which implies diagonal nonintegrality. These statements refer to the quantified versions, with the bounds on $`a,q`$ and the depth retained. The detailed conditions and sources appear in Proposition 9.14. No reverse implication between terminal dominance and flexible magnitude is asserted, and none of the required unbounded families is proved here.*
 
 The Lean declaration below states this result.
 
@@ -1691,7 +1691,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  a\ge a_0,\quad L<2\cdot2^a,\quad
 >  \mathcal C(H_{2^a},H_{2^a},L).
 > ```
-> The witnesses at $`(a,L)=(4,23)`$ and $`(6,93)`$ give this bounded family. A witness with $`a\ge7`$ would extend the verified range, but any finite extension would still leave the assertion for arbitrarily large thresholds in Proposition <a href="#prop:AR-07" data-reference-type="ref" data-reference="prop:AR-07">111</a> unproved.*
+> The witnesses at $`(a,L)=(4,23)`$ and $`(6,93)`$ give this bounded family. A witness with $`a\ge7`$ would extend the verified range, but any finite extension would still leave the assertion for arbitrarily large thresholds in Proposition 6.62 unproved.*
 
 The Lean declarations below together state this result.
 
@@ -1838,7 +1838,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Then $`S\notin\mathbb Q`$. Under a hypothetical eventual period $`h`$, the proved congruence argument at a sufficiently large such prime forces $`R_{p+4h}-R_p`$ to be an integer in the tested residue class. The finite test excludes every candidate in that class, a contradiction.*
 > 
-> *The mod-four congruence is supplied by Proposition <a href="#prop:CP-05-inv" data-reference-type="ref" data-reference="prop:CP-05-inv">140</a>; exclusion at the same prime is not. Restricting to $`2\pmod4`$ retains one residue class out of four, not necessarily exactly one quarter of the candidates in a finite interval. The quantifier over every bound $`B`$ cannot be replaced by one fixed prime for each $`h`$.*
+> *The mod-four congruence is supplied by Proposition 6.91; exclusion at the same prime is not. Restricting to $`2\pmod4`$ retains one residue class out of four, not necessarily exactly one quarter of the candidates in a finite interval. The quantifier over every bound $`B`$ cannot be replaced by one fixed prime for each $`h`$.*
 
 The Lean declarations below together state this result.
 

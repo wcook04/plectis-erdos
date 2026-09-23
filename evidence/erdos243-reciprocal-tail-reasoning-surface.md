@@ -174,7 +174,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Lemma 2.5 (the multiplier supply, and the reducible case), page 6
 
-> *On the primitive tail, $`\gcd(a_n,v_n)=1`$, the multipliers at distinct indices are pairwise coprime, infinitely many of them exceed $`1`$, and the cubic $`Q_{m,c}`$ of <a href="#long243:eq:Qmc" data-reference-type="eqref" data-reference="long243:eq:Qmc">[long243:eq:Qmc]</a> is irreducible over $`\mathbb{Q}`$.*
+> *On the primitive tail, $`\gcd(a_n,v_n)=1`$, the multipliers at distinct indices are pairwise coprime, infinitely many of them exceed $`1`$, and the cubic $`Q_{m,c}`$ of (3) is irreducible over $`\mathbb{Q}`$.*
 
 The Lean declaration below states this result.
 
@@ -427,7 +427,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \qquad a_n\ge\exp(c\,2^n)\ \text{eventually for some }c>0 .
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement bounds the error explicitly, $|C_{n+1}/C_n-a_n^2/a_{n+1}|\le16/a_n$ for all large $n$; since $a_n^2/a_{n+1}=1+\gamma_n$, this gives the printed $O(a_n^{-1})$, and the growth bound $a_n\ge\exp(c\,2^n)$ is as printed. Lean indexes the sequence from $0$; the first conclusion is unchanged by this shift, and the second holds after replacing $c$ by $c/2$.
+The Lean declaration below states this result or one that implies it. The Lean statement bounds the error explicitly, $|C_{n+1}/C_n-a_n^2/a_{n+1}|\le16/a_n$ for all large $n$; since $a_n^2/a_{n+1}=1+\gamma_n$, this gives the printed $O(a_n^{-1})$, and the growth bound $a_n\ge\exp(c\,2^n)$ is as printed. Lean indexes the sequence from $0$; the first conclusion is unchanged by this shift, and the second holds after replacing $c$ by $c/2$.
 
 [`ErdosProblems.Erdos243.PaperCompleteR7.canonical_tail_ratio_quantitative`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204)
 
@@ -799,7 +799,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.2 (a convergent weighted sum over new maxima), page 23
 
-> *Assume the growth and rationality hypotheses of Problem <a href="#long243:res:problem" data-reference-type="ref" data-reference="long243:res:problem">1</a>, and let $`f`$ be as in Theorem <a href="#long243:res:arithmeticrecord" data-reference-type="ref" data-reference="long243:res:arithmeticrecord">24</a>. The sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
+> *Assume the growth and rationality hypotheses of Problem 1.1, and let $`f`$ be as in Theorem 6.1. The sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 > ``` math
 > \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
 > ```*
@@ -1858,7 +1858,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > In particular the one-sided bound by $`1/n`$ is included.*
 
-The Lean declarations below together state a result at least as strong as this one. The strict limsup case, the bound $1/n+K/n^{1+\varepsilon}$ and the one-sided bound $1/n$ are, in that order, `original_coordinate_strict_one`, `original_coordinate_inclusive_one` and `original_coordinate_inclusive_one_pointwise`, with the limsup hypothesis written as an eventual bound by some $r<1$. Lean indexes the sequence from $0$, so in the paper's indexing its hypotheses read $(n-1)(a_n^2/a_{n+1}-1)_+\le r$ and $a_n^2/a_{n+1}-1\le1/(n-1)+K/(n-1)^{1+\varepsilon}$ eventually, and the printed hypotheses imply them.
+The Lean declarations below together state this result or one that implies it. The strict limsup case, the bound $1/n+K/n^{1+\varepsilon}$ and the one-sided bound $1/n$ are, in that order, `original_coordinate_strict_one`, `original_coordinate_inclusive_one` and `original_coordinate_inclusive_one_pointwise`, with the limsup hypothesis written as an eventual bound by some $r<1$. Lean indexes the sequence from $0$, so in the paper's indexing its hypotheses read $(n-1)(a_n^2/a_{n+1}-1)_+\le r$ and $a_n^2/a_{n+1}-1\le1/(n-1)+K/(n-1)^{1+\varepsilon}$ eventually, and the printed hypotheses imply them.
 
 1. [`ErdosProblems.Erdos243.PaperCompleteR21.original_coordinate_strict_one`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean#L92)
 
@@ -2212,7 +2212,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.2 (no constant negative magnitude), page 40
 
-> *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and <a href="#long243:eq:shape" data-reference-type="eqref" data-reference="long243:eq:shape">[long243:eq:shape]</a>. The same holds if the shape equation only begins at some index.*
+> *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and ({5.1}). The same holds if the shape equation only begins at some index.*
 
 The Lean declarations below together state this result.
 
@@ -2473,7 +2473,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > *Then $`E_n=0`$ for all sufficiently large $`n`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement omits hypothesis (4), eventual strict centring $|E_n|<C_n$, which the printed theorem adds (it is also the case $K=1$ of (6)); hypotheses (1), (2), (3), (5) and (6) are as printed.
+The Lean declaration below states this result or one that implies it. The Lean statement omits hypothesis (4), eventual strict centring $|E_n|<C_n$, which the printed theorem adds (it is also the case $K=1$ of (6)); hypotheses (1), (2), (3), (5) and (6) are as printed.
 
 [`ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360)
 
@@ -2505,9 +2505,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 12.2, page 46
 
-> *Under the hypotheses of Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a>, together with $`C_{n+1}\ne0`$ for all large $`n`$, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
+> *Under the hypotheses of Theorem 12.1, together with $`C_{n+1}\ne0`$ for all large $`n`$, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement drops both eventual strict centring $|E_n|<C_n$ and the extra hypothesis $C_{n+1}\ne0$ for large $n$, which the printed corollary adds (the latter already follows from $C_n>0$); its conclusion $a_{n+1}=a_n^2-a_n+1$ for all large $n$ is the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement drops both eventual strict centring $|E_n|<C_n$ and the extra hypothesis $C_{n+1}\ne0$ for large $n$, which the printed corollary adds (the latter already follows from $C_n>0$); its conclusion $a_{n+1}=a_n^2-a_n+1$ for all large $n$ is the printed one.
 
 [`ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412)
 
@@ -2581,7 +2581,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 14.1 (necessary conditions on a counterexample), page 49
 
-> *For the integer tail attached to any counterexample to Problem <a href="#long243:res:problem" data-reference-type="ref" data-reference="long243:res:problem">1</a>,
+> *For the integer tail attached to any counterexample to Problem 1.1,
 > ``` math
 > E_n\ne0\quad\hbox{eventually},\qquad
 >  \frac{|E_n|}{C_n}\longrightarrow0,
@@ -2636,9 +2636,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > u_{n+1}-u_n=O\bigl(\sqrt{\log\log(u_n+e^e)}\bigr)
 >              =o\bigl(\log\log(u_n+3)\bigr).
 > ```
-> Thus the bounded-increment hypothesis of Theorem <a href="#long243:res:barrier" data-reference-type="ref" data-reference="long243:res:barrier">47</a> cannot be replaced by an $`o(\log\log u_n)`$ bound without a quantitative restriction on the moduli.*
+> Thus the bounded-increment hypothesis of Theorem 11.3 cannot be replaced by an $`o(\log\log u_n)`$ bound without a quantitative restriction on the moduli.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement asserts the printed objects with the printed properties, with the $O$-bound written as $u_{n+1}-u_n\le C\sqrt{\log\log(u_n+e^e)}$ for every $n$ and the $o$-bound as $(u_{n+1}-u_n)/\log\log(u_n+3)\to0$.
+The Lean declaration below states this result or one that implies it. The Lean statement asserts the printed objects with the printed properties, with the $O$-bound written as $u_{n+1}-u_n\le C\sqrt{\log\log(u_n+e^e)}$ for every $n$ and the $o$-bound as $(u_{n+1}-u_n)/\log\log(u_n+3)\to0$.
 
 [`ErdosProblems.Erdos243.PaperCompleteR21.exists_sparse_prime_coprime_sequence`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L862)
 

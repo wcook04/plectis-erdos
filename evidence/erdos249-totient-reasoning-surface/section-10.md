@@ -230,7 +230,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \forall q_i\in Q\ \exists q_j\in Q,\qquad
 >  B_{q_j}<(A_{q_i}-A_{q_j})\bmod2^L.
 > ```
-> Then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$. The proof and a four-point example are given in Theorem <a href="#catalogue:cert:b10a" data-reference-type="ref" data-reference="catalogue:cert:b10a">105</a>.*
+> Then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$. The proof and a four-point example are given in Theorem 6.56.*
 
 The Lean declarations below together state this result.
 

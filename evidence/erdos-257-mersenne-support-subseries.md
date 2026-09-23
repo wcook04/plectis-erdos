@@ -30,7 +30,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 > ```
 > implies that $`X_A(b)`$ is irrational for every integer $`b\ge2`$. Both conclusions are hereditary under passage to infinite subsets.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, with $A\subseteq\Npos$ written as $0\notin A$ and $W_{b,P}(A)<\infty$ written as summability over $A$ for some finite nonempty set $P$ of primes. The fixed-base statement and, under (W), irrationality at every $b\ge2$ for every infinite subset are the two parts of `divisibilityWeightedClaim`; heredity under the fixed-base condition is `finitePrimeWeighted_fixedBase_hereditary`.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with $A\subseteq\Npos$ written as $0\notin A$ and $W_{b,P}(A)<\infty$ written as summability over $A$ for some finite nonempty set $P$ of primes. The fixed-base statement and, under (W), irrationality at every $b\ge2$ for every infinite subset are the two parts of `divisibilityWeightedClaim`; heredity under the fixed-base condition is `finitePrimeWeighted_fixedBase_hereditary`.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120)
 
@@ -80,7 +80,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > then $`X_A(b)`$ is irrational for every integer $`b\ge2`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one, except that $A$ may contain $0$; the term at $0$ is $0$ in both $\sum_{a\in A}1/a$ and $X_A(b)$ under the convention $1/0=0$.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, except that $A$ may contain $0$; the term at $0$ is $0$ in both $\sum_{a\in A}1/a$ and $X_A(b)$ under the convention $1/0=0$.
 
 [`Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395)
 
@@ -149,9 +149,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 3.2 (mixed weighted and cover supports), page 10
 
-> *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a> for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem <a href="#thm:variable-fractional-cover" data-reference-type="ref" data-reference="thm:variable-fractional-cover">4</a>, with either <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+> *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies ({W}) for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem 3.1, with either ({V}) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying (V), with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying (V), with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126)
 
@@ -200,7 +200,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > If moreover $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$. We use $`\operatorname{ord}_1(b)=1`$, so the statement includes $`F=\{1\}`$ at $`b=2`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, with $F\subseteq\Npos$ written as $0\notin F$; coprimality of $D_F$ and $b$ is proved without assuming $F$ nonempty. The order is the multiplicative order of $b$ modulo $D_F$, which is $1$ when $D_F=1$, as in the convention $\operatorname{ord}_1(b)=1$.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with $F\subseteq\Npos$ written as $0\notin F$; coprimality of $D_F$ and $b$ is proved without assuming $F$ nonempty. The order is the multiplicative order of $b$ modulo $D_F$, which is $1$ when $D_F=1$, as in the convention $\operatorname{ord}_1(b)=1$.
 
 1. [`Erdos249257.coprime_base_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L5221)
 
@@ -310,7 +310,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >     ```
 >     Here $`c_{D_R}(m)=\#\{d\in D_R:d\mid m\}`$.*
 
-The Lean declarations below together state a result at least as strong as this one. Item 2 follows from a Lean criterion with a weaker hypothesis: $1/21\in\Ach$ whenever $(s_R+2R+1)/2^{2R}\to0$ along some sequence of ranks $R\ge2$ tending to infinity, and ranks $R_k\to\infty$ with $s_{R_k}\le2^{R_k}$ supply such a sequence. Items 1 and 3 are stated as printed; the recurrence for $s_{R+1}$ is written with natural-number subtraction, which agrees with the integer identity because $s_{R+1}>2^{R+1}$ for all large $R$.
+The Lean declarations below together state this result or one that implies it. Item 2 follows from a Lean criterion with a weaker hypothesis: $1/21\in\Ach$ whenever $(s_R+2R+1)/2^{2R}\to0$ along some sequence of ranks $R\ge2$ tending to infinity, and ranks $R_k\to\infty$ with $s_{R_k}\le2^{R_k}$ supply such a sequence. Items 1 and 3 are stated as printed; the recurrence for $s_{R+1}$ is written with natural-number subtraction, which agrees with the integer identity because $s_{R+1}>2^{R+1}$ for all large $R$.
 
 1. [`Erdos249257.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L3507)
 
@@ -437,7 +437,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean hypothesis has the printed content: a stage at depth $M$ with cutoff $K\le M$ consists of sets $A_1,\ldots,A_{B(M)}\subseteq\{2,\ldots,M\}$ with $1\le K_{A_k}(m)\le B(m)$ for $1\le m\le M$ and $K_{A_k}(M)=k$, agreeing on $\{1,\ldots,K\}$, whose suffix values are $E-k$ for one integer $E\ge B(M)$. The conclusion is the printed one, with $A\subseteq\Npos$ written as $0\notin A$.
+The Lean declaration below states this result or one that implies it. The Lean hypothesis has the printed content: a stage at depth $M$ with cutoff $K\le M$ consists of sets $A_1,\ldots,A_{B(M)}\subseteq\{2,\ldots,M\}$ with $1\le K_{A_k}(m)\le B(m)$ for $1\le m\le M$ and $K_{A_k}(M)=k$, agreeing on $\{1,\ldots,K\}$, whose suffix values are $E-k$ for one integer $E\ge B(M)$. The conclusion is the printed one, with $A\subseteq\Npos$ written as $0\notin A$.
 
 [`Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287)
 

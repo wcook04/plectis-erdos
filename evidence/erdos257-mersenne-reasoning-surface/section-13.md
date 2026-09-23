@@ -71,7 +71,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \label{eq:257-arithmetic-cover-lower}
 > \end{equation}
 > ```
-> where $`N`$ is uniform modulo $`Q`$. The supports of Theorem <a href="#thm:257-logarithmic-counterexample" data-reference-type="ref" data-reference="thm:257-logarithmic-counterexample">285</a> satisfy $`K_*(F)\ge1-e^{-1}`$ and $`\kappa_1(F;1)\le30\log2/H`$. In particular, no absolute $`C`$ gives $`K_*(F)\le C\kappa_1(F;1)`$ for all finite nonempty $`F`$, even after all covering sets, exponents, coefficients and positive weights have been optimised.*
+> where $`N`$ is uniform modulo $`Q`$. The supports of Theorem 13.1 satisfy $`K_*(F)\ge1-e^{-1}`$ and $`\kappa_1(F;1)\le30\log2/H`$. In particular, no absolute $`C`$ gives $`K_*(F)\le C\kappa_1(F;1)`$ for all finite nonempty $`F`$, even after all covering sets, exponents, coefficients and positive weights have been optimised.*
 
 The Lean declarations below together state this result.
 
@@ -123,7 +123,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \le\frac{2}{\log(4/3)}\kappa_1(F;t).
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one, with $F$ a finite nonempty set of positive integers, $U_F(N)=\sum_{a\in F}2^{N\bmod a}/(2^a-1)$ and $\kappa_1(F;t)$ the infimum of the same linear programme.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, with $F$ a finite nonempty set of positive integers, $U_F(N)=\sum_{a\in F}2^{N\bmod a}/(2^a-1)$ and $\kappa_1(F;t)$ the infimum of the same linear programme.
 
 [`ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/LogarithmicInitialInterval.lean#L491)
 

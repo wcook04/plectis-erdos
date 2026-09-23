@@ -247,7 +247,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Let $`(U_n,V_n)`$ be pairs in $`\mathbb Z[X]^2`$ satisfying $`\Lambda_n(x)=U_n(x)F(x)-V_n(x)\ne0`$, $`\deg U_n,\deg V_n\le\delta n^2(1+o(1))`$, $`\log\max(H(U_n),H(V_n))\le h n^2(1+o(1))`$ with $`H`$ the $`\ell^1`$ coefficient norm, and $`\log|\Lambda_n(x)|=-\sigma n^2\log x\,(1+o(1))`$ for every real $`x>1`$, with $`\sigma,\delta>0`$ and $`h\ge0`$ independent of $`x`$. Then with $`d_n=\max(\deg U_n,\deg V_n)`$, the homogenised forms $`b^{d_n}\Lambda_n(a/b)`$ tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, and $`\sigma/(\sigma+\delta)\le1/2`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement needs $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$. Its conclusions are $\sigma/(\sigma+\delta)\le1/2$ and the decay of $b^{d_n}\Lambda_n(a/b)$ for integers $a>b\ge1$ with $\log b/\log a<\sigma/(\sigma+\delta)$; this covers every printed case, since $b\ge a\ge2$ gives $\log b/\log a\ge1$.
+The Lean declaration below states this result or one that implies it. The Lean statement needs $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$. Its conclusions are $\sigma/(\sigma+\delta)\le1/2$ and the decay of $b^{d_n}\Lambda_n(a/b)$ for integers $a>b\ge1$ with $\log b/\log a<\sigma/(\sigma+\delta)$; this covers every printed case, since $b\ge a\ge2$ gives $\log b/\log a\ge1$.
 
 [`ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162)
 
@@ -279,7 +279,7 @@ theorem short_note_archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → �
 >    =\frac{(N!)^2(N+1)!}{2^N}.
 > ```*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements hold for every $N\ge0$, the case $N=0$ being the empty determinant $V_0^*=1$. The exponent $N(N-1)(2N-1)/6$ is computed in natural numbers, where the subtractions and the division by $6$ are exact for $N\ge1$.
+The Lean declarations below together state this result or one that implies it. The Lean statements hold for every $N\ge0$, the case $N=0$ being the empty determinant $V_0^*=1$. The exponent $N(N-1)(2N-1)/6$ is computed in natural numbers, where the subtractions and the division by $6$ are exact for $N\ge1$.
 
 1. [`ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173)
 
@@ -540,7 +540,7 @@ theorem plucker_paper_statement :
 > 
 > 2.  *the [exact gap identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L52) is $`\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement proves $\widetilde E_n-\widetilde P(n,k)=(n-k)(3n-k-1)$ for all integers $n,k$, without $0\le k\le n$, and adds $\widetilde Q(n,m)\le\widetilde E_n$ for $n\ge0$ and $m\ge1$; the printed items are its first three clauses.
+The Lean declaration below states this result or one that implies it. The Lean statement proves $\widetilde E_n-\widetilde P(n,k)=(n-k)(3n-k-1)$ for all integers $n,k$, without $0\le k\le n$, and adds $\widetilde Q(n,m)\le\widetilde E_n$ for $n\ge0$ and $m\ge1$; the printed items are its first three clauses.
 
 [`ErdosProblems.Erdos1049.PaperR7.pade_summand_bound_and_gap`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201)
 
@@ -572,7 +572,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Multiplying two integer rows by $`c_1`$ and $`c_2`$ multiplies their [determinant](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by $`c_1c_2`$. The [integer identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and its [absolute-value form](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) show that the added divisibility is accompanied by exactly the same factor in the real absolute value.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement adds that multiplying a row $(U,V)$ by $c_1$ multiplies its error $US-V$ by $c_1$ for every real $S$; its other clauses are the printed determinant identity, the absolute-value form with factor $|c_1||c_2|$ and divisibility by $c_1c_2$.
+The Lean declaration below states this result or one that implies it. The Lean statement adds that multiplying a row $(U,V)$ by $c_1$ multiplies its error $US-V$ by $c_1$ for every real $S$; its other clauses are the printed determinant identity, the absolute-value form with factor $|c_1||c_2|$ and divisibility by $c_1c_2$.
 
 [`ErdosProblems.Erdos1049.PaperR7.integer_scalar_content`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59)
 

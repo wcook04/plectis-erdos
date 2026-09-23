@@ -132,7 +132,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 4^{\mu}=30.483515\ldots<31<4^{\mu_{\mathrm{BV}}}=32.369642\ldots
 > ```
-> with $`\mu_{\mathrm{BV}}=2\pi^{2}/(\pi^{2}-2)=2.508284761994\ldots`$, so $`31/4`$ lies outside the region $`\log b/\log a<1/2-1/\pi^{2}=0.3986788163576622\ldots`$ of \[bv1994, Thm. 2, p. 177\] and inside the region of Theorem <a href="#long1049:res:region" data-reference-type="ref" data-reference="long1049:res:region">2</a>.*
+> with $`\mu_{\mathrm{BV}}=2\pi^{2}/(\pi^{2}-2)=2.508284761994\ldots`$, so $`31/4`$ lies outside the region $`\log b/\log a<1/2-1/\pi^{2}=0.3986788163576622\ldots`$ of \[bv1994, Thm. 2, p. 177\] and inside the region of Theorem 2.2.*
 
 The Lean declarations below together state this result.
 
@@ -341,7 +341,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Consequently the homogenised forms tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, a sufficient region whose cutoff is at most $`1/2`$. If the actual degrees satisfy $`d_n/n^{2}\to d`$, then $`d\ge\sigma`$ and the limit exists and equals $`d\log b-\sigma\log(a/b)`$; in that case the forms tend to zero below $`\log b/\log a=\sigma/(\sigma+d)`$ and their absolute values tend to infinity above it, so the exact-degree case has no decaying homogenised forms at $`3/2`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\le(\delta+\varepsilon)n^2$ and $\le(h+\varepsilon)n^2$ for all large $n$, for each $\varepsilon>0$. For integers $a>b\ge1$ its conclusions are the printed ones, including $\sigma\le\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\sigma/(\sigma+d)$, and the divergence at $a/b=3/2$.
+The Lean declaration below states this result or one that implies it. The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\le(\delta+\varepsilon)n^2$ and $\le(h+\varepsilon)n^2$ for all large $n$, for each $\varepsilon>0$. For integers $a>b\ge1$ its conclusions are the printed ones, including $\sigma\le\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\sigma/(\sigma+d)$, and the divergence at $a/b=3/2$.
 
 [`ErdosProblems.Erdos1049.PaperR9.long_record_archcap`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean#L411)
 
@@ -389,9 +389,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 2.6 (nondecay when $`b<a<b^2`$), page 15
 
-> *Under the hypotheses of Theorem <a href="#long1049:res:archcap" data-reference-type="ref" data-reference="long1049:res:archcap">5</a>, for positive integers $`a,b`$ with $`b<a<b^2`$, the undivided forms $`b^{d_n}\Lambda_n(a/b)`$ do not tend to zero. No limit of $`d_n/n^2`$ is assumed.*
+> *Under the hypotheses of Theorem 2.5, for positive integers $`a,b`$ with $`b<a<b^2`$, the undivided forms $`b^{d_n}\Lambda_n(a/b)`$ do not tend to zero. No limit of $`d_n/n^2`$ is assumed.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement assumes the hypotheses of Theorem 2.5 in the form of its Lean statement, which allows any real function $F$ and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$. For integers $1\le b<a<b^2$ its conclusion is the printed nondecay of $b^{d_n}\Lambda_n(a/b)$, with no assumption on $d_n/n^2$.
+The Lean declaration below states this result or one that implies it. The Lean statement assumes the hypotheses of Theorem 2.5 in the form of its Lean statement, which allows any real function $F$ and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$. For integers $1\le b<a<b^2$ its conclusion is the printed nondecay of $b^{d_n}\Lambda_n(a/b)$, with no assumption on $d_n/n^2$.
 
 [`ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69)
 
@@ -436,7 +436,7 @@ theorem cleared_below_square_not_tendsto_zero
 
 ## Lemma 2.7 (coefficient heights of the constructed polynomials), page 16
 
-> *There is a constant $`h`$ with $`\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}`$ for every $`n\ge1`$, where $`U_n`$ and $`V_n`$ are the polynomials of <a href="#long1049:eq:integer-polynomial-pair" data-reference-type="eqref" data-reference="long1049:eq:integer-polynomial-pair">[long1049:eq:integer-polynomial-pair]</a>.*
+> *There is a constant $`h`$ with $`\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}`$ for every $`n\ge1`$, where $`U_n`$ and $`V_n`$ are the polynomials of (6).*
 
 The Lean declarations below together state this result.
 
@@ -753,7 +753,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \qquad(N\to\infty).
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324)
 
@@ -792,7 +792,7 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
 > P^5c_k\le a_k\le P^{-1}c_k
 >  \qquad(k\ge0),
 > ```
-> together with $`a_{k+h}/a_k\le P^{-6}(1+h)^3`$, so the hypotheses of Theorem <a href="#long1049:thm:geometric-universality" data-reference-type="ref" data-reference="long1049:thm:geometric-universality">13</a> hold with $`\kappa=3`$.*
+> together with $`a_{k+h}/a_k\le P^{-6}(1+h)^3`$, so the hypotheses of Theorem 3.6 hold with $`\kappa=3`$.*
 
 The Lean declaration below states this result.
 
@@ -883,7 +883,7 @@ theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ
 
 > *For every real $`p>1`$ and $`1\le N\le8`$, $`A_N`$ is positive definite and all roots of $`\det(YA_N-B_N)`$ are real and strictly less than $`F(p)`$. The roots at consecutive ranks $`N,N+1\le8`$ interlace non-strictly.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement also covers the rank $N=0$; for $1\le N\le8$ it gives positive definiteness of $A_N$, a pencil polynomial $\det(YA_N-B_N)$ that splits over $\mathbb R$ with every root below $F(p)$, and the non-strict interlacing of the roots at ranks $N$ and $N+1\le8$.
+The Lean declaration below states this result or one that implies it. The Lean statement also covers the rank $N=0$; for $1\le N\le8$ it gives positive definiteness of $A_N$, a pencil polynomial $\det(YA_N-B_N)$ that splits over $\mathbb R$ with every root below $F(p)$, and the non-strict interlacing of the roots at ranks $N$ and $N+1\le8$.
 
 [`ErdosProblems.Erdos1049.PaperR20.coefficientPencil_finitePencil`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43)
 
@@ -1042,7 +1042,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 5.5 (limits of rescaling and common-divisor cancellation at $`3/2`$), page 42
 
-> *Under the endpoint hypotheses of Proposition <a href="#long1049:res:commonmult" data-reference-type="ref" data-reference="long1049:res:commonmult">21</a>, every common divisor of the unscaled evaluations $`H_W(U)`$ and $`H_W(V)`$ is coprime to $`6`$. Multiplying two integer rows by nonzero integers $`c_n,c_m`$ multiplies their determinant by $`c_nc_m`$ and its absolute value by $`|c_nc_m|`$. Cancelling this introduced scalar factor therefore leaves the original comparison between divisor and determinant size unchanged.*
+> *Under the endpoint hypotheses of Proposition 5.3, every common divisor of the unscaled evaluations $`H_W(U)`$ and $`H_W(V)`$ is coprime to $`6`$. Multiplying two integer rows by nonzero integers $`c_n,c_m`$ multiplies their determinant by $`c_nc_m`$ and its absolute value by $`|c_nc_m|`$. Cancelling this introduced scalar factor therefore leaves the original comparison between divisor and determinant size unchanged.*
 
 The Lean declaration below states this result.
 
@@ -1256,7 +1256,7 @@ theorem plucker_paper_statement :
 > C_0\log3-C_1\log2< -\frac{17}{41}C_0\log2.
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos1049.PaperR7.scalar_margin`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L177)
 
@@ -1363,7 +1363,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 7.1 (recurrence for the scaled remainder), page 50
 
-> *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be as in <a href="#long1049:eq:tailstate" data-reference-type="eqref" data-reference="long1049:eq:tailstate">[long1049:eq:tailstate]</a>. Then for every $`N`$,
+> *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be as in ({$\ast $}). Then for every $`N`$,
 > ``` math
 > U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 > ```*

@@ -41,7 +41,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 10.5 (The upper (carries) successor needs no exceptional-cell exclusion), page 111
 
-> *Let $`s\ge5`$ and suppose the upper branch occurs at row $`s`$, that is, the transition at row $`s`$ is on branch $`\mathrm U`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>. Then
+> *Let $`s\ge5`$ and suppose the upper branch occurs at row $`s`$, that is, the transition at row $`s`$ is on branch $`\mathrm U`$ of Theorem 5.16. Then
 > ``` math
 > \mathrm{rem}(s+1)\le2^{s+1}.
 > ```
@@ -95,7 +95,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > The left side is an integer, hence is at least $`2`$, as required. The upper threshold inequality alone would not give this lower bound.*
 > 
-> ***Scope.** This excludes $`C_D=-3`$ at a middle row $`D\ge13`$ under the additional all-right-tail assumption. The general induction requires exclusion of all three cells at every middle row, not just under this extra hypothesis, together with its right-branch bound. The two statements share the same coordinate $`C_D`$ but have different hypotheses. Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">258</a> is universal over rows satisfying the additional all-right-tail assumption; it does not assert that such a row exists. The induction hypothesis concerns every middle row, without that tail assumption. Excluding $`C_D=-3`$ in the former statement therefore does not supply the exclusion required in the latter. **Object or representation:** about the *object* under the stated hypothesis ; a genuine arithmetic consequence of the all-right-tail assumption via the fatal-gap orbit, not a coordinate artifact.*
+> ***Scope.** This excludes $`C_D=-3`$ at a middle row $`D\ge13`$ under the additional all-right-tail assumption. The general induction requires exclusion of all three cells at every middle row, not just under this extra hypothesis, together with its right-branch bound. The two statements share the same coordinate $`C_D`$ but have different hypotheses. Theorem 10.6 is universal over rows satisfying the additional all-right-tail assumption; it does not assert that such a row exists. The induction hypothesis concerns every middle row, without that tail assumption. Excluding $`C_D=-3`$ in the former statement therefore does not supply the exclusion required in the latter. **Object or representation:** about the *object* under the stated hypothesis ; a genuine arithmetic consequence of the all-right-tail assumption via the fatal-gap orbit, not a coordinate artifact.*
 
 The Lean declaration below states this result.
 
@@ -135,7 +135,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 10.7 (Only $`C_D\in\{-2,-1\}`$ remain among the exceptional dyadic cells), page 112
 
-> *At a final middle row $`D\ge13`$, Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">258</a> removes $`-3`$ from the exceptional set $`\{-3,-2,-1\}`$, leaving $`-2,-1`$ *within that set*. It does not assert $`C_D\in\{-2,-1\}`$: nonnegative values have not been excluded. Proposition <a href="#prop:upper-unconditional" data-reference-type="ref" data-reference="prop:upper-unconditional">257</a> handles upper transitions in the two-sided induction; it supplies no additional restriction on a middle coordinate. For the all-middle-row induction, the exclusion of all three values still needs proof without an all-right-tail assumption, together with the separate right-branch inequality.*
+> *At a final middle row $`D\ge13`$, Theorem 10.6 removes $`-3`$ from the exceptional set $`\{-3,-2,-1\}`$, leaving $`-2,-1`$ *within that set*. It does not assert $`C_D\in\{-2,-1\}`$: nonnegative values have not been excluded. Proposition 10.5 handles upper transitions in the two-sided induction; it supplies no additional restriction on a middle coordinate. For the all-middle-row induction, the exclusion of all three values still needs proof without an all-right-tail assumption, together with the separate right-branch inequality.*
 
 The Lean declaration below states this result.
 
@@ -182,7 +182,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > ***Scope.** Excludes bounded-state encodings of pre-$`m`$ history that must distinguish every member of the displayed balanced-pulse family, whether the coefficients are $`\varphi`$ or a Möbius-support indicator. Applying it to \#249 or \#257 requires showing that the relevant orbit realises that family, and it does not rule out every finite-state proof strategy. **Object or representation:** about a *representation* class, the encodings of history that separate the balanced-pulse family; it says nothing about $`C`$ or $`\mathcal A`$ directly.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean count of exactly $\rho+1$ family members and the bound $|\mathrm{State}|\ge\rho+1$ for a finite state set carrying an exact decoder hold for every $m\ge0$; the printed statement takes $m\ge2$, where the impossibility of decoding from a constant predecessor state is stated as printed.
+The Lean declarations below together state this result or one that implies it. The Lean count of exactly $\rho+1$ family members and the bound $|\mathrm{State}|\ge\rho+1$ for a finite state set carrying an exact decoder hold for every $m\ge0$; the printed statement takes $m\ge2$, where the impossibility of decoding from a constant predecessor state is stated as printed.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_no_autonomous_decoder`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L113)
 
@@ -332,7 +332,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-carry-survivor-extinction"></a>
 
-## Proposition 10.12 (Period exclusion for the totient series), page 114
+## Proposition 10.12 (Period exclusion for the totient series), page 113
 
 > *For $`\sum_n\varphi(n)/2^n`$, the cited finite test proves that $`\mathrm{totientTail}(N+h)-\mathrm{totientTail}(N)`$ is not an integer by excluding every possible integer state in a bounded range within finitely many steps. If the series were rational, some positive period $`h_0`$ would make these tail differences integral for every sufficiently large $`N`$. Telescoping would then give integrality also for every positive multiple $`mh_0`$.*
 > 
@@ -444,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 10.14 (Mersenne specialisation), page 114
 
-> *Let $`x`$ be a positive rational number and let $`r\ge0`$, $`n\ge1`$ be integers. If $`2^r\mid x.\mathrm{num}.\mathrm{natAbs}`$ and $`x<2/(2^n-1)`$, then $`2^r\cdot(2^n-1) < 2\cdot x.\mathrm{den}`$ ; a numerator $`2`$-power lower bound plus a Mersenne-scale upper bound on $`x`$ together force a denominator lower bound, *without* introducing a global prefix LCM. To see the inequality directly, write $`x=a/b`$ in lowest terms with $`a,b>0`$. The hypotheses give $`a\ge2^r`$ and $`a(2^n-1)<2b`$. The conclusion follows by substitution. An application of Lemma <a href="#lem:scalar-localization" data-reference-type="ref" data-reference="lem:scalar-localization">265</a> must in addition supply its denominator-divisibility assumptions.*
+> *Let $`x`$ be a positive rational number and let $`r\ge0`$, $`n\ge1`$ be integers. If $`2^r\mid x.\mathrm{num}.\mathrm{natAbs}`$ and $`x<2/(2^n-1)`$, then $`2^r\cdot(2^n-1) < 2\cdot x.\mathrm{den}`$ ; a numerator $`2`$-power lower bound plus a Mersenne-scale upper bound on $`x`$ together force a denominator lower bound, *without* introducing a global prefix LCM. To see the inequality directly, write $`x=a/b`$ in lowest terms with $`a,b>0`$. The hypotheses give $`a\ge2^r`$ and $`a(2^n-1)<2b`$. The conclusion follows by substitution. An application of Lemma 10.13 must in addition supply its denominator-divisibility assumptions.*
 
 The Lean declaration below states this result.
 
@@ -473,7 +473,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 10.16 (Quantifier collapse: one critical index suffices, not $`d{+}1`$), page 115
 
 > *Let $`d,E\in\mathbb N`$ and assume $`E\le2^{d+1}`$. Then the purely combinatorial statement $`\mathsf{DyadicBandEscape}(d,E) \iff \exists j,\ \mathsf{CriticalDyadicBandIndex}(d,E,j)\land
-> E+2(d+j)\le 2^{d-j+1}`$ collapses the $`\forall j\in[0,d]`$ band-avoidance condition (formally $`d{+}1`$ separate inequalities) to checking exactly *one* nearest-boundary index $`j`$. The range assumption ensures that a dyadic threshold lies at or above $`E`$. Choose the smallest such threshold: smaller thresholds are already below $`E`$, while larger thresholds have narrower forbidden bands. Without the range assumption all bands escape automatically when $`E>2^{d+1}`$, but no critical index exists; $`(d,E)=(0,3)`$ is the smallest example. Specialised to the concrete seam reset charge, $`\mathsf{SeamUpperResetCriticalBandEscape}`$ is proved logically *equivalent* to Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">267</a>’s hypothesis. Zero Mersenne/seam content in the core lemma ; pure $`(d,E,j)`$ arithmetic over powers of 2.*
+> E+2(d+j)\le 2^{d-j+1}`$ collapses the $`\forall j\in[0,d]`$ band-avoidance condition (formally $`d{+}1`$ separate inequalities) to checking exactly *one* nearest-boundary index $`j`$. The range assumption ensures that a dyadic threshold lies at or above $`E`$. Choose the smallest such threshold: smaller thresholds are already below $`E`$, while larger thresholds have narrower forbidden bands. Without the range assumption all bands escape automatically when $`E>2^{d+1}`$, but no critical index exists; $`(d,E)=(0,3)`$ is the smallest example. Specialised to the concrete seam reset charge, $`\mathsf{SeamUpperResetCriticalBandEscape}`$ is proved logically *equivalent* to Definition 10.15’s hypothesis. Zero Mersenne/seam content in the core lemma ; pure $`(d,E,j)`$ arithmetic over powers of 2.*
 
 The Lean declaration below states this result.
 

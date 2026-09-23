@@ -1,4 +1,4 @@
-# Formal evidence: Paths in Polynomial Lemniscates: Proofs and Examples
+# Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Two Short-Path Criteria
 
 This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
@@ -12,7 +12,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 ## Passage (beginning “The degree-seven polynomial constructed by…”), page 2
 
-The Lean declarations below together state a result at least as strong as this one. The first Lean statement gives that the polynomial is monic of degree seven with distinct roots in the open unit disc, and that every continuous path in $\{|f|<1\}$ joining two distinct roots has total variation greater than $2$. The second gives the Hausdorff bound for every preconnected subset of $\{|f|<1\}$ containing two distinct roots, which covers the image of such a path because that image is connected. The last two are the negation and `answer(False)` forms of the Formal Conjectures statement, in which length is one-dimensional Hausdorff measure.
+The Lean declarations below together state this result or one that implies it. The first Lean statement gives that the polynomial is monic of degree seven with distinct roots in the open unit disc, and that every continuous path in $\{|f|<1\}$ joining two distinct roots has total variation greater than $2$. The second gives the Hausdorff bound for every preconnected subset of $\{|f|<1\}$ containing two distinct roots, which covers the image of such a path because that image is connected. The last two are the negation and `answer(False)` forms of the Formal Conjectures statement, in which length is one-dimensional Hausdorff measure.
 
 1. [`Erdos1041.Counterexample.erdos1041_counterexample`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean#L319)
 
@@ -66,7 +66,7 @@ theorem erdos1041_hausdorff_answer_false :
 
 > *Let $`n,m`$ be integers with $`1\le m<n`$, and let $`f(z)=z^n+az^m+b`$ have every zero in $`\mathbb{D}`$. For every zero $`\zeta`$, the segment $`[0,\zeta]`$ lies in $`E_f`$. Consequently any two zeros $`\zeta_1,\zeta_2`$ are joined in $`E_f`$ by the broken line $`\zeta_1\to0\to\zeta_2`$, of length $`|\zeta_1|+|\zeta_2|<2`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declarations below together state this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 1. [`ErdosProblems.Erdos1041.PaperTrinomial.all_spokes`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperTrinomial.lean#L26)
 
@@ -154,7 +154,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 ## Lemma 3.3 (circle-slice packing), page 7
 
-> *Under <a href="#eq:lc-separation" data-reference-type="eqref" data-reference="eq:lc-separation">[eq:lc-separation]</a>, for every $`r>0`$,
+> *Under (3), for every $`r>0`$,
 > ``` math
 > \sum_{j=1}^{k}w(d_j,r)\le\pi,\qquad
 >  w(d,r)=\arccos\Bigl(\operatorname{clamp}
@@ -162,7 +162,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 > ```
 > where $`\operatorname{clamp}`$ truncates its argument to $`[-1,1]`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statement proves $\sum_jw(d_j,r)\le\pi$ for every separation $D>0$, with the points in geodesic polar coordinates $(d_j,\theta_j)$, $d_j>0$, about $i$ in the upper half-plane, the image of the disc model under an isometry sending $0$ to $i$; a second form holds in any metric space obeying the hyperbolic law of cosines. The printed statement is the case $D=4\operatorname{artanh}\sqrt{\tanh(1/a)}$ with $d_j=d(0,b_j)>0$.
+The Lean declarations below together state this result or one that implies it. The Lean statement proves $\sum_jw(d_j,r)\le\pi$ for every separation $D>0$, with the points in geodesic polar coordinates $(d_j,\theta_j)$, $d_j>0$, about $i$ in the upper half-plane, the image of the disc model under an isometry sending $0$ to $i$; a second form holds in any metric space obeying the hyperbolic law of cosines. The printed statement is the case $D=4\operatorname{artanh}\sqrt{\tanh(1/a)}$ with $d_j=d(0,b_j)>0$.
 
 1. [`ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L563)
 
@@ -519,7 +519,7 @@ def CFAArityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (k₀ : ℕ)
 
 ## Corollary 4.3 (a criterion using component capacity), page 15
 
-> *Keep the hypotheses of Corollary <a href="#res:constant-factor-arity" data-reference-type="ref" data-reference="res:constant-factor-arity">10</a> with $`0<\mu\le1/2`$, let $`C`$ be the component of $`\{|f|<2\mu\}`$ containing $`c_*`$, and put $`\kappa=\operatorname{cap}(\overline C)/(2\mu)^{1/n}`$. If $`\kappa\le\tau_{k_0}`$, where
+> *Keep the hypotheses of Corollary 4.2 with $`0<\mu\le1/2`$, let $`C`$ be the component of $`\{|f|<2\mu\}`$ containing $`c_*`$, and put $`\kappa=\operatorname{cap}(\overline C)/(2\mu)^{1/n}`$. If $`\kappa\le\tau_{k_0}`$, where
 > ``` math
 > \tau_k=\frac{\sqrt{2k}-A}{B},\qquad
 >  A=\frac{283}{3610},\qquad B=\frac{52029}{9100},
@@ -736,7 +736,7 @@ def SubcriticalSplitExists (f : ℂ → ℂ) (μ P : ℝ) : Prop :=
 
 > *Let $`f(z)=\prod_{j=1}^{3}(z-z_j)`$ with $`|z_j|<1`$, the roots listed with multiplicity. Then two listed root occurrences are joined inside $`\{|f|<1\}`$ by a polygonal path of length strictly below $`2`$. If $`f`$ is squarefree the two are distinct.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCubicCompletion.lean#L297)
 
@@ -886,7 +886,7 @@ def DiscSepBergmanArea : Prop :=
 
 ## Corollary 6.2 (uniform radius $`4/3`$), page 24
 
-> *Inequality <a href="#eq:disk-family-coefficient" data-reference-type="eqref" data-reference="eq:disk-family-coefficient">[eq:disk-family-coefficient]</a> holds for every $`n\ge3`$, every $`w_0\in[0,1]`$, and every $`4/3\le S\le2`$. Thus, if $`f`$ is monic with roots in the open unit disc, $`c`$ is a simple critical point with $`v=f(c)\ne0`$ and $`|v|<1`$, and
+> *Inequality ({6}) holds for every $`n\ge3`$, every $`w_0\in[0,1]`$, and every $`4/3\le S\le2`$. Thus, if $`f`$ is monic with roots in the open unit disc, $`c`$ is a simple critical point with $`v=f(c)\ne0`$ and $`|v|<1`$, and
 > ``` math
 > \left|\frac{f(d)}v-w_0\right|\ge\frac43
 > ```
@@ -1501,7 +1501,7 @@ theorem complete_translated_cubic_quotient_fibres
 > ```
 > The constant is attained by $`f(z)=(z-\tau)^n-\lambda`$ with enclosing disk centred at $`\tau`$ and radius $`R=|\lambda|^{1/n}`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declarations below together state this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 1. [`ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/CriticalMeanWhole.lean#L14)
 
@@ -1588,7 +1588,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Let $`f`$ be a polynomial and $`z:I\to\mathbb C`$ a differentiable curve on an interval $`I`$, with $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. For $`w=f\circ z`$, one has $`w'(t)=-w(t)`$ on $`I`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $t\in I$, of which a polynomial is a case, and adds the integrated form $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\in I$.
+The Lean declaration below states this result or one that implies it. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $t\in I$, of which a polynomial is a case, and adds the integrated form $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\in I$.
 
 [`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52)
 
@@ -1616,7 +1616,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-ray"></a>
 
-## Corollary 9.2 (ray separation), page 56
+## Corollary 9.2 (ray separation), page 55
 
 > *Let $`a<b`$ and let the value trajectory $`t\mapsto f(z(t))`$ be continuous on $`[a,b]`$. Assume the Newton equation and $`f'(z(t))\ne0`$ on $`(a,b)`$ only. Then
 > ``` math
@@ -1624,7 +1624,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > If these endpoint values are nonzero, they lie on one positive ray. Therefore critical points with values on distinct positive rays cannot be endpoints of such a finite connection. The trajectory in the $`z`$ plane need not be radial.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, of which a polynomial is a case. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.
+The Lean declaration below states this result or one that implies it. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, of which a polynomial is a case. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.
 
 [`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69)
 
@@ -1652,7 +1652,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-locus"></a>
 
-## Theorem 10.1 (ray-collision locus), page 57
+## Theorem 10.1 (ray-collision locus), page 56
 
 > *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 > ``` math

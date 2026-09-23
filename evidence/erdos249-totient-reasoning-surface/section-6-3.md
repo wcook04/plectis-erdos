@@ -43,7 +43,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \big(\forall t_0,\ \exists t\ge t_0,\ \exists q\,m\,L,\ 0<q \wedge \mathcal{C}(m\cdot{H}\,t)(q\cdot{H}\,t)\ L\big)
 > \implies S\notin\mathbb Q.
 > ```
-> One residue certificate *anywhere* on the two-multiplier LCM cone, at arbitrarily large $`t`$, suffices; the diagonal choice $`q=m=1`$ recovers Proposition <a href="#prop:B3" data-reference-type="ref" data-reference="prop:B3">121</a>.*
+> One residue certificate *anywhere* on the two-multiplier LCM cone, at arbitrarily large $`t`$, suffices; the diagonal choice $`q=m=1`$ recovers Proposition 6.72.*
 
 The Lean declaration below states this result.
 
@@ -86,7 +86,7 @@ theorem irrational_totient_series_of_lcm_cone_window_kill_supply
 > \forall q_i\in Q\ \exists q_j\in Q,\qquad
 >  B_{q_j}<(A_{q_i}-A_{q_j})\bmod2^L,
 > ```
-> then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$. Such a test at $`H=H_t`$ for arbitrarily large $`t`$ implies $`S\notin\mathbb Q`$. Neither $`|Q|\ge3`$ nor compatibility of every pair is a hypothesis. The proof, by choosing a minimum tail in the finite set, is given in Theorem <a href="#catalogue:cert:b10a" data-reference-type="ref" data-reference="catalogue:cert:b10a">105</a>.*
+> then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$. Such a test at $`H=H_t`$ for arbitrarily large $`t`$ implies $`S\notin\mathbb Q`$. Neither $`|Q|\ge3`$ nor compatibility of every pair is a hypothesis. The proof, by choosing a minimum tail in the finite set, is given in Theorem 6.56.*
 
 The Lean declarations below together state this result.
 
@@ -134,11 +134,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.75 (Unbounded Farey bounds imply irrationality), page 45
 
-> *The Farey-gap denominator bound at window $`K`$ is currently $`\sim 7.96\times10^{34}`$ at $`K=240`$ (Prop. <a href="#prop:C2-inv" data-reference-type="ref" data-reference="prop:C2-inv">148</a>). If
+> *The Farey-gap denominator bound at window $`K`$ is currently $`\sim 7.96\times10^{34}`$ at $`K=240`$ (Prop. 6.99). If
 > ``` math
 > \sup_K\, (b+d)(K) = \infty
 > ```
-> (that is, the proved exclusion bounds are arbitrarily large), then \#249 follows via the denominator-exclusion implication, without assuming the certificate supply in Proposition <a href="#prop:A10" data-reference-type="ref" data-reference="prop:A10">120</a>. No unboundedness claim is proved or attempted in the record.*
+> (that is, the proved exclusion bounds are arbitrarily large), then \#249 follows via the denominator-exclusion implication, without assuming the certificate supply in Proposition 6.71. No unboundedness claim is proved or attempted in the record.*
 
 The Lean declarations below together state this result.
 
@@ -191,7 +191,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.76 (The lower bound and a false proposed upper bound), page 45
 
-> *By Prop. <a href="#prop:D4-inv" data-reference-type="ref" data-reference="prop:D4-inv">147</a>, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated tempered carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. <a href="#prop:CP-02" data-reference-type="ref" data-reference="prop:CP-02">139</a>). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a> has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation <a href="#prop:B4b-kill" data-reference-type="ref" data-reference="prop:B4b-kill">164</a>) remain separate counterexample results. None is a generic rationality-driven rank ceiling. The Lean proof covers the proved rank floor and counterexample results, not the counterfactual upper bound.*
+> *By Prop. 6.98, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated tempered carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. 6.90). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section 10.8 has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation 6.115) remain separate counterexample results. None is a generic rationality-driven rank ceiling. The Lean proof covers the proved rank floor and counterexample results, not the counterfactual upper bound.*
 
 The Lean declarations below together state this result.
 
@@ -561,7 +561,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \delta_{2^a}(j)=\varphi(2H_{2^a}+j)-\varphi(H_{2^a}+j)>0.
 > ```
-> The proof treats divisor offsets and the exceptional prime-power offsets separately, using multiplicativity and the rough-integer estimate of Proposition <a href="#prop:AR-03-inv" data-reference-type="ref" data-reference="prop:AR-03-inv">128</a>. No rationality hypothesis is used. Positivity of these finitely many coefficients contributes to the later sign theorem; a bound for the remaining infinite tail is still needed to obtain that theorem.*
+> The proof treats divisor offsets and the exceptional prime-power offsets separately, using multiplicativity and the rough-integer estimate of Proposition 6.79. No rationality hypothesis is used. Positivity of these finitely many coefficients contributes to the later sign theorem; a bound for the remaining infinite tail is still needed to obtain that theorem.*
 
 The Lean declaration below states this result.
 
@@ -717,7 +717,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 0 < R_{2H+J} - R_{H+J},\qquad H={H}(2^a),
 > ```
-> with no irrationality hypothesis; the true, infinite, real translated tail difference is strictly positive throughout almost the entire short window, proved unconditionally from Prop. <a href="#prop:AR-05-inv" data-reference-type="ref" data-reference="prop:AR-05-inv">129</a> plus a directed one-sided tail bound. Any argument about the sign of the actual orbit (not merely its residue mod $`2^L`$) must agree with this; specialised at $`J=0`$ this gives $`0<\Omega_a`$.*
+> with no irrationality hypothesis; the true, infinite, real translated tail difference is strictly positive throughout almost the entire short window, proved unconditionally from Prop. 6.80 plus a directed one-sided tail bound. Any argument about the sign of the actual orbit (not merely its residue mod $`2^L`$) must agree with this; specialised at $`J=0`$ this gives $`0<\Omega_a`$.*
 
 The Lean declarations below together state this result.
 
@@ -930,7 +930,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \varphi(j)\bigl(\varphi(3A+1)-2\varphi(2A+1)+\varphi(A+1)\bigr).
 > ```
-> Also $`2j\le2^a`$, so $`2j\mid H_a`$ and $`A\ge2`$ is even. The three arguments $`qA+1`$ are therefore odd and greater than two, and all three totients are even. This proves the extra factor of two. The divisibility is a lower bound, not an exact valuation at each LCM height. The different family in Observation <a href="#prop:FR-03-kill" data-reference-type="ref" data-reference="prop:FR-03-kill">157</a> does not satisfy these LCM and square-window hypotheses, so it does not establish sharpness within this restricted family.*
+> Also $`2j\le2^a`$, so $`2j\mid H_a`$ and $`A\ge2`$ is even. The three arguments $`qA+1`$ are therefore odd and greater than two, and all three totients are even. This proves the extra factor of two. The divisibility is a lower bound, not an exact valuation at each LCM height. The different family in Observation 6.108 does not satisfy these LCM and square-window hypotheses, so it does not establish sharpness within this restricted family.*
 
 The Lean declarations below together state this result.
 
@@ -1027,7 +1027,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.90 (A consequence of rationality and its limitation), page 49
 
-> *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and a tempered integer carry orbit $`u`$ such that its retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition <a href="#prop:D5cons" data-reference-type="ref" data-reference="prop:D5cons">125</a> gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
+> *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and a tempered integer carry orbit $`u`$ such that its retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition 6.76 gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
 
 The Lean declaration below states this result.
 
@@ -1063,7 +1063,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \varphi(p+4h)-\varphi(p)\equiv2\pmod4.
 > ```
-> To construct $`p`$, set $`H=4h`$, choose a prime $`r>H`$ with $`r\equiv1\pmod4`$, and use Dirichlet’s theorem in the progression $`p\equiv3r-H\pmod{4r}`$. This progression is reduced: its residue is odd and is $`-H\not\equiv0\pmod r`$. Then $`p\equiv3\pmod4`$, so $`\varphi(p)=p-1\equiv2\pmod4`$, whereas $`r\mid p+H`$ gives $`4\mid\varphi(p+H)`$. Subtracting gives the stated congruence. This supplies the arithmetic congruence at arbitrarily large primes; the additional finite exclusion in Proposition <a href="#prop:CP-07" data-reference-type="ref" data-reference="prop:CP-07">119</a> remains a separate hypothesis.*
+> To construct $`p`$, set $`H=4h`$, choose a prime $`r>H`$ with $`r\equiv1\pmod4`$, and use Dirichlet’s theorem in the progression $`p\equiv3r-H\pmod{4r}`$. This progression is reduced: its residue is odd and is $`-H\not\equiv0\pmod r`$. Then $`p\equiv3\pmod4`$, so $`\varphi(p)=p-1\equiv2\pmod4`$, whereas $`r\mid p+H`$ gives $`4\mid\varphi(p+H)`$. Subtracting gives the stated congruence. This supplies the arithmetic congruence at arbitrarily large primes; the additional finite exclusion in Proposition 6.70 remains a separate hypothesis.*
 
 The Lean declaration below states this result.
 
@@ -1236,7 +1236,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.94 (Explicit finite examples), page 50
 
-> *The finite certificates $`\mathcal C(H_{16},H_{16},23)`$ and $`\mathcal C(H_{64},H_{64},93)`$ imply $`\Omega_4,\Omega_6\notin\mathbb Z`$. Both satisfy the short-window restriction, since $`23<32`$ and $`93<128`$. They are the certificates at $`t=16`$ and $`t=64`$ in the diagonal table of Section <a href="#ssec:certtable" data-reference-type="ref" data-reference="ssec:certtable">5.7</a>. These are two explicit instances of the desired condition, not the start of a proved induction or a claim that no other finite instances can be checked.*
+> *The finite certificates $`\mathcal C(H_{16},H_{16},23)`$ and $`\mathcal C(H_{64},H_{64},93)`$ imply $`\Omega_4,\Omega_6\notin\mathbb Z`$. Both satisfy the short-window restriction, since $`23<32`$ and $`93<128`$. They are the certificates at $`t=16`$ and $`t=64`$ in the diagonal table of Section 5.7. These are two explicit instances of the desired condition, not the start of a proved induction or a claim that no other finite instances can be checked.*
 
 The Lean declarations below together state this result.
 
@@ -1332,7 +1332,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 2^N(2^h-1)S\in\mathbb Z\qquad(N\ge c).
 > ```
-> The identity relating $`S`$ to its scaled tails therefore gives $`R_{N+h}-R_N\in\mathbb Z`$ for every $`N\ge c`$. These are explicit witnesses for the eventual period asserted in Proposition <a href="#prop:A10" data-reference-type="ref" data-reference="prop:A10">120</a>. To use the finite residue test against a hypothetical rational value, one must obtain a nonintegral difference for its period at an index beyond its preperiod. Soundness proves that the quantified certificate condition rules out rationality. Conversely, the prefix-tail identity makes every positive-shift tail difference nonintegral when $`S`$ is irrational, and pointwise completeness (Theorem <a href="#catalogue:cert:a7" data-reference-type="ref" data-reference="catalogue:cert:a7">68</a>) then supplies a depth. Proposition <a href="#prop:AR-06-inv" data-reference-type="ref" data-reference="prop:AR-06-inv">130</a> only identifies the weighted diagonal sum with $`D`$; it is not the completeness argument and supplies no depth bound.*
+> The identity relating $`S`$ to its scaled tails therefore gives $`R_{N+h}-R_N\in\mathbb Z`$ for every $`N\ge c`$. These are explicit witnesses for the eventual period asserted in Proposition 6.71. To use the finite residue test against a hypothetical rational value, one must obtain a nonintegral difference for its period at an index beyond its preperiod. Soundness proves that the quantified certificate condition rules out rationality. Conversely, the prefix-tail identity makes every positive-shift tail difference nonintegral when $`S`$ is irrational, and pointwise completeness (Theorem 6.19) then supplies a depth. Proposition 6.81 only identifies the weighted diagonal sum with $`D`$; it is not the completeness argument and supplies no depth bound.*
 
 The Lean declarations below together state this result.
 
@@ -1415,7 +1415,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > R_{(q+m)H(t)}-R_{qH(t)}\in\mathbb Z.
 > ```
-> The threshold may depend on the hypothetical rational value. A certificate at one fixed scale therefore gives a finite denominator exclusion, not irrationality. Proposition <a href="#prop:B7" data-reference-type="ref" data-reference="prop:B7">122</a> requires certificates at arbitrarily large scales, so that one lies beyond the threshold supplied by any such rational value.*
+> The threshold may depend on the hypothetical rational value. A certificate at one fixed scale therefore gives a finite denominator exclusion, not irrationality. Proposition 6.73 requires certificates at arbitrarily large scales, so that one lies beyond the threshold supplied by any such rational value.*
 
 The Lean declarations below together state this result.
 
@@ -1462,7 +1462,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.98 (Independence of the retained dyadic family), page 51
 
-> *For every $`e\ge0`$, the auxiliary canonical dyadic family has $`2^e+1`$ indexed sections, and these sections are linearly independent over $`\mathbb Q`$. The CRT–Dirichlet argument is explained in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>. For $`e\ge1`$ the family is a basis for all sections through level $`e`$. At $`e=0`$ the auxiliary family still contains both $`\varphi(n)`$ and $`\varphi(2n)`$, so it is not the actual level-zero truncation, whose dimension is one. No rationality hypothesis on $`S`$ is used.*
+> *For every $`e\ge0`$, the auxiliary canonical dyadic family has $`2^e+1`$ indexed sections, and these sections are linearly independent over $`\mathbb Q`$. The CRT–Dirichlet argument is explained in Section 10.8. For $`e\ge1`$ the family is a basis for all sections through level $`e`$. At $`e=0`$ the auxiliary family still contains both $`\varphi(n)`$ and $`\varphi(2n)`$, so it is not the actual level-zero truncation, whose dimension is one. No rationality hypothesis on $`S`$ is used.*
 
 The Lean declarations below together state this result.
 
@@ -1529,7 +1529,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.99 (The exact range of the stated Farey-gap inequality), page 51
 
-> *Let $`V`$ be the totient residue at $`(N,K)=(1,240)`$ defined in Section <a href="#ssec:farey" data-reference-type="ref" data-reference="ssec:farey">5.3</a>. For every integer $`q`$ satisfying
+> *Let $`V`$ be the totient residue at $`(N,K)=(1,240)`$ defined in Section 5.3. For every integer $`q`$ satisfying
 > ``` math
 > 1\le q\le79639646646701375323355774875831053,
 > ```
@@ -1541,7 +1541,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > q=79639646646701375323355774875831054,
 > ```
-> obtained from the stated Farey mediant. Thus the range is exact for this particular inequality. It is not an optimality claim among all denominator-exclusion tests. The preceding range gives the exclusion in Proposition <a href="#prop:C3-inv" data-reference-type="ref" data-reference="prop:C3-inv">149</a>, approximately $`7.96\times10^{34}`$.*
+> obtained from the stated Farey mediant. Thus the range is exact for this particular inequality. It is not an optimality claim among all denominator-exclusion tests. The preceding range gives the exclusion in Proposition 6.100, approximately $`7.96\times10^{34}`$.*
 
 The Lean declarations below together state this result.
 
@@ -1586,7 +1586,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > q\le79639646646701375323355774875831053
 >  \quad\Longrightarrow\quad S\ne a/q.
 > ```
-> This is an unconditional finite denominator exclusion. It does not assume certificates at arbitrarily large scales, as required by Proposition <a href="#prop:A10" data-reference-type="ref" data-reference="prop:A10">120</a>. Conversely, excluding this finite range does not rule out rational values with larger reduced denominators.*
+> This is an unconditional finite denominator exclusion. It does not assume certificates at arbitrarily large scales, as required by Proposition 6.71. Conversely, excluding this finite range does not rule out rational values with larger reduced denominators.*
 
 The Lean declarations below together state this result.
 
@@ -1629,9 +1629,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 0<|mx-z|<1/Q.
 > ```
-> Indeed, if $`x=a/b`$ is reduced with $`b>0`$, every nonzero error in the first condition is at least $`1/(bq_j)`$, and every nonzero error in the second is at least $`1/b`$. The strict lower bounds exclude exact rational hits. Requiring $`m=b_0^n`$ for a fixed integer base $`b_0\ge2`$ is a stronger sufficient condition, not a reformulation valid for every irrational number. The binary example in Proposition <a href="#catalogue:cert:d2" data-reference-type="ref" data-reference="catalogue:cert:d2">72</a> explains this distinction.*
+> Indeed, if $`x=a/b`$ is reduced with $`b>0`$, every nonzero error in the first condition is at least $`1/(bq_j)`$, and every nonzero error in the second is at least $`1/b`$. The strict lower bounds exclude exact rational hits. Requiring $`m=b_0^n`$ for a fixed integer base $`b_0\ge2`$ is a stronger sufficient condition, not a reformulation valid for every irrational number. The binary example in Proposition 6.23 explains this distinction.*
 
-The Lean declarations below together state a result at least as strong as this one. The two criteria and the lower bounds $1/(bq_j)$ and $1/b$ for reduced $x=a/b$ are stated as printed, with $q_j$ the reduced denominator of $u_j$. Sufficiency of the base-power condition is proved without the hypothesis $b_0\ge2$, and the binary example gives an irrational number for which that condition fails at a base $b_0\ge2$.
+The Lean declarations below together state this result or one that implies it. The two criteria and the lower bounds $1/(bq_j)$ and $1/b$ for reduced $x=a/b$ are stated as printed, with $q_j$ the reduced denominator of $u_j$. Sufficiency of the base-power condition is proved without the hypothesis $b_0\ge2$, and the binary example gives an irrational number for which that condition fails at a base $b_0\ge2$.
 
 1. [`Erdos249257.irrational_of_den_mul_abs_sub_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L5371)
 
@@ -1759,7 +1759,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.102 (Lambert identities involving $`S`$), page 52
 
-> *For $`L(f)=\sum_{n\ge1}f(n)/(2^n-1)`$, the identities are $`L(\mu)=1/2`$, $`L(\varphi)=2`$, $`L(1)=E`$ and $`L(\varphi*\mu)=S`$. The last identity rewrites the same unknown value; it does not deduce its irrationality from that of $`E`$. The value $`L(\mathrm{Id})=\sum_{m\ge1}\sigma(m)/2^m`$ is transcendental by Nesterenko \[nesterenko1996, Cor. 2, p. 1320\] (cited, not formalised). These examples show that Lambert-series form alone does not determine arithmetic status. The individual comparisons are in Proposition <a href="#catalogue:cert:d7" data-reference-type="ref" data-reference="catalogue:cert:d7">92</a> and its table.*
+> *For $`L(f)=\sum_{n\ge1}f(n)/(2^n-1)`$, the identities are $`L(\mu)=1/2`$, $`L(\varphi)=2`$, $`L(1)=E`$ and $`L(\varphi*\mu)=S`$. The last identity rewrites the same unknown value; it does not deduce its irrationality from that of $`E`$. The value $`L(\mathrm{Id})=\sum_{m\ge1}\sigma(m)/2^m`$ is transcendental by Nesterenko \[nesterenko1996, Cor. 2, p. 1320\]. These examples show that Lambert-series form alone does not determine arithmetic status. The individual comparisons are in Proposition 6.43 and its table.*
 
 The Lean proof assumes Nesterenko's algebraic independence theorem. Lean takes this input as a hypothesis (`NesterenkoTranscendenceP`); it is not proved in Lean.
 
@@ -1841,7 +1841,7 @@ def NesterenkoTranscendenceP : Prop :=
 > ``` math
 > b\ge\frac{1}{q_N\varepsilon_N}.
 > ```
-> These lower bounds tend to infinity precisely when $`q_N\varepsilon_N\to0`$; a subsequence with this property is enough to contradict a fixed $`b`$. A tail bound by itself does not imply this. For example, the ordinary dyadic prefix has denominator dividing $`2^N`$ and tail at most $`(N+2)2^{-N}`$. Using only these two bounds yields $`b\ge1/(N+2)`$, which is vacuous. The rational-spacing lemma can convert sharper error and denominator information into an exclusion; it does not automatically improve the Farey bound in Proposition <a href="#prop:C2-inv" data-reference-type="ref" data-reference="prop:C2-inv">148</a>.*
+> These lower bounds tend to infinity precisely when $`q_N\varepsilon_N\to0`$; a subsequence with this property is enough to contradict a fixed $`b`$. A tail bound by itself does not imply this. For example, the ordinary dyadic prefix has denominator dividing $`2^N`$ and tail at most $`(N+2)2^{-N}`$. Using only these two bounds yields $`b\ge1/(N+2)`$, which is vacuous. The rational-spacing lemma can convert sharper error and denominator information into an exclusion; it does not automatically improve the Farey bound in Proposition 6.99.*
 
 The Lean declarations below together state this result.
 

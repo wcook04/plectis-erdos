@@ -161,7 +161,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \gcd\bigl(|P_r(2)|,|\Phi_r(2)|\bigr)=1,
 >  \qquad |\Phi_r(2)|\mid\operatorname{den}(b_r).
 > ```
-> Here $`\Phi_r`$ is the $`r`$-th cyclotomic polynomial. Proposition <a href="#catalogue:mob:b4" data-reference-type="ref" data-reference="catalogue:mob:b4">89</a> gives $`P_r\equiv\mu(r)\pmod{\Phi_r}`$, and $`\mu(r)=\pm1`$ because $`r`$ is squarefree. This proves that the indicated cyclotomic factor cannot cancel from $`b_r`$.*
+> Here $`\Phi_r`$ is the $`r`$-th cyclotomic polynomial. Proposition 6.40 gives $`P_r\equiv\mu(r)\pmod{\Phi_r}`$, and $`\mu(r)=\pm1`$ because $`r`$ is squarefree. This proves that the indicated cyclotomic factor cannot cancel from $`b_r`$.*
 
 The Lean declarations below together state this result.
 
@@ -338,7 +338,7 @@ theorem upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
 >  \le \prod_{p\in\mathcal P_t}(2^p-1)
 >  \le \operatorname{den}(H_t\beta_{H_t}).
 > ```
-> Bertrand’s postulate supplies a prime in $`\mathcal P_t`$; its factor is at least $`2^{\lfloor t/2\rfloor}`$. Proposition <a href="#catalogue:mob:b6" data-reference-type="ref" data-reference="catalogue:mob:b6">55</a> then gives the second inequality. The complementary term in the real tail decomposition can still cancel this rational contribution, so denominator growth alone does not prove irrationality of $`S`$.*
+> Bertrand’s postulate supplies a prime in $`\mathcal P_t`$; its factor is at least $`2^{\lfloor t/2\rfloor}`$. Proposition 6.6 then gives the second inequality. The complementary term in the real tail decomposition can still cancel this rational contribution, so denominator growth alone does not prove irrationality of $`S`$.*
 
 The Lean declaration below states this result.
 
@@ -496,7 +496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For each integer $`1\le h\le8`$, the finite test $`\mathcal C(h,12,16)`$ holds. Each discrepancy uses two 16-term windows. Across all eight shifts, only the 24 distinct totient values at $`13\le n\le36`$ are needed, since the windows overlap. The source verifies the eight integer residue inequalities by exact computation.*
 > 
-> *Consequently, if $`a/b`$ is a reduced fraction with $`b>0`$ and $`b\mid2^{12}(2^h-1)`$ for at least one $`1\le h\le8`$, then $`S\ne a/b`$. This follows from Propositions <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">67</a> and <a href="#catalogue:cert:a8" data-reference-type="ref" data-reference="catalogue:cert:a8">53</a>.*
+> *Consequently, if $`a/b`$ is a reduced fraction with $`b>0`$ and $`b\mid2^{12}(2^h-1)`$ for at least one $`1\le h\le8`$, then $`S\ne a/b`$. This follows from Propositions 6.18 and 6.4.*
 
 The Lean declarations below together state this result.
 
@@ -756,7 +756,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > (\exists L\in\mathbb N,\ \mathcal C(h,N,L))
 >  \quad\Longleftrightarrow\quad R_{N+h}-R_N\notin\mathbb Z.
 > ```
-> For the converse to Proposition <a href="#catalogue:cert:a6" data-reference-type="ref" data-reference="catalogue:cert:a6">67</a>, fix a positive distance from the nonintegral tail difference to the nearest integer. The normalised error $`(N+h+L+2)/2^L`$ tends to zero, so a sufficiently large truncation preserves that distance. This is a pointwise equivalence; irrationality requires the stated quantifiers over the shift and basepoint.*
+> For the converse to Proposition 6.18, fix a positive distance from the nonintegral tail difference to the nearest integer. The normalised error $`(N+h+L+2)/2^L`$ tends to zero, so a sufficiently large truncation preserves that distance. This is a pointwise equivalence; irrationality requires the stated quantifiers over the shift and basepoint.*
 
 The Lean declaration below states this result.
 
@@ -854,7 +854,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > *For a binary example, form a number by concatenating the blocks $`10`$ at square indices $`k\ge1`$ and $`01`$ at the other indices. Its binary expansion is not eventually periodic, since the block sequence has increasingly long gaps between the square indices, so the number is irrational. There are no three consecutive equal digits. Every fractional part after a binary shift therefore lies in $`[1/8,7/8]`$, and the multiples $`2^n\xi`$ do not approach the integers. This verifies that the restriction to base powers is genuinely stronger. This example is an ordinary mathematical argument, not an additional claim about the linked formalisation.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean lower bound $|m\xi-z|\ge1/\operatorname{den}(\xi)$ uses the reduced denominator of $\xi$, which divides $b$ whenever $\xi=a/b$, so the printed bound $1/b$ follows. The near-integer criterion, its base-power case and the square-block example (irrationality, no three consecutive equal digits, fractional parts of $2^n\xi$ in $[1/8,7/8]$) are the remaining Lean statements as printed.
+The Lean declarations below together state this result or one that implies it. The Lean lower bound $|m\xi-z|\ge1/\operatorname{den}(\xi)$ uses the reduced denominator of $\xi$, which divides $b$ whenever $\xi=a/b$, so the printed bound $1/b$ follows. The near-integer criterion, its base-power case and the square-block example (irrationality, no three consecutive equal digits, fractional parts of $2^n\xi$ in $[1/8,7/8]$) are the remaining Lean statements as printed.
 
 1. [`Erdos249257.irrational_of_int_mul_near_int`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L6120)
 
@@ -1186,7 +1186,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \quad\Longleftrightarrow\quad
 >  \sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}\notin\mathbb Q.
 > ```
-> This is the same irrationality question in a different series representation. The notation $`L_2(\mu)`$ for the right-hand series is introduced in Definition <a href="#catalogue:mob:a3" data-reference-type="ref" data-reference="catalogue:mob:a3">78</a>.*
+> This is the same irrationality question in a different series representation. The notation $`L_2(\mu)`$ for the right-hand series is introduced in Definition 6.29.*
 
 The Lean declaration below states this result.
 
@@ -1247,7 +1247,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.30 (Weight one and divisor sums), page 30
 
-> *$`\sum_{d:\mathbb{N}^+}' 1/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' \big(\sigma(n)-\tau(n)\big)\cdot(1/2)^n = \zeta_q(2) - \zeta_q(1)`$ at $`q=1/2`$. The displayed identity is formalised. Irrationality of its value follows from the cited linear independence result of Postelmans and Van Assche, as explained in Proposition <a href="#prop:zetaq" data-reference-type="ref" data-reference="prop:zetaq">46</a>; that literature result is not formalised here. Replacing the weight $`1`$ by $`\mu`$ changes the value to that of Definition <a href="#catalogue:mob:a3" data-reference-type="ref" data-reference="catalogue:mob:a3">78</a>. Observation <a href="#catalogue:mob:a6" data-reference-type="ref" data-reference="catalogue:mob:a6">81</a> compares the two choices of weight.*
+> *$`\sum_{d:\mathbb{N}^+}' 1/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' \big(\sigma(n)-\tau(n)\big)\cdot(1/2)^n = \zeta_q(2) - \zeta_q(1)`$ at $`q=1/2`$. The displayed identity is formalised. Irrationality of its value follows from the cited linear independence result of Postelmans and Van Assche, as explained in Proposition 5.17; that literature result is not formalised here. Replacing the weight $`1`$ by $`\mu`$ changes the value to that of Definition 6.29. Observation 6.32 compares the two choices of weight.*
 
 The Lean proof assumes the linear independence theorem of Postelmans and Van Assche. Lean takes this input as a hypothesis (`q_Pade_linear_independence`); it is not proved in Lean.
 
@@ -1304,7 +1304,7 @@ theorem moebius_weight_value :
 
 ## Proposition 6.31 (Totient weight and gcd moments), page 31
 
-> *$`\sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n`$, where $`P = \varphi * \mathrm{Id}`$ (Pillai’s gcd-sum function). It also equals $`\mathbb E[\gcd(X,Y)]`$ when $`X,Y`$ are independent and $`\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}`$ for $`n\ge1`$; see Proposition <a href="#prop:pillai" data-reference-type="ref" data-reference="prop:pillai">47</a>. This is a different weighted series. Its rationality is not settled by the identities proved here.*
+> *$`\sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n`$, where $`P = \varphi * \mathrm{Id}`$ (Pillai’s gcd-sum function). It also equals $`\mathbb E[\gcd(X,Y)]`$ when $`X,Y`$ are independent and $`\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}`$ for $`n\ge1`$; see Proposition 5.18. This is a different weighted series. Its rationality is not settled by the identities proved here.*
 
 The Lean declarations below together state this result.
 
@@ -1425,7 +1425,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{\substack{a,b\ge1\\\gcd(a,b)=1}}
 >                   \frac1{2^{a+b}-1}=1.
 > ```
-> To see the normalisation, write every pair of positive integers uniquely as $`(ka,kb)`$ with $`\gcd(a,b)=1`$, and sum $`2^{-k(a+b)}`$ over $`k\ge1`$. The total is $`(\sum_{n\ge1}2^{-n})^2=1`$. This base-two normalisation is used in Proposition <a href="#catalogue:mob:a9a" data-reference-type="ref" data-reference="catalogue:mob:a9a">84</a>.*
+> To see the normalisation, write every pair of positive integers uniquely as $`(ka,kb)`$ with $`\gcd(a,b)=1`$, and sum $`2^{-k(a+b)}`$ over $`k\ge1`$. The total is $`(\sum_{n\ge1}2^{-n})^2=1`$. This base-two normalisation is used in Proposition 6.35.*
 
 The Lean declaration below states this result.
 
@@ -1557,7 +1557,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.36 (Convergence with an explicit error), page 32
 
-> *In the splitting identity of Proposition <a href="#catalogue:mob:a9a" data-reference-type="ref" data-reference="catalogue:mob:a9a">84</a>, the sum of the two child terms is at most $`2/3`$ of the parent term. If $`M_d(a,b)`$ is the sum of the contributions removed during the first $`d`$ levels, then
+> *In the splitting identity of Proposition 6.35, the sum of the two child terms is at most $`2/3`$ of the parent term. If $`M_d(a,b)`$ is the sum of the contributions removed during the first $`d`$ levels, then
 > ``` math
 > |M(a,b)-M_d(a,b)|\le(2/3)^d M(a,b).
 > ```

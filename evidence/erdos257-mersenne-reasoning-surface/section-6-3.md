@@ -13,7 +13,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 >  \Longrightarrow\qquad Q(D_c\cup\{c\},2c-2)\ge2^{2c-3}.
 >  \end{gathered}
 > ```
-> It asks for the quotient bound at every skipped rank of the specified half-greedy orbit. This restricts the crossing test of Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> to its actual greedy prefixes. The finite uniqueness results justify that restriction where the cited induction uses it; they do not prove the displayed inequality.*
+> It asks for the quotient bound at every skipped rank of the specified half-greedy orbit. This restricts the crossing test of Theorem 6.70 to its actual greedy prefixes. The finite uniqueness results justify that restriction where the cited induction uses it; they do not prove the displayed inequality.*
 
 The Lean declaration below states this result.
 
@@ -43,7 +43,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > S(D,1,2c-3)<2^{c-3}.
 > ```
-> The one-step quotient recurrence gives $`S(D,1,2c-2)<2^{c-2}`$, so Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> supplies an exact row at depth $`2c-2`$ whose new ranks are all greater than $`c`$. The hypothesis concerns this pair of skipped ranks; no unbounded sequence of such pairs is proved here. For the stated precritical-suffix condition at every skipped rank, the remaining tests are the skip-then-take cases, with ranks $`4`$ and $`5`$ handled separately in the cited proof.*
+> The one-step quotient recurrence gives $`S(D,1,2c-2)<2^{c-2}`$, so Theorem 6.75 supplies an exact row at depth $`2c-2`$ whose new ranks are all greater than $`c`$. The hypothesis concerns this pair of skipped ranks; no unbounded sequence of such pairs is proved here. For the stated precritical-suffix condition at every skipped rank, the remaining tests are the skip-then-take cases, with ranks $`4`$ and $`5`$ handled separately in the cited proof.*
 
 The Lean declarations below together state this result.
 
@@ -109,7 +109,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 0<t\le c-3,\qquad c-2\le2^{c-t-3},
 > ```
-> then the precritical suffix bound at $`c`$ holds. It yields sharp capacity and hence an exact row at depth $`2c-2`$. The case $`t=1`$ includes Theorem <a href="#record:257bm-c6a" data-reference-type="ref" data-reference="record:257bm-c6a">116</a>; the proof also permits longer selected blocks. The arithmetic condition is precisely $`t\le c-3-\lceil\log_2(c-2)\rceil`$. Its role in the proof is to make the dyadic allowance $`2^{c-t-3}`$ cover the bound $`|D|\le c-2`$ for the earlier selected support.*
+> then the precritical suffix bound at $`c`$ holds. It yields sharp capacity and hence an exact row at depth $`2c-2`$. The case $`t=1`$ includes Theorem 6.73; the proof also permits longer selected blocks. The arithmetic condition is precisely $`t\le c-3-\lceil\log_2(c-2)\rceil`$. Its role in the proof is to make the dyadic allowance $`2^{c-t-3}`$ cover the bound $`|D|\le c-2`$ for the earlier selected support.*
 > 
 > *To obtain cofinal exact rows by this result, the stated gap condition must hold at cofinally many skipped ranks $`c`$, not just at one rank or throughout a finite sample. A finite empirical skip frequency alone gives no such pointwise gap bound.*
 
@@ -177,7 +177,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \ensuremath{S}(D,1,2c-2) < 2^{c-2},
 > ```
-> there is an exact row $`E`$ at endpoint $`2c-2`$ with $`D\subseteq E`$ and every new rank strictly above $`c`$. The implication requires the displayed capacity bound, but neither a crossing condition nor a specified real greedy prefix. The crossing hypothesis used in Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> is one way to seek that input, not an additional premise of this filling result. No strict comparison between the corresponding cofinal existence statements is asserted.*
+> there is an exact row $`E`$ at endpoint $`2c-2`$ with $`D\subseteq E`$ and every new rank strictly above $`c`$. The implication requires the displayed capacity bound, but neither a crossing condition nor a specified real greedy prefix. The crossing hypothesis used in Theorem 6.70 is one way to seek that input, not an additional premise of this filling result. No strict comparison between the corresponding cofinal existence statements is asserted.*
 
 The Lean declaration below states this result.
 
@@ -212,7 +212,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.76 (An exact sum at depth $`2c-2`$), page 63
 
-> *Under the hypotheses of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a>, there is a set $`E\subseteq\{2,\ldots,2c-2\}`$ with
+> *Under the hypotheses of Theorem 6.75, there is a set $`E\subseteq\{2,\ldots,2c-2\}`$ with
 > ``` math
 > Q(E,2c-2)=2^{2c-3}-1.
 > ```
@@ -250,7 +250,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > q(M,d)=\left\lfloor\frac{2^M}{2^d-1}\right\rfloor=2^{M-d}.
 > ```
-> Indeed, the quotient is $`2^{M-d}+2^{M-d}/(2^d-1)`$, whose second term is strictly between zero and one. In Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a>, the available ranks $`d=c+1,\ldots,2c-2`$ therefore supply the binary weights $`2^{c-3},\ldots,1`$. They represent every integer from $`0`$ to $`2^{c-2}-1`$, which explains both the capacity bound and the choice of terminal depth.*
+> Indeed, the quotient is $`2^{M-d}+2^{M-d}/(2^d-1)`$, whose second term is strictly between zero and one. In Theorem 6.75, the available ranks $`d=c+1,\ldots,2c-2`$ therefore supply the binary weights $`2^{c-3},\ldots,1`$. They represent every integer from $`0`$ to $`2^{c-2}-1`$, which explains both the capacity bound and the choice of terminal depth.*
 
 The Lean declarations below together state this result.
 
@@ -292,7 +292,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 0<\frac12-X_D(2)<\frac1{2^c-1}.
 > ```
-> Then there is $`E`$ with $`D\subseteq E\subseteq\{2,\ldots,2c-2\}`$ and $`Q(E,2c-2)=2^{2c-3}-1`$. No separate sharp-capacity assumption is required. The binary completion in the linked proof uses ranks $`c,\ldots,2c-2`$; it may therefore insert $`c`$. Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> instead assumes the sharper $`(c-2)`$-bit bound so that every added rank is strictly greater than $`c`$.*
+> Then there is $`E`$ with $`D\subseteq E\subseteq\{2,\ldots,2c-2\}`$ and $`Q(E,2c-2)=2^{2c-3}-1`$. No separate sharp-capacity assumption is required. The binary completion in the linked proof uses ranks $`c,\ldots,2c-2`$; it may therefore insert $`c`$. Theorem 6.75 instead assumes the sharper $`(c-2)`$-bit bound so that every added rank is strictly greater than $`c`$.*
 
 The Lean declaration below states this result.
 
@@ -394,7 +394,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \mathrm{rem}(d+1)+E_d=2^{d+1}.
 > ```
-> The nonnegativity of the successor remainder therefore gives $`E_d\le2^{d+1}`$, the side condition needed for Theorem <a href="#record:257bm-c11" data-reference-type="ref" data-reference="record:257bm-c11">122</a>. This argument uses the upper-reset branch assumption. It does not require the separate, conditional two-sided bound of Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a>, and does not assert the charge bound at arbitrary rows.*
+> The nonnegativity of the successor remainder therefore gives $`E_d\le2^{d+1}`$, the side condition needed for Theorem 6.79. This argument uses the upper-reset branch assumption. It does not require the separate, conditional two-sided bound of Theorem 6.9, and does not assert the charge bound at arbitrary rows.*
 
 The Lean declarations below together state this result.
 
@@ -433,7 +433,7 @@ theorem seamUpperResetCharge_le
 >  \text{the integer remainder at }n\text{ is zero}.
 > \end{gathered}
 > ```
-> This condition is equivalent to Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">124</a>. At an actual skipped rank, the source proves that $`F(n-1,n)<0`$ holds exactly when the real prefix agrees with the integer greedy word and its integer remainder is positive. On agreement, $`F(n-1,n)`$ is the negative of that nonnegative remainder. Thus nonnegativity of the margin at every skip is equivalent to vanishing of the remainder at every aligned skip. The equivalence is proved; neither condition is established for all required ranks.*
+> This condition is equivalent to Definition 6.81. At an actual skipped rank, the source proves that $`F(n-1,n)<0`$ holds exactly when the real prefix agrees with the integer greedy word and its integer remainder is positive. On agreement, $`F(n-1,n)`$ is the negative of that nonnegative remainder. Thus nonnegativity of the margin at every skip is equivalent to vanishing of the remainder at every aligned skip. The equivalence is proved; neither condition is established for all required ranks.*
 
 The Lean declarations below together state this result.
 
@@ -554,7 +554,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \forall N,\qquad C_G(N) \le 2\sqrt N + 4,
 > ```
-> then the greedy selected support $`G`$ is infinite and $`X_G(2)=1/2`$. Nonnegativity of $`C_G`$ is unconditional (see Theorem <a href="#thm:mobius-centred-nonneg" data-reference-type="ref" data-reference="thm:mobius-centred-nonneg">54</a> and the greedy case above); only the upper $`2\sqrt N+4`$ bound remains open. This is a different hypothesis from the dyadic-band condition and the largest-skip condition; logical independence is not asserted.*
+> then the greedy selected support $`G`$ is infinite and $`X_G(2)=1/2`$. Nonnegativity of $`C_G`$ is unconditional (see Theorem 6.11 and the greedy case above); only the upper $`2\sqrt N+4`$ bound remains open. This is a different hypothesis from the dyadic-band condition and the largest-skip condition; logical independence is not asserted.*
 
 The Lean declarations below together state this result.
 
@@ -600,13 +600,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Then some infinite $`A\subseteq\mathbb{N}_{>0}`$ satisfies $`X_A(2)=1/2`$. No compatibility between different finite supports or bound on their earlier carries is required.*
 > 
-> *These are not the exact-row conditions of Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a>. For such a finite support,
+> *These are not the exact-row conditions of Definition 6.66. For such a finite support,
 > ``` math
 > \operatorname{ihc}(D,M-1)=2^{M-1}-Q(D,M),
 > ```
-> so an exact row has carry $`1`$, whereas the displayed bound allows several positive and negative values. At $`M=6`$, for example, $`D=\{2,3\}`$ has $`Q(D,6)=30`$ and carry $`2`$: it satisfies the terminal bound but is not an exact row. Both cofinal existence statements nevertheless imply, and are implied by, half-membership, as explained in Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>. The difference between their finite data must not be confused with a strict logical weakening of the membership problem.*
+> so an exact row has carry $`1`$, whereas the displayed bound allows several positive and negative values. At $`M=6`$, for example, $`D=\{2,3\}`$ has $`Q(D,6)=30`$ and carry $`2`$: it satisfies the terminal bound but is not an exact row. Both cofinal existence statements nevertheless imply, and are implied by, half-membership, as explained in Proposition 2.7. The difference between their finite data must not be confused with a strict logical weakening of the membership problem.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones: an infinite $A\subseteq\mathbb N_{>0}$ with $X_A(2)=1/2$, the carry identity, the carry $1$ of an exact row, the example at $M=6$, and both equivalences with half-membership. The carry identity is stated for every finite $D$ with elements at least $2$, and in the last equivalence the terminal-bound condition is written with a binary word whose support, which omits $0$ and $1$, is the set $D$.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones: an infinite $A\subseteq\mathbb N_{>0}$ with $X_A(2)=1/2$, the carry identity, the carry $1$ of an exact row, the example at $M=6$, and both equivalences with half-membership. The carry identity is stated for every finite $D$ with elements at least $2$, and in the last equivalence the terminal-bound condition is written with a binary word whose support, which omits $0$ and $1$, is the set $D$.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/TerminalStripExactRowGap.lean#L44)
 
@@ -679,7 +679,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \operatorname{ihc}(G,M)\le B(M+1)
 >        =2\lfloor\sqrt{M+1}\rfloor+4.
 > ```
-> Then $`G`$ is infinite and $`X_G(2)=1/2`$. Unlike Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">127</a>, this hypothesis bounds the actual greedy carry only at unboundedly many indices. It still concerns the same fixed support $`G`$, not independently chosen finite supports. Comparing this carry with the carry obtained by fixing a finite prefix introduces a contribution from later omitted ranks. No equivalence with the finite-support hypothesis of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> follows without controlling that additional contribution. The hypothesis is not established.*
+> Then $`G`$ is infinite and $`X_G(2)=1/2`$. Unlike Theorem 6.84, this hypothesis bounds the actual greedy carry only at unboundedly many indices. It still concerns the same fixed support $`G`$, not independently chosen finite supports. Comparing this carry with the carry obtained by fixing a finite prefix introduces a contribution from later omitted ranks. No equivalence with the finite-support hypothesis of Theorem 6.75 follows without controlling that additional contribution. The hypothesis is not established.*
 
 The Lean declarations below together state this result.
 
@@ -729,7 +729,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \quad\Longleftrightarrow\quad
 >  F_k(J)\ge0\ \text{for some }J\ge0.
 > ```
-> Here $`F_k(J)`$ is the integer expression defined in Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">56</a>. Its normalised value is
+> Here $`F_k(J)`$ is the integer expression defined in Theorem 6.13. Its normalised value is
 > ``` math
 > 2^{-J}F_k(J)=\sum_{i=1}^{J}c_D(k+1+i)2^{-i}-C_D(k).
 > ```
@@ -737,7 +737,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 
 > *The result supplies some finite horizon, not the horizon $`J=c-3`$ required in the crossing application. More quantitatively, write $`\eta=1-2^{k+1}r_k(1/2)>0`$. Since $`\sum_{r\ge1}c_D(m+r)2^{-r}\le m+2`$, the omitted tail shows that $`(k+J+3)2^{-J}<\eta`$ suffices for $`F_k(J)>0`$. The value $`\eta`$ is rational for the finite support $`D`$, so this is an effective sufficient test. Proving it at the prescribed horizon is a separate arithmetic obligation.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean tail bound $\sum_{r\ge1}c_A(m+r)2^{-r}\le m+2$ holds for every set $A\subseteq\N$, of which $D$ is a case, and the normalised value, its monotonicity and limit, the positivity criterion, the effective test and the rationality of $\eta$ are proved for every $k\ge0$; the equivalence and the exclusion of $r_k(1/2)=2^{-(k+1)}$ assume $k\ge1$ as printed.
+The Lean declarations below together state this result or one that implies it. The Lean tail bound $\sum_{r\ge1}c_A(m+r)2^{-r}\le m+2$ holds for every set $A\subseteq\N$, of which $D$ is a case, and the normalised value, its monotonicity and limit, the positivity criterion, the effective test and the rationality of $\eta$ are proved for every $k\ge0$; the equivalence and the exclusion of $r_k(1/2)=2^{-(k+1)}$ assume $k\ge1$ as printed.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean#L56)
 
@@ -859,7 +859,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > *``` math
 > \tfrac12\in\ensuremath{\mathcal A} \;\Longleftrightarrow\; \text{the set of ranks skipped by the greedy rule for }\tfrac12\text{ is infinite}.
 > ```
-> Odd-denominator parity supplies the positivity clause in Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">111</a> automatically. Thus its cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is infinite, which the displayed theorem identifies with half-membership. See Observation <a href="#record:257bm-k5" data-reference-type="ref" data-reference="record:257bm-k5">175</a> for the reason this restatement does not itself prove membership.*
+> Odd-denominator parity supplies the positivity clause in Theorem 6.68 automatically. Thus its cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is infinite, which the displayed theorem identifies with half-membership. See Observation 6.132 for the reason this restatement does not itself prove membership.*
 
 The Lean declarations below together state this result.
 
@@ -956,7 +956,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > Q(D,M+1)=2Q(D,M)+c_D(M+1).
 > ```
-> This is the sum of Theorem <a href="#record:257bm-i1a" data-reference-type="ref" data-reference="record:257bm-i1a">132</a> over $`d\in D`$. Keeping $`D`$ fixed is essential: changing the support between steps adds a separate difference of quotient sums. The exclusion of $`d=1`$ is also essential for the displayed correction term, since $`q(M,1)=2^M`$ doubles without an added unit.*
+> This is the sum of Theorem 6.89 over $`d\in D`$. Keeping $`D`$ fixed is essential: changing the support between steps adds a separate difference of quotient sums. The exclusion of $`d=1`$ is also essential for the displayed correction term, since $`q(M,1)=2^M`$ doubles without an added unit.*
 
 The Lean declaration below states this result.
 
@@ -985,7 +985,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.91 (The signed endpoint recurrence), page 67
 
-> *The signed next-step expression is $`H(D,k,n)=2S(D,k,n-1)+1-c_D(n)`$. The last term counts the selected exponents dividing the new endpoint. This is the same recurrence shape as the generic tempered-orbit recurrence $`u(N+1)=2u(N)-v\cdot c(N+1)`$ from the tempered-orbit criterion (Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> below), specialised to Mersenne local repair. A matching recurrence alone does not imply rationality: Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> also requires one fixed coefficient sequence, integer states and a vanishing scaled limit. Those additional conditions must be checked before that criterion can be applied to these finite-row quantities.*
+> *The signed next-step expression is $`H(D,k,n)=2S(D,k,n-1)+1-c_D(n)`$. The last term counts the selected exponents dividing the new endpoint. This is the same recurrence shape as the generic tempered-orbit recurrence $`u(N+1)=2u(N)-v\cdot c(N+1)`$ from the tempered-orbit criterion (Theorem 6.105 below), specialised to Mersenne local repair. A matching recurrence alone does not imply rationality: Theorem 6.105 also requires one fixed coefficient sequence, integer states and a vanishing scaled limit. Those additional conditions must be checked before that criterion can be applied to these finite-row quantities.*
 
 The Lean declarations below together state this result.
 
@@ -1043,7 +1043,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.93 (Equivalent forms of the sharper bound), page 67
 
-> *Under the hypotheses of Definition <a href="#record:257bm-i-cap" data-reference-type="ref" data-reference="record:257bm-i-cap">135</a>:
+> *Under the hypotheses of Definition 6.92:
 > ``` math
 > \ensuremath{S}(D,1,2c-2) < 2^{c-2} \;\Longleftrightarrow\; 2^{(2c-2)-1} \le \ensuremath{Q}(D\cup\{c\},\ 2c-2).
 > ```
@@ -1082,7 +1082,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \ensuremath{S}(D,1,2c-2) < 2^{c-1}.
 > ```
-> The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">136</a> to apply Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a>. Before using $`|D|\le c-2\le2^{c-2}`$, the proof gives the sharper additive estimate $`\ensuremath{S}(D,1,2c-2)<2^{c-2}+|D|`$. Thus the critical-capacity inequality would follow by excluding the integer band $`[2^{c-2},\,2^{c-2}+c-3]`$, which contains $`c-2`$ integers. This is the same band shape as Theorem <a href="#record:257bm-c11" data-reference-type="ref" data-reference="record:257bm-c11">122</a>’s dyadic-band condition. Its width is linear in $`c`$, whereas the square-root reset condition discussed in Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> has width $`2^{(r+5)/2}`$ in a different parameter $`r`$. Comparing these widths alone proves no implication between the two hypotheses.*
+> The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem 6.93 to apply Theorem 6.75. Before using $`|D|\le c-2\le2^{c-2}`$, the proof gives the sharper additive estimate $`\ensuremath{S}(D,1,2c-2)<2^{c-2}+|D|`$. Thus the critical-capacity inequality would follow by excluding the integer band $`[2^{c-2},\,2^{c-2}+c-3]`$, which contains $`c-2`$ integers. This is the same band shape as Theorem 6.79’s dyadic-band condition. Its width is linear in $`c`$, whereas the square-root reset condition discussed in Section 12.5 has width $`2^{(r+5)/2}`$ in a different parameter $`r`$. Comparing these widths alone proves no implication between the two hypotheses.*
 
 The Lean declarations below together state this result.
 
@@ -1194,7 +1194,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.96 (Every exact sum contains exponent two), page 69
 
-> *Let $`n\ge3`$ and let $`D\subseteq\{2,\ldots,n\}`$ satisfy $`Q(D,n)=2^{n-1}-1`$. Then $`2\in D`$. Thus the rank-two hypothesis in Theorem <a href="#record:257bm-i7" data-reference-type="ref" data-reference="record:257bm-i7">138</a> is automatic for its exact rows. The interval restriction on $`D`$ is part of the assertion, not an assumption about arbitrary finite quotient sums.*
+> *Let $`n\ge3`$ and let $`D\subseteq\{2,\ldots,n\}`$ satisfy $`Q(D,n)=2^{n-1}-1`$. Then $`2\in D`$. Thus the rank-two hypothesis in Theorem 6.95 is automatic for its exact rows. The interval restriction on $`D`$ is part of the assertion, not an assumption about arbitrary finite quotient sums.*
 
 The Lean declaration below states this result.
 
@@ -1223,7 +1223,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.98 (Error in the finite subseries value), page 69
 
-> *An exact row at endpoint $`n`$ has real value within $`O(n/2^n)`$ of $`1/2`$: the quantitative bound $`|y_n-1/2|\le(n+1)/2^n`$ consumed by Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">110</a> to turn a sequence of exact rows tending to depth infinity into a sequence of values tending to $`1/2`$.*
+> *An exact row at endpoint $`n`$ has real value within $`O(n/2^n)`$ of $`1/2`$: the quantitative bound $`|y_n-1/2|\le(n+1)/2^n`$ consumed by Theorem 6.67 to turn a sequence of exact rows tending to depth infinity into a sequence of values tending to $`1/2`$.*
 
 The Lean declaration below states this result.
 
@@ -1252,7 +1252,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.99 (No finite support has value one half), page 69
 
-> *A finite sum of reciprocals of odd integers has odd denominator in lowest terms, so it cannot equal $`1/2`$. Applied to the denominators $`2^a-1`$, this proves that a support representing $`1/2`$ must be infinite, as used in Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">110</a>.*
+> *A finite sum of reciprocals of odd integers has odd denominator in lowest terms, so it cannot equal $`1/2`$. Applied to the denominators $`2^a-1`$, this proves that a support representing $`1/2`$ must be infinite, as used in Theorem 6.67.*
 
 The Lean declarations below together state this result.
 
@@ -1362,7 +1362,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \ge 2^{M-R}+
 >  \sum_{j=d+1}^{R}\left\lfloor\frac{2^M}{2^j-1}\right\rfloor.
 > ```
-> Thus the finite weight list at ranks $`2,\ldots,R`$ satisfies the hypothesis of Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> with $`g=2^{M-R}`$. At $`M=2R-1`$ this gap is $`2^{R-1}`$, and at $`M=2R`$ it is $`2^R`$. The inequality is unconditional; it does not assert that the greedy remainder is smaller than the gap.*
+> Thus the finite weight list at ranks $`2,\ldots,R`$ satisfies the hypothesis of Theorem 6.100 with $`g=2^{M-R}`$. At $`M=2R-1`$ this gap is $`2^{R-1}`$, and at $`M=2R`$ it is $`2^R`$. The inequality is unconditional; it does not assert that the greedy remainder is smaller than the gap.*
 
 The Lean declarations below together state this result.
 
@@ -1412,7 +1412,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >        \left\lfloor\frac{2^M}{2^d-1}\right\rfloor+a
 >        =2^{M-1}-1,\qquad \varepsilon_d\in\{0,1\},
 > ```
-> then $`\varepsilon`$ is the greedy word for capacity $`2^{M-1}-1`$ and $`a`$ is its remainder. This follows by applying Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> with the preceding gap inequality. The statement identifies any such representation; it does not prove that a representation with $`a<2^{M-R}`$ exists. The degenerate formal case $`M=0`$ has empty word and zero target, using truncated natural-number subtraction.*
+> then $`\varepsilon`$ is the greedy word for capacity $`2^{M-1}-1`$ and $`a`$ is its remainder. This follows by applying Theorem 6.100 with the preceding gap inequality. The statement identifies any such representation; it does not prove that a representation with $`a<2^{M-R}`$ exists. The degenerate formal case $`M=0`$ has empty word and zero target, using truncated natural-number subtraction.*
 
 The Lean declaration below states this result.
 
@@ -1452,7 +1452,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \left\lfloor\frac{2^M}{2^d-1}\right\rfloor
 >    =\sum_{j=1}^{\lfloor M/d\rfloor}2^{M-jd},
 > ```
-> where an empty sum is zero. To see this, write $`M=qd+r`$ with $`0\le r<d`$ and expand the finite geometric sum. The remaining fraction is $`2^r/(2^d-1)`$, which lies strictly between $`0`$ and $`1`$. Substitution in Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">136</a> expresses its quotient condition as a finite sum of powers of $`2`$. This is an exact rewriting, not a weaker hypothesis or a new existence result.*
+> where an empty sum is zero. To see this, write $`M=qd+r`$ with $`0\le r<d`$ and expand the finite geometric sum. The remaining fraction is $`2^r/(2^d-1)`$, which lies strictly between $`0`$ and $`1`$. Substitution in Theorem 6.93 expresses its quotient condition as a finite sum of powers of $`2`$. This is an exact rewriting, not a weaker hypothesis or a new existence result.*
 
 The Lean declarations below together state this result.
 
@@ -1510,9 +1510,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \sum_{r\ge1}c(N+r)2^{-r}\le N+2\qquad(N\ge0).
 > ```
-> Indeed, $`c(N+r)\le N+r`$, while $`\sum_{r\ge1}2^{-r}=1`$ and $`\sum_{r\ge1}r2^{-r}=2`$. Thus the scaled tail is $`O(N)`$, and in particular $`o(2^N)`$, as required in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a>. The coefficient bound also holds for Euler’s totient function.*
+> Indeed, $`c(N+r)\le N+r`$, while $`\sum_{r\ge1}2^{-r}=1`$ and $`\sum_{r\ge1}r2^{-r}=2`$. Thus the scaled tail is $`O(N)`$, and in particular $`o(2^N)`$, as required in Theorem 6.105. The coefficient bound also holds for Euler’s totient function.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one, for every $N\ge0$. A second Lean statement gives the consequence $2^{-N}\sum_{r\ge1}c(N+r)2^{-r}\to0$.
+The Lean declarations below together state this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, for every $N\ge0$. A second Lean statement gives the consequence $2^{-N}\sum_{r\ge1}c(N+r)2^{-r}\to0$.
 
 1. [`Erdos249257.binaryCoeffTail_le`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/GenericTailOrbitRigidity.lean#L85)
 
@@ -1551,7 +1551,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > The limit condition is $`u(N)=o(2^N)`$; it does not assume that $`u`$ is bounded. No divisor-count hypothesis is imposed on $`c`$. Thus the ordinary statement also applies to $`c=\varphi`$; the identification with the separate formal \#249 development, including its indexing conventions, is not asserted here.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one, with rationality written as the negation of irrationality.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, with rationality written as the negation of irrationality.
 
 [`Erdos249257.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/GenericTailOrbitRigidity.lean#L435)
 

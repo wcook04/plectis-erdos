@@ -17,7 +17,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 > ```
 > and the right-hand side, with an arbitrary integer $`x\ge0`$ in place of $`M`$, depends on $`x`$ only through its residues modulo the integers $`d`$ with $`2\le d\le D`$. The cutoff $`D`$ has to be fixed before the argument varies: at $`(M,L)=(1,1)`$ the cutoff is $`M+L=2`$, the integers $`1`$ and $`3`$ have the same residue modulo every $`d`$ with $`2\le d\le 2`$, and yet $`\Theta_1(1)=1/2`$ while $`\Theta_1(3)=1`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue condition $i\equiv-M\pmod d$ written as $d\mid M+i$. They define $i_d(M)=d-(M\bmod d)$ and prove that it is the least $i\ge1$ with $d\mid M+i$, lies in $[1,d]$ and depends only on $M\bmod d$.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue condition $i\equiv-M\pmod d$ written as $d\mid M+i$. They define $i_d(M)=d-(M\bmod d)$ and prove that it is the least $i\ge1$ with $d\mid M+i$, lies in $[1,d]$ and depends only on $M\bmod d$.
 
 1. [`ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_divisorResidue`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/ShortWindowDivisorPhase.lean#L417)
 

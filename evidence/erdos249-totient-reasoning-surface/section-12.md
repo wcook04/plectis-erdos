@@ -20,7 +20,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 > ```
 > Hence, for fixed $`h`$, the phases $`\{\,R_{N+h}-R_N \bmod 1\,\}_{N\ge 0}`$ are the forward orbit of $`\alpha_h \bmod 1`$ under $`x\mapsto 2x`$.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements give the recurrence, the identity for $R_{N+h}-R_N$, the congruence modulo $1$, the equality of first characters and the description of the phases as the doubling orbit of $\alpha_h$, with $\alpha_h=(2^h-1)S$ written out. They also hold at $h=0$, where $\alpha_0=0$ and every identity is trivial.
+The Lean declarations below together state this result or one that implies it. The Lean statements give the recurrence, the identity for $R_{N+h}-R_N$, the congruence modulo $1$, the equality of first characters and the description of the phases as the doubling orbit of $\alpha_h$, with $\alpha_h=(2^h-1)S$ written out. They also hold at $h=0$, where $\alpha_0=0$ and every identity is trivial.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_recurrence`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L26)
 
@@ -222,7 +222,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Consequently the block norm condition fails for $`\beta`$ at every sufficiently large scale, for every admissible truncation depth, even though $`\beta`$ is irrational. Thus irrationality, nonnegative integer coefficients and the bound $`c(n)\le n`$ do not imply the block gap. A proof for $`S`$ needs an additional property not shared by this example; the comparison does not specify which additional property will suffice.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed claims. The failure of the block norm condition is stated as $\bigl\|\sum_{X\le N<2X}E(h,N,L)\bigr\|>\tfrac{21}{25}X$ for every $h\ge1$, every $X\ge81(h+5)$ and every depth $L$ with $16(2X+h+L+2)\le2^L$, where $E$ is formed from the coefficients $c(n)$.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed claims. The failure of the block norm condition is stated as $\bigl\|\sum_{X\le N<2X}E(h,N,L)\bigr\|>\tfrac{21}{25}X$ for every $h\ge1$, every $X\ge81(h+5)$ and every depth $L$ with $16(2X+h+L+2)\le2^L$, where $E$ is formed from the coefficients $c(n)$.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.lacCoef_bounds`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L68)
 
@@ -294,7 +294,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > for all sufficiently large $`X`$. Here $`\Psi(x,y)`$ counts the positive integers at most $`x`$ whose prime factors are all at most $`y`$. This is an upper bound for the unassigned count, not an asymptotic equality for that count.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement gives the explicit bound $t\le h+\lfloor\log_2X\rfloor+11$ in place of $t=O_{h,s}(\log X)$, and proves the bound $P(n)\le y_X$ and the bound of the unassigned count by $\Psi(2X+t-1,y_X)-\Psi(X+t-1,y_X)$ for every $X\ge1$; the asymptotic $(1-\log2+o(1))X$ and the bound $\tfrac8{25}X$ for all large $X$ are as printed.
+The Lean declaration below states this result or one that implies it. The Lean statement gives the explicit bound $t\le h+\lfloor\log_2X\rfloor+11$ in place of $t=O_{h,s}(\log X)$, and proves the bound $P(n)\le y_X$ and the bound of the unassigned count by $\Psi(2X+t-1,y_X)-\Psi(X+t-1,y_X)$ for every $X\ge1$; the asymptotic $(1-\log2+o(1))X$ and the bound $\tfrac8{25}X$ for all large $X$ are as printed.
 
 [`ErdosProblems.Erdos249.PaperCompleteR21.prop_dickman`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556)
 
@@ -338,7 +338,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 12.7 (The excluded-cofactor estimate), page 117
 
-> *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">273</a>; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\]. Then
+> *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition 12.6; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\]. Then
 > ``` math
 > \#\{N\in\mathcal A:m_N\in B(\eta)\}
 >   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,

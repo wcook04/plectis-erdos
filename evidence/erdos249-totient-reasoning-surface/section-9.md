@@ -56,7 +56,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \sum_{N\in T} \operatorname{Re}E(h,N,L) \;\le\; \tfrac{9}{10}\,|T| ,
 > ```
-> then $`\exists N\in T`$ with $`\mathcal{C}\ h\ N\ L`$. This generalises Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">214</a>: $`T`$ can be *any* explicitly chosen nonempty finite subset of the dyadic block, not the whole block, and the proof (an averaging pigeonhole) never uses that $`T`$ has positive density or comes from a partition.*
+> then $`\exists N\in T`$ with $`\mathcal{C}\ h\ N\ L`$. This generalises Theorem 9.4: $`T`$ can be *any* explicitly chosen nonempty finite subset of the dyadic block, not the whole block, and the proof (an averaging pigeonhole) never uses that $`T`$ has positive density or comes from a partition.*
 
 The Lean declarations below together state this result.
 
@@ -105,7 +105,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.6 (A norm bound gives the real-part criterion), page 84
 
-> *The complex norm bound implies the real-part bound ($`|z|\ge\mathrm{Re}(z)`$, and $`21/25 < 9/10`$ absorbs the slack), so it composes through Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">214</a> to the same certificate. Define
+> *The complex norm bound implies the real-part bound ($`|z|\ge\mathrm{Re}(z)`$, and $`21/25 < 9/10`$ absorbs the slack), so it composes through Theorem 9.4 to the same certificate. Define
 > ``` math
 > \text{block norm condition} :\Leftrightarrow\;
 >   \forall h{>}0\ \forall X_0\ \exists X, L,\ \max(X_0,1)\le X\ \wedge\ 16(2X{+}h{+}L{+}2)\le 2^L\ \wedge
@@ -118,7 +118,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \text{block norm condition} \;\Longrightarrow\; \mathrm{Irrational}\Bigl(\sum_{n\ge 0}
 >   \tfrac{\varphi(n)}{2^n}\Bigr),
 > ```
-> proved in full, with no further gap, by chaining Theorem <a href="#thm:hgap-norm" data-reference-type="ref" data-reference="thm:hgap-norm">216</a>$`\to`$Theorem <a href="#thm:hgap-real" data-reference-type="ref" data-reference="thm:hgap-real">214</a>$`\to`$ Theorem <a href="#catalogue:cert:a10" data-reference-type="ref" data-reference="catalogue:cert:a10">96</a>.*
+> proved in full, with no further gap, by chaining Theorem 9.6$`\to`$Theorem 9.4$`\to`$ Theorem 6.47.*
 
 The Lean declarations below together state this result.
 
@@ -596,9 +596,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension"></a>
 
-## Proposition 9.18 (A sufficient extension), page 88
+## Proposition 9.18 (A sufficient extension), page 87
 
-> *Either of the following suffices: (i) the lower-escape branch cofinally, as displayed just above; or (ii) the two-sided magnitude form (item 4 of Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">224</a>), which asks only $`H{+}q{+}2 \le
+> *Either of the following suffices: (i) the lower-escape branch cofinally, as displayed just above; or (ii) the two-sided magnitude form (item 4 of Proposition 9.14), which asks only $`H{+}q{+}2 \le
 > |u_{a,q}|`$ and which the Lean source proves implies corridor escape via a clean sign split (positive branch escapes above the terminal letter, negative branch escapes below the directed bound), without prescribing the sign of the centred representative. Neither branch is supplied by the conditional sign identity itself.*
 
 The Lean declarations below together state this result.
@@ -1288,7 +1288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.41, page 93
 
-> *Use $`J(H,p)`$, $`W(H,p,L)`$ and $`B(H,p,L)`$ from Theorem <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a>. For all $`H,p,L\in\mathbb N`$,
+> *Use $`J(H,p)`$, $`W(H,p,L)`$ and $`B(H,p,L)`$ from Theorem 6.60. For all $`H,p,L\in\mathbb N`$,
 > ``` math
 > B(H,p,L)<W(H,p,L)\bmod2^L<2^L-B(H,p,L)
 >  \quad\Longrightarrow\quad J(H,p)\notin\mathbb Z.
@@ -1350,7 +1350,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > W(12,5,15)=149906,\qquad
 >  W(12,5,15)\bmod32768=18834,\qquad B(12,5,15)=282.
 > ```
-> Thus $`282<18834<32486`$, and $`J(12,5)\notin\mathbb Z`$. This is the one instance singled out in Theorem <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a>, not a claim of uniqueness or of the smallest possible height. The implication from a quantified family is Theorem <a href="#catalogue:mob:e2" data-reference-type="ref" data-reference="catalogue:mob:e2">109</a>.*
+> Thus $`282<18834<32486`$, and $`J(12,5)\notin\mathbb Z`$. This is the one instance singled out in Theorem 6.60, not a claim of uniqueness or of the smallest possible height. The implication from a quantified family is Theorem 6.60.*
 
 The Lean declarations below together state this result.
 
@@ -1414,7 +1414,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 2^{\lfloor t/2\rfloor}\le2^p-1<2^t,
 >  \qquad 2^p-1\mid\operatorname{den}(H_t\beta_{H_t}).
 > ```
-> Indeed, Bertrand’s postulate makes $`\mathcal P_t`$ nonempty. Its members satisfy $`p-1\ge\lfloor t/2\rfloor`$ and $`p\le t`$, giving the size bounds. The divisibility follows from Proposition <a href="#catalogue:mob:b6" data-reference-type="ref" data-reference="catalogue:mob:b6">55</a>; divisibility of a positive reduced denominator also gives the product inequality.*
+> Indeed, Bertrand’s postulate makes $`\mathcal P_t`$ nonempty. Its members satisfy $`p-1\ge\lfloor t/2\rfloor`$ and $`p\le t`$, giving the size bounds. The divisibility follows from Proposition 6.6; divisibility of a positive reduced denominator also gives the product inequality.*
 
 The Lean declarations below together state this result.
 
@@ -1513,7 +1513,7 @@ theorem exists_upperHalf_channel_paper {t : ℕ} (ht : 5 ≤ t) :
 > u_t\ne S\quad\text{for all sufficiently large }t,
 >  \qquad \operatorname{den}(u_t)|S-u_t|\longrightarrow0.
 > ```
-> This is the rational-separation criterion of Proposition <a href="#catalogue:cert:d1" data-reference-type="ref" data-reference="catalogue:cert:d1">71</a>: if $`S=a/b`$ were reduced, every unequal $`u_t`$ would instead satisfy $`\operatorname{den}(u_t)|S-u_t|\ge1/b`$. An upper bound tending to zero for this product is needed. A lower bound for the denominator cannot establish it; improving a lower bound does not change the actual approximation error.*
+> This is the rational-separation criterion of Proposition 6.22: if $`S=a/b`$ were reduced, every unequal $`u_t`$ would instead satisfy $`\operatorname{den}(u_t)|S-u_t|\ge1/b`$. An upper bound tending to zero for this product is needed. A lower bound for the denominator cannot establish it; improving a lower bound does not change the actual approximation error.*
 > 
 > *A different argument could deduce a residue certificate from the surviving divisor and further information about the complementary term. The denominator theorem alone contains no such separation statement. Neither sufficient argument is established by its lower bound, and these are not claimed to exhaust possible approaches.*
 
@@ -1612,7 +1612,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \dim_{\mathbb{Q}}\operatorname{span}
 >  \{n\mapsto u_{2^j n+r}:1\le j\le e,\ 0\le r<2^j\}\ge2^e-1.
 > ```
-> The proof is given in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>.*
+> The proof is given in Section 10.8.*
 
 The Lean declaration below states this result.
 
@@ -1645,9 +1645,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 95
 
-> *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition <a href="#prop:period-not-rank" data-reference-type="ref" data-reference="prop:period-not-rank">7</a> records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
+> *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition 1.7 records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
 
-The Lean declarations below together state a result at least as strong as this one. For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\le c(n)\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.
+The Lean declarations below together state this result or one that implies it. For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\le c(n)\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.
 
 1. [`ErdosProblems.Erdos249.PaperCompleteR21.rationalControl_periodic_with_unbounded_carry_rank`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/DyadicSectionBasisAndRationalCarry.lean#L238)
 

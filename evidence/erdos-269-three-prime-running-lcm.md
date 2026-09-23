@@ -22,7 +22,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 >  \qquad\hbox{for all }i,j,k.
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22)
 
@@ -54,7 +54,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement holds for every $n\ge0$ and, for the same $I,J$, also gives nonzero rational determinants at every $k$ and an invertible kernel matrix modulo $B$; its unit-determinant clause for $n\ge1$ is the printed statement.
+The Lean declaration below states this result or one that implies it. The Lean statement holds for every $n\ge0$ and, for the same $I,J$, also gives nonzero rational determinants at every $k$ and an invertible kernel matrix modulo $B$; its unit-determinant clause for $n\ge1$ is the printed statement.
 
 [`ErdosProblems.Erdos269.PaperR7.admissible_modular_minors`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133)
 
@@ -84,7 +84,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement drops the hypothesis that $E$ is nonempty; for nonempty $E\subseteq\{0,\ldots,m\}$ and any finite matrix whose set of columns is $\{v_k:k\in E\}$ it gives the printed rank $|E|-\mathbf 1_{\{0,m\}\subseteq E}$.
+The Lean declaration below states this result or one that implies it. The Lean statement drops the hypothesis that $E$ is nonempty; for nonempty $E\subseteq\{0,\ldots,m\}$ and any finite matrix whose set of columns is $\{v_k:k\in E\}$ it gives the printed rank $|E|-\mathbf 1_{\{0,m\}\subseteq E}$.
 
 [`ErdosProblems.Erdos269.PaperR7.rank_cutMatrix`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182)
 
@@ -260,7 +260,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L49)
 
@@ -288,7 +288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
-The Lean declarations below together state a result at least as strong as this one. The Lean statements have the same hypotheses and conclusions as the printed ones, for real $x,y\ge1$. Equal integer logarithms give equal running LCMs, and an increase by one in exactly one of $\lfloor\log_px\rfloor$, $\lfloor\log_qx\rfloor$, $\lfloor\log_rx\rfloor$, with the other two unchanged, multiplies the running LCM by that prime. The count also records that the $3n$ positive powers alone are distinct.
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, for real $x,y\ge1$. Equal integer logarithms give equal running LCMs, and an increase by one in exactly one of $\lfloor\log_px\rfloor$, $\lfloor\log_qx\rfloor$, $\lfloor\log_rx\rfloor$, with the other two unchanged, multiplies the running LCM by that prime. The count also records that the $3n$ positive powers alone are distinct.
 
 1. [`ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_eq_of_sameLogCell`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L65)
 
@@ -405,7 +405,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *For every $`a\ge0`$, $`m_a`$ is a positive integer and $`b_a\in\{2,6,10,30\}`$. The word “numerator” does not impose the positional-digit restriction $`m_a<b_a`$; that restriction need not hold.*
 
-The Lean declaration below states a result at least as strong as this one. For every $a\ge0$ the Lean statement gives $m_a\in\mathbb Z_{>0}$ and $b_a\in\{2,6,10,30\}$, and adds $m_4=65$ and $b_4=30$, which show that $m_a<b_a$ can fail. In Lean $b_a$ is defined as $2$, multiplied by $3$ when a power of $3$ lies strictly between $2^a$ and $2^{a+1}$ and by $5$ when a power of $5$ does; `threePrimeHeight_dyadicBlock_succ` proves that this equals $\hgt(2^{a+1})/\hgt(2^a)$.
+The Lean declaration below states this result or one that implies it. For every $a\ge0$ the Lean statement gives $m_a\in\mathbb Z_{>0}$ and $b_a\in\{2,6,10,30\}$, and adds $m_4=65$ and $b_4=30$, which show that $m_a<b_a$ can fail. In Lean $b_a$ is defined as $2$, multiplied by $3$ when a power of $3$ lies strictly between $2^a$ and $2^{a+1}$ and by $5$ when a power of $5$ does; `threePrimeHeight_dyadicBlock_succ` proves that this equals $\hgt(2^{a+1})/\hgt(2^a)$.
 
 [`ErdosProblems.Erdos269.PaperCompleteR20.dyadic_alphabet_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean#L19)
 
@@ -440,7 +440,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > For every integer $`B\ge1`$, either some $`BX_a`$ is integral and all later states are integral, or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
 
-The Lean declaration below states a result at least as strong as this one. The dichotomy is proved for every integer $B$, and the printed statement takes $B\ge1$; convergence of $S$ and $T_a$, the recurrence and the bounds $0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2$ are stated as printed. In the recurrence $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with $\hgt(2^{a+1})/\hgt(2^a)$ and the printed sum defining $m_a$.
+The Lean declaration below states this result or one that implies it. The dichotomy is proved for every integer $B$, and the printed statement takes $B\ge1$; convergence of $S$ and $T_a$, the recurrence and the bounds $0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2$ are stated as printed. In the recurrence $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with $\hgt(2^{a+1})/\hgt(2^a)$ and the printed sum defining $m_a$.
 
 [`ErdosProblems.Erdos269.PaperR7.short_actual_orbit`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168)
 
@@ -483,7 +483,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  d_{a+1}=b_ad_a-Bm_a,\qquad d_a\le90B(a+1)^2.
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement drops the hypotheses that $A/D$ is in lowest terms and that $\gcd(B,30)=1$: it applies to every representation $S=A/D$ with $D=2^u3^v5^wB$ and $B\ge1$, and gives for $a\ge u+1+2v+3w$ that $d_a=BX_a$ is a positive integer with $d_{a+1}=b_ad_a-Bm_a$ and $d_a\le90B(a+1)^2$. There $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with the printed definitions.
+The Lean declaration below states this result or one that implies it. The Lean statement drops the hypotheses that $A/D$ is in lowest terms and that $\gcd(B,30)=1$: it applies to every representation $S=A/D$ with $D=2^u3^v5^wB$ and $B\ge1$, and gives for $a\ge u+1+2v+3w$ that $d_a=BX_a$ is a positive integer with $d_{a+1}=b_ad_a-Bm_a$ and $d_a\le90B(a+1)^2$. There $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with the printed definitions.
 
 [`ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80)
 
@@ -583,7 +583,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *If $`d`$ is a positive integer with $`d\le K`$ and $`d\equiv -BF\pmod W`$, where $`W\ge1`$, then $`\operatorname{lpr}_W(-BF)\le K`$.*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
 [`ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138)
 
@@ -621,7 +621,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \end{equation}
 > ```*
 
-The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one, with $K(B,\ell+h)=90B(\ell+h+1)^2$ written out. The windows are built from closed forms for $b_a$ and $m_a$ that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with the printed definitions.
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, with $K(B,\ell+h)=90B(\ell+h+1)^2$ written out. The windows are built from closed forms for $b_a$ and $m_a$ that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with the printed definitions.
 
 [`ErdosProblems.Erdos269.PaperR7.short_window_equivalence`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51)
 
