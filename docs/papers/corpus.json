@@ -1117,7 +1117,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:eaa141de1c4e372040bb1bee94839e9b00d028c0e7d6bd58ac0072c45722034d",
+      "pdf_sha256": "sha256:2e21b010e4f8eaf86ae1fe136ee6193e172aedace05e6beea3874998c3f3d8ec",
       "pdf_byte_count": 457557,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -1371,7 +1371,7 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:d9278c1773deea973ecc6c9c6f52f21be7de14ab1b1b946058c3740605550f02",
+      "pdf_sha256": "sha256:644ce91e5c2a3238cf4c311ba562bb76f55b049fc8d9a9bda6eddb18320ad6f1",
       "pdf_byte_count": 142706,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1698,7 +1698,7 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:00b0b1a5f7ed02a2a14bece7ccfe7459efa4d3c6c1c09b3aae9a2fa88d5d2486",
+      "pdf_sha256": "sha256:d70af751c6d9fbdecadfcf40c273cff4cba93fe66c53210bed4d561301652277",
       "pdf_byte_count": 305380,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1895,7 +1895,7 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:917ea772c62bf26e6c14512f757ba3f217daf87312458596be02708860807ba3",
+      "pdf_sha256": "sha256:87ae70cf5fd56af4f02f8475b36d472c6a48a1b1d5b6c59f2621ec8e50a1284d",
       "pdf_byte_count": 147008,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1962,7 +1962,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:96efe00f21f23a1f0db034faf6d9076171cbc48520b87c529346889e5f41e0e6",
+      "source_sha256": "sha256:8a14a89799992d1045b4c1ca6051cf091218faee232872c11ca2c11204266e00",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -2350,8 +2350,8 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:43a8064ae42942617dc8b036e0916e542871eccd5be04e0b2ecc632e4e6eea7a",
-      "pdf_byte_count": 405928,
+      "pdf_sha256": "sha256:62845aa8da562d1accae0408907dc5df949964edb769fc356259f1ffbc7b3f48",
+      "pdf_byte_count": 406474,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2539,7 +2539,7 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:555252e0500270fb23f9e3d9fc941bef21bfe739462765a382eaeae25f75d235",
+      "pdf_sha256": "sha256:e4f2e97fc30148c22cb7bf1f5b07486304fdb6f39a50a1a793b38a6f02fcdb09",
       "pdf_byte_count": 144916,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2606,7 +2606,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/249/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:a41cadf3bd613595b734b9e9cde71d438081da5cdff23039e7938dd31a4a7711",
+      "source_sha256": "sha256:5f3c27407fc4067fb4a9570a8e2c2ac08a860ce1505e5db7c2a6d08cc446a286",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -3594,8 +3594,8 @@
       ],
       "citations_rendered": 48,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:4b1a32501e516b80fa0f07a04e7fdae19eb116a2c4e841e8bffd33c753847fcf",
-      "pdf_byte_count": 897776,
+      "pdf_sha256": "sha256:224f9db8ba2df3375a1fcf1d1acd4092b861195921e8a2f21c1dd877994cec45",
+      "pdf_byte_count": 897882,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3749,7 +3749,7 @@
       ],
       "citations_rendered": 36,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:68fb005e91f96cacd911a998a4433bab06aa662f5c7b696496cdc3122b02873d",
+      "pdf_sha256": "sha256:0811c1f70f8d603ef7a9937f7c4b70d7925d055d0f380c0d5ca72d4507340087",
       "pdf_byte_count": 125991,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4222,7 +4222,7 @@
       ],
       "citations_rendered": 66,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f8eefbb1e3eb7ae345c00552660d4679192b381355747cf77c69a8ab72f87fa2",
+      "pdf_sha256": "sha256:f5e261de7f2aa787301f53e80dbf6ef2fe14319929f4b8675979c1dda64a374f",
       "pdf_byte_count": 315916,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4527,7 +4527,7 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:ceffb391d8064f13a791f3a0ae36051f0fbd197f0579f40dd76df347bef71daa",
+      "pdf_sha256": "sha256:39672287efedcf946d2da411205081ec951f818f3d0a0f4a998f8dbc04a8381a",
       "pdf_byte_count": 176941,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4594,7 +4594,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:688a8e8dcd728c79b89d58aec10c6203429d9223e0fa44adcbb8bde7e312091b",
+      "source_sha256": "sha256:102b24d7fa79a23e1d49517be72772decf1f1a839fc5b0bfecf67e94091d057f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -5600,8 +5600,8 @@
       ],
       "citations_rendered": 43,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b0f39edd399030b9d937947638670e87b1c894b81f048ae18d3a52d57a8dd498",
-      "pdf_byte_count": 936901,
+      "pdf_sha256": "sha256:bb0415738c6af3b04f8e3aa558f8dba0cf36c7ff562ca12e512a6e48fdb0b54c",
+      "pdf_byte_count": 938444,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5953,7 +5953,7 @@
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:3216782e87ed48c782db03df46a9fb3b9a7c7601dd68ff1884f502bbc89d9dc0",
+      "pdf_sha256": "sha256:c0756141717e1ad683a03908e1183aab3b89c7a385ced3b4e385a3435635186e",
       "pdf_byte_count": 322660,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6126,7 +6126,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:d527a6705e56fa95f372e93ea40ad42e334c48325562f687c562d139bbfcb692",
+      "pdf_sha256": "sha256:eacaad530d03aae8103e51501fcd4a5307c8997e95b2f2ee35c6eb2d99b46532",
       "pdf_byte_count": 122901,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6437,7 +6437,7 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:2ebfe9c1283cffbcfec9d56e2adff9a5fab009d3f3c7d9e9c9808c05e20ad782",
+      "pdf_sha256": "sha256:6cebe92df3a3f8d1e9e1b1ee26f4b2ab3bf6702e669c6edae9e0264c01d31073",
       "pdf_byte_count": 206926,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6928,8 +6928,8 @@
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f190390fac2a2d8a201d630bf4db881623a067df3d7ccac1f445cebeb282a81b",
-      "pdf_byte_count": 454843,
+      "pdf_sha256": "sha256:3786a701d26ea6a81cc05090c8fda132b513fdfa67275b09d52730db67fd6561",
+      "pdf_byte_count": 454851,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7195,8 +7195,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:a1ae3fc9065fca61c0146ae5d075461c9a0523b3178571753385a9fb6d7b698e",
-      "pdf_byte_count": 166003,
+      "pdf_sha256": "sha256:d8e6e6b5542624eb3333c896e0906f2e89449b6d1146316a351006b4a19bf1c0",
+      "pdf_byte_count": 166013,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7262,7 +7262,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
       "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-      "source_sha256": "sha256:3c72aca20194cfae8d4f410255a5cb262e185eaad27204b31ed898e2d5bb507f",
+      "source_sha256": "sha256:6c7ac91c59933c590559edf73d12c4c394852b62132e85a3cc63264071ecf19e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7654,8 +7654,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:63677cd580c18a971fdbc441fc1f6f1fec63cd936c8dd541441c1edbe709151d",
-      "pdf_byte_count": 444128,
+      "pdf_sha256": "sha256:48fd43afa5a66520a9bbfdc0fcfb6b109a9b125d1484165c3c93fd165761a734",
+      "pdf_byte_count": 444439,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7944,7 +7944,7 @@
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:64c8f43e8a35936d0439e8edde85792679aa759806179d7ee335df1b4973dbb4",
+      "pdf_sha256": "sha256:5441bb884a9afdde762f0c2e56cebcd224a7015f265a7dd3e9939174e63ca81b",
       "pdf_byte_count": 199021,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8315,7 +8315,7 @@
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:9e1729130374c094651b0bca84bf4062386d7530cf716653f6b7772c73bf1bc3",
+      "pdf_sha256": "sha256:061ea214c63ddfdf2eb7600def56d44f7ae16ca020468b92883f453260c2796a",
       "pdf_byte_count": 160188,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8517,7 +8517,7 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:ae7b0ce343075a6a08da2d9ed20c39773b36c4c173e7c44df9ff0cda1c708c4a",
+      "pdf_sha256": "sha256:8205a07ec14b24667f8a010e915cf56407a3e8fac9d648668194266ac6c9cf8c",
       "pdf_byte_count": 88211,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -8791,7 +8791,7 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:59f841ffae96a395ef69ec5a1337fe81644f0ac1dc6522466563ca0e063a86dc",
+      "pdf_sha256": "sha256:945724bb18fc03364468b350dde8c4074923d81efb4010376791a5f22df58ac9",
       "pdf_byte_count": 155498,
       "first_pass": {
         "stated_by_the_paper": false,
