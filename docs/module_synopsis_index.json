@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:61e6be314f92f5e39649de9462076a7412fbcf9712cfb6c7787794cde3e98265",
-  "module_count": 1779,
-  "synopsis_count": 1533,
+  "source_fingerprint": "sha256:3ed5638e54c4fefe7ed55fe5e83d3332e0939e02882ea4a3b41ead399c4628fa",
+  "module_count": 1812,
+  "synopsis_count": 1565,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -4358,6 +4358,11 @@
       "synopsis": "The actual analytic moment generating identity Proves summability, positivity, and the identity v_m^* = P^4 G_q(q^(m+1)). Unlike a positive-measure consumer, this file starts with the literal finite q-product summand in the 2016 normalised moment. It proves summability and performs the finite/infinite product cancellation at w=q^(m+1). No moment identity, atom identity, summability, or product nonvanishing is a premise. The subsequent coefficient expansion of G, comparison of its coefficients, and infinite Cauchy--Binet passage are separate obligations; this file does not mislabel those consequences as established merely by the identity below."
     },
     {
+      "id": "ErdosProblems.Erdos1049.ActualPositiveMeasureR16",
+      "path": "lean/ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
+      "synopsis": "The literal source moments have a positive infinite discrete measure New candidate; all elaboration, kernel checks, and axiom audits UNRUN. The coefficients are constructed from finite convolutions of explicit q-binomial and Euler coefficient sequences. The analytic identification is proved, and then fed into the existing geometricMomentHankel_det_pos consumer. No moment identity, coefficient positivity, or weight summability is assumed. This module proves the source-to-measure and all-rank strict-positivity chain. The uniform-in-rank two-sided comparison is authored downstream in `ActualUniformBoundR16`; it is not inferred merely from this positivity theorem."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.ActualSourceAnalyticIdentityR14",
       "path": "lean/ErdosProblems/Erdos1049/ActualSourceAnalyticIdentityR14.lean",
       "synopsis": "The actual analytic identity A_n F - B_n = H_n Proves A_n F - B_n = H_n for the literal source at every 0 < q < 1. The proof uses the actual residues, proves that the first 12*n terms vanish, and shifts the absolutely convergent series. The last Pochhammer has length 13*n+1, including n=0. No source identity or summability assertion is assumed."
@@ -4476,6 +4481,11 @@
       "id": "ErdosProblems.Erdos1049.HermitePadeNoGo",
       "path": "lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
       "synopsis": "Erdős #1049: a rectangular Hermite--Padé threshold comparison The functions below encode the decay, height, and cyclotomic-saving exponents of one rectangular two-function Hermite--Padé model. In the admissible region `rho ≥ 0` and `sigma ≥ 1 + rho`, its threshold never exceeds the classical one-function margin `1 / 2 - 1 / π²`. Equality occurs only at `rho = 0`, `sigma = 1`; no upper bound on `rho` is needed. This is a comparison theorem for the explicit exponent model defined here. It constructs no approximating polynomials or remainders, does not show that every rational-base method has this form, and does not decide the arithmetic nature of the Lambert value at `3 / 2`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.InfiniteMomentPositivityR10",
+      "path": "lean/ErdosProblems/Erdos1049/InfiniteMomentPositivityR10.lean",
+      "synopsis": "Infinite positive discrete moments Candidate, UNRUN. These theorems concern the actual infinite sum, not a finite atomic surrogate. Positive summable weights on distinct points of [0,1] give positive definite Hankel matrices at every rank, including the empty rank. Identifying the paper's particular hypergeometric rows with these moments is a separate obligation, explicitly recorded in the manifest. Pinned APIs inspected: Matrix/PosDef (finite dot-product interface), Analysis/Matrix/PosDef (`PosDef.det_pos`), Vandermonde, InfiniteSum/Basic and InfiniteSum/Order (`HasSum.congr_fun`, `hasSum_sum`, `Summable.tsum_pos`)."
     },
     {
       "id": "ErdosProblems.Erdos1049.IrrationalityExponentR11",
@@ -4628,6 +4638,21 @@
       "synopsis": "Literal coefficient moments and the finite coefficient pencil These are the polynomials R_m, s_m, α_m and β_m in the coefficient-moment section of the #1049 reasoning paper. The polynomial part defining β is implemented by finite coefficient convolution with the divisor-count sequence. It is not defined by a remainder identity or by a real floor operation. The elementary normalizations and diagonal congruence below are candidate proofs awaiting kernel validation. No finite determinant certificate, positive-definiteness, spectral root bound or interlacing result is asserted by this module."
     },
     {
+      "id": "ErdosProblems.Erdos1049.PaperR20.CoefficientPencilAssembly",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/CoefficientPencilAssembly.lean",
+      "synopsis": "Assembly of the literal coefficient pencil The paper's coefficient matrices are used throughout. The finite certificate inputs are precisely positive leading Hankel determinants and the remainder identity at the moment indices occurring in the selected matrix. Neither input is silently assumed to hold at every rank. The positive-definiteness result for the actual remainder moments, by contrast, holds at every rank and uses the existing positive discrete measure theorem. Proof candidates: kernel and axiom validation are pending."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.FinitePencil",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/FinitePencil.lean",
+      "synopsis": "Symmetric definite matrix pencils These generic lemmas are the spectral step for the finite coefficient pencil. They retain positive definiteness and the positive remainder matrix as explicit hypotheses. The coefficient identities and finite determinant certificates are separate obligations. Candidate proofs; kernel validation is pending."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.FinitePencilProposition",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean",
+      "synopsis": "The finite coefficient pencil at ranks up to eight Paper statement (`long1049:res:finite-pencil`, `paper/reasoning-parts/erdos1049/core.tex`): > For every real `p > 1` and `1 ≤ N ≤ 8`, `A_N` is positive definite and all roots > of `det(Y A_N − B_N)` are real and strictly less than `F(p)`. The roots at > consecutive ranks `N, N+1 ≤ 8` interlace non-strictly. Here `A_N = (α_{i+j})` is `coefficientAlphaMatrix p N`, `B_N = (β_{i+j})` is `coefficientBetaMatrix p N`, the determinant polynomial `det(Y A_N − B_N)` is `coefficientPencilPoly p N`, and `F(p) = PaperR16.lambert (1 / p)`. Three inputs are combined. * Positivity of the leading Hankel determinants `D_{k,0}(p)` for `k ≤ 8` and `p ≥ 1`, from their positive coefficients in `t = p − 1`. * The remainder identity `v*_m = α_m F(p) − β_m` at every moment index `m`. Together with positive definiteness of the remainder moment matrices at every rank, it gives `F(p) A_N − B_N > 0`. * Sylvester's criterion, the square-root congruence for symmetric definite pencils, and inertia interlacing for leading principal pencils. \"All roots are real\" is stated as `Splits`: the real polynomial factors into linear factors over `ℝ`. Interlacing is stated for the ordered root lists, with algebraic multiplicities recorded by the root multisets."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.PaperR20.FiniteRemainderCertificateConsumer",
       "path": "lean/ErdosProblems/Erdos1049/PaperR20/FiniteRemainderCertificateConsumer.lean",
       "synopsis": "Consumer for exact finite remainder certificates The producer supplies identities in `Polynomial (Polynomial ℤ)`: the inner variable is the paper's integer base `p`, and the outer variable is the rational-kernel variable. This module evaluates those identities, derives the pointwise rational decomposition, invokes the existing analytic summation theorem, and identifies its finite correction with the literal `β_m`. No certificate existence claim is made here."
@@ -4636,6 +4661,31 @@
       "id": "ErdosProblems.Erdos1049.PaperR20.FiniteRemainderSummation",
       "path": "lean/ErdosProblems/Erdos1049/PaperR20/FiniteRemainderSummation.lean",
       "synopsis": "Summing a finite rational-kernel remainder certificate The theorems here consume a literal, pointwise finite certificate. They do not assert that the certificate exists: later polynomial computations supply its coefficients in the finite range where they have been checked."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.HankelKroneckerCertificate",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean",
+      "synopsis": "Positive coefficients of the eight leading moment Hankel determinants For `0 ≤ n ≤ 8` let `Q_n(t) = D_{n,0}(1 + t)`, where `D_{n,0}` is the determinant of the `n × n` Hankel matrix of the coefficient moments `s_m`. This file proves that every coefficient of `Q_n` is nonnegative and that its constant coefficient is positive. Consequently `D_{n,0}(p) > 0` for every real `p ≥ 1`. The proof evaluates at the single integer `T = 2 ^ 2929`. * Every coefficient of `Q_n` has absolute value at most `n!` times a product of column bounds. The bounds come from coefficientwise majorants of the moments `s_m(1 + t)` and satisfy `2 · bound < T`. * The integer `Q_n(T)` is the determinant of the integer Hankel matrix `(s_{i+j}(1 + T))`. The kernel computes that matrix from the Pascal recurrence for Gaussian binomials, and checks a triangular factorisation `M U = L` whose witness `U` is produced by fraction-free elimination. The witness is untrusted; only the checked identities enter the proof. * The base-`T` digits of each `Q_n(T)` are all below `T / 2`, and the lowest is nonzero. By the bound above, these digits are exactly the coefficients of `Q_n`. No coefficient list is stored: the kernel recovers the coefficients from the digits of the single evaluation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.KernelZeroCorrection",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/KernelZeroCorrection.lean",
+      "synopsis": "Finite correction from kernel zeros This file isolates the finite algebra behind the polynomial correction in the Erdős 1049 coefficient-moment identity. Once a rational kernel has a finite partial-fraction expansion and vanishes at the first `m` powers of its base, the long residue prefixes differ from the short source prefixes by two explicit quotient evaluations. The proof uses only finite reindexing and a geometric sum; no analytic or Padé theorem is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.KroneckerCoefficientBound",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/KroneckerCoefficientBound.lean",
+      "synopsis": "Coefficients of an integer polynomial from one evaluation Let `T > 0` be an integer. A nonzero integer polynomial whose coefficients all have absolute value below `T` cannot vanish at `T`: reducing modulo `T` removes the constant coefficient, and dividing by `T` shifts the remaining ones. Hence an integer polynomial whose coefficients have absolute value below `T / 2` is determined by its value at `T`, and its coefficients are the base-`T` digits of that value whenever those digits are all below `T / 2`. The coefficient bound comes from majorants. If `|f_k| ≤ g_k` for every `k` and the majorant `g` has nonnegative coefficients, the relation survives sums and products. A determinant is a signed sum of products, so every coefficient of a determinant is bounded by the value at `1` of the corresponding sum of majorant products, and hence by `n!` times a product of column bounds."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.LambertPolynomialPartLimit",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/LambertPolynomialPartLimit.lean",
+      "synopsis": "The Lambert polynomial part at infinity This module proves that the finite convolution in `lambertPolynomialPart` is the actual polynomial part of `P(p) * F(p⁻¹)`. The analytic input is Tannery's theorem applied to the shifted divisor-count tail."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.MomentAtInfinity",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/MomentAtInfinity.lean",
+      "synopsis": "The literal coefficient moment tends to one at infinity For fixed `m`, the zeroth summand in `actualMoment q m` tends to one as `q → 0`. The remaining positive summands are bounded directly by a geometric series. This proof uses only the finite products in the literal summand; no limit theorem for the infinite q-Pochhammer product is needed."
     },
     {
       "id": "ErdosProblems.Erdos1049.PaperR20.MomentRationalKernel",
@@ -4648,6 +4698,21 @@
       "synopsis": "Inertia interlacing for nested matrix pencils This file works in the original coordinate spaces. The rank-`n` form is the literal restriction of the rank-`n+1` form to the last-coordinate-zero hyperplane. No independently normalized matrices are compared."
     },
     {
+      "id": "ErdosProblems.Erdos1049.PaperR20.PencilRootInterlacing",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/PencilRootInterlacing.lean",
+      "synopsis": "Ordered roots of consecutive symmetric definite pencils This file separates two exact parts of the pencil interlacing argument. First, an elementary counting lemma turns threshold-count interlacing of two antitone tuples into the usual pointwise inequalities. Second, the square-root congruence identifies the roots of a symmetric definite pencil, with multiplicity, with the eigenvalues of a Hermitian matrix. The remaining connection is deliberately explicit: the positive index of `B - t A` must be identified with the number of normalized eigenvalues above `t`. That is a Sylvester-inertia lemma, rather than a nesting assertion about the two independently normalized matrices."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.PencilSpectralInertia",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/PencilSpectralInertia.lean",
+      "synopsis": "Spectral inertia for real symmetric pencils The main lemma diagonalizes the quadratic form of `H - t I` in the orthonormal eigenbasis of a Hermitian matrix. It therefore computes its positive index as the number of eigenvalues strictly above `t`, with repeated eigenvalues counted by their indices."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.PolynomialPartUniqueness",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/PolynomialPartUniqueness.lean",
+      "synopsis": "Uniqueness of the polynomial part at infinity This file isolates the asymptotic uniqueness step in the coefficient-moment argument. It deliberately does not assert the still-missing Padé remainder identity. Once the analytic Lambert tail and the limit of the literal moment are supplied, the polynomial called `β_m` in the paper is forced."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.PaperR20.QuadraticInertia",
       "path": "lean/ErdosProblems/Erdos1049/PaperR20/QuadraticInertia.lean",
       "synopsis": "Positive inertia under restriction The positive index of a real quadratic form cannot increase under restriction. Restriction to a hyperplane can lower it by at most one. This is the exact linear-algebra input needed for interlacing of nested symmetric definite matrix pencils; it is stated without choosing any normalization of the forms."
@@ -4656,6 +4721,61 @@
       "id": "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
       "path": "lean/ErdosProblems/Erdos1049/PaperR20/RecoveredProofAudit.lean",
       "synopsis": "Explicit axiom audit of recovered proof endpoints. This does not assert independent Comparator review or identify conditional suppliers as unconditional."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeAnalytic",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeAnalytic.lean",
+      "synopsis": "Evaluated source Padé identities This module begins the analytic passage from the unconditional bivariate Padé identity. It records the exact clearing balance and evaluates that identity at zero and at every numerator root. These are unconditional polynomial consequences; no rational-kernel decomposition or target remainder is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeAnalyticRemainder",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeAnalyticRemainder.lean",
+      "synopsis": "The all-index source Padé remainder This module completes the analytic use of the unconditional source Padé identity. The global power `p^d` is retained until the kernel-zero correction has been applied. Consequently the finite source correction is identified with the paper polynomial `coefficientBetaPoly` by the already proved Lambert polynomial-part uniqueness theorem, rather than assumed as certificate data."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeCorrection",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeCorrection.lean",
+      "synopsis": "The finite source correction attached to the Padé quotient This module extracts the literal positive outer coefficients of the all-index Padé quotient, removes their forced geometric denominators, and packages the result with the already explicit residue quotients. The resulting polynomial is the finite correction on the right side of `kernelZero_correction_identity`. The identification of this source correction with the paper's `β_m` is left to the analytic uniqueness argument; it is not assumed here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeGenerating",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeGenerating.lean",
+      "synopsis": "The finite generating function behind the 2016 Padé quotient The reciprocal of `∏_{j=0}^m (1-p^j z)` has coefficient `[m+r choose m]_p`. This file proves that assertion as an identity of formal power series over `ℤ[p]`, directly from the recurrence-defined Gaussian binomial. Convolution with the explicit numerator coefficients then gives the triangular coefficient `S_(m,l)` used in the polynomial quotient."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadePartialFraction",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadePartialFraction.lean",
+      "synopsis": "Unconditional all-index Padé partial fraction identity The generating function determines the polynomial quotient through reversal at infinity. The remaining polynomial has degree at most `m`. Its values at the `m+1` distinct denominator roots are the explicit source residues, so root counting identifies it with the residue certificate."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadePoleEvaluation",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadePoleEvaluation.lean",
+      "synopsis": "Exact pole evaluation for the all-index Padé remainder This file evaluates the cleared numerator at each literal denominator root. The calculation is entirely in `ℤ[p]`: powers and signs are separated from three consecutive Delta products, and the latter are identified with the already constructed source residue. This is the root input for the final finite interpolation argument."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeQuotient",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeQuotient.lean",
+      "synopsis": "Finite quotient extracted from the Padé generating identity The full triangular series is the numerator divided by the finite denominator. Truncating it through degree `m` therefore agrees with the numerator after multiplication by the denominator in every degree at most `m`. This is the formal-series form of the polynomial-division remainder bound. The normalized coefficients below also expose the exact powers needed for the integral clearing `d=max(m(m-1)/2-1,0)`, including `m=0,1`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.SourcePadeResidues",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/SourcePadeResidues.lean",
+      "synopsis": "Integer polynomial residues of the coefficient-moment kernel The explicit finite products expose every denominator factor in the residue correction. Gaussian-binomial factorial identities identify their sum with the literal paper coefficient `coefficientAlphaPoly`. No partial-fraction identity or analytic remainder theorem is assumed here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.Sylvester",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/Sylvester.lean",
+      "synopsis": "Positive leading determinants imply positive definiteness This supplies the finite-dimensional criterion needed to turn the literal 1049 coefficient-Hankel determinant certificates into positive definiteness. The proof adds one coordinate at a time and uses a one-dimensional Schur complement. No determinant positivity is assumed implicitly. Candidate proof: kernel and axiom validation are pending."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.TriangularCertificate",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/TriangularCertificate.lean",
+      "synopsis": "Small exact determinant certificates by triangular multiplication A certificate supplies an upper triangular matrix U. Checking the entries on and above the diagonal of M U proves the claimed determinant by det_mul. The certificate producer need not be trusted, and no elimination algorithm or division is used by the verifier. Candidate proof; kernel validation pending."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR20.TriangularPrefix",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR20/TriangularPrefix.lean",
+      "synopsis": "Reuse one triangular witness at every leading rank Upper triangularity makes restriction of M U to a leading square commute with multiplication. Thus a single rank-eight witness can certify each smaller determinant without repeating its polynomial entry calculations. This generic infrastructure does not supply any particular witness equations."
     },
     {
       "id": "ErdosProblems.Erdos1049.PaperRankTwoCapR7",
@@ -4668,6 +4788,11 @@
       "synopsis": "The complete short-note cap. This is not an additional source-supply axiom: the hypotheses are the displayed polynomial degree, l1 height, nonvanishing and logarithmic-rate hypotheses. `QuadUpper` makes the paper's upper o(n^2) inequalities precise. The result is proved for any real target function, hence also for the actual paperLambert. No condition uniform in x beyond common constants is required: each fixed x has its own eventual estimates, exactly as in the paper. The long-record max-coefficient-height and limsup conclusions are separate."
     },
     {
+      "id": "ErdosProblems.Erdos1049.PositiveSeriesFubiniR16",
+      "path": "lean/ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
+      "synopsis": "Nonnegative series assembly. New candidate; all Lean checks UNRUN."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.PositiveSeriesR16",
       "path": "lean/ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
       "synopsis": "Positive coefficient series: convergence, recurrence, and finite convolutions New candidate. All elaboration, kernel checks, and axiom audits UNRUN. No source-moment identity or coefficient-positivity supplier is a premise of any source-specific theorem in the downstream files. The abstract lemmas in this file prove reusable statements about explicitly given real sequences."
@@ -4676,6 +4801,11 @@
       "id": "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence",
       "path": "lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
       "synopsis": "Erdős #1049: the q-Apéry recurrence fails on Van Assche's diagonal This module checks one finite polynomial identity. Van Assche's diagonal `P_n(p^n | p⁻¹)` has the three displayed initial values below. Substitution in the `n = 0` Amdeberhan--Zeilberger operator leaves a strictly negative residual for every real `p > 1`. Hence that diagonal does not satisfy that operator. No general recurrence, endpoint asymptotic, or irrationality statement is asserted here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.QBinomialAnalyticR16",
+      "path": "lean/ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
+      "synopsis": "Analytic q-binomial ratios and the positive Euler factor New candidate; elaboration and axiom audit UNRUN. This module closes the recurrence-to-analytic-identity implication. Coefficient bounds and product nonvanishing are obtained from the existing QProductBoundsR10 module."
     },
     {
       "id": "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
@@ -5270,7 +5400,7 @@
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.ChebotarevSquareSpecialisation",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ChebotarevSquareSpecialisation.lean",
-      "synopsis": "Erdős 243: the square-specialisation lemma from the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303). The paper's proof of that lemma uses one classical input that is absent from the pinned Mathlib: the Chebotarev density theorem, and of it only the *qualitative* statement that for a finite Galois extension `L/ℚ` and `σ ∈ Gal(L/ℚ)` there are infinitely many rational primes with a prime of `L` above them whose Frobenius element is exactly `σ`. That input is stated here as `ChebotarevFrobenius`, in the reduction form in which the paper actually uses it, and everything else is proved. `ChebotarevFrobenius` is **not** a restatement of the lemma: it mentions no polynomial, no root modulo a prime and no square. It says only that a prescribed Galois element is realised as a Frobenius element at arbitrarily large primes. What is proved here is the whole residue-field half of the paper's proof (`frobenius_descent`): given a finite Galois extension `Lg / ℚ`, an element `σ` of its Galois group fixing `α` and negating a square root `β` of `H (α)`, and the Chebotarev input, the paper's modular hypothesis is contradicted. The remaining half is the purely Galois-theoretic construction of that `Lg` and `σ` from \"`H (α)` is not a square in `ℚ(α)`\"; it is not done here."
+      "synopsis": "Erdős 243: the square-specialisation lemma from the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303). The paper's proof of that lemma uses one classical input that is absent from the pinned Mathlib: the Chebotarev density theorem, and of it only the *qualitative* statement that for a finite Galois extension `L/ℚ` and `σ ∈ Gal(L/ℚ)` there are infinitely many rational primes with a prime of `L` above them whose Frobenius element is exactly `σ`. That input is stated here as `ChebotarevFrobenius`, in the reduction form in which the paper actually uses it, and everything else is proved. `ChebotarevFrobenius` is **not** a restatement of the lemma: it mentions no polynomial, no root modulo a prime and no square. It says only that a prescribed Galois element is realised as a Frobenius element at arbitrarily large primes. What is proved here is the whole residue-field half of the paper's proof (`frobenius_descent`): given a finite Galois extension `Lg / ℚ`, an element `σ` of its Galois group fixing `α` and negating a square root `β` of `H (α)`, and the Chebotarev input, the paper's modular hypothesis is contradicted. The remaining half is the purely Galois-theoretic construction of that `Lg` and `σ` (`GaloisSignFlipClosure.lean`); `SquareSpecialisationDedekind.lean` needs no Chebotarev."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.ClassicalHalfspaceSigns",
@@ -5361,6 +5491,16 @@
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.SlowNegativePartRecord",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowNegativePartRecord.lean",
       "synopsis": "Erdős 243: the slow negative part (`long243:res:slownegative`) The paper's theorem reads: let `(a, C, D)` be an exact orbit of natural numbers with `a_n > 1`, `C_n > 0`, `D_0 ≥ 1`, under vanishing relative error; suppose that for some `δ ∈ (0,1)` and all large `n` with `E_n < 0` one has `-E_n ≤ (1-δ) ℓ(C_n)`. Then `E_n = 0` for all large `n`, and `a_{n+1} = a_n² - a_n + 1` for all large `n`. The written proof has exactly two inputs. * The upper half. `C_{n+1} = C_n - E_n` and `C_n ≤ H_n = max_{j ≤ n} C_j` give `H_{n+1} - H_n ≤ (-E_n)_+ ≤ (1-δ) ℓ(C_n) ≤ (1-δ) ℓ(H_n)`, so `Θ = limsup (H_{n+1} - H_n)/ℓ(H_n) ≤ 1 - δ < 1`. This half is `recordTheta_le_of_slow_negative` (`PaperCompleteR21/SlowGrowthProductIncrements.lean`), which is stated for an arbitrary exact orbit and is imported here. * The lower half. If the error is not eventually zero then `Θ ≥ 1`. The paper takes this from the proof of `long243:res:recorddichotomy`, asserting that the argument there uses only `a_n > 1`, `C_n > 0`, `D_0 ≥ 1` and vanishing relative error. In the tree that half exists only in the *canonical* coordinates of a rational reciprocal sum (`PaperCompleteR11.canonical_recordTheta_gt_one`, which additionally assumes `StrictMono a`, `HasSum (1/aₙ) = p/q` and `a_{n+1}/a_n² → 1`). It is not available for an arbitrary exact orbit, and proving it there is the whole of the record dichotomy. This file therefore carries the theorem with that second input as one explicit, named hypothesis `hdichotomy`, and proves everything else. The statement is consequently weaker than the paper's; discharging `hdichotomy`"
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
+      "synopsis": "Erdős 243: the square-specialisation lemma without the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303): `f ∈ ℚ[T]` irreducible with root `α`, `H (α) ≠ 0`, and for all but finitely many primes `ℓ` every root `r` of `f` modulo `ℓ` has `H (r)` a nonzero square modulo `ℓ` (stated through integral models `G = d f`, `J = d ^ 2 H`); then `H (α)` is a square in `ℚ(α)`. The paper derives this from the Chebotarev density theorem. Here it follows from `ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_not_isSquare`, whose only analytic input is the simple pole of the Dedekind zeta function at `s = 1`, already in Mathlib. The reduction. Put `K = ℚ[T] / (f)` with `α` the class of `T`, and `c` the leading coefficient of `G`. Then `a = c α` is integral, and for a polynomial `P ∈ ℤ[T]` and `e ≥ deg P` the element `∑_{j ≤ e} P_j c ^ (e - j) a ^ j` of `𝓞 K` equals `c ^ e P (α)`; under any ring homomorphism `φ : 𝓞 K → ZMod ℓ` it becomes `c ^ e P (r)` with `r = φ (a) / c`. Taking `P = G` shows that `r` is a root of `G` modulo `ℓ`, and taking `P = J`, `e = 2 deg J`, gives an element `b = (c ^ (deg J) d) ^ 2 H (α)` of `𝓞 K` with `φ (b) = (c ^ (deg J)) ^ 2 J (r)`. If `H (α)` were not a square in `K`, neither would `b` be, and some prime `ℓ` beyond every bound would make `φ (b)` zero or a non-square, contradicting the hypothesis at the root `r`. `squareSpecialisation_holds` is the statement of `ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisation` written out in full, so this file depends on Mathli"
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
+      "synopsis": "Erdős 243: the square-specialisation lemma and its consumers, unconditionally `SquareSpecialisationDedekind.lean` proves the statement of `long243:res:squarespec` (`paper/reasoning-parts/erdos243/core.tex`, lemma at line 303) from the simple pole of the Dedekind zeta function, which is in Mathlib; the Chebotarev density theorem is not used. This file records it as `squareSpecialisation : SquareSpecialisation` and discharges the hypothesis `hss : SquareSpecialisation` of the three downstream paper statements in `CubicRateExclusionChain.lean`: * `transport_square_unconditional` — `long243:res:transportsquare`; * `cubic_exclusion_unconditional` — `long243:res:cubicexclusion`; * `cubic_rate_irrationality_unconditional` — `res:cubicrate` and `long243:res:cubicrate`. Each is the corresponding `CubicRateExclusionChain` theorem applied to `squareSpecialisation`, with no hypothesis added."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance",
@@ -8628,6 +8768,11 @@
       "synopsis": null
     },
     {
+      "id": "ErdosProblems.PaperCompleteR21Audit.P1049_finite_pencil",
+      "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1049_finite_pencil.lean",
+      "synopsis": null
+    },
+    {
       "id": "ErdosProblems.PaperCompleteR21Audit.P1049_nomahler_uncond",
       "path": "lean/ErdosProblems/PaperCompleteR21Audit/P1049_nomahler_uncond.lean",
       "synopsis": null
@@ -8738,6 +8883,16 @@
       "synopsis": "Problem-centric Erdős formalization root This root is intentionally separate from the historical `Erdos249257` namespace. New research is grouped by the actual problem and mathematical object without forcing a repository-wide rename."
     },
     {
+      "id": "ErdosProblems.Shared.DirichletPoleComparison",
+      "path": "lean/ErdosProblems/Shared/DirichletPoleComparison.lean",
+      "synopsis": "Two simple poles exclude a squared comparison of Dirichlet series Let `a, g, b, m : ℕ → ℝ` be nonnegative with * `a ≤ g ⋆ b` and `g ⋆ g ≤ m` coefficientwise (Dirichlet convolution, `n ≠ 0`), * `g ≤ a`, and the partial sums of `∑ b(n) / n` bounded by `B`. If the Dirichlet series of `a` and of `m` both have a simple pole at `s = 1` (`(s - 1) L(a, s) → r_a > 0` and `(s - 1) L(m, s) → r_m ≠ 0` as `s → 1⁺`), this is impossible. Indeed, for real `s > 1` near `1`, `L(a, s) ^ 2 ≤ (L(g, s) L(b, s)) ^ 2 ≤ B ^ 2 L(g ⋆ g, s) ≤ B ^ 2 L(m, s)`, so `((s - 1) L(a, s)) ^ 2 ≤ B ^ 2 (s - 1) · (s - 1) L(m, s)`; the left side tends to `r_a ^ 2 > 0` and the right side to `0`. This is the analytic core of the classical proof that a non-square element of a number field is a non-square modulo infinitely many degree-one primes: `a` counts the ideals of the base field, `m` those of the quadratic extension, `g` the ideals built from split degree-one primes and `b` the rest. Summability of the two series near `s = 1` is not assumed: it follows from the nonzero limits, since a divergent series has `tsum = 0`."
+    },
+    {
+      "id": "ErdosProblems.Shared.IdealCountingEuler",
+      "path": "lean/ErdosProblems/Shared/IdealCountingEuler.lean",
+      "synopsis": "Counting ideals by their prime factors in a number field For a number field `K` and a predicate `P` on ideals of `𝓞 K`, `countSupp K P n` is the number of ideals of absolute norm `n` all of whose prime factors satisfy `P`. This file proves the three coefficientwise facts that feed the pole comparison of `ErdosProblems.Shared.DirichletPole`: * `card_le_sum_countSupp` (**factorisation into two parts**): every ideal of norm `n` is the product of its `P`-part and its `¬P`-part, so the number of ideals of norm `n` is at most the Dirichlet convolution of the two restricted counts; * `sum_countSupp_div_le` (**the bad part converges at `s = 1`**): when `P 𝔭` says that the norm of `𝔭` is a prime larger than `N₀`, the series `∑ countSupp K (¬P) n / n` has bounded partial sums. The primes excluded are finitely many primes of small norm and primes of norm `p ^ f` with `f ≥ 2`; at most `[K : ℚ]` primes lie over each `p`, so their reciprocal norms are dominated by `[K : ℚ] ∑ 1 / p²`, and a finite Euler product over the primes involved bounds the whole series; * `sum_countSupp_mul_le` (**split primes double the count**): if every prime `𝔭` with `P 𝔭` has two distinct primes of an extension `M` above it, each of the same norm as `𝔭`, then the Dirichlet convolution of the `P`-count with itself is at most the number of ideals of `𝓞 M` of norm `n`. The injection sends a pair of ideals `(I, J)` to the product of the first lifts of the prime factors of `I` and the second lifts of those of `J`."
+    },
+    {
       "id": "ErdosProblems.Shared.IrrationalRotationStaircase",
       "path": "lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean",
       "synopsis": "Irrational-rotation staircases and the carry-staircase determinant Two independent pieces of reusable machinery. * `ErdosProblems.Shared.exists_pos_nat_fract_mem_Ioo` : the **forward** orbit `n ↦ Int.fract (n * α)`, `n ≥ 1`, is dense in `[0,1]` as soon as no positive integer multiple of `α` is an integer. The hypothesis is packaged as `NoIntegerOrbit`; for real `α` it is exactly irrationality, but it is often cheaper to verify directly. * `ErdosProblems.Shared.det_carryStaircase` : the exact determinant `det (fun i j => if j ≤ i then t else 1) = t * (t - 1) ^ n` of the `(n+1)`-dimensional *carry staircase*. Combined in `exists_staircase_indices`, they say that a pair of independent rotations without integer returns realises an arbitrarily large staircase in the two-dimensional carry `⌊fract (i * α) + fract (j * β)⌋`. That is the engine behind the three-prime running-LCM rank phase transition of Erdős #269. Nothing here mentions a specific Erdős problem; the file is Mathlib-only."
@@ -8746,6 +8901,16 @@
       "id": "ErdosProblems.Shared.MertensSecond",
       "path": "lean/ErdosProblems/Shared/MertensSecond.lean",
       "synopsis": "Mertens' first theorem and the difference form of Mertens' second theorem Mathlib has Chebyshev's upper bound `θ(x) ≤ x log 4` (`Chebyshev.theta_le_log4_mul_x`) but no Mertens theorem. This file proves both of Mertens' classical estimates with explicit constants, by elementary means only; no integral and no prime number theorem is used. * `mertens_first` / `abs_primeLogSum_sub_log_le` (**Mertens I**): for every `n ≥ 1`, `|∑_{p ≤ n} log p / p - log n| ≤ 3`. Legendre's formula `log n! = ∑_{p ≤ n} v_p(n!) log p` is combined with `⌊n/p⌋ ≤ v_p(n!) ≤ n/(p-1)`, the bounds `n log n - n ≤ log n! ≤ n log n`, Chebyshev's `θ(n) ≤ n log 4`, and the telescoping majorant `∑_{p ≤ n} log p / (p(p-1)) ≤ 2` (the step `g(k-1) - g(k)` of `g(k) = (log k + 2)/k` dominates `log k / (k(k-1))`). * `abs_sum_inv_primes_sub_loglog_le` (**Mertens II, difference form**): for `2 ≤ M ≤ N`, `|∑_{M < p ≤ N} 1/p - (log log N - log log M)| ≤ 10 / log M`. Discrete summation by parts against `1/log k` reduces this to Mertens I and the per-step comparison `0 ≤ log(b/a) - (1 - a/b) ≤ 1/a - 1/b` for `a = log k`, `b = log (k+1)`; every error term telescopes. * `card_primes_Ioc_mul_log_le`: `#{M < p ≤ x} · log M ≤ x log 4`. Nothing here mentions a specific Erdős problem; the file imports only Mathlib."
+    },
+    {
+      "id": "ErdosProblems.Shared.NonsquareModuloPrimes",
+      "path": "lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean",
+      "synopsis": "A non-square of a number field stays a non-square modulo infinitely many primes **Theorem** (`exists_prime_hom_not_isSquare`). Let `K ⊆ M` be number fields with `[M : K] = 2`, `M = K(γ)` and `γ ^ 2 = b ∈ 𝓞 K`. Then for every `N` there are a prime `ℓ > N` and a ring homomorphism `φ : 𝓞 K → ZMod ℓ` such that `φ b` is zero or a non-square. This is the qualitative instance of the Chebotarev density theorem needed for the square-specialisation lemma of Erdős #243, proved here from the simple pole of the Dedekind zeta function (`NumberField.tendsto_sub_one_mul_dedekindZeta_nhdsGT`) alone, by the classical comparison of Dirichlet series at `s = 1`. Suppose instead that `φ b` is a nonzero square for every `φ` into every `ZMod ℓ` with `ℓ > N`. Call a prime `𝔭` of `𝓞 K` good if its norm is a prime `ℓ > max N 2`. Then * every good `𝔭` is the kernel of some `φ : 𝓞 K → ZMod ℓ`, `φ b = t ^ 2` with `t ≠ 0`, and the two extensions of `φ` to `𝓞 M` (`γ ↦ ± t`) have distinct kernels of norm `ℓ` above `𝔭` (`QuadraticSplit.exists_split_primes_of_forall_isSquare`); * so the ideals of `𝓞 K` supported on good primes, counted in pairs, inject into the ideals of `𝓞 M` with the same norm (`IdealCounting.sum_countSupp_mul_le`), while every ideal of `𝓞 K` factors into a good and a bad part (`IdealCounting.card_le_sum_countSupp`), and the bad part has a convergent Dirichlet series at `s = 1` (`IdealCounting.sum_countSupp_div_le`); * hence `ζ_K(s) ^ 2 ≤ B ^ 2 ζ_M(s)` for real `s > 1` near `1`, which is incompatible with both zeta functions having a simple pole at `s = 1` (`DirichletPole.false_of_pole_com"
+    },
+    {
+      "id": "ErdosProblems.Shared.QuadraticSplitPrimes",
+      "path": "lean/ErdosProblems/Shared/QuadraticSplitPrimes.lean",
+      "synopsis": "Degree-one primes that split in a quadratic extension Let `K ⊆ M` be number fields with `[M : K] = 2` and `M = K(γ)`, `γ ^ 2 = b ∈ 𝓞 K`. A ring homomorphism `φ : 𝓞 K → ZMod ℓ` (`ℓ` an odd prime) with `φ b = t ^ 2`, `t ≠ 0`, extends to two distinct ring homomorphisms `𝓞 M → ZMod ℓ`, sending `γ` to `t` and to `-t`. The ring of integers of `M` is not described explicitly. Instead every `x ∈ M` satisfies `2 b x = b · Tr(x) + Tr(γ x) · γ` (`Tr = Tr_{M/K}`), because `x = u + v γ` with `Tr x = 2 u` and `Tr (γ x) = 2 b v`. For `x ∈ 𝓞 M` both traces lie in `𝓞 K`, so `x ↦ (φ b · φ (Tr x) + φ (Tr (γ x)) · t) / (2 φ b)` is defined on `𝓞 M`; it is multiplicative because of the two trace identities `trace_identity_one` and `trace_identity_two`, which follow from the displayed formula. The kernels of the two extensions are two distinct primes of `𝓞 M` of norm `ℓ`, both lying over the kernel of `φ`. `exists_split_primes_of_forall_isSquare` packages this in the form consumed by `ErdosProblems.Shared.IdealCounting.sum_countSupp_mul_le`."
     },
     {
       "id": "ErdosProblems.Skip.D1",
