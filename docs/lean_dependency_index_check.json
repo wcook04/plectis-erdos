@@ -1,10 +1,10 @@
 {
   "builder_schema": "erdos249257-lean-dependency-index/3",
-  "input_fingerprint": "sha256:438a3abc56277dd4326040746dfe27fc1d36672874e45b475240f146265ccedf",
-  "output_digest": "sha256:a27e5ac58c63942b61b6dc1741b11d9b92949f943ae585ef71c1b9b1909baac5",
+  "input_fingerprint": "sha256:293a4c56cea438e7574e3563ee880a1ebe0e90cbf6adc8199785dd437ecf4cc6",
+  "output_digest": "sha256:9ddd55044377d0b1404122341ea6faecff528cd28ea02e95e84f883d66b6a4fa",
   "schema": "erdos249257-lean-dependency-index-check/1",
-  "source_fingerprint": "sha256:5ae19fca26533bba5b54dd8410313392cfb10cdd8ed7e06a5fefbff9759191d2",
-  "source_resolved_direct_edge_count": 71799,
-  "source_resolved_node_count": 16095,
-  "verification_posture": "tracked_receipt_from_full_supported_root_build_and_elaborated_environment_export"
+  "source_fingerprint": "sha256:61e6be314f92f5e39649de9462076a7412fbcf9712cfb6c7787794cde3e98265",
+  "source_resolved_direct_edge_count": 71860,
+  "source_resolved_node_count": 16105,
+  "verification_posture": "tracked_receipt_from_full_supported_root_build_and_elaborated_environment_export_metadata_refreshed_without_rebuild"
 }
