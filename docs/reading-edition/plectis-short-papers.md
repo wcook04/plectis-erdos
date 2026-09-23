@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `10c9be5cd216bf1e`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `1d5bb21145c9a4d6`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -4932,7 +4932,7 @@ Indeed, one integral scaled tail makes $`S`$ rational by <a href="#erdos-269-thr
 
 ###### Proof sources.
 
-The two-prime deduction uses an external transcendence theorem and is not formalised here. Fan’s priority is retained from the supplied forum record; the live thread and catalogue could not be rechecked for this revision. The formal sources for the rank theorem and the tail recurrence are listed below. The supplied `LEAN_INDEX.json` identifies the public snapshot as `6b78209ab63a8c643281115f8628a3be79ff7ec7` and marks selected declarations `ci_checked`. Its recorded successful compilation is at an earlier commit; the build step in the pinned run was skipped. This revision reports that evidence, not a fresh compilation of the snapshot. The separate Palomar release at `52f29ad1` selects the arbitrary-order uniform-minor and non-separation statements, not just the $`2\times2`$ example.
+The two-prime identities and their transcendence conclusion are formalised in `TwoPrimeSums.lean`. The latter theorem retains the cited Bugeaud–Laurent transcendence theorem as an explicit hypothesis; that external theorem is not formalised here. Fan’s priority is retained from the supplied forum record; the live thread and catalogue could not be rechecked for this revision. The formal sources for the rank theorem and the tail recurrence are listed below. The supplied `LEAN_INDEX.json` identifies the public snapshot as `6b78209ab63a8c643281115f8628a3be79ff7ec7` and marks selected declarations `ci_checked`. Its recorded successful compilation is at an earlier commit; the build step in the pinned run was skipped. This revision reports that evidence, not a fresh compilation of the snapshot. The separate Palomar release at `52f29ad1` selects the arbitrary-order uniform-minor and non-separation statements, not just the $`2\times2`$ example.
 
 The finite cut-rank proposition is the checked declaration [finite cut rank](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182). Its column-range hypothesis permits repeated columns and arbitrary column order. The modular-minor corollary is the checked declaration [uniform modular minors](https://github.com/wcook04/plectis-erdos/blob/d11bd0b16f2c0b68d722777762ebbd4f96a12db8/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133). There the injective maps are chosen before the universal quantifiers over $`B`$ and $`k`$, and the modulus is assumed at least $`2`$ and coprime to $`30`$. Both modules compiled under Lean 4.29.1 during this source migration. The exact-denominator corollary has an ordinary proof above. The moving-boundary example is proved in the companion, without a new formalisation claim. No Comparator, Isabelle or NanoDa run was performed for this exposition revision. Neither the listed checks nor the finite calculations certify every sentence of the papers, and none supplies the required windows for every eligible denominator and arbitrarily late starts.
 
@@ -4968,7 +4968,7 @@ There are two separate arguments. The rank proof uses the height formula, row an
 | Tail recurrence | `DyadicShellSummability`, `RationalityCarryBridge`: summable tails and denominator clearing, not merely an abstract recurrence. |
 | Quadratic bounds | `PaperR8RankMajorant` and `ActualSharpTailMajorantR10`: the companion’s two bounds in the sum of the boundary exponents, the smaller using the order of the jumps. |
 | Residue equivalence | `CofinalWindowEscapeEquivalence` and `R12/OcticWindowBand`: the residue contradiction and equivalence with irrationality, not a proof of the required unbounded window existence. |
-| External input | Bugeaud–Laurent and Loxton–van der Poorten for the two-prime theorem; no Lean value theorem claimed. |
+| External input | The Lean two-prime transcendence theorem assumes the cited Bugeaud–Laurent result (including the Loxton–van der Poorten case); it does not formalise that external theorem. |
 
 </div>
 

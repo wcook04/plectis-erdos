@@ -10,7 +10,8 @@ Everything below uses this public checkout and public tools.
 | What you want to do | Start here | What you need |
 |---|---|---|
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
-| Rerun a finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
+| Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
+| Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
 | Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
 | Import the library in another project | [Use it as a dependency](#use-the-library-in-another-lean-project) | The same Lean toolchain and the library's dependencies |
@@ -71,6 +72,39 @@ purposes; [the paper index](../paper/README.md) keeps the current papers togethe
 For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all`.
 This mode also uses the current checkout. It additionally reports missing
 paper labels and references to claim IDs absent from the inventory.
+
+### Reproduce the #257 exact-rational example
+
+Run this from the repository root with Python 3.11 or later. It uses only the
+standard library and needs no Lean installation:
+
+```sh
+python3 research/experiments/sparse_interpolation/late_rejection.py
+```
+
+In the JSON output, find the certificate with `"target": "189/388"`.
+Expect `"first_rejection": 17`, with remainder
+`9291822600689/1217890317075045460`, tail upper bound
+`196609/25769803776`, and step-17 weight `1/131071`. The script checks
+with exact fractions that the remainder is greater than the entire later
+tail bound but smaller than the next weight. It also certifies the earlier
+skips, checks the translated target `577/388`, and prints a separate finite
+factorial-allowance example. A passing run excludes these particular targets
+from the Mersenne subsum set; finite survival at an earlier step would not
+establish membership.
+
+This calculation does **not** reproduce the finite-prime weighted-support
+irrationality theorem in the [#257 short paper](../paper/257/erdos-257-mersenne-support-subseries.pdf).
+That theorem concerns infinite positive supports satisfying a weighted
+summability hypothesis. The script proves neither that hypothesis nor the
+theorem's irrationality conclusion. The [investigation](../research/experiments/choices_contraction/README.md)
+explains why the late rejection corrects a proposed finite stopping rule;
+the [experiment guide](../research/experiments/sparse_interpolation/README.md#exact-checks)
+records its other checks.
+
+If this command fails, confirm `python3 -VV`, rerun
+`python3 scripts/test_choices_contraction_probe.py`, and report the exact
+command, error, and `git rev-parse HEAD` through [CONTRIBUTING](../CONTRIBUTING.md).
 
 ### Reproduce a finite computation
 
@@ -163,6 +197,36 @@ declaration lives in the larger `CertificateKernel` module:
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 Erdos249257.CertificateKernel
 ```
+
+For the weighted theorem used in the #257 reading route, first inspect its
+current claim record, then build the module containing its proof:
+
+```sh
+python3 scripts/verify_claims.py --claim finite_prime_weighted_support
+python3 scripts/lean_fast_build.py --jobs 2 \
+  ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
+```
+
+[`DivisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean)
+states the fixed-base and hereditary clauses. The proof declaration is
+[`divisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+The R7 interface file's preamble describes the earlier development stage;
+its "missing" proof wording is not the current theorem status. Read the R8
+proof and the claim record above for that status. The R7 source remains at
+its pinned formal-source revision.
+The first command checks the current claim's references and prints its
+recorded formal-source revision; it does not run Lean. The second command
+checks the current checkout with the pinned Lean toolchain. Record
+`git rev-parse HEAD` alongside its result so that a build at one revision is
+not attributed to another.
+
+The [external-verification packet](EXTERNAL_VERIFICATION.md#programme-257)
+and [`verification/comparator.json`](../verification/comparator.json) identify
+the separately declared Comparator statement and axiom budget. The packet
+currently records this weighted theorem's external replay as **pending**.
+Configuration or a receipt for another theorem is not a passing replay of
+this claim. The [replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md)
+explains the source-bound receipt needed to report a completed comparison.
 
 These commands build the current checkout. The claim verifier also names the
 recorded source revision; keep that identity with any report about reproducing
