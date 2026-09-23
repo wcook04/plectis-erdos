@@ -17,6 +17,7 @@ the public unconditional theorem.
 namespace ErdosProblems.Erdos243.FormalConjecturesAdapter
 
 open Filter
+open scoped Topology
 
 /-- The cubic rate forces the reciprocal series to converge. -/
 theorem summable_reciprocal_of_cubic_rate (a : ℕ → ℕ)
