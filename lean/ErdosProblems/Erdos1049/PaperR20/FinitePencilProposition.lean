@@ -63,5 +63,3 @@ theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
       (fun k hk hk0 => hdet k (hk.trans hN) hk0)
 
 end ErdosProblems.Erdos1049.PaperR20
-
-#print axioms ErdosProblems.Erdos1049.PaperR20.coefficientPencil_finitePencil

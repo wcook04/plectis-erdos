@@ -137,7 +137,7 @@ lemma monomial_lambert_sub_part_eq_tail (i : ℕ) {p : ℝ} (hp : 1 < p) :
     simp only [inv_pow]
     rw [show n + 1 + i = n + i + 1 by omega]
     field_simp [hp0] <;> ring
-  rw [← realDivisorSeries_eq_lambert p⁻¹ hq, realDivisorSeries]
+  rw [← realDivisorSeries_eq_lambert p⁻¹ hq, realDivisorSeries] 
   rw [← hsplit]
   rw [mul_add, hprefix, htail, add_sub_cancel_left]
 

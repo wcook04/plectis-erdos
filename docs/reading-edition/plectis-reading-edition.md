@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `05e177a4cd5b544a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `36e23478e5c0433e`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -2921,7 +2921,7 @@ Lean: [exact denominators and minimal clearing](https://github.com/wcook04/plect
 
 *Which explicit short paths and critical-value bounds are proved for Erdős #1041, and which hypotheses do they require?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.pdf)
 
-Longer record: [Paths in Polynomial Lemniscates: Proofs and Examples](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) (278 KB as text).
+Longer record: [Paths in Polynomial Lemniscates: Proofs and Examples](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) (279 KB as text).
 
 <a id="erdos-1041-lemniscate-newton-flow--erdos-1041-lemniscate-newton-flow"></a>
 
@@ -2933,7 +2933,7 @@ Longer record: [Paths in Polynomial Lemniscates: Proofs and Examples](https://gi
 
 </div>
 
-A degree-seven counterexample due to the erdosproblems.com contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861), formalised in Lean here, refutes the universal total-variation formulation: every continuous path inside the strict unit lemniscate joining two distinct roots has total variation greater than $`2`$. Its correspondence with the historical curve-length question has not received independent human review. For a monic trinomial $`f(z)=z^n+az^m+b`$, $`1\le m<n`$, with roots in the open unit disc, the root equation controls $`f`$ on every root-to-origin segment. Any two distinct roots are consequently joined inside $`\{|f|<1\}`$ by an explicit two-segment path of length less than $`2`$. Abel summation explains the role of the missing coefficients, and a sextic example shows why root locations alone do not control these segments. We compare this construction with an area-growth criterion: a squarefree monic polynomial has a contained path of length less than $`2`$ when its least critical-value modulus is at most $`13/25`$, without a root-location hypothesis. Its scale-free consequence and proof outline complete the main note. Independent estimates and limitations of other constructions are collected in the supplementary sections.
+For one degree-seven polynomial constructed by the erdosproblems.com contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861), Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than $`2`$. This refutes the exact path-image-length formulation in Formal Conjectures, as well as the total-variation formulation. Independent human review of correspondence with the 1958 curve-length wording is not recorded. For a monic trinomial $`f(z)=z^n+az^m+b`$, $`1\le m<n`$, with roots in the open unit disc, the root equation controls $`f`$ on every root-to-origin segment. Any two distinct roots are consequently joined inside $`\{|f|<1\}`$ by an explicit two-segment path of length less than $`2`$. Abel summation explains the role of the missing coefficients, and a sextic example shows why root locations alone do not control these segments. We compare this construction with an area-growth criterion: a squarefree monic polynomial has a contained path of length less than $`2`$ when its least critical-value modulus is at most $`13/25`$, without a root-location hypothesis. Its scale-free consequence and proof outline complete the main note. Independent estimates and limitations of other constructions are collected in the supplementary sections.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:trinomial"></a>
 
@@ -3004,7 +3004,7 @@ Indeed, after $`z=rw`$, the polynomial factors as $`r^6(w^2-1)(w^4+\tfrac65 w^2+
 
 Repeated roots give a constant path between two listed occurrences, so the geometric question concerns squarefree polynomials. The original question is Problem 5 of Erdős–Herzog–Piranian \[ehp1958, Problem 5, p. 139\], listed as Problem 1041 in Bloom’s catalogue \[bloom\]. Pendyala \[june2026, Theorem 1 and Lemma 1, pp. 1–3\] proves the complete degree-four case by a close-pair chord or two radial segments through the centre of a smallest enclosing disc. That centre need not be a critical point. The results here concern specified polynomial families and sufficient conditions; no priority claim is made.
 
-<span id="erdos-1041-lemniscate-newton-flow--res:ani-degree-seven-counterexample" label="res:ani-degree-seven-counterexample"></span> A degree-seven counterexample due to the [erdosproblems.com contributor `ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861) makes the unrestricted total-variation assertion false. For one explicit monic polynomial of degree seven whose roots are distinct and lie in the open unit disc, every continuous path in the strict unit lemniscate joining two distinct roots has total variation greater than $`2`$.[^1] Thus this polynomial has no continuous root-to-root parametrisation of total variation less than $`2`$.
+<span id="erdos-1041-lemniscate-newton-flow--res:ani-degree-seven-counterexample" label="res:ani-degree-seven-counterexample"></span> The degree-seven polynomial constructed by [erdosproblems.com contributor `ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861) has distinct roots in the open unit disc. Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than $`2`$. In particular, the image of every continuous root-to-root path has this measure, and Lean proves the negation and `answer(False)` forms of the exact Formal Conjectures statement.[^1]
 
 The trinomial proof prescribes a path for every pair of distinct roots. The area-growth argument in Section <a href="#erdos-1041-lemniscate-newton-flow--sec:constant-factor" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:constant-factor">3</a> has a different conclusion: it selects some pair of roots, but requires no coefficient pattern or root-location hypothesis. The next section gives this criterion and its scaling consequence. The [supplementary sections](#erdos-1041-lemniscate-newton-flow--supplementary-results) retain the other estimates and the obstructions to prescribed constructions; none is an input to the trinomial proof.
 
@@ -3491,7 +3491,7 @@ Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gi
 
 <div id="erdos-1049-rational-base-lambert--res:sevenhalves" class="theorem">
 
-**Theorem 4** (the $`7/2`$ height condition). *The [integer power certificate](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L32) $`2^{18}<7^7`$ yields the [Archimedean height condition](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
+**Theorem 4** (the $`7/2`$ height condition). *The [integer power certificate](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L32) $`2^{18}<7^7`$ yields the [Archimedean height condition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
 ``` math
 \frac{\log 7}{\log(7/2)}
  <

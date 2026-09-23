@@ -1765,7 +1765,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:b2389088002b5cfd0a738e71d233de503d3f570142f788bcf3e9f2526e0c22d7",
+      "source_sha256": "sha256:856fd284d90e4e38cd9db8242e7a2aa4df0dec09efb70bb539ef7643b4cb7979",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1895,8 +1895,8 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:fa9c496e52f49a9178c60a3144d1b1d215a1347d1b16e16cc152b7907a65f8e6",
-      "pdf_byte_count": 145426,
+      "pdf_sha256": "sha256:18130133a6d70958185039b097a6ccd64ca1eb46cf6e06351494715e156abfab",
+      "pdf_byte_count": 145359,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1962,7 +1962,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:1429af81e448d4a2ccb35fc068fb7baea5578d7c7a773fbee7f396e7c8b046e5",
+      "source_sha256": "sha256:533dcf4fac6fe2a930b03077b5743669648cd3ea036b770f71c311021280ac0c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -2350,8 +2350,8 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8716a3cc25fbab6b969acfea5e9ca3ce30893fbdb0e70b6a08bb4477dab76ffa",
-      "pdf_byte_count": 401618,
+      "pdf_sha256": "sha256:8e005f0da94f50c70d27eea700c7f7f7438b368e52ccbb919ae278dbc5b2f2b6",
+      "pdf_byte_count": 401630,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6179,10 +6179,10 @@
         "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "text": "Will Cook (2026). Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6193,11 +6193,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:5efa47dffa36b2733bbf14057e6e72b56faa10d603c6dc480af95017165f174a",
+      "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd",
       "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 39,
       "sections": [
         {
@@ -6437,8 +6437,8 @@
       ],
       "citations_rendered": 40,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:d8b7c4bd087c09ebaee7aa9ba1218b3682627471a35ea0d54bf4eb53063e9294",
-      "pdf_byte_count": 206589,
+      "pdf_sha256": "sha256:f3b05fbf1ed20194833202137f25f4f86db36d27696b7bc24f5c8ae11a43307d",
+      "pdf_byte_count": 207234,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6504,7 +6504,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
       "local_source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "source_sha256": "sha256:b7942e5f2de8fe40acd7b60b8e16fd242a5a1cc6551912028fa3830e871993ed",
+      "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -6911,25 +6911,25 @@
           "level": 4,
           "id": "concordance-of-statements-and-lean-declarations.",
           "title": "Concordance of statements and Lean declarations.",
-          "line": 2418
+          "line": 2420
         },
         {
           "level": 1,
           "id": "sec:record-circle-slice",
           "title": "Numerical estimates for the packing inequality",
-          "line": 2456
+          "line": 2458
         },
         {
           "level": 1,
           "id": "sec:erdos-1041-complete-family-map",
           "title": "Guide to the results",
-          "line": 2508
+          "line": 2510
         }
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:641b726e752a5dff3a4d6c1f2a677ac20b1465b8e2cadb4d6e6ba48324716423",
-      "pdf_byte_count": 453342,
+      "pdf_sha256": "sha256:356b4a9ce135c9c3919af468364ae8871d64162e009348b8f9b11a58fcc4e8ad",
+      "pdf_byte_count": 454468,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6952,7 +6952,7 @@
           {
             "id": "sec:erdos-1041-complete-family-map",
             "title": "Guide to the results",
-            "line": 2508
+            "line": 2510
           }
         ],
         "unresolved_count": 0
@@ -6995,7 +6995,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:2564a04c23846decbcc83c0d517a1cdd5cff056568f86b3ed47e2a21fe46817e",
+      "source_sha256": "sha256:c93d5be214450ac069ea1397e99b1fe8a0a73d131b19a48673147a5633f015aa",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7195,8 +7195,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:9dc71a104647a25715fde0d38b94e6b8b56b76439836822439e794c051863873",
-      "pdf_byte_count": 164382,
+      "pdf_sha256": "sha256:2645a384867791271c8dfc37cbedf9970c297f0bf273c93bd4251b1753402c91",
+      "pdf_byte_count": 164354,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7262,7 +7262,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
       "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-      "source_sha256": "sha256:13fae04ecb22dad8ab472cd3caa9f03f5bb5c59560a7d442f567bb9b94f37684",
+      "source_sha256": "sha256:570f710bf2d1db9e1133b97e4e0c4b06ed6b87a48ff88c93ab0e0cabd9a6c6ea",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7654,8 +7654,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8f0121af8b874ca5ad1e31968b86e7b034d5657b59a40af6cbbc7f296187447f",
-      "pdf_byte_count": 436906,
+      "pdf_sha256": "sha256:c114057fa4b12d809ab959a22e6cd84c4f0aa7ef6d7255ee212fb067da020795",
+      "pdf_byte_count": 436874,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8011,7 +8011,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:fa4a62e52a22e97ff93054d12340a9b1c22347de8d87a8bd8e74cfacb4eb975b",
+      "source_sha256": "sha256:d3dac97bd3029154cc78fa2ebfb10bbd63223ede32286af00f9b01f8e2716a2a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8315,8 +8315,8 @@
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:b6db811f22711e239ce6590b928f3f70a2ca66d0cee38c31c6d24cb99a8ce326",
-      "pdf_byte_count": 160025,
+      "pdf_sha256": "sha256:1d5ebdcd636e9c22c6e69d5d27c05b1d8a17b8ce37227f0e6fea1be9a459b3ea",
+      "pdf_byte_count": 160004,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8387,7 +8387,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:5e66e194e7b9b5287f957b07835098ab6335fdea044e75f08edea7111f61a3f4",
+      "source_sha256": "sha256:d06c29ee1ea7ab5c907dec0e4f1b0d75cb045df2e0213c9ab3033ce697a18b2d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8517,8 +8517,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:9108ec415aca425c29e3ecde5fc55fac1cc93ac415aa03381e9c688b0924c6e8",
-      "pdf_byte_count": 88176,
+      "pdf_sha256": "sha256:ee1571bea116c272087953d6f78f53c212859a9d0e15839883f6350f03fb41f6",
+      "pdf_byte_count": 88213,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8589,7 +8589,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:f88a3af5c3bcc39efc6805df83621ffe1272e171299e48d7b39c7165af7a6d08",
+      "source_sha256": "sha256:706a1f277d0191d8ffb2af149a166515dcb8c9410982c3c276f32efe7fd99871",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8791,8 +8791,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:0696c6fb00cf43e1bb0c05f6d81e42c067b5d7afc485af581cfe7772e185a19a",
-      "pdf_byte_count": 152721,
+      "pdf_sha256": "sha256:d442546c9ccd90d6f1c8e13f64724d770a200f0d70e7b58338bd0cd9c321ceef",
+      "pdf_byte_count": 153190,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

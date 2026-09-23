@@ -56098,7 +56098,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{ehp1958} P.~Erd\\H{o}s, F.~Herzog, and G.~Piranian, \\emph{Metric properties of polynomials}, J. Analyse Math. \\textbf{6} (1958), 125--148, doi:\\href{https://doi.org/10.1007/BF02790232}{10.1007/BF02790232}.",
@@ -56149,7 +56149,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{march2026} \\texttt{shtuka}, \\emph{A Short Path Joining Two Zeros Inside a Polynomial Lemniscate}, manuscript posted 24 March 2026, 48~pp. \\url{https://shtuka123.github.io/1041/main.pdf}",
@@ -56173,7 +56173,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-f300911fb03a5c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{june2026} V.~S. Pendyala, \\emph{A Degree-Four Lemniscate Path Theorem}, arXiv:\\href{https://arxiv.org/abs/2606.24875v1}{2606.24875v1} (2026), doi:\\href{https://doi.org/10.48550/arXiv.2606.24875} {10.48550/arXiv.2606.24875}.",
@@ -56215,7 +56215,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-951f70d8dfc418",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{pendyala2026shortest} V.~S. Pendyala, \\emph{Shortest paths in polynomial lemniscate sublevel sets and a problem of Erd\\H{o}s}, arXiv:\\href{https://arxiv.org/abs/2606.19178v1}{2606.19178v1} (2026), doi:\\href{https://doi.org/10.48550/arXiv.2606.19178} {10.48550/arXiv.2606.19178}.",
@@ -56239,7 +56239,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-8710374c3e8c9f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{kozen-stefansson1997} D.~Kozen and K.~Stef\\'ansson, \\emph{Computing the Newtonian graph}, J. Symbolic Comput. \\textbf{24} (1997), no.~2, 125--136, doi:\\href{https://doi.org/10.1006/jsco.1997.0118}{10.1006/jsco.1997.0118}; authors' copy \\url{https://www.cs.cornell.edu/kozen/Papers/newton.pdf}.",
@@ -56299,7 +56299,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-92b0dfb67f5009",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{crane} E.~Crane, \\emph{The areas of polynomial images and pre-images}, Bull. London Math. Soc. \\textbf{36} (2004), no.~6, 786--792, doi:\\href{https://doi.org/10.1112/S0024609304003509}{10.1112/S0024609304003509}; preprint arXiv:\\href{https://arxiv.org/abs/math/0302189v1}{math/0302189v1}, whose statement numbers are cited.",
@@ -56341,7 +56341,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-40bc4064b92788",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{eks2010} P.~Ebenfelt, D.~Khavinson, and H.~S. Shapiro, \\emph{Two-dimensional shapes and lemniscates}, in \\emph{Complex Analysis and Dynamical Systems IV, Part~1}, Contemp. Math. \\textbf{553}, Amer. Math. Soc., Providence, RI, 2011, 45--59, doi:\\href{https://doi.org/10.1090/conm/553/10931}{10.1090/conm/553/10931}; preprint arXiv:\\href{https://arxiv.org/abs/1003.4567v1}{1003.4567v1}, whose statement numbers are cited.",
@@ -56374,7 +56374,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{eremenko-hayman} A.~Eremenko and W.~Hayman, \\emph{On the length of lemniscates}, Michigan Math. J. \\textbf{46} (1999), no.~2, 409--415, doi:\\href{https://doi.org/10.1307/mmj/1030132418}{10.1307/mmj/1030132418}; preprint arXiv:\\href{https://arxiv.org/abs/0805.2295}{0805.2295}.",
@@ -56407,7 +56407,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-7f1f2a3fd9238c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{eremenko-yuditskii} A.~Eremenko and P.~Yuditskii, \\emph{Comb functions}, Contemp. Math. \\textbf{578} (2012), 99--118, doi:\\href{https://doi.org/10.1090/conm/578/11472}{10.1090/conm/578/11472}; preprint arXiv:\\href{https://arxiv.org/abs/1109.1464v1}{1109.1464v1}.",
@@ -56440,7 +56440,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "eremenko_yuditskii_2012_comb_functions",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{eremenko-lempert} A.~Eremenko and L.~Lempert, \\emph{An extremal problem for polynomials}, Proc. Amer. Math. Soc. \\textbf{122} (1994), no.~1, 191--193, doi:\\href{https://doi.org/10.1090/S0002-9939-1994-1207536-1} {10.1090/S0002-9939-1994-1207536-1}.",
@@ -56464,7 +56464,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "eremenko_lempert_1994_extremal_problem_for_polynomials",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{eremenko-markov} A.~Eremenko, \\emph{A Markov-type inequality for arbitrary plane continua}, Proc. Amer. Math. Soc. \\textbf{135} (2007), no.~5, 1505--1510, doi:\\href{https://doi.org/10.1090/S0002-9939-06-08640-0} {10.1090/S0002-9939-06-08640-0}; preprint arXiv:\\href{https://arxiv.org/abs/math/0606745v1}{math/0606745v1}.",
@@ -56488,7 +56488,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "eremenko_2007_markov_type_inequality_plane_continua",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{bishop-eremenko-lazebnik} C.~J. Bishop, A.~Eremenko, and K.~Lazebnik, \\emph{On the shapes of rational lemniscates}, Geom. Funct. Anal. \\textbf{35} (2025), no.~2, 359--407, doi:\\href{https://doi.org/10.1007/s00039-025-00704-2} {10.1007/s00039-025-00704-2}; preprint arXiv:\\href{https://arxiv.org/abs/2407.14610v1}{2407.14610v1}.",
@@ -56512,7 +56512,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{dubinin} V.~N. Dubinin, \\emph{Some inequalities for polynomials and rational functions associated with lemniscates}, Zap. Nauchn. Sem. POMI \\textbf{404} (2012), 83--99; English translation, J. Math. Sci. \\textbf{193} (2013), no.~1, 45--54, doi:\\href{https://doi.org/10.1007/s10958-013-1432-4}{10.1007/s10958-013-1432-4}.",
@@ -56536,7 +56536,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-dcbe400c96be59",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{polya1928} G.~P\\'olya, \\emph{Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenh\\\"angende Gebiete}, Sitzungsberichte der Preussischen Akademie der Wissenschaften, Physikalisch-Mathematische Klasse (1928), printed pp.~228--232 and 280--282. \\url{https://archive.org/details/sitzungsbericht1928preu}.",
@@ -56560,7 +56560,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-2ec6bf87654604",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{dubinin2006critical} V.~N. Dubinin, \\emph{Inequalities for critical values of polynomials}, Sb. Math. \\textbf{197} (2006), no.~8, 1167--1176, doi:\\href{https://doi.org/10.1070/SM2006v197n08ABEH003793}{10.1070/SM2006v197n08ABEH003793}.",
@@ -56602,7 +56602,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-b10b965e63a00d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{crane2007smale} E.~Crane, \\emph{A bound for Smale's mean value conjecture for complex polynomials}, Bull. London Math. Soc. \\textbf{39} (2007), no.~5, 781--791, doi:\\href{https://doi.org/10.1112/blms/bdm063}{10.1112/blms/bdm063}; author preprint \\url{https://people.maths.bris.ac.uk/~maetc/SMVCbound.pdf}.",
@@ -56626,7 +56626,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-818467bc1cb170",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{dubinin2013fourpoint} V.~N. Dubinin, \\emph{Four-point distortion theorem for complex polynomials}, arXiv:\\href{https://arxiv.org/abs/1301.3985v1}{1301.3985v1} (2013).",
@@ -56650,7 +56650,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-f0af8e6f36727f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{kuznetsova2003} O.~S. Kuznetsova and V.~G. Tkachev, \\emph{Length functions of lemniscates}, Manuscripta Math. \\textbf{112} (2003), 519--538, doi:\\href{https://doi.org/10.1007/s00229-003-0411-3}{10.1007/s00229-003-0411-3}; preprint arXiv:\\href{https://arxiv.org/abs/math/0306327}{math/0306327}.",
@@ -56674,7 +56674,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-57fe330e419648",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{tischler1989} D.~Tischler, \\emph{Critical points and values of complex polynomials}, J. Complexity \\textbf{5} (1989), no.~4, 438--456.",
@@ -56698,7 +56698,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-7ac8693558c1a2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{revision2026} W.~Cook / Plectis, \\emph{Three refinements for the lemniscate-path programme}, 16 September 2026, accompanying unreviewed research note, Sections~1--3, with the earlier \\emph{Structural obstructions} note preserved in the same revision bundle.",
@@ -56738,7 +56738,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-45037c29c04bed",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{dubinin2006capacity} V.~N. Dubinin, \\emph{Lemniscates and inequalities for the logarithmic capacities of continua}, Mat. Zametki \\textbf{80} (2006), no.~1, 33--37; English translation, Math. Notes \\textbf{80} (2006), no.~1, 31--35, doi:\\href{https://doi.org/10.1007/s11006-006-0105-8}{10.1007/s11006-006-0105-8}.",
@@ -56762,7 +56762,7 @@
         "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "source_id": "source-2a86f52125aec0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_text": "\\bibitem{erdos1988} P.~Erd\\H{o}s, \\emph{On the irrationality of certain series: problems and results}, in A.~Baker (ed.), \\emph{New Advances in Transcendence Theory}, Cambridge UP, 1988, pp.~102--109, doi:\\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.",
@@ -60426,7 +60426,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-2ec6bf87654604",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{crane} E.~Crane, \\emph{The areas of polynomial images and pre-images}, Bull. London Math. Soc. \\textbf{36} (2004), no.~6, 786--792, doi:\\href{https://doi.org/10.1112/S0024609304003509}{10.1112/S0024609304003509}; preprint arXiv:\\href{https://arxiv.org/abs/math/0302189v1}{math/0302189v1}, whose statement numbers are cited.",
@@ -60628,7 +60628,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{bloom} T.~F. Bloom, \\emph{Erd\\H{o}s Problems}, problem~1041. \\url{https://www.erdosproblems.com/1041}",
@@ -60664,7 +60664,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{ehp1958} P.~Erd\\H{o}s, F.~Herzog, and G.~Piranian, \\emph{Metric properties of polynomials}, J. Analyse Math. \\textbf{6} (1958), 125--148, doi:\\href{https://doi.org/10.1007/BF02790232}{10.1007/BF02790232}.",
@@ -60740,7 +60740,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{ghosh2023} S.~Ghosh and K.~Ramachandran, \\emph{Number of Components of Polynomial Lemniscates: A Problem of Erd\\H{o}s, Herzog, and Piranian}, J. Math. Anal. Appl. \\textbf{540} (2024), no.~1, 128571, doi:\\href{https://doi.org/10.1016/j.jmaa.2024.128571}{10.1016/j.jmaa.2024.128571}; preprint arXiv:\\href{https://arxiv.org/abs/2312.13673v1}{2312.13673v1}, whose statement numbers are cited.",
@@ -60780,7 +60780,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-97b4e6a82335a7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{sutherland1992} S.~Sutherland, \\emph{Bad Polynomials for Newton's Method}, in B.~Bielefeld and M.~Lyubich (eds.), \\emph{Conformal Dynamics Problem List}, Stony Brook IMS preprint (1992), 42--44. \\url{https://www.math.stonybrook.edu/preprints/ims92-7.pdf}",
@@ -60820,7 +60820,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-318ee5e7cf6d74",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{kozen-stefansson1997} D.~Kozen and K.~Stef\\'ansson, \\emph{Computing the Newtonian graph}, J. Symbolic Comput. \\textbf{24} (1997), no.~2, 125--136, doi:\\href{https://doi.org/10.1006/jsco.1997.0118}{10.1006/jsco.1997.0118}; authors' copy \\url{https://www.cs.cornell.edu/kozen/Papers/newton.pdf}.",
@@ -61004,7 +61004,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{eks2010} P.~Ebenfelt, D.~Khavinson, and H.~S. Shapiro, \\emph{Two-dimensional shapes and lemniscates}, in \\emph{Complex Analysis and Dynamical Systems IV, Part~1}, Contemp. Math. \\textbf{553}, Amer. Math. Soc., Providence, RI, 2011, 45--59, doi:\\href{https://doi.org/10.1090/conm/553/10931}{10.1090/conm/553/10931}; preprint arXiv:\\href{https://arxiv.org/abs/1003.4567v1}{1003.4567v1}, whose statement numbers are cited.",
@@ -61188,7 +61188,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{dubinin2006capacity} V.~N. Dubinin, \\emph{Lemniscates and inequalities for the logarithmic capacities of continua}, Mat. Zametki \\textbf{80} (2006), no.~1, 33--37, doi:\\href{https://doi.org/10.4213/mzm2777}{10.4213/mzm2777}; English translation, Math. Notes \\textbf{80} (2006), no.~1, 31--35, doi:\\href{https://doi.org/10.1007/s11006-006-0105-8}{10.1007/s11006-006-0105-8}.",
@@ -61228,7 +61228,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-2a86f52125aec0",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{march2026} \\texttt{shtuka}, \\emph{A Short Path Joining Two Zeros Inside a Polynomial Lemniscate}, manuscript posted 24 March 2026, 48~pp. \\url{https://shtuka123.github.io/1041/main.pdf}. The file at this URL has since been replaced by a shorter partial version that no longer contains Proposition~12; the durable public record of the March version, its defect, and the author's 26 March 2026 concession is the discussion thread at \\url{https://www.erdosproblems.com/forum/thread/1041}.",
@@ -61268,7 +61268,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-f300911fb03a5c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{june2026} V.~S. Pendyala, \\emph{A Degree-Four Lemniscate Path Theorem}, arXiv:\\href{https://arxiv.org/abs/2606.24875v1}{2606.24875v1} (2026), doi:\\href{https://doi.org/10.48550/arXiv.2606.24875} {10.48550/arXiv.2606.24875}.",
@@ -61398,7 +61398,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{dubinin} V.~N. Dubinin, \\emph{Some inequalities for polynomials and rational functions associated with lemniscates}, Zap. Nauchn. Sem. POMI \\textbf{404} (2012), 83--99; English translation, J. Math. Sci. \\textbf{193} (2013), no.~1, 45--54, doi:\\href{https://doi.org/10.1007/s10958-013-1432-4}{10.1007/s10958-013-1432-4}.",
@@ -61434,7 +61434,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-dcbe400c96be59",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{borwein1995} P.~Borwein, \\emph{The arc length of the lemniscate $\\{|p(z)|=1\\}$}, Proc. Amer. Math. Soc. \\textbf{123} (1995), no.~3, 797--799, doi:\\href{https://doi.org/10.1090/S0002-9939-1995-1223265-3} {10.1090/S0002-9939-1995-1223265-3}.",
@@ -61470,7 +61470,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-89b9a294db76bb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{eremenkohayman1999} A.~Eremenko and W.~Hayman, \\emph{On the length of lemniscates}, Michigan Math. J. \\textbf{46} (1999), no.~2, 409--415, doi:\\href{https://doi.org/10.1307/mmj/1030132418}{10.1307/mmj/1030132418}; preprint arXiv:\\href{https://arxiv.org/abs/0805.2295}{0805.2295}.",
@@ -61528,7 +61528,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-7f1f2a3fd9238c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{fryntovnazarov2008} A.~Fryntov and F.~Nazarov, \\emph{New estimates for the length of the Erd\\H{o}s--Herzog--Piranian lemniscate}, in \\emph{Linear and Complex Analysis}, Amer. Math. Soc. Transl. Ser.~2 \\textbf{226}, Amer. Math. Soc., Providence, RI, 2009, 49--60, doi:\\href{https://doi.org/10.1090/trans2/226/05}{10.1090/trans2/226/05}; preprint arXiv:\\href{https://arxiv.org/abs/0808.0717v1}{0808.0717v1}.",
@@ -61582,7 +61582,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-a67b8dc01791ec",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{tao2025} T.~Tao, \\emph{The maximal length of the Erd\\H{o}s--Herzog--Piranian lemniscate in high degree}, arXiv:\\href{https://arxiv.org/abs/2512.12455v1}{2512.12455v1} (2025).",
@@ -61618,7 +61618,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-0e12f93aeac487",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{eremenkoyuditskii2012} A.~Eremenko and P.~Yuditskii, \\emph{Comb functions}, Contemp. Math. \\textbf{578} (2012), 99--118, doi:\\href{https://doi.org/10.1090/conm/578/11472}{10.1090/conm/578/11472}; preprint arXiv:\\href{https://arxiv.org/abs/1109.1464v1}{1109.1464v1}.",
@@ -61676,7 +61676,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "eremenko_yuditskii_2012_comb_functions",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{eremenkolempert1994} A.~Eremenko and L.~Lempert, \\emph{An extremal problem for polynomials}, Proc. Amer. Math. Soc. \\textbf{122} (1994), no.~1, 191--193, doi:\\href{https://doi.org/10.1090/S0002-9939-1994-1207536-1} {10.1090/S0002-9939-1994-1207536-1}.",
@@ -61716,7 +61716,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "eremenko_lempert_1994_extremal_problem_for_polynomials",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{eremenko2007} A.~Eremenko, \\emph{A Markov-type inequality for arbitrary plane continua}, Proc. Amer. Math. Soc. \\textbf{135} (2007), no.~5, 1505--1510, doi:\\href{https://doi.org/10.1090/S0002-9939-06-08640-0} {10.1090/S0002-9939-06-08640-0}; preprint arXiv:\\href{https://arxiv.org/abs/math/0606745v1}{math/0606745v1}.",
@@ -61756,7 +61756,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "eremenko_2007_markov_type_inequality_plane_continua",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{bishoperemenkolazebnik2025} C.~J. Bishop, A.~Eremenko, and K.~Lazebnik, \\emph{On the shapes of rational lemniscates}, Geom. Funct. Anal. \\textbf{35} (2025), no.~2, 359--407, doi:\\href{https://doi.org/10.1007/s00039-025-00704-2} {10.1007/s00039-025-00704-2}; preprint arXiv:\\href{https://arxiv.org/abs/2407.14610v1}{2407.14610v1}.",
@@ -61832,7 +61832,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{dubinin2006critical} V.~N. Dubinin, \\emph{Inequalities for critical values of polynomials}, Sb. Math. \\textbf{197} (2006), no.~8, 1167--1176, doi:\\href{https://doi.org/10.1070/SM2006v197n08ABEH003793}{10.1070/SM2006v197n08ABEH003793}.",
@@ -61890,7 +61890,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-b10b965e63a00d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{crane2007smale} E.~Crane, \\emph{A bound for Smale's mean value conjecture for complex polynomials}, Bull. London Math. Soc. \\textbf{39} (2007), no.~5, 781--791, doi:\\href{https://doi.org/10.1112/blms/bdm063}{10.1112/blms/bdm063}; author preprint \\url{https://people.maths.bris.ac.uk/~maetc/SMVCbound.pdf}.",
@@ -61930,7 +61930,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-818467bc1cb170",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{dubinin2013fourpoint} V.~N. Dubinin, \\emph{Four-point distortion theorem for complex polynomials}, arXiv:\\href{https://arxiv.org/abs/1301.3985v1}{1301.3985v1} (2013).",
@@ -61970,7 +61970,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-f0af8e6f36727f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{kuznetsova2003} O.~S. Kuznetsova and V.~G. Tkachev, \\emph{Length functions of lemniscates}, Manuscripta Math. \\textbf{112} (2003), 519--538, doi:\\href{https://doi.org/10.1007/s00229-003-0411-3}{10.1007/s00229-003-0411-3}; preprint arXiv:\\href{https://arxiv.org/abs/math/0306327}{math/0306327}.",
@@ -62010,7 +62010,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-57fe330e419648",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{tischler1989} D.~Tischler, \\emph{Critical points and values of complex polynomials}, J. Complexity \\textbf{5} (1989), no.~4, 438--456.",
@@ -62050,7 +62050,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-7ac8693558c1a2",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{revision2026} W.~Cook / Plectis, \\emph{Three refinements for the lemniscate-path programme}, 16 September 2026, accompanying unreviewed research note, Sections~1--3, with the earlier \\emph{Structural obstructions} note preserved in the same revision bundle.",
@@ -62144,7 +62144,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-45037c29c04bed",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{schur1918} I.~Schur, \\emph{\\\"Uber die Verteilung der Wurzeln bei gewissen algebraischen Gleichungen mit ganzzahligen Koeffizienten}, Math. Z. \\textbf{1} (1918), no.~4, 377--402.",
@@ -62180,7 +62180,7 @@
         "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "source_id": "source-b4b0f2811b1d2d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_text": "\\bibitem{polya1928} G.~P\\'olya, \\emph{Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenh\\\"angende Gebiete}, Sitzungsberichte der Preussischen Akademie der Wissenschaften, Physikalisch-Mathematische Klasse (1928), printed pp.~228--232 and 280--282. \\url{https://archive.org/details/sitzungsbericht1928preu}.",
@@ -92053,7 +92053,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92067,7 +92067,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92083,7 +92083,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92099,7 +92099,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92115,7 +92115,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92131,7 +92131,7 @@
         ],
         "source_id": "source-2ec6bf87654604",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92147,7 +92147,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92163,7 +92163,7 @@
         ],
         "source_id": "source-dcbe400c96be59",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92179,7 +92179,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92195,7 +92195,7 @@
         ],
         "source_id": "source-45037c29c04bed",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92211,7 +92211,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92227,7 +92227,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92243,7 +92243,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92259,7 +92259,7 @@
         ],
         "source_id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92275,7 +92275,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92291,7 +92291,7 @@
         ],
         "source_id": "eremenko_yuditskii_2012_comb_functions",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92307,7 +92307,7 @@
         ],
         "source_id": "eremenko_yuditskii_2012_comb_functions",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92323,7 +92323,7 @@
         ],
         "source_id": "source-7f1f2a3fd9238c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92339,7 +92339,7 @@
         ],
         "source_id": "eremenko_lempert_1994_extremal_problem_for_polynomials",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92355,7 +92355,7 @@
         ],
         "source_id": "eremenko_2007_markov_type_inequality_plane_continua",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92371,7 +92371,7 @@
         ],
         "source_id": "source-b10b965e63a00d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92387,7 +92387,7 @@
         ],
         "source_id": "source-b10b965e63a00d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92403,7 +92403,7 @@
         ],
         "source_id": "source-7ac8693558c1a2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92417,7 +92417,7 @@
         "qualifiers": [],
         "source_id": "source-45037c29c04bed",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92433,7 +92433,7 @@
         ],
         "source_id": "source-b10b965e63a00d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92449,7 +92449,7 @@
         ],
         "source_id": "source-2a86f52125aec0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92465,7 +92465,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92481,7 +92481,7 @@
         ],
         "source_id": "source-45037c29c04bed",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92497,7 +92497,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92513,7 +92513,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92529,7 +92529,7 @@
         ],
         "source_id": "source-8710374c3e8c9f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92545,7 +92545,7 @@
         ],
         "source_id": "source-f300911fb03a5c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92561,7 +92561,7 @@
         ],
         "source_id": "source-7f1f2a3fd9238c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92577,7 +92577,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92593,7 +92593,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92609,7 +92609,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92625,7 +92625,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92641,7 +92641,7 @@
         ],
         "source_id": "source-818467bc1cb170",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92657,7 +92657,7 @@
         ],
         "source_id": "source-f0af8e6f36727f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -92673,7 +92673,7 @@
         ],
         "source_id": "source-57fe330e419648",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+        "source_sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
       },
       {
         "citation_context": "in_text_citation",
@@ -95631,7 +95631,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95647,7 +95647,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95663,7 +95663,7 @@
         ],
         "source_id": "source-f300911fb03a5c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95679,7 +95679,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95695,7 +95695,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95711,7 +95711,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95727,7 +95727,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95743,7 +95743,7 @@
         ],
         "source_id": "source-2ec6bf87654604",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95759,7 +95759,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95775,7 +95775,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95791,7 +95791,7 @@
         ],
         "source_id": "source-45037c29c04bed",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95807,7 +95807,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95823,7 +95823,7 @@
         ],
         "source_id": "source-57fe330e419648",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95839,7 +95839,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95855,7 +95855,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95871,7 +95871,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95887,7 +95887,7 @@
         ],
         "source_id": "source-a67b8dc01791ec",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95901,7 +95901,7 @@
         "qualifiers": [],
         "source_id": "source-89b9a294db76bb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95917,7 +95917,7 @@
         ],
         "source_id": "source-7f1f2a3fd9238c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95931,7 +95931,7 @@
         "qualifiers": [],
         "source_id": "source-a67b8dc01791ec",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95945,7 +95945,7 @@
         "qualifiers": [],
         "source_id": "source-0e12f93aeac487",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95961,7 +95961,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95977,7 +95977,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -95993,7 +95993,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96009,7 +96009,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96025,7 +96025,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96039,7 +96039,7 @@
         "qualifiers": [],
         "source_id": "source-dcbe400c96be59",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96055,7 +96055,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96071,7 +96071,7 @@
         ],
         "source_id": "eremenko_yuditskii_2012_comb_functions",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96087,7 +96087,7 @@
         ],
         "source_id": "eremenko_yuditskii_2012_comb_functions",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96103,7 +96103,7 @@
         ],
         "source_id": "source-7f1f2a3fd9238c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96119,7 +96119,7 @@
         ],
         "source_id": "eremenko_lempert_1994_extremal_problem_for_polynomials",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96135,7 +96135,7 @@
         ],
         "source_id": "eremenko_2007_markov_type_inequality_plane_continua",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96151,7 +96151,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96167,7 +96167,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96183,7 +96183,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96199,7 +96199,7 @@
         ],
         "source_id": "source-951f70d8dfc418",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96215,7 +96215,7 @@
         ],
         "source_id": "source-b10b965e63a00d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96231,7 +96231,7 @@
         ],
         "source_id": "source-7ac8693558c1a2",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96245,7 +96245,7 @@
         "qualifiers": [],
         "source_id": "source-b4b0f2811b1d2d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96261,7 +96261,7 @@
         ],
         "source_id": "source-45037c29c04bed",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96277,7 +96277,7 @@
         ],
         "source_id": "source-45037c29c04bed",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96293,7 +96293,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96309,7 +96309,7 @@
         ],
         "source_id": "source-45037c29c04bed",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96325,7 +96325,7 @@
         ],
         "source_id": "source-318ee5e7cf6d74",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96341,7 +96341,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96357,7 +96357,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96373,7 +96373,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96389,7 +96389,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96405,7 +96405,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96421,7 +96421,7 @@
         ],
         "source_id": "source-97b4e6a82335a7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96437,7 +96437,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96453,7 +96453,7 @@
         ],
         "source_id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96469,7 +96469,7 @@
         ],
         "source_id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96485,7 +96485,7 @@
         ],
         "source_id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96501,7 +96501,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96517,7 +96517,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96533,7 +96533,7 @@
         ],
         "source_id": "source-b10b965e63a00d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96549,7 +96549,7 @@
         ],
         "source_id": "source-2a86f52125aec0",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96565,7 +96565,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96581,7 +96581,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96597,7 +96597,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96613,7 +96613,7 @@
         ],
         "source_id": "source-92b0dfb67f5009",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96629,7 +96629,7 @@
         ],
         "source_id": "source-818467bc1cb170",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96645,7 +96645,7 @@
         ],
         "source_id": "source-f0af8e6f36727f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96661,7 +96661,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96677,7 +96677,7 @@
         ],
         "source_id": "source-40bc4064b92788",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -96693,7 +96693,7 @@
         ],
         "source_id": "source-9e37cc2fe7db3e",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+        "source_sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
       },
       {
         "citation_context": "in_text_citation",
@@ -114721,7 +114721,7 @@
           "line_end": 1842,
           "line_start": 1836,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:26d60d27d7d495f7259334fef196a51735ac5030652cb8728846fed7b1146393",
@@ -114729,7 +114729,7 @@
           "line_end": 4834,
           "line_start": 4828,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:26d60d27d7d495f7259334fef196a51735ac5030652cb8728846fed7b1146393",
@@ -116132,7 +116132,7 @@
           "line_end": 1779,
           "line_start": 1777,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed",
@@ -116140,7 +116140,7 @@
           "line_end": 4740,
           "line_start": 4738,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:ca4961b07db9ad87fb029632eea765fe437a48a66378723f1fc3195a99aa0f8b",
@@ -116770,7 +116770,7 @@
           "line_end": 1836,
           "line_start": 1830,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:23a731c181be1a3d3f4f814b84774f68a8a5b6bcebb7b8717ac21e9917899da5",
@@ -116778,7 +116778,7 @@
           "line_end": 4828,
           "line_start": 4822,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:23a731c181be1a3d3f4f814b84774f68a8a5b6bcebb7b8717ac21e9917899da5",
@@ -116873,7 +116873,7 @@
           "line_end": 1830,
           "line_start": 1825,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:2ca5100ac1e4e768257b05ac88a40e2a04ae625930bbba2c8e7c147703d176a6",
@@ -116881,7 +116881,7 @@
           "line_end": 4822,
           "line_start": 4817,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:2ca5100ac1e4e768257b05ac88a40e2a04ae625930bbba2c8e7c147703d176a6",
@@ -116978,7 +116978,7 @@
           "line_end": 1825,
           "line_start": 1821,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:42b99f9986d17fa7c89618f299bdc5940ef3f67b0a8129937e2dcd5521a15379",
@@ -116986,7 +116986,7 @@
           "line_end": 4817,
           "line_start": 4813,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:42b99f9986d17fa7c89618f299bdc5940ef3f67b0a8129937e2dcd5521a15379",
@@ -119302,7 +119302,7 @@
           "line_end": 4813,
           "line_start": 4809,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:7968722d9338768846f85bc2ef2063b55804e78527ad41a2e77023c434d04535",
@@ -124283,7 +124283,7 @@
           "line_end": 4774,
           "line_start": 4768,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:2bbaf57338864a16529f3ab7d08eeeff8fb2358b4fafc7034087e3c4761985ee",
@@ -124299,7 +124299,7 @@
           "line_end": 1882,
           "line_start": 1877,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         }
       ],
       "artifact_links": [
@@ -124540,7 +124540,7 @@
           "line_end": 1853,
           "line_start": 1847,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:81544feb2d8e4a8dc89d7c14926bbdc17f7c170e2812d2e600bc764613620048",
@@ -124548,7 +124548,7 @@
           "line_end": 4732,
           "line_start": 4726,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:81544feb2d8e4a8dc89d7c14926bbdc17f7c170e2812d2e600bc764613620048",
@@ -125967,7 +125967,7 @@
           "line_end": 4756,
           "line_start": 4751,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:620501b65c595f397bcb8546b8f32f2dc7376a436f617b51b629ce031def07e1",
@@ -127094,7 +127094,7 @@
           "line_end": 4738,
           "line_start": 4732,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:428989f59406f939d2c86c6f7824295f410f97de0a786684b7faeddbd01f4a71",
@@ -127110,7 +127110,7 @@
           "line_end": 1809,
           "line_start": 1803,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         }
       ],
       "artifact_links": [
@@ -127494,7 +127494,7 @@
           "line_end": 1877,
           "line_start": 1873,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:c7daa6ecb347084bcfff886434d3ee286e92a61de85db715bfea9f6822a2669b",
@@ -127502,7 +127502,7 @@
           "line_end": 4858,
           "line_start": 4854,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:c7daa6ecb347084bcfff886434d3ee286e92a61de85db715bfea9f6822a2669b",
@@ -129847,7 +129847,7 @@
           "line_end": 1870,
           "line_start": 1865,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:9976334d2d074f47b0f36053eafc88c2da992e02c4c4c2eb6956f0ecc319a48b",
@@ -129855,7 +129855,7 @@
           "line_end": 4851,
           "line_start": 4846,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:9976334d2d074f47b0f36053eafc88c2da992e02c4c4c2eb6956f0ecc319a48b",
@@ -131565,7 +131565,7 @@
           "line_end": 1783,
           "line_start": 1779,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:b88bf461b59f2aca4fbd717fe1f7fae9a31ad41586223d8984be19883d35f1de",
@@ -131573,7 +131573,7 @@
           "line_end": 4744,
           "line_start": 4740,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:b88bf461b59f2aca4fbd717fe1f7fae9a31ad41586223d8984be19883d35f1de",
@@ -136460,7 +136460,7 @@
           "line_end": 1873,
           "line_start": 1870,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:6aaf6da69e5a056c56565ce65b93dc9624cd8a22480a7b32eacbb405f875508a",
@@ -136468,7 +136468,7 @@
           "line_end": 4854,
           "line_start": 4851,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:6aaf6da69e5a056c56565ce65b93dc9624cd8a22480a7b32eacbb405f875508a",
@@ -137556,7 +137556,7 @@
           "line_end": 4803,
           "line_start": 4798,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:fbbf29db45c62cfa84769c87ea4dfb6dcbc312a557a3335deb161872d3ae4d44",
@@ -137579,7 +137579,7 @@
           "line_end": 1821,
           "line_start": 1816,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         }
       ],
       "artifact_links": [
@@ -137869,7 +137869,7 @@
           "line_end": 1862,
           "line_start": 1857,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:dd81dda92210816aa997d12725fdd2b3d2f7a70097cbd438d5ef8102c0c13e44",
@@ -137877,7 +137877,7 @@
           "line_end": 4843,
           "line_start": 4838,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:dd81dda92210816aa997d12725fdd2b3d2f7a70097cbd438d5ef8102c0c13e44",
@@ -138903,7 +138903,7 @@
           "line_end": 1798,
           "line_start": 1792,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         }
       ],
       "artifact_links": [
@@ -139423,7 +139423,7 @@
           "line_end": 4798,
           "line_start": 4793,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:2eb3162258360253b5cf7a590c5d7eefeabfb1b4633350ee641a14035d11359c",
@@ -139797,7 +139797,7 @@
           "line_end": 1803,
           "line_start": 1798,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:bfa2ad242e4a6f037e19e479a20a53b503839419b0cda9e5daa5e3cb598fe13a",
@@ -139805,7 +139805,7 @@
           "line_end": 4761,
           "line_start": 4756,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:bfa2ad242e4a6f037e19e479a20a53b503839419b0cda9e5daa5e3cb598fe13a",
@@ -139992,7 +139992,7 @@
           "line_end": 1792,
           "line_start": 1787,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:47c15ddd8236ce68dd0ecbf6270bce0d6213cbaaf1750e780da87c87894d6230",
@@ -140000,7 +140000,7 @@
           "line_end": 4788,
           "line_start": 4783,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:47c15ddd8236ce68dd0ecbf6270bce0d6213cbaaf1750e780da87c87894d6230",
@@ -140759,7 +140759,7 @@
           "line_end": 4751,
           "line_start": 4744,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:ac93a1f2c5c87957117830efd99688e57dc988e65987811c68128cdf2f71aa9f",
@@ -141705,7 +141705,7 @@
           "line_end": 1816,
           "line_start": 1809,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:ff50af06cc617795c60c2ca89ddaec781a6c4593028140edc22775c58cb3e3a9",
@@ -141713,7 +141713,7 @@
           "line_end": 4768,
           "line_start": 4761,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:ff50af06cc617795c60c2ca89ddaec781a6c4593028140edc22775c58cb3e3a9",
@@ -142126,7 +142126,7 @@
           "line_end": 4809,
           "line_start": 4803,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:bcdad75ad0ef6a705b6fe89763d0da02f0663ec648798c57bec9c5455264dc47",
@@ -143921,7 +143921,7 @@
           "line_end": 1857,
           "line_start": 1853,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:e71562d62b7120e70fe7b834f65baa80911382d9eec508f8396928584ab1dacf",
@@ -143929,7 +143929,7 @@
           "line_end": 4838,
           "line_start": 4834,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:e71562d62b7120e70fe7b834f65baa80911382d9eec508f8396928584ab1dacf",
@@ -145456,7 +145456,7 @@
           "line_end": 4862,
           "line_start": 4858,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:99939ef8c0a5cb1b8c7690f76fd5e569b585f9d6d4c28a5194e30f4c7f6c42d0",
@@ -149157,7 +149157,7 @@
           "line_end": 1847,
           "line_start": 1842,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:8c9bd3c3345cf07ffa6815f7ec1a90485fe63e2b80e1724053327490204d780a",
@@ -149165,7 +149165,7 @@
           "line_end": 4793,
           "line_start": 4788,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:8c9bd3c3345cf07ffa6815f7ec1a90485fe63e2b80e1724053327490204d780a",
@@ -151524,7 +151524,7 @@
           "line_end": 1865,
           "line_start": 1862,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:a2ea0b0d9fe464fd26b77c94c6b482f3c945b98a5fd53c85d7624d1728340989",
@@ -151532,7 +151532,7 @@
           "line_end": 4846,
           "line_start": 4843,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:a2ea0b0d9fe464fd26b77c94c6b482f3c945b98a5fd53c85d7624d1728340989",
@@ -151975,7 +151975,7 @@
           "line_end": 1787,
           "line_start": 1783,
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "sha256": "sha256:e7ca5c10b305b64aca633e6e748479e5f83eebfa09b0e2881ac6a145c17bb832"
+          "sha256": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd"
         },
         {
           "excerpt_sha256": "sha256:72a88e5a23c5730b248edc8d8bc104d1818c8c71ea25dbdd60a7c6074bb79d61",
@@ -151983,7 +151983,7 @@
           "line_end": 4783,
           "line_start": 4774,
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "sha256": "sha256:7b7c92cf0009be39c9fb8b5b660db9e14a3dd4ec2a19fb53a57ec1726e221c8c"
+          "sha256": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f"
         },
         {
           "excerpt_sha256": "sha256:72a88e5a23c5730b248edc8d8bc104d1818c8c71ea25dbdd60a7c6074bb79d61",
