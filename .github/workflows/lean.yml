@@ -240,6 +240,33 @@ jobs:
         # ErdosProblems.Erdos251.PaperLargeAuditR7 imports the whole #251
         # large certificate (lakefile library Erdos251LargeCertificate).
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants FC1049HeightRegion ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+      # The bounded build reports only target exit codes. Re-elaborate this
+      # adapter to expose the exact theorem's axiom report on every run, then
+      # fail if it contains anything beyond Lean's standard logical axioms.
+      - name: Audit FC1049 adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FC1049HeightRegion.lean | tee "$RUNNER_TEMP/fc1049-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc1049-axioms.log").read_text()
+          theorem = (
+              "ErdosProblems.Erdos1049.FormalConjecturesAdapter."
+              "erdos_1049_variants_rational_base_region_81_200"
+          )
+          match = re.search(rf"{re.escape(theorem)} depends on axioms: \[([^\]]*)\]", output)
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
       - name: Verify a separate Lake project can use the library
         if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/check_downstream_reuse.py
