@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "e6c2d8f77ac24753c5216a49f4daf7f7388b309f",
-  "content_digest": "sha256:1ae334800e94742a5d9ae092ed608015633e6beeda6b80d3873268c5968ef0fc",
+  "content_digest": "sha256:04c174eca6ec0fdc24184cd57c4c6f24bb27812475a2e40e75f9beaccca4128d",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -3313,12 +3313,27 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:30be0ca593be5b6fe619bf3b07cc8e9c90f7c997baac5953d04c6740f7050ee7",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:876",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:880",
       "lean": {
-        "status": "none",
-        "counted": true,
-        "declarations": [],
-        "reason": "the location of the roots in the open unit disc and the value $\\mu=187/2000\\le1/2$ are checked, and the root count $k_0=2$ and the capacity clause are not; the root count, taken in the component of $K_\\mu$ containing the critical point at level $\\mu$, can be stated in the pinned library, and the capacity clause needs a logarithmic capacity, which that library does not define"
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_first_merger",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.Arity.closure_doubleLevelComponent",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.LemniscateTransfiniteDiameter"
+        ],
+        "scope": "the classical value $t^{1/n}$ of the transfinite diameter of the filled lemniscate $\\{|p|\\le t\\}$ of a monic polynomial $p$ of degree $n$, used only in the capacity clause"
       },
       "comparator": {
         "status": "not_applicable"
@@ -3336,7 +3351,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:13b66d69e613f84d6adf4dc7028c9cb5ac97a4441afe43fdf31b2d0d1e7055bd",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:897",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:901",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -3372,7 +3387,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:207266dc2e92b9b7bfe0e64bc4dc27f7dfae044ffdc6ab84f4e754699db9b5f5",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:932",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:936",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -3408,7 +3423,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0c95d8f8f1c5f9c785b8530b5c7a9b128edcd2ee4dc828d4bfa39d6ea31d883e",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:979",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:983",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3444,7 +3459,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:fe2d8a0d8a8929af921361926a36e199841f085a80738cf43af67542f888fd42",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1136",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1140",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3504,7 +3519,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:3d07d6165daf5a6815d7658ce65f7cc047060e404876d51334eff0504ebc640b",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1193",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1197",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -3573,7 +3588,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:7fae9a9498cbfbebd1ec6cdfa0f83cff833ac2e02dec7d5461e1c449fdd46e59",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1288",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1292",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3614,7 +3629,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:14061e40e266714c0417546f71d378bb877457596ef879b312255948be2885cb",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1377",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1381",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -3650,7 +3665,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:dce7a2f9d1f399fc5f827efdca28a0b23c936b2b1c8ee8e12c520151969615a2",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1477",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:1481",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
