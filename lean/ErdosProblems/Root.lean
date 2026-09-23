@@ -1,6 +1,7 @@
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter
+import ErdosProblems.Erdos1041.Counterexample.HausdorffLength
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
 import ErdosProblems.Erdos1049.AdelicHeightBridge

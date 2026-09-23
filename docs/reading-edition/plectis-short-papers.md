@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `33a547d62549806b`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `05e177a4cd5b544a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1797,13 +1797,13 @@ Moubariz Z. Garaev, Florian Luca and Igor E. Shparlinski. [Character sums and co
 
 *Companion system context.* The [claim and trust boundary](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
-## Erdős #243: Bounded Increments and Rational Reciprocal Sums
+## Erdős #243: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
 
-*If a reciprocal sum is rational and a_{n+1}/a_n^2→1, what increment bound forces the Sylvester recurrence, and why does that not settle Erdős #243?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
+*Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
 
 <a id="erdos-243-reciprocal-tail-rigidity--erdos-243-reciprocal-tail-rigidity"></a>
 
-### Bounded Increments and Rational Reciprocal Sums
+### Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
 
 <div class="center">
 
@@ -1811,13 +1811,15 @@ Moubariz Z. Garaev, Florian Luca and Igor E. Shparlinski. [Character sums and co
 
 </div>
 
-Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. We prove that an eventual upper bound on $`P_{n+1}/a_{n+1}-P_n/a_n`$ forces $`a_{n+1}=a_n^2-a_n+1`$ eventually. This strengthens a sufficient condition requiring the upper limit of these increments to be nonpositive. Under this bound, clearing denominators in the rational tails produces positive integer numerators with bounded upward increments. Integer descent handles an eventually nonnegative error; otherwise, stabilising the common divisor makes a Chinese remainder theorem obstruction available. The needed increment bound is not derived from growth and rationality alone, so this sufficient condition does not resolve Erdős Problem #243.
+We prove that every strictly increasing sequence of positive integers with $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. The integer numerators of a hypothetical rational tail would eventually have a cubic profile; a number-field square-specialisation argument and congruences modulo seven exclude it. The square-specialisation step and the resulting irrationality theorem have unconditional Lean declarations for zero-indexed positive sequences, using the simple pole of the Dedekind zeta function rather than a Chebotarev premise. The one-based statement follows by the finite-prefix argument below.
+
+We also prove that, when $`a_{n+1}/a_n^2\to1`$ and the reciprocal sum is rational, an eventual upper bound on the increments of $`P_n/a_n`$, where $`P_n=\prod_{j<n}a_j`$, forces the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ eventually. That increment bound is not derived from growth and rationality alone; the unrestricted Erdős problem remains open.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:problem"></a>
 
 ### Introduction
 
-For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
+The cubic-rate theorem in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:secondaryrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate">7</a> gives irrationality for a precise subclass of the growth sequences in Erdős Problem #243. The main recurrence criterion below treats a different subclass. For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
 ``` math
 \frac1{a_n-1}=\frac1{a_n}+\frac1{a_{n+1}-1}.
 ```
@@ -2283,7 +2285,7 @@ For integer summand numerators $`b_n`$, the updates become $`V_n=b_nL_n-(a_n-1)U
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate"></a>
 
-### Further consequences
+### Cubic-rate irrationality and further consequences
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:inclusiveone" class="corollary">
 
@@ -2320,11 +2322,13 @@ has irrational reciprocal sum.*
 
 </div>
 
-Lean: [cubic rate irrationality of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L270). Conditional on Chebotarev’s density theorem; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=coverage).
+Lean: [`cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70). The zero-indexed theorem has no Chebotarev hypothesis; the one-based index translation below is an ordinary argument. See the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=coverage).
+
+*Index translation.* The Lean theorem takes a positive, strictly increasing sequence indexed from $`0`$. To preserve the displayed $`3/n`$ rate, we alter only a finite prefix without shifting indices. Strict increase gives $`a_n\ge n`$ for $`n\ge1`$. The rate makes $`a_n^2/a_{n+1}<2`$ eventually, so $`a_{n+1}>a_n^2/2\ge n^2/2>n+1`$ for all sufficiently large $`n`$. Choose $`N`$ with $`a_N>N`$ and set $`b_n=n+1`$ for $`0\le n<N`$, and $`b_n=a_n`$ for $`n\ge N`$. Then $`b`$ is positive and strictly increasing, has exactly the same rate for all $`n\ge N`$, and its reciprocal sum differs from $`\sum_{n\ge1}1/a_n`$ by a finite rational sum. Thus the zero-indexed Lean theorem implies the printed one-based conclusion through this ordinary finite-prefix argument.
 
 <div class="proof">
 
-*Proof by the polynomial exclusion.* Under rationality, Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The field step uses Chebotarev; see \[stevenhagenlenstra1996, Section 3, author version\] for that classical input. This paragraph is a proof by a stated companion result, not a standalone finite-congruence proof and not an assembled Lean proof. ◻
+*Proof by the polynomial exclusion.* Under rationality, Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The companion gives an ordinary proof of the field step using the classical Chebotarev theorem \[stevenhagenlenstra1996, Section 3, author version\]. The Lean proof instead derives the square-specialisation lemma from the simple pole of the Dedekind zeta function and applies it to the full cubic-rate implication. This paragraph is a proof by the stated companion argument. ◻
 
 </div>
 
@@ -2445,7 +2449,7 @@ The mathematical arguments above are independent of the source code. Each linked
 
 ###### Recorded coverage.
 
-The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#erdos-243-reciprocal-tail-rigidity--res:weights" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:weights">19</a>. The cubic and double-logarithmic arguments have checked components, not assembled Lean proofs identified here; the companion supplies their written proofs, including the growth and modulus-counting arguments.
+The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#erdos-243-reciprocal-tail-rigidity--res:weights" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:weights">19</a>. The zero-indexed cubic-rate theorem has an unconditional Lean declaration at the separately linked PR revision; the one-based finite-prefix bridge above is an ordinary argument. The double-logarithmic argument retains its stated component-level coverage. The companion supplies their written proofs, including the growth and modulus-counting arguments.
 
 The recorded main build is at `6b78209ab63a`; links retain their original pins, including `3d6d938d696f`. The linked weighted criterion also has a fresh Lean check; this does not certify the remaining exposition as a whole. Finite certificates and unsuccessful extensions are retained in the companion, not counted as proofs of assembled arguments. The earlier Isabelle/HOL development of Koutsoukou-Argyraki and Li \[kouli2020\] verifies older irrationality criteria, not Problem #243. None of these records supplies the missing increment bound or global record estimate.
 
@@ -6215,7 +6219,7 @@ These links retain the original source files and line numbers at the commit fixe
 
 ## Erdős #1049: Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order
 
-*For Erdős #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf)
+*For Erdős #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf)
 
 <a id="erdos-1049-rational-base-lambert--erdos-1049-rational-base-lambert"></a>
 
@@ -6235,7 +6239,7 @@ For the distinct normalised Hankel determinants $`V_N^*`$ in his 2016 constructi
  \qquad [q^{\operatorname{ord}_q V_N^*}]V_N^*
        =\frac{(N!)^2(N+1)!}{2^N}.
 ```
-The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. For fixed $`0<q<1`$ we prove that, as $`N\to\infty`$, $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$, where $`B_N`$ and $`C_N`$ are the order and coefficient above and $`K(q)>0`$ is given by a convergent product. We also factor the moment weights into two finite $`q`$-multinomial sums. The rational-base criterion does not include $`3/2`$; neither the order, the asymptotic nor the factorisation settles irrationality at that base.
+The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. For fixed $`0<q<1`$ we prove that, as $`N\to\infty`$, $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$, where $`B_N`$ and $`C_N`$ are the order and coefficient above and $`K(q)>0`$ is given by a convergent product. We also factor the moment weights into two finite $`q`$-multinomial sums. For every real $`p>1`$, a separate Lean-checked finite coefficient pencil has positive definite first matrix and real roots below $`F(p)`$ through rank eight; roots at adjacent ranks interlace non-strictly. The rational-base criterion does not include $`3/2`$; none of these finite spectral facts settles irrationality at that base.
 
 <a id="erdos-1049-rational-base-lambert--sec:problem"></a>
 
@@ -6699,7 +6703,7 @@ One of those three factors of $`\mathcal M(q)`$ comes from the tuples other than
 
 ###### What neither calculation implies.
 
-Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">7</a> replaces that band by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms. Against the two proposed degree savings of long Section 3, the shortfall at $`3/2`$ is exactly $`N(74N^2-117N+41)/41>0`$ for $`N\ge2`$, and the new estimate closes no part of it. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.3; Appendix <a href="#erdos-1049-rational-base-lambert--app:index" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--app:index">5</a> records their sources and finite scope.
+Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">7</a> replaces that band by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms. Against the two proposed degree savings of long Section 3, the shortfall at $`3/2`$ is exactly $`N(74N^2-117N+41)/41>0`$ for $`N\ge2`$, and the new estimate closes no part of it. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.3. Its finite pencil proposition is now Lean-checked through rank eight, including positivity, root location and non-strict interlacing; Appendix <a href="#erdos-1049-rational-base-lambert--app:index" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--app:index">5</a> records the precise source and finite scope.
 
 <a id="erdos-1049-rational-base-lambert--sec:open"></a>
 
@@ -7023,7 +7027,7 @@ Vandehey treats signed coefficients in the digit argument \[vandehey2013, Thms.�
 
 ###### Coefficient moments.
 
-The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. It proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
+The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. The unshifted eight determinant certificates and their finite pencil consequence now have Lean proofs: for real $`p>1`$ and $`1\le N\le8`$, $`A_N`$ is positive definite, every root of $`\det(YA_N-B_N)`$ is real and less than $`F(p)`$, and consecutive ranks interlace non-strictly. The proposition is [`coefficientPencil_finitePencil`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43). The shifted eight certificates remain separately computed in this account. That section also proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
 
 <a id="erdos-1049-rational-base-lambert--functional-equations."></a>
 
@@ -7037,7 +7041,7 @@ Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the conse
 
 In the supplied snapshot, `PaperR17/SourceConsumers.lean` constructs the cancelled forms and proves the irrationality and measure results; `AllRow/Producer.lean` constructs the transformed rows and proves the all-rank determinant formulas.
 
-The index distinguishes reported public, parallel-release and unbuilt material; no new Lean run is claimed. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. The finite computations described above are not Lean proofs; their certificates and reproduction scripts are in the long record. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
+The historical index distinguishes reported public, parallel-release and unbuilt material at its pinned snapshot. The later finite-pencil declaration is linked separately above. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. The sixteen historical certificate lists and reproduction scripts remain in the long record. The unshifted rank-eight positivity and finite pencil proposition have separate Lean proofs at the PR revision; this does not promote the shifted certificates or any all-rank coefficient claim. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
 
 <a id="erdos-1049-rational-base-lambert--sec:pinned-lean-sources"></a>
 

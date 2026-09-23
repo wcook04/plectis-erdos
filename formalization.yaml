@@ -1621,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:5c27ccfa55071a847c83a1feb245601dbac8f52a2fe21a95010352a8492e8dc2"
+  problem_index_digest: "sha256:3c46d69f05b576636265e9c210959b6a1643e7bde9d4864839235381291f5fa3"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1633,7 +1633,7 @@ external_verification:
     - id: "erdos_243"
       erdos_number: 243
       status: "open"
-      checked_frontier: "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables."
+      checked_frontier: "The zero-indexed positive StrictMono cubic-rate theorem: if a_n²/a_(n+1) = 1 + 3/n + o(n^-3), the reciprocal sum is irrational (cubic_rate_irrationality_unconditional). The one-based paper statement uses an ordinary finite-prefix bridge; unrestricted Erdős #243 remains open."
       open_frontier: "The unrestricted problem."
       claim_registry_status: "registered_declarations"
     - id: "erdos_249"
@@ -1686,7 +1686,7 @@ external_verification:
     - id: "erdos_1049"
       erdos_number: 1049
       status: "open"
-      checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
+      checked_frontier: "Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2."
       open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched."
       claim_registry_status: "registered_declarations"
   trusted_challenge_holes: 8

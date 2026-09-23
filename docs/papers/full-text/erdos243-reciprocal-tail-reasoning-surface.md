@@ -56,7 +56,18 @@ The rate in the next theorem is much more specific than $`a_{n+1}/a_n^2\to1`$: b
 
 </div>
 
-Lean: [cubic rate irrationality of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L270). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [`cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70). No Chebotarev premise in the zero-indexed theorem; the one-based finite-prefix bridge below is ordinary. See the [coverage section](#long243:sec:coverage).
+
+*Index translation for formal coverage.* The Lean declaration uses $`b:\mathbb{N}\to\mathbb{N}`$, including a positive $`b_0`$, whereas the theorem above starts at $`a_1`$. A simple shift would change $`3/n`$ by order $`n^{-2}`$, so it would lose the stated $`o(n^{-3})`$ precision. Instead choose a large $`N`$ with $`a_N>N`$. Such an $`N`$ exists: strict increase gives $`a_n\ge n`$ and the rate gives $`a_n^2/a_{n+1}<2`$ eventually, hence $`a_{n+1}>a_n^2/2\ge n^2/2>n+1`$ for large $`n`$. Define
+``` math
+b_n=\begin{cases}n+1,&0\le n<N,\\a_n,&n\ge N.\end{cases}
+```
+Then $`b`$ is positive and strictly increasing, with the same indexed rate for every $`n\ge N`$. Moreover
+``` math
+\sum_{n\ge0}\frac1{b_n}-\sum_{n\ge1}\frac1{a_n}
+ =\sum_{n=0}^{N-1}\frac1{n+1}-\sum_{n=1}^{N-1}\frac1{a_n}\in\mathbb{Q}.
+```
+The series converge by the stated rapid-growth rate. If the original sum were rational, so would be the sum for $`b`$, contradicting the zero-indexed Lean theorem. This finite-prefix implication is proved here in ordinary mathematics; the linked Lean declaration checks the zero-indexed theorem itself.
 
 For a concrete sequence satisfying the hypothesis, take
 ``` math
@@ -87,11 +98,11 @@ In particular no such orbit satisfies $`C_n=A\,n(n+1)(n+2)+B`$ for all large $`n
 
 </div>
 
-Lean: [cubic exclusion of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L256). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [`cubic_exclusion_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L54). No Chebotarev premise; see the [coverage section](#long243:sec:coverage).
 
 The irrationality theorem needs only exclusion of eventual equality. Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a> proves more: disagreement with the proposed cubic has positive lower density. The lower bound may depend on the orbit and the cubic; it is not a uniform numerical constant.
 
-The exclusion has three steps. Agreement on arbitrarily late blocks of four consecutive indices gives a uniform bound on the common divisor of numerator and denominator. Dividing out its eventual value reduces the proposed cubic to $`m\,n(n+1)(n+2)/6+c`$, with $`m`$ a positive integer and $`c=\pm1`$. Next, the two-step numerator recurrence forces a square condition at primes dividing the middle of three consecutive numerators. Chebotarev’s theorem turns this into a square in a cubic number field, and a trace calculation forces $`m=12`$. Finally, the two remaining cubics fail the exact recurrence modulo seven, at different specified residue classes of the index. The lemmas below carry out these steps in that order.
+The exclusion has three steps. Agreement on arbitrarily late blocks of four consecutive indices gives a uniform bound on the common divisor of numerator and denominator. Dividing out its eventual value reduces the proposed cubic to $`m\,n(n+1)(n+2)/6+c`$, with $`m`$ a positive integer and $`c=\pm1`$. Next, the two-step numerator recurrence forces a square condition at primes dividing the middle of three consecutive numerators. The square-specialisation lemma turns this into a square in a cubic number field; the ordinary proof below uses Chebotarev, while the Lean proof uses a Dedekind-zeta pole comparison. A trace calculation forces $`m=12`$. Finally, the two remaining cubics fail the exact recurrence modulo seven, at different specified residue classes of the index. The lemmas below carry out these steps in that order.
 
 <a id="the-integer-tail."></a>
 
@@ -209,7 +220,7 @@ At a prime dividing a middle numerator, the two-step recurrence forces the negat
 
 </div>
 
-Lean: [square specialisation of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L211). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [`squareSpecialisation_holds`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean#L184); the polynomial reduction is at line 156. No Chebotarev premise.
 
 <div class="proof">
 
@@ -217,7 +228,7 @@ Lean: [square specialisation of chebotarev](https://github.com/wcook04/plectis-e
 
 </div>
 
-The hypothesis is needed at every root and at all but finitely many primes. A favourable finite set of tested primes would not suffice.
+The hypothesis is needed at every root and at all but finitely many primes. A favourable finite set of tested primes would not suffice. The Lean proof uses a different route: if $`H(\alpha)`$ were a nonsquare, an integral square multiple has zero or nonsquare reduction at a prime beyond every bound. This follows from the simple poles of the Dedekind zeta functions of the number field and its quadratic extension. The modular hypothesis forbids that reduction. The ordinary Chebotarev proof above remains a valid proof of the same lemma.
 
 <div id="long243:res:transportsquare" class="proposition">
 
@@ -225,7 +236,7 @@ The hypothesis is needed at every root and at all but finitely many primes. A fa
 
 </div>
 
-Lean: [transport square of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L240). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [`transport_square_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L39). No Chebotarev premise.
 
 <div class="proof">
 
@@ -501,7 +512,7 @@ Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-referenc
 
 </div>
 
-No restriction on the rational normalisation was assumed: the proof derives the permitted primitive leading coefficient. The two residue patterns <a href="#long243:eq:wordplus" data-reference-type="eqref" data-reference="long243:eq:wordplus">[long243:eq:wordplus]</a> and <a href="#long243:eq:wordminus" data-reference-type="eqref" data-reference="long243:eq:wordminus">[long243:eq:wordminus]</a>, the image $`\{0,2,5,6\}`$ modulo $`7`$ and the condition $`(r^2+s^2)^2\mid48`$ have been calculated above. The public checkpoint also contains formalised polynomial extraction, primitive cubic normalisation and finite transport results, including [the primitive-shape theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean#L112). These are components, not an assembled proof of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>. No declaration of that complete irrationality implication has been identified in the supplied source index. Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> uses the classical finite-Galois Chebotarev theorem; its use must be justified by the number-field argument, not by finite residue computations.
+No restriction on the rational normalisation was assumed: the proof derives the permitted primitive leading coefficient. The two residue patterns <a href="#long243:eq:wordplus" data-reference-type="eqref" data-reference="long243:eq:wordplus">[long243:eq:wordplus]</a> and <a href="#long243:eq:wordminus" data-reference-type="eqref" data-reference="long243:eq:wordminus">[long243:eq:wordminus]</a>, the image $`\{0,2,5,6\}`$ modulo $`7`$ and the condition $`(r^2+s^2)^2\mid48`$ have been calculated above. The public checkpoint also contains formalised polynomial extraction, primitive cubic normalisation and finite transport results, including [the primitive-shape theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean#L112). The later PR revision links these components to an unconditional declaration of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>. The ordinary proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> above uses the classical finite-Galois Chebotarev theorem. The checked alternative uses number-field ideal counting and the simple pole of the Dedekind zeta function.
 
 Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> assumes neither rationality nor an integer orbit: these enter only under the supposition that the reciprocal sum is rational. Its rate implies $`a_{n+1}/a_n^2\to1`$, so it treats a subclass of the growth sequences in Problem <a href="#long243:res:problem" data-reference-type="ref" data-reference="long243:res:problem">1</a>. It proves irrationality on that subclass, rather than constructing a Sylvester recurrence. Sylvester tails have the much smaller deviation $`O(1/a_n)`$ and do not belong to it.
 
@@ -578,7 +589,7 @@ The *Formal Conjectures* collection contains a mathematically equivalent unprove
 
 #### Results and proof status.
 
-The cubic-rate theorem (Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>) and the three results its proof passes through are checked in the development, with the input of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> as their only assumption; Section <a href="#long243:sec:coverage" data-reference-type="ref" data-reference="long243:sec:coverage">[long243:sec:coverage]</a> states that assumption in full. The bounded-negative theorem (Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a>) and the scalar summability theorem (Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">54</a>) have checked declarations. The checked theorems include the estimates for rational tails, proved from a product bound and from the least common multiple of the denominators. The complete weighted-record statement (Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">25</a>) is kernel-checked in the main development, alongside its earlier proof source in the separate release. For the further record criteria, each evidence paragraph identifies the ordinary argument and the checked lemma it uses. In particular, Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a> below proves that the reduced denominator supplies arbitrarily large odd prime powers, and that proof is kernel-checked in the main development. The static-model conclusions in Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> are proved by ordinary arguments and are checked in the development as well.
+The cubic-rate theorem (Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>) and the three results its proof passes through have unconditional Lean declarations at the separately linked PR revision. Section <a href="#long243:sec:coverage" data-reference-type="ref" data-reference="long243:sec:coverage">[long243:sec:coverage]</a> identifies the new number-field input and its exact scope. The bounded-negative theorem (Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a>) and the scalar summability theorem (Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">54</a>) have checked declarations. The checked theorems include the estimates for rational tails, proved from a product bound and from the least common multiple of the denominators. The complete weighted-record statement (Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">25</a>) is kernel-checked in the main development, alongside its earlier proof source in the separate release. For the further record criteria, each evidence paragraph identifies the ordinary argument and the checked lemma it uses. In particular, Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a> below proves that the reduced denominator supplies arbitrarily large odd prime powers, and that proof is kernel-checked in the main development. The static-model conclusions in Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> are proved by ordinary arguments and are checked in the development as well.
 
 The additional bound or convergence assumption is not derived from the problem’s hypotheses. An equivalence between convergence and the desired recurrence does not prove either of them. In the stable-gcd case the record-increment theorem gives a positive lower bound for the log-log coefficient, not necessarily an infinite coefficient. All conclusions about nonzero tails retain failure of eventual Sylvester behaviour as a hypothesis.
 
@@ -2285,11 +2296,9 @@ The main-repository links retain revision `3d6d938d696f`; other links specify th
 
 </div>
 
-Every theorem, lemma, proposition and corollary of this record other than the four listed below has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`.
+At the original pinned revision, the square-specialisation lemma and its three consumers were formalised only under a named Chebotarev input. At the separately linked PR revision, the lemma has an unconditional statement in `SquareSpecialisationDedekind.lean`, and the transport, cubic-exclusion and cubic-rate theorems have unconditional statements in `SquareSpecialisationUnconditional.lean`. Their shared analytic input is Mathlib’s simple pole for the Dedekind zeta function. The proof compares ideal-counting Dirichlet series in a quadratic extension to produce a prime at which a nonsquare has zero or nonsquare reduction; it then contradicts the lemma’s hypothesis at every modular root. The four Lean theorem statements have no Chebotarev premise. The cubic-rate Lean statement is indexed from zero; the one-based paper theorem follows by the ordinary finite-prefix construction above. The ordinary Chebotarev proof printed above is retained as a second mathematical proof, not as a formal dependency.
 
-The exceptions are one chain of results with one shared input. The development verifies the reduction of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a>, Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">8</a>, Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a> and Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> to the following input: for a finite Galois extension of $`\mathbb{Q}`$, a prescribed element $`\sigma`$ of its Galois group and a nonzero algebraic integer of the extension, there are arbitrarily large rational primes at which $`\sigma`$ is a Frobenius element and at which that integer has nonzero reduction. The first clause is the Chebotarev density theorem in the form cited in the proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> \[stevenhagenlenstra1996, §3, p. 15\]; the second is the elementary fact that a nonzero algebraic integer is divisible by only finitely many rational primes. A formal proof of that input is not included in the verified development; these four endpoints therefore remain conditional on it. Everything the chain adds to it is checked: the square forced modulo a prime dividing a middle numerator, the passage from that congruence to a square in the cubic field, the exclusion of the proposed cubic orbit, and the irrationality conclusion.
-
-A theorem whose own statement is conditional is formalised exactly as stated, with its hypothesis intact. The four results above are asserted unconditionally in this record, and their Lean counterparts carry the additional named input described here.
+The historical source links and revision in the generated concordance below remain a record of the older snapshot. The new links in the theorem notes identify the later declarations; the historical pin itself remains unchanged. The original Erdős problem remains open: the cubic rate is a specific irrational subclass, not a proof of eventual Sylvester recurrence under the unrestricted growth and rationality hypotheses.
 
 <a id="concordance-of-statements-and-lean-declarations."></a>
 
@@ -2453,7 +2462,7 @@ A bound on the negative reduced error scaled by the previous maximum also bounds
 
 #### Cubic rate.
 
-The tail estimate and finite differences of the Gamma ratio force an eventual cubic polynomial for the integer numerator. The recurrence and Chebotarëv then force a square in the cubic field. The trace calculation leaves $`m=12`$, and both possible signs are excluded modulo seven. This is an ordinary proof. Finite checks and component sources do not constitute a formal proof of the complete cubic-rate theorem.
+The tail estimate and finite differences of the Gamma ratio force an eventual cubic polynomial for the integer numerator. The recurrence forces a modular square condition, which the square-specialisation lemma lifts to the cubic field. The ordinary proof uses Chebotarev; the Lean proof obtains the same implication from a Dedekind-zeta pole comparison. The trace calculation leaves $`m=12`$, and both possible signs are excluded modulo seven. The full cubic-rate implication has an unconditional Lean declaration at the separately linked PR revision.
 
 <a id="static-barriers."></a>
 

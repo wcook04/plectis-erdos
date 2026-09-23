@@ -50,7 +50,7 @@ python3 scripts/query_route_memory.py --problem 68
 
 Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
 
-The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.
+The zero-indexed positive StrictMono cubic-rate theorem: if a_n²/a_(n+1) = 1 + 3/n + o(n^-3), the reciprocal sum is irrational (cubic_rate_irrationality_unconditional). The one-based paper statement uses an ordinary finite-prefix bridge; unrestricted Erdős #243 remains open.
 
 The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
 
@@ -63,7 +63,7 @@ The eventual Sylvester recurrence assertion remains open in this release; the bo
 Existing questions:
 
 - Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part.
-- Derive eventual strict centring and normalised vanishing from the growth hypothesis and rationality, or show that they do not follow.
+- Derive the missing lower bound on the centred error, or an equivalent control of unbounded negative excursions, from the original growth and rational-sum hypotheses; or construct a counterexample. Eventual strict centring and normalised vanishing are already checked for the canonical tail.
 - Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses.
 
 [Return work on #243](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23243&question=Erd%C5%91s+%23243%3A+Under+a+rapid-growth+hypothesis+on+an+integer+sequence%2C+does+rationality+of+its+reciprocal+sum+force+the+sequence+to+satisfy+the+Sylvester+recurrence+eventually%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
@@ -229,7 +229,7 @@ python3 scripts/query_route_memory.py --problem 1041
 
 For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
 
-That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
+Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2.
 
 For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.
 

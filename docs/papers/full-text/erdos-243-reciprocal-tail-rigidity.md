@@ -1,6 +1,6 @@
 <a id="erdos-243-reciprocal-tail-rigidity"></a>
 
-# Bounded Increments and Rational Reciprocal Sums
+# Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
 
 <div class="center">
 
@@ -8,13 +8,15 @@
 
 </div>
 
-Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. We prove that an eventual upper bound on $`P_{n+1}/a_{n+1}-P_n/a_n`$ forces $`a_{n+1}=a_n^2-a_n+1`$ eventually. This strengthens a sufficient condition requiring the upper limit of these increments to be nonpositive. Under this bound, clearing denominators in the rational tails produces positive integer numerators with bounded upward increments. Integer descent handles an eventually nonnegative error; otherwise, stabilising the common divisor makes a Chinese remainder theorem obstruction available. The needed increment bound is not derived from growth and rationality alone, so this sufficient condition does not resolve Erdős Problem #243.
+We prove that every strictly increasing sequence of positive integers with $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. The integer numerators of a hypothetical rational tail would eventually have a cubic profile; a number-field square-specialisation argument and congruences modulo seven exclude it. The square-specialisation step and the resulting irrationality theorem have unconditional Lean declarations for zero-indexed positive sequences, using the simple pole of the Dedekind zeta function rather than a Chebotarev premise. The one-based statement follows by the finite-prefix argument below.
+
+We also prove that, when $`a_{n+1}/a_n^2\to1`$ and the reciprocal sum is rational, an eventual upper bound on the increments of $`P_n/a_n`$, where $`P_n=\prod_{j<n}a_j`$, forces the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ eventually. That increment bound is not derived from growth and rationality alone; the unrestricted Erdős problem remains open.
 
 <a id="sec:problem"></a>
 
 # Introduction
 
-For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
+The cubic-rate theorem in Section <a href="#sec:secondaryrate" data-reference-type="ref" data-reference="sec:secondaryrate">7</a> gives irrationality for a precise subclass of the growth sequences in Erdős Problem #243. The main recurrence criterion below treats a different subclass. For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
 ``` math
 \frac1{a_n-1}=\frac1{a_n}+\frac1{a_{n+1}-1}.
 ```
@@ -480,7 +482,7 @@ For integer summand numerators $`b_n`$, the updates become $`V_n=b_nL_n-(a_n-1)U
 
 <a id="sec:secondaryrate"></a>
 
-# Further consequences
+# Cubic-rate irrationality and further consequences
 
 <div id="res:inclusiveone" class="corollary">
 
@@ -517,11 +519,13 @@ has irrational reciprocal sum.*
 
 </div>
 
-Lean: [cubic rate irrationality of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L270). Conditional on Chebotarev’s density theorem; see the [coverage section of the companion record](../../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=coverage).
+Lean: [`cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70). The zero-indexed theorem has no Chebotarev hypothesis; the one-based index translation below is an ordinary argument. See the [coverage section of the companion record](../../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=coverage).
+
+*Index translation.* The Lean theorem takes a positive, strictly increasing sequence indexed from $`0`$. To preserve the displayed $`3/n`$ rate, we alter only a finite prefix without shifting indices. Strict increase gives $`a_n\ge n`$ for $`n\ge1`$. The rate makes $`a_n^2/a_{n+1}<2`$ eventually, so $`a_{n+1}>a_n^2/2\ge n^2/2>n+1`$ for all sufficiently large $`n`$. Choose $`N`$ with $`a_N>N`$ and set $`b_n=n+1`$ for $`0\le n<N`$, and $`b_n=a_n`$ for $`n\ge N`$. Then $`b`$ is positive and strictly increasing, has exactly the same rate for all $`n\ge N`$, and its reciprocal sum differs from $`\sum_{n\ge1}1/a_n`$ by a finite rational sum. Thus the zero-indexed Lean theorem implies the printed one-based conclusion through this ordinary finite-prefix argument.
 
 <div class="proof">
 
-*Proof by the polynomial exclusion.* Under rationality, Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The field step uses Chebotarev; see \[stevenhagenlenstra1996, Section 3, author version\] for that classical input. This paragraph is a proof by a stated companion result, not a standalone finite-congruence proof and not an assembled Lean proof. ◻
+*Proof by the polynomial exclusion.* Under rationality, Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The companion gives an ordinary proof of the field step using the classical Chebotarev theorem \[stevenhagenlenstra1996, Section 3, author version\]. The Lean proof instead derives the square-specialisation lemma from the simple pole of the Dedekind zeta function and applies it to the full cubic-rate implication. This paragraph is a proof by the stated companion argument. ◻
 
 </div>
 
@@ -642,7 +646,7 @@ The mathematical arguments above are independent of the source code. Each linked
 
 #### Recorded coverage.
 
-The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#res:weights" data-reference-type="ref" data-reference="res:weights">19</a>. The cubic and double-logarithmic arguments have checked components, not assembled Lean proofs identified here; the companion supplies their written proofs, including the growth and modulus-counting arguments.
+The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#res:weights" data-reference-type="ref" data-reference="res:weights">19</a>. The zero-indexed cubic-rate theorem has an unconditional Lean declaration at the separately linked PR revision; the one-based finite-prefix bridge above is an ordinary argument. The double-logarithmic argument retains its stated component-level coverage. The companion supplies their written proofs, including the growth and modulus-counting arguments.
 
 The recorded main build is at `6b78209ab63a`; links retain their original pins, including `3d6d938d696f`. The linked weighted criterion also has a fresh Lean check; this does not certify the remaining exposition as a whole. Finite certificates and unsuccessful extensions are retained in the companion, not counted as proofs of assembled arguments. The earlier Isabelle/HOL development of Koutsoukou-Argyraki and Li \[kouli2020\] verifies older irrationality criteria, not Problem #243. None of these records supplies the missing increment bound or global record estimate.
 

@@ -47,7 +47,7 @@ One recorded result: The exact integral normal form: the series is irrational if
 
 The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
 
-One recorded result: The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.
+One recorded result: The zero-indexed positive StrictMono cubic-rate theorem: if a_n²/a_(n+1) = 1 + 3/n + o(n^-3), the reciprocal sum is irrational (cubic_rate_irrationality_unconditional). The one-based paper statement uses an ordinary finite-prefix bridge; unrestricted Erdős #243 remains open.
 
 [Short paper](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [Source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex)
 
@@ -95,7 +95,7 @@ One recorded result: An explicit monic degree-seven polynomial with distinct roo
 
 For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.
 
-One recorded result: That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
+One recorded result: Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2.
 
 [Short paper](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [Source](../../paper/1049/erdos-1049-rational-base-lambert.tex)
 

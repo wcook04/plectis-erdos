@@ -21,6 +21,15 @@ The attribution is recorded in [ani's 7 September 2026 forum post](https://www.e
 This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
 Those seven remain open.
 
+For a first mathematical result, start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
+If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
+the Lean-checked theorem proves irrationality at every integer base for each
+infinite support `A` with finite base-two weighted mass
+`∑_{a∈A} h_P(a)/(a(2^{h_P(a)}−1))`. Some such supports have divergent
+`∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
+[Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
+or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
@@ -102,6 +111,14 @@ for exact ranks of totient kernels, obtained by restricting Euler's totient to
 arithmetic progressions. Each paper separates ordinary proofs, Lean-checked
 results and open questions; the results guide covers all eight programmes.
 
+For a more specialised theorem, **#243** gives irrationality for strictly
+increasing positive integer sequences under the precise cubic-rate hypothesis
+`a_n²/a_(n+1) = 1 + 3/n + o(n⁻³)`. Lean checks the zero-indexed theorem;
+the paper transfers its one-based form by an ordinary finite-prefix argument.
+The unrestricted Sylvester-recurrence question remains open. **#1049** has a separate
+Lean-checked coefficient pencil through rank eight; this does not establish
+irrationality at `3/2`.
+
 **Reading the eight together.** The whole collection is also material for new
 mathematics: reusable constructions, connections between problems and questions
 that go beyond the original targets. Start with the
@@ -112,7 +129,7 @@ from the papers and Lean corpus, with each result's evidence and limits intact.
 | Problem | Topic | Papers |
 |---|---|---|
 | [#68](https://www.erdosproblems.com/68) | [Factorial-denominator irrationality](https://wcook04.github.io/plectis/maths/problems/erdos_68.html) | [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf) |
-| [#243](https://www.erdosproblems.com/243) | [Reciprocal-tail rigidity](https://wcook04.github.io/plectis/maths/problems/erdos_243.html) | [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) |
+| [#243](https://www.erdosproblems.com/243) | [Cubic-rate irrationality and reciprocal tails](https://wcook04.github.io/plectis/maths/problems/erdos_243.html) | [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) |
 | [#249](https://www.erdosproblems.com/249) | [Binary totient series](https://wcook04.github.io/plectis/maths/problems/erdos_249.html) | [short paper](paper/249/erdos-249-binary-totient-series.pdf) · [longer paper](paper/249/erdos249-totient-reasoning-surface.pdf) |
 | [#251](https://www.erdosproblems.com/251) | [Prime-gap dyadic series](https://wcook04.github.io/plectis/maths/problems/erdos_251.html) | [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf) |
 | [#257](https://www.erdosproblems.com/257) | [Mersenne-support subseries](https://wcook04.github.io/plectis/maths/problems/erdos_257.html) | [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) · [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf) |
@@ -212,12 +229,12 @@ explains that design.
 
 The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 463 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 88% of the 162,629 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 87% of the 163,066 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,778 |
-| Formal results and supporting lemmas | 158,911 |
+| Lean modules (the two library roots) | 1,812 |
+| Formal results and supporting lemmas | 159,253 |
 | Curated claim records | 148 |
 | Contribution families | 33 |
 

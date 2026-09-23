@@ -53,7 +53,8 @@ the first nonzero term of the normalised determinant at every rank:
 A separate positive-measure argument proves positivity and a size
 estimate for each fixed real $0<q<1$. We give the full proofs,
 compare the two constructions with earlier work, and distinguish
-these all-rank results from finite computations about coefficient
+these all-rank results from the kernel-checked rank-eight coefficient
+pencil and the separate finite computations about shifted coefficient
 matrices and common factors. The final sections explain the limits
 of the stated clearing and congruence arguments at $3/2$. No small
 nonzero sequence of divided remainders is constructed at that base,
@@ -2224,8 +2225,11 @@ matrices, which identifies the stored list with $D_{N,h}(1+t)$ in $\Z[t]$.
 As a separate check of the normalisation, direct integer determinants
 at $p=1,2,3,5,11$ agree with evaluations of all sixteen polynomials.
 Those evaluations are checks, not the proof of polynomial positivity.
-This is a finite computer-algebra calculation, not a Lean theorem or
-an all-rank result.
+This remains a finite calculation. The eight unshifted positivity
+certificates now also have a kernel-checked proof using a bounded integer
+evaluation and coefficient bounds; the eight shifted lists here retain their
+independent computational evidence. Neither family yields an all-rank
+coefficient-positivity theorem.
 
 The degrees admit a separate all-rank proof. The Gaussian binomial
 $\genfrac{[}{]}{0pt}{}{u}{v}_p$ is monic of degree $v(u-v)$. In the signed sum for $R_m$,
@@ -2290,7 +2294,7 @@ For every real $p>1$ and $1\le N\le8$, $A_N$ is positive definite and
 all roots of $\det(YA_N-B_N)$ are real and strictly less than $F(p)$.
 The roots at consecutive ranks $N,N+1\le8$ interlace non-strictly.
 \end{proposition}
-\leannote{Not formalised: the coefficient positivity of the eight unshifted determinants is established by an exact integer computation outside the Lean kernel, and the passage through the eigenvalues and the interlacing of the pencil roots are not formalised. See the \hyperref[long1049:sec:coverage]{coverage section}.}
+\leannote{Lean: \href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean\#L43}{\nolinkurl{coefficientPencil_finitePencil}}. All three conclusions are checked for $N\le8$; see the \hyperref[long1049:sec:coverage]{coverage section}.}
 \begin{proof}
 The leading principal minors of $(s_{i+j})_{i,j<N}$ are exactly
 $D_{k,0}(p)$ for $1\le k\le N$; their coefficient positivity proved above, together with
@@ -4368,11 +4372,10 @@ mathematical review or endorsement of the results here.
 \label{long1049:sec:coverage}
 \papersectiontarget{coverage}
 
-Every theorem, lemma, proposition and corollary of this record other than the
-two listed below has a Lean statement of the same assertion, with the same
-hypotheses, checked by the Lean kernel using only the axioms
-\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, in the
-development at revision \texttt{181078b6b009}.
+At the older pinned revision, the Mahler proposition and the finite-pencil
+proposition were the two exceptions to statement-level Lean coverage. The
+later PR revision closes the finite-pencil exception through rank eight;
+the Mahler proposition retains its stated external input.
 
 The development verifies the reduction of
 Proposition~\ref{long1049:res:nomahler} to the theorem of Adamczewski and Bell
@@ -4385,24 +4388,23 @@ finite-dimensional stable space to a Mahler equation with nonvanishing
 unshifted coefficient, the persistence of that property under $z\mapsto z^m$,
 and the functional nonrationality of the divisor generating series.
 
-Proposition~\ref{long1049:res:finite-pencil} has no Lean statement of its own.
-The coefficient positivity of the eight unshifted determinants $D_{k,0}$ is
-established by an exact integer computation with an independent checker in the
-repository's computations directory, and that computation is not checked by
-the Lean kernel.  Two further steps of its proof are also unformalised: the
-passage through the eigenvalues of $A_N^{-1/2}B_NA_N^{-1/2}$, which gives the
-reality of the pencil roots and their position below $F(p)$, and the
-interlacing of those roots.  The algebra and inertia lemmas supporting the
-proposition are checked: the diagonal congruence between $A_N$ and the
-coefficient Hankel matrix, the symmetry of both matrices, the passage from a
-positive determinant certificate to positive definiteness, and the
-interlacing of the signature on nested coordinate subspaces.
+Proposition~\ref{long1049:res:finite-pencil} now has the statement
+\texttt{coefficientPencil\_finitePencil} at the separately linked PR
+revision. It combines kernel-checked positivity of the eight unshifted
+Hankel determinants, the actual moment-remainder identity, positive
+definiteness of the remainder matrices, and symmetric-pencil inertia.
+For every real $p>1$ and $1\le N\le8$, the first matrix is positive
+definite and every determinant root is real and below $F(p)$; the ordered
+root multisets at consecutive ranks interlace non-strictly. The result
+has no all-rank coefficient-positivity or root-convergence conclusion.
+The historical sixteen-polynomial computation remains a separate source
+of the shifted eight certificates; the new Lean theorem verifies the
+unshifted eight and the pencil conclusion.
 
-A theorem whose own statement is conditional is formalised exactly as stated.
-Proposition~\ref{long1049:res:nomahler} is asserted unconditionally here and
-its Lean counterpart carries a named input.
-Proposition~\ref{long1049:res:finite-pencil} is asserted unconditionally here
-and has no formal counterpart.
+The historical concordance below retains its original source revision.
+The new theorem note links directly to the later declaration; the historical
+pin itself remains unchanged. The conditional Mahler result retains its
+named external input.
 
 % BEGIN GENERATED CONCORDANCE (claude_lane/build_concordance.py; do not edit by hand)
 \paragraph{Concordance of statements and Lean declarations.}

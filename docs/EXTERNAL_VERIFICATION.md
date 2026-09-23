@@ -299,7 +299,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Question.** Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
 
-**Checked frontier.** The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.
+**Checked frontier.** The zero-indexed positive StrictMono cubic-rate theorem: if a_n²/a_(n+1) = 1 + 3/n + o(n^-3), the reciprocal sum is irrational (cubic_rate_irrationality_unconditional). The one-based paper statement uses an ordinary finite-prefix bridge; unrestricted Erdős #243 remains open.
 
 **Open boundary.** The unrestricted problem.
 
@@ -1284,7 +1284,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Question.** For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
 
-**Checked frontier.** That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
+**Checked frontier.** Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2.
 
 **Open boundary.** The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.
 
