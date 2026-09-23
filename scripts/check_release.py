@@ -1186,6 +1186,7 @@ APPROVED_ROOT_DIRS = {
     "LICENSES": "SPDX licence texts",
     "computations": "exact finite computer-algebra certificates cited by the #1049 notes, not Lean",
     "docs": "human and machine documentation",
+    "evidence": "per-paper evidence records the papers' margin marks link, with the Comparator replay receipts they rest on",
     "lean": "proof-corpus Lean sources (Lake srcDir)",
     "paper": "manuscripts, nested by problem or purpose",
     "research": "supported non-default research libraries and adapters",
