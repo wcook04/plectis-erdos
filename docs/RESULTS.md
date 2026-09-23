@@ -3,7 +3,7 @@
 
 # Results and limits
 
-This repository formalises finite results, reductions, equivalences, and
+This repository formalises theorems, reductions, equivalences, and
 obstructions related to eight Erdős problem programmes —
 [#68](https://www.erdosproblems.com/68),
 [#243](https://www.erdosproblems.com/243),
@@ -308,10 +308,11 @@ unshifted determinant certificates are kernel checked; the shifted eight and
 give no all-rank coefficient positivity or irrationality at `3/2`, which lies
 outside the contour region. The universal rational-base question remains open.
 
-This guide is not a new result ranking. The canonical order of mathematical
-attention is maintained in
-[`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE.json), and exact public
-statuses and open propositions live in [`claims.json`](claims.json).
+This guide is not a new result ranking.
+[`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE.json) records a scoped
+candidate ranking for a possible Palomar submission; it does not rank
+mathematical importance across the whole corpus. Exact public statuses and
+open propositions live in [`claims.json`](claims.json).
 
 For a narrative account, open the relevant item in the
 [eight-paper portfolio](../README.md#problem-papers). For exact
@@ -1202,9 +1203,12 @@ core)**
   theorem. Claims registry: `van_assche_qapery_diagonal_no_go`; its source-bound
   ceiling is recurrence non-transfer at `n=0`, not an endpoint or irrationality
   result.
-- Open: irrationality at `3/2`; the primitive noncollapsed construction;
-  analytic remainder control. The note proves no irrationality result and
-  says so.
+- Open beyond the proved contour region: irrationality at `3/2`; the primitive
+  noncollapsed construction; and analytic remainder control for that route.
+  The short paper proves irrationality in Zudilin's rational-base region, and
+  the pinned Lean source checks `rational_base_region`,
+  `thirtyone_four_powers`, and `rational_base_measure`. Those theorems do not
+  cover `3/2`.
 
 The semantic corpus marks exactly eight statements `candidate_new_statement` —
 the only machine novelty marks in this release, against 5,505 of 6,089
