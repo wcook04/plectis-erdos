@@ -12,6 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "lean.yml"
 WARM_WORKFLOW = ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+COVERAGE_WORKFLOW = ROOT / ".github" / "workflows" / "lean-coverage-build.yml"
+# Single-job post-merge workflows carry the baseline on their one job.
+POST_MERGE_JOBS = ("warm", "coverage")
 SETUP_PYTHON_ACTION = "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97"
 PINNED_PYTHON_VERSION = 'python-version: "3.12.9"'
 PINNED_PYTHON_JOBS = ("build", "external-verification", "release-surfaces")
@@ -52,8 +55,9 @@ def workflow_environment(path: Path) -> dict[str, str]:
     match = re.search(r"(?ms)^env:\n(?P<body>.*?)(?=^jobs:\n)", workflow)
     indent = "  "
     if match is None:
+        jobs = "|".join(re.escape(job) for job in POST_MERGE_JOBS)
         match = re.search(
-            r"(?ms)^  warm:\n.*?^    env:\n(?P<body>.*?)(?=^    steps:\n)",
+            rf"(?ms)^  (?:{jobs}):\n.*?^    env:\n(?P<body>.*?)(?=^    steps:\n)",
             workflow,
         )
         indent = "      "
@@ -127,6 +131,10 @@ def main() -> int:
     require(
         environment == warm_environment,
         "lean.yml and lean-cache-warm.yml have divergent command environments",
+    )
+    require(
+        environment == workflow_environment(COVERAGE_WORKFLOW),
+        "lean.yml and lean-coverage-build.yml have divergent command environments",
     )
     require(
         REQUIRED_KEYS <= environment.keys(),
