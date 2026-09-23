@@ -2,15 +2,15 @@
 
 This record belongs to the paper [erdos-1041-lemniscate-newton-flow.pdf](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`e6c2d8f77ac2`](https://github.com/wcook04/plectis-erdos/tree/e6c2d8f77ac24753c5216a49f4daf7f7388b309f) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`c91562bd574a`](https://github.com/wcook04/plectis-erdos/tree/c91562bd574a387cde904481e609c7b4cacebb14) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35882032091](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35882032091) at corpus commit [`a2faa350b45a`](https://github.com/wcook04/plectis-erdos-lean/tree/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3) (tag `paper-evidence-2026-09-23`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 25 results: 18 with a Lean proof of the whole statement, 5 whose Lean proof assumes a named input (marked with a dagger), 2 without a Lean proof of the whole statement; 17 compared.
+- **Counts.** 25 results: 18 with a Lean proof of the whole statement, 6 whose Lean proof assumes a named input (marked with a dagger), 1 without a Lean proof of the whole statement; 17 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
 <a id="res-trinomial-all-degree"></a>
 
-## Theorem (all-degree monic trinomials)
+## Theorem 2.1 (all-degree monic trinomials), page 2
 
 > *Let $`1\le m<n`$ and
 > ``` math
@@ -18,9 +18,9 @@ These checks establish that the stated propositions are proved. Whether each is 
 > ```
 > with every zero in the open unit disc. For any zero $`\zeta`$, the entire segment $`[0,\zeta]`$ lies in $`\{|f|<1\}`$. Distinct zeros $`\zeta_1,\zeta_2`$ are therefore joined by the broken line $`\zeta_1\to0\to\zeta_2`$ of length $`\|\zeta_1\|+\|\zeta_2\|<2`$ inside the open unit lemniscate.*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
 
-[`ErdosProblems.Erdos1041.PaperTrinomialWholeR21.all_degree_monic_trinomials_whole`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23)
+[`ErdosProblems.Erdos1041.PaperTrinomialWholeR21.all_degree_monic_trinomials_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23)
 
 ```lean
 theorem all_degree_monic_trinomials_whole
@@ -54,7 +54,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-sextic-spoke"></a>
 
-## Proposition (failure of a prescribed radial segment)
+## Proposition 2.2 (failure of a prescribed radial segment), page 3
 
 > *There exist $`r\in(0,1)`$ for which every zero of
 > ``` math
@@ -62,9 +62,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > lies in the open unit disc, yet the radial spoke from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\{|f_r|\le1\}$; the printed statement needs only a point with $|f_r|\ge1$.
 
-[`ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9)
+[`ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9)
 
 ```lean
 theorem sextic_spoke_counterexample_whole :
@@ -87,11 +87,24 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-ani-degree-seven-counterexample"></a>
 
-## Claim
+## Passage (beginning “The degree-seven polynomial constructed by…”), page 2
 
-The Lean declarations below together state a result at least as strong as this one.
+The Lean declarations below together state a result at least as strong as this one. The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\{|f|<1\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\{|f|<1\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.
 
-1. [`Erdos1041.Counterexample.erdos1041_counterexample_hausdorff`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L283)
+1. [`Erdos1041.Counterexample.erdos1041_counterexample`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean#L319)
+
+```lean
+theorem erdos1041_counterexample :
+    f.Monic ∧ f.natDegree = 7 ∧
+    (∀ z, f.IsRoot z → ‖z‖ < 1) ∧
+    f.roots.Nodup ∧
+    ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
+      ∀ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc 0 1) → γ 0 = z₁ → γ 1 = z₂ →
+        (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖f.eval (γ τ)‖ < 1) →
+        (2 : ENNReal) < pathLength γ
+```
+
+2. [`Erdos1041.Counterexample.erdos1041_counterexample_hausdorff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L283)
 
 ```lean
 theorem erdos1041_counterexample_hausdorff :
@@ -100,7 +113,7 @@ theorem erdos1041_counterexample_hausdorff :
         (2 : ℝ≥0∞) < μH[1] K
 ```
 
-2. [`Erdos1041.Counterexample.erdos1041_hausdorff_negation`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L407)
+3. [`Erdos1041.Counterexample.erdos1041_hausdorff_negation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L407)
 
 ```lean
 theorem erdos1041_hausdorff_negation :
@@ -110,7 +123,7 @@ theorem erdos1041_hausdorff_negation :
         Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2
 ```
 
-3. [`Erdos1041.Counterexample.erdos1041_hausdorff_answer_false`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L449)
+4. [`Erdos1041.Counterexample.erdos1041_hausdorff_answer_false`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L449)
 
 ```lean
 theorem erdos1041_hausdorff_answer_false :
@@ -126,15 +139,15 @@ theorem erdos1041_hausdorff_answer_false :
 
 <a id="res-low-critical-thirteen-twentyfifths"></a>
 
-## Theorem (a small critical value)
+## Theorem 3.1 (a small critical value), page 4
 
 > *Let $`f`$ be squarefree and monic of degree $`n\ge2`$, and let $`\mu`$ be its least critical-value modulus. If $`\mu\le13/25`$, then two distinct roots are joined inside $`\{|f|<1\}`$ by a rectifiable curve of length strictly less than $`2`$.*
 
-**No Lean proof of the whole statement.** the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not
+**No Lean proof of the whole statement.** In Lean, the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not.
 
 <a id="res-scaled-low-critical"></a>
 
-## Corollary (scale-free connection)
+## Corollary 3.2 (scale-free connection), page 4
 
 > *Every squarefree monic polynomial of degree $`n\ge2`$ has two distinct roots joined in $`\{|f|<(25/13)\mu\}`$ by a curve of length less than
 > ``` math
@@ -142,20 +155,48 @@ theorem erdos1041_hausdorff_answer_false :
 > ```
 > In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.*
 
-The Lean proof assumes Theorem~\ref{res:low-critical-thirteen-twentyfifths} as stated, stated in Lean as `ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths`; that input is not proved in Lean.
+The Lean proof assumes Theorem 3.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L460)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L460)
 
 ```lean
 theorem scaledLowCritical_of_lowCritical
     (H : LowCriticalThirteenTwentyFifths) : ScaledLowCritical
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L491)
+where [`ScaledLowCritical`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L54) is
+
+```lean
+def ScaledLowCritical : Prop :=
+  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
+    CriticalMinimum p μ →
+    HasDistinctConnection p ((25 / 13 : ℝ) * μ)
+      (2 * (((25 / 13 : ℝ) * μ) ^ (1 / (p.natDegree : ℝ))))
+```
+
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L491)
 
 ```lean
 theorem scaledLowCriticalFiveHalves_of_lowCritical
     (H : LowCriticalThirteenTwentyFifths) : ScaledLowCriticalFiveHalves
+```
+
+where [`ScaledLowCriticalFiveHalves`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L61) is
+
+```lean
+def ScaledLowCriticalFiveHalves : Prop :=
+  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
+    CriticalMinimum p μ →
+    HasDistinctConnection p ((25 / 13 : ℝ) * μ)
+      ((5 / 2 : ℝ) * (μ ^ (1 / (p.natDegree : ℝ))))
+```
+
+The assumed input [`LowCriticalThirteenTwentyFifths`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L49) is
+
+```lean
+def LowCriticalThirteenTwentyFifths : Prop :=
+  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
+    CriticalMinimum p μ → μ ≤ 13 / 25 → HasDistinctConnection p 1 2
 ```
 
 <a id="res-scaled-low-critical-comparator"></a>
@@ -164,7 +205,7 @@ theorem scaledLowCriticalFiveHalves_of_lowCritical
 
 <a id="res-constant-factor-path"></a>
 
-## Theorem (a uniform path bound at level $`2\mu`$)
+## Theorem 3.3 (a uniform path bound at level $`2\mu`$), page 7
 
 > *For every monic polynomial $`f`$ of degree $`n\ge2`$, two zero occurrences are joined by a possibly degenerate path of length at most
 > ``` math
@@ -172,9 +213,9 @@ theorem scaledLowCriticalFiveHalves_of_lowCritical
 > ```
 > inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If $`\mu\le1/2`$, the construction may be chosen inside $`\{|f|<1\}`$ with length at most $`5.7`$.*
 
-The Lean proof assumes the level and direction averaging construction that this proof produces, stated in Lean as `ErdosProblems.Erdos1041.PaperCompleteR21.CFAPathConstruction`; that input is not proved in Lean.
+The Lean proof assumes the level and direction averaging construction that this proof produces. Lean takes this input as a hypothesis (`CFAPathConstruction`); it is not proved in Lean.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L677)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L677)
 
 ```lean
 theorem cfa_constant_factor_path (hext : CFAPathConstruction)
@@ -185,14 +226,14 @@ theorem cfa_constant_factor_path (hext : CFAPathConstruction)
       (μ ≤ 1 / 2 → cfaJoinedBelow f z 1 5.7)
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_two_three_twentieths_lt`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L355)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_two_three_twentieths_lt`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L355)
 
 ```lean
 theorem cfaBracket_two_three_twentieths_lt {n k : ℕ} (hn : 3 ≤ n) (hk : 2 ≤ k) :
     cfaBracket n k 2 (3 / 20) ≤ 71 / 10
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_five_point_seven`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L393)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_five_point_seven`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L393)
 
 ```lean
 theorem cfaBracket_five_point_seven {k : ℕ} (hk : 2 ≤ k) :
@@ -202,7 +243,7 @@ theorem cfaBracket_five_point_seven {k : ℕ} (hk : 2 ≤ k) :
       ≤ 5.7
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L313)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L313)
 
 ```lean
 theorem cfa_degenerate {n : ℕ} {f : ℂ[X]} {z : Fin n → ℂ} {μ : ℝ}
@@ -210,7 +251,7 @@ theorem cfa_degenerate {n : ℕ} {f : ℂ[X]} {z : Fin n → ℂ} {μ : ℝ}
     ∃ i j : Fin n, i ≠ j ∧ z i = z j ∧ f.eval (z i) = 0
 ```
 
-5. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_mu`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L606)
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_mu`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L606)
 
 ```lean
 theorem cfa_degree_two_mu {f : ℂ[X]} {z : Fin 2 → ℂ} {μ : ℝ}
@@ -218,7 +259,7 @@ theorem cfa_degree_two_mu {f : ℂ[X]} {z : Fin 2 → ℂ} {μ : ℝ}
     μ = ‖(z 0 - z 1) / 2‖ ^ 2
 ```
 
-6. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_below`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L627)
+6. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_below`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L627)
 
 ```lean
 theorem cfa_degree_two_below {f : ℂ[X]} {z : Fin 2 → ℂ} {μ R L : ℝ}
@@ -226,7 +267,7 @@ theorem cfa_degree_two_below {f : ℂ[X]} {z : Fin 2 → ℂ} {μ R L : ℝ}
     (hR : μ < R) (hL : ‖z 0 - z 1‖ ≤ L) : cfaJoinedBelow f z R L
 ```
 
-where [`cfaJoinedBelow`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L240) is
+where [`cfaJoinedBelow`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L240) is
 
 ```lean
 def cfaJoinedBelow {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
@@ -238,10 +279,21 @@ def cfaJoinedBelow {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop
     (Squarefree f → z i ≠ z j)
 ```
 
-7. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfaTwoRpow_le`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L184)
+7. [`ErdosProblems.Erdos1041.PaperCompleteR21.cfaTwoRpow_le`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L184)
 
 ```lean
 theorem cfaTwoRpow_le {n : ℕ} (hn : 3 ≤ n) : (2 : ℝ) ^ ((1 : ℝ) / (n : ℝ)) ≤ 63 / 50
+```
+
+The assumed input [`CFAPathConstruction`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L346) is
+
+```lean
+def CFAPathConstruction : Prop :=
+  ∀ (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (μ lam r : ℝ),
+    3 ≤ n → f.Monic → f.natDegree = n → RootEnumeration f z →
+    CriticalMinimum f μ → 0 < μ → 0 < r → r < 1 → 1 < lam →
+    ∃ k : ℕ, 2 ≤ k ∧
+      cfaJoinedBelow f z (lam * μ) (cfaBracket n k lam r * μ ^ ((1 : ℝ) / (n : ℝ)))
 ```
 
 <a id="res-constant-factor-path-comparator"></a>
@@ -250,7 +302,7 @@ theorem cfaTwoRpow_le {n : ℕ} (hn : 3 ≤ n) : (2 : ℝ) ^ ((1 : ℝ) / (n : �
 
 <a id="res-critical-proximity"></a>
 
-## Theorem (a geometric-mean bound for distances to a critical point)
+## Theorem 4.1 (a geometric-mean bound for distances to a critical point), page 8
 
 > *Let $`n\ge2`$, let $`z_1,\ldots,z_n,c\in\mathbb C`$ with $`c\ne z_k`$ for every $`k`$, and suppose
 > ``` math
@@ -267,7 +319,7 @@ theorem cfaTwoRpow_le {n : ℕ} (hn : 3 ≤ n) : (2 : ℝ) ^ ((1 : ℝ) / (n : �
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291)
+[`ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291)
 
 ```lean
 theorem exists_two_roots_dist_sum_le_two_mul_geomMean
@@ -290,11 +342,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-two-nearest-roots"></a>
 
-## Corollary
+## Corollary 4.2, page 8
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR20.two_nearest_roots_of_polynomial_critical`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L9)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR20.two_nearest_roots_of_polynomial_critical`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L9)
 
 ```lean
 theorem two_nearest_roots_of_polynomial_critical {n : ℕ} (hn : 2 ≤ n)
@@ -307,7 +359,7 @@ theorem two_nearest_roots_of_polynomial_critical {n : ℕ} (hn : 2 ≤ n)
     ‖c - z i‖ + ‖c - z j‖ < 2
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR20.exists_two_nearest_roots_of_polynomial_critical`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L31)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR20.exists_two_nearest_roots_of_polynomial_critical`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L31)
 
 ```lean
 theorem exists_two_nearest_roots_of_polynomial_critical {n : ℕ} (hn : 2 ≤ n)
@@ -333,13 +385,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-straight-no-go"></a>
 
-## Proposition (two counterexamples to straight-path assertions)
+## Proposition 4.3 (two counterexamples to straight-path assertions), page 9
 
 > *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.PaperStraightObstructions.complete_straight_path_obstructions`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178)
+[`ErdosProblems.Erdos1041.PaperStraightObstructions.complete_straight_path_obstructions`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178)
 
 ```lean
 theorem complete_straight_path_obstructions :
@@ -366,7 +418,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cubic-fibres"></a>
 
-## Theorem (a cubic composed with a power map)
+## Theorem 5.1 (a cubic composed with a power map), page 10
 
 > *Let $`q\ge2`$, $`h\in\mathbb C`$, and let $`P`$ be a monic cubic. Put
 > ``` math
@@ -376,7 +428,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240)
+[`ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240)
 
 ```lean
 theorem complete_translated_cubic_quotient_fibres
@@ -415,7 +467,7 @@ theorem complete_translated_cubic_quotient_fibres
 
 <a id="res-primitive-quintic"></a>
 
-## Theorem (quintics with two missing coefficients)
+## Theorem 5.2 (quintics with two missing coefficients), page 11
 
 > *Let
 > ``` math
@@ -431,7 +483,7 @@ theorem complete_translated_cubic_quotient_fibres
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L237)
+[`ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L237)
 
 ```lean
 theorem complete_primitive_quintic (p : ℂ[X]) (hp : p.Monic)
@@ -459,7 +511,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-critical-value-separation"></a>
 
-## Theorem (separation of one simple critical value)
+## Theorem 6.1 (separation of one simple critical value), page 12
 
 > *Let $`f`$ be monic of degree $`n\ge3`$, let $`c`$ be a simple critical point, and put $`v=f(c)\ne0`$. Fix $`w_0\in[0,1]`$ and $`S>\max(w_0,1-w_0)`$. Suppose every other critical point $`d`$ satisfies
 > ``` math
@@ -475,9 +527,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \end{equation}
 > ```*
 
-The Lean proof assumes the connector and area construction that this proof produces, stated in Lean as `ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea`; that input is not proved in Lean.
+The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L534)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L534)
 
 ```lean
 theorem discSep_separation_short (hext : DiscSepBergmanArea)
@@ -498,7 +550,7 @@ theorem discSep_separation_short (hext : DiscSepBergmanArea)
         discSepCoefficient n S (w₀ * (1 - w₀))
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L410)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L410)
 
 ```lean
 theorem discSepNormalise_spec {f : ℂ[X]} {n : ℕ} {c v : ℂ} {r w₀ S : ℝ}
@@ -512,7 +564,7 @@ theorem discSepNormalise_spec {f : ℂ[X]} {n : ℕ} {c v : ℂ} {r w₀ S : ℝ
     DiscSepNormalised (discSepNormalise f c r v) n w₀ S
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L475)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L475)
 
 ```lean
 theorem discSep_transport {f P : ℂ[X]} {c v : ℂ} {r L : ℝ} {Z : ℝ → ℂ}
@@ -526,7 +578,7 @@ theorem discSep_transport {f P : ℂ[X]} {c v : ℂ} {r L : ℝ} {Z : ℝ → �
       eVariationOn γ (Set.Icc (-1 : ℝ) 1) ≤ ENNReal.ofReal (r * L)
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L305)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L305)
 
 ```lean
 theorem discSep_squared_length_le {n : ℕ} {w₀ S L area : ℝ}
@@ -538,12 +590,25 @@ theorem discSep_squared_length_le {n : ℕ} {w₀ S L area : ℝ}
     L ^ 2 ≤ 2 * discSepCoefficient n S (w₀ * (1 - w₀))
 ```
 
-5. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L179)
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L179)
 
 ```lean
 theorem discSep_bergman_factor {S p : ℝ} (hS : 0 < S) (hden : 0 < S ^ 2 - S + p) :
     (1 + discSepQsq S p) / (1 - discSepQsq S p)
       = (S ^ 2 + S + p) / (S ^ 2 - S + p)
+```
+
+The assumed input [`DiscSepBergmanArea`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L293) is
+
+```lean
+def DiscSepBergmanArea : Prop :=
+  ∀ (P : ℂ[X]) (n : ℕ) (w₀ S : ℝ), DiscSepNormalised P n w₀ S →
+    ∃ (Z : ℝ → ℂ) (L area : ℝ),
+      DiscSepConnector P Z L ∧
+      L ^ 2 ≤ 2 / Real.pi *
+        Real.log ((1 + discSepQsq S (w₀ * (1 - w₀))) /
+          (1 - discSepQsq S (w₀ * (1 - w₀)))) * area ∧
+      area ≤ Real.pi * (S / ((n : ℝ) - 1)) ^ ((2 : ℝ) / (n : ℝ))
 ```
 
 <a id="res-critical-value-separation-comparator"></a>
@@ -552,7 +617,7 @@ theorem discSep_bergman_factor {S p : ℝ} (hS : 0 < S) (hden : 0 < S ^ 2 - S + 
 
 <a id="res-critical-value-thresholds"></a>
 
-## Corollary (uniform radius $`4/3`$)
+## Corollary 6.2 (uniform radius $`4/3`$), page 12
 
 > *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc. If $`c`$ is a simple critical point with $`0<|f(c)|<1`$ and, for some $`w_0\in[0,1]`$, every other critical point $`d`$ satisfies
 > ``` math
@@ -560,9 +625,9 @@ theorem discSep_bergman_factor {S p : ℝ} (hS : 0 < S) (hden : 0 < S ^ 2 - S + 
 > ```
 > then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$. In degree three the branch-centred choice $`w_0=1`$ already works with $`4/3`$ replaced by $`6/5`$.*
 
-The Lean proof assumes the connector and area construction in the proof of Theorem~\ref{res:critical-value-separation}, stated in Lean as `ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea`; that input is not proved in Lean.
+The Lean proof assumes the connector and area construction in the proof of Theorem 6.1. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L702)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L702)
 
 ```lean
 theorem discSep_uniform_radius (hext : DiscSepBergmanArea)
@@ -582,7 +647,7 @@ theorem discSep_uniform_radius (hext : DiscSepBergmanArea)
       eVariationOn γ (Set.Icc (-1 : ℝ) 1) < ENNReal.ofReal 2
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L738)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L738)
 
 ```lean
 theorem discSep_cubic_six_fifths (hext : DiscSepBergmanArea)
@@ -601,7 +666,7 @@ theorem discSep_cubic_six_fifths (hext : DiscSepBergmanArea)
       eVariationOn γ (Set.Icc (-1 : ℝ) 1) < ENNReal.ofReal 2
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L645)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L645)
 
 ```lean
 theorem discSepCoefficient_lt_two {n : ℕ} (hn : 3 ≤ n) {S p : ℝ}
@@ -609,10 +674,23 @@ theorem discSepCoefficient_lt_two {n : ℕ} (hn : 3 ≤ n) {S p : ℝ}
     discSepCoefficient n S p < 2
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L677)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L677)
 
 ```lean
 theorem discSepCoefficient_three_six_fifths : discSepCoefficient 3 (6 / 5) 0 < 2
+```
+
+The assumed input [`DiscSepBergmanArea`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L293) is
+
+```lean
+def DiscSepBergmanArea : Prop :=
+  ∀ (P : ℂ[X]) (n : ℕ) (w₀ S : ℝ), DiscSepNormalised P n w₀ S →
+    ∃ (Z : ℝ → ℂ) (L area : ℝ),
+      DiscSepConnector P Z L ∧
+      L ^ 2 ≤ 2 / Real.pi *
+        Real.log ((1 + discSepQsq S (w₀ * (1 - w₀))) /
+          (1 - discSepQsq S (w₀ * (1 - w₀)))) * area ∧
+      area ≤ Real.pi * (S / ((n : ℝ) - 1)) ^ ((2 : ℝ) / (n : ℝ))
 ```
 
 <a id="res-critical-value-thresholds-comparator"></a>
@@ -621,13 +699,13 @@ theorem discSepCoefficient_three_six_fifths : discSepCoefficient 3 (6 / 5) 0 < 2
 
 <a id="res-separation-parent"></a>
 
-## Corollary (a sufficient condition for a length-$`2`$ path)
+## Corollary 6.3 (a sufficient condition for a length-$`2`$ path), page 12
 
 > *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc, and let $`c`$ be a simple critical point with $`v=f(c)`$ and $`0<|v|<1`$. If some real centre $`w_0\in[0,1]`$ admits a radius $`S\ge4/3`$ such that $`|f(d)/v-w_0|\ge S`$ for every other critical point $`d`$, then Erdős Problem #1041 holds for $`f`$.*
 
-The Lean proof assumes Theorem~\ref{res:critical-value-separation} as stated, stated in Lean as `ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.CriticalValueSeparationTheorem`; that input is not proved in Lean.
+The Lean proof assumes Theorem 6.1 as stated. Lean takes this input as a hypothesis (`CriticalValueSeparationTheorem`); it is not proved in Lean.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L162)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L162)
 
 ```lean
 theorem separation_parent (hSep : CriticalValueSeparationTheorem)
@@ -641,14 +719,21 @@ theorem separation_parent (hSep : CriticalValueSeparationTheorem)
     PaperAnalyticTargets.HasDistinctConnection f 1 2
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L98)
+where [`HasDistinctConnection`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L45) is
+
+```lean
+def HasDistinctConnection (p : ℂ[X]) (R L : ℝ) : Prop :=
+  ∃ a b : ℂ, a ≠ b ∧ p.eval a = 0 ∧ p.eval b = 0 ∧ ConnectedBelow p.eval R L a b
+```
+
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L98)
 
 ```lean
 theorem separationCoefficient_lt_two {n : ℕ} (hn : 3 ≤ n) {p : ℝ} (hp : 0 ≤ p) :
     separationCoefficient n (4 / 3) p < 2
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L123)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L123)
 
 ```lean
 theorem squared_bound_lt_four {n : ℕ} (hn : 3 ≤ n) {v p : ℝ} (hv0 : 0 < v) (hv1 : v < 1)
@@ -656,12 +741,37 @@ theorem squared_bound_lt_four {n : ℕ} (hn : 3 ≤ n) {v p : ℝ} (hv0 : 0 < v)
     2 * v ^ ((2 : ℝ) / (n : ℝ)) * separationCoefficient n (4 / 3) p < 4
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L144)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L144)
 
 ```lean
 theorem connectedBelow_of_connectedAtMost {f : ℂ → ℂ} {R L R' L' : ℝ} {a b : ℂ}
     (h : PaperAnalyticTargets.ConnectedAtMost f R L a b) (hR : R < R') (hL : L < L')
     (hL0 : 0 ≤ L) : PaperCurve.ConnectedBelow f R' L' a b
+```
+
+where [`ConnectedBelow`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCurveAssembly.lean#L176) is
+
+```lean
+def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
+  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
+    γ 0 = a ∧ γ 2 = b ∧
+    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
+    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+    eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
+```
+
+The assumed input [`CriticalValueSeparationTheorem`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L60) is
+
+```lean
+def CriticalValueSeparationTheorem : Prop :=
+  ∀ (f : ℂ[X]) (c : ℂ) (w₀ S : ℝ), f.Monic → 3 ≤ f.natDegree →
+    f.derivative.eval c = 0 → f.derivative.derivative.eval c ≠ 0 →
+    f.eval c ≠ 0 → 0 ≤ w₀ → w₀ ≤ 1 → max w₀ (1 - w₀) < S →
+    ValueSeparatedAtCentre f c w₀ S →
+    ∃ a b : ℂ, a ≠ b ∧ f.eval a = 0 ∧ f.eval b = 0 ∧
+      PaperAnalyticTargets.ConnectedAtMost f.eval ‖f.eval c‖
+        (Real.sqrt (2 * ‖f.eval c‖ ^ ((2 : ℝ) / (f.natDegree : ℝ)) *
+          separationCoefficient f.natDegree S (w₀ * (1 - w₀)))) a b
 ```
 
 <a id="res-separation-parent-comparator"></a>
@@ -670,7 +780,7 @@ theorem connectedBelow_of_connectedAtMost {f : ℂ → ℂ} {R L R' L' : ℝ} {a
 
 <a id="res-sep-or-false"></a>
 
-## Proposition (failure of two critical-value criteria to cover all polynomials)
+## Proposition 7.1 (failure of two critical-value criteria to cover all polynomials), page 14
 
 > *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 > ``` math
@@ -679,7 +789,7 @@ theorem connectedBelow_of_connectedAtMost {f : ℂ → ℂ} {R L R' L' : ℝ} {a
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.PaperSeparationCounterexample.complete_sep_or_counterexample`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189)
+[`ErdosProblems.Erdos1041.PaperSeparationCounterexample.complete_sep_or_counterexample`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189)
 
 ```lean
 theorem complete_sep_or_counterexample :
@@ -707,13 +817,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-one-root-gamma-false"></a>
 
-## Proposition (a counterexample to the proposed one-root perimeter bound)
+## Proposition 7.2 (a counterexample to the proposed one-root perimeter bound), page 14
 
 > *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.one_root_gamma_false_unconditional`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41)
+[`ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.one_root_gamma_false_unconditional`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41)
 
 ```lean
 theorem one_root_gamma_false_unconditional :
@@ -739,24 +849,85 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-arity-not-capacity"></a>
 
-## Proposition (root count does not force a capacity gap)
+## Proposition 7.3 (root count does not force a capacity gap), page 14
 
 > *Let $`g(z)=z^3-(3/400)z-3/32`$. All roots lie in the open unit disc and $`\mu=187/2000\le1/2`$. The first merger joins two root components, so $`k_0=2`$, but the component at level $`2\mu`$ containing that pair has normalised capacity $`1`$.*
 
-**No Lean proof of the whole statement.** the location of the roots in the open unit disc and the value $\mu=187/2000\le1/2$ are checked, and the root count $k_0=2$ and the capacity clause are not; the root count, taken in the component of $K_\mu$ containing the critical point at level $\mu$, can be stated in the pinned library, and the capacity clause needs a logarithmic capacity, which that library does not define
+The Lean proof assumes the classical value $t^{1/n}$ of the transfinite diameter of the filled lemniscate $\{|p|\le t\}$ of a monic polynomial $p$ of degree $n$, used only in the capacity clause. Lean takes this input as a hypothesis (`LemniscateTransfiniteDiameter`); it is not proved in Lean.
+
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean#L677)
+
+```lean
+theorem arity_not_capacity (hLTD : LemniscateTransfiniteDiameter) :
+    G.Monic ∧ G.natDegree = 3 ∧
+      PaperAnalyticTargets.RootsInOpenUnitDisc G ∧
+      PaperAnalyticTargets.CriticalMinimum G (187 / 2000 : ℝ) ∧
+      (187 / 2000 : ℝ) ≤ 1 / 2 ∧
+      (∀ c : ℂ, G.derivative.eval c = 0 ∧ ‖G.eval c‖ = 187 / 2000 ↔ c = -(1 / 20)) ∧
+      (∃ a b : ℂ, a ≠ b ∧
+        G.roots.filter
+            (· ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ ≤ 187 / 2000} (-(1 / 20)))
+          = {a, b} ∧
+        b ∉ connectedComponentIn {z : ℂ | ‖G.eval z‖ < 187 / 2000} a ∧
+        a ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20)) ∧
+        b ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20))) ∧
+      Multiset.card (G.roots.filter
+          (· ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ ≤ 187 / 2000} (-(1 / 20))))
+        = 2 ∧
+      transfiniteDiameter
+          (closure (connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20))))
+        / (2 * (187 / 2000 : ℝ)) ^ ((1 : ℝ) / 3) = 1
+```
+
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_first_merger`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean#L568)
+
+```lean
+theorem arity_first_merger :
+    (∃ a b : ℂ, a ≠ b ∧
+      G.roots.filter
+          (· ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ ≤ 187 / 2000} (-(1 / 20)))
+        = {a, b} ∧
+      b ∉ connectedComponentIn {z : ℂ | ‖G.eval z‖ < 187 / 2000} a ∧
+      a ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20)) ∧
+      b ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20))) ∧
+    Multiset.card (G.roots.filter
+        (· ∈ connectedComponentIn {z : ℂ | ‖G.eval z‖ ≤ 187 / 2000} (-(1 / 20)))) = 2 ∧
+    connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20)) =
+      {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)}
+```
+
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.Arity.closure_doubleLevelComponent`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean#L660)
+
+```lean
+theorem closure_doubleLevelComponent :
+    closure (connectedComponentIn {z : ℂ | ‖G.eval z‖ < 2 * (187 / 2000)} (-(1 / 20))) =
+      {z : ℂ | ‖G.eval z‖ ≤ 2 * (187 / 2000)}
+```
+
+The assumed input [`LemniscateTransfiniteDiameter`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ArityNotCapacity.lean#L95) is
+
+```lean
+def LemniscateTransfiniteDiameter : Prop :=
+  ∀ (p : ℂ[X]) (t : ℝ), p.Monic → 1 ≤ p.natDegree → 0 < t →
+    transfiniteDiameter {z | ‖p.eval z‖ ≤ t} = t ^ ((1 : ℝ) / p.natDegree)
+```
+
+<a id="res-arity-not-capacity-comparator"></a>
+
+**Comparator:** not applicable (no unconditional Lean proof of the whole statement).
 
 <a id="res-value"></a>
 
-## Theorem (value equation)
+## Theorem 8.1 (value equation), page 15
 
 > *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 > ``` math
 > f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
 > ```*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement allows any function $f$ with a complex derivative at each point $z(t)$, $t\in I$, of which a polynomial is a case; its conclusions are $w'=-w$ on $I$ and $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\in I$.
 
-[`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52)
+[`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52)
 
 ```lean
 theorem newton_real_value_whole
@@ -782,7 +953,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-ray"></a>
 
-## Corollary (ray separation)
+## Corollary 8.2 (ray separation), page 15
 
 > *Let $`a<b`$, let $`z:[a,b]\to\mathbb C`$ be continuous, and suppose $`z`$ is differentiable on $`(a,b)`$ with $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ there. Then
 > ``` math
@@ -790,9 +961,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > If the endpoint values are nonzero, they lie on the same positive ray. In particular, critical points whose values lie on distinct positive rays cannot be the endpoints of such a finite connection.*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, and assumes only that $f\circ z$ is continuous on $[a,b]$, which holds when $f$ is a polynomial and $z$ is continuous. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.
 
-[`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69)
+[`ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69)
 
 ```lean
 theorem newton_real_endpoint_whole
@@ -818,7 +989,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-locus"></a>
 
-## Theorem (ray-collision locus)
+## Theorem 9.1 (ray-collision locus), page 16
 
 > *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 > ``` math
@@ -828,7 +999,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.translated_samePositiveRay_parameterization`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107)
+[`ErdosProblems.Erdos1041.translated_samePositiveRay_parameterization`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107)
 
 ```lean
 theorem translated_samePositiveRay_parameterization
@@ -850,11 +1021,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-complementary-binomial-chords"></a>
 
-## Theorem
+## Theorem 13.1, page 18
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_path`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1084)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_path`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1084)
 
 ```lean
 theorem binomial_chords_path {n : ℕ} (hn : 2 ≤ n) {r : ℝ} (hr0 : 0 < r) (hr1 : r < 1) :
@@ -865,7 +1036,7 @@ theorem binomial_chords_path {n : ℕ} (hn : 2 ≤ n) {r : ℝ} (hr0 : 0 < r) (h
         ((r : ℝ) : ℂ) (((r : ℝ) : ℂ) * chordOmega n)
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_below_threshold`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1094)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_below_threshold`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1094)
 
 ```lean
 theorem binomial_chords_below_threshold {n : ℕ} (hn : 2 ≤ n) {r : ℝ} (hr0 : 0 < r)
@@ -874,7 +1045,7 @@ theorem binomial_chords_below_threshold {n : ℕ} (hn : 2 ≤ n) {r : ℝ} (hr0 
       ((r : ℝ) : ℂ) (((r : ℝ) : ℂ) * chordOmega n)
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_above_threshold`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1104)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_above_threshold`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1104)
 
 ```lean
 theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r)
@@ -883,7 +1054,7 @@ theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 
       ((r : ℝ) : ℂ) (((r : ℝ) : ℂ) * chordOmega n)
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_at_threshold`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1118)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_at_threshold`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1118)
 
 ```lean
 theorem binomial_chords_at_threshold {n : ℕ} (hn : 2 ≤ n) :
@@ -894,7 +1065,7 @@ theorem binomial_chords_at_threshold {n : ℕ} (hn : 2 ≤ n) :
         - ((chordThreshold n : ℝ) : ℂ) ^ n‖ = 1
 ```
 
-5. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chord_maximum`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1129)
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chord_maximum`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1129)
 
 ```lean
 theorem binomial_chord_maximum {n : ℕ} (hn : 2 ≤ n) {s r : ℝ} (hs : 0 < s) (hsr : s ≤ r) :
@@ -903,7 +1074,7 @@ theorem binomial_chord_maximum {n : ℕ} (hn : 2 ≤ n) {s r : ℝ} (hs : 0 < s)
       ‖(chordPoint n s (1 / 2)) ^ n - ((r : ℝ) : ℂ) ^ n‖ = r ^ n + (s * chordCos n) ^ n
 ```
 
-6. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chord_decisive_step`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1138)
+6. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chord_decisive_step`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1138)
 
 ```lean
 theorem binomial_chord_decisive_step {n : ℕ} (hn : 2 ≤ n) {θ : ℝ}
@@ -911,7 +1082,7 @@ theorem binomial_chord_decisive_step {n : ℕ} (hn : 2 ≤ n) {θ : ℝ}
     1 + Real.cos ((n : ℝ) * θ) ≤ 2 * Real.cos θ ^ n
 ```
 
-7. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_inner_chord_maximal`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1145)
+7. [`ErdosProblems.Erdos1041.PaperCompleteR21.binomial_inner_chord_maximal`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1145)
 
 ```lean
 theorem binomial_inner_chord_maximal {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r)
@@ -968,7 +1139,7 @@ theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 
 
 <a id="res-sharp-collinear-root-diameter"></a>
 
-## Theorem (sharp collinear root-diameter bound)
+## Theorem 14.1 (sharp collinear root-diameter bound), page 19
 
 > *Let $`f`$ be monic of degree $`n\ge2`$, with collinear zero occurrences of diameter $`D`$. Then some two zero occurrences are joined by their straight segment, of length at most $`D`$, on which
 > ``` math
@@ -976,9 +1147,9 @@ theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 
 > ```
 > The constant is sharp: equality is attained by the affine images of the scaled Chebyshev root configuration with extreme roots at distance $`D`$.*
 
-The Lean declarations below together state a result at least as strong as this one.
+The Lean declarations below together state a result at least as strong as this one. The bound is proved for every monic $f$ of degree $n\ge2$ whose zeros lie on one line, and the chosen pair is adjacent on that line, with no zero strictly between them (`sharp_collinear_root_diameter_monic`). The Chebyshev configuration with extreme roots at distance $D$, placed on any line by a translation and a rotation, attains $C_n(D/2)^n$ on every gap between adjacent roots (`sharp_collinear_equality_attained`), and no constant smaller than $C_n$ gives the adjacent-pair bound (`sharpConstant_le_of_collinearDiameterBound`).
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367)
 
 ```lean
 theorem sharp_collinear_root_diameter {n : ℕ} (hn : 2 ≤ n)
@@ -994,7 +1165,7 @@ theorem sharp_collinear_root_diameter {n : ℕ} (hn : 2 ≤ n)
           ≤ 1 / (2 ^ (n - 1) * Real.cos (Real.pi / (2 * (n : ℝ))) ^ n) * (D / 2) ^ n
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter_monic`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L967)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter_monic`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L967)
 
 ```lean
 theorem sharp_collinear_root_diameter_monic {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X])
@@ -1012,7 +1183,7 @@ theorem sharp_collinear_root_diameter_monic {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X]
                 * (D / 2) ^ n
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.exists_collinear_factorisation`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L928)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.exists_collinear_factorisation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L928)
 
 ```lean
 theorem exists_collinear_factorisation (base dir : ℂ) :
@@ -1021,7 +1192,7 @@ theorem exists_collinear_factorisation (base dir : ℂ) :
       ∃ y : Fin n → ℝ, f = ∏ k : Fin n, (X - C (base + dir * (y k : ℂ)))
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_comparisonBound`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L212)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_comparisonBound`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L212)
 
 ```lean
 theorem exists_gap_le_comparisonBound {m : ℕ} (Y : Fin (m + 2) → ℝ)
@@ -1030,7 +1201,7 @@ theorem exists_gap_le_comparisonBound {m : ℕ} (Y : Fin (m + 2) → ℝ)
       |∏ j, (x - Y j)| ≤ comparisonBound (m + 2)
 ```
 
-5. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_equality_attained`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L836)
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_equality_attained`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L836)
 
 ```lean
 theorem sharp_collinear_equality_attained {m : ℕ} (base dir : ℂ) (hdir : ‖dir‖ = 1)
@@ -1048,7 +1219,7 @@ theorem sharp_collinear_equality_attained {m : ℕ} (base dir : ℂ) (hdir : ‖
               * (D / 2) ^ (m + 2)
 ```
 
-6. [`ErdosProblems.Erdos1041.PaperCompleteR21.chebyshev_configuration_attains`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L769)
+6. [`ErdosProblems.Erdos1041.PaperCompleteR21.chebyshev_configuration_attains`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L769)
 
 ```lean
 theorem chebyshev_configuration_attains {m : ℕ} (base dir : ℂ) (hdir : ‖dir‖ = 1)
@@ -1063,14 +1234,14 @@ theorem chebyshev_configuration_attains {m : ℕ} (base dir : ℂ) (hdir : ‖di
           ‖f.eval z‖ = comparisonBound (m + 2) * R ^ (m + 2)
 ```
 
-7. [`ErdosProblems.Erdos1041.PaperCompleteR21.monicScaledChebyshev_eq_prod`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L684)
+7. [`ErdosProblems.Erdos1041.PaperCompleteR21.monicScaledChebyshev_eq_prod`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L684)
 
 ```lean
 theorem monicScaledChebyshev_eq_prod (m : ℕ) :
     monicScaledChebyshev (m + 2) = ∏ i : Fin (m + 2), (X - C (chebNode m i))
 ```
 
-8. [`ErdosProblems.Erdos1041.PaperCompleteR21.collinearDiameterBound_sharpConstant`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L871)
+8. [`ErdosProblems.Erdos1041.PaperCompleteR21.collinearDiameterBound_sharpConstant`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L871)
 
 ```lean
 theorem collinearDiameterBound_sharpConstant {n : ℕ} (hn : 2 ≤ n) :
@@ -1078,7 +1249,7 @@ theorem collinearDiameterBound_sharpConstant {n : ℕ} (hn : 2 ≤ n) :
       (1 / (2 ^ (n - 1) * Real.cos (Real.pi / (2 * (n : ℝ))) ^ n))
 ```
 
-9. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharpConstant_le_of_collinearDiameterBound`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L878)
+9. [`ErdosProblems.Erdos1041.PaperCompleteR21.sharpConstant_le_of_collinearDiameterBound`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L878)
 
 ```lean
 theorem sharpConstant_le_of_collinearDiameterBound {n : ℕ} (hn : 2 ≤ n) {K : ℝ}
@@ -1106,7 +1277,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fp-weighted-all-degree"></a>
 
-## Theorem (a weighted inequality for points in a disc)
+## Theorem 15.1 (a weighted inequality for points in a disc), page 21
 
 > *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
 > ``` math
@@ -1120,13 +1291,23 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1041.paper_weighted_free_point`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L17)
+1. [`ErdosProblems.Erdos1041.paper_weighted_free_point`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L17)
 
 ```lean
 theorem paper_weighted_free_point : PaperAnalyticTargets.WeightedFreePoint
 ```
 
-2. [`ErdosProblems.Erdos1041.geometric_row_mean_closed_disc_le`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L155)
+where [`WeightedFreePoint`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L87) is
+
+```lean
+def WeightedFreePoint : Prop :=
+  ∀ (m : ℕ) (c : Fin m → ℂ) (w : Fin m → ℝ),
+    (∀ j, ‖c j‖ ≤ 1) → (∀ j, 0 < w j) → (∑ j, w j) = 1 →
+      (∑ j, w j * weightedProduct c w (c j) ^ 2) ≤ 1 ∧
+      ((∑ j, w j * weightedProduct c w (c j) ^ 2) = 1 ↔ ∀ j, c j = 0)
+```
+
+2. [`ErdosProblems.Erdos1041.geometric_row_mean_closed_disc_le`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L155)
 
 ```lean
 theorem geometric_row_mean_closed_disc_le {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)
@@ -1153,7 +1334,7 @@ theorem paper_weighted_free_point : WeightedFreePoint := by sorry
 
 <a id="res-fp-to-s"></a>
 
-## Theorem (critical-value mean in every degree)
+## Theorem 15.2 (critical-value mean in every degree), page 22
 
 > *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R`$, and let $`c_1,\ldots,c_{n-1}`$ be its critical points with multiplicity. Then
 > ``` math
@@ -1164,10 +1345,22 @@ theorem paper_weighted_free_point : WeightedFreePoint := by sorry
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1041.paper_critical_value_mean`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101)
+[`ErdosProblems.Erdos1041.paper_critical_value_mean`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101)
 
 ```lean
 theorem paper_critical_value_mean : PaperAnalyticTargets.CriticalValueMean
+```
+
+where [`CriticalValueMean`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L102) is
+
+```lean
+def CriticalValueMean : Prop :=
+  ∀ (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → ℂ) (h : ℂ) (R : ℝ),
+    2 ≤ n → p.Monic → p.natDegree = n → 0 ≤ R →
+    RootsInClosedDisc p h R → CriticalEnumeration p c →
+      (∑ j, ‖p.eval (c j)‖ ^ (2 / ((n : ℝ) - 1))) ≤
+        ((n : ℝ) - 1) * R ^ (2 * (n : ℝ) / ((n : ℝ) - 1)) ∧
+      (∑ j, ‖p.eval (c j)‖ ^ (1 / (n : ℝ))) ≤ ((n : ℝ) - 1) * R
 ```
 
 <a id="res-fp-to-s-comparator"></a>
@@ -1191,7 +1384,7 @@ theorem paper_critical_value_mean (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → �
 
 <a id="res-orlicz-currency"></a>
 
-## Theorem (the relation between two merger-scale integrals)
+## Theorem 16.1 (the relation between two merger-scale integrals), page 23
 
 > *Define
 > ``` math
@@ -1211,9 +1404,9 @@ theorem paper_critical_value_mean (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → �
 > ```
 > In particular, no positive universal constant bounds $`I_k(r)`$ below by that constant times $`k^{-1}\log(1/r)`$.*
 
-The Lean declarations below together state a result at least as strong as this one.
+The Lean declarations below together state a result at least as strong as this one. The Lean statements prove $\Phi$ strictly increasing on $[0,\infty)$, which contains the printed monotonicity on $(0,\infty)$, and the integrand $1/\log(\coth t)$ continuous on $\mathbb R$ with value $0$ at $t=0$, which is the printed convention. The identity (O1), strict convexity on $(0,\infty)$, (O2), (O3) and the absence of a universal constant are stated as printed.
 
-1. [`ErdosProblems.Erdos1041.PaperCompleteR21.orlicz_currency`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L374)
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.orlicz_currency`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L374)
 
 ```lean
 theorem orlicz_currency :
@@ -1230,19 +1423,19 @@ theorem orlicz_currency :
         c * (Real.log (1 / r) / k) ≤ mergerIntegral k r
 ```
 
-2. [`ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_continuous`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L115)
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_continuous`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L115)
 
 ```lean
 theorem orliczKernel_continuous : Continuous orliczKernel
 ```
 
-3. [`ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L163)
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L163)
 
 ```lean
 theorem orliczKernel_tendsto_zero : Tendsto orliczKernel (𝓝[≠] (0 : ℝ)) (𝓝 0)
 ```
 
-4. [`ErdosProblems.Erdos1041.PaperCompleteR21.mergerIntegral_eq_mul_phi`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L278)
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.mergerIntegral_eq_mul_phi`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L278)
 
 ```lean
 theorem mergerIntegral_eq_mul_phi {k : ℕ} (hk : 1 ≤ k) {r : ℝ}
@@ -1250,26 +1443,26 @@ theorem mergerIntegral_eq_mul_phi {k : ℕ} (hk : 1 ≤ k) {r : ℝ}
     mergerIntegral k r = k * Phi (Real.log (1 / r) / k)
 ```
 
-5. [`ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictMonoOn`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L196)
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictMonoOn`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L196)
 
 ```lean
 theorem phi_strictMonoOn : StrictMonoOn Phi (Ici (0 : ℝ))
 ```
 
-6. [`ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictConvexOn`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L203)
+6. [`ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictConvexOn`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L203)
 
 ```lean
 theorem phi_strictConvexOn : StrictConvexOn ℝ (Ioi (0 : ℝ)) Phi
 ```
 
-7. [`ErdosProblems.Erdos1041.PaperCompleteR21.phi_div_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L209)
+7. [`ErdosProblems.Erdos1041.PaperCompleteR21.phi_div_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L209)
 
 ```lean
 theorem phi_div_tendsto_zero :
     Tendsto (fun x => Phi x / x) (𝓝[>] (0 : ℝ)) (𝓝 0)
 ```
 
-8. [`ErdosProblems.Erdos1041.PaperCompleteR21.exists_mergerIntegral_lt`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L341)
+8. [`ErdosProblems.Erdos1041.PaperCompleteR21.exists_mergerIntegral_lt`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L341)
 
 ```lean
 theorem exists_mergerIntegral_lt {k : ℕ} (hk : 1 ≤ k) {c : ℝ} (hc : 0 < c) :

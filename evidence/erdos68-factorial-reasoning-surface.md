@@ -2,7 +2,7 @@
 
 This record belongs to the paper [erdos68-factorial-reasoning-surface.pdf](../paper/68/erdos68-factorial-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`e6c2d8f77ac2`](https://github.com/wcook04/plectis-erdos/tree/e6c2d8f77ac24753c5216a49f4daf7f7388b309f) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`c91562bd574a`](https://github.com/wcook04/plectis-erdos/tree/c91562bd574a387cde904481e609c7b4cacebb14) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35882032091](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35882032091) at corpus commit [`a2faa350b45a`](https://github.com/wcook04/plectis-erdos-lean/tree/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3) (tag `paper-evidence-2026-09-23`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 18 results: 18 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 18 compared.
 
@@ -10,7 +10,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="long68-res-prime-pole"></a>
 
-## Theorem (maximal prime-power survival)
+## Theorem 1.2 (maximal prime-power survival), page 3
 
 > *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
 > ``` math
@@ -24,7 +24,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117)
+[`ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117)
 
 ```lean
 theorem maximal_prime_power_survival {M p : ℕ} (_hM : 2 ≤ M)
@@ -50,13 +50,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-wilson-cofinality"></a>
 
-## Proposition (cofinal first prime occurrences)
+## Proposition 1.3 (cofinal first prime occurrences), page 4
 
 > *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.cofinal_first_prime_occurrences`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180)
+[`ErdosProblems.Erdos68.PaperComplete.cofinal_first_prime_occurrences`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180)
 
 ```lean
 theorem cofinal_first_prime_occurrences :
@@ -77,7 +77,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-product-lcm"></a>
 
-## Lemma (product, least common multiple, pairwise gcd)
+## Lemma 2.1 (product, least common multiple, pairwise gcd), page 5
 
 > *For positive integers $`x_1,\ldots,x_k`$,
 > ``` math
@@ -86,7 +86,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.product_lcm_pairwise_gcd`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189)
+[`ErdosProblems.Erdos68.PaperComplete.product_lcm_pairwise_gcd`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189)
 
 ```lean
 theorem product_lcm_pairwise_gcd (xs : List ℕ) :
@@ -110,18 +110,20 @@ theorem product_lcm_pairwise_gcd (xs : List ℕ) :
 
 <a id="long68-res-gap-gcd"></a>
 
-## Lemma (factorial-gap gcd)
+## Lemma 2.2 (factorial-gap gcd), page 5
 
 > *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
 The Lean declaration below states this result.
 
-[`Erdos68.factorial_gap_gcd_exact`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288)
+[`Erdos68.factorial_gap_gcd_exact`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288)
 
 ```lean
 theorem factorial_gap_gcd_exact
     {m n : ℕ} (hm : 2 ≤ m) (hmn : m < n) :
-    let g
+    let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
+    let Q := n.descFactorial (n - m)
+    g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m)
 ```
 
 <a id="long68-res-gap-gcd-comparator"></a>
@@ -136,7 +138,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-segment"></a>
 
-## Lemma (segment inequality)
+## Lemma 2.3 (segment inequality), page 5
 
 > *For $`2\le k\le N-1`$,
 > ``` math
@@ -147,9 +149,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \end{equation}
 > ```*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean inequality holds for every $k$ with $0\le k\le N-1$; the printed statement is its range $2\le k\le N-1$.
 
-[`Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566)
+[`Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566)
 
 ```lean
 theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
@@ -172,7 +174,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-lcm-growth"></a>
 
-## Theorem (common-denominator growth)
+## Theorem 2.4 (common-denominator growth), page 5
 
 > *``` math
 > \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}
@@ -181,7 +183,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42)
+[`ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42)
 
 ```lean
 theorem common_denominator_growth_liminf :
@@ -211,7 +213,7 @@ theorem common_denominator_growth_liminf :
 
 <a id="long68-res-carry-equivalence"></a>
 
-## Theorem (an exact criterion from successive partial sums)
+## Theorem 3.1 (an exact criterion from successive partial sums), page 8
 
 > *For $`m\ge3`$,
 > ``` math
@@ -238,7 +240,7 @@ theorem common_denominator_growth_liminf :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77)
+[`ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77)
 
 ```lean
 theorem strict_successor_characterisation :
@@ -294,7 +296,7 @@ theorem strict_successor_characterisation :
 
 <a id="long68-res-companion-orbit"></a>
 
-## Proposition (rationality and factorial residues)
+## Proposition 3.2 (rationality and factorial residues), page 10
 
 > *``` math
 > S\in\mathbb{Q}
@@ -305,7 +307,7 @@ theorem strict_successor_characterisation :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.companion_orbit`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38)
+[`ErdosProblems.Erdos68.PaperComplete.companion_orbit`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38)
 
 ```lean
 theorem companion_orbit :
@@ -333,7 +335,7 @@ theorem companion_orbit :
 
 <a id="long68-res-lower-escape"></a>
 
-## Proposition (lower-interval criterion)
+## Proposition 3.3 (lower-interval criterion), page 10
 
 > *``` math
 > \begin{equation}
@@ -356,7 +358,7 @@ theorem companion_orbit :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.lower_interval_criterion`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102)
+[`ErdosProblems.Erdos68.PaperComplete.lower_interval_criterion`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102)
 
 ```lean
 theorem lower_interval_criterion :
@@ -408,7 +410,7 @@ theorem lower_interval_criterion :
 
 <a id="long68-res-shift-family"></a>
 
-## Theorem (a criterion for the shifts $`t\ge-1`$)
+## Theorem 3.4 (a criterion for the shifts $`t\ge-1`$), page 12
 
 > *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
 > ``` math
@@ -418,7 +420,7 @@ theorem lower_interval_criterion :
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_boundary`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123)
+1. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_boundary`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123)
 
 ```lean
 theorem uniform_family_boundary {t : ℤ} (ht : -1 ≤ t) :
@@ -430,7 +432,7 @@ theorem uniform_family_boundary {t : ℤ} (ht : -1 ≤ t) :
         ¬ (m : ℤ) ∣ ⌈(t : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant t⌉ - 2)
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_members`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134)
+2. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_members`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134)
 
 ```lean
 theorem uniform_family_members :
@@ -465,7 +467,7 @@ theorem uniform_family_members :
 
 <a id="long68-res-global-residue"></a>
 
-## Theorem (a sufficient tail inequality)
+## Theorem 4.1 (a sufficient tail inequality), page 13
 
 > *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 > ``` math
@@ -478,12 +480,12 @@ theorem uniform_family_members :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_prime`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L169)
+[`ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154)
 
 ```lean
-theorem global_complementary_criterion_prime
+theorem global_complementary_criterion_nat
     (hcert : ∀ B : ℕ, ∃ p : ℕ,
-      p.Prime ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
+      3 ≤ p ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
       factorialBlockBudget p * factorialBlockEndpointLcm p <
         factorialBlockScale p * complementaryProjectedResidue
           (factorialBlockTailNumerator p) (factorialBlockPrivateModulus p)) :
@@ -496,14 +498,14 @@ theorem global_complementary_criterion_prime
 
 | Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
 |---|---|---|---|
-| `global_complementary_criterion_prime` | [E68_02/Challenge.lean, line 178](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E68_02/Challenge.lean#L178) | [PaperStatementsA.lean, line 163](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E68_02/PaperStatementsA.lean#L163) | [E68_02](../evidence/comparator/replay-35882032091/receipt-E68_02.json) |
+| `global_complementary_criterion_nat` | [E68_05/Challenge.lean, line 220](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E68_05/Challenge.lean#L220) | [PaperStatementsA.lean, line 86](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean#L86) | [E68_05](../evidence/comparator/replay-35882032091/receipt-E68_05.json) |
 
-Challenge for `global_complementary_criterion_prime`:
+Challenge for `global_complementary_criterion_nat`:
 
 ```lean
-theorem global_complementary_criterion_prime
+theorem global_complementary_criterion_nat
     (hcert : ∀ B : ℕ, ∃ p : ℕ,
-      p.Prime ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
+      3 ≤ p ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
       factorialBlockBudget p * factorialBlockEndpointLcm p <
         factorialBlockScale p * complementaryProjectedResidue
           (factorialBlockTailNumerator p) (factorialBlockPrivateModulus p)) :
@@ -512,13 +514,13 @@ theorem global_complementary_criterion_prime
 
 <a id="long68-res-normalform"></a>
 
-## Theorem (divisibility of the difference)
+## Theorem 5.1 (divisibility of the difference), page 15
 
 > *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(c)=M(c)+(d!-1)k`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.supported_integral_normal_form`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17)
+[`ErdosProblems.Erdos68.PaperComplete.supported_integral_normal_form`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17)
 
 ```lean
 theorem supported_integral_normal_form (f : ℕ →₀ ℤ) {d : ℕ} (hd : 2 ≤ d) :
@@ -537,13 +539,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-bandbreakpoint"></a>
 
-## Theorem (constant values of the floor in the weights)
+## Theorem 5.2 (constant values of the floor in the weights), page 16
 
 > *Let $`d\ge2`$ and $`k\ge0`$, and suppose every supported index $`i`$ satisfies $`kd\le i<(k+1)d`$. Then $`M(c)=(d!)^kV_{d}(c)`$. In particular, cancellation on the interval $`d\le i<2d`$ forces $`M(c)=0`$; and if every supported index is at least $`d`$ while $`M(c)\ne0`$ and $`V_{d}(c)=0`$, then some supported index is at least $`2d`$.*
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.supported_quotient_band`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24)
+1. [`ErdosProblems.Erdos68.PaperComplete.supported_quotient_band`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24)
 
 ```lean
 theorem supported_quotient_band (f : ℕ →₀ ℤ) (d k : ℕ)
@@ -552,7 +554,7 @@ theorem supported_quotient_band (f : ℕ →₀ ℤ) (d k : ℕ)
     factorialMoment f = (d.factorial : ℤ) ^ k * channelNumerator f d
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.supported_first_band_cancellation`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42)
+2. [`ErdosProblems.Erdos68.PaperComplete.supported_first_band_cancellation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42)
 
 ```lean
 theorem supported_first_band_cancellation (f : ℕ →₀ ℤ) (d : ℕ)
@@ -561,7 +563,7 @@ theorem supported_first_band_cancellation (f : ℕ →₀ ℤ) (d : ℕ)
     (hz : channelNumerator f d = 0) : factorialMoment f = 0
 ```
 
-3. [`ErdosProblems.Erdos68.PaperComplete.supported_breakpoint_escape`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51)
+3. [`ErdosProblems.Erdos68.PaperComplete.supported_breakpoint_escape`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51)
 
 ```lean
 theorem supported_breakpoint_escape (f : ℕ →₀ ℤ) (d : ℕ)
@@ -584,7 +586,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-moment-ideal"></a>
 
-## Theorem (the set of attainable moments)
+## Theorem 5.3 (the set of attainable moments), page 17
 
 > *Fix $`D\ge2`$ and a prime $`p`$ with $`D/2<p\le D`$. Put
 > ``` math
@@ -596,7 +598,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242)
+1. [`ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242)
 
 ```lean
 theorem exact_moment_ideal_with_primitive_attainment {D p : ℕ} (hD : 2 ≤ D)
@@ -607,7 +609,7 @@ theorem exact_moment_ideal_with_primitive_attainment {D p : ℕ} (hD : 2 ≤ D)
       factorialMoment f = minimumMoment D p ∧ PrimitiveVector f
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321)
+2. [`ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321)
 
 ```lean
 theorem minimumMoment_independent_prime {D p q : ℕ} (hD : 2 ≤ D)
@@ -629,7 +631,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-residual-transparency"></a>
 
-## Theorem (how the coefficient choices change the remainder)
+## Theorem 5.4 (how the coefficient choices change the remainder), page 18
 
 > *For the vector in <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a>,
 > ``` math
@@ -640,7 +642,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.residual_transparency`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116)
+1. [`ErdosProblems.Erdos68.PaperComplete.residual_transparency`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116)
 
 ```lean
 theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
@@ -651,14 +653,14 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
       (coordinateMass z : ℝ)
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.summable_fullResidual`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166)
+2. [`ErdosProblems.Erdos68.PaperComplete.summable_fullResidual`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166)
 
 ```lean
 theorem summable_fullResidual {f : ℕ →₀ ℤ} (h0 : f 0 = 0) :
     Summable (fullResidualTerm f)
 ```
 
-3. [`ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185)
+3. [`ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185)
 
 ```lean
 theorem zero_moment_residual_integral {f : ℕ →₀ ℤ}
@@ -666,7 +668,7 @@ theorem zero_moment_residual_integral {f : ℕ →₀ ℤ}
     ∃ k : ℤ, fullResidual f = (k : ℝ)
 ```
 
-4. [`ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195)
+4. [`ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195)
 
 ```lean
 theorem equal_moment_residual_integer_difference {f g : ℕ →₀ ℤ}
@@ -700,7 +702,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 <a id="long68-res-channel-radius"></a>
 
-## Theorem (a lower bound for the support parameter)
+## Theorem 5.5 (a lower bound for the support parameter), page 19
 
 > *Let $`t,M,R\in\mathbb{N}`$ satisfy
 > ``` math
@@ -710,7 +712,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.square_subsequence_radius`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L234)
+1. [`ErdosProblems.Erdos68.PaperComplete.square_subsequence_radius`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L234)
 
 ```lean
 theorem square_subsequence_radius {t M R : ℕ}
@@ -720,7 +722,7 @@ theorem square_subsequence_radius {t M R : ℕ}
     3 * t ^ 3 < 2 * (R + 1)
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.radius_no_eventual_ratio_upper`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L258)
+2. [`ErdosProblems.Erdos68.PaperComplete.radius_no_eventual_ratio_upper`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L258)
 
 ```lean
 theorem radius_no_eventual_ratio_upper (M R : ℕ → ℕ)
@@ -731,7 +733,7 @@ theorem radius_no_eventual_ratio_upper (M R : ℕ → ℕ)
       (((R t : ℕ) : ℝ) + 1) / (t : ℝ) ^ 3 ≤ (3 : ℝ) / 2
 ```
 
-3. [`ErdosProblems.Erdos68.PaperComplete.radius_not_littleO`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L277)
+3. [`ErdosProblems.Erdos68.PaperComplete.radius_not_littleO`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L277)
 
 ```lean
 theorem radius_not_littleO (M R : ℕ → ℕ)
@@ -786,7 +788,7 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
 
 <a id="long68-res-radius-constant"></a>
 
-## Corollary (the asymptotic lower bound)
+## Corollary 5.6 (the asymptotic lower bound), page 20
 
 > *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 > ``` math
@@ -795,7 +797,7 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54)
+[`ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54)
 
 ```lean
 theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
@@ -829,13 +831,13 @@ theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
 
 <a id="long68-res-translator"></a>
 
-## Theorem (changing just one weighted sum)
+## Theorem 5.7 (changing just one weighted sum), page 21
 
 > *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.prime_channel_corrector`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299)
+[`ErdosProblems.Erdos68.PaperComplete.prime_channel_corrector`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299)
 
 ```lean
 theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :

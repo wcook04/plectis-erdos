@@ -1666,7 +1666,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:cb0ed24a6bf3197993048528a89a5d1ef704644d0aba99faadf133fd9e5afbeb",
    "new_statement_sha256": "sha256:3febe6929badb46a7b44993aa611eb5ffed50b4f3eb127edfce4120170496a5d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1142"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1148"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:collapse-mech",
@@ -1674,7 +1674,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:872f91154489686acb631aa624aad463bad08a926c344eb88253a60d28686c6c",
    "new_statement_sha256": "sha256:45453678d22afbae8372a8a8bffe7431d28b6b87edea1a51b843d1d493d4478f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1231"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1237"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:sqrt-witness",
@@ -1682,7 +1682,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:3119993b6a4b048d4ea06c2450c55986fc55774d15ad8db0ef81358fe9340b6f",
    "new_statement_sha256": "sha256:5aa7ee80c4c1acea2c69900f563568a3635e2e74b855dd95d46e3c8e7ac41f8e",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1270"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1276"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#prop:collapsed-list",
@@ -1690,7 +1690,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:587e178b30ce4538cab1c02e10144866724abb1ea8857ea8eedf001e7913eb4f",
    "new_statement_sha256": "sha256:cb88303436a1ba9fa7cd5e3aa20b2d5df5036072c50a4f7db64dcb5bbc6b8950",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1293",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1299",
    "reason": "Removed the seven inline Lean links in items (a)-(f) together with the empty parentheses they left, the sentence 'Forward directions are supplied formal (...)' and the sentence saying all six equivalences are Lean-checked in the linked declaration; these are pointers and claims about the formal record, and all six conditions (a)-(f), the reverse-direction remark for (d) and (e), the bound for (a) and the caveat that the forward implication needs x_G <= 1/2 are unchanged."
   },
   {
@@ -1699,7 +1699,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:6fc990b10cd8ac226d05e6231cb317dd45adef053e58e2c4ecc9c11073d97e03",
    "new_statement_sha256": "sha256:bd2f5d1eeffacb339d064b3100e52724c09c202d1292a7d373725071b0c4312d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1352"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1358"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#prop:exponent-gap",
@@ -1707,7 +1707,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:120e345037389c72a749a77ab66c27d32a05941f8464d9b3ea68287cc45dc812",
    "new_statement_sha256": "sha256:6da56400b6eb756cb6540fe0a666d7b29ba7c77cadb9ab1af6e71a823831781a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1389"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1395"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:one-sided",
@@ -1715,7 +1715,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:9e48c5f3485c86b2a46c71c8fd28c568b8fa38a62ffd8a1ea1361658b9dec2d2",
    "new_statement_sha256": "sha256:536b9fba81a17ee944794abff38c4e12bcddcb70a5c733c73e36964e325c1ad0",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1434",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1440",
    "reason": "Removed the Math tag and two sentences about which linked declarations establish what and whether the hierarchy classification is a separately replayed Lean theorem; these describe the formal record (the row's Lean evidence paper_one_sidedness states the Sigma^0_1 and Pi^0_1 forms), and all four mathematical assertions are unchanged."
   },
   {
@@ -1724,7 +1724,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:888f9bff83c228c3cc701ac5134779a5750e21f98c4e830be250d68de1009cac",
    "new_statement_sha256": "sha256:3ad7a783821dfddd3a11cab2ff83c6970d68b6047b5aafe87ea735b4f797a9e7",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1937",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1943",
    "reason": "Removed the Lean tag and the Source sentence (Lean argument signature and a description of the certificate machinery used in the formal proof) and the Lean name before 'a one-line corollary'; the statement, the Hypotheses line (b in N, b >= 2) and the Conclusion line are unchanged."
   },
   {
@@ -1733,7 +1733,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:662bb9310eb617dcc5e8f6d018fb00cc8497be4d7800c4f36d3f3bcadfbd905d",
    "new_statement_sha256": "sha256:3dfd20b249bfa2e05ad0e1ffc50b80426a2fea7d40d5a68a000a791aaf599a82",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1963",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1969",
    "reason": "Removed the Lean tag and an empty 'Source:' line; the statement and the Hypotheses line (b >= 2, m >= 1, A m-periodic, A has a positive element) are unchanged."
   },
   {
@@ -1742,7 +1742,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:54877d25dac690debc6c4f2c221c7a9df2d8c08e50f4e2908a552654423a6273",
    "new_statement_sha256": "sha256:75e24dcd326ee609bf789a6bad7c8f1d73f2f6bc710f2a1a5785fe7594f26697",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1970",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1976",
    "reason": "Removed the Lean tag and an empty 'Source:' line; the statement, the transfer argument and the Hypotheses line (b >= 2, m >= 1, N_0, eventual m-periodicity, A infinite) are unchanged."
   },
   {
@@ -1751,7 +1751,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:08d58be6804907540b7e1349af3fffe19f66a298fa55c03be7d40f4f7d910fb5",
    "new_statement_sha256": "sha256:1e966996ac8da3e59643a0f2d84dbd959f4b3874001c779f9d574a22dfd95287",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1979",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1985",
    "reason": "Removed the Lean tag and the Source line '(specializes purely periodic support)', which describes how the Lean proof is built; the hypotheses b >= 2, m >= 1, integer c and the irrationality conclusion are unchanged."
   },
   {
@@ -1760,7 +1760,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:7efac47a9ac9d9ad718bae1389b7bbfe220deba24772acb8d956055c496c658e",
    "new_statement_sha256": "sha256:5eff3273c0dd3d07e2e6df493e4aff4a53387b36b99bec95e6f1234052d41cc3",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1984",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1990",
    "reason": "Removed the Lean tag and the Source line '(specializes residue-class support at m=2,c=1)', which describes the Lean proof route; the statement and its citation of Luca and Tachiya, Example 2, p. 140, are unchanged."
   },
   {
@@ -1769,7 +1769,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:b257a90865848c517acb68d349dcaca1fec604b6bf2ef474f022ed9a87a0ce26",
    "new_statement_sha256": "sha256:859a8594bc3e588e1ecd8bc3dde9191c6f722b01ef894fef10b146fad8e9165d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:1999",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2005",
    "reason": "Removed the Lean tag and the Source list of six Lean declarations; the five topological properties, volume(A) = 1, the fat Cantor set conclusion, the Hornich-Nitecki measure argument with its citation, and the Use note are unchanged."
   },
   {
@@ -1778,7 +1778,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:4c37ed5fabf4054b0888d1a6b1840ebf0cc5c333ed08f78b42df4f78fa673145",
    "new_statement_sha256": "sha256:17a6b987e5b750de023982c9311f77ad0fc13f2d6001334ba558a115a1f33614",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2017",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2023",
    "reason": "Removed the Lean tag and the Source line naming the Lean equivalence and its two directions; the displayed equivalence x in A iff x >= 0 and r_n(x) <= R_n for every n >= 0, and its explanation, are unchanged."
   },
   {
@@ -1786,9 +1786,9 @@
    "new_id": "erdos257-mersenne-reasoning-surface#thm:master-identity",
    "class": "reviewed",
    "old_statement_sha256": "sha256:0f294f50544e1d477a0e451dc933d06583689051cf0f6d0b298807ffc378e1a9",
-   "new_statement_sha256": "sha256:f1e5a99f0aed98a9751153afdc14ae151929ea2c9cecfa9685c0d10be2147e9f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2119",
-   "reason": "Removed the Math and Cert tags; the Cert meaning is still carried by the body's 'Certification: verified rows 6 <= n <= 200, zero mismatches, reported as reproduced in two separate computations', and the identity (I), its range n >= 6, the proof and the Use note are unchanged."
+   "new_statement_sha256": "sha256:438d0633c51075eaba9d3c8d66867f83b4c88a9c716ce73a9f48052979828f88",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2125",
+   "reason": "Removed the Math and Cert tags; the Certification sentence now says rows $6\\le n\\le200$ were rechecked with zero mismatches by an exact program, linked to the published program in place of \"reported as reproduced in two separate computations\"; the identity (I), its range $n\\ge6$, the proof and the Use note are unchanged, and the finite-computation qualification is kept."
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:real-form",
@@ -1796,7 +1796,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:123f6d8232b83a45230233c6f490ce85c3d1b2dc77f0123bfc49f8df320d8de7",
    "new_statement_sha256": "sha256:012bc8476206441145eb072513c0120e46b40e66b0bd84a834c4d065213b358a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2150",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2158",
    "reason": "Removed only the Math tag; the constant C, identity (II) with |eta_n| < 2n+2 for n >= 6, the proof, the error-bound discussion and the Note are unchanged."
   },
   {
@@ -1805,7 +1805,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:68fe3581e898f8e8236d791c1fa8c2ffc8fd4b71243ed20c0ffd5d88cb401f3f",
    "new_statement_sha256": "sha256:fcccee89bd50ffd4da775f6715c41eafd69933ef1dd91d0c14469fe69158aad8",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2185"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2193"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:fatal-absorbing",
@@ -1813,7 +1813,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:25476e372ee89abbfd2bc45632e5523d3ef7ad28c5faf6e01d5582e5f2a2ab1d",
    "new_statement_sha256": "sha256:92e4a61e2cd33049bdff79f395891df7b17fceb16aef94e99961f8f0464fedee",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2367"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2375"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:seam-limit",
@@ -1821,7 +1821,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:a502608e7e7ec62b598bcc778af8b123f287c5aa866bc1cdf6a6c16da16614cf",
    "new_statement_sha256": "sha256:4e3d2cf29c4e1efa64e4ef5fcb07e6c352dfae8c8f5e2178e49d8e4c35f9fbd0",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2382"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2390"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:two-channel-cap",
@@ -1829,7 +1829,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:7d44da921b99336781db190da439831b17548f705685aae4bfefd6844ca2f156",
    "new_statement_sha256": "sha256:032a5aa3003fc7c4334ea4befab5331c66cd69542af3f88d544b3a213b1a7d34",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2426"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2434"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:second-channel",
@@ -1837,7 +1837,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:efd6acfce908593ded197a8448221d2ceaeb57c46fd95502d2d22c2f0b00a1e8",
    "new_statement_sha256": "sha256:885e7fe26b8601c84b53ff0f4b6acdbee07fef316dfec3b2062901ccdd20e2a2",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2441"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2449"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:straddle-closed-set",
@@ -1845,7 +1845,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:e8fecf4392d51728ab7718bfe4dc24dac175b0c991a8b29a22d02830ce7d855d",
    "new_statement_sha256": "sha256:4fd3227c65acada7f18c647e955f9fc8a5ae389773e6d5766f88ac899b17fafb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2460"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2468"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:largest-skip-late",
@@ -1853,7 +1853,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:35c4afa83d2f421d576bca6d19c34a72ebe24d77bd3faa9e05f5a8efb25a1510",
    "new_statement_sha256": "sha256:8149dae09ff81c62a00dc9b2ebe58b055d6b0e75defe9a646818cfea25ebeeb9",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2475"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2483"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:middle-producer-escape",
@@ -1861,7 +1861,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:490835a1a6580052033adb12b4064357919348f173a27fd698f2e26c864b576e",
    "new_statement_sha256": "sha256:400405dd65c2073c5f7f1b83b3bcb1aac84e8abae0c571ed548e53e97f802c70",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2497"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2505"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:middle-allright-defect",
@@ -1869,7 +1869,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:71b658d6c1d88c927b65c99ed06226cfc95e4e2f7ed8c0a40377a0d370a3c6af",
    "new_statement_sha256": "sha256:21b4ace558ea41f6f459fd6e72299ecfdfc53b61e34de7aa361e5d1ed7b39293",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2512"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2520"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:two-sided-dyadic",
@@ -1877,7 +1877,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:24b4ace0c3119f2ab5fc8ff69f879ee1a4fc7d3ca57565aff229b9008f72f749",
    "new_statement_sha256": "sha256:498229f42f3571fdda9871e000da324b2d5aba3be10817068bc17e047fa4ff0c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2527"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2535"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:upper-reset-band",
@@ -1885,7 +1885,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:87faa820d49af9e54bb354c3ec4406a985c775f2d22464adbddace5c81a28c43",
    "new_statement_sha256": "sha256:7d4be2e9882fd6e7e36f4a2403cd41e5ca152edb82ff32069a34a86ee7291046",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2567",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2575",
    "reason": "The Lean identifier SeamUpperResetDyadicBandEscape was replaced by 'The upper-reset dyadic-band escape condition' and two trailing Lean links were removed; the condition is still spelled out in the sentence and matches the Lean definition (every upper reset d >= 13, every 0 <= j <= d, the two-sided band avoidance by the reset charge 4*overshoot + abovePulse), and 'The linked proof' now refers to the margin mark, whose record lists both the half-membership theorem and the 13 <= d <= 30 certificate, with the finite-range caveat kept."
   },
   {
@@ -1894,7 +1894,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:54f46ccf5627c4079c2345453701c1df8c2312d71d0ff493a035c283f56d7749",
    "new_statement_sha256": "sha256:555849ddd751ebb3482a93a9fbbdcd669cb5d61f789baffbbad04e015a18a64c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2581"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2589"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:sqrt-bound-route",
@@ -1902,7 +1902,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:8ea89a8ab0611816302f288bf19e0b549609adf8ef029d1c1015bda536388c64",
    "new_statement_sha256": "sha256:f19e1bb6756577161df83c9c73228326175af3e392d3ff7ec606fc96ba5cc60c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2595"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2603"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:frozen-margin",
@@ -1910,7 +1910,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:6ba4a8756b6171b28d2a8d7236b584a52b864f04024913fa706605ffcc65a680",
    "new_statement_sha256": "sha256:b42902efecb3f659e9c62b7d0c9f29c10ab5f47844a1ad8fc80d5c278f6fdb3a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2611"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2619"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:full-support-catalogue",
@@ -1918,7 +1918,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:e65a3440c85a5acb7b07a786c9e4f2ba9482b00c3fcbd7bdd708fd59fe238f64",
    "new_statement_sha256": "sha256:ccb7bc5d1a799f34794374e621299caec0c8c6e5c12889c75984d9dd96c81270",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2634"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2642"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:pairwise-coprime",
@@ -1926,7 +1926,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:28e85fb87722bfe18e8a79801afe775379477009caf6ad37ce43f294a3067721",
    "new_statement_sha256": "sha256:ea2d8ca65a2497fadab6b65862a6865423ada6a78da6c3821395610f36d742a3",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2642"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2650"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:weighted-coeff-engine",
@@ -1934,7 +1934,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:a8db27847f447793f85977f49c1e71904a90855b0887980cdddcf3e4fa12fbd5",
    "new_statement_sha256": "sha256:c58a2d0de51cd4406bbaa8cfae156d8d59db2f6d8f7c33122e45933f058f94ad",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2648"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2656"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:lcm-gap-engine",
@@ -1942,7 +1942,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:88a8a8bfdeefd07ea5de0d7add7aa4fb1f70aea04266ee5fa3b5b7ba30ee8fa5",
    "new_statement_sha256": "sha256:86505fa65c27c0d000e9359dda80c7484b74f75d82f05889c47661c8476590eb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2693"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2701"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:factorial-twopow-support",
@@ -1950,7 +1950,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:902567599af9ba24159f6a83f6f42c447d8371de55bead88fcfb3ff34bc68314",
    "new_statement_sha256": "sha256:94096c50a5e3941f9801597749d5549ac92f997e404af60c7be1fa18a172960b",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2702"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2710"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:multiples-support",
@@ -1958,7 +1958,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:7fdfb094005871e60b65b1ddd1357449bdb1685e2ad184951d6b3011190d1c8e",
    "new_statement_sha256": "sha256:4dbee3cc56c95443ba654fedc63f9421fee5d4ba3967334cb64b14d9a954adeb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2717"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2725"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:periodic-support",
@@ -1966,7 +1966,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:376e1430ee806b3fc5e8dcfeb0063666723121ee26c9289866429b143b86e1ac",
    "new_statement_sha256": "sha256:2b3c3f3fe5cb7ca1a0d135379725e884e99ff7c7cc8990adccf302064b9213d5",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2733"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2741"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:eventually-periodic",
@@ -1974,7 +1974,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:a0f9adcb20bea375a437954dc6c2660d53b1597415ebea94125cd682606d5da0",
    "new_statement_sha256": "sha256:46e02408b2066fb6bcc3d978d64127e656c3bbd96a6a3dc84cc9282991652b2c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2748"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2756"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:residue-odd",
@@ -1982,7 +1982,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:4b1830f59ab2cd529947f7929f29358cda12b2239ffa205411f54092159f56e0",
    "new_statement_sha256": "sha256:d64fde3fd5eacd066d50996440ae275f6efacab8e88c1ccb1f69fed1b7de4cd1",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2755"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2763"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:signed-periodic",
@@ -1990,7 +1990,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:4aec867a65ea9044ab1b7826d573ae0facb0e701dc9a40b5693e42baed94a49d",
    "new_statement_sha256": "sha256:2046c233d93cf39ee9a1c840dbe9bb8e6950f260241d1f0266df8bd466c5ced4",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2768"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2776"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:mersenne-channel-survival",
@@ -1998,7 +1998,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:0df5f972b86bb5016ccea5e631a035ecc47c28556a501d5e841689704594ca1d",
    "new_statement_sha256": "sha256:17c7e77e62d08108177c57d7194c66f0bfbe7a56ee7c22e8fd204988067fa916",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2797"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2805"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:mersenne-channel-growth",
@@ -2006,7 +2006,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:cae5575cfe122e2a63f4e74074f47864c7fffd9aed55e4c1b1f6c960bde441f4",
    "new_statement_sha256": "sha256:e4fae824ca45ebbdab5134ceeaf959460e4f7a2329be437d00f60edbd181e48e",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2813"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2821"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:mobius-lambert-identity",
@@ -2014,7 +2014,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:e2453df04b1211f441672f871b0524ba5e01968395a44c5f6d257499430a32ba",
    "new_statement_sha256": "sha256:18f51c1865f9bf66c7c9da7f9ad4882b7cd5ec3e0c782af9ee36415fd5a3f255",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2890"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2898"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#cor:negative-mobius-overshoot",
@@ -2022,7 +2022,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:939b5fdd9a46799919a1004a3f1b5de4b79c31039a71f91ec8214f6fdae8e722",
    "new_statement_sha256": "sha256:04ba5b33f92aaa61bce1dc7183234f99e8b9903847f6ecf6bb4a638fa1a21d79",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2907"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2915"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:half-skip-dichotomy",
@@ -2030,7 +2030,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:1cd5ac1c3818d3df9b67f7a6b7e7cc6fba38919568b446ed8ac03908a6eb88ac",
    "new_statement_sha256": "sha256:6acb6248ff8fadf5564aaa125d248d4b1cd91a257708afa93c8e0330938ecae3",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2951"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2959"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:nine-way-hub",
@@ -2038,7 +2038,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:fc47d8c53115332daf80bb74ac97a5b5d98cb45de7bcb0a945151a68054a39df",
    "new_statement_sha256": "sha256:76dfda58a0eebf1888c18dfd6f435a9edf550569307c2ee506a8f1c602794f8f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2968"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2976"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:eventually-right-impossible",
@@ -2046,7 +2046,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:b534d3a139bcd791fda8ec8082b924925ddc46ee22b29678a0e4e9239ee0f158",
    "new_statement_sha256": "sha256:71e57ad19ebd22980dc8570d51fa7248ef1b2d46e99923d711494fc9f6159f2d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2988",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2996",
    "reason": "Removed two parenthesised Lean declaration names that were attached to the two inequalities; both inequalities, the non-representation conclusion and the scope caveat are unchanged."
   },
   {
@@ -2055,7 +2055,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:0b90f6ffa3b499cd7238ab9120e402d96d8ea13dd77958893a721a35054eb156",
    "new_statement_sha256": "sha256:ad356ad0c24faf1ea046c6e5d6a5a03770518c83122694c395200a28bcd5650f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:2998"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3006"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:greedy-survival-catalogue",
@@ -2063,7 +2063,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:323632f66f71c6582e10c71d9dd4220ff798dab5eb1c44e52eba235470762394",
    "new_statement_sha256": "sha256:9c0cdd4234a98ed0e88d0dc1f26e1948bf53df056bd1b6d2be367d93f14d7315",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3021"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3029"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:rank-step-trichotomy",
@@ -2071,7 +2071,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:d3edee1820bc42d44481d858ddf97893799d7d1d4ab1437e0ddd94d0a852bc07",
    "new_statement_sha256": "sha256:78d97978837325252438969cf4df957c7617eb282a5e358f2693288258b3721e",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3036"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3044"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:fatal-gap-exclusion",
@@ -2079,7 +2079,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:04cc42f8c96b10312fbd808173648c4a7c4f36453f7879a53ce237b39d1caa0e",
    "new_statement_sha256": "sha256:94f5155fc840a2c2aba957402bcfd0fda014e794cf994611c7f7701921e38b4b",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3058"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3066"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:half-endpoint-kills",
@@ -2087,7 +2087,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:fa6951f3a5047933b5a25ac83e1688e89ecc4d7b9c706ea9160c3e5c8ac3b92f",
    "new_statement_sha256": "sha256:5051f195143c435518020400263911756a644a6e62f946a269b24a0f2a4ee94b",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3074"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3082"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:straddle-agrees-greedy",
@@ -2095,7 +2095,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:cdf29f591e83933fa206a05921a3cdbfd41a3323e5f9ac0decf5a6d5fc17b5f2",
    "new_statement_sha256": "sha256:c2eb4ad39b2e3632f9c06b0a7bde6cd6e6cea16e28009a2b42c7ab06874d4a96",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3084"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3092"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:last-skip-iff-fatal",
@@ -2103,7 +2103,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:2d7f8df05eeb444c3adadd595186c29a2d32ac06b3cbe9f4897f7dccfa467a4a",
    "new_statement_sha256": "sha256:695a0e39828ae5e00680c1541c83d3555f01240a9aed83250199efa4a9a12535",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3100"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3108"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:seam-upper-or-middle",
@@ -2111,7 +2111,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:592e61d8fb63b49b19f6acb14558d5aa0f7389cd4b8ecc67684822d91cd4ba4d",
    "new_statement_sha256": "sha256:7659431da19b7fe0044033feaecbd1a6776c627e1156fd55251d9c66bfb9528b",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3117"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3125"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:largest-false-rank-algebra",
@@ -2119,7 +2119,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:97a276cf14b0eb87a29136355f98cf51c11e7b711029de93cf96ee038b8a5729",
    "new_statement_sha256": "sha256:b46c47909beb24483e6da2f931b36af079d1c5b67bdf324eacde58430d423f01",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3134"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3142"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:critical-dyadic-band",
@@ -2127,7 +2127,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:20b0e04bb432bf0bd2feb7aa8691f67f7ac3eb5c5852d1d8f122d2ac74d5647a",
    "new_statement_sha256": "sha256:be7e4530d06cc9afe21e5eb6b27fd66c0e0240903410ee44e719cba9dfb8a7a9",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3169",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3177",
    "reason": "The Lean name SeamUpperResetCriticalBandEscape was replaced by 'the reduced hypothesis at the single index j_*', which matches its Lean definition (at every upper reset d >= 13, the band inequality at the unique critical index), and two trailing Lean links were removed; the equivalence and its hypotheses are unchanged."
   },
   {
@@ -2136,7 +2136,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:33cd6ecc36bb88481efec12ab28f80d7baf1891f10ee1e6574f4e72fdd283d1d",
    "new_statement_sha256": "sha256:c07f344a0c3973a14406d44f1eeda0cee91064d680e569d6eb7a97f3b18ed30e",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3195"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3203"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:skipped-endpoint-trichotomy",
@@ -2144,7 +2144,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:4be9123d24e2c1869cc9d121390b45b84db8cc5543ff9ba9f0946ed2f537c8c0",
    "new_statement_sha256": "sha256:15adef6554f574bd623417a2a853754ba958a091d988f69d7685d42cf0bb8835",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3221"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3229"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:reverse-carry-word",
@@ -2152,7 +2152,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:d418b59d5e54219b679e4197eeb2f682df29be05e4a6b122f984d79824d4bd79",
    "new_statement_sha256": "sha256:2d6d97a3e6b0e7679f593b24a845552aac09eec51f1d93d16285f08c73702943",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3243"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3251"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:linear-channel-nogo",
@@ -2160,7 +2160,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:69450d602c0a15388c292559a312ec2d357429871ce6fc35aa0f3f025b07ade7",
    "new_statement_sha256": "sha256:a54c5b50ba1500c26afed771f7fcfacb00a58e5c9043018b9a565424702f17b9",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3266"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3274"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:two-thirds-band",
@@ -2168,7 +2168,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:8070f7fa0c86ee3c3e97f9767bde7799b896df25f8ba592888c48ad83addad33",
    "new_statement_sha256": "sha256:dbfa30ca171c007b8934dbb0fdd4ee66b189fc4d9993c9e4ca3cb235abf614ae",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3281"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3289"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:sharp-fatal-gap",
@@ -2176,7 +2176,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:9f713f847322d7a82544435c80e67840b7dd13500748b057195cbb22a3d0b629",
    "new_statement_sha256": "sha256:163ead8ab6a2144242ae7858c847b57bb9368031ee0374ed83a5ec180c9445c2",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3314"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3322"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:gap-mass-summability",
@@ -2184,7 +2184,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:090108d82ccdcb58e57367482eb42963c1f0327f5d90f834ef1e40f2bd30089c",
    "new_statement_sha256": "sha256:c84da46f5c943a8b0e05d5f2e749fba86e768ec89a3f52439b30f19e27987ed7",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3339"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3347"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:half-divisor-unit-drop",
@@ -2192,7 +2192,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:0b50838529e05481ba8f31c3d8e600b94deb555097796051a3f247ce71329376",
    "new_statement_sha256": "sha256:077ecd20f55e969d4e2726f03554e5867904379916d2d78340a6dc6827c51865",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3354"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3362"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:tempered-orbit-rigidity",
@@ -2200,7 +2200,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:daec64df76b9d076f6d1ac6e2f22b91012b9a17e99ed8d1fdf89135e826e6850",
    "new_statement_sha256": "sha256:e521a78d7af995132e5738bbd8e1532e78e205ab0096e5b3d73d1d12f1915ecd",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3368"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3376"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:tail-transfer",
@@ -2208,7 +2208,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:f1ac8baaa754ba527273cd9751f939b216770a05a46c30d4556a72d996dc6850",
    "new_statement_sha256": "sha256:50c429b39a013fd9f342d27657b8575b350c2f29fcc6380212d81823a3d0cd6a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3383"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3391"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:dyadic-excess-reformulation",
@@ -2216,7 +2216,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:a7c170df0111eb80f8ef8629734a2a73ace0888c0177e33fec382c483a9d4952",
    "new_statement_sha256": "sha256:2f1650792149b87684843b6310bf053c27d0b52244bcc474956c244608bcf882",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3391"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3399"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:denominator-sandwich",
@@ -2224,7 +2224,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:758de105d43da40adf1cd024c2a87b9744774f63a4dd1169cf3322eee917c987",
    "new_statement_sha256": "sha256:afe646274ec4cca31422de4be99a0b9488404b9a891d1137ab56716e89352190",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3406"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3414"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:denominator-survival",
@@ -2232,7 +2232,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:eab9c6217ef54627bce44ede24f6082e71a43425901b3e7ff8d3e82df9102ca8",
    "new_statement_sha256": "sha256:2dba69b9f34ba1d7f182d826864b143153e4f502034eb7c236da51370d3ca128",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3417"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3425"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#lem:mixed-prime-power-layer",
@@ -2240,7 +2240,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:794029be1a0a5db05c4fa0f9b2b5f2233d5e3c35d8c3f698802772445e74fb6d",
    "new_statement_sha256": "sha256:b535828b225b6205d0720d96485bf0511113ece6a0f308c2c98f918f34685125",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3435"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3443"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#prop:achievement-set-topology",
@@ -2248,7 +2248,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:a31f9cedc3da56db558559f7996c35978f892e8c620608ccdb491a97bbd5b086",
    "new_statement_sha256": "sha256:1ab6249182b8613ae9d58efec2dab1b58ef7dba11f4802767bb22ac9a0e8fc2e",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3491",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3499",
    "reason": "The Lean name positiveMersenneDigitValue was replaced by 'the positive-index digit map', the paper's own term (Theorem thm:geometry says 'positive-index digit coding') for the map b -> sum_k b_k/(2^(k+1)-1), which is exactly the Lean definition; the conclusions and scope remarks are unchanged."
   },
   {
@@ -2257,7 +2257,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:39307df82ff444e608d2c64f58a5ed7a4394f2be2cee7f00ed6c16da6cc8f90d",
    "new_statement_sha256": "sha256:9b873ac00328563d36e252102075f820ea28fc5ffa1c04633dcc6d0cae41a8bb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3508"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3516"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#thm:perturbed-family-maximality",
@@ -2265,7 +2265,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:dd85af693b96fd67cf7610a0eb59de2a5a59612215e291722d3d92eb6c622fac",
    "new_statement_sha256": "sha256:a50dbd21afabc6af32160558c26bc8d3f9a2160d4b508b3a5078ea5c4befc814",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3558"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3566"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c1",
@@ -2273,7 +2273,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:8ba2358f76d1ae2ecac7d54e43a1933d24e47f4cc47d4f6cfb39abc4d69bb46b",
    "new_statement_sha256": "sha256:e19f55bfb491954a0d8b77fcf8bd46097006b9e2a93e72d5930de018a8af9aaf",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3688"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3696"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c2",
@@ -2281,7 +2281,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:fc722cbb530bff042006f0e42135c515a47b09620d48734518b36402f0621973",
    "new_statement_sha256": "sha256:eb4762863fd824c1a7032add0340467c3e5eaa87ed4ca4f3d0a03846ba5c3dbb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3704"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3712"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c3",
@@ -2289,7 +2289,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:4ab8ec7e32a61fc4e44b984444e5ccafe17393c21376db46cfc65ee0a7b61b45",
    "new_statement_sha256": "sha256:7d0896223becfec1a010744ac6f15394df7bbcb4b0e10c3ad81f6b30eb8542e3",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3722"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3730"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c4",
@@ -2297,7 +2297,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:78e7c6f374c493ff6083944949f1f0c32dd272444189ec629b77ea7e5fb9337c",
    "new_statement_sha256": "sha256:4998ba80c0dc94ac050fa0103c08bf8082842b7ee684028c708724559530fb89",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3757"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3765"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c5",
@@ -2305,7 +2305,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:9949328babb01e1ff8d3d1df7939c8886946d3cf22e6e32d8f5b47cd986940fb",
    "new_statement_sha256": "sha256:0f9cf8b8e06b2f398bacd2b8b92dad0e74348730c25b353929e8c5ed25a1c0ea",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3774",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3782",
    "reason": "Replaced \\texttt{ProtectedExactLocalMersenneRow} and \\texttt{protection} by 'protected exact row' and 'protection' (the parenthesis still states the invariants endpoint < 2 cutoff and new ranks > cutoff), and 'Ends literally at CofinalExactLocalMersenneHalfRows' by 'Its conclusion is the cofinal exact-row condition of Definition record:257bm-d4', which states the same property as the Lean definition (for every N some n >= N and D in {2..n} with Q(D,n) = 2^(n-1)-1); the dependence on Theorem record:257bm-c4 at every step is unchanged."
   },
   {
@@ -2314,7 +2314,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:29a879aa75c5c4f8ab2b9c0cfe554dc2031509bd0af35fb615da519af02dc522",
    "new_statement_sha256": "sha256:ab9078674f2fa1dffa4413b6546db1092e47c8654db06b912ea80782d68d87ee",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3785"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3793"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c6a",
@@ -2322,7 +2322,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:ae075ac775f4b8ffa0917231aa2fa135f5784146b886c69a7c4bcd380e80c995",
    "new_statement_sha256": "sha256:a821d35f2b481e1d40b9887e062b604a69ce400a9c13adaccc6d75f79444138d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3801"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3809"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c6b",
@@ -2330,7 +2330,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:6cc766609df452312a50c1173976f6d4baa9b89045d5e0884086b6276c311d85",
    "new_statement_sha256": "sha256:fececa1f3287bdfea12cec55538243d1db8e8147ca90bc049262ac41da9662a3",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3833"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3841"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c7",
@@ -2338,7 +2338,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:b093222deebfaa98e14acd41884b08c1b3064ee862bd0c98699b920c86d916ab",
    "new_statement_sha256": "sha256:30ea9f6f16387fa62084a7688adab4ff8a89086cfbab70e110a87eba25255013",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3855"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3863"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c8",
@@ -2346,7 +2346,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:9ba948ea624ea1758eefc3fc36979ed0856291425cb855638a7a5eabb3f35e0f",
    "new_statement_sha256": "sha256:2538f1c07dd1556ad3beac07d9830a1b4587260bf0e4d202b00080336c8b4721",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3870"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3878"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c9",
@@ -2354,7 +2354,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:afbfaf1ff02f827c7d16b280c5b8e716f8997013743cfee9c7f3aeaf5bc3c9cc",
    "new_statement_sha256": "sha256:79e66ad23f250fec68d044c4b291fe70acacdb4313430f405d8e03d876c8073f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3881"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3889"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c10",
@@ -2362,7 +2362,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:59cbe4fcc1dcba57269c9eb152b8b676537c44afb2ee6bbbed9ae93a8a1a74e0",
    "new_statement_sha256": "sha256:077ea6d2132b1c06001dbcdf3e22ff1782136901d6578022c81c3ea53bea29f5",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3895"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3903"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c11",
@@ -2370,7 +2370,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:3858afae1e3beef223c1a2dfa463ab7a6e1a779b82151b29a801f5eb0c2d8fe7",
    "new_statement_sha256": "sha256:0b6fb5e8701b83e4ad10e7061fb74bf60f4c73939c608e11f8f78f0f28218571",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3916",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3924",
    "reason": "Removed the last sentence, which only identified the two conditions with the Lean names DyadicBandEscape and CriticalDyadicBandIndex; the hypotheses (E <= 2^(d+1)), the definition of j_* and the displayed equivalence are unchanged."
   },
   {
@@ -2379,7 +2379,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:adf80992dc4a9353955d8794dd6465090e2e918edec18b91fdd879f45e6084cf",
    "new_statement_sha256": "sha256:847ae889f5dea5fa3789eeb5c32f352a59bc5c8168b0c4cbb0b8033924d3f064",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3947"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3955"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c14",
@@ -2387,7 +2387,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:12287adb87e9a5e615bef3e2bbe79d35abddd0d3f267f1cf28637833467a4599",
    "new_statement_sha256": "sha256:44335f8928e4878418c26250709ecc9c3e87d1a9377041858906ddc1da36a5eb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3978",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3986",
    "reason": "Removed the Open tag and the sentence naming the formal statement; the Open meaning is still carried by 'The equivalence is proved; neither condition is established for all required ranks', and the condition and the equivalence are unchanged."
   },
   {
@@ -2396,7 +2396,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:dceb0d719794aa6bf205d3f6c4b303005b4354b75b6335182be3cdf8789b5af6",
    "new_statement_sha256": "sha256:615c27859467c4de8882451f5a209861398a7d904164de317ccc583983aa9344",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:3996"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4004"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-c16",
@@ -2404,7 +2404,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:8d8826f654330023336c48b79c27dde1fc0ed45024acb7bb652e390b7dc80a69",
    "new_statement_sha256": "sha256:a1eb8f98f0735373bc2d6b2b4bcb3d46d09d99681460006e72dfda5de7dafb00",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4009"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4017"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-c17",
@@ -2412,7 +2412,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:2b962bae5e4be694c98444a4bcb07e7cda8d16031a1f6c32b58365b061ec07a7",
    "new_statement_sha256": "sha256:35bfed28e0e4b63062f6ee3f7648ee97f7013d5beebb1ad1b5eaa221a705d48d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4022"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4030"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-c18",
@@ -2420,7 +2420,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:be95edfbad50185835b7932b30a454fd994d27e3cb9a91bcce12a18dbca759fe",
    "new_statement_sha256": "sha256:bd73115b5ba475f408e1e386f0fe8323c1a727d2fb0999731013ce7db6f4678f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4050",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4058",
    "reason": "Removed the Open tag and stated inside the theorem that the hypothesis is not established; replaced \"The last source below compares\" (a sentence about a deleted link) by the mathematical statement that comparing with a finite-prefix carry introduces a contribution from later omitted ranks; the hypothesis and conclusion are unchanged."
   },
   {
@@ -2429,7 +2429,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:ab5a4fe909d401d8f97b645f8fd9a7406353ecc946f1d9cc82e9b4f8b603dafa",
    "new_statement_sha256": "sha256:2b6ff9348aea084cc59efe4bcd61008dfe750f63fcd22dd363700c5cdaa0614a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4067"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4075"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-c20",
@@ -2437,7 +2437,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:13de78c808cccb860c1ed3c0a8205e4e9f989078975cd8b5c3f12481c3bf3f57",
    "new_statement_sha256": "sha256:9cf7a83e50ecb5ed79d927cfcfba04d21a9b412a4d1ffc5171c7139e19c04f7c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4098",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4106",
    "reason": "The Lean-notation display '(1/2:R) in A iff (greedyMersenneSkippedSupport(1/2)).Infinite' was replaced by '1/2 in A iff the set of ranks skipped by the greedy rule for 1/2 is infinite', which is the Lean definition (positive m not selected by the real greedy recursion for x); the equivalence and the surrounding remarks are unchanged."
   },
   {
@@ -2446,7 +2446,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:9ba8afb36e8993e43cd260b4094b882a34a9af518146505fe6c4eb9aea877988",
    "new_statement_sha256": "sha256:8ced6c1728dab34f7546c4f02bace8e6650797da00c4da70424e79d7d288b005",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4116"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4124"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i1b",
@@ -2454,7 +2454,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:1384e9f44d06c5feed13778fdd61f6ea32fe20649668410d90f678708b5a7cad",
    "new_statement_sha256": "sha256:14b1f627f66aa8db64cadda098f82812d82e938cff29601fe29040615dfb80b0",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4129"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4137"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i1c",
@@ -2462,7 +2462,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:e8fb94674e7d493eafa334fec6702dc9bb680756286dd829d37821dd71e2d044",
    "new_statement_sha256": "sha256:ec17c563a4ee30eb0b05506092c4377af77fdd448e93c19f437740965b01be94",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4141",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4149",
    "reason": "Replaced 'the public GenericTailOrbitRigidity.lean T7 criterion' by 'the tempered-orbit criterion', keeping the cross-reference to Theorem record:257bm-i-t7; the recurrence and the stated extra conditions (fixed coefficient sequence, integer states, vanishing scaled limit) are unchanged."
   },
   {
@@ -2471,7 +2471,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:f0e7aa15cfb103f69fef875c988c2de8f34c57f7a40d75f57e9f851146f0a7ae",
    "new_statement_sha256": "sha256:cf9d7d461e4163bc2714d8dc475723b104461ffea11ca08d973a8b26ff397960",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4167",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4175",
    "reason": "Replaced the Lean notation insert c D by D \\cup \\{c\\}, the same set; the equivalence, its hypotheses from Definition record:257bm-i-cap and the remark on the threshold are unchanged."
   },
   {
@@ -2480,7 +2480,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:73d000ea62f9831a7566a6f7a92486ea7d89b4a2bf02d5bd563b3cbfc6da04e0",
    "new_statement_sha256": "sha256:a5c4ac069f36bd623815c4a0dafe88de64f32712f25790db8499d7ed952bf2a7",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4203"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4211"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i7",
@@ -2488,7 +2488,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:3fe247675863c5694c3dac6d4364038c27a39dff6e92e9dbb6778eaae755ee30",
    "new_statement_sha256": "sha256:f2ceac62d9c027627a2c9b93143489171cd8ea95aca159b89a3195a0a48add5f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4225"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4233"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i-rank2",
@@ -2496,7 +2496,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:37922629944ea01b958b835eeda4183fea9ee75f9f3a3fe1134133cb84320be2",
    "new_statement_sha256": "sha256:114ffd1f89154a12c04277fec4e3be76d392fa914d70fb794183f84991219b93",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4263"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4271"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i9",
@@ -2504,7 +2504,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:332ab84758bbde0e45a52541ff5465a2953aa5e592f2d038d3f833651d2087e2",
    "new_statement_sha256": "sha256:8b8438760b1a9819eb7b84a179e35d6a98ff85454b2ae2f535dd1f2bf3a4cd51",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4290"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4298"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i10",
@@ -2512,7 +2512,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:9abe9469c4160f76655dbc33472c7dfa0d1f3fb72445ebda9b3c7c02fa6d55db",
    "new_statement_sha256": "sha256:e380dd349e0200ada1ee8a34b917b19040146078acb9dcc9f7537097fddbbab5",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4296"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4304"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i11a",
@@ -2520,7 +2520,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:065ee31e16c007d771edbc001cec7ff6f84b6868d7eff58ede4801ebe51d02e7",
    "new_statement_sha256": "sha256:aaff2ef36f2938541d9ab9701ec29751ac9ffb77a11f55e68c8d0d3f921d4312",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4305"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4313"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i11b",
@@ -2528,7 +2528,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:698efbae0db7987ff050268b62b8cf367da7171bea15cc6b28245933dbb88552",
    "new_statement_sha256": "sha256:481ead5062b619d8a0c32a0246bee65d957e87d67274482adfb7784ccec4877e",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4329"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4337"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i11c",
@@ -2536,7 +2536,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:a0a607112485391ef9b9b741ec7cf928bc140e1303213cca4028714c0f5a0e97",
    "new_statement_sha256": "sha256:6ff83bce23dcf2b480f8ed08a13a5413dc974b3f5052b314429b752cab246a81",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4343"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4351"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i12",
@@ -2544,7 +2544,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:f1acda371754cb363c2486abb635b4e773ae206f24fb3e8dd666c9aa5f140017",
    "new_statement_sha256": "sha256:3854e774af758e11b958af4b0582607be8046c371c7321c1e4d7b8e557b5bea6",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4361"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4369"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i2",
@@ -2552,7 +2552,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:e9476834217a169756a6f38b54c796745bffe00d9130c4ca033ea7785917b8ad",
    "new_statement_sha256": "sha256:ce16e5a6fe5f8baccf9735c22a57ad2ea89217cfd974521bea828d96a9c988d2",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4377"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4385"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i-t7",
@@ -2560,7 +2560,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:dc75e47bf7f2848b40f2136ba0dda4d15b8b127c2499ea1084308bce7a71ed8b",
    "new_statement_sha256": "sha256:50ab98de0f49bb8b87f1b72931e0d71383328ac580b88d63d6684fe1e0670e41",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4388"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4396"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i-mob",
@@ -2568,7 +2568,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:84c155656bf557ca57f9f625c27138e331b47a6eeeb3bed6bea78a9bca52c686",
    "new_statement_sha256": "sha256:4a9b582dd64c7b328345ed7c41d96290b83bb58343d3f3ae92f7fdde79fa952f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4419"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4427"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i-bridge",
@@ -2576,7 +2576,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:a57137794daa022894b2ce6b1c8dffa7d85875f8b8510d62b22dc0f2083a84f8",
    "new_statement_sha256": "sha256:3f873a5e746775eb875657260d43b8643ee244282ee096624f86ff4eae2aef65",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4430"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4438"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-i2",
@@ -2584,7 +2584,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:73dc81e67f599b4883cbaa48b715aee6631b6b498d19c3e21611dd4264be1f07",
    "new_statement_sha256": "sha256:e4eebcf5f9bcc2f9898d40f0d37696516f4002cabebbb5b81ae65ac8ed6c8593",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4448"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4456"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-i3",
@@ -2592,7 +2592,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:8629018d1d3a08216358a10519ad98de68598903ee8ec796b1500e72096acdb7",
    "new_statement_sha256": "sha256:2678ff6ca321d9bd2fd856c0cdf74fc8252c770ce993d0fa1e322be4922f3a1a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4459"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4467"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-i4a",
@@ -2600,7 +2600,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:aeea80084205af957be8e62edab13113d9e8682806a8ebb8224570e4d421c323",
    "new_statement_sha256": "sha256:a029968b923f7f8bd4e978f315568994fc1f33a351f86d8d5ccb5807ea3f24c9",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4473"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4481"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-i4b",
@@ -2608,7 +2608,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:59fc39d0ffc02399677eb323b1e55cfde154f11ac37368b726d6f0c84f0a8e47",
    "new_statement_sha256": "sha256:ed11220e354cbd2bb1a35ba122468f3a6e77ad012c61df2631219cb1fba0f301",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4486"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4494"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257rig-i5",
@@ -2616,7 +2616,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:deef5ea82d7daafe19e51de648b3681b6005a5a8b1405ba6b56d60d535a10c09",
    "new_statement_sha256": "sha256:aa4f6734e75c7d73426343799a90eb531d4e9b3dd9a269adc5b6bcd6b1c8cbe2",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4496"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4504"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i-cross2",
@@ -2624,7 +2624,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:dd8e8c0b634231abc6064406fb78551b221a2dab9df186611bd54bc426981f2f",
    "new_statement_sha256": "sha256:888565a5fdbccff4f35eb6b900281610f2abf30ab786b83f1b87049ad24b9fe4",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4517"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4525"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257hg-i6",
@@ -2632,7 +2632,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:688addeeb0e8f482155a56d3bdd73bdacafc280202606b24742e61ca072a31ba",
    "new_statement_sha256": "sha256:6e1207dab8229e033facfa8c512c19756a9c0478cccb58e4350c3a8af4269b00",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4535"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4543"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257hg-i7",
@@ -2640,7 +2640,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:409123580f8d9f1ae2b5c6b7d9b29c7d6ea840547c5b1e3b967b47aa87c83425",
    "new_statement_sha256": "sha256:c60d33b45c1890aa999e0cbc2c9139d467dbc5e18f0be0cd55015e1d796dfe9a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4554"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4562"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257hg-i2",
@@ -2648,7 +2648,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:995f0e95adf63a2cd716abdb994b5d31cd4d36d07c262be578d9b4b6bac982ea",
    "new_statement_sha256": "sha256:678e981d51523e7526c21b35ad93c588e874b4945ddabcd64c6b7ebd4dc2f900",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4577"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4585"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257hg-i4",
@@ -2656,7 +2656,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:3e182af6ce5ad6b07cbbb5f265e0ad50ee3b8a6e92a13d9005017ad2a0c43973",
    "new_statement_sha256": "sha256:50a473e004751acc27f5e6f87a0a650533158035c3b34c97b213e4e3c6410728",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4609"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4617"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257hg-i5",
@@ -2664,7 +2664,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:7c369a47729736abc565407f3a1df07027d1e88b62e09b205578dd0a426abf28",
    "new_statement_sha256": "sha256:178f27bfb7ba499436d23d2e370e6095d1602c8d01786efaea40c128c56a2bbc",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4638",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4646",
    "reason": "Removed the sentence 'The exact declaration names are linked below.', a pointer; both implications and the scope remark that they concern the current step are unchanged."
   },
   {
@@ -2673,7 +2673,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:6fb31288a840110ae73c776bc2e2a91d52af375751d591e46970fff76f6bf3a4",
    "new_statement_sha256": "sha256:0a33d1f802fc9c8826c55b53805401b647c2b4f05fe9ed6b1fd309e989452cc1",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4648",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4656",
    "reason": "Replaced 'verified by \\texttt{decide}' by 'verified by direct computation', naming the same finite check of the base case at row 5; the conditional hypothesis, the bound for all s >= 5 and the min versus max caveat are unchanged."
   },
   {
@@ -2682,7 +2682,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:73b08c562d659db2c5b4e41090536bde2888b02b6b0190f747e1968463928eaa",
    "new_statement_sha256": "sha256:2b6ec1244961a03e70695b4492324f087f3979033b91c1bec2562e11b48f13ff",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4664"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4672"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i15",
@@ -2690,7 +2690,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:bf22ad7cf1e1cf7ee668e376bd835edcceb143b3f30aafcea44984d063fde881",
    "new_statement_sha256": "sha256:07243d8db8dc166689b920f995d198a6b8c8aefbdd3abcd061b9672451e3ef8d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4682"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4690"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i16",
@@ -2698,7 +2698,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:4b524c09355244fd6f1f37acfaeb2c232b6d63abe7730c82ec4d09d002c6cd3c",
    "new_statement_sha256": "sha256:c5a4dfd275e67ca2db33f795fe7af4f3dc596a1d3cf9e47741e2cbc92bea3c48",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4701"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4709"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-i17",
@@ -2706,7 +2706,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:665f3d3b8d9c15d419721120e145f761e8f8c6e576d12492d3c6b4dc40cb0286",
    "new_statement_sha256": "sha256:abc1e3d65cec89529e3ae87435984598937676e983989cc449593102e281a575",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4716"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4724"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-k1",
@@ -2714,7 +2714,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:bebb6045ec61768791b410388b6538a388ce60f6e4ae80193fb7bbbbf700a36b",
    "new_statement_sha256": "sha256:ac544c89f116ff4dcebdc5b161bdf734b6c833a402ba2c662781db22a0d56e2b",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4735",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4743",
    "reason": "Replaced the Lean name \\texttt{boundedDoubleOrRecycleModel_transition} by 'the model' and removed the sentence naming the existential Lean packaging; the countermodel (n = 6), its transition behaviour, its non-cofinality and the conclusion about missing progress input are unchanged."
   },
   {
@@ -2723,7 +2723,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:d6863b54a7bbbd546900c4c9ec00336303d7479546188b6923b4bb5cfbfb5770",
    "new_statement_sha256": "sha256:f979420bae35269a1b6de01eccd8157303f84a73a49e06333cf78592bf7704e3",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4753",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4761",
    "reason": "Removed the parenthesised Lean name (\\texttt{finiteErdosSum_den_odd}) after the cross-reference to Observation record:257bm-k11; the dichotomy for n >= 6, the example and all caveats are unchanged."
   },
   {
@@ -2732,7 +2732,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:cab7dd6c2948b6efcaf00a370a67145744816aa87d6a94dd8280efe9231badcc",
    "new_statement_sha256": "sha256:bd3d6f203e331de385f91fce5e341df018e147967ac460f226d5eb35d8ed99f9",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4773",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4781",
    "reason": "Removed the Cert tag and replaced 'The linked \\texttt{norm_num} proof' by 'The linked Lean proof ... by direct computation'; the finite-computation meaning is carried by 'Direct calculation gives' and 'by direct computation', 'linked' refers to the margin mark, and every number and conclusion is unchanged."
   },
   {
@@ -2741,7 +2741,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:0e845ea6aa69d934a6e150d45ef007347890bd607ecaf03f25a7a7abb13873bf",
    "new_statement_sha256": "sha256:f6d6cc0b5da8e007a11ab53fd222ae65d142d8b113be2878d59fb0f00267eb61",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4812",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4820",
    "reason": "Removed the parenthesised Lean name after Theorem record:257bm-c10 and replaced 'Theorem record:257bm-k1's \\texttt{exists_seeded_bounded_double_or_recycle_model}' by 'The countermodel of Theorem record:257bm-k1'; the unconditional claim, the witness bound c <= n and the growth discussion are unchanged."
   },
   {
@@ -2750,7 +2750,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:893991c2b8e19a0635baac414d91eb3bc71f7e93ff9ee6250119840951aa87d9",
    "new_statement_sha256": "sha256:90730564180121d4c6f613db357c583f225cce849e7caea55af8590ab47c8dde",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4839"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4847"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257bm-k9",
@@ -2758,7 +2758,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:6961d08d266b8397bc35adf11fe89db594bb1d8ffb7a1b44cf9ae654c872e27b",
    "new_statement_sha256": "sha256:58627735d51eca55cb22824785181206bc1038adc4398aa9567005b3b4def411",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4882"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4890"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#record:257hg-k12",
@@ -2766,7 +2766,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:163249bc98ad3c599bf82471a8d708ed9f1931a60909b5647ba215fa56763487",
    "new_statement_sha256": "sha256:d21ddc848726fe03a62526aed9504172594dbc00d7f9c1930d84ce43ec105c62",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4915"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4923"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#45bb90fa3f1e9b91",
@@ -2774,7 +2774,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:45bb90fa3f1e9b9150529ccfddf44d254b09f02a1c9b0a7faa9c2a10c08fa936",
    "new_statement_sha256": "sha256:9c74e3adb178a35c3c5b7d197fc2e2ae4e7af9f6eb4522b0df281353b1281e51",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4943"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:4951"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#e465fe9eaeafe6d4",
@@ -2782,7 +2782,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:e465fe9eaeafe6d44b51c8428f570863388dfdec3d9a8398bbee93c6682b15b2",
    "new_statement_sha256": "sha256:35f8d8c755b7f3e223f3cef11d857e71fbb3a9e5b3f0143c68034687748cde9a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5056"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5064"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#cb247be3c4072b49",
@@ -2790,7 +2790,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:cb247be3c4072b49be44cf131fe2f395fd7148578aa044e261eb9fa7e2a2652f",
    "new_statement_sha256": "sha256:57b219ec519c648c95e865a3bf7714a92b83849dfde402df61a47f3ec8064f7c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5186",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:5194",
    "reason": "Replaced \\mathtt{supportedMersenneAchievementSet} J by \\mathcal A_J, which the paragraph immediately before defines as the set of Mersenne digit values supported on J with a link to that same Lean definition; the dichotomy and the values 2^(-|F|) and 0 are unchanged."
   },
   {
@@ -2799,7 +2799,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:877bcaf710f3107bcb3e107d86fec72a46b55a849c70282ffde59711cad3c504",
    "new_statement_sha256": "sha256:45c78d60adfc579632f8084328fca0ff211451aef1702fc9eb88161cd261267c",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:6709",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:6734",
    "reason": "Removed two sentences about a release file and its classification; \"the source proves $B(r)^2\\le2^{r+5}$\" now reads \"one has\", the bound the result's Lean declarations prove; the implication is unchanged."
   },
   {
@@ -2808,7 +2808,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:537aa4f47d30c1540518d94dbdbf5acca38f8b8dc60ab028b9459efd4ac19713",
    "new_statement_sha256": "sha256:8b5a4b3af52d4a420cdc31120729578ea76e1a51c7a5ff25626d48c27aaad570",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:6742",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:6767",
    "reason": "Removed the Lean link that named the equivalence and named it by its theorem (Theorem thm:greedy-survival-record, the printed form of mem_mersenneAchievementSet_iff_greedy_survival); \"recorded by SE-7/RC-7\" (external identifiers) now names Theorem thm:one-sided; the assertions are unchanged."
   },
   {
@@ -2817,7 +2817,7 @@
    "class": "presentation",
    "old_statement_sha256": "sha256:4aaf69e0229f2e7706698d2f1dd801dd189926ae87df3bef3eb5b3e0ca1f7920",
    "new_statement_sha256": "sha256:374b76d2ded30543ff6b262c564b16d1292bb11d7ea9fed66492498a65b76b44",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:6942"
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:6967"
   },
   {
    "old_id": "erdos257-mersenne-reasoning-surface#prop:upper-unconditional",
@@ -2825,7 +2825,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:54af47ecc530c9257d80a62545ed113c7f325184ed1edaefdd8d05ef50e8f43a",
    "new_statement_sha256": "sha256:8c9f2f30851f7915f7670b0d78010d369ec994394c626e578f808a302e99ec93",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7015",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7040",
    "reason": "The Lean condition (seamAdjacentCut s hs).successorCarries was replaced by 'the transition at row s is on branch U of Theorem thm:dynamics'; in Lean successorCarries is 4*overshoot + abovePulse <= gap, which is branch U's condition 4o + p^+ <= 2^(n+1), and removing two Lean links and the ':.' and trailing '\\' debris leaves the hypothesis s >= 5, the conclusion rem(s+1) <= 2^(s+1) and the scope remark unchanged."
   },
   {
@@ -2834,7 +2834,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:2fc3d29bc9b30953c81b86d22655789e56700a731c2290196dd541e24bc32d14",
    "new_statement_sha256": "sha256:be21a204a0d5d13f5bcb9afe3defdd2487117d4162c08c9c9776a8f030f38507",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7030",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7055",
    "reason": "Removed four inline Lean links and a \\coord tag and the stray control space before 'Object or representation'; the hypotheses (middle transition at D >= 13, all-right tail), the conclusion C_D >= -2, the proof and the Scope paragraph are unchanged."
   },
   {
@@ -2843,7 +2843,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:1abe05dca57eafd19773b2a69ce93b3c3e5089a7628734d5c50906dee5d2bba5",
    "new_statement_sha256": "sha256:c3dc4ca08724b5cccd528a74d7fd629a3a8a01ace69cc96128a4b98287b09b9b",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7080",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7105",
    "reason": "Removed the \\coord and Lean tags and a trailing control space; every assertion and caveat is unchanged."
   },
   {
@@ -2852,7 +2852,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:da4aed12c35ceaa63b09da7444a8d8425d1088f75ba3bc14ac34a141ca239bf7",
    "new_statement_sha256": "sha256:f877846529c8227f482b01b44e95b9ea070d7b63c3ffb4c4682ada05af53bc72",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7155",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7180",
    "reason": "Removed two Lean links and the debris '(exact family size at ).' plus a \\coord tag; the family, the no-decoder conclusion, the count rho+1, the lower bound on finite state sets and the Scope and representation remarks are unchanged."
   },
   {
@@ -2861,7 +2861,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:a2f3454b29ddf5b1662729d2b927fd4489f4d5fcfa703c987be38820e19d3289",
    "new_statement_sha256": "sha256:3daea245bcea64fbc07eaafaeec3bdfd75f86404416151ba1821551e8a40c79d",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7175",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7200",
    "reason": "Removed two Lean links, the debris '(exact decomposition at ).' and \\coord and Lean tags; the Lambert identity, the decomposition, the bound 1/2 + 1/63 and the Scope remark are unchanged."
   },
   {
@@ -2870,7 +2870,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:a87529ee06db21b702af9f6eccd2edfa426f445bb27c153cbe7e6a0b52e03bdf",
    "new_statement_sha256": "sha256:3ad3a57845afc043d9e2befa89f972f12a6ad0ccbebb5fca07320cf63881d5b8",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7191",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7216",
    "reason": "Removed three Lean links, which left stray periods and a trailing colon, and \\coord and Lean tags; the parity argument, the certificate definition, the 3/4 example, the statement that a failed search does not establish membership and the Scope paragraph are unchanged."
   },
   {
@@ -2879,7 +2879,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:30686f49c02de23924b3a3d979a42665f27530f7b6d96087e7c2f2b8c6e467ee",
    "new_statement_sha256": "sha256:172cfc764a72f30211cd8906ffe5f4b7d5ea6ed44bde46163cbc69d0187301bb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7213",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7238",
    "reason": "Removed three Lean links, which left stray periods, replaced the list of four .lean file names by 'The Lean declarations used in this comparison', and removed \\coord and Lean tags; the certificate-supply condition, the lcm sufficiency, the finite range 1 <= h <= 16 at (N,L) = (14,9) with its 'does not establish the unbounded certificate supply' caveat and the scope restriction to Problem 249 are unchanged."
   },
   {
@@ -2888,7 +2888,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:ae634a67880ce24013ac5debbd31818087c7d8b56764887dc81712afb05dee5b",
    "new_statement_sha256": "sha256:3a0ac9aae3d09ff8a8fa7df0ca07dd4d53a8a0c821685c075e9bafe5eecc897f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7245",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7270",
    "reason": "Removed three Lean links, which left a stray period after the display, a doubled period and an empty parenthesis, plus a \\coord tag and control space; the hypotheses, the divisibility conclusion, the nonzero-c caveat and the Scope remark are unchanged."
   },
   {
@@ -2897,7 +2897,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:1502576a7c728b7205d6f698b5309110d574f3dd8557b995666a89b3c57b7637",
    "new_statement_sha256": "sha256:ad370acc7e3e60dd3b028f257cfcf43a3919b0b15f92e3e429df9057932e2634",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7272",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7297",
    "reason": "Removed two Lean links, which left the debris '(generic form ).', and a trailing \\coord and Lean tag; the hypotheses, the inequality 2^r (2^n - 1) < 2 x.den and the direct argument are unchanged."
   },
   {
@@ -2906,7 +2906,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:a7b2eff557c7ed93db5411bf16e674ef1d7d7d58caafa1c4baa70c8671f7df40",
    "new_statement_sha256": "sha256:41aec224111c73e84bbb7faac538524053b366f80ef030dd0b232b4dcd51efb8",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7309",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:7334",
    "reason": "Removed two Lean links, which left the debris '(seam specialisation ).', and a trailing \\coord and Lean tag; the combinatorial equivalence, its range assumption E <= 2^(d+1), the (0,3) example and the seam specialisation claim are unchanged."
   },
   {
@@ -2915,7 +2915,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:178bad6a118bf8eafe4859998b72d59ed49d6dbc113db9110d21c36ae742be74",
    "new_statement_sha256": "sha256:cb4d124e1900b488ab9104fdbaeb69274a3a5e7792e3a379fc7019772620da6f",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:8058",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:8085",
    "reason": "Removed the final sentence 'The two exact no-go theorems are [two Lean links]', a pointer (the title also changed from 'exact engine ceiling' to 'a limit of the certificate method', which does not alter the claim); the formula c_A(n) = 2^omega(n) - 1, its oddness and the no-instance conclusion are unchanged."
   },
   {
@@ -2924,7 +2924,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:2ff480064ed0c383278c38a2bee9be542e93c98991f2cd61d86863385ee6bef7",
    "new_statement_sha256": "sha256:9a6cf53ddadedf1c96437950c05335735566134f4ed09c0711dd1913aed6cfcb",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:8275",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:8304",
    "reason": "Removed a Lean link after the definition and the Lean link plus Lean and scale tags inside the parenthesis, leaving '(an odd-denominator parity fact)'; the definition of CPGS, the unconditional positivity claim and the equivalence CPGS iff HALF are unchanged."
   },
   {
@@ -2933,7 +2933,7 @@
    "class": "reviewed",
    "old_statement_sha256": "sha256:6f7b0f2448a6273cbb7b16f3af962f70b910319cca1d86f9b2c3938751b38e04",
    "new_statement_sha256": "sha256:71b9382c3cd0567de5323d2193b7a21f5fa277f535dcdc6bda40daf8b769da5a",
-   "source": "paper/reasoning-parts/erdos257/a257_front.tex:8295",
+   "source": "paper/reasoning-parts/erdos257/a257_front.tex:8324",
    "reason": "Removed the Lean link after 'This is the exact terminal-strip condition'; the condition with constant 4 at arbitrarily large depths, its equivalence with 1/2 in A, the proof sketch and the remark on the relaxed constant 6 are unchanged."
   }
  ]

@@ -2,7 +2,7 @@
 
 This record belongs to the paper [erdos-68-factorial-denominator-irrationality.pdf](../paper/68/erdos-68-factorial-denominator-irrationality.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`e6c2d8f77ac2`](https://github.com/wcook04/plectis-erdos/tree/e6c2d8f77ac24753c5216a49f4daf7f7388b309f) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`c91562bd574a`](https://github.com/wcook04/plectis-erdos/tree/c91562bd574a387cde904481e609c7b4cacebb14) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35882032091](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35882032091) at corpus commit [`a2faa350b45a`](https://github.com/wcook04/plectis-erdos-lean/tree/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3) (tag `paper-evidence-2026-09-23`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 6 results: 6 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 6 compared.
 
@@ -10,7 +10,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="res-carry-characterization"></a>
 
-## Theorem (exact carry characterisation)
+## Theorem 1.1 (exact carry characterisation), page 3
 
 > *<span id="res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
 > ``` math
@@ -22,7 +22,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.carry_characterisation`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45)
+[`ErdosProblems.Erdos68.PaperComplete.carry_characterisation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45)
 
 ```lean
 theorem carry_characterisation :
@@ -54,7 +54,7 @@ theorem carry_characterisation :
 
 <a id="res-divisor-channel-coordinates"></a>
 
-## Theorem (an integer basis with prescribed weighted sums)
+## Theorem 2.1 (an integer basis with prescribed weighted sums), page 4
 
 > *Set
 > ``` math
@@ -77,7 +77,7 @@ theorem carry_characterisation :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.divisor_channel_coordinates`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260)
+[`ErdosProblems.Erdos68.PaperComplete.divisor_channel_coordinates`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260)
 
 ```lean
 theorem divisor_channel_coordinates :
@@ -105,7 +105,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-channel-moment-certificate"></a>
 
-## Theorem (a finite formula for the gcd)
+## Theorem 2.2 (a finite formula for the gcd), page 6
 
 > *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 > ``` math
@@ -114,15 +114,17 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252)
+1. [`ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252)
 
 ```lean
 theorem finite_channel_moment_certificate {D p : ℕ}
     (hD : 2 ≤ D) (hp : p.Prime) (hDp : D / 2 < p) (hpD : p ≤ D) :
-    let H
+    let H := D * (2 * p - 1)
+    0 < finiteScalarGcd D H ∧
+      IsScalarTailGcd D (finiteScalarGcd D H) ∧ H < 2 * D ^ 2
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate_eq`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L260)
+2. [`ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate_eq`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L260)
 
 ```lean
 theorem finite_channel_moment_certificate_eq {D p G : ℕ}
@@ -144,7 +146,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-bandbreakpoint"></a>
 
-## Theorem (constant values of the floor in the weights)
+## Theorem 2.3 (constant values of the floor in the weights), page 6
 
 > *Let $`\lambda`$ be a finitely supported integer vector, let $`d\ge2`$ and $`k\ge0`$ be integers, and suppose each index $`n`$ in its support satisfies $`kd\le n<(k+1)d`$. Then
 > ``` math
@@ -154,7 +156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos68.PaperComplete.supported_quotient_band`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24)
+1. [`ErdosProblems.Erdos68.PaperComplete.supported_quotient_band`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24)
 
 ```lean
 theorem supported_quotient_band (f : ℕ →₀ ℤ) (d k : ℕ)
@@ -163,7 +165,7 @@ theorem supported_quotient_band (f : ℕ →₀ ℤ) (d k : ℕ)
     factorialMoment f = (d.factorial : ℤ) ^ k * channelNumerator f d
 ```
 
-2. [`ErdosProblems.Erdos68.PaperComplete.supported_first_band_cancellation`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42)
+2. [`ErdosProblems.Erdos68.PaperComplete.supported_first_band_cancellation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42)
 
 ```lean
 theorem supported_first_band_cancellation (f : ℕ →₀ ℤ) (d : ℕ)
@@ -172,7 +174,7 @@ theorem supported_first_band_cancellation (f : ℕ →₀ ℤ) (d : ℕ)
     (hz : channelNumerator f d = 0) : factorialMoment f = 0
 ```
 
-3. [`ErdosProblems.Erdos68.PaperComplete.supported_breakpoint_escape`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51)
+3. [`ErdosProblems.Erdos68.PaperComplete.supported_breakpoint_escape`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51)
 
 ```lean
 theorem supported_breakpoint_escape (f : ℕ →₀ ℤ) (d : ℕ)
@@ -195,7 +197,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-global-complementary-criterion"></a>
 
-## Proposition (a sufficient tail inequality)
+## Proposition 5.1 (a sufficient tail inequality), page 10
 
 > *If arbitrarily large natural parameters $`p\ge3`$ satisfy
 > ``` math
@@ -209,7 +211,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154)
+[`ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154)
 
 ```lean
 theorem global_complementary_criterion_nat
@@ -243,7 +245,7 @@ theorem global_complementary_criterion_nat
 
 <a id="res-companion-orbit-rationality-boundary"></a>
 
-## Theorem (rationality and factorial residues)
+## Theorem A.1 (rationality and factorial residues), page 12
 
 > *The following statements are equivalent:*
 > 
@@ -264,7 +266,7 @@ theorem global_complementary_criterion_nat
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos68.PaperComplete.companion_orbit_boundary`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27)
+[`ErdosProblems.Erdos68.PaperComplete.companion_orbit_boundary`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27)
 
 ```lean
 theorem companion_orbit_boundary :

@@ -1022,11 +1022,11 @@ Two boundary degeneracies are excluded at every rank, unconditionally: $r_{k-1}(
 odd-denominator argument above, and $r_{k-1}(1/2)\ne R_k$ because the tail differs from $E$ by a
 rational while $E$ is irrational. Both greedy decisions are therefore strict at every rank.
 
-The following finite checks are reported from earlier computations.
-The underlying tests use exact integer arithmetic; decimal margins are
-summaries of those data, not proofs of an asymptotic estimate.  The scan to row $200{,}000$ and the long grouped computation were
-not rerun for this record.  The quotient calculation through row
-$2500$ was recomputed with exact integers, as specified below.
+The following finite checks use exact integer arithmetic.  Each has a
+\href{https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257}{published program and saved result},
+including the scan to row $200{,}000$ and the grouped computation to
+depth $13{,}548{,}057$.  Decimal margins summarise those integer data and
+give no asymptotic estimate.
 Reset margins are measured by
 $\log_2|\mathrm{rem}(r+1)-2^{r+1}|-(r+5)/2$.
 The separate real-greedy scan uses
@@ -1046,12 +1046,18 @@ Sharp tail margin, ranks $2$ to $3000$: no
 fatal skip, take fraction $0.4992$, tightest take-margin $+0.0340$ bits at rank $7$ (the near-tie
 $1/126>1/127$).  In the stated units this is
 $\log_2(4^7(1/126-1/127))=0.034035\ldots$.
-It is the smallest take-margin reported in this finite scan. The recorded finite greedy prefix through $m=200{,}000$ satisfies
+It is the smallest take-margin reported in this finite scan. The finite greedy prefix through $m=200{,}000$, certified rank by rank
+with integer interval bounds
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/greedy-prefix-200000.json}{saved run}),
+satisfies
 $0\le 1/2-\sum_{d\in G\cap[1,m]}w_d<2^{-199999}$.
 The sum here is finite; this statement does not evaluate the infinite greedy sum.
 
-A further exact finite computation, unpublished and not relied on here,
-reaches depth $13{,}548{,}057$.  The reset rows $13$--$30$ are also
+A further exact finite computation, not used in the arguments here,
+regenerates the forced half-prefix support to depth $13{,}548{,}057$
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/half_prefix_coefficient_macro_verify.cpp}{program},
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/coefficient-macro-13548057.json}{saved run}).
+The reset rows $13$--$30$ are also
 verified in Lean by direct evaluation
 (\lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}).
 
@@ -2137,8 +2143,10 @@ $n<d\le2n$ it is $2^{2n-d}$.  Hence
 Substitute this in the definition of $K(2n)$, split
 $\{2,\ldots,n-1\}=D_n\sqcup\mathrm{Skip}_n$, and use
 $\Delta_n=2^{2n-1}-2^{n+1}-\sum_{d\in D_n}w(n,d)$.
-This gives (I).  \textbf{Certification:} verified rows
-$6\le n\le200$, zero mismatches, reported as reproduced in two separate computations (\S\ref{ssec:anchors}).\\
+This gives (I).  \textbf{Certification:} rows $6\le n\le200$
+rechecked with zero mismatches by an exact
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_master_identity.py}{program}
+(\S\ref{ssec:anchors}).\\
 \textit{Use:} (I) permits substitution of information about $K(2n)$.
 A resulting estimate for $\Delta_n$ must also retain or bound the
 skip-set sum; information about $K$ alone need not control their
@@ -2282,12 +2290,11 @@ the conditional reset square-root estimate.
 \subsection{Reported finite checks}
 \label{ssec:anchors}
 
-The following values and finite ranges are reported from earlier
+The following values and finite ranges come from exact integer
 computations for the quotient-greedy sequence of Section~\ref{ssec:seam-model}.
 They provide test cases for the formulas above. The low-row remainders
-at $n=14,15,32$ were reproduced by exact integer arithmetic for this
-record. The larger computation ranges remain reports from the earlier
-computations; they were not rerun here.
+at $n=14,15,32$ are exact integer values. Each larger range has a
+\href{https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257}{published program and saved run}.
 
 \begin{obs}[Exact low-row values]
 \label{obs:anchors-low}
@@ -2305,11 +2312,14 @@ kernel; it was not recompiled for this record.
 
 \begin{obs}[Depths of the reported computations]
 \label{obs:anchors-depth}
-The quotient identity (Theorem~\ref{thm:master-identity}) is verified rows $6 \le n \le 200$ with zero
-mismatches, reported as reproduced in two separate computations, and the quotient-greedy orbit itself is extended and
-certified to row $2500$ (and separately, in a longer single run of $207.7$ seconds, to row
-$200{,}000$: branch counts $\mathrm{R{:}M{:}U} =
-100197{:}49899{:}49898$, the target inequality failing at exactly one reset row $\le 200{,}000$,
+The quotient identity (Theorem~\ref{thm:master-identity}) is verified at rows $6 \le n \le 200$ with zero
+mismatches
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/quotient-identity-200.json}{saved run}),
+and the quotient-greedy orbit itself is certified row by row to row $2500$
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json}{saved run})
+and through the exact branch recursion to row $200{,}000$
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{saved run}; branch counts $\mathrm{R{:}M{:}U} =
+100197{:}49899{:}49898$, the target inequality failing at exactly one reset row $6\le r\le 200{,}000$,
 namely $r=7$).
 \end{obs}
 
@@ -2333,8 +2343,6 @@ to another without such a theorem, and these reports do not decide the
 universal problem.
 \end{obs}
 
-The large computation ranges in this section are taken from the earlier
-computations named above and were not rerun here.
 % ; - part a257_p1a ; -
 \section{Detailed results and their hypotheses}
 
@@ -5352,7 +5360,9 @@ $2^{14}(2^h-1)$, for some $1\le h\le16$ (exact computation).
 & $1\le h\le16$ (explicit bound) \\
 Truncation-rung ladder: $\mathrm{HalfRung}(J)$ proved for every $3\le J\le22$ via the finite
 decision procedure (\S\ref{sec:four-coordinates}, Theorem~\ref{thm:tr-finite-decision});
-ordinary argument with exact computation, from an unpublished working note.
+ordinary argument with exact computation
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md}{working note},
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py}{program}).
 & $3\le J\le22$ (finite table, exhaustive) \\
 \papertablehead\multicolumn{2}{l}{\emph{Uniform assertions and conditional implications; premises retained}} \\
 Membership equals greedy survival.
@@ -5414,8 +5424,9 @@ unboundedly many rows, there are cofinally many skipped ranks, \emph{etc.}
 \lean{half\_mem\_mersenneAchievementSet\_iff\_not\_seamGreedyEventuallyRight}{HalfCylinderHalfMembershipClassification.lean:112}
 & every right-hand side asserts unboundedly many indices \\
 Ladder dichotomy: either infinitely many rungs survive (\#257 false, explicit limit support) or an
-eventual bad-rank obstruction closes only this route (ordinary argument, from an
-unpublished working note).
+eventual bad-rank obstruction closes only this route (ordinary argument,
+Corollary~8 of the
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md}{truncation-rung note}).
 & open branch (a): $\exists^\infty J,\ \mathrm{HalfRung}(J)$ \\
 Reset square-root escape, a sufficient all-reset hypothesis (unproved).
 A Lean source gives the conditional implication; the run-length
@@ -5468,8 +5479,11 @@ Theorem~\ref{thm:tr-witness-exclusion}--\ref{thm:tr-finite-decision} below).
 \item \textbf{Seam row $s$.} The base-4 seam recursion tracking the deviation $\Delta_s:=\mathrm{rem}(s)-2^s$
 of the integer greedy orbit from its dyadic target. Certified rows $6$ through $2500$ for the
 reset-crossing classification, and the underlying orbit separately certified to row
-$200{,}000$, with exactly one violation of the target inequality in that range, at $r=7$
-(both from unpublished working notes).
+$200{,}000$, with exactly one violation of the target inequality at reset rows $6\le r\le200{,}000$, at $r=7$
+(saved runs to
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json}{row $2500$}
+and to
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{row $200{,}000$}).
 \item \textbf{Integer margin $m_c$.} An exploratory, unverified scan of the integer-greedy
 margin out to $5\times10^5$, tracking how far the certified region sits from the danger
 threshold.
@@ -5478,8 +5492,10 @@ for ranks $2$ through $3000$: $1497$ takes against $1502$ skips, zero fatal skip
 safe-skip margin $+2.9922$ bits at rank $5$, and the smallest
 reported take-margin $+0.0340$ bits at rank $7$, where the remainder
 $1/126$ exceeds the weight $1/127$.  Here the margins are the base-two
-logarithms of the corresponding positive slack multiplied by $4^k$ (from an unpublished
-working note).
+logarithms of the corresponding positive slack multiplied by $4^k$
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/tail-margins-3000.json}{saved run};
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/reset-crossing-unification-2026-07-24.md}{working note},
+section~8).
 \end{itemize}
 
 \begin{prop}[Stability of each fixed greedy prefix]
@@ -5679,12 +5695,19 @@ the window is empty and $B(2)=3$.
 \begin{rem}[Verified truncations and the unbounded-index question]
 The finite decision procedure verifies $\mathrm{HalfRung}(J)$ for every
 $3\le J\le22$.  The checking program uses exact integers: it verifies
-witness intervals covering the ranks beyond $B(J)$, proves that the
-listed bad ranks have no witness, and tests the greedy remainders through
-$B(J)$.  In particular, it reproduces $B(19)=1008$ and
+witness intervals covering the ranks beyond $B(J)$, proves for $J\le16$
+that the listed bad ranks have no witness, and tests the greedy remainders
+through $B(J)$.  In particular, it reproduces $B(19)=1008$ and
 $B(20)=B(21)=B(22)=1530$.
-The certificate data and an independent verifier accompany that
-computation; they are not reproduced here.  These are finite
+The
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py}{checking program}
+and its saved outputs for
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-3-16.json}{$3\le J\le16$}
+and
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-17-22.json}{$17\le J\le22$}
+are published.  For $J\ge17$ a floating-point filter proposes witnesses
+and each accepted witness is rechecked with integers, so a missed witness
+could only lengthen the exact greedy check.  These are finite
 computer-assisted proofs using the ordinary lemmas above, not Lean
 proofs and not a test of the full weights through all ranks.
 
@@ -6025,10 +6048,12 @@ it at every later row.
 \end{obs}
 
 \begin{obs}[Reported computation through row 200{,}000]
-\textbf{Conclusion.} Exact integer arithmetic to row 200{,}000; branch counts $R\!:\!M\!:\!U =
-100197\!:\!49899\!:\!49898$; the obligation \emph{fails only at} $r=7$; maximum R-run $19$ at row
+\textbf{Conclusion.} Exact integer arithmetic to row 200{,}000
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{saved run}); branch counts $R\!:\!M\!:\!U =
+100197\!:\!49899\!:\!49898$; for $r\ge6$ the obligation \emph{fails only at} $r=7$; maximum R-run $19$ at row
 $158{,}096$ against the required threshold $\approx (r-3)/2 \approx 79{,}000$ (margin
-$\sim\!4000\times$). Independently: 1209 resets checked to row 2500, zero classification
+$\sim\!4000\times$). Independently: 1209 resets checked to row 2500
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json}{saved run}), zero classification
 anomalies, exactly two crossing cells ever ($s{=}7,d{=}5$ and $s{=}10,d{=}7$), both below hypothesis
 scope.
 \textbf{Parameter range.} fixed-scale exhaustive verification versus a statement
@@ -7435,7 +7460,9 @@ proposed comparison target.  Its exact relation to the displayed
 bound requires the pulse terms and the initial range $10\le r<31$;
 it is not stated as an equivalence here.  A sublinear estimate gives
 an eventual ceiling, not automatically the required finite initial
-cases.  An earlier computation reports a maximum run of length
+cases.  An exact computation
+(\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{saved run})
+gives a maximum run of length
 $19$ through row $200{,}000$, attained at row $158{,}096$.
 That observation is finite evidence, not an asymptotic theorem.
 
@@ -8115,11 +8142,13 @@ Their hypotheses, rather than the fact that an attempted argument failed,
 determine their scope.
 
 The inherited experiment log reports $200{,}000$ seam rows with counts
-$R:M:U=100197:49899:49898$, a roughly geometric run-length histogram, and a
+$R:M:U=100197:49899:49898$, which a
+\href{https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json}{saved run}
+reproduces, a roughly geometric run-length histogram, and a
 longest equal run of $15$ in $40{,}000$ binary digits.  It also reports
 agreement with OEIS A211706 and a near-integer phase constant of about
-$2.5$.  These computations and the external digit comparison were not rerun
-for this record.  They are descriptive reports, not certificates of
+$2.5$.  The other figures and the external digit comparison come from
+that log alone.  They are descriptive reports, not certificates of
 normality, independence, a random sampling model, or an infinite
 anti-concentration estimate.  A statement about ``sampling noise'' would
 require a specified probabilistic model that is not supplied here.
@@ -8481,7 +8510,7 @@ is outside both proposed late ranges; that fact alone does not
 justify replacing the initial threshold $10$ by $31$.
 
 \emph{Finite evidence.} Exact integer arithmetic to row $200{,}000$ shows that the
-target inequality holds at every reset row except $r=7$; the maximum observed R-run is $19$, at
+target inequality holds at every reset row $6\le r\le200{,}000$ except $r=7$; the maximum observed R-run is $19$, at
 row $158{,}096$, against a required threshold there of $\approx79{,}046$, a margin of about
 $4000$ times.  This is a finite verified list; it supplies no witnesses at unbounded depths.
 
@@ -8676,9 +8705,8 @@ only in incomplete-period errors.  We give the construction and the surviving
 initial-interval estimate here; the short note records their consequences
 beside its cube-family calculation.
 
-The proofs in this section are ordinary arguments from the 17 September
-research note~\cite[Theorem~1, Corollary~3 and Proposition~4]{endpoint2026}.
-They have not had independent review.
+The proofs in this section are ordinary arguments, given here in full,
+and have not had independent review.
 For the underlying Lambert subseries, Kova\v{c}--Tao treat the same fixed-base
 object in~\cite[Section~2.1.2 and Remark~4.1]{kovactao}; their strict-tail
 argument gives distinct support coding and Cantor topology.
@@ -9163,10 +9191,6 @@ arXiv:2512.17285v1 (2025), preprint.
   inequality and the Cantor structure.  Theorem~2.3 (p.~5; proof pp.~13--14)
   constructs rational merged sums from several bases under its mass
   hypothesis; the construction merges several bases and leaves fixed-base \#257 untouched.
-\bibitem{endpoint2026} \emph{The logarithmic endpoint fails under arithmetic
-  sampling}, AI-assisted ordinary proof note, 17 September 2026.
-  Theorem~1, Corollary~3 and Proposition~4.  Unpublished working note;
-  independent review is outstanding.
 \bibitem{vandoornkovac} W.~van Doorn and V.~Kova\v{c},
   \emph{Lacunary sequences whose reciprocal sums represent all rational
   numbers in an interval}, Acta Arith.\ 223 (2026), 275--295,

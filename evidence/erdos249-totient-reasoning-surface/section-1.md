@@ -1,0 +1,485 @@
+# Formal evidence: The Binary Totient Series, Section 1
+
+Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the paper [erdos249-totient-reasoning-surface.pdf](../../paper/249/erdos249-totient-reasoning-surface.pdf), which explains what the Lean and Comparator checks establish.
+
+<a id="thm-denom"></a>
+
+## Theorem 1.3 (Denominator exclusion from a fixed Farey window), page 5
+
+> *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds $`Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}`$. Equivalently, $`S`$ differs from every rational number whose reduced denominator is at most $`Q_0`$. The bound is sharp for this window: $`q = Q_0 + 1`$ is the exact first failing denominator. It is the denominator of the mediant of two explicit unimodular Farey neighbours. <span class="sans-serif">\[bounded\]</span> <span class="sans-serif">\[Lean\]</span> [`Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18384) [`Erdos249257.gap_check_window_1_240_first_failure`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L225)*
+
+The Lean declarations below together state this result.
+
+1. [`Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CertificateKernel.lean#L18384)
+
+```lean
+theorem tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053 :
+    ∀ p : ℚ, p.den ≤ 79639646646701375323355774875831053 →
+      (∑' n : ℕ, ((Nat.totient n : ℝ)) / (2 : ℝ) ^ n) ≠ (p : ℝ)
+```
+
+2. [`GapFareyBound.gap_check_window_1_240_first_failure`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/GapFareyBound.lean#L225)
+
+```lean
+theorem gap_check_window_1_240_first_failure :
+    IsFirstGapFailure
+      1299094806818720335611738031537456208600423915562142231419225521361164904
+      240 243 79639646646701375323355774875831054
+```
+
+where [`IsFirstGapFailure`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/GapFareyBound.lean#L44) is
+
+```lean
+def IsFirstGapFailure (V K H qstar : ℕ) : Prop :=
+  (∀ q : ℕ, 0 < q → q < qstar → (q * V) % 2 ^ K + q * H < 2 ^ K) ∧
+    ¬ ((qstar * V) % 2 ^ K + qstar * H < 2 ^ K)
+```
+
+<a id="thm-denom-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053` | [E249_01/Challenge.lean, line 44](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L44) | [PaperStatementsAI.lean, line 57](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAI.lean#L57) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `gap_check_window_1_240_first_failure` | [E249_01/Challenge.lean, line 56](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L56) | [PaperStatementsAK.lean, line 118](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAK.lean#L118) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-deposits"></a>
+
+## Proposition 1.4 (Finite certificate computations), page 5
+
+> *$`\mathcal{C}`$ has been verified at: the $`28`$ diagonal instances of the least-common-multiple diagonal through $`t = 64`$ ([`Erdos249257.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967), endpoint [`Erdos249257.certifiedKill_diagonal_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1928)); all shifts $`h \in [1,16]`$ simultaneously at $`(N,L) = (14,9)`$, by `decide` ([`Erdos249257.certifiedKill_all_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L574)); and eight further period examples at $`N = 300`$. These are historical subsets of the examples. The supplied source also proves a complete diagonal band for $`1\le t\le82`$, with no omitted scales ([`exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Skip/LadderT67.lean#L71264)). This is bounded coverage, not a cofinal diagonal family. Note the quantifier order: the simultaneous small-shift example uses one pair $`N,L`$ for every $`1\le h\le16`$. In symbols, it proves $`\exists N\,\exists L\,\forall h\,(1\le h\le16\Rightarrow\mathcal C(h,N,L))`$. In contrast, $`\mathrm{Sep}`$ requires arbitrarily large $`N`$ for each positive $`h`$; neither the shift range nor the basepoint threshold is bounded. <span class="sans-serif">\[fixed\]</span> <span class="sans-serif">\[Lean\]</span>*
+
+The Lean declarations below together state this result.
+
+1. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)
+
+```lean
+theorem certifiedKill_diagonal_all_imported_through_t64 :
+    ∀ t ∈ diagonalPincerCertificateScalesThroughT64,
+      certifiedKill (periodLcm t) (periodLcm t) (diagonalPincerKillDepthThroughT64 t)
+```
+
+2. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/DiagonalPincerCertificatesT64.lean#L1928)
+
+```lean
+theorem certifiedKill_diagonal_t64 :
+    certifiedKill (periodLcm 64) (periodLcm 64) 93
+```
+
+3. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_all_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CarrySurvivorExtinction.lean#L574)
+
+```lean
+theorem certifiedKill_all_upto_sixteen :
+    ∀ h ∈ Finset.Icc 1 16, certifiedKill h 14 9
+```
+
+4. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L471)
+
+```lean
+theorem certifiedKill_67_300 : certifiedKill 67 300 11
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+5. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_81_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L474)
+
+```lean
+theorem certifiedKill_81_300 : certifiedKill 81 300 13
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+6. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_97_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L477)
+
+```lean
+theorem certifiedKill_97_300 : certifiedKill 97 300 13
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+7. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_101_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L480)
+
+```lean
+theorem certifiedKill_101_300 : certifiedKill 101 300 11
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+8. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_121_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L483)
+
+```lean
+theorem certifiedKill_121_300 : certifiedKill 121 300 10
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+9. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_125_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L486)
+
+```lean
+theorem certifiedKill_125_300 : certifiedKill 125 300 18
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+10. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L490)
+
+```lean
+theorem certifiedKill_127_300 : certifiedKill 127 300 11
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+11. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_128_300`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L493)
+
+```lean
+theorem certifiedKill_128_300 : certifiedKill 128 300 11
+```
+
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+
+```lean
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+```
+
+12. [`ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Skip/LadderT67.lean#L71264)
+
+```lean
+theorem exists_diagonalKill_le_82 (t : ℕ) (ht : t ≤ 82) :
+    ∃ L, certifiedKill (periodLcm t) (periodLcm t) L
+```
+
+<a id="prop-deposits-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `certifiedKill_diagonal_all_imported_through_t64` | [E249_01/Challenge.lean, line 153](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L153) | [PaperStatementsAT.lean, line 122](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAT.lean#L122) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_diagonal_t64` | [E249_01/Challenge.lean, line 210](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L210) | [PaperStructuresN.lean, line 42](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStructuresN.lean#L42) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_all_upto_sixteen` | [E249_01/Challenge.lean, line 91](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L91) | [PaperStatementsAD.lean, line 27](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAD.lean#L27) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_67_300` | [E249_01/Challenge.lean, line 187](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L187) | [PaperStatementsAU.lean, line 589](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L589) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_81_300` | [E249_01/Challenge.lean, line 190](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L190) | [PaperStatementsAU.lean, line 591](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L591) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_97_300` | [E249_01/Challenge.lean, line 193](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L193) | [PaperStatementsAU.lean, line 593](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L593) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_101_300` | [E249_01/Challenge.lean, line 172](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L172) | [PaperStatementsAU.lean, line 579](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L579) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_121_300` | [E249_01/Challenge.lean, line 175](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L175) | [PaperStatementsAU.lean, line 581](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L581) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_125_300` | [E249_01/Challenge.lean, line 178](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L178) | [PaperStatementsAU.lean, line 583](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L583) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_127_300` | [E249_01/Challenge.lean, line 181](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L181) | [PaperStatementsAU.lean, line 585](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L585) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `certifiedKill_128_300` | [E249_01/Challenge.lean, line 184](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L184) | [PaperStatementsAU.lean, line 587](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L587) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `exists_diagonalKill_le_82` | [E249_01/Challenge.lean, line 201](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L201) | [PaperStatementsAU.lean, line 599](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L599) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-sign"></a>
+
+## Proposition 1.5 (Positivity does not exclude an integer), page 5
+
+> *Put $`H_a=\operatorname{lcm}(1,\ldots,2^a)`$. For every $`a\ge8`$ and $`J\ge0`$ with $`J+(a+6)<2\cdot2^a`$,
+> ``` math
+> R_{2H_a+J}-R_{H_a+J}>0.
+> ```
+> This needs no irrationality hypothesis ([`Erdos257PeriodNoncollapse.actualLcmTailDiff_shift_pos`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L39), [`Erdos257PeriodNoncollapse.actualLcmTailOrbit_pos`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L144)). If this difference is an integer and $`K\ge0`$ satisfies
+> ``` math
+> J+K+(a+6)<2\cdot2^a,\qquad 2H_a+J+K+2<2^K,
+> ```
+> then
+> ``` math
+> D(H_a,H_a+J,K)\bmod2^K
+>    =2^K-\bigl(R_{2H_a+J+K}-R_{H_a+J+K}\bigr)
+> ```
+> lies strictly between $`2^K-(2H_a+J+K+2)`$ and $`2^K`$ ([`Erdos257PeriodNoncollapse.actualLcm_integral_forces_topEdgeResidue`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L211)). The later tail difference is a positive integer. Its negative, not the carry itself, is the representative near zero. Thus positivity locates the residue near the upper endpoint; it does not establish the central-residue inequalities. Both restrictions on $`K`$ are part of this conclusion. <span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span>*
+
+The Lean declarations below together state this result.
+
+1. [`Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientActualLcmOrbitSign.lean#L39)
+
+```lean
+theorem actualLcmTailDiff_shift_pos
+    {a J : ℕ} (ha : 8 ≤ a)
+    (hshort : J + (a + 6) < 2 * 2 ^ a) :
+    0 <
+      totientTail (2 * periodLcm (2 ^ a) + J) -
+        totientTail (periodLcm (2 ^ a) + J)
+```
+
+2. [`Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientActualLcmOrbitSign.lean#L211)
+
+```lean
+theorem actualLcm_integral_forces_topEdgeResidue
+    {a J K : ℕ} (ha : 8 ≤ a)
+    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
+    {d : ℤ}
+    (hd : (d : ℝ) =
+      totientTail (2 * periodLcm (2 ^ a) + J) -
+        totientTail (periodLcm (2 ^ a) + J))
+    (hroom :
+      ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
+        (2 : ℤ) ^ K) :
+    let H := periodLcm (2 ^ a)
+    let e := carryOrbit H (H + J) d K
+    let P := (2 : ℤ) ^ K
+    let B := ((2 * H + J + K + 2 : ℕ) : ℤ)
+    windowDiscrepancy H (H + J) K % P = P - e ∧
+      P - B < windowDiscrepancy H (H + J) K % P ∧
+      windowDiscrepancy H (H + J) K % P < P
+```
+
+3. [`Erdos249257.TotientTailPeriodKiller.carryOrbit_eq_tail_diff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/CarrySurvivorExtinction.lean#L393)
+
+```lean
+lemma carryOrbit_eq_tail_diff {h N : ℕ} {d : ℤ}
+    (hd : (d : ℝ) = totientTail (N + h) - totientTail N) (i : ℕ) :
+    (carryOrbit h N d i : ℝ) = totientTail (N + i + h) - totientTail (N + i)
+```
+
+<a id="prop-sign-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `actualLcmTailDiff_shift_pos` | [E249_01/Challenge.lean, line 228](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L228) | [PaperStatementsA.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsA.lean#L21) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `actualLcm_integral_forces_topEdgeResidue` | [E249_01/Challenge.lean, line 236](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L236) | [PaperStatementsA.lean, line 30](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsA.lean#L30) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `carryOrbit_eq_tail_diff` | [E249_01/Challenge.lean, line 255](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L255) | [PaperStatementsA.lean, line 50](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsA.lean#L50) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-rank"></a>
+
+## Proposition 1.6 (Rationality forces unbounded carry rank), page 6
+
+> *If $`S`$ is rational then, for every $`e`$, the carry sections $`n\mapsto u_{2^jn+r}`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a rational vector space of dimension at least $`2^{e}-1`$ ([`Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientCarryKernelRigidity.lean#L300)). The lower bound holds at every depth. It comes from the linear independence of the $`2^e+1`$ retained dyadic totient sections for $`e\ge1`$, proved using the Chinese remainder theorem and Dirichlet’s theorem ([`Erdos249257.linearIndependent_canonicalTotientKernelFamily`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L935)), so the full family spans an infinite-dimensional space ([`Erdos249257.not_finiteDimensional_span_fullTotientKernel`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1145)), the case $`k=2`$ of Coons’s non-regularity theorem (§<a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>). <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span>*
+
+The Lean declaration below states this result.
+
+[`Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientCarryKernelRigidity.lean#L300)
+
+```lean
+theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
+    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        ∀ e : ℕ,
+          2 ^ e - 1 ≤
+            finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))
+```
+
+<a id="prop-rank-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `not_irrational_totientSeries_implies_unbounded_carryRank_unconditional` | [E249_32/Challenge.lean, line 94](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_32/Challenge.lean#L94) | [CarryRankFrontier.lean, line 44](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_32/CarryRankFrontier.lean#L44) | [E249_32](../../evidence/comparator/replay-35882032091/receipt-E249_32.json) |
+
+Challenge for `not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`:
+
+```lean
+theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
+    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        ∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e))) := by sorry
+```
+
+<a id="prop-period-not-rank"></a>
+
+## Proposition 1.7 (Periodicity modulo an integer does not bound rational rank), page 6
+
+> *If $`S`$ is rational, the same carry $`u`$ has unbounded rational section rank and one eventual period modulo $`v`$ valid for all its dyadic sections. More precisely, there are $`h\ge1`$ and $`N_0`$ such that, for every $`j,r\ge0`$ and $`n\ge N_0`$,
+> ``` math
+> u_{2^j(n+h)+r}\equiv u_{2^jn+r}\pmod v.
+> ```
+> The rank and periodicity assertions hold together ([`Erdos257PeriodNoncollapse.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L224)). This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The separate $`5/4`$ control supplies a concrete counterexample to the generic rationality-driven rank ceiling; see the detailed comparison in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>. <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span>*
+
+The Lean declaration below states this result.
+
+[`Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailCarryPeriod.lean#L224)
+
+```lean
+theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          CarrySectionsEventuallyPeriodicMod v h N₀ u
+```
+
+<a id="prop-period-not-rank-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` | [E249_32/Challenge.lean, line 113](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_32/Challenge.lean#L113) | [CarryRankFrontier.lean, line 65](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_32/CarryRankFrontier.lean#L65) | [E249_32](../../evidence/comparator/replay-35882032091/receipt-E249_32.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-iffs"></a>
+
+## Proposition 1.8 (Equivalent certificate conditions), page 6
+
+> *Put $`H_t=\operatorname{lcm}(1,\ldots,t)`$. Several variations of Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a> are equivalent to $`S\notin\mathbb Q`$. One may allow a positive multiple of each prescribed shift, still requiring certificates beyond every basepoint threshold (Theorem <a href="#catalogue:cert:b2" data-reference-type="ref" data-reference="catalogue:cert:b2">99</a>; [`periodMultipleKillSupply_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L432)). Alternatively, one may use the original quantified condition ([`irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412)) or restrict to $`h=N=H_t`$ at arbitrarily large $`t`$ (Theorem <a href="#catalogue:cert:b3" data-reference-type="ref" data-reference="catalogue:cert:b3">100</a>; [`irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426)). Replacing the symmetric residue test by
+> ``` math
+> N+L+2\le D(h,N,L)\bmod2^L\le2^L-(N+h+L+2)
+> ```
+> also gives equivalent quantified conditions, including its restriction to $`h=N=H_t`$ at arbitrarily large $`t`$ ([`Erdos257PeriodNoncollapse.CofinalDirectedLcmCertificateSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L866)). Finally, the counted phase-separation condition in Proposition <a href="#prop:b2" data-reference-type="ref" data-reference="prop:b2">16</a>(b) is equivalent to irrationality ([`Erdos249257.dtwWindowSeparatedPairs_iff_irrational_totient_series`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1765)). These equivalences change the form of the arithmetic question, not its logical strength. <span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span>*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L432)
+
+```lean
+theorem periodMultipleKillSupply_iff_irrational :
+    PeriodMultipleKillSupply ↔
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
+```
+
+2. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/LcmConeFlatness.lean#L412)
+
+```lean
+theorem irrational_totient_series_iff_certificate_supply :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      ∀ h : ℕ, 0 < h → ∀ N₀ : ℕ,
+        ∃ N, N₀ ≤ N ∧ ∃ L, certifiedKill h N L
+```
+
+3. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/LcmConeFlatness.lean#L426)
+
+```lean
+theorem irrational_totient_series_iff_lcm_diagonal_certificate_supply :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ L,
+        certifiedKill (periodLcm t) (periodLcm t) L
+```
+
+4. [`Erdos249257.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientTailCarryPeriod.lean#L875)
+
+```lean
+theorem irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      CofinalDirectedLcmCertificateSupply
+```
+
+5. [`Erdos249257.TotientTailPeriodKiller.dtwWindowSeparatedPairs_iff_irrational_totient_series`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/PivotAntiReconstruction.lean#L1765)
+
+```lean
+theorem dtwWindowSeparatedPairs_iff_irrational_totient_series :
+    DTWWindowSeparatedPairs ↔
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
+```
+
+<a id="prop-iffs-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `periodMultipleKillSupply_iff_irrational` | [E249_01/Challenge.lean, line 196](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L196) | [PaperStatementsAU.lean, line 595](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAU.lean#L595) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `irrational_totient_series_iff_certificate_supply` | [E249_01/Challenge.lean, line 100](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L100) | [PaperStatementsAD.lean, line 46](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAD.lean#L46) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `irrational_totient_series_iff_lcm_diagonal_certificate_supply` | [E249_01/Challenge.lean, line 260](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L260) | [PaperStatementsA.lean, line 66](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsA.lean#L66) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply` | [E249_01/Challenge.lean, line 158](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L158) | [PaperStatementsAT.lean, line 128](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAT.lean#L128) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `dtwWindowSeparatedPairs_iff_irrational_totient_series` | [E249_01/Challenge.lean, line 95](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L95) | [PaperStatementsAD.lean, line 33](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAD.lean#L33) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-parity"></a>
+
+## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 6
+
+> *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ explicit carry pulses beyond $`N`$, pairwise separated by more than $`G`$; and yet $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$ ([`Erdos257PeriodNoncollapse.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientParityCoboundaryCountermodel.lean#L637); sum at `:359`, aperiodicity at `:487`, parity match at `:194`; `#print axioms` clean). <span class="sans-serif">\[uniform\]</span> <span class="sans-serif">\[Lean\]</span>*
+
+The Lean declarations below together state this result.
+
+1. [`Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientParityCoboundaryCountermodel.lean#L637)
+
+```lean
+theorem exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel :
+    ∃ c : ℕ → ℕ,
+      (∀ N G K, ∃ k,
+        N < 2 ^ (k + 3) ∧
+        ∀ i : ℕ, i < K →
+          2 ^ (k + i + 3) + G < 2 ^ (k + i + 4) ∧
+          c (2 ^ (k + i + 3)) = 6 ∧
+          c (2 ^ (k + i + 3) + 1) = 0) ∧
+      (∀ n, c n ≤ 6) ∧
+      (∀ n, c n ≤ n) ∧
+      (∀ n, c n % 2 = Nat.totient n % 2) ∧
+      (¬ ∃ p N : ℕ, 0 < p ∧ ∀ n : ℕ, N ≤ n → c (n + p) = c n) ∧
+      ¬ Irrational (∑' n : ℕ, (c n : ℝ) / 2 ^ n)
+```
+
+2. [`Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/TotientParityCoboundaryCountermodel.lean#L359)
+
+```lean
+theorem tsum_parityCoboundaryWeight_eq_three_halves :
+    (∑' n : ℕ, (parityCoboundaryWeight n : ℝ) / 2 ^ n) = 3 / 2
+```
+
+<a id="prop-parity-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel` | [E249_01/Challenge.lean, line 270](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L270) | [PaperStatementsAG.lean, line 43](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsAG.lean#L43) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+| `tsum_parityCoboundaryWeight_eq_three_halves` | [E249_02/Challenge.lean, line 65](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_02/Challenge.lean#L65) | [PaperStatementsAG.lean, line 48](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_02/PaperStatementsAG.lean#L48) | [E249_02](../../evidence/comparator/replay-35882032091/receipt-E249_02.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

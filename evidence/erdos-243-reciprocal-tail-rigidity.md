@@ -2,7 +2,7 @@
 
 This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`e6c2d8f77ac2`](https://github.com/wcook04/plectis-erdos/tree/e6c2d8f77ac24753c5216a49f4daf7f7388b309f) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`c91562bd574a`](https://github.com/wcook04/plectis-erdos/tree/c91562bd574a387cde904481e609c7b4cacebb14) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35882032091](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35882032091) at corpus commit [`a2faa350b45a`](https://github.com/wcook04/plectis-erdos-lean/tree/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3) (tag `paper-evidence-2026-09-23`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 18 results: 18 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 18 compared.
 
@@ -10,7 +10,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="res-originalbounded"></a>
 
-## Corollary (bounded increments of $`P_n/a_n`$)
+## Corollary 1.1 (bounded increments of $`P_n/a_n`$), page 2
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers, $`a_{n+1}/a_n^2\to1`$, and $`\sum_{n\ge1}1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. If
 > ``` math
@@ -21,7 +21,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211)
+[`ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211)
 
 ```lean
 theorem original_coordinate_bounded_defect
@@ -47,7 +47,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-bounded"></a>
 
-## Theorem (bounded negative part)
+## Theorem 1.2 (bounded negative part), page 3
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
 > 
@@ -67,7 +67,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360)
+[`ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360)
 
 ```lean
 theorem eventuallyBoundedNegativePart_eventually_zero
@@ -95,13 +95,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cor"></a>
 
-## Corollary
+## Corollary 2.1, page 4
 
 > *Under Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a>, the multipliers satisfy $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.bounded_negative_endpoint_eventual_multiplier`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179)
+[`ErdosProblems.Erdos243.PaperCompleteR7.bounded_negative_endpoint_eventual_multiplier`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179)
 
 ```lean
 theorem bounded_negative_endpoint_eventual_multiplier
@@ -128,7 +128,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-update"></a>
 
-## Proposition (error identities)
+## Proposition 3.1 (error identities), page 4
 
 > *<span id="res:defect" label="res:defect"></span> For an exact integer state,
 > ``` math
@@ -138,7 +138,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.error_identities`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21)
+[`ErdosProblems.Erdos243.PaperCompleteR7.error_identities`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21)
 
 ```lean
 theorem error_identities (a aNext D C : ℤ) :
@@ -160,13 +160,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-absorb"></a>
 
-## Theorem (absorption and descent)
+## Theorem 3.2 (absorption and descent), page 4
 
 > *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120)
+[`ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120)
 
 ```lean
 theorem absorption_and_descent :
@@ -194,13 +194,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-step"></a>
 
-## Corollary (two zero errors)
+## Corollary 3.3 (two zero errors), page 4
 
 > *<span id="res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787)
+1. [`ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787)
 
 ```lean
 theorem sylvesterNext_eq_of_centered_zero
@@ -212,7 +212,7 @@ theorem sylvesterNext_eq_of_centered_zero
     aNext = sylvesterNext a
 ```
 
-2. [`ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L156)
+2. [`ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L156)
 
 ```lean
 theorem natural_sylvester_of_eventual_zero
@@ -238,13 +238,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-crt"></a>
 
-## Lemma (consecutive multiples)
+## Lemma 3.4 (consecutive multiples), page 5
 
 > *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839)
+[`ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839)
 
 ```lean
 theorem exists_shifted_consecutiveMultiples
@@ -268,13 +268,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-barrier"></a>
 
-## Theorem (Chinese remainder theorem and first crossing)
+## Theorem 3.5 (Chinese remainder theorem and first crossing), page 5
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903)
+[`ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903)
 
 ```lean
 theorem no_boundedRise_of_tailAvoidance
@@ -302,13 +302,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-reduced"></a>
 
-## Proposition (persistent coprimality)
+## Proposition 3.6 (persistent coprimality), page 5
 
 > *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.persistent_coprimality`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16)
+[`ErdosProblems.Erdos243.PaperCompleteR7.persistent_coprimality`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16)
 
 ```lean
 theorem persistent_coprimality
@@ -333,13 +333,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-gcdstab"></a>
 
-## Proposition (gcd stabilisation)
+## Proposition 3.7 (gcd stabilisation), page 6
 
 > *For a positive exact state, suppose that some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Division by its stable value gives a reduced exact tail.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103)
+[`ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103)
 
 ```lean
 theorem gcd_stabilises_and_reduces
@@ -369,7 +369,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-massscalar"></a>
 
-## Theorem (a convergent sum of relative increases)
+## Theorem 5.1 (a convergent sum of relative increases), page 8
 
 > *<span id="res:mass" label="res:mass"></span> Let $`C_n`$ be positive integers and $`E_n`$ integers satisfying $`C_{n+1}=C_n-E_n`$. If
 > ``` math
@@ -379,7 +379,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.finite_negative_mass_paper`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84)
+[`ErdosProblems.Erdos243.PaperCompleteR7.finite_negative_mass_paper`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84)
 
 ```lean
 theorem finite_negative_mass_paper :
@@ -410,7 +410,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weightedrecord"></a>
 
-## Theorem (a convergent weighted sum over new maxima)
+## Theorem 6.1 (a convergent weighted sum over new maxima), page 9
 
 > *Assume the growth and rationality hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 > ``` math
@@ -419,7 +419,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202)
+[`ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202)
 
 ```lean
 theorem canonical_weighted_record_excess
@@ -447,7 +447,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-lcmbounded"></a>
 
-## Corollary (a bound using the least common multiple)
+## Corollary 6.2 (a bound using the least common multiple), page 11
 
 > *Assume the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
 > ``` math
@@ -458,7 +458,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49)
+[`ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49)
 
 ```lean
 theorem original_coordinate_lcm_bounded_defect
@@ -484,7 +484,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-inclusiveone"></a>
 
-## Corollary (an inclusive one-sided $`1/n`$ bound)
+## Corollary 7.1 (an inclusive one-sided $`1/n`$ bound), page 12
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Suppose that for some $`K\ge0`$ and $`\varepsilon>0`$,
 > ``` math
@@ -495,7 +495,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207)
+1. [`ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207)
 
 ```lean
 theorem original_coordinate_inclusive_one
@@ -512,7 +512,7 @@ theorem original_coordinate_inclusive_one
       (a (n + 1) : ℤ) = (a n : ℤ) ^ 2 - (a n : ℤ) + 1
 ```
 
-2. [`ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one_pointwise`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225)
+2. [`ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one_pointwise`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225)
 
 ```lean
 theorem original_coordinate_inclusive_one_pointwise
@@ -540,7 +540,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cubicrate"></a>
 
-## Theorem (cubic-rate irrationality)
+## Theorem 7.2 (cubic-rate irrationality), page 12
 
 > *A strictly increasing sequence of positive integers with
 > ``` math
@@ -550,7 +550,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR21.cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70)
+[`ErdosProblems.Erdos243.PaperCompleteR21.cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70)
 
 ```lean
 theorem cubic_rate_irrationality_unconditional
@@ -574,7 +574,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-frontier"></a>
 
-## Proposition (necessary profile)
+## Proposition 8.1 (necessary profile), page 14
 
 > *The integer tail of a sequence satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
 > ``` math
@@ -583,7 +583,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR7.canonical_frontier`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151)
+[`ErdosProblems.Erdos243.PaperCompleteR7.canonical_frontier`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151)
 
 ```lean
 theorem canonical_frontier
@@ -594,7 +594,14 @@ theorem canonical_frontier
       atTop (nhds 1))
     (hnot : ¬ ∃ N, ∀ n, N ≤ n →
       (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)) :
-    let C
+    let C := canonicalNaturalNumerator a p q
+    let D := canonicalDenominator a q
+    let E := fun n ↦ centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ)
+    (∃ N, ∀ n, N ≤ n → E n ≠ 0) ∧
+    Tendsto (fun n ↦ |(E n : ℝ)| / (C n : ℝ)) atTop (nhds 0) ∧
+    (∀ N B : ℕ, ∃ n, N ≤ n ∧ E n < -(B : ℤ)) ∧
+    Tendsto (fun N ↦ ∑ n ∈ Finset.range N,
+      max (-(E n : ℝ)) 0 / (C n : ℝ)) atTop atTop
 ```
 
 <a id="res-frontier-comparator"></a>
@@ -609,13 +616,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weights"></a>
 
-## Lemma (weights and linear density)
+## Lemma 8.3 (weights and linear density), page 15
 
 > *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR20.real_lowerDensityZero_iff_exists_admissible_real_weight`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87)
+[`ErdosProblems.Erdos243.PaperCompleteR20.real_lowerDensityZero_iff_exists_admissible_real_weight`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87)
 
 ```lean
 theorem real_lowerDensityZero_iff_exists_admissible_real_weight
@@ -651,13 +658,13 @@ theorem real_lowerDensityZero_iff_exists_admissible_real_weight
 
 <a id="res-residue"></a>
 
-## Theorem (factorial residue reduction)
+## Theorem B.2 (factorial residue reduction), page 17
 
 > *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134)
+[`ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134)
 
 ```lean
 theorem forcedSurvives_iff_of_modEq_factorial

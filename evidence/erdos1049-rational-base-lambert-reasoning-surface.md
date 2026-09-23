@@ -2,7 +2,7 @@
 
 This record belongs to the paper [erdos1049-rational-base-lambert-reasoning-surface.pdf](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`e6c2d8f77ac2`](https://github.com/wcook04/plectis-erdos/tree/e6c2d8f77ac24753c5216a49f4daf7f7388b309f) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`c91562bd574a`](https://github.com/wcook04/plectis-erdos/tree/c91562bd574a387cde904481e609c7b4cacebb14) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35882032091](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35882032091) at corpus commit [`a2faa350b45a`](https://github.com/wcook04/plectis-erdos-lean/tree/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3) (tag `paper-evidence-2026-09-23`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 35 results: 35 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 30 compared.
 
@@ -10,13 +10,13 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="long1049-res-omega-indicator"></a>
 
-## Lemma (the weight is an indicator)
+## Lemma 2.1 (the weight is an indicator), page 4
 
 > *On $`[0,1)`$ the function $`\omega`$ takes only the values $`0`$ and $`1`$, and $`\omega=1`$ exactly on the union of the thirteen half-open intervals listed above.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.omega_indicator`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297)
+[`ErdosProblems.Erdos1049.PaperR7.omega_indicator`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297)
 
 ```lean
 theorem omega_indicator (x : ℝ) (hx0 : 0 ≤ x) (hx1 : x < 1) :
@@ -36,7 +36,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-region"></a>
 
-## Theorem (rational-base region)
+## Theorem 2.2 (rational-base region), page 4
 
 > *Let $`a>b\ge1`$ be coprime integers with
 > ``` math
@@ -48,7 +48,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_contour`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L418)
+1. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_contour`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L418)
 
 ```lean
 theorem printed_contour :
@@ -56,7 +56,7 @@ theorem printed_contour :
       zudilinContour < (40568302138406055 : ℝ) / 10 ^ 17
 ```
 
-2. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.contour_enclosure`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L487)
+2. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.contour_enclosure`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L487)
 
 ```lean
 theorem contour_enclosure :
@@ -64,7 +64,7 @@ theorem contour_enclosure :
       zudilinContour ≤ (40568302138406054104 : ℝ) / 10 ^ 20
 ```
 
-3. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.zudilinJ_enclosure`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334)
+3. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.zudilinJ_enclosure`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334)
 
 ```lean
 theorem zudilinJ_enclosure :
@@ -72,7 +72,7 @@ theorem zudilinJ_enclosure :
       zudilinJ ≤ (77943184475009095946 : ℝ) / 10 ^ 18
 ```
 
-4. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.zudilinC0_enclosure`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383)
+4. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.zudilinC0_enclosure`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383)
 
 ```lean
 theorem zudilinC0_enclosure :
@@ -80,14 +80,14 @@ theorem zudilinC0_enclosure :
       zudilinC0 ≤ (221300088165005025132 : ℝ) / 10 ^ 18
 ```
 
-5. [`ErdosProblems.Erdos1049.PaperCompleteR21.zudilin_rpow_lt_iff_contourRegion`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L96)
+5. [`ErdosProblems.Erdos1049.PaperCompleteR21.zudilin_rpow_lt_iff_contourRegion`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L96)
 
 ```lean
 theorem zudilin_rpow_lt_iff_contourRegion (a b : ℕ) (hb : 0 < b) (hab : b < a) :
     ((b : ℝ) ^ zudilinMu < (a : ℝ)) ↔ ZudilinContourRegion a b
 ```
 
-6. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L109)
+6. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L109)
 
 ```lean
 theorem rational_base_threshold (a b : ℕ) (hb : 0 < b) (hab : b < a)
@@ -95,7 +95,7 @@ theorem rational_base_threshold (a b : ℕ) (hb : 0 < b) (hab : b < a)
     Irrational (paperLambert ((a : ℝ) / b))
 ```
 
-7. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold_log`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L116)
+7. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold_log`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L116)
 
 ```lean
 theorem rational_base_threshold_log (a b : ℕ) (hb : 0 < b) (hab : b < a)
@@ -122,7 +122,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-31over4"></a>
 
-## Theorem (the base $`31/4`$ outside the Bundschuh–Väänänen region)
+## Theorem 2.3 (the base $`31/4`$ outside the Bundschuh–Väänänen region), page 9
 
 > *$`F(31/4)`$ is irrational, and so is $`F\bigl((31/4)^{r}\bigr)`$ for every integer $`r\ge1`$. Here
 > ``` math
@@ -136,7 +136,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_log_ratio`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L118)
+1. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_log_ratio`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L118)
 
 ```lean
 theorem printed_log_ratio :
@@ -144,7 +144,7 @@ theorem printed_log_ratio :
       Real.log 4 / Real.log 31 < (4036981731641998 : ℝ) / 10 ^ 16
 ```
 
-2. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_bv_cutoff`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L195)
+2. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_bv_cutoff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L195)
 
 ```lean
 theorem printed_bv_cutoff :
@@ -152,7 +152,7 @@ theorem printed_bv_cutoff :
       1 / 2 - 1 / Real.pi ^ 2 < (3986788163576623 : ℝ) / 10 ^ 16
 ```
 
-3. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_bvMu`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L218)
+3. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_bvMu`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L218)
 
 ```lean
 theorem printed_bvMu :
@@ -160,7 +160,7 @@ theorem printed_bvMu :
       paperBvMu < (2508284761995 : ℝ) / 10 ^ 12
 ```
 
-4. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_four_rpow_bvMu`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L308)
+4. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_four_rpow_bvMu`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L308)
 
 ```lean
 theorem printed_four_rpow_bvMu :
@@ -168,13 +168,13 @@ theorem printed_four_rpow_bvMu :
       (4 : ℝ) ^ paperBvMu < (32369643 : ℝ) / 10 ^ 6
 ```
 
-5. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.paperBvMu_eq`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L212)
+5. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.paperBvMu_eq`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean#L212)
 
 ```lean
 theorem paperBvMu_eq : paperBvMu = 1 / (1 / 2 - 1 / Real.pi ^ 2)
 ```
 
-6. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_four_rpow_mu`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L625)
+6. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_four_rpow_mu`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L625)
 
 ```lean
 theorem printed_four_rpow_mu :
@@ -182,26 +182,26 @@ theorem printed_four_rpow_mu :
       (4 : ℝ) ^ paperMu < (30483516 : ℝ) / 10 ^ 6
 ```
 
-7. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.four_rpow_mu_lt_thirtyOne`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L658)
+7. [`ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.four_rpow_mu_lt_thirtyOne`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L658)
 
 ```lean
 theorem four_rpow_mu_lt_thirtyOne : (4 : ℝ) ^ paperMu < 31
 ```
 
-8. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_irrational`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L125)
+8. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_irrational`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L125)
 
 ```lean
 theorem thirtyoneFour_irrational : Irrational (paperLambert ((31 : ℝ) / 4))
 ```
 
-9. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_pow_irrational`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L129)
+9. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_pow_irrational`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L129)
 
 ```lean
 theorem thirtyoneFour_pow_irrational (r : ℕ) (hr : 0 < r) :
     Irrational (paperLambert (((31 : ℝ) / 4) ^ r))
 ```
 
-10. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_ratio_chain`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L134)
+10. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_ratio_chain`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L134)
 
 ```lean
 theorem thirtyoneFour_ratio_chain :
@@ -210,20 +210,20 @@ theorem thirtyoneFour_ratio_chain :
       (81 : ℝ) / 200 < zudilinContour
 ```
 
-11. [`ErdosProblems.Erdos1049.PaperCompleteR21.inv_bvMu_eq`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L153)
+11. [`ErdosProblems.Erdos1049.PaperCompleteR21.inv_bvMu_eq`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L153)
 
 ```lean
 theorem inv_bvMu_eq : 1 / bvMu = 1 / 2 - 1 / Real.pi ^ 2
 ```
 
-12. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_between_rpow`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L169)
+12. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_between_rpow`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L169)
 
 ```lean
 theorem thirtyoneFour_between_rpow :
     (4 : ℝ) ^ zudilinMu < 31 ∧ (31 : ℝ) < (4 : ℝ) ^ bvMu
 ```
 
-13. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_outside_bv_inside_contour`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L182)
+13. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_outside_bv_inside_contour`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L182)
 
 ```lean
 theorem thirtyoneFour_outside_bv_inside_contour :
@@ -254,7 +254,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-cor-rational-base-measure"></a>
 
-## Corollary (an irrationality measure uniform over powers)
+## Corollary 2.4 (an irrationality measure uniform over powers), page 10
 
 > *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 > ``` math
@@ -265,7 +265,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194)
+1. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194)
 
 ```lean
 theorem rational_base_measure_uniform (a b r : ℕ) (hb : 0 < b) (hab : b < a)
@@ -276,14 +276,14 @@ theorem rational_base_measure_uniform (a b r : ℕ) (hb : 0 < b) (hab : b < a)
         (zudilinContour - Real.log (b : ℝ) / Real.log (a : ℝ))
 ```
 
-2. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205)
+2. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205)
 
 ```lean
 theorem thirtyoneFour_power_measure_lt_301 (r : ℕ) (hr : 0 < r) :
     irrationalityExponent (paperLambert (((31 : ℝ) / 4) ^ r)) < 301
 ```
 
-3. [`ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167)
+3. [`ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167)
 
 ```lean
 theorem rational_base_power_measure (a b r : ℕ) (hb : 0 < b) (hab : b < a)
@@ -292,7 +292,7 @@ theorem rational_base_power_measure (a b r : ℕ) (hb : 0 < b) (hab : b < a)
       rationalBaseMeasureBound a b
 ```
 
-4. [`ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_301`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176)
+4. [`ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_301`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176)
 
 ```lean
 theorem thirtyone_four_power_measure_lt_301 (r : ℕ) (hr : 0 < r) :
@@ -314,7 +314,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-archcap"></a>
 
-## Theorem (a degree restriction for estimates valid at every base)
+## Theorem 2.5 (a degree restriction for estimates valid at every base), page 14
 
 > *Let $`(U_n,V_n)\in\mathbb{Z}[x]^{2}`$ be a sequence such that, for constants $`\sigma,\delta>0`$ and $`h\ge0`$ independent of $`n`$ and of the base,*
 > 
@@ -341,9 +341,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Consequently the homogenised forms tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, a sufficient region whose cutoff is at most $`1/2`$. If the actual degrees satisfy $`d_n/n^{2}\to d`$, then $`d\ge\sigma`$ and the limit exists and equals $`d\log b-\sigma\log(a/b)`$; in that case the forms tend to zero below $`\log b/\log a=\sigma/(\sigma+d)`$ and their absolute values tend to infinity above it, so the exact-degree case has no decaying homogenised forms at $`3/2`$.*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\le(\delta+\varepsilon)n^2$ and $\le(h+\varepsilon)n^2$ for all large $n$, for each $\varepsilon>0$. For integers $a>b\ge1$ its conclusions are the printed ones, including $\sigma\le\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\sigma/(\sigma+d)$, and the divergence at $a/b=3/2$.
 
-[`ErdosProblems.Erdos1049.PaperR9.long_record_archcap`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean#L411)
+[`ErdosProblems.Erdos1049.PaperR9.long_record_archcap`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean#L411)
 
 ```lean
 theorem long_record_archcap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
@@ -387,13 +387,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-cor-no-decay-below-square"></a>
 
-## Corollary (nondecay when $`b<a<b^2`$)
+## Corollary 2.6 (nondecay when $`b<a<b^2`$), page 15
 
 > *Under the hypotheses of Theorem <a href="#long1049:res:archcap" data-reference-type="ref" data-reference="long1049:res:archcap">5</a>, for positive integers $`a,b`$ with $`b<a<b^2`$, the undivided forms $`b^{d_n}\Lambda_n(a/b)`$ do not tend to zero. No limit of $`d_n/n^2`$ is assumed.*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement assumes the hypotheses of Theorem 2.5 in the form of its Lean statement, which allows any real function $F$ and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$. For integers $1\le b<a<b^2$ its conclusion is the printed nondecay of $b^{d_n}\Lambda_n(a/b)$, with no assumption on $d_n/n^2$.
 
-[`ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69)
+[`ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69)
 
 ```lean
 theorem cleared_below_square_not_tendsto_zero
@@ -434,13 +434,13 @@ theorem cleared_below_square_not_tendsto_zero
 
 <a id="long1049-res-sourceheight"></a>
 
-## Lemma (coefficient heights of the constructed polynomials)
+## Lemma 2.7 (coefficient heights of the constructed polynomials), page 16
 
 > *There is a constant $`h`$ with $`\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}`$ for every $`n\ge1`$, where $`U_n`$ and $`V_n`$ are the polynomials of <a href="#long1049:eq:integer-polynomial-pair" data-reference-type="eqref" data-reference="long1049:eq:integer-polynomial-pair">[long1049:eq:integer-polynomial-pair]</a>.*
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1049.PaperCompleteR21.exists_quadratic_source_height_bound`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean#L49)
+1. [`ErdosProblems.Erdos1049.PaperCompleteR21.exists_quadratic_source_height_bound`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean#L49)
 
 ```lean
 theorem exists_quadratic_source_height_bound :
@@ -451,7 +451,7 @@ theorem exists_quadratic_source_height_bound :
         h * (n : ℝ) ^ 2
 ```
 
-2. [`ErdosProblems.Erdos1049.PaperCompleteR21.maxPairHeight_source_eq`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean#L40)
+2. [`ErdosProblems.Erdos1049.PaperCompleteR21.maxPairHeight_source_eq`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SourceCoefficientHeights.lean#L40)
 
 ```lean
 theorem maxPairHeight_source_eq (n : ℕ) :
@@ -491,7 +491,7 @@ theorem maxPairHeight_source_eq (n : ℕ) :
 
 <a id="long1049-res-powerbracket"></a>
 
-## Theorem (sharp power bracket)
+## Theorem 3.1 (sharp power bracket), page 20
 
 > *One has
 > ``` math
@@ -506,7 +506,7 @@ theorem maxPairHeight_source_eq (n : ℕ) :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.power_bracket`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L24)
+[`ErdosProblems.Erdos1049.PaperR7.power_bracket`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L24)
 
 ```lean
 theorem power_bracket :
@@ -527,7 +527,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-sharpgaps"></a>
 
-## Corollary (gaps between the stated logarithmic thresholds)
+## Corollary 3.2 (gaps between the stated logarithmic thresholds), page 21
 
 > *For every $`\rho,\sigma\in\mathbb{R}`$ with $`0\le\rho`$ and $`1+\rho\le\sigma`$,
 > ``` math
@@ -543,7 +543,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.height_and_hankel_deficits`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L34)
+[`ErdosProblems.Erdos1049.PaperR7.height_and_hankel_deficits`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L34)
 
 ```lean
 theorem height_and_hankel_deficits (rho sigma : ℝ)
@@ -565,7 +565,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-chargeceilings"></a>
 
-## Theorem (bounds for two proposed degree savings)
+## Theorem 3.3 (bounds for two proposed degree savings), page 21
 
 > *For every integer $`N>0`$,
 > ``` math
@@ -579,7 +579,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.charge_ceilings`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L44)
+[`ErdosProblems.Erdos1049.PaperR7.charge_ceilings`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L44)
 
 ```lean
 theorem charge_ceilings :
@@ -605,7 +605,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-zudilin-sharp-qorder"></a>
 
-## Theorem (the first nonzero term at every rank)
+## Theorem 3.4 (the first nonzero term at every rank), page 22
 
 > *For every rank $`N`$, the normalised Hankel determinant $`V_N^{*}`$ of \[zudilin2016, Sec. 4, (6), p. 6\], evaluated at $`x=z=1`$, has
 > ``` math
@@ -616,7 +616,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173)
+1. [`ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173)
 
 ```lean
 theorem order_zudilinNormalizedHankelDet_all (N : ℕ) :
@@ -624,7 +624,7 @@ theorem order_zudilinNormalizedHankelDet_all (N : ℕ) :
       ((N * (N - 1) * (2 * N - 1) / 6 : ℕ) : ℕ∞)
 ```
 
-2. [`ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199)
+2. [`ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199)
 
 ```lean
 theorem coeff_zudilinNormalizedHankelDet_all_rat (N : ℕ) :
@@ -646,7 +646,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-allrowinitial"></a>
 
-## Lemma (a coefficient of each transformed row)
+## Lemma 3.5 (a coefficient of each transformed row), page 23
 
 > *For $`m\ge j\ge0`$ one has $`D_jW_m(t)\in q^{E(m,j)}A`$ and
 > ``` math
@@ -655,7 +655,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos1049.PaperCompleteR21.all_row_initial`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L213)
+1. [`ErdosProblems.Erdos1049.PaperCompleteR21.all_row_initial`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L213)
 
 ```lean
 theorem all_row_initial (a : ℕ → S) (h : ℕ → ℤ) (hzero : h 0 = 1)
@@ -671,7 +671,7 @@ theorem all_row_initial (a : ℕ → S) (h : ℕ → ℤ) (hzero : h 0 = 1)
         (if t ≤ j then (-1 : ℤ) ^ j * h (j - t) else 0)
 ```
 
-2. [`ErdosProblems.Erdos1049.PaperCompleteR21.all_row_initial_reciprocal`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L242)
+2. [`ErdosProblems.Erdos1049.PaperCompleteR21.all_row_initial_reciprocal`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L242)
 
 ```lean
 theorem all_row_initial_reciprocal (a : ℕ → S) (m j t : ℕ) (hjm : j ≤ m) :
@@ -683,7 +683,7 @@ theorem all_row_initial_reciprocal (a : ℕ → S) (m j t : ℕ) (hjm : j ≤ m)
         (if t ≤ j then (-1 : ℤ) ^ j * paperReciprocal a (j - t) else 0)
 ```
 
-3. [`ErdosProblems.Erdos1049.PaperCompleteR21.all_row_initial_dvd`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L255)
+3. [`ErdosProblems.Erdos1049.PaperCompleteR21.all_row_initial_dvd`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L255)
 
 ```lean
 theorem all_row_initial_dvd (a : ℕ → S) (m j t : ℕ) (hjm : j ≤ m) :
@@ -691,20 +691,20 @@ theorem all_row_initial_dvd (a : ℕ → S) (m j t : ℕ) (hjm : j ≤ m) :
       zudilinBackwardShiftApply j m (fun n => paperTail a n t)
 ```
 
-4. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperE_eq_rowExponent`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L116)
+4. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperE_eq_rowExponent`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L116)
 
 ```lean
 theorem paperE_eq_rowExponent (m j : ℕ) (hjm : j ≤ m) :
     m * j - j * (j - 1) / 2 = rowExponent j (m - j)
 ```
 
-5. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperReciprocal_zero`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L165)
+5. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperReciprocal_zero`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L165)
 
 ```lean
 theorem paperReciprocal_zero (a : ℕ → S) : paperReciprocal a 0 = 1
 ```
 
-6. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperReciprocal_rec`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L171)
+6. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperReciprocal_rec`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L171)
 
 ```lean
 theorem paperReciprocal_rec (a : ℕ → S) (i : ℕ) :
@@ -713,7 +713,7 @@ theorem paperReciprocal_rec (a : ℕ → S) (i : ℕ) :
           PowerSeries.constantCoeff (a (s + 1)) * paperReciprocal a (i - s))
 ```
 
-7. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperRatio_agree`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L73)
+7. [`ErdosProblems.Erdos1049.PaperCompleteR21.paperRatio_agree`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/AllRowInitialCoefficient.lean#L73)
 
 ```lean
 theorem paperRatio_agree (a : ℕ → S) (n D K : ℕ) (hDK : D ≤ K) :
@@ -738,7 +738,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-geometric-universality"></a>
 
-## Theorem (determinants of geometric moments)
+## Theorem 3.6 (determinants of geometric moments), page 28
 
 > *Let $`a_k>0`$ satisfy, for fixed constants $`C`$ and $`\kappa`$,
 > ``` math
@@ -753,9 +753,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \qquad(N\to\infty).
 > ```*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
 
-[`ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324)
+[`ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324)
 
 ```lean
 theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
@@ -776,7 +776,7 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
 
 <a id="long1049-prop-rogers-factorisation"></a>
 
-## Proposition (the moment weights as a product of two finite sums)
+## Proposition 3.7 (the moment weights as a product of two finite sums), page 29
 
 > *For $`r\ge1`$ and $`k\ge0`$ set
 > ``` math
@@ -796,7 +796,7 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation_proposition`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312)
+[`ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation_proposition`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312)
 
 ```lean
 theorem rogers_factorisation_proposition :
@@ -838,7 +838,7 @@ theorem rogers_factorisation_proposition :
 
 <a id="long1049-thm-sharp-fixed-base"></a>
 
-## Theorem (the size of $`V_N^*`$ at a fixed base)
+## Theorem 3.8 (the size of $`V_N^*`$ at a fixed base), page 31
 
 > *Let $`\gamma_{\!E}`$ be Euler’s constant. The product
 > ``` math
@@ -856,7 +856,7 @@ theorem rogers_factorisation_proposition :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean#L990)
+[`ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean#L990)
 
 ```lean
 theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ)
@@ -879,13 +879,13 @@ theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ
 
 <a id="long1049-res-finite-pencil"></a>
 
-## Proposition (finite coefficient positivity and pencil roots)
+## Proposition 3.9 (finite coefficient positivity and pencil roots), page 35
 
 > *For every real $`p>1`$ and $`1\le N\le8`$, $`A_N`$ is positive definite and all roots of $`\det(YA_N-B_N)`$ are real and strictly less than $`F(p)`$. The roots at consecutive ranks $`N,N+1\le8`$ interlace non-strictly.*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement also covers the rank $N=0$; for $1\le N\le8$ it gives positive definiteness of $A_N$, a pencil polynomial $\det(YA_N-B_N)$ that splits over $\mathbb R$ with every root below $F(p)$, and the non-strict interlacing of the roots at ranks $N$ and $N+1\le8$.
 
-[`ErdosProblems.Erdos1049.PaperR20.coefficientPencil_finitePencil`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43)
+[`ErdosProblems.Erdos1049.PaperR20.coefficientPencil_finitePencil`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43)
 
 ```lean
 theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
@@ -927,7 +927,7 @@ theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
 
 <a id="long1049-res-content"></a>
 
-## Theorem (rescaling rows and their determinant)
+## Theorem 4.1 (rescaling rows and their determinant), page 40
 
 > *Let $`S`$ be real, let $`(U_n,V_n)`$ and $`(U_m,V_m)`$ be pairs of integers, and let $`c_n,c_m`$ be integers. Then
 > ``` math
@@ -947,7 +947,7 @@ theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.integer_scalar_content`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59)
+[`ErdosProblems.Erdos1049.PaperR7.integer_scalar_content`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59)
 
 ```lean
 theorem integer_scalar_content (S : ℝ) (cn cm Un Vn Um Vm : ℤ) :
@@ -972,7 +972,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-endpoints"></a>
 
-## Theorem (endpoint residues)
+## Theorem 5.1 (endpoint residues), page 41
 
 > *Let $`P=\sum_ip_iX^i\in\mathbb{Z}[X]`$ and let $`W\ge0`$. Then
 > ``` math
@@ -983,7 +983,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.endpoint_residues`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L74)
+[`ErdosProblems.Erdos1049.PaperR7.endpoint_residues`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L74)
 
 ```lean
 theorem endpoint_residues (W : ℕ) (P : Polynomial ℤ) :
@@ -1007,7 +1007,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-commonmult"></a>
 
-## Proposition (common divisor)
+## Proposition 5.3 (common divisor), page 42
 
 > *Let $`U,V\in\mathbb{Z}[X]`$ and let $`W\ge0`$. If $`U`$ has unit top endpoint, $`V`$ has unit constant endpoint, and an integer $`c`$ divides both $`H_W(U)`$ and $`H_W(V)`$, then
 > ``` math
@@ -1016,7 +1016,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L398)
+[`ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L398)
 
 ```lean
 theorem commonMultiplier_not_two_not_three_of_endpoint_units
@@ -1040,13 +1040,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nomult"></a>
 
-## Corollary (limits of rescaling and common-divisor cancellation at $`3/2`$)
+## Corollary 5.5 (limits of rescaling and common-divisor cancellation at $`3/2`$), page 42
 
 > *Under the endpoint hypotheses of Proposition <a href="#long1049:res:commonmult" data-reference-type="ref" data-reference="long1049:res:commonmult">21</a>, every common divisor of the unscaled evaluations $`H_W(U)`$ and $`H_W(V)`$ is coprime to $`6`$. Multiplying two integer rows by nonzero integers $`c_n,c_m`$ multiplies their determinant by $`c_nc_m`$ and its absolute value by $`|c_nc_m|`$. Cancelling this introduced scalar factor therefore leaves the original comparison between divisor and determinant size unchanged.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.endpoint_scalar_content_exclusion`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L220)
+[`ErdosProblems.Erdos1049.PaperR7.endpoint_scalar_content_exclusion`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L220)
 
 ```lean
 theorem endpoint_scalar_content_exclusion (W : ℕ) (U V : Polynomial ℤ)
@@ -1072,13 +1072,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-cyclounit"></a>
 
-## Proposition (coprimality of homogenised cyclotomic values)
+## Proposition 5.6 (coprimality of homogenised cyclotomic values), page 43
 
 > *Let $`a>b\ge1`$ with $`\gcd(a,b)=1`$ and let $`m\ge1`$. Then $`\gcd(\Phi_m(a,b),ab)=1`$. In particular $`\gcd(\Phi_m(3,2),6)=1`$ for every $`m`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L302)
+[`ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L302)
 
 ```lean
 theorem cyclotomicHomEval_isCoprime_mul
@@ -1100,7 +1100,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-jetkernel"></a>
 
-## Theorem (equal residues for two subset sums)
+## Theorem 5.7 (equal residues for two subset sums), page 44
 
 > *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
 > ``` math
@@ -1114,7 +1114,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.fourJet_paper_statement`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248)
+[`ErdosProblems.Erdos1049.PaperR7.fourJet_paper_statement`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248)
 
 ```lean
 theorem fourJet_paper_statement {M R S W : ℕ}
@@ -1136,7 +1136,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-rankfortyone"></a>
 
-## Corollary (the exact count at depth $`41`$)
+## Corollary 5.8 (the exact count at depth $`41`$), page 44
 
 > *Let $`T>0`$. At modulus $`3^{R}`$ with $`R=41T`$, any family of $`M\ge130T+2S`$ integral polynomial pairs has two distinct binary selectors with the same residue vector. For $`T=1`$ the coefficient $`130`$ is exact for this counting argument:
 > ``` math
@@ -1147,7 +1147,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.rank_fortyone`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L149)
+[`ErdosProblems.Erdos1049.PaperR7.rank_fortyone`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L149)
 
 ```lean
 theorem rank_fortyone {M T S W : ℕ}
@@ -1171,7 +1171,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-boundedfibre"></a>
 
-## Theorem (equal residues with different values)
+## Theorem 5.9 (equal residues with different values), page 45
 
 > *Let $`A`$ and $`B`$ be finite sets, let $`f:A\to B`$, and let $`g:A\to C`$ be any map into a set $`C`$. Suppose every fibre of $`g`$ has at most $`k`$ elements. If
 > ``` math
@@ -1185,7 +1185,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.exists_ne_map_eq_map_ne_of_card_mul_lt`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean#L1832)
+[`ErdosProblems.Erdos1049.exists_ne_map_eq_map_ne_of_card_mul_lt`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean#L1832)
 
 ```lean
 theorem exists_ne_map_eq_map_ne_of_card_mul_lt {α β γ : Type*}
@@ -1208,7 +1208,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-plucker-collapse"></a>
 
-## Theorem (vanishing minors and a residue count)
+## Theorem 5.10 (vanishing minors and a residue count), page 45
 
 > *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that each row is unimodular, meaning that $`u_nA_n+v_nB_n=1`$ for some $`u_n,v_n\in R_0`$, and that every adjacent minor vanishes:
 > ``` math
@@ -1222,7 +1222,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.plucker_paper_statement`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269)
+[`ErdosProblems.Erdos1049.PaperR7.plucker_paper_statement`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269)
 
 ```lean
 theorem plucker_paper_statement :
@@ -1245,7 +1245,7 @@ theorem plucker_paper_statement :
 
 <a id="long1049-res-scalar"></a>
 
-## Theorem (a restriction on the two scalar exponents)
+## Theorem 5.12 (a restriction on the two scalar exponents), page 47
 
 > *Let $`C_1>0`$. If $`C_0\le0`$ or $`2C_0\le C_1`$, then
 > ``` math
@@ -1256,9 +1256,9 @@ theorem plucker_paper_statement :
 > C_0\log3-C_1\log2< -\frac{17}{41}C_0\log2.
 > ```*
 
-The Lean declaration below states a result at least as strong as this one.
+The Lean declaration below states a result at least as strong as this one. The Lean statement has the same hypotheses and conclusion as the printed one.
 
-[`ErdosProblems.Erdos1049.PaperR7.scalar_margin`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L177)
+[`ErdosProblems.Erdos1049.PaperR7.scalar_margin`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L177)
 
 ```lean
 theorem scalar_margin {C0 C1 : ℝ} (hC1 : 0 < C1)
@@ -1280,7 +1280,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-corridorbound"></a>
 
-## Theorem (a necessary inequality for clearing)
+## Theorem 6.2 (a necessary inequality for clearing), page 48
 
 > *If $`(a,b,N,K,Q,D)`$ satisfies the clearing conditions, then
 > ``` math
@@ -1289,7 +1289,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L121)
+[`ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L121)
 
 ```lean
 theorem coordinatewiseCorridor_implies_pow_lt_linear
@@ -1310,13 +1310,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-exp"></a>
 
-## Proposition
+## Proposition 6.4, page 49
 
 > *For every natural number $`x\ge2`$ we have $`3x<2^{\,x+1}`$.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.three_mul_lt_two_pow_succ`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L142)
+[`ErdosProblems.Erdos1049.three_mul_lt_two_pow_succ`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L142)
 
 ```lean
 theorem three_mul_lt_two_pow_succ {x : ℕ} (hx : 2 ≤ x) :
@@ -1335,13 +1335,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nocorridor"></a>
 
-## Theorem (failure of the stated clearing conditions at $`3/2`$)
+## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 49
 
 > *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the clearing conditions.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155)
+[`ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155)
 
 ```lean
 theorem threeHalves_no_coordinatewiseCorridor
@@ -1361,7 +1361,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tailrec"></a>
 
-## Theorem (recurrence for the scaled remainder)
+## Theorem 7.1 (recurrence for the scaled remainder), page 50
 
 > *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be as in <a href="#long1049:eq:tailstate" data-reference-type="eqref" data-reference="long1049:eq:tailstate">[long1049:eq:tailstate]</a>. Then for every $`N`$,
 > ``` math
@@ -1370,7 +1370,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187)
+[`ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187)
 
 ```lean
 theorem rationalBaseClearedTailQ_succ
@@ -1392,7 +1392,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-forcing"></a>
 
-## Theorem (the forcing term)
+## Theorem 7.2 (the forcing term), page 50
 
 > *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
 > 
@@ -1402,7 +1402,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.forcing_term`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186)
+[`ErdosProblems.Erdos1049.PaperR7.forcing_term`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186)
 
 ```lean
 theorem forcing_term (B : ℕ) (c : ℕ → ℕ) (N : ℕ) :
@@ -1423,7 +1423,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-sevenhalves"></a>
 
-## Theorem (the $`7/2`$ height condition)
+## Theorem 8.1 (the $`7/2`$ height condition), page 51
 
 > *``` math
 > \frac{\log 7}{\log(7/2)}
@@ -1433,7 +1433,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.sevenHalves_archimedean_height_condition`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
+[`ErdosProblems.Erdos1049.sevenHalves_archimedean_height_condition`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
 
 ```lean
 theorem sevenHalves_archimedean_height_condition :
@@ -1453,7 +1453,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-pade"></a>
 
-## Proposition (exponent model: summand bound and exact gap)
+## Proposition 9.1 (exponent model: summand bound and exact gap), page 52
 
 > *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
 > ``` math
@@ -1473,7 +1473,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperR7.pade_summand_bound_and_gap`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201)
+[`ErdosProblems.Erdos1049.PaperR7.pade_summand_bound_and_gap`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201)
 
 ```lean
 theorem pade_summand_bound_and_gap (n k m : ℤ) :
@@ -1499,7 +1499,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tail-lattice"></a>
 
-## Proposition (the prefix lattice of the tails)
+## Proposition 10.3 (the prefix lattice of the tails), page 58
 
 > *Every $`Q_m`$ is coprime to $`ab`$, and $`b`$ divides every $`P_m`$. For every prefix containing $`m=0`$ and $`m=1`$,
 > ``` math
@@ -1510,7 +1510,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperCompleteR21.TailLattice.tail_prefix_lattice`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/TailPrefixLattice.lean#L475)
+[`ErdosProblems.Erdos1049.PaperCompleteR21.TailLattice.tail_prefix_lattice`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/TailPrefixLattice.lean#L475)
 
 ```lean
 theorem tail_prefix_lattice (a b : ℕ) (hb : 1 ≤ b) (hba : b < a) (hab : Nat.Coprime a b) :
@@ -1541,7 +1541,7 @@ theorem tail_prefix_lattice (a b : ℕ) (hb : 1 ≤ b) (hba : b < a) (hab : Nat.
 
 <a id="long1049-res-nomahler"></a>
 
-## Proposition (no finite simultaneous $`2/3`$-system)
+## Proposition 10.5 (no finite simultaneous $`2/3`$-system), page 60
 
 > *Let
 > ``` math
@@ -1551,7 +1551,7 @@ theorem tail_prefix_lattice (a b : ℕ) (hb : 1 ≤ b) (hba : b < a) (hab : Nat.
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos1049.PaperCompleteR21.no_finite_simultaneous_two_three_system_unconditional`](https://github.com/wcook04/plectis-erdos/blob/e6c2d8f77ac24753c5216a49f4daf7f7388b309f/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean#L298)
+[`ErdosProblems.Erdos1049.PaperCompleteR21.no_finite_simultaneous_two_three_system_unconditional`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean#L298)
 
 ```lean
 theorem no_finite_simultaneous_two_three_system_unconditional :
