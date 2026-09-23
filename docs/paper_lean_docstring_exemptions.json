@@ -73,6 +73,30 @@
    "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
    "label": "long243:res:squarespec",
    "reason": "The Dedekind-zeta proof of the lemma, written out as the body of SquareSpecialisation. The ledger binds squareSpecialisation in SquareSpecialisationUnconditional.lean, which is defined as this proof and states the lemma under the name the paper's consumers use."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
+   "label": "long1049:prop:rogers-factorisation",
+   "reason": "The formal-indeterminate half of the proposition. The whole proposition, including its real-q clauses, is rogers_factorisation_proposition in RogersFactorisationAnalytic.lean, which is the declaration the row binds."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation_proposition",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
+   "label": "long1049:prop:rogers-factorisation",
+   "reason": "Proves the whole of long1049:prop:rogers-factorisation, a statement added to the paper after the last count, so the ledger has no counted row for it yet. The ledger binds it at the next count of these papers, and this exemption then fails as stale and is removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.TailLattice.tail_prefix_lattice",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/TailPrefixLattice.lean",
+   "label": "long1049:res:tail-lattice",
+   "reason": "Proves the whole of long1049:res:tail-lattice, a statement added to the paper after the last count, so the ledger has no counted row for it yet. The ledger binds it at the next count of these papers, and this exemption then fails as stale and is removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_double_logarithmic_bound",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean",
+   "label": "sec:secondaryrate",
+   "reason": "Leads with the label of the section of the #243 short paper whose displayed double-logarithmic implication it proves. That display is prose, not an asserting environment, so no ledger row exists for it; the paper links the theorem directly."
   }
  ]
 }
