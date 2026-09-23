@@ -684,7 +684,7 @@ theorem erdos_257.variants.summable_reciprocal_support
     Irrational (∑' a : ℕ,
       Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a) := by
   have hsum' : Summable (Erdos249257.reciprocalSupportTerm A) := by
-    simpa [Erdos249257.reciprocalSupportTerm] using hsum
+    exact hsum
   simpa [Erdos249257.erdosSupportSeries] using
     Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal b A hb hA hsum'
 
