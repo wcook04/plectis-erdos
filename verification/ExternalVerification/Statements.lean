@@ -1097,6 +1097,44 @@ def CofinalLocalWindowEscape
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
+/-- Stable exported proposition for the finite totient-kernel rank.  Keeping
+this type in the shared statement module avoids proof-only imports changing
+the elaborated instance arguments in the Comparator-facing theorem type. -/
+def TotientFiniteKernelRankStatement : Prop :=
+  ∀ e : ℕ, 1 ≤ e →
+    finrank ℚ
+      (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
+        2 ^ e + 1
+
+def TotientInfiniteKernelRankStatement : Prop :=
+  ¬ FiniteDimensional ℚ
+    (Submodule.span ℚ (Set.range fullTotientKernelFamily))
+
+def TotientDyadicSectionBasisStatement : Prop :=
+  Nonempty
+    (Basis TotientOddCoreIndex ℚ
+      (Submodule.span ℚ (Set.range fullTotientKernelFamily)))
+
+def AllBaseTotientFiniteKernelRankStatement : Prop :=
+  ∀ (k e : ℕ), 2 ≤ k → 1 ≤ e →
+    LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e) →
+    finrank ℚ
+      (Submodule.span ℚ
+        (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
+      k ^ e + 1
+
+def TotientCarryAntiCompressionStatement : Prop :=
+  (¬ Irrational (binaryCoeffSeries Nat.totient)) →
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          CarrySectionsEventuallyPeriodicMod v h N₀ u
+
 structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem68 :
     Irrational factorialGapSeries ↔

@@ -132,44 +132,25 @@ theorem sylvesterNext_eventually_of_summable_negativeRelativeMass
   (portfolioClaims Unit).problem243SummableNegativeMass
     a D C hD hC hCpos hstep hvanish hsum
 
-theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
-    finrank ℚ
-      (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
-        2 ^ e + 1 :=
-  (portfolioClaims Unit).problem249Finite e he
+theorem finrank_totientKernelThroughLevelFamily_eq :
+    TotientFiniteKernelRankStatement :=
+  (portfolioClaims Unit).problem249Finite
 
 theorem not_finiteDimensional_span_fullTotientKernel :
-    ¬ FiniteDimensional ℚ
-      (Submodule.span ℚ (Set.range fullTotientKernelFamily)) :=
+    TotientInfiniteKernelRankStatement :=
   (portfolioClaims Unit).problem249Infinite
 
 theorem exists_totientDyadicSectionBasis :
-    Nonempty
-      (Basis TotientOddCoreIndex ℚ
-        (Submodule.span ℚ (Set.range fullTotientKernelFamily))) :=
+    TotientDyadicSectionBasisStatement :=
   (portfolioClaims Unit).problem249Basis
 
-theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
-    (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
-    (hcanon : LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e)) :
-    finrank ℚ
-      (Submodule.span ℚ
-        (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
-      k ^ e + 1 :=
-  (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
+theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent :
+    AllBaseTotientFiniteKernelRankStatement :=
+  (portfolioClaims Unit).problem249AllBaseRank
 
-theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
-    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
-    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
-      IsTemperedBinaryOrbit Nat.totient v u ∧
-        (∀ e : ℕ,
-          2 ^ e - 1 ≤
-            Module.finrank ℚ
-              (Submodule.span ℚ
-                (Set.range (canonicalCarryKernelFamily u e)))) ∧
-        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
-          CarrySectionsEventuallyPeriodicMod v h N₀ u :=
-  (portfolioClaims Unit).problem249CarryAntiCompression hirr
+theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank :
+    TotientCarryAntiCompressionStatement :=
+  (portfolioClaims Unit).problem249CarryAntiCompression
 
 theorem fixedPrecisionTropicalNoGo
     (u : ℕ) (hu : 0 < u)

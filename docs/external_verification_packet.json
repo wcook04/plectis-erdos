@@ -2935,7 +2935,7 @@
       "verification/ExternalVerification/Challenge.lean",
       "verification/ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:85317f652462b344e9f815188a6562a6383901af28e69083ddead293908a2153",
+    "digest": "sha256:47cdface4721644db7ebfa3b8b417deed5c80d3a24b9c2d40476db6697a3fc98",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2944,5 +2944,5 @@
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
   "config_digest": "sha256:c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
-  "solution_source_digest": "sha256:b2634cccf2c1f8fca1efd6261dd6ac27f3817cee6291f5864ffc1623afac7a5b"
+  "solution_source_digest": "sha256:5ec8c1064f04cb6def13108ebe20e0f4491b6da9f1c98b530a482eb57af42f95"
 }
