@@ -1,0 +1,78 @@
+{
+ "schema": "plectis-paper-lean-docstring-exemptions/1",
+ "rule": "A Lean declaration whose docstring leads with a paper label in backticks states that paper result, so scripts/check_lean_paper_propagation.py requires it in a ledger row. An entry here names one exact declaration that leads with a label and correctly stays out of the ledger, with the reason. The check fails for an entry whose declaration no longer leads with that label, or that the ledger now binds, so the list cannot go stale. Patterns and blanket entries are refused.",
+ "exemptions": [
+  {
+   "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.circle_slice_packing",
+   "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicCirclePacking.lean",
+   "label": "res:circle-slice-packing",
+   "reason": "First-pass form over an abstract pseudometric space that takes the hyperbolic law of cosines as the hypothesis hlaw. The ledger binds Hyperbolic.circle_slice_packing in HyperbolicLawOfCosines.lean, which proves that law (cosh_dist_polar) and states the result in the hyperbolic plane."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.dual_arity_floor",
+   "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicCirclePacking.lean",
+   "label": "res:dual-arity-floor",
+   "reason": "First-pass form over an abstract pseudometric space that takes the hyperbolic law of cosines as the hypothesis hlaw. The ledger binds Hyperbolic.dual_arity_floor in HyperbolicLawOfCosines.lean, which carries no law-of-cosines hypothesis."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.dual_arity_floor_sup",
+   "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicCirclePacking.lean",
+   "label": "res:dual-arity-floor",
+   "reason": "Supremum form of the first-pass statement, with the hyperbolic law of cosines as the hypothesis hlaw. The ledger binds Hyperbolic.dual_arity_floor_sup in HyperbolicLawOfCosines.lean, which carries no law-of-cosines hypothesis."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.no_finite_simultaneous_two_three_system",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean",
+   "label": "long1049:res:nomahler",
+   "reason": "Conditional form: it assumes the theorem of Adamczewski and Bell as the hypothesis hAB. The ledger binds no_finite_simultaneous_two_three_system_unconditional, which proves the same statement with no hypothesis."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos249.PaperCompleteR21.largest_prime_factor_le_dickmanCut",
+   "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCut.lean",
+   "label": "prop:dickman",
+   "reason": "Clause (a) of prop:dickman on its own, stated with the pivot cut. The ledger binds prop_dickman in UnassignedSmoothCount.lean, which states every clause of the proposition, clause (a) included."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos251.PaperR11.Nonconcentration.finite_perturbation_stability",
+   "file": "lean/ErdosProblems/Erdos251/NonconcentrationCoreR11.lean",
+   "label": "res:nonconcentration",
+   "reason": "Verbatim copy of the PaperR7 theorem in a standalone module, as that module's own docstring records. The long record labels the result long251:res:nonconcentration, and the ledger binds the PaperR7 declaration in PaperNonconcentrationR7.lean."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos251.PaperR7.block_identity",
+   "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean",
+   "label": "res:block",
+   "reason": "Rational-valued form of the block identity. The long record, which labels the result long251:res:block, states it for the actual real tail, and the ledger binds real_block_identity from the same file."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_of_chebotarev",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean",
+   "label": "long243:res:squarespec",
+   "reason": "Earlier form of the square-specialisation lemma that takes the Chebotarev input ChebotarevFrobenius as a hypothesis. The ledger binds squareSpecialisation in SquareSpecialisationUnconditional.lean, which states the lemma with no hypothesis."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.transport_square_of_chebotarev",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean",
+   "label": "long243:res:transportsquare",
+   "reason": "Earlier form conditional on ChebotarevFrobenius. The ledger binds transport_square_unconditional in SquareSpecialisationUnconditional.lean, whose statement is this one with that hypothesis removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.cubic_exclusion_of_chebotarev",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean",
+   "label": "long243:res:cubicexclusion",
+   "reason": "Earlier form conditional on ChebotarevFrobenius. The ledger binds cubic_exclusion_unconditional in SquareSpecialisationUnconditional.lean, whose statement is this one with that hypothesis removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.cubic_rate_irrationality_of_chebotarev",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean",
+   "label": "res:cubicrate",
+   "reason": "Earlier form conditional on ChebotarevFrobenius. The ledger binds cubic_rate_irrationality_unconditional in SquareSpecialisationUnconditional.lean for both the short and the long statement, whose statement is this one with that hypothesis removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
+   "label": "long243:res:squarespec",
+   "reason": "The Dedekind-zeta proof of the lemma, written out as the body of SquareSpecialisation. The ledger binds squareSpecialisation in SquareSpecialisationUnconditional.lean, which is defined as this proof and states the lemma under the name the paper's consumers use."
+  }
+ ]
+}

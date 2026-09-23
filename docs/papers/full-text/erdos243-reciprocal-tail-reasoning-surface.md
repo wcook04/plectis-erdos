@@ -8,7 +8,7 @@
 
 </div>
 
-We prove that an increasing sequence of positive integers satisfying $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. Rationality would force integer numerators of the reciprocal tails to agree eventually with a cubic polynomial. Divisibility, a calculation in a cubic number field and congruences modulo seven exclude that polynomial. For rational reciprocal sums, we also develop sufficient conditions for the eventual recurrence $`a_{n+1}=a_n^2-a_n+1`$ under the more general limit $`a_{n+1}/a_n^2\to1`$. They control either increases of an integer tail numerator or a convergent sum at steps setting new maxima. The paper gives the underlying recurrences, their relation to earlier work, and examples separating numerical growth bounds from the exact recurrences. The cubic proof and the further written arguments are distinguished from the specific theorems formalised in Lean. None of the additional bounds is derived for every rational reciprocal sum in Erdős Problem #243.
+We prove that an increasing sequence of positive integers satisfying $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. Rationality would force integer numerators of the reciprocal tails to agree eventually with a cubic polynomial. Divisibility, a calculation in a cubic number field and congruences modulo seven exclude that polynomial. For rational reciprocal sums, we also develop sufficient conditions for the eventual recurrence $`a_{n+1}=a_n^2-a_n+1`$ under the more general limit $`a_{n+1}/a_n^2\to1`$. They control either increases of an integer tail numerator or a convergent sum at steps setting new maxima. The paper gives the underlying recurrences, their relation to earlier work, and examples separating numerical growth bounds from the exact recurrences. The cubic-rate theorem is checked in Lean, together with every lemma used in its proof. The further written arguments are distinguished from the specific theorems formalised in Lean. None of the additional bounds is derived for every rational reciprocal sum in Erdős Problem #243.
 
 <a id="long243:sec:problem"></a>
 
@@ -56,7 +56,7 @@ The rate in the next theorem is much more specific than $`a_{n+1}/a_n^2\to1`$: b
 
 </div>
 
-Lean: [cubic rate irrationality of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L270). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [cubic rate irrationality unconditional](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70).
 
 For a concrete sequence satisfying the hypothesis, take
 ``` math
@@ -87,7 +87,7 @@ In particular no such orbit satisfies $`C_n=A\,n(n+1)(n+2)+B`$ for all large $`n
 
 </div>
 
-Lean: [cubic exclusion of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L256). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [cubic exclusion unconditional](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L54).
 
 The irrationality theorem needs only exclusion of eventual equality. Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a> proves more: disagreement with the proposed cubic has positive lower density. The lower bound may depend on the orbit and the cubic; it is not a uniform numerical constant.
 
@@ -125,7 +125,7 @@ For $`S\subseteq\mathbb{N}`$ write $`\underline d(S)=\liminf_X\#(S\cap[1,X])/X`$
 
 </div>
 
-Lean: [fixed offsets periodic lower density](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean#L156).
+Lean: [fixed offsets periodic lower density](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean#L156).
 
 <div class="proof">
 
@@ -161,7 +161,7 @@ and there are $`m\in\mathbb{Z}_{>0}`$ and $`c\in\{-1,1\}`$ with
 
 </div>
 
-Lean: [cubic profile gcd stabilisation and primitive shape](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicProfileGcdShape.lean#L103).
+Lean: [cubic profile gcd stabilisation and primitive shape](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicProfileGcdShape.lean#L103).
 
 <div class="proof">
 
@@ -187,7 +187,7 @@ so $`\ell`$ divides both $`Q(n)`$ and $`Q(n+1)`$. Agreement at both indices woul
 
 </div>
 
-Lean: [primitive zero density paper multiplier lemma](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean#L244).
+Lean: [primitive zero density paper multiplier lemma](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean#L244).
 
 <div class="proof">
 
@@ -209,13 +209,15 @@ At a prime dividing a middle numerator, the two-step recurrence forces the negat
 
 </div>
 
-Lean: [square specialisation of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L211). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [square specialisation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L35).
 
 <div class="proof">
 
 *Proof.* Suppose not. Put $`K=\mathbb{Q}(\alpha)`$ and choose $`\beta`$ with $`\beta^2=H(\alpha)`$, so $`K(\beta)/K`$ is quadratic. Take a finite Galois extension $`L/\mathbb{Q}`$ containing $`K(\beta)`$ and $`\sigma\in\mathop{\mathrm{Gal}}(L/K)`$ restricting nontrivially to $`K(\beta)`$, so that $`\sigma\alpha=\alpha`$ and $`\sigma\beta=-\beta`$. By the Chebotarev density theorem in the form stated by Stevenhagen and Lenstra \[stevenhagenlenstra1996, §3, p. 15\], there are infinitely many unramified rational primes whose Frobenius class in $`\mathop{\mathrm{Gal}}(L/\mathbb{Q})`$ is that of $`\sigma`$; only the infinitude is used. Discard the finitely many primes dividing denominators or the discriminant, the prime $`2`$, and those at which $`\beta`$ reduces to zero. The Frobenius elements at the primes of $`L`$ above a fixed $`\ell`$ form that conjugacy class, so one of those primes has Frobenius exactly $`\sigma`$. At this prime the residue field satisfies $`\overline\alpha^{\,\ell}=\overline\alpha`$ and $`\overline\beta^{\,\ell}=-\overline\beta`$, so $`\overline\alpha\in\mathbb{F}_\ell`$ while $`\overline\beta\notin\mathbb{F}_\ell`$. Then $`H(\overline\alpha)=\overline\beta^{\,2}`$ is a nonsquare in $`\mathbb{F}_\ell`$ at a root of the reduction of $`f`$, against the hypothesis. ◻
 
 </div>
+
+The Lean proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> ([square specialisation](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean#L184)) avoids the Chebotarev density theorem. It uses only the fact that an algebraic integer $`b`$ of a number field $`K`$ that is not a square in $`K`$ is zero or a nonsquare modulo infinitely many primes of $`K`$ of degree one. If $`H(\alpha)`$ is not a square in $`K=\mathbb{Q}(\alpha)`$, this applies to $`b=m^2H(\alpha)`$, where the nonzero integer $`m`$ makes $`b`$ an algebraic integer, and the residue map at such a prime, of norm $`\ell`$, sends $`\alpha`$ to a root $`r\in\mathbb{F}_\ell`$ of the reduction of $`f`$ at which $`H(r)`$ is not a nonzero square. That fact ([nonsquares modulo primes](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean#L40)) is proved from the simple pole of the Dedekind zeta function at $`s=1`$, which is in Mathlib. If $`b`$ were a nonzero square modulo all but finitely many primes of degree one, these primes would split in $`K(\sqrt b)`$, and for real $`s>1`$ near $`1`$ the zeta function of $`K(\sqrt b)`$ would be at least a positive constant times the square of the zeta function of $`K`$, which the two simple poles forbid.
 
 The hypothesis is needed at every root and at all but finitely many primes. A favourable finite set of tested primes would not suffice.
 
@@ -225,7 +227,7 @@ The hypothesis is needed at every root and at all but finitely many primes. A fa
 
 </div>
 
-Lean: [transport square of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L240). Conditional on Chebotarev’s density theorem; see the [coverage section](#long243:sec:coverage).
+Lean: [transport square unconditional](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L39).
 
 <div class="proof">
 
@@ -270,7 +272,7 @@ If $`r^2-1`$ were a nonsquare modulo $`\ell`$, then so would be the right side o
 
 </div>
 
-Lean: [scale twelve of square in root field](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/ScaleTwelve.lean#L36).
+Lean: [scale twelve of square in root field](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/ScaleTwelve.lean#L36).
 
 <div class="proof">
 
@@ -358,7 +360,7 @@ The square condition uses three consecutive numerators. The last step also uses 
 
 </div>
 
-Lean: [plus one forbidden word](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L18), [minus one forbidden word](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L38).
+Lean: [plus one forbidden word](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L18), [minus one forbidden word](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L38).
 
 <div class="proof">
 
@@ -426,7 +428,7 @@ Then $`\lambda`$ is an integer $`d\ge2`$, and there are $`A\in\mathbb{Q}_{>0}`$ 
 
 </div>
 
-Lean: [regular rate extraction](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L874), [regular rate extraction cubic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L1151).
+Lean: [regular rate extraction](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L874), [regular rate extraction cubic](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L1151).
 
 <div class="proof">
 
@@ -471,7 +473,7 @@ The precision in <a href="#long243:eq:regularrate" data-reference-type="eqref" d
 
 </div>
 
-Lean: [canonical tail ratio quantitative](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204).
+Lean: [canonical tail ratio quantitative](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204).
 
 <div class="proof">
 
@@ -501,7 +503,7 @@ Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-referenc
 
 </div>
 
-No restriction on the rational normalisation was assumed: the proof derives the permitted primitive leading coefficient. The two residue patterns <a href="#long243:eq:wordplus" data-reference-type="eqref" data-reference="long243:eq:wordplus">[long243:eq:wordplus]</a> and <a href="#long243:eq:wordminus" data-reference-type="eqref" data-reference="long243:eq:wordminus">[long243:eq:wordminus]</a>, the image $`\{0,2,5,6\}`$ modulo $`7`$ and the condition $`(r^2+s^2)^2\mid48`$ have been calculated above. The public checkpoint also contains formalised polynomial extraction, primitive cubic normalisation and finite transport results, including [the primitive-shape theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean#L112). These are components, not an assembled proof of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>. No declaration of that complete irrationality implication has been identified in the supplied source index. Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> uses the classical finite-Galois Chebotarev theorem; its use must be justified by the number-field argument, not by finite residue computations.
+No restriction on the rational normalisation was assumed: the proof derives the permitted primitive leading coefficient. The two residue patterns <a href="#long243:eq:wordplus" data-reference-type="eqref" data-reference="long243:eq:wordplus">[long243:eq:wordplus]</a> and <a href="#long243:eq:wordminus" data-reference-type="eqref" data-reference="long243:eq:wordminus">[long243:eq:wordminus]</a>, the image $`\{0,2,5,6\}`$ modulo $`7`$ and the condition $`(r^2+s^2)^2\mid48`$ have been calculated above. The public checkpoint also contains formalised polynomial extraction, primitive cubic normalisation and finite transport results, including [the primitive-shape theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean#L112). These are components of the proof of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>. The complete irrationality implication is also a Lean theorem, [cubic-rate irrationality](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70), whose only hypotheses are those of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>. Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> is proved above from the classical finite-Galois Chebotarev theorem, and its Lean proof uses the simple pole of the Dedekind zeta function instead.
 
 Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> assumes neither rationality nor an integer orbit: these enter only under the supposition that the reciprocal sum is rational. Its rate implies $`a_{n+1}/a_n^2\to1`$, so it treats a subclass of the growth sequences in Problem <a href="#long243:res:problem" data-reference-type="ref" data-reference="long243:res:problem">1</a>. It proves irrationality on that subclass, rather than constructing a Sylvester recurrence. Sylvester tails have the much smaller deviation $`O(1/a_n)`$ and do not belong to it.
 
@@ -578,7 +580,7 @@ The *Formal Conjectures* collection contains a mathematically equivalent unprove
 
 #### Results and proof status.
 
-The cubic-rate theorem (Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>) and the three results its proof passes through are checked in the development, with the input of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> as their only assumption; Section <a href="#long243:sec:coverage" data-reference-type="ref" data-reference="long243:sec:coverage">[long243:sec:coverage]</a> states that assumption in full. The bounded-negative theorem (Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a>) and the scalar summability theorem (Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">54</a>) have checked declarations. The checked theorems include the estimates for rational tails, proved from a product bound and from the least common multiple of the denominators. The complete weighted-record statement (Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">25</a>) is kernel-checked in the main development, alongside its earlier proof source in the separate release. For the further record criteria, each evidence paragraph identifies the ordinary argument and the checked lemma it uses. In particular, Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a> below proves that the reduced denominator supplies arbitrarily large odd prime powers, and that proof is kernel-checked in the main development. The static-model conclusions in Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> are proved by ordinary arguments and are checked in the development as well.
+The cubic-rate theorem (Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>) and the three results its proof passes through, Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a>, Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">8</a> and Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a>, are checked in the development with no additional hypothesis; Section <a href="#long243:sec:coverage" data-reference-type="ref" data-reference="long243:sec:coverage">[long243:sec:coverage]</a> gives the revision. The bounded-negative theorem (Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a>) and the scalar summability theorem (Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">54</a>) have checked declarations. The checked theorems include the estimates for rational tails, proved from a product bound and from the least common multiple of the denominators. The complete weighted-record statement (Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">25</a>) is kernel-checked in the main development, alongside its earlier proof source in the separate release. For the further record criteria, each evidence paragraph identifies the ordinary argument and the checked lemma it uses. In particular, Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a> below proves that the reduced denominator supplies arbitrarily large odd prime powers, and that proof is kernel-checked in the main development. The static-model conclusions in Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> are proved by ordinary arguments and are checked in the development as well.
 
 The additional bound or convergence assumption is not derived from the problem’s hypotheses. An equivalence between convergence and the desired recurrence does not prove either of them. In the stable-gcd case the record-increment theorem gives a positive lower bound for the log-log coefficient, not necessarily an infinite coefficient. All conclusions about nonzero tails retain failure of eventual Sylvester behaviour as a hypothesis.
 
@@ -606,7 +608,7 @@ Consequently, every exact orbit satisfies $`C_{n+1}=C_n-E_n`$.*
 
 </div>
 
-Lean: [next tail state eq sub centered](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57).
+Lean: [next tail state eq sub centered](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57).
 
 <div class="proof">
 
@@ -673,7 +675,7 @@ sD-(a-1)sC=s\,[D-(a-1)C].
 
 </div>
 
-Lean: [state scale](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L31).
+Lean: [state scale](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L31).
 
 The three identities are formalised for the [denominator](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L65), [numerator](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L70) and [error](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L75). Multiplying the numerator and denominator by the same factor therefore preserves the recurrence and scales the error by that factor. When the factor divides all entries, we can divide it out instead. This is used in the finite calculation of Appendix <a href="#long243:app:residue" data-reference-type="ref" data-reference="long243:app:residue">16</a> and in the induction in Theorem <a href="#long243:res:periodic" data-reference-type="ref" data-reference="long243:res:periodic">44</a>.
 
@@ -701,7 +703,7 @@ that is, $`\Delta_n\,C_{n+1}=a_n^{2}E_n-E_{n+1}`$.*
 
 </div>
 
-Lean: [sylvester defect mul next tail state](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1775).
+Lean: [sylvester defect mul next tail state](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1775).
 
 <div class="proof">
 
@@ -731,7 +733,7 @@ then $`a'=a^2-a+1`$.*
 
 </div>
 
-Lean: [sylvester next eq of centered zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787).
+Lean: [sylvester next eq of centered zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787).
 
 <div class="proof">
 
@@ -761,7 +763,7 @@ Then $`a^2u+hh_1u_2=h(a+a_1)u_1`$.*
 
 </div>
 
-Lean: [reduced second order int](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L42).
+Lean: [reduced second order int](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L42).
 
 <div class="proof">
 
@@ -786,7 +788,7 @@ q^2+\bigl(pp_2-p_1^2\bigr)=(a_1-a)pp_1.
 
 </div>
 
-Lean: [cancellation free curvature square](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/DynamicCancellation.lean#L309).
+Lean: [cancellation free curvature square](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/DynamicCancellation.lean#L309).
 
 <div class="proof">
 
@@ -838,7 +840,7 @@ The identities hold under the local hypotheses displayed in their statements. It
 
 </div>
 
-Lean: [unit word saturates old modulus](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L39).
+Lean: [unit word saturates old modulus](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L39).
 
 <div class="proof">
 
@@ -854,7 +856,7 @@ This is finite residue compatibility, not existence of a positive integer orbit,
 
 </div>
 
-Lean: [sylvester next eventually of centered zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805).
+Lean: [sylvester next eventually of centered zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805).
 
 The sequence form is formalised as the [eventual Sylvester recurrence](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805). Take the larger of the two thresholds and apply Theorem <a href="#long243:res:step" data-reference-type="ref" data-reference="long243:res:step">18</a> at each later index. This is the final step of the criteria below that force $`E_n`$ to vanish eventually.
 
@@ -866,7 +868,7 @@ The defect identity has a second consequence, which is what makes a single vanis
 
 </div>
 
-Lean: [centered state zero absorbing](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227).
+Lean: [centered state zero absorbing](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227).
 
 <div class="proof">
 
@@ -925,7 +927,7 @@ Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\in
 
 </div>
 
-Lean: [arithmetic weighted record dichotomy](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/ArithmeticWeightedRecord.lean#L264).
+Lean: [arithmetic weighted record dichotomy](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/ArithmeticWeightedRecord.lean#L264).
 
 <div class="proof">
 
@@ -961,7 +963,7 @@ Only the lower centring bound was used. In particular, neither vanishing relativ
 
 </div>
 
-Lean: [canonical weighted record excess](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202).
+Lean: [canonical weighted record excess](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202).
 
 <div class="proof">
 
@@ -1098,7 +1100,7 @@ In particular $`\nu_p(v')\le\max(r,s)`$. A strict loss relative to $`s`$ require
 
 </div>
 
-Lean: [reduced denominator valuation transition](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L244), [reduced denominator valuation le max](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L262), [reduced denominator valuation strict loss](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L279).
+Lean: [reduced denominator valuation transition](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L244), [reduced denominator valuation le max](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L262), [reduced denominator valuation strict loss](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L279).
 
 <div class="proof">
 
@@ -1114,7 +1116,7 @@ Cancellation is not the same as a fall in the reduced denominator valuation. For
 
 </div>
 
-Lean: [prime power persists](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/PowerPersistence.lean#L27).
+Lean: [prime power persists](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/PowerPersistence.lean#L27).
 
 <div class="proof">
 
@@ -1134,7 +1136,7 @@ These are ordinary local calculations. They explain the persistence threshold us
 
 </div>
 
-Lean: [canonical quantitative record dichotomy](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [canonical record theta zero or gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L308), [canonical record theta eq zero iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L321), [canonical record theta gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L54).
+Lean: [canonical quantitative record dichotomy](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [canonical record theta zero or gt one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L308), [canonical record theta eq zero iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L321), [canonical record theta gt one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L54).
 
 The constant in the next condition is measured against a double logarithm, not against $`C_n`$. This grows much more slowly than any positive power of $`C_n`$. Every fixed bound on $`(-E_n)_+`$ satisfies it on a nonzero tail because $`C_n\to\infty`$; it also permits unbounded negative parts on the double-logarithmic scale, with the coefficient specified below. In contrast, an error of size $`\sqrt{C_n}`$ has relative size tending to zero but violates the condition. These are comparisons of bounds, not constructions of reciprocal tails.
 
@@ -1151,7 +1153,7 @@ then the sequence is eventually Sylvester. Every counterexample therefore satisf
 
 </div>
 
-Lean: [canonical inclusive log log criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129), [canonical negative error limsup gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L108).
+Lean: [canonical inclusive log log criterion](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129), [canonical negative error limsup gt one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L108).
 
 <div class="proof">
 
@@ -1224,7 +1226,7 @@ Together with $`\ell(C_n)\le\ell(H_n)`$, this proves the corollary. ◻
 
 #### Formalisation.
 
-The supplied formal sources contain persistence and pointwise-rise versions of the arithmetic steps: [persistence of a common divisor](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L111), the [bounded CRT block](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L51), the [slow-rise landing lemma](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L194), and the [coprime-block exclusion](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L280). The growth estimates, the count of usable moduli and the running-maximum argument are proved above in ordinary mathematics. The cited declarations verify their own arithmetic statements, not this assembled theorem. In particular, their landing bound controls increments of $`C_n`$; the argument above controls increments of $`H_n`$ and is a written extension, not a direct invocation of that declaration.
+Theorem <a href="#long243:res:recorddichotomy" data-reference-type="ref" data-reference="long243:res:recorddichotomy">28</a> and Corollary <a href="#long243:res:loglogboundary" data-reference-type="ref" data-reference="long243:res:loglogboundary">29</a> are Lean theorems for the integer tails of a rational reciprocal sum under the standing hypotheses ([record dichotomy](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [double-logarithmic criterion](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129)). The strict bound $`\Theta>1`$ is also a Lean theorem for any exact orbit with $`a_n>1`$, $`C_n>0`$, $`D_0\ge1`$ and vanishing relative error whose error is not eventually zero ([strict record bound](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363)). The supplied formal sources also contain persistence and pointwise-rise versions of the arithmetic steps: [persistence of a common divisor](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L111), the [bounded CRT block](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L51), the [slow-rise landing lemma](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L194), and the [coprime-block exclusion](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L280). These four declarations verify their own arithmetic statements; their landing bound controls increments of $`C_n`$, and the argument above controls increments of $`H_n`$.
 
 No upper bound on $`\Theta`$ is proved. If $`G_n`$ is unbounded, the theorem forces $`\Theta=+\infty`$. If $`G_n=g`$ eventually, it proves only $`\Theta\ge g\,v_T/\varphi(v_T)`$ for every late $`T`$. Since $`v_T\mid v_{T+1}`$, the ratios $`\varphi(v_T)/v_T`$ are nonincreasing and have a limit $`\sigma\ge0`$. If $`\sigma=0`$, the lower bound again forces $`\Theta=+\infty`$; if $`\sigma>0`$, it gives $`\Theta\ge g/\sigma`$ but does not determine whether $`\Theta`$ is finite. Replacing $`H_n`$ by the running maximum of $`u_n`$ divides the coefficient by $`g`$, since $`\ell(gx)/\ell(x)\to1`$.
 
@@ -1238,7 +1240,7 @@ No upper bound on $`\Theta`$ is proved. If $`G_n`$ is unbounded, the theorem for
 
 </div>
 
-Lean: [record amplified](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L975), [amp bdd above iff sylvester](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L931), [rdelta bdd above iff amp](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L948), [eventually sylvester of amp le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L587), and 6 further declarations in the [coverage section](#long243:sec:coverage).
+Lean: [record amplified](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L975), [amp bdd above iff sylvester](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L931), [rdelta bdd above iff amp](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L948), [eventually sylvester of amp le](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L587), and 6 further declarations in the [coverage section](#long243:sec:coverage).
 
 <div id="long243:res:criticalrate" class="corollary">
 
@@ -1246,7 +1248,7 @@ Lean: [record amplified](https://github.com/wcook04/plectis-erdos/blob/181078b6b
 
 </div>
 
-Lean: [critical rate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1033), [critical rate counterexample](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1197), [r le of u le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1016).
+Lean: [critical rate](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1033), [critical rate counterexample](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1197), [r le of u le](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1016).
 
 <div class="proof">
 
@@ -1283,7 +1285,7 @@ The prime $`p`$ may depend on $`n`$; no stable-gcd or prime-arrival assumption i
 
 </div>
 
-Lean: [odd prime power supply](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L790), [odd prime power supply nat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L718).
+Lean: [odd prime power supply](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L790), [odd prime power supply nat](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L718).
 
 <div class="proof">
 
@@ -1308,7 +1310,7 @@ The argument compares the logarithm of the odd denominator part with the logarit
 
 </div>
 
-Lean: [unit record increment sylvester next](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L846), [unit record increment criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L950).
+Lean: [unit record increment sylvester next](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L846), [unit record increment criterion](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L950).
 
 <div class="proof">
 
@@ -1330,7 +1332,7 @@ The two-unit criterion discussed below bounds the actual jump at each record ste
 
 </div>
 
-Lean: [epoch energy named crossing set](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L149), [mem barrier idx iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L34).
+Lean: [epoch energy named crossing set](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L149), [mem barrier idx iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L34).
 
 <div class="proof">
 
@@ -1351,7 +1353,7 @@ The next series ignores record jumps of size at most two, apart from finitely ma
 
 </div>
 
-Lean: [energy criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L468), [energy summable iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L414), [energy sqrt summable iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L455), [energy le two energy sqrt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L161), and 2 further declarations in the [coverage section](#long243:sec:coverage).
+Lean: [energy criterion](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L468), [energy summable iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L414), [energy sqrt summable iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L455), [energy le two energy sqrt](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L161), and 2 further declarations in the [coverage section](#long243:sec:coverage).
 
 <div class="proof">
 
@@ -1392,7 +1394,7 @@ The separate release contains [the integer inequality counting crossings before 
 
 </div>
 
-Lean: [slow negative eventually zero and sylvester next unconditional](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L559), [exact orbit record theta gt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363), [exact orbit one le record theta](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L522), [exact orbit unbounded of error not eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L288), and 3 further declarations in the [coverage section](#long243:sec:coverage).
+Lean: [slow negative eventually zero and sylvester next unconditional](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L559), [exact orbit record theta gt one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363), [exact orbit one le record theta](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L522), [exact orbit unbounded of error not eventually zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L288), and 3 further declarations in the [coverage section](#long243:sec:coverage).
 
 Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a> is the case of a constant bound, since a constant is eventually below $`(1-\delta)\ell(C_n)`$ on a nonzero tail, where $`C_n\to\infty`$.
 
@@ -1411,7 +1413,7 @@ for all large $`n`$, a contradiction. Thus $`E_n=0`$ eventually, and Theorem <a
 
 #### Formalisation.
 
-The corresponding pointwise-rise argument has formalised arithmetic lemmas: [persistence of a common divisor](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L111), the [overlap transport](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L162), the [landing lemma](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L194) and the [coprime-block exclusion](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L280). The count of indices and the simultaneous choice of constants are written out in the earlier proof; no end-to-end Lean verification of this consequence is claimed. Corollary <a href="#long243:res:loglogboundary" data-reference-type="ref" data-reference="long243:res:loglogboundary">29</a> includes the boundary coefficient $`1`$, while the preceding theorem on the running maximum also discounts rises that recover an earlier decrease. The present statement is retained for its direct bound on $`E_n`$.
+Theorem <a href="#long243:res:slownegative" data-reference-type="ref" data-reference="long243:res:slownegative">36</a> is a Lean theorem with the hypotheses printed above ([slow negative part](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L559)). The corresponding pointwise-rise argument also has formalised arithmetic lemmas: [persistence of a common divisor](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L111), the [overlap transport](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L162), the [landing lemma](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L194) and the [coprime-block exclusion](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L280). The count of indices and the simultaneous choice of constants are written out in the earlier proof. Corollary <a href="#long243:res:loglogboundary" data-reference-type="ref" data-reference="long243:res:loglogboundary">29</a> includes the boundary coefficient $`1`$, while the preceding theorem on the running maximum also discounts rises that recover an earlier decrease. The present statement is retained for its direct bound on $`E_n`$.
 
 To compare the bounded hypothesis with the classical criteria, number the original sequence from $`1`$ in this subsection and put $`P_n=\prod_{1\le j<n}a_j`$. Then
 ``` math
@@ -1435,7 +1437,7 @@ Q_n\le\frac{1-\delta}{q}\,
 
 </div>
 
-Lean: [original coordinate bounded defect](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211), [original coordinate slow growth defect](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L155), [record theta le of slow negative](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L61), [prefix ratio le canonical numerator](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L111).
+Lean: [original coordinate bounded defect](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211), [original coordinate slow growth defect](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L155), [record theta le of slow negative](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L61), [prefix ratio le canonical numerator](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L111).
 
 For the bounded clause, use the stated denominator $`q`$, put $`P_n=\prod_{j<n}a_j`$, $`x_n=\sum_{k\ge n}1/a_k`$, and form the integer tail $`D_n=qP_n`$, $`C_n=D_nx_n`$, $`E_n=D_n-(a_n-1)C_n`$. Exact cancellation gives
 ``` math
@@ -1484,7 +1486,7 @@ In particular the one-sided bound by $`1/n`$ is included.*
 
 </div>
 
-Lean: [original coordinate strict one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean#L92), [original coordinate inclusive one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [original coordinate inclusive one pointwise](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225).
+Lean: [original coordinate strict one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean#L92), [original coordinate inclusive one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [original coordinate inclusive one pointwise](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225).
 
 <div class="proof">
 
@@ -1544,7 +1546,7 @@ Its least common multiple includes $`a_n`$ but not the clearing denominator $`q`
 
 </div>
 
-Lean: [overlap debt dvd gcd](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L206), [canonical error div overlap debt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L225), [growth defect eq neg relative error add shifted correction](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L325), [canonical growth defect identity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L415), and 8 further declarations in the [coverage section](#long243:sec:coverage).
+Lean: [overlap debt dvd gcd](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L206), [canonical error div overlap debt](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L225), [growth defect eq neg relative error add shifted correction](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L325), [canonical growth defect identity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L415), and 8 further declarations in the [coverage section](#long243:sec:coverage).
 
 <div class="proof">
 
@@ -1571,7 +1573,7 @@ m_i\nmid u_n\quad\text{for every }i\ge T\text{ and every }n,
 
 </div>
 
-Lean: [exists avoiding in window](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L201), [exists slow rise avoiding sequence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L423).
+Lean: [exists avoiding in window](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L201), [exists slow rise avoiding sequence](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L423).
 
 <div class="proof">
 
@@ -1619,7 +1621,7 @@ We return to zero-based indexing for the exact recurrences. If $`E_n\ge0`$, the 
 
 </div>
 
-Lean: [centered state eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1843).
+Lean: [centered state eventually zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1843).
 
 <div class="proof">
 
@@ -1656,7 +1658,7 @@ Together with $`D_{n+1}=a_nD_n`$ this is a closed system in $`(a,D)`$. It has no
 
 </div>
 
-Lean: [no constant negative shape equation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L38), [no eventually constant negative shape equation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L52).
+Lean: [no constant negative shape equation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L38), [no eventually constant negative shape equation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L52).
 
 <div class="proof">
 
@@ -1704,7 +1706,7 @@ and suppose $`e_{n+h}=e_n`$ and $`C_{n+h}=C_n+M`$ for some $`h>0`$ and $`M>0`$. 
 
 </div>
 
-Lean: [no periodic negative shape equation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L68).
+Lean: [no periodic negative shape equation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L68).
 
 <div class="proof">
 
@@ -1748,7 +1750,7 @@ Periodicity is still a strong assumption. Removing it needs a different kind of 
 
 </div>
 
-Lean: [exists shifted block consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26).
+Lean: [exists shifted block consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26).
 
 <div class="proof">
 
@@ -1772,7 +1774,7 @@ Lemma <a href="#long243:res:crt" data-reference-type="ref" data-reference="long
 
 </div>
 
-Lean: [no bounded rise coprime to earlier moduli](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44).
+Lean: [no bounded rise coprime to earlier moduli](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44).
 
 The CRT block must lie above the initial segment where some moduli are not yet available. No monotonicity of $`u`$ is assumed.
 
@@ -1804,7 +1806,7 @@ Here $`u`$ is the numerator and $`v`$ the denominator: the two recurrences are t
 
 </div>
 
-Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
+Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
 
 <div class="proof">
 
@@ -1828,7 +1830,7 @@ An arbitrary orbit of Section <a href="#long243:sec:state" data-reference-type=
 
 </div>
 
-Lean: [gcd stabilises and reduces](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
+Lean: [gcd stabilises and reduces](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
 
 <div class="proof">
 
@@ -1859,7 +1861,7 @@ G_n=G_{n+1}=\cdots=G_{n+L}.
 
 </div>
 
-Lean: [sparse gcd changes](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean#L97).
+Lean: [sparse gcd changes](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean#L97).
 
 The first assertion is the [sublinear strict-growth theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2186); the second is the [arbitrarily late constant-block theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2202). The proof first converts vanishing relative error into subexponential growth of $`C_n`$. Each strict divisibility increase of $`G_n`$ contributes a factor of at least $`2`$, so $`2^{\Gamma(N)}G_0\le G_N\le C_N`$. Taking logarithms gives $`\Gamma(N)=o(N)`$. For $`L=0`$ the second assertion is immediate. For $`L\ge1`$, if every block of $`L`$ successive transitions beyond $`B`$ contained a strict increase, disjoint such blocks would give $`\Gamma(N)\ge(N-B)/L-O(1)`$, a contradiction.
 
@@ -1893,7 +1895,7 @@ The denominator recurrence is essential. For a scalar sequence, $`C_n=c+bn`$ and
 
 </div>
 
-Lean: [eventually bounded negative part eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360).
+Lean: [eventually bounded negative part eventually zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360).
 
 <div class="proof">
 
@@ -1911,7 +1913,7 @@ The theorem is [formalised with hypotheses (4) and (5) holding eventually](htt
 
 </div>
 
-Lean: [bounded negative part sylvester next eventually](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412).
+Lean: [bounded negative part sylvester next eventually](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412).
 
 <div class="proof">
 
@@ -1941,7 +1943,7 @@ then $`E_n=0`$ eventually. For an exact reciprocal-tail orbit this implies $`a_{
 
 </div>
 
-Lean: [finite negative mass paper](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84).
+Lean: [finite negative mass paper](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84).
 
 </div>
 
@@ -2004,7 +2006,7 @@ In particular, negative indices occur infinitely often. Thus the remaining regim
 
 </div>
 
-Lean: [canonical frontier](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
+Lean: [canonical frontier](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
 
 <div class="proof">
 
@@ -2177,7 +2179,7 @@ Thus the bounded-increment hypothesis of Theorem <a href="#long243:res:barrier"
 
 </div>
 
-Lean: [exists sparse prime coprime sequence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L862).
+Lean: [exists sparse prime coprime sequence](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L862).
 
 <div class="proof">
 
@@ -2197,7 +2199,7 @@ This is a statement about avoidance of multiples of whole moduli. It is not a st
 
 </div>
 
-Lean: [maximal gap limsup eq inv sigma](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/MaximalGapConstant.lean#L1041).
+Lean: [maximal gap limsup eq inv sigma](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/MaximalGapConstant.lean#L1041).
 
 <div class="proof">
 
@@ -2257,7 +2259,7 @@ Formalise the absolute-convergence form of Corollary 3.2 of \[duverney2001\], 
 
 The [pinned formal-source revision](https://github.com/wcook04/plectis-erdos/tree/3d6d938d696fed0fb71dd55115a18a73738ff223) contains the Lean sources, the fixed toolchain and library manifest for the formalised results. Each declaration establishes its stated implication. Results that also need written arguments are identified separately in the manuscript.
 
-The supplied source index records a successful build of the listed main-repository modules at revision `6b78209ab63a`, using the identical-file evidence described there. The links in this manuscript retain their original pins, including `3d6d938d696f`; this build record is not a new verification of every linked revision. No new Lean run or transitive-axiom audit is claimed here, and the separate release is not covered as a whole. A source link is not a build receipt. The external formal-conjecture entry states the problem rather than proving it. The ordinary proofs and their exposition require mathematical review independently of the recorded checks.
+The supplied source index records a successful build of the listed main-repository modules at revision `6b78209ab63a`, using the identical-file evidence described there. The links in this manuscript retain their original pins, including `3d6d938d696f`; this build record is not a new verification of every linked revision. The kernel checks and axioms stated in Appendix <a href="#long243:app:index" data-reference-type="ref" data-reference="long243:app:index">15</a> belong to the revisions named there, and the separate release is not covered as a whole. A source link is not a build receipt. The external formal-conjecture entry states the problem rather than proving it. The ordinary proofs and their exposition require mathematical review independently of the recorded checks.
 
 <a id="funding-and-competing-interests."></a>
 
@@ -2287,111 +2289,117 @@ The main-repository links retain revision `3d6d938d696f`; other links specify th
 
 Every theorem, lemma, proposition and corollary of this record other than the four listed below has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`.
 
-The exceptions are one chain of results with one shared input. The development verifies the reduction of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a>, Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">8</a>, Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a> and Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> to the following input: for a finite Galois extension of $`\mathbb{Q}`$, a prescribed element $`\sigma`$ of its Galois group and a nonzero algebraic integer of the extension, there are arbitrarily large rational primes at which $`\sigma`$ is a Frobenius element and at which that integer has nonzero reduction. The first clause is the Chebotarev density theorem in the form cited in the proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> \[stevenhagenlenstra1996, §3, p. 15\]; the second is the elementary fact that a nonzero algebraic integer is divisible by only finitely many rational primes. A formal proof of that input is not included in the verified development; these four endpoints therefore remain conditional on it. Everything the chain adds to it is checked: the square forced modulo a prime dividing a middle numerator, the passage from that congruence to a square in the cubic field, the exclusion of the proposed cubic orbit, and the irrationality conclusion.
-
-A theorem whose own statement is conditional is formalised exactly as stated, with its hypothesis intact. The four results above are asserted unconditionally in this record, and their Lean counterparts carry the additional named input described here.
+The four are Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a>, Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">8</a>, Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a> and Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>, one chain of results proved later. Each has a Lean statement of the same assertion, checked by the Lean kernel using only those three axioms, at revision `e4ba6841dfdb` ([the four statements](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L35)). The Lean proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a> replaces the Chebotarev density theorem, used in the proof printed here, by the simple pole of the Dedekind zeta function at $`s=1`$, as described after that proof. The other three are deduced from the lemma in Lean through the square forced modulo a prime dividing a middle numerator, the passage from that congruence to a square in the cubic field, the exclusion of the proposed cubic orbit, and the irrationality conclusion.
 
 <a id="concordance-of-statements-and-lean-declarations."></a>
 
 #### Concordance of statements and Lean declarations.
 
-Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `181078b6b009`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
+Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `a25cb360bef8`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
 
-Lemma <a href="#long243:res:periodicobstruction" data-reference-type="ref" data-reference="long243:res:periodicobstruction">4</a>: [`fixed_offsets_periodic_lowerDensity`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean#L156). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
+Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>: [`cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70).
 
-Lemma <a href="#long243:res:gcdshape" data-reference-type="ref" data-reference="long243:res:gcdshape">5</a>: [`cubic_profile_gcd_stabilisation_and_primitive_shape`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicProfileGcdShape.lean#L103). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">3</a>: [`cubic_exclusion_unconditional`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L54).
 
-Lemma <a href="#long243:res:reduciblecase" data-reference-type="ref" data-reference="long243:res:reduciblecase">6</a>: [`primitive_zero_density_paper_multiplier_lemma`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean#L244). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:periodicobstruction" data-reference-type="ref" data-reference="long243:res:periodicobstruction">4</a>: [`fixed_offsets_periodic_lowerDensity`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean#L156). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
 
-Lemma <a href="#long243:res:scaletwelve" data-reference-type="ref" data-reference="long243:res:scaletwelve">9</a>: [`scale_twelve_of_square_in_rootField`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/ScaleTwelve.lean#L36). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Lemma <a href="#long243:res:gcdshape" data-reference-type="ref" data-reference="long243:res:gcdshape">5</a>: [`cubic_profile_gcd_stabilisation_and_primitive_shape`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicProfileGcdShape.lean#L103). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Lemma <a href="#long243:res:modseven" data-reference-type="ref" data-reference="long243:res:modseven">10</a>: [`plus_one_forbidden_word`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L18), [`minus_one_forbidden_word`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L38).
+Lemma <a href="#long243:res:reduciblecase" data-reference-type="ref" data-reference="long243:res:reduciblecase">6</a>: [`primitive_zero_density_paper_multiplier_lemma`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean#L244). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-reference="long243:res:extraction">11</a>: [`regular_rate_extraction`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L874), [`regular_rate_extraction_cubic`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L1151). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">7</a>: [`squareSpecialisation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L35).
 
-Lemma <a href="#long243:res:tailratio" data-reference-type="ref" data-reference="long243:res:tailratio">12</a> (the Lean statement is stronger): [`canonical_tail_ratio_quantitative`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">8</a>: [`transport_square_unconditional`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L39).
 
-Proposition <a href="#long243:res:update" data-reference-type="ref" data-reference="long243:res:update">13</a>: [`nextTailState_eq_sub_centered`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:scaletwelve" data-reference-type="ref" data-reference="long243:res:scaletwelve">9</a>: [`scale_twelve_of_square_in_rootField`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/ScaleTwelve.lean#L36). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Proposition <a href="#long243:res:scale" data-reference-type="ref" data-reference="long243:res:scale">15</a>: [`state_scale`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L31). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:modseven" data-reference-type="ref" data-reference="long243:res:modseven">10</a>: [`plus_one_forbidden_word`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L18), [`minus_one_forbidden_word`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean#L38).
 
-Theorem <a href="#long243:res:defect" data-reference-type="ref" data-reference="long243:res:defect">16</a>: [`sylvesterDefect_mul_nextTailState`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1775). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-reference="long243:res:extraction">11</a>: [`regular_rate_extraction`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L874), [`regular_rate_extraction_cubic`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean#L1151). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:step" data-reference-type="ref" data-reference="long243:res:step">18</a>: [`sylvesterNext_eq_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:tailratio" data-reference-type="ref" data-reference="long243:res:tailratio">12</a> (the Lean statement is stronger): [`canonical_tail_ratio_quantitative`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:secondorder" data-reference-type="ref" data-reference="long243:res:secondorder">19</a>: [`reduced_second_order_int`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L42). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:update" data-reference-type="ref" data-reference="long243:res:update">13</a>: [`nextTailState_eq_sub_centered`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:curvature" data-reference-type="ref" data-reference="long243:res:curvature">20</a>: [`cancellationFree_curvature_square`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/DynamicCancellation.lean#L309). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:scale" data-reference-type="ref" data-reference="long243:res:scale">15</a>: [`state_scale`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L31). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Lemma <a href="#long243:res:oldmodulussaturation" data-reference-type="ref" data-reference="long243:res:oldmodulussaturation">21</a>: [`unit_word_saturates_old_modulus`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L39). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:defect" data-reference-type="ref" data-reference="long243:res:defect">16</a>: [`sylvesterDefect_mul_nextTailState`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1775). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:eventual" data-reference-type="ref" data-reference="long243:res:eventual">22</a>: [`sylvesterNext_eventually_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:step" data-reference-type="ref" data-reference="long243:res:step">18</a>: [`sylvesterNext_eq_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:absorb" data-reference-type="ref" data-reference="long243:res:absorb">23</a>: [`centeredState_zero_absorbing`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:secondorder" data-reference-type="ref" data-reference="long243:res:secondorder">19</a>: [`reduced_second_order_int`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L42). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:arithmeticrecord" data-reference-type="ref" data-reference="long243:res:arithmeticrecord">24</a>: [`arithmetic_weighted_record_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/ArithmeticWeightedRecord.lean#L264). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
+Theorem <a href="#long243:res:curvature" data-reference-type="ref" data-reference="long243:res:curvature">20</a>: [`cancellationFree_curvature_square`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/DynamicCancellation.lean#L309). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">25</a>: [`canonical_weighted_record_excess`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
+Lemma <a href="#long243:res:oldmodulussaturation" data-reference-type="ref" data-reference="long243:res:oldmodulussaturation">21</a>: [`unit_word_saturates_old_modulus`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L39). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Lemma <a href="#long243:res:valuationtransition" data-reference-type="ref" data-reference="long243:res:valuationtransition">26</a>: [`reduced_denominator_valuation_transition`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L244), [`reduced_denominator_valuation_le_max`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L262), [`reduced_denominator_valuation_strict_loss`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L279). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:eventual" data-reference-type="ref" data-reference="long243:res:eventual">22</a>: [`sylvesterNext_eventually_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">27</a>: [`primePower_persists`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/PowerPersistence.lean#L27). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:absorb" data-reference-type="ref" data-reference="long243:res:absorb">23</a>: [`centeredState_zero_absorbing`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:recorddichotomy" data-reference-type="ref" data-reference="long243:res:recorddichotomy">28</a>: [`canonical_quantitative_record_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [`canonical_recordTheta_zero_or_gt_one`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L308), [`canonical_recordTheta_eq_zero_iff`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L321), [`canonical_recordTheta_gt_one`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L54). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long243:res:arithmeticrecord" data-reference-type="ref" data-reference="long243:res:arithmeticrecord">24</a>: [`arithmetic_weighted_record_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/ArithmeticWeightedRecord.lean#L264). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
 
-Corollary <a href="#long243:res:loglogboundary" data-reference-type="ref" data-reference="long243:res:loglogboundary">29</a>: [`canonical_inclusive_logLog_criterion`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129), [`canonical_negativeError_limsup_gt_one`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L108). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">25</a>: [`canonical_weighted_record_excess`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
 
-Theorem <a href="#long243:res:recordamplified" data-reference-type="ref" data-reference="long243:res:recordamplified">30</a>: [`recordAmplified`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L975), [`amp_bddAbove_iff_sylvester`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L931), [`Rdelta_bddAbove_iff_amp`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L948), [`eventuallySylvester_of_amp_le`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L587), [`coprimeMultiplier_cofinal`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L187), [`largePrime_coprimeMultiplier`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L295), [`primeBlock_supply`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L546), [`canc_lt_of_amp_le`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L462), [`delta_negPart_comparison`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L738), [`R_delta_sub_amp_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L870). *Compared*, runs [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595), [`35682858662`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35682858662).
+Lemma <a href="#long243:res:valuationtransition" data-reference-type="ref" data-reference="long243:res:valuationtransition">26</a>: [`reduced_denominator_valuation_transition`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L244), [`reduced_denominator_valuation_le_max`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L262), [`reduced_denominator_valuation_strict_loss`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedStepLocalArithmetic.lean#L279). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Corollary <a href="#long243:res:criticalrate" data-reference-type="ref" data-reference="long243:res:criticalrate">31</a>: [`criticalRate`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1033), [`criticalRate_counterexample`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1197), [`R_le_of_u_le`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1016). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">27</a>: [`primePower_persists`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/PowerPersistence.lean#L27). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a>: [`oddPrimePower_supply`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L790), [`oddPrimePower_supply_nat`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L718). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long243:res:recorddichotomy" data-reference-type="ref" data-reference="long243:res:recorddichotomy">28</a>: [`canonical_quantitative_record_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [`canonical_recordTheta_zero_or_gt_one`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L308), [`canonical_recordTheta_eq_zero_iff`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L321), [`canonical_recordTheta_gt_one`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L54). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Theorem <a href="#long243:res:unitrecord" data-reference-type="ref" data-reference="long243:res:unitrecord">33</a>: [`unitRecordIncrement_sylvesterNext`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L846), [`unitRecordIncrement_criterion`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L950). *Compared*, runs [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595), [`35682858662`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35682858662).
+Corollary <a href="#long243:res:loglogboundary" data-reference-type="ref" data-reference="long243:res:loglogboundary">29</a>: [`canonical_inclusive_logLog_criterion`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129), [`canonical_negativeError_limsup_gt_one`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L108). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:epochenergy" data-reference-type="ref" data-reference="long243:res:epochenergy">34</a>: [`epoch_energy_named_crossing_set`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L149), [`mem_barrierIdx_iff`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L34). *Compared*, runs [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long243:res:recordamplified" data-reference-type="ref" data-reference="long243:res:recordamplified">30</a>: [`recordAmplified`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L975), [`amp_bddAbove_iff_sylvester`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L931), [`Rdelta_bddAbove_iff_amp`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L948), [`eventuallySylvester_of_amp_le`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L587), [`coprimeMultiplier_cofinal`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L187), [`largePrime_coprimeMultiplier`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L295), [`primeBlock_supply`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L546), [`canc_lt_of_amp_le`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L462), [`delta_negPart_comparison`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L738), [`R_delta_sub_amp_tendsto_zero`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L870). *Compared*, runs [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595), [`35682858662`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35682858662).
 
-Theorem <a href="#long243:res:energycriterion" data-reference-type="ref" data-reference="long243:res:energycriterion">35</a>: [`energy_criterion`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L468), [`energy_summable_iff`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L414), [`energySqrt_summable_iff`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L455), [`energy_le_two_energySqrt`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L161), [`exists_late_energy_window`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L263), [`energy_window_real_bound`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L84). *Compared*, runs [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Corollary <a href="#long243:res:criticalrate" data-reference-type="ref" data-reference="long243:res:criticalrate">31</a>: [`criticalRate`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1033), [`criticalRate_counterexample`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1197), [`R_le_of_u_le`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/AmplifiedRecordEquivalence.lean#L1016). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Theorem <a href="#long243:res:slownegative" data-reference-type="ref" data-reference="long243:res:slownegative">36</a>: [`slowNegative_eventually_zero_and_sylvesterNext_unconditional`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L559), [`exactOrbit_recordTheta_gt_one`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363), [`exactOrbit_one_le_recordTheta`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L522), [`exactOrbit_unbounded_of_error_not_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L288), [`tail_multiplier_quadratic_lower`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L145), [`tail_binaryTower_lower`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L254), [`exists_multiplier_ge_four`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L218).
+Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">32</a>: [`oddPrimePower_supply`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L790), [`oddPrimePower_supply_nat`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L718). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Theorem <a href="#long243:res:strausbounded" data-reference-type="ref" data-reference="long243:res:strausbounded">37</a>: [`original_coordinate_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211), [`original_coordinate_slow_growth_defect`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L155), [`recordTheta_le_of_slow_negative`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L61), [`prefix_ratio_le_canonicalNumerator`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L111). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long243:res:unitrecord" data-reference-type="ref" data-reference="long243:res:unitrecord">33</a>: [`unitRecordIncrement_sylvesterNext`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L846), [`unitRecordIncrement_criterion`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean#L950). *Compared*, runs [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595), [`35682858662`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35682858662).
 
-Corollary <a href="#long243:res:onethreshold" data-reference-type="ref" data-reference="long243:res:onethreshold">38</a> (the Lean statement is stronger): [`original_coordinate_strict_one`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean#L92), [`original_coordinate_inclusive_one`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [`original_coordinate_inclusive_one_pointwise`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225). *Compared*, runs [`35624228171`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171), [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:epochenergy" data-reference-type="ref" data-reference="long243:res:epochenergy">34</a>: [`epoch_energy_named_crossing_set`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L149), [`mem_barrierIdx_iff`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProtectedEpochBarrierCount.lean#L34). *Compared*, runs [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Proposition <a href="#long243:res:classicalhalfspace" data-reference-type="ref" data-reference="long243:res:classicalhalfspace">39</a>: [`overlapDebt_dvd_gcd`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L206), [`canonicalError_div_overlapDebt`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L225), [`growthDefect_eq_neg_relativeError_add_shiftedCorrection`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L325), [`canonical_growthDefect_identity`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L415), [`canonicalCorrection_pos_and_lt_three_div`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L459), [`shiftedCorrectionTerm_pos_and_lt_three_div`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L380), [`erdosStraus_lcm_includes_digit_not_denominator`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L527), [`erdosStrausQuantity_ne_productDefect_ne_lcmShift`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L543), [`erdosStrausQuantity_sign`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L573), [`sylvesterTail_shiftedCorrection`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L351), [`overlapDebt_mul_lcmClearedNumerator`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L135), [`digitProductScale_eq_canonicalDenominator`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L82). *Compared*, runs [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long243:res:energycriterion" data-reference-type="ref" data-reference="long243:res:energycriterion">35</a>: [`energy_criterion`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L468), [`energy_summable_iff`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L414), [`energySqrt_summable_iff`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L455), [`energy_le_two_energySqrt`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L161), [`exists_late_energy_window`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L263), [`energy_window_real_bound`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/RecordJumpEnergySeries.lean#L84). *Compared*, runs [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">40</a>: [`exists_avoiding_in_window`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L201), [`exists_slow_rise_avoiding_sequence`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L423). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:slownegative" data-reference-type="ref" data-reference="long243:res:slownegative">36</a>: [`slowNegative_eventually_zero_and_sylvesterNext_unconditional`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L559), [`exactOrbit_recordTheta_gt_one`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363), [`exactOrbit_one_le_recordTheta`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L522), [`exactOrbit_unbounded_of_error_not_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L288), [`tail_multiplier_quadratic_lower`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L145), [`tail_binaryTower_lower`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L254), [`exists_multiplier_ge_four`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L218).
 
-Theorem <a href="#long243:res:descent" data-reference-type="ref" data-reference="long243:res:descent">41</a>: [`centeredState_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1843). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:strausbounded" data-reference-type="ref" data-reference="long243:res:strausbounded">37</a>: [`original_coordinate_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211), [`original_coordinate_slow_growth_defect`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L155), [`recordTheta_le_of_slow_negative`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L61), [`prefix_ratio_le_canonicalNumerator`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean#L111). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Theorem <a href="#long243:res:constant" data-reference-type="ref" data-reference="long243:res:constant">43</a>: [`no_constantNegative_shapeEquation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L38), [`no_eventuallyConstantNegative_shapeEquation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L52). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Corollary <a href="#long243:res:onethreshold" data-reference-type="ref" data-reference="long243:res:onethreshold">38</a> (the Lean statement is stronger): [`original_coordinate_strict_one`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean#L92), [`original_coordinate_inclusive_one`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [`original_coordinate_inclusive_one_pointwise`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225). *Compared*, runs [`35624228171`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171), [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:periodic" data-reference-type="ref" data-reference="long243:res:periodic">44</a>: [`no_periodicNegative_shapeEquation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L68). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:classicalhalfspace" data-reference-type="ref" data-reference="long243:res:classicalhalfspace">39</a>: [`overlapDebt_dvd_gcd`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L206), [`canonicalError_div_overlapDebt`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L225), [`growthDefect_eq_neg_relativeError_add_shiftedCorrection`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L325), [`canonical_growthDefect_identity`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L415), [`canonicalCorrection_pos_and_lt_three_div`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L459), [`shiftedCorrectionTerm_pos_and_lt_three_div`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L380), [`erdosStraus_lcm_includes_digit_not_denominator`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L527), [`erdosStrausQuantity_ne_productDefect_ne_lcmShift`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L543), [`erdosStrausQuantity_sign`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L573), [`sylvesterTail_shiftedCorrection`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L351), [`overlapDebt_mul_lcmClearedNumerator`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L135), [`digitProductScale_eq_canonicalDenominator`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean#L82). *Compared*, runs [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458), [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Lemma <a href="#long243:res:crt" data-reference-type="ref" data-reference="long243:res:crt">45</a>: [`exists_shiftedBlock_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">40</a>: [`exists_avoiding_in_window`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L201), [`exists_slow_rise_avoiding_sequence`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L423). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:barrier" data-reference-type="ref" data-reference="long243:res:barrier">47</a>: [`no_boundedRise_coprimeToEarlierModuli`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:descent" data-reference-type="ref" data-reference="long243:res:descent">41</a>: [`centeredState_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1843). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Proposition <a href="#long243:res:reduced" data-reference-type="ref" data-reference="long243:res:reduced">48</a>: [`persistent_coprimality`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:constant" data-reference-type="ref" data-reference="long243:res:constant">43</a>: [`no_constantNegative_shapeEquation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L38), [`no_eventuallyConstantNegative_shapeEquation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L52). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Proposition <a href="#long243:res:gcdstab" data-reference-type="ref" data-reference="long243:res:gcdstab">50</a>: [`gcd_stabilises_and_reduces`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:periodic" data-reference-type="ref" data-reference="long243:res:periodic">44</a>: [`no_periodicNegative_shapeEquation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean#L68). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Proposition <a href="#long243:res:gcdsparse" data-reference-type="ref" data-reference="long243:res:gcdsparse">51</a>: [`sparse_gcd_changes`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean#L97). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Lemma <a href="#long243:res:crt" data-reference-type="ref" data-reference="long243:res:crt">45</a>: [`exists_shiftedBlock_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a> (the Lean statement is stronger): [`eventuallyBoundedNegativePart_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:barrier" data-reference-type="ref" data-reference="long243:res:barrier">47</a>: [`no_boundedRise_coprimeToEarlierModuli`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Corollary <a href="#long243:res:cor" data-reference-type="ref" data-reference="long243:res:cor">53</a> (the Lean statement is stronger): [`boundedNegativePart_sylvesterNext_eventually`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:reduced" data-reference-type="ref" data-reference="long243:res:reduced">48</a>: [`persistent_coprimality`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">54</a>: [`finite_negative_mass_paper`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:gcdstab" data-reference-type="ref" data-reference="long243:res:gcdstab">50</a>: [`gcd_stabilises_and_reduces`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Proposition <a href="#long243:res:frontier" data-reference-type="ref" data-reference="long243:res:frontier">56</a>: [`canonical_frontier`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Proposition <a href="#long243:res:gcdsparse" data-reference-type="ref" data-reference="long243:res:gcdsparse">51</a>: [`sparse_gcd_changes`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean#L97). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Proposition <a href="#long243:res:variablerise" data-reference-type="ref" data-reference="long243:res:variablerise">61</a> (the Lean statement is stronger): [`exists_sparse_prime_coprime_sequence`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L862). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">52</a> (the Lean statement is stronger): [`eventuallyBoundedNegativePart_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:gapconstant" data-reference-type="ref" data-reference="long243:res:gapconstant">62</a>: [`maximal_gap_limsup_eq_inv_sigma`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/MaximalGapConstant.lean#L1041). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+Corollary <a href="#long243:res:cor" data-reference-type="ref" data-reference="long243:res:cor">53</a> (the Lean statement is stronger): [`boundedNegativePart_sylvesterNext_eventually`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
 
-Theorem <a href="#long243:res:residue" data-reference-type="ref" data-reference="long243:res:residue">63</a>: [`forcedOrbit_survives_iff_of_factorial_modEq`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForcedOrbitResidueHorizon.lean#L21), [`forcedSurvives_iff_of_modEq_factorial`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">54</a>: [`finite_negative_mass_paper`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+
+Proposition <a href="#long243:res:frontier" data-reference-type="ref" data-reference="long243:res:frontier">56</a>: [`canonical_frontier`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+
+Proposition <a href="#long243:res:variablerise" data-reference-type="ref" data-reference="long243:res:variablerise">61</a> (the Lean statement is stronger): [`exists_sparse_prime_coprime_sequence`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/WindowAvoidance.lean#L862). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+
+Theorem <a href="#long243:res:gapconstant" data-reference-type="ref" data-reference="long243:res:gapconstant">62</a>: [`maximal_gap_limsup_eq_inv_sigma`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/MaximalGapConstant.lean#L1041). *Compared*, run [`35643815458`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35643815458).
+
+Theorem <a href="#long243:res:residue" data-reference-type="ref" data-reference="long243:res:residue">63</a>: [`forcedOrbit_survives_iff_of_factorial_modEq`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForcedOrbitResidueHorizon.lean#L21), [`forcedSurvives_iff_of_modEq_factorial`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
 <a id="long243:app:residue"></a>
 
@@ -2409,7 +2417,7 @@ the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696
 
 </div>
 
-Lean: [forced orbit survives iff of factorial mod eq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForcedOrbitResidueHorizon.lean#L21), [forced survives iff of mod eq factorial](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134).
+Lean: [forced orbit survives iff of factorial mod eq](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForcedOrbitResidueHorizon.lean#L21), [forced survives iff of mod eq factorial](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134).
 
 <div class="proof">
 
@@ -2453,7 +2461,7 @@ A bound on the negative reduced error scaled by the previous maximum also bounds
 
 #### Cubic rate.
 
-The tail estimate and finite differences of the Gamma ratio force an eventual cubic polynomial for the integer numerator. The recurrence and Chebotarëv then force a square in the cubic field. The trace calculation leaves $`m=12`$, and both possible signs are excluded modulo seven. This is an ordinary proof. Finite checks and component sources do not constitute a formal proof of the complete cubic-rate theorem.
+The tail estimate and finite differences of the Gamma ratio force an eventual cubic polynomial for the integer numerator. The recurrence and Chebotarëv then force a square in the cubic field. The trace calculation leaves $`m=12`$, and both possible signs are excluded modulo seven. The complete cubic-rate theorem is also checked in Lean, where the square in the cubic field comes from the simple pole of the Dedekind zeta function in place of Chebotarëv’s theorem.
 
 <a id="static-barriers."></a>
 

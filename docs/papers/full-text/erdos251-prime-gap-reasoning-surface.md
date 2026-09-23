@@ -77,7 +77,7 @@ For every $`\varepsilon>0`$, the construction can instead be chosen with $`e_n\l
 
 </div>
 
-Lean: [arbitrary word sparse rationalisation uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269), [polylogarithmic word interval uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/SparsePaperR11.lean#L137), [bounded test finite coupling](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseConstructionAudit.lean#L8).
+Lean: [arbitrary word sparse rationalisation uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269), [polylogarithmic word interval uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/SparsePaperR11.lean#L137), [bounded test finite coupling](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseConstructionAudit.lean#L8).
 
 The hypotheses allow any nonnegative integer sequence of polynomial growth, but not $`a_n=2^n`$, whose dyadic series diverges. The correction allowance can grow as slowly as $`\log\log(n+3)`$. A fixed bound is not possible here: eventual boundedness together with eventual divisibility by every fixed modulus would make the corrections eventually zero; their fixed total would then have to be divisible by every modulus and hence be zero. Nonnegative corrections could not change the sum. The set $`S`$ contains every permitted correction index; the nonzero corrections may occupy a smaller, target-dependent subset. Requiring upper Banach density zero is stronger than requiring ordinary density zero. For example, the union of the integer intervals $`[k!,k!+k)`$, $`k\ge3`$, has ordinary density zero but upper Banach density one. If $`k!\le x<(k+1)!`$, at most $`k(k+1)/2`$ indices have occurred, so their proportion is at most $`k(k+1)/(2k!)\to0`$. Nevertheless each interval is filled and their lengths are unbounded. The hypothesis rules out this concentration in long intervals, however far apart those intervals lie.
 
@@ -185,7 +185,7 @@ The printed construction and the formal construction use different corrections. 
 
 </div>
 
-Lean: [local target interval](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/LocalTargetInterval.lean#L38).
+Lean: [local target interval](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/LocalTargetInterval.lean#L38).
 
 <div class="proof">
 
@@ -281,7 +281,7 @@ Summation by parts expresses a weighted sum of a sequence in terms of its first 
 
 </div>
 
-Lean: [dyadic partial sum q eq start add differences](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L138).
+Lean: [dyadic partial sum q eq start add differences](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L138).
 
 <div class="proof">
 
@@ -307,7 +307,7 @@ Specialising to $`P(i)=p_i`$, whose first value is $`p_0=2`$, and writing $`g_i=
 
 </div>
 
-Lean: [prime0 dyadic summation by parts](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L172).
+Lean: [prime0 dyadic summation by parts](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L172).
 
 The leading $`2`$ is the first prime, not a normalising constant. At $`n=2`$, for instance, the left side is $`2/2+3/4+5/8=19/8`$ and the right side is $`2+(1/2+2/4)-5/8=19/8`$.
 
@@ -332,7 +332,7 @@ for the terms of the prime series and of the gap series, so that $`\sum_{n\ge0}u
 
 </div>
 
-Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47).
+Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47).
 
 <div class="proof">
 
@@ -354,7 +354,7 @@ The prime number theorem is needed neither for this convergence nor for the iden
 
 </div>
 
-Lean: [irrationality reformulation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56).
+Lean: [irrationality reformulation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56).
 
 <div class="proof">
 
@@ -396,7 +396,7 @@ T_{N+h}=2^{h}T_N-B_{h,N},
 
 </div>
 
-Lean: [real block identity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L76).
+Lean: [real block identity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L76).
 
 <div class="proof">
 
@@ -446,7 +446,7 @@ Each even denominator loses exactly one factor of $`2`$ and an odd denominator i
 
 </div>
 
-Lean: [rationality classification](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94).
+Lean: [rationality classification](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94).
 
 <div class="proof">
 
@@ -464,7 +464,7 @@ U_N=\sum_{j\ge1}a_{N+j}2^{-j}\quad\hbox{for every }N
 
 </div>
 
-Lean: [real dyadic orbit eq true tail iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57).
+Lean: [real dyadic orbit eq true tail iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57).
 
 <div class="proof">
 
@@ -496,7 +496,7 @@ The previous criterion fixes the distance between the two indices. An equivalent
 
 </div>
 
-Lean: [actual free pair criterion](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L189).
+Lean: [actual free pair criterion](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L189).
 
 <div class="proof">
 
@@ -516,7 +516,7 @@ A second reformulation tests one prescribed sequence of pairs of indices. Let $`
 
 </div>
 
-Lean: [irrational initial iff all lcm diagonal nonintegral](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153).
+Lean: [irrational initial iff all lcm diagonal nonintegral](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153).
 
 <div class="proof">
 
@@ -543,7 +543,7 @@ then $`\sigma_h(N)`$ and $`\sigma_h(N+1)`$ cannot both be integers. Consequently
 
 </div>
 
-Lean: [rational small pair bundle](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L267).
+Lean: [rational small pair bundle](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L267).
 
 <div class="proof">
 
@@ -557,7 +557,7 @@ Lean: [rational small pair bundle](https://github.com/wcook04/plectis-erdos/blob
 
 </div>
 
-Lean: [real small pair prime endpoint](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L298).
+Lean: [real small pair prime endpoint](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L298).
 
 The unequal-gap condition alone is available: at $`h=1`$, $`N=2`$ it reads $`g_4=2\ne4=g_3`$, and Proposition <a href="#long251:res:gap-nonperiodic" data-reference-type="ref" data-reference="long251:res:gap-nonperiodic">15</a> gives such inequalities at arbitrarily large indices for each fixed $`h`$. The missing assertion is that both small-tail inequalities and the unequal-gap condition hold at the same arbitrarily late indices. Separate infinite sets of witnesses for the three requirements need not intersect.
 
@@ -567,7 +567,7 @@ The unequal-gap condition alone is available: at $`h=1`$, $`N=2`$ it reads $`g_4
 
 </div>
 
-Lean: [prime gaps not eventually periodic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175).
+Lean: [prime gaps not eventually periodic](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175).
 
 <div class="proof">
 
@@ -590,7 +590,7 @@ With even gap differences, the three conditions in Theorem <a href="#long251:re
 
 </div>
 
-Lean: [real signed two window](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L135).
+Lean: [real signed two window](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L135).
 
 <div class="proof">
 
@@ -620,7 +620,7 @@ Then $`\bigl|\sigma_h(N)-F_{h,N,L}\bigr|\le E_{h,N,L}`$. In particular $`|F_{h,N
 
 </div>
 
-Lean: [explicit remainder certificate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L211).
+Lean: [explicit remainder certificate](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L211).
 
 <div class="proof">
 
@@ -638,7 +638,7 @@ The polynomial identity $`2P(x)=(x+1)^4+P(x+1)`$ telescopes to $`\sum_{k=1}^{J}(
 
 </div>
 
-Lean: [finite small pair](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L111).
+Lean: [finite small pair](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L111).
 
 <div class="proof">
 
@@ -666,7 +666,7 @@ then $`1/2<sD_N<1`$, $`|D_{N+1}|<1`$, and both $`D_N,D_{N+1}`$ are nonintegral. 
 
 </div>
 
-Lean: [one tail signed certificate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L6).
+Lean: [one tail signed certificate](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L6).
 
 <div class="proof">
 
@@ -688,7 +688,7 @@ An exact rational enclosure of $`\Pi`$ can exclude all rational values whose den
 
 </div>
 
-Lean: [denominator floor both](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L142), [denominator floor decimal](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L137).
+Lean: [denominator floor both](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L142), [denominator floor decimal](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L137).
 
 <div class="proof">
 
@@ -763,7 +763,7 @@ Here a single positive modulus $`M`$ is fixed in advance. Adding either zero or 
 
 </div>
 
-Lean: [rational bounded perturbation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L200).
+Lean: [rational bounded perturbation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L200).
 
 <div class="proof">
 
@@ -793,7 +793,7 @@ In the next proposition, $`N,H`$ are nonnegative integers, $`h`$ is an integer, 
 
 </div>
 
-Lean: [shifted count bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/ShiftedGapCountingR9.lean#L152).
+Lean: [shifted count bound](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/ShiftedGapCountingR9.lean#L152).
 
 <div class="proof">
 
@@ -811,7 +811,7 @@ For the perturbation claim, first suppose that $`a`$ has fixed-block nonconcentr
 
 </div>
 
-Lean: [finite perturbation stability](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperNonconcentrationR7.lean#L100).
+Lean: [finite perturbation stability](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperNonconcentrationR7.lean#L100).
 
 <div class="proof">
 
@@ -834,7 +834,7 @@ Finiteness of the correction set is essential to this argument; no independence 
 
 </div>
 
-Lean: [nonconcentration does not force irrationality](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L126), [perturbed position bounds](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L67), [sum range prime gap0](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L45), [perturbed position eq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L59), and 1 further declaration. Conditional on the prime number theorem; see the [coverage section](#long251:sec:coverage).
+Lean: [nonconcentration does not force irrationality](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L126), [perturbed position bounds](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L67), [sum range prime gap0](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L45), [perturbed position eq](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/PerturbedPrimePositions.lean#L59), and 1 further declaration. Conditional on the prime number theorem; see the [coverage section](#long251:sec:coverage).
 
 <div class="proof">
 
@@ -850,7 +850,7 @@ Fixed-block polynomial nonconcentration, taken together with a prescribed finite
 
 </div>
 
-Lean: [sparse nonconcentration](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseNonconcentration.lean#L80).
+Lean: [sparse nonconcentration](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseNonconcentration.lean#L80).
 
 <div class="proof">
 
@@ -871,7 +871,7 @@ Lean: [sparse nonconcentration](https://github.com/wcook04/plectis-erdos/blob/18
 
 </div>
 
-Lean: [long joint prime gap countermodel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L256), [cut prefix bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L228). Conditional on Schlage-Puchta’s density lemma and the prime number theorem; see the [coverage section](#long251:sec:coverage).
+Lean: [long joint prime gap countermodel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L256), [cut prefix bound](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L228). Conditional on Schlage-Puchta’s density lemma and the prime number theorem; see the [coverage section](#long251:sec:coverage).
 
 </div>
 
@@ -905,7 +905,7 @@ The same nonconcentration lemma shows that the three conditions of the small-pai
 
 </div>
 
-Lean: [prime gap two window sparse](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/TwoWindowSparsity.lean#L38), [prime gap equal shift zero density](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/TwoWindowSparsity.lean#L50), [prime gap tail recurrence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/TwoWindowSparsity.lean#L30). Conditional on Schlage-Puchta’s density lemma; see the [coverage section](#long251:sec:coverage).
+Lean: [prime gap two window sparse](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/TwoWindowSparsity.lean#L38), [prime gap equal shift zero density](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/TwoWindowSparsity.lean#L50), [prime gap tail recurrence](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/TwoWindowSparsity.lean#L30). Conditional on Schlage-Puchta’s density lemma; see the [coverage section](#long251:sec:coverage).
 
 <div class="proof">
 
@@ -938,7 +938,7 @@ The mechanism is to choose integer tails first, then recover the coefficients fr
 
 </div>
 
-Lean: [exists logarithmic recurring values countermodel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/LogarithmicCarryAsymptoticsR8.lean#L368).
+Lean: [exists logarithmic recurring values countermodel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/LogarithmicCarryAsymptoticsR8.lean#L368).
 
 <div class="proof">
 
@@ -1039,7 +1039,7 @@ Thus positivity, evenness, unboundedness, nonperiodicity, logarithmic size, cumu
 
 </div>
 
-Lean: [polynomial countermodel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L27).
+Lean: [polynomial countermodel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L27).
 
 <div class="proof">
 
@@ -1057,7 +1057,7 @@ Rationality also fails to force the coefficients to repeat. Let $`K:\mathbb{N}\t
 
 </div>
 
-Lean: [carry partial sum eq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1137).
+Lean: [carry partial sum eq](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1137).
 
 <div class="proof">
 
@@ -1275,71 +1275,71 @@ A theorem whose own statement is conditional is formalised exactly as stated. Th
 
 #### Concordance of statements and Lean declarations.
 
-Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `181078b6b009`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
+Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `a25cb360bef8`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
 
-Theorem <a href="#long251:res:sparse-rationalisation" data-reference-type="ref" data-reference="long251:res:sparse-rationalisation">1</a>: [`arbitrary_word_sparse_rationalisation_uniform`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269), [`polylogarithmic_word_interval_uniform`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/SparsePaperR11.lean#L137), [`bounded_test_finite_coupling`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseConstructionAudit.lean#L8). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:sparse-rationalisation" data-reference-type="ref" data-reference="long251:res:sparse-rationalisation">1</a>: [`arbitrary_word_sparse_rationalisation_uniform`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269), [`polylogarithmic_word_interval_uniform`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/SparsePaperR11.lean#L137), [`bounded_test_finite_coupling`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseConstructionAudit.lean#L8). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Corollary <a href="#long251:res:local-targets" data-reference-type="ref" data-reference="long251:res:local-targets">2</a>: [`local_target_interval`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/LocalTargetInterval.lean#L38). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Corollary <a href="#long251:res:local-targets" data-reference-type="ref" data-reference="long251:res:local-targets">2</a>: [`local_target_interval`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/LocalTargetInterval.lean#L38). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Proposition <a href="#long251:res:abel" data-reference-type="ref" data-reference="long251:res:abel">3</a>: [`dyadicPartialSumQ_eq_start_add_differences`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L138). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:abel" data-reference-type="ref" data-reference="long251:res:abel">3</a>: [`dyadicPartialSumQ_eq_start_add_differences`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L138). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:parts" data-reference-type="ref" data-reference="long251:res:parts">4</a>: [`prime0_dyadic_summation_by_parts`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L172). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:parts" data-reference-type="ref" data-reference="long251:res:parts">4</a>: [`prime0_dyadic_summation_by_parts`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L172). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:infinite" data-reference-type="ref" data-reference="long251:res:infinite">5</a>: [`infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:infinite" data-reference-type="ref" data-reference="long251:res:infinite">5</a>: [`infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Corollary <a href="#long251:res:irr-equivalence" data-reference-type="ref" data-reference="long251:res:irr-equivalence">6</a>: [`irrationality_reformulation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Corollary <a href="#long251:res:irr-equivalence" data-reference-type="ref" data-reference="long251:res:irr-equivalence">6</a>: [`irrationality_reformulation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:block" data-reference-type="ref" data-reference="long251:res:block">8</a>: [`real_block_identity`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L76). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long251:res:block" data-reference-type="ref" data-reference="long251:res:block">8</a>: [`real_block_identity`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L76). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Theorem <a href="#long251:res:escape-irrational" data-reference-type="ref" data-reference="long251:res:escape-irrational">9</a>: [`rationality_classification`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:escape-irrational" data-reference-type="ref" data-reference="long251:res:escape-irrational">9</a>: [`rationality_classification`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Lemma <a href="#long251:res:true-tail" data-reference-type="ref" data-reference="long251:res:true-tail">10</a>: [`real_dyadic_orbit_eq_true_tail_iff`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Lemma <a href="#long251:res:true-tail" data-reference-type="ref" data-reference="long251:res:true-tail">10</a>: [`real_dyadic_orbit_eq_true_tail_iff`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:freepair" data-reference-type="ref" data-reference="long251:res:freepair">11</a>: [`actual_free_pair_criterion`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L189). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:freepair" data-reference-type="ref" data-reference="long251:res:freepair">11</a>: [`actual_free_pair_criterion`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L189). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:lcmdiagonal" data-reference-type="ref" data-reference="long251:res:lcmdiagonal">12</a>: [`irrational_initial_iff_all_lcmDiagonal_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long251:res:lcmdiagonal" data-reference-type="ref" data-reference="long251:res:lcmdiagonal">12</a>: [`irrational_initial_iff_all_lcmDiagonal_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Theorem <a href="#long251:res:smallpair" data-reference-type="ref" data-reference="long251:res:smallpair">13</a>: [`rational_small_pair_bundle`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L267). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:smallpair" data-reference-type="ref" data-reference="long251:res:smallpair">13</a>: [`rational_small_pair_bundle`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L267). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Corollary <a href="#long251:res:smallpair-real" data-reference-type="ref" data-reference="long251:res:smallpair-real">14</a>: [`real_small_pair_prime_endpoint`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L298). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Corollary <a href="#long251:res:smallpair-real" data-reference-type="ref" data-reference="long251:res:smallpair-real">14</a>: [`real_small_pair_prime_endpoint`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L298). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:gap-nonperiodic" data-reference-type="ref" data-reference="long251:res:gap-nonperiodic">15</a>: [`prime_gaps_not_eventually_periodic`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:gap-nonperiodic" data-reference-type="ref" data-reference="long251:res:gap-nonperiodic">15</a>: [`prime_gaps_not_eventually_periodic`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:signedwindow" data-reference-type="ref" data-reference="long251:res:signedwindow">16</a>: [`real_signed_two_window`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L135). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:signedwindow" data-reference-type="ref" data-reference="long251:res:signedwindow">16</a>: [`real_signed_two_window`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L135). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">17</a>: [`explicit_remainder_certificate`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L211). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">17</a>: [`explicit_remainder_certificate`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L211). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:finite-smallpair" data-reference-type="ref" data-reference="long251:res:finite-smallpair">18</a>: [`finite_small_pair`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L111). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:finite-smallpair" data-reference-type="ref" data-reference="long251:res:finite-smallpair">18</a>: [`finite_small_pair`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L111). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:one-tail-certificate" data-reference-type="ref" data-reference="long251:res:one-tail-certificate">19</a>: [`one_tail_signed_certificate`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L6). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:one-tail-certificate" data-reference-type="ref" data-reference="long251:res:one-tail-certificate">19</a>: [`one_tail_signed_certificate`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L6). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:denominatorfloor" data-reference-type="ref" data-reference="long251:res:denominatorfloor">20</a>: [`denominator_floor_both`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L142), [`denominator_floor_decimal`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L137). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:denominatorfloor" data-reference-type="ref" data-reference="long251:res:denominatorfloor">20</a>: [`denominator_floor_both`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L142), [`denominator_floor_decimal`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean#L137). *Compared*, runs [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144), [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">22</a>: [`rational_bounded_perturbation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L200). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">22</a>: [`rational_bounded_perturbation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L200). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:shiftedcount" data-reference-type="ref" data-reference="long251:res:shiftedcount">23</a>: [`shifted_count_bound`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/ShiftedGapCountingR9.lean#L152). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:shiftedcount" data-reference-type="ref" data-reference="long251:res:shiftedcount">23</a>: [`shifted_count_bound`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/ShiftedGapCountingR9.lean#L152). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">24</a>: [`finite_perturbation_stability`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperNonconcentrationR7.lean#L100). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">24</a>: [`finite_perturbation_stability`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperNonconcentrationR7.lean#L100). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:sparse-nonconcentration" data-reference-type="ref" data-reference="long251:res:sparse-nonconcentration">26</a>: [`sparse_nonconcentration`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseNonconcentration.lean#L80). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:sparse-nonconcentration" data-reference-type="ref" data-reference="long251:res:sparse-nonconcentration">26</a>: [`sparse_nonconcentration`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/SparseNonconcentration.lean#L80). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">29</a>: [`exists_logarithmic_recurring_values_countermodel`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/LogarithmicCarryAsymptoticsR8.lean#L368). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">29</a>: [`exists_logarithmic_recurring_values_countermodel`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/LogarithmicCarryAsymptoticsR8.lean#L368). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:polynomialcountermodel" data-reference-type="ref" data-reference="long251:res:polynomialcountermodel">30</a>: [`polynomial_countermodel`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L27). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:polynomialcountermodel" data-reference-type="ref" data-reference="long251:res:polynomialcountermodel">30</a>: [`polynomial_countermodel`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L27). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:telescope" data-reference-type="ref" data-reference="long251:res:telescope">31</a>: [`carryPartialSum_eq`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1137). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:telescope" data-reference-type="ref" data-reference="long251:res:telescope">31</a>: [`carryPartialSum_eq`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1137). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:xr:totient" data-reference-type="ref" data-reference="long251:xr:totient">34</a>: [`tailShift_integral_totient_of_odd_den`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L877). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:xr:totient" data-reference-type="ref" data-reference="long251:xr:totient">34</a>: [`tailShift_integral_totient_of_odd_den`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L877). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:xr:propagate" data-reference-type="ref" data-reference="long251:xr:propagate">35</a>: [`realTailShift_integral_add`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/RealPropagation.lean#L27). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Proposition <a href="#long251:xr:propagate" data-reference-type="ref" data-reference="long251:xr:propagate">35</a>: [`realTailShift_integral_add`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/RealPropagation.lean#L27). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
-Proposition <a href="#long251:xr:truncation" data-reference-type="ref" data-reference="long251:xr:truncation">36</a> (the Lean statement is stronger): [`cofinal_escape_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:xr:truncation" data-reference-type="ref" data-reference="long251:xr:truncation">36</a> (the Lean statement is stronger): [`cofinal_escape_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:res:complete-truncation" data-reference-type="ref" data-reference="long251:res:complete-truncation">37</a>: [`finite_separation_complete`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L25). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:res:complete-truncation" data-reference-type="ref" data-reference="long251:res:complete-truncation">37</a>: [`finite_separation_complete`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L25). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Proposition <a href="#long251:xr:boundedpolignac" data-reference-type="ref" data-reference="long251:xr:boundedpolignac">39</a> (the Lean statement is stronger): [`bounded_recurring_values_countermodel`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperBoundedCarryR7.lean#L179). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
+Proposition <a href="#long251:xr:boundedpolignac" data-reference-type="ref" data-reference="long251:xr:boundedpolignac">39</a> (the Lean statement is stronger): [`bounded_recurring_values_countermodel`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperBoundedCarryR7.lean#L179). *Compared*, run [`35605146048`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35605146048).
 
-Theorem <a href="#long251:res:affinecollapse" data-reference-type="ref" data-reference="long251:res:affinecollapse">40</a>: [`affine_circularity_bundle`](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L241). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
+Theorem <a href="#long251:res:affinecollapse" data-reference-type="ref" data-reference="long251:res:affinecollapse">40</a>: [`affine_circularity_bundle`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L241). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
 <a id="sparse-construction."></a>
 
@@ -1431,7 +1431,7 @@ Euler’s congruence gives an explicit integral shift once the denominator is od
 
 </div>
 
-Lean: [tail shift integral totient of odd den](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L877).
+Lean: [tail shift integral totient of odd den](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L877).
 
 <div class="proof">
 
@@ -1445,7 +1445,7 @@ Lean: [tail shift integral totient of odd den](https://github.com/wcook04/plecti
 
 </div>
 
-Lean: [real tail shift integral add](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/RealPropagation.lean#L27).
+Lean: [real tail shift integral add](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/RealPropagation.lean#L27).
 
 <div class="proof">
 
@@ -1474,7 +1474,7 @@ If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ wi
 
 </div>
 
-Lean: [cofinal escape of finite truncation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261).
+Lean: [cofinal escape of finite truncation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261).
 
 </div>
 
@@ -1507,7 +1507,7 @@ D\notin\mathbb{Z}\quad\Longleftrightarrow\quad
 
 </div>
 
-Lean: [finite separation complete](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L25).
+Lean: [finite separation complete](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean#L25).
 
 <div class="proof">
 
@@ -1601,7 +1601,7 @@ The logarithmic growth in Theorem <a href="#long251:res:polignacfail" data-refe
 
 </div>
 
-Lean: [bounded recurring values countermodel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperBoundedCarryR7.lean#L179).
+Lean: [bounded recurring values countermodel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperBoundedCarryR7.lean#L179).
 
 <div class="proof">
 
@@ -1734,7 +1734,7 @@ Then
 
 </div>
 
-Lean: [affine circularity bundle](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L241).
+Lean: [affine circularity bundle](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L241).
 
 <div class="proof">
 

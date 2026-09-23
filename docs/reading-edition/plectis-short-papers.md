@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `9055ad8cab1e8782`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `8fb47c734d90006a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1122,7 +1122,7 @@ In particular, [cofinal non-unit carries imply irrationality](https://github.com
 
 </div>
 
-Lean: [carry characterisation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45).
+Lean: [carry characterisation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45).
 
 <div class="proof">
 
@@ -1184,7 +1184,7 @@ The vectors $`e_1,U_2,U_3,\ldots`$ form an integral basis. Every finite vector h
 
 </div>
 
-Lean: [divisor channel coordinates](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260).
+Lean: [divisor channel coordinates](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260).
 
 <div class="proof">
 
@@ -1280,7 +1280,7 @@ g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
 
 </div>
 
-Lean: [finite channel moment certificate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252), [finite channel moment certificate eq](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L260).
+Lean: [finite channel moment certificate](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252), [finite channel moment certificate eq](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L260).
 
 <div class="proof">
 
@@ -1302,7 +1302,7 @@ In particular, support in $`[d,2d)`$ and $`V_d(\lambda)=0`$ force $`M(\lambda)=0
 
 </div>
 
-Lean: [supported quotient band](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24), [supported first band cancellation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42), [supported breakpoint escape](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51).
+Lean: [supported quotient band](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24), [supported first band cancellation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42), [supported breakpoint escape](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51).
 
 <div class="proof">
 
@@ -1438,7 +1438,7 @@ then $`S`$ is irrational.*
 
 </div>
 
-Lean: [global complementary criterion nat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154).
+Lean: [global complementary criterion nat](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154).
 
 <div class="proof">
 
@@ -1579,7 +1579,7 @@ but the canonical digits of $`1/2`$ are $`d_2=1`$ and $`d_m=0`$ for $`m\ge3`$. W
 
 </div>
 
-Lean: [companion orbit boundary](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27).
+Lean: [companion orbit boundary](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27).
 
 <div class="proof">
 
@@ -1834,7 +1834,7 @@ then $`a_{n+1}=a_n^2-a_n+1`$ for all sufficiently large $`n`$.*
 
 </div>
 
-Lean: [original coordinate bounded defect](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211).
+Lean: [original coordinate bounded defect](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211).
 
 The assumption bounds the upward increments of $`P_n/a_n`$; it does not bound $`P_n/a_n`$ itself. Indeed,
 ``` math
@@ -1871,7 +1871,7 @@ Here is the precise arithmetic statement. For the rational tails, Section <a hr
 
 </div>
 
-Lean: [eventually bounded negative part eventually zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360).
+Lean: [eventually bounded negative part eventually zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360).
 
 </div>
 
@@ -1917,7 +1917,7 @@ The earlier multipliers are coprime to every later reduced numerator. Theorem <
 
 </div>
 
-Lean: [bounded negative endpoint eventual multiplier](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179).
+Lean: [bounded negative endpoint eventual multiplier](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179).
 
 <div class="proof">
 
@@ -1947,7 +1947,7 @@ C_{n+1}=C_n-E_n,\qquad
 
 </div>
 
-Lean: [error identities](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21).
+Lean: [error identities](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21).
 
 <div class="proof">
 
@@ -1961,7 +1961,7 @@ Lean: [error identities](https://github.com/wcook04/plectis-erdos/blob/181078b6b
 
 </div>
 
-Lean: [absorption and descent](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120).
+Lean: [absorption and descent](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120).
 
 <div class="proof">
 
@@ -1975,7 +1975,7 @@ Lean: [absorption and descent](https://github.com/wcook04/plectis-erdos/blob/181
 
 </div>
 
-Lean: [sylvester next eq of centered zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787), [natural sylvester of eventual zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L156).
+Lean: [sylvester next eq of centered zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787), [natural sylvester of eventual zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L156).
 
 <div class="proof">
 
@@ -1995,7 +1995,7 @@ Absorption uses strict centring at the successor index. After an eventual centri
 
 </div>
 
-Lean: [exists shifted consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839).
+Lean: [exists shifted consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839).
 
 <div class="proof">
 
@@ -2013,7 +2013,7 @@ For example, the consecutive integers $`6k+2,6k+3`$ are forbidden to a sequence 
 
 </div>
 
-Lean: [no bounded rise of tail avoidance](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903).
+Lean: [no bounded rise of tail avoidance](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903).
 
 <div class="proof">
 
@@ -2042,7 +2042,7 @@ u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
 
 </div>
 
-Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
+Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
 
 <div class="proof">
 
@@ -2056,7 +2056,7 @@ Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/181
 
 </div>
 
-Lean: [gcd stabilises and reduces](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
+Lean: [gcd stabilises and reduces](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
 
 <div class="proof">
 
@@ -2142,7 +2142,7 @@ then $`E_n=0`$ eventually. Neither denominator dynamics nor vanishing relative e
 
 </div>
 
-Lean: [finite negative mass paper](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84).
+Lean: [finite negative mass paper](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84).
 
 <div class="proof">
 
@@ -2196,7 +2196,7 @@ Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Strict cent
 
 </div>
 
-Lean: [canonical weighted record excess](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202).
+Lean: [canonical weighted record excess](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202).
 
 Only a step reaching a new maximum contributes. At a late such step, $`-V_n=U_{n+1}-U_n`$, so the first $`B`$ units of the increase are ignored. A Sylvester tail makes the sum finite because $`V_n=0`$ eventually. On a non-Sylvester tail, the proof gives divergence for every admissible $`f`$ and every fixed $`B`$. The limit $`V_n/U_n\to0`$ gives a pointwise relative-error estimate; no bound on this weighted sum is derived from that limit here. The restriction on $`f`$ matters: $`f(t)=1/t`$ is permitted, as is $`1/[t\log(et)]`$, but $`1/t^2`$ is not. For the latter weight, the integral in the crossing argument is finite and cannot contradict unbounded growth.
 
@@ -2265,7 +2265,7 @@ then the sequence is eventually Sylvester.*
 
 </div>
 
-Lean: [original coordinate lcm bounded defect](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49).
+Lean: [original coordinate lcm bounded defect](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49).
 
 <div class="proof">
 
@@ -2296,7 +2296,7 @@ Then the sequence is eventually Sylvester. In particular, the conclusion holds u
 
 </div>
 
-Lean: [original coordinate inclusive one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [original coordinate inclusive one pointwise](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225).
+Lean: [original coordinate inclusive one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [original coordinate inclusive one pointwise](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225).
 
 <div class="proof">
 
@@ -2320,13 +2320,15 @@ has irrational reciprocal sum.*
 
 </div>
 
-Lean: [cubic rate irrationality of chebotarev](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean#L270). Conditional on Chebotarev’s density theorem; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=coverage).
+Lean: [cubic rate irrationality unconditional](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70).
 
 <div class="proof">
 
-*Proof by the polynomial exclusion.* Under rationality, Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The field step uses Chebotarev; see \[stevenhagenlenstra1996, Section 3, author version\] for that classical input. This paragraph is a proof by a stated companion result, not a standalone finite-congruence proof and not an assembled Lean proof. ◻
+*Proof by the polynomial exclusion.* Under rationality, Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The field step in that argument uses Chebotarev’s theorem; see \[stevenhagenlenstra1996, Section 3, author version\] for that classical input. This paragraph is a proof by a stated companion result. ◻
 
 </div>
+
+Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">16</a> is also a Lean theorem, [cubic-rate irrationality](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70), with no hypothesis beyond those printed above. In the Lean proof, the field step uses the simple pole of the Dedekind zeta function at $`s=1`$, which Mathlib provides, in place of Chebotarev’s theorem.
 
 For example, $`a_1=8`$ and $`a_{n+1}=\lceil n a_n^2/(n+3)\rceil`$ give this rate and product-ratio increments of order $`n^2`$. Thus the bounded-increment criterion does not apply, but Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">16</a> gives irrationality. The rounding estimates are in the companion’s Section 2; its Section 7 treats the general $`1+c/n`$ comparison.
 
@@ -2334,13 +2336,13 @@ The same finite-difference extraction excludes every nonintegral $`\lambda>1`$ u
 
 Although $`C_n`$ is an integer linear form in the reciprocal sum, it grows. The argument uses an exact polynomial formula, not a small-linear-form criterion.
 
-There is also an ordinary quantitative extension, not an end-to-end Lean-checked theorem. Under the hypotheses of Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a> other than (5), the companion proves
+There is also a quantitative extension, whose two steps are Lean theorems; only the final step combining them is not a Lean declaration. Under the hypotheses of Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a> other than (5), the companion proves
 ``` math
 \limsup_{n\to\infty}
  \frac{(-E_n)_+}{\log_2\log_2\max(4,C_n)}\le1
  \quad\Longrightarrow\quad E_n=0\text{ eventually}.
 ```
-The companion’s Theorem 7.3 and Corollary 7.4 prove this inclusive bound by controlling the height of a CRT block. A fixed bound satisfies it on a nonzero tail, where $`C_n\to\infty`$; a bound of order $`\sqrt{C_n}`$ need not. Unlike boundedness, the coefficient depends on the integer normalisation: scaling $`(C_n,D_n,E_n)`$ by $`k\in\mathbb{N}_{>0}`$ scales this limit superior by $`k`$. The proof and the running-maximum estimates are in the companion’s Section 7, not in the elementary bounded-increment argument above. Subcritical versions are given in [the slow-negative proof](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md) and [the record-only extension](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md#5-record-only-subcritical-log-log-bound), the latter for LCM numerators with the bound imposed only at late record steps. These results do not establish the general bound on the sum at record steps.
+The companion’s Theorem 7.3 and Corollary 7.4 prove this inclusive bound by controlling the height of a CRT block. A fixed bound satisfies it on a nonzero tail, where $`C_n\to\infty`$; a bound of order $`\sqrt{C_n}`$ need not. Unlike boundedness, the coefficient depends on the integer normalisation: scaling $`(C_n,D_n,E_n)`$ by $`k\in\mathbb{N}_{>0}`$ scales this limit superior by $`k`$. The proof and the running-maximum estimates are in the companion’s Section 7, not in the elementary bounded-increment argument above. Put $`H_n=\max_{j\le n}C_j`$. For an orbit satisfying these hypotheses, the first step is the Lean theorem that $`\limsup_n(H_{n+1}-H_n)/\log_2\log_2\max(4,H_n)>1`$ whenever $`E_n`$ is not eventually zero ([strict record bound](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363)), and the second is the Lean theorem that this limit superior is at most the one displayed above ([comparison with the negative part](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L100)). The displayed implication is the contrapositive of the two combined, which also uses $`D_0\ge1`$, a consequence of (6). Subcritical versions are given in [the slow-negative proof](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md) and [the record-only extension](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md#5-record-only-subcritical-log-log-bound), the latter for LCM numerators with the bound imposed only at late record steps. These results do not establish the general bound on the sum at record steps.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:open"></a>
 
@@ -2355,7 +2357,7 @@ The companion’s Theorem 7.3 and Corollary 7.4 prove this inclusive bound by 
 
 </div>
 
-Lean: [canonical frontier](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
+Lean: [canonical frontier](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
 
 <div class="proof">
 
@@ -2402,7 +2404,7 @@ If the recurrence is not eventually Sylvester, first crossings instead give $`F_
 
 </div>
 
-Lean: [real lower density zero iff exists admissible real weight](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87).
+Lean: [real lower density zero iff exists admissible real weight](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87).
 
 <div class="proof">
 
@@ -2439,13 +2441,13 @@ I thank Wouter van Doorn for advice on the exposition, in particular for asking 
 
 ### Sources and related methods
 
-The mathematical arguments above are independent of the source code. Each linked phrase below opens its declaration at an immutable revision; the checkpoint is `3d6d938d696f` unless the destination identifies a separate release or older research note.
+The mathematical arguments above are independent of the source code. Each linked phrase below opens its declaration at an immutable revision; the checkpoint is `3d6d938d696f` unless the destination identifies a separate release, an older research note or a later revision.
 
 <a id="erdos-243-reciprocal-tail-rigidity--recorded-coverage."></a>
 
 ###### Recorded coverage.
 
-The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#erdos-243-reciprocal-tail-rigidity--res:weights" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:weights">19</a>. The cubic and double-logarithmic arguments have checked components, not assembled Lean proofs identified here; the companion supplies their written proofs, including the growth and modulus-counting arguments.
+The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#erdos-243-reciprocal-tail-rigidity--res:weights" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:weights">19</a>. The cubic-rate theorem has an assembled Lean proof, [cubic-rate irrationality](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70), with no hypothesis beyond those of Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">16</a>. The companion’s double-logarithmic results, its Theorem 7.3 and Corollary 7.4, are Lean theorems for the integer tails of a rational reciprocal sum ([record dichotomy](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [double-logarithmic criterion](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129)). For an orbit satisfying the hypotheses of Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a> other than (5), both steps of the double-logarithmic bound are Lean theorems and only their final combination, described in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:secondaryrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate">7</a>, is not a Lean declaration. The companion supplies the written proofs of both arguments, including the growth and modulus-counting arguments.
 
 The recorded main build is at `6b78209ab63a`; links retain their original pins, including `3d6d938d696f`. The linked weighted criterion also has a fresh Lean check; this does not certify the remaining exposition as a whole. Finite certificates and unsuccessful extensions are retained in the companion, not counted as proofs of assembled arguments. The earlier Isabelle/HOL development of Koutsoukou-Argyraki and Li \[kouli2020\] verifies older irrationality criteria, not Problem #243. None of these records supplies the missing increment bound or global record estimate.
 
@@ -2504,7 +2506,7 @@ Direct iteration can produce very large intermediate integers. To decide whether
 
 </div>
 
-Lean: [forced survives iff of mod eq factorial](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134).
+Lean: [forced survives iff of mod eq factorial](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134).
 
 <div class="proof">
 
@@ -2581,7 +2583,7 @@ F^{(k)}_{j,r}=C_k(t,u)\,F^{(k)}_{j-t,u},
 
 </div>
 
-Lean: [displayed all base kernel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35).
+Lean: [displayed all base kernel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35).
 
 The condition on a retained positive residue is $`k\nmid r`$, not $`\gcd(k,r)=1`$. Thus $`r=2`$ is retained when $`k=6`$. No primality or squarefreeness assumption on the base is needed. The reduction scalar can depend on the residue even for a fixed base: at $`k=6`$,
 ``` math
@@ -2628,7 +2630,7 @@ is a basis for the rational span of the full dyadic kernel. Every rational relat
 
 </div>
 
-Lean: [displayed full dyadic basis](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156).
+Lean: [displayed full dyadic basis](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156).
 
 <div class="proof">
 
@@ -2646,7 +2648,7 @@ form a $`\mathbb{Z}`$-basis of the kernel of evaluation $`E_i\mapsto F_i`$. In p
 
 </div>
 
-Lean: [displayed integral normal form](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398).
+Lean: [displayed integral normal form](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398).
 
 <div class="proof">
 
@@ -2684,7 +2686,7 @@ Pairwise nonproportionality is essential here. For instance, $`n+1`$ and $`n+2`$
 
 </div>
 
-Lean: [periodic freezing integer affine](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24).
+Lean: [periodic freezing integer affine](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24).
 
 <div class="proof">
 
@@ -2724,7 +2726,7 @@ For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum
 
 </div>
 
-Lean: [short note residue theorem](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L277).
+Lean: [short note residue theorem](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276).
 
 The restriction $`m\ge3`$ is necessary: modulo $`2`$ the only nonzero coefficients occur at $`n=1,2`$, and the sum is $`1/2+1/4=3/4`$. For the second assertion, only $`f(1)`$ and its values on the even classes can affect the sum. The other odd classes are never attained by $`\varphi(n)`$.
 
@@ -2736,7 +2738,7 @@ The next lemma applies, for example, to the indicator of the squares: its coeffi
 
 </div>
 
-Lean: [bounded isolated pulse](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106).
+Lean: [bounded isolated pulse](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106).
 
 <div class="proof">
 
@@ -2821,7 +2823,7 @@ Requiring this for every $`d\ge1,N\ge0`$ is equivalent to $`S\notin\mathbb{Q}`$.
 
 </div>
 
-Lean: [full depth amplification](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35).
+Lean: [full depth amplification](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35).
 
 For a fixed $`d,N`$, the hypothesis is just one nonintegral tail difference; it does not assert irrationality of $`S`$. Requiring it for *every* $`d,N`$ is as strong as the original problem. The conclusion sets the truncation depth equal to the shift, $`L=md`$, and loses at most one member of each sufficiently late pair of successive multipliers.
 
@@ -2938,7 +2940,7 @@ The uniform bound $`Q-\Theta_2>1/15`$ is false already at $`(1,5)`$.*
 
 </div>
 
-Lean: [rank one denominator pos](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25), [rank one subrank quotient ge one five](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530), [rank one subrank quotient eq one five iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546), [rank one subrank quotient sub theta two gt twenty one div three twenty](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636), and 2 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=coverage).
+Lean: [rank one denominator pos](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25), [rank one subrank quotient ge one five](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530), [rank one subrank quotient eq one five iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546), [rank one subrank quotient sub theta two gt twenty one div three twenty](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636), and 2 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=coverage).
 
 The unique minimiser and the [uniform lower bound $`21/320`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L624) are in the linked source; the $`1/15`$ bound [already fails at $`(1,5)`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L645). This theorem treats averages after the quotients are formed. Signed coefficients, coupling before the quotient, and higher-rank kernels require separate arguments. For rational approximants $`p_j/q_j`$ in lowest terms, with $`q_j>0`$, a sufficient arithmetic target is
 ``` math
@@ -2997,7 +2999,7 @@ for which those four bounds hold?
 
 </div>
 
-The long record gives the same decomposition, and the [four simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543) are defined in the linked source. All four bounds must hold on the *same* block with the same parameters. The permitted blocks need only be arbitrarily large, but $`L`$ must also make the truncation error small enough for the residue test. The long record proves the unassigned and excluded-cofactor bounds at minimal admissible depth, using smooth-number asymptotics and the distribution of $`\varphi(m)/m`$. An elementary mean-value estimate also gives the explicit sufficient cutoff $`\eta=1/1000`$ for the excluded-cofactor bound. The two remaining estimates concern the group means and their weighted, mean-subtracted phases. They must hold at the same depth and for the same choice of $`\eta`$; the existence of a cutoff that controls the excluded indices does not establish either of them.
+The long record gives the same decomposition, and the [four simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543) are defined in the linked source. All four bounds must hold on the *same* block with the same parameters. The permitted blocks need only be arbitrarily large, but $`L`$ must also make the truncation error small enough for the residue test. The long record proves the unassigned and excluded-cofactor bounds at minimal admissible depth, using smooth-number asymptotics and the distribution of $`\varphi(m)/m`$. The unassigned bound is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556), whose proof replaces the smooth-number asymptotics by Mertens’ theorems. An elementary mean-value estimate also gives the explicit sufficient cutoff $`\eta=1/1000`$ for the excluded-cofactor bound. The two remaining estimates concern the group means and their weighted, mean-subtracted phases. They must hold at the same depth and for the same choice of $`\eta`$; the existence of a cutoff that controls the excluded indices does not establish either of them.
 
 Balasubramanian, Giri and Srivastav estimate the finite sums $`\sum_{1\le n\le x}F(n)G(n-h)`$ for $`F=f*1`$, $`G=g*1`$ with decaying $`f,g`$, setting $`F(n)=G(n)=0`$ for $`n\le0`$. Taking $`f(n)=g(n)=\mu(n)/n`$ gives $`F(n)=G(n)=\varphi(n)/n`$ for $`n\ge1`$; the estimate is uniform for $`|h|\le x/2`$ \[bgs2016, Thm. 2.2\]. Their partial-summation extension allows differentiable weights with bounded derivative on the summation interval \[bgs2016, Rem. 2.9\]. The missing input here is a useful error bound for the present phase and residual weight, not shift uniformity or partial summation itself. **Acknowledgement.** I thank Wouter van Doorn for advice on writing for a first-time reader and on explaining the strength of a hypothesis. His advice concerned a different note; it was not a mathematical review or endorsement of the results presented here.
 
@@ -3145,7 +3147,7 @@ In particular the distance tends to zero for every integer-valued $`m=m(X)\ge1`$
 
 </div>
 
-Lean: [arbitrary word sparse rationalisation uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269), [polylogarithmic word interval uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/SparsePaperR11.lean#L137).
+Lean: [arbitrary word sparse rationalisation uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/SparseAmbientR9.lean#L269), [polylogarithmic word interval uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/SparsePaperR11.lean#L137).
 
 The convergence hypothesis includes all nonnegative integer sequences of polynomial growth, but excludes $`a_n=2^n`$. The allowance $`f(n)\to\infty`$ may grow as slowly as $`\log\log(n+3)`$; it cannot be replaced by a constant. Indeed, eventual divisibility by a modulus larger than the bound forces the corrections eventually to vanish. Their cumulative sum then becomes constant; divisibility by every modulus forces that constant to be zero. Nonnegativity makes every correction zero. Upper Banach density zero also rules out arbitrarily long intervals filled by permitted correction indices, even when their ordinary density is zero.
 
@@ -3224,7 +3226,7 @@ These positions are not asserted to be prime.*
 
 </div>
 
-Lean: [short joint prime gap countermodel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L431), [cut prefix bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L228). Conditional on Schlage-Puchta’s density lemma and the prime number theorem; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=coverage).
+Lean: [short joint prime gap countermodel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L431), [cut prefix bound](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean#L228). Conditional on Schlage-Puchta’s density lemma and the prime number theorem; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -3275,7 +3277,7 @@ satisfy $`T_0=2G-1`$ and $`T_{N+1}=2T_N-g_{N+1}`$. Thus $`\Pi`$, $`G`$ and $`T_0
 
 </div>
 
-Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47), [real prime gap tail eq tsum shifted gaps](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L31), [real prime gap tail zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L57), [real prime gap tail recurrence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L48), and 2 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=coverage).
+Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47), [real prime gap tail eq tsum shifted gaps](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L31), [real prime gap tail zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L57), [real prime gap tail recurrence](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L48), and 2 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -3296,7 +3298,7 @@ This is the reduction noted by Tao in the problem’s forum discussion \[erdospr
 
 </div>
 
-Lean: [real dyadic orbit eq true tail iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57).
+Lean: [real dyadic orbit eq true tail iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57).
 
 <div class="proof">
 
@@ -3324,7 +3326,7 @@ Consequently $`U_0`$ is irrational exactly when every positive shift is noninteg
 
 </div>
 
-Lean: [real orbit exact den and shift](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/ExactDenominator.lean#L62), [rationality classification](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94).
+Lean: [real orbit exact den and shift](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/ExactDenominator.lean#L62), [rationality classification](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94).
 
 <div class="proof">
 
@@ -3355,7 +3357,7 @@ In that case $`sD'\in(-1,0)`$ and both $`D`$ and $`D'`$ are nonintegral.*
 
 </div>
 
-Lean: [signed two window iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean#L7), [signed two window consequences](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean#L47).
+Lean: [signed two window iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean#L7), [signed two window consequences](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean#L47).
 
 <div class="proof">
 
@@ -3404,7 +3406,7 @@ then $`\Pi`$ is irrational.*
 
 </div>
 
-Lean: [irrational prime series of finite truncation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273).
+Lean: [irrational prime series of finite truncation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273).
 
 <div class="proof">
 
@@ -3462,7 +3464,7 @@ The construction can place its target interval inside $`(A,A+\eta)`$ for any $`\
 
 </div>
 
-Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47), [irrationality reformulation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56).
+Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47), [irrationality reformulation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56).
 
 <div class="proof">
 
@@ -3476,7 +3478,7 @@ Lean: [infinite prime gap identity](https://github.com/wcook04/plectis-erdos/blo
 
 </div>
 
-Lean: [prime gaps not eventually periodic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175).
+Lean: [prime gaps not eventually periodic](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175).
 
 <div class="proof">
 
@@ -3580,7 +3582,7 @@ implies that $`X_A(b)`$ is irrational for every integer $`b\ge2`$. Both conclusi
 
 </div>
 
-Lean: [divisibility weighted claim](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120), [finite prime weighted fixed base hereditary](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31).
+Lean: [divisibility weighted claim](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120), [finite prime weighted fixed base hereditary](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31).
 
 For $`P=\{2\}`$, the summand in <a href="#erdos-257-mersenne-support-subseries--eq:weighted-fixed-base" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-fixed-base">[eq:weighted-fixed-base]</a> is $`1/[m(b^{2^k}-1)]`$ when $`a=2^km`$ and $`m`$ is odd. Large powers of $`2`$ can therefore compensate for large reciprocal mass among the odd factors. The example following the proof in Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">3</a> makes this precise. The reciprocal mass at each fixed $`P`$-part must be finite, and its weighted sum over the parts must converge; the first requirement alone is insufficient. Section 1.2 of the companion, *Reciprocal Mersenne Subseries*, gives the decomposition and a separating example.
 
@@ -3596,7 +3598,7 @@ then $`X_A(b)`$ is irrational for every integer $`b\ge2`$.*
 
 </div>
 
-Lean: [irrational erdos support series of summable reciprocal](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395).
+Lean: [irrational erdos support series of summable reciprocal](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395).
 
 Erdős stated Theorem <a href="#erdos-257-mersenne-support-subseries--res:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:reciprocal-support">2</a>, including the all-base conclusion, after proving its pairwise-coprime case \[erdos1968, p. 222\]. We give a complete averaging proof of that stated extension. Erdős also discussed weakening reciprocal summability \[erdos1968, pp. 222, 226\]; no identification of the weighted condition with his suggested conditions is asserted.
 
@@ -3836,7 +3838,7 @@ then $`X_A(b)`$ is irrational for every infinite $`A\subseteq\bigcup_jF_j`$ and 
 
 </div>
 
-Lean: [strengthened positive cover claim](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241).
+Lean: [strengthened positive cover claim](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241).
 
 Every finite set admits a majorant of the required kind: take $`\alpha_j=1`$ and $`c_{j,d}=\mathbf1_{F_j}(d)`$. The restriction is that the costs of the whole sequence satisfy <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a>. For a simple admissible family, take $`F_j=\{4^j\}`$, $`\alpha_j=1`$, and $`c_{j,4^j}=1`$, with all other coefficients zero. Then $`C_j=4^{-j}`$ and the series in <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a> is $`\sum_j2^{-j}`$. The logarithmic obstruction below gives a necessary condition for such a cover.
 
@@ -3928,7 +3930,7 @@ Separate small-displacement witnesses need not occur at the same index. For exam
 
 </div>
 
-Lean: [mixed support claim](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126), [arbitrary weight mixed support all base hereditary](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L101).
+Lean: [mixed support claim](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126), [arbitrary weight mixed support all base hereditary](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L101).
 
 <div class="proof">
 
@@ -3981,7 +3983,7 @@ If moreover $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$. W
 
 </div>
 
-Lean: [coprime base den finite erdos sum](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/CertificateKernel.lean#L5221), [finite period noncollapse rat den](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/CertificateKernel.lean#L5246), [lcm lt den finite erdos sum](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/CertificateKernel.lean#L5260).
+Lean: [coprime base den finite erdos sum](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L5221), [finite period noncollapse rat den](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L5246), [lcm lt den finite erdos sum](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L5260).
 
 Coprimality is [coprimality of the base and finite-sum denominator](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5221), the order statement is [noncollapse for the reduced rational denominator](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5246), and the size bound is [the lower bound for the finite-sum denominator](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5260). The three clauses are the CertificateKernel declarations just cited; `PaperCompleteR7/Assemblies.lean` is not in this checkout.
 
@@ -4075,7 +4077,7 @@ Thus $`P_N=\sum_{j=1}^N2^{N-j}c_x(j)`$ is the integer truncation of the Lambert 
 
 </div>
 
-Lean: [paper general repair criteria](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15).
+Lean: [paper general repair criteria](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15).
 
 The following is an ordinary proof. The supplied solution wrapper `Solutions/PalomarCorpus/E257/GeneralRepairCriterion.lean` contains the two named equivalences, with explicit bridges to the challenge definitions and the same square-root window. Its provenance is the separate release `52f29ad173b0`. This static comparison is not a new replay; a challenge declaration alone is not cited as a proof.
 
@@ -4166,7 +4168,7 @@ Some of these clauses follow from others once the eventual all-selected behaviou
 
 </div>
 
-Lean: [one div twenty one mem iff not fatal aligned branch](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L3507), [twenty one cofinal even quotient greedy decay of closed rows](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5554), [one div twenty one mem mersenne achievement set of cofinal greedy decay](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5458), [twenty one fatal aligned branch eventually strict supercapacity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5625), and 1 further declaration in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=coverage).
+Lean: [one div twenty one mem iff not fatal aligned branch](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L3507), [twenty one cofinal even quotient greedy decay of closed rows](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5554), [one div twenty one mem mersenne achievement set of cofinal greedy decay](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5458), [twenty one fatal aligned branch eventually strict supercapacity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5625), and 1 further declaration in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=coverage).
 
 The equivalence is [the equivalence with failure of $`\mathcal F_{21}`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean#L3507); the closed-row compactness step is [vanishing scaled error from unbounded closed rows](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean#L5554); and the eventual affine regime is [the eventual affine recurrence on $`\mathcal F_{21}`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean#L5658). The finite uniqueness statement is also explicit: if $`D\subseteq\{2,\ldots,R\}`$ and an integer $`s`$ satisfy $`\sum_{d\in D}q_{2R}(d)+s=T_{2R}`$ with $`0\le s\le2^R`$, then $`D=D_R`$ and $`s=s_R`$. This is the denominator-specific separation theorem ([uniqueness of a finite representation with the stated remainder bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean#L231)). The cited finite crossing lemmas give additional consequences under their alignment hypotheses: an earlier finite prefix cannot occur, and a real greedy exponent must be skipped ([the missing-prefix consequence of an aligned crossing](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean#L5179), [the real greedy skip forced by that crossing](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean#L5223)).
 
@@ -4190,7 +4192,7 @@ Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 
 </div>
 
-Lean: [paper terminalhalf](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L51).
+Lean: [paper terminalhalf](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L51).
 
 No agreement between different $`A_j`$ is assumed, and no bound is imposed on their earlier carries. Producing such finite approximants would refute Problem <a href="#erdos-257-mersenne-support-subseries--res:problem" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:problem">3</a>; their existence is not established here. The implication follows from the estimate
 ``` math
@@ -4233,7 +4235,7 @@ Thus the binary suffixes have consecutive values $`E-k`$, while the terminal car
 
 </div>
 
-Lean: [exists infinite positive support half of cofinal cylinder stages](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287).
+Lean: [exists infinite positive support half of cofinal cylinder stages](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287).
 
 Choosing one member from each family gives the terminal bound in Theorem <a href="#erdos-257-mersenne-support-subseries--res:terminalhalf" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:terminalhalf">9</a>, proving the conclusion. The shared-prefix conditions are needed for the proposed construction of the families, not for this final compactness step. Such a construction at unbounded depths would refute Problem #257; none is proved here.
 
@@ -4479,7 +4481,7 @@ Consequently, for no finite $`d`$ do there exist rational-valued functions $`f_\
 
 </div>
 
-Lean: [paper uniform rank and nonseparation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22).
+Lean: [paper uniform rank and nonseparation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22).
 
 <div class="proof">
 
@@ -4533,7 +4535,7 @@ No continuity or boundedness is assumed for the separated factors.
 
 </div>
 
-Lean: [admissible modular minors](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133).
+Lean: [admissible modular minors](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133).
 
 <div class="proof">
 
@@ -4565,7 +4567,7 @@ These equalities follow by evaluating the height at $`3^j`$ and $`8\cdot3^j`$. B
 
 </div>
 
-Lean: [rank cut matrix](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182).
+Lean: [rank cut matrix](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182).
 
 The correction accounts for the two constant columns: $`v_0=c v_m`$. There is no other dependence among distinct threshold columns.
 
@@ -4603,7 +4605,7 @@ Both numbers are transcendental.*
 
 </div>
 
-Lean: [two prime affine and quadratic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L841), [two prime sums transcendental](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L872), [running lcm eq two prime height](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L88), [two prime height smooth](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L159), and 9 further declarations. Conditional on the transcendence theorem of Bugeaud and Laurent; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=coverage).
+Lean: [two prime affine and quadratic](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L841), [two prime sums transcendental](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L872), [running lcm eq two prime height](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L88), [two prime height smooth](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean#L159), and 9 further declarations. Conditional on the transcendence theorem of Bugeaud and Laurent; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -4649,7 +4651,7 @@ The three-prime tail argument starts again from the running LCM, retaining every
 
 </div>
 
-Lean: [running lcm real cutoff exact](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L49).
+Lean: [running lcm real cutoff exact](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L49).
 
 <div class="proof">
 
@@ -4671,7 +4673,7 @@ The inequalities $`x/p<p^{\lfloor\log_p x\rfloor}\le x`$ for each of the three p
 
 </div>
 
-Lean: [real prefix lcm eq of same log cell](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L65), [real prefix lcm jump first](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L87), [real prefix lcm jump second](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L117), [real prefix lcm jump third](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L129), and 1 further declaration in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=coverage).
+Lean: [real prefix lcm eq of same log cell](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L65), [real prefix lcm jump first](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L87), [real prefix lcm jump second](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L117), [real prefix lcm jump third](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L129), and 1 further declaration in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -4693,7 +4695,7 @@ For $`(p,q,r)=(2,3,5)`$, the smooth numbers $`5`$ and $`6`$ have the same runnin
 
 </div>
 
-Lean: [finite smooth kernel sum grouped by height](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407).
+Lean: [finite smooth kernel sum grouped by height](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407).
 
 <div class="proof">
 
@@ -4723,7 +4725,7 @@ The half-height $`h_a`$ clears the finite prefix: for $`a\ge1`$ and smooth $`x<2
 
 </div>
 
-Lean: [dyadic alphabet whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean#L19).
+Lean: [dyadic alphabet whole](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean#L19).
 
 <div class="proof">
 
@@ -4744,7 +4746,7 @@ For every integer $`B\ge1`$, either some $`BX_a`$ is integral and all later stat
 
 </div>
 
-Lean: [short actual orbit](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168).
+Lean: [short actual orbit](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168).
 
 <div class="proof">
 
@@ -4769,7 +4771,7 @@ d_a=BX_a\in\mathbb Z_{>0},\qquad
 
 </div>
 
-Lean: [short fixed split bridge](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80).
+Lean: [short fixed split bridge](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80).
 
 <div class="proof">
 
@@ -4800,7 +4802,7 @@ Consequently $`BX_a`$ is integral exactly when $`2^a\ge\max(2^{u+1},3^v,5^w)`$. 
 
 </div>
 
-Lean: [exact denominators and minimal clearing](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L334), [scaled state is integer iff first clearing index le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L309), [clearing condition iff max](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L166).
+Lean: [exact denominators and minimal clearing](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L334), [scaled state is integer iff first clearing index le](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L309), [clearing condition iff max](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean#L166).
 
 <div class="proof">
 
@@ -4846,7 +4848,7 @@ For integers $`W\ge1`$ and $`t`$, define $`\operatorname{lpr}_W(t)=1+((t-1)\bmod
 
 </div>
 
-Lean: [paper finite endpoint obstruction](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138).
+Lean: [paper finite endpoint obstruction](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138).
 
 <div class="proof">
 
@@ -4873,7 +4875,7 @@ For example, the window starting at $`\ell=1`$ with length $`6`$ has $`W_{1,6}=6
 
 </div>
 
-Lean: [short window equivalence](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51).
+Lean: [short window equivalence](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51).
 
 <div class="proof">
 
@@ -5192,7 +5194,7 @@ with every zero in the open unit disc. For any zero $`\zeta`$, the entire segmen
 
 </div>
 
-Lean: [all degree monic trinomials whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23).
+Lean: [all degree monic trinomials whole](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23).
 
 <div class="proof">
 
@@ -5229,7 +5231,7 @@ lies in the open unit disc, yet the radial spoke from the origin to the zero $`r
 
 </div>
 
-Lean: [sextic spoke counterexample whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9).
+Lean: [sextic spoke counterexample whole](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9).
 
 Indeed, after $`z=rw`$, the polynomial factors as $`r^6(w^2-1)(w^4+\tfrac65 w^2+1)`$, so all six roots have modulus $`r`$. However $`f_r(r/2)=-(327/320)r^6`$. Any $`r`$ with $`320/327<r^6<1`$ proves the assertion. This calculation rules out the segment $`[0,r]`$, not paths through a different root or a different joining point. The corresponding radial evaluation is checked in [the sextic evaluation](https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean#L555). The factorisation above explains the root locations.
 
@@ -5280,7 +5282,7 @@ In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.*
 
 </div>
 
-Lean: [scaled low critical of low critical](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L460), [scaled low critical five halves of low critical](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L491). Conditional on Theorem <a href="#erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths">4</a> as stated; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [scaled low critical of low critical](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L460), [scaled low critical five halves of low critical](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean#L491). Conditional on Theorem <a href="#erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths">4</a> as stated; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -5367,7 +5369,7 @@ inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If $`
 
 </div>
 
-Lean: [cfa constant factor path](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L677), [cfa bracket two three twentieths lt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L355), [cfa bracket five point seven](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L393), [cfa degenerate](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L313), and 3 further declarations. Conditional on the level and direction averaging construction that this proof produces; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [cfa constant factor path](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L677), [cfa bracket two three twentieths lt](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L355), [cfa bracket five point seven](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L393), [cfa degenerate](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean#L313), and 3 further declarations. Conditional on the level and direction averaging construction that this proof produces; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 The constant is the rationally certified specialization of a two-parameter bound. If the selected component contains $`k\ge2`$ roots, then for every $`r\in(0,1)`$ and $`\lambda>1`$ the proof constructs a path in $`K_{\lambda\mu}`$ whose length is at most
 ``` math
@@ -5429,7 +5431,7 @@ then there are distinct indices $`i,j`$ such that
 
 </div>
 
-Lean: [exists two roots dist sum le two mul geom mean](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L289).
+Lean: [exists two roots dist sum le two mul geom mean](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291).
 
 The proof chooses the two smallest distances $`d_i\le d_j`$. The reciprocal balance gives $`d_j\le(n-1)d_i`$, while minimality and the geometric-mean identity give $`d_i d_j^{\,n-1}\le r^n`$. To use the reciprocal identity, set $`t=d_j/d_i`$: it restricts $`t`$ to $`[1,n-1]`$, where
 ``` math
@@ -5443,7 +5445,7 @@ Indeed, $`\log(2t^{(n-1)/n}/(1+t))`$ vanishes at $`t=1`$ and has derivative $`(n
 
 </div>
 
-Lean: [two nearest roots of polynomial critical](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L9), [exists two nearest roots of polynomial critical](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L31).
+Lean: [two nearest roots of polynomial critical](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L9), [exists two nearest roots of polynomial critical](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR20/TwoNearestPolynomial.lean#L31).
 
 <div class="proof">
 
@@ -5468,7 +5470,7 @@ The distance estimate alone does not prove containment of either segment. The ne
 
 </div>
 
-Lean: [complete straight path obstructions](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178).
+Lean: [complete straight path obstructions](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178).
 
 <div class="proof">
 
@@ -5523,7 +5525,7 @@ If all zeros of $`f`$ lie in the open unit disc and $`f`$ has at least two disti
 
 </div>
 
-Lean: [complete translated cubic quotient fibres](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240).
+Lean: [complete translated cubic quotient fibres](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240).
 
 <div class="proof">
 
@@ -5569,7 +5571,7 @@ and the corresponding two radial spokes join them through the origin inside $`\{
 
 </div>
 
-Lean: [complete primitive quintic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L237).
+Lean: [complete primitive quintic](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L237).
 
 The selection argument first allows roots on the closed disc, where the two bounds may be non-strict. If $`a\ne0`$, both selected bounds are strict. If $`a=0`$, the root equation gives $`|bw+c|=|w|^5`$ at each root $`w`$, so every root in the open disc gives a strict bound. The missing coefficients give the first three Newton identities. A cubic polynomial in the real parts of the roots combines these identities to rule out four failures of $`|bw+c|<1`$. For roots off the unit circle, its harmonic extension gives the same conclusion: a root with $`|bw+c|\ge1`$ contributes at most $`2/31`$ to that comparison. The full comparison polynomial and its inequalities are displayed in the long record. Once a root $`w`$ satisfies $`|bw+c|<1`$, its whole segment is controlled by the identity
 ``` math
@@ -5607,7 +5609,7 @@ Put $`p=w_0(1-w_0)`$. Then two distinct roots are joined inside $`\{|f|\le|v|\}`
 
 </div>
 
-Lean: [disc sep separation short](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L534), [disc sep normalise spec](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L410), [disc sep transport](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L475), [disc sep squared length le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L305), and 1 further declaration. Conditional on the connector and area construction that this proof produces; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [disc sep separation short](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L534), [disc sep normalise spec](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L410), [disc sep transport](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L475), [disc sep squared length le](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L305), and 1 further declaration. Conditional on the connector and area construction that this proof produces; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 This isolation can be checked directly in familiar examples. For $`f(z)=z^3-3a^2z`$ with $`0<a<1/\sqrt3`$, choose $`c=a`$, so $`v=-2a^3`$. The other normalised critical value is $`-1`$, at distance $`2`$ from the centre $`w_0=1`$, so $`S=4/3`$ is allowed. The roots $`0,\pm\sqrt3a`$ lie in the open unit disc. The hypothesis excludes a multiple selected critical point and can fail when two distinct critical values are close together. Thus it is not a consequence of the root-disc assumption.
 
@@ -5621,7 +5623,7 @@ then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly bel
 
 </div>
 
-Lean: [disc sep uniform radius](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L702), [disc sep cubic six fifths](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L738), [disc sep coefficient lt two](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L645), [disc sep coefficient three six fifths](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L677). Conditional on the connector and area construction in the proof of Theorem <a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-separation">12</a>; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [disc sep uniform radius](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L702), [disc sep cubic six fifths](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L738), [disc sep coefficient lt two](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L645), [disc sep coefficient three six fifths](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L677). Conditional on the connector and area construction in the proof of Theorem <a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-separation">12</a>; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 <div id="erdos-1041-lemniscate-newton-flow--res:separation-parent" class="corollary">
 
@@ -5629,7 +5631,7 @@ Lean: [disc sep uniform radius](https://github.com/wcook04/plectis-erdos/blob/18
 
 </div>
 
-Lean: [separation parent](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L162), [separation coefficient lt two](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L98), [squared bound lt four](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L123), [connected below of connected at most](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L144). Conditional on Theorem <a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-separation">12</a> as stated; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [separation parent](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L162), [separation coefficient lt two](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L98), [squared bound lt four](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L123), [connected below of connected at most](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L144). Conditional on Theorem <a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-separation">12</a> as stated; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 The hypothesis $`|v|<1`$ is required: normalised separation controls a connector in $`\{|f|\le|v|\}`$, which lies in the unit lemniscate only when $`|v|<1`$. The critical-value mean in Section <a href="#erdos-1041-lemniscate-newton-flow--sec:freepoint" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:freepoint">15</a> gives $`|v|<1`$ when $`v`$ has minimum modulus and the roots lie in the open unit disc. An arbitrary selected critical value need not satisfy this bound. The hypothesis is sufficient, not necessary: it does not assert that some critical value always admits such a disk. The cubic $`z^3+(3/100)z-3/4`$ shows in particular that the older separation-two condition does not cover all polynomials.
 
@@ -5683,7 +5685,7 @@ These examples do not refute the root-to-root assertion. They show why particula
 
 </div>
 
-Lean: [complete sep or counterexample](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189).
+Lean: [complete sep or counterexample](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189).
 
 The whole proposition, including the least-modulus assertion rather than a supplied minimum, is checked in Lean as [the complete separation counterexample](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189); this is a cubic example, distinct from the quartic example discussed in the long record.
 
@@ -5693,7 +5695,7 @@ The whole proposition, including the least-modulus assertion rather than a suppl
 
 </div>
 
-Lean: [one root gamma false](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean#L253), [lobe unique zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean#L177), [lobe nhd of closed disc](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean#L139), [lobe perimeter gt](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeAndArity.lean#L212), and 3 further declarations. Conditional on a perimeter lower bound for a bounded plane set containing a disc, and a numerical bound on the gamma function at $`1/4`$; see the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [one root gamma false unconditional](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41).
 
 This example also lies below every critical-value modulus: its critical points satisfy $`c^7=3/16`$ and $`p(c)=-(21/16)c`$, so $`\mu^7=3\cdot21^7/16^8>1`$. Thus the level $`1`$ is globally subcritical.
 
@@ -5728,7 +5730,7 @@ f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
 
 </div>
 
-Lean: [newton real value whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52).
+Lean: [newton real value whole](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52).
 
 The local computation is one line: $`w'=f'(z)z'=-f(z)=-w`$. Multiplication by $`e^t`$ and integration on $`I`$ give the displayed identity. Lean checks the local complex-parameter chain rule as [the Newton-flow value equation](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50) and its scaled zero-derivative form as [vanishing of the exponentially scaled value](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64). The integrated real-time assertion above is an ordinary consequence.
 
@@ -5746,7 +5748,7 @@ If the endpoint values are nonzero, they lie on the same positive ray. In partic
 
 </div>
 
-Lean: [newton real endpoint whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69).
+Lean: [newton real endpoint whole](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69).
 
 Apply the value equation inside $`(a,b)`$ and pass to the endpoints by continuity. This does not evaluate $`-f/f'`$ at a critical endpoint. Lean checks the algebraic contradiction from an assumed exponential endpoint relation in [the distinct-ray endpoint implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L315). Kozen and Stefánsson draw the same consequence for the Newtonian graph: under $`f`$, every edge maps onto a segment of a ray through the origin whose endpoints are $`0`$ or critical values \[kozen-stefansson1997, §2\]. The endpoint behaviour of nonstationary maximal trajectories is classified there as well \[kozen-stefansson1997, Lemma 2.2\].
 
@@ -5770,7 +5772,7 @@ For a polynomial whose critical values are already distinct, adding a constant t
 
 </div>
 
-Lean: [translated same positive ray parameterization](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107).
+Lean: [translated same positive ray parameterization](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107).
 
 Indeed, write $`b+\beta=r(a+\beta)`$ with $`r>0`$. Since $`a\ne b`$, one has $`r\ne1`$, and solving for $`\beta`$ gives the displayed formula. Equivalently, $`\beta=-a+(a-b)/(1-r)`$, so the forbidden translations lie on the real affine line through $`-a`$ and $`-b`$.
 
@@ -5838,7 +5840,7 @@ r_*=(1+c^n)^{-1/n},\qquad
 
 </div>
 
-Lean: [binomial chords path](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1084), [binomial chords below threshold](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1094), [binomial chords above threshold](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1104), [binomial chords at threshold](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1118), and 3 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [binomial chords path](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1084), [binomial chords below threshold](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1094), [binomial chords above threshold](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1104), [binomial chords at threshold](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/BinomialChords.lean#L1118), and 3 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 The central chord calculation is exact. On the chord between adjacent roots,
 ``` math
@@ -5877,7 +5879,7 @@ The constant is sharp: equality is attained by the affine images of the scaled C
 
 </div>
 
-Lean: [sharp collinear root diameter](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367), [sharp collinear root diameter monic](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L967), [exists collinear factorisation](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L928), [exists gap le comparison bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L212), and 5 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [sharp collinear root diameter](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L367), [sharp collinear root diameter monic](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L967), [exists collinear factorisation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L928), [exists gap le comparison bound](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean#L212), and 5 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -5930,7 +5932,7 @@ with equality if and only if every $`c_j=0`$. Equal weights therefore give $`\su
 
 </div>
 
-Lean: [paper weighted free point](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L17), [geometric row mean closed disc le](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L155).
+Lean: [paper weighted free point](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L17), [geometric row mean closed disc le](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean#L155).
 
 <div class="proof">
 
@@ -5988,7 +5990,7 @@ In particular, $`\sum_j|f(c_j)|^{1/n}\le(n-1)R`$ in every degree.*
 
 </div>
 
-Lean: [paper critical value mean](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101).
+Lean: [paper critical value mean](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101).
 
 <div class="proof">
 
@@ -6056,7 +6058,7 @@ In particular, no positive universal constant bounds $`I_k(r)`$ below by that co
 
 </div>
 
-Lean: [orlicz currency](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L374), [orlicz kernel continuous](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L115), [orlicz kernel tendsto zero](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L163), [merger integral eq mul phi](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L278), and 4 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
+Lean: [orlicz currency](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L374), [orlicz kernel continuous](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L115), [orlicz kernel tendsto zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L163), [merger integral eq mul phi](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1041/PaperCompleteR21/MergerScaleOrlicz.lean#L278), and 4 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=coverage).
 
 <div class="proof">
 
@@ -6165,7 +6167,7 @@ The formal-source index describes sources at snapshot `6b78209ab63a`. The links 
 
 - The index also distinguishes finite inequalities, declarations supplied only in the release sources, and ordinary analytic arguments. None of these categories is interchangeable with a complete formal path theorem.
 
-No source-link reachability check or fresh kernel build is implied by these snapshot links. The original paper-wide commit macro is retained for legacy links; newer target links name their own snapshot explicitly.
+A snapshot link is not a build receipt. The original paper-wide commit macro is retained for legacy links; newer target links name their own snapshot explicitly.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:pinned-lean-sources"></a>
 
@@ -6292,7 +6294,7 @@ Then $`F(a/b)`$ is irrational.*
 
 </div>
 
-Lean: [printed contour short](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L440), [printed mu](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L461), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 7 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=coverage).
+Lean: [printed contour short](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L440), [printed mu](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L461), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 7 further declarations in the [coverage section of the companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=coverage).
 
 The condition holds for every integer base, since $`b=1`$ gives $`\log b/\log a=0`$. For a fixed denominator $`b>1`$, it requires $`a>b^{2.46497868\ldots}`$, much more than $`a>b`$; nevertheless it gives infinitely many reduced noninteger rational bases for each such $`b`$. The base $`31/4`$ satisfies the condition, and taking a common positive integer power of the numerator and denominator leaves their logarithmic ratio unchanged. The base $`3/2`$ is excluded since $`\theta^*<1/2<\log2/\log3`$. At equality $`\log b/\log a=\theta^*`$ the quadratic exponent vanishes, so the estimates below give no conclusion.
 
@@ -6441,7 +6443,7 @@ The coefficient is negative under the theorem’s hypothesis. The positive value
 
 </div>
 
-Lean: [thirtyone four powers](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117).
+Lean: [thirtyone four powers](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117).
 
 <div class="proof">
 
@@ -6470,7 +6472,7 @@ Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $
 
 </div>
 
-Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
+Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
 
 <div class="proof">
 
@@ -6562,7 +6564,7 @@ The next restriction requires one polynomial family and common leading degree, h
 
 </div>
 
-Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162).
+Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162).
 
 <div class="proof">
 
@@ -6617,7 +6619,7 @@ and the coefficient of the first nonzero monomial is
 
 </div>
 
-Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
+Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
 
 <div class="proof">
 
@@ -6753,7 +6755,7 @@ Subtracting successive partial sums proves the identity. Neither convergence nor
 
 </div>
 
-Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
+Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
 
 <div class="proof">
 
@@ -6795,7 +6797,7 @@ In particular, if $`R>0`$ and $`4R+2S\le M`$, such a collision exists.*
 
 </div>
 
-Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
+Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
 
 <div class="proof">
 
@@ -6823,7 +6825,7 @@ Thus $`S+2R`$ rows suffice, in place of the sufficient bound $`2S+4R`$ from the 
 
 </div>
 
-Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
+Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
 
 <div class="proof">
 
@@ -6865,7 +6867,7 @@ Then, for integers $`n,k,m`$:*
 
 </div>
 
-Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
+Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
 
 For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors are nonnegative. Substituting $`j=n-m-1`$ gives the second identity for every integer $`m`$.
 
@@ -6875,7 +6877,7 @@ For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors ar
 
 </div>
 
-Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
+Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
 
 For nonzero row contents $`c_1,c_2`$, write $`r_i=c_ir_i^{\rm prim}`$. Then $`\det(r_1,r_2)=c_1c_2\det(r_1^{\rm prim},r_2^{\rm prim})`$ and $`r_i\cdot(\xi,-1)=c_i r_i^{\rm prim}\cdot(\xi,-1)`$. These identities concern multiplication or division of whole integer rows, not cancellation of a polynomial factor before specialisation. Nor does dividing different rows by different contents preserve a fixed residue relation: $`(1,1)+(5,5)`$ is zero modulo $`6`$, but the sum of the primitive rows is $`(2,2)`$. Even contents coprime to the modulus require the residue map to be formed again after row-by-row normalisation.
 
@@ -6919,7 +6921,7 @@ f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
 
 </div>
 
-Lean: [exists small real escape of conditional multiplicity](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79).
+Lean: [exists small real escape of conditional multiplicity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79).
 
 <div class="proof">
 
@@ -7023,13 +7025,13 @@ Vandehey treats signed coefficients in the digit argument \[vandehey2013, Thms.�
 
 ###### Coefficient moments.
 
-The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. It proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
+The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. For the unshifted family, positivity through rank eight at every real $`p\ge1`$ is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean#L458). So is the consequence the long record draws from it: at each rank up to eight, the roots of a determinant polynomial built from Zudilin’s coefficients are real and lie below $`F(p)`$ for every real $`p>1`$ ([finite coefficient positivity and pencil roots](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43)). Long Section 3.3 also proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
 
 <a id="erdos-1049-rational-base-lambert--functional-equations."></a>
 
 ###### Functional equations.
 
-Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\] excludes $`k`$-Mahler equations for $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ when $`k\ge2`$: there is no polynomial-coefficient relation among $`L(z),L(z^k),\ldots,L(z^{k^d})`$ with a nonzero coefficient of $`L(z)`$. Long Section 10.3 explains this functional obstruction; it gives no irrationality statement for $`L(2/3)=F(3/2)`$.
+Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\] excludes $`k`$-Mahler equations for $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ when $`k\ge2`$: there is no polynomial-coefficient relation among $`L(z),L(z^k),\ldots,L(z^{k^d})`$ with a nonzero coefficient of $`L(z)`$. The single-base exclusion is also a Lean theorem, in the form that for every $`k\ge2`$ no finite-dimensional $`\mathbb{Q}(z)`$-subspace of $`\mathbb{Q}((z))`$ containing $`L`$ is stable under $`z\mapsto z^k`$ ([single-base statement](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean#L263)). Long Section 10.3 explains this functional obstruction; it gives no irrationality statement for $`L(2/3)=F(3/2)`$.
 
 <a id="erdos-1049-rational-base-lambert--formal-sources-and-finite-computations."></a>
 
@@ -7037,7 +7039,7 @@ Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the conse
 
 In the supplied snapshot, `PaperR17/SourceConsumers.lean` constructs the cancelled forms and proves the irrationality and measure results; `AllRow/Producer.lean` constructs the transformed rows and proves the all-rank determinant formulas.
 
-The index distinguishes reported public, parallel-release and unbuilt material; no new Lean run is claimed. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. The finite computations described above are not Lean proofs; their certificates and reproduction scripts are in the long record. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
+The index distinguishes reported public, parallel-release and unbuilt material; no new Lean run is claimed for the indexed material. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. Apart from the rank-eight positivity of the unshifted family, the finite computations described above are not Lean proofs; their certificates and reproduction scripts are in the long record. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
 
 <a id="erdos-1049-rational-base-lambert--sec:pinned-lean-sources"></a>
 

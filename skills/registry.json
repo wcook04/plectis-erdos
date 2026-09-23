@@ -85,6 +85,19 @@
       "composes_with": []
     },
     {
+      "id": "land-lean-proofs",
+      "path": "skills/land-lean-proofs/SKILL.md",
+      "family": "integration",
+      "stage": "lean-landing",
+      "status": "active",
+      "composes_with": [
+        "propagate-research-consequences",
+        "public-mathematical-writing",
+        "lean-concurrent-validation",
+        "submit-pull-request"
+      ]
+    },
+    {
       "id": "lean-concurrent-validation",
       "path": "skills/lean-concurrent-validation/SKILL.md",
       "family": "validation",
@@ -526,7 +539,8 @@
         "concurrent validation"
       ],
       "skills": [
-        "lean-concurrent-validation"
+        "lean-concurrent-validation",
+        "land-lean-proofs"
       ],
       "read": [
         "skills/lean-concurrent-validation/SKILL.md",
@@ -554,7 +568,8 @@
         "found a counterexample"
       ],
       "skills": [
-        "propagate-research-consequences"
+        "propagate-research-consequences",
+        "land-lean-proofs"
       ],
       "read": [
         "skills/propagate-research-consequences/SKILL.md"
@@ -563,6 +578,67 @@
         "python3 scripts/lean_fast_build.py --plan --verbose-plan --changed-from <starting-commit>"
       ],
       "boundary": "Give each plausible consumer an explicit disposition; propagation does not promote mathematical status."
+    },
+    {
+      "id": "land_lean_proof",
+      "title": "Land a Lean proof of a paper statement in the papers and the Comparator queue",
+      "priority": 45,
+      "task_cues": [
+        "lean now proves",
+        "proved in lean",
+        "new lean proof",
+        "lean proof of a paper",
+        "lean for a paper",
+        "add lean for",
+        "land a lean proof",
+        "link the declaration",
+        "link the new lean",
+        "every paper that states",
+        "leannote",
+        "concordance",
+        "unlinked",
+        "paper lean coverage",
+        "lean paper propagation",
+        "queue it for comparator",
+        "queue for comparator",
+        "comparator queue",
+        "comparator worklist",
+        "waiting for comparator",
+        "stale paper links",
+        "declaration was renamed",
+        "label docstring"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "land",
+            "link",
+            "queue"
+          ],
+          "objects": [
+            "declaration",
+            "declarations",
+            "lean",
+            "proof",
+            "proofs",
+            "result",
+            "theorem"
+          ]
+        }
+      ],
+      "skills": [
+        "land-lean-proofs",
+        "propagate-research-consequences",
+        "public-mathematical-writing"
+      ],
+      "read": [
+        "skills/land-lean-proofs/SKILL.md"
+      ],
+      "commands": [
+        "python3 scripts/check_lean_paper_propagation.py --rows <label-or-declaration>",
+        "python3 scripts/check_lean_paper_propagation.py"
+      ],
+      "boundary": "Linking and queueing carry a kernel-checked result to its papers and reviewers. Claim status stays with docs/claims.json, and Palomar is prepare-only: nothing in this lane submits."
     },
     {
       "id": "public_writing",

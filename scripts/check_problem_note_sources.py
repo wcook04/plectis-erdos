@@ -14,6 +14,8 @@ disjoint source branch.  This program reads each selected snapshot out of Git
 -- never the working tree -- and requires that every authored ``(file, line,
 declaration)`` triple names exactly that declaration at exactly that line in the
 pinned snapshot.  A link can then be wrong only if it was wrong when written.
+Every printed source URL, including a late link through ``\\laterepobase`` at a
+manuscript's own ``\\latecommit``, must also name a path present at its pin.
 
 Run from the repository root:
 
@@ -343,6 +345,27 @@ LITERAL_SOURCE_RE = re.compile(
     r"https://github\.com/wcook04/plectis-erdos/(?:blob|tree)/"
     r"(?P<commit>[0-9a-f]{40})/(?P<path>[^\s{}#\\]+)"
 )
+# A source that postdates \commit is printed through \laterepobase, which a
+# manuscript builds on its own \latecommit.  The #249/#257 records also print a
+# \lean target written with its lean/ prefix at that pin (their \leanlink macro).
+LATE_COMMIT_RE = re.compile(r"\\(?:re)?newcommand\{\\latecommit\}\{([0-9a-f]{40})\}")
+LATE_REPOBASE_RE = re.compile(r"\\(?:re)?newcommand\{\\laterepobase\}\{([^{}]+)\}")
+STANDARD_LATE_REPOBASE = r"https://github.com/wcook04/plectis-erdos/blob/\latecommit"
+LATE_BASE_RE = re.compile(r"\\laterepobase/(?P<path>[^\s{}#\\]+)")
+LATE_LEAN_RE = re.compile(r"\\lean\{[^{}]*\}\{(?P<target>[^{}]*)\}")
+
+
+def late_lean_path(target: str) -> str | None:
+    """The file a \\lean target prints at \\latecommit, or None for an older source.
+
+    The macro strips \\allowbreak and spaces, sends a lean/ target to
+    \\laterepobase, and links the file part before any :line coordinate.
+    """
+    flat = re.sub(r"\s+", "", target.replace(r"\allowbreak", ""))
+    if not flat.startswith("lean/"):
+        return None
+    match = re.match(r"(.*\.lean)", flat)
+    return match.group(1) if match else None
 
 
 CONDITIONAL_RE = re.compile(r"\\(?:if[A-Za-z@]*|fi)(?![A-Za-z@])")
@@ -409,6 +432,24 @@ def rendered_link_targets(
         (match.group("commit"), match.group("path"))
         for match in LITERAL_SOURCE_RE.finditer(text)
     )
+    late_paths = [match.group("path") for match in LATE_BASE_RE.finditer(text)]
+    late_paths.extend(
+        path
+        for path in (late_lean_path(match.group("target")) for match in LATE_LEAN_RE.finditer(text))
+        if path is not None
+    )
+    if late_paths:
+        late = LATE_COMMIT_RE.search(text)
+        late_base = LATE_REPOBASE_RE.search(text)
+        if late is None:
+            problems.append("a late source link is printed but no \\latecommit pin is declared")
+        elif late_base is None or late_base.group(1) != STANDARD_LATE_REPOBASE:
+            rendered = late_base.group(1) if late_base else None
+            problems.append(
+                f"\\laterepobase is defined as {rendered!r}, which this check cannot render"
+            )
+        else:
+            targets.extend((late.group(1), path) for path in late_paths)
     return targets, problems
 
 

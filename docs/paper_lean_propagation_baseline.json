@@ -1,0 +1,15 @@
+{
+ "schema": "plectis-paper-lean-propagation-baseline/1",
+ "rule": "Each entry is one ledger row that failed clause (b) or (c) of scripts/check_lean_paper_propagation.py when the check was introduced, with the exact names that failed and why. A failure outside this list fails the check. A listed name that now passes also fails the check, so the change that repairs a row removes its entry and the list only shrinks. The check also refuses any entry outside the set it was introduced with.",
+ "recorded": "2026-09-23",
+ "entries": [
+  {
+   "row": "erdos1041-lemniscate-reasoning-surface#res:ani-degree-seven-counterexample-long",
+   "clause": "c",
+   "names": [
+    "ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean::erdos1041_ani_degree_seven"
+   ],
+   "reason": "The maintainer count has not read the current text of this claim: the text changed after the count when the contributor link moved to the forum post, so the ledger binds nothing to it while the concordance names erdos1041_ani_degree_seven. The recount restamps the row."
+  }
+ ]
+}

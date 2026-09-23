@@ -108,6 +108,10 @@ claims and methodology, papers, Comparator or Palomar packets, query routes,
 and generated public projections. Preserve authority and logical reach as
 separate facts.
 
+When new Lean states a paper result, follow
+[land-lean-proofs](../land-lean-proofs/SKILL.md) so that every paper stating it
+links the declaration and its row joins the Comparator queue.
+
 When Lean sources change, the declaration atlas alone does not refresh the
 elaborated dependency index used by `--proof-plan` and `--proof-cone`. After
 the supported roots build, run `python3 scripts/build_lean_dependency_index.py`
