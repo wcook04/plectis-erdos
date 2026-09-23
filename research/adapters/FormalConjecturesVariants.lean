@@ -710,3 +710,5 @@ theorem erdos_257.variants.finite_prime_weighted_support :
       ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
 
 end Erdos257
+
+#print axioms Erdos257.erdos_257.variants.finite_prime_weighted_support
