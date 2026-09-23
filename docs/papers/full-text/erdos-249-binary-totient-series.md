@@ -45,7 +45,7 @@ F^{(k)}_{j,r}=C_k(t,u)\,F^{(k)}_{j-t,u},
 
 </div>
 
-Lean: [displayed all base kernel](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35).
+Lean: [displayed all base kernel](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35).
 
 The condition on a retained positive residue is $`k\nmid r`$, not $`\gcd(k,r)=1`$. Thus $`r=2`$ is retained when $`k=6`$. No primality or squarefreeness assumption on the base is needed. The reduction scalar can depend on the residue even for a fixed base: at $`k=6`$,
 ``` math
@@ -92,7 +92,7 @@ is a basis for the rational span of the full dyadic kernel. Every rational relat
 
 </div>
 
-Lean: [displayed full dyadic basis](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156).
+Lean: [displayed full dyadic basis](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156).
 
 <div class="proof">
 
@@ -110,7 +110,7 @@ form a $`\mathbb{Z}`$-basis of the kernel of evaluation $`E_i\mapsto F_i`$. In p
 
 </div>
 
-Lean: [displayed integral normal form](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398).
+Lean: [displayed integral normal form](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398).
 
 <div class="proof">
 
@@ -148,7 +148,7 @@ Pairwise nonproportionality is essential here. For instance, $`n+1`$ and $`n+2`$
 
 </div>
 
-Lean: [periodic freezing integer affine](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24).
+Lean: [periodic freezing integer affine](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24).
 
 <div class="proof">
 
@@ -188,7 +188,7 @@ For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum
 
 </div>
 
-Lean: [short note residue theorem](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L277).
+Lean: [short note residue theorem](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276).
 
 The restriction $`m\ge3`$ is necessary: modulo $`2`$ the only nonzero coefficients occur at $`n=1,2`$, and the sum is $`1/2+1/4=3/4`$. For the second assertion, only $`f(1)`$ and its values on the even classes can affect the sum. The other odd classes are never attained by $`\varphi(n)`$.
 
@@ -200,7 +200,7 @@ The next lemma applies, for example, to the indicator of the squares: its coeffi
 
 </div>
 
-Lean: [bounded isolated pulse](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106).
+Lean: [bounded isolated pulse](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106).
 
 <div class="proof">
 
@@ -285,7 +285,7 @@ Requiring this for every $`d\ge1,N\ge0`$ is equivalent to $`S\notin\mathbb{Q}`$.
 
 </div>
 
-Lean: [full depth amplification](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35).
+Lean: [full depth amplification](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35).
 
 For a fixed $`d,N`$, the hypothesis is just one nonintegral tail difference; it does not assert irrationality of $`S`$. Requiring it for *every* $`d,N`$ is as strong as the original problem. The conclusion sets the truncation depth equal to the shift, $`L=md`$, and loses at most one member of each sufficiently late pair of successive multipliers.
 
@@ -402,7 +402,7 @@ The uniform bound $`Q-\Theta_2>1/15`$ is false already at $`(1,5)`$.*
 
 </div>
 
-Lean: [rank one denominator pos](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25), [rank one subrank quotient ge one five](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530), [rank one subrank quotient eq one five iff](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546), [rank one subrank quotient sub theta two gt twenty one div three twenty](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636), and 2 further declarations in the [coverage section of the companion record](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=coverage).
+Lean: [rank one denominator pos](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25), [rank one subrank quotient ge one five](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530), [rank one subrank quotient eq one five iff](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546), [rank one subrank quotient sub theta two gt twenty one div three twenty](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636), and 2 further declarations in the [coverage section of the companion record](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=coverage).
 
 The unique minimiser and the [uniform lower bound $`21/320`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L624) are in the linked source; the $`1/15`$ bound [already fails at $`(1,5)`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L645). This theorem treats averages after the quotients are formed. Signed coefficients, coupling before the quotient, and higher-rank kernels require separate arguments. For rational approximants $`p_j/q_j`$ in lowest terms, with $`q_j>0`$, a sufficient arithmetic target is
 ``` math
@@ -461,7 +461,7 @@ for which those four bounds hold?
 
 </div>
 
-The long record gives the same decomposition, and the [four simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543) are defined in the linked source. All four bounds must hold on the *same* block with the same parameters. The permitted blocks need only be arbitrarily large, but $`L`$ must also make the truncation error small enough for the residue test. The long record proves the unassigned and excluded-cofactor bounds at minimal admissible depth, using smooth-number asymptotics and the distribution of $`\varphi(m)/m`$. An elementary mean-value estimate also gives the explicit sufficient cutoff $`\eta=1/1000`$ for the excluded-cofactor bound. The two remaining estimates concern the group means and their weighted, mean-subtracted phases. They must hold at the same depth and for the same choice of $`\eta`$; the existence of a cutoff that controls the excluded indices does not establish either of them.
+The long record gives the same decomposition, and the [four simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543) are defined in the linked source. All four bounds must hold on the *same* block with the same parameters. The permitted blocks need only be arbitrarily large, but $`L`$ must also make the truncation error small enough for the residue test. The long record proves the unassigned and excluded-cofactor bounds at minimal admissible depth, using smooth-number asymptotics and the distribution of $`\varphi(m)/m`$. The unassigned bound is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/e4ba6841dfdbf3a025c2a3a8c5cb98bcc0457ce8/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556), whose proof replaces the smooth-number asymptotics by Mertens’ theorems. An elementary mean-value estimate also gives the explicit sufficient cutoff $`\eta=1/1000`$ for the excluded-cofactor bound. The two remaining estimates concern the group means and their weighted, mean-subtracted phases. They must hold at the same depth and for the same choice of $`\eta`$; the existence of a cutoff that controls the excluded indices does not establish either of them.
 
 Balasubramanian, Giri and Srivastav estimate the finite sums $`\sum_{1\le n\le x}F(n)G(n-h)`$ for $`F=f*1`$, $`G=g*1`$ with decaying $`f,g`$, setting $`F(n)=G(n)=0`$ for $`n\le0`$. Taking $`f(n)=g(n)=\mu(n)/n`$ gives $`F(n)=G(n)=\varphi(n)/n`$ for $`n\ge1`$; the estimate is uniform for $`|h|\le x/2`$ \[bgs2016, Thm. 2.2\]. Their partial-summation extension allows differentiable weights with bounded derivative on the summation interval \[bgs2016, Rem. 2.9\]. The missing input here is a useful error bound for the present phase and residual weight, not shift uniformity or partial summation itself. **Acknowledgement.** I thank Wouter van Doorn for advice on writing for a first-time reader and on explaining the strength of a hypothesis. His advice concerned a different note; it was not a mathematical review or endorsement of the results presented here.
 
