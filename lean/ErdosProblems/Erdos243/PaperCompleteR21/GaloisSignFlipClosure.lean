@@ -29,9 +29,9 @@ bookkeeping over `ℚ(α)`.  Two observations do the work.
   `ℚ(aL)`, which is `ℚ(aL)` by the Galois correspondence.  Only the easy direction of
   the correspondence is needed, and no minimal polynomial over `ℚ(aL)` is ever computed.
 
-The five #243 cubic rows stay conditional on Chebotarev: `covered_modulo_external`,
-never `covered`.  What changes is that the reduction is now complete — the only
-unproved input is the one faithfully stated classical theorem.
+This file keeps the Chebotarev route.  `SquareSpecialisationDedekind.lean` proves the
+same lemma with no external input, from the simple pole of the Dedekind zeta function,
+and `SquareSpecialisationUnconditional.lean` states the five #243 rows unconditionally.
 -/
 
 noncomputable section
@@ -206,8 +206,8 @@ theorem sq_sub_dvd_of_chebotarev (hCheb : ChebotarevFrobenius)
 
 /-- **`long243:res:squarespec`, reduced to Chebotarev.**  The paper's square
 specialisation lemma follows from the single external input `ChebotarevFrobenius`
-with no unfinished local bridge.  The row remains `covered_modulo_external`: the
-Chebotarev density theorem is not proved here, nor is it in the pinned Mathlib. -/
+with no unfinished local bridge.  The Chebotarev density theorem is not in the pinned
+Mathlib; `squareSpecialisation` (`SquareSpecialisationUnconditional.lean`) avoids it. -/
 theorem squareSpecialisation_of_chebotarev (hC : ChebotarevFrobenius) :
     SquareSpecialisation := by
   intro L₀ _ _ α f H hf hfα hHα d hd G J hG hJ hmod
