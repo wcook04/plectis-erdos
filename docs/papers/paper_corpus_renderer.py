@@ -400,6 +400,205 @@ def _preserve_generated_note_macros(tex: str, tex_path: Path) -> str:
         cursor = close_index + 1
 
 
+# The #249 and #257 reasoning records cite a Lean declaration inline as
+# \lean{declaration}{file:line}. Their own preamble defines \lean as
+# \leanlink{#2}, and \leanlink is expl3 that builds the pinned source URL.
+# Pandoc executes neither, so it dropped every citation and kept the
+# punctuation around it: empty "()" in the prose. The expansion applies only
+# where that definition is present, because the definition fixes the meaning.
+_LEAN_CITATION_RE = re.compile(r"\\lean(?![A-Za-z])")
+_LEAN_CITATION_DEFINITION_RE = re.compile(
+    r"\\(?:re)?newcommand\s*\{\\lean\}\s*\[2\]\s*\{\\leanlink\{#2\}\}"
+)
+# The macros \leanlink builds its URL from. Their values are read from the
+# manuscript, so no pin is ever copied into this renderer.
+_LEANLINK_MACRO_DEFINITION_RE = re.compile(
+    r"\\(?:re)?newcommand\s*\{\\(commit|repobase|latecommit|laterepobase|PK)\}"
+    r"\s*\{([^{}]*)\}"
+)
+_LEANLINK_MACRO_USE_RE = re.compile(
+    r"\\(commit|repobase|latecommit|laterepobase|PK)(?![A-Za-z])"
+)
+# \leanlink links a coordinate under one of these library roots from the
+# repository root, and any other coordinate from the \PK tree. This transcribes
+# the records' own test "\A (ErdosProblems|Erdos249257)/".
+_LEANLINK_REPOSITORY_ROOTS_RE = re.compile(r"(?:ErdosProblems|Erdos249257)/")
+_ALLOWBREAK_OR_SPACE_RE = re.compile(r"\\allowbreak(?![A-Za-z])|\s+")
+_TEX_COMMENT_RE = re.compile(r"(?<!\\)%[^\n]*")
+_BLANK_LINE_RE = re.compile(r"\n[ \t]*\n")
+_UNESCAPED_DOLLAR_RE = re.compile(r"(?<!\\)\$")
+
+
+def _tex_group(text: str, index: int) -> tuple[str, int] | None:
+    """One ``{...}`` argument starting at ``index`` (after optional spaces).
+
+    Returns the argument and the index after its closing brace, or ``None``
+    when no complete group starts there.
+    """
+    while index < len(text) and text[index] in " \t\n":
+        index += 1
+    if index >= len(text) or text[index] != "{":
+        return None
+    try:
+        close = _matching_brace(text, index)
+    except ValueError:
+        return None
+    return text[index + 1 : close], close + 1
+
+
+def _leanlink_definitions(tex: str) -> dict[str, str]:
+    """The manuscript's own values of the macros ``\\leanlink`` expands.
+
+    A later definition wins, as in TeX. Commented-out definitions are ignored.
+    Each value is expanded through the others, so ``\\repobase`` becomes the
+    URL at the manuscript's ``\\commit`` pin.
+    """
+    raw: dict[str, str] = {}
+    for name, value in _LEANLINK_MACRO_DEFINITION_RE.findall(_TEX_COMMENT_RE.sub("", tex)):
+        raw[name] = value.strip()
+    resolved: dict[str, str] = {}
+    for name, value in raw.items():
+        for _depth in range(5):
+            expanded = _LEANLINK_MACRO_USE_RE.sub(
+                lambda match: raw.get(match.group(1), match.group(0)), value
+            )
+            if expanded == value:
+                break
+            value = expanded
+        if not _LEANLINK_MACRO_USE_RE.search(value):
+            resolved[name] = value
+    return resolved
+
+
+def _lean_citation_url(coordinate: str, macros: dict[str, str]) -> str:
+    """The URL the reasoning records' ``\\leanlink`` builds from a coordinate.
+
+    This transcribes the expl3 in their preamble. ``\\allowbreak`` and spaces
+    are stripped. A ``lean/`` coordinate resolves at ``\\laterepobase``, a
+    library-rooted one at ``\\repobase``, and any other one under
+    ``\\repobase/\\PK``. ``file.lean:N`` anchors ``#LN``; ``:N-M`` and ``:N--M``
+    anchor ``#LN-LM``; a list of lines links its first line; a coordinate with
+    no ``.lean`` file links the path as written. The ``#`` is escaped for the
+    TeX that Pandoc reads.
+    """
+    target = _ALLOWBREAK_OR_SPACE_RE.sub("", coordinate)
+    if target.startswith("lean/"):
+        needed: tuple[str, ...] = ("laterepobase",)
+    elif _LEANLINK_REPOSITORY_ROOTS_RE.match(target):
+        needed = ("repobase",)
+    else:
+        needed = ("repobase", "PK")
+    missing = [name for name in needed if name not in macros]
+    if missing:
+        raise ValueError(
+            "a \\lean citation needs the manuscript to define "
+            + ", ".join(f"\\{name}" for name in missing)
+            + f" (coordinate {target!r})"
+        )
+    url = "/".join(macros[name] for name in needed)
+    located = re.match(r"(.*\.lean):?(.*)", target)
+    if located is None:
+        return f"{url}/{target}"
+    url = f"{url}/{located.group(1)}"
+    lines = re.search(r"([0-9]+)(?:-([0-9]+))?", located.group(2).replace("--", "-"))
+    if lines is None:
+        return url
+    url += "\\#L" + lines.group(1)
+    if lines.group(2):
+        url += "-L" + lines.group(2)
+    return url
+
+
+def _lean_citation_label(declaration: str) -> str:
+    """The cited declaration as literal code.
+
+    The PDF prints only a "Lean source" link at each citation, so the Markdown
+    names the declaration it cites. ``\\verb`` keeps the name exact for copying,
+    and ``\\allowbreak`` is a print line-break hint that would split one name
+    into several code spans. A name that still carries TeX markup is left to
+    Pandoc inside ``\\texttt``.
+    """
+    name = _ALLOWBREAK_OR_SPACE_RE.sub("", declaration).replace("\\_", "_")
+    if not name:
+        return "Lean source"
+    delimiter = next((mark for mark in "|!+;:@?" if mark not in name), None)
+    if delimiter is None or re.search(r"[\\{}$]", name):
+        return "\\texttt{" + re.sub(r"\\allowbreak(?![A-Za-z])\s*", "", declaration) + "}"
+    return f"\\verb{delimiter}{name}{delimiter}"
+
+
+def _sole_inline_formula(
+    tex: str, start: int, end: int, floor: int
+) -> tuple[int, int] | None:
+    """The ``$...$`` bounds when the citation at ``start:end`` is its only content.
+
+    One #257 citation is typed as a whole inline formula. The PDF still sets a
+    text-mode link there, while Pandoc would keep ``\\leanlink`` as raw TeX
+    inside the formula. The opening dollar must be unescaped, single and
+    opening, so a citation between two formulas is never merged into them.
+    """
+    opening = start - 1
+    while opening >= floor and tex[opening].isspace():
+        opening -= 1
+    closing = end
+    while closing < len(tex) and tex[closing].isspace():
+        closing += 1
+    if opening < floor or closing >= len(tex):
+        return None
+    if tex[opening] != "$" or tex[closing] != "$":
+        return None
+    if tex[opening - 1 : opening] in ("\\", "$") or tex[closing + 1 : closing + 2] == "$":
+        return None
+    paragraph = 0
+    for blank in _BLANK_LINE_RE.finditer(tex, 0, opening):
+        paragraph = blank.end()
+    if len(_UNESCAPED_DOLLAR_RE.findall(tex, paragraph, opening)) % 2:
+        return None
+    return opening, closing + 1
+
+
+def _preserve_lean_citation_macros(tex: str) -> str:
+    """Turn ``\\lean{declaration}{file:line}`` into a link Pandoc renders.
+
+    The link resolves where the PDF's does, at the pins the manuscript itself
+    defines, and its text is the declaration name in code, so a sentence that
+    read "the gap lemma ()" names the lemma and links its source line. Only a
+    manuscript that defines ``\\lean`` as ``\\leanlink{#2}`` is rewritten.
+    """
+    if not _LEAN_CITATION_DEFINITION_RE.search(_TEX_COMMENT_RE.sub("", tex)):
+        return tex
+    macros = _leanlink_definitions(tex)
+    chunks: list[str] = []
+    cursor = 0
+    for match in _LEAN_CITATION_RE.finditer(tex):
+        if match.start() < cursor:
+            continue
+        first = _tex_group(tex, match.end())
+        if first is None:
+            continue
+        second = _tex_group(tex, first[1])
+        if second is None:
+            continue
+        (declaration, _), (coordinate, end) = first, second
+        if declaration.startswith("#"):
+            continue
+        start = match.start()
+        formula = _sole_inline_formula(tex, start, end, cursor)
+        if formula is not None:
+            start, end = formula
+        chunks.append(tex[cursor:start])
+        chunks.append(
+            "\\href{"
+            + _lean_citation_url(coordinate, macros)
+            + "}{"
+            + _lean_citation_label(declaration)
+            + "}"
+        )
+        cursor = end
+    chunks.append(tex[cursor:])
+    return "".join(chunks)
+
+
 def _remove_immediate_duplicate_gfm_table_headers(markdown: str) -> str:
     """Remove the repeated header row emitted for a LaTeX ``longtable``.
 
@@ -745,6 +944,7 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     source = _preserve_path_macros(tex_path.read_text())
     source = _fold_custom_verbatim_environments(source)
     source = _preserve_declaration_macros(source)
+    source = _preserve_lean_citation_macros(source)
     source = _preserve_generated_note_macros(source, tex_path)
     source, inlined = _inline_long_defs(source)
     ast = json.loads(
