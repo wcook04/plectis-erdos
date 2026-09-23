@@ -93,6 +93,18 @@
    "reason": "Proves the whole of long1049:res:tail-lattice, a statement added to the paper after the last count, so the ledger has no counted row for it yet. The ledger binds it at the next count of these papers, and this exemption then fails as stale and is removed."
   },
   {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean",
+   "label": "long1049:thm:geometric-universality",
+   "reason": "Proves the whole of long1049:thm:geometric-universality, a statement added to the paper after the last count, so the ledger has no counted row for it yet. The ledger binds it at the next count of these papers, and this exemption then fails as stale and is removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean",
+   "label": "long1049:thm:sharp-fixed-base",
+   "reason": "Proves the whole of long1049:thm:sharp-fixed-base, and the short paper's res:sharp-fixed-base with its constant made explicit; both statements were added to the papers after the last count, so the ledger has no counted row for them yet. The ledger binds it at the next count of these papers, and this exemption then fails as stale and is removed."
+  },
+  {
    "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_double_logarithmic_bound",
    "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean",
    "label": "sec:secondaryrate",
