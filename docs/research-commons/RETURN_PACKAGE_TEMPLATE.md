@@ -330,6 +330,12 @@ Choose a new directory outside the checkout for the filled return files:
 ```sh
 RETURN_DIR='../research-return'
 mkdir "$RETURN_DIR"
+```
+
+For a mathematical session, also copy its route-memory template. An
+architecture session has no mathematical route-memory sidecar.
+
+```sh
 cp "research/workbench/sessions/$SESSION/route-memory-return-template.json" \
   "$RETURN_DIR/route-memory.json"
 ```
@@ -344,11 +350,12 @@ commit, repository origin, question, stop condition and identities from the
 session's `continuation.json`; preserve the boundaries recorded in sections
 1–3 and 5–7 of this template.
 
-Fill the copied `route-memory.json` with the same `return_id` and the actual
-relationship to the consulted routes. Preserve its canonical route-memory
-path and digest. Do not edit the generated consultation or return template
-inside the session. The packager requires both filled files; it does not
-infer them from the source diff or from this Markdown account.
+For a mathematical session, fill the copied `route-memory.json` with the same
+`return_id` and the actual relationship to the consulted routes. Preserve its
+canonical route-memory path and digest. Do not edit the generated consultation
+or return template inside the session. The mathematical packager requires both
+filled files; it does not infer them from the source diff or from this Markdown
+account. Architecture sessions omit the sidecar.
 
 After recording the work and following the clone's consequence-propagation
 skill, close the workbench session with an outcome and summary:
@@ -360,13 +367,16 @@ python3 scripts/proof_workbench.py close \
   --summary '<actual outcome and remaining limitation>'
 ```
 
-Choose one outcome. `checked_positive` requires `established`, which the
-workbench permits only with a kernel-accepted probe and an attributable claim.
-`negative` permits `established` or `abandoned`; `inconclusive` permits `open`
-or `abandoned`; `corrective` requires `established`. Use the result class supported by
+Choose one outcome. For mathematics, `checked_positive` and `corrective`
+require `established`, which the workbench permits only with a kernel-accepted
+probe and an attributable claim. For architecture, those result classes may
+instead close `open` when the return records passed source checks; this does
+not assert a Lean theorem. `negative` permits `established` or `abandoned`;
+`inconclusive` permits `open` or `abandoned`. Use the result class supported by
 the work, not whichever makes packaging succeed.
 
-Then validate the filled records and their agreement with the opened session:
+Then validate the filled records and their agreement with the opened session.
+For a mathematical session, include the route-memory receipt:
 
 ```sh
 python3 scripts/continue_research.py check \
@@ -384,6 +394,20 @@ python3 scripts/continue_research.py package \
   --output "$RETURN_DIR/package"
 ```
 
+For an architecture session, omit the route-memory flags:
+
+```sh
+python3 scripts/continue_research.py check \
+  --session "$SESSION" \
+  --return-json "$RETURN_DIR/return.json"
+python3 scripts/validate_research_return.py "$RETURN_DIR/return.json" \
+  --require-submitted --check-git
+python3 scripts/continue_research.py package \
+  --session "$SESSION" \
+  --return-json "$RETURN_DIR/return.json" \
+  --output "$RETURN_DIR/package"
+```
+
 Run the next command only if the previous command succeeds. `check` validates
 session/return agreement but does not require closure; `package` also requires
 a closed session with a compatible outcome. Add `--replay` to `check` or
@@ -392,16 +416,16 @@ It does not apply the proposed patch or run every command listed in
 `return.json`.
 
 The package directory must not already exist. The command copies the filled
-inputs as `return.json` and `route-memory.json`, copies selected session
-records and probe files, and writes `package.json` with file hashes. Keep the
-proposed source commit, patch or file attachments beside this directory;
+`return.json` and, for mathematics, `route-memory.json`; it also copies selected
+session records and probe files and writes `package.json` with file hashes.
+Keep the proposed source commit, patch or file attachments beside this directory;
 packaging does not copy every changed source file or publish the return.
 
-Record the exact `route_memory.sha256`, `return_id`, route relationship, and
-changed-evidence paths from the sidecar; the validator rejects a different
-problem or route, a stale canonical digest, or changed evidence that is absent
-from `return.repository.changed_paths`. See the [accepted contribution
-recognition view](CONTRIBUTION_RECOGNITION.md) for the corresponding
+For mathematical returns, record the exact `route_memory.sha256`, `return_id`,
+route relationship, and changed-evidence paths from the sidecar; the validator
+rejects a different problem or route, a stale canonical digest, or changed
+evidence that is absent from `return.repository.changed_paths`. See the
+[accepted contribution recognition view](CONTRIBUTION_RECOGNITION.md) for the corresponding
 accepted-receipt command and its authority boundary.
 The package transition copies `return.json` and `route-memory.json` together;
 do not submit a return without the sidecar, and do not treat a successful

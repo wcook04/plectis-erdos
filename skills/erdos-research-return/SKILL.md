@@ -40,9 +40,9 @@ python3 scripts/continue_research.py package --help
 ```
 
 Use `scripts/continue_research.py check` before packaging. Then use
-`scripts/continue_research.py package` to emit `return.json`,
-`route-memory.json`, and the package manifest. Validate the pair with
-the exact package pair:
+`scripts/continue_research.py package` to emit `return.json` and the package
+manifest. Mathematical returns also include `route-memory.json`; validate that
+pair with:
 
 ```sh
 python3 scripts/validate_research_return.py return.json \
@@ -50,8 +50,8 @@ python3 scripts/validate_research_return.py return.json \
   --require-submitted --check-git --require-route-memory-receipt
 ```
 
-A pull request may carry the pair as transient intake artifacts; they do not
-belong on the accepted main branch.
+A pull request may carry these package files as transient intake artifacts;
+they do not belong on the accepted main branch.
 
 Before packaging a stable result, run
 `skills/propagate-research-consequences/SKILL.md`. The return should distinguish
@@ -110,6 +110,11 @@ same attribution and session lifecycle as mathematical work. Supply repeatable
 problem, subject, or route-memory sidecar. Follow the example in
 `docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md`; its consultation is a plan,
 not execution evidence. `check` and `package` bind an architecture return to it.
+Validate an architecture return with `--require-submitted --check-git` and no
+route-memory flags. A `checked_positive` or `corrective` architecture return may
+close the workbench `open` when its recorded source checks passed; this does not
+assert a kernel-accepted Lean proof. Mathematical `checked_positive` and
+`corrective` returns still require `established`.
 
 A contribution received by email uses the same public-safe artifact and accepted
 credit record after naming permission is confirmed. Directions and references
