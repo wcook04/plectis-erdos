@@ -29,6 +29,7 @@ CASES = {
     "source-polynomials": ("source_polynomials.py", [], "source-polynomials.json"),
     "cyclotomic-content": ("cyclotomic_content.py", [], "cyclotomic-content.json"),
     "main-term-31-4": ("main_term_31_4.py", [], "main-term-31-4.json"),
+    "hankel-qorder": ("hankel_qorder.py", [], "hankel-qorder.json"),
 }
 
 

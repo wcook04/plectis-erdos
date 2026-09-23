@@ -14,9 +14,10 @@ none is used by the proof of the irrationality theorem.
 | Source polynomials for n = 1, 2, 3, 4 | [`source_polynomials.py`](source_polynomials.py) | [`source-polynomials.json`](receipts/source-polynomials.json) | 10 to 25 seconds |
 | Cyclotomic content of the coefficient pencil | [`cyclotomic_content.py`](cyclotomic_content.py) | [`cyclotomic-content.json`](receipts/cyclotomic-content.json) | 5 to 10 seconds |
 | Sign of the main term at 31/4 for n <= 400 | [`main_term_31_4.py`](main_term_31_4.py) | [`main-term-31-4.json`](receipts/main-term-31-4.json) | 2 to 4 seconds |
+| Hankel q-order and leading coefficient for N <= 7 | [`hankel_qorder.py`](hankel_qorder.py) | [`hankel-qorder.json`](receipts/hankel-qorder.json) | 2 to 4 seconds |
 | Numerical direction search | [`direction_search.py`](direction_search.py) | [`direction-search-bound30.json`](receipts/direction-search-bound30.json) | see below |
 
-The first six programs use only the Python standard library (Python 3.11 or
+The first seven programs use only the Python standard library (Python 3.11 or
 newer) and exact integer or rational arithmetic. Times are wall-clock
 replays on an Apple M4 laptop; the range reflects different machine load. A
 full replay takes one to two minutes.
@@ -29,12 +30,12 @@ From the repository root:
 python3 research/experiments/erdos1049/replay.py
 ```
 
-This reruns the six exact computations and compares each output with its
-receipt. Expect `matched_recorded_result: true` six times. Every recorded
+This reruns the seven exact computations and compares each output with its
+receipt. Expect `matched_recorded_result: true` seven times. Every recorded
 value is an integer, a string or a boolean, so the comparison is exact. Use
 `--case NAME` to run one case (`threshold-digits`, `rational-base-examples`,
 `parameter-box`, `source-polynomials`, `cyclotomic-content`,
-`main-term-31-4`). With `--check`,
+`main-term-31-4`, `hankel-qorder`). With `--check`,
 the script only confirms that each receipt records the SHA-256 of the current
 program bytes and that the saved run verified every printed claim. A mismatch
 exits with code 1 and names the first differing field.
@@ -169,6 +170,26 @@ K_n log 4 - (K_n - W_n) log 31 is negative for each of these n. It confirms the
 printed values -58.478, -10.280, -4.297 and -3.863 of this main term divided by
 n^2 at n = 1, 10, 100, 400, and the printed limit C1 log 4 - C0 log 31 =
 -3.718... It makes no statement for n > 400.
+
+## Hankel q-order and leading coefficient for N <= 7
+
+`hankel_qorder.py` expands Zudilin's normalised moments v_m^* at x = z = 1
+for 0 <= m <= 12 as exact integer power series in q through q^99, and forms
+V_N^* = det(v_(i+j)^*) for 1 <= N <= 7. The moments are expanded twice, from
+the hypergeometric sum and as alpha_m F(p) - beta_m in the coefficient
+normalisation, and the determinant is computed twice, by expansion over column
+subsets and by fraction-free elimination with every division checked exact;
+both pairs must agree. The orders are 0, 1, 5, 14, 30, 55, 91 and the leading
+coefficients 1, 6, 108, 4320, 324000, 40824000, 8001504000, equal to
+N(N-1)(2N-1)/6 and (N!)^2 (N+1)!/2^N. The program also applies
+D_j = prod_(r<j) (I - q^r S) to the moment sequence and confirms the row identity
+D_j v_(j+l)^* = (-1)^j (j+1)^2 (j+2)/2 q^(j(j+1)/2 + jl) + ... for
+0 <= j, l <= 6 (row 1 has order l + 1 and coefficient -6 in every column), the
+contribution of each hypergeometric summand at that degree, and that the
+reversal is the unique permutation of least total entry order at each rank.
+The receipt records the first eight coefficients from the leading term at each
+rank and a SHA-256 digest of each truncated determinant. The all-rank
+statement is the paper's proof; this computation covers seven ranks.
 
 ## Numerical direction search
 
