@@ -1,0 +1,129 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "seam-2500",
+  "program": "check_seam_reset_crossing.py",
+  "program_sha256": "5c881982301fe3a7d149b769a97398097113e25d719f7b14322acbb62c3a357d",
+  "arguments": [
+    "2500",
+    "{out}"
+  ],
+  "requires": "stdlib",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.13.7",
+    "platform": "macOS-15.6.1"
+  },
+  "observed_wall_seconds": 34.2,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "Rows 6..2500: 1209 resets (604 upper, 605 middle), zero classification anomalies, minimum in-scope margin +1.1119 bits at row 14, maximum 1246.55 bits at row 2499, mean 627.36 over resets at rows >= 14; the only nonpositive margin is at r = 7; exactly two crossing cells, (7,5) and (10,7).",
+  "result": {
+    "summary": {
+      "max_row": 2500,
+      "anchors_ok": true,
+      "n_resets": 1209,
+      "n_crossings": 2,
+      "socket_violations": 1,
+      "affine_iterate_verified": true,
+      "min_reset_margin_log2": 1.1119469418199799,
+      "min_reset_margin_row": 14,
+      "min_crossing_pullback_margin_widths": 0.0,
+      "n_classification_anomalies": 0,
+      "n_mature_completed_resets": 1207,
+      "return_time_band_violation_count": 0,
+      "return_time_strict_band_violation_count": 0,
+      "return_time_floor_identity_violation_count": 0,
+      "upper_reset_critical_index_violation_count": 0,
+      "upper_reset_endpoint_packet_violation_count": 0,
+      "n_mature_completed_upper_resets": 604,
+      "upper_reset_linear_envelope_violation_count": 0,
+      "upper_reset_linear_envelope_equality_count": 0,
+      "minimum_upper_reset_linear_envelope_slack": 366,
+      "minimum_upper_reset_linear_envelope_row": 13,
+      "minimum_upper_reset_linear_envelope_run_len": 0,
+      "upper_right_prefix_count": 1242,
+      "upper_right_prefix_linear_envelope_violation_count": 0,
+      "upper_right_prefix_linear_envelope_equality_count": 0,
+      "upper_right_prefix_scaled_gap_identity_failure_count": 0,
+      "minimum_upper_right_prefix_linear_envelope_slack": 366,
+      "minimum_upper_right_prefix_linear_envelope_row": 13,
+      "minimum_upper_right_prefix_linear_envelope_run_len": 0,
+      "reset_type_alternation_failure_count": 0,
+      "reset_sign_type_failure_count": 0,
+      "longest_completed_runs": [
+        {
+          "row": 1135,
+          "type": "U",
+          "run_len": 12
+        },
+        {
+          "row": 606,
+          "type": "U",
+          "run_len": 10
+        },
+        {
+          "row": 502,
+          "type": "M",
+          "run_len": 8
+        },
+        {
+          "row": 992,
+          "type": "U",
+          "run_len": 8
+        },
+        {
+          "row": 1161,
+          "type": "U",
+          "run_len": 8
+        },
+        {
+          "row": 1637,
+          "type": "U",
+          "run_len": 8
+        },
+        {
+          "row": 43,
+          "type": "U",
+          "run_len": 7
+        },
+        {
+          "row": 113,
+          "type": "M",
+          "run_len": 7
+        }
+      ],
+      "crossing_sample": "     s      d  par   br \n     7      5  odd   M  \n    10      7  odd   R  "
+    },
+    "ledger_statistics": {
+      "resets": 1209,
+      "upper_resets": 604,
+      "middle_resets": 605,
+      "nonpositive_margin_resets": [
+        {
+          "row": 7,
+          "type": "M",
+          "dev": 9
+        }
+      ],
+      "in_scope_resets_rows_14_up": 1207,
+      "in_scope_margin_min": 1.1119469418199799,
+      "in_scope_margin_max": 1246.5515759861628,
+      "in_scope_margin_mean": 627.3649310950133,
+      "crossing_cells": [
+        {
+          "s": 7,
+          "d": 5,
+          "branch": "M",
+          "in_window": false
+        },
+        {
+          "s": 10,
+          "d": 7,
+          "branch": "R",
+          "in_window": true
+        }
+      ]
+    }
+  }
+}
