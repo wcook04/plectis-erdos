@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -61,6 +62,48 @@ def links(text: str) -> set[tuple[str, str]]:
     )
 
 
+def check_pinned_repolinks(sources: dict[str, str], *, git_root: Path = ROOT) -> None:
+    """Resolve every system-paper repo link against its exact public Git tree."""
+    trees: dict[str, set[str]] = {}
+    for tex, text in sources.items():
+        paths = set(re.findall(r"\\repolink\{([^{}]+)\}", text))
+        if not paths:
+            continue
+        pins = set(re.findall(r"\\repobase/blob/([0-9a-f]{40})/#1", text))
+        require(len(pins) == 1, f"{tex}: \\repolink needs one full pinned commit")
+        pin = next(iter(pins))
+        if pin not in trees:
+            commit = subprocess.run(
+                ["git", "cat-file", "-t", pin],
+                cwd=git_root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            require(
+                commit.returncode == 0 and commit.stdout.strip() == "commit",
+                f"{tex}: pinned public commit {pin} is unavailable in local Git history "
+                f"(fetch the public history before checking): {commit.stderr.strip()}",
+            )
+            tree = subprocess.run(
+                ["git", "ls-tree", "-r", "-z", "--name-only", pin],
+                cwd=git_root,
+                capture_output=True,
+                check=False,
+            )
+            require(
+                tree.returncode == 0,
+                f"{tex}: cannot read pinned public commit {pin} tree: "
+                f"{tree.stderr.decode(errors='replace').strip()}",
+            )
+            trees[pin] = set(tree.stdout.decode("utf-8", errors="surrogateescape").split("\0"))
+        missing = sorted(paths - trees[pin])
+        require(
+            not missing,
+            f"{tex}: \\repolink paths absent from pinned public commit {pin}: {missing}",
+        )
+
+
 def main() -> int:
     style = source("paper-house-style.sty")
     require("#1\\#nameddest=#2" in style, "paper link macro is not destination-based")
@@ -76,6 +119,12 @@ def main() -> int:
             key = (pdf, target)
             require(key not in target_owner, f"duplicate destination owner for {key}")
             target_owner[key] = tex
+
+    system_sources = {
+        path.relative_to(PAPER).as_posix(): path.read_text(encoding="utf-8")
+        for path in sorted((PAPER / "systems").glob("*.tex"))
+    }
+    check_pinned_repolinks(system_sources)
 
     combined = "\n".join(source(tex) for tex, _ in CORE.values())
     core_links = links(combined)
@@ -101,7 +150,7 @@ def main() -> int:
 
     all_sources = combined + "\n" + preamble
     require("#page=" not in all_sources, "cross-paper navigation uses fragile page numbers")
-    print("paper crosslinks: reciprocal core links, eight note routes, and named targets PASS")
+    print("paper crosslinks: reciprocal core links, eight note routes, named targets, and pinned repo paths PASS")
     return 0
 
 

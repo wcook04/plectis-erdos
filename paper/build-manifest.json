@@ -214,9 +214,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b",
-        "paper/systems/open-source-mathematics-strategy.tex": "sha256:3c230438b4350d15d0f59475d27d68dcff74377bc3f84542f2e52df9d98dd090"
+        "paper/systems/open-source-mathematics-strategy.tex": "sha256:f88a3af5c3bcc39efc6805df83621ffe1272e171299e48d7b39c7165af7a6d08"
       },
-      "rendered_content_digest": "sha256:940325d035b1a9850fc0f27883ceacf6cf7bb96f3d397b19d5c6d86cba501b77",
+      "rendered_content_digest": "sha256:0696c6fb00cf43e1bb0c05f6d81e42c067b5d7afc485af581cfe7772e185a19a",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },
@@ -225,9 +225,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:16e23558b1ab7c027f5781a7a1c8c9b2ff62b1dccd22b3bcde9e0c1d2cf0e481"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:4026ea23775b9eba683ea745e8b7875aa753462a46c3c5b575fe0ff3aefc1dc5"
       },
-      "rendered_content_digest": "sha256:c765f2bf5c195024b5dc741fffd25222dcf7d79c59abc9c0f74f5b80ad039507",
+      "rendered_content_digest": "sha256:d8e54a531a831e27283a59f1eb2154b665f6c7bbc70bab43ce0df053f50b8df1",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }

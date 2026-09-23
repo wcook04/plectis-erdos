@@ -8006,7 +8006,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:16e23558b1ab7c027f5781a7a1c8c9b2ff62b1dccd22b3bcde9e0c1d2cf0e481",
+      "source_sha256": "sha256:4026ea23775b9eba683ea745e8b7875aa753462a46c3c5b575fe0ff3aefc1dc5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8221,97 +8221,97 @@
           "level": 2,
           "id": "the-no-go-graph-as-a-new-mathematical-object",
           "title": "The no-go graph as a new mathematical object",
-          "line": 509
+          "line": 511
         },
         {
           "level": 2,
           "id": "an-experimental-agenda",
           "title": "An experimental agenda",
-          "line": 519
+          "line": 521
         },
         {
           "level": 2,
           "id": "sec:admissible-constructions",
           "title": "Executable construction choices",
-          "line": 525
+          "line": 527
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to other approaches",
-          "line": 540
+          "line": 542
         },
         {
           "level": 4,
           "id": "theorem-proving-agents.",
           "title": "Theorem-proving agents.",
-          "line": 544
+          "line": 546
         },
         {
           "level": 4,
           "id": "open-formalisation-platforms.",
           "title": "Open formalisation platforms.",
-          "line": 550
+          "line": 552
         },
         {
           "level": 4,
           "id": "semi-autonomous-discovery-studies.",
           "title": "Semi-autonomous discovery studies.",
-          "line": 556
+          "line": 558
         },
         {
           "level": 4,
           "id": "graphs-and-checked-exposition.",
           "title": "Graphs and checked exposition.",
-          "line": 562
+          "line": 564
         },
         {
           "level": 4,
           "id": "auditable-scientific-agents.",
           "title": "Auditable scientific agents.",
-          "line": 572
+          "line": 574
         },
         {
           "level": 4,
           "id": "contribution-and-limits.",
           "title": "Contribution and limits.",
-          "line": 580
+          "line": 582
         },
         {
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 586
+          "line": 588
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 592
+          "line": 594
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 604
+          "line": 606
         },
         {
           "level": 4,
           "id": "public-first-contact.",
           "title": "Public first contact.",
-          "line": 608
+          "line": 610
         },
         {
           "level": 4,
           "id": "dated-navigation-counts.",
           "title": "Dated navigation counts.",
-          "line": 619
+          "line": 621
         }
       ],
       "citations_rendered": 32,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:c765f2bf5c195024b5dc741fffd25222dcf7d79c59abc9c0f74f5b80ad039507",
-      "pdf_byte_count": 158499,
+      "pdf_sha256": "sha256:d8e54a531a831e27283a59f1eb2154b665f6c7bbc70bab43ce0df053f50b8df1",
+      "pdf_byte_count": 160023,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8584,7 +8584,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:3c230438b4350d15d0f59475d27d68dcff74377bc3f84542f2e52df9d98dd090",
+      "source_sha256": "sha256:f88a3af5c3bcc39efc6805df83621ffe1272e171299e48d7b39c7165af7a6d08",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8786,8 +8786,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:940325d035b1a9850fc0f27883ceacf6cf7bb96f3d397b19d5c6d86cba501b77",
-      "pdf_byte_count": 151958,
+      "pdf_sha256": "sha256:0696c6fb00cf43e1bb0c05f6d81e42c067b5d7afc485af581cfe7772e185a19a",
+      "pdf_byte_count": 152721,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

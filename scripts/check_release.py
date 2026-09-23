@@ -2395,6 +2395,10 @@ def main(argv: list[str] | None = None) -> int:
                 str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
                 "--check",
             ],
+            "paper_crosslinks": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_paper_crosslinks.py"),
+            ],
             "paper_boundary": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
@@ -2720,6 +2724,12 @@ def main(argv: list[str] | None = None) -> int:
             reasoning_assembly_check.stdout.strip()
             or reasoning_assembly_check.stderr.strip()
         ),
+    )
+    paper_crosslinks = mid_checks["paper_crosslinks"]
+    check(
+        paper_crosslinks.returncode == 0,
+        "paper crosslinks failed: "
+        f"{child_output(paper_crosslinks)}",
     )
     boundary = mid_checks["paper_boundary"]
     check(
