@@ -923,7 +923,7 @@ Suppose $`p(-1)=p(1)=0`$ and $`p(c_i)p(c_{i+1})<0`$ for $`0\le i<m`$. Then
 
 Lean: [exists peak le comparison bound](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean#L133).
 
-This is exactly the statement selected as [the formal Chebyshev endpoint](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ExternalVerification1041SolvedFamilies/Solution.lean#L74). It proves the finite alternation inequality; it does not yet construct the segment between two roots.
+This is exactly the statement selected as [the formal Chebyshev endpoint](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/verification/ExternalVerification1041SolvedFamilies/Solution.lean#L74). It proves the finite alternation inequality; it does not yet construct the segment between two roots.
 
 All real-rooted polynomials, and their images under rotations and translations, satisfy the collinearity hypothesis. Three noncollinear roots already fall outside it. The gain is an explicit sharp bound for the modulus along one adjacent-root segment, not a bound obtained by assuming that segment is contained.
 
@@ -1020,7 +1020,7 @@ Then at least one of the ten pairs $`0\le i<j\le4`$ satisfies $`E_i<1`$ and $`E_
 
 Lean: [primitive interior exists two tail energy lt one](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean#L272).
 
-This is the exact finite conclusion selected as [the formal two-index inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ExternalVerification1041SolvedFamilies/Solution.lean#L24). It selects two distinct indices. It does not assert that the corresponding complex root values are distinct.
+This is the exact finite conclusion selected as [the formal two-index inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/verification/ExternalVerification1041SolvedFamilies/Solution.lean#L24). It selects two distinct indices. It does not assert that the corresponding complex root values are distinct.
 
 The polynomial must have no $`z^3`$ or $`z^2`$ term in the coordinates used here. For example, $`z^5+bz+c`$ is included, but a general quintic with all coefficients nonzero is not. The root-location assumption alone does not imply the three moment identities. Those identities are precisely what lets the finite inequality find two radial segments.
 
@@ -1129,7 +1129,7 @@ For $`f(z)=P((z-h)^q)`$, the roots associated with a nonzero root of $`P`$ form 
 
 Lean: [cubic has safe root spoke](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean#L161).
 
-This is exactly [the formal cubic segment inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ExternalVerification1041SolvedFamilies/Solution.lean#L14).
+This is exactly [the formal cubic segment inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/verification/ExternalVerification1041SolvedFamilies/Solution.lean#L14).
 
 <div id="thm:translated-cubic-quotient-fibres" class="theorem">
 
@@ -1337,7 +1337,7 @@ The argument is an ordinary proof outside Lean. The [exact-rational checker](htt
 
 ## Power substitutions in trinomials
 
-The radial-segment identity and strict bound are formalized in [cancellation along a trinomial root segment](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean#L46) and [containment of a trinomial root segment](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean#L103).
+The radial-segment identity and strict bound are formalized in [cancellation along a trinomial root segment](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean#L46) and [containment of a trinomial root segment](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean#L103).
 
 The trinomial identity also applies after a power substitution. Fix integers $`1\le r<m`$ and $`q\ge1`$, and consider the translated monic polynomial
 ``` math
@@ -1348,7 +1348,7 @@ The strict exponent inequality keeps the leading monomial separate. The algebrai
 u^mw^m+au^rw^r+c
    =(1-u^r)c-(u^r-u^m)w^m.
 ```
-This is a nonnegative combination of $`c`$ and $`-w^m`$, with weights $`1-u^r`$ and $`u^r-u^m`$ summing to $`1-u^m`$. The [formal radial-segment estimate](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean#L103) gives strict containment when $`|w|<1`$ and $`|c|<1`$.
+This is a nonnegative combination of $`c`$ and $`-w^m`$, with weights $`1-u^r`$ and $`u^r-u^m`$ summing to $`1-u^m`$. The [formal radial-segment estimate](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean#L103) gives strict containment when $`|w|<1`$ and $`|c|<1`$.
 
 For $`q\ge2`$ and a nonzero quotient root satisfying these bounds, choose two distinct solutions $`y_1,y_2`$ of $`y^q=w`$. Their common modulus is $`|w|^{1/q}<1`$. To lift a quotient radial segment, set $`u=t^q`$:
 ``` math
@@ -1384,13 +1384,13 @@ The mechanism is visible in one identity. At a root $`w`$ and for $`0\le u\le1`$
   +(u^r-u^m)(-w^m).
 \end{split}
 ```
-Here the root equation has eliminated $`aw^r`$ before taking absolute values. The three weights are nonnegative and sum to $`1-u^m`$. The controlled terms are $`c`$, $`c+bw^s`$ and $`-w^m`$; their moduli are strictly below one under the root-dependent condition. The same identity explains why no bound on $`a`$ is needed. Lean checks the [factorization](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean#L27) and the resulting [strict spoke theorem](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean#L145) under the exact weak exponent hypotheses $`1\le s\le r\le m`$; it also checks the coefficient-only corollary above. Its weak bound $`|b|+|c|\le1`$ still gives strict containment: the root-disc hypothesis implies $`|c|<1`$, and, if $`b\ne0`$, $`|w|^s<1`$ gives $`|c|+|b||w|^s<|c|+|b|\le1`$. If $`b=0`$, the required bound is simply $`|c|<1`$.
+Here the root equation has eliminated $`aw^r`$ before taking absolute values. The three weights are nonnegative and sum to $`1-u^m`$. The controlled terms are $`c`$, $`c+bw^s`$ and $`-w^m`$; their moduli are strictly below one under the root-dependent condition. The same identity explains why no bound on $`a`$ is needed. Lean checks the [factorization](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean#L27) and the resulting [strict spoke theorem](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean#L145) under the exact weak exponent hypotheses $`1\le s\le r\le m`$; it also checks the coefficient-only corollary above. Its weak bound $`|b|+|c|\le1`$ still gives strict containment: the root-disc hypothesis implies $`|c|<1`$, and, if $`b\ne0`$, $`|w|^s<1`$ gives $`|c|+|b||w|^s<|c|+|b|\le1`$. If $`b=0`$, the required bound is simply $`|c|<1`$.
 
 An alternative criterion uses a complex power sum to select two indices. Let $`S`$ index a finite family of roots, $`N=|S|\ge2`$, and
 ``` math
 M=\sum_{i\in S}w_i^s.
 ```
-The [squared-modulus identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/TetranomialL2Selector.lean#L33) gives
+The [squared-modulus identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/TetranomialL2Selector.lean#L33) gives
 ``` math
 \sum_{i\in S}|c+bw_i^s|^2
  =N|c|^2+|b|^2\sum_{i\in S}|w_i^s|^2
@@ -1401,7 +1401,7 @@ Consequently, if every $`|w_i|<1`$, $`|c|<1`$, and
 N\bigl(|b|^2+|c|^2\bigr)
    +2\mathop{\rm Re}(\overline c\,bM)<N-1,
 ```
-then two distinct indices $`i,j\in S`$ satisfy $`|c+bw_i^s|<1`$ and $`|c+bw_j^s|<1`$. Indeed, the displayed identity bounds the sum of squared moduli strictly below $`N-1`$. If at most one index had modulus below one, the other $`N-1`$ terms would each contribute at least one. This explains both the threshold $`N-1`$ and why the criterion selects two indices. Applying the [resulting contained-segment theorem](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/TetranomialL2Selector.lean#L208) to these inequalities proves that both root segments lie strictly in $`\{|g|<1\}`$. Retaining the signed cross term permits the inequality to hold for configurations outside the coefficient-only triangle $`|b|+|c|\le1`$. The formal hypotheses do not require $`i\mapsto w_i`$ to be injective, so distinct indices need not denote distinct root values. For the polynomial consequence, the family must be a submultiset of the zeros, respecting their algebraic multiplicities. A repeated zero then already gives a constant path between two occurrences. Repeating a simple zero in an arbitrary indexed family cannot supply a second occurrence. The two sufficient conditions are not ordered by strength. For example, $`g(w)=w^5+19/20`$ has all roots in the open unit disc and satisfies the coefficient condition with $`b=0`$. For its full five-root list, however, the left side of the power-sum condition is $`5(19/20)^2=361/80>4=N-1`$, so that condition fails. Its benefit is the use of cancellation in the cross term, not inclusion of every case covered by the coefficient condition. Conversely,
+then two distinct indices $`i,j\in S`$ satisfy $`|c+bw_i^s|<1`$ and $`|c+bw_j^s|<1`$. Indeed, the displayed identity bounds the sum of squared moduli strictly below $`N-1`$. If at most one index had modulus below one, the other $`N-1`$ terms would each contribute at least one. This explains both the threshold $`N-1`$ and why the criterion selects two indices. Applying the [resulting contained-segment theorem](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/TetranomialL2Selector.lean#L208) to these inequalities proves that both root segments lie strictly in $`\{|g|<1\}`$. Retaining the signed cross term permits the inequality to hold for configurations outside the coefficient-only triangle $`|b|+|c|\le1`$. The formal hypotheses do not require $`i\mapsto w_i`$ to be injective, so distinct indices need not denote distinct root values. For the polynomial consequence, the family must be a submultiset of the zeros, respecting their algebraic multiplicities. A repeated zero then already gives a constant path between two occurrences. Repeating a simple zero in an arbitrary indexed family cannot supply a second occurrence. The two sufficient conditions are not ordered by strength. For example, $`g(w)=w^5+19/20`$ has all roots in the open unit disc and satisfies the coefficient condition with $`b=0`$. For its full five-root list, however, the left side of the power-sum condition is $`5(19/20)^2=361/80>4=N-1`$, so that condition fails. Its benefit is the use of cancellation in the cross term, not inclusion of every case covered by the coefficient condition. Conversely,
 ``` math
 g(w)=(w^2-1/2)(w^3+4/5)
      =w^5-\tfrac12w^3+\tfrac45w^2-\tfrac25
@@ -1980,7 +1980,7 @@ where $`f'(z(t))\ne0`$. Let $`I\subseteq\mathbb R`$ be an interval on which thes
 
 Lean: [newton real value whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52).
 
-The computation is one line: $`w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w`$. The kernel checks the local complex-parameter chain rule as [the derivative of the polynomial value along a Newton trajectory](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50), together with the differential form of the first integral, [the derivative of the exponentially rescaled value](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64):
+The computation is one line: $`w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w`$. The kernel checks the local complex-parameter chain rule as [the derivative of the polynomial value along a Newton trajectory](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50), together with the differential form of the first integral, [the derivative of the exponentially rescaled value](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64):
 ``` math
 \frac{d}{dt}\Bigl(e^{t}f(z(t))\Bigr)=0.
 ```
@@ -2038,7 +2038,7 @@ Lean: [translated same positive ray parameterization](https://github.com/wcook04
 
 Indeed, write $`b+\beta=r(a+\beta)`$ with $`r>0`$. Since $`a\ne b`$, one has $`r\ne1`$, and solving for $`\beta`$ gives the displayed formula. Equivalently, $`\beta=-a+(a-b)/(1-r)`$, so the forbidden translations lie on the real affine line through $`-a`$ and $`-b`$.
 
-The formula is checked as [translations that put two values on one ray](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107). A finite union of these loci has empty interior. Adding a constant to $`f`$ translates all critical values by that constant and leaves the critical points unchanged. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">13</a> records the formal avoidance and root-retention estimates. A constant cannot separate equal critical values; coefficient perturbation and control of the remaining geometric margins are separate requirements.
+The formula is checked as [translations that put two values on one ray](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107). A finite union of these loci has empty interior. Adding a constant to $`f`$ translates all critical values by that constant and leaves the critical points unchanged. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">13</a> records the formal avoidance and root-retention estimates. A constant cannot separate equal critical values; coefficient perturbation and control of the remaining geometric margins are separate requirements.
 
 <a id="sec:gap"></a>
 
@@ -2259,11 +2259,11 @@ used the same excluded coefficient. It is not an unused error allowance in an ot
 
 ## 4. Coefficient perturbation and stability
 
-The constant-translation stage is no longer open. Once a finite critical-value family is injective, Lean proves an arbitrarily small translation making every value nonzero and pairwise positive-ray separated ([a small translation separating the arguments](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197)). It also proves the explicit root-retention estimate: for a monic polynomial $`f`$ of degree $`n\ge1`$, a constant shift of modulus below $`\varepsilon>0`$ keeps all roots in the unit disc provided
+The constant-translation stage is no longer open. Once a finite critical-value family is injective, Lean proves an arbitrarily small translation making every value nonzero and pairwise positive-ray separated ([a small translation separating the arguments](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197)). It also proves the explicit root-retention estimate: for a monic polynomial $`f`$ of degree $`n\ge1`$, a constant shift of modulus below $`\varepsilon>0`$ keeps all roots in the unit disc provided
 ``` math
 ((n+1)\varepsilon)^{1/n}+\max_{f(b)=0}|b|<1
 ```
-([the root-retention estimate for the unit disc](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287)). Adding a constant leaves the difference of two critical values unchanged, so it cannot separate values that were equal to begin with.
+([the root-retention estimate for the unit disc](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287)). Adding a constant leaves the difference of two critical values unchanged, so it cannot separate values that were equal to begin with.
 
 For a constant shift alone, factorisation gives the sharper elementary bound
 ``` math

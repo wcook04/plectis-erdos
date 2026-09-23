@@ -975,7 +975,7 @@
           "title": "Newton Flow and Ray Separation in Polynomial Lemniscates",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
           "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
           "anchor_label_allowlist": [
             "res:ray"
@@ -985,7 +985,7 @@
           "title": "Arithmetic Boundaries at Base 3/2 for Erdős Problem 1049",
           "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
           "role": "Standalone theorem-led problem note for Erdős #1049 and the coordinatewise-corridor and cleared-tail boundaries.",
           "anchor_label_allowlist": [
             "res:nocorridor",
@@ -997,7 +997,7 @@
           "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223",
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
           "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
           "anchor_label_allowlist": [
             "res:barrier"
@@ -1060,14 +1060,14 @@
             "res:degree-three",
             "res:reflected-critical-value"
           ],
-          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
         {
           "title": "Rational-Base Lambert Series: Complete Reasoning Record",
           "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
           "rendered": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
-          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
         {
           "title": "The Factorial-Denominator Series: Complete Reasoning Record",
@@ -1081,7 +1081,7 @@
           "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223"
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
@@ -20750,7 +20750,7 @@
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 131
+        "line": 132
       }
     },
     {
@@ -20762,7 +20762,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 56
+        "line": 57
       }
     },
     {

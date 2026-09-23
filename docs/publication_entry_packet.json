@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:0fb2a8d97de4111fa04b8d99a27c732f8066b68699fe69ff61b18b788c7f11f3",
+    "docs/claims.json": "sha256:93486bf5ec05240d52cff14bd0883cbc78cc88617805da1529049516778fad8d",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
-    "docs/publication_contract.json": "sha256:4f37a22a84e3a5d8a3d6ba3e04badda86358434dd3864e72ac10b66b51f5b3b9",
+    "docs/publication_contract.json": "sha256:eb368eb061027b984f092b3d85719859e907941a387d39ec2c389f94d4b228d9",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:1d5ebdcd636e9c22c6e69d5d27c05b1d8a17b8ce37227f0e6fea1be9a459b3ea",
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 131,
+        "line": 132,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 56,
+        "line": 57,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },

@@ -269,7 +269,7 @@ The proof chooses the two smallest distances $`d_i\le d_j`$. The reciprocal bala
 ``` math
 1+t\le2t^{(n-1)/n}.
 ```
-Indeed, $`\log(2t^{(n-1)/n}/(1+t))`$ vanishes at $`t=1`$ and has derivative $`(n-1-t)/(nt(1+t))\ge0`$ on that interval. Consequently $`d_i+d_j\le2(d_i d_j^{\,n-1})^{1/n}\le2r`$. Without the reciprocal balance, the required restriction on $`t`$ would be missing. The complete complex theorem, including the choice of two indices and both inequalities, is checked as [the bound for the sum of two root distances](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L289).
+Indeed, $`\log(2t^{(n-1)/n}/(1+t))`$ vanishes at $`t=1`$ and has derivative $`(n-1-t)/(nt(1+t))\ge0`$ on that interval. Consequently $`d_i+d_j\le2(d_i d_j^{\,n-1})^{1/n}\le2r`$. Without the reciprocal balance, the required restriction on $`t`$ would be missing. The complete complex theorem, including the choice of two indices and both inequalities, is checked as [the bound for the sum of two root distances](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291).
 
 <div class="corollary">
 
@@ -333,7 +333,7 @@ All three roots have modulus $`99/100`$. ◻
 
 </div>
 
-Uniqueness in the quintic rules out repairing that example by breaking a tie differently. The cubic excludes every direct root-to-root segment, not a curved path. The two exact evaluations are checked as [escape along the segment to a uniquely nearest root](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L438) and [escape at all three root-pair midpoints](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L569). [The complete straight-path statement](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178) also includes the polynomial, root-disc, critical-point and unique-nearest-root assertions, rather than only the two evaluations.
+Uniqueness in the quintic rules out repairing that example by breaking a tie differently. The cubic excludes every direct root-to-root segment, not a curved path. The two exact evaluations are checked as [escape along the segment to a uniquely nearest root](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L440) and [escape at all three root-pair midpoints](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L571). [The complete straight-path statement](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178) also includes the polynomial, root-disc, critical-point and unique-nearest-root assertions, rather than only the two evaluations.
 
 <a id="sec:solved-families"></a>
 
@@ -373,7 +373,7 @@ Write $`P(w)=(w-r)(w-s)(w-v)`$. The three numbers $`\Re(r\overline{s+v})`$, $`\R
  =t^2|r|^2+\frac{|s|^2+|v|^2}{2}
    -t\Re(r\overline{s+v})<1+t+t^2.
 ```
-AM–GM therefore gives $`|tr-s|\,|tr-v|<1+t+t^2`$. Together with $`|tr-r|=(1-t)|r|`$, this proves $`|P(tr)|<1`$ for $`0\le t<1`$; at $`t=1`$ the value is zero. Lean checks [the cubic segment inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean#L161).
+AM–GM therefore gives $`|tr-s|\,|tr-v|<1+t+t^2`$. Together with $`|tr-r|=(1-t)|r|`$, this proves $`|P(tr)|<1`$ for $`0\le t<1`$; at $`t=1`$ the value is zero. Lean checks [the cubic segment inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean#L161).
 
 A nonzero root $`r`$ with this property gives two distinct roots $`h+y`$ and $`h+y\omega`$ of $`f`$. Their segments to $`h`$ are contained because $`f(h+ty\omega^k)=P(t^qr)`$, and their total length is $`2|y|<2`$. If the selected cubic root is zero, choose a nonzero one, say $`s`$. Then $`P(w)=w(w-s)(w-v)`$ and $`|P(ts)|<2t(1-t)\le1/2`$ for $`0<t<1`$, with zero endpoint values. A nonzero cubic root exists because $`f`$ has at least two distinct zeros. This proves the theorem in all cases. ◻
 
@@ -409,13 +409,13 @@ The selection argument first allows roots on the closed disc, where the two boun
 ``` math
 p(tw)=(1-t)c+(t-t^4)(bw+c)-t^4(1-t)w^5.
 ```
-For $`0\le t<1`$, the three nonnegative weights sum to $`1-t^5`$. Vieta’s formula gives $`|c|<1`$, and $`|w|<1`$, so every term being averaged has modulus below one. The value at $`t=1`$ is zero. Two selected segments have total length $`|w_i|+|w_j|<2`$; coincident occurrences instead give the constant path. Lean checks [the selection for roots on the unit circle](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean#L200) and [the selection for roots in the closed disc](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean#L272). The source snapshot also contains [the complete sparse-quintic path theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L235). The recorded build includes this complete open-disc path theorem, not just the two selection inequalities. It does not by itself verify every equality clause of the closed-disc statement in the long paper.
+For $`0\le t<1`$, the three nonnegative weights sum to $`1-t^5`$. Vieta’s formula gives $`|c|<1`$, and $`|w|<1`$, so every term being averaged has modulus below one. The value at $`t=1`$ is zero. Two selected segments have total length $`|w_i|+|w_j|<2`$; coincident occurrences instead give the constant path. Lean checks [the selection for roots on the unit circle](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean#L200) and [the selection for roots in the closed disc](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean#L272). The source snapshot also contains [the complete sparse-quintic path theorem](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L235). The recorded build includes this complete open-disc path theorem, not just the two selection inequalities. It does not by itself verify every equality clause of the closed-disc statement in the long paper.
 
 <a id="bdry:solved-polynomial-families"></a>
 
 ## Sharp collinear roots
 
-The complete all-degree collinear theorem appears in Section <a href="#sec:collinear" data-reference-type="ref" data-reference="sec:collinear">14</a>. It gives the sharp maximum modulus on a suitable root segment, as well as a bound on that segment’s length. Collinearity supplies a real ordering that is absent for a general complex root configuration. Lean checks [the comparison of alternating values](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean#L158) and [the resulting Chebyshev bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean#L133); affine normalisation, root-gap selection, and transport back to the original line are ordinary.
+The complete all-degree collinear theorem appears in Section <a href="#sec:collinear" data-reference-type="ref" data-reference="sec:collinear">14</a>. It gives the sharp maximum modulus on a suitable root segment, as well as a bound on that segment’s length. Collinearity supplies a real ordering that is absent for a general complex root configuration. Lean checks [the comparison of alternating values](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean#L158) and [the resulting Chebyshev bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean#L133); affine normalisation, root-gap selection, and transport back to the original line are ordinary.
 
 <a id="sec:separation"></a>
 
@@ -564,7 +564,7 @@ f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
 
 Lean: [newton real value whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52).
 
-The local computation is one line: $`w'=f'(z)z'=-f(z)=-w`$. Multiplication by $`e^t`$ and integration on $`I`$ give the displayed identity. Lean checks the local complex-parameter chain rule as [the Newton-flow value equation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50) and its scaled zero-derivative form as [vanishing of the exponentially scaled value](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64). The integrated real-time assertion above is an ordinary consequence.
+The local computation is one line: $`w'=f'(z)z'=-f(z)=-w`$. Multiplication by $`e^t`$ and integration on $`I`$ give the displayed identity. Lean checks the local complex-parameter chain rule as [the Newton-flow value equation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50) and its scaled zero-derivative form as [vanishing of the exponentially scaled value](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64). The integrated real-time assertion above is an ordinary consequence.
 
 For an existing trajectory with nonzero initial value, the value moves inward on one positive ray. A zero value remains zero and has no argument. Thus a trajectory starting in $`\{|f|<1\}`$ stays there at later times in its interval of existence. The equation neither constructs a global trajectory nor identifies a whole ray preimage with one flow line.
 
@@ -582,7 +582,7 @@ If the endpoint values are nonzero, they lie on the same positive ray. In partic
 
 Lean: [newton real endpoint whole](https://github.com/wcook04/plectis-erdos/blob/181078b6b009d905809cf2e007ad309386a3d1e0/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69).
 
-Apply the value equation inside $`(a,b)`$ and pass to the endpoints by continuity. This does not evaluate $`-f/f'`$ at a critical endpoint. Lean checks the algebraic contradiction from an assumed exponential endpoint relation in [the distinct-ray endpoint implication](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L315). Kozen and Stefánsson draw the same consequence for the Newtonian graph: under $`f`$, every edge maps onto a segment of a ray through the origin whose endpoints are $`0`$ or critical values \[kozen-stefansson1997, §2\]. The endpoint behaviour of nonstationary maximal trajectories is classified there as well \[kozen-stefansson1997, Lemma 2.2\].
+Apply the value equation inside $`(a,b)`$ and pass to the endpoints by continuity. This does not evaluate $`-f/f'`$ at a critical endpoint. Lean checks the algebraic contradiction from an assumed exponential endpoint relation in [the distinct-ray endpoint implication](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L334). Kozen and Stefánsson draw the same consequence for the Newtonian graph: under $`f`$, every edge maps onto a segment of a ray through the origin whose endpoints are $`0`$ or critical values \[kozen-stefansson1997, §2\]. The endpoint behaviour of nonstationary maximal trajectories is classified there as well \[kozen-stefansson1997, Lemma 2.2\].
 
 The Newtonian graph should not be confused with the quotient by whole trajectories. For $`f(z)=z^2-1/4`$, the smooth-gradient flow on $`\{\log2\le-\log|f|\le\log8\}`$ has a real separatrix whose closure contains the saddle $`0`$ as a different, stationary orbit. Its orbit class is not closed, so the orbit quotient is not Hausdorff, despite there being only one simple saddle and no saddle-to-saddle connection. A Hausdorff parameter space for cut strips must refer to the actual cut-open surface and its specified boundary identifications.
 
@@ -608,7 +608,7 @@ Lean: [translated same positive ray parameterization](https://github.com/wcook04
 
 Indeed, write $`b+\beta=r(a+\beta)`$ with $`r>0`$. Since $`a\ne b`$, one has $`r\ne1`$, and solving for $`\beta`$ gives the displayed formula. Equivalently, $`\beta=-a+(a-b)/(1-r)`$, so the forbidden translations lie on the real affine line through $`-a`$ and $`-b`$.
 
-Each pair of critical values contributes such a forbidden subset, as checked in [the ray-collision parameterization](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107). These loci lie on finitely many real lines. Excluding those lines and the finitely many translations that make a value zero still leaves a point in every open disc. Accordingly, [an arbitrarily small translation separates the arguments](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197). Under an explicit margin, [a small constant perturbation keeps the roots in the unit disc](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287). For a constant shift there is also an elementary sharper estimate: if $`f(z)=\prod_{j=1}^n(z-a_j)`$ has degree $`n\ge1`$ and $`(f+\beta)(z)=0`$, then $`\prod_j|z-a_j|=|\beta|`$, so $`\min_j|z-a_j|\le|\beta|^{1/n}`$. Thus $`\max_j|a_j|+|\beta|^{1/n}<1`$ suffices for root retention. This estimate does not assert a matching of labelled roots or control of a selected path. If a closed-level length bound holds on a dense class of polynomials, the fixed-degree lower semicontinuity in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">17</a> extends that bound to its closure. Quantitative forward transport of a selected curve requires additional control, but is not a premise of that existence argument.
+Each pair of critical values contributes such a forbidden subset, as checked in [the ray-collision parameterization](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107). These loci lie on finitely many real lines. Excluding those lines and the finitely many translations that make a value zero still leaves a point in every open disc. Accordingly, [an arbitrarily small translation separates the arguments](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197). Under an explicit margin, [a small constant perturbation keeps the roots in the unit disc](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287). For a constant shift there is also an elementary sharper estimate: if $`f(z)=\prod_{j=1}^n(z-a_j)`$ has degree $`n\ge1`$ and $`(f+\beta)(z)=0`$, then $`\prod_j|z-a_j|=|\beta|`$, so $`\min_j|z-a_j|\le|\beta|^{1/n}`$. Thus $`\max_j|a_j|+|\beta|^{1/n}<1`$ suffices for root retention. This estimate does not assert a matching of labelled roots or control of a selected path. If a closed-level length bound holds on a dense class of polynomials, the fixed-degree lower semicontinuity in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">17</a> extends that bound to its closure. Quantitative forward transport of a selected curve requires additional control, but is not a premise of that existence argument.
 
 The distinct-value premise can be arranged first by a small linear perturbation: its local critical-value branches satisfy $`v_j'(\lambda)=c_j(\lambda)`$, so coincidences are isolated when the critical points are simple. Item 4 in Section 13 of the companion proves this qualitative statement, the subsequent choice of translation and root retention by Rouché’s theorem. It does not give quantitative control of a protected region or of the cost of transferring a selected path.
 
@@ -1007,35 +1007,35 @@ No source-link reachability check or fresh kernel build is implied by these snap
 
 These links retain the original source files and line numbers at the commit fixed for this paper. Their text describes the mathematics; the Lean declaration names remain in the link targets.
 
-- [the Newton vector field](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L34)
+- [the Newton vector field](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L34)
 
-- [cancellation of the derivative in the Newton equation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L38)
+- [cancellation of the derivative in the Newton equation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L38)
 
-- [the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L77)
+- [the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L77)
 
-- [reflexivity of the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L80)
+- [reflexivity of the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L80)
 
-- [symmetry of the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L84)
+- [symmetry of the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L84)
 
-- [transitivity of the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L92)
+- [transitivity of the positive-ray relation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L92)
 
-- [real affine lines in the complex plane](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L127)
+- [real affine lines in the complex plane](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L127)
 
-- [agreement with the affine-span definition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L130)
+- [agreement with the affine-span definition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L130)
 
-- [closedness of a real affine line](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L147)
+- [closedness of a real affine line](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L147)
 
-- [density of its complement](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L152)
+- [density of its complement](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L152)
 
-- [a small perturbation avoiding finitely many real lines](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162)
+- [a small perturbation avoiding finitely many real lines](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162)
 
-- [the line containing forbidden translations](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L179)
+- [the line containing forbidden translations](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L179)
 
-- [retention of the unit-disc margin near a root](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L230)
+- [retention of the unit-disc margin near a root](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L230)
 
-- [root displacement under a constant perturbation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L257)
+- [root displacement under a constant perturbation](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L257)
 
-- [positive-ray invariance under exponential decay](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L306)
+- [positive-ray invariance under exponential decay](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L325)
 
 <div class="thebibliography">
 

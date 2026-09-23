@@ -8,6 +8,7 @@
 \input{problem-note-preamble}
 \renewcommand{\commit}{7380b7871687b6bcc41ca0143c61f232e8af6500}
 \renewcommand{\commitshort}{7380b7871687}
+\renewcommand{\PX}{lean/ErdosProblems}
 \renewcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
 \renewcommand{\externalreviewobject}[3]{%
   \begin{quote}\small
@@ -1775,7 +1776,7 @@ $p(c_i)p(c_{i+1})<0$ for $0\le i<m$.  Then
 \leannote{Lean: \lproof{ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean}{133}{exists_peak_le_comparisonBound}.}
 
 This is exactly the statement selected as
-\href{\repobase/ExternalVerification1041SolvedFamilies/Solution.lean\#L74}{the formal Chebyshev endpoint}.
+\href{\repobase/verification/ExternalVerification1041SolvedFamilies/Solution.lean\#L74}{the formal Chebyshev endpoint}.
 It proves the finite alternation inequality; it does not yet construct
 the segment between two roots.
 
@@ -1936,7 +1937,7 @@ $E_i<1$ and $E_j<1$.
 \leannote{Lean: \lproof{ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean}{272}{primitiveInterior_exists_two_tailEnergy_lt_one}.}
 
 This is the exact finite conclusion selected as
-\href{\repobase/ExternalVerification1041SolvedFamilies/Solution.lean\#L24}{the formal two-index inequality}.
+\href{\repobase/verification/ExternalVerification1041SolvedFamilies/Solution.lean\#L24}{the formal two-index inequality}.
 It selects two distinct indices.  It does not assert that the corresponding
 complex root values are distinct.
 
@@ -2086,7 +2087,7 @@ $u\in\{r,s,v\}$ satisfies
 \leannote{Lean: \lproof{ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean}{161}{cubic_has_safe_root_spoke}.}
 
 This is exactly
-\href{\repobase/ExternalVerification1041SolvedFamilies/Solution.lean\#L14}{the formal cubic segment inequality}.
+\href{\repobase/verification/ExternalVerification1041SolvedFamilies/Solution.lean\#L14}{the formal cubic segment inequality}.
 
 \begin{theorem}[a cubic composed with a power map]
 \label{thm:translated-cubic-quotient-fibres}

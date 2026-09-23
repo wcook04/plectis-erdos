@@ -51,9 +51,9 @@ def test_individual_paper_exposes_the_result_without_formalising_it() -> None:
         "exact-rational checker",
         "checks finitely many identities",
         "regression and stress-test evidence",
-        "degree-seven counterexample due to the",
-        "refutes the universal total-variation",
-        "historical curve-length question has not received independent human",
+        "The degree-seven polynomial constructed by",
+        "exact Formal Conjectures statement is false",
+        "Independent human review has not adjudicated correspondence with the 1958",
     ):
         assert fragment in paper
     for source in (

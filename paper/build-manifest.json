@@ -13,45 +13,45 @@
     },
     "erdos_1041_note": {
       "inputs": {
-        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:39867f4be9a7aaf741bb92abc221bbdcd2619f93adb2e3fabfd27777dfe90ddd",
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:e57ae92b7eab179a479f56c0bb6e3c32db1765c9e3078d90772df3da92b7b2e3",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:f3b05fbf1ed20194833202137f25f4f86db36d27696b7bc24f5c8ae11a43307d",
+      "rendered_content_digest": "sha256:6e9a53006cb3103129f25719d5838b0b0dc5490e93dcddb0ede17646336b4729",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     "erdos_1041_reasoning_record": {
       "inputs": {
-        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:4459f5e09aaf147922712b56e51bccc1596d65527c1d221125f6f1b2b85e3e0f",
+        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:e9e943e441fc23265682f5d7b5f50375db1d1211196fc842707f9131b904f83e",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:356b4a9ce135c9c3919af468364ae8871d64162e009348b8f9b11a58fcc4e8ad",
+      "rendered_content_digest": "sha256:8cbc4f712528e38bf795fc4d5119439341e4d6f7df43c28df282b7e570ae448b",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
     "erdos_1049_note": {
       "inputs": {
-        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:c93d5be214450ac069ea1397e99b1fe8a0a73d131b19a48673147a5633f015aa",
+        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:8576c3e5e1d0a55431948a43ab3e4434b9c13da8725c6bb9bc3df3ff72fb5fc0",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:2645a384867791271c8dfc37cbedf9970c297f0bf273c93bd4251b1753402c91",
+      "rendered_content_digest": "sha256:849802433b23c17269f71567e67af5591111c292f10a08496c81b6465bc3ef4a",
       "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },
     "erdos_1049_reasoning_record": {
       "inputs": {
-        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:570f710bf2d1db9e1133b97e4e0c4b06ed6b87a48ff88c93ab0e0cabd9a6c6ea",
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:7adad7fc7f723ee7ec966d5877510271ca7eed456ebaeacb3993cfb0167b08a6",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:030447117814ecc33c20eb68ab278d5173174ecfd176025421ccb31ba6cc733b"
       },
-      "rendered_content_digest": "sha256:c114057fa4b12d809ab959a22e6cd84c4f0aa7ef6d7255ee212fb067da020795",
+      "rendered_content_digest": "sha256:1520dda91a5b9cad7ff60e250d61e063147708e0704cbc6bb07785a1faa4359b",
       "source_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "storage_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf"
     },
