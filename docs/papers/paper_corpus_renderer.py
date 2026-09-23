@@ -979,7 +979,7 @@ def _strip_description_list_options(tex: str) -> str:
 
 _EVIDENCE_INPUT_RE = re.compile(r"^\\input\{(evidence/[^}]+|paper-evidence)\}[ \t]*%?[^\n]*\n", re.M)
 _EVIDENCE_DECLARE_RE = re.compile(
-    r"\\DeclareResultEvidence\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
+    r"\\DeclareResultEvidence\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}\{([^}]*)\}\{([^}]*)\}")
 _EVIDENCE_RECORD_RE = re.compile(r"\\newcommand\{\\evidencerecordurl\}\{([^}]*)\}")
 
 

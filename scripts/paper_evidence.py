@@ -277,13 +277,36 @@ def tex_url(url: str) -> str:
     return url.replace("\\", "/").replace("%", "\\%").replace("#", "\\#")
 
 
-def parse_aux(path: Path) -> dict[str, tuple[str, str]]:
-    """label -> (printed number, page) from a LaTeX .aux written with hyperref."""
+def parse_aux(path: Path, pdf: Path | None = None) -> dict[str, tuple[str, str]]:
+    """label -> (printed number, page) from a LaTeX .aux written with hyperref.
+
+    The page LaTeX records for a label set on a theorem's first line can be the page before
+    the heading, when a page break falls between the two.  When the built PDF is given, the
+    page is read from the hyperref destination at the heading instead.
+    """
     out: dict[str, tuple[str, str]] = {}
+    anchors: dict[str, str] = {}
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        m = re.match(r"\\newlabel\{([^}]*)\}\{\{(.*?)\}\{(\d+)\}\{.*\}\{([^{}]*)\}\{[^{}]*\}\}\s*$", line)
+        if m:
+            out[m.group(1)] = (m.group(2), m.group(3))
+            anchors[m.group(1)] = m.group(4)
+            continue
         m = re.match(r"\\newlabel\{([^}]*)\}\{\{(.*?)\}\{(\d+)\}", line)
         if m:
             out[m.group(1)] = (m.group(2), m.group(3))
+    if pdf is not None and pdf.is_file():
+        from pypdf import PdfReader  # noqa: PLC0415  (only the local build step reads PDFs)
+        reader = PdfReader(str(pdf))
+        pages = {}
+        for name, dest in reader.named_destinations.items():
+            try:
+                pages[str(name).lstrip("/")] = reader.get_destination_page_number(dest) + 1
+            except Exception:  # noqa: BLE001
+                continue
+        for label, anchor in anchors.items():
+            if anchor in pages:
+                out[label] = (out[label][0], str(pages[anchor]))
     return out
 
 
@@ -460,7 +483,7 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             if not aux.is_file():
                 problems.add(pid, f"no {aux}")
             else:
-                numbers = parse_aux(aux)
+                numbers = parse_aux(aux, aux_dir / f"{pid}.pdf")
         aux_numbers[pid] = numbers
         statements = full_text_statements(root / FULL_TEXT / f"{pid}.md")
         results = []

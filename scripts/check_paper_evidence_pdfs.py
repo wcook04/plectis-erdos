@@ -30,7 +30,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_MAP = ROOT / "evidence/paper_evidence.json"
 BASELINE = ROOT / "docs/paper_page_baseline.json"
-DECLARE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
+DECLARE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}\{([^}]*)\}\{([^}]*)\}")
 RUN_URL = re.compile(r"/actions/runs/\d+")
 TOLERANCE = 7.0  # points between the mark's first baseline and the heading's baseline
 HYPERREF_LINK_MARGIN = 1.0
@@ -122,6 +122,10 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> li
             continue
         used.add(chosen)
         n, rect, _u = margin[chosen]
+        # A mark such as "Lean" with a superscript dagger can be written as two link pieces.
+        for i, (m, r, u) in enumerate(margin):
+            if i not in used and m == n and u == lean and abs(r[1] - rect[1]) < 4 and r[0] <= rect[2] + 4:
+                used.add(i)
         if comparator:
             below = [i for i, (m, r, u) in enumerate(margin)
                      if i not in used and m == n and u == comparator and 0 < rect[1] - r[1] <= 16]

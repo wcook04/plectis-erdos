@@ -24,7 +24,7 @@ migration record.  Any unpaired environment, kind mismatch or unreviewed change 
 failure, and then nothing is written.
 
   migrate_statement_presentation.py --base <rev> --record docs/statement_migrations/<name>.json
-                                    [--reviewed <file>] [--dry-run]
+                                    [--reviewed <file>] [--lean-pin <commit>] [--dry-run]
 """
 from __future__ import annotations
 
@@ -141,6 +141,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--record", required=True)
     ap.add_argument("--reviewed", type=Path)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--lean-pin", help="set the ledger's lean_pin (the release formal-source checkpoint)")
     args = ap.parse_args(argv)
     # The ledger is always migrated from the base revision's copy, so the script can be
     # rerun after further presentation edits and still pair every row with its base digest.
@@ -149,6 +150,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"FAIL no ledger at {args.base}", file=sys.stderr)
         return 1
     ledger = json.loads(base_ledger)
+    if args.lean_pin:
+        if not re.fullmatch(r"[0-9a-f]{40}", args.lean_pin):
+            print("FAIL --lean-pin must be a full commit id", file=sys.stderr)
+            return 1
+        ledger["lean_pin"] = args.lean_pin
     reviewed = {}
     if args.reviewed:
         for item in json.loads(args.reviewed.read_text(encoding="utf-8"))["rows"]:
