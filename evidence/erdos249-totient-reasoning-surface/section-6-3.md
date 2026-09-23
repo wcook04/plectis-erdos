@@ -1,6 +1,42 @@
-# Formal evidence: The Binary Totient Series, Section 6, results 6.73 to 6.103
+# Formal evidence: The Binary Totient Series, Section 6, results 6.72 to 6.103
 
 Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the paper [erdos249-totient-reasoning-surface.pdf](../../paper/249/erdos249-totient-reasoning-surface.pdf), which explains what the Lean and Comparator checks establish.
+
+<a id="prop-b3"></a>
+
+## Proposition 6.72 (One diagonal parameter suffices), page 44
+
+> *The following condition is equivalent to irrationality:
+> ``` math
+> \bigl(\forall t_0\in\mathbb N\ \exists t\ge t_0\ \exists L\ge0,
+>        \ \mathcal C(H(t),H(t),L)\bigr)
+>  \quad\Longleftrightarrow\quad S\notin\mathbb Q.
+> ```
+> For a hypothetical rational value, let $`h_0`$ and $`N_0`$ be its eventual tail period and starting index. Taking $`t\ge\max(h_0,N_0)`$ ensures $`h_0\mid H(t)`$ and $`H(t)\ge N_0`$. The corresponding diagonal difference is then integral, contradicting a certificate at that scale. Conversely, irrationality and pointwise completeness provide a witness at every prescribed $`t`$. The reduction uses one scale parameter; it neither establishes the certificate condition nor makes one fixed scale sufficient for all rational values.*
+> 
+> *<span class="sans-serif">\[cofinal\]</span> <span class="sans-serif">\[Lean\]</span> (equivalence; supply <span class="sans-serif">\[Open\]</span>) \
+> [`irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426)*
+
+The Lean declaration below states this result.
+
+[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/LcmConeFlatness.lean#L426)
+
+```lean
+theorem irrational_totient_series_iff_lcm_diagonal_certificate_supply :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ L,
+        certifiedKill (periodLcm t) (periodLcm t) L
+```
+
+<a id="prop-b3-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `irrational_totient_series_iff_lcm_diagonal_certificate_supply` | [E249_01/Challenge.lean, line 260](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_01/Challenge.lean#L260) | [PaperStatementsA.lean, line 66](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_01/PaperStatementsA.lean#L66) | [E249_01](../../evidence/comparator/replay-35882032091/receipt-E249_01.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
 <a id="prop-b7-60c3ed"></a>
 
@@ -856,53 +892,6 @@ theorem dyadicScale_unique_in_open_interval {B : ℤ} {m₁ m₂ : ℕ}
 |---|---|---|---|
 | `penultimate_shortWindow_difference_eq_half` | [E249_14/Challenge.lean, line 127](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_14/Challenge.lean#L127) | [PaperStatementsAU.lean, line 278](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean#L278) | [E249_14](../../evidence/comparator/replay-35882032091/receipt-E249_14.json) |
 | `dyadicScale_unique_in_open_interval` | [E249_14/Challenge.lean, line 194](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_14/Challenge.lean#L194) | [PaperStatementsAJ.lean, line 278](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_14/PaperStatementsAJ.lean#L278) | [E249_14](../../evidence/comparator/replay-35882032091/receipt-E249_14.json) |
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="prop-cp-06"></a>
-
-## Proposition 6.69 (A directed certificate condition), page 43
-
-> *For fixed $`h,N\in\mathbb{N}`$, a depth $`L\in\mathbb{N}`$ satisfying
-> ``` math
-> N+L+2\ \le\ D(h,N,L)\bmod2^L
->  \ \le\ 2^L-(N+h+L+2)
-> ```
-> exists if and only if $`R_{N+h}-R_N\notin\mathbb Z`$. The endpoint inequalities are non-strict.*
-
-The Lean declarations below together state this result.
-
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_iff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L59)
-
-```lean
-theorem directed_certificate_iff (h N : ℕ) :
-    (∃ L : ℕ,
-        ((N : ℤ) + L + 2) ≤ windowDiscrepancy h N L % (2 : ℤ) ^ L ∧
-          windowDiscrepancy h N L % (2 : ℤ) ^ L ≤
-            (2 : ℤ) ^ L - ((N : ℤ) + h + L + 2)) ↔
-      totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)
-```
-
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_example`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L71)
-
-```lean
-theorem directed_certificate_example :
-    periodLcm 3 = 6 ∧
-      windowDiscrepancy 6 6 6 = 270 ∧
-      windowDiscrepancy 6 6 6 % (2 : ℤ) ^ 6 = 14 ∧
-      directedCertifiedKill 6 6 6 ∧
-      (∀ L : ℕ, L ≤ 6 → ¬ certifiedKill 6 6 L) ∧
-      certifiedKill 6 6 7
-```
-
-<a id="prop-cp-06-comparator"></a>
-
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
-
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `directed_certificate_iff` | [E249_12/Challenge.lean, line 74](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_12/Challenge.lean#L74) | [PaperStatementsAT.lean, line 373](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_12/PaperStatementsAT.lean#L373) | [E249_12](../../evidence/comparator/replay-35882032091/receipt-E249_12.json) |
-| `directed_certificate_example` | [E249_12/Challenge.lean, line 65](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_12/Challenge.lean#L65) | [PaperStatementsAT.lean, line 365](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_12/PaperStatementsAT.lean#L365) | [E249_12](../../evidence/comparator/replay-35882032091/receipt-E249_12.json) |
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 

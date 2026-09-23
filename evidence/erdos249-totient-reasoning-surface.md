@@ -16,8 +16,8 @@ The record is divided by section of the paper.
 | [Section 2](erdos249-totient-reasoning-surface/section-2.md) | 9 | 9 | 8 |
 | [Section 5](erdos249-totient-reasoning-surface/section-5.md) | 12 | 12 | 11 |
 | [Section 6, results 6.1 to 6.38](erdos249-totient-reasoning-surface/section-6-1.md) | 32 | 32 | 31 |
-| [Section 6, results 6.39 to 6.72](erdos249-totient-reasoning-surface/section-6-2.md) | 32 | 32 | 32 |
-| [Section 6, results 6.73 to 6.103](erdos249-totient-reasoning-surface/section-6-3.md) | 32 | 32 | 31 |
+| [Section 6, results 6.39 to 6.71](erdos249-totient-reasoning-surface/section-6-2.md) | 32 | 32 | 32 |
+| [Section 6, results 6.72 to 6.103](erdos249-totient-reasoning-surface/section-6-3.md) | 32 | 32 | 31 |
 | [Section 6, results 6.104 to 6.159](erdos249-totient-reasoning-surface/section-6-4.md) | 30 | 30 | 30 |
 | [Section 9](erdos249-totient-reasoning-surface/section-9.md) | 27 | 27 | 27 |
 | [Section 10](erdos249-totient-reasoning-surface/section-10.md) | 7 | 7 | 7 |

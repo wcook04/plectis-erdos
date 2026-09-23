@@ -196,6 +196,38 @@ theorem no_certificate_after_prefix (B P : ℕ) (hBP : B < P) :
     ∀ N : ℕ, B ≤ N → ∀ L : ℕ, ¬ certificate (gamma B P) P N L := by sorry
 ```
 
+<a id="cor-b1"></a>
+
+## Corollary 2.5 (The limit of a finite-prefix argument), page 8
+
+> *No proof rule uniform over all $`c:\mathbb{N}\to\mathbb{N}`$ with $`c(n)\le n`$ can establish $`\mathrm{Sep}`$ from a single fixed prefix $`\{c(n):n\le B\}`$: Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> supplies a rational countermodel with that same prefix. This does *not* invalidate an argument that uses the fixed arithmetic sequence $`\varphi`$ together with compatible information at arbitrarily large horizons; the theorem gives a different $`\gamma_B`$ for each $`B`$, not one sequence agreeing with $`\varphi`$ at every $`B`$.*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.no_uniform_prefix_rule`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean#L74)
+
+```lean
+theorem no_uniform_prefix_rule (B : ℕ) :
+    ¬ (∀ c : ℕ → ℕ, (∀ n, c n ≤ n) → (∀ n, n ≤ B → c n = Nat.totient n) → separation c)
+```
+
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.gamma_not_separation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean#L69)
+
+```lean
+theorem gamma_not_separation (B P : ℕ) (hBP : B < P) : ¬ separation (gamma B P)
+```
+
+<a id="cor-b1-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `no_uniform_prefix_rule` | [E249_02/Challenge.lean, line 153](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_02/Challenge.lean#L153) | [PaperStatementsAE.lean, line 138](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_02/PaperStatementsAE.lean#L138) | [E249_02](../../evidence/comparator/replay-35882032091/receipt-E249_02.json) |
+| `gamma_not_separation` | [E249_02/Challenge.lean, line 143](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_02/Challenge.lean#L143) | [PaperStatementsAE.lean, line 131](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_02/PaperStatementsAE.lean#L131) | [E249_02](../../evidence/comparator/replay-35882032091/receipt-E249_02.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="prop-b2"></a>
 
 ## Proposition 2.7 (Three particular equivalences), page 9
@@ -252,38 +284,6 @@ theorem two_point_sample_numerical_requirement :
 |---|---|---|---|
 | `three_particular_equivalences` | [E249_03/Challenge.lean, line 86](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_03/Challenge.lean#L86) | [PaperStatementsAU.lean, line 439](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_03/PaperStatementsAU.lean#L439) | [E249_03](../../evidence/comparator/replay-35882032091/receipt-E249_03.json) |
 | `two_point_sample_numerical_requirement` | [E249_03/Challenge.lean, line 37](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_03/Challenge.lean#L37) | [PaperStatementsAK.lean, line 99](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_03/PaperStatementsAK.lean#L99) | [E249_03](../../evidence/comparator/replay-35882032091/receipt-E249_03.json) |
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="cor-b1"></a>
-
-## Corollary 2.5 (The limit of a finite-prefix argument), page 8
-
-> *No proof rule uniform over all $`c:\mathbb{N}\to\mathbb{N}`$ with $`c(n)\le n`$ can establish $`\mathrm{Sep}`$ from a single fixed prefix $`\{c(n):n\le B\}`$: Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> supplies a rational countermodel with that same prefix. This does *not* invalidate an argument that uses the fixed arithmetic sequence $`\varphi`$ together with compatible information at arbitrarily large horizons; the theorem gives a different $`\gamma_B`$ for each $`B`$, not one sequence agreeing with $`\varphi`$ at every $`B`$.*
-
-The Lean declarations below together state this result.
-
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.no_uniform_prefix_rule`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean#L74)
-
-```lean
-theorem no_uniform_prefix_rule (B : ℕ) :
-    ¬ (∀ c : ℕ → ℕ, (∀ n, c n ≤ n) → (∀ n, n ≤ B → c n = Nat.totient n) → separation c)
-```
-
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.gamma_not_separation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean#L69)
-
-```lean
-theorem gamma_not_separation (B P : ℕ) (hBP : B < P) : ¬ separation (gamma B P)
-```
-
-<a id="cor-b1-comparator"></a>
-
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
-
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `no_uniform_prefix_rule` | [E249_02/Challenge.lean, line 153](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_02/Challenge.lean#L153) | [PaperStatementsAE.lean, line 138](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_02/PaperStatementsAE.lean#L138) | [E249_02](../../evidence/comparator/replay-35882032091/receipt-E249_02.json) |
-| `gamma_not_separation` | [E249_02/Challenge.lean, line 143](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_02/Challenge.lean#L143) | [PaperStatementsAE.lean, line 131](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_02/PaperStatementsAE.lean#L131) | [E249_02](../../evidence/comparator/replay-35882032091/receipt-E249_02.json) |
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 

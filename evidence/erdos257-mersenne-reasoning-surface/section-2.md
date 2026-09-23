@@ -111,6 +111,45 @@ theorem binaryCoeffTail_supportCoeff_le_two_sqrt_add_four
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="prop-collapse"></a>
+
+## Proposition 2.5 (A cofinal carry bound), page 25
+
+> *If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos257.PaperCompleteR20.half_of_cofinal_absolute_carry`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR20/CofinalCarryCollapse.lean#L46)
+
+```lean
+theorem half_of_cofinal_absolute_carry (A : Set ℕ) (hone : 1 ∉ A)
+    (C D : ℝ)
+    (h : ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧
+      |(integerHalfCarry A N : ℝ)| ≤ C*Real.sqrt ((N : ℝ)+1)+D) :
+    erdosSupportSeries 2 A = (1 : ℝ)/2
+```
+
+2. [`ErdosProblems.Erdos257.PaperCompleteR20.greedy_half_of_cofinal_upper_carry`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR20/CofinalCarryCollapse.lean#L91)
+
+```lean
+theorem greedy_half_of_cofinal_upper_carry (C D : ℝ)
+    (h : ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧
+      (integerHalfCarry (greedyMersenneSupport (1/2 : ℝ)) N : ℝ) ≤
+        C*Real.sqrt ((N : ℝ)+1)+D) :
+    erdosSupportSeries 2 (greedyMersenneSupport (1/2 : ℝ)) = (1 : ℝ)/2
+```
+
+<a id="prop-collapse-comparator"></a>
+
+**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+
+| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
+|---|---|---|---|
+| `half_of_cofinal_absolute_carry` | [E257_03/Challenge.lean, line 106](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_03/Challenge.lean#L106) | [PaperStatementsE.lean, line 43](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_03/PaperStatementsE.lean#L43) | [E257_03](../../evidence/comparator/replay-35882032091/receipt-E257_03.json) |
+| `greedy_half_of_cofinal_upper_carry` | [E257_03/Challenge.lean, line 122](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_03/Challenge.lean#L122) | [PaperStatementsD.lean, line 178](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_03/PaperStatementsD.lean#L178) | [E257_03](../../evidence/comparator/replay-35882032091/receipt-E257_03.json) |
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="lem-sqrt-witness"></a>
 
 ## Lemma 2.6 (The terminal bound at square depths), page 25
@@ -433,44 +472,5 @@ theorem mersenneTail_eq_sum_add (m K : ℕ) :
 | `certifiedWordValue_cast` | [E257_04/Challenge.lean, line 165](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_04/Challenge.lean#L165) | [PaperStatementsAM.lean, line 129](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean#L129) | [E257_04](../../evidence/comparator/replay-35882032091/receipt-E257_04.json) |
 | `certifiedTailBound_cast` | [E257_04/Challenge.lean, line 158](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_04/Challenge.lean#L158) | [PaperStatementsAM.lean, line 123](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean#L123) | [E257_04](../../evidence/comparator/replay-35882032091/receipt-E257_04.json) |
 | `mersenneTail_eq_sum_add` | [E257_04/Challenge.lean, line 178](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_04/Challenge.lean#L178) | [PaperStatementsAM.lean, line 171](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean#L171) | [E257_04](../../evidence/comparator/replay-35882032091/receipt-E257_04.json) |
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="prop-collapse"></a>
-
-## Proposition 2.5 (A cofinal carry bound), page 25
-
-> *If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
-
-The Lean declarations below together state this result.
-
-1. [`ErdosProblems.Erdos257.PaperCompleteR20.half_of_cofinal_absolute_carry`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR20/CofinalCarryCollapse.lean#L46)
-
-```lean
-theorem half_of_cofinal_absolute_carry (A : Set ℕ) (hone : 1 ∉ A)
-    (C D : ℝ)
-    (h : ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧
-      |(integerHalfCarry A N : ℝ)| ≤ C*Real.sqrt ((N : ℝ)+1)+D) :
-    erdosSupportSeries 2 A = (1 : ℝ)/2
-```
-
-2. [`ErdosProblems.Erdos257.PaperCompleteR20.greedy_half_of_cofinal_upper_carry`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR20/CofinalCarryCollapse.lean#L91)
-
-```lean
-theorem greedy_half_of_cofinal_upper_carry (C D : ℝ)
-    (h : ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧
-      (integerHalfCarry (greedyMersenneSupport (1/2 : ℝ)) N : ℝ) ≤
-        C*Real.sqrt ((N : ℝ)+1)+D) :
-    erdosSupportSeries 2 (greedyMersenneSupport (1/2 : ℝ)) = (1 : ℝ)/2
-```
-
-<a id="prop-collapse-comparator"></a>
-
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
-
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `half_of_cofinal_absolute_carry` | [E257_03/Challenge.lean, line 106](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_03/Challenge.lean#L106) | [PaperStatementsE.lean, line 43](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_03/PaperStatementsE.lean#L43) | [E257_03](../../evidence/comparator/replay-35882032091/receipt-E257_03.json) |
-| `greedy_half_of_cofinal_upper_carry` | [E257_03/Challenge.lean, line 122](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_03/Challenge.lean#L122) | [PaperStatementsD.lean, line 178](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_03/PaperStatementsD.lean#L178) | [E257_03](../../evidence/comparator/replay-35882032091/receipt-E257_03.json) |
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

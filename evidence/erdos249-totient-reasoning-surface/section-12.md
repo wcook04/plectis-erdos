@@ -2,52 +2,6 @@
 
 Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the paper [erdos249-totient-reasoning-surface.pdf](../../paper/249/erdos249-totient-reasoning-surface.pdf), which explains what the Lean and Comparator checks establish.
 
-<a id="prop-badcof"></a>
-
-## Proposition 12.7 (The excluded-cofactor estimate), page 117
-
-> *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">276</a>; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\] <span class="sans-serif">\[Cited\]</span>. Then
-> ``` math
-> \#\{N\in\mathcal A:m_N\in B(\eta)\}
->   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
-> ```
-> so a single choice of $`\eta`$ with $`D(\eta)<1/200`$ meets the $`\tfrac{1}{100}X`$ budget for all large $`X`$. This choice fixes $`\eta`$ before $`X_0`$, as required. It supplies only the excluded-cofactor bound: the mean and mean-subtracted estimates must still hold for this same $`\eta`$, and do not follow from making $`\eta`$ smaller.*
-
-The Lean proof assumes the prime number theorem. Lean takes this input as a hypothesis (`PrimeNumberTheorem`); it is not proved in Lean.
-
-[`ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean#L654)
-
-```lean
-theorem prop_badcof (hPNT : ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem)
-    (h s : ℕ) (η D : ℝ) (hD : HasNaturalDensity (excludedCofactorSet η) D) :
-    (∀ X : ℕ, minimalOffset h s X ≤ h + Nat.log 2 X + 11) ∧
-    (∀ X : ℕ, (pivotSupplierBases X (minimalDepth h s X) s).filter
-        (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)
-      = pivotBadBases X (minimalDepth h s X) s η) ∧
-    (∀ ε : ℝ, 0 < ε → ∀ᶠ X : ℕ in atTop,
-      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
-          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
-            : ℕ) : ℝ)
-        ≤ (D + ε) * X) ∧
-    (D < 1 / 200 → ∀ᶠ X : ℕ in atTop,
-      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
-          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
-            : ℕ) : ℝ)
-        < (1 / 100 : ℝ) * X ∧
-      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X)
-```
-
-The assumed input [`PrimeNumberTheorem`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean#L28) is
-
-```lean
-def PrimeNumberTheorem : Prop :=
-  Tendsto (fun n => (prime0 n : ℝ) / scale n) atTop (𝓝 1)
-```
-
-<a id="prop-badcof-comparator"></a>
-
-**Comparator:** not applicable (no unconditional Lean proof of the whole statement).
-
 <a id="lem-orbit"></a>
 
 ## Lemma 12.1 (The doubling identity), page 111
@@ -379,6 +333,52 @@ theorem prop_dickman (h s : ℕ) :
 | `prop_dickman` | [E249_28/Challenge.lean, line 96](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_28/Challenge.lean#L96) | [PaperStructuresQ.lean, line 20](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_28/PaperStructuresQ.lean#L20) | [E249_28](../../evidence/comparator/replay-35882032091/receipt-E249_28.json) |
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-badcof"></a>
+
+## Proposition 12.7 (The excluded-cofactor estimate), page 117
+
+> *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">276</a>; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\] <span class="sans-serif">\[Cited\]</span>. Then
+> ``` math
+> \#\{N\in\mathcal A:m_N\in B(\eta)\}
+>   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
+> ```
+> so a single choice of $`\eta`$ with $`D(\eta)<1/200`$ meets the $`\tfrac{1}{100}X`$ budget for all large $`X`$. This choice fixes $`\eta`$ before $`X_0`$, as required. It supplies only the excluded-cofactor bound: the mean and mean-subtracted estimates must still hold for this same $`\eta`$, and do not follow from making $`\eta`$ smaller.*
+
+The Lean proof assumes the prime number theorem. Lean takes this input as a hypothesis (`PrimeNumberTheorem`); it is not proved in Lean.
+
+[`ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean#L654)
+
+```lean
+theorem prop_badcof (hPNT : ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem)
+    (h s : ℕ) (η D : ℝ) (hD : HasNaturalDensity (excludedCofactorSet η) D) :
+    (∀ X : ℕ, minimalOffset h s X ≤ h + Nat.log 2 X + 11) ∧
+    (∀ X : ℕ, (pivotSupplierBases X (minimalDepth h s X) s).filter
+        (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)
+      = pivotBadBases X (minimalDepth h s X) s η) ∧
+    (∀ ε : ℝ, 0 < ε → ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
+            : ℕ) : ℝ)
+        ≤ (D + ε) * X) ∧
+    (D < 1 / 200 → ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
+            : ℕ) : ℝ)
+        < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X)
+```
+
+The assumed input [`PrimeNumberTheorem`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean#L28) is
+
+```lean
+def PrimeNumberTheorem : Prop :=
+  Tendsto (fun n => (prime0 n : ℝ) / scale n) atTop (𝓝 1)
+```
+
+<a id="prop-badcof-comparator"></a>
+
+**Comparator:** not applicable (no unconditional Lean proof of the whole statement).
 
 <a id="prop-route4"></a>
 

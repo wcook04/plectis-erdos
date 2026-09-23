@@ -8,6 +8,58 @@ This record belongs to the paper [erdos-1041-lemniscate-newton-flow.pdf](../pape
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
+<a id="res-ani-degree-seven-counterexample"></a>
+
+## Passage (beginning “The degree-seven polynomial constructed by…”), page 2
+
+The Lean declarations below together state a result at least as strong as this one. The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\{|f|<1\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\{|f|<1\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.
+
+1. [`Erdos1041.Counterexample.erdos1041_counterexample`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean#L319)
+
+```lean
+theorem erdos1041_counterexample :
+    f.Monic ∧ f.natDegree = 7 ∧
+    (∀ z, f.IsRoot z → ‖z‖ < 1) ∧
+    f.roots.Nodup ∧
+    ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
+      ∀ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc 0 1) → γ 0 = z₁ → γ 1 = z₂ →
+        (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖f.eval (γ τ)‖ < 1) →
+        (2 : ENNReal) < pathLength γ
+```
+
+2. [`Erdos1041.Counterexample.erdos1041_counterexample_hausdorff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L283)
+
+```lean
+theorem erdos1041_counterexample_hausdorff :
+    ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
+      ∀ K : Set ℂ, IsPreconnected K → z₁ ∈ K → z₂ ∈ K → K ⊆ Omega f →
+        (2 : ℝ≥0∞) < μH[1] K
+```
+
+3. [`Erdos1041.Counterexample.erdos1041_hausdorff_negation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L407)
+
+```lean
+theorem erdos1041_hausdorff_negation :
+    ¬ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →
+      f.rootSet ℂ ⊆ Metric.ball 0 1 →
+      ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
+        Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2
+```
+
+4. [`Erdos1041.Counterexample.erdos1041_hausdorff_answer_false`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L449)
+
+```lean
+theorem erdos1041_hausdorff_answer_false :
+    False ↔ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →
+      f.rootSet ℂ ⊆ Metric.ball 0 1 →
+      ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
+        Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2
+```
+
+<a id="res-ani-degree-seven-counterexample-comparator"></a>
+
+**Comparator:** not yet compared.
+
 <a id="res-trinomial-all-degree"></a>
 
 ## Theorem 2.1 (all-degree monic trinomials), page 2
@@ -84,58 +136,6 @@ theorem sextic_spoke_counterexample_whole :
 | `sextic_spoke_counterexample_whole` | [E1041_05/Challenge.lean, line 55](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E1041_05/Challenge.lean#L55) | [PaperStatementsR.lean, line 18](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E1041_05/PaperStatementsR.lean#L18) | [E1041_05](../evidence/comparator/replay-35882032091/receipt-E1041_05.json) |
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="res-ani-degree-seven-counterexample"></a>
-
-## Passage (beginning “The degree-seven polynomial constructed by…”), page 2
-
-The Lean declarations below together state a result at least as strong as this one. The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\{|f|<1\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\{|f|<1\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.
-
-1. [`Erdos1041.Counterexample.erdos1041_counterexample`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean#L319)
-
-```lean
-theorem erdos1041_counterexample :
-    f.Monic ∧ f.natDegree = 7 ∧
-    (∀ z, f.IsRoot z → ‖z‖ < 1) ∧
-    f.roots.Nodup ∧
-    ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
-      ∀ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc 0 1) → γ 0 = z₁ → γ 1 = z₂ →
-        (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖f.eval (γ τ)‖ < 1) →
-        (2 : ENNReal) < pathLength γ
-```
-
-2. [`Erdos1041.Counterexample.erdos1041_counterexample_hausdorff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L283)
-
-```lean
-theorem erdos1041_counterexample_hausdorff :
-    ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
-      ∀ K : Set ℂ, IsPreconnected K → z₁ ∈ K → z₂ ∈ K → K ⊆ Omega f →
-        (2 : ℝ≥0∞) < μH[1] K
-```
-
-3. [`Erdos1041.Counterexample.erdos1041_hausdorff_negation`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L407)
-
-```lean
-theorem erdos1041_hausdorff_negation :
-    ¬ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →
-      f.rootSet ℂ ⊆ Metric.ball 0 1 →
-      ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
-        Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2
-```
-
-4. [`Erdos1041.Counterexample.erdos1041_hausdorff_answer_false`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L449)
-
-```lean
-theorem erdos1041_hausdorff_answer_false :
-    False ↔ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →
-      f.rootSet ℂ ⊆ Metric.ball 0 1 →
-      ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
-        Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2
-```
-
-<a id="res-ani-degree-seven-counterexample-comparator"></a>
-
-**Comparator:** not yet compared.
 
 <a id="res-low-critical-thirteen-twentyfifths"></a>
 

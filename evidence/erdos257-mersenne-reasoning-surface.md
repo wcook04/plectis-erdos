@@ -22,7 +22,6 @@ The record is divided by section of the paper.
 | [Section 8](erdos257-mersenne-reasoning-surface/section-8.md) | 8 | 8 | 7 |
 | [Section 9](erdos257-mersenne-reasoning-surface/section-9.md) | 2 | 2 | 1 |
 | [Section 10](erdos257-mersenne-reasoning-surface/section-10.md) | 11 | 11 | 10 |
-| [Section 11](erdos257-mersenne-reasoning-surface/section-11.md) | 2 | 2 | 2 |
+| [Section 11](erdos257-mersenne-reasoning-surface/section-11.md) | 3 | 3 | 3 |
 | [Section 12](erdos257-mersenne-reasoning-surface/section-12.md) | 2 | 2 | 2 |
-| [Section 11](erdos257-mersenne-reasoning-surface/section-11.md) | 1 | 1 | 1 |
 | [Section 13](erdos257-mersenne-reasoning-surface/section-13.md) | 3 | 3 | 3 |
