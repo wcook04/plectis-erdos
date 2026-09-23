@@ -19572,6 +19572,29 @@
         "boundary": "This is the classical full-support theorem, not universal Erdos #257."
       },
       {
+        "id": "finite_prime_weighted_support",
+        "problem": 257,
+        "review_family": "finite_prime_weighted_support",
+        "claim_id": "finite_prime_weighted_support",
+        "contribution_class": "locally proved result; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+        "original_source": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+        "statement": "For every base b >= 2, an infinite positive support A with finite prime-weighted mass in base b has irrational support series; if a positive host H has finite prime-weighted mass in base 2, every infinite subset of H has irrational support series at every base b >= 2.",
+        "boundary": "The finite-prime weighted-summability premise is explicit in both clauses. This criterion does not cover every infinite support or settle universal Erdős #257; no novelty, priority, significance, or external human-review claim is made."
+      },
+      {
+        "id": "finite_prime_weighted_fixed_base_hereditary",
+        "problem": 257,
+        "review_family": "finite_prime_weighted_support",
+        "contribution_class": "locally proved result; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary",
+        "original_source": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
+        "statement": "For every base b >= 2, if a positive host H has finite prime-weighted mass in base b, every infinite subset A of H has irrational support series in the same base b.",
+        "boundary": "This hereditary result retains the same-base weighted-summability hypothesis; it does not infer all-base irrationality from weighted mass at an arbitrary base, or settle universal Erdős #257."
+      },
+      {
         "id": "erdos_support_pairwise_coprime",
         "problem": 257,
         "review_family": "pairwise_coprime_support",
@@ -20305,6 +20328,14 @@
             "evidence_mode": "Lean kernel plus Comparator for full and pairwise-coprime support",
             "comparator_disposition": "targeted_full_support_representative",
             "boundary": "Structured known families do not cover arbitrary infinite supports."
+          },
+          {
+            "id": "finite_prime_weighted_support",
+            "contribution_class": "locally proved result; novelty unassessed",
+            "summary": "Finite prime-weighted mass gives fixed-base irrationality for infinite positive supports; binary weighted mass gives all-base irrationality for every infinite subset of a positive host, while weighted mass at another fixed base gives same-base hereditary irrationality.",
+            "evidence_mode": "Lean kernel; exact Comparator transport configured, external replay pending",
+            "comparator_disposition": "targeted_exact_weighted_and_hereditary_interfaces_pending_replay",
+            "boundary": "Each clause retains its exact finite-prime weighted-summability and positive-support hypotheses. Binary mass is required for the all-base hereditary clause; arbitrary infinite supports remain open."
           },
           {
             "id": "pairwise_coprime_support",

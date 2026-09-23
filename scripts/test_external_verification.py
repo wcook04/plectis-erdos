@@ -45,6 +45,15 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_unconditional_ranked_result_remains_direct(self) -> None:
+        candidate = {
+            "selection_status": "represented",
+            "why_not_ranked_first": "An unconditional direct theorem.",
+        }
+        self.assertEqual(builder._ranked_candidate_tier(candidate), "completed")
+        candidate["why_not_ranked_first"] = "A conditional theorem."
+        self.assertEqual(builder._ranked_candidate_tier(candidate), "conditional")
+
     def test_qualification_follows_selection_without_claiming_service_status(self) -> None:
         authority = builder.load_signal_authority()
         original = builder.render_qualification(authority)

@@ -7,6 +7,7 @@ import Mathlib.Data.Nat.Totient
 import Mathlib.Data.Nat.Fib.Basic
 import Mathlib.Data.Nat.Log
 import Mathlib.Data.Nat.Prime.Nth
+import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Analysis.Complex.Basic
 import Mathlib.Analysis.Complex.Polynomial.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Summable
@@ -525,6 +526,28 @@ noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
 
 noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
   ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+
+/-! ## Finite-prime weighted support for Erdős #257 -/
+
+def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
+  ∏ p ∈ P, p ^ a.factorization p
+
+noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
+  (primeSetPart P a : ℝ) /
+    ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1))
+
+def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
+  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
+    Summable (Set.indicator A (primeWeightedTerm b P))
+
+/-- The fixed-base weighted irrationality theorem and its all-base hereditary
+consequence from finite binary weighted mass, with the original hypotheses. -/
+def DivisibilityWeightedClaim : Prop :=
+  (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
+    FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧
+  (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →
+    ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
 
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
@@ -1370,6 +1393,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem257FullSupport :
     ∀ b : ℕ, 2 ≤ b →
       Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))
+  problem257WeightedSupport : DivisibilityWeightedClaim
+  problem257FixedBaseWeightedHereditary :
+    ∀ (b : ℕ) (H : Set ℕ), 2 ≤ b → 0 ∉ H →
+      FinitePrimeWeighted b H →
+        ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+          Irrational (erdosSupportSeries b A)
   problem257PairwiseCoprime :
     ∀ (b : ℕ) (A : Set ℕ),
       2 ≤ b →

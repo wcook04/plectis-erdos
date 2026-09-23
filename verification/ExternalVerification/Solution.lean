@@ -32,6 +32,7 @@ import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.WeightedPhaseCarry
@@ -823,6 +824,23 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.volume_mersenneAchievementSet
   · intro b hb
     simpa using Erdos249257.irrational_erdosSum_full_support b hb
+  · simpa [DivisibilityWeightedClaim, FinitePrimeWeighted,
+      primeWeightedTerm, primeSetPart, erdosSupportSeries,
+      ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim,
+      ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+      ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+      ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart,
+      Erdos249257.erdosSupportSeries] using
+      ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
+  · intro b H hb hH0 hH
+    have hH' : ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted b H := by
+      simpa [FinitePrimeWeighted, primeWeightedTerm, primeSetPart,
+        ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+        ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+        ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart] using hH
+    simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
+      ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary
+        b H hb hH0 hH'
   · intro b A hb hA hpair hsum
     simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
       Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
@@ -1358,6 +1376,16 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) := by
   simpa using Erdos249257.irrational_erdosSum_full_support b hb
+
+theorem divisibilityWeightedClaim : DivisibilityWeightedClaim :=
+  (portfolioClaims Unit).problem257WeightedSupport
+
+theorem finitePrimeWeighted_fixedBase_hereditary
+    (b : ℕ) (H : Set ℕ) (hb : 2 ≤ b) (hH0 : 0 ∉ H)
+    (hH : FinitePrimeWeighted b H) :
+    ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+      Irrational (erdosSupportSeries b A) :=
+  (portfolioClaims Unit).problem257FixedBaseWeightedHereditary b H hb hH0 hH
 
 theorem irrational_erdosSupportSeries_pairwise_coprime
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)

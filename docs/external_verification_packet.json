@@ -42,7 +42,7 @@
       "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     },
     "roster_source": "verification/comparator.json",
-    "theorem_name_count": 51,
+    "theorem_name_count": 53,
     "theorem_names": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
@@ -75,6 +75,8 @@
       "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
@@ -596,6 +598,35 @@
       "statement": "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.",
       "boundary": "This is the classical full-support theorem, not universal Erdos #257.",
       "canonical_claim_status": "supports_registered_claim_family:eb_full_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "finite_prime_weighted_support",
+      "problem": 257,
+      "review_family": "finite_prime_weighted_support",
+      "claim_id": "finite_prime_weighted_support",
+      "contribution_class": "locally proved result; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+      "original_source": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "statement": "For every base b >= 2, an infinite positive support A with finite prime-weighted mass in base b has irrational support series; if a positive host H has finite prime-weighted mass in base 2, every infinite subset of H has irrational support series at every base b >= 2.",
+      "boundary": "The finite-prime weighted-summability premise is explicit in both clauses. This criterion does not cover every infinite support or settle universal Erdős #257; no novelty, priority, significance, or external human-review claim is made.",
+      "canonical_claim_status": "supports_registered_claim_family:finite_prime_weighted_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "finite_prime_weighted_fixed_base_hereditary",
+      "problem": 257,
+      "review_family": "finite_prime_weighted_support",
+      "contribution_class": "locally proved result; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary",
+      "original_source": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.finitePrimeWeighted_fixedBase_hereditary",
+      "statement": "For every base b >= 2, if a positive host H has finite prime-weighted mass in base b, every infinite subset A of H has irrational support series in the same base b.",
+      "boundary": "This hereditary result retains the same-base weighted-summability hypothesis; it does not infer all-base irrationality from weighted mass at an arbitrary base, or settle universal Erdős #257.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -1390,6 +1421,14 @@
           "evidence_mode": "Lean kernel plus Comparator for full and pairwise-coprime support",
           "comparator_disposition": "targeted_full_support_representative",
           "boundary": "Structured known families do not cover arbitrary infinite supports."
+        },
+        {
+          "id": "finite_prime_weighted_support",
+          "contribution_class": "locally proved result; novelty unassessed",
+          "summary": "Finite prime-weighted mass gives fixed-base irrationality for infinite positive supports; binary weighted mass gives all-base irrationality for every infinite subset of a positive host, while weighted mass at another fixed base gives same-base hereditary irrationality.",
+          "evidence_mode": "Lean kernel; exact Comparator transport configured, external replay pending",
+          "comparator_disposition": "targeted_exact_weighted_and_hereditary_interfaces_pending_replay",
+          "boundary": "Each clause retains its exact finite-prime weighted-summability and positive-support hypotheses. Binary mass is required for the all-base hereditary clause; arbitrary infinite supports remain open."
         },
         {
           "id": "pairwise_coprime_support",
@@ -2886,7 +2925,7 @@
       "verification/ExternalVerification/Challenge.lean",
       "verification/ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:62aef0c007bb211ed45ceb59aed94316cf60f38d37bb1e8fe9006a4c3d635a5d",
+    "digest": "sha256:85317f652462b344e9f815188a6562a6383901af28e69083ddead293908a2153",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2894,6 +2933,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-  "solution_source_digest": "sha256:a6d0163b48cd6617e3d7fcab2d5336e9c7bf94012f8a8b38008bdabd5975b227"
+  "config_digest": "sha256:c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
+  "solution_source_digest": "sha256:b2634cccf2c1f8fca1efd6261dd6ac27f3817cee6291f5864ffc1623afac7a5b"
 }

@@ -816,10 +816,8 @@ def _ranked_candidate_tier(candidate: dict) -> str:
             "why_not_ranked_first",
         )
     ).lower()
-    if any(
-        marker in conditional_text
-        for marker in ("conditional", "unresolved", "missing producer", "not constructed")
-    ):
+    if re.search(r"\b(?:conditional|unresolved|missing producer|not constructed)\b",
+                 conditional_text):
         return "conditional"
     return "completed"
 

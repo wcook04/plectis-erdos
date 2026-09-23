@@ -396,6 +396,16 @@ theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) :=
   (portfolioClaims Unit).problem257FullSupport b hb
 
+theorem divisibilityWeightedClaim : DivisibilityWeightedClaim :=
+  (portfolioClaims Unit).problem257WeightedSupport
+
+theorem finitePrimeWeighted_fixedBase_hereditary
+    (b : ℕ) (H : Set ℕ) (hb : 2 ≤ b) (hH0 : 0 ∉ H)
+    (hH : FinitePrimeWeighted b H) :
+    ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+      Irrational (erdosSupportSeries b A) :=
+  (portfolioClaims Unit).problem257FixedBaseWeightedHereditary b H hb hH0 hH
+
 theorem irrational_erdosSupportSeries_pairwise_coprime
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
     (hpair : A.Pairwise Nat.Coprime)
