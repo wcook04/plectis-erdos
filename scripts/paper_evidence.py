@@ -48,6 +48,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+from migrate_statement_presentation import bodies, presentation_form  # noqa: E402
 from lean_source import (  # noqa: E402
     DECLARATION_HEAD_RE,
     lean_code_without_comments_and_strings,
@@ -306,6 +307,17 @@ def full_text_statements(path: Path) -> dict[str, tuple[str | None, str]]:
     return out
 
 
+def span_title(row: dict) -> str | None:
+    """The opening words of a labelled claim span, as plain text."""
+    phrase = (row.get("span") or {}).get("start")
+    if not phrase:
+        return None
+    text = re.sub(r"\\href\{[^}]*\}\{([^}]*)\}", r"\1", phrase)
+    text = re.sub(r"\\[A-Za-z]+\*?", "", text)
+    text = re.sub(r"[{}~]", " ", text)
+    return "beginning \u201c" + " ".join(text.split()) + "\u2026\u201d"
+
+
 # --------------------------------------------------------------------------- resolution
 
 
@@ -430,6 +442,16 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
     for row in ledger["rows"]:
         rows_by_paper.setdefault(row["paper_id"], []).append(row)
 
+    # The statement a relation note was written against, keyed so that removing labels,
+    # inline citations and tags from it does not invalidate the note.
+    statement_keys: dict[str, str] = {}
+    for paper in ledger["papers"]:
+        pairs = [(rel, (root / rel).read_text(encoding="utf-8")) for rel in paper["sources"]]
+        spans = [{"label": r["label"], **r["span"]} for r in rows_by_paper.get(paper["paper_id"], []) if r.get("span")]
+        for env in bodies(pairs, spans):
+            if env.get("body") is not None:
+                statement_keys[env["statement_sha256"]] = "sha256:" + sha256_hex(presentation_form(env["body"]).encode())
+
     for paper in ledger["papers"]:
         pid = paper["paper_id"]
         numbers = {}
@@ -459,16 +481,23 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             anchors_seen[pid].add(anchor)
             status = row["lean"]["status"]
             env = row.get("environment")
-            printed_kind = ENVIRONMENT_NAMES.get(env or "", "Result") if env else "Claim"
+            printed_kind = ENVIRONMENT_NAMES.get(env or "", "Result") if env else "Passage"
             prev = previous_rows.get(row["id"], {})
-            if numbers:
-                if label not in numbers:
+            if env is None:
+                # A labelled claim span has no heading of its own: it is cited by page.
+                numbers_for_row = {label: (None, numbers[label][1])} if label in numbers else {}
+            else:
+                numbers_for_row = numbers
+            if numbers_for_row:
+                if label not in numbers_for_row:
                     problems.add(where, f"label {label} is not in the paper's .aux")
                     number, page = None, None
                 else:
-                    number, page = numbers[label]
+                    number, page = numbers_for_row[label]
             else:
                 number, page = prev.get("number"), prev.get("page")
+            if env is None:
+                number = None
             decls = []
             for d in row["lean"].get("declarations", []):
                 resolved = pin_decl(d["name"], d["file"], where)
@@ -485,7 +514,7 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 if note is None:
                     if require_relations:
                         problems.add(where, "exact_or_stronger row without an authored relation note")
-                elif note.get("statement_sha256") != row["statement_sha256"] or \
+                elif note.get("statement_key") != statement_keys.get(row["statement_sha256"]) or \
                         note.get("lean_statements") != stamp:
                     problems.add(where, "relation note was written against a different statement; review it")
                 else:
@@ -576,7 +605,8 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 "page": page,
                 "source": row["source"],
                 "statement_sha256": row["statement_sha256"],
-                "title": (statements.get(label) or (None, None))[0],
+                "statement_key": statement_keys.get(row["statement_sha256"]),
+                "title": (statements.get(label) or (None, None))[0] if env else span_title(row),
                 "statement_markdown": (statements.get(label) or (None, None))[1],
                 "lean": {
                     "status": status,
@@ -632,8 +662,13 @@ def corpus_url(commit: str, path: str, line: int | None = None) -> str:
     return f"{CORPUS_URL}/blob/{commit}/{path}" + (f"#L{line}" if line else "")
 
 
-def record_url(record_commit: str, pid: str, anchor: str) -> str:
-    return f"{REPO_URL}/blob/{record_commit}/{RECORD_DIR}/{pid}.md#{anchor}"
+def record_url(record_commit: str, record: str, anchor: str) -> str:
+    return f"{REPO_URL}/blob/{record_commit}/{record}#{anchor}"
+
+
+# A record larger than this is split into one file per section of the paper, so that each
+# page the margin marks open stays quick to load and within what GitHub renders.
+SPLIT_BYTES = 300_000
 
 
 def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
@@ -652,10 +687,10 @@ def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
         if len(decls) == 1:
             target = lean_url(evidence["lean_pin"], decls[0]["path"], decls[0]["line"])
         else:
-            target = record_url(record_commit, pid, r["anchor"])
+            target = record_url(record_commit, r["record"], r["anchor"])
         cmp = ""
         if r["comparator"]["status"] == "compared":
-            cmp = record_url(record_commit, pid, r["anchor"] + "-comparator")
+            cmp = record_url(record_commit, r["record"], r["anchor"] + "-comparator")
         lines.append(f"\\DeclareResultEvidence{{{r['label']}}}{{{text}}}{{{tex_url(target)}}}{{{tex_url(cmp)}}}")
     return "\n".join(lines) + "\n"
 
@@ -675,7 +710,7 @@ def result_heading(r: dict) -> str:
     return f"{kind}{number}{title}{page}"
 
 
-def render_record(evidence: dict, paper: dict, title: str, pdf_path: str) -> str:
+def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: str) -> list[str]:
     pin = evidence["lean_pin"]
     commit = evidence["corpus_commit"]
     run = evidence["replay"]["run_id"]
@@ -685,10 +720,10 @@ def render_record(evidence: dict, paper: dict, title: str, pdf_path: str) -> str
     for r in paper["results"]:
         counts[r["lean"]["mark"]] += 1
         compared += r["comparator"]["status"] == "compared"
-    out = [
+    return [
         f"# Formal evidence: {title}",
         "",
-        f"This record belongs to the paper [{Path(pdf_path).name}](../{pdf_path}). For every result it lists "
+        f"This record belongs to the paper [{Path(pdf_path).name}]({up}{pdf_path}). For every result it lists "
         "the Lean declarations that state it, and the independent Comparator check where there is one. "
         "The margin marks in the paper link here.",
         "",
@@ -712,7 +747,14 @@ def render_record(evidence: dict, paper: dict, title: str, pdf_path: str) -> str
         "proposition is for the reader to judge against the paper's statement, which is reproduced below.",
         "",
     ]
-    for r in paper["results"]:
+
+
+def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
+    pin = evidence["lean_pin"]
+    commit = evidence["corpus_commit"]
+    run = evidence["replay"]["run_id"]
+    out: list[str] = []
+    for r in results:
         lean = r["lean"]
         out.append(f'<a id="{r["anchor"]}"></a>')
         out.append("")
@@ -768,7 +810,7 @@ def render_record(evidence: dict, paper: dict, title: str, pdf_path: str) -> str
                     f"| `{short}` "
                     f"| [{ch['path'].rsplit('/', 2)[-2]}/Challenge.lean, line {ch['line']}]({corpus_url(commit, ch['path'], ch['line'])}) "
                     f"| [{so['path'].rsplit('/', 1)[-1]}, line {so['line']}]({corpus_url(commit, so['path'], so['line'])}) "
-                    f"| [{c['entry']}](../{c['receipt']}) |")
+                    f"| [{c['entry']}]({up}{c['receipt']}) |")
             out.append("")
             different = [c for c in cmp["checks"] if c["challenge"].get("statement") and not c["challenge"].get("same_as_lean")]
             if len(different) < len(cmp["checks"]):
@@ -787,7 +829,67 @@ def render_record(evidence: dict, paper: dict, title: str, pdf_path: str) -> str
         else:
             out.append("**Comparator:** not applicable (no unconditional Lean proof of the whole statement).")
             out.append("")
-    return "\n".join(out).rstrip() + "\n"
+    return out
+
+
+def section_of(result: dict) -> str | None:
+    number = result.get("number") or ""
+    head = number.split(".", 1)[0]
+    return head if head.isdigit() else None
+
+
+def paper_records(evidence: dict, paper: dict, title: str, pdf_path: str) -> dict[str, str]:
+    """The paper's record file(s), and each result's record path set in place."""
+    pid = paper["paper_id"]
+    single = f"{RECORD_DIR}/{pid}.md"
+    body = record_header(evidence, paper, title, pdf_path, "../") + render_results(evidence, paper["results"], "../")
+    text = "\n".join(body).rstrip() + "\n"
+    if len(text.encode()) <= SPLIT_BYTES:
+        for r in paper["results"]:
+            r["record"] = single
+        return {single: text}
+    sections: list[tuple[str, list[dict]]] = []
+    current = None
+    for r in paper["results"]:
+        key = section_of(r) or current or "0"
+        if not sections or sections[-1][0] != key:
+            sections.append((key, []))
+        sections[-1][1].append(r)
+        current = key
+    # A section whose record is still large is divided into consecutive parts.
+    groups: list[tuple[str, str, list[dict]]] = []
+    for key, rows in sections:
+        size = len("\n".join(render_results(evidence, rows, "../../")).encode())
+        parts = max(1, -(-size // (SPLIT_BYTES // 2)))
+        if parts == 1:
+            groups.append((f"section-{key}", f"Section {key}", rows))
+            continue
+        per = -(-len(rows) // parts)
+        for i in range(parts):
+            chunk = rows[i * per:(i + 1) * per]
+            if not chunk:
+                continue
+            first, last = chunk[0].get("number") or "", chunk[-1].get("number") or ""
+            groups.append((f"section-{key}-{i + 1}", f"Section {key}, results {first} to {last}", chunk))
+    files: dict[str, str] = {}
+    index = record_header(evidence, paper, title, pdf_path, "../")
+    index += ["The record is divided by section of the paper.", "",
+              "| Part | Results | With a Lean proof | Compared |", "|---|---|---|---|"]
+    for stem, caption, rows in groups:
+        rel = f"{RECORD_DIR}/{pid}/{stem}.md"
+        for r in rows:
+            r["record"] = rel
+        lean = sum(r["lean"]["mark"] is not None for r in rows)
+        cmp = sum(r["comparator"]["status"] == "compared" for r in rows)
+        index.append(f"| [{caption}]({pid}/{stem}.md) | {len(rows)} | {lean} | {cmp} |")
+        part = [f"# Formal evidence: {title}, {caption}", "",
+                f"Part of the [evidence record](../{pid}.md) of the paper "
+                f"[{Path(pdf_path).name}](../../{pdf_path}), which explains what the Lean and Comparator "
+                "checks establish.", ""]
+        part += render_results(evidence, rows, "../../")
+        files[rel] = "\n".join(part).rstrip() + "\n"
+    files[single] = "\n".join(index).rstrip() + "\n"
+    return files
 
 
 def paper_titles(root: Path) -> dict[str, tuple[str, str]]:
@@ -803,12 +905,13 @@ def paper_titles(root: Path) -> dict[str, tuple[str, str]]:
 
 def outputs(root: Path, evidence: dict, record_commit: str) -> dict[str, str]:
     titles = paper_titles(root)
-    files: dict[str, str] = {EVIDENCE_MAP: json.dumps(evidence, indent=1, ensure_ascii=False) + "\n"}
+    files: dict[str, str] = {}
     for paper in evidence["papers"]:
         pid = paper["paper_id"]
         title, pdf = titles.get(pid, (pid, f"paper/{pid}.pdf"))
+        files.update(paper_records(evidence, paper, title, pdf))
         files[f"{SIDECAR_DIR}/{pid}.tex"] = render_sidecar(evidence, paper, record_commit)
-        files[f"{RECORD_DIR}/{pid}.md"] = render_record(evidence, paper, title, pdf)
+    files[EVIDENCE_MAP] = json.dumps(evidence, indent=1, ensure_ascii=False) + "\n"
     return files
 
 
@@ -865,28 +968,58 @@ def main(argv: list[str] | None = None) -> int:
         problems.add("config", "record_commit is not set")
     if previous is None:
         problems.add(EVIDENCE_MAP, "missing")
-    else:
+        return report(problems)
+    if corpus is not None:
+        # Full check: resolve everything again against the corpus; numbering is taken from
+        # the committed map (the rendered-PDF check verifies it against the PDFs).
         evidence = resolve(root, corpus, None, previous, problems, require_relations=True)
-        if corpus is None:
-            # Offline: the Comparator fields cannot be re-derived; keep the committed ones.
-            evidence = previous if not problems.items else evidence
-        expected = outputs(root, evidence, record_commit or "")
+    else:
+        # Offline check: the committed map must agree with the ledger row for row, and every
+        # output must be what the map renders to.
+        evidence = previous
+        ledger = load_json(root / LEDGER)
+        mapped = {r["id"]: r for p in previous["papers"] for r in p["results"]}
+        if previous.get("lean_pin") != ledger["lean_pin"]:
+            problems.add(EVIDENCE_MAP, "was resolved at a different Lean pin than the ledger's")
+        for row in ledger["rows"]:
+            r = mapped.pop(row["id"], None)
+            if r is None:
+                problems.add(row["id"], "has no entry in the evidence map")
+                continue
+            if r["statement_sha256"] != row["statement_sha256"] or r["label"] != row["label"]:
+                problems.add(row["id"], "the evidence map was resolved against a different statement")
+            if r["lean"]["status"] != row["lean"]["status"] or \
+                    [d["name"] for d in r["lean"]["declarations"]] != [d["name"] for d in row["lean"].get("declarations", [])]:
+                problems.add(row["id"], "the evidence map records different Lean evidence than the ledger")
+            if r["comparator"]["status"] != row["comparator"]["status"]:
+                problems.add(row["id"], "the evidence map records a different Comparator status than the ledger")
+        for extra in mapped:
+            problems.add(extra, "is in the evidence map but not in the ledger")
+    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "")
+    for rel, text in expected.items():
+        path = root / rel
+        if not path.is_file() or path.read_text(encoding="utf-8") != text:
+            problems.add(rel, "differs from what the inputs generate; run paper_evidence.py build")
+    for path in sorted((root / RECORD_DIR).rglob("*.md")) + sorted((root / SIDECAR_DIR).glob("*.tex")):
+        rel = path.relative_to(root).as_posix()
+        if rel not in expected and rel != f"{RECORD_DIR}/README.md":
+            problems.add(rel, "is not generated from the current evidence; delete it")
+    here = Repo(root)
+    if record_commit and here.has_commit(record_commit):
         for rel, text in expected.items():
-            path = root / rel
-            if not path.is_file() or path.read_text(encoding="utf-8") != text:
-                problems.add(rel, "differs from what the inputs generate; run paper_evidence.py build")
-        here = Repo(root)
-        if record_commit and here.has_commit(record_commit):
-            for paper in evidence["papers"]:
-                rel = f"{RECORD_DIR}/{paper['paper_id']}.md"
-                if here.text(record_commit, rel) != expected[rel]:
-                    problems.add(rel, f"the papers link the record at {record_commit[:12]}, "
-                                      "which differs from the current record")
-        elif record_commit:
-            problems.add("config", f"record_commit {record_commit} is not in this repository's history")
+            if rel.startswith(RECORD_DIR + "/") and rel.endswith(".md") and here.text(record_commit, rel) != text:
+                problems.add(rel, f"the papers link the record at {record_commit[:12]}, which differs from "
+                                  "the current record: rebuild the evidence and the papers")
+    elif record_commit:
+        problems.add("config", f"record_commit {record_commit} is not in this repository's history")
+    return report(problems)
+
+
+def report(problems: Problems) -> int:
     for item in problems.items:
         print("FAIL", item, file=sys.stderr)
     if problems.items:
+        print(f"{len(problems.items)} problems", file=sys.stderr)
         return 1
     print("paper evidence current")
     return 0

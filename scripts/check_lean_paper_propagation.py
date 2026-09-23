@@ -541,7 +541,7 @@ def locate_rows(
 class Link:
     name: str
     path: str | None
-    origin: str  # inline | note | concordance
+    origin: str  # inline | note | concordance | evidence
 
 
 def normalise_name(raw: str) -> str:
@@ -690,6 +690,40 @@ class RowLinks:
     note: list[Link]
     note_text: str | None
     concordance: list[Link]
+    evidence: list[Link] = field(default_factory=list)
+
+
+EVIDENCE_MAP = "evidence/paper_evidence.json"
+EVIDENCE_DECLARE_RE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}")
+
+
+def evidence_links(ledger: dict[str, Any], read: Callable[[str], str]) -> dict[str, list[Link]]:
+    """Row id -> the declarations its margin marks lead to.
+
+    A result's marks are rendered from paper/evidence/<paper>.tex, one
+    \\DeclareResultEvidence line per labelled result, and open either the one
+    declaration or the result's section of the evidence record, which lists every
+    declaration in evidence/paper_evidence.json.  A row counts as linked there only when
+    its paper declares its label and the map lists its declarations.
+    """
+    try:
+        evidence = json.loads(read(EVIDENCE_MAP))
+    except (OSError, ValueError, KeyError):
+        return {}
+    out: dict[str, list[Link]] = {}
+    for paper in evidence.get("papers", []):
+        try:
+            declared = set(EVIDENCE_DECLARE_RE.findall(read(f"paper/evidence/{paper['paper_id']}.tex")))
+        except (OSError, ValueError, KeyError):
+            continue
+        for result in paper.get("results", []):
+            if result.get("label") not in declared:
+                continue
+            out[result["id"]] = [
+                Link(name=d["name"], path=identity(d.get("path")), origin="evidence")
+                for d in result.get("lean", {}).get("declarations", [])
+            ]
+    return out
 
 
 def row_links(
@@ -737,7 +771,7 @@ def unlinked_declarations(row: dict[str, Any], links: RowLinks) -> list[str]:
     """Clause (b): declarations no rendered link names and no exact note count covers."""
     if counted_by_note(row, links):
         return []
-    rendered = [*links.inline, *links.note, *links.concordance]
+    rendered = [*links.inline, *links.note, *links.concordance, *links.evidence]
     return [
         declaration["name"]
         for declaration in declarations_of(row)
@@ -748,7 +782,7 @@ def unlinked_declarations(row: dict[str, Any], links: RowLinks) -> list[str]:
 def orphan_links(row: dict[str, Any], links: RowLinks) -> list[str]:
     """Clause (c): generated links naming declarations the row does not bind."""
     orphans: list[str] = []
-    for link in [*links.note, *links.concordance]:
+    for link in [*links.note, *links.concordance, *links.evidence]:
         if not any(matches(link, declaration) for declaration in declarations_of(row)):
             rendered = f"{link.path}::{link.name}" if link.path else link.name
             if rendered not in orphans:
@@ -763,7 +797,8 @@ def describe(clause: str, names: list[str]) -> str:
 
 
 def propagation_failures(
-    ledger: dict[str, Any], currency: Currency, texts: dict[str, str]
+    ledger: dict[str, Any], currency: Currency, texts: dict[str, str],
+    evidence: dict[str, list[Link]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], int]:
     """Clauses (b) and (c) over every located row, and the rows a note count covers."""
     b: list[dict[str, Any]] = []
@@ -788,6 +823,7 @@ def propagation_failures(
         px, pk = prefixes.get(row.get("paper_id"), ("ErdosProblems", None))
         links = row_links(located, lines_of[located.path], concordances.get(row.get("paper_id"), {}),
                           px, pk)
+        links.evidence = (evidence or {}).get(row_id, [])
         where = f"{located.path}:{located.line}"
         if declarations_of(row):
             if counted_by_note(row, links):
@@ -1143,12 +1179,34 @@ class Report:
     e: list[dict[str, Any]] = field(default_factory=list)
     queued: list[dict[str, Any]] = field(default_factory=list)
     linked_by_count: int = 0
+    retired: list[str] = field(default_factory=list)
 
     def failed(self) -> bool:
         return any((
             self.integrity, self.currency, self.drift, self.a, self.b_new, self.c_new,
             self.baseline_problems, self.docstrings.failures, self.docstrings.problems, self.e,
+            self.retired,
         ))
+
+
+def retired_apparatus(ledger: dict[str, Any], texts: dict[str, str]) -> list[str]:
+    """Generated notes and concordances were replaced by margin marks; refuse their return.
+
+    The evidence for each result is placed beside it from paper/evidence/<paper>.tex
+    (scripts/paper_evidence.py).  A \\leannote under a statement or a concordance block
+    printing declaration names and run numbers is the apparatus that replaced.
+    """
+    found = []
+    for paper in ledger.get("papers", []):
+        for path in paper.get("sources", []):
+            view = counter_view(texts.get(path, ""))
+            if NOTE_OPEN in view:
+                found.append(f"{path}: a generated \\leannote; evidence is placed by paper/evidence/, "
+                             "regenerate it with scripts/paper_evidence.py")
+            if CONCORDANCE_BEGIN in view:
+                found.append(f"{path}: a generated concordance block; the evidence record under "
+                             "evidence/ replaces it")
+    return found
 
 
 def evaluate(
@@ -1174,7 +1232,9 @@ def evaluate(
     report.currency = currency.missing + currency.unrowed
     report.drift = currency.drift
     report.a = missing_declarations(ledger, sources.declaration_problem)
-    b, c, report.linked_by_count = propagation_failures(ledger, currency, texts)
+    b, c, report.linked_by_count = propagation_failures(ledger, currency, texts,
+                                                        evidence_links(ledger, read))
+    report.retired = retired_apparatus(ledger, texts)
     report.b_new, report.b_held, problems_b = apply_baseline(b, _clause(baseline, "b"), introduced)
     report.c_new, report.c_held, problems_c = apply_baseline(c, _clause(baseline, "c"), introduced)
     report.baseline_problems = sorted(set(problems_b + problems_c))
@@ -1210,7 +1270,8 @@ def summary_line(report: Report) -> str:
         f"{len(d.failures)} unrecorded; "
         f"(e) {len(report.queued)} queued for Comparator, {len(report.e)} unacknowledged; "
         f"currency {len(report.currency) + len(report.drift)}; "
-        f"baseline/exemption problems {len(report.baseline_problems) + len(d.problems)}"
+        f"baseline/exemption problems {len(report.baseline_problems) + len(d.problems)}; "
+        f"retired apparatus {len(report.retired)}"
     )
 
 
@@ -1227,6 +1288,8 @@ def print_report(report: Report) -> None:
         print(f"  FAIL ({failure['clause']}) {row}{failure['source']}: {failure['detail']}")
     for problem in report.baseline_problems:
         print(f"  FAIL baseline: {problem}")
+    for problem in report.retired:
+        print(f"  FAIL retired: {problem}")
     for problem in report.docstrings.problems:
         print(f"  FAIL exemptions: {problem}")
     if report.queued:
@@ -1270,6 +1333,7 @@ def report_json(report: Report) -> dict[str, Any]:
         "e": report.e,
         "worklist": report.queued,
         "linked_by_exact_note_count": report.linked_by_count,
+        "retired": report.retired,
     }
 
 

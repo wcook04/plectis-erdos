@@ -223,7 +223,7 @@ def main(argv: list[str] | None = None) -> int:
     print(json.dumps(counts))
     if args.dry_run:
         return 0
-    LEDGER.write_text(json.dumps(ledger, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    LEDGER.write_text(json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     record = {
         "schema": "plectis-statement-migration/1",
         "base": subprocess.run(["git", "-C", str(ROOT), "rev-parse", args.base], capture_output=True,

@@ -33,6 +33,7 @@ BASELINE = ROOT / "docs/paper_page_baseline.json"
 DECLARE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
 RUN_URL = re.compile(r"/actions/runs/\d+")
 TOLERANCE = 7.0  # points between the mark's first baseline and the heading's baseline
+HYPERREF_LINK_MARGIN = 1.0
 
 
 def untex(url: str) -> str:
@@ -106,10 +107,11 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> li
             if result and result.get("number"):
                 if n not in text_cache:
                     text_cache[n] = heading_lines(reader.pages[n - 1])
-                want = f"{result['printed_kind']} {result['number']}"
+                # Text extraction may drop the space inside a bold heading ("Theorem1.3").
+                want = f"{result['printed_kind']}{result['number']}"
                 level = [t for t in text_cache[n]
                          if abs(t[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1]) and t[0] < text_right
-                         and t[2].strip().startswith(want)]
+                         and "".join(t[2].split()).startswith(want)]
                 if not level:
                     continue
             chosen = i
@@ -132,12 +134,16 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> li
             problems.append(f"page {n}: margin link to {uri} belongs to no declared result")
         if rect[2] > width - 4 or rect[1] < 4:
             problems.append(f"page {n}: margin link to {uri} runs off the page")
-    by_page: dict[int, list[list[float]]] = {}
-    for n, rect, _u in margin:
-        for other in by_page.get(n, []):
-            if rect[0] < other[2] and other[0] < rect[2] and rect[1] < other[3] and other[1] < rect[3]:
-                problems.append(f"page {n}: two margin marks overlap")
-        by_page.setdefault(n, []).append(rect)
+    # hyperref pads every link rectangle by 1pt (\Hy@linkmargin); two marks collide when
+    # the text inside those rectangles would touch.
+    pad = HYPERREF_LINK_MARGIN
+    by_page: dict[int, list[tuple[list[float], str]]] = {}
+    for n, rect, uri in margin:
+        inner = [rect[0] + pad, rect[1] + pad, rect[2] - pad, rect[3] - pad]
+        for other, other_uri in by_page.get(n, []):
+            if inner[0] < other[2] and other[0] < inner[2] and inner[1] < other[3] and other[1] < inner[3]:
+                problems.append(f"page {n}: margin marks collide ({other_uri} and {uri})")
+        by_page.setdefault(n, []).append((inner, uri))
     return problems
 
 
