@@ -1143,6 +1143,32 @@ def ConstantPerturbationRootsInUnitDiskStatement : Prop :=
       ∀ {shift : ℂ}, ‖shift‖ < ε →
         ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1
 
+/-- Shared Comparator proposition for the critical-pair metric scale. -/
+def CriticalPairMetricScaleStatement : Prop :=
+  ∀ {n : ℕ}, 2 ≤ n →
+    ∀ (z : Fin n → ℂ) (c : ℂ),
+      (∀ k, c - z k ≠ 0) →
+      (∑ k, (c - z k)⁻¹ = 0) →
+      ∀ {r : ℝ}, 0 < r → r ^ n = ∏ k, ‖c - z k‖ →
+        ∃ i j : Fin n,
+          i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r
+
+/-- Shared Comparator propositions for the remaining #1049 exports. -/
+def ThreeHalvesNoCoordinatewiseCorridorStatement : Prop :=
+  ∀ {N K Q digit : ℕ}, 1 ≤ N → 1 ≤ K →
+    ¬ CoordinatewiseCorridor 3 2 N K Q digit
+
+def RationalBaseClearedTailQSuccStatement : Prop :=
+  ∀ {r s B F : ℚ} {coeff : ℕ → ℚ}, r ≠ 0 → ∀ N : ℕ,
+    rationalBaseClearedTailQ r s B F coeff (N + 1) =
+      r * rationalBaseClearedTailQ r s B F coeff N -
+        B * coeff (N + 1) * s ^ (N + 1)
+
+def RectangularHpThresholdEqClassicalIffStatement : Prop :=
+  ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
+    (hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
+      rho = 0 ∧ sigma = 1)
+
 /-- One trusted challenge witness carries the exact interfaces selected for
 the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
@@ -1553,22 +1579,9 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   /-- Lean-checked critical-balance kernel for the sharp Euclidean scale.
   The closed-unit-disc nearest-pair assembly and path containment are not part
   of this statement-isolated theorem. -/
-  problem1041CriticalPairMetricScale :
-    ∀ {n : ℕ}, 2 ≤ n →
-      ∀ (z : Fin n → ℂ) (c : ℂ),
-        (∀ k, c - z k ≠ 0) →
-        (∑ k, (c - z k)⁻¹ = 0) →
-        ∀ {r : ℝ}, 0 < r → r ^ n = ∏ k, ‖c - z k‖ →
-          ∃ i j : Fin n,
-            i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r
-  problem1049 :
-    ∀ {N K Q digit : ℕ}, 1 ≤ N → 1 ≤ K →
-      ¬ CoordinatewiseCorridor 3 2 N K Q digit
-  problem1049Recurrence :
-    ∀ {r s B F : ℚ} {coeff : ℕ → ℚ}, r ≠ 0 → ∀ N : ℕ,
-      rationalBaseClearedTailQ r s B F coeff (N + 1) =
-        r * rationalBaseClearedTailQ r s B F coeff N -
-          B * coeff (N + 1) * s ^ (N + 1)
+  problem1041CriticalPairMetricScale : CriticalPairMetricScaleStatement
+  problem1049 : ThreeHalvesNoCoordinatewiseCorridorStatement
+  problem1049Recurrence : RationalBaseClearedTailQSuccStatement
   problem1049RectangularHpGapNonpos :
     ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
       hpClearedGap rho sigma ≤ 0
@@ -1579,9 +1592,7 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
       hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2
   problem1049RectangularHpThresholdEqClassicalIff :
-    ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
-      (hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
-        rho = 0 ∧ sigma = 1)
+    RectangularHpThresholdEqClassicalIffStatement
   problem249TailOrbitBlockGapOfNonpositiveDensity :
     TotientTailOrbitNonpositiveBlockDensity →
       TotientTailOrbitBlockGap

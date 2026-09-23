@@ -531,27 +531,17 @@ theorem constant_perturbation_roots_in_unitDisk :
     ConstantPerturbationRootsInUnitDiskStatement :=
   (portfolioClaims Unit).problem1041Roots
 
-theorem exists_two_roots_dist_sum_le_two_mul_geomMean
-    {n : ℕ} (hn : 2 ≤ n) (z : Fin n → ℂ) (c : ℂ)
-    (hne : ∀ k, c - z k ≠ 0)
-    (hcrit : ∑ k, (c - z k)⁻¹ = 0)
-    {r : ℝ} (hr : 0 < r) (hrn : r ^ n = ∏ k, ‖c - z k‖) :
-    ∃ i j : Fin n,
-      i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r :=
+theorem exists_two_roots_dist_sum_le_two_mul_geomMean :
+    CriticalPairMetricScaleStatement :=
   (portfolioClaims Unit).problem1041CriticalPairMetricScale
-    hn z c hne hcrit hr hrn
 
-theorem threeHalves_no_coordinatewiseCorridor
-    {N K Q digit : ℕ} (hN : 1 ≤ N) (hK : 1 ≤ K) :
-    ¬ CoordinatewiseCorridor 3 2 N K Q digit :=
-  (portfolioClaims Unit).problem1049 hN hK
+theorem threeHalves_no_coordinatewiseCorridor :
+    ThreeHalvesNoCoordinatewiseCorridorStatement :=
+  (portfolioClaims Unit).problem1049
 
-theorem rationalBaseClearedTailQ_succ
-    {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :
-    rationalBaseClearedTailQ r s B F coeff (N + 1) =
-      r * rationalBaseClearedTailQ r s B F coeff N -
-        B * coeff (N + 1) * s ^ (N + 1) :=
-  (portfolioClaims Unit).problem1049Recurrence hr N
+theorem rationalBaseClearedTailQ_succ :
+    RationalBaseClearedTailQSuccStatement :=
+  (portfolioClaims Unit).problem1049Recurrence
 
 theorem rectangular_hp_cleared_gap_nonpos
     (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
@@ -569,12 +559,9 @@ theorem rectangular_hp_threshold_le_classical
   (portfolioClaims Unit).problem1049RectangularHpThresholdLeClassical rho sigma
     hrho hsigma
 
-theorem rectangular_hp_threshold_eq_classical_iff
-    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
-    hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
-      rho = 0 ∧ sigma = 1 :=
-  (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff rho sigma
-    hrho hsigma
+theorem rectangular_hp_threshold_eq_classical_iff :
+    RectangularHpThresholdEqClassicalIffStatement :=
+  (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff
 
 /-! The phase-density and prime-index branches are one producer family.  The
 block-density declarations are subordinate to the selected strict-gap endpoint
