@@ -8763,14 +8763,18 @@
             "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants",
             "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogConstants",
             "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic",
             "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystem",
             "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystemUnconditional",
             "ErdosProblems.Erdos1049.PaperCompleteR21.SourceCoefficientHeights",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.TailPrefixLattice",
             "ErdosProblems.Erdos243.PaperCompleteR21.AmplifiedRecordEquivalence",
             "ErdosProblems.Erdos243.PaperCompleteR21.ChebotarevSquareSpecialisation",
             "ErdosProblems.Erdos243.PaperCompleteR21.ClassicalHalfspaceSigns",
             "ErdosProblems.Erdos243.PaperCompleteR21.CubicProfileGcdShape",
             "ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain",
+            "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
             "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
             "ErdosProblems.Erdos243.PaperCompleteR21.ForbiddenBlockCrossing",
             "ErdosProblems.Erdos243.PaperCompleteR21.ForcedOrbitResidueHorizon",
@@ -10484,6 +10488,27 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation",
+          "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
+            "ErdosProblems.Erdos1049.GaussianCoefficientsR11",
+            "ErdosProblems.Erdos1049.GaussianDegreeR12",
+            "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic",
+          "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation",
+            "ErdosProblems.Erdos1049.ActualMomentGeneratingR12",
+            "ErdosProblems.Erdos1049.PositiveSeriesR16"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.PaperCompleteR21.SimultaneousMahlerSystem",
           "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystem.lean",
           "role": "Lean proof module",
@@ -10505,6 +10530,12 @@
           "imports": [
             "ErdosProblems.Erdos1049.SourceHeightRateR14"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.PaperCompleteR21.TailPrefixLattice",
+          "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/TailPrefixLattice.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos1049.PaperCorrespondenceAudit",
@@ -11952,6 +11983,15 @@
             "ErdosProblems.Erdos243.PaperCompleteR20.CubicModularSquareSpecialisation",
             "ErdosProblems.Erdos243.PaperCompleteR20.CubicRateCanonicalBridge",
             "ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
+            "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup"
           ]
         },
         {
@@ -19083,7 +19123,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
+      "ref": "168bf6727758f918a430ef056a1c93d3160b53a6",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -20762,7 +20802,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 60
+        "line": 61
       }
     },
     {

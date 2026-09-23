@@ -9,10 +9,9 @@
 \renewcommand{\commitshort}{7380b7871687}
 % That revision keeps the Lean roots under lean/, so the links name it.
 \renewcommand{\PX}{lean/ErdosProblems}
-% Explicit proof URLs below resolve at the pinned checkpoint, whose tree
-% keeps the Lean roots under lean/. The duplicate macro lets the source-link
-% checker resolve these URLs.
-\newcommand{\latecommit}{7380b7871687b6bcc41ca0143c61f232e8af6500}
+% Sources that postdate \commit are cited with their lean/ path and resolve at \latecommit,
+% whose tree keeps the Lean roots under lean/.
+\newcommand{\latecommit}{168bf6727758f918a430ef056a1c93d3160b53a6}
 \newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}
 \hypersetup{
   pdftitle={Reciprocal-tail rigidity: theorems, proofs and questions for Erdős Problem 243},
@@ -2028,6 +2027,12 @@ The strict bound $\Theta>1$ is also a Lean theorem for any exact orbit
 with $a_n>1$, $C_n>0$, $D_0\ge1$ and vanishing relative error whose error
 is not eventually zero
 (\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean\#L363}{strict record bound}).
+The implication of Corollary~\ref{long243:res:loglogboundary}, that
+$\limsup_n(-E_n)_+/\ell(C_n)\le1$ forces $E_n=0$ eventually, is a Lean
+theorem for any exact orbit with $a_n>1$, $C_n>0$ and vanishing relative
+error
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean\#L45}{double-logarithmic bound for an exact orbit});
+there $D_0\ge1$ follows from the vanishing relative error.
 The supplied formal sources also contain persistence and pointwise-rise
 versions of the arithmetic steps:
 \lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of

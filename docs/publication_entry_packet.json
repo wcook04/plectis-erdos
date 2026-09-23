@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:e5be809751ac14240f443e666d1af33cf752df32b0621e5a5099603707995359",
+    "docs/claims.json": "sha256:7201377500126e427fc9ca01bc729acd9afee89c223e46f2e404239eed9be289",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
-    "docs/publication_contract.json": "sha256:b8d93b89d5130679e148be6e19b7fa149b26d5531e9bf72beb51950e283e4253",
+    "docs/publication_contract.json": "sha256:7023617c558127ebeca4fa0570c29f0a1d522adfed52401d4989d85b48affe16",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:88cf7b1ccf82da2c280fba2568bd81aabd22f2f1ef4b58564ed25ef7d3a16155",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:05ee59c0368a9a86f450361d20da5dffb0e3f1d9796ef22e774d91b391063652",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:50220fb4bc8ad5e80a64b841383556d3fc6d8cc50498d049f4df8d0f88560e72",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:2194a8959c61090d7f21f097fb3df02a816a7fff434516273439405f63128c98",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 60,
+        "line": 61,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
+      "ref": "168bf6727758f918a430ef056a1c93d3160b53a6",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

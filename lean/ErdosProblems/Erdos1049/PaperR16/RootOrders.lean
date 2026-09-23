@@ -3,7 +3,7 @@ import ErdosProblems.Erdos1049.PaperR16.PrimitiveRadial
 /-!
 # Exact orders, primitive-root counts, and an injective family of test roots
 
-Candidate source; new Lean checks UNRUN. One primitive root of each of
+Checked in the eight-paper audit build. One primitive root of each of
 infinitely many pairwise distinct orders suffices for the polynomial argument;
 no lower bound for Euler's totient and no prime-distribution theorem is needed.
 -/

@@ -9,10 +9,9 @@
 \renewcommand{\commitshort}{7380b7871687}
 % That revision keeps the Lean roots under lean/, so the links name it.
 \renewcommand{\PX}{lean/ErdosProblems}
-% Explicit proof URLs below resolve at the pinned checkpoint, whose tree
-% keeps the Lean roots under lean/. The duplicate macro lets the source-link
-% checker resolve these URLs.
-\newcommand{\latecommit}{7380b7871687b6bcc41ca0143c61f232e8af6500}
+% Sources that postdate \commit are cited with their lean/ path and resolve at \latecommit,
+% whose tree keeps the Lean roots under lean/.
+\newcommand{\latecommit}{168bf6727758f918a430ef056a1c93d3160b53a6}
 \newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}
 \hypersetup{
   pdftitle={Reciprocal-tail rigidity: theorems, proofs and questions for Erdős Problem 243},

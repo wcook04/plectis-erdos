@@ -67,6 +67,18 @@
    "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/GaloisSignFlipClosure.lean",
    "label": "res:cubicrate",
    "reason": "Earlier form conditional on ChebotarevFrobenius. The ledger binds cubic_rate_irrationality_unconditional in SquareSpecialisationUnconditional.lean for both the short and the long statement, whose statement is this one with that hypothesis removed."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation",
+   "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
+   "label": "long1049:prop:rogers-factorisation",
+   "reason": "The formal-indeterminate half of the proposition. The whole proposition, including its real-q clauses, is rogers_factorisation_proposition in RogersFactorisationAnalytic.lean, which is the declaration the row binds."
+  },
+  {
+   "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_double_logarithmic_bound",
+   "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean",
+   "label": "sec:secondaryrate",
+   "reason": "Leads with the label of the section of the #243 short paper whose displayed double-logarithmic implication it proves. That display is prose, not an asserting environment, so no ledger row exists for it; the paper links the theorem directly."
   }
  ]
 }
