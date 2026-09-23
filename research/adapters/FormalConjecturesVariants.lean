@@ -689,3 +689,5 @@ theorem erdos_257.variants.summable_reciprocal_support
     Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal b A hb hA hsum'
 
 end Erdos257
+
+#print axioms Erdos257.erdos_257.variants.summable_reciprocal_support
