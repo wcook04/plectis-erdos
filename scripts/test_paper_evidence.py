@@ -308,6 +308,17 @@ def test_statement_with_let_is_read_whole() -> None:
             f"a statement containing let was cut at the let's := : {got.statement!r}")
 
 
+def test_quoted_references_use_the_paper_numbers() -> None:
+    numbers = {"thm:a": ("4.2", "8"), "eq:b": ("3", "8")}
+    md = ('By Theorem <a href="#thm:a" data-reference-type="ref" data-reference="thm:a">10</a> and '
+          '<a href="#eq:b" data-reference-type="eqref" data-reference="eq:b">[eq:b]</a>, see [eq:b] '
+          'and <a href="#thm:c" data-reference-type="ref" data-reference="thm:c">7</a>.')
+    got = pe.renumber_references(md, numbers)
+    require(got == 'By Theorem 4.2 and (3), see (3) and '
+                   '<a href="#thm:c" data-reference-type="ref" data-reference="thm:c">7</a>.',
+            f"quoted references were not renumbered from the paper: {got!r}")
+
+
 def main() -> int:
     tests = [
         test_sound_fixture_resolves,
@@ -322,6 +333,7 @@ def main() -> int:
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
         test_statement_with_let_is_read_whole,
+        test_quoted_references_use_the_paper_numbers,
     ]
     for test in tests:
         test()

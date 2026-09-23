@@ -371,6 +371,39 @@ def full_text_statements(path: Path) -> dict[str, tuple[str | None, str]]:
     return out
 
 
+PANDOC_REF = re.compile(r'<a href="#([^"]+)" data-reference-type="(ref|eqref)" data-reference="[^"]+">[^<]*</a>')
+BARE_REF = re.compile(r"\[([A-Za-z][A-Za-z0-9:_.-]*:[A-Za-z0-9:_.-]+)\]")
+
+
+def renumber_references(markdown: str | None, numbers: dict[str, tuple[str, str]]) -> str | None:
+    """Cross-references inside a quoted statement, with the numbers the printed paper uses.
+
+    The reading edition numbers references its own way (or prints an unresolved label);
+    the record quotes the statement beside the paper's page, so it uses the paper's numbers,
+    as plain text.
+    """
+    if not markdown:
+        return markdown
+
+    def number(label: str) -> str | None:
+        found = numbers.get(label)
+        return found[0] if found and found[0] else None
+
+    def linked(m: re.Match) -> str:
+        n = number(m.group(1))
+        if n is None:
+            return m.group(0)
+        return f"({n})" if m.group(2) == "eqref" else n
+
+    def bare(m: re.Match) -> str:
+        n = number(m.group(1))
+        if n is None:
+            return m.group(0)
+        return f"({n})" if "eq:" in m.group(1) else n
+
+    return BARE_REF.sub(bare, PANDOC_REF.sub(linked, markdown))
+
+
 def span_title(row: dict) -> str | None:
     """The opening words of a labelled claim span, as plain text."""
     phrase = (row.get("span") or {}).get("start")
@@ -725,7 +758,8 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 "statement_sha256": row["statement_sha256"],
                 "statement_key": statement_keys.get(row["statement_sha256"]),
                 "title": (statements.get(label) or (None, None))[0] if env else span_title(row),
-                "statement_markdown": (statements.get(label) or (None, None))[1],
+                "statement_markdown": renumber_references((statements.get(label) or (None, None))[1],
+                                                          numbers_for_row_all),
                 "lean": {
                     "status": status,
                     "mark": mark,
@@ -900,8 +934,8 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
             lead = ("The Lean declarations below together state this result."
                     if many else "The Lean declaration below states this result.")
         elif status == "exact_or_stronger":
-            lead = ("The Lean declarations below together state a result at least as strong as this one."
-                    if many else "The Lean declaration below states a result at least as strong as this one.")
+            lead = ("The Lean declarations below together state this result or one that implies it."
+                    if many else "The Lean declaration below states this result or one that implies it.")
             if lean.get("relation_note"):
                 lead += " " + lean["relation_note"]
         else:
