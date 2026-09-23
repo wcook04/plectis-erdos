@@ -56,8 +56,8 @@ python3 scripts/query_corpus.py --route browse_claim_status
 ```
 
 If free text returns no semantic cells, use those stable routes; do not replace
-machine evidence with prose. #1041's total-variation form is refuted;
-historical correspondence remains unreviewed.
+machine evidence with prose. Lean refutes the Formal Conjectures #1041
+path-image claim; 1958 correspondence remains unreviewed.
 Choose work: `python3 scripts/query_corpus.py --open`.
 
 ### Lean proof work or source mutation

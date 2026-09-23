@@ -3,16 +3,18 @@
 
 # Scope of this release
 
-Using the degree-seven polynomial constructed by erdosproblems.com contributor
-ani, Lean proves that every preconnected strict-lemniscate set containing two
-distinct roots has one-dimensional Hausdorff measure greater than two. This
-refutes the exact Formal Conjectures path-image-length statement; the separate
-total-variation bound is also checked. The reported small-parameter family is
-not formalised, and independent human review of correspondence with the 1958
-wording has not been recorded. Comparator checks only selected exact
+Using the degree-seven polynomial constructed by the erdosproblems.com
+contributor ani, Lean proves that every preconnected strict-lemniscate set
+containing two distinct roots has one-dimensional Hausdorff measure greater
+than two. This refutes the exact Formal Conjectures path-image-length
+statement; the separate total-variation bound is also checked. The other
+seven targets remain open. Independent human review of correspondence with
+the 1958 wording has not been recorded. Comparator checks only selected exact
 statements, axioms and kernel acceptance; it does not assess novelty or
-historical correspondence. This release does not prove Erdős #68, #243, #249,
-#251, #257, #269, or #1049; those seven remain open. Claims use only the
+historical correspondence.
+
+The reported small-parameter family is not formalised. This release does not
+prove Erdős #68, #243, #249, #251, #257, #269, or #1049. Claims use only the
 immutable formal-source checkpoint in [`docs/claims.json`](claims.json); the
 last release tag is its citation identity, not a substitute for an exact
 proof-source identity.

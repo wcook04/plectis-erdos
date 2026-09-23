@@ -10,16 +10,16 @@ approaches that stopped and why. Plectis is a prototype for making this work
 understandable, reusable and open to further insight. The website brings the
 collection together; you do not need Lean to read the papers.
 
-For one degree-seven polynomial constructed by the erdosproblems.com contributor
-ani, Lean proves that every preconnected strict-lemniscate set joining two
-distinct roots has one-dimensional Hausdorff measure greater than two. This
-refutes the exact Formal Conjectures path-image-length statement; the separate
-total-variation bound is also checked. The other seven target problems are not
-resolved here. Independent human review of correspondence with the 1958
-curve-length wording has not been recorded. Comparator checks only selected
-exact statements, axioms and kernel acceptance; it does not assess novelty or
-historical correspondence. The work also proves intermediate theorems, writes out proofs
-of results that were stated but not printed in the literature, checks exact
+Using the degree-seven polynomial constructed by the erdosproblems.com
+contributor ani, Lean proves that every preconnected strict-lemniscate set
+containing two distinct roots has one-dimensional Hausdorff measure greater
+than two. This refutes the exact Formal Conjectures path-image-length
+statement; the separate total-variation bound is also checked. The other
+seven targets remain open. Independent human review of correspondence with
+the 1958 wording has not been recorded. Comparator checks only selected exact
+statements, axioms and kernel acceptance; it does not assess novelty or
+historical correspondence. The work also proves intermediate theorems, writes
+out proofs of results that were stated but not printed in the literature, checks exact
 finite cases, and records obstructions to tempting shortcuts.
 
 ## Two ways to begin

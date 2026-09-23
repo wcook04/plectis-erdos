@@ -15,11 +15,15 @@ obstructions related to eight Erdős problem programmes —
 [#1049](https://www.erdosproblems.com/1049).
 Each problem has a short paper and a longer reasoning record; the retired
 combined #249/#257 manuscript is archive/provenance only, not a current
-gateway. Using ani's degree-seven polynomial, Lean refutes the exact Formal
-Conjectures path-image-length statement for #1041 by a one-dimensional
-Hausdorff-measure bound on every preconnected connecting set. The separate
-total-variation bound also holds. Correspondence with the 1958 wording has no
-recorded independent human review. The other seven targets remain open.
+gateway. Using the degree-seven polynomial constructed by the erdosproblems.com
+contributor ani, Lean proves that every preconnected strict-lemniscate set
+containing two distinct roots has one-dimensional Hausdorff measure greater
+than two. This refutes the exact Formal Conjectures path-image-length
+statement; the separate total-variation bound is also checked. The other
+seven targets remain open. Independent human review of correspondence with
+the 1958 wording has not been recorded. Comparator checks only selected exact
+statements, axioms and kernel acceptance; it does not assess novelty or
+historical correspondence.
 
 Lean source checked by the pinned Lean kernel is proof authority. The audit log
 reports the headline declarations below with kernel assumptions

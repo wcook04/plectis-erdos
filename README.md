@@ -18,20 +18,17 @@ infinite support `A` with finite base-two weighted mass
 [Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
 or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
 
-**Using one degree-seven polynomial constructed by the erdosproblems.com contributor
-ani, Lean proves that every preconnected subset of its strict unit lemniscate
-joining two distinct roots has one-dimensional Hausdorff measure greater than
-two. This refutes the exact path-image-length statement in Formal Conjectures;
-the separate total-variation bound is also checked. The other seven target
-problems are not resolved here. Independent human review of correspondence
-with the 1958 curve-length wording has not been recorded. Comparator checks
-only selected exact statements, axioms and kernel acceptance; it does not
-assess novelty or historical correspondence.**
+**Using the degree-seven polynomial constructed by the erdosproblems.com
+contributor ani, Lean proves that every preconnected strict-lemniscate set
+containing two distinct roots has one-dimensional Hausdorff measure greater
+than two. This refutes the exact Formal Conjectures path-image-length
+statement; the separate total-variation bound is also checked. The other
+seven targets remain open. Independent human review of correspondence with
+the 1958 wording has not been recorded. Comparator checks only selected exact
+statements, axioms and kernel acceptance; it does not assess novelty or
+historical correspondence.**
 
 The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
-
-This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
-Those seven remain open.
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
@@ -42,11 +39,9 @@ Those seven remain open.
 
 ## Where to start
 
-**Read the mathematics. Find what comes next.** Use the papers, proofs and
-research records to continue an existing question, or to develop a new result,
-method or direction. Work with your own AI, directly in the repository, or
-without an AI. Work that returns becomes part of the shared account, with its
-sources, checks and credit kept visible.
+**Read the mathematics. Find what comes next.** Use the papers and research
+records to continue a question or develop a new direction. Work with your own
+AI or without one; returned work keeps its sources, checks and credit visible.
 
 - **Explore with your AI, no clone needed.** Give your model the
   [reading edition](docs/reading-edition/README.md): one file with an
@@ -56,7 +51,9 @@ sources, checks and credit kept visible.
 - **Work in the repository.** The
   [agent quickstart](docs/agents/README.md#start-with-current-public-work)
   provides clone commands and a copyable prompt. Name a question, or ask your
-  agent to read the corpus and decide what is worth developing.
+  agent to read the corpus and decide what is worth developing. The
+  [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
+  explains the workbench design.
 - **Check one result with Python 3, no Lean.** From a clone, run
   `python3 research/experiments/sparse_interpolation/late_rejection.py`.
   Exact rational arithmetic checks that `189/388` passes the earlier greedy
@@ -67,41 +64,25 @@ sources, checks and credit kept visible.
   `1/(2^n-1)`; finite survival never proves membership, and this calculation
   does not settle Problem 257.
 
-The short papers explain the questions and results; the longer records keep
-calculations and failed routes. Both are readable without Lean. The website
-joins them with evidence and ways to contribute. [A reader's way in](docs/READING_GUIDE.md)
-introduces the questions; [Results and limits](docs/RESULTS.md) puts the results
-beside their remaining open questions.
+The short papers explain results; longer records keep calculations and failed
+routes. Both are readable without Lean. [A reader's way in](docs/READING_GUIDE.md)
+introduces the questions; [Results and limits](docs/RESULTS.md) names what remains open.
 
-Read a [problem paper](#problem-papers), then use the [source map](docs/SOURCE_MAP.md)
-to follow a statement into Lean, the proof assistant that checks its formal
-proof. You can also use the record to compare methods, find a connection,
-explain an obstruction, repair a formalisation gap, or propose a correction.
-[CONTRIBUTING](CONTRIBUTING.md) explains how to return that work with credit.
-
-### Bring your own agent
-
-The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
-provides clone commands, a copyable prompt and small first tasks. Start new work
-from current public `main`; keep the starting commit when returning a result.
-Navigation needs Git and Python 3. Proof builds have separate setup. No model
-account or private system is required to [follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
+Use the [source map](docs/SOURCE_MAP.md) to follow a statement into Lean, the
+proof assistant that checks its formal proof. [CONTRIBUTING](CONTRIBUTING.md)
+explains how to return work with credit. No model account or private system is
+required to [follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
 
 ## Why this exists
 
-I prioritised expository quality and a collaborative structure over trying to
-solve the problems; I hope to now solve them with others rather than alone.
-The aim is to make intermediate results and failed routes reusable by
-mathematicians who understand the material.
-The records include routes that stopped at a precise obstruction, where
-another researcher can test a different idea or repair the argument.
+I prioritised expository quality and a collaborative structure so others can
+work on these questions with me. The records include routes that stopped at a
+precise obstruction, where another researcher can test or repair the argument.
 
 I am responsible for all claims, sources and the release. Plectis is an
 independent, AI-assisted prototype, not something I am declaring finished.
-It has had no independent mathematical review (trying to get this), and I
-need help to get anywhere near "done". Meaning, novelty and significance still
-need human judgement.
-The counts in the corpus inventory are navigation counts, not novelty claims.
+It has had no independent mathematical review. Meaning, novelty and significance
+still need human judgement; corpus counts are navigation counts, not novelty claims.
 
 ## Problem papers
 
@@ -168,20 +149,16 @@ unreleased work.
 
 ## Contribute
 
-An idea, a correction, a counterexample, a failed route with a checkable
-reason, or a clearer explanation can help. You do not need to solve a problem.
-Directions and infrastructure suggestions receive credit too.
-
-You can contribute an insight without writing Lean. Will can work with you to
-develop its argument and formalisation; the idea, explanation and proof work
-keep their respective attribution. A contribution may advance one problem or
-open a direction across the whole collection.
+Contribute an idea, correction, counterexample, checked failed route,
+explanation or infrastructure change. You need not solve a problem or write
+Lean. Will can help formalise an argument while keeping each contribution's
+attribution.
 
 Start with [a paper](docs/CONTRIBUTE_BY_PAPER.md),
 [develop a method](paper/synthesis/README.md), or
 [improve the machinery](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
-The same [submission and credit process](CONTRIBUTING.md#return-what-you-learned)
-serves all three, including contributions by email and work without a clone.
+The [submission and credit process](CONTRIBUTING.md#return-what-you-learned)
+also covers email and work without a clone.
 
 - **Ideas, corrections or review:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
@@ -190,22 +167,15 @@ serves all three, including contributions by email and work without a clone.
 - **Your own agent and spare compute:** use the [frontier relay](docs/FRONTIER_RELAY.md)
   to choose a starting point and return what you find with its evidence.
 
-When maintainers accept contributed work, they commit a receipt naming the
-contributor and the files, results or evidence being credited. The
-[credit policy](docs/research-commons/CREDIT_POLICY.md) explains how contributions
-are attributed. Browse [source attributions](docs/research-commons/SOURCE_ATTRIBUTIONS.md)
-for named prior work and anonymous credit for implemented private advice.
+Accepted work receives a public receipt naming its contributor and evidence.
+The [credit policy](docs/research-commons/CREDIT_POLICY.md) and
+[source attributions](docs/research-commons/SOURCE_ATTRIBUTIONS.md) explain credit.
 
 If you solve a problem, the credit and the result are all yours. If this repo
 or my intermediary progress helped, please cite this release and say how, so
 others find it and we make progress together instead of hoarding partial
 results out of fear of being scooped, or rebuilding the same infrastructure
 instead of improving one cumulatively.
-
-**Experts:** corrections, methods and directions are welcome. Accepted work
-gets a public receipt naming the contribution and its author; later work
-records how it used that contribution. See the
-[credit policy](docs/research-commons/CREDIT_POLICY.md).
 
 <a id="citation-and-prior-work"></a>
 
@@ -219,9 +189,7 @@ downloads Lean and Mathlib. Cloning runs no project code; the
 Use the [documentation index](docs/README.md) for the file map and specialist
 guides. [How the repository works](docs/ARCHITECTURE.md) explains the roles of
 proofs, papers and checks. Coding agents start at [`AGENTS.md`](AGENTS.md) and
-follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md); the
-[agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
-explains that design.
+follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md).
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
