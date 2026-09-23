@@ -1991,7 +1991,16 @@ Together with $\ell(C_n)\le\ell(H_n)$, this proves the corollary.
 \end{proof}
 
 \paragraph{Formalisation.}
-The supplied formal sources contain persistence and pointwise-rise
+Theorem~\ref{long243:res:recorddichotomy} and
+Corollary~\ref{long243:res:loglogboundary} are Lean theorems for the
+integer tails of a rational reciprocal sum under the standing hypotheses
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean\#L340}{record dichotomy},
+\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L129}{double-logarithmic criterion}).
+The strict bound $\Theta>1$ is also a Lean theorem for any exact orbit
+with $a_n>1$, $C_n>0$, $D_0\ge1$ and vanishing relative error whose error
+is not eventually zero
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean\#L363}{strict record bound}).
+The supplied formal sources also contain persistence and pointwise-rise
 versions of the arithmetic steps:
 \lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of
 a common divisor}, the
@@ -2000,12 +2009,9 @@ CRT block}, the
 \lword{Erdos243/SlowRiseBarrier.lean}{194}{slowRise_landing}{slow-rise landing
 lemma}, and the
 \lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{coprime-block
-exclusion}.  The growth estimates, the count of usable moduli and the running-maximum
-argument are proved above in ordinary mathematics. The cited declarations
-verify their own arithmetic statements, not this assembled theorem.
-In particular, their landing bound controls increments of $C_n$;
-the argument above controls increments of $H_n$ and is a written
-extension, not a direct invocation of that declaration.
+exclusion}.  These four declarations verify their own arithmetic
+statements; their landing bound controls increments of $C_n$, and the
+argument above controls increments of $H_n$.
 
 No upper bound on $\Theta$ is proved. If $G_n$ is unbounded, the theorem
 forces $\Theta=+\infty$. If $G_n=g$ eventually, it proves only
@@ -2328,7 +2334,10 @@ Theorem~\ref{long243:res:eventual} gives the Sylvester recurrence.
 \end{proof}
 
 \paragraph{Formalisation.}
-The corresponding pointwise-rise argument has formalised arithmetic
+Theorem~\ref{long243:res:slownegative} is a Lean theorem with the
+hypotheses printed above
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean\#L559}{slow negative part}).
+The corresponding pointwise-rise argument also has formalised arithmetic
 lemmas:
 \lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of
 a common divisor}, the
@@ -2338,8 +2347,7 @@ transport}, the
 the
 \lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{coprime-block
 exclusion}.  The count of indices and the simultaneous choice of constants are
-written out in the earlier proof; no end-to-end Lean verification of
-this consequence is claimed. Corollary~\ref{long243:res:loglogboundary} includes the
+written out in the earlier proof. Corollary~\ref{long243:res:loglogboundary} includes the
 boundary coefficient $1$, while the preceding theorem on the running
 maximum also discounts rises that recover an earlier decrease. The present
 statement is retained for its direct bound on $E_n$.
@@ -3807,8 +3815,10 @@ The supplied source index records a successful build of the listed
 main-repository modules at revision \texttt{6b78209ab63a}, using the
 identical-file evidence described there. The links in this manuscript
 retain their original pins, including \texttt{\commitshort}; this build
-record is not a new verification of every linked revision. No new Lean run or transitive-axiom audit is claimed here, and the separate
-release is not covered as a whole. A source link is not a build receipt.
+record is not a new verification of every linked revision. The kernel
+checks and axioms stated in Appendix~\ref{long243:app:index} belong to the
+revisions named there, and the separate release is not covered as a
+whole. A source link is not a build receipt.
 The external formal-conjecture entry states the problem rather than proving
 it. The ordinary proofs and their exposition require mathematical review
 independently of the recorded checks.

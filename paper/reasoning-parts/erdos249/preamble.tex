@@ -107,13 +107,9 @@
 \ExplSyntaxOff
 
 % ===========================================================================
-% Statement-level proof links.  The exact endpoints the coverage ledger binds
-% were written after both pins above, so a third immutable pin carries them.
-% \ledgercommit is the public revision whose Lean sources the ledger resolved
-% its declarations against; every file it names is byte-identical to that
-% revision.  The note printed under each statement is generated from that
-% ledger and verified by scripts/check_generated_lean_notes.py.  Do not edit a
-% \leannote by hand: regenerate it.
+% Statement-level proof links.  The declarations cited under the statements
+% resolve at their own immutable pin, \ledgercommit.  The note printed under
+% each statement is generated.  Do not edit a \leannote by hand.
 % ===========================================================================
 \newcommand{\ledgercommit}{181078b6b009d905809cf2e007ad309386a3d1e0}
 \newcommand{\ledgerbase}{https://github.com/wcook04/plectis-erdos/blob/\ledgercommit}

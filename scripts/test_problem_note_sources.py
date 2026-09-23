@@ -385,9 +385,71 @@ def test_printed_path_absent_at_pin_fails_with_relocation_hint() -> None:
     )
 
 
+def test_late_pin_links_are_checked_at_their_own_pin() -> None:
+    commit, late = "a" * 40, "d" * 40
+    late_pin = (
+        r"\newcommand{\latecommit}{" + late + "}\n"
+        r"\newcommand{\laterepobase}{https://github.com/wcook04/plectis-erdos/blob/\latecommit}" "\n"
+    )
+    note = (
+        r"\renewcommand{\commit}{" + commit + "}\n"
+        + late_pin
+        + r"\href{\laterepobase/lean/ErdosProblems/Erdos243/Late.lean\#L7}{a late theorem}" "\n"
+        r"\lean{Late.thm}{lean/ErdosProblems/Erdos249/\allowbreak LateToo.lean:9}" "\n"
+        r"\lean{Old.thm}{Erdos249257/Old.lean:4}" "\n"
+        r"\iffalse \href{\laterepobase/lean/Hidden.lean}{hidden} \fi" "\n"
+        r"% \href{\laterepobase/lean/Commented.lean}{commented}" "\n"
+    )
+    targets, problems = scanner.rendered_link_targets(note, "c" * 40, None, "ErdosProblems")
+    require(problems == [], f"unexpected problems {problems!r}")
+    require(
+        (late, "lean/ErdosProblems/Erdos243/Late.lean") in targets,
+        "a \\laterepobase link was not rendered at \\latecommit",
+    )
+    require(
+        (late, "lean/ErdosProblems/Erdos249/LateToo.lean") in targets,
+        "a lean/ \\lean target was not rendered at \\latecommit",
+    )
+    require(
+        not any("Old" in path for pin, path in targets if pin == late),
+        "a \\lean target without the lean/ prefix was sent to \\latecommit",
+    )
+    require(
+        not any("Hidden" in path or "Commented" in path for _pin, path in targets),
+        "a late link TeX never prints was checked",
+    )
+    _targets, unpinned = scanner.rendered_link_targets(
+        r"\href{\laterepobase/lean/X.lean}{x}", commit, None, "ErdosProblems"
+    )
+    require(bool(unpinned), "a late link without \\latecommit passed silently")
+    foreign_pin = late_pin.replace("https://github.com/wcook04/plectis-erdos/blob", "https://example.org")
+    _targets, foreign = scanner.rendered_link_targets(
+        foreign_pin + r"\href{\laterepobase/lean/X.lean}{x}", commit, None, "ErdosProblems"
+    )
+    require(bool(foreign), "an unrecognised \\laterepobase passed silently")
+
+    def fake_text(path):
+        return r"\newcommand{\PX}{ErdosProblems}" if path == scanner.PREAMBLE else note
+
+    # Every path exists at the ordinary pin; none exists at \latecommit.
+    def fake_present(keys):
+        return {key for key in keys if key[0] != late}
+
+    with patch.object(scanner, "ledger_sources", return_value=["paper/synthetic.tex"]), \
+            patch.object(scanner, "safe_worktree_text", side_effect=fake_text), \
+            patch.object(scanner, "objects_present", side_effect=fake_present):
+        failures, checked = scanner.rendered_link_failures(commit, None)
+    require(checked == 2, f"expected two printed late URLs, got {checked}")
+    require(
+        len(failures) == 1 and late[:12] in failures[0] and "404" in failures[0],
+        f"a late link absent at \\latecommit was not reported: {failures!r}",
+    )
+
+
 def main() -> int:
     test_printed_links_are_checked_exactly_as_rendered()
     test_printed_path_absent_at_pin_fails_with_relocation_hint()
+    test_late_pin_links_are_checked_at_their_own_pin()
     test_explicit_immutable_headline_links_require_exact_source()
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()

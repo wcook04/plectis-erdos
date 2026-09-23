@@ -4373,12 +4373,20 @@ mathematical review or endorsement of the results here.
 \papersectiontarget{coverage}
 
 Every theorem, lemma, proposition and corollary of this record other than the
-two listed below has a Lean statement of the same assertion, with the same
+six named here has a Lean statement of the same assertion, with the same
 hypotheses, checked by the Lean kernel using only the axioms
 \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, in the
-development at revision \texttt{181078b6b009}.  The two below were proved
-later.  Each has a Lean statement of the same assertion, checked by the Lean
-kernel using only those three axioms, at revision \texttt{e4ba6841dfdb}.
+development at revision \texttt{181078b6b009}.  Two of the six,
+Propositions~\ref{long1049:res:nomahler} and~\ref{long1049:res:finite-pencil},
+were proved later: each has a Lean statement of the same assertion, checked
+by the Lean kernel using only those three axioms, at revision
+\texttt{e4ba6841dfdb}, as described below.  The other four are proved by
+ordinary arguments and have no Lean statement at that revision:
+Theorem~\ref{long1049:thm:geometric-universality},
+Proposition~\ref{long1049:prop:rogers-factorisation} and
+Theorem~\ref{long1049:thm:sharp-fixed-base} in
+Section~\ref{long1049:sec:sharp-fixed-base}, and
+Proposition~\ref{long1049:res:tail-lattice}.
 
 Proposition~\ref{long1049:res:nomahler} is
 \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean\#L298}{checked in Lean}
@@ -4491,9 +4499,9 @@ is a Lean declaration. The positivity of the eight unshifted determinants
 used in Proposition~\ref{long1049:res:finite-pencil} also has a separate
 Lean proof, described in Section~\ref{long1049:sec:coefficient-questions}.
 
-The supplied index reports earlier build results. The present prose
-revision includes inspection of the attached sources, not a new Lean
-build or an audit of every axiom. The build status in that index and
+The supplied index reports earlier build results. The kernel checks and
+axioms stated in the coverage subsection above belong to the revisions
+named there. The build status in that index and
 the scope of a theorem's hypotheses are separate matters. Historical
 links remain unchanged and should be read at their own pinned revisions.
 

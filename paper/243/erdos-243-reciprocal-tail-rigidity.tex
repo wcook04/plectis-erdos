@@ -777,8 +777,9 @@ Although $C_n$ is an integer linear form in the reciprocal sum, it grows.
 The argument uses an exact polynomial formula, not a small-linear-form
 criterion.
 
-There is also an ordinary quantitative extension, not an end-to-end
-Lean-checked theorem. Under the hypotheses of
+There is also a quantitative extension, whose two steps are Lean
+theorems; only the final step combining them is not a Lean declaration.
+Under the hypotheses of
 Theorem~\ref{res:bounded} other than (5), the companion proves
 \[
  \limsup_{n\to\infty}
@@ -792,7 +793,16 @@ $\sqrt{C_n}$ need not. Unlike boundedness, the coefficient depends on
 the integer normalisation: scaling $(C_n,D_n,E_n)$ by $k\in\N_{>0}$
 scales this limit superior by $k$. The proof and the running-maximum
 estimates are in the companion's Section~7, not in the elementary
-bounded-increment argument above. Subcritical versions are given in
+bounded-increment argument above. Put $H_n=\max_{j\le n}C_j$. For an
+orbit satisfying these hypotheses, the first step is the Lean theorem that
+$\limsup_n(H_{n+1}-H_n)/\log_2\log_2\max(4,H_n)>1$ whenever $E_n$ is not
+eventually zero
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean\#L363}{strict record bound}),
+and the second is the Lean theorem that this limit superior is at most the
+one displayed above
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L100}{comparison with the negative part}).
+The displayed implication is the contrapositive of the two combined, which
+also uses $D_0\ge1$, a consequence of~(6). Subcritical versions are given in
 \href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md}{the slow-negative proof}
 and \href{https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md\#5-record-only-subcritical-log-log-bound}
 {the record-only extension}, the latter for LCM numerators with the bound
@@ -937,9 +947,16 @@ an abstract recurrence. The \href{https://github.com/wcook04/plectis-erdos/blob/
 theorem has an assembled Lean proof,
 \href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean\#L70}{cubic-rate irrationality},
 with no hypothesis beyond those of Theorem~\ref{res:cubicrate}. The
-double-logarithmic argument has checked components; no assembled Lean proof
-of it is identified here. The companion supplies the written proofs of both,
-including the growth and modulus-counting arguments.
+companion's double-logarithmic results, its Theorem~7.3 and
+Corollary~7.4, are Lean theorems for the integer tails of a rational
+reciprocal sum
+(\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean\#L340}{record dichotomy},
+\href{\laterepobase/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean\#L129}{double-logarithmic criterion}).
+For an orbit satisfying the hypotheses of Theorem~\ref{res:bounded} other
+than (5), both steps of the double-logarithmic bound are Lean theorems and
+only their final combination, described in Section~\ref{sec:secondaryrate},
+is not a Lean declaration. The companion supplies the written proofs of
+both arguments, including the growth and modulus-counting arguments.
 
 The recorded main build is at \texttt{6b78209ab63a}; links retain their
 original pins, including \texttt{\commitshort}. The linked weighted criterion also has a fresh Lean check; this does not
