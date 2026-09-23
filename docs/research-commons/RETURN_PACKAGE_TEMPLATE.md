@@ -427,9 +427,9 @@ rejects a different problem or route, a stale canonical digest, or changed
 evidence that is absent from `return.repository.changed_paths`. See the
 [accepted contribution recognition view](CONTRIBUTION_RECOGNITION.md) for the corresponding
 accepted-receipt command and its authority boundary.
-The package transition copies `return.json` and `route-memory.json` together;
-do not submit a return without the sidecar, and do not treat a successful
-local join as accepted recognition.
+For mathematics, the package transition copies `return.json` and
+`route-memory.json` together; do not submit a mathematical return without the
+sidecar. A successful local join does not create accepted recognition.
 
 At a route-provenance-required intake, the exact rejection boundary also
 includes a missing sidecar, a non-canonical route-memory path, a return ID or
