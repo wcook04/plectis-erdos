@@ -1,0 +1,113 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T01:02:56Z",
+  "entry": "E249_02",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_02.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_02",
+  "theorem_count": 15,
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAE.discrepancy_prefix",
+    "PalomarCorpus.E249.PaperStatementsAE.exact_denominator",
+    "PalomarCorpus.E249.PaperStatementsAE.gamma_le",
+    "PalomarCorpus.E249.PaperStatementsAE.gamma_not_separation",
+    "PalomarCorpus.E249.PaperStatementsAE.gamma_prefix",
+    "PalomarCorpus.E249.PaperStatementsAE.no_certificate_after_prefix",
+    "PalomarCorpus.E249.PaperStatementsAE.no_uniform_prefix_rule",
+    "PalomarCorpus.E249.PaperStatementsAG.tsum_parityCoboundaryWeight_eq_three_halves",
+    "PalomarCorpus.E249.PaperStatementsAW.certificate_sound",
+    "PalomarCorpus.E249.PaperStatementsAW.exact_series",
+    "PalomarCorpus.E249.PaperStatementsAW.generic_tail_period",
+    "PalomarCorpus.E249.PaperStatementsAW.scaled_difference",
+    "PalomarCorpus.E249.PaperStatementsAW.scaled_tail_split",
+    "PalomarCorpus.E249.PaperStatementsAW.truncation_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAW.value_cast"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "1408b341078bf25da5bfa3b51280b03a365df7ebe54172269967b05f6ff09485",
+    "comparator.json": "2f6fe497a571cf19de871142fe986f1171fad234ab83880295b58e1dd5de033d",
+    "formalization.yaml": "88116014fd6259a03c54e531362e3d750748cf76754029093b5224a0593e395e"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_02.lean": "b8aa5e23e1f1bdc37f7c0f8568e43d2808ed324b66a5e71b4f48a7b6698ede1f",
+      "Solutions/PalomarCorpus/E249_02/PaperStatementsAE.lean": "b7ec4ff7ef24aa599415ed92e925735a79962db180e59eaddb345c617d6452f7",
+      "Solutions/PalomarCorpus/E249_02/PaperStatementsAG.lean": "75ef64aa90ed65b4de7fbb4196ddff72328ed25918d131c9d306841329b65e9d",
+      "Solutions/PalomarCorpus/E249_02/PaperStatementsAW.lean": "d53d0fdd433403ed2968dfb8370a1d3d7947aa6a96665918a1a5b7372710aab5",
+      "Solutions/PalomarCorpus/E249_02/Statement.lean": "dd3778e3fd470cdf0e72f67f315e915295b8d949f6fe4a099d4aaa3eb78c8332"
+    },
+    "sha256": "768970df824d80ef7aa8e5f4beb98717357b0e00188fa4d3aa7ed0d02f706835"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.594
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 23.008
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 49.341,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.303
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

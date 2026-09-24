@@ -1,0 +1,128 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:18:40Z",
+  "entry": "E249_10",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_10.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_10",
+  "theorem_count": 27,
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply",
+    "PalomarCorpus.E249.PaperStatementsA.periodLcm_diagonal_kill_iff_tail_diff_notMem_int",
+    "PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAJ.finite_carry_candidate_count",
+    "PalomarCorpus.E249.PaperStatementsAJ.nine_tenths_lt_cos_pi_div_eight",
+    "PalomarCorpus.E249.PaperStatementsAT.abs_tail_diff_scaled_sub_window_le",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_norm_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_real_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.finite_carry_test_sound",
+    "PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit",
+    "PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_combination_eq",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_criterion_sound",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_window_eq",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral",
+    "PalomarCorpus.E249.PaperStatementsAU.second_difference_cell_one_eight",
+    "PalomarCorpus.E249.PaperStatementsAU.second_difference_certificate_sound",
+    "PalomarCorpus.E249.PaperStatementsAU.second_difference_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds",
+    "PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq",
+    "PalomarCorpus.E249.PaperStatementsAX.finite_grid_nonintegral_pair",
+    "PalomarCorpus.E249.PaperStatementsAX.finite_grid_supply_irrational",
+    "PalomarCorpus.E249.PaperStatementsAX.paperGridNumerator_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "42dd0664e4431e9a5cd90f34ba4e5d1104908ca266f51d1b553c61d7d7443435",
+    "comparator.json": "0e556d0bf79311dc193084a1f70593382bcac0030909916ad6c5a26f748b676f",
+    "formalization.yaml": "02d7fae0257adecc45d435946c11349e4e102dd31b9e43a62be92dbf00926bba"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_10.lean": "29521ed920f8e847d5ea2bec432f194293a076dfde354cf83f0d7df070c08ed6",
+      "Solutions/PalomarCorpus/E249_10/PaperStatementsA.lean": "6a1dfe0a4a6013add5ef0509f85fa0d822370c7dc36e672c0267f487299ba974",
+      "Solutions/PalomarCorpus/E249_10/PaperStatementsAD.lean": "b493c25e812d1a4ad5b665b371f4f8b31ec22b2cd288ee76991d89534d7cb25f",
+      "Solutions/PalomarCorpus/E249_10/PaperStatementsAJ.lean": "1674e28890b48ac8675d5034dc2bf6619b86afeec81a95e04fb232135594e051",
+      "Solutions/PalomarCorpus/E249_10/PaperStatementsAT.lean": "c74c8b61c9ecedba1aeb5111ff8fe4825c4cfe50d3c2c93c98a5f0bbfea8909a",
+      "Solutions/PalomarCorpus/E249_10/PaperStatementsAU.lean": "1d839b38556ed0f7373187964538aa605580098225e38ab964667b943a0238ea",
+      "Solutions/PalomarCorpus/E249_10/PaperStatementsAX.lean": "7ed236797317dcca2ef7f71d7af83e8473f7a8000608e766d7ae282cac18fed3",
+      "Solutions/PalomarCorpus/E249_10/Statement.lean": "10da6876e95712d2e231d4ad2452e0382b3e7bbbf9e3274d4f9bf2a888f6db6e"
+    },
+    "sha256": "82a43e9529268d2097ae57e3c13ccd739da3403134ec738fb9ab5123ec7a6925"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 7.753
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 22.757
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 38.885,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 6.058
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

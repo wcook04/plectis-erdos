@@ -1,0 +1,63 @@
+{
+  "schema": "erdos257-public-computation-source/1",
+  "author": "Will Cook",
+  "packaging": "Claude Code, directed by Will Cook, 23 September 2026",
+  "programs": [
+    {
+      "file": "check_truncation_rung_ladder.py",
+      "original_program_sha256": "c71cc9b12d4b073fcfa5ad50d42a08f3a288acce650af9359f8fd28a55efd380",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "check_seam_reset_crossing.py",
+      "original_program_sha256": "2db150da7031ff600b22ef8c5d75e01412b4a4dac5ad7988f24da831056a5286",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "check_half_greedy_margins.py",
+      "original_program_sha256": "2c42a92245bc0ff4562594eec0a5826cfb9c5d1ad8613f021f667d9ab72c088d",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "half_prefix_coefficient_macro_verify.cpp",
+      "original_program_sha256": "0532a94e18a2f64387b26a4b8ae0825d00b51edf04bb553f10032cfd94b7d42f",
+      "original_receipt_sha256": "b02dde6cf451933ccdbde556d5c164ee9b22fc82cc513d56804937804db69d9f",
+      "changes": "SPDX header added as lines 1-2; otherwise byte-identical."
+    },
+    {
+      "file": "certify_greedy_interval.py",
+      "original_program_sha256": "25f2cf6e10b786023acb85808d31f65b488e6549f7ad629c08fde64501a95c3e",
+      "changes": "SPDX header; one docstring paragraph; the two default file paths now point into this directory. Numerical algorithm unchanged."
+    },
+    {
+      "file": "seam_orbit_replay.py",
+      "original_program_sha256": "5512e140449b7c64ceb73960f266e8bbe5183c7ddcdcc5d41f40cc63a9a1cb33",
+      "original_receipt_sha256": "dc771e09bd8bddef416c5322ffbad74c537aa869f070ed7de084773c3bcdbcaf",
+      "changes": "The seam recursion (canonical_bytes to verify_direct) and the literal reference recurrence are copied unchanged. The replay loop, its reset tally and the command line were written on 23 September 2026. The row-stream and producer-stream hashes it prints equal those of the original 200,000-row receipt."
+    },
+    {
+      "file": "check_master_identity.py",
+      "original_program_sha256": null,
+      "changes": "Written on 23 September 2026; the earlier computations of identity (I) for rows 6-200 were not found."
+    }
+  ],
+  "notes": [
+    {
+      "file": "notes/truncation-rung-ladder-2026-07-24.md",
+      "original_sha256": "d4d24dba8a5851cf17398b851c0018d2738504823bc71ef9dc884a89c8187131",
+      "changes": "SPDX comment added as lines 1-3; otherwise byte-identical."
+    },
+    {
+      "file": "notes/reset-crossing-unification-2026-07-24.md",
+      "original_sha256": "8e14439df629aedb891abfa1279b137f86a04fb613bf3709ada89e32a7266c88",
+      "changes": "SPDX comment added as lines 1-3; otherwise byte-identical."
+    }
+  ],
+  "comparison_data": [
+    {
+      "file": "receipts/greedy-half-stream-100000.json",
+      "original_sha256": "4152f7a6b6de5ddfa0749ba310db5ef127c131bf321c82961c39225a9e93d032",
+      "changes": "None. A separate 100,000-rank stream receipt that certify_greedy_interval.py compares against by default."
+    }
+  ]
+}

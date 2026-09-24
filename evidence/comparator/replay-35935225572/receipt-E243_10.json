@@ -1,0 +1,116 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:31:16Z",
+  "entry": "E243_10",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E243_10.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243_10",
+  "theorem_count": 16,
+  "theorem_names": [
+    "PalomarCorpus.E243.BoundedNegativePartRigidity.boundedNegativePart_completeRigidity",
+    "PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_of_tailAvoidance",
+    "PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail",
+    "PalomarCorpus.E243.BoundedRiseReducedTail.no_eventuallyBoundedRise_reducedTail",
+    "PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit",
+    "PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit",
+    "PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.exists_oddMultiple_trapHeight",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair",
+    "PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "5e42716d83157437cb5cc6b8445e8869e564e1b53705773bad4a94c2a48f028f",
+    "comparator.json": "b06ed0986be6b57cd1225c1b02430dec39ee09964902cf86919d439fe937c9ac",
+    "formalization.yaml": "06ed7fe56d34299b9e076431e472b854c19b1c0449d9018f2eb72557844c4026"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E243_10.lean": "2b440d1785a33552617e062223e9f7d20c668142629aafb05660cc4a7a2efb4c",
+      "Solutions/PalomarCorpus/E243_10/BoundedNegativePartRigidity.lean": "70c041a8792ee29a1da2c7c65e86c36b5dc0ad7227c3d28058c934bdd3eb2f54",
+      "Solutions/PalomarCorpus/E243_10/BoundedRiseReducedTail.lean": "32a322123eb25702fe7a9bd654f8429f045772e8557bf82e1d39d7ad1e53ddcd",
+      "Solutions/PalomarCorpus/E243_10/PeriodicNegativeOrbit.lean": "43ef3be159074f571fc062668fa7e3f0107abc7fcaca1216db919ea6a113c871",
+      "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean": "53a04d2bada64040afd33138c203734b73edea59793325945c365029a873e634",
+      "Solutions/PalomarCorpus/E243_10/ProtectedEpochEnergy.lean": "cb662266d254409e7946a9f569764b4b3b87596e01d4422d799d2aa66b87daba",
+      "Solutions/PalomarCorpus/E243_10/Statement.lean": "36ea741973ab29b7a412f072cddcc3b6f67d83be6a0b57a93847930016d3c611"
+    },
+    "sha256": "2e3f19a3eb9cd0abda3916341c47975a3eb8fcb0df88860c3058dcdee2e9fe71"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 10.883
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 27.414
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 34.029,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.34
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

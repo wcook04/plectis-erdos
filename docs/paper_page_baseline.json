@@ -1,0 +1,24 @@
+{
+ "schema": "plectis-paper-page-baseline/1",
+ "rule": "Page count of each of the sixteen problem papers as published at the frozen release base, same typography. No rebuilt paper may be longer; scripts/check_paper_evidence_pdfs.py enforces it.",
+ "base": "147f3f1da400a84dcb3013ea6cef75dc8f382b09",
+ "pages": {
+  "erdos-68-factorial-denominator-irrationality": 19,
+  "erdos-243-reciprocal-tail-rigidity": 19,
+  "erdos-249-binary-totient-series": 17,
+  "erdos-251-prime-gap-dyadic-series": 15,
+  "erdos-257-mersenne-support-subseries": 22,
+  "erdos-269-three-prime-running-lcm": 16,
+  "erdos-1041-lemniscate-newton-flow": 32,
+  "erdos-1049-rational-base-lambert": 21,
+  "erdos68-factorial-reasoning-surface": 49,
+  "erdos243-reciprocal-tail-reasoning-surface": 65,
+  "erdos249-totient-reasoning-surface": 164,
+  "erdos251-prime-gap-reasoning-surface": 49,
+  "erdos257-mersenne-reasoning-surface": 166,
+  "erdos269-running-lcm-reasoning-surface": 53,
+  "erdos1041-lemniscate-reasoning-surface": 78,
+  "erdos1049-rational-base-lambert-reasoning-surface": 73
+ },
+ "total": 858
+}
