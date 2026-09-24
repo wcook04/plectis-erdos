@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
-  "content_digest": "sha256:587b7443dcaab05dd50cfd607492e2221e56e1c28ade5b53c69f9cc0687ba680",
+  "content_digest": "sha256:f9cfd34db798ec0c724ad96babbb04d99adc428fc4b35c155e2f99ba373151a8",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -21,14 +21,14 @@
       "none": 3
     },
     "comparator": {
-      "compared": 611,
+      "compared": 639,
       "not_applicable": 28,
-      "pending": 35
+      "pending": 7
     },
     "palomar": {
       "not_applicable": 28,
-      "pending": 35,
-      "prepared": 611
+      "pending": 7,
+      "prepared": 639
     },
     "uncounted_rows": 0
   },
@@ -2176,11 +2176,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_48"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -3981,11 +3990,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_07"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -4051,11 +4069,20 @@
         ]
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_08"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       }
     },
     {
@@ -4258,11 +4285,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_05"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -7865,11 +7901,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249_03"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -17714,11 +17759,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_02"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -18476,11 +18530,21 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_06",
+          "PalomarCorpus/E257_07"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -18735,11 +18799,21 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_09",
+          "PalomarCorpus/E257_13"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -18766,11 +18840,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_13"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -18809,11 +18892,22 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_03",
+          "PalomarCorpus/E257_13",
+          "PalomarCorpus/E257_14"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -18876,11 +18970,21 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_13",
+          "PalomarCorpus/E257_15"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -19259,12 +19363,12 @@
           }
         ]
       },
-      "palomar": {
-        "status": "pending"
-      },
       "comparator": {
         "status": "pending",
         "queued_at": "2026-09-23"
+      },
+      "palomar": {
+        "status": "pending"
       }
     },
     {
@@ -19663,11 +19767,21 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_13",
+          "PalomarCorpus/E257_18"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -19947,11 +20061,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_02"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -20102,11 +20225,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_23"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -20133,11 +20265,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_24"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -20997,11 +21138,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_27"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -21352,11 +21502,21 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_09",
+          "PalomarCorpus/E257_29"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -22936,11 +23096,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_37"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -22975,11 +23144,23 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_11",
+          "PalomarCorpus/E257_37",
+          "PalomarCorpus/E257_38",
+          "PalomarCorpus/E257_39"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -23429,11 +23610,23 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_15",
+          "PalomarCorpus/E257_39",
+          "PalomarCorpus/E257_41",
+          "PalomarCorpus/E257_42"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -23516,11 +23709,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_42"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -23913,11 +24115,24 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_09",
+          "PalomarCorpus/E257_11",
+          "PalomarCorpus/E257_31",
+          "PalomarCorpus/E257_37",
+          "PalomarCorpus/E257_43"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -24375,11 +24590,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E257_23"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -27776,11 +28000,20 @@
         ]
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_09"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       }
     },
     {
@@ -27803,11 +28036,20 @@
         ]
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_09"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       }
     },
     {
@@ -27830,11 +28072,20 @@
         ]
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_09"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       }
     },
     {
@@ -28181,11 +28432,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_05"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {
@@ -28496,11 +28756,20 @@
         ]
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_09"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       }
     },
     {

@@ -2638,7 +2638,7 @@ Corollary <a href="#long1049:res:rankfortyone" data-reference-type="ref" data-r
 
 Theorem <a href="#long1049:res:boundedfibre" data-reference-type="ref" data-reference="long1049:res:boundedfibre">27</a>: [`exists_ne_map_eq_map_ne_of_card_mul_lt`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean#L1832). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
 
-Theorem <a href="#long1049:res:plucker-collapse" data-reference-type="ref" data-reference="long1049:res:plucker-collapse">28</a>: [`plucker_paper_statement`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
+Theorem <a href="#long1049:res:plucker-collapse" data-reference-type="ref" data-reference="long1049:res:plucker-collapse">28</a>: [`plucker_paper_statement`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269). *Compared*, run [`35935225572`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572).
 
 Theorem <a href="#long1049:res:scalar" data-reference-type="ref" data-reference="long1049:res:scalar">30</a> (the Lean statement is stronger): [`scalar_margin`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L177). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
 
