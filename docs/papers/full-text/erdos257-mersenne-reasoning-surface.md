@@ -386,7 +386,7 @@ Every theorem, lemma, proposition and corollary of this record has a Lean statem
 
 ###### Concordance of statements and Lean declarations.
 
-Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `a25cb360bef8`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
+Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to the source revision in its URL. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
 
 Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a> (the Lean statement is stronger): [`divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120), [`weighted_displacement_cofinal_close_return`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L100). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
 
@@ -474,7 +474,7 @@ Theorem <a href="#thm:factorial-twopow-support" data-reference-type="ref" data-
 
 Theorem <a href="#thm:multiples-support" data-reference-type="ref" data-reference="thm:multiples-support">62</a> (the Lean statement is stronger): [`erdosSupportSeries_multiples_eq_pow_base_full_support`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L9054), [`irrational_erdosSupportSeries_multiples`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L9103). *Compared*, run [`35624228171`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171).
 
-Theorem <a href="#thm:periodic-support" data-reference-type="ref" data-reference="thm:periodic-support">63</a> (the Lean statement is stronger): [`irrational_erdosSupportSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L11590). *Compared*, run [`35624228171`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171).
+The statement at <a href="#thm:periodic-support" data-reference-type="ref" data-reference="thm:periodic-support">63</a> (the Lean statement is stronger): [`irrational_erdosSupportSeries_positivePeriodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean#L49). *Comparator replay pending; Palomar entry pending.*
 
 Theorem <a href="#thm:eventually-periodic" data-reference-type="ref" data-reference="thm:eventually-periodic">64</a> (the Lean statement is stronger): [`irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/Erdos249257/CertificateKernel.lean#L11604). *Compared*, run [`35624228171`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171).
 
@@ -2156,7 +2156,7 @@ Luca and Tachiya proved irrationality for every purely periodic integer weight t
 
 *The indicator of $`A`$ is a nonzero purely periodic integer weight, so this follows from Luca and Tachiya’s theorem stated above. The linked declaration supplies a separate formal proof. At $`m=1`$ the only nonempty periodic support is full support; residue classes and unions of residue classes give the other immediate examples.*
 
-*<span class="sans-serif">\[Lean\]</span><span class="sans-serif">(uniform)</span>*periodic-sieve* [`irrational_erdosSupportSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L11590)*
+*<span class="sans-serif">\[Lean\]</span><span class="sans-serif">(uniform)</span>*periodic-sieve* [<span class="smallcaps">Lean source</span>](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean#L49)*
 
 </div>
 

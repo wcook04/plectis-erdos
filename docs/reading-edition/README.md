@@ -4,7 +4,7 @@
 
 # Reading edition
 
-Edition fingerprint `1d5bb21145c9a4d6`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `637aca6c3ddb6372`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
