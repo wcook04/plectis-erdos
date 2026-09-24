@@ -237,6 +237,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "These estimates are ordinary arguments in the short paper",
         "The infinite tail is the hard step",
         "credits it to him",
+        "does not identify its weighted condition with that remark",
         "irrationality for every infinite support remains open",
         "already implies the affine independence",
         "who credits it to Shallit",
@@ -245,7 +246,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     "four_decisions": (
         "Every result that returns to a world raises four decisions",
         "A successful check in one row settles nothing in another",
-        "No program decides what is important",
+        "No deterministic check decides what is important",
     ),
     "world_and_obligations": (
         "Negative results are part of what the loop produces",

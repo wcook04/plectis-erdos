@@ -52,9 +52,10 @@ Erd\H{o}s problems this way. Its results include an irrationality criterion
 for Problem 257, checked in Lean and by Comparator, that admits supports with
 divergent reciprocal sum, and a formal refutation of the Formal Conjectures
 statement of Problem 1041, built on a counterexample posted by the forum
-contributor \texttt{ani}; Formal Conjectures now records the answer as
-\texttt{False} and links the proof. Worked cases show what the record keeps
-for a result. The paper compares the design with Prove2Me and blueprint-based
+contributor \texttt{ani}; Google DeepMind's Formal Conjectures now records the
+answer as \texttt{False} and links the proof. Worked cases from Problems 257
+and 249 and from a cross-problem synthesis show what the record keeps for a
+result. The paper compares the design with Prove2Me and blueprint-based
 systems and specifies the controlled comparison that will measure whether
 such records reduce the work of understanding, checking and continuing a
 result.
@@ -111,26 +112,29 @@ The proof turns rationality into a lattice. For $N\ge1$,
 so if $X_A(b)=p/q$ every such displacement is at least $1/q$, and it suffices
 to find arbitrarily small ones. Sampling $N$ along multiples of a modulus that
 every element of a finite part of $A$ divides removes that part. The infinite
-tail is the hard step: one average over an observation window bounds the
-complete periods of each remaining exponent by terms the weighted sum
-controls, and the incomplete periods of infinitely many exponents need a
-second average, over dyadic window lengths. In the Lean source,
-\texttt{weightedDyadicMeanTarget} builds that finite window from the weighted
-data and \texttt{weighted\_displacement\_cofinal\_close\_return} extracts the
-late index
-(\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{WeightedReturn.lean}).
+tail is the hard step. Each remaining term is periodic in $N$; averaging over
+the first $T$ multiples of the modulus bounds its complete periods by its
+weighted summand when the $P$-part of the exponent divides the modulus, and
+through a large common divisor otherwise. The leftover incomplete periods of
+infinitely many exponents need a second average, over dyadic values of~$T$
+(\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{WeightedReturn.lean}
+carries both averages).
 
 Erd\H{o}s proved the pairwise-coprime case of the reciprocal-summable criterion
 and stated, without details, that coprimality can be
-removed~\cite[p.~222]{erdos1968}. The short paper proves that stated extension
-at every integer base and credits it to him; the weighted condition, the
-support $A_\star$ and the two-average mechanism are its own contribution. The
-criterion excludes full support and the set of all odd exponents, and
-irrationality for every infinite support remains open.
+removed~\cite[p.~222]{erdos1968}. The short paper gives a complete proof of
+that stated extension at every integer base, which Lean checks and Comparator
+has compared, and credits it to him. Erd\H{o}s also remarked that reciprocal
+summability could be replaced by a weaker, more complicated condition, which
+he did not state; the short paper does not identify its weighted condition
+with that remark, and it credits Duverney and Tachiya for a related selection
+step~\cite{duverneytachiya}. The criterion excludes full support and the set
+of all odd exponents, and irrationality for every infinite support remains
+open.
 
 A reader given this much can check the theorem, see why it holds, see whose
-idea it extends and see what is left to prove. Mathematicians writing in August
-and September 2026 describe what a proof produced at machine speed arrives
+idea it extends and see what is left to prove. Mathematicians writing in
+September 2026 describe what a proof produced at machine speed arrives
 without. Kra writes that the machines are producing solutions ``faster than
 the mathematical community can read them, much less digest them''~\cite{kra};
 Cohn calls the unexplained remainder technical debt~\cite{cohn}; Tao asks for
@@ -145,9 +149,7 @@ literature it relied on and the precise statement that remains open.
 
 This paper describes a research environment built to keep that record. Its
 unit of work is the \emph{problem-sized world}: one research problem together
-with everything learned about it, kept in a public repository so that any
-model, provider or person can resume from it and accepted work returns to it
-with credit. As producing results becomes easier, helping other people
+with everything learned about it, kept in a public repository. As producing results becomes easier, helping other people
 understand and use them becomes the scarce part of the work, and the world is
 organised around that part.
 
@@ -162,8 +164,8 @@ stops. Its long record keeps the complete arguments, failed routes,
 experiments with their finite domains, corrected claims and attribution for
 every borrowed idea. Beside them sit the Lean source, checked by a pinned
 kernel~\cite{lean4}; a claim registry with the wording, evidence class and
-limits of each public claim; and a ledger binding every result asserted in a
-paper to the Lean declarations that state it. A margin mark beside a result
+limits of each public claim; and a ledger recording, for every result asserted
+in a paper, the Lean declarations that state it or that none does. A margin mark beside a result
 links its declaration and any Comparator receipt; an unmarked result rests on
 the paper's own argument, and a dagger marks a named input the formal proof
 assumes.
@@ -202,15 +204,15 @@ as an open proposition \\
 \bottomrule
 \end{tabular}
 \caption{Four decisions about a returned result, with the record kept for the
-weighted criterion of Section~\ref{sec:intro}. A successful check in one row
-settles nothing in another.}
+weighted criterion of Section~\ref{sec:intro}.}
 \label{tab:decisions}
 \end{table}
 
 Problem 249 asks whether $S=\sum_{n\ge1}\varphi(n)/2^n$ is irrational, where
 $\varphi$ is Euler's totient function~\cite{erdosgraham}. Its short
-paper~\cite{paper249} starts from an exact theorem about the sequences any
-proof must handle. With $\mathbb N=\{0,1,2,\ldots\}$ and $\varphi(0)=0$, the
+paper~\cite{paper249} starts from an exact theorem about the subsequences
+obtained by splitting the coefficients of $S$ into residue classes modulo
+powers of a base. With $\mathbb N=\{0,1,2,\ldots\}$ and $\varphi(0)=0$, the
 seven sections $\varphi(2^jn+r)$ with $0\le j\le2$ and $0\le r<2^j$ reduce to
 the five sequences
 \[
@@ -223,29 +225,31 @@ $k\ge2$ and level $e\ge1$, the sections $\varphi(k^jn+r)$ with $0\le j\le e$
 and $0\le r<k^j$ span a space of dimension $k^e+1$ over $\mathbb Q$, with basis
 $\varphi(n)$, $\varphi(kn)$ and the sections with $1\le j\le e$ and $k\nmid r$;
 every other section is an explicit integer multiple of a basis element, and
-these reductions generate all integral relations.
+these reductions generate all integral relations. Coons proved that $\varphi$
+is not $k$-regular for any $k\ge2$~\cite{coons}; the basis theorem recovers
+this and gives the dimension at every level.
 
-The four decisions separate cleanly here. Lean proves the theorem for every
-base, and Comparator has compared it. The reductions are elementary; the
-independence carries the weight, through an evaluation matrix made diagonal
-and nonzero modulo an auxiliary prime, with evaluation points chosen by the
-Chinese remainder theorem and Dirichlet's theorem so that each row asks one
-primitive affine form to take a prime value. Martin's Theorem~1 already implies
-the affine independence~\cite{martin}, and the separation method goes back to
-Yazdani, who credits it to Shallit~\cite{yazdani}; the short paper credits
-both. The paper opens with the five-sequence example, and the record keeps the
-basis theorem apart from the irrationality of $S$, whose open form it states
-exactly.
+Lean proves the theorem for every base, and Comparator has compared it. The
+reductions are elementary; the independence carries the weight, through an
+evaluation matrix made diagonal and nonzero modulo an auxiliary prime, with
+evaluation points chosen by the Chinese remainder theorem and Dirichlet's
+theorem so that each row asks one primitive affine form to take a prime value.
+Martin's Theorem~1 already implies the affine independence~\cite{martin}, and
+the separation method goes back to Yazdani, who credits it to
+Shallit~\cite{yazdani}; the short paper credits both. The record keeps the
+basis theorem, a statement about the coefficients, apart from the
+irrationality of $S$, whose open form it states exactly.
 
-Put $H_t=\operatorname{lcm}(1,\ldots,t)$, and write $\mathrm{Cert}(t)$ for the
-existence of a finite computation showing that a scaled tail difference of $S$
-at $H_t$ is not an integer. The development expresses irrationality of $S$
-through these certificates. Lean checks
+Write $R_N=\sum_{j\ge1}\varphi(N+j)2^{-j}$ for the tail of $S$ after $N$
+terms, put $H_t=\operatorname{lcm}(1,\ldots,t)$, and write $\mathrm{Cert}(t)$
+for a finite exact computation, on totient values just after $H_t$ and
+$2H_t$, showing that $R_{2H_t}-R_{H_t}$ is not an integer. Lean checks, and
+Comparator has compared,
 \[
 \forall t\le82,\quad \mathrm{Cert}(t),
 \]
-and Lean also proves that irrationality of $S$ is equivalent to the unbounded
-supply
+and Lean also proves, again with a Comparator comparison, that irrationality
+of $S$ is equivalent to the unbounded supply
 \[
 \forall T,\ \exists t>T,\quad \mathrm{Cert}(t).
 \]
@@ -269,18 +273,20 @@ each new result against the whole corpus and makes the four decisions of
 Table~\ref{tab:decisions}: what the result establishes, whether it is routine
 or strong and whom it credits, where it belongs in a paper, and which
 obligation deserves the next unit of work. One agent may play both roles in
-sequence. Neither inherits the other's authority, and both wait while the
-frontier and its consumers are unchanged.
+sequence. Neither inherits the other's authority, and neither starts new work
+while the frontier and the files that depend on it are unchanged.
 
 Models do the reading, comparison and drafting under written procedures,
 published with the repository as agent skills. Deterministic code assembles
-each long record from its authored parts, binds every asserted result to its
-Lean evidence, and checks that each result a paper states is linked and that
-each registered limitation stays visible. No program decides what is
-important. That judgement is written into the paper, where a reader can
-inspect and dispute it.
+each long record from its authored parts, records the Lean evidence of every
+asserted result or its absence, and checks that each result a paper states is
+linked and that each registered limitation stays visible. No deterministic
+check decides what is important; that judgement, whoever drafts it, is written
+into the paper, where a reader can inspect and dispute it.
 
-Negative results are part of what the loop produces. A counterexample refutes a
+Negative results are part of what the loop produces. Tao observes that
+withheld negative results and processes hide where a new frontier
+lies~\cite{taomining}; the record keeps them. A counterexample refutes a
 conjecture on its exact domain, and a Lean no-go theorem rules out a class of
 strategies under explicit hypotheses, so later work need not repeat either. A
 failed computation records its finite domain and the inference it defeats. For
@@ -296,9 +302,9 @@ why the majorant of the reciprocal-summable proof fails beyond that class.
 Reading the problems together raises questions that none of them asks alone.
 Seven of the eight problems ask whether a series is irrational, and the
 synthesis paper~\cite{synthesis} studies what their methods share and where
-each stops. One of its questions grew out of the sparse corrections used for
-Problem 251: can one sequence of factorial digits prescribe several
-derivatives at once? For $c>0$, let $\mathcal H_c$ be the class of entire
+each stops. The sparse corrections used for Problem 251 led to a capacity
+criterion for factorial digits, and then to a question: can one sequence of
+factorial digits prescribe several derivatives at once? For $c>0$, let $\mathcal H_c$ be the class of entire
 functions $f(z)=\sum_{n\ge1}e_nz^n/n!$ with $e_n\in\mathbb Z_{\ge0}$,
 $e_n\le n^c$ eventually, and every fixed positive integer dividing $e_n$ for
 all large $n$, and for an integer $d\ge1$ put
@@ -317,11 +323,13 @@ construction rests on a carry identity,
  =-b_0+\sum_{n\ge1}\frac{(nb_{n-1}-b_n)\,z^n}{n!}:
 \]
 adding such a term to $f$ leaves $f(1)$ unchanged and moves $f'(1)$ by
-$\sum_nb_n/n!$, and a factor $(z-1)^k$ fixes the first $k$ derivatives at a
-cost of $k$ powers of $n$ in the coefficient allowance. Division by $(z-1)^d$
-gives the matching obstruction: vanishing derivatives become bounded integer
-coefficients, which eventual divisibility forces to vanish. Both theorems are
-proved in the synthesis paper by ordinary argument and carry no Lean mark.
+$\sum_nb_n/n!$, and a factor $(z-1)^k$ leaves $f(1),\ldots,f^{(k-1)}(1)$
+unchanged at a cost of $k$ powers of $n$ in the coefficient allowance.
+Division by $(z-1)^d$ gives the matching obstruction: vanishing derivatives
+become bounded integer coefficients, which eventual divisibility forces to
+vanish. Both theorems are proved in the synthesis paper by ordinary argument
+and carry no Lean mark; Lean checks the finite carry identity and its
+preservation of divisibility.
 
 \section{From a proof to a public claim}\label{sec:checks}
 \papersectiontarget{systems-lifecycle}
@@ -339,22 +347,26 @@ source; it does not verify whether that statement captures the intended
 mathematics or whether the paper describes it well. The gap is measurable.
 Feng et al.\ had mathematicians grade 200 candidate solutions to Erd\H{o}s
 problems produced by Aletheia, an agent built on Gemini Deep Think: 63 were
-technically correct and 13 meaningfully correct, and the other 50 answered a
-reading of the problem that missed Erd\H{o}s's intent~\cite{aletheia}.
+technically correct, of which 13 were meaningfully correct; the other 50
+answered a reading of the problem that missed Erd\H{o}s's
+intent~\cite{aletheia}.
 
 Comparator, a checker the Lean FRO built for judging machine-written
 proofs~\cite{leanfrocomparator}, answers the second question. A trusted
 challenge module restates each statement without its proof; the proof must be
 a term of exactly that type, using only the permitted axioms, and the Lean
-kernel must accept it. The corpus replay also passes every proof through
-nanoda, an independent kernel~\cite{nanodalib}, and continuous integration
-requires a deliberately altered statement to fail, so the harness cannot pass
-vacuously. Comparator cannot decide whether a statement is the right
-translation of the problem. It guarantees that the statement a reader inspects
-is the statement that was proved, so ``Comparator-checked'' is accurate where
-``independently verified'' would overclaim.
+kernel must accept it. The corpus replay, run in the companion repository
+\texttt{plectis-erdos-lean}, also passes every compared proof through nanoda,
+an independent kernel~\cite{nanodalib}. In this repository, continuous
+integration requires a deliberately altered statement to fail Comparator, so
+the harness cannot pass vacuously. Comparator cannot decide whether a
+statement is the right translation of the problem. It guarantees that the
+separately written statement, which a reader can inspect, is the statement
+that was proved, so ``Comparator-checked'' is accurate where ``independently
+verified'' would overclaim.
 
-The paper-to-Lean ledger makes the second question countable. It holds one row
+The paper-to-Lean ledger makes both formal questions countable for the papers'
+own statements. It holds one row
 for each result asserted in the sixteen problem papers, 674 in all, counting a
 result stated in both a short paper and a long record twice, with its
 statement digest and kind of correspondence. For 506 rows the named Lean
@@ -364,7 +376,7 @@ marked with a dagger; and 3 have no Lean statement. Comparator has compared 633
 of the 646 exact and specialising rows, and the other 13 are queued for its
 next replay; every receipt in the pinned corpus replay was accepted by both the
 Lean kernel and nanoda. A digest detects a changed statement, and the
-classification of a correspondence stays a reviewed judgement.
+classification of a correspondence stays the maintainer's judgement.
 
 The third question stays with people. The claim registry records the wording
 of each public claim with its evidence class, the bounded domain of each finite
@@ -435,7 +447,9 @@ research-progress issue or email: no clone, proof, code or receipt schema is
 required. Accepted work receives a public receipt tied to exact artifacts.
 Acceptance does not establish theorem status, novelty, or release inclusion.
 Corrections append to the history, and an earlier contributor's record stays in
-it.
+it. Work also leaves the repository: Google DeepMind's Formal Conjectures
+maintainers have merged four of its contributions, linking formal proofs for
+Problems 257, 1049 and 1041 and a constant-base variant of Problem 258.
 
 \subsection{Worked example: Problem 1041}\label{sec:example}
 
@@ -491,16 +505,20 @@ totient sections $\varphi(k^jn+r)$ with $0\le j\le e$ and $0\le r<k^j$ span a
 space of dimension $k^e+1$ over $\mathbb{Q}$; certificates for every $t\le82$ &
 Certificates for arbitrarily large $t$ \\
 \addlinespace
-\#251, prime-gap dyadic series & Lean checks a synthetic prime-gap countermodel; the paper
-proves a sparse-perturbation obstruction & An argument specific to actual
-prime gaps \\
+\#251, prime-gap dyadic series & Lean and Comparator check that sparse
+corrections preserving the congruences fill an interval of sums; from the
+prime number theorem and a lemma of Schlage-Puchta as named inputs, Lean
+checks a sequence with the local statistics of prime gaps and a rational
+dyadic sum & An argument specific to actual prime gaps \\
 \addlinespace
 \#257, infinite exponent supports & The weighted-support criterion of
 Section~\ref{sec:intro}, at every integer base & Arbitrary infinite supports \\
 \addlinespace
-\#269, three-prime running LCMs & Both two-prime sums are transcendental, by a cited
-Hecke--Mahler theorem, the repeated-sum case first posted by Fan~\cite{fan269};
-Lean checks the formulas and the conditional transfer & The three-prime case \\
+\#269, three-prime running LCMs & Lean and Comparator check that the
+three-prime running-LCM kernel has nonsingular minors of every order, so no
+finite sum of separated products represents it; both two-prime sums are transcendental by a cited
+Hecke--Mahler theorem, the repeated-sum case first posted by
+Fan~\cite{fan269} & The three-prime case \\
 \addlinespace
 \#1041, lemniscate connections & The Formal Conjectures statement is refuted with
 \texttt{ani}'s example & Match with the 1958 wording \\
@@ -514,12 +532,11 @@ each result in full with its hypotheses and sources.}
 \label{tab:problems}
 \end{table}
 
-The repository holds 1,823 Lean modules under a pinned toolchain, sixteen
-problem papers totalling 773 pages, a cross-problem synthesis paper and three
-systems papers. The claim registry holds 150 public claims in seven statuses,
-from proved here and formalised here to conditional reduction and open, and
-states 19 remaining obligations exactly, one of them the Problem 1041
-correspondence review. Continuous integration builds the supported Lean roots,
+The repository holds 1,823 Lean modules in its two library roots under a
+pinned toolchain, sixteen problem papers totalling 773 pages, a cross-problem
+synthesis paper and three systems papers. The claim registry holds 150 public
+claims in seven statuses, from proved here and formalised here to conditional
+reduction and open, and states 19 remaining obligations exactly. Continuous integration builds the supported Lean roots,
 a coverage build compiles every module a paper cites, and the release checker
 runs 15,666 checks over claims, papers, generated views and licences. A fresh
 clone needs no private file, and no public theorem depends on an unpublished
@@ -565,10 +582,11 @@ milestone lemmas, aided by a blind agent read-back of each Lean statement, and
 a proof sketch may import open statements for other agents to close.
 Persistence, decomposition, visible negative results and exact statement
 checking are therefore shared features; the two designs differ in the unit
-they maintain (Table~\ref{tab:prove2me}). Prove2Me began as a class game at
-Columbia in spring 2026 and its paper appeared on 28 August 2026; the first
-public version of this paper, with its claim registry and release checks,
-appeared in July 2026, and the two designs developed independently.
+they maintain (Table~\ref{tab:prove2me}). Prove2Me's paper appeared on 28
+August 2026; the first public version of this paper, with its claim registry
+and release checks, appeared in July 2026, and the two designs developed
+independently. Prove2Me is the published reference for hosted statement and
+proof separation, audited mission cores and read-back auditing.
 
 \begin{table}[!ht]
 \centering\small
@@ -614,10 +632,11 @@ pages and from this repository, on 24 September 2026.}
 The two compose. Prove2Me contributes hosting, importable statements,
 per-submission checking and a contributor base; a world contributes the
 problem-level context around a statement: its papers, failed routes,
-obstructions and open obligations. This repository's sharp collinear
-root-diameter bound for Problem 1041 is hosted on Prove2Me as a package of 21
-theorems with accepted proofs, ported from Lean 4.29.1 to Prove2Me's Lean 4.30.0
-environment.
+obstructions and open obligations. This repository's sharp constant in the
+collinear root-segment bound of Erd\H{o}s, Herzog and Piranian for Problem
+1041, which Comparator has also compared, is hosted on Prove2Me as a package
+of 21 theorems with accepted proofs, ported from Lean 4.29.1 to Prove2Me's
+Lean 4.30.0 environment.
 
 \paragraph{Other systems.} Feng et al.\ ran an agent over the 700 Erd\H{o}s
 problems then listed as open, published graded outcomes~\cite{aletheia}, and
@@ -651,20 +670,17 @@ The other seven targets remain open, and independent human review of the
 correspondence between the Problem 1041 refutation and the 1958 wording has not
 been recorded. The system records evidence classes and review events;
 novelty and significance are judgements it leaves to experts, as Feng et al.\
-also propose~\cite{autonomousmath}. A coordinated mistake in a statement, its
-record and its checks can pass every structural check. The examples here show
-how the record organises results; whether the workflow made those results more
-likely has not been measured. By 24 September 2026 no outside human contributor
-had opened a pull request or issue in the repository; its outside record is in
-Formal Conjectures, whose maintainers have merged four of its contributions,
-and on Prove2Me, which hosts its Problem 1041 package with accepted proofs. A
-record also leaves several of the concerns in Section~\ref{sec:intro} where it
+also propose~\cite{autonomousmath}. The examples here show how the record
+organises results; whether the workflow made those results more likely has
+not been measured. By 24 September 2026 no outside human contributor had
+opened a pull request or issue in the repository; its outside record is the
+Formal Conjectures merges of Section~\ref{sec:cycle} and the Prove2Me package.
+A record also leaves several of the concerns in Section~\ref{sec:intro} where it
 finds them: it trains no one, it restores no signal of individual
 expertise~\cite{litt}, and it answers neither the ethical objections some
 mathematicians raise to AI-assisted mathematics~\cite{chu} nor the warning of
 forty-two Fellows and Foreign Members of the Royal Society about catastrophic
-risk from AI~\cite{greenletter}. The private production environment is
-described here and is not distributed.
+risk from AI~\cite{greenletter}.
 
 \papersectiontarget{systems-scaling}
 The same design serves stronger models. A stronger model starts from the
@@ -680,8 +696,8 @@ for a bird's-eye view of an area~\cite{gowers}; Koukoulopoulos proposes a
 public facility in which coordinated agents explore a research programme
 divided into subproblems under researchers' direction~\cite{koukoulopoulos}. A
 problem-sized world supplies the shared record both proposals need, at the
-scale of eight problems, and Gowers's alternative is what the measurement below
-compares it with. Antieau writes that texts generated largely by a language
+scale of eight problems, and the written-briefing arm of the measurement below
+stands in for Gowers's alternative. Antieau writes that texts generated largely by a language
 model deserve a home other than the arXiv~\cite{antieau}; a world gives its
 long records one beside the proofs they explain. The same structure suits a
 single landmark result, and it asks three things of a field: stable result
@@ -689,9 +705,9 @@ identities, a checker where one exists, and an explicit boundary on public
 claims.
 
 The next measurement is comparative. With the source revision, task set,
-model, tool access and budget held fixed, agents receive the plain repository,
-an information-equivalent written briefing, or the world with its continuation
-tools. Independent domain readers grade whether each recovers the strongest
+model, tool access and budget held fixed, agents receive the Lean source
+alone, an information-equivalent written briefing, or the whole world with its
+continuation tools. Independent domain readers grade whether each recovers the strongest
 supported claim, its hypotheses, its hard step, its antecedents and the
 remaining obligation, and review one returned change; statement errors,
 reviewer time and total work, preparation and maintenance included, are
@@ -783,6 +799,10 @@ Mersenne Subseries}, short paper on Erd\H{o}s Problem~257, September 2026,
 \bibitem{erdos1968} P.~Erd\H{o}s, \emph{On the irrationality of certain
 series}, Math.\ Student 36 (1968), 222--226 (issued 1969),
 \href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{scan}.
+\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya, \emph{Refinement of the
+Chowla--Erd\H{o}s method and linear independence of certain Lambert series},
+Forum Math.\ 31 (2019), 1557--1566,
+\href{https://doi.org/10.1515/forum-2018-0299}{DOI}.
 \bibitem{kra} B.~Kra, \emph{Deep theorems were scarce and difficult and so
 became an effective mechanism to identify deep thought. AI has broken this
 system}, guest post on \emph{What's new}, 13 September 2026,
@@ -810,6 +830,9 @@ L'Enseignement Math\'ematique 28, 1980, p.~61.
 $k$-Kernel of Euler's Totient}, short paper on Erd\H{o}s Problem~249, revised
 18 September 2026,
 \repolink{paper/249/erdos-249-binary-totient-series.pdf}{PDF}.
+\bibitem{coons} M.~Coons, \emph{(Non)Automaticity of number theoretic
+functions}, J.\ Th\'eor.\ Nombres Bordeaux 22 (2010), 339--352,
+\href{https://doi.org/10.5802/jtnb.718}{DOI}, Theorem~3.2.
 \bibitem{martin} G.~Martin, \emph{Simultaneous inequalities among values of
 the Euler phi-function}, 2006,
 \href{https://arxiv.org/abs/math/0603053v1}{arXiv:math/0603053v1}, Theorem~1.
@@ -862,7 +885,8 @@ Lean formalisation blueprints, 2020,
 \bibitem{leanarchitect} T.~Zhu, P.~Monticone, S.~Welleck, and J.~Avigad,
 \emph{LeanArchitect: Automating Blueprint Generation for Humans and AI},
 in \emph{17th International Conference on Interactive Theorem Proving},
-LIPIcs 382, 2026, pp.~25:1--25:16.
+LIPIcs 382, 2026, pp.~25:1--25:16,
+\href{https://doi.org/10.4230/LIPIcs.ITP.2026.25}{DOI}.
 \bibitem{leanmarathon} Y.~Zhang, Y.~Sun, T.~Suzuki, J.~D.~Lee, and F.~Liu,
 \emph{LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Horizon
 Lean Autoformalization}, 2026,
