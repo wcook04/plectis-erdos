@@ -1714,11 +1714,11 @@
       "paper_id": "erdos-243-reciprocal-tail-rigidity",
       "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
       "title_source": "manuscript",
-      "question_this_paper_answers": "Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erd\u0151s #243?",
+      "question_this_paper_answers": "For Erd\u0151s #243, when does the exact cubic-rate asymptotic condition force an irrational reciprocal sum, and what separate increment bound forces a Sylvester tail?",
       "subject": "Erd\u0151s #243",
       "subject_kind": "problem",
       "form": "Problem note",
-      "owns": "the problem-specific exposition for Erd\u0151s #243: cubic-rate irrationality under its exact hypothesis, the ordinary index bridge, the bounded-increment recurrence criterion, and the remaining open regime",
+      "owns": "the cubic-rate irrationality theorem and the problem-specific exposition for Erd\u0151s #243: the centred integer state, negative-part exclusions, conditional Sylvester criterion, and remaining arithmetic estimate",
       "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #243, which remains open",
       "publication_state": "active",
       "publication_class": "problem_paper",
@@ -1732,11 +1732,11 @@
         "year": "2026",
         "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Cubic-Rate Irrationality and Reciprocal-Tail Rigidity. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Cubic-Rate Irrationality and Reciprocal-Tail Rigidity. plectis-erdos, commit 7ab6a901a2fe07e8d0e5c99dc46821adffc7411b. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -1748,10 +1748,10 @@
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "source_sha256": "sha256:3a2910fc8e47636c6438c7bf9deaa7582b7dbb0e58bc960618055bd5783a83ec",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "section_count": 19,
       "sections": [
         {
@@ -4106,11 +4106,11 @@
         "year": "2026",
         "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Weighted Support Criteria for Reciprocal Mersenne Subseries. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Weighted Support Criteria for Reciprocal Mersenne Subseries. plectis-erdos, commit 7ab6a901a2fe07e8d0e5c99dc46821adffc7411b. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4122,10 +4122,10 @@
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "source_sha256": "sha256:51e400713f30cfdbac24b7e06b6d3a4f9bcaea00c81533ec057daf8b966b2fe4",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
       "section_count": 25,
       "sections": [
         {
@@ -6626,11 +6626,11 @@
       "paper_id": "erdos-1049-rational-base-lambert",
       "title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order",
       "title_source": "manuscript",
-      "question_this_paper_answers": "For Erd\u0151s #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?",
+      "question_this_paper_answers": "For Erd\u0151s #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?",
       "subject": "Erd\u0151s #1049",
       "subject_kind": "problem",
       "form": "Problem note",
-      "owns": "the problem-specific exposition for Erd\u0151s #1049: the Zudilin contour-region irrationality and exponent bounds, all-rank normalized Hankel formulas, the finite rank-eight coefficient pencil, and the remaining obstruction at 3/2",
+      "owns": "the problem-specific exposition for Erd\u0151s #1049: the ordinary rational-base irrationality theorem and uniform exponent bound for the (31/4)^r family, the exact normalised Hankel order and leading coefficient, the content and endpoint obstructions, the finite rank-eight coefficient-pencil result, and the remaining approximant and remainder construction at 3/2",
       "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #1049, which remains open",
       "publication_state": "active",
       "publication_class": "problem_paper",
@@ -6644,11 +6644,11 @@
         "year": "2026",
         "title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/1049/erdos-1049-rational-base-lambert.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order. plectis-erdos, commit 7ab6a901a2fe07e8d0e5c99dc46821adffc7411b. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/1049/erdos-1049-rational-base-lambert.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6660,10 +6660,10 @@
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "source_sha256": "sha256:8a4ef79bde4e4def74fc6ae6bfba990f43b824bd2638828814ddc53826e101a5",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/1049/erdos-1049-rational-base-lambert.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/1049/erdos-1049-rational-base-lambert.tex",
       "section_count": 23,
       "sections": [
         {
@@ -7304,7 +7304,7 @@
       "form": "Cross-problem paper",
       "owns": "the synthesis exposition and ordinary proofs across the covered problems: capacity and congruence constructions, Lambert subsums, rational-point counts, method limits and their research record",
       "not_authority_for": "a solution to any original Erd\u0151s target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem",
-      "publication_state": "pending_source_publication",
+      "publication_state": "active",
       "publication_class": "synthesis_paper",
       "publication_class_basis": "owns names 'synthesis exposition'",
       "manuscript_status": "technical_report",
@@ -7316,11 +7316,11 @@
         "year": "2026",
         "title": "Reading Eight Erd\u0151s Problems Together",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos, commit 0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7332,10 +7332,10 @@
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
       "source_sha256": "sha256:4c7bb3bfc2e00668ce4a85e35486f7b408706d38d564e49ffc4d3e4b5beb4ee8",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
       "section_count": 34,
       "sections": [
         {
@@ -7616,12 +7616,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:d60c650aaed47838a4df90d5653304f85df6d4778dea0096c2285805771b9a5d",
+      "source_sha256": "sha256:b0068a9204ee7133cbdd1ad71710d222e28596f9fe624c853b6325e048603be8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 21,
+      "section_count": 22,
       "sections": [
         {
           "level": 1,
@@ -7720,40 +7720,46 @@
           "line": 231
         },
         {
+          "level": 4,
+          "id": "proof-state-continuation.",
+          "title": "Proof-state continuation.",
+          "line": 237
+        },
+        {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 239
+          "line": 245
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 264
+          "line": 269
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 270
+          "line": 275
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 288
+          "line": 293
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 294
+          "line": 299
         }
       ],
       "citations_rendered": 34,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:91d14ce26c08458738dc0ae7dfa14463edc82ab9ba76f8a6b002c42c8fa9ff93",
-      "pdf_byte_count": 100722,
+      "pdf_sha256": "sha256:dfc797be87a598ea727be207e5dec5534e550cc6f3ae3b89bfb348f7090faad9",
+      "pdf_byte_count": 102961,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7781,7 +7787,7 @@
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 270
+            "line": 275
           }
         ],
         "unresolved_count": 0
@@ -8026,7 +8032,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:f90c671b6e7ef44810048e2ee425b64dfb3a4e81a00e2f13470482e1a800cbb1",
+      "source_sha256": "sha256:b25d2a4ef60c4d1bfe35759ac4b94bd55e01e45caa4377ca221e46eb3e3c39f5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8228,8 +8234,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:eb0278e15898a46721140486b8dd2e92fe57255610fb04656edc4a0e6391bd6a",
-      "pdf_byte_count": 155423,
+      "pdf_sha256": "sha256:3d557a832b943cb8b39e72e2b2de2419d5a0a89958339cf9be4123516a3f27c3",
+      "pdf_byte_count": 155436,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

@@ -58,6 +58,11 @@ def validate_systems_paper_evidence(
 
     errors: list[str] = []
     normalized = normalize_latex_evidence(paper_text)
+    # The record once named sec:failure after the paper renamed that section
+    # sec:checks, and nothing noticed. Every source label must still exist.
+    for key, label in sorted(evidence.get("source", {}).items()):
+        if key.endswith("_label") and f"\\label{{{label}}}" not in paper_text:
+            errors.append(f"publication evidence source.{key} names missing label {label}")
     evaluation = evidence.get("evaluation", {})
     summary = evaluation.get("summary", {})
     mutations = evaluation.get("mutations", [])
@@ -207,6 +212,10 @@ def mutation_fixture_failures() -> list[str]:
             r"no \(t=83\) or cofinal claim",
             "a cofinal claim",
         ),
+        "evidence_section_label_stale": source.replace(
+            r"\label{sec:checks}",
+            r"\label{sec:failure}",
+        ),
     }
     failures: list[str] = []
     for fixture_id, mutated in fixtures.items():
@@ -234,7 +243,7 @@ def main() -> int:
         return 1
     print(
         "systems_paper_evidence: central claim, historical outcome, and "
-        "evidence ceilings match; six opposing fixtures reject"
+        "evidence ceilings match; seven opposing fixtures reject"
     )
     return 0
 
