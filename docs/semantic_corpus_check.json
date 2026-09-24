@@ -114,7 +114,7 @@
     "statement_nodes": 14407
   },
   "surface_digests": {
-    "docs/RESULTS.md": "sha256:1434d737a1604e961712f6317f070a0dede712d958dd23a8258a09d1fd400281",
+    "docs/RESULTS.md": "sha256:eec149038551908f7cf2de63534fb14540f099ab7ccd2c20c1f224fe05689d88",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:2e9300fb916ac43824e3facf93f193906451cef64241363b99a64fb3814517d8",
     "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:1319d0175edc65147d32e19d9318e2fa701eb2150ec262f95bc5677d383f467d"
   },
