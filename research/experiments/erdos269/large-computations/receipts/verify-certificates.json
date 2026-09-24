@@ -1,0 +1,63 @@
+{
+  "schema": "erdos269-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "verify-certificates",
+  "program": "verify_recovered.py",
+  "program_sha256": "ec329bb8a33d82e873974449e00626ed009bdf6227253348890c6984cd922817",
+  "arguments": [
+    "--data",
+    "{data}"
+  ],
+  "requires": "stdlib",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.13.7",
+    "platform": "macOS-15.6.1"
+  },
+  "observed_wall_seconds": 4.8,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "The stored block data, tail enclosure, 13109-digit continued-fraction cylinder and 64-window lattice certificate pass every integer check; B_max equals the published 106-digit value.",
+  "result": {
+    "schema": "erdos269-r8-executed-exact-checks/1",
+    "passed": true,
+    "Lean_compilation": false,
+    "finite_predicates_checked": 37462,
+    "groups": {
+      "block_regeneration": 15502,
+      "independent_source_shells": 30,
+      "signed_floor_sum": 11648,
+      "tail_interval": 6,
+      "continued_fraction": 12,
+      "lattice_shape": 5,
+      "actual_window_composition": 128,
+      "lattice_row_membership": 64,
+      "lattice_budget": 64,
+      "scaled_inverse": 8192,
+      "lattice_exclusion": 3,
+      "two_prime_actual_kernel": 1200,
+      "two_prime_running_lcm": 406,
+      "rank_cap_algebra": 202
+    },
+    "cf_common_prefix_length": 13540,
+    "published_cf_length": 13109,
+    "published_block_Bmax": "1134599670999687767349520845707093359257353022286558739363600235016103207564063373270305324172145281971729",
+    "limits": [
+      "No Lean elaboration, kernel reduction, or axiom audit was performed.",
+      "Python-to-Lean identification of the generated actual forcing data is not proved here.",
+      "The finite CF list is not yet identified with Mathlib continued fractions of the actual tail."
+    ],
+    "input_sha256": {
+      "block_certificate.json": "47b4910a67502ecb0e4caf6699319dcc934f0e72a3edeedb9e4218653f4da5c8",
+      "cf_common_prefix.json": "f7e65cfb6b0f51494c2dbde534447f4ce7bf4ce0f746c92c1d4d5872035e4a32",
+      "dyadic_blocks.json": "4b4eea80652e12ff9a2ec86dc47940af0f9efd703190497cdb6c112e8059cbc5",
+      "tail_certificate.json": "b847fd5aa2d0c9e72f9763e623d410dbcf62e9319b4fa79a2e8c7f28ef74fce0"
+    }
+  },
+  "data_sha256": {
+    "block_certificate.json": "47b4910a67502ecb0e4caf6699319dcc934f0e72a3edeedb9e4218653f4da5c8",
+    "cf_common_prefix.json": "f7e65cfb6b0f51494c2dbde534447f4ce7bf4ce0f746c92c1d4d5872035e4a32",
+    "dyadic_blocks.json": "4b4eea80652e12ff9a2ec86dc47940af0f9efd703190497cdb6c112e8059cbc5",
+    "tail_certificate.json": "b847fd5aa2d0c9e72f9763e623d410dbcf62e9319b4fa79a2e8c7f28ef74fce0"
+  }
+}

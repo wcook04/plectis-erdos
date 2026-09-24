@@ -1,0 +1,53 @@
+{
+  "schema": "erdos269-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "lattice-search",
+  "program": "regenerate_block_certificate.py",
+  "program_sha256": "acecb8359dee23a7d5c7b039c824d65ea095f99a1b329cb9b6d3ab0ab9a5e430",
+  "arguments": [
+    "--data",
+    "{data}/dyadic_blocks.json",
+    "--out",
+    "{out}/block_certificate.json"
+  ],
+  "requires": "numpy",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.13.7",
+    "platform": "macOS-15.6.1",
+    "numpy": "2.4.6"
+  },
+  "observed_wall_seconds": 403.3,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "The deterministic weighted LLL search over the 64 windows of length 128 at starts from 10005 reproduces the published basis, budgets and B_max exactly (88559 steps).",
+  "result": {
+    "Bmax": "1134599670999687767349520845707093359257353022286558739363600235016103207564063373270305324172145281971729",
+    "max_budget": 184560461211,
+    "lll_steps": 88559,
+    "fields_equal_to_published": {
+      "starts": true,
+      "P": true,
+      "m0": true,
+      "forcing": true,
+      "g": true,
+      "index": true,
+      "determinant": true,
+      "weights": true,
+      "basis": true,
+      "budgets": true,
+      "max_budget": true,
+      "Bmax": true,
+      "published_Bmax": true,
+      "covers_published_Bmax": true,
+      "checks": true,
+      "lll_steps": true
+    }
+  },
+  "data_sha256": {
+    "block_certificate.json": "47b4910a67502ecb0e4caf6699319dcc934f0e72a3edeedb9e4218653f4da5c8",
+    "cf_common_prefix.json": "f7e65cfb6b0f51494c2dbde534447f4ce7bf4ce0f746c92c1d4d5872035e4a32",
+    "dyadic_blocks.json": "4b4eea80652e12ff9a2ec86dc47940af0f9efd703190497cdb6c112e8059cbc5",
+    "tail_certificate.json": "b847fd5aa2d0c9e72f9763e623d410dbcf62e9319b4fa79a2e8c7f28ef74fce0"
+  }
+}
