@@ -7616,12 +7616,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:d60c650aaed47838a4df90d5653304f85df6d4778dea0096c2285805771b9a5d",
+      "source_sha256": "sha256:b0068a9204ee7133cbdd1ad71710d222e28596f9fe624c853b6325e048603be8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 21,
+      "section_count": 22,
       "sections": [
         {
           "level": 1,
@@ -7720,40 +7720,46 @@
           "line": 231
         },
         {
+          "level": 4,
+          "id": "proof-state-continuation.",
+          "title": "Proof-state continuation.",
+          "line": 237
+        },
+        {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 239
+          "line": 245
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 264
+          "line": 269
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 270
+          "line": 275
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 288
+          "line": 293
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 294
+          "line": 299
         }
       ],
       "citations_rendered": 34,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:91d14ce26c08458738dc0ae7dfa14463edc82ab9ba76f8a6b002c42c8fa9ff93",
-      "pdf_byte_count": 100722,
+      "pdf_sha256": "sha256:dfc797be87a598ea727be207e5dec5534e550cc6f3ae3b89bfb348f7090faad9",
+      "pdf_byte_count": 102961,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7781,7 +7787,7 @@
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 270
+            "line": 275
           }
         ],
         "unresolved_count": 0
@@ -8026,7 +8032,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:f90c671b6e7ef44810048e2ee425b64dfb3a4e81a00e2f13470482e1a800cbb1",
+      "source_sha256": "sha256:b25d2a4ef60c4d1bfe35759ac4b94bd55e01e45caa4377ca221e46eb3e3c39f5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8228,8 +8234,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:eb0278e15898a46721140486b8dd2e92fe57255610fb04656edc4a0e6391bd6a",
-      "pdf_byte_count": 155423,
+      "pdf_sha256": "sha256:3d557a832b943cb8b39e72e2b2de2419d5a0a89958339cf9be4123516a3f27c3",
+      "pdf_byte_count": 155436,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

@@ -225,7 +225,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     "grounding_in_the_field": (
         "faster than the mathematical community can read them",
         "every AI-generated proof is born an unsolved exposition problem",
-        "Each of these describes a loss of state",
+        "Each of these concerns what a proof does not carry by itself",
     ),
     "world_and_obligations": (
         "The records treat negative results as outputs",
@@ -262,7 +262,17 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "semantic single-flight queue",
         "recorded separately from theorem failures",
         "It never changes the status of a mathematical claim",
+        "keeps the subgoals Lean leaves as the exact remaining obligation",
         "The public repository replays without the private environment",
+    ),
+    # The summary table and the cycle caption once dropped hypotheses the
+    # registry states: #243 needs a strictly increasing sequence of positive
+    # integers, #249's rank formula needs k >= 2 and e >= 1 (at e = 0 the family
+    # is phi(n) alone, of dimension one), and a refutation can settle a problem.
+    "result_hypotheses": (
+        "For a strictly increasing sequence of positive integers",
+        r"For every base $k\ge2$ and level $e\ge1$",
+        "a problem closes only when a proof or a refutation settles its original statement",
     ),
     "limits_and_scaling": (
         "The same design serves stronger models",
