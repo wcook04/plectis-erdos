@@ -197,12 +197,12 @@ BANNED_SHORTHAND = (
 )
 
 PAPER_SECTION_ORDER = (
-    r"\section{What AI-assisted mathematics loses}",
+    r"\section{A theorem and the explanation it needs}",
     r"\section{A problem-sized world}",
+    r"\section{From corpus to insight}",
     r"\section{From a proof to a public claim}",
     r"\section{The contribution cycle}",
     r"\section{Eight problems in one repository}",
-    r"\section{How the records are produced}",
     r"\section{Relation to Prove2Me and other systems}",
     r"\section{Limits, and what stronger models change}",
     r"\section{Conclusion}",
@@ -213,6 +213,11 @@ PAPER_SECTION_ORDER = (
 # paper built around one unit of work, the problem-sized world. The pins below
 # hold the claims that paper rests on and every limit it states: removing one
 # should fail this check rather than quietly shrink the paper's boundary.
+# The 24 September revision opens with worked mathematics instead of an
+# account of the field, so its groups also pin each example's evidence class:
+# the A-star estimates and the synthesis theorems are ordinary arguments, the
+# reciprocal-summable case is credited to Erdos, and the totient independence
+# is credited to Martin and to Yazdani and Shallit.
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
         "persistent unit of work, the problem-sized world",
@@ -227,16 +232,36 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "every AI-generated proof is born an unsolved exposition problem",
         "Each of these concerns what a proof does not carry by itself",
     ),
-    "world_and_obligations": (
-        "The records treat negative results as outputs",
-        "A Lean no-go theorem rules out a class of strategies",
-        "Open obligations are stated as exactly as results",
+    "worked_mathematics": (
+        "The criterion reaches past reciprocal summability",
+        "These estimates are ordinary arguments in the short paper",
+        "The infinite tail is the hard step",
+        "credits it to him",
+        "does not identify its weighted condition with that remark",
+        "irrationality for every infinite support remains open",
+        "already implies the affine independence",
+        "who credits it to Shallit",
+        "carry no Lean mark",
     ),
+    "four_decisions": (
+        "Every result that returns to a world raises four decisions",
+        "A successful check in one row settles nothing in another",
+        "No deterministic check decides what is important",
+    ),
+    "world_and_obligations": (
+        "Negative results are part of what the loop produces",
+        "A Lean no-go theorem rules out a class of strategies",
+        "the record states it in exactly that form",
+    ),
+    # The ledger's exact_or_stronger class includes equality: its declarations
+    # state the result or one implying it by an immediate specialisation. An
+    # earlier edition printed it as "a stronger form".
     "three_questions": (
         "Lean verifies that a proof establishes the formal statement written in the source",
         "requires a deliberately altered statement to fail",
         "Comparator-checked",
         "The third question stays with people",
+        "state it or a result that implies it by an immediate specialisation",
     ),
     "escaped_limitation": (
         "That requirement comes from a test in which a limitation escaped",
@@ -258,25 +283,38 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "whether the formal statement matches the 1958 wording",
     ),
     "production_boundary": (
-        "Shared state on disk",
+        "Durable state lives in files",
         "semantic single-flight queue",
         "recorded separately from theorem failures",
         "It never changes the status of a mathematical claim",
-        "keeps the subgoals Lean leaves as the exact remaining obligation",
+        "becomes the exact remaining obligation",
         "The public repository replays without the private environment",
     ),
     # The summary table and the cycle caption once dropped hypotheses the
     # registry states: #243 needs a strictly increasing sequence of positive
     # integers, #249's rank formula needs k >= 2 and e >= 1 (at e = 0 the family
     # is phi(n) alone, of dimension one), and a refutation can settle a problem.
+    # The #257 criterion needs a finite nonempty prime set, and the synthesis
+    # class H_c is defined for c > 0.
     "result_hypotheses": (
         "For a strictly increasing sequence of positive integers",
         r"For every base $k\ge2$ and level $e\ge1$",
         "a problem closes only when a proof or a refutation settles its original statement",
+        r"fix a finite nonempty set $P$ of primes",
+        r"For $c>0$, let $\mathcal H_c$",
+    ),
+    "related_work": (
+        "is the closest published system",
+        "Persistence, decomposition, visible negative results and exact statement checking are therefore shared features",
+        "LeanMarathon maintains an evolving blueprint",
+        "the two designs developed independently",
     ),
     "limits_and_scaling": (
         "The same design serves stronger models",
         "The next measurement is comparative",
+        "an information-equivalent written briefing",
+        "whether the workflow made those results more likely has not been measured",
+        "no outside human contributor had opened a pull request or issue",
     ),
     "real_public_routes": (
         "docs/ARCHITECTURE.md",
