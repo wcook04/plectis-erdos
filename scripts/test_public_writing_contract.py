@@ -68,13 +68,33 @@ def main() -> None:
         ):
             require(stale not in manuscript, f"{path.name} repeats obsolete corpus status: {stale}")
 
+    # The public site refuses "one person built this" framing: the work is read
+    # as if a department produced it, and the site deploy scans every rendered
+    # paper for it. The systems paper merged two such sentences that only the
+    # deploy caught, so the manuscripts are checked here, before merge. The
+    # strategy paper's two clauses about overlapping contributor roles are the
+    # only known exceptions.
+    import re
+
+    founder = re.compile(r"\b(?:one[- ]person|single[- ]person)\b", re.IGNORECASE)
+    role_clauses = (
+        "one person may perform several, and several people may perform one",
+        "one person may perform both roles",
+    )
+    for path in sorted((ROOT / "paper").rglob("*.tex")):
+        manuscript = " ".join(path.read_text(encoding="utf-8").split())
+        for clause in role_clauses:
+            manuscript = re.sub(re.escape(clause), "", manuscript, flags=re.IGNORECASE)
+        hit = founder.search(manuscript)
+        require(hit is None, f"{path.relative_to(ROOT)} uses one-person framing: {hit.group(0) if hit else ''}")
+    require(founder.search("One person has built the environment") is not None,
+            "one-person framing guard lost its specimen")
+
     # The same blanket split must not survive on the pages a contributor or an
     # outside model reads first. The guard above covered only the manuscripts,
     # so CONTRIBUTING.md and the related-problem map kept the obsolete sentence
     # after the #1041 status changed. The pattern is loose on purpose: it
     # matches the claim, whatever words surround "eight".
-    import re
-
     blanket = re.compile(
         r"\b(?:all|none of the)\s+eight\b[^.]{0,80}?"
         r"(?:remain(?:s)? open|(?:is|are) (?:solved|resolved|unsolved)|problems? is solved)",

@@ -249,7 +249,7 @@
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
         "paper/systems/open-source-mathematics-strategy.tex": "sha256:f90c671b6e7ef44810048e2ee425b64dfb3a4e81a00e2f13470482e1a800cbb1"
       },
-      "rendered_content_digest": "sha256:ee9221b632f49d363bb176fc1db5fffab0f56aeac7d7f6216d62d1c2a4229572",
+      "rendered_content_digest": "sha256:eb0278e15898a46721140486b8dd2e92fe57255610fb04656edc4a0e6391bd6a",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },
@@ -258,9 +258,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
-      "rendered_content_digest": "sha256:067949a50f7f66c298a75c9152a7fb3623b4dcc0b3f7f972ab82ea6611b5345f",
+      "rendered_content_digest": "sha256:046647b66db2bc850e7934e8456f96ce5d3537ae0f2f129160ee5d42bde34c59",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
