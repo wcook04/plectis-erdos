@@ -247,15 +247,17 @@ invocation:
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
   Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
-  FormalConjecturesVariants ResidualBench
+  FormalConjecturesVariants FC1049HeightRegion FC243CubicRate ResidualBench \
+  ErdosProblems.Erdos251.PaperLargeAuditR7
+lake env lean research/adapters/FC1049HeightRegion.lean
 python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
 `Erdos249257` and `ErdosProblems` are the default libraries. `Examples` builds
 consumer examples inside this package; read their imports and example
 declarations in [research/examples/Examples.lean](../research/examples/Examples.lean).
-The remaining targets check
-adapters, statement variants and residual examples; building them does not
+The remaining targets check adapters, statement variants, residual examples,
+and the separately compiled #251 paper audit; building them does not
 add reviewed claims to the mathematical record.
 
 The wrapper coordinates builds on the same machine. Equivalent requests share

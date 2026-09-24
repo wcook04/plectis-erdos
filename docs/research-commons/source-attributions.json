@@ -14127,8 +14127,8 @@
         },
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 392,
-          "line_end": 423,
+          "line_start": 393,
+          "line_end": 424,
           "excerpt_sha256": "sha256:912d421ce3a607706d9b45fcb033ab97d4d81f834be36a029c3407aca9e05ae8"
         }
       ],
@@ -14630,8 +14630,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 473,
-          "line_end": 506,
+          "line_start": 474,
+          "line_end": 507,
           "excerpt_sha256": "sha256:5bd0c8f1316751bbcc0c8dd95f60449cc49b395f5984c254b1db288a24fda020"
         }
       ],
@@ -14665,8 +14665,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 272,
-          "line_end": 290,
+          "line_start": 273,
+          "line_end": 291,
           "excerpt_sha256": "sha256:12a5b1f7563cefb7d10a26be861ae84e01bcba9b150a9655b9c3e2aabd93108b"
         }
       ],
@@ -14700,8 +14700,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 364,
-          "line_end": 428,
+          "line_start": 365,
+          "line_end": 429,
           "excerpt_sha256": "sha256:4db989ccba90a32a255fe9bd93b65967fa391e1cf1c9974d07cfa64d5d0e92c8"
         }
       ],
@@ -14735,8 +14735,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 344,
-          "line_end": 362,
+          "line_start": 345,
+          "line_end": 363,
           "excerpt_sha256": "sha256:7ff63cde13f349a5f42b41b5bbc6f9160c468a7a7ae2a92d8cd54b5d8afc85d6"
         }
       ],
