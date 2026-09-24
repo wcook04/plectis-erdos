@@ -1364,7 +1364,7 @@ Moubariz Z. Garaev, Florian Luca and Igor E. Shparlinski. [Character sums and co
 
 ## Erdős #243: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
 
-*For Erdős #243, when does a cubic growth rate force an irrational reciprocal sum, and what separate increment bound forces a Sylvester tail?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
+*For Erdős #243, when does the exact cubic-rate asymptotic condition force an irrational reciprocal sum, and what separate increment bound forces a Sylvester tail?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
 
 Longer record: [Reciprocal-Tail Rigidity: Theorems, Proofs and Questions](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) (244 KB as text).
 
