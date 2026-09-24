@@ -272,7 +272,7 @@ Start here (selected for this guide): [The denominator exclusions](full-text/erd
 
 Start here (selected for this guide): [Rationality and the next integer above a scaled partial sum](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:carry), [Finite denominator exclusions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:finite), [The remaining arithmetic inputs](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:open), [Relations among the criteria](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
-### Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?
+### For Erdős #243, when does a cubic growth rate force an irrational reciprocal sum, and what separate increment bound forces a Sylvester tail?
 
 **Cubic-Rate Irrationality and Reciprocal-Tail Rigidity**
 
@@ -368,7 +368,7 @@ Start here (selected for this guide): [Monic trinomials, in every degree](full-t
 
 Start here (selected for this guide): [A small least critical value](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:low-critical-closure), [Collinear roots and two sparse polynomial families](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:solved-polynomial-families), [Why the proposed spanning-tree estimate fails](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Guide to the results](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
-### For Erdős #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?
+### For Erdős #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
