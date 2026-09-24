@@ -101,6 +101,12 @@ srcDir = "research/adapters"
 # counted as this library's own mathematics.
 globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants", "FC1049HeightRegion"]
 
+# Exact zero-indexed cubic-rate #243 statement bridge for Formal Conjectures.
+# CI builds this focused non-default target explicitly.
+[[lean_lib]]
+name = "FC243CubicRate"
+srcDir = "research/adapters"
+
 # Ground-truth fixtures for semantic residual evaluation.  Eight labelled proof
 # sketches over two elementary targets, including deliberate target-restatement
 # and false-residual specimens, used by `scripts/residual_evaluator.py` to check
