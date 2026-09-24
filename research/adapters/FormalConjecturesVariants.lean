@@ -672,3 +672,43 @@ theorem erdos_257_variants_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
   Erdos249257.irrational_erdosSum_two_pow_support b hb
 
 end Erdos249257.FormalConjecturesErdos257
+
+/-! ## Erdős 257 finite-prime weighted support -/
+
+namespace Erdos257
+
+def erdos_257.variants.primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
+  ∏ p ∈ P, p ^ a.factorization p
+
+noncomputable def erdos_257.variants.primeWeightedTerm
+    (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
+  (erdos_257.variants.primeSetPart P a : ℝ) /
+    ((a : ℝ) * ((b : ℝ) ^ erdos_257.variants.primeSetPart P a - 1))
+
+noncomputable def erdos_257.variants.finitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
+  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
+    Summable (Set.indicator A (erdos_257.variants.primeWeightedTerm b P))
+
+theorem erdos_257.variants.finite_prime_weighted_support :
+    (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
+      erdos_257.variants.finitePrimeWeighted b A →
+        Irrational (∑' a : ℕ,
+          Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a)) ∧
+    (∀ H : Set ℕ, 0 ∉ H → erdos_257.variants.finitePrimeWeighted 2 H →
+      ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+        ∀ b : ℕ, 2 ≤ b →
+          Irrational (∑' a : ℕ,
+            Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a)) := by
+  simpa [erdos_257.variants.finitePrimeWeighted,
+    erdos_257.variants.primeWeightedTerm,
+    erdos_257.variants.primeSetPart,
+    ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim,
+    ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+    ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+    ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart,
+    Erdos249257.erdosSupportSeries] using
+      ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
+
+end Erdos257
+
+#print axioms Erdos257.erdos_257.variants.finite_prime_weighted_support
