@@ -274,6 +274,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
+        "totient_normal_form": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
+        ],
         "admissible_feedback": [
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
