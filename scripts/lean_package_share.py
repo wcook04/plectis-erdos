@@ -31,6 +31,22 @@ MIB = 1024 * 1024
 DEFAULT_SETUP_COMPRESSION_MIN_BYTES = MIB
 DEFAULT_RETAINED_PACKAGE_SEEDS = 2
 STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
+# Compiled outputs a dependency package can hold outside its ``.lake``
+# directory. Everything inside a package's ``.lake`` counts regardless of name.
+PACKAGE_ARTIFACT_SUFFIXES = (
+    ".olean",
+    ".olean.hash",
+    ".ilean",
+    ".ilean.hash",
+    ".trace",
+    ".c",
+    ".c.hash",
+    ".setup.json",
+    ".o",
+    ".a",
+    ".so",
+    ".dylib",
+)
 
 
 class PackageShareError(RuntimeError):
@@ -166,6 +182,32 @@ def cache_generation(packages_root: Path) -> dict[str, int]:
         "directory_count": directory_count,
         "newest_mtime_ns": newest_mtime_ns,
     }
+
+
+def warm_artifact_mismatch(source_packages: Path, target_packages: Path) -> str | None:
+    """Name the first compiled output the seed lacks or holds with other bytes.
+
+    Package HEADs and Git cleanliness say nothing about ignored Lake outputs,
+    so a seed with matching HEADs can still lack outputs this workspace has
+    already built. Replacing the tree would delete them.
+    """
+    for directory, subdirs, files in os.walk(target_packages):
+        subdirs[:] = [name for name in subdirs if name != ".git"]
+        base = Path(directory)
+        in_lake = ".lake" in base.relative_to(target_packages).parts
+        for name in files:
+            if not in_lake and not name.endswith(PACKAGE_ARTIFACT_SUFFIXES):
+                continue
+            target_file = base / name
+            relative = target_file.relative_to(target_packages)
+            source_file = source_packages / relative
+            if not target_file.is_file() or not source_file.is_file():
+                return str(relative)
+            if target_file.stat().st_size != source_file.stat().st_size:
+                return str(relative)
+            if file_sha256(target_file) != file_sha256(source_file):
+                return str(relative)
+    return None
 
 
 def copy_on_write_command(source: Path, target: Path) -> list[str] | None:
@@ -470,9 +512,18 @@ def attach_seed(
             "status": "unsupported_cross_device_seed",
             "proof_scope": "cache_acceleration_not_proof_evidence",
         }
+    target_existed = target.is_dir()
+    if target_existed:
+        missing = warm_artifact_mismatch(source, target)
+        if missing is not None:
+            return {
+                "schema": SCHEMA,
+                "status": "preserved_warm_workspace_artifacts",
+                "detail": f"workspace output absent from or different in the seed: {missing}",
+                "proof_scope": "cache_acceleration_not_proof_evidence",
+            }
     stage = lake / f".packages-stage-{secrets.token_hex(8)}"
     backup: Path | None = None
-    target_existed = target.is_dir()
     target_generation = cache_generation(target)
     try:
         clone_tree(source, stage)
