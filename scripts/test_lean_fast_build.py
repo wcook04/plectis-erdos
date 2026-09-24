@@ -35,6 +35,7 @@ SUPPORTED_ROOTS = (
     "Examples",
     "FormalConjecturesAdapter",
     "FormalConjecturesVariants",
+    "FC243CubicRate",
     "ResidualBench",
     LARGE_CERTIFICATE_ROOT,
 )
