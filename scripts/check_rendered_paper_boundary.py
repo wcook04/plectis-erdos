@@ -78,7 +78,8 @@ FIRST_MINUTE_CONTRACT = {
     # The September 2026 rewrite: page one carries the unit of work, the
     # #1041 refutation and the other seven targets' open status; the checks,
     # the contribution cycle and the limits each keep their boundary within
-    # one page of where they render today.
+    # one page of where they render today. The 24 September revision opens
+    # with three pages of worked mathematics, so the later windows moved back.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -87,18 +88,18 @@ FIRST_MINUTE_CONTRACT = {
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (2, 4): (
+        (4, 6): (
             "lean verifies that a proof establishes the formal statement written in the source",
             "comparator-checked",
             "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
             "coverage boundary, not a reliability score",
         ),
-        (4, 6): (
+        (6, 8): (
             "an empty search never counts as evidence of no consequence",
             "whether the formal statement matches the 1958 wording",
         ),
-        (8, 10): (
+        (9, 11): (
             "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),

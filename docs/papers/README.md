@@ -292,7 +292,7 @@ Start here (selected for this guide): [Irrationality at the cubic rate](full-tex
 
 **Bases and Integral Relations for the k-Kernel of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 17 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
 
 Start here (selected for this guide): [A basis and all its relations](full-text/erdos-249-binary-totient-series.md#sec:results), [Tail differences and finite residue tests](full-text/erdos-249-binary-totient-series.md#sec:carry-rank), [An equivalent residue condition for each hypothetical denominator](full-text/erdos-249-binary-totient-series.md#sec:frontier), [Information that does not force the gap](full-text/erdos-249-binary-totient-series.md#sec:nogo).
 
@@ -388,9 +388,9 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 22 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 15 sections · `claim-faithful-publication-systems` · native to this repository
 
-Start here (selected for this guide): [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [The contribution cycle](full-text/claim-faithful-publication-systems-paper.md#sec:cycle), [Eight problems in one repository](full-text/claim-faithful-publication-systems-paper.md#sec:instance), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
+Start here (selected for this guide): [A theorem and the explanation it needs](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From corpus to insight](full-text/claim-faithful-publication-systems-paper.md#sec:production), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 

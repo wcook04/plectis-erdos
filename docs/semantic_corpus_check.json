@@ -114,8 +114,8 @@
     "statement_nodes": 14407
   },
   "surface_digests": {
-    "docs/RESULTS.md": "sha256:a19ab6de971a71f3ed64d39e8adc8a6632a8790d687c7895b168821a3b5c76fc",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:b0068a9204ee7133cbdd1ad71710d222e28596f9fe624c853b6325e048603be8",
+    "docs/RESULTS.md": "sha256:865b886ca363f7473f90c8b4df835e9b11b40a5f1c0ac4e8e87d9adab985418b",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:2e9300fb916ac43824e3facf93f193906451cef64241363b99a64fb3814517d8",
     "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:1319d0175edc65147d32e19d9318e2fa701eb2150ec262f95bc5677d383f467d"
   },
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
