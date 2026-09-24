@@ -812,6 +812,41 @@ def test_named_construction_replay_unit() -> None:
                 raise AssertionError(f'accepted altered negative {mutate}')
 
 
+def test_weighted_support_replay_unit() -> None:
+    theorem = 'Erdos249257.ExternalVerification.divisibilityWeightedClaim'
+    contract = replay.load_contract(replay.ROOT)
+    unit = replay.select_replay_unit(contract, 'weighted-support')
+    positive, negative = replay.validate_unit_configs(replay.ROOT, unit)
+    require(unit['theorem'] == theorem, 'weighted replay selected the wrong theorem')
+    require(positive['theorem_names'] == [theorem], 'weighted replay is not one theorem')
+    require(negative['theorem_names'] == [theorem], 'negative weighted theorem drifted')
+    require(positive['challenge_module'] == negative['challenge_module'],
+            'weighted replay changed its challenge')
+    require(positive['solution_module'] != negative['solution_module'],
+            'weighted mismatch reused the positive solution')
+    require(unit['negative_config'] in contract['tracked_artifacts'],
+            'weighted mismatch is absent from the immutable artifact set')
+    require('verification/ExternalVerification/WeightedNegativeSolution.lean'
+            in contract['tracked_artifacts'],
+            'weighted mismatch source is absent from the immutable artifact set')
+    plan = replay.replay_plan('a' * 40, 'b' * 40, 'weighted-support')
+    require(plan['statement_contract']['theorem'] == theorem,
+            'weighted replay plan changed its theorem')
+    for mutation in ('challenge', 'axioms'):
+        altered = copy.deepcopy(negative)
+        if mutation == 'challenge':
+            altered['challenge_module'] = 'Wrong.Challenge'
+        else:
+            altered['permitted_axioms'] = ['propext', 'sorryAx']
+        with patch.object(replay, 'load_json', side_effect=[positive, altered]):
+            try:
+                replay.validate_unit_configs(replay.ROOT, unit)
+            except replay.ReplayError:
+                pass
+            else:
+                raise AssertionError(f'accepted weighted {mutation} mutation')
+
+
 def test_public_problem_artifact_coverage() -> None:
     """Keep the immutable release envelope visible across the full problem fleet."""
     live_contract = release.contract(release.ROOT)
@@ -908,6 +943,16 @@ def test_release_manifest() -> None:
                 root=root,
                 source_commit=commit,
                 source_tree=tree,
+                release_tag=tag,
+                runtime_receipt_path=parent / 'missing-receipt.json',
+            ),
+            'not a regular file',
+        )
+        expect_error(
+            lambda: release.build_manifest(
+                root=root,
+                source_commit=commit,
+                source_tree=tree,
                 release_tag="main",
                 runtime_receipt_path=receipt_path,
             ),
@@ -926,6 +971,7 @@ def main() -> int:
     test_tracked_artifact_path_prefers_nested_storage()
     test_replay_plan()
     test_named_construction_replay_unit()
+    test_weighted_support_replay_unit()
     test_public_problem_artifact_coverage()
     test_release_manifest()
     print(

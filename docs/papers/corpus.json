@@ -2369,12 +2369,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/249/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:a66a9b8be8cfeaca7235cb65b00d13672fdc980dcda9c063f52956fc0c92442d",
+      "source_sha256": "sha256:05b086860e1d04afa531ec89042c906afb4d84e19b2fadea9113064d53fe926e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 17,
+      "section_count": 18,
       "sections": [
         {
           "level": 1,
@@ -2450,33 +2450,39 @@
         },
         {
           "level": 1,
+          "id": "sec:base-six-test",
+          "title": "A complete equality test at base six",
+          "line": 460
+        },
+        {
+          "level": 1,
           "id": "app:sources",
           "title": "Further context and formal sources",
-          "line": 460
+          "line": 475
         },
         {
           "level": 2,
           "id": "affine-independence-in-the-earlier-literature",
           "title": "Affine independence in the earlier literature",
-          "line": 464
+          "line": 479
         },
         {
           "level": 2,
           "id": "regularity-mahler-equations-and-section-maps",
           "title": "Regularity, Mahler equations and section maps",
-          "line": 472
+          "line": 487
         },
         {
           "level": 2,
           "id": "a-finite-denominator-exclusion",
           "title": "A finite denominator exclusion",
-          "line": 496
+          "line": 511
         },
         {
           "level": 2,
           "id": "source-guide",
           "title": "Source guide",
-          "line": 502
+          "line": 517
         }
       ],
       "citations_rendered": 23,
@@ -2485,8 +2491,8 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:23d3a4bbdb64897771386aea7dc99c2e8b0fd1debcf4e50590cb666e3319a4c8",
-      "pdf_byte_count": 142405,
+      "pdf_sha256": "sha256:3337b5b37713d66855045367332824d2cb8595c7e845a399a918e27f2abd94e2",
+      "pdf_byte_count": 145650,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
