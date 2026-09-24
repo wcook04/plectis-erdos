@@ -12,7 +12,7 @@ many primes `ℓ` every root `r` of `f` modulo `ℓ` has `H (r)` a nonzero squar
 (stated through integral models `G = d f`, `J = d ^ 2 H`); then `H (α)` is a square in `ℚ(α)`.
 
 The paper derives this from the Chebotarev density theorem.  Here it follows from
-`ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_not_isSquare`, whose only analytic
+`ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_nonsquare_of_not_isSquare`, whose only analytic
 input is the simple pole of the Dedekind zeta function at `s = 1`, already in Mathlib.
 
 The reduction.  Put `K = ℚ[T] / (f)` with `α` the class of `T`, and `c` the leading coefficient
@@ -22,7 +22,7 @@ of `G`.  Then `a = c α` is integral, and for a polynomial `P ∈ ℤ[T]` and `e
 `r` is a root of `G` modulo `ℓ`, and taking `P = J`, `e = 2 deg J`, gives an element
 `b = (c ^ (deg J) d) ^ 2 H (α)` of `𝓞 K` with `φ (b) = (c ^ (deg J)) ^ 2 J (r)`.  If `H (α)` were
 not a square in `K`, neither would `b` be, and some prime `ℓ` beyond every bound would make
-`φ (b)` zero or a non-square, contradicting the hypothesis at the root `r`.
+`φ (b)` a non-square, contradicting the hypothesis at the root `r`.
 
 `squareSpecialisation_holds` is the statement of
 `ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisation` written out in full, so this file
@@ -64,9 +64,9 @@ theorem eval_map_int_eq_eval₂ {K : Type*} [Field K] [CharZero K] (α : K) (P :
   exact RingHom.ext_int _ _
 
 /-- The reduction of the square-specialisation lemma to
-`NonsquareModuloPrimes.exists_prime_hom_not_isSquare`, over an arbitrary number field containing
+`NonsquareModuloPrimes.exists_prime_hom_nonsquare_of_not_isSquare`, over an arbitrary number field containing
 a root `α` of `f` in which `H (α)` is not a square. -/
-theorem false_of_modular_squares {K : Type*} [Field K] [NumberField K] (α : K)
+theorem false_of_modular_squares_allow_zero {K : Type*} [Field K] [NumberField K] (α : K)
     (f H : Polynomial ℚ) (hf0 : f ≠ 0) (hfα : f.eval₂ (Rat.castHom K) α = 0)
     (hnsq : ¬ IsSquare (H.eval₂ (Rat.castHom K) α))
     (d : ℕ) (hd : 0 < d) (G J : Polynomial ℤ)
@@ -74,8 +74,7 @@ theorem false_of_modular_squares {K : Type*} [Field K] [NumberField K] (α : K)
     (hJ : J.map (Int.castRingHom ℚ) = Polynomial.C ((d : ℚ) ^ 2) * H)
     (hmod : ∃ N : ℕ, ∀ ℓ : ℕ, ℓ.Prime → N < ℓ → ∀ r : ZMod ℓ,
         (G.map (Int.castRingHom (ZMod ℓ))).eval r = 0 →
-        (J.map (Int.castRingHom (ZMod ℓ))).eval r ≠ 0 ∧
-          IsSquare ((J.map (Int.castRingHom (ZMod ℓ))).eval r)) :
+        IsSquare ((J.map (Int.castRingHom (ZMod ℓ))).eval r)) :
     False := by
   classical
   obtain ⟨Nmod, hNmod⟩ := hmod
@@ -118,9 +117,9 @@ theorem false_of_modular_squares {K : Type*} [Field K] [NumberField K] (α : K)
     rw [hbcoe] at hy
     field_simp
     linear_combination hy
-  -- a prime `ℓ` beyond every bound at which `b` is not a nonzero square
+  -- a prime `ℓ` beyond every bound at which `b` is not a square
   obtain ⟨ℓ, hℓ, hℓN, φ, hφ⟩ :=
-    ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_not_isSquare_of_not_isSquare b
+    ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_nonsquare_of_not_isSquare b
       hbnsq (max Nmod c.natAbs)
   haveI : Fact ℓ.Prime := ⟨hℓ⟩
   -- `c` is a unit modulo `ℓ`
@@ -141,15 +140,32 @@ theorem false_of_modular_squares {K : Type*} [Field K] [NumberField K] (α : K)
     have h := congrArg φ hzero
     rw [map_scaledEval, hφa, scaledEval_mul G c G.natDegree le_rfl, map_zero] at h
     exact (mul_eq_zero.mp h).resolve_left (pow_ne_zero _ hcℓ)
-  obtain ⟨hJne, s, hs⟩ := hNmod ℓ hℓ (lt_of_le_of_lt (le_max_left _ _) hℓN) r hGr
+  obtain ⟨s, hs⟩ := hNmod ℓ hℓ (lt_of_le_of_lt (le_max_left _ _) hℓN) r hGr
   have hφb : φ b = (c : ZMod ℓ) ^ (2 * k) * (J.map (Int.castRingHom (ZMod ℓ))).eval r := by
     rw [hbdef, map_scaledEval, hφa, scaledEval_mul J c (2 * k) (by omega)]
   apply hφ
-  refine ⟨?_, ⟨(c : ZMod ℓ) ^ k * s, ?_⟩⟩
-  · rw [hφb]
-    exact mul_ne_zero (pow_ne_zero _ hcℓ) hJne
-  · rw [hφb, hs]
-    ring
+  refine ⟨(c : ZMod ℓ) ^ k * s, ?_⟩
+  rw [hφb, hs]
+  ring
+
+/-- Compatibility form of the square-specialisation contradiction, retaining the older
+nonzero-square modular hypothesis. -/
+theorem false_of_modular_squares {K : Type*} [Field K] [NumberField K] (α : K)
+    (f H : Polynomial ℚ) (hf0 : f ≠ 0) (hfα : f.eval₂ (Rat.castHom K) α = 0)
+    (hnsq : ¬ IsSquare (H.eval₂ (Rat.castHom K) α))
+    (d : ℕ) (hd : 0 < d) (G J : Polynomial ℤ)
+    (hG : G.map (Int.castRingHom ℚ) = Polynomial.C (d : ℚ) * f)
+    (hJ : J.map (Int.castRingHom ℚ) = Polynomial.C ((d : ℚ) ^ 2) * H)
+    (hmod : ∃ N : ℕ, ∀ ℓ : ℕ, ℓ.Prime → N < ℓ → ∀ r : ZMod ℓ,
+        (G.map (Int.castRingHom (ZMod ℓ))).eval r = 0 →
+        (J.map (Int.castRingHom (ZMod ℓ))).eval r ≠ 0 ∧
+          IsSquare ((J.map (Int.castRingHom (ZMod ℓ))).eval r)) :
+    False := by
+  apply false_of_modular_squares_allow_zero α f H hf0 hfα hnsq d hd G J hG hJ
+  obtain ⟨N, hN⟩ := hmod
+  refine ⟨N, ?_⟩
+  intro ℓ hℓ hlt r hGr
+  exact (hN ℓ hℓ hlt r hGr).2
 
 /-- **Polynomial form of `long243:res:squarespec`**: under the paper's modular hypothesis, `H`
 is a square modulo the irreducible `f`. -/
@@ -213,6 +229,7 @@ theorem squareSpecialisation_holds :
     rw [← hsq, h]
     ring
 
+#print axioms ErdosProblems.Erdos243.PaperCompleteR21.false_of_modular_squares_allow_zero
 #print axioms ErdosProblems.Erdos243.PaperCompleteR21.false_of_modular_squares
 #print axioms ErdosProblems.Erdos243.PaperCompleteR21.sq_sub_dvd_of_modular_squares
 #print axioms ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds
