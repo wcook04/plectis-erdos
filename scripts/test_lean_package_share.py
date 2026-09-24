@@ -151,6 +151,43 @@ class LeanPackageShareTests(unittest.TestCase):
                     root, source, "a" * 64, {"mathlib": "abc123"}
                 )
 
+    def test_attach_preserves_warm_workspace_outputs_the_seed_lacks(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            package_share, "clone_tree"
+        ) as clone:
+            base = Path(directory)
+            root = self.make_root(base)
+            built = root / ".lake/packages/mathlib/.lake/build/lib/Mathlib/Foo.olean"
+            built.parent.mkdir(parents=True)
+            built.write_bytes(b"warm")
+            source = base / "seed"
+            (source / "mathlib").mkdir(parents=True)
+            receipt = package_share.attach_seed(
+                root, source, "a" * 64, {"mathlib": "abc123"}
+            )
+            self.assertEqual(receipt["status"], "preserved_warm_workspace_artifacts")
+            self.assertIn("Foo.olean", receipt["detail"])
+            self.assertEqual(built.read_bytes(), b"warm")
+            clone.assert_not_called()
+
+    def test_warm_artifact_check_compares_outputs_and_ignores_sources(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            source = base / "seed"
+            target = base / "workspace"
+            output = "mathlib/.lake/build/lib/Mathlib/Foo.olean"
+            for tree in (source, target):
+                (tree / output).parent.mkdir(parents=True)
+                (tree / output).write_bytes(b"same")
+            # Sources, notes and Git internals are not compiled outputs.
+            (target / "mathlib/Mathlib").mkdir(parents=True)
+            (target / "mathlib/Mathlib/Foo.lean").write_text("theorem foo : True := trivial\n")
+            (target / "mathlib/.git/objects").mkdir(parents=True)
+            (target / "mathlib/.git/objects/pack").write_bytes(b"git")
+            self.assertIsNone(package_share.warm_artifact_mismatch(source, target))
+            (source / output).write_bytes(b"diff")
+            self.assertEqual(package_share.warm_artifact_mismatch(source, target), output)
+
     def test_clone_command_refuses_ordinary_copy_fallback(self) -> None:
         with mock.patch.object(package_share.sys, "platform", "win32"):
             self.assertIsNone(
