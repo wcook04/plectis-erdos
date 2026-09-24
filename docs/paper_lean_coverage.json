@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
-  "content_digest": "sha256:4353d0be0b28909d61b1e161ed648977e7caf8c765e0b2e4e71727cf61b95c4e",
+  "content_digest": "sha256:7897183b0f160246879968bd3f1bccdbca1df110b12ce0240c2530408e35da6c",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -1909,7 +1909,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:b5019135ee5bf7f77def9071046144098c182a1cef97a05890dd7865e6a1d35e",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:410",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:412",
       "other_labels": [
         "eq:strengthened-cover"
       ],
@@ -1948,7 +1948,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:5deb5eaac428d65e2ba0ec7848adb44d7a3ff27fee98d7c7ddda9d489e587339",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:570",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:572",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -1991,7 +1991,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:657",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:659",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2038,7 +2038,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:17e70c7e375db04ec58fa70163814efca251acb652fb73b84d84a07a3a15760d",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:824",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:826",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2074,7 +2074,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:1e26929c04e4cdb30205d6e796ec3468b8d8b4f47e55c359f519551798631bce",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:944",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:946",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2129,7 +2129,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:506643145304e5fdb1a5ddbceac6a0b992d1929726a7d86ff093f2f6c01152c5",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:986",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:988",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2165,7 +2165,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1051",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1053",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [

@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `265043ec0ed93bce`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `f63dfcf7a6c7a9dc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1767,7 +1767,7 @@ Moubariz Z. Garaev, Florian Luca and Igor E. Shparlinski. [Character sums and co
 
 ## Erdős #243: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
 
-*For Erdős #243, when does the exact cubic-rate asymptotic condition force an irrational reciprocal sum, and what separate increment bound forces a Sylvester tail?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
+*Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
 
 <a id="erdos-243-reciprocal-tail-rigidity--erdos-243-reciprocal-tail-rigidity"></a>
 
@@ -3677,17 +3677,17 @@ The hypothesis is genuinely weaker than reciprocal summability. Let
 ``` math
 A_\star=\{2^k m:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}.
 ```
-Write $`H_N=\sum_{m=1}^N1/m`$ and $`N_k=2^{2^k}`$. The reciprocal mass in the $`k`$th layer is
+The layers are disjoint, since their elements have different $`2`$-adic valuations. For $`r\ge2`$, put
 ``` math
-\rho_k=2^{-k}\sum_{\substack{m\le N_k\\m\text{ odd}}}\frac1m
- =2^{-k}\bigl(H_{N_k}-\tfrac12H_{N_k/2}\bigr)
- \longrightarrow\frac{\log2}{2},
+S_r=\sum_{\substack{m\le2^r\\m\text{ odd}}}\frac1m.
 ```
-so $`\sum_{a\in A_\star}1/a`$ diverges. For $`P=\{2\}`$ the weighted mass of that layer is
+Each block $`2^j\le m<2^{j+1}`$, $`1\le j<r`$, contains $`2^{j-1}`$ odd integers, with reciprocal sum between $`1/4`$ and $`1/2`$. Including $`m=1`$ gives $`r/4\le S_r\le r`$. The ordinary reciprocal mass of the $`k`$th layer is $`2^{-k}S_{2^k}\ge1/4`$, so $`\sum_{a\in A_\star}1/a`$ diverges. For $`P=\{2\}`$, that layer’s weighted mass satisfies
 ``` math
-\frac{2^k}{2^{2^k}-1}\rho_k.
+\frac{S_{2^k}}{2^{2^k}-1}
+ \le\frac{2^k}{2^{2^k}-1}
+ \le2^{1-k}.
 ```
-Since $`H_N\le1+\log N`$, one has $`\rho_k\le2^{-k}+\log2`$. The weighted terms are therefore at most $`(1+2^k\log2)2^{1-2^k}`$, a summable sequence. Thus every infinite subset of $`A_\star`$ has irrational $`X_A(b)`$ at every integer base, although $`\sum_{a\in A_\star}1/a`$ diverges. This example is an ordinary argument; the Lean proofs do not treat this particular set.
+The last bound uses $`2^{2^k}-1\ge2^{2^k-1}`$ and $`2^k\ge2k`$. The weighted mass is summable. Every infinite subset of $`A_\star`$ therefore has irrational $`X_A(b)`$ at every integer base, although $`\sum_{a\in A_\star}1/a`$ diverges. This example is an ordinary argument; the Lean proofs do not treat this particular set.
 
 Both proofs select a term no larger than a finite average. For a related selection step on arithmetic progressions, see Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. The sparse-coefficient criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\] do not apply directly to $`c_A`$: for nonempty $`A`$, it is positive on every multiple of $`\min A`$. The companion, Section 1.2, gives the counting argument and distinguishes their remote-tail average from the displacement used here.
 
@@ -5766,7 +5766,7 @@ I thank Wouter van Doorn for advice on mathematical exposition, in particular on
 
 ## Erdős #1049: Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order
 
-*For Erdős #1049, which rational bases make F(a/b) irrational, what exact Hankel order is computed, and why does 3/2 remain open?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf)
+*For Erdős #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf)
 
 <a id="erdos-1049-rational-base-lambert--erdos-1049-rational-base-lambert"></a>
 
