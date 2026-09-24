@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 import re
@@ -26,6 +27,120 @@ LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 
 # The module that imports the whole #251 large certificate; CI builds it.
 LARGE_CERTIFICATE_ROOT = "ErdosProblems.Erdos251.PaperLargeAuditR7"
+
+# The complete supported-root set the required build job compiles.
+SUPPORTED_ROOTS = (
+    "Erdos249257",
+    "ErdosProblems",
+    "Examples",
+    "FormalConjecturesAdapter",
+    "FormalConjecturesVariants",
+    "ResidualBench",
+    LARGE_CERTIFICATE_ROOT,
+)
+
+# The post-merge workflow that compiles the paper-coverage modules, which no
+# supported root imports.
+COVERAGE_WORKFLOW = ".github/workflows/lean-coverage-build.yml"
+COVERAGE_BUILD_STEP = "- name: Memory-bounded coverage build"
+COVERAGE_COMMAND_PREFIX = [
+    "python3",
+    "scripts/lean_fast_build.py",
+    "--jobs",
+    "2",
+    "--lake-staleness",
+]
+# Coverage-lane auxiliary roots the coverage build deliberately leaves out,
+# each with its reason.
+COVERAGE_EXCLUDED_AUXILIARY_ROOTS = {
+    # The #68 size-floor certificate: its source records that it has not been
+    # kernel checked, and scripts/build_module_graph.py keeps it and the
+    # FiniteLeadBlocks leaves it imports out of every compiled environment.
+    "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+}
+MAIN_CACHE_PREFIX = (
+    "lake-${{ runner.os }}-${{ runner.arch }}-"
+    "${{ hashFiles('lean-toolchain') }}-"
+    "${{ hashFiles('lake-manifest.json') }}"
+)
+COVERAGE_CACHE_PREFIX = (
+    "lake-coverage-${{ runner.os }}-${{ runner.arch }}-"
+    "${{ hashFiles('lean-toolchain') }}-"
+    "${{ hashFiles('lake-manifest.json') }}"
+)
+
+
+def read_workflow(relative: str) -> str:
+    return (fast.ROOT / relative).read_text(encoding="utf-8")
+
+
+def coverage_build_targets(workflow: str | None = None) -> list[str]:
+    """Return the module targets of the one coverage-build wrapper call.
+
+    The call is a folded YAML scalar, one target per line, so the command is
+    the step's continuation lines joined with spaces.
+    """
+
+    workflow = read_workflow(COVERAGE_WORKFLOW) if workflow is None else workflow
+    step = workflow.split(COVERAGE_BUILD_STEP + "\n", 1)[1]
+    run = step.split("        run: >-\n", 1)[1]
+    words: list[str] = []
+    for line in run.splitlines():
+        if not line.startswith("          ") or not line.strip():
+            break
+        words.extend(line.split())
+    if words[: len(COVERAGE_COMMAND_PREFIX)] != COVERAGE_COMMAND_PREFIX:
+        raise AssertionError(
+            f"coverage build is not the bounded wrapper call: {' '.join(words[:6])}"
+        )
+    return words[len(COVERAGE_COMMAND_PREFIX) :]
+
+
+def coverage_workflow_paths(workflow: str) -> list[str]:
+    """Return the push path filter of the coverage-build workflow."""
+
+    triggers = workflow[workflow.index("\non:\n") : workflow.index("\nconcurrency:\n")]
+    block = triggers.split("\n    paths:\n", 1)[1]
+    patterns: list[str] = []
+    for line in block.splitlines():
+        if line.lstrip().startswith("#"):
+            continue
+        if not line.startswith("      - "):
+            break
+        patterns.append(line.strip()[2:].strip().strip('"').strip("'"))
+    return patterns
+
+
+def workflow_path_matches(path: str, pattern: str) -> bool:
+    """Match the two GitHub path-filter shapes the coverage workflow uses."""
+
+    if pattern.endswith("/**"):
+        return path.startswith(pattern[:-2])
+    return path == pattern
+
+
+def cache_restore_prefixes(workflow: str) -> list[str]:
+    """Return every cache `key:` and `restore-keys:` entry of a workflow.
+
+    actions/cache prefix-matches the primary key as well as each restore key,
+    so both kinds decide which saved entries a job can restore.
+    """
+
+    prefixes: list[str] = []
+    lines = workflow.splitlines()
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith("key: "):
+            prefixes.append(stripped.removeprefix("key: "))
+        if stripped != "restore-keys: |":
+            continue
+        indent = len(line) - len(line.lstrip())
+        for entry in lines[index + 1 :]:
+            if entry.strip() and len(entry) - len(entry.lstrip()) <= indent:
+                break
+            if entry.strip():
+                prefixes.append(entry.strip())
+    return prefixes
 
 
 class LeanFastBuildTests(unittest.TestCase):
@@ -278,6 +393,11 @@ class LeanFastBuildTests(unittest.TestCase):
             warm_workflow.index("- name: Install pinned Lean toolchain") :
             warm_workflow.index("- name: Fetch pinned dependency build artifacts")
         ]
+        coverage_workflow = read_workflow(COVERAGE_WORKFLOW)
+        coverage_setup = coverage_workflow[
+            coverage_workflow.index("- name: Install pinned Lean toolchain") :
+            coverage_workflow.index("- name: Fetch pinned dependency build artifacts")
+        ]
 
         for marker in (
             "ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/",
@@ -287,6 +407,7 @@ class LeanFastBuildTests(unittest.TestCase):
         ):
             self.assertIn(marker, lean_setup)
             self.assertIn(marker, warm_setup)
+            self.assertIn(marker, coverage_setup)
 
     def test_ci_fetches_dependency_artifacts_before_the_bounded_build(self) -> None:
         # A cold Actions cache must not fall through to compiling Mathlib from
@@ -310,15 +431,7 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertNotIn("leanprover/lean-action@", workflow)
 
     def test_ci_and_cache_warm_use_one_complete_wrapper_owner(self) -> None:
-        targets = (
-            "Erdos249257",
-            "ErdosProblems",
-            "Examples",
-            "FormalConjecturesAdapter",
-            "FormalConjecturesVariants",
-            "ResidualBench",
-            LARGE_CERTIFICATE_ROOT,
-        )
+        targets = SUPPORTED_ROOTS
         for relative in (
             ".github/workflows/lean.yml",
             ".github/workflows/lean-cache-warm.yml",
@@ -392,6 +505,271 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("persist-credentials: false", checkout_step)
         self.assertIn("runs-on: ubuntu-24.04", workflow)
         self.assertNotIn("runs-on: ubuntu-latest", workflow)
+
+    def test_coverage_build_checkout_does_not_persist_credentials(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        checkouts = re.findall(
+            r"(?ms)^      - uses: actions/checkout@.*?(?=^      - |\Z)",
+            workflow,
+        )
+
+        self.assertEqual(len(checkouts), 1)
+        self.assertIn(
+            "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            checkouts[0],
+        )
+        self.assertIn("persist-credentials: false", checkouts[0])
+        self.assertEqual(workflow.count("runs-on: ubuntu-24.04"), 1)
+        self.assertNotIn("runs-on: ubuntu-latest", workflow)
+
+    def test_coverage_build_pins_actions_to_commits_with_versions(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        action_lines = [
+            line.strip() for line in workflow.splitlines() if "uses:" in line
+        ]
+
+        self.assertEqual(len(action_lines), 5)
+        for line in action_lines:
+            self.assertRegex(
+                line,
+                r"uses: actions/[\w-]+(?:/[\w-]+)*@[0-9a-f]{40} # v[\d.]+$",
+                msg=f"coverage action is not pinned with a version comment: {line}",
+            )
+
+    def test_coverage_build_compiles_every_ledger_bound_module(self) -> None:
+        """Every module the paper coverage ledger cites must be compiled in CI.
+
+        The required build compiles only the supported roots. The coverage
+        ledger names declarations in the PaperComplete* trees that no supported
+        root imports: the dependency index lists them as
+        `not_present_in_loaded_root_environment`, and on #210 the required
+        build reported "0 stale/missing module(s)" for a pull request that
+        added one. A cited module that neither the supported roots nor the
+        coverage targets reach is a row whose Lean the public CI does not
+        compile.
+        """
+
+        modules = fast.discover(fast.ROOT)
+        targets = coverage_build_targets()
+        self.assertEqual(
+            [target for target in targets if target not in modules],
+            [],
+            "coverage build names a module that does not exist",
+        )
+        graph = fast.reachable_graph([*SUPPORTED_ROOTS, *targets], modules)
+        supported = fast.reachable(SUPPORTED_ROOTS, graph)
+        covered = fast.reachable(targets, graph)
+        by_path = {source.resolve(): name for name, source in modules.items()}
+        ledger = json.loads(
+            (fast.ROOT / "docs" / "paper_lean_coverage.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
+        cited: set[str] = set()
+        uncompiled: dict[str, list[str]] = {}
+        for row in ledger["rows"]:
+            lean = row.get("lean") or {}
+            if lean.get("status", "none") == "none":
+                continue
+            for declaration in lean.get("declarations", []):
+                module = by_path.get((fast.ROOT / declaration["file"]).resolve())
+                self.assertIsNotNone(
+                    module,
+                    f"{row['id']} cites {declaration['file']}, which no Lake "
+                    "library discovers",
+                )
+                cited.add(module)
+                if module not in supported and module not in covered:
+                    uncompiled.setdefault(module, []).append(row["id"])
+
+        self.assertGreater(len(cited - supported), 0, "the ledger parse drifted")
+        self.assertEqual(
+            uncompiled,
+            {},
+            "the coverage ledger cites modules no CI job compiles; import them "
+            f"from a coverage aggregator or add a target to {COVERAGE_WORKFLOW}",
+        )
+
+    def test_coverage_build_names_every_coverage_lane_auxiliary_root(self) -> None:
+        """The module graph's coverage-lane forest roots are the target list.
+
+        `scripts/build_module_graph.py` records every module no supported root
+        reaches as an auxiliary forest. Its paper roots (the aggregators, the
+        PaperComplete* audits and the correspondence audits) are what the
+        coverage build exists to compile, including the audits that cite no
+        ledger row themselves.
+        """
+
+        claims = json.loads(
+            (fast.ROOT / "docs" / "claims.json").read_text(encoding="utf-8")
+        )
+        auxiliary = claims["machine_readable_paper"]["module_graph"][
+            "auxiliary_roots"
+        ]
+        lane = {root for root in auxiliary if "Paper" in root}
+        targets = coverage_build_targets()
+
+        self.assertLessEqual(
+            COVERAGE_EXCLUDED_AUXILIARY_ROOTS,
+            lane,
+            "a coverage-build exclusion is no longer an auxiliary root; drop it",
+        )
+        self.assertEqual(
+            sorted(lane - COVERAGE_EXCLUDED_AUXILIARY_ROOTS - set(targets)),
+            [],
+            f"coverage-lane auxiliary roots missing from {COVERAGE_WORKFLOW}",
+        )
+        # The unchecked #68 certificates must stay out of every compiled
+        # environment, this one included.
+        modules = fast.discover(fast.ROOT)
+        covered = fast.reachable(targets, fast.reachable_graph(targets, modules))
+        self.assertEqual(
+            sorted(
+                module
+                for module in covered
+                if module in COVERAGE_EXCLUDED_AUXILIARY_ROOTS
+                or module.startswith("ErdosProblems.Erdos68.FiniteLeadBlocks.")
+                or module == "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum"
+            ),
+            [],
+        )
+
+    def test_coverage_build_is_one_owner_outside_the_supported_roots(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        targets = coverage_build_targets(workflow)
+        modules = fast.discover(fast.ROOT)
+        graph = fast.reachable_graph([*SUPPORTED_ROOTS, *targets], modules)
+        supported = fast.reachable(SUPPORTED_ROOTS, graph)
+
+        self.assertEqual(workflow.count("python3 scripts/lean_fast_build.py"), 1)
+        self.assertNotRegex(workflow, r"(?m)^\s*run:\s*lake build\b")
+        self.assertEqual(len(targets), len(set(targets)), "duplicate coverage target")
+        # A target the supported roots already reach is compiled by the
+        # required build, so naming it here would make a second owner.
+        self.assertEqual(sorted(set(targets) & supported), [])
+        self.assertEqual(
+            [target for target in targets if not fast.is_registered_lake_module(target)],
+            [],
+            "coverage targets must be Lake library modules",
+        )
+
+    def test_coverage_build_restores_the_main_cache_then_fetches_and_builds(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        restore = workflow.index("- name: Restore project Lean cache")
+        toolchain = workflow.index("- name: Install pinned Lean toolchain")
+        dependencies = workflow.index("- name: Fetch pinned dependency build artifacts")
+        build = workflow.index(COVERAGE_BUILD_STEP)
+        save = workflow.index("- name: Save the coverage Lean cache")
+
+        self.assertLess(restore, toolchain)
+        self.assertLess(toolchain, dependencies)
+        self.assertLess(dependencies, build)
+        self.assertLess(build, save)
+        self.assertIn("lake exe cache get", workflow[dependencies:build])
+
+        restore_step = workflow[restore:toolchain]
+        self.assertIn("uses: actions/cache/restore@", restore_step)
+        self.assertIn("path: .lake", restore_step)
+        self.assertIn(
+            f"key: {COVERAGE_CACHE_PREFIX}-${{{{ github.sha }}}}", restore_step
+        )
+        # Newest coverage entry first; otherwise the main cache the required
+        # build and the cache warm save, which holds the supported roots.
+        self.assertEqual(
+            cache_restore_prefixes(restore_step),
+            [
+                f"{COVERAGE_CACHE_PREFIX}-${{{{ github.sha }}}}",
+                COVERAGE_CACHE_PREFIX,
+                MAIN_CACHE_PREFIX,
+            ],
+        )
+
+        save_step = workflow[save:]
+        save_step = save_step[: save_step.index("\n      - ", 1)]
+        self.assertIn("uses: actions/cache/save@", save_step)
+        self.assertIn("path: .lake", save_step)
+        self.assertIn(
+            f"key: {COVERAGE_CACHE_PREFIX}-${{{{ github.sha }}}}", save_step
+        )
+        self.assertIn("if: always()", save_step)
+
+    def test_coverage_cache_is_invisible_to_the_required_build(self) -> None:
+        """lean.yml must never restore a cache the coverage build saved.
+
+        The cache warm stores the dependency-index receipt in `.lake` and
+        lean.yml reuses it; a coverage entry lacks it. If a pull request could
+        restore a coverage entry through a prefix match, its dependency-index
+        check would fall back to the full export.
+        """
+
+        coverage = read_workflow(COVERAGE_WORKFLOW)
+        save = coverage[coverage.index("- name: Save the coverage Lean cache") :]
+        saved_keys = [
+            line.strip().removeprefix("key: ")
+            for line in save.splitlines()[:8]
+            if line.strip().startswith("key: ")
+        ]
+        self.assertEqual(len(saved_keys), 1, "coverage save-key parse drifted")
+        for relative in (
+            ".github/workflows/lean.yml",
+            ".github/workflows/lean-cache-warm.yml",
+        ):
+            workflow = read_workflow(relative)
+            prefixes = cache_restore_prefixes(workflow)
+            self.assertIn(MAIN_CACHE_PREFIX, prefixes, f"{relative} cache-key parse drifted")
+            for prefix in prefixes:
+                self.assertFalse(
+                    saved_keys[0].startswith(prefix),
+                    f"{relative} would restore coverage cache entries via {prefix}",
+                )
+
+    def test_coverage_build_runs_after_merge_on_every_lean_input(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        triggers = workflow[workflow.index("\non:\n") : workflow.index("\nconcurrency:\n")]
+
+        self.assertIn("\n  push:\n    branches:\n      - main\n", triggers)
+        self.assertIn("\n  workflow_dispatch:\n", triggers)
+        # Off the pull-request path, so it can never be a required check.
+        self.assertNotIn("pull_request", triggers)
+        self.assertNotIn("lean-coverage-build", read_workflow(".github/workflows/lean.yml"))
+        self.assertIn("cancel-in-progress: false", workflow)
+
+        patterns = coverage_workflow_paths(workflow)
+        for pattern in patterns:
+            self.assertNotRegex(
+                pattern.removesuffix("/**"),
+                r"[*?\[\]!]",
+                f"unsupported path-filter shape: {pattern}",
+            )
+        modules = fast.discover(fast.ROOT)
+        targets = coverage_build_targets(workflow)
+        covered = fast.reachable(targets, fast.reachable_graph(targets, modules))
+        inputs = {
+            modules[module].relative_to(fast.ROOT).as_posix() for module in covered
+        }
+        inputs.update(
+            {
+                "lakefile.toml",
+                "lake-manifest.json",
+                "lean-toolchain",
+                "scripts/lean_fast_build.py",
+                "scripts/lean_build_share.py",
+                "scripts/lean_package_share.py",
+                "scripts/validation_singleflight.py",
+                COVERAGE_WORKFLOW,
+            }
+        )
+        self.assertEqual(
+            sorted(
+                path
+                for path in inputs
+                if not any(workflow_path_matches(path, pattern) for pattern in patterns)
+            ),
+            [],
+            "a coverage-build input is outside the push path filter, so a "
+            "change to it never recompiles the coverage modules",
+        )
 
     def test_fixed_ci_jobs_use_stable_ubuntu_image_and_keep_reader_matrix(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(

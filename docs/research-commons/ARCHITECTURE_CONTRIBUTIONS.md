@@ -25,9 +25,11 @@ contribution and do not silently transfer authorship of the surrounding corpus.
 2. Name one observable problem and one stop condition. For example: “a cold
    clone cannot discover the validation command; stop when the new route is
    discoverable and its regression test passes.”
-3. Preserve a public starting commit and provide the smallest replay another
-   contributor can run. New agent workflows must remain clone-local and must
-   not depend on private files, credentials, or an unpublished service.
+3. If you have a patch, name its public starting commit and the smallest replay
+   another contributor can run. For an idea alone, describe an example a
+   maintainer can inspect; the maintainer records the public starting point
+   when adopting it. New agent workflows must remain clone-local and must not
+   depend on private files, credentials, or an unpublished service.
 4. In the pull request, request the contribution roles and display name you
    want recorded. Name material collaborators and prior art separately.
 5. A maintainer reviews the exact change and its evidence. Acceptance records
