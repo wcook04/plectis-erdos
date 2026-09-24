@@ -5146,8 +5146,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1244,
-          "line_end": 1250,
+          "line_start": 1246,
+          "line_end": 1252,
           "expected_text": "\\bibitem{lucatachiya2017}",
           "excerpt_sha256": "sha256:e2ea1dec26aa5bc12b24ae324b5eec9758dfe18eef2464f06f2c610f65164b7d"
         },
@@ -5383,8 +5383,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1262,
-          "line_end": 1269,
+          "line_start": 1264,
+          "line_end": 1271,
           "expected_text": "\\bibitem{vanassche2001}",
           "excerpt_sha256": "sha256:c67b14d05ad70fe87ae10882e6666f671b4fb879b6ad3b2ac2f9cd21da8d1764"
         },
@@ -6923,8 +6923,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1223,
-          "line_end": 1225,
+          "line_start": 1225,
+          "line_end": 1227,
           "expected_text": "\\bibitem{erdos1948}",
           "excerpt_sha256": "sha256:12e925bb796b6215db708d25b5d1ab1c5640c351e7f3683e2c91ae968206b259"
         },
@@ -7393,8 +7393,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1219,
-          "line_end": 1223,
+          "line_start": 1221,
+          "line_end": 1225,
           "expected_text": "\\bibitem{kovactao}",
           "excerpt_sha256": "sha256:da365fb3627d4a62500ab14506a5fa9a7c61368c1f67b75982752d2ba474ccc5"
         },
@@ -8584,8 +8584,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1230,
-          "line_end": 1234,
+          "line_start": 1232,
+          "line_end": 1236,
           "expected_text": "\\bibitem{erdos1968}",
           "excerpt_sha256": "sha256:4ea0575269b0cc301d69524665b7d6cb05120bcbba9460851e9fa2718c3cafec"
         },
@@ -11181,8 +11181,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1215,
-          "line_end": 1219,
+          "line_start": 1217,
+          "line_end": 1221,
           "expected_text": "\\bibitem{taoteravainen2025}",
           "excerpt_sha256": "sha256:b8aeba1b74c5004a308c7a77d0dacb7f303d2e1210da60dac512f3834b9dfb1d"
         },
@@ -11552,8 +11552,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1204,
-          "line_end": 1211,
+          "line_start": 1206,
+          "line_end": 1213,
           "expected_text": "\\bibitem{duverneytachiya}",
           "excerpt_sha256": "sha256:0ef99b680f15dcdcdc4890932040fe1bad3f3ee018e801c7204dea8bae0d1b51"
         },
@@ -15094,8 +15094,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1211,
-          "line_end": 1215,
+          "line_start": 1213,
+          "line_end": 1217,
           "expected_text": "\\bibitem{kanekosuzukitachiya}",
           "excerpt_sha256": "sha256:1d98da1cc9acba9dff63b689605b7402eee23c5f2cea8e887c7c18989b40d0d1"
         },
@@ -16345,8 +16345,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1234,
-          "line_end": 1237,
+          "line_start": 1236,
+          "line_end": 1239,
           "expected_text": "\\bibitem{erdos1975}",
           "excerpt_sha256": "sha256:8fe2d89da58a1e4e231d39f70b8dc5e5e218e128f6a1964d09e9a63a746e2b0a"
         },
@@ -16417,8 +16417,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1237,
-          "line_end": 1241,
+          "line_start": 1239,
+          "line_end": 1243,
           "expected_text": "\\bibitem{bkkkz2026}",
           "excerpt_sha256": "sha256:156df176c039566fa6a406e54730ac45e0fabbf03ff99eaeb3b08442cc0945c5"
         }
@@ -16565,8 +16565,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1276,
-          "line_end": 1282,
+          "line_start": 1278,
+          "line_end": 1284,
           "expected_text": "\\bibitem{vandoornkovac}",
           "excerpt_sha256": "sha256:08841993ec7ee7aa859d0a63801cb36c9d22ae35f6f155707172b3fa7712308a"
         },
@@ -19015,8 +19015,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1241,
-          "line_end": 1244,
+          "line_start": 1243,
+          "line_end": 1246,
           "expected_text": "\\bibitem{nitecki2013}",
           "excerpt_sha256": "sha256:defd9a2ce501d09c198612d2849b08f6a067d1b43209958db0a0f1bc2c6a9fee"
         },
@@ -19100,8 +19100,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1225,
-          "line_end": 1230,
+          "line_start": 1227,
+          "line_end": 1232,
           "expected_text": "\\bibitem{formalconjectures257}",
           "excerpt_sha256": "sha256:25cf3513f78fba977dc2a6cefb4a67e70b7815d304207cbac09e637aaa5db383"
         }
@@ -21295,8 +21295,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1269,
-          "line_end": 1276,
+          "line_start": 1271,
+          "line_end": 1278,
           "expected_text": "\\bibitem{hornich1941}",
           "excerpt_sha256": "sha256:9fb245c54bf24e5b9fefda94bc836f1a8dae5e0a9c852475ce12f264cb114471"
         },
@@ -21362,8 +21362,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1256,
-          "line_end": 1262,
+          "line_start": 1258,
+          "line_end": 1264,
           "expected_text": "\\bibitem{lucatachiya2014independence}",
           "excerpt_sha256": "sha256:6c20454741356816e2d6d22e0fde01df4c611d7435ed3814f610e86ef368a80d"
         },
@@ -21429,8 +21429,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1250,
-          "line_end": 1256,
+          "line_start": 1252,
+          "line_end": 1258,
           "expected_text": "\\bibitem{lucatachiya2014periodic}",
           "excerpt_sha256": "sha256:3f90c9c82f80686f1efe4c911cd5f754201a1464c150d626d59690b5e96927f9"
         },
@@ -22861,8 +22861,8 @@
         {
           "excerpt_sha256": "sha256:d356e355cd55bdc6d3b71efb0cd91b94e87b3d8e9f15e29020add1e2537d8bda",
           "expected_text": "AI-assisted note of 17 September",
-          "line_end": 555,
-          "line_start": 555,
+          "line_end": 557,
+          "line_start": 557,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
