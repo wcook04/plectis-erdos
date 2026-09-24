@@ -239,7 +239,85 @@ jobs:
         # validation key, so every supported target is named here instead.
         # ErdosProblems.Erdos251.PaperLargeAuditR7 imports the whole #251
         # large certificate (lakefile library Erdos251LargeCertificate).
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants FC1049HeightRegion FC243CubicRate ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+      # The bounded build reports only target exit codes. Re-elaborate this
+      # adapter to expose the exact theorem's axiom report on every run, then
+      # fail if it contains anything beyond Lean's standard logical axioms.
+      - name: Audit FC1049 adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FC1049HeightRegion.lean | tee "$RUNNER_TEMP/fc1049-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc1049-axioms.log").read_text()
+          theorem = (
+              "ErdosProblems.Erdos1049.FormalConjecturesAdapter."
+              "erdos_1049_variants_rational_base_region_81_200"
+          )
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit FC257 weighted adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FormalConjecturesVariants.lean | tee "$RUNNER_TEMP/fc257-weighted-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc257-weighted-axioms.log").read_text()
+          theorem = "Erdos257.erdos_257.variants.finite_prime_weighted_support"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit FC257 reciprocal adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FormalConjecturesVariants.lean | tee "$RUNNER_TEMP/fc257-reciprocal-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc257-reciprocal-axioms.log").read_text()
+          theorem = "Erdos257.erdos_257.variants.summable_reciprocal_support"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
       - name: Verify a separate Lake project can use the library
         if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/check_downstream_reuse.py
@@ -312,10 +390,10 @@ jobs:
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-24.04
-    # Eight isolated checks run serially. The headline positive includes a
+    # Ten isolated checks run serially. The headline positive includes a
     # cold build of the full selected-statement closure; allow 45 minutes for
     # it and 20 for each remaining control, plus tool setup and receipt upload.
-    timeout-minutes: 210
+    timeout-minutes: 260
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -513,8 +591,16 @@ jobs:
           run_comparator verification/comparator-feedback-policy-negative-mismatch.json \
             > artifacts-feedback-policy-negative.log 2>&1
           feedback_policy_negative_exit=$?
+          run_comparator verification/comparator-weighted-support.json \
+            > artifacts-weighted-support-positive.log 2>&1
+          weighted_support_positive_exit=$?
+          run_comparator verification/comparator-weighted-support-negative-mismatch.json \
+            > artifacts-weighted-support-negative.log 2>&1
+          weighted_support_negative_exit=$?
           echo "feedback_policy_positive_exit=$feedback_policy_positive_exit" >> "$GITHUB_OUTPUT"
           echo "feedback_policy_negative_exit=$feedback_policy_negative_exit" >> "$GITHUB_OUTPUT"
+          echo "weighted_support_positive_exit=$weighted_support_positive_exit" >> "$GITHUB_OUTPUT"
+          echo "weighted_support_negative_exit=$weighted_support_negative_exit" >> "$GITHUB_OUTPUT"
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
           echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
           echo "local_1049_positive_exit=$local_1049_positive_exit" >> "$GITHUB_OUTPUT"
@@ -527,6 +613,8 @@ jobs:
           cat artifacts-1049-negative.log
           cat artifacts-249-totient-kernel-positive.log
           cat artifacts-249-totient-kernel-negative.log
+          cat artifacts-weighted-support-positive.log
+          cat artifacts-weighted-support-negative.log
           exit 0
       - name: Write and enforce commit-bound verification receipt
         if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
@@ -578,6 +666,27 @@ jobs:
           if not replay.replay_checks_pass(positive, negative, text, selected['expected_negative_diagnostic']):
               raise SystemExit('feedback-policy Comparator unit did not pass both controls')
           print('feedback-policy: positive accepted and exact negative statement rejected')
+          PYTHON
+      - name: Enforce the #257 weighted-support replay unit
+        if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
+        env:
+          WEIGHTED_POSITIVE_EXIT: ${{ steps.comparator.outputs.weighted_support_positive_exit }}
+          WEIGHTED_NEGATIVE_EXIT: ${{ steps.comparator.outputs.weighted_support_negative_exit }}
+        run: |
+          python3 - <<'PYTHON'
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import replay_external_verification as replay
+          selected = replay.select_replay_unit(replay.load_contract(Path.cwd()), 'weighted-support')
+          replay.validate_unit_configs(Path.cwd(), selected)
+          positive = int(os.environ.get('WEIGHTED_POSITIVE_EXIT') or '-999')
+          negative = int(os.environ.get('WEIGHTED_NEGATIVE_EXIT') or '-999')
+          log = Path('artifacts-weighted-support-negative.log')
+          text = log.read_text() if log.exists() else ''
+          if not replay.replay_checks_pass(positive, negative, text, selected['expected_negative_diagnostic']):
+              raise SystemExit('weighted-support Comparator unit did not pass both controls')
+          print('weighted-support: positive accepted and exact negative statement rejected')
           PYTHON
       - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
@@ -669,6 +778,8 @@ jobs:
             artifacts-1049-negative.log
             artifacts-249-totient-kernel-positive.log
             artifacts-249-totient-kernel-negative.log
+            artifacts-weighted-support-positive.log
+            artifacts-weighted-support-negative.log
             artifacts-feedback-policy-positive.log
             artifacts-feedback-policy-negative.log
           if-no-files-found: error

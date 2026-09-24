@@ -235,6 +235,14 @@ selected entry, not every theorem in the #257 paper. The
 [replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md) explains the
 separate source-bound Comparator receipt.
 
+The replay guide now provides a one-theorem `weighted-support` unit for
+`divisibilityWeightedClaim`. On Linux with the stated prerequisites, its
+single `run --unit weighted-support` command fetches an exact commit, compares
+the theorem with the separate challenge, and requires rejection of a
+deliberately changed statement. The configuration is runnable, but a passing
+receipt for the selected source commit has not been recorded here. The
+`189/388` Python calculation above is a different finite result.
+
 These commands build the current checkout. The claim verifier also names the
 recorded source revision; keep that identity with any report about reproducing
 a particular release. [External replay](verification/EXTERNAL_VERIFICATION_REPLAY.md)
@@ -247,15 +255,17 @@ invocation:
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
   Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
-  FormalConjecturesVariants ResidualBench
+  FormalConjecturesVariants FC1049HeightRegion FC243CubicRate ResidualBench \
+  ErdosProblems.Erdos251.PaperLargeAuditR7
+lake env lean research/adapters/FC1049HeightRegion.lean
 python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
 `Erdos249257` and `ErdosProblems` are the default libraries. `Examples` builds
 consumer examples inside this package; read their imports and example
 declarations in [research/examples/Examples.lean](../research/examples/Examples.lean).
-The remaining targets check
-adapters, statement variants and residual examples; building them does not
+The remaining targets check adapters, statement variants, residual examples,
+and the separately compiled #251 paper audit; building them does not
 add reviewed claims to the mathematical record.
 
 The wrapper coordinates builds on the same machine. Equivalent requests share

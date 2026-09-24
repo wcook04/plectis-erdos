@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `43abdee01930005b`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `a5f19d7e2b130a86`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -2567,7 +2567,7 @@ and the remaining form is $`km+1`$. Proportionality between two of the positive-
 ```
 This proves Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>.
 
-The relation to the earlier CRT argument and the alternative proof from Martin’s theorem are discussed in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">6</a>.
+The relation to the earlier CRT argument and the alternative proof from Martin’s theorem are discussed in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">7</a>.
 
 <div id="erdos-249-binary-totient-series--res:basis" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-249-binary-totient-series.md#res-basis-comparator">Comparator</a></p>
@@ -2656,7 +2656,7 @@ This completes the basis argument. It describes relations among coefficient subs
 
 ### Supplementary results on the binary totient series
 
-The independent results below distinguish bounded-residue series, finite exclusions for $`S`$, and conditions for irrationality. None is needed for Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>; in particular, the conditions in Sections <a href="#erdos-249-binary-totient-series--sec:carry-rank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:carry-rank">3</a> and <a href="#erdos-249-binary-totient-series--sec:open" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:open">5</a> are not assumptions of that theorem. Generating-function context and the formal-source guide are in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">6</a>.
+The independent results below distinguish bounded-residue series, finite exclusions for $`S`$, and conditions for irrationality. None is needed for Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>; in particular, the conditions in Sections <a href="#erdos-249-binary-totient-series--sec:carry-rank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:carry-rank">3</a> and <a href="#erdos-249-binary-totient-series--sec:open" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:open">5</a> are not assumptions of that theorem. Generating-function context and the formal-source guide are in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">7</a>.
 
 <a id="erdos-249-binary-totient-series--sec:family"></a>
 
@@ -2942,6 +2942,21 @@ for which those four bounds hold?
 The companion gives the same decomposition, and the [four simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543) are defined in the linked source. All four bounds must hold on the *same* block with the same parameters. The permitted blocks need only be arbitrarily large, but $`L`$ must also make the truncation error small enough for the residue test. The companion proves the unassigned and excluded-cofactor bounds at minimal admissible depth, using smooth-number asymptotics and the distribution of $`\varphi(m)/m`$. The unassigned bound is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556), whose proof replaces the smooth-number asymptotics by Mertens’ theorems. The excluded-cofactor bound is [proved in Lean](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean#L654) with the prime number theorem and the existence of the density of $`\{m:\varphi(m)<\eta m\}`$ taken as hypotheses. An elementary mean-value estimate also gives the explicit sufficient cutoff $`\eta=1/1000`$ for the excluded-cofactor bound. The two remaining estimates concern the group means and their weighted, mean-subtracted phases. They must hold at the same depth and for the same choice of $`\eta`$; the existence of a cutoff that controls the excluded indices does not establish either of them.
 
 Balasubramanian, Giri and Srivastav estimate the finite sums $`\sum_{1\le n\le x}F(n)G(n-h)`$ for $`F=f*1`$, $`G=g*1`$ with decaying $`f,g`$, setting $`F(n)=G(n)=0`$ for $`n\le0`$. Taking $`f(n)=g(n)=\mu(n)/n`$ gives $`F(n)=G(n)=\varphi(n)/n`$ for $`n\ge1`$; the estimate is uniform for $`|h|\le x/2`$ \[bgs2016, Thm. 2.2\]. Their partial-summation extension allows differentiable weights with bounded derivative on the summation interval \[bgs2016, Rem. 2.9\]. The missing input here is a useful error bound for the present phase and residual weight, not shift uniformity or partial summation itself. **Acknowledgement.** I thank Wouter van Doorn for advice on writing for a first-time reader and on explaining the strength of a hypothesis. His advice concerned a different note; it was not a mathematical review or endorsement of the results presented here.
+
+<a id="erdos-249-binary-totient-series--sec:base-six-test"></a>
+
+### A complete equality test at base six
+
+The composite base shows what the integral coordinates let a reader do. At $`k=6`$ and $`e=2`$ there are $`43`$ indexed sections. Retain $`F_{0,0}`$, $`F_{1,0}`$, the five $`F_{1,r}`$ with $`1\le r\le5`$, and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. In addition to $`F_{2,6}=2F_{1,1}`$ and $`F_{2,12}=4F_{1,2}`$ from above, the six omitted sections reduce as
+``` math
+\begin{aligned}
+ F_{2,0}&=6F_{1,0}, & F_{2,6}&=2F_{1,1}, &
+ F_{2,12}&=4F_{1,2},\\
+ F_{2,18}&=3F_{1,3}, & F_{2,24}&=4F_{1,4}, &
+ F_{2,30}&=2F_{1,5}.
+\end{aligned}
+```
+Order the retained columns as just stated, with residues increasing within each level, and evaluate them at $`n=0,\ldots,36`$. Exact integer totient values give a $`37\times37`$ matrix $`M`$ with $`\det M\equiv17\pmod{101}`$. Thus $`M`$ is nonsingular over $`\mathbb{Q}`$. After the six reductions, a proposed integer identity holds for every $`n\ge0`$ precisely when its $`37`$ retained coefficients vanish; otherwise one of those $`37`$ inputs is an exact counterexample. The six omitted coefficients are also its unique coordinates in the relation basis of Corollary <a href="#erdos-249-binary-totient-series--cor:integral-normal-form" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--cor:integral-normal-form">3</a> when it is an identity. The public `scripts/totient_kernel_normal_form.py` prints those coordinates and the first counterexample. Its modular determinant is an independence certificate; the identity decision and witness use exact integer arithmetic. For example, $`101F_{2,2}`$ vanishes modulo $`101`$ at every input, but its value at $`n=0`$ is $`101`$, so it is not an identity.
 
 <a id="erdos-249-binary-totient-series--app:sources"></a>
 

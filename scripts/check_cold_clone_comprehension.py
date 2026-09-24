@@ -976,7 +976,9 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
                 "Examples",
                 "FormalConjecturesAdapter",
                 "FormalConjecturesVariants",
+                "FC243CubicRate",
                 "ResidualBench",
+                "ErdosProblems.Erdos251.PaperLargeAuditR7",
             )
         ),
         "reproducibility runbook lost a supported public build target",
@@ -1044,7 +1046,9 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "Examples",
         "FormalConjecturesAdapter",
         "FormalConjecturesVariants",
+        "FC243CubicRate",
         "ResidualBench",
+        "ErdosProblems.Erdos251.PaperLargeAuditR7",
     ):
         require(target in build_job_body, f"Lean CI wrapper lost target {target}")
 
