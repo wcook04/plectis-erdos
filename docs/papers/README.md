@@ -384,13 +384,13 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open).
 
-### How does a research system turn agent work into inspectable mathematical claims?
+### How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 49 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 21 sections · `claim-faithful-publication-systems` · native to this repository
 
-Start here (selected for this guide): [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The mathematical reasoning loop](full-text/claim-faithful-publication-systems-paper.md#sec:mathloop), [One complete boundary: finite is not unbounded](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
+Start here (selected for this guide): [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [The contribution cycle](full-text/claim-faithful-publication-systems-paper.md#sec:cycle), [Eight problems in one repository](full-text/claim-faithful-publication-systems-paper.md#sec:instance), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 
@@ -458,7 +458,7 @@ responsibility for proof verification, status and explanation as follows:
 - `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `optimal-sparse-perturbations` is not authority for a solution to any original Erdős target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem.
-- `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
+- `claim-faithful-publication-systems` is not authority for the mathematics it uses as examples, which the problem papers own, or the novelty and significance of those results.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.

@@ -188,7 +188,7 @@ def main() -> int:
     paper_mutations = (
         (
             systems_paper.replace(
-                r"\section{The whole lifecycle in one picture}",
+                r"\section{A problem-sized world}",
                 r"\section{Background}",
             ),
             "real architecture section removed",
@@ -224,18 +224,18 @@ def main() -> int:
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "The architecture treats six resources as non-fungible",
-                "The architecture uses several resources",
+                "The records treat negative results as outputs",
+                "The records keep only successful results",
             ),
-            "non-fungible authority thesis removed",
+            "negative-results thesis removed",
         ),
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "That reflexivity is provenance, not validation",
-                "That reflexivity validates the architecture",
+                "does not technically force a second independent mathematician",
+                "guarantees a second independent mathematician",
             ),
-            "self-authoring validation ceiling inflated",
+            "single-maintainer review ceiling inflated",
         ),
         (
             systems_paper.replace(

@@ -197,128 +197,83 @@ BANNED_SHORTHAND = (
 )
 
 PAPER_SECTION_ORDER = (
-    r"\section{The problem: many kinds of evidence}",
-    r"\section{The whole lifecycle in one picture}",
-    r"\section{The private workbench}",
-    r"\section{The mathematical reasoning loop}",
-    r"\section{The public Lean repository}",
-    r"\section{Comparator, Palomar, and publication}",
-    r"\section{One complete boundary: finite is not unbounded}",
-    r"\section{Inspection routes}",
-    r"\section{What can be trusted}",
-    r"\section{Scaling from one clone to a search network}",
-    r"\section{Relation to other approaches}",
+    r"\section{What AI-assisted mathematics loses}",
+    r"\section{A problem-sized world}",
+    r"\section{From a proof to a public claim}",
+    r"\section{The contribution cycle}",
+    r"\section{Eight problems in one repository}",
+    r"\section{How the records are produced}",
+    r"\section{Relation to Prove2Me and other systems}",
+    r"\section{Limits, and what stronger models change}",
     r"\section{Conclusion}",
-    r"\section{Reproducibility}",
+    r"\section{Inspection routes and reproducibility}",
 )
 
+# The September 2026 rewrite replaced the architecture note with a shorter
+# paper built around one unit of work, the problem-sized world. The pins below
+# hold the claims that paper rests on and every limit it states: removing one
+# should fail this check rather than quietly shrink the paper's boundary.
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
-        "compares it with neighbouring systems along stated dimensions and claims no priority",
-        "claim-transition architecture",
-        "six things that are commonly collapsed",
-        "after a proof is found, what exactly may move into a reviewed public claim",
-        "refutes the Formal Conjectures 1041 claim about one-dimensional Hausdorff measure of path images",
-        "its relation to the 1958 question remains unreviewed",
-        "other seven target problems remain unresolved",
-        "The other programmes are not claimed solved",
-        "Arbitrary infinite supports remain open",
+        "persistent unit of work, the problem-sized world",
+        "Any model, provider or person can resume from the record",
+        "accepted work returns to it with credit",
+        "The other seven targets remain open",
+        "Comparator, a checker the Lean FRO built",
+        "formal refutation of the Formal Conjectures statement of Problem 1041",
     ),
-    "problem_worlds_and_nonfungible_authority": (
-        "A problem is a mathematical world, not a folder",
-        "bounded neighbourhood inside a problem-sized world",
-        "The architecture treats six resources as non-fungible",
-        "More reasoning cannot buy a write lease",
-        "two coupled graphs with a guarded crossing",
-        "Neither graph may rewrite the other by implication",
+    "grounding_in_the_field": (
+        "faster than the mathematical community can read them",
+        "every AI-generated proof is born an unsolved exposition problem",
+        "Each of these describes a loss of state",
     ),
-    "private_authority_and_concurrency": (
-        "Durable state lives in files",
-        "Type A and Type B",
-        "substrate access, not model quality",
-        "claims exact paths for a bounded lease",
-        "append-only ledgers and immutable receipts",
-        "fan-in barrier",
+    "world_and_obligations": (
+        "The records treat negative results as outputs",
+        "A Lean no-go theorem rules out a class of strategies",
+        "Open obligations are stated as exactly as results",
     ),
-    "executable_control_plane": (
-        "typed option surface",
-        "past work from present permission",
-        "SQLite store in write-ahead-log mode",
-        "daemon as not running while queued jobs remained visible",
-        "always-on architecture",
-        "currently healthy service",
-    ),
-    "continuous_trace_boundary": (
-        "313 visible progress updates and 3,491 command events",
-        "compressed trace has an observation boundary",
-        "Completeness is therefore an explicit field",
-        "authority-bearing artefact and receipt",
-    ),
-    "mathematical_reasoning_and_graphs": (
-        "Experiments are route selectors",
-        "A failed agent attempt",
-        "A Lean no-go theorem",
-        "Every no-go keeps its scope visible",
-        "Problem-sized Lean worlds and bounded theorem neighbourhoods",
-        "1,024 Lean modules and 153,396 declarations",
-        "177 exact results, seven open producers, 72 negative results",
-        "designed omission, not exhaustive loading",
-        # The comprehension packet was promoted out of this subsection into one
-        # of its own, and the federation sentence was rewritten there. The
-        # property the old anchor held is the one still pinned: the working
-        # memory federates and copies nothing into a central index. The three
-        # anchors after it pin the rest of that new section, so a later rewrite
-        # cannot delete the packet, its authority boundary, or its two refusals
-        # without this check going red.
-        "nothing is copied into a central index",
-        "Comprehension before the mathematics",
-        "The workspace plans inference and concludes nothing",
-        "reported as unanchored",
-        "semantic second pass",
-        "no projection may bulk-strengthen a family of claims",
-    ),
-    "assurance_and_digestion": (
-        "Comparator: an exact-statement firewall",
+    "three_questions": (
+        "Lean verifies that a proof establishes the formal statement written in the source",
+        "requires a deliberately altered statement to fail",
         "Comparator-checked",
-        "Review selection, and what the Palomar registry is not",
-        "proof generation, verification, exposition, publication and community digestion",
-        "natural friction",
-        "Paper authoring itself participates in this loop",
-        "active digestion and interpretability pass in Tao's sense",
-        "That reflexivity is provenance, not validation",
-        "never local status fields",
+        "The third question stays with people",
     ),
-    "worked_boundary_and_failure": (
-        "forall t\\le82",
-        "No matter how large a fixed checked bound is",
+    "escaped_limitation": (
+        "That requirement comes from a test in which a limitation escaped",
         "relationship had not been registered",
-        "Nine of the ten edits were rejected",
-        "original run logs were not retained",
-        "other nine edits were not rerun",
+        "does not technically force a second independent mathematician",
     ),
-    "scale_without_authority_inflation": (
-        "result mining",
-        "semantic single-flight queue",
-        "host-wide Mathlib resource",
-        "four separate scaling limits",
-        "no-go graph as a new mathematical object",
-        "graph-conditioned models",
-        "design target rather than a reported benchmark",
-    ),
-    "public_return_and_credit": (
+    "contribution_cycle": (
+        "research, checking and revision cycle",
+        "an empty search never counts as evidence of no consequence",
+        "Discovery and stewardship",
+        "Neither inherits the other's authority",
         "plain-language research-progress issue or email",
-        "No clone, proof, code, or receipt schema is required",
+        "No clone, proof, code or receipt schema is required",
         "Accepted work receives a public receipt tied to exact artifacts",
         "Acceptance does not establish theorem status, novelty, or release inclusion",
-        "Corrections append history",
-        "Infrastructure has its own",
+    ),
+    "worked_example": (
+        "Problem 1041 shows the cycle end to end",
+        "whether the formal statement matches the 1958 wording",
+    ),
+    "production_boundary": (
+        "Shared state on disk",
+        "semantic single-flight queue",
+        "recorded separately from theorem failures",
+        "It never changes the status of a mathematical claim",
+        "The public repository replays without the private environment",
+    ),
+    "limits_and_scaling": (
+        "The same design serves stronger models",
+        "The next measurement is comparative",
     ),
     "real_public_routes": (
         "docs/ARCHITECTURE.md",
         "lean/Erdos249257.lean",
         "lean/ErdosProblems.lean",
         "docs/claims.json",
-        "docs/verification/PALOMAR_QUALIFICATION.md",
+        "verification/comparator.json",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
         "docs/research-commons/CREDIT_POLICY.md",
@@ -444,7 +399,7 @@ def validate_systems_paper(text: str) -> None:
 
     require(
         "Problem-Sized Lean Worlds" in text
-        and "An authority-separated architecture from AI search to public mathematical claims"
+        and "Persistent, checkable research records for AI-assisted mathematics"
         in text
     , "systems paper lost its plain architecture title")
     require(
