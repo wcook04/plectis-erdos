@@ -235,6 +235,14 @@ selected entry, not every theorem in the #257 paper. The
 [replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md) explains the
 separate source-bound Comparator receipt.
 
+The replay guide now provides a one-theorem `weighted-support` unit for
+`divisibilityWeightedClaim`. On Linux with the stated prerequisites, its
+single `run --unit weighted-support` command fetches an exact commit, compares
+the theorem with the separate challenge, and requires rejection of a
+deliberately changed statement. The configuration is runnable, but a passing
+receipt for the selected source commit has not been recorded here. The
+`189/388` Python calculation above is a different finite result.
+
 These commands build the current checkout. The claim verifier also names the
 recorded source revision; keep that identity with any report about reproducing
 a particular release. [External replay](verification/EXTERNAL_VERIFICATION_REPLAY.md)
