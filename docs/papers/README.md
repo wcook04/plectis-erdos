@@ -8,7 +8,7 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 20 active papers and 1 retired paper and 1 paper awaiting website publication.
+This checkout contains 21 active papers and 1 retired paper.
 
 ## Project papers
 
@@ -384,6 +384,14 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open).
 
+### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
+
+**Reading Eight Erdős Problems Together**
+
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 34 sections · `optimal-sparse-perturbations` · native to this repository
+
+Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
+
 ### How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?
 
 **Problem-Sized Lean Worlds**
@@ -423,14 +431,6 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 [full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](../../paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
 
 The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
-
-### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
-
-**Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
-
-[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 34 sections · `optimal-sparse-perturbations` · native to this repository
-
-Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
 
 ## Evidence and limitations
 

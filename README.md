@@ -4,10 +4,9 @@
 # Plectis: research on eight Erdős problem programmes
 
 Plectis is an open-source, AI-assisted prototype for turning mathematical
-exposition into further research. Eight Erdős programmes each have a short
-expository paper, a longer research record and associated Lean source. The aim
-is to make results, methods and useful failures understandable enough for
-others to question, extend and reuse.
+exposition into further research. Eight Erdős programmes have short papers,
+longer research records and Lean source, with methods and failed routes for
+others to question and extend.
 
 Start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
 If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
