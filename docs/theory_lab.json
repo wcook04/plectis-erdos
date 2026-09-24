@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:b81c8131169a54e91639e3466b10da3e9020c194e32acc60cb15b836d17f4f44",
-  "semantic_corpus_digest": "sha256:47b8156cdc12f081a47cb77def02b053ddd0345caab12a0e9cd95cc853aa944c",
+  "declaration_atlas_digest": "sha256:1772fab354ecc91fd375f46cf17e7c049f64512867b47a0aff9ced83ece77c13",
+  "semantic_corpus_digest": "sha256:8f0a7ff8914cdd1a13d3c8d6cd9b9bd5ccac083c64342dfbeb6f5f9db553ff4c",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -31,7 +31,7 @@
   "builder_digest": "sha256:fd48a95a9d7a6c8b2568a50668bd1c8b85c88cef79e79094d2041ab8561b938b",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
- "evidence_fingerprint": "sha256:03b93e6cb9de167016ff86007f5609fc64dc95a94a58e82f76577b53bf066673",
+ "evidence_fingerprint": "sha256:ddb9d8a6c3ada877be89869e4b4643063eb28ad91e9cc8ea9fe757cbef051a6b",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
@@ -93,10 +93,10 @@
   "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 14407,
+  "statement_nodes_total": 14409,
   "statement_nodes_explained": 8,
   "explained_fraction": 0.0006,
-  "authored_theorem_like": 151704,
+  "authored_theorem_like": 151706,
   "unexplained_by_logical_class": {
    "unconditional_object_theorem": 356,
    "reduction_or_transport": 94,
@@ -106,7 +106,7 @@
    "representation_normalisation": 161,
    "barrier_no_go": 75,
    "equivalence_or_classification": 105,
-   "infrastructure": 13310,
+   "infrastructure": 13312,
    "generated_certificate_instance": 4
   },
   "outcome_states": {},
@@ -619,7 +619,7 @@
   ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 14399,
+   "count": 14401,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -5869,6 +5869,7 @@
     "structural::505bdb10e15880a5f2fb",
     "structural::505c9460b5ebd20c9c94",
     "structural::5063978fd100ba6a7b5d",
+    "structural::506b6c277b0ab3dfe015",
     "structural::506fe47a926f21c8a257",
     "structural::507266404912085d151a",
     "structural::5072ef9f3c36145806a7",
@@ -9874,6 +9875,7 @@
     "structural::9cf0c0bbe28c417e06d6",
     "structural::9cf2967fcc230682f18d",
     "structural::9cf317a8f5f0d1eecef5",
+    "structural::9cf481757928dae86d72",
     "structural::9cf60fc7f3767c3501af",
     "structural::9cf6833d515b5a7b1a2d",
     "structural::9cfbe727611ec10daca3",
@@ -15028,8 +15030,8 @@
   }
  },
  "integrity": {
-  "declarations_known": 162549,
-  "statement_nodes_known": 14407,
+  "declarations_known": 162551,
+  "statement_nodes_known": 14409,
   "mechanism_ids": [
    "composite_dilation_defect_accounting",
    "dyadic_odd_core_basis",

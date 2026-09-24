@@ -5,9 +5,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:1319d0175edc65147d32e19d9318e2fa701eb2150ec262f95bc5677d383f467d"
+        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:bc4323fa96762d2c6c9af9dd0f51875371918024b0817d45e2924b490b99a951"
       },
-      "rendered_content_digest": "sha256:c6cdb4710e52b66d9c6260530ee721ab47ac6ce18e7005d07742de704bba6fd8",
+      "rendered_content_digest": "sha256:e1e8e680eff9bf4e4b102f9bc6378535eb0b7c137d9842fa79e2147d02e3bc9f",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
@@ -78,14 +78,14 @@
     },
     "erdos_243_reasoning_record": {
       "inputs": {
-        "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:f6b038eff6242fb20d37bcfd8cade6ea802cd8471301bd7623bb119118ac2d70",
+        "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:391715d417fd3d0227a73f88a590c57acc637adb6ea69e526570efc3464c5173",
         "paper/evidence/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:f1baaeeb2cd77d91eef7566c7be65d500c7d1d24636f42782bc784b41d60e743",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:b9ea7cd4c673d6401882bc3afb323ccd2160aad6300f025d889af6b5705d2c7e",
+      "rendered_content_digest": "sha256:b50ab6d1cc5a154578689bae5c1d19f5b105345feb90c1199e99b2695f64ad4e",
       "source_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "storage_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf"
     },
@@ -258,9 +258,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:2e9300fb916ac43824e3facf93f193906451cef64241363b99a64fb3814517d8"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d7f3901c3d46d5807336b8df49f6999bababbfdb690cb2d9be7776c53cc46909"
       },
-      "rendered_content_digest": "sha256:e8bad79f27010ad82707c52f847689459b78410657a91040fd639834d34676e5",
+      "rendered_content_digest": "sha256:6087879233313a32563ca689673c32f3d981696427e6f79852169eeff68891aa",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
