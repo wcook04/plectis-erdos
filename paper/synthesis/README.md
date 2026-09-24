@@ -7,9 +7,9 @@
 ([source](optimal-sparse-perturbations.tex)) is the single cross-problem paper.
 For `c>0` and integers `d≥1`, consider the set of vectors
 `(f(1), f′(1), …, f^(d−1)(1))` from entire functions
-`f(z) = ∑ e_n z^n/n!` whose nonnegative integer coefficients are eventually
-at most `n^c` and eventually divisible by every fixed integer. This set has
-Hausdorff dimension `min(c,d)` and contains an open set exactly when `c>d`; at
+`f(z) = ∑_(n≥1) e_n z^n/n!` with nonnegative integer `e_n` eventually at most
+`n^c` and, for each fixed positive integer `q`, eventually divisible by `q`.
+This set has Hausdorff dimension `min(c,d)` and contains an open set exactly when `c>d`; at
 `c=d` they are full-dimensional but null and meagre. The paper also proves
 a capacity and congruence criterion, Lambert-subsum results and method
 limits. Its principal proofs are ordinary mathematical arguments; cited

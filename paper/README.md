@@ -48,10 +48,11 @@ cyclotomic cancellation and denominator accounting. Its region contains
 ## Reading the eight together
 
 One cross-problem paper develops the mathematics that arises from reading the
-programmes together. For `c>0`, integers `d≥1`, and nonnegative integer
-coefficients eventually bounded by `n^c` and divisible by every fixed integer,
-its derivative-value vectors at `1` have Hausdorff dimension `min(c,d)` and contain an open set exactly
-when `c>d`. This result has an ordinary proof with the formal ingredients
+programmes together. For `c>0` and integers `d≥1`, it considers entire functions
+`f(z) = ∑_(n≥1) e_n z^n/n!` with nonnegative integer `e_n` eventually bounded
+by `n^c` and, for each fixed positive integer `q`, eventually divisible by `q`.
+The set of derivative-value vectors at `1` has Hausdorff dimension `min(c,d)` and
+contains an open set exactly when `c>d`. This result has an ordinary proof with the formal ingredients
 identified separately. The paper also contains the capacity and congruence
 criterion, Lambert-subsum results, exact computations and method limits.
 

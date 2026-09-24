@@ -115,11 +115,11 @@ cancellation and denominator accounting. Lean checks the region theorem and
 sufficient bound excludes `31/4`; irrationality at `3/2` remains open.
 
 **Reading the eight together.** The [cross-problem paper](paper/synthesis/optimal-sparse-perturbations.pdf)
-studies entire functions with nonnegative integer coefficients eventually
-bounded by `n^c` and divisible by every fixed integer. For `c>0` and
-integers `d≥1`, the vectors `(f(1), …, f^(d−1)(1))` have Hausdorff dimension
-`min(c,d)` and contain an open set exactly when `c>d`. This has an ordinary
-proof. [Synthesis guide](paper/synthesis/README.md) has more results.
+studies entire `f(z) = ∑_(n≥1) e_n z^n/n!` with nonnegative integer
+`e_n≤n^c` eventually and `q|e_n` eventually for each integer `q≥1`.
+For `c>0`, integer `d≥1`, the set of vectors
+`(f(1), …, f^(d−1)(1))` has Hausdorff dimension `min(c,d)` and contains an
+open set exactly when `c>d`. The proof is ordinary.
 
 | Problem | Topic | Papers |
 |---|---|---|
