@@ -639,10 +639,13 @@ def validate_indexed_problem_routes() -> None:
                         "totient_carry_modEq_geometric_of_dvd_multiplier",
                     }
                 )
-                assert carry_anchor["canonical_handle"] == "res:rank"
-                assert carry_anchor["source_ref"].startswith(
-                    "paper/249/erdos-249-binary-totient-series.tex:"
-                )
+                # The margin marks carry the per-result Lean links; the three carry
+                # declarations are cited together in the note's formal-sources appendix.
+                carry_path, carry_line = carry_anchor["source_ref"].rsplit(":", 1)
+                assert carry_path == "paper/249/erdos-249-binary-totient-series.tex"
+                assert "\\label{app:sources}" in (ROOT / carry_path).read_text(
+                    encoding="utf-8"
+                ).splitlines()[int(carry_line) - 1]
             if expected["id"] == "weighted_phase_carry_observer":
                 weighted_anchors = {
                     anchor["canonical_handle"]
@@ -3186,7 +3189,7 @@ def main() -> int:
     assert twenty_one_paper["attachment_receipt"] == {
         "claim_count": 1,
         "open_proposition_count": 0,
-        "source_link_count": 6,
+        "source_link_count": 3,
         "complete": True,
         "owners": [
             "paper/257/erdos-257-mersenne-support-subseries.tex",
@@ -3197,11 +3200,25 @@ def main() -> int:
         row["declaration"] for row in twenty_one_paper["source_links"]
     } == {
         "twentyOneClosedRow_forces_quotientGreedy",
-        "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
         "twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole",
         "twentyOneAlignedSaturatedCrossing_forces_scaled_greedy_skip",
+    }
+    # The result's own proof is linked by its margin mark: the declarations behind
+    # the mark are listed in the evidence map instead of inline in the text.
+    twenty_one_mark = next(
+        result
+        for paper in load("evidence/paper_evidence.json")["papers"]
+        if paper["paper_id"] == "erdos-257-mersenne-support-subseries"
+        for result in paper["results"]
+        if result["label"] == "res:one-over-twenty-one-frontier"
+    )
+    assert {
+        "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
         "twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
         "twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+    } <= {
+        declaration["name"].rsplit(".", 1)[-1]
+        for declaration in twenty_one_mark["lean"]["declarations"]
     }
     local_result = query("--paper-anchor", "res:lift")
     assert local_result["anchor_class"] == "authored_formal_anchor_without_registered_claim"

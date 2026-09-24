@@ -37,9 +37,9 @@ result has not propagated:
       Palomar worklist.
 
 It also fails when the ledger no longer describes the papers: a content digest
-that does not match, an invalid status, a row whose statement is no longer in
-its paper, a row recorded at the wrong line, or an asserting environment
-without a row.
+that does not match, a summary block whose counts differ from the rows, an
+invalid status, a row whose statement is no longer in its paper, a row
+recorded at the wrong line, or an asserting environment without a row.
 
 Known debt present when the check was introduced is listed row by row in
 ``docs/paper_lean_propagation_baseline.json``.  A (b) or (c) failure outside
@@ -54,8 +54,9 @@ Run from the repository root:
     python3 scripts/check_lean_paper_propagation.py --restamp
 
 ``--restamp`` rewrites the recorded source line of every row whose statement
-moved within its file, then the content digest; run it after a deliberate row
-edit.  It never changes a status or a declaration.  Stdlib only.
+moved within its file, then the summary block from the rows' counts, then the
+content digest; run it after a deliberate row edit.  It never changes a status
+or a declaration.  Stdlib only.
 """
 
 from __future__ import annotations
@@ -257,6 +258,33 @@ def content_digest(document: dict[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(canonical(body)).hexdigest()
 
 
+def ledger_summary(rows: list[Any]) -> dict[str, Any]:
+    """The summary block a ledger records: its row count, status counts and uncounted rows.
+
+    It is derived from the rows alone, so ``--restamp`` rewrites it and the
+    integrity check rejects a block that no longer matches the rows it counts.
+    """
+    def tally(block: str) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for row in rows:
+            value = row.get(block) if isinstance(row, dict) else None
+            status = str(value.get("status")) if isinstance(value, dict) else "invalid"
+            counts[status] = counts.get(status, 0) + 1
+        return dict(sorted(counts.items()))
+
+    return {
+        "rows": len(rows),
+        "lean": tally("lean"),
+        "comparator": tally("comparator"),
+        "palomar": tally("palomar"),
+        "uncounted_rows": sum(
+            1 for row in rows
+            if isinstance(row, dict) and isinstance(row.get("lean"), dict)
+            and row["lean"].get("counted") is False
+        ),
+    }
+
+
 def split_source(source: str) -> tuple[str, int]:
     path, _, line = source.rpartition(":")
     if not path or not line.isdigit():
@@ -293,6 +321,11 @@ def ledger_integrity_failures(ledger: dict[str, Any]) -> list[str]:
     rows = ledger.get("rows")
     if not isinstance(papers, list) or not isinstance(rows, list):
         return failures + ["ledger papers and rows must be lists"]
+    if ledger.get("summary") != ledger_summary(rows):
+        failures.append(
+            "ledger summary does not match the counts of its rows "
+            "(run --restamp after a row edit, or regenerate it)"
+        )
     paper_ids = set()
     for paper in papers:
         if not isinstance(paper, dict) or not isinstance(paper.get("sources"), list):
@@ -541,7 +574,7 @@ def locate_rows(
 class Link:
     name: str
     path: str | None
-    origin: str  # inline | note | concordance
+    origin: str  # inline | note | concordance | evidence
 
 
 def normalise_name(raw: str) -> str:
@@ -690,6 +723,40 @@ class RowLinks:
     note: list[Link]
     note_text: str | None
     concordance: list[Link]
+    evidence: list[Link] = field(default_factory=list)
+
+
+EVIDENCE_MAP = "evidence/paper_evidence.json"
+EVIDENCE_DECLARE_RE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}")
+
+
+def evidence_links(ledger: dict[str, Any], read: Callable[[str], str]) -> dict[str, list[Link]]:
+    """Row id -> the declarations its margin marks lead to.
+
+    A result's marks are rendered from paper/evidence/<paper>.tex, one
+    \\DeclareResultEvidence line per labelled result, and open either the one
+    declaration or the result's section of the evidence record, which lists every
+    declaration in evidence/paper_evidence.json.  A row counts as linked there only when
+    its paper declares its label and the map lists its declarations.
+    """
+    try:
+        evidence = json.loads(read(EVIDENCE_MAP))
+    except (OSError, ValueError, KeyError):
+        return {}
+    out: dict[str, list[Link]] = {}
+    for paper in evidence.get("papers", []):
+        try:
+            declared = set(EVIDENCE_DECLARE_RE.findall(read(f"paper/evidence/{paper['paper_id']}.tex")))
+        except (OSError, ValueError, KeyError):
+            continue
+        for result in paper.get("results", []):
+            if result.get("label") not in declared:
+                continue
+            out[result["id"]] = [
+                Link(name=d["name"], path=identity(d.get("path")), origin="evidence")
+                for d in result.get("lean", {}).get("declarations", [])
+            ]
+    return out
 
 
 def row_links(
@@ -737,7 +804,7 @@ def unlinked_declarations(row: dict[str, Any], links: RowLinks) -> list[str]:
     """Clause (b): declarations no rendered link names and no exact note count covers."""
     if counted_by_note(row, links):
         return []
-    rendered = [*links.inline, *links.note, *links.concordance]
+    rendered = [*links.inline, *links.note, *links.concordance, *links.evidence]
     return [
         declaration["name"]
         for declaration in declarations_of(row)
@@ -748,7 +815,7 @@ def unlinked_declarations(row: dict[str, Any], links: RowLinks) -> list[str]:
 def orphan_links(row: dict[str, Any], links: RowLinks) -> list[str]:
     """Clause (c): generated links naming declarations the row does not bind."""
     orphans: list[str] = []
-    for link in [*links.note, *links.concordance]:
+    for link in [*links.note, *links.concordance, *links.evidence]:
         if not any(matches(link, declaration) for declaration in declarations_of(row)):
             rendered = f"{link.path}::{link.name}" if link.path else link.name
             if rendered not in orphans:
@@ -763,7 +830,8 @@ def describe(clause: str, names: list[str]) -> str:
 
 
 def propagation_failures(
-    ledger: dict[str, Any], currency: Currency, texts: dict[str, str]
+    ledger: dict[str, Any], currency: Currency, texts: dict[str, str],
+    evidence: dict[str, list[Link]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], int]:
     """Clauses (b) and (c) over every located row, and the rows a note count covers."""
     b: list[dict[str, Any]] = []
@@ -788,6 +856,7 @@ def propagation_failures(
         px, pk = prefixes.get(row.get("paper_id"), ("ErdosProblems", None))
         links = row_links(located, lines_of[located.path], concordances.get(row.get("paper_id"), {}),
                           px, pk)
+        links.evidence = (evidence or {}).get(row_id, [])
         where = f"{located.path}:{located.line}"
         if declarations_of(row):
             if counted_by_note(row, links):
@@ -1143,12 +1212,35 @@ class Report:
     e: list[dict[str, Any]] = field(default_factory=list)
     queued: list[dict[str, Any]] = field(default_factory=list)
     linked_by_count: int = 0
+    retired: list[str] = field(default_factory=list)
 
     def failed(self) -> bool:
         return any((
             self.integrity, self.currency, self.drift, self.a, self.b_new, self.c_new,
             self.baseline_problems, self.docstrings.failures, self.docstrings.problems, self.e,
+            self.retired,
         ))
+
+
+def retired_apparatus(ledger: dict[str, Any], texts: dict[str, str]) -> list[str]:
+    """Generated notes and concordances were replaced by margin marks; refuse their return.
+
+    The evidence for each result is placed beside it from paper/evidence/<paper>.tex
+    (scripts/paper_evidence.py).  A \\leannote under a statement or a concordance block
+    printing declaration names and run numbers is the apparatus that replaced.
+    """
+    found = []
+    for paper in ledger.get("papers", []):
+        for path in paper.get("sources", []):
+            raw = texts.get(path, "")
+            view = counter_view(raw)
+            if NOTE_OPEN in view:
+                found.append(f"{path}: a generated \\leannote; evidence is placed by paper/evidence/, "
+                             "regenerate it with scripts/paper_evidence.py")
+            if CONCORDANCE_BEGIN in raw:  # the block's markers are TeX comments
+                found.append(f"{path}: a generated concordance block; the evidence record under "
+                             "evidence/ replaces it")
+    return found
 
 
 def evaluate(
@@ -1174,7 +1266,9 @@ def evaluate(
     report.currency = currency.missing + currency.unrowed
     report.drift = currency.drift
     report.a = missing_declarations(ledger, sources.declaration_problem)
-    b, c, report.linked_by_count = propagation_failures(ledger, currency, texts)
+    b, c, report.linked_by_count = propagation_failures(ledger, currency, texts,
+                                                        evidence_links(ledger, read))
+    report.retired = retired_apparatus(ledger, texts)
     report.b_new, report.b_held, problems_b = apply_baseline(b, _clause(baseline, "b"), introduced)
     report.c_new, report.c_held, problems_c = apply_baseline(c, _clause(baseline, "c"), introduced)
     report.baseline_problems = sorted(set(problems_b + problems_c))
@@ -1210,7 +1304,8 @@ def summary_line(report: Report) -> str:
         f"{len(d.failures)} unrecorded; "
         f"(e) {len(report.queued)} queued for Comparator, {len(report.e)} unacknowledged; "
         f"currency {len(report.currency) + len(report.drift)}; "
-        f"baseline/exemption problems {len(report.baseline_problems) + len(d.problems)}"
+        f"baseline/exemption problems {len(report.baseline_problems) + len(d.problems)}; "
+        f"retired apparatus {len(report.retired)}"
     )
 
 
@@ -1227,6 +1322,8 @@ def print_report(report: Report) -> None:
         print(f"  FAIL ({failure['clause']}) {row}{failure['source']}: {failure['detail']}")
     for problem in report.baseline_problems:
         print(f"  FAIL baseline: {problem}")
+    for problem in report.retired:
+        print(f"  FAIL retired: {problem}")
     for problem in report.docstrings.problems:
         print(f"  FAIL exemptions: {problem}")
     if report.queued:
@@ -1246,6 +1343,7 @@ def restamped(ledger: dict[str, Any], drift: list[tuple[str, str, int]]) -> dict
             row = {**row, "source": f"{path}:{moved[row['id']]}"}
         rows.append(row)
     refreshed = {**ledger, "rows": rows}
+    refreshed["summary"] = ledger_summary(rows)
     refreshed["content_digest"] = content_digest(refreshed)
     return refreshed
 
@@ -1270,6 +1368,7 @@ def report_json(report: Report) -> dict[str, Any]:
         "e": report.e,
         "worklist": report.queued,
         "linked_by_exact_note_count": report.linked_by_count,
+        "retired": report.retired,
     }
 
 
@@ -1301,7 +1400,8 @@ def main(argv: list[str] | None = None) -> int:
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--json", action="store_true", help="print the full result as JSON")
     parser.add_argument("--restamp", action="store_true",
-                        help="rewrite moved source lines and the content digest, then check")
+                        help="rewrite moved source lines, the summary block and the content "
+                             "digest, then check")
     parser.add_argument("--rows", metavar="TEXT",
                         help="list the ledger rows whose id, label or declaration names contain TEXT")
     args = parser.parse_args(argv)
@@ -1319,7 +1419,7 @@ def main(argv: list[str] | None = None) -> int:
         currency, _texts = locate_rows(ledger, read_repository_text)
         ledger = restamped(ledger, currency.drift)
         LEDGER.write_text(json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"check_lean_paper_propagation: restamped the digest; "
+        print(f"check_lean_paper_propagation: restamped the summary and the digest; "
               f"{len(currency.drift)} source line(s) moved")
     report = evaluate(ledger, baseline, exemptions, read_repository_text, LeanSources())
     if args.json:

@@ -8,7 +8,7 @@
 
 </div>
 
-We prove that every strictly increasing sequence of positive integers with $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. The integer numerators of a hypothetical rational tail would eventually have a cubic profile; a number-field square-specialisation argument and congruences modulo seven exclude it. The square-specialisation step and the resulting irrationality theorem have unconditional Lean declarations for zero-indexed positive sequences, using the simple pole of the Dedekind zeta function rather than a Chebotarev premise. The one-based statement follows by the finite-prefix argument below.
+We prove that every strictly increasing sequence of positive integers with $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. If the sum were rational, the integer numerators of its tails would eventually agree with a cubic polynomial in $`n`$; a square condition in a cubic number field and congruences modulo seven exclude every such cubic. The Lean proof, for sequences indexed from zero, uses the simple pole of the Dedekind zeta function in place of the Chebotarev density theorem.
 
 We also prove that, when $`a_{n+1}/a_n^2\to1`$ and the reciprocal sum is rational, an eventual upper bound on the increments of $`P_n/a_n`$, where $`P_n=\prod_{j<n}a_j`$, forces the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ eventually. That increment bound is not derived from growth and rationality alone; the unrestricted Erdős problem remains open.
 
@@ -16,13 +16,20 @@ We also prove that, when $`a_{n+1}/a_n^2\to1`$ and the reciprocal sum is rationa
 
 # Introduction
 
-The cubic-rate theorem in Section <a href="#sec:secondaryrate" data-reference-type="ref" data-reference="sec:secondaryrate">7</a> gives irrationality for a precise subclass of the growth sequences in Erdős Problem #243. The main recurrence criterion below treats a different subclass. For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
+For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
 ``` math
 \frac1{a_n-1}=\frac1{a_n}+\frac1{a_{n+1}-1}.
 ```
-We call a sequence that satisfies this recurrence eventually a *Sylvester tail*. Its reciprocal sum from any index $`n`$ in that tail onwards is $`1/(a_n-1)`$. Erdős Problem #243 asks whether rationality and $`a_{n+1}\sim a_n^2`$ force this recurrence. We prove the following sufficient condition.
+We call a sequence that satisfies this recurrence eventually a *Sylvester tail*. Its reciprocal sum from any index $`n`$ in that tail onwards is $`1/(a_n-1)`$. Erdős Problem #243 (Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a> below) asks whether rationality of $`\sum1/a_n`$ and $`a_{n+1}\sim a_n^2`$ force this recurrence.
+
+Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">16</a> settles the problem for one class of sequences: every strictly increasing sequence of positive integers with
+``` math
+\frac{a_n^2}{a_{n+1}}=1+\frac3n+o(n^{-3})
+```
+has an irrational reciprocal sum. Such a sequence has $`a_{n+1}\sim a_n^2`$ and is never a Sylvester tail, for which $`a_n^2/a_{n+1}-1=O(1/a_n)`$. If its sum were rational, the integer numerators $`C_n`$ of Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> would eventually agree with a cubic polynomial in $`n`$; a square condition in a cubic number field and congruences modulo seven exclude every such cubic. For the recurrence itself we prove the following sufficient condition.
 
 <div id="res:originalbounded" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-originalbounded-comparator">Comparator</a></p>
 
 **Corollary 1** (bounded increments of $`P_n/a_n`$). *Let $`a_1<a_2<\cdots`$ be positive integers, $`a_{n+1}/a_n^2\to1`$, and $`\sum_{n\ge1}1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. If
 ``` math
@@ -32,8 +39,6 @@ We call a sequence that satisfies this recurrence eventually a *Sylvester tail*.
 then $`a_{n+1}=a_n^2-a_n+1`$ for all sufficiently large $`n`$.*
 
 </div>
-
-Lean: [original coordinate bounded defect](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211).
 
 The assumption bounds the upward increments of $`P_n/a_n`$; it does not bound $`P_n/a_n`$ itself. Indeed,
 ``` math
@@ -51,6 +56,7 @@ Write the rational tail as $`C_n/D_n`$, clearing denominators without reducing a
 Here is the precise arithmetic statement. For the rational tails, Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> supplies every condition except (5). Condition (4) follows from (6) with $`K=1`$; listing it separately makes the hypothesis used when propagating a zero error explicit.
 
 <div id="res:bounded" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-bounded-comparator">Comparator</a></p>
 
 **Theorem 2** (bounded negative part). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
 
@@ -70,8 +76,6 @@ Here is the precise arithmetic statement. For the rational tails, Section <a hr
 
 </div>
 
-Lean: [eventually bounded negative part eventually zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360).
-
 </div>
 
 Condition (5) bounds upward steps but permits sign changes and places no independent upper bound on positive errors. Condition (6) is $`|E_n|/C_n\to0`$. Absorption needs only the weaker centring bound (4), not $`-C_n/2\le E_n<C_n/2`$. The scalar example $`C_n=n+1`$, $`E_n=-1`$ satisfies the update and conditions (5)–(6) without stabilising: the relations involving the denominator are essential.
@@ -90,7 +94,9 @@ Then $`a_n=a_{n-1}^{2}-a_{n-1}+1`$ for all sufficiently large $`n`$.
 
 The question is recorded by Erdős and Graham \[erdosgraham1980\] and by Erdős \[erdos1988, p. 105\], and Bloom’s catalogue lists it as Problem #243 \[erdosproblems\].
 
-Sections <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">2</a>–<a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> contain the main proof: the arithmetic argument, its gcd and CRT lemmas, and the construction from the reciprocal series. The later sections give extensions and state the estimate still needed for the unrestricted problem. Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">9</a> records the formal correspondences separately.
+Sections <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">2</a>–<a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> contain the main proof: the arithmetic argument, its gcd and CRT lemmas, and the construction from the reciprocal series. The later sections give extensions and state the estimate still needed for the unrestricted problem. Further proofs and examples are in the companion paper, *Reciprocal-Tail Rigidity: Theorems, Proofs and Questions*.
+
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="sec:bounded"></a>
 
@@ -111,12 +117,11 @@ The earlier multipliers are coprime to every later reduced numerator. Theorem <
 </div>
 
 <div id="res:cor" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cor-comparator">Comparator</a></p>
 
 **Corollary 4**. *Under Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a>, the multipliers satisfy $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
 
 </div>
-
-Lean: [bounded negative endpoint eventual multiplier](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179).
 
 <div class="proof">
 
@@ -137,6 +142,7 @@ We write $`z_+=\max(z,0)`$ and take empty products and least common multiples to
 <span id="sec:descent" label="sec:descent"></span> The error identity gives both the Sylvester recurrence and propagation of a zero error. Descent then handles an eventually nonnegative error.
 
 <div id="res:update" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-update-comparator">Comparator</a></p>
 
 **Proposition 5** (error identities). *<span id="res:defect" label="res:defect"></span> For an exact integer state,
 ``` math
@@ -146,8 +152,6 @@ C_{n+1}=C_n-E_n,\qquad
 
 </div>
 
-Lean: [error identities](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21).
-
 <div class="proof">
 
 *Proof.* Substitute $`E_n=D_n-(a_n-1)C_n`$ and use $`D_{n+1}=a_nD_n`$, $`C_{n+1}=a_nC_n-D_n`$. ◻
@@ -155,12 +159,11 @@ Lean: [error identities](https://github.com/wcook04/plectis-erdos/blob/a25cb360b
 </div>
 
 <div id="res:absorb" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-absorb-comparator">Comparator</a></p>
 
 **Theorem 6** (absorption and descent). *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
 </div>
-
-Lean: [absorption and descent](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120).
 
 <div class="proof">
 
@@ -169,12 +172,11 @@ Lean: [absorption and descent](https://github.com/wcook04/plectis-erdos/blob/a25
 </div>
 
 <div id="res:step" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step-comparator">Comparator</a></p>
 
 **Corollary 7** (two zero errors). *<span id="res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
 
 </div>
-
-Lean: [sylvester next eq of centered zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787), [natural sylvester of eventual zero](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L156).
 
 <div class="proof">
 
@@ -189,12 +191,11 @@ Absorption uses strict centring at the successor index. After an eventual centri
 ## The first-crossing obstruction
 
 <div id="res:crt" class="lemma">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-crt-comparator">Comparator</a></p>
 
 **Lemma 8** (consecutive multiples). *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
 
 </div>
-
-Lean: [exists shifted consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839).
 
 <div class="proof">
 
@@ -207,12 +208,11 @@ Lemma <a href="#res:crt" data-reference-type="ref" data-reference="res:crt">8</
 For example, the consecutive integers $`6k+2,6k+3`$ are forbidden to a sequence coprime to both $`2`$ and $`3`$. Upward jumps of size at most $`2`$ cannot cross this pair from below without landing in it. The following statement is the same first-crossing argument with a block supplied by the Chinese remainder theorem.
 
 <div id="res:barrier" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-barrier-comparator">Comparator</a></p>
 
 **Theorem 9** (Chinese remainder theorem and first crossing). *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
 </div>
-
-Lean: [no bounded rise of tail avoidance](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903).
 
 <div class="proof">
 
@@ -236,12 +236,11 @@ u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
 ```
 
 <div id="res:reduced" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-reduced-comparator">Comparator</a></p>
 
 **Proposition 10** (persistent coprimality). *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
 
 </div>
-
-Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
 
 <div class="proof">
 
@@ -250,12 +249,11 @@ Lean: [persistent coprimality](https://github.com/wcook04/plectis-erdos/blob/a25
 </div>
 
 <div id="res:gcdstab" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-gcdstab-comparator">Comparator</a></p>
 
 **Proposition 11** (gcd stabilisation). *For a positive exact state, suppose that some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Division by its stable value gives a reduced exact tail.*
 
 </div>
-
-Lean: [gcd stabilises and reduces](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
 
 <div class="proof">
 
@@ -332,6 +330,7 @@ The error identities, absorption and descent follow from Koizumi’s recurrences
 The next condition concerns the sum of all upward increments of $`C_n`$, each divided by the value before that step. A Sylvester tail has no such increments after a finite index. In contrast, $`C_n=n+1`$ and $`C_n=(n+1)^2`$ both have divergent sums, although their relative increments tend to zero. Summability is thus much stronger than that limit. The denominator recurrence is not needed for the following argument.
 
 <div id="res:massscalar" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-massscalar-comparator">Comparator</a></p>
 
 **Theorem 12** (a convergent sum of relative increases). *<span id="res:mass" label="res:mass"></span> Let $`C_n`$ be positive integers and $`E_n`$ integers satisfying $`C_{n+1}=C_n-E_n`$. If
 ``` math
@@ -340,8 +339,6 @@ The next condition concerns the sum of all upward increments of $`C_n`$, each di
 then $`E_n=0`$ eventually. Neither denominator dynamics nor vanishing relative error is required.*
 
 </div>
-
-Lean: [finite negative mass paper](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84).
 
 <div class="proof">
 
@@ -362,7 +359,7 @@ On an exact reciprocal-tail orbit the conclusion gives the Sylvester recurrence.
 
 # A criterion using new maxima of an LCM numerator
 
-Instead of multiplying all earlier denominators, one can clear the rational tail with their least common multiple. We will sum only at steps where the resulting numerator exceeds all its earlier values. This allows some increases to be omitted from the sum and others to receive smaller weights. The proof is given below. The separate release contains [the real-weight criterion](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalWeightedRecords.lean#L268); it is outside the checked main-repository build documented here. Set
+Instead of multiplying all earlier denominators, one can clear the rational tail with their least common multiple. We will sum only at steps where the resulting numerator exceeds all its earlier values. This allows some increases to be omitted from the sum and others to receive smaller weights. Set
 ``` math
 L_n=\operatorname{lcm}(q,a_1,\ldots,a_{n-1}),\quad
  M_n=D_n/L_n,\quad U_n=C_n/M_n,\quad V_n=E_n/M_n.
@@ -387,6 +384,7 @@ Its lower bound gives the LCM corollary below. Summability of the comparison err
 Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Strict centring already gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. At a sufficiently late record step, where $`\rho_n=1`$, the actual jump is $`d_n=U_{n+1}-U_n=-V_n>0`$. This identity is not asserted at a contracting step with $`\rho_n\ge2`$.
 
 <div id="res:weightedrecord" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weightedrecord-comparator">Comparator</a></p>
 
 **Theorem 13** (a convergent weighted sum over new maxima). *Assume the growth and rationality hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 ``` math
@@ -394,8 +392,6 @@ Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Strict cent
 ```*
 
 </div>
-
-Lean: [canonical weighted record excess](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202).
 
 Only a step reaching a new maximum contributes. At a late such step, $`-V_n=U_{n+1}-U_n`$, so the first $`B`$ units of the increase are ignored. A Sylvester tail makes the sum finite because $`V_n=0`$ eventually. On a non-Sylvester tail, the proof gives divergence for every admissible $`f`$ and every fixed $`B`$. The limit $`V_n/U_n\to0`$ gives a pointwise relative-error estimate; no bound on this weighted sum is derived from that limit here. The restriction on $`f`$ matters: $`f(t)=1/t`$ is permitted, as is $`1/[t\log(et)]`$, but $`1/t^2`$ is not. For the latter weight, the integral in the crossing argument is finite and cannot contradict unbounded growth.
 
@@ -454,6 +450,7 @@ The ratio test gives $`\sum_nC_n/a_n<\infty`$; now $`U_n\le C_n`$ and $`f(U_n)\l
 for some $`B`$. The original hypotheses do not currently supply this finiteness. In particular, termwise convergence to zero is insufficient. Also, $`d_n`$ is the actual jump, including any recovery from a drawdown; it must not be replaced by $`R_{n+1}-R_n`$ in the crossing proof.
 
 <div id="res:lcmbounded" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-lcmbounded-comparator">Comparator</a></p>
 
 **Corollary 14** (a bound using the least common multiple). *Assume the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
 ``` math
@@ -464,8 +461,6 @@ then the sequence is eventually Sylvester.*
 
 </div>
 
-Lean: [original coordinate lcm bounded defect](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49).
-
 <div class="proof">
 
 *Proof.* Since $`L_n/A_n=q/\gcd(q,A_n)`$ lies in $`[1,q]`$, an upper bound on the expression in the corollary gives an upper bound on $`(L_n/a_n)(a_n^2/a_{n+1}-1)`$; negative terms remain negative. Equation <a href="#eq:general-clearance-dictionary" data-reference-type="eqref" data-reference="eq:general-clearance-dictionary">[eq:general-clearance-dictionary]</a> therefore bounds the negative part of $`V_n`$. Choose an integer $`B`$ above that eventual bound. The record series then vanishes after a finite prefix, so Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">13</a> applies. ◻
@@ -474,17 +469,18 @@ Lean: [original coordinate lcm bounded defect](https://github.com/wcook04/plecti
 
 Erdős and Straus assume a nonpositive upper limit in this LCM expression \[erdosstraus1964, Theorem 3, p. 132\]: their $`N_k`$ is $`A_{k+1}`$ and their growth ratio has index $`k+1`$. Tijdeman and Yuan extend this type of criterion to positive numerators \[tijdemanyuan2002\]. Here any finite upper bound suffices under the quadratic-limit assumption. Since $`A_n\mid P_n`$, the LCM hypothesis is no stronger than the product hypothesis in Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a>: if the product expression is at most $`B`$, the LCM expression is at most $`\max(B,0)`$. When the earlier terms are pairwise coprime the two weights agree; repeated prime factors can make the LCM much smaller. This comparison does not assert the existence of a non-Sylvester rational example satisfying one bound but not the other.
 
-Lean checks Corollary <a href="#res:lcmbounded" data-reference-type="ref" data-reference="res:lcmbounded">14</a> as [the LCM condition for the reciprocal sequence](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49). That declaration takes the rational reciprocal sum and the quadratic growth limit as hypotheses, with the finite upper limsup recorded as an eventual upper bound on the expression in the corollary. It does not assume that $`q`$ divides the least common multiple of the earlier $`a_j`$.
+The Lean statement of Corollary <a href="#res:lcmbounded" data-reference-type="ref" data-reference="res:lcmbounded">14</a> records the finite upper limit as an eventual upper bound on the expression in the corollary. It does not assume that $`q`$ divides the least common multiple of the earlier $`a_j`$.
 
 For comparison, the all-positive, absolute-convergence specialisation of Duverney’s signed-series criterion \[duverney2001, Corollary 3.2, p. 287\] already satisfies the classical product condition: $`\sum_n|a_{n+1}/a_n^2-1|<\infty`$ makes $`P_n/a_n`$ converge to a positive finite limit, so its increments tend to zero. The signed recurrence and the distinction between this sufficient hypothesis and Duverney’s printed signed-convergence display are set out in the companion’s Section 3. The qualification concerns the nonzero infinite product used in the proof, not a claimed counterexample to Duverney’s arithmetic theorem. Duverney, Kurosawa and Shiokawa \[duverneykurosawashiokawa2020, Theorem 1, author-version p. 2\] address irrationality exponents under additional growth assumptions, including $`x_{n+1}\ge x_n^2`$ eventually; that inequality excludes a Sylvester tail. The fuller comparison is also in the companion’s Section 3.
 
-For integer summand numerators $`b_n`$, the updates become $`V_n=b_nL_n-(a_n-1)U_n`$ and $`\rho_nU_{n+1}=U_n-V_n`$. With positive integers $`L_n,U_n`$, $`a_n\ge2`$ and $`L_{n+1}=\operatorname{lcm}(L_n,a_n)`$, an eventual lower bound on $`V_n`$ already bounds $`U_n`$; the additional limit $`V_n/U_n\to0`$ gives eventual constancy. Section 6 of the companion, under “Integer coefficients”, proves these two assertions separately, without assuming centring for the boundedness assertion. For positive $`b_n`$, compare Badea \[badea1993, p. 316\] and Tijdeman–Yuan \[tijdemanyuan2002\]. The pinned [coefficient proof supplement](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/CoefficientUniformBoundedHeight.md) also gives finite examples separating boundedness from stationarity.
+For integer summand numerators $`b_n`$, the updates become $`V_n=b_nL_n-(a_n-1)U_n`$ and $`\rho_nU_{n+1}=U_n-V_n`$. With positive integers $`L_n,U_n`$, $`a_n\ge2`$ and $`L_{n+1}=\operatorname{lcm}(L_n,a_n)`$, an eventual lower bound on $`V_n`$ already bounds $`U_n`$; the additional limit $`V_n/U_n\to0`$ gives eventual constancy. Section 6 of the companion, under “Integer coefficients”, proves these two assertions separately, without assuming centring for the boundedness assertion. For positive $`b_n`$, compare Badea \[badea1993, p. 316\] and Tijdeman–Yuan \[tijdemanyuan2002\]. The [coefficient proof supplement](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/CoefficientUniformBoundedHeight.md) also gives finite examples separating boundedness from stationarity.
 
 <a id="sec:secondaryrate"></a>
 
 # Cubic-rate irrationality and further consequences
 
 <div id="res:inclusiveone" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-inclusiveone">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-inclusiveone-comparator">Comparator</a></p>
 
 **Corollary 15** (an inclusive one-sided $`1/n`$ bound). *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Suppose that for some $`K\ge0`$ and $`\varepsilon>0`$,
 ``` math
@@ -494,8 +490,6 @@ For integer summand numerators $`b_n`$, the updates become $`V_n=b_nL_n-(a_n-1)U
 Then the sequence is eventually Sylvester. In particular, the conclusion holds under the pointwise eventual bound $`\gamma_n\le1/n`$.*
 
 </div>
-
-Lean: [original coordinate inclusive one](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L207), [original coordinate inclusive one pointwise](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean#L225).
 
 <div class="proof">
 
@@ -507,9 +501,10 @@ The first product telescopes and the second is bounded, giving $`t_n=O(n)`$. Sin
 
 </div>
 
-This is a written consequence of the bounded-increment criterion. It does not assert that the weaker condition $`\limsup n(\gamma_n)_+\le1`$ suffices; a vanishing but nonsummable excess over $`1/n`$ is not covered by this proof.
+This is a consequence of the bounded-increment criterion. It does not assert that the weaker condition $`\limsup n(\gamma_n)_+\le1`$ suffices; a vanishing but nonsummable excess over $`1/n`$ is not covered by this proof.
 
 <div id="res:cubicrate" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cubicrate-comparator">Comparator</a></p>
 
 **Theorem 16** (cubic-rate irrationality). *A strictly increasing sequence of positive integers with
 ``` math
@@ -519,19 +514,15 @@ has irrational reciprocal sum.*
 
 </div>
 
-Lean: [`cubic_rate_irrationality_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70). The zero-indexed theorem has no Chebotarev hypothesis; the one-based index translation below is an ordinary argument. See the [coverage section of the companion record](../../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=coverage).
-
 *Index translation.* The Lean theorem takes a positive, strictly increasing sequence indexed from $`0`$. To preserve the displayed $`3/n`$ rate, we alter only a finite prefix without shifting indices. Strict increase gives $`a_n\ge n`$ for $`n\ge1`$. The rate makes $`a_n^2/a_{n+1}<2`$ eventually, so $`a_{n+1}>a_n^2/2\ge n^2/2>n+1`$ for all sufficiently large $`n`$. Choose $`N`$ with $`a_N>N`$ and set $`b_n=n+1`$ for $`0\le n<N`$, and $`b_n=a_n`$ for $`n\ge N`$. Then $`b`$ is positive and strictly increasing, has exactly the same rate for all $`n\ge N`$, and its reciprocal sum differs from $`\sum_{n\ge1}1/a_n`$ by a finite rational sum. Thus the zero-indexed Lean theorem implies the printed one-based conclusion through this ordinary finite-prefix argument.
 
 <div class="proof">
 
-*Proof by the polynomial exclusion.* Under rationality, Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. The fixed-cubic exclusion contradicts this profile. The complete ordinary argument, including the finite-difference extraction and the cubic-field step, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). The companion gives an ordinary proof of the field step using the classical Chebotarev theorem \[stevenhagenlenstra1996, Section 3, author version\]. The Lean proof instead derives the square-specialisation lemma from the simple pole of the Dedekind zeta function and applies it to the full cubic-rate implication. This paragraph is a proof by the stated companion argument. ◻
+*Proof by the polynomial exclusion.* Under rationality, Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> gives $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. Integer finite differences then give $`C_n=An(n+1)(n+2)+B`$ eventually, with $`A\in\mathbb{Q}_{>0}`$ and $`B\in\mathbb{Q}`$. No positive integer solution of $`C_{n+1}=a_nC_n-D_n`$, $`D_{n+1}=a_nD_n`$ agrees eventually with such a cubic. Dividing out the eventual gcd of $`C_n`$ and $`D_n`$ reduces the cubic to $`(m/6)\,n(n+1)(n+2)\pm1`$ with $`m`$ a positive integer; a square condition at primes dividing a middle numerator, read in a cubic number field, forces $`m=12`$; and both remaining cubics fail the recurrences modulo seven. The complete argument, including the finite-difference extraction, is in Section 2 of the [companion reasoning paper](https://wcook04.github.io/plectis/papers/erdos243-reciprocal-tail-reasoning-surface.pdf). There the field step, that a polynomial value which is a square modulo almost every prime at every root is a square in the cubic field, is proved with the Chebotarev density theorem \[stevenhagenlenstra1996, Section 3, author version\]. The Lean proof assumes no form of that theorem: it derives the field step from the simple pole of the Dedekind zeta function at $`s=1`$, which Mathlib provides. ◻
 
 </div>
 
-The zero-indexed form of Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">16</a> is also a Lean theorem, [cubic-rate irrationality](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70), with the stated rate and no Chebotarev premise. The one-based conclusion uses the ordinary finite-prefix bridge above. In the Lean proof, the field step uses the simple pole of the Dedekind zeta function at $`s=1`$, which Mathlib provides, in place of Chebotarev’s theorem.
-
-For example, $`a_1=8`$ and $`a_{n+1}=\lceil n a_n^2/(n+3)\rceil`$ give this rate and product-ratio increments of order $`n^2`$. Thus the bounded-increment criterion does not apply, but Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">16</a> gives irrationality. The rounding estimates are in the companion’s Section 2; its Section 7 treats the general $`1+c/n`$ comparison.
+For example, $`a_1=8`$ and $`a_{n+1}=\lceil n a_n^2/(n+3)\rceil`$ give this rate, and the increments of $`P_n/a_n`$ are of order $`n^2`$. Thus the bounded-increment criterion does not apply, but Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">16</a> gives irrationality. The rounding estimates are in the companion’s Section 2; its Section 7 treats the general $`1+c/n`$ comparison.
 
 The same finite-difference extraction excludes every nonintegral $`\lambda>1`$ under the rate $`a_n^2/a_{n+1}=1+\lambda/n+o(n^{-\lambda})`$: eventual polynomial growth would force its degree to equal $`\lambda`$. The extraction uses $`\Gamma(n+\lambda)/\Gamma(n)\sim n^\lambda`$ \[dlmf_gamma, 5.11.12\]; its full proof is in the companion paper. These rates fall outside $`1+o(1/n)`$, the rate at which Koizumi notes that the Erdős–Straus criterion settles the problem \[koizumi2025, Remark 3, p. 16\], and they make Duverney’s signed series $`\sum_n(a_{n+1}/a_n^{2}-1)`$ diverge.
 
@@ -543,13 +534,14 @@ There is also a quantitative extension. Under the hypotheses of Theorem <a href
  \frac{(-E_n)_+}{\log_2\log_2\max(4,C_n)}\le1
  \quad\Longrightarrow\quad E_n=0\text{ eventually}.
 ```
-This implication is a Lean theorem, [double-logarithmic bound](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean#L45), with no hypothesis beyond these. The companion’s Theorem 7.3 and Corollary 7.4 prove this inclusive bound by controlling the height of a CRT block. A fixed bound satisfies it on a nonzero tail, where $`C_n\to\infty`$; a bound of order $`\sqrt{C_n}`$ need not. Unlike boundedness, the coefficient depends on the integer normalisation: scaling $`(C_n,D_n,E_n)`$ by $`k\in\mathbb{N}_{>0}`$ scales this limit superior by $`k`$. The proof and the running-maximum estimates are in the companion’s Section 7, not in the elementary bounded-increment argument above. Put $`H_n=\max_{j\le n}C_j`$. The Lean proof combines two Lean theorems about such an orbit: that $`\limsup_n(H_{n+1}-H_n)/\log_2\log_2\max(4,H_n)>1`$ whenever $`E_n`$ is not eventually zero ([strict record bound](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363)), and that this limit superior is at most the one displayed above ([comparison with the negative part](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L100)). The displayed implication is the contrapositive of the two combined, which also uses $`D_0\ge1`$, a consequence of (6). Subcritical versions are given in [the slow-negative proof](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/SlowNegativePartRigidity.md) and [the record-only extension](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md#5-record-only-subcritical-log-log-bound), the latter for LCM numerators with the bound imposed only at late record steps. These results do not establish the general bound on the sum at record steps.
+This implication has a Lean proof ([double-logarithmic bound](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean#L45)) with no hypothesis beyond these. The companion’s Theorem 7.3 and Corollary 7.4 prove this inclusive bound by controlling the height of a CRT block. A fixed bound satisfies it on a nonzero tail, where $`C_n\to\infty`$; a bound of order $`\sqrt{C_n}`$ need not. Unlike boundedness, the coefficient depends on the integer normalisation: scaling $`(C_n,D_n,E_n)`$ by $`k\in\mathbb{N}_{>0}`$ scales this limit superior by $`k`$. The proof and the running-maximum estimates are in the companion’s Section 7, not in the elementary bounded-increment argument above. Put $`H_n=\max_{j\le n}C_j`$. The Lean proof combines two Lean theorems about such an orbit: that $`\limsup_n(H_{n+1}-H_n)/\log_2\log_2\max(4,H_n)>1`$ whenever $`E_n`$ is not eventually zero ([strict record bound](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean#L363)), and that this limit superior is at most the one displayed above ([comparison with the negative part](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L100)). The displayed implication is the contrapositive of the two combined, which also uses $`D_0\ge1`$, a consequence of (6). The companion’s Theorem 7.11 proves the version with a coefficient below $`1`$; for LCM numerators with the bound imposed only at late record steps, see [a note on record steps](https://github.com/wcook04/plectis-erdos/blob/eccd8afc6db3c02a2265d0601b727d6c5e4467d5/lean/ErdosProblems/Erdos243/LcmRecordExcess.md#5-record-only-subcritical-log-log-bound). These results do not establish the general bound on the sum at record steps.
 
 <a id="sec:open"></a>
 
 # The remaining arithmetic estimate
 
 <div id="res:frontier" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-frontier-comparator">Comparator</a></p>
 
 **Proposition 17** (necessary profile). *The integer tail of a sequence satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
 ``` math
@@ -558,15 +550,13 @@ This implication is a Lean theorem, [double-logarithmic bound](https://github.co
 
 </div>
 
-Lean: [canonical frontier](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
-
 <div class="proof">
 
 *Proof.* Absorption excludes late zeros, descent excludes an eventually nonnegative error, and Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a> and <a href="#res:massscalar" data-reference-type="ref" data-reference="res:massscalar">12</a> exclude the two finiteness conditions. ◻
 
 </div>
 
-The profile is a necessary condition, not a construction. For a zero-indexed exact orbit with $`a_n>1`$, $`C_n>0`$, $`D_n\ge0`$ and $`E_n/C_n\to0`$, the companion’s Section 4 proves that $`D_n>0`$, $`C_n/D_n\to0`$ and $`\sum_n1/a_n=C_0/D_0`$; it also derives quadratic growth. Thus these global orbit assumptions already supply reciprocal-series realisation. A scalar numerical profile or a finite admissible prefix does not.
+The profile is a necessary condition, not a construction. For a zero-indexed exact orbit with $`a_n>1`$, $`C_n>0`$, $`D_n\ge0`$ and $`E_n/C_n\to0`$, the companion’s Section 4 proves that $`D_n>0`$, $`C_n/D_n\to0`$ and $`\sum_n1/a_n=C_0/D_0`$; it also derives quadratic growth. Thus these global orbit assumptions already make the orbit the integer tail of a reciprocal series. A scalar numerical profile or a finite admissible prefix does not.
 
 <div id="res:lcmheight" class="problem">
 
@@ -582,9 +572,7 @@ at infinitely many indices?
 
 </div>
 
-Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> gives $`C_{n+1}/C_n\to1`$; averaging logarithms therefore gives $`\log C_n=o(n)`$. Since $`1\le M_n\le C_n`$, every such orbit already satisfies $`\log M_n/n\to0`$. The proposed positive upper limit is therefore a contradiction target: proving it from failure of Sylvester behaviour would exclude every counterexample, not describe an additional possible growth regime.
-
-The necessary profile is proved above and is formalised as [the necessary conditions on a counterexample](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151). The formal statement assumes the rational reciprocal sum, the quadratic growth limit and failure of eventual Sylvester behaviour; the last hypothesis is essential to all of its nontermination conclusions.
+Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a> gives $`C_{n+1}/C_n\to1`$; averaging logarithms therefore gives $`\log C_n=o(n)`$. Since $`1\le M_n\le C_n`$, every such orbit already satisfies $`\log M_n/n\to0`$. A positive answer therefore holds exactly when no such orbit exists: proving it from failure of Sylvester behaviour would exclude every counterexample.
 
 For $`B\ge0`$ put
 ``` math
@@ -600,12 +588,11 @@ For a rational tail satisfying the growth hypothesis, the weighted criterion red
 If the recurrence is not eventually Sylvester, first crossings instead give $`F_B(X)\ge X/P_B-O_B(1)`$, with an orbit-dependent CRT modulus $`P_B`$. The sum groups each record step by its starting numerator $`U_n`$, not by the running maximum $`R_n`$ or the time index. On a non-Sylvester tail, $`U_n\to\infty`$, so only finitely many of these steps begin below any fixed $`X`$. The following lemma proves equivalence with the existence of an admissible weight. Enumerate the record indices $`n\in\mathcal R`$ by $`j`$, and apply it with $`u_j=U_n`$ and $`w_j=(-V_n-B)_+`$. The missing assertion is that growth and rationality force <a href="#eq:remaining-record-budget" data-reference-type="eqref" data-reference="eq:remaining-record-budget">[eq:remaining-record-budget]</a>; the first-crossing lower bound is already proved.
 
 <div id="res:weights" class="lemma">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weights-comparator">Comparator</a></p>
 
 **Lemma 19** (weights and linear density). *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
 
 </div>
-
-Lean: [real lower density zero iff exists admissible real weight](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87).
 
 <div class="proof">
 
@@ -642,27 +629,19 @@ I thank Wouter van Doorn for advice on the exposition, in particular for asking 
 
 # Sources and related methods
 
-The mathematical arguments above are independent of the source code. Each linked phrase below opens its declaration at an immutable revision; the checkpoint is `7380b7871687` unless the destination identifies a separate release, an older research note or a later revision.
-
-<a id="recorded-coverage."></a>
-
-#### Recorded coverage.
-
-The supplied index records checked proofs of the bounded-negative theorem, its product and LCM consequences, the scalar convergence criterion and necessary conditions on a counterexample. The rational-tail construction has its own formalised estimates; it is not merely an interpretation of an abstract recurrence. The [weighted criterion is checked in both directions](https://github.com/wcook04/plectis-erdos/blob/52d6c45ad203ba619cb5fe6ba485c0b5400519ea/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87), with the real cutoff used in Lemma <a href="#res:weights" data-reference-type="ref" data-reference="res:weights">19</a>. The zero-indexed cubic-rate theorem has an unconditional Lean declaration at the pinned revision; the one-based finite-prefix bridge above is an ordinary argument. The companion’s double-logarithmic results, its Theorem 7.3 and Corollary 7.4, are Lean theorems for the integer tails of a rational reciprocal sum ([record dichotomy](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean#L340), [double-logarithmic criterion](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean#L129)). For an orbit satisfying the hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a> other than (5), the double-logarithmic bound of Section <a href="#sec:secondaryrate" data-reference-type="ref" data-reference="sec:secondaryrate">7</a> is a Lean theorem as well ([double-logarithmic bound](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos243/PaperCompleteR21/DoubleLogOrbitBound.lean#L45)). The companion supplies the written proofs of both arguments, including the growth and modulus-counting arguments.
-
-The recorded main build is at `6b78209ab63a`; links retain their original pins, including `7380b7871687`. The linked weighted criterion also has a fresh Lean check; this does not certify the remaining exposition as a whole. Finite certificates and unsuccessful extensions are retained in the companion, not counted as proofs of assembled arguments. The earlier Isabelle/HOL development of Koutsoukou-Argyraki and Li \[kouli2020\] verifies older irrationality criteria, not Problem #243. None of these records supplies the missing increment bound or global record estimate.
+The mathematical arguments above are independent of the source code. The links below open Lean declarations at fixed revisions of the sources.
 
 <a id="earlier-remainder-methods-and-related-problems."></a>
 
 #### Earlier remainder methods and related problems.
 
-The integer-remainder method predates this argument \[erdosstraus1974, Theorem 2.1, pp. 85–86\]. Hančl and Tijdeman characterise rationality of polynomial Cantor series by a finite decomposition and a shifted polynomial sum \[hancltijdeman2008, Theorem 2.2 and its derivation, pp. 39–40\]; the polynomial hypotheses justify that rearrangement. Neither comparison supplies the lower-bound CRT argument. The freely selectable series of Problem #270 \[crmarickovac2025, Theorems 1–2\] are discussed in the companion’s Section 3, but are not used for the fixed recurrence here.
+The integer-remainder method predates this argument \[erdosstraus1974, Theorem 2.1, pp. 85–86\]. Hančl and Tijdeman characterise rationality of polynomial Cantor series by a finite decomposition and a shifted polynomial sum \[hancltijdeman2008, Theorem 2.2 and its derivation, pp. 39–40\]; the polynomial hypotheses justify that rearrangement. Neither comparison supplies the lower-bound CRT argument. The Isabelle/HOL development of Koutsoukou-Argyraki and Li \[kouli2020\] formalises older irrationality criteria of Erdős and Straus; it does not treat Problem #243. The freely selectable series of Problem #270 \[crmarickovac2025, Theorems 1–2\] are discussed in the companion’s Section 3, but are not used for the fixed recurrence here.
 
 <a id="main-criterion-and-arithmetic-lemmas."></a>
 
 #### Main criterion and arithmetic lemmas.
 
-The formalisation checks [the reciprocal-series corollary and its integer-tail construction](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211) (Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a>). The proof of [eventual vanishing under a lower error bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360) (Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a>) shifts past the two thresholds and applies the [vanishing result under a bound on the negative part](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2271) with centring and the lower bound at every index.
+The Lean proof of [eventual vanishing under a lower error bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360) (Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a>) shifts past the two thresholds and applies the [vanishing result under a bound on the negative part](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2271) with centring and the lower bound at every index.
 
 Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">5</a> corresponds to the [update law](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57) and the [defect identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1775). Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">6</a> uses [absorption of a vanishing error](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227) and [stabilisation of the nonnegative error](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1843). The [local rigidity step](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787) and the [eventual Sylvester recurrence](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1805) give the two forms of Corollary <a href="#res:step" data-reference-type="ref" data-reference="res:step">7</a>.
 
@@ -674,7 +653,7 @@ The three parts of Proposition <a href="#res:reduced" data-reference-type="ref"
 
 The scalar declaration proves [vanishing for a positive integer sequence with summable relative increases](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/SparseResetRecovery.lean#L612) (Theorem <a href="#res:massscalar" data-reference-type="ref" data-reference="res:massscalar">12</a>); its exact-orbit consequence is [the Sylvester recurrence under the same assumption](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/SparseResetRecovery.lean#L690). These declarations concern integer $`C_n`$, not the real-initial-value observation following the proof. Formulations that also assume denominator dynamics and vanishing relative error give [a growth bound for the numerator](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/SparseResetRecovery.lean#L378), [eventual zero error under the convergence assumption](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/SparseResetRecovery.lean#L488), and [the resulting Sylvester recurrence](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/SparseResetRecovery.lean#L510).
 
-The state dynamics and arithmetic exclusions are in `ReciprocalTailRigidity.lean`; the scalar criterion is in `SparseResetRecovery.lean`. The product and least-common-multiple criteria and the necessary conditions on a counterexample are in `PaperCompleteR7`. The checked periodic theorem assumes that each error magnitude is smaller than its multiplier. For periodic positive magnitudes and multipliers $`a_n\ge2`$, the companion derives this bound eventually from the exact recurrences. For general errors, vanishing relative error supplies strict centring eventually, but control of the negative part is still needed in Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a>.
+The Lean theorem excluding a periodic negative error (Theorem 10.1 of the companion) assumes that each error magnitude is smaller than its multiplier. For periodic positive magnitudes and multipliers $`a_n\ge2`$, the companion derives this bound eventually from the exact recurrences. For general errors, vanishing relative error supplies strict centring eventually, but control of the negative part is still needed in Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a>.
 
 <a id="app:residue"></a>
 
@@ -702,12 +681,11 @@ the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/7380b787168
 Direct iteration can produce very large intermediate integers. To decide whether the first $`h`$ divisions are exact, however, it suffices to know the initial value modulo $`(h+1)!`$. Computing a pseudo-greedy orbit through residues modulo a shrinking product modulus is Koizumi’s method \[koizumi2025, Remark 2 and Algorithm 1, pp. 13–14\]; for the forced numerator that product is a factorial.
 
 <div id="res:residue" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-243-reciprocal-tail-rigidity.md#res-residue-comparator">Comparator</a></p>
 
 **Theorem 21** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 
 </div>
-
-Lean: [forced survives iff of mod eq factorial](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134).
 
 <div class="proof">
 
@@ -727,8 +705,6 @@ Exact enumeration over $`2\le a_0<5000`$ gives at most $`17`$ successful updates
 
 99
 
-P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](https://users.renyi.hu/~p_erdos/1964-19.pdf), J. Indian Math. Soc. (N.S.) **27** (1964), 129–133. MR 175848. D. Duverney, [*Irrationality of fast converging series of rational numbers*](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf), J. Math. Sci. Univ. Tokyo **8** (2001), 275–316. MR 1837165. C. Badea, [*A theorem on irrationality of infinite series and applications*](https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf), Acta Arith. **63** (1993), no. 4, 313–323, doi:[10.4064/aa-63-4-313-323](https://doi.org/10.4064/aa-63-4-313-323). R. Tijdeman and P. Yuan, *On the rationality of Cantor and Ahmes series*, Indag. Math. (N.S.) **13** (2002), no. 3, 407–418, doi:[10.1016/S0019-3577(02)80018-0](https://doi.org/10.1016/S0019-3577(02)80018-0). P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980, p. 64. P. Erdős, [*On the irrationality of certain series: problems and results*](https://users.renyi.hu/~p_erdos/1988-22.pdf), in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). I. O. Bado, *Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partial Progress on Erdős Problem #243*, preprint posted September 2026, doi:[10.13140/RG.2.2.36612.08325](https://doi.org/10.13140/RG.2.2.36612.08325). P. White with Claude (Anthropic), [*Erdős \#243: working report*](https://erdosproblemaday.com/report/243), Erdős Problem a Day, page dated 12 August 2026. AI-assisted, unrefereed working report. P. Stevenhagen and H. W. Lenstra, Jr., [*Chebotarëv and his density theorem*](https://pub.math.leidenuniv.nl/~lenstrahw/PUBLICATIONS/1994c/art.pdf), Math. Intelligencer **18** (1996), no. 2, 26–37, doi:[10.1007/BF03027290](https://doi.org/10.1007/BF03027290). Page references are to the linked author version dated 23 March 1995. J. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences*](https://math.colgate.edu/~integers/aa28/aa28.pdf), Integers **26** (2026), Paper No. A28, 17 pp., doi:[10.5281/zenodo.18714404](https://doi.org/10.5281/zenodo.18714404). Locators refer to this published version. T. F. Bloom, [*Erdős Problem \#243*](https://www.erdosproblems.com/243), supplied snapshot of 28 July 2026; not a live status verification. P. Erdős and E. G. Straus, [*On the irrationality of certain series*](https://msp.org/pjm/1974/55-1/pjm-v55-n1-p08-s.pdf), Pacific J. Math. **55** (1974), no. 1, 85–92. J. Hančl and R. Tijdeman, [*On the irrationality of polynomial Cantor series*](https://www.impan.pl/shop/en/publication/transaction/download/product/82186), Acta Arith. **133** (2008), no. 1, 37–52, doi:[10.4064/aa133-1-3](https://doi.org/10.4064/aa133-1-3). Locators refer to the published version. D. Duverney, T. Kurosawa and I. Shiokawa, [*Irrationality exponents of certain fast converging series of rational numbers*](https://danielduverney.fr/documents/theorie-des-nombres/Tsukuba.pdf), Tsukuba J. Math. **44** (2020), no. 2, 235–250, doi:[10.21099/tkbjm/20204402235](https://doi.org/10.21099/tkbjm/20204402235). Theorem locators follow the linked 14-page author version. T. Crmarić and V. Kovač, [*On the irrationality of certain super-polynomially decaying series*](https://arxiv.org/abs/2504.18712v1), Colloq. Math. **179** (2025), 55–68, doi:[10.4064/cm9628-5-2025](https://doi.org/10.4064/cm9628-5-2025). Theorem locators follow arXiv:2504.18712v1. A. Koutsoukou-Argyraki and W. Li, [*Irrationality Criteria for Series by Erdős and Straus*](https://isa-afp.org/entries/Irrational_Series_Erdos_Straus.html), Archive of Formal Proofs, 12 May 2020. An Isabelle/HOL formalisation; the archive entry identifies the results formalised. National Institute of Standards and Technology, [*Digital Library of Mathematical Functions*, §5.11(iii), formula 5.11.12](https://dlmf.nist.gov/5.11.E12), accessed 16 September 2026.
+P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](https://users.renyi.hu/~p_erdos/1964-19.pdf), J. Indian Math. Soc. (N.S.) **27** (1964), 129–133. MR 175848. D. Duverney, [*Irrationality of fast converging series of rational numbers*](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf), J. Math. Sci. Univ. Tokyo **8** (2001), 275–316. MR 1837165. C. Badea, [*A theorem on irrationality of infinite series and applications*](https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf), Acta Arith. **63** (1993), no. 4, 313–323, doi:[10.4064/aa-63-4-313-323](https://doi.org/10.4064/aa-63-4-313-323). R. Tijdeman and P. Yuan, *On the rationality of Cantor and Ahmes series*, Indag. Math. (N.S.) **13** (2002), no. 3, 407–418, doi:[10.1016/S0019-3577(02)80018-0](https://doi.org/10.1016/S0019-3577(02)80018-0). P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980, p. 64. P. Erdős, [*On the irrationality of certain series: problems and results*](https://users.renyi.hu/~p_erdos/1988-22.pdf), in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). I. O. Bado, *Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partial Progress on Erdős Problem #243*, preprint posted September 2026, doi:[10.13140/RG.2.2.36612.08325](https://doi.org/10.13140/RG.2.2.36612.08325). P. White with Claude (Anthropic), [*Erdős \#243: working report*](https://erdosproblemaday.com/report/243), Erdős Problem a Day, page dated 12 August 2026. AI-assisted, unrefereed working report. P. Stevenhagen and H. W. Lenstra, Jr., [*Chebotarëv and his density theorem*](https://pub.math.leidenuniv.nl/~lenstrahw/PUBLICATIONS/1994c/art.pdf), Math. Intelligencer **18** (1996), no. 2, 26–37, doi:[10.1007/BF03027290](https://doi.org/10.1007/BF03027290). Page references are to the linked author version dated 23 March 1995. J. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences*](https://math.colgate.edu/~integers/aa28/aa28.pdf), Integers **26** (2026), Paper No. A28, 17 pp., doi:[10.5281/zenodo.18714404](https://doi.org/10.5281/zenodo.18714404). Locators refer to this published version. T. F. Bloom, [*Erdős Problem \#243*](https://www.erdosproblems.com/243), accessed 28 July 2026. P. Erdős and E. G. Straus, [*On the irrationality of certain series*](https://msp.org/pjm/1974/55-1/pjm-v55-n1-p08-s.pdf), Pacific J. Math. **55** (1974), no. 1, 85–92. J. Hančl and R. Tijdeman, [*On the irrationality of polynomial Cantor series*](https://www.impan.pl/shop/en/publication/transaction/download/product/82186), Acta Arith. **133** (2008), no. 1, 37–52, doi:[10.4064/aa133-1-3](https://doi.org/10.4064/aa133-1-3). Locators refer to the published version. D. Duverney, T. Kurosawa and I. Shiokawa, [*Irrationality exponents of certain fast converging series of rational numbers*](https://danielduverney.fr/documents/theorie-des-nombres/Tsukuba.pdf), Tsukuba J. Math. **44** (2020), no. 2, 235–250, doi:[10.21099/tkbjm/20204402235](https://doi.org/10.21099/tkbjm/20204402235). Theorem locators follow the linked 14-page author version. T. Crmarić and V. Kovač, [*On the irrationality of certain super-polynomially decaying series*](https://arxiv.org/abs/2504.18712v1), Colloq. Math. **179** (2025), 55–68, doi:[10.4064/cm9628-5-2025](https://doi.org/10.4064/cm9628-5-2025). Theorem locators follow arXiv:2504.18712v1. A. Koutsoukou-Argyraki and W. Li, [*Irrationality Criteria for Series by Erdős and Straus*](https://isa-afp.org/entries/Irrational_Series_Erdos_Straus.html), Archive of Formal Proofs, 12 May 2020. An Isabelle/HOL formalisation; the archive entry identifies the results formalised. National Institute of Standards and Technology, [*Digital Library of Mathematical Functions*, §5.11(iii), formula 5.11.12](https://dlmf.nist.gov/5.11.E12), accessed 16 September 2026.
 
 </div>
-
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.

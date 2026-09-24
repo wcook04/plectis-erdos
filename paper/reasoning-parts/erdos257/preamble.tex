@@ -105,16 +105,12 @@
 \ExplSyntaxOff
 
 % ===========================================================================
-% Statement-level proof links.  The declarations cited under the statements
-% resolve at their own immutable pin, \ledgercommit.  The note printed under
-% each statement is generated.  Do not edit a \leannote by hand.
+% Evidence marks.  paper-evidence.tex places "Lean" and "Comparator" links in
+% the margin beside each result from this record's generated file
+% paper/evidence/<record>.tex, input below.
 % ===========================================================================
-\newcommand{\ledgercommit}{a25cb360bef8dd818dde14b5fb752244304af354}
-\newcommand{\ledgerbase}{https://github.com/wcook04/plectis-erdos/blob/\ledgercommit}
-\newcommand{\lproof}[3]{\href{\ledgerbase/lean/#1\#L#2}{\texttt{#3}}}
-\newcommand{\leannote}[1]{%
-  \par\nobreak\vspace{-0.3\baselineskip}%
-  \noindent{\small #1\par}\vspace{0.15\baselineskip}}
+\input{paper-evidence}
+\input{evidence/erdos257-mersenne-reasoning-surface}
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in
 % running prose too. Rather than police every occurrence, make the command

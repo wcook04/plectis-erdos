@@ -446,6 +446,41 @@ def test_late_pin_links_are_checked_at_their_own_pin() -> None:
     )
 
 
+def test_margin_marks_reach_their_declarations_only_for_marked_results() -> None:
+    evidence = {"papers": [
+        {"paper_id": "note-a", "results": [
+            {"lean": {"mark": "lean", "declarations": [
+                {"name": "Erdos249257.Outer.inner_lemma", "path": "lean/Erdos249257/Mod.lean"}]}},
+            {"lean": {"mark": None, "declarations": [
+                {"name": "Erdos249257.unmarked", "path": "lean/Erdos249257/Mod.lean"}]}},
+        ]},
+        {"paper_id": "note-b", "results": [
+            {"lean": {"mark": "lean", "declarations": [
+                {"name": "Erdos249257.other", "path": "lean/Erdos249257/Mod.lean"}]}},
+        ]},
+    ]}
+    keys = scanner.margin_mark_declaration_keys("paper/x/note-a.tex", evidence)
+    relative = scanner.library_relative("Erdos249257/Mod.lean")
+    require((relative, "Outer.inner_lemma") in keys and (relative, "inner_lemma") in keys,
+            f"a marked declaration was not reached under its declared name: {sorted(keys)}")
+    require((relative, "unmarked") not in keys, "a result without a mark reached its declaration")
+    require((relative, "other") not in keys, "another paper's mark counted for this note")
+
+
+def test_worded_pinned_link_reaches_the_declaration_at_its_line() -> None:
+    note = (r"\href{https://github.com/wcook04/plectis-erdos/blob/" + "a" * 40
+            + r"/lean/ErdosProblems/Synthetic/Headline.lean\#L2}{the measure dichotomy}")
+    key = ("ErdosProblems/Synthetic/Headline.lean", "worded_headline")
+    source = ["-- header", "theorem worded_headline : True := by trivial"]
+    with patch.object(scanner, "snapshot_lines", return_value=source):
+        require(key in linked_declaration_keys(note), "a worded pinned link was not resolved")
+        require(key not in linked_declaration_keys(note.replace("L2", "L1")),
+                "a worded link to a line without a declaration counted")
+        require(key not in linked_declaration_keys(note.replace("a" * 40, "main")), "moving ref counted")
+    with patch.object(scanner, "snapshot_lines", return_value=["-- header", "-- theorem worded_headline"]):
+        require(key not in linked_declaration_keys(note), "a commented declaration counted")
+
+
 def main() -> int:
     test_printed_links_are_checked_exactly_as_rendered()
     test_printed_path_absent_at_pin_fails_with_relocation_hint()
@@ -464,6 +499,8 @@ def main() -> int:
     test_git_snapshot_reads_use_clean_bounded_environment()
     test_git_snapshot_batch_uses_one_clean_bounded_process()
     test_nested_layout_snapshot_falls_back_from_identity_path()
+    test_margin_marks_reach_their_declarations_only_for_marked_results()
+    test_worded_pinned_link_reaches_the_declaration_at_its_line()
     print(
         "test_problem_note_sources: comment injection, split heads, module "
         "collisions, required anchors, invalid floors, and mismatched source "

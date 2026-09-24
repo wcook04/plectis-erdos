@@ -8,15 +8,15 @@
 
 </div>
 
-For coprime integers $`a>b\ge1`$, we prove that $`F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}`$ is irrational when $`\log b/\log a<0.4056830213840605\ldots`$, with the cutoff defined exactly below. This includes every positive integral power of $`31/4`$, with irrationality exponent less than $`301`$. We use Zudilin’s 2004 forms and constants, cancel common cyclotomic factors before rational evaluation, and compute the remaining denominator cost.
+Let $`F(t)=\sum_{n\ge1}(t^n-1)^{-1}`$. Zudilin’s 2004 forms bound the irrationality exponent of $`F`$ at integer bases. In 2016 he remarked that his results for the generalized $`q`$-logarithm, of which $`F`$ is a special value, extend to rational bases $`a/b`$ with $`\log a>c\log b`$ for a computable $`c`$, which he did not compute. We carry out this specialisation for $`F`$ with his 2004 forms and constants, cancelling common cyclotomic factors before rational evaluation and computing the remaining denominator cost: for coprime $`a>b\ge1`$, $`F(a/b)`$ is irrational when $`\log b/\log a<0.4056830213840605\ldots`$, the cutoff defined exactly below. This includes every positive integral power of $`31/4`$, with irrationality exponent less than $`301`$, and excludes $`3/2`$.
 
-For the distinct normalised Hankel determinants $`V_N^*`$ in his 2016 construction, with auxiliary parameters $`x=z=1`$, we prove
+For the normalised Hankel determinants $`V_N^*`$ of his 2016 construction, with auxiliary parameters $`x=z=1`$, we prove at every rank
 ``` math
 \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
  \qquad [q^{\operatorname{ord}_q V_N^*}]V_N^*
-       =\frac{(N!)^2(N+1)!}{2^N}.
+       =\frac{(N!)^2(N+1)!}{2^N},
 ```
-The order is the least exponent with nonzero coefficient; a unique least-order term in the moment expansion gives both formulas. For fixed $`0<q<1`$ we prove that, as $`N\to\infty`$, $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$, where $`B_N`$ and $`C_N`$ are the order and coefficient above and $`K(q)>0`$ is given by a convergent product. We also factor the moment weights into two finite $`q`$-multinomial sums. For every real $`p>1`$, a separate Lean-checked finite coefficient pencil has positive definite first matrix and real roots below $`F(p)`$ through rank eight; roots at adjacent ranks interlace non-strictly. The rational-base criterion does not include $`3/2`$; none of these finite spectral facts settles irrationality at that base.
+so his lower bound for the order is sharp, and for fixed $`0<q<1`$ that $`V_N^*(q)\sim K(q)C_Nq^{B_N}(q;q)_\infty^{2N}N^{-8F(1/q)}`$ as $`N\to\infty`$, where $`B_N`$ and $`C_N`$ are the order and coefficient above and $`K(q)>0`$ is a convergent product. Separately, and only through rank eight, Lean checks that a finite coefficient pencil has positive definite first matrix and real roots below $`F(p)`$ for every real $`p>1`$. None of these results settles irrationality at $`3/2`$.
 
 <a id="sec:problem"></a>
 
@@ -29,7 +29,7 @@ F(t)=\sum_{n\ge1}\frac1{t^n-1}
 ```
 where $`\tau(n)`$ is the number of positive divisors of $`n`$. With $`q=1/t`$, this is the $`q`$-harmonic series $`\sum_{n\ge1}q^n/(1-q^n)`$. The rearrangement is justified by nonnegativity, and the resulting series converges since $`\tau(n)\le n`$ and $`\sum_{n\ge1}nt^{-n}<\infty`$.
 
-Chowla conjectured that $`F(t)`$ is irrational for every rational $`t>1`$, as Erdős records \[erdos1988, p. 102\]; this is Erdős Problem #1049. The conjecture remains open. We prove a sufficient condition on the numerator and denominator of $`t`$, using Zudilin’s 2004 construction \[zudilin2004\]. The condition includes $`31/4`$ and every positive integral power of $`31/4`$, but not $`3/2`$.
+Chowla conjectured that $`F(t)`$ is irrational for every rational $`t>1`$, as Erdős records \[erdos1988, p. 102\]; this is Erdős Problem #1049. The conjecture remains open. We prove a sufficient condition on the numerator and denominator of $`t`$, using Zudilin’s 2004 construction \[zudilin2004\]. The condition includes $`31/4`$ and every positive integral power of $`31/4`$ ([proved in Lean](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L59)), and it excludes $`3/2`$ ([also proved in Lean](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L122)).
 
 The extra difficulty at a rational base is the denominator. If $`U,V\in\mathbb{Z}[X]`$ have degree at most $`W`$, then $`b^WU(a/b)`$ and $`b^WV(a/b)`$ are integers. To prove irrationality by these forms, their positive remainders $`U(a/b)F(a/b)-V(a/b)`$ must remain small after multiplication by $`b^W`$.
 
@@ -43,6 +43,10 @@ For the cancelled polynomials $`U_n,V_n`$ used here, put $`\Lambda_n=U_nF-V_n`$ 
 where $`C_0,C_1`$ are defined below. If the coefficient of $`n^2`$ is negative, the forms have integer coefficients and positive values tending to zero. If $`F(a/b)`$ were rational, multiplying by its fixed denominator would give positive integers tending to zero, a contradiction.
 
 The proof of the rational-base result occupies Section <a href="#sec:rational-base-irrationality" data-reference-type="ref" data-reference="sec:rational-base-irrationality">2</a>. The independent argument in Section <a href="#sec:hankel-order" data-reference-type="ref" data-reference="sec:hankel-order">3</a> computes the first nonzero term of a Hankel determinant from the 2016 construction. Neither proof uses Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">4</a>, which records supplementary tests for congruence-based arguments at $`3/2`$. The companion *Zudilin’s Forms at Rational Bases: Proofs and Research Record*, called the long record below, gives the additional moment calculations, source comparisons and computational certificates.
+
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+
+Links in the running text go to Lean proofs of single steps, such as a finite inequality; such a link does not cover the surrounding argument.
 
 Throughout, logarithms are natural. Empty products and determinants have value $`1`$, and a subscripted constant in $`O_x(\cdot)`$ may depend on the fixed base $`x`$. Other notation is introduced where it is used.
 
@@ -59,6 +63,7 @@ C_1=\frac{1091}{2},\qquad
 The intervals are disjoint and lie in $`[1/14,1)`$, so $`0\le J\le\psi_1(1/14)-\psi_1(1)<196`$. Together with $`\pi>3`$, these bounds give $`0<C_0<266<C_1/2`$. Thus $`\theta^*=C_0/C_1`$ and $`\mu=C_1/C_0`$ are positive reciprocal constants. The notation $`\mu_{\rm irr}(\xi)`$ instead denotes the irrationality exponent of a value. The cutoff is sufficient, not asserted optimal.
 
 <div id="res:rational-base-threshold" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold-comparator">Comparator</a></p>
 
 **Theorem 1** (rational-base region for Zudilin’s forms). *Let $`a>b\ge1`$ be coprime integers with
 ``` math
@@ -72,8 +77,6 @@ The intervals are disjoint and lie in $`[1/14,1)`$, so $`0\le J\le\psi_1(1/14)-\
 Then $`F(a/b)`$ is irrational.*
 
 </div>
-
-Lean: [printed contour short](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L440), [printed mu](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L461), [zudilin j enclosure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L334), [zudilin c0 enclosure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean#L383), and 7 further declarations in the [coverage section of the companion record](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=coverage).
 
 The condition holds for every integer base, since $`b=1`$ gives $`\log b/\log a=0`$. For a fixed denominator $`b>1`$, it requires $`a>b^{2.46497868\ldots}`$, much more than $`a>b`$; nevertheless it gives infinitely many reduced noninteger rational bases for each such $`b`$. The base $`31/4`$ satisfies the condition, and taking a common positive integer power of the numerator and denominator leaves their logarithmic ratio unchanged. The base $`3/2`$ is excluded since $`\theta^*<1/2<\log2/\log3`$. At equality $`\log b/\log a=\theta^*`$ the quadratic exponent vanishes, so the estimates below give no conclusion.
 
@@ -107,7 +110,7 @@ has period $`1`$: the coefficients of the floor arguments in each difference hav
 [6/7,13/15),\ [13/14,14/15).
 \end{gathered}
 ```
-These are the intervals $`\mathcal I`$ used to define $`J`$. The function $`\omega`$, these thirteen intervals and the exponents $`\nu_\ell=\omega(n/\ell)`$ of the source’s (22) are printed at \[zudilin2004, pp. 161–162\]. The zero-one values and the interval decomposition are checked in [interval formula for $`\omega`$](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297).
+These are the intervals $`\mathcal I`$ used to define $`J`$. The function $`\omega`$, these thirteen intervals and the exponents $`\nu_\ell=\omega(n/\ell)`$ of the source’s (22) are printed at \[zudilin2004, pp. 161–162\]. Lean checks the zero-one values and this [interval formula for $`\omega`$](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297).
 
 #### The positive source expression.
 
@@ -204,7 +207,7 @@ The series converges because $`-\log(1-x^{-d})\le x^{-d}/(1-x^{-1})`$. Since $`0
 
 #### Homogenisation.
 
-Because $`U_n,V_n`$ are integral polynomials of degree at most $`W_n`$, $`b^{W_n}U_n(a/b)`$ and $`b^{W_n}V_n(a/b)`$ are integers. That integrality and the cleared linear-form identity it produces are [cleared linear form identity](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61). Moreover
+Because $`U_n,V_n`$ are integral polynomials of degree at most $`W_n`$, $`b^{W_n}U_n(a/b)`$ and $`b^{W_n}V_n(a/b)`$ are integers; Lean checks this integrality and the resulting [cleared linear-form identity](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61). Moreover
 ``` math
 \begin{split}
  \log\bigl(b^{W_n}\Lambda_n(a/b)\bigr)
@@ -212,17 +215,16 @@ Because $`U_n,V_n`$ are integral polynomials of degree at most $`W_n`$, $`b^{W_n
  &=\bigl(C_1\log b-C_0\log a\bigr)n^2+o(n^2).
 \end{split}
 ```
-The coefficient is negative under the theorem’s hypothesis. The positive values of these integer-coefficient forms therefore tend to zero. If $`F(a/b)=r/s`$ with integers $`r,s`$ and $`s\ne0`$, every nonzero value would have absolute value at least $`1/|s|`$, a contradiction. The separation bound for a nonzero integral form at a rational target is [rational integer linear form gap](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128). ◻
+The coefficient is negative under the theorem’s hypothesis. The positive values of these integer-coefficient forms therefore tend to zero. If $`F(a/b)=r/s`$ with integers $`r,s`$ and $`s\ne0`$, every nonzero value would have absolute value at least $`1/|s|`$, a contradiction; Lean checks this [separation bound](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128) for a nonzero integral form at a rational target. ◻
 
 </div>
 
 <div id="res:thirtyone-four" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-thirtyone-four-comparator">Comparator</a></p>
 
 **Corollary 2**. *$`F\bigl((31/4)^r\bigr)`$ is irrational for every integer $`r\ge1`$.*
 
 </div>
-
-Lean: [thirtyone four powers](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117).
 
 <div class="proof">
 
@@ -241,6 +243,7 @@ Finally, the logarithmic ratio and coprimality are preserved by a common positiv
 </div>
 
 <div id="cor:rational-base-measure" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure-comparator">Comparator</a></p>
 
 **Corollary 3** (an irrationality measure uniform over powers). *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 ``` math
@@ -250,8 +253,6 @@ Finally, the logarithmic ratio and coprimality are preserved by a common positiv
 Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $`|\xi-p/q|<q^{-\nu}`$ has infinitely many reduced rational solutions. In particular, $`\mu_{\rm irr}(F((31/4)^r))<301`$ for every $`r\ge1`$.*
 
 </div>
-
-Lean: [rational base measure uniform](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205), [rational base power measure](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167), [thirtyone four power measure lt 301](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176).
 
 <div class="proof">
 
@@ -288,7 +289,7 @@ Let $`\eta\downarrow0`$. The resulting bound is $`1+\alpha/\tau=(1-\theta)/(\the
  <\frac{1-0.4036982}{0.40568-0.4036982}
  =\frac{2981509}{9909}<301.
 ```
-Long Section 2.5 supplies the sharper numerical enclosures, their series and tail bounds, and the cutoff-digit certificate. These are exact computations, not additional Lean declarations. ◻
+Lean checks these bounds, including $`2981509/9909<301`$, and the printed digits of $`\theta^*`$ and $`\mu`$ in Theorem <a href="#res:rational-base-threshold" data-reference-type="ref" data-reference="res:rational-base-threshold">1</a>. Long Section 2.5 also gives independent exact computations of sharper enclosures. ◻
 
 </div>
 
@@ -296,7 +297,7 @@ Long Section 2.5 supplies the sharper numerical enclosures, their series and ta
 
 #### Formal sources.
 
-The linked Lean sources prove Theorem <a href="#res:rational-base-threshold" data-reference-type="ref" data-reference="res:rational-base-threshold">1</a> as [the rational-base region](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113), and Corollary <a href="#res:thirtyone-four" data-reference-type="ref" data-reference="res:thirtyone-four">2</a> as [the powers of $`31/4`$](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117), with [the base $`31/4`$](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L121) as the case $`r=1`$. They construct the coefficient polynomials and prove the remainder estimates rather than assuming them. Of Zudilin’s two constructions \[zudilin2004; zudilin2016\], the argument here uses the 2004 forms; Section <a href="#sec:hankel-order" data-reference-type="ref" data-reference="sec:hankel-order">3</a> uses the 2016 sequence.
+The Lean proofs of Theorem <a href="#res:rational-base-threshold" data-reference-type="ref" data-reference="res:rational-base-threshold">1</a> and its two corollaries construct the cancelled coefficient polynomials and prove the remainder estimates. Of Zudilin’s two constructions \[zudilin2004; zudilin2016\], the argument here uses the 2004 forms; Section <a href="#sec:hankel-order" data-reference-type="ref" data-reference="sec:hankel-order">3</a> uses the 2016 sequence.
 
 <a id="comparison-and-scope."></a>
 
@@ -305,6 +306,7 @@ The linked Lean sources prove Theorem <a href="#res:rational-base-threshold" da
 Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gives irrationality for $`\log b/\log a<\theta_{\rm BV}:=1/2-1/\pi^2`$. Their $`q`$ is the base $`a/b>1`$, not its reciprocal. Their logarithmic derivative is $`L_q(z)=\sum_{j\ge1}(q^j+z)^{-1}`$, so the value at $`z=\alpha=-1`$ is exactly $`F(a/b)`$. The rational height is $`h(q)=a`$, and their parameter $`\lambda=\log h(q)/\log q`$ is $`1/(1-\log b/\log a)`$, which gives the displayed cutoff. Since $`\pi^2<10`$, one has $`\theta_{\rm BV}<2/5<\log4/\log31`$, so $`31/4`$ lies outside that sufficient region. The two sufficient regions differ on $`[\theta_{\rm BV},\theta^*)`$. Zudilin also notes an extension to noninteger rational bases $`p=r/s`$ for the generalized $`q`$-logarithm when $`\log|r|>c\log|s|`$, with $`c>0`$ computable but unspecified \[zudilin2016, Sec. 2, p. 4\]. For $`F`$, the specialisation above gives $`c=\mu`$, the exponent bound of \[zudilin2004, p. 162\].
 
 <div id="res:sevenhalves" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-sevenhalves-comparator">Comparator</a></p>
 
 **Theorem 4** (the $`7/2`$ height condition). *The [integer power certificate](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L32) $`2^{18}<7^7`$ yields the [Archimedean height condition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
 ``` math
@@ -338,12 +340,11 @@ Negative bases are not treated: the positive-remainder estimates used here assum
 The next restriction requires one polynomial family and common leading degree, height and decay constants at every fixed real base $`x>1`$. The error terms may depend on $`x`$. Here $`H`$ is the sum of the absolute coefficients, and $`a>b\ge1`$ are integers. Reducing $`a/b`$ avoids an unnecessary clearing factor, but coprimality is not needed for this estimate.
 
 <div id="res:archimedean-cap" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-archimedean-cap-comparator">Comparator</a></p>
 
 **Theorem 5** (a degree restriction for estimates valid at every base). *Let $`(U_n,V_n)`$ be pairs in $`\mathbb Z[X]^2`$ satisfying $`\Lambda_n(x)=U_n(x)F(x)-V_n(x)\ne0`$, $`\deg U_n,\deg V_n\le\delta n^2(1+o(1))`$, $`\log\max(H(U_n),H(V_n))\le h n^2(1+o(1))`$ with $`H`$ the $`\ell^1`$ coefficient norm, and $`\log|\Lambda_n(x)|=-\sigma n^2\log x\,(1+o(1))`$ for every real $`x>1`$, with $`\sigma,\delta>0`$ and $`h\ge0`$ independent of $`x`$. Then with $`d_n=\max(\deg U_n,\deg V_n)`$, the homogenised forms $`b^{d_n}\Lambda_n(a/b)`$ tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, and $`\sigma/(\sigma+\delta)\le1/2`$.*
 
 </div>
-
-Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162).
 
 <div class="proof">
 
@@ -351,12 +352,12 @@ Lean: [short note archimedean cap](https://github.com/wcook04/plectis-erdos/blob
 ``` math
 a_nb_{n+1}-a_{n+1}b_n=a_{n+1}L_n-a_n L_{n+1}
 ```
-is then $`o(1)`$, hence eventually zero. Also $`a_n\ne0`$ for large $`n`$: otherwise the nonzero integer $`L_n=-b_n`$ would have absolute value less than $`1`$. Thus $`b_n/a_n`$ is eventually a fixed rational $`r`$. If $`F(p)\ne r`$ then $`|L_n|\ge|F(p)-r|`$; if $`F(p)=r`$ then $`L_n=0`$. Both contradict the hypotheses, so $`\sigma\le\delta`$. The deduction of a contradiction from the two cross-product limits is formalised in [the integer linear-form argument](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L123). The homogenised logarithm satisfies
+is then $`o(1)`$, hence eventually zero. Also $`a_n\ne0`$ for large $`n`$: otherwise the nonzero integer $`L_n=-b_n`$ would have absolute value less than $`1`$. Thus $`b_n/a_n`$ is eventually a fixed rational $`r`$. If $`F(p)\ne r`$ then $`|L_n|\ge|F(p)-r|`$; if $`F(p)=r`$ then $`L_n=0`$. Both contradict the hypotheses, so $`\sigma\le\delta`$. The homogenised logarithm satisfies
 ``` math
 \limsup_{n\to\infty} n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
  \le \delta\log b-\sigma\log(a/b),
 ```
-which is negative on the stated sufficient region. The equivalence with the stated logarithmic condition is checked in [the logarithmic comparison](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144), and the final bound in [the comparison with $`1/2`$](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155). The conclusion bounds the sufficient cutoff furnished by the displayed degree estimate. An exclusion for a particular family requires its actual degree and remainder asymptotics. ◻
+which is negative on the stated sufficient region. The conclusion bounds the sufficient cutoff furnished by the displayed degree estimate. An exclusion for a particular family requires its actual degree and remainder asymptotics. ◻
 
 </div>
 
@@ -385,6 +386,7 @@ The source uses $`\ell_p(x,z)=x\sum_{r\ge1}z^r/(p^r-x)`$, with $`p=q^{-1}`$, so 
 for every $`N\ge1`$ \[zudilin2016, Sec. 4, Lemma 1, pp. 6–7\]. A formal moment expansion identifies the unique least-order term and shows that this estimate is always sharp.
 
 <div id="res:zudilin-sharp-qorder" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder-comparator">Comparator</a></p>
 
 **Theorem 6** (the first nonzero term of the Hankel determinant). *For every $`N\ge1`$,
 ``` math
@@ -397,8 +399,6 @@ and the coefficient of the first nonzero monomial is
 ```*
 
 </div>
-
-Lean: [order zudilin normalized hankel det all](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173), [coeff zudilin normalized hankel det all rat](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
 
 <div class="proof">
 
@@ -442,15 +442,16 @@ No other tuple can cancel this coefficient. ◻
 
 </div>
 
-The Lean proof uses transformed rows rather than the moment expansion above. It checks both identities at every rank as [the exact order](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173) and [the leading coefficient](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
+The Lean proof follows a different route, through Zudilin’s transformed rows.
 
 <a id="from-formal-order-to-size-at-a-fixed-base."></a>
 
 #### From formal order to size at a fixed base.
 
-Formal order alone does not bound the value at a fixed $`q`$: multiplication by $`(1-q)^{N^3}`$ leaves the first term unchanged but changes its logarithm by a cubic quantity. The long record, Section 3.1, proves separately that $`V_N^*(q)>0`$ and that $`\log(V_N^*(q)/(C_Nq^{B_N}))=O_q(N)`$ for fixed $`0<q<1`$. The same positive-measure argument, carried further, settles the size within that band. The theorem below is a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/76f44c5329c0e207f5376062c7d79125485fbceb/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53), derived there from the long record’s [form](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean#L990) with the explicit constant $`K(q)=\mathcal A(q)\mathcal M(q)^3`$. That proof uses the [exact factorisation](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312) of the moment weights, from which it also obtains the second-order behaviour of $`a_k/c_k`$, and the [determinant limit](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324) for weights of this shape.
+Formal order alone does not bound the value at a fixed $`q`$: multiplication by $`(1-q)^{N^3}`$ leaves the first term unchanged but changes its logarithm by a cubic quantity. The long record, Section 3.1, proves separately that $`V_N^*(q)>0`$ and that $`\log(V_N^*(q)/(C_Nq^{B_N}))=O_q(N)`$ for fixed $`0<q<1`$. The same positive-measure argument, carried further, settles the size within that band. Lean derives the theorem below from the long record’s [form](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean#L990) with the explicit constant $`K(q)=\mathcal A(q)\mathcal M(q)^3`$, using the [exact factorisation](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312) of the moment weights, from which it also obtains the second-order behaviour of $`a_k/c_k`$, and a [determinant limit](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324) for weights of this shape.
 
 <div id="res:sharp-fixed-base" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-sharp-fixed-base-comparator">Comparator</a></p>
 
 **Theorem 7** (the size of $`V_N^*`$ at a fixed base). *Fix $`0<q<1`$ and write $`P=(q;q)_\infty`$, $`B_N=N(N-1)(2N-1)/6`$ and $`C_N=(N!)^2(N+1)!/2^N`$. There is a $`K(q)>0`$ with
 ``` math
@@ -459,8 +460,6 @@ V_N^*(q)\sim K(q)\,C_Nq^{B_N}P^{2N}N^{-8F(1/q)}
 ```*
 
 </div>
-
-Lean: [`sharp_fixed_base_exists`](https://github.com/wcook04/plectis-erdos/blob/76f44c5329c0e207f5376062c7d79125485fbceb/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53).
 
 <div class="proof">
 
@@ -482,7 +481,7 @@ One of those three factors of $`\mathcal M(q)`$ comes from the tuples other than
 
 #### What neither calculation implies.
 
-Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">7</a> replaces that band by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms. Against the two proposed degree savings of long Section 3, the shortfall at $`3/2`$ is exactly $`N(74N^2-117N+41)/41>0`$ for $`N\ge2`$, and the new estimate closes no part of it. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. The separate coefficient and content calculations are in long Section 3.3. Its finite pencil proposition is now Lean-checked through rank eight, including positivity, root location and non-strict interlacing; Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">5</a> records the precise source and finite scope.
+Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">7</a> replaces that band by explicit linear and logarithmic terms and a constant. It changes no cubic coefficient and no prime-power valuation, so it supplies no divisor for the 2004 polynomial forms. Against the two proposed degree savings of long Section 3, the shortfall at $`3/2`$ is exactly $`N(74N^2-117N+41)/41>0`$ for $`N\ge2`$, and the new estimate closes no part of it. Neither assertion supplies the cyclotomic divisibility proved for a different recurrence in \[krvz2009, Prop. 4, pp. 14–15\]. Long Section 3.3 gives the separate coefficient and content calculations; Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">5</a> separates its fixed-rank Lean results from its finite computations.
 
 <a id="sec:open"></a>
 
@@ -503,6 +502,7 @@ Q a^N\sum_{m\ge N+K+1}\tau(m)(b/a)^m
 Thus it is necessary for the scaled tail to be less than $`1`$, not sufficient. The long record, Section 6, gives counterexamples to the converse and to clearing all coordinates from the last-coordinate test. The following theorem excludes these stated conditions at $`3/2`$, not every rational approximation argument.
 
 <div id="res:nocorridor" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-nocorridor-comparator">Comparator</a></p>
 
 **Theorem 8** (failure of the stated clearing conditions at $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the [clearing conditions above](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).*
 
@@ -516,6 +516,7 @@ U_N=Br^N\left(\xi-\sum_{m=0}^{N-1}
 The rational $`\xi`$ is arbitrary; in an irrationality argument it would be a hypothetical value of the series.
 
 <div id="res:tailrec" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-tailrec-comparator">Comparator</a></p>
 
 **Theorem 9** (recurrence for the scaled remainder). *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and define $`U_N`$ as above. Then for every $`N`$ the [recurrence for the scaled remainder](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187) is
 ``` math
@@ -527,6 +528,7 @@ U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 Subtracting successive partial sums proves the identity. Neither convergence nor equality of $`\xi`$ with the infinite series is assumed.
 
 <div id="res:forcing" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-forcing-comparator">Comparator</a></p>
 
 **Theorem 10** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
 
@@ -535,8 +537,6 @@ Subtracting successive partial sums proves the identity. Neither convergence nor
 2.  *If $`s=1`$, then $`B\,c(N+1)\,s^{\,N+1}=B\,c(N+1)`$.*
 
 </div>
-
-Lean: [forcing term](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L186).
 
 <div class="proof">
 
@@ -557,6 +557,7 @@ J_{3,R}(P)=H_W(P)\pmod{3^R},\qquad
 ```
 
 <div id="res:bottomjet" class="lemma">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-bottomjet-comparator">Comparator</a></p>
 
 **Lemma 11** (a residue and divisibility by $`3^R`$). *Vanishing of the [residue modulo $`3^R`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
 
@@ -565,6 +566,7 @@ J_{3,R}(P)=H_W(P)\pmod{3^R},\qquad
 All four residues of $`(U,V)`$ vanish precisely when $`D=3^R2^S`$ divides both integers $`H_W(U)`$ and $`H_W(V)`$. Use the same $`W`$ for all rows: even when $`W`$ bounds every degree, replacing it by $`W+1`$ doubles the cleared values and changes their $`2`$-adic divisibility. The general truncation identity and endpoint congruences are given in long Section 5.
 
 <div id="res:jetkernel" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-jetkernel-comparator">Comparator</a></p>
 
 **Theorem 12** (equal residues for two subset sums). *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
 ``` math
@@ -578,21 +580,20 @@ In particular, if $`R>0`$ and $`4R+2S\le M`$, such a collision exists.*
 
 </div>
 
-Lean: [four jet paper statement](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248).
-
 <div class="proof">
 
 *Proof.* Send each subset to the sum of the residue vectors of its members. The pigeonhole principle gives two distinct subsets with the same image. The target size is the product of its four moduli. For $`R>0`$,
 ``` math
 (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^M,
 ```
-which proves the stated sufficient threshold. The cardinality formula, the collision, the signed $`\{-1,0,1\}`$ vector and the sufficient number of rows are formalised together in [the residue-count statement](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248). ◻
+which proves the stated sufficient threshold. ◻
 
 </div>
 
 The ambient count does not use relations between the two residue coordinates. Vanishing minors can reduce that cost to one coordinate.
 
 <div id="res:plucker-collapse" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-plucker-collapse-comparator">Comparator</a></p>
 
 **Theorem 13** (vanishing minors and a residue count). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
 ``` math
@@ -606,8 +607,6 @@ Thus $`S+2R`$ rows suffice, in place of the sufficient bound $`2S+4R`$ from the 
 
 </div>
 
-Lean: [plucker paper statement](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269).
-
 <div class="proof">
 
 *Proof.* If $`uA+vB=1`$ and $`AB'-BA'=0`$, then $`(A',B')=(uA'+vB')(A,B)`$. Applying this identity to consecutive rows and then inducting shows that every row is a multiple of $`w_0`$. This proves that every pairwise minor is zero. Right multiplication by
@@ -618,7 +617,7 @@ has determinant $`u_0A_0+v_0B_0=1`$ and sends $`w_0`$ to $`(1,0)`$. Consequently
 ``` math
 2^S3^R<2^S4^R=2^{S+2R}\le2^k,
 ```
-and pigeonhole gives the two selectors. The special cases requiring an invertible second coordinate are formalised together in [the vanishing-minor and residue-count statement](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269). ◻
+and pigeonhole gives the two selectors. ◻
 
 </div>
 
@@ -631,6 +630,7 @@ Primitive integer rows are unimodular modulo every modulus: for $`(2,3)`$ modulo
 The next proposition checks an exponent model, not an approximation construction: no coefficient polynomials producing these exponents are specified.
 
 <div id="res:pade" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-pade-comparator">Comparator</a></p>
 
 **Proposition 14** (exponent model: summand bound and exact gap). *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
 ``` math
@@ -648,17 +648,14 @@ Then, for integers $`n,k,m`$:*
 
 </div>
 
-Lean: [pade summand bound and gap](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L201).
-
 For the first inequality the gap is zero at $`n=k=0`$; otherwise both factors are nonnegative. Substituting $`j=n-m-1`$ gives the second identity for every integer $`m`$.
 
 <div id="res:content" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-content-comparator">Comparator</a></p>
 
 **Proposition 15** (rescaling two integer rows). *Multiplying two integer rows by $`c_1`$ and $`c_2`$ multiplies their [determinant](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by $`c_1c_2`$. The [integer identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and its [absolute-value form](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) show that the added divisibility is accompanied by exactly the same factor in the real absolute value.*
 
 </div>
-
-Lean: [integer scalar content](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L59).
 
 For nonzero row contents $`c_1,c_2`$, write $`r_i=c_ir_i^{\rm prim}`$. Then $`\det(r_1,r_2)=c_1c_2\det(r_1^{\rm prim},r_2^{\rm prim})`$ and $`r_i\cdot(\xi,-1)=c_i r_i^{\rm prim}\cdot(\xi,-1)`$. These identities concern multiplication or division of whole integer rows, not cancellation of a polynomial factor before specialisation. Nor does dividing different rows by different contents preserve a fixed residue relation: $`(1,1)+(5,5)`$ is zero modulo $`6`$, but the sum of the primitive rows is $`(2,2)`$. Even contents coprime to the modulus require the residue map to be formed again after row-by-row normalisation.
 
@@ -690,6 +687,7 @@ This is a restriction on two independent forms in the divided lattice. For one n
 Counting residues within short intervals gives small differences. To keep a difference nonzero, one must also bound the number of selectors with the same residues and the same real value.
 
 <div id="res:boundedfibre" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md#res-boundedfibre-comparator">Comparator</a></p>
 
 **Theorem 16** (equal residues with close, distinct values). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
 ``` math
@@ -701,8 +699,6 @@ f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
 ```*
 
 </div>
-
-Lean: [exists small real escape of conditional multiplicity](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79).
 
 <div class="proof">
 
@@ -774,11 +770,11 @@ The residues make $`A_n,B_n`$ integers. If $`F(3/2)=a/b`$, then $`|\rho_n|\ge1/|
 
 ## Statements and declarations
 
-<a id="artefact-and-data-availability."></a>
+<a id="data-availability."></a>
 
-#### Artefact and data availability.
+#### Data availability.
 
-The [pinned formal-source revision](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500) contains the Lean sources, the fixed toolchain, and the library manifest used in the verification. The ordinary proofs used here are printed with their hypotheses.
+The [formal-source revision](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500) contains the Lean sources, the toolchain and the library manifest; the [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1049-rational-base-lambert.md) lists every declaration and check.
 
 <a id="funding-and-competing-interests."></a>
 
@@ -794,7 +790,7 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 <a id="app:index"></a>
 
-# Source comparisons and formal verification
+# Source comparisons and finite computations
 
 <a id="integer-base-methods."></a>
 
@@ -806,76 +802,24 @@ Vandehey treats signed coefficients in the digit argument \[vandehey2013, Thms.�
 
 #### Coefficient moments.
 
-The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 checks the two leading Hankel families through rank eight, not the all-rank criterion in \[wangzhu2016, Lemma 2.1, p. 4\]. For the unshifted family, positivity through rank eight at every real $`p\ge1`$ is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean#L458). The [finite-pencil proposition](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43) proves that for real $`p>1`$ and every rank $`N\le8`$, $`A_N`$ is positive definite, all roots of $`\det(YA_N-B_N)`$ are real and less than $`F(p)`$, and roots at adjacent ranks interlace non-strictly. The shifted eight certificates remain separately computed in this account. Long Section 3.3 also proves a finite moment representation and discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. It also gives complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. These finite results do not assert all-rank coefficient positivity or divisibility.
+The coefficient polynomials in \[zudilin2016, Sec. 3, p. 5\] give a moment problem different from the remainder moments in Section 3. Long Section 3.3 treats it at fixed ranks only; the all-rank criterion of \[wangzhu2016, Lemma 2.1, p. 4\] is not addressed. Write $`A_N`$ and $`B_N`$ for the $`N\times N`$ Hankel matrices of the coefficients $`\alpha_m,\beta_m`$ in $`v_m^*=\alpha_mF(p)-\beta_m`$, where $`p=1/q`$. Lean proves the [finite-pencil proposition](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperR20/FinitePencilProposition.lean#L43): for real $`p>1`$ and every rank $`N\le8`$, $`A_N`$ is positive definite, all roots of $`\det(YA_N-B_N)`$ are real and less than $`F(p)`$, and roots at adjacent ranks interlace non-strictly. It also proves the [positivity of the leading Hankel determinants](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperR20/HankelKroneckerCertificate.lean#L458) behind the first conclusion, through rank eight at every real $`p\ge1`$. The other finite results are exact computations outside Lean, with their certificate lists and reproduction scripts in the long record: positivity of the shifted Hankel determinants through rank eight, complete polynomial contents through rank five and specified cyclotomic residue tests through rank eight. From these the long record proves a finite moment representation, and it discusses $`(m!)^3`$ at the endpoint \[berg2007, Thm. 5.1\], formal continued fractions and finite quadrature \[sw2024; golubwelsch1969\]. None of these results asserts all-rank coefficient positivity or divisibility.
 
 <a id="functional-equations."></a>
 
 #### Functional equations.
 
-Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\] excludes $`k`$-Mahler equations for $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ when $`k\ge2`$: there is no polynomial-coefficient relation among $`L(z),L(z^k),\ldots,L(z^{k^d})`$ with a nonzero coefficient of $`L(z)`$. The single-base exclusion is also a Lean theorem, in the form that for every $`k\ge2`$ no finite-dimensional $`\mathbb{Q}(z)`$-subspace of $`\mathbb{Q}((z))`$ containing $`L`$ is stable under $`z\mapsto z^k`$ ([single-base statement](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean#L263)). Long Section 10.3 explains this functional obstruction; it gives no irrationality statement for $`L(2/3)=F(3/2)`$.
+Bell and Smertnig’s classification \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\] excludes $`k`$-Mahler equations for $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ when $`k\ge2`$: there is no polynomial-coefficient relation among $`L(z),L(z^k),\ldots,L(z^{k^d})`$ with a nonzero coefficient of $`L(z)`$. The single-base exclusion is also a [Lean theorem](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SimultaneousMahlerSystemUnconditional.lean#L263), in the form that for every $`k\ge2`$ no finite-dimensional $`\mathbb{Q}(z)`$-subspace of $`\mathbb{Q}((z))`$ containing $`L`$ is stable under $`z\mapsto z^k`$. Long Section 10.3 explains this functional obstruction; it gives no irrationality statement for $`L(2/3)=F(3/2)`$.
 
-<a id="formal-sources-and-finite-computations."></a>
+<a id="rectangular-exponent-model."></a>
 
-#### Formal sources and finite computations.
+#### Rectangular exponent model.
 
-In the supplied snapshot, `PaperR17/SourceConsumers.lean` constructs the cancelled forms and proves the irrationality and measure results; `AllRow/Producer.lean` constructs the transformed rows and proves the all-rank determinant formulas.
-
-The historical index distinguishes reported public, parallel-release and unbuilt material at its pinned snapshot; no new Lean run is claimed by that index. The later finite-pencil declaration is linked separately above. The linked invertible-coordinate theorem is weaker than the ordinary unimodular-row theorem. The sixteen historical certificate lists and reproduction scripts remain in the long record. The unshifted rank-eight positivity and finite pencil proposition have separate Lean proofs at the source checkpoint; this does not promote the shifted certificates or any all-rank coefficient claim. Historical links retain their original revisions and line numbers, which have not been revalidated. Long Appendix A records the snapshot identifiers and gives the full source guide.
-
-<a id="sec:pinned-lean-sources"></a>
-
-# Additional formal statements
-
-Each link below retains its original revision and line number. Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">5</a> explains the supplied snapshot and verification scope.
-
-<a id="comparison-of-the-two-diagonals"></a>
-
-#### Comparison of the two diagonals
-
-[initial values of Van Assche’s diagonal](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L33); [residual of the other diagonal’s recurrence](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L67); [nonzero residual for $`p>1`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L94).
-
-<a id="clearing-partial-sums-and-their-remainders"></a>
-
-#### Clearing partial sums and their remainders
-
-[six conditions for clearing a window](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L113); [necessary power-versus-linear inequality](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L121); [$`3x<2^{x+1}`$ for $`x\ge 2`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L142); [rational-base partial sum](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L168); [one-term extension of the partial sum](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L173); [scaled remainder](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L181); [subtracted term in the recurrence](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L198); [exponential lower bound for that term](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L204); [integer-base special case](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L218); [rational comparison for $`7/2`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L36).
-
-<a id="proposed-denominator-exponents-and-scalar-rescaling"></a>
-
-#### Proposed denominator exponents and scalar rescaling
-
-[doubled proposed denominator exponent](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L19); [first summand exponent](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L24); [second summand exponent](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L46); [bound for the second exponent](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L60); [linear-form error under scalar rescaling](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L84); [divisor introduced by rescaling rows](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L116).
-
-<a id="residues-at-32"></a>
-
-#### Residues at $`3/2`$
-
-[denominator-cleared evaluation at $`3/2`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L98); [number of possible residue vectors](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L131); [equal residues for two subsets](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L142); [sufficient row count for equal residues](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L161); [divisibility by $`2^S`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L197); [evaluation modulo $`3`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L203).
-
-<a id="evaluation-at-a-general-rational-base"></a>
-
-#### Evaluation at a general rational base
-
-[homogeneous evaluation at a rational base](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L221); [reduction modulo the numerator](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L226); [reduction modulo the denominator](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L238); [coprimality with the numerator from the constant coefficient](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L254); [coprimality with the denominator from the top coefficient](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L270); [combined coprimality criterion](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L286); [coprimality of homogeneous cyclotomic values](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L302).
-
-<a id="restrictions-on-common-divisors"></a>
-
-#### Restrictions on common divisors
-
-[evaluation modulo $`2`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L320); [exclusion of the factor $`3`$ by the constant coefficient](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L338); [exclusion of the factor $`2`$ by the coefficient of $`X^W`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L356); [restriction on a common evaluated divisor](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L398).
-
-<a id="sufficient-regions-and-comparison-bounds"></a>
-
-#### Sufficient regions and comparison bounds
-
-[comparison $`2C_0\le C_1`$ from exponent bounds](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L416); [sign of the scalar exponent at $`3/2`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L428); [$`31/4`$ satisfies the $`81/200`$ condition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L45); [the same condition for positive powers of $`31/4`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L59); [$`31/4`$ lies outside the earlier region](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L91); [$`81/200<\log 2/\log 3`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L105); [$`3/2`$ fails the $`81/200`$ condition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L122); [bound for the rectangular exponent expression](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L103); [equality case for that bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L126).
+Long Section 10.4 shows that within the rectangular two-function exponent model the threshold never exceeds the classical one-function margin, with equality only at the classical endpoint. Lean proves the [bound for the rectangular exponent expression](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L103) and the [equality case for that bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L126). The bound concerns only that exponent model.
 
 <div class="thebibliography">
 
 99
 
-P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). P. Bundschuh and K. Väänänen, [*Arithmetical investigations of a certain infinite product*](https://numdam.org/item/CM_1994__91_2_175_0.pdf), Compositio Math. **91** (1994), no. 2, 175–199. W. Zudilin, *Remarks on irrationality of $`q`$-harmonic series*, Manuscripta Math. **107** (2002), no. 4, 463–477, doi:[10.1007/s002290200249](https://doi.org/10.1007/s002290200249). W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4). Page references are to the printed journal pages. W. Zudilin, [*On the irrationality of generalized $`q`$-logarithm*](https://arxiv.org/abs/1601.02688v2), arXiv:1601.02688; Res. Number Theory **2** (2016), Art. 15, doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x). Page references are to arXiv:1601.02688v2. The remark that the results extend to non-integer $`p=r/s`$, $`|p|>1`$, under an assumption $`\log|r|>c\log|s|`$ for a computable $`c>0`$, is in Section 2, p. 4, in the paragraph beginning “Finally, we remark”; no value of $`c`$ is computed there, and the remark is made for the generalized $`q`$-logarithm of that paper. R. P. Stanley, *Smith normal form in combinatorics*, J. Combin. Theory Ser. A **144** (2016), 476–495, doi:[10.1016/j.jcta.2016.06.013](https://doi.org/10.1016/j.jcta.2016.06.013); arXiv:[1602.00166v1](https://arxiv.org/abs/1602.00166v1). Page references are to arXiv:1602.00166v1. W. Zudilin, *A determinantal approach to irrationality*, Constr. Approx. **45** (2017), no. 2, 301–310, doi:[10.1007/s00365-016-9333-7](https://doi.org/10.1007/s00365-016-9333-7); arXiv:[1507.05697v1](https://arxiv.org/abs/1507.05697v1). Page and equation references are to arXiv:1507.05697v1. T. F. Bloom, [*Erdős Problem \#1049*](https://www.erdosproblems.com/1049), `erdosproblems.com/1049`. Historical snapshot cited in the supplied manuscript: accessed 28 July 2026, displaying “last edited 28 September 2025”. J. Bell and D. Smertnig, [*Mahler series with multiplicative coefficient sequences*](https://arxiv.org/abs/2603.23456v1), arXiv:2603.23456v1, 24 March 2026. Theorem 1.3 is on pp. 2–3; its stated consequences on p. 3 include that the divisor and totient generating series are not $`k`$-Mahler for any $`k\ge2`$. J. Vandehey, [*On an incomplete argument of Erdős on the irrationality of Lambert series*](https://arxiv.org/abs/1206.0340v1), Integers **13** (2013), Paper A58. Page references are to arXiv:1206.0340v1 (2012). D. Duverney and Y. Tachiya, *Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*, Forum Math. **31** (2019), no. 6, 1557–1566, doi:[10.1515/forum-2018-0299](https://doi.org/10.1515/forum-2018-0299). Page references are to the [authors’ version](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf). W. Van Assche, [*Little $`q`$-Legendre polynomials and irrationality of certain Lambert series*](https://arxiv.org/abs/math/0101187v1), Ramanujan J. **5** (2001), no. 3, 295–310, doi:[10.1023/A:1012930828917](https://doi.org/10.1023/A:1012930828917). Page references are to arXiv:math/0101187v1. K. Postelmans and W. Van Assche, [*Irrationality of $`\zeta_q(1)`$ and $`\zeta_q(2)`$*](https://arxiv.org/abs/math/0604312v1), J. Number Theory **126** (2007), no. 1, 119–154, doi:[10.1016/j.jnt.2006.11.011](https://doi.org/10.1016/j.jnt.2006.11.011). Page references are to arXiv:math/0604312v1 (2006). C. Krattenthaler, I. Rochev, K. Väänänen and W. Zudilin, *On the non-quadraticity of values of the $`q`$-exponential function and related $`q`$-series*, Acta Arith. **136** (2009), no. 3, 243–269, doi:[10.4064/aa136-3-4](https://doi.org/10.4064/aa136-3-4); arXiv:[0812.2921v1](https://arxiv.org/abs/0812.2921v1). Page references are to arXiv:0812.2921v1. Y. Wang and B.-X. Zhu, [*Log-convex and Stieltjes moment sequences*](https://arxiv.org/abs/1612.04114v1), Adv. Appl. Math. **81** (2016), 115–127, doi:[10.1016/j.aam.2016.06.008](https://doi.org/10.1016/j.aam.2016.06.008). Page references are to arXiv:1612.04114v1. C. Berg, *On powers of Stieltjes moment sequences, II*, J. Comput. Appl. Math. **199** (2007), 23–38; arXiv:[math/0412340v1](https://arxiv.org/abs/math/0412340v1). Theorem references use the preprint; Theorem 5.1 treats factorial powers. A. D. Sokal and J. Walrad, *Continued-fraction characterization of Stieltjes moment sequences with support in $`[\xi,\infty)`$*, [arXiv:2404.12131v1](https://arxiv.org/abs/2404.12131v1), 2024. The classical Stieltjes criterion is recalled on pp. 1–2. G. H. Golub and J. H. Welsch, *Calculation of Gauss Quadrature Rules*, Math. Comp. **23** (1969), no. 106, 221–230, doi:[10.1090/S0025-5718-69-99647-1](https://doi.org/10.1090/S0025-5718-69-99647-1).
+P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). P. Bundschuh and K. Väänänen, [*Arithmetical investigations of a certain infinite product*](https://numdam.org/item/CM_1994__91_2_175_0.pdf), Compositio Math. **91** (1994), no. 2, 175–199. W. Zudilin, *Remarks on irrationality of $`q`$-harmonic series*, Manuscripta Math. **107** (2002), no. 4, 463–477, doi:[10.1007/s002290200249](https://doi.org/10.1007/s002290200249). W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4). Page references are to the printed journal pages. W. Zudilin, [*On the irrationality of generalized $`q`$-logarithm*](https://arxiv.org/abs/1601.02688v2), arXiv:1601.02688; Res. Number Theory **2** (2016), Art. 15, doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x). Page references are to arXiv:1601.02688v2. The remark that the results extend to non-integer $`p=r/s`$, $`|p|>1`$, under an assumption $`\log|r|>c\log|s|`$ for a computable $`c>0`$, is in Section 2, p. 4, in the paragraph beginning “Finally, we remark”; no value of $`c`$ is computed there, and the remark is made for the generalized $`q`$-logarithm of that paper. R. P. Stanley, *Smith normal form in combinatorics*, J. Combin. Theory Ser. A **144** (2016), 476–495, doi:[10.1016/j.jcta.2016.06.013](https://doi.org/10.1016/j.jcta.2016.06.013); arXiv:[1602.00166v1](https://arxiv.org/abs/1602.00166v1). Page references are to arXiv:1602.00166v1. W. Zudilin, *A determinantal approach to irrationality*, Constr. Approx. **45** (2017), no. 2, 301–310, doi:[10.1007/s00365-016-9333-7](https://doi.org/10.1007/s00365-016-9333-7); arXiv:[1507.05697v1](https://arxiv.org/abs/1507.05697v1). Page and equation references are to arXiv:1507.05697v1. T. F. Bloom, [*Erdős Problem \#1049*](https://www.erdosproblems.com/1049), `erdosproblems.com/1049`. Accessed 28 July 2026, when the page displayed “last edited 28 September 2025”. J. Bell and D. Smertnig, [*Mahler series with multiplicative coefficient sequences*](https://arxiv.org/abs/2603.23456v1), arXiv:2603.23456v1, 24 March 2026. Theorem 1.3 is on pp. 2–3; its stated consequences on p. 3 include that the divisor and totient generating series are not $`k`$-Mahler for any $`k\ge2`$. J. Vandehey, [*On an incomplete argument of Erdős on the irrationality of Lambert series*](https://arxiv.org/abs/1206.0340v1), Integers **13** (2013), Paper A58. Page references are to arXiv:1206.0340v1 (2012). D. Duverney and Y. Tachiya, *Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*, Forum Math. **31** (2019), no. 6, 1557–1566, doi:[10.1515/forum-2018-0299](https://doi.org/10.1515/forum-2018-0299). Page references are to the [authors’ version](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf). W. Van Assche, [*Little $`q`$-Legendre polynomials and irrationality of certain Lambert series*](https://arxiv.org/abs/math/0101187v1), Ramanujan J. **5** (2001), no. 3, 295–310, doi:[10.1023/A:1012930828917](https://doi.org/10.1023/A:1012930828917). Page references are to arXiv:math/0101187v1. K. Postelmans and W. Van Assche, [*Irrationality of $`\zeta_q(1)`$ and $`\zeta_q(2)`$*](https://arxiv.org/abs/math/0604312v1), J. Number Theory **126** (2007), no. 1, 119–154, doi:[10.1016/j.jnt.2006.11.011](https://doi.org/10.1016/j.jnt.2006.11.011). Page references are to arXiv:math/0604312v1 (2006). C. Krattenthaler, I. Rochev, K. Väänänen and W. Zudilin, *On the non-quadraticity of values of the $`q`$-exponential function and related $`q`$-series*, Acta Arith. **136** (2009), no. 3, 243–269, doi:[10.4064/aa136-3-4](https://doi.org/10.4064/aa136-3-4); arXiv:[0812.2921v1](https://arxiv.org/abs/0812.2921v1). Page references are to arXiv:0812.2921v1. Y. Wang and B.-X. Zhu, [*Log-convex and Stieltjes moment sequences*](https://arxiv.org/abs/1612.04114v1), Adv. Appl. Math. **81** (2016), 115–127, doi:[10.1016/j.aam.2016.06.008](https://doi.org/10.1016/j.aam.2016.06.008). Page references are to arXiv:1612.04114v1. C. Berg, *On powers of Stieltjes moment sequences, II*, J. Comput. Appl. Math. **199** (2007), 23–38; arXiv:[math/0412340v1](https://arxiv.org/abs/math/0412340v1). Theorem references use the preprint; Theorem 5.1 treats factorial powers. A. D. Sokal and J. Walrad, *Continued-fraction characterization of Stieltjes moment sequences with support in $`[\xi,\infty)`$*, [arXiv:2404.12131v1](https://arxiv.org/abs/2404.12131v1), 2024. The classical Stieltjes criterion is recalled on pp. 1–2. G. H. Golub and J. H. Welsch, *Calculation of Gauss Quadrature Rules*, Math. Comp. **23** (1969), no. 106, 221–230, doi:[10.1090/S0025-5718-69-99647-1](https://doi.org/10.1090/S0025-5718-69-99647-1).
 
 </div>
-
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.

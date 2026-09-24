@@ -11,6 +11,7 @@ exemption lists honest.  A check that cannot fail proves nothing.
 from __future__ import annotations
 
 import copy
+import json
 import subprocess
 import tempfile
 from pathlib import Path
@@ -134,6 +135,7 @@ def seal(rows: list[dict[str, Any]], sources: dict[str, list[str]]) -> dict[str,
             for paper_id, paths in sources.items()
         ],
         "rows": rows,
+        "summary": check.ledger_summary(rows),
     }
     ledger["content_digest"] = check.content_digest(ledger)
     return ledger
@@ -184,12 +186,49 @@ def paper(*parts: str) -> str:
     return PREAMBLE + "".join(parts)
 
 
+SIDECAR = "paper/evidence/synthetic-short.tex"
+
+
+def evidence_texts(label: str = "res:synthetic", declarations: list[dict[str, str]] | None = None,
+                   declared: bool = True) -> dict[str, str]:
+    """The generated margin-mark file and evidence map for the synthetic short paper."""
+    names = declarations if declarations is not None else [{"name": FULL, "path": LEAN_FILE}]
+    evidence = {"papers": [{"paper_id": "synthetic-short", "results": [
+        {"id": f"synthetic-short#{label}", "label": label, "lean": {"declarations": names}},
+    ]}]}
+    sidecar = (f"\\DeclareResultEvidence{{{label}}}{{Lean}}{{https://example.invalid/x}}{{}}\n"
+               if declared else "")
+    return {check.EVIDENCE_MAP: json.dumps(evidence), SIDECAR: sidecar}
+
+
 def test_repaired_fixture_passes() -> None:
-    text = paper(STATEMENT, NOTE)
-    report = evaluate(short_ledger(text), {SHORT_PAPER: text})
+    text = paper(STATEMENT)
+    report = evaluate(short_ledger(text), {SHORT_PAPER: text, **evidence_texts()})
     require(not report.failed(), f"a linked, current fixture failed: {check.summary_line(report)}")
     require(report.docstrings.total == 2, "both label-leading docstrings must be found")
     require(report.docstrings.bound == 1 and report.docstrings.exempt == 1, "docstring tally drifted")
+
+
+def test_margin_marks_link_only_what_the_paper_declares() -> None:
+    text = paper(STATEMENT)
+    report = evaluate(short_ledger(text), {SHORT_PAPER: text, **evidence_texts(declared=False)})
+    require([f["names"] for f in report.b_new] == [[FULL]],
+            "(b) counted evidence for a result whose paper places no mark")
+    report = evaluate(short_ledger(text), {SHORT_PAPER: text, **evidence_texts(declarations=[])})
+    require(report.b_new, "(b) counted a mark whose evidence names none of the row's declarations")
+    extra = [{"name": FULL, "path": LEAN_FILE},
+             {"name": "ErdosProblems.Synthetic.helper_result", "path": LEAN_FILE}]
+    report = evaluate(short_ledger(text), {SHORT_PAPER: text, **evidence_texts(declarations=extra)})
+    require(not report.b_new and report.c_new,
+            "(c) missed evidence naming a declaration the row does not bind")
+
+
+def test_retired_notes_and_concordances_fail() -> None:
+    for retired in (NOTE, "% BEGIN GENERATED CONCORDANCE\n\\par\\noindent x\n% END GENERATED CONCORDANCE\n"):
+        text = paper(STATEMENT, retired)
+        report = evaluate(short_ledger(text), {SHORT_PAPER: text, **evidence_texts()})
+        require(report.retired and report.failed(),
+                f"a retired generated block was accepted: {retired[:30]!r}")
 
 
 def test_clause_a_missing_renamed_alias_and_untracked_declarations_fail() -> None:
@@ -379,20 +418,45 @@ def test_integrity_rejects_unstamped_edits_and_invalid_statuses() -> None:
     require(check.ledger_integrity_failures(none_with_names), "a none row may not name declarations")
 
 
-def test_currency_detects_changed_moved_and_unrecorded_statements() -> None:
+def test_summary_follows_the_rows_and_restamp_regenerates_it() -> None:
     text = paper(STATEMENT, NOTE)
+    ledger = short_ledger(text)
+    require(not any("summary" in failure for failure in check.ledger_integrity_failures(ledger)),
+            "a sealed fixture's summary disagreed with its rows")
+
+    stale = copy.deepcopy(ledger)
+    stale["summary"]["lean"] = {"modulo_named_input": 1}
+    stale["content_digest"] = check.content_digest(stale)
+    require(any("summary" in failure for failure in check.ledger_integrity_failures(stale)),
+            "a summary whose counts differ from the rows passed")
+    missing = {key: value for key, value in ledger.items() if key != "summary"}
+    missing["content_digest"] = check.content_digest(missing)
+    require(any("summary" in failure for failure in check.ledger_integrity_failures(missing)),
+            "a ledger without a summary block passed")
+
+    edited = copy.deepcopy(ledger)
+    edited["rows"][0]["lean"]["status"] = "exact_or_stronger"
+    repaired = check.restamped(edited, [])
+    require(repaired["summary"]["lean"] == {"exact_or_stronger": 1},
+            f"--restamp did not recount the rows: {repaired['summary']}")
+    require(not check.ledger_integrity_failures(repaired),
+            f"--restamp left the ledger inconsistent: {check.ledger_integrity_failures(repaired)}")
+
+
+def test_currency_detects_changed_moved_and_unrecorded_statements() -> None:
+    text = paper(STATEMENT)
     ledger = short_ledger(text)
 
     changed = text.replace("Every synthetic", "Every altered synthetic")
-    report = evaluate(ledger, {SHORT_PAPER: changed})
+    report = evaluate(ledger, {SHORT_PAPER: changed, **evidence_texts()})
     require(any("no longer in" in failure for failure in report.currency),
             "a changed statement kept its row")
 
     moved = "\n\n" + text
-    report = evaluate(ledger, {SHORT_PAPER: moved})
+    report = evaluate(ledger, {SHORT_PAPER: moved, **evidence_texts()})
     require(report.drift and report.failed(), "a moved statement kept its recorded line")
     currency, _texts = check.locate_rows(ledger, lambda path: moved)
-    report = evaluate(check.restamped(ledger, currency.drift), {SHORT_PAPER: moved})
+    report = evaluate(check.restamped(ledger, currency.drift), {SHORT_PAPER: moved, **evidence_texts()})
     require(not report.failed(), f"--restamp did not repair a moved line: {check.summary_line(report)}")
 
     added = text + "\\begin{theorem}\\label{res:new}\nA new statement.\n\\end{theorem}\n"
@@ -464,12 +528,15 @@ def main() -> int:
         test_repaired_fixture_passes,
         test_clause_a_missing_renamed_alias_and_untracked_declarations_fail,
         test_clause_b_fails_until_every_declaration_is_rendered,
+        test_margin_marks_link_only_what_the_paper_declares,
+        test_retired_notes_and_concordances_fail,
         test_clause_b_note_count_covers_the_rest_only_when_exact,
         test_clause_b_reads_the_concordance_of_a_long_record,
         test_clause_c_flags_stale_generated_links_and_spares_author_citations,
         test_clause_d_label_docstrings_need_a_row_or_a_reasoned_exemption,
         test_clause_e_pending_exact_rows_need_a_queue_date,
         test_integrity_rejects_unstamped_edits_and_invalid_statuses,
+        test_summary_follows_the_rows_and_restamp_regenerates_it,
         test_currency_detects_changed_moved_and_unrecorded_statements,
         test_baseline_only_shrinks,
         test_introduced_debt_matches_the_committed_baseline,
