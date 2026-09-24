@@ -55242,7 +55242,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_kra_20260913_deep_theorems",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{cohn} H.~Cohn, \\emph{The technical debt of AI-generated mathematics}, guest post on \\emph{What's new}, 15 September 2026, \\href{https://terrytao.wordpress.com/2026/09/15/the-technical-debt-of-ai-generated-mathematics/}{blog post}.",
@@ -55264,7 +55264,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_cohn_20260915_technical_debt",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{taomining} T.~Tao, thread on mining open problems, Mathstodon, 8 September 2026, \\href{https://mathstodon.xyz/@tao/117237320796901560}{thread}.",
@@ -55293,7 +55293,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_tao_20260908_mining_open_problems",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{fieldsdecl} Twenty-five Fields Medallists, \\emph{A severe misalignment of AI in mathematics}, declaration posted on \\emph{What's new}, 11 September 2026, \\href{https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/}{blog post}.",
@@ -55315,7 +55315,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_fields_medallists_20260911_severe_misalignment",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{sanderson} G.~Sanderson, \\emph{If math is more than proof, we need to better celebrate the rest of it}, guest post on \\emph{What's new}, 18 September 2026, \\href{https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/}{blog post}.",
@@ -55337,7 +55337,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_sanderson_20260918_more_than_proof",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{erdosgraham} P.~Erd\\H{o}s and R.~L.~Graham, \\emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\\'ematique 28, 1980, p.~61.",
@@ -55359,7 +55359,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{lean4} L.~de Moura and S.~Ullrich, \\emph{The Lean 4 Theorem Prover and Programming Language}, in \\emph{Automated Deduction, CADE 28}, Lecture Notes in Computer Science 12699, 2021, pp.~625--635, \\href{https://doi.org/10.1007/978-3-030-79876-5_37}{DOI}.",
@@ -55381,7 +55381,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{aletheia} T.~Feng, T.~Trinh, G.~Bingham, et al., \\emph{Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erd\\H{o}s Problems}, 2026, \\href{https://doi.org/10.48550/arXiv.2601.22401}{arXiv}.",
@@ -55410,7 +55410,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{leanfrocomparator} Lean FRO, \\emph{Comparator}, 2025, \\href{https://github.com/leanprover/comparator}{GitHub}.",
@@ -55432,7 +55432,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "software_comparator_statement_checker",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{nanodalib} \\texttt{ammkrn}, \\emph{nanoda\\_lib}, an independent type checker for Lean 4, \\href{https://github.com/ammkrn/nanoda_lib}{GitHub}.",
@@ -55454,7 +55454,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "software_nanoda_lib_independent_lean_checker",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{erdos1041} T.~F.~Bloom, \\emph{Erd\\H{o}s Problem \\#1041}, \\href{https://www.erdosproblems.com/1041}{erdosproblems.com}, accessed September 2026.",
@@ -55476,7 +55476,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{ehp1958} P.~Erd\\H{o}s, F.~Herzog and G.~Piranian, \\emph{Metric properties of polynomials}, J. Analyse Math. 6 (1958), 125--148, \\href{https://doi.org/10.1007/BF02790232}{DOI}.",
@@ -55507,7 +55507,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{aniforum} \\texttt{ani}, post in the Problem 1041 discussion thread, 7 September 2026, \\href{https://www.erdosproblems.com/forum/thread/1041\\#post-8861}{erdosproblems.com forum}.",
@@ -55529,7 +55529,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "erdos1041_ani_degree_seven_candidate_counterexample",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{formalconjectures} Google DeepMind, \\emph{Formal Conjectures}, \\href{https://github.com/google-deepmind/formal-conjectures}{GitHub}, accessed September 2026.",
@@ -55558,7 +55558,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{fcpr} Formal Conjectures, pull request 6505, \\emph{Erd\\H{o}s 1041: mark solved with answer(False) and link a formal proof}, merged 23 September 2026, \\href{https://github.com/google-deepmind/formal-conjectures/pull/6505}{GitHub}.",
@@ -55580,7 +55580,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{erdosproblems} T.~F.~Bloom, \\emph{Erd\\H{o}s problems}, \\href{https://www.erdosproblems.com}{erdosproblems.com}, accessed September 2026.",
@@ -55602,7 +55602,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{fan269} S.~Fan, comment on Erd\\H{o}s Problem \\#269, erdosproblems.com forum, 26 June 2026, \\href{https://www.erdosproblems.com/forum/thread/269\\#post-7218}{forum post}.",
@@ -55624,7 +55624,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{prove2me} S.~Chen, K.~Marwaha, X.~Lu, H.~Yuen, and T.~Peng, \\emph{Prove2Me: An Open Collaborative Platform for Scaling Math Formalization}, 2026, \\href{https://doi.org/10.48550/arXiv.2608.28433}{arXiv}.",
@@ -55646,7 +55646,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{autonomousmath} T.~Feng, T.~H.~Trinh, G.~Bingham, et al., \\emph{Towards Autonomous Mathematics Research}, 2026, \\href{https://doi.org/10.48550/arXiv.2602.10177}{arXiv}.",
@@ -55675,7 +55675,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{taowiki} T.~Tao, \\emph{AI contributions to Erd\\H{o}s problems}, \\href{https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems}{GitHub}, accessed September 2026.",
@@ -55697,7 +55697,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-e99ce64694b554",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{ringer} T.~Ringer, \\emph{Becoming a benchmark}, guest post on \\emph{What's new}, 17 September 2026, \\href{https://terrytao.wordpress.com/2026/09/17/becoming-a-benchmark/}{blog post}.",
@@ -55719,7 +55719,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_ringer_20260917_becoming_a_benchmark",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{leanblueprint} P.~Massot, \\emph{leanblueprint}, plasTeX plugin for Lean formalisation blueprints, 2020, \\href{https://github.com/PatrickMassot/leanblueprint}{software repository}.",
@@ -55741,7 +55741,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{leanarchitect} T.~Zhu, P.~Monticone, S.~Welleck, and J.~Avigad, \\emph{LeanArchitect: Automating Blueprint Generation for Humans and AI}, in \\emph{17th International Conference on Interactive Theorem Proving}, LIPIcs 382, 2026, pp.~25:1--25:16.",
@@ -55763,7 +55763,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{leandojo} K.~Yang et al., \\emph{LeanDojo: Theorem Proving with Retrieval-Augmented Language Models}, NeurIPS 2023.",
@@ -55785,7 +55785,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{openprover} M.~Kripner and M.~Straka, \\emph{OpenProver: Agentic and Interactive Theorem Proving with Lean 4}, 2026, \\href{https://doi.org/10.48550/arXiv.2607.09217}{arXiv}.",
@@ -55807,7 +55807,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-d31e3bc51f2784",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \\emph{Advancing Mathematical Research via Human-AI Interactive Theorem Proving}, 2025, \\href{https://arxiv.org/abs/2512.09443v2}{arXiv:2512.09443v2}.",
@@ -55829,7 +55829,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-6ade6fbcd34d79",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{litt} D.~Litt, \\emph{A beginning for mathematics}, 13 September 2026, \\href{https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/}{blog post}.",
@@ -55851,7 +55851,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_litt_20260913_a_beginning_for_mathematics",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{chu} T.~Chu, \\emph{The AI dissenter viewpoint}, \\emph{Proofs and Prompts}, 9 August 2026, \\href{https://proofsandprompts.com/2026/08/09/the-ai-dissenter-viewpoint/}{blog post}.",
@@ -55873,7 +55873,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_chu_20260809_ai_dissenter_viewpoint",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{greenletter} B.~Green and forty-one other Fellows and Foreign Members of the Royal Society, \\emph{Open letter to Sir Paul Nurse, President of the Royal Society}, \\emph{Proofs and Prompts}, 17 September 2026, \\href{https://proofsandprompts.com/2026/09/17/open-letter-to-sir-paul-nurse-president-of-the-royal-society/}{blog post}.",
@@ -55895,7 +55895,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "open_letter_royal_society_fellows_20260917",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{gowers} W.~T.~Gowers, \\emph{Why I didn't sign the Fields medallists' letter}, 17 September 2026, \\href{https://gowers.wordpress.com/2026/09/17/why-i-didnt-sign-the-fields-medallists-letter/}{blog post}.",
@@ -55917,7 +55917,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_gowers_20260917_why_i_didnt_sign",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{koukoulopoulos} D.~Koukoulopoulos, \\emph{A CERN for AI-assisted science?}, guest post on \\emph{What's new}, 17 September 2026, \\href{https://terrytao.wordpress.com/2026/09/17/a-cern-for-ai-assisted-science/}{blog post}.",
@@ -55939,7 +55939,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_koukoulopoulos_20260917_cern_for_ai_science",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{antieau} B.~Antieau, \\emph{Fast math/slow math}, 15 September 2026, \\href{https://antieau.github.io/2026/09/15/fast-math-slow-math.html}{blog post}.",
@@ -55961,7 +55961,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "ai_essay_antieau_20260915_fast_math_slow_math",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_text": "\\bibitem{leanblueprint} P.~Massot, \\emph{leanblueprint}, plasTeX plugin for Lean formalisation blueprints, 2020, \\href{https://github.com/PatrickMassot/leanblueprint}{software repository}, accessed 28 July 2026.",
@@ -91324,7 +91324,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_kra_20260913_deep_theorems",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91338,7 +91338,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_cohn_20260915_technical_debt",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91352,7 +91352,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_tao_20260908_mining_open_problems",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91366,7 +91366,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_fields_medallists_20260911_severe_misalignment",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91380,7 +91380,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_sanderson_20260918_more_than_proof",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91394,7 +91394,7 @@
         "qualifiers": [],
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91408,7 +91408,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_tao_20260908_mining_open_problems",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91422,7 +91422,7 @@
         "qualifiers": [],
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91436,7 +91436,7 @@
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91450,7 +91450,7 @@
         "qualifiers": [],
         "source_id": "software_comparator_statement_checker",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91464,7 +91464,7 @@
         "qualifiers": [],
         "source_id": "software_nanoda_lib_independent_lean_checker",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91478,7 +91478,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_kra_20260913_deep_theorems",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91492,7 +91492,7 @@
         "qualifiers": [],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91506,7 +91506,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91520,7 +91520,7 @@
         "qualifiers": [],
         "source_id": "erdos1041_ani_degree_seven_candidate_counterexample",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91534,7 +91534,7 @@
         "qualifiers": [],
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91548,7 +91548,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91564,7 +91564,7 @@
         ],
         "source_id": "source-61ce6ad8b2f0ff",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91578,7 +91578,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91592,7 +91592,7 @@
         "qualifiers": [],
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91606,7 +91606,7 @@
         "qualifiers": [],
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91620,7 +91620,7 @@
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91634,7 +91634,7 @@
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91648,7 +91648,7 @@
         "qualifiers": [],
         "source_id": "source-e99ce64694b554",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91662,7 +91662,7 @@
         "qualifiers": [],
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91676,7 +91676,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_ringer_20260917_becoming_a_benchmark",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91690,7 +91690,7 @@
         "qualifiers": [],
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91704,7 +91704,7 @@
         "qualifiers": [],
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91718,7 +91718,7 @@
         "qualifiers": [],
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91732,7 +91732,7 @@
         "qualifiers": [],
         "source_id": "source-d31e3bc51f2784",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91746,7 +91746,7 @@
         "qualifiers": [],
         "source_id": "source-6ade6fbcd34d79",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91760,7 +91760,7 @@
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91774,7 +91774,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_litt_20260913_a_beginning_for_mathematics",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91788,7 +91788,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_chu_20260809_ai_dissenter_viewpoint",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91802,7 +91802,7 @@
         "qualifiers": [],
         "source_id": "open_letter_royal_society_fellows_20260917",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91816,7 +91816,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_gowers_20260917_why_i_didnt_sign",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91830,7 +91830,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_koukoulopoulos_20260917_cern_for_ai_science",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -91844,7 +91844,7 @@
         "qualifiers": [],
         "source_id": "ai_essay_antieau_20260915_fast_math_slow_math",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+        "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
       },
       {
         "citation_context": "in_text_citation",
@@ -114446,7 +114446,7 @@
           "line_end": 810,
           "line_start": 808,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114492,7 +114492,7 @@
           "line_end": 797,
           "line_start": 794,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114538,7 +114538,7 @@
           "line_end": 722,
           "line_start": 719,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114584,7 +114584,7 @@
           "line_end": 728,
           "line_start": 724,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114630,7 +114630,7 @@
           "line_end": 805,
           "line_start": 802,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114676,7 +114676,7 @@
           "line_end": 808,
           "line_start": 805,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114722,7 +114722,7 @@
           "line_end": 719,
           "line_start": 715,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114768,7 +114768,7 @@
           "line_end": 794,
           "line_start": 792,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114814,7 +114814,7 @@
           "line_end": 777,
           "line_start": 774,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114860,7 +114860,7 @@
           "line_end": 731,
           "line_start": 728,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -114906,7 +114906,7 @@
           "line_end": 724,
           "line_start": 722,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -115673,7 +115673,7 @@
           "line_end": 754,
           "line_start": 751,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -116883,7 +116883,7 @@
           "line_end": 748,
           "line_start": 745,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         },
         {
           "excerpt_sha256": "sha256:26d508a0dba9a263b93bc51d8b87c74ca860fd2dd2a1fba5b342a9ecd3f8edf6",
@@ -116891,7 +116891,7 @@
           "line_end": 762,
           "line_start": 760,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -118185,7 +118185,7 @@
           "line_end": 802,
           "line_start": 797,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -119240,7 +119240,7 @@
           "line_end": 743,
           "line_start": 741,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -119286,7 +119286,7 @@
           "line_end": 745,
           "line_start": 743,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -120907,7 +120907,7 @@
           "line_end": 734,
           "line_start": 731,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -123429,7 +123429,7 @@
           "line_end": 765,
           "line_start": 762,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -127108,7 +127108,7 @@
           "line_end": 768,
           "line_start": 765,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -131637,7 +131637,7 @@
           "line_end": 757,
           "line_start": 754,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -132230,7 +132230,7 @@
           "line_end": 751,
           "line_start": 748,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -134584,7 +134584,7 @@
           "line_end": 792,
           "line_start": 789,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -136829,7 +136829,7 @@
           "line_end": 741,
           "line_start": 738,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -138272,7 +138272,7 @@
           "line_end": 784,
           "line_start": 780,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -140502,7 +140502,7 @@
           "line_end": 780,
           "line_start": 777,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -142423,7 +142423,7 @@
           "line_end": 771,
           "line_start": 768,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -146013,7 +146013,7 @@
           "line_end": 738,
           "line_start": 734,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -148762,7 +148762,7 @@
           "line_end": 789,
           "line_start": 786,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -149759,7 +149759,7 @@
           "line_end": 786,
           "line_start": 784,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [
@@ -151112,7 +151112,7 @@
           "line_end": 774,
           "line_start": 771,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491"
+          "sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1"
         }
       ],
       "artifact_links": [

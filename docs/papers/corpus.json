@@ -7616,7 +7616,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:5731e2e4d2c96569a7e218ef87bd6e920bb35e8d08857865590405c5c3b1a491",
+      "source_sha256": "sha256:0510be4018c9c8a9296606532b4173dc65ef876375f0f84d803911159dbb6ef1",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7752,8 +7752,8 @@
       ],
       "citations_rendered": 34,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:067949a50f7f66c298a75c9152a7fb3623b4dcc0b3f7f972ab82ea6611b5345f",
-      "pdf_byte_count": 100750,
+      "pdf_sha256": "sha256:046647b66db2bc850e7934e8456f96ce5d3537ae0f2f129160ee5d42bde34c59",
+      "pdf_byte_count": 100724,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8228,7 +8228,7 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:ee9221b632f49d363bb176fc1db5fffab0f56aeac7d7f6216d62d1c2a4229572",
+      "pdf_sha256": "sha256:eb0278e15898a46721140486b8dd2e92fe57255610fb04656edc4a0e6391bd6a",
       "pdf_byte_count": 155423,
       "first_pass": {
         "stated_by_the_paper": false,

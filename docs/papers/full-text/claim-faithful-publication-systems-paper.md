@@ -202,7 +202,7 @@ The repository holds 1,823 Lean modules under a pinned toolchain, sixteen proble
 
 </div>
 
-One person has built, over the past year, the private environment that produces the records, and runs agents from several model providers in it, including Anthropic’s Claude and OpenAI’s GPT models, concurrently on one shared file system. Five design choices carry most of the weight.
+The records come from a private environment, built over the past year, that runs agents from several model providers, including Anthropic’s Claude and OpenAI’s GPT models, concurrently on one shared file system. Five design choices carry most of the weight.
 
 <a id="shared-state-on-disk."></a>
 
@@ -289,7 +289,7 @@ Gowers suggests a well-designed database of what is known, probably built with A
 
 # Conclusion
 
-A problem-sized world keeps the record around a proof that lets other people understand it, check it, credit it and build on it: its frontier, failed routes, formal checks, attribution and exact open statements. The eight worlds in the public repository show that one person can keep that record persistent, checkable and open to contribution across several hard problems. The record is built for models stronger than the ones that produced it: each starts from the recorded frontier with the failed routes marked, and Section <a href="#sec:limits" data-reference-type="ref" data-reference="sec:limits">8</a> names the measurement that tests whether this makes it more effective.
+A problem-sized world keeps the record around a proof that lets other people understand it, check it, credit it and build on it: its frontier, failed routes, formal checks, attribution and exact open statements. The eight worlds in the public repository show that the record can be kept persistent, checkable and open to contribution across several hard problems. The record is built for models stronger than the ones that produced it: each starts from the recorded frontier with the failed routes marked, and Section <a href="#sec:limits" data-reference-type="ref" data-reference="sec:limits">8</a> names the measurement that tests whether this makes it more effective.
 
 <a id="app:repro"></a>
 
