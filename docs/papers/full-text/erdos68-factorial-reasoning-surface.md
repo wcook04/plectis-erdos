@@ -25,6 +25,10 @@ Finally, two exact finite calculations give $`q\nmid299999!`$ and $`q\ge2^{39990
 
 The first two sections keep two different questions separate: which prime powers survive reduction (§<a href="#long68:sec:prime-powers" data-reference-type="ref" data-reference="long68:sec:prime-powers">1</a>), and how large a common denominator must be before reduction (§<a href="#long68:sec:lcm" data-reference-type="ref" data-reference="long68:sec:lcm">2</a>). The tail comparisons in §<a href="#long68:sec:residue" data-reference-type="ref" data-reference="long68:sec:residue">4</a> require information not supplied by either answer. For the finite exclusions, only the carry criterion in §<a href="#long68:sec:carry" data-reference-type="ref" data-reference="long68:sec:carry">3</a> and the computations in §<a href="#long68:sec:finite" data-reference-type="ref" data-reference="long68:sec:finite">6</a> are needed. The coefficient constructions in §<a href="#long68:sec:channels" data-reference-type="ref" data-reference="long68:sec:channels">5</a> are a separate approach; §<a href="#long68:sec:open" data-reference-type="ref" data-reference="long68:sec:open">7</a> identifies the remaining inequalities, and the appendices give further deductions, unsuccessful approaches, and formal-source links.
 
+*Status.* The problem treated here is open, and this note does not close it. Every Lean mark in the margin points to propositions that the pinned Lean kernel accepts, with no `sorry`, no added axiom, and no unchecked evaluation. That claim concerns the formal statements only; it says nothing about their mathematical interest, their novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
+
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+
 <a id="long68:sec:prime-powers"></a>
 
 # Which prime powers survive reduction
@@ -50,6 +54,7 @@ The need to check cancellation is already visible in $`1/3+1/15=2/5`$: the commo
 <span id="long68:res:lead-prime-pole" label="long68:res:lead-prime-pole"></span>
 
 <div id="long68:res:prime-pole" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-prime-pole-comparator">Comparator</a></p>
 
 **Theorem 2** (maximal prime-power survival). *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
 ``` math
@@ -62,8 +67,6 @@ The need to check cancellation is already visible in $`1/3+1/15=2/5`$: the commo
 ```*
 
 </div>
-
-Lean: [maximal prime power survival](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117).
 
 <div class="proof">
 
@@ -118,12 +121,11 @@ The primes still divide the corresponding common denominators $`L_M`$. These are
 We next ask where a prime first divides a denominator $`d_m`$. This means it divides none of $`d_2,\ldots,d_{m-1}`$; it may still divide a later denominator, so uniqueness at its first occurrence gives no uniqueness in every larger block.
 
 <div id="long68:res:wilson-cofinality" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-wilson-cofinality-comparator">Comparator</a></p>
 
 **Proposition 3** (cofinal first prime occurrences). *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
 
 </div>
-
-Lean: [cofinal first prime occurrences](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180).
 
 <div class="proof">
 
@@ -133,10 +135,6 @@ Lean: [cofinal first prime occurrences](https://github.com/wcook04/plectis-erdos
 
 The construction proves cofinality of first occurrences, but not the inequality involving $`q`$ needed for the additional two-factor test in §<a href="#long68:sec:residue" data-reference-type="ref" data-reference="long68:sec:residue">4</a>. The sufficient tail inequality there does not require choosing a prime $`q`$. Wilson reflection limits what can be inferred from a large prime factor alone: for odd $`2\le n<q`$ with $`q\mid n!-1`$, the identity $`(q-1-n)!\,n!\equiv(-1)^{n+1}\pmod q`$ gives the reflected congruence at $`q-n-1`$. It gives a second summand denominator only when $`q\ne2n+1`$ and $`n\le q-3`$. At the Wilson endpoint $`n=q-2`$, it instead returns index $`1`$, where $`1!-1=0`$ is not a denominator of this series. The reflection identity is classical; see Stewart \[stewart2004, p. 462, (4)\].
 
-*Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
-
-*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
-
 <a id="long68:sec:lcm"></a>
 
 # The growth of the common denominator
@@ -144,6 +142,7 @@ The construction proves cofinality of first occurrences, but not the inequality 
 Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-reference="long68:res:prime-pole">2</a> concerns the denominator after reduction. The common denominator before reduction admits an unconditional lower bound of its own, by an elementary argument.
 
 <div id="long68:res:product-lcm" class="lemma">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-product-lcm-comparator">Comparator</a></p>
 
 **Lemma 4** (product, least common multiple, pairwise gcd). *For positive integers $`x_1,\ldots,x_k`$,
 ``` math
@@ -151,8 +150,6 @@ Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-referen
 ```*
 
 </div>
-
-Lean: [product lcm pairwise gcd](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189).
 
 <div class="proof">
 
@@ -165,12 +162,11 @@ The next divisibility is the case $`P=-1`$ of the relation $`\gcd(i!+P(i),j!+P(j
 The earlier spacing method of Erdős and Stewart \[erdos-stewart1976, §3, pp. 516–517\] is related background. We now state only the subtraction needed for the lcm argument, rather than importing the prime-factor estimates of those papers.
 
 <div id="long68:res:gap-gcd" class="lemma">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-gap-gcd-comparator">Comparator</a></p>
 
 **Lemma 5** (factorial-gap gcd). *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
 </div>
-
-Lean: [factorial gap gcd exact](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288).
 
 <div class="proof">
 
@@ -179,6 +175,7 @@ Lean: [factorial gap gcd exact](https://github.com/wcook04/plectis-erdos/blob/a2
 </div>
 
 <div id="long68:res:segment" class="lemma">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-segment-comparator">Comparator</a></p>
 
 **Lemma 6** (segment inequality). *For $`2\le k\le N-1`$,
 ``` math
@@ -191,8 +188,6 @@ Lean: [factorial gap gcd exact](https://github.com/wcook04/plectis-erdos/blob/a2
 
 </div>
 
-Lean: [factorial gap segment log sum le channel lcm add choose](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566).
-
 <div class="proof">
 
 *Proof.* Apply Lemma <a href="#long68:res:product-lcm" data-reference-type="ref" data-reference="long68:res:product-lcm">4</a> to $`x_n=d_n`$ for $`N-k+1\le n\le N`$. Their least common multiple divides $`L_N`$. By Lemma <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a> each pairwise gcd is smaller than $`N^{\,j-i}`$, and over a block of $`k`$ consecutive indices
@@ -204,6 +199,7 @@ Taking logarithms of the resulting divisibility gives <a href="#long68:eq:segmen
 </div>
 
 <div id="long68:res:lcm-growth" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-lcm-growth-comparator">Comparator</a></p>
 
 **Theorem 7** (common-denominator growth).
 *``` math
@@ -212,8 +208,6 @@ Taking logarithms of the resulting divisibility gives <a href="#long68:eq:segmen
 ```*
 
 </div>
-
-Lean: [common denominator growth liminf](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42).
 
 <div class="proof">
 
@@ -234,7 +228,7 @@ The right-hand side is maximised at $`\alpha=\sqrt2`$, with value $`\sqrt2-\tfra
 
 </div>
 
-The displayed proof of the lcm bound uses only Lemmas <a href="#long68:res:product-lcm" data-reference-type="ref" data-reference="long68:res:product-lcm">4</a> and <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a>. Its formal counterpart is listed in the sources section; the status of that entry is not a blanket assertion about all linked modules. Theorem 12 of Garaev, Luca and Shparlinski \[garaev-luca-shparlinski, arXiv v1, p. 16\] supplies a different input: a uniform $`O(N^{2/3})`$ bound for the number of solutions of $`n!\equiv a\pmod p`$, for fixed $`a\not\equiv0\pmod p`$, in an interval of length $`N`$ contained in $`1\le n<p`$. The weaker lcm deduction from it is retained in §<a href="#long68:sec:ext-superseded" data-reference-type="ref" data-reference="long68:sec:ext-superseded">9.3</a>, not used here. No exhaustive priority claim is made for the lcm estimate; its precise elementary derivation and the inherited subtraction are stated so that the claim can be assessed without relying on a search conclusion.
+The displayed proof of the lcm bound uses only Lemmas <a href="#long68:res:product-lcm" data-reference-type="ref" data-reference="long68:res:product-lcm">4</a> and <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a>. Theorem 12 of Garaev, Luca and Shparlinski \[garaev-luca-shparlinski, arXiv v1, p. 16\] supplies a different input: a uniform $`O(N^{2/3})`$ bound for the number of solutions of $`n!\equiv a\pmod p`$, for fixed $`a\not\equiv0\pmod p`$, in an interval of length $`N`$ contained in $`1\le n<p`$. The weaker lcm deduction from it is retained in §<a href="#long68:sec:ext-superseded" data-reference-type="ref" data-reference="long68:sec:ext-superseded">9.3</a>, not used here. No exhaustive priority claim is made for the lcm estimate; its precise elementary derivation and the inherited subtraction are stated so that the claim can be assessed without relying on a search conclusion.
 
 <div class="remark">
 
@@ -312,6 +306,7 @@ Compare the factorial scaling in Hančl and Tijdeman’s tail-integrality lemma 
 <span id="long68:res:lead-carry-equivalence" label="long68:res:lead-carry-equivalence"></span> <span id="long68:res:strict-successor-complete-characterization" label="long68:res:strict-successor-complete-characterization"></span>
 
 <div id="long68:res:carry-equivalence" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-carry-equivalence-comparator">Comparator</a></p>
 
 **Theorem 8** (an exact criterion from successive partial sums). *For $`m\ge3`$,
 ``` math
@@ -337,8 +332,6 @@ Compare the factorial scaling in Hančl and Tijdeman’s tail-integrality lemma 
 If $`S=a/q`$ with $`a\in\mathbb{Z}`$, $`q\ge1`$ and $`b_m\ne1`$, then $`q\nmid(m-1)!`$ and $`q\ge m`$.*
 
 </div>
-
-Lean: [strict successor characterisation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77).
 
 <div class="proof">
 
@@ -390,6 +383,7 @@ The canonical factorial digits of a real $`x`$ are $`a_m(x)=\lfloor m!x\rfloor-m
 <span id="long68:res:lead-companion-orbit" label="long68:res:lead-companion-orbit"></span>
 
 <div id="long68:res:companion-orbit" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-companion-orbit-comparator">Comparator</a></p>
 
 **Proposition 9** (rationality and factorial residues).
 *``` math
@@ -400,8 +394,6 @@ S\in\mathbb{Q}
 ```*
 
 </div>
-
-Lean: [companion orbit](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38).
 
 <div class="proof">
 
@@ -431,6 +423,7 @@ The condition is eventual equality, not equality at many computed indices. The p
 Write $`\theta_m=\{m!\,S\}`$. We ask whether $`\theta_{m-1}`$ lies outside $`[0,E_m/m)`$, an interval of width less than $`2/m^2`$.
 
 <div id="long68:res:lower-escape" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-lower-escape-comparator">Comparator</a></p>
 
 **Proposition 10** (lower-interval criterion).
 *``` math
@@ -453,8 +446,6 @@ For $`m\ge3`$ the finite condition
 implies the escape inequality in <a href="#long68:eq:lower-escape" data-reference-type="eqref" data-reference="long68:eq:lower-escape">[long68:eq:lower-escape]</a>. Cofinally many instances of <a href="#long68:eq:finite-escape" data-reference-type="eqref" data-reference="long68:eq:finite-escape">[long68:eq:finite-escape]</a> therefore imply $`S\notin\mathbb{Q}`$.*
 
 </div>
-
-Lean: [lower interval criterion](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102).
 
 <div class="proof">
 
@@ -513,6 +504,7 @@ The same digit argument applies to the other shifts mentioned by Erdős. For an 
 The restriction $`t\ge-1`$ keeps every denominator positive for $`n\ge2`$; $`t=-2`$ is excluded because its first denominator is zero. All series in this identity converge absolutely. The familiar case $`t=0`$ is $`e-2`$; this example will make the residue condition explicit.
 
 <div id="long68:res:shift-family" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-shift-family">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-shift-family-comparator">Comparator</a></p>
 
 **Theorem 11** (a criterion for the shifts $`t\ge-1`$). *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
 ``` math
@@ -521,8 +513,6 @@ The restriction $`t\ge-1`$ keeps every denominator positive for $`n\ge2`$; $`t=-
 for all sufficiently large $`m`$, and irrational exactly when that residue is missed cofinally. The member $`t=-1`$ is $`S`$, and the member $`t=0`$ is $`e-2`$, for which the scaled correction is always $`0`$ and hence misses the residue class at every $`m\ge3`$, proving the irrationality of $`e`$.*
 
 </div>
-
-Lean: [uniform family boundary](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123), [uniform family members](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134).
 
 <div class="proof">
 
@@ -579,6 +569,7 @@ C_3H_5=\frac{34264}{13685},\qquad
 The tail estimate in the proof below gives $`C_3(S-H_5)<7/1080<6791/13685`$. This verifies the comparison for one actual prefix. The theorem needs such prefixes at arbitrarily large $`p`$, so that $`F_p`$ can absorb any fixed rational denominator.
 
 <div id="long68:res:global-residue" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-global-residue-comparator">Comparator</a></p>
 
 **Theorem 12** (a sufficient tail inequality). *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 ``` math
@@ -590,8 +581,6 @@ The tail estimate in the proof below gives $`C_3(S-H_5)<7/1080<6791/13685`$. Thi
 Then $`S`$ is irrational.*
 
 </div>
-
-Lean: [global complementary criterion prime](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L169).
 
 <div class="proof">
 
@@ -606,8 +595,6 @@ S-H_{2p-1}<\frac{2}{(2p)!}\frac{2p+1}{2p}=\frac{2p+1}{K_p}.
 Multiplication by $`C_p`$ and <a href="#long68:eq:global-scale" data-reference-type="eqref" data-reference="long68:eq:global-scale">[long68:eq:global-scale]</a>, with $`L_p^{\mathrm{blk}}=C_pR_p`$, now give $`C_p(S-H_{2p-1})<\rho_p/R_p`$, a contradiction. ◻
 
 </div>
-
-The formal statement for natural-number parameters is [comparison of the tail with the next integer](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156-L168).
 
 Cancelling $`R_p`$ in <a href="#long68:eq:global-scale" data-reference-type="eqref" data-reference="long68:eq:global-scale">[long68:eq:global-scale]</a> through <a href="#long68:eq:core-normalisation" data-reference-type="eqref" data-reference="long68:eq:core-normalisation">[long68:eq:core-normalisation]</a> displays the quantitative issue directly:
 ``` math
@@ -668,12 +655,11 @@ Beyond the support, $`V_d(c)=M(c)`$, so this series converges absolutely. Cancel
 ```
 
 <div id="long68:res:normalform" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-normalform-comparator">Comparator</a></p>
 
 **Theorem 13** (divisibility of the difference). *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(c)=M(c)+(d!-1)k`$.*
 
 </div>
-
-Lean: [supported integral normal form](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17).
 
 <div class="proof">
 
@@ -691,12 +677,11 @@ The sum is finite and each term is integral by <a href="#long68:eq:channel-congr
 In the next theorem, the parameters $`d,k`$ and the support indices are integers.
 
 <div id="long68:res:bandbreakpoint" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-bandbreakpoint-comparator">Comparator</a></p>
 
 **Theorem 14** (constant values of the floor in the weights). *Let $`d\ge2`$ and $`k\ge0`$, and suppose every supported index $`i`$ satisfies $`kd\le i<(k+1)d`$. Then $`M(c)=(d!)^kV_{d}(c)`$. In particular, cancellation on the interval $`d\le i<2d`$ forces $`M(c)=0`$; and if every supported index is at least $`d`$ while $`M(c)\ne0`$ and $`V_{d}(c)=0`$, then some supported index is at least $`2d`$.*
 
 </div>
-
-Lean: [supported quotient band](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24), [supported first band cancellation](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42), [supported breakpoint escape](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51).
 
 <div class="proof">
 
@@ -759,6 +744,7 @@ The scalar coefficients satisfy $`u_2=2`$ and $`u_n=-\sum_{d\mid n,\ 2\le d<n}W_
 Indeed, the finite gcd $`g`$ divides $`u_{2p}\ne0`$ and hence $`(2p)!`$. For $`n>H`$ and a divisor $`d\le D`$ of $`n`$ one has $`n/d\ge2p`$. The quotient $`W_{d,n}/(n/d)!`$ counts partitions of $`n`$ points into $`n/d`$ unordered blocks of size $`d`$, so $`(n/d)!\mid W_{d,n}`$ and hence $`g\mid W_{d,n}`$. Strong induction in the recurrence handles the remaining divisors $`D<d<n`$, so $`g`$ divides every $`u_n`$ with $`n>D`$. Bertrand’s postulate supplies $`p`$ for $`D\ge3`$, and $`p=2`$ serves for $`D=2`$; finally $`H\le D(2D-1)<2D^2`$. The short note proves the same determination in its theorem “a finite formula for the gcd”.
 
 <div id="long68:res:moment-ideal" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-moment-ideal">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-moment-ideal-comparator">Comparator</a></p>
 
 **Theorem 15** (the set of attainable moments). *Fix $`D\ge2`$ and a prime $`p`$ with $`D/2<p\le D`$. Put
 ``` math
@@ -769,8 +755,6 @@ H=D(2p-1),\qquad
 The moments of finite integer vectors supported on $`n\ge2`$ and cancelling all weighted sums $`2,\ldots,D`$ are exactly $`\mu_D\mathbb{Z}`$. The integer $`\mu_D`$ is positive, is independent of the eligible prime $`p`$, and is attained by a vector of coefficients with gcd one, that is, by a primitive vector.*
 
 </div>
-
-Lean: [exact moment ideal with primitive attainment](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242), [minimum moment independent prime](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321).
 
 <div class="proof">
 
@@ -791,6 +775,7 @@ To verify the last value, $`u_7=0`$, while $`840=\operatorname{lcm}(1,\ldots,8)`
 We can now express the remainder using the basis coefficients in <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a>. This refines the integer-difference identity at the start of §<a href="#long68:sec:channels" data-reference-type="ref" data-reference="long68:sec:channels">5</a> by giving its integer term explicitly for the classified vectors.
 
 <div id="long68:res:residual-transparency" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency-comparator">Comparator</a></p>
 
 **Theorem 16** (how the coefficient choices change the remainder). *For the vector in <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a>,
 ``` math
@@ -801,8 +786,6 @@ The residual series converges for every finite vector supported away from index 
 
 </div>
 
-Lean: [residual transparency](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116), [summable full residual](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166), [zero moment residual integral](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185), [equal moment residual integer difference](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195).
-
 <div class="proof">
 
 *Proof.* For $`d>D`$, we have $`V_d(K_D)=L_D`$ and $`V_d(U_n)/(d!-1)=\mathbf1_{d=n}`$. Summing these identities gives $`tL_D(S-H_D)+\sum_{n>D}z_n`$, as claimed. The first series converges and the second sum is finite.
@@ -810,8 +793,6 @@ Lean: [residual transparency](https://github.com/wcook04/plectis-erdos/blob/a25c
 Absolute convergence and the general integer-difference identity were proved at the start of §<a href="#long68:sec:channels" data-reference-type="ref" data-reference="long68:sec:channels">5</a>, including for the auxiliary index $`1`$. Setting the moment to zero proves integrality; subtracting the identity for two vectors of equal moment proves the last assertion. ◻
 
 </div>
-
-Formal counterparts are linked for [a primitive vector attaining the least positive moment](https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242) (Theorem <a href="#long68:res:moment-ideal" data-reference-type="ref" data-reference="long68:res:moment-ideal">15</a>) and [the integer difference between remainders with equal moments](https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195) (Theorem <a href="#long68:res:residual-transparency" data-reference-type="ref" data-reference="long68:res:residual-transparency">16</a>).
 
 The factor $`12`$ used below follows directly on support $`n\ge2`$. For $`n=2,3`$ one has $`n!=2W_{2,n}`$. For $`n\ge4`$, both $`n!`$ and $`2W_{2,n}`$ are divisible by $`12`$: if $`n=2k`$ or $`2k+1`$, then $`W_{2,2k}=k!\prod_{j=1}^k(2j-1)`$ is divisible by $`6`$ for $`k\ge2`$. Thus $`12\mid M(c)-2V_2(c)`$. Every $`d!-1`$ is coprime to $`6`$, so $`V_2=\cdots=V_D=0`$ implies $`12L_D\mid M(c)`$. This factor is attained at $`D=2`$ and $`D=3`$ by $`-6e_2+e_4`$ and $`-6e_2-8e_3+5e_4`$, respectively. The depth-$`6`$ example above shows why it is not always the whole restriction.
 
@@ -826,6 +807,7 @@ To impose this small-tail comparison at the largest supported index, one needs m
 <span id="long68:res:lead-channel-radius" label="long68:res:lead-channel-radius"></span>
 
 <div id="long68:res:channel-radius" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-channel-radius">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-channel-radius-comparator">Comparator</a></p>
 
 **Theorem 17** (a lower bound for the support parameter). *Let $`t,M,R\in\mathbb{N}`$ satisfy
 ``` math
@@ -834,8 +816,6 @@ t\ge2^{32},\qquad M>0,\qquad L_{2t^2}\mid M,\qquad M<(R+1)!-1 .
 Then $`3t^3<2(R+1)`$. Consequently no family satisfying these hypotheses for all sufficiently large $`t`$ has $`(R(t)+1)/t^3\le3/2`$ eventually, and none has $`R(t)=o(t^3)`$.*
 
 </div>
-
-Lean: [square subsequence radius](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L234), [radius no eventual ratio upper](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L258), [radius not little o](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L277).
 
 <div class="proof">
 
@@ -865,6 +845,7 @@ These hypotheses are compatible: for a fixed $`t`$, one may take $`M=L_{2t^2}`$ 
 Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a> raises the asymptotic constant in the same estimate.
 
 <div id="long68:res:radius-constant" class="corollary">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-radius-constant-comparator">Comparator</a></p>
 
 **Corollary 18** (the asymptotic lower bound). *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 ``` math
@@ -872,8 +853,6 @@ Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-referen
 ```*
 
 </div>
-
-Lean: [asymptotic radius constant liminf](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54).
 
 <div class="proof">
 
@@ -896,17 +875,16 @@ t^3\left(4+\frac{16}{9}\log\frac{16}{9}-\frac83\log2\right)
  +t\left(\frac53\log2-\frac23\log t\right)
  >\frac43t^3-\frac23t^2>0,
 ```
-where $`\log2<1`$ and $`\log t\le t`$ suffice for the last comparison. Integer pairs with $`9(R+1)=16t^3`$ exist for every multiple $`t\ge6`$ of $`3`$. This verifies the numerical constraint, not the existence of a coefficient vector with that support. The asymptotic assertion in Corollary <a href="#long68:res:radius-constant" data-reference-type="ref" data-reference="long68:res:radius-constant">18</a> instead follows from Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a>; the finite-block Lean source does not carry that deduction. The corresponding Lean source statement is [the asymptotic lower bound for the support parameter](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54).
+where $`\log2<1`$ and $`\log t\le t`$ suffice for the last comparison. Integer pairs with $`9(R+1)=16t^3`$ exist for every multiple $`t\ge6`$ of $`3`$. This verifies the numerical constraint, not the existence of a coefficient vector with that support. The asymptotic assertion in Corollary <a href="#long68:res:radius-constant" data-reference-type="ref" data-reference="long68:res:radius-constant">18</a> instead follows from Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a>.
 
 At a prime index, the two-term vector $`T_p`$ already changes only one weighted sum; there are no proper divisors to eliminate.
 
 <div id="long68:res:translator" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-translator-comparator">Comparator</a></p>
 
 **Theorem 19** (changing just one weighted sum). *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
 </div>
-
-Lean: [prime channel corrector](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299).
 
 <div class="proof">
 
@@ -992,11 +970,11 @@ The size bound holds for every integer $`a`$ and positive natural $`q`$ with $`S
 
 Neither condition implies the other. The prime $`300007`$ fails to divide $`299999!`$ but is smaller than $`2^{39990}`$, whereas $`299999!`$ satisfies the size lower bound but fails the nondivisibility condition. High powers of small primes further show why nondivisibility is not a smoothness exclusion.
 
-The first exclusion comes from an exact interval carry census. The supplied record describes an independently implemented GMP integer computation certifying all $`299998`$ carry cells for $`3\le m\le300000`$ with a scale of $`2^{5025679}`$ and $`96`$ guard bits, using no floating-point arithmetic; at every step the outward interval is proved to lie inside one half-open unit cell before the carry is recorded. Its unit carries occur exactly at
+The first exclusion comes from an exact interval carry census: an independently implemented GMP integer computation certifies all $`299998`$ carry cells for $`3\le m\le300000`$ with a scale of $`2^{5025679}`$ and $`96`$ guard bits, using no floating-point arithmetic; at every step the outward interval is proved to lie inside one half-open unit cell before the carry is recorded. Its unit carries occur exactly at
 ``` math
 52,\ 591,\ 1030,\ 1407,\ 1438,\ 2164,\ 4258,\ 10991,\ 21236,
 ```
-so $`b_{300000}\ne1`$. Theorem <a href="#long68:res:carry-equivalence" data-reference-type="ref" data-reference="long68:res:carry-equivalence">8</a> then gives $`q\nmid299999!`$ and in particular $`q\ge300000`$. The full-range carry replay reported in the supplied manuscript was not repeated for this prose revision. A separately recorded replay through $`m=4000`$ reproduces the unit-carry prefix $`52,591,1030,1407,1438,2164`$ with a non-unit carry at the endpoint, giving $`q\ge4000`$ on its own. These are external computations; the implication from a non-unit carry to a factorial-divisibility exclusion is the kernel-checked statement.
+so $`b_{300000}\ne1`$. Theorem <a href="#long68:res:carry-equivalence" data-reference-type="ref" data-reference="long68:res:carry-equivalence">8</a> then gives $`q\nmid299999!`$ and in particular $`q\ge300000`$. A separate computation through $`m=4000`$ reproduces the unit-carry prefix $`52,591,1030,1407,1438,2164`$ with a non-unit carry at the endpoint, giving $`q\ge4000`$ on its own. These are external computations; the implication from a non-unit carry to a factorial-divisibility exclusion is the kernel-checked statement.
 
 The first exclusion says that the least positive integer $`r`$ with $`q\mid r!`$ is at least $`300000`$. This is the factorial index used by Sondow \[sondow2006, §3, Theorem 1\], not the largest prime factor of $`q`$. No approximation bound for $`e`$ is being applied to $`S`$.
 
@@ -1012,19 +990,17 @@ There are exactly $`N-2`$ rounded prefix terms. The extra $`+1`$ in $`u`$ keeps 
 ``` math
 Q_{-2}=1,\quad Q_{-1}=0,\quad Q_j=a_jQ_{j-1}+Q_{j-2}
 ```
-satisfy $`Q_{23448}\ge2^{39990}`$. Every rational in the open enclosure shares this initial segment, so its reduced denominator is at least $`Q_{23448}`$. Indeed, write $`P_j`$ for the convergent numerators. Such a rational either equals $`P_{23448}/Q_{23448}`$ or has a complete quotient $`A/B>1`$ after the segment, with $`A`$ and $`B`$ coprime, and then equals $`(P_{23448}A+P_{23447}B)/(Q_{23448}A+Q_{23447}B)`$; the determinant identity $`P_jQ_{j-1}-P_{j-1}Q_j=\pm1`$ makes both fractions reduced \[nist-dlmf, §1.12(ii), (1.12.5)–(1.12.7), (1.12.20)–(1.12.21)\]. The argument is about a common prefix and does not require the last convergent to lie inside the enclosure. The integer comparison $`2^{39990}>10^{12038}`$ closes <a href="#long68:eq:finite-bounds" data-reference-type="eqref" data-reference="long68:eq:finite-bounds">[long68:eq:finite-bounds]</a>. The [integer replay](https://github.com/wcook04/plectis-erdos/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/scripts/check_erdos68_continued_fraction.py) and its [receipt](https://github.com/wcook04/plectis-erdos/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/verification/erdos68-continued-fraction.json) record scale $`80000`$ bits, bracket width $`7053`$, $`23449`$ certified partial quotients, power-of-two exponent $`39990`$ and strict decimal exponent $`12038`$.
+satisfy $`Q_{23448}\ge2^{39990}`$. Every rational in the open enclosure shares this initial segment, so its reduced denominator is at least $`Q_{23448}`$. Indeed, write $`P_j`$ for the convergent numerators. Such a rational either equals $`P_{23448}/Q_{23448}`$ or has a complete quotient $`A/B>1`$ after the segment, with $`A`$ and $`B`$ coprime, and then equals $`(P_{23448}A+P_{23447}B)/(Q_{23448}A+Q_{23447}B)`$; the determinant identity $`P_jQ_{j-1}-P_{j-1}Q_j=\pm1`$ makes both fractions reduced \[nist-dlmf, §1.12(ii), (1.12.5)–(1.12.7), (1.12.20)–(1.12.21)\]. The argument is about a common prefix and does not require the last convergent to lie inside the enclosure. The integer comparison $`2^{39990}>10^{12038}`$ closes <a href="#long68:eq:finite-bounds" data-reference-type="eqref" data-reference="long68:eq:finite-bounds">[long68:eq:finite-bounds]</a>. The [integer program](https://github.com/wcook04/plectis-erdos/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/scripts/check_erdos68_continued_fraction.py) and its [output](https://github.com/wcook04/plectis-erdos/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/verification/erdos68-continued-fraction.json) list the scale of $`80000`$ bits, bracket width $`7053`$, $`23449`$ certified partial quotients, power-of-two exponent $`39990`$ and strict decimal exponent $`12038`$.
 
 <a id="carry-computation-record."></a>
 
 #### Carry computation record.
 
-The receipt `verification/erdos68-strict-successor.json`, with schema `erdos68_strict_successor_exact_interval_v1`, records the scale and guard bits above, the driver and backend used for its run, the event-trace digest, and the final enclosure. The source packet names the driver `scripts/check_erdos68_strict_successor.py` and the backend `scripts/check_erdos68_strict_successor_gmp.cpp`. Their published digests, followed by the receipt payload digest, are
+The carry census is the program `scripts/check_erdos68_strict_successor.py` with the GMP backend `scripts/check_erdos68_strict_successor_gmp.cpp`; its output `verification/erdos68-strict-successor.json` records the scale and guard bits above, the unit carries, an event-trace digest and the final enclosure. The SHA-256 digests of the program and the backend, and the payload digest recorded in the output, are
 
-> Driver: `f25b5bd8ffbfd66bdbb42ca6a07a936aab9b4eb7d3a57446725be55acb642191`.\
+> Program: `f25b5bd8ffbfd66bdbb42ca6a07a936aab9b4eb7d3a57446725be55acb642191`.\
 > Backend: `43308ddc3902dd537b789ae6e0648054a0d752adf07e5d6e1d829811e9342083`.\
 > Payload: `044ef27a60f7294c39b8279b7f04e22e1234a942e2862e9e8c64eb66505af29b`.
-
-The supplied record states that the event trace and unit-carry certificate match the previously retained receipt. These identifiers distinguish the reported full run from the separate computation through $`4000`$; they do not certify a new replay in this revision.
 
 Both certificates are finite. A further computation can enlarge an exclusion, but need not do so: a narrower enclosure may retain the same common continued-fraction prefix, and a later unit carry supplies no new carry exclusion. Neither finite calculation excludes an eventual unit-carry tail. The continued-fraction identities are classical \[nist-dlmf, §1.12(ii)\]; the enclosure, the prefix length and the exponent are outputs of the computation above.
 
@@ -1188,35 +1164,26 @@ No irrationality conclusion is obtained here. The finite conclusion is that ever
 
 # Sources and evidence
 
-The links below identify formal statements and proofs in the source records supplied with this revision. They retain their original commits and paths; they are not a claim that all linked modules were compiled together at `92b88dc1bbe0`.
+Each numbered result carries its Lean proof in the margin. The table below links Lean statements of the main steps and of further displayed formulas, at fixed earlier revisions of the sources. The two prefix cancellations, the index-$`52`$ example and the continued-fraction enclosure are finite integer calculations with the procedures displayed above. The carry census through $`300000`$ is a separate exact-interval computation outside Lean, recorded in §<a href="#long68:sec:finite" data-reference-type="ref" data-reference="long68:sec:finite">6</a>.
 
-The attached declaration index is for public snapshot `6b78209ab63a8c643281115f8628a3be79ff7ec7` and the separate release `52f29ad173b04e3bac941b3663f2b9aebe5de0bb`. It distinguishes recorded checked declarations from source outside the recorded build and from release-only declarations. In particular, `PaperCompleteExisting` is present but outside the recorded checked build; the earlier references to its absence are superseded by this source packet. The same outside-build qualification applies to the candidate finite-size certificate.
-
-The build receipt refers to a successful Lean build at an earlier commit; the Lean build step at the supplied public pin was skipped. The kernel checks and axioms stated in the coverage subsection of Appendix <a href="#long68:app:sources" data-reference-type="ref" data-reference="long68:app:sources">8</a> belong to the revisions named there. A source declaration, a recorded proof-checking result, and a numerical computation are different kinds of evidence. Descriptions in this section of checked statements refer to the supplied records. Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a> and Corollary <a href="#long68:res:radius-constant" data-reference-type="ref" data-reference="long68:res:radius-constant">18</a> are ordinary proofs given in full above, with corresponding Lean source statements [the liminf bound for the common denominator](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42) and [the asymptotic lower bound for the support parameter](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54). The finite-block inequality is the separate Lean source [the inequality for a terminal block](https://github.com/wcook04/plectis-erdos/blob/d788dd4b8c59f2246000f2ed98fffb8a5e8ac72e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L524-L529). The two prefix cancellations, the index-$`52`$ example and the continued-fraction enclosure are finite integer calculations with the procedures displayed above. The carry census through $`300000`$ is a separate exact-interval computation with the receipt named in §<a href="#long68:sec:finite" data-reference-type="ref" data-reference="long68:sec:finite">6</a>.
-
-| Statement | Formal counterpart |
+| Statement | Lean statements of its steps |
 |:---|:---|
-| Statement | Formal counterpart (continued) |
-| Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-reference="long68:res:prime-pole">2</a> | [maximal-power survival](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L223), with the residue formula at [line 129](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L129) and the denominator form at [line 41](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41) |
-| Proposition <a href="#long68:res:wilson-cofinality" data-reference-type="ref" data-reference="long68:res:wilson-cofinality">3</a> | [first prime occurrences at arbitrarily large indices](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3097); reflection at [line 3139](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3139) |
-| Theorem <a href="#long68:res:carry-equivalence" data-reference-type="ref" data-reference="long68:res:carry-equivalence">8</a> | [failures of divisibility for the next integer](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L986); denominator exclusions at [line 812](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L812) and [line 836](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L836) |
+| Statement | Lean statements of its steps (continued) |
+| Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-reference="long68:res:prime-pole">2</a> | [maximal-power survival](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L223), with [the residue formula](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L129) and [the denominator form](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41) |
+| Proposition <a href="#long68:res:wilson-cofinality" data-reference-type="ref" data-reference="long68:res:wilson-cofinality">3</a> | [first prime occurrences at arbitrarily large indices](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3097); [the reflected divisibility](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3139) |
+| Theorem <a href="#long68:res:carry-equivalence" data-reference-type="ref" data-reference="long68:res:carry-equivalence">8</a> | [failures of divisibility for the next integer](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L986); denominator exclusions: [the size bound](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L812) and [the factorial nondivisibility](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L836) |
 | Proposition <a href="#long68:res:companion-orbit" data-reference-type="ref" data-reference="long68:res:companion-orbit">9</a> | [factorial residues and rationality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/CompanionOrbitRationality.lean#L438) |
-| Proposition <a href="#long68:res:lower-escape" data-reference-type="ref" data-reference="long68:res:lower-escape">10</a> | [the equivalent fractional-part inequality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L82); finite window at [line 122](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L122), irrationality implication at [line 145](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L145), classification <a href="#long68:eq:escape-classification" data-reference-type="eqref" data-reference="long68:eq:escape-classification">[long68:eq:escape-classification]</a> at [line 39](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L39), radius at [line 158](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L158) |
-| Theorem <a href="#long68:res:shift-family" data-reference-type="ref" data-reference="long68:res:shift-family">11</a> | [the criterion for the shifted series](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L139); escape form at [line 156](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L156), member $`t=-1`$ at [line 175](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L175), and the irrationality of $`e`$ at [line 211](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L211) |
-| Theorem <a href="#long68:res:global-residue" data-reference-type="ref" data-reference="long68:res:global-residue">12</a> | [the prime-parameter specialization](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L6164); the natural-parameter wrapper is linked after the proof and is outside the recorded checked build. Coprimality <a href="#long68:eq:gap-normalisation" data-reference-type="eqref" data-reference="long68:eq:gap-normalisation">[long68:eq:gap-normalisation]</a> is at [line 4209](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4209) |
-| Equation <a href="#long68:eq:factor-split" data-reference-type="eqref" data-reference="long68:eq:factor-split">[long68:eq:factor-split]</a> | [the two simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766), floor identity at [line 4701](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4701), irrationality implication at [line 1574](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L1574) |
+| Proposition <a href="#long68:res:lower-escape" data-reference-type="ref" data-reference="long68:res:lower-escape">10</a> | [the equivalent fractional-part inequality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L82); [the finite window](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L122), [the irrationality implication](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L145), [the classification](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L39) <a href="#long68:eq:escape-classification" data-reference-type="eqref" data-reference="long68:eq:escape-classification">[long68:eq:escape-classification]</a>, [the radius bound](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean#L158) |
+| Theorem <a href="#long68:res:shift-family" data-reference-type="ref" data-reference="long68:res:shift-family">11</a> | [the criterion for the shifted series](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L139); [the escape form](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L156), [the member $`t=-1`$](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L175), and [the irrationality of $`e`$](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean#L211) |
+| Theorem <a href="#long68:res:global-residue" data-reference-type="ref" data-reference="long68:res:global-residue">12</a> | [the prime-parameter specialization](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L6164); the margin mark gives the natural-parameter statement; [the coprimality](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4209) <a href="#long68:eq:gap-normalisation" data-reference-type="eqref" data-reference="long68:eq:gap-normalisation">[long68:eq:gap-normalisation]</a> |
+| Equation <a href="#long68:eq:factor-split" data-reference-type="eqref" data-reference="long68:eq:factor-split">[long68:eq:factor-split]</a> | [the two simultaneous inequalities](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766), [the floor identity](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4701), [the irrationality implication](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L1574) |
 | Removal of a fixed denominator factor | [a fixed factor eventually divides the factorial](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L2677) |
 | Weight identities used in Theorem <a href="#long68:res:normalform" data-reference-type="ref" data-reference="long68:res:normalform">13</a> and <a href="#long68:eq:channel-congruence" data-reference-type="eqref" data-reference="long68:eq:channel-congruence">[long68:eq:channel-congruence]</a> | [integrality of the weights](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25), [the denominator-times-weight identity](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43) |
-| Theorem <a href="#long68:res:channel-radius" data-reference-type="ref" data-reference="long68:res:channel-radius">17</a> | [detail note 1](#paper-table-note-6270dc86792d8675) |
-| Changing one weighted sum $`V_p`$ | [adjustment at sufficiently large indices](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1657), residual identity at [line 1559](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559) |
+| Theorem <a href="#long68:res:channel-radius" data-reference-type="ref" data-reference="long68:res:channel-radius">17</a> | [finite radius bound](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1084); [the sequence form](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1103), [the little-$`o`$ form](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L905) |
+| Changing one weighted sum $`V_p`$ | [adjustment at sufficiently large indices](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1657), [the residual identity](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559) |
 | Equation <a href="#long68:eq:doubled-prime" data-reference-type="eqref" data-reference="long68:eq:doubled-prime">[long68:eq:doubled-prime]</a> | [doubled-prime criterion](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean#L257) |
 | Canonical factorial digits | [termination equivalence](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/CanonicalFactorialTermination.lean#L78) |
-| Amplification modulus | [divisibility](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L5557), nonvanishing at [line 5572](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L5572) |
-
-<a id="paper-table-note-6270dc86792d8675"></a> **Detail note 1.** [finite radius bound](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1084); sequence form at [line 1103](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1103), little-$`o`$ form at [line 905](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L905), limitation of the numerical inequalities proved here (the attached release also contains `sharp_radius_satisfies_square_log_constraint`; this is separate from the historical link above)
-
-
-The two weight identities in the table are ingredients, not the complete congruence statement. In the supplied public snapshot, `ChannelIntegralCongruence.lean` contains `channelNumerator_mod_factorialMoment` (line 76) and `exists_channelCorrection` (line 127). The former states $`(d!-1)\mid M(c)-V_d(c)`$; negating the integer quotient gives the sign convention of Theorem <a href="#long68:res:normalform" data-reference-type="ref" data-reference="long68:res:normalform">13</a>. These are source correspondences. The kernel checks and axioms stated in the coverage subsection of Appendix <a href="#long68:app:sources" data-reference-type="ref" data-reference="long68:app:sources">8</a> belong to the revisions named there.
+| Amplification modulus | [divisibility](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L5557), [nonvanishing](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L5572) |
 
 Attribution. Wilson’s theorem and the Wilson reflection identity are classical, the latter recorded by Stewart \[stewart2004, p. 462, (4)\]. The factorial-digit termination criterion goes back to Cantor \[cantor1869\]; Koepf and Schmersau prove its irrationality direction for digits that are not eventually maximal \[koepf-schmersau, Example 3.2, p. 121\], and Galambos treats rationality criteria for Cantor series \[galambos1976, Ch. II, §2.1\]. Here the identity $`C=S-e+2`$ gives the eventual digit value $`m-2`$ and extends to the shifted family. The comparison with Hančl and Tijdeman \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\] concerns factorial scaling: their lemma makes a scaled tail integral, whereas the proof in §<a href="#long68:sec:carry" data-reference-type="ref" data-reference="long68:sec:carry">3</a> identifies the next integer above a generally nonintegral scaled prefix. The multiplicity bound is Garaev, Luca and Shparlinski’s \[garaev-luca-shparlinski\], and the lcm deduction from it is not theirs. The divisibility in Lemma <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a> is the case $`P=-1`$ of the relation used in the proof of Lemma 5 of Luca and Shparlinski \[luca-shparlinski\] and at display (2.5) of Lai \[lai\]. The nonvanishing cutoff for polynomial shifts is Lemma 3 of \[luca-shparlinski\], restated with the bound $`n!+P(n)>1`$ in \[lai, Lemma 2.1\]. The survival criterion is a specialisation of Louwsma and Martino’s valuation formula \[louwsma-martino, Lemma 4.1, p. 10\]. The single-denominator growth criterion is Erdős’s \[erdos1975, Theorem 1, p. 1\], and the continued-fraction identities are those of \[nist-dlmf, §1.12(ii)\]. The deductions from Wilson’s theorem, the conditional finite support bound and Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a> are proved above. No further priority claim is inferred from this comparison.
 
@@ -1224,17 +1191,9 @@ Attribution. Wilson’s theorem and the Wilson reflection identity are classical
 
 # Guide to the formal sources
 
-The following links identify the statements used above and related lemmas. Each preserves the original file, declaration, and line reference. The evidence qualifications in the preceding section apply throughout; in particular, source presence alone does not establish inclusion in a checked build.
+<span id="long68:sec:coverage" label="long68:sec:coverage"></span> <span id="coverage"></span>
 
-<a id="long68:sec:coverage"></a>
-
-## Formalisation coverage and remaining dependencies
-
-<div id="coverage">
-
-</div>
-
-Every theorem, lemma, proposition and corollary of this record has a Lean statement of the same assertion, with the same hypotheses, checked by the Lean kernel using only the axioms `propext`, `Classical.choice` and `Quot.sound`, in the development at revision `181078b6b009`. No result of this record depends on an input that is absent from that development. The concordance after the list below gives the declarations for each result.
+The following links identify further Lean statements used in the arguments above, at fixed earlier revisions of the sources.
 
 - [the factorial-scaled floor of a rational number](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47)
 
@@ -1340,48 +1299,6 @@ Every theorem, lemma, proposition and corollary of this record has a Lean statem
 
 - [the exact repeated-power criterion above the factorial base](https://github.com/wcook04/plectis-erdos/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5389)
 
-<a id="concordance-of-statements-and-lean-declarations."></a>
-
-#### Concordance of statements and Lean declarations.
-
-Each result of this record that has a kernel-checked Lean statement of the same assertion is listed below with the declarations that jointly state it. Each name links to its declaration at revision `a25cb360bef8`. Where the Lean statement is stronger than the printed one and implies it by an immediate specialisation, the entry says so. An entry marked *compared* was also checked independently: a restatement of the same declarations against Mathlib alone, together with its proof, was verified by Comparator (`leanprover/comparator`) in a clean continuous integration environment, in the run named by its number. Comparator trusts the restated statement, so the correspondence between the printed result and that statement is the one this concordance records.
-
-Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-reference="long68:res:prime-pole">2</a>: [`maximal_prime_power_survival`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Proposition <a href="#long68:res:wilson-cofinality" data-reference-type="ref" data-reference="long68:res:wilson-cofinality">3</a>: [`cofinal_first_prime_occurrences`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Lemma <a href="#long68:res:product-lcm" data-reference-type="ref" data-reference="long68:res:product-lcm">4</a>: [`product_lcm_pairwise_gcd`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189). *Compared*, run [`35674034595`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35674034595).
-
-Lemma <a href="#long68:res:gap-gcd" data-reference-type="ref" data-reference="long68:res:gap-gcd">5</a>: [`factorial_gap_gcd_exact`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
-
-Lemma <a href="#long68:res:segment" data-reference-type="ref" data-reference="long68:res:segment">6</a> (the Lean statement is stronger): [`factorialGapSegment_log_sum_le_channelLCM_add_choose`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
-
-Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a>: [`common_denominator_growth_liminf`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
-
-Theorem <a href="#long68:res:carry-equivalence" data-reference-type="ref" data-reference="long68:res:carry-equivalence">8</a>: [`strict_successor_characterisation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Proposition <a href="#long68:res:companion-orbit" data-reference-type="ref" data-reference="long68:res:companion-orbit">9</a>: [`companion_orbit`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Proposition <a href="#long68:res:lower-escape" data-reference-type="ref" data-reference="long68:res:lower-escape">10</a>: [`lower_interval_criterion`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Theorem <a href="#long68:res:shift-family" data-reference-type="ref" data-reference="long68:res:shift-family">11</a>: [`uniform_family_boundary`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123), [`uniform_family_members`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Theorem <a href="#long68:res:global-residue" data-reference-type="ref" data-reference="long68:res:global-residue">12</a>: [`global_complementary_criterion_prime`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L169). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Theorem <a href="#long68:res:normalform" data-reference-type="ref" data-reference="long68:res:normalform">13</a>: [`supported_integral_normal_form`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Theorem <a href="#long68:res:bandbreakpoint" data-reference-type="ref" data-reference="long68:res:bandbreakpoint">14</a>: [`supported_quotient_band`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L24), [`supported_first_band_cancellation`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L42), [`supported_breakpoint_escape`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L51). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Theorem <a href="#long68:res:moment-ideal" data-reference-type="ref" data-reference="long68:res:moment-ideal">15</a>: [`exact_moment_ideal_with_primitive_attainment`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242), [`minimumMoment_independent_prime`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
-
-Theorem <a href="#long68:res:residual-transparency" data-reference-type="ref" data-reference="long68:res:residual-transparency">16</a>: [`residual_transparency`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116), [`summable_fullResidual`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166), [`zero_moment_residual_integral`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185), [`equal_moment_residual_integer_difference`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
-
-Theorem <a href="#long68:res:channel-radius" data-reference-type="ref" data-reference="long68:res:channel-radius">17</a>: [`square_subsequence_radius`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L234), [`radius_no_eventual_ratio_upper`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L258), [`radius_not_littleO`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L277). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
-Corollary <a href="#long68:res:radius-constant" data-reference-type="ref" data-reference="long68:res:radius-constant">18</a>: [`asymptotic_radius_constant_liminf`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54). *Compared*, run [`35544127144`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144).
-
-Theorem <a href="#long68:res:translator" data-reference-type="ref" data-reference="long68:res:translator">19</a>: [`prime_channel_corrector`](https://github.com/wcook04/plectis-erdos/blob/a25cb360bef8dd818dde14b5fb752244304af354/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299). *Compared*, run [`35597093480`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35597093480).
-
 <a id="long68:sec:extended-record"></a>
 
 # Further deductions and limitations
@@ -1418,7 +1335,7 @@ Then $`0\le\delta_m<1`$, and the exact identities are
 q_m=\lfloor m\delta_{m-1}-\varepsilon_m\rfloor,\qquad
  \delta_m=m\delta_{m-1}-\varepsilon_m-q_m.
 ```
-The attached Lean source proves these identities under the displayed recurrence. They do apply to the actual partial sums: take $`F_m=m!H_m`$, $`k_m=0`$ and $`\varepsilon_m=1/(m!-1)`$ for $`m\ge3`$. The recurrence then follows from $`H_m=H_{m-1}+1/(m!-1)`$, starting with $`F_2=2`$. The ceiling code $`q_m`$ need not equal the carry $`b_m`$, because $`Z_m`$ is the least integer strictly above $`F_m`$, not always its ceiling. Precisely, $`Z_m=\lceil F_m\rceil+\mathbf1_{\{F_m\in\mathbb{Z}\}}`$, so
+The Lean sources prove these identities under the displayed recurrence. They do apply to the actual partial sums: take $`F_m=m!H_m`$, $`k_m=0`$ and $`\varepsilon_m=1/(m!-1)`$ for $`m\ge3`$. The recurrence then follows from $`H_m=H_{m-1}+1/(m!-1)`$, starting with $`F_2=2`$. The ceiling code $`q_m`$ need not equal the carry $`b_m`$, because $`Z_m`$ is the least integer strictly above $`F_m`$, not always its ceiling. Precisely, $`Z_m=\lceil F_m\rceil+\mathbf1_{\{F_m\in\mathbb{Z}\}}`$, so
 ``` math
 b_m=q_m+m\mathbf1_{\{F_{m-1}\in\mathbb{Z}\}}
           -\mathbf1_{\{F_m\in\mathbb{Z}\}}.
@@ -1444,7 +1361,7 @@ Indeed, writing $`H_n`$ in lowest terms shows that its denominator must divide $
 ```
 Thus reduction of the partial sum, and the common factor of its reduced denominator with $`n`$, determine the best scale available in this criterion. The eventual inequality above remains unproved here; failure of a larger clearing multiplier does not establish its failure.
 
-Duverney’s Theorem 3.1 includes the quadratic growth assumption $`cu_n^2\le u_{n+1}\le c'u_n^2`$ for positive constants $`c,c'`$, while $`u_{n+1}/u_n^2\to0`$ for $`u_n=n!-1`$ \[duverney, (1.3), p. 275; Thm. 3.1, pp. 285–286\]. His Corollary 3.2, which allows signs $`a_n\in\{-1,1\}`$, assumes convergence of the signed series $`\sum_n(u_{n+1}/u_n^2-1)`$ in (3.6) \[duverney, Cor. 3.2, p. 287\]. Its terms tend to $`-1`$ here, so the series does not converge. The supplied Lean records check the ratio limit and also the divergence of the absolute-value series; the signed condition fails already by the term test. To see the ratio limit directly, divide numerator and denominator by $`(n!)^2`$: the numerator tends to zero and the denominator $`(1-1/n!)^2`$ tends to one.
+Duverney’s Theorem 3.1 includes the quadratic growth assumption $`cu_n^2\le u_{n+1}\le c'u_n^2`$ for positive constants $`c,c'`$, while $`u_{n+1}/u_n^2\to0`$ for $`u_n=n!-1`$ \[duverney, (1.3), p. 275; Thm. 3.1, pp. 285–286\]. His Corollary 3.2, which allows signs $`a_n\in\{-1,1\}`$, assumes convergence of the signed series $`\sum_n(u_{n+1}/u_n^2-1)`$ in (3.6) \[duverney, Cor. 3.2, p. 287\]. Its terms tend to $`-1`$ here, so the series does not converge. Lean checks the ratio limit and also the divergence of the absolute-value series; the signed condition fails already by the term test. To see the ratio limit directly, divide numerator and denominator by $`(n!)^2`$: the numerator tends to zero and the denominator $`(1-1/n!)^2`$ tends to one.
 
 For a strictly increasing sequence $`(n_k)`$ of positive integers, Erdős proved irrationality of $`\sum_k1/n_k`$ under the following conditions, with a fixed $`\varepsilon>0`$ \[erdos1975, Theorem 1, p. 1\]:
 ``` math
@@ -1456,7 +1373,7 @@ Barreto, Kang, Kim, Kovač and Zhang treat products of consecutive denominators 
 0\le\frac{\log(n!-1)}{\psi^n}\le\frac{n^2}{\psi^n}\longrightarrow0,
  \qquad (n!-1)^{1/\psi^n}\longrightarrow1.
 ```
-Thus neither Erdős’s limsup hypothesis, which uses $`\psi=2`$, nor the growth hypotheses of their Theorems 2 and 3 hold. The supplied Lean limit is the special case $`\psi=2`$; the estimate above also covers the other bases greater than one used in those theorems. Their proof of Theorem 3 uses the classical criterion, which they trace to Fourier’s proof that $`e`$ is irrational, that a rational sum of nonnegative rationals with infinitely many positive terms admits no prefix-clearing integers $`D_N`$ with $`\liminf_ND_Nr_N=0`$, where $`r_N`$ is the tail after $`N`$ terms \[barreto-et-al, Lem. 8, p. 6\]; their Proposition 12 produces such integers under the hypotheses of that theorem \[barreto-et-al, pp. 9–12\]. For the present series, even the full summand lcm $`L_N`$ makes $`L_N(S-H_N)`$ tend to infinity, as shown in §<a href="#long68:sec:lcm" data-reference-type="ref" data-reference="long68:sec:lcm">2</a>. A smaller integer cannot clear every summand. It can nevertheless clear the partial sum after addition: the least positive such integer is $`\operatorname{den}(H_N)`$, and every other one is a multiple of it. Thus this criterion would require information about cancellation in the reduced partial sum, not merely an improvement from the product to the lcm. More precisely, if $`S=a/q`$, then
+Thus neither Erdős’s limsup hypothesis, which uses $`\psi=2`$, nor the growth hypotheses of their Theorems 2 and 3 hold. The Lean proof of this limit treats the special case $`\psi=2`$; the estimate above also covers the other bases greater than one used in those theorems. Their proof of Theorem 3 uses the classical criterion, which they trace to Fourier’s proof that $`e`$ is irrational, that a rational sum of nonnegative rationals with infinitely many positive terms admits no prefix-clearing integers $`D_N`$ with $`\liminf_ND_Nr_N=0`$, where $`r_N`$ is the tail after $`N`$ terms \[barreto-et-al, Lem. 8, p. 6\]; their Proposition 12 produces such integers under the hypotheses of that theorem \[barreto-et-al, pp. 9–12\]. For the present series, even the full summand lcm $`L_N`$ makes $`L_N(S-H_N)`$ tend to infinity, as shown in §<a href="#long68:sec:lcm" data-reference-type="ref" data-reference="long68:sec:lcm">2</a>. A smaller integer cannot clear every summand. It can nevertheless clear the partial sum after addition: the least positive such integer is $`\operatorname{den}(H_N)`$, and every other one is a multiple of it. Thus this criterion would require information about cancellation in the reduced partial sum, not merely an improvement from the product to the lcm. More precisely, if $`S=a/q`$, then
 ``` math
 q\operatorname{den}(H_N)(S-H_N)\in\mathbb Z_{>0},
  \qquad \operatorname{den}(H_N)(S-H_N)\ge\frac1q.
@@ -1609,7 +1526,7 @@ r\mid\widetilde C_p
 ```
 for every prime $`r`$ and $`p\ge2`$. Thus the exponent already present in $`F_p`$ uses part of the same bound $`2p-3`$. To apply <a href="#long68:eq:global-scale" data-reference-type="eqref" data-reference="long68:eq:global-scale">[long68:eq:global-scale]</a>, one still needs sufficiently strong bounds for the product of the shared prime powers and for the gap $`\rho_p/R_p`$.
 
-The available squarefreeness evidence is finite. An exhaustive modular scan through $`r\le2{,}000{,}000`$ and $`n\le240`$ found four individual square hits and no prime with two such hits. All $`498{,}501`$ pairs $`2\le a<b\le1000`$ have squarefree $`\gcd(a!-1,b!-1)`$. The supplied aggregate scan through $`p=499`$ also reports a ratio below $`0.374`$, but does not specify its logarithmic normalisation; that ratio is not used as a quantitative premise here. These are reported finite computations, not an asymptotic bound or a proof of squarefreeness at all indices.
+The available squarefreeness evidence is finite. An exhaustive modular scan through $`r\le2{,}000{,}000`$ and $`n\le240`$ found four individual square hits and no prime with two such hits. All $`498{,}501`$ pairs $`2\le a<b\le1000`$ have squarefree $`\gcd(a!-1,b!-1)`$. An aggregate scan through $`p=499`$ also reports a ratio below $`0.374`$, but does not specify its logarithmic normalisation; that ratio is not used as a quantitative premise here. These are reported finite computations, not an asymptotic bound or a proof of squarefreeness at all indices.
 
 A finite version of the argument for first prime occurrences compares the product of a chosen set of primes, each at least $`5`$, with $`\prod_{2\le k\le B}(k!-1)`$; if the prime product is larger, at least one chosen prime has no hit through $`B`$, while Wilson still bounds its least hit by $`q-2`$. Wilson reflection limits what a linear-size divisor can be assumed to be: if $`n`$ is odd, $`n<q`$, and $`q\mid n!-1`$, then $`q\mid(q-n-1)!-1`$. Suppose also that $`p\le n`$, both indices lie in $`I_p`$, and the reflected index is earlier, equivalently $`q<2n+1`$. The prime $`q`$ then divides two denominators in the block. Since $`q>n\ge p`$, it does not divide $`F_p=(p-1)!`$, so $`q\mid\widetilde C_p`$: removing the factorial factor does not remove this shared prime.
 
@@ -1650,7 +1567,7 @@ Since $`U_{11}=T_{11}`$ has $`u_{11}=0`$, the vector $`K_9-9553024718754\,U_{11}
 ```
 which excludes denominators dividing $`600`$.
 
-A separate interval computation reports the stronger geometric statement that no lower-interval event $`m\theta_{m-1}<E_m`$ occurs at any $`3\le m\le100000`$; its executable and source digest are not available, so that classification remains external finite evidence. The carry census through $`300000`$ used in the short note is the GMP computation reported in the supplied manuscript, not a run repeated for this prose revision. Section <a href="#long68:sec:finite" data-reference-type="ref" data-reference="long68:sec:finite">6</a> records its reported driver, backend and payload digests and the separate earlier calculation through $`4000`$. The full range is external computational evidence outside the Lean development. The original prose packet contains the manuscript’s report, not the complete GMP executable and payload, so the present revision does not independently authenticate those digests.
+A separate interval computation reports the stronger geometric statement that no lower-interval event $`m\theta_{m-1}<E_m`$ occurs at any $`3\le m\le100000`$; its executable and source digest are not available, so that classification remains external finite evidence. The carry census through $`300000`$ used in the short note is the exact GMP computation recorded in Section <a href="#long68:sec:finite" data-reference-type="ref" data-reference="long68:sec:finite">6</a>, with the separate calculation through $`4000`$; it is computational evidence outside the Lean development.
 
 <a id="long68:sec:ext-nogo"></a>
 

@@ -38,6 +38,12 @@ This script verifies that every other public surface agrees with it:
  13. Every Lean declaration that states a paper result is linked in each
      paper that states it and queued for Comparator
      (scripts/check_lean_paper_propagation.py).
+ 14. The evidence beside each result is current and placed: the generated
+     margin marks and evidence records agree with the ledger and with the
+     records the papers link to (scripts/paper_evidence.py check), and in the
+     committed PDFs every mark sits level with its result's heading, points
+     where it is declared to, and no paper is longer than its frozen
+     baseline (scripts/check_paper_evidence_pdfs.py, which needs pypdf).
 Stdlib only; run from the repository root:  python3 scripts/check_release.py
 """
 
@@ -295,6 +301,23 @@ def late_check_commands() -> dict[str, list[str]]:
         "lean_paper_propagation_fixtures": [
             sys.executable,
             str(ROOT / "scripts" / "test_check_lean_paper_propagation.py"),
+        ],
+        "paper_evidence": [
+            sys.executable,
+            str(ROOT / "scripts" / "paper_evidence.py"),
+            "check",
+        ],
+        "paper_evidence_fixtures": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_paper_evidence.py"),
+        ],
+        "paper_evidence_pdfs": [
+            sys.executable,
+            str(ROOT / "scripts" / "check_paper_evidence_pdfs.py"),
+        ],
+        "paper_evidence_pdf_fixtures": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_check_paper_evidence_pdfs.py"),
         ],
         "clone_footprint": [
             sys.executable,
@@ -1163,6 +1186,7 @@ APPROVED_ROOT_DIRS = {
     "LICENSES": "SPDX licence texts",
     "computations": "exact finite computer-algebra certificates cited by the #1049 notes, not Lean",
     "docs": "human and machine documentation",
+    "evidence": "per-paper evidence records the papers' margin marks link, with the Comparator replay receipts they rest on",
     "lean": "proof-corpus Lean sources (Lake srcDir)",
     "paper": "manuscripts, nested by problem or purpose",
     "research": "supported non-default research libraries and adapters",

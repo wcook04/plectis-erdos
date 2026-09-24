@@ -485,7 +485,9 @@
         }
       ],
       "finite_search": null,
-      "programme_claim_id": "universal_257"
+      "programme_claim_id": "universal_257",
+      "note_coverage_floor": 0.1,
+      "note_coverage_rationale": "Since the 24 Sep 2026 evidence release, each result's Lean proof is linked by a margin mark and the paper's evidence record lists every declaration, so the short note no longer ends with a Lean-source appendix. The note links its three headline declarations in MersenneSubseriesRigidity by pinned links (3 of 28 declarations in that module); the floor records this."
     },
     {
       "problem_id": "erdos_269",
@@ -503,8 +505,8 @@
         "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
         "ErdosProblems.Erdos269.WeightedPhaseCarry"
       ],
-      "note_coverage_floor": 0.5,
-      "note_coverage_rationale": "The note links the complete public proof spine and every required headline declaration across six modules; low-level lattice, residue, and helper declarations are intentionally reached through those checked consumers rather than itemised one by one.",
+      "note_coverage_floor": 0.14,
+      "note_coverage_rationale": "Since the 24 Sep 2026 evidence release, each result's Lean proof is linked by a margin mark and the paper's evidence record lists every declaration, so the short note no longer ends with a Lean-source appendix. It links the declarations of its marked results and, in words, the facts it states in the text (23 of 162 declarations in these modules; the required anchors are the ones the note still states). The floor records this.",
       "note_artifact_id": "erdos_269_note",
       "required_note_declarations": [
         {
@@ -745,7 +747,9 @@
         "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
         "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims."
       },
-      "programme_claim_id": "erdos_1041"
+      "programme_claim_id": "erdos_1041",
+      "note_coverage_floor": 0.25,
+      "note_coverage_rationale": "Since the 24 Sep 2026 evidence release, each result's Lean proof is linked by a margin mark and the paper's evidence record lists every declaration, so the short note links only whole-result and headline declarations: 10 of the 40 declarations in HausdorffLength, CatalogueAdapter and NewtonFlowRaySeparation. The floor records this."
     },
     {
       "problem_id": "erdos_1049",
@@ -762,8 +766,8 @@
         "ErdosProblems.Erdos1049.ZudilinHeightRegion",
         "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence"
       ],
-      "note_coverage_floor": 0.5,
-      "note_coverage_rationale": "The note links the full rational-base, endpoint-jet, no-go, and height-region argument spine. The remaining unlinked declarations are internal arithmetic helpers whose exported consumers are already pinned explicitly.",
+      "note_coverage_floor": 0.11,
+      "note_coverage_rationale": "Since the 24 Sep 2026 evidence release, each result's Lean proof is linked by a margin mark and the paper's evidence record lists every declaration, so the short note no longer ends with a Lean-source appendix. It links the declarations of its marked results and, in words, the facts it states in the text (12 of 107 declarations in these modules; the required anchors are the ones the note still states). The floor records this.",
       "note_artifact_id": "erdos_1049_note",
       "required_note_declarations": [
         {
@@ -807,56 +811,12 @@
           "declaration": "bottomJet3_eq_zero_iff_dvd"
         },
         {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "topJet2_eq_zero_iff_dvd"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "fourJetSignature_card"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "exists_distinct_binary_selectors_same_fourJet"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "exists_distinct_binary_selectors_same_fourJet_of_rank"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "homEvalThreeTwo_mod_three"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "homEvalThreeTwo_mod_two"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "commonMultiplier_not_two_not_three_of_endpoint_units"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-          "declaration": "three_two_scalar_margin_neg"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.HermitePadeNoGo",
-          "declaration": "rectangular_hp_threshold_le_classical"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.HermitePadeNoGo",
-          "declaration": "rectangular_hp_threshold_eq_classical_iff"
-        },
-        {
           "module": "ErdosProblems.Erdos1049.ZudilinHeightRegion",
           "declaration": "thirtyoneFour_power_mem_zudilinHeightRegion"
         },
         {
           "module": "ErdosProblems.Erdos1049.ZudilinHeightRegion",
           "declaration": "threeHalves_outside_zudilinHeightRegion"
-        },
-        {
-          "module": "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence",
-          "declaration": "vanAsscheQAperyResidualAtZero_ne_zero"
         }
       ],
       "what_is_checked": [

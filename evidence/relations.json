@@ -1,0 +1,1204 @@
+{
+ "schema": "plectis-paper-evidence-relations/1",
+ "rule": "For each exact_or_stronger result: one sentence saying how the Lean statement implies the printed one. statement_sha256 and lean_statements record what the sentence was written against; a change to either invalidates it.",
+ "rows": {
+  "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample": {
+   "note": "The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\\{|f|<1\\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\\{|f|<1\\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.",
+   "statement_key": "sha256:9bb99c85d46d47f11b2387ff931abe5a15b19d1733536a92f5dc97f1adfb9a7b",
+   "lean_statements": {
+    "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation": "1bedbc2e91e3ec6d728e0aade3b7f1eb21f35284773ce4fb350aaf25661953c4",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false": "c5139c381e7b3a5feb1230c23ab62bc47f1582c4b767b632a9b23af6df664a37"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:orlicz-currency": {
+   "note": "The Lean statements prove $\\Phi$ strictly increasing on $[0,\\infty)$, which contains the printed monotonicity on $(0,\\infty)$, and the integrand $1/\\log(\\coth t)$ continuous on $\\mathbb R$ with value $0$ at $t=0$, which is the printed convention. The identity (O1), strict convexity on $(0,\\infty)$, (O2), (O3) and the absence of a universal constant are stated as printed.",
+   "statement_key": "sha256:e434266ca0307a634382fd0dc25057170a5e16acaa95954804ecd10af6bbd32d",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR21.orlicz_currency": "0bc8122dc0d3c8f93f3cbcd9c8c311d83bae427a3836daf7b58fe46f124a6f83",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_continuous": "ea1ff7ac5856c7328a4183899b6703548b50a7adf842ad9c8b0d4831d0128252",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_tendsto_zero": "7b6e51a9c7682223aa36c3c30c35c474aacd46ed18a63271c3534caf9416ff82",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.mergerIntegral_eq_mul_phi": "3897db75ef6e23347292f607830927141d8c00ab3ab024d98401fcbb673c3e26",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictMonoOn": "f8a935a375cd59efbfe571465ef4565b3e36a2ba96a107a8ef407c0417de16e2",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictConvexOn": "37ae753363e2c8a1f0bbeb9f776abf797de192e9b77b791786b37539c053e19b",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.phi_div_tendsto_zero": "0432edde30c42778f64cf63d678503a7897b2e191c255a750d61f755904c5be6",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.exists_mergerIntegral_lt": "f27ab32eb3d4679489c47e850e0330450bb3e162a006a5a57454c0399eee04fe"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:ray": {
+   "note": "The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, and assumes only that $f\\circ z$ is continuous on $[a,b]$, which holds when $f$ is a polynomial and $z$ is continuous. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.",
+   "statement_key": "sha256:32c5a49e453b42e6f4069142bbe091c2194f40090d1641184b20c23a1ce671e9",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole": "56e6b2c7cbfa73a7af6960386ed2b34aa0cba2c391e376760cd9928d174db158"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:sextic-spoke": {
+   "note": "The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\\{|f_r|\\le1\\}$; the printed statement needs only a point with $|f_r|\\ge1$.",
+   "statement_key": "sha256:e46479916e113d0f115f34189923c12a74a82b1e148ad8832ef934a4c1bad3a1",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole": "59213391611614c40e7fe3d426834d6d6ba5e40af3498c0ccfca948264024ef0"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:sharp-collinear-root-diameter": {
+   "note": "The bound is proved for every monic $f$ of degree $n\\ge2$ whose zeros lie on one line, and the chosen pair is adjacent on that line, with no zero strictly between them (`sharp_collinear_root_diameter_monic`). The Chebyshev configuration with extreme roots at distance $D$, placed on any line by a translation and a rotation, attains $C_n(D/2)^n$ on every gap between adjacent roots (`sharp_collinear_equality_attained`), and no constant smaller than $C_n$ gives the adjacent-pair bound (`sharpConstant_le_of_collinearDiameterBound`).",
+   "statement_key": "sha256:573bf2498211f7bc6d62926686a9c7152d6707f6dd6c7474f46fe013ed43e58e",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter": "1d08ee6b1930abf3916690a1ee92353c78f4745625df1f6f94d98fdeaaab7d37",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter_monic": "550418ce29f02e0d3054d5f4e2bb5b1978343eb7e49aa7b2ecad4cc86b97733f",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.exists_collinear_factorisation": "a47daf0de32957e93d2b693d9c09eec94452514ac4b785861395a5ec62d5efed",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_comparisonBound": "49f7033289aa287a8cc71e8775dd89b3e0c2a009c1c75fd10a69f538983b2fd7",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_equality_attained": "2cb30c3214962303f80ee222ace7c7f092a61914d005949c14fea2e4dac6376d",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.chebyshev_configuration_attains": "9c2db901eecee0f26cce4c73415de4072befafd7bfdbe95298a4937bf5cd39f2",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.monicScaledChebyshev_eq_prod": "076d6a4f81500969374820ed5fd61b0a4262c265247cbfaaa9fd56a63ea11925",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.collinearDiameterBound_sharpConstant": "0393b613a35eedf73946b57ff2da3041cfb29c0bc8972d853cdacc047289f82c",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.sharpConstant_le_of_collinearDiameterBound": "685017b99bf6b6356b5c586851bc3c92b8494d7c23a3900daba0372bd11e0727"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:trinomial-all-degree": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:27f6374339522802489c59f44e756c601ac097cab1b961dfd62ad3965f3fec69",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperTrinomialWholeR21.all_degree_monic_trinomials_whole": "13a3e1d8e1a986b76dabe6a32c257623c5a46255e996adcc1043f3412addfdf2"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:value": {
+   "note": "The Lean statement allows any function $f$ with a complex derivative at each point $z(t)$, $t\\in I$, of which a polynomial is a case; its conclusions are $w'=-w$ on $I$ and $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\\in I$.",
+   "statement_key": "sha256:d9942c48e2dc844fcff899b84ca3f5e52dfda08109dd5329fbe293cd78779172",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole": "881e307ae2b5f03a97412b844b222f841c9c48c6b21ee719e5ba6ae910295f8c"
+   }
+  },
+  "erdos-1049-rational-base-lambert#res:archimedean-cap": {
+   "note": "The Lean statement needs $\\Lambda_n(x)\\ne0$ only for all sufficiently large $n$ at each real $x>1$. Its conclusions are $\\sigma/(\\sigma+\\delta)\\le1/2$ and the decay of $b^{d_n}\\Lambda_n(a/b)$ for integers $a>b\\ge1$ with $\\log b/\\log a<\\sigma/(\\sigma+\\delta)$; this covers every printed case, since $b\\ge a\\ge2$ gives $\\log b/\\log a\\ge1$.",
+   "statement_key": "sha256:2e8ca75df76ac78e7bede37d4bdf36ecff717d79bbb21f29555ef99495ea5a93",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap": "e9ec6609ee62eb8acdaeb940f045a6041ea7853384343eb987888651c256793d"
+   }
+  },
+  "erdos-1049-rational-base-lambert#res:content": {
+   "note": "The Lean statement adds that multiplying a row $(U,V)$ by $c_1$ multiplies its error $US-V$ by $c_1$ for every real $S$; its other clauses are the printed determinant identity, the absolute-value form with factor $|c_1||c_2|$ and divisibility by $c_1c_2$.",
+   "statement_key": "sha256:727c60486065573600d3aaabd6923f2ca14bd1ce8f142497a994e65391978ad4",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR7.integer_scalar_content": "7235c320312eb8dad96584abb6b6c838b19d145e02949d60c7ed455221222a61"
+   }
+  },
+  "erdos-1049-rational-base-lambert#res:pade": {
+   "note": "The Lean statement proves $\\widetilde E_n-\\widetilde P(n,k)=(n-k)(3n-k-1)$ for all integers $n,k$, without $0\\le k\\le n$, and adds $\\widetilde Q(n,m)\\le\\widetilde E_n$ for $n\\ge0$ and $m\\ge1$; the printed items are its first three clauses.",
+   "statement_key": "sha256:b8fbf7049859f6e8802c76afc573326735d3d3f3306d298953e252dd1b89514c",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR7.pade_summand_bound_and_gap": "d652c97cca20bfdadba591c2d2da79cc9043b61bfff9567909a0e1c31ff81725"
+   }
+  },
+  "erdos-1049-rational-base-lambert#res:zudilin-sharp-qorder": {
+   "note": "The Lean statements hold for every $N\\ge0$, the case $N=0$ being the empty determinant $V_0^*=1$. The exponent $N(N-1)(2N-1)/6$ is computed in natural numbers, where the subtractions and the division by $6$ are exact for $N\\ge1$.",
+   "statement_key": "sha256:76bd15023e83342a2f6a6767f57a27ed16fe1287c69f1ed980be440173718c03",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all": "3799107d02febd598eca9a4e5a6fdc3442aab3da1667ce78ba87c3f0662f1343",
+    "ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat": "f18aea4a93c0e58efe6a61fb0027393746842db21d3b047b37579f330e1079fb"
+   }
+  },
+  "erdos-249-binary-totient-series#thm:kkernelrank": {
+   "note": "The Lean reduction $F^{(k)}_{j,k^tu}=k^t\\prod_{p\\mid k,\\,p\\nmid u}(1-\\tfrac1p)\\,F^{(k)}_{j-t,u}$ holds for every $u\\ge0$ and every $1\\le t<j$, with no requirement that $k\\nmid u$ or that $t$ be maximal; the printed reduction is its case $t=\\max\\{s:k^s\\mid r\\}$, $k\\nmid u$, where $r<k^j$ forces $t<j$. The dimension $k^e+1$, the basis $\\mathcal B_{k,e}$ and the identity $F^{(k)}_{j,0}=k^{j-1}F^{(k)}_{1,0}$ are stated as printed.",
+   "statement_key": "sha256:bafa2c9a2bade860d7dd4ec646807f5ba1592dbdf61d9b4f76f3100d3d495db7",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel": "60ff8062789c230a048bd2fc4be6b76f01ff04595108b0bdba45c8d949068536"
+   }
+  },
+  "erdos-251-prime-gap-dyadic-series#res:irr-equivalence": {
+   "note": "The second Lean statement gives the equivalence of irrationality of $\\Pi$ and $G$, and the first gives convergence of both series; the Lean statements add the identity $\\Pi=2+G$ and the same equivalence for $\\sum_{n\\ge0}p_n2^{-n}=4+2G$.",
+   "statement_key": "sha256:a850623c5b3960d7a7bf36972b9aa338881d99b0f8a0300a5307188ee3844b42",
+   "lean_statements": {
+    "ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity": "32da37f1cd977466792311afba2db7400afc7f64f3a0780aa7e6497a9cab3650",
+    "ErdosProblems.Erdos251.PaperR7.irrationality_reformulation": "43b40fa741d44f163c190e656f25380c50acb0d8ae39f941bc4b53bdba5b64af"
+   }
+  },
+  "erdos-251-prime-gap-dyadic-series#res:sparserationalisation": {
+   "note": "For a general $f$ the construction holds with $I=[l,u]$, $A<l<u$ and cutoffs $N_q$ chosen before the target $r$ (`arbitrary_word_sparse_rationalisation_uniform`). For $f(n)=(\\log(n+3))^\\varepsilon$ the construction also satisfies the displayed total-variation bound for all $X$ and $m$, and $|S\\cap[X,X+L)|\\le CX/\\log\\log(X+3)$ for all large $X$ and every $L\\le2X$, which gives the printed count at $L=X$ (`polylogarithmic_word_interval_uniform`). The same statement proves $d_{\\rm TV}\\to0$ for every integer-valued $m(X)=o(\\log\\log X)$, uniformly over all sequences that differ from $a$ only on $S$, a class that contains $a+e$ for every target $r$.",
+   "statement_key": "sha256:c32277b98166f3492e912f5656e5891ea83564a2703a4015cd67cf44bd482ae3",
+   "lean_statements": {
+    "ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform": "ebd1105fd6315009663fa09350f57232b412a829c12d58901dfe1b68ffd28012",
+    "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform": "7b3a27f015d224ca997f1817275993a231b4972436d013d44fc87ce11c0e4bb9"
+   }
+  },
+  "erdos-251-prime-gap-dyadic-series#res:truncation": {
+   "note": "The Lean statement assumes only $M(n)\\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed standing assumption $\\sum_{n\\ge0}M(n)2^{-n}<\\infty$ gives that convergence, and the conclusion is irrationality of $\\Pi$.",
+   "statement_key": "sha256:f773935af79b6f97159e5ea9da05b2cfada701f378d65b6b0c6ca215dfd142fc",
+   "lean_statements": {
+    "ErdosProblems.Erdos251.PaperR7.irrational_prime_series_of_finite_truncation": "77c4c9b0f5d9b26d951c910350e2a8e671f9a6fe6ba9787e478d7985d2aa45da"
+   }
+  },
+  "erdos-257-mersenne-support-subseries#res:cylinderhalf": {
+   "note": "The Lean hypothesis has the printed content: a stage at depth $M$ with cutoff $K\\le M$ consists of sets $A_1,\\ldots,A_{B(M)}\\subseteq\\{2,\\ldots,M\\}$ with $1\\le K_{A_k}(m)\\le B(m)$ for $1\\le m\\le M$ and $K_{A_k}(M)=k$, agreeing on $\\{1,\\ldots,K\\}$, whose suffix values are $E-k$ for one integer $E\\ge B(M)$. The conclusion is the printed one, with $A\\subseteq\\Npos$ written as $0\\notin A$.",
+   "statement_key": "sha256:7dad5a6420c979571305e709e3a13505d4e887659cea387ae7ecb7a41e818176",
+   "lean_statements": {
+    "Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages": "182b4f9d7c95c2e675dae4875e402b7c60a21d58d820e401d777eaa0f3b38ece"
+   }
+  },
+  "erdos-257-mersenne-support-subseries#res:mixed-supports": {
+   "note": "The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\\subseteq\\Npos$ written as $0\\notin E$. A cover satisfying (V), with its index $j\\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\\eta_j>0$, $\\sum_j\\eta_j=1$ and $\\sum_jC_j\\eta_j^{-\\alpha_j}/(2^{\\alpha_j}-1)<\\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.",
+   "statement_key": "sha256:591f6d5c9d64758827d4fd7579b2bc3a9a616efabe450a4cd9023ee7268d9093",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim": "7bc9142467ba6b80b56b080991a744965526f66e3ed220c1f0318b0ff62cc867",
+    "ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary": "85a37652181158d093fcca407755598d25eda0b93499b50893f849748cb12229"
+   }
+  },
+  "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier": {
+   "note": "Item 2 follows from a Lean criterion with a weaker hypothesis: $1/21\\in\\Ach$ whenever $(s_R+2R+1)/2^{2R}\\to0$ along some sequence of ranks $R\\ge2$ tending to infinity, and ranks $R_k\\to\\infty$ with $s_{R_k}\\le2^{R_k}$ supply such a sequence. Items 1 and 3 are stated as printed; the recurrence for $s_{R+1}$ is written with natural-number subtraction, which agrees with the integer identity because $s_{R+1}>2^{R+1}$ for all large $R$.",
+   "statement_key": "sha256:486f56e089889c9dd29ee9ef1d7e2c864daa8f1a6a3ca03396238de4b3e740b6",
+   "lean_statements": {
+    "Erdos249257.one_div_twenty_one_mem_iff_not_fatalAlignedBranch": "8f08f127f3e1f2a78bf829512b4af8c843edae500d499b9caf06a4c446f0623c",
+    "Erdos249257.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows": "60b223cbfba8ea45d6d2bf66aeda85e2073a22f2669c0198be4d0beabd3836e2",
+    "Erdos249257.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay": "38579298ea562ce4228da4a8f4a31d78ae56e11f333a735b4ea2c453d00e3bc4",
+    "Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity": "111860bc749d6604e82cab952996f1e9c7846277327d02a576d883f2a8939767",
+    "Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity": "56acebd7a77d246079be627eeebf93ee325b69eec02aa867906c20eb13165153"
+   }
+  },
+  "erdos-257-mersenne-support-subseries#res:period": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with $F\\subseteq\\Npos$ written as $0\\notin F$; coprimality of $D_F$ and $b$ is proved without assuming $F$ nonempty. The order is the multiplicative order of $b$ modulo $D_F$, which is $1$ when $D_F=1$, as in the convention $\\operatorname{ord}_1(b)=1$.",
+   "statement_key": "sha256:d4d67171781d771736af72409c286c2f740065ec5c523b6a1b3d2d0e682b2adf",
+   "lean_statements": {
+    "Erdos249257.coprime_base_den_finiteErdosSum": "c20e4926dec3b18d59690822df645fc72a3555f2981bfd462564166a2ffd7f29",
+    "Erdos249257.finite_period_noncollapse_rat_den": "8c7c6dab9454604b28b3bd475b4640318a89c62772d69c5376ed62fa69181540",
+    "Erdos249257.lcm_lt_den_finiteErdosSum": "6dee01495bba228266fd2ceeb4e258efe2a18e131e2cfdf3cb81dfcc9ca0cd61"
+   }
+  },
+  "erdos-257-mersenne-support-subseries#res:reciprocal-support": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, except that $A$ may contain $0$; the term at $0$ is $0$ in both $\\sum_{a\\in A}1/a$ and $X_A(b)$ under the convention $1/0=0$.",
+   "statement_key": "sha256:058baf5fe380523957a000631772d99a215467543510e248ad049902d6c094fc",
+   "lean_statements": {
+    "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal": "fc88cc76742dc8e852c135d64681ce6cd5023aba23feb9c6da8266710528bcd7"
+   }
+  },
+  "erdos-257-mersenne-support-subseries#res:weighted-support": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with $A\\subseteq\\Npos$ written as $0\\notin A$ and $W_{b,P}(A)<\\infty$ written as summability over $A$ for some finite nonempty set $P$ of primes. The fixed-base statement and, under (W), irrationality at every $b\\ge2$ for every infinite subset are the two parts of `divisibilityWeightedClaim`; heredity under the fixed-base condition is `finitePrimeWeighted_fixedBase_hereditary`.",
+   "statement_key": "sha256:61a9d749743390e1e637e664f5d815901c204fe3d7582ca658a71966cb914ee8",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim": "0d4ff3d4b5e4bcfd63b5c950d25cb1c32fe49e00191baf7e7fffdd701baa71df",
+    "ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary": "615adf948543c70b5c1d80c044356c697fc103d69aa8af830397b16ae05555dc"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:actual-orbit": {
+   "note": "The dichotomy is proved for every integer $B$, and the printed statement takes $B\\ge1$; convergence of $S$ and $T_a$, the recurrence and the bounds $0<X_a\\le\\frac{8640}{343}(a+1)^2<90(a+1)^2$ are stated as printed. In the recurrence $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with $\\hgt(2^{a+1})/\\hgt(2^a)$ and the printed sum defining $m_a$.",
+   "statement_key": "sha256:437b2e0fd785711cb7e7079d2f01f2a8474bda9dbff79275f3938b0baebb0110",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.short_actual_orbit": "df173e4cc2759feee89e7013f70bcf7828b82b5506444cb2e9842208ffd64842"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:admissible-modular-minors": {
+   "note": "The Lean statement holds for every $n\\ge0$ and, for the same $I,J$, also gives nonzero rational determinants at every $k$ and an invertible kernel matrix modulo $B$; its unit-determinant clause for $n\\ge1$ is the printed statement.",
+   "statement_key": "sha256:cd527320463cad30f6a3d27a5651cf1d335109d9105e371540ff1a2a0c84ddd3",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.admissible_modular_minors": "00f8fded558c3b7843d15672f998d8bc5371449ecb2ab9b64238bae62cefb09c"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:cell": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, for real $x,y\\ge1$. Equal integer logarithms give equal running LCMs, and an increase by one in exactly one of $\\lfloor\\log_px\\rfloor$, $\\lfloor\\log_qx\\rfloor$, $\\lfloor\\log_rx\\rfloor$, with the other two unchanged, multiplies the running LCM by that prime. The count also records that the $3n$ positive powers alone are distinct.",
+   "statement_key": "sha256:2081f6a6963f47e1e98f3a6c80fbd66f24e7eedbc932a6bd74fd8bb098a77bcf",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_eq_of_sameLogCell": "6f7d1fdfa32dd41139ce8e3c1bfd8eecb45d3032cbc9c058bc18f91ee6985cc5",
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_first": "dbefed8d2515f429d78727b3be99ce18bc7696dc689d877c5a4d3a076ca11c38",
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_second": "5a2dd8f04b8742e73efd1c0b90ba6658a12ea20e4fbbb0ef6f4abc5e14aa32d8",
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_third": "ac8650d0f006873c96e2ba9859c8ac9fe40b40fa1a5ae5902e72d71c3f41572d",
+    "ErdosProblems.Erdos269.PaperR7.paper_jump_count": "ec92929203b2b39d58a78c70bc1a122096280969c8245b4c773543f7d86d1df6"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:consumer": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:56e0a0c65d5b5b98648d93b7c546538a504cf14bed835a7fd0b50caa33855013",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction": "7504a8c4ab24c159879fd5cfa962c97e99ac4077f6272ea0bd4d0440a14025cb"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:denominator-reduction": {
+   "note": "The Lean statement drops the hypotheses that $A/D$ is in lowest terms and that $\\gcd(B,30)=1$: it applies to every representation $S=A/D$ with $D=2^u3^v5^wB$ and $B\\ge1$, and gives for $a\\ge u+1+2v+3w$ that $d_a=BX_a$ is a positive integer with $d_{a+1}=b_ad_a-Bm_a$ and $d_a\\le90B(a+1)^2$. There $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with the printed definitions.",
+   "statement_key": "sha256:c5586af6e8e5277985e58789f38487d39583f9d80d2b8892ed20523ae20a9c90",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge": "2884167f5646e76711f65c93feb3950d62e32991a62ae6203a924a2cd75ec662"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:dyadic-alphabet": {
+   "note": "For every $a\\ge0$ the Lean statement gives $m_a\\in\\mathbb Z_{>0}$ and $b_a\\in\\{2,6,10,30\\}$, and adds $m_4=65$ and $b_4=30$, which show that $m_a<b_a$ can fail. In Lean $b_a$ is defined as $2$, multiplied by $3$ when a power of $3$ lies strictly between $2^a$ and $2^{a+1}$ and by $5$ when a power of $5$ does; `threePrimeHeight_dyadicBlock_succ` proves that this equals $\\hgt(2^{a+1})/\\hgt(2^a)$.",
+   "statement_key": "sha256:6af4b25075dbb366da8d176af5a7b5ab7af0d85d7e7ea2c53ab2219775f45bd2",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.dyadic_alphabet_whole": "29efbc5be7129d19b16530ae02b35d305431c63014accacca2cffc0daca30de3"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:finite-cut-rank": {
+   "note": "The Lean statement drops the hypothesis that $E$ is nonempty; for nonempty $E\\subseteq\\{0,\\ldots,m\\}$ and any finite matrix whose set of columns is $\\{v_k:k\\in E\\}$ it gives the printed rank $|E|-\\mathbf 1_{\\{0,m\\}\\subseteq E}$.",
+   "statement_key": "sha256:738c0fdd573c2aefff141a0e7f6858ad4d1b4eea7a7359c3e6bd9fa2ddd89acb",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.rank_cutMatrix": "664c872a0bfee87c937d0533f489331e86c65149738fac79142e0aa2943a8a04"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:infinite-rank": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:c50c9900d54f0afda7beb1eca59d66c7266e27612666ef31a8f5a18582541262",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation": "ed421b70b562670272fd8d5b646944d75fd27b68fef7d75acd1a5ff4afcc41a2"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:lcm": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:f077aea00861a971a3353017942efa8fe594df9ed2b89ec8f83069a5e75c61be",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact": "63d774e4b34f19e1b52d2033434edf3602db542697e66c60eafc282e3f81ebcd"
+   }
+  },
+  "erdos-269-three-prime-running-lcm#res:windowconsumer": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, with $K(B,\\ell+h)=90B(\\ell+h+1)^2$ written out. The windows are built from closed forms for $b_a$ and $m_a$ that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with the printed definitions.",
+   "statement_key": "sha256:0f3534c9b4252560a3665e59ab9b27366f0ffe33500455690beb0e67bc5f8377",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.short_window_equivalence": "dfde55f8941a4e8c38b610c65405c32aa3549f904d63542d17d849557925822c"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:ani-degree-seven-counterexample-long": {
+   "note": "The first Lean statement gives that the polynomial is monic of degree seven with distinct roots in the open unit disc, and that every continuous path in $\\{|f|<1\\}$ joining two distinct roots has total variation greater than $2$. The second gives the Hausdorff bound for every preconnected subset of $\\{|f|<1\\}$ containing two distinct roots, which covers the image of such a path because that image is connected. The last two are the negation and `answer(False)` forms of the Formal Conjectures statement, in which length is one-dimensional Hausdorff measure.",
+   "statement_key": "sha256:d4dd26f4f9e375336371ae6765e368dce07f8c360751e429b9fec42381a9da19",
+   "lean_statements": {
+    "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation": "1bedbc2e91e3ec6d728e0aade3b7f1eb21f35284773ce4fb350aaf25661953c4",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false": "c5139c381e7b3a5feb1230c23ab62bc47f1582c4b767b632a9b23af6df664a37"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:circle-slice-packing": {
+   "note": "The Lean statement proves $\\sum_jw(d_j,r)\\le\\pi$ for every separation $D>0$, with the points in geodesic polar coordinates $(d_j,\\theta_j)$, $d_j>0$, about $i$ in the upper half-plane, the image of the disc model under an isometry sending $0$ to $i$; a second form holds in any metric space obeying the hyperbolic law of cosines. The printed statement is the case $D=4\\operatorname{artanh}\\sqrt{\\tanh(1/a)}$ with $d_j=d(0,b_j)>0$.",
+   "statement_key": "sha256:3deb33dce340b28439657442596833f52a51c4fc02b1f9117198af5db0b2f692",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing": "b54ae561cc488466f8af5bcc87eb1bfb7b7bdd06f216b47707536dde749e2281",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.cosh_dist_polar": "a63270e0630c15862d242b55264fc7f569ebfd5d30a38716b170f744c0dc2d31",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.dist_polar_I": "7ecdabe4772bda58430098b1406cd88a6c6fa4395c198aecc42c7f18082febd8",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.exists_polar": "b815d35ded5aef549f2929617fe730417f5faa19716fbc159b7b6ebd227dbff1",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.polar_zero_zero": "0ef76afe64fbfa00e3993e5714a64ade92a4c68beeebe07dce8953a80d4e0788",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing_abstract": "5aa6329441b499f27132cd2c181de0dcffd8d37c7a7f16b91b5271c41e139bc6"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:critical-value-budget": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:3e87d72b103557742b0a721822180feedb1215d23a7e02acbe8d270985c67522",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets": "dc7c251a4fb8940ff5652decc75d6865f691c3d283d8dc360854f7729b1a576f",
+    "ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets_sharp": "8fc75e93e1c9435170ab1f3e5d1cc6abe70661aa32137faa0a965fca227b72d1"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:degree-three": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:dd1ce0633efd11eb648afd0e5b31c16685fbf8e3aee7483eafd14847bfb28e17",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete": "863d6634b19105f58ea16b6f13fb16694149c443cb6dbfe4d5a7309c7b403233"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:ray": {
+   "note": "The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $a<t<b$, of which a polynomial is a case. It gives $f(z(b))=e^{a-b}f(z(a))$ and that the two endpoint values lie on one positive ray, which excludes endpoints whose values lie on distinct positive rays.",
+   "statement_key": "sha256:fc8bb907ab9cc4f9e892b501d56cd8273ded485300ad417176829a1e51985343",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole": "56e6b2c7cbfa73a7af6960386ed2b34aa0cba2c391e376760cd9928d174db158"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:trinomial-all-degree": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:1542c03e9c895ddc191b3f44366afa9cf554fe4c1ec1425dadcdc37120593880",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperTrinomial.all_spokes": "e7843e1e9a9c31ea3e67d4650f95129a81fbd3c473f6a8f077e20e0090afc870",
+    "ErdosProblems.Erdos1041.PaperTrinomial.complete_trinomial": "2c8af0711fb23f50b59ee0e05760117599985a383f0e90efac5ef63e83f7dac7"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:value": {
+   "note": "The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $t\\in I$, of which a polynomial is a case, and adds the integrated form $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\\in I$.",
+   "statement_key": "sha256:bde4607ae3a40249d61f78b4f60c59b02e79398a5ec72d7b74bf53bfa71a2c27",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole": "881e307ae2b5f03a97412b844b222f841c9c48c6b21ee719e5ba6ae910295f8c"
+   }
+  },
+  "erdos1049-rational-base-lambert-reasoning-surface#long1049:cor:no-decay-below-square": {
+   "note": "The Lean statement assumes the hypotheses of Theorem 2.5 in the form of its Lean statement, which allows any real function $F$ and requires $\\Lambda_n(x)\\ne0$ only for all sufficiently large $n$ at each real $x>1$. For integers $1\\le b<a<b^2$ its conclusion is the printed nondecay of $b^{d_n}\\Lambda_n(a/b)$, with no assumption on $d_n/n^2$.",
+   "statement_key": "sha256:14d3b1e980727f0fc6fbab833151d84832eacf9ea95f1c997759dba38fbb8c31",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero": "b8bf8ba1b1611da897da57550b9ddc5c13990391d3355e907041c1ae4e559386"
+   }
+  },
+  "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:archcap": {
+   "note": "The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\\Lambda_n(x)\\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\\le(\\delta+\\varepsilon)n^2$ and $\\le(h+\\varepsilon)n^2$ for all large $n$, for each $\\varepsilon>0$. For integers $a>b\\ge1$ its conclusions are the printed ones, including $\\sigma\\le\\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\\sigma/(\\sigma+d)$, and the divergence at $a/b=3/2$.",
+   "statement_key": "sha256:bce8dbbbfde5e66f1766a3877bd39bd179a63c0c110346e13eff0e29aa3dfc27",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR9.long_record_archcap": "2b44291a0f31ae63a0e6740398c148c52124eaa8f072f1fd646547460ad2c665"
+   }
+  },
+  "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:finite-pencil": {
+   "note": "The Lean statement also covers the rank $N=0$; for $1\\le N\\le8$ it gives positive definiteness of $A_N$, a pencil polynomial $\\det(YA_N-B_N)$ that splits over $\\mathbb R$ with every root below $F(p)$, and the non-strict interlacing of the roots at ranks $N$ and $N+1\\le8$.",
+   "statement_key": "sha256:1d6ee89094a2abda757faaf9140ef47fd7f2e46724578e11895e6c8c69653289",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR20.coefficientPencil_finitePencil": "78641556fdca30d40de532ac3f16082ce61d25527cda2c7dd36211d62555093a"
+   }
+  },
+  "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:scalar": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:045701e7af42e546c5cd67bb8e9201afad8084e4ec38248492a73696277ae822",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR7.scalar_margin": "e07ed63d192fbad8f2c873c84e74ac52e459036cbba9b142cfdb775b17660b7e"
+   }
+  },
+  "erdos1049-rational-base-lambert-reasoning-surface#long1049:thm:geometric-universality": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:4b04fb79878dd1fc4652906920f398f56d437848597999689a3ba9074a5052bd",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality": "f37dc12aa1811324f3bf295732ecd29c5e8c8344a3c4490e715c688ba53b05cd"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:bounded": {
+   "note": "The Lean statement omits hypothesis (4), eventual strict centring $|E_n|<C_n$, which the printed theorem adds (it is also the case $K=1$ of (6)); hypotheses (1), (2), (3), (5) and (6) are as printed.",
+   "statement_key": "sha256:5cbdd3d0e166c78a25d6e97acb37d6f3a5189d2c17485e14cb3012084e599a03",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero": "6ea70d58c44fbc6bc3824a00247a6382e8280ffecac63e5290ac07e25e6f547c"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:cor": {
+   "note": "The Lean statement drops both eventual strict centring $|E_n|<C_n$ and the extra hypothesis $C_{n+1}\\ne0$ for large $n$, which the printed corollary adds (the latter already follows from $C_n>0$); its conclusion $a_{n+1}=a_n^2-a_n+1$ for all large $n$ is the printed one.",
+   "statement_key": "sha256:7098ddadaea3849e1bf6a5be18e77580bf6f3db84d05b73aca22aee40f82935b",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually": "47ee3f7ba0e7486a97893cfd04e604b4fc93e03b089333f2e06a5b3ab001bfae"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:onethreshold": {
+   "note": "The strict limsup case, the bound $1/n+K/n^{1+\\varepsilon}$ and the one-sided bound $1/n$ are, in that order, `original_coordinate_strict_one`, `original_coordinate_inclusive_one` and `original_coordinate_inclusive_one_pointwise`, with the limsup hypothesis written as an eventual bound by some $r<1$. Lean indexes the sequence from $0$, so in the paper's indexing its hypotheses read $(n-1)(a_n^2/a_{n+1}-1)_+\\le r$ and $a_n^2/a_{n+1}-1\\le1/(n-1)+K/(n-1)^{1+\\varepsilon}$ eventually, and the printed hypotheses imply them.",
+   "statement_key": "sha256:a67dce11da72f9247ae0a2a2f771494d061c5478d1b4f9af2b4bc54c2214a9f2",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.PaperCompleteR21.original_coordinate_strict_one": "cd2a49264994a1da62ccf7d5118d39a193d1382959e8bd0ff84edb253003647f",
+    "ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one": "1f460bc468378e5e5c59fe78aa041340f82e561823559dd281fa204a807317f5",
+    "ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one_pointwise": "eb2b4bce1c0ec9852e37b550963812b56fa5e0c1ee4ad1a82333c6b369bfab3b"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:tailratio": {
+   "note": "The Lean statement bounds the error explicitly, $|C_{n+1}/C_n-a_n^2/a_{n+1}|\\le16/a_n$ for all large $n$; since $a_n^2/a_{n+1}=1+\\gamma_n$, this gives the printed $O(a_n^{-1})$, and the growth bound $a_n\\ge\\exp(c\\,2^n)$ is as printed. Lean indexes the sequence from $0$; the first conclusion is unchanged by this shift, and the second holds after replacing $c$ by $c/2$.",
+   "statement_key": "sha256:27ea2e440b8cd20ae1a59078bd156910738d6b58b5b9f973d03f281096d7b485",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.PaperCompleteR7.canonical_tail_ratio_quantitative": "3b69fdb59ceeee5de3f3be4298afecdd8efddf133c124d1487694ef71ddd41a0"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:variablerise": {
+   "note": "The Lean statement asserts the printed objects with the printed properties, with the $O$-bound written as $u_{n+1}-u_n\\le C\\sqrt{\\log\\log(u_n+e^e)}$ for every $n$ and the $o$-bound as $(u_{n+1}-u_n)/\\log\\log(u_n+3)\\to0$.",
+   "statement_key": "sha256:04783e1a9e3de9a941b4b9ca41507b6d75e410f9c1c17a1a4021964c5f7abf5c",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.PaperCompleteR21.exists_sparse_prime_coprime_sequence": "b9b75af9d567d36bebfa79afcb6f3db814bd552e6133b1940eb7794f17e657b8"
+   }
+  },
+  "erdos249-totient-reasoning-surface#catalogue:cert:d2": {
+   "note": "The Lean lower bound $|m\\xi-z|\\ge1/\\operatorname{den}(\\xi)$ uses the reduced denominator of $\\xi$, which divides $b$ whenever $\\xi=a/b$, so the printed bound $1/b$ follows. The near-integer criterion, its base-power case and the square-block example (irrationality, no three consecutive equal digits, fractional parts of $2^n\\xi$ in $[1/8,7/8]$) are the remaining Lean statements as printed.",
+   "statement_key": "sha256:20ce7be42dce71c81160a5861a08f293e3434d774c2f57c7474bf8d5ded85e6e",
+   "lean_statements": {
+    "Erdos249257.irrational_of_int_mul_near_int": "1ea752df298dcbf7f1bffcd979654a56ab2abd066f3ed02259ad407aebafc408",
+    "Erdos249257.irrational_of_pow_mul_near_int": "891f7c56b6752cd8c1ea783b7800041077427591bd35f1b1dd5d3921dc280f3f",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_near_integer_multiples": "bc1ce8cf7326ab822c6f893c34698c93f6fea480409d14a6515a69b358f91457",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_near_integer_base_powers": "4101292a8ab27538848575ee46129058640fc33fca3443c714447b31f54fb727",
+    "ErdosProblems.Erdos249.PaperCompleteR21.one_div_den_le_abs_int_combination": "48c8f45cb8b97e131d35ff5cee6b6894e63b9c6b3cfd57d1a81b77c6564b4214",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.digit_block": "596c84dc90902b5ae548367bbf518845573577f1d0bfe0257670f3e7e7ac2f83",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_eventually_periodic": "2aefb5c24e52486afc3630256d77d88ca1112254340600de82eb25aa1eafc4de",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.irrational_xi": "9aaee7354b674a1fc82e463c28b77d1f37683a8050edecfb280a44f7554f0467",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.no_three_consecutive_equal": "7144edd591fedee2252b2a0ad48fb9818b4f2bbd29b3d5c1640dc1e2bd1fdce8",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.fract_two_pow_mul_xi_mem_Icc": "ba530f60a7c76c05ff20e5ccfb6bc1268371562b3bf1586f379d973cf876daf5",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.fract_mem_Icc_of_no_three_equal": "5e3c4776f2d14409daf1cf66580bd89638dafbb4ba8057d7d959af3edc12871b",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_dist_xi": "784ccd807e8e2d426d3600d50c7705ea81b37fd13162b1a2b315eabac5ea0ca3",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_approaches_int": "f0d42bd7ee60fe8d4eb83d2e17b355349455dd8942f0d739f45c27b2f4ef2b0c",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_near_integer_along_powers_of_two": "6f873c4550894e3c87ddca904be5cb570268d0242b832bc698f38545772e8e5c",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.exists_irrational_basePower_bounded_away": "ad37283946817fc2cc996cfbc6f4452b68813f4b0ab7c65bf17fccc4c538e46f",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.strict_lower_bound_needed": "7497e4d311ce8a032a4dcb1c4dfa702074256ea6dfea11fafbec6e1bdca54534",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.upper_bound_needed_for_every_q": "05313ea67191ba8cb6aaf6286d28bd68e4c9cac9aca706899d85637e43341d6c",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.tail_mem_Icc": "eb153f8e7b45198c444db72a47caca0f6a2d223bf4e97a783db80f2f3add3904",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.irrational_tail_zero": "5f9c68cf558d815f7add887ec38e0d34fa4fd0ffc7535e6080770785a522af1e",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_abs_sub_int": "2c62d2172aa98947d3b2dfb0053a15f04a79e0b8ad1a774bb4ded7e9c4004ffd"
+   }
+  },
+  "erdos249-totient-reasoning-surface#lem:orbit": {
+   "note": "The Lean statements give the recurrence, the identity for $R_{N+h}-R_N$, the congruence modulo $1$, the equality of first characters and the description of the phases as the doubling orbit of $\\alpha_h$, with $\\alpha_h=(2^h-1)S$ written out. They also hold at $h=0$, where $\\alpha_0=0$ and every identity is trivial.",
+   "statement_key": "sha256:5c4e268dc100626bd457fce7b77174f8d6cf7215f8904e5d2947e46d7ef28eef",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_recurrence": "01a229e22e62667246d3d5cb6e79f603cae58e7bfa2bc4e91ea2d6f6d34fca28",
+    "ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_eq": "3eeb471a464cc588ccc55b6ec63487a0fb40d8e3ae67722f2bcf0c9b1a92f727",
+    "ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_sub_scaled_is_int": "c5b16c7234ce3880a848369dd199270f92331e607a60455a38c2ed51133afc44",
+    "ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_firstChar_eq": "af0b2de10c08aa4c82fd2c3c18fc1c03a1cb7fe04fb8ea5c25b249c640e4036b",
+    "ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_fract_eq_doubling_orbit": "6b5959491d3139b89618e8b28420de387d722c256c1d68485f1a503b2a031477",
+    "ErdosProblems.Erdos249.PaperCompleteR21.doublingMap_iterate_apply": "fdde5e37814e76bbeb3155f98ecd44d3a3d70846224e3e8bd7171efed3bd421b"
+   }
+  },
+  "erdos249-totient-reasoning-surface#prop:D1D2-inv": {
+   "note": "The two criteria and the lower bounds $1/(bq_j)$ and $1/b$ for reduced $x=a/b$ are stated as printed, with $q_j$ the reduced denominator of $u_j$. Sufficiency of the base-power condition is proved without the hypothesis $b_0\\ge2$, and the binary example gives an irrational number for which that condition fails at a base $b_0\\ge2$.",
+   "statement_key": "sha256:f98527b417fbbcb911e54087d66743fddd589c3cefc0adf8a9ec212d775d7f9d",
+   "lean_statements": {
+    "Erdos249257.irrational_of_den_mul_abs_sub_tendsto_zero": "f07a6dd3d20a06c22c8f349e3cacbaa9768357394d79a347f4c4049a18d20ebc",
+    "Erdos249257.one_div_den_mul_den_le_abs_sub": "5a7dc64bac66597e3846e5c5313d41f1fc53568ee074ec6d5556a880aa62ca6e",
+    "Erdos249257.irrational_of_int_mul_near_int": "1ea752df298dcbf7f1bffcd979654a56ab2abd066f3ed02259ad407aebafc408",
+    "Erdos249257.irrational_of_pow_mul_near_int": "891f7c56b6752cd8c1ea783b7800041077427591bd35f1b1dd5d3921dc280f3f",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_den_mul_error_tendsto_zero": "def828d3254ec7a57946b7d1819430dfecd79ec0fd1591b266078364143d1ada",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_dirichlet_gap": "f4a3a02e8f3ad1cb4b40b1afd816b2194eb8263cfbcebbdbe53ad31917287e1d",
+    "ErdosProblems.Erdos249.PaperCompleteR21.one_div_den_mul_den_le_abs_diff": "27083803fc6f9e0ed890a33794e848d386225411f587dcfe0e0b96d311b762a2",
+    "ErdosProblems.Erdos249.PaperCompleteR21.one_div_den_le_abs_int_combination": "48c8f45cb8b97e131d35ff5cee6b6894e63b9c6b3cfd57d1a81b77c6564b4214",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_basePower_dilation": "f032adbe6cb151de46ebebd86442240978c46a67182df03b354704f115d9e6fd",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.basePower_dilation_not_universal": "42724b6b400fb322f04f06f8f18d6c40c5c8715629a656b807a033def6d60502",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.irrational_xi": "9aaee7354b674a1fc82e463c28b77d1f37683a8050edecfb280a44f7554f0467",
+    "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_dist_xi": "784ccd807e8e2d426d3600d50c7705ea81b37fd13162b1a2b315eabac5ea0ca3"
+   }
+  },
+  "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank": {
+   "note": "For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\\le c(n)\\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.",
+   "statement_key": "sha256:af1acb8529470c479e6852ba920f6bfe37c576c3f2b6b2503426c067bfe21fa1",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.PaperCompleteR21.rationalControl_periodic_with_unbounded_carry_rank": "0926cf971dbb204789ccc2f4caa32c0f12c3fe1e56d24cf289f10cac6fff1e80",
+    "ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank": "bc0e5f466b5841567907d53d19de28081818bce024ccda7c69131e9a84379e1c"
+   }
+  },
+  "erdos249-totient-reasoning-surface#prop:b6": {
+   "note": "Independence of the $2^e+1$ retained dyadic sections is proved for every $e\\ge0$, and item (i) takes $e\\ge1$; the synthetic sequence of item (iv) is built for $t\\ge3$, the range of the observation it cites. In item (iii) the bound $\\sum_i|w_i|(3x_i+4)$ is the Lean definition of the two-tail cost, obtained by writing $\\varphi(x)=2R_{x-1}-R_x$ and using $R_M\\le M+2$ for each tail; the Lean statement proves the two displayed inequalities and that this cost is at least $3$. The remaining items, the bounds $1429/1512\\le\\sum_{d\\ge1}\\mu(d)/(2^d-1)^r<1$ for $r\\ge3$ with truncation error at most $1/3584$ for $Y\\ge4$, and the $1/480$ inequality are stated as printed.",
+   "statement_key": "sha256:bd9ffdf689bb2faa74898552e1eebabae76499414abe756d52d5905413706cb4",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_retained_dyadic_sections_independent": "3577a3ec5e9ca9cdd059d4d26e67dd436cc596f08e558945e7836e2bf9db7c9f",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_compressed_adjoint_identity_impossible": "8fd6cac5f3c1c6a731cc677b97e2d0f8a7492fd583d45a2861e0cf1b074ced94",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_mobius_incidence_unimodular_and_injective": "1ef0e668c656146f4ce4b9b4e972b2cc2ea505d77ea47d31cf10372ab6561f2e",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_adjugate_tail_cost_floor": "1a55b26f14569e29642a4b41df503203d59d7695ecf8e0486c59efa8a970142e",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_synthetic_sequence_prescribed_differences": "eabc4f100c95465aa2240b4c206996311248d9cae92dd75710efa98f42dee7e8",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_synthetic_shift_combinations_same_form": "2593c724f1b87470cc4554f5f65cdb445e42baae3d707dddd58230ab9a0e69ea",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_mobiusMersennePrefix_eq_icc_sum": "5785dbd48d066038ee93cc1b9dad3944a89f4eb7720646a913c740035db12238",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_mobiusMersenne_rung_estimates": "8d8e215a623fc2af6afa4f4568894395d6bcb24b0e3ae8fad215bdca72abc6cc",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_mobiusMersenneTheta_two_eq_totientSeries_sub_half": "6e1f3b4b7e3522c1482a0e7cefb2abe50ba8063585da600c2c41954e5e63e017",
+    "ErdosProblems.Erdos249.PaperCompleteR21.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt": "6203e260a9b9a17cd54670859ba98a5becb5687270b855af9da460dc7b7a04c5"
+   }
+  },
+  "erdos249-totient-reasoning-surface#prop:bound-preserved-positive-normalised-averaging": {
+   "note": "The Lean average bound holds for any positive weights, dividing the weighted sum by the total weight, so the printed case of weights summing to $1$ follows; the Lean bound $|q\\Theta_2-p|>q/480$ holds for every representation of an admissible quotient as $p/q$ with $q\\ge1$, of which lowest terms is a case.",
+   "statement_key": "sha256:4469126e72f34b6b36fab01fdad5f656b9778e0106a7087c31d7603db218ad20",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt": "3cb0c013fd340cfc987847fded200392bec87f9ffa62f9525b11d9b6185c0f61",
+    "ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt": "9e5aa8ce74a512dd6221e5960a70ae7261d5c76cdad46d1216add2b771e57bac"
+   }
+  },
+  "erdos249-totient-reasoning-surface#prop:dickman": {
+   "note": "The Lean statement gives the explicit bound $t\\le h+\\lfloor\\log_2X\\rfloor+11$ in place of $t=O_{h,s}(\\log X)$, and proves the bound $P(n)\\le y_X$ and the bound of the unassigned count by $\\Psi(2X+t-1,y_X)-\\Psi(X+t-1,y_X)$ for every $X\\ge1$; the asymptotic $(1-\\log2+o(1))X$ and the bound $\\tfrac8{25}X$ for all large $X$ are as printed.",
+   "statement_key": "sha256:f60bbd00de7d5500eba3edb46e9bba07989c3849585aae14471c8d7394df9847",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.PaperCompleteR21.prop_dickman": "3b6aeefe4ea83c6f7cf793e0c9c542d214850a918ffc9f97be20d7c4bc98d843"
+   }
+  },
+  "erdos249-totient-reasoning-surface#thm:lacunary": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed claims. The failure of the block norm condition is stated as $\\bigl\\|\\sum_{X\\le N<2X}E(h,N,L)\\bigr\\|>\\tfrac{21}{25}X$ for every $h\\ge1$, every $X\\ge81(h+5)$ and every depth $L$ with $16(2X+h+L+2)\\le2^L$, where $E$ is formed from the coefficients $c(n)$.",
+   "statement_key": "sha256:e1a8835a9e2c34ac51768b5b778b6b5bdfec4321505707142d7e044daab2886f",
+   "lean_statements": {
+    "ErdosProblems.Erdos249.PaperCompleteR21.lacCoef_bounds": "ca942f01bce9519d5b711881b68f873ce0ecc551c83fb49e1fd353f99f229cab",
+    "ErdosProblems.Erdos249.PaperCompleteR21.lacBeta_eq_factorial_series": "d9226806ffc0ba48daa61e0877e8a50f7060ac71ad874e89ca1344e1a95ed254",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_lacBeta": "fe9ea26bf1603a0e1526c33c654e4431dba4acf243b8407e3b2f821078d4ef1b",
+    "ErdosProblems.Erdos249.PaperCompleteR21.lacunary_block_cos_gap": "168333eeb8c42e3fc1a09bd572725c62e41a5d2e27f08ed4d30bce7ffb2bc44a",
+    "ErdosProblems.Erdos249.PaperCompleteR21.lacunary_block_norm_fails": "821404bf30f6a4199bd45a325ed55102aa2ef1f6102f0ac9eb74ddb9d9c1d047",
+    "ErdosProblems.Erdos249.PaperCompleteR21.cos_pi_div_eight_gt": "7a054b06b72c33c42417c6e547f4147919a01b505991263e08cd510c85bce2b9"
+   }
+  },
+  "erdos251-prime-gap-reasoning-surface#long251:xr:boundedpolignac": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:3d0e6c382e2351c87f82e2520b458bc75b3d8e24393d6863e092786e8b883304",
+   "lean_statements": {
+    "ErdosProblems.Erdos251.PaperR7.bounded_recurring_values_countermodel": "1a83236e9a6f994b3ec5fc91bcc5c8e4c590e50eab1ddda9aa07ee9571b71bea"
+   }
+  },
+  "erdos251-prime-gap-reasoning-surface#long251:xr:truncation": {
+   "note": "The Lean statement assumes only $M(n)\\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed hypothesis $\\sum_{n\\ge0}M(n)2^{-n}<\\infty$ gives that convergence, and the conclusion is the nonintegrality condition of the escape problem for every $h\\ge1$.",
+   "statement_key": "sha256:ec130fdabfa17f7c6b138f4aa7fcb43cd04e65c24754b40d266bac4a167383f0",
+   "lean_statements": {
+    "ErdosProblems.Erdos251.PaperR7.cofinal_escape_of_finite_truncation": "7f47b6773ae762cfadec2e8cd3a741d33901cce3b65c928597dcdc68f4767b6f"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#cor:negative-mobius-overshoot": {
+   "note": "The Lean statements give the identity $X_N(2)=\\frac12+\\sum_{d\\ge2,\\,\\mu(d)=1}1/(2^d-1)$ and the conclusion $X_N(2)>\\frac12$. The intermediate bound $X_N(2)\\ge\\frac12+\\frac1{63}$ follows from the identity, since every term of the sum is nonnegative and the term at $d=6$ is $1/63$.",
+   "statement_key": "sha256:36abbb0c41fd8033479eb9a6b45c7d5a352a567a73dfecc5d694656b375114d3",
+   "lean_statements": {
+    "Erdos249257.MobiusSignSupportNoGo.tsum_negativeMobius_eq_half_add_positiveMobiusTail": "504331aec78ef4bd6e7b2d6ab3d2124540c5cd30354e509ef1e297314dd0f037",
+    "Erdos249257.MobiusSignSupportNoGo.half_lt_tsum_negativeMobius": "56e7720700733ba330be9ef7f6ea1b2b87016b568f89aff57d73803bb4d8d96d"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:collapse-mech": {
+   "note": "The Lean identity $\\operatorname{ihc}(A,N)=2^{N+1}\\delta+\\mathrm T(N+1)$ is as printed for $1\\notin A$; the Lean bounds $0\\le\\mathrm T(m)\\le2\\sqrt m+4$ hold for every $A\\subseteq\\N$ and every $m$, without the hypothesis $1\\notin A$, and the printed bounds are their case $m=N+1$.",
+   "statement_key": "sha256:84ab075d0a0f68208b326ec3015035df6c4b1828bd1937f5347de2f39aeb1ebe",
+   "lean_statements": {
+    "Erdos249257.HalfCarryReachability.integerHalfCarry_eq_scaled_residual_add_tail": "c5e7865b120bbef71acc68d76e945582ad46fb2863eec987e25ce65e1903cee2",
+    "Erdos249257.binaryCoeffTail_nonneg": "078a08eb4762cb2c2c0a801f1e7b427fa406e61417bfa3d9edb5545b9b168d82",
+    "Erdos249257.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four": "cfdde08c290c857d520faf436297029e4f292fda58a3e01295b9a366c3725c96"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:denominator-sandwich": {
+   "note": "The Lean statements take integers $p,r$ with no sign condition on $p/2^c-r/D$. `dyadicResidualIntNumerator_coprime_oddDenominator` shows that $pD-2^cr$ is coprime to $D$ when $D$ is odd and $\\gcd(r,D)=1$, and `dyadicResidualInt_denominator_sandwich` then gives both divisibilities for the reduced denominator of $(pD-2^cr)/(2^cD)$, so the printed lemma is their one-line composition. `dyadicResidual_denominator_sandwich` is the special case $p,r\\ge0$ with $2^cr\\le pD$.",
+   "statement_key": "sha256:00172e8cac1107c196ac6887d9103bb40b3bca7bad711fe28a958a3f879d086a",
+   "lean_statements": {
+    "Erdos249257.dyadicResidual_denominator_sandwich": "dbc93ef25d0d2a851bb7e607d970ccecb8b6bb7e6290b9295fdde9e35bd29fca",
+    "Erdos249257.dyadicResidualInt_denominator_sandwich": "956c7691f6e1a8fed0c51fed43ef8c2a37d59f82ec55836ccf44901c12b7e42a",
+    "Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator": "896f6567731cb158a24dfbdfffa06a71b00bdf68f1f92e0efb7cafa75f96925a"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:denominator-survival": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones; $C/\\gcd(C,h)$ is an exact quotient, so natural-number division agrees with the printed one.",
+   "statement_key": "sha256:5f34e5fcbaeb6c7a7ebbe08595ff5c5fcf55237f7e2ee7feb108404c325c6faa",
+   "lean_statements": {
+    "Erdos249257.RationalDenominatorSurvival.divisor_dvd_divInt_den": "669aa3b3ea582aac231101ace5b203d96209b8e1ff9b92080f4cd5194ab44d46",
+    "Erdos249257.RationalDenominatorSurvival.survivingDivisor_dvd_scaled_divInt_den": "e96ff75aa7dc110d25e8f67c5f67e1206234002401e0cb49a2e2be72ee97306e"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:dyadic-excess-reformulation": {
+   "note": "The Lean statements prove both equivalences for every integer $p$, every $L\\ge1$ and every $n\\ge0$, so the hypothesis $p>0$ is unnecessary; the second right-hand side is written as $0<E$ and $2E<p$. A third statement is the second equivalence for the half-greedy residual $r_n(1/2)$.",
+   "statement_key": "sha256:b3fabb7ff85d97f1b8ab6b874cdd5da3d135b0afae5a77b6cd798ec0991d29d0",
+   "lean_statements": {
+    "Erdos249257.divInt_le_nextDyadic_iff_excess_nonpos": "e77eb71997a69d8167504efa52a352581cf617a2129fd49551490789a603f8e7",
+    "Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess": "595f6b693dc5ff0ac7c3eba0b6fdbdc5c1de6175502be51fb87c69ae64b02867",
+    "Erdos249257.divInt_mem_nextMersenneDyadicSliver_iff_excess": "2dafba01d03ea2bf3c1ae23b11f7df31e8b7758c7371bba512e692b935ec75ff"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:eventually-right-impossible": {
+   "note": "With the seam right from row $S\\ge5$ on and support $u\\cup\\{D+1,\\ldots,S-1\\}$ at row $S$, where $u\\subseteq\\{2,\\ldots,D-1\\}$ and $2\\le D<S$, the Lean statements prove $X_u(2)+R_D<\\frac12$ for the cofinite continuation $u\\cup\\{D+1,D+2,\\ldots\\}$ and $\\frac12<X_{u\\cup\\{D\\}}(2)$ for the upper competitor.",
+   "statement_key": "sha256:2e58f29541991df08d50baaf98aad662ba4dbb00dc431a619ddc2c812857d273",
+   "lean_statements": {
+    "Erdos249257.prefix_add_mersenneTail_lt_half_of_eventually_right": "32712f21285ed3917f0cf887c86ae31629006f4574b5beb5b41baa7bdce0e187",
+    "Erdos249257.half_lt_upper_competitor_of_eventually_right": "2207b2d8ce9da72cd7802f95de7681bf04a8526ed21455cebf77edb45c4acbc2"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:gap-mass-summability": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones: $g_n>0$ for $n\\ge1$, and the tail bound for every $N\\ge0$. They also record that $\\sum_n g_n$ converges and that its tails tend to $0$.",
+   "statement_key": "sha256:2742e6b789af4dcfe876a26fcfd7be22b773c16262c5f4713b7cd623af93c377",
+   "lean_statements": {
+    "Erdos249257.mersenneGap_pos": "2960324b837f07308178c2f7a432226811c935d281efeeafa8530ee6e57f6ae8",
+    "Erdos249257.summable_mersenneGap_succ": "941c48c6ccdf8d0e4c9beb4d5b7be5887870c3cea6e67dd4c83f8ad27e215cec",
+    "Erdos249257.mersenneGap_tail_le": "c33bd26ca3cc7e2b6e3357b9ab81e547516c05de71460002e4f8d92de65ef027",
+    "Erdos249257.tendsto_mersenneGap_tail_zero": "8e0a0d15168e6f69688913bfbc0dbdb42111296b6cc9d1f70916ca88230d3e19"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:half-divisor-unit-drop": {
+   "note": "The Lean identity $c_{A\\cup\\{d\\}}(m)=c_A(m)+\\mathbf 1_{d\\mid m}$ holds for every positive $m$, every set $A\\subseteq\\mathbb N$, finite or infinite, and every $d\\notin A$; the printed statement is its case of a finite support $D_0$ and $d=N+1$. The value $1$ at $m=2(N+1)$ is also stated separately for finite binary words.",
+   "statement_key": "sha256:bc6fd43e4b4f55f29e79800b46532d1362649a11cef339edcb85fc795b995ade",
+   "lean_statements": {
+    "Erdos249257.HalfCylinderIntegerGreedy.supportCoeff_insert_eq_add_indicator": "0a888daa3a86686b99b56d2fd60ac9ad33501b6bf1ca6c6bc926fae18874b3a7",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_extend_true_eq_false_add_one_at_double": "8bf34f49773bf3690e118b3db41dc0cc3869257f08621ed16d46811e26671456"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:half-endpoint-kills": {
+   "note": "The Lean statements have the same conclusions as the printed ones; the second holds for every finite $u$ and every $d\\ge0$, where an index $0$ in $u$ contributes nothing to $X_u(2)$. Their proofs use the printed reasons: the reduced denominator of $X_u(2)$ is odd, and the full Mersenne sum is irrational.",
+   "statement_key": "sha256:2651a93b5a52c0241db6e1d82ac78baff2a5a2cfa488fcf7a217a645c4818b31",
+   "lean_statements": {
+    "Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half": "f9e730bbc6023f30b2a8fce4ff2cbc569d8495d840382e220b08945eff4807e3",
+    "Erdos249257.half_ne_coe_finset_add_mersenneTail": "c4b9beaa08095da0547b8d2fc9d76baca475dcc3635b9eab1abf31d658a28fec"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:linear-channel-nogo": {
+   "note": "The Lean factorisation $\\Lambda(v)=\\mathrm{ev}(v)\\,w_0$ holds for a linear map $\\Lambda$ into any $\\mathbb Q$-vector space $W$ whose kernel contains $\\ker(\\mathrm{ev})$; the printed identity is its case $W=\\mathbb Q$, $\\Lambda=\\ell_j$, where $w_0=\\ell_j(e)$. The vanishing of every square minor of order at least two is the second Lean statement (a square matrix $(\\ell_j(v_i))$ over an index set with at least two elements), and rank at most one follows from the $2\\times2$ minors.",
+   "statement_key": "sha256:6a630a3f49fc7d954c03c60023a47a4368484a77afd6d6b096e677469c3ac511",
+   "lean_statements": {
+    "Erdos249257.AdelicHeightObstruction.linearDescender_eq_smul_eval": "917ad5026718a47d73297f0435573dc7af42148e6fb99c89944f2d7b92111c91",
+    "Erdos249257.HalfTrappingReturnCarry.relationInvariantLinearChannels_det_eq_zero": "8c46dbffcb068fcf8b445618e4f23b8500769c549228ef004bb45e5c6bb2e151"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:mersenne-tail-weight": {
+   "note": "The Lean lower bound is $2^{-n}+\\tfrac13\\,4^{-n}<R_n$, sharper than the printed $2^{-n}<R_n$, and this bound, the identity $R_n=w_{n+1}+R_{n+1}$ and $R_n\\le2w_{n+1}$ hold for every $n\\ge0$; the printed statement takes $n\\ge1$, where $2w_{n+1}<w_n$ and $R_n<w_n$ are as printed. The remark on the totient weights is the arithmetic $\\varphi(4)/2^4+\\varphi(5)/2^5=\\frac14=\\varphi(3)/2^3$, outside the Lean statements.",
+   "statement_key": "sha256:0a4c24affdcaf3022f7a89873d71c339e7de43ef8ab492362cfb3c8200e673f4",
+   "lean_statements": {
+    "Erdos249257.mersenneTail_eq_weight_add": "f3d358757aaec935ce46bc485e8498d1fe0c17248aaed71b3e6e729b95037807",
+    "Erdos249257.halfTwoChannelCap_lt_mersenneTail": "2075560648cdc693146c0db1f9b54913a88577a317879f4d08045895c5fd7f28",
+    "Erdos249257.mersenneTail_le_two_mul_weight": "0522cb4eda6451703241135cf5a0ee1bba09c9df8ba6e545e9673aef31f61c8b",
+    "Erdos249257.two_mul_mersenneWeight_succ_lt": "d3ac7e36084202b17ce9e64d95acc263ca5f5eb93c1ec8f3843651ddd26db979",
+    "Erdos249257.mersenneTail_lt_weight": "a8391ca2b34b66fb16d74e907e600da682e2087f7443b34bc99260abaf5e5a93"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:mixed-prime-power-layer": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with the commutation proved for every $p,e$ and every $g$ defined on all of $\\mathbb N$. The right side of the mixed identity is written as $c_{A'}(n)$ with $A'=\\{d:\\gcd(d,pq)=1,\\ p^eq^fd\\in A\\}$, which equals $\\sum_{d\\mid n}\\mathbf 1_A(p^eq^fd)$ because every divisor of $n$ is prime to $pq$.",
+   "statement_key": "sha256:525f0d364bb78d595a5595943007d4eb77f61f1efa685e3a66c70b1fb6261403",
+   "lean_statements": {
+    "Erdos249257.MaximalOmegaLayer.primePowerLayer_comm": "6c7fe78d752dcbe23f9fcb9b973e7b1a41661c016fb295e3182cfa811f672394",
+    "Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo_supportCoeffInt": "75b4618d862971521ddf1fcb9d6268848758b0cfa1dbcec4d32692347178c5f7"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:odometer": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue condition $i\\equiv-M\\pmod d$ written as $d\\mid M+i$. They define $i_d(M)=d-(M\\bmod d)$ and prove that it is the least $i\\ge1$ with $d\\mid M+i$, lies in $[1,d]$ and depends only on $M\\bmod d$.",
+   "statement_key": "sha256:e6b6c28ed9e3b354270fb8aea84955717aa271de269cc47aa534fb035148d0d5",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_divisorResidue": "ac85751d889d6252dba5ebf21928b7e934c3a7c178450f3029e38ba7accb7163",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_geometricForm": "5ce841c5a0911b3edb1ad0b34cd4fd51e4bc4a1def36321ab420e122d9867a77",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_divisorResidueSum": "fb45532078290e4054aff83516593b0196c9170136ff105ec5e46e82350c65af",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_geometricForm": "4756889bc2bed446782eef91974708364fa43bdb12255d8ed9d8a73b45a0cf5f",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.residue_condition_iff": "1688ef14cb8b7c182e5bc2f7f2960eab02416a48291a5df00f357b94feff36fc",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.card_divisors_sub_one": "58e72f3412a5201d42cb6648c3cf053d2d401001c282d98f9c8cd2245ccdee95",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.iLeast_mem_Icc": "7d3c0fff8d6baf74726d1d00580c3b93316a10fe90e4a5dcc140700c8f448937",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.dvd_add_iLeast": "982e42a2b33e3e4137b5b772dca0e37df80acb282d8fe94ff2f1f490f89a36bc",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.not_dvd_of_lt_iLeast": "0e6cd9fb63cb5c08c8eee38cb0dc5c182e48f9aa6a20455ee386508b3f1a28f0",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.iLeast_congr": "f3e1a5aeb572ef4c041ea28222611d72538aa26e5ea6c2a0c1e58479a57e3262",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.mCount_eq_zero_of_lt_iLeast": "45d209fad905de56ecef7b1ad89c332e9bcc7f16fcba258cf88eea15091ddf14",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.geometric_term_eq_zero_of_lt_iLeast": "76753dd81299cba29adc0d4e3aa3da43eca5acd6fab2c0b8c077a52d3e2b7b0a",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_Psi": "333682bb20d04578dae19c03bc1bf8fff249cf08671efcd697cf054509dc8fc0",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.Psi_eq_of_residues_eq": "65d72fa3949a69afdfdce2662c948306521b62685b112cf7d701838073d14677",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_one_one": "59885b65da8f51c9a23cb4c376bbfa19a4317e44b4a1cf7308cf44f1c5809b42",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_one_three": "5960fab5cf1f4b1c52b7f3097a046b6437ce6d7335ce9537af633c697c736f67",
+    "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.residue_cutoff_reading_fails": "cbc3244981947c586b79f99b38038cc08d28a5058e744841e44b85fc494b418c"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:rank-step-trichotomy": {
+   "note": "The Lean statements give the three alternatives for every real target $t$ (`isStraddlePrefix_step_trichotomy`); the left endpoint $X_{u\\cup\\{d+1\\}}(2)$ of the upper interval equals $X_u(2)+w_{d+1}$ by `positiveMersenneSupportValue_insert`, since $d+1\\notin u$. Disjointness is one line from $R_{d+1}<w_{d+1}$ (`mersenneTail_lt_weight`) and the strict inequalities defining the gap. For $t=1/2$, `IsStraddlePrefix.half_strict` makes every endpoint comparison strict and `IsStraddlePrefix.half_step_forced` gives the three cases as mutually exclusive.",
+   "statement_key": "sha256:2bee1bfb66dfc9592d6423d0c459b690ee5c6a9a2b8e717bb9b1b3450a958776",
+   "lean_statements": {
+    "Erdos249257.isStraddlePrefix_step_trichotomy": "38d7246fb21d1648bd7d14adbefa3179a5b13145f70597efc9205e0b3e9930eb",
+    "Erdos249257.IsStraddlePrefix.half_step_forced": "7dba509f4ebf891a7c5f950771e657e00b8b2b313484f4f28fe978745ea55ff1",
+    "Erdos249257.mersenneTail_lt_weight": "a8391ca2b34b66fb16d74e907e600da682e2087f7443b34bc99260abaf5e5a93",
+    "Erdos249257.positiveMersenneSupportValue_insert": "18f0da85dddab5b824447e36cbf8e732dd62f7677051cf0ce13583388ba3f120",
+    "Erdos249257.IsStraddlePrefix.half_strict": "172765c97f763ad23dacca3e4a80f6fca6eaa6eed6127c2365c6bf2671d779da"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:seam-upper-or-middle": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one: for $s\\ge5$ the bit of index $s$ in the greedy word of row $s+1$ is zero exactly when branch $\\mathrm U$ or branch $\\mathrm M$ holds at $s$. The subtraction in the $\\mathrm M$ inequality is natural-number subtraction, which agrees with the printed one because $p_s^-\\le2(s-2)<2^{s+1}$.",
+   "statement_key": "sha256:f9f66bbe10dd0951dab173402d98c4707a405a75f1a0b9f2ffb462827f7934cf",
+   "lean_statements": {
+    "Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle": "d2ded964a9e03664b2a65b1f01eb7c2aec12d796723001ab7ec087556ea3a620"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:straddle-agrees-greedy": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one: it gives $n\\in u\\Leftrightarrow n\\in G$ for $1\\le n\\le d$, which is $u=G\\cap\\{1,\\ldots,d\\}$.",
+   "statement_key": "sha256:7884149f5aad480b189264734b219d0db4e8064a8c3679fc648015991598f5b4",
+   "lean_statements": {
+    "Erdos249257.IsStraddlePrefix.half_agrees_greedy": "c30c13e71eba68c305046c891de0711b34e7d548b12a727b1190b58e01586a85"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:tail-transfer": {
+   "note": "The Lean statements say that, for every $M\\ge0$, $X_A(b)$ is irrational exactly when $X_{A\\cap(M,\\infty)}(b)$ is. The printed lemma follows in one line: sets with finite symmetric difference agree above some $M$, so irrationality passes from $X_A(b)$ to the common tail and back to $X_B(b)$.",
+   "statement_key": "sha256:811b8d006e1b940ac6d89ecabf623d6d3eddd4e69c1359da3adb261bedd5334f",
+   "lean_statements": {
+    "Erdos249257.irrational_erdosSupportSeries_of_tail": "ed716fcc303d1531fd4cb0d9edebd089ff22a8a733ca5bab962ee5d56cc6adbb",
+    "Erdos249257.irrational_erdosSupportSeries_tail_of_irrational": "ef2bc33cc3bfd596c5803c5d003d057244bfa56f19f3fc26cf876e98565b5814"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#lem:tr-forced-greedy": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, and the uniqueness is stronger: every set $A\\subseteq\\mathbb N$ with $\\sum_{n\\in A}w_n^{(J)}=1/2$ is the greedy support, with no restriction to $A\\subseteq\\{2,3,\\ldots\\}$. The inequality $w_n^{(J)}>T_{n+1}^{(J)}$ holds for every $n\\ge0$, and a rank $n$ is fatal when the greedy remainder before rank $n$ lies in $(T_{n+1}^{(J)},w_n^{(J)})$.",
+   "statement_key": "sha256:e911d325876729065df79ba6c0502c4bb5ed7b76b6824a99ca1161503f40107d",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion": "8b2b3c20ab0dae491b061324cd44120381f7ecfc8f4f38520809627450f19b0d",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks": "2860359aabaac14cdb92cd6936e3be004257a39a53d20a86a1919c6f79bb82a1",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'": "db5ce4bebd4f0411d812b6b86cf2ccf6200042f645e1ae42cd1c39d0d007c54f"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#prop:257-logarithmic-initial-interval": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, with $F$ a finite nonempty set of positive integers, $U_F(N)=\\sum_{a\\in F}2^{N\\bmod a}/(2^a-1)$ and $\\kappa_1(F;t)$ the infimum of the same linear programme.",
+   "statement_key": "sha256:5ae819aa189646cc5f7c86a4dca6e248692f4b2c1132f43154f8e3e512c041fa",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval": "21def21fd5459fb2b59bf1ac1ad863a4c6c4f8b21c865ebaca29f61466fcc73a"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#prop:canon": {
+   "note": "Items (i), (ii) and (iii) are, in order, `IsStraddlePrefix.half_agrees_greedy`, `eq_halfGreedyPrefixSupport_of_critical_crossing` and `remainder_lt_gap_iff_eq_integerGreedyBits`, with the printed hypotheses. In (ii) the Lean conclusion is equality with the greedy prefix for $1/2$ computed in exact rational arithmetic through $c-1$; `paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc` identifies that prefix with $G\\cap\\{2,\\ldots,c-1\\}$, which equals $G\\cap\\{1,\\ldots,c-1\\}$ because $w_1=1>1/2$ keeps $1$ out of $G$.",
+   "statement_key": "sha256:d3e38100b49e835e5a95790c714ee7fb5008afdfd4d9a77bcfa874c802b1cd53",
+   "lean_statements": {
+    "Erdos249257.IsStraddlePrefix.half_agrees_greedy": "c30c13e71eba68c305046c891de0711b34e7d548b12a727b1190b58e01586a85",
+    "Erdos249257.eq_halfGreedyPrefixSupport_of_critical_crossing": "2a130efb2b1847307015574983a744d965112ac2514ba3e28e6c5b74a7877c41",
+    "Erdos249257.BooleanMobiusGreedyReduction.remainder_lt_gap_iff_eq_integerGreedyBits": "aa41b5f68d53c7b556fe7ef40f88645ba2042b420b3bdcdd0488eb3004fb2619"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#prop:finite-state-nogo": {
+   "note": "The Lean count of exactly $\\rho+1$ family members and the bound $|\\mathrm{State}|\\ge\\rho+1$ for a finite state set carrying an exact decoder hold for every $m\\ge0$; the printed statement takes $m\\ge2$, where the impossibility of decoding from a constant predecessor state is stated as printed.",
+   "statement_key": "sha256:63b3204e21fc6df3523fdcbb5466929a82aaec2b1a5c977c1f98d0e51c283af7",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_no_autonomous_decoder": "b29660b44b34f6a0c91a5ea1fa2e9fea23639fbb45a36a5786801982a1154b81",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_balanced_pulse_fanout_is_radius_succ": "216606fdf567a98f8fa96e660fc2315106348ebdb7f12ac1db99b2ca15ba6513",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_balanced_pulse_fanout_unbounded_corrected": "a0a810918d4ef65df95b8f90c16eb82ffe876a30a8d156ecd3b51effff96d74c",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_finite_state_card": "f63995ba28a4b69c6f394f234f80c7ba92d4b17e5e3da7ec030ee96cad2d56c2",
+    "ErdosProblems.Erdos257.PaperCompleteR21.balancedPulseCoeff_injective": "f991ec30f1f9a3d1adbb56dd8e2ab601de03b98a68e76b184695f735c9dfa9ea",
+    "Erdos249257.balancedPulse_weighted_pair": "f7ca46529ab18fea55af186762e2f83f38ca3020f734c25b17ac1586f62009dc"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#prop:local-void": {
+   "note": "For (i) the identity $u(L)-v(L)=2^L(u_0-v_0)$ holds for every $L$ and every integer input sequence, and its residue form modulo $2^L$ is stated separately. For (ii), with $m\\ge2$ and $0\\le r\\le h$, the Lean statements give the coefficients $c_r$, their common binary sum $h2^{-m}$, the common scaled tail $h2^{-(m-N)}$ at every $N<m$, the tail $r$ at $m$, the lower bound of $h+1$ labels for any exact label-and-decoder system, and the absence of a decoder from a state that is the same for every $r$. Item (iii) is the cited centred-completion statement, with $|e_{i+1}|\\le2^{v_i+u-1}$ for every successor carry.",
+   "statement_key": "sha256:049c9082401007854fa4dc56bd2abcc60258b562b883c3e9fcb55ec2f872442b",
+   "lean_statements": {
+    "Erdos249257.affineBinaryOrbit_mod_twoPow_eq": "13cc6df70afa292e1c54e1a203a538241c012ca577e821056d96566b016b614b",
+    "Erdos249257.balancedPulse_weighted_pair": "f7ca46529ab18fea55af186762e2f83f38ca3020f734c25b17ac1586f62009dc",
+    "Erdos249257.balancedPulse_endpoint_fanout": "9c7eeeb5343d37937c4ae1d10d4e1c7b66d60c25bcb1946eae8b8479424f92bb",
+    "Erdos249257.balancedPulse_label_card_lower_bound": "1b16e63868f3e77c8535bb04f112863d0a6be039a043a2f785d580fc08d8eea7",
+    "Erdos249257.balancedPulse_no_autonomous_decoder": "887971d1aa9eb62250d9e20894ba82aeb1d074ccc90d0442acae5c83e82c7f11",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_centred_completion_of_fixed_precision": "dfb01d1277f293b3d2121f3e5aca51c2ddff7d42e7351e6be116c35fadf824f4",
+    "Erdos249257.affineBinaryOrbit_sub": "3ae62e29c122e455958332906c50bec4b0d1cf40e08f24d4bde5edd943b408a5",
+    "ErdosProblems.Erdos249.PaperCompleteR21.balancedPulse_common_history": "084cc6a31d8342ead53d38c25335dd20fcb75f20fc39f3ad576b7811c4f76d45"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257bm-c19": {
+   "note": "The Lean tail bound $\\sum_{r\\ge1}c_A(m+r)2^{-r}\\le m+2$ holds for every set $A\\subseteq\\N$, of which $D$ is a case, and the normalised value, its monotonicity and limit, the positivity criterion, the effective test and the rationality of $\\eta$ are proved for every $k\\ge0$; the equivalence and the exclusion of $r_k(1/2)=2^{-(k+1)}$ assume $k\\ge1$ as printed.",
+   "statement_key": "sha256:2fed96a06c4ca73b8539a498d04752a8fead25e89b5d8af8071970118c57d216",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc": "1158959adf137a32b24b208c1eb480c39c2dc0da1abb9fe13ea9b2e19170530c",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_eventual_nonnegative_margin_equivalence": "e4a54e84fb0566e204b539a641e7bb8bd9fd341757c204b52143325a852b6d83",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_normalised_value": "5e3129ccd99ba7faf8c9ec2d08005509d40a239fea661d35d2845492767502b6",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_normalised_monotone": "d80c7cbf6af4766c4153ffc0c31ec0b4b9bfe246a72897b897f386f9d3f1c659",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_eta_eq_coeffTail_sub_carry": "126bb01bc4e2d610c4df9e1d869b9152fee242724407ed70f637232cff9526b4",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_normalised_tendsto": "eacca502d8b7c6e9f9fd3978b096b2c77bb2ad5e66c1f8c0724d9c92a4f90d9a",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_limit_pos_iff": "b2d8be7730a4b8a2da077b193d831951490ed58989e28f2b58b9c90e0fc35280",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_greedyHalfRemainder_ne_dyadicCap": "fd960892306a1da05d5f93b64f3d76fb4e85b824549d9ba34e7a59e82dbe7a35",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_coeffTail_le_index_add_two": "f947308b6eb10234cc041bba278f89e083689c6e8cc380286fa8423c279a61db",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_effective_horizon_test": "36248d6f65469a752c4b0e148ae04c9d79ae80f221f504943cadd2b1afd57057",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_eta_hasRationalValue": "503accb26135595c6e54dc11b2ca2aef2ebb6f2fb703466fca0bea37f8f52720"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257bm-i-bridge": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, for every set $A\\subseteq\\mathbb N$; an element $0$ contributes to neither side. They also give $c_A(n)\\le\\tau(n)$, $c_A(n)\\le n$, and the resulting criterion that $X_A(2)$ is rational exactly when, for some positive integer $v$, the recurrence $u(N+1)=2u(N)-v\\,c_A(N+1)$ has an integer solution with $u(N)/2^N\\to0$.",
+   "statement_key": "sha256:63f71dcef1511d5c11759c693728d95046eeba5f6339598ed085b65718e02892",
+   "lean_statements": {
+    "Erdos249257.erdosSupportSeries_two_eq_binaryCoeffSeries": "ed18dc5f54305db9cae1c0e6ee5a2591c4a3fdd8f6775c4af7ffe2d592ab2be1",
+    "Erdos249257.supportCoeff_le_card_divisors": "1712c36846415589e33b1be39f5d87e7c5b8d2195dcefd36a03eee4609c11e38",
+    "Erdos249257.supportCoeff_le_self": "7fe1652ca5450895401357a64f2349c02ead58282f8ee5d91485496d79985140",
+    "Erdos249257.erdosSupportSeries_rational_iff_exists_temperedCarry": "44fb23ca085f2d74fdbadf79053da2c755c33a05de944392f09babc16937cb4e"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257bm-i-mob": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with the identity written as the Dirichlet convolution $\\mu*c_A=\\mathbf 1_A$ on the positive integers. Separate statements give that the transform equals $1$ exactly on $A$ and takes only the values $0$ and $1$.",
+   "statement_key": "sha256:da43e5f3dac9cdcfe8566d0426e513156e73e35696f0afbf841b47530de63b48",
+   "lean_statements": {
+    "Erdos249257.moebius_mul_supportCoeffAF": "033344df511f2a7e6f8ce0d4b6d30518c657ca858a097bb70abac3024a673038",
+    "Erdos249257.mobius_supportCoeff_eq_one_iff": "6c8ce90fc39a9b0063c9ee535ad0dbb7e628d86361547d6369897fdd3a073095",
+    "Erdos249257.mobius_supportCoeff_boolean": "d2f1bcac2b256770341234736ca4f84068e0f78abb018e2ebf9e293c529c92c4"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257bm-i-t7": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, with rationality written as the negation of irrationality.",
+   "statement_key": "sha256:4c95b2c5dd761019776763fb550d5f710736af67d22808c165a676cff37710d8",
+   "lean_statements": {
+    "Erdos249257.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit": "b3642d42b3eb47e2c5d48ffb9595d2c1381837f89e01e1c92791790c0795e9b9"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257bm-i17": {
+   "note": "The Lean identity $c_{A\\cup\\{d\\}}(m)=c_A(m)+\\mathbf 1_{d\\mid m}$ holds for every positive $m$, every set $A$, finite or infinite, and every $d\\notin A$; the printed statement is its case $d=N+1$. `supportCoeff_insert_divisor` is the case $d\\mid m$, and the two statements on half words give the difference $1$ at $m=2(N+1)$ for finite binary words.",
+   "statement_key": "sha256:96972f9ff6e955246404a19697b35d8fe81f65fbe7ed4e9a7eacc1e775cdc0e2",
+   "lean_statements": {
+    "Erdos249257.HalfCylinderFiniteShadow.supportCoeff_insert_divisor": "495bf1b857f68fb774ac4fe6ed26f48ad41cb6ede84d568bbb83aac54a014330",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_extend_true_eq_false_add_one_at_double": "8bf34f49773bf3690e118b3db41dc0cc3869257f08621ed16d46811e26671456",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_boundaryPair_unitDrop_at_double": "cb4480cb70efd4dc85daa99cb297ce7e8deba737b7edb525e805e7612e31c782",
+    "Erdos249257.HalfCylinderIntegerGreedy.supportCoeff_insert_eq_add_indicator": "0a888daa3a86686b99b56d2fd60ac9ad33501b6bf1ca6c6bc926fae18874b3a7"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257bm-i2": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, for every $N\\ge0$. A second Lean statement gives the consequence $2^{-N}\\sum_{r\\ge1}c(N+r)2^{-r}\\to0$.",
+   "statement_key": "sha256:5b94158b65dfca36b05cde47aeaab9387cb23c8f1eddabcc04de52cd9137051d",
+   "lean_statements": {
+    "Erdos249257.binaryCoeffTail_le": "ff487359cae62bee3d9c949cd5598b465831c9f208b0512980a6ed28c6186870",
+    "Erdos249257.binaryCoeffTail_div_pow_tendsto_zero": "361eb2878e7a160068a68b2aebe2bf0e4038bfe058ea3038418f9dedfaeb840e"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257rig-c17": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones: an infinite $A\\subseteq\\mathbb N_{>0}$ with $X_A(2)=1/2$, the carry identity, the carry $1$ of an exact row, the example at $M=6$, and both equivalences with half-membership. The carry identity is stated for every finite $D$ with elements at least $2$, and in the last equivalence the terminal-bound condition is written with a binary word whose support, which omits $0$ and $1$, is the set $D$.",
+   "statement_key": "sha256:2bae1d019d322742faac80b26ec1582631757164ea78a476fa5e9272966ebb00",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership": "09deffdf0cb0a704759f4d9421d1c8349f8ea57f6f5a2ab9a9ba7837a29a1c55",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient": "8af1da3a7c62228413804190a92459628a1ef38665c90b446efb535dc41b8720",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_row_integerHalfCarry_eq_one": "5de46319c0ad63319e4f8f2b006c9e48c911ee1dc6d487870ec87684e8febc99",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_witness_six": "56246e871ec0e6323c2e943cb1b3713513c711826cdcecc5660fd1d06a1bd2c2",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_both_cofinal_statements_iff_half_membership": "35b0bfe19371904adbf7caa2f41339fb91cca48a55bb241554e79f4db2379032"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257rig-i2": {
+   "note": "The first Lean statement replaces infinitude by the presence of two distinct positive elements of $A$: if $X_A(2)=p/2^c$ and $\\sum_{a\\in A}1/a$ converges, then $\\sum_{a\\in A}1/a>1$; the printed statement for infinite $A$ is the second Lean statement.",
+   "statement_key": "sha256:6284e6f24ec81a18874bc0d684f9b7f8e7abe556836e06c9f59f6e78baf95546",
+   "lean_statements": {
+    "Erdos249257.one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem": "bc965c81427e21cff94596bd3b948c42ccf74f7d5935ac515102c35722f08750",
+    "Erdos249257.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one": "49c5c2d8181c5148c99caac01ce9cb4fe046a02cfd9330215e60a019f23682ee"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257rig-i3": {
+   "note": "The unboundedness of $u$ is the second Lean statement as printed; the Lean statements add the quantitative bound $1+v\\,|F|\\le2u(L-c-1)$ for every finite $F\\subseteq A$ whose elements divide some $L>c$, which drives the proof, and, whenever $X_A(2)=p/(2^cv)$, the existence of such a positive unbounded sequence, $u(n)=v\\sum_{r\\ge1}c_A(c+n+r)2^{-r}$.",
+   "statement_key": "sha256:865894b0f55639b52fe477ca155b89d13fe1063e1b727e14ac1dbf1a03740d38",
+   "lean_statements": {
+    "Erdos249257.one_add_mul_card_le_two_mul_shifted_state": "f847b51c30fb49c786a0afa4278f95fa35c0f96596d3df5350a0ff3e3ebb23eb",
+    "Erdos249257.shifted_state_unbounded_of_infinite_support": "14673cb9592cdd63372eebdd5ced93a8423011f2e7a285b6fafdeb8f48e027b8",
+    "Erdos249257.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction": "59b7e1de49f21f534eafd50eeecd7902e221134807c6a588a68311d1d764bb96"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#record:257rig-i4b": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with the constant $k^{2^k}$; the second form also holds at $n=0$.",
+   "statement_key": "sha256:e70cb993e120e3efc6bd5c5050e6bcf482122f41595207bb9f9486e391a8a8e6",
+   "lean_statements": {
+    "Erdos249257.card_divisors_pow_le_divisorSubpowerConst_pow_mul": "c5860fce7ac12bd2c608ca314482231176f7a151ea5f74ecb09069fd9eccba2f",
+    "Erdos249257.card_divisors_le_divisorSubpowerConst_mul_rpow": "eeae6ae98030c593c77563274c430df6189d9c72cf46780a9929896398dd7d87"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:257-mixed-supports": {
+   "note": "The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\\subseteq\\Npos$ written as $0\\notin E$. A cover satisfying the summability condition of the cover theorem, with its index $j\\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\\eta_j>0$, $\\sum_j\\eta_j=1$ and $\\sum_jC_j\\eta_j^{-\\alpha_j}/(2^{\\alpha_j}-1)<\\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.",
+   "statement_key": "sha256:f09411ebd268a5042059e950ae35e9d7c0060051579152b25952cad1871e68f1",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim": "7bc9142467ba6b80b56b080991a744965526f66e3ed220c1f0318b0ff62cc867",
+    "ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary": "85a37652181158d093fcca407755598d25eda0b93499b50893f849748cb12229"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:257-variable-fractional-cover": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, with $F_j\\subseteq\\Npos$ written as $0\\notin F_j$ and the index $j\\ge1$ shifted to start at $0$. Lean assumes each $C_j$ finite, which the printed summability hypothesis already implies.",
+   "statement_key": "sha256:6554ee3ed4339f164340af3c1c3f1445f57760b7b2e40faebefc2c7222a53f52",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR8.strengthenedPositiveCoverClaim": "dfabd2b021852638ff09566656dd0e8ad8bea16fe919cc5f71a85c6fa6031050"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:257-weighted": {
+   "note": "The first conjunct of the Lean claim and the displacement statement are the printed irrationality of $X_A(b)$ and the cofinal returns $0<\\Delta_{b,A}(m)<\\varepsilon$; the Lean claim adds a second conjunct, that if a set $H\\subseteq\\mathbb N_{>0}$ has finite weighted mass at $b=2$, then $X_A(b)$ is irrational for every $b\\ge2$ and every infinite $A\\subseteq H$.",
+   "statement_key": "sha256:6257b3d63c56640af31c0868ee877eca20feb9f45378cfbe3681d037d6d90b70",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim": "0d4ff3d4b5e4bcfd63b5c950d25cb1c32fe49e00191baf7e7fffdd701baa71df",
+    "ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return": "cad0f39ff09df9d7ab5637803b803f1e23251c3ef6f438206f6eead391a12e64"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:eventually-periodic": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one and also allows $0\\in A$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.",
+   "statement_key": "sha256:208e98df915f2b630c5ea88851ef85d8e3f88ade12619e883dbc61e50366eeb6",
+   "lean_statements": {
+    "Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic": "b23b71498b94b557b3b1e5ec62904ab82ee70dd0867c6a7c8e40db181d0bc3f9"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:factorial-twopow-support": {
+   "note": "The two Lean statements are the two irrationality claims for every $b\\ge2$, indexed as printed by $k\\ge0$. The remarks on the preceding least common multiples and gaps are elementary identities outside the Lean statements: $\\operatorname{lcm}(1!,\\ldots,k!)=k!$ with $(k+1)!-k!=k\\,k!$, and $\\operatorname{lcm}(1,2,\\ldots,2^{k-1})=2^{k-1}$ with $2^k-2^{k-1}=2^{k-1}$.",
+   "statement_key": "sha256:d580f3a62d42ae146c8ce526ffdaf334c066af78aba5c3cd4bb0ebe6d2e91ec0",
+   "lean_statements": {
+    "Erdos249257.irrational_erdosSum_factorial_support": "bd8c3db304a7c98c65593f3ca813e72636880214437180b02acd44ca5a6ad162",
+    "Erdos249257.irrational_erdosSum_two_pow_support": "49b552de511e2301c743c91adb2cbfa28f7d9ddc0451b2cb457ef2255e4f08fc"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:greedy-survival-catalogue": {
+   "note": "The Lean statement is the displayed equivalence for the Mersenne weights and every real $x$, with the same hypotheses and conclusion as the printed one. The closing remark that the argument extends to other positive summable weights with $w_n>R_n$ describes the proof and has no Lean counterpart.",
+   "statement_key": "sha256:f3495b3949f634e8a6dc8ee0810cd077e423127a1e23ecfb2804ab8cbd43d874",
+   "lean_statements": {
+    "Erdos249257.mem_mersenneAchievementSet_iff_greedy_survival": "eb7f52a19b0ec56fa7a8f420eb07d7488a28099a8dffed62a2c3d78362232d1d"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:half-skip-dichotomy": {
+   "note": "The equivalence is stated as printed, with $\\N_{>0}\\smallsetminus G$ written as the set of positive exponents omitted by the greedy rule for $1/2$. Irrationality of the full Mersenne sum $\\sum_{n\\ge1}1/(2^n-1)$, used in the forward direction, is the second Lean statement.",
+   "statement_key": "sha256:9bb0262e6090a17686d8f36c3b42700d0c2675b6deee49ad86d1486c92836ab6",
+   "lean_statements": {
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite": "9c2115074fc097cd0bc89f81d21fc6b3813378c86810a932dec8946a580a19c4",
+    "Erdos249257.irrational_erdosBorweinMersenneConstant": "52a2c2fe580ddd793105e03f6ff7d32f2c40a2a92b05c0d4d4eafa3f70074301"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:last-skip-iff-fatal": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with the omitted ranks taken as the positive ranks outside $G$.",
+   "statement_key": "sha256:5caf309ac2d1963b53aa49a54b9815383e286b00cb4540f3758ec352416a5c61",
+   "lean_statements": {
+    "Erdos249257.isLastHalfGreedySkip_iff_skip_and_fatal": "96f3f7072872265d776069dd3d362fb125c8f630f214da8485ede16f55b7d71a",
+    "Erdos249257.half_mem_iff_every_actual_skip_survives": "206418e0ddd816d24f31103ca4af16f91ffe92994223e402fe4dc7e1dfa9fcde"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:master-dichotomy": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, in the form $1/2\\in\\mathcal A$ exactly when no such $d$ and $u$ exist. A second Lean statement records the direction from nonmembership to a gap as the disjunction that $1/2\\in\\mathcal A$ or such a gap exists.",
+   "statement_key": "sha256:91c61c9d1adaff952671731f8ef0205f6d8fa2966c5061706f3453a945f71acf",
+   "lean_statements": {
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap": "92754a4efe35e5aa20d12cd1639f5a443ea252a6906784ed1b598d2acc0dfeb8",
+    "Erdos249257.half_mem_mersenneAchievementSet_or_exists_fatal_gap": "9f32bb318777d936fc2c1fbfa770bd07fd2b91d167f888c19827ecc2c67eea77"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:middle-allright-defect": {
+   "note": "The hypotheses are the printed ones: row $D$ is middle through its two branch inequalities, where the natural-number subtraction is exact since $p_D^-<2^{D+1}$, and each later row $s$ is right, written as $D_{s+1}=D_s\\cup\\{s\\}$. Under them the Lean statements prove $C_D<\\Theta_D$, with $C_D=4\\,\\mathrm{rem}(D)-p_D^--4$ identified separately, and the bounds $0\\le\\Theta_D\\le|F_D|$; they add a second conclusion, $\\tfrac12-X_{D_D}(2)<w_D$.",
+   "statement_key": "sha256:2a4a97caded8c4a650ca99127f582068deeb8e90ebc24cba9edb945edffa1df2",
+   "lean_statements": {
+    "Erdos249257.middleProducer_allRight_forces_carry_lt_tail": "9df07dc33295be61fc85ca8265261dfeb2904ccfa156eda6b2756260e3677f84",
+    "Erdos249257.middleProducer_allRight_forces_rational_skip": "d2326e3f97304a4fe73c92a780f5d734568c2359386350a44ffca6dbb73c39a5",
+    "Erdos249257.producerCarry_insert_seamBelowSupport_eq_middleCoordinate": "ebcab7494e331b90d0949684b6229cdc40e1575e2f4d7b3599b1a1b31476df7f",
+    "Erdos249257.binaryCoeffTail_nonneg": "078a08eb4762cb2c2c0a801f1e7b427fa406e61417bfa3d9edb5545b9b168d82",
+    "Erdos249257.binaryCoeffTail_supportCoeff_coe_finset_le_card": "112daad104b57f7cd8231b373b75aa2803dcf1c66987fc1b8f67ca227c4df027"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:mobius-lambert-identity": {
+   "note": "The Lean statement is the printed identity, summed over the positive integers. Absolute convergence follows from $|\\mu(d)|/(2^d-1)\\le2^{1-d}$.",
+   "statement_key": "sha256:91d93ff682617b785be867eb16f0cc7bc932c121da189f6ce936d8bb280737f9",
+   "lean_statements": {
+    "MersenneLambertLadder.tsum_moebius_div_two_pow_sub_one_eq_half": "a118af12447477267af25f77dae29a3666b024bd6adfb902b65bc23fe099770e"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:multiples-support": {
+   "note": "The Lean statements give the printed identity and irrationality for $b\\ge2$ and $d\\ge1$. The Lean set of multiples of $d$ also contains $0$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.",
+   "statement_key": "sha256:6d3440be414ed8f81a94f8f0838e57cec3c5feb30bc1e0142adf83042f47ac52",
+   "lean_statements": {
+    "Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support": "21bc5d067958d2f2d93d68af59b844f2dabcda5473a78a260c56ddcd5eb37316",
+    "Erdos249257.irrational_erdosSupportSeries_multiples": "c2015cdb2180ebf359c5f93f6473522ed3247485fe77c6db4edc49a1adc24ade"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:nine-way-hub": {
+   "note": "Items (1) to (5) and (7) are each proved equivalent to $1/2\\in\\mathcal A$, with branch $\\mathrm R$ at row $s$ written as $D_{s+1}=D_s\\cup\\{s\\}$ and the omitted ranks in (5) read off the greedy word of row $s_j$. Item (6) follows by combining the equivalence for (2) with the Lean equivalence between (2) and (6).",
+   "statement_key": "sha256:96cdaa8ad101d97fca0006d96eb29af9f7541c938f8b5ee910e84c6c7f64c8c3",
+   "lean_statements": {
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight": "6e20eb2458dea6fbf9b842ffaf53d9d2c8ce28b70ce391e3b69e93b9be758893",
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse": "43dfea61dafbbe9900d2d232c321923ab8369590ab6f3d2e7dfefd4f3fbb2f1a",
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle": "047ed9443d06fc2f085d4c3185502573b1a6a20893f43db2e5a19d41560a8c83",
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse": "42d413924e07227bc547cab2300b234d7971c2373ccb1031c1db48bb5823f80c",
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong": "4b75a855826f3a906a72d45be71953fe5ac0c463e351049170b80245d5e0ef90",
+    "Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite": "672e423f91d2faceaad3e2318ece40775a836a2c30294d9f37963fc7621925ed",
+    "Erdos249257.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip": "8beef8a7a341bcc5476feb936e2e2d592aa7e07d8e77e34b3bb84a0fc850663d"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:one-sided-finite-decision-boundary": {
+   "note": "The Lean statement gives the mathematical facts behind the theorem, for every real $x$: the survival equivalence, that a rank with $r_n(x)>R_n$ certifies $x\\notin\\mathcal A$, and that membership forces $r_n(x)\\le R_n$ at every rank. The remaining sentences describe what the corpus and its searches establish and have no Lean counterpart.",
+   "statement_key": "sha256:f87ab314af4a922fef6778b3ccce4bc33c6fbd51a21374ed7e6cb8c49e7c05c8",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_one_sided_finite_decision_boundary": "1c07ca5c48568b56e8e14cce0dbb23d917517d1075a520466b2a0dde5cf48839"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:pairwise-coprime": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one; its set $A$ may formally contain $0$, which no infinite pairwise-coprime set does, since $\\gcd(0,a)=a$.",
+   "statement_key": "sha256:f979aeb4d7f5356e5448ffcae469e3a1df3e8ebddbd469bfecb6c4f7dcedb953",
+   "lean_statements": {
+    "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime": "c434a316ddb24ee7f15281be4decce1208ea5689d813e8ec1fa19d706a2ce70c"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:periodic-support": {
+   "note": "The Lean statement takes a set $A\\subseteq\\N$ with a positive element and asks for $n+m\\in A\\iff n\\in A$ at every $n\\ge1$. The printed support is such a set, since it is nonempty and lies in $\\Npos$, so the Lean theorem gives the printed conclusion. It is more general only in allowing $0\\in A$, whose term is $0$ under the convention $1/0=0$.",
+   "statement_key": "sha256:1ef212f2f23628d12fda45863b6c54a67f4ace00fc37d5fe7d0190f4089a8dfd",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic": "0dfa586601d204f89fac3caf59a376f89fbc6359a78e7913cc20339e69d7cbd4"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:perturbed-family-maximality": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones. Under $B<g$, `prefixChoice_maximal` bounds every admissible updated value by $t$ of the chosen element, which is admissible by `above_newSum_le_capacity_iff` when $4o+p_+\\le g$ and by `below_newSum_le_capacity` otherwise, and `prefixRemainder_eq_capacity_sub_choice` identifies the remainder before the weight $W$ with $C'$ minus that value. `nextRemainder_trichotomy` gives the three remainders, whose natural-number subtractions agree with the printed ones because $p_-\\le B<g$ and because of each case's inequality.",
+   "statement_key": "sha256:92a338698d928f96246121c0ef3b2b4c711cd7167112bd1c9627e5a3dda17858",
+   "lean_statements": {
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal": "a7a86409aa14868fc31509c78fbf93a4f17a5f1dffda2ab4a88c77a0b4d11017",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy": "0c09b1d390cce49bf0392013144324286ef35677565453450595c546f06241b0",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity": "af6e4e2a0c8ac52a2c80f6e19a5ebc39ad3ef61f0264364539920a349f8f877e",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff": "b746f0c41ab43a2075aa5bf87350d76f9ecb29ec23bdb4592784976c505f8916",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice": "a742de6282441cf0d4a249bf2e6d43462a6af25bbdb51ad8008e8ad7dc7f64ca"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:residue-odd": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue $c$ taken in $\\N$, which covers every class modulo $m$. The Lean class also contains $0$ when $m\\mid c$, and that term is $0$ under the convention $1/0=0$.",
+   "statement_key": "sha256:b7c490601e1d37dc578eeff096bedbcd82bf48ee83f0c39d78b7b9b5addd72c1",
+   "lean_statements": {
+    "Erdos249257.irrational_erdosSupportSeries_residueClass": "91a8e3df4d5b2d7ae2a7c520b92f1e48539b2e122de13565211422675a676e5a",
+    "Erdos249257.irrational_erdosSupportSeries_odd": "33f728f9ebab48217c31f09059e01c0c4c24d2280e0a892ca49a88a86c596435"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:signed-periodic": {
+   "note": "The dichotomy and the two sign versions, with $c_w(n)\\ge0$ for every $n\\ge1$ or $c_w(n)\\le0$ for every $n\\ge1$ and $c_w$ nonzero at arbitrarily large $n$, are the three Lean statements. The Lean weight is defined on $\\N$ and periodic from $0$, which for the printed $w$ means setting $w(0)=w(m)$; the term at $a=0$ is $0$ under the convention $1/0=0$, and $c_w(n)$ uses only positive divisors.",
+   "statement_key": "sha256:8bdc03aecdcf9e274bdd45d88046f05db460edbf195cf57f257b79ec6d726358",
+   "lean_statements": {
+    "Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic": "84358babe1b247b9e8b47e5df4c381a6fb8f9929c6858437ba4628f009abca1a",
+    "Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero": "d2389130fcd6f465edfa2bb318691647f62228294f632259a3326fb703c976a3",
+    "Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero": "da1ecd681506b605230c69c4203ba33664bc71978b5bfdc02cbbc530a453b94c"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:supported-dichotomy": {
+   "note": "The four Lean statements give the printed claims with the same zero-based coordinates: measure $2^{-|\\N\\smallsetminus J|}$ when $\\N\\smallsetminus J$ is finite, measure $0$ when it is infinite, injectivity of the coding map for every $J$, and perfectness for infinite $J$.",
+   "statement_key": "sha256:2034a1219feedac4162ccef5cd1da3fb2b8a5bf48a1c39746da8df18318f0264",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy": "c6ff505591a1293a2dde68a3a97ac4a49bc67cf7ee8ceb86ebc222b7c4de92cd",
+    "ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite": "6c7faadc5737de1605d1f99c785f72402cbe83ee5cc4d77530a26d551ec3e9a2",
+    "ErdosProblems.Erdos257.perfect_supportedMersenneAchievementSet": "ee9b06147df90b6a3bec53802a7c6af62943584299179b8a9b857bf97d0d8f09",
+    "ErdosProblems.Erdos257.supportedMersenneDigitValue_injective": "9f8a412407dfbc0f25b3902c6ec81766d0cedb0894cf820a6ec65005f5234065"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:tempered-orbit-rigidity": {
+   "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with rationality written as $X_c=p/v$ for an integer $p$ and a positive integer $v$. Uniqueness for each fixed $v$ follows at once from $u(N)=v\\,T_c(N)$.",
+   "statement_key": "sha256:af7da25b928eeeccb7bbb0be71fdb68d0e122a6c3f8aa98b5e94276939e050d9",
+   "lean_statements": {
+    "Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit": "c3e4ab89048e832a13fda21c4998d8834469ad9936ca902167f9bd8d0c963208",
+    "Erdos249257.temperedBinaryOrbit_eq_scaledTail": "c8ca59984171fc19f3dfcfe8ac882267dea3d7090fbba5d21ef3f18cbc61834e"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:two-sided-dyadic": {
+   "note": "The Lean hypothesis is the printed pair of conditions at every row $s\\ge5$, with the branches $\\mathrm M$ and $\\mathrm R$ written as their defining inequalities, and the conclusion $\\mathrm{rem}(s)\\le2^s$ or $o_s\\le2^s$ at every row $s\\ge5$ is the printed one.",
+   "statement_key": "sha256:863076c630de80fd735a9538d9e7e1696e4b47cc82b816b2cc308ebb88daea1f",
+   "lean_statements": {
+    "Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided": "0263d948b16d1f5ea510e10880276ee16a22a363e50f69d070b61d691f077188"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#thm:upper-reset-band": {
+   "note": "The first Lean statement is the printed implication from the band condition to $1/2\\in\\mathcal A$. The second gives the band disjunction, with reset charge $4o_d+p_d^+$, at every actual upper reset $13\\le d\\le30$ and every $0\\le j\\le d$, and the third states the successor remainders $\\mathrm{rem}(14)=392$ through $\\mathrm{rem}(31)=4187487147$. Together they have the printed hypotheses and conclusions.",
+   "statement_key": "sha256:22a6ad4d086b78b7340332564c15ee6f988e1e8d5ec8438646bc0bb74b3783e5",
+   "lean_statements": {
+    "Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape": "15020a00b6fb04b22a0760e9be9558706c387c509f2befb1247e66ee281a6fb0",
+    "Erdos249257.seamUpperResetDyadicBandEscape_through_thirty": "f0f19fba1d84713f2315374f81c75e77f4eb541537032752caffc91afa605411",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone": "a468038545a48d99463be65bc7bfee4993c568c5b49d25ce1df1fe9e6c94726f"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:long:denominator-reduction": {
+   "note": "The Lean statement allows any positive integer factor $s$ in place of $D_{\\mathrm{sm}}=2^u3^v5^w$ and any integer $B$, without $B>0$ or $\\gcd(B,30)=1$; with $s=D_{\\mathrm{sm}}$ and $D=sB$ its three conclusions (the recurrence with multiplier $B$, the window identity, and $0<c_n\\le Dt\\Leftrightarrow0<d_n\\le Bt$) are the printed ones.",
+   "statement_key": "sha256:de21db02bd2065bca9aad45f37694a3e26c3c1e7c01b6de37c04a8f398716e3b",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.conditional_denominator_reduction_real_bound": "630e3090373906728c34465902490c5358d7c3f0d80e5b0e611454cc1221a4a3"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:long:windowconsumer": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:78158b9af0be41d44557b469a4fc802888db0477104238ab521f9c89cb2e47df",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape": "95bccb662612e3b9be4ab993eba00f1daab18bdfda2b3c1cf81dec9b80529fa9"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:actual-cancellation": {
+   "note": "The Lean statement drops $\\gcd(B,30)=1$, so it applies to every factorisation $D=2^u3^v5^wB$ with $B\\ge1$, and it proves $K(B,a)\\le3B(a+1)^2$; the printed bound $K(B,a)\\le90B(a+1)^2$ follows.",
+   "statement_key": "sha256:e763f633763068a8d28af4b5ec2a2a9c3607edde4f9369ccfd6aba0bf80c7eda",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR11.long_fixed_split_bridgeR11": "2c97b21cba8be0c058ccee5e5011a4c6736cf63ea613df7474330b675d3254a7",
+    "ErdosProblems.Erdos269.PaperR11.longPaperCap_le_three_squareR11": "f01e2d078246484114cf564d8bc661cf04cc9e02327dd594ea332ce068b3f3a1"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:actual-dichotomy": {
+   "note": "The Lean dichotomy holds for every integer $B$, of which the printed statement takes $B\\ge1$.",
+   "statement_key": "sha256:7da25fd30ff0809da2ed75cb6f0c0a616a337ecf42f76e0ec27cb0c4675d30cb",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.scaled_integer_or_cofinal_separation": "b30925d2f1c3c237bad849be4c38724c61771c3d6253d9ae2aa0e4a9f5c955e6"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:actual-escape-endpoint": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:b943c884e5e39a1c55d79211094e259edc2ae6c594212eae7ccbd61aac5048c5",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.octic_escape_whole": "a6624d28faa69ae33f48315eb92202685a190f362c6a09d4093af2bbae507555"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:actual-tail-bound": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:1d9e56547652ca36b791e72a23ab867fe5e3e00ee6ceed991b9cb658ad89f8cf",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR8.actual_tail_rank_bound": "128f56712142831460e3ea650b1ee1c7b9e275c86752fe592780dc9bd0384e83"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:all-scale-lattice": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:b0f5b0ebcf68f14c88b39424579952ff4436bf3deef13830bd06613eedd47842",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.long_all_scale_lattice_exact": "8832c163188e7b7b60a4a0bba93e9280e11e372e4a0f97620cb79adb82c7a146"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:cell": {
+   "note": "The Lean kernel clause holds for all integers $p,q,r>1$, without primality or distinctness; the constancy and jump clauses are the other Lean statements, for real $x,y\\ge1$ and pairwise distinct primes.",
+   "statement_key": "sha256:2f8dc0b3f7b730ff01522ab03211f9ae3459bf6a3be0412275a5b1a776b45cc2",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_eq_of_sameLogCell": "6f7d1fdfa32dd41139ce8e3c1bfd8eecb45d3032cbc9c058bc18f91ee6985cc5",
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_first": "dbefed8d2515f429d78727b3be99ce18bc7696dc689d877c5a4d3a076ca11c38",
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_second": "5a2dd8f04b8742e73efd1c0b90ba6658a12ea20e4fbbb0ef6f4abc5e14aa32d8",
+    "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_third": "ac8650d0f006873c96e2ba9859c8ac9fe40b40fa1a5ae5902e72d71c3f41572d",
+    "ErdosProblems.Erdos269.PaperCompleteR20.threePrimeKernelQ_eq_of_sameRealLogCell": "eec4ec1ba8ace3451b571fd14c9688e9b266eeccad80f234fbaf5464ae8bbd06"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:consumer": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one, with the bound $K$ a natural number; a real $K$ reduces to $\\lfloor K\\rfloor$, since $|c|$ is an integer.",
+   "statement_key": "sha256:1469b4e5d2fe5965a9cf5670472d3cbccb019545319c4ce46daf17d5aa0332bc",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.no_bounded_positive_int_state_of_leastPositiveResidue": "ca3546b8a666a69491ad3dee7523cbfb131eb9793123c847af1f13fb2cfc2be5"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:drop": {
+   "note": "The Lean statement needs only $p,r\\ge1$ and any natural number $q$, in place of three distinct primes, and allows any real interval $[\\lambda,\\eta)$; its three clauses are the three printed bounds on $\\#\\mathcal S$.",
+   "statement_key": "sha256:a50298b2a20ca2e4e23081ea7fc049153f43c806c76cc68eac1be65ef295a74e",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.realSmoothExponentShell_bounds": "3622ca0fcc0b4719f2b47755d987788e2bddca0807854e48cc3dba7abc4943d6"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:finite-cut-rank": {
+   "note": "The Lean statement drops the hypothesis that $E$ is nonempty; for nonempty $E\\subseteq\\{0,\\ldots,m\\}$ and any finite matrix whose set of columns is $\\{v_h:h\\in E\\}$ it gives the printed rank $|E|-\\mathbf 1_{\\{0,m\\}\\subseteq E}$.",
+   "statement_key": "sha256:39113933862a9575da185f864f7bba5b37b0ee3f9a9573a74b548d20b704e81f",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.rank_cutMatrix": "664c872a0bfee87c937d0533f489331e86c65149738fac79142e0aa2943a8a04"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:fixed-base-recoding": {
+   "note": "The Lean statement gives $v_a\\in15^{-(a+1)}\\mathbb Z$, a sharper form of $v_a\\in\\mathbb Z[1/15]$, and the lower bound $(q/8)^{a+1}$ for the coefficients $m_aq^{a+1}/P_{a+1}$ at every integer $q\\ge2$, of which the printed statement uses $30\\mid q$; its other clauses are the printed identities and bounds.",
+   "statement_key": "sha256:46b0c0e2907aac268652c77f966ee4d88ec535cf5f6c58f29270f043b6b670f4",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.fixed_base_recoding_whole": "36fe69738f0e86a36e7e10fd86e319a3a5ff2386643afbc1f5f574d8d03f2c84"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:infinite-rank": {
+   "note": "The Lean statement also covers $n=0$, where the determinant is empty and equals $1$; for $n\\ge1$ it is the printed minor statement, and its second clause is the printed nonseparation for every finite $d$.",
+   "statement_key": "sha256:1379f7ef06b68bf0e9ddf3f7c2f0ec3a7e87f38a41c2dcc51ed2eba521431d93",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation": "ed421b70b562670272fd8d5b646944d75fd27b68fef7d75acd1a5ff4afcc41a2"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:jump-constrained-bound": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:8d1b0913152a60bd8f9058f88b85117af95dd155d284a6ed1b8d09899a7289ef",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR10.actual_sharp_tail_bound": "3f13e76a780c4090e8fe9f306ffd2256a468d19bc5267c711481a3e51b7f6119"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:lcm": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:72ec02f616c5f22fd177dd2906fd985bc9df6c1105a87000bcbdafa4cbf6103b",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact": "63d774e4b34f19e1b52d2033434edf3602db542697e66c60eafc282e3f81ebcd"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:literal-triangle": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:5d56ea1182ee346b0f5dc184ae6cbfd55eb2936dcaf7a3f63f1b56e94c8075bd",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.literal_triangle_whole": "8497ad86ebe0cee0fe12e83b3fa285204988d9e78be43ff8ca1b145da70e1306"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:no-bounded-length": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:742dc743c87b448342bdff91b366506532ad851dfb027615f5a1b7bfb0873681",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.long_no_bounded_length": "8dee8d85780a220517dbdb888b280876ca25d40bace1109592282f1e4f8f5219"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:pinning": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:9362b43a282a6c35db3d687fe010e4db104a45eac425c7dec28b97565c4c6939",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.paper_pinning_and_eight_scale_rigidity": "364261f82c62a3be810b108b1a92150014a21944e27bbf58fda57838b8b15c0e"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:residue-limit": {
+   "note": "The Lean statements hold for every start $\\ell\\ge0$, of which the printed statement takes $\\ell\\ge1$, and give for each $B\\ge1$ the eventual formula $R_h=(\\lceil BX_\\ell\\rceil-BX_\\ell)W_{\\ell,h}+BX_{\\ell+h}$, the limit of $R_h/W_{\\ell,h}$, and $R_h=BX_{\\ell+h}$ eventually when $BX_\\ell$ is integral.",
+   "statement_key": "sha256:47bee99c91e88af4d23752a4434d5121ea5b0cd7e1d3010cf2e6938eaf145c69",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_formula": "16356e8756490ab51dfdc0cfb139ae91863488ea62f9ba9a1119748c10cfb31b",
+    "ErdosProblems.Erdos269.PaperR14.fixedStartResidue_ratio_tendsto": "cd18bd96a830eed32ba895be21c7c451e6f789db95cfa5959ff6f85bb3c20b8b",
+    "ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_eq_tail_of_integral": "095112d49c5c2cfb7970e3eec4ec25b40e2b373adcbcdbc63009859b0a72b614"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:short": {
+   "note": "The Lean statement drops the standing assumption $0\\le\\lambda<\\eta$ on the interval: for every real $b\\ge1$, $w\\ge0$ and real $\\lambda,\\eta$ with $\\eta\\le b\\lambda$, two points $b^aw,b^{a'}w$ of $[\\lambda,\\eta)$ have $a=a'$, which is the printed statement.",
+   "statement_key": "sha256:eb84d11bf959f2cf95660bbd4da2d40dad64fc35ba7c50a7f48922d1bbe84e7d",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.exponent_unique_real_base_short_interval": "38333ffda4924ad3c2d29576690f66c421c7b5aabd317001c37864d6584fb408"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:strip-decomposition": {
+   "note": "The Lean statements hold for every shift $r\\ge0$, of which the printed statement takes $r\\ge1$; the cubic hypothesis is the vanishing of both floor carries at every $(j,k)\\in\\mathcal T_{a+\\nu r}$, $\\nu\\le3$, which are the crossing bits appearing in the sum.",
+   "statement_key": "sha256:4f6d3fa104de69592f91562993d45578861c31d4b7e7428fda497ab9031b3b32",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.actual_weighted_strip_decomposition": "87239656d4724f8a9bbaec04ac4ffb44956fc73c3328f4348d5d7f47031c8249",
+    "ErdosProblems.Erdos269.PaperCompleteR20.actual_cubic_no_crossing_strips": "7e88e34b051cd91a7eae047b6d86790fb9c3ba988b2dd5acc4f329ccf64c2ef1"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:tails-equivalence": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:5fa19957f250beee82b216624637cf9444e6acf50cd4f064b89f09dc326521f3",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.allReducedTailsNonintegral_iff": "ece30e6b87a994dfdab8484ba27dd33234f489a0d93dbf5a98248ba4e71bb447"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:two-prime-rank": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:446421ab5d6530a45ffafa650ccc69dfc5262f51c8f0006bc356aeef4b7ee79a",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.real_two_prime_separation": "47c7483b68fb5ec1b167c040b369508cadf90623a3944e012763ee6c987d8e20"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:uniform-rank": {
+   "note": "The Lean statement drops the hypothesis $p\\ne q$, requiring only primes $p,q$ different from $r$; it gives both printed values $(1-t)/2=(r-1)/(2r)$ of the infimum and the constant matrix $(1+t)/2$, $t=r^{-1}$, attaining it.",
+   "statement_key": "sha256:fdc3f011a8d88109b8ab1cdd6ee4875f15527d96bd1829b3dc03c715ddfad511",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR8.uniform_rank_complete": "e0398de9ad568ac5ef776eaa4c245ff4b196d3d4c7e54582f2ce060bf614ed49"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:weighted-shift-identity": {
+   "note": "The Lean statement holds for every integer sequence $c_0,\\ldots,c_\\sigma$, the zero sequence included, and every shift $r\\ge0$, of which the printed statement takes $c\\ne0$ and $r\\ge1$; with $\\alpha=S/2$ its clauses are the printed ones, including the constant $C=225\\sum_j|c_j|\\max(1,j)^2$ and the criterion for $A_r\\ne0$.",
+   "statement_key": "sha256:4e6dbef9d422cf52c70f6c562999d65973a4245f87f33c2ce0c4fb0e47d49e9b",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperCompleteR20.weighted_shift_whole": "76a6a79464f76ba55ccde556ae416bcc8679992d2a7944024d70627f5738b4d9"
+   }
+  },
+  "erdos269-running-lcm-reasoning-surface#long269:res:window-growth": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
+   "statement_key": "sha256:22d67408a445b97db1adff9c449a2823a5870bc7c08a24ec96463a3bbc8002ec",
+   "lean_statements": {
+    "ErdosProblems.Erdos269.PaperR7.long_window_growth": "cd8d93098040f5a5de270f0dd7850c999a620011d285873f97e0ec804b55f83e"
+   }
+  },
+  "erdos68-factorial-reasoning-surface#long68:res:segment": {
+   "note": "The Lean inequality holds for every $k$ with $0\\le k\\le N-1$; the printed statement is its range $2\\le k\\le N-1$.",
+   "statement_key": "sha256:657843bff27039b1347fbdf5c6ccca32777a04c7cd9ee1d075169152869c9a58",
+   "lean_statements": {
+    "Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose": "79e3521dda89139fb2add88b01c1b2339926ba165301fc757cfc17f74c2a4ffb"
+   }
+  }
+ }
+}

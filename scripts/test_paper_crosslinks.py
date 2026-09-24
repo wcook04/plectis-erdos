@@ -132,25 +132,26 @@ def main() -> int:
         outbound = {link for link in core_links if link[0] == pdf}
         require(outbound, f"no core paper links to {pdf}")
 
+    # The problem papers carry mathematics and their own evidence marks; the systems
+    # papers are no longer advertised from them (the companion-context paragraph was
+    # retired with the generated notes).
     preamble = source("problem-note-preamble.tex")
     note_links = links(preamble)
-    for pdf in CORE:
-        require(any(link[0] == pdf for link in note_links), f"problem notes do not link {pdf}")
-    require("Those descriptions do not change the mathematical status" in preamble,
-            "problem-note links omit the authority boundary")
+    require("\\companionpapercontext" not in preamble,
+            "the retired companion-context paragraph is back in the problem-note preamble")
 
     for note in NOTES:
         text = source(note)
-        require("\\input{problem-note-preamble}" in text, f"{note} bypasses shared paper links")
-        require("\\companionpapercontext" in text,
-                f"{note} does not emit shared paper links independently")
+        require("\\input{problem-note-preamble}" in text, f"{note} bypasses the shared preamble")
+        require("\\companionpapercontext" not in text,
+                f"{note} prints the retired companion-context paragraph")
 
     for link in core_links | note_links:
         require(link in target_owner, f"cross-paper link has no declared destination: {link}")
 
     all_sources = combined + "\n" + preamble
     require("#page=" not in all_sources, "cross-paper navigation uses fragile page numbers")
-    print("paper crosslinks: reciprocal core links, eight note routes, named targets, and pinned repo paths PASS")
+    print("paper crosslinks: reciprocal core links, eight notes free of system context, named targets, and pinned repo paths PASS")
     return 0
 
 

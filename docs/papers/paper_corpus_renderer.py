@@ -977,6 +977,100 @@ def _strip_description_list_options(tex: str) -> str:
     return ''.join(parts)
 
 
+_EVIDENCE_INPUT_RE = re.compile(r"^\\input\{(evidence/[^}]+|paper-evidence)\}[ \t]*%?[^\n]*\n", re.M)
+_EVIDENCE_DECLARE_RE = re.compile(
+    r"\\DeclareResultEvidence\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}\{([^}]*)\}\{([^}]*)\}")
+_EVIDENCE_RECORD_RE = re.compile(r"\\newcommand\{\\evidencerecordurl\}\{([^}]*)\}")
+
+
+def _evidence_marks(tex: str, tex_path: Path) -> tuple[dict[str, tuple[str, str, str]], str | None]:
+    """The margin marks one manuscript declares, and its evidence-record URL.
+
+    The marks are generated into ``paper/evidence/<paper>.tex`` (scripts/paper_evidence.py)
+    and placed in the PDF's margin by ``paper/paper-evidence.tex``.  Pandoc reads neither,
+    so the Markdown edition places them itself, beside each statement.
+    """
+    root = _manuscript_search_root(tex_path)
+    marks: dict[str, tuple[str, str, str]] = {}
+    record = None
+    for match in re.finditer(r"\\input\{(evidence/[^}]+)\}", tex):
+        path = root / f"{match.group(1)}.tex"
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8")
+        found = _EVIDENCE_RECORD_RE.search(text)
+        if found:
+            record = found.group(1).replace("\\#", "#")
+        for label, mark, lean, comparator in _EVIDENCE_DECLARE_RE.findall(text):
+            marks[label] = (
+                "Lean\u2020" if "dag" in mark else "Lean",
+                lean.replace("\\#", "#").replace("\\%", "%"),
+                comparator.replace("\\#", "#").replace("\\%", "%"),
+            )
+    return marks, record
+
+
+def _macro_body(name: str, tex_path: Path) -> str | None:
+    """The body of a one-argument macro defined in paper/paper-evidence.tex."""
+    shared = _manuscript_search_root(tex_path) / "paper-evidence.tex"
+    if not shared.is_file():
+        return None
+    text = shared.read_text(encoding="utf-8")
+    match = re.search(r"\\newcommand\{\\" + name + r"\}\[1\]\{", text)
+    if match is None:
+        return None
+    close = _matching_brace(text, match.end() - 1)
+    return text[match.end():close]
+
+
+def _preserve_evidence_macros(tex: str, tex_path: Path) -> str:
+    """Render the once-per-paper evidence paragraph and the evidence remarks as prose."""
+    _marks, record = _evidence_marks(tex, tex_path)
+    tex = _EVIDENCE_INPUT_RE.sub("", tex)
+    paragraph = _macro_body("evidenceparagraph", tex_path)
+    if paragraph is not None:
+        paragraph = paragraph.replace("\\par\\smallskip\\noindent", "").strip()
+        body = paragraph.replace("#1", (record or "").replace("#", "\\#"))
+        tex = re.sub(r"\\evidenceparagraph\{[^{}]*(?:\{[^{}]*\}[^{}]*)?\}",
+                     lambda _m: "\n\n" + body + "\n\n", tex)
+    if record is not None:
+        # A paper may also link its record directly, as \href{\evidencerecordurl}{...}.
+        tex = re.sub(r"\\evidencerecordurl(?![A-Za-z])",
+                     lambda _m: record.replace("#", "\\#"), tex)
+    chunks: list[str] = []
+    cursor = 0
+    while True:
+        match = re.compile(r"\\evidenceremark\{").search(tex, cursor)
+        if match is None:
+            chunks.append(tex[cursor:])
+            break
+        close = _matching_brace(tex, match.end() - 1)
+        chunks.extend((tex[cursor:match.start()], "\n\n", tex[match.end():close], "\n\n"))
+        cursor = close + 1
+    return "".join(chunks)
+
+
+def _place_evidence_marks(markdown: str, marks: dict[str, tuple[str, str, str]]) -> str:
+    """Put each result's Lean and Comparator links first inside its statement block."""
+    for label, (text, lean, comparator) in marks.items():
+        links = f'<a href="{lean}">{text}</a>'
+        if comparator:
+            links += f' · <a href="{comparator}">Comparator</a>'
+        line = f'<p class="evidence-marks">{links}</p>\n'
+        opener = re.compile(r'^<div id="' + re.escape(label) + r'" class="[a-z]+">\n', re.M)
+        found = opener.search(markdown)
+        if found is not None:
+            markdown = markdown[:found.end()] + line + markdown[found.end():]
+            continue
+        # A labelled claim span has no block of its own: the links follow its paragraph.
+        at = markdown.find(f'id="{label}"')
+        if at >= 0:
+            end = markdown.find("\n\n", at)
+            end = len(markdown) if end < 0 else end
+            markdown = markdown[:end] + "\n\n" + line.rstrip("\n") + markdown[end:]
+    return markdown
+
+
 def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     """LaTeX -> markdown, section index with line numbers, and front matter."""
     source = _preserve_path_macros(tex_path.read_text())
@@ -985,6 +1079,8 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     source = _preserve_declaration_macros(source)
     source = _preserve_lean_citation_macros(source)
     source = _preserve_generated_note_macros(source, tex_path)
+    marks, _record = _evidence_marks(source, tex_path)
+    source = _preserve_evidence_macros(source, tex_path)
     source, inlined = _inline_long_defs(source)
     ast = json.loads(
         _pandoc(
@@ -999,6 +1095,7 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     markdown = _pandoc(["-f", "json", "-t", "gfm", "--wrap=none"], stdin=json.dumps(ast))
     markdown = _remove_immediate_duplicate_gfm_table_headers(markdown)
     markdown = _externalize_long_gfm_table_source_notes(markdown)
+    markdown = _place_evidence_marks(markdown, marks)
 
     # Bind each section to a line in the file it actually landed in. An index
     # that only names sections makes an agent scan; one that names lines lets it

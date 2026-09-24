@@ -1,0 +1,3068 @@
+{
+  "arguments": [],
+  "claim_boundary": "Exact contents of H_N through rank five and nonzero minimum-valuation residues at the 76 pairs 1 <= N <= 8, 1 <= d <= max(8, 2N-2). Nothing about larger ranks or other cyclotomic indices at ranks six to eight. No floating point and no Lean kernel.",
+  "paper_passage": "Subsection 'Coefficient moments and cyclotomic content', paragraph 'Testing for additional cyclotomic factors'",
+  "program": "cyclotomic_content.py",
+  "program_sha256": "f371b8a57073a2596d88c4b25e787efbf1115a6b48899c333ab5603bc0310b64",
+  "result": {
+    "all_printed_claims_verified": true,
+    "checks": {
+      "76 witness pairs": true,
+      "alpha_0 = p": true,
+      "beta_0 = 0": true,
+      "beta_1 = p^3 (p-1)^2 (p+2)": true,
+      "content N=1 matches the printed factorisation": true,
+      "content N=1: exponent of Phi_1 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_2 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_3 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_4 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_5 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_6 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_7 equals e_(N,d)": true,
+      "content N=1: exponent of Phi_8 equals e_(N,d)": true,
+      "content N=1: no Phi_d beyond the witness window": true,
+      "content N=2 matches the printed factorisation": true,
+      "content N=2: exponent of Phi_1 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_2 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_3 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_4 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_5 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_6 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_7 equals e_(N,d)": true,
+      "content N=2: exponent of Phi_8 equals e_(N,d)": true,
+      "content N=2: no Phi_d beyond the witness window": true,
+      "content N=3 matches the printed factorisation": true,
+      "content N=3: exponent of Phi_1 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_2 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_3 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_4 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_5 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_6 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_7 equals e_(N,d)": true,
+      "content N=3: exponent of Phi_8 equals e_(N,d)": true,
+      "content N=3: no Phi_d beyond the witness window": true,
+      "content N=4 matches the printed factorisation": true,
+      "content N=4: exponent of Phi_1 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_2 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_3 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_4 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_5 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_6 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_7 equals e_(N,d)": true,
+      "content N=4: exponent of Phi_8 equals e_(N,d)": true,
+      "content N=4: no Phi_d beyond the witness window": true,
+      "content N=5 matches the printed factorisation": true,
+      "content N=5: exponent of Phi_1 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_2 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_3 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_4 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_5 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_6 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_7 equals e_(N,d)": true,
+      "content N=5: exponent of Phi_8 equals e_(N,d)": true,
+      "content N=5: no Phi_d beyond the witness window": true,
+      "every alpha_m nonzero": true,
+      "every witness residue nonzero and three methods agree": true,
+      "example N=2, d=1: Gamma(0) = -9": true,
+      "example N=2, d=1: e = 4": true,
+      "example N=2, d=1: entry valuations (0 2; 2 5)": true
+    },
+    "complete_contents_through_rank_5": [
+      {
+        "coprime_cofactors_certified_mod": 1000003,
+        "exponents": {
+          "p": 1
+        },
+        "rank": 1
+      },
+      {
+        "coprime_cofactors_certified_mod": 1000003,
+        "exponents": {
+          "1": 4,
+          "p": 5
+        },
+        "rank": 2
+      },
+      {
+        "coprime_cofactors_certified_mod": 1000003,
+        "exponents": {
+          "1": 15,
+          "2": 4,
+          "p": 14
+        },
+        "rank": 3
+      },
+      {
+        "coprime_cofactors_certified_mod": 1000003,
+        "exponents": {
+          "1": 32,
+          "2": 8,
+          "3": 4,
+          "p": 30
+        },
+        "rank": 4
+      },
+      {
+        "coprime_cofactors_certified_mod": 1000003,
+        "exponents": {
+          "1": 55,
+          "2": 19,
+          "3": 8,
+          "4": 4,
+          "p": 55
+        },
+        "rank": 5
+      }
+    ],
+    "determinant_value_polynomials": [
+      {
+        "Y0": 0,
+        "degree": -1,
+        "rank": 1,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "Y0": 1,
+        "degree": 1,
+        "rank": 1,
+        "sha256": "53d7f4a048bd0daee134c84d46a9de1de3d4c71942f740eb4f964d3fccbeecf3"
+      },
+      {
+        "Y0": 0,
+        "degree": 12,
+        "rank": 2,
+        "sha256": "8fbec1b3d7300c4793b9c3951fc0379a4518c7f60e9e128f6495fbf4fb41a33c"
+      },
+      {
+        "Y0": 1,
+        "degree": 20,
+        "rank": 2,
+        "sha256": "f4f6a7425916337f07ad6149d82bc44db6af6e256853a76714ee6abf1ec49442"
+      },
+      {
+        "Y0": 2,
+        "degree": 20,
+        "rank": 2,
+        "sha256": "7c9e40f42718a88a28ce575f2eb7726617ae4a4cc6491da08a9f332f60f0b3ca"
+      },
+      {
+        "Y0": 0,
+        "degree": 72,
+        "rank": 3,
+        "sha256": "57c05a56b0131466309b18357f9085abe9b7bb85bdd13d26dd7daad1a04439a1"
+      },
+      {
+        "Y0": 1,
+        "degree": 81,
+        "rank": 3,
+        "sha256": "27d15e3779d8334c9cbc16a102cd6ac0117559e028bc68e48163a2df1fff38da"
+      },
+      {
+        "Y0": 2,
+        "degree": 81,
+        "rank": 3,
+        "sha256": "ba2db8ce7d41b579dd9ac634897ce20fefb88373ba3795d70f1a6e49377819b9"
+      },
+      {
+        "Y0": 3,
+        "degree": 81,
+        "rank": 3,
+        "sha256": "a5206c9c8e1ffba9b0e820bc1966cd6c55c5e24f4130041ddaa9148012c9c951"
+      },
+      {
+        "Y0": 0,
+        "degree": 198,
+        "rank": 4,
+        "sha256": "e5547ada6b8ae136397254e3a4a0ec916db5530cef454ffecee77f09e10cf543"
+      },
+      {
+        "Y0": 1,
+        "degree": 208,
+        "rank": 4,
+        "sha256": "842a4e810a161b9f4b721168dc8c1733d5f3116b924e5783d8b8434dd8e98224"
+      },
+      {
+        "Y0": 2,
+        "degree": 208,
+        "rank": 4,
+        "sha256": "0f730e01180c3ef414acf6e697bbe22a9dd0d24950b983474b8b938c5bfb192a"
+      },
+      {
+        "Y0": 3,
+        "degree": 208,
+        "rank": 4,
+        "sha256": "3eec8c13abbb01b400712fdd9ddca79238700c0c122c7a75a2a21666cf9d82ef"
+      },
+      {
+        "Y0": 4,
+        "degree": 208,
+        "rank": 4,
+        "sha256": "c6bad1b86235fa65955fc0f21d92e4994afe26cd59b9e3696cd9b6aa4e9cc064"
+      },
+      {
+        "Y0": 0,
+        "degree": 414,
+        "rank": 5,
+        "sha256": "b515f0ae8f51354a8250cf84fc70f0563f4eac390ca0ad3f94914117e4506bd0"
+      },
+      {
+        "Y0": 1,
+        "degree": 425,
+        "rank": 5,
+        "sha256": "33abe9fea86672f9d588182485292e998a8b59cfba8dca386713e30a86b4fd9c"
+      },
+      {
+        "Y0": 2,
+        "degree": 425,
+        "rank": 5,
+        "sha256": "6b822f30b8e2348a1dfffe8bfd9f3396dfb9fc14d2f6c9899aab179ff89a655e"
+      },
+      {
+        "Y0": 3,
+        "degree": 425,
+        "rank": 5,
+        "sha256": "c4ab5c91e9ea4c3345a5681298b36b1c399b434279baada02656968e94fd8737"
+      },
+      {
+        "Y0": 4,
+        "degree": 425,
+        "rank": 5,
+        "sha256": "1f0db96f929c555c25ac961533071b430f409014ca1b59b06d8d67d1961c8fe8"
+      },
+      {
+        "Y0": 5,
+        "degree": 425,
+        "rank": 5,
+        "sha256": "d082c8a6e9d59a05ca0a9f26f549ab37d1aa1760ce24882db049fcc8d89695e6"
+      },
+      {
+        "Y0": 0,
+        "degree": 744,
+        "rank": 6,
+        "sha256": "64578a85cc24db3b5328e01518108e1ee831aef498436f153eeea8e52d351626"
+      },
+      {
+        "Y0": 0,
+        "degree": 1212,
+        "rank": 7,
+        "sha256": "05fc41682199ef6be1498529fd3acf31690260b4a8cf0ebd63c3b683c10eb794"
+      },
+      {
+        "Y0": 0,
+        "degree": 1842,
+        "rank": 8,
+        "sha256": "aa579fe63f4b531d2e395b666f4695ab78bd9f236ee5e307febd7f25bf28c9e2"
+      }
+    ],
+    "digest_rule": "sha256 of the compact JSON list of decimal coefficient strings, lowest degree first",
+    "entry_valuations_t_m_d": {
+      "1": [
+        0,
+        2,
+        5,
+        8,
+        11,
+        14,
+        17,
+        20,
+        23,
+        26,
+        29,
+        32,
+        35,
+        38,
+        41
+      ],
+      "10": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "11": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      "12": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2
+      ],
+      "13": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "14": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "2": [
+        0,
+        0,
+        2,
+        2,
+        5,
+        5,
+        8,
+        8,
+        11,
+        11,
+        14,
+        14,
+        17,
+        17,
+        20
+      ],
+      "3": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        5,
+        5,
+        5,
+        8,
+        8,
+        8,
+        11,
+        11,
+        11
+      ],
+      "4": [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        5,
+        5,
+        5,
+        5,
+        8,
+        8,
+        8
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        5,
+        5,
+        5
+      ],
+      "7": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        5
+      ],
+      "8": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "9": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "residue_witnesses": [
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "-1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 1,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0
+        ],
+        "rank": 1,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "1"
+        ],
+        "row_potentials": [
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "-9"
+        ],
+        "row_potentials": [
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          1,
+          0
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "-16"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          0,
+          1
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "0",
+          "27"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          0,
+          1
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "-12",
+          "-16"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0,
+          1
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "10",
+          "0",
+          "15",
+          "-5"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0,
+          1
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "8",
+          "-3"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0,
+          1
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "16",
+          "-5",
+          "0",
+          "10",
+          "4",
+          "3"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0,
+          1
+        ],
+        "rank": 2,
+        "residue_coefficients_low_to_high": [
+          "-8",
+          "-4",
+          "10",
+          "-12"
+        ],
+        "row_potentials": [
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 15,
+        "column_potentials": [
+          -6,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0,
+          2
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "567648"
+        ],
+        "row_potentials": [
+          5,
+          8,
+          11
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          -2,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          0,
+          2,
+          1
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "-589824"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          2,
+          1,
+          0
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "-19683"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          0,
+          2,
+          1
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "22528",
+          "-47104"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0,
+          1,
+          2
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "-68375",
+          "-66750",
+          "24250",
+          "61500"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0,
+          1,
+          2
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "-88479",
+          "-77112"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0,
+          1,
+          2
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "-35672",
+          "-31164",
+          "-34692",
+          "-44394",
+          "-37142",
+          "-1813"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0,
+          1,
+          2
+        ],
+        "rank": 3,
+        "residue_coefficients_low_to_high": [
+          "-2752",
+          "20192",
+          "1888",
+          "11264"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 32,
+        "column_potentials": [
+          -9,
+          -6,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "-529263258603264"
+        ],
+        "row_potentials": [
+          8,
+          11,
+          14,
+          17
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 8,
+        "column_potentials": [
+          -2,
+          -2,
+          0,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "347892350976"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          0,
+          1,
+          3,
+          2
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "1162261467"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "84934656"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0,
+          3,
+          2,
+          1
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "-5078125",
+          "-68750000",
+          "37890625",
+          "69531250"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0,
+          1,
+          3,
+          2
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "-2913247296",
+          "10137567312"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "-4912114662",
+          "-5072823196",
+          "-803761161",
+          "5109563298",
+          "7947307599",
+          "5698077210"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "rank": 4,
+        "residue_coefficients_low_to_high": [
+          "458923008",
+          "5817972736",
+          "7774234624",
+          "5064046592"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 55,
+        "column_potentials": [
+          -12,
+          -9,
+          -6,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0,
+          2,
+          3,
+          4
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "48912078593401336068518707200"
+        ],
+        "row_potentials": [
+          11,
+          14,
+          17,
+          20,
+          23
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 19,
+        "column_potentials": [
+          -6,
+          -6,
+          -3,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          3,
+          2,
+          1,
+          0,
+          4
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "-184065071131987726565376"
+        ],
+        "row_potentials": [
+          5,
+          5,
+          8,
+          8,
+          11
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 8,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          0,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          0,
+          4,
+          3,
+          2,
+          1
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "18530201888518410",
+          "18530201888518410"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          0,
+          2,
+          1,
+          4,
+          3
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "27212912787456",
+          "24739011624960"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "976562500000"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0,
+          4,
+          3,
+          2,
+          1
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "-1260901168128",
+          "15861396589056"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0,
+          1,
+          4,
+          3,
+          2
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "-95234552873607",
+          "383702231805893",
+          "1070217244528467",
+          "1452138550596629",
+          "1239379686133288",
+          "591866273161786"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          4,
+          3
+        ],
+        "rank": 5,
+        "residue_coefficients_low_to_high": [
+          "1239326044192768",
+          "9949273682608128",
+          "12832600836014080",
+          "8194818138177536"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 84,
+        "column_potentials": [
+          -15,
+          -12,
+          -9,
+          -6,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-1821343862930273872651877638557226068753776640000"
+        ],
+        "row_potentials": [
+          14,
+          17,
+          20,
+          23,
+          26,
+          29
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 30,
+        "column_potentials": [
+          -6,
+          -6,
+          -3,
+          -3,
+          0,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          3,
+          2,
+          1,
+          0,
+          5,
+          4
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-6232723485324062966305127689736945664"
+        ],
+        "row_potentials": [
+          5,
+          5,
+          8,
+          8,
+          11,
+          11
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 12,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-79766443076872509863361"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          4,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 8,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          0,
+          1,
+          5,
+          4,
+          3,
+          2
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-1564226251375339634688",
+          "2101199442145978613760"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0,
+          3,
+          2,
+          1,
+          5,
+          4
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-437736511230468750",
+          "652313232421875000",
+          "-51498413085937500",
+          "-330448150634765625"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-24794911296000000"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-1078876570903818260",
+          "-1509025990396839530",
+          "-1035520482748873086",
+          "27301191574463646",
+          "894462969834665217",
+          "864650996444514573"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0,
+          1,
+          5,
+          4,
+          3,
+          2
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "439203027759617015808",
+          "1780416663539599540224",
+          "2078666790345216360448",
+          "1159239584155632140288"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 9,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          5,
+          4,
+          3
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "-36280410879758941981359",
+          "-13419033662897176112469",
+          "15721425940785318680949",
+          "1225078444702382615793",
+          "28321438456589292601245",
+          "42165915516045882488214"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 10,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          4
+        ],
+        "rank": 6,
+        "residue_coefficients_low_to_high": [
+          "635917271792737146250000",
+          "-26997050145280585000000",
+          "376333540010056153750000",
+          "-420015543971179915000000"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 119,
+        "column_potentials": [
+          -18,
+          -15,
+          -12,
+          -9,
+          -6,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "84375052214813722988951288387733639953506268477899209589963043635200000000"
+        ],
+        "row_potentials": [
+          17,
+          20,
+          23,
+          26,
+          29,
+          32,
+          35
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 47,
+        "column_potentials": [
+          -9,
+          -9,
+          -6,
+          -6,
+          -3,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          3,
+          2,
+          1,
+          0,
+          5,
+          4,
+          6
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "199673459464006365500477032309116558314307307445982068736"
+        ],
+        "row_potentials": [
+          8,
+          8,
+          11,
+          11,
+          14,
+          14,
+          17
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 23,
+        "column_potentials": [
+          -6,
+          -6,
+          -6,
+          -3,
+          -3,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0,
+          6
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "649707917740468042297019573277393696",
+          "-649707917740468042297019573277393696"
+        ],
+        "row_potentials": [
+          5,
+          5,
+          5,
+          8,
+          8,
+          8,
+          11
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 12,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          0,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-380724590519595936731866595328",
+          "1410091075998503469377283686400"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          4,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 8,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          6,
+          5,
+          4,
+          3
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-212325341999530792236328125",
+          "21107308566570281982421875",
+          "-147313624620437622070312500",
+          "-122766382992267608642578125"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0,
+          4,
+          3,
+          2,
+          1,
+          6,
+          5
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "41464025640954838288171008",
+          "-51496406174948326555779072"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-1221539804750142123309"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          0,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-2748037194569608002011136",
+          "-2441037304455117806764032",
+          "-702073363492139436081152",
+          "1446640342470616361730048"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 9,
+        "optimal_assignment": [
+          0,
+          1,
+          6,
+          5,
+          4,
+          3,
+          2
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-8650654248170176127307038970",
+          "-3343793570101364770243225179",
+          "3527673348401722918786460670",
+          "97840890904371334503556392",
+          "6532010687882293505892829332",
+          "9909784277986795255281376485"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 10,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          6,
+          5,
+          4,
+          3
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-828094719666557046137500000000",
+          "490214003017455672462500000000",
+          "-208821764518279953037500000000",
+          "1002004687694097567362500000000"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 11,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3,
+          6,
+          5,
+          4
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "5628496734438523495248237133804",
+          "12816515317227691125829830597386",
+          "19281910247409511030956090992385",
+          "22971964644225705848435690103318",
+          "22715112074851698789005987414344",
+          "18592901544629137855337242987502",
+          "11914105754598928786989793190547",
+          "4799195069426939695289096654344",
+          "-492896408587972995814664299030",
+          "-2281967352478021210976372488023"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 12,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          5
+        ],
+        "rank": 7,
+        "residue_coefficients_low_to_high": [
+          "-192274648447647808165955633086464",
+          "-186354775165828285803879239712768",
+          "61773358074111369210681874612224",
+          "146674684952783648162580183810048"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 160,
+        "column_potentials": [
+          -21,
+          -18,
+          -15,
+          -12,
+          -9,
+          -6,
+          -3,
+          0
+        ],
+        "cyclotomic_index": 1,
+        "optimal_assignment": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-12523270696155578474884486474679358234464883207282057952410702509365301958566931077761377239040000000000000"
+        ],
+        "row_potentials": [
+          20,
+          23,
+          26,
+          29,
+          32,
+          35,
+          38,
+          41
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 64,
+        "column_potentials": [
+          -9,
+          -9,
+          -6,
+          -6,
+          -3,
+          -3,
+          0,
+          0
+        ],
+        "cyclotomic_index": 2,
+        "optimal_assignment": [
+          3,
+          2,
+          1,
+          0,
+          5,
+          4,
+          7,
+          6
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "409395249528557984231780752282512082228057156517514706339106773539672394039296"
+        ],
+        "row_potentials": [
+          8,
+          8,
+          11,
+          11,
+          14,
+          14,
+          17,
+          17
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 34,
+        "column_potentials": [
+          -6,
+          -6,
+          -6,
+          -3,
+          -3,
+          -3,
+          0,
+          0
+        ],
+        "cyclotomic_index": 3,
+        "optimal_assignment": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0,
+          6,
+          7
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "2143241526727960451369867850307498598173327029703680"
+        ],
+        "row_potentials": [
+          5,
+          5,
+          5,
+          8,
+          8,
+          8,
+          11,
+          11
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 16,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 4,
+        "optimal_assignment": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "34066659688847004070788586416013049856"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          4,
+          4,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 12,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 5,
+        "optimal_assignment": [
+          0,
+          1,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-13890303307562135159969329833984375",
+          "-32673706300556659698486328125000000",
+          "8804927347227931022644042968750000",
+          "-44488751882454380393028259277343750"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          4,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 8,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          0
+        ],
+        "cyclotomic_index": 6,
+        "optimal_assignment": [
+          0,
+          1,
+          3,
+          2,
+          7,
+          6,
+          5,
+          4
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-103522797689434756606799547262304256",
+          "90365655529931438520889332014776320"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          4,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 4,
+        "column_potentials": [
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          -2,
+          0
+        ],
+        "cyclotomic_index": 7,
+        "optimal_assignment": [
+          0,
+          5,
+          4,
+          3,
+          2,
+          1,
+          7,
+          6
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "106345460818820637547514829315",
+          "131850409410459535345829959554",
+          "94600202144608597974950415177",
+          "-11576537490103496484428984661",
+          "-84812176795914089288587983645",
+          "-68304029772711059204983658973"
+        ],
+        "row_potentials": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          4
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 8,
+        "optimal_assignment": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "106341808682864896865468416"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 9,
+        "optimal_assignment": [
+          0,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "4989245531298683200514963341227",
+          "111764980293428212924366652751",
+          "-4817865591540408128577854508270",
+          "-2503837015043851175256342108891",
+          "-6550488944004652707682137125700",
+          "-7531971528625400502311125517721"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 10,
+        "optimal_assignment": [
+          0,
+          1,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-225484657232032524106875000000000000",
+          "249724504738849461970625000000000000",
+          "14981049686640461955625000000000000",
+          "389081686847294696018125000000000000"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 11,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          7,
+          6,
+          5,
+          4,
+          3
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "258663434932939640492141882388919225",
+          "-2595955389998557771796243424638942558",
+          "-7657535168231487430999781765947272384",
+          "-13319060084351919367295085184563740750",
+          "-17783035976910462362859046027432155173",
+          "-19632182046648447971697248427548602411",
+          "-18279407473822717252654292363536071307",
+          "-14154208636621452002360662674770058332",
+          "-8566307008716878198157942610324591535",
+          "-3289821883607840417684868788940607952"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 12,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3,
+          7,
+          6,
+          5,
+          4
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-4831609816265841682412163909749858893824",
+          "1990632630183124937277567626413565018112",
+          "13111096487213333992244072702128253042688",
+          "10359226314304066459785822906019385180160"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 13,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          7,
+          6,
+          5
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-26645990201331785218175833205926245834524",
+          "-59292581611567910590437973192392468417045",
+          "-90460833572597489292171676067531360421112",
+          "-113010475178112699672607423494799120412079",
+          "-121775655289404423875266624575288556455590",
+          "-114748376774118892946690450536043874844327",
+          "-93538504453161022800281262324911547063694",
+          "-63004964467493465223820066625264162703519",
+          "-30142622859979194215806123035517531946449",
+          "-2479846057534462392720795015470647470830",
+          "13646157145829354335026786873684680056591",
+          "14541113756684894073700951375040409969950"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      },
+      {
+        "Y0": 0,
+        "assignment_bound": 0,
+        "column_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cyclotomic_index": 14,
+        "optimal_assignment": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6
+        ],
+        "rank": 8,
+        "residue_coefficients_low_to_high": [
+          "-469198313055784168034716324331071478187040",
+          "-231066188360749293735341934145333553354576",
+          "-561568528730480028947858012341424501070192",
+          "-166445377288670535290070043478739504174496",
+          "-352755635066675871038672763254917536853344",
+          "145201644454647942120159593172816157938992"
+        ],
+        "row_potentials": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "three_methods_agree": true
+      }
+    ],
+    "source_sequences": {
+      "alpha_degrees": [
+        1,
+        7,
+        19,
+        37,
+        61,
+        91,
+        127,
+        169,
+        217,
+        271,
+        331,
+        397,
+        469,
+        547,
+        631
+      ],
+      "alpha_sha256": [
+        "53d7f4a048bd0daee134c84d46a9de1de3d4c71942f740eb4f964d3fccbeecf3",
+        "2c2267159c943d78b6b3ee075326a6f404c1b9c901fd49917b80c85a48b7dd0e",
+        "f531c2fc51f95b204eaa3e9b7ca4a2d26ac85a23dbfa0bf17cdd476a37437c8f",
+        "6f6caa2a90b56051e601f1a2d7fcf1474acea22b0964d0321230fa5aba846242",
+        "cb3f0e605e9b9421632c66420eba34978b4680aae7326965a18ddb27362a971b",
+        "ed8e126f1d77c8b43bf03c93a7de5ec6578665f5e64d1402d66b68506a2f8a85",
+        "088bf6dbdd0487e7cb568c1a8a0f0c68c0a9827b2cd1525d99e276764f57eeee",
+        "de87f0daf4198cdec4322d417dc8d7b115c39056968f442d67aa9c22b28c83ae",
+        "c5f9e83af31eef070d35cf7c143e0eb574b1af8440665049e5c605de02bc1561",
+        "a6f9115060487a4a1ab10cb642104ca68a19fb8536678e8caf47315836e27a25",
+        "a48a5cb0d2ee56a8949a954e251abda1754663405717f3ff13be0a15e6bd0f05",
+        "463c600eb45ecbd355e2afcb39c4eabc3d284a08ceef3335b013324a0b86e451",
+        "2aa368412d51195abd06dd7f6087ca3eba7971e0fedac61b3aed55f67200f2d8",
+        "7a33b36e78f61d96d8ef3954db140570b5be3b4bcc549ede88ef07ea21de5d72",
+        "254a71552b3fc1835aec218da14a2a3ae0395a7aa4856efa0bba2ab9dc40e7bf"
+      ],
+      "beta_degrees": [
+        -1,
+        6,
+        18,
+        36,
+        60,
+        90,
+        126,
+        168,
+        216,
+        270,
+        330,
+        396,
+        468,
+        546,
+        630
+      ],
+      "beta_sha256": [
+        "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "571813f3737c8691516328d670f39452606951f5a96e80eb16efd4ef2b4f121c",
+        "3117c821def093273de9389da4c87411d6f2b9a057c5009323571d2773557659",
+        "e3be76c8e2f3987df76883a88f4b22ad70f45caba9bc6e0deb2483aa4598a7ef",
+        "74e61cf594ee15baf13834ebc8f4b0eff0fab7819f575a4b3eb16cadd6c2cca7",
+        "0ea9eebbe556c5149f69595c32337f18342bc693e82a59278b240a1fbcaea97b",
+        "fbfb2fbd4675060855064edf2c6e9edca75617eb32f6983a3bc1b5d4b5852ffb",
+        "7a143a17725cd0bbfdb5a6d9fafd0ca0042a4e08f51405b04df65565a700feeb",
+        "498616a6c2bb4d0f937e68c5490229af2dcc769fec032506ed5636c5c7231066",
+        "e41d4a16c40736a2ed84fd1f8e8f18f44df23bfe4d950739460a24d0b3c15def",
+        "11015053de78267b643aab6f435a0804e13a1e7eb43904b4603cda4d7fa84b2e",
+        "cbc7c5d1433b9fbc9180b27df63dea61a61ed4133c91104ee6a3134e0c43da83",
+        "5f07ffacebbf83ecfa71fab868209d50b05135c775f0535387520fb736da39e6",
+        "c240fe0503001ead8a813c018019de52f2cf9da8b98ab4601c252ba1ffdfd8d2",
+        "cfb9880b017976bd6cc82ef45ca0a92f2832e8a341d412a24a10dac5bc86f300"
+      ],
+      "indices": "0..14"
+    }
+  },
+  "schema": "erdos1049-public-computation/1",
+  "verification_scope": "finite_computation_only"
+}

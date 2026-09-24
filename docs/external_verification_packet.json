@@ -1738,9 +1738,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:9566f4f34589af8270e519ee1d622fbaea7afb6075d6e77e5ede2203ec1e3502",
+    "owner_digest": "sha256:9c89c3445f431b8de3ebdd66d0a6aa63d5adf26ec35e3afc0ca72a82645bcbfd",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:2bb32403a072bce763baa3ae7094c2c52ea0ab02a4b5184b252daaac30be22bc",
+    "projection_digest": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2671,7 +2671,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1041_note",
-          "title": "Paths in Polynomial Lemniscates:\\\\Trinomials and Critical-Value Bounds",
+          "title": "Paths in Polynomial Lemniscates:\\\\A Degree-Seven Counterexample\\\\and Two Short-Path Criteria",
           "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2722,7 +2722,7 @@
         "finite_search": "Raster tests through degree ten suggest candidate bounds only; they are separate from the exact degree-seven Lean counterexample.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds",
+          "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
