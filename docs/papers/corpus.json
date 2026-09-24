@@ -7588,7 +7588,7 @@
       "subject_kind": "system",
       "form": "Research architecture",
       "owns": "the research architecture: problem-sized worlds, the path from a proof to a public claim, and the contribution cycle",
-      "not_authority_for": "the mathematics it uses as examples, which the problem papers own, and the correctness of the human review it records",
+      "not_authority_for": "the mathematics it uses as examples, which the problem papers own, or the novelty and significance of those results",
       "publication_state": "active",
       "publication_class": "methods_paper",
       "publication_class_basis": "owns names 'architecture'",

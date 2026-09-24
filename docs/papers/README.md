@@ -458,7 +458,7 @@ responsibility for proof verification, status and explanation as follows:
 - `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `optimal-sparse-perturbations` is not authority for a solution to any original Erdős target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem.
-- `claim-faithful-publication-systems` is not authority for the mathematics it uses as examples, which the problem papers own, and the correctness of the human review it records.
+- `claim-faithful-publication-systems` is not authority for the mathematics it uses as examples, which the problem papers own, or the novelty and significance of those results.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
