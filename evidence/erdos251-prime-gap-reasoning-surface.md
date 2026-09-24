@@ -87,11 +87,11 @@ theorem bounded_test_finite_coupling {α : Type*} (a b : ℕ → α)
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `arbitrary_word_sparse_rationalisation_uniform` | [E251_01/Challenge.lean, line 113](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L113) | [UniformSparseRationalisation.lean, line 50](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean#L50) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
-| `polylogarithmic_word_interval_uniform` | [E251_01/Challenge.lean, line 87](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L87) | [UniformSparseRationalisation.lean, line 20](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean#L20) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
-| `bounded_test_finite_coupling` | [E251_01/Challenge.lean, line 51](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L51) | [PaperStatementsA.lean, line 20](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsA.lean#L20) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `arbitrary_word_sparse_rationalisation_uniform`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L113) (E251_01, line 113), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean#L50) (UniformSparseRationalisation.lean, line 50), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
+- `polylogarithmic_word_interval_uniform`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L87) (E251_01, line 87), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean#L20) (UniformSparseRationalisation.lean, line 20), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
+- `bounded_test_finite_coupling`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L51) (E251_01, line 51), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsA.lean#L20) (PaperStatementsA.lean, line 20), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets except where shown below, with every definition it uses restated from Mathlib alone.
 
@@ -155,9 +155,9 @@ theorem local_target_interval (a : ℕ → ℕ) {A η : ℝ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `local_target_interval` | [E251_01/Challenge.lean, line 153](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L153) | [PaperStatementsI.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsI.lean#L21) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `local_target_interval`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L153) (E251_01, line 153), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsI.lean#L21) (PaperStatementsI.lean, line 21), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -187,9 +187,9 @@ theorem dyadicPartialSumQ_eq_start_add_differences
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `dyadicPartialSumQ_eq_start_add_differences` | [E251_01/Challenge.lean, line 232](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L232) | [PaperStatementsG.lean, line 135](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L135) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `dyadicPartialSumQ_eq_start_add_differences`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L232) (E251_01, line 232), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L135) (PaperStatementsG.lean, line 135), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -217,9 +217,9 @@ theorem prime0_dyadic_summation_by_parts (n : ℕ) :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `prime0_dyadic_summation_by_parts` | [E251_01/Challenge.lean, line 238](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L238) | [PaperStatementsG.lean, line 149](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L149) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `prime0_dyadic_summation_by_parts`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L238) (E251_01, line 238), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L149) (PaperStatementsG.lean, line 149), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -248,9 +248,9 @@ theorem infinite_prime_gap_identity :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `infinite_prime_gap_identity` | [E251_01/Challenge.lean, line 205](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L205) | [PaperStatementsG.lean, line 44](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L44) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `infinite_prime_gap_identity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L205) (E251_01, line 205), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L44) (PaperStatementsG.lean, line 44), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -278,9 +278,9 @@ theorem irrationality_reformulation :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `irrationality_reformulation` | [E251_01/Challenge.lean, line 211](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L211) | [PaperStatementsG.lean, line 49](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L49) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `irrationality_reformulation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L211) (E251_01, line 211), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L49) (PaperStatementsG.lean, line 49), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -310,9 +310,9 @@ theorem real_block_identity {g : ℕ → ℤ} {T : ℕ → ℝ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `real_block_identity` | [E251_01/Challenge.lean, line 252](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L252) | [PaperStatementsH.lean, line 18](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsH.lean#L18) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `real_block_identity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L252) (E251_01, line 252), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsH.lean#L18) (PaperStatementsH.lean, line 18), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -351,9 +351,9 @@ theorem rationality_classification {g : ℕ → ℤ} {T : ℕ → ℝ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `rationality_classification` | [E251_01/Challenge.lean, line 220](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L220) | [PaperStatementsG.lean, line 91](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L91) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `rationality_classification`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L220) (E251_01, line 220), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L91) (PaperStatementsG.lean, line 91), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -383,9 +383,9 @@ theorem real_dyadic_orbit_eq_true_tail_iff (a U : ℕ → ℝ)
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `real_dyadic_orbit_eq_true_tail_iff` | [E251_01/Challenge.lean, line 268](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L268) | [PaperStatementsC.lean, line 19](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsC.lean#L19) | [E251_01](../evidence/comparator/replay-35882032091/receipt-E251_01.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `real_dyadic_orbit_eq_true_tail_iff`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_01/Challenge.lean#L268) (E251_01, line 268), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_01/PaperStatementsC.lean#L19) (PaperStatementsC.lean, line 19), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -409,9 +409,9 @@ theorem actual_free_pair_criterion :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `actual_free_pair_criterion` | [E251_02/Challenge.lean, line 66](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L66) | [PaperStatementsL.lean, line 20](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsL.lean#L20) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `actual_free_pair_criterion`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L66) (E251_02, line 66), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsL.lean#L20) (PaperStatementsL.lean, line 20), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -438,9 +438,9 @@ theorem irrational_initial_iff_all_lcmDiagonal_nonintegral {g : ℕ → ℤ} {T 
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `irrational_initial_iff_all_lcmDiagonal_nonintegral` | [E251_02/Challenge.lean, line 80](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L80) | [PaperStatementsM.lean, line 73](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsM.lean#L73) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `irrational_initial_iff_all_lcmDiagonal_nonintegral`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L80) (E251_02, line 80), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsM.lean#L73) (PaperStatementsM.lean, line 73), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -477,9 +477,9 @@ theorem rational_small_pair_bundle {g : ℕ → ℤ} {T : ℕ → ℚ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `rational_small_pair_bundle` | [E251_02/Challenge.lean, line 115](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L115) | [PaperStatementsG.lean, line 79](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L79) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `rational_small_pair_bundle`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L115) (E251_02, line 115), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L79) (PaperStatementsG.lean, line 79), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -518,9 +518,9 @@ theorem real_small_pair_prime_endpoint {g : ℕ → ℤ} {T : ℕ → ℝ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `real_small_pair_prime_endpoint` | [E251_02/Challenge.lean, line 140](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L140) | [PaperStatementsG.lean, line 113](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L113) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `real_small_pair_prime_endpoint`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L140) (E251_02, line 140), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L113) (PaperStatementsG.lean, line 113), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -543,9 +543,9 @@ theorem prime_gaps_not_eventually_periodic {h : ℕ} (hh : 0 < h) :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `prime_gaps_not_eventually_periodic` | [E251_02/Challenge.lean, line 102](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L102) | [PaperStatementsG.lean, line 68](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L68) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `prime_gaps_not_eventually_periodic`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L102) (E251_02, line 102), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L68) (PaperStatementsG.lean, line 68), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -581,9 +581,9 @@ theorem real_signed_two_window {g : ℕ → ℤ} {T : ℕ → ℝ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `real_signed_two_window` | [E251_02/Challenge.lean, line 128](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L128) | [PaperStatementsG.lean, line 102](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L102) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `real_signed_two_window`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L128) (E251_02, line 128), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L102) (PaperStatementsG.lean, line 102), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -618,9 +618,9 @@ theorem explicit_remainder_certificate (h N L : ℕ) :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `explicit_remainder_certificate` | [E251_02/Challenge.lean, line 181](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L181) | [PaperStatementsO.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsO.lean#L21) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `explicit_remainder_certificate`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L181) (E251_02, line 181), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsO.lean#L21) (PaperStatementsO.lean, line 21), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -649,9 +649,9 @@ theorem finite_small_pair :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `finite_small_pair` | [E251_02/Challenge.lean, line 195](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L195) | [PaperStatementsP.lean, line 20](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsP.lean#L20) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `finite_small_pair`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L195) (E251_02, line 195), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsP.lean#L20) (PaperStatementsP.lean, line 20), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -683,9 +683,9 @@ theorem one_tail_signed_certificate (D D' : ℝ) (s A B Q : ℤ)
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `one_tail_signed_certificate` | [E251_02/Challenge.lean, line 210](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L210) | [PaperStatementsB.lean, line 23](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsB.lean#L23) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `one_tail_signed_certificate`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L210) (E251_02, line 210), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsB.lean#L23) (PaperStatementsB.lean, line 23), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -715,10 +715,10 @@ theorem denominator_floor_decimal : (10 ^ 177 : ℕ) < 2 ^ 589
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `denominator_floor_both` | [E251_02/Challenge.lean, line 225](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L225) | [ExactDenominatorFloors.lean, line 19](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/ExactDenominatorFloors.lean#L19) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
-| `denominator_floor_decimal` | [E251_02/Challenge.lean, line 235](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L235) | [PaperStatementsF.lean, line 27](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsF.lean#L27) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `denominator_floor_both`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L225) (E251_02, line 225), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/ExactDenominatorFloors.lean#L19) (ExactDenominatorFloors.lean, line 19), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
+- `denominator_floor_decimal`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L235) (E251_02, line 235), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsF.lean#L27) (PaperStatementsF.lean, line 27), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -767,9 +767,9 @@ theorem rational_bounded_perturbation {a : ℕ → ℕ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `rational_bounded_perturbation` | [E251_02/Challenge.lean, line 106](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L106) | [PaperStatementsG.lean, line 71](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L71) | [E251_02](../evidence/comparator/replay-35882032091/receipt-E251_02.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `rational_bounded_perturbation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_02/Challenge.lean#L106) (E251_02, line 106), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L71) (PaperStatementsG.lean, line 71), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_02.json) (E251_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -797,9 +797,9 @@ theorem shifted_count_bound (h N H : ℕ) (hh : 2 ≤ h) (r : ℤ) :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `shifted_count_bound` | [E251_03/Challenge.lean, line 64](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L64) | [PaperStatementsR.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsR.lean#L21) | [E251_03](../evidence/comparator/replay-35882032091/receipt-E251_03.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `shifted_count_bound`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L64) (E251_03, line 64), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsR.lean#L21) (PaperStatementsR.lean, line 21), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_03.json) (E251_03)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -833,9 +833,9 @@ def FixedBlockNonconcentration (a : ℕ → ℤ) : Prop :=
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `finite_perturbation_stability` | [E251_03/Challenge.lean, line 75](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L75) | [PaperStatementsF.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsF.lean#L21) | [E251_03](../evidence/comparator/replay-35882032091/receipt-E251_03.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `finite_perturbation_stability`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L75) (E251_03, line 75), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsF.lean#L21) (PaperStatementsF.lean, line 21), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_03.json) (E251_03)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -941,9 +941,9 @@ theorem sparse_nonconcentration (a b : ℕ → ℤ) (S : Set ℕ)
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `sparse_nonconcentration` | [E251_03/Challenge.lean, line 117](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L117) | [PaperStatementsK.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsK.lean#L21) | [E251_03](../evidence/comparator/replay-35882032091/receipt-E251_03.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `sparse_nonconcentration`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L117) (E251_03, line 117), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsK.lean#L21) (PaperStatementsK.lean, line 21), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_03.json) (E251_03)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1096,9 +1096,9 @@ theorem exists_logarithmic_recurring_values_countermodel :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `exists_logarithmic_recurring_values_countermodel` | [E251_03/Challenge.lean, line 219](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L219) | [PaperStatementsA.lean, line 34](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsA.lean#L34) | [E251_03](../evidence/comparator/replay-35882032091/receipt-E251_03.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `exists_logarithmic_recurring_values_countermodel`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L219) (E251_03, line 219), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsA.lean#L34) (PaperStatementsA.lean, line 34), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_03.json) (E251_03)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1132,9 +1132,9 @@ theorem polynomial_countermodel :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `polynomial_countermodel` | [E251_03/Challenge.lean, line 261](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L261) | [PaperStatementsG.lean, line 72](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsG.lean#L72) | [E251_03](../evidence/comparator/replay-35882032091/receipt-E251_03.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `polynomial_countermodel`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L261) (E251_03, line 261), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsG.lean#L72) (PaperStatementsG.lean, line 72), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_03.json) (E251_03)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1157,9 +1157,9 @@ theorem carryPartialSum_eq (K : ℕ → ℚ) (n : ℕ) :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `carryPartialSum_eq` | [E251_03/Challenge.lean, line 273](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L273) | [PaperStatementsG.lean, line 147](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsG.lean#L147) | [E251_03](../evidence/comparator/replay-35882032091/receipt-E251_03.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `carryPartialSum_eq`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_03/Challenge.lean#L273) (E251_03, line 273), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_03/PaperStatementsG.lean#L147) (PaperStatementsG.lean, line 147), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_03.json) (E251_03)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1185,9 +1185,9 @@ theorem tailShift_integral_totient_of_odd_den
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `tailShift_integral_totient_of_odd_den` | [E251_04/Challenge.lean, line 47](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L47) | [PaperStatementsG.lean, line 191](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsG.lean#L191) | [E251_04](../evidence/comparator/replay-35882032091/receipt-E251_04.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `tailShift_integral_totient_of_odd_den`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L47) (E251_04, line 47), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsG.lean#L191) (PaperStatementsG.lean, line 191), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_04.json) (E251_04)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1213,9 +1213,9 @@ theorem realTailShift_integral_add
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `realTailShift_integral_add` | [E251_04/Challenge.lean, line 77](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L77) | [PaperStatementsM.lean, line 26](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsM.lean#L26) | [E251_04](../evidence/comparator/replay-35882032091/receipt-E251_04.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `realTailShift_integral_add`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L77) (E251_04, line 77), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsM.lean#L26) (PaperStatementsM.lean, line 26), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_04.json) (E251_04)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1255,9 +1255,9 @@ def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `cofinal_escape_of_finite_truncation` | [E251_04/Challenge.lean, line 144](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L144) | [PaperStatementsN.lean, line 21](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsN.lean#L21) | [E251_04](../evidence/comparator/replay-35882032091/receipt-E251_04.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `cofinal_escape_of_finite_truncation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L144) (E251_04, line 144), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsN.lean#L21) (PaperStatementsN.lean, line 21), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_04.json) (E251_04)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1287,9 +1287,9 @@ theorem finite_separation_complete (D : ℝ) (S R : ℕ → ℝ)
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `finite_separation_complete` | [E251_04/Challenge.lean, line 157](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L157) | [PaperStatementsB.lean, line 17](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsB.lean#L17) | [E251_04](../evidence/comparator/replay-35882032091/receipt-E251_04.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `finite_separation_complete`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L157) (E251_04, line 157), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsB.lean#L17) (PaperStatementsB.lean, line 17), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_04.json) (E251_04)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1320,9 +1320,9 @@ theorem bounded_recurring_values_countermodel :
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `bounded_recurring_values_countermodel` | [E251_04/Challenge.lean, line 179](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L179) | [PaperStatementsE.lean, line 18](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsE.lean#L18) | [E251_04](../evidence/comparator/replay-35882032091/receipt-E251_04.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `bounded_recurring_values_countermodel`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L179) (E251_04, line 179), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsE.lean#L18) (PaperStatementsE.lean, line 18), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_04.json) (E251_04)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -1400,8 +1400,8 @@ theorem affine_circularity_bundle {g : ℕ → ℤ} {T : ℕ → ℚ}
 
 **Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
 
-| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |
-|---|---|---|---|
-| `affine_circularity_bundle` | [E251_04/Challenge.lean, line 84](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L84) | [PaperStatementsM.lean, line 32](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsM.lean#L32) | [E251_04](../evidence/comparator/replay-35882032091/receipt-E251_04.json) |
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `affine_circularity_bundle`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E251_04/Challenge.lean#L84) (E251_04, line 84), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E251_04/PaperStatementsM.lean#L32) (PaperStatementsM.lean, line 32), [replay report](../evidence/comparator/replay-35882032091/receipt-E251_04.json) (E251_04)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

@@ -1011,7 +1011,6 @@
           "role": "Standalone theorem-led problem note for Erdős #249 and the dyadic/all-base totient-kernel boundary.",
           "anchor_label_allowlist": [
             "res:basis",
-            "res:rank",
             "thm:kkernelrank",
             "res:factorideal",
             "res:actualorbit",
@@ -20811,7 +20810,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1068
+        "line": 1065
       }
     },
     {
@@ -20883,7 +20882,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 580
+        "line": 581
       }
     },
     {
@@ -20895,7 +20894,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 586
+        "line": 587
       }
     },
     {
@@ -20907,7 +20906,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 2243
+        "line": 2245
       }
     },
     {
@@ -20931,7 +20930,7 @@
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "Four estimates for the first-harmonic sum",
-        "line": 712
+        "line": 704
       }
     },
     {
@@ -20943,7 +20942,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1084
+        "line": 1081
       }
     },
     {
@@ -20955,7 +20954,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1093
+        "line": 1090
       }
     },
     {
@@ -20967,7 +20966,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1104
+        "line": 1101
       }
     }
   ],
@@ -23557,7 +23556,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
       ],
-      "paper_label": "res:rank",
+      "paper_label": "thm:kkernelrank",
       "readme_headline": false,
       "declarations": [
         {

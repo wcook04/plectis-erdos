@@ -2207,7 +2207,7 @@ Formalise the absolute-convergence form of Corollary 3.2 of \[duverney2001\], 
 
 #### Artefact and data availability.
 
-The Lean sources, with their fixed toolchain and library manifest, are in the [public repository](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500). The [evidence record](\evidencerecordurl) gives, for every result, the Lean declarations, the version checked and the independent Comparator check. The external formal-conjecture entry states the problem without proving it. The ordinary proofs and their exposition require mathematical review independently of these checks.
+The Lean sources, with their fixed toolchain and library manifest, are in the [public repository](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500). The [evidence record](https://github.com/wcook04/plectis-erdos/blob/2cde65668174e0e547129fc4b2606fdb6eb251cd/evidence/erdos243-reciprocal-tail-reasoning-surface.md) gives, for every result, the Lean declarations, the version checked and the independent Comparator check. The external formal-conjecture entry states the problem without proving it. The ordinary proofs and their exposition require mathematical review independently of these checks.
 
 <a id="funding-and-competing-interests."></a>
 

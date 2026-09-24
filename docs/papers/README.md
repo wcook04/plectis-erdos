@@ -324,7 +324,7 @@ Start here (selected for this guide): [The tail recurrence and the exact criteri
 
 **Weighted Support Criteria for Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 24 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 25 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 Start here (selected for this guide): [Introduction and main results](full-text/erdos-257-mersenne-support-subseries.md#sec:problem), [Reciprocal-summable supports at every integer base](full-text/erdos-257-mersenne-support-subseries.md#sec:reciprocal-support), [Extensions beyond reciprocal summability](full-text/erdos-257-mersenne-support-subseries.md#sec:eight-return-extensions), [Further questions](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
@@ -372,7 +372,7 @@ Start here (selected for this guide): [A small least critical value](full-text/e
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 22 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 23 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [A region of rational bases at which F is irrational](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero term of Zudilin’s Hankel determinant](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Supplementary arithmetic at 3/2](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 

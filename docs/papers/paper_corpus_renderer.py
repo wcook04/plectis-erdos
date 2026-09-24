@@ -1033,6 +1033,10 @@ def _preserve_evidence_macros(tex: str, tex_path: Path) -> str:
         body = paragraph.replace("#1", (record or "").replace("#", "\\#"))
         tex = re.sub(r"\\evidenceparagraph\{[^{}]*(?:\{[^{}]*\}[^{}]*)?\}",
                      lambda _m: "\n\n" + body + "\n\n", tex)
+    if record is not None:
+        # A paper may also link its record directly, as \href{\evidencerecordurl}{...}.
+        tex = re.sub(r"\\evidencerecordurl(?![A-Za-z])",
+                     lambda _m: record.replace("#", "\\#"), tex)
     chunks: list[str] = []
     cursor = 0
     while True:

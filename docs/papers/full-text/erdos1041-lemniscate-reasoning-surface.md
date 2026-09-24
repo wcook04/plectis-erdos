@@ -2405,7 +2405,7 @@ The continuous optimisation remains unevaluated: maximise $`\sum_j\lambda(d_j)`$
 
 # Guide to the results
 
-The table distinguishes the main conclusions and their limitations. Each theorem retains its own hypotheses; the scope of formal verification is given in the [evidence record](\evidencerecordurl).
+The table distinguishes the main conclusions and their limitations. Each theorem retains its own hypotheses; the scope of formal verification is given in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/2cde65668174e0e547129fc4b2606fdb6eb251cd/evidence/erdos1041-lemniscate-reasoning-surface.md).
 
 <div class="center">
 

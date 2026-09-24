@@ -967,16 +967,21 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
         if cmp["status"] == "compared":
             out.append(f"**Comparator: passed** (run {run}, corpus commit `{commit[:12]}`).")
             out.append("")
-            out.append("| Lean declaration | Challenge (the target, from Mathlib alone) | Solution (our proof) | Replay report |")
-            out.append("|---|---|---|---|")
+            # A list, not a table: declaration names run to ninety characters and would
+            # push a table past the width GitHub renders without a scrollbar.
+            out.append("For each Lean declaration: the Challenge (the target, stated from Mathlib alone), "
+                       "the Solution (our proof) and the replay report.")
+            out.append("")
             for c in cmp["checks"]:
                 short = c["declaration"].rsplit(".", 1)[-1]
                 ch, so = c["challenge"], c["solution"]
                 out.append(
-                    f"| `{short}` "
-                    f"| [{ch['path'].rsplit('/', 2)[-2]}/Challenge.lean, line {ch['line']}]({corpus_url(commit, ch['path'], ch['line'])}) "
-                    f"| [{so['path'].rsplit('/', 1)[-1]}, line {so['line']}]({corpus_url(commit, so['path'], so['line'])}) "
-                    f"| [{c['entry']}]({up}{c['receipt']}) |")
+                    f"- `{short}`: "
+                    f"[Challenge]({corpus_url(commit, ch['path'], ch['line'])}) "
+                    f"({ch['path'].rsplit('/', 2)[-2]}, line {ch['line']}), "
+                    f"[Solution]({corpus_url(commit, so['path'], so['line'])}) "
+                    f"({so['path'].rsplit('/', 1)[-1]}, line {so['line']}), "
+                    f"[replay report]({up}{c['receipt']}) ({c['entry']})")
             out.append("")
             different = [c for c in cmp["checks"] if c["challenge"].get("statement") and not c["challenge"].get("same_as_lean")]
             if len(different) < len(cmp["checks"]):

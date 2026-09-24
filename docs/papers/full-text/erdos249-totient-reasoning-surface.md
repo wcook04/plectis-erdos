@@ -6367,7 +6367,7 @@ Automatic prime-sampling theorems address a different issue. Adamczewski, Drmota
 
 #### Sources and data.
 
-The [evidence record](\evidencerecordurl) lists every Lean declaration, version and check behind the margin marks.
+The [evidence record](https://github.com/wcook04/plectis-erdos/blob/2cde65668174e0e547129fc4b2606fdb6eb251cd/evidence/erdos249-totient-reasoning-surface.md) lists every Lean declaration, version and check behind the margin marks.
 
 <a id="verification-scope."></a>
 
