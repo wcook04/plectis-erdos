@@ -172,9 +172,12 @@ integral coordinates and a basis of all integral relations; at prime base the
 rank is exponential in the depth `e`. A rational `5/4` control that agrees with
 totient on odd arguments still has tempered carry rank at least `2^e−1` at
 every depth, so a generic rationality-driven carry-rank ceiling is false.
-Bounded-residue series `A_m` remain irrational for every `m ≥ 3`, with a
-complete rationality classification at dyadic moduli; this is ordinary
-mathematics in the short note, not Lean. The strongest checked structural
+Bounded-residue series `A_m` are irrational for every `m ≥ 3`, with a
+complete rationality classification at dyadic moduli. The short note proves
+these results, and the public Lean development checks the
+[irrationality theorem](https://github.com/wcook04/plectis-erdos/blob/a14777b3219873bc8343205cca0bb3bb6530e8fa/lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean#L566-L580)
+and [dyadic classification](https://github.com/wcook04/plectis-erdos/blob/a14777b3219873bc8343205cca0bb3bb6530e8fa/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L221-L233).
+The strongest checked structural
 result on the hypothetical rational totient branch is carry anti-compression:
 one carry would have uniformly eventually-periodic dyadic sections modulo its
 multiplier while retaining canonical section rank at least `2^e − 1` at every
