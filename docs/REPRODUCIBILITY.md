@@ -246,7 +246,8 @@ invocation:
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
   Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
-  FormalConjecturesVariants ResidualBench
+  FormalConjecturesVariants FC1049HeightRegion ResidualBench
+lake env lean research/adapters/FC1049HeightRegion.lean
 python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
