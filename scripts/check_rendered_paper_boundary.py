@@ -76,14 +76,14 @@ FIRST_MINUTE_CONTRACT = {
         ),
     },
     # The September 2026 rewrite: page one carries the unit of work, the
-    # #1041 refutation and the registry's all-eight-open status; the checks,
+    # #1041 refutation and the other seven targets' open status; the checks,
     # the contribution cycle and the limits each keep their boundary within
     # one page of where they render today.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
             "persistent unit of work",
-            "the claim registry keeps all eight original problems open",
+            "the other seven targets remain open",
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),

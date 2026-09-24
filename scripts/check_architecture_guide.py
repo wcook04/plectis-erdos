@@ -218,7 +218,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "persistent unit of work, the problem-sized world",
         "Any model, provider or person can resume from the record",
         "accepted work returns to it with credit",
-        "the claim registry keeps all eight original problems open",
+        "The other seven targets remain open",
         "Comparator, a checker the Lean FRO built",
         "formal refutation of the Formal Conjectures statement of Problem 1041",
     ),
