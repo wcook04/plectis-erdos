@@ -224,8 +224,8 @@ def main() -> int:
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "The records treat negative results as outputs",
-                "The records keep only successful results",
+                "Negative results are part of what the loop produces",
+                "The loop keeps only successful results",
             ),
             "negative-results thesis removed",
         ),
@@ -262,6 +262,24 @@ def main() -> int:
         )
         assert_paper_rejected(mutated, label)
         checks += 1
+
+    # Every pinned anchor must be armed: deleting all of its occurrences has to
+    # change the source and has to be rejected. An anchor the source no longer
+    # contains verbatim, or one the checker ignores, would otherwise guard
+    # nothing while looking like a limit.
+    # Path anchors also occur TeX-escaped in link text (check\_release.py),
+    # which the checker flattens back, so both spellings are deleted.
+    for group_id, anchors in checker.PAPER_REQUIRED_ANCHOR_GROUPS.items():
+        for anchor in anchors:
+            mutated = systems_paper
+            for spelling in {anchor, anchor.replace("_", r"\_")}:
+                pattern = r"\s+".join(re.escape(word) for word in spelling.split())
+                mutated = re.sub(pattern, "", mutated, flags=re.IGNORECASE)
+            assert mutated != systems_paper, (
+                f"systems-paper anchor is not verbatim in the source: {group_id}: {anchor!r}"
+            )
+            assert_paper_rejected(mutated, f"{group_id} anchor deleted: {anchor!r}")
+            checks += 1
 
     overflow = systems_paper + "x" * (
         systems_paper_budget - len(systems_paper.encode("utf-8")) + 1
