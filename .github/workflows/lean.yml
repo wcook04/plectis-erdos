@@ -258,7 +258,10 @@ jobs:
               "ErdosProblems.Erdos1049.FormalConjecturesAdapter."
               "erdos_1049_variants_rational_base_region_81_200"
           )
-          match = re.search(rf"{re.escape(theorem)} depends on axioms: \[([^\]]*)\]", output)
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
           if match is None:
               raise SystemExit(f"missing axiom report for {theorem}")
           axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
