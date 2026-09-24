@@ -292,7 +292,7 @@ Start here (selected for this guide): [Irrationality at the cubic rate](full-tex
 
 **Bases and Integral Relations for the k-Kernel of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 17 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
 
 Start here (selected for this guide): [A basis and all its relations](full-text/erdos-249-binary-totient-series.md#sec:results), [Tail differences and finite residue tests](full-text/erdos-249-binary-totient-series.md#sec:carry-rank), [An equivalent residue condition for each hypothetical denominator](full-text/erdos-249-binary-totient-series.md#sec:frontier), [Information that does not force the gap](full-text/erdos-249-binary-totient-series.md#sec:nogo).
 
