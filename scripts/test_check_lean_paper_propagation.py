@@ -134,6 +134,7 @@ def seal(rows: list[dict[str, Any]], sources: dict[str, list[str]]) -> dict[str,
             for paper_id, paths in sources.items()
         ],
         "rows": rows,
+        "summary": check.ledger_summary(rows),
     }
     ledger["content_digest"] = check.content_digest(ledger)
     return ledger
@@ -379,6 +380,31 @@ def test_integrity_rejects_unstamped_edits_and_invalid_statuses() -> None:
     require(check.ledger_integrity_failures(none_with_names), "a none row may not name declarations")
 
 
+def test_summary_follows_the_rows_and_restamp_regenerates_it() -> None:
+    text = paper(STATEMENT, NOTE)
+    ledger = short_ledger(text)
+    require(not any("summary" in failure for failure in check.ledger_integrity_failures(ledger)),
+            "a sealed fixture's summary disagreed with its rows")
+
+    stale = copy.deepcopy(ledger)
+    stale["summary"]["lean"] = {"modulo_named_input": 1}
+    stale["content_digest"] = check.content_digest(stale)
+    require(any("summary" in failure for failure in check.ledger_integrity_failures(stale)),
+            "a summary whose counts differ from the rows passed")
+    missing = {key: value for key, value in ledger.items() if key != "summary"}
+    missing["content_digest"] = check.content_digest(missing)
+    require(any("summary" in failure for failure in check.ledger_integrity_failures(missing)),
+            "a ledger without a summary block passed")
+
+    edited = copy.deepcopy(ledger)
+    edited["rows"][0]["lean"]["status"] = "exact_or_stronger"
+    repaired = check.restamped(edited, [])
+    require(repaired["summary"]["lean"] == {"exact_or_stronger": 1},
+            f"--restamp did not recount the rows: {repaired['summary']}")
+    require(not check.ledger_integrity_failures(repaired),
+            f"--restamp left the ledger inconsistent: {check.ledger_integrity_failures(repaired)}")
+
+
 def test_currency_detects_changed_moved_and_unrecorded_statements() -> None:
     text = paper(STATEMENT, NOTE)
     ledger = short_ledger(text)
@@ -470,6 +496,7 @@ def main() -> int:
         test_clause_d_label_docstrings_need_a_row_or_a_reasoned_exemption,
         test_clause_e_pending_exact_rows_need_a_queue_date,
         test_integrity_rejects_unstamped_edits_and_invalid_statuses,
+        test_summary_follows_the_rows_and_restamp_regenerates_it,
         test_currency_detects_changed_moved_and_unrecorded_statements,
         test_baseline_only_shrinks,
         test_introduced_debt_matches_the_committed_baseline,

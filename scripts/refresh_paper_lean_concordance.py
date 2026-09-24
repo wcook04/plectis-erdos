@@ -42,9 +42,12 @@ def render(row: dict, pin: str) -> str:
     status = row["comparator"]["status"]
     if status != "pending" or row["palomar"]["status"] != "pending":
         raise ValueError("focused writer requires pending Comparator and Palomar statuses")
+    # The concordance header promises this qualifier wherever the Lean statement is
+    # stronger than the printed one; the full generator writes the same words.
+    stronger = " (the Lean statement is stronger)" if row["lean"]["status"] == "exact_or_stronger" else ""
     return (
         r"\par\noindent\hangindent=1.5em The statement at~\ref{"
-        + row["label"] + "}: " + ", ".join(links)
+        + row["label"] + "}" + stronger + ": " + ", ".join(links)
         + r". \emph{Comparator replay pending; Palomar entry pending.}"
     )
 
