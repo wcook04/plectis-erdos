@@ -99,7 +99,7 @@ FIRST_MINUTE_CONTRACT = {
             "whether the formal statement matches the 1958 wording",
         ),
         (8, 10): (
-            "no outside contributor had opened a pull request or issue",
+            "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),
     },

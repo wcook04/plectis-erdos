@@ -245,6 +245,10 @@ def main() -> int:
             "repository links use a retired repository name",
         ),
         (
+            systems_paper.replace(r"level $e\ge1$", r"level $e\ge0$"),
+            "totient rank formula extended to the false e = 0 case",
+        ),
+        (
             systems_paper.replace(
                 r"\repolink{docs/ARCHITECTURE.md}{docs/ARCHITECTURE.md}",
                 r"\repolink{ARCHITECTURE.md}{ARCHITECTURE.md}",
