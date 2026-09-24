@@ -1942,13 +1942,18 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     inflated_sentence = (
         "This example establishes a general reliability score for future errors."
     )
-    if limited_sentence not in original_source:
+    # Match across TeX line wrapping: a reflowed paragraph must neither hide
+    # the limited sentence from this fixture nor disarm it.
+    limited_pattern = re.compile(
+        r"\s+".join(re.escape(word) for word in limited_sentence.split())
+    )
+    if limited_pattern.search(original_source) is None:
         failures.append("post_repair_source_fixture_anchor_missing")
     else:
-        mutated_source = original_source.replace(
-            limited_sentence,
-            inflated_sentence,
-            1,
+        mutated_source = limited_pattern.sub(
+            lambda _match: inflated_sentence,
+            original_source,
+            count=1,
         )
         systems["source_content_digest"] = sha256(mutated_source.encode("utf-8"))
         overlay_reader = RepositoryReader(
