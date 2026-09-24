@@ -1,0 +1,136 @@
+{
+  "arguments": [],
+  "claim_boundary": "Interval-certified comparison of C0/C1 over the 37,533 primitive tuples with entries at most 30. No statement about directions outside the box. The irrationality theorem does not use this computation. No floating point and no Lean kernel.",
+  "paper_passage": "Subsection 'Proofs, earlier work and limitations', paragraph 'A certified finite parameter search'",
+  "program": "parameter_box.py",
+  "program_sha256": "b0e19240444e0118f63aedf307424c895e4ce947f35292bb1b2d9edef4aed22e",
+  "result": {
+    "all_printed_claims_verified": true,
+    "box": "1 <= alpha0, alpha1, alpha2, beta <= 30; gcd 1; alpha1 <= alpha2; alpha1 + alpha2 < beta <= alpha0 + alpha2",
+    "checks": {
+      "A: both maximisers inside (0.40568302137302, 0.40568302139506)": true,
+      "A: every other tuple below 0.40563943278333": true,
+      "A: every weight is 0 or 1": true,
+      "A: exactly the two stated maximisers": true,
+      "A: first cell contributes zero": true,
+      "A: maximisers separated from all other tuples": true,
+      "A: tuple count is 37533": true,
+      "B: both maximisers inside (0.40568302137302, 0.40568302139506)": true,
+      "B: every other tuple below 0.40563943278333": true,
+      "B: every weight is 0 or 1": true,
+      "B: exactly the two stated maximisers": true,
+      "B: first cell contributes zero": true,
+      "B: maximisers separated from all other tuples": true,
+      "B: tuple count is 37533": true,
+      "exact tie inputs: C1 = 1091/2 for both": true,
+      "exact tie inputs: floor identity on every cell": true,
+      "exact tie inputs: m = 15 for both": true,
+      "exact tie inputs: quadratic parts 266 and 265": true
+    },
+    "exact_tie_inputs": {
+      "C1_values": [
+        "1091/2",
+        "1091/2"
+      ],
+      "m_values": [
+        15,
+        15
+      ],
+      "omega_B_minus_omega_A_equals_floor13_plus_floor15_minus_2floor14_on_every_cell": true,
+      "quadratic_parts": [
+        "266",
+        "265"
+      ]
+    },
+    "implementations": [
+      {
+        "enumeration_order": "increasing (alpha1, alpha2, beta, alpha0)",
+        "first_cell_contributes_zero": true,
+        "implementation": "A",
+        "largest_other_tuple": [
+          16,
+          13,
+          14,
+          28
+        ],
+        "largest_other_upper_endpoint": "0.40563943278332137",
+        "maximiser_candidates": [
+          [
+            14,
+            12,
+            14,
+            27
+          ],
+          [
+            15,
+            12,
+            13,
+            26
+          ]
+        ],
+        "maximiser_enclosures": {
+          "[14, 12, 14, 27]": [
+            "0.40568302137302554",
+            "0.40568302139505260"
+          ],
+          "[15, 12, 13, 26]": [
+            "0.40568302137302552",
+            "0.40568302139505262"
+          ]
+        },
+        "maximum_weight_on_any_cell": 1,
+        "separated": true,
+        "summands_per_cell": 256,
+        "tuples": 37533
+      },
+      {
+        "enumeration_order": "decreasing (alpha0, beta, alpha2, alpha1)",
+        "first_cell_contributes_zero": true,
+        "implementation": "B",
+        "largest_other_tuple": [
+          16,
+          13,
+          14,
+          28
+        ],
+        "largest_other_upper_endpoint": "0.40563943277503110",
+        "maximiser_candidates": [
+          [
+            14,
+            12,
+            14,
+            27
+          ],
+          [
+            15,
+            12,
+            13,
+            26
+          ]
+        ],
+        "maximiser_enclosures": {
+          "[14, 12, 14, 27]": [
+            "0.40568302138267892",
+            "0.40568302138543947"
+          ],
+          "[15, 12, 13, 26]": [
+            "0.40568302138267891",
+            "0.40568302138543947"
+          ]
+        },
+        "maximum_weight_on_any_cell": 1,
+        "separated": true,
+        "summands_per_cell": 512,
+        "tuples": 37533
+      }
+    ],
+    "partition_cells": 278,
+    "printed_claims": {
+      "maximiser_lower": "0.40568302137302",
+      "maximiser_upper": "0.40568302139506",
+      "others_upper": "0.40563943278333"
+    }
+  },
+  "schema": "erdos1049-public-computation/1",
+  "verification_scope": "finite_computation_only"
+}

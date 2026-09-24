@@ -703,6 +703,34 @@ def library_relative(file_name: str) -> str:
     return f"{LIBRARY_PREFIX}/{file_name}"
 
 
+EVIDENCE_MAP = ROOT / "evidence" / "paper_evidence.json"
+
+
+def margin_mark_declaration_keys(note_source: str, evidence: dict[str, Any]) -> set[DeclarationKey]:
+    """Declarations a note reaches through its margin marks.
+
+    A result with a whole-result Lean proof carries a margin mark that links its
+    declaration, or the section of the evidence record listing every declaration
+    that states it, at the Lean pin.  Each such declaration is reached by the
+    note, under the name its module declares it by (any dotted suffix of the full
+    name).
+    """
+    paper_id = Path(note_source).stem
+    keys: set[DeclarationKey] = set()
+    for paper in evidence.get("papers", []):
+        if paper.get("paper_id") != paper_id:
+            continue
+        for result in paper.get("results", []):
+            lean = result.get("lean") or {}
+            if not lean.get("mark"):
+                continue
+            for declaration in lean.get("declarations", []):
+                relative = library_relative(declaration["path"].removeprefix("lean/"))
+                parts = declaration["name"].split(".")
+                keys.update((relative, ".".join(parts[i:])) for i in range(len(parts)))
+    return keys
+
+
 def module_relative(module_name: str) -> str:
     """Repository path for a dotted Lean module name."""
     return "/".join(module_name.split(".")) + ".lean"
@@ -819,6 +847,28 @@ def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
         index = int(match.group("line")) - 1
         if 0 <= index < len(source) and declares_at(source, index, declaration):
             linked.add((relative, declaration))
+    # A pinned link may name its declaration in words ("the measure dichotomy").
+    # It reaches the declaration its target line declares at that pin.
+    worded = re.compile(
+        r"\\href\{https://github\.com/wcook04/plectis-erdos/blob/"
+        r"(?P<commit>[0-9a-f]{40})/"
+        r"(?P<path>(?:lean/)?(?:ErdosProblems|Erdos249257)/[A-Za-z0-9_/.-]+\.lean)"
+        r"\\?#L(?P<line>[1-9][0-9]*)\}\{(?!\\texttt\{)"
+    )
+    head = re.compile(
+        r"(?:(?:private|protected|noncomputable|nonrec)\s+)*"
+        r"(?:theorem|lemma|def|abbrev|instance|structure|inductive|class)\s+([A-Za-z_][A-Za-z0-9_'.]*)"
+    )
+    for match in worded.finditer(strip_comments(note_text)):
+        relative = library_relative(match.group("path").removeprefix("lean/"))
+        raw = snapshot_lines(match.group("commit"), relative, cache)
+        source = strip_lean_comments("\n".join(raw)).splitlines()
+        index = int(match.group("line")) - 1
+        if not 0 <= index < len(source):
+            continue
+        found = head.match(ATTRIBUTE_RE.sub("", source[index]).strip())
+        if found and declares_at(source, index, found.group(1)):
+            linked.add((relative, found.group(1)))
     return linked
 
 
@@ -924,12 +974,13 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
     lines: list[str] = []
     failures: list[str] = []
     index = json.loads(safe_worktree_text(INDEX_SOURCE))
+    evidence = json.loads(safe_worktree_text(EVIDENCE_MAP)) if EVIDENCE_MAP.is_file() else {}
     floor, floor_failures = validated_coverage_floor(index)
     failures.extend(floor_failures)
     for row, source in note_for_problem():
         note_text = safe_worktree_text(ROOT / source)
         commit = note_pinned_commit(note_text, default_commit)
-        linked = linked_declaration_keys(note_text)
+        linked = linked_declaration_keys(note_text) | margin_mark_declaration_keys(source, evidence)
         modules = [row["principal_module"], *row.get("companion_modules", [])]
         current: list[DeclarationKey] = []
         moved: list[str] = []

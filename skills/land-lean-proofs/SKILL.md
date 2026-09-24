@@ -40,20 +40,25 @@ ledger, or in `docs/paper_lean_docstring_exemptions.json` with a reason.
    count; that run keeps `queued_at` and replaces a hand-written row with the
    counted one.
 
-3. **Link the declaration where the statement is printed.** Regenerate the
-   statement notes and the long-record concordance when you can. Otherwise add
-   the link by hand to the one-line `\leannote{Lean: ...}` directly after the
-   environment's `\end{...}`. `\lproof` resolves at the paper's
-   `\ledgercommit`; a declaration added after that pin needs a link at a
-   commit that contains it, such as
-   `\href{https://github.com/wcook04/plectis-erdos/blob/<commit>/lean/<file>\#L<line>}{\texttt{<name>}}`.
-   Remove every name the row no longer binds: the check reports those as
-   stale links.
-   When a long-record claim span changes after its concordance was generated,
-   refresh its entry from the ledger with
-   `python3 scripts/refresh_paper_lean_concordance.py --row <row-id> --write`.
-   The same command without `--write` checks that entry. Reassemble the flat
-   long paper afterwards.
+3. **Link the declaration where the statement is printed.** Nothing is written
+   under the statement. Each result's evidence is two margin links, "Lean" and
+   "Comparator", generated from the ledger into `paper/evidence/<paper>.tex`
+   and placed beside the result from its `\label`; the paper's evidence record
+   `evidence/<paper>.md` lists every declaration and check. Rebuild the paper
+   with intermediates kept (`tectonic --keep-intermediates --outdir <dir> ...`)
+   so the record can take the printed numbers from the `.aux`, then run
+   `python3 scripts/paper_evidence.py build --corpus-repo <plectis-erdos-lean checkout> --aux-dir <dir>`.
+   It refuses, and writes nothing, when a row cannot be resolved: no label, a
+   declaration missing at the ledger's `lean_pin`, a Comparator association
+   whose replay report does not show a passing check of the pinned corpus
+   bytes, or a stronger Lean statement without a reviewed relation note in
+   `evidence/relations.json`. Commit the records, set `record_commit` in
+   `evidence/config.json` to that commit, run the build again so the margin
+   links point at it, and rebuild the PDFs.
+   The propagation check refuses a `\leannote` or a concordance block: that
+   apparatus was retired. When the Lean proof assumes an input the printed
+   statement does not, or covers only part of it, say so in plain words with
+   `\evidenceremark{...}` directly after the environment's `\end{...}`.
 
 4. **Correct the status prose.** Search both papers for "Conditional on",
    "conditional", "Not formalised" and "no Lean statement" near the result,

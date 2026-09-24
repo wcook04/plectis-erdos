@@ -1,0 +1,105 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:32:44Z",
+  "entry": "E257_01",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_01",
+  "theorem_count": 5,
+  "theorem_names": [
+    "PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim",
+    "PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim",
+    "PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary",
+    "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim",
+    "PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "6ba709d258b2c4f881285cc430b6f21b8b5cb3a4662616ee37517b1ca7c1de62",
+    "comparator.json": "81786cbd5963bf2d1506d8945f9e2a886c426d0df281eb204371deed4884e2f2",
+    "formalization.yaml": "8449c6fa4729918b5da12bcd9e381e30b4b5cf49a98a02ee0d7ca461a3ae0136"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_01.lean": "d1dee62774443d1c658247061028b2df8498d7f88221e6b2031f536ed8a4501b",
+      "Solutions/PalomarCorpus/E257_01/DivisibilityWeightedSupport.lean": "5cbae68b4601e96d750730632fb51e7203b973f758ab309168d296baa4cbf29e",
+      "Solutions/PalomarCorpus/E257_01/MixedWeightedCover.lean": "d4ff29ceed0807b40b551c85317fd5ccf0413822328a538ee59b50957ccb0214",
+      "Solutions/PalomarCorpus/E257_01/PaperStructuresBO.lean": "1f1209a2e79e3d0fd105b72aa0dfa228179011529bc68f8682df4c5181bf4762",
+      "Solutions/PalomarCorpus/E257_01/Statement.lean": "b18c28f7aa1f16c43f12614afaa6d885c91b7cd6f5cfb0dc0e64575a585d8909",
+      "Solutions/PalomarCorpus/E257_01/VariableExponentCover.lean": "5f32d8bbfbcbded1fa00c2a845a9183072ba4329de4fa405b5cf96b128d663d5",
+      "Solutions/PalomarCorpus/E257_01/WeightedCloseReturn.lean": "8ba376c4545890f664f999d621cc1b3e6a0212c3b563cb6a5d92db7090ab46d5"
+    },
+    "sha256": "3117db9a251fb838d77c8934193924b6b55b1a7774a697e0b8109a0f8ed24354"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 8.81
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 92.247
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 46.234,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 6.93
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}
