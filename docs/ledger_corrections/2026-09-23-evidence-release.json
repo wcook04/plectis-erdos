@@ -425,6 +425,39 @@
     "ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone": "lean/ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean"
    },
    "reason": "The printed theorem also states the successor remainders rem(14)=392 through rem(31)=4187487147; neither bound declaration states them, and paper_successor_remainders_fourteen_through_thirtyone does."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#record:257bm-c5",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257_27"
+    ],
+    "run_ids": [
+     "35935225572"
+    ],
+    "corpus_commits": [
+     "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-24"
+   },
+   "reason": "Comparator entry E257_27 compared the two theorems of this binding, exists_laterProtectedExactLocalMersenneRow and cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply; the binding also names the definition ProtectedExactLocalMersenneRow, which has no Comparator association, so the evidence records cannot yet show the whole result compared."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#record:257bm-c5",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "A row pending Comparator is pending Palomar too."
   }
  ]
 }

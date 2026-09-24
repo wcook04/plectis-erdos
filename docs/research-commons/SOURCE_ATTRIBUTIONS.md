@@ -11,7 +11,7 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `291` curated sources across `22` registered papers and `1822` Lean library files.
+The registry contains `291` curated sources across `22` registered papers and `1823` Lean library files.
 
 Source review states: `bibliography_only`: `89`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `3`; `source_verified`: `167`.
 

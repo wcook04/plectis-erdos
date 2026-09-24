@@ -18,7 +18,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44)
 
 ```lean
 theorem paper_cpgs_equiv :
@@ -43,11 +43,11 @@ theorem paper_cpgs_equiv :
 
 <a id="prop-cpgs-equiv-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `paper_cpgs_equiv`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_38/Challenge.lean#L139) (E257_38, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_38/PaperStatementsN.lean#L99) (PaperStatementsN.lean, line 99), [replay report](../../evidence/comparator/replay-35882032091/receipt-E257_38.json) (E257_38)
+- `paper_cpgs_equiv`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_46/Challenge.lean#L139) (E257_46, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_46/PaperStatementsN.lean#L99) (PaperStatementsN.lean, line 99), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_46.json) (E257_46)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -63,7 +63,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L130)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L130)
 
 ```lean
 theorem paper_terminal_strip_equiv :
@@ -77,7 +77,7 @@ theorem paper_terminal_strip_equiv :
         ↔ (1 / 2 : ℝ) ∈ mersenneAchievementSet)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_relaxed_constant_six_every_depth`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L112)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_relaxed_constant_six_every_depth`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L112)
 
 ```lean
 theorem paper_relaxed_constant_six_every_depth
@@ -88,11 +88,11 @@ theorem paper_relaxed_constant_six_every_depth
 
 <a id="prop-strip-equiv-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `paper_terminal_strip_equiv`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_38/Challenge.lean#L159) (E257_38, line 159), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_38/PaperStatementsN.lean#L227) (PaperStatementsN.lean, line 227), [replay report](../../evidence/comparator/replay-35882032091/receipt-E257_38.json) (E257_38)
-- `paper_relaxed_constant_six_every_depth`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E257_38/Challenge.lean#L180) (E257_38, line 180), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E257_38/PaperStatementsL.lean#L51) (PaperStatementsL.lean, line 51), [replay report](../../evidence/comparator/replay-35882032091/receipt-E257_38.json) (E257_38)
+- `paper_terminal_strip_equiv`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_46/Challenge.lean#L159) (E257_46, line 159), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_46/PaperStatementsN.lean#L227) (PaperStatementsN.lean, line 227), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_46.json) (E257_46)
+- `paper_relaxed_constant_six_every_depth`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_46/Challenge.lean#L180) (E257_46, line 180), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_46/PaperStatementsL.lean#L51) (PaperStatementsL.lean, line 51), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_46.json) (E257_46)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

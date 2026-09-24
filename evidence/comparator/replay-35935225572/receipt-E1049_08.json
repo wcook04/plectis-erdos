@@ -1,0 +1,110 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T01:46:36Z",
+  "entry": "E1049_08",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "2",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E1049_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_08",
+  "theorem_count": 11,
+  "theorem_names": [
+    "PalomarCorpus.E1049.ArchimedeanCap.archimedean_cap",
+    "PalomarCorpus.E1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero",
+    "PalomarCorpus.E1049.BezoutPluckerJets.anchor_det_zero_forces_all_det_zero",
+    "PalomarCorpus.E1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero",
+    "PalomarCorpus.E1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth",
+    "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+    "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_expansion",
+    "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos",
+    "PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff",
+    "PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical",
+    "PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "ad4cb5432003361219c936426c882a6591c9f573f93ec1f6491778e98d47cd47",
+    "comparator.json": "623e5728f3ddbd535a9896db8a0c31ed68c1f6f2a48914599b1902fdcfa5f8a5",
+    "formalization.yaml": "ccadffb2fbd64a8860c11fa8ebc2f65c1e450a6ae14c454f3461c8cc70af3f3b"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E1049_08.lean": "7f019e606e51d15b43e6fef0de8eee64c4202d59eb49b9fdacb24500061ecf98",
+      "Solutions/PalomarCorpus/E1049_08/ArchimedeanCap.lean": "0c46d24c322b539eec3047d3daa197a5d08d69fdd097445c9378b64f08aee626",
+      "Solutions/PalomarCorpus/E1049_08/BezoutPluckerJets.lean": "c7b1e07f8b0a03926f80acd2e5e35cec4190cf026ae4fe7875fea4229f7f6582",
+      "Solutions/PalomarCorpus/E1049_08/HermitePadeNoGo.lean": "ee8d7928fba72d47af7ebe395edbb52cd8e1184371ee72532d18ca5bff998733",
+      "Solutions/PalomarCorpus/E1049_08/PaperStatementsU.lean": "1962bd7882790a32f86b85ee5f587ae3ff972fb571a246c27ef49351c9fe91ef",
+      "Solutions/PalomarCorpus/E1049_08/Statement.lean": "7fb2d7f7b6f1b4c6786f71dee68a75ce0d6d64bdc13aa2726c3d1c993672cfd0"
+    },
+    "sha256": "d43082c63e5568ab90fa8b7c7b04dbae5ab4bd8d2e3168c2330ba87ed439bfec"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.402
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 105.66
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 137.692,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.069
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

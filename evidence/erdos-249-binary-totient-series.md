@@ -2,8 +2,8 @@
 
 This record belongs to the paper [erdos-249-binary-totient-series.pdf](../paper/249/erdos-249-binary-totient-series.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`c91562bd574a`](https://github.com/wcook04/plectis-erdos/tree/c91562bd574a387cde904481e609c7b4cacebb14) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
-- **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35882032091](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35882032091) at corpus commit [`a2faa350b45a`](https://github.com/wcook04/plectis-erdos-lean/tree/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3) (tag `paper-evidence-2026-09-23`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`7f79e63d0b36`](https://github.com/wcook04/plectis-erdos/tree/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 8 results: 8 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 8 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
@@ -32,7 +32,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 The Lean declaration below states this result or one that implies it. The Lean reduction $F^{(k)}_{j,k^tu}=k^t\prod_{p\mid k,\,p\nmid u}(1-\tfrac1p)\,F^{(k)}_{j-t,u}$ holds for every $u\ge0$ and every $1\le t<j$, with no requirement that $k\nmid u$ or that $t$ be maximal; the printed reduction is its case $t=\max\{s:k^s\mid r\}$, $k\nmid u$, where $r<k^j$ forces $t<j$. The dimension $k^e+1$, the basis $\mathcal B_{k,e}$ and the identity $F^{(k)}_{j,0}=k^{j-1}F^{(k)}_{1,0}$ are stated as printed.
 
-[`ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35)
+[`ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35)
 
 ```lean
 theorem displayed_all_base_kernel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
@@ -52,11 +52,11 @@ theorem displayed_all_base_kernel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
 
 <a id="thm-kkernelrank-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `displayed_all_base_kernel`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_29/Challenge.lean#L84) (E249_29, line 84), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean#L26) (CompleteKernelBases.lean, line 26), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_29.json) (E249_29)
+- `displayed_all_base_kernel`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_29/Challenge.lean#L84) (E249_29, line 84), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean#L26) (CompleteKernelBases.lean, line 26), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_29.json) (E249_29)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -74,7 +74,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR8.displayed_full_dyadic_basis`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156)
+[`ErdosProblems.Erdos249.PaperCompleteR8.displayed_full_dyadic_basis`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156)
 
 ```lean
 theorem displayed_full_dyadic_basis :
@@ -93,11 +93,11 @@ theorem displayed_full_dyadic_basis :
 
 <a id="res-basis-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `displayed_full_dyadic_basis`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_29/Challenge.lean#L99) (E249_29, line 99), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean#L41) (CompleteKernelBases.lean, line 41), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_29.json) (E249_29)
+- `displayed_full_dyadic_basis`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_29/Challenge.lean#L99) (E249_29, line 99), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean#L41) (CompleteKernelBases.lean, line 41), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_29.json) (E249_29)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -113,7 +113,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398)
+[`ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398)
 
 ```lean
 theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
@@ -131,11 +131,11 @@ theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
 
 <a id="cor-integral-normal-form-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `displayed_integral_normal_form`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_29/Challenge.lean#L195) (E249_29, line 195), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean#L66) (TotientKernelBasis.lean, line 66), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_29.json) (E249_29)
+- `displayed_integral_normal_form`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_29/Challenge.lean#L195) (E249_29, line 195), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean#L66) (TotientKernelBasis.lean, line 66), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_29.json) (E249_29)
 
 Challenge for `displayed_integral_normal_form`:
 
@@ -164,7 +164,7 @@ theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR20.periodic_freezing_integer_affine`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24)
+[`ErdosProblems.Erdos249.PaperCompleteR20.periodic_freezing_integer_affine`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24)
 
 ```lean
 theorem periodic_freezing_integer_affine
@@ -180,11 +180,11 @@ theorem periodic_freezing_integer_affine
 
 <a id="cor-periodic-freezing-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `periodic_freezing_integer_affine`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L51) (E249_30, line 51), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/PaperStatementsAE.lean#L155) (PaperStatementsAE.lean, line 155), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
+- `periodic_freezing_integer_affine`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L51) (E249_30, line 51), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsAE.lean#L155) (PaperStatementsAE.lean, line 155), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -200,7 +200,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.short_note_residue_theorem`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276)
+[`ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.short_note_residue_theorem`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276)
 
 ```lean
 theorem short_note_residue_theorem :
@@ -218,11 +218,11 @@ theorem short_note_residue_theorem :
 
 <a id="res-residueseries-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `short_note_residue_theorem`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L77) (E249_30, line 77), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/RationalObservableClassification.lean#L41) (RationalObservableClassification.lean, line 41), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
+- `short_note_residue_theorem`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L77) (E249_30, line 77), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RationalObservableClassification.lean#L41) (RationalObservableClassification.lean, line 41), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -234,7 +234,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106)
+[`ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106)
 
 ```lean
 theorem bounded_isolated_pulse
@@ -246,11 +246,11 @@ theorem bounded_isolated_pulse
 
 <a id="lem-bounded-pulse-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `bounded_isolated_pulse`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L62) (E249_30, line 62), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/PaperStatementsAE.lean#L363) (PaperStatementsAE.lean, line 363), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
+- `bounded_isolated_pulse`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L62) (E249_30, line 62), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsAE.lean#L363) (PaperStatementsAE.lean, line 363), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -267,7 +267,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR7.fullDepth_amplification`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35)
+[`ErdosProblems.Erdos249.PaperCompleteR7.fullDepth_amplification`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35)
 
 ```lean
 theorem fullDepth_amplification :
@@ -286,11 +286,11 @@ theorem fullDepth_amplification :
 
 <a id="res-fulldepth-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `fullDepth_amplification`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L106) (E249_30, line 106), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/PaperStatementsM.lean#L18) (PaperStatementsM.lean, line 18), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
+- `fullDepth_amplification`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L106) (E249_30, line 106), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsM.lean#L18) (PaperStatementsM.lean, line 18), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -306,14 +306,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25)
+1. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25)
 
 ```lean
 theorem rankOne_denominator_pos {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
     0 < mobiusMersennePrefix Y (2 * e + 2)
 ```
 
-2. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530)
+2. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530)
 
 ```lean
 theorem rankOneSubrankQuotient_ge_one_five
@@ -321,7 +321,7 @@ theorem rankOneSubrankQuotient_ge_one_five
     rankOneSubrankQuotient 1 5 ≤ rankOneSubrankQuotient e Y
 ```
 
-3. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546)
+3. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546)
 
 ```lean
 theorem rankOneSubrankQuotient_eq_one_five_iff
@@ -330,7 +330,7 @@ theorem rankOneSubrankQuotient_eq_one_five_iff
       e = 1 ∧ Y = 5
 ```
 
-4. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636)
+4. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636)
 
 ```lean
 theorem rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
@@ -339,7 +339,7 @@ theorem rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
       rankOneSubrankQuotient e Y - mobiusMersenneTheta 2
 ```
 
-5. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L667)
+5. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L667)
 
 ```lean
 theorem positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
@@ -355,7 +355,7 @@ theorem positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
         mobiusMersenneTheta 2
 ```
 
-6. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L617)
+6. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L617)
 
 ```lean
 theorem rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen :
@@ -365,15 +365,15 @@ theorem rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen :
 
 <a id="res-rankonefloor-comparator"></a>
 
-**Comparator: passed** (run 35882032091, corpus commit `a2faa350b45a`).
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
 
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
-- `rankOne_denominator_pos`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L139) (E249_30, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/RankOneDenominator.lean#L20) (RankOneDenominator.lean, line 20), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
-- `rankOneSubrankQuotient_ge_one_five`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_33/Challenge.lean#L104) (E249_33, line 104), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean#L15) (RankOneSharpFloor.lean, line 15), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_33.json) (E249_33)
-- `rankOneSubrankQuotient_eq_one_five_iff`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L149) (E249_30, line 149), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L28) (RankOneSharpFloor.lean, line 28), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
-- `rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L155) (E249_30, line 155), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L41) (RankOneSharpFloor.lean, line 41), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
-- `positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L161) (E249_30, line 161), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L79) (RankOneSharpFloor.lean, line 79), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
-- `rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/PalomarCorpus/E249_30/Challenge.lean#L127) (E249_30, line 127), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/a2faa350b45ae08d0e70f5a6ec54943018f8c2b3/Solutions/PalomarCorpus/E249_30/PaperStatementsBG.lean#L74) (PaperStatementsBG.lean, line 74), [replay report](../evidence/comparator/replay-35882032091/receipt-E249_30.json) (E249_30)
+- `rankOne_denominator_pos`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L139) (E249_30, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneDenominator.lean#L20) (RankOneDenominator.lean, line 20), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `rankOneSubrankQuotient_ge_one_five`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_33/Challenge.lean#L104) (E249_33, line 104), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean#L15) (RankOneSharpFloor.lean, line 15), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_33.json) (E249_33)
+- `rankOneSubrankQuotient_eq_one_five_iff`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L149) (E249_30, line 149), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L28) (RankOneSharpFloor.lean, line 28), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L155) (E249_30, line 155), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L41) (RankOneSharpFloor.lean, line 41), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L161) (E249_30, line 161), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L79) (RankOneSharpFloor.lean, line 79), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L127) (E249_30, line 127), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsBG.lean#L74) (PaperStatementsBG.lean, line 74), [replay report](../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

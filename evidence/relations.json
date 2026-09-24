@@ -935,10 +935,10 @@
    }
   },
   "erdos257-mersenne-reasoning-surface#thm:periodic-support": {
-   "note": "The Lean statement asks for periodicity from $n=0$ on a set $A\\subseteq\\N$ with a positive element. For the printed $A$, apply it to $A$, or to $A\\cup\\{0\\}$ when $m\\in A$; the term at $0$ is $0$ under the convention $1/0=0$, so $X_A(b)$ is unchanged.",
+   "note": "The Lean statement takes a set $A\\subseteq\\N$ with a positive element and asks for $n+m\\in A\\iff n\\in A$ at every $n\\ge1$. The printed support is such a set, since it is nonempty and lies in $\\Npos$, so the Lean theorem gives the printed conclusion. It is more general only in allowing $0\\in A$, whose term is $0$ under the convention $1/0=0$.",
    "statement_key": "sha256:1ef212f2f23628d12fda45863b6c54a67f4ace00fc37d5fe7d0190f4089a8dfd",
    "lean_statements": {
-    "Erdos249257.irrational_erdosSupportSeries_periodic": "5db03944a5df17852a2dfea92239f67722c4b28db183359150323d7f5097f587"
+    "ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic": "0dfa586601d204f89fac3caf59a376f89fbc6359a78e7913cc20339e69d7cbd4"
    }
   },
   "erdos257-mersenne-reasoning-surface#thm:perturbed-family-maximality": {

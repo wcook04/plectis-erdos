@@ -1,12 +1,12 @@
 {
  "schema": "plectis-paper-evidence-config/1",
  "rule": "The pins the paper evidence is resolved against. corpus_commit is the plectis-erdos-lean commit whose Challenge and Solution files the Comparator marks open; replay names the run that checked every linked entry at that commit, and receipts the directory holding that run's per-entry reports. record_commit is the plectis-erdos commit holding the evidence records the rendered papers link to.",
- "corpus_commit": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
- "corpus_archive_tag": "paper-evidence-2026-09-23",
+ "corpus_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+ "corpus_archive_tag": "paper-evidence-2026-09-24",
  "replay": {
-  "run_id": "35882032091",
+  "run_id": "35935225572",
   "workflow": "palomar-replay.yml",
-  "receipts": "evidence/comparator/replay-35882032091"
+  "receipts": "evidence/comparator/replay-35935225572"
  },
  "record_commit": "1bac524c361ffbb7cf52d048efb26a358ee9c058"
 }
