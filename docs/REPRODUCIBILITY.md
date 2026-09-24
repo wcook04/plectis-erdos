@@ -222,11 +222,17 @@ not attributed to another.
 
 The [external-verification packet](EXTERNAL_VERIFICATION.md#programme-257)
 and [`verification/comparator.json`](../verification/comparator.json) identify
-the separately declared Comparator statement and axiom budget. The packet
-currently records this weighted theorem's external replay as **pending**.
-Configuration or a receipt for another theorem is not a passing replay of
-this claim. The [replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md)
-explains the source-bound receipt needed to report a completed comparison.
+the separately declared Comparator statement and axiom budget. Its legacy
+Comparator replay record remains distinct from Palomar's
+[successful mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226)
+of the exact five-declaration `PalomarCorpus/E257_01` entry at source commit
+`b85ed30805188eb4390a686b111294b24363418e`; that entry includes
+`divisibilityWeightedClaim`. At the last authenticated status check
+(24 September 2026, 14:13 UTC), submission `gid0ym5uu910` was awaiting
+editorial review, with no registration recorded. This receipt applies to the
+selected entry, not every theorem in the #257 paper. The
+[replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md) explains the
+separate source-bound Comparator receipt.
 
 These commands build the current checkout. The claim verifier also names the
 recorded source revision; keep that identity with any report about reproducing
