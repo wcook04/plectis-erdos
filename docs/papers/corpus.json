@@ -4106,11 +4106,11 @@
         "year": "2026",
         "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Weighted Support Criteria for Reciprocal Mersenne Subseries. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Weighted Support Criteria for Reciprocal Mersenne Subseries. plectis-erdos, commit 7ab6a901a2fe07e8d0e5c99dc46821adffc7411b. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4122,10 +4122,10 @@
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "source_sha256": "sha256:51e400713f30cfdbac24b7e06b6d3a4f9bcaea00c81533ec057daf8b966b2fe4",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "7ab6a901a2fe07e8d0e5c99dc46821adffc7411b",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/257/erdos-257-mersenne-support-subseries.tex",
       "section_count": 25,
       "sections": [
         {
@@ -7304,7 +7304,7 @@
       "form": "Cross-problem paper",
       "owns": "the synthesis exposition and ordinary proofs across the covered problems: capacity and congruence constructions, Lambert subsums, rational-point counts, method limits and their research record",
       "not_authority_for": "a solution to any original Erd\u0151s target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem",
-      "publication_state": "pending_source_publication",
+      "publication_state": "active",
       "publication_class": "synthesis_paper",
       "publication_class_basis": "owns names 'synthesis exposition'",
       "manuscript_status": "technical_report",
@@ -7316,11 +7316,11 @@
         "year": "2026",
         "title": "Reading Eight Erd\u0151s Problems Together",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos, commit 0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7332,10 +7332,10 @@
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
       "source_sha256": "sha256:4c7bb3bfc2e00668ce4a85e35486f7b408706d38d564e49ffc4d3e4b5beb4ee8",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/0b4392b1bf2ccb64c6ccad87f91205fad2c8acbc/paper/synthesis/optimal-sparse-perturbations.tex",
       "section_count": 34,
       "sections": [
         {
