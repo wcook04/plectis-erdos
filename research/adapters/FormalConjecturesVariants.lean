@@ -1,9 +1,12 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
 /-
 Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ExternalVerification.Solution
+import ErdosProblems.Erdos249.ResidueClassTotientSeries
 
 /-!
 # Solved-variant candidates for Formal Conjectures
@@ -36,13 +39,12 @@ the generic cleared-tail recurrence stay out, as does the `#249`
 infinite-dimensionality corollary, which the claim registry already disclaims as
 implied by Coons.
 
-Each theorem below restates one Mathlib-only proposition from
-`ExternalVerification.Statements` under the name it would take upstream, and
-proves it by projection from `ExternalVerification.portfolioClaims`.  No new
-mathematics: the content is the registered corpus declaration, and the
-`Statements` vocabulary is already Mathlib-only, so contributing one upstream is
-a move of its supporting definitions into `FormalConjecturesForMathlib` rather
-than a port.
+Most theorems below restate Mathlib-only propositions from
+`ExternalVerification.Statements` under the names they would take upstream,
+then project their proofs from `ExternalVerification.portfolioClaims`. The #249
+least-residue theorem instead expands `totientResidueValue` and applies the
+public `residue_series_irrational` proof. Each declaration restates checked
+content already present in this corpus.
 
 **Novelty is a separate question from contribution.** Upstream does not require
 a variant to be new, only that its source and status are stated correctly.  The
@@ -86,9 +88,9 @@ theorem erdos_68_variants_iff_cofinal_divisibility_miss :
 
 /-! ### Erdős 249 — `∑ φ(n)/2ⁿ`
 
-Upstream's `249.lean` is thirty-eight lines and contains one declaration: the
-open question.  It says nothing about the object.  These are exact structural
-facts about the dyadic totient kernel that question is asking about. -/
+Upstream's `249.lean` contains only the open question. The first two variants
+give exact structural facts about the dyadic totient kernel; the third concerns
+the bounded least-residue projection at the same fixed binary base. -/
 
 /-- The rational span of the level-`e` dyadic totient kernel family has
 dimension exactly `2 ^ e + 1`. -/
@@ -105,6 +107,15 @@ theorem erdos_249_variants_odd_core_basis :
       (Basis TotientOddCoreIndex ℚ
         (Submodule.span ℚ (Set.range fullTotientKernelFamily))) :=
   exists_totientDyadicSectionBasis
+
+/-- Every least-residue totient series with modulus at least three is irrational.
+This is the exact expanded signature of the Formal Conjectures solved variant;
+`residue_series_irrational` proves it in the public #249 development. -/
+theorem erdos_249_variants_residue_modulus_binary :
+    ∀ m : ℕ, 3 ≤ m →
+      Irrational (∑' n : ℕ, ((Nat.totient n % m : ℕ) : ℝ) / 2 ^ n) := by
+  intro m hm
+  exact ErdosProblems.Erdos249.residue_series_irrational hm
 
 /-! ### Erdős 251 — `∑ pₙ/2ⁿ`
 

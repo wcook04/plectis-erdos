@@ -240,6 +240,25 @@ jobs:
         # ErdosProblems.Erdos251.PaperLargeAuditR7 imports the whole #251
         # large certificate (lakefile library Erdos251LargeCertificate).
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+      - name: Audit the Erdős 249 Formal Conjectures variant proof
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/fc249-variant-axioms.lean" <<'LEAN'
+          import FormalConjecturesVariants
+          #print axioms Erdos249257.FormalConjecturesVariants.erdos_249_variants_residue_modulus_binary
+          LEAN
+          lake env lean "$RUNNER_TEMP/fc249-variant-axioms.lean" > "$RUNNER_TEMP/fc249-variant-axioms.log"
+          python3 - "$RUNNER_TEMP/fc249-variant-axioms.log" <<'PY'
+          import pathlib, re, sys
+          output = pathlib.Path(sys.argv[1]).read_text()
+          name = "Erdos249257.FormalConjecturesVariants.erdos_249_variants_residue_modulus_binary"
+          match = re.search(rf"'{re.escape(name)}' depends on axioms: \[([^]]*)\]", output)
+          axioms = {part.strip() for part in match.group(1).split(",")} if match else None
+          if axioms != {"propext", "Classical.choice", "Quot.sound"}:
+              raise SystemExit(f"unexpected axiom audit for {name}: {output}")
+          print(match.group(0))
+          PY
       - name: Verify a separate Lake project can use the library
         if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/check_downstream_reuse.py
