@@ -2,6 +2,7 @@
 """Check the public split between human mathematical prose and agent machinery."""
 
 import json
+import re
 from pathlib import Path
 
 from check_release import has_release_status_boundary
@@ -57,7 +58,13 @@ def main() -> None:
 
     # Current systems manuscripts are also public entry points. Their examples
     # may be historical, but their descriptions of the present corpus must not
-    # restore the superseded blanket status split.
+    # restore the superseded blanket status split. "Eight open Erdős problems"
+    # is the same claim in adjective form: the systems paper printed it on its
+    # first page three lines above "The other seven targets remain open".
+    eight_open = re.compile(
+        r"\beight\s+open\s+(?:Erd(?:ő|\\H\{o\}|o)s\s+)?(?:problems|programmes|targets)\b",
+        re.IGNORECASE,
+    )
     for path in (ROOT / "paper/systems").glob("*.tex"):
         manuscript = " ".join(path.read_text(encoding="utf-8").split())
         for stale in (
@@ -67,6 +74,13 @@ def main() -> None:
             "are the two principal reviewed programmes",
         ):
             require(stale not in manuscript, f"{path.name} repeats obsolete corpus status: {stale}")
+        hit = eight_open.search(manuscript)
+        require(hit is None, f"{path.name} repeats obsolete corpus status: {hit.group(0) if hit else ''}")
+    for sample in (
+        r"\textbf{Instance.} Eight open Erd\H{o}s problems in one Lean repository",
+        "maintains eight open Erdős problems this way",
+    ):
+        require(eight_open.search(sample) is not None, "eight-open status guard lost a known specimen")
 
     # The public site refuses "one person built this" framing: the work is read
     # as if a department produced it, and the site deploy scans every rendered
@@ -74,8 +88,6 @@ def main() -> None:
     # deploy caught, so the manuscripts are checked here, before merge. The
     # strategy paper's two clauses about overlapping contributor roles are the
     # only known exceptions.
-    import re
-
     founder = re.compile(r"\b(?:one[- ]person|single[- ]person)\b", re.IGNORECASE)
     role_clauses = (
         "one person may perform several, and several people may perform one",
@@ -101,6 +113,11 @@ def main() -> None:
         re.IGNORECASE,
     )
     first_contact = [
+        ROOT / "README.md",
+        ROOT / "docs/README.md",
+        ROOT / "docs/READING_GUIDE.md",
+        ROOT / "docs/SCOPE.md",
+        ROOT / "docs/RESULTS.md",
         ROOT / "CONTRIBUTING.md",
         ROOT / "AGENTS.md",
         ROOT / "docs/RELATED_PROBLEMS.md",
@@ -111,7 +128,7 @@ def main() -> None:
     ]
     for path in first_contact:
         text = " ".join(path.read_text(encoding="utf-8").split())
-        hit = blanket.search(text)
+        hit = blanket.search(text) or eight_open.search(text)
         require(hit is None, f"{path.relative_to(ROOT)} repeats obsolete corpus status: {hit.group(0) if hit else ''}")
     for sample in (
         "all eight headline Erdős problems remain open unless something happens",
