@@ -5,10 +5,15 @@
 
 [Reading Eight Erdős Problems Together](optimal-sparse-perturbations.pdf)
 ([source](optimal-sparse-perturbations.tex)) is the single cross-problem paper.
-It brings together the capacity and congruence criterion, Lambert subsums,
-method obstructions, exact computations and the research record behind them.
-The principal proofs are ordinary mathematical arguments; cited formal
-ingredients retain their stated scope. This paper consolidates the former
+For `c>0` and integers `d≥1`, consider the set of vectors
+`(f(1), f′(1), …, f^(d−1)(1))` from entire functions
+`f(z) = ∑ e_n z^n/n!` whose nonnegative integer coefficients are eventually
+at most `n^c` and eventually divisible by every fixed integer. This set has
+Hausdorff dimension `min(c,d)` and contains an open set exactly when `c>d`; at
+`c=d` they are full-dimensional but null and meagre. The paper also proves
+a capacity and congruence criterion, Lambert-subsum results and method
+limits. Its principal proofs are ordinary mathematical arguments; cited
+formal ingredients retain their stated scope. This paper consolidates the former
 synthesis note, working record and capacity account. Their earlier versions
 remain in Git history.
 

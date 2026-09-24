@@ -43,6 +43,14 @@ historical correspondence.**
 
 The attribution is recorded in [ani's 7 September 2026 forum post](https://www.erdosproblems.com/forum/thread/1041#post-8861).
 
+## Formal Conjectures contributions
+
+Four changes have merged: proof links for solved [#257](https://github.com/google-deepmind/formal-conjectures/pull/6506),
+[#258](https://github.com/google-deepmind/formal-conjectures/pull/5034), and
+[#1049](https://github.com/google-deepmind/formal-conjectures/pull/6507) variants
+based on Erdős's 1948 theorem, and a [#1041 correction](https://github.com/google-deepmind/formal-conjectures/pull/6505)
+using ani's counterexample. [Trace #1041 to its Lean proof](docs/case-studies/formal-conjectures-1041.md).
+
 ## Where to start
 
 **Read the mathematics. Find what comes next.** Use the papers and research
@@ -99,22 +107,25 @@ reciprocal-summable extension; Lean checks it here. The unrestricted question
 remains open. **#249** gives exact ranks of totient kernels. Each paper names
 its ordinary proofs, Lean-checked results and open questions.
 
-For a more specialised theorem, **#243** gives irrationality for strictly
-increasing positive integer sequences under the precise cubic-rate hypothesis
-`a_n²/a_(n+1) = 1 + 3/n + o(n⁻³)`. Lean checks the zero-indexed theorem;
-the paper transfers its one-based form by an ordinary finite-prefix argument.
-The unrestricted Sylvester-recurrence question remains open. For **#1049**,
-Lean checks that `F(31/4)` and `F((31/4)^r)` for every positive integer `r`
-are irrational, using rational-base forms built from Zudilin's construction.
-A coefficient pencil through rank eight is also checked. Irrationality at
-`3/2` and the all-rational-base claim remain open.
+For **#243**, Lean checks irrationality of the reciprocal sum of a strictly
+increasing positive integer sequence under
+`a_n²/a_(n+1) = 1 + 3/n + o(n⁻³)` in zero-based indexing. The paper gives the
+one-based finite-prefix argument and a bounded-increment criterion for an
+eventual Sylvester tail. The unrestricted question remains open.
 
-**Reading the eight together.** The whole collection is also material for new
-mathematics: reusable constructions, connections between problems and questions
-that go beyond the original targets. Start with the
-[cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesis/optimal-sparse-perturbations.pdf). It joins the capacity and congruence results, Lambert subsums, method limits and their research record.
-The [synthesis guide](paper/synthesis/README.md) explains how to develop this work
-from the papers and Lean corpus, with each result's evidence and limits intact.
+For **#1049**, the paper proves irrationality of
+`F(a/b) = ∑_(n≥1) 1/((a/b)^n−1)` for coprime `a>b≥1` when
+`log b/log a < 0.4056830213840605…`, using Zudilin's forms with cyclotomic
+cancellation and denominator accounting. Lean checks the region theorem and
+`F((31/4)^r)` for positive integers `r`. The earlier Bundschuh–Väänänen
+sufficient bound excludes `31/4`; irrationality at `3/2` remains open.
+
+**Reading the eight together.** The [cross-problem paper](paper/synthesis/optimal-sparse-perturbations.pdf)
+studies entire functions with nonnegative integer coefficients eventually
+bounded by `n^c` and divisible by every fixed integer. For `c>0` and
+integers `d≥1`, the vectors `(f(1), …, f^(d−1)(1))` have Hausdorff dimension
+`min(c,d)` and contain an open set exactly when `c>d`. This has an ordinary
+proof. [Synthesis guide](paper/synthesis/README.md) has more results.
 
 | Problem | Topic | Papers |
 |---|---|---|
