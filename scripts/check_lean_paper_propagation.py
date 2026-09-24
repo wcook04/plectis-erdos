@@ -37,9 +37,9 @@ result has not propagated:
       Palomar worklist.
 
 It also fails when the ledger no longer describes the papers: a content digest
-that does not match, an invalid status, a row whose statement is no longer in
-its paper, a row recorded at the wrong line, or an asserting environment
-without a row.
+that does not match, a summary block whose counts differ from the rows, an
+invalid status, a row whose statement is no longer in its paper, a row
+recorded at the wrong line, or an asserting environment without a row.
 
 Known debt present when the check was introduced is listed row by row in
 ``docs/paper_lean_propagation_baseline.json``.  A (b) or (c) failure outside
@@ -54,8 +54,9 @@ Run from the repository root:
     python3 scripts/check_lean_paper_propagation.py --restamp
 
 ``--restamp`` rewrites the recorded source line of every row whose statement
-moved within its file, then the content digest; run it after a deliberate row
-edit.  It never changes a status or a declaration.  Stdlib only.
+moved within its file, then the summary block from the rows' counts, then the
+content digest; run it after a deliberate row edit.  It never changes a status
+or a declaration.  Stdlib only.
 """
 
 from __future__ import annotations
@@ -257,6 +258,33 @@ def content_digest(document: dict[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(canonical(body)).hexdigest()
 
 
+def ledger_summary(rows: list[Any]) -> dict[str, Any]:
+    """The summary block a ledger records: its row count, status counts and uncounted rows.
+
+    It is derived from the rows alone, so ``--restamp`` rewrites it and the
+    integrity check rejects a block that no longer matches the rows it counts.
+    """
+    def tally(block: str) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for row in rows:
+            value = row.get(block) if isinstance(row, dict) else None
+            status = str(value.get("status")) if isinstance(value, dict) else "invalid"
+            counts[status] = counts.get(status, 0) + 1
+        return dict(sorted(counts.items()))
+
+    return {
+        "rows": len(rows),
+        "lean": tally("lean"),
+        "comparator": tally("comparator"),
+        "palomar": tally("palomar"),
+        "uncounted_rows": sum(
+            1 for row in rows
+            if isinstance(row, dict) and isinstance(row.get("lean"), dict)
+            and row["lean"].get("counted") is False
+        ),
+    }
+
+
 def split_source(source: str) -> tuple[str, int]:
     path, _, line = source.rpartition(":")
     if not path or not line.isdigit():
@@ -293,6 +321,11 @@ def ledger_integrity_failures(ledger: dict[str, Any]) -> list[str]:
     rows = ledger.get("rows")
     if not isinstance(papers, list) or not isinstance(rows, list):
         return failures + ["ledger papers and rows must be lists"]
+    if ledger.get("summary") != ledger_summary(rows):
+        failures.append(
+            "ledger summary does not match the counts of its rows "
+            "(run --restamp after a row edit, or regenerate it)"
+        )
     paper_ids = set()
     for paper in papers:
         if not isinstance(paper, dict) or not isinstance(paper.get("sources"), list):
@@ -1310,6 +1343,7 @@ def restamped(ledger: dict[str, Any], drift: list[tuple[str, str, int]]) -> dict
             row = {**row, "source": f"{path}:{moved[row['id']]}"}
         rows.append(row)
     refreshed = {**ledger, "rows": rows}
+    refreshed["summary"] = ledger_summary(rows)
     refreshed["content_digest"] = content_digest(refreshed)
     return refreshed
 
@@ -1366,7 +1400,8 @@ def main(argv: list[str] | None = None) -> int:
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--json", action="store_true", help="print the full result as JSON")
     parser.add_argument("--restamp", action="store_true",
-                        help="rewrite moved source lines and the content digest, then check")
+                        help="rewrite moved source lines, the summary block and the content "
+                             "digest, then check")
     parser.add_argument("--rows", metavar="TEXT",
                         help="list the ledger rows whose id, label or declaration names contain TEXT")
     args = parser.parse_args(argv)
@@ -1384,7 +1419,7 @@ def main(argv: list[str] | None = None) -> int:
         currency, _texts = locate_rows(ledger, read_repository_text)
         ledger = restamped(ledger, currency.drift)
         LEDGER.write_text(json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"check_lean_paper_propagation: restamped the digest; "
+        print(f"check_lean_paper_propagation: restamped the summary and the digest; "
               f"{len(currency.drift)} source line(s) moved")
     report = evaluate(ledger, baseline, exemptions, read_repository_text, LeanSources())
     if args.json:
