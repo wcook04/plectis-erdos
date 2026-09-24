@@ -7583,12 +7583,12 @@
       "paper_id": "claim-faithful-publication-systems",
       "title": "Problem-Sized Lean Worlds",
       "title_source": "manuscript",
-      "question_this_paper_answers": "How does a research system turn agent work into inspectable mathematical claims?",
+      "question_this_paper_answers": "How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?",
       "subject": "Systems paper",
       "subject_kind": "system",
       "form": "Research architecture",
-      "owns": "the research architecture and its evidence and authority boundaries",
-      "not_authority_for": "the mathematical content it uses as its worked example, and the correctness of the human review it preserves",
+      "owns": "the research architecture: problem-sized worlds, the path from a proof to a public claim, and the contribution cycle",
+      "not_authority_for": "the mathematics it uses as examples, which the problem papers own, and the correctness of the human review it records",
       "publication_state": "active",
       "publication_class": "methods_paper",
       "publication_class_basis": "owns names 'architecture'",
@@ -7616,12 +7616,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:daf4b28f6e14fc79925dc46baed5e4630254f14dce96a8c88e50ca6738079e56",
+      "source_sha256": "sha256:070a92cbea60db5c0f02e9ccf9bcbfbd0e3c766320e00932fea9188491336708",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 49,
+      "section_count": 21,
       "sections": [
         {
           "level": 1,
@@ -7631,325 +7631,157 @@
         },
         {
           "level": 1,
-          "id": "the-problem-many-kinds-of-evidence",
-          "title": "The problem: many kinds of evidence",
-          "line": 33
-        },
-        {
-          "level": 4,
-          "id": "the-novelty-claim-and-its-ceiling.",
-          "title": "The novelty claim and its ceiling.",
-          "line": 57
-        },
-        {
-          "level": 2,
-          "id": "two-architectural-claims",
-          "title": "Two architectural claims",
-          "line": 65
-        },
-        {
-          "level": 4,
-          "id": "a-problem-is-a-mathematical-world-not-a-folder.",
-          "title": "A problem is a mathematical world, not a folder.",
-          "line": 69
-        },
-        {
-          "level": 4,
-          "id": "authority-is-separated-before-it-is-recombined.",
-          "title": "Authority is separated before it is recombined.",
-          "line": 75
+          "id": "sec:intro",
+          "title": "What AI-assisted mathematics loses",
+          "line": 27
         },
         {
           "level": 1,
-          "id": "sec:lifecycle",
-          "title": "The whole lifecycle in one picture",
-          "line": 98
+          "id": "sec:world",
+          "title": "A problem-sized world",
+          "line": 39
         },
         {
           "level": 2,
-          "id": "skill-addressable-job-lifecycles",
-          "title": "Skill-addressable job lifecycles",
-          "line": 119
-        },
-        {
-          "level": 1,
-          "id": "sec:private",
-          "title": "The private workbench",
-          "line": 136
-        },
-        {
-          "level": 2,
-          "id": "disk-is-shared-memory",
-          "title": "Disk is shared memory",
-          "line": 140
-        },
-        {
-          "level": 2,
-          "id": "type-a-and-type-b",
-          "title": "Type A and Type B",
-          "line": 150
-        },
-        {
-          "level": 2,
-          "id": "concurrency-without-shared-state-confusion",
-          "title": "Concurrency without shared-state confusion",
-          "line": 169
-        },
-        {
-          "level": 2,
-          "id": "the-control-plane-is-executable",
-          "title": "The control plane is executable",
-          "line": 177
-        },
-        {
-          "level": 2,
-          "id": "what-continuous-mathematical-work-looks-like",
-          "title": "What continuous mathematical work looks like",
-          "line": 189
-        },
-        {
-          "level": 2,
-          "id": "coupled-continuous-goals-discovery-and-stewardship",
-          "title": "Coupled continuous goals: discovery and stewardship",
-          "line": 201
-        },
-        {
-          "level": 1,
           "id": "sec:mathloop",
-          "title": "The mathematical reasoning loop",
-          "line": 226
+          "title": "Failed routes and open obligations",
+          "line": 62
         },
         {
-          "level": 2,
-          "id": "experiments-are-route-selectors",
-          "title": "Experiments are route selectors",
-          "line": 236
+          "level": 1,
+          "id": "sec:checks",
+          "title": "From a proof to a public claim",
+          "line": 82
+        },
+        {
+          "level": 1,
+          "id": "sec:cycle",
+          "title": "The contribution cycle",
+          "line": 114
         },
         {
           "level": 4,
-          "id": "failure-modes-are-mathematical-outputs.",
-          "title": "Failure modes are mathematical outputs.",
-          "line": 244
+          "id": "discovery-and-stewardship.",
+          "title": "Discovery and stewardship.",
+          "line": 142
+        },
+        {
+          "level": 4,
+          "id": "credit.",
+          "title": "Credit.",
+          "line": 152
         },
         {
           "level": 2,
-          "id": "three-oracles-not-one",
-          "title": "Three oracles, not one",
-          "line": 250
-        },
-        {
-          "level": 2,
-          "id": "from-local-progress-to-reusable-mathematics",
-          "title": "From local progress to reusable mathematics",
-          "line": 266
-        },
-        {
-          "level": 2,
-          "id": "problem-sized-lean-worlds-and-bounded-theorem-neighbourhoods",
-          "title": "Problem-sized Lean worlds and bounded theorem neighbourhoods",
-          "line": 276
-        },
-        {
-          "level": 2,
-          "id": "comprehension-before-the-mathematics",
-          "title": "Comprehension before the mathematics",
-          "line": 288
-        },
-        {
-          "level": 2,
-          "id": "consequence-propagation",
-          "title": "Consequence propagation",
-          "line": 308
-        },
-        {
-          "level": 1,
-          "id": "sec:public",
-          "title": "The public Lean repository",
-          "line": 316
-        },
-        {
-          "level": 1,
-          "id": "sec:assurance",
-          "title": "Comparator, Palomar, and publication",
-          "line": 346
-        },
-        {
-          "level": 2,
-          "id": "comparator-an-exact-statement-firewall",
-          "title": "Comparator: an exact-statement firewall",
-          "line": 350
-        },
-        {
-          "level": 2,
-          "id": "review-selection-and-what-the-palomar-registry-is-not",
-          "title": "Review selection, and what the Palomar registry is not",
-          "line": 358
-        },
-        {
-          "level": 2,
-          "id": "publication-and-propagation",
-          "title": "Publication and propagation",
-          "line": 366
-        },
-        {
-          "level": 2,
-          "id": "from-formal-checking-to-mathematical-use",
-          "title": "From formal checking to mathematical use",
-          "line": 374
-        },
-        {
-          "level": 1,
           "id": "sec:example",
-          "title": "One complete boundary: finite is not unbounded",
-          "line": 386
+          "title": "Worked example: Problem 1041",
+          "line": 158
         },
         {
           "level": 1,
-          "id": "sec:routes",
-          "title": "Inspection routes",
-          "line": 414
+          "id": "sec:instance",
+          "title": "Eight problems in one repository",
+          "line": 164
         },
         {
           "level": 1,
-          "id": "sec:trust",
-          "title": "What can be trusted",
-          "line": 439
+          "id": "sec:production",
+          "title": "How the records are produced",
+          "line": 197
         },
         {
-          "level": 1,
-          "id": "sec:scaling",
-          "title": "Scaling from one clone to a search network",
-          "line": 478
+          "level": 4,
+          "id": "shared-state-on-disk.",
+          "title": "Shared state on disk.",
+          "line": 207
         },
         {
-          "level": 2,
-          "id": "clone-attach-compute-and-mine-bounded-results",
-          "title": "Clone, attach compute, and mine bounded results",
-          "line": 486
+          "level": 4,
+          "id": "bounded-context.",
+          "title": "Bounded context.",
+          "line": 213
         },
         {
-          "level": 2,
-          "id": "the-no-go-graph-as-a-new-mathematical-object",
-          "title": "The no-go graph as a new mathematical object",
-          "line": 512
+          "level": 4,
+          "id": "claims-before-writes.",
+          "title": "Claims before writes.",
+          "line": 219
         },
         {
-          "level": 2,
-          "id": "an-experimental-agenda",
-          "title": "An experimental agenda",
-          "line": 522
+          "level": 4,
+          "id": "single-flight-validation.",
+          "title": "Single-flight validation.",
+          "line": 225
         },
         {
-          "level": 2,
-          "id": "sec:admissible-constructions",
-          "title": "Executable construction choices",
-          "line": 528
+          "level": 4,
+          "id": "route-repair.",
+          "title": "Route repair.",
+          "line": 231
         },
         {
           "level": 1,
           "id": "sec:related",
-          "title": "Relation to other approaches",
-          "line": 543
+          "title": "Relation to Prove2Me and other systems",
+          "line": 239
         },
         {
           "level": 4,
-          "id": "theorem-proving-agents.",
-          "title": "Theorem-proving agents.",
-          "line": 547
+          "id": "other-systems.",
+          "title": "Other systems.",
+          "line": 264
         },
         {
-          "level": 4,
-          "id": "open-formalisation-platforms.",
-          "title": "Open formalisation platforms.",
-          "line": 553
-        },
-        {
-          "level": 4,
-          "id": "semi-autonomous-discovery-studies.",
-          "title": "Semi-autonomous discovery studies.",
-          "line": 559
-        },
-        {
-          "level": 4,
-          "id": "graphs-and-checked-exposition.",
-          "title": "Graphs and checked exposition.",
-          "line": 565
-        },
-        {
-          "level": 4,
-          "id": "auditable-scientific-agents.",
-          "title": "Auditable scientific agents.",
-          "line": 575
-        },
-        {
-          "level": 4,
-          "id": "contribution-and-limits.",
-          "title": "Contribution and limits.",
-          "line": 583
-        },
-        {
-          "level": 4,
-          "id": "scaling-beyond-this-corpus.",
-          "title": "Scaling beyond this corpus.",
-          "line": 589
+          "level": 1,
+          "id": "sec:limits",
+          "title": "Limits, and what stronger models change",
+          "line": 270
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 595
+          "line": 288
         },
         {
           "level": 1,
           "id": "app:repro",
-          "title": "Reproducibility",
-          "line": 607
-        },
-        {
-          "level": 4,
-          "id": "public-first-contact.",
-          "title": "Public first contact.",
-          "line": 611
-        },
-        {
-          "level": 4,
-          "id": "dated-navigation-counts.",
-          "title": "Dated navigation counts.",
-          "line": 622
+          "title": "Inspection routes and reproducibility",
+          "line": 294
         }
       ],
-      "citations_rendered": 32,
+      "citations_rendered": 34,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:5f7a93a62712a58529d70dc1a4dbfd5709e3587cea7fe1711b5f633425ea564e",
-      "pdf_byte_count": 160188,
+      "pdf_sha256": "sha256:7c79400701af36818077f70037c9b8ea00be4130059c0bad8168666c75f4714f",
+      "pdf_byte_count": 100711,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
         "sections": [
           {
-            "id": "sec:lifecycle",
-            "title": "The whole lifecycle in one picture",
-            "line": 98
+            "id": "sec:world",
+            "title": "A problem-sized world",
+            "line": 39
           },
           {
-            "id": "sec:mathloop",
-            "title": "The mathematical reasoning loop",
-            "line": 226
+            "id": "sec:checks",
+            "title": "From a proof to a public claim",
+            "line": 82
           },
           {
-            "id": "sec:example",
-            "title": "One complete boundary: finite is not unbounded",
-            "line": 386
+            "id": "sec:cycle",
+            "title": "The contribution cycle",
+            "line": 114
           },
           {
-            "id": "sec:routes",
-            "title": "Inspection routes",
-            "line": 414
+            "id": "sec:instance",
+            "title": "Eight problems in one repository",
+            "line": 164
           },
           {
-            "id": "sec:trust",
-            "title": "What can be trusted",
-            "line": 439
+            "id": "sec:limits",
+            "title": "Limits, and what stronger models change",
+            "line": 270
           }
         ],
         "unresolved_count": 0
@@ -8194,7 +8026,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:de20fa3f408466e70d8250bb0d795abda07356de2144b36fe91ddf60d36dba71",
+      "source_sha256": "sha256:f90c671b6e7ef44810048e2ee425b64dfb3a4e81a00e2f13470482e1a800cbb1",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8396,8 +8228,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:5d2e8c1d597e7185fa7e7c2ab5d6a689b90d6b47b42409d304a26e7f79b35c7c",
-      "pdf_byte_count": 155499,
+      "pdf_sha256": "sha256:b4344fee844b9bbc0ea1999a515483fe568545ede8cece50d0afe89a9f818078",
+      "pdf_byte_count": 155423,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

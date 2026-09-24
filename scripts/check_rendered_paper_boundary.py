@@ -75,57 +75,32 @@ FIRST_MINUTE_CONTRACT = {
             "the band is contiguous but bounded, not an unbounded family",
         ),
     },
+    # The September 2026 rewrite: page one carries the unit of work, the
+    # #1041 refutation and the registry's all-eight-open status; the checks,
+    # the contribution cycle and the limits each keep their boundary within
+    # one page of where they render today.
     "claim-faithful-publication-systems-paper.pdf": {
-        (1, 3): (
+        (1, 1): (
             "problem-sized lean worlds",
-            "the prototype keeps six authorities separate",
-            "six things that are commonly collapsed",
-            "more reasoning cannot buy a write lease",
-            "lean checks the written formal statement",
-            "degree-seven example due to ani refutes the formal conjectures 1041 claim about one-dimensional hausdorff measure of path images",
-            "other seven target problems remain unresolved",
+            "persistent unit of work",
+            "the claim registry keeps all eight original problems open",
+            "leaves novelty and significance to experts",
+            "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (3, 6): (
-            "type a and type b",
-            "313 visible progress updates and 3,491 command events",
-            "compressed trace has an observation boundary",
-            "authority-bearing artefact and receipt",
-        ),
-        (6, 9): (
-            "experiments are route selectors",
-            "a lean no-go theorem",
-            "three oracles, not one",
-            "problem-sized lean worlds and bounded theorem neighbourhoods",
-            "1,024 lean modules and 153,396 declarations",
-        ),
-        # The three ranges below each moved one page later when the
-        # comprehension-packet section was added ahead of them. Every anchor was
-        # confirmed still present in the source and in the rendered PDF before
-        # its pin was moved: the section carrying it did not change, its
-        # position did.
-        (11, 12): (
-            "comparator: an exact-statement firewall",
-            "review selection, and what the palomar registry is not",
-            "proof generation, verification, exposition, publication and community digestion",
-            "natural friction",
-            "paper authoring itself participates in this loop",
-        ),
-        (13, 13): (
-            "finite range to the unbounded statement",
-            "a larger cutoff exists",
-            "relationship had not been registered",
+        (2, 4): (
+            "lean verifies that a proof establishes the formal statement written in the source",
+            "comparator-checked",
+            "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
+            "coverage boundary, not a reliability score",
         ),
-        (15, 16): (
-            "semantic single-flight queue",
-            # Was "host-wide mathlib resource", which no layout could satisfy:
-            # TeX breaks the line at the hyphen, the extracted text reads
-            # "hostwide", and normalisation cannot put the hyphen back. This
-            # phrase pins the same sentence and cannot break at a hyphen.
-            "mathlib resource are serialized",
-            "four separate scaling limits",
-            "accepted work receives a public receipt tied to exact artifacts",
-            "no-go graph as a new mathematical object",
+        (4, 6): (
+            "an empty search never counts as evidence of no consequence",
+            "whether the formal statement matches the 1958 wording",
+        ),
+        (8, 10): (
+            "no outside contributor had opened a pull request or issue",
+            "ethical objections",
         ),
     },
     "cold-clone-to-proof-receipt.pdf": {

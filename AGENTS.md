@@ -151,11 +151,10 @@ An older clone is still a valid source. Preserve its recorded starting commit
 and original delta, reconcile with current main, then rerun validation and
 propagation. A material conflict resolution is a separately credited change.
 
-### General Plectis machinery
+### Self-contained checkout
 
-The companion [`plectis`](https://github.com/wcook04/plectis) owns runnable
-machinery; this checkout owns the mathematical corpus. Its commands require no
-companion checkout.
+This checkout owns the mathematical corpus and every command it documents; no
+companion checkout is required.
 
 ## Authority order
 
