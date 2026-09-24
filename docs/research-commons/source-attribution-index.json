@@ -59290,13 +59290,13 @@
         "equivalent_source_coordinates": [],
         "key": "duverneytachiya",
         "kind": "bibliography_entry",
-        "line_end": 1213,
-        "line_start": 1206,
+        "line_end": 1232,
+        "line_start": 1225,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-317a740451ce03",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{kanekosuzukitachiya} H.~Kaneko, Y.~Suzuki, and Y.~Tachiya, \\href{https://arxiv.org/abs/2601.20743v1}{\\emph{Refinements of Erd\\H{o}s's irrationality criterion for certain sparse infinite series}}, arXiv:2601.20743v1 (2026).",
@@ -59314,13 +59314,13 @@
         "equivalent_source_coordinates": [],
         "key": "kanekosuzukitachiya",
         "kind": "bibliography_entry",
-        "line_end": 1217,
-        "line_start": 1213,
+        "line_end": 1236,
+        "line_start": 1232,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "proposed-direct-329775d58148a9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{taoteravainen2025} T.~Tao and J.~Ter\\\"av\\\"ainen, \\href{https://arxiv.org/abs/2512.01739v2}{\\emph{Quantitative correlations and some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2 (submitted December 2025, revised April 2026).",
@@ -59338,13 +59338,13 @@
         "equivalent_source_coordinates": [],
         "key": "taoteravainen2025",
         "kind": "bibliography_entry",
-        "line_end": 1221,
-        "line_start": 1217,
+        "line_end": 1240,
+        "line_start": 1236,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-685765cbd1ebe2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{kovactao} V.~Kova\\v{c} and T.~Tao, \\emph{On several irrationality problems for Ahmes series}, Acta Math.\\ Hungar.\\ 175 (2025), no.~2, 572--608, \\href{https://doi.org/10.1007/s10474-025-01528-0}{DOI}. Page numbers refer to arXiv:2406.17593v4.",
@@ -59362,13 +59362,13 @@
         "equivalent_source_coordinates": [],
         "key": "kovactao",
         "kind": "bibliography_entry",
-        "line_end": 1225,
-        "line_start": 1221,
+        "line_end": 1244,
+        "line_start": 1240,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{erdos1948} P.~Erd\\H{o}s, \\emph{On arithmetical properties of Lambert series}, J.~Indian Math.\\ Soc.\\ 12 (1948), 63--66.",
@@ -59384,13 +59384,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1948",
         "kind": "bibliography_entry",
-        "line_end": 1227,
-        "line_start": 1225,
+        "line_end": 1246,
+        "line_start": 1244,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-5c72388a6ca10f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{formalconjectures257} The Formal Conjectures Authors, \\href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean} {\\emph{FormalConjectures.ErdosProblems.\\texttt{257}}}, Lean source at commit \\texttt{f776d2f}, 2025, accessed 13 September 2026.",
@@ -59406,13 +59406,13 @@
         "equivalent_source_coordinates": [],
         "key": "formalconjectures257",
         "kind": "bibliography_entry",
-        "line_end": 1232,
-        "line_start": 1227,
+        "line_end": 1251,
+        "line_start": 1246,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-4bb571f8383293",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{erdos1968} P.~Erd\\H{o}s, \\href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\\emph{On the irrationality of certain series}}, Math.\\ Student 36 (1968), 222--226 (issued 1969); \\href{https://www.renyi.hu/~p_erdos/1969-09.pdf}{five-page scan}.",
@@ -59448,13 +59448,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1968",
         "kind": "bibliography_entry",
-        "line_end": 1236,
-        "line_start": 1232,
+        "line_end": 1255,
+        "line_start": 1251,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{erdos1975} P.~Erd\\H{o}s, \\emph{Some problems and results on the irrationality of the sum of infinite series}, J.~Math.\\ Sci.\\ 10 (1975), 1--7.",
@@ -59472,13 +59472,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1975",
         "kind": "bibliography_entry",
-        "line_end": 1239,
-        "line_start": 1236,
+        "line_end": 1258,
+        "line_start": 1255,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-43a734be32736f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{bkkkz2026} K.~Barreto, J.~Kang, S.-H.~Kim, V.~Kova\\v{c}, and S.~Zhang, \\href{https://arxiv.org/abs/2601.21442v3}{\\emph{Irrationality of rapidly converging series: a problem of Erd\\H{o}s and Graham}}, arXiv:2601.21442v3 (2026), to appear in Bull.\\ London Math.\\ Soc.",
@@ -59494,13 +59494,13 @@
         "equivalent_source_coordinates": [],
         "key": "bkkkz2026",
         "kind": "bibliography_entry",
-        "line_end": 1243,
-        "line_start": 1239,
+        "line_end": 1262,
+        "line_start": 1258,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-c742deb980b53c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{nitecki2013} Z.~Nitecki, \\href{https://arxiv.org/abs/1106.3779v2}{\\emph{Subsum sets: intervals, Cantor sets, and Cantorvals}}, arXiv:1106.3779v2 (2013).",
@@ -59518,13 +59518,13 @@
         "equivalent_source_coordinates": [],
         "key": "nitecki2013",
         "kind": "bibliography_entry",
-        "line_end": 1246,
-        "line_start": 1243,
+        "line_end": 1265,
+        "line_start": 1262,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-63a234b13e4427",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya, \\href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf} {\\emph{Linear independence results for the values of divisor functions series}}, RIMS K\\^oky\\^uroku No.~2014 (2017), 138--150. Theorem~A restates their periodic-sequence theorem (\\href{https://doi.org/10.1142/S1793042113501121}{DOI}).",
@@ -59542,13 +59542,13 @@
         "equivalent_source_coordinates": [],
         "key": "lucatachiya2017",
         "kind": "bibliography_entry",
-        "line_end": 1252,
-        "line_start": 1246,
+        "line_end": 1271,
+        "line_start": 1265,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-6accca20cd5e44",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{lucatachiya2014periodic} F.~Luca and Y.~Tachiya, \\emph{Irrationality of Lambert series associated with a periodic sequence}, International Journal of Number Theory \\textbf{10} (2014), no.~3, 623--636. \\href{https://doi.org/10.1142/S1793042113501121}{doi:10.1142/S1793042113501121}.",
@@ -59564,13 +59564,13 @@
         "equivalent_source_coordinates": [],
         "key": "lucatachiya2014periodic",
         "kind": "bibliography_entry",
-        "line_end": 1258,
-        "line_start": 1252,
+        "line_end": 1277,
+        "line_start": 1271,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-9ce84321e202f1",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{lucatachiya2014independence} F.~Luca and Y.~Tachiya, \\emph{Linear independence of certain Lambert series}, Proceedings of the American Mathematical Society \\textbf{142} (2014), no.~10, 3411--3419. \\href{https://doi.org/10.1090/S0002-9939-2014-12102-2}{doi:10.1090/S0002-9939-2014-12102-2}.",
@@ -59586,13 +59586,13 @@
         "equivalent_source_coordinates": [],
         "key": "lucatachiya2014independence",
         "kind": "bibliography_entry",
-        "line_end": 1264,
-        "line_start": 1258,
+        "line_end": 1283,
+        "line_start": 1277,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-f6ee6890db85d9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{vanassche2001} W.~Van Assche, \\emph{Little $q$-Legendre polynomials and irrationality of certain Lambert series}, The Ramanujan Journal \\textbf{5} (2001), 295--310. \\href{https://doi.org/10.1023/A:1012930828917}{doi:10.1023/A:1012930828917}; \\href{https://arxiv.org/abs/math/0101187v1}{arXiv:math/0101187v1}.",
@@ -59610,13 +59610,13 @@
         "equivalent_source_coordinates": [],
         "key": "vanassche2001",
         "kind": "bibliography_entry",
-        "line_end": 1271,
-        "line_start": 1264,
+        "line_end": 1290,
+        "line_start": 1283,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-cd126799fede94",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{hornich1941} H.~Hornich, \\emph{\\\"Uber beliebige Teilsummen absolut konvergenter Reihen}, Monatshefte f\\\"ur Mathematik und Physik \\textbf{49} (1941), 316--320. \\href{https://doi.org/10.1007/BF01707309}{doi:10.1007/BF01707309}.",
@@ -59632,13 +59632,13 @@
         "equivalent_source_coordinates": [],
         "key": "hornich1941",
         "kind": "bibliography_entry",
-        "line_end": 1278,
-        "line_start": 1271,
+        "line_end": 1297,
+        "line_start": 1290,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-691e9cc3c46273",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{vandoornkovac} W.~van Doorn and V.~Kova\\v{c}, \\emph{Lacunary sequences whose reciprocal sums represent all rational numbers in an interval}, Acta Arith.\\ 223 (2026), 275--295. \\href{https://doi.org/10.4064/aa251001-13-1}{DOI}. Page references use \\url{https://arxiv.org/abs/2509.24971v3}.",
@@ -59654,13 +59654,13 @@
         "equivalent_source_coordinates": [],
         "key": "vandoornkovac",
         "kind": "bibliography_entry",
-        "line_end": 1284,
-        "line_start": 1278,
+        "line_end": 1303,
+        "line_start": 1297,
         "paper_id": "erdos-257-mersenne-support-subseries",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_text": "\\bibitem{erdosgraham1980} Paul Erd\\H{o}s and Ronald L. Graham, \\emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\\'{e}matique \\textbf{28}, L'Enseignement Math\\'{e}matique (1980), \\href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{source}.",
@@ -94694,7 +94694,7 @@
         ],
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94710,7 +94710,7 @@
         ],
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94726,7 +94726,7 @@
         ],
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94742,7 +94742,7 @@
         ],
         "source_id": "source-317a740451ce03",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94756,7 +94756,7 @@
         "qualifiers": [],
         "source_id": "source-f6ee6890db85d9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94772,7 +94772,7 @@
         ],
         "source_id": "source-317a740451ce03",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94788,7 +94788,7 @@
         ],
         "source_id": "proposed-direct-329775d58148a9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94804,7 +94804,7 @@
         ],
         "source_id": "source-685765cbd1ebe2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94820,7 +94820,7 @@
         ],
         "source_id": "source-cd126799fede94",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94834,7 +94834,7 @@
         "qualifiers": [],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94850,7 +94850,7 @@
         ],
         "source_id": "source-317a740451ce03",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94866,7 +94866,7 @@
         ],
         "source_id": "source-43a734be32736f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94880,7 +94880,7 @@
         "qualifiers": [],
         "source_id": "source-c742deb980b53c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94894,7 +94894,7 @@
         "qualifiers": [],
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94908,7 +94908,7 @@
         "qualifiers": [],
         "source_id": "source-691e9cc3c46273",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94924,7 +94924,7 @@
         ],
         "source_id": "source-63a234b13e4427",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94940,7 +94940,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94954,7 +94954,7 @@
         "qualifiers": [],
         "source_id": "source-9ce84321e202f1",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94970,7 +94970,7 @@
         ],
         "source_id": "source-6accca20cd5e44",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -94984,7 +94984,7 @@
         "qualifiers": [],
         "source_id": "source-4bb571f8383293",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+        "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
       },
       {
         "citation_context": "in_text_citation",
@@ -114436,7 +114436,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:a3f09c663677a575783b5f24174ece7a5b650e848fafb81f0867fb04982eff18",
+  "source_registry_sha256": "sha256:39121ea1d99b69b349b1382edc28df62fa9f92e75dec2e6da54f14220d6b82cd",
   "sources": [
     {
       "artifact_coordinates": [
@@ -118301,15 +118301,15 @@
           "line_end": 137,
           "line_start": 137,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:1d98da1cc9acba9dff63b689605b7402eee23c5f2cea8e887c7c18989b40d0d1",
           "expected_text": "\\bibitem{kanekosuzukitachiya}",
-          "line_end": 1217,
-          "line_start": 1213,
+          "line_end": 1236,
+          "line_start": 1232,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:1ed1ce69c8bf73f3362ff5a2aca04fe7d02e4cc4dbe0784bc0f09ca0a22ad778",
@@ -118351,8 +118351,8 @@
         {
           "excerpt_sha256": "sha256:1d98da1cc9acba9dff63b689605b7402eee23c5f2cea8e887c7c18989b40d0d1",
           "expected_text": "\\bibitem{kanekosuzukitachiya}",
-          "line_end": 1217,
-          "line_start": 1213,
+          "line_end": 1236,
+          "line_start": 1232,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -125616,10 +125616,10 @@
         {
           "excerpt_sha256": "sha256:0ef99b680f15dcdcdc4890932040fe1bad3f3ee018e801c7204dea8bae0d1b51",
           "expected_text": "\\bibitem{duverneytachiya}",
-          "line_end": 1213,
-          "line_start": 1206,
+          "line_end": 1232,
+          "line_start": 1225,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:e8f0eb9c08b32d040eb9d382b55721fcbada06cfa90efaa2936a851eae07396b",
@@ -125661,21 +125661,21 @@
           "line_end": 137,
           "line_start": 137,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:fa9c5470b10974096a81d5f934190f18c1303bfbab8ccee75a7290efabe75eab",
           "line_end": 137,
           "line_start": 137,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:fa9c5470b10974096a81d5f934190f18c1303bfbab8ccee75a7290efabe75eab",
           "line_end": 137,
           "line_start": 137,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:1ed1ce69c8bf73f3362ff5a2aca04fe7d02e4cc4dbe0784bc0f09ca0a22ad778",
@@ -125736,8 +125736,8 @@
         {
           "excerpt_sha256": "sha256:0ef99b680f15dcdcdc4890932040fe1bad3f3ee018e801c7204dea8bae0d1b51",
           "expected_text": "\\bibitem{duverneytachiya}",
-          "line_end": 1213,
-          "line_start": 1206,
+          "line_end": 1232,
+          "line_start": 1225,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -128071,10 +128071,10 @@
         {
           "excerpt_sha256": "sha256:8fe2d89da58a1e4e231d39f70b8dc5e5e218e128f6a1964d09e9a63a746e2b0a",
           "expected_text": "\\bibitem{erdos1975}",
-          "line_end": 1239,
-          "line_start": 1236,
+          "line_end": 1258,
+          "line_start": 1255,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:b938d408a670bde68b8522a01fa71ee3a1b30b4fbb78368431f5fb9cded5f0f9",
@@ -128097,8 +128097,8 @@
         {
           "excerpt_sha256": "sha256:8fe2d89da58a1e4e231d39f70b8dc5e5e218e128f6a1964d09e9a63a746e2b0a",
           "expected_text": "\\bibitem{erdos1975}",
-          "line_end": 1239,
-          "line_start": 1236,
+          "line_end": 1258,
+          "line_start": 1255,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -128641,18 +128641,18 @@
         {
           "excerpt_sha256": "sha256:25cf3513f78fba977dc2a6cefb4a67e70b7815d304207cbac09e637aaa5db383",
           "expected_text": "\\bibitem{formalconjectures257}",
-          "line_end": 1232,
-          "line_start": 1227,
+          "line_end": 1251,
+          "line_start": 1246,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:25cf3513f78fba977dc2a6cefb4a67e70b7815d304207cbac09e637aaa5db383",
           "expected_text": "\\bibitem{formalconjectures257}",
-          "line_end": 1232,
-          "line_start": 1227,
+          "line_end": 1251,
+          "line_start": 1246,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         }
       ],
@@ -128733,10 +128733,10 @@
         {
           "excerpt_sha256": "sha256:da365fb3627d4a62500ab14506a5fa9a7c61368c1f67b75982752d2ba474ccc5",
           "expected_text": "\\bibitem{kovactao}",
-          "line_end": 1225,
-          "line_start": 1221,
+          "line_end": 1244,
+          "line_start": 1240,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:20b55c219bde90eb922d16a4e4e7195151a7a94f401f50f85e1f72c5e3a46342",
@@ -128971,8 +128971,8 @@
         {
           "excerpt_sha256": "sha256:da365fb3627d4a62500ab14506a5fa9a7c61368c1f67b75982752d2ba474ccc5",
           "expected_text": "\\bibitem{kovactao}",
-          "line_end": 1225,
-          "line_start": 1221,
+          "line_end": 1244,
+          "line_start": 1240,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -130818,10 +130818,10 @@
         {
           "excerpt_sha256": "sha256:12e925bb796b6215db708d25b5d1ab1c5640c351e7f3683e2c91ae968206b259",
           "expected_text": "\\bibitem{erdos1948}",
-          "line_end": 1227,
-          "line_start": 1225,
+          "line_end": 1246,
+          "line_start": 1244,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:cf446c3cbb0c405bcc80ec2c25d599a8a83cd781fed2f9312d32338c1383374d",
@@ -131022,8 +131022,8 @@
         {
           "excerpt_sha256": "sha256:12e925bb796b6215db708d25b5d1ab1c5640c351e7f3683e2c91ae968206b259",
           "expected_text": "\\bibitem{erdos1948}",
-          "line_end": 1227,
-          "line_start": 1225,
+          "line_end": 1246,
+          "line_start": 1244,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -133119,10 +133119,10 @@
         {
           "excerpt_sha256": "sha256:defd9a2ce501d09c198612d2849b08f6a067d1b43209958db0a0f1bc2c6a9fee",
           "expected_text": "\\bibitem{nitecki2013}",
-          "line_end": 1246,
-          "line_start": 1243,
+          "line_end": 1265,
+          "line_start": 1262,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:155147817b2ab91767d94108d0e5215ebda5501add1a233ca3558274306650ce",
@@ -133169,8 +133169,8 @@
         {
           "excerpt_sha256": "sha256:defd9a2ce501d09c198612d2849b08f6a067d1b43209958db0a0f1bc2c6a9fee",
           "expected_text": "\\bibitem{nitecki2013}",
-          "line_end": 1246,
-          "line_start": 1243,
+          "line_end": 1265,
+          "line_start": 1262,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -133476,10 +133476,10 @@
         {
           "excerpt_sha256": "sha256:b8aeba1b74c5004a308c7a77d0dacb7f303d2e1210da60dac512f3834b9dfb1d",
           "expected_text": "\\bibitem{taoteravainen2025}",
-          "line_end": 1221,
-          "line_start": 1217,
+          "line_end": 1240,
+          "line_start": 1236,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:e8f0eb9c08b32d040eb9d382b55721fcbada06cfa90efaa2936a851eae07396b",
@@ -133553,8 +133553,8 @@
         {
           "excerpt_sha256": "sha256:b8aeba1b74c5004a308c7a77d0dacb7f303d2e1210da60dac512f3834b9dfb1d",
           "expected_text": "\\bibitem{taoteravainen2025}",
-          "line_end": 1221,
-          "line_start": 1217,
+          "line_end": 1240,
+          "line_start": 1236,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -134108,10 +134108,10 @@
         {
           "excerpt_sha256": "sha256:9fb245c54bf24e5b9fefda94bc836f1a8dae5e0a9c852475ce12f264cb114471",
           "expected_text": "\\bibitem{hornich1941}",
-          "line_end": 1278,
-          "line_start": 1271,
+          "line_end": 1297,
+          "line_start": 1290,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:e9c60c753e365223406c899dee816ed5743af3cc67081cc3002ceb4f8cf6b1da",
@@ -134134,8 +134134,8 @@
         {
           "excerpt_sha256": "sha256:9fb245c54bf24e5b9fefda94bc836f1a8dae5e0a9c852475ce12f264cb114471",
           "expected_text": "\\bibitem{hornich1941}",
-          "line_end": 1278,
-          "line_start": 1271,
+          "line_end": 1297,
+          "line_start": 1290,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -134378,10 +134378,10 @@
         {
           "excerpt_sha256": "sha256:e2ea1dec26aa5bc12b24ae324b5eec9758dfe18eef2464f06f2c610f65164b7d",
           "expected_text": "\\bibitem{lucatachiya2017}",
-          "line_end": 1252,
-          "line_start": 1246,
+          "line_end": 1271,
+          "line_start": 1265,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:dc3b6825148962fe6dcac631ca31bbed24b0c5d155adf89e2b13951655dda752",
@@ -134466,8 +134466,8 @@
         {
           "excerpt_sha256": "sha256:e2ea1dec26aa5bc12b24ae324b5eec9758dfe18eef2464f06f2c610f65164b7d",
           "expected_text": "\\bibitem{lucatachiya2017}",
-          "line_end": 1252,
-          "line_start": 1246,
+          "line_end": 1271,
+          "line_start": 1265,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -137387,10 +137387,10 @@
         {
           "excerpt_sha256": "sha256:4ea0575269b0cc301d69524665b7d6cb05120bcbba9460851e9fa2718c3cafec",
           "expected_text": "\\bibitem{erdos1968}",
-          "line_end": 1236,
-          "line_start": 1232,
+          "line_end": 1255,
+          "line_start": 1251,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:c7a81b8d86ce7c996d630dcf84722c50dcd66186b2043ffbb325b11eedbbf227",
@@ -137420,7 +137420,7 @@
           "line_end": 100,
           "line_start": 100,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:c7a81b8d86ce7c996d630dcf84722c50dcd66186b2043ffbb325b11eedbbf227",
@@ -137434,7 +137434,7 @@
           "line_end": 100,
           "line_start": 100,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:e3872dd726142058db24d451b073eb106f0d6e35aea52bb385f849574ba5ce02",
@@ -137535,8 +137535,8 @@
         {
           "excerpt_sha256": "sha256:4ea0575269b0cc301d69524665b7d6cb05120bcbba9460851e9fa2718c3cafec",
           "expected_text": "\\bibitem{erdos1968}",
-          "line_end": 1236,
-          "line_start": 1232,
+          "line_end": 1255,
+          "line_start": 1251,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -139614,10 +139614,10 @@
         {
           "excerpt_sha256": "sha256:08841993ec7ee7aa859d0a63801cb36c9d22ae35f6f155707172b3fa7712308a",
           "expected_text": "\\bibitem{vandoornkovac}",
-          "line_end": 1284,
-          "line_start": 1278,
+          "line_end": 1303,
+          "line_start": 1297,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:d09ac96b0131bd7dfc76f01dbf0e7d50ec3b4558035379307812584b13065d36",
@@ -139691,8 +139691,8 @@
         {
           "excerpt_sha256": "sha256:08841993ec7ee7aa859d0a63801cb36c9d22ae35f6f155707172b3fa7712308a",
           "expected_text": "\\bibitem{vandoornkovac}",
-          "line_end": 1284,
-          "line_start": 1278,
+          "line_end": 1303,
+          "line_start": 1297,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -142098,10 +142098,10 @@
         {
           "excerpt_sha256": "sha256:3f90c9c82f80686f1efe4c911cd5f754201a1464c150d626d59690b5e96927f9",
           "expected_text": "\\bibitem{lucatachiya2014periodic}",
-          "line_end": 1258,
-          "line_start": 1252,
+          "line_end": 1277,
+          "line_start": 1271,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:3f90c9c82f80686f1efe4c911cd5f754201a1464c150d626d59690b5e96927f9",
@@ -142124,8 +142124,8 @@
         {
           "excerpt_sha256": "sha256:3f90c9c82f80686f1efe4c911cd5f754201a1464c150d626d59690b5e96927f9",
           "expected_text": "\\bibitem{lucatachiya2014periodic}",
-          "line_end": 1258,
-          "line_start": 1252,
+          "line_end": 1277,
+          "line_start": 1271,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -147290,18 +147290,18 @@
         {
           "excerpt_sha256": "sha256:156df176c039566fa6a406e54730ac45e0fabbf03ff99eaeb3b08442cc0945c5",
           "expected_text": "\\bibitem{bkkkz2026}",
-          "line_end": 1243,
-          "line_start": 1239,
+          "line_end": 1262,
+          "line_start": 1258,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:156df176c039566fa6a406e54730ac45e0fabbf03ff99eaeb3b08442cc0945c5",
           "expected_text": "\\bibitem{bkkkz2026}",
-          "line_end": 1243,
-          "line_start": 1239,
+          "line_end": 1262,
+          "line_start": 1258,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         }
       ],
@@ -148011,10 +148011,10 @@
         {
           "excerpt_sha256": "sha256:c67b14d05ad70fe87ae10882e6666f671b4fb879b6ad3b2ac2f9cd21da8d1764",
           "expected_text": "\\bibitem{vanassche2001}",
-          "line_end": 1271,
-          "line_start": 1264,
+          "line_end": 1290,
+          "line_start": 1283,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:c67b14d05ad70fe87ae10882e6666f671b4fb879b6ad3b2ac2f9cd21da8d1764",
@@ -148104,8 +148104,8 @@
         {
           "excerpt_sha256": "sha256:c67b14d05ad70fe87ae10882e6666f671b4fb879b6ad3b2ac2f9cd21da8d1764",
           "expected_text": "\\bibitem{vanassche2001}",
-          "line_end": 1271,
-          "line_start": 1264,
+          "line_end": 1290,
+          "line_start": 1283,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
@@ -151758,7 +151758,7 @@
           "line_end": 557,
           "line_start": 557,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:1d28810fd9387e5da8ff9af751bedcd8d56dd1395930031cec2fdca2b69476b1",
@@ -153063,10 +153063,10 @@
         {
           "excerpt_sha256": "sha256:6c20454741356816e2d6d22e0fde01df4c611d7435ed3814f610e86ef368a80d",
           "expected_text": "\\bibitem{lucatachiya2014independence}",
-          "line_end": 1264,
-          "line_start": 1258,
+          "line_end": 1283,
+          "line_start": 1277,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984"
+          "sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f"
         },
         {
           "excerpt_sha256": "sha256:6c20454741356816e2d6d22e0fde01df4c611d7435ed3814f610e86ef368a80d",
@@ -153089,8 +153089,8 @@
         {
           "excerpt_sha256": "sha256:6c20454741356816e2d6d22e0fde01df4c611d7435ed3814f610e86ef368a80d",
           "expected_text": "\\bibitem{lucatachiya2014independence}",
-          "line_end": 1264,
-          "line_start": 1258,
+          "line_end": 1283,
+          "line_start": 1277,
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
         },
         {
