@@ -99,7 +99,13 @@ srcDir = "research/adapters"
 # not carry at all, offered as new `variants.*` declarations rather than as
 # proofs of existing holes. Same reason it is not a default target and not
 # counted as this library's own mathematics.
-globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
+globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants", "FC1049HeightRegion"]
+
+# Exact zero-indexed cubic-rate #243 statement bridge for Formal Conjectures.
+# CI builds this focused non-default target explicitly.
+[[lean_lib]]
+name = "FC243CubicRate"
+srcDir = "research/adapters"
 
 # Ground-truth fixtures for semantic residual evaluation.  Eight labelled proof
 # sketches over two elementary targets, including deliberate target-restatement
