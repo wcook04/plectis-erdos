@@ -1080,7 +1080,10 @@
           "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
+          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
+          "anchor_label_allowlist": [
+            "long243:res:gapconstant"
+          ]
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
