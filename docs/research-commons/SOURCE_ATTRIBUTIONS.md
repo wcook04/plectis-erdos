@@ -932,7 +932,7 @@ Public implementation or evidence coordinates:
 
 - [docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md](../../docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md#L1-L41) — lines `1–41`; excerpt `sha256:2dd1c6e867a779af56358ca64dc97076e8c0c4f4fe8db1128aed5624673e206b`
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L873-L873) — lines `873–873`; excerpt `sha256:5e2e6c2c874886e16da148e50ad853ae95b8bd51917063f56898eede0c49e406`
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L373-L377) — lines `373–377`; excerpt `sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L379-L383) — lines `379–383`; excerpt `sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L1-L100) — lines `1–100`; excerpt `sha256:2869c3db2da5857a4c9fc56be272d52f5a7b1242f3633bd8ed0b01f0da016724`
 
 <a id="source-erdos1041-ani-degree-seven-candidate-counterexample"></a>
@@ -1035,7 +1035,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L262-L266) — lines `262–266`; excerpt `sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L262-L272) — lines `262–272`; excerpt `sha256:9ec6b8b09de1bfee382a968ad6339f9789fe914f34ddd80289565b2b929a0fc7`
 - [docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md](../../docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:6126bfd0669f6bbbaf09f65bc95f02fb185baddaac42274887a3cba79bdb3118`
 
 <a id="source-erdos243-tao-tail-pair-recurrence"></a>
@@ -1122,7 +1122,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L270-L274) — lines `270–274`; excerpt `sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L276-L280) — lines `276–280`; excerpt `sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a`
 - [lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean](../../lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L27-L30) — lines `27–30`; excerpt `sha256:1fdbe78f7474100bd312810adac9f1ef95fe6de93652e252348899dffa4e15c6`
 
 <a id="source-erdos251-land-conditional-proof-lean"></a>
@@ -1162,7 +1162,7 @@ Public implementation or evidence coordinates:
 
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L282-L282) — lines `282–282`; excerpt `sha256:564fef3b1c83b587c34b3db58f1f89d199d9b9f7fccafdea2fbbe0766f05f34a`
 - [lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean](../../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L138-L172) — lines `138–172`; excerpt `sha256:df88134179386f6161b138662a0cf1e7faf8a0ff67d5a839a7ac4608d03ad1c2`
-- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L393-L424) — lines `393–424`; excerpt `sha256:912d421ce3a607706d9b45fcb033ab97d4d81f834be36a029c3407aca9e05ae8`
+- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L404-L435) — lines `404–435`; excerpt `sha256:912d421ce3a607706d9b45fcb033ab97d4d81f834be36a029c3407aca9e05ae8`
 
 <a id="source-erdos257-kovac-context-bundle"></a>
 
@@ -1260,7 +1260,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L314-L330) — lines `314–330`; excerpt `sha256:f4d1278504a386c4d49236ab4efd039ef5ddd233f5bae878c29728b527bd5417`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L320-L336) — lines `320–336`; excerpt `sha256:f4d1278504a386c4d49236ab4efd039ef5ddd233f5bae878c29728b527bd5417`
 
 <a id="source-erdos-problems-catalog-eight-problem-context"></a>
 
@@ -1472,7 +1472,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L273-L291) — lines `273–291`; excerpt `sha256:12a5b1f7563cefb7d10a26be861ae84e01bcba9b150a9655b9c3e2aabd93108b`
+- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L284-L302) — lines `284–302`; excerpt `sha256:12a5b1f7563cefb7d10a26be861ae84e01bcba9b150a9655b9c3e2aabd93108b`
 
 <a id="source-formal-conjectures-adapter-problem-251"></a>
 
@@ -1492,7 +1492,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L365-L429) — lines `365–429`; excerpt `sha256:4db989ccba90a32a255fe9bd93b65967fa391e1cf1c9974d07cfa64d5d0e92c8`
+- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L376-L440) — lines `376–440`; excerpt `sha256:4db989ccba90a32a255fe9bd93b65967fa391e1cf1c9974d07cfa64d5d0e92c8`
 
 <a id="source-formal-conjectures-adapter-problem-257"></a>
 
@@ -1512,7 +1512,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L345-L363) — lines `345–363`; excerpt `sha256:7ff63cde13f349a5f42b41b5bbc6f9160c468a7a7ae2a92d8cd54b5d8afc85d6`
+- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L356-L374) — lines `356–374`; excerpt `sha256:7ff63cde13f349a5f42b41b5bbc6f9160c468a7a7ae2a92d8cd54b5d8afc85d6`
 
 <a id="source-formal-conjectures-adapter-problem-68"></a>
 
@@ -1532,7 +1532,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L474-L507) — lines `474–507`; excerpt `sha256:5bd0c8f1316751bbcc0c8dd95f60449cc49b395f5984c254b1db288a24fda020`
+- [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L485-L518) — lines `485–518`; excerpt `sha256:5bd0c8f1316751bbcc0c8dd95f60449cc49b395f5984c254b1db288a24fda020`
 
 <a id="source-formal-conjectures-eight-problem-coverage-boundary"></a>
 

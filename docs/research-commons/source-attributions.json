@@ -14019,8 +14019,8 @@
         {
           "path": "docs/PRIOR_ART.md",
           "line_start": 262,
-          "line_end": 266,
-          "excerpt_sha256": "sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289"
+          "line_end": 272,
+          "excerpt_sha256": "sha256:9ec6b8b09de1bfee382a968ad6339f9789fe914f34ddd80289565b2b929a0fc7"
         },
         {
           "path": "docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md",
@@ -14127,8 +14127,8 @@
         },
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 393,
-          "line_end": 424,
+          "line_start": 404,
+          "line_end": 435,
           "excerpt_sha256": "sha256:912d421ce3a607706d9b45fcb033ab97d4d81f834be36a029c3407aca9e05ae8"
         }
       ],
@@ -14195,8 +14195,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 270,
-          "line_end": 274,
+          "line_start": 276,
+          "line_end": 280,
           "excerpt_sha256": "sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a"
         },
         {
@@ -14429,8 +14429,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 314,
-          "line_end": 330,
+          "line_start": 320,
+          "line_end": 336,
           "excerpt_sha256": "sha256:f4d1278504a386c4d49236ab4efd039ef5ddd233f5bae878c29728b527bd5417"
         }
       ],
@@ -14630,8 +14630,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 474,
-          "line_end": 507,
+          "line_start": 485,
+          "line_end": 518,
           "excerpt_sha256": "sha256:5bd0c8f1316751bbcc0c8dd95f60449cc49b395f5984c254b1db288a24fda020"
         }
       ],
@@ -14665,8 +14665,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 273,
-          "line_end": 291,
+          "line_start": 284,
+          "line_end": 302,
           "excerpt_sha256": "sha256:12a5b1f7563cefb7d10a26be861ae84e01bcba9b150a9655b9c3e2aabd93108b"
         }
       ],
@@ -14700,8 +14700,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 365,
-          "line_end": 429,
+          "line_start": 376,
+          "line_end": 440,
           "excerpt_sha256": "sha256:4db989ccba90a32a255fe9bd93b65967fa391e1cf1c9974d07cfa64d5d0e92c8"
         }
       ],
@@ -14735,8 +14735,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesVariants.lean",
-          "line_start": 345,
-          "line_end": 363,
+          "line_start": 356,
+          "line_end": 374,
           "excerpt_sha256": "sha256:7ff63cde13f349a5f42b41b5bbc6f9160c468a7a7ae2a92d8cd54b5d8afc85d6"
         }
       ],
@@ -15951,8 +15951,8 @@
         },
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 373,
-          "line_end": 377,
+          "line_start": 379,
+          "line_end": 383,
           "excerpt_sha256": "sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e"
         },
         {
