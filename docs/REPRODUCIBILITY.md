@@ -10,6 +10,7 @@ Everything below uses this public checkout and public tools.
 | What you want to do | Start here | What you need |
 |---|---|---|
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
+| Replay the #257 weighted theorem against a separate statement | [Weighted theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) | Linux, Git, Python 3.11+, Elan/Lake, Go, and systemd |
 | Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
 | Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
