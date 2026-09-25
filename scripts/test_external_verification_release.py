@@ -975,6 +975,11 @@ def test_weighted_support_runtime_receipt() -> None:
                 'weighted CI receipt lost its challenge')
         require(row['permitted_axioms'] == unit['permitted_axioms'],
                 'weighted CI receipt lost its axiom budget')
+        row = receipt.weighted_support_runtime_row(1, 1, positive_log, negative_log)
+        require(row['result'] == 'fail', 'failed positive comparison counted as a pass')
+        negative_log.write_text('')
+        row = receipt.weighted_support_runtime_row(0, 1, positive_log, negative_log)
+        require(row['result'] == 'fail', 'empty negative diagnostic counted as a mismatch')
         negative_log.write_text('an unrelated failure\n')
         row = receipt.weighted_support_runtime_row(0, 1, positive_log, negative_log)
         require(row['result'] == 'fail', 'unrelated failure counted as a mismatch')
