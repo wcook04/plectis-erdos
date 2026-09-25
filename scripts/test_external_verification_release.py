@@ -764,6 +764,33 @@ def test_replay_plan() -> None:
         raise AssertionError("floating branch name was accepted as a replay commit")
 
 
+def test_replay_rejects_missing_systemd_before_fetch() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        output = Path(raw) / "replay-receipt.json"
+        with (
+            patch.object(replay, "check_programs"),
+            patch.object(
+                replay,
+                "sandbox_mode",
+                side_effect=replay.ReplayError("no usable systemd manager"),
+            ) as manager,
+            patch.object(replay, "load_contract") as contract,
+            patch.object(replay, "prepare_source") as fetch,
+        ):
+            result, exit_code = replay.execute(
+                source_commit="a" * 40,
+                source_tree="b" * 40,
+                output=output,
+                workspace=None,
+            )
+        require(exit_code == 1, "unusable host was accepted")
+        require(result["error"] == "no usable systemd manager", "lost host diagnostic")
+        require(json.loads(output.read_text()) == result, "failure receipt was not written")
+        manager.assert_called_once_with(replay.ROOT)
+        contract.assert_not_called()
+        fetch.assert_not_called()
+
+
 def test_named_construction_replay_unit() -> None:
     diagnostic = 'exact theorem mismatch'
     require(replay.replay_checks_pass(0, 1, diagnostic, diagnostic), 'valid comparison rejected')
@@ -1025,6 +1052,7 @@ def main() -> int:
     test_replay_subprocess_environment()
     test_tracked_artifact_path_prefers_nested_storage()
     test_replay_plan()
+    test_replay_rejects_missing_systemd_before_fetch()
     test_named_construction_replay_unit()
     test_weighted_support_replay_unit()
     test_failure_control_receipt_parser()
