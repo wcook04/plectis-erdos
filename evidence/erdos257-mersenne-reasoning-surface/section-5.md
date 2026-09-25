@@ -14,7 +14,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_erdosSum_full_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L8328)
+[`Erdos249257.irrational_erdosSum_full_support`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CertificateKernel.lean#L8328)
 
 ```lean
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
@@ -39,7 +39,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_erdosSupportSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L11590)
+[`Erdos249257.irrational_erdosSupportSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CertificateKernel.lean#L11590)
 
 ```lean
 theorem irrational_erdosSupportSeries_periodic
@@ -68,7 +68,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L11604)
+[`Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CertificateKernel.lean#L11604)
 
 ```lean
 theorem irrational_erdosSupportSeries_eventuallyPeriodic
@@ -96,7 +96,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.irrational_residueClass_positive_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ResidueClassSupport.lean#L21)
+[`ErdosProblems.Erdos257.PaperCompleteR21.irrational_residueClass_positive_support`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ResidueClassSupport.lean#L21)
 
 ```lean
 theorem irrational_residueClass_positive_support
@@ -123,7 +123,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_erdosSupportSeries_odd`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L11686)
+[`Erdos249257.irrational_erdosSupportSeries_odd`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CertificateKernel.lean#L11686)
 
 ```lean
 theorem irrational_erdosSupportSeries_odd (b : ℕ) (hb : 2 ≤ b) :
@@ -144,12 +144,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 5.9 (Achievement-set topology and measure), page 36
 
-> *$`\mathcal{A}`$ (Definition 5.2) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
+> *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">26</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
 > *Use:* Theorem 5.10 below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR20.paper_achievement_geometry`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean#L40)
+1. [`ErdosProblems.Erdos257.PaperCompleteR20.paper_achievement_geometry`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean#L40)
 
 ```lean
 theorem paper_achievement_geometry :
@@ -162,7 +162,7 @@ theorem paper_achievement_geometry :
       0 ∉ A ∧ positiveMersenneSupportValue A = x
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR20.mersenne_topology_quantitative`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/MersenneConstantDecimal.lean#L21)
+2. [`ErdosProblems.Erdos257.PaperCompleteR20.mersenne_topology_quantitative`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/MersenneConstantDecimal.lean#L21)
 
 ```lean
 theorem mersenne_topology_quantitative :
@@ -195,7 +195,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1458)
+1. [`Erdos249257.mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/GreedyAchievementSet.lean#L1458)
 
 ```lean
 theorem mem_mersenneAchievementSet_iff_greedy_survival (x : ℝ) :
@@ -203,7 +203,7 @@ theorem mem_mersenneAchievementSet_iff_greedy_survival (x : ℝ) :
       0 ≤ x ∧ ∀ n : ℕ, greedyMersenneRemainder x n ≤ mersenneTail n
 ```
 
-2. [`Erdos249257.greedy_survives_of_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1375)
+2. [`Erdos249257.greedy_survives_of_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/GreedyAchievementSet.lean#L1375)
 
 ```lean
 theorem greedy_survives_of_mem_mersenneAchievementSet {x : ℝ}
@@ -211,7 +211,7 @@ theorem greedy_survives_of_mem_mersenneAchievementSet {x : ℝ}
     0 ≤ x ∧ ∀ n : ℕ, greedyMersenneRemainder x n ≤ mersenneTail n
 ```
 
-3. [`Erdos249257.mem_mersenneAchievementSet_of_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1394)
+3. [`Erdos249257.mem_mersenneAchievementSet_of_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/GreedyAchievementSet.lean#L1394)
 
 ```lean
 theorem mem_mersenneAchievementSet_of_greedy_survival {x : ℝ} (hx : 0 ≤ x)
@@ -248,12 +248,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \sum_{d=n}^{2n}\left\lfloor\frac{4^n}{2^d-1}\right\rfloor
 >  =2^n+1+\sum_{j=0}^{n-1}2^j=2^{n+1}.
 > ```
-> Substitute this in the definition of $`K(2n)`$, split $`\{2,\ldots,n-1\}=D_n\sqcup\mathrm{Skip}_n`$, and use $`\Delta_n=2^{2n-1}-2^{n+1}-\sum_{d\in D_n}w(n,d)`$. This gives (I). **Certification:** rows $`6\le n\le200`$ rechecked with zero mismatches by an exact [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_master_identity.py) (§5.7).\
+> Substitute this in the definition of $`K(2n)`$, split $`\{2,\ldots,n-1\}=D_n\sqcup\mathrm{Skip}_n`$, and use $`\Delta_n=2^{2n-1}-2^{n+1}-\sum_{d\in D_n}w(n,d)`$. This gives (I). **Certification:** rows $`6\le n\le200`$ rechecked with zero mismatches by an exact [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_master_identity.py) (§<a href="#ssec:anchors" data-reference-type="ref" data-reference="ssec:anchors">5.7</a>).\
 > *Use:* (I) permits substitution of information about $`K(2n)`$. A resulting estimate for $`\Delta_n`$ must also retain or bound the skip-set sum; information about $`K`$ alone need not control their cancellation.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR20.paper_master_identity_floors`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowIdentity.lean#L89)
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_master_identity_floors`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowIdentity.lean#L89)
 
 ```lean
 theorem paper_master_identity_floors {n : ℕ} (hn : 6 ≤ n) (D : Finset ℕ)
@@ -304,7 +304,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_core`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean#L84)
+1. [`ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_core`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean#L84)
 
 ```lean
 theorem paper_real_quotient_core {n : ℕ} (hn : 6 ≤ n) (D : Finset ℕ)
@@ -316,7 +316,7 @@ theorem paper_real_quotient_core {n : ℕ} (hn : 6 ≤ n) (D : Finset ℕ)
       0 < eta ∧ eta < (n : ℝ)+2/3 ∧ |eta| < 2*(n : ℝ)+2
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_margins`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean#L103)
+2. [`ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_margins`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean#L103)
 
 ```lean
 theorem paper_real_quotient_margins {n : ℕ} (hn : 6 ≤ n) (D : Finset ℕ)
@@ -329,14 +329,14 @@ theorem paper_real_quotient_margins {n : ℕ} (hn : 6 ≤ n) (D : Finset ℕ)
       |(∑ d ∈ (Finset.Ico 2 n) \ D, mersenneWeight d) - (erdosBorweinMersenneConstant-3/2)|)
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR20.row_constant_eq_tail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean#L94)
+3. [`ErdosProblems.Erdos257.PaperCompleteR20.row_constant_eq_tail`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean#L94)
 
 ```lean
 theorem row_constant_eq_tail :
     erdosBorweinMersenneConstant-3/2 = mersenneTail 1-1/2
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR20.mersenne_constant_decimal`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/MersenneConstantDecimal.lean#L8)
+4. [`ErdosProblems.Erdos257.PaperCompleteR20.mersenne_constant_decimal`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR20/MersenneConstantDecimal.lean#L8)
 
 ```lean
 theorem mersenne_constant_decimal :
@@ -397,7 +397,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_dynamics`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L424)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_dynamics`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L424)
 
 ```lean
 theorem paper_dynamics {n : ℕ} (hn : 5 ≤ n) {D B D' : Finset ℕ}
@@ -424,49 +424,49 @@ theorem paper_dynamics {n : ℕ} (hn : 5 ≤ n) {D B D' : Finset ℕ}
         else 2 * (((r : ℚ) - 2 ^ n) / 2 ^ n) - ((pm : ℚ) + 4) / 2 ^ (n + 1))
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowLower_existsUnique`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L398)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowLower_existsUnique`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L398)
 
 ```lean
 theorem paper_rowLower_existsUnique {n : ℕ} (hn : 5 ≤ n) :
     ∃! D : Finset ℕ, IsRowLower n D
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowUpper_existsUnique`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L404)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowUpper_existsUnique`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L404)
 
 ```lean
 theorem paper_rowUpper_existsUnique {n : ℕ} (hn : 5 ≤ n) :
     ∃! B : Finset ℕ, IsRowUpper n B
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_isRowLower`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L279)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_isRowLower`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L279)
 
 ```lean
 theorem paper_greedySupport_isRowLower {n : ℕ} (hn : 5 ≤ n) :
     IsRowLower n (greedySupport n)
 ```
 
-5. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_upperSupport_isRowUpper`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L364)
+5. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_upperSupport_isRowUpper`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L364)
 
 ```lean
 theorem paper_upperSupport_isRowUpper {n : ℕ} (hn : 5 ≤ n) :
     IsRowUpper n (rowSupport n (seamAboveWord n hn))
 ```
 
-6. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_isRowLower_unique`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L379)
+6. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_isRowLower_unique`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L379)
 
 ```lean
 theorem paper_isRowLower_unique {n : ℕ} (hn : 5 ≤ n) {D D₀ : Finset ℕ}
     (hD : IsRowLower n D) (hD₀ : IsRowLower n D₀) : D = D₀
 ```
 
-7. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_isRowUpper_unique`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L388)
+7. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_isRowUpper_unique`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L388)
 
 ```lean
 theorem paper_isRowUpper_unique {n : ℕ} (hn : 5 ≤ n) {B B₀ : Finset ℕ}
     (hB : IsRowUpper n B) (hB₀ : IsRowUpper n B₀) : B = B₀
 ```
 
-8. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_greedy_rule`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L301)
+8. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_greedy_rule`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L301)
 
 ```lean
 theorem paper_greedySupport_greedy_rule {n : ℕ} (hn : 5 ≤ n) {d : ℕ}
@@ -477,14 +477,14 @@ theorem paper_greedySupport_greedy_rule {n : ℕ} (hn : 5 ≤ n) {d : ℕ}
             truncatedMersenneWeight n e ≤ seamSubsetTarget n
 ```
 
-9. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_mem`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L254)
+9. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_mem`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L254)
 
 ```lean
 theorem paper_greedySupport_mem {n d : ℕ} (hd : 2 ≤ d) (hdn : d < n) :
     d ∈ greedySupport n ↔ seamGreedyWord n ⟨d - 2, by omega⟩ = true
 ```
 
-10. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedy_step`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L244)
+10. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_greedy_step`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L244)
 
 ```lean
 theorem paper_greedy_step {n d : ℕ} (hd : d < n) (C : ℕ) :
@@ -495,14 +495,14 @@ theorem paper_greedy_step {n d : ℕ} (hd : d < n) (C : ℕ) :
             C - truncatedMersenneWeight n d else C)
 ```
 
-11. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_consecutive_not_both_divisible`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L69)
+11. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_consecutive_not_both_divisible`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L69)
 
 ```lean
 theorem paper_consecutive_not_both_divisible {d m : ℕ} (hd : 2 ≤ d) :
     ¬ (d ∣ m + 1 ∧ d ∣ m + 2)
 ```
 
-12. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowPulse_eq_indicators`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L50)
+12. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowPulse_eq_indicators`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L50)
 
 ```lean
 theorem paper_rowPulse_eq_indicators (n d : ℕ) :
@@ -511,21 +511,21 @@ theorem paper_rowPulse_eq_indicators (n d : ℕ) :
         (if d ∣ 2 * n + 2 then 1 else 0)
 ```
 
-13. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowQuotient_eq_weightSum`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L58)
+13. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowQuotient_eq_weightSum`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L58)
 
 ```lean
 theorem paper_rowQuotient_eq_weightSum (n : ℕ) (S : Finset ℕ) :
     localPrefixQuotient S (2 * n) = ∑ d ∈ S, truncatedMersenneWeight n d
 ```
 
-14. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowWeight_eq_floor`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L41)
+14. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowWeight_eq_floor`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L41)
 
 ```lean
 theorem paper_rowWeight_eq_floor (n d : ℕ) :
     truncatedMersenneWeight n d = 4 ^ n / (2 ^ d - 1)
 ```
 
-15. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowTarget_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L45)
+15. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_rowTarget_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean#L45)
 
 ```lean
 theorem paper_rowTarget_eq (n : ℕ) :

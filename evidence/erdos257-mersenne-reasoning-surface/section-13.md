@@ -24,7 +24,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1645)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1645)
 
 ```lean
 theorem arithmetic_logarithmic_counterexample (H : ℕ) (hH : 2 ≤ H) (A₀ : ℝ) (hA₀ : 0 ≤ A₀) :
@@ -38,7 +38,7 @@ theorem arithmetic_logarithmic_counterexample (H : ℕ) (hH : 2 ≤ H) (A₀ : �
       ∃ R : ℕ, 1 / 2 < dyadicMean L R L (exceedInd F)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.no_absolute_dyadic_kappaOne_constant`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1859)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.no_absolute_dyadic_kappaOne_constant`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1859)
 
 ```lean
 theorem no_absolute_dyadic_kappaOne_constant :
@@ -75,7 +75,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.sup_condExceedProb_le_paperCoverCost`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCoverLowerBoundPaperForm.lean#L40)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.sup_condExceedProb_le_paperCoverCost`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCoverLowerBoundPaperForm.lean#L40)
 
 ```lean
 theorem sup_condExceedProb_le_paperCoverCost (F : Finset ℕ) (hF : 0 ∉ F)
@@ -84,7 +84,7 @@ theorem sup_condExceedProb_le_paperCoverCost (F : Finset ℕ) (hF : 0 ∉ F)
       ≤ paperCoverCost (F : Set ℕ)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.exists_support_paperCoverCost_ge`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1900)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.exists_support_paperCoverCost_ge`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1900)
 
 ```lean
 theorem exists_support_paperCoverCost_ge (H : ℕ) (hH : 2 ≤ H) :
@@ -93,7 +93,7 @@ theorem exists_support_paperCoverCost_ge (H : ℕ) (hH : 2 ≤ H) :
       kappaOne F 1 ≤ 30 * Real.log 2 / (H : ℝ)
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.no_absolute_paperCoverCost_kappaOne_constant`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1912)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.no_absolute_paperCoverCost_kappaOne_constant`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/ArithmeticCounterexampleAssembly.lean#L1912)
 
 ```lean
 theorem no_absolute_paperCoverCost_kappaOne_constant :
@@ -125,7 +125,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, with $F$ a finite nonempty set of positive integers, $U_F(N)=\sum_{a\in F}2^{N\bmod a}/(2^a-1)$ and $\kappa_1(F;t)$ the infimum of the same linear programme.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/LogarithmicInitialInterval.lean#L491)
+[`ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos257/PaperCompleteR21/LogarithmicInitialInterval.lean#L491)
 
 ```lean
 theorem logarithmic_initial_interval (F : Finset ℕ) (hFne : F.Nonempty) (hF : 0 ∉ F)
