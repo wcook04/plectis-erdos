@@ -7622,7 +7622,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:1c165edc2db69e269f82a5ca4e466dbbd0d113c8ee632e47c6957ed829fbfbce",
+      "source_sha256": "sha256:dcbc1b17d89d36a4a9765142d2db5091914416e04c8ced481020147263c99e18",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7720,10 +7720,10 @@
           "line": 270
         }
       ],
-      "citations_rendered": 48,
+      "citations_rendered": 49,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:a1e3043ed0305d0b53522e1f0afc63e0ab37e2beb9744ac798cdecc3e73e5c30",
-      "pdf_byte_count": 122079,
+      "pdf_sha256": "sha256:9d3671f7e7038d74cedb14608af4535b229083a927a58501810171056be340a5",
+      "pdf_byte_count": 124766,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

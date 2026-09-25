@@ -214,8 +214,8 @@ shows the whole transfer; the experiment keeps the trace \\
 Allocation & The next question, the test that would decide it and the
 condition for stopping & Irrationality for every infinite support stays the
 registered endpoint; no narrower next step is recorded & Is $1/3$ best for
-irrational tails? The Thue--Morse orbit stays near $0.4125$; the literature is
-read before any proof \\
+irrational tails? A probe pointed to $0.4125$, the literature fixed the
+answer, and the question closed; formalising it is optional \\
 \bottomrule
 \end{tabular}
 \caption{Four decisions about a returned result, for the weighted criterion of
@@ -338,8 +338,18 @@ establishes what follows. The constant $1/31$ came from the radix bound 30.
 With the bound $B$ as a parameter the same proof gives $1/(B+1)$, which the
 orbit alternating between $1/(B+1)$ and $B/(B+1)$ shows cannot be improved in
 general, and hence $1/3$ for the differences. Lean checks all three, and the
-$1/31$ run stays in the record as the original outcome. None of this bears on
-the actual prime-gap series.
+$1/31$ run stays in the record as the original outcome. A finite probe then
+asked whether $1/3$ is best for irrational tails, and a published theorem
+answered it. Dubickas proved $\limsup_n\|2^n\xi\|\ge\tau$ for every irrational
+$\xi$, with equality at the Thue--Morse number $\tau=0.412454\ldots$, as stated
+by Akiyama and Kaneko~\cite{akiyamakaneko}, so every fixed $c<\tau$ works in
+the criterion. The endpoint does not: the doubling orbit of $\tau$ stays
+strictly closer than $\tau$ to the integers at every positive index, so the
+admissible constants form the open interval $(0,\tau)$. The record keeps the
+Lean-checked $1/3$, the cited theorem and this ordinary endpoint argument at
+their own evidence classes. This sharpens a quantitative irrationality
+criterion; establishing the criterion for the actual prime gaps remains
+open.
 
 Seven of the eight problems ask whether a series is irrational, and the
 synthesis paper~\cite{synthesis} studies what their methods share and where
@@ -770,8 +780,9 @@ recorded, and failed and abandoned attempts are counted. Ablations separate the
 short paper, the evidence links and the continuation tools; historical tasks
 need a cutoff that hides later proofs and theorem names, and prospective tasks
 give a separate test. Tasks separating meaning from wording include a new antecedent
-that leaves the Lean proof intact and changes attribution or appraisal, a
-dropped hypothesis under familiar wording, and a faithful paraphrase. The
+that leaves the Lean proof intact and changes the appraisal, as the Dubickas
+comparison did, a dropped hypothesis or a limsup bound read as a bound reached
+infinitely often, and a faithful paraphrase. The
 transfer of Section~\ref{sec:production} is a diagnostic fixture; discovery
 comparisons use held-out transformations or prospective continuations. Repeating the frozen tasks with a stronger model measures
 what the record adds as models improve.
@@ -959,6 +970,10 @@ pp.~376--389, \href{https://aclanthology.org/2025.inlg-main.23/}{ACL Anthology}.
 \bibitem{minictx} J.~Hu, T.~Zhu, and S.~Welleck, \emph{miniCTX: Neural Theorem
 Proving with (Long-)Contexts}, ICLR 2025,
 \href{https://arxiv.org/abs/2408.03350}{arXiv:2408.03350}.
+\bibitem{akiyamakaneko} S.~Akiyama and H.~Kaneko, \emph{Multiplicative analogue
+of Markoff--Lagrange spectrum and Pisot numbers}, 2021, p.~3, reporting the
+theorem of A.~Dubickas, J.\ Number Theory 117 (2006), 222--239,
+\href{https://arxiv.org/abs/1911.06170v6}{arXiv:1911.06170v6}.
 \bibitem{leandojo} K.~Yang et al., \emph{LeanDojo: Theorem Proving with
 Retrieval-Augmented Language Models}, NeurIPS 2023.
 \bibitem{openprover} M.~Kripner and M.~Straka, \emph{OpenProver: Agentic and

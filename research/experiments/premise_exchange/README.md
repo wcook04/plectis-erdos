@@ -111,6 +111,7 @@ python3 research/experiments/premise_exchange/run.py \
   research/experiments/premise_exchange/dyadic_shift_third_request.json \
   --output research/experiments/premise_exchange/results/threshold_continuation
 python3 research/experiments/premise_exchange/dyadic_threshold_probe.py
+python3 research/experiments/premise_exchange/dyadic_threshold_closure.py
 ```
 
 The extremal orbit above is rational, so it says nothing about irrational
@@ -129,6 +130,55 @@ literature check, beginning with Dubickas's work on the limit points of
 Sturmian sequences and distribution modulo one. A proof attempt starts only
 if that check leaves the integer-base question open. The question stops when
 a proof or a located theorem fixes the constant.
+
+### How the question closed
+
+A located theorem fixes it. Dubickas proved that
+`limsup ‖2^n ξ‖ ≥ τ` for every irrational `ξ`, with equality at `ξ = τ`,
+where `τ = 0.412454…` is the Thue–Morse number; this record takes the
+statement from Akiyama and Kaneko, *Multiplicative analogue of
+Markoff–Lagrange spectrum and Pisot numbers* (arXiv:1911.06170v6, p. 3),
+which reports it for every integer base. The original paper, A. Dubickas,
+*On the distance from a rational power to the nearest integer*, J. Number
+Theory 117 (2006), 222–239, was not read here. The probe had found the
+extremal number itself: `τ = 1/2 − (1/4)∏_{j≥0}(1 − 2^{−2^j})`.
+
+The following deductions are ordinary mathematics, not Lean. Since
+`T_N = 2^N T_0 − a_N` with integers `a_N`,
+`‖T_{N+h} − T_N‖ = ‖2^N (2^h − 1) T_0‖`, and `(2^h − 1) T_0` is irrational
+with `T_0`. So every irrational tail has `limsup_N ‖T_{N+h} − T_N‖ ≥ τ` for
+each `h ≥ 1`, and the equivalence of the previous section holds with any
+fixed `0 < c < τ` in place of 1/3; the converse is unchanged, since a
+rational `T_0 = p/(2^s r)` with `r` odd has integral differences for large
+`N` once `2^h ≡ 1 (mod r)`.
+
+The endpoint itself fails. Write `t = 0110100110010110…`, fixed by the
+order-preserving morphism `0 ↦ 01`, `1 ↦ 10`, and `t̄` for its complement.
+At an odd shift `2m + 1` the suffix of `t` begins `(1 − t_m), t_{m+1},
+(1 − t_{m+1})`: that is `001` or `010`, below the prefix `011` of `t`, or
+`101` or `110`, above the prefix `100` of `t̄`. Every even shift is the image
+of a shorter shift under the morphism, which preserves strict order and
+fixes `t` and `t̄`. Hence every suffix starting with 0 lies strictly below
+`t` and every suffix starting with 1 strictly above `t̄`, so
+`‖2^n τ‖ < τ` for every `n ≥ 1`, while the suffixes at `n = 2^k` approach
+`t̄` and the distances approach `τ` from below. The bounded tail
+`T_N = {2^N τ}`, `g_{N+1} = ⌊2 T_N⌋`, has irrational `T_0` and
+`‖T_{N+1} − T_N‖ < τ` for every `N ≥ 1`.
+
+So the positive constants `c` for which every irrational tail has, for every
+`h ≥ 1`, infinitely many `N` with `‖T_{N+h} − T_N‖ ≥ c` form exactly the open
+interval `(0, τ)`: the limsup bound `τ` is attained, and no constant in the
+cofinal statement is largest. The checked 1/3 theorem is one member of that
+interval, and 1/(B + 1) stays sharp for general integer affine orbits, a
+different question. [dyadic_threshold_closure.py](dyadic_threshold_closure.py)
+checks the product identity and, for every shift below 2^15, the strict
+comparisons of the endpoint argument, in exact arithmetic. A limsup bound of
+`τ` must never be read as `≥ τ` infinitely often; this orbit is the
+counterexample.
+
+Formalising the sharp bound is a separate choice. The present record keeps
+the Lean-checked 1/3 theorem, the cited theorem and the ordinary endpoint
+argument at their own evidence classes.
 
 ## Two further mathematical consequences
 

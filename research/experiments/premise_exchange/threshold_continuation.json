@@ -1,7 +1,7 @@
 {
   "continues": "propagation.json",
   "question": "The dyadic transfer inherited the separation constant 1/31 from the radix-30 escape theorem. Is that constant forced by the mathematics or by the source theorem's bound?",
-  "answer": "By the bound. The escape proof works for every radix bound B with threshold 1/(B+1), the threshold cannot be raised for orbits in general, and the dyadic equivalence holds with 1/3.",
+  "answer": "By the bound. The escape proof works for every radix bound B with threshold 1/(B+1), the threshold cannot be raised for orbits in general, and the dyadic equivalence holds with 1/3. A literature comparison then closed the sharper question: the admissible cofinal constants for irrational tails are exactly (0, tau), tau the Thue-Morse number.",
   "evidence_class": "Lean proofs for the parameterised theorem, the extremal orbit and the 1/3 equivalence; Lean application traces for the continuation request; exact finite computation for the Thue-Morse probe.",
   "consumers": [
     {
@@ -41,10 +41,17 @@
       "completion": "completed"
     },
     {
-      "consumer": "Generated module synopsis, declaration atlas, module graph and elaborated dependency index",
+      "consumer": "Generated module synopsis, declaration atlas and module graph",
       "disposition": "update_now",
-      "action": "Regenerate through their owners after the Lean change.",
+      "action": "Regenerated through their owners after the Lean change.",
       "completion": "completed"
+    },
+    {
+      "consumer": "Elaborated Lean dependency index",
+      "disposition": "update_now",
+      "action": "Export from a completely built Lean environment through scripts/build_lean_dependency_index.py and commit the index with its check receipt.",
+      "completion": "pending",
+      "reentry_condition": "The full local build of both public roots completes; the owner's export and --check pass on the resulting tree."
     },
     {
       "consumer": "Comparator and the paper-to-Lean ledger",
@@ -54,9 +61,11 @@
     },
     {
       "consumer": "Best cofinal separation constant for irrational dyadic tails",
-      "disposition": "defer",
-      "owner": "Literature check, then discovery",
-      "reentry_condition": "The exact probe dyadic_threshold_probe.py finds the Thue-Morse doubling orbit returning to distance about 0.412454 and never exceeding 0.412455 on indices below 4,096. Read the literature on large limit points of the fractional parts of xi b^n first; attempt a proof only if the integer-base question is open there. Stop when a proof or a located theorem fixes the constant."
+      "disposition": "closed_by_source",
+      "action": "Dubickas's theorem, as stated by Akiyama and Kaneko (arXiv:1911.06170v6, p. 3), gives limsup ||2^n xi|| >= tau for irrational xi with equality at the Thue-Morse number tau = 0.412454...; the original 2006 paper was not read. Ordinary deductions in README.md: every fixed 0 < c < tau works in the tail-difference equivalence, and the endpoint fails because ||2^n tau|| < tau for every n >= 1. The admissible cofinal constants are exactly (0, tau). The historical probe output is unchanged; dyadic_threshold_closure.py records the exact finite checks.",
+      "completion": "completed",
+      "evidence_class": "published theorem (secondary statement) plus ordinary proof plus exact finite check; no Lean",
+      "follow_on": "Formalising the sharp bound or the endpoint witness is a separate proposed return, not a prerequisite."
     },
     {
       "consumer": "Public claim registry and problem statuses",
@@ -72,7 +81,8 @@
       "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean": "741d610f12f3774500b993266f187c846be33cb8be466fa38a0b3a7b1503d8e5",
       "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean": "c7d330c0342a52775a6c04846594e6cde26bfc79c0647594f0e963d3d9ad7435",
       "research/experiments/premise_exchange/dyadic_shift_third_request.json": "7d10e081cd4f2b07fa7447ab054f02269bf181ac958c3c4959dd5be5bc4aee94",
-      "research/experiments/premise_exchange/dyadic_threshold_probe.py": "a910a2dd235f58319276a5546e03edf00940d7e43ce81238d118dbad9741004c"
+      "research/experiments/premise_exchange/dyadic_threshold_probe.py": "a910a2dd235f58319276a5546e03edf00940d7e43ce81238d118dbad9741004c",
+      "research/experiments/premise_exchange/dyadic_threshold_closure.py": "76d8f7c78aa8fe59793a9825276f9be275fc70f30636be6e26963cb903fcc379"
     },
     "lean_builds": [
       {
@@ -89,6 +99,10 @@
     "finite_probe": {
       "command": "python3 research/experiments/premise_exchange/dyadic_threshold_probe.py",
       "result": "results/dyadic_threshold_probe.json"
+    },
+    "closure_check": {
+      "command": "python3 research/experiments/premise_exchange/dyadic_threshold_closure.py",
+      "result": "results/dyadic_threshold_closure.json"
     }
   }
 }
