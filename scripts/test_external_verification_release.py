@@ -794,11 +794,13 @@ def test_replay_rejects_missing_systemd_before_fetch() -> None:
 def test_named_construction_replay_unit() -> None:
     diagnostic = 'exact theorem mismatch'
     require(replay.replay_checks_pass(0, 1, diagnostic, diagnostic), 'valid comparison rejected')
-    for code in (0, -999, -9, 124, 125, 126, 127):
+    for code in (0, -999, -9, -15, 2, 124, 125, 126, 127, 130, 137, 143):
         require(not replay.replay_checks_pass(0, code, diagnostic, diagnostic),
                 'infrastructure failure accepted as semantic rejection')
     require(not replay.replay_checks_pass(1, 1, diagnostic, diagnostic), 'failed positive accepted')
     require(not replay.replay_checks_pass(0, 1, 'other failure', diagnostic), 'wrong diagnostic accepted')
+    require(not replay.replay_checks_pass(0, 1, '', diagnostic), 'missing log accepted')
+    require(not replay.replay_checks_pass(0, 1, '', ''), 'empty diagnostic accepted')
     plan = replay.replay_plan('a' * 40, 'b' * 40, 'feedback-policy')
     require(plan['unit'] == 'feedback-policy', 'selected unit was lost')
     require(plan['statement_contract']['theorem'].endswith('feedbackPolicy_preserves_sum'),

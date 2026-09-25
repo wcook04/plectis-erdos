@@ -219,9 +219,8 @@ def bounded_tail(text: str) -> str:
 
 def replay_checks_pass(positive_exit: int, negative_exit: int,
                        negative_text: str, expected_diagnostic: str) -> bool:
-    """Shared CI/local verdict: infrastructure failure is never a negative proof."""
-    return (positive_exit == 0 and negative_exit > 0
-            and negative_exit not in (124, 125, 126, 127)
+    """Accept only Comparator's completed statement-mismatch exit."""
+    return (positive_exit == 0 and negative_exit == 1 and bool(expected_diagnostic)
             and expected_diagnostic in negative_text)
 
 
