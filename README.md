@@ -4,9 +4,8 @@
 # Plectis: research on eight Erdős problem programmes
 
 Plectis is an open-source, AI-assisted prototype for turning mathematical
-exposition into further research. Eight Erdős programmes have short papers,
-longer research records and Lean source, with methods and failed routes for
-others to question and extend.
+exposition into further research. Eight Erdős programmes offer papers, Lean
+source, methods and failed routes for others to question and extend.
 
 Start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
 If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
@@ -14,14 +13,15 @@ the Lean-checked theorem proves irrationality at every integer base for each
 infinite support `A` with finite base-two weighted mass
 `∑_{a∈A} h_P(a)/(a(2^{h_P(a)}−1))`. Some such supports have divergent
 `∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
-[Read the longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf)
-or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+[Longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf) ·
+[Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
 Other seven programmes: [results guide](docs/RESULTS.md#problem-by-problem-guide).
 
-Start here: [read the paper](paper/257/erdos-257-mersenne-support-subseries.pdf),
-[run one exact-rational experiment](research/experiments/sparse_interpolation/late_rejection.py),
-and [return a question or correction](CONTRIBUTING.md#return-what-you-learned).
-This tests one proposed rational subsum, not the weighted theorem.
+[#257 exercise](docs/research-commons/PROVE2ME_WEIGHTED_257_PACKET.md#try-changing-a-hypothesis) · [#243/#257 proofs](docs/research-commons/README.md#native-prove2me-theorems).
+
+Start with the [paper](paper/257/erdos-257-mersenne-support-subseries.pdf),
+[one exact-rational test](research/experiments/sparse_interpolation/late_rejection.py)
+(not the weighted theorem), or [return a question or correction](CONTRIBUTING.md#return-what-you-learned).
 
 **[All papers](paper/README.md)** ·
 [Reading edition](docs/reading-edition/README.md) ·
@@ -210,12 +210,12 @@ follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md).
 
 The reviewed layer a mathematician should judge: 150 curated claim records in 33 contribution families, reaching Lean source through 468 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 87% of the 163,600 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 87% of the 163,604 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
 | Lean modules (the two library roots) | 1,823 |
-| Formal results and supporting lemmas | 159,693 |
+| Formal results and supporting lemmas | 159,697 |
 | Curated claim records | 150 |
 | Contribution families | 33 |
 

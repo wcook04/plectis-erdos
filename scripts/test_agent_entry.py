@@ -45,6 +45,12 @@ ROUTE_CASES = {
     "Improve the contributor experience for someone using this repository for the first time": (
         "repository_architecture", "maintain-public-infrastructure",
     ),
+    "Make public #243 and #257 native Prove2Me theorem and exact proof packet routes discoverable from repository entry pages": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Improve public README and research commons documentation navigation for existing hosted results and reader packets": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
     # Open-ended research must reach its own lane. Before that lane existed,
     # the first request below fell through to the repository-explanation
     # fallback, so an agent asked to think was handed a tour instead.

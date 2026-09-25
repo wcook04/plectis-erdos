@@ -760,6 +760,19 @@ Erdős’s five-page paper was checked directly: p. 222 states the reciprocal-s
 
 The evidence record lists the Lean declarations behind each marked result, with their versions and independent checks. The Lean sources for the supplementary statements quoted from the companion (finite sums and denominators, the achievement set and its restrictions, squarefree divisor counts, half-membership and the tests for $`1/21`$) are linked beside the corresponding statements there.
 
+<a id="reproducing-the-weighted-theorem."></a>
+
+#### Reproducing the weighted theorem.
+
+The two Lean declarations for Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a> are both in the public source at [commit `91ca3405`](https://github.com/wcook04/plectis-erdos/tree/91ca3405b795a520825ac5ca04dcd591b9ddf3e3). That snapshot pins Lean 4.29.1 in `lean-toolchain` and its Mathlib revision in `lake-manifest.json`. From a complete checkout, with `elan` installed, build the two modules with:
+
+    lake exe cache get
+    python3 scripts/lean_fast_build.py --jobs 2 \
+      ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn \
+      ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
+
+The cache download is optional. The modules contain `divisibilityWeightedClaim` and `finitePrimeWeighted_fixedBase_hereditary`, respectively; the evidence record linked above gives their exact statements and the separate Comparator checks.
+
 <a id="library-declarations."></a>
 
 #### Library declarations.

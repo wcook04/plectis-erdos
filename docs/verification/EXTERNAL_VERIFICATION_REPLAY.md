@@ -50,9 +50,16 @@ adds the theorem itself as a hypothesis, changing the statement while making
 the altered declaration trivial. The replay passes only if the positive
 comparison succeeds and Comparator rejects that exact mismatch. The unit's
 configuration, negative Lean source, axiom budget, and tool revisions are in
-the immutable release contract. Adding the unit does not record a successful
-run: its source-bound Comparator replay remains pending until a passing
-receipt exists for the selected source commit.
+the immutable release contract. The
+[merged-main CI run at `7e33a58b`](https://github.com/wcook04/plectis-erdos/actions/runs/36096621946)
+has a downloaded final `pass` receipt for commit
+`7e33a58bb86180013b1fb855cdd8aaff1d7f9057` and tree
+`86f3bed93955112257c1ecd1c4ca721468d1a870`. Its `weighted-support`
+row records positive Comparator exit 0 and deliberate statement-mismatch exit
+1 with the expected diagnostic observed. The receipt SHA-256 is
+`3dc7a6c42db467dd9b6afba74bf4fd9a1facf5c92d346ce201d3c7e0bdc06699`.
+This is source-bound verification in this repository's CI for that exact commit;
+it is not an independent Linux replay or a result for every later source commit.
 
 ## Reviewer replay
 
@@ -69,6 +76,10 @@ python3 scripts/replay_external_verification.py plan \
   --source-commit <40-hex-source-commit> \
   --source-tree <40-hex-source-tree>
 ```
+
+`plan` shows the selected source, statement, controls, and security contract;
+it does not probe the host. `run` checks host prerequisites before fetching or
+building anything.
 
 Then run the isolated replay:
 
@@ -91,8 +102,18 @@ python3 scripts/replay_external_verification.py run --unit weighted-support \
 ```
 
 Run it on Linux with the systemd and pinned-tool prerequisites above. A
-successful command writes a receipt naming the source, statement, axiom
-budget, checker revisions, positive verdict, and deliberate mismatch verdict.
+successful `weighted-support` command writes a receipt naming the source,
+statement, axiom budget, checker revisions, positive verdict, deliberate
+mismatch verdict, and four contract failure controls. Before building Comparator,
+it runs the source commit's adversarial release test from the isolated checkout.
+The runner checks for the required executables and a usable systemd manager
+before fetching that checkout or downloading and building tools; an unsuitable
+host receives a failure receipt with the diagnostic. The receipt binds the
+adversarial test file's digest and output digest and requires explicit
+rejections of a changed challenge module, an undeclared axiom, duplicate
+theorem IDs, and a missing runtime receipt. A missing or failed control makes
+the replay fail. These four are configuration and release-manifest controls;
+the deliberate statement mismatch is the separate negative Comparator run.
 A missing or failing receipt cannot support a release claim. The
 release-manifest validator rejects a missing runtime receipt, and the replay
 contract rejects a changed challenge or axiom budget. These checks do not
@@ -124,6 +145,19 @@ source commit and tree, contract and configuration digests, observed tool
 revisions and binary digests, sandbox mode, positive verdict, and adversarial
 negative verdict. Its `execution_surface` explicitly distinguishes it from
 GitHub Actions.
+
+## Return a replay result
+
+Use the existing [research progress or correction form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
+for a successful, failed, or incomplete outside run. A completed independent
+replay should include the full receipt JSON (attached or linked), its SHA-256,
+the source commit and tree, Linux and systemd mode, the positive and deliberate
+mismatch verdicts, and the `failure_controls` result with its four `observed`
+control IDs for `weighted-support`. Say what was unclear on first use and how
+you want the work credited. If setup stops before a receipt can be written,
+give the exact command and diagnostic instead; do not select the
+independent-replay evidence class for an uncompleted run. Do not post
+credentials, private host details, or unpublished material.
 
 ## Release-cut contract
 

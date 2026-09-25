@@ -49,7 +49,7 @@ T_0\notin\mathbb Q
 \]
 
 The common constant is inherited from the theorem for radices at most 30;
-it is not claimed optimal for radix two. The statement gives a quantitative
+the next section improves it to 1/3. The statement gives a quantitative
 equivalent criterion. It does not establish irrationality of the prime-gap
 series.
 
@@ -70,7 +70,129 @@ python3 research/experiments/premise_exchange/run.py \
 The generated `results/summary.json` distinguishes application acceptance,
 proof closure and remaining obligations. A rejected application is useful
 evidence about this proposed transfer; it is not a disproof of the goal.
+Both recorded rows end with an empty list of remaining obligations: the
+rejected application never reached a state, and the accepted one had its
+single obligation closed. Read acceptance and closure from their own fields.
 The full result preserves the compiler's diagnostics and environment identity.
+
+## The constant, and the next question
+
+The constant 1/31 was an artefact of the source theorem. Its proof uses the
+radix bound only to show that an integer of absolute value below
+`(p + 1) / 31` vanishes, so it works for every bound `B` with threshold
+`1/(B + 1)`. [BoundedRadixTailEscape.lean](../../../lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean)
+now proves `boundedRadix_zero_or_cofinal_far_of_le` for every `B` and keeps
+the radix-30 theorem as its specialisation, so the #269 consumers are
+unchanged. `boundedRadix_threshold_attained` checks that `1/(B + 1)` cannot be
+raised for orbits in general: at constant radix `B` with digits alternating
+`0` and `B - 1`, the orbit alternating `1/(B + 1)` and `B/(B + 1)` never
+reaches an integer and stays exactly `1/(B + 1)` away. At `B = 2`
+[DyadicShiftEscape.lean](../../../lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean)
+proves
+
+\[
+T_0\notin\mathbb Q
+\quad\Longleftrightarrow\quad
+\forall h>0\;\forall N_0\;\exists N\ge N_0\;\forall z\in\mathbb Z,
+\quad |T_{N+h}-T_N-z|\ge 1/3.
+\]
+
+The 1/31 theorems and the recorded application results stay as the original
+run; the 1/3 theorems are its continuation, not a rewrite of that receipt.
+The [continuation request](dyadic_shift_third_request.json) replays the
+transfer through the parameterised theorem at `B = 2`, with the radix-30
+transfer as a negative control against the 1/3 target, and
+[threshold_continuation.json](threshold_continuation.json) records every
+consumer's disposition.
+
+```sh
+python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis.DyadicShiftEscape
+python3 research/experiments/premise_exchange/run.py \
+  research/experiments/premise_exchange/dyadic_shift_third_request.json \
+  --output research/experiments/premise_exchange/results/threshold_continuation
+python3 research/experiments/premise_exchange/dyadic_threshold_probe.py
+python3 research/experiments/premise_exchange/dyadic_threshold_closure.py
+python3 research/experiments/premise_exchange/test_dyadic_threshold_closure.py
+```
+
+The extremal orbit above is rational, so it says nothing about irrational
+tails. For shift `h = 1` the fractional part of `T_{N+1} - T_N` is that of
+`2^N T_0`, so the best constant for irrational tails is the best cofinal
+distance from the integers of the doubling orbit of an irrational number.
+[dyadic_threshold_probe.py](dyadic_threshold_probe.py) records exact finite
+evidence: the doubling orbit of the Thue–Morse number `0.0110100110010110…₂`
+returns in every dyadic block of indices up to 4,096 to distance about
+0.412454 and never exceeds 0.412455 there. If that pattern persists, the best
+constant for irrational tails lies between 1/3 and the Thue–Morse constant
+0.412454…. The Thue–Morse sequence is known to govern extreme limit points of
+the fractional parts of `ξ b^n` in related settings, so the next step is a
+literature check, beginning with Dubickas's work on the limit points of
+`‖ξ (p/q)^n‖` and the Allouche–Dubickas survey on extremal properties of
+Sturmian sequences and distribution modulo one. A proof attempt starts only
+if that check leaves the integer-base question open. The question stops when
+a proof or a located theorem fixes the constant.
+
+### How the question closed
+
+A located theorem fixes it. Dubickas proved that
+`limsup ‖2^n ξ‖ ≥ τ` for every irrational `ξ`, with equality at `ξ = τ`,
+where `τ = 0.412454…` is the Thue–Morse number; this record takes the
+statement from Akiyama and Kaneko, *Multiplicative analogue of
+Markoff–Lagrange spectrum and Pisot numbers* (Adv. Math. 380 (2021),
+107547; arXiv:1911.06170v6, p. 3, equation (1.1) and the paragraph after it),
+which reports it for every integer base. A 2022 corrigendum
+(doi:10.1016/j.aim.2021.107996) replaces their Theorem 2.2's
+Hausdorff-dimension estimate, not this statement. The original paper, A. Dubickas,
+*On the distance from a rational power to the nearest integer*, J. Number
+Theory 117 (2006), 222–239, was not read here. The probe had found the
+extremal number itself: `τ = 1/2 − (1/4)∏_{j≥0}(1 − 2^{−2^j})`.
+
+The following deductions are ordinary mathematics, not Lean. Since
+`T_N = 2^N T_0 − a_N` with integers `a_N`,
+`‖T_{N+h} − T_N‖ = ‖2^N (2^h − 1) T_0‖`, and `(2^h − 1) T_0` is irrational
+with `T_0`. So every irrational tail has `limsup_N ‖T_{N+h} − T_N‖ ≥ τ` for
+each `h ≥ 1`, and the equivalence of the previous section holds with any
+fixed `0 < c < τ` in place of 1/3; the converse is unchanged, since a
+rational `T_0 = p/(2^s r)` with `r` odd has integral differences for large
+`N` once `2^h ≡ 1 (mod r)`.
+
+The endpoint itself fails. Write `t = 0110100110010110…`, fixed by the
+order-preserving morphism `0 ↦ 01`, `1 ↦ 10`, and `t̄` for its complement.
+At an odd shift `2m + 1` the suffix of `t` begins `(1 − t_m), t_{m+1},
+(1 − t_{m+1})`: that is `001` or `010`, below the prefix `011` of `t`, or
+`101` or `110`, above the prefix `100` of `t̄`. Every even shift is the image
+of a shorter shift under the morphism, which preserves strict order and
+fixes `t` and `t̄`. Hence every suffix starting with 0 lies strictly below
+`t` and every suffix starting with 1 strictly above `t̄`, so
+`‖2^n τ‖ < τ` for every `n ≥ 1`, while the suffixes at `n = 2^k` approach
+`t̄` and the distances approach `τ` from below, quantitatively
+`0 < τ − ‖2^{2^k} τ‖ ≤ 2^{−2^k}`: the first `2^k` digits of that suffix are
+the complement of the first `2^k` digits of `t`. The bounded tail
+`T_N = {2^N τ}`, `g_{N+1} = ⌊2 T_N⌋`, has irrational `T_0` and
+`‖T_{N+1} − T_N‖ < τ` for every `N ≥ 1`.
+
+So the positive constants `c` for which every irrational tail has, for every
+`h ≥ 1`, infinitely many `N` with `‖T_{N+h} − T_N‖ ≥ c` form exactly the open
+interval `(0, τ)`: the limsup bound `τ` is attained, and no constant in the
+cofinal statement is largest. The checked 1/3 theorem is one member of that
+interval, and 1/(B + 1) stays sharp for general integer affine orbits, a
+different question. [dyadic_threshold_closure.py](dyadic_threshold_closure.py)
+checks, in exact arithmetic, that the twelve-factor product equals the
+midpoint of the 4,096-bit digit enclosure (the finite form of the product
+identity) and, for every shift below 2^15, the strict comparisons of the
+endpoint argument. [test_dyadic_threshold_closure.py](test_dyadic_threshold_closure.py)
+repeats those checks against an independent construction of the word,
+certifies the quantitative approach for `2^k ≤ 1024`, checks the witnesses
+for each dropped hypothesis (the zero orbit at `c = 0`; the orbit
+alternating 1/3 and 2/3, which passes at `h = 1` only; a non-integer radix
+`2001/1000` at distance `1/1001`), and rejects a checker that tests only
+interval membership. A limsup bound of
+`τ` must never be read as `≥ τ` infinitely often; this orbit is the
+counterexample.
+
+Formalising the sharp bound is a separate choice. The present record keeps
+the Lean-checked 1/3 theorem, the cited theorem and the ordinary endpoint
+argument at their own evidence classes.
 
 ## Two further mathematical consequences
 

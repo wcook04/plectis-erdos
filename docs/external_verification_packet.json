@@ -1738,9 +1738,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:9c89c3445f431b8de3ebdd66d0a6aa63d5adf26ec35e3afc0ca72a82645bcbfd",
+    "owner_digest": "sha256:d77108b3d7f3ee0f723bbe553a4406c4129091a57ae9fc4f5feea149160cb725",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
+    "projection_digest": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2509,10 +2509,10 @@
             "module": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
             "path": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
             "present": true,
-            "line_count": 207,
-            "declaration_count": 6,
-            "theorem_count": 4,
-            "content_digest": "sha256:a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61"
+            "line_count": 304,
+            "declaration_count": 10,
+            "theorem_count": 8,
+            "content_digest": "sha256:741d610f12f3774500b993266f187c846be33cb8be466fa38a0b3a7b1503d8e5"
           },
           {
             "module": "ErdosProblems.Erdos269.CarryLiftExtinction",

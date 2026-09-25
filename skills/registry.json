@@ -947,6 +947,22 @@
       "task_intents": [
         {
           "actions": [
+            "make",
+            "improve",
+            "fix",
+            "repair",
+            "link"
+          ],
+          "objects": [
+            "navigation",
+            "readme",
+            "links",
+            "routes",
+            "entry"
+          ]
+        },
+        {
+          "actions": [
             "debug",
             "fix",
             "repair",

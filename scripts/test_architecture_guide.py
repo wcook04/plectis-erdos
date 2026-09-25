@@ -256,6 +256,16 @@ def main() -> int:
             "inspection route points to a missing repository file",
         ),
     )
+    # A pinned link to a revision that predates the evidence it is cited for
+    # resolves as a URL and must still be rejected.
+    closure_pin = "09db551ef4de91e6c56fd6a00add102eacd4b517"
+    if closure_pin in systems_paper:
+        paper_mutations = (*paper_mutations, (
+            systems_paper.replace(
+                closure_pin, "3aea812a5fb031b14e0911cc9110885cd8a10bfd"
+            ),
+            "closure link pinned before the closure existed",
+        ))
     for mutated, label in paper_mutations:
         assert mutated != systems_paper, (
             f"systems-paper mutation fixture became a no-op: {label}"

@@ -24,6 +24,7 @@ import resource
 import shutil
 import stat
 import subprocess
+import sys
 import tempfile
 import time
 from pathlib import Path
@@ -42,6 +43,13 @@ SYNTHETIC_MERGE_MESSAGE_RE = re.compile(
 LOG_TAIL_BYTES = 12_000
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
+FAILURE_CONTROL_IDS = (
+    "changed_challenge",
+    "undeclared_axiom",
+    "duplicate_theorem_ids",
+    "missing_runtime_receipt",
+)
+FAILURE_CONTROL_SUITE = "scripts/test_external_verification_release.py"
 
 
 class ReplayError(RuntimeError):
@@ -253,6 +261,36 @@ def validate_unit_configs(root: Path, unit: dict[str, Any]) -> tuple[dict, dict]
             positive.get('solution_module') == negative.get('solution_module')):
         raise ReplayError('negative replay must compare a distinct solution against the same challenge')
     return positive, negative
+
+
+def run_failure_controls(source: Path) -> dict[str, Any]:
+    """Run the four contract adversaries from the isolated source checkout."""
+    completed = run([sys.executable, FAILURE_CONTROL_SUITE], cwd=source, timeout=300)
+    output = completed.stdout + completed.stderr
+    observed: list[str] = []
+    for line in completed.stdout.splitlines():
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(row, dict) and row.get("result") == "rejected":
+            control = row.get("failure_control")
+            if isinstance(control, str):
+                observed.append(control)
+    passed = (
+        completed.returncode == 0
+        and sorted(observed) == sorted(FAILURE_CONTROL_IDS)
+    )
+    return {
+        "result": "pass" if passed else "fail",
+        "suite": FAILURE_CONTROL_SUITE,
+        "suite_sha256": sha256_file(source / FAILURE_CONTROL_SUITE, root=source),
+        "exit_code": completed.returncode,
+        "expected": list(FAILURE_CONTROL_IDS),
+        "observed": observed,
+        "log_sha256": sha256_bytes(output.encode("utf-8", errors="replace")),
+        "log_tail": bounded_tail(output) if not passed else "",
+    }
 
 
 def load_contract(root: Path) -> dict[str, Any]:
@@ -544,6 +582,8 @@ def execute(
     exit_code = 1
     try:
         check_programs()
+        # Refuse an unusable host before fetching the source or building tools.
+        mode = sandbox_mode(ROOT)
         bootstrap_contract = load_contract(ROOT)
         source = prepare_source(
             workspace,
@@ -559,6 +599,13 @@ def execute(
         negative_config = selected['negative_config']
         positive, negative = validate_unit_configs(source, selected)
         expected_theorem = selected['theorem']
+        if unit == "weighted-support":
+            control_row = run_failure_controls(source)
+            receipt["failure_controls"] = control_row
+            if control_row["result"] != "pass":
+                raise ReplayError("source-current failure-control suite did not reject all four adversaries")
+            if run(["git", "diff", "--quiet", "HEAD", "--"], cwd=source).returncode != 0:
+                raise ReplayError("failure-control suite modified tracked source")
         cache_started = time.monotonic()
         cache_result = checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
         receipt['source_cache'] = {
@@ -571,7 +618,6 @@ def execute(
             ),
         }
         tools, observed_revisions = prepare_tools(workspace, source_contract)
-        mode = sandbox_mode(source)
         positive_command, environment = comparator_command(
             source=source,
             tools=tools,
@@ -683,6 +729,10 @@ def replay_plan(source_commit: str, source_tree: str, unit: str = 'default') -> 
         "toolchain": value["toolchain"],
         "statement_contract": selected,
         "unit": unit,
+        "failure_controls": (
+            {"suite": FAILURE_CONTROL_SUITE, "expected": list(FAILURE_CONTROL_IDS)}
+            if unit == "weighted-support" else {"status": "not_selected"}
+        ),
         "security": {
             "requires_linux_systemd_transient_unit": True,
             "network_disabled_inside_comparator": True,
@@ -728,6 +778,9 @@ def main() -> int:
             print(f"positive Comparator exit: {checks['positive']['exit_code']}")
             print(f"deliberate mismatch Comparator exit: {checks['negative']['exit_code']}")
             print(f"expected mismatch observed: {checks['negative_expected_diagnostic_observed']}")
+            if args.unit == "weighted-support":
+                controls = receipt.get("failure_controls", {})
+                print(f"failure controls: {controls.get('result', 'missing')}")
         print(f"elapsed seconds: {receipt['execution']['elapsed_seconds']}")
         if exit_code != 0:
             print(f"independent replay failed: {receipt.get('error', 'Comparator verdict')}")
