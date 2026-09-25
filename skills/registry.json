@@ -189,6 +189,32 @@
   ],
   "lanes": [
     {
+      "id": "comparator_replay",
+      "title": "Reproduce a selected theorem with the external Comparator",
+      "task_cues": [
+        "external verification replay",
+        "reproduce the #257 weighted theorem",
+        "verify the #257 weighted theorem independently"
+      ],
+      "task_intents": [
+        {
+          "actions": ["reproduce", "verify", "check", "run"],
+          "objects": ["comparator", "verification", "weighted"]
+        }
+      ],
+      "skills": ["explain-public-system"],
+      "read": [
+        "skills/explain-public-system/SKILL.md#reproduce-a-selected-comparator-theorem",
+        "docs/verification/EXTERNAL_VERIFICATION_REPLAY.md",
+        "verification/external-verification-release-contract.json"
+      ],
+      "commands": [
+        "python3 scripts/replay_external_verification.py plan --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree>",
+        "python3 scripts/replay_external_verification.py run --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree> --output weighted-support-replay-receipt.json"
+      ],
+      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erdős #257 or establish novelty."
+    },
+    {
       "id": "reproduce_claim",
       "title": "Independently reproduce a recorded claim trail without Lean",
       "task_cues": [
