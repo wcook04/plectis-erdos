@@ -30,6 +30,68 @@ and the [all-base weighted claim](https://github.com/wcook04/plectis-erdos-lean/
 The [paper's Theorem 1](../../paper/257/erdos-257-mersenne-support-subseries.tex)
 states the mathematical result and its context.
 
+## Try changing a hypothesis
+
+The paper's example uses the support
+$A_\star=\{2^km:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}$.
+Its reciprocal sum diverges, yet its base-two weighted mass is finite, so
+Theorem 1 applies to every infinite subset at every integer base.
+What changes if the odd-factor cutoff in layer $k$ becomes $2^{r_k}$, where
+
+$$
+r_k=\left\lceil\frac{c^{2^k}}{k^p}\right\rceil,
+\qquad c\ge2\text{ an integer},\quad p>0?
+$$
+
+For $c=2,p=1$, decide whether the $P=\{2\}$ weighted test works at bases
+$2$ and $3$. Then change only $p$ to $2$ and decide what Theorem 1 says at
+*every* base. Before opening the calculation, distinguish “this test fails”
+from a claim that the corresponding series is rational.
+
+<details>
+<summary>Show the calculation and decisions</summary>
+
+Put $A(c,p)=\{2^km:k\ge1,\ m\text{ odd},\ 1\le m\le2^{r_k}\}$ and
+$S_r=\sum_{1\le m\le2^r,\ m\text{ odd}}1/m$. The dyadic estimate in the
+[paper's example](../../paper/257/erdos-257-mersenne-support-subseries.tex)
+gives $r/4\le S_r\le r$ for $r\ge1$. Layers are disjoint because $2^km$
+has exactly $k$ factors of $2$. Hence
+
+$$
+\sum_{a\in A(c,p)}\frac1a=\sum_{k\ge1}\frac{S_{r_k}}{2^k},
+\qquad
+W_{b,\{2\}}(A(c,p))=\sum_{k\ge1}\frac{S_{r_k}}{b^{2^k}-1}.
+$$
+
+The reciprocal sum diverges for every listed $c,p$: its $k$th layer is at
+least $c^{2^k}/(4k^p2^k)$, which does not tend to zero. For the weighted
+sum, $r_k$ lies between $c^{2^k}/k^p$ and $c^{2^k}/k^p+1$. The same bounds
+on $S_r$, and $b^{2^k}/2\le b^{2^k}-1\le b^{2^k}$, bound its $k$th term
+below by $(c/b)^{2^k}/(4k^p)$ and above by
+$2(c/b)^{2^k}/k^p+2b^{-2^k}$. Therefore:
+
+| Changed condition | $P=\{2\}$ weighted test at base $b$ |
+| --- | --- |
+| $b>c$ | Converges |
+| $b=c$ and $p>1$ | Converges |
+| $b=c$ and $0<p\le1$ | Diverges |
+| $b<c$ | Diverges |
+
+For $c=2,p=1$, the test passes at base $3$ and every larger integer base.
+The fixed-base clause therefore makes $X_B(b)$ irrational for each such
+base and every infinite $B\subseteq A(2,1)$. At base $2$, this particular
+test diverges: it gives **no arithmetic verdict** there. Another witness
+or argument has not been ruled out. When $p=2$, the base-two test passes;
+the all-base clause makes $X_B(b)$ irrational for every integer $b\ge2$
+and every infinite $B\subseteq A(2,2)$.
+
+This parameterised calculation is an ordinary deduction from the paper's
+criterion and its dyadic bound. The Lean declarations prove the conditional
+criterion, not a named theorem about this family. The unrestricted Erdős
+#257 question remains open.
+
+</details>
+
 Here is the accepted wrapper Solution as stored by Prove2Me on 25 September.
 It composes those two imports; the hard weighted criterion is in the imported
 proofs. The platform imports belong to Prove2Me's Lean 4.30.0 environment,
