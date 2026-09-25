@@ -20,10 +20,12 @@ import json
 import os
 import platform
 import re
+import resource
 import shutil
 import stat
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -228,6 +230,9 @@ def select_replay_unit(contract: dict[str, Any], unit: str = 'default') -> dict[
     theorem = value.get('theorem')
     if not isinstance(theorem, str) or not theorem.strip():
         raise ReplayError('replay unit lacks an exact theorem')
+    challenge = value.get('challenge_module')
+    if not isinstance(challenge, str) or not challenge.strip():
+        raise ReplayError('replay unit lacks an exact challenge module')
     diagnostic = f"Challenge and solution theorem statement do not match: '{theorem}'"
     if value.get('expected_negative_diagnostic') != diagnostic:
         raise ReplayError('replay unit negative diagnostic is not its exact theorem mismatch')
@@ -242,6 +247,8 @@ def validate_unit_configs(root: Path, unit: dict[str, Any]) -> tuple[dict, dict]
             raise ReplayError(f'{label} replay config is not the contracted one-theorem unit')
         if config.get('permitted_axioms') != unit['permitted_axioms']:
             raise ReplayError(f'{label} replay axiom budget differs from contract')
+        if config.get('challenge_module') != unit['challenge_module']:
+            raise ReplayError(f'{label} replay challenge differs from contract')
     if (positive.get('challenge_module') != negative.get('challenge_module') or
             positive.get('solution_module') == negative.get('solution_module')):
         raise ReplayError('negative replay must compare a distinct solution against the same challenge')
@@ -518,6 +525,7 @@ def execute(
     full_sha(source_commit, "source_commit")
     full_sha(source_tree, "source_tree")
     started = dt.datetime.now(dt.timezone.utc)
+    started_monotonic = time.monotonic()
     temporary: tempfile.TemporaryDirectory[str] | None = None
     if workspace is None:
         temporary = tempfile.TemporaryDirectory(prefix="external-verification-replay-")
@@ -551,7 +559,17 @@ def execute(
         negative_config = selected['negative_config']
         positive, negative = validate_unit_configs(source, selected)
         expected_theorem = selected['theorem']
-        checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
+        cache_started = time.monotonic()
+        cache_result = checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
+        receipt['source_cache'] = {
+            'checkout': 'isolated',
+            'shared_cache_warmth': 'unmeasured',
+            'cache_get_exit_code': cache_result.returncode,
+            'cache_get_elapsed_seconds': round(time.monotonic() - cache_started, 3),
+            'cache_get_log_sha256': sha256_bytes(
+                (cache_result.stdout + cache_result.stderr).encode('utf-8', errors='replace')
+            ),
+        }
         tools, observed_revisions = prepare_tools(workspace, source_contract)
         mode = sandbox_mode(source)
         positive_command, environment = comparator_command(
@@ -632,6 +650,16 @@ def execute(
         exit_code = 1
     finally:
         receipt["completed_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+        receipt['execution'] = {
+            'elapsed_seconds': round(time.monotonic() - started_monotonic, 3),
+            'system': platform.system(),
+            'machine': platform.machine(),
+            'logical_cpu_count': os.cpu_count(),
+            'max_child_ru_maxrss_kib': (
+                resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
+                if platform.system() == 'Linux' else None
+            ),
+        }
         _write_replay_receipt(output, receipt)
         if temporary is not None:
             temporary.cleanup()
@@ -692,6 +720,15 @@ def main() -> int:
             unit=args.unit,
         )
         print(args.output)
+        statement = receipt.get('statement_contract')
+        if isinstance(statement, dict):
+            print(f"theorem: {statement['theorem']}")
+            print(f"permitted axioms: {', '.join(statement['permitted_axioms'])}")
+            checks = receipt['checks']
+            print(f"positive Comparator exit: {checks['positive']['exit_code']}")
+            print(f"deliberate mismatch Comparator exit: {checks['negative']['exit_code']}")
+            print(f"expected mismatch observed: {checks['negative_expected_diagnostic_observed']}")
+        print(f"elapsed seconds: {receipt['execution']['elapsed_seconds']}")
         if exit_code != 0:
             print(f"independent replay failed: {receipt.get('error', 'Comparator verdict')}")
         return exit_code
