@@ -153,6 +153,10 @@ an irrational series at every integer base, although the union satisfies
 neither individual criterion. This comparison and the explicit hosts
 have ordinary proofs in the paper; the hosts and their strictness
 corollary have not been Lean-checked or independently reviewed.
+A differently parameterised weighted-only host has an
+[accepted public proof](https://prove2.me/theorems/7ec42d0d-2fbe-4ebf-a448-b40c9221448a)
+of the no-cover separation. That proof does not verify the exact hosts
+constructed here or the fresh-prime direction.
 
 A useful check is to replace each fresh marker prime by $4^j$.
 The cover calculation still works, but $\{2\}$ then becomes a
