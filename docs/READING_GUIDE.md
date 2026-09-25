@@ -36,7 +36,10 @@ and the opening of each short paper in one file. For #257, follow the weighted
 theorem, its averaging proof, the long record and Lean source. Then try the
 [changed-base exercise](../research/experiments/weighted_support_transfer/README.md):
 the failed sufficient test proves no rationality claim, and the universal
-question remains open.
+question remains open. A second
+[shift-family exercise](../research/experiments/premise_exchange/shift_family_exercise.md)
+asks which selected differences of an integer-digit dyadic tail still detect
+irrationality. Its hints and reviewer solution are separate reveals.
 
 ## What is here
 

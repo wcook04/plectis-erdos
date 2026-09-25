@@ -8,7 +8,7 @@
 
 </div>
 
-Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; eventually doubling chains give transcendence at every rational base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
+Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; eventually doubling chains give transcendence at every rational base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
 
 <a id="sec:map"></a>
 
@@ -20,9 +20,11 @@ What can the freedom to choose digits preserve, and when does arithmetic remove 
 
 Section <a href="#capacity:sec:jets-intro" data-reference-type="ref" data-reference="capacity:sec:jets-intro">2</a> asks whether a single factorial digit sequence can prescribe several derivatives independently. Theorems <a href="#capacity:thm:jets" data-reference-type="ref" data-reference="capacity:thm:jets">1</a> and <a href="#capacity:thm:rational-jets" data-reference-type="ref" data-reference="capacity:thm:rational-jets">2</a> give the sharp threshold and the dimension of the attainable vectors. The proof uses the scalar capacity theorem first, then a carry that preserves lower derivatives; Sections <a href="#capacity:sec:jets-proof" data-reference-type="ref" data-reference="capacity:sec:jets-proof">4</a> and <a href="#capacity:sec:rational-jets" data-reference-type="ref" data-reference="capacity:sec:rational-jets">5</a> give the argument and the rationality obstruction.
 
-The common Lambert series in \#257 and \#1049 gives a second comparison in Section <a href="#sec:results" data-reference-type="ref" data-reference="sec:results">6</a>: a base below two permits rational subsums, while nested denominators force irrationality on certain thin supports. Neither interval filling nor a measure estimate decides whether one specified rational is a subsum at base two. Sections <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.3</a> and <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">8</a> explain that obstruction, including the exact computation that disproved a proposed stopping rule. Section <a href="#sec:second" data-reference-type="ref" data-reference="sec:second">7</a> retains the other method limits without claiming that they have one common cause.
+The common Lambert series in \#257 and \#1049 gives a second comparison in Section <a href="#sec:results" data-reference-type="ref" data-reference="sec:results">6</a>: a base below two permits rational subsums, while nested denominators force irrationality on certain thin supports. Neither interval filling nor a measure estimate decides whether one specified rational is a subsum at base two. Sections <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.3</a> and <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">9</a> explain that obstruction, including the exact computation that disproved a proposed stopping rule. Section <a href="#sec:second" data-reference-type="ref" data-reference="sec:second">8</a> retains the other method limits without claiming that they have one common cause.
 
-The proofs presented here are ordinary mathematical arguments. Cited Lean results establish specified ingredients and quoted results, not the complete capacity classification or Lambert-chain theorem. The sources and originating review are credited in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">11</a>. Historical novelty and independent expert review are not established.
+Section <a href="#sec:dyadic-shifts" data-reference-type="ref" data-reference="sec:dyadic-shifts">7</a> follows a different transfer. A difference of two dyadic tail states is itself an integer-digit dyadic orbit. The resulting irrationality criterion leads to a question about which shift lengths need testing; the answer depends on divisibility rather than the size or density of the chosen family.
+
+The proofs presented here are ordinary mathematical arguments. Cited Lean results establish specified ingredients and quoted results, not the complete capacity classification or Lambert-chain theorem. The sources and originating review are credited in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">12</a>. Historical novelty and independent expert review are not established.
 
 <a id="capacity:sec:jets-intro"></a>
 
@@ -135,7 +137,7 @@ for all sufficiently large $`n`$, with cutoffs depending on $`q`$ but independen
 
 </div>
 
-The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#capacity:sec:carry" data-reference-type="ref" data-reference="capacity:sec:carry">3.6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">11</a>.
+The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#capacity:sec:carry" data-reference-type="ref" data-reference="capacity:sec:carry">3.6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">12</a>.
 
 For example, with allowance $`n^2`$, every second position suffices without congruences. Under <a href="#capacity:eq:congruence" data-reference-type="eqref" data-reference="capacity:eq:congruence">[capacity:eq:congruence]</a>, infinitely many omitted positions already force a null set. With allowance $`n^{2.01}`$, every second position again suffices, even under <a href="#capacity:eq:both" data-reference-type="eqref" data-reference="capacity:eq:both">[capacity:eq:both]</a>. Thus the strict inequality in <a href="#capacity:eq:gaps" data-reference-type="eqref" data-reference="capacity:eq:gaps">[capacity:eq:gaps]</a> is essential.
 
@@ -374,7 +376,7 @@ For the subsequence counterexample put $`F(2k)=0`$ and $`F(2k+1)=(2k)(2k+1)-1`$ 
 \frac{F(2k+1)}{(2k+1)!}
  =\frac1{(2k-1)!}-\frac1{(2k+1)!}.
 ```
-The total capacity is $`1`$, and the capacity after each permitted index $`2k+1`$ is exactly $`1/(2k+1)!`$, equal to the spacing between its choices. The interval criterion therefore gives every value in $`[0,1]`$, even though $`F(n)/n=0`$ at every even index. The exact telescoping identities and sample greedy expansions are reproduced by the script cited in Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">8</a>; the interval conclusion follows from this argument, not from the samples.
+The total capacity is $`1`$, and the capacity after each permitted index $`2k+1`$ is exactly $`1/(2k+1)!`$, equal to the spacing between its choices. The interval criterion therefore gives every value in $`[0,1]`$, even though $`F(n)/n=0`$ at every even index. The exact telescoping identities and sample greedy expansions are reproduced by the script cited in Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">9</a>; the interval conclusion follows from this argument, not from the samples.
 
 <a id="capacity:sec:jets-proof"></a>
 
@@ -723,7 +725,7 @@ R_{17}\le\frac{196609}{25769803776}
  =\frac{9291822600689}{1217890317075045460}
  <\frac1{131071}=w_{17}.
 ```
-Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">8</a> supplies the earlier-step checks. Deeper computation can therefore produce new exclusion certificates; absence of a later rejection still does not prove membership. No rational is known to have an infinite $`S`$ at base $`2`$.
+Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">9</a> supplies the earlier-step checks. Deeper computation can therefore produce new exclusion certificates; absence of a later rejection still does not prove membership. No rational is known to have an infinite $`S`$ at base $`2`$.
 
 <div id="prob:membership" class="problem">
 
@@ -732,6 +734,69 @@ Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:mi
 </div>
 
 The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#prob:membership" data-reference-type="ref" data-reference="prob:membership">15</a> asks about one explicit rational point.
+
+<a id="sec:dyadic-shifts"></a>
+
+# Which dyadic shifts detect irrationality?
+
+Consider a real sequence satisfying
+``` math
+T_{N+1}=2T_N-g_{N+1},\qquad g_{N+1}\in\mathbb{Z}.
+```
+Write $`\|x\|=\operatorname{dist}(x,\mathbb{Z})`$. Iterating the recurrence shows that $`T_N=2^NT_0-a_N`$ for some integers $`a_N`$, and hence
+``` math
+\begin{equation}
+\label{eq:dyadic-shift-identity}
+ \|T_{N+h}-T_N\|=\|2^N(2^h-1)T_0\|.
+\end{equation}
+```
+For $`H\subseteq\mathbb{Z}_{>0}`$ and $`c\in\mathbb{R}`$, say that $`H`$ detects $`T`$ at threshold $`c`$ when
+``` math
+\begin{equation}
+\label{eq:dyadic-restricted-predicate}
+ \forall h\in H\;\forall N_0\;\exists N\ge N_0:\quad
+ \|T_{N+h}-T_N\|\ge c.
+\end{equation}
+```
+The witnessing index may depend on the shift.
+
+The Lean-checked transfer from the \#251 tail classifier and the \#269 bounded-radix escape theorem gives the implication from irrationality in <a href="#eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="eq:dyadic-restricted-predicate">[eq:dyadic-restricted-predicate]</a> for every positive shift when $`c\le1/3`$; the [research record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md#how-the-question-closed) keeps the original $`1/31`$ experiment and the later sharp-constant argument distinct. Dubickas’s theorem, in the form stated by Akiyama and Kaneko \[akiyamakaneko\], gives
+``` math
+\limsup_{N\to\infty}\|2^N\xi\|\ge\tau
+ \quad(\xi\notin\mathbb{Q}),\qquad
+ \tau=\sum_{n\ge0}\frac{t_n}{2^{n+1}}=0.412454\ldots,
+```
+where $`t_n`$ is the parity of the binary digit sum of $`n`$. This cited input extends the implication to every $`c<\tau`$. The endpoint argument below is ordinary mathematics; the sharp bound itself is not formalised here.
+
+<div id="thm:restricted-dyadic-shifts" class="theorem">
+
+**Theorem 16** (Restricted dyadic shifts). *For every integer-digit dyadic recurrence $`T`$, irrationality of $`T_0`$ is equivalent to <a href="#eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="eq:dyadic-restricted-predicate">[eq:dyadic-restricted-predicate]</a> if and only if
+``` math
+0<c<\tau\quad\text{and}\quad
+ \forall d\ge1\;\exists h\in H:\ d\mid h.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Suppose first that these two conditions hold. For irrational $`T_0`$ and fixed $`h>0`$, $`(2^h-1)T_0`$ is irrational. Equation <a href="#eq:dyadic-shift-identity" data-reference-type="eqref" data-reference="eq:dyadic-shift-identity">[eq:dyadic-shift-identity]</a> and Dubickas’s bound give indices as late as desired with distance at least $`c`$. Conversely, let $`T_0=p/q`$ with $`q=2^sr`$ and $`r`$ odd. Some $`d>0`$ satisfies $`2^d\equiv1\pmod r`$; take $`d=1`$ if $`r=1`$. Choose $`h\in H`$ divisible by $`d`$. For every $`N\ge s`$, $`2^N(2^h-1)p/q`$ is an integer, so <a href="#eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="eq:dyadic-restricted-predicate">[eq:dyadic-restricted-predicate]</a> fails.
+
+For necessity of the divisibility condition, suppose no member of $`H`$ is divisible by some $`d\ge2`$. Put $`L=3d`$, $`q=2^L-1`$, and $`T_N=\{2^N/q\}`$. This bounded rational orbit has digits in $`\{0,1\}`$. For a tested shift $`h`$, let $`r\in\{1,\ldots,L-1\}`$ be its residue modulo $`L`$. Since $`2^L\equiv1\pmod q`$, the distance sequence for $`h`$ is periodic and agrees with that for $`r`$. The sequences for $`r`$ and $`L-r`$ agree up to a cyclic shift, because $`2^r(2^{L-r}-1)\equiv-(2^r-1)\pmod q`$. We may therefore use $`m=\max(r,L-r)\ge L/2\ge3`$. At the index $`N=L-m-1`$, one distance is
+``` math
+v=\frac{2^{L-1}-2^{L-m-1}}{2^L-1}
+   =\frac{1-2^{-m}}{2(1-2^{-L})},
+ \qquad \frac7{16}\le v<\frac12.
+```
+It recurs every $`L`$ indices. The first six Thue–Morse digits are $`011010`$, so $`\tau<27/64<7/16`$. Thus this rational orbit passes every tested shift at every $`0<c<\tau`$.
+
+If $`c\le0`$, the zero orbit passes. If $`H`$ is empty, every orbit passes. Finally, for $`c\ge\tau`$ and any $`h_0\in H`$, take $`T_0=\tau/(2^{h_0}-1)`$ and $`g_N=0`$. This initial value is irrational, but the Thue–Morse endpoint argument in the cited [record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md#how-the-question-closed) proves $`\|2^N\tau\|<\tau`$ for every $`N\ge1`$. Equation <a href="#eq:dyadic-shift-identity" data-reference-type="eqref" data-reference="eq:dyadic-shift-identity">[eq:dyadic-shift-identity]</a> makes the test fail at $`h_0`$. ◻
+
+</div>
+
+The endpoint uses a shift-order property of the Thue–Morse word. Related extremal-word constructions appear in Allouche, Clarke and Sidorov \[alloucheclarkesidorov\], whose published bibliography points to earlier work of Allouche and Cosnard. The linked research record gives the short nearest-integer argument used here; no historical priority for that specific formulation is asserted.
+
+The factorial family $`H=\{j!:j\ge1\}`$ satisfies the divisibility condition: $`d\mid d!`$. The power-of-two family does not, since none of its members is divisible by $`3`$. An especially small counterexample for the latter is the rational orbit $`T_N=\{2^N/7\}`$: for each tested shift its distances cycle through $`1/7`$, $`2/7`$, and $`3/7`$, so it passes at every $`c<\tau`$. No finite shift family suffices. Conversely, excluding all multiples of a large $`d`$ leaves a family of density $`1-1/d`$ that fails the test; factorial shifts have density zero and succeed. This criterion does not establish irrationality for the actual prime-gap tail in \#251.
 
 <a id="sec:second"></a>
 
@@ -791,7 +856,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 2.  *Every infinite subset of a host with null subsum set has an irrational sum.* A host is a set $`B`$ of allowed indices, and its subsum set is $`\{X_S(2):S\subseteq B\}`$. For hosts chosen without reference to the target this is open and is a form of \#257 itself. As a universal statement it cannot be a route: the support of any rational subsum with infinite $`S`$ would be such a host. The subsum set of a host $`B`$ has positive measure exactly when the complement of $`B`$ is finite, by Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">9</a>(i) and the measure at full support.
 
-3.  *The share of surviving fractions as evidence.* Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">8</a>.
+3.  *The share of surviving fractions as evidence.* Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">9</a>.
 
 4.  *A wrong locator.* A draft of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">11</a>(b) cited Theorem <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">9</a> of \[adamczewskifaverjon2026\] as Nishioka’s theorem. That theorem says a value of a Mahler function at an algebraic point is rational or transcendental, which cannot prove irrationality. The proof in Section <a href="#sec:bases" data-reference-type="ref" data-reference="sec:bases">6.2</a> uses Nishioka’s value theorem as quoted in \[adamczewskifaverjon2016, Theorem 1.1, p. 3\], applied there to the two-dimensional system for $`(g,1)`$ with regular points in $`(0,1)`$.
 
@@ -845,7 +910,11 @@ The capacity criterion already covers non-power and oscillating allowances. For 
 
 <div class="thebibliography">
 
-99 P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980.
+99 S. Akiyama and H. Kaneko, *Multiplicative analogue of Markoff–Lagrange spectrum and Pisot numbers*, Adv. Math. 380 (2021), 107547, p. 3, reporting the theorem of A. Dubickas, [arXiv:1911.06170v6](https://arxiv.org/abs/1911.06170v6).
+
+J.-P. Allouche, M. Clarke and N. Sidorov, *Periodic unique beta-expansions: the Sharkovskiı̆ ordering*, Ergodic Theory Dynam. Systems 29 (2009), 1055–1074, [doi:10.1017/S0143385708000746](https://doi.org/10.1017/S0143385708000746).
+
+P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980.
 
 P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009).
 
@@ -911,4 +980,4 @@ D. Airey, B. Mance and J. Vandehey, *Normality preserving operations for Cant
 
 # Declaration of generative AI use
 
-The mathematics and text were developed with large language model agents under Will Cook’s direction. The first-page disclosure states his review boundary. The earlier synthesis record reports separate agent proof checks, independent reruns of the exact computations, and source checks on 20 September 2026; the failed citation is retained in Section <a href="#sec:eliminated" data-reference-type="ref" data-reference="sec:eliminated">9</a>. This consolidation preserves those arguments and their evidence classes. It is not an independent mathematical review.
+The mathematics and text were developed with large language model agents under Will Cook’s direction. The first-page disclosure states his review boundary. The earlier synthesis record reports separate agent proof checks, independent reruns of the exact computations, and source checks on 20 September 2026; the failed citation is retained in Section <a href="#sec:eliminated" data-reference-type="ref" data-reference="sec:eliminated">10</a>. This consolidation preserves those arguments and their evidence classes. It is not an independent mathematical review.

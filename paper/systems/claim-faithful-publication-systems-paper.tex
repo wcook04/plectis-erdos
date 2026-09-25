@@ -71,7 +71,7 @@ work; a path from proof to public claim that separates what Lean settles, what
 Comparator settles and what a mathematician judges; and a contribution cycle
 that a person or an agent can run from a public clone.
 \textbf{Instance.} Eight Erd\H{o}s problems in one Lean repository:
-sixteen problem papers totalling 773 pages, 1,823 Lean modules, and 674 results
+sixteen problem papers, 1,823 Lean modules, and 674 results
 asserted in the papers, short and long versions counted separately, of which 671
 carry a Lean declaration and 633 have been compared by Comparator.
 \textbf{Scope.} For Problem 1041 the Formal Conjectures statement is refuted;
@@ -213,7 +213,8 @@ shows the whole transfer; the experiment keeps the trace \\
 \addlinespace
 Allocation & The next question, the test that would decide it and the
 condition for stopping & Irrationality for every infinite support stays the
-registered endpoint; no narrower next step is recorded & Is $1/3$ best for
+registered endpoint; a changed-base reader exercise and independent replay
+route now test outside use of the weighted condition & Is $1/3$ best for
 irrational tails? A probe pointed to $0.4125$, the literature fixed the
 answer, and the question closed; formalising it is optional \\
 \bottomrule
@@ -351,6 +352,18 @@ the \href{\repobase/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/exper
 closure}, at their own evidence classes. This sharpens a quantitative irrationality
 criterion; establishing the criterion for the actual prime gaps remains
 open.
+
+The sharp-constant question then leads to a question about the shifts being
+tested. A rational dyadic orbit is eventually periodic modulo one, so a
+family containing a multiple of every positive integer detects its eventual
+integral differences. The synthesis paper proves the converse with explicit
+rational counterexamples: factorial shifts suffice, while power-of-two
+shifts do not. The
+\href{\repobase/blob/main/research/experiments/premise_exchange/shift_family_exercise.md}{reader task}
+asks which shifts still work and why a limsup bound does not include its
+endpoint. The full restricted-shift classification is an ordinary argument
+using the cited Dubickas bound; the Lean evidence currently covers the
+$1/3$ all-shifts criterion.
 
 Seven of the eight problems ask whether a series is irrational, and the
 synthesis paper~\cite{synthesis} studies what their methods share and where
@@ -585,12 +598,12 @@ each result in full with its hypotheses and sources.}
 \end{table}
 
 The repository holds 1,823 Lean modules in its two library roots under a
-pinned toolchain, sixteen problem papers totalling 773 pages, a cross-problem
+pinned toolchain, sixteen problem papers, a cross-problem
 synthesis paper and three systems papers. The claim registry holds 150 public
 claims in seven statuses, from proved here and formalised here to conditional
 reduction and open, and states 19 remaining obligations exactly. Continuous integration builds the supported Lean roots,
 a coverage build compiles every module a paper cites, and the release checker
-runs 15,666 checks over claims, papers, generated views and licences. A fresh
+checks claims, papers, generated views and licences. A fresh
 clone needs no private file, and no public theorem depends on an unpublished
 lemma.
 

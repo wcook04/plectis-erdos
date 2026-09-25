@@ -7343,12 +7343,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:4c7bb3bfc2e00668ce4a85e35486f7b408706d38d564e49ffc4d3e4b5beb4ee8",
+      "source_sha256": "sha256:bce12cb72f41fb2ac1be315d356260f1e38e4a66761477184340eed14dbb3b00",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 34,
+      "section_count": 35,
       "sections": [
         {
           "level": 1,
@@ -7366,203 +7366,209 @@
           "level": 1,
           "id": "capacity:sec:jets-intro",
           "title": "Prescribing a value and its derivatives",
-          "line": 27
+          "line": 29
         },
         {
           "level": 1,
           "id": "capacity:sec:criterion",
           "title": "An exact capacity criterion",
-          "line": 73
+          "line": 75
         },
         {
           "level": 2,
           "id": "the-sharp-support-threshold",
           "title": "The sharp support threshold",
-          "line": 99
+          "line": 101
         },
         {
           "level": 2,
           "id": "capacity:sec:capacity-proof",
           "title": "Proof of the capacity criterion",
-          "line": 154
+          "line": 156
         },
         {
           "level": 3,
           "id": "bounded-capacity-along-a-subsequence",
           "title": "Bounded capacity along a subsequence",
-          "line": 160
+          "line": 162
         },
         {
           "level": 3,
           "id": "one-continuation-interval-for-every-cumulative-residue",
           "title": "One continuation interval for every cumulative residue",
-          "line": 170
+          "line": 172
         },
         {
           "level": 3,
           "id": "from-one-interval-to-every-nonnegative-target",
           "title": "From one interval to every nonnegative target",
-          "line": 211
+          "line": 213
         },
         {
           "level": 2,
           "id": "capacity:sec:negative",
           "title": "Why a large gap prevents interval filling",
-          "line": 225
+          "line": 227
         },
         {
           "level": 2,
           "id": "a-digit-that-also-corrects-the-cumulative-residue",
           "title": "A digit that also corrects the cumulative residue",
-          "line": 251
+          "line": 253
         },
         {
           "level": 2,
           "id": "the-positive-direction-and-the-arithmetic-cost",
           "title": "The positive direction and the arithmetic cost",
-          "line": 285
+          "line": 287
         },
         {
           "level": 2,
           "id": "capacity:sec:carry",
           "title": "A common-divisor test for irrationality",
-          "line": 321
+          "line": 323
         },
         {
           "level": 2,
           "id": "why-a-small-allowance-along-a-subsequence-is-insufficient",
           "title": "Why a small allowance along a subsequence is insufficient",
-          "line": 364
+          "line": 366
         },
         {
           "level": 1,
           "id": "capacity:sec:jets-proof",
           "title": "Proof of the derivative interpolation theorem",
-          "line": 379
+          "line": 381
         },
         {
           "level": 2,
           "id": "nullity-at-and-below-the-critical-exponent",
           "title": "Nullity at and below the critical exponent",
-          "line": 385
+          "line": 387
         },
         {
           "level": 2,
           "id": "lifting-a-scalar-interval-to-an-open-set",
           "title": "Lifting a scalar interval to an open set",
-          "line": 399
+          "line": 401
         },
         {
           "level": 2,
           "id": "the-upper-bound-for-hausdorff-dimension",
           "title": "The upper bound for Hausdorff dimension",
-          "line": 422
+          "line": 424
         },
         {
           "level": 2,
           "id": "a-separated-construction-attaining-the-dimension",
           "title": "A separated construction attaining the dimension",
-          "line": 428
+          "line": 430
         },
         {
           "level": 1,
           "id": "capacity:sec:rational-jets",
           "title": "The arithmetic threshold for rational derivatives",
-          "line": 476
+          "line": 478
         },
         {
           "level": 1,
           "id": "sec:results",
           "title": "Lambert subsums across bases",
-          "line": 524
+          "line": 526
         },
         {
           "level": 4,
           "id": "evidence.",
           "title": "Evidence.",
-          "line": 589
+          "line": 591
         },
         {
           "level": 2,
           "id": "sec:dichotomy",
           "title": "Choices against contraction",
-          "line": 595
+          "line": 597
         },
         {
           "level": 2,
           "id": "sec:bases",
           "title": "The subseries across bases",
-          "line": 617
+          "line": 619
         },
         {
           "level": 2,
           "id": "sec:base2",
           "title": "Base two",
-          "line": 662
+          "line": 664
         },
         {
           "level": 3,
           "id": "sec:lemmas",
           "title": "Removed intervals and finite translations",
-          "line": 666
+          "line": 668
         },
         {
           "level": 3,
           "id": "fixed-depth-rational-counts",
           "title": "Fixed-depth rational counts",
-          "line": 700
+          "line": 702
+        },
+        {
+          "level": 1,
+          "id": "sec:dyadic-shifts",
+          "title": "Which dyadic shifts detect irrationality?",
+          "line": 738
         },
         {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 736
+          "line": 801
         },
         {
           "level": 1,
           "id": "sec:misread",
           "title": "The computation and its limits",
-          "line": 759
+          "line": 824
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 786
+          "line": 851
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 800
+          "line": 865
         },
         {
           "level": 1,
           "id": "capacity:sec:sources",
           "title": "Sources and formal correspondence",
-          "line": 814
+          "line": 879
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Further questions",
-          "line": 832
+          "line": 897
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 910
+          "line": 979
         }
       ],
-      "citations_rendered": 59,
+      "citations_rendered": 61,
       "fallback_title_drift": {
         "registry_fallback": "An Exact Capacity Criterion for Series with Eventual Congruences",
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:29c20626a468cf008f775cd83555f5efb58a7d50d86131cc9548c822c57774f0",
-      "pdf_byte_count": 199020,
+      "pdf_sha256": "sha256:58719fcaec7bcdf434d04771331a2e43c2fc1b66e54cc90efe8529a5b3de665a",
+      "pdf_byte_count": 210272,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7575,17 +7581,17 @@
           {
             "id": "capacity:sec:criterion",
             "title": "An exact capacity criterion",
-            "line": 73
+            "line": 75
           },
           {
             "id": "sec:results",
             "title": "Lambert subsums across bases",
-            "line": 524
+            "line": 526
           },
           {
             "id": "sec:questions",
             "title": "Further questions",
-            "line": 832
+            "line": 897
           }
         ],
         "unresolved_count": 0
@@ -7628,7 +7634,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:7bdb76ee91221237a928a1e3ccd36b9893cd1b9afc4ed5ff00da46001f66afec",
+      "source_sha256": "sha256:438c02ff0994110a387cc5a1a6dc8a8a116d3ae97b00c4e89c221a1a183f870e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7669,67 +7675,67 @@
           "level": 1,
           "id": "sec:checks",
           "title": "From a proof to a public claim",
-          "line": 133
+          "line": 135
         },
         {
           "level": 1,
           "id": "sec:cycle",
           "title": "The contribution cycle",
-          "line": 155
+          "line": 157
         },
         {
           "level": 4,
           "id": "credit.",
           "title": "Credit.",
-          "line": 165
+          "line": 167
         },
         {
           "level": 2,
           "id": "sec:example",
           "title": "Worked example: Problem 1041",
-          "line": 171
+          "line": 173
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Eight problems in one repository",
-          "line": 177
+          "line": 179
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 214
+          "line": 216
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 238
+          "line": 240
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 244
+          "line": 246
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 264
+          "line": 266
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 270
+          "line": 272
         }
       ],
       "citations_rendered": 49,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:b890a95660a3e06d2aa0359a32525c716ce0011a0357380b8b801171c6857200",
-      "pdf_byte_count": 124941,
+      "pdf_sha256": "sha256:0b810053ea5132e10a5abccc9dc192f3e161862f82e920df30cfcc5b6cf6f55c",
+      "pdf_byte_count": 127553,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7752,12 +7758,12 @@
           {
             "id": "sec:checks",
             "title": "From a proof to a public claim",
-            "line": 133
+            "line": 135
           },
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 244
+            "line": 246
           }
         ],
         "unresolved_count": 0
