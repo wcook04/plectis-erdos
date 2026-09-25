@@ -25,7 +25,7 @@ This tests one proposed rational subsum, not the weighted theorem.
 
 **[All papers](paper/README.md)** ·
 [Reading edition](docs/reading-edition/README.md) ·
-[Reproduce one result](docs/REPRODUCIBILITY.md) ·
+[Replay #257 theorem](docs/verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) ·
 [Contribute or correct](CONTRIBUTING.md)
 
 ![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
