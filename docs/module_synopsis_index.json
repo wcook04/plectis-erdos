@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:1b897074eae213c240ccca65032dcaae871c428917c60b10bbcc6d76a5043e35",
-  "module_count": 1823,
-  "synopsis_count": 1576,
+  "source_fingerprint": "sha256:bdf4d5cc3dd375c4db4d93b31e5eff11260f8899d3e69d4fe1da8abf3e1b8b1b",
+  "module_count": 1826,
+  "synopsis_count": 1579,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -6138,9 +6138,19 @@
       "synopsis": "The first clause of the long #249 paper's `prop:dickman` (\"A one-sided bound for the unassigned terms\"). `prop:dickman` asserts four things: (a) an unassigned `n = N + t` has `P(n) ≤ y_X` with `y_X = 4√X + 2t/√X`; (b) the resulting count is at most `Ψ(2X+t-1, y_X) - Ψ(X+t-1, y_X)`; (c) that difference is `(1 - log 2 + o(1))X`; (d) hence `< (8/25)X` eventually. Clauses (b)–(d) need the smooth-number counting function `Ψ` and Dickman's `ρ`, neither of which exists in Mathlib or in this tree, plus the paper's cited fixed-`u` asymptotic. Clause (a) is elementary and is proved here against the tree's own assignment predicate. The paper's assigned set `𝒜` is `Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X L s`, its offset `t` is `pivotOffset L s = L - s + 1`, its `n = N + t` is `pivotArgument N L s`, and its `P(n)`, `m = n/P(n)` are `pivotPrime`, `pivotCofactor`."
     },
     {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "synopsis": "Arbitrary-base isolated-pulse lattice obstruction This is the algebraic core for the integer-radix extension of the fixed-binary-base totient-residue theorem. It accepts a bounded tail orbit and a fixed rational lattice as explicit hypotheses. The companion analytic interface constructs that orbit from a bounded series."
+    },
+    {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArithmeticAssemblies.lean",
       "synopsis": "Exact arithmetic and endpoint assemblies for the two papers Targets include long-record cert:d9 / prop:D9-inv, mob:a1b, T7, prop:CP-04-kill, and the level-zero clause of short-note res:basis. The canonical Mersenne theorem is restated with the quotient and oddness as printed, instead of silently changing its quantifiers. These are proof-source candidates; compilation was NOT available in this run. The rational-gap proof reuses the existing exact separation inequality; the same adapter is present under the older public namespace in Erdos249257/PrimitiveRationalGapSupply.lean at the retained public pin."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "synopsis": "Integer-radix totient observables This module generalizes the analytic part of the bounded-residue theorem from binary denominators to any integer radix at least two. The original binary declarations remain the public compatibility interface."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral",
@@ -6151,6 +6161,11 @@
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean",
       "synopsis": "Paper-complete interfaces: eventual periodic coefficients and cofinal pulses Targets: short-note `cor:periodic-freezing` and `lem:bounded-pulse`. This file extends the compiled r5 periodic theorem, not the uncompiled r6 helper. Every theorem has a proof term and no extra mathematical assumption. Build status for this return: source-reviewed, NOT RUN (no Lean executable)."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+      "synopsis": "Rational totient observables in an integer radix The classification shares the existing prime-isolation source with the binary theorem. The analytic pulse obstruction is the integer-radix companion."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
