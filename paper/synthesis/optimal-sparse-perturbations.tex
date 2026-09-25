@@ -1230,11 +1230,13 @@ Consider a real sequence satisfying
 \]
 Write $\|x\|=\operatorname{dist}(x,\Z)$. Iterating the recurrence shows that
 $T_N=2^NT_0-a_N$ for some integers $a_N$, and hence
+% paper-text-number: eq:dyadic-shift-identity=2
 \begin{equation}\label{eq:dyadic-shift-identity}
  \|T_{N+h}-T_N\|=\|2^N(2^h-1)T_0\|.
 \end{equation}
 For $H\subseteq\Z_{>0}$ and $c\in\R$, say that $H$ detects $T$ at threshold
 $c$ when
+% paper-text-number: eq:dyadic-restricted-predicate=3
 \begin{equation}\label{eq:dyadic-restricted-predicate}
  \forall h\in H\;\forall N_0\;\exists N\ge N_0:\quad
  \|T_{N+h}-T_N\|\ge c.
@@ -1244,7 +1246,7 @@ The witnessing index may depend on the shift.
 The Lean-checked transfer from the \#251 tail classifier and the \#269
 bounded-radix escape theorem gives the implication from irrationality in
 \eqref{eq:dyadic-restricted-predicate} for every positive shift when
-$c\le1/3$; the \href{\repobase/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md\#how-the-question-closed}{research record}
+$c\le1/3$; the \href{\repobase/research/experiments/premise_exchange/README.md\#how-the-question-closed}{research record}
 keeps the original $1/31$ experiment and the later sharp-constant argument
 distinct. Dubickas's theorem, in the form stated by Akiyama and
 Kaneko~\cite{akiyamakaneko}, gives
@@ -1257,13 +1259,20 @@ where $t_n$ is the parity of the binary digit sum of $n$. This cited input
 extends the implication to every $c<\tau$. The endpoint argument below is
 ordinary mathematics; the sharp bound itself is not formalised here.
 
+For fixed $c$ and $H$, call \eqref{eq:dyadic-restricted-predicate} the
+selected-shift test. The next theorem asks when that test detects
+irrationality \emph{for every} integer-digit dyadic recurrence, rather than
+for one chosen orbit.
+
 \begin{theorem}[Restricted dyadic shifts]\label{thm:restricted-dyadic-shifts}
-For every integer-digit dyadic recurrence $T$, irrationality of $T_0$ is
-equivalent to \eqref{eq:dyadic-restricted-predicate} if and only if
-\[
- 0<c<\tau\quad\text{and}\quad
- \forall d\ge1\;\exists h\in H:\ d\mid h.
-\]
+Fix $c\in\R$ and $H\subseteq\Z_{>0}$. The following conditions are
+equivalent:
+\begin{enumerate}
+\item For every integer-digit dyadic recurrence $T$, the initial value $T_0$
+is irrational if and only if $T$ passes the selected-shift test.
+\item The parameters satisfy $0<c<\tau$, and every positive integer $d$
+divides some shift $h\in H$.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
@@ -1296,19 +1305,32 @@ tested shift at every $0<c<\tau$.
 
 If $c\le0$, the zero orbit passes. If $H$ is empty, every orbit passes.
 Finally, for $c\ge\tau$ and any $h_0\in H$, take
-$T_0=\tau/(2^{h_0}-1)$ and $g_N=0$. This initial value is irrational,
-but the Thue--Morse endpoint argument in the cited
-\href{\repobase/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md\#how-the-question-closed}{record}
-proves $\|2^N\tau\|<\tau$ for every $N\ge1$. Equation
+$T_0=\tau/(2^{h_0}-1)$ and $g_N=0$. The cited sharp-bound construction
+identifies $\tau$ as irrational~\cite{akiyamakaneko}. The strict endpoint
+inequality $\|2^N\tau\|<\tau$ for every $N\ge1$ follows from the
+Thue--Morse shift argument just below. Equation
 \eqref{eq:dyadic-shift-identity} makes the test fail at $h_0$.
 \end{proof}
 
-The endpoint uses a shift-order property of the Thue--Morse word. Related
+Here is the strict endpoint step used in the proof. Write the Thue--Morse
+word as $t=011010\ldots$, its bitwise complement as $\bar t$, and let
+$\mu$ be the order-preserving substitution $0\mapsto01$, $1\mapsto10$.
+The word $t$ is fixed by $\mu$. An odd-indexed suffix of $t$ starts with
+$001$ or $010$ when its first bit is $0$, both strictly below the prefix
+$011$ of $t$. When its first bit is $1$, it starts with $101$ or $110$,
+both strictly above the prefix $100$ of $\bar t$. An even-indexed suffix
+is the image under $\mu$ of a shorter suffix, so induction and order
+preservation give the same strict comparisons at every positive index.
+The binary value of each suffix is therefore below $\tau$ or above
+$1-\tau$, according to its first bit. This proves
+$\|2^N\tau\|<\tau$ for $N\ge1$. The
+\href{\repobase/research/experiments/premise_exchange/README.md\#how-the-question-closed}{research record}
+retains the longer historical calculation. Related
 extremal-word constructions appear in Allouche, Clarke and
 Sidorov~\cite{alloucheclarkesidorov}, whose published bibliography points to
 earlier work of Allouche and Cosnard. The linked research record gives the
-short nearest-integer argument used here; no historical priority for that
-specific formulation is asserted.
+longer nearest-integer calculation; no historical priority for the
+specific formulation above is asserted.
 
 The factorial family $H=\{j!:j\ge1\}$ satisfies the divisibility condition:
 $d\mid d!$. The power-of-two family does not, since none of its members is
