@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `c91e55d7724da146`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `030adb78ebc33e37`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -3585,6 +3585,27 @@ into exactly one of three outcomes.
 The script takes a host set `B` of admissible indices. The hosts used are all
 positive integers, the integers not divisible by 3, the squarefree integers and
 the odd integers.
+
+For one rational target, run the same classifier directly. The exact output
+records the selected prefix and, when excluded, the strict gap inequality.
+It uses the compact universal bound
+`sum_{k>n} 1/(2^k-1) <= 2^-n + (2/3)4^-n`, starting at the next allowed
+host index, when that bound is strong enough;
+otherwise it displays the probe's exact horizon bound. The inequality follows
+by summing `1/(2^k-1) <= 2^-k + 2*4^-k` over `k>n`.
+The `189/388` example changes outcome between depths 16 and 17:
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --host all --depth 16 17 --horizon 160
+```
+
+Use `--json` for a portable record. A `not_excluded` row means only that this
+finite depth found neither a gap nor a finite sum. The target input must be
+positive and at most the computed finite host-sum lower bound; the horizon
+must exceed the largest requested depth by at least 64. This computation is
+about rational membership in a reciprocal-Mersenne subseries at base 2, not
+a verification of the weighted irrationality theorem.
 
 ```sh
 python3 research/experiments/choices_contraction/rational_membership_probe.py
