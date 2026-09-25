@@ -112,6 +112,7 @@ python3 research/experiments/premise_exchange/run.py \
   --output research/experiments/premise_exchange/results/threshold_continuation
 python3 research/experiments/premise_exchange/dyadic_threshold_probe.py
 python3 research/experiments/premise_exchange/dyadic_threshold_closure.py
+python3 research/experiments/premise_exchange/test_dyadic_threshold_closure.py
 ```
 
 The extremal orbit above is rational, so it says nothing about irrational
@@ -137,8 +138,11 @@ A located theorem fixes it. Dubickas proved that
 `limsup ‖2^n ξ‖ ≥ τ` for every irrational `ξ`, with equality at `ξ = τ`,
 where `τ = 0.412454…` is the Thue–Morse number; this record takes the
 statement from Akiyama and Kaneko, *Multiplicative analogue of
-Markoff–Lagrange spectrum and Pisot numbers* (arXiv:1911.06170v6, p. 3),
-which reports it for every integer base. The original paper, A. Dubickas,
+Markoff–Lagrange spectrum and Pisot numbers* (Adv. Math. 380 (2021),
+107547; arXiv:1911.06170v6, p. 3, equation (1.1) and the paragraph after it),
+which reports it for every integer base. A 2022 corrigendum
+(doi:10.1016/j.aim.2021.107996) replaces their Theorem 2.2's
+Hausdorff-dimension estimate, not this statement. The original paper, A. Dubickas,
 *On the distance from a rational power to the nearest integer*, J. Number
 Theory 117 (2006), 222–239, was not read here. The probe had found the
 extremal number itself: `τ = 1/2 − (1/4)∏_{j≥0}(1 − 2^{−2^j})`.
@@ -161,7 +165,9 @@ of a shorter shift under the morphism, which preserves strict order and
 fixes `t` and `t̄`. Hence every suffix starting with 0 lies strictly below
 `t` and every suffix starting with 1 strictly above `t̄`, so
 `‖2^n τ‖ < τ` for every `n ≥ 1`, while the suffixes at `n = 2^k` approach
-`t̄` and the distances approach `τ` from below. The bounded tail
+`t̄` and the distances approach `τ` from below, quantitatively
+`0 < τ − ‖2^{2^k} τ‖ ≤ 2^{−2^k}`: the first `2^k` digits of that suffix are
+the complement of the first `2^k` digits of `t`. The bounded tail
 `T_N = {2^N τ}`, `g_{N+1} = ⌊2 T_N⌋`, has irrational `T_0` and
 `‖T_{N+1} − T_N‖ < τ` for every `N ≥ 1`.
 
@@ -171,8 +177,16 @@ interval `(0, τ)`: the limsup bound `τ` is attained, and no constant in the
 cofinal statement is largest. The checked 1/3 theorem is one member of that
 interval, and 1/(B + 1) stays sharp for general integer affine orbits, a
 different question. [dyadic_threshold_closure.py](dyadic_threshold_closure.py)
-checks the product identity and, for every shift below 2^15, the strict
-comparisons of the endpoint argument, in exact arithmetic. A limsup bound of
+checks, in exact arithmetic, that the twelve-factor product equals the
+midpoint of the 4,096-bit digit enclosure (the finite form of the product
+identity) and, for every shift below 2^15, the strict comparisons of the
+endpoint argument. [test_dyadic_threshold_closure.py](test_dyadic_threshold_closure.py)
+repeats those checks against an independent construction of the word,
+certifies the quantitative approach for `2^k ≤ 1024`, checks the witnesses
+for each dropped hypothesis (the zero orbit at `c = 0`; the orbit
+alternating 1/3 and 2/3, which passes at `h = 1` only; a non-integer radix
+`2001/1000` at distance `1/1001`), and rejects a checker that tests only
+interval membership. A limsup bound of
 `τ` must never be read as `≥ τ` infinitely often; this orbit is the
 counterexample.
 

@@ -82,7 +82,8 @@
       "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean": "c7d330c0342a52775a6c04846594e6cde26bfc79c0647594f0e963d3d9ad7435",
       "research/experiments/premise_exchange/dyadic_shift_third_request.json": "7d10e081cd4f2b07fa7447ab054f02269bf181ac958c3c4959dd5be5bc4aee94",
       "research/experiments/premise_exchange/dyadic_threshold_probe.py": "a910a2dd235f58319276a5546e03edf00940d7e43ce81238d118dbad9741004c",
-      "research/experiments/premise_exchange/dyadic_threshold_closure.py": "76d8f7c78aa8fe59793a9825276f9be275fc70f30636be6e26963cb903fcc379"
+      "research/experiments/premise_exchange/dyadic_threshold_closure.py": "746fac2d00397652b8b2e900475408876eaf48b81a78c5f1d8a08ee28293081a",
+      "research/experiments/premise_exchange/test_dyadic_threshold_closure.py": "894360b132dbfa9a547a1329a82a6ebb31ed8df06a4b7be3e5e0183399957781"
     },
     "lean_builds": [
       {
@@ -102,7 +103,8 @@
     },
     "closure_check": {
       "command": "python3 research/experiments/premise_exchange/dyadic_threshold_closure.py",
-      "result": "results/dyadic_threshold_closure.json"
+      "result": "results/dyadic_threshold_closure.json",
+      "regression": "python3 [-O] research/experiments/premise_exchange/test_dyadic_threshold_closure.py"
     }
   }
 }

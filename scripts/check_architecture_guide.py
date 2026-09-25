@@ -9,6 +9,7 @@ import json
 import os
 import re
 import stat
+import subprocess
 from pathlib import Path
 
 
@@ -315,6 +316,8 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "a problem closes only when a proof or a refutation settles its original statement",
         r"fix a finite nonempty set $P$ of primes",
         r"For $c>0$, let $\mathcal H_c$",
+        r"with $p_n,c_n\in\mathbb Z$ and $2\le p_n\le30$",
+        r"so every fixed $0<c<\tau$ works in the equivalence",
     ),
     "related_work": (
         "is the closest published system",
@@ -504,7 +507,64 @@ def validate_systems_paper(text: str) -> None:
         require((ROOT / target).is_file(), (
             f"systems paper links to missing repository file {target}"
         ))
+    validate_pinned_evidence_links(text)
     require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
+
+
+PINNED_BLOB_LINK = re.compile(
+    r"\\href\{\\repobase/blob/([0-9a-f]{40})/([^}#\\]+)(?:\\#([^}]+))?\}"
+)
+REPOLINK_PIN = re.compile(
+    r"\\newcommand\{\\repolink\}\[2\]\{\\href\{\\repobase/blob/([0-9a-f]{40})/#1\}"
+)
+
+
+def heading_slug(heading: str) -> str:
+    """GitHub's anchor for a Markdown heading, for the headings this repository uses."""
+    text = re.sub(r"[`*_]", "", heading.strip().lower())
+    text = re.sub(r"[^\w\- ]", "", text)
+    return text.replace(" ", "-")
+
+
+def pinned_file(commit: str, path: str) -> str | None:
+    shown = subprocess.run(
+        ["git", "show", f"{commit}:{path}"],
+        cwd=ROOT, capture_output=True, check=False,
+    )
+    if shown.returncode != 0:
+        return None
+    return shown.stdout.decode("utf-8", errors="replace")
+
+
+def validate_pinned_evidence_links(text: str) -> None:
+    """A pinned link must reach the evidence in the revision it names.
+
+    A URL can resolve to a genuine historical file that predates the
+    assertion sending the reader there. Every \\repolink target must exist at
+    the macro's pinned commit, and every directly pinned \\href must exist at
+    its commit, with any #fragment naming a heading that revision contains.
+    """
+    pin = REPOLINK_PIN.search(text)
+    require(pin is not None, "systems paper lost its pinned repolink macro")
+    for target in re.findall(r"\\repolink\{([^{}]+)\}\{", text):
+        require(pinned_file(pin.group(1), target) is not None, (
+            f"repolink target {target} is absent at its pinned commit {pin.group(1)[:12]}"
+        ))
+    for commit, path, fragment in PINNED_BLOB_LINK.findall(text):
+        body = pinned_file(commit, path)
+        require(body is not None, (
+            f"pinned evidence link {path} is absent at {commit[:12]}"
+        ))
+        if fragment:
+            slugs = {
+                heading_slug(line.lstrip("#"))
+                for line in body.splitlines()
+                if line.startswith("#")
+            }
+            require(fragment in slugs, (
+                f"pinned evidence link {path}#{fragment} names a section "
+                f"absent at {commit[:12]}"
+            ))
 
 
 def validate_entry_links(

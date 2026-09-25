@@ -323,7 +323,7 @@ The smallest complete case is a transfer between two problems. For dyadic
 tails $T_{N+1}=2T_N-g_{N+1}$ with integer digits $g_N$, the Problem 251 record
 proves that $T_0$ is irrational exactly when no difference $T_{N+h}-T_N$ with
 $h>0$ is an integer. The Problem 269 record proves an escape theorem: an orbit
-$x_{n+1}=p_nx_n-c_n$ with integers $c_n$ and $2\le p_n\le30$ reaches an integer
+$x_{n+1}=p_nx_n-c_n$ with $p_n,c_n\in\mathbb Z$ and $2\le p_n\le30$ reaches an integer
 or returns infinitely often to distance at least $1/31$ from the integers.
 Applied to $T$, the escape theorem says nothing about differences.
 The difference $U_N=T_{N+h}-T_N$ satisfies $U_{N+1}=2U_N-(g_{N+h+1}-g_{N+1})$, so it applies to
@@ -342,12 +342,13 @@ $1/31$ run stays in the record as the original outcome. A finite probe then
 asked whether $1/3$ is best for irrational tails, and a published theorem
 answered it. Dubickas proved $\limsup_n\|2^n\xi\|\ge\tau$ for every irrational
 $\xi$, with equality at the Thue--Morse number $\tau=0.412454\ldots$, as stated
-by Akiyama and Kaneko~\cite{akiyamakaneko}, so every fixed $c<\tau$ works in
-the criterion. The endpoint does not: the doubling orbit of $\tau$ stays
+by Akiyama and Kaneko~\cite{akiyamakaneko}, so every fixed $0<c<\tau$ works in
+the equivalence. The endpoint does not: the doubling orbit of $\tau$ stays
 strictly closer than $\tau$ to the integers at every positive index, so the
 admissible constants form the open interval $(0,\tau)$. The record keeps the
-Lean-checked $1/3$, the cited theorem and this ordinary endpoint argument at
-their own evidence classes. This sharpens a quantitative irrationality
+Lean-checked $1/3$, the cited theorem and the ordinary endpoint argument, in
+the \href{\repobase/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md\#how-the-question-closed}{recorded
+closure}, at their own evidence classes. This sharpens a quantitative irrationality
 criterion; establishing the criterion for the actual prime gaps remains
 open.
 
@@ -971,7 +972,8 @@ pp.~376--389, \href{https://aclanthology.org/2025.inlg-main.23/}{ACL Anthology}.
 Proving with (Long-)Contexts}, ICLR 2025,
 \href{https://arxiv.org/abs/2408.03350}{arXiv:2408.03350}.
 \bibitem{akiyamakaneko} S.~Akiyama and H.~Kaneko, \emph{Multiplicative analogue
-of Markoff--Lagrange spectrum and Pisot numbers}, 2021, p.~3, reporting the
+of Markoff--Lagrange spectrum and Pisot numbers}, Adv.\ Math.\ 380 (2021),
+107547, p.~3, reporting the
 theorem of A.~Dubickas, J.\ Number Theory 117 (2006), 222--239,
 \href{https://arxiv.org/abs/1911.06170v6}{arXiv:1911.06170v6}.
 \bibitem{leandojo} K.~Yang et al., \emph{LeanDojo: Theorem Proving with

@@ -10,6 +10,11 @@
     "display": "0.412454033640108"
   },
   "product_form_within_enclosure": true,
+  "finite_product_equals_digit_midpoint": {
+    "product_terms": 12,
+    "digit_bits": 4096,
+    "verified": true
+  },
   "two_fifths_below_tau_below_one_half": true,
   "strict_shift_comparisons": {
     "shifts_checked": [

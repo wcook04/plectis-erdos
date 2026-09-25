@@ -15,8 +15,8 @@ cofinal-return constant: ||2^n tau|| < tau for every n >= 1.
 
 This script checks, in exact arithmetic on finite prefixes only:
 
-1. tau = 1/2 - (1/4) prod_{j>=0} (1 - 2^(-2^j)), comparing the digit sum and
-   the truncated product to within 2^-4000, and 2/5 < tau < 1/2;
+1. the exact finite identity: the twelve-factor product expression equals
+   the midpoint of the 4096-bit digit enclosure, and 2/5 < tau < 1/2;
 2. for every shift 1 <= n < 2^15, the binary suffix of the Thue-Morse word at
    n is strictly below the word itself when it starts with 0 and strictly
    above its complement when it starts with 1, each comparison decided inside
@@ -82,7 +82,8 @@ def strict_shift_comparisons(shifts: int) -> dict:
 def main() -> None:
     low, high = tau_enclosure(4096)
     product = product_form(12)
-    require(low <= product <= high, "product form outside the digit enclosure")
+    require(product == (low + high) / 2,
+            "finite product does not equal the digit-enclosure midpoint")
     require(Fraction(2, 5) < low and high < Fraction(1, 2), "2/5 < tau < 1/2 fails")
     shifts = strict_shift_comparisons(1 << 15)
     result = {
@@ -98,6 +99,9 @@ def main() -> None:
             "display": f"{float(low):.15f}",
         },
         "product_form_within_enclosure": True,
+        "finite_product_equals_digit_midpoint": {
+            "product_terms": 12, "digit_bits": 4096, "verified": True,
+        },
         "two_fifths_below_tau_below_one_half": True,
         "strict_shift_comparisons": shifts,
     }
