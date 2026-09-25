@@ -1,6 +1,6 @@
 {
   "schema": "erdos-external-verification-release-contract/1",
-  "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
+  "repository": "https://github.com/wcook04/plectis-erdos",
   "identity": {
     "source_ref_kind": "full_git_commit",
     "source_tree_required": true,
@@ -19,6 +19,7 @@
   "replay": {
     "positive_config": "verification/comparator-replay.json",
     "negative_config": "verification/comparator-negative-mismatch.json",
+    "challenge_module": "ExternalVerification.Challenge",
     "theorem": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
     "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq'",
     "permitted_axioms": [
@@ -71,14 +72,34 @@
     "verification/ExternalVerification/FeedbackPolicyChallenge.lean",
     "verification/Solutions/FeedbackPolicy.lean",
     "verification/NegativeSolutions/FeedbackPolicy.lean",
-    "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean"
+    "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
+    "verification/comparator-weighted-support.json",
+    "verification/comparator-weighted-support-negative-mismatch.json",
+    "verification/ExternalVerification/WeightedNegativeSolution.lean"
   ],
   "replay_units": {
     "feedback-policy": {
       "positive_config": "verification/comparator-feedback-policy.json",
       "negative_config": "verification/comparator-feedback-policy-negative-mismatch.json",
+      "challenge_module": "ExternalVerification.FeedbackPolicyChallenge",
       "theorem": "ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum",
       "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum'",
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sandbox_modes": [
+        "user-manager",
+        "system-manager-nonprivileged-unit"
+      ]
+    },
+    "weighted-support": {
+      "positive_config": "verification/comparator-weighted-support.json",
+      "negative_config": "verification/comparator-weighted-support-negative-mismatch.json",
+      "challenge_module": "ExternalVerification.Challenge",
+      "theorem": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
+      "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.divisibilityWeightedClaim'",
       "permitted_axioms": [
         "propext",
         "Quot.sound",

@@ -43,6 +43,17 @@ statement-mismatch diagnostic. The configuration is
 `verification/comparator-replay.json`; it is intentionally smaller than the
 CI configuration.
 
+The named `weighted-support` unit applies the same isolated runner to the
+#257 theorem `Erdos249257.ExternalVerification.divisibilityWeightedClaim`.
+Its positive configuration selects that theorem alone. Its negative solution
+adds the theorem itself as a hypothesis, changing the statement while making
+the altered declaration trivial. The replay passes only if the positive
+comparison succeeds and Comparator rejects that exact mismatch. The unit's
+configuration, negative Lean source, axiom budget, and tool revisions are in
+the immutable release contract. Adding the unit does not record a successful
+run: its source-bound Comparator replay remains pending until a passing
+receipt exists for the selected source commit.
+
 ## Reviewer replay
 
 Start from the `source.commit` and `source.tree` fields of an attached
@@ -67,6 +78,37 @@ python3 scripts/replay_external_verification.py run \
   --source-tree <40-hex-source-tree> \
   --output external-verification-replay-receipt.json
 ```
+
+For the weighted #257 theorem, select `--unit weighted-support`. From a clean
+public clone at a selected committed revision, this copyable command obtains
+that revision's immutable commit and tree:
+
+```sh
+python3 scripts/replay_external_verification.py run --unit weighted-support \
+  --source-commit "$(git rev-parse HEAD^{commit})" \
+  --source-tree "$(git rev-parse HEAD^{tree})" \
+  --output weighted-support-replay-receipt.json
+```
+
+Run it on Linux with the systemd and pinned-tool prerequisites above. A
+successful command writes a receipt naming the source, statement, axiom
+budget, checker revisions, positive verdict, and deliberate mismatch verdict.
+A missing or failing receipt cannot support a release claim. The
+release-manifest validator rejects a missing runtime receipt, and the replay
+contract rejects a changed challenge or axiom budget. These checks do not
+establish novelty, historical correspondence, or mathematical peer review.
+
+The selected `weighted-support` contract pins its challenge module as well as
+its one theorem and axiom budget. The replay refuses a changed challenge in
+either configuration, an extra or duplicate theorem name, and an undeclared
+axiom before running Comparator. Its receipt records elapsed time, the isolated
+source checkout, cache download time and digest, machine type, CPU count, and
+the largest child-process memory high-water mark on Linux. Shared cache warmth
+is reported as unmeasured; compare cold and warm runs explicitly if timing
+matters.
+The CI runtime receipt also names this one-theorem unit, its exact configuration
+digests, and both Comparator verdicts. A CI receipt and a passing independent
+Linux replay are separate evidence; the latter has its own receipt schema.
 
 The runner fetches exactly the supplied commit, checks its tree, rejects the
 synthetic merge-message form used by pull-request test merges, and builds these

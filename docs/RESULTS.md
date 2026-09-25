@@ -43,7 +43,7 @@ step. Mathematical importance requires separate judgement.
 |---|---|---|
 | [#68](#result-68) | Two exact finite denominator exclusions, one with a Lean-checked carry consumer, and a Lean-checked `3/2` lower growth exponent for the uncleared common denominator. | No cofinal non-unit factorial carries have been produced; irrationality remains open. |
 | [#243](#result-243) | Lean checks irrationality under the precise cubic-rate hypothesis; the paper transfers it to one-based indexing. Signed-error criteria also force eventual Sylvester behaviour under their stated premises. | The unrestricted Sylvester-tail hypotheses remain unproved. |
-| [#249](#result-249) | The short paper and Lean give the exact all-base totient-kernel rank `k^e+1`; Lean also checks three conditional routes toward irrationality. | None supplies the needed cofinal actual-LCM, first-harmonic or strict prime-tail input. |
+| [#249](#result-249) | The short paper and Lean classify the fixed-base-two totient-residue series for every positive modulus and every rational-valued observable at dyadic moduli. They also give the exact all-base totient-kernel rank `k^e+1`. | The original series with unreduced totients remains open; the conditional routes still need their cofinal arithmetic inputs. |
 | [#251](#result-251) | Lean checks a rich synthetic prime-gap countermodel, and the paper gives a separate sparse-perturbation obstruction. | These are not actual prime gaps; the prime-specific producer for irrationality remains open. |
 | [#257](#result-257) | Lean checks the finite-prime weighted-support theorem at every integer base, including supports with divergent reciprocal sum. | It does not cover every infinite support. Palomar's mechanical verification passed for the exact five-declaration `E257_01` entry; registration has been requested, with no public version yet. |
 | [#269](#result-269) | Both two-prime running-LCM sums are transcendental by the paper's argument using a cited Hecke–Mahler theorem; Lean checks the formulas and the conditional transfer. | The cited transcendence input is not formalised, and the three-prime irrationality question remains open. |
@@ -102,6 +102,12 @@ Further conditional zero-branch and private-factor carry producers are in the
 cofinal property for the actual factorial-gap orbit. Read the
 [short paper](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) or
 [long record](../paper/68/erdos68-factorial-reasoning-surface.pdf).
+The separately prepared
+[`E68_05` Comparator selection](https://github.com/wcook04/plectis-erdos-lean/blob/dc779af057dbab4224ac4f0cc101384f340fabc2/PalomarCorpus/E68_05/comparator.json)
+contains six structural carry, channel and criterion declarations. It does
+not select the denominator exclusions or the `3/2` growth theorem above.
+Its [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36019608937)
+passed at that exact source commit; this is not a Palomar registration.
 
 <a id="result-243"></a>
 
@@ -164,18 +170,42 @@ bounded-negative premise. Read the
 [long record](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf), or
 [selected formal checks](EXTERNAL_VERIFICATION.md#programme-243).
 
+The long record also proves an exact maximal-gap theorem for a separate
+static sieve. Let `m₀<m₁<⋯` be pairwise coprime integers at least `2`, with
+`ℓ(m_j)=j+O(1)` for `ℓ(x)=log₂ log₂ max(4,x)`. If
+`σ=∏_j(1−1/m_j)>0` and `u_n` lists the positive integers divisible by none
+of the `m_j`, then
+`limsup (u_(n+1)−u_n)/ℓ(u_n)=1/σ`. Lean checks the general theorem
+`maximal_gap_limsup_eq_inv_sigma` with the convergence to `σ` stated
+explicitly. The paper's finite-product calculation gives `σ=1/2` and thus
+coefficient `2` for the Fermat moduli `m_j=2^(2^j)+1`. This concerns
+[avoidance of whole moduli](papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:res:gapconstant),
+not coprimality to composite moduli or construction of a reciprocal-tail
+orbit; the unrestricted #243 question remains open.
+
 <a id="result-249"></a>
 
-**[#249](https://www.erdosproblems.com/249).** The short paper proves the
-all-base finite-level rank `k^e+1` for every `k≥2` and `e≥1`, with canonical
-integral coordinates and a basis of all integral relations; at prime base the
-rank is exponential in the depth `e`. A rational `5/4` control that agrees with
-totient on odd arguments still has tempered carry rank at least `2^e−1` at
-every depth, so a generic rationality-driven carry-rank ceiling is false.
-Bounded-residue series `A_m` remain irrational for every `m ≥ 3`, with a
-complete rationality classification at dyadic moduli; this is ordinary
-mathematics in the short note, not Lean. The strongest checked structural
-result on the hypothetical rational totient branch is carry anti-compression:
+**[#249](https://www.erdosproblems.com/249).** The short paper and Lean
+classify the fixed-base-two series with coefficients `φ(n) mod m`: it is `0`
+for `m=1`, `3/4` for `m=2`, and irrational for every `m≥3`. More generally,
+for `k≥1` and any rational-valued function `f` on the residues modulo `2^k`,
+the series with coefficients `f(φ(n) mod 2^k)` is rational exactly when `f`
+is constant on the even residue classes. If that constant is `c`, the value
+is `3f(1)/4+c/4`. For example, at modulus four, the table
+`f=(5,7,5,-2)` in residue order `0,1,2,3` gives `13/2`, while
+`f=(0,0,1,0)` gives an irrational sum. The public Lean development checks the
+[irrationality theorem](https://github.com/wcook04/plectis-erdos/blob/a14777b3219873bc8343205cca0bb3bb6530e8fa/lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean#L566-L580)
+and [dyadic classification](https://github.com/wcook04/plectis-erdos/blob/a14777b3219873bc8343205cca0bb3bb6530e8fa/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L221-L233).
+The series with unreduced totients remains open.
+
+The short paper also proves the all-base finite-level totient-kernel rank
+`k^e+1` for every `k≥2` and `e≥1`, with canonical integral coordinates and
+a basis of all integral relations; at prime base the rank is exponential in
+the depth `e`. A rational `5/4` control that agrees with totient on odd
+arguments still has tempered carry rank at least `2^e−1` at every depth, so
+a generic rationality-driven carry-rank ceiling is false. The strongest
+checked structural result on the hypothetical rational totient branch is
+carry anti-compression:
 one carry would have uniformly eventually-periodic dyadic sections modulo its
 multiplier while retaining canonical section rank at least `2^e − 1` at every
 level. No finite-rank upper bound is proved, so this is a necessary
@@ -187,7 +217,24 @@ independence, and Yazdani–Shallit CRT–Dirichlet separation are credited
 antecedents, not new claims of this release. Read the
 [short paper](../paper/249/erdos-249-binary-totient-series.pdf),
 [long record](../paper/249/erdos249-totient-reasoning-surface.pdf), and
-[selected formal checks](EXTERNAL_VERIFICATION.md#programme-249).
+[selected formal checks](EXTERNAL_VERIFICATION.md#programme-249). For a
+concrete use of the basis, the short paper's
+[base-six example](papers/full-text/erdos-249-binary-totient-series.md#sec:base-six-test)
+reduces all
+43 sections through depth two to 37 coordinates. The
+[exact normal-form tool](../scripts/totient_kernel_normal_form.py) prints
+those coordinates, the six relation coefficients, and an integer
+counterexample at one of the first 37 inputs whenever a proposed identity
+is false; its determinant check certifies that finite test.
+For any integer base, the
+[sparse normal-form command](../scripts/totient_kernel_sparse_normal_form.py)
+reduces only the supplied sections to exact integral coordinates and decides
+their identity by the all-base basis theorem. For example,
+`--base 12 --term 8:29859840:1 --term 2:10:-1990656` returns an identity
+without constructing the ambient depth-eight matrix. Its optional
+`--witness-budget` searches for a concrete unequal input; exhaustion does not
+change an exact nonidentity decision. The Python command is an implementation
+of the paper's reduction, not a Lean-verified executable artifact.
 
 <a id="result-251"></a>
 
@@ -379,9 +426,14 @@ give no all-rank coefficient positivity or irrationality at `3/2`, which lies
 outside the contour region. The universal rational-base question remains open.
 Read the [short paper](../paper/1049/erdos-1049-rational-base-lambert.pdf),
 [long record](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf),
-and [selected formal checks](EXTERNAL_VERIFICATION.md#programme-1049); the
-contour-region theorem should not be inferred to be among the selected
-Comparator propositions.
+and [selected formal checks](EXTERNAL_VERIFICATION.md#programme-1049).
+The prepared
+[`E1049_01` Comparator selection](https://github.com/wcook04/plectis-erdos-lean/blob/6bc4913c4ca42ac48829ad2d89985f8516361cb5/PalomarCorpus/E1049_01/comparator.json)
+contains 25 rational-base contour and measure declarations, including
+`rational_base_threshold`. It does not select the later Hankel determinant
+or finite coefficient-pencil results in the same paper. The
+[caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36023637887)
+passed at that exact source commit; no registry intake is claimed.
 
 This guide is not a new result ranking.
 [`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE.json) records a scoped
@@ -486,9 +538,10 @@ a claim to settle the seven unresolved targets or the unadjudicated historical
   the separate non-integrality criterion. The supply itself is not proved;
   neither divisibility nor irrationality alone supplies the required
   anti-concentration. Separately, the dyadic totient-kernel rank `2^e + 1`
-  and its odd-core basis are an unconditional finite-level structural result;
-  the all-base spanning/rank upgrade is conditional on the displayed
-  affine-independence input. The actual-LCM, diagonal, and phase/prime
+  and its odd-core basis are an unconditional finite-level structural result,
+  and so are the all-base rank `k^e + 1` and its explicit basis for every
+  `k ≥ 2` and `e ≥ 1`: `AllBaseTotientKernel.lean` discharges the
+  affine-independence premise of the reusable all-base wrapper. The actual-LCM, diagonal, and phase/prime
   producers remain open, so neither structural spine solves the binary
   totient endpoint.
 - A distinct orbit-level carry anti-compression result is now checked: under
@@ -723,10 +776,13 @@ boundaries kept together.
   result does not transfer to `S`, arbitrary-support #257, or the release's
   gcd-moment identities.
 - Unconditional: the dyadic sections `n ↦ φ(2ʲn+r)` of Euler's totient have
-  an explicit rational basis, and the level-`e` span has dimension exactly
+  an explicit rational basis. The canonical family `φ(n)`, `φ(2n)` and
+  `φ(2ʲn+r)` with `1 ≤ j ≤ e` and `r` odd spans a space of dimension exactly
   `2ᵉ + 1` — `finrank_canonicalTotientKernel_eq`,
   `Erdos249257/TotientMahlerDefect.lean:989`; basis object at
-  `Erdos249257/TotientMahlerDefect.lean:1392`. A
+  `Erdos249257/TotientMahlerDefect.lean:1392`. For every `e ≥ 1` this is the
+  span of all sections through level `e`; at level zero that span is `φ(n)`
+  alone, of dimension one. A
   theorem about the coefficient sequence, not about irrationality of `S`;
   it quantifies the known qualitative fact that `φ` is not 2-regular
   (Coons 2008, arXiv:0810.3709, via ζ zero-density — no exact rank appears

@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `0dc7db42f1fe4241`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `c91e55d7724da146`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1734,7 +1734,7 @@ and the remaining form is $`km+1`$. Proportionality between two of the positive-
 ```
 This proves Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>.
 
-The relation to the earlier CRT argument and the alternative proof from Martin’s theorem are discussed in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">6</a>.
+The relation to the earlier CRT argument and the alternative proof from Martin’s theorem are discussed in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">7</a>.
 
 <div id="erdos-249-binary-totient-series--res:basis" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-249-binary-totient-series.md#res-basis-comparator">Comparator</a></p>
@@ -1823,11 +1823,11 @@ This completes the basis argument. It describes relations among coefficient subs
 
 ### Supplementary results on the binary totient series
 
-The independent results below distinguish bounded-residue series, finite exclusions for $`S`$, and conditions for irrationality. None is needed for Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>; in particular, the conditions in Sections <a href="#erdos-249-binary-totient-series--sec:carry-rank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:carry-rank">3</a> and <a href="#erdos-249-binary-totient-series--sec:open" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:open">5</a> are not assumptions of that theorem. Generating-function context and the formal-source guide are in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">6</a>.
+The independent results below distinguish bounded-residue series, finite exclusions for $`S`$, and conditions for irrationality. None is needed for Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>; in particular, the conditions in Sections <a href="#erdos-249-binary-totient-series--sec:carry-rank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:carry-rank">3</a> and <a href="#erdos-249-binary-totient-series--sec:open" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--sec:open">5</a> are not assumptions of that theorem. Generating-function context and the formal-source guide are in Appendix <a href="#erdos-249-binary-totient-series--app:sources" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--app:sources">7</a>.
 
 <a id="erdos-249-binary-totient-series--sec:family"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-249-binary-totient-series.md) (79 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-249-binary-totient-series.md) (81 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 

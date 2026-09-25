@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Erdos249257.CertificateKernel
+import FC1041SharpGap
 
 /-!
 # Adapter: Formal Conjectures statement forms
