@@ -142,7 +142,7 @@ A proof becomes a public claim by crossing three questions that the word “veri
 
 Lean verifies that a proof establishes the formal statement written in the source; it does not verify whether that statement captures the intended mathematics or whether the paper describes it well. The gap is measurable. Feng et al. had mathematicians grade 200 candidate solutions to Erdős problems produced by Aletheia, an agent built on Gemini Deep Think: 63 were technically correct, of which 13 were meaningfully correct; the other 50 answered a reading of the problem that missed Erdős’s intent \[aletheia\].
 
-Comparator, a checker the Lean FRO built for judging machine-written proofs \[leanfrocomparator\], answers the second question. A trusted challenge module restates each statement without its proof; the proof must be a term of exactly that type, using only the permitted axioms, and the Lean kernel must accept it. The corpus replay, run in the companion repository `plectis-erdos-lean`, also passes every compared proof through nanoda, an independent kernel \[nanodalib\]. In this repository, continuous integration requires a deliberately altered statement to fail Comparator, so the harness cannot pass vacuously. Comparator cannot decide whether a statement is the right translation of the problem. It guarantees that the separately written statement, which a reader can inspect, is the statement that was proved, so “Comparator-checked” is accurate where “independently verified” would overclaim.
+Comparator, a checker the Lean FRO built for judging machine-written proofs \[leanfrocomparator\], answers the second question. A trusted challenge module restates each statement without its proof; the proof must be a term of exactly that type, using only the permitted axioms, and the Lean kernel must accept it. The corpus replay, run in the companion repository `plectis-erdos-lean`, also passes every compared proof through nanoda, an independent kernel \[nanodalib\]. In this repository, continuous integration also requires Comparator to reject a deliberately altered statement. This control exercises that mismatch path; the surrounding invocation and verdict contract have separate obligations. Comparator cannot decide whether a statement is the right translation of the problem. It guarantees that the separately written statement, which a reader can inspect, is the statement that was proved, so “Comparator-checked” is accurate where “independently verified” would overclaim.
 
 The paper-to-Lean ledger makes both formal questions countable for the papers’ own statements. It holds one row for each result asserted in the sixteen problem papers, 674 in all, counting a result stated in both a short paper and a long record twice, with its statement digest and kind of correspondence. For 506 rows the named Lean declarations state the result exactly; for 140 they state it or a result that implies it by an immediate specialisation; 25 are proved from a named input, marked with a dagger; and 3 have no Lean statement. Comparator has compared 633 of the 646 exact and specialising rows, and the other 13 are queued for its next replay; every receipt in the pinned corpus replay was accepted by both the Lean kernel and nanoda. A digest detects a changed statement, and the classification of a correspondence stays the maintainer’s judgement.
 
@@ -289,13 +289,12 @@ Entry points for inspection. They lead to the authority-bearing files and add no
 
 </div>
 
-A fresh clone reproduces the control card and the structural checks without Lean:
+A fresh clone can inspect the control card and check its committed navigation without Lean:
 
     python3 scripts/proof_cockpit.py --format card
     python3 scripts/proof_cockpit.py --check
-    python3 scripts/check_release.py
 
-Formal authority begins with the pinned `lake build` named by the card. The paper inventory, `docs/publication_contract.json`, records source and PDF hashes and validation commands, and the evidence for the checker study in Section <a href="#sec:checks" data-reference-type="ref" data-reference="sec:checks">4</a> is recorded in `docs/publication_evidence.json`.
+Release-surface validation is a separate operation using the pinned Python requirements in [`the reproduction guide`](https://github.com/wcook04/plectis-erdos/blob/3aea812a5fb031b14e0911cc9110885cd8a10bfd/docs/REPRODUCIBILITY.md); it runs `python3 scripts/check_release.py`. Formal replay additionally uses the pinned Lean and Comparator environment named by the card and guide. The paper inventory, `docs/publication_contract.json`, records source and PDF hashes and validation commands, and the evidence for the checker study in Section <a href="#sec:checks" data-reference-type="ref" data-reference="sec:checks">4</a> is recorded in `docs/publication_evidence.json`.
 
 <div class="multicols">
 

@@ -401,7 +401,7 @@ The project should present several independent reasons to clone the repository.
 
 The lowest-friction invitation should appear on the first screen of the README: clone the project, point a local agent at the compact entry file, and ask it to choose a bounded frontier that matches the available tools. The same screen must state the checked results beside their exact remaining-open questions, explain that a useful return need not solve a problem, and give architecture contributions first-class credit.
 
-Publicity should follow a working contribution loop rather than precede it. A Hacker News launch, research talk, or model-community post can then make a specific claim: a stranger can clone the corpus, reach an exact open question, run or improve the machinery, return a typed result, and see accepted work in public lineage. Stars, clones, and raw agent-hours measure attention or activity. They do not measure mathematical progress.
+A public invitation should describe the route it actually demonstrates. A mathematical reading encounter needs a reachable result and a clear evidence boundary; a reproducible local run additionally needs a tested command and a return path. A launch claiming a reusable contribution loop must also show review and public lineage for accepted work. Stars, clones, and raw agent-hours measure attention or activity. They do not measure mathematical progress.
 
 <a id="sec:evaluation"></a>
 
@@ -473,7 +473,7 @@ A continuous stewardship run executes a second loop beside it:
 
 6.  return a source-pinned frontier update: the strongest surviving result, its hard step, the exact boundary, and the next discriminating question.
 
-This second loop explains why paper order is allowed to change as the corpus improves. A paper is a reader-facing projection of current mathematical judgement, not a chronological dump of agent activity. The strongest exact results and mechanisms should lead; routine scaffolding remains available but receives less space. Comparator remains an exact-interface firewall, and Palomar remains an external review route. The stewardship goal may prepare and prioritise those objects, but it cannot award novelty, acceptance, or canonical status to itself.
+This second loop explains why paper order is allowed to change as the corpus improves. A paper is a reader-facing projection of current mathematical judgement, not a chronological dump of agent activity. The strongest exact results and mechanisms should lead; routine scaffolding remains available but receives less space. Comparator remains an exact-interface firewall, and Palomar remains an external formal-verification and automated editorial route. The stewardship goal may prepare and prioritise those objects, but it cannot award novelty, acceptance, or canonical status to itself.
 
 Subagents can divide literature reading, computation, proof search, formalisation, and adversarial review when their questions and evidence remain independent. The integrating agent must read and verify their returns, and each lane keeps its own starting state and stop condition. Parallel agents can multiply attempts. They do not multiply truth.
 
@@ -550,25 +550,25 @@ Finally, openness does not remove resource inequality. Compute donors, frontier-
 
 <a id="sec:execution"></a>
 
-# Execution order
+# Execution dependencies
 
-The strategy should be implemented in the following order.
+The work has dependencies, but no single launch sequence. Reading a paper, running a bounded public check, or contributing an ordinary mathematical idea can proceed while hosted services and controlled comparisons remain future work. The relevant work is:
 
-1.  Make the README state the experiment, contributor types, exact open boundary, clone command, agent prompt, return paths, and credit policy.
+- Make the README state the experiment, contributor types, exact open boundary, clone command, agent prompt, return paths, and credit policy.
 
-2.  Keep every problem world independently navigable from a cold clone, with one paper-level open section and bounded query routes.
+- Keep every problem world independently navigable from a cold clone, with one paper-level open section and bounded query routes.
 
-3.  Accept both mathematical and architecture returns through typed schemas, human review, immutable generations, and public provenance views.
+- Accept both mathematical and architecture returns through typed schemas, human review, immutable generations, and public provenance views.
 
-4.  Provide runner-neutral local instructions and safe, unprivileged checks before building a hosted or volunteer-compute scheduler.
+- Provide runner-neutral local instructions and safe, unprivileged checks before building a hosted or volunteer-compute scheduler.
 
-5.  Recruit external reviewers and maintainers before increasing agent throughput substantially.
+- Recruit external reviewers and maintainers before increasing agent throughput substantially.
 
-6.  Run controlled studies of navigation changes, model changes, and compute changes against immutable snapshots.
+- Run controlled studies of navigation changes, model changes, and compute changes against immutable snapshots.
 
-7.  Only after these boundaries work should the project consider a public task market, donated compute service, or transfer to another scientific domain.
+- Only after these boundaries work should the project consider a public task market, donated compute service, or transfer to another scientific domain.
 
-The first three steps are partly implemented in the current public clone. Turnkey multi-provider mining, a public volunteer-compute scheduler, independent governance, and a cross-domain laboratory interface are not reported capabilities.
+The README, navigation, and return routes are partly implemented in the current public clone. Turnkey multi-provider mining, a public volunteer-compute scheduler, independent governance, and a cross-domain laboratory interface are not reported capabilities. Each advertised route should be used when its own operation works and its limits are clear. Higher-throughput services need their own resource, security, and review boundaries; those dependencies do not suspend use of the bounded paths already available.
 
 <a id="sec:conclusion"></a>
 
