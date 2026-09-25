@@ -55,6 +55,7 @@
     "verification/ExternalVerification/NegativeSolution.lean",
     "scripts/external_verification_release.py",
     "scripts/replay_external_verification.py",
+    "scripts/validation_singleflight.py",
     "scripts/test_external_verification_release.py",
     "lean-toolchain",
     "lake-manifest.json",
