@@ -38,6 +38,7 @@ REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
 REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
 REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
+EVIDENCE_PAPERS = $(patsubst evidence/%.tex,%.pdf,$(wildcard evidence/*.tex))
 VPATH = 68:243:249:251:257:269:1041:1049:synthesis:systems:archive:.
 
 .PHONY: all check clean sync-root
@@ -65,6 +66,9 @@ check: all
 # Short and long problem papers and synthesis publications track the preamble.
 $(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
+# Evidence marks are included by the TeX sources. Rebuild their PDFs when the
+# evidence owner changes an included sidecar, including a record-commit pin.
+$(EVIDENCE_PAPERS): %.pdf: evidence/%.tex
 
 # Only the mathematical gateway owns Lean source-link aliases. Keeping every
 # unrelated manuscript in this prerequisite list rebuilt the complete paper
