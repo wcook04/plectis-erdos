@@ -77,6 +77,10 @@ python3 scripts/replay_external_verification.py plan \
   --source-tree <40-hex-source-tree>
 ```
 
+`plan` shows the selected source, statement, controls, and security contract;
+it does not probe the host. `run` checks host prerequisites before fetching or
+building anything.
+
 Then run the isolated replay:
 
 ```sh
@@ -101,9 +105,11 @@ Run it on Linux with the systemd and pinned-tool prerequisites above. A
 successful `weighted-support` command writes a receipt naming the source,
 statement, axiom budget, checker revisions, positive verdict, deliberate
 mismatch verdict, and four contract failure controls. Before building Comparator,
-it runs
-the source commit's adversarial release test from the isolated checkout. The
-receipt binds that test file's digest and output digest and requires explicit
+it runs the source commit's adversarial release test from the isolated checkout.
+The runner checks for the required executables and a usable systemd manager
+before fetching that checkout or downloading and building tools; an unsuitable
+host receives a failure receipt with the diagnostic. The receipt binds the
+adversarial test file's digest and output digest and requires explicit
 rejections of a changed challenge module, an undeclared axiom, duplicate
 theorem IDs, and a missing runtime receipt. A missing or failed control makes
 the replay fail. These four are configuration and release-manifest controls;

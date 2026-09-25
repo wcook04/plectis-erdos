@@ -582,6 +582,8 @@ def execute(
     exit_code = 1
     try:
         check_programs()
+        # Refuse an unusable host before fetching the source or building tools.
+        mode = sandbox_mode(ROOT)
         bootstrap_contract = load_contract(ROOT)
         source = prepare_source(
             workspace,
@@ -616,7 +618,6 @@ def execute(
             ),
         }
         tools, observed_revisions = prepare_tools(workspace, source_contract)
-        mode = sandbox_mode(source)
         positive_command, environment = comparator_command(
             source=source,
             tools=tools,
