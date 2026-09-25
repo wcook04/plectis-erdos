@@ -163,6 +163,11 @@ identity and download name while admitting newly registered papers. Test a
 valid addition as well as a removed or renamed publication; equality of the
 old and new inventories would prevent the corpus from growing.
 
+For a README change, the cold-clone quick check and the human-first-contact
+test enforce different limits: a 14,000-byte first-contact prefix and 2,100
+prose words. Run both before the full release gate; passing the quick check
+does not establish that the prose budget still fits.
+
 During the edit, run the narrow owner checks:
 
 ```sh
@@ -172,6 +177,7 @@ python3 scripts/test_clone_skills.py
 python3 scripts/test_contribution_entry.py
 python3 scripts/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
+python3 scripts/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
