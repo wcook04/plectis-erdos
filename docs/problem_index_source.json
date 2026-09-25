@@ -505,8 +505,8 @@
         "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
         "ErdosProblems.Erdos269.WeightedPhaseCarry"
       ],
-      "note_coverage_floor": 0.14,
-      "note_coverage_rationale": "Since the 24 Sep 2026 evidence release, each result's Lean proof is linked by a margin mark and the paper's evidence record lists every declaration, so the short note no longer ends with a Lean-source appendix. It links the declarations of its marked results and, in words, the facts it states in the text (23 of 162 declarations in these modules; the required anchors are the ones the note still states). The floor records this.",
+      "note_coverage_floor": 0.13,
+      "note_coverage_rationale": "Since the 24 Sep 2026 evidence release, each result's Lean proof is linked by a margin mark and the paper's evidence record lists every declaration, so the short note no longer ends with a Lean-source appendix. It links the declarations of its marked results and, in words, the facts it states in the text (23 of 162 declarations in these modules; the required anchors are the ones the note still states). The floor records this. On 25 Sep 2026 the bounded-radix escape theorem took its radix bound as a parameter for the cross-problem dyadic transfer, adding the parameterised theorem, its alignment lemma, a threshold-attained example and a 1/31 conversion lemma to these modules; the note still cites the radix-30 specialisation it uses, so 23 of 166 declarations are linked and the floor moves to 13%.",
       "note_artifact_id": "erdos_269_note",
       "required_note_declarations": [
         {

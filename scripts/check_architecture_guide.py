@@ -248,6 +248,18 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "A successful check in one row settles nothing in another",
         "No deterministic check decides what is important",
     ),
+    # The corpus-to-insight transfer is the paper's complete worked case of a
+    # representation change: the rejected and accepted applications, the
+    # division between the authored bridge and Lean, the constant's origin in
+    # the source theorem's radix bound, and the prime-series boundary.
+    "corpus_to_insight": (
+        "The smallest complete case is a transfer between two problems",
+        "The change of variable is the mathematical bridge",
+        "The constant $1/31$ came from the radix bound 30",
+        "None of this bears on the actual prime-gap series",
+        "acceptance and closure are recorded separately",
+        "An enduring endpoint and a justified next step are different allocations",
+    ),
     "world_and_obligations": (
         "Negative results are part of what the loop produces",
         "A Lean no-go theorem rules out a class of strategies",
@@ -307,12 +319,15 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "is the closest published system",
         "Persistence, decomposition, visible negative results and exact statement checking are therefore shared features",
         "LeanMarathon maintains an evolving blueprint",
+        "a direct precedent for the explanation a world keeps beside a formal proof",
         "the two designs developed independently",
     ),
     "limits_and_scaling": (
         "The same design serves stronger models",
         "The next measurement is comparative",
         "an information-equivalent written briefing",
+        "A representation contrast holds information, tools and budget fixed",
+        "discovery comparisons use held-out transformations or prospective continuations",
         "whether the workflow made those results more likely has not been measured",
         "no outside human contributor had opened a pull request or issue",
     ),
