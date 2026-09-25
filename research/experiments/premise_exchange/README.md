@@ -49,7 +49,7 @@ T_0\notin\mathbb Q
 \]
 
 The common constant is inherited from the theorem for radices at most 30;
-it is not claimed optimal for radix two. The statement gives a quantitative
+the next section improves it to 1/3. The statement gives a quantitative
 equivalent criterion. It does not establish irrationality of the prime-gap
 series.
 
@@ -70,7 +70,65 @@ python3 research/experiments/premise_exchange/run.py \
 The generated `results/summary.json` distinguishes application acceptance,
 proof closure and remaining obligations. A rejected application is useful
 evidence about this proposed transfer; it is not a disproof of the goal.
+Both recorded rows end with an empty list of remaining obligations: the
+rejected application never reached a state, and the accepted one had its
+single obligation closed. Read acceptance and closure from their own fields.
 The full result preserves the compiler's diagnostics and environment identity.
+
+## The constant, and the next question
+
+The constant 1/31 was an artefact of the source theorem. Its proof uses the
+radix bound only to show that an integer of absolute value below
+`(p + 1) / 31` vanishes, so it works for every bound `B` with threshold
+`1/(B + 1)`. [BoundedRadixTailEscape.lean](../../../lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean)
+now proves `boundedRadix_zero_or_cofinal_far_of_le` for every `B` and keeps
+the radix-30 theorem as its specialisation, so the #269 consumers are
+unchanged. `boundedRadix_threshold_attained` checks that `1/(B + 1)` cannot be
+raised for orbits in general: at constant radix `B` with digits alternating
+`0` and `B - 1`, the orbit alternating `1/(B + 1)` and `B/(B + 1)` never
+reaches an integer and stays exactly `1/(B + 1)` away. At `B = 2`
+[DyadicShiftEscape.lean](../../../lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean)
+proves
+
+\[
+T_0\notin\mathbb Q
+\quad\Longleftrightarrow\quad
+\forall h>0\;\forall N_0\;\exists N\ge N_0\;\forall z\in\mathbb Z,
+\quad |T_{N+h}-T_N-z|\ge 1/3.
+\]
+
+The 1/31 theorems and the recorded application results stay as the original
+run; the 1/3 theorems are its continuation, not a rewrite of that receipt.
+The [continuation request](dyadic_shift_third_request.json) replays the
+transfer through the parameterised theorem at `B = 2`, with the radix-30
+transfer as a negative control against the 1/3 target, and
+[threshold_continuation.json](threshold_continuation.json) records every
+consumer's disposition.
+
+```sh
+python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Synthesis.DyadicShiftEscape
+python3 research/experiments/premise_exchange/run.py \
+  research/experiments/premise_exchange/dyadic_shift_third_request.json \
+  --output research/experiments/premise_exchange/results/threshold_continuation
+python3 research/experiments/premise_exchange/dyadic_threshold_probe.py
+```
+
+The extremal orbit above is rational, so it says nothing about irrational
+tails. For shift `h = 1` the fractional part of `T_{N+1} - T_N` is that of
+`2^N T_0`, so the best constant for irrational tails is the best cofinal
+distance from the integers of the doubling orbit of an irrational number.
+[dyadic_threshold_probe.py](dyadic_threshold_probe.py) records exact finite
+evidence: the doubling orbit of the Thue–Morse number `0.0110100110010110…₂`
+returns in every dyadic block of indices up to 4,096 to distance about
+0.412454 and never exceeds 0.412455 there. If that pattern persists, the best
+constant for irrational tails lies between 1/3 and the Thue–Morse constant
+0.412454…. The Thue–Morse sequence is known to govern extreme limit points of
+the fractional parts of `ξ b^n` in related settings, so the next step is a
+literature check, beginning with Dubickas's work on the limit points of
+`‖ξ (p/q)^n‖` and the Allouche–Dubickas survey on extremal properties of
+Sturmian sequences and distribution modulo one. A proof attempt starts only
+if that check leaves the integer-base question open. The question stops when
+a proof or a located theorem fixes the constant.
 
 ## Two further mathematical consequences
 
