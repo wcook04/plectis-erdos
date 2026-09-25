@@ -28,7 +28,8 @@ python3 scripts/replay_external_verification.py plan --unit weighted-support \
 
 Then use the guide's `run` command on Linux with systemd. Keep the resulting receipt with the exact
 source revision. Report both the positive check and the deliberate mismatch,
-the declared axiom budget, wall time and machine details. A failed receipt or
+the four contract failure controls, declared axiom budget, wall time and machine
+details. A failed receipt or
 missing platform prerequisite is a failure, not a theorem verdict. The
 [reproducibility guide](../../docs/REPRODUCIBILITY.md) separately explains the
 claim trail and Lean build; neither should be called an independent Comparator

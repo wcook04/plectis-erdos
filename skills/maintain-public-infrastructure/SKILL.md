@@ -158,6 +158,11 @@ a clean merge or a passing test from only one parent does not establish that
 the combined contract works. For corpus-wide contribution changes, exercise
 all eight programmes and each supported contribution track.
 
+When a Python entry point starts another Python script under a sanitized
+subprocess environment, use its own `sys.executable` or an explicit pinned
+interpreter. Test the child invocation itself: a reduced `PATH` can resolve an
+older Python that lacks dependencies available to the parent.
+
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a
 valid addition as well as a removed or renamed publication; equality of the

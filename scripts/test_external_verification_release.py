@@ -832,6 +832,8 @@ def test_weighted_support_replay_unit() -> None:
     plan = replay.replay_plan('a' * 40, 'b' * 40, 'weighted-support')
     require(plan['statement_contract']['theorem'] == theorem,
             'weighted replay plan changed its theorem')
+    require(plan['failure_controls']['expected'] == list(replay.FAILURE_CONTROL_IDS),
+            'weighted replay plan omitted its failure controls')
     for mutation in ('challenge', 'axioms', 'duplicate_statement_ids'):
         altered_positive = copy.deepcopy(positive)
         altered_negative = copy.deepcopy(negative)
@@ -848,9 +850,32 @@ def test_weighted_support_replay_unit() -> None:
             try:
                 replay.validate_unit_configs(replay.ROOT, unit)
             except replay.ReplayError:
-                pass
+                control_id = {
+                    'challenge': 'changed_challenge',
+                    'axioms': 'undeclared_axiom',
+                    'duplicate_statement_ids': 'duplicate_theorem_ids',
+                }[mutation]
+                print(json.dumps({'failure_control': control_id, 'result': 'rejected'}))
             else:
                 raise AssertionError(f'accepted weighted {mutation} mutation')
+
+
+def test_failure_control_receipt_parser() -> None:
+    expected = replay.FAILURE_CONTROL_IDS
+    lines = [json.dumps({'failure_control': name, 'result': 'rejected'}) for name in expected]
+    success = subprocess.CompletedProcess(['python3'], 0, '\n'.join(lines), '')
+    with patch.object(replay, 'run', return_value=success):
+        row = replay.run_failure_controls(replay.ROOT)
+    require(row['result'] == 'pass' and row['observed'] == list(expected),
+            'complete control suite did not produce a passing receipt row')
+    for bad in (
+        subprocess.CompletedProcess(['python3'], 0, '\n'.join(lines[:-1]), ''),
+        subprocess.CompletedProcess(['python3'], 0, '\n'.join([*lines, lines[0]]), ''),
+        subprocess.CompletedProcess(['python3'], 1, '\n'.join(lines), 'suite failed'),
+    ):
+        with patch.object(replay, 'run', return_value=bad):
+            row = replay.run_failure_controls(replay.ROOT)
+        require(row['result'] == 'fail', 'incomplete or failed controls were accepted')
 
 
 def test_weighted_support_runtime_receipt() -> None:
@@ -977,6 +1002,7 @@ def test_release_manifest() -> None:
             ),
             'not a regular file',
         )
+        print(json.dumps({'failure_control': 'missing_runtime_receipt', 'result': 'rejected'}))
         expect_error(
             lambda: release.build_manifest(
                 root=root,
@@ -1001,6 +1027,7 @@ def main() -> int:
     test_replay_plan()
     test_named_construction_replay_unit()
     test_weighted_support_replay_unit()
+    test_failure_control_receipt_parser()
     test_weighted_support_runtime_receipt()
     test_public_problem_artifact_coverage()
     test_release_manifest()
