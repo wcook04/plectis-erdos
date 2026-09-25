@@ -122,6 +122,10 @@ Direct substitution gives `M(λ)=1380` and `V₂(λ)=V₃(λ)=V₄(λ)=0`; the
 coordinate and finite-gcd theorems prove minimality. This certificate answers
 which moments survive a chosen finite cancellation. It does not establish
 nonintegrality of the remaining tail or irrationality of `S`.
+Run `python3 scripts/check_erdos68_channel_moment.py` for the
+[exact integer replay](../scripts/check_erdos68_channel_moment.py) of the
+recurrence, finite gcd, moment and three vanishing channels. The paper's
+finite tail-gcd theorem extends the computed gcd to all later indices.
 
 <a id="result-243"></a>
 
