@@ -17,7 +17,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR20.radical_decomposition`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/RadicalDecomposition.lean#L50)
+[`ErdosProblems.Erdos249.PaperCompleteR20.radical_decomposition`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/RadicalDecomposition.lean#L50)
 
 ```lean
 theorem radical_decomposition (H r : ℕ) (hH : 0 < H) (hr : 0 < r) :
@@ -52,7 +52,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.CyclotomicProjectionOfShadow.cyclotomic_dvd_mobiusNumeratorPolynomial_sub`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CyclotomicProjectionOfShadow.lean#L299)
+1. [`Erdos249257.CyclotomicProjectionOfShadow.cyclotomic_dvd_mobiusNumeratorPolynomial_sub`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CyclotomicProjectionOfShadow.lean#L299)
 
 ```lean
 theorem cyclotomic_dvd_mobiusNumeratorPolynomial_sub
@@ -63,7 +63,7 @@ theorem cyclotomic_dvd_mobiusNumeratorPolynomial_sub
           (ArithmeticFunction.moebius m * jordanTotientTwo (r / m))
 ```
 
-2. [`Erdos249257.CyclotomicProjectionOfShadow.mobiusNumerator_mod_cyclotomicEval`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CyclotomicProjectionOfShadow.lean#L310)
+2. [`Erdos249257.CyclotomicProjectionOfShadow.mobiusNumerator_mod_cyclotomicEval`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CyclotomicProjectionOfShadow.lean#L310)
 
 ```lean
 theorem mobiusNumerator_mod_cyclotomicEval
@@ -73,7 +73,7 @@ theorem mobiusNumerator_mod_cyclotomicEval
         ArithmeticFunction.moebius m * jordanTotientTwo (r / m)
 ```
 
-3. [`Erdos249257.CyclotomicProjectionOfShadow.jordanTotientTwo_eq_prod_primeFactors`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CyclotomicProjectionOfShadow.lean#L67)
+3. [`Erdos249257.CyclotomicProjectionOfShadow.jordanTotientTwo_eq_prod_primeFactors`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/CyclotomicProjectionOfShadow.lean#L67)
 
 ```lean
 theorem jordanTotientTwo_eq_prod_primeFactors
@@ -126,7 +126,7 @@ theorem mobiusNumerator_mod_cyclotomicEval
 
 The Lean declaration below states this result.
 
-[`Erdos249257.PrimePowerJumpDynamics.cyclotomic_dvd_primeJump_new_fibre`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/PrimePowerJumpDynamics.lean#L281)
+[`Erdos249257.PrimePowerJumpDynamics.cyclotomic_dvd_primeJump_new_fibre`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/PrimePowerJumpDynamics.lean#L281)
 
 ```lean
 theorem cyclotomic_dvd_primeJump_new_fibre
@@ -157,7 +157,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.PrimePowerJumpDynamics.cyclotomic_dvd_primeJump_old_fibre`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/PrimePowerJumpDynamics.lean#L310)
+[`Erdos249257.PrimePowerJumpDynamics.cyclotomic_dvd_primeJump_old_fibre`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/PrimePowerJumpDynamics.lean#L310)
 
 ```lean
 theorem cyclotomic_dvd_primeJump_old_fibre
@@ -191,7 +191,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.lambertValue_eq_divisor_sum_series`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean#L42)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.lambertValue_eq_divisor_sum_series`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean#L42)
 
 ```lean
 theorem lambertValue_eq_divisor_sum_series (f : ℕ → ℝ)
@@ -201,14 +201,14 @@ theorem lambertValue_eq_divisor_sum_series (f : ℕ → ℝ)
       = ∑' m : ℕ+, (∑ e ∈ (m : ℕ).divisors, f e) * ((1 : ℝ) / 2) ^ (m : ℕ)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.alpha_divisor_sum_eq_totient`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean#L101)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.alpha_divisor_sum_eq_totient`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean#L101)
 
 ```lean
 theorem alpha_divisor_sum_eq_totient (n : ℕ) :
     ∑ e ∈ n.divisors, ((primWeight e : ℤ) : ℝ) = (Nat.totient n : ℝ)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.lambertValue_alpha_eq_totientSeries`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean#L109)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.lambertValue_alpha_eq_totientSeries`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean#L109)
 
 ```lean
 theorem lambertValue_alpha_eq_totientSeries :
@@ -262,7 +262,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.transportResidueKernel_eq_mobiusTermKernel`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L28)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.transportResidueKernel_eq_mobiusTermKernel`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L28)
 
 ```lean
 theorem transportResidueKernel_eq_mobiusTermKernel {d N : ℕ}
@@ -271,7 +271,7 @@ theorem transportResidueKernel_eq_mobiusTermKernel {d N : ℕ}
       = ((ArithmeticFunction.moebius d : ℤ) : ℝ) * mobiusTermKernel d N
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel_affine_in_multiplier`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L47)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel_affine_in_multiplier`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L47)
 
 ```lean
 theorem mobiusTermKernel_affine_in_multiplier (d H m : ℕ) :
@@ -280,7 +280,7 @@ theorem mobiusTermKernel_affine_in_multiplier (d H m : ℕ) :
         + (2 : ℝ) ^ d / (((2 : ℝ) ^ d - 1) ^ 2)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35ConeWindow_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L99)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35ConeWindow_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L99)
 
 ```lean
 theorem joint35ConeWindow_eq (H L : ℕ) :
@@ -292,14 +292,14 @@ theorem joint35ConeWindow_eq (H L : ℕ) :
             + 4 * (Nat.totient (H + (j + 1)) : ℤ)) * 2 ^ (L - (j + 1))
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.totientTail_enclosure`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L119)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.totientTail_enclosure`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L119)
 
 ```lean
 theorem totientTail_enclosure (n : ℕ) (hn : 1 ≤ n) :
     0 ≤ totientTail n ∧ totientTail n ≤ (n : ℝ) + 1
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel_moment_annihilation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L58)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel_moment_annihilation`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L58)
 
 ```lean
 theorem mobiusTermKernel_moment_annihilation
@@ -308,7 +308,7 @@ theorem mobiusTermKernel_moment_annihilation
     ∑ i, c i * mobiusTermKernel d (m i * H) = 0
 ```
 
-6. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_mobiusTermKernel_zero`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L76)
+6. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_mobiusTermKernel_zero`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L76)
 
 ```lean
 theorem joint35_mobiusTermKernel_zero (d H : ℕ) :
@@ -316,7 +316,7 @@ theorem joint35_mobiusTermKernel_zero (d H : ℕ) :
       - 2 * mobiusTermKernel d (5 * H) + 4 * mobiusTermKernel d H = 0
 ```
 
-7. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_coefficient_moments`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L87)
+7. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_coefficient_moments`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L87)
 
 ```lean
 theorem joint35_coefficient_moments :
@@ -328,7 +328,7 @@ theorem joint35_coefficient_moments :
       ∧ ((9 : ℝ) * 25 - 3 * 9 - 2 * 25 + 4 = 152)
 ```
 
-8. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_truncation_error`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L132)
+8. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_truncation_error`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L132)
 
 ```lean
 theorem joint35_truncation_error (H L : ℕ) (hH : 1 ≤ H) :
@@ -349,7 +349,7 @@ theorem joint35_truncation_error (H L : ℕ) (hH : 1 ≤ H) :
           ≤ ((19 * H + 5 * L + 5 : ℕ) : ℝ))
 ```
 
-9. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_nonintegral_of_separated_window`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L183)
+9. [`ErdosProblems.Erdos249.PaperCompleteR21.joint35_nonintegral_of_separated_window`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean#L183)
 
 ```lean
 theorem joint35_nonintegral_of_separated_window {H L : ℕ} (hH : 1 ≤ H)
@@ -398,7 +398,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_divisor_count`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L27)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_divisor_count`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L27)
 
 ```lean
 theorem composite_dilation_divisor_count (A : Set ℕ) {a x : ℕ}
@@ -408,7 +408,7 @@ theorem composite_dilation_divisor_count (A : Set ℕ) {a x : ℕ}
         compositeDilationDefect A a x
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_defect_eq_zero_of_prime_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L36)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_defect_eq_zero_of_prime_support`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L36)
 
 ```lean
 theorem composite_dilation_defect_eq_zero_of_prime_support (A : Set ℕ) {a x : ℕ}
@@ -416,7 +416,7 @@ theorem composite_dilation_defect_eq_zero_of_prime_support (A : Set ℕ) {a x : 
     compositeDilationDefect A a x = 0
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_divisor_count_prime_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L42)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_divisor_count_prime_support`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L42)
 
 ```lean
 theorem composite_dilation_divisor_count_prime_support (A : Set ℕ) {a x : ℕ}
@@ -424,7 +424,7 @@ theorem composite_dilation_divisor_count_prime_support (A : Set ℕ) {a x : ℕ}
     supportCoeff A (a * x) = supportCoeff A x + (if a ∣ x then 0 else 1)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_defect_univ_six_one`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L49)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_defect_univ_six_one`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L49)
 
 ```lean
 theorem composite_dilation_defect_univ_six_one :
@@ -432,14 +432,14 @@ theorem composite_dilation_defect_univ_six_one :
         fun d => (d ∈ (Set.univ : Set ℕ) ∧ ¬ d ∣ 1 ∧ d ≠ 6)) = ({2, 3} : Finset ℕ)
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_defect_univ_six_one_card`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L72)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.composite_dilation_defect_univ_six_one_card`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L72)
 
 ```lean
 theorem composite_dilation_defect_univ_six_one_card :
     compositeDilationDefect (Set.univ : Set ℕ) 6 1 = 2
 ```
 
-6. [`ErdosProblems.Erdos249.PaperCompleteR21.lambert_support_series`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L83)
+6. [`ErdosProblems.Erdos249.PaperCompleteR21.lambert_support_series`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L83)
 
 ```lean
 theorem lambert_support_series (A : Set ℕ) :
@@ -447,7 +447,7 @@ theorem lambert_support_series (A : Set ℕ) :
       ∑' m : ℕ, (supportCoeff A (m + 1) : ℝ) / (2 : ℝ) ^ (m + 1)
 ```
 
-7. [`ErdosProblems.Erdos249.PaperCompleteR21.lambert_support_series_restricted`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L92)
+7. [`ErdosProblems.Erdos249.PaperCompleteR21.lambert_support_series_restricted`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L92)
 
 ```lean
 theorem lambert_support_series_restricted (A : Set ℕ) :
@@ -455,14 +455,14 @@ theorem lambert_support_series_restricted (A : Set ℕ) :
       ∑' m : ℕ, (supportCoeff A (m + 1) : ℝ) / (2 : ℝ) ^ (m + 1)
 ```
 
-8. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_mul_zeta`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L108)
+8. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_mul_zeta`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L108)
 
 ```lean
 theorem totient_convolution_weight_mul_zeta (n : ℕ) :
     ∑ e ∈ n.divisors, MersenneLambertLadder.primWeight e = (Nat.totient n : ℤ)
 ```
 
-9. [`ErdosProblems.Erdos249.PaperCompleteR21.sum_divisors_totient_ne_totient`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L114)
+9. [`ErdosProblems.Erdos249.PaperCompleteR21.sum_divisors_totient_ne_totient`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L114)
 
 ```lean
 theorem sum_divisors_totient_ne_totient :
@@ -470,21 +470,21 @@ theorem sum_divisors_totient_ne_totient :
       (∑ d ∈ (2 : ℕ).divisors, Nat.totient d) = 2 ∧ Nat.totient 2 = 1
 ```
 
-10. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_prime`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L120)
+10. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_prime`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L120)
 
 ```lean
 theorem totient_convolution_weight_prime {p : ℕ} (hp : p.Prime) :
     MersenneLambertLadder.primWeight p = (p : ℤ) - 2
 ```
 
-11. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_unbounded`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L125)
+11. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_unbounded`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L125)
 
 ```lean
 theorem totient_convolution_weight_unbounded :
     ¬ ∃ B : ℕ, ∀ n : ℕ, MersenneLambertLadder.primWeight n ≤ (B : ℤ)
 ```
 
-12. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_not_periodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L131)
+12. [`ErdosProblems.Erdos249.PaperCompleteR21.totient_convolution_weight_not_periodic`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/CompositeDilationIdentity.lean#L131)
 
 ```lean
 theorem totient_convolution_weight_not_periodic :
@@ -552,7 +552,7 @@ theorem totient_convolution_weight_not_periodic :
 
 The Lean declaration below states this result.
 
-[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L412)
+[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L412)
 
 ```lean
 theorem irrational_totient_series_iff_certificate_supply :
@@ -579,7 +579,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_period_multiple_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L25)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_period_multiple_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L25)
 
 ```lean
 theorem irrational_of_period_multiple_certificate_supply
@@ -588,14 +588,14 @@ theorem irrational_of_period_multiple_certificate_supply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.period_multiple_certificate_at_one`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L33)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.period_multiple_certificate_at_one`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L33)
 
 ```lean
 theorem period_multiple_certificate_at_one {h₀ N L : ℕ}
     (hcert : certifiedKill h₀ N L) : certifiedKill (1 * h₀) N L
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L55)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L55)
 
 ```lean
 theorem rational_forces_period_multiple_integrality
@@ -604,7 +604,7 @@ theorem rational_forces_period_multiple_integrality
       totientTail (N + m * h) - totientTail N ∈ Set.range ((↑) : ℤ → ℝ)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.period_multiple_certificate_supply_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L41)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.period_multiple_certificate_supply_iff`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L41)
 
 ```lean
 theorem period_multiple_certificate_supply_iff :
@@ -634,7 +634,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L426)
+[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L426)
 
 ```lean
 theorem irrational_totient_series_iff_lcm_diagonal_certificate_supply :
@@ -661,7 +661,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.TotientTailPeriodKiller.eq_prime_pow_of_not_dvd_periodLcm`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmDiagonalReduction.lean#L137)
+[`Erdos249257.TotientTailPeriodKiller.eq_prime_pow_of_not_dvd_periodLcm`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmDiagonalReduction.lean#L137)
 
 ```lean
 theorem eq_prime_pow_of_not_dvd_periodLcm {t j : ℕ} (hj : 0 < j) (hlt : j < 2 * t)
@@ -692,7 +692,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.clean_lcm_ray_factorisation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L67)
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.clean_lcm_ray_factorisation`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L67)
 
 ```lean
 theorem clean_lcm_ray_factorisation (t j q : ℕ) (hdvd : j ∣ periodLcm t)
@@ -702,7 +702,7 @@ theorem clean_lcm_ray_factorisation (t j q : ℕ) (hdvd : j ∣ periodLcm t)
     Nat.totient (q * periodLcm t + j) = Nat.totient j * Nat.totient (q * (periodLcm t / j) + 1)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.unclean_lcm_ray_counterexample`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L76)
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.unclean_lcm_ray_counterexample`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L76)
 
 ```lean
 theorem unclean_lcm_ray_counterexample :
@@ -734,7 +734,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L8)
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L8)
 
 ```lean
 theorem lcm_grid_flatness
@@ -744,7 +744,7 @@ theorem lcm_grid_flatness
         ∈ Set.range ((↑) : ℤ → ℝ)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L15)
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L15)
 
 ```lean
 theorem lcm_grid_fractional_parts
@@ -754,7 +754,7 @@ theorem lcm_grid_fractional_parts
         Int.fract (totientTail (q * periodLcm t))
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR20.certificate_denominator_exclusion`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L27)
+3. [`ErdosProblems.Erdos249.PaperCompleteR20.certificate_denominator_exclusion`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L27)
 
 ```lean
 theorem certificate_denominator_exclusion (r : ℚ) (h N L : ℕ)
@@ -762,7 +762,7 @@ theorem certificate_denominator_exclusion (r : ℚ) (h N L : ℕ)
     (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ≠ (r : ℝ)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_supply_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L40)
+4. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_supply_iff`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L40)
 
 ```lean
 theorem lcm_grid_supply_iff :
@@ -798,7 +798,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_supply_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L40)
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_supply_iff`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L40)
 
 ```lean
 theorem lcm_grid_supply_iff :
@@ -807,7 +807,7 @@ theorem lcm_grid_supply_iff :
         certifiedKill (m * periodLcm t) (q * periodLcm t) L
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_multiplier_positive`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L50)
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_multiplier_positive`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L50)
 
 ```lean
 theorem lcm_grid_multiplier_positive (t q m L : ℕ)
@@ -838,7 +838,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_all_tail_diffs_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L386)
+1. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_all_tail_diffs_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L386)
 
 ```lean
 theorem irrational_totient_series_iff_all_tail_diffs_nonintegral :
@@ -847,7 +847,7 @@ theorem irrational_totient_series_iff_all_tail_diffs_nonintegral :
         totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)
 ```
 
-2. [`Erdos249257.TotientTailPeriodKiller.periodLcm_diagonal_kill_iff_tail_diff_notMem_int`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L439)
+2. [`Erdos249257.TotientTailPeriodKiller.periodLcm_diagonal_kill_iff_tail_diff_notMem_int`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L439)
 
 ```lean
 theorem periodLcm_diagonal_kill_iff_tail_diff_notMem_int (t : ℕ) :
@@ -856,7 +856,7 @@ theorem periodLcm_diagonal_kill_iff_tail_diff_notMem_int (t : ℕ) :
         ∉ Set.range ((↑) : ℤ → ℝ)
 ```
 
-3. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L451)
+3. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L451)
 
 ```lean
 theorem irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
@@ -866,7 +866,7 @@ theorem irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-4. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_cone_nonintegrality_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L462)
+4. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_cone_nonintegrality_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L462)
 
 ```lean
 theorem irrational_totient_series_of_lcm_cone_nonintegrality_supply
@@ -905,7 +905,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.abs_tail_diff_scaled_sub_window_le`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L65)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.abs_tail_diff_scaled_sub_window_le`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L65)
 
 ```lean
 theorem abs_tail_diff_scaled_sub_window_le (h N L : ℕ) :
@@ -913,7 +913,7 @@ theorem abs_tail_diff_scaled_sub_window_le (h N L : ℕ) :
         ((windowDiscrepancy h N L : ℤ) : ℝ)| ≤ (N : ℝ) + h + L + 2
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.second_difference_error_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L104)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.second_difference_error_bound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L104)
 
 ```lean
 theorem second_difference_error_bound (h N L : ℕ) :
@@ -922,7 +922,7 @@ theorem second_difference_error_bound (h N L : ℕ) :
       2 * ((N : ℝ) + 2 * h + L + 2)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.second_difference_certificate_sound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L121)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.second_difference_certificate_sound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L121)
 
 ```lean
 theorem second_difference_certificate_sound {h N L : ℕ}
@@ -934,7 +934,7 @@ theorem second_difference_certificate_sound {h N L : ℕ}
       Set.range ((↑) : ℤ → ℝ)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.second_difference_cell_one_eight`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L136)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.second_difference_cell_one_eight`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean#L136)
 
 ```lean
 theorem second_difference_cell_one_eight :
@@ -969,14 +969,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.paperGridNumerator_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L12)
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.paperGridNumerator_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L12)
 
 ```lean
 theorem paperGridNumerator_eq (H L q : ℕ) :
     paperGridNumerator H L q = windowNumerator (q * H) L
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_grid_nonintegral_pair`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L36)
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_grid_nonintegral_pair`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L36)
 
 ```lean
 theorem finite_grid_nonintegral_pair (H L : ℕ) (Q : Finset ℕ) (hQ : Q.Nonempty)
@@ -1005,14 +1005,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.paperGridNumerator_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L12)
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.paperGridNumerator_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L12)
 
 ```lean
 theorem paperGridNumerator_eq (H L q : ℕ) :
     paperGridNumerator H L q = windowNumerator (q * H) L
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_grid_supply_irrational`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L49)
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_grid_supply_irrational`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteGridCorrespondence.lean#L49)
 
 ```lean
 theorem finite_grid_supply_irrational
@@ -1051,7 +1051,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_test_sound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean#L8)
+1. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_test_sound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean#L8)
 
 ```lean
 theorem finite_carry_test_sound (h N K : ℕ)
@@ -1060,14 +1060,14 @@ theorem finite_carry_test_sound (h N K : ℕ)
     totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_candidate_count`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean#L22)
+2. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_candidate_count`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean#L22)
 
 ```lean
 theorem finite_carry_candidate_count (h N : ℕ) :
     (Finset.Icc (-(N + h + 1 : ℤ)) (N + h + 1)).card = 2 * (N + h + 1) + 1
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_true_orbit`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean#L27)
+3. [`ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_true_orbit`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean#L27)
 
 ```lean
 theorem finite_carry_true_orbit (h N : ℕ) (z : ℤ)
@@ -1104,7 +1104,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L71)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L71)
 
 ```lean
 theorem irrational_of_first_harmonic_norm_gap
@@ -1114,7 +1114,7 @@ theorem irrational_of_first_harmonic_norm_gap
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.first_harmonic_re_bound_of_norm_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L40)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.first_harmonic_re_bound_of_norm_bound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L40)
 
 ```lean
 theorem first_harmonic_re_bound_of_norm_bound {h X L : ℕ}
@@ -1122,7 +1122,7 @@ theorem first_harmonic_re_bound_of_norm_bound {h X L : ℕ}
     (∑ N ∈ Finset.Ico X (2 * X), windowFirstCos h N L) ≤ (9 / 10 : ℝ) * X
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.exists_certificate_of_first_harmonic_real_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L54)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.exists_certificate_of_first_harmonic_real_bound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L54)
 
 ```lean
 theorem exists_certificate_of_first_harmonic_real_bound {h X L : ℕ} (hX : 0 < X)
@@ -1131,7 +1131,7 @@ theorem exists_certificate_of_first_harmonic_real_bound {h X L : ℕ} (hX : 0 < 
     ∃ N ∈ Finset.Ico X (2 * X), certifiedKill h N L
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.exists_certificate_of_first_harmonic_norm_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L61)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.exists_certificate_of_first_harmonic_norm_bound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L61)
 
 ```lean
 theorem exists_certificate_of_first_harmonic_norm_bound {h X L : ℕ} (hX : 0 < X)
@@ -1140,7 +1140,7 @@ theorem exists_certificate_of_first_harmonic_norm_bound {h X L : ℕ} (hX : 0 < 
     ∃ N ∈ Finset.Ico X (2 * X), certifiedKill h N L
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.nine_tenths_lt_cos_pi_div_eight`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L28)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.nine_tenths_lt_cos_pi_div_eight`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L28)
 
 ```lean
 theorem nine_tenths_lt_cos_pi_div_eight : (9 / 10 : ℝ) < Real.cos (Real.pi / 8)
@@ -1190,7 +1190,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_combination_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L103)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_combination_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L103)
 
 ```lean
 theorem four_tail_combination_eq (H p : ℕ) :
@@ -1199,7 +1199,7 @@ theorem four_tail_combination_eq (H p : ℕ) :
         - p * totientTail (2 * H) + p * totientTail H
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_window_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L93)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_window_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L93)
 
 ```lean
 theorem four_tail_window_eq (H p L : ℕ) :
@@ -1207,7 +1207,7 @@ theorem four_tail_window_eq (H p L : ℕ) :
       primeJumpWindowCommutator H p L
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.windowDiscrepancy_diagonal_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L81)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.windowDiscrepancy_diagonal_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L81)
 
 ```lean
 theorem windowDiscrepancy_diagonal_eq (M L : ℕ) :
@@ -1215,7 +1215,7 @@ theorem windowDiscrepancy_diagonal_eq (M L : ℕ) :
       (windowNumerator (2 * M) L : ℤ) - (windowNumerator M L : ℤ)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_error_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L113)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_error_bound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L113)
 
 ```lean
 theorem four_tail_error_bound (H p L : ℕ) :
@@ -1225,14 +1225,14 @@ theorem four_tail_error_bound (H p L : ℕ) :
       ≤ ((3 * p * H + (p + 1) * (L + 2) : ℕ) : ℝ)
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.totientTail_bounds`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L129)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.totientTail_bounds`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L129)
 
 ```lean
 theorem totientTail_bounds (n : ℕ) :
     0 ≤ totientTail n ∧ totientTail n ≤ (n : ℝ) + 2
 ```
 
-6. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_criterion_sound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L152)
+6. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_criterion_sound`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L152)
 
 ```lean
 theorem four_tail_criterion_sound {H p L : ℕ}
@@ -1244,7 +1244,7 @@ theorem four_tail_criterion_sound {H p L : ℕ}
         - p * totientTail (2 * H) + p * totientTail H ∉ Set.range ((↑) : ℤ → ℝ)
 ```
 
-7. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_four_tail_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L169)
+7. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_four_tail_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L169)
 
 ```lean
 theorem irrational_of_four_tail_supply
@@ -1258,7 +1258,7 @@ theorem irrational_of_four_tail_supply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-8. [`ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L135)
+8. [`ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L135)
 
 ```lean
 theorem rational_forces_four_tail_diagonals_integral
@@ -1270,7 +1270,7 @@ theorem rational_forces_four_tail_diagonals_integral
           Set.range ((↑) : ℤ → ℝ))
 ```
 
-9. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_checked_instance`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L187)
+9. [`ErdosProblems.Erdos249.PaperCompleteR21.four_tail_checked_instance`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean#L187)
 
 ```lean
 theorem four_tail_checked_instance :
@@ -1311,7 +1311,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR21.irrational_iff_diagonal_orbit_nonintegrality`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L29)
+[`ErdosProblems.Erdos249.PaperCompleteR21.irrational_iff_diagonal_orbit_nonintegrality`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L29)
 
 ```lean
 theorem irrational_iff_diagonal_orbit_nonintegrality :
@@ -1345,7 +1345,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_short_window_diagonal_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L56)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_short_window_diagonal_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L56)
 
 ```lean
 theorem irrational_of_short_window_diagonal_supply
@@ -1354,7 +1354,7 @@ theorem irrational_of_short_window_diagonal_supply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.diagonal_certificate_unfolded`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L40)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.diagonal_certificate_unfolded`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L40)
 
 ```lean
 theorem diagonal_certificate_unfolded (a L : ℕ) :
@@ -1365,7 +1365,7 @@ theorem diagonal_certificate_unfolded (a L : ℕ) :
           2 ^ L - ((2 * periodLcm (2 ^ a) + L + 2 : ℕ) : ℤ))
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.pointwise_completeness_supplies_some_depth`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L68)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.pointwise_completeness_supplies_some_depth`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L68)
 
 ```lean
 theorem pointwise_completeness_supplies_some_depth (h N : ℕ)
@@ -1398,7 +1398,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_diagonal_orbit_separation_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L145)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_diagonal_orbit_separation_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L145)
 
 ```lean
 theorem irrational_of_diagonal_orbit_separation_supply
@@ -1410,14 +1410,14 @@ theorem irrational_of_diagonal_orbit_separation_supply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.oddGuarded_depth_eq_prescribed`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L80)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.oddGuarded_depth_eq_prescribed`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L80)
 
 ```lean
 theorem oddGuarded_depth_eq_prescribed (a : ℕ) :
     oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) = 2 * prescribedOddIndex a + 1
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.abs_orbit_sub_rawApprox_lt`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L98)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.abs_orbit_sub_rawApprox_lt`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L98)
 
 ```lean
 theorem abs_orbit_sub_rawApprox_lt (a q : ℕ) :
@@ -1427,7 +1427,7 @@ theorem abs_orbit_sub_rawApprox_lt (a q : ℕ) :
       ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.rawApprox_separation_of_orbit_separation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L112)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.rawApprox_separation_of_orbit_separation`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L112)
 
 ```lean
 theorem rawApprox_separation_of_orbit_separation {a q : ℕ}
@@ -1476,7 +1476,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_condition_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L29)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_condition_iff`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L29)
 
 ```lean
 theorem upper_endpoint_condition_iff (a J K m : ℕ) :
@@ -1487,7 +1487,7 @@ theorem upper_endpoint_condition_iff (a J K m : ℕ) :
           (2 : ℤ) ^ m - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ))
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_gap_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L38)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_gap_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L38)
 
 ```lean
 theorem upper_endpoint_gap_nonintegral {a J K m : ℕ} (ha : 8 ≤ a)
@@ -1497,7 +1497,7 @@ theorem upper_endpoint_gap_nonintegral {a J K m : ℕ} (ha : 8 ≤ a)
       Set.range ((↑) : ℤ → ℝ)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.integral_tail_forces_upper_endpoint_residue`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L50)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.integral_tail_forces_upper_endpoint_residue`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L50)
 
 ```lean
 theorem integral_tail_forces_upper_endpoint_residue {a J K : ℕ} (ha : 8 ≤ a)
@@ -1512,7 +1512,7 @@ theorem integral_tail_forces_upper_endpoint_residue {a J K : ℕ} (ha : 8 ≤ a)
         (2 : ℤ) ^ K
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_upper_endpoint_gap_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L66)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_upper_endpoint_gap_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L66)
 
 ```lean
 theorem irrational_of_upper_endpoint_gap_supply
@@ -1554,7 +1554,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR21.te_chain_relations`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L80)
+[`ErdosProblems.Erdos249.PaperCompleteR21.te_chain_relations`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L80)
 
 ```lean
 theorem te_chain_relations :
@@ -1607,7 +1607,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.endpoint_identity`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L142)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.endpoint_identity`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L142)
 
 ```lean
 theorem endpoint_identity {a q : ℕ} (ha : 8 ≤ a)
@@ -1620,7 +1620,7 @@ theorem endpoint_identity {a q : ℕ} (ha : 8 ≤ a)
         carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) z (2 * q + 1)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.integral_carry_strictly_between`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L158)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.integral_carry_strictly_between`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L158)
 
 ```lean
 theorem integral_carry_strictly_between {a q : ℕ} (ha : 8 ≤ a)
@@ -1632,7 +1632,7 @@ theorem integral_carry_strictly_between {a q : ℕ} (ha : 8 ≤ a)
         ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℤ)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.endpoint_criterion_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L187)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.endpoint_criterion_nonintegral`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L187)
 
 ```lean
 theorem endpoint_criterion_nonintegral {a q : ℕ} (ha : 8 ≤ a)
@@ -1647,7 +1647,7 @@ theorem endpoint_criterion_nonintegral {a q : ℕ} (ha : 8 ≤ a)
       Set.range ((↑) : ℤ → ℝ)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.oddHalfCenteredLift_spec`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L116)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.oddHalfCenteredLift_spec`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L116)
 
 ```lean
 theorem oddHalfCenteredLift_spec {a : ℕ} (q : ℕ) (ha : 2 ≤ a) :
@@ -1660,7 +1660,7 @@ theorem oddHalfCenteredLift_spec {a : ℕ} (q : ℕ) (ha : 2 ≤ a) :
       2 * actualOddHalfCenteredLift a q ≤ (4 : ℤ) ^ q
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.centeredLift_range`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L106)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.centeredLift_range`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean#L106)
 
 ```lean
 theorem centeredLift_range {A M : ℤ} (hM : 0 < M) :
@@ -1695,7 +1695,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_through_six`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L161)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_through_six`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L161)
 
 ```lean
 theorem short_window_diagonal_through_six (a₀ : ℕ) (ha₀ : a₀ ≤ 6) :
@@ -1703,7 +1703,7 @@ theorem short_window_diagonal_through_six (a₀ : ℕ) (ha₀ : a₀ ≤ 6) :
       certifiedKill (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_witnesses`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L169)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_witnesses`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean#L169)
 
 ```lean
 theorem short_window_diagonal_witnesses :
@@ -1740,7 +1740,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_pos`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L27)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_pos`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L27)
 
 ```lean
 theorem extremal_order_curvature_pos {H j : ℕ} (hH : 1 ≤ H)
@@ -1748,7 +1748,7 @@ theorem extremal_order_curvature_pos {H j : ℕ} (hH : 1 ≤ H)
     0 < (Nat.totient (3 * H + j) : ℤ) - 2 * Nat.totient (2 * H + j) + Nat.totient (H + j)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_neg`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L36)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_neg`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L36)
 
 ```lean
 theorem extremal_order_curvature_neg {H j : ℕ} (hH : 1 ≤ H)
@@ -1757,7 +1757,7 @@ theorem extremal_order_curvature_neg {H j : ℕ} (hH : 1 ≤ H)
     (Nat.totient (3 * H + j) : ℤ) - 2 * Nat.totient (2 * H + j) + Nat.totient (H + j) < 0
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L45)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L45)
 
 ```lean
 theorem extremal_order_curvature_ne_zero {H j : ℕ} (hH : 1 ≤ H)
@@ -1790,7 +1790,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L59)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_iff`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L59)
 
 ```lean
 theorem directed_certificate_iff (h N : ℕ) :
@@ -1801,7 +1801,7 @@ theorem directed_certificate_iff (h N : ℕ) :
       totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_example`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L71)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.directed_certificate_example`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L71)
 
 ```lean
 theorem directed_certificate_example :
@@ -1842,7 +1842,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_modFour_pulse_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L105)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_modFour_pulse_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L105)
 
 ```lean
 theorem irrational_of_modFour_pulse_supply
@@ -1854,7 +1854,7 @@ theorem irrational_of_modFour_pulse_supply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L88)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean#L88)
 
 ```lean
 theorem rational_forces_pulse_class_integrality
@@ -1888,7 +1888,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/LcmConeFlatness.lean#L412)
+[`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/LcmConeFlatness.lean#L412)
 
 ```lean
 theorem irrational_totient_series_iff_certificate_supply :

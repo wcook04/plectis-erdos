@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:983b8c174f2f51796e03a1e2f87e3b0c8ededdc50ecd24459f253444f593b9c4",
+    "docs/claims.json": "sha256:28cd71e2e967fbff1c7ac9bf9f77afd7e3873c6985fed761c325041c2df0e64b",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
-    "docs/publication_contract.json": "sha256:871c8aa817794427f88e67ee39f5125beaf36db62272b445eaac15b7a8241eb4",
+    "docs/problems.json": "sha256:fa15f18e74426176c5656cece06215acfba6b5cc988058642bcd144998591140",
+    "docs/publication_contract.json": "sha256:46a4ab1f50ba817abd92c7b233e0aa1944206d427a56938a2db34327063628f3",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:e8bad79f27010ad82707c52f847689459b78410657a91040fd639834d34676e5",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:2e9300fb916ac43824e3facf93f193906451cef64241363b99a64fb3814517d8",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:3d5c7b7bd5482e15a7747df09d53e9cfc0803215f3570eb2617abd0b54f48de8",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:921e01612335133bfc1c680b9f269c8dbbb548ff47ee0e62dda6f5053a903b9a",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 33,
-      "curated_claim_count": 150,
+      "curated_claim_count": 151,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
+      "content_digest": "sha256:fa15f18e74426176c5656cece06215acfba6b5cc988058642bcd144998591140",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
+      "ref": "be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

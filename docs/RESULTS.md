@@ -42,7 +42,7 @@ step. Mathematical importance requires separate judgement.
 | Problem | A result to start with | Where the result stops |
 |---|---|---|
 | [#68](#result-68) | Two exact finite denominator exclusions, one with a Lean-checked carry consumer, and a Lean-checked `3/2` lower growth exponent for the uncleared common denominator. | No cofinal non-unit factorial carries have been produced; irrationality remains open. |
-| [#243](#result-243) | Lean checks irrationality under the precise cubic-rate hypothesis; the paper transfers it to one-based indexing. Signed-error criteria also force eventual Sylvester behaviour under their stated premises. | The unrestricted Sylvester-tail hypotheses remain unproved. |
+| [#243](#result-243) | Lean checks irrationality under the precise cubic rate and every nonintegral regular rate above one; the paper transfers these zero-indexed statements to one-based indexing. Signed-error criteria also force eventual Sylvester behaviour under their stated premises. | The unrestricted Sylvester-tail hypotheses remain unproved. |
 | [#249](#result-249) | The short paper and Lean classify the fixed-base-two totient-residue series for every positive modulus and every rational-valued observable at dyadic moduli. They also give the exact all-base totient-kernel rank `k^e+1`. | The original series with unreduced totients remains open; the conditional routes still need their cofinal arithmetic inputs. |
 | [#251](#result-251) | Lean checks a rich synthetic prime-gap countermodel, and the paper gives a separate sparse-perturbation obstruction. | These are not actual prime gaps; the prime-specific producer for irrationality remains open. |
 | [#257](#result-257) | Lean checks the finite-prime weighted-support theorem at every integer base, including supports with divergent reciprocal sum. | It does not cover every infinite support. Palomar's mechanical verification passed for the exact five-declaration `E257_01` entry; registration has been requested, with no public version yet. |
@@ -119,6 +119,15 @@ Dedekind-zeta simple pole; the short paper transfers it to one-based indexing
 by an ordinary finite-prefix argument. Its printed proof uses classical
 Chebotarev instead. This rate does not cover the unrestricted Sylvester-tail
 question.
+
+More generally, the [nonintegral regular-rate theorem](../lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean)
+checks irrationality when `λ > 1` is nonintegral and
+`a_n²/a_(n+1)=1+λ/n+o(n⁻λ)`. Its Lean statement derives convergence
+for a positive, strictly increasing sequence indexed from zero. The long
+paper gives the ordinary finite-prefix transfer to one-based indexing.
+The integer-extraction lemma rules out nonintegral coefficients; the
+separate cubic argument rules out coefficient three. No rational examples
+are asserted for the remaining integer coefficients.
 
 The rounded sequence `a_1 = 8`,
 `a_(n+1) = ⌈n a_n²/(n+3)⌉` has precisely this rate and product-ratio

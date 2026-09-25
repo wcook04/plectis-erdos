@@ -170,6 +170,7 @@ jobs:
           ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit
+          ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate
           ErdosProblems.Erdos243.PaperCorrespondenceAudit
           ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit
           ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit

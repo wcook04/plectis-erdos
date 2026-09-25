@@ -22,14 +22,14 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 The Lean declarations below together state this result or one that implies it. The Lean statements give the recurrence, the identity for $R_{N+h}-R_N$, the congruence modulo $1$, the equality of first characters and the description of the phases as the doubling orbit of $\alpha_h$, with $\alpha_h=(2^h-1)S$ written out. They also hold at $h=0$, where $\alpha_0=0$ and every identity is trivial.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_recurrence`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L26)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_recurrence`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L26)
 
 ```lean
 theorem orbit_tail_recurrence (N : ℕ) :
     totientTail (N + 1) = 2 * totientTail N - (Nat.totient (N + 1) : ℝ)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L32)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L32)
 
 ```lean
 theorem orbit_tail_diff_eq (h N : ℕ) :
@@ -38,7 +38,7 @@ theorem orbit_tail_diff_eq (h N : ℕ) :
         - ((totientPrefix (N + h) : ℝ) - (totientPrefix N : ℝ))
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_sub_scaled_is_int`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L41)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_sub_scaled_is_int`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L41)
 
 ```lean
 theorem orbit_tail_diff_sub_scaled_is_int (h N : ℕ) :
@@ -48,7 +48,7 @@ theorem orbit_tail_diff_sub_scaled_is_int (h N : ℕ) :
         = (z : ℝ)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_firstChar_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L53)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_firstChar_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L53)
 
 ```lean
 theorem orbit_tail_diff_firstChar_eq (h N : ℕ) :
@@ -60,7 +60,7 @@ theorem orbit_tail_diff_firstChar_eq (h N : ℕ) :
               (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : ℝ) : ℂ) * Complex.I)
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_fract_eq_doubling_orbit`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L75)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_fract_eq_doubling_orbit`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L75)
 
 ```lean
 theorem orbit_tail_diff_fract_eq_doubling_orbit (h N : ℕ) :
@@ -70,7 +70,7 @@ theorem orbit_tail_diff_fract_eq_doubling_orbit (h N : ℕ) :
             (((2 : ℝ) ^ h - 1) * (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)))
 ```
 
-6. [`ErdosProblems.Erdos249.PaperCompleteR21.doublingMap_iterate_apply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L64)
+6. [`ErdosProblems.Erdos249.PaperCompleteR21.doublingMap_iterate_apply`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L64)
 
 ```lean
 theorem doublingMap_iterate_apply (α : ℝ) (N : ℕ) :
@@ -105,7 +105,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_block_cosine_gap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L92)
+[`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_block_cosine_gap`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L92)
 
 ```lean
 theorem irrational_totientSeries_of_block_cosine_gap
@@ -136,7 +136,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_quarterFarPhase_proportion`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L121)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_quarterFarPhase_proportion`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L121)
 
 ```lean
 theorem irrational_totientSeries_of_quarterFarPhase_proportion
@@ -145,14 +145,14 @@ theorem irrational_totientSeries_of_quarterFarPhase_proportion
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.quarterFarFromInt_iff_binaryDigitAt_change`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L146)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.quarterFarFromInt_iff_binaryDigitAt_change`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L146)
 
 ```lean
 theorem quarterFarFromInt_iff_binaryDigitAt_change {α : ℝ} (hnd : NotDyadicRational α) (N : ℕ) :
     QuarterFarFromInt ((2 : ℝ) ^ N * α) ↔ binaryDigitAt α (N + 1) ≠ binaryDigitAt α (N + 2)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_digitChange_count`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L233)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_digitChange_count`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L233)
 
 ```lean
 theorem irrational_totientSeries_of_digitChange_count
@@ -165,7 +165,7 @@ theorem irrational_totientSeries_of_digitChange_count
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_quarterFarPhase_count`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L95)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_quarterFarPhase_count`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L95)
 
 ```lean
 theorem irrational_totientSeries_of_quarterFarPhase_count
@@ -174,21 +174,21 @@ theorem irrational_totientSeries_of_quarterFarPhase_count
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.quarterFarFromInt_iff_floor_bounds`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L45)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.quarterFarFromInt_iff_floor_bounds`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L45)
 
 ```lean
 theorem quarterFarFromInt_iff_floor_bounds (x : ℝ) :
     QuarterFarFromInt x ↔ (1 / 4 : ℝ) ≤ x - (⌊x⌋ : ℝ) ∧ x - (⌊x⌋ : ℝ) ≤ 3 / 4
 ```
 
-6. [`ErdosProblems.Erdos249.PaperCompleteR21.cos_nonpos_of_quarterFarFromInt`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L70)
+6. [`ErdosProblems.Erdos249.PaperCompleteR21.cos_nonpos_of_quarterFarFromInt`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L70)
 
 ```lean
 theorem cos_nonpos_of_quarterFarFromInt {x : ℝ} (hx : QuarterFarFromInt x) :
     Real.cos (2 * Real.pi * x) ≤ 0
 ```
 
-7. [`ErdosProblems.Erdos249.PaperCompleteR21.tailOrbitFirstExp_re_eq`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L81)
+7. [`ErdosProblems.Erdos249.PaperCompleteR21.tailOrbitFirstExp_re_eq`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/BinaryDigitChangeDensity.lean#L81)
 
 ```lean
 theorem tailOrbitFirstExp_re_eq (h N : ℕ) :
@@ -224,25 +224,25 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed claims. The failure of the block norm condition is stated as $\bigl\|\sum_{X\le N<2X}E(h,N,L)\bigr\|>\tfrac{21}{25}X$ for every $h\ge1$, every $X\ge81(h+5)$ and every depth $L$ with $16(2X+h+L+2)\le2^L$, where $E$ is formed from the coefficients $c(n)$.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.lacCoef_bounds`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L68)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.lacCoef_bounds`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L68)
 
 ```lean
 theorem lacCoef_bounds {n : ℕ} (hn : 1 ≤ n) : 0 ≤ lacCoef n ∧ lacCoef n ≤ (n : ℤ)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.lacBeta_eq_factorial_series`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L88)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.lacBeta_eq_factorial_series`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L88)
 
 ```lean
 theorem lacBeta_eq_factorial_series : lacBeta = ∑' k : ℕ, (1 : ℝ) / 2 ^ ((k + 1)!)
 ```
 
-3. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_lacBeta`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L121)
+3. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_lacBeta`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L121)
 
 ```lean
 theorem irrational_lacBeta : Irrational lacBeta
 ```
 
-4. [`ErdosProblems.Erdos249.PaperCompleteR21.lacunary_block_cos_gap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L333)
+4. [`ErdosProblems.Erdos249.PaperCompleteR21.lacunary_block_cos_gap`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L333)
 
 ```lean
 theorem lacunary_block_cos_gap {h X : ℕ} (hh : 1 ≤ h) (hX : 81 * (h + 5) ≤ X) :
@@ -251,7 +251,7 @@ theorem lacunary_block_cos_gap {h X : ℕ} (hh : 1 ≤ h) (hX : 81 * (h + 5) ≤
           Real.cos (2 * Real.pi * ((2 : ℝ) ^ N * ((2 : ℝ) ^ h - 1) * lacBeta))
 ```
 
-5. [`ErdosProblems.Erdos249.PaperCompleteR21.lacunary_block_norm_fails`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L587)
+5. [`ErdosProblems.Erdos249.PaperCompleteR21.lacunary_block_norm_fails`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L587)
 
 ```lean
 theorem lacunary_block_norm_fails {h X L : ℕ} (hh : 1 ≤ h) (hX : 81 * (h + 5) ≤ X)
@@ -259,7 +259,7 @@ theorem lacunary_block_norm_fails {h X L : ℕ} (hh : 1 ≤ h) (hX : 81 * (h + 5
     (21 / 25 : ℝ) * X < ‖∑ N ∈ Finset.Ico X (2 * X), lacFirstExp h N L‖
 ```
 
-6. [`ErdosProblems.Erdos249.PaperCompleteR21.cos_pi_div_eight_gt`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L317)
+6. [`ErdosProblems.Erdos249.PaperCompleteR21.cos_pi_div_eight_gt`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/LacunaryFactorialBlockNorm.lean#L317)
 
 ```lean
 theorem cos_pi_div_eight_gt : (9238 / 10000 : ℝ) < Real.cos (Real.pi / 8)
@@ -296,7 +296,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement gives the explicit bound $t\le h+\lfloor\log_2X\rfloor+11$ in place of $t=O_{h,s}(\log X)$, and proves the bound $P(n)\le y_X$ and the bound of the unassigned count by $\Psi(2X+t-1,y_X)-\Psi(X+t-1,y_X)$ for every $X\ge1$; the asymptotic $(1-\log2+o(1))X$ and the bound $\tfrac8{25}X$ for all large $X$ are as printed.
 
-[`ErdosProblems.Erdos249.PaperCompleteR21.prop_dickman`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556)
+[`ErdosProblems.Erdos249.PaperCompleteR21.prop_dickman`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556)
 
 ```lean
 theorem prop_dickman (h s : ℕ) :
@@ -347,7 +347,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean proof assumes the prime number theorem. Lean takes this input as a hypothesis (`PrimeNumberTheorem`); it is not proved in Lean.
 
-[`ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean#L654)
+[`ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean#L654)
 
 ```lean
 theorem prop_badcof (hPNT : ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem)
@@ -369,7 +369,7 @@ theorem prop_badcof (hPNT : ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNum
       ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X)
 ```
 
-The assumed input [`PrimeNumberTheorem`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean#L28) is
+The assumed input [`PrimeNumberTheorem`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean#L28) is
 
 ```lean
 def PrimeNumberTheorem : Prop :=
@@ -388,7 +388,7 @@ def PrimeNumberTheorem : Prop :=
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.certifiedKill_of_fullDepth_phase_separation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L130)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.certifiedKill_of_fullDepth_phase_separation`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L130)
 
 ```lean
 theorem certifiedKill_of_fullDepth_phase_separation (h N : ℕ)
@@ -399,7 +399,7 @@ theorem certifiedKill_of_fullDepth_phase_separation (h N : ℕ)
     certifiedKill h N h
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -407,7 +407,7 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.bracket_of_two_sided_separation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L119)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.bracket_of_two_sided_separation`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L119)
 
 ```lean
 theorem bracket_of_two_sided_separation

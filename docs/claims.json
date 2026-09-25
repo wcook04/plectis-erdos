@@ -1080,9 +1080,10 @@
           "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
+          "formal_source_ref": "be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd",
           "anchor_label_allowlist": [
-            "long243:res:gapconstant"
+            "long243:res:gapconstant",
+            "long243:res:nonintegralrate"
           ]
         },
         {
@@ -1774,13 +1775,14 @@
             "eventually_periodic_negative_no_go",
             "bounded_negative_exclusion",
             "cubic_survivor_phase_density",
-            "cubic_rate_irrationality_unconditional"
+            "cubic_rate_irrationality_unconditional",
+            "nonintegral_regular_rate_irrationality"
           ],
-          "status_summary": "An open eventual-Sylvester-recurrence endpoint plus a Lean-checked irrationality theorem for strictly increasing positive sequences with the stated cubic-rate asymptotic, unconditional bounded-rise and eventually-periodic negative-orbit obstructions, and a conditional cofinally bounded negative-magnitude exclusion.",
+          "status_summary": "An open eventual-Sylvester-recurrence endpoint plus Lean-checked irrationality theorems for the stated cubic rate and every nonintegral regular rate above one, unconditional bounded-rise and eventually-periodic negative-orbit obstructions, and a conditional cofinally bounded negative-magnitude exclusion.",
           "prior_art_posture": "These are source-specific formal results; no novelty, priority, significance, or #243 solution claim is made, and normalised vanishing, mixed-sign, and unbounded-negative boundaries remain explicit.",
           "primary_narrative_owner": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "source_route": "python3 scripts/query_corpus.py --claim bounded_rise_fresh_modulus_barrier",
-          "consumer_or_open_obligation": "The cubic-rate theorem applies only when its quantitative asymptotic holds. The three no-go consumers remove fresh-modulus avoidance, eventually-periodic negative tails, and the cofinally bounded negative branch under normalised vanishing; the original eventual-recurrence assertion still requires control of the mixed-sign unbounded orbit regime.",
+          "consumer_or_open_obligation": "The cubic and nonintegral-rate theorems apply only under their respective quantitative asymptotics. The three no-go consumers remove fresh-modulus avoidance, eventually-periodic negative tails, and the cofinally bounded negative branch under normalised vanishing; the original eventual-recurrence assertion still requires control of the mixed-sign unbounded orbit regime.",
           "view_decision": "problem_note_reference_detail"
         },
         {
@@ -1922,6 +1924,7 @@
         "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
         "ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit",
         "ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit",
+        "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
         "ErdosProblems.Erdos243.PaperCorrespondenceAudit",
         "ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit",
         "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit",
@@ -2203,6 +2206,7 @@
           "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
           "ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit",
           "ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit",
+          "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
           "ErdosProblems.Erdos243.PaperCorrespondenceAudit",
           "ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit",
           "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit",
@@ -12092,6 +12096,15 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR21.RegularRateExtraction",
+            "ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR21.ProductDefectThresholds",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
           "role": "Lean proof module",
@@ -19191,7 +19204,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
+      "ref": "be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -24700,6 +24713,24 @@
           "name": "cubic_rate_irrationality_unconditional",
           "module": "ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
           "line": 70
+        }
+      ]
+    },
+    {
+      "id": "nonintegral_regular_rate_irrationality",
+      "label": "Nonintegral regular-rate reciprocal-sum irrationality",
+      "status": "formalised here",
+      "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a and a real noninteger lambda greater than one, if n^lambda (a(n)^2/a(n+1) - (1 + lambda/n)) tends to zero, then the reciprocal series converges and its sum is irrational. The Lean theorem derives summability from the rate; the one-based paper form uses an ordinary finite-prefix bridge. The little-o remainder is essential to the integer-extraction argument. This does not settle the unrestricted Erdős #243 problem.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "long243:res:nonintegralrate",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "nonintegral_regular_rate_irrational",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+          "line": 196
         }
       ]
     },
