@@ -22,6 +22,15 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "I want to reproduce the #257 weighted theorem with Comparator from a clean checkout": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "How can I verify the #257 weighted theorem independently from the public repository?": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "Check the external verification Comparator replay receipt for one theorem": (
+        "comparator_replay", "explain-public-system",
+    ),
     # Presentation and contributor setup requests must reach infrastructure
     # even when they mention proofs.
     "Prepare Lean repository for Show HN: newcomer clone setup runnable proof demo README drift readiness": (
