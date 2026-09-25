@@ -4,9 +4,8 @@
 # Plectis: research on eight Erdős problem programmes
 
 Plectis is an open-source, AI-assisted prototype for turning mathematical
-exposition into further research. Eight Erdős programmes have short papers,
-longer research records and Lean source, with methods and failed routes for
-others to question and extend.
+exposition into further research. Eight Erdős programmes offer papers, Lean
+source, methods and failed routes for others to question and extend.
 
 Start with [#257's short paper](paper/257/erdos-257-mersenne-support-subseries.pdf).
 If `h_P(a)` is the part of an exponent `a` supported on a finite nonempty set of primes,
@@ -18,10 +17,11 @@ infinite support `A` with finite base-two weighted mass
 or [inspect the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
 Other seven programmes: [results guide](docs/RESULTS.md#problem-by-problem-guide).
 
-Start here: [read the paper](paper/257/erdos-257-mersenne-support-subseries.pdf),
-[run one exact-rational experiment](research/experiments/sparse_interpolation/late_rejection.py),
-and [return a question or correction](CONTRIBUTING.md#return-what-you-learned).
-This tests one proposed rational subsum, not the weighted theorem.
+[Bounded #243 and #257 results on Prove2Me](docs/research-commons/README.md#native-prove2me-theorems).
+
+Start with the [paper](paper/257/erdos-257-mersenne-support-subseries.pdf),
+[one exact-rational test](research/experiments/sparse_interpolation/late_rejection.py)
+(not the weighted theorem), or [return a question or correction](CONTRIBUTING.md#return-what-you-learned).
 
 **[All papers](paper/README.md)** ·
 [Reading edition](docs/reading-edition/README.md) ·

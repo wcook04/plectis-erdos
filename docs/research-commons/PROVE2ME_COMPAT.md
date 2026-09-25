@@ -14,6 +14,12 @@ be read as the current native delivery status. See the
 [weighted theorem reader packet](PROVE2ME_WEIGHTED_257_PACKET.md) for the
 claim, source and signed-out reading route.
 
+The separate [#243 cubic-rate theorem](https://prove2.me/theorems/51fbd303-588d-4586-9bbc-f5813513b52c)
+is also public and Proved. Its [reader packet](PROVE2ME_CUBIC_243_PACKET.md)
+prints the exact accepted Solution and explains the zero-indexed statement,
+the paper's one-based finite-prefix bridge, and the unrestricted open problem.
+It was delivered through a native port, not this offline adapter.
+
 The default offline candidate is the **finite-prime weighted-support theorem**,
 a direct irrationality result that applies to some supports with divergent
 reciprocal sums (`res:weighted-support` in
