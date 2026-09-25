@@ -229,10 +229,12 @@ Comparator replay record remains distinct from Palomar's
 [successful mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226)
 of the exact five-declaration `PalomarCorpus/E257_01` entry at source commit
 `b85ed30805188eb4390a686b111294b24363418e`; that entry includes
-`divisibilityWeightedClaim`. Palomar accepted a registration request for
-submission `gid0ym5uu910` at 19:31 UTC on 24 September 2026. At the
-authenticated status check at 19:42 UTC, no public ID or version had been
-returned. This receipt applies to the
+`divisibilityWeightedClaim`. Palomar
+[registered version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-09-25-000009&version=1)
+as `PALOMAR-2026-09-25-000009` on 25 September 2026. Its
+[immutable record](https://data.palomar-registry.org/entries/PALOMAR-2026-09-25-000009-v1.json)
+binds submission `gid0ym5uu910` to that exact source and selection. The
+mechanical receipt applies to the
 selected entry, not every theorem in the #257 paper. The
 [replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md) explains the
 separate source-bound Comparator receipt.
