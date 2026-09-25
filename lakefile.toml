@@ -99,7 +99,7 @@ srcDir = "research/adapters"
 # not carry at all, offered as new `variants.*` declarations rather than as
 # proofs of existing holes. Same reason it is not a default target and not
 # counted as this library's own mathematics.
-globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants", "FC1049HeightRegion"]
+globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants", "FC1049HeightRegion", "FC1041SharpGap"]
 
 # Exact zero-indexed cubic-rate #243 statement bridge for Formal Conjectures.
 # CI builds this focused non-default target explicitly.

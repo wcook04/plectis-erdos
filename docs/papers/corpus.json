@@ -4127,12 +4127,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984",
+      "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 25,
+      "section_count": 26,
       "sections": [
         {
           "level": 1,
@@ -4274,21 +4274,27 @@
         },
         {
           "level": 4,
+          "id": "reproducing-the-weighted-theorem.",
+          "title": "Reproducing the weighted theorem.",
+          "line": 763
+        },
+        {
+          "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 763
+          "line": 776
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 769
+          "line": 782
         }
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:b7635e96da57a679d715c552af4e1f0b31b555b9ca9ba9ca1dc075e7526563a2",
-      "pdf_byte_count": 162214,
+      "pdf_sha256": "sha256:8299007a02ee0a4dbdab043f6bd290464849dbbcae7f1afb162be5a30311c397",
+      "pdf_byte_count": 165421,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7622,7 +7628,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:2e9300fb916ac43824e3facf93f193906451cef64241363b99a64fb3814517d8",
+      "source_sha256": "sha256:7bdb76ee91221237a928a1e3ccd36b9893cd1b9afc4ed5ff00da46001f66afec",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7663,67 +7669,67 @@
           "level": 1,
           "id": "sec:checks",
           "title": "From a proof to a public claim",
-          "line": 131
+          "line": 133
         },
         {
           "level": 1,
           "id": "sec:cycle",
           "title": "The contribution cycle",
-          "line": 153
+          "line": 155
         },
         {
           "level": 4,
           "id": "credit.",
           "title": "Credit.",
-          "line": 163
+          "line": 165
         },
         {
           "level": 2,
           "id": "sec:example",
           "title": "Worked example: Problem 1041",
-          "line": 169
+          "line": 171
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Eight problems in one repository",
-          "line": 175
+          "line": 177
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 212
+          "line": 214
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 236
+          "line": 238
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 242
+          "line": 244
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 262
+          "line": 264
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 268
+          "line": 270
         }
       ],
-      "citations_rendered": 46,
+      "citations_rendered": 49,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:e8bad79f27010ad82707c52f847689459b78410657a91040fd639834d34676e5",
-      "pdf_byte_count": 116754,
+      "pdf_sha256": "sha256:b890a95660a3e06d2aa0359a32525c716ce0011a0357380b8b801171c6857200",
+      "pdf_byte_count": 124941,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7746,12 +7752,12 @@
           {
             "id": "sec:checks",
             "title": "From a proof to a public claim",
-            "line": 131
+            "line": 133
           },
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 242
+            "line": 244
           }
         ],
         "unresolved_count": 0
@@ -7794,7 +7800,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:1319d0175edc65147d32e19d9318e2fa701eb2150ec262f95bc5677d383f467d",
+      "source_sha256": "sha256:dc5dd4b37231bf70084adee1043b7423326ee2139b097aa2b400eadc361ae747",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7924,8 +7930,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:c6cdb4710e52b66d9c6260530ee721ab47ac6ce18e7005d07742de704bba6fd8",
-      "pdf_byte_count": 88215,
+      "pdf_sha256": "sha256:4648b461a4ab85f24f4c9f5bf9ced1e7a295cda1e8b05ea84af463a7c51a8d62",
+      "pdf_byte_count": 87537,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

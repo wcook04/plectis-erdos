@@ -20,10 +20,13 @@ import json
 import os
 import platform
 import re
+import resource
 import shutil
 import stat
 import subprocess
+import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -40,6 +43,13 @@ SYNTHETIC_MERGE_MESSAGE_RE = re.compile(
 LOG_TAIL_BYTES = 12_000
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
+FAILURE_CONTROL_IDS = (
+    "changed_challenge",
+    "undeclared_axiom",
+    "duplicate_theorem_ids",
+    "missing_runtime_receipt",
+)
+FAILURE_CONTROL_SUITE = "scripts/test_external_verification_release.py"
 
 
 class ReplayError(RuntimeError):
@@ -228,6 +238,9 @@ def select_replay_unit(contract: dict[str, Any], unit: str = 'default') -> dict[
     theorem = value.get('theorem')
     if not isinstance(theorem, str) or not theorem.strip():
         raise ReplayError('replay unit lacks an exact theorem')
+    challenge = value.get('challenge_module')
+    if not isinstance(challenge, str) or not challenge.strip():
+        raise ReplayError('replay unit lacks an exact challenge module')
     diagnostic = f"Challenge and solution theorem statement do not match: '{theorem}'"
     if value.get('expected_negative_diagnostic') != diagnostic:
         raise ReplayError('replay unit negative diagnostic is not its exact theorem mismatch')
@@ -242,10 +255,42 @@ def validate_unit_configs(root: Path, unit: dict[str, Any]) -> tuple[dict, dict]
             raise ReplayError(f'{label} replay config is not the contracted one-theorem unit')
         if config.get('permitted_axioms') != unit['permitted_axioms']:
             raise ReplayError(f'{label} replay axiom budget differs from contract')
+        if config.get('challenge_module') != unit['challenge_module']:
+            raise ReplayError(f'{label} replay challenge differs from contract')
     if (positive.get('challenge_module') != negative.get('challenge_module') or
             positive.get('solution_module') == negative.get('solution_module')):
         raise ReplayError('negative replay must compare a distinct solution against the same challenge')
     return positive, negative
+
+
+def run_failure_controls(source: Path) -> dict[str, Any]:
+    """Run the four contract adversaries from the isolated source checkout."""
+    completed = run([sys.executable, FAILURE_CONTROL_SUITE], cwd=source, timeout=300)
+    output = completed.stdout + completed.stderr
+    observed: list[str] = []
+    for line in completed.stdout.splitlines():
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(row, dict) and row.get("result") == "rejected":
+            control = row.get("failure_control")
+            if isinstance(control, str):
+                observed.append(control)
+    passed = (
+        completed.returncode == 0
+        and sorted(observed) == sorted(FAILURE_CONTROL_IDS)
+    )
+    return {
+        "result": "pass" if passed else "fail",
+        "suite": FAILURE_CONTROL_SUITE,
+        "suite_sha256": sha256_file(source / FAILURE_CONTROL_SUITE, root=source),
+        "exit_code": completed.returncode,
+        "expected": list(FAILURE_CONTROL_IDS),
+        "observed": observed,
+        "log_sha256": sha256_bytes(output.encode("utf-8", errors="replace")),
+        "log_tail": bounded_tail(output) if not passed else "",
+    }
 
 
 def load_contract(root: Path) -> dict[str, Any]:
@@ -518,6 +563,7 @@ def execute(
     full_sha(source_commit, "source_commit")
     full_sha(source_tree, "source_tree")
     started = dt.datetime.now(dt.timezone.utc)
+    started_monotonic = time.monotonic()
     temporary: tempfile.TemporaryDirectory[str] | None = None
     if workspace is None:
         temporary = tempfile.TemporaryDirectory(prefix="external-verification-replay-")
@@ -536,6 +582,8 @@ def execute(
     exit_code = 1
     try:
         check_programs()
+        # Refuse an unusable host before fetching the source or building tools.
+        mode = sandbox_mode(ROOT)
         bootstrap_contract = load_contract(ROOT)
         source = prepare_source(
             workspace,
@@ -551,9 +599,25 @@ def execute(
         negative_config = selected['negative_config']
         positive, negative = validate_unit_configs(source, selected)
         expected_theorem = selected['theorem']
-        checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
+        if unit == "weighted-support":
+            control_row = run_failure_controls(source)
+            receipt["failure_controls"] = control_row
+            if control_row["result"] != "pass":
+                raise ReplayError("source-current failure-control suite did not reject all four adversaries")
+            if run(["git", "diff", "--quiet", "HEAD", "--"], cwd=source).returncode != 0:
+                raise ReplayError("failure-control suite modified tracked source")
+        cache_started = time.monotonic()
+        cache_result = checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
+        receipt['source_cache'] = {
+            'checkout': 'isolated',
+            'shared_cache_warmth': 'unmeasured',
+            'cache_get_exit_code': cache_result.returncode,
+            'cache_get_elapsed_seconds': round(time.monotonic() - cache_started, 3),
+            'cache_get_log_sha256': sha256_bytes(
+                (cache_result.stdout + cache_result.stderr).encode('utf-8', errors='replace')
+            ),
+        }
         tools, observed_revisions = prepare_tools(workspace, source_contract)
-        mode = sandbox_mode(source)
         positive_command, environment = comparator_command(
             source=source,
             tools=tools,
@@ -632,6 +696,16 @@ def execute(
         exit_code = 1
     finally:
         receipt["completed_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+        receipt['execution'] = {
+            'elapsed_seconds': round(time.monotonic() - started_monotonic, 3),
+            'system': platform.system(),
+            'machine': platform.machine(),
+            'logical_cpu_count': os.cpu_count(),
+            'max_child_ru_maxrss_kib': (
+                resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
+                if platform.system() == 'Linux' else None
+            ),
+        }
         _write_replay_receipt(output, receipt)
         if temporary is not None:
             temporary.cleanup()
@@ -655,6 +729,10 @@ def replay_plan(source_commit: str, source_tree: str, unit: str = 'default') -> 
         "toolchain": value["toolchain"],
         "statement_contract": selected,
         "unit": unit,
+        "failure_controls": (
+            {"suite": FAILURE_CONTROL_SUITE, "expected": list(FAILURE_CONTROL_IDS)}
+            if unit == "weighted-support" else {"status": "not_selected"}
+        ),
         "security": {
             "requires_linux_systemd_transient_unit": True,
             "network_disabled_inside_comparator": True,
@@ -692,6 +770,18 @@ def main() -> int:
             unit=args.unit,
         )
         print(args.output)
+        statement = receipt.get('statement_contract')
+        if isinstance(statement, dict):
+            print(f"theorem: {statement['theorem']}")
+            print(f"permitted axioms: {', '.join(statement['permitted_axioms'])}")
+            checks = receipt['checks']
+            print(f"positive Comparator exit: {checks['positive']['exit_code']}")
+            print(f"deliberate mismatch Comparator exit: {checks['negative']['exit_code']}")
+            print(f"expected mismatch observed: {checks['negative_expected_diagnostic_observed']}")
+            if args.unit == "weighted-support":
+                controls = receipt.get("failure_controls", {})
+                print(f"failure controls: {controls.get('result', 'missing')}")
+        print(f"elapsed seconds: {receipt['execution']['elapsed_seconds']}")
         if exit_code != 0:
             print(f"independent replay failed: {receipt.get('error', 'Comparator verdict')}")
         return exit_code

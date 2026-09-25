@@ -15,6 +15,29 @@ progress**, first use the audit mode in
 Do not simply repeat the overview's ranking or the current result guide. A
 plain explanation of one already selected theorem does not need a corpus audit.
 
+## Reproduce a selected Comparator theorem
+
+For an explicit Comparator or #257 weighted-theorem reproduction request,
+start with the [external verification replay guide](../../docs/verification/EXTERNAL_VERIFICATION_REPLAY.md).
+Record an immutable public commit and tree, inspect the selected unit with:
+
+```sh
+python3 scripts/replay_external_verification.py plan --unit weighted-support \
+  --source-commit <commit> --source-tree <tree>
+```
+
+Then use the guide's `run` command on Linux with systemd. Keep the resulting receipt with the exact
+source revision. Report both the positive check and the deliberate mismatch,
+the four contract failure controls, declared axiom budget, wall time and machine
+details. A failed receipt or
+missing platform prerequisite is a failure, not a theorem verdict. The
+[replay guide's return section](../../docs/verification/EXTERNAL_VERIFICATION_REPLAY.md#return-a-replay-result)
+routes the report through the existing research-progress form with its exact
+source identity and evidence boundary. The
+[reproducibility guide](../../docs/REPRODUCIBILITY.md) separately explains the
+claim trail and Lean build; neither should be called an independent Comparator
+run. The universal #257 assertion remains open.
+
 ## Reproduce one recorded claim
 
 For an independent reproduction request, take this bounded branch before the

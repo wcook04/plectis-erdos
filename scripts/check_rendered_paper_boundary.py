@@ -80,6 +80,8 @@ FIRST_MINUTE_CONTRACT = {
     # the contribution cycle and the limits each keep their boundary within
     # one page of where they render today. The 24 September revision opens
     # with three pages of worked mathematics, so the later windows moved back.
+    # The 25 September revision adds the cross-problem transfer to Section 3,
+    # which moves the checking section's limits one page later.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -88,7 +90,7 @@ FIRST_MINUTE_CONTRACT = {
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (4, 6): (
+        (5, 7): (
             "lean verifies that a proof establishes the formal statement written in the source",
             "comparator-checked",
             "does not technically force a second independent mathematician",
