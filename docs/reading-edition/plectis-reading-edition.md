@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `183c2b9871357ebf`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `b71c1a9a652d419c`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -130,7 +130,7 @@ Seven of the eight programmes ask whether a series is irrational: $`\sum(n!-1)^{
 
 What can the freedom to choose digits preserve, and when does arithmetic remove that freedom? Sparse corrections in the \#251 paper motivate the capacity criterion of Section <a href="#optimal-sparse-perturbations--capacity:sec:criterion" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:criterion">3</a>. Its proof makes one interval of possible continuations work for every cumulative residue. The factorial examples show that the arithmetic restrictions change a sharp support-gap threshold. Factorial denominators $`n!`$ in this construction are not the denominators $`n!-1`$ in \#68.
 
-Section <a href="#optimal-sparse-perturbations--capacity:sec:jets-intro" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:jets-intro">2</a> asks whether a single factorial digit sequence can prescribe several derivatives independently. Theorems <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">1</a> and <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2</a> give the sharp threshold and the dimension of the attainable vectors. The proof uses the scalar capacity theorem first, then a carry that preserves lower derivatives; Sections <a href="#optimal-sparse-perturbations--capacity:sec:jets-proof" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:jets-proof">4</a> and <a href="#optimal-sparse-perturbations--capacity:sec:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:rational-jets">5</a> give the argument and the rationality obstruction.
+Section <a href="#optimal-sparse-perturbations--capacity:sec:jets-intro" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:jets-intro">2</a> asks whether a single factorial digit sequence can prescribe several derivatives independently. Theorems <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">2.1</a> and <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2.2</a> give the sharp threshold and the dimension of the attainable vectors. The proof uses the scalar capacity theorem first, then a carry that preserves lower derivatives; Sections <a href="#optimal-sparse-perturbations--capacity:sec:jets-proof" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:jets-proof">4</a> and <a href="#optimal-sparse-perturbations--capacity:sec:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:rational-jets">5</a> give the argument and the rationality obstruction.
 
 The common Lambert series in \#257 and \#1049 gives a second comparison in Section <a href="#optimal-sparse-perturbations--sec:results" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:results">6</a>: a base below two permits rational subsums, while nested denominators force irrationality on certain thin supports. Neither interval filling nor a measure estimate decides whether one specified rational is a subsum at base two. Sections <a href="#optimal-sparse-perturbations--sec:base2" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:base2">6.3</a> and <a href="#optimal-sparse-perturbations--sec:misread" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:misread">9</a> explain that obstruction, including the exact computation that disproved a proposed stopping rule. Section <a href="#optimal-sparse-perturbations--sec:second" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:second">8</a> retains the other method limits without claiming that they have one common cause.
 
@@ -156,7 +156,7 @@ Polynomial coefficient growth implies locally uniform convergence of every deriv
 
 <div id="optimal-sparse-perturbations--capacity:thm:jets" class="theorem">
 
-**Theorem 1** (Dimension and the sharp interpolation threshold). *For every $`c>0`$ and integer $`d\ge1`$,
+**Theorem 2.1** (Dimension and the sharp interpolation threshold). *For every $`c>0`$ and integer $`d\ge1`$,
 ``` math
 \dim_{\mathrm H}\mathcal J_{d,c}=\min(c,d).
 ```
@@ -166,7 +166,7 @@ If $`c>d`$, this set contains a nonempty open subset of $`\mathbb{R}^d`$. If $`c
 
 <div id="optimal-sparse-perturbations--capacity:thm:rational-jets" class="theorem">
 
-**Theorem 2** (Rational derivatives force polynomiality). *Let $`d\ge1`$, and let
+**Theorem 2.2** (Rational derivatives force polynomiality). *Let $`d\ge1`$, and let
 ``` math
 f(z)=\sum_{n\ge0}a_n\frac{z^n}{n!},\qquad a_n\in\mathbb{Z},\quad |a_n|=O(n^d).
 ```
@@ -182,7 +182,7 @@ The identity behind the construction is
  =-b_0+\sum_{n\ge1}(n b_{n-1}-b_n)\frac{z^n}{n!}.
  \tag{J}\label{capacity:eq:jet-carry}
 ```
-Adding the left-hand side to a function leaves its value at $`1`$ unchanged and changes its derivative there by $`\sum b_n/n!`$. Multiplication by $`(z-1)^k`$ leaves the first $`k`$ entries of the derivative vector unchanged, at a cost of $`k`$ powers of $`n`$ in the coefficient allowance. The scalar construction of Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3</a> supplies the free quantity. For necessity, eventual evenness reduces the number of prefixes by an exponential factor, which forces measure zero even at $`c=d`$. Section <a href="#optimal-sparse-perturbations--capacity:sec:jets-proof" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:jets-proof">4</a> proves the theorem, including its dimension statement at the critical exponent. In the reverse direction, division by $`(z-1)^d`$ converts vanishing derivatives into bounded integer coefficients. Eventual divisibility then forces them to vanish; this proves Theorem <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2</a> in Section <a href="#optimal-sparse-perturbations--capacity:sec:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:rational-jets">5</a>.
+Adding the left-hand side to a function leaves its value at $`1`$ unchanged and changes its derivative there by $`\sum b_n/n!`$. Multiplication by $`(z-1)^k`$ leaves the first $`k`$ entries of the derivative vector unchanged, at a cost of $`k`$ powers of $`n`$ in the coefficient allowance. The scalar construction of Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3.1</a> supplies the free quantity. For necessity, eventual evenness reduces the number of prefixes by an exponential factor, which forces measure zero even at $`c=d`$. Section <a href="#optimal-sparse-perturbations--capacity:sec:jets-proof" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:jets-proof">4</a> proves the theorem, including its dimension statement at the critical exponent. In the reverse direction, division by $`(z-1)^d`$ converts vanishing derivatives into bounded integer coefficients. Eventual divisibility then forces them to vanish; this proves Theorem <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2.2</a> in Section <a href="#optimal-sparse-perturbations--capacity:sec:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:rational-jets">5</a>.
 
 <a id="optimal-sparse-perturbations--capacity:sec:criterion"></a>
 
@@ -199,7 +199,7 @@ Define $`E_Q(F)`$ to be the set of sums $`\sum_{n\ge1}e_n/Q_n`$, allowing nonneg
 
 <div id="optimal-sparse-perturbations--capacity:thm:capacity" class="theorem">
 
-**Theorem 3**. *If $`U_N\to\infty`$, then $`E_Q(F)=[0,\infty)`$; otherwise $`E_Q(F)`$ is null and meagre. In particular interval filling is equivalent to $`U_N\to\infty`$. In the positive case, every nonnegative target may be represented with $`e_n=0`$ before any prescribed cutoff, at most one exception to $`e_n\le F_n`$, and
+**Theorem 3.1**. *If $`U_N\to\infty`$, then $`E_Q(F)=[0,\infty)`$; otherwise $`E_Q(F)`$ is null and meagre. In particular interval filling is equivalent to $`U_N\to\infty`$. In the positive case, every nonnegative target may be represented with $`e_n=0`$ before any prescribed cutoff, at most one exception to $`e_n\le F_n`$, and
 ``` math
 q\mid e_n,\qquad q\mid\sum_{k<n}e_k
  \quad\text{for all sufficiently large }n,
@@ -229,7 +229,7 @@ The cutoffs and the finite initial digits in this definition may depend on $`x`$
 
 <div id="optimal-sparse-perturbations--capacity:thm:main" class="theorem">
 
-**Theorem 4**. *If $`S`$ is finite, $`E(S,c)`$ is countable. If $`S`$ is infinite, enumerate it as $`n_0<n_1<\cdots`$.*
+**Theorem 3.2**. *If $`S`$ is finite, $`E(S,c)`$ is countable. If $`S`$ is infinite, enumerate it as $`n_0<n_1<\cdots`$.*
 
 1.  *For $`0<c\le1`$, $`E(S,c)`$ is null and meagre.*
 
@@ -240,7 +240,7 @@ The cutoffs and the finite initial digits in this definition may depend on $`x`$
     ```
     If this condition fails, $`E(S,c)`$ is null and meagre.*
 
-*When <a href="#optimal-sparse-perturbations--capacity:eq:gaps" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:gaps">[capacity:eq:gaps]</a> holds, one may require $`e_n=0`$ before any prescribed cutoff and impose both
+*When <a href="#optimal-sparse-perturbations--capacity:eq:gaps" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:gaps">(3)</a> holds, one may require $`e_n=0`$ before any prescribed cutoff and impose both
 ``` math
 q\mid e_n,\qquad q\mid\sum_{k<n}e_k
  \tag{4}\label{capacity:eq:both}
@@ -251,11 +251,11 @@ for all sufficiently large $`n`$, with cutoffs depending on $`q`$ but independen
 
 The theorem is an ordinary mathematical proof. The associated formal sources check the general digit-feedback construction and, separately, the common-divisor carry obstruction of Section <a href="#optimal-sparse-perturbations--capacity:sec:carry" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:carry">3.6</a>; they do not formalise this gap classification or its measure argument. The source and attribution account is in Section <a href="#optimal-sparse-perturbations--capacity:sec:sources" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:sec:sources">12</a>.
 
-For example, with allowance $`n^2`$, every second position suffices without congruences. Under <a href="#optimal-sparse-perturbations--capacity:eq:congruence" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:congruence">[capacity:eq:congruence]</a>, infinitely many omitted positions already force a null set. With allowance $`n^{2.01}`$, every second position again suffices, even under <a href="#optimal-sparse-perturbations--capacity:eq:both" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:both">[capacity:eq:both]</a>. Thus the strict inequality in <a href="#optimal-sparse-perturbations--capacity:eq:gaps" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:gaps">[capacity:eq:gaps]</a> is essential.
+For example, with allowance $`n^2`$, every second position suffices without congruences. Under <a href="#optimal-sparse-perturbations--capacity:eq:congruence" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:congruence">(2)</a>, infinitely many omitted positions already force a null set. With allowance $`n^{2.01}`$, every second position again suffices, even under <a href="#optimal-sparse-perturbations--capacity:eq:both" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:both">(4)</a>. Thus the strict inequality in <a href="#optimal-sparse-perturbations--capacity:eq:gaps" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:gaps">(3)</a> is essential.
 
 <div id="optimal-sparse-perturbations--capacity:cor:density" class="corollary">
 
-**Corollary 5**. *For $`c>1`$, the least possible asymptotic density of a fixed permitted support that fills an interval under <a href="#optimal-sparse-perturbations--capacity:eq:congruence" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:congruence">[capacity:eq:congruence]</a> is $`1/(\lceil c\rceil-1)`$. Every such support has lower density at least this value, and an arithmetic progression attains it. A density bound alone is not sufficient: even rare gaps of length $`\lceil c\rceil`$ prevent interval filling if they occur infinitely often.*
+**Corollary 3.3**. *For $`c>1`$, the least possible asymptotic density of a fixed permitted support that fills an interval under <a href="#optimal-sparse-perturbations--capacity:eq:congruence" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:congruence">(2)</a> is $`1/(\lceil c\rceil-1)`$. Every such support has lower density at least this value, and an arithmetic progression attains it. A density bound alone is not sufficient: even rare gaps of length $`\lceil c\rceil`$ prevent interval filling if they occur infinitely often.*
 
 </div>
 
@@ -332,7 +332,7 @@ p=M_N\left\lfloor\frac{Q_N(y-\alpha_N)}{M_N}\right\rfloor.
 ```
 Then $`p\ge0`$, $`M_N\mid p`$, and (O) gives $`y-p/Q_N\in[\alpha_N,\beta_N]`$. Set $`e_N=p`$ and all earlier digits to zero. Run the same continuation construction after $`N`$, with initial cumulative sum $`C=p`$; its interval covering worked for every $`C`$. All later digits obey their allowances. The zero target uses zero digits.
 
-The congruence cutoffs can also be common to all $`y`$. For fixed $`q`$, choose an active position $`j`$ with $`q\mid M_j`$. If the target’s exceptional index $`N`$ precedes $`j`$, the repair at $`j`$ gives the required divisibilities after $`j`$. If $`N\ge j`$, all preceding digits are zero, $`q\mid M_N\mid p`$, and all subsequent repairs preserve divisibility by $`q`$. Thus $`j+1`$ is a valid cutoff for every target. The allowance-exception index itself may depend on the target. This completes Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3</a>.
+The congruence cutoffs can also be common to all $`y`$. For fixed $`q`$, choose an active position $`j`$ with $`q\mid M_j`$. If the target’s exceptional index $`N`$ precedes $`j`$, the repair at $`j`$ gives the required divisibilities after $`j`$. If $`N\ge j`$, all preceding digits are zero, $`q\mid M_N\mid p`$, and all subsequent repairs preserve divisibility by $`q`$. Thus $`j+1`$ is a valid cutoff for every target. The allowance-exception index itself may depend on the target. This completes Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3.1</a>.
 
 The growth hypothesis has content. If repeated denominators are allowed, take $`Q_n=2^{\lfloor\sqrt n\rfloor}`$ and $`F_n=1`$. The allowance series converges, while $`U_N\ge\lfloor\sqrt N\rfloor`$ by counting the next complete denominator block. Yet eventual divisibility by two forces all sufficiently late digits to vanish, so the attainable set is countable. Imposing all cumulative congruences as well leaves only zero. Thus nestedness alone does not justify the criterion.
 
@@ -358,9 +358,9 @@ Consequently, for sufficiently large such $`N`$,
 ```
 In the second inequality we used $`N\ge r`$ and $`(N+1)\cdots(N+r)\ge N^r`$.
 
-The bounded capacity along this subsequence invokes the necessity argument of Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3</a>, with allowances $`F_n=\lfloor n^c\rfloor`$ on $`S`$ and zero elsewhere. It gives nullity and meagreness even with target-dependent congruence and allowance cutoffs.
+The bounded capacity along this subsequence invokes the necessity argument of Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3.1</a>, with allowances $`F_n=\lfloor n^c\rfloor`$ on $`S`$ and zero elsewhere. It gives nullity and meagreness even with target-dependent congruence and allowance cutoffs.
 
-If $`c\le1`$, every support gap is at least $`r=1`$, so this proves the first part of Theorem <a href="#optimal-sparse-perturbations--capacity:thm:main" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:main">4</a>. If $`c>1`$ and (3) fails, it proves the negative part. Notice that infrequent large gaps are enough; average digit counts do not detect this obstruction.
+If $`c\le1`$, every support gap is at least $`r=1`$, so this proves the first part of Theorem <a href="#optimal-sparse-perturbations--capacity:thm:main" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:main">3.2</a>. If $`c>1`$ and (3) fails, it proves the negative part. Notice that infrequent large gaps are enough; average digit counts do not detect this obstruction.
 
 <a id="optimal-sparse-perturbations--a-digit-that-also-corrects-the-cumulative-residue"></a>
 
@@ -370,7 +370,7 @@ The following construction supplies the positive direction. It is useful beyond 
 
 <div id="optimal-sparse-perturbations--capacity:lem:feedback" class="lemma">
 
-**Lemma 6**. *Let $`w_j>0`$, let positive integers $`M_j`$ satisfy $`M_{j-1}\mid M_j`$, and let $`F_j\ge0`$. Suppose $`M_jw_j\to0`$ and, for $`j\ge1`$,
+**Lemma 3.4**. *Let $`w_j>0`$, let positive integers $`M_j`$ satisfy $`M_{j-1}\mid M_j`$, and let $`F_j\ge0`$. Suppose $`M_jw_j\to0`$ and, for $`j\ge1`$,
 ``` math
 2M_j\le M_{j-1}\frac{w_{j-1}}{w_j},\qquad
  2M_{j-1}\frac{w_{j-1}}{w_j}\le F_j.
@@ -414,13 +414,13 @@ This lower envelope is nondecreasing and tends to infinity. Begin sufficiently l
 2M_j\le\sqrt{r_j}\le r_jM_{j-1},\qquad
  2r_jM_{j-1}\le F_j.
 ```
-The second inequality uses $`M_{j-1}\le h_j`$, also valid for $`j=1`$. Finally, $`M_j/n_j!\le\sqrt{r_j}/(2n_j!)\le1/(2\sqrt{n_j!})\to0`$. Lemma <a href="#optimal-sparse-perturbations--capacity:lem:feedback" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:lem:feedback">6</a> fills $`[1/n_0!,2/n_0!]`$ using the positions $`n_j`$, $`j\ge1`$. Put zero digits elsewhere. Once $`q\mid M_J`$, all later digits and cumulative sums at the original integer indices have the divisibilities in (4). This proves the positive direction, including common cutoffs.
+The second inequality uses $`M_{j-1}\le h_j`$, also valid for $`j=1`$. Finally, $`M_j/n_j!\le\sqrt{r_j}/(2n_j!)\le1/(2\sqrt{n_j!})\to0`$. Lemma <a href="#optimal-sparse-perturbations--capacity:lem:feedback" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:lem:feedback">3.4</a> fills $`[1/n_0!,2/n_0!]`$ using the positions $`n_j`$, $`j\ge1`$. Put zero digits elsewhere. Once $`q\mid M_J`$, all later digits and cumulative sums at the original integer indices have the divisibilities in (4). This proves the positive direction, including common cutoffs.
 
 For comparison, remove condition (2) and call the resulting attainable set $`E_0(S,c)`$.
 
 <div id="optimal-sparse-perturbations--capacity:prop:unrestricted" class="proposition">
 
-**Proposition 7**. *For an infinite support and $`c\ge1`$, $`E_0(S,c)`$ contains an interval exactly when its successive gaps are eventually at most $`\lfloor c\rfloor`$. Otherwise it is null and meagre. For $`0<c<1`$ it is always null and meagre.*
+**Proposition 3.5**. *For an infinite support and $`c\ge1`$, $`E_0(S,c)`$ contains an interval exactly when its successive gaps are eventually at most $`\lfloor c\rfloor`$. Otherwise it is null and meagre. For $`0<c<1`$ it is always null and meagre.*
 
 </div>
 
@@ -440,7 +440,7 @@ The distinction between small and large allowances also appears directly in rati
 
 <div id="optimal-sparse-perturbations--capacity:thm:gcd" class="theorem">
 
-**Theorem 8**. *Suppose $`0\le a_n\le A`$ and $`e_n\ge0`$ are integers, $`e_n\le Cb_n`$ eventually, and $`a_n+e_n`$ is nonzero infinitely often. If
+**Theorem 3.6**. *Suppose $`0\le a_n\le A`$ and $`e_n\ge0`$ are integers, $`e_n\le Cb_n`$ eventually, and $`a_n+e_n`$ is nonzero infinitely often. If
 ``` math
 \limsup_{n\to\infty}\gcd(b_n,e_n)=\infty,
 ```
@@ -473,7 +473,7 @@ The arithmetic hypothesis cannot be replaced by $`b_n\to\infty`$, even if both c
 \sum_{n\ge1}\frac{a_n+e_n}{Q_n}
  =\sum_{n\ge1}\frac{b_n-1}{Q_n}=1.
 ```
-Here $`\gcd(b_n,e_n)\le2`$. This example separates rapid denominator growth from the arithmetic obstruction used in Theorem <a href="#optimal-sparse-perturbations--capacity:thm:gcd" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:gcd">8</a>.
+Here $`\gcd(b_n,e_n)\le2`$. This example separates rapid denominator growth from the arithmetic obstruction used in Theorem <a href="#optimal-sparse-perturbations--capacity:thm:gcd" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:gcd">3.6</a>.
 
 <a id="optimal-sparse-perturbations--why-a-small-allowance-along-a-subsequence-is-insufficient"></a>
 
@@ -481,7 +481,7 @@ Here $`\gcd(b_n,e_n)\le2`$. This example separates rapid denominator growth from
 
 Without eventual congruences, the allowance $`F(n)=n-1`$ for $`n\ge2`$ gives the full interval $`[0,1]`$, whereas $`F(n)=o(n)`$ as $`n\to\infty`$ gives a null attainable set. The latter conclusion does not follow from small allowances merely along a subsequence, as the example below shows.
 
-For the nullity assertion, eventually $`F(n)+1\le n/2`$ and $`F(n)\le n`$. Thus the number of prefixes through $`N`$ is at most $`C2^{-N}N!`$ for a fixed $`C`$, while the capacity after $`N`$ is at most $`\sum_{n>N}n/n!\le2/N!`$. The covering bound of Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(i), allowing zero-capacity levels to be omitted, tends to zero.
+For the nullity assertion, eventually $`F(n)+1\le n/2`$ and $`F(n)\le n`$. Thus the number of prefixes through $`N`$ is at most $`C2^{-N}N!`$ for a fixed $`C`$, while the capacity after $`N`$ is at most $`\sum_{n>N}n/n!\le2/N!`$. The covering bound of Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(i), allowing zero-capacity levels to be omitted, tends to zero.
 
 For the subsequence counterexample put $`F(2k)=0`$ and $`F(2k+1)=(2k)(2k+1)-1`$ for $`k\ge1`$, with $`F(1)=0`$. Then
 ``` math
@@ -514,7 +514,7 @@ For $`c\le d`$ this tends to zero. Hence $`V`$ is null and, being compact, nowhe
 
 #### Lifting a scalar interval to an open set
 
-First allow signed integer coefficients. For every $`\eta>0`$ and cutoff $`N\ge1`$, consider series supported on $`n\ge N`$ with $`|e_n|\le\eta n^c`$ and the same eventual divisibilities. We prove by induction on $`d`$ that their derivative vectors contain an open set whenever $`c>d`$. For $`d=1`$, apply Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3</a> to $`F_n=\lfloor\eta n^c\rfloor`$ and $`Q_n=n!`$, starting after $`N`$. The first tail term makes $`U_N\to\infty`$ when $`c>1`$; the all-position version gives an interval with common congruence cutoffs.
+First allow signed integer coefficients. For every $`\eta>0`$ and cutoff $`N\ge1`$, consider series supported on $`n\ge N`$ with $`|e_n|\le\eta n^c`$ and the same eventual divisibilities. We prove by induction on $`d`$ that their derivative vectors contain an open set whenever $`c>d`$. For $`d=1`$, apply Theorem <a href="#optimal-sparse-perturbations--capacity:thm:capacity" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:capacity">3.1</a> to $`F_n=\lfloor\eta n^c\rfloor`$ and $`Q_n=n!`$, starting after $`N`$. The first tail term makes $`U_N\to\infty`$ when $`c>1`$; the all-position version gives an interval with common congruence cutoffs.
 
 For the induction step, use dimension $`d-1`$ and exponent $`c-1`$ for $`B(z)=\sum b_nz^n/n!`$ with $`|b_n|\le(\eta/4)n^{c-1}`$ and $`b_n=0`$ before $`N`$. The higher derivative coordinates of $`(z-1)B`$ form an open set $`W\subseteq\mathbb{R}^{d-1}`$, because
 ``` math
@@ -574,24 +574,24 @@ Unused coordinates are zero. The binomial coefficient now depends on $`m-n`$, no
 \varepsilon\sum_{t\ge1}\frac{2^t}{(t-1)!}
  =2e^2\varepsilon<18\varepsilon<\frac12.
 ```
-Here $`n!/(n+t-1)!\le1/(t-1)!`$ and $`\sum_{k\le r}\binom{t}{r-k}\le2^t`$. Some $`\Delta b_n^{(r)}`$ is a nonzero integer. Therefore one coordinate on the left of <a href="#optimal-sparse-perturbations--capacity:eq:moving-taylor" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:moving-taylor">[capacity:eq:moving-taylor]</a> has absolute value at least $`1/(2n!)`$. The linear map from $`J_d(g)`$ to those coordinates has norm at most $`C_dn^{d-1}`$: its entries are $`(-1)^j\binom{n+j-1}{j}/(r-j)!`$, $`0\le j\le r<d`$. Distinct codes first differing at $`n`$ consequently have separation at least
+Here $`n!/(n+t-1)!\le1/(t-1)!`$ and $`\sum_{k\le r}\binom{t}{r-k}\le2^t`$. Some $`\Delta b_n^{(r)}`$ is a nonzero integer. Therefore one coordinate on the left of <a href="#optimal-sparse-perturbations--capacity:eq:moving-taylor" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:moving-taylor">(T)</a> has absolute value at least $`1/(2n!)`$. The linear map from $`J_d(g)`$ to those coordinates has norm at most $`C_dn^{d-1}`$: its entries are $`(-1)^j\binom{n+j-1}{j}/(r-j)!`$, $`0\le j\le r<d`$. Distinct codes first differing at $`n`$ consequently have separation at least
 ``` math
 \delta_n=\frac{1}{2C_dn^{d-1}n!}
  \tag{S}\label{capacity:eq:jet-separation}
 ```
 in the supremum norm of $`\mathbb{R}^d`$.
 
-Give all choices in <a href="#optimal-sparse-perturbations--capacity:eq:jet-digits" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:jet-digits">[capacity:eq:jet-digits]</a> uniform independent probabilities. If $`A_N`$ counts prefixes through $`N`$, then
+Give all choices in <a href="#optimal-sparse-perturbations--capacity:eq:jet-digits" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:jet-digits">(D)</a> uniform independent probabilities. If $`A_N`$ counts prefixes through $`N`$, then
 ``` math
 \log A_N=s\log(N!)+o(N\log N),
 ```
-because $`\log m_n=o(\log n)`$ and each used $`\alpha_k`$ is positive. The separation makes the coding injective. A ball of radius less than $`\delta_N/2`$ meets at most one length-$`N`$ cylinder and has measure at most $`A_N^{-1}`$. For a small radius $`r`$, choose $`N`$ with $`\delta_{N+1}/2\le r<\delta_N/2`$. Since $`\log(1/\delta_{N+1})/\log(N!)\to1`$, for every $`t<s`$ this implies $`\mu(B(x,r))\le C_t r^t`$. Summing this inequality over any ball cover gives positive $`t`$-dimensional Hausdorff content. The dimension is at least $`s`$, completing Theorem <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">1</a>.
+because $`\log m_n=o(\log n)`$ and each used $`\alpha_k`$ is positive. The separation makes the coding injective. A ball of radius less than $`\delta_N/2`$ meets at most one length-$`N`$ cylinder and has measure at most $`A_N^{-1}`$. For a small radius $`r`$, choose $`N`$ with $`\delta_{N+1}/2\le r<\delta_N/2`$. Since $`\log(1/\delta_{N+1})/\log(N!)\to1`$, for every $`t<s`$ this implies $`\mu(B(x,r))\le C_t r^t`$. Summing this inequality over any ball cover gives positive $`t`$-dimensional Hausdorff content. The dimension is at least $`s`$, completing Theorem <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">2.1</a>.
 
 <a id="optimal-sparse-perturbations--capacity:sec:rational-jets"></a>
 
 ### The arithmetic threshold for rational derivatives
 
-We prove Theorem <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2</a>. The coefficient estimate and the divisibilities are both needed, including at the critical exponent.
+We prove Theorem <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2.2</a>. The coefficient estimate and the divisibilities are both needed, including at the critical exponent.
 
 Suppose the first $`d`$ derivatives at $`1`$, starting with the value, are rational. Subtract their Taylor polynomial
 ``` math
@@ -603,9 +603,9 @@ B(z)=\sum_{n\ge0}b_n\frac{z^n}{n!},\qquad
  b_n=(-1)^d\sum_{k=0}^n\binom{n-k+d-1}{d-1}\frac{n!}{k!}g_k.
  \tag{Q}\label{capacity:eq:quotient-prefix}
 ```
-In particular $`b_n`$ is an integer. Fix $`q`$, and choose $`K`$ so that $`q\mid g_k`$ for $`k\ge K`$. Those terms in <a href="#optimal-sparse-perturbations--capacity:eq:quotient-prefix" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:quotient-prefix">[capacity:eq:quotient-prefix]</a> are divisible by $`q`$. For each of the finitely many $`k<K`$, the factor $`n!/k!`$ is divisible by $`q`$ once $`n`$ is sufficiently large. Hence $`q\mid b_n`$ eventually as well.
+In particular $`b_n`$ is an integer. Fix $`q`$, and choose $`K`$ so that $`q\mid g_k`$ for $`k\ge K`$. Those terms in <a href="#optimal-sparse-perturbations--capacity:eq:quotient-prefix" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:quotient-prefix">(Q)</a> are divisible by $`q`$. For each of the finitely many $`k<K`$, the factor $`n!/k!`$ is divisible by $`q`$ once $`n`$ is sufficiently large. Hence $`q\mid b_n`$ eventually as well.
 
-The vanishing derivatives imply $`\sum_{k\ge0}R(k)g_k/k!=0`$ for every polynomial $`R`$ of degree less than $`d`$, because the falling factorials of orders $`0,\ldots,d-1`$ form a basis. Apply this to $`R(k)=\binom{n-k+d-1}{d-1}`$, interpreted as a polynomial. Its values at $`k=n+1,\ldots,n+d-1`$ vanish, and at $`k=n+j`$, $`j\ge d`$, they equal $`(-1)^{d-1}\binom{j-1}{d-1}`$. The complementary tail of <a href="#optimal-sparse-perturbations--capacity:eq:quotient-prefix" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:quotient-prefix">[capacity:eq:quotient-prefix]</a> therefore gives
+The vanishing derivatives imply $`\sum_{k\ge0}R(k)g_k/k!=0`$ for every polynomial $`R`$ of degree less than $`d`$, because the falling factorials of orders $`0,\ldots,d-1`$ form a basis. Apply this to $`R(k)=\binom{n-k+d-1}{d-1}`$, interpreted as a polynomial. Its values at $`k=n+1,\ldots,n+d-1`$ vanish, and at $`k=n+j`$, $`j\ge d`$, they equal $`(-1)^{d-1}\binom{j-1}{d-1}`$. The complementary tail of <a href="#optimal-sparse-perturbations--capacity:eq:quotient-prefix" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:quotient-prefix">(Q)</a> therefore gives
 ``` math
 b_n=n!\sum_{j\ge d}\binom{j-1}{d-1}\frac{g_{n+j}}{(n+j)!}.
  \tag{R}\label{capacity:eq:quotient-tail}
@@ -622,7 +622,7 @@ Their successive ratios satisfy
 ```
 For sufficiently large $`n`$ this is at most $`1/2`$, whereas $`v_d=n!(n+d)^d/(n+d)!`$ is bounded. Thus $`(b_n)`$ is bounded. Choose an integer $`q`$ larger than its eventual absolute bound. Eventual divisibility by this $`q`$ forces $`b_n=0`$ eventually. It follows that $`B`$, $`g`$ and $`f`$ are polynomials.
 
-For the converse, when $`c>d`$, Theorem <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">1</a> gives an open set of vectors realised by nonpolynomial members of $`\mathcal H_c`$. Every nonempty open subset of $`\mathbb{R}^d`$ meets $`\mathbb Q^d`$. This completes the proof of the sharp threshold.
+For the converse, when $`c>d`$, Theorem <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">2.1</a> gives an open set of vectors realised by nonpolynomial members of $`\mathcal H_c`$. Every nonempty open subset of $`\mathbb{R}^d`$ meets $`\mathbb Q^d`$. This completes the proof of the sharp threshold.
 
 <div class="remark">
 
@@ -654,7 +654,7 @@ V=\Bigl\{\sum_{n\ge1}\varepsilon_nu_n:\ \varepsilon_n\in\{0,1,\dots,D_n\}\Bigr\}
 
 <div id="optimal-sparse-perturbations--thm:dichotomy" class="theorem">
 
-**Theorem 9** (choices against contraction). *<span class="upright">(i)</span> For every $`N`$, the Lebesgue measure of $`V`$ is at most $`C_N\prod_{n\le N}(D_n+1)`$. If $`\liminf_NC_N\prod_{n\le N}(D_n+1)=0`$ then $`V`$ is null.*
+**Theorem 6.1** (choices against contraction). *<span class="upright">(i)</span> For every $`N`$, the Lebesgue measure of $`V`$ is at most $`C_N\prod_{n\le N}(D_n+1)`$. If $`\liminf_NC_N\prod_{n\le N}(D_n+1)=0`$ then $`V`$ is null.*
 
 *<span class="upright">(ii)</span> If $`u_n\le C_n`$ for every $`n>N_0`$, then for each choice of $`\varepsilon_1,\dots,\varepsilon_{N_0}`$ the set $`V`$ contains the interval $`[\mu,\mu+C_{N_0}]`$, where $`\mu=\sum_{n\le N_0}\varepsilon_nu_n`$.*
 
@@ -662,11 +662,11 @@ V=\Bigl\{\sum_{n\ge1}\varepsilon_nu_n:\ \varepsilon_n\in\{0,1,\dots,D_n\}\Bigr\}
 
 </div>
 
-Part (ii) is Kakeya’s covering argument and part (i) is the standard covering bound; both are classical \[hornich1941; nitecki2013; fridy1966\], and Kovač and Tao give a scalar reciprocal-choice covering lemma \[kovactao2024, Lemma 5.1\]; their higher-dimensional approximation lemma is Lemma 7.2 of the same paper. We claim no novelty for Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>. Its use here is to say which side each problem lies on.
+Part (ii) is Kakeya’s covering argument and part (i) is the standard covering bound; both are classical \[hornich1941; nitecki2013; fridy1966\], and Kovač and Tao give a scalar reciprocal-choice covering lemma \[kovactao2024, Lemma 5.1\]; their higher-dimensional approximation lemma is Lemma 7.2 of the same paper. We claim no novelty for Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>. Its use here is to say which side each problem lies on.
 
 <div id="optimal-sparse-perturbations--thm:bases" class="theorem">
 
-**Theorem 10** (the subseries across bases). *Let $`t>1`$ be real.*
+**Theorem 6.2** (the subseries across bases). *Let $`t>1`$ be real.*
 
 *<span class="upright">(a)</span> If $`t<2`$, let $`N_0\ge0`$ be least with $`t^{-n}\le2-t`$ for all $`n>N_0`$. Then the set of values $`X_S(t)`$ is the union of the intervals $`[X_F(t),X_F(t)+R_{N_0}]`$ over $`F\subseteq\{1,\dots,N_0\}`$, where $`X_F(t)=\sum_{n\in F}w_n`$; in particular it contains $`[0,R_{N_0}]`$. If moreover $`t=a/b`$ in lowest terms, then every rational in $`[0,R_{N_0}]`$ whose reduced denominator shares a prime factor with $`ab`$ equals $`X_S(t)`$ for some $`S`$, and every such $`S`$ is infinite. There is an infinite $`S\subseteq\{2,3,\dots\}`$ with $`X_S(3/2)=1/2`$.*
 
@@ -676,11 +676,11 @@ Part (ii) is Kakeya’s covering argument and part (i) is the standard covering 
 
 </div>
 
-Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s theorem as proved by Nitecki \[plectis257; hornich1941; nitecki2013\]; Kovač and Tao record the strict inequality $`w_N>R_N`$ and the Cantor-set conclusion for every fixed base $`t\ge2`$ \[kovactao2024, Remark 4.1\]. Parts (a) and (c) follow from Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a> in a few lines. We have not found part (a) stated for non-integer bases and it may be known. It shows that the statement asked in \#257 is false at every rational base below $`2`$, so any proof at base $`2`$ must use more than the shape of the series.
+Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s theorem as proved by Nitecki \[plectis257; hornich1941; nitecki2013\]; Kovač and Tao record the strict inequality $`w_N>R_N`$ and the Cantor-set conclusion for every fixed base $`t\ge2`$ \[kovactao2024, Remark 4.1\]. Parts (a) and (c) follow from Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a> in a few lines. We have not found part (a) stated for non-integer bases and it may be known. It shows that the statement asked in \#257 is false at every rational base below $`2`$, so any proof at base $`2`$ must use more than the shape of the series.
 
 <div id="optimal-sparse-perturbations--thm:chains" class="theorem">
 
-**Theorem 11** (divisibility chains). *Let $`t=a/b>1`$ in lowest terms and let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
+**Theorem 6.3** (divisibility chains). *Let $`t=a/b>1`$ in lowest terms and let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
 
 *<span class="upright">(a)</span> If $`a^2>b^3`$, then $`X_S(t)`$ is irrational.*
 
@@ -688,23 +688,23 @@ Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s 
 
 </div>
 
-The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">10</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056830213840605\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that the sufficient cutoff supplied by one integer-polynomial family with common leading degree, coefficient-height and decay bounds at every fixed real base $`x>1`$ is at most $`1/2`$ \[plectis1049, Theorem 5\]. This restriction does not exclude stronger estimates at a particular base or a different choice of family there. Thin supports reach further than the full sum because the denominators divide one another.
+The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">6.2</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056830213840605\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that the sufficient cutoff supplied by one integer-polynomial family with common leading degree, coefficient-height and decay bounds at every fixed real base $`x>1`$ is at most $`1/2`$ \[plectis1049, Theorem 5\]. This restriction does not exclude stronger estimates at a particular base or a different choice of family there. Thin supports reach further than the full sum because the denominators divide one another.
 
 At base $`2`$ the greedy rule characterises membership and supplies finite certificates of nonmembership: starting from $`r_0=x`$, take index $`n`$ when $`r_{n-1}\ge w_n`$ and subtract. Since $`w_n>R_n`$, a real $`x\in[0,E]`$ is a subsum if and only if no remainder falls strictly between $`R_n`$ and $`w_n`$; we say $`x`$ is *rejected at step $`n`$* when that happens first at index $`n`$.
 
 <div id="optimal-sparse-perturbations--thm:forced" class="theorem">
 
-**Theorem 12** (the fixed-depth rational count). *Fix $`N\ge1`$. Among the reduced fractions $`p/q\in(0,E]`$ with $`q\le Q`$, the proportion not rejected in the first $`N`$ steps tends to $`2^NR_N/E`$ as $`Q\to\infty`$, with error $`O(2^N\log Q/Q)`$. Consequently the upper limit of the proportion that are subsums is at most $`1/E=0.62239\ldots`$.*
+**Theorem 6.4** (the fixed-depth rational count). *Fix $`N\ge1`$. Among the reduced fractions $`p/q\in(0,E]`$ with $`q\le Q`$, the proportion not rejected in the first $`N`$ steps tends to $`2^NR_N/E`$ as $`Q\to\infty`$, with error $`O(2^N\log Q/Q)`$. Consequently the upper limit of the proportion that are subsums is at most $`1/E=0.62239\ldots`$.*
 
 </div>
 
-The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with this fixed-depth limiting proportion therefore does not establish membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a> is the correction. Section <a href="#optimal-sparse-perturbations--sec:base2" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:base2">6.3</a> states what remains.
+The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with this fixed-depth limiting proportion therefore does not establish membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> is the correction. Section <a href="#optimal-sparse-perturbations--sec:base2" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:base2">6.3</a> states what remains.
 
 <a id="optimal-sparse-perturbations--evidence."></a>
 
 ###### Evidence.
 
-The proofs of Theorems <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>–<a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a> are ordinary proofs. Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">11</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually doubling case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
+The proofs of Theorems <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>–<a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> are ordinary proofs. Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually doubling case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
 
 <a id="optimal-sparse-perturbations--sec:dichotomy"></a>
 
@@ -712,7 +712,7 @@ The proofs of Theorems <a href="#optimal-sparse-perturbations--thm:dichotomy" d
 
 <div class="proof">
 
-*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>.* (i) A choice of $`\varepsilon_1,\dots,\varepsilon_N`$ fixes $`\sum_{n\le N}\varepsilon_nu_n`$, and the rest of the sum lies in $`[0,C_N]`$. So $`V`$ is covered by at most $`\prod_{n\le N}(D_n+1)`$ intervals of length $`C_N`$.
+*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>.* (i) A choice of $`\varepsilon_1,\dots,\varepsilon_N`$ fixes $`\sum_{n\le N}\varepsilon_nu_n`$, and the rest of the sum lies in $`[0,C_N]`$. So $`V`$ is covered by at most $`\prod_{n\le N}(D_n+1)`$ intervals of length $`C_N`$.
 
 \(ii\) Subtracting $`\mu`$, it suffices to reach every $`y\in[0,C_{N_0}]`$ with the levels $`n>N_0`$. Put $`y_{N_0}=y`$ and, for $`n>N_0`$, let $`\varepsilon_n=\min(D_n,\lfloor y_{n-1}/u_n\rfloor)`$ and $`y_n=y_{n-1}-\varepsilon_nu_n`$. If $`0\le y_{n-1}\le C_{n-1}=D_nu_n+C_n`$ then $`0\le y_n\le C_n`$: when $`\varepsilon_n=D_n`$ this is a subtraction, and when $`\varepsilon_n<D_n`$ it holds because $`y_n<u_n\le C_n`$. Since $`C_n\to0`$, the sum of the $`\varepsilon_nu_n`$ is $`y`$.
 
@@ -734,15 +734,15 @@ The same comparison appears in Kovač and Tao’s theorem that for integers $`2\
 
 <div class="proof">
 
-*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">10</a>.* (a) Since $`R_n\ge\sum_{k>n}t^{-k}=t^{-n}/(t-1)`$ and $`w_n=t^{-n}/(1-t^{-n})`$, the inequality $`w_n\le R_n`$ holds as soon as $`t^{-n}\le2-t`$. Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(ii) with $`D_n=1`$ gives, for each $`F\subseteq\{1,\dots,N_0\}`$, the interval $`[X_F(t),X_F(t)+R_{N_0}]`$, and every value $`X_S(t)`$ lies in the one with $`F=S\cap[1,N_0]`$. For $`t=a/b`$ a finite subsum is $`\sum_{n\in F}b^n/(a^n-b^n)`$, whose denominator divides $`\prod(a^n-b^n)`$ and is coprime to $`ab`$. A rational whose denominator is not coprime to $`ab`$ is therefore never a finite subsum, and inside the interval it is a subsum. At $`t=3/2`$ the inequality $`t^{-n}\le1/2`$ holds for $`n\ge2`$ and $`R_1>1/2`$.
+*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">6.2</a>.* (a) Since $`R_n\ge\sum_{k>n}t^{-k}=t^{-n}/(t-1)`$ and $`w_n=t^{-n}/(1-t^{-n})`$, the inequality $`w_n\le R_n`$ holds as soon as $`t^{-n}\le2-t`$. Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(ii) with $`D_n=1`$ gives, for each $`F\subseteq\{1,\dots,N_0\}`$, the interval $`[X_F(t),X_F(t)+R_{N_0}]`$, and every value $`X_S(t)`$ lies in the one with $`F=S\cap[1,N_0]`$. For $`t=a/b`$ a finite subsum is $`\sum_{n\in F}b^n/(a^n-b^n)`$, whose denominator divides $`\prod(a^n-b^n)`$ and is coprime to $`ab`$. A rational whose denominator is not coprime to $`ab`$ is therefore never a finite subsum, and inside the interval it is a subsum. At $`t=3/2`$ the inequality $`t^{-n}\le1/2`$ holds for $`n\ge2`$ and $`R_1>1/2`$.
 
-\(c\) For $`t>2`$, $`2^NR_N\le2^Nt^{-N}/((t-1)(1-t^{-1}))\to0`$, and Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(i) applies. ◻
+\(c\) For $`t>2`$, $`2^NR_N\le2^Nt^{-N}/((t-1)(1-t^{-1}))\to0`$, and Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(i) applies. ◻
 
 </div>
 
 <div class="proof">
 
-*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">11</a>.* Write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
+*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a>.* Write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
 ``` math
 0<X_S(t)-S_j\le\sum_{n\ge n_{j+1}}\frac{\rho^n}{1-\rho^n}
  \le\frac{\rho^{\,n_{j+1}}}{(1-\rho)^2}.
@@ -785,7 +785,7 @@ For the remainder of this subsection, take $`t=2`$: $`w_n=(2^n-1)^{-1}`$, $`R_N=
 
 <div id="optimal-sparse-perturbations--lem:gaps" class="lemma">
 
-**Lemma 13** (the removed intervals). *$`[0,E]\smallsetminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
+**Lemma 6.5** (the removed intervals). *$`[0,E]\smallsetminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
 
 </div>
 
@@ -797,7 +797,7 @@ For the remainder of this subsection, take $`t=2`$: $`w_n=(2^n-1)^{-1}`$, $`R_N=
 
 <div id="optimal-sparse-perturbations--lem:translate" class="lemma">
 
-**Lemma 14** (translation by a finite subsum). *Let $`F`$ be finite with largest element $`n`$ and let $`0\le x\le R_n`$. The greedy rule applied to $`X_F+x`$ selects exactly $`F`$ among the indices up to $`n`$ and then agrees with the greedy rule applied to $`x`$. In particular $`X_F+x\in\mathcal A`$ if and only if $`x\in\mathcal A`$, and $`X_F+x`$ is rejected at a step $`m>n`$ exactly when $`x`$ is.*
+**Lemma 6.6** (translation by a finite subsum). *Let $`F`$ be finite with largest element $`n`$ and let $`0\le x\le R_n`$. The greedy rule applied to $`X_F+x`$ selects exactly $`F`$ among the indices up to $`n`$ and then agrees with the greedy rule applied to $`x`$. In particular $`X_F+x\in\mathcal A`$ if and only if $`x\in\mathcal A`$, and $`X_F+x`$ is rejected at a step $`m>n`$ exactly when $`x`$ is.*
 
 </div>
 
@@ -817,7 +817,7 @@ A finite subsum has odd denominator, since $`\prod_{n\in F}(2^n-1)`$ is odd. So 
 
 <div class="proof">
 
-*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a>.* Fixing the first $`N`$ digits gives $`2^N`$ closed intervals of length $`R_N`$. They are pairwise disjoint because $`w_n>R_n`$, and a real in $`[0,E]`$ is not rejected in the first $`N`$ steps exactly when it lies in their union $`K_N`$, which has measure $`2^NR_N`$. For an interval $`I`$ of length $`\ell`$, the number of integers $`p`$ coprime to $`q`$ with $`p/q\in I`$ is $`\varphi(q)\ell+O(2^{\omega(q)})`$ by inclusion and exclusion. Summing over $`q\le Q`$ with $`\sum_{q\le Q}\varphi(q)=3Q^2/\pi^2+O(Q\log Q)`$ and $`\sum_{q\le Q}2^{\omega(q)}=O(Q\log Q)`$ gives $`3Q^2\ell/\pi^2+O(Q\log Q)`$. Apply this to the $`2^N`$ intervals of $`K_N`$ and to $`(0,E]`$ and divide. The second statement follows because every subsum lies in every $`K_N`$ and $`2^NR_N\to1`$. ◻
+*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a>.* Fixing the first $`N`$ digits gives $`2^N`$ closed intervals of length $`R_N`$. They are pairwise disjoint because $`w_n>R_n`$, and a real in $`[0,E]`$ is not rejected in the first $`N`$ steps exactly when it lies in their union $`K_N`$, which has measure $`2^NR_N`$. For an interval $`I`$ of length $`\ell`$, the number of integers $`p`$ coprime to $`q`$ with $`p/q\in I`$ is $`\varphi(q)\ell+O(2^{\omega(q)})`$ by inclusion and exclusion. Summing over $`q\le Q`$ with $`\sum_{q\le Q}\varphi(q)=3Q^2/\pi^2+O(Q\log Q)`$ and $`\sum_{q\le Q}2^{\omega(q)}=O(Q\log Q)`$ gives $`3Q^2\ell/\pi^2+O(Q\log Q)`$. Apply this to the $`2^N`$ intervals of $`K_N`$ and to $`(0,E]`$ and divide. The second statement follows because every subsum lies in every $`K_N`$ and $`2^NR_N\to1`$. ◻
 
 </div>
 
@@ -826,11 +826,11 @@ The intervals removed at step $`n`$ are explicit. Put $`g_n=w_n-R_n`$, so that $
 [0,E]\smallsetminus\mathcal A=\bigsqcup_{F\ne\varnothing}\bigl(X_F(2)-g_{\max F},\,X_F(2)\bigr),
  \qquad\sum_{n\ge1}2^{n-1}g_n=E-1,
 ```
-where $`\mathcal A`$ is the set of subsums. By Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">10</a>(b) a rational with an infinite $`S`$ is exactly a counterexample to \#257 at base $`2`$. So \#257 at base $`2`$ holds if and only if every rational in $`[0,E]`$ that is not a finite subsum lies strictly between $`X_F(2)-g_{\max F}`$ and $`X_F(2)`$ for some finite nonempty $`F`$. This is a one-sided question of approximation by the countable set of finite subsums, with an error that shrinks like $`4^{-\max F}`$.
+where $`\mathcal A`$ is the set of subsums. By Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">6.2</a>(b) a rational with an infinite $`S`$ is exactly a counterexample to \#257 at base $`2`$. So \#257 at base $`2`$ holds if and only if every rational in $`[0,E]`$ that is not a finite subsum lies strictly between $`X_F(2)-g_{\max F}`$ and $`X_F(2)`$ for some finite nonempty $`F`$. This is a one-sided question of approximation by the countable set of finite subsums, with an error that shrinks like $`4^{-\max F}`$.
 
 Under \#257 the only fractions of height at most $`Q`$ that are subsums are the finite subsums, $`40`$ of the $`19{,}653`$ fractions with $`2\le q\le200`$. A model that treats later remainders as equidistributed gives the opposite extreme, a proportion tending to $`1/E`$, because the shares $`2^{n-1}g_n/E`$ of the removed intervals are summable. That model asserts that \#257 fails for a positive proportion of all rationals. The fixed-depth limiting proportion does not distinguish this claim from its negation. An arithmetic argument, or a count with separately justified estimates as both depth and height grow, is needed. Measure does not decide either. Boes, Darst and Erdős construct symmetric Cantor sets of every measure in $`[0,1)`$ that contain essentially no rationals \[boesdarsterdos1981\].
 
-The exact computation in \[plectisinvestigation\] agrees with Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a> step by step. Among the $`19{,}653`$ reduced fractions with $`2\le q\le200`$, the numbers rejected at steps $`1`$, $`2`$ and $`7`$ are $`4809`$, $`1470`$ and $`32`$, against $`4811`$, $`1467`$ and $`32`$ from the measures of the removed intervals. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which falls below $`1`$ near $`n=2\log_2Q-2\log_2\pi`$. This is not a deterministic cutoff: the error in Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a> does not justify such an extrapolation. For example, $`189/388`$ is first rejected at step $`17`$, beyond this scale for $`Q=388`$. Its selected indices before rejection are $`F=\{2,3,7,9,10,14,15,16\}`$, and exact arithmetic gives
+The exact computation in \[plectisinvestigation\] agrees with Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> step by step. Among the $`19{,}653`$ reduced fractions with $`2\le q\le200`$, the numbers rejected at steps $`1`$, $`2`$ and $`7`$ are $`4809`$, $`1470`$ and $`32`$, against $`4811`$, $`1467`$ and $`32`$ from the measures of the removed intervals. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which falls below $`1`$ near $`n=2\log_2Q-2\log_2\pi`$. This is not a deterministic cutoff: the error in Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> does not justify such an extrapolation. For example, $`189/388`$ is first rejected at step $`17`$, beyond this scale for $`Q=388`$. Its selected indices before rejection are $`F=\{2,3,7,9,10,14,15,16\}`$, and exact arithmetic gives
 ``` math
 R_{17}\le\frac{196609}{25769803776}
  <\frac{189}{388}-X_F(2)
@@ -841,11 +841,11 @@ Section <a href="#optimal-sparse-perturbations--sec:misread" data-reference-typ
 
 <div id="optimal-sparse-perturbations--prob:membership" class="problem">
 
-**Problem 15**. Decide whether $`1/2`$ is a subsum of $`\sum(2^n-1)^{-1}`$. By \[plectis257, Theorem 7\] this holds if and only if the integer remainders of the greedy rule fail to increase at infinitely many steps.
+**Problem 6.7**. Decide whether $`1/2`$ is a subsum of $`\sum(2^n-1)^{-1}`$. By \[plectis257, Theorem 7\] this holds if and only if the integer remainders of the greedy rule fail to increase at infinitely many steps.
 
 </div>
 
-The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#optimal-sparse-perturbations--prob:membership" data-reference-type="ref" data-reference="optimal-sparse-perturbations--prob:membership">15</a> asks about one explicit rational point.
+The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#optimal-sparse-perturbations--prob:membership" data-reference-type="ref" data-reference="optimal-sparse-perturbations--prob:membership">6.7</a> asks about one explicit rational point.
 
 <a id="optimal-sparse-perturbations--sec:dyadic-shifts"></a>
 
@@ -872,7 +872,7 @@ For $`H\subseteq\mathbb{Z}_{>0}`$ and $`c\in\mathbb{R}`$, say that $`H`$ detects
 ```
 The witnessing index may depend on the shift.
 
-The Lean-checked transfer from the \#251 tail classifier and the \#269 bounded-radix escape theorem gives the implication from irrationality in <a href="#optimal-sparse-perturbations--eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-restricted-predicate">[eq:dyadic-restricted-predicate]</a> for every positive shift when $`c\le1/3`$; the [research record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md#how-the-question-closed) keeps the original $`1/31`$ experiment and the later sharp-constant argument distinct. Dubickas’s theorem, in the form stated by Akiyama and Kaneko \[akiyamakaneko\], gives
+The Lean-checked transfer from the \#251 tail classifier and the \#269 bounded-radix escape theorem gives the implication from irrationality in <a href="#optimal-sparse-perturbations--eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-restricted-predicate">(3)</a> for every positive shift when $`c\le1/3`$; the [research record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/premise_exchange/README.md#how-the-question-closed) keeps the original $`1/31`$ experiment and the later sharp-constant argument distinct. Dubickas’s theorem, in the form stated by Akiyama and Kaneko \[akiyamakaneko\], gives
 ``` math
 \limsup_{N\to\infty}\|2^N\xi\|\ge\tau
  \quad(\xi\notin\mathbb{Q}),\qquad
@@ -880,19 +880,21 @@ The Lean-checked transfer from the \#251 tail classifier and the \#269 bounded-r
 ```
 where $`t_n`$ is the parity of the binary digit sum of $`n`$. This cited input extends the implication to every $`c<\tau`$. The endpoint argument below is ordinary mathematics; the sharp bound itself is not formalised here.
 
+For fixed $`c`$ and $`H`$, call <a href="#optimal-sparse-perturbations--eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-restricted-predicate">(3)</a> the selected-shift test. The next theorem asks when that test detects irrationality *for every* integer-digit dyadic recurrence, rather than for one chosen orbit.
+
 <div id="optimal-sparse-perturbations--thm:restricted-dyadic-shifts" class="theorem">
 
-**Theorem 16** (Restricted dyadic shifts). *For every integer-digit dyadic recurrence $`T`$, irrationality of $`T_0`$ is equivalent to <a href="#optimal-sparse-perturbations--eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-restricted-predicate">[eq:dyadic-restricted-predicate]</a> if and only if
-``` math
-0<c<\tau\quad\text{and}\quad
- \forall d\ge1\;\exists h\in H:\ d\mid h.
-```*
+**Theorem 7.1** (Restricted dyadic shifts). *Fix $`c\in\mathbb{R}`$ and $`H\subseteq\mathbb{Z}_{>0}`$. The following conditions are equivalent:*
+
+1.  *For every integer-digit dyadic recurrence $`T`$, the initial value $`T_0`$ is irrational if and only if $`T`$ passes the selected-shift test.*
+
+2.  *The parameters satisfy $`0<c<\tau`$, and every positive integer $`d`$ divides some shift $`h\in H`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Suppose first that these two conditions hold. For irrational $`T_0`$ and fixed $`h>0`$, $`(2^h-1)T_0`$ is irrational. Equation <a href="#optimal-sparse-perturbations--eq:dyadic-shift-identity" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-shift-identity">[eq:dyadic-shift-identity]</a> and Dubickas’s bound give indices as late as desired with distance at least $`c`$. Conversely, let $`T_0=p/q`$ with $`q=2^sr`$ and $`r`$ odd. Some $`d>0`$ satisfies $`2^d\equiv1\pmod r`$; take $`d=1`$ if $`r=1`$. Choose $`h\in H`$ divisible by $`d`$. For every $`N\ge s`$, $`2^N(2^h-1)p/q`$ is an integer, so <a href="#optimal-sparse-perturbations--eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-restricted-predicate">[eq:dyadic-restricted-predicate]</a> fails.
+*Proof.* Suppose first that these two conditions hold. For irrational $`T_0`$ and fixed $`h>0`$, $`(2^h-1)T_0`$ is irrational. Equation <a href="#optimal-sparse-perturbations--eq:dyadic-shift-identity" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-shift-identity">(2)</a> and Dubickas’s bound give indices as late as desired with distance at least $`c`$. Conversely, let $`T_0=p/q`$ with $`q=2^sr`$ and $`r`$ odd. Some $`d>0`$ satisfies $`2^d\equiv1\pmod r`$; take $`d=1`$ if $`r=1`$. Choose $`h\in H`$ divisible by $`d`$. For every $`N\ge s`$, $`2^N(2^h-1)p/q`$ is an integer, so <a href="#optimal-sparse-perturbations--eq:dyadic-restricted-predicate" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-restricted-predicate">(3)</a> fails.
 
 For necessity of the divisibility condition, suppose no member of $`H`$ is divisible by some $`d\ge2`$. Put $`L=3d`$, $`q=2^L-1`$, and $`T_N=\{2^N/q\}`$. This bounded rational orbit has digits in $`\{0,1\}`$. For a tested shift $`h`$, let $`r\in\{1,\ldots,L-1\}`$ be its residue modulo $`L`$. Since $`2^L\equiv1\pmod q`$, the distance sequence for $`h`$ is periodic and agrees with that for $`r`$. The sequences for $`r`$ and $`L-r`$ agree up to a cyclic shift, because $`2^r(2^{L-r}-1)\equiv-(2^r-1)\pmod q`$. We may therefore use $`m=\max(r,L-r)\ge L/2\ge3`$. At the index $`N=L-m-1`$, one distance is
 ``` math
@@ -902,11 +904,11 @@ v=\frac{2^{L-1}-2^{L-m-1}}{2^L-1}
 ```
 It recurs every $`L`$ indices. The first six Thue–Morse digits are $`011010`$, so $`\tau<27/64<7/16`$. Thus this rational orbit passes every tested shift at every $`0<c<\tau`$.
 
-If $`c\le0`$, the zero orbit passes. If $`H`$ is empty, every orbit passes. Finally, for $`c\ge\tau`$ and any $`h_0\in H`$, take $`T_0=\tau/(2^{h_0}-1)`$ and $`g_N=0`$. This initial value is irrational, but the Thue–Morse endpoint argument in the cited [record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/blob/09db551ef4de91e6c56fd6a00add102eacd4b517/research/experiments/premise_exchange/README.md#how-the-question-closed) proves $`\|2^N\tau\|<\tau`$ for every $`N\ge1`$. Equation <a href="#optimal-sparse-perturbations--eq:dyadic-shift-identity" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-shift-identity">[eq:dyadic-shift-identity]</a> makes the test fail at $`h_0`$. ◻
+If $`c\le0`$, the zero orbit passes. If $`H`$ is empty, every orbit passes. Finally, for $`c\ge\tau`$ and any $`h_0\in H`$, take $`T_0=\tau/(2^{h_0}-1)`$ and $`g_N=0`$. The cited sharp-bound construction identifies $`\tau`$ as irrational \[akiyamakaneko\]. The strict endpoint inequality $`\|2^N\tau\|<\tau`$ for every $`N\ge1`$ follows from the Thue–Morse shift argument just below. Equation <a href="#optimal-sparse-perturbations--eq:dyadic-shift-identity" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--eq:dyadic-shift-identity">(2)</a> makes the test fail at $`h_0`$. ◻
 
 </div>
 
-The endpoint uses a shift-order property of the Thue–Morse word. Related extremal-word constructions appear in Allouche, Clarke and Sidorov \[alloucheclarkesidorov\], whose published bibliography points to earlier work of Allouche and Cosnard. The linked research record gives the short nearest-integer argument used here; no historical priority for that specific formulation is asserted.
+Here is the strict endpoint step used in the proof. Write the Thue–Morse word as $`t=011010\ldots`$, its bitwise complement as $`\bar t`$, and let $`\mu`$ be the order-preserving substitution $`0\mapsto01`$, $`1\mapsto10`$. The word $`t`$ is fixed by $`\mu`$. An odd-indexed suffix of $`t`$ starts with $`001`$ or $`010`$ when its first bit is $`0`$, both strictly below the prefix $`011`$ of $`t`$. When its first bit is $`1`$, it starts with $`101`$ or $`110`$, both strictly above the prefix $`100`$ of $`\bar t`$. An even-indexed suffix is the image under $`\mu`$ of a shorter suffix, so induction and order preservation give the same strict comparisons at every positive index. The binary value of each suffix is therefore below $`\tau`$ or above $`1-\tau`$, according to its first bit. This proves $`\|2^N\tau\|<\tau`$ for $`N\ge1`$. The [research record](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/premise_exchange/README.md#how-the-question-closed) retains the longer historical calculation. Related extremal-word constructions appear in Allouche, Clarke and Sidorov \[alloucheclarkesidorov\], whose published bibliography points to earlier work of Allouche and Cosnard. The linked research record gives the longer nearest-integer calculation; no historical priority for the specific formulation above is asserted.
 
 The factorial family $`H=\{j!:j\ge1\}`$ satisfies the divisibility condition: $`d\mid d!`$. The power-of-two family does not, since none of its members is divisible by $`3`$. An especially small counterexample for the latter is the rational orbit $`T_N=\{2^N/7\}`$: for each tested shift its distances cycle through $`1/7`$, $`2/7`$, and $`3/7`$, so it passes at every $`c<\tau`$. No finite shift family suffices. Conversely, excluding all multiples of a large $`d`$ leaves a family of density $`1-1/d`$ that fails the test; factorial shifts have density zero and succeed. This criterion does not establish irrationality for the actual prime-gap tail in \#251.
 
@@ -931,7 +933,7 @@ Status is as stated in each note: L for checked in Lean there, O for an ordinary
 | \#1049 \[plectis1049\] | Theorem 5 | One family of nonzero integer-polynomial linear forms with common leading degree, coefficient-height and decay bounds at every fixed real $`x>1`$ has $`\sigma\le\delta`$; the sufficient cutoff $`\sigma/(\sigma+\delta)`$ supplied by those estimates is at most $`1/2`$. Ordinary proof, with the contradiction step and the comparison with $`1/2`$ checked in Lean. | O, L |
 | \#1049 \[plectis1049\] | Theorem 7 | The stated clearing conditions cannot be met at base $`3/2`$. | L |
 
-Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(ii) explains interval filling in the \#251 construction. The \#249 countermodel is a separate explicit construction with its own preserved identities. The \#1049 restriction does not exclude stronger base-specific estimates, different families at different bases, or forms involving several target values. The others bound a method. We tried to state one inequality that covers \#1049 Theorem 5 and the cover cost of \#257, a cost of clearing denominators against the decay gained, and did not find a formulation that survives both sets of hypotheses. We do not claim the rows share a cause.
+Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(ii) explains interval filling in the \#251 construction. The \#249 countermodel is a separate explicit construction with its own preserved identities. The \#1049 restriction does not exclude stronger base-specific estimates, different families at different bases, or forms involving several target values. The others bound a method. We tried to state one inequality that covers \#1049 Theorem 5 and the cover cost of \#257, a cost of clearing denominators against the decay gained, and did not find a formulation that survives both sets of hypotheses. We do not claim the rows share a cause.
 
 <a id="optimal-sparse-perturbations--sec:misread"></a>
 
@@ -939,9 +941,9 @@ Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-t
 
 The computation \[plectisinvestigation\] runs the greedy rule in exact arithmetic on every reduced fraction in $`(0,E]`$ with $`2\le q\le Q`$.
 
-*First reading.* At $`Q=36`$, $`382`$ of $`633`$ fractions are not rejected through step $`160`$ and $`14`$ are finite subsums, a share $`(382+14)/633=0.6256`$ close to $`1/E=0.6224`$. This was read as evidence that about $`62\%`$ of rationals are subsums, hence that \#257 is false. The reading is wrong. By Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a> above the share at any fixed depth tends to $`2^NR_N/E`$ whatever the truth of \#257, because fractions equidistribute over the $`2^N`$ intervals that survive $`N`$ steps.
+*First reading.* At $`Q=36`$, $`382`$ of $`633`$ fractions are not rejected through step $`160`$ and $`14`$ are finite subsums, a share $`(382+14)/633=0.6256`$ close to $`1/E=0.6224`$. This was read as evidence that about $`62\%`$ of rationals are subsums, hence that \#257 is false. The reading is wrong. By Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> above the share at any fixed depth tends to $`2^NR_N/E`$ whatever the truth of \#257, because fractions equidistribute over the $`2^N`$ intervals that survive $`N`$ steps.
 
-*An incorrect stopping rule.* A subsequent interpretation went too far in the opposite direction, asserting that survival after about $`2\log_2Q-3.3`$ steps was forced. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which is below $`1`$ for $`n>2\log_2Q-2\log_2\pi`$, about step $`12`$ at $`Q=200`$. A main term below $`1`$ does not make the actual count zero. Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">12</a> is a fixed-depth asymptotic, and its error $`O(2^N\log Q/Q)`$ does not justify an extrapolation to $`N\sim2\log_2Q`$. Late rejections remain exact nonmembership certificates; the $`12{,}218`$ fractions not rejected through step $`60`$ have only that finite-depth status. At $`N=12`$ the observed share is $`0.62372`$ against $`2^{12}R_{12}/E=0.62245`$.
+*An incorrect stopping rule.* A subsequent interpretation went too far in the opposite direction, asserting that survival after about $`2\log_2Q-3.3`$ steps was forced. The measure-based main term for the number rejected at step $`n`$ is $`2^{n-1}g_n\sum_{2\le q\le Q}\varphi(q)`$, asymptotically $`(3Q^2/\pi^2)2^{n-1}g_n`$, which is below $`1`$ for $`n>2\log_2Q-2\log_2\pi`$, about step $`12`$ at $`Q=200`$. A main term below $`1`$ does not make the actual count zero. Theorem <a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> is a fixed-depth asymptotic, and its error $`O(2^N\log Q/Q)`$ does not justify an extrapolation to $`N\sim2\log_2Q`$. Late rejections remain exact nonmembership certificates; the $`12{,}218`$ fractions not rejected through step $`60`$ have only that finite-depth status. At $`N=12`$ the observed share is $`0.62372`$ against $`2^{12}R_{12}/E=0.62245`$.
 
 *An exact rejection at step $`17`$.* The witness $`189/388`$, recorded in the earlier investigation’s Desk B report, contradicts the proposed stopping rule: $`2\log_2 388-2\log_2\pi`$ is about $`13.9`$. The selected indices through step $`16`$ are $`F=\{2,3,7,9,10,14,15,16\}`$. At each skipped earlier index $`n`$, exact rational arithmetic gives a remainder at most $`2^{-n}<R_n`$, so no rejection has yet occurred. The remaining value is
 ``` math
@@ -956,21 +958,21 @@ At $`n=17`$, the exact comparison is
 ``` math
 R_{17}\le\frac{196609}{25769803776}<r<\frac1{131071}=w_{17}.
 ```
-The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">14</a>. The independent reproduction, including every earlier skipped step, is in [`research/experiments/sparse_interpolation/late_rejection.py`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/late_rejection.py). This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
+The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">6.6</a>. The independent reproduction, including every earlier skipped step, is in [`research/experiments/sparse_interpolation/late_rejection.py`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/late_rejection.py). This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
 
-What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#optimal-sparse-perturbations--lem:gaps" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:gaps">13</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">14</a>.
+What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#optimal-sparse-perturbations--lem:gaps" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:gaps">6.5</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">6.6</a>.
 
 <a id="optimal-sparse-perturbations--sec:eliminated"></a>
 
 ### Eliminated ideas
 
-1.  *If the reachable values form a null set, no rational value is reachable.* False. Take the binary series with digit $`1`$ everywhere except digit $`0`$ at positions $`n_1<n_2<\cdots`$, and allow each of those digits to be changed to $`1`$. The reachable values form a null set when the positions are sparse, by Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(i), yet changing all of them gives $`\sum2^{-n}=1`$. So no count of choices against contraction, and no depth depending only on sparsity, excludes a particular rational.
+1.  *If the reachable values form a null set, no rational value is reachable.* False. Take the binary series with digit $`1`$ everywhere except digit $`0`$ at positions $`n_1<n_2<\cdots`$, and allow each of those digits to be changed to $`1`$. The reachable values form a null set when the positions are sparse, by Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(i), yet changing all of them gives $`\sum2^{-n}=1`$. So no count of choices against contraction, and no depth depending only on sparsity, excludes a particular rational.
 
-2.  *Every infinite subset of a host with null subsum set has an irrational sum.* A host is a set $`B`$ of allowed indices, and its subsum set is $`\{X_S(2):S\subseteq B\}`$. For hosts chosen without reference to the target this is open and is a form of \#257 itself. As a universal statement it cannot be a route: the support of any rational subsum with infinite $`S`$ would be such a host. The subsum set of a host $`B`$ has positive measure exactly when the complement of $`B`$ is finite, by Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(i) and the measure at full support.
+2.  *Every infinite subset of a host with null subsum set has an irrational sum.* A host is a set $`B`$ of allowed indices, and its subsum set is $`\{X_S(2):S\subseteq B\}`$. For hosts chosen without reference to the target this is open and is a form of \#257 itself. As a universal statement it cannot be a route: the support of any rational subsum with infinite $`S`$ would be such a host. The subsum set of a host $`B`$ has positive measure exactly when the complement of $`B`$ is finite, by Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(i) and the measure at full support.
 
 3.  *The share of surviving fractions as evidence.* Section <a href="#optimal-sparse-perturbations--sec:misread" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:misread">9</a>.
 
-4.  *A wrong locator.* A draft of Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">11</a>(b) cited Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a> of \[adamczewskifaverjon2026\] as Nishioka’s theorem. That theorem says a value of a Mahler function at an algebraic point is rational or transcendental, which cannot prove irrationality. The proof in Section <a href="#optimal-sparse-perturbations--sec:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:bases">6.2</a> uses Nishioka’s value theorem as quoted in \[adamczewskifaverjon2016, Theorem 1.1, p. 3\], applied there to the two-dimensional system for $`(g,1)`$ with regular points in $`(0,1)`$.
+4.  *A wrong locator.* A draft of Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a>(b) cited Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a> of \[adamczewskifaverjon2026\] as Nishioka’s theorem. That theorem says a value of a Mahler function at an algebraic point is rational or transcendental, which cannot prove irrationality. The proof in Section <a href="#optimal-sparse-perturbations--sec:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:bases">6.2</a> uses Nishioka’s value theorem as quoted in \[adamczewskifaverjon2016, Theorem 1.1, p. 3\], applied there to the two-dimensional system for $`(g,1)`$ with regular points in $`(0,1)`$.
 
 5.  *Algebraic independence for \#1049.* With $`g`$ as in Section <a href="#optimal-sparse-perturbations--sec:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--sec:bases">6.2</a>, $`\sum_{n\ge1}(t^n-1)^{-1}=\sum_{m\ \mathrm{odd}}g(t^{-m})`$, and each $`g(t^{-m})`$ is transcendental for rational $`t>1`$. This gives nothing for the infinite sum: limits of transcendental numbers take every value. No applicable value theorem for this decomposition is supplied here.
 
@@ -978,7 +980,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 ### What was already known
 
-- The covering argument of Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">9</a>(ii) goes back to Kakeya; see \[hornich1941; nitecki2013; fridy1966\]. Its use to build rational series inside a class defined by soft data is the method of Kovač and Tao \[kovactao2024\], of Crmarić and Kovač \[crmarickovac2025\] and of van Doorn and Kovač \[vandoornkovac2025\].
+- The covering argument of Theorem <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>(ii) goes back to Kakeya; see \[hornich1941; nitecki2013; fridy1966\]. Its use to build rational series inside a class defined by soft data is the method of Kovač and Tao \[kovactao2024\], of Crmarić and Kovač \[crmarickovac2025\] and of van Doorn and Kovač \[vandoornkovac2025\].
 
 - That the subsums of $`\sum(t^n-1)^{-1}`$ form a Cantor set at fixed $`t\ge2`$ is \[kovactao2024, Remark 4.1\].
 
@@ -992,9 +994,9 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 ### Sources and formal correspondence
 
-The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#optimal-sparse-perturbations--capacity:lem:feedback" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:lem:feedback">6</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
+The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#optimal-sparse-perturbations--capacity:lem:feedback" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:lem:feedback">3.4</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
 
-The derivative theorem combines residue feedback from \#251 with the treatment of factorial carries in \#68. Identity <a href="#optimal-sparse-perturbations--capacity:eq:jet-carry" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:jet-carry">[capacity:eq:jet-carry]</a> interprets a carry as multiplication by a polynomial vanishing at the evaluation point. This produces the independent higher derivative instead of assuming its availability. The moving coordinates in <a href="#optimal-sparse-perturbations--capacity:eq:moving-taylor" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:moving-taylor">[capacity:eq:moving-taylor]</a> make the full-dimensional critical construction possible; the counting obstruction proves its measure is zero. Conversely, division by the same vanishing polynomial preserves integer factorial coefficients and eventual divisibility. The complementary tail formula then proves rational-derivative rigidity at precisely the same threshold. These are explicit transfers between representations, not evidence for a general improvement in automated discovery. The other programmes motivated comparison of rank, arithmetic and analytic obstructions; their endpoints are not premises here.
+The derivative theorem combines residue feedback from \#251 with the treatment of factorial carries in \#68. Identity <a href="#optimal-sparse-perturbations--capacity:eq:jet-carry" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:jet-carry">(J)</a> interprets a carry as multiplication by a polynomial vanishing at the evaluation point. This produces the independent higher derivative instead of assuming its availability. The moving coordinates in <a href="#optimal-sparse-perturbations--capacity:eq:moving-taylor" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:moving-taylor">(T)</a> make the full-dimensional critical construction possible; the counting obstruction proves its measure is zero. Conversely, division by the same vanishing polynomial preserves integer factorial coefficients and eventual divisibility. The complementary tail formula then proves rational-derivative rigidity at precisely the same threshold. These are explicit transfers between representations, not evidence for a general improvement in automated discovery. The other programmes motivated comparison of rank, arithmetic and analytic obstructions; their endpoints are not premises here.
 
 Hurwitz functions and interpolation by vanishing polynomials are classical. Waldschmidt’s survey \[waldschmidt2022, Sections 2–3\] describes growth and multipoint derivative questions. Here we fix a polynomial bound on the integer Taylor coefficients and study the dimension and interior of a finite real derivative image, as well as rationality of finitely many derivatives under eventual coefficient divisibility. This last hypothesis is restrictive: it is not an unrestricted rational-value theorem for Hurwitz functions. For the classical scalar dimension formula, see Wegmann \[wegmann1968, Satz 4, p. 625\], who credits Šalát. Our additional task is to separate a joint derivative image after several carry constructions have been added. Neither the definition of a Hurwitz function nor the mass-distribution argument is new. The precise dimension formula and the two sharp thresholds are proved here; historical priority remains unestablished.
 
@@ -1002,7 +1004,7 @@ Airey, Mance and Vandehey already use digit sets eventually divisible by every f
 
 The formal module [`CongruenceInterpolation.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Synthesis/CongruenceInterpolation.lean) uses the existing feedback module and states the common-divisor obstruction for a real carry recurrence. The analytic identification of that recurrence with the Cantor series, and the capacity and support classifications, are the ordinary proofs above. The module [`FeedbackContinuation.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Synthesis/FeedbackContinuation.lean) reuses the existing interval-feedback endpoint and proves eventual individual and cumulative divisibility from nested cofinal moduli; choosing the moduli and continuation intervals remains part of the ordinary proof. See the research record for the exact build status and source revision. No claim about any of the eight Erdős programmes changes; in particular factorial denominators $`n!`$ here are not $`n!-1`$ from \#68.
 
-The accompanying module [`FactorialJet.lean`](https://github.com/wcook04/plectis-erdos/blob/2bd14835b940b3c695a9cc8828c7e2967d65c053/lean/ErdosProblems/Synthesis/FactorialJet.lean) checks the finite factorial-carry identity and its first weighted version, including endpoint terms, and preservation of divisibility. It does not formalise Theorems <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">1</a> and <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2</a>, their limits or dimension proof. The exact-arithmetic script `jets.py` checks the formulas at specified finite degrees, both quotient formulas, and independently checks the uniform tail majorant in <a href="#optimal-sparse-perturbations--capacity:eq:moving-taylor" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:moving-taylor">[capacity:eq:moving-taylor]</a>. These finite degree tests are not the proof for every $`d`$.
+The accompanying module [`FactorialJet.lean`](https://github.com/wcook04/plectis-erdos/blob/2bd14835b940b3c695a9cc8828c7e2967d65c053/lean/ErdosProblems/Synthesis/FactorialJet.lean) checks the finite factorial-carry identity and its first weighted version, including endpoint terms, and preservation of divisibility. It does not formalise Theorems <a href="#optimal-sparse-perturbations--capacity:thm:jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:jets">2.1</a> and <a href="#optimal-sparse-perturbations--capacity:thm:rational-jets" data-reference-type="ref" data-reference="optimal-sparse-perturbations--capacity:thm:rational-jets">2.2</a>, their limits or dimension proof. The exact-arithmetic script `jets.py` checks the formulas at specified finite degrees, both quotient formulas, and independently checks the uniform tail majorant in <a href="#optimal-sparse-perturbations--capacity:eq:moving-taylor" data-reference-type="eqref" data-reference="optimal-sparse-perturbations--capacity:eq:moving-taylor">(T)</a>. These finite degree tests are not the proof for every $`d`$.
 
 The capacity criterion already covers non-power and oscillating allowances.
 
@@ -1010,11 +1012,11 @@ The capacity criterion already covers non-power and oscillating allowances.
 
 ### Further questions
 
-1.  Is $`1/2`$ a subsum of $`\sum(2^n-1)^{-1}`$? The exact obligation is in \[plectis257, Theorem 7\]. By Lemma <a href="#optimal-sparse-perturbations--lem:gaps" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:gaps">13</a> the general question is one-sided approximation of a rational by finite subsums $`X_F`$ to within $`g_{\max F}`$.
+1.  Is $`1/2`$ a subsum of $`\sum(2^n-1)^{-1}`$? The exact obligation is in \[plectis257, Theorem 7\]. By Lemma <a href="#optimal-sparse-perturbations--lem:gaps" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:gaps">6.5</a> the general question is one-sided approximation of a rational by finite subsums $`X_F`$ to within $`g_{\max F}`$.
 
-2.  Does the count of fractions of height at most $`Q`$ rejected at step $`n`$ stay close to $`(3Q^2/\pi^2)2^{n-1}g_n`$ in the joint range $`n\le(2-\varepsilon)\log_2Q`$, counted modulo the translations of Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">14</a>? A persistent excess would be the first sign of an arithmetic mechanism for \#257.
+2.  Does the count of fractions of height at most $`Q`$ rejected at step $`n`$ stay close to $`(3Q^2/\pi^2)2^{n-1}g_n`$ in the joint range $`n\le(2-\varepsilon)\log_2Q`$, counted modulo the translations of Lemma <a href="#optimal-sparse-perturbations--lem:translate" data-reference-type="ref" data-reference="optimal-sparse-perturbations--lem:translate">6.6</a>? A persistent excess would be the first sign of an arithmetic mechanism for \#257.
 
-3.  Is $`a^2>b^3`$ necessary in Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">11</a>(a)? First case: base $`4/3`$, a chain with ratios $`2`$ and infinitely many ratios $`3`$.
+3.  Is $`a^2>b^3`$ necessary in Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a>(a)? First case: base $`4/3`$, a chain with ratios $`2`$ and infinitely many ratios $`3`$.
 
 4.  Is there one inequality behind \#1049 Theorem 5 and the cover cost of \#257?
 
