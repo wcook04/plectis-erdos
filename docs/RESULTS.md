@@ -213,6 +213,15 @@ reduces all
 those coordinates, the six relation coefficients, and an integer
 counterexample at one of the first 37 inputs whenever a proposed identity
 is false; its determinant check certifies that finite test.
+For any integer base, the
+[sparse normal-form command](../scripts/totient_kernel_sparse_normal_form.py)
+reduces only the supplied sections to exact integral coordinates and decides
+their identity by the all-base basis theorem. For example,
+`--base 12 --term 8:29859840:1 --term 2:10:-1990656` returns an identity
+without constructing the ambient depth-eight matrix. Its optional
+`--witness-budget` searches for a concrete unequal input; exhaustion does not
+change an exact nonidentity decision. The Python command is an implementation
+of the paper's reduction, not a Lean-verified executable artifact.
 
 <a id="result-251"></a>
 
