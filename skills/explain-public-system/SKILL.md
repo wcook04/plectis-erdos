@@ -31,6 +31,9 @@ source revision. Report both the positive check and the deliberate mismatch,
 the four contract failure controls, declared axiom budget, wall time and machine
 details. A failed receipt or
 missing platform prerequisite is a failure, not a theorem verdict. The
+[replay guide's return section](../../docs/verification/EXTERNAL_VERIFICATION_REPLAY.md#return-a-replay-result)
+routes the report through the existing research-progress form with its exact
+source identity and evidence boundary. The
 [reproducibility guide](../../docs/REPRODUCIBILITY.md) separately explains the
 claim trail and Lean build; neither should be called an independent Comparator
 run. The universal #257 assertion remains open.
