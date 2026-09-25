@@ -270,6 +270,30 @@ jobs:
               raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
           print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
           PY
+      - name: Audit FC1041 sharp-gap adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FC1041SharpGap.lean | tee "$RUNNER_TEMP/fc1041-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc1041-axioms.log").read_text()
+          theorem = "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
       - name: Audit FC257 weighted adapter axioms
         if: steps.lean-inputs.outputs.changed == 'true'
         run: |

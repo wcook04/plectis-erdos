@@ -114897,7 +114897,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:8336f499f7eeac340d17a6d1432a3681c351a27907edc22ea34f651a7a512835",
+  "source_registry_sha256": "sha256:bc1d1176936eaaa1c6259682f203920e823a985042350c4cb2dc0b167dcbdcf3",
   "sources": [
     {
       "artifact_coordinates": [
@@ -118148,17 +118148,17 @@
       "artifact_coordinates": [
         {
           "excerpt_sha256": "sha256:6103702256378b99f284f4867d0c51dd9dd0c5c5e808b1d22f64210a0dbd2253",
-          "line_end": 107,
-          "line_start": 94,
+          "line_end": 108,
+          "line_start": 95,
           "path": "research/adapters/FormalConjecturesAdapter.lean",
-          "sha256": "sha256:402321bc485917ad3860e63834db0b6899f9d12a074fb1518cfb8d90529aea07"
+          "sha256": "sha256:8bbe9e21184ab885e74dae18ecfb28f505fe347091e72e09b1ec37250d091b79"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:6103702256378b99f284f4867d0c51dd9dd0c5c5e808b1d22f64210a0dbd2253",
-          "line_end": 107,
-          "line_start": 94,
+          "line_end": 108,
+          "line_start": 95,
           "path": "research/adapters/FormalConjecturesAdapter.lean"
         }
       ],
@@ -118403,24 +118403,24 @@
       "artifact_coordinates": [
         {
           "excerpt_sha256": "sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed",
-          "line_end": 41,
-          "line_start": 9,
+          "line_end": 42,
+          "line_start": 10,
           "path": "research/adapters/FormalConjecturesAdapter.lean",
-          "sha256": "sha256:402321bc485917ad3860e63834db0b6899f9d12a074fb1518cfb8d90529aea07"
+          "sha256": "sha256:8bbe9e21184ab885e74dae18ecfb28f505fe347091e72e09b1ec37250d091b79"
         },
         {
           "excerpt_sha256": "sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78",
           "line_end": 79,
           "line_start": 67,
           "path": "lakefile.toml",
-          "sha256": "sha256:f5aefe1cef475855224f791ffa81dea673d7e7abed02bfbb1ac8b6131dd16ef9"
+          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed",
-          "line_end": 41,
-          "line_start": 9,
+          "line_end": 42,
+          "line_start": 10,
           "path": "research/adapters/FormalConjecturesAdapter.lean"
         },
         {
@@ -118561,7 +118561,7 @@
           "line_end": 35,
           "line_start": 32,
           "path": "lakefile.toml",
-          "sha256": "sha256:f5aefe1cef475855224f791ffa81dea673d7e7abed02bfbb1ac8b6131dd16ef9"
+          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
         },
         {
           "excerpt_sha256": "sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc",
