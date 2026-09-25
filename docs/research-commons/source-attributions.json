@@ -14019,8 +14019,8 @@
         {
           "path": "docs/PRIOR_ART.md",
           "line_start": 262,
-          "line_end": 266,
-          "excerpt_sha256": "sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289"
+          "line_end": 272,
+          "excerpt_sha256": "sha256:9ec6b8b09de1bfee382a968ad6339f9789fe914f34ddd80289565b2b929a0fc7"
         },
         {
           "path": "docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md",
@@ -14195,8 +14195,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 270,
-          "line_end": 274,
+          "line_start": 276,
+          "line_end": 280,
           "excerpt_sha256": "sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a"
         },
         {
@@ -14429,8 +14429,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 314,
-          "line_end": 330,
+          "line_start": 320,
+          "line_end": 336,
           "excerpt_sha256": "sha256:f4d1278504a386c4d49236ab4efd039ef5ddd233f5bae878c29728b527bd5417"
         }
       ],
@@ -15951,8 +15951,8 @@
         },
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 373,
-          "line_end": 377,
+          "line_start": 379,
+          "line_end": 383,
           "excerpt_sha256": "sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e"
         },
         {
