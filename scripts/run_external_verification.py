@@ -16,6 +16,7 @@ import sys
 from pathlib import Path
 
 import validation_singleflight as singleflight
+import replay_external_verification as replay
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_MISMATCH = (
@@ -269,6 +270,50 @@ def runtime_statement_contract(owner: dict, packet: dict) -> dict:
     }
 
 
+def weighted_support_runtime_row(
+    positive_exit: int,
+    negative_exit: int,
+    positive_log: Path | None,
+    negative_log: Path | None,
+) -> dict:
+    """Bind the one-theorem CI result to the same contract as local replay."""
+    row = {
+        "unit": "weighted-support",
+        "result": "fail",
+        "positive_comparator_exit": positive_exit,
+        "positive_log_digest": digest(positive_log),
+        "negative_mismatch_comparator_exit": negative_exit,
+        "negative_log_digest": digest(negative_log),
+    }
+    try:
+        contract = replay.load_contract(ROOT)
+        selected = replay.select_replay_unit(contract, "weighted-support")
+        replay.validate_unit_configs(ROOT, selected)
+        diagnostic = selected["expected_negative_diagnostic"]
+        observed = diagnostic in optional_runtime_text(negative_log)
+        row.update({
+            "theorem": selected["theorem"],
+            "challenge_module": selected["challenge_module"],
+            "permitted_axioms": selected["permitted_axioms"],
+            "positive_config": selected["positive_config"],
+            "positive_config_digest": digest(ROOT / selected["positive_config"]),
+            "negative_config": selected["negative_config"],
+            "negative_config_digest": digest(ROOT / selected["negative_config"]),
+            "negative_expected_diagnostic": diagnostic,
+            "negative_expected_diagnostic_observed": observed,
+        })
+        if (row["positive_log_digest"] and row["negative_log_digest"]
+                and row["positive_config_digest"] and row["negative_config_digest"]
+                and replay.replay_checks_pass(
+                    positive_exit, negative_exit,
+                    optional_runtime_text(negative_log), diagnostic,
+                )):
+            row["result"] = "pass"
+    except replay.ReplayError as exc:
+        row["contract_error"] = str(exc)
+    return row
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", default="final")
@@ -281,6 +326,10 @@ def main() -> int:
     parser.add_argument("--local-1049-negative-exit", type=int, default=-999)
     parser.add_argument("--local-1049-positive-log", type=Path)
     parser.add_argument("--local-1049-negative-log", type=Path)
+    parser.add_argument("--weighted-support-positive-exit", type=int, default=-999)
+    parser.add_argument("--weighted-support-negative-exit", type=int, default=-999)
+    parser.add_argument("--weighted-support-positive-log", type=Path)
+    parser.add_argument("--weighted-support-negative-log", type=Path)
     parser.add_argument("--comparator-rev")
     parser.add_argument("--lean4export-rev")
     parser.add_argument("--landrun-rev")
@@ -331,6 +380,12 @@ def main() -> int:
         local_1049_negative_text,
         EXPECTED_1049_MISMATCH,
     )
+    weighted_support = weighted_support_runtime_row(
+        args.weighted_support_positive_exit,
+        args.weighted_support_negative_exit,
+        args.weighted_support_positive_log,
+        args.weighted_support_negative_log,
+    )
     all_statuses_open = all(
         row["status"] == "open" for row in packet["problem_index"]["problems"]
     )
@@ -340,6 +395,7 @@ def main() -> int:
         and negative_semantic_rejection
         and args.local_1049_positive_exit == 0
         and local_1049_negative_semantic_rejection
+        and weighted_support["result"] == "pass"
         and pins_match
         and all(binary_digests.values())
         and expected_commit_matches
@@ -382,6 +438,7 @@ def main() -> int:
             "all_statuses_open": all_statuses_open,
         },
         "statement_contract": runtime_statement_contract(owner, packet),
+        "selected_replay_units": {"weighted-support": weighted_support},
         "checks": {
             "projection_and_isolation_check_exit": projection_check,
             "positive_comparator_exit": args.positive_exit,
