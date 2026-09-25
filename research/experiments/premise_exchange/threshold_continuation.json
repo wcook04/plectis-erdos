@@ -50,8 +50,8 @@
       "consumer": "Elaborated Lean dependency index",
       "disposition": "update_now",
       "action": "Export from a completely built Lean environment through scripts/build_lean_dependency_index.py and commit the index with its check receipt.",
-      "completion": "pending",
-      "reentry_condition": "The full local build of both public roots completes; the owner's export and --check pass on the resulting tree."
+      "completion": "completed",
+      "evidence": "Full build of both public roots (9,384 jobs) and export through scripts/build_lean_dependency_index.py: 16,111 nodes and 71,878 edges, source fingerprint sha256:1b897074eae213c240ccca65032dcaae871c428917c60b10bbcc6d76a5043e35 matching the declaration atlas; --check passes. The CI export for the same head reported the same counts. check_release: all 15,669 checks passed."
     },
     {
       "consumer": "Comparator and the paper-to-Lean ledger",
