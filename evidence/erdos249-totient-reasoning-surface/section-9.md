@@ -1612,7 +1612,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \dim_{\mathbb{Q}}\operatorname{span}
 >  \{n\mapsto u_{2^j n+r}:1\le j\le e,\ 0\le r<2^j\}\ge2^e-1.
 > ```
-> The proof is given in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>.*
+> The proof is given in Section 10.8.*
 
 The Lean declaration below states this result.
 

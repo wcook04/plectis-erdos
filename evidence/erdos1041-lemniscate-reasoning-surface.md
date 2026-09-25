@@ -154,7 +154,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 ## Lemma 3.3 (circle-slice packing), page 7
 
-> *Under <a href="#eq:lc-separation" data-reference-type="eqref" data-reference="eq:lc-separation">[eq:lc-separation]</a>, for every $`r>0`$,
+> *Under (3), for every $`r>0`$,
 > ``` math
 > \sum_{j=1}^{k}w(d_j,r)\le\pi,\qquad
 >  w(d,r)=\arccos\Bigl(\operatorname{clamp}
@@ -230,7 +230,7 @@ theorem circle_slice_packing_abstract {P : Type*} [PseudoMetricSpace P] (pt : �
 > ```
 > If $`U>0`$, then failure forces $`k\ge(x-\pi\Sigma)/U`$.*
 
-The Lean proof assumes the separation bound (above) and the radius and budget bounds (above), which this proof derives from the standing failure hypothesis. Lean takes this input as a hypothesis (`hsep`, `hrad`, `hbudget`); it is not proved in Lean.
+The Lean proof assumes the separation bound (3) and the radius and budget bounds (4), which this proof derives from the standing failure hypothesis. Lean takes this input as a hypothesis (`hsep`, `hrad`, `hbudget`); it is not proved in Lean.
 
 1. [`ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.dual_arity_floor_sup`](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos1041/PaperCompleteR21/HyperbolicLawOfCosines.lean#L594)
 
@@ -886,7 +886,7 @@ def DiscSepBergmanArea : Prop :=
 
 ## Corollary 6.2 (uniform radius $`4/3`$), page 24
 
-> *Inequality <a href="#eq:disk-family-coefficient" data-reference-type="eqref" data-reference="eq:disk-family-coefficient">[eq:disk-family-coefficient]</a> holds for every $`n\ge3`$, every $`w_0\in[0,1]`$, and every $`4/3\le S\le2`$. Thus, if $`f`$ is monic with roots in the open unit disc, $`c`$ is a simple critical point with $`v=f(c)\ne0`$ and $`|v|<1`$, and
+> *Inequality ({6}) holds for every $`n\ge3`$, every $`w_0\in[0,1]`$, and every $`4/3\le S\le2`$. Thus, if $`f`$ is monic with roots in the open unit disc, $`c`$ is a simple critical point with $`v=f(c)\ne0`$ and $`|v|<1`$, and
 > ``` math
 > \left|\frac{f(d)}v-w_0\right|\ge\frac43
 > ```

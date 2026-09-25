@@ -440,7 +440,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \text{the integer remainder at }n\text{ is zero}.
 > \end{gathered}
 > ```
-> This condition is equivalent to Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">124</a>. At an actual skipped rank, the source proves that $`F(n-1,n)<0`$ holds exactly when the real prefix agrees with the integer greedy word and its integer remainder is positive. On agreement, $`F(n-1,n)`$ is the negative of that nonnegative remainder. Thus nonnegativity of the margin at every skip is equivalent to vanishing of the remainder at every aligned skip. The equivalence is proved; neither condition is established for all required ranks.*
+> This condition is equivalent to Definition 6.81. At an actual skipped rank, the source proves that $`F(n-1,n)<0`$ holds exactly when the real prefix agrees with the integer greedy word and its integer remainder is positive. On agreement, $`F(n-1,n)`$ is the negative of that nonnegative remainder. Thus nonnegativity of the margin at every skip is equivalent to vanishing of the remainder at every aligned skip. The equivalence is proved; neither condition is established for all required ranks.*
 
 The Lean declarations below together state this result.
 
@@ -607,7 +607,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Then some infinite $`A\subseteq\mathbb{N}_{>0}`$ satisfies $`X_A(2)=1/2`$. No compatibility between different finite supports or bound on their earlier carries is required.*
 > 
-> *These are not the exact-row conditions of Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a>. For such a finite support,
+> *These are not the exact-row conditions of Definition 6.66. For such a finite support,
 > ``` math
 > \operatorname{ihc}(D,M-1)=2^{M-1}-Q(D,M),
 > ```
@@ -866,7 +866,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > *``` math
 > \tfrac12\in\ensuremath{\mathcal A} \;\Longleftrightarrow\; \text{the set of ranks skipped by the greedy rule for }\tfrac12\text{ is infinite}.
 > ```
-> Odd-denominator parity supplies the positivity clause in Theorem 6.68 automatically. Thus its cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is infinite, which the displayed theorem identifies with half-membership. See Observation <a href="#record:257bm-k5" data-reference-type="ref" data-reference="record:257bm-k5">175</a> for the reason this restatement does not itself prove membership.*
+> Odd-denominator parity supplies the positivity clause in Theorem 6.68 automatically. Thus its cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is infinite, which the displayed theorem identifies with half-membership. See Observation 6.132 for the reason this restatement does not itself prove membership.*
 
 The Lean declarations below together state this result.
 
@@ -1050,7 +1050,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.93 (Equivalent forms of the sharper bound), page 67
 
-> *Under the hypotheses of Definition <a href="#record:257bm-i-cap" data-reference-type="ref" data-reference="record:257bm-i-cap">135</a>:
+> *Under the hypotheses of Definition 6.92:
 > ``` math
 > \ensuremath{S}(D,1,2c-2) < 2^{c-2} \;\Longleftrightarrow\; 2^{(2c-2)-1} \le \ensuremath{Q}(D\cup\{c\},\ 2c-2).
 > ```
@@ -1089,7 +1089,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \ensuremath{S}(D,1,2c-2) < 2^{c-1}.
 > ```
-> The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem 6.93 to apply Theorem 6.75. Before using $`|D|\le c-2\le2^{c-2}`$, the proof gives the sharper additive estimate $`\ensuremath{S}(D,1,2c-2)<2^{c-2}+|D|`$. Thus the critical-capacity inequality would follow by excluding the integer band $`[2^{c-2},\,2^{c-2}+c-3]`$, which contains $`c-2`$ integers. This is the same band shape as Theorem 6.79’s dyadic-band condition. Its width is linear in $`c`$, whereas the square-root reset condition discussed in Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> has width $`2^{(r+5)/2}`$ in a different parameter $`r`$. Comparing these widths alone proves no implication between the two hypotheses.*
+> The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem 6.93 to apply Theorem 6.75. Before using $`|D|\le c-2\le2^{c-2}`$, the proof gives the sharper additive estimate $`\ensuremath{S}(D,1,2c-2)<2^{c-2}+|D|`$. Thus the critical-capacity inequality would follow by excluding the integer band $`[2^{c-2},\,2^{c-2}+c-3]`$, which contains $`c-2`$ integers. This is the same band shape as Theorem 6.79’s dyadic-band condition. Its width is linear in $`c`$, whereas the square-root reset condition discussed in Section 12.5 has width $`2^{(r+5)/2}`$ in a different parameter $`r`$. Comparing these widths alone proves no implication between the two hypotheses.*
 
 The Lean declarations below together state this result.
 

@@ -354,7 +354,7 @@ theorem companion_orbit :
 >  1+\varepsilon_m+\frac2m\le m\Delta_m
 > \end{equation}
 > ```
-> implies the escape inequality in <a href="#long68:eq:lower-escape" data-reference-type="eqref" data-reference="long68:eq:lower-escape">[long68:eq:lower-escape]</a>. Cofinally many instances of <a href="#long68:eq:finite-escape" data-reference-type="eqref" data-reference="long68:eq:finite-escape">[long68:eq:finite-escape]</a> therefore imply $`S\notin\mathbb{Q}`$.*
+> implies the escape inequality in (10). Cofinally many instances of (11) therefore imply $`S\notin\mathbb{Q}`$.*
 
 The Lean declaration below states this result.
 
@@ -633,7 +633,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 5.4 (how the coefficient choices change the remainder), page 18
 
-> *For the vector in <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a>,
+> *For the vector in (19),
 > ``` math
 > \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
 >  =tL_D(S-H_D)+\sum_{n>D}z_n.

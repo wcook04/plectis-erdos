@@ -412,7 +412,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 6.1 (a convergent weighted sum over new maxima), page 9
 
-> *Assume the growth and rationality hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
+> *Assume the growth and rationality hypotheses of Problem 1.3. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 > ``` math
 > \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
 > ```*
@@ -449,7 +449,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 6.2 (a bound using the least common multiple), page 11
 
-> *Assume the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
+> *Assume the hypotheses of Problem 1.3. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
 > ``` math
 > \limsup_{n\to\infty}\frac{A_n}{a_n}
 >  \left(\frac{a_n^2}{a_{n+1}}-1\right)<\infty,
@@ -576,7 +576,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 8.1 (necessary profile), page 14
 
-> *The integer tail of a sequence satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
+> *The integer tail of a sequence satisfying Problem 1.3’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
 > ``` math
 > \sum_n\frac{(-E_n)_+}{C_n}=\infty.
 > ```*
