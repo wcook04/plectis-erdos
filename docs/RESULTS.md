@@ -296,8 +296,19 @@ For an infinite support `A` and an integer base `b ≥ 2`, finiteness of
 `∑_{a∈A} h(a)/(a(b^{h(a)}−1))` implies irrationality of
 `∑_{a∈A} 1/(b^a−1)`. The
 [long paper explains the proof](../paper/257/erdos257-mersenne-reasoning-surface.pdf):
-average the residues along multiples of increasingly divisible moduli, then
-choose a finite range of averaging lengths to control the error uniformly.
+if this sum were rational with denominator `v`, every positive displacement
+from an integer would be at least `1/v`. Choose a finite part of `A` and make
+its exponents divide an observation modulus `Q`, so their displacements vanish.
+For the remaining exponents, a complete residue orbit gives the weighted main
+term. Averaging over a finite block of dyadic observation lengths charges the
+incomplete orbits by weighted reciprocal mass, uniformly over finite
+subfamilies; this uniform bound permits the passage to the infinite support.
+The [short paper](../paper/257/erdos-257-mersenne-support-subseries.pdf)
+then chooses the modulus and block length so that its error charged to the
+whole weighted mass tends to zero. The Lean proof first makes the remaining
+tail weight small and uses a different block-length schedule. Both produce a
+positive displacement below `1/v`; their parameter schedules should be read
+with their respective error bounds.
 Lean proves this as `divisibilityWeightedClaim` in
 [`WeightedReturn.lean`](../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean).
 The short paper gives a shorter proof and an
