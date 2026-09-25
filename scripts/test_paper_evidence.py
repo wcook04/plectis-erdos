@@ -322,11 +322,33 @@ def test_partial_aux_keeps_other_papers_numbered(f: Fixture) -> None:
     require([r["statement_markdown"] for r in results] ==
             ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
             "partial aux rewrote untouched rendered references")
+    checked = pe.Problems()
+    unchanged = pe.resolve(f.root, pe.Repo(f.corpus), None, prior, checked,
+                           require_relations=False)
+    require(not checked.items and
+            [r["statement_markdown"] for r in unchanged["papers"][0]["results"]] ==
+            ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
+            "a no-aux check rewrote previously validated references")
     required = pe.Problems()
     pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, required,
                require_relations=False, aux_papers={PAPER_ID})
     require(any("no " in p and ".aux" in p for p in required.items),
             "a selected paper with missing aux was accepted")
+
+
+@with_fixture
+def test_paper_record_pin_override(f: Fixture) -> None:
+    f.materialise()
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, None, problems,
+                          require_relations=False)
+    require(not problems.items, f"the sound evidence failed: {problems.items}")
+    files = pe.outputs(f.root, evidence, "d" * 40, {PAPER_ID: "e" * 40})
+    sidecar = files[f"paper/evidence/{PAPER_ID}.tex"]
+    require(f"/blob/{'e' * 40}/evidence/{PAPER_ID}.md" in sidecar,
+            "the per-paper record pin did not reach the rendered links")
+    require(f"/blob/{'d' * 40}/evidence/{PAPER_ID}.md" not in sidecar,
+            "the default pin leaked into an overridden paper")
 
 
 def test_statement_with_let_is_read_whole() -> None:
@@ -362,6 +384,7 @@ def main() -> int:
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
         test_partial_aux_keeps_other_papers_numbered,
+        test_paper_record_pin_override,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,
     ]

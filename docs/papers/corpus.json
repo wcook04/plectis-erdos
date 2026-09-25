@@ -4293,8 +4293,8 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:26092663f67144788881081f89b9da128edc6dafb5adb80a9d14a88d2b8a7c0b",
-      "pdf_byte_count": 174351,
+      "pdf_sha256": "sha256:6899f4e3e38ad0490ab56e55d7c974c362f1a64b0c2f7bd2c78a9816b7365719",
+      "pdf_byte_count": 174341,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

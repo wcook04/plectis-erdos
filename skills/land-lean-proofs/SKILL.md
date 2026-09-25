@@ -55,8 +55,9 @@ ledger, or in `docs/paper_lean_docstring_exemptions.json` with a reason.
    whose replay report does not show a passing check of the pinned corpus
    bytes, or a stronger Lean statement without a reviewed relation note in
    `evidence/relations.json`. Commit the records, set `record_commit` in
-   `evidence/config.json` to that commit, run the build again so the margin
-   links point at it, and rebuild the PDFs.
+   `evidence/config.json` to that commit for a corpus-wide refresh, or set
+   `record_commit_overrides[paper-id]` for one changed paper. Run the build
+   again so its margin links point at that commit, then rebuild its PDF.
    The propagation check refuses a `\leannote` or a concordance block: that
    apparatus was retired. When the Lean proof assumes an input the printed
    statement does not, or covers only part of it, say so in plain words with

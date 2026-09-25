@@ -748,10 +748,11 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 mark = "lean"
             elif status == "modulo_named_input":
                 mark = "lean_dagger"
-            # A partial aux build cannot renumber equation and problem references in
-            # untouched papers.  Their statement digests are unchanged, so retain
-            # the previously rendered reference text exactly.
-            preserve_presentation = (aux_papers is not None and pid not in aux_papers
+            # Without fresh aux, equation and problem references cannot be
+            # renumbered.  An unchanged statement keeps its previously
+            # rendered reference text, both in a partial build and a full check.
+            preserve_presentation = ((aux_dir is None or
+                                      (aux_papers is not None and pid not in aux_papers))
                                      and prev.get("statement_sha256") == row["statement_sha256"])
             results.append({
                 "id": row["id"],
@@ -1084,14 +1085,16 @@ def paper_titles(root: Path) -> dict[str, tuple[str, str]]:
     return out
 
 
-def outputs(root: Path, evidence: dict, record_commit: str) -> dict[str, str]:
+def outputs(root: Path, evidence: dict, record_commit: str,
+            record_commit_overrides: dict[str, str] | None = None) -> dict[str, str]:
     titles = paper_titles(root)
     files: dict[str, str] = {}
     for paper in evidence["papers"]:
         pid = paper["paper_id"]
         title, pdf = titles.get(pid, (pid, f"paper/{pid}.pdf"))
         files.update(paper_records(evidence, paper, title, pdf))
-        files[f"{SIDECAR_DIR}/{pid}.tex"] = render_sidecar(evidence, paper, record_commit)
+        pin = (record_commit_overrides or {}).get(pid, record_commit)
+        files[f"{SIDECAR_DIR}/{pid}.tex"] = render_sidecar(evidence, paper, pin)
     files[EVIDENCE_MAP] = json.dumps(evidence, indent=1, ensure_ascii=False) + "\n"
     return files
 
@@ -1132,6 +1135,14 @@ def main(argv: list[str] | None = None) -> int:
     config = load_json(root / CONFIG)
     previous = load_json(root / EVIDENCE_MAP) if (root / EVIDENCE_MAP).is_file() else None
     corpus = Repo(args.corpus_repo) if getattr(args, "corpus_repo", None) else None
+    record_commit_overrides = config.get("record_commit_overrides") or {}
+    if not isinstance(record_commit_overrides, dict):
+        problems.add(CONFIG, "record_commit_overrides must be a paper-id to commit map")
+        record_commit_overrides = {}
+    paper_ids = {p["paper_id"] for p in load_json(root / LEDGER)["papers"]}
+    for pid, commit in record_commit_overrides.items():
+        if pid not in paper_ids or not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
+            problems.add(CONFIG, f"invalid record_commit_overrides entry for {pid}")
     if args.command == "build":
         aux_papers = set(args.aux_paper) if args.aux_paper else None
         if aux_papers is not None:
@@ -1149,7 +1160,7 @@ def main(argv: list[str] | None = None) -> int:
                 print("FAIL", item, file=sys.stderr)
             print(f"{len(problems.items)} problems; nothing written", file=sys.stderr)
             return 1
-        write_atomically(root, outputs(root, evidence, record_commit))
+        write_atomically(root, outputs(root, evidence, record_commit, record_commit_overrides))
         n = sum(len(p["results"]) for p in evidence["papers"])
         print(f"wrote evidence for {n} results in {len(evidence['papers'])} papers")
         return 0
@@ -1186,7 +1197,8 @@ def main(argv: list[str] | None = None) -> int:
                 problems.add(row["id"], "the evidence map records a different Comparator status than the ledger")
         for extra in mapped:
             problems.add(extra, "is in the evidence map but not in the ledger")
-    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "")
+    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "",
+                       record_commit_overrides)
     for rel, text in expected.items():
         path = root / rel
         if not path.is_file() or path.read_text(encoding="utf-8") != text:
@@ -1196,13 +1208,20 @@ def main(argv: list[str] | None = None) -> int:
         if rel not in expected and rel != f"{RECORD_DIR}/README.md":
             problems.add(rel, "is not generated from the current evidence; delete it")
     here = Repo(root)
-    if record_commit and here.has_commit(record_commit):
+    for paper in evidence["papers"]:
+        pid = paper["paper_id"]
+        pin = record_commit_overrides.get(pid, record_commit)
+        if not pin:
+            continue
+        if not here.has_commit(pin):
+            problems.add(CONFIG, f"record commit {pin} for {pid} is not in this repository's history")
+            continue
+        prefix = f"{RECORD_DIR}/{pid}"
         for rel, text in expected.items():
-            if rel.startswith(RECORD_DIR + "/") and rel.endswith(".md") and here.text(record_commit, rel) != text:
-                problems.add(rel, f"the papers link the record at {record_commit[:12]}, which differs from "
-                                  "the current record: rebuild the evidence and the papers")
-    elif record_commit:
-        problems.add("config", f"record_commit {record_commit} is not in this repository's history")
+            if (rel == prefix + ".md" or rel.startswith(prefix + "/")) and rel.endswith(".md"):
+                if here.text(pin, rel) != text:
+                    problems.add(rel, f"the paper links the record at {pin[:12]}, which differs from "
+                                      "the current record: rebuild the evidence and the paper")
     return report(problems)
 
 
