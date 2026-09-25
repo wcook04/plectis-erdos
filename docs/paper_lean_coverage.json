@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
-  "content_digest": "sha256:7897183b0f160246879968bd3f1bccdbca1df110b12ce0240c2530408e35da6c",
+  "content_digest": "sha256:022fa097be1ef5f4179be170f27e523e718f2366718671db5bf49e58c2a617d5",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -5342,7 +5342,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:1931d292d498374eceee9f7f9bdac4851912b7df4f39e4c55a1275e7fc159647",
-      "source": "paper/reasoning-parts/erdos243/core.tex:378",
+      "source": "paper/reasoning-parts/erdos243/core.tex:381",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5378,7 +5378,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:431ca52a61edfbc0a914c4f47bae942805dbc9cf3458933caabae3a22f1cc489",
-      "source": "paper/reasoning-parts/erdos243/core.tex:420",
+      "source": "paper/reasoning-parts/erdos243/core.tex:423",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5414,7 +5414,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:dc9efed5e426a662a033d068f53f726b4e6d0a32e929fa6b7a412cef8c643253",
-      "source": "paper/reasoning-parts/erdos243/core.tex:504",
+      "source": "paper/reasoning-parts/erdos243/core.tex:507",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5454,7 +5454,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:a8d5ad85e44c6974a924ee033115b4a612a307777aaf4724432b06b48e49c61f",
-      "source": "paper/reasoning-parts/erdos243/core.tex:580",
+      "source": "paper/reasoning-parts/erdos243/core.tex:583",
       "other_labels": [
         "long243:eq:regularrate"
       ],
@@ -5498,7 +5498,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:3ec047c06085ff93803394dbc906e4c2552c66e246b2e559c44ca59bced6ad59",
-      "source": "paper/reasoning-parts/erdos243/core.tex:646",
+      "source": "paper/reasoning-parts/erdos243/core.tex:649",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -5534,7 +5534,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:e3e8eccbf357a4cb3743f691ed49d9872c4f184b9bf44d5f4da9f5f434a80abf",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1003",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1006",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5570,7 +5570,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:04e2f2796bf69eacfb56df3e9bca867dfb56f5aa19f8f340f20e46562f74131b",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1108",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1111",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5606,7 +5606,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:00831185abaab2fca713186b0c947eea7cf911cf8ab92bf9293b8d5f8c36dee8",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1143",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1146",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5642,7 +5642,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:ad164086082ecda4c2bb23712c289c06a6633fa523057df86044e5e4a5d74ea3",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1179",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1182",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5678,7 +5678,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:4b548eaf41147596063c4e6ee325287a48b287342c4a5c47cd2332d3dc59d507",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1210",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1213",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5714,7 +5714,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:ca9d5d65f2e6928557ab210b1d21a44678a0c60174255be338e95e4db0b5d35c",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1240",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1243",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5750,7 +5750,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:3de09d9d98d4c335955bd740234f5e1f80710c1cc7a66983729680933f9e056b",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1308",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1311",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5786,7 +5786,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:74ea0adf09e769e718896293691f415ef93d84f8825d1e208d246cefe3aa3bad",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1330",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1333",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5822,7 +5822,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:30163dc3626e6af1c2f33f6f86c077df61e7f156f3a5939c1ab857cac40f731f",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1346",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1349",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5858,7 +5858,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:6636775dd060d6e6f648980145dbb9dde408546af4537d0d8c63ef712aadf344",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1426",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1429",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5894,7 +5894,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:9aeb14648ec5bacd6f37b99721c91d264e2c621fa91c22fe29445cb074f4f8ae",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1486",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1489",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5930,7 +5930,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:373cb12fadb09c741260563867123e97b8218ff3661a2915aae3a85c2c2e5d03",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1692",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1695",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5974,7 +5974,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:cc484fcc726fccae095d32b09ccebbe6e3331a5d95a2688b855e42a48581c0eb",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1720",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1723",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6010,7 +6010,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:b819a3b52eb20816c731019284a484ba2f32a6ed950b1bc781c7ac1fa4339161",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1733",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1736",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6061,7 +6061,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:9080620a9259be74d6f28ff74f285dbd39c3178eb26c6c5406b9df4c564c2a6b",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1752",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1755",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6104,7 +6104,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:8e4c6b5317682f1b4ea7ea6faef7a22be46bc8c1d5ecb0de7b844cff69923c4d",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1938",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6179,7 +6179,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:685aadb9d6438bbdd3e5dab7f806461cd9bf96535b64ce3076750195863f9d7e",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1941",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1944",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6223,7 +6223,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:54d49b0679bfeef94e44f35f3c022801fd28d395ab1cd7455dcee71d41586263",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2024",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2027",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6263,7 +6263,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0ad7f7ceddeddff08e9bca139dc0d11a35cc80afdc8b2df213f0d222699e1d03",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2058",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2061",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6306,7 +6306,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:80ea14a7f3b13dbed60fc8e73165e71451a8dcb88e28986c7863e0da779c90cd",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2105",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2108",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6349,7 +6349,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:51f05e6f9bccfd51f44940f82b70da921cce56a78d79636e60a9f4e9a2854147",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2146",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2149",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6408,7 +6408,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:4b0afc5efb3f10d17eea9ff81cc290b8c186eb2f1b3d1b47b74192300a91a78d",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2198",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2201",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6472,7 +6472,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0b1f8c264c1f6b70510292f8596dc008aa416e92200170740e7c5ac11d87d8cd",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2258",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2261",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6526,7 +6526,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:19e688649b81ace374c240c4726e3b0134b1c9db49453c24e35d3f761faa558a",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2335",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2338",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -6573,7 +6573,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:5aef5a3b567c7102d25c768088b42f11a54a2789a84981c7d8f6b01a04f10204",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2416",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2419",
       "other_labels": [
         "long243:eq:shiftedsign"
       ],
@@ -6660,7 +6660,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:0284d8197b33151256c8ef5e61cd340a3353c562db9759af44f43bf966a2bd20",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2483",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2486",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6700,7 +6700,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:f4e839e66613d104b83229541957290f87e39777d19013355ad3b6ffaf37015c",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2571",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2574",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6736,7 +6736,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:e3a14e23ef38cc2b7cdba019e4dc94f70bfa936b347b52256a9601ca689f0cf6",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2626",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2629",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6776,7 +6776,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:264039a071839ea3660b1af65cfac84ee9f863ec5d2447908ba4e1ff1bd8b978",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2723",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2726",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6812,7 +6812,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:e561df1220758e4c347b12a6bda90b9b294e4953854f6dcb1d2a53fe24684440",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2816",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2819",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6848,7 +6848,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:eff6dfbd773372102c9ce43a464cf224b205ddcb4eac6917eebacd6d13bb9474",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2854",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2857",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6884,7 +6884,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:2fc6bec93cab19409edf6df00fec508886a4728aa2a88ca246951ed14d2b779a",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2908",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2911",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6920,7 +6920,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:0984c2754e667a41ac935c2b0745b90d9f3696a5fcc5e23f58ba75dd0596c4cd",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2954",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2957",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6956,7 +6956,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:409ad9847d9323c4a9e7d3d1fef039ec69a1fd784e2ca09ebec747bd2b64b54b",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3001",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3004",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -6992,7 +6992,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:949f1adfc99300d86964e26cf3dc5a98f4c8166828d11e320c98ea910c3c0497",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3047",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3050",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -7028,7 +7028,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:8ef4a31ece4f4085f4ced7dc84123b2ad31ea25f56205f2bb33fff915e42ec30",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3092",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3095",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -7064,7 +7064,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:c27812f50a1746ca98b0aef47ceb309ee4825c4b01c718cc3264e1e04ccc6a3b",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3144",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3147",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -7100,7 +7100,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:b008e44f022991559fbcdf809ce9416a83ce92a3d013433212d8f17cf191150a",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3239",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3242",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -7136,7 +7136,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:c570d5f5765a8793c38d7a0219805e02c7e6842832b37a77752ccefff59807b3",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3535",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3538",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -7172,7 +7172,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:d68cdb08f366174102276152710f882d4547b33c00e71fc2fb500371bb95e7b8",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3575",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3578",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -7208,7 +7208,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:64aad411421b1bd3f7ad791d5a6bd7a30363d1a7494f71815d444509843b0947",
-      "source": "paper/reasoning-parts/erdos243/core.tex:3796",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3799",
       "lean": {
         "status": "exact",
         "declarations": [
