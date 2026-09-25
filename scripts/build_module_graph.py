@@ -67,6 +67,9 @@ AUXILIARY_ROOT_PREFIXES = (
     "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
     "ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit",
     "ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit",
+    # The independently built nonintegral-rate result is a paper source leaf;
+    # keep its exact module reachable without enlarging a supported root.
+    "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
     "ErdosProblems.Erdos243.PaperCorrespondenceAudit",
     "ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit",
     "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit",
