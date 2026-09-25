@@ -10,9 +10,15 @@ from a base-two weighted witness. It is a new composition of two accepted
 Lean declarations, not a declaration copied verbatim from this checkout.
 A [finite-deletion consequence](https://prove2.me/theorems/617fa7c2-841e-4ab0-9f2c-7152d79e3891)
 is also public and Proved in the same environment. Its statement removes an
-arbitrary finite set from the weighted host. These public statuses establish
-machine-checked native results; they do not establish outside first use,
-mathematical peer review, or the universal Erdős #257 claim.
+arbitrary finite set from the weighted host. The stronger
+[eventual-containment consequence](https://prove2.me/theorems/f64da58c-9d9e-4d42-bff7-0907905e6ac5)
+is public and Proved too: an infinite support may have arbitrary elements
+outside a binary-weighted host up to a finite cutoff, provided its strict
+tail lies in that host. Its proof combines the paper theorem with a separate
+[finite-prefix transfer](https://prove2.me/theorems/26a05c39-b6fa-47d2-9e35-5a39a8185a03),
+also public and Proved. This is source-prepared native reuse across two
+results. These statuses do not establish outside first use, mathematical peer
+review, or the universal Erdős #257 claim.
 
 **Reading the proof.** Prove2Me displays its formal challenge statement with
 `:= by sorry` even when the theorem is marked Proved. The accepted Solution is

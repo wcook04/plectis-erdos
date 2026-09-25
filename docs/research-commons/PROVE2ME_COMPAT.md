@@ -3,8 +3,9 @@
 
 # Offline Prove2Me compatibility: one theorem at a time
 
-**Current native status.** The [full #257 weighted-support paper theorem](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd)
-and a [finite-deletion consequence](https://prove2.me/theorems/617fa7c2-841e-4ab0-9f2c-7152d79e3891)
+**Current native status.** The [full #257 weighted-support paper theorem](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd),
+a [finite-deletion consequence](https://prove2.me/theorems/617fa7c2-841e-4ab0-9f2c-7152d79e3891),
+and a stronger [eventual-containment consequence](https://prove2.me/theorems/f64da58c-9d9e-4d42-bff7-0907905e6ac5)
 are public and Proved on Prove2Me in its pinned Lean 4.30.0 environment.
 The paper theorem is a composition of accepted component declarations, while
 the offline adapter documented here selects one older local declaration in
