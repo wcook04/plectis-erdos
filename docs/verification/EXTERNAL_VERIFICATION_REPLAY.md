@@ -50,9 +50,16 @@ adds the theorem itself as a hypothesis, changing the statement while making
 the altered declaration trivial. The replay passes only if the positive
 comparison succeeds and Comparator rejects that exact mismatch. The unit's
 configuration, negative Lean source, axiom budget, and tool revisions are in
-the immutable release contract. Adding the unit does not record a successful
-run: its source-bound Comparator replay remains pending until a passing
-receipt exists for the selected source commit.
+the immutable release contract. The
+[merged-main CI run at `7e33a58b`](https://github.com/wcook04/plectis-erdos/actions/runs/36096621946)
+has a downloaded final `pass` receipt for commit
+`7e33a58bb86180013b1fb855cdd8aaff1d7f9057` and tree
+`86f3bed93955112257c1ecd1c4ca721468d1a870`. Its `weighted-support`
+row records positive Comparator exit 0 and deliberate statement-mismatch exit
+1 with the expected diagnostic observed. The receipt SHA-256 is
+`3dc7a6c42db467dd9b6afba74bf4fd9a1facf5c92d346ce201d3c7e0bdc06699`.
+This is source-bound verification in this repository's CI for that exact commit;
+it is not an independent Linux replay or a result for every later source commit.
 
 ## Reviewer replay
 
