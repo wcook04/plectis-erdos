@@ -15,6 +15,17 @@ progress**, first use the audit mode in
 Do not simply repeat the overview's ranking or the current result guide. A
 plain explanation of one already selected theorem does not need a corpus audit.
 
+## Test one rational subsum candidate
+
+For a request to test a rational candidate in the base-two reciprocal-Mersenne
+achievement set, use the [exact probe guide](../../research/experiments/choices_contraction/README.md#the-probe)
+and run the single-target command with that fraction. The documented
+`189/388` example has outcome `not_excluded` through depth 16 and an exact
+exclusion certificate at step 17. Record the input, host, depth, horizon,
+selected prefix and any strict gap. `not_excluded` is only a finite observation;
+it cannot certify an infinite representation. This computation does not
+verify the weighted irrationality theorem or resolve universal Erdős #257.
+
 ## Reproduce a selected Comparator theorem
 
 For an explicit Comparator or #257 weighted-theorem reproduction request,
