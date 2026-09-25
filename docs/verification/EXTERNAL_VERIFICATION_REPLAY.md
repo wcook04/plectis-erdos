@@ -140,6 +140,19 @@ revisions and binary digests, sandbox mode, positive verdict, and adversarial
 negative verdict. Its `execution_surface` explicitly distinguishes it from
 GitHub Actions.
 
+## Return a replay result
+
+Use the existing [research progress or correction form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
+for a successful, failed, or incomplete outside run. A completed independent
+replay should include the full receipt JSON (attached or linked), its SHA-256,
+the source commit and tree, Linux and systemd mode, the positive and deliberate
+mismatch verdicts, and the `failure_controls` result with its four `observed`
+control IDs for `weighted-support`. Say what was unclear on first use and how
+you want the work credited. If setup stops before a receipt can be written,
+give the exact command and diagnostic instead; do not select the
+independent-replay evidence class for an uncompleted run. Do not post
+credentials, private host details, or unpublished material.
+
 ## Release-cut contract
 
 Local release validation can check a committed source candidate before it is
