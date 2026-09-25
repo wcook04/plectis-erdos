@@ -108,6 +108,21 @@ If this command fails, confirm `python3 -VV`, rerun
 `python3 scripts/test_choices_contraction_probe.py`, and report the exact
 command, error, and `git rev-parse HEAD` through [CONTRIBUTING](../CONTRIBUTING.md).
 
+To try a fraction of your own, use the single-target probe (replace `189/388`):
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --depth 16 17 --horizon 160 --json
+```
+
+Here the depth-16 outcome is `not_excluded`; at depth 17 it is `excluded` with
+the exact selected prefix and strict gap certificate. Other outcomes are
+`finite_representation` (the remainder reached zero) and `not_excluded`
+(no conclusion beyond the tested depth). The
+[probe guide](../research/experiments/choices_contraction/README.md#the-probe)
+defines the host choices and input limits. This is a finite membership probe
+for the base-two subseries, not a test of the weighted irrationality theorem.
+
 ### Reproduce a finite computation
 
 The #251 paper includes three computations with saved results and public
