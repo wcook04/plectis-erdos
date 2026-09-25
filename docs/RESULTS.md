@@ -170,6 +170,19 @@ bounded-negative premise. Read the
 [long record](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf), or
 [selected formal checks](EXTERNAL_VERIFICATION.md#programme-243).
 
+The long record also proves an exact maximal-gap theorem for a separate
+static sieve. Let `m₀<m₁<⋯` be pairwise coprime integers at least `2`, with
+`ℓ(m_j)=j+O(1)` for `ℓ(x)=log₂ log₂ max(4,x)`. If
+`σ=∏_j(1−1/m_j)>0` and `u_n` lists the positive integers divisible by none
+of the `m_j`, then
+`limsup (u_(n+1)−u_n)/ℓ(u_n)=1/σ`. Lean checks the general theorem
+`maximal_gap_limsup_eq_inv_sigma` with the convergence to `σ` stated
+explicitly. The paper's finite-product calculation gives `σ=1/2` and thus
+coefficient `2` for the Fermat moduli `m_j=2^(2^j)+1`. This concerns
+[avoidance of whole moduli](papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:res:gapconstant),
+not coprimality to composite moduli or construction of a reciprocal-tail
+orbit; the unrestricted #243 question remains open.
+
 <a id="result-249"></a>
 
 **[#249](https://www.erdosproblems.com/249).** The short paper and Lean
