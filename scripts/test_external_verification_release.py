@@ -853,6 +853,29 @@ def test_weighted_support_replay_unit() -> None:
                 raise AssertionError(f'accepted weighted {mutation} mutation')
 
 
+def test_weighted_support_runtime_receipt() -> None:
+    contract = replay.load_contract(replay.ROOT)
+    unit = replay.select_replay_unit(contract, 'weighted-support')
+    with tempfile.TemporaryDirectory() as directory:
+        positive_log = Path(directory) / 'positive.log'
+        negative_log = Path(directory) / 'negative.log'
+        positive_log.write_text('Your solution is okay!\n')
+        negative_log.write_text(unit['expected_negative_diagnostic'] + '\n')
+        row = receipt.weighted_support_runtime_row(0, 1, positive_log, negative_log)
+        require(row['result'] == 'pass', 'weighted CI receipt lost its selected-unit pass')
+        require(row['theorem'] == unit['theorem'], 'weighted CI receipt lost its theorem')
+        require(row['challenge_module'] == unit['challenge_module'],
+                'weighted CI receipt lost its challenge')
+        require(row['permitted_axioms'] == unit['permitted_axioms'],
+                'weighted CI receipt lost its axiom budget')
+        negative_log.write_text('an unrelated failure\n')
+        row = receipt.weighted_support_runtime_row(0, 1, positive_log, negative_log)
+        require(row['result'] == 'fail', 'unrelated failure counted as a mismatch')
+        negative_log.write_text(unit['expected_negative_diagnostic'] + '\n')
+        row = receipt.weighted_support_runtime_row(0, 125, positive_log, negative_log)
+        require(row['result'] == 'fail', 'sandbox refusal counted as a mismatch')
+
+
 def test_public_problem_artifact_coverage() -> None:
     """Keep the immutable release envelope visible across the full problem fleet."""
     live_contract = release.contract(release.ROOT)
@@ -978,6 +1001,7 @@ def main() -> int:
     test_replay_plan()
     test_named_construction_replay_unit()
     test_weighted_support_replay_unit()
+    test_weighted_support_runtime_receipt()
     test_public_problem_artifact_coverage()
     test_release_manifest()
     print(

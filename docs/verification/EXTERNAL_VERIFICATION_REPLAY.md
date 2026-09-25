@@ -106,6 +106,9 @@ source checkout, cache download time and digest, machine type, CPU count, and
 the largest child-process memory high-water mark on Linux. Shared cache warmth
 is reported as unmeasured; compare cold and warm runs explicitly if timing
 matters.
+The CI runtime receipt also names this one-theorem unit, its exact configuration
+digests, and both Comparator verdicts. A CI receipt and a passing independent
+Linux replay are separate evidence; the latter has its own receipt schema.
 
 The runner fetches exactly the supplied commit, checks its tree, rejects the
 synthetic merge-message form used by pull-request test merges, and builds these
