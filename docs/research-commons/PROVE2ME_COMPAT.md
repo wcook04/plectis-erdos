@@ -3,6 +3,17 @@
 
 # Offline Prove2Me compatibility: one theorem at a time
 
+**Current native status.** The [full #257 weighted-support paper theorem](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd),
+a [finite-deletion consequence](https://prove2.me/theorems/617fa7c2-841e-4ab0-9f2c-7152d79e3891),
+and a stronger [eventual-containment consequence](https://prove2.me/theorems/f64da58c-9d9e-4d42-bff7-0907905e6ac5)
+are public and Proved on Prove2Me in its pinned Lean 4.30.0 environment.
+The paper theorem is a composition of accepted component declarations, while
+the offline adapter documented here selects one older local declaration in
+this checkout's Lean 4.29.1 environment. Its blocked export result must not
+be read as the current native delivery status. See the
+[weighted theorem reader packet](PROVE2ME_WEIGHTED_257_PACKET.md) for the
+claim, source and signed-out reading route.
+
 The default offline candidate is the **finite-prime weighted-support theorem**,
 a direct irrationality result that applies to some supports with divergent
 reciprocal sums (`res:weighted-support` in
@@ -32,8 +43,9 @@ it at `res:reciprocal-support` in
 `paper/257/erdos-257-mersenne-support-subseries.tex`. The registered claim is
 `reciprocal_summable_support`, with status `formalised here`. Erdős stated
 this all-base extension after his pairwise-coprime case; the paper supplies
-an averaging proof. Neither theorem has been ported or submitted to
-Prove2Me.
+an averaging proof. This offline adapter has not ported or submitted either
+selected declaration; the public #257 paper wrapper above came from a
+separate native port.
 
 The earlier #249 finite-level totient-kernel theorem remains selectable as a
 technical prototype with `--unit erdos249_all_base_totient_kernel_paper_theorem`.
@@ -55,9 +67,8 @@ proof, paper or accepted-contribution record.
 Prove2Me documents native [theorem and proof publication](https://github.com/prove2me/prove2me_workspace/blob/main/SKILL.md),
 [asynchronous publish jobs and correction/deprecation](https://github.com/prove2me/prove2me_workspace/blob/main/references/contribute.md),
 and [verification verdicts](https://github.com/prove2me/prove2me_workspace/blob/main/references/prove.md).
-The adapter maps to those objects; it does not recreate them. No Prove2Me
-mission has been matched to this exact theorem. This offline pilot is not a
-mission selection or submission claim.
+The adapter maps to those objects; it does not recreate them. This offline
+pilot is not a mission selection or submission claim.
 
 ## Prepare and validate
 
