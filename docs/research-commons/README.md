@@ -51,7 +51,7 @@ mathematical acceptance.
 
 Two bounded results have public Prove2Me theorem pages with accepted proofs:
 
-- [#257 paper Theorem 1](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd) has a [reader packet](PROVE2ME_WEIGHTED_257_PACKET.md) with the exact accepted wrapper Solution, its pinned sources, and proved consequences.
+- [#257 paper Theorem 1](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd) has a [reader packet](PROVE2ME_WEIGHTED_257_PACKET.md#try-changing-a-hypothesis) with a changed-base exercise, the exact accepted wrapper Solution, its pinned sources, and proved consequences.
 - [#243 cubic-rate irrationality](https://prove2.me/theorems/51fbd303-588d-4586-9bbc-f5813513b52c) has a [reader packet](PROVE2ME_CUBIC_243_PACKET.md) with the exact accepted Solution, the paper's finite-prefix index bridge, and a proved every-tail consequence.
 
 Each theorem page is visible without an account, but **View graph** currently
