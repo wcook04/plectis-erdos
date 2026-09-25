@@ -47,9 +47,20 @@ routes. Palomar is a formal registry and automated filter rather than human
 peer review, and this repository cannot grant novelty, endorsement, or broad
 mathematical acceptance.
 
-For a source-bound, offline example of preparing one #257 theorem for
-Prove2Me and recording later external responses, see the
-[Prove2Me compatibility path](PROVE2ME_COMPAT.md).
+## Native Prove2Me theorems
+
+Two bounded results have public Prove2Me theorem pages with accepted proofs:
+
+- [#257 paper Theorem 1](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd) has a [reader packet](PROVE2ME_WEIGHTED_257_PACKET.md) with the exact accepted wrapper Solution, its pinned sources, and proved consequences.
+- [#243 cubic-rate irrationality](https://prove2.me/theorems/51fbd303-588d-4586-9bbc-f5813513b52c) has a [reader packet](PROVE2ME_CUBIC_243_PACKET.md) with the exact accepted Solution, the paper's finite-prefix index bridge, and a proved every-tail consequence.
+
+Each theorem page is visible without an account, but **View graph** currently
+asks signed-out readers to sign in. The packets print the accepted Solutions
+for inspection without that step. Neither result settles its unrestricted
+Erdős problem or establishes independent mathematical review. For the older
+source-bound offline adapter, see the
+[Prove2Me compatibility path](PROVE2ME_COMPAT.md); its blocked export is not
+the status of these native theorems.
 
 A contributor can open an ordinary [pull request](../../CONTRIBUTING.md) or
 [research-progress issue](../../.github/ISSUE_TEMPLATE/research_progress.yml)
