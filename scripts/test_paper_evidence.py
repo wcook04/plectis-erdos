@@ -300,6 +300,35 @@ def test_outputs_are_deterministic_and_checkable(f: Fixture) -> None:
     require("Comparator: passed" in record and "receipt-E1.json" in record, "the record omits the check")
 
 
+@with_fixture
+def test_partial_aux_keeps_other_papers_numbered(f: Fixture) -> None:
+    f.materialise()
+    prior = {"papers": [{"results": [
+        {"id": f"{PAPER_ID}#res:first", "number": "3.4", "page": "8",
+         "statement_sha256": f.ledger["rows"][0]["statement_sha256"],
+         "statement_markdown": "Prior reference to Equation (2)", "lean": {}},
+        {"id": f"{PAPER_ID}#res:second", "number": "3.5", "page": "9",
+         "statement_sha256": f.ledger["rows"][1]["statement_sha256"],
+         "statement_markdown": "Prior reference to Problem 1.3", "lean": {}},
+    ]}]}
+    missing_aux = f.root / "missing-aux"
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, problems,
+                          require_relations=False, aux_papers=set())
+    require(not problems.items, f"an unselected paper required aux: {problems.items}")
+    results = evidence["papers"][0]["results"]
+    require([(r["number"], r["page"]) for r in results] == [("3.4", "8"), ("3.5", "9")],
+            "partial aux lost the prior printed coordinates")
+    require([r["statement_markdown"] for r in results] ==
+            ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
+            "partial aux rewrote untouched rendered references")
+    required = pe.Problems()
+    pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, required,
+               require_relations=False, aux_papers={PAPER_ID})
+    require(any("no " in p and ".aux" in p for p in required.items),
+            "a selected paper with missing aux was accepted")
+
+
 def test_statement_with_let_is_read_whole() -> None:
     text = ("theorem t (a : Nat) :\n    let C := a + 1\n    C = a + 1 ∧\n    letI := 0\n"
             "    True := by\n  exact ⟨rfl, trivial⟩\n")
@@ -332,6 +361,7 @@ def main() -> int:
         test_relation_notes_are_required_and_bound,
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
+        test_partial_aux_keeps_other_papers_numbered,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,
     ]

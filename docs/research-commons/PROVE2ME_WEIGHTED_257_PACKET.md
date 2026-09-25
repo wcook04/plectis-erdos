@@ -137,6 +137,29 @@ covers further supports under its additional cover hypotheses.
 The weighted theorem was already proved locally before its native port.
 Neither the adapter nor this note submits or registers anything.
 
+The [paper's support-class comparison](../../paper/257/erdos-257-mersenne-support-subseries.tex)
+gives two ordinary constructions. One has a finite-prime weighted witness
+but no strengthened positive cover. In the other, each finite divisor
+block uses a fresh set of primes: it has a strengthened cover, yet no
+fixed finite prime set gives a weighted witness at any integer base.
+Each block has reciprocal mass between $1$ and $4/3$. If $q_j$ is
+its marker prime and $S_j$ is the reciprocal sum of its other primes,
+the paper bounds the full cover cost by
+$e(j+S_j)/q_j$, with $q_j\ge4^j$. This includes the cost of the
+block's position in the cover, so the infinite total converges.
+The paper then applies the
+mixed theorem to their union. Every infinite subset of that union has
+an irrational series at every integer base, although the union satisfies
+neither individual criterion. This comparison and the explicit hosts
+have ordinary proofs in the paper; the hosts and their strictness
+corollary have not been Lean-checked or independently reviewed.
+
+A useful check is to replace each fresh marker prime by $4^j$.
+The cover calculation still works, but $\{2\}$ then becomes a
+weighted witness. The change shows why fresh prime factors, rather
+than large markers alone, defeat a single fixed witness. Failure of
+either sufficient criterion alone gives no rationality conclusion.
+
 ## Exact claim
 
 For a finite nonempty prime set $P$, let

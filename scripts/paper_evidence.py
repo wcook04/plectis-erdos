@@ -29,7 +29,8 @@ layout are removed.
 Every failure is collected; if there is any, nothing is written and the exit status is 1.
 
 Usage:
-  paper_evidence.py build --corpus-repo PATH --aux-dir DIR [--record-commit SHA]
+  paper_evidence.py build --corpus-repo PATH --aux-dir DIR [--aux-paper PAPER_ID]
+                          [--record-commit SHA]
   paper_evidence.py check [--corpus-repo PATH]      # regenerate in memory, compare
 """
 from __future__ import annotations
@@ -427,7 +428,8 @@ class Problems:
 
 
 def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
-            previous: dict | None, problems: Problems, *, require_relations: bool) -> dict:
+            previous: dict | None, problems: Problems, *, require_relations: bool,
+            aux_papers: set[str] | None = None) -> dict:
     ledger = load_json(root / LEDGER)
     config = load_json(root / CONFIG)
     associations = load_json(root / ASSOCIATIONS)
@@ -604,7 +606,7 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
     for paper in ledger["papers"]:
         pid = paper["paper_id"]
         numbers = {}
-        if aux_dir is not None:
+        if aux_dir is not None and (aux_papers is None or pid in aux_papers):
             aux = aux_dir / f"{pid}.aux"
             if not aux.is_file():
                 problems.add(pid, f"no {aux}")
@@ -746,6 +748,11 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 mark = "lean"
             elif status == "modulo_named_input":
                 mark = "lean_dagger"
+            # A partial aux build cannot renumber equation and problem references in
+            # untouched papers.  Their statement digests are unchanged, so retain
+            # the previously rendered reference text exactly.
+            preserve_presentation = (aux_papers is not None and pid not in aux_papers
+                                     and prev.get("statement_sha256") == row["statement_sha256"])
             results.append({
                 "id": row["id"],
                 "label": label,
@@ -758,8 +765,9 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 "statement_sha256": row["statement_sha256"],
                 "statement_key": statement_keys.get(row["statement_sha256"]),
                 "title": (statements.get(label) or (None, None))[0] if env else span_title(row),
-                "statement_markdown": renumber_references((statements.get(label) or (None, None))[1],
-                                                          numbers_for_row_all),
+                "statement_markdown": (prev.get("statement_markdown") if preserve_presentation else
+                                       renumber_references((statements.get(label) or (None, None))[1],
+                                                           numbers_for_row_all)),
                 "lean": {
                     "status": status,
                     "mark": mark,
@@ -768,9 +776,11 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                         {"name": u[0], "path": u[1], "line": u[2], "text": u[3]}
                         for u in (pin_definition(n) for n in (row["lean"].get("named_inputs") or [])) if u],
                     "scope": row["lean"].get("scope"),
-                    "scope_markdown": tex_to_markdown(row["lean"].get("scope"), numbers_for_row_all),
+                    "scope_markdown": (prev.get("lean", {}).get("scope_markdown") if preserve_presentation else
+                                       tex_to_markdown(row["lean"].get("scope"), numbers_for_row_all)),
                     "reason": row["lean"].get("reason"),
-                    "reason_markdown": tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all),
+                    "reason_markdown": (prev.get("lean", {}).get("reason_markdown") if preserve_presentation else
+                                        tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all)),
                     "relation_note": relation,
                     "declarations": [
                         {"name": d.name, "path": d.path, "line": d.line, "kind": d.kind,
@@ -1108,6 +1118,8 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("build")
     b.add_argument("--corpus-repo", type=Path, required=True)
     b.add_argument("--aux-dir", type=Path)
+    b.add_argument("--aux-paper", action="append", metavar="PAPER_ID",
+                   help="read fresh aux for this paper only; retain prior numbers for others")
     b.add_argument("--record-commit")
     b.add_argument("--allow-missing-relations", action="store_true")
     c = sub.add_parser("check")
@@ -1121,11 +1133,17 @@ def main(argv: list[str] | None = None) -> int:
     previous = load_json(root / EVIDENCE_MAP) if (root / EVIDENCE_MAP).is_file() else None
     corpus = Repo(args.corpus_repo) if getattr(args, "corpus_repo", None) else None
     if args.command == "build":
+        aux_papers = set(args.aux_paper) if args.aux_paper else None
+        if aux_papers is not None:
+            known_papers = {p["paper_id"] for p in load_json(root / LEDGER)["papers"]}
+            if args.aux_dir is None or not aux_papers <= known_papers:
+                problems.add("aux", "--aux-paper needs --aux-dir and known paper IDs")
         record_commit = args.record_commit or config.get("record_commit")
         if not record_commit:
             problems.add("config", "no record commit: pass --record-commit or set record_commit")
         evidence = resolve(root, corpus, args.aux_dir, previous, problems,
-                           require_relations=not args.allow_missing_relations)
+                           require_relations=not args.allow_missing_relations,
+                           aux_papers=aux_papers)
         if problems.items:
             for item in problems.items:
                 print("FAIL", item, file=sys.stderr)

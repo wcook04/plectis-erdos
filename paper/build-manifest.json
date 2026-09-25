@@ -143,14 +143,14 @@
     },
     "erdos_257_note": {
       "inputs": {
-        "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f",
+        "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:a748d16cf577a480ee5da31726591edeec9a21de5f945be3fb2925d9d9f1c3b0",
         "paper/evidence/erdos-257-mersenne-support-subseries.tex": "sha256:b3c344fe99976cbcd5c9c2c1d1b88b30d1b3bd08a572abf7ba365a6424f28d98",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:8299007a02ee0a4dbdab043f6bd290464849dbbcae7f1afb162be5a30311c397",
+      "rendered_content_digest": "sha256:26092663f67144788881081f89b9da128edc6dafb5adb80a9d14a88d2b8a7c0b",
       "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "storage_path": "paper/257/erdos-257-mersenne-support-subseries.pdf"
     },
