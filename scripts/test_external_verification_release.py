@@ -832,13 +832,19 @@ def test_weighted_support_replay_unit() -> None:
     plan = replay.replay_plan('a' * 40, 'b' * 40, 'weighted-support')
     require(plan['statement_contract']['theorem'] == theorem,
             'weighted replay plan changed its theorem')
-    for mutation in ('challenge', 'axioms'):
-        altered = copy.deepcopy(negative)
+    for mutation in ('challenge', 'axioms', 'duplicate_statement_ids'):
+        altered_positive = copy.deepcopy(positive)
+        altered_negative = copy.deepcopy(negative)
         if mutation == 'challenge':
-            altered['challenge_module'] = 'Wrong.Challenge'
+            altered_positive['challenge_module'] = 'Wrong.Challenge'
+            altered_negative['challenge_module'] = 'Wrong.Challenge'
+        elif mutation == 'axioms':
+            altered_positive['permitted_axioms'] = ['propext', 'sorryAx']
+            altered_negative['permitted_axioms'] = ['propext', 'sorryAx']
         else:
-            altered['permitted_axioms'] = ['propext', 'sorryAx']
-        with patch.object(replay, 'load_json', side_effect=[positive, altered]):
+            altered_positive['theorem_names'] = [theorem, theorem]
+            altered_negative['theorem_names'] = [theorem, theorem]
+        with patch.object(replay, 'load_json', side_effect=[altered_positive, altered_negative]):
             try:
                 replay.validate_unit_configs(replay.ROOT, unit)
             except replay.ReplayError:

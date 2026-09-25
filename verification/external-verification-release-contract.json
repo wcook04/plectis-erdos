@@ -19,6 +19,7 @@
   "replay": {
     "positive_config": "verification/comparator-replay.json",
     "negative_config": "verification/comparator-negative-mismatch.json",
+    "challenge_module": "ExternalVerification.Challenge",
     "theorem": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
     "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq'",
     "permitted_axioms": [
@@ -80,6 +81,7 @@
     "feedback-policy": {
       "positive_config": "verification/comparator-feedback-policy.json",
       "negative_config": "verification/comparator-feedback-policy-negative-mismatch.json",
+      "challenge_module": "ExternalVerification.FeedbackPolicyChallenge",
       "theorem": "ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum",
       "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'ErdosProblems.ExternalVerification.feedbackPolicy_preserves_sum'",
       "permitted_axioms": [
@@ -95,6 +97,7 @@
     "weighted-support": {
       "positive_config": "verification/comparator-weighted-support.json",
       "negative_config": "verification/comparator-weighted-support-negative-mismatch.json",
+      "challenge_module": "ExternalVerification.Challenge",
       "theorem": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
       "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.divisibilityWeightedClaim'",
       "permitted_axioms": [
