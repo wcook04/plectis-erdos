@@ -337,6 +337,32 @@ def test_partial_aux_keeps_other_papers_numbered(f: Fixture) -> None:
 
 
 @with_fixture
+def test_no_aux_refreshes_changed_explanations(f: Fixture) -> None:
+    f.materialise()
+    row = f.ledger["rows"][0]
+    row["lean"]["scope"] = "Updated scope"
+    row["lean"]["reason"] = "Updated reason"
+    write(f.root, pe.LEDGER, json.dumps(f.ledger))
+    prior = {"papers": [{"results": [{
+        "id": row["id"], "label": row["label"], "number": "3.4", "page": "8",
+        "statement_sha256": row["statement_sha256"],
+        "statement_markdown": "Prior numbered statement",
+        "lean": {"scope": "Old scope", "scope_markdown": "Old scope rendered",
+                 "reason": "Old reason", "reason_markdown": "Old reason rendered"},
+    }]}]}
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, prior, problems,
+                          require_relations=False)
+    require(not problems.items, f"a changed explanation failed: {problems.items}")
+    result = evidence["papers"][0]["results"][0]
+    require(result["statement_markdown"] == "Prior numbered statement",
+            "the unchanged statement lost its prior numbered rendering")
+    require(result["lean"]["scope_markdown"] == "Updated scope" and
+            result["lean"]["reason_markdown"] == "Updated reason",
+            "changed scope or reason retained stale markdown")
+
+
+@with_fixture
 def test_paper_record_pin_override(f: Fixture) -> None:
     f.materialise()
     problems = pe.Problems()
@@ -384,6 +410,7 @@ def main() -> int:
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
         test_partial_aux_keeps_other_papers_numbered,
+        test_no_aux_refreshes_changed_explanations,
         test_paper_record_pin_override,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,

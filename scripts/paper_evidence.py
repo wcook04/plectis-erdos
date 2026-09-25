@@ -749,8 +749,8 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             elif status == "modulo_named_input":
                 mark = "lean_dagger"
             # Without fresh aux, equation and problem references cannot be
-            # renumbered.  An unchanged statement keeps its previously
-            # rendered reference text, both in a partial build and a full check.
+            # renumbered.  Keep previously rendered text for each unchanged
+            # field; changed scope and reason prose must still be refreshed.
             preserve_presentation = ((aux_dir is None or
                                       (aux_papers is not None and pid not in aux_papers))
                                      and prev.get("statement_sha256") == row["statement_sha256"])
@@ -777,10 +777,14 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                         {"name": u[0], "path": u[1], "line": u[2], "text": u[3]}
                         for u in (pin_definition(n) for n in (row["lean"].get("named_inputs") or [])) if u],
                     "scope": row["lean"].get("scope"),
-                    "scope_markdown": (prev.get("lean", {}).get("scope_markdown") if preserve_presentation else
+                    "scope_markdown": (prev.get("lean", {}).get("scope_markdown")
+                                       if preserve_presentation and
+                                       prev.get("lean", {}).get("scope") == row["lean"].get("scope") else
                                        tex_to_markdown(row["lean"].get("scope"), numbers_for_row_all)),
                     "reason": row["lean"].get("reason"),
-                    "reason_markdown": (prev.get("lean", {}).get("reason_markdown") if preserve_presentation else
+                    "reason_markdown": (prev.get("lean", {}).get("reason_markdown")
+                                        if preserve_presentation and
+                                        prev.get("lean", {}).get("reason") == row["lean"].get("reason") else
                                         tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all)),
                     "relation_note": relation,
                     "declarations": [
