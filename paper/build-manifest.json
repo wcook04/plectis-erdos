@@ -247,9 +247,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/open-source-mathematics-strategy.tex": "sha256:3858770e81ec21410ea5353d739fa78ef3a321903955fcc14e6b03b076fb3643"
+        "paper/systems/open-source-mathematics-strategy.tex": "sha256:234436f94de0b1dcad6b7c4c771ba3b2e523235534ea069f28bdc2566555e608"
       },
-      "rendered_content_digest": "sha256:e79ac37993395a5fe871afb4ed330ec560c79a432858558c394fb15a36b6525e",
+      "rendered_content_digest": "sha256:ba2312b917558b32a658fe924acf92f054f370f054bcafa9e46314a8715c615c",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },

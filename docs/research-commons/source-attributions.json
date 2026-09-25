@@ -36,8 +36,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1656,
-          "line_end": 1661,
+          "line_start": 1658,
+          "line_end": 1663,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432"
         }
@@ -70,8 +70,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1676,
-          "line_end": 1681,
+          "line_start": 1678,
+          "line_end": 1683,
           "expected_text": "\\bibitem{formalconjectures}",
           "excerpt_sha256": "sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d"
         },
@@ -466,8 +466,8 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1671,
-          "line_end": 1676,
+          "line_start": 1673,
+          "line_end": 1678,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0"
         },
@@ -1325,8 +1325,8 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1661,
-          "line_end": 1666,
+          "line_start": 1663,
+          "line_end": 1668,
           "expected_text": "\\bibitem{carleson}",
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e"
         }
@@ -1965,8 +1965,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1681,
-          "line_end": 1687,
+          "line_start": 1683,
+          "line_end": 1689,
           "expected_text": "\\bibitem{palomar}",
           "excerpt_sha256": "sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162"
         }
@@ -2002,8 +2002,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1687,
-          "line_end": 1692,
+          "line_start": 1689,
+          "line_end": 1694,
           "expected_text": "\\bibitem{agenthunt}",
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68"
         }
@@ -2483,8 +2483,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1641,
-          "line_end": 1646,
+          "line_start": 1643,
+          "line_end": 1648,
           "expected_text": "\\bibitem{boinc}",
           "excerpt_sha256": "sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd"
         }
@@ -2831,8 +2831,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1727,
-          "line_end": 1732,
+          "line_start": 1729,
+          "line_end": 1734,
           "expected_text": "\\bibitem{credit}",
           "excerpt_sha256": "sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182"
         }
@@ -2962,8 +2962,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1651,
-          "line_end": 1656,
+          "line_start": 1653,
+          "line_end": 1658,
           "expected_text": "\\bibitem{polymath}",
           "excerpt_sha256": "sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02"
         }
@@ -3072,8 +3072,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1646,
-          "line_end": 1651,
+          "line_start": 1648,
+          "line_end": 1653,
           "expected_text": "\\bibitem{gimps}",
           "excerpt_sha256": "sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd"
         }
@@ -4682,8 +4682,8 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1692,
-          "line_end": 1697,
+          "line_start": 1694,
+          "line_end": 1699,
           "expected_text": "\\bibitem{leanatlas}",
           "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe"
         }
@@ -5693,8 +5693,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1637,
-          "line_end": 1641,
+          "line_start": 1639,
+          "line_end": 1643,
           "expected_text": "\\bibitem{tao2026}",
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a"
         }
@@ -10666,8 +10666,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1732,
-          "line_end": 1737,
+          "line_start": 1734,
+          "line_end": 1739,
           "expected_text": "\\bibitem{githubsecurity}",
           "excerpt_sha256": "sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da"
         }
@@ -13730,8 +13730,8 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1666,
-          "line_end": 1671,
+          "line_start": 1668,
+          "line_end": 1673,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44"
         },
@@ -15987,8 +15987,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1697,
-          "line_end": 1702,
+          "line_start": 1699,
+          "line_end": 1704,
           "expected_text": "\\bibitem{prove2me}",
           "excerpt_sha256": "sha256:c89d595871311eec76167add03b720a82202963564fd46493036b4e96b08de98"
         },
@@ -16055,8 +16055,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1702,
-          "line_end": 1707,
+          "line_start": 1704,
+          "line_end": 1709,
           "expected_text": "\\bibitem{aletheia}",
           "excerpt_sha256": "sha256:35c50b80ea4e9bece2ad431b8db8fe260367c76ed945564205813263b357e81f"
         },
@@ -16127,8 +16127,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1707,
-          "line_end": 1712,
+          "line_start": 1709,
+          "line_end": 1714,
           "expected_text": "\\bibitem{autonomousmath}",
           "excerpt_sha256": "sha256:17dfc81b2347996ae518d9ae35b9f4cbbe428802c4df971c821bb500a90d87de"
         },
@@ -16172,8 +16172,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1722,
-          "line_end": 1727,
+          "line_start": 1724,
+          "line_end": 1729,
           "expected_text": "\\bibitem{taowiki}",
           "excerpt_sha256": "sha256:4fa78969a75193c23aeb06cdd0323df94e0a5887673d1bf5c44d740748d12774"
         },
@@ -16217,8 +16217,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1712,
-          "line_end": 1717,
+          "line_start": 1714,
+          "line_end": 1719,
           "expected_text": "\\bibitem{henkel}",
           "excerpt_sha256": "sha256:6ab1870a7b04b9f3cc30d59640dcc05a0b6fcd49f9ea44245ecb129aba0f4c4e"
         }
@@ -16260,8 +16260,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1717,
-          "line_end": 1722,
+          "line_start": 1719,
+          "line_end": 1724,
           "expected_text": "\\bibitem{openproofcorpus}",
           "excerpt_sha256": "sha256:d7199ff140a739a7be732b44e20113885c623918791626d0f99bd6c7e2a83cc2"
         }
