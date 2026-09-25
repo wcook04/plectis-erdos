@@ -11,6 +11,7 @@ membership or representation claim.
 from __future__ import annotations
 
 import importlib.util
+import copy
 import io
 import json
 import re
@@ -50,8 +51,19 @@ def load_probe():
     return module
 
 
+def load_verifier():
+    spec = importlib.util.spec_from_file_location(
+        "verify_terminal_witness", HOME / "verify_terminal_witness.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
 def main() -> int:
     probe = load_probe()
+    verifier = load_verifier()
 
     # The three outcomes partition the candidates and replay the saved rows.
     saved = json.loads((HOME / "results" / "grid_q12_24_36.json").read_text(encoding="utf-8"))
@@ -127,6 +139,30 @@ def main() -> int:
     cli_rows = json.loads(output.getvalue())["rows"]
     assert [row["outcome"] for row in cli_rows] == ["not_excluded", "excluded"]
     assert cli_rows[1] == late
+    assert verifier.verify(late) == "verified_exclusion"
+    assert verifier.verify(probe.single_target(Fraction(1, 3), "all", 20, 160)) == \
+        "verified_finite_representation"
+    computed = probe.single_target(Fraction(5, 8), "all", 20, 100)
+    assert computed["tail_bound_kind"] == "computed_horizon"
+    assert verifier.verify(computed) == "verified_exclusion"
+    for changed in (
+        {"target": "1/2"},
+        {"selected_indices": [2, 3, 7]},
+        {"remainder": "1/100"},
+        {"tail_upper": "1/1000000"},
+        {"weight": "1/2"},
+        {"first_rejection": 18},
+        {"host": "odd"},
+        {"outcome": "not_excluded"},
+    ):
+        altered = copy.deepcopy(late)
+        altered.update(changed)
+        try:
+            verifier.verify(altered)
+        except (ValueError, KeyError):
+            pass
+        else:
+            raise AssertionError((changed, "altered witness accepted"))
 
     # The large-cutoff table in the README is the saved computation.
     sweep = json.loads(

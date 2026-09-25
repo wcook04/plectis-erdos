@@ -123,6 +123,20 @@ the exact selected prefix and strict gap certificate. Other outcomes are
 defines the host choices and input limits. This is a finite membership probe
 for the base-two subseries, not a test of the weighted irrationality theorem.
 
+The [probe guide](../research/experiments/choices_contraction/README.md#the-probe)
+also gives an inspected, commit-pinned single-file route before cloning. For
+a terminal row in this checkout, make a JSON record with `--depth 17` alone
+and check it independently:
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --depth 17 --horizon 160 --json > witness.json
+python3 research/experiments/choices_contraction/verify_terminal_witness.py witness.json
+```
+
+The receiver recomputes the prefix and tail bound; a `not_excluded` row is
+refused because finite survival is no membership certificate.
+
 ### Reproduce a finite computation
 
 The #251 paper includes three computations with saved results and public

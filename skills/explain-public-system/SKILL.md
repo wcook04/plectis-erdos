@@ -25,6 +25,8 @@ exclusion certificate at step 17. Record the input, host, depth, horizon,
 selected prefix and any strict gap. `not_excluded` is only a finite observation;
 it cannot certify an infinite representation. This computation does not
 verify the weighted irrationality theorem or resolve universal Erdős #257.
+For a terminal row, run the guide's `verify_terminal_witness.py` receiver
+check on the JSON record before calling its exclusion or finite sum certified.
 
 ## Reproduce a selected Comparator theorem
 
