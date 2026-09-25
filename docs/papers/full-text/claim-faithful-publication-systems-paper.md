@@ -205,7 +205,7 @@ One result per problem, with its stopping point. The papers state each result in
 
 </div>
 
-The repository holds 1,823 Lean modules in its two library roots under a pinned toolchain, sixteen problem papers, a cross-problem synthesis paper and three systems papers. The claim registry holds 150 public claims in seven statuses, from proved here and formalised here to conditional reduction and open, and states 19 remaining obligations exactly. Continuous integration builds the supported Lean roots, a coverage build compiles every module a paper cites, and the release checker checks claims, papers, generated views and licences. A fresh clone needs no private file, and no public theorem depends on an unpublished lemma.
+The repository holds 1,823 Lean modules, counting the two library root files, under a pinned toolchain. The root-import check counts the 1,821 modules beneath those roots. It also holds sixteen problem papers, a cross-problem synthesis paper and three systems papers. The claim registry holds 150 public claims in seven statuses, from proved here and formalised here to conditional reduction and open, and states 19 remaining obligations exactly. Continuous integration builds the supported Lean roots, a coverage build compiles every module a paper cites, and the release checker checks claims, papers, generated views and licences. A fresh clone needs no private file, and no public theorem depends on an unpublished lemma.
 
 <div id="systems-comprehension">
 
