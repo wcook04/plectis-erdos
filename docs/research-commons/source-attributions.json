@@ -14770,8 +14770,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesAdapter.lean",
-          "line_start": 94,
-          "line_end": 107,
+          "line_start": 95,
+          "line_end": 108,
           "excerpt_sha256": "sha256:6103702256378b99f284f4867d0c51dd9dd0c5c5e808b1d22f64210a0dbd2253"
         }
       ],
@@ -14813,8 +14813,8 @@
       "artifact_links": [
         {
           "path": "research/adapters/FormalConjecturesAdapter.lean",
-          "line_start": 9,
-          "line_end": 41,
+          "line_start": 10,
+          "line_end": 42,
           "excerpt_sha256": "sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed"
         },
         {
