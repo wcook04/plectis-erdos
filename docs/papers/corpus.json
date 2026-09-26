@@ -4127,12 +4127,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:dc324514dec8da33763c8fe510eadec675fc8feb94586d3a5ce408b28e04f78b",
+      "source_sha256": "sha256:76a0807b47cbdfcebc3d96eb96b6eb854779e629624fc5e6bacd464d74b96a27",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 26,
+      "section_count": 27,
       "sections": [
         {
           "level": 1,
@@ -4172,126 +4172,132 @@
         },
         {
           "level": 2,
+          "id": "sec:finite-witness-rules",
+          "title": "Finite rules for prime witnesses",
+          "line": 233
+        },
+        {
+          "level": 2,
           "id": "sec:common-kernel",
           "title": "A common finite average for the extensions",
-          "line": 233
+          "line": 269
         },
         {
           "level": 2,
           "id": "positive-divisor-majorants",
           "title": "Positive divisor majorants",
-          "line": 271
+          "line": 307
         },
         {
           "level": 2,
           "id": "what-every-positive-cover-must-pay",
           "title": "What every positive cover must pay",
-          "line": 332
+          "line": 368
         },
         {
           "level": 2,
           "id": "combining-the-two-support-criteria",
           "title": "Combining the two support criteria",
-          "line": 424
+          "line": 460
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 491
+          "line": 527
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 517
+          "line": 553
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Limits of the small-displacement criterion",
-          "line": 532
+          "line": 568
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 550
+          "line": 586
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "Greedy membership and an integer recurrence",
-          "line": 566
+          "line": 602
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 633
+          "line": 669
         },
         {
           "level": 4,
           "id": "integer-quotients-for-121.",
           "title": "Integer quotients for 1/21.",
-          "line": 639
+          "line": 675
         },
         {
           "level": 4,
           "id": "approximation-to-12-by-finite-supports.",
           "title": "Approximation to 1/2 by finite supports.",
-          "line": 689
+          "line": 725
         },
         {
           "level": 4,
           "id": "finite-families-with-a-shared-prefix.",
           "title": "Finite families with a shared prefix.",
-          "line": 729
+          "line": 765
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 795
+          "line": 831
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 799
+          "line": 835
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 814
+          "line": 850
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Sources",
-          "line": 827
+          "line": 863
         },
         {
           "level": 4,
           "id": "reproducing-the-weighted-theorem.",
           "title": "Reproducing the weighted theorem.",
-          "line": 835
+          "line": 871
         },
         {
           "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 848
+          "line": 884
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 854
+          "line": 890
         }
       ],
-      "citations_rendered": 20,
+      "citations_rendered": 21,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
       "pdf_sha256": "sha256:055cb823afe0c70c6298b78ad4df1f7769bf2471938c4349092b1660ff038a46",
       "pdf_byte_count": 174923,
@@ -4317,7 +4323,7 @@
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 633
+            "line": 669
           }
         ],
         "unresolved_count": 0
@@ -7640,7 +7646,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:6d01a38e0ce0ca5df07d0369a1e15566e400a9f60d3c2daff8dd1a69798facb2",
+      "source_sha256": "sha256:7c7d0f28742127bd5ca7cc71d52074cbc712927ad7f2c7e929ba163a5dcab4dc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7812,7 +7818,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:7d629bd4139ae382eb72aa9c77e3303846f99c832f8800b3c0c6e9c2bd9f5289",
+      "source_sha256": "sha256:3b894ef7f52d14e8af1d3a8ecd474a640a5088cde5a443c0ea467b5cbc2154d6",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
