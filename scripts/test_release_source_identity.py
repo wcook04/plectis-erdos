@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import os
+import json
 import subprocess
 import tempfile
 from unittest import mock
@@ -190,6 +191,18 @@ def main() -> int:
             matches_new, new_detail = check_release.formal_source_matches_current_lean_tree(new_ref)
             require(matches_new, "new formal-source reference did not match its tree")
             require(new_detail == "", "new formal-source reference reported unexpected drift")
+            for ref, expected_code in ((old_ref, 1), (new_ref, 0), ("invalid", 1)):
+                with (
+                    mock.patch.object(check_release, "read", return_value=json.dumps({
+                        "release": {"formal_source": {"ref": ref}},
+                    })),
+                    mock.patch.object(check_release, "missing_release_dependencies",
+                                      side_effect=AssertionError("source preflight requested release packages")),
+                    mock.patch.object(check_release.singleflight, "submit",
+                                      side_effect=AssertionError("source preflight acquired a build worker")),
+                ):
+                    require(check_release.main(["--source-identity-only"]) == expected_code,
+                            "source-only preflight lost the formal checkpoint boundary")
 
             (root / "Erdos249257.lean").write_text(
                 "import Erdos249257.PostRef\n", encoding="utf-8"

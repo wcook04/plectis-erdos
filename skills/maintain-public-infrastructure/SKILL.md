@@ -151,6 +151,14 @@ artifacts retain the filenames belonging to their recorded revision.
 
 ## Validate behavior, not decoration
 
+For recurring CI failures, compare the failed run's tested commit and start time
+with the repair, and inspect the affected branch as well as the default branch.
+An unmerged infrastructure fix does not protect existing branches. Carry the
+guard onto an affected branch together with its repair, regenerating that branch's
+projections through their owners instead of copying evidence from another branch.
+Report branch repair, default-branch rollout and exact-head CI results separately;
+do not declare prevention deployed while its pull request is still unmerged.
+
 When integrating concurrent implementations of one owner, reconcile its API,
 environment variables and diagnostics before regenerating its consumers. Run
 the relevant tests from both parent revisions on the combined implementation;

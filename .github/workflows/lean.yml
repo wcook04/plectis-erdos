@@ -111,8 +111,8 @@ jobs:
       # Every job depends on this gate. Reject stale committed evidence before
       # restoring Lean caches or compiling; keep the full export below as an
       # independent verification of a source-current packet.
-      - name: Check committed dependency-index receipt before expensive jobs
-        run: python3 scripts/build_lean_dependency_index.py --check --tracked-only
+      - name: Check committed source evidence before expensive jobs
+        run: python3 scripts/refresh_projections.py --preflight
 
   build:
     needs: change_scope
