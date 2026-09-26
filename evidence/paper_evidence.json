@@ -42691,7 +42691,7 @@
      "source": "paper/reasoning-parts/erdos257/a257_front.tex:510",
      "statement_sha256": "sha256:cbb30ad0b19d323bff1cd2c18e8624917ca6e6231b2262334ebdccddc566c891",
      "statement_key": "sha256:12fbd124eecd8016b4fd7426bdeb2ddca64e779a4b4bd2bf7b484c392a234dff",
-     "title": null,
+     "title": "realising finite monotone witness rules",
      "statement_markdown": null,
      "lean": {
       "status": "exact_or_stronger",
@@ -64642,7 +64642,125 @@
       ]
      },
      "comparator": {
-      "status": "pending"
+      "status": "compared",
+      "commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+      "run_id": "35935225572",
+      "checks": [
+       {
+        "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing",
+        "entry": "E1041_01",
+        "challenge": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
+         "path": "PalomarCorpus/E1041_01/Challenge.lean",
+         "line": 210,
+         "statement": "theorem circle_slice_packing {k : ℕ} (d θ : Fin k → ℝ) (hd : ∀ j, 0 < d j)\n    {D : ℝ} (hD : 0 < D)\n    (hsep : ∀ i j : Fin k, i ≠ j → D ≤ dist (polar (d i) (θ i)) (polar (d j) (θ j)))\n    {r : ℝ} (hr : 0 < r) :\n    ∑ j, sliceHalfAngle D (d j) r ≤ π",
+         "same_as_lean": true
+        },
+        "solution": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
+         "module": "Solutions.PalomarCorpus.E1041.PaperStatementsAC",
+         "path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean",
+         "line": 20
+        },
+        "configuration": "PalomarCorpus/E1041_01/comparator.json",
+        "receipt": "evidence/comparator/replay-35935225572/receipt-E1041_01.json"
+       },
+       {
+        "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.cosh_dist_polar",
+        "entry": "E1041_01",
+        "challenge": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar",
+         "path": "PalomarCorpus/E1041_01/Challenge.lean",
+         "line": 250,
+         "statement": "theorem cosh_dist_polar (d₁ θ₁ d₂ θ₂ : ℝ) :\n    cosh (dist (polar d₁ θ₁) (polar d₂ θ₂))\n      = cosh d₁ * cosh d₂ - sinh d₁ * sinh d₂ * cos (θ₁ - θ₂)",
+         "same_as_lean": true
+        },
+        "solution": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar",
+         "module": "Solutions.PalomarCorpus.E1041.PaperStatementsC",
+         "path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean",
+         "line": 20
+        },
+        "configuration": "PalomarCorpus/E1041_01/comparator.json",
+        "receipt": "evidence/comparator/replay-35935225572/receipt-E1041_01.json"
+       },
+       {
+        "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.dist_polar_I",
+        "entry": "E1041_01",
+        "challenge": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.dist_polar_I",
+         "path": "PalomarCorpus/E1041_01/Challenge.lean",
+         "line": 255,
+         "statement": "theorem dist_polar_I (d θ : ℝ) : dist (polar d θ) UpperHalfPlane.I = |d|",
+         "same_as_lean": true
+        },
+        "solution": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.dist_polar_I",
+         "module": "Solutions.PalomarCorpus.E1041.PaperStatementsC",
+         "path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean",
+         "line": 24
+        },
+        "configuration": "PalomarCorpus/E1041_01/comparator.json",
+        "receipt": "evidence/comparator/replay-35935225572/receipt-E1041_01.json"
+       },
+       {
+        "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.exists_polar",
+        "entry": "E1041_01",
+        "challenge": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.exists_polar",
+         "path": "PalomarCorpus/E1041_01/Challenge.lean",
+         "line": 258,
+         "statement": "theorem exists_polar (z : ℍ) : ∃ d θ : ℝ, 0 ≤ d ∧ polar d θ = z",
+         "same_as_lean": true
+        },
+        "solution": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.exists_polar",
+         "module": "Solutions.PalomarCorpus.E1041.PaperStatementsC",
+         "path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean",
+         "line": 26
+        },
+        "configuration": "PalomarCorpus/E1041_01/comparator.json",
+        "receipt": "evidence/comparator/replay-35935225572/receipt-E1041_01.json"
+       },
+       {
+        "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.polar_zero_zero",
+        "entry": "E1041_01",
+        "challenge": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero",
+         "path": "PalomarCorpus/E1041_01/Challenge.lean",
+         "line": 261,
+         "statement": "theorem polar_zero_zero : polar 0 0 = UpperHalfPlane.I",
+         "same_as_lean": true
+        },
+        "solution": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero",
+         "module": "Solutions.PalomarCorpus.E1041.PaperStatementsC",
+         "path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean",
+         "line": 28
+        },
+        "configuration": "PalomarCorpus/E1041_01/comparator.json",
+        "receipt": "evidence/comparator/replay-35935225572/receipt-E1041_01.json"
+       },
+       {
+        "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing_abstract",
+        "entry": "E1041_01",
+        "challenge": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
+         "path": "PalomarCorpus/E1041_01/Challenge.lean",
+         "line": 217,
+         "statement": "theorem circle_slice_packing_abstract {P : Type*} [PseudoMetricSpace P] (pt : ℝ → ℝ → P)\n    (hlaw : ∀ d₁ θ₁ d₂ θ₂ : ℝ, cosh (dist (pt d₁ θ₁) (pt d₂ θ₂))\n      = cosh d₁ * cosh d₂ - sinh d₁ * sinh d₂ * cos (θ₁ - θ₂))\n    {k : ℕ} (d θ : Fin k → ℝ) (hd : ∀ j, 0 < d j)\n    {D : ℝ} (hD : 0 < D)\n    (hsep : ∀ i j : Fin k, i ≠ j → D ≤ dist (pt (d i) (θ i)) (pt (d j) (θ j)))\n    {r : ℝ} (hr : 0 < r) :\n    ∑ j, sliceHalfAngle D (d j) r ≤ π",
+         "same_as_lean": true
+        },
+        "solution": {
+         "declaration": "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
+         "module": "Solutions.PalomarCorpus.E1041.PaperStatementsAC",
+         "path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean",
+         "line": 26
+        },
+        "configuration": "PalomarCorpus/E1041_01/comparator.json",
+        "receipt": "evidence/comparator/replay-35935225572/receipt-E1041_01.json"
+       }
+      ]
      },
      "record": "evidence/erdos1041-lemniscate-reasoning-surface.md"
     },

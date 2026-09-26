@@ -337,7 +337,7 @@ def main() -> int:
     with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_combined):
         publication_results = check_release.publication_stage_check_results()
     require(
-        len(combined_dispatches) == len(check_release.refresh_projections.BUILDERS) + 4,
+        len(combined_dispatches) == len(check_release.refresh_projections.BUILDERS) + 5,
         "publication-stage pool dropped or repeated a check",
     )
     require(
@@ -351,6 +351,7 @@ def main() -> int:
             "note_source",
             "paper_corpus",
             "publication_taxonomy",
+            "publication_archive_versions",
         }
         <= publication_results.keys(),
         "publication-stage pool lost a named diagnostic result",
