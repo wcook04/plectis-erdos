@@ -12,7 +12,18 @@ producer relation it emits against hand-computed expectations:
 * a guarded statement whose producer premise is discharged by the guard;
 * an ``↔`` read in both directions, so each side reduces to the other (a
   disguise the graph builder must detect);
-* an ``∧`` component supplied outright.
+* an ``∧`` component supplied outright;
+* the idle-hypothesis pass: a proof that never uses a hypothesis, with the
+  stronger statement accepted by the kernel.
+
+Namespace ``ReviewToy`` holds the shapes an adversarial review of the
+exporter found mishandled, all without ``sorry``: a disequation producer that
+must instantiate and refute an equation, a plain negation that must refute,
+a propositional instance binder, a data binder carrying an impossible proof
+(which must not count as unconditional), an antecedent first seen as a
+conclusion, bound-variable renamings of one statement, an unusable match that
+must not hide a leaf from the battery, and the generated lemmas of a
+structure (which are not arguments of the corpus).
 
 It needs a Lean toolchain (``lake env lean``); without one it exits 0 with a
 skip line, because the no-Lean CI jobs cannot run it and the Lean build job
@@ -58,7 +69,54 @@ def Named : Prop := ∀ n : Nat, Supply n
 theorem uses_named (_h : Named) : True := trivial
 theorem named_of_even (h : ∀ n : Nat, EvenP n) : Named := fun n => supply_of_even n (h n)
 
+def Fresh (n : Nat) : Prop := n = n
+theorem fresh_of_open (_h : OpenQ) : ∀ n : Nat, Fresh n := fun _ => rfl
+
 end ToyCorpus
+
+namespace ReviewToy
+
+def g (n : Nat) : Nat := n + 1
+theorem g_ne (n : Nat) : g n ≠ 0 := Nat.succ_ne_zero n
+theorem uses_g3 (h : g 3 ≠ 0) : g 3 ≠ 0 ∧ True := ⟨h, trivial⟩
+theorem uses_g5 (h : g 5 = 0) : g 5 = 0 ∧ True := ⟨h, trivial⟩
+
+def Q (n : Nat) : Prop := n < n
+theorem not_Q (n : Nat) : ¬ Q n := Nat.lt_irrefl n
+theorem uses_Q3 (h : Q 3) : Q 3 ∧ True := ⟨h, trivial⟩
+
+class MyFact (p : Prop) : Prop where
+  out : p
+def P0 : Prop := ∀ n : Nat, n = n + 1
+theorem from_fact [h : MyFact P0] : P0 := h.out
+
+structure Witness where
+  n : Nat
+  bad : n < 0
+def P2 (k : Nat) : Prop := k = k + 1
+theorem from_witness (k : Nat) (w : Witness) : P2 k := absurd w.bad (Nat.not_lt_zero _)
+theorem uses_P2 (h : P2 3) : P2 3 ∧ True := ⟨h, trivial⟩
+
+structure Cert (v : Nat) where
+  q : Nat
+  small : q < 0
+theorem false_of_cert {v : Nat} (cert : Cert v) : False := absurd cert.small (Nat.not_lt_zero _)
+
+def R7 (n : Nat) : Prop := n < n
+def Z7 : Prop := 7 < 7
+theorem a_first (h : Z7) : R7 7 := h
+theorem b_second (h : R7 7) : R7 7 ∧ True := ⟨h, trivial⟩
+theorem not_R7_and (n : Nat) : ¬ R7 n ∧ True := ⟨Nat.lt_irrefl n, trivial⟩
+
+def S8 (n : Nat) : Prop := n = n
+theorem uses_s8_n (h : ∀ n, S8 n) : (∀ n, S8 n) ∧ True := ⟨h, trivial⟩
+theorem uses_s8_m (h : ∀ m, S8 m) : (∀ m, S8 m) ∧ True := ⟨h, trivial⟩
+theorem uses_s8_i (h : ∀ {n}, S8 n) : (∀ n, S8 n) ∧ True := ⟨fun _ => h, trivial⟩
+
+theorem my_trans (a b c : Nat) (h1 : a = b) (h2 : b = c) : a = c := h1 ▸ h2
+theorem uses_225 (h : (2 : Nat) + 2 = 5) : (2 : Nat) + 2 = 5 ∧ True := ⟨h, trivial⟩
+
+end ReviewToy
 """
 
 
@@ -98,7 +156,7 @@ def run_export() -> list[dict]:
             raise SystemExit(0)
         env = dict(os.environ)
         env["PLECTIS_CONTINUATION_EXPORT_FILE"] = str(out_file)
-        env["PLECTIS_CONTINUATION_NAME_PREFIXES"] = "ToyCorpus"
+        env["PLECTIS_CONTINUATION_NAME_PREFIXES"] = "ToyCorpus,ReviewToy"
         completed = subprocess.run(
             command, cwd=os.environ.get("PLECTIS_TEST_LEAN_CWD", str(ROOT)),
             env=env, text=True, capture_output=True, timeout=900,
@@ -172,6 +230,8 @@ def main() -> int:
            f"Named unfolds to the universal Supply statement: {unfolds}")
     named = supplied("ToyCorpus.Named")
     expect(named.get("named_of_even:theorem") is None, "theorem reductions are the builder's job")
+    expect(named.get("named_of_even:conclusion") == ["∀ (n : Nat), ToyCorpus.EvenP n"],
+           f"a producer whose conclusion is a named ∀-proposition still matches: {named}")
 
     even2 = supplied("ToyCorpus.EvenP 2")
     expect(even2.get("both:and_right") == [], f"EvenP 2 supplied by a conjunct: {even2}")
@@ -196,6 +256,61 @@ def main() -> int:
     refuted = {statements[r["statement"]]["type"] for r in rows if r["record"] == "battery_refutation"}
     expect("3 ≥ 7" in refuted, f"the battery refutes 3 ≥ 7: {refuted}")
     expect("ToyCorpus.EvenP 3" not in refuted, "a true statement must not be refuted")
+
+    # Idle hypotheses: proofs that never use a hypothesis.
+    idle = {r["theorem"].split(".")[-1]: r for r in rows if r["record"] == "idle"}
+    openq_key = by_type.get("ToyCorpus.OpenQ")
+    fresh = idle.get("fresh_of_open")
+    expect(fresh is not None and fresh["kernel_checked"]
+           and [d.get("key") for d in fresh["dropped"]] == [openq_key],
+           f"fresh_of_open never uses its OpenQ hypothesis: {fresh}")
+    for name in ("uses_named", "uses_even_two", "uses_guarded", "supply_of_even", "supply_ge"):
+        expect(name in idle and idle[name]["kernel_checked"], f"{name} has an idle hypothesis: {sorted(idle)}")
+    if "supply_of_even" in idle:
+        expect("key" not in idle["supply_of_even"]["dropped"][0],
+               "a schematic idle hypothesis carries no statement key")
+    for name in ("schematic", "uses_target", "named_of_even", "uses_universal", "uses_supply_three",
+                 "from_fact", "from_witness", "false_of_cert", "a_first", "uses_s8_i"):
+        expect(name not in idle, f"{name} uses its hypothesis: {idle.get(name)}")
+    expect(summary["idle_kernel_checked"] == sum(1 for r in idle.values() if r["kernel_checked"]),
+           "summary counts kernel-checked idle theorems")
+
+    # Review shapes.
+    def rows_for(record: str, statement_type: str) -> list[dict]:
+        key = by_type.get(statement_type)
+        return [r for r in rows if r["record"] == record and r.get("statement") == key]
+
+    g3 = [r for r in rows_for("match", "ReviewToy.g 3 ≠ 0") if r["status"] == "matched"]
+    expect(any(r["producer"].endswith("g_ne") and not r["residuals"] and not r["open_data"] for r in g3),
+           f"g_ne instantiates to supply g 3 ≠ 0: {g3}")
+    g5 = [r for r in rows_for("refutation", "ReviewToy.g 5 = 0") if r["status"] == "matched"]
+    expect(any(r["producer"].endswith("g_ne") and r["reading"] == "ne_as_not" and not r["residuals"] for r in g5),
+           f"a proved disequation refutes the equation: {g5}")
+    q3 = [r for r in rows_for("refutation", "ReviewToy.Q 3") if r["status"] == "matched"]
+    expect(any(r["producer"].endswith("not_Q") and not r["residuals"] for r in q3),
+           f"a plain negation refutes Q 3: {q3}")
+    r7 = [r for r in rows_for("refutation", "ReviewToy.R7 7") if r["status"] == "matched"]
+    expect(any(r["producer"].endswith("not_R7_and") for r in r7),
+           f"an antecedent first enqueued as a conclusion is still refutation-searched: {r7}")
+    p2 = [r for r in rows_for("match", "ReviewToy.P2 3") if r["producer"].endswith("from_witness")]
+    expect(p2 and all(r["open_data"] for r in p2),
+           f"a producer needing an uninhabited witness is not a usable match: {p2}")
+    fact = theorems["ReviewToy.from_fact"]["binders"][0]
+    expect(fact["kind"] == "instance" and fact["prop"] and fact["closed"] and fact.get("key"),
+           f"a propositional instance binder is a closed antecedent: {fact}")
+    witness = theorems["ReviewToy.from_witness"]["binders"][1]
+    expect(witness["kind"] == "data" and witness["inhabited"] is False and witness.get("nonempty_key"),
+           f"a closed data binder of unknown inhabitation becomes a Nonempty antecedent: {witness}")
+    expect(theorems["ReviewToy.from_witness"]["binders"][0]["inhabited"] is True, "Nat is inhabited")
+    cert = theorems["ReviewToy.false_of_cert"]["binders"][1]
+    expect(cert["kind"] == "data" and cert["inhabited"] is False and not cert["closed"]
+           and "nonempty_key" not in cert, f"a schematic data binder has no Nonempty antecedent: {cert}")
+    s8 = {theorems[f"ReviewToy.uses_s8_{x}"]["binders"][0]["key"] for x in ("n", "m", "i")}
+    expect(len(s8) == 1, f"renamed or implicit bound variables give one statement key: {s8}")
+    expect("2 + 2 = 5" in refuted, f"an unusable match does not hide a leaf from the battery: {refuted}")
+    generated = [n for n in theorems if n.split(".")[-1] in ("inj", "injEq", "sizeOf_spec")]
+    expect(not generated, f"generated lemmas are not corpus arguments: {generated}")
+    expect(all(len(k) == 32 and k[:8] != "00000000" for k in statements), "keys lead with the 64-bit hash")
 
     expect(summary["truncated"] is False, "toy export must not truncate")
     expect(summary["theorems"] == len(theorems), "summary theorem count")

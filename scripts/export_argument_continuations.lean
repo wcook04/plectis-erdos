@@ -46,11 +46,16 @@ source-coordinate join and the argument graph. Environment variables:
 * `PLECTIS_CONTINUATION_BATTERY_HEARTBEATS` and
   `PLECTIS_CONTINUATION_BATTERY_SECONDS`: per-tactic budget (thousands) and
   wall-clock budget for the tactic battery on open leaves (defaults 40000 and
-  1200).
+  1200);
+* `PLECTIS_CONTINUATION_IDLE_SECONDS`: wall-clock budget for the idle-hypothesis
+  pass (default 600).
 
-After the producer search, two more passes run. Pass 3 composes each
+After the producer search, three more passes run. Pass 3 composes each
 conditional theorem whose closed hypotheses all have a residual-free producer
-and has the kernel check the composed term. Pass 4 tries a fixed battery of
+and has the kernel check the composed term. The idle pass finds the
+proposition binders a theorem's proof never uses; dropping them leaves a
+stronger statement with the same proof, and the kernel checks it (`idle`
+rows). Pass 4 tries a fixed battery of
 standard closing tactics (after introducing binders and unfolding the corpus
 definitions the statement mentions) on every closed statement for which the
 search found no producer at all, most-consumed first, and then on its
@@ -75,6 +80,7 @@ structure Config where
   timeBudgetMs : Nat
   batteryHeartbeats : Nat
   batteryBudgetMs : Nat
+  idleBudgetMs : Nat
 
 private def squeeze (s : String) : String :=
   String.ofList (s.toList.filter fun c => !c.isWhitespace)
@@ -101,6 +107,7 @@ def readConfig : IO Config := do
     timeBudgetMs := (← envNat "PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS" 5400) * 1000
     batteryHeartbeats := ← envNat "PLECTIS_CONTINUATION_BATTERY_HEARTBEATS" 40000
     batteryBudgetMs := (← envNat "PLECTIS_CONTINUATION_BATTERY_SECONDS" 1200) * 1000
+    idleBudgetMs := (← envNat "PLECTIS_CONTINUATION_IDLE_SECONDS" 600) * 1000
   }
 
 def exportStream : IO IO.FS.Stream := do
@@ -117,6 +124,14 @@ def moduleOf (env : Environment) (name : Name) : Name :=
   | some index => env.header.moduleNames[index.toNat]?.getD .anonymous
   | none => env.mainModule
 
+/-- Theorems the elaborator generates (injectivity, `sizeOf` specifications,
+equation lemmas, internal details); they are not arguments of the corpus. -/
+def generatedTheorem (name : Name) : Bool :=
+  name.isInternalDetail ||
+    match name with
+    | .str _ s => s == "inj" || s == "injEq" || s == "sizeOf_spec" || Meta.isEqnReservedNameSuffix s
+    | _ => false
+
 def selected (cfg : Config) (env : Environment) (name : Name) : Bool :=
   if name.isInternal then false
   else if cfg.namePrefixes.isEmpty then
@@ -129,12 +144,29 @@ private def hex16 (n : Nat) : String :=
   let digits := Nat.toDigits 16 n
   String.ofList (List.replicate (16 - digits.length) '0' ++ digits)
 
-/-- The identity of a closed statement. `Expr.hash` alone carries 32 bits,
-so tens of thousands of statements would collide; the key pairs it with a
-64-bit hash of the full term rendering (constants fully qualified, universe
-levels included). -/
+/-- A statement with its binder names, binder annotations and metadata
+erased (bound variables are named by depth): two statements that differ only
+in how their bound variables are named or marked implicit are one
+proposition. -/
+partial def normaliseBinders (e : Expr) (depth : Nat := 0) : Expr :=
+  let name := Name.mkSimple s!"x{depth}"
+  match e with
+  | .forallE _ t b _ => .forallE name (normaliseBinders t depth) (normaliseBinders b (depth + 1)) .default
+  | .lam _ t b _ => .lam name (normaliseBinders t depth) (normaliseBinders b (depth + 1)) .default
+  | .letE _ t v b nondep =>
+      .letE name (normaliseBinders t depth) (normaliseBinders v depth) (normaliseBinders b (depth + 1)) nondep
+  | .app f a => .app (normaliseBinders f depth) (normaliseBinders a depth)
+  | .mdata _ b => normaliseBinders b depth
+  | .proj s i b => .proj s i (normaliseBinders b depth)
+  | e => e
+
+/-- The identity of a closed statement: a 64-bit hash of the normalised
+term's full rendering (constants fully qualified, universe levels included)
+followed by the 32-bit structural `Expr.hash`, so any prefix of the key is
+informative. -/
 def keyOf (e : Expr) : String :=
-  hex16 e.hash.toNat ++ hex16 (hash (toString e)).toNat
+  let n := normaliseBinders e
+  hex16 (hash (toString n)).toNat ++ hex16 n.hash.toNat
 
 def clip (s : String) (limit : Nat := 700) : String :=
   let flat := (s.replace "\n" " ").replace "\t" " "
@@ -173,6 +205,10 @@ structure Producer where
   head : Name
   constants : NameSet
 
+/-- `@Ne α a b` as `¬ @Eq α a b`, definitionally equal by one delta step. -/
+def neAsNot (c : Expr) : Expr :=
+  mkNot (mkApp3 (mkConst ``Eq c.getAppFn.constLevels!) (c.getArg! 0) (c.getArg! 1) (c.getArg! 2))
+
 /-- The readings of a stripped conclusion under which it can supply a
 statement. `lhs`/`rhs` of an `↔` supply their own side and leave the other
 side as a residual; each conjunct of an `∧` is supplied outright. -/
@@ -185,13 +221,17 @@ def readings (conclusion : Expr) : Array (String × Expr) := Id.run do
   if c.isAppOfArity ``And 2 then
     out := out.push ("and_left", c.appFn!.appArg!)
     out := out.push ("and_right", c.appArg!)
+  -- `a ≠ b` is `¬ a = b` by one delta step; reading it so lets a proved
+  -- disequation refute the equation.
+  if c.isAppOfArity ``Ne 3 then
+    out := out.push ("ne_as_not", neAsNot c)
   return out
 
 def producerIndex (cfg : Config) (env : Environment) :
     Std.HashMap Name (Array Producer) := Id.run do
   let mut index : Std.HashMap Name (Array Producer) := {}
   for (name, info) in env.constants.toList do
-    unless selected cfg env name do continue
+    unless selected cfg env name && !generatedTheorem name do continue
     let .thmInfo _ := info | continue
     let conclusion := strippedConclusion info.type
     for (reading, body) in readings conclusion do
@@ -238,6 +278,21 @@ def budgeted (heartbeats : Nat) (x : MetaM α) : MetaM (Except String α) := do
         else if ex.isMaxRecDepth then return .error "runtime_limit"
         else return .error "elaboration_error"
 
+/-- Whether a binder type is known to be inhabited: an instance binder's
+instance synthesises, or `Nonempty T` does for a data binder. `false` means
+unknown, never empty. -/
+def knownInhabited (t : Expr) (isInstance : Bool) : MetaM Bool := do
+  try
+    if isInstance then return (← synthInstance? t).isSome
+    let u ← getLevel t
+    return (← synthInstance? (mkApp (mkConst ``Nonempty [u]) t)).isSome
+  catch _ => return false
+
+/-- `Nonempty T` for a closed data type `T`. -/
+def mkNonempty (t : Expr) : MetaM Expr := do
+  let u ← instantiateLevelMVars (← getLevel t)
+  return mkApp (mkConst ``Nonempty [u]) t
+
 structure MatchOutcome where
   status : String
   residuals : Array Expr
@@ -251,7 +306,10 @@ def tryProducer (cfg : Config) (xs : Array Expr) (localHyps : Array Expr)
     (matrix : Expr) (p : Producer) : MetaM (Option MatchOutcome) := do
   let attempt : MetaM (Option MatchOutcome) := withNewMCtxDepth do
     let constant ← mkConstWithFreshMVarLevels p.name
-    let (mvars, _, body) ← forallMetaTelescopeReducing (← inferType constant)
+    -- Not reducing: the index is keyed on the syntactic conclusion, and a
+    -- reducing telescope would open `¬ P`, `a ≠ b` or a named ∀-proposition
+    -- past the head the statement side sees.
+    let (mvars, _, body) ← forallMetaTelescope (← inferType constant)
     let mut extra : Array Expr := #[]
     let target? : Option Expr :=
       match p.reading with
@@ -264,6 +322,7 @@ def tryProducer (cfg : Config) (xs : Array Expr) (localHyps : Array Expr)
           if body.isAppOfArity ``And 2 then some body.appFn!.appArg! else none
       | "and_right" =>
           if body.isAppOfArity ``And 2 then some body.appArg! else none
+      | "ne_as_not" => if body.isAppOfArity ``Ne 3 then some (neAsNot body) else none
       | _ => none
     let some target := target? | return none
     if p.reading == "iff_mpr_supplies_lhs" then extra := extra.push body.appArg!
@@ -291,6 +350,13 @@ def tryProducer (cfg : Config) (xs : Array Expr) (localHyps : Array Expr)
       else
         if let some inst ← (try synthInstance? type catch _ => pure none) then
           id.assign inst
+    -- A data argument unification left open is a witness the producer needs:
+    -- the match is usable only if its type is known to be inhabited.
+    for m in mvars do
+      unless ← m.mvarId!.isAssigned do
+        let type ← instantiateMVars (← inferType m)
+        unless ← isProp type do
+          unless ← knownInhabited type false do openData := true
     for e in extra do
       residuals := residuals.push (← instantiateMVars e)
     let mut closed : Array Expr := #[]
@@ -316,6 +382,11 @@ structure State where
   matchCount : Nat := 0
   exhausted : Nat := 0
   truncated : Bool := false
+  /-- Statements that are ever an antecedent (a closed hypothesis or a
+  residual), whatever origin first enqueued them: each gets a refutation
+  search. -/
+  antecedents : Std.HashSet String := {}
+  refutationSearched : Std.HashSet String := {}
 
 def enqueue (s : State) (e : Expr) (origin : String) : State :=
   let k := keyOf e
@@ -326,6 +397,9 @@ def binderRows (cfg : Config) (env : Environment) (type : Expr) :
     MetaM (Array Json × Array Expr × Json × Option Expr) := do
   forallTelescope type fun xs body => do
     let mut rows : Array Json := #[]
+    -- Closed antecedents: closed proposition binders (instance binders
+    -- included) and `Nonempty T` for each closed data binder whose type is
+    -- not known to be inhabited.
     let mut closedHyps : Array Expr := #[]
     for x in xs, i in [0:xs.size] do
       let decl ← x.fvarId!.getDecl
@@ -339,14 +413,20 @@ def binderRows (cfg : Config) (env : Environment) (type : Expr) :
         ("i", toJson i), ("name", toJson decl.userName.toString),
         ("info", toJson (binderInfoLabel decl.binderInfo)),
         ("kind", toJson kind), ("closed", toJson closed)]
+      row := row ++ [("prop", toJson isPropBinder), ("type", toJson (← render t))]
       if isPropBinder then
-        row := row ++ [("type", toJson (← render t))]
-        if closed then row := row ++ [("key", toJson (keyOf t))]
+        if closed then
+          row := row ++ [("key", toJson (keyOf t))]
+          closedHyps := closedHyps.push t
       else
-        row := row ++ [("type", toJson (← render t))]
+        let inhabited ← knownInhabited t (decl.binderInfo == .instImplicit)
+        row := row ++ [("inhabited", toJson inhabited)]
+        if !inhabited && closed then
+          let nonempty ← mkNonempty t
+          row := row ++ [("nonempty_key", toJson (keyOf nonempty)),
+                         ("nonempty_type", toJson (← render nonempty))]
+          closedHyps := closedHyps.push nonempty
       rows := rows.push (Json.mkObj row)
-      if isPropBinder && closed && decl.binderInfo != .instImplicit then
-        closedHyps := closedHyps.push t
     let body ← instantiateMVars body
     let bodyClosed := !body.hasFVar
     let mut conclusion : List (String × Json) := [
@@ -368,12 +448,13 @@ def proveDirect (statement : Expr) (producer : Name) (reading : String) : MetaM 
     for x in xs do
       if ← isProp (← inferType x) then localHyps := localHyps.push x
     let constant ← mkConstWithFreshMVarLevels producer
-    let (mvars, _, body) ← forallMetaTelescopeReducing (← inferType constant)
+    let (mvars, _, body) ← forallMetaTelescope (← inferType constant)
     let target? : Option Expr :=
       match reading with
       | "conclusion" => some body
       | "and_left" => if body.isAppOfArity ``And 2 then some body.appFn!.appArg! else none
       | "and_right" => if body.isAppOfArity ``And 2 then some body.appArg! else none
+      | "ne_as_not" => if body.isAppOfArity ``Ne 3 then some (neAsNot body) else none
       | _ => none
     let some target := target? | return none
     unless ← isDefEq target matrix do return none
@@ -405,9 +486,9 @@ def proveDirect (statement : Expr) (producer : Name) (reading : String) : MetaM 
 /-- Kernel verdict on `value : type`, checked synchronously against the
 current environment (so auxiliary lemmas a tactic just created are visible).
 `none` means accepted. -/
-def kernelVerdict (type value : Expr) : MetaM (Option String) := do
+def kernelVerdict (type value : Expr) (levelParams : List Name := []) : MetaM (Option String) := do
   let decl := Declaration.thmDecl
-    { name := `_argument_continuation_check, levelParams := [], type, value }
+    { name := `_argument_continuation_check, levelParams, type, value }
   match Kernel.Environment.addDecl (← getEnv).toKernelEnv (← getOptions) decl with
   | .ok _ => return none
   | .error ex => return some (clip (← (ex.toMessageData (← getOptions)).toString) 400)
@@ -450,6 +531,56 @@ def composeAndCheck (info : ConstantInfo) (direct : Std.HashMap String (Name × 
     ("kernel_checked", toJson checked.isNone),
     ("kernel_error", toJson (checked.map (clip · 400) |>.getD ""))]
 
+/-- The proposition binders of a theorem that its proof never uses. Sound in
+the direction it answers: the binder's free variable occurs neither in the
+proof (beta-reduced against the statement's binders), nor in a later binder
+type, nor in the conclusion, so the statement without the binder has the same
+proof. A proof that is not a lambda over the binders, such as a bare
+constant, counts every binder as used. -/
+def idleHypotheses (info : ConstantInfo) : MetaM (Array Nat) := do
+  let some value := info.value? | return #[]
+  forallTelescope info.type fun xs body => do
+    let used := (collectFVars {} (value.beta xs)).fvarSet
+    let mut idle : Array Nat := #[]
+    for x in xs, i in [0:xs.size] do
+      let decl ← x.fvarId!.getDecl
+      if decl.binderInfo == .instImplicit then continue
+      unless ← isProp decl.type do continue
+      let id := x.fvarId!
+      if used.contains id || body.containsFVar id then continue
+      let mut later := false
+      for j in [i+1:xs.size] do
+        if (← xs[j]!.fvarId!.getDecl).type.containsFVar id then
+          later := true
+          break
+      unless later do idle := idle.push i
+    return idle
+
+/-- Drop a theorem's idle binders and ask the kernel to check the stronger
+statement with the same proof. -/
+def strengthenAndCheck (info : ConstantInfo) (idle : Array Nat) : MetaM (Option Json) := do
+  let some value := info.value? | return none
+  forallTelescope info.type fun xs body => do
+    let proof := value.beta xs
+    let mut keep : Array Expr := #[]
+    let mut dropped : Array Json := #[]
+    for x in xs, i in [0:xs.size] do
+      if idle.contains i then
+        let t ← instantiateMVars (← x.fvarId!.getDecl).type
+        let mut row : List (String × Json) := [("i", toJson i), ("type", toJson (← render t))]
+        unless t.hasFVar do row := row ++ [("key", toJson (keyOf t))]
+        dropped := dropped.push (Json.mkObj row)
+      else
+        keep := keep.push x
+    let strongerType ← mkForallFVars keep body
+    let strongerValue ← mkLambdaFVars keep proof
+    let checked ← kernelVerdict strongerType strongerValue info.levelParams
+    return some <| Json.mkObj [
+      ("record", "idle"), ("theorem", toJson info.name.toString),
+      ("dropped", Json.arr dropped), ("type", toJson (← render strongerType)),
+      ("kernel_checked", toJson checked.isNone),
+      ("kernel_error", toJson (checked.getD ""))]
+
 
 /-- Corpus theorems whose conclusion unifies with `target` (after `target`'s
 own binders are introduced), as `match`-shaped rows labelled `recordName` and
@@ -488,7 +619,7 @@ def searchProducers (cfg : Config) (producers : Std.HashMap Name (Array Producer
             ("status", toJson outcome.status),
             ("open_data", toJson outcome.openData),
             ("residuals", Json.arr residualRows)],
-            outcome.residuals.filter (fun r => !r.hasMVar))
+            if outcome.openData then #[] else outcome.residuals.filter (fun r => !r.hasMVar))
     return rows
 
 /-- `budgeted` for elaboration-level work (tactics). -/
@@ -562,7 +693,7 @@ def exportAll : Elab.TermElabM Unit := do
   let mut hasProducer : Std.HashSet String := {}
   let mut names : Array Name := #[]
   for (name, info) in env.constants.toList do
-    if selected cfg env name then
+    if selected cfg env name && !generatedTheorem name then
       if let .thmInfo _ := info then names := names.push name
   names := names.qsort (fun a b => a.toString < b.toString)
   for name in names do
@@ -576,6 +707,7 @@ def exportAll : Elab.TermElabM Unit := do
           ("binders", Json.arr rows), ("conclusion", conclusion)]
         for h in closedHyps do
           state := enqueue state h "hypothesis"
+          state := { state with antecedents := state.antecedents.insert (keyOf h) }
           consumerCount := consumerCount.insert (keyOf h) (consumerCount.getD (keyOf h) 0 + 1)
         -- The conclusion of a conditional argument is itself a statement the
         -- graph must be able to reach and unfold.
@@ -593,6 +725,9 @@ def exportAll : Elab.TermElabM Unit := do
           ("record", "theorem_error"), ("name", toJson name.toString),
           ("reason", toJson reason)]
   -- Pass 2: producer search over the closed statements, following residuals.
+  -- The per-statement budget covers every candidate's own budget, so it trips
+  -- only on work outside the attempts.
+  let searchBudget := cfg.matchHeartbeats * (cfg.maxCandidates + 4) * 2
   let mut cursor := 0
   while cursor < state.queue.size do
     if state.processed ≥ cfg.maxStatements then
@@ -605,11 +740,14 @@ def exportAll : Elab.TermElabM Unit := do
     cursor := cursor + 1
     state := { state with processed := state.processed + 1 }
     let key := keyOf statement
-    let searched ← budgeted 2000000 <| searchProducers cfg producers key "match" statement
+    let searched ← budgeted searchBudget <| searchProducers cfg producers key "match" statement
     -- Refutation search: corpus theorems proving the negation. Only for
     -- antecedents, where a refutation turns a conditional argument vacuous.
-    let refutations ← if origin == "hypothesis" || origin == "residual" then
-        budgeted 2000000 <| searchProducers cfg producers key "refutation" (mkNot statement)
+    let refute := state.antecedents.contains key
+    if refute then
+      state := { state with refutationSearched := state.refutationSearched.insert key }
+    let refutations ← if refute then
+        budgeted searchBudget <| searchProducers cfg producers key "refutation" (mkNot statement)
       else pure (.ok #[])
     emit stream <| Json.mkObj [
       ("record", "statement"), ("key", toJson key), ("origin", toJson origin),
@@ -627,18 +765,26 @@ def exportAll : Elab.TermElabM Unit := do
           emit stream row
           if (row.getObjValAs? String "status").toOption == some "matched" then
             state := { state with matchCount := state.matchCount + 1 }
-            hasProducer := hasProducer.insert key
+            -- Only a usable match (no undetermined data, and not the
+            -- statement reducing to itself) keeps the leaf from the battery.
+            if (row.getObjValAs? Bool "open_data").toOption != some true &&
+                !(residuals.any fun r => keyOf r == key) then
+              hasProducer := hasProducer.insert key
             let residualCount := match row.getObjVal? "residuals" with
               | .ok (.arr xs) => xs.size
               | _ => 1
             let reading := (row.getObjValAs? String "reading").toOption.getD ""
             let producer := (row.getObjValAs? String "producer").toOption.getD ""
             if residualCount == 0 && !state.direct.contains key &&
-                (reading == "conclusion" || reading == "and_left" || reading == "and_right") then
+                (row.getObjValAs? Bool "open_data").toOption != some true &&
+                (reading == "conclusion" || reading == "and_left" || reading == "and_right" ||
+                  reading == "ne_as_not") then
               state := { state with direct := state.direct.insert key (producer.toName, reading) }
           else if (row.getObjValAs? String "record").toOption == some "match" then
             state := { state with exhausted := state.exhausted + 1 }
-          for r in residuals do state := enqueue state r "residual"
+          for r in residuals do
+            state := enqueue state r "residual"
+            state := { state with antecedents := state.antecedents.insert (keyOf r) }
     | .error reason =>
         emit stream <| Json.mkObj [
           ("record", "statement_error"), ("statement", toJson key),
@@ -646,7 +792,22 @@ def exportAll : Elab.TermElabM Unit := do
     if let .ok rows := refutations then
       for (row, residuals) in rows do
         emit stream row
-        for r in residuals do state := enqueue state r "residual"
+        for r in residuals do
+          state := enqueue state r "residual"
+          state := { state with antecedents := state.antecedents.insert (keyOf r) }
+  -- A statement searched before it was seen as an antecedent (for example a
+  -- conclusion that is later a residual) gets its refutation search now.
+  for (statement, _) in state.queue.extract 0 cursor do
+    if (← IO.monoMsNow) - startMs > cfg.timeBudgetMs then
+      state := { state with truncated := true }
+      break
+    let key := keyOf statement
+    unless state.antecedents.contains key && !state.refutationSearched.contains key do continue
+    state := { state with refutationSearched := state.refutationSearched.insert key }
+    match ← budgeted searchBudget <| searchProducers cfg producers key "refutation" (mkNot statement) with
+    | .ok rows => for (row, _) in rows do emit stream row
+    | .error _ => pure ()
+  let searchEnd ← IO.monoMsNow
   -- Pass 3: compose conditional theorems whose closed hypotheses all have a
   -- residual-free producer, and have the kernel check each composition.
   let mut compositions := 0
@@ -662,6 +823,28 @@ def exportAll : Elab.TermElabM Unit := do
         compositions := compositions + 1
         if (row.getObjValAs? Bool "kernel_checked").toOption == some true then
           checkedCompositions := checkedCompositions + 1
+    | _ => pure ()
+  -- Idle pass: hypotheses a proof never uses. Dropping them leaves a stronger
+  -- statement with the same proof, which the kernel checks.
+  let idleStart ← IO.monoMsNow
+  let mut idleTheorems := 0
+  let mut idleChecked := 0
+  let mut idleTruncated := false
+  for name in names do
+    if (← IO.monoMsNow) - idleStart > cfg.idleBudgetMs then
+      idleTruncated := true
+      break
+    let some info := env.find? name | continue
+    let idle := match ← budgeted 400000 (idleHypotheses info) with
+      | .ok idle => idle
+      | .error _ => #[]
+    if idle.isEmpty then continue
+    match ← budgeted 2000000 (strengthenAndCheck info idle) with
+    | .ok (some row) =>
+        emit stream row
+        idleTheorems := idleTheorems + 1
+        if (row.getObjValAs? Bool "kernel_checked").toOption == some true then
+          idleChecked := idleChecked + 1
     | _ => pure ()
   -- Pass 4: the tactic battery on open leaves, most-consumed first.
   let batteryStart ← IO.monoMsNow
@@ -695,12 +878,19 @@ def exportAll : Elab.TermElabM Unit := do
     ("battery_refuted", toJson batteryRefuted),
     ("compositions", toJson compositions),
     ("kernel_checked_compositions", toJson checkedCompositions),
+    ("idle_theorems", toJson idleTheorems),
+    ("idle_kernel_checked", toJson idleChecked),
+    ("idle_truncated", toJson idleTruncated),
     ("statements_discovered", toJson state.queue.size),
     ("statements_searched", toJson state.processed),
     ("matches", toJson state.matchCount),
     ("budget_exhausted_attempts", toJson state.exhausted),
     ("truncated", toJson state.truncated),
     ("elapsed_ms", toJson ((← IO.monoMsNow) - startMs)),
+    ("search_ms", toJson (searchEnd - startMs)),
+    ("composition_ms", toJson (idleStart - searchEnd)),
+    ("idle_ms", toJson (batteryStart - idleStart)),
+    ("battery_ms", toJson ((← IO.monoMsNow) - batteryStart)),
     ("producer_relation", "lower_bound_prefiltered_by_conclusion_constants")]
   stream.flush
 

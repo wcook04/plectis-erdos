@@ -108,20 +108,26 @@ jobs:
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
 
-      # The search stops itself at its time budget; the outer timeout is a
-      # backstop so a stuck elaboration cannot consume the job and lose the
-      # partial stream. The builder labels a stream without a summary record as
-      # truncated rather than rejecting it.
+      # Each pass stops itself at its own budget: search 75 min, compositions at
+      # most 20 min after the search budget, idle hypotheses 10 min, battery
+      # 20 min. The outer timeout is a backstop so a stuck elaboration cannot
+      # consume the job and lose the partial stream. The builder labels a
+      # stream without a summary record as truncated rather than rejecting it.
+      # The lean/ tree id lets any checkout tell whether the graph is current
+      # without fetching the pull request's merge commit.
       - name: Export the argument graph
-        timeout-minutes: 120
+        timeout-minutes: 170
         env:
           PLECTIS_CONTINUATION_EXPORT_FILE: ${{ runner.temp }}/argument_continuations_export.jsonl
           PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "4500"
+          PLECTIS_CONTINUATION_IDLE_SECONDS: "600"
+          PLECTIS_CONTINUATION_BATTERY_SECONDS: "1200"
         run: |
           set -uo pipefail
           git rev-parse HEAD > "$RUNNER_TEMP/argument_continuations_source_revision.txt"
+          git rev-parse HEAD:lean > "$RUNNER_TEMP/argument_continuations_lean_tree.txt"
           start=$(date +%s)
-          timeout --kill-after=60s 110m lake env lean scripts/export_argument_continuations.lean
+          timeout --kill-after=60s 160m lake env lean scripts/export_argument_continuations.lean
           status=$?
           end=$(date +%s)
           echo "export exit $status after $((end - start)) seconds"
@@ -143,5 +149,6 @@ jobs:
           path: |
             ${{ runner.temp }}/argument_continuations_export.jsonl.gz
             ${{ runner.temp }}/argument_continuations_source_revision.txt
+            ${{ runner.temp }}/argument_continuations_lean_tree.txt
           retention-days: 14
           if-no-files-found: warn
