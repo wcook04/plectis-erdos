@@ -4,7 +4,7 @@
   "coverage": {
     "bibliography_without_curated_link_count": 41,
     "curated_source_count": 301,
-    "lean_candidate_awaiting_review_count": 703,
+    "lean_candidate_awaiting_review_count": 704,
     "unmatched_citation_key_count": 0
   },
   "facets": {
@@ -4385,8 +4385,8 @@
   },
   "generated_by": "scripts/build_source_attributions.py",
   "lean_inventory": {
-    "awaiting_review_count": 703,
-    "candidate_count": 1559,
+    "awaiting_review_count": 704,
+    "candidate_count": 1560,
     "candidate_policy": "Comments only. Generic infrastructure tokens are excluded. Explicit URL/DOI/arXiv references are separated from bibliography-key and curated-surname clues. Authored lean_reviews bind exact path, line range, and excerpt digest; only missing or unresolved reviews remain queued.",
     "direct_reference_candidate_count": 3,
     "excluded_generic_tokens": [
@@ -42581,6 +42581,25 @@
       },
       {
         "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:50d5cf4253211f9364666cb33da9afc0701ad30cb4edde6a74e5a6275a34ddea",
+        "line_end": 15,
+        "line_start": 15,
+        "matches": [
+          {
+            "match_kind": "bibliography_key",
+            "source_id": "erdos_problems_catalog_eight_problem_context",
+            "source_ids": [
+              "erdos_problems_catalog_eight_problem_context"
+            ],
+            "token": "erdosproblems"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos269/PaperR7AnalyticInterfaces.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:85e66b3c7f2edcfdbd853d32ecf0958d7d6d71b285aad3a0f9caa558a53dd2ee"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:f3ca6f6b974e30e647c5420b3862b53b4c1003a693ce0fb7af18fc55a0ad6a16",
         "line_end": 8,
         "line_start": 8,
@@ -55330,7 +55349,7 @@
       }
     ],
     "library_file_denominator": 1828,
-    "named_or_key_candidate_count": 1557,
+    "named_or_key_candidate_count": 1558,
     "reviewed_count": 856,
     "unresolved_count": 0
   },

@@ -1,7 +1,7 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:3a4d25a789d0252679379eac84b1f4bb7b1e6edafe691c84e75b9d24c75324ac",
+  "source_fingerprint": "sha256:1d839195b0d059e56c5ef362f2d366cdf2741de35e966d7cb940fb19f72d999f",
   "module_count": 1828,
   "synopsis_count": 1581,
   "query_contract": {
@@ -7295,7 +7295,7 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR7AnalyticInterfaces",
       "path": "lean/ErdosProblems/Erdos269/PaperR7AnalyticInterfaces.lean",
-      "synopsis": "Round 7: proved algebra around explicitly unresolved analytic inputs This file DOES NOT prove the two-prime transcendence theorem. Its final algebraic step is separated from THREE hypotheses still requiring analytic proofs: transcendence of the specified Hecke--Mahler value, and the two identities for the actual series. The parameters are visible, not axioms or admitted theorems. It also proves the constant rank-one upper witness for the uniform carry approximation. The lower bound over every finite separated rank remains open as a formalisation obligation in this return. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: proved algebra around explicitly unresolved analytic inputs This file DOES NOT prove the two-prime transcendence theorem. Its final algebraic step is separated from THREE hypotheses still requiring analytic proofs: transcendence of the specified Hecke--Mahler value, and the two identities for the actual series. The parameters are visible, not axioms or admitted theorems. It also proves the constant rank-one upper witness for the uniform carry approximation. The matching lower bound over every finite separated rank is proved in `ErdosProblems.Erdos269.PaperR8UniformRank`. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
@@ -7340,7 +7340,7 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR8UniformRank",
       "path": "lean/ErdosProblems/Erdos269/PaperR8UniformRank.lean",
-      "synopsis": "The infinite uniform finite-rank obstruction The finite staircase minors alone do not prove a uniform lower bound. This file uses their column separation inside a finite-dimensional bounded column space, and a finite covering of a compact ball. Row factors in an arbitrary separated representation need not be bounded; the subspace is formed by intersecting their algebraic span with the space of bounded functions. The final infimum ranges over ALL finite-separated-rank matrices. It uses an extended nonnegative supremum so that unbounded approximants have infinite uniform error, never the spurious zero returned by an unbounded real iSup. The resulting finite value is also identified after conversion to the reals. All proof text is an uncompiled candidate against the packet's pinned Mathlib."
+      "synopsis": "The infinite uniform finite-rank obstruction The finite staircase minors alone do not prove a uniform lower bound. This file uses their column separation inside a finite-dimensional bounded column space, and a finite covering of a compact ball. Row factors in an arbitrary separated representation need not be bounded; the subspace is formed by intersecting their algebraic span with the space of bounded functions. The final infimum ranges over ALL finite-separated-rank matrices. It uses an extended nonnegative supremum so that unbounded approximants have infinite uniform error, never the spurious zero returned by an unbounded real iSup. The resulting finite value is also identified after conversion to the reals."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR9SourceCounts",

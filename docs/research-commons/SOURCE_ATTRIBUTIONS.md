@@ -25,7 +25,7 @@ Implemented advice whose identity is awaiting confirmation:
 
 - Unmatched citation keys: `0`
 - Bibliography entries awaiting curated links: `41`
-- Lean candidates awaiting review: `703` (`3` direct URL/DOI/arXiv rows; `1557` surname/key rows; categories may overlap).
+- Lean candidates awaiting review: `704` (`3` direct URL/DOI/arXiv rows; `1558` surname/key rows; categories may overlap).
 
 ## Browse by problem
 
@@ -9069,7 +9069,7 @@ These gaps are shown explicitly so the catalogue cannot be mistaken for complete
 - Registered papers scanned: `22`; TeX source files scanned after local includes: `91`.
 - Citation keys without a local bibliography definition: `0`
 - Bibliography entries without a curated source link: `41`
-- Lean lexical candidates awaiting review: `703`
+- Lean lexical candidates awaiting review: `704`
 - Unresolved local TeX includes: `0`
 
 Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).
