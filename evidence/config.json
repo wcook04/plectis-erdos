@@ -11,7 +11,7 @@
  "record_commit": "fca55989afe5048b0a9c59f78bb49eebed5f6335",
  "record_commit_overrides": {
   "erdos-257-mersenne-support-subseries": "d53aeecbcf2dbebe03b57c170925e4be033da959",
-  "erdos257-mersenne-reasoning-surface": "d53aeecbcf2dbebe03b57c170925e4be033da959",
-  "erdos1041-lemniscate-reasoning-surface": "e121e306a0f76464a4f1c45616eda5fd6bf87dc1"
+  "erdos257-mersenne-reasoning-surface": "ad2a3bc08b3cf1896d8b4007388b06bb5cedb225",
+  "erdos1041-lemniscate-reasoning-surface": "ad2a3bc08b3cf1896d8b4007388b06bb5cedb225"
  }
 }
