@@ -419,3 +419,99 @@ theorem downstream_totient_carry_anti_compression
     rw [binaryCoeffSeries_totient_eq]
     exact hrational
   exact not_irrational_totientSeries_implies_mod_period_and_unbounded_rank hseries
+
+/-! ## Erdős #249: dilated residue series
+
+These consumers use the finite-dilation modules through their exported names.
+They concern bounded residues of the totient function at powers of one common
+base; none of them concerns the unreduced series `∑ φ(n)/2ⁿ`, which remains
+open. -/
+
+section Erdos249FiniteDilation
+
+open ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables
+
+/-- The countable theorem at modulus `8` and base `3`: the constant `1` and
+the least-residue totient series in bases `3, 9, 27, …` are linearly
+independent over `ℚ`. -/
+theorem downstream_erdos249_countable_independence_mod8_base3 :
+    LinearIndependent ℚ (fun d : ℕ =>
+      if d = 0 then (1 : ℝ) else
+        positiveRadixValue (3 ^ d) (fun r : ℕ => (r : ℚ)) 8) :=
+  ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values
+    8 3 (by norm_num) (by norm_num)
+
+/-- A consequence of the countable theorem: the difference of the modulus-`8`
+least-residue series in bases `3` and `9` is irrational.  A rational value `q`
+would give the nonzero relation `q · 1 - A₃ + A₉ = 0`. -/
+theorem downstream_erdos249_base3_base9_difference_irrational :
+    Irrational (positiveRadixValue 3 (fun r : ℕ => (r : ℚ)) 8 -
+      positiveRadixValue 9 (fun r : ℕ => (r : ℚ)) 8) := by
+  have h3 := downstream_erdos249_countable_independence_mod8_base3.comp
+    (fun i : Fin 3 => (i : ℕ)) Fin.val_injective
+  rw [Fintype.linearIndependent_iff] at h3
+  rintro ⟨q, hq⟩
+  have hzero := h3 ![q, -1, 1] (by
+    simp [Fin.sum_univ_three, Rat.smul_def] <;> linarith)
+  exact absurd (hzero 1) (by norm_num)
+
+/-- The modulus-`4` table `f = (0, 0, 1, 0)` in residue order `0, 1, 2, 3`. -/
+def erdos249TableF (r : ℕ) : ℚ := if r = 2 then 1 else 0
+
+/-- The modulus-`4` table `g = (1, 0, 0, 0)` in residue order `0, 1, 2, 3`. -/
+def erdos249TableG (r : ℕ) : ℚ := if r = 0 then 1 else 0
+
+/-- Cancellation at one dilation: `S₂(f) + S₂(g) = 1/4`.  The even-residue
+values of `f` and `g` complement each other, so the combined observable is
+constant on even residues and the classification gives an exact rational
+value. -/
+theorem downstream_erdos249_same_base_cancellation :
+    positiveRadixValue 2 erdos249TableF 4 +
+      positiveRadixValue 2 erdos249TableG 4 = 1 / 4 := by
+  have hsum : positiveRadixValue 2 erdos249TableF 4 +
+      positiveRadixValue 2 erdos249TableG 4 =
+      positiveRadixValue 2 (fun r => erdos249TableF r + erdos249TableG r) 4 := by
+    unfold positiveRadixValue
+    rw [← Summable.tsum_add
+      (summable_positive_terms 2 le_rfl 4 (by norm_num) erdos249TableF)
+      (summable_positive_terms 2 le_rfl 4 (by norm_num) erdos249TableG)]
+    apply tsum_congr
+    intro n
+    push_cast <;> ring
+  rw [hsum, show (4 : ℕ) = 2 ^ 2 by norm_num,
+    positiveRadixValue_eq_of_even_constant 2 le_rfl (k := 2) (by norm_num) _ 1]
+  · norm_num [erdos249TableF, erdos249TableG]
+  · intro r hr heven
+    have hr4 : r < 4 := by simpa using hr
+    interval_cases r <;> simp_all [erdos249TableF, erdos249TableG]
+
+/-- No cancellation across dilations: `S₂(f) - S₄(f)` is irrational, because
+`f` varies on the even residues and the two series sit at distinct powers of
+the common base `2`. -/
+theorem downstream_erdos249_distinct_dilation_irrational :
+    Irrational (positiveRadixValue 2 erdos249TableF 4 -
+      positiveRadixValue 4 erdos249TableF 4) := by
+  have hneg : positiveRadixValue 4 (fun r => -erdos249TableF r) 4 =
+      -positiveRadixValue 4 erdos249TableF 4 := by
+    unfold positiveRadixValue
+    rw [← tsum_neg]
+    apply tsum_congr
+    intro n
+    push_cast <;> ring
+  have hclass :=
+    ErdosProblems.Erdos249.FiniteDilationDyadicClassification.rational_finite_family_iff_even_constant
+      {1, 2} (fun d => if d = 1 then erdos249TableF else fun r => -erdos249TableF r)
+      2 2 (by norm_num) le_rfl (by simp)
+  rintro ⟨q, hq⟩
+  have hrat := hclass.mp ⟨q, by
+    rw [Finset.sum_pair (by norm_num : (1 : ℕ) ≠ 2)]
+    norm_num [hneg] <;> linarith⟩
+  have h := hrat 1 (by simp) 2 (by norm_num) even_two
+  norm_num [erdos249TableF] at h
+
+#print axioms downstream_erdos249_countable_independence_mod8_base3
+#print axioms downstream_erdos249_base3_base9_difference_irrational
+#print axioms downstream_erdos249_same_base_cancellation
+#print axioms downstream_erdos249_distinct_dilation_irrational
+
+end Erdos249FiniteDilation
