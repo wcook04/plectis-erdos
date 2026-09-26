@@ -225,9 +225,9 @@
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:73b61adcdb44439c93f3cdfa0a46bfe0719a7ccc5171bd2ebc66203a3b9c8f06"
+        "paper/synthesis/optimal-sparse-perturbations.tex": "sha256:73aa53cd7ca81cde6867c36d365223ce19b66556043073b8df14332c6870ed55"
       },
-      "rendered_content_digest": "sha256:af9f67bb5d86f91fc4fc7fd788174c2d3c3261b111ff9a922526872079ec4808",
+      "rendered_content_digest": "sha256:558b4357f15b318bd11a5a3d6a5765945b7729176565e667ef448dbc16176b1a",
       "source_path": "paper/synthesis/optimal-sparse-perturbations.tex",
       "storage_path": "paper/synthesis/optimal-sparse-perturbations.pdf"
     },
@@ -258,9 +258,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:a95860ed2e1af4038248300cdd62cc7e8b8833e2f5531f720f45a391c3d68846"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d5b41858301a7458001a59778b9490b8dcc03280e93f5062d997ee7eece3858e"
       },
-      "rendered_content_digest": "sha256:13ee864e842de94844077262413aa137da48cb47996734d8dc35bfd8516afdab",
+      "rendered_content_digest": "sha256:056228b0638a479c595a892f02f0455dd5a8d1e00f9e48f67a70cec766f9489b",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }

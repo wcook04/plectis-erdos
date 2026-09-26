@@ -77,8 +77,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 963,
-          "line_end": 966,
+          "line_start": 964,
+          "line_end": 967,
           "expected_text": "\\bibitem{formalconjectures}",
           "excerpt_sha256": "sha256:1d891b554cf100c91b2fce4d68b68b3847498ea54355b6d6f9da795c07521527"
         }
@@ -486,8 +486,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 924,
-          "line_end": 928,
+          "line_start": 925,
+          "line_end": 929,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:a79650c0f50caca8446521a3613124f26f30878a82d4d43715c4bfc4f1b646d1"
         }
@@ -4760,8 +4760,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 987,
-          "line_end": 992,
+          "line_start": 988,
+          "line_end": 993,
           "expected_text": "\\bibitem{leanarchitect}",
           "excerpt_sha256": "sha256:a79881cccf900aa81e79f56667f432a2c78d4fe0ce5caf35422ec16531187624"
         }
@@ -4806,8 +4806,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 984,
-          "line_end": 987,
+          "line_start": 985,
+          "line_end": 988,
           "expected_text": "\\bibitem{leanblueprint}",
           "excerpt_sha256": "sha256:7309da2fcaace6abbd9af2aeeb912021812d164e3d40997aa7c1cb4e98c478c8"
         }
@@ -4859,8 +4859,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1009,
-          "line_end": 1011,
+          "line_start": 1010,
+          "line_end": 1012,
           "expected_text": "\\bibitem{leandojo}",
           "excerpt_sha256": "sha256:a8b32f405a3a6b9ae02c7123b743ad3cfd85633aa6caa71f623725a0a53402ce"
         }
@@ -5891,8 +5891,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 957,
-          "line_end": 960,
+          "line_start": 958,
+          "line_end": 961,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:1c7bbff8b9ecf2229080e8b8ba7833142628f64292e1aecef725441fa86f7ef9"
         }
@@ -6518,8 +6518,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 928,
-          "line_end": 931,
+          "line_start": 929,
+          "line_end": 932,
           "expected_text": "\\bibitem{erdosgraham}",
           "excerpt_sha256": "sha256:1b937681bd73e372ca1eb2a058ee0578cb99d388132d9fdc186e9ec9fc03e58b"
         }
@@ -10392,8 +10392,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1011,
-          "line_end": 1014,
+          "line_start": 1012,
+          "line_end": 1015,
           "expected_text": "\\bibitem{openprover}",
           "excerpt_sha256": "sha256:d05aa1d2493bce7bc302b098d84b1f8fe15b2615cb5122434cd82ac36b15b1d4"
         }
@@ -13447,8 +13447,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 969,
-          "line_end": 972,
+          "line_start": 970,
+          "line_end": 973,
           "expected_text": "\\bibitem{fan269}",
           "excerpt_sha256": "sha256:f7a616758af8fe02e74ebabb3df2d7da2a3723c8ea14f29df429a280c51dd918"
         }
@@ -13871,15 +13871,15 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 954,
-          "line_end": 957,
+          "line_start": 955,
+          "line_end": 958,
           "expected_text": "\\bibitem{erdos1041}",
           "excerpt_sha256": "sha256:62c7f30e6e69a9518a78ce54ec17705c85fe324ecc02ed5ab901a96123bb8909"
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 896,
-          "line_end": 898,
+          "line_start": 897,
+          "line_end": 899,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:1ac5357f10c02faa48f742246381cd200e43461ec7bf1ad931f1b9be3964b97b"
         }
@@ -14514,8 +14514,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 960,
-          "line_end": 963,
+          "line_start": 961,
+          "line_end": 964,
           "expected_text": "\\bibitem{aniforum}",
           "excerpt_sha256": "sha256:4419d8e310bee757279aba1d4fb70c9d9b4ebd270e118ac08c5e49ce48817fbd"
         }
@@ -15994,8 +15994,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 972,
-          "line_end": 975,
+          "line_start": 973,
+          "line_end": 976,
           "expected_text": "\\bibitem{prove2me}",
           "excerpt_sha256": "sha256:c9a36ce66934887ca2d845c1c21fdca445b85d85fda8067ad6a244acf9f4fbe6"
         }
@@ -16062,8 +16062,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 947,
-          "line_end": 950,
+          "line_start": 948,
+          "line_end": 951,
           "expected_text": "\\bibitem{aletheia}",
           "excerpt_sha256": "sha256:06650ad7fd498dc3411f33be1c9fa8d899b3b07e13190cc806400263d07a88c8"
         }
@@ -16134,8 +16134,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 975,
-          "line_end": 978,
+          "line_start": 976,
+          "line_end": 979,
           "expected_text": "\\bibitem{autonomousmath}",
           "excerpt_sha256": "sha256:8390940285e5ebe3fa348b34c283e57cd010fdfb08dc84dbd79db8071c51e094"
         }
@@ -16179,8 +16179,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 978,
-          "line_end": 981,
+          "line_start": 979,
+          "line_end": 982,
           "expected_text": "\\bibitem{taowiki}",
           "excerpt_sha256": "sha256:b286b09fb9c90ba4049a0069fa8b7698b73f4799d2b73fac1a54fdceef20a7d8"
         }
@@ -16298,8 +16298,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1014,
-          "line_end": 1017,
+          "line_start": 1015,
+          "line_end": 1018,
           "expected_text": "\\bibitem{lihai}",
           "excerpt_sha256": "sha256:a34050dd452831b4b327402f7164f5cc6cfc61c2450ab7ebb8675831520ee8e5"
         }
@@ -22956,8 +22956,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 908,
-          "line_end": 912,
+          "line_start": 909,
+          "line_end": 913,
           "expected_text": "\\bibitem{kra}",
           "excerpt_sha256": "sha256:e32354d6e9dce5beea0bd7639fc428e29239061b36285063968f4c6b438d2b27"
         }
@@ -22990,8 +22990,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 912,
-          "line_end": 915,
+          "line_start": 913,
+          "line_end": 916,
           "expected_text": "\\bibitem{cohn}",
           "excerpt_sha256": "sha256:069ff384c13f55f042ef0e445571c6ee28f771d27e9e80ae21ed97ffbf0c2689"
         }
@@ -23024,8 +23024,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 915,
-          "line_end": 917,
+          "line_start": 916,
+          "line_end": 918,
           "expected_text": "\\bibitem{taomining}",
           "excerpt_sha256": "sha256:2d82072ecac5b1ee63f9196038f8571e3f41c077968642287239a708bf0838ac"
         }
@@ -23058,8 +23058,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 917,
-          "line_end": 921,
+          "line_start": 918,
+          "line_end": 922,
           "expected_text": "\\bibitem{fieldsdecl}",
           "excerpt_sha256": "sha256:89a8572972941dbe073d1556d617df2e0a8d68508abbb26e667f054aa22542c9"
         }
@@ -23092,8 +23092,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 921,
-          "line_end": 924,
+          "line_start": 922,
+          "line_end": 925,
           "expected_text": "\\bibitem{sanderson}",
           "excerpt_sha256": "sha256:57b56b3dc98f87e01830ec9d8ad0f84c00156ef9828cf7682e76d145c0ecf451"
         }
@@ -23126,8 +23126,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 950,
-          "line_end": 952,
+          "line_start": 951,
+          "line_end": 953,
           "expected_text": "\\bibitem{leanfrocomparator}",
           "excerpt_sha256": "sha256:deb96a200b13f5e87c5d0fd551fcbcf9b199c27d94d72de6039982177c546346"
         }
@@ -23158,8 +23158,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 952,
-          "line_end": 954,
+          "line_start": 953,
+          "line_end": 955,
           "expected_text": "\\bibitem{nanodalib}",
           "excerpt_sha256": "sha256:a524c5a22e5fbacade3320260e08f8d57395a112937206a765495b6dfc73eafb"
         }
@@ -23192,8 +23192,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 981,
-          "line_end": 984,
+          "line_start": 982,
+          "line_end": 985,
           "expected_text": "\\bibitem{ringer}",
           "excerpt_sha256": "sha256:d26896e824fc6ec4be1ca9fa58e0870913de11aaddf21f73f81231cffa1984d4"
         }
@@ -23226,8 +23226,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1017,
-          "line_end": 1019,
+          "line_start": 1018,
+          "line_end": 1020,
           "expected_text": "\\bibitem{litt}",
           "excerpt_sha256": "sha256:be814ce4951f2905b8004c7408ab43e90833c53c2d9b14a310a0db0a25ef9a49"
         }
@@ -23260,8 +23260,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1019,
-          "line_end": 1022,
+          "line_start": 1020,
+          "line_end": 1023,
           "expected_text": "\\bibitem{chu}",
           "excerpt_sha256": "sha256:389f1072e7710565d0ac22458d1649687336a06f23358534558210550d8c9d02"
         }
@@ -23294,8 +23294,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1022,
-          "line_end": 1027,
+          "line_start": 1023,
+          "line_end": 1028,
           "expected_text": "\\bibitem{greenletter}",
           "excerpt_sha256": "sha256:ac245ce2f2ef2f2b58c37f9d6208461ebddbd9910d265d81108a7b2a80ee0c8d"
         }
@@ -23328,8 +23328,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1027,
-          "line_end": 1030,
+          "line_start": 1028,
+          "line_end": 1031,
           "expected_text": "\\bibitem{gowers}",
           "excerpt_sha256": "sha256:3a38116bdc9ac7954a4da9c52e66825e7c058d6e89d5d407cbaa402c7e2c6d4a"
         }
@@ -23362,8 +23362,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1030,
-          "line_end": 1033,
+          "line_start": 1031,
+          "line_end": 1034,
           "expected_text": "\\bibitem{koukoulopoulos}",
           "excerpt_sha256": "sha256:78dd6ea8e8ef43d29d302fc8b5de01969a7254476ce7b4f61f7082ea5b1bdea9"
         }
@@ -23396,8 +23396,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1033,
-          "line_end": 1035,
+          "line_start": 1034,
+          "line_end": 1036,
           "expected_text": "\\bibitem{antieau}",
           "excerpt_sha256": "sha256:40636bd4181cb1367d332b1f51606f18e04ec37fb1b15e45c260a64dba3ce1ac"
         }
@@ -23408,6 +23408,108 @@
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
           "key": "antieau"
+        }
+      ],
+      "paper_reported_locators": []
+    },
+    {
+      "id": "source-le-intersective-0910-1880",
+      "kind": "literature",
+      "title": "Intersective polynomials and the primes",
+      "authors": [
+        "Thai Hoang Lê"
+      ],
+      "publication_years": [
+        "2009"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/0910.1880"
+      ],
+      "problems": [],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "line_start": 1686,
+          "line_end": 1690,
+          "expected_text": "\\bibitem{leintersective}",
+          "excerpt_sha256": "sha256:6a7457eeb02ec92a700d289d937365c4c46c355535a75498466b650052157de5"
+        }
+      ],
+      "relation": "Cited for the established intersective-polynomial terminology; the synthesis paper proves its own shift-family criterion.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "key": "leintersective"
+        }
+      ],
+      "paper_reported_locators": []
+    },
+    {
+      "id": "source-rice-pintersective-1111-6559",
+      "kind": "literature",
+      "title": "Sárközy's theorem for P-intersective polynomials",
+      "authors": [
+        "Alex Rice"
+      ],
+      "publication_years": [
+        "2011"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/1111.6559"
+      ],
+      "problems": [],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "line_start": 1690,
+          "line_end": 1694,
+          "expected_text": "\\bibitem{ricepintersective}",
+          "excerpt_sha256": "sha256:dd7f0d46e967844319c928981d430ccea291c9ca3135f81eb0cc7cfe494ff39b"
+        }
+      ],
+      "relation": "Cited for unit-root, prime-argument intersectivity terminology; the synthesis paper proves the selected-shift equivalence independently.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "key": "ricepintersective"
+        }
+      ],
+      "paper_reported_locators": []
+    },
+    {
+      "id": "source-mishra-quadratic-2102-08379",
+      "kind": "literature",
+      "title": "Polynomials consisting of quadratic factors with roots modulo any positive integer",
+      "authors": [
+        "Bhawesh Mishra"
+      ],
+      "publication_years": [
+        "2022"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2102.08379"
+      ],
+      "problems": [],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "line_start": 1694,
+          "line_end": 1698,
+          "expected_text": "\\bibitem{mishraquadratic}",
+          "excerpt_sha256": "sha256:3d65436d31201d414ea230e03345193de1bd649376c50acdc800ef0e44b497c7"
+        }
+      ],
+      "relation": "Lists the rootless polynomial (x²−13)(x²−17)(x²−221) with roots modulo every positive integer; the unit-root and shift-family deductions are proved in the synthesis paper.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "key": "mishraquadratic"
         }
       ],
       "paper_reported_locators": []
