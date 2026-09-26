@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:15ad33070dcde99209b0a921f992457c85f5ac03a1e576c6c2c0f03c8adb3fed",
+    "docs/claims.json": "sha256:bcf642677dfe7ff35fc0c996894d34bfacd2f80285c0ecefcb0a506da7b169a3",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
     "docs/publication_contract.json": "sha256:f303a395011f723e9fdbd3280d7b3adc804dae10ab3906d5ae9574120893ce10",
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "39b95d954a2b9ef2d995d2185d517e6383f902b9",
+      "ref": "6f9328a11dc425fcc311321d5f98d4019c546131",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
