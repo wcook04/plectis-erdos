@@ -92,6 +92,39 @@ criterion, not a named theorem about this family. The unrestricted Erdős
 
 </details>
 
+## Try a changing prime set
+
+Suppose a finite search is allowed to enlarge its prime set each time it
+checks more exponents. Let $F_N=\{1,\ldots,N\}$. For each $N$, choose a
+finite nonempty prime set $P_N$ containing every prime factor of a member of
+$F_N$. Its weighted cost at any fixed base $b\ge2$ is bounded independently
+of $N$. Does this certify the theorem's hypothesis for the infinite support
+$\mathbb N_{>0}$? Decide which quantifier must stay fixed before opening the
+calculation.
+
+<details>
+<summary>Show the counterexample to this certification method</summary>
+
+For every $a\in F_N$, its $P_N$-part is $a$. Hence
+$W_{b,P_N}(F_N)=\sum_{a=1}^N(b^a-1)^{-1}\le 2/(b-1)$: indeed
+$(b^a-1)^{-1}\le2b^{-a}$. The bound holds for every $N$, but its witness
+$P_N$ changes with $N$.
+
+For any *fixed* finite nonempty $P$, put $R=\prod_{p\in P}p$. Every
+$1+jR$ is coprime to $R$, so its $P$-part is one. Consequently
+
+$$
+W_{b,P}(\mathbb N_{>0})\ge
+\frac1{b-1}\sum_{j\ge0}\frac1{1+jR}=\infty.
+$$
+
+The theorem requires one finite $P$ and a summable tail on the infinite
+support. Uniformly cheap finite searches with changing $P_N$ do not supply
+that. Failure of this sufficient condition says nothing about rationality of
+the full-support series.
+
+</details>
+
 Here is the accepted wrapper Solution as stored by Prove2Me on 25 September.
 It composes those two imports; the hard weighted criterion is in the imported
 proofs. The platform imports belong to Prove2Me's Lean 4.30.0 environment,
