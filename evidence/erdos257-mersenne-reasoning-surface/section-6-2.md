@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="thm-greedy-survival-catalogue"></a>
 
-## Theorem 6.35 (Greedy survival and membership), page 51
+## Theorem 6.35 (Greedy survival and membership), page 52
 
 > *With the greedy remainder $`r_n(x)`$ and complete tail $`R_n`$,
 > ``` math
@@ -15,7 +15,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result or one that implies it. The Lean statement is the displayed equivalence for the Mersenne weights and every real $x$, with the same hypotheses and conclusion as the printed one. The closing remark that the argument extends to other positive summable weights with $w_n>R_n$ describes the proof and has no Lean counterpart.
 
-[`Erdos249257.mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1458)
+[`Erdos249257.mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L1458)
 
 ```lean
 theorem mem_mersenneAchievementSet_iff_greedy_survival (x : ℝ) :
@@ -35,7 +35,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-rank-step-trichotomy"></a>
 
-## Lemma 6.36 (The two next-prefix intervals and their gap), page 51
+## Lemma 6.36 (The two next-prefix intervals and their gap), page 52
 
 > *Let $`d\ge0`$ be an integer, let $`u\subseteq\{1,\ldots,d\}`$, and suppose the target $`t`$ lies in the interval $`[X_u(2),X_u(2)+R_d]`$. At depth $`d+1`$, either $`t`$ lies in the lower interval
 > ``` math
@@ -49,7 +49,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements give the three alternatives for every real target $t$ (`isStraddlePrefix_step_trichotomy`); the left endpoint $X_{u\cup\{d+1\}}(2)$ of the upper interval equals $X_u(2)+w_{d+1}$ by `positiveMersenneSupportValue_insert`, since $d+1\notin u$. Disjointness is one line from $R_{d+1}<w_{d+1}$ (`mersenneTail_lt_weight`) and the strict inequalities defining the gap. For $t=1/2$, `IsStraddlePrefix.half_strict` makes every endpoint comparison strict and `IsStraddlePrefix.half_step_forced` gives the three cases as mutually exclusive.
 
-1. [`Erdos249257.isStraddlePrefix_step_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L205)
+1. [`Erdos249257.isStraddlePrefix_step_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L205)
 
 ```lean
 theorem isStraddlePrefix_step_trichotomy {t : ℝ} {u : Finset ℕ} {d : ℕ}
@@ -61,7 +61,7 @@ theorem isStraddlePrefix_step_trichotomy {t : ℝ} {u : Finset ℕ} {d : ℕ}
               + mersenneWeight (d + 1))
 ```
 
-2. [`Erdos249257.IsStraddlePrefix.half_step_forced`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L301)
+2. [`Erdos249257.IsStraddlePrefix.half_step_forced`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L301)
 
 ```lean
 theorem IsStraddlePrefix.half_step_forced {u : Finset ℕ} {d : ℕ}
@@ -76,14 +76,14 @@ theorem IsStraddlePrefix.half_step_forced {u : Finset ℕ} {d : ℕ}
             + mersenneWeight (d + 1))
 ```
 
-3. [`Erdos249257.mersenneTail_lt_weight`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L180)
+3. [`Erdos249257.mersenneTail_lt_weight`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L180)
 
 ```lean
 theorem mersenneTail_lt_weight {n : ℕ} (hn : 0 < n) :
     mersenneTail n < mersenneWeight n
 ```
 
-4. [`Erdos249257.positiveMersenneSupportValue_insert`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L144)
+4. [`Erdos249257.positiveMersenneSupportValue_insert`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L144)
 
 ```lean
 theorem positiveMersenneSupportValue_insert {F : Finset ℕ} {a : ℕ}
@@ -92,7 +92,7 @@ theorem positiveMersenneSupportValue_insert {F : Finset ℕ} {a : ℕ}
       = mersenneWeight a + positiveMersenneSupportValue (↑F : Set ℕ)
 ```
 
-5. [`Erdos249257.IsStraddlePrefix.half_strict`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L287)
+5. [`Erdos249257.IsStraddlePrefix.half_strict`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L287)
 
 ```lean
 theorem IsStraddlePrefix.half_strict {u : Finset ℕ} {d : ℕ}
@@ -108,7 +108,7 @@ theorem IsStraddlePrefix.half_strict {u : Finset ℕ} {d : ℕ}
 
 <a id="lem-fatal-gap-exclusion"></a>
 
-## Lemma 6.37 (A greedy gap excludes every representation), page 51
+## Lemma 6.37 (A greedy gap excludes every representation), page 52
 
 > *Let $`d\ge0`$ be an integer and $`u\subseteq\{1,\ldots,d\}`$ a finite prefix. If
 > ``` math
@@ -118,7 +118,7 @@ theorem IsStraddlePrefix.half_strict {u : Finset ℕ} {d : ℕ}
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_excludes_every_representation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L174)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_excludes_every_representation`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L174)
 
 ```lean
 theorem fatal_gap_excludes_every_representation {t : ℝ} {u : Finset ℕ} {d : ℕ}
@@ -128,7 +128,7 @@ theorem fatal_gap_excludes_every_representation {t : ℝ} {u : Finset ℕ} {d : 
     ∀ A : Set ℕ, 0 ∉ A → positiveMersenneSupportValue A ≠ t
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_endpoint_bounds`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L114)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_endpoint_bounds`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L114)
 
 ```lean
 theorem fatal_gap_endpoint_bounds {A : Set ℕ} {u : Finset ℕ} {d : ℕ}
@@ -142,7 +142,7 @@ theorem fatal_gap_endpoint_bounds {A : Set ℕ} {u : Finset ℕ} {d : ℕ}
           ≤ positiveMersenneSupportValue A)
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.depth_prefix_interval_disjoint`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L144)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.depth_prefix_interval_disjoint`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L144)
 
 ```lean
 theorem depth_prefix_interval_disjoint {t : ℝ} {u v : Finset ℕ} {d : ℕ}
@@ -154,7 +154,7 @@ theorem depth_prefix_interval_disjoint {t : ℝ} {u v : Finset ℕ} {d : ℕ}
     u = v
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_within_prefix_interval`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L162)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_within_prefix_interval`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L162)
 
 ```lean
 theorem fatal_gap_within_prefix_interval {t : ℝ} {u : Finset ℕ} {d : ℕ}
@@ -179,13 +179,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-half-endpoint-kills"></a>
 
-## Lemma 6.38 (No finite Mersenne sum equals one half), page 52
+## Lemma 6.38 (No finite Mersenne sum equals one half), page 53
 
 > *For every finite $`u\subseteq\mathbb N_{>0}`$, $`X_u(2)\ne1/2`$: its reduced denominator is odd. Also $`X_u(2)+R_d\ne1/2`$ for every $`d\ge0`$, since $`R_d`$ is the irrational full Mersenne sum minus a finite rational sum. These observations exclude equality at the finite-prefix and complete-tail endpoints of Lemma 6.36.*
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same conclusions as the printed ones; the second holds for every finite $u$ and every $d\ge0$, where an index $0$ in $u$ contributes nothing to $X_u(2)$. Their proofs use the printed reasons: the reduced denominator of $X_u(2)$ is odd, and the full Mersenne sum is irrational.
 
-1. [`Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L243)
+1. [`Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L243)
 
 ```lean
 theorem positiveMersenneSupportValue_coe_finset_ne_half
@@ -193,7 +193,7 @@ theorem positiveMersenneSupportValue_coe_finset_ne_half
     positiveMersenneSupportValue (↑u : Set ℕ) ≠ (1 / 2 : ℝ)
 ```
 
-2. [`Erdos249257.half_ne_coe_finset_add_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L263)
+2. [`Erdos249257.half_ne_coe_finset_add_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L263)
 
 ```lean
 theorem half_ne_coe_finset_add_mersenneTail
@@ -215,7 +215,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-straddle-agrees-greedy"></a>
 
-## Lemma 6.39 (Straddle words are canonical: they agree with the greedy prefix), page 52
+## Lemma 6.39 (Straddle words are canonical: they agree with the greedy prefix), page 53
 
 > *Let $`u\subseteq\{1,\ldots,d\}`$ satisfy $`X_u(2)\le1/2\le X_u(2)+R_d`$. Then
 > ``` math
@@ -225,7 +225,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one: it gives $n\in u\Leftrightarrow n\in G$ for $1\le n\le d$, which is $u=G\cap\{1,\ldots,d\}$.
 
-[`Erdos249257.IsStraddlePrefix.half_agrees_greedy`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L442)
+[`Erdos249257.IsStraddlePrefix.half_agrees_greedy`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L442)
 
 ```lean
 theorem IsStraddlePrefix.half_agrees_greedy
@@ -247,7 +247,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-last-skip-iff-fatal"></a>
 
-## Theorem 6.40 (Last-skip iff local fatality: a pointwise criterion), page 52
+## Theorem 6.40 (Last-skip iff local fatality: a pointwise criterion), page 53
 
 > *Keep $`G`$ for the selected half-greedy support, $`r_M(1/2)`$ for its remainder and $`R_M`$ for the complete tail after rank $`M`$. A positive rank $`M`$ is the last omitted rank if and only if $`M\notin G`$ and $`r_M(1/2)>R_M`$. Consequently,
 > ``` math
@@ -259,7 +259,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with the omitted ranks taken as the positive ranks outside $G$.
 
-1. [`Erdos249257.isLastHalfGreedySkip_iff_skip_and_fatal`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFixedTailSocket.lean#L22)
+1. [`Erdos249257.isLastHalfGreedySkip_iff_skip_and_fatal`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFixedTailSocket.lean#L22)
 
 ```lean
 theorem isLastHalfGreedySkip_iff_skip_and_fatal
@@ -269,7 +269,7 @@ theorem isLastHalfGreedySkip_iff_skip_and_fatal
         GreedyMersenneFatalAt (1 / 2 : ℝ) M
 ```
 
-2. [`Erdos249257.half_mem_iff_every_actual_skip_survives`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFixedTailSocket.lean#L73)
+2. [`Erdos249257.half_mem_iff_every_actual_skip_survives`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFixedTailSocket.lean#L73)
 
 ```lean
 theorem half_mem_iff_every_actual_skip_survives :
@@ -292,7 +292,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-seam-upper-or-middle"></a>
 
-## Lemma 6.41 (Seam upper-or-middle classification), page 52
+## Lemma 6.41 (Seam upper-or-middle classification), page 53
 
 > *At a row $`s\ge5`$, the terminal rank is omitted in the next row, $`s\notin D_{s+1}`$, if and only if either
 > ``` math
@@ -306,7 +306,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one: for $s\ge5$ the bit of index $s$ in the greedy word of row $s+1$ is zero exactly when branch $\mathrm U$ or branch $\mathrm M$ holds at $s$. The subtraction in the $\mathrm M$ inequality is natural-number subtraction, which agrees with the printed one because $p_s^-\le2(s-2)<2^{s+1}$.
 
-[`Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L57)
+[`Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L57)
 
 ```lean
 theorem seamGreedy_terminal_false_iff_upperOrMiddle
@@ -328,7 +328,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-largest-false-rank-algebra"></a>
 
-## Lemma 6.42 (The exact gap at the largest omitted rank), page 52
+## Lemma 6.42 (The exact gap at the largest omitted rank), page 53
 
 > *Let $`2\le d<s`$ and $`2s<3d`$. Write $`W_s(E)=\sum_{e\in E}\lfloor4^s/(2^e-1)\rfloor`$ for a finite set $`E\subseteq\{2,\ldots,s-1\}`$. For $`u\subseteq\{2,\ldots,d-1\}`$, put $`E_-=u\cup\{d+1,\ldots,s-1\}`$ and $`E_+=u\cup\{d\}`$. Then
 > ``` math
@@ -338,7 +338,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.largest_false_rank_algebra`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L39)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.largest_false_rank_algebra`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L39)
 
 ```lean
 theorem largest_false_rank_algebra {s d : ℕ} {u : Finset ℕ}
@@ -349,7 +349,7 @@ theorem largest_false_rank_algebra {s d : ℕ} {u : Finset ℕ}
       = 3 * rowWeightSum s (insert d u)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_largest_false_rank_algebra`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L98)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_largest_false_rank_algebra`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L98)
 
 ```lean
 theorem paper_largest_false_rank_algebra :
@@ -378,7 +378,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-critical-dyadic-band"></a>
 
-## Theorem 6.43 (Reduction to the nearest dyadic boundary), page 53
+## Theorem 6.43 (Reduction to the nearest dyadic boundary), page 54
 
 > *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let $`j_*`$ be the largest $`j\in\{0,\ldots,d\}`$ for which $`E\le2^{d-j+1}`$. The set is nonempty, so $`j_*`$ is well defined, including when $`E=0`$. Then
 > ``` math
@@ -393,7 +393,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.HalfUpperResetCriticalBand.exists_criticalDyadicBandIndex`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfUpperResetCriticalBand.lean#L46)
+1. [`Erdos249257.HalfUpperResetCriticalBand.exists_criticalDyadicBandIndex`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfUpperResetCriticalBand.lean#L46)
 
 ```lean
 theorem exists_criticalDyadicBandIndex
@@ -401,7 +401,7 @@ theorem exists_criticalDyadicBandIndex
     ∃ j : ℕ, CriticalDyadicBandIndex d E j
 ```
 
-2. [`Erdos249257.HalfUpperResetCriticalBand.dyadicBandEscape_iff_exists_critical`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfUpperResetCriticalBand.lean#L108)
+2. [`Erdos249257.HalfUpperResetCriticalBand.dyadicBandEscape_iff_exists_critical`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfUpperResetCriticalBand.lean#L108)
 
 ```lean
 theorem dyadicBandEscape_iff_exists_critical
@@ -411,7 +411,7 @@ theorem dyadicBandEscape_iff_exists_critical
         E + 2 * (d + j) ≤ 2 ^ (d - j + 1)
 ```
 
-3. [`Erdos249257.HalfUpperResetCriticalBand.seamUpperResetCriticalBandEscape_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfUpperResetCriticalBand.lean#L883)
+3. [`Erdos249257.HalfUpperResetCriticalBand.seamUpperResetCriticalBandEscape_iff`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfUpperResetCriticalBand.lean#L883)
 
 ```lean
 theorem seamUpperResetCriticalBandEscape_iff :
@@ -432,7 +432,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-final-middle-cell"></a>
 
-## Theorem 6.44 (Excluding minus three at a final middle transition), page 53
+## Theorem 6.44 (Excluding minus three at a final middle transition), page 54
 
 > *Suppose that row $`D\ge13`$ is a middle transition in Theorem 5.16 and every transition at a row $`s\ge D+1`$ is right. Then
 > ``` math
@@ -442,7 +442,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.finalMiddleCell_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L587)
+1. [`Erdos249257.finalMiddleCell_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L587)
 
 ```lean
 theorem finalMiddleCell_neg_three_not_last
@@ -461,7 +461,7 @@ theorem finalMiddleCell_neg_three_not_last
     False
 ```
 
-2. [`Erdos249257.mobiusCenteredHalfCarry_add_two`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L39)
+2. [`Erdos249257.mobiusCenteredHalfCarry_add_two`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L39)
 
 ```lean
 theorem mobiusCenteredHalfCarry_add_two
@@ -483,7 +483,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-skipped-endpoint-trichotomy"></a>
 
-## Lemma 6.45 (The signed position of a skipped greedy prefix), page 54
+## Lemma 6.45 (The signed position of a skipped greedy prefix), page 55
 
 > *Let $`s\ge5`$ be omitted by the real greedy support $`G`$, and put
 > ``` math
@@ -502,7 +502,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.halfGreedy_skipped_endpoint_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246)
+[`Erdos249257.halfGreedy_skipped_endpoint_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246)
 
 ```lean
 theorem halfGreedy_skipped_endpoint_trichotomy
@@ -535,7 +535,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-reverse-carry-word"></a>
 
-## Lemma 6.46 (Spacing of reverse-carry words), page 54
+## Lemma 6.46 (Spacing of reverse-carry words), page 55
 
 > *For $`i=1,2`$, let integer sequences $`a_i,b_i,u_i`$ satisfy
 > ``` math
@@ -550,7 +550,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_reverse_carry_word`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L240)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_reverse_carry_word`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L240)
 
 ```lean
 theorem paper_reverse_carry_word :
@@ -582,7 +582,7 @@ theorem paper_reverse_carry_word :
         (2 : ℝ) ^ L ≤ 2 * B)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.reverse_carry_word_common_bound_sharp`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L209)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.reverse_carry_word_common_bound_sharp`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamRowGapAndCarry.lean#L209)
 
 ```lean
 theorem reverse_carry_word_common_bound_sharp :
@@ -609,13 +609,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-linear-channel-nogo"></a>
 
-## Lemma 6.47 (Linear functionals factoring through one value), page 54
+## Lemma 6.47 (Linear functionals factoring through one value), page 55
 
 > *Let $`V`$ be a vector space over $`\mathbb Q`$, let $`\mathrm{ev}:V\to\mathbb Q`$ be linear, and choose $`e\in V`$ with $`\mathrm{ev}(e)=1`$. Suppose that each linear functional $`\ell_j:V\to\mathbb Q`$ vanishes on $`\ker(\mathrm{ev})`$. Then $`v-\mathrm{ev}(v)e\in\ker(\mathrm{ev})`$ gives $`\ell_j(v)=\ell_j(e)\mathrm{ev}(v)`$. Consequently any finite evaluation matrix $`(\ell_j(v_i))_{i,j}`$ is an outer product and has rank at most one. Every square minor of order at least two therefore vanishes. This excludes determinant arguments formed from these particular functionals, not determinant methods with additional independent information.*
 
 The Lean declarations below together state this result or one that implies it. The Lean factorisation $\Lambda(v)=\mathrm{ev}(v)\,w_0$ holds for a linear map $\Lambda$ into any $\mathbb Q$-vector space $W$ whose kernel contains $\ker(\mathrm{ev})$; the printed identity is its case $W=\mathbb Q$, $\Lambda=\ell_j$, where $w_0=\ell_j(e)$. The vanishing of every square minor of order at least two is the second Lean statement (a square matrix $(\ell_j(v_i))$ over an index set with at least two elements), and rank at most one follows from the $2\times2$ minors.
 
-1. [`Erdos249257.AdelicHeightObstruction.linearDescender_eq_smul_eval`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/AdelicHeightObstruction.lean#L120)
+1. [`Erdos249257.AdelicHeightObstruction.linearDescender_eq_smul_eval`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/AdelicHeightObstruction.lean#L120)
 
 ```lean
 theorem linearDescender_eq_smul_eval
@@ -627,7 +627,7 @@ theorem linearDescender_eq_smul_eval
     ∃ w₀ : W, ∀ v : V, Λ v = ev v • w₀
 ```
 
-2. [`Erdos249257.HalfTrappingReturnCarry.relationInvariantLinearChannels_det_eq_zero`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfTrappingReturnCarry.lean#L42)
+2. [`Erdos249257.HalfTrappingReturnCarry.relationInvariantLinearChannels_det_eq_zero`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfTrappingReturnCarry.lean#L42)
 
 ```lean
 theorem relationInvariantLinearChannels_det_eq_zero
@@ -652,7 +652,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-two-thirds-band"></a>
 
-## Theorem 6.48 (Two-thirds band: exact localisation of post-take skip-unsafety), page 54
+## Theorem 6.48 (Two-thirds band: exact localisation of post-take skip-unsafety), page 55
 
 > *Write a positive residual as $`1/R`$. A skipped rank $`k`$ passes the sufficient dyadic test precisely when $`R\ge2^k`$. Suppose a weight at rank $`b`$ is taken without exhausting the residual: with $`q=2^b-1`$, assume $`0<R<q`$. The new reciprocal residual is $`Rq/(q-R)`$. If the next take is at rank $`c\ge b+2`$, put $`m=2^{c-1}`$. The last skipped rank is dyadically unsafe exactly when
 > ``` math
@@ -668,7 +668,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_two_thirds_band`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/PostTakeBandLocalisation.lean#L96)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_two_thirds_band`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/PostTakeBandLocalisation.lean#L96)
 
 ```lean
 theorem paper_two_thirds_band :
@@ -713,7 +713,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-sharp-fatal-gap"></a>
 
-## Theorem 6.49 (A weaker sufficient test against the remaining tail), page 55
+## Theorem 6.49 (A weaker sufficient test against the remaining tail), page 56
 
 > *Let $`k,u,L`$ be positive integers, and put $`a=2L-(2^k-1)u`$. Suppose $`a>0`$, equivalently that $`\rho=u/(2L)<w_k`$ and the greedy rule skips weight $`w_k`$. The dyadic sufficient test $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$. The weaker sufficient condition
 > ``` math
@@ -725,7 +725,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L299)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L299)
 
 ```lean
 theorem paper_sharp_fatal_gap :
@@ -761,7 +761,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-gap-mass-summability"></a>
 
-## Lemma 6.50 (Summability of one gap length per level), page 55
+## Lemma 6.50 (Summability of one gap length per level), page 56
 
 > *For $`n\ge1`$, put $`g_n=w_n-R_n>0`$. The sum of one gap length per level satisfies, for $`N\ge0`$,
 > ``` math
@@ -771,20 +771,20 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones: $g_n>0$ for $n\ge1$, and the tail bound for every $N\ge0$. They also record that $\sum_n g_n$ converges and that its tails tend to $0$.
 
-1. [`Erdos249257.mersenneGap_pos`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L2346)
+1. [`Erdos249257.mersenneGap_pos`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L2346)
 
 ```lean
 theorem mersenneGap_pos {n : ℕ} (hn : 0 < n) :
     0 < mersenneGap n
 ```
 
-2. [`Erdos249257.summable_mersenneGap_succ`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfGapMass.lean#L77)
+2. [`Erdos249257.summable_mersenneGap_succ`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfGapMass.lean#L77)
 
 ```lean
 theorem summable_mersenneGap_succ : Summable (fun k : ℕ => mersenneGap (k + 1))
 ```
 
-3. [`Erdos249257.mersenneGap_tail_le`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfGapMass.lean#L83)
+3. [`Erdos249257.mersenneGap_tail_le`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfGapMass.lean#L83)
 
 ```lean
 theorem mersenneGap_tail_le (N : ℕ) :
@@ -792,7 +792,7 @@ theorem mersenneGap_tail_le (N : ℕ) :
       ≤ (2 / 9 : ℝ) * ((1 : ℝ) / 4) ^ N + (3 / 7 : ℝ) * ((1 : ℝ) / 8) ^ N
 ```
 
-4. [`Erdos249257.tendsto_mersenneGap_tail_zero`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfGapMass.lean#L104)
+4. [`Erdos249257.tendsto_mersenneGap_tail_zero`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfGapMass.lean#L104)
 
 ```lean
 theorem tendsto_mersenneGap_tail_zero :
@@ -814,7 +814,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-half-divisor-unit-drop"></a>
 
-## Lemma 6.51 (The effect of adding one divisor), page 55
+## Lemma 6.51 (The effect of adding one divisor), page 56
 
 > *Let $`N\ge0`$ and let finite supports $`D_0,D_1`$ differ only by $`D_1=D_0\cup\{N+1\}`$, with $`N+1\notin D_0`$. For every positive integer $`m`$,
 > ``` math
@@ -824,7 +824,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean identity $c_{A\cup\{d\}}(m)=c_A(m)+\mathbf 1_{d\mid m}$ holds for every positive $m$, every set $A\subseteq\mathbb N$, finite or infinite, and every $d\notin A$; the printed statement is its case of a finite support $D_0$ and $d=N+1$. The value $1$ at $m=2(N+1)$ is also stated separately for finite binary words.
 
-1. [`Erdos249257.HalfCylinderIntegerGreedy.supportCoeff_insert_eq_add_indicator`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L882)
+1. [`Erdos249257.HalfCylinderIntegerGreedy.supportCoeff_insert_eq_add_indicator`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L882)
 
 ```lean
 theorem supportCoeff_insert_eq_add_indicator
@@ -833,7 +833,7 @@ theorem supportCoeff_insert_eq_add_indicator
       supportCoeff A n + if d ∈ n.divisors then 1 else 0
 ```
 
-2. [`Erdos249257.HalfDivisorUnitDrop.supportCoeff_extend_true_eq_false_add_one_at_double`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfDivisorUnitDrop.lean#L20)
+2. [`Erdos249257.HalfDivisorUnitDrop.supportCoeff_extend_true_eq_false_add_one_at_double`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfDivisorUnitDrop.lean#L20)
 
 ```lean
 theorem supportCoeff_extend_true_eq_false_add_one_at_double
@@ -855,14 +855,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-tempered-orbit-rigidity"></a>
 
-## Theorem 6.52 (Uniqueness of an integer recurrence with a vanishing scaled limit), page 56
+## Theorem 6.52 (Uniqueness of an integer recurrence with a vanishing scaled limit), page 57
 
 > *For any nonnegative-integer coefficient sequence $`c:\mathbb N\to\mathbb N`$ with $`c(n)\le
 > n`$: the binary coefficient series $`X_c = \sum'_{n\ge 1} c(n)/2^n`$ is rational iff there exists a positive integer multiplier $`v`$ and an integer orbit $`u:\mathbb N\to\mathbb Z`$ satisfying the exact carry recurrence $`u(N{+}1)=2u(N)-v\cdot c(N{+}1)`$ together with the condition $`u(N)/2^N\to0`$. Every integer sequence satisfying both conditions obeys $`u(N) = v\cdot T_c(N)`$ exactly, where $`T_c(N)=\sum_{j\ge 1} c(N{+}j)/2^j`$ is the scaled tail. For each fixed $`v`$ there is at most one such sequence. Positivity of the orbit alone is deliberately *not* used as an equivalent criterion: a homogeneous $`2^N`$-scaled perturbation can be added to any orbit without breaking the recurrence, so the limit condition cannot be dropped. The choices $`c=c_A`$ for Problem 257 and $`c=\varphi`$ for Problem 249 both satisfy $`0\le c(n)\le n`$. The telescoping argument is given again, with an example, in Theorem 6.105.*
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with rationality written as $X_c=p/v$ for an integer $p$ and a positive integer $v$. Uniqueness for each fixed $v$ follows at once from $u(N)=v\,T_c(N)$.
 
-1. [`Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GenericTailOrbitRigidity.lean#L426)
+1. [`Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GenericTailOrbitRigidity.lean#L426)
 
 ```lean
 theorem binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit
@@ -871,7 +871,7 @@ theorem binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit
       ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ, IsTemperedBinaryOrbit c v u
 ```
 
-2. [`Erdos249257.temperedBinaryOrbit_eq_scaledTail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GenericTailOrbitRigidity.lean#L339)
+2. [`Erdos249257.temperedBinaryOrbit_eq_scaledTail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GenericTailOrbitRigidity.lean#L339)
 
 ```lean
 theorem temperedBinaryOrbit_eq_scaledTail
@@ -893,13 +893,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-tail-transfer"></a>
 
-## Lemma 6.53 (Changing finitely many support elements), page 56
+## Lemma 6.53 (Changing finitely many support elements), page 57
 
 > *Let $`b\ge2`$ be an integer, and let $`A,B\subseteq\mathbb N_{\ge1}`$. If $`X_A(b)`$ is irrational and $`A,B`$ have finite symmetric difference, then $`X_B(b)`$ is irrational too: the two sums differ by a finite sum of rational numbers. This observation supplies the finite modifications in Theorem 6.21.*
 
 The Lean declarations below together state this result or one that implies it. The Lean statements say that, for every $M\ge0$, $X_A(b)$ is irrational exactly when $X_{A\cap(M,\infty)}(b)$ is. The printed lemma follows in one line: sets with finite symmetric difference agree above some $M$, so irrationality passes from $X_A(b)$ to the common tail and back to $X_B(b)$.
 
-1. [`Erdos249257.irrational_erdosSupportSeries_of_tail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L9467)
+1. [`Erdos249257.irrational_erdosSupportSeries_of_tail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L9467)
 
 ```lean
 theorem irrational_erdosSupportSeries_of_tail (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b)
@@ -907,7 +907,7 @@ theorem irrational_erdosSupportSeries_of_tail (b : ℕ) (A : Set ℕ) (hb : 2 �
     Irrational (erdosSupportSeries b A)
 ```
 
-2. [`Erdos249257.irrational_erdosSupportSeries_tail_of_irrational`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L9476)
+2. [`Erdos249257.irrational_erdosSupportSeries_tail_of_irrational`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L9476)
 
 ```lean
 theorem irrational_erdosSupportSeries_tail_of_irrational (b : ℕ) (A : Set ℕ)
@@ -928,7 +928,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-dyadic-excess-reformulation"></a>
 
-## Lemma 6.54 (An integer test for the interval between the dyadic and Mersenne weights), page 56
+## Lemma 6.54 (An integer test for the interval between the dyadic and Mersenne weights), page 57
 
 > *For positive integers $`p,L`$ and $`n\ge0`$, write the residual as $`p/(2L)`$ and put $`E=2^np-L`$. Clearing positive denominators gives
 > ``` math
@@ -941,7 +941,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements prove both equivalences for every integer $p$, every $L\ge1$ and every $n\ge0$, so the hypothesis $p>0$ is unnecessary; the second right-hand side is written as $0<E$ and $2E<p$. A third statement is the second equivalence for the half-greedy residual $r_n(1/2)$.
 
-1. [`Erdos249257.divInt_le_nextDyadic_iff_excess_nonpos`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/DyadicPrefixCompression.lean#L198)
+1. [`Erdos249257.divInt_le_nextDyadic_iff_excess_nonpos`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/DyadicPrefixCompression.lean#L198)
 
 ```lean
 theorem divInt_le_nextDyadic_iff_excess_nonpos
@@ -950,7 +950,7 @@ theorem divInt_le_nextDyadic_iff_excess_nonpos
       nextDyadicExcessIntNumerator p n L ≤ 0
 ```
 
-2. [`Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/DyadicPrefixCompression.lean#L1044)
+2. [`Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/DyadicPrefixCompression.lean#L1044)
 
 ```lean
 theorem greedyHalf_mem_nextMersenneDyadicSliver_iff_excess (n : ℕ) :
@@ -963,7 +963,7 @@ theorem greedyHalf_mem_nextMersenneDyadicSliver_iff_excess (n : ℕ) :
           halfGreedyResidualDisplayedNumerator n)
 ```
 
-3. [`Erdos249257.divInt_mem_nextMersenneDyadicSliver_iff_excess`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/DyadicPrefixCompression.lean#L262)
+3. [`Erdos249257.divInt_mem_nextMersenneDyadicSliver_iff_excess`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/DyadicPrefixCompression.lean#L262)
 
 ```lean
 theorem divInt_mem_nextMersenneDyadicSliver_iff_excess
@@ -980,13 +980,13 @@ theorem divInt_mem_nextMersenneDyadicSliver_iff_excess
 
 <a id="lem-denominator-sandwich"></a>
 
-## Lemma 6.55 (The odd denominator survives dyadic subtraction), page 56
+## Lemma 6.55 (The odd denominator survives dyadic subtraction), page 57
 
 > *Let $`r/D`$ be a reduced fraction with $`D>0`$ odd, let $`p\in\mathbb Z`$, and let $`c\ge0`$ be an integer. The reduced denominator of $`p/2^c-r/D`$ is divisible by $`D`$ and divides $`2^cD`$. Indeed, its unreduced numerator $`pD-2^cr`$ is coprime to $`D`$, since $`\gcd(r,D)=\gcd(2^c,D)=1`$. Reduction can therefore remove only powers of $`2`$ from the displayed denominator. No property of Mersenne weights is used.*
 
 The Lean declarations below together state this result or one that implies it. The Lean statements take integers $p,r$ with no sign condition on $p/2^c-r/D$. `dyadicResidualIntNumerator_coprime_oddDenominator` shows that $pD-2^cr$ is coprime to $D$ when $D$ is odd and $\gcd(r,D)=1$, and `dyadicResidualInt_denominator_sandwich` then gives both divisibilities for the reduced denominator of $(pD-2^cr)/(2^cD)$, so the printed lemma is their one-line composition. `dyadicResidual_denominator_sandwich` is the special case $p,r\ge0$ with $2^cr\le pD$.
 
-1. [`Erdos249257.dyadicResidual_denominator_sandwich`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/DyadicPrefixCompression.lean#L118)
+1. [`Erdos249257.dyadicResidual_denominator_sandwich`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/DyadicPrefixCompression.lean#L118)
 
 ```lean
 theorem dyadicResidual_denominator_sandwich
@@ -996,7 +996,7 @@ theorem dyadicResidual_denominator_sandwich
       (dyadicResidualRat p r c D).den ∣ 2 ^ c * D
 ```
 
-2. [`Erdos249257.dyadicResidualInt_denominator_sandwich`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/DyadicPrefixCompression.lean#L57)
+2. [`Erdos249257.dyadicResidualInt_denominator_sandwich`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/DyadicPrefixCompression.lean#L57)
 
 ```lean
 theorem dyadicResidualInt_denominator_sandwich
@@ -1006,7 +1006,7 @@ theorem dyadicResidualInt_denominator_sandwich
       (dyadicResidualIntRat p r c D).den ∣ 2 ^ c * D
 ```
 
-3. [`Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/DyadicPrefixCompression.lean#L35)
+3. [`Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/DyadicPrefixCompression.lean#L35)
 
 ```lean
 theorem dyadicResidualIntNumerator_coprime_oddDenominator
@@ -1021,7 +1021,7 @@ theorem dyadicResidualIntNumerator_coprime_oddDenominator
 
 <a id="lem-denominator-survival"></a>
 
-## Lemma 6.56 (A guaranteed divisor of a reduced denominator), page 56
+## Lemma 6.56 (A guaranteed divisor of a reduced denominator), page 57
 
 > *Let $`a\in\mathbb Z`$, $`D\in\mathbb N_{>0}`$ and $`m,C,h\in\mathbb N`$. Write $`\operatorname{den}(x)`$ for the positive reduced denominator of a rational number $`x`$. If $`m\mid D`$ and $`\gcd(m,|a|)=1`$, then $`m\mid\operatorname{den}(a/D)`$. If $`C\mid D`$ and $`\gcd(C,|a|)=1`$, then
 > ``` math
@@ -1031,7 +1031,7 @@ theorem dyadicResidualIntNumerator_coprime_oddDenominator
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones; $C/\gcd(C,h)$ is an exact quotient, so natural-number division agrees with the printed one.
 
-1. [`Erdos249257.RationalDenominatorSurvival.divisor_dvd_divInt_den`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/RationalDenominatorSurvival.lean#L17)
+1. [`Erdos249257.RationalDenominatorSurvival.divisor_dvd_divInt_den`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/RationalDenominatorSurvival.lean#L17)
 
 ```lean
 theorem divisor_dvd_divInt_den
@@ -1040,7 +1040,7 @@ theorem divisor_dvd_divInt_den
     m ∣ (Rat.divInt a (D : ℤ)).den
 ```
 
-2. [`Erdos249257.RationalDenominatorSurvival.survivingDivisor_dvd_scaled_divInt_den`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/RationalDenominatorSurvival.lean#L38)
+2. [`Erdos249257.RationalDenominatorSurvival.survivingDivisor_dvd_scaled_divInt_den`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/RationalDenominatorSurvival.lean#L38)
 
 ```lean
 theorem survivingDivisor_dvd_scaled_divInt_den
@@ -1063,7 +1063,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-mixed-prime-power-layer"></a>
 
-## Lemma 6.57 (Commuting prime-power differences), page 56
+## Lemma 6.57 (Commuting prime-power differences), page 57
 
 > *For a function $`g:\mathbb N_{>0}\to\mathbb Z`$, a positive integer $`p`$ and an integer $`e\ge1`$, define
 > ``` math
@@ -1078,7 +1078,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with the commutation proved for every $p,e$ and every $g$ defined on all of $\mathbb N$. The right side of the mixed identity is written as $c_{A'}(n)$ with $A'=\{d:\gcd(d,pq)=1,\ p^eq^fd\in A\}$, which equals $\sum_{d\mid n}\mathbf 1_A(p^eq^fd)$ because every divisor of $n$ is prime to $pq$.
 
-1. [`Erdos249257.MaximalOmegaLayer.primePowerLayer_comm`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MaximalOmegaLayer.lean#L29)
+1. [`Erdos249257.MaximalOmegaLayer.primePowerLayer_comm`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MaximalOmegaLayer.lean#L29)
 
 ```lean
 theorem primePowerLayer_comm
@@ -1087,7 +1087,7 @@ theorem primePowerLayer_comm
       primePowerLayer p e (primePowerLayer q f g) n
 ```
 
-2. [`Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo_supportCoeffInt`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MaximalOmegaLayer.lean#L39)
+2. [`Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo_supportCoeffInt`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MaximalOmegaLayer.lean#L39)
 
 ```lean
 theorem mixedPrimePowerLayerTwo_supportCoeffInt
@@ -1112,13 +1112,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-achievement-set-topology"></a>
 
-## Proposition 6.59 (Achievement-set topology: compact, closed, perfect, measure exactly one), page 57
+## Proposition 6.59 (Achievement-set topology: compact, closed, perfect, measure exactly one), page 58
 
 > *$`\ensuremath{\mathcal A}`$ is compact (continuous image of the binary-sequence Cantor space $`\mathbb N\to\mathrm{Fin}\,2`$ under the product topology, via the positive-index digit map), hence closed; it is also perfect, totally disconnected, and nowhere dense, with Lebesgue measure exactly $`1`$. The compactness/closedness argument (binary coding $`\to`$ Cantor space $`\to`$ continuous image) is a fully generic technique for characterizing the achievement set of *any* absolutely convergent digit-weighted series, not specific to Mersenne denominators ; reusable for a $`\varphi(n)/2^n`$ subsum set after checking summability. No separation of successive weights is needed for compactness or closedness; the stronger topological conclusions require their own hypotheses. Closedness alone is what powers every “limit of a sequence of achieved points is achieved” argument in this catalogue (e.g. Theorem 6.2, Theorem 6.5).*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_achievement_set_topology`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/AchievementSetTopologyAndFiniteHalf.lean#L27)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_achievement_set_topology`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/AchievementSetTopologyAndFiniteHalf.lean#L27)
 
 ```lean
 theorem paper_achievement_set_topology :
@@ -1144,7 +1144,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-master-dichotomy"></a>
 
-## Theorem 6.60 (Nonmembership of one half and a finite fatal gap), page 58
+## Theorem 6.60 (Nonmembership of one half and a finite fatal gap), page 59
 
 > *The value $`1/2`$ is not in $`\mathcal A`$ if and only if there are an integer $`d\ge0`$ and a finite set $`u\subseteq\{1,\ldots,d\}`$ such that
 > ``` math
@@ -1156,14 +1156,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, in the form $1/2\in\mathcal A$ exactly when no such $d$ and $u$ exist. A second Lean statement records the direction from nonmembership to a gap as the disjunction that $1/2\in\mathcal A$ or such a gap exists.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L654)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L654)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔ ¬ ExistsFatalHalfGap
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCutLocator.lean#L623)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L623)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_or_exists_fatal_gap :
@@ -1188,7 +1188,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-perturbed-family-maximality"></a>
 
-## Theorem 6.62 (Perturbed-family maximality and the three-branch recurrence), page 58
+## Theorem 6.62 (Perturbed-family maximality and the three-branch recurrence), page 59
 
 > *Use the family and adjacent pair of Definition 6.61, and assume in addition that $`B<g`$. At capacity $`C'=4C+g`$, the largest admissible updated value is $`t(x_+)`$ if $`4o+p_+\le g`$, and $`t(x_-)`$ otherwise. After this choice, apply the take-if-possible rule to an additional weight $`W=2g+4`$. The resulting remainder is
 > ``` math
@@ -1201,7 +1201,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones. Under $B<g$, `prefixChoice_maximal` bounds every admissible updated value by $t$ of the chosen element, which is admissible by `above_newSum_le_capacity_iff` when $4o+p_+\le g$ and by `below_newSum_le_capacity` otherwise, and `prefixRemainder_eq_capacity_sub_choice` identifies the remainder before the weight $W$ with $C'$ minus that value. `nextRemainder_trichotomy` gives the three remainders, whose natural-number subtractions agree with the printed ones because $p_-\le B<g$ and because of each case's inequality.
 
-1. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1390)
+1. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1390)
 
 ```lean
 theorem prefixChoice_maximal
@@ -1211,7 +1211,7 @@ theorem prefixChoice_maximal
     F.newSum x ≤ F.newSum K.prefixChoice
 ```
 
-2. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1463)
+2. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1463)
 
 ```lean
 theorem nextRemainder_trichotomy
@@ -1225,7 +1225,7 @@ theorem nextRemainder_trichotomy
         4 * K.remainder - F.gap - K.belowPulse - 4
 ```
 
-3. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1360)
+3. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1360)
 
 ```lean
 theorem below_newSum_le_capacity
@@ -1233,14 +1233,14 @@ theorem below_newSum_le_capacity
     F.newSum K.below ≤ K.newCapacity
 ```
 
-4. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1368)
+4. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1368)
 
 ```lean
 theorem above_newSum_le_capacity_iff :
     F.newSum K.above ≤ K.newCapacity ↔ K.successorCarries
 ```
 
-5. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1446)
+5. [`Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderIntegerGreedy.lean#L1446)
 
 ```lean
 theorem prefixRemainder_eq_capacity_sub_choice
@@ -1254,7 +1254,7 @@ theorem prefixRemainder_eq_capacity_sub_choice
 
 <a id="record-257bm-c1"></a>
 
-## Theorem 6.67 (Compactness from exact finite sums), page 60
+## Theorem 6.67 (Compactness from exact finite sums), page 61
 
 > *Suppose the cofinal exact-row condition in Definition 6.66 holds. Then $`1/2\in\mathcal A`$. For each $`N`$, choose an exact row $`D_N`$ at depth $`n_N\ge\max\{N,1\}`$. Proposition 6.98 gives
 > ``` math
@@ -1265,7 +1265,7 @@ theorem prefixRemainder_eq_capacity_sub_choice
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.abs_exactLocalMersenneRowValue_sub_half_le`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L58)
+1. [`Erdos249257.abs_exactLocalMersenneRowValue_sub_half_le`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L58)
 
 ```lean
 theorem abs_exactLocalMersenneRowValue_sub_half_le
@@ -1276,7 +1276,7 @@ theorem abs_exactLocalMersenneRowValue_sub_half_le
       ((n + 1 : ℕ) : ℝ) / (2 : ℝ) ^ n
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_cofinalExactLocalRows
@@ -1284,7 +1284,7 @@ theorem half_mem_mersenneAchievementSet_of_cofinalExactLocalRows
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-3. [`Erdos249257.HalfCarryReachability.finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCarryReachability.lean#L589)
+3. [`Erdos249257.HalfCarryReachability.finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCarryReachability.lean#L589)
 
 ```lean
 theorem finite_boolSupport_ne_half
@@ -1306,7 +1306,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c2"></a>
 
-## Theorem 6.68 (Infinitely many greedy skips suffice), page 60
+## Theorem 6.68 (Infinitely many greedy skips suffice), page 61
 
 > *Suppose that the greedy remainder for $`1/2`$ satisfies
 > ``` math
@@ -1317,7 +1317,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L55)
+1. [`Erdos249257.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L55)
 
 ```lean
 theorem exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
@@ -1328,7 +1328,7 @@ theorem exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
     ExactLocalMersenneHalfRow (2 * c - 2)
 ```
 
-2. [`Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L84)
+2. [`Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L84)
 
 ```lean
 theorem cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips
@@ -1336,14 +1336,14 @@ theorem cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips
     CofinalExactLocalMersenneHalfRows
 ```
 
-where [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) is
+where [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) is
 
 ```lean
 def CofinalExactLocalMersenneHalfRows : Prop :=
   ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
 ```
 
-3. [`Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L97)
+3. [`Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L97)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
@@ -1351,7 +1351,7 @@ theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-4. [`Erdos249257.cofinalPositiveHalfGreedySkips_iff_half_mem`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L110)
+4. [`Erdos249257.cofinalPositiveHalfGreedySkips_iff_half_mem`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L110)
 
 ```lean
 theorem cofinalPositiveHalfGreedySkips_iff_half_mem :
@@ -1374,7 +1374,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c3"></a>
 
-## Theorem 6.69 (A compatible family of finite supports), page 61
+## Theorem 6.69 (A compatible family of finite supports), page 62
 
 > *Let $`b_{n,d}\in\{0,1\}`$ satisfy $`b_{n+1,d}=b_{n,d}`$ whenever $`2d\le n`$. Define
 > ``` math
@@ -1397,7 +1397,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_bit_stable`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L95)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_bit_stable`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L95)
 
 ```lean
 theorem paper_compatible_bit_stable
@@ -1405,7 +1405,7 @@ theorem paper_compatible_bit_stable
     T.bit n d = T.bit (2 * d) d
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L111)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L111)
 
 ```lean
 theorem paper_compatible_finite_row_conditions
@@ -1427,7 +1427,7 @@ theorem paper_compatible_finite_row_conditions
             2 ^ (n - 1) - 1))
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_first_condition_gives_nonneg`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L146)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_first_condition_gives_nonneg`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L146)
 
 ```lean
 theorem paper_compatible_first_condition_gives_nonneg
@@ -1440,7 +1440,7 @@ theorem paper_compatible_first_condition_gives_nonneg
     0 ≤ localRepairInteger (globalRepairLowerSupport T.bit n) 1 n
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_rows_agree_with_limit`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L158)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_rows_agree_with_limit`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CompatibleFiniteRowFamily.lean#L158)
 
 ```lean
 theorem paper_compatible_rows_agree_with_limit
@@ -1463,7 +1463,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c4"></a>
 
-## Theorem 6.70 (A sufficient quotient bound at a crossing), page 61
+## Theorem 6.70 (A sufficient quotient bound at a crossing), page 62
 
 > *Consider the following condition on finite sets $`D`$ and integers $`c\ge4`$:
 > ``` math
@@ -1477,7 +1477,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1309)
+1. [`Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1309)
 
 ```lean
 theorem cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
@@ -1485,14 +1485,14 @@ theorem cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
     CofinalExactLocalMersenneHalfRows
 ```
 
-where [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) is
+where [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) is
 
 ```lean
 def CofinalExactLocalMersenneHalfRows : Prop :=
   ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1321)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1321)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_criticalQuotientSupply
@@ -1500,7 +1500,7 @@ theorem half_mem_mersenneAchievementSet_of_criticalQuotientSupply
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-3. [`Erdos249257.HalfCarryReachability.finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCarryReachability.lean#L589)
+3. [`Erdos249257.HalfCarryReachability.finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCarryReachability.lean#L589)
 
 ```lean
 theorem finite_boolSupport_ne_half
@@ -1522,13 +1522,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c5"></a>
 
-## Theorem 6.71 (Induction from the depth-six example), page 61
+## Theorem 6.71 (Induction from the depth-six example), page 62
 
 > *An already-formalised induction from the endpoint-six seed (Definition 6.97) consumes Theorem 6.70 at every step: each protected exact row either doubles below half (unconditional) or recycles at its first crossing rank $`e >`$ cutoff, giving endpoint $`2e-2 >`$ previous endpoint; protection (endpoint $`< 2\cdot`$cutoff, new ranks $`>`$ cutoff) is exactly what converts the non-growing recycle endpoint of the bare dichotomy (Theorem 6.127) into strict progress. The below-half branch never fires twice from the seed arithmetic, so the supply is needed at essentially every step. Its conclusion is the cofinal exact-row condition of Definition 6.66.*
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.ProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1087)
+1. [`Erdos249257.ProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1087)
 
 ```lean
 structure ProtectedExactLocalMersenneRow where
@@ -1549,7 +1549,7 @@ structure ProtectedExactLocalMersenneRow where
   endpoint_lt_twice_cutoff : endpoint < 2 * cutoff
 ```
 
-2. [`Erdos249257.exists_laterProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1139)
+2. [`Erdos249257.exists_laterProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1139)
 
 ```lean
 theorem exists_laterProtectedExactLocalMersenneRow
@@ -1558,7 +1558,7 @@ theorem exists_laterProtectedExactLocalMersenneRow
     ∃ t : ProtectedExactLocalMersenneRow, s.endpoint < t.endpoint
 ```
 
-3. [`Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1309)
+3. [`Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1309)
 
 ```lean
 theorem cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
@@ -1566,7 +1566,7 @@ theorem cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
     CofinalExactLocalMersenneHalfRows
 ```
 
-where [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) is
+where [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) is
 
 ```lean
 def CofinalExactLocalMersenneHalfRows : Prop :=

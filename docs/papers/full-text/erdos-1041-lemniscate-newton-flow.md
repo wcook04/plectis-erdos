@@ -24,11 +24,11 @@ Repeated roots give a constant path between two listed occurrences, so the geome
 
 <span id="res:ani-degree-seven-counterexample" label="res:ani-degree-seven-counterexample"></span> The degree-seven polynomial constructed by [erdosproblems.com contributor `ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861) has distinct roots in the open unit disc. Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than $`2`$. In particular, the image of every continuous root-to-root path has this measure, and Lean proves the negation and `answer(False)` forms of the exact Formal Conjectures statement.[^1]
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-ani-degree-seven-counterexample">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-ani-degree-seven-counterexample">Lean</a></p>
 
 The next two sections give sufficient conditions under which two roots are joined by a short path. Each is a hypothesis on $`f`$, and neither applies to the polynomial of `ani`: it has eight nonzero coefficients, and all its critical values lie very near the unit circle. Section <a href="#sec:trinomial" data-reference-type="ref" data-reference="sec:trinomial">2</a> treats trinomials; its proof prescribes a path for every pair of distinct roots. Section <a href="#sec:constant-factor" data-reference-type="ref" data-reference="sec:constant-factor">3</a> requires the least critical-value modulus to be at most $`13/25`$, imposes no coefficient pattern or root-location hypothesis, and selects some pair of roots. The [supplementary sections](#supplementary-results) retain the other estimates and the obstructions to prescribed constructions.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 Links in the running text go to Lean proofs of single steps, such as a finite inequality; such a link does not cover the surrounding argument. No independent review of the analytic arguments is recorded.
 
@@ -39,7 +39,7 @@ Links in the running text go to Lean proofs of single steps, such as a finite in
 The root equation will eliminate the middle coefficient and control the polynomial on an entire segment, not just at its endpoints.
 
 <div id="res:trinomial-all-degree" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-trinomial-all-degree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-trinomial-all-degree-comparator">Comparator</a></p>
 
 **Theorem 2** (all-degree monic trinomials). *Let $`1\le m<n`$ and
 ``` math
@@ -75,7 +75,7 @@ f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j.
 For $`0\le t<1`$, the normalised value $`f(t\zeta)/(1-t^n)`$ lies in the convex hull of $`S_0,\ldots,S_{n-1}`$. A bound for each partial sum therefore gives a bound at every point of the segment. For a trinomial every partial sum equals either $`b`$ or $`-\zeta^n`$, both strictly inside the unit disc. This is a condition on the missing coefficients, not just on the root locations. For example, $`z^n-b`$ with $`0<|b|<1`$ is covered, whereas a general polynomial with four nonzero coefficients is not. The next example shows why the additional partial sums cannot simply be ignored.
 
 <div id="res:sextic-spoke" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-sextic-spoke-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-sextic-spoke-comparator">Comparator</a></p>
 
 **Proposition 3** (failure of a prescribed radial segment). *There exist $`r\in(0,1)`$ for which every zero of
 ``` math
@@ -109,7 +109,7 @@ No Lean proof covers the whole theorem. Lean checks the degree-two case, and the
 The condition $`\mu\le13/25`$ is sufficient, not necessary. For $`f(z)=z^n-b`$ with $`0<|b|<1`$, one has $`\mu=|b|`$, so this criterion covers $`|b|\le13/25`$ and excludes $`13/25<|b|<1`$, even though the trinomial argument gives the required path throughout that family. Unlike that argument, the present criterion imposes no coefficient pattern and no root-location assumption. For example, $`(z-3)^n-1/2`$ has $`\mu=1/2`$ for every $`n\ge2`$, yet all its roots satisfy $`|z|>2`$. The conclusion concerns $`|f(z)|<1`$, not containment in $`|z|<1`$.
 
 <div id="res:scaled-low-critical" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-scaled-low-critical">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-scaled-low-critical">Lean†</a></p>
 
 **Corollary 5** (scale-free connection). *Every squarefree monic polynomial of degree $`n\ge2`$ has two distinct roots joined in $`\{|f|<(25/13)\mu\}`$ by a curve of length less than
 ``` math
@@ -197,7 +197,7 @@ so the same recorded output also covers $`\mu\le529/1000`$; $`13/25`$ is the sim
 The next theorem gives a weaker numerical bound through an argument that needs no circle-slice certificate. It makes the area allocation explicit.
 
 <div id="res:constant-factor-path" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-constant-factor-path">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-constant-factor-path">Lean†</a></p>
 
 **Theorem 6** (a uniform path bound at level $`2\mu`$). *For every monic polynomial $`f`$ of degree $`n\ge2`$, two zero occurrences are joined by a possibly degenerate path of length at most
 ``` math
@@ -253,7 +253,7 @@ Refinements using the number of roots, logarithmic capacity, or a range of level
 A critical point gives a different way to select two nearby roots, without assuming a sparse coefficient pattern. The logarithmic-derivative balance prevents one root from being arbitrarily closer to the critical point than all the others. This yields a bound on the sum of two distances. To turn that bound into a path theorem, both connecting segments would also have to stay inside the lemniscate; the examples below show why that extra step cannot be assumed.
 
 <div id="res:critical-proximity" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-proximity-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-proximity-comparator">Comparator</a></p>
 
 **Theorem 7** (a geometric-mean bound for distances to a critical point). *Let $`n\ge2`$, let $`z_1,\ldots,z_n,c\in\mathbb C`$ with $`c\ne z_k`$ for every $`k`$, and suppose
 ``` math
@@ -277,7 +277,7 @@ The proof chooses the two smallest distances $`d_i\le d_j`$. The reciprocal bala
 Indeed, $`\log(2t^{(n-1)/n}/(1+t))`$ vanishes at $`t=1`$ and has derivative $`(n-1-t)/(nt(1+t))\ge0`$ on that interval. Consequently $`d_i+d_j\le2(d_i d_j^{\,n-1})^{1/n}\le2r`$. Without the reciprocal balance, the required restriction on $`t`$ would be missing.
 
 <div id="res:two-nearest-roots" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-two-nearest-roots">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-two-nearest-roots-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-two-nearest-roots">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-two-nearest-roots-comparator">Comparator</a></p>
 
 **Corollary 8** (two nearest roots). *If the roots lie in the open unit disc and $`c`$ is a non-root critical point, the two nearest roots to $`c`$ have total distance strictly below $`2`$.*
 
@@ -301,7 +301,7 @@ The last inequality follows from $`(x-1)(x-(n-1))\le0`$ for $`x=d_2/d_1\in[1,n-1
 The distance estimate alone does not prove containment of either segment. The next proposition gives counterexamples to both natural straight-line constructions.
 
 <div id="res:straight-no-go" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-straight-no-go-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-straight-no-go-comparator">Comparator</a></p>
 
 **Proposition 9** (two counterexamples to straight-path assertions). *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
@@ -351,7 +351,7 @@ The following families allow containment to be proved along the whole path. Thei
 The expression $`P((z-h)^q)`$ forces the roots to occur in regular $`q`$-point sets about $`h`$. This exact symmetry is the useful hypothesis; a generic perturbation of the coefficients destroys it. The point $`h`$ need not be the origin. Averaging over a complete set of rotated roots will show why the hypothesis on the roots of $`f`$ also controls the roots of the cubic $`P`$.
 
 <div id="res:cubic-fibres" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-cubic-fibres-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-cubic-fibres-comparator">Comparator</a></p>
 
 **Theorem 10** (a cubic composed with a power map). *Let $`q\ge2`$, $`h\in\mathbb C`$, and let $`P`$ be a monic cubic. Put
 ``` math
@@ -388,7 +388,7 @@ A nonzero root $`r`$ with this property gives two distinct roots $`h+y`$ and $`h
 The coefficients of $`z^3`$ and $`z^2`$ must vanish in the coordinates used below. There is no separate smallness condition on the three remaining coefficients, but a general quintic is not covered. The two missing coefficients give the moment identities used to select two roots.
 
 <div id="res:primitive-quintic" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L237">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-primitive-quintic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean#L237">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-primitive-quintic-comparator">Comparator</a></p>
 
 **Theorem 11** (quintics with two missing coefficients). *Let
 ``` math
@@ -423,7 +423,7 @@ The complete all-degree collinear theorem appears in Section <a href="#sec:coll
 Instead of restricting coefficients or root positions, we isolate one simple critical value $`v=f(c)`$. A disc containing $`[0,1]`$ and no other normalised critical value $`f(d)/v`$ permits the two inverse branches meeting at $`c`$ to be followed to roots.
 
 <div id="res:critical-value-separation" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-separation">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-separation">Lean†</a></p>
 
 **Theorem 12** (separation of one simple critical value). *Let $`f`$ be monic of degree $`n\ge3`$, let $`c`$ be a simple critical point, and put $`v=f(c)\ne0`$. Fix $`w_0\in[0,1]`$ and $`S>\max(w_0,1-w_0)`$. Suppose every other critical point $`d`$ satisfies
 ``` math
@@ -446,7 +446,7 @@ The Lean proof assumes the analytic construction in the proof below: the connect
 This isolation can be checked directly in familiar examples. For $`f(z)=z^3-3a^2z`$ with $`0<a<1/\sqrt3`$, choose $`c=a`$, so $`v=-2a^3`$. The other normalised critical value is $`-1`$, at distance $`2`$ from the centre $`w_0=1`$, so $`S=4/3`$ is allowed. The roots $`0,\pm\sqrt3a`$ lie in the open unit disc. The hypothesis excludes a multiple selected critical point and can fail when two distinct critical values are close together. Thus it is not a consequence of the root-disc assumption.
 
 <div id="res:critical-value-thresholds" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-thresholds">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-thresholds">Lean†</a></p>
 
 **Corollary 13** (uniform radius $`4/3`$). *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc. If $`c`$ is a simple critical point with $`0<|f(c)|<1`$ and, for some $`w_0\in[0,1]`$, every other critical point $`d`$ satisfies
 ``` math
@@ -459,7 +459,7 @@ then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly bel
 The Lean proof assumes the same construction as Theorem <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">12</a>. The numerical inequalities, including the cubic constant $`6/5`$, are checked without it.
 
 <div id="res:separation-parent" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-separation-parent">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-separation-parent">Lean†</a></p>
 
 **Corollary 14** (a sufficient condition for a length-$`2`$ path). *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc, and let $`c`$ be a simple critical point with $`v=f(c)`$ and $`0<|v|<1`$. If some real centre $`w_0\in[0,1]`$ admits a radius $`S\ge4/3`$ such that $`|f(d)/v-w_0|\ge S`$ for every other critical point $`d`$, then Erdős Problem #1041 holds for $`f`$.*
 
@@ -511,7 +511,7 @@ Pendyala’s degree-four theorem \[june2026, Thm. 1\] has no critical-value sep
 These examples do not refute the root-to-root assertion. They show why particular sufficient conditions cannot be assumed for every polynomial. The rational calculations are [checked in Lean](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/RevisionR2ExactCores.lean), and a [research note](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ExactObstructionsR2.md) gives the ordinary arguments.
 
 <div id="res:sep-or-false" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-sep-or-false-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-sep-or-false-comparator">Comparator</a></p>
 
 **Proposition 15** (failure of two critical-value criteria to cover all polynomials). *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 ``` math
@@ -523,7 +523,7 @@ These examples do not refute the root-to-root assertion. They show why particula
 This cubic example is distinct from the quartic example discussed in the long record.
 
 <div id="res:one-root-gamma-false" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-one-root-gamma-false-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-one-root-gamma-false-comparator">Comparator</a></p>
 
 **Proposition 16** (a counterexample to the proposed one-root perimeter bound). *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
 
@@ -536,7 +536,7 @@ The addendum \[revision2026, Proposition 2\] reports a Runge construction of mo
 The next example concerns successive mergers of sublevel components; the roots themselves do not move. A component containing two roots just after the first merger can acquire a third root before level $`2\mu`$. Consider the component at that later level containing the first pair. For this monic cubic, its normalised capacity is its capacity divided by $`(2\mu)^{1/3}`$. Here the capacity of a compact set is its transfinite diameter, the limit as $`N\to\infty`$ of the largest geometric mean of the $`N(N-1)/2`$ distances between $`N`$ of its points; by the Fekete–Szegő theorem \[ransford1995, p. 153\] it equals the logarithmic capacity. The whole filled lemniscate has capacity $`(2\mu)^{1/3}`$ \[ransford1995, Theorem 5.2.5\], so a normalised value of $`1`$ gives no improvement over the whole set.
 
 <div id="res:arity-not-capacity" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-arity-not-capacity">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-arity-not-capacity">Lean†</a></p>
 
 **Proposition 17** (root count does not force a capacity gap). *Let $`g(z)=z^3-(3/400)z-3/32`$. All roots lie in the open unit disc and $`\mu=187/2000\le1/2`$. The first merger joins two root components, so $`k_0=2`$, but the component at level $`2\mu`$ containing that pair has normalised capacity $`1`$.*
 
@@ -555,7 +555,7 @@ z'(t)=-\frac{f(z(t))}{f'(z(t))}.
 It is defined only while the curve avoids critical points. Its usefulness here is that applying $`f`$ turns it into a scalar equation, even though the curve in the $`z`$-plane need not be straight. Kozen and Stefánsson record the following identity as a lemma of Shub, Tischler and Williams \[kozen-stefansson1997, Lemma 2.1\].
 
 <div id="res:value" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-value-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-value-comparator">Comparator</a></p>
 
 **Theorem 18** (value equation). *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 ``` math
@@ -571,7 +571,7 @@ For an existing trajectory with nonzero initial value, the value moves inward on
 The time parameter matters when comparing this equation with gradient-flow theory. On $`\{f\ne0\}`$, the Euclidean gradient of $`u=-\log|f|`$ is $`\nabla u=-\overline{f'/f}`$. Where $`f'\ne0`$, it is the positive multiple $`|f'/f|^2(-f/f')`$ of the Newton field, so their nonstationary trajectories have the same orientation. At a simple critical point with nonzero value, the gradient extends smoothly as a hyperbolic saddle, whereas $`-f/f'`$ is undefined. The exponential value equation uses Newton time; it is not unchanged by this reparametrisation.
 
 <div id="res:ray" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-ray-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-ray-comparator">Comparator</a></p>
 
 **Corollary 19** (ray separation). *Let $`a<b`$, let $`z:[a,b]\to\mathbb C`$ be continuous, and suppose $`z`$ is differentiable on $`(a,b)`$ with $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ there. Then
 ``` math
@@ -594,7 +594,7 @@ Two different nonzero numbers need not have different arguments: $`1`$ and $`2`$
 For a polynomial whose critical values are already distinct, adding a constant translates all those values while leaving the critical points unchanged. The next formula identifies the translations to avoid. Its assumption $`a\ne b`$ matters: a common translation can never separate two initially equal values.
 
 <div id="res:locus" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-locus-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-locus-comparator">Comparator</a></p>
 
 **Theorem 20** (ray-collision locus). *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 ``` math
@@ -665,7 +665,7 @@ r_*=(1+c^n)^{-1/n},\qquad
 ```
 
 <div id="res:complementary-binomial-chords" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-complementary-binomial-chords">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-complementary-binomial-chords-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-complementary-binomial-chords">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-complementary-binomial-chords-comparator">Comparator</a></p>
 
 **Theorem 21** (complementary binomial chords). *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r<r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint and therefore lies only in the closed lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
 
@@ -699,7 +699,7 @@ C_n=\frac{1}{2^{n-1}\cos^n(\pi/(2n))}.
 ```
 
 <div id="res:sharp-collinear-root-diameter" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-sharp-collinear-root-diameter">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-sharp-collinear-root-diameter-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-sharp-collinear-root-diameter">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-sharp-collinear-root-diameter-comparator">Comparator</a></p>
 
 **Theorem 22** (sharp collinear root-diameter bound). *Let $`f`$ be monic of degree $`n\ge2`$, with collinear zero occurrences of diameter $`D`$. Then some two zero occurrences are joined by their straight segment, of length at most $`D`$, on which
 ``` math
@@ -747,7 +747,7 @@ We first prove an inequality for arbitrary points of the closed disc, then compa
 The points may repeat or lie on the boundary. Positive weights are needed for the stated equality case: allowing zero weights would constrain only points of positive weight. Signed weights are not covered by the Poisson argument. The quadratic identity also yields a fourth-power refinement, explained after the proof.
 
 <div id="res:fp-weighted-all-degree" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-fp-weighted-all-degree">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-fp-weighted-all-degree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-fp-weighted-all-degree">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-fp-weighted-all-degree-comparator">Comparator</a></p>
 
 **Theorem 23** (a weighted inequality for points in a disc). *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
 ``` math
@@ -807,7 +807,7 @@ All coefficient weights are nonnegative, including the zero weight at $`\nu=1`$.
 For a monic polynomial with all zeros in the unit disc, Dubinin \[dubinin2006critical, Theorem 2 and its proof, pp. 1172–1173\] proves the sharp geometric-mean inequality $`\bigl(\prod_{j=1}^{n-1}|f(c_j)|\bigr)^{1/(n-1)}\le1`$. The proof uses the resultant identity (9), the maximum-modulus principle and Schur’s unit-circle Vandermonde inequality, not the dissymmetrisation argument of his Theorem 1. The positive-moment inequality below implies that product bound by AM–GM. For a list with at least two entries, a product bound alone does not control a positive moment; in degree two there is only one critical value, so the two bounds are equivalent. This comparison identifies an antecedent, not a priority claim for the stronger moment statement.
 
 <div id="res:fp-to-s" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-fp-to-s-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-fp-to-s-comparator">Comparator</a></p>
 
 **Theorem 24** (critical-value mean in every degree). *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R`$, and let $`c_1,\ldots,c_{n-1}`$ be its critical points with multiplicity. Then
 ``` math
@@ -863,7 +863,7 @@ I_k(r)=\int_r^1
 For nearby merger scales, $`r`$ is close to $`1`$. The integral is then much smaller than $`k^{-1}\log(1/r)`$. The following change of variables proves that no fixed positive multiple of this logarithmic contribution is a uniform lower bound.
 
 <div id="res:orlicz-currency" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-orlicz-currency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-1041-lemniscate-newton-flow.md#res-orlicz-currency-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-orlicz-currency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/fca55989afe5048b0a9c59f78bb49eebed5f6335/evidence/erdos-1041-lemniscate-newton-flow.md#res-orlicz-currency-comparator">Comparator</a></p>
 
 **Theorem 25** (the relation between two merger-scale integrals). *Define
 ``` math

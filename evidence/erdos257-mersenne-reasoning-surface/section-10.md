@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="prop-2adic-nogo"></a>
 
-## Proposition 10.4 (Centred completion of fixed-precision 2-adic data), page 110
+## Proposition 10.4 (Centred completion of fixed-precision 2-adic data), page 111
 
 > *Fix $`u\ge1`$ and a finite list $`(v_i,a_i)_{0\le i<m}`$, where $`v_i\ge0`$ are integers and the integers $`a_i`$ are odd. For every initial integer $`e_0`$, there are integers $`z_i,e_{i+1}`$ such that
 > ``` math
@@ -15,7 +15,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_centred_completion_of_fixed_precision`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean#L34)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_centred_completion_of_fixed_precision`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean#L34)
 
 ```lean
 theorem paper_centred_completion_of_fixed_precision
@@ -39,7 +39,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-upper-unconditional"></a>
 
-## Proposition 10.5 (The upper (carries) successor needs no exceptional-cell exclusion), page 111
+## Proposition 10.5 (The upper (carries) successor needs no exceptional-cell exclusion), page 112
 
 > *Let $`s\ge5`$ and suppose the upper branch occurs at row $`s`$, that is, the transition at row $`s`$ is on branch $`\mathrm U`$ of Theorem 5.16. Then
 > ``` math
@@ -49,7 +49,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_upper_branch_needs_no_exceptional_cell`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L31)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_upper_branch_needs_no_exceptional_cell`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L31)
 
 ```lean
 theorem paper_upper_branch_needs_no_exceptional_cell {s : ℕ} (hs : 5 ≤ s)
@@ -75,7 +75,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-cd-neg3-impossible"></a>
 
-## Theorem 10.6 ($`C_D=-3`$ is impossible at the final middle transition, $`D\ge 13`$), page 111
+## Theorem 10.6 ($`C_D=-3`$ is impossible at the final middle transition, $`D\ge 13`$), page 112
 
 > *Consider a hypothetical *final middle transition*: a middle transition at row $`D\ge 13`$ ($`\lnot\mathrm{carries}`$, and the middle-branch inequality $`4\mathrm{rem}(D)+\mathrm{gap}-\mathrm{belowPulse} < \mathrm{terminalWeight}`$ holds at $`D`$), followed by an all-right tail forever after ($`\forall s\ge D{+}1`$, $`\mathrm{seamGreedyWord}(s+1) =
 > \mathrm{seamGreedyWord}(s).\mathrm{extend}\ \mathrm{true}`$). Under these assumptions,
@@ -99,7 +99,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_at_least_neg_two`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L50)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_at_least_neg_two`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L50)
 
 ```lean
 theorem paper_final_middle_cell_at_least_neg_two
@@ -133,13 +133,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-cd-remaining"></a>
 
-## Corollary 10.7 (Only $`C_D\in\{-2,-1\}`$ remain among the exceptional dyadic cells), page 112
+## Corollary 10.7 (Only $`C_D\in\{-2,-1\}`$ remain among the exceptional dyadic cells), page 113
 
 > *At a final middle row $`D\ge13`$, Theorem 10.6 removes $`-3`$ from the exceptional set $`\{-3,-2,-1\}`$, leaving $`-2,-1`$ *within that set*. It does not assert $`C_D\in\{-2,-1\}`$: nonnegative values have not been excluded. Proposition 10.5 handles upper transitions in the two-sided induction; it supplies no additional restriction on a middle coordinate. For the all-middle-row induction, the exclusion of all three values still needs proof without an all-right-tail assumption, together with the separate right-branch inequality.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_remaining_cells`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L81)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_remaining_cells`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L81)
 
 ```lean
 theorem paper_final_middle_cell_remaining_cells
@@ -176,7 +176,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-finite-state-nogo"></a>
 
-## Proposition 10.9 (A finite-state restriction for the stated pulse family), page 113
+## Proposition 10.9 (A finite-state restriction for the stated pulse family), page 114
 
 > *For a “balanced pulse” family at location $`m\ge2`$ (radius $`\rho=\lfloor(m{+}1)/2\rfloor`$, parameters $`0\le r\le\rho`$, moving mass between positions $`m`$ and $`m{+}1`$ with the weighted total $`2c(m)+c(m{+}1)=2\rho`$ of the two coefficients fixed), if a predecessor state is constant across the whole family, then no function $`\mathrm{decode}:\mathrm{State}\to\mathbb N`$ can recover the parameter $`r`$ from $`\mathrm{state}(r)`$ for every $`r`$. The family has exactly $`\rho+1=\lfloor(m{+}1)/2\rfloor+1`$ members, so the fan-out is unbounded in $`m`$. More strongly, any finite set of states carrying an exact decoder for the family has at least $`\rho+1`$ elements, unbounded in $`m`$.*
 > 
@@ -184,7 +184,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean count of exactly $\rho+1$ family members and the bound $|\mathrm{State}|\ge\rho+1$ for a finite state set carrying an exact decoder hold for every $m\ge0$; the printed statement takes $m\ge2$, where the impossibility of decoding from a constant predecessor state is stated as printed.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_no_autonomous_decoder`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L113)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_no_autonomous_decoder`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L113)
 
 ```lean
 theorem paper_pulse_family_no_autonomous_decoder
@@ -194,7 +194,7 @@ theorem paper_pulse_family_no_autonomous_decoder
     ¬ ∃ decode : State → ℕ, ∀ r, decode (state r) = r
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_balanced_pulse_fanout_is_radius_succ`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L61)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_balanced_pulse_fanout_is_radius_succ`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L61)
 
 ```lean
 theorem paper_balanced_pulse_fanout_is_radius_succ (m : ℕ) :
@@ -202,7 +202,7 @@ theorem paper_balanced_pulse_fanout_is_radius_succ (m : ℕ) :
       (balancedPulseFamily m).ncard = (m + 1) / 2 + 1
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_balanced_pulse_fanout_unbounded_corrected`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L95)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_balanced_pulse_fanout_unbounded_corrected`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L95)
 
 ```lean
 theorem paper_balanced_pulse_fanout_unbounded_corrected :
@@ -210,7 +210,7 @@ theorem paper_balanced_pulse_fanout_unbounded_corrected :
       ∀ N : ℕ, ∃ m : ℕ, N ≤ (balancedPulseFamily m).ncard
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_finite_state_card`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L123)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_finite_state_card`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L123)
 
 ```lean
 theorem paper_pulse_family_finite_state_card
@@ -221,14 +221,14 @@ theorem paper_pulse_family_finite_state_card
       ∀ N : ℕ, ∃ m' : ℕ, N ≤ balancedPulseRadius m' + 1
 ```
 
-5. [`ErdosProblems.Erdos257.PaperCompleteR21.balancedPulseCoeff_injective`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L52)
+5. [`ErdosProblems.Erdos257.PaperCompleteR21.balancedPulseCoeff_injective`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BalancedPulseFanOutCount.lean#L52)
 
 ```lean
 theorem balancedPulseCoeff_injective (m : ℕ) :
     Function.Injective (balancedPulseCoeff m)
 ```
 
-6. [`Erdos249257.balancedPulse_weighted_pair`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GenericTailOrbitRigidity.lean#L200)
+6. [`Erdos249257.balancedPulse_weighted_pair`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GenericTailOrbitRigidity.lean#L200)
 
 ```lean
 theorem balancedPulse_weighted_pair
@@ -254,7 +254,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-mobius-nogo"></a>
 
-## Proposition 10.10 (Möbius-support countermodel: the natural negative-sign candidate overshoots), page 113
+## Proposition 10.10 (Möbius-support countermodel: the natural negative-sign candidate overshoots), page 114
 
 > *The signed Lambert identity $`\sum_{d\ge1}\mu(d)/(2^d-1) = 1/2`$ is exact. Writing $`N:=\{d:\mu(d)=-1\}`$: $`\sum_{d\in N}1/(2^d-1) = 1/2 + \sum_{d\in P}1/(2^d-1)`$ where $`P:=\{d\ge2:
 > \mu(d)=1\}`$, and quantitatively $`1/2 + 1/63 \le \sum_{d\in N}1/(2^d-1)`$ (using the first positive tail term $`d=6`$, $`\mu(6)=1`$) ; the negative-Möbius support strictly *overshoots* $`1/2`$ by at least $`1/63`$.*
@@ -263,7 +263,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_mobius_support_overshoots_half`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L70)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_mobius_support_overshoots_half`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L70)
 
 ```lean
 theorem paper_mobius_support_overshoots_half :
@@ -274,7 +274,7 @@ theorem paper_mobius_support_overshoots_half :
       (1 : ℝ) / 2 < ∑' d : ℕ+, negativeMobiusTerm d
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_first_positiveMobius_tail_term`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L48)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_first_positiveMobius_tail_term`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L48)
 
 ```lean
 theorem paper_first_positiveMobius_tail_term :
@@ -296,7 +296,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-finite-boolsupport-and-onesided"></a>
 
-## Proposition 10.11 (Finite computation and half-membership), page 113
+## Proposition 10.11 (Finite computation and half-membership), page 114
 
 > *No finite positive-index Boolean support has value exactly $`1/2`$: the reduced denominator of any finite Mersenne subset-sum is provably **odd** (each $`2^n-1`$ is odd), while $`1/2`$ needs an even denominator. Separately, $`\mathsf{CertifiedGreedyMersenneDeath}`$ is a finite-depth certificate of $`x\notin\mathcal A`$, obtained by decidable tests on rational input. For example, the supplied source excludes $`3/4`$ at level $`1`$ with lookahead $`0`$. Failure to find such a certificate at a given depth does not establish membership. It records survival of that finite test, not survival at every depth.*
 > 
@@ -304,7 +304,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_support_and_onesided_certificate`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L101)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_support_and_onesided_certificate`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L101)
 
 ```lean
 theorem paper_finite_support_and_onesided_certificate :
@@ -332,7 +332,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-carry-survivor-extinction"></a>
 
-## Proposition 10.12 (Period exclusion for the totient series), page 113
+## Proposition 10.12 (Period exclusion for the totient series), page 114
 
 > *For $`\sum_n\varphi(n)/2^n`$, the cited finite test proves that $`\mathrm{totientTail}(N+h)-\mathrm{totientTail}(N)`$ is not an integer by excluding every possible integer state in a bounded range within finitely many steps. If the series were rational, some positive period $`h_0`$ would make these tail differences integral for every sufficiently large $`N`$. Telescoping would then give integrality also for every positive multiple $`mh_0`$.*
 > 
@@ -342,7 +342,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_carry_survivor_extinction`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TotientPeriodCertificateSupply.lean#L40)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_carry_survivor_extinction`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TotientPeriodCertificateSupply.lean#L40)
 
 ```lean
 theorem paper_carry_survivor_extinction :
@@ -370,7 +370,7 @@ theorem paper_carry_survivor_extinction :
           (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ≠ (r : ℝ))
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_periodLcm_is_prefix_lcm`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TotientPeriodCertificateSupply.lean#L23)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_periodLcm_is_prefix_lcm`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TotientPeriodCertificateSupply.lean#L23)
 
 ```lean
 theorem paper_periodLcm_is_prefix_lcm (t : ℕ) :
@@ -390,7 +390,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-scalar-localization"></a>
 
-## Lemma 10.13 (Denominator complement survives scaling), page 114
+## Lemma 10.13 (Denominator complement survives scaling), page 115
 
 > *For $`x:\mathbb Q`$, $`c:\mathbb Z`$, $`H:\mathbb N`$: if $`H\mid x.\mathrm{den}`$ and $`(c\cdot x).\mathrm{den}\mid H`$ ; i.e. multiplying by the integer $`c`$ shrinks the displayed denominator down *into* $`H`$ ; then the **complementary** denominator factor $`x.\mathrm{den}/H`$ divides $`c`$:
 > ``` math
@@ -402,7 +402,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L29)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L29)
 
 ```lean
 theorem paper_scalar_localization (x : ℚ) (c : ℤ) {H : ℕ}
@@ -412,7 +412,7 @@ theorem paper_scalar_localization (x : ℚ) (c : ℤ) {H : ℕ}
         = ((c / ((x.den / H : ℕ) : ℤ) : ℤ) : ℚ) * (x.num : ℚ)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization_size_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L53)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization_size_bound`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L53)
 
 ```lean
 theorem paper_scalar_localization_size_bound (x : ℚ) {c : ℤ} {H : ℕ}
@@ -420,7 +420,7 @@ theorem paper_scalar_localization_size_bound (x : ℚ) {c : ℤ} {H : ℕ}
     x.den / H ≤ c.natAbs
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization_zero_degenerate`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L62)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization_zero_degenerate`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L62)
 
 ```lean
 theorem paper_scalar_localization_zero_degenerate (x : ℚ) (H : ℕ) :
@@ -442,13 +442,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-mersenne-height"></a>
 
-## Corollary 10.14 (Mersenne specialisation), page 114
+## Corollary 10.14 (Mersenne specialisation), page 115
 
 > *Let $`x`$ be a positive rational number and let $`r\ge0`$, $`n\ge1`$ be integers. If $`2^r\mid x.\mathrm{num}.\mathrm{natAbs}`$ and $`x<2/(2^n-1)`$, then $`2^r\cdot(2^n-1) < 2\cdot x.\mathrm{den}`$ ; a numerator $`2`$-power lower bound plus a Mersenne-scale upper bound on $`x`$ together force a denominator lower bound, *without* introducing a global prefix LCM. To see the inequality directly, write $`x=a/b`$ in lowest terms with $`a,b>0`$. The hypotheses give $`a\ge2^r`$ and $`a(2^n-1)<2b`$. The conclusion follows by substitution. An application of Lemma 10.13 must in addition supply its denominator-divisibility assumptions.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_height`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L77)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_height`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L77)
 
 ```lean
 theorem paper_mersenne_height (x : ℚ) {r n : ℕ} (hx : 0 < x) (hn : 1 ≤ n)
@@ -470,14 +470,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-critical-band-index"></a>
 
-## Proposition 10.16 (Quantifier collapse: one critical index suffices, not $`d{+}1`$), page 115
+## Proposition 10.16 (Quantifier collapse: one critical index suffices, not $`d{+}1`$), page 116
 
 > *Let $`d,E\in\mathbb N`$ and assume $`E\le2^{d+1}`$. Then the purely combinatorial statement $`\mathsf{DyadicBandEscape}(d,E) \iff \exists j,\ \mathsf{CriticalDyadicBandIndex}(d,E,j)\land
 > E+2(d+j)\le 2^{d-j+1}`$ collapses the $`\forall j\in[0,d]`$ band-avoidance condition (formally $`d{+}1`$ separate inequalities) to checking exactly *one* nearest-boundary index $`j`$. The range assumption ensures that a dyadic threshold lies at or above $`E`$. Choose the smallest such threshold: smaller thresholds are already below $`E`$, while larger thresholds have narrower forbidden bands. Without the range assumption all bands escape automatically when $`E>2^{d+1}`$, but no critical index exists; $`(d,E)=(0,3)`$ is the smallest example. Specialised to the concrete seam reset charge, $`\mathsf{SeamUpperResetCriticalBandEscape}`$ is proved logically *equivalent* to Definition 10.15’s hypothesis. Zero Mersenne/seam content in the core lemma ; pure $`(d,E,j)`$ arithmetic over powers of 2.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_band_index_collapse`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/CriticalDyadicBandCollapse.lean#L20)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_band_index_collapse`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CriticalDyadicBandCollapse.lean#L20)
 
 ```lean
 theorem paper_critical_band_index_collapse :

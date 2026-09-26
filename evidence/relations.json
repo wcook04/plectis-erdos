@@ -673,6 +673,13 @@
     "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'": "db5ce4bebd4f0411d812b6b86cf2ccf6200042f645e1ae42cd1c39d0d007c54f"
    }
   },
+  "erdos257-mersenne-reasoning-surface#prop:257-finite-witness-rule": {
+   "note": "The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\\varnothing)$; the printed family $\\mathcal U$ on subsets of $E$ is the case $U(S)\\iff S\\cap E\\in\\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(\\mathcal P\\cap E)$ reads $\\mathcal P\\cap E\\in\\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,\\mathcal P}(H)<\\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.",
+   "statement_key": "sha256:12fbd124eecd8016b4fd7426bdeb2ddca64e779a4b4bd2bf7b484c392a234dff",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised": "553a21b9ad9b63b30f7f946a3ed92f6d2bf82084967b03c1b6d77be87c442b7c"
+   }
+  },
   "erdos257-mersenne-reasoning-surface#prop:257-logarithmic-initial-interval": {
    "note": "The Lean statement has the same hypotheses and conclusion as the printed one, with $F$ a finite nonempty set of positive integers, $U_F(N)=\\sum_{a\\in F}2^{N\\bmod a}/(2^a-1)$ and $\\kappa_1(F;t)$ the infimum of the same linear programme.",
    "statement_key": "sha256:5ae819aa189646cc5f7c86a4dca6e248692f4b2c1132f43154f8e3e512c041fa",

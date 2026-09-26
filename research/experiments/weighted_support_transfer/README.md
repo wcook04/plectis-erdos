@@ -92,11 +92,13 @@ $$
 and $\sum_{m\le2^r}1/m\le2r$ give an upper bound of twice the $k$th term
 in (1). For the lower bound, set $Q=\prod_{p\in F\cup P}p$ and keep only
 $m\equiv1\pmod Q$. These cofactors avoid all primes in $F\cup P$, hence
-$h_P(D^km)=g^k$. Their reciprocal sum up to $2^r$ is at least $c_Qr$
-for a constant $c_Q>0$ independent of $r\ge1$: the terms $1+jQ$ bound it
-below by $H_{\lfloor(2^r-1)/Q\rfloor+1}/Q$, which grows linearly in $r$;
-the finitely many smaller $r$ have a positive lower bound after reducing
-$c_Q$. This gives the other half of (1). Constants depend on the fixed
+$h_P(D^km)=g^k$. Their reciprocal sum up to $2^r$ is at least $r/(2Q)$.
+Indeed, group $1,\ldots,N$ into consecutive blocks of at most $Q$
+integers. Every integer in a block contributes at most $1/(1+jQ)$,
+where $1+jQ$ is its first member, so
+$H_N\le Q\sum_{1+jQ\le N}1/(1+jQ)$. The dyadic blocks give
+$H_{2^r}\ge r/2$ for every $r\ge1$. This gives the other half of (1)
+without an exceptional range of small $r$. Constants depend on the fixed
 prime sets; (1) makes no uniform claim as $P$ grows.
 
 Now set $R=D/\min F$ and $r_k=D^k2^{R^k}$. For the resulting host $A_F$,
@@ -124,8 +126,108 @@ a thinner subset may admit a simpler witness, and failure of the criterion
 does not imply rationality. Witness minimality can also change with the base;
 for this two-prime host, $P=\{3\}$ works at every base $b>2$.
 
-The paper's simpler example takes $r_k=2^k$. Compare its proof with these
-two choices, the [exact Lean statement](../../../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L75)
+## A host with several minimal witnesses
+
+There is a simpler way to make the test depend on combinations of primes.
+For any nonempty finite set $C$ of primes, put $D_C=\prod_{p\in C}p$ and
+use the same layers as above with $r_k=D_C^k$:
+
+$$
+B_C=\{D_C^k m:k\ge1,\ 1\le m\le2^{D_C^k},\ \gcd(m,D_C)=1\}.
+$$
+
+In (1), replace $F$ by $C$ and write $g=\prod_{p\in C\cap P}p$. The
+comparison series becomes
+
+$$
+\sum_{k\ge1}\frac{g^k}{b^{g^k}-1}.
+$$
+
+If $P$ misses $C$, then $g=1$ and every term is $1/(b-1)$. If $P$ meets
+$C$, then $g\ge2$ and the series converges: the ratio of consecutive
+terms is
+
+$$
+\frac{g}{1+b^{g^k}+\cdots+b^{(g-1)g^k}}\longrightarrow0.
+$$
+
+Thus, at every integer base $b\ge2$ and for every fixed finite prime set
+$P$, the weighted mass of $B_C$ is finite exactly when $P\cap C$ is
+nonempty. A block implements an “at least one of these primes” condition.
+
+For example, take the three blocks $B_{\{2,3\}}$, $B_{\{2,5\}}$, and
+$B_{\{3,5\}}$, and let $A$ be their union. Its weighted mass is finite
+exactly when $P$ meets all three pairs, or equivalently when $P$ contains
+at least two of $2,3,5$. Its three inclusion-minimal witnesses are
+$\{2,3\}$, $\{2,5\}$, and $\{3,5\}$. No individual prime is mandatory,
+but no single prime suffices. Adding a prime outside $\{2,3,5\}$ cannot
+repair a missed pair. These are conclusions about this sufficient test on
+the whole host, not rationality claims from a failed test.
+
+## Every finite monotone witness rule
+
+The example has a general form. Let $E$ be a finite set of primes, and let
+$\mathcal H$ be a nonempty finite family of nonempty subsets of $E$. Set
+$A_{\mathcal H}=\bigcup_{C\in\mathcal H}B_C$. Since every weighted summand
+is nonnegative, the weighted mass of any block is at most that of the union,
+and the union's mass is at most the sum of the finitely many block masses.
+The blocks may overlap. Consequently,
+
+$$
+W_{b,P}(A_{\mathcal H})<\infty
+\quad\Longleftrightarrow\quad
+\text{$P\cap C\ne\varnothing$ for every $C\in\mathcal H$}.
+\tag{2}
+$$
+
+The ordinary reciprocal sum diverges. Indeed, the cofactors
+$m\equiv1\pmod{D_C}$ in layer $k$ of any one block contribute at least
+$c_{D_C}D_C^k/D_C^k=c_{D_C}>0$, by the harmonic lower bound used in (1).
+That block's layers are disjoint, so their contributions diverge; the union
+contains the block.
+
+Now let $\mathcal U$ be any nonempty proper upward-closed family of subsets
+of $E$. For each forbidden set $M\notin\mathcal U$, put
+$C_M=E\setminus M$ and take $\mathcal H$ to consist of these clauses.
+Every $C_M$ is nonempty. A set $S\subseteq E$ belongs to $\mathcal U$
+exactly when it meets every $C_M$: an allowed set cannot lie inside a
+forbidden $M$, while a forbidden set $S$ misses its own clause $C_S$.
+Keeping only the inclusion-maximal forbidden sets gives a smaller host with
+the same classification.
+Equation (2) therefore gives
+
+$$
+W_{b,P}(A_{\mathcal H})<\infty
+\quad\Longleftrightarrow\quad P\cap E\in\mathcal U
+$$
+
+for every integer $b\ge2$ and every fixed finite $P$. This realises every
+nonconstant monotone Boolean rule on finitely many prime witnesses. The
+successful sets are the hitting sets of $\mathcal H$; the minimal witnesses
+are its minimal hitting sets. Lean checks this realisation, with divergent
+reciprocal sum and all-base irrationality of every infinite subset, as
+[`finite_monotone_witness_rule_realised`](../../../lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean)
+for the host built from all forbidden sets. It says nothing about which
+thinner subsets admit different witnesses. The finite monotone representation is standard; see
+[Sedaghat, Stephen and Chindelevitch, Section 2](https://doi.org/10.4230/LIPIcs.SEA.2018.6).
+For related arithmetic settings, compare [Erdős's original support note,
+pp. 222 and 226](https://www.renyi.hu/~p_erdos/1969-09.pdf) and
+[Duverney--Tachiya, Section 1](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf).
+A bounded reading of those sources did not find this finite-witness
+classification; the novelty of the arithmetic realisation remains unassessed.
+
+Taking $P=E$ makes the binary weighted mass finite. The Lean-checked
+weighted-support theorem then proves irrationality of the support series
+for every infinite subset of $A_{\mathcal H}$ at every integer base. For
+singleton clauses $\mathcal H=\{\{p\}:p\in F\}$, this gives a simpler,
+base-independent alternative host whose test needs every prime of $F$. The
+single-product host $A_F$ above remains distinct: its minimal witnesses can
+change with the base.
+
+The [long record's finite-witness proposition](../../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md#finite-rules-for-prime-witnesses)
+proves the finite-witness realisation, and the short paper's first example
+takes $r_k=2^k$. Compare that example with these two choices, the
+[exact Lean statement](../../../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61)
 and the [reproduction route](../../../docs/REPRODUCIBILITY.md). The Lean
 proof checks the conditional weighted theorem, not this parameter choice.
 A failed sufficient condition never proves rationality; irrationality for
