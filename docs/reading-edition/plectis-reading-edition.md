@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `0b6ebe0b60ace693`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `03b3e361106e0f66`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -2761,7 +2761,7 @@ Longer record: [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](ht
 
 </div>
 
-For every finite set $`P`$ of at least two primes, the sum of the reciprocals of the distinct running least common multiples of the $`P`$-smooth integers is irrational. Erdős asserted this in a 1973 letter that gives no proof. For two primes it follows from a Hecke–Mahler transcendence theorem; the new case is three or more primes. A rational value would make the scaled tails of the sum integers, so two tails that are close would be equal. The tails after a prime power $`t`$ and after $`tp^n`$, for a good return $`n`$, are close, and their words of primes differ by rearranging short runs; a point of a torus lying on exactly two coordinate walls produces a run of two primes whose rearrangement changes the tail. The proof is an ordinary one, refereed by a second reader. For $`\{2,3,5\}`$ a different proof, by five affine maps with disjoint images on dyadic blocks, is checked in Lean. The same finite-state method proves every set of three primes at most $`31`$ by exact computation and fails for $`\{2,3,5,7\}`$, where two different words of blocks have the same affine map. The same comparison of two tails proves that the sub-sum of the catalogue series over the powers of one prime is irrational. For three distinct primes the reciprocal running-LCM kernel has nonsingular minors of every order, so no finite sum of products separates one exponent from the other two. For the repeated $`\{2,3,5\}`$ series, which counts a running LCM once for every integer at which it occurs, we prove a tail recurrence and a residue criterion equivalent to irrationality. Its tails grow quadratically, the finite-state argument has no counterpart there, and the criterion’s inequalities for every multiplier coprime to $`30`$ after arbitrarily late starts are unproved.
+For every finite set $`P`$ of at least two primes, the sum of the reciprocals of the distinct running least common multiples of the $`P`$-smooth integers is irrational. Erdős asserted this in a 1973 letter that gives no proof. For two primes it follows from a Hecke–Mahler transcendence theorem; the new case is three or more primes. A rational value would make the scaled tails of the sum integers, so two tails that are close would be equal. The tails after a prime power $`t`$ and after $`tp^n`$, for a good return $`n`$, are close, and their words of primes differ by rearranging short runs; a point of a torus lying on exactly two coordinate walls produces a run of two primes whose rearrangement changes the tail. The proof is an ordinary one, refereed by a second reader. For $`\{2,3,5\}`$ a different proof, by five affine maps with disjoint images on dyadic blocks, is checked in Lean. The companion extends this finite-state method to every set of three primes at most $`31`$ by exact computation; it fails for $`\{2,3,5,7\}`$, where two different words of blocks have the same affine map. The same comparison of two tails proves that the sub-sum of the catalogue series over the powers of one prime is irrational. For three distinct primes the reciprocal running-LCM kernel has nonsingular minors of every order, so no finite sum of products separates one exponent from the other two. For the repeated $`\{2,3,5\}`$ series, which counts a running LCM once for every integer at which it occurs, we prove a tail recurrence and a residue criterion equivalent to irrationality. Its tails grow quadratically, the finite-state argument has no counterpart there, and the criterion’s inequalities for every multiplier coprime to $`30`$ after arbitrarily late starts are unproved.
 
 <a id="erdos-269-three-prime-running-lcm--sec:problem"></a>
 
@@ -2778,7 +2778,7 @@ Erdős asked whether $`\mathcal R_P`$ is irrational when $`|P|\ge2`$ \[erdosgrah
  r^{\lfloor\log_r x\rfloor},\qquad
  \operatorname{K}(i,j,k)=\operatorname{H}(p^iq^jr^k)^{-1}.
 ```
-Prime-power divisibility gives $`\operatorname{L}=\operatorname{H}`$ (Proposition <a href="#erdos-269-three-prime-running-lcm--res:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:lcm">13</a>). The running LCM is therefore constant between consecutive prime powers $`p^n,q^n,r^n`$ ($`n\ge1`$), and at each of them it is multiplied by the corresponding prime (Proposition <a href="#erdos-269-three-prime-running-lcm--res:cell" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:cell">14</a>). Counting each of its values once gives the *distinct-height sum*
+Prime-power divisibility gives $`\operatorname{L}=\operatorname{H}`$ (Proposition <a href="#erdos-269-three-prime-running-lcm--res:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:lcm">12</a>). The running LCM is therefore constant between consecutive prime powers $`p^n,q^n,r^n`$ ($`n\ge1`$), and at each of them it is multiplied by the corresponding prime (Proposition <a href="#erdos-269-three-prime-running-lcm--res:cell" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:cell">13</a>). Counting each of its values once gives the *distinct-height sum*
 ``` math
 \mathcal D_P=1+\sum_{t}\operatorname{H}(t)^{-1},
 ```
@@ -2786,13 +2786,13 @@ where $`t`$ runs over the prime powers $`p^n,q^n,r^n`$ with $`n\ge1`$. The two s
 
 Fan used the identity $`\operatorname{L}=\operatorname{H}`$ to separate the two-prime kernel \[fan2026comment\]. With three primes, even a finite sum of separated products is impossible (Section <a href="#erdos-269-three-prime-running-lcm--sec:rank" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:rank">3</a>). That theorem is about the kernel and says nothing about the arithmetic of its sum. Sections <a href="#erdos-269-three-prime-running-lcm--sec:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:lcm">5</a> and <a href="#erdos-269-three-prime-running-lcm--sec:escape" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:escape">6</a> turn to the repeated $`\{2,3,5\}`$ sum and state exactly what its irrationality still requires.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/8f70dde4dd94fe468fbd995f5402c7e41685f1c7/evidence/erdos-269-three-prime-running-lcm.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/f3f86ba3c00e3dc0345ce7cb605c8d10b2d42a74/evidence/erdos-269-three-prime-running-lcm.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="erdos-269-three-prime-running-lcm--sec:distinct"></a>
 
 ### The distinct-height sums
 
-Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and put $`\operatorname{H}_P(t)=\prod_{r\in P}r^{\lfloor\log_rt\rfloor}`$. The proof of Proposition <a href="#erdos-269-three-prime-running-lcm--res:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:lcm">13</a> applies to any finite set of primes: the running LCM of the $`P`$-smooth integers up to $`t`$ is $`\operatorname{H}_P(t)`$, and it changes only at the prime powers $`r^n`$ ($`r\in P`$, $`n\ge1`$), where it is multiplied by $`r`$. List these prime powers as $`t_1<t_2<\cdots`$, let $`q_k`$ be the prime of $`t_k`$, and put $`Q_k=q_1\cdots q_k=\operatorname{H}_P(t_k)`$. Then
+Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and put $`\operatorname{H}_P(t)=\prod_{r\in P}r^{\lfloor\log_rt\rfloor}`$. The proof of Proposition <a href="#erdos-269-three-prime-running-lcm--res:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:lcm">12</a> applies to any finite set of primes: the running LCM of the $`P`$-smooth integers up to $`t`$ is $`\operatorname{H}_P(t)`$, and it changes only at the prime powers $`r^n`$ ($`r\in P`$, $`n\ge1`$), where it is multiplied by $`r`$. List these prime powers as $`t_1<t_2<\cdots`$, let $`q_k`$ be the prime of $`t_k`$, and put $`Q_k=q_1\cdots q_k=\operatorname{H}_P(t_k)`$. Then
 ``` math
 \mathcal D_P=1+\sum_{k\ge1}\frac1{Q_k}.
 ```
@@ -2806,7 +2806,7 @@ For $`P=\{2,3,5\}`$ the prime powers $`2,3,4,5,8,9,16,25,27,32,\ldots`$ carry th
 
 Ordinary proof, given below. It was found within this project on 26 September 2026 and independently refereed by a second reader, whose five small corrections are incorporated. It has no Lean proof, so Comparator does not apply. The case $`P=\{2,3,5\}`$ is Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-235">6</a>, which is checked in Lean.
 
-For $`|P|=2`$ the theorem is contained in Theorem <a href="#erdos-269-three-prime-running-lcm--res:two-prime-transcendence" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:two-prime-transcendence">12</a>: $`\mathcal D_{\{p,q\}}`$ is an affine function of one Hecke–Mahler value, which is transcendental by Loxton and van der Poorten \[loxtonvdp1977, Theorem 8, p. 40\] and Bugeaud and Laurent \[bugeaudlaurent2023, Theorem 1.1\]. The new case is $`|P|\ge3`$, where every Hecke–Mahler theorem we found has a single slope.
+For $`|P|=2`$ the theorem is contained in Theorem <a href="#erdos-269-three-prime-running-lcm--res:two-prime-transcendence" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:two-prime-transcendence">11</a>: $`\mathcal D_{\{p,q\}}`$ is an affine function of one Hecke–Mahler value, which is transcendental by Loxton and van der Poorten \[loxtonvdp1977, Theorem 8, p. 40\] and Bugeaud and Laurent \[bugeaudlaurent2023, Theorem 1.1\]. The new case is $`|P|\ge3`$, where every Hecke–Mahler theorem we found has a single slope.
 
 The proof compares two tails of the series. A rational value makes every scaled tail an integer, so two tails closer than the scale are equal. The tails after $`t_k`$ and after $`t_kp^n`$, for a suitable $`n`$, are that close. Their words of primes differ only by rearranging short runs, and equality of the tails forces an integer invariant $`f`$ to agree on each run and its rearrangement. A run of two primes violates this, and a point of a torus on exactly two coordinate walls produces one.
 
@@ -2875,7 +2875,7 @@ For four primes injectivity fails: $`f(5,7,3,2)=f(7,2,3,5)=51`$. The proof there
 
 Let $`\mathbb T=\prod_{q\in P}\mathbb{R}/(\log q)\mathbb{Z}`$ and $`\Theta(s)=(s\bmod\log q)_{q\in P}`$ for $`s\in\mathbb{R}`$. For $`\theta\in\mathbb T`$ a *$`q`$-crossing* is a real $`t`$ with $`\theta_q+t\in(\log q)\mathbb{Z}`$, and $`W(\theta)`$ is the word of the primes of the positive crossings in increasing order of time. For $`\theta_k=\Theta(\log t_k)`$ the positive $`q`$-crossings are the times $`\log(q^j/t_k)`$ with $`q^j>t_k`$, so $`W(\theta_k)=q_{k+1}q_{k+2}\cdots`$, and crossings of different primes never coincide.
 
-Let $`T_0`$ be the closure of $`\Theta(\mathbb{R})`$, a subtorus containing every $`\theta_k`$. For $`t>0`$ and $`\varepsilon>0`$, the pigeonhole principle applied to the points $`\Theta(jt')`$, $`j\ge1`$, with $`t'>t`$, gives $`d>t`$ with $`\Theta(d)`$ within $`\varepsilon`$ of $`0`$, so $`\Theta(-t)`$ is within $`\varepsilon`$ of $`\Theta(d-t)`$. Hence $`\Theta([0,\infty))`$ is dense in $`T_0`$, and so is every forward orbit $`\{\theta+\Theta(t):t\ge t_0\}`$ with $`\theta\in T_0`$.
+Let $`T_0`$ be the closure of $`\Theta(\mathbb{R})`$, a subtorus containing every $`\theta_k`$. Every forward orbit $`\{\theta+\Theta(t):t\ge t_0\}`$ with $`\theta\in T_0`$ is dense in $`T_0`$, by Kronecker’s theorem or a one-line pigeonhole argument (the companion’s Section 4.1).
 
 In the coordinates $`\varphi_q=\theta_q/\log q`$ the torus is $`\mathbb{R}^P/\mathbb{Z}^P`$, and by Kronecker’s theorem $`T_0`$ is the image of the smallest rational subspace $`L\subseteq\mathbb{R}^P`$ containing $`\omega=(1/\log q)_{q\in P}`$. The annihilator of $`L`$ is a rational subspace spanned by the integer vectors $`c`$ with $`\sum_qc_q/\log q=0`$. If it contained a nonzero vector supported on at most two primes $`a,b`$, it would contain an integer one, and $`\log a/\log b`$ would be rational, which is false because no power of $`a`$ is a power of $`b`$. So each $`\varphi_q`$ is nonzero on $`L`$ and any two are linearly independent on $`L`$. In particular the linear form $`\theta_b-\theta_a=(\log b)\varphi_b-(\log a)\varphi_a`$ is nonzero on $`L`$, although it vanishes on the flow direction $`\omega`$.
 
@@ -2916,7 +2916,7 @@ Then $`\theta_k`$ has an $`a`$-crossing $`t^*+\tau_a`$ and a $`b`$-crossing $`t^
 
 </div>
 
-Written as the Cantor series $`\sum_{k\ge0}(q_1\cdots q_k)^{-1}`$, $`\mathcal D_P`$ has every digit equal to $`1`$ and every base in $`P`$. The irrationality criteria of Erdős–Straus \[erdosstraus1974, Theorem 2.1\] and Hančl–Tijdeman \[hancltijdeman2004, Theorem 3.1\] assume that each digit divided by the product of the last two bases in its denominator tends to $`0`$; here that quotient is at least $`(\max P)^{-2}`$, so neither applies. The rationality criterion of Diananda and Oppenheim \[dianandaoppenheim1955\] condenses a Cantor series into blocks of consecutive terms, the form of the dyadic argument below; it restates rationality and does not by itself decide $`\mathcal D_P`$.
+The companion’s Section 11.1 compares $`\mathcal D_P`$, written as a Cantor series, with the criteria of Erdős–Straus \[erdosstraus1974\], Hančl–Tijdeman \[hancltijdeman2004\] and Diananda and Oppenheim \[dianandaoppenheim1955\], none of which decides it.
 
 <a id="erdos-269-three-prime-running-lcm--sec:distinct-235"></a>
 
@@ -2929,85 +2929,13 @@ Written as the Cantor series $`\sum_{k\ge0}(q_1\cdots q_k)^{-1}`$, $`\mathcal D_
 
 </div>
 
-Checked in Lean for the sum exactly as defined in the introduction ([Lean proof](https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean#L689)); Comparator has not yet been run on it. The constants of the proof below, the five pairs $`(b_\tau,\mu_\tau)`$, the bounds $`3/10`$ and $`13/15`$ and the four gaps, are also recomputed in exact arithmetic by the [distinct-height programs](https://github.com/wcook04/plectis-erdos/tree/10178c4df40cb27d83b5ebb1ec337dd588b82998/research/experiments/erdos269/distinct_height).
+Checked in Lean for the sum exactly as defined in the introduction ([Lean proof](https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean#L689)); Comparator has not yet been run on it. The constants of its proof, the five affine maps, their bounds and the gaps between their images, are also recomputed in exact arithmetic by the [distinct-height programs](https://github.com/wcook04/plectis-erdos/tree/10178c4df40cb27d83b5ebb1ec337dd588b82998/research/experiments/erdos269/distinct_height).
 
-This is a case of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-all" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-all">1</a>. The Lean proof follows a different route, which reads the sum one dyadic block at a time. Between consecutive powers of two there is at most one power of $`3`$ and at most one power of $`5`$, so each block acts on the normalised tail by one of five affine maps, and the images of the possible tails under these maps are disjoint. A tail therefore determines the block before it, and with it every later block. A rational value would make two tails coincide and the pattern of blocks repeat, and the powers of $`3`$ do not fall periodically among the dyadic blocks.
-
-<div class="proof">
-
-*Proof.* List the prime powers $`2^n,3^n,5^n`$ ($`n\ge1`$) in increasing order as $`t_1<t_2<\cdots`$. For $`a\ge0`$ the block $`(2^a,2^{a+1}]`$ ends with the jump at $`2^{a+1}`$. Consecutive powers of $`3`$, and of $`5`$, have ratio greater than $`2`$, so the block contains at most one power of each odd prime, both strictly inside it. Its type $`\tau_a`$ is the word formed by those odd primes in increasing order of their powers, one of $`\varnothing,3,5,35,53`$; for instance $`(16,32]`$ contains $`25<27`$, so $`\tau_4=53`$.
-
-Put $`P_a=\operatorname{H}(2^a)`$ and $`Y_a=P_a\sum_{t_k>2^a}\operatorname{H}(t_k)^{-1}`$. If block $`a`$ has interior primes $`r_1,\ldots,r_v`$ in this order, its jumps have heights $`P_ar_1,\ P_ar_1r_2,\ \ldots,\ P_ar_1\cdots r_v`$ and finally $`P_{a+1}=2P_ar_1\cdots r_v`$. Splitting off the block gives
-``` math
-\begin{equation}
-\label{eq:distinct-block}
- Y_a=G_{\tau_a}(Y_{a+1}),\qquad
- G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad
- b_\tau=2r_1\cdots r_v,\quad
- \mu_\tau=1+b_\tau\sum_{j\le v}\frac1{r_1\cdots r_j}.
-\end{equation}
-```
-For $`\tau=\varnothing,3,5,35,53`$ the pairs $`(b_\tau,\mu_\tau)`$ are $`(2,1)`$, $`(6,3)`$, $`(10,3)`$, $`(30,13)`$ and $`(30,9)`$.
-
-Every jump multiplies the height by at least $`2`$, so $`0<Y_a\le1`$, and each $`G_\tau`$ is increasing and maps $`[0,1]`$ into itself. By <a href="#erdos-269-three-prime-running-lcm--eq:distinct-block" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:distinct-block">[eq:distinct-block]</a>, $`Y_a\ge\mu_{\tau_a}/b_{\tau_a}\ge3/10`$. The power $`5^f`$ lies in block $`\lfloor f\log_25\rfloor`$ and $`2<\log_25<3`$, so the blocks containing a power of $`5`$ begin with block $`2`$ and are two or three apart; every three consecutive blocks include one. On $`[0,1]`$ a map whose block contains a power of $`5`$ is at most $`G_{35}(1)=7/15`$. So if $`a+i`$, with $`i\le2`$, is the first block from $`a`$ onwards containing a power of $`5`$, then $`Y_{a+i}\le7/15`$, and the at most two maps leading back to $`Y_a`$ are $`G_\varnothing`$ or $`G_3`$, both bounded by $`G_\varnothing`$ because $`G_\varnothing(y)-G_3(y)=y/3\ge0`$. Hence
-``` math
-\frac3{10}\le Y_a\le G_\varnothing\bigl(G_\varnothing(7/15)\bigr)
- =\frac{13}{15}\qquad(a\ge0).
-```
-
-The five maps send $`I=[3/10,13/15]`$ to the intervals
-``` math
-\Bigl[\frac{31}{100},\frac{74}{225}\Bigr],\
- \Bigl[\frac{33}{100},\frac{29}{75}\Bigr],\
- \Bigl[\frac{133}{300},\frac{104}{225}\Bigr],\
- \Bigl[\frac{11}{20},\frac{29}{45}\Bigr],\
- \Bigl[\frac{13}{20},\frac{14}{15}\Bigr]
- \qquad(\tau=53,5,35,3,\varnothing),
-```
-separated by the gaps $`1/900`$, $`17/300`$, $`79/900`$ and $`1/180`$. Since $`Y_{a+1}\in I`$, the value $`Y_a`$ lies in the image of $`\tau_a`$ and of no other type. Thus $`Y_a`$ determines $`\tau_a`$, then $`Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}`$, and by induction the whole word $`\tau_a\tau_{a+1}\cdots`$.
-
-Suppose $`\mathcal D_{\{2,3,5\}}=N/K`$ with integers $`N`$ and $`K\ge1`$. For $`t\le2^a`$ the height $`\operatorname{H}(t)`$ divides $`P_a`$, so
-``` math
-P_a\mathcal D_{\{2,3,5\}}-Y_a
- =P_a\Bigl(1+\sum_{t_k\le2^a}\operatorname{H}(t_k)^{-1}\Bigr)\in\mathbb{Z},
-```
-and $`KY_a`$ is an integer in $`[3K/10,13K/15]`$ for every $`a\ge0`$. Two indices $`a<a'`$ give the same integer. Then $`Y_a=Y_{a'}`$, so $`\tau_{a+j}=\tau_{a'+j}`$ for every $`j\ge0`$, and the word $`(\tau_a)`$ is eventually periodic with period $`\ell=a'-a`$.
-
-Finally, $`2^a<3^e<2^{a+1}`$ holds exactly when $`a\alpha<e<(a+1)\alpha`$, where $`\alpha=\log2/\log3`$ is irrational. Block $`a`$ therefore contains $`\lfloor(a+1)\alpha\rfloor-\lfloor a\alpha\rfloor`$ powers of $`3`$, a number recorded by $`\tau_a`$. Summing over one period, the difference $`\lfloor(a+\ell)\alpha\rfloor-\lfloor a\alpha\rfloor`$ is a constant $`c`$ for all large $`a`$, hence $`\lfloor(a+n\ell)\alpha\rfloor=\lfloor a\alpha\rfloor+nc`$ for every $`n\ge1`$. Dividing by $`n`$ and letting $`n\to\infty`$ gives $`\ell\alpha=c`$, that is $`2^\ell=3^c`$, which is impossible. ◻
-
-</div>
-
-The upper bound is the delicate step. Since $`G_3(y)=G_\varnothing(y/3)`$ and $`G_{53}(y)=G_5(y/3)`$, the images of the empty block and of the block with one power of $`3`$, and those of the blocks $`5`$ and $`53`$, are disjoint exactly when the largest tail is less than three times the smallest, and the trivial bound $`Y_a\le1`$ would not separate them; the spacing of the powers of $`5`$ lowers it to $`13/15`$.
-
-<a id="erdos-269-three-prime-running-lcm--sec:distinct-decoding"></a>
-
-#### A finite-state method, and where it stops
-
-The dyadic argument extends to other prime sets through a finite automaton. It gives an independent proof for every set of three primes at most $`31`$ and for most sets of four, and it fails at $`\{2,3,5,7\}`$ for a reason the proof of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-all" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-all">1</a> explains.
-
-<div id="erdos-269-three-prime-running-lcm--res:distinct-height-triples" class="corollary">
-
-**Corollary 7** (three primes up to $`31`$). *For every set $`P`$ of three primes, each at most $`31`$, the distinct-height sum $`\mathcal D_P`$ is irrational.*
-
-</div>
-
-A case of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-all" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-all">1</a>, proved here by the independent finite-state method: an ordinary proof of the criterion below, applied through an exact finite computation for each of the $`165`$ sets; no Lean proof. The long record proves the criterion in full.
-
-<div class="proof">
-
-*Proof.* Let $`P=\{p<q<r\}`$ and group the prime powers into the blocks $`(p^a,p^{a+1}]`$. Each block ends with $`p^{a+1}`$ and contains at most one power of $`q`$ and one of $`r`$, so, as in <a href="#erdos-269-three-prime-running-lcm--eq:distinct-block" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:distinct-block">[eq:distinct-block]</a>, the tails follow one of five increasing affine maps, one for each ordered set of interior primes. The power $`q^f`$ lies in block $`\lfloor f\log_pq\rfloor`$, so consecutive blocks containing a power of $`q`$ are $`g_q`$ or $`g_q+1`$ apart, where $`p^{g_q}<q<p^{g_q+1}`$, and likewise for $`r`$. Record before each block the number of blocks since $`q`$ and since $`r`$ last appeared. These pairs are the states of a finite automaton, and once both primes have appeared the actual sequence of blocks is one of its infinite paths. Start with the interval $`[0,1/(p-1)]`$, which contains every tail, at every state, and repeatedly replace the interval at a state by the smallest interval containing the images of the intervals at its successors; every tail at that state stays inside. Suppose that for some $`k`$ the images of these intervals under all compositions of $`k`$ maps along the automaton, grouped by the first map, are pairwise disjoint. Then a tail determines its block, and the rest of the proof of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-235">6</a> applies with $`[0,1/(p-1)]`$ in place of $`I`$ and $`\log p/\log q`$ in place of $`\alpha`$. An exact computation, with interval endpoints rounded outwards to multiples of $`2^{-96}`$, finds such a $`k\le4`$ for each of the $`165`$ sets: $`k=1`$ for $`141`$ of them, and $`k=4`$ for $`\{2,17,31\}`$, $`\{2,23,29\}`$ and $`\{2,29,31\}`$. A second computation, which solves exactly for the least and greatest values of the infinite paths from each state, returns the same $`k`$ for every set. ◻
-
-</div>
-
-For the $`330`$ sets of four primes at most $`31`$ the test succeeds for $`292`$ at some depth $`k\le5`$, for instance at $`k=1`$ for $`\{3,5,7,11\}`$. For $`\{2,3,5,7\}`$ it fails at every depth. The two-block words $`(5,7,3),\varnothing`$ and $`(7),(3,5)`$ have the same map,
-``` math
-G_{573}\circ G_\varnothing(y)=G_7\circ G_{35}(y)=\frac{103+y}{420},
-```
-which is the collision $`f(5,7,3,2)=f(7,2,3,5)=51`$ read in blocks. Both words continue by the blocks $`(3),(5,7)`$ to the same state of the automaton, so the images for the first types $`(5,7,3)`$ and $`(7)`$ overlap at every depth, and a single tail cannot determine its block. The proof of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-all" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-all">1</a> compares two tails, and there one run of two primes suffices.
+The Lean proof takes a different route (companion, Sections 4.2 and 4.3): each dyadic block acts on the normalised tail by one of five affine maps with disjoint images, so a tail determines every later block, and a rational value would make the blocks eventually periodic, which the powers of $`3`$ prevent. With an automaton recording how recently each prime appeared, the same method proves every set of three primes at most $`31`$ by exact computation, and it fails for $`\{2,3,5,7\}`$, where two words of blocks have the same affine map (companion, Sections 4.4 and 4.5).
 
 <a id="erdos-269-three-prime-running-lcm--sec:rank"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) (83 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) (72 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 

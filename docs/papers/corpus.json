@@ -5767,8 +5767,8 @@
       ],
       "citations_rendered": 58,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:06e11945d9089cd0ac7e8a9583b49437b2463ee9b1c6bfdb6bef6cc769437694",
-      "pdf_byte_count": 408470,
+      "pdf_sha256": "sha256:5bd147a1bc83dbb0cdd815df00fd55e0e82fc5e205caaba0d7787a693825f008",
+      "pdf_byte_count": 408467,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5834,12 +5834,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:703531e5f13cf011f0dd44c8978dd91a7901eec43df60d321fddbeabef0cf286",
+      "source_sha256": "sha256:97662a4b3b2b8050bef065b0e2c693a3eb9ac20412a1305e9b614d3696c8ff5e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 22,
+      "section_count": 20,
       "sections": [
         {
           "level": 1,
@@ -5878,106 +5878,94 @@
           "line": 168
         },
         {
-          "level": 2,
-          "id": "sec:distinct-decoding",
-          "title": "A finite-state method, and where it stops",
-          "line": 229
-        },
-        {
           "level": 1,
           "id": "sec:rank",
           "title": "Nonsingular minors of every order",
-          "line": 255
+          "line": 183
         },
         {
           "level": 4,
           "id": "the-indices-must-be-selected.",
           "title": "The indices must be selected.",
-          "line": 341
+          "line": 269
         },
         {
           "level": 4,
           "id": "exact-rank-is-not-an-approximation-obstruction.",
           "title": "Exact rank is not an approximation obstruction.",
-          "line": 368
+          "line": 296
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime comparison",
-          "line": 374
+          "line": 302
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "The recurrence for the repeated sum",
-          "line": 429
-        },
-        {
-          "level": 4,
-          "id": "where-the-distinct-height-argument-stops.",
-          "title": "Where the distinct-height argument stops.",
-          "line": 593
+          "line": 357
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "A window test and the remaining arithmetic",
-          "line": 613
+          "line": 535
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 721
+          "line": 643
         },
         {
           "level": 4,
           "id": "proof-sources.",
           "title": "Proof sources.",
-          "line": 725
+          "line": 647
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 731
+          "line": 653
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 737
+          "line": 659
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 743
+          "line": 665
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 749
+          "line": 671
         },
         {
           "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 755
+          "line": 677
         },
         {
           "level": 4,
           "id": "scope-of-the-supplementary-literature.",
           "title": "Scope of the supplementary literature.",
-          "line": 761
+          "line": 683
         }
       ],
       "citations_rendered": 27,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:cbebbd253dcdcf4cae5d1ca69e400e14dc996bebbc544ffdb05b0cc61b33566b",
-      "pdf_byte_count": 170412,
+      "pdf_sha256": "sha256:58bd56870d28386d828669ce72429e936c7d9143b63eebaf3850988d6af140a3",
+      "pdf_byte_count": 152347,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5990,17 +5978,17 @@
           {
             "id": "sec:rank",
             "title": "Nonsingular minors of every order",
-            "line": 255
+            "line": 183
           },
           {
             "id": "sec:lcm",
             "title": "The recurrence for the repeated sum",
-            "line": 429
+            "line": 357
           },
           {
             "id": "sec:escape",
             "title": "A window test and the remaining arithmetic",
-            "line": 613
+            "line": 535
           }
         ],
         "unresolved_count": 0

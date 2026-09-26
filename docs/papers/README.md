@@ -348,7 +348,7 @@ Start here (selected for this guide): [The problem, and what is settled](full-te
 
 **No Finite Separable Representation at Three Prime Generators**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 22 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 20 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [Nonsingular minors of every order](full-text/erdos-269-three-prime-running-lcm.md#sec:rank), [The recurrence for the repeated sum](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [A window test and the remaining arithmetic](full-text/erdos-269-three-prime-running-lcm.md#sec:escape).
 

@@ -9,5 +9,8 @@
   "receipts": "evidence/comparator/replay-35935225572"
  },
  "record_commit": "8f70dde4dd94fe468fbd995f5402c7e41685f1c7",
- "record_commit_overrides": {}
+ "record_commit_overrides": {
+  "erdos-269-three-prime-running-lcm": "f3f86ba3c00e3dc0345ce7cb605c8d10b2d42a74",
+  "erdos269-running-lcm-reasoning-surface": "f3f86ba3c00e3dc0345ce7cb605c8d10b2d42a74"
+ }
 }
