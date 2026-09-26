@@ -160,6 +160,7 @@ class SourceSupport:
         self.repo, self.commit = repo, commit
         self.modules: dict[str, str] | None = None
         self.environment: dict[str, str] = {}
+        self.external_namespaces = {"init", "lean", "std", "lake"}
         self.cache: dict[str, dict] = {}
 
     def _index(self) -> None:
@@ -178,8 +179,12 @@ class SourceSupport:
         for package in manifest["packages"]:
             if not isinstance(package, dict):
                 raise EvidenceError("invalid support dependency manifest package")
-            if not re.fullmatch(r"[0-9a-f]{40}", str(package.get("rev", ""))):
-                raise EvidenceError("complete support binding requires immutable dependency revisions")
+            if package.get("type") != "git" or not re.fullmatch(r"[0-9a-f]{40}", str(package.get("rev", ""))):
+                raise EvidenceError("complete support binding requires immutable Git dependencies; path packages are unsupported")
+            name = package.get("name")
+            if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", name):
+                raise EvidenceError("unsupported dependency namespace in support binding")
+            self.external_namespaces.add(name.lower())
         self.environment = {path: sha256_hex(data) for path, data in inputs.items()}
         libraries = config.get("lean_lib", [])
         if not isinstance(libraries, list) or any(not isinstance(row, dict) for row in libraries):
@@ -232,8 +237,10 @@ class SourceSupport:
                     pending.append(imported)
                 elif imported.split(".", 1)[0] in namespaces:
                     raise EvidenceError(f"missing local support dependency {imported}")
-                else:
+                elif imported.split(".", 1)[0].lower() in self.external_namespaces:
                     external.add(imported)
+                else:
+                    raise EvidenceError(f"unbound external support dependency {imported}")
         result = {"schema": SUPPORT_SCHEMA, "root_module": owners[0],
                   "modules": dict(sorted(hashes.items())), "external_imports": sorted(external),
                   "environment": self.environment}

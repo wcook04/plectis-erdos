@@ -32,7 +32,11 @@ import closure, read from the pinned Git revision with the build planner's
 import-header reader. Full file bytes cover fields, inherited requirements,
 referenced definitions, notation and commands. The toolchain, dependency lock
 and Lake configuration are bound separately. Display limits never limit this
-identity; changing an unrelated module leaves it unchanged.
+identity; changing an unrelated module leaves it unchanged. An unrelated edit
+inside a module in the closure does invalidate the binding: this conservative
+rule deliberately avoids claiming to extract a minimal semantic dependency set.
+Only Git-locked packages and toolchain-owned external namespaces are supported;
+mutable path dependencies or unrecognised external namespaces fail closed.
 
 The evidence map is version 2. For non-theorem declarations, `statement_sha256`
 now identifies this complete support binding, and `identity_rule` names the

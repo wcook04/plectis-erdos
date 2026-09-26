@@ -108,7 +108,7 @@ class Fixture:
             git(repo, "init", "-q")
         write(self.root, LEAN_FILE, LEAN_TEXT)
         write(self.root, "lean-toolchain", "leanprover/lean4:v4.29.1\n")
-        write(self.root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "rev": "c" * 40}]}))
+        write(self.root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "type": "git", "rev": "c" * 40}]}))
         self.pin = commit_all(self.root, "lean")
         write(self.corpus, "PalomarCorpus/E1/Challenge.lean", CHALLENGE)
         write(self.corpus, "PalomarCorpus/E1/comparator.json", "{}\n")
@@ -422,7 +422,7 @@ def add_support(f: Fixture) -> dict:
         write(root, "Syn/Parent.lean", SUPPORT_PARENT)
         write(root, "Syn/Support.lean", SUPPORT_TEXT)
         write(root, "lean-toolchain", "leanprover/lean4:v4.29.1\n")
-        write(root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "rev": "c" * 40}]}))
+        write(root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "type": "git", "rev": "c" * 40}]}))
         write(root, "lakefile.toml", 'name = "synthetic"\n[[lean_lib]]\nname = "Syn"\n')
     # The selected theorem is a conditional consumer, not an existence theorem.
     lean = "import Syn.Support\n" + LEAN_TEXT.replace("first_result : True", "first_result (s : Support) : True")
@@ -571,6 +571,25 @@ def test_malformed_support_environment_fails_closed(f: Fixture) -> None:
     require(any("package list" in p for p in f.resolve()), "malformed manifest was accepted or crashed")
 
 
+@with_fixture
+def test_path_dependency_cannot_masquerade_as_immutable(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "lake-manifest.json", json.dumps({"packages": [
+        {"name": "mathlib", "type": "path", "dir": "../mutable", "rev": "c" * 40}]}))
+    f.pin = commit_all(f.root, "mutable package with decorative rev")
+    require(any("path packages are unsupported" in p for p in f.resolve()),
+            "a path dependency became immutable by adding a rev field")
+
+
+@with_fixture
+def test_undeclared_external_import_is_refused(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "Syn/Support.lean", "import LocalUnpinned.Definitions\n" + SUPPORT_TEXT)
+    f.pin = commit_all(f.root, "unbound external namespace")
+    require(any("unbound external support dependency" in p for p in f.resolve()),
+            "an external import without a pinned package was omitted from identity")
+
+
 def checkable_support_fixture(f: Fixture) -> None:
     add_support(f)
     f.relations["rows"][f.ledger["rows"][1]["id"]] = f.relation_for("res:second")
@@ -633,6 +652,8 @@ def main() -> int:
         test_legacy_support_hash_cannot_authorise_relation,
         test_complete_support_note_expires_on_imported_definition_change,
         test_malformed_support_environment_fails_closed,
+        test_path_dependency_cannot_masquerade_as_immutable,
+        test_undeclared_external_import_is_refused,
         test_offline_support_cannot_escape_ledger,
         test_offline_support_rejects_changed_association,
         test_support_identity_is_not_presentation_limited,
