@@ -91,6 +91,7 @@ should still be open.
 python3 scripts/query_continuations.py summary
 python3 scripts/query_continuations.py problem 257
 python3 scripts/query_continuations.py packet --problem 269
+python3 scripts/query_continuations.py next --problem 249
 python3 scripts/query_continuations.py find "mersenneAchievementSet"
 python3 scripts/query_continuations.py statement <key>
 python3 scripts/query_continuations.py theorem <declaration>

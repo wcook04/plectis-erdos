@@ -13,6 +13,8 @@ the questions a researcher asks before spending effort on a statement:
     theorem NAME                one theorem: hypotheses (with status), conclusion, papers
     why KEY                     the kernel witness chain of a supplied statement
     about CONSTANT              everything the graph holds about one corpus object
+    next --problem N            a shortlist of open statements worth attacking next,
+                                each with the structural reasons it was chosen
     near "WORDS"                the supplied and open statements sharing the most
                                 corpus objects with a proposed statement
     barriers [--problem N]      kernel-checked barriers (countermodels, endpoint
@@ -35,6 +37,7 @@ import argparse
 import gzip
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -231,6 +234,57 @@ def cmd_barriers(graph: builder.Graph, payload: dict[str, Any], args: argparse.N
     entries = sorted(entries, key=lambda e: (-e["open_statements_touched"], e["id"]))
     return {"count": len(entries), "in_graph": sum(1 for e in entries if e["in_graph"]),
             "entries": entries[: args.limit]}
+
+
+def cmd_next(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """A shortlist of open statements worth attacking next, each with its reasons.
+
+    Structural only: it excludes what is supplied, refuted, the problem's own
+    targets restated (members of a sink's disguise class) or settles nothing,
+    and prefers members of bundles with two or more open statements (strictly
+    weaker than what they serve unless a converse is proved), statements no
+    barrier touches, and statements serving more than one problem. Whether a
+    candidate is worth a mathematician's time stays a judgement."""
+    keys = open_for_problem(graph, payload, args.problem)
+    sinks = sinks_for(graph, keys)
+    target_classes = {graph.component.get(s) for s in sinks}
+    touched = ((payload.get("barriers") or {}).get("constrains") or {})
+    owners = problems_of(payload)
+    served_by_bundle: dict[str, set[str]] = defaultdict(set)
+    for sink in sinks[: args.sinks]:
+        for bundle in graph.bundles(sink)[0]:
+            if len(bundle) >= 2:
+                for member in bundle:
+                    served_by_bundle[member].add(sink)
+    rows = []
+    for key in keys:
+        if key in graph.refuted or graph.component.get(key) in target_classes:
+            continue
+        gained = graph.leverage(key)
+        if not gained and key not in served_by_bundle:
+            continue
+        reasons = []
+        if key in served_by_bundle:
+            reasons.append(f"member of a two-or-more bundle for {len(served_by_bundle[key])} target(s)")
+        if gained:
+            reasons.append(f"settles {len(gained)} open statement(s)")
+        if key in touched:
+            reasons.append(f"touched by barrier(s) {', '.join(touched[key][:3])}: check them first")
+        else:
+            reasons.append("no recorded barrier touches it")
+        problems = owners.get(key, [])
+        if len(problems) > 1:
+            reasons.append(f"serves problems {', '.join(problems)}")
+        score = (key in served_by_bundle, key not in touched, len(problems), len(gained))
+        rows.append((score, key, reasons))
+    rows.sort(key=lambda row: row[0], reverse=True)
+    return {
+        "problem": args.problem,
+        "rule": "exclude supplied, refuted, target-restating and consequence-free statements; prefer bundle members, "
+                "unbarriered statements, cross-problem statements, then leverage",
+        "shortlist": [{"key": key, "type": graph.statements[key].get("type"), "reasons": reasons}
+                      for _, key, reasons in rows[: args.limit]],
+    }
 
 
 def cmd_near(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
@@ -465,6 +519,8 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("why"); p.add_argument("key"); p.add_argument("--depth", type=int, default=6)
     p = sub.add_parser("about"); p.add_argument("constant"); p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("near"); p.add_argument("text"); p.add_argument("--limit", type=int, default=12)
+    p = sub.add_parser("next"); p.add_argument("--problem", required=True)
+    p.add_argument("--limit", type=int, default=15); p.add_argument("--sinks", type=int, default=12)
     p = sub.add_parser("barriers"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("criticality"); p.add_argument("target"); p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("transfer"); p.add_argument("--limit", type=int, default=60)
@@ -474,7 +530,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
-               "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "barriers": cmd_barriers, "criticality": cmd_criticality,
+               "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "next": cmd_next, "barriers": cmd_barriers, "criticality": cmd_criticality,
                "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):

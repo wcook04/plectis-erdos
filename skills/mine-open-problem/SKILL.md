@@ -52,7 +52,13 @@ target in other coordinates, and what each missing input would settle.
 
 ```sh
 python3 scripts/query_continuations.py packet --problem 257
+python3 scripts/query_continuations.py next --problem 257
 ```
+
+`next` lists open statements worth attacking with the structural reason for
+each: members of bundles with two or more open statements, statements no
+recorded barrier touches, statements serving several problems. Whether one is
+worth your time is still your judgement.
 
 If a stewardship or consequence-propagation receipt exists, consume its
 source-pinned frontier before selecting work. Treat its ranking as a reasoned
