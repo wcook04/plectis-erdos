@@ -58,7 +58,10 @@ answer as \texttt{False} and links the proof. Worked cases from Problems 257
 and 249 and from a cross-problem synthesis show what the record keeps for a
 result, and a transfer between Problems 251 and 269, checked in Lean, shows one
 problem's theorem proving another's criterion and then improving its constant
-from $1/31$ to $1/3$. The paper compares the design with Prove2Me and blueprint-based
+from $1/31$ to $1/3$. Replaying the recorded failed routes of all eight problems
+turned a stalled argument into a Lean-checked proof that the Problem 269
+distinct-height sum for the primes 2, 3 and 5 is irrational, a case of an
+assertion Erd\H{o}s made without proof in 1973. The paper compares the design with Prove2Me and blueprint-based
 systems and specifies the controlled comparison that will measure whether
 such records reduce the work of understanding, checking and continuing a
 result.
@@ -344,7 +347,9 @@ repeated tail under rationality and stalled because its tails are unbounded.
 In the distinct-height sum of Problem 269, where each running least common
 multiple counts once, grouping the terms into dyadic shells makes the tails
 bounded and uniquely decodable, and the same return argument proves
-$\mathcal D_{\{2,3,5\}}$ irrational~\cite{paper269}. Erd\H{o}s asserted
+$\mathcal D_{\{2,3,5\}}$ irrational~\cite{paper269}, and Lean checks the proof
+(\href{\repobase/blob/5154f4c4/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean}{DistinctHeightIrrationality.lean}).
+Erd\H{o}s asserted
 irrationality of these sums in 1973 without printing an
 argument~\cite{erdos1974letter}; exact decoding certificates extend the proof
 to every triple of primes up to~$31$. The synthesis paper had proved
@@ -354,9 +359,9 @@ $3$s as its first open case; Schlickewei's Subspace Theorem in S-unit
 coordinates~\cite{schlickewei,corvajazannier} proves transcendence for every
 infinite divisibility chain at every rational base $a/b>1$~\cite{synthesis}. Erd\H{o}s's 1948 divisibility argument, which the
 Problem 249 record had stopped on coefficient size, proves irrationality once
-the totient coefficients are reduced modulo slowly growing powers of two. The
-proofs are ordinary arguments awaiting specialist review, and the replay
-compares no exploration policies.
+the totient coefficients are reduced modulo slowly growing powers of two.
+These last two proofs are ordinary arguments awaiting specialist review, and
+the replay compares no exploration policies.
 
 Reading the problems together raises questions that none of them asks alone.
 The smallest complete case is a transfer between two problems. For dyadic
