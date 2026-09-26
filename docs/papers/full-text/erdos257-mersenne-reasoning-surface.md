@@ -24,7 +24,7 @@ Section 1 proves the support criteria and compares them with the literature. Se
 
 A sufficient condition need not be necessary; an equivalent condition does not prove either side. Counterexamples concern the specified estimate, and a finite computation establishes only its stated range.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 A link marked <span class="smallcaps">Lean source</span> beside an observation or a proof step opens the declaration for that step. Such links are for checking precise definitions; they are not additional hypotheses. A finite computation is described as one where it is used: a result at specified values or below a bound is not a result at arbitrarily large values. Neither the universal problem nor either rational-target question is resolved in this paper.
 
@@ -84,7 +84,7 @@ For every infinite set $`A`$ of positive integers with $`\sum_{a\in A}1/a<\infty
 ``` math
 X_A(b)=\sum_{a\in A}\frac1{b^a-1}
 ```
-is irrational at every integer base $`b\ge2`$. The proof below is ordinary mathematics and is the proof of the short paper’s Theorem 1.2. Erdős’s [1968 paper, p. 222](https://users.renyi.hu/~p_erdos/1969-09.pdf) proves the pairwise-coprime case at every integer base and states the removal of coprimality without printing the details. The proof below gives the stated extension by averaging; no comparison with the omitted proof is possible. The pairwise-coprime case, Theorem <a href="#thm:pairwise-coprime" data-reference-type="ref" data-reference="thm:pairwise-coprime">58</a>, retains that extra hypothesis. The same paper says that $`\sum1/n_i<\infty`$ could be replaced by a weaker but more complicated condition (p. 222), and suggests that for pairwise coprime supports Brun’s method could probably replace it by $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ (p. 226). Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a> below proves irrationality under one explicit weaker condition without coprimality; no identification with his suggestions is asserted.
+is irrational at every integer base $`b\ge2`$. The proof below is ordinary mathematics and is the proof of the short paper’s Theorem 1.2. Erdős’s [1968 paper, p. 222](https://users.renyi.hu/~p_erdos/1969-09.pdf) proves the pairwise-coprime case at every integer base and states the removal of coprimality without printing the details. The proof below gives the stated extension by averaging; no comparison with the omitted proof is possible. The pairwise-coprime case, Theorem <a href="#thm:pairwise-coprime" data-reference-type="ref" data-reference="thm:pairwise-coprime">59</a>, retains that extra hypothesis. The same paper says that $`\sum1/n_i<\infty`$ could be replaced by a weaker but more complicated condition (p. 222), and suggests that for pairwise coprime supports Brun’s method could probably replace it by $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ (p. 226). Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a> below proves irrationality under one explicit weaker condition without coprimality; no identification with his suggestions is asserted.
 
 The mechanism is to make positive displacements arbitrarily small. For $`N>0`$, write $`N=q_a a+r_a`$, $`0\le r_a<a`$. The identity
 ``` math
@@ -118,7 +118,7 @@ Now choose $`Q_t=\operatorname{lcm}(1,\ldots,t)`$. For each fixed $`d`$, eventua
 ```
 Consequently the limiting mean of $`\Delta_{b,A}(Q_tm)`$ tends to zero. Given $`\varepsilon>0`$, first choose $`t`$ and then a sufficiently long finite average with mean below $`\varepsilon`$; one term of that average is below $`\varepsilon`$. Its strict positivity contradicts the rational lattice. This proves the assertion. The exact all-base statement, with hypotheses $`b\ge2`$, infinitude of $`A`$, and summability of $`a\mapsto\mathbf1_A(a)/a`$, has a [kernel-checked Lean proof](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395).
 
-The order of the two limits matters: the observation length increases with $`Q_t`$ fixed before $`t`$ increases. No independence of different divisibility events is assumed. The mechanism also has a definite limit. At base two and full support, the contribution of exponents $`a>N`$ alone gives $`\Delta_{2,\mathbb N_{>0}}(N)>1-2^{-N}\ge1/2`$. Full-support irrationality therefore uses a different argument; see Theorem <a href="#thm:full-support" data-reference-type="ref" data-reference="thm:full-support">28</a>.
+The order of the two limits matters: the observation length increases with $`Q_t`$ fixed before $`t`$ increases. No independence of different divisibility events is assumed. The mechanism also has a definite limit. At base two and full support, the contribution of exponents $`a>N`$ alone gives $`\Delta_{2,\mathbb N_{>0}}(N)>1-2^{-N}\ge1/2`$. Full-support irrationality therefore uses a different argument; see Theorem <a href="#thm:full-support" data-reference-type="ref" data-reference="thm:full-support">29</a>.
 
 <a id="a-weighted-condition-on-the-support"></a>
 
@@ -127,7 +127,7 @@ The order of the two limits matters: the observation length increases with $`Q_t
 The reciprocal-summable case is a useful model, but powers of a fixed prime can make an exponent cheaper than its reciprocal suggests. For example, with $`a=2^km`$ and $`m`$ odd, the weight below becomes $`1/[m(b^{2^k}-1)]`$. The exponential denominator permits a large collection of odd factors at large $`k`$.
 
 <div id="thm:257-weighted" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-weighted">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-weighted-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-weighted">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-weighted-comparator">Comparator</a></p>
 
 **Theorem 1** (A weighted summability criterion). *Let $`b\ge2`$ be an integer, let $`\mathcal P`$ be a finite nonempty set of primes, and let $`A\subseteq\mathbb N_{>0}`$ be infinite. Write
 ``` math
@@ -363,6 +363,41 @@ Both averaging proofs in this section end by choosing a term no larger than a fi
 ```
 is at least $`X_A(b)`$, which gives no lower bound for $`R_c`$. The proofs above average the displacement instead, along multiples of a modulus that freezes a finite part of $`A`$; the weighted proof adds the dyadic average <a href="#eq:257-weighted-dyadic-average" data-reference-type="eqref" data-reference="eq:257-weighted-dyadic-average">[eq:257-weighted-dyadic-average]</a>.
 
+<a id="sec:257-finite-witness-rules"></a>
+
+#### Finite rules for prime witnesses
+
+Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a> asks for one prime set $`\mathcal P`$ with finite weighted mass. A single host can make the answer follow any monotone rule on a finite set of primes, simultaneously at every base. In the next statement $`\mathcal P=\varnothing`$ is allowed, with $`h(a)=1`$.
+
+<div id="prop:257-finite-witness-rule" class="prop">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean#L39">Lean</a></p>
+
+**Proposition 2** (realising finite monotone witness rules). *Let $`E`$ be a finite set of primes, and let $`\mathcal U`$ be an upward-closed family of subsets of $`E`$ with $`E\in\mathcal U`$ and $`\varnothing\notin\mathcal U`$. There is a set $`A_{\mathcal U}\subseteq\mathbb N_{>0}`$ with $`\sum_{a\in A_{\mathcal U}}1/a=\infty`$ such that, for every integer $`b\ge2`$ and every finite set $`\mathcal P`$ of primes,
+``` math
+\begin{equation}
+\label{eq:257-finite-witness-rule}
+ W_{b,\mathcal P}(A_{\mathcal U})<\infty
+ \quad\Longleftrightarrow\quad \mathcal P\cap E\in\mathcal U.
+\end{equation}
+```
+Moreover $`X_B(b)`$ is irrational for every infinite $`B\subseteq A_{\mathcal U}`$ and every integer $`b\ge2`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* For each nonempty $`C\subseteq E`$ put $`D_C=\prod_{p\in C}p`$ and
+``` math
+B_C=\{D_C^km:k\ge1,\ 1\le m\le2^{D_C^k},\ \gcd(m,D_C)=1\},
+```
+and let $`g=\prod_{p\in C\cap\mathcal P}p`$. The weighted mass of the $`k`$th layer lies between positive multiples, depending only on $`C\cup\mathcal P`$, of $`g^k/(b^{g^k}-1)`$. Above: an element $`D_C^km`$ has $`\mathcal P`$-part $`g^ku`$, and raising the $`\mathcal P`$-part from $`g^k`$ to $`g^ku`$ multiplies the weight by $`u/(1+b^{g^k}+\cdots+b^{(u-1)g^k})\le1`$, while $`\sum_{m\le2^r}1/m\le2r`$. Below: the cofactors $`m\equiv1\pmod Q`$, with $`Q=\prod_{p\in C\cup\mathcal P}p`$, have $`\mathcal P`$-part exactly $`g^k`$, and grouping $`1,\dots,2^r`$ into blocks of at most $`Q`$ integers gives reciprocal sum at least $`H_{2^r}/Q\ge r/(2Q)`$, where $`r=D_C^k`$ and $`H_n=\sum_{j\le n}1/j`$. The comparison terms equal $`1/(b-1)`$ when $`g=1`$ and are summable when $`g\ge2`$, since consecutive ratios are at most $`g/b^{g^k}\to0`$. Hence $`B_C`$ has finite weighted mass exactly when $`\mathcal P`$ meets $`C`$, and the case $`Q=D_C`$ shows that each layer adds at least $`1/(2D_C)`$ to the ordinary reciprocal sum.
+
+Let $`A_{\mathcal U}`$ be the union of the blocks $`B_{E\setminus M}`$ over the forbidden sets $`M\subseteq E`$, $`M\notin\mathcal U`$; each clause $`E\setminus M`$ is nonempty because $`E\in\mathcal U`$. A subset of $`E`$ lies in $`\mathcal U`$ exactly when it meets every clause: an allowed set cannot lie inside a forbidden one, and a forbidden set misses its own clause. This finite correspondence is standard \[sedaghatstephenchindelevitch, Section 2\]. Nonnegative weights make summability on a finite union equivalent to summability on each block, which gives <a href="#eq:257-finite-witness-rule" data-reference-type="eqref" data-reference="eq:257-finite-witness-rule">[eq:257-finite-witness-rule]</a> and reciprocal divergence. Since $`E\in\mathcal U`$, <a href="#eq:257-finite-witness-rule" data-reference-type="eqref" data-reference="eq:257-finite-witness-rule">[eq:257-finite-witness-rule]</a> with $`\mathcal P=E`$ gives $`W_{b,E}(B)\le W_{b,E}(A_{\mathcal U})<\infty`$ for every infinite $`B\subseteq A_{\mathcal U}`$ and every $`b\ge2`$, so Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a> makes $`X_B(b)`$ irrational. ◻
+
+</div>
+
+For the subsets of $`\{2,3,5\}`$ with at least two elements, no single prime is mandatory and none is sufficient. The maximal forbidden sets alone give the clauses $`\{2,3\}`$, $`\{2,5\}`$, $`\{3,5\}`$, which are also the minimal witnesses; that smaller host has the same classification, while the Lean statement uses every forbidden set. The novelty of the arithmetic realisation has not yet been assessed.
+
 <a id="sec:257-common-kernel"></a>
 
 #### A finite estimate on common observation scales
@@ -406,9 +441,9 @@ Summing the main terms and these two error budgets proves <a href="#eq:257-mixe
 For a finite set $`F\subseteq\mathbb{N}_{>0}`$, put $`f_F(n)=\#\{a\in F:a\mid n\}`$. The next theorem bounds a fractional power of this count by a nonnegative sum over divisors.
 
 <div id="thm:257-variable-fractional-cover" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-variable-fractional-cover-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-variable-fractional-cover-comparator">Comparator</a></p>
 
-**Theorem 2** (A summable family of divisor majorants). *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
+**Theorem 3** (A summable family of divisor majorants). *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 ``` math
 f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}\quad(n\ge1).
 ```
@@ -467,9 +502,9 @@ The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: 
 Separate small-displacement witnesses need not occur at the same index. For example, a sequence small only at even indices and one small only at odd indices need never have a small sum. The useful feature of <a href="#eq:257-mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:257-mixed-finite-kernel">[eq:257-mixed-finite-kernel]</a> is its uniformity in the moving modulus: the positive-cover argument can use the exact observation window selected by the weighted proof.
 
 <div id="thm:257-mixed-supports" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-mixed-supports-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-257-mixed-supports-comparator">Comparator</a></p>
 
-**Theorem 3** (mixed weighted and cover supports). *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass <a href="#eq:257-weighted-mass" data-reference-type="eqref" data-reference="eq:257-weighted-mass">[eq:257-weighted-mass]</a> at $`b=2`$ for a finite nonempty prime set $`\mathcal P`$. Suppose also that $`V\subseteq\bigcup_jF_j`$ for sets and majorants satisfying Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">2</a>, with <a href="#eq:257-strengthened-cover" data-reference-type="eqref" data-reference="eq:257-strengthened-cover">[eq:257-strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+**Theorem 4** (mixed weighted and cover supports). *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass <a href="#eq:257-weighted-mass" data-reference-type="eqref" data-reference="eq:257-weighted-mass">[eq:257-weighted-mass]</a> at $`b=2`$ for a finite nonempty prime set $`\mathcal P`$. Suppose also that $`V\subseteq\bigcup_jF_j`$ for sets and majorants satisfying Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">3</a>, with <a href="#eq:257-strengthened-cover" data-reference-type="eqref" data-reference="eq:257-strengthened-cover">[eq:257-strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
 </div>
 
@@ -502,7 +537,7 @@ Overlaps between the supports only improve the inequality. Infinitude of $`A`$ m
 
 </div>
 
-The positive-weight variant of Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">2</a>, with its hereditary all-base conclusion, also has a [kernel-checked Lean proof](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L19). Theorem <a href="#thm:257-mixed-supports" data-reference-type="ref" data-reference="thm:257-mixed-supports">3</a> alone does not exhibit a host outside both individual classes. The short paper now supplies the missing ordinary constructions: one infinite host has a finite-prime weighted witness at base two but no strengthened positive cover, while a fresh-prime host has such a cover but no finite-prime weighted witness at any integer base. Their union satisfies neither individual criterion, and this theorem gives every infinite subset an irrational sum at every integer base. Those exact host constructions and the strictness corollary have not been formalised in Lean or independently reviewed; the mixed implication itself is kernel-checked. Universal irrationality and the quantitative and prime-power thinning claims remain open.
+The positive-weight variant of Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">3</a>, with its hereditary all-base conclusion, also has a [kernel-checked Lean proof](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L19). Theorem <a href="#thm:257-mixed-supports" data-reference-type="ref" data-reference="thm:257-mixed-supports">4</a> alone does not exhibit a host outside both individual classes. The short paper now supplies the missing ordinary constructions: one infinite host has a finite-prime weighted witness at base two but no strengthened positive cover, while a fresh-prime host has such a cover but no finite-prime weighted witness at any integer base. Their union satisfies neither individual criterion, and this theorem gives every infinite subset an irrational sum at every integer base. Those exact host constructions and the strictness corollary have not been formalised in Lean or independently reviewed; the mixed implication itself is kernel-checked. Universal irrationality and the quantitative and prime-power thinning claims remain open.
 
 The class of subsets of mixed hosts is closed under finite unions and finite changes even with the literal dyadic cover cost in <a href="#eq:257-strengthened-cover" data-reference-type="eqref" data-reference="eq:257-strengthened-cover">[eq:257-strengthened-cover]</a>. For two covers, interleave their $`j`$th finite sets at positions $`2j-1,2j`$, halve each exponent, and keep the nonnegative coefficient columns. Integer divisor counts satisfy $`f^{\alpha/2}\le f^\alpha`$, while the full reindexed cost of each column grows by at most $`1+\sqrt2`$. For $`r`$ covers, positions at most $`rj`$ and exponents divided by $`r`$ give a cost ratio below $`2r`$. For weighted supports combine the finite prime witnesses: the prime part grows and $`h/(2^h-1)`$ decreases. Subsets inherit the same hosts, and finite sets have finite weighted mass. Countable unions require a tail budget. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$.
 
@@ -520,13 +555,13 @@ For an integer $`n \ge 1`$ set $`x_n := 1/(2^n-1)`$, and for $`A \subseteq \{1,2
 
 <div id="defn:U" class="defn">
 
-**Definition 4** (Universal \#257, written (U)). Is $`x_A = \sum_{n \in A} 1/(2^n-1)`$ irrational for *every* infinite $`A \subseteq \mathbb N_{>0}`$? **OPEN.**
+**Definition 5** (Universal \#257, written (U)). Is $`x_A = \sum_{n \in A} 1/(2^n-1)`$ irrational for *every* infinite $`A \subseteq \mathbb N_{>0}`$? **OPEN.**
 
 </div>
 
 <div id="defn:H" class="defn">
 
-**Definition 5** (The half-value question, written (H)). Let the *Mersenne achievement set* be $`\mathcal{A} := \{\, y \in \mathbb{R}: \exists A \subseteq \mathbb{N},\ 0 \notin A,\ y = \sum_{n \in A} x_n \,\}`$ ([`mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L571)). Is $`1/2 \in \mathcal{A}`$? **OPEN.**
+**Definition 6** (The half-value question, written (H)). Let the *Mersenne achievement set* be $`\mathcal{A} := \{\, y \in \mathbb{R}: \exists A \subseteq \mathbb{N},\ 0 \notin A,\ y = \sum_{n \in A} x_n \,\}`$ ([`mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L571)). Is $`1/2 \in \mathcal{A}`$? **OPEN.**
 
 </div>
 
@@ -583,7 +618,7 @@ The record also gives a logarithmic bound on runs of zero divisor counts under r
 
 <div class="rem">
 
-*Remark 6* (What is and is not covered in the universal direction). The Lean sources contain no theorem for $`A=`$ the primes, but this is a formalisation boundary, not a mathematical open case: Tao and Teräväinen prove the base-$`2`$ prime-support value irrational by first identifying it with $`\sum_{n\ge1}\omega(n)2^{-n}`$. Duverney and Tachiya likewise settle squarefree support at every power-of-two base, and the perfect $`i`$th powers at every integer base (Corollary 1.2 and Example 1.1, p. 4 of the author preprint). Neither result is formalised here. The statement of Problem #257 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* [collection](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean); that file also proves the Lambert identity for the full-support value and states its irrationality, the 1948 theorem of Erdős, with proof `sorry`. It is statement-level prior art, and no theorem recorded here is derived from it. This record has no general theorem for an arbitrary positive-density nonperiodic or divisor-dense support, and the universal statement remains open.
+*Remark 7* (What is and is not covered in the universal direction). The Lean sources contain no theorem for $`A=`$ the primes, but this is a formalisation boundary, not a mathematical open case: Tao and Teräväinen prove the base-$`2`$ prime-support value irrational by first identifying it with $`\sum_{n\ge1}\omega(n)2^{-n}`$. Duverney and Tachiya likewise settle squarefree support at every power-of-two base, and the perfect $`i`$th powers at every integer base (Corollary 1.2 and Example 1.1, p. 4 of the author preprint). Neither result is formalised here. The statement of Problem #257 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* [collection](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean); that file also proves the Lambert identity for the full-support value and states its irrationality, the 1948 theorem of Erdős, with proof `sorry`. It is statement-level prior art, and no theorem recorded here is derived from it. This record has no general theorem for an arbitrary positive-density nonperiodic or divisor-dense support, and the universal statement remains open.
 
 </div>
 
@@ -610,16 +645,16 @@ This is not the reciprocal-summability condition of the reciprocal-support theor
 #### Geometry and rational-target membership
 
 <div id="thm:geometry" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean#L40">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-geometry-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean#L40">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-geometry-comparator">Comparator</a></p>
 
-**Theorem 7** (Achievement-set geometry). *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
+**Theorem 8** (Achievement-set geometry). *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 
 </div>
 
 <div id="thm:supported-dichotomy" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-supported-dichotomy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-supported-dichotomy-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-supported-dichotomy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-supported-dichotomy-comparator">Comparator</a></p>
 
-**Theorem 8** (Support-restricted refinement). *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
+**Theorem 9** (Support-restricted refinement). *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
 </div>
 
@@ -647,19 +682,19 @@ The $`2^{s_N}`$ Mersenne prefix intervals have length at most $`R_N\le2^{1-N}`$.
 
 <div class="rem">
 
-*Remark 9* (Achievement-set terminology and sources). We use the modern term *achievement set* for the subsum set that [Kakeya’s 1914 note](https://doi.org/10.11429/ptmps1907.7.14_250) describes as a set of partial sums. For an infinite summable sequence of positive terms, Kakeya proves perfectness, and nowhere density under an all-index strict-tail condition; [Kovač–Tao, Remark 4.1](https://arxiv.org/abs/2406.17593v4) verifies that strict-tail condition for the fixed-base Mersenne weights. Nitecki proves that a subsum set whose terms all exceed their tails is a Cantor set of measure $`\lim_n2^nR_n`$, and credits this to Hornich \[nitecki2013, Theorem 4(1), p. 9\]; this is the classical source for the topology and measure used here. The volume dichotomy, injectivity, and greedy-membership statements above and below are proved in Lean. The sparse power-series criteria of [Kaneko–Suzuki–Tachiya](https://arxiv.org/abs/2601.20743) (Theorems 1–3, pp. 3–5 of arXiv v1) assume sparse coefficient supports; their relation to the divisor-incidence coefficients of these subseries is recorded after Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a>.
+*Remark 10* (Achievement-set terminology and sources). We use the modern term *achievement set* for the subsum set that [Kakeya’s 1914 note](https://doi.org/10.11429/ptmps1907.7.14_250) describes as a set of partial sums. For an infinite summable sequence of positive terms, Kakeya proves perfectness, and nowhere density under an all-index strict-tail condition; [Kovač–Tao, Remark 4.1](https://arxiv.org/abs/2406.17593v4) verifies that strict-tail condition for the fixed-base Mersenne weights. Nitecki proves that a subsum set whose terms all exceed their tails is a Cantor set of measure $`\lim_n2^nR_n`$, and credits this to Hornich \[nitecki2013, Theorem 4(1), p. 9\]; this is the classical source for the topology and measure used here. The volume dichotomy, injectivity, and greedy-membership statements above and below are proved in Lean. The sparse power-series criteria of [Kaneko–Suzuki–Tachiya](https://arxiv.org/abs/2601.20743) (Theorems 1–3, pp. 3–5 of arXiv v1) assume sparse coefficient supports; their relation to the divisor-incidence coefficients of these subseries is recorded after Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a>.
 
 </div>
 
 <div id="thm:greedy-survival" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean#L183">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-greedy-survival-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean#L183">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-1.md#thm-greedy-survival-comparator">Comparator</a></p>
 
-**Theorem 10** (Membership equals greedy survival; the fatal-gap dichotomy). *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
+**Theorem 11** (Membership equals greedy survival; the fatal-gap dichotomy). *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
 ``` math
 x\in\mathcal A\quad\Longleftrightarrow\quad
  x\ge0\ \text{ and }\ r_n(x)\le R_n\ \text{for every }n\ge0.
 ```
-For every $`x\in[0,E]`$, nonmembership is equivalent to a finite strict gap between the two next-prefix intervals; see Observation <a href="#obs:general-target-gap" data-reference-type="ref" data-reference="obs:general-target-gap">244</a>.*
+For every $`x\in[0,E]`$, nonmembership is equivalent to a finite strict gap between the two next-prefix intervals; see Observation <a href="#obs:general-target-gap" data-reference-type="ref" data-reference="obs:general-target-gap">245</a>.*
 
 </div>
 
@@ -675,7 +710,7 @@ A further exact finite computation, not used in the arguments here, regenerates 
 
 <div class="rem">
 
-*Remark 11* (Literature, exactly). $`E`$ is irrational \[erdos1948\]. Zudilin proves the irrationality measure bound $`\mu(E)\le2.46497868\ldots`$ \[zudilin2004, Theorem 1, p. 154\], correcting an earlier computation (see the remark at the end of his Section 3, p. 159). Transcendence of $`E`$ is unknown \[duverneytachiya, p. 2\], and the Erdős–Graham conjecture that every such subset sum is irrational, i.e. (U), is itself open. For the binary digits of $`E`$, Erdős’s proof produces arbitrarily long runs of zeros. Crandall asked whether the block `11` occurs infinitely often in the binary expansion of $`E`$, and Campbell proves that it does \[campbell2026, Theorem 1, p. 12\].
+*Remark 12* (Literature, exactly). $`E`$ is irrational \[erdos1948\]. Zudilin proves the irrationality measure bound $`\mu(E)\le2.46497868\ldots`$ \[zudilin2004, Theorem 1, p. 154\], correcting an earlier computation (see the remark at the end of his Section 3, p. 159). Transcendence of $`E`$ is unknown \[duverneytachiya, p. 2\], and the Erdős–Graham conjecture that every such subset sum is irrational, i.e. (U), is itself open. For the binary digits of $`E`$, Erdős’s proof produces arbitrarily long runs of zeros. Crandall asked whether the block `11` occurs infinitely often in the binary expansion of $`E`$, and Campbell proves that it does \[campbell2026, Theorem 1, p. 12\].
 
 </div>
 
@@ -697,7 +732,7 @@ This section studies the scope of particular reformulations and certificate mech
 
 <div id="obs:no-ensemble" class="obs">
 
-*Observation 12* (Uniqueness within the fixed-target coding). Each Mersenne weight exceeds the sum of all subsequent weights. Consequently the digit coding is injective (Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">7</a>): a represented target has only one support, recovered by the greedy rule. For the integer weights, both the scale and the cutoff matter. If $`2\le k\le M`$ and $`q_{M,d}=\lfloor2^M/(2^d-1)\rfloor`$ for $`2\le d\le k`$, then
+*Observation 13* (Uniqueness within the fixed-target coding). Each Mersenne weight exceeds the sum of all subsequent weights. Consequently the digit coding is injective (Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">8</a>): a represented target has only one support, recovered by the greedy rule. For the integer weights, both the scale and the cutoff matter. If $`2\le k\le M`$ and $`q_{M,d}=\lfloor2^M/(2^d-1)\rfloor`$ for $`2\le d\le k`$, then
 ``` math
 q_{M,d}-\sum_{e=d+1}^{k}q_{M,e}\ge2^{M-k}.
 ```
@@ -719,9 +754,9 @@ The six limitations below require separate arguments. Fixed-target uniqueness ex
 #### Uniqueness of the specified greedy words
 
 <div id="prop:canon" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-canon">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-canon-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-canon">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-canon-comparator">Comparator</a></p>
 
-**Proposition 13** (Uniqueness under the stated finite conditions). *Put $`G=\mathrm{greedyMersenneSupport}(1/2)`$, $`w_n=(2^n-1)^{-1}`$ and $`R_d=\sum_{n>d}w_n`$. The following are three separate uniqueness statements.*
+**Proposition 14** (Uniqueness under the stated finite conditions). *Put $`G=\mathrm{greedyMersenneSupport}(1/2)`$, $`w_n=(2^n-1)^{-1}`$ and $`R_d=\sum_{n>d}w_n`$. The following are three separate uniqueness statements.*
 
 1.  *If $`D\subseteq\{1,\ldots,d\}`$ and $`X_D(2)\le1/2\le X_D(2)+R_d`$, then $`D=G\cap\{1,\ldots,d\}`$.*
 
@@ -729,7 +764,7 @@ The six limitations below require separate arguments. Fixed-target uniqueness ex
 
 3.  *Let positive integer weights $`v_1,\ldots,v_k`$ satisfy $`v_i\ge g+\sum_{j>i}v_j`$ for a positive integer $`g`$. For a nonnegative integer target $`T`$, let $`y^*`$ be the word obtained by visiting these weights in order and taking each when it fits. An admissible Boolean word $`y`$ has $`0\le T-\sum_i y_iv_i<g`$ if and only if $`y=y^*`$ and $`0\le T-\sum_i y_i^*v_i<g`$.*
 
-*Part (iii) gives uniqueness under the small-remainder condition, not existence. Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> gives a one-weight counterexample to dropping that condition.*
+*Part (iii) gives uniqueness under the small-remainder condition, not existence. Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">144</a> gives a one-weight counterexample to dropping that condition.*
 
 </div>
 
@@ -750,11 +785,11 @@ At $`t=15`$, the values for $`d=2,3,5,6,10`$ are respectively $`21845,4681,1057,
 
 Long prescribed digit strings also occur for unrestricted finite words: the recorded examples at $`t=20`$ and $`t=22`$ have respectively eighteen leading ones and twenty leading zeros. A separate construction supplies about $`t/12`$ independently adjustable bits, with the reported finite check extending to $`t=601`$. These examples disprove the proposed static exclusions, not an assertion about the actual greedy word.
 
-The integer-window search reported no counterexamples for $`t\le22`$ or at $`t=40,42,45`$ over the tested cut positions. That absence is a finite observation. Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="prop:canon">13</a> explains why certain *specified* approximation conditions leave only the greedy word; it does not identify all three searches with one another or rule out averaging over other data.
+The integer-window search reported no counterexamples for $`t\le22`$ or at $`t=40,42,45`$ over the tested cut positions. That absence is a finite observation. Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="prop:canon">14</a> explains why certain *specified* approximation conditions leave only the greedy word; it does not identify all three searches with one another or rule out averaging over other data.
 
 <div class="rem">
 
-*Remark 14* (A sufficient condition that is not necessary). The natural sufficient condition via fractional split-mass is *not* necessary on real crossing cores: the example $`D = \{2,3\}`$, $`c = 5`$ is an explicit counterexample ([`splitFractionMass_one_bound_not_necessary_fixture`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L183)). The example refutes necessity of that sufficient condition. It does not refute using the condition on a class of cores for which it can be proved.
+*Remark 15* (A sufficient condition that is not necessary). The natural sufficient condition via fractional split-mass is *not* necessary on real crossing cores: the example $`D = \{2,3\}`$, $`c = 5`$ is an explicit counterexample ([`splitFractionMass_one_bound_not_necessary_fixture`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L183)). The example refutes necessity of that sufficient condition. It does not refute using the condition on a class of cores for which it can be proved.
 
 </div>
 
@@ -765,9 +800,9 @@ The integer-window search reported no counterexamples for $`t\le22`$ or at $`t=4
 The six conditions listed below are equivalent to half-membership. Their quantifier patterns can look less restrictive than a single compatible infinite construction, but the equivalences must be checked mathematically. They follow here from a carry identity and an unconditional tail estimate. No claim is made that every conceivable sufficient condition is equivalent to the goal.
 
 <div id="lem:collapse-mech" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#lem-collapse-mech">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#lem-collapse-mech-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#lem-collapse-mech">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#lem-collapse-mech-comparator">Comparator</a></p>
 
-**Lemma 15** (Carry and residual value). *Let $`A \subseteq \mathbb{N}`$ with $`1 \notin A`$, put $`\delta := 1/2 - x_A`$, and let $`\operatorname{ihc}(A,N)`$ denote the integer half-carry at level $`N`$. Then
+**Lemma 16** (Carry and residual value). *Let $`A \subseteq \mathbb{N}`$ with $`1 \notin A`$, put $`\delta := 1/2 - x_A`$, and let $`\operatorname{ihc}(A,N)`$ denote the integer half-carry at level $`N`$. Then
 ``` math
 \operatorname{ihc}(A,N) \;=\; 2^{N+1}\,\delta \;+\; \mathrm{T}(N+1),
   \qquad 0 \;\le\; \mathrm{T}(N+1) \;\le\; 2\sqrt{N+1} + 4 ,
@@ -777,15 +812,15 @@ where $`\mathrm T(m)=\sum_{r\ge1}c_A(m+r)2^{-r}`$.*
 </div>
 
 <div id="prop:collapse" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapse">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapse-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapse">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapse-comparator">Comparator</a></p>
 
-**Proposition 16** (A cofinal carry bound). *If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
+**Proposition 17** (A cofinal carry bound). *If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">15</a> gives
+*Proof.* Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">16</a> gives
 ``` math
 2^{N+1}|\delta|
  \le |\operatorname{ihc}(A,N)|+\mathrm T(N+1).
@@ -795,9 +830,9 @@ The right side is $`O(\sqrt{N+1})`$ along the stated sequence, so division by $`
 </div>
 
 <div id="lem:sqrt-witness" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR20/CarryCollapseCorrespondence.lean#L8">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#lem-sqrt-witness-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/CarryCollapseCorrespondence.lean#L8">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#lem-sqrt-witness-comparator">Comparator</a></p>
 
-**Lemma 17** (The terminal bound at square depths). *Suppose $`x_A = 1/2`$ and $`1 \notin A`$. Then for every $`k \ge 1`$,
+**Lemma 18** (The terminal bound at square depths). *Suppose $`x_A = 1/2`$ and $`1 \notin A`$. Then for every $`k \ge 1`$,
 ``` math
 \operatorname{ihc}(A, k^2 - 1) \;=\; \mathrm{T}(k^2) \;\le\; 2k + 4 \;=\; \ensuremath{B}(k^2).
 ```*
@@ -806,7 +841,7 @@ The right side is $`O(\sqrt{N+1})`$ along the stated sequence, so division by $`
 
 <div class="proof">
 
-*Proof.* By Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">15</a> with $`\delta = 0`$, $`\operatorname{ihc}(A,k^2-1) = \mathrm{T}(k^2)
+*Proof.* By Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">16</a> with $`\delta = 0`$, $`\operatorname{ihc}(A,k^2-1) = \mathrm{T}(k^2)
 \le 2\sqrt{k^2} + 4`$. At a perfect square the real and truncated square roots agree exactly, $`\sqrt{k^2} = k = \lfloor \sqrt{k^2} \rfloor`$, so the real envelope coincides with the discrete strip $`\ensuremath{B}(n) = 2\lfloor\sqrt n\rfloor + 4`$ ([`halfStripBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L32)) with no slack required. ◻
 
 </div>
@@ -814,9 +849,9 @@ The right side is $`O(\sqrt{N+1})`$ along the stated sequence, so division by $`
 At the depths $`M=k^2`$, the real square root and the integer square root agree. Thus the reverse implication for the terminal bound uses the original constant $`4`$, not a relaxed constant $`6`$. Truncating an achieving support at $`M=k^2`$ leaves the carry at that depth unchanged, by [`integerHalfCarry_inter_Iic_eq_of_succ_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L49). An achieving half-support excludes rank one because $`w_1=1>1/2`$.
 
 <div id="prop:collapsed-list" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR20/SixMembershipConditions.lean#L123">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapsed-list-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/SixMembershipConditions.lean#L123">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapsed-list-comparator">Comparator</a></p>
 
-**Proposition 18** (Six equivalent membership conditions). *Each of the following is logically *equivalent* to $`1/2 \in \mathcal{A}`$, not strictly weaker:*
+**Proposition 19** (Six equivalent membership conditions). *Each of the following is logically *equivalent* to $`1/2 \in \mathcal{A}`$, not strictly weaker:*
 
 1.  *$`C_G(N)\le2\sqrt N+4`$ for every $`N\ge0`$;*
 
@@ -830,7 +865,7 @@ At the depths $`M=k^2`$, the real square root and the integer square root agree.
 
 6.  *the half-target greedy remainder never exceeds the full remaining tail, so no finite fatal gap exists; the seven equivalent forms in the later classification express this same condition.*
 
-*For (d) and (e), the reverse directions use the square depths in Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">17</a>. For (a), membership gives $`C_G(N)\le2\sqrt{N+1}+3\le2\sqrt N+4`$ when $`N\ge1`$, and $`C_G(0)=0`$. The forward implication still needs the greedy inequality $`x_G\le1/2`$.*
+*For (d) and (e), the reverse directions use the square depths in Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">18</a>. For (a), membership gives $`C_G(N)\le2\sqrt{N+1}+3\le2\sqrt N+4`$ when $`N\ge1`$, and $`C_G(0)=0`$. The forward implication still needs the greedy inequality $`x_G\le1/2`$.*
 
 </div>
 
@@ -852,14 +887,14 @@ For the normalised deviation $`\lambda_{r+1}=(\mathrm{rem}(r+1)-2^{r+1})/2^{r+1}
 **Class (a): fixed precision or bounded state.** The following three statements concern abstract recurrence models. Their conclusions apply to the Mersenne problem only within the specified models; they do not use its full divisor-count constraints.
 
 <div id="prop:local-void" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-local-void">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-local-void">Lean</a></p>
 
-**Proposition 19** (Limits of the specified local summaries). *(i) After $`L`$ common steps the endpoint residue mod $`2^L`$ of an affine binary orbit is *independent* of the initial carry: $`u(L) - v(L) = 2^L(u_0 - v_0)`$. (ii) Fix $`m\ge2`$ and put $`h=\lfloor(m+1)/2\rfloor`$. Consider the coefficient sequences
+**Proposition 20** (Limits of the specified local summaries). *(i) After $`L`$ common steps the endpoint residue mod $`2^L`$ of an affine binary orbit is *independent* of the initial carry: $`u(L) - v(L) = 2^L(u_0 - v_0)`$. (ii) Fix $`m\ge2`$ and put $`h=\lfloor(m+1)/2\rfloor`$. Consider the coefficient sequences
 ``` math
 c_r(m)=h-r,\qquad c_r(m+1)=2r,\qquad
  c_r(j)=0\ (j\ne m,m+1),\qquad 0\le r\le h.
 ```
-Their binary sums are all $`h2^{-m}`$, and their scaled tails before position $`m`$ agree, but their scaled tails immediately after $`m`$ are $`r`$. Thus any exact label-and-decoder system recovering those latter tails must have at least $`h+1=\lfloor(m+1)/2\rfloor+1`$ labels. A state determined only by the common preceding history, with no new input, cannot distinguish them. (iii) For any starting carry and any finite list of prescribed valuations and odd unit residues modulo $`2^u`$, with $`u\ge1`$, there are integer input coefficients with those data whose successor carries lie in their prescribed centred intervals. The unrestricted higher bits of the input coefficients may be chosen separately at each step, as in Proposition <a href="#prop:2adic-nogo" data-reference-type="ref" data-reference="prop:2adic-nogo">256</a>, so these fixed-precision symbols alone do not exclude a completion in that specified family. This says nothing about extra constraints imposed by divisor counts from one common support.*
+Their binary sums are all $`h2^{-m}`$, and their scaled tails before position $`m`$ agree, but their scaled tails immediately after $`m`$ are $`r`$. Thus any exact label-and-decoder system recovering those latter tails must have at least $`h+1=\lfloor(m+1)/2\rfloor+1`$ labels. A state determined only by the common preceding history, with no new input, cannot distinguish them. (iii) For any starting carry and any finite list of prescribed valuations and odd unit residues modulo $`2^u`$, with $`u\ge1`$, there are integer input coefficients with those data whose successor carries lie in their prescribed centred intervals. The unrestricted higher bits of the input coefficients may be chosen separately at each step, as in Proposition <a href="#prop:2adic-nogo" data-reference-type="ref" data-reference="prop:2adic-nogo">257</a>, so these fixed-precision symbols alone do not exclude a completion in that specified family. This says nothing about extra constraints imposed by divisor counts from one common support.*
 
 </div>
 
@@ -868,9 +903,9 @@ For an integer recurrence $`J(M+1)=2J(M)-\delta(M+1)`$, reduction modulo $`2`$ g
 **Class (b): global averages and Diophantine data.**
 
 <div id="prop:exponent-gap" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-exponent-gap">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-exponent-gap-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-exponent-gap">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-exponent-gap-comparator">Comparator</a></p>
 
-**Proposition 20** (Weighted denominator budget). *Let $`n\ge2`$, let $`\mathrm{Skip}_n\subseteq\{2,\ldots,n-1\}`$, and let $`D_n`$ be the reduced denominator of the associated finite sum. Since $`D_n`$ divides the product of its Mersenne denominators,
+**Proposition 21** (Weighted denominator budget). *Let $`n\ge2`$, let $`\mathrm{Skip}_n\subseteq\{2,\ldots,n-1\}`$, and let $`D_n`$ be the reduced denominator of the associated finite sum. Since $`D_n`$ divides the product of its Mersenne denominators,
 ``` math
 \log_2D_n\le\sum_{d\in\mathrm{Skip}_n}\log_2(2^d-1)
  \le\sum_{d\in\mathrm{Skip}_n}d\le\frac{n(n-1)}2-1.
@@ -879,13 +914,13 @@ The middle inequality is strict when the skip set is nonempty; for an empty skip
 
 </div>
 
-**Scope of these obstructions.** The common pre-index history in Proposition <a href="#prop:local-void" data-reference-type="ref" data-reference="prop:local-void">19</a>(ii) does not determine the post-index tail in its countermodel family. This does not exclude a state using additional arithmetic input from the actual support. The displayed denominator budget combined with the cited fixed irrationality-measure exponent does not yield the required run bound. These calculations do not exclude averaging over shifts, residues, or observation scales, nor a sharper analysis of the actual skip distribution.
+**Scope of these obstructions.** The common pre-index history in Proposition <a href="#prop:local-void" data-reference-type="ref" data-reference="prop:local-void">20</a>(ii) does not determine the post-index tail in its countermodel family. This does not exclude a state using additional arithmetic input from the actual support. The displayed denominator budget combined with the cited fixed irrationality-measure exponent does not yield the required run bound. These calculations do not exclude averaging over shifts, residues, or observation scales, nor a sharper analysis of the actual skip distribution.
 
-**Prime steps and bounded windows.** In the universal recurrence, a prime step subtracts $`1`$, so it sends $`K(M)`$ to $`2K(M)-1`$; it is not exact doubling. Observation <a href="#obs:prime-doubling" data-reference-type="ref" data-reference="obs:prime-doubling">253</a> gives an explicit frozen-row drift with values between $`2`$ and $`6`$ at the eleven indices $`607,\ldots,617`$, including the three prime indices $`607`$, $`613`$, and $`617`$. This finite example shows that prime steps can occur within a small-value window. It neither proves statistical independence nor rules out every argument using prime-counting information.
+**Prime steps and bounded windows.** In the universal recurrence, a prime step subtracts $`1`$, so it sends $`K(M)`$ to $`2K(M)-1`$; it is not exact doubling. Observation <a href="#obs:prime-doubling" data-reference-type="ref" data-reference="obs:prime-doubling">254</a> gives an explicit frozen-row drift with values between $`2`$ and $`6`$ at the eleven indices $`607,\ldots,617`$, including the three prime indices $`607`$, $`613`$, and $`617`$. This finite example shows that prime steps can occur within a small-value window. It neither proves statistical independence nor rules out every argument using prime-counting information.
 
 <div class="rem">
 
-*Remark 21* (Status of the exhaustion claim). The preceding counterexamples concern the specified finite summaries and estimates. They do not classify all available tools, even within the broader categories of local information and global averages. No exhaustion claim is used in a subsequent deduction.
+*Remark 22* (Status of the exhaustion claim). The preceding counterexamples concern the specified finite summaries and estimates. They do not classify all available tools, even within the broader categories of local information and global averages. No exhaustion claim is used in a subsequent deduction.
 
 </div>
 
@@ -894,15 +929,15 @@ The middle inequality is strict when the skip set is nonempty; for an empty skip
 #### What finite certificates decide
 
 <div id="thm:one-sided" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#thm-one-sided">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-2.md#thm-one-sided-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#thm-one-sided">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-2.md#thm-one-sided-comparator">Comparator</a></p>
 
-**Theorem 22** (One-sidedness). *Non-membership of $`1/2`$ in $`\mathcal A`$ has an effectively checkable finite-certificate formulation, hence a $`\Sigma^0_1`$ formulation. Membership has the complementary $`\Pi^0_1`$ formulation. Survival through a tested finite depth alone does not establish membership; a uniform theorem or inductive invariant could. The arithmetical-hierarchy form by itself proves neither undecidability nor the absence of finite proofs.*
+**Theorem 23** (One-sidedness). *Non-membership of $`1/2`$ in $`\mathcal A`$ has an effectively checkable finite-certificate formulation, hence a $`\Sigma^0_1`$ formulation. Membership has the complementary $`\Pi^0_1`$ formulation. Survival through a tested finite depth alone does not establish membership; a uniform theorem or inductive invariant could. The arithmetical-hierarchy form by itself proves neither undecidability nor the absence of finite proofs.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* The dichotomy $`1/2 \in \mathcal{A}`$ or $`\exists`$ a fatal gap is unconditional ([`half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L623)), and the two alternatives are exactly complementary ([`existsFatalHalfGap_iff_half_not_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L643)), with [`ExistsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L526) a finite witness type. In the other direction, certified death implies non-membership ([`certifiedGreedyMersenneDeath_not_mem`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1762), over [`CertifiedGreedyMersenneDeath`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1756); $`3/4`$ is certified dead at level $`1`$, lookahead $`0`$, by [`three_fourths_certifiedGreedyMersenneDeath`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1778)), whereas the absence of a certificate through depth $`D`$ alone gives no conclusion about later depths. To make the search effective, note that a greedy remainder at a finite rank is rational. The tail $`R_n`$ has rational upper bounds obtained by summing through a cutoff $`M`$ and bounding the remaining sum by $`2^{-M}+(2/3)4^{-M}`$. These upper bounds converge to $`R_n`$. Thus the strict inequality $`r_n(1/2)>R_n`$, when true, is witnessed by some finite cutoff and a comparison of rational numbers. Enumerating ranks and cutoffs gives the asserted finite-certificate search. Membership requires the survival inequality at every rank (Theorem <a href="#thm:greedy-survival" data-reference-type="ref" data-reference="thm:greedy-survival">10</a>). Checking a finite initial segment alone does not supply the later inequalities; a separate uniform argument or induction would be needed. ◻
+*Proof.* The dichotomy $`1/2 \in \mathcal{A}`$ or $`\exists`$ a fatal gap is unconditional ([`half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L623)), and the two alternatives are exactly complementary ([`existsFatalHalfGap_iff_half_not_mem_mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L643)), with [`ExistsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L526) a finite witness type. In the other direction, certified death implies non-membership ([`certifiedGreedyMersenneDeath_not_mem`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1762), over [`CertifiedGreedyMersenneDeath`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1756); $`3/4`$ is certified dead at level $`1`$, lookahead $`0`$, by [`three_fourths_certifiedGreedyMersenneDeath`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1778)), whereas the absence of a certificate through depth $`D`$ alone gives no conclusion about later depths. To make the search effective, note that a greedy remainder at a finite rank is rational. The tail $`R_n`$ has rational upper bounds obtained by summing through a cutoff $`M`$ and bounding the remaining sum by $`2^{-M}+(2/3)4^{-M}`$. These upper bounds converge to $`R_n`$. Thus the strict inequality $`r_n(1/2)>R_n`$, when true, is witnessed by some finite cutoff and a comparison of rational numbers. Enumerating ranks and cutoffs gives the asserted finite-certificate search. Membership requires the survival inequality at every rank (Theorem <a href="#thm:greedy-survival" data-reference-type="ref" data-reference="thm:greedy-survival">11</a>). Checking a finite initial segment alone does not supply the later inequalities; a separate uniform argument or induction would be needed. ◻
 
 </div>
 
@@ -914,11 +949,11 @@ The middle inequality is strict when the skip set is nonempty; for an empty skip
 
 <div id="prop:soft" class="rem">
 
-*Remark 23* (Achievement-set geometry does not decide rational-target membership). The achievement set has positive measure and is nowhere dense (Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">7</a>). Neither fact alone decides membership of a specified rational. Injectivity fixes the support of an achievable value, but it does not exclude averaging over indices, shifts, residues, observation scales or auxiliary constructions. The recorded calculations obstruct the particular models and estimates analysed here; no impossibility theorem for all probabilistic, measure-theoretic or averaging methods is claimed.
+*Remark 24* (Achievement-set geometry does not decide rational-target membership). The achievement set has positive measure and is nowhere dense (Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">8</a>). Neither fact alone decides membership of a specified rational. Injectivity fixes the support of an achievable value, but it does not exclude averaging over indices, shifts, residues, observation scales or auxiliary constructions. The recorded calculations obstruct the particular models and estimates analysed here; no impossibility theorem for all probabilistic, measure-theoretic or averaging methods is claimed.
 
 </div>
 
-The geometry itself is Lean-checked in Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">7</a>: $`\mathcal{A}`$ has Lebesgue measure exactly $`1`$ inside an ambient span of $`E \approx 1.6067`$, a relative density of about $`62\%`$, and is simultaneously nowhere dense, perfect and totally disconnected. Those facts may hold together. They do not yield competing theorems about specified rationals. Showing that $`\mathcal{A}`$ is “small” cannot decide (U) by measure: it is $`62\%`$ of its ambient interval.
+The geometry itself is Lean-checked in Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">8</a>: $`\mathcal{A}`$ has Lebesgue measure exactly $`1`$ inside an ambient span of $`E \approx 1.6067`$, a relative density of about $`62\%`$, and is simultaneously nowhere dense, perfect and totally disconnected. Those facts may hold together. They do not yield competing theorems about specified rationals. Showing that $`\mathcal{A}`$ is “small” cannot decide (U) by measure: it is $`62\%`$ of its ambient interval.
 
 <a id="bar:box"></a>
 
@@ -926,11 +961,11 @@ The geometry itself is Lean-checked in Theorem <a href="#thm:geometry" data-ref
 
 <div id="obs:box" class="obs">
 
-*Observation 24* (Two inputs to the CRT certificate argument). The CRT block-certificate arguments considered here require both compatible divisibility prescriptions and a tail estimate strong enough for the height inequality $`q(C+N+L+2)<b^L`$. Pairwise coprimality is one way to obtain the first input; reciprocal summability is one way to obtain the second. This observation concerns those certificate arguments only. It does not describe all theorems in Section <a href="#sec:257-problem" data-reference-type="ref" data-reference="sec:257-problem">1</a>: the reciprocal-summable and weighted averaging proofs do not require pairwise coprimality.
+*Observation 25* (Two inputs to the CRT certificate argument). The CRT block-certificate arguments considered here require both compatible divisibility prescriptions and a tail estimate strong enough for the height inequality $`q(C+N+L+2)<b^L`$. Pairwise coprimality is one way to obtain the first input; reciprocal summability is one way to obtain the second. This observation concerns those certificate arguments only. It does not describe all theorems in Section <a href="#sec:257-problem" data-reference-type="ref" data-reference="sec:257-problem">1</a>: the reciprocal-summable and weighted averaging proofs do not require pairwise coprimality.
 
 </div>
 
-**What remains to check.** One cannot apply a conditional CRT certificate theorem to arbitrary infinite $`A`$ without establishing its hypotheses. Shared factors impose compatibility conditions on the prescribed residues; they do not make every CRT construction impossible. The certificate proof of Theorem <a href="#thm:pairwise-coprime" data-reference-type="ref" data-reference="thm:pairwise-coprime">58</a> uses the tail budget in one step. Deleting that assumption does not complete the proof: one needs a replacement estimate for that step. This leaves open different constructions and different averaging arguments.
+**What remains to check.** One cannot apply a conditional CRT certificate theorem to arbitrary infinite $`A`$ without establishing its hypotheses. Shared factors impose compatibility conditions on the prescribed residues; they do not make every CRT construction impossible. The certificate proof of Theorem <a href="#thm:pairwise-coprime" data-reference-type="ref" data-reference="thm:pairwise-coprime">59</a> uses the tail budget in one step. Deleting that assumption does not complete the proof: one needs a replacement estimate for that step. This leaves open different constructions and different averaging arguments.
 
 **Explains only a method boundary.** The primes are infinite and pairwise coprime, so they satisfy the first input. The identity [`compositeDilationDefect_eq_zero_of_prime_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L103) makes the dilation algebra exact there; yet this certificate theorem does not apply because $`\sum_p1/p`$ diverges, so the stated reciprocal-sum hypothesis fails. This explains the absence of a *Lean theorem from this certificate argument*; it does not make the base-$`2`$ value open, since Tao–Teräväinen settle it by a different analytic method. The sunflower generalisation inherits both axes and therefore does not recover that external theorem.
 
@@ -993,13 +1028,13 @@ A different extension requires squarefree remote-tail control and a weighted dis
 
 1.  *Reset-deviation bound.* For every upper or middle reset row $`r\ge10`$, require $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$. Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> states the exact conditional implication to membership. A run-length estimate is a possible way to approach this bound, not an established exact reformulation of it.
 
-2.  *Band avoidance at resets, already proved to imply membership.* For every upper reset $`d \ge 13`$ (branch $`\mathrm U`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>) and every $`j \le d`$, the reset charge $`4\cdot\text{overshoot} + \text{abovePulse}`$ avoids the linear-width band $`(2^{d-j+1} - 2(d+j),\, 2^{d-j+1}]`$.
+2.  *Band avoidance at resets, already proved to imply membership.* For every upper reset $`d \ge 13`$ (branch $`\mathrm U`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>) and every $`j \le d`$, the reset charge $`4\cdot\text{overshoot} + \text{abovePulse}`$ avoids the linear-width band $`(2^{d-j+1} - 2(d+j),\, 2^{d-j+1}]`$.
 
 3.  *Sign law alone.* At every reset, M-resets have $`\mathrm{dev} > 0`$ and U-resets have $`\mathrm{dev} < 0`$. This specifies the sign but not a quantitative distance from zero. Neither an implication to half-membership nor a strict comparison with the first two conditions is established here.
 
 *Sources.* [`SeamUpperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4566) with conditional implication [`half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790); quantifier collapse [`dyadicBandEscape_iff_exists_critical`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfUpperResetCriticalBand.lean#L108), which reduces the $`\forall j \in [0,d]`$ band check to one nearest-boundary index per row; finite verification [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78); alternative implication [`LargestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L34) with conditional implication [`half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167) and base case [`largestSkipLateAt_fourteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L73).
 
-**Logical strength.** The reset bound is a sufficient condition for half-membership in the cited argument. No converse is established here. The fact that it is quantitative, while membership is qualitative, does not prove that the condition is strictly stronger: that would require a separate implication or counterexample. The carry identity of Proposition <a href="#prop:collapse" data-reference-type="ref" data-reference="prop:collapse">16</a> does not itself furnish this lower bound on the reset deviation.
+**Logical strength.** The reset bound is a sufficient condition for half-membership in the cited argument. No converse is established here. The fact that it is quantitative, while membership is qualitative, does not prove that the condition is strictly stronger: that would require a separate implication or counterexample. The carry identity of Proposition <a href="#prop:collapse" data-reference-type="ref" data-reference="prop:collapse">17</a> does not itself furnish this lower bound on the reset deviation.
 
 **What the finite checks establish.** The reported computation checks the reset inequality over its stated range, with margins of $`1.1119`$ bits at row $`14`$ and about $`1246`$ bits at row $`2500`$; the reported mean is $`627`$ bits. These are finite observations, not a proof of an asymptotic lower bound or of the inequality at every later reset.
 
@@ -1022,20 +1057,20 @@ The missing step is the quantitative lower bound itself. The finite observations
 
 3.  a growth law for $`c`$ as a function of the incoming endpoint $`n`$.
 
-By Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="prop:canon">13</a>(ii), form (a) need only be checked along the *one* canonical orbit, the half-target greedy prefix, not searched over $`D`$; and by the recorded sharp-capacity biconditional it is exactly the $`c-2`$ bit capacity test $`\ensuremath{S}\,D\,1\,(2c-2) < 2^{c-2}`$. The example $`D=\{2,3\}`$, $`c=5`$ shows that the fractional-mass sufficient condition is not necessary. It does not rule out proving that condition for a suitably restricted family.
+By Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="prop:canon">14</a>(ii), form (a) need only be checked along the *one* canonical orbit, the half-target greedy prefix, not searched over $`D`$; and by the recorded sharp-capacity biconditional it is exactly the $`c-2`$ bit capacity test $`\ensuremath{S}\,D\,1\,(2c-2) < 2^{c-2}`$. The example $`D=\{2,3\}`$, $`c=5`$ shows that the fractional-mass sufficient condition is not necessary. It does not rule out proving that condition for a suitably restricted family.
 
 *Sources.* [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26); the formal counterexample [`exists_seeded_bounded_double_or_recycle_model`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L91) (the model $`n \mapsto (n = 6)`$ satisfies the seed and the exact transition shape yet is not cofinal, so the schema plus an endpoint-six seed provably does *not* give cofinality); conditional strict progress [`skippedCoreSharpCapacity_below_or_strictly_laterExactRow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L233); unconditional recycling [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155); hypothesis [`SkippedCoreCriticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L30); capacity equivalence [`localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L22); seed example $`\{2,3,6\}`$ at [`exactLocalMersenneHalfRow_six`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowSeed.lean#L34).
 
-**The finite-row test and its unique candidate.** The real-prefix argument in Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="prop:canon">13</a>(ii) does not by itself identify an exact-row witness. The integer weights have a separate, decisive property: for fixed $`n\ge2`$,
+**The finite-row test and its unique candidate.** The real-prefix argument in Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="prop:canon">14</a>(ii) does not by itself identify an exact-row witness. The integer weights have a separate, decisive property: for fixed $`n\ge2`$,
 ``` math
 q_{n,d}=\left\lfloor\frac{2^n}{2^d-1}\right\rfloor
  \quad(2\le d\le n)
 ```
-form a decreasing sequence in which each weight exceeds the sum of all later weights by at least $`1`$. Apply the integer greedy rule with capacity $`2^{n-1}-1`$: visit $`d=2,\ldots,n`$ and subtract $`q_{n,d}`$ when it fits. By Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> and Propositions <a href="#record:257bm-i11b" data-reference-type="ref" data-reference="record:257bm-i11b">144</a>–<a href="#record:257bm-i11c" data-reference-type="ref" data-reference="record:257bm-i11c">145</a>, any exact-row witness has zero remainder and must be this greedy word. Thus there is at most one witness at a fixed depth, and its existence is tested by checking whether the final greedy remainder is zero. An exhaustive search over $`2^{n-1}`$ subsets is unnecessary.
+form a decreasing sequence in which each weight exceeds the sum of all later weights by at least $`1`$. Apply the integer greedy rule with capacity $`2^{n-1}-1`$: visit $`d=2,\ldots,n`$ and subtract $`q_{n,d}`$ when it fits. By Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">144</a> and Propositions <a href="#record:257bm-i11b" data-reference-type="ref" data-reference="record:257bm-i11b">145</a>–<a href="#record:257bm-i11c" data-reference-type="ref" data-reference="record:257bm-i11c">146</a>, any exact-row witness has zero remainder and must be this greedy word. Thus there is at most one witness at a fixed depth, and its existence is tested by checking whether the final greedy remainder is zero. An exhaustive search over $`2^{n-1}`$ subsets is unnecessary.
 
 This integer greedy word should not be silently identified with the real greedy prefix $`G\cap[2,n]`$: the two rules use different weights. The separation theorem proves uniqueness within the integer problem, not that identification.
 
-**Finite decidability and the cofinal requirement.** The test decides the exact-row predicate at any specified depth. The claim that successful depths are arbitrarily large is still equivalent to half-membership, by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>(c). Neither uniqueness nor finite decidability supplies that cofinal assertion. The double-or-recycle argument must prove genuine progress in the depths, not rely on a purported freedom to choose many witnesses at one depth.
+**Finite decidability and the cofinal requirement.** The test decides the exact-row predicate at any specified depth. The claim that successful depths are arbitrarily large is still equivalent to half-membership, by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a>(c). Neither uniqueness nor finite decidability supplies that cofinal assertion. The double-or-recycle argument must prove genuine progress in the depths, not rely on a purported freedom to choose many witnesses at one depth.
 
 <a id="ssec:route-3"></a>
 
@@ -1054,7 +1089,7 @@ The local pairwise-coprime certificate theorem still does not cover the primes b
 
 #### Equivalent membership conditions
 
-Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a> lists the equivalent conditions: a pointwise upper bound on $`C_G`$, infinitely many skipped ranks, exact quotient sums at unbounded depths, and the two cofinal carry bounds. For the carry conditions, the residual identity and its tail estimates are the relevant inputs: [`integerHalfCarry_eq_scaled_residual_add_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L871), [`binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L78), [`binaryCoeffTail_supportCoeff_le_two_sqrt_add_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L290), and, for the terminal-strip conditions, evaluation of the square root at a perfect square. The one-sided scope limitation in Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a> still applies to general supports.
+Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a> lists the equivalent conditions: a pointwise upper bound on $`C_G`$, infinitely many skipped ranks, exact quotient sums at unbounded depths, and the two cofinal carry bounds. For the carry conditions, the residual identity and its tail estimates are the relevant inputs: [`integerHalfCarry_eq_scaled_residual_add_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L871), [`binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L78), [`binaryCoeffTail_supportCoeff_le_two_sqrt_add_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L290), and, for the terminal-strip conditions, evaluation of the square root at a perfect square. The one-sided scope limitation in Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a> still applies to general supports.
 
 **Purpose of the equivalences.** These results identify the exact logical content of the proposed hypotheses. They do not settle half-membership, nor do they make an equivalent formulation useless: a different expression of the same condition may expose an invariant or a more convenient induction. The formalisation task is separate from the unproved arithmetic assertion on either side.
 
@@ -1101,7 +1136,7 @@ The catalogue in Part III may be entered by topic: the certificate method and u
 
 ###### Finite ranges and unbounded statements.
 
-The directly verified instances stay in finite ranges: rungs $`J \le 22`$, seam rows $`\le 200{,}000`$, ranks $`\le 3000`$, and depth $`\le 13{,}548{,}057`$ in the further computation; the open obligations require arbitrarily large parameters. Theorem <a href="#thm:one-sided" data-reference-type="ref" data-reference="thm:one-sided">22</a> shows that extending a bounded range does not establish such a statement. Likewise, an obstruction proved in one representation, for example the greedy recurrence, the integer quotients or the Diophantine formulation, does not transfer to another representation without a proved map.
+The directly verified instances stay in finite ranges: rungs $`J \le 22`$, seam rows $`\le 200{,}000`$, ranks $`\le 3000`$, and depth $`\le 13{,}548{,}057`$ in the further computation; the open obligations require arbitrarily large parameters. Theorem <a href="#thm:one-sided" data-reference-type="ref" data-reference="thm:one-sided">23</a> shows that extending a bounded range does not establish such a statement. Likewise, an obstruction proved in one representation, for example the greedy recurrence, the integer quotients or the Diophantine formulation, does not transfer to another representation without a proved map.
 
 <a id="iii.-detailed-statement-and-arithmetic-catalogue"></a>
 
@@ -1119,7 +1154,7 @@ In this part, write $`x_n=w_n=(2^n-1)^{-1}`$ for every positive integer $`n`$, a
 
 <div class="defn">
 
-**Definition 25** (Universal Problem \#257). **Is $`x_A = \sum_{n \in A} 1/(2^n-1)`$ irrational for *every* infinite $`A \subseteq \mathbb{N}_{>0}`$?** The quantifier ranges over all infinite sets of positive exponents. It is **OPEN**.
+**Definition 26** (Universal Problem \#257). **Is $`x_A = \sum_{n \in A} 1/(2^n-1)`$ irrational for *every* infinite $`A \subseteq \mathbb{N}_{>0}`$?** The quantifier ranges over all infinite sets of positive exponents. It is **OPEN**.
 
 </div>
 
@@ -1127,14 +1162,14 @@ The support theorems prove irrationality for specified infinite families. The fo
 
 <div id="defn:half-question" class="defn">
 
-**Definition 26** (The distinguished half-value question). Define the *Mersenne achievement set* $`\mathcal{A} := \{\,y \in \mathbb{R} : \exists A \subseteq \mathbb{N},\ 0 \notin A,\ y =
+**Definition 27** (The distinguished half-value question). Define the *Mersenne achievement set* $`\mathcal{A} := \{\,y \in \mathbb{R} : \exists A \subseteq \mathbb{N},\ 0 \notin A,\ y =
 \sum_{n \in A} x_n\,\}`$, the set of reals realizable as a subset sum of the positive-index Mersenne weights $`\{x_n\}_{n \ge 1}`$. **Is $`1/2 \in \mathcal{A}`$?** This is **OPEN**.
 
 </div>
 
 <div id="obs:half-controls-universal" class="obs">
 
-*Observation 27* (Why the half-value question controls universal \#257). Any finite subset sum of $`\{x_n\}`$ has odd reduced denominator, since every $`2^n - 1`$ is odd; hence no finite $`A`$ can sum to $`1/2`$ ([`positiveMersenneSupportValue_coe_finset_ne_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L243)). Consequently, *if* $`1/2 \in \mathcal{A}`$, the witnessing support $`A`$ is necessarily infinite, and $`x_A = 1/2`$ is rational. Such an $`A`$ is then a single infinite set for which the universal-#257 sum is rational – an outright refutation of universal \#257. Conversely, universal \#257 being true forces $`1/2 \notin \mathcal{A}`$ as one instance among uncountably many. The half-value question is therefore one concrete test of the negation, not a restatement of the universal problem. Excluding $`1/2`$ would not exclude every other rational value, even though the support theorems already settle many infinite families. Representing $`1/2`$ would give an infinite-support counterexample to the universal assertion.
+*Observation 28* (Why the half-value question controls universal \#257). Any finite subset sum of $`\{x_n\}`$ has odd reduced denominator, since every $`2^n - 1`$ is odd; hence no finite $`A`$ can sum to $`1/2`$ ([`positiveMersenneSupportValue_coe_finset_ne_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L243)). Consequently, *if* $`1/2 \in \mathcal{A}`$, the witnessing support $`A`$ is necessarily infinite, and $`x_A = 1/2`$ is rational. Such an $`A`$ is then a single infinite set for which the universal-#257 sum is rational – an outright refutation of universal \#257. Conversely, universal \#257 being true forces $`1/2 \notin \mathcal{A}`$ as one instance among uncountably many. The half-value question is therefore one concrete test of the negation, not a restatement of the universal problem. Excluding $`1/2`$ would not exclude every other rational value, even though the support theorems already settle many infinite families. Representing $`1/2`$ would give an infinite-support counterexample to the universal assertion.
 
 </div>
 
@@ -1147,9 +1182,9 @@ The support theorems prove irrationality for specified infinite families. The fo
 ##### Full-support irrationality, for every base
 
 <div id="thm:full-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L8328">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-full-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L8328">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-full-support-comparator">Comparator</a></p>
 
-**Theorem 28** (Full-support irrationality, unconditional, every base $`b \ge 2`$). *For every integer $`b \ge 2`$,
+**Theorem 29** (Full-support irrationality, unconditional, every base $`b \ge 2`$). *For every integer $`b \ge 2`$,
 ``` math
 \sum_{k=0}^{\infty} \frac{1}{b^{k+1}-1} \quad \text{is irrational.}
 ```
@@ -1166,31 +1201,31 @@ This formalizes the positive-integer-base scope of [Erdős’s classical 1948 fu
 Beyond full support ($`A = \{1,2,3,\dots\}`$, i.e. $`m=1`$ below), the following named infinite families are proved irrational for every integer base $`b\ge2`$. The purely periodic, eventually periodic, residue-class and odd supports follow from the periodic theorem of Luca and Tachiya \[lucatachiya2017, Theorem A, p. 139\]; these cases also have Lean proofs (margin):
 
 <div id="thm:purely-periodic-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L11590">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-purely-periodic-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11590">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-purely-periodic-support-comparator">Comparator</a></p>
 
-**Theorem 29** (Purely periodic support). *For integers $`b\ge2`$ and $`m\ge1`$, and every $`m`$-periodic $`A\subseteq\mathbb N`$ (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n`$) containing a positive element, the support series $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`A`$ $`m`$-periodic, $`\exists a > 0,\ a \in A`$.*
+**Theorem 30** (Purely periodic support). *For integers $`b\ge2`$ and $`m\ge1`$, and every $`m`$-periodic $`A\subseteq\mathbb N`$ (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n`$) containing a positive element, the support series $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`A`$ $`m`$-periodic, $`\exists a > 0,\ a \in A`$.*
 
 </div>
 
 <div id="thm:eventually-periodic-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L11604">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-eventually-periodic-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11604">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-eventually-periodic-support-comparator">Comparator</a></p>
 
-**Theorem 30** (Eventually periodic support). *For integers $`b\ge2`$ and $`m\ge1`$, if $`A\subseteq\mathbb N`$ is infinite and its membership is $`m`$-periodic from some threshold $`N_0`$ on (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n \ge N_0`$), then $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational, by transferring irrationality across the finite symmetric difference from the shifted purely periodic set $`A_{\mathrm{pure}} := \{n : n + m N_0 \in
+**Theorem 31** (Eventually periodic support). *For integers $`b\ge2`$ and $`m\ge1`$, if $`A\subseteq\mathbb N`$ is infinite and its membership is $`m`$-periodic from some threshold $`N_0`$ on (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n \ge N_0`$), then $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational, by transferring irrationality across the finite symmetric difference from the shifted purely periodic set $`A_{\mathrm{pure}} := \{n : n + m N_0 \in
 A\}`$. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`N_0 \in \mathbb{N}`$, eventual $`m`$-periodicity from $`N_0`$, $`A`$ infinite.*
 
 </div>
 
 <div id="thm:residue-class-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/ResidueClassSupport.lean#L21">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-residue-class-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ResidueClassSupport.lean#L21">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-residue-class-support-comparator">Comparator</a></p>
 
-**Theorem 31** (Residue-class support). *For integers $`b\ge2`$, $`m\ge1`$ and $`c`$, the series $`\sum_{n\ge1,\ n\equiv c\pmod m}(b^n-1)^{-1}`$ is irrational.*
+**Theorem 32** (Residue-class support). *For integers $`b\ge2`$, $`m\ge1`$ and $`c`$, the series $`\sum_{n\ge1,\ n\equiv c\pmod m}(b^n-1)^{-1}`$ is irrational.*
 
 </div>
 
 <div id="thm:odd-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L11686">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-odd-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11686">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-odd-support-comparator">Comparator</a></p>
 
-**Theorem 32** (Odd support). *For every integer $`b\ge2`$, the series $`\sum_{n\ge1,\ n\text{ odd}}(b^n-1)^{-1}`$ is irrational. This density-$`1/2`$ support is the case treated explicitly by Luca and Tachiya \[lucatachiya2017, Example 2, p. 140\].*
+**Theorem 33** (Odd support). *For every integer $`b\ge2`$, the series $`\sum_{n\ge1,\ n\text{ odd}}(b^n-1)^{-1}`$ is irrational. This density-$`1/2`$ support is the case treated explicitly by Luca and Tachiya \[lucatachiya2017, Example 2, p. 140\].*
 
 </div>
 
@@ -1201,17 +1236,17 @@ A support representing $`1/2`$ cannot be eventually periodic, by these irrationa
 ##### Topology and measure of the achievement set
 
 <div id="thm:topology" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-topology">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-topology-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-topology">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-topology-comparator">Comparator</a></p>
 
-**Theorem 33** (Achievement-set topology and measure). *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">26</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
-*Use:* Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a> below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*
+**Theorem 34** (Achievement-set topology and measure). *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">27</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
+*Use:* Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">35</a> below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*
 
 </div>
 
 <div id="thm:greedy-survival-record" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-greedy-survival-record">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-greedy-survival-record-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-greedy-survival-record">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-greedy-survival-record-comparator">Comparator</a></p>
 
-**Theorem 34** (Membership equals greedy survival at every level). *For a real $`x`$, let $`r_n(x)`$ be its greedy remainder after rank $`n`$, and let $`R_n=\sum_{j>n}w_j`$, as in the initial notation. Then
+**Theorem 35** (Membership equals greedy survival at every level). *For a real $`x`$, let $`r_n(x)`$ be its greedy remainder after rank $`n`$, and let $`R_n=\sum_{j>n}w_j`$, as in the initial notation. Then
 ``` math
 x\in\mathcal A\quad\Longleftrightarrow\quad
  x\ge0\ \text{and}\ r_n(x)\le R_n\text{ for every }n\ge0.
@@ -1224,11 +1259,11 @@ The inequality says that the unselected tail has enough total mass at every rank
 
 #### The greedy rule for one half
 
-Fix the target $`1/2`$ and the weights $`x_n = 1/(2^n-1)`$. Here $`x_1=1`$, so exponent one cannot occur in a representation of $`1/2`$ by positive summands; the half-target discussion starts at exponent two. (The reciprocal formula is undefined only at exponent zero.) The greedy rule is deterministic. Strict tail domination makes it recover the support of any represented target (Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a>):
+Fix the target $`1/2`$ and the weights $`x_n = 1/(2^n-1)`$. Here $`x_1=1`$, so exponent one cannot occur in a representation of $`1/2`$ by positive summands; the half-target discussion starts at exponent two. (The reciprocal formula is undefined only at exponent zero.) The greedy rule is deterministic. Strict tail domination makes it recover the support of any represented target (Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">35</a>):
 
 <div id="defn:greedy-orbit" class="defn">
 
-**Definition 35** (The half-value greedy orbit). Let $`\rho_k=r_{k-1}(1/2)`$ be the residual entering rank $`k`$, so $`\rho_2=1/2`$. In this subsection $`x_k=w_k`$ and $`T_{k+1}=R_k=\sum_{j>k}w_j`$. At rank $`k\ge2`$:
+**Definition 36** (The half-value greedy orbit). Let $`\rho_k=r_{k-1}(1/2)`$ be the residual entering rank $`k`$, so $`\rho_2=1/2`$. In this subsection $`x_k=w_k`$ and $`T_{k+1}=R_k=\sum_{j>k}w_j`$. At rank $`k\ge2`$:
 
 - **Take** iff $`\rho_k \ge x_k`$; if taken, $`\rho_{k+1} := \rho_k - x_k`$.
 
@@ -1244,11 +1279,11 @@ A skip at rank $`k`$ is:
 
 For example, ranks $`2`$ and $`3`$ are selected, leaving $`1/2-1/3-1/7=1/42`$. Ranks $`4`$ and $`5`$ are skipped, while rank $`6`$ is selected and leaves $`1/126`$. These decisions illustrate the rule; they do not establish its infinite survival.
 
-By Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a>, $`1/2 \in \mathcal{A}`$ iff no rank of this orbit is ever fatal. Two boundary degeneracies are excluded unconditionally and independently of any open hypothesis:
+By Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">35</a>, $`1/2 \in \mathcal{A}`$ iff no rank of this orbit is ever fatal. Two boundary degeneracies are excluded unconditionally and independently of any open hypothesis:
 
 <div id="rem:no-ties" class="rem">
 
-*Remark 36* (No-ties: both greedy-orbit boundaries are strict). (a) $`\rho_k \ne x_k`$ at any rank: a finite Mersenne sum has odd reduced denominator (each $`2^n-1`$ is odd), so the residual $`1/2`$ minus a finite prefix cannot equal the odd-denominator number $`x_k`$, sharpening the general denominator-parity fact used in Observation <a href="#obs:half-controls-universal" data-reference-type="ref" data-reference="obs:half-controls-universal">27</a>. (b) $`\rho_k \ne T_{k+1}`$ at any rank: the tail $`T_{k+1} = E - 1 - \sum_{2 \le j \le k} x_j`$, where $`E := \sum_{n\ge1} x_n`$ is the Erdős–Borwein constant, is irrational by Erdős’s own 1948 theorem (the base-$`2`$ case of Theorem <a href="#thm:full-support" data-reference-type="ref" data-reference="thm:full-support">28</a>), while $`\rho_k`$ is always rational; equality is impossible. **Conclusion:** both greedy-orbit boundaries are provably strict at every rank, so the orbit’s decisions stabilize after finitely many strict inequalities at any fixed truncation depth.
+*Remark 37* (No-ties: both greedy-orbit boundaries are strict). (a) $`\rho_k \ne x_k`$ at any rank: a finite Mersenne sum has odd reduced denominator (each $`2^n-1`$ is odd), so the residual $`1/2`$ minus a finite prefix cannot equal the odd-denominator number $`x_k`$, sharpening the general denominator-parity fact used in Observation <a href="#obs:half-controls-universal" data-reference-type="ref" data-reference="obs:half-controls-universal">28</a>. (b) $`\rho_k \ne T_{k+1}`$ at any rank: the tail $`T_{k+1} = E - 1 - \sum_{2 \le j \le k} x_j`$, where $`E := \sum_{n\ge1} x_n`$ is the Erdős–Borwein constant, is irrational by Erdős’s own 1948 theorem (the base-$`2`$ case of Theorem <a href="#thm:full-support" data-reference-type="ref" data-reference="thm:full-support">29</a>), while $`\rho_k`$ is always rational; equality is impossible. **Conclusion:** both greedy-orbit boundaries are provably strict at every rank, so the orbit’s decisions stabilize after finitely many strict inequalities at any fixed truncation depth.
 
 </div>
 
@@ -1256,15 +1291,15 @@ By Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data
 
 #### Integer quotients and their remainder identity
 
-The quotient rows are finite integer approximations to the real greedy rule, not identical finite stages of that rule. Their normalised weights tend to the Mersenne weights and their targets tend to $`1/2`$. Proposition <a href="#prop:one-orbit" data-reference-type="ref" data-reference="prop:one-orbit">191</a> proves agreement at each fixed prefix once the row index is sufficiently large; it does not assert simultaneous agreement at all ranks. Fix a row $`n\ge6`$. The integer quotient weights at row $`n`$ are
+The quotient rows are finite integer approximations to the real greedy rule, not identical finite stages of that rule. Their normalised weights tend to the Mersenne weights and their targets tend to $`1/2`$. Proposition <a href="#prop:one-orbit" data-reference-type="ref" data-reference="prop:one-orbit">192</a> proves agreement at each fixed prefix once the row index is sufficiently large; it does not assert simultaneous agreement at all ranks. Fix a row $`n\ge6`$. The integer quotient weights at row $`n`$ are
 ``` math
 w(n,d) := \left\lfloor \frac{4^n}{2^d-1} \right\rfloor, \qquad d = 2,\dots,n-1,
 ```
-and the integer target is $`T_n := 2^{2n-1} - 2^n`$. The integer greedy process takes ranks $`d = 2,\dots,n-1`$ in ascending order against $`T_n`$ exactly as in Definition <a href="#defn:greedy-orbit" data-reference-type="ref" data-reference="defn:greedy-orbit">35</a>, producing a take set $`D_n \subseteq \{2,\dots,n-1\}`$ and skip set $`\mathrm{Skip}_n := \{2,\dots,n-1\} \mathbin{\backslash} D_n`$. Define the *integer remainder* $`\mathrm{rem}(n) := T_n - \sum_{d \in D_n} w(n,d)`$ and the *scaled remainder deviation* $`\Delta_n := \mathrm{rem}(n) - 2^n`$.
+and the integer target is $`T_n := 2^{2n-1} - 2^n`$. The integer greedy process takes ranks $`d = 2,\dots,n-1`$ in ascending order against $`T_n`$ exactly as in Definition <a href="#defn:greedy-orbit" data-reference-type="ref" data-reference="defn:greedy-orbit">36</a>, producing a take set $`D_n \subseteq \{2,\dots,n-1\}`$ and skip set $`\mathrm{Skip}_n := \{2,\dots,n-1\} \mathbin{\backslash} D_n`$. Define the *integer remainder* $`\mathrm{rem}(n) := T_n - \sum_{d \in D_n} w(n,d)`$ and the *scaled remainder deviation* $`\Delta_n := \mathrm{rem}(n) - 2^n`$.
 
 <div class="defn">
 
-**Definition 37** (The full-support quotient recurrence). For $`M \ge 2`$, define
+**Definition 38** (The full-support quotient recurrence). For $`M \ge 2`$, define
 ``` math
 K(M) := 2^{M-1} - \sum_{d=2}^{M} \left\lfloor \frac{2^M}{2^d-1} \right\rfloor.
 ```
@@ -1277,9 +1312,9 @@ Here $`\tau(n)`$ counts the positive divisors of $`n`$. To see the correction te
 </div>
 
 <div id="thm:master-identity" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowIdentity.lean#L89">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-master-identity-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowIdentity.lean#L89">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-master-identity-comparator">Comparator</a></p>
 
-**Theorem 38** (Decomposition of the integer remainder). *For every quotient row $`n \ge 6`$,
+**Theorem 39** (Decomposition of the integer remainder). *For every quotient row $`n \ge 6`$,
 ``` math
 \begin{equation*}
 \Delta_n \;=\; K(2n) \;+\; \sum_{d \in \mathrm{Skip}_n} \left\lfloor \frac{4^n}{2^d-1} \right\rfloor.
@@ -1302,9 +1337,9 @@ Substitute this in the definition of $`K(2n)`$, split $`\{2,\ldots,n-1\}=D_n\sqc
 #### A real-valued form of the quotient identity
 
 <div id="thm:real-form" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-real-form">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-real-form-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-real-form">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-real-form-comparator">Comparator</a></p>
 
-**Theorem 39** (Real (non-integer) form of the quotient identity). *Let $`x_d := 1/(2^d-1)`$ and define the constant
+**Theorem 40** (Real (non-integer) form of the quotient identity). *Let $`x_d := 1/(2^d-1)`$ and define the constant
 ``` math
 C \;:=\; \sum_{d \ge 2} x_d \;-\; \tfrac12 \;=\; E - \tfrac32 \;=\; 0.1066951524152917\ldots,
 ```
@@ -1334,9 +1369,9 @@ The tail bounds $`2^{-(n-1)}<R_{n-1}\le
 #### Dynamics
 
 <div id="thm:dynamics" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-dynamics">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-dynamics-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-dynamics">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-5.md#thm-dynamics-comparator">Comparator</a></p>
 
-**Theorem 40** (Exact recurrences for the three branches). *Fix $`n\ge5`$. Among the quotient sums over subsets of $`\{2,\ldots,n-1\}`$, let $`D_n`$ give the largest sum at most $`T_n`$ and let $`B_n`$ give the smallest sum strictly greater than $`T_n`$. Thus $`D_n`$ is the greedy support already defined. Put
+**Theorem 41** (Exact recurrences for the three branches). *Fix $`n\ge5`$. Among the quotient sums over subsets of $`\{2,\ldots,n-1\}`$, let $`D_n`$ give the largest sum at most $`T_n`$ and let $`B_n`$ give the smallest sum strictly greater than $`T_n`$. Thus $`D_n`$ is the greedy support already defined. Put
 ``` math
 r=\mathrm{rem}(n),\qquad o=Q(B_n,2n)-T_n,
 ```
@@ -1405,22 +1440,22 @@ The following values and finite ranges come from exact integer computations for 
 
 <div id="obs:anchors-low" class="obs">
 
-*Observation 41* (Exact low-row values). At row $`n=14`$: $`\mathrm{rem}(14) = 392`$, with take set $`D_{14} = \{2,3,6,7\}`$. At row $`n=15`$: $`\mathrm{rem}(15) = 34333`$. At row $`n=32`$: $`\mathrm{rem}(32) = 3865046005`$ and $`\Delta_{32} =
+*Observation 42* (Exact low-row values). At row $`n=14`$: $`\mathrm{rem}(14) = 392`$, with take set $`D_{14} = \{2,3,6,7\}`$. At row $`n=15`$: $`\mathrm{rem}(15) = 34333`$. At row $`n=32`$: $`\mathrm{rem}(32) = 3865046005`$ and $`\Delta_{32} =
 -429921291`$.\
-*Source:* the values at rows $`14`$–$`31`$ are proved in Lean by direct evaluation (Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a>), which uses them to verify the band-escape condition for reset indices $`13\le d\le30`$ [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78). The two ranges differ by one: the remainder used for reset $`d`$ is at row $`d+1`$. The take set $`D_{14}`$, $`\mathrm{rem}(32)`$ and $`\Delta_{32}`$ are exact integer computations with the greedy rule of Section <a href="#ssec:seam-model" data-reference-type="ref" data-reference="ssec:seam-model">5.4</a>.
+*Source:* the values at rows $`14`$–$`31`$ are proved in Lean by direct evaluation (Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">54</a>), which uses them to verify the band-escape condition for reset indices $`13\le d\le30`$ [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78). The two ranges differ by one: the remainder used for reset $`d`$ is at row $`d+1`$. The take set $`D_{14}`$, $`\mathrm{rem}(32)`$ and $`\Delta_{32}`$ are exact integer computations with the greedy rule of Section <a href="#ssec:seam-model" data-reference-type="ref" data-reference="ssec:seam-model">5.4</a>.
 
 </div>
 
 <div id="obs:anchors-depth" class="obs">
 
-*Observation 42* (Depths of the reported computations). The quotient identity (Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">38</a>) is verified at rows $`6 \le n \le 200`$ with zero mismatches ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/quotient-identity-200.json)), and the quotient-greedy orbit itself is certified row by row to row $`2500`$ ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json)) and through the exact branch recursion to row $`200{,}000`$ ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json); branch counts $`\mathrm{R{:}M{:}U} =
+*Observation 43* (Depths of the reported computations). The quotient identity (Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">39</a>) is verified at rows $`6 \le n \le 200`$ with zero mismatches ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/quotient-identity-200.json)), and the quotient-greedy orbit itself is certified row by row to row $`2500`$ ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json)) and through the exact branch recursion to row $`200{,}000`$ ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json); branch counts $`\mathrm{R{:}M{:}U} =
 100197{:}49899{:}49898`$, the target inequality failing at exactly one reset row $`6\le r\le 200{,}000`$, namely $`r=7`$).
 
 </div>
 
 <div id="obs:anchors-coords" class="obs">
 
-*Observation 43* (Four computations side by side). Four related computations are reported, with different targets or integer representations, at the following ranges: truncation rung $`J = 3,\dots,22`$ (all $`20`$ rungs proved to survive, not merely computed); quotient row $`6 \le n \le 2500`$ (Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">38</a> and the branch data underlying Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>); integer margin scan to $`m_c = 5\times10^5`$ (an exploratory scan, which is not certified); sharp tail margin, ranks $`2`$ through $`3000`$ (no fatal skip at any rank; take fraction $`0.4992`$; tightest certified take-margin $`0.0340`$ bits at rank $`7`$, the near-tie $`1/126 \ge 1/127`$).\
+*Observation 44* (Four computations side by side). Four related computations are reported, with different targets or integer representations, at the following ranges: truncation rung $`J = 3,\dots,22`$ (all $`20`$ rungs proved to survive, not merely computed); quotient row $`6 \le n \le 2500`$ (Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">39</a> and the branch data underlying Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>); integer margin scan to $`m_c = 5\times10^5`$ (an exploratory scan, which is not certified); sharp tail margin, ranks $`2`$ through $`3000`$ (no fatal skip at any rank; take fraction $`0.4992`$; tightest certified take-margin $`0.0340`$ bits at rank $`7`$, the near-tie $`1/126 \ge 1/127`$).\
 *Use:* truncated weights define a different greedy problem, and the quotient-row construction uses integer weights rather than the original real weights. These are not automatically four readings of the same decision stream. Their relevance to full-weight membership comes from the approximation, limit, or identification theorems cited for each construction. A certificate at one range does not transfer to another without such a theorem, and these reports do not decide the universal problem.
 
 </div>
@@ -1435,12 +1470,12 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 
 #### Conditional membership tests
 
-The finite tests below use $`g_n=w_n-R_n`$. When written as functions, $`R(n)=R_n`$, $`g(n)=g_n`$, $`r(x,n)=r_n(x)`$ and $`C(A,N)=C_A(N)`$. For a finite set $`D`$, $`V(D)=X_D(2)`$. For $`n\ge2`$, the integer remainder $`s(n)=\mathrm{rem}(n)`$ uses weights $`q(2n,d)`$, $`2\le d<n`$, and target $`T_n=2^{2n-1}-2^n`$; it is not the real remainder $`r_n(1/2)`$. In the branch conditions below, $`D_s,B_s,o_s,p_s^-,p_s^+`$ denote the lower and upper supports, overshoot and correction terms of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>, with the row added as a subscript. The labels $`\mathrm U,\mathrm M,\mathrm R`$ mean precisely its three arithmetic cases. Finally, $`F(k,J)=F_k(J)`$ denotes the expression in Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">56</a>.
+The finite tests below use $`g_n=w_n-R_n`$. When written as functions, $`R(n)=R_n`$, $`g(n)=g_n`$, $`r(x,n)=r_n(x)`$ and $`C(A,N)=C_A(N)`$. For a finite set $`D`$, $`V(D)=X_D(2)`$. For $`n\ge2`$, the integer remainder $`s(n)=\mathrm{rem}(n)`$ uses weights $`q(2n,d)`$, $`2\le d<n`$, and target $`T_n=2^{2n-1}-2^n`$; it is not the real remainder $`r_n(1/2)`$. In the branch conditions below, $`D_s,B_s,o_s,p_s^-,p_s^+`$ denote the lower and upper supports, overshoot and correction terms of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>, with the row added as a subscript. The labels $`\mathrm U,\mathrm M,\mathrm R`$ mean precisely its three arithmetic cases. Finally, $`F(k,J)=F_k(J)`$ denotes the expression in Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">57</a>.
 
 <div id="thm:fatal-absorbing" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-fatal-absorbing-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-fatal-absorbing-comparator">Comparator</a></p>
 
-**Theorem 44** (Infinitely many greedy skips force membership). *Fix $`x\ge0`$. If $`r_n(x)>R_n`$ at some rank $`n`$, every later rank is selected and $`r_{n+k}(x)>R_{n+k}`$ for every $`k\ge0`$. Consequently, infinitely many omitted positive ranks imply $`x\in\mathcal A`$.*
+**Theorem 45** (Infinitely many greedy skips force membership). *Fix $`x\ge0`$. If $`r_n(x)>R_n`$ at some rank $`n`$, every later rank is selected and $`r_{n+k}(x)>R_{n+k}`$ for every $`k\ge0`$. Consequently, infinitely many omitted positive ranks imply $`x\in\mathcal A`$.*
 
 </div>
 
@@ -1451,9 +1486,9 @@ The finite tests below use $`g_n=w_n-R_n`$. When written as functions, $`R(n)=R_
 </div>
 
 <div id="thm:seam-limit" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-seam-limit">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-seam-limit-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-seam-limit">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-seam-limit-comparator">Comparator</a></p>
 
-**Theorem 45** (The quotient remainders converge to the greedy deficit). *Let $`G`$ be the real greedy support for $`1/2`$, and let $`D_s`$ be the integer-greedy support at row $`s`$. Then
+**Theorem 46** (The quotient remainders converge to the greedy deficit). *Let $`G`$ be the real greedy support for $`1/2`$, and let $`D_s`$ be the integer-greedy support at row $`s`$. Then
 ``` math
 X_{D_s}(2)\longrightarrow X_G(2),\qquad
  \frac{\mathrm{rem}(s)}{4^s}\longrightarrow
@@ -1465,7 +1500,7 @@ In particular, the following conditions are equivalent: $`1/2\in\mathcal A`$; th
 
 <div class="proof">
 
-*Proof.* For each fixed $`d`$, the scaled weight $`4^{-s}q(2s,d)`$ tends to $`w_d`$, and the scaled target tends to $`1/2`$. The finite-prefix stability argument of Proposition <a href="#prop:one-orbit" data-reference-type="ref" data-reference="prop:one-orbit">191</a> therefore gives $`D_s\cap\{2,\ldots,K\}=G\cap\{2,\ldots,K\}`$ for all sufficiently large $`s`$, for each fixed $`K`$. At such rows,
+*Proof.* For each fixed $`d`$, the scaled weight $`4^{-s}q(2s,d)`$ tends to $`w_d`$, and the scaled target tends to $`1/2`$. The finite-prefix stability argument of Proposition <a href="#prop:one-orbit" data-reference-type="ref" data-reference="prop:one-orbit">192</a> therefore gives $`D_s\cap\{2,\ldots,K\}=G\cap\{2,\ldots,K\}`$ for all sufficiently large $`s`$, for each fixed $`K`$. At such rows,
 ``` math
 \bigl|X_{D_s}(2)-X_G(2)\bigr|\le R_K.
 ```
@@ -1476,16 +1511,16 @@ For $`s\ge5`$, put $`\Phi_s=\sum_{d\in D_s}\{4^s/(2^d-1)\}`$, so $`0\le\Phi_s<s-
 X_{D_s}(2)=\frac12-2^{-s}
             -\frac{\mathrm{rem}(s)}{4^s}+\frac{\Phi_s}{4^s}.
 ```
-The two error terms tend to zero, proving the asserted limit. The real greedy sums never exceed $`1/2`$, so $`\delta\ge0`$. By strict tail separation, a support representing $`1/2`$ must agree with the greedy rule, as in Theorem <a href="#thm:greedy-survival-catalogue" data-reference-type="ref" data-reference="thm:greedy-survival-catalogue">78</a>. Thus membership is equivalent to $`\delta=0`$, which is also equivalent to a zero limit along any one sequence $`s_j\to\infty`$. ◻
+The two error terms tend to zero, proving the asserted limit. The real greedy sums never exceed $`1/2`$, so $`\delta\ge0`$. By strict tail separation, a support representing $`1/2`$ must agree with the greedy rule, as in Theorem <a href="#thm:greedy-survival-catalogue" data-reference-type="ref" data-reference="thm:greedy-survival-catalogue">79</a>. Thus membership is equivalent to $`\delta=0`$, which is also equivalent to a zero limit along any one sequence $`s_j\to\infty`$. ◻
 
 </div>
 
 Convergence itself is automatic; proving that its limit is zero is exactly the unresolved membership question.
 
 <div id="thm:two-channel-cap" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-two-channel-cap">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-two-channel-cap-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-two-channel-cap">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-two-channel-cap-comparator">Comparator</a></p>
 
-**Theorem 46** (Two-channel and dyadic cap sufficiency). *Suppose that for every $`n\ge0`$ at which the next weight is skipped,
+**Theorem 47** (Two-channel and dyadic cap sufficiency). *Suppose that for every $`n\ge0`$ at which the next weight is skipped,
 ``` math
 w_{n+1}>r_n(1/2)\quad\Longrightarrow\quad
  r_n(1/2)\le 2^{-(n+1)}+\frac13\,4^{-(n+1)}.
@@ -1495,23 +1530,23 @@ Then $`1/2\in\mathcal A`$. The stronger bound $`r_n(1/2)\le2^{-(n+1)}`$ at the s
 </div>
 
 <div id="thm:second-channel" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-second-channel">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-second-channel-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-second-channel">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-second-channel-comparator">Comparator</a></p>
 
-**Theorem 47** (Second-channel phase separation sufficiency). *Define $`P_n=4^n\bigl(2r_n(1/2)-2^{-n}\bigr)`$. If
+**Theorem 48** (Second-channel phase separation sufficiency). *Define $`P_n=4^n\bigl(2r_n(1/2)-2^{-n}\bigr)`$. If
 ``` math
 \frac16+\frac{37}{56}\,2^{-n}\le
  \left|P_n-\frac13\right|\qquad\text{for every }n\ge1,
 ```
 then $`1/2\in\mathcal A`$. These are exact rational inequalities because the target and every finite greedy remainder are rational. The cited finite calculation establishes them for $`1\le n\le6`$; it therefore suffices to prove them for every $`n\ge7`$.*
 
-*Unlike Theorem <a href="#thm:two-channel-cap" data-reference-type="ref" data-reference="thm:two-channel-cap">46</a>, this hypothesis concerns every positive rank, not only skipped ranks. It excludes an explicit interval around $`1/3`$. For example, $`P_n\notin(0,1)`$ implies the displayed inequality when $`n\ge2`$, but no such avoidance theorem for the whole orbit is proved here.*
+*Unlike Theorem <a href="#thm:two-channel-cap" data-reference-type="ref" data-reference="thm:two-channel-cap">47</a>, this hypothesis concerns every positive rank, not only skipped ranks. It excludes an explicit interval around $`1/3`$. For example, $`P_n\notin(0,1)`$ implies the displayed inequality when $`n\ge2`$, but no such avoidance theorem for the whole orbit is proved here.*
 
 </div>
 
 <div id="thm:straddle-closed-set" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-straddle-closed-set">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-straddle-closed-set-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-straddle-closed-set">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-straddle-closed-set-comparator">Comparator</a></p>
 
-**Theorem 48** (Straddle-prefix closed-set criterion). *Suppose that for every $`d\ge0`$ there is a finite support $`D_d\subseteq\{1,\ldots,d\}`$ such that
+**Theorem 49** (Straddle-prefix closed-set criterion). *Suppose that for every $`d\ge0`$ there is a finite support $`D_d\subseteq\{1,\ldots,d\}`$ such that
 ``` math
 X_{D_d}(2)\le t\le X_{D_d}(2)+R_d.
 ```
@@ -1520,9 +1555,9 @@ Then $`t\in\mathcal A`$. The supports need not agree at different depths: compac
 </div>
 
 <div id="thm:largest-skip-late" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-largest-skip-late">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-largest-skip-late-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-largest-skip-late">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-largest-skip-late-comparator">Comparator</a></p>
 
-**Theorem 49** (Keeping the largest skipped rank beyond two thirds). *Let $`D_s\subseteq\{2,\ldots,s-1\}`$ be the support of the integer-greedy row defined in Section <a href="#ssec:seam-model" data-reference-type="ref" data-reference="ssec:seam-model">5.4</a>. Assume the following implication for every $`s\ge14`$ and every largest omitted rank $`d=\max(\{2,\ldots,s-1\}\smallsetminus D_s)`$:
+**Theorem 50** (Keeping the largest skipped rank beyond two thirds). *Let $`D_s\subseteq\{2,\ldots,s-1\}`$ be the support of the integer-greedy row defined in Section <a href="#ssec:seam-model" data-reference-type="ref" data-reference="ssec:seam-model">5.4</a>. Assume the following implication for every $`s\ge14`$ and every largest omitted rank $`d=\max(\{2,\ldots,s-1\}\smallsetminus D_s)`$:
 ``` math
 2s<3d\quad\Longrightarrow\quad
  2(s+1)<3d\quad\text{or}\quad s\notin D_{s+1}.
@@ -1534,9 +1569,9 @@ Then $`1/2\in\mathcal A`$. The hypothesis says that either the same omitted rank
 </div>
 
 <div id="thm:middle-producer-escape" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-producer-escape">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-producer-escape-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-producer-escape">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-producer-escape-comparator">Comparator</a></p>
 
-**Theorem 50** (Two sufficient bounds at middle transitions). *Suppose that at every middle transition with row $`s\ge13`$,
+**Theorem 51** (Two sufficient bounds at middle transitions). *Suppose that at every middle transition with row $`s\ge13`$,
 ``` math
 |D_s|+p_s^-+5<4\,\mathrm{rem}(s).
 ```
@@ -1547,21 +1582,21 @@ Then $`1/2\in\mathcal A`$. The stronger condition $`\mathrm{rem}(s)\ge s`$ at al
 Indeed, $`|D_s|\le s-2`$ and $`p_s^-\le2(s-2)`$ give $`|D_s|+p_s^-+5\le3s-1<4s`$. This explains the implication between the two hypotheses. The implication from the first bound to membership is proved in Lean; no ordinary proof is printed here. Neither all-row hypothesis is established by the finite computations.
 
 <div id="thm:middle-allright-defect" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-allright-defect">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-allright-defect-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-allright-defect">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-middle-allright-defect-comparator">Comparator</a></p>
 
-**Theorem 51** (The tail inequality at a final middle transition). *Suppose row $`D\ge13`$ is middle and all rows after it are right. Let $`F_D=D_D\cup\{D\}`$ and put
+**Theorem 52** (The tail inequality at a final middle transition). *Suppose row $`D\ge13`$ is middle and all rows after it are right. Let $`F_D=D_D\cup\{D\}`$ and put
 ``` math
 C_D=4\,\mathrm{rem}(D)-p_D^--4,\qquad
  \Theta_D=\sum_{j\ge1}c_{F_D}(2D+2+j)2^{-j}.
 ```
-Then $`C_D<\Theta_D`$. Since $`0\le\Theta_D\le|F_D|`$, an estimate in the opposite direction would exclude this scenario. No such reverse estimate is assumed or proved here. Remark <a href="#rem:tail-dominance-open" data-reference-type="ref" data-reference="rem:tail-dominance-open">260</a> states the corresponding sufficient hypothesis with the value $`-3`$ excepted.*
+Then $`C_D<\Theta_D`$. Since $`0\le\Theta_D\le|F_D|`$, an estimate in the opposite direction would exclude this scenario. No such reverse estimate is assumed or proved here. Remark <a href="#rem:tail-dominance-open" data-reference-type="ref" data-reference="rem:tail-dominance-open">261</a> states the corresponding sufficient hypothesis with the value $`-3`$ excepted.*
 
 </div>
 
 <div id="thm:two-sided-dyadic" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-two-sided-dyadic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-two-sided-dyadic-comparator">Comparator</a></p>
 
-**Theorem 52** (A conditional two-sided dyadic bound). *Assume the following two conditions for every row $`s\ge5`$:
+**Theorem 53** (A conditional two-sided dyadic bound). *Assume the following two conditions for every row $`s\ge5`$:
 ``` math
 \begin{aligned}
  \mathrm M\text{ at }s&\quad\Longrightarrow\quad
@@ -1580,7 +1615,7 @@ The first hypothesis concerns only middle transitions. The second concerns only 
 
 <div class="proof">
 
-*Proof.* At row $`5`$, $`D_5=\{2,4\}`$ and $`\mathrm{rem}(5)=71`$, whereas $`B_5=\{2,3\}`$ and $`o_5=7\le32`$. For the induction step use Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>. The upper branch gives $`\mathrm{rem}(s+1)\le2^{s+1}`$. On a middle branch put $`c=4\,\mathrm{rem}(s)-p_s^--4`$. If $`c\le-4`$, the new remainder is $`2^{s+1}+c+4\le2^{s+1}`$. Otherwise the hypothesis forces $`c\ge0`$. Adding the terminal weight to the corrected lower word then exceeds the target by $`2^{s+1}-c>0`$, so the new minimal overshoot is at most $`2^{s+1}`$.
+*Proof.* At row $`5`$, $`D_5=\{2,4\}`$ and $`\mathrm{rem}(5)=71`$, whereas $`B_5=\{2,3\}`$ and $`o_5=7\le32`$. For the induction step use Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>. The upper branch gives $`\mathrm{rem}(s+1)\le2^{s+1}`$. On a middle branch put $`c=4\,\mathrm{rem}(s)-p_s^--4`$. If $`c\le-4`$, the new remainder is $`2^{s+1}+c+4\le2^{s+1}`$. Otherwise the hypothesis forces $`c\ge0`$. Adding the terminal weight to the corrected lower word then exceeds the target by $`2^{s+1}-c>0`$, so the new minimal overshoot is at most $`2^{s+1}`$.
 
 On a right branch, an old remainder at most $`2^s`$ gives a new remainder at most $`2^{s+1}`$ by the recurrence. In the other case the inductive hypothesis gives $`o_s\le2^s`$; the corrected upper word exceeds the new target by $`4o_s+p_s^+-2^{s+1}`$, which is positive and at most $`2^{s+1}`$ by the second assumption. ◻
 
@@ -1589,17 +1624,17 @@ On a right branch, an old remainder at most $`2^s`$ gives a new remainder at mos
 This conclusion is a disjunction. It does not by itself give an upper bound for the remainder on rows where only the overshoot is small, and therefore is not by itself a membership criterion.
 
 <div id="thm:upper-reset-band" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-upper-reset-band">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-upper-reset-band-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-upper-reset-band">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-upper-reset-band-comparator">Comparator</a></p>
 
-**Theorem 53** (Upper-reset dyadic-band escape, checked for $`13\le d\le30`$). *The upper-reset dyadic-band escape condition requires the following at every actual upper reset $`d\ge13`$: for every $`0\le j\le d`$, the reset charge avoids a linear-width band immediately below the dyadic power $`2^{d-j+1}`$ ($`2^{d-j+1}<\mathrm{resetCharge}`$ or $`\mathrm{resetCharge}+2(d+j)\le 2^{d-j+1}`$). Granted this, $`1/2\in
+**Theorem 54** (Upper-reset dyadic-band escape, checked for $`13\le d\le30`$). *The upper-reset dyadic-band escape condition requires the following at every actual upper reset $`d\ge13`$: for every $`0\le j\le d`$, the reset charge avoids a linear-width band immediately below the dyadic power $`2^{d-j+1}`$ ($`2^{d-j+1}<\mathrm{resetCharge}`$ or $`\mathrm{resetCharge}+2(d+j)\le 2^{d-j+1}`$). Granted this, $`1/2\in
 \ensuremath{\mathcal A}`$. The linked proof verifies this condition for $`13\le d\le30`$, using exact successor remainders at rows $`14`$–$`31`$ (for example, $`\mathrm{rem}(14)=392`$ and $`\mathrm{rem}(31)=4187487147`$). This finite verification does not supply the hypothesis for every $`d\ge13`$.*
 
 </div>
 
 <div id="thm:mobius-centred-nonneg" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mobius-centred-nonneg">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mobius-centred-nonneg-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mobius-centred-nonneg">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mobius-centred-nonneg-comparator">Comparator</a></p>
 
-**Theorem 54** (Möbius-centred carry nonnegativity below $`1/2`$). *If $`1\notin A`$ and $`X_A(2)<1/2`$, then $`C_A(N)\ge0`$ for every $`N`$. Indeed,
+**Theorem 55** (Möbius-centred carry nonnegativity below $`1/2`$). *If $`1\notin A`$ and $`X_A(2)<1/2`$, then $`C_A(N)\ge0`$ for every $`N`$. Indeed,
 ``` math
 \operatorname{ihc}(A,N)=2^{N+1}(1/2-X_A(2))+
  \sum_{j>N+1}c_A(j)2^{N+1-j}>0.
@@ -1609,20 +1644,20 @@ The carry is an integer, so it is at least $`1`$; subtracting $`1`$ gives the as
 </div>
 
 <div id="thm:sqrt-bound-route" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-sqrt-bound-route">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-sqrt-bound-route-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-sqrt-bound-route">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-sqrt-bound-route-comparator">Comparator</a></p>
 
-**Theorem 55** (A square-root bound on the greedy carry). *For the greedy support $`G=G_{1/2}`$, the centred carry is nonnegative. If in addition
+**Theorem 56** (A square-root bound on the greedy carry). *For the greedy support $`G=G_{1/2}`$, the centred carry is nonnegative. If in addition
 ``` math
 C_G(N)\le2\sqrt N+4\qquad\text{for every }N\ge0,
 ```
-then $`G`$ has infinitely many skipped indices and $`X_G(2)=1/2`$. The unresolved part is the upper bound along this particular orbit. The carry identity explains its strength: a positive gap $`1/2-X_G(2)`$ would contribute a term of order $`2^N`$, which cannot satisfy a square-root bound. This is distinct from the reset-deviation hypothesis of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a>; no equivalence between the two hypotheses is asserted.*
+then $`G`$ has infinitely many skipped indices and $`X_G(2)=1/2`$. The unresolved part is the upper bound along this particular orbit. The carry identity explains its strength: a positive gap $`1/2-X_G(2)`$ would contribute a term of order $`2^N`$, which cannot satisfy a square-root bound. This is distinct from the reset-deviation hypothesis of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">54</a>; no equivalence between the two hypotheses is asserted.*
 
 </div>
 
 <div id="thm:frozen-margin" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-frozen-margin">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-frozen-margin-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-frozen-margin">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-frozen-margin-comparator">Comparator</a></p>
 
-**Theorem 56** (Equivalent sign and vanishing conditions). *For the prefix $`D=G\cap\{1,\ldots,k\}`$ define
+**Theorem 57** (Equivalent sign and vanishing conditions). *For the prefix $`D=G\cap\{1,\ldots,k\}`$ define
 ``` math
 F_k(J)=\sum_{i=1}^{J}c_D(k+1+i)2^{J-i}-2^J C_D(k).
 ```
@@ -1639,23 +1674,23 @@ This is a finite integer expression: it compares the next $`J`$ divisor counts o
 </div>
 
 <div id="thm:full-support-catalogue" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L8328">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-full-support-catalogue-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L8328">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-full-support-catalogue-comparator">Comparator</a></p>
 
-**Theorem 57** (Erdős–Borwein full-support irrationality, unconditional). *For every integer $`b\ge2`$, the sum $`\sum_{n\ge1}(b^n-1)^{-1}`$ is irrational. This is Erdős’s theorem \[erdos1948\]; at base $`2`$ the sum is the Erdős–Borwein constant. The result concerns full support, not all its infinite subsets.*
+**Theorem 58** (Erdős–Borwein full-support irrationality, unconditional). *For every integer $`b\ge2`$, the sum $`\sum_{n\ge1}(b^n-1)^{-1}`$ is irrational. This is Erdős’s theorem \[erdos1948\]; at base $`2`$ the sum is the Erdős–Borwein constant. The result concerns full support, not all its infinite subsets.*
 
 </div>
 
 <div id="thm:pairwise-coprime" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L10776">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-pairwise-coprime-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L10776">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-pairwise-coprime-comparator">Comparator</a></p>
 
-**Theorem 58** (Pairwise-coprime support irrationality, Erdős 1968). *For every integer $`b\ge2`$ and every infinite pairwise-coprime support $`A\subseteq\mathbb{N}_{>0}`$ with summable reciprocals, $`\sum_{a\in A} 1/(b^a-1)`$ is irrational.*
+**Theorem 59** (Pairwise-coprime support irrationality, Erdős 1968). *For every integer $`b\ge2`$ and every infinite pairwise-coprime support $`A\subseteq\mathbb{N}_{>0}`$ with summable reciprocals, $`\sum_{a\in A} 1/(b^a-1)`$ is irrational.*
 
 </div>
 
 <div id="thm:weighted-coeff-engine" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L8665">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-weighted-coeff-engine-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L8665">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-weighted-coeff-engine-comparator">Comparator</a></p>
 
-**Theorem 59** (Irrationality from divisible coefficient blocks). *Let $`b\ge2`$ be an integer and let $`c:\mathbb N\to\mathbb N`$ satisfy $`c(n)\le n`$ for every $`n`$. Suppose that for every integer $`q\ge1`$ there are nonnegative integers $`N,K,L,C`$, with $`K\le L`$, such that
+**Theorem 60** (Irrationality from divisible coefficient blocks). *Let $`b\ge2`$ be an integer and let $`c:\mathbb N\to\mathbb N`$ satisfy $`c(n)\le n`$ for every $`n`$. Suppose that for every integer $`q\ge1`$ there are nonnegative integers $`N,K,L,C`$, with $`K\le L`$, such that
 ``` math
 \begin{aligned}
  b^r&\mid c(N+r) &&(1\le r\le K),\\
@@ -1688,17 +1723,17 @@ If $`x=p/q`$ were rational, the positive difference $`b^Nx-z`$ could not be smal
 A certificate at one precision is not enough: the same coefficient sequence must satisfy these conditions for every $`q`$. The positive-tail condition is essential; without it the zero sequence would satisfy the other conditions at every precision. The full-support theorem supplies such certificates for $`c=\tau`$. Their existence for $`c=\varphi`$ is not proved here. This is a limitation of this particular sufficient criterion, not a comparison of every approach to Problem 249.
 
 <div id="thm:lcm-gap-engine" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L5883">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-lcm-gap-engine-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L5883">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-lcm-gap-engine-comparator">Comparator</a></p>
 
-**Theorem 60** (Irrationality from a gap beyond the preceding least common multiple). *For an integer base $`b\ge2`$ and strictly increasing support $`a:\mathbb N\to\mathbb N`$ with $`a(0)\ge
+**Theorem 61** (Irrationality from a gap beyond the preceding least common multiple). *For an integer base $`b\ge2`$ and strictly increasing support $`a:\mathbb N\to\mathbb N`$ with $`a(0)\ge
 1`$: if $`a(k)-\mathrm{lcm}(a(0),\dots,a(k-1))\to\infty`$, then $`\sum'_k 1/(b^{a(k)}-1)`$ is irrational. The base may vary over the integers, but the denominators remain $`b^{a(k)}-1`$. Applying the argument to another denominator sequence would require its own divisibility and tail estimates.*
 
 </div>
 
 <div id="thm:factorial-twopow-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-factorial-twopow-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-factorial-twopow-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-factorial-twopow-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-factorial-twopow-support-comparator">Comparator</a></p>
 
-**Theorem 61** (Factorial-support and $`2^k`$-support instances). *For every integer $`b\ge2`$, both
+**Theorem 62** (Factorial-support and $`2^k`$-support instances). *For every integer $`b\ge2`$, both
 ``` math
 \sum_{k\ge0}\frac1{b^{(k+1)!}-1}
  \quad\text{and}\quad
@@ -1709,38 +1744,38 @@ are irrational. These are instances of the preceding theorem. For the factorial 
 </div>
 
 <div id="thm:multiples-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-multiples-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-multiples-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-multiples-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-multiples-support-comparator">Comparator</a></p>
 
-**Theorem 62** (Multiples-support irrationality via dilation). *For integers $`b\ge2`$ and $`d\ge1`$,
+**Theorem 63** (Multiples-support irrationality via dilation). *For integers $`b\ge2`$ and $`d\ge1`$,
 ``` math
 X_{d\mathbb{N}_{>0}}(b)=\sum_{k\ge1}\frac1{(b^d)^k-1}
 ```
-is irrational. This is the full-support result (Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>) at the integer base $`b^d`$; no new support argument is required.*
+is irrational. This is the full-support result (Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">58</a>) at the integer base $`b^d`$; no new support argument is required.*
 
 </div>
 
 Luca and Tachiya proved irrationality for every purely periodic integer weight that is not identically zero \[lucatachiya2017, Theorem A, p. 139\]. The periodic, eventually periodic, residue-class and odd-support statements below follow from their theorem; their Lean proofs are separate and use the certificate method described here.
 
 <div id="thm:periodic-support" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean#L49">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean#L49">Lean</a></p>
 
-**Theorem 63** (Periodic-support irrationality). *Let $`b\ge2`$ and $`m\ge1`$ be integers. Suppose $`A\subseteq\mathbb{N}_{>0}`$ is nonempty and satisfies $`n\in A`$ if and only if $`n+m\in A`$ for every $`n\ge1`$. Then $`X_A(b)`$ is irrational.*
+**Theorem 64** (Periodic-support irrationality). *Let $`b\ge2`$ and $`m\ge1`$ be integers. Suppose $`A\subseteq\mathbb{N}_{>0}`$ is nonempty and satisfies $`n\in A`$ if and only if $`n+m\in A`$ for every $`n\ge1`$. Then $`X_A(b)`$ is irrational.*
 
 *The indicator of $`A`$ is a nonzero purely periodic integer weight, so this follows from Luca and Tachiya’s theorem stated above. The linked declaration supplies a separate formal proof. At $`m=1`$ the only nonempty periodic support is full support; residue classes and unions of residue classes give the other immediate examples.*
 
 </div>
 
 <div id="thm:eventually-periodic" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/CertificateKernel.lean#L11604">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-eventually-periodic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11604">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-eventually-periodic-comparator">Comparator</a></p>
 
-**Theorem 64** (Eventually-periodic support irrationality). *Let $`b\ge2`$ and $`m\ge1`$ be integers. An infinite support whose membership is $`m`$-periodic from some threshold $`N_0`$ onward has irrational $`X_A(b)`$.*
+**Theorem 65** (Eventually-periodic support irrationality). *Let $`b\ge2`$ and $`m\ge1`$ be integers. An infinite support whose membership is $`m`$-periodic from some threshold $`N_0`$ onward has irrational $`X_A(b)`$.*
 
 </div>
 
 <div id="thm:residue-odd" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-residue-odd">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-residue-odd-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-residue-odd">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-residue-odd-comparator">Comparator</a></p>
 
-**Theorem 65** (Residue-class and odd-support irrationality). *For integers $`b\ge2`$, $`m\ge1`$ and a residue $`c`$, $`\sum_{\substack{n\ge1\\n\equiv c\pmod m}}(b^n-1)^{-1}`$ is irrational. Specializing $`m=2,c=1`$: $`\sum_{n\text{ odd}} 1/(b^n-1)`$ is irrational for every $`b\ge 2`$, the case treated explicitly in \[lucatachiya2017, Example 2, p. 140\].*
+**Theorem 66** (Residue-class and odd-support irrationality). *For integers $`b\ge2`$, $`m\ge1`$ and a residue $`c`$, $`\sum_{\substack{n\ge1\\n\equiv c\pmod m}}(b^n-1)^{-1}`$ is irrational. Specializing $`m=2,c=1`$: $`\sum_{n\text{ odd}} 1/(b^n-1)`$ is irrational for every $`b\ge 2`$, the case treated explicitly in \[lucatachiya2017, Example 2, p. 140\].*
 
 </div>
 
@@ -1751,9 +1786,9 @@ Luca and Tachiya proved irrationality for every purely periodic integer weight t
 Luca and Tachiya proved irrationality for every nonzero purely periodic integer weight, of any signs \[lucatachiya2017, Theorem A, p. 139\], so the terminating branch below occurs only for the zero weight. The theorem records the dichotomy reached by the certificate method, together with its one-sided closures.
 
 <div id="thm:signed-periodic" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-signed-periodic">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-signed-periodic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-signed-periodic">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-signed-periodic-comparator">Comparator</a></p>
 
-**Theorem 66** (A formal dichotomy for signed periodic weights). *Let $`b\ge2`$ and $`m\ge1`$ be integers, and let $`w:\mathbb{N}_{>0}\to\mathbb{Z}`$ be $`m`$-periodic. Put
+**Theorem 67** (A formal dichotomy for signed periodic weights). *Let $`b\ge2`$ and $`m\ge1`$ be integers, and let $`w:\mathbb{N}_{>0}\to\mathbb{Z}`$ be $`m`$-periodic. Put
 ``` math
 x=\sum_{a\ge1}\frac{w(a)}{b^a-1},\qquad
  c_w(n)=\sum_{d\mid n}w(d).
@@ -1771,20 +1806,20 @@ A_r=\sum_{d\mid r}\mu(d)\frac rd\frac{M_r}{M_d}\in\mathbb{Z},
 Every quotient in $`A_r`$ is integral because $`d\mid r`$. The Lean source calls $`A_r`$ the Möbius numerator; $`B(r)`$ is a finite rational sum, not the full-support Lambert series.
 
 <div id="thm:mersenne-channel-survival" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-survival">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-survival-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-survival">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-survival-comparator">Comparator</a></p>
 
-**Theorem 67** (Denominators of finite Mersenne sums). *Let $`t\ge1`$ and $`h\ge1`$ be integers, and let $`r\ge1`$ be squarefree with every prime factor at most $`t`$. Let $`P`$ be a set of prime divisors of $`r`$ such that $`t<2p`$ for each $`p\in P`$, and put $`C=\prod_{p\in P}(2^p-1)`$. Then
+**Theorem 68** (Denominators of finite Mersenne sums). *Let $`t\ge1`$ and $`h\ge1`$ be integers, and let $`r\ge1`$ be squarefree with every prime factor at most $`t`$. Let $`P`$ be a set of prime divisors of $`r`$ such that $`t<2p`$ for each $`p\in P`$, and put $`C=\prod_{p\in P}(2^p-1)`$. Then
 ``` math
 \frac{C}{\gcd(C,h)}\ \bigm|\ \operatorname{den}\bigl(hB(r)\bigr).
 ```
-In particular, $`C`$ divides this reduced denominator when $`\gcd(C,h)=1`$. The factors in $`C`$ are pairwise coprime, since $`\gcd(2^p-1,2^q-1)=2^{\gcd(p,q)}-1=1`$ for distinct primes. The assertion concerns this finite signed sum; it does not replace the approximation hypotheses in Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>.*
+In particular, $`C`$ divides this reduced denominator when $`\gcd(C,h)=1`$. The factors in $`C`$ are pairwise coprime, since $`\gcd(2^p-1,2^q-1)=2^{\gcd(p,q)}-1=1`$ for distinct primes. The assertion concerns this finite signed sum; it does not replace the approximation hypotheses in Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">58</a>.*
 
 </div>
 
 <div id="thm:mersenne-channel-growth" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-growth">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-growth-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-growth">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mersenne-channel-growth-comparator">Comparator</a></p>
 
-**Theorem 68** (Exponential growth of the reduced denominators). *For an integer $`t\ge5`$, put
+**Theorem 69** (Exponential growth of the reduced denominators). *For an integer $`t\ge5`$, put
 ``` math
 H_t=\operatorname{lcm}(1,\ldots,t),\quad
  r_t=\prod_{p\le t}p,\quad h_t=H_t/r_t,\quad
@@ -1799,7 +1834,7 @@ D_t=\frac{2^{r_t}-1}{\gcd(2^{r_t}-1,h_tA_{r_t})}.
 
 <div class="proof">
 
-*Proof.* Apply Bertrand’s postulate \[erdos1932bertrand, §§4–5, pp. 197–198\] to $`m=\lceil t/2\rceil\ge3`$. There is a prime $`m<p<2m`$, hence $`p\le t`$ and $`p-1\ge t/2`$. Every prime divisor $`\ell`$ of $`2^p-1`$ has multiplicative order $`p`$ for $`2`$ modulo $`\ell`$. Since $`p`$ is odd, $`2p\mid\ell-1`$; thus $`\ell>t`$. All prime factors of $`h_t`$ are at most $`t`$, so Theorem <a href="#thm:mersenne-channel-survival" data-reference-type="ref" data-reference="thm:mersenne-channel-survival">67</a> gives
+*Proof.* Apply Bertrand’s postulate \[erdos1932bertrand, §§4–5, pp. 197–198\] to $`m=\lceil t/2\rceil\ge3`$. There is a prime $`m<p<2m`$, hence $`p\le t`$ and $`p-1\ge t/2`$. Every prime divisor $`\ell`$ of $`2^p-1`$ has multiplicative order $`p`$ for $`2`$ modulo $`\ell`$. Since $`p`$ is odd, $`2p\mid\ell-1`$; thus $`\ell>t`$. All prime factors of $`h_t`$ are at most $`t`$, so Theorem <a href="#thm:mersenne-channel-survival" data-reference-type="ref" data-reference="thm:mersenne-channel-survival">68</a> gives
 ``` math
 2^{t/2}\le2^{p-1}<2^p-1\le D_t.
 ```
@@ -1815,7 +1850,7 @@ The Lean proof of the bound uses natural-number division $`t/2`$, that is, $`\lf
 
 <div id="obs:half-regression" class="obs">
 
-*Observation 69* (A finite half-value approximation and the first correction tail). The finite prefix has value
+*Observation 70* (A finite half-value approximation and the first correction tail). The finite prefix has value
 ``` math
 \frac12-X_{\{2,3,6,7\}}(2)=\frac1{16002}.
 ```
@@ -1833,7 +1868,7 @@ Indeed, expand each summand as $`4^{-n}+\sum_{j\ge3}2^{-jn}`$; for $`n\ge2`$, th
 
 <div id="obs:period-four-obstruction" class="obs">
 
-*Observation 70* (Period-4 sign weight vanishes on a residue class). Let $`w(n)`$ have successive values $`1,0,-1,0`$, repeated with period $`4`$. For every $`n\equiv3\pmod4`$,
+*Observation 71* (Period-4 sign weight vanishes on a residue class). Let $`w(n)`$ have successive values $`1,0,-1,0`$, repeated with period $`4`$. For every $`n\equiv3\pmod4`$,
 ``` math
 c_w(n)=\sum_{d\mid n}w(d)=0.
 ```
@@ -1844,9 +1879,9 @@ Indeed, $`n`$ is odd, and paired divisors $`d,n/d`$ have opposite values of $`w`
 </div>
 
 <div id="thm:mobius-lambert-identity" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/MersenneLambertLadder.lean#L587">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mobius-lambert-identity-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MersenneLambertLadder.lean#L587">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-mobius-lambert-identity-comparator">Comparator</a></p>
 
-**Theorem 71** (The Lambert-series identity for the Möbius function). *The absolutely convergent signed series satisfies
+**Theorem 72** (The Lambert-series identity for the Möbius function). *The absolutely convergent signed series satisfies
 ``` math
 \sum_{d\ge1}\frac{\mu(d)}{2^d-1}=\frac12.
 ```
@@ -1855,9 +1890,9 @@ This classical identity is also recorded in \[duverneytachiya, Example 1.1, p.�
 </div>
 
 <div id="cor:negative-mobius-overshoot" class="cor">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#cor-negative-mobius-overshoot">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#cor-negative-mobius-overshoot-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#cor-negative-mobius-overshoot">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#cor-negative-mobius-overshoot-comparator">Comparator</a></p>
 
-**Corollary 72** (Negative-Möbius Boolean support overshoots $`1/2`$). *Let $`N=\{d\ge2:\mu(d)=-1\}`$. Isolating the $`d=1`$ term in Theorem <a href="#thm:mobius-lambert-identity" data-reference-type="ref" data-reference="thm:mobius-lambert-identity">71</a> gives
+**Corollary 73** (Negative-Möbius Boolean support overshoots $`1/2`$). *Let $`N=\{d\ge2:\mu(d)=-1\}`$. Isolating the $`d=1`$ term in Theorem <a href="#thm:mobius-lambert-identity" data-reference-type="ref" data-reference="thm:mobius-lambert-identity">72</a> gives
 ``` math
 X_N(2)=\frac12+
        \sum_{\substack{d\ge2\\\mu(d)=1}}\frac1{2^d-1}
@@ -1869,7 +1904,7 @@ since $`\mu(6)=1`$. This rules out the particular candidate $`N`$. It does not r
 
 <div id="obs:skip-block-non-invariant" class="obs">
 
-*Observation 73* (Dyadic safety need not survive a take). For a residual $`p/(2D)`$, taking rank $`b`$ subtracts $`w_b`$ and gives
+*Observation 74* (Dyadic safety need not survive a take). For a residual $`p/(2D)`$, taking rank $`b`$ subtracts $`w_b`$ and gives
 ``` math
 \frac{p}{2D}-\frac1{2^b-1}
  =\frac{p(2^b-1)-2D}{2D(2^b-1)}.
@@ -1888,9 +1923,9 @@ The initial residual is at most $`2^{-7}`$. After this rank-$`8`$ take, ranks $`
 </div>
 
 <div id="thm:half-skip-dichotomy" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-half-skip-dichotomy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-half-skip-dichotomy-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-half-skip-dichotomy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-half-skip-dichotomy-comparator">Comparator</a></p>
 
-**Theorem 74** (The half-skip dichotomy via Erdős–Borwein irrationality). *The half target satisfies
+**Theorem 75** (The half-skip dichotomy via Erdős–Borwein irrationality). *The half target satisfies
 ``` math
 \frac12\in\mathcal A\quad\Longleftrightarrow\quad
  \mathbb N_{>0}\smallsetminus G\text{ is infinite},
@@ -1900,9 +1935,9 @@ where $`G`$ is the greedy support for $`1/2`$. In the forward direction, finitel
 </div>
 
 <div id="thm:nine-way-hub" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-nine-way-hub">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-nine-way-hub-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-nine-way-hub">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#thm-nine-way-hub-comparator">Comparator</a></p>
 
-**Theorem 75** (Equivalent descriptions of half-membership). *Each of the following is equivalent to $`1/2\in\mathcal A`$:*
+**Theorem 76** (Equivalent descriptions of half-membership). *Each of the following is equivalent to $`1/2\in\mathcal A`$:*
 
 1.  *The integer-greedy sequence is not eventually always on branch $`\mathrm R`$.*
 
@@ -1923,16 +1958,16 @@ where $`G`$ is the greedy support for $`1/2`$. In the forward direction, finitel
 Items (1)–(4) differ only by the branch classification and the choice of a sequence of rows. Item (5) requires the omitted ranks themselves to tend to infinity, not merely their containing rows. The cited identification with the real greedy support supplies (6)–(7). These equivalences do not prove that any of the conditions holds.
 
 <div id="lem:eventually-right-impossible" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-eventually-right-impossible">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-eventually-right-impossible-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-eventually-right-impossible">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-eventually-right-impossible-comparator">Comparator</a></p>
 
-**Lemma 76** (The values on either side of an eventual right continuation). *If the seam eventually always extends “true” (right branch) from some row $`S`$ on with a fixed lower prefix $`u`$, the resulting cofinite-support value stays strictly below $`1/2`$; the matching alternative “upper competitor” word gives a strict excess *above* $`1/2`$. Neither of these two cofinite continuations represents $`1/2`$. This does not rule out an eventually-right integer orbit; it describes the two values in that case. The inequalities are used in Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">87</a>.*
+**Lemma 77** (The values on either side of an eventual right continuation). *If the seam eventually always extends “true” (right branch) from some row $`S`$ on with a fixed lower prefix $`u`$, the resulting cofinite-support value stays strictly below $`1/2`$; the matching alternative “upper competitor” word gives a strict excess *above* $`1/2`$. Neither of these two cofinite continuations represents $`1/2`$. This does not rule out an eventually-right integer orbit; it describes the two values in that case. The inequalities are used in Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">88</a>.*
 
 </div>
 
 <div id="lem:mersenne-tail-weight" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-mersenne-tail-weight">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-mersenne-tail-weight-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-mersenne-tail-weight">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-1.md#lem-mersenne-tail-weight-comparator">Comparator</a></p>
 
-**Lemma 77** (Each Mersenne weight exceeds its remaining tail). *For $`n\ge1`$, let $`w_n=(2^n-1)^{-1}`$ and $`R_n=\sum_{j>n}w_j`$. Then
+**Lemma 78** (Each Mersenne weight exceeds its remaining tail). *For $`n\ge1`$, let $`w_n=(2^n-1)^{-1}`$ and $`R_n=\sum_{j>n}w_j`$. Then
 ``` math
 R_n=w_{n+1}+R_{n+1},\qquad
  2^{-n}<R_n\le2w_{n+1}<w_n.
@@ -1944,9 +1979,9 @@ For the upper bound, compare each tail term with $`2^{1-j}w_{n+1}`$ at index $`n
 </div>
 
 <div id="thm:greedy-survival-catalogue" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/GreedyAchievementSet.lean#L1458">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-greedy-survival-catalogue-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L1458">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-greedy-survival-catalogue-comparator">Comparator</a></p>
 
-**Theorem 78** (Greedy survival and membership). *With the greedy remainder $`r_n(x)`$ and complete tail $`R_n`$,
+**Theorem 79** (Greedy survival and membership). *With the greedy remainder $`r_n(x)`$ and complete tail $`R_n`$,
 ``` math
 x\in\mathcal A\quad\Longleftrightarrow\quad
  x\ge0\ \text{and}\ r_n(x)\le R_n\text{ for every }n\ge0.
@@ -1956,9 +1991,9 @@ If all inequalities hold, the nonnegative remainders tend to zero because $`R_n\
 </div>
 
 <div id="lem:rank-step-trichotomy" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-rank-step-trichotomy">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-rank-step-trichotomy">Lean</a></p>
 
-**Lemma 79** (The two next-prefix intervals and their gap). *Let $`d\ge0`$ be an integer, let $`u\subseteq\{1,\ldots,d\}`$, and suppose the target $`t`$ lies in the interval $`[X_u(2),X_u(2)+R_d]`$. At depth $`d+1`$, either $`t`$ lies in the lower interval
+**Lemma 80** (The two next-prefix intervals and their gap). *Let $`d\ge0`$ be an integer, let $`u\subseteq\{1,\ldots,d\}`$, and suppose the target $`t`$ lies in the interval $`[X_u(2),X_u(2)+R_d]`$. At depth $`d+1`$, either $`t`$ lies in the lower interval
 ``` math
 [X_u(2),X_u(2)+R_{d+1}],
 ```
@@ -1966,14 +2001,14 @@ or in the upper interval
 ``` math
 [X_u(2)+w_{d+1},X_u(2)+w_{d+1}+R_{d+1}],
 ```
-or in the open gap between them. These alternatives are disjoint because $`R_{d+1}<w_{d+1}`$, and exhaustive because $`R_d=w_{d+1}+R_{d+1}`$. For $`t=1/2`$, Lemma <a href="#lem:half-endpoint-kills" data-reference-type="ref" data-reference="lem:half-endpoint-kills">81</a> also excludes the interval endpoints, so all relevant comparisons are strict. Endpoint exclusion is not what makes the two child intervals disjoint; the strict-tail inequality does that.*
+or in the open gap between them. These alternatives are disjoint because $`R_{d+1}<w_{d+1}`$, and exhaustive because $`R_d=w_{d+1}+R_{d+1}`$. For $`t=1/2`$, Lemma <a href="#lem:half-endpoint-kills" data-reference-type="ref" data-reference="lem:half-endpoint-kills">82</a> also excludes the interval endpoints, so all relevant comparisons are strict. Endpoint exclusion is not what makes the two child intervals disjoint; the strict-tail inequality does that.*
 
 </div>
 
 <div id="lem:fatal-gap-exclusion" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-fatal-gap-exclusion">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-fatal-gap-exclusion-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-fatal-gap-exclusion">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-fatal-gap-exclusion-comparator">Comparator</a></p>
 
-**Lemma 80** (A greedy gap excludes every representation). *Let $`d\ge0`$ be an integer and $`u\subseteq\{1,\ldots,d\}`$ a finite prefix. If
+**Lemma 81** (A greedy gap excludes every representation). *Let $`d\ge0`$ be an integer and $`u\subseteq\{1,\ldots,d\}`$ a finite prefix. If
 ``` math
 X_u(2)+R_{d+1}<t<X_u(2)+w_{d+1},
 ```
@@ -1982,16 +2017,16 @@ then no support agreeing with $`u`$ through rank $`d`$ represents $`t`$: omittin
 </div>
 
 <div id="lem:half-endpoint-kills" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-endpoint-kills">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-endpoint-kills-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-endpoint-kills">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-endpoint-kills-comparator">Comparator</a></p>
 
-**Lemma 81** (No finite Mersenne sum equals one half). *For every finite $`u\subseteq\mathbb N_{>0}`$, $`X_u(2)\ne1/2`$: its reduced denominator is odd. Also $`X_u(2)+R_d\ne1/2`$ for every $`d\ge0`$, since $`R_d`$ is the irrational full Mersenne sum minus a finite rational sum. These observations exclude equality at the finite-prefix and complete-tail endpoints of Lemma <a href="#lem:rank-step-trichotomy" data-reference-type="ref" data-reference="lem:rank-step-trichotomy">79</a>.*
+**Lemma 82** (No finite Mersenne sum equals one half). *For every finite $`u\subseteq\mathbb N_{>0}`$, $`X_u(2)\ne1/2`$: its reduced denominator is odd. Also $`X_u(2)+R_d\ne1/2`$ for every $`d\ge0`$, since $`R_d`$ is the irrational full Mersenne sum minus a finite rational sum. These observations exclude equality at the finite-prefix and complete-tail endpoints of Lemma <a href="#lem:rank-step-trichotomy" data-reference-type="ref" data-reference="lem:rank-step-trichotomy">80</a>.*
 
 </div>
 
 <div id="lem:straddle-agrees-greedy" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/HalfCutLocator.lean#L442">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-straddle-agrees-greedy-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCutLocator.lean#L442">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-straddle-agrees-greedy-comparator">Comparator</a></p>
 
-**Lemma 82** (Straddle words are canonical: they agree with the greedy prefix). *Let $`u\subseteq\{1,\ldots,d\}`$ satisfy $`X_u(2)\le1/2\le X_u(2)+R_d`$. Then
+**Lemma 83** (Straddle words are canonical: they agree with the greedy prefix). *Let $`u\subseteq\{1,\ldots,d\}`$ satisfy $`X_u(2)\le1/2\le X_u(2)+R_d`$. Then
 ``` math
 u=G\cap\{1,\ldots,d\},
 ```
@@ -2000,9 +2035,9 @@ where $`G`$ is the real greedy support for $`1/2`$. At the first disagreement, i
 </div>
 
 <div id="thm:last-skip-iff-fatal" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-last-skip-iff-fatal">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-last-skip-iff-fatal-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-last-skip-iff-fatal">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-last-skip-iff-fatal-comparator">Comparator</a></p>
 
-**Theorem 83** (Last-skip iff local fatality: a pointwise criterion). *Keep $`G`$ for the selected half-greedy support, $`r_M(1/2)`$ for its remainder and $`R_M`$ for the complete tail after rank $`M`$. A positive rank $`M`$ is the last omitted rank if and only if $`M\notin G`$ and $`r_M(1/2)>R_M`$. Consequently,
+**Theorem 84** (Last-skip iff local fatality: a pointwise criterion). *Keep $`G`$ for the selected half-greedy support, $`r_M(1/2)`$ for its remainder and $`R_M`$ for the complete tail after rank $`M`$. A positive rank $`M`$ is the last omitted rank if and only if $`M\notin G`$ and $`r_M(1/2)>R_M`$. Consequently,
 ``` math
 \frac12\in\mathcal A
  \quad\Longleftrightarrow\quad
@@ -2013,9 +2048,9 @@ Thus it suffices to check the tail inequality at the ranks actually omitted by t
 </div>
 
 <div id="lem:seam-upper-or-middle" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-seam-upper-or-middle-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-seam-upper-or-middle-comparator">Comparator</a></p>
 
-**Lemma 84** (Seam upper-or-middle classification). *At a row $`s\ge5`$, the terminal rank is omitted in the next row, $`s\notin D_{s+1}`$, if and only if either
+**Lemma 85** (Seam upper-or-middle classification). *At a row $`s\ge5`$, the terminal rank is omitted in the next row, $`s\notin D_{s+1}`$, if and only if either
 ``` math
 4o_s+p_s^+\le2^{s+1},
 ```
@@ -2023,14 +2058,14 @@ or this inequality fails and
 ``` math
 4\,\mathrm{rem}(s)+2^{s+1}-p_s^-<2^{s+2}+4.
 ```
-These are exactly branches $`\mathrm U`$ and $`\mathrm M`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>. On either branch the new terminal weight does not fit; on $`\mathrm R`$ it does. This is an exact classification, not a conjecture inferred from observed branch labels.*
+These are exactly branches $`\mathrm U`$ and $`\mathrm M`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>. On either branch the new terminal weight does not fit; on $`\mathrm R`$ it does. This is an exact classification, not a conjecture inferred from observed branch labels.*
 
 </div>
 
 <div id="lem:largest-false-rank-algebra" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-largest-false-rank-algebra">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-largest-false-rank-algebra-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-largest-false-rank-algebra">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-largest-false-rank-algebra-comparator">Comparator</a></p>
 
-**Lemma 85** (The exact gap at the largest omitted rank). *Let $`2\le d<s`$ and $`2s<3d`$. Write $`W_s(E)=\sum_{e\in E}\lfloor4^s/(2^e-1)\rfloor`$ for a finite set $`E\subseteq\{2,\ldots,s-1\}`$. For $`u\subseteq\{2,\ldots,d-1\}`$, put $`E_-=u\cup\{d+1,\ldots,s-1\}`$ and $`E_+=u\cup\{d\}`$. Then
+**Lemma 86** (The exact gap at the largest omitted rank). *Let $`2\le d<s`$ and $`2s<3d`$. Write $`W_s(E)=\sum_{e\in E}\lfloor4^s/(2^e-1)\rfloor`$ for a finite set $`E\subseteq\{2,\ldots,s-1\}`$. For $`u\subseteq\{2,\ldots,d-1\}`$, put $`E_-=u\cup\{d+1,\ldots,s-1\}`$ and $`E_+=u\cup\{d\}`$. Then
 ``` math
 3W_s(E_-)+3\cdot2^{s+1}+2\cdot4^{s-d}+4=3W_s(E_+).
 ```
@@ -2045,16 +2080,16 @@ The correction is independent of the common prefix $`u`$. For the integer-greedy
 \left\lfloor\frac{4^s}{2^e-1}\right\rfloor
  =2^{2s-e}+4^{s-e}.
 ```
-Subtract the sum over $`d<e<s`$ from the term at $`d`$. The powers of $`2`$ leave $`2^{s+1}`$; the powers of $`4`$ leave $`(2\cdot4^{s-d}+4)/3`$. The common prefix $`u`$ cancels. The branch statements follow from the support updates in Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>: the right branch appends $`s`$ to the lower word, and the other two branches omit $`s`$. ◻
+Subtract the sum over $`d<e<s`$ from the term at $`d`$. The powers of $`2`$ leave $`2^{s+1}`$; the powers of $`4`$ leave $`(2\cdot4^{s-d}+4)/3`$. The common prefix $`u`$ cancels. The branch statements follow from the support updates in Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>: the right branch appends $`s`$ to the lower word, and the other two branches omit $`s`$. ◻
 
 </div>
 
 For example, $`s=5`$, $`d=4`$ and $`u=\{2\}`$ give $`W_s(E_-)=341`$ and $`W_s(E_+)=409`$; the displayed identity is $`3\cdot341+204=3\cdot409`$. Both the factor $`3`$ on the right and the restriction $`2s<3d`$ are essential to this formula.
 
 <div id="thm:critical-dyadic-band" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-critical-dyadic-band">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-critical-dyadic-band-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-critical-dyadic-band">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-critical-dyadic-band-comparator">Comparator</a></p>
 
-**Theorem 86** (Reduction to the nearest dyadic boundary). *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let $`j_*`$ be the largest $`j\in\{0,\ldots,d\}`$ for which $`E\le2^{d-j+1}`$. The set is nonempty, so $`j_*`$ is well defined, including when $`E=0`$. Then
+**Theorem 87** (Reduction to the nearest dyadic boundary). *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let $`j_*`$ be the largest $`j\in\{0,\ldots,d\}`$ for which $`E\le2^{d-j+1}`$. The set is nonempty, so $`j_*`$ is well defined, including when $`E=0`$. Then
 ``` math
 \begin{aligned}
  &\forall j\in\{0,\ldots,d\},\quad
@@ -2063,31 +2098,31 @@ For example, $`s=5`$, $`d=4`$ and $`u=\{2\}`$ give $`W_s(E_-)=341`$ and $`W_s(E_
  E+2(d+j_*)\le2^{d-j_*+1}.
  \end{aligned}
 ```
-For $`j>j_*`$ the first alternative holds by maximality. For $`j\le j_*`$, the left side of the required inequality increases with $`j`$ and its right side decreases, so the condition at $`j_*`$ implies all the others. This is an elementary reduction from $`d+1`$ inequalities to one. Specialized to the seam reset charge (where the actual upper-reset condition gives $`E\le2^{d+1}`$, as explained in Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">123</a>), the reduced hypothesis at the single index $`j_*`$ is proved logically equivalent to Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a>’s band-avoidance hypothesis.*
+For $`j>j_*`$ the first alternative holds by maximality. For $`j\le j_*`$, the left side of the required inequality increases with $`j`$ and its right side decreases, so the condition at $`j_*`$ implies all the others. This is an elementary reduction from $`d+1`$ inequalities to one. Specialized to the seam reset charge (where the actual upper-reset condition gives $`E\le2^{d+1}`$, as explained in Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">124</a>), the reduced hypothesis at the single index $`j_*`$ is proved logically equivalent to Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">54</a>’s band-avoidance hypothesis.*
 
 </div>
 
 <div class="minipage">
 
 <div id="thm:final-middle-cell" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-final-middle-cell">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-final-middle-cell-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-final-middle-cell">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-final-middle-cell-comparator">Comparator</a></p>
 
-**Theorem 87** (Excluding minus three at a final middle transition). *Suppose that row $`D\ge13`$ is a middle transition in Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a> and every transition at a row $`s\ge D+1`$ is right. Then
+**Theorem 88** (Excluding minus three at a final middle transition). *Suppose that row $`D\ge13`$ is a middle transition in Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a> and every transition at a row $`s\ge D+1`$ is right. Then
 ``` math
 C_D:=4\,\mathrm{rem}(D)-p_D^--4\ne-3.
 ```
-This excludes one particular value under the stated tail assumption; it neither excludes every final middle transition nor proves the all-middle-row hypothesis of Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a>.*
+This excludes one particular value under the stated tail assumption; it neither excludes every final middle transition nor proves the all-middle-row hypothesis of Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">53</a>.*
 
 </div>
 
 </div>
 
-To see the contradiction, complete $`D_D`$ by all ranks greater than $`D`$. The resulting support $`B=D_D\cup\{D+1,D+2,\ldots\}`$ has $`X_B(2)<1/2`$ under the all-right assumption. The exact carry identity of the Lean proof (margin) gives $`C_B(2D+1)=C_D+3`$. If $`C_D=-3`$, this is zero. The recurrence $`C_B(N+1)=2C_B(N)+1-c_B(N+2)`$ and nonnegativity from Theorem <a href="#thm:mobius-centred-nonneg" data-reference-type="ref" data-reference="thm:mobius-centred-nonneg">54</a> first force $`C_B(2D+2)=0`$: indeed $`2D+3\in B`$, so $`c_B(2D+3)\ge1`$. Next $`D+2,2D+4\in B`$ imply $`c_B(2D+4)\ge2`$, giving $`C_B(2D+3)<0`$, a contradiction. The stronger conclusion $`C_D\ge-2`$ is proved in Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">258</a>.
+To see the contradiction, complete $`D_D`$ by all ranks greater than $`D`$. The resulting support $`B=D_D\cup\{D+1,D+2,\ldots\}`$ has $`X_B(2)<1/2`$ under the all-right assumption. The exact carry identity of the Lean proof (margin) gives $`C_B(2D+1)=C_D+3`$. If $`C_D=-3`$, this is zero. The recurrence $`C_B(N+1)=2C_B(N)+1-c_B(N+2)`$ and nonnegativity from Theorem <a href="#thm:mobius-centred-nonneg" data-reference-type="ref" data-reference="thm:mobius-centred-nonneg">55</a> first force $`C_B(2D+2)=0`$: indeed $`2D+3\in B`$, so $`c_B(2D+3)\ge1`$. Next $`D+2,2D+4\in B`$ imply $`c_B(2D+4)\ge2`$, giving $`C_B(2D+3)<0`$, a contradiction. The stronger conclusion $`C_D\ge-2`$ is proved in Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">259</a>.
 
 <div id="lem:skipped-endpoint-trichotomy" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-skipped-endpoint-trichotomy-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-skipped-endpoint-trichotomy-comparator">Comparator</a></p>
 
-**Lemma 88** (The signed position of a skipped greedy prefix). *Let $`s\ge5`$ be omitted by the real greedy support $`G`$, and put
+**Lemma 89** (The signed position of a skipped greedy prefix). *Let $`s\ge5`$ be omitted by the real greedy support $`G`$, and put
 ``` math
 H_s=G\cap\{2,\ldots,s-1\},\qquad
  f_s=\sum_{d\in H_s}\left\lfloor\frac{4^s}{2^d-1}\right\rfloor-T_s.
@@ -2105,9 +2140,9 @@ Thus the real greedy prefix is one of the two adjacent integer words. This class
 </div>
 
 <div id="lem:reverse-carry-word" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-reverse-carry-word">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-reverse-carry-word-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-reverse-carry-word">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-reverse-carry-word-comparator">Comparator</a></p>
 
-**Lemma 89** (Spacing of reverse-carry words). *For $`i=1,2`$, let integer sequences $`a_i,b_i,u_i`$ satisfy
+**Lemma 90** (Spacing of reverse-carry words). *For $`i=1,2`$, let integer sequences $`a_i,b_i,u_i`$ satisfy
 ``` math
 b_i(m)+2u_i(m)=a_i(m)+u_i(m+1).
 ```
@@ -2121,16 +2156,16 @@ The factor in parentheses is an odd integer. If the two terminal carries have ab
 </div>
 
 <div id="lem:linear-channel-nogo" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-linear-channel-nogo">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-linear-channel-nogo-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-linear-channel-nogo">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-linear-channel-nogo-comparator">Comparator</a></p>
 
-**Lemma 90** (Linear functionals factoring through one value). *Let $`V`$ be a vector space over $`\mathbb Q`$, let $`\mathrm{ev}:V\to\mathbb Q`$ be linear, and choose $`e\in V`$ with $`\mathrm{ev}(e)=1`$. Suppose that each linear functional $`\ell_j:V\to\mathbb Q`$ vanishes on $`\ker(\mathrm{ev})`$. Then $`v-\mathrm{ev}(v)e\in\ker(\mathrm{ev})`$ gives $`\ell_j(v)=\ell_j(e)\mathrm{ev}(v)`$. Consequently any finite evaluation matrix $`(\ell_j(v_i))_{i,j}`$ is an outer product and has rank at most one. Every square minor of order at least two therefore vanishes. This excludes determinant arguments formed from these particular functionals, not determinant methods with additional independent information.*
+**Lemma 91** (Linear functionals factoring through one value). *Let $`V`$ be a vector space over $`\mathbb Q`$, let $`\mathrm{ev}:V\to\mathbb Q`$ be linear, and choose $`e\in V`$ with $`\mathrm{ev}(e)=1`$. Suppose that each linear functional $`\ell_j:V\to\mathbb Q`$ vanishes on $`\ker(\mathrm{ev})`$. Then $`v-\mathrm{ev}(v)e\in\ker(\mathrm{ev})`$ gives $`\ell_j(v)=\ell_j(e)\mathrm{ev}(v)`$. Consequently any finite evaluation matrix $`(\ell_j(v_i))_{i,j}`$ is an outer product and has rank at most one. Every square minor of order at least two therefore vanishes. This excludes determinant arguments formed from these particular functionals, not determinant methods with additional independent information.*
 
 </div>
 
 <div id="thm:two-thirds-band" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/PostTakeBandLocalisation.lean#L96">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-two-thirds-band-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/PostTakeBandLocalisation.lean#L96">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-two-thirds-band-comparator">Comparator</a></p>
 
-**Theorem 91** (Two-thirds band: exact localisation of post-take skip-unsafety). *Write a positive residual as $`1/R`$. A skipped rank $`k`$ passes the sufficient dyadic test precisely when $`R\ge2^k`$. Suppose a weight at rank $`b`$ is taken without exhausting the residual: with $`q=2^b-1`$, assume $`0<R<q`$. The new reciprocal residual is $`Rq/(q-R)`$. If the next take is at rank $`c\ge b+2`$, put $`m=2^{c-1}`$. The last skipped rank is dyadically unsafe exactly when
+**Theorem 92** (Two-thirds band: exact localisation of post-take skip-unsafety). *Write a positive residual as $`1/R`$. A skipped rank $`k`$ passes the sufficient dyadic test precisely when $`R\ge2^k`$. Suppose a weight at rank $`b`$ is taken without exhausting the residual: with $`q=2^b-1`$, assume $`0<R<q`$. The new reciprocal residual is $`Rq/(q-R)`$. If the next take is at rank $`c\ge b+2`$, put $`m=2^{c-1}`$. The last skipped rank is dyadically unsafe exactly when
 ``` math
 m-1<\frac{Rq}{q-R}<m,
  \quad\text{equivalently}\quad
@@ -2145,9 +2180,9 @@ Clearing the positive denominators proves the equivalence. The interval has widt
 </div>
 
 <div id="thm:sharp-fatal-gap" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L299">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-sharp-fatal-gap-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L299">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-sharp-fatal-gap-comparator">Comparator</a></p>
 
-**Theorem 92** (A weaker sufficient test against the remaining tail). *Let $`k,u,L`$ be positive integers, and put $`a=2L-(2^k-1)u`$. Suppose $`a>0`$, equivalently that $`\rho=u/(2L)<w_k`$ and the greedy rule skips weight $`w_k`$. The dyadic sufficient test $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$. The weaker sufficient condition
+**Theorem 93** (A weaker sufficient test against the remaining tail). *Let $`k,u,L`$ be positive integers, and put $`a=2L-(2^k-1)u`$. Suppose $`a>0`$, equivalently that $`\rho=u/(2L)<w_k`$ and the greedy rule skips weight $`w_k`$. The dyadic sufficient test $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$. The weaker sufficient condition
 ``` math
 2u\le3a
 ```
@@ -2158,20 +2193,20 @@ ensures $`\rho<R_k`$, by comparison with $`2^{-k}+(3\cdot4^k)^{-1}+(7\cdot8^k)^{
 </div>
 
 <div id="lem:gap-mass-summability" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-gap-mass-summability">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-gap-mass-summability-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-gap-mass-summability">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-gap-mass-summability-comparator">Comparator</a></p>
 
-**Lemma 93** (Summability of one gap length per level). *For $`n\ge1`$, put $`g_n=w_n-R_n>0`$. The sum of one gap length per level satisfies, for $`N\ge0`$,
+**Lemma 94** (Summability of one gap length per level). *For $`n\ge1`$, put $`g_n=w_n-R_n>0`$. The sum of one gap length per level satisfies, for $`N\ge0`$,
 ``` math
 \sum_{n>N}g_n\le\frac29\,4^{-N}+\frac37\,8^{-N}.
 ```
-This follows by summing the per-level upper bounds geometrically. It is not the measure of the union of all gaps: level $`n`$ has $`2^{n-1}`$ translated gaps of length $`g_n`$. The corresponding weighted sum and its geometric interpretation are given after Theorem <a href="#record:257hg-i2" data-reference-type="ref" data-reference="record:257hg-i2">161</a>. Neither estimate decides membership of a specified point such as $`1/2`$.*
+This follows by summing the per-level upper bounds geometrically. It is not the measure of the union of all gaps: level $`n`$ has $`2^{n-1}`$ translated gaps of length $`g_n`$. The corresponding weighted sum and its geometric interpretation are given after Theorem <a href="#record:257hg-i2" data-reference-type="ref" data-reference="record:257hg-i2">162</a>. Neither estimate decides membership of a specified point such as $`1/2`$.*
 
 </div>
 
 <div id="lem:half-divisor-unit-drop" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-divisor-unit-drop">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-divisor-unit-drop-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-divisor-unit-drop">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-half-divisor-unit-drop-comparator">Comparator</a></p>
 
-**Lemma 94** (The effect of adding one divisor). *Let $`N\ge0`$ and let finite supports $`D_0,D_1`$ differ only by $`D_1=D_0\cup\{N+1\}`$, with $`N+1\notin D_0`$. For every positive integer $`m`$,
+**Lemma 95** (The effect of adding one divisor). *Let $`N\ge0`$ and let finite supports $`D_0,D_1`$ differ only by $`D_1=D_0\cup\{N+1\}`$, with $`N+1\notin D_0`$. For every positive integer $`m`$,
 ``` math
 c_{D_1}(m)-c_{D_0}(m)=\mathbf1_{N+1\mid m}.
 ```
@@ -2180,24 +2215,24 @@ In particular, the difference is $`1`$ at $`m=2(N+1)`$. This follows directly fr
 </div>
 
 <div id="thm:tempered-orbit-rigidity" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-tempered-orbit-rigidity">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-tempered-orbit-rigidity-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-tempered-orbit-rigidity">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-tempered-orbit-rigidity-comparator">Comparator</a></p>
 
-**Theorem 95** (Uniqueness of an integer recurrence with a vanishing scaled limit). *For any nonnegative-integer coefficient sequence $`c:\mathbb N\to\mathbb N`$ with $`c(n)\le
-n`$: the binary coefficient series $`X_c = \sum'_{n\ge 1} c(n)/2^n`$ is rational iff there exists a positive integer multiplier $`v`$ and an integer orbit $`u:\mathbb N\to\mathbb Z`$ satisfying the exact carry recurrence $`u(N{+}1)=2u(N)-v\cdot c(N{+}1)`$ together with the condition $`u(N)/2^N\to0`$. Every integer sequence satisfying both conditions obeys $`u(N) = v\cdot T_c(N)`$ exactly, where $`T_c(N)=\sum_{j\ge 1} c(N{+}j)/2^j`$ is the scaled tail. For each fixed $`v`$ there is at most one such sequence. Positivity of the orbit alone is deliberately *not* used as an equivalent criterion: a homogeneous $`2^N`$-scaled perturbation can be added to any orbit without breaking the recurrence, so the limit condition cannot be dropped. The choices $`c=c_A`$ for Problem 257 and $`c=\varphi`$ for Problem 249 both satisfy $`0\le c(n)\le n`$. The telescoping argument is given again, with an example, in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a>.*
+**Theorem 96** (Uniqueness of an integer recurrence with a vanishing scaled limit). *For any nonnegative-integer coefficient sequence $`c:\mathbb N\to\mathbb N`$ with $`c(n)\le
+n`$: the binary coefficient series $`X_c = \sum'_{n\ge 1} c(n)/2^n`$ is rational iff there exists a positive integer multiplier $`v`$ and an integer orbit $`u:\mathbb N\to\mathbb Z`$ satisfying the exact carry recurrence $`u(N{+}1)=2u(N)-v\cdot c(N{+}1)`$ together with the condition $`u(N)/2^N\to0`$. Every integer sequence satisfying both conditions obeys $`u(N) = v\cdot T_c(N)`$ exactly, where $`T_c(N)=\sum_{j\ge 1} c(N{+}j)/2^j`$ is the scaled tail. For each fixed $`v`$ there is at most one such sequence. Positivity of the orbit alone is deliberately *not* used as an equivalent criterion: a homogeneous $`2^N`$-scaled perturbation can be added to any orbit without breaking the recurrence, so the limit condition cannot be dropped. The choices $`c=c_A`$ for Problem 257 and $`c=\varphi`$ for Problem 249 both satisfy $`0\le c(n)\le n`$. The telescoping argument is given again, with an example, in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a>.*
 
 </div>
 
 <div id="lem:tail-transfer" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-tail-transfer">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-tail-transfer-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-tail-transfer">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-tail-transfer-comparator">Comparator</a></p>
 
-**Lemma 96** (Changing finitely many support elements). *Let $`b\ge2`$ be an integer, and let $`A,B\subseteq\mathbb N_{\ge1}`$. If $`X_A(b)`$ is irrational and $`A,B`$ have finite symmetric difference, then $`X_B(b)`$ is irrational too: the two sums differ by a finite sum of rational numbers. This observation supplies the finite modifications in Theorem <a href="#thm:eventually-periodic" data-reference-type="ref" data-reference="thm:eventually-periodic">64</a>.*
+**Lemma 97** (Changing finitely many support elements). *Let $`b\ge2`$ be an integer, and let $`A,B\subseteq\mathbb N_{\ge1}`$. If $`X_A(b)`$ is irrational and $`A,B`$ have finite symmetric difference, then $`X_B(b)`$ is irrational too: the two sums differ by a finite sum of rational numbers. This observation supplies the finite modifications in Theorem <a href="#thm:eventually-periodic" data-reference-type="ref" data-reference="thm:eventually-periodic">65</a>.*
 
 </div>
 
 <div id="lem:dyadic-excess-reformulation" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-dyadic-excess-reformulation">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-dyadic-excess-reformulation">Lean</a></p>
 
-**Lemma 97** (An integer test for the interval between the dyadic and Mersenne weights). *For positive integers $`p,L`$ and $`n\ge0`$, write the residual as $`p/(2L)`$ and put $`E=2^np-L`$. Clearing positive denominators gives
+**Lemma 98** (An integer test for the interval between the dyadic and Mersenne weights). *For positive integers $`p,L`$ and $`n\ge0`$, write the residual as $`p/(2L)`$ and put $`E=2^np-L`$. Clearing positive denominators gives
 ``` math
 \frac{p}{2L}\le\frac1{2^{n+1}}\quad\Longleftrightarrow\quad E\le0,
  \qquad
@@ -2209,27 +2244,27 @@ The first test concerns the dyadic bound, not the greedy selection threshold its
 </div>
 
 <div id="lem:denominator-sandwich" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-denominator-sandwich">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-denominator-sandwich">Lean</a></p>
 
-**Lemma 98** (The odd denominator survives dyadic subtraction). *Let $`r/D`$ be a reduced fraction with $`D>0`$ odd, let $`p\in\mathbb Z`$, and let $`c\ge0`$ be an integer. The reduced denominator of $`p/2^c-r/D`$ is divisible by $`D`$ and divides $`2^cD`$. Indeed, its unreduced numerator $`pD-2^cr`$ is coprime to $`D`$, since $`\gcd(r,D)=\gcd(2^c,D)=1`$. Reduction can therefore remove only powers of $`2`$ from the displayed denominator. No property of Mersenne weights is used.*
+**Lemma 99** (The odd denominator survives dyadic subtraction). *Let $`r/D`$ be a reduced fraction with $`D>0`$ odd, let $`p\in\mathbb Z`$, and let $`c\ge0`$ be an integer. The reduced denominator of $`p/2^c-r/D`$ is divisible by $`D`$ and divides $`2^cD`$. Indeed, its unreduced numerator $`pD-2^cr`$ is coprime to $`D`$, since $`\gcd(r,D)=\gcd(2^c,D)=1`$. Reduction can therefore remove only powers of $`2`$ from the displayed denominator. No property of Mersenne weights is used.*
 
 </div>
 
 <div id="lem:denominator-survival" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-denominator-survival">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-denominator-survival-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-denominator-survival">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-denominator-survival-comparator">Comparator</a></p>
 
-**Lemma 99** (A guaranteed divisor of a reduced denominator). *Let $`a\in\mathbb Z`$, $`D\in\mathbb N_{>0}`$ and $`m,C,h\in\mathbb N`$. Write $`\operatorname{den}(x)`$ for the positive reduced denominator of a rational number $`x`$. If $`m\mid D`$ and $`\gcd(m,|a|)=1`$, then $`m\mid\operatorname{den}(a/D)`$. If $`C\mid D`$ and $`\gcd(C,|a|)=1`$, then
+**Lemma 100** (A guaranteed divisor of a reduced denominator). *Let $`a\in\mathbb Z`$, $`D\in\mathbb N_{>0}`$ and $`m,C,h\in\mathbb N`$. Write $`\operatorname{den}(x)`$ for the positive reduced denominator of a rational number $`x`$. If $`m\mid D`$ and $`\gcd(m,|a|)=1`$, then $`m\mid\operatorname{den}(a/D)`$. If $`C\mid D`$ and $`\gcd(C,|a|)=1`$, then
 ``` math
 \frac{C}{\gcd(C,h)}\mid\operatorname{den}(ha/D).
 ```
-Thus scaling may remove part of the guaranteed divisor. Indeed, reduction divides $`D`$ by $`\gcd(D,|a|)`$, so no prime power in $`m`$ can be lost. After scaling, a prime $`p\mid C`$ can lose at most $`v_p(h)`$ powers from the guaranteed divisor. This is a lower bound on the reduced denominator, not an equality: for $`D=12`$, $`C=6`$, $`a=1`$, $`h=2`$, it guarantees the divisor $`3`$, while the reduced denominator is $`6`$. The lemma feeds Theorem <a href="#thm:mersenne-channel-survival" data-reference-type="ref" data-reference="thm:mersenne-channel-survival">67</a> directly.*
+Thus scaling may remove part of the guaranteed divisor. Indeed, reduction divides $`D`$ by $`\gcd(D,|a|)`$, so no prime power in $`m`$ can be lost. After scaling, a prime $`p\mid C`$ can lose at most $`v_p(h)`$ powers from the guaranteed divisor. This is a lower bound on the reduced denominator, not an equality: for $`D=12`$, $`C=6`$, $`a=1`$, $`h=2`$, it guarantees the divisor $`3`$, while the reduced denominator is $`6`$. The lemma feeds Theorem <a href="#thm:mersenne-channel-survival" data-reference-type="ref" data-reference="thm:mersenne-channel-survival">68</a> directly.*
 
 </div>
 
 <div id="lem:mixed-prime-power-layer" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-mixed-prime-power-layer">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-mixed-prime-power-layer-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-mixed-prime-power-layer">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#lem-mixed-prime-power-layer-comparator">Comparator</a></p>
 
-**Lemma 100** (Commuting prime-power differences). *For a function $`g:\mathbb N_{>0}\to\mathbb Z`$, a positive integer $`p`$ and an integer $`e\ge1`$, define
+**Lemma 101** (Commuting prime-power differences). *For a function $`g:\mathbb N_{>0}\to\mathbb Z`$, a positive integer $`p`$ and an integer $`e\ge1`$, define
 ``` math
 (\Delta_{p,e}g)(n)=g(p^en)-g(p^{e-1}n).
 ```
@@ -2259,41 +2294,41 @@ For $`A=\{12\}`$, $`p=2`$, $`e=2`$, $`q=3`$, $`f=1`$, $`n=1`$, the four counts a
 
 <div id="defn:achievement-set" class="defn">
 
-**Definition 101** (The Mersenne achievement set and the support-series object). For a support $`A\subseteq\mathbb N_{\ge1}`$, its Mersenne subsum is
+**Definition 102** (The Mersenne achievement set and the support-series object). For a support $`A\subseteq\mathbb N_{\ge1}`$, its Mersenne subsum is
 ``` math
 x_A=\sum_{n\ge1}\frac{\mathbf1_A(n)}{2^n-1},
  \qquad
  \mathcal A=\{x_A:A\subseteq\mathbb N_{\ge1}\}.
 ```
-Finite, empty, and infinite supports are all allowed in $`\mathcal A`$. More generally, for an integer base $`b\ge2`$, $`X_A(b)=\sum_{n\ge1}\mathbf1_A(n)/(b^n-1)`$ and $`c_A(n)=\sum_{d\mid n}\mathbf1_A(d)=(\mathbf1_A*1)(n)`$ for $`n\ge1`$, where $`*`$ denotes Dirichlet convolution. Full support gives the series in Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>. The linked definitions implement these positive-index sums.
+Finite, empty, and infinite supports are all allowed in $`\mathcal A`$. More generally, for an integer base $`b\ge2`$, $`X_A(b)=\sum_{n\ge1}\mathbf1_A(n)/(b^n-1)`$ and $`c_A(n)=\sum_{d\mid n}\mathbf1_A(d)=(\mathbf1_A*1)(n)`$ for $`n\ge1`$, where $`*`$ denotes Dirichlet convolution. Full support gives the series in Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">58</a>. The linked definitions implement these positive-index sums.
 
 [`mersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L571) [`erdosSupportSeries`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8897) [`supportCoeff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8856)
 
 </div>
 
 <div id="prop:achievement-set-topology" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/AchievementSetTopologyAndFiniteHalf.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#prop-achievement-set-topology-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/AchievementSetTopologyAndFiniteHalf.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#prop-achievement-set-topology-comparator">Comparator</a></p>
 
-**Proposition 102** (Achievement-set topology: compact, closed, perfect, measure exactly one). *$`\ensuremath{\mathcal A}`$ is compact (continuous image of the binary-sequence Cantor space $`\mathbb N\to\mathrm{Fin}\,2`$ under the product topology, via the positive-index digit map), hence closed; it is also perfect, totally disconnected, and nowhere dense, with Lebesgue measure exactly $`1`$. The compactness/closedness argument (binary coding $`\to`$ Cantor space $`\to`$ continuous image) is a fully generic technique for characterizing the achievement set of *any* absolutely convergent digit-weighted series, not specific to Mersenne denominators ; reusable for a $`\varphi(n)/2^n`$ subsum set after checking summability. No separation of successive weights is needed for compactness or closedness; the stronger topological conclusions require their own hypotheses. Closedness alone is what powers every “limit of a sequence of achieved points is achieved” argument in this catalogue (e.g. Theorem <a href="#thm:seam-limit" data-reference-type="ref" data-reference="thm:seam-limit">45</a>, Theorem <a href="#thm:straddle-closed-set" data-reference-type="ref" data-reference="thm:straddle-closed-set">48</a>).*
+**Proposition 103** (Achievement-set topology: compact, closed, perfect, measure exactly one). *$`\ensuremath{\mathcal A}`$ is compact (continuous image of the binary-sequence Cantor space $`\mathbb N\to\mathrm{Fin}\,2`$ under the product topology, via the positive-index digit map), hence closed; it is also perfect, totally disconnected, and nowhere dense, with Lebesgue measure exactly $`1`$. The compactness/closedness argument (binary coding $`\to`$ Cantor space $`\to`$ continuous image) is a fully generic technique for characterizing the achievement set of *any* absolutely convergent digit-weighted series, not specific to Mersenne denominators ; reusable for a $`\varphi(n)/2^n`$ subsum set after checking summability. No separation of successive weights is needed for compactness or closedness; the stronger topological conclusions require their own hypotheses. Closedness alone is what powers every “limit of a sequence of achieved points is achieved” argument in this catalogue (e.g. Theorem <a href="#thm:seam-limit" data-reference-type="ref" data-reference="thm:seam-limit">46</a>, Theorem <a href="#thm:straddle-closed-set" data-reference-type="ref" data-reference="thm:straddle-closed-set">49</a>).*
 
 </div>
 
 <div id="thm:master-dichotomy" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-master-dichotomy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-master-dichotomy-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-master-dichotomy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-master-dichotomy-comparator">Comparator</a></p>
 
-**Theorem 103** (Nonmembership of one half and a finite fatal gap). *The value $`1/2`$ is not in $`\mathcal A`$ if and only if there are an integer $`d\ge0`$ and a finite set $`u\subseteq\{1,\ldots,d\}`$ such that
+**Theorem 104** (Nonmembership of one half and a finite fatal gap). *The value $`1/2`$ is not in $`\mathcal A`$ if and only if there are an integer $`d\ge0`$ and a finite set $`u\subseteq\{1,\ldots,d\}`$ such that
 ``` math
 X_u(2)+R_{d+1}<\frac12<X_u(2)+w_{d+1}.
 ```
-One implication is Lemma <a href="#lem:fatal-gap-exclusion" data-reference-type="ref" data-reference="lem:fatal-gap-exclusion">80</a>. For the other, follow the greedy prefixes: nonmembership forces a first failure of the tail inequality, hence one of these gaps. The endpoint equalities are excluded by Lemma <a href="#lem:half-endpoint-kills" data-reference-type="ref" data-reference="lem:half-endpoint-kills">81</a>.*
+One implication is Lemma <a href="#lem:fatal-gap-exclusion" data-reference-type="ref" data-reference="lem:fatal-gap-exclusion">81</a>. For the other, follow the greedy prefixes: nonmembership forces a first failure of the tail inequality, hence one of these gaps. The endpoint equalities are excluded by Lemma <a href="#lem:half-endpoint-kills" data-reference-type="ref" data-reference="lem:half-endpoint-kills">82</a>.*
 
-*A finite prefix and strict gap provide a nonmembership witness. The tail inequality can be certified by rational truncation bounds as in Theorem <a href="#thm:one-sided" data-reference-type="ref" data-reference="thm:one-sided">22</a>. Membership, in contrast, asserts that no such witness exists; failure to find one in a finite search is not a proof. The reduction uses $`w_n>R_n`$, not compactness alone. The totient weights fail this hypothesis, as the example after Lemma <a href="#lem:mersenne-tail-weight" data-reference-type="ref" data-reference="lem:mersenne-tail-weight">77</a> shows.*
+*A finite prefix and strict gap provide a nonmembership witness. The tail inequality can be certified by rational truncation bounds as in Theorem <a href="#thm:one-sided" data-reference-type="ref" data-reference="thm:one-sided">23</a>. Membership, in contrast, asserts that no such witness exists; failure to find one in a finite search is not a proof. The reduction uses $`w_n>R_n`$, not compactness alone. The totient weights fail this hypothesis, as the example after Lemma <a href="#lem:mersenne-tail-weight" data-reference-type="ref" data-reference="lem:mersenne-tail-weight">78</a> shows.*
 
 </div>
 
 <div id="defn:perturbed-family" class="defn">
 
-**Definition 104** (Separated integer values and bounded perturbations). Let $`\alpha`$ be a set, let $`s:\alpha\to\mathbb{N}`$ be injective, and let $`p:\alpha\to\mathbb{N}`$. Suppose integers $`g\ge1`$ and $`B\ge0`$ satisfy
+**Definition 105** (Separated integer values and bounded perturbations). Let $`\alpha`$ be a set, let $`s:\alpha\to\mathbb{N}`$ be injective, and let $`p:\alpha\to\mathbb{N}`$. Suppose integers $`g\ge1`$ and $`B\ge0`$ satisfy
 ``` math
 s(x)<s(y)\ \Longrightarrow\ s(x)+g\le s(y),
  \qquad 0\le p(x)\le B<3g.
@@ -2310,9 +2345,9 @@ The inequality $`B<3g`$ preserves the order of the updated values. The next resu
 </div>
 
 <div id="thm:perturbed-family-maximality" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-perturbed-family-maximality">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#thm-perturbed-family-maximality">Lean</a></p>
 
-**Theorem 105** (Perturbed-family maximality and the three-branch recurrence). *Use the family and adjacent pair of Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">104</a>, and assume in addition that $`B<g`$. At capacity $`C'=4C+g`$, the largest admissible updated value is $`t(x_+)`$ if $`4o+p_+\le g`$, and $`t(x_-)`$ otherwise. After this choice, apply the take-if-possible rule to an additional weight $`W=2g+4`$. The resulting remainder is
+**Theorem 106** (Perturbed-family maximality and the three-branch recurrence). *Use the family and adjacent pair of Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">105</a>, and assume in addition that $`B<g`$. At capacity $`C'=4C+g`$, the largest admissible updated value is $`t(x_+)`$ if $`4o+p_+\le g`$, and $`t(x_-)`$ otherwise. After this choice, apply the take-if-possible rule to an additional weight $`W=2g+4`$. The resulting remainder is
 ``` math
 \begin{cases}
  g-4o-p_+,&4o+p_+\le g,\\
@@ -2333,7 +2368,7 @@ On the first branch the remainder is at most $`g<W`$, so the extra weight is not
 
 The theorem describes a two-stage rule, not automatically the maximum of $`\{t(x)+\varepsilon W:x\in\alpha,\ \varepsilon\in\{0,1\}\}`$ below $`C'`$. For example, take old values $`4,5,7`$, $`g=1`$, $`B=0`$, $`p=0`$ and $`C=6`$. Then $`C'=25`$ and $`W=6`$. The rule chooses $`20`$ and cannot add $`6`$, but $`16+6=22`$ is a larger admissible extended value. A sufficient extra hypothesis for global maximality is $`4g-B\ge W`$: every earlier updated value plus $`W`$ is then at most the selected updated value. In the Mersenne application $`g=2^{s+1}`$, $`B=2(s-2)`$ and $`s\ge5`$, so this inequality holds. Thus the concrete recurrence is unaffected, but an application to another weight system must check this separation as well.
 
-The hypothesis $`B<g`$ is additional; it does not follow from $`B<3g`$ in Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">104</a>. The weaker bound alone does not ensure admissibility of the chosen value. Take $`g=2`$, $`B=3`$, old values $`0,2,4`$, perturbations $`0,3,0`$, and $`C=2`$. The rule selects the old value $`2`$, whose update is $`11>C'=10`$, although the updated value $`0`$ is admissible. This example explains why the stronger hypothesis must accompany the maximality statement.
+The hypothesis $`B<g`$ is additional; it does not follow from $`B<3g`$ in Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">105</a>. The weaker bound alone does not ensure admissibility of the chosen value. Take $`g=2`$, $`B=3`$, old values $`0,2,4`$, perturbations $`0,3,0`$, and $`C=2`$. The rule selects the old value $`2`$, whose update is $`11>C'=10`$, although the updated value $`0`$ is admissible. This example explains why the stronger hypothesis must accompany the maximality statement.
 
 <a id="consequence-theorems"></a>
 
@@ -2347,7 +2382,7 @@ This subsection concerns finite sets $`D`$ whose floor-quotient sums nearly repr
 
 <div id="record:257bm-d1" class="defn">
 
-**Definition 106** (An exact finite quotient sum). For an integer $`n\ge1`$, an exact row at depth $`n`$ is a set $`D\subseteq\{2,\ldots,n\}`$ satisfying
+**Definition 107** (An exact finite quotient sum). For an integer $`n\ge1`$, an exact row at depth $`n`$ is a set $`D\subseteq\{2,\ldots,n\}`$ satisfying
 ``` math
 Q(D,n)=\sum_{d\in D}\left\lfloor\frac{2^n}{2^d-1}\right\rfloor
        =2^{n-1}-1.
@@ -2360,7 +2395,7 @@ The word “exact” refers to this integer equality, not to $`X_D(2)=1/2`$, whi
 
 <div id="record:257bm-d2" class="defn">
 
-**Definition 107** (Floor quotients and the signed endpoint expression).
+**Definition 108** (Floor quotients and the signed endpoint expression).
 ``` math
 \ensuremath{q}(M,d) := \left\lfloor \frac{2^M}{2^d-1} \right\rfloor,\qquad
 \ensuremath{Q}(D,M) := \sum_{d\in D} \ensuremath{q}(M,d),
@@ -2379,7 +2414,7 @@ The suffix in this formula is defined next. The quotients are integers; this fin
 
 <div id="record:257bm-d3" class="defn">
 
-**Definition 108** (The remaining binary suffix).
+**Definition 109** (The remaining binary suffix).
 ``` math
 \ensuremath{S}(D,k,M)
  :=\max\{2^{M-k}-\ensuremath{Q}(D,M)-1,0\}
@@ -2393,11 +2428,11 @@ the nonnegative remainder after subtracting the quotient contributions from the 
 
 <div id="record:257bm-d4" class="defn">
 
-**Definition 109** (Exact quotient sums at unbounded depths). The cofinal exact-row condition says that for every integer $`N`$ there are $`n\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,n\}`$ with
+**Definition 110** (Exact quotient sums at unbounded depths). The cofinal exact-row condition says that for every integer $`N`$ there are $`n\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,n\}`$ with
 ``` math
 Q(D,n)=2^{n-1}-1.
 ```
-No agreement is required between supports chosen at different depths. This removes a compatibility requirement from the data to be supplied, not from the underlying membership question: Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a> identifies this cofinal existence statement with half-membership. A failed construction of compatible rows therefore does not refute the condition, and the condition itself is not proved here.
+No agreement is required between supports chosen at different depths. This removes a compatibility requirement from the data to be supplied, not from the underlying membership question: Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a> identifies this cofinal existence statement with half-membership. A failed construction of compatible rows therefore does not refute the condition, and the condition itself is not proved here.
 
 [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38)
 
@@ -2408,9 +2443,9 @@ No agreement is required between supports chosen at different depths. This remov
 ##### Two implications yielding half-membership
 
 <div id="record:257bm-c1" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c1">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c1-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c1">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c1-comparator">Comparator</a></p>
 
-**Theorem 110** (Compactness from exact finite sums). *Suppose the cofinal exact-row condition in Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a> holds. Then $`1/2\in\mathcal A`$. For each $`N`$, choose an exact row $`D_N`$ at depth $`n_N\ge\max\{N,1\}`$. Proposition <a href="#record:257bm-i9" data-reference-type="ref" data-reference="record:257bm-i9">141</a> gives
+**Theorem 111** (Compactness from exact finite sums). *Suppose the cofinal exact-row condition in Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">110</a> holds. Then $`1/2\in\mathcal A`$. For each $`N`$, choose an exact row $`D_N`$ at depth $`n_N\ge\max\{N,1\}`$. Proposition <a href="#record:257bm-i9" data-reference-type="ref" data-reference="record:257bm-i9">142</a> gives
 ``` math
 \left|X_{D_N}(2)-\frac12\right|
        \le\frac{n_N+1}{2^{n_N}}\longrightarrow0.
@@ -2420,14 +2455,14 @@ Every $`X_{D_N}(2)`$ belongs to the closed set $`\mathcal A`$, so its limit does
 </div>
 
 <div id="record:257bm-c2" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c2-comparator">Comparator</a></p>
 
-**Theorem 111** (Infinitely many greedy skips suffice). *Suppose that the greedy remainder for $`1/2`$ satisfies
+**Theorem 112** (Infinitely many greedy skips suffice). *Suppose that the greedy remainder for $`1/2`$ satisfies
 ``` math
 \forall N\ \exists c\ge\max\{N,4\}:\qquad
  0<r_{c-1}(1/2)<w_c.
 ```
-Then exact quotient rows exist at unbounded depths, and $`1/2\in\mathcal A`$. A single such skip at $`c`$ gives an exact row at depth $`2c-2`$ without an additional capacity hypothesis. Taking arbitrarily large $`c`$ therefore supplies the rows needed for the compactness implication in Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">110</a>. The existence of arbitrarily late positive skips is the hypothesis, not an established property of the greedy sequence. It is equivalent to half-membership and remains unproved here.*
+Then exact quotient rows exist at unbounded depths, and $`1/2\in\mathcal A`$. A single such skip at $`c`$ gives an exact row at depth $`2c-2`$ without an additional capacity hypothesis. Taking arbitrarily large $`c`$ therefore supplies the rows needed for the compactness implication in Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">111</a>. The existence of arbitrarily late positive skips is the hypothesis, not an established property of the greedy sequence. It is equivalent to half-membership and remains unproved here.*
 
 </div>
 
@@ -2436,9 +2471,9 @@ Then exact quotient rows exist at unbounded depths, and $`1/2\in\mathcal A`$. A 
 ##### Compatible finite approximations
 
 <div id="record:257bm-c3" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c3">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c3-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c3">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c3-comparator">Comparator</a></p>
 
-**Theorem 112** (A compatible family of finite supports). *Let $`b_{n,d}\in\{0,1\}`$ satisfy $`b_{n+1,d}=b_{n,d}`$ whenever $`2d\le n`$. Define
+**Theorem 113** (A compatible family of finite supports). *Let $`b_{n,d}\in\{0,1\}`$ satisfy $`b_{n+1,d}=b_{n,d}`$ whenever $`2d\le n`$. Define
 ``` math
 E_n=\{d:2\le d\le n,\ b_{n,d}=1\},\qquad
  D_n=E_n\cap\{2,\ldots,\lfloor n/2\rfloor\}.
@@ -2455,7 +2490,7 @@ The four conditions on the finite rows, required for every $`n\ge2`$, are
 ```
 The first condition implies that the integer in the next two lines is nonnegative. The second specifies the binary value of the upper half of the row, the third bounds that value by its available number of bits, and the fourth is the exact quotient equation. The maximum in the first line records natural-number subtraction at the case $`c_{D_n}(n)=0`$.*
 
-*These are the finite hypotheses of the compatible-limit construction. The bit condition fixes coordinate $`d`$ from row $`2d`$ onward. Unlike the independent finite supports in Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a>, the rows therefore have a prescribed common limit. This extra structure is not, by itself, a proof of strictness between the corresponding existence statements.*
+*These are the finite hypotheses of the compatible-limit construction. The bit condition fixes coordinate $`d`$ from row $`2d`$ onward. Unlike the independent finite supports in Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">110</a>, the rows therefore have a prescribed common limit. This extra structure is not, by itself, a proof of strictness between the corresponding existence statements.*
 
 </div>
 
@@ -2466,9 +2501,9 @@ The existence of rows satisfying these four conditions for every $`n\ge2`$ is no
 ##### A quotient bound at a crossing
 
 <div id="record:257bm-c4" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c4-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c4-comparator">Comparator</a></p>
 
-**Theorem 113** (A sufficient quotient bound at a crossing). *Consider the following condition on finite sets $`D`$ and integers $`c\ge4`$:
+**Theorem 114** (A sufficient quotient bound at a crossing). *Consider the following condition on finite sets $`D`$ and integers $`c\ge4`$:
 ``` math
 \begin{gathered}
  D\subseteq\{2,\ldots,c-1\},\qquad
@@ -2476,39 +2511,39 @@ The existence of rows satisfying these four conditions for every $`n\ge2`$ is no
  \Longrightarrow\qquad Q(D\cup\{c\},2c-2)\ge2^{2c-3}.
  \end{gathered}
 ```
-It requires the quotient inequality at every strict crossing of one half by an added weight. Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">136</a> identifies this inequality with the binary bound needed in the finite construction. If the condition holds for all such $`D,c`$, the induction below produces exact sums at unbounded depths and hence an infinite support of value $`1/2`$. The universal crossing condition itself is unproved.*
+It requires the quotient inequality at every strict crossing of one half by an added weight. Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">137</a> identifies this inequality with the binary bound needed in the finite construction. If the condition holds for all such $`D,c`$, the induction below produces exact sums at unbounded depths and hence an infinite support of value $`1/2`$. The universal crossing condition itself is unproved.*
 
 </div>
 
 <div id="record:257bm-c5" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c5">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-2.md#record-257bm-c5">Lean</a></p>
 
-**Theorem 114** (Induction from the depth-six example). *An already-formalised induction from the endpoint-six seed (Definition <a href="#record:257bm-i-seed" data-reference-type="ref" data-reference="record:257bm-i-seed">140</a>) consumes Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> at every step: each protected exact row either doubles below half (unconditional) or recycles at its first crossing rank $`e >`$ cutoff, giving endpoint $`2e-2 >`$ previous endpoint; protection (endpoint $`< 2\cdot`$cutoff, new ranks $`>`$ cutoff) is exactly what converts the non-growing recycle endpoint of the bare dichotomy (Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a>) into strict progress. The below-half branch never fires twice from the seed arithmetic, so the supply is needed at essentially every step. Its conclusion is the cofinal exact-row condition of Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a>.*
+**Theorem 115** (Induction from the depth-six example). *An already-formalised induction from the endpoint-six seed (Definition <a href="#record:257bm-i-seed" data-reference-type="ref" data-reference="record:257bm-i-seed">141</a>) consumes Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">114</a> at every step: each protected exact row either doubles below half (unconditional) or recycles at its first crossing rank $`e >`$ cutoff, giving endpoint $`2e-2 >`$ previous endpoint; protection (endpoint $`< 2\cdot`$cutoff, new ranks $`>`$ cutoff) is exactly what converts the non-growing recycle endpoint of the bare dichotomy (Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">171</a>) into strict progress. The below-half branch never fires twice from the seed arithmetic, so the supply is needed at essentially every step. Its conclusion is the cofinal exact-row condition of Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">110</a>.*
 
 </div>
 
 <div id="record:257bm-c6" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1068">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1068">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6-comparator">Comparator</a></p>
 
-**Theorem 115** (The quotient condition on greedy prefixes). *Let $`D_c=G\cap\{2,\ldots,c-1\}`$. The condition on the actual greedy prefixes is
+**Theorem 116** (The quotient condition on greedy prefixes). *Let $`D_c=G\cap\{2,\ldots,c-1\}`$. The condition on the actual greedy prefixes is
 ``` math
 \begin{gathered}
  c\ge4,\quad c\notin G\\
  \Longrightarrow\qquad Q(D_c\cup\{c\},2c-2)\ge2^{2c-3}.
  \end{gathered}
 ```
-It asks for the quotient bound at every skipped rank of the specified half-greedy orbit. This restricts the crossing test of Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> to its actual greedy prefixes. The finite uniqueness results justify that restriction where the cited induction uses it; they do not prove the displayed inequality.*
+It asks for the quotient bound at every skipped rank of the specified half-greedy orbit. This restricts the crossing test of Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">114</a> to its actual greedy prefixes. The finite uniqueness results justify that restriction where the cited induction uses it; they do not prove the displayed inequality.*
 
 </div>
 
 <div id="record:257bm-c6a" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6a">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6a-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6a">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6a-comparator">Comparator</a></p>
 
-**Theorem 116** (Two consecutive skips). *If $`c\ge6`$ and the real half-greedy rule skips both $`c`$ and $`c+1`$, put $`D=G\cap\{2,\ldots,c-1\}`$. Then
+**Theorem 117** (Two consecutive skips). *If $`c\ge6`$ and the real half-greedy rule skips both $`c`$ and $`c+1`$, put $`D=G\cap\{2,\ldots,c-1\}`$. Then
 ``` math
 S(D,1,2c-3)<2^{c-3}.
 ```
-The one-step quotient recurrence gives $`S(D,1,2c-2)<2^{c-2}`$, so Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> supplies an exact row at depth $`2c-2`$ whose new ranks are all greater than $`c`$. The hypothesis concerns this pair of skipped ranks; no unbounded sequence of such pairs is proved here. For the stated precritical-suffix condition at every skipped rank, the remaining tests are the skip-then-take cases, with ranks $`4`$ and $`5`$ handled separately in the cited proof.*
+The one-step quotient recurrence gives $`S(D,1,2c-2)<2^{c-2}`$, so Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> supplies an exact row at depth $`2c-2`$ whose new ranks are all greater than $`c`$. The hypothesis concerns this pair of skipped ranks; no unbounded sequence of such pairs is proved here. For the stated precritical-suffix condition at every skipped rank, the remaining tests are the skip-then-take cases, with ranks $`4`$ and $`5`$ handled separately in the cited proof.*
 
 </div>
 
@@ -2525,13 +2560,13 @@ where the last inequality holds for $`c\ge6`$. The suffix is nonnegative because
 </div>
 
 <div id="record:257bm-c6b" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6b">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6b-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6b">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c6b-comparator">Comparator</a></p>
 
-**Theorem 117** (A later skip after a selected block). *Suppose the real half-greedy rule skips rank $`c`$, takes $`c+1,\ldots,c+t-1`$, and skips $`c+t`$. If
+**Theorem 118** (A later skip after a selected block). *Suppose the real half-greedy rule skips rank $`c`$, takes $`c+1,\ldots,c+t-1`$, and skips $`c+t`$. If
 ``` math
 0<t\le c-3,\qquad c-2\le2^{c-t-3},
 ```
-then the precritical suffix bound at $`c`$ holds. It yields sharp capacity and hence an exact row at depth $`2c-2`$. The case $`t=1`$ includes Theorem <a href="#record:257bm-c6a" data-reference-type="ref" data-reference="record:257bm-c6a">116</a>; the proof also permits longer selected blocks. The arithmetic condition is precisely $`t\le c-3-\lceil\log_2(c-2)\rceil`$. Its role in the proof is to make the dyadic allowance $`2^{c-t-3}`$ cover the bound $`|D|\le c-2`$ for the earlier selected support.*
+then the precritical suffix bound at $`c`$ holds. It yields sharp capacity and hence an exact row at depth $`2c-2`$. The case $`t=1`$ includes Theorem <a href="#record:257bm-c6a" data-reference-type="ref" data-reference="record:257bm-c6a">117</a>; the proof also permits longer selected blocks. The arithmetic condition is precisely $`t\le c-3-\lceil\log_2(c-2)\rceil`$. Its role in the proof is to make the dyadic allowance $`2^{c-t-3}`$ cover the bound $`|D|\le c-2`$ for the earlier selected support.*
 
 *To obtain cofinal exact rows by this result, the stated gap condition must hold at cofinally many skipped ranks $`c`$, not just at one rank or throughout a finite sample. A finite empirical skip frequency alone gives no such pointwise gap bound.*
 
@@ -2542,20 +2577,20 @@ then the precritical suffix bound at $`c`$ holds. It yields sharp capacity and h
 ##### Filling the remaining binary positions
 
 <div id="record:257bm-c7" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusSkipRow.lean#L238">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c7-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkipRow.lean#L238">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c7-comparator">Comparator</a></p>
 
-**Theorem 118** (Filling the remaining binary positions). *For any $`c\ge4`$ and any finite $`D\subseteq[2,c)`$ with $`\mathrm{value}(D)<1/2`$ and the sharp capacity
+**Theorem 119** (Filling the remaining binary positions). *For any $`c\ge4`$ and any finite $`D\subseteq[2,c)`$ with $`\mathrm{value}(D)<1/2`$ and the sharp capacity
 ``` math
 \ensuremath{S}(D,1,2c-2) < 2^{c-2},
 ```
-there is an exact row $`E`$ at endpoint $`2c-2`$ with $`D\subseteq E`$ and every new rank strictly above $`c`$. The implication requires the displayed capacity bound, but neither a crossing condition nor a specified real greedy prefix. The crossing hypothesis used in Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> is one way to seek that input, not an additional premise of this filling result. No strict comparison between the corresponding cofinal existence statements is asserted.*
+there is an exact row $`E`$ at endpoint $`2c-2`$ with $`D\subseteq E`$ and every new rank strictly above $`c`$. The implication requires the displayed capacity bound, but neither a crossing condition nor a specified real greedy prefix. The crossing hypothesis used in Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">114</a> is one way to seek that input, not an additional premise of this filling result. No strict comparison between the corresponding cofinal existence statements is asserted.*
 
 </div>
 
 <div id="record:257bm-c8" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusSkipRow.lean#L332">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c8-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkipRow.lean#L332">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c8-comparator">Comparator</a></p>
 
-**Theorem 119** (An exact sum at depth $`2c-2`$). *Under the hypotheses of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a>, there is a set $`E\subseteq\{2,\ldots,2c-2\}`$ with
+**Theorem 120** (An exact sum at depth $`2c-2`$). *Under the hypotheses of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a>, there is a set $`E\subseteq\{2,\ldots,2c-2\}`$ with
 ``` math
 Q(E,2c-2)=2^{2c-3}-1.
 ```
@@ -2564,24 +2599,24 @@ This conclusion forgets the additional support-extension information in that the
 </div>
 
 <div id="record:257bm-c9" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c9-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c9-comparator">Comparator</a></p>
 
-**Proposition 120** (Quotients in the upper half of the index range). *For integers $`d\ge2`$ and $`d\le M<2d`$,
+**Proposition 121** (Quotients in the upper half of the index range). *For integers $`d\ge2`$ and $`d\le M<2d`$,
 ``` math
 q(M,d)=\left\lfloor\frac{2^M}{2^d-1}\right\rfloor=2^{M-d}.
 ```
-Indeed, the quotient is $`2^{M-d}+2^{M-d}/(2^d-1)`$, whose second term is strictly between zero and one. In Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a>, the available ranks $`d=c+1,\ldots,2c-2`$ therefore supply the binary weights $`2^{c-3},\ldots,1`$. They represent every integer from $`0`$ to $`2^{c-2}-1`$, which explains both the capacity bound and the choice of terminal depth.*
+Indeed, the quotient is $`2^{M-d}+2^{M-d}/(2^d-1)`$, whose second term is strictly between zero and one. In Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a>, the available ranks $`d=c+1,\ldots,2c-2`$ therefore supply the binary weights $`2^{c-3},\ldots,1`$. They represent every integer from $`0`$ to $`2^{c-2}-1`$, which explains both the capacity bound and the choice of terminal depth.*
 
 </div>
 
 <div id="record:257bm-c10" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneQuotientRowRecurrences.lean#L264">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c10-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneQuotientRowRecurrences.lean#L264">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c10-comparator">Comparator</a></p>
 
-**Theorem 121** (A finite sum from a skipped prefix). *Let $`c\ge4`$ and $`D\subseteq\{2,\ldots,c-1\}`$ satisfy
+**Theorem 122** (A finite sum from a skipped prefix). *Let $`c\ge4`$ and $`D\subseteq\{2,\ldots,c-1\}`$ satisfy
 ``` math
 0<\frac12-X_D(2)<\frac1{2^c-1}.
 ```
-Then there is $`E`$ with $`D\subseteq E\subseteq\{2,\ldots,2c-2\}`$ and $`Q(E,2c-2)=2^{2c-3}-1`$. No separate sharp-capacity assumption is required. The binary completion in the linked proof uses ranks $`c,\ldots,2c-2`$; it may therefore insert $`c`$. Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> instead assumes the sharper $`(c-2)`$-bit bound so that every added rank is strictly greater than $`c`$.*
+Then there is $`E`$ with $`D\subseteq E\subseteq\{2,\ldots,2c-2\}`$ and $`Q(E,2c-2)=2^{2c-3}-1`$. No separate sharp-capacity assumption is required. The binary completion in the linked proof uses ranks $`c,\ldots,2c-2`$; it may therefore insert $`c`$. Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> instead assumes the sharper $`(c-2)`$-bit bound so that every added rank is strictly greater than $`c`$.*
 
 </div>
 
@@ -2592,9 +2627,9 @@ For a finite $`F\subseteq\{2,\ldots,n\}`$ with $`X_F(2)>1/2`$, take $`c`$ to be 
 ##### Reducing the dyadic-boundary checks
 
 <div id="record:257bm-c11" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c11">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c11-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c11">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c11-comparator">Comparator</a></p>
 
-**Theorem 122** (Testing one nearest dyadic boundary). *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let
+**Theorem 123** (Testing one nearest dyadic boundary). *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let
 ``` math
 j_*:=\max\{0\le j\le d:E\le2^{d-j+1}\}.
 ```
@@ -2617,16 +2652,16 @@ The boundary $`2^{d-j_*+1}`$ is the smallest power at least $`E`$ among the fini
 
 For example, $`d=5`$, $`E=20`$ gives $`j_*=1`$ and $`20+12=32`$, so equality at the allowed edge satisfies every band condition.
 
-At an actual upper reset, Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">123</a> supplies $`E\le2^{d+1}`$. The equivalence replaces all its local band tests by one test. The arithmetic inequality at every required reset remains an unproved hypothesis of the membership implication.
+At an actual upper reset, Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">124</a> supplies $`E\le2^{d+1}`$. The equivalence replaces all its local band tests by one test. The arithmetic inequality at every required reset remains an unproved hypothesis of the membership implication.
 
 <div id="record:257bm-c12" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c12">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c12-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c12">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c12-comparator">Comparator</a></p>
 
-**Proposition 123** (An upper bound for the reset expression). *Let $`d\ge5`$ be an actual upper-reset row. Write $`E_d`$ for its reset charge, the sum of four times the adjacent upper overshoot and the corresponding nonnegative correction term. The upper-reset identity is
+**Proposition 124** (An upper bound for the reset expression). *Let $`d\ge5`$ be an actual upper-reset row. Write $`E_d`$ for its reset charge, the sum of four times the adjacent upper overshoot and the corresponding nonnegative correction term. The upper-reset identity is
 ``` math
 \mathrm{rem}(d+1)+E_d=2^{d+1}.
 ```
-The nonnegativity of the successor remainder therefore gives $`E_d\le2^{d+1}`$, the side condition needed for Theorem <a href="#record:257bm-c11" data-reference-type="ref" data-reference="record:257bm-c11">122</a>. This argument uses the upper-reset branch assumption. It does not require the separate, conditional two-sided bound of Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a>, and does not assert the charge bound at arbitrary rows.*
+The nonnegativity of the successor remainder therefore gives $`E_d\le2^{d+1}`$, the side condition needed for Theorem <a href="#record:257bm-c11" data-reference-type="ref" data-reference="record:257bm-c11">123</a>. This argument uses the upper-reset branch assumption. It does not require the separate, conditional two-sided bound of Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">53</a>, and does not assert the charge bound at arbitrary rows.*
 
 </div>
 
@@ -2634,11 +2669,11 @@ The nonnegativity of the successor remainder therefore gives $`E_d\le2^{d+1}`$, 
 
 ##### Nonnegativity of the omitted-tail margin
 
-The next three statements compare the conditions of Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">56</a>. The first two are equivalent; the third is sufficient for them.
+The next three statements compare the conditions of Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">57</a>. The first two are equivalent; the third is sufficient for them.
 
 <div id="record:257bm-c13" class="defn">
 
-**Definition 124** (A nonnegativity condition at skipped ranks).
+**Definition 125** (A nonnegativity condition at skipped ranks).
 ``` math
 \forall\ \text{skipped rank } n\ge3,\quad 0 \le \ensuremath{F}(n-1,n).
 ```
@@ -2649,23 +2684,23 @@ This condition is not established here. Its usefulness is the following implicat
 </div>
 
 <div id="record:257bm-c14" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c14">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c14-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c14">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c14-comparator">Comparator</a></p>
 
-**Theorem 125** (An equivalent vanishing condition).
+**Theorem 126** (An equivalent vanishing condition).
 *``` math
 \begin{gathered}
  \forall\ \text{skipped rank }n\ge3\text{ whose actual word equals the seam-greedy word},\\
  \text{the integer remainder at }n\text{ is zero}.
 \end{gathered}
 ```
-This condition is equivalent to Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">124</a>. At an actual skipped rank, the source proves that $`F(n-1,n)<0`$ holds exactly when the real prefix agrees with the integer greedy word and its integer remainder is positive. On agreement, $`F(n-1,n)`$ is the negative of that nonnegative remainder. Thus nonnegativity of the margin at every skip is equivalent to vanishing of the remainder at every aligned skip. The equivalence is proved; neither condition is established for all required ranks.*
+This condition is equivalent to Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">125</a>. At an actual skipped rank, the source proves that $`F(n-1,n)<0`$ holds exactly when the real prefix agrees with the integer greedy word and its integer remainder is positive. On agreement, $`F(n-1,n)`$ is the negative of that nonnegative remainder. Thus nonnegativity of the margin at every skip is equivalent to vanishing of the remainder at every aligned skip. The equivalence is proved; neither condition is established for all required ranks.*
 
 </div>
 
 <div id="record:257bm-c15" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c15-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c15-comparator">Comparator</a></p>
 
-**Theorem 126** (A sufficient lower bound for the integer remainder).
+**Theorem 127** (A sufficient lower bound for the integer remainder).
 *``` math
 \forall\ \text{skipped rank }n\ge3,\quad B(2n) < \mathrm{rem}(n),
 ```
@@ -2680,45 +2715,45 @@ The displayed lower bound itself is not established.
 ##### Square-root bounds for half-carries
 
 <div id="record:257rig-c16" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c16-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c16-comparator">Comparator</a></p>
 
-**Theorem 127** (A square-root carry bound implies half-membership). *Write $`G`$ for the greedy support and $`C_G(N)`$ for its centred carry. If
+**Theorem 128** (A square-root carry bound implies half-membership). *Write $`G`$ for the greedy support and $`C_G(N)`$ for its centred carry. If
 ``` math
 \forall N,\qquad C_G(N) \le 2\sqrt N + 4,
 ```
-then the greedy selected support $`G`$ is infinite and $`X_G(2)=1/2`$. Nonnegativity of $`C_G`$ is unconditional (see Theorem <a href="#thm:mobius-centred-nonneg" data-reference-type="ref" data-reference="thm:mobius-centred-nonneg">54</a> and the greedy case above); only the upper $`2\sqrt N+4`$ bound remains open. This is a different hypothesis from the dyadic-band condition and the largest-skip condition; logical independence is not asserted.*
+then the greedy selected support $`G`$ is infinite and $`X_G(2)=1/2`$. Nonnegativity of $`C_G`$ is unconditional (see Theorem <a href="#thm:mobius-centred-nonneg" data-reference-type="ref" data-reference="thm:mobius-centred-nonneg">55</a> and the greedy case above); only the upper $`2\sqrt N+4`$ bound remains open. This is a different hypothesis from the dyadic-band condition and the largest-skip condition; logical independence is not asserted.*
 
 </div>
 
 <div id="record:257rig-c17" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c17-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c17-comparator">Comparator</a></p>
 
-**Theorem 128** (Terminal bounds at unbounded depths). *Suppose that for every $`N\ge0`$ there are $`M\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,M\}`$ such that
+**Theorem 129** (Terminal bounds at unbounded depths). *Suppose that for every $`N\ge0`$ there are $`M\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,M\}`$ such that
 ``` math
 |\operatorname{ihc}(D,M-1)|\le B(M)
        =2\lfloor\sqrt M\rfloor+4.
 ```
 Then some infinite $`A\subseteq\mathbb{N}_{>0}`$ satisfies $`X_A(2)=1/2`$. No compatibility between different finite supports or bound on their earlier carries is required.*
 
-*These are not the exact-row conditions of Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a>. For such a finite support,
+*These are not the exact-row conditions of Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">110</a>. For such a finite support,
 ``` math
 \operatorname{ihc}(D,M-1)=2^{M-1}-Q(D,M),
 ```
-so an exact row has carry $`1`$, whereas the displayed bound allows several positive and negative values. At $`M=6`$, for example, $`D=\{2,3\}`$ has $`Q(D,6)=30`$ and carry $`2`$: it satisfies the terminal bound but is not an exact row. Both cofinal existence statements nevertheless imply, and are implied by, half-membership, as explained in Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>. The difference between their finite data must not be confused with a strict logical weakening of the membership problem.*
+so an exact row has carry $`1`$, whereas the displayed bound allows several positive and negative values. At $`M=6`$, for example, $`D=\{2,3\}`$ has $`Q(D,6)=30`$ and carry $`2`$: it satisfies the terminal bound but is not an exact row. Both cofinal existence statements nevertheless imply, and are implied by, half-membership, as explained in Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a>. The difference between their finite data must not be confused with a strict logical weakening of the membership problem.*
 
 </div>
 
 The hypothesis is not established.
 
 <div id="record:257rig-c18" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c18">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c18-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c18">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257rig-c18-comparator">Comparator</a></p>
 
-**Theorem 129** (Cofinal returns of the greedy carry). *Suppose that for every $`N\ge0`$ there is $`M\ge N`$ such that
+**Theorem 130** (Cofinal returns of the greedy carry). *Suppose that for every $`N\ge0`$ there is $`M\ge N`$ such that
 ``` math
 \operatorname{ihc}(G,M)\le B(M+1)
        =2\lfloor\sqrt{M+1}\rfloor+4.
 ```
-Then $`G`$ is infinite and $`X_G(2)=1/2`$. Unlike Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">127</a>, this hypothesis bounds the actual greedy carry only at unboundedly many indices. It still concerns the same fixed support $`G`$, not independently chosen finite supports. Comparing this carry with the carry obtained by fixing a finite prefix introduces a contribution from later omitted ranks. No equivalence with the finite-support hypothesis of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> follows without controlling that additional contribution. The hypothesis is not established.*
+Then $`G`$ is infinite and $`X_G(2)=1/2`$. Unlike Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">128</a>, this hypothesis bounds the actual greedy carry only at unboundedly many indices. It still concerns the same fixed support $`G`$, not independently chosen finite supports. Comparing this carry with the carry obtained by fixing a finite prefix introduces a contribution from later omitted ranks. No equivalence with the finite-support hypothesis of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> follows without controlling that additional contribution. The hypothesis is not established.*
 
 </div>
 
@@ -2727,15 +2762,15 @@ Then $`G`$ is infinite and $`X_G(2)=1/2`$. Unlike Theorem <a href="#record:257r
 ##### A margin at an unspecified later horizon
 
 <div id="record:257bm-c19" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c19">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c19-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c19">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c19-comparator">Comparator</a></p>
 
-**Theorem 130** (An eventual nonnegative margin suffices). *Fix a positive depth $`k`$ and put $`D=G\cap\{2,\ldots,k\}`$. The following conditions are equivalent:
+**Theorem 131** (An eventual nonnegative margin suffices). *Fix a positive depth $`k`$ and put $`D=G\cap\{2,\ldots,k\}`$. The following conditions are equivalent:
 ``` math
 r_k(1/2)<2^{-(k+1)}
  \quad\Longleftrightarrow\quad
  F_k(J)\ge0\ \text{for some }J\ge0.
 ```
-Here $`F_k(J)`$ is the integer expression defined in Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">56</a>. Its normalised value is
+Here $`F_k(J)`$ is the integer expression defined in Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">57</a>. Its normalised value is
 ``` math
 2^{-J}F_k(J)=\sum_{i=1}^{J}c_D(k+1+i)2^{-i}-C_D(k).
 ```
@@ -2750,13 +2785,13 @@ This normalised expression, not necessarily $`F_k(J)`$ itself, is nondecreasing 
 ##### Equivalent conditions for infinitely many greedy skips
 
 <div id="record:257bm-c20" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c20">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c20-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c20">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-c20-comparator">Comparator</a></p>
 
-**Theorem 131** (Half-membership and infinitely many skips).
+**Theorem 132** (Half-membership and infinitely many skips).
 *``` math
 \tfrac12\in\ensuremath{\mathcal A} \;\Longleftrightarrow\; \text{the set of ranks skipped by the greedy rule for }\tfrac12\text{ is infinite}.
 ```
-Odd-denominator parity supplies the positivity clause in Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">111</a> automatically. Thus its cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is infinite, which the displayed theorem identifies with half-membership. See Observation <a href="#record:257bm-k5" data-reference-type="ref" data-reference="record:257bm-k5">175</a> for the reason this restatement does not itself prove membership.*
+Odd-denominator parity supplies the positivity clause in Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">112</a> automatically. Thus its cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is infinite, which the displayed theorem identifies with half-membership. See Observation <a href="#record:257bm-k5" data-reference-type="ref" data-reference="record:257bm-k5">176</a> for the reason this restatement does not itself prove membership.*
 
 </div>
 
@@ -2771,9 +2806,9 @@ This subsection collects identities and bounds used in the preceding criteria. E
 ##### One-step quotient identities
 
 <div id="record:257bm-i1a" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1a">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1a-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1a">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1a-comparator">Comparator</a></p>
 
-**Theorem 132** (The next floor quotient). *For $`d\ge2`$ and $`M\ge0`$, the floor quotient satisfies
+**Theorem 133** (The next floor quotient). *For $`d\ge2`$ and $`M\ge0`$, the floor quotient satisfies
 ``` math
 q(M+1,d)=2q(M,d)+\mathbf1_{d\mid M+1}.
 ```
@@ -2782,20 +2817,20 @@ Indeed, $`q(M,d)=\sum_{j=1}^{\lfloor M/d\rfloor}2^{M-jd}`$. Increasing $`M`$ dou
 </div>
 
 <div id="record:257bm-i1b" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusExactTransition.lean#L131">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1b-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusExactTransition.lean#L131">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1b-comparator">Comparator</a></p>
 
-**Theorem 133** (The next quotient sum). *For a fixed finite set $`D\subseteq\{2,3,\ldots\}`$ and $`M\ge0`$,
+**Theorem 134** (The next quotient sum). *For a fixed finite set $`D\subseteq\{2,3,\ldots\}`$ and $`M\ge0`$,
 ``` math
 Q(D,M+1)=2Q(D,M)+c_D(M+1).
 ```
-This is the sum of Theorem <a href="#record:257bm-i1a" data-reference-type="ref" data-reference="record:257bm-i1a">132</a> over $`d\in D`$. Keeping $`D`$ fixed is essential: changing the support between steps adds a separate difference of quotient sums. The exclusion of $`d=1`$ is also essential for the displayed correction term, since $`q(M,1)=2^M`$ doubles without an added unit.*
+This is the sum of Theorem <a href="#record:257bm-i1a" data-reference-type="ref" data-reference="record:257bm-i1a">133</a> over $`d\in D`$. Keeping $`D`$ fixed is essential: changing the support between steps adds a separate difference of quotient sums. The exclusion of $`d=1`$ is also essential for the displayed correction term, since $`q(M,1)=2^M`$ doubles without an added unit.*
 
 </div>
 
 <div id="record:257bm-i1c" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1c">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1c-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1c">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i1c-comparator">Comparator</a></p>
 
-**Theorem 134** (The signed endpoint recurrence). *The signed next-step expression is $`H(D,k,n)=2S(D,k,n-1)+1-c_D(n)`$. The last term counts the selected exponents dividing the new endpoint. This is the same recurrence shape as the generic tempered-orbit recurrence $`u(N+1)=2u(N)-v\cdot c(N+1)`$ from the tempered-orbit criterion (Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> below), specialised to Mersenne local repair. A matching recurrence alone does not imply rationality: Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> also requires one fixed coefficient sequence, integer states and a vanishing scaled limit. Those additional conditions must be checked before that criterion can be applied to these finite-row quantities.*
+**Theorem 135** (The signed endpoint recurrence). *The signed next-step expression is $`H(D,k,n)=2S(D,k,n-1)+1-c_D(n)`$. The last term counts the selected exponents dividing the new endpoint. This is the same recurrence shape as the generic tempered-orbit recurrence $`u(N+1)=2u(N)-v\cdot c(N+1)`$ from the tempered-orbit criterion (Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a> below), specialised to Mersenne local repair. A matching recurrence alone does not imply rationality: Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a> also requires one fixed coefficient sequence, integer states and a vanishing scaled limit. Those additional conditions must be checked before that criterion can be applied to these finite-row quantities.*
 
 </div>
 
@@ -2805,7 +2840,7 @@ This is the sum of Theorem <a href="#record:257bm-i1a" data-reference-type="ref
 
 <div id="record:257bm-i-cap" class="defn">
 
-**Definition 135** (The sharper binary bound). Let $`c\ge4`$, $`D\subseteq\{2,\ldots,c-1\}`$, and $`X_D(2)<1/2`$. The sharper bound is the condition
+**Definition 136** (The sharper binary bound). Let $`c\ge4`$, $`D\subseteq\{2,\ldots,c-1\}`$, and $`X_D(2)<1/2`$. The sharper bound is the condition
 ``` math
 S(D,1,2c-2)<2^{c-2}.
 ```
@@ -2816,9 +2851,9 @@ It permits a binary completion using ranks $`c+1,\ldots,2c-2`$, with rank $`c`$ 
 </div>
 
 <div id="record:257bm-i5" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L22">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i5-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L22">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i5-comparator">Comparator</a></p>
 
-**Theorem 136** (Equivalent forms of the sharper bound). *Under the hypotheses of Definition <a href="#record:257bm-i-cap" data-reference-type="ref" data-reference="record:257bm-i-cap">135</a>:
+**Theorem 137** (Equivalent forms of the sharper bound). *Under the hypotheses of Definition <a href="#record:257bm-i-cap" data-reference-type="ref" data-reference="record:257bm-i-cap">136</a>:
 ``` math
 \ensuremath{S}(D,1,2c-2) < 2^{c-2} \;\Longleftrightarrow\; 2^{(2c-2)-1} \le \ensuremath{Q}(D\cup\{c\},\ 2c-2).
 ```
@@ -2841,13 +2876,13 @@ For the completion, use the ranks $`c+1,\ldots,M`$ instead. Their quotient weigh
 For example, $`D=\{2,3\}`$ and $`c=5`$ give $`M=8`$, $`Q(D,8)=121`$ and remainder $`6<8`$. Inserting rank $`5`$ adds $`8`$, giving $`129`$ rather than the exact target $`127`$. The correct completion adds ranks $`6`$ and $`7`$, whose quotients are $`4`$ and $`2`$.
 
 <div id="record:257bm-i6" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i6">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i6-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i6">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i6-comparator">Comparator</a></p>
 
-**Theorem 137** (An unconditional bound with one extra bit). *Unconditionally, for every $`c\ge4`$ and every below-half core $`D\subseteq[2,c)`$ with deficit $`<\ensuremath{w}(c)`$:
+**Theorem 138** (An unconditional bound with one extra bit). *Unconditionally, for every $`c\ge4`$ and every below-half core $`D\subseteq[2,c)`$ with deficit $`<\ensuremath{w}(c)`$:
 ``` math
 \ensuremath{S}(D,1,2c-2) < 2^{c-1}.
 ```
-The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">136</a> to apply Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a>. Before using $`|D|\le c-2\le2^{c-2}`$, the proof gives the sharper additive estimate $`\ensuremath{S}(D,1,2c-2)<2^{c-2}+|D|`$. Thus the critical-capacity inequality would follow by excluding the integer band $`[2^{c-2},\,2^{c-2}+c-3]`$, which contains $`c-2`$ integers. This is the same band shape as Theorem <a href="#record:257bm-c11" data-reference-type="ref" data-reference="record:257bm-c11">122</a>’s dyadic-band condition. Its width is linear in $`c`$, whereas the square-root reset condition discussed in Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> has width $`2^{(r+5)/2}`$ in a different parameter $`r`$. Comparing these widths alone proves no implication between the two hypotheses.*
+The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">137</a> to apply Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a>. Before using $`|D|\le c-2\le2^{c-2}`$, the proof gives the sharper additive estimate $`\ensuremath{S}(D,1,2c-2)<2^{c-2}+|D|`$. Thus the critical-capacity inequality would follow by excluding the integer band $`[2^{c-2},\,2^{c-2}+c-3]`$, which contains $`c-2`$ integers. This is the same band shape as Theorem <a href="#record:257bm-c11" data-reference-type="ref" data-reference="record:257bm-c11">123</a>’s dyadic-band condition. Its width is linear in $`c`$, whereas the square-root reset condition discussed in Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> has width $`2^{(r+5)/2}`$ in a different parameter $`r`$. Comparing these widths alone proves no implication between the two hypotheses.*
 
 </div>
 
@@ -2856,9 +2891,9 @@ The bound holds uniformly in $`c`$, but is twice the threshold needed in Theorem
 ##### Doubling the endpoint
 
 <div id="record:257bm-i7" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i7">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i7-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i7">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i7-comparator">Comparator</a></p>
 
-**Theorem 138** (The binary bound after doubling). *Let $`n\ge6`$ and $`D\subseteq\{2,\ldots,n\}`$ satisfy $`2\in D`$, $`Q(D,n)=2^{n-1}-1`$, and $`X_D(2)<1/2`$. Then
+**Theorem 139** (The binary bound after doubling). *Let $`n\ge6`$ and $`D\subseteq\{2,\ldots,n\}`$ satisfy $`2\in D`$, $`Q(D,n)=2^{n-1}-1`$, and $`X_D(2)<1/2`$. Then
 ``` math
 S(D,1,2n-1)<2^{n-1}.
 ```
@@ -2883,9 +2918,9 @@ using $`3(n-2)<2^{n-1}`$ for $`n\ge6`$. The ranks $`n+1,\ldots,2n-1`$ supply exa
 For example, $`n=6`$ and $`D=\{2,3,6\}`$ give $`X_D(2)=31/63`$, $`Q(D,11)=1006`$ and missing quotient $`1023-1006=17`$. The ranks $`7`$ and $`11`$ supply $`16+1`$. The resulting exact row $`E=\{2,3,6,7,11\}`$ has $`X_E(2)-1/2=13955/32756094>0`$. Thus the extension is exact at its integer target, but need not remain below half in real value.
 
 <div id="record:257bm-i-rank2" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusExactRowRankTwo.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i-rank2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusExactRowRankTwo.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i-rank2-comparator">Comparator</a></p>
 
-**Proposition 139** (Every exact sum contains exponent two). *Let $`n\ge3`$ and let $`D\subseteq\{2,\ldots,n\}`$ satisfy $`Q(D,n)=2^{n-1}-1`$. Then $`2\in D`$. Thus the rank-two hypothesis in Theorem <a href="#record:257bm-i7" data-reference-type="ref" data-reference="record:257bm-i7">138</a> is automatic for its exact rows. The interval restriction on $`D`$ is part of the assertion, not an assumption about arbitrary finite quotient sums.*
+**Proposition 140** (Every exact sum contains exponent two). *Let $`n\ge3`$ and let $`D\subseteq\{2,\ldots,n\}`$ satisfy $`Q(D,n)=2^{n-1}-1`$. Then $`2\in D`$. Thus the rank-two hypothesis in Theorem <a href="#record:257bm-i7" data-reference-type="ref" data-reference="record:257bm-i7">139</a> is automatic for its exact rows. The interval restriction on $`D`$ is part of the assertion, not an assumption about arbitrary finite quotient sums.*
 
 </div>
 
@@ -2895,11 +2930,11 @@ For example, $`n=6`$ and $`D=\{2,3,6\}`$ give $`X_D(2)=31/63`$, $`Q(D,11)=1006`$
 
 <div id="record:257bm-i-seed" class="defn">
 
-**Definition 140** (An exact sum at depth six). The set $`\{2,3,6\}`$ satisfies
+**Definition 141** (An exact sum at depth six). The set $`\{2,3,6\}`$ satisfies
 ``` math
 \ensuremath{Q}(\{2,3,6\},6) = 2^5-1 = 31,\qquad \ensuremath{V}(\{2,3,6\}) < 1/2,
 ```
-hence it is an exact row at depth $`6`$ (Definition <a href="#record:257bm-d1" data-reference-type="ref" data-reference="record:257bm-d1">106</a>). Both facts are direct numerical checks. This is the chosen seed for the $`n\ge6`$ transition theorem; the induction starts at this depth. It is not the first exact quotient row without that restriction: at $`n=2`$, $`D=\{2\}`$ already gives $`Q(D,2)=1=2^{2-1}-1`$.
+hence it is an exact row at depth $`6`$ (Definition <a href="#record:257bm-d1" data-reference-type="ref" data-reference="record:257bm-d1">107</a>). Both facts are direct numerical checks. This is the chosen seed for the $`n\ge6`$ transition theorem; the induction starts at this depth. It is not the first exact quotient row without that restriction: at $`n=2`$, $`D=\{2\}`$ already gives $`Q(D,2)=1=2^{2-1}-1`$.
 
 [`exactRowSixSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowSeed.lean#L14) [`exactLocalMersenneHalfRow_six`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowSeed.lean#L34)
 
@@ -2910,16 +2945,16 @@ hence it is an exact row at depth $`6`$ (Definition <a href="#record:257bm-d1" 
 ##### Approximation error and finite denominators
 
 <div id="record:257bm-i9" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusGlobalRepair.lean#L243">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i9-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusGlobalRepair.lean#L243">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i9-comparator">Comparator</a></p>
 
-**Proposition 141** (Error in the finite subseries value). *An exact row at endpoint $`n`$ has real value within $`O(n/2^n)`$ of $`1/2`$: the quantitative bound $`|y_n-1/2|\le(n+1)/2^n`$ consumed by Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">110</a> to turn a sequence of exact rows tending to depth infinity into a sequence of values tending to $`1/2`$.*
+**Proposition 142** (Error in the finite subseries value). *An exact row at endpoint $`n`$ has real value within $`O(n/2^n)`$ of $`1/2`$: the quantitative bound $`|y_n-1/2|\le(n+1)/2^n`$ consumed by Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">111</a> to turn a sequence of exact rows tending to depth infinity into a sequence of values tending to $`1/2`$.*
 
 </div>
 
 <div id="record:257bm-i10" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i10">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i10-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i10">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i10-comparator">Comparator</a></p>
 
-**Proposition 142** (No finite support has value one half). *A finite sum of reciprocals of odd integers has odd denominator in lowest terms, so it cannot equal $`1/2`$. Applied to the denominators $`2^a-1`$, this proves that a support representing $`1/2`$ must be infinite, as used in Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">110</a>.*
+**Proposition 143** (No finite support has value one half). *A finite sum of reciprocals of odd integers has odd denominator in lowest terms, so it cannot equal $`1/2`$. Applied to the denominators $`2^a-1`$, this proves that a support representing $`1/2`$ must be infinite, as used in Theorem <a href="#record:257bm-c1" data-reference-type="ref" data-reference="record:257bm-c1">111</a>.*
 
 </div>
 
@@ -2928,9 +2963,9 @@ hence it is an exact row at depth $`6`$ (Definition <a href="#record:257bm-d1" 
 ##### Uniqueness for gap-dominated finite weights
 
 <div id="record:257bm-i11a" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusGreedyReduction.lean#L918">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11a-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusGreedyReduction.lean#L918">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11a-comparator">Comparator</a></p>
 
-**Theorem 143** (Small remainder forces the greedy word). *Let $`g\ge1`$ and let $`w_1,\ldots,w_m`$ be nonnegative integer weights satisfying
+**Theorem 144** (Small remainder forces the greedy word). *Let $`g\ge1`$ and let $`w_1,\ldots,w_m`$ be nonnegative integer weights satisfying
 ``` math
 w_i\ge g+\sum_{j>i}w_j\qquad(1\le i\le m).
 ```
@@ -2946,28 +2981,28 @@ Indeed, two different words have sums separated by at least $`g`$, as seen at th
 </div>
 
 <div id="record:257bm-i11b" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11b">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11b-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11b">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11b-comparator">Comparator</a></p>
 
-**Proposition 144** (Gap domination of the integer weights). *For integers $`1\le d\le R\le M`$, the quotient weights satisfy
+**Proposition 145** (Gap domination of the integer weights). *For integers $`1\le d\le R\le M`$, the quotient weights satisfy
 ``` math
 \left\lfloor\frac{2^M}{2^d-1}\right\rfloor
  \ge 2^{M-R}+
  \sum_{j=d+1}^{R}\left\lfloor\frac{2^M}{2^j-1}\right\rfloor.
 ```
-Thus the finite weight list at ranks $`2,\ldots,R`$ satisfies the hypothesis of Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> with $`g=2^{M-R}`$. At $`M=2R-1`$ this gap is $`2^{R-1}`$, and at $`M=2R`$ it is $`2^R`$. The inequality is unconditional; it does not assert that the greedy remainder is smaller than the gap.*
+Thus the finite weight list at ranks $`2,\ldots,R`$ satisfies the hypothesis of Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">144</a> with $`g=2^{M-R}`$. At $`M=2R-1`$ this gap is $`2^{R-1}`$, and at $`M=2R`$ it is $`2^R`$. The inequality is unconditional; it does not assert that the greedy remainder is smaller than the gap.*
 
 </div>
 
 <div id="record:257bm-i11c" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusGreedyReduction.lean#L997">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11c-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusGreedyReduction.lean#L997">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i11c-comparator">Comparator</a></p>
 
-**Proposition 145** (Uniqueness of the finite greedy representation). *Let $`1\le M`$, $`0\le R\le M`$, and $`0\le a<2^{M-R}`$. If
+**Proposition 146** (Uniqueness of the finite greedy representation). *Let $`1\le M`$, $`0\le R\le M`$, and $`0\le a<2^{M-R}`$. If
 ``` math
 \sum_{d=2}^{R}\varepsilon_d
        \left\lfloor\frac{2^M}{2^d-1}\right\rfloor+a
        =2^{M-1}-1,\qquad \varepsilon_d\in\{0,1\},
 ```
-then $`\varepsilon`$ is the greedy word for capacity $`2^{M-1}-1`$ and $`a`$ is its remainder. This follows by applying Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> with the preceding gap inequality. The statement identifies any such representation; it does not prove that a representation with $`a<2^{M-R}`$ exists. The degenerate formal case $`M=0`$ has empty word and zero target, using truncated natural-number subtraction.*
+then $`\varepsilon`$ is the greedy word for capacity $`2^{M-1}-1`$ and $`a`$ is its remainder. This follows by applying Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">144</a> with the preceding gap inequality. The statement identifies any such representation; it does not prove that a representation with $`a<2^{M-R}`$ exists. The degenerate formal case $`M=0`$ has empty word and zero target, using truncated natural-number subtraction.*
 
 </div>
 
@@ -2976,14 +3011,14 @@ then $`\varepsilon`$ is the greedy word for capacity $`2^{M-1}-1`$ and $`a`$ is 
 ##### A geometric form of the quotient condition
 
 <div id="record:257bm-i12" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i12">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i12-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i12">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i12-comparator">Comparator</a></p>
 
-**Theorem 146** (A division-free form of the binary bound). *For $`M\ge0`$ and $`d\ge2`$,
+**Theorem 147** (A division-free form of the binary bound). *For $`M\ge0`$ and $`d\ge2`$,
 ``` math
 \left\lfloor\frac{2^M}{2^d-1}\right\rfloor
    =\sum_{j=1}^{\lfloor M/d\rfloor}2^{M-jd},
 ```
-where an empty sum is zero. To see this, write $`M=qd+r`$ with $`0\le r<d`$ and expand the finite geometric sum. The remaining fraction is $`2^r/(2^d-1)`$, which lies strictly between $`0`$ and $`1`$. Substitution in Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">136</a> expresses its quotient condition as a finite sum of powers of $`2`$. This is an exact rewriting, not a weaker hypothesis or a new existence result.*
+where an empty sum is zero. To see this, write $`M=qd+r`$ with $`0\le r<d`$ and expand the finite geometric sum. The remaining fraction is $`2^r/(2^d-1)`$, which lies strictly between $`0`$ and $`1`$. Substitution in Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">137</a> expresses its quotient condition as a finite sum of powers of $`2`$. This is an exact rewriting, not a weaker hypothesis or a new existence result.*
 
 </div>
 
@@ -2992,20 +3027,20 @@ where an empty sum is zero. To see this, write $`M=qd+r`$ with $`0\le r<d`$ and 
 ##### Bounds for a general coefficient sequence
 
 <div id="record:257bm-i2" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i2-comparator">Comparator</a></p>
 
-**Theorem 147** (An upper bound for a binary coefficient tail). *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then
+**Theorem 148** (An upper bound for a binary coefficient tail). *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then
 ``` math
 \sum_{r\ge1}c(N+r)2^{-r}\le N+2\qquad(N\ge0).
 ```
-Indeed, $`c(N+r)\le N+r`$, while $`\sum_{r\ge1}2^{-r}=1`$ and $`\sum_{r\ge1}r2^{-r}=2`$. Thus the scaled tail is $`O(N)`$, and in particular $`o(2^N)`$, as required in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a>. The coefficient bound also holds for Euler’s totient function.*
+Indeed, $`c(N+r)\le N+r`$, while $`\sum_{r\ge1}2^{-r}=1`$ and $`\sum_{r\ge1}r2^{-r}=2`$. Thus the scaled tail is $`O(N)`$, and in particular $`o(2^N)`$, as required in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a>. The coefficient bound also holds for Euler’s totient function.*
 
 </div>
 
 <div id="record:257bm-i-t7" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/GenericTailOrbitRigidity.lean#L435">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i-t7-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GenericTailOrbitRigidity.lean#L435">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-3.md#record-257bm-i-t7-comparator">Comparator</a></p>
 
-**Theorem 148** (Rationality through an integer recurrence). *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then $`\sum_{n\ge1}c(n)2^{-n}`$ is rational if and only if there exist a positive integer $`v`$ and a sequence $`u:\mathbb{N}\to\mathbb{Z}`$ such that
+**Theorem 149** (Rationality through an integer recurrence). *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then $`\sum_{n\ge1}c(n)2^{-n}`$ is rational if and only if there exist a positive integer $`v`$ and a sequence $`u:\mathbb{N}\to\mathbb{Z}`$ such that
 ``` math
 u(N+1)=2u(N)-v c(N+1)\quad(N\ge0),\qquad
  \frac{u(N)}{2^N}\longrightarrow0.
@@ -3023,9 +3058,9 @@ The limit condition gives the rational value $`u(0)/v`$. Conversely, if the seri
 For example, the finite support $`A=\{2\}`$ has $`c_A(n)=\mathbf1_{2\mid n}`$ and $`X_A(2)=1/3`$. With $`v=3`$, the sequence $`u(N)=1`$ for even $`N`$ and $`u(N)=2`$ for odd $`N`$ satisfies the recurrence. The criterion therefore includes finite supports; it does not provide the infinite support needed to contradict Problem 257.
 
 <div id="record:257bm-i-mob" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-mob">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-mob-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-mob">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-mob-comparator">Comparator</a></p>
 
-**Theorem 149** (Möbius inversion of the divisor counts). *For a set $`A\subseteq\mathbb{N}`$ and each positive integer $`n`$,
+**Theorem 150** (Möbius inversion of the divisor counts). *For a set $`A\subseteq\mathbb{N}`$ and each positive integer $`n`$,
 ``` math
 \sum_{d\mid n}\mu(d)c_A(n/d)=\mathbf1_A(n),
 ```
@@ -3034,14 +3069,14 @@ where $`\mu`$ is the Möbius function and $`c_A(n)`$ counts the positive element
 </div>
 
 <div id="record:257bm-i-bridge" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-bridge">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-bridge-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-bridge">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-bridge-comparator">Comparator</a></p>
 
-**Theorem 150** (The support series as a coefficient series). *For $`A\subseteq\mathbb{N}_{>0}`$,
+**Theorem 151** (The support series as a coefficient series). *For $`A\subseteq\mathbb{N}_{>0}`$,
 ``` math
 X_A(2)=\sum_{a\in A}\frac1{2^a-1}
        =\sum_{n\ge1}\frac{c_A(n)}{2^n}.
 ```
-Expanding each denominator as a geometric series and interchanging nonnegative sums gives the identity. Since $`c_A(n)\le\tau(n)\le n`$, Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> applies. Together with Theorem <a href="#record:257bm-i-mob" data-reference-type="ref" data-reference="record:257bm-i-mob">149</a>, it expresses rationality through an integer recurrence whose coefficients all come from the same support.*
+Expanding each denominator as a geometric series and interchanging nonnegative sums gives the identity. Since $`c_A(n)\le\tau(n)\le n`$, Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a> applies. Together with Theorem <a href="#record:257bm-i-mob" data-reference-type="ref" data-reference="record:257bm-i-mob">150</a>, it expresses rationality through an integer recurrence whose coefficients all come from the same support.*
 
 </div>
 
@@ -3049,44 +3084,44 @@ Expanding each denominator as a geometric series and interchanging nonnegative s
 
 ##### Restrictions on a support with rational value
 
-The next results impose separate restrictions on rational-valued supports. The related strict-gap result is Proposition <a href="#record:257bm-i10" data-reference-type="ref" data-reference="record:257bm-i10">142</a>.
+The next results impose separate restrictions on rational-valued supports. The related strict-gap result is Proposition <a href="#record:257bm-i10" data-reference-type="ref" data-reference="record:257bm-i10">143</a>.
 
 <div id="record:257rig-i2" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i2-comparator">Comparator</a></p>
 
-**Theorem 151** (A restriction on dyadic rational values). *If an infinite support $`A\subseteq\mathbb{N}_{>0}`$ has $`X_A(2)=p/2^c`$ for integers $`p`$ and $`c\ge0`$, then $`\sum_{a\in A}1/a`$ either diverges or converges to a value greater than $`1`$. The cited proof averages the shifted integer recurrence and uses a common multiple of two distinct support elements. Thus a convergent reciprocal sum of at most $`1`$ is excluded. This is a separate necessary condition: the reciprocal-summable criterion proved earlier already excludes every support with a convergent reciprocal sum, not just those whose sum is at most $`1`$.*
+**Theorem 152** (A restriction on dyadic rational values). *If an infinite support $`A\subseteq\mathbb{N}_{>0}`$ has $`X_A(2)=p/2^c`$ for integers $`p`$ and $`c\ge0`$, then $`\sum_{a\in A}1/a`$ either diverges or converges to a value greater than $`1`$. The cited proof averages the shifted integer recurrence and uses a common multiple of two distinct support elements. Thus a convergent reciprocal sum of at most $`1`$ is excluded. This is a separate necessary condition: the reciprocal-summable criterion proved earlier already excludes every support with a convergent reciprocal sum, not just those whose sum is at most $`1`$.*
 
 </div>
 
 <div id="record:257rig-i3" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i3">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i3-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i3">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i3-comparator">Comparator</a></p>
 
-**Theorem 152** (Unboundedness of a positive shifted recurrence). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, fix a shift $`c\ge0`$ and a positive integer $`v`$, and let $`u`$ be a positive integer sequence satisfying
+**Theorem 153** (Unboundedness of a positive shifted recurrence). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, fix a shift $`c\ge0`$ and a positive integer $`v`$, and let $`u`$ be a positive integer sequence satisfying
 ``` math
 u(n+1)+v c_A(c+n+1)=2u(n)\qquad(n\ge0).
 ```
-Then $`u`$ is unbounded. Indeed, under a proposed bound $`u(n)\le B`$, choose $`2B+1`$ distinct support elements and a common multiple larger than $`c`$. At the corresponding index the divisor count is at least $`2B+1`$, contradicting the recurrence. This does not conflict with Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a>, whose condition is $`u(n)/2^n\to0`$, not boundedness. An unbounded sequence can still satisfy that limit.*
+Then $`u`$ is unbounded. Indeed, under a proposed bound $`u(n)\le B`$, choose $`2B+1`$ distinct support elements and a common multiple larger than $`c`$. At the corresponding index the divisor count is at least $`2B+1`$, contradicting the recurrence. This does not conflict with Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a>, whose condition is $`u(n)/2^n\to0`$, not boundedness. An unbounded sequence can still satisfy that limit.*
 
 </div>
 
 <div id="record:257rig-i4a" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4a">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4a-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4a">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4a-comparator">Comparator</a></p>
 
-**Theorem 153** (Bounds for intervals with zero divisor counts). *Suppose that $`X_A(2)=p/(2^cv)`$ for an infinite positive support $`A`$ and an odd positive integer $`v`$. For every $`\varepsilon>0`$ there is $`B`$ such that, for $`N\ge1`$, a run of $`h`$ zero divisor counts starting after $`c+N`$ satisfies $`h\le\varepsilon\log_2N+B`$. In fact this conclusion holds without rationality: fix any $`a\in A`$. Every $`a`$ consecutive positive integers include a multiple of $`a`$, where $`c_A`$ is positive. Hence $`h\le a-1`$, so one can take $`B=a-1`$. The zero-run conclusion therefore imposes no additional restriction on a fixed nonempty support, regardless of the tail estimates used in the linked proof.*
+**Theorem 154** (Bounds for intervals with zero divisor counts). *Suppose that $`X_A(2)=p/(2^cv)`$ for an infinite positive support $`A`$ and an odd positive integer $`v`$. For every $`\varepsilon>0`$ there is $`B`$ such that, for $`N\ge1`$, a run of $`h`$ zero divisor counts starting after $`c+N`$ satisfies $`h\le\varepsilon\log_2N+B`$. In fact this conclusion holds without rationality: fix any $`a\in A`$. Every $`a`$ consecutive positive integers include a multiple of $`a`$, where $`c_A`$ is positive. Hence $`h\le a-1`$, so one can take $`B=a-1`$. The zero-run conclusion therefore imposes no additional restriction on a fixed nonempty support, regardless of the tail estimates used in the linked proof.*
 
 </div>
 
 <div id="record:257rig-i4b" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4b">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4b-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4b">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i4b-comparator">Comparator</a></p>
 
-**Proposition 154** (A subpower bound for divisor counts). *For positive integers $`n,k`$, $`\tau(n)^k \le (k^{2^k})^k\cdot n`$, or equivalently $`\tau(n)\le k^{2^k}n^{1/k}`$. The constant absorbs the finitely many primes below $`2^k`$; for larger primes, $`(\nu+1)^k\le p^\nu`$ controls each factor of the divisor product. This estimate is independent of the support problem. The elementary zero-run bound above already follows from a single positive support element, without this estimate or a recurrence.*
+**Proposition 155** (A subpower bound for divisor counts). *For positive integers $`n,k`$, $`\tau(n)^k \le (k^{2^k})^k\cdot n`$, or equivalently $`\tau(n)\le k^{2^k}n^{1/k}`$. The constant absorbs the finitely many primes below $`2^k`$; for larger primes, $`(\nu+1)^k\le p^\nu`$ controls each factor of the divisor product. This estimate is independent of the support problem. The elementary zero-run bound above already follows from a single positive support element, without this estimate or a recurrence.*
 
 </div>
 
 <div id="record:257rig-i5" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i5">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i5-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i5">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-i5-comparator">Comparator</a></p>
 
-**Proposition 155** (Two distinct prime-power differences commute). *Lemma <a href="#lem:mixed-prime-power-layer" data-reference-type="ref" data-reference="lem:mixed-prime-power-layer">100</a> gives the four-term expansion and its divisor-count interpretation. Commutation is elementary for arbitrary positive multipliers. The extraction formula uses distinct primes, *positive* exponents $`e,f`$ and $`\gcd(n,pq)=1`$. The example $`A=\{12\}`$ shows the extracted coefficient explicitly. No rationality statement about multiplicative subsequences follows from commutation alone.*
+**Proposition 156** (Two distinct prime-power differences commute). *Lemma <a href="#lem:mixed-prime-power-layer" data-reference-type="ref" data-reference="lem:mixed-prime-power-layer">101</a> gives the four-term expansion and its divisor-count interpretation. Commutation is elementary for arbitrary positive multipliers. The extraction formula uses distinct primes, *positive* exponents $`e,f`$ and $`\gcd(n,pq)=1`$. The example $`A=\{12\}`$ shows the extracted coefficient explicitly. No rationality statement about multiplicative subsequences follows from commutation alone.*
 
 </div>
 
@@ -3096,7 +3131,7 @@ Then $`u`$ is unbounded. Indeed, under a proposed bound $`u(n)\le B`$, choose $`
 
 <div id="record:257bm-i-cross" class="defn">
 
-**Definition 156** (The first crossing rank). For a finite set $`E`$, its crossing ranks are
+**Definition 157** (The first crossing rank). For a finite set $`E`$, its crossing ranks are
 ``` math
 \bigl\{c\in E:\ \tfrac12 < \ensuremath{V}(\{e\in E:e\le c\})\bigr\},
 ```
@@ -3107,9 +3142,9 @@ the ranks at which $`E`$’s inclusive ordered prefix is already above one half.
 </div>
 
 <div id="record:257bm-i-cross2" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/BooleanMobiusExactRowCrossing.lean#L31">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-cross2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/BooleanMobiusExactRowCrossing.lean#L31">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i-cross2-comparator">Comparator</a></p>
 
-**Theorem 157** (Existence of a first crossing). *Let $`E\subseteq\{2,3,\ldots\}`$ be finite and suppose $`X_E(2)>1/2`$. There is a least $`c\in E`$ such that
+**Theorem 158** (Existence of a first crossing). *Let $`E\subseteq\{2,3,\ldots\}`$ be finite and suppose $`X_E(2)>1/2`$. There is a least $`c\in E`$ such that
 ``` math
 X_{E\cap[2,c)}(2)<\frac12
        <X_{E\cap[2,c]}(2),\qquad c\ge4.
@@ -3123,26 +3158,26 @@ Positivity of the summands makes the partial sums increasing. Their odd reduced 
 ##### Centred carries at skipped ranks
 
 <div id="record:257hg-i6" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i6">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i6-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i6">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i6-comparator">Comparator</a></p>
 
-**Theorem 158** (Nonnegative centred carries below the half-value). *If $`1\notin A`$ and $`X_A(2)<1/2`$, then
+**Theorem 159** (Nonnegative centred carries below the half-value). *If $`1\notin A`$ and $`X_A(2)<1/2`$, then
 ``` math
 C_A(N)=\operatorname{ihc}(A,N)-1\ge0\qquad(N\ge0).
 ```
-Indeed, Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">15</a> gives
+Indeed, Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">16</a> gives
 ``` math
 \operatorname{ihc}(A,N)
  =2^{N+1}\bigl(1/2-X_A(2)\bigr)
      +\sum_{r\ge1}c_A(N+1+r)2^{-r}>0.
 ```
-The first term is strictly positive and the tail is nonnegative. Since the half-carry is an integer, it is at least $`1`$; subtracting $`1`$ proves the centred bound. Nonnegativity alone, without this strictness and integrality step, would only give $`C_A(N)\ge-1`$. The argument supplies the lower bound used with the conditional upper bound in Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">127</a>.*
+The first term is strictly positive and the tail is nonnegative. Since the half-carry is an integer, it is at least $`1`$; subtracting $`1`$ proves the centred bound. Nonnegativity alone, without this strictness and integrality step, would only give $`C_A(N)\ge-1`$. The argument supplies the lower bound used with the conditional upper bound in Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">128</a>.*
 
 </div>
 
 <div id="record:257hg-i7" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i7-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i7-comparator">Comparator</a></p>
 
-**Theorem 159** (Three possibilities at a skipped endpoint). *For a rank $`s\ge5`$ omitted by the real greedy support, let $`H_s`$ and $`f_s`$ be as in Lemma <a href="#lem:skipped-endpoint-trichotomy" data-reference-type="ref" data-reference="lem:skipped-endpoint-trichotomy">88</a>. That lemma identifies the actual prefix as $`D_s`$ when $`f_s\le0`$ and as $`B_s`$ when $`f_s>0`$, with the exact remainder or overshoot in each case. To obtain the nonnegative-margin condition in Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">124</a>, the negative case would still have to be excluded at every required skipped rank. The trichotomy itself does not exclude it. In particular, the value $`-3`$ excluded for $`C_D`$ under the all-right-tail hypothesis of Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">87</a> is not an exclusion for $`f_s`$: the coordinates and the hypotheses are different.*
+**Theorem 160** (Three possibilities at a skipped endpoint). *For a rank $`s\ge5`$ omitted by the real greedy support, let $`H_s`$ and $`f_s`$ be as in Lemma <a href="#lem:skipped-endpoint-trichotomy" data-reference-type="ref" data-reference="lem:skipped-endpoint-trichotomy">89</a>. That lemma identifies the actual prefix as $`D_s`$ when $`f_s\le0`$ and as $`B_s`$ when $`f_s>0`$, with the exact remainder or overshoot in each case. To obtain the nonnegative-margin condition in Definition <a href="#record:257bm-c13" data-reference-type="ref" data-reference="record:257bm-c13">125</a>, the negative case would still have to be excluded at every required skipped rank. The trichotomy itself does not exclude it. In particular, the value $`-3`$ excluded for $`C_D`$ under the all-right-tail hypothesis of Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">88</a> is not an exclusion for $`f_s`$: the coordinates and the hypotheses are different.*
 
 </div>
 
@@ -3152,16 +3187,16 @@ The first term is strictly positive and the tail is nonnegative. Since the half-
 
 <div id="record:257hg-i1" class="defn">
 
-**Definition 160** (The gap after a Mersenne weight). For $`n\ge1`$, let $`R_n=\sum_{j>n}w_j`$ and $`g_n=w_n-R_n>0`$. The quantity $`g_n`$ is the length of each gap created at level $`n`$, not the sum of all gap lengths created at that level.
+**Definition 161** (The gap after a Mersenne weight). For $`n\ge1`$, let $`R_n=\sum_{j>n}w_j`$ and $`g_n=w_n-R_n>0`$. The quantity $`g_n`$ is the length of each gap created at level $`n`$, not the sum of all gap lengths created at that level.
 
 [`mersenneGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2337) [`mersenneGap_pos`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2346)
 
 </div>
 
 <div id="record:257hg-i2" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i2-comparator">Comparator</a></p>
 
-**Theorem 161** (The unweighted sum of remaining gap lengths). *For every $`N\ge0`$, the unweighted sum of gap lengths satisfies
+**Theorem 162** (The unweighted sum of remaining gap lengths). *For every $`N\ge0`$, the unweighted sum of gap lengths satisfies
 ``` math
 \sum_{n>N}g_n\le\frac29\,4^{-N}+\frac37\,8^{-N},
 ```
@@ -3182,16 +3217,16 @@ Indeed, the finite sum from $`N+1`$ to $`M`$ telescopes to $`2^N R_N-2^M R_M`$, 
 
 <div id="record:257hg-i3" class="defn">
 
-**Definition 162** (Three geometric terms in the tail lower bound). For $`k\ge1`$ put $`\ell_3(k)=1/2^k + 1/(3\cdot4^k) + 1/(7\cdot8^k)`$. Then $`\ell_3(k)<\ensuremath{R}(k)`$: this is a strict rational lower bound obtained by truncating the Lambert-type series at three terms.
+**Definition 163** (Three geometric terms in the tail lower bound). For $`k\ge1`$ put $`\ell_3(k)=1/2^k + 1/(3\cdot4^k) + 1/(7\cdot8^k)`$. Then $`\ell_3(k)<\ensuremath{R}(k)`$: this is a strict rational lower bound obtained by truncating the Lambert-type series at three terms.
 
 [`mersenneTailLB3`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L56) [`three_div_lt_mersenneTailLB3`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L70) [`mersenneTailLB3_lt_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L216)
 
 </div>
 
 <div id="record:257hg-i4" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i4-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i4-comparator">Comparator</a></p>
 
-**Theorem 163** (A sufficient inequality for a safe skip). *Let $`k,u,L\ge1`$ be integers, set $`a=2L-(2^k-1)u`$, and suppose $`a>0`$. For the skipped rational remainder $`\rho=u/(2L)`$, $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$, whereas
+**Theorem 164** (A sufficient inequality for a safe skip). *Let $`k,u,L\ge1`$ be integers, set $`a=2L-(2^k-1)u`$, and suppose $`a>0`$. For the skipped rational remainder $`\rho=u/(2L)`$, $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$, whereas
 ``` math
 2u\le3a\quad\Longrightarrow\quad\rho<R_k.
 ```
@@ -3208,9 +3243,9 @@ The inequality $`2u\le3a`$ gives $`\rho\le3/(3t-1)`$, proving the claim. The fir
 </div>
 
 <div id="record:257hg-i5" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i5">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i5-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i5">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-i5-comparator">Comparator</a></p>
 
-**Proposition 164** (Two unconditional safety cases). *Under the positive-integer and skipped-step hypotheses of Theorem <a href="#record:257hg-i4" data-reference-type="ref" data-reference="record:257hg-i4">163</a>, $`u=1`$ implies $`a\ge1`$, so the current remainder is less than $`R_k`$. Conversely, a fatal tail-mass deficit forces $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd. These are statements about the current step, not infinite survival.*
+**Proposition 165** (Two unconditional safety cases). *Under the positive-integer and skipped-step hypotheses of Theorem <a href="#record:257hg-i4" data-reference-type="ref" data-reference="record:257hg-i4">164</a>, $`u=1`$ implies $`a\ge1`$, so the current remainder is less than $`R_k`$. Conversely, a fatal tail-mass deficit forces $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd. These are statements about the current step, not infinite survival.*
 
 </div>
 
@@ -3219,20 +3254,20 @@ The inequality $`2u\le3a`$ gives $`\rho\le3/(3t-1)`$, proving the claim. The fir
 ##### Two-sided bounds near dyadic endpoints
 
 <div id="record:257bm-i13" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/DyadicBandAndTwoSidedBounds.lean#L105">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i13-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/DyadicBandAndTwoSidedBounds.lean#L105">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i13-comparator">Comparator</a></p>
 
-**Theorem 165** (Two-sided dyadic bounds). *Under the local hypothesis excluding the specified three middle cells and imposing the right-pulse bound, induction (base case at row 5 verified by direct computation) propagates it to the universal two-sided bound
+**Theorem 166** (Two-sided dyadic bounds). *Under the local hypothesis excluding the specified three middle cells and imposing the right-pulse bound, induction (base case at row 5 verified by direct computation) propagates it to the universal two-sided bound
 ``` math
 \forall s\ge5,\quad \min(\mathrm{rem}(s),\ \mathrm{overshoot}(s)) \;\le\; 2^s.
 ```
-This conditional bound says that at least one of the remainder and the adjacent overshoot is at most $`2^s`$. It does not assert that both are at most $`2^s`$; that stronger assertion would replace the minimum by a maximum. It is not needed for the charge bound at an actual upper reset: Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">123</a> obtains that bound directly from the upper-reset identity. Applying the inductive argument to another recurrence would require its own transition and separation estimates.*
+This conditional bound says that at least one of the remainder and the adjacent overshoot is at most $`2^s`$. It does not assert that both are at most $`2^s`$; that stronger assertion would replace the minimum by a maximum. It is not needed for the charge bound at an actual upper reset: Proposition <a href="#record:257bm-c12" data-reference-type="ref" data-reference="record:257bm-c12">124</a> obtains that bound directly from the upper-reset identity. Applying the inductive argument to another recurrence would require its own transition and separation estimates.*
 
 </div>
 
 <div id="record:257bm-i14" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i14">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i14-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i14">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i14-comparator">Comparator</a></p>
 
-**Proposition 166** (A finite band check for $`13\le d\le30`$). *For every actual upper-reset index $`13\le d\le30`$ and every $`0\le j\le d`$, the linked certificate verifies
+**Proposition 167** (A finite band check for $`13\le d\le30`$). *For every actual upper-reset index $`13\le d\le30`$ and every $`0\le j\le d`$, the linked certificate verifies
 ``` math
 2^{d-j+1}<\mathrm{resetCharge}
 \quad\text{or}\quad
@@ -3247,25 +3282,25 @@ It computes the successor remainder at each row $`d+1`$, from $`\mathrm{rem}(14)
 ##### General identities for perturbed greedy recurrences
 
 <div id="record:257bm-i15" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i15-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i15-comparator">Comparator</a></p>
 
-**Theorem 167** (A general perturbed greedy recurrence). *Let the old integer values be separated by at least $`g\ge1`$, and let the update be $`t(x)=4s(x)+p(x)`$ with $`0\le p(x)\le B<g`$. Suppose $`x_-`$ and $`x_+`$ are the adjacent old values on either side of capacity $`C`$. Theorem <a href="#thm:perturbed-family-maximality" data-reference-type="ref" data-reference="thm:perturbed-family-maximality">105</a> gives the largest admissible updated value at capacity $`4C+g`$ and the exact three-branch remainder after testing the extra weight $`2g+4`$.*
+**Theorem 168** (A general perturbed greedy recurrence). *Let the old integer values be separated by at least $`g\ge1`$, and let the update be $`t(x)=4s(x)+p(x)`$ with $`0\le p(x)\le B<g`$. Suppose $`x_-`$ and $`x_+`$ are the adjacent old values on either side of capacity $`C`$. Theorem <a href="#thm:perturbed-family-maximality" data-reference-type="ref" data-reference="thm:perturbed-family-maximality">106</a> gives the largest admissible updated value at capacity $`4C+g`$ and the exact three-branch remainder after testing the extra weight $`2g+4`$.*
 
-*The underlying structure in Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">104</a> assumes only $`B<3g`$; that suffices for order preservation, but the cited maximality application has the additional hypothesis $`B<g`$. The counterexample after Theorem <a href="#thm:perturbed-family-maximality" data-reference-type="ref" data-reference="thm:perturbed-family-maximality">105</a> shows what can fail without it. For a maximum over both choices of the extra weight, rather than the stated two-stage rule, one also needs a separation argument; $`4g-B\ge2g+4`$ suffices, as shown after that theorem.*
+*The underlying structure in Definition <a href="#defn:perturbed-family" data-reference-type="ref" data-reference="defn:perturbed-family">105</a> assumes only $`B<3g`$; that suffices for order preservation, but the cited maximality application has the additional hypothesis $`B<g`$. The counterexample after Theorem <a href="#thm:perturbed-family-maximality" data-reference-type="ref" data-reference="thm:perturbed-family-maximality">106</a> shows what can fail without it. For a maximum over both choices of the extra weight, rather than the stated two-stage rule, one also needs a separation argument; $`4g-B\ge2g+4`$ suffices, as shown after that theorem.*
 
 </div>
 
 <div id="record:257bm-i16" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i16-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i16-comparator">Comparator</a></p>
 
-**Theorem 168** (Spacing of compatible reverse-carry words). *Consider two integer carry recurrences $`b_i(m)+2u_i(m)=a_i(m)+u_i(m+1)`$, $`i=1,2`$. If $`a_1(k)=a_2(k)`$ and the output bits at $`k`$ are $`1`$ and $`0`$, then the carry difference at $`k+1`$ is odd. If the coefficients and bits agree for the following $`L`$ positions, the difference at $`k+L+1`$ is $`2^L`$ times that odd integer. Consequently absolute terminal bounds $`B_1,B_2`$ give $`2^L\le B_1+B_2`$. Lemma <a href="#lem:reverse-carry-word" data-reference-type="ref" data-reference="lem:reverse-carry-word">89</a> states the exact identity and proves it by subtraction. The linked formal statements encode these agreements; they do not supply terminal bounds for an unrelated digit system.*
+**Theorem 169** (Spacing of compatible reverse-carry words). *Consider two integer carry recurrences $`b_i(m)+2u_i(m)=a_i(m)+u_i(m+1)`$, $`i=1,2`$. If $`a_1(k)=a_2(k)`$ and the output bits at $`k`$ are $`1`$ and $`0`$, then the carry difference at $`k+1`$ is odd. If the coefficients and bits agree for the following $`L`$ positions, the difference at $`k+L+1`$ is $`2^L`$ times that odd integer. Consequently absolute terminal bounds $`B_1,B_2`$ give $`2^L\le B_1+B_2`$. Lemma <a href="#lem:reverse-carry-word" data-reference-type="ref" data-reference="lem:reverse-carry-word">90</a> states the exact identity and proves it by subtraction. The linked formal statements encode these agreements; they do not supply terminal bounds for an unrelated digit system.*
 
 </div>
 
 <div id="record:257bm-i17" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i17-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-i17-comparator">Comparator</a></p>
 
-**Proposition 169** (Changing one support bit at a doubled rank). *Let two supports agree except that the second includes $`N+1`$ while the first does not. At the argument $`2(N+1)`$ their divisor counts differ by exactly $`1`$, because $`N+1`$ divides $`2(N+1)`$. More generally the difference at a positive argument $`m`$ is $`\mathbf1_{N+1\mid m}`$. The linked statements apply this identity to the finite supports in their hypotheses. No conclusion about a different coefficient sequence follows without identifying its own support change.*
+**Proposition 170** (Changing one support bit at a doubled rank). *Let two supports agree except that the second includes $`N+1`$ while the first does not. At the argument $`2(N+1)`$ their divisor counts differ by exactly $`1`$, because $`N+1`$ divides $`2(N+1)`$. More generally the difference at a positive argument $`m`$ is $`\mathbf1_{N+1\mid m}`$. The linked statements apply this identity to the finite supports in their hypotheses. No conclusion about a different coefficient sequence follows without identifying its own support change.*
 
 </div>
 
@@ -3276,10 +3311,10 @@ It computes the successor remainder at each row $`d+1`$, from $`\mathrm{rem}(14)
 The results below test particular proposed implications. A countermodel to an abstract transition rule shows that the rule needs an additional hypothesis; it does not disprove a more structured arithmetic argument. Each entry states the information retained by its model and the conclusion that this information fails to imply.
 
 <div id="record:257bm-k1" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k1">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k1-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k1">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k1-comparator">Comparator</a></p>
 
-**Theorem 170** (A bounded model of the doubling-or-return alternative). *The dichotomy $`\mathrm{ExactLocalMersenneHalfRow}(2n{-}1) \vee \exists c,\,4\le c\le n\wedge
-\mathrm{ExactLocalMersenneHalfRow}(2c{-}2)`$ (proved for $`n\ge6`$ at Theorem <a href="#record:257bm-k-dich" data-reference-type="ref" data-reference="record:257bm-k-dich">171</a> below) is not by itself enough for cofinality. Countermodel: $`\mathrm{boundedDoubleOrRecycleModel}(n) := (n=6)`$ satisfies exactly the same two-branch transition shape (seed at 6, and the model reproduces the $`\vee`$ shape by always taking the recycle branch with $`c=4`$, conclusion back at $`2\cdot4-2=6`$), yet
+**Theorem 171** (A bounded model of the doubling-or-return alternative). *The dichotomy $`\mathrm{ExactLocalMersenneHalfRow}(2n{-}1) \vee \exists c,\,4\le c\le n\wedge
+\mathrm{ExactLocalMersenneHalfRow}(2c{-}2)`$ (proved for $`n\ge6`$ at Theorem <a href="#record:257bm-k-dich" data-reference-type="ref" data-reference="record:257bm-k-dich">172</a> below) is not by itself enough for cofinality. Countermodel: $`\mathrm{boundedDoubleOrRecycleModel}(n) := (n=6)`$ satisfies exactly the same two-branch transition shape (seed at 6, and the model reproduces the $`\vee`$ shape by always taking the recycle branch with $`c=4`$, conclusion back at $`2\cdot4-2=6`$), yet
 ``` math
 \neg\big(\forall N,\ \exists n\ge N,\ \mathrm{boundedDoubleOrRecycleModel}(n)\big) \qquad \text{(not cofinal ;  only ever true at } n=6\text{)}.
 ```
@@ -3288,20 +3323,20 @@ The double-or-recycle transition shape, even together with an endpoint-six seed,
 </div>
 
 <div id="record:257bm-k-dich" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k-dich">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k-dich-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k-dich">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k-dich-comparator">Comparator</a></p>
 
-**Theorem 171** (Doubling or returning to an earlier depth). *For $`n\ge6`$, $`\mathrm{ExactLocalMersenneHalfRow}(n)`$:
+**Theorem 172** (Doubling or returning to an earlier depth). *For $`n\ge6`$, $`\mathrm{ExactLocalMersenneHalfRow}(n)`$:
 ``` math
 \mathrm{ExactLocalMersenneHalfRow}(2n-1) \;\vee\; \exists c,\ 4\le c\le n \wedge \mathrm{ExactLocalMersenneHalfRow}(2c-2).
 ```
-Every exact row of depth at least $`6`$ has at least one of the two asserted continuations. The proof separates the below-half case from the above-half case, but the two existential conclusions need not be exclusive. The returned depth $`2c-2`$ is not claimed to exceed $`n`$. The finite Mersenne value cannot equal $`1/2`$, by Observation <a href="#record:257bm-k11" data-reference-type="ref" data-reference="record:257bm-k11">181</a>; this says nothing about equality of the returned and original depths. For example, at $`n=6`$, the support $`\{2,3,6\}`$ is an exact row, and so is $`\{2,3,6,7,11\}`$ at depth $`11`$. The second conclusion also holds with $`c=4`$, since $`2c-2=6`$. Thus both conclusions hold in this example, and the second allows no depth increase. What is missing, per Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a>, is not another dichotomy but strict endpoint progress in the recycle branch, or a proof the below-half branch recurs ; re-deriving this disjunction without an additional progress argument would not establish cofinality.*
+Every exact row of depth at least $`6`$ has at least one of the two asserted continuations. The proof separates the below-half case from the above-half case, but the two existential conclusions need not be exclusive. The returned depth $`2c-2`$ is not claimed to exceed $`n`$. The finite Mersenne value cannot equal $`1/2`$, by Observation <a href="#record:257bm-k11" data-reference-type="ref" data-reference="record:257bm-k11">182</a>; this says nothing about equality of the returned and original depths. For example, at $`n=6`$, the support $`\{2,3,6\}`$ is an exact row, and so is $`\{2,3,6,7,11\}`$ at depth $`11`$. The second conclusion also holds with $`c=4`$, since $`2c-2=6`$. Thus both conclusions hold in this example, and the second allows no depth increase. What is missing, per Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">171</a>, is not another dichotomy but strict endpoint progress in the recycle branch, or a proof the below-half branch recurs ; re-deriving this disjunction without an additional progress argument would not establish cofinality.*
 
 </div>
 
 <div id="record:257bm-k2" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k2-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k2-comparator">Comparator</a></p>
 
-**Proposition 172** (A sufficient fractional-mass bound need not hold). *Take $`D=\{2,3\}`$ and $`c=5`$. Direct calculation gives
+**Proposition 173** (A sufficient fractional-mass bound need not hold). *Take $`D=\{2,3\}`$ and $`c=5`$. Direct calculation gives
 ``` math
 X_D(2)=\frac{10}{21}<\frac12
  <\frac{331}{651}=X_{D\cup\{5\}}(2),\qquad S(D,1,8)=6<8.
@@ -3311,13 +3346,13 @@ However, the combined fractional mass is
 \sum_{d\in D\cup\{5\}}\frac{2^8\bmod(2^d-1)}{2^d-1}
  =\frac{757}{651}>1.
 ```
-The linked Lean proof checks this example by direct computation. Thus the combined fractional-mass bound by $`1`$, which suffices for the sharp capacity estimate, is not necessary for that estimate. Thus the fractional-mass bound cannot hold at every real crossing core. A proof using it would need to handle the exceptional cores separately; the example does not rule out all uses of fractional-mass estimates. Theorem <a href="#record:257rig-k6" data-reference-type="ref" data-reference="record:257rig-k6">176</a> identifies the support at a critical crossing with a real greedy prefix, but does not prove the missing bound on those prefixes.*
+The linked Lean proof checks this example by direct computation. Thus the combined fractional-mass bound by $`1`$, which suffices for the sharp capacity estimate, is not necessary for that estimate. Thus the fractional-mass bound cannot hold at every real crossing core. A proof using it would need to handle the exceptional cores separately; the example does not rule out all uses of fractional-mass estimates. Theorem <a href="#record:257rig-k6" data-reference-type="ref" data-reference="record:257rig-k6">177</a> identifies the support at a critical crossing with a real greedy prefix, but does not prove the missing bound on those prefixes.*
 
 </div>
 
 <div id="record:257bm-k3" class="obs">
 
-*Observation 173* (A doubled finite sum can exceed one half). Theorem <a href="#record:257bm-i7" data-reference-type="ref" data-reference="record:257bm-i7">138</a>’s doubling extension is not preserved iteratively: below-halfness is not preserved under one application of doubling, and demonstrably fails at the very first step. From the identity $`\mathrm{value}(E)-\tfrac12 = \big(\mathrm{localFractionMass}(E,2n{-}1)-1\big)/2^{2n-1}`$, at the seed $`D=\{2,3,6\}`$ (Definition <a href="#record:257bm-i-seed" data-reference-type="ref" data-reference="record:257bm-i-seed">140</a>) with $`M=11`$ the core alone contributes
+*Observation 174* (A doubled finite sum can exceed one half). Theorem <a href="#record:257bm-i7" data-reference-type="ref" data-reference="record:257bm-i7">139</a>’s doubling extension is not preserved iteratively: below-halfness is not preserved under one application of doubling, and demonstrably fails at the very first step. From the identity $`\mathrm{value}(E)-\tfrac12 = \big(\mathrm{localFractionMass}(E,2n{-}1)-1\big)/2^{2n-1}`$, at the seed $`D=\{2,3,6\}`$ (Definition <a href="#record:257bm-i-seed" data-reference-type="ref" data-reference="record:257bm-i-seed">141</a>) with $`M=11`$ the core alone contributes
 ``` math
 \frac{2^{11}\bmod3}{3} + \frac{2^{11}\bmod7}{7} + \frac{2^{11}\bmod63}{63} = \frac23+\frac47+\frac{32}{63} \approx 1.746 > 1,
 ```
@@ -3328,34 +3363,34 @@ so the doubled row is strictly above half. Iterating the cheap (doubling) arm is
 </div>
 
 <div id="record:257bm-k4" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k4-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k4-comparator">Comparator</a></p>
 
-**Theorem 174** (The returning endpoint need not be larger). *Theorem <a href="#record:257bm-c10" data-reference-type="ref" data-reference="record:257bm-c10">121</a> is unconditional, but its witness is $`\exists c\le n`$, not $`\exists c`$ large: $`2c-2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a> is the explicit falsifier of the naive hope that growth comes for free: $`\mathrm{boundedDoubleOrRecycleModel}(n):=(n=6)`$ satisfies the same transition schema plus a seed and is not cofinal. Growth is recovered only inside $`\mathrm{ProtectedExactLocalMersenneRow}`$ (Theorem <a href="#record:257bm-c5" data-reference-type="ref" data-reference="record:257bm-c5">114</a>), whose invariants $`\mathrm{endpoint}<2\cdot\mathrm{cutoff}`$ and $`\mathrm{new\_above\_cutoff}`$ force $`c>\mathrm{cutoff}`$ hence $`2c-2>\mathrm{endpoint}`$ ; and maintaining those invariants is precisely what needs the strict-upper (sharp capacity) fill of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> rather than this general recycling theorem.*
+**Theorem 175** (The returning endpoint need not be larger). *Theorem <a href="#record:257bm-c10" data-reference-type="ref" data-reference="record:257bm-c10">122</a> is unconditional, but its witness is $`\exists c\le n`$, not $`\exists c`$ large: $`2c-2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">171</a> is the explicit falsifier of the naive hope that growth comes for free: $`\mathrm{boundedDoubleOrRecycleModel}(n):=(n=6)`$ satisfies the same transition schema plus a seed and is not cofinal. Growth is recovered only inside $`\mathrm{ProtectedExactLocalMersenneRow}`$ (Theorem <a href="#record:257bm-c5" data-reference-type="ref" data-reference="record:257bm-c5">115</a>), whose invariants $`\mathrm{endpoint}<2\cdot\mathrm{cutoff}`$ and $`\mathrm{new\_above\_cutoff}`$ force $`c>\mathrm{cutoff}`$ hence $`2c-2>\mathrm{endpoint}`$ ; and maintaining those invariants is precisely what needs the strict-upper (sharp capacity) fill of Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> rather than this general recycling theorem.*
 
 </div>
 
 <div id="record:257bm-k5" class="obs">
 
-*Observation 175* (The skip condition is equivalent to membership). The positivity conjunct of Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">111</a>’s hypothesis, $`0<\ensuremath{r}(1/2,c{-}1)`$, holds unconditionally: the greedy remainder is $`1/2`$ minus a finite Mersenne sum, which is nonzero by the odd-denominator parity fact of Observation <a href="#record:257bm-k11" data-reference-type="ref" data-reference="record:257bm-k11">181</a>. Hence the hypothesis of Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">111</a> holds if and only if the set of ranks skipped by the greedy rule for $`1/2`$ is infinite, which Theorem <a href="#record:257bm-c20" data-reference-type="ref" data-reference="record:257bm-c20">131</a> proves equivalent to $`1/2\in\ensuremath{\mathcal A}`$. Proving Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">111</a>’s hypothesis would therefore settle the half-target question. This equivalence does not by itself make the hypothesis easier, but it also does not preclude a useful argument in greedy coordinates. Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> offers a different sufficient condition whose finite supports need not be greedy prefixes.
+*Observation 176* (The skip condition is equivalent to membership). The positivity conjunct of Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">112</a>’s hypothesis, $`0<\ensuremath{r}(1/2,c{-}1)`$, holds unconditionally: the greedy remainder is $`1/2`$ minus a finite Mersenne sum, which is nonzero by the odd-denominator parity fact of Observation <a href="#record:257bm-k11" data-reference-type="ref" data-reference="record:257bm-k11">182</a>. Hence the hypothesis of Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">112</a> holds if and only if the set of ranks skipped by the greedy rule for $`1/2`$ is infinite, which Theorem <a href="#record:257bm-c20" data-reference-type="ref" data-reference="record:257bm-c20">132</a> proves equivalent to $`1/2\in\ensuremath{\mathcal A}`$. Proving Theorem <a href="#record:257bm-c2" data-reference-type="ref" data-reference="record:257bm-c2">112</a>’s hypothesis would therefore settle the half-target question. This equivalence does not by itself make the hypothesis easier, but it also does not preclude a useful argument in greedy coordinates. Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> offers a different sufficient condition whose finite supports need not be greedy prefixes.
 
 [`localMersennePrefixValue_halfGreedy_lt_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L138)
 
 </div>
 
 <div id="record:257rig-k6" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/ExactRowDichotomyCountermodels.lean#L231">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-k6-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ExactRowDichotomyCountermodels.lean#L231">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257rig-k6-comparator">Comparator</a></p>
 
-**Theorem 176** (Uniqueness at a critical crossing). *For $`c\ge4`$, $`D`$ bounded $`[2,c)`$, below-half, with genuine crossing deficit $`\tfrac12-\mathrm{value}(D) < \ensuremath{w}(c)`$:
+**Theorem 177** (Uniqueness at a critical crossing). *For $`c\ge4`$, $`D`$ bounded $`[2,c)`$, below-half, with genuine crossing deficit $`\tfrac12-\mathrm{value}(D) < \ensuremath{w}(c)`$:
 ``` math
 D \;=\; \mathrm{halfGreedyPrefixSupport}(c-1).
 ```
-Thus $`D=G\cap\{1,\ldots,c-1\}`$: at a critical crossing the support is fixed by $`c`$. The proof uses the strict inequality between each Mersenne weight and the sum of all later weights, as in Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a>. Consequently, the support quantifier in Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">113</a> does not allow arbitrary choices of $`D`$. This reduces that hypothesis to a statement about the actual greedy sequence. It does not rule out proving a new bound for that sequence.*
+Thus $`D=G\cap\{1,\ldots,c-1\}`$: at a critical crossing the support is fixed by $`c`$. The proof uses the strict inequality between each Mersenne weight and the sum of all later weights, as in Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">144</a>. Consequently, the support quantifier in Theorem <a href="#record:257bm-c4" data-reference-type="ref" data-reference="record:257bm-c4">114</a> does not allow arbitrary choices of $`D`$. This reduces that hypothesis to a statement about the actual greedy sequence. It does not rule out proving a new bound for that sequence.*
 
 </div>
 
 <div id="record:257rig-k7" class="obs">
 
-*Observation 177* (Different requirements on finite witnesses). Theorem <a href="#record:257rig-c17" data-reference-type="ref" data-reference="record:257rig-c17">128</a> (the cofinal terminal-strip condition) tolerates any support inside the depth-$`M`$ window but demands the carry inside a $`\sim2\sqrt M`$ strip; Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> tolerates a carry up to $`2^{c-2}`$ (exponentially looser) but demands the support be confined to ranks $`<c`$, because the exact fill encodes the residue in the pure upper window where the Mersenne quotient is exactly $`2^{M-d}`$ (Proposition <a href="#record:257bm-c9" data-reference-type="ref" data-reference="record:257bm-c9">120</a>). The two conditions therefore differ in the permitted support as well as the size of the carry. If the square-root witnesses could also be chosen with support in $`[2,c)`$ at depth $`2c-3`$, then $`2\sqrt{2c}+4<2^{c-2}`$ for $`c\ge8`$ would give the numerical bound needed for the fill. The required support restriction is not proved here. Comparing the displayed bounds alone does not order the two existence hypotheses.
+*Observation 178* (Different requirements on finite witnesses). Theorem <a href="#record:257rig-c17" data-reference-type="ref" data-reference="record:257rig-c17">129</a> (the cofinal terminal-strip condition) tolerates any support inside the depth-$`M`$ window but demands the carry inside a $`\sim2\sqrt M`$ strip; Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> tolerates a carry up to $`2^{c-2}`$ (exponentially looser) but demands the support be confined to ranks $`<c`$, because the exact fill encodes the residue in the pure upper window where the Mersenne quotient is exactly $`2^{M-d}`$ (Proposition <a href="#record:257bm-c9" data-reference-type="ref" data-reference="record:257bm-c9">121</a>). The two conditions therefore differ in the permitted support as well as the size of the carry. If the square-root witnesses could also be chosen with support in $`[2,c)`$ at depth $`2c-3`$, then $`2\sqrt{2c}+4<2^{c-2}`$ for $`c\ge8`$ would give the numerical bound needed for the fill. The required support restriction is not proved here. Comparing the displayed bounds alone does not order the two existence hypotheses.
 
 [`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34)
 
@@ -3363,22 +3398,22 @@ Thus $`D=G\cap\{1,\ldots,c-1\}`$: at a critical crossing the support is fixed by
 
 <div id="record:257hg-k8" class="obs">
 
-*Observation 178* (An unsafe example in the two-thirds interval). Write a greedy residual as $`\mathrm{rem}=1/R`$; a skip at rank $`k`$ is dyadically safe if and only if $`R\ge2^k`$. Two unconditional corollaries hold: an integral reciprocal $`R`$ is never unsafe, and an unsafe run with odd $`p,D,q`$ forces $`p\ge7`$. Dyadic safety is sufficient but not necessary for the true greedy process to survive: the true test uses the actual tail $`\sum_{j>k}w_j`$, which exceeds $`2^{-k}`$. Nothing here asserts that the actual half-greedy orbit avoids the band: $`(p,D,b)=(17,41,3)`$ is an explicit odd-coprime example that is dyadically unsafe. Theorem <a href="#record:257hg-i4" data-reference-type="ref" data-reference="record:257hg-i4">163</a>’s criterion $`2u\le3a`$ narrows exactly this gap in the single-skip case; whether the fatal region meets a band reachable by the actual greedy trajectory is not settled.
+*Observation 179* (An unsafe example in the two-thirds interval). Write a greedy residual as $`\mathrm{rem}=1/R`$; a skip at rank $`k`$ is dyadically safe if and only if $`R\ge2^k`$. Two unconditional corollaries hold: an integral reciprocal $`R`$ is never unsafe, and an unsafe run with odd $`p,D,q`$ forces $`p\ge7`$. Dyadic safety is sufficient but not necessary for the true greedy process to survive: the true test uses the actual tail $`\sum_{j>k}w_j`$, which exceeds $`2^{-k}`$. Nothing here asserts that the actual half-greedy orbit avoids the band: $`(p,D,b)=(17,41,3)`$ is an explicit odd-coprime example that is dyadically unsafe. Theorem <a href="#record:257hg-i4" data-reference-type="ref" data-reference="record:257hg-i4">164</a>’s criterion $`2u\le3a`$ narrows exactly this gap in the single-skip case; whether the fatal region meets a band reachable by the actual greedy trajectory is not settled.
 
 [`TwoThirdsBand`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L120) [`not_twoThirdsBand_of_int`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L185) [`seven_le_of_intBand_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L231)
 
 </div>
 
 <div id="record:257bm-k9" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k9-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257bm-k9-comparator">Comparator</a></p>
 
-**Theorem 179** (Vanishing of the specified linear-channel determinant). *Let $`V`$ be a vector space over $`\mathbb{Q}`$, let $`e:V\to\mathbb{Q}`$ be linear, and let $`(\ell_j)_{j\in\iota}`$ be a finite family of linear functionals vanishing on $`\ker e`$. For any vectors $`(v_i)_{i\in\iota}`$, the matrix $`(\ell_j(v_i))_{i,j\in\iota}`$ has rank at most one, so every square minor of size at least two vanishes. Indeed, the functionals descend to $`V/\ker e`$, which has dimension at most one. This elementary linear-algebra argument applies at every matrix size. It does not cover additional functionals that fail to vanish on $`\ker e`$.*
+**Theorem 180** (Vanishing of the specified linear-channel determinant). *Let $`V`$ be a vector space over $`\mathbb{Q}`$, let $`e:V\to\mathbb{Q}`$ be linear, and let $`(\ell_j)_{j\in\iota}`$ be a finite family of linear functionals vanishing on $`\ker e`$. For any vectors $`(v_i)_{i\in\iota}`$, the matrix $`(\ell_j(v_i))_{i,j\in\iota}`$ has rank at most one, so every square minor of size at least two vanishes. Indeed, the functionals descend to $`V/\ker e`$, which has dimension at most one. This elementary linear-algebra argument applies at every matrix size. It does not cover additional functionals that fail to vanish on $`\ker e`$.*
 
 </div>
 
 <div id="record:257bm-k10" class="obs">
 
-*Observation 180* (The additive error in the binary bound). Theorem <a href="#record:257bm-i6" data-reference-type="ref" data-reference="record:257bm-i6">137</a>’s $`2^{c-1}`$ bound and Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">136</a>’s sharp $`2^{c-2}`$ requirement differ by one bit, and the proof of the loose bound shows exactly where: it derives $`A<2^{c-2}+|D|`$ and discards $`|D|\le c-2\le2^{c-2}`$. Under this additive upper bound, the remaining assertion is that the integer suffix avoids $`[2^{c-2},\,2^{c-2}+c-3]`$. This identifies the unresolved interval; it does not prescribe how to exclude it. A sharper estimate, an arithmetic restriction on the suffix, or another argument could in principle establish the required inequality.
+*Observation 181* (The additive error in the binary bound). Theorem <a href="#record:257bm-i6" data-reference-type="ref" data-reference="record:257bm-i6">138</a>’s $`2^{c-1}`$ bound and Theorem <a href="#record:257bm-i5" data-reference-type="ref" data-reference="record:257bm-i5">137</a>’s sharp $`2^{c-2}`$ requirement differ by one bit, and the proof of the loose bound shows exactly where: it derives $`A<2^{c-2}+|D|`$ and discards $`|D|\le c-2\le2^{c-2}`$. Under this additive upper bound, the remaining assertion is that the integer suffix avoids $`[2^{c-2},\,2^{c-2}+c-3]`$. This identifies the unresolved interval; it does not prescribe how to exclude it. A sharper estimate, an arithmetic restriction on the suffix, or another argument could in principle establish the required inequality.
 
 [`localBinarySuffix_two_mul_sub_two_lt_upperHalfCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreExactRow.lean#L123)
 
@@ -3386,16 +3421,16 @@ Thus $`D=G\cap\{1,\ldots,c-1\}`$: at a critical crossing the support is fixed by
 
 <div id="record:257bm-k11" class="obs">
 
-*Observation 181* (Odd denominators of finite sums). For finite $`D\subseteq\mathbb{N}_{>0}`$, each denominator $`2^d-1`$ is odd. The sum $`V(D)`$ can therefore be written over an odd common denominator; its reduced denominator, being a divisor of that denominator, is odd. In particular, $`V(D)\ne1/2`$. This elementary argument supplies the parity fact used in Proposition <a href="#record:257bm-k2" data-reference-type="ref" data-reference="record:257bm-k2">172</a> and Proposition <a href="#record:257bm-i10" data-reference-type="ref" data-reference="record:257bm-i10">142</a>.
+*Observation 182* (Odd denominators of finite sums). For finite $`D\subseteq\mathbb{N}_{>0}`$, each denominator $`2^d-1`$ is odd. The sum $`V(D)`$ can therefore be written over an odd common denominator; its reduced denominator, being a divisor of that denominator, is odd. In particular, $`V(D)\ne1/2`$. This elementary argument supplies the parity fact used in Proposition <a href="#record:257bm-k2" data-reference-type="ref" data-reference="record:257bm-k2">173</a> and Proposition <a href="#record:257bm-i10" data-reference-type="ref" data-reference="record:257bm-i10">143</a>.
 
 [`finiteErdosSum_den_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DyadicPrefixCompression.lean#L1513)
 
 </div>
 
 <div id="record:257hg-k12" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-k12">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-k12-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-k12">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#record-257hg-k12-comparator">Comparator</a></p>
 
-**Theorem 182** (Excluding the cell with value minus three). *At a middle row $`D\ge13`$ followed only by right transitions, $`4\,\mathrm{rem}(D)-p_D^--4\ne-3`$, by Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">87</a>. Its proof uses the nonnegative centred carry for the completed support, not a finite search. The values $`-2,-1`$ remain among the three exceptional negative cells. Excluding them under this extra tail assumption would still not exclude nonnegative values of the coordinate, or establish the all-middle-row and right-branch hypotheses in Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a>. The complete remaining tail inequality is stated in Remark <a href="#rem:tail-dominance-open" data-reference-type="ref" data-reference="rem:tail-dominance-open">260</a>.*
+**Theorem 183** (Excluding the cell with value minus three). *At a middle row $`D\ge13`$ followed only by right transitions, $`4\,\mathrm{rem}(D)-p_D^--4\ne-3`$, by Theorem <a href="#thm:final-middle-cell" data-reference-type="ref" data-reference="thm:final-middle-cell">88</a>. Its proof uses the nonnegative centred carry for the completed support, not a finite search. The values $`-2,-1`$ remain among the three exceptional negative cells. Excluding them under this extra tail assumption would still not exclude nonnegative values of the coordinate, or establish the all-middle-row and right-branch hypotheses in Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">53</a>. The complete remaining tail inequality is stated in Remark <a href="#rem:tail-dominance-open" data-reference-type="ref" data-reference="rem:tail-dominance-open">261</a>.*
 
 </div>
 
@@ -3412,9 +3447,9 @@ This subsection records further finite identities and conditional membership res
 The following identities explain the two-sided bound and the reset-band condition used above. They also distinguish the signed middle coordinate $`C_s=4\,\mathrm{rem}(s)-p_s^- -4`$ from the nonnegative label in the next estimate.
 
 <div id="prop:unsafe-middle-range-exactly-three" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/LinearChannelAndMiddleCellExclusion.lean#L83">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-unsafe-middle-range-exactly-three-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/LinearChannelAndMiddleCellExclusion.lean#L83">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-unsafe-middle-range-exactly-three-comparator">Comparator</a></p>
 
-**Proposition 183** (The unsafe middle range is exactly three integers). *For $`s\ge5`$, write $`R=\mathrm{rem}(s)`$ and $`P=p_s^-`$. Since $`4R-P-4`$ is an integer,
+**Proposition 184** (The unsafe middle range is exactly three integers). *For $`s\ge5`$, write $`R=\mathrm{rem}(s)`$ and $`P=p_s^-`$. Since $`4R-P-4`$ is an integer,
 ``` math
 \neg(4R-P-4\le-4\ \vee\ 0\le 4R-P-4)\ \Longleftrightarrow\ 4R-P-4\in\{-3,-2,-1\}
 ```*
@@ -3445,7 +3480,7 @@ A parallel equivalence holds for the right branch: an overshoot witness $`\le2^s
 
 <div class="obs">
 
-*Observation 184* (The reset-band hypothesis has a verified base case). The upper-reset dyadic-band escape condition (discussed after Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a>) is reduced by three lemmas to a quarter-scale overshoot exclusion: an equivalence ([`seamUpperReset_band_iff_successorRemainder_avoids`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4469)) rewrites the reset-charge band as a successor-remainder avoidance; an identity ([`upperResetCharge_dyadicDistance_add_abovePulse`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4490)) rescales it by a factor of $`4`$; and a third lemma ([`seamUpperReset_band_of_overshoot_band`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4514)) derives the band from a quarter-scale overshoot exclusion plus the pulse bound $`\mathrm{abovePulse}\le
+*Observation 185* (The reset-band hypothesis has a verified base case). The upper-reset dyadic-band escape condition (discussed after Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a>) is reduced by three lemmas to a quarter-scale overshoot exclusion: an equivalence ([`seamUpperReset_band_iff_successorRemainder_avoids`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4469)) rewrites the reset-charge band as a successor-remainder avoidance; an identity ([`upperResetCharge_dyadicDistance_add_abovePulse`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4490)) rescales it by a factor of $`4`$; and a third lemma ([`seamUpperReset_band_of_overshoot_band`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4514)) derives the band from a quarter-scale overshoot exclusion plus the pulse bound $`\mathrm{abovePulse}\le
 2(d-2)`$. Row $`d=13`$, the first row of the late regime, is then proved unconditionally to escape *every* band simultaneously: its successor remainder is exactly $`392`$, by exact computation ([`seamUpperResetDyadicBandEscape_at_thirteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4547)). This is one verified row of a hypothesis required for every $`d\ge13`$; it shows only that the base case is not itself an obstruction.
 
 </div>
@@ -3478,9 +3513,9 @@ all $`A_k`$ agree through $`K`$, and one integer $`E\ge B(M)`$ satisfies
 The suffixes therefore have consecutive binary values $`E-k`$. The following statements explain how these particular families supply finite approximations; they do not construct them at arbitrary depths.
 
 <div id="prop:finite-approximations-without-compatibility" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-finite-approximations-without-compatibility">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-finite-approximations-without-compatibility-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-finite-approximations-without-compatibility">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-finite-approximations-without-compatibility-comparator">Comparator</a></p>
 
-**Proposition 185**. *Every shared-prefix family just defined at depth $`N`$ contains a finite support $`A`$ with $`|K_A(N)|\le B(N)`$, and at a feedback row this survives *both* outputs of the corpus’s total feedback theorem; full-cylinder advance or a localized one-hole seam, which can delete at most one of carries $`3,4`$.*
+**Proposition 186**. *Every shared-prefix family just defined at depth $`N`$ contains a finite support $`A`$ with $`|K_A(N)|\le B(N)`$, and at a feedback row this survives *both* outputs of the corpus’s total feedback theorem; full-cylinder advance or a localized one-hole seam, which can delete at most one of carries $`3,4`$.*
 
 </div>
 
@@ -3488,7 +3523,7 @@ Four concrete instances, at depths $`51`$–$`54`$, are verified by exact comput
 
 <div class="obs">
 
-*Observation 186* (Shared-prefix families at unbounded depths). The conditional theorem
+*Observation 187* (Shared-prefix families at unbounded depths). The conditional theorem
 ``` math
 \left(\begin{gathered}\text{such shared-prefix families exist}\\\text{at arbitrarily large depths }M\end{gathered}\right)
 \ \Longrightarrow\ \exists A\text{ infinite with }X_{A}(2)=1/2
@@ -3505,7 +3540,7 @@ Five Lean declarations reduce the cases that remain to be checked in the square-
 
 <div class="defn">
 
-**Definition 187**. The *middle tail condition* is the hypothesis that at every genuine middle transition ($`s\ge13`$, no successor carry, below the terminal-weight threshold) the terminal-augmented binary coefficient tail is strictly below the signed carry ([`SeamMiddleProducerTailEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L34)). The *reduced middle tail condition* is the same hypothesis restricted to cells $`\ne-3`$ ([`SeamMiddleProducerTailEscapeExceptNegThree`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L54)).
+**Definition 188**. The *middle tail condition* is the hypothesis that at every genuine middle transition ($`s\ge13`$, no successor carry, below the terminal-weight threshold) the terminal-augmented binary coefficient tail is strictly below the signed carry ([`SeamMiddleProducerTailEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L34)). The *reduced middle tail condition* is the same hypothesis restricted to cells $`\ne-3`$ ([`SeamMiddleProducerTailEscapeExceptNegThree`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L54)).
 
 </div>
 
@@ -3519,11 +3554,11 @@ The middle tail condition trivially implies the reduced one ([`SeamMiddleProduce
 
 ##### An eventual nonnegative margin
 
-The finite-horizon condition can be stated directly. Recall the integer margin $`F_k(J)`$ from Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">56</a> and its equivalence with a negative excess ([`exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1229)).
+The finite-horizon condition can be stated directly. Recall the integer margin $`F_k(J)`$ from Theorem <a href="#thm:frozen-margin" data-reference-type="ref" data-reference="thm:frozen-margin">57</a> and its equivalence with a negative excess ([`exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1229)).
 
 <div class="defn">
 
-**Definition 188** (A nonnegative margin by the next depth). At every skipped step $`k+1`$, require
+**Definition 189** (A nonnegative margin by the next depth). At every skipped step $`k+1`$, require
 ``` math
 \exists J\in\{0,\ldots,k+1\},\qquad F_k(J)\ge0.
 ```
@@ -3532,7 +3567,7 @@ The finite-horizon condition can be stated directly. Recall the integer margin $
 
 </div>
 
-It implies $`1/2\in\mathcal A`$ ([`half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1275), through [`half_mem_mersenneAchievementSet_of_skipped_dyadicCap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1444)). Indeed, the finite coefficient window is at most its infinite tail, so $`F_k(J)\ge0`$ implies $`r_k(1/2)\le2^{-(k+1)}`$ at that skip. This is below $`R_{k+1}`$. At $`k=0`$ the remainder is exactly $`1/2`$ and the same inequality holds; the strict version in Theorem <a href="#record:257bm-c19" data-reference-type="ref" data-reference="record:257bm-c19">130</a> requires positive $`k`$.
+It implies $`1/2\in\mathcal A`$ ([`half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1275), through [`half_mem_mersenneAchievementSet_of_skipped_dyadicCap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1444)). Indeed, the finite coefficient window is at most its infinite tail, so $`F_k(J)\ge0`$ implies $`r_k(1/2)\le2^{-(k+1)}`$ at that skip. This is below $`R_{k+1}`$. At $`k=0`$ the remainder is exactly $`1/2`$ and the same inequality holds; the strict version in Theorem <a href="#record:257bm-c19" data-reference-type="ref" data-reference="record:257bm-c19">131</a> requires positive $`k`$.
 
 The bound $`J\le k+1`$ is *not used* in this implication. Allowing any finite $`J`$ at each skip already suffices; requiring first passage by $`k+1`$ is a stronger finite-horizon demand, not a necessary ingredient of the membership proof. Neither all-skip existence condition is established here, and no equivalence between the bounded and unbounded horizons is asserted.
 
@@ -3556,9 +3591,9 @@ The stage-level theorem consumes adjacent profiled prefixes directly ([`profiled
 These results concern achievement-set geometry and do not settle the universal irrationality problem. For an arbitrary support restriction $`J\subseteq\mathbb{N}`$, let $`\mathcal A_J`$ be the set of Mersenne digit values supported on $`J`$ ([`supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L76)). It is compact ([`isCompact_supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L90)), nowhere dense for every $`J`$ ([`isNowhereDense_supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L112)), and perfect, that is compact with no isolated points, whenever $`J`$ is infinite ([`perfect_supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L167)), via a Cantor-space no-isolated-point argument on the coding space itself ([`preperfect_supportedMersenneDigitSet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L120)).
 
 <div id="prop:exact-lebesgue-measure-dichotomy" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/SharedPrefixFamiliesAndMeasureDichotomy.lean#L68">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-exact-lebesgue-measure-dichotomy-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SharedPrefixFamiliesAndMeasureDichotomy.lean#L68">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-6-4.md#prop-exact-lebesgue-measure-dichotomy-comparator">Comparator</a></p>
 
-**Proposition 189** (Exact Lebesgue-measure dichotomy). *Either $`J=F^c`$ for a finite $`F`$, and $`\mathrm{vol}(\mathcal A_J)=2^{-|F|}`$ exactly, or $`J^c`$ is infinite and the volume is exactly $`0`$.*
+**Proposition 190** (Exact Lebesgue-measure dichotomy). *Either $`J=F^c`$ for a finite $`F`$, and $`\mathrm{vol}(\mathcal A_J)=2^{-|F|}`$ exactly, or $`J^c`$ is infinite and the volume is exactly $`0`$.*
 
 </div>
 
@@ -3629,7 +3664,7 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 | [detail note 2](#paper-table-note-afaa2883817b967d) | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ |
 | [detail note 3](#paper-table-note-abffbca55a06ebc8) | $`E\subseteq[2,n]`$, $`X_E(2)>1/2`$: $`\exists c\le n`$ |
 | [detail note 4](#paper-table-note-4e7b4c139890961c) | $`1\le h\le16`$ (explicit bound) |
-| Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>, Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">199</a>); ordinary argument with exact computation ([working note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md), [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py)). | $`3\le J\le22`$ (finite table, exhaustive) |
+| Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>, Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">200</a>); ordinary argument with exact computation ([working note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md), [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py)). | $`3\le J\le22`$ (finite table, exhaustive) |
 |  |  |
 | [detail note 5](#paper-table-note-3ed95892f1755856) | $`\forall x\ge0`$, membership iff survival at every rank |
 | [detail note 6](#paper-table-note-331d28e483534677) | $`\forall M\in`$ skipped support |
@@ -3649,9 +3684,9 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 | An equivalent membership condition: the canonical rational half-greedy orbit itself has infinitely many positive skips (unproved). [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22) | [detail note 15](#paper-table-note-f6e3fe8b7edce452) |
 | [detail note 16](#paper-table-note-95c2ae150bc76774) | given $`\forall N\,\exists c\ge N(\ldots)`$ |
 | [detail note 17](#paper-table-note-e2f956f4eea0be63) | the skipped support is infinite |
-| [detail note 18](#paper-table-note-b930a9e8b3f6b2c6) | every right-hand side asserts unboundedly many indices |
+| [detail note 18](#paper-table-note-92d101b7fa267e95) | every right-hand side asserts unboundedly many indices |
 | Ladder dichotomy: either infinitely many rungs survive (#257 false, explicit limit support) or an eventual bad-rank obstruction closes only this route (ordinary argument, Corollary 8 of the [truncation-rung note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md)). | open branch (a): $`\exists^\infty J,\ \mathrm{HalfRung}(J)`$ |
-| Reset square-root escape, a sufficient all-reset hypothesis (unproved). Theorem <a href="#thm:lower-bound-every-reset" data-reference-type="ref" data-reference="thm:lower-bound-every-reset">246</a> gives the conditional implication; the run-length comparison is discussed separately in Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a>. | $`\forall r\ge10`$ that are resets, $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ |
+| Reset square-root escape, a sufficient all-reset hypothesis (unproved). Theorem <a href="#thm:lower-bound-every-reset" data-reference-type="ref" data-reference="thm:lower-bound-every-reset">247</a> gives the conditional implication; the run-length comparison is discussed separately in Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a>. | $`\forall r\ge10`$ that are resets, $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ |
 |  |  |
 
 <a id="paper-table-note-6af8075221cbd809"></a> **Detail note 1.** The combined-residue-mass $`\le 1`$ sufficient test for sharp capacity is not necessary: example $`D=\{2,3\}`$, $`c=5`$ (exact computation). [`splitFractionMass_one_bound_not_necessary_fixture`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L183)
@@ -3688,7 +3723,7 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 
 <a id="paper-table-note-e2f956f4eea0be63"></a> **Detail note 17.** Membership iff the greedy skip set is infinite (equivalence proved; both sides assert unboundedly many indices). [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583)
 
-<a id="paper-table-note-b930a9e8b3f6b2c6"></a> **Detail note 18.** Seven equivalent forms of membership (Theorem <a href="#thm:nine-way-hub" data-reference-type="ref" data-reference="thm:nine-way-hub">75</a>): the integer-greedy sequence is not eventually always on branch $`\mathrm R`$, the terminal rank is omitted at unboundedly many rows, there are cofinally many skipped ranks, *etc.* [`half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
+<a id="paper-table-note-92d101b7fa267e95"></a> **Detail note 18.** Seven equivalent forms of membership (Theorem <a href="#thm:nine-way-hub" data-reference-type="ref" data-reference="thm:nine-way-hub">76</a>): the integer-greedy sequence is not eventually always on branch $`\mathrm R`$, the terminal rank is omitted at unboundedly many rows, there are cofinally many skipped ranks, *etc.* [`half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
 
 
 Quantifiers for the stated results. The groups separate finite tests, uniform implications, unbounded witness conditions and all-reset hypotheses. A theorem conditional on an unproved hypothesis is not a proof of that hypothesis.
@@ -3697,7 +3732,7 @@ Quantifiers for the stated results. The groups separate finite tests, uniform im
 
 <div id="rem:promotion-audit" class="rem">
 
-*Remark 190* (Finite checks and quantified conclusions). An earlier review examined eighteen possible implications from recorded results to the required unbounded-witness conditions. It found no such implication. This is a report about those attempts, not a theorem excluding other arguments.
+*Remark 191* (Finite checks and quantified conclusions). An earlier review examined eighteen possible implications from recorded results to the required unbounded-witness conditions. It found no such implication. This is a report about those attempts, not a theorem excluding other arguments.
 
 For example, [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78) checks reset indices $`13`$ through $`30`$; it has no conclusion beyond that range. Likewise, a bound depending on the depth need not produce a witness at a larger depth. Conversely, a proved eventual assertion of the *same* witness predicate immediately gives cofinal witnesses. What decides the matter is the precise premise and conclusion, whatever tactic a finite proof uses.
 
@@ -3713,7 +3748,7 @@ For example, [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.co
 
 Fix the weights $`x_n:=1/(2^n-1)`$, $`n\ge2`$, and the target $`1/2`$. The single object under study throughout this programme is the greedy orbit for this target: a residual $`\rho`$ starts at $`1/2`$, and at rank $`k`$ the orbit *takes* iff $`\rho\ge x_k`$. A skip at rank $`k`$ is *safe* iff $`\rho\le T_{k+1}:=\sum_{j>k}x_j`$ and *fatal* iff $`\rho\in(T_{k+1},x_k)`$; the fatal interval is exactly the gap no later tail can repair. The four calculations below concern this target, but their finite parameters and certification records differ. Agreement with the real greedy prefix requires a convergence argument for the approximants used in each calculation; agreement over a tested range is not that argument.
 
-- **Truncation rung $`J`$.** Replace the full weight $`x_n`$ by the $`J`$-term truncation $`w_n^{(J)}:=\sum_{q=1}^{J}2^{-qn}`$ and ask whether some Boolean support hits $`1/2`$ exactly under the truncated weights. Certified for $`3\le J\le22`$ (Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab:scale-ladder">1</a>, finite ranges; Theorem <a href="#thm:tr-witness-exclusion" data-reference-type="ref" data-reference="thm:tr-witness-exclusion">196</a>–<a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">199</a> below).
+- **Truncation rung $`J`$.** Replace the full weight $`x_n`$ by the $`J`$-term truncation $`w_n^{(J)}:=\sum_{q=1}^{J}2^{-qn}`$ and ask whether some Boolean support hits $`1/2`$ exactly under the truncated weights. Certified for $`3\le J\le22`$ (Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab:scale-ladder">1</a>, finite ranges; Theorem <a href="#thm:tr-witness-exclusion" data-reference-type="ref" data-reference="thm:tr-witness-exclusion">197</a>–<a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">200</a> below).
 
 - **Seam row $`s`$.** The base-4 seam recursion tracking the deviation $`\Delta_s:=\mathrm{rem}(s)-2^s`$ of the integer greedy orbit from its dyadic target. Certified rows $`6`$ through $`2500`$ for the reset-crossing classification, and the underlying orbit separately certified to row $`200{,}000`$, with exactly one violation of the target inequality at reset rows $`6\le r\le200{,}000`$, at $`r=7`$ (saved runs to [row $`2500`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json) and to [row $`200{,}000`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json)).
 
@@ -3722,22 +3757,22 @@ Fix the weights $`x_n:=1/(2^n-1)`$, $`n\ge2`$, and the target $`1/2`$. The singl
 - **Sharp tail margin.** The rank-by-rank take/skip margin against the exact tail, checked for ranks $`2`$ through $`3000`$: $`1497`$ takes against $`1502`$ skips, zero fatal skips anywhere, minimum safe-skip margin $`+2.9922`$ bits at rank $`5`$, and the smallest reported take-margin $`+0.0340`$ bits at rank $`7`$, where the remainder $`1/126`$ exceeds the weight $`1/127`$. Here the margins are the base-two logarithms of the corresponding positive slack multiplied by $`4^k`$ ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/tail-margins-3000.json); [working note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/reset-crossing-unification-2026-07-24.md), section 8).
 
 <div id="prop:one-orbit" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#prop-one-orbit">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#prop-one-orbit-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#prop-one-orbit">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#prop-one-orbit-comparator">Comparator</a></p>
 
-**Proposition 191** (Stability of each fixed greedy prefix). *Let $`t_j\to1/2`$ and, for each fixed $`n\ge2`$, let $`v_n^{(j)}\to x_n=(2^n-1)^{-1}`$, with $`v_n^{(j)}>0`$. Apply the greedy rule with target $`t_j`$ and weights $`v_n^{(j)}`$ in increasing order of $`n`$, through depths $`m_j\to\infty`$. For every fixed depth $`K`$, the decisions at ranks $`2,\ldots,K`$ eventually agree with those of the real half-greedy rule. This assertion concerns finite prefixes, not survival at all ranks.*
+**Proposition 192** (Stability of each fixed greedy prefix). *Let $`t_j\to1/2`$ and, for each fixed $`n\ge2`$, let $`v_n^{(j)}\to x_n=(2^n-1)^{-1}`$, with $`v_n^{(j)}>0`$. Apply the greedy rule with target $`t_j`$ and weights $`v_n^{(j)}`$ in increasing order of $`n`$, through depths $`m_j\to\infty`$. For every fixed depth $`K`$, the decisions at ranks $`2,\ldots,K`$ eventually agree with those of the real half-greedy rule. This assertion concerns finite prefixes, not survival at all ranks.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* At rank $`2`$, the target and the weight converge to their real counterparts. Their comparison is strict by Lemma <a href="#lem:no-ties" data-reference-type="ref" data-reference="lem:no-ties">192</a>, so its sign is eventually unchanged. Inductively, once all earlier decisions agree, the approximate remainder is the target minus a fixed finite sum of convergent weights. It therefore converges to the real remainder. The next comparison is again strict, so the next decision eventually agrees. A finite induction through $`K`$ proves the claim. ◻
+*Proof.* At rank $`2`$, the target and the weight converge to their real counterparts. Their comparison is strict by Lemma <a href="#lem:no-ties" data-reference-type="ref" data-reference="lem:no-ties">193</a>, so its sign is eventually unchanged. Inductively, once all earlier decisions agree, the approximate remainder is the target minus a fixed finite sum of convergent weights. It therefore converges to the real remainder. The next comparison is again strict, so the next decision eventually agrees. A finite induction through $`K`$ proves the claim. ◻
 
 </div>
 
 <div id="lem:no-ties" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-no-ties">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-no-ties-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-no-ties">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-no-ties-comparator">Comparator</a></p>
 
-**Lemma 192** (No-ties lemma). *At every rank $`k`$ of the full greedy orbit for target $`1/2`$, both defining comparisons are strict: $`\rho\ne x_k`$ and $`\rho\ne T_{k+1}`$.*
+**Lemma 193** (No-ties lemma). *At every rank $`k`$ of the full greedy orbit for target $`1/2`$, both defining comparisons are strict: $`\rho\ne x_k`$ and $`\rho\ne T_{k+1}`$.*
 
 </div>
 
@@ -3755,7 +3790,7 @@ Both boundaries of the fatal interval $`(T_{k+1},x_k)`$ are therefore approached
 
 <div class="rem">
 
-*Remark 193*. The hypotheses of Proposition <a href="#prop:one-orbit" data-reference-type="ref" data-reference="prop:one-orbit">191</a> can be checked for two concrete approximations. The truncated geometric weights $`\sum_{q=1}^{J}2^{-qn}`$ increase to $`x_n`$. For the integer quotient rows, division by $`4^s`$ gives weights $`4^{-s}\lfloor4^s/(2^n-1)\rfloor\to x_n`$ and target $`4^{-s}(2^{2s-1}-2^s)=1/2-2^{-s}\to1/2`$. Hence both greedy rules agree with each fixed real prefix once their parameters are large enough. Convergent upper and lower bounds for $`R_k`$ likewise determine the strict tail comparison at a fixed rank. No conclusion about the exploratory margin scan follows without specifying its approximants and proving their convergence. Fixed-prefix agreement is not uniform agreement through a growing depth. For the quotient rows, however, summability bounds the unmatched tail by $`R_K`$ and does give convergence of the coded values, as proved in Theorem <a href="#thm:seam-limit" data-reference-type="ref" data-reference="thm:seam-limit">45</a>. It identifies their limit as $`X_G(2)`$; it does not establish that this value is $`1/2`$.
+*Remark 194*. The hypotheses of Proposition <a href="#prop:one-orbit" data-reference-type="ref" data-reference="prop:one-orbit">192</a> can be checked for two concrete approximations. The truncated geometric weights $`\sum_{q=1}^{J}2^{-qn}`$ increase to $`x_n`$. For the integer quotient rows, division by $`4^s`$ gives weights $`4^{-s}\lfloor4^s/(2^n-1)\rfloor\to x_n`$ and target $`4^{-s}(2^{2s-1}-2^s)=1/2-2^{-s}\to1/2`$. Hence both greedy rules agree with each fixed real prefix once their parameters are large enough. Convergent upper and lower bounds for $`R_k`$ likewise determine the strict tail comparison at a fixed rank. No conclusion about the exploratory margin scan follows without specifying its approximants and proving their convergence. Fixed-prefix agreement is not uniform agreement through a growing depth. For the quotient rows, however, summability bounds the unmatched tail by $`R_K`$ and does give convergence of the coded values, as proved in Theorem <a href="#thm:seam-limit" data-reference-type="ref" data-reference="thm:seam-limit">46</a>. It identifies their limit as $`X_G(2)`$; it does not establish that this value is $`1/2`$.
 
 </div>
 
@@ -3776,16 +3811,16 @@ T_{n+1}^{(J)}&:=\sum_{q=1}^{J}\frac{2^{-qn}}{2^q-1},\\
 The arguments below are ordinary mathematics. The accompanying exact integer computation rechecks the finite instances $`3\le J\le22`$; neither the arguments nor that computation are presented as a Lean verification.
 
 <div id="lem:tr-forced-greedy" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-tr-forced-greedy">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-tr-forced-greedy">Lean</a></p>
 
-**Lemma 194** (Forced greedy). *For every $`J\ge2`$: $`w_n^{(J)}>T_{n+1}^{(J)}`$ for all $`n`$ (the $`q=1`$ terms agree exactly, and every $`q\ge2`$ tail term is strictly smaller than the corresponding weight term). Consequently the greedy support is the unique candidate support, and $`\mathrm{HalfRung}(J)`$ holds iff the greedy orbit for $`1/2`$ under weights $`w_n^{(J)}`$ never lands in a fatal interval $`(T_{n+1}^{(J)},w_n^{(J)})`$. Rank $`1`$ is always a safe skip; ranks $`2`$ and $`3`$ are always takes.*
+**Lemma 195** (Forced greedy). *For every $`J\ge2`$: $`w_n^{(J)}>T_{n+1}^{(J)}`$ for all $`n`$ (the $`q=1`$ terms agree exactly, and every $`q\ge2`$ tail term is strictly smaller than the corresponding weight term). Consequently the greedy support is the unique candidate support, and $`\mathrm{HalfRung}(J)`$ holds iff the greedy orbit for $`1/2`$ under weights $`w_n^{(J)}`$ never lands in a fatal interval $`(T_{n+1}^{(J)},w_n^{(J)})`$. Rank $`1`$ is always a safe skip; ranks $`2`$ and $`3`$ are always takes.*
 
 </div>
 
 <div id="lem:tr-parity" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L176">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-tr-parity-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L176">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-tr-parity-comparator">Comparator</a></p>
 
-**Lemma 195** (Parity forces infinite support). *For every $`J\ge2`$, no finite $`A\subseteq\{2,3,\ldots\}`$ attains $`\mathrm{HalfRung}(J)`$.*
+**Lemma 196** (Parity forces infinite support). *For every $`J\ge2`$, no finite $`A\subseteq\{2,3,\ldots\}`$ attains $`\mathrm{HalfRung}(J)`$.*
 
 </div>
 
@@ -3796,9 +3831,9 @@ The arguments below are ordinary mathematics. The accompanying exact integer com
 </div>
 
 <div id="thm:tr-witness-exclusion" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L250">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#thm-tr-witness-exclusion-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L250">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#thm-tr-witness-exclusion-comparator">Comparator</a></p>
 
-**Theorem 196** (Witness exclusion). *Define the misalignment mass
+**Theorem 197** (Witness exclusion). *Define the misalignment mass
 ``` math
 \mu_J(M):=\sum_{q=2}^{J}\frac{2^{M\bmod q}}{2^q-1}.
 ```
@@ -3829,9 +3864,9 @@ There is no $`q=1`$ contribution to $`F`$, since $`d<n\le M`$. Thus $`2^M\rho+F-
 </div>
 
 <div id="cor:tr-half-lcm" class="cor">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L467">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#cor-tr-half-lcm-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L467">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#cor-tr-half-lcm-comparator">Comparator</a></p>
 
-**Corollary 197** (Half-LCM horizon). *Let $`J\ge2`$ and $`L_J:=\mathrm{lcm}(2,3,\ldots,J)`$. For every $`n\ge\max\{4,L_J/2+1\}`$ there is an $`M\in[n,2n-2]`$ with $`\mu_J(M)<11/15`$. Thus witness exclusion leaves only the finite window $`[4,L_J/2]`$ to check.*
+**Corollary 198** (Half-LCM horizon). *Let $`J\ge2`$ and $`L_J:=\mathrm{lcm}(2,3,\ldots,J)`$. For every $`n\ge\max\{4,L_J/2+1\}`$ there is an $`M\in[n,2n-2]`$ with $`\mu_J(M)<11/15`$. Thus witness exclusion leaves only the finite window $`[4,L_J/2]`$ to check.*
 
 </div>
 
@@ -3843,14 +3878,14 @@ There is no $`q=1`$ contribution to $`F`$, since $`d<n\le M`$. Thus $`2^M\rho+F-
  <\sum_{q=2}^{\infty}\frac{4}{3\cdot2^q}
  =\frac23<\frac{11}{15}.
 ```
-The bound uses $`2^q-1\ge3\cdot2^{q-2}`$, with strict inequality for $`q>2`$, so no numerical approximation to the full series is needed. Apply Theorem <a href="#thm:tr-witness-exclusion" data-reference-type="ref" data-reference="thm:tr-witness-exclusion">196</a>; its proof also covers $`J=2`$. Ranks $`2`$ and $`3`$ are takes, as already noted. ◻
+The bound uses $`2^q-1\ge3\cdot2^{q-2}`$, with strict inequality for $`q>2`$, so no numerical approximation to the full series is needed. Apply Theorem <a href="#thm:tr-witness-exclusion" data-reference-type="ref" data-reference="thm:tr-witness-exclusion">197</a>; its proof also covers $`J=2`$. Ranks $`2`$ and $`3`$ are takes, as already noted. ◻
 
 </div>
 
 <div id="lem:tr-mod12" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L544">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-tr-mod12-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L544">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#lem-tr-mod12-comparator">Comparator</a></p>
 
-**Lemma 198** (Mod-12 filter, $`J\ge7`$). *For $`J\ge7`$, the inequality $`\mu_J(M)\le11/15`$ implies $`12\mid M`$. Thus only multiples of $`12`$ need be tested as witnesses in each interval $`[n,2n-2]`$; no potentially uncovered rank is discarded.*
+**Lemma 199** (Mod-12 filter, $`J\ge7`$). *For $`J\ge7`$, the inequality $`\mu_J(M)\le11/15`$ implies $`12\mid M`$. Thus only multiples of $`12`$ need be tested as witnesses in each interval $`[n,2n-2]`$; no potentially uncovered rank is discarded.*
 
 </div>
 
@@ -3861,21 +3896,21 @@ The bound uses $`2^q-1\ge3\cdot2^{q-2}`$, with strict inequality for $`q>2`$, so
 </div>
 
 <div id="thm:tr-finite-decision" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L896">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-8.md#thm-tr-finite-decision-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L896">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-8.md#thm-tr-finite-decision-comparator">Comparator</a></p>
 
-**Theorem 199** (Finite decision procedure). *Call $`n\in[4,L_J/2]`$ **bad** if no $`M\in[n,2n-2]`$ has $`\mu_J(M)\le\tfrac{11}{15}`$, and set $`B(J):=\max(\mathrm{bad}\cup\{3\})`$. Then $`\mathrm{HalfRung}(J)`$ holds iff the greedy orbit for $`1/2`$ under weights $`w_n^{(J)}`$ survives every rank from $`2`$ through $`B(J)`$. This is a finite exact decision procedure.*
+**Theorem 200** (Finite decision procedure). *Call $`n\in[4,L_J/2]`$ **bad** if no $`M\in[n,2n-2]`$ has $`\mu_J(M)\le\tfrac{11}{15}`$, and set $`B(J):=\max(\mathrm{bad}\cup\{3\})`$. Then $`\mathrm{HalfRung}(J)`$ holds iff the greedy orbit for $`1/2`$ under weights $`w_n^{(J)}`$ survives every rank from $`2`$ through $`B(J)`$. This is a finite exact decision procedure.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Survival at all ranks plainly implies survival through $`B(J)`$. Conversely, every later rank at most $`L_J/2`$ has a witness by the definition of $`B(J)`$, and every larger rank has one by Corollary <a href="#cor:tr-half-lcm" data-reference-type="ref" data-reference="cor:tr-half-lcm">197</a>. Witness exclusion rules out a fatal gap at all these ranks. The strict-tail criterion then gives membership. For $`J=2`$, the same proof works because $`\mu_2(M)\le2/3`$ for every $`M`$; the window is empty and $`B(2)=3`$. ◻
+*Proof.* Survival at all ranks plainly implies survival through $`B(J)`$. Conversely, every later rank at most $`L_J/2`$ has a witness by the definition of $`B(J)`$, and every larger rank has one by Corollary <a href="#cor:tr-half-lcm" data-reference-type="ref" data-reference="cor:tr-half-lcm">198</a>. Witness exclusion rules out a fatal gap at all these ranks. The strict-tail criterion then gives membership. For $`J=2`$, the same proof works because $`\mu_2(M)\le2/3`$ for every $`M`$; the window is empty and $`B(2)=3`$. ◻
 
 </div>
 
 <div class="rem">
 
-*Remark 200* (Verified truncations and the unbounded-index question). The finite decision procedure verifies $`\mathrm{HalfRung}(J)`$ for every $`3\le J\le22`$. The checking program uses exact integers: it verifies witness intervals covering the ranks beyond $`B(J)`$, proves for $`J\le16`$ that the listed bad ranks have no witness, and tests the greedy remainders through $`B(J)`$. In particular, it reproduces $`B(19)=1008`$ and $`B(20)=B(21)=B(22)=1530`$. The [checking program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py) and its saved outputs for [$`3\le J\le16`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-3-16.json) and [$`17\le J\le22`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-17-22.json) are published. For $`J\ge17`$ a floating-point filter proposes witnesses and each accepted witness is rechecked with integers, so a missed witness could only lengthen the exact greedy check. These are finite computer-assisted proofs using the ordinary lemmas above, not Lean proofs and not a test of the full weights through all ranks.
+*Remark 201* (Verified truncations and the unbounded-index question). The finite decision procedure verifies $`\mathrm{HalfRung}(J)`$ for every $`3\le J\le22`$. The checking program uses exact integers: it verifies witness intervals covering the ranks beyond $`B(J)`$, proves for $`J\le16`$ that the listed bad ranks have no witness, and tests the greedy remainders through $`B(J)`$. In particular, it reproduces $`B(19)=1008`$ and $`B(20)=B(21)=B(22)=1530`$. The [checking program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py) and its saved outputs for [$`3\le J\le16`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-3-16.json) and [$`17\le J\le22`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-17-22.json) are published. For $`J\ge17`$ a floating-point filter proposes witnesses and each accepted witness is rechecked with integers, so a missed witness could only lengthen the exact greedy check. These are finite computer-assisted proofs using the ordinary lemmas above, not Lean proofs and not a test of the full weights through all ranks.
 
 If $`A`$ represents $`1/2`$ with the $`J`$-truncated weights, then
 ``` math
@@ -3883,7 +3918,7 @@ If $`A`$ represents $`1/2`$ with the $`J`$-truncated weights, then
  \le\sum_{q>J}\frac{2^{-2q}}{1-2^{-q}}
  \le2\sum_{q>J}4^{-q}=\frac23\,4^{-J}.
 ```
-Consequently, such representations for an unbounded sequence of $`J`$ would put $`1/2`$ in the closed set $`\mathcal A`$. Its representing support would be infinite, since finite Mersenne sums have odd denominator (Lemma <a href="#lem:no-ties" data-reference-type="ref" data-reference="lem:no-ties">192</a>); Lemma <a href="#lem:tr-parity" data-reference-type="ref" data-reference="lem:tr-parity">195</a> separately excludes finite support for each truncation. The unbounded-index assertion is still unproved. Twenty verified values of $`J`$ do not establish it.
+Consequently, such representations for an unbounded sequence of $`J`$ would put $`1/2`$ in the closed set $`\mathcal A`$. Its representing support would be infinite, since finite Mersenne sums have odd denominator (Lemma <a href="#lem:no-ties" data-reference-type="ref" data-reference="lem:no-ties">193</a>); Lemma <a href="#lem:tr-parity" data-reference-type="ref" data-reference="lem:tr-parity">196</a> separately excludes finite support for each truncation. The unbounded-index assertion is still unproved. Twenty verified values of $`J`$ do not establish it.
 
 </div>
 
@@ -3899,19 +3934,19 @@ This section compares the stated results with the remaining hypotheses. Each res
 
 <div class="defn">
 
-**Definition 201** (257-reset). For every upper or middle reset row $`r\ge10`$, require $`\Delta_{r+1}^2>2^{r+5}`$, where $`\Delta_{r+1}=\mathrm{rem}(r+1)-2^{r+1}`$. The finite range $`10\le r<31`$ must be covered as well as the tail. Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> gives the exact conditional implication from this hypothesis. A proposed bound on right-run lengths is a different statement until the pulse corrections and endpoint conventions are matched. Finite observations establish neither failure of every constant run bound nor logarithmic asymptotic growth.
+**Definition 202** (257-reset). For every upper or middle reset row $`r\ge10`$, require $`\Delta_{r+1}^2>2^{r+5}`$, where $`\Delta_{r+1}=\mathrm{rem}(r+1)-2^{r+1}`$. The finite range $`10\le r<31`$ must be covered as well as the tail. Section <a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> gives the exact conditional implication from this hypothesis. A proposed bound on right-run lengths is a different statement until the pulse corrections and endpoint conventions are matched. Finite observations establish neither failure of every constant run bound nor logarithmic asymptotic growth.
 
 </div>
 
 <div class="defn">
 
-**Definition 202** (257-cofinal-rows). For every $`N`$ there is $`n\ge N`$ with an exact row at depth $`n`$ (Definition <a href="#record:257bm-d1" data-reference-type="ref" data-reference="record:257bm-d1">106</a>); that is, there are finite sets at unboundedly many depths whose quotient sums land exactly on the half-value target. This condition implies $`1/2\in\mathcal A`$ unconditionally ([`half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)). No coherence between the witnessing rows is demanded and none should be assumed: the rows may be mutually incompatible; only their depths need tend to infinity. Requiring compatibility would add a condition on the witnesses. Whether that condition can be obtained from this existence statement needs a separate extraction argument; it is not a strict logical comparison merely because the witnesses are described differently.
+**Definition 203** (257-cofinal-rows). For every $`N`$ there is $`n\ge N`$ with an exact row at depth $`n`$ (Definition <a href="#record:257bm-d1" data-reference-type="ref" data-reference="record:257bm-d1">107</a>); that is, there are finite sets at unboundedly many depths whose quotient sums land exactly on the half-value target. This condition implies $`1/2\in\mathcal A`$ unconditionally ([`half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)). No coherence between the witnessing rows is demanded and none should be assumed: the rows may be mutually incompatible; only their depths need tend to infinity. Requiring compatibility would add a condition on the witnesses. Whether that condition can be obtained from this existence statement needs a separate extraction argument; it is not a strict logical comparison merely because the witnesses are described differently.
 
 </div>
 
 <div class="defn">
 
-**Definition 203** (257-universal). The original question is the base-$`2`$ statement: $`\sum_{n\in A}(2^n-1)^{-1}`$ is irrational for every infinite $`A\subseteq\mathbb N_{\ge1}`$. Asking the same for every integer base $`b\ge2`$ is a stronger all-base extension, not the definition of Problem #257 itself.
+**Definition 204** (257-universal). The original question is the base-$`2`$ statement: $`\sum_{n\in A}(2^n-1)^{-1}`$ is irrational for every infinite $`A\subseteq\mathbb N_{\ge1}`$. Asking the same for every integer base $`b\ge2`$ is a stronger all-base extension, not the definition of Problem #257 itself.
 
 </div>
 
@@ -3927,7 +3962,7 @@ Each entry identifies the available result, the assumptions needed to apply it, 
 
 <div class="obs">
 
-*Observation 204* (Remainders along a right-branch run). [`upperOrMiddle_within_of_two_pow_deficit`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderResetDeficitEscape.lean#L261). For integers $`s\ge5`$ and $`k\ge0`$, the cited theorem assumes $`\mathrm{rem}(s)\le2^s`$ and $`2^k(2^s-\mathrm{rem}(s))\ge2^s`$ and gives an upper or middle transition at some $`t\in[s,s+k]`$. Its literal contrapositive concerns *all* $`k+1`$ transition indices in that closed interval.
+*Observation 205* (Remainders along a right-branch run). [`upperOrMiddle_within_of_two_pow_deficit`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderResetDeficitEscape.lean#L261). For integers $`s\ge5`$ and $`k\ge0`$, the cited theorem assumes $`\mathrm{rem}(s)\le2^s`$ and $`2^k(2^s-\mathrm{rem}(s))\ge2^s`$ and gives an upper or middle transition at some $`t\in[s,s+k]`$. Its literal contrapositive concerns *all* $`k+1`$ transition indices in that closed interval.
 
 For a run of exactly $`k\ge1`$ right transitions, at indices $`s,\ldots,s+k-1`$, a direct recurrence gives the sharper conventionally indexed statement. Put $`D_j=2^{s+j}-\mathrm{rem}(s+j)`$ and $`p_j=p^-_{s+j}\ge0`$. The right-branch identity yields
 ``` math
@@ -3940,7 +3975,7 @@ The strict inequality uses $`k\ge1`$, and the last bound uses $`\mathrm{rem}(s+k
 
 <div id="obs:affine-excess-recurrence" class="obs">
 
-*Observation 205* (The affine excess recurrence). [`affineRightExcess_exactIterate`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L3320), [`affineRightExcess_charge_lt_scaledInitial`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L3350), [`eventualRightTail_excess_exactIterate`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L3361) (recurrence [`rightBranch_excess_succ_eq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2497)). For $`k`$ right transitions from row $`S\ge5`$, let $`X_j=\mathrm{rem}(S+j)-2^{S+j}`$ and $`p_j=p^-_{S+j}`$. The cited identity is
+*Observation 206* (The affine excess recurrence). [`affineRightExcess_exactIterate`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L3320), [`affineRightExcess_charge_lt_scaledInitial`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L3350), [`eventualRightTail_excess_exactIterate`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L3361) (recurrence [`rightBranch_excess_succ_eq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2497)). For $`k`$ right transitions from row $`S\ge5`$, let $`X_j=\mathrm{rem}(S+j)-2^{S+j}`$ and $`p_j=p^-_{S+j}`$. The cited identity is
 ``` math
 X_0=\frac{X_k}{4^k}+\sum_{j=0}^{k-1}\frac{p_j+4}{4^{j+1}}.
 ```
@@ -3965,7 +4000,7 @@ The extra term must be retained. Lateness of an omitted rank is not known to be 
 
 <div class="obs">
 
-*Observation 206* (A bound at later rows). [`three_mul_remainder_lt_exactLateGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderResetDeficitEscape.lean#L117). For $`s\ge5`$, if $`d`$ is the largest omitted rank and $`2s<3d`$, the cited theorem gives
+*Observation 207* (A bound at later rows). [`three_mul_remainder_lt_exactLateGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderResetDeficitEscape.lean#L117). For $`s\ge5`$, if $`d`$ is the largest omitted rank and $`2s<3d`$, the cited theorem gives
 ``` math
 \mathrm{rem}(s)<2^{s+1}+\frac{2\,4^{s-d}+4}{3}.
 ```
@@ -3975,7 +4010,7 @@ Since $`s-d<s/3`$, its additive error is at most $`(2\cdot2^{2s/3}+4)/3`$, hence
 
 <div class="obs">
 
-*Observation 207* (Exclusion of equality at a branch boundary). [`seamGreedyFloorZ_ne_takeThreshold`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1665), with [`halfGreedy_skipped_endpoint_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246). The first cited theorem excludes equality between the corrected real-valued quotient expression and the terminal *take threshold*: such equality would give a finite Mersenne sum equal to $`1/2`$, contrary to denominator parity. The second classifies the signed integer position of a real greedy prefix at a skipped rank; its statement explicitly permits the zero-position case.
+*Observation 208* (Exclusion of equality at a branch boundary). [`seamGreedyFloorZ_ne_takeThreshold`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1665), with [`halfGreedy_skipped_endpoint_trichotomy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean#L246). The first cited theorem excludes equality between the corrected real-valued quotient expression and the terminal *take threshold*: such equality would give a finite Mersenne sum equal to $`1/2`$, contrary to denominator parity. The second classifies the signed integer position of a real greedy prefix at a skipped rank; its statement explicitly permits the zero-position case.
 
 Neither statement identifies its boundary with $`\mathrm{rem}(r)=2^r`$. They therefore do not, by themselves, prove $`|\mathrm{rem}(r)-2^r|\ge1`$. Integrality gives that inequality only after nonvanishing of this particular deviation has been proved. An estimate of the form $`2^{r/2+o(r)}`$ would not settle the required constant either: $`2^{r/2}/r`$ has that form but is smaller than $`2^{(r+5)/2}`$. The reset hypothesis requires its stated constant, strict inequality and post-reset index, not merely an exponent approaching $`1/2`$.
 
@@ -3983,7 +4018,7 @@ Neither statement identifies its boundary with $`\mathrm{rem}(r)=2^r`$. They the
 
 <div class="obs">
 
-*Observation 208* (A sharper test for a fatal greedy gap). [`skipSafe_of_two_mul_le_three_mul`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L107), [`three_mul_lt_two_mul_of_fatal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L146), [`two_le_of_fatal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L161), [`three_le_of_fatal_of_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L173). Let $`k\ge1`$ be a skipped rank and write its positive rational remainder in lowest terms as $`\rho=u/(2L)<w_k`$, with $`u,L`$ odd and positive. Set $`a=2L-(2^k-1)u>0`$. The cited sufficient condition $`2u\le3a`$ guarantees $`\rho<R_k`$ and improves the simpler condition $`u\le a`$. Its contrapositive gives $`3a<2u`$ at a fatal skip, and hence $`u\ge3`$ when $`u`$ is odd.
+*Observation 209* (A sharper test for a fatal greedy gap). [`skipSafe_of_two_mul_le_three_mul`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L107), [`three_mul_lt_two_mul_of_fatal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L146), [`two_le_of_fatal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L161), [`three_le_of_fatal_of_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyFatalGap.lean#L173). Let $`k\ge1`$ be a skipped rank and write its positive rational remainder in lowest terms as $`\rho=u/(2L)<w_k`$, with $`u,L`$ odd and positive. Set $`a=2L-(2^k-1)u>0`$. The cited sufficient condition $`2u\le3a`$ guarantees $`\rho<R_k`$ and improves the simpler condition $`u\le a`$. Its contrapositive gives $`3a<2u`$ at a fatal skip, and hence $`u\ge3`$ when $`u`$ is odd.
 
 This is not the exact threshold. With $`\theta_k=R_k^{-1}-(2^k-1)`$, direct rearrangement gives
 ``` math
@@ -3995,34 +4030,34 @@ The tail estimate gives $`\theta_k<2/3`$ and $`\theta_k\to2/3`$; $`2u\le3a`$ is 
 
 <div class="obs">
 
-*Observation 209* (Exclusion of a linear-width band at rows 13–30). [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78). **Conclusion.** At every upper reset row $`d`$, $`13 \le d \le 30`$, the reset charge $`E_d =
+*Observation 210* (Exclusion of a linear-width band at rows 13–30). [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78). **Conclusion.** At every upper reset row $`d`$, $`13 \le d \le 30`$, the reset charge $`E_d =
 4\cdot\mathrm{overshoot}_d + \mathrm{abovePulse}_d`$ avoids the linear-width band $`(2^{d-j+1}-2(d+j),\ 2^{d-j+1}]`$ for every $`j \le d`$; the finite segment of [`SeamUpperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4566), whose full form would give half-membership by [`half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790), and so refute the universal statement. **Parameter range.** Proved at 18 explicit rows by exact computation checked in the Lean kernel; the obligation needs all $`d \ge 13`$. The excluded band has width $`O(d)`$, whereas the reset condition uses a width of order $`2^{(r+5)/2}`$. This is a comparison of numerical scales, not a proof that one hypothesis on the orbit implies the other. **Missing step.** A structural lower bound on the distance from $`E_d`$ to the nearest dyadic power at or above it, of width $`2(d+j_0)`$ at the single critical index $`j_0`$; already collapsed from $`\forall j`$ to one inequality by [`HalfUpperResetCriticalBand.dyadicBandEscape_iff_exists_critical`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfUpperResetCriticalBand.lean#L108). Only $`O(d)`$ separation is required here; separation at the square root of the dyadic scale is not needed.
 
 </div>
 
 <div class="obs">
 
-*Observation 210* (Middle predecessors and right-branch runs). [`seamMiddleBranch_nextRemainder_ge_row`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2655), [`seamMiddleBranch_nextRemainder_ge_expBarrier`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2680), [`SeamUpperResetDyadicBandEscape.remainder_ge_row`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4641). **Conclusion.** Unconditional, uniform in $`s\ge5`$: a middle (M) branch forces $`s+1 \le
+*Observation 211* (Middle predecessors and right-branch runs). [`seamMiddleBranch_nextRemainder_ge_row`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2655), [`seamMiddleBranch_nextRemainder_ge_expBarrier`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2680), [`SeamUpperResetDyadicBandEscape.remainder_ge_row`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4641). **Conclusion.** Unconditional, uniform in $`s\ge5`$: a middle (M) branch forces $`s+1 \le
 \mathrm{rem}(s+1)`$, using no lower bound on the source remainder; with the row-scale source bound this upgrades to $`2^{s+1}+(s+1) \le \mathrm{rem}(s+1)`$. A minimal-counterexample argument in the same Lean source then shows that any row whose remainder is smaller than its index must have an upper-reset (U) ancestor, since M-ancestors and R-runs are both excluded. **Scope of the hypothesis.** Two of the three ancestor channels (M, R) are closed unconditionally at all scales; only the U channel remains, and it needs only the $`O(d)`$-wide band escape of the preceding observation. The 257-reset statement demands escape at the square root of the dyadic scale, whereas linear-width escape at U-resets alone suffices for this argument. **Missing step.** The single remaining channel: for every $`d \ge 13`$ with successor carries, the reset charge avoids the width-$`2(d+j_0)`$ band at its critical dyadic index. Then the remainder is at least the row index at every late middle row, which is the hypothesis of the next observation, and hence $`1/2 \in \ensuremath{\mathcal A}`$; each of these implications is already proved in Lean.
 
 </div>
 
 <div class="obs">
 
-*Observation 211* (A linear lower bound at middle transitions). [`SeamMiddleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1769), [`half_mem_mersenneAchievementSet_of_middleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2371) (via its cardinality and tail forms, [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1510)). **Conclusion.** If at every late middle row ($`s \ge 13`$, no carry, middle branch) $`s \le \mathrm{rem}(s)`$, then $`1/2 \in \ensuremath{\mathcal A}`$. The hypothesis is much weaker than an exponential bound, but stronger than the square-root-scale carry bound. **Scope of the hypothesis.** This hypothesis asks for a *linear-in-row* lower bound on the remainder itself; the obligation supplies an *exponential* lower bound on the deviation from $`2^s`$ at reset rows. For unrestricted numerical values, a large absolute deviation from $`2^s`$ permits $`\mathrm{rem}(s)=0`$, which violates the linear lower bound. That observation is not a counterexample within the actual recurrence, so incomparability of the two orbit hypotheses is not established. **Missing step.** $`\forall s \ge 13`$ at a middle transition, $`s \le \mathrm{rem}(s)`$. The upper-reset band condition described above is one sufficient input to this linear bound; no converse is asserted.
+*Observation 212* (A linear lower bound at middle transitions). [`SeamMiddleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1769), [`half_mem_mersenneAchievementSet_of_middleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2371) (via its cardinality and tail forms, [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1510)). **Conclusion.** If at every late middle row ($`s \ge 13`$, no carry, middle branch) $`s \le \mathrm{rem}(s)`$, then $`1/2 \in \ensuremath{\mathcal A}`$. The hypothesis is much weaker than an exponential bound, but stronger than the square-root-scale carry bound. **Scope of the hypothesis.** This hypothesis asks for a *linear-in-row* lower bound on the remainder itself; the obligation supplies an *exponential* lower bound on the deviation from $`2^s`$ at reset rows. For unrestricted numerical values, a large absolute deviation from $`2^s`$ permits $`\mathrm{rem}(s)=0`$, which violates the linear lower bound. That observation is not a counterexample within the actual recurrence, so incomparability of the two orbit hypotheses is not established. **Missing step.** $`\forall s \ge 13`$ at a middle transition, $`s \le \mathrm{rem}(s)`$. The upper-reset band condition described above is one sufficient input to this linear bound; no converse is asserted.
 
 </div>
 
 <div class="obs">
 
-*Observation 212* (A square-root lower bound in the row index). [`SeamMiddleProducerSqrtEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L84), its implication to the exact tail bound, [`half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L458). **Conclusion.** If at every late middle row $`s`$ the producer carry exceeds $`2\sqrt{2s+2}+4`$, then $`1/2 \in \ensuremath{\mathcal A}`$; the producer carry equals the middle coordinate $`4\,\mathrm{rem}-\mathrm{belowPulse}-4`$ ([Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerLowerBound.lean#L150)), so the requirement is essentially $`\mathrm{rem}(s) \gtrsim (\sqrt{s}+\mathrm{belowPulse})/4`$. **Comparison.** This is a square root of the *row index* $`s`$ (a tail majorant for the divisor counts), not the square root of the *dyadic scale* $`2^{(r+5)/2}`$. The two square roots in this record are exponentially far apart and easy to conflate; this hypothesis is a bound in the row index. The cited conditional theorem uses it to rule out a last non-right transition. An implication between the different orbit hypotheses would require a further argument. **Missing step.** $`\forall s \ge 13`$ at a middle transition, $`4\,\mathrm{rem}(s) -
+*Observation 213* (A square-root lower bound in the row index). [`SeamMiddleProducerSqrtEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L84), its implication to the exact tail bound, [`half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L458). **Conclusion.** If at every late middle row $`s`$ the producer carry exceeds $`2\sqrt{2s+2}+4`$, then $`1/2 \in \ensuremath{\mathcal A}`$; the producer carry equals the middle coordinate $`4\,\mathrm{rem}-\mathrm{belowPulse}-4`$ ([Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerLowerBound.lean#L150)), so the requirement is essentially $`\mathrm{rem}(s) \gtrsim (\sqrt{s}+\mathrm{belowPulse})/4`$. **Comparison.** This is a square root of the *row index* $`s`$ (a tail majorant for the divisor counts), not the square root of the *dyadic scale* $`2^{(r+5)/2}`$. The two square roots in this record are exponentially far apart and easy to conflate; this hypothesis is a bound in the row index. The cited conditional theorem uses it to rule out a last non-right transition. An implication between the different orbit hypotheses would require a further argument. **Missing step.** $`\forall s \ge 13`$ at a middle transition, $`4\,\mathrm{rem}(s) -
 \mathrm{belowPulse}(s) - 4 > 2\sqrt{2s+2}+4`$; a row-scale, not dyadic-scale, lower bound on the middle coordinate.
 
 </div>
 
 <div class="obs">
 
-*Observation 213* (The remaining interval of possible integer values). [`upperProducer_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L299), [`middleProducer_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L364), [`finalMiddleCell_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L587), [`middleProducer_allRight_landingExcess_window`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2547), [`middleThenAllRight_landingExcess_two_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2319). **Conclusion.** Under the hypothesis of a last non-right transition at row $`D\ge13`$, the upper case is excluded. In the middle case put
+*Observation 214* (The remaining interval of possible integer values). [`upperProducer_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L299), [`middleProducer_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L364), [`finalMiddleCell_neg_three_not_last`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L587), [`middleProducer_allRight_landingExcess_window`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2547), [`middleThenAllRight_landingExcess_two_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2319). **Conclusion.** Under the hypothesis of a last non-right transition at row $`D\ge13`$, the upper case is excluded. In the middle case put
 ``` math
 X_{D+1}:=\mathrm{rem}(D+1)-2^{D+1}
           =4\,\mathrm{rem}(D)-p_D^-=C_D+4.
@@ -4037,38 +4072,38 @@ at a hypothetical last middle transition $`D\ge13`$. The ceiling is necessary wh
 
 <div class="obs">
 
-*Observation 214* (Excluding three integer values). [`SeamTwoSidedDyadicCellEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4374), [`SeamTwoSidedDyadicCellEscape.step`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4398), [`SeamTwoSidedDyadicCellEscape.twoSided`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448). Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a> states the two needed hypotheses and their row ranges explicitly. Excluding $`-3,-2,-1`$ is required only on middle branches; the overshoot inequality is required only on right branches where $`o_s\le2^s`$. The resulting invariant bounds at least one of the two distances from the target, not necessarily the lower remainder. The exclusion of $`-3`$ in the special last-middle-then-all-right configuration does not establish the unrestricted middle-branch hypothesis. Both universal assumptions remain to be proved for the actual sequence.
+*Observation 215* (Excluding three integer values). [`SeamTwoSidedDyadicCellEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4374), [`SeamTwoSidedDyadicCellEscape.step`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4398), [`SeamTwoSidedDyadicCellEscape.twoSided`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448). Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">53</a> states the two needed hypotheses and their row ranges explicitly. Excluding $`-3,-2,-1`$ is required only on middle branches; the overshoot inequality is required only on right branches where $`o_s\le2^s`$. The resulting invariant bounds at least one of the two distances from the target, not necessarily the lower remainder. The exclusion of $`-3`$ in the special last-middle-then-all-right configuration does not establish the unrestricted middle-branch hypothesis. Both universal assumptions remain to be proved for the actual sequence.
 
 </div>
 
 <div class="obs">
 
-*Observation 215* (An upper bound on the remainder). [`SeamGreedyRemainderGapBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L192), [`half_mem_mersenneAchievementSet_of_seamRemainderGapBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L303) and the cofinal implication [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L181). The estimate $`\mathrm{rem}(s)<2^{s+1}`$ for every $`s\ge6`$ would give $`\mathrm{rem}(s)/4^s\to0`$ and hence $`1/2\in\mathcal A`$. Theorem <a href="#thm:seam-limit" data-reference-type="ref" data-reference="thm:seam-limit">45</a> identifies the normalized limit unconditionally; requiring its value to be zero, even only along one unbounded sequence, is equivalent to membership. No strict separation of these conditions on the actual sequence is proved. The upper estimate is also the missing ceiling in the excess-side right-run argument. The existing bound on rows satisfying $`2s<3d`$, where $`d`$ is the largest omitted rank, still requires that row condition wherever it is applied. The finite checks do not supply it at every later row.
+*Observation 216* (An upper bound on the remainder). [`SeamGreedyRemainderGapBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L192), [`half_mem_mersenneAchievementSet_of_seamRemainderGapBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L303) and the cofinal implication [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L181). The estimate $`\mathrm{rem}(s)<2^{s+1}`$ for every $`s\ge6`$ would give $`\mathrm{rem}(s)/4^s\to0`$ and hence $`1/2\in\mathcal A`$. Theorem <a href="#thm:seam-limit" data-reference-type="ref" data-reference="thm:seam-limit">46</a> identifies the normalized limit unconditionally; requiring its value to be zero, even only along one unbounded sequence, is equivalent to membership. No strict separation of these conditions on the actual sequence is proved. The upper estimate is also the missing ceiling in the excess-side right-run argument. The existing bound on rows satisfying $`2s<3d`$, where $`d`$ is the largest omitted rank, still requires that row condition wherever it is applied. The finite checks do not supply it at every later row.
 
 </div>
 
 <div class="obs">
 
-*Observation 216* (Reported computation through row 200,000). **Conclusion.** Exact integer arithmetic to row 200,000 ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json)); branch counts $`R\!:\!M\!:\!U =
+*Observation 217* (Reported computation through row 200,000). **Conclusion.** Exact integer arithmetic to row 200,000 ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-orbit-200000.json)); branch counts $`R\!:\!M\!:\!U =
 100197\!:\!49899\!:\!49898`$; for $`r\ge6`$ the obligation *fails only at* $`r=7`$; maximum R-run $`19`$ after the reset at row $`158{,}096`$ against the required threshold $`\approx (r-3)/2 \approx 79{,}000`$ (margin $`\sim\!4000\times`$). Independently: 1209 resets checked to row 2500 ([saved run](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/seam-reset-crossing-2500.json)), zero classification anomalies, exactly two crossing cells in rows $`6\le s\le2500`$ ($`s{=}7,d{=}5`$ and $`s{=}10,d{=}7`$), both below hypothesis scope. **Parameter range.** fixed-scale exhaustive verification versus a statement at every reset $`r \ge 31`$. This is the difference between a finite and an unbounded parameter range: a finite verified list supplies no witnesses at unbounded depths, however large the margin. **Missing step.** Nothing computational; only a theorem. The certificate’s value is fixing the true constant ($`r \ge 31`$, sole violation among reset rows $`6\le r\le200{,}000`$ at $`r=7`$) so the theorem’s scope can be stated exactly.
 
 </div>
 
 <div class="obs">
 
-*Observation 217* (Structure of resets after long runs). **Conclusion.** At a dangerous reset $`r`$ ($`|\mathrm{rem}(r{+}1)-2^{r+1}| \le 2^{(r+5)/2}`$) whose preceding reset $`r_0`$ has pure R-run length $`L' = r-r_0-1 > (r+5)/4`$, the deviation $`w_{r_0+1}`$ is pinned to at most two adjacent integers determined by the divisor-pulse stream alone; a chain of $`n`$ dangerous resets forces $`n{-}1`$ nested exact integer-coincidence towers. **Scope of the hypothesis.** applies only to dangerous resets preceded by a long pure R-run ($`L' > (r+5)/4`$); an isolated dangerous reset after a short run is untouched. Pinning to two integers is not yet a contradiction: no theorem excludes those two values. This is an ordinary argument; it is not formalised. **Missing step.** (i) a congruence or pulse-stream obstruction showing the two pinned integer values are unattainable, and (ii) removal of the long-preceding-run hypothesis, or a proof that dangerous resets must enter chains to which the exclusion applies. Excluding the two pinned values addresses only resets satisfying the long-run hypothesis; covering all remaining resets is a separate requirement. Neither step alone proves a global exclusion.
+*Observation 218* (Structure of resets after long runs). **Conclusion.** At a dangerous reset $`r`$ ($`|\mathrm{rem}(r{+}1)-2^{r+1}| \le 2^{(r+5)/2}`$) whose preceding reset $`r_0`$ has pure R-run length $`L' = r-r_0-1 > (r+5)/4`$, the deviation $`w_{r_0+1}`$ is pinned to at most two adjacent integers determined by the divisor-pulse stream alone; a chain of $`n`$ dangerous resets forces $`n{-}1`$ nested exact integer-coincidence towers. **Scope of the hypothesis.** applies only to dangerous resets preceded by a long pure R-run ($`L' > (r+5)/4`$); an isolated dangerous reset after a short run is untouched. Pinning to two integers is not yet a contradiction: no theorem excludes those two values. This is an ordinary argument; it is not formalised. **Missing step.** (i) a congruence or pulse-stream obstruction showing the two pinned integer values are unattainable, and (ii) removal of the long-preceding-run hypothesis, or a proof that dangerous resets must enter chains to which the exclusion applies. Excluding the two pinned values addresses only resets satisfying the long-run hypothesis; covering all remaining resets is a separate requirement. Neither step alone proves a global exclusion.
 
 </div>
 
 <div class="obs">
 
-*Observation 218* (The sign condition and growth of the margin). **Conclusion.** At all 1209 observed resets, M $`\Rightarrow`$ deviation $`>0`$ and U $`\Rightarrow`$ deviation $`<0`$, with zero exceptions; the margin over the $`2^{(r+5)/2}`$ threshold grows from 1.11 bits at $`r=14`$ to $`\sim`$<!-- -->1246 bits at $`r=2499`$. The record isolates this as a separate, possibly more tractable target than the full square-root escape. **Different restrictions.** The upper sign follows from the positive reset charge: $`w_{r+1}=-(4o_r+p_r^+)<0`$. The middle sign is equivalent to $`4\mathrm{rem}(r)>p_r`$ and needs further information about the orbit. Neither sign implies a square-root lower bound on the absolute deviation. **Missing step.** Prove that middle inequality and then a quantitative margin on each branch. The exact branch calculation is given in Section <a href="#sec:invent-R1" data-reference-type="ref" data-reference="sec:invent-R1">11.1</a>; it is not a substitute for the magnitude estimate.
+*Observation 219* (The sign condition and growth of the margin). **Conclusion.** At all 1209 observed resets, M $`\Rightarrow`$ deviation $`>0`$ and U $`\Rightarrow`$ deviation $`<0`$, with zero exceptions; the margin over the $`2^{(r+5)/2}`$ threshold grows from 1.11 bits at $`r=14`$ to $`\sim`$<!-- -->1246 bits at $`r=2499`$. The record isolates this as a separate, possibly more tractable target than the full square-root escape. **Different restrictions.** The upper sign follows from the positive reset charge: $`w_{r+1}=-(4o_r+p_r^+)<0`$. The middle sign is equivalent to $`4\mathrm{rem}(r)>p_r`$ and needs further information about the orbit. Neither sign implies a square-root lower bound on the absolute deviation. **Missing step.** Prove that middle inequality and then a quantitative margin on each branch. The exact branch calculation is given in Section <a href="#sec:invent-R1" data-reference-type="ref" data-reference="sec:invent-R1">11.1</a>; it is not a substitute for the magnitude estimate.
 
 </div>
 
 <div class="obs">
 
-*Observation 219* (Comparison of finite truncation lengths). The exact finite procedure in Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">199</a> verifies the twenty truncations $`3\le J\le22`$. The proof combines finite integer certificates with a witness bound valid beyond the finite search horizon; it does not infer an infinite statement from a long finite run. Saved runs for [$`3\le J\le16`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-3-16.json) and [$`17\le J\le22`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-17-22.json) reproduce it. Representations for an unbounded sequence of $`J`$ would yield a representation of $`1/2`$ for the full weights by the compactness estimate following that theorem. That unbounded-index premise remains unproved. The size of the least-common-multiple horizon affects this finite algorithm, but is not an impossibility theorem for other arguments.
+*Observation 220* (Comparison of finite truncation lengths). The exact finite procedure in Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">200</a> verifies the twenty truncations $`3\le J\le22`$. The proof combines finite integer certificates with a witness bound valid beyond the finite search horizon; it does not infer an infinite statement from a long finite run. Saved runs for [$`3\le J\le16`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-3-16.json) and [$`17\le J\le22`$](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/receipts/truncation-ladder-17-22.json) reproduce it. Representations for an unbounded sequence of $`J`$ would yield a representation of $`1/2`$ for the full weights by the compactness estimate following that theorem. That unbounded-index premise remains unproved. The size of the least-common-multiple horizon affects this finite algorithm, but is not an impossibility theorem for other arguments.
 
 </div>
 
@@ -4078,7 +4113,7 @@ at a hypothetical last middle transition $`D\ge13`$. The ceiling is necessary wh
 
 <div class="obs">
 
-*Observation 220* (Exact rows from a sharp capacity bound). [`exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRow.lean#L238), [`exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRow.lean#L332). **Conclusion.** For any $`c \ge 4`$ and any finite $`D \subseteq [2,c)`$ with $`\ensuremath{V}\,D < 1/2`$ and $`\ensuremath{S}\,D\,1\,(2c{-}2) <
+*Observation 221* (Exact rows from a sharp capacity bound). [`exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRow.lean#L238), [`exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRow.lean#L332). **Conclusion.** For any $`c \ge 4`$ and any finite $`D \subseteq [2,c)`$ with $`\ensuremath{V}\,D < 1/2`$ and $`\ensuremath{S}\,D\,1\,(2c{-}2) <
 2^{c-2}`$: an exact row $`E`$ at endpoint $`2c{-}2`$ with $`D \subseteq E`$, every new rank strictly above $`c`$. No additional crossing condition or identification with a greedy prefix is needed. **Scope of the hypothesis.** needs a per-$`c`$ input $`\ensuremath{S}\,D\,1\,(2c{-}2) < 2^{c-2}`$, and this record supplies that input only through the crossing-deficit route, which [`eq_halfGreedyPrefixSupport_of_critical_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L50) then identifies the core with $`D=\mathrm{halfGreedyPrefixSupport}(c{-}1)`$, under its critical-crossing premises. The fill implication does not require that identification; this difference in its formulation is not a proof of strictness between the associated cofinal existence statements. **Closes it ($`\star`$):** $`\forall N\ \exists c \ge N,\ \exists`$ finite $`D \subseteq [2,c)`$ with $`\ensuremath{V}\,D<1/2`$ and $`\ensuremath{S}\,D\,1\,(2c{-}2) <
 2^{c-2}`$; equivalently $`\ensuremath{C}\,{\uparrow}D\,(2c{-}3) < 2^{c-2}`$. No coherence between the $`D`$’s, no requirement that $`D`$ be a greedy prefix.
 
@@ -4086,41 +4121,41 @@ at a hypothetical last middle transition $`D\ge13`$. The ceiling is necessary wh
 
 <div class="obs">
 
-*Observation 221* (A conditional induction for unbounded depths). [`SkippedCoreCriticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L30) $`\to`$ [`exists_laterProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1139) $`\to`$ [`cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1309) ([`ProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1087); strict progress [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L233)). **Conclusion.** Under the sharp-capacity supply hypothesis below, the induction starts from the depth-six seed and constructs exact rows at unbounded depths. A protected row is either doubled while its real value stays below $`1/2`$, or extended using its first crossing rank $`e`$. In the latter case protection gives $`2e-2`$ strictly larger than the old endpoint. **Scope of the hypothesis.** The recycle branch uses the critical quotient supply hypothesis whenever recycling is required. Protection (endpoint $`<2\cdot`$cutoff and new ranks $`>`$cutoff) makes that extension strictly increase the endpoint. The induction establishes the conditional implication, not the supply hypothesis. **Missing step.** The sharp inequality at one crossing rank per step, canonical form [`HalfGreedySkippedCriticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L178): $`\forall c \ge 4`$ skipped by the rational half-greedy orbit, $`2^{(2c-2)-1} \le
+*Observation 222* (A conditional induction for unbounded depths). [`SkippedCoreCriticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L30) $`\to`$ [`exists_laterProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1139) $`\to`$ [`cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1309) ([`ProtectedExactLocalMersenneRow`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1087); strict progress [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L233)). **Conclusion.** Under the sharp-capacity supply hypothesis below, the induction starts from the depth-six seed and constructs exact rows at unbounded depths. A protected row is either doubled while its real value stays below $`1/2`$, or extended using its first crossing rank $`e`$. In the latter case protection gives $`2e-2`$ strictly larger than the old endpoint. **Scope of the hypothesis.** The recycle branch uses the critical quotient supply hypothesis whenever recycling is required. Protection (endpoint $`<2\cdot`$cutoff and new ranks $`>`$cutoff) makes that extension strictly increase the endpoint. The induction establishes the conditional implication, not the supply hypothesis. **Missing step.** The sharp inequality at one crossing rank per step, canonical form [`HalfGreedySkippedCriticalQuotientSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L178): $`\forall c \ge 4`$ skipped by the rational half-greedy orbit, $`2^{(2c-2)-1} \le
 \ensuremath{Q}(\mathrm{insert}\,c\,(\mathrm{halfGreedyPrefixSupport}(c{-}1)))\,(2c{-}2)`$.
 
 </div>
 
 <div class="obs">
 
-*Observation 222* (Unconditional capacity, off by one bit). [`localBinarySuffix_two_mul_sub_two_lt_upperHalfCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreExactRow.lean#L123). **Conclusion.** Unconditionally, $`\forall c \ge 4`$ and every below-half core $`D \subseteq [2,c)`$ with deficit $`< \ensuremath{w}\,c`$: $`\ensuremath{S}\,D\,1\,(2c{-}2) <
+*Observation 223* (Unconditional capacity, off by one bit). [`localBinarySuffix_two_mul_sub_two_lt_upperHalfCapacity`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreExactRow.lean#L123). **Conclusion.** Unconditionally, $`\forall c \ge 4`$ and every below-half core $`D \subseteq [2,c)`$ with deficit $`< \ensuremath{w}\,c`$: $`\ensuremath{S}\,D\,1\,(2c{-}2) <
 2^{c-1}`$. Uniform in $`c`$, no table, no case split. **Parameter range.** One bit short. The strict-upper fill needs $`<2^{c-2}`$, this gives $`<2^{c-1}`$. The proof derives $`A < 2^{c-2}+|D|`$ then discards $`|D| \le c-2 \le 2^{c-2}`$; the loss is purely additive. The true unproved statement is only that $`A`$ avoids the linear-width band $`[2^{c-2},\,2^{c-2}+c-3]`$, width $`c{-}2`$ inside a range of size $`2^{c-2}`$. **Missing step.** A linear-width dyadic-band anti-concentration: at cofinally many crossing ranks $`c`$, $`\ensuremath{S}\,D\,1\,(2c{-}2) \notin [2^{c-2},\,2^{c-2}+c-3]`$. Same band shape as the earlier linear-band conditions. The reset condition uses a different coordinate and parameter, with width $`2^{(r+5)/2}`$; no implication between the hypotheses follows merely from this comparison of widths.
 
 </div>
 
 <div class="obs">
 
-*Observation 223* (Doubling extension, fails at the only recorded seed). [`exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDoubling.lean#L185); rank two is automatic ([`two_mem_of_exact_localMersenneQuotient`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowRankTwo.lean#L23)). **Conclusion.** $`\forall n \ge 6`$: a below-half exact row at $`n`$ produces an exact row at $`2n{-}1`$, support-extending, all new ranks $`>n`$. This is the only unconditional endpoint-doubling step in this record. **Scope of the hypothesis.** Below-halfness is not preserved and demonstrably fails at the first step. For the seed $`D=\{2,3,6\}`$ at $`M=11`$ the core alone contributes $`2/3+4/7+32/63 \approx 1.746 > 1`$, so the doubled row is strictly *above* half. Iterating the cheap arm is therefore impossible from the only recorded seed; the chain is forced into the capacity-gated recycle arm at step one. **Missing step.** Cofinally many below-half exact rows; $`\forall N\ \exists n \ge N\ \exists D`$ exact at $`n`$ with $`\sum_{d\in D}2^{n\bmod d}/(2^d-1) < 1`$. A single such row at each of cofinally many $`n`$ makes doubling unnecessary; a self-reproducing one closes everything.
+*Observation 224* (Doubling extension, fails at the only recorded seed). [`exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDoubling.lean#L185); rank two is automatic ([`two_mem_of_exact_localMersenneQuotient`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowRankTwo.lean#L23)). **Conclusion.** $`\forall n \ge 6`$: a below-half exact row at $`n`$ produces an exact row at $`2n{-}1`$, support-extending, all new ranks $`>n`$. This is the only unconditional endpoint-doubling step in this record. **Scope of the hypothesis.** Below-halfness is not preserved and demonstrably fails at the first step. For the seed $`D=\{2,3,6\}`$ at $`M=11`$ the core alone contributes $`2/3+4/7+32/63 \approx 1.746 > 1`$, so the doubled row is strictly *above* half. Iterating the cheap arm is therefore impossible from the only recorded seed; the chain is forced into the capacity-gated recycle arm at step one. **Missing step.** Cofinally many below-half exact rows; $`\forall N\ \exists n \ge N\ \exists D`$ exact at $`n`$ with $`\sum_{d\in D}2^{n\bmod d}/(2^d-1) < 1`$. A single such row at each of cofinally many $`n`$ makes doubling unnecessary; a self-reproducing one closes everything.
 
 </div>
 
 <div class="obs">
 
-*Observation 224* (Consecutive-skip precritical bound). [`halfGreedy_precriticalSuffix_lt_of_next_skip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L682) (used in [`halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1001)). **Conclusion.** Unconditional: if $`c \ge 6`$ and both rank $`c`$ and rank $`c{+}1`$ are skipped by the rational half-greedy orbit, then $`\ensuremath{S}(\mathrm{halfGreedyPrefixSupport}
+*Observation 225* (Consecutive-skip precritical bound). [`halfGreedy_precriticalSuffix_lt_of_next_skip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L682) (used in [`halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L1001)). **Conclusion.** Unconditional: if $`c \ge 6`$ and both rank $`c`$ and rank $`c{+}1`$ are skipped by the rational half-greedy orbit, then $`\ensuremath{S}(\mathrm{halfGreedyPrefixSupport}
 (c{-}1))\,1\,(2c{-}3) < 2^{c-3}`$, doubling into sharp capacity at $`c`$, hence an exact row at $`2c{-}2`$, with no supply hypothesis. **Scope of the hypothesis.** It needs two *consecutive* skipped ranks. The residual open set is exactly the skip-then-take rows: [`halfGreedySkippedPrecriticalSuffixSupply_iff_preTake`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L838) proves the whole hypothesis equivalent to [`HalfGreedyPreTakePrecriticalSuffixSupply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L200), with $`c=4,5`$ already settled by direct computation. **Missing step.** Cofinally many $`c \ge 6`$ at which two consecutive ranks $`c,c{+}1`$ are both skipped by the rational half-greedy orbit; or dually, the pre-take residual at cofinally many skipped-then-taken ranks. Either one closes the obligation with no further input.
 
 </div>
 
 <div class="obs">
 
-*Observation 225* (Bounded-gap precritical bound). [`halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L603) (with [`precriticalCrossingTax_of_futureThreshold`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L472), [`sub_two_le_two_pow_sub_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L432)). **Conclusion.** Unconditional and uniform in *both* parameters: skip at $`c`$, takes at $`c{+}1,\dots,c{+}t{-}1`$, skip at $`c{+}t`$, with $`0<t\le c-3`$ and $`c-2\le 2^{c-t-3}`$ $`\Rightarrow`$ precritical suffix bound at $`c`$ $`\Rightarrow`$ sharp capacity $`\Rightarrow`$ exact row at $`2c{-}2`$. Handles any skip gap $`t \lesssim c-3-\log_2(c-2)`$, not just $`t=1`$. **Scope of the hypothesis.** The only missing input is an orbit-level skip-gap bound: that the next skipped rank after $`c`$ occurs at $`c{+}t`$ with $`c-2 \le
+*Observation 226* (Bounded-gap precritical bound). [`halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L603) (with [`precriticalCrossingTax_of_futureThreshold`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L472), [`sub_two_le_two_pow_sub_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L432)). **Conclusion.** Unconditional and uniform in *both* parameters: skip at $`c`$, takes at $`c{+}1,\dots,c{+}t{-}1`$, skip at $`c{+}t`$, with $`0<t\le c-3`$ and $`c-2\le 2^{c-t-3}`$ $`\Rightarrow`$ precritical suffix bound at $`c`$ $`\Rightarrow`$ sharp capacity $`\Rightarrow`$ exact row at $`2c{-}2`$. Handles any skip gap $`t \lesssim c-3-\log_2(c-2)`$, not just $`t=1`$. **Scope of the hypothesis.** The only missing input is an orbit-level skip-gap bound: that the next skipped rank after $`c`$ occurs at $`c{+}t`$ with $`c-2 \le
 2^{c-t-3}`$. The proof is fully uniform in $`(c,t)`$, every constant explicit, no table. **Missing step.** For cofinally many skipped ranks $`c`$ of the rational half-greedy orbit, the next skipped rank is at most $`c+(c-3-\lceil\log_2(c-2)\rceil)`$. The finite skip-density observation does not imply this pointwise gap bound at unbounded ranks. Establishing the latter would supply the hypothesis of the stated conditional argument.
 
 </div>
 
 <div class="obs">
 
-*Observation 226* (Frozen margin, ineffective horizon). [`exists_greedyHalfFrozenMargin_nonneg_of_excess_neg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1198), [`exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1229). **Conclusion.** At every dyadically safe rank $`k>0`$, $`\ensuremath{F}\,k\,J \ge
+*Observation 227* (Frozen margin, ineffective horizon). [`exists_greedyHalfFrozenMargin_nonneg_of_excess_neg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1198), [`exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1229). **Conclusion.** At every dyadically safe rank $`k>0`$, $`\ensuremath{F}\,k\,J \ge
 0`$ for *some* horizon $`J`$; the finite coefficient window eventually covers the centred carry. Nonnegativity is monotone up in $`J`$. **Parameter range.** The horizon comes from a non-effective limit argument (convergence of the finite coefficient windows, then an existence extraction), so $`J`$ is unbounded. The exact-row route needs the crossing by the specific horizon $`J=c-3`$ ([`halfGreedy_precriticalSuffix_lt_iff_frozenMargin_nonneg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L866), $`k=c-1`$). All ingredients to make it effective already exist: [`binaryCoeffTail_eq_finiteCoeffWindow_add_shiftedTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L203) gives $`\mathrm{gap}=\mathrm{tail}(k{+}1{+}J)/2^J`$, and [`binaryCoeffTail_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L85) gives $`\mathrm{tail}(m)\le m+2`$. **Missing step.** Margin$`(k,J)\ge0`$ as soon as $`(k{+}J{+}3)/2^J <
 |\mathrm{halfGreedyNextDyadicExcessNumerator}\,k|/\mathrm{halfGreedyPrefixDenominator}\,k`$. Setting $`J=k-2`$ turns the hypothesis into one explicit dyadic-safety margin $`|E_k|/D_k > (2k{+}1)/2^{k-2}`$ at every skipped rank. This uses only lemmas already proved.
 
@@ -4128,7 +4163,7 @@ at a hypothetical last middle transition $`D\ge13`$. The ceiling is necessary wh
 
 <div class="obs">
 
-*Observation 227* (A nonnegative margin at an unspecified horizon). [`HalfGreedySkippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L604), [`half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L633), [`HalfGreedySkippedSeamEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L687). **Open property and proved conditional implication.** The open property asks that every skipped rank $`n\ge3`$ satisfy $`0\le\ensuremath{F}(n{-}1)\,n`$. Assuming this property, a Lean theorem proves $`1/2\in\ensuremath{\mathcal A}`$. **Order of quantifiers.** The horizon is exactly three doubling steps short. The exact-row hypothesis needs margin$`(k,k{-}2)\ge0`$; this gives margin$`(k,k{+}1)\ge0`$. By the succ-recurrence, margin$`(k,k{+}1)=8\cdot`$margin$`(k,k{-}2)+4\,\mathrm{sc}(2k)+2\,\mathrm{sc}(2k{+}1)
+*Observation 228* (A nonnegative margin at an unspecified horizon). [`HalfGreedySkippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L604), [`half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L633), [`HalfGreedySkippedSeamEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L687). **Open property and proved conditional implication.** The open property asks that every skipped rank $`n\ge3`$ satisfy $`0\le\ensuremath{F}(n{-}1)\,n`$. Assuming this property, a Lean theorem proves $`1/2\in\ensuremath{\mathcal A}`$. **Order of quantifiers.** The horizon is exactly three doubling steps short. The exact-row hypothesis needs margin$`(k,k{-}2)\ge0`$; this gives margin$`(k,k{+}1)\ge0`$. By the succ-recurrence, margin$`(k,k{+}1)=8\cdot`$margin$`(k,k{-}2)+4\,\mathrm{sc}(2k)+2\,\mathrm{sc}(2k{+}1)
 +\mathrm{sc}(2k{+}2)`$, where $`\mathrm{sc}`$ is the divisor count, bounded by $`\tau\le 2\sqrt{2k+2}`$. Since nonnegativity is monotone *up* in $`J`$, the cited statement is the weaker one and cannot supply the obligation as it stands. **Missing step.** A horizon-tightening; at every skipped rank, margin$`(k,k{+}1) \ge
 4\,\mathrm{sc}(2k)+2\,\mathrm{sc}(2k{+}1)+\mathrm{sc}(2k{+}2)`$: the full-shell margin must exceed an explicit $`O(\sqrt k)`$ divisor-count quantity, on the same square-root scale as the carry bounds above.
 
@@ -4136,14 +4171,14 @@ at a hypothetical last middle transition $`D\ge13`$. The ceiling is necessary wh
 
 <div class="obs">
 
-*Observation 228* (Cofinal positive skips *is* the obligation). [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22), [`cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L84), [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583), [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1515); positivity [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L138). **Conclusion.** Cofinally many positive rational-greedy skips $`\Rightarrow`$ the existence of exact quotient sums at unbounded depths $`\Rightarrow 1/2 \in
-\ensuremath{\mathcal A}`$. **Scope of the hypothesis.** It is equivalent to the problem itself. The positivity conjunct $`0 < \ensuremath{r}(1/2)(c{-}1)`$ holds unconditionally by the odd-denominator parity fact, so the hypothesis says exactly that the greedy rule for $`1/2`$ skips infinitely many ranks, which Theorem <a href="#record:257bm-c20" data-reference-type="ref" data-reference="record:257bm-c20">131</a> proves equivalent to $`1/2\in\mathcal A`$. Thus proving this hypothesis would settle the half-target question itself. **What remains.** One must prove that this fixed greedy sequence has infinitely many skips. Equivalence neither supplies that proof nor rules out finding a useful invariant for the sequence. The condition in Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">118</a> instead permits finite supports that are not greedy prefixes.
+*Observation 229* (Cofinal positive skips *is* the obligation). [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22), [`cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L84), [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583), [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1515); positivity [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L138). **Conclusion.** Cofinally many positive rational-greedy skips $`\Rightarrow`$ the existence of exact quotient sums at unbounded depths $`\Rightarrow 1/2 \in
+\ensuremath{\mathcal A}`$. **Scope of the hypothesis.** It is equivalent to the problem itself. The positivity conjunct $`0 < \ensuremath{r}(1/2)(c{-}1)`$ holds unconditionally by the odd-denominator parity fact, so the hypothesis says exactly that the greedy rule for $`1/2`$ skips infinitely many ranks, which Theorem <a href="#record:257bm-c20" data-reference-type="ref" data-reference="record:257bm-c20">132</a> proves equivalent to $`1/2\in\mathcal A`$. Thus proving this hypothesis would settle the half-target question itself. **What remains.** One must prove that this fixed greedy sequence has infinitely many skips. Equivalence neither supplies that proof nor rules out finding a useful invariant for the sequence. The condition in Theorem <a href="#record:257bm-c7" data-reference-type="ref" data-reference="record:257bm-c7">119</a> instead permits finite supports that are not greedy prefixes.
 
 </div>
 
 <div class="obs">
 
-*Observation 229* (Terminal bounds and restrictions on finite support). [`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34), [`HalfTerminalOnlyStripWitness`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L24), [`exists_infinite_support_half_of_cofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L192). **Conclusion.** Cofinally many depths $`M`$ carrying a finite normalized word $`a`$ with $`|\ensuremath{\operatorname{ihc}}(\operatorname{supp}a)(M{-}1)| \le \ensuremath{B}\,M
+*Observation 230* (Terminal bounds and restrictions on finite support). [`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34), [`HalfTerminalOnlyStripWitness`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L24), [`exists_infinite_support_half_of_cofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L192). **Conclusion.** Cofinally many depths $`M`$ carrying a finite normalized word $`a`$ with $`|\ensuremath{\operatorname{ihc}}(\operatorname{supp}a)(M{-}1)| \le \ensuremath{B}\,M
 \Rightarrow \exists A`$ infinite with $`X_{A}(2)=1/2`$. Same architecture as the obligation: cofinal, no coherence, mutually incompatible witnesses allowed.
 
 **Different restrictions.** The terminal condition permits *any* support inside the depth-$`M`$ window but demands the carry inside a $`\sim 2\sqrt M`$ strip; the obligation form ($`\star`$) tolerates a carry up to $`2^{M/2-1}`$, exponentially looser, but demands the support be confined to ranks $`<
@@ -4156,19 +4191,19 @@ M/2+1`$, since the exact fill encodes the residue in the pure upper window where
 
 <div class="obs">
 
-*Observation 230* (The live greedy carry and the carry of a fixed prefix). [`GreedyHalfCarryCofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L76), [`greedy_half_infinite_of_cofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L130), [`infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L817) (nonnegativity from [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L94)). **Conclusion.** Cofinal returns of the actual greedy carry to the square-root strip (Theorem <a href="#record:257rig-c18" data-reference-type="ref" data-reference="record:257rig-c18">129</a>), or a pointwise $`2\sqrt N+4`$ bound on the Möbius-centred carry (Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">127</a>), each give an infinite support with value exactly $`1/2`$. **Comparison.** These bound the carry of the *infinite* greedy support $`G`$ of $`1/2`$; sharp capacity is about the *frozen finite prefix* $`\mathrm{halfGreedyPrefixSupport}(c{-}1)`$. The two carries agree only at index $`k`$ (inside [`greedyHalfFrozenMargin_eq_actual_skip_margin`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1120)), not at depth $`2c{-}3`$ where the fill needs it. The bridge is already recorded: [`halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L949): sharp capacity $`\Leftrightarrow \ensuremath{C}\,G\,(2c{-}4) \le \Phi_c`$, where $`\Phi_c=\sum_{i=1}^{c-3}2^{c-3-i}\mathbf 1[c+i\notin G]`$ is the future-skip capacity; transport costs exactly this term. **Missing step.** Either a strip bound stated for the frozen prefix rather than the live orbit, or $`\Phi_c \ge \ensuremath{B}(2c{-}3)`$; holds as soon as one skip occurs early in $`[c{+}1,\,2c{-}4]`$, since the capacity is dyadically weighted. Same input as the bounded-gap precritical bound above.
+*Observation 231* (The live greedy carry and the carry of a fixed prefix). [`GreedyHalfCarryCofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L76), [`greedy_half_infinite_of_cofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L130), [`infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L817) (nonnegativity from [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L94)). **Conclusion.** Cofinal returns of the actual greedy carry to the square-root strip (Theorem <a href="#record:257rig-c18" data-reference-type="ref" data-reference="record:257rig-c18">130</a>), or a pointwise $`2\sqrt N+4`$ bound on the Möbius-centred carry (Theorem <a href="#record:257rig-c16" data-reference-type="ref" data-reference="record:257rig-c16">128</a>), each give an infinite support with value exactly $`1/2`$. **Comparison.** These bound the carry of the *infinite* greedy support $`G`$ of $`1/2`$; sharp capacity is about the *frozen finite prefix* $`\mathrm{halfGreedyPrefixSupport}(c{-}1)`$. The two carries agree only at index $`k`$ (inside [`greedyHalfFrozenMargin_eq_actual_skip_margin`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFiniteShadow.lean#L1120)), not at depth $`2c{-}3`$ where the fill needs it. The bridge is already recorded: [`halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L949): sharp capacity $`\Leftrightarrow \ensuremath{C}\,G\,(2c{-}4) \le \Phi_c`$, where $`\Phi_c=\sum_{i=1}^{c-3}2^{c-3-i}\mathbf 1[c+i\notin G]`$ is the future-skip capacity; transport costs exactly this term. **Missing step.** Either a strip bound stated for the frozen prefix rather than the live orbit, or $`\Phi_c \ge \ensuremath{B}(2c{-}3)`$; holds as soon as one skip occurs early in $`[c{+}1,\,2c{-}4]`$, since the capacity is dyadically weighted. Same input as the bounded-gap precritical bound above.
 
 </div>
 
 <div class="obs">
 
-*Observation 231* (Above-support recycling, no growth guarantee). [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155), [`exactLocalMersenneHalfRow_of_first_localMersenne_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L191), [`exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCore`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRow.lean#L149). **Conclusion.** Unconditional: every finite above-half support bounded by $`n`$ recycles through its first crossing rank $`c`$ into a genuine exact row at endpoint $`2c{-}2`$, with $`4 \le c \le n`$. No capacity hypothesis at all. **Order of quantifiers.** The witness is $`\exists c \le n`$, not $`\exists c`$ large; $`2c{-}2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">170</a> ([`exists_seeded_bounded_double_or_recycle_model`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L91)) satisfies the same transition schema plus a seed and does *not* give rows at unbounded depths. Growth is recovered only for protected exact rows, whose invariants force $`c>`$cutoff, hence $`2c{-}2>`$ endpoint; and maintaining those invariants is precisely what needs the sharp-capacity fill rather than this general recycling. **Missing step.** A crossing-location lower bound; for the supports actually produced, the first crossing rank satisfies $`2c{-}2>n`$. Equivalently, keep protection alive without sharp capacity, e.g. a fill placing all new ranks above $`c`$ using only the recorded $`c{-}1`$-bit capacity.
+*Observation 232* (Above-support recycling, no growth guarantee). [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155), [`exactLocalMersenneHalfRow_of_first_localMersenne_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L191), [`exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCore`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRow.lean#L149). **Conclusion.** Unconditional: every finite above-half support bounded by $`n`$ recycles through its first crossing rank $`c`$ into a genuine exact row at endpoint $`2c{-}2`$, with $`4 \le c \le n`$. No capacity hypothesis at all. **Order of quantifiers.** The witness is $`\exists c \le n`$, not $`\exists c`$ large; $`2c{-}2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem <a href="#record:257bm-k1" data-reference-type="ref" data-reference="record:257bm-k1">171</a> ([`exists_seeded_bounded_double_or_recycle_model`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L91)) satisfies the same transition schema plus a seed and does *not* give rows at unbounded depths. Growth is recovered only for protected exact rows, whose invariants force $`c>`$cutoff, hence $`2c{-}2>`$ endpoint; and maintaining those invariants is precisely what needs the sharp-capacity fill rather than this general recycling. **Missing step.** A crossing-location lower bound; for the supports actually produced, the first crossing rank satisfies $`2c{-}2>n`$. Equivalently, keep protection alive without sharp capacity, e.g. a fill placing all new ranks above $`c`$ using only the recorded $`c{-}1`$-bit capacity.
 
 </div>
 
 <div class="obs">
 
-*Observation 232* (Double-or-recycle dichotomy, proved insufficient). [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26), [`boundedDoubleOrRecycleModel_not_cofinal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L79), [`exists_seeded_bounded_double_or_recycle_model`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L91). **Conclusion.** $`\forall n \ge 6`$, an exact row at $`n`$ gives an exact row at $`2n{-}1`$ or at $`2c{-}2`$ for some $`4 \le c \le n`$; plus a formal proof that this shape, even seeded at endpoint six, is logically insufficient for cofinality. **Order of quantifiers.** The dichotomy is proved by splitting on the sign of the witness value (odd denominators exclude equality); the countermodel pins the deficit precisely: what is missing is not another dichotomy but strict endpoint progress in the recycle branch, or a proof that the below-half branch recurs. Re-deriving this dichotomy without controlling repeated returns to bounded depths would leave the same gap. **Missing step.** Either (a) the recycle branch upgraded to $`2c{-}2>n`$, or (b) cofinally many below-half exact rows so the doubling branch alone is cofinal. These are two sufficient ways to obtain progress; the countermodel does not rule out other assumptions that also force unbounded depths.
+*Observation 233* (Double-or-recycle dichotomy, proved insufficient). [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26), [`boundedDoubleOrRecycleModel_not_cofinal`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L79), [`exists_seeded_bounded_double_or_recycle_model`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L91). **Conclusion.** $`\forall n \ge 6`$, an exact row at $`n`$ gives an exact row at $`2n{-}1`$ or at $`2c{-}2`$ for some $`4 \le c \le n`$; plus a formal proof that this shape, even seeded at endpoint six, is logically insufficient for cofinality. **Order of quantifiers.** The dichotomy is proved by splitting on the sign of the witness value (odd denominators exclude equality); the countermodel pins the deficit precisely: what is missing is not another dichotomy but strict endpoint progress in the recycle branch, or a proof that the below-half branch recurs. Re-deriving this dichotomy without controlling repeated returns to bounded depths would leave the same gap. **Missing step.** Either (a) the recycle branch upgraded to $`2c{-}2>n`$, or (b) cofinally many below-half exact rows so the doubling branch alone is cofinal. These are two sufficient ways to obtain progress; the countermodel does not rule out other assumptions that also force unbounded depths.
 
 </div>
 
@@ -4178,20 +4213,20 @@ M/2+1`$, since the exact fill encodes the residue in the pure upper window where
 
 <div class="obs">
 
-*Observation 233* (A sufficient block-certificate condition). [`irrational_erdosSupportSeries_of_weighted_coeff_certificates`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9031) (carry variant [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9053)). **Conclusion.** $`\forall b\ge2,\ \forall A\subseteq\mathbb N`$ (no infinitude, no structure hypothesis at all): if $`\forall q>0\ \exists N,K,L,C`$ with $`K\le L`$, $`b^r \mid
+*Observation 234* (A sufficient block-certificate condition). [`irrational_erdosSupportSeries_of_weighted_coeff_certificates`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9031) (carry variant [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9053)). **Conclusion.** $`\forall b\ge2,\ \forall A\subseteq\mathbb N`$ (no infinitude, no structure hypothesis at all): if $`\forall q>0\ \exists N,K,L,C`$ with $`K\le L`$, $`b^r \mid
 c_{A}(N{+}r)`$ for $`r\in[1,K]`$, $`\sum_{r=K+1}^L c_{A}(N{+}r)
-b^{L-r}\le C`$, $`\exists t,\ 0<c_{A}(N{+}L{+}1{+}t)`$, and $`q(C{+}N{+}L{+}2)<b^L`$, then $`X_{A}(b)`$ is irrational. The cited full-support, multiples, periodic, residue-class, pairwise-coprime and fixed-core constructions use this criterion. No such factorisation is asserted for the weighted support theorem in Section <a href="#sec:257-problem" data-reference-type="ref" data-reference="sec:257-problem">1</a>. **Scope of the hypothesis.** The criterion is already universally quantified over $`A`$; the universal quantifier is *not* the gap. The certificate hypothesis must hold at every precision, and it is supplied only for named classes; certificate existence for an arbitrary infinite $`A`$ remains open. **Limit of this sufficient condition.** Supplying these certificates for every infinite support would imply the universal statement, but Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">274</a> rules out that supply for the two specified certificate schemes. The carry variant replaces digit-wise divisibility by aggregate divisibility $`b^K\mid\sum_r c_A(N+r)b^{K-r}`$; the squarefree obstruction applies to that variant too. Universal certificate supply is therefore not being posed as an unresolved equivalent formulation of Problem 257.
+b^{L-r}\le C`$, $`\exists t,\ 0<c_{A}(N{+}L{+}1{+}t)`$, and $`q(C{+}N{+}L{+}2)<b^L`$, then $`X_{A}(b)`$ is irrational. The cited full-support, multiples, periodic, residue-class, pairwise-coprime and fixed-core constructions use this criterion. No such factorisation is asserted for the weighted support theorem in Section <a href="#sec:257-problem" data-reference-type="ref" data-reference="sec:257-problem">1</a>. **Scope of the hypothesis.** The criterion is already universally quantified over $`A`$; the universal quantifier is *not* the gap. The certificate hypothesis must hold at every precision, and it is supplied only for named classes; certificate existence for an arbitrary infinite $`A`$ remains open. **Limit of this sufficient condition.** Supplying these certificates for every infinite support would imply the universal statement, but Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">275</a> rules out that supply for the two specified certificate schemes. The carry variant replaces digit-wise divisibility by aggregate divisibility $`b^K\mid\sum_r c_A(N+r)b^{K-r}`$; the squarefree obstruction applies to that variant too. Universal certificate supply is therefore not being posed as an unresolved equivalent formulation of Problem 257.
 
 </div>
 
 <div class="obs">
 
-*Observation 234* (Rational targets and infinitely many greedy skips). [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583) (forward [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2482); reverse [`mem_mersenneAchievementSet_of_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1528)). For every rational $`x\ge0`$,
+*Observation 235* (Rational targets and infinitely many greedy skips). [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583) (forward [Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2482); reverse [`mem_mersenneAchievementSet_of_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1528)). For every rational $`x\ge0`$,
 ``` math
 x\in\mathcal A\quad\Longleftrightarrow\quad
  \text{the greedy algorithm for $x$ skips infinitely many ranks}.
 ```
-The reverse implication holds for every real $`x\ge0`$: a fatal remainder $`r_n(x)>R_n`$ forces every subsequent weight to be taken, because $`R_n=w_{n+1}+R_{n+1}`$. Hence infinitely many skips exclude a fatal remainder, and Theorem <a href="#thm:greedy-survival" data-reference-type="ref" data-reference="thm:greedy-survival">10</a> gives membership. For the forward implication, membership identifies the greedy sum with $`x`$. Finitely many skips would make that sum $`E`$ minus a finite rational sum, which is irrational by Erdős’s theorem \[erdos1948\]. This contradicts rationality of $`x`$ and proves the stated extension as an ordinary argument.
+The reverse implication holds for every real $`x\ge0`$: a fatal remainder $`r_n(x)>R_n`$ forces every subsequent weight to be taken, because $`R_n=w_{n+1}+R_{n+1}`$. Hence infinitely many skips exclude a fatal remainder, and Theorem <a href="#thm:greedy-survival" data-reference-type="ref" data-reference="thm:greedy-survival">11</a> gives membership. For the forward implication, membership identifies the greedy sum with $`x`$. Finitely many skips would make that sum $`E`$ minus a finite rational sum, which is irrational by Erdős’s theorem \[erdos1948\]. This contradicts rationality of $`x`$ and proves the stated extension as an ordinary argument.
 
 Infinitely many skips do not mean infinitely many selected ranks: $`x=1/3`$ has the single-element support $`\{2\}`$ and skips every other rank. Thus the equivalence does not decide which rational targets are represented, or provide an infinite support with rational value. The Lean declarations above concern the half target; the extension to every rational target is an ordinary argument and is not formalised.
 
@@ -4199,14 +4234,14 @@ Infinitely many skips do not mean infinitely many selected ranks: $`x=1/3`$ has 
 
 <div class="obs">
 
-*Observation 235* (Finite sums exclude every rational with even denominator). [`finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L589); the underlying parity lemma has its own [`finiteErdosSum_den_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DyadicPrefixCompression.lean#L1513). **Conclusion.** $`\forall A`$ finite with $`0\notin A`$: $`X_{A}(2) \ne
+*Observation 236* (Finite sums exclude every rational with even denominator). [`finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L589); the underlying parity lemma has its own [`finiteErdosSum_den_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DyadicPrefixCompression.lean#L1513). **Conclusion.** $`\forall A`$ finite with $`0\notin A`$: $`X_{A}(2) \ne
 1/2`$; any support achieving exactly $`1/2`$ must be infinite. **Parameter range.** The statement is specific to the target $`1/2`$, while the underlying parity lemma (the reduced denominator of a finite sum is odd) holds for every finite support. **The same argument in general.** For every rational $`t`$ with even reduced denominator and every finite $`A`$ with $`0\notin A`$, $`X_{A}(2) \ne t`$; the proof is the same. Thus a represented rational with even reduced denominator would refute universal \#257 at $`b=2`$. The converse is not established. If $`\mathcal F`$ denotes the set of finite-support values, the exact unrestricted condition is $`(\mathbb Q\cap\ensuremath{\mathcal A})\smallsetminus\mathcal F\ne\varnothing`$.
 
 </div>
 
 <div class="obs">
 
-*Observation 236* (The denominator in the reciprocal-mass estimate). [`dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2210); the version for general $`v`$ has its own [`shiftedBooleanCollision_wrap_bound_of_common_multiple`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L1968). **Conclusion.** For $`A`$ infinite with $`X_{A}(2) = p/2^c`$ (dyadic rational): $`\sum_{a\in A}1/a`$ diverges or exceeds $`1`$. **Comparison.** The result is restricted to denominators $`2^c`$ ($`v{=}1`$), while the obligation needs every rational $`p/(2^c v)`$. The restriction is one of application, not of proof: every supporting lemma allows an arbitrary positive $`v`$, and the general-$`v`$ conclusion is already recorded for arbitrary $`(v,h,L,F)`$. **Missing step.** Instantiate the recorded generic theorem at $`F=\{a,b\}`$, $`L=\mathrm{lcm}\,a\,b`$, $`h=`$ multiplicative order of $`2`$ mod $`v`$, giving $`\rho(A) \ge
+*Observation 237* (The denominator in the reciprocal-mass estimate). [`dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2210); the version for general $`v`$ has its own [`shiftedBooleanCollision_wrap_bound_of_common_multiple`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L1968). **Conclusion.** For $`A`$ infinite with $`X_{A}(2) = p/2^c`$ (dyadic rational): $`\sum_{a\in A}1/a`$ diverges or exceeds $`1`$. **Comparison.** The result is restricted to denominators $`2^c`$ ($`v{=}1`$), while the obligation needs every rational $`p/(2^c v)`$. The restriction is one of application, not of proof: every supporting lemma allows an arbitrary positive $`v`$, and the general-$`v`$ conclusion is already recorded for arbitrary $`(v,h,L,F)`$. **Missing step.** Instantiate the recorded generic theorem at $`F=\{a,b\}`$, $`L=\mathrm{lcm}\,a\,b`$, $`h=`$ multiplicative order of $`2`$ mod $`v`$, giving $`\rho(A) \ge
 \mathrm{doublingWrapCount}(p,v,h)/h + 1/\mathrm{lcm}(a,b)`$ for every rational value. The one genuinely new step: for $`v{>}1`$ the excess can be $`0`$, so strictness needs $`1 \le
 \mathrm{doublingWrapCount}(p,v,h)/h + \lfloor|F|/2\rfloor/L`$ (equivalently: the mean least residue of $`p\cdot2^n \bmod v`$ is $`\ge v(1-|F|/2L)`$).
 
@@ -4214,13 +4249,13 @@ Infinitely many skips do not mean infinitely many selected ranks: $`x=1/3`$ has 
 
 <div class="obs">
 
-*Observation 237* (Zero windows of a fixed support). [`supportCoeffZeroWindow_length_le_eps_logb`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SublogDivisorCoverage.lean#L435). **Conclusion.** For any $`A`$ with a positive element and $`X_{A}(2)=p/(2^c v)`$, $`v{>}0`$ (any rational, not just dyadic): for every $`\varepsilon>0`$ there is $`B\ge0`$ such that, for all $`N\ge1`$, every run of $`h`$ zero divisor counts starting after $`c+N`$ has $`h \le \varepsilon\log_2 N + B`$. The constant $`B`$ may depend on the fixed support and the other parameters. More basically, if $`a_0`$ is any positive element of $`A`$, then each block of $`a_0`$ consecutive integers contains a multiple of $`a_0`$. Every zero window of $`c_A`$ therefore has length at most $`a_0-1`$, whether or not $`X_A(2)`$ is rational. For a fixed nonempty support, the displayed logarithmic bound thus gives no additional restriction. A proposed alternative between super-logarithmic zero windows and general block certificates cannot split this class: the first branch is already impossible. It would require the certificate branch for every support, which the obstruction in Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">274</a> rules out for the specified schemes.
+*Observation 238* (Zero windows of a fixed support). [`supportCoeffZeroWindow_length_le_eps_logb`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SublogDivisorCoverage.lean#L435). **Conclusion.** For any $`A`$ with a positive element and $`X_{A}(2)=p/(2^c v)`$, $`v{>}0`$ (any rational, not just dyadic): for every $`\varepsilon>0`$ there is $`B\ge0`$ such that, for all $`N\ge1`$, every run of $`h`$ zero divisor counts starting after $`c+N`$ has $`h \le \varepsilon\log_2 N + B`$. The constant $`B`$ may depend on the fixed support and the other parameters. More basically, if $`a_0`$ is any positive element of $`A`$, then each block of $`a_0`$ consecutive integers contains a multiple of $`a_0`$. Every zero window of $`c_A`$ therefore has length at most $`a_0-1`$, whether or not $`X_A(2)`$ is rational. For a fixed nonempty support, the displayed logarithmic bound thus gives no additional restriction. A proposed alternative between super-logarithmic zero windows and general block certificates cannot split this class: the first branch is already impossible. It would require the certificate branch for every support, which the obstruction in Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">275</a> rules out for the specified schemes.
 
 </div>
 
 <div class="obs">
 
-*Observation 238* (Prime support and the reciprocal-sum hypothesis). [`irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776) (its certificates: [`exists_weighted_coeff_certificates_supportCoeff_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9902)). **Conclusion.** For every $`b\ge2`$, an infinite pairwise-coprime support with summable reciprocal mass has irrational support series. **Method boundary:** the primes satisfy the other hypotheses but $`\sum_p1/p`$ diverges, so this Lean theorem does not apply. It is false, however, to infer that the base-$`2`$ prime-support value is open. Tao–Teräväinen prove
+*Observation 239* (Prime support and the reciprocal-sum hypothesis). [`irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776) (its certificates: [`exists_weighted_coeff_certificates_supportCoeff_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9902)). **Conclusion.** For every $`b\ge2`$, an infinite pairwise-coprime support with summable reciprocal mass has irrational support series. **Method boundary:** the primes satisfy the other hypotheses but $`\sum_p1/p`$ diverges, so this Lean theorem does not apply. It is false, however, to infer that the base-$`2`$ prime-support value is open. Tao–Teräväinen prove
 ``` math
 \sum_{p\ {\rm prime}}\frac1{2^p-1}
  =\sum_{n\ge1}\frac{\omega(n)}{2^n}
@@ -4231,7 +4266,7 @@ irrational in Theorem 1.3 of [their 2025 preprint](https://arxiv.org/abs/2512.0
 
 <div class="obs">
 
-*Observation 239* (The two hypotheses of the sunflower criterion). [`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L540). **Conclusion.** For $`A=`$ (finite exceptional set dividing $`Q`$) $`\cup \{\mathrm{core}_i \cdot
+*Observation 240* (The two hypotheses of the sunflower criterion). [`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L540). **Conclusion.** For $`A=`$ (finite exceptional set dividing $`Q`$) $`\cup \{\mathrm{core}_i \cdot
 \mathrm{petal}_i\}`$ with cores $`\mid Q`$, petals pairwise coprime and coprime to $`Q`$, $`\sum
 1/\mathrm{petal}_i<\infty`$: if $`A`$ satisfies the tail-selection hypothesis below, then its series is irrational.
 
@@ -4243,7 +4278,7 @@ irrational in Theorem 1.3 of [their 2025 preprint](https://arxiv.org/abs/2512.0
 
 <div class="obs">
 
-*Observation 240* (What eventual periodicity supplies). [`irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L11604). **Conclusion.** $`\forall b\ge2\ \forall m{>}0\ \forall N_0`$: $`A`$ infinite and $`m`$-periodic above $`N_0`$ $`\Rightarrow`$ irrational. Plus: the class of supports with irrational series is closed under finite symmetric difference in both directions. The statement follows from the periodic theorem of Luca and Tachiya \[lucatachiya2017, Theorem A, p. 139\].
+*Observation 241* (What eventual periodicity supplies). [`irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L11604). **Conclusion.** $`\forall b\ge2\ \forall m{>}0\ \forall N_0`$: $`A`$ infinite and $`m`$-periodic above $`N_0`$ $`\Rightarrow`$ irrational. Plus: the class of supports with irrational series is closed under finite symmetric difference in both directions. The statement follows from the periodic theorem of Luca and Tachiya \[lucatachiya2017, Theorem A, p. 139\].
 
 **Scope of the hypothesis.** The theorem allows every positive period and every finite starting threshold. It still requires an eventually periodic support, so it does not include all aperiodic supports covered by the other criteria in this record. Finite symmetric difference preserves eventual periodicity. Thus the finite-perturbation argument alone cannot extend this theorem to an aperiodic tail; a further hypothesis or argument is needed.
 
@@ -4254,7 +4289,7 @@ irrational in Theorem 1.3 of [their 2025 preprint](https://arxiv.org/abs/2512.0
 
 <div class="obs">
 
-*Observation 241* (The reduced denominator in a gap criterion). [`irrational_erdosSum_of_lcm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5883) (instances [`irrational_erdosSum_factorial_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6035), [`irrational_erdosSum_two_pow_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6059)). Let $`A=\{a_0<a_1<\cdots\}\subseteq\mathbb N_{>0}`$, let $`b\ge2`$ be an integer, and write the first $`k`$ terms in lowest terms as
+*Observation 242* (The reduced denominator in a gap criterion). [`irrational_erdosSum_of_lcm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5883) (instances [`irrational_erdosSum_factorial_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6035), [`irrational_erdosSum_two_pow_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6059)). Let $`A=\{a_0<a_1<\cdots\}\subseteq\mathbb N_{>0}`$, let $`b\ge2`$ be an integer, and write the first $`k`$ terms in lowest terms as
 ``` math
 S_k=\sum_{j<k}\frac1{b^{a_j}-1}=\frac{P_k}{Q_k},\qquad Q_k\ge1.
 ```
@@ -4276,13 +4311,13 @@ For $`L_k=\operatorname{lcm}(a_0,\ldots,a_{k-1})`$ one has $`Q_k\mid b^{L_k}-1`$
 
 <div class="obs">
 
-*Observation 242* (Rationality expressed by the integer carry). [`erdosSupportSeries_rational_iff_exists_temperedCarry`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L384); the general criterion of Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a> has its own [`binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L426). **Conclusion.** For every $`A\subseteq\mathbb N`$, with no hypothesis: $`X_{A}(2)`$ is rational if and only if there are $`q>0`$ and $`U:\mathbb N\to\mathbb Z`$ with $`U(N+1)=2U(N)-q\,c_A(N+1)`$ and $`U(N)/2^N\to0`$. **Comparison.** This is already universal over $`A`$; it is the exact form in which the obligation should be stated, and the argument literally shared with \#249 (take $`c=\varphi`$ in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">148</a>). It does not refute the orbit: [`temperedBinaryOrbit_eq_scaledTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L339) pins the orbit uniquely to $`u(N)=qT_c(N)`$, and $`T_c(N)\le N{+}2`$ confirms it is never ruled out on growth grounds for any $`c`$ with $`c(n)\le n`$. **Missing step.** A support-specific non-existence theorem: for every infinite $`A`$ and every $`q>0`$, no such $`U`$ exists. Because the criterion is an equivalence and the orbit is unique, this is logically equivalent to the obligation; its value is to name the single object (the tempered carry orbit of $`c_{A}`$) whose non-existence is the entire content, for every $`A`$ at once.
+*Observation 243* (Rationality expressed by the integer carry). [`erdosSupportSeries_rational_iff_exists_temperedCarry`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L384); the general criterion of Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a> has its own [`binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L426). **Conclusion.** For every $`A\subseteq\mathbb N`$, with no hypothesis: $`X_{A}(2)`$ is rational if and only if there are $`q>0`$ and $`U:\mathbb N\to\mathbb Z`$ with $`U(N+1)=2U(N)-q\,c_A(N+1)`$ and $`U(N)/2^N\to0`$. **Comparison.** This is already universal over $`A`$; it is the exact form in which the obligation should be stated, and the argument literally shared with \#249 (take $`c=\varphi`$ in Theorem <a href="#record:257bm-i-t7" data-reference-type="ref" data-reference="record:257bm-i-t7">149</a>). It does not refute the orbit: [`temperedBinaryOrbit_eq_scaledTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L339) pins the orbit uniquely to $`u(N)=qT_c(N)`$, and $`T_c(N)\le N{+}2`$ confirms it is never ruled out on growth grounds for any $`c`$ with $`c(n)\le n`$. **Missing step.** A support-specific non-existence theorem: for every infinite $`A`$ and every $`q>0`$, no such $`U`$ exists. Because the criterion is an equivalence and the orbit is unique, this is logically equivalent to the obligation; its value is to name the single object (the tempered carry orbit of $`c_{A}`$) whose non-existence is the entire content, for every $`A`$ at once.
 
 </div>
 
 <div class="obs">
 
-*Observation 243* (Why unbounded carry alone is insufficient). [`shifted_state_unbounded_of_infinite_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2327), [`exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2383), [`one_add_mul_card_le_two_mul_shifted_state`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2237). Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, let $`c\ge0`$ and $`v\ge1`$ be integers, and let $`u(n)`$ be positive integers satisfying
+*Observation 244* (Why unbounded carry alone is insufficient). [`shifted_state_unbounded_of_infinite_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2327), [`exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2383), [`one_add_mul_card_le_two_mul_shifted_state`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2237). Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, let $`c\ge0`$ and $`v\ge1`$ be integers, and let $`u(n)`$ be positive integers satisfying
 ``` math
 u(n+1)+v c_A(c+n+1)=2u(n)\qquad(n\ge0).
 ```
@@ -4298,13 +4333,13 @@ Finite subsets $`F`$ of arbitrarily large size, followed by positive common mult
 
 <div id="obs:general-target-gap" class="obs">
 
-*Observation 244* (A finite-gap criterion for every target in the convex hull). [`half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L623), [`half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L654); the exclusion for a general support has its own [`positiveMersenneSupportValue_ne_of_rank_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L380). For every real $`x\in[0,E]`$, not just rational targets, one has
+*Observation 245* (A finite-gap criterion for every target in the convex hull). [`half_mem_mersenneAchievementSet_or_exists_fatal_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L623), [`half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L654); the exclusion for a general support has its own [`positiveMersenneSupportValue_ne_of_rank_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L380). For every real $`x\in[0,E]`$, not just rational targets, one has
 ``` math
 x\notin\mathcal A\quad\Longleftrightarrow\quad
  \exists m\ge1\ \exists D\subseteq\{1,\ldots,m-1\},\qquad
  X_D(2)+R_m<x<X_D(2)+w_m.
 ```
-Here $`R_m=\sum_{j>m}w_j`$. The implication to the right has a short greedy proof. If $`x\notin\mathcal A`$, choose the first $`m`$ with $`r_m(x)>R_m`$ using Theorem <a href="#thm:greedy-survival" data-reference-type="ref" data-reference="thm:greedy-survival">10</a>. Since $`r_0(x)=x\le E`$, we have $`m\ge1`$ and $`r_{m-1}(x)\le R_{m-1}=w_m+R_m`$. A take at $`m`$ would leave a remainder at most $`R_m`$, so this step must be a skip. Thus $`R_m<r_{m-1}(x)<w_m`$, giving the displayed gap with the greedy prefix $`D`$.
+Here $`R_m=\sum_{j>m}w_j`$. The implication to the right has a short greedy proof. If $`x\notin\mathcal A`$, choose the first $`m`$ with $`r_m(x)>R_m`$ using Theorem <a href="#thm:greedy-survival" data-reference-type="ref" data-reference="thm:greedy-survival">11</a>. Since $`r_0(x)=x\le E`$, we have $`m\ge1`$ and $`r_{m-1}(x)\le R_{m-1}=w_m+R_m`$. A take at $`m`$ would leave a remainder at most $`R_m`$, so this step must be a skip. Thus $`R_m<r_{m-1}(x)<w_m`$, giving the displayed gap with the greedy prefix $`D`$.
 
 Conversely, the displayed gap contains no achievable value. A support with prefix $`D`$ either skips $`m`$, giving value at most $`X_D(2)+R_m`$, or takes $`m`$, giving value at least $`X_D(2)+w_m`$. A different prefix first differs at some $`j<m`$; the inequality $`w_j>R_j`$ orders its entire continuation interval strictly on one side of the interval with prefix $`D`$. Both gap endpoints themselves are achievable, by the supports $`D\cup\{m+1,m+2,\ldots\}`$ and $`D\cup\{m\}`$. Consequently no parity argument or irrationality assertion about $`E`$ is needed for this ordinary general-target dichotomy. The restriction to $`[0,E]`$ is essential to this formulation: targets outside the convex hull are already excluded and need not lie in an internal gap. The general-target equivalence and both endpoint constructions are Lean-checked in [`paper_general_target_gap`](https://github.com/wcook04/plectis-erdos/blob/168bf6727758f918a430ef056a1c93d3160b53a6/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean#L173).
 
@@ -4312,7 +4347,7 @@ Conversely, the displayed gap contains no achievable value. A support with prefi
 
 <div class="obs">
 
-*Observation 245* (Why the signed periodic theorem still requires periodicity). [`irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L14175), [`irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L14583). **Conclusion.** $`\forall b\ge2\ \forall m{>}0\ \forall`$ $`\mathbb Z`$-valued $`m`$-periodic weight $`w`$: irrational$`(\sum w(a)/(b^a-1))`$ $`\vee`$ $`\exists k,z,\ b^k x=z`$; the terminating branch closes unconditionally as soon as $`c_w`$ is one-signed and frequently nonzero. Luca and Tachiya’s theorem already gives irrationality for every nonzero periodic weight \[lucatachiya2017, Theorem A, p. 139\].
+*Observation 246* (Why the signed periodic theorem still requires periodicity). [`irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L14175), [`irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L14583). **Conclusion.** $`\forall b\ge2\ \forall m{>}0\ \forall`$ $`\mathbb Z`$-valued $`m`$-periodic weight $`w`$: irrational$`(\sum w(a)/(b^a-1))`$ $`\vee`$ $`\exists k,z,\ b^k x=z`$; the terminating branch closes unconditionally as soon as $`c_w`$ is one-signed and frequently nonzero. Luca and Tachiya’s theorem already gives irrationality for every nonzero periodic weight \[lucatachiya2017, Theorem A, p. 139\].
 
 **Different restrictions.** Two mismatches. (i) Periodicity of the weight is still required; this is the signed version of the periodic-support theorem and keeps its periodicity hypothesis. (ii) The one-sidedness clause is automatic for \#257 (a $`0/1`$ support indicator gives $`c_{A}\ge0`$), so the sign conditions add nothing here; they were designed for the signed \#249 argument. The genuinely transferable content is the dichotomy shape itself: irrational-or-$`b`$-adically- terminating, terminating branch killable by a positive far tail.
 
@@ -4324,12 +4359,12 @@ Conversely, the displayed gap contains no achievable value. A support with prefi
 
 #### Three combined conditional arguments
 
-Entry A has a Lean proof, and entry B is an ordinary argument about what its hypotheses would imply. The facts behind entry C, the survival equivalence of Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a> and the one-sided certificates, are proved in Lean. None of the three establishes an unproved orbit hypothesis or decides #257.
+Entry A has a Lean proof, and entry B is an ordinary argument about what its hypotheses would imply. The facts behind entry C, the survival equivalence of Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">35</a> and the one-sided certificates, are proved in Lean. None of the three establishes an unproved orbit hypothesis or decides #257.
 
 <div id="thm:lower-bound-every-reset" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-9.md#thm-lower-bound-every-reset">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-9.md#thm-lower-bound-every-reset-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-9.md#thm-lower-bound-every-reset">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-9.md#thm-lower-bound-every-reset-comparator">Comparator</a></p>
 
-**Theorem 246** (A: a sufficient lower bound at every reset). *Assume that $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ for every upper or middle reset $`r\ge10`$. Then $`1/2\in\mathcal A`$.*
+**Theorem 247** (A: a sufficient lower bound at every reset). *Assume that $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ for every upper or middle reset $`r\ge10`$. Then $`1/2\in\mathcal A`$.*
 
 *Here is the role of the constants. Put
 ``` math
@@ -4341,16 +4376,16 @@ For $`r\ge10`$, one has $`B(r)^2\le2^{r+5}`$. A right branch at the first crossi
 
 <div class="rem">
 
-*Remark 247* (B: rigidity of dangerous resets). A dangerous reset (one within $`2^{(r+5)/2}`$ of the square-root escape threshold) that is preceded by a long pure R-run pins the deviation at the preceding reset to one of at most two adjacent pulse-determined integers, where one might expect a free real number: the affine excess recurrence (Observation <a href="#obs:affine-excess-recurrence" data-reference-type="ref" data-reference="obs:affine-excess-recurrence">205</a>) is exact, so once the run length and the pulse word are fixed, $`w_{r_0+1}`$ has no remaining degree of freedom. Observation <a href="#obs:dangerous-reset-rigidity" data-reference-type="ref" data-reference="obs:dangerous-reset-rigidity">283</a> states the hypotheses and the run-length threshold. Consequently a chain of $`n`$ consecutive dangerous resets with long runs is a tower of $`n{-}1`$ nested exact integer conditions, none free to vary once the pulse stream is fixed. Failure of square-root escape therefore requires such an integer-coincidence tower. No probability model is supplied, so these conditions do not by themselves make dangerous resets unlikely; the open step is excluding the two pinned values. This is an ordinary argument.
+*Remark 248* (B: rigidity of dangerous resets). A dangerous reset (one within $`2^{(r+5)/2}`$ of the square-root escape threshold) that is preceded by a long pure R-run pins the deviation at the preceding reset to one of at most two adjacent pulse-determined integers, where one might expect a free real number: the affine excess recurrence (Observation <a href="#obs:affine-excess-recurrence" data-reference-type="ref" data-reference="obs:affine-excess-recurrence">206</a>) is exact, so once the run length and the pulse word are fixed, $`w_{r_0+1}`$ has no remaining degree of freedom. Observation <a href="#obs:dangerous-reset-rigidity" data-reference-type="ref" data-reference="obs:dangerous-reset-rigidity">284</a> states the hypotheses and the run-length threshold. Consequently a chain of $`n`$ consecutive dangerous resets with long runs is a tower of $`n{-}1`$ nested exact integer conditions, none free to vary once the pulse stream is fixed. Failure of square-root escape therefore requires such an integer-coincidence tower. No probability model is supplied, so these conditions do not by themselves make dangerous resets unlikely; the open step is excluding the two pinned values. This is an ordinary argument.
 
 </div>
 
 <div id="thm:one-sided-finite-decision-boundary" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-9.md#thm-one-sided-finite-decision-boundary-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-9.md#thm-one-sided-finite-decision-boundary-comparator">Comparator</a></p>
 
-**Theorem 248** (C: the one-sided finite decision boundary). *The equivalence of Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a> separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is a finite certificate that $`1/2\notin\mathcal A`$. By contrast, membership requires survival at every rank; this paper supplies no finite certificate that the orbit survives forever and no completion theorem turning a long surviving prefix into membership.*
+**Theorem 249** (C: the one-sided finite decision boundary). *The equivalence of Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">35</a> separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is a finite certificate that $`1/2\notin\mathcal A`$. By contrast, membership requires survival at every rank; this paper supplies no finite certificate that the orbit survives forever and no completion theorem turning a long surviving prefix into membership.*
 
-*The reset-crossing hypotheses, truncation-rung ladder, and sharp-capacity inequalities feed sufficient conditions for membership. They are not proved equivalent to one another, nor is failure to find one at a given depth evidence of survival. Consequently these searches give at most a semi-decision procedure for *nonmembership of the specific value $`1/2`$*. Halting does not prove the universal statement in \#257, and non-halting does not prove that $`1/2`$ is represented. In particular, neither truth nor falsity of the universal problem is shown semi-decidable here. Deeper negative search alone establishes nothing beyond the tested finite ranks; this is the quantifier boundary of Theorem <a href="#thm:one-sided" data-reference-type="ref" data-reference="thm:one-sided">22</a>.*
+*The reset-crossing hypotheses, truncation-rung ladder, and sharp-capacity inequalities feed sufficient conditions for membership. They are not proved equivalent to one another, nor is failure to find one at a given depth evidence of survival. Consequently these searches give at most a semi-decision procedure for *nonmembership of the specific value $`1/2`$*. Halting does not prove the universal statement in \#257, and non-halting does not prove that $`1/2`$ is represented. In particular, neither truth nor falsity of the universal problem is shown semi-decidable here. Deeper negative search alone establishes nothing beyond the tested finite ranks; this is the quantifier boundary of Theorem <a href="#thm:one-sided" data-reference-type="ref" data-reference="thm:one-sided">23</a>.*
 
 </div>
 
@@ -4362,25 +4397,25 @@ The following conditions are equivalent to their target statements within the sp
 
 <div class="rem">
 
-*Remark 249* (The centred-carry bound is equivalent to the conclusion, for the greedy support only). [`greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L834) and its packaged form [`greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L953) assume the bound $`C_A(N)\le2\sqrt N+4`$ for every $`N`$. For the greedy support $`A=G`$ of $`1/2`$ specifically, this bound is logically *equivalent* to the theorem’s own conclusion $`X_{A}(2)=1/2`$, not a strictly weaker sufficient condition. This follows from the exact residual identity of Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">15</a>, the unconditional square-root tail bound ([`binaryCoeffTail_supportCoeff_le_two_sqrt_add_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L290)), the unconditional tail-nonnegativity lemma ([`binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L78)), and the greedy-specific fact $`X_{A}(2)\le1/2`$. **The scope limit is exact:** this equivalence does *not* extend to every $`A`$ with $`1\notin A`$; dropping the greedy-specific fact yields only that the bound is equivalent to $`\delta\le0`$ (a one-sided condition), not to $`\delta=0`$. For the related hypothesis [`GreedyHalfCarryCofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L76), the former gap between the real and the integer square root is removed by restricting cofinal witness depths to perfect squares. Any remaining gap lies in the hypothesis itself, not in rounding.
+*Remark 250* (The centred-carry bound is equivalent to the conclusion, for the greedy support only). [`greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L834) and its packaged form [`greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L953) assume the bound $`C_A(N)\le2\sqrt N+4`$ for every $`N`$. For the greedy support $`A=G`$ of $`1/2`$ specifically, this bound is logically *equivalent* to the theorem’s own conclusion $`X_{A}(2)=1/2`$, not a strictly weaker sufficient condition. This follows from the exact residual identity of Lemma <a href="#lem:collapse-mech" data-reference-type="ref" data-reference="lem:collapse-mech">16</a>, the unconditional square-root tail bound ([`binaryCoeffTail_supportCoeff_le_two_sqrt_add_four`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L290)), the unconditional tail-nonnegativity lemma ([`binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L78)), and the greedy-specific fact $`X_{A}(2)\le1/2`$. **The scope limit is exact:** this equivalence does *not* extend to every $`A`$ with $`1\notin A`$; dropping the greedy-specific fact yields only that the bound is equivalent to $`\delta\le0`$ (a one-sided condition), not to $`\delta=0`$. For the related hypothesis [`GreedyHalfCarryCofinalStripReturn`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CofinalStripReturn.lean#L76), the former gap between the real and the integer square root is removed by restricting cofinal witness depths to perfect squares. Any remaining gap lies in the hypothesis itself, not in rounding.
 
 </div>
 
 <div class="rem">
 
-*Remark 250* (What the terminal carry condition proves). [`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34) at the original strip constant is logically equivalent to $`1/2\in\ensuremath{\mathcal A}`$ after restricting cofinal witness depths to perfect squares and using the recorded tail bound. The square-root conversion raises no further issue; the open content is the hypothesis itself.
+*Remark 251* (What the terminal carry condition proves). [`HalfCarryCofinalTerminalOnlyStrip`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L34) at the original strip constant is logically equivalent to $`1/2\in\ensuremath{\mathcal A}`$ after restricting cofinal witness depths to perfect squares and using the recorded tail bound. The square-root conversion raises no further issue; the open content is the hypothesis itself.
 
 </div>
 
 <div class="rem">
 
-*Remark 251* (Positive greedy skips and half-membership). As noted above, the positivity conjunct of [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22) holds unconditionally, by parity and greedy nonnegativity ([Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L138)). The hypothesis therefore says exactly that the greedy rule for $`1/2`$ skips infinitely many ranks, which is *equivalent* to $`1/2\in\ensuremath{\mathcal A}`$ ([Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2514)). A proof or disproof of this statement settles the half-target question, and conversely; it is not an intermediate step toward it.
+*Remark 252* (Positive greedy skips and half-membership). As noted above, the positivity conjunct of [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22) holds unconditionally, by parity and greedy nonnegativity ([Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L138)). The hypothesis therefore says exactly that the greedy rule for $`1/2`$ skips infinitely many ranks, which is *equivalent* to $`1/2\in\ensuremath{\mathcal A}`$ ([Lean source](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2514)). A proof or disproof of this statement settles the half-target question, and conversely; it is not an intermediate step toward it.
 
 </div>
 
 <div class="rem">
 
-*Remark 252* (Scope discipline for the equivalence class). Each equivalence uses its stated domain. The centred-carry upper bound concerns the actual greedy support $`G`$, not every support omitting $`1`$. The cofinal terminal condition already works with the original constant $`4`$, because perfect-square depths avoid a rounding loss. The positive-skip equivalence is stated here at the target $`1/2`$; extending it to another target requires checking the target-dependent arguments. None of these qualifications supplies the still-missing unbounded sequence of witnesses.
+*Remark 253* (Scope discipline for the equivalence class). Each equivalence uses its stated domain. The centred-carry upper bound concerns the actual greedy support $`G`$, not every support omitting $`1`$. The cofinal terminal condition already works with the original constant $`4`$, because perfect-square depths avoid a rounding loss. The positive-skip equivalence is stated here at the target $`1/2`$; extending it to another target requires checking the target-dependent arguments. None of these qualifications supplies the still-missing unbounded sequence of witnesses.
 
 </div>
 
@@ -4390,7 +4425,7 @@ The following conditions are equivalent to their target statements within the sp
 
 The examples in this section test particular proposed implications for the reset estimate. Some give counterexamples in abstract recurrence models; others compute an exact finite orbit or compare two quantitative bounds. An abstract counterexample is not a state of the actual greedy orbit unless that correspondence is established. Additional arithmetic hypotheses may therefore change the conclusion.
 
-Throughout, $`\mathrm{rem}(s)`$ is the quotient-row remainder, $`\lambda_n := \Delta_n/2^n`$ the normalized seam deviation of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>, and $`\mathcal A`$ the Mersenne achievement set. Reset square-root escape from row 10 is the statement $`|\mathrm{rem}(r+1)-2^{r+1}| > 2^{(r+5)/2}`$ for every reset row $`r\ge 10`$. It is a sufficient input for the cited half-membership argument, not a necessary condition for every possible proof.
+Throughout, $`\mathrm{rem}(s)`$ is the quotient-row remainder, $`\lambda_n := \Delta_n/2^n`$ the normalized seam deviation of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>, and $`\mathcal A`$ the Mersenne achievement set. Reset square-root escape from row 10 is the statement $`|\mathrm{rem}(r+1)-2^{r+1}| > 2^{(r+5)/2}`$ for every reset row $`r\ge 10`$. It is a sufficient input for the cited half-membership argument, not a necessary condition for every possible proof.
 
 <a id="four-tested-approaches-to-the-reset-estimate"></a>
 
@@ -4398,7 +4433,7 @@ Throughout, $`\mathrm{rem}(s)`$ is the quotient-row remainder, $`\lambda_n := \D
 
 <div id="obs:prime-doubling" class="obs">
 
-*Observation 253* (Prime steps can occur within a bounded drift window). **Route as conceived.** The universal recursion $`K(M+1) = 2K(M) - (\tau(M+1)-1)`$ doubles at every step and subtracts the divisor-excess $`\tau(M+1)-1`$. At a prime $`M+1=p`$, $`\tau(p)=2`$ so the subtracted term is $`1`$; the naive hope is that primality of an index forces the step to be "almost pure doubling," and that prime density (Chebyshev/PNT-scale) then bounds how long a run of near-pure-doubling steps can last, which would bound the danger run-length $`L_r`$ in the right-branch recurrence in Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>. The upper branch has a different, adjacent-spacing correction, so a run-length argument cannot use the discarded uniform-error formula across resets.
+*Observation 254* (Prime steps can occur within a bounded drift window). **Route as conceived.** The universal recursion $`K(M+1) = 2K(M) - (\tau(M+1)-1)`$ doubles at every step and subtracts the divisor-excess $`\tau(M+1)-1`$. At a prime $`M+1=p`$, $`\tau(p)=2`$ so the subtracted term is $`1`$; the naive hope is that primality of an index forces the step to be "almost pure doubling," and that prime density (Chebyshev/PNT-scale) then bounds how long a run of near-pure-doubling steps can last, which would bound the danger run-length $`L_r`$ in the right-branch recurrence in Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>. The upper branch has a different, adjacent-spacing correction, so a run-length argument cannot use the discarded uniform-error formula across resets.
 
 **A finite test.** Use the skip set of the quotient row $`n=607`$ from Section <a href="#ssec:seam-model" data-reference-type="ref" data-reference="ssec:seam-model">5.4</a>, and define the frozen-row drift
 ``` math
@@ -4422,7 +4457,7 @@ At a prime index the last coefficient is $`1`$. The composite-index coefficients
 
 <div id="obs:parity-squares" class="obs">
 
-*Observation 254* (Parity and perfect squares in the recurrence). **Route as conceived.** $`K(M)`$ is even exactly when $`M`$ is a perfect square (a true, provable fact). The hope was to use this parity law to forbid certain residues or run patterns in the digit stream of $`K`$, since parity constraints are a classical first attack on digit-run questions.
+*Observation 255* (Parity and perfect squares in the recurrence). **Route as conceived.** $`K(M)`$ is even exactly when $`M`$ is a perfect square (a true, provable fact). The hope was to use this parity law to forbid certain residues or run patterns in the digit stream of $`K`$, since parity constraints are a classical first attack on digit-run questions.
 
 **What the parity calculation says.** The recurrence implies $`J(M+1)\equiv\delta(M+1)\pmod2`$ for every integer forcing sequence. For $`K`$, the additional arithmetic fact that $`\tau(M)`$ is odd exactly at squares gives the stated parity pattern. One should not call that pattern a property of every forcing sequence, or say that it excludes no residue: at each fixed index it does specify the parity.
 
@@ -4434,7 +4469,7 @@ At a prime index the last coefficient is $`1`$. The composite-index coefficients
 
 <div id="obs:irrationality-measure" class="obs">
 
-*Observation 255* (What the denominator estimate does not give). One proposed separation argument would prevent $`\sum_{d\in\mathrm{Skip}_n}x_d`$ from approximating $`C:=E-\tfrac32=0.1066951524152917\ldots`$ at scale $`2^{-3n/2}`$. An irrationality-measure bound is relevant only after relating the reduced denominator of that finite sum to $`n`$.
+*Observation 256* (What the denominator estimate does not give). One proposed separation argument would prevent $`\sum_{d\in\mathrm{Skip}_n}x_d`$ from approximating $`C:=E-\tfrac32=0.1066951524152917\ldots`$ at scale $`2^{-3n/2}`$. An irrationality-measure bound is relevant only after relating the reduced denominator of that finite sum to $`n`$.
 
 For $`n\ge2`$ and $`\mathrm{Skip}_n\subseteq\{2,\ldots,n-1\}`$, its reduced denominator $`D_n`$ satisfies
 ``` math
@@ -4456,9 +4491,9 @@ This guaranteed lower bound is eventually smaller than $`2^{-3n/2}`$, so it does
 Retaining only the parity of an input coefficient leaves considerable freedom. In $`e'=2e+c`$, every incoming integer $`e`$ admits the odd choice $`c=-1-2e`$, which gives $`e'=-1`$. The next proposition uses the same centred-remainder construction when more unit bits and a valuation are prescribed.
 
 <div id="prop:2adic-nogo" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean#L34">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-2adic-nogo-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean#L34">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-2adic-nogo-comparator">Comparator</a></p>
 
-**Proposition 256** (Centred completion of fixed-precision 2-adic data). *Fix $`u\ge1`$ and a finite list $`(v_i,a_i)_{0\le i<m}`$, where $`v_i\ge0`$ are integers and the integers $`a_i`$ are odd. For every initial integer $`e_0`$, there are integers $`z_i,e_{i+1}`$ such that
+**Proposition 257** (Centred completion of fixed-precision 2-adic data). *Fix $`u\ge1`$ and a finite list $`(v_i,a_i)_{0\le i<m}`$, where $`v_i\ge0`$ are integers and the integers $`a_i`$ are odd. For every initial integer $`e_0`$, there are integers $`z_i,e_{i+1}`$ such that
 ``` math
 e_{i+1}=2e_i+2^{v_i}(a_i+2^u z_i),\qquad
  |e_{i+1}|\le2^{v_i+u-1}\qquad(0\le i<m).
@@ -4498,9 +4533,9 @@ The two-sided bound $`\min(\mathrm{rem}(s),\mathrm{overshoot}(s))\le2^s`$ for al
 Here $`C_s=4\,\mathrm{rem}(s)-p_s^- -4`$. On a middle transition, $`\mathrm{rem}(s+1)-2^{s+1}=C_s+4`$; on a right transition, $`\mathrm{rem}(s+1)=C_s-2^{s+1}`$. Thus $`C_s`$ must not be identified with the next row’s centred remainder. [`Erdos249257.SeamTwoSidedDyadicCellEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4374)
 
 <div id="prop:upper-unconditional" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L31">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-upper-unconditional-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L31">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-upper-unconditional-comparator">Comparator</a></p>
 
-**Proposition 257** (The upper (carries) successor needs no exceptional-cell exclusion). *Let $`s\ge5`$ and suppose the upper branch occurs at row $`s`$, that is, the transition at row $`s`$ is on branch $`\mathrm U`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>. Then
+**Proposition 258** (The upper (carries) successor needs no exceptional-cell exclusion). *Let $`s\ge5`$ and suppose the upper branch occurs at row $`s`$, that is, the transition at row $`s`$ is on branch $`\mathrm U`$ of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>. Then
 ``` math
 \mathrm{rem}(s+1)\le2^{s+1}.
 ```
@@ -4509,9 +4544,9 @@ Indeed, the reset identity expresses $`2^{s+1}`$ as $`\mathrm{rem}(s+1)`$ plus a
 </div>
 
 <div id="thm:cd-neg3-impossible" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L50">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#thm-cd-neg3-impossible-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L50">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#thm-cd-neg3-impossible-comparator">Comparator</a></p>
 
-**Theorem 258** ($`C_D=-3`$ is impossible at the final middle transition, $`D\ge 13`$). *Consider a hypothetical *final middle transition*: a middle transition at row $`D\ge 13`$ ($`\lnot\mathrm{carries}`$, and the middle-branch inequality $`4\mathrm{rem}(D)+\mathrm{gap}-\mathrm{belowPulse} < \mathrm{terminalWeight}`$ holds at $`D`$), followed by an all-right tail forever after ($`\forall s\ge D{+}1`$, $`\mathrm{seamGreedyWord}(s+1) =
+**Theorem 259** ($`C_D=-3`$ is impossible at the final middle transition, $`D\ge 13`$). *Consider a hypothetical *final middle transition*: a middle transition at row $`D\ge 13`$ ($`\lnot\mathrm{carries}`$, and the middle-branch inequality $`4\mathrm{rem}(D)+\mathrm{gap}-\mathrm{belowPulse} < \mathrm{terminalWeight}`$ holds at $`D`$), followed by an all-right tail forever after ($`\forall s\ge D{+}1`$, $`\mathrm{seamGreedyWord}(s+1) =
 \mathrm{seamGreedyWord}(s).\mathrm{extend}\ \mathrm{true}`$). Under these assumptions,
 ``` math
 \mathrm{belowPulse}(D) + 2 \;\le\; 4\cdot\mathrm{rem}(D),
@@ -4529,26 +4564,26 @@ The last inequality follows by retaining the first two geometric channels of the
 ```
 The left side is an integer, hence is at least $`2`$, as required. The upper threshold inequality alone would not give this lower bound.*
 
-***Scope.** This excludes $`C_D=-3`$ at a middle row $`D\ge13`$ under the additional all-right-tail assumption. The general induction requires exclusion of all three cells at every middle row, not just under this extra hypothesis, together with its right-branch bound. The two statements share the same coordinate $`C_D`$ but have different hypotheses. Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">258</a> is universal over rows satisfying the additional all-right-tail assumption; it does not assert that such a row exists. The induction hypothesis concerns every middle row, without that tail assumption. Excluding $`C_D=-3`$ in the former statement therefore does not supply the exclusion required in the latter. **Object or representation:** about the *object* under the stated hypothesis ; a genuine arithmetic consequence of the all-right-tail assumption via the fatal-gap orbit, not a coordinate artifact.*
+***Scope.** This excludes $`C_D=-3`$ at a middle row $`D\ge13`$ under the additional all-right-tail assumption. The general induction requires exclusion of all three cells at every middle row, not just under this extra hypothesis, together with its right-branch bound. The two statements share the same coordinate $`C_D`$ but have different hypotheses. Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">259</a> is universal over rows satisfying the additional all-right-tail assumption; it does not assert that such a row exists. The induction hypothesis concerns every middle row, without that tail assumption. Excluding $`C_D=-3`$ in the former statement therefore does not supply the exclusion required in the latter. **Object or representation:** about the *object* under the stated hypothesis ; a genuine arithmetic consequence of the all-right-tail assumption via the fatal-gap orbit, not a coordinate artifact.*
 
 </div>
 
 <div id="cor:cd-remaining" class="cor">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L81">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#cor-cd-remaining-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/BranchCellHorizonExclusions.lean#L81">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#cor-cd-remaining-comparator">Comparator</a></p>
 
-**Corollary 259** (Only $`C_D\in\{-2,-1\}`$ remain among the exceptional dyadic cells). *At a final middle row $`D\ge13`$, Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">258</a> removes $`-3`$ from the exceptional set $`\{-3,-2,-1\}`$, leaving $`-2,-1`$ *within that set*. It does not assert $`C_D\in\{-2,-1\}`$: nonnegative values have not been excluded. Proposition <a href="#prop:upper-unconditional" data-reference-type="ref" data-reference="prop:upper-unconditional">257</a> handles upper transitions in the two-sided induction; it supplies no additional restriction on a middle coordinate. For the all-middle-row induction, the exclusion of all three values still needs proof without an all-right-tail assumption, together with the separate right-branch inequality.*
+**Corollary 260** (Only $`C_D\in\{-2,-1\}`$ remain among the exceptional dyadic cells). *At a final middle row $`D\ge13`$, Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">259</a> removes $`-3`$ from the exceptional set $`\{-3,-2,-1\}`$, leaving $`-2,-1`$ *within that set*. It does not assert $`C_D\in\{-2,-1\}`$: nonnegative values have not been excluded. Proposition <a href="#prop:upper-unconditional" data-reference-type="ref" data-reference="prop:upper-unconditional">258</a> handles upper transitions in the two-sided induction; it supplies no additional restriction on a middle coordinate. For the all-middle-row induction, the exclusion of all three values still needs proof without an all-right-tail assumption, together with the separate right-branch inequality.*
 
 </div>
 
 <div id="rem:tail-dominance-open" class="rem">
 
-*Remark 260* (A sufficient tail inequality and its source). Let $`U_D`$ be the finite set of exponents selected by the below word at row $`D`$, and put $`F_D=U_D\cup\{D\}`$. With $`c_{F_D}(n)=\#\{d\in F_D:d\mid n\}`$, define
+*Remark 261* (A sufficient tail inequality and its source). Let $`U_D`$ be the finite set of exponents selected by the below word at row $`D`$, and put $`F_D=U_D\cup\{D\}`$. With $`c_{F_D}(n)=\#\{d\in F_D:d\mid n\}`$, define
 ``` math
 \Theta_D:=\sum_{j\ge1}c_{F_D}(2D+2+j)2^{-j}.
 ```
 This is a tail sum, not a ratio. Since $`0\le c_{F_D}(n)\le |F_D|`$, it satisfies $`0\le\Theta_D\le |F_D|`$. The integer $`C_D=4\,\mathrm{rem}(D)-\mathrm{belowPulse}(D)-4`$ is the producer carry in the cited source. Under the final-middle and all-right-tail assumptions, that source proves $`C_D<\Theta_D`$: [`Erdos249257.middleProducer_allRight_forces_carry_lt_tail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1814).
 
-An inequality in the opposite direction would exclude such a final middle transition. The following sufficient condition retains the exception already handled by Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">258</a>:
+An inequality in the opposite direction would exclude such a final middle transition. The following sufficient condition retains the exception already handled by Theorem <a href="#thm:cd-neg3-impossible" data-reference-type="ref" data-reference="thm:cd-neg3-impossible">259</a>:
 ``` math
 \textbf{(TD)}\qquad
  \forall D\ge13,\quad
@@ -4559,7 +4594,7 @@ Because $`\Theta_D\ge0`$, this condition in particular excludes $`C_D=-2`$ and $
 
 This is the reduced middle tail condition of Part III, and half-membership follows from it ([`half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L436)). The inequality itself is not established here. Its role is a conditional implication, not a newly identified necessary condition.
 
-The two more concrete sufficient bounds in Theorem <a href="#thm:middle-producer-escape" data-reference-type="ref" data-reference="thm:middle-producer-escape">50</a> imply the tail inequality even without the exception. Their Lean forms are [`Erdos249257.SeamMiddleProducerCardEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L279) and [`Erdos249257.SeamMiddleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1769). The cardinality condition is
+The two more concrete sufficient bounds in Theorem <a href="#thm:middle-producer-escape" data-reference-type="ref" data-reference="thm:middle-producer-escape">51</a> imply the tail inequality even without the exception. Their Lean forms are [`Erdos249257.SeamMiddleProducerCardEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L279) and [`Erdos249257.SeamMiddleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1769). The cardinality condition is
 ``` math
 |U_D|+\mathrm{belowPulse}(D)+5<4\,\mathrm{rem}(D).
 ```
@@ -4574,18 +4609,18 @@ It gives $`|F_D|=|U_D|+1<C_D`$, hence $`\Theta_D<C_D`$. The simpler row conditio
 The next results give counterexamples to particular summaries and estimates for integer carries. Their hypotheses matter: a countermodel for one summary is not a prohibition on every proof that uses carries or on every other input.
 
 <div id="prop:finite-state-nogo" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-finite-state-nogo">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-finite-state-nogo-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-finite-state-nogo">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-finite-state-nogo-comparator">Comparator</a></p>
 
-**Proposition 261** (A finite-state restriction for the stated pulse family). *For a “balanced pulse” family at location $`m\ge2`$ (radius $`\rho=\lfloor(m{+}1)/2\rfloor`$, parameters $`0\le r\le\rho`$, moving mass between positions $`m`$ and $`m{+}1`$ with the weighted total $`2c(m)+c(m{+}1)=2\rho`$ of the two coefficients fixed), if a predecessor state is constant across the whole family, then no function $`\mathrm{decode}:\mathrm{State}\to\mathbb N`$ can recover the parameter $`r`$ from $`\mathrm{state}(r)`$ for every $`r`$. The family has exactly $`\rho+1=\lfloor(m{+}1)/2\rfloor+1`$ members, so the fan-out is unbounded in $`m`$. More strongly, any finite set of states carrying an exact decoder for the family has at least $`\rho+1`$ elements, unbounded in $`m`$.*
+**Proposition 262** (A finite-state restriction for the stated pulse family). *For a “balanced pulse” family at location $`m\ge2`$ (radius $`\rho=\lfloor(m{+}1)/2\rfloor`$, parameters $`0\le r\le\rho`$, moving mass between positions $`m`$ and $`m{+}1`$ with the weighted total $`2c(m)+c(m{+}1)=2\rho`$ of the two coefficients fixed), if a predecessor state is constant across the whole family, then no function $`\mathrm{decode}:\mathrm{State}\to\mathbb N`$ can recover the parameter $`r`$ from $`\mathrm{state}(r)`$ for every $`r`$. The family has exactly $`\rho+1=\lfloor(m{+}1)/2\rfloor+1`$ members, so the fan-out is unbounded in $`m`$. More strongly, any finite set of states carrying an exact decoder for the family has at least $`\rho+1`$ elements, unbounded in $`m`$.*
 
 ***Scope.** Excludes bounded-state encodings of pre-$`m`$ history that must distinguish every member of the displayed balanced-pulse family, whether the coefficients are $`\varphi`$ or a Möbius-support indicator. Applying it to \#249 or \#257 requires showing that the relevant orbit realises that family, and it does not rule out every finite-state proof strategy. **Object or representation:** about a *representation* class, the encodings of history that separate the balanced-pulse family; it says nothing about $`C`$ or $`\mathcal A`$ directly.*
 
 </div>
 
 <div id="prop:mobius-nogo" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-mobius-nogo">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-mobius-nogo-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-mobius-nogo">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-mobius-nogo-comparator">Comparator</a></p>
 
-**Proposition 262** (Möbius-support countermodel: the natural negative-sign candidate overshoots). *The signed Lambert identity $`\sum_{d\ge1}\mu(d)/(2^d-1) = 1/2`$ is exact. Writing $`N:=\{d:\mu(d)=-1\}`$: $`\sum_{d\in N}1/(2^d-1) = 1/2 + \sum_{d\in P}1/(2^d-1)`$ where $`P:=\{d\ge2:
+**Proposition 263** (Möbius-support countermodel: the natural negative-sign candidate overshoots). *The signed Lambert identity $`\sum_{d\ge1}\mu(d)/(2^d-1) = 1/2`$ is exact. Writing $`N:=\{d:\mu(d)=-1\}`$: $`\sum_{d\in N}1/(2^d-1) = 1/2 + \sum_{d\in P}1/(2^d-1)`$ where $`P:=\{d\ge2:
 \mu(d)=1\}`$, and quantitatively $`1/2 + 1/63 \le \sum_{d\in N}1/(2^d-1)`$ (using the first positive tail term $`d=6`$, $`\mu(6)=1`$) ; the negative-Möbius support strictly *overshoots* $`1/2`$ by at least $`1/63`$.*
 
 ***Scope.** Rules out exactly one natural candidate infinite Boolean support (the negative-Möbius set) as a witness for $`1/2\in\mathcal A`$. A route-sufficiency no-go only ; it says nothing about whether *some other* infinite Boolean support sums to $`1/2`$. **Object or representation:** about the *object* ; a genuine value inequality for one specific candidate set, not a coordinate artifact. Margin $`1/63`$ is the concrete number any repair attempt (adding/removing finitely many elements) must close or exceed.*
@@ -4593,18 +4628,18 @@ The next results give counterexamples to particular summaries and estimates for 
 </div>
 
 <div id="prop:finite-boolSupport-and-onesided" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L101">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-finite-boolsupport-and-onesided-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean#L101">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-finite-boolsupport-and-onesided-comparator">Comparator</a></p>
 
-**Proposition 263** (Finite computation and half-membership). *No finite positive-index Boolean support has value exactly $`1/2`$: the reduced denominator of any finite Mersenne subset-sum is provably **odd** (each $`2^n-1`$ is odd), while $`1/2`$ needs an even denominator. Separately, $`\mathsf{CertifiedGreedyMersenneDeath}`$ is a finite-depth certificate of $`x\notin\mathcal A`$, obtained by decidable tests on rational input. For example, the supplied source excludes $`3/4`$ at level $`1`$ with lookahead $`0`$. Failure to find such a certificate at a given depth does not establish membership. It records survival of that finite test, not survival at every depth.*
+**Proposition 264** (Finite computation and half-membership). *No finite positive-index Boolean support has value exactly $`1/2`$: the reduced denominator of any finite Mersenne subset-sum is provably **odd** (each $`2^n-1`$ is odd), while $`1/2`$ needs an even denominator. Separately, $`\mathsf{CertifiedGreedyMersenneDeath}`$ is a finite-depth certificate of $`x\notin\mathcal A`$, obtained by decidable tests on rational input. For example, the supplied source excludes $`3/4`$ at level $`1`$ with lookahead $`0`$. Failure to find such a certificate at a given depth does not establish membership. It records survival of that finite test, not survival at every depth.*
 
 ***Scope.** Any support representing $`1/2`$, if it exists, must be infinite. This follows from denominator parity, independently of the certificate search. The search supplies a different fact: a successful exclusion certificate proves nonmembership, whereas its absence in a bounded search does not prove membership or rationality. The same distinction must be checked separately for any other certificate family.*
 
 </div>
 
 <div id="prop:carry-survivor-extinction" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-carry-survivor-extinction">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-carry-survivor-extinction-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-carry-survivor-extinction">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-carry-survivor-extinction-comparator">Comparator</a></p>
 
-**Proposition 264** (Period exclusion for the totient series). *For $`\sum_n\varphi(n)/2^n`$, the cited finite test proves that $`\mathrm{totientTail}(N+h)-\mathrm{totientTail}(N)`$ is not an integer by excluding every possible integer state in a bounded range within finitely many steps. If the series were rational, some positive period $`h_0`$ would make these tail differences integral for every sufficiently large $`N`$. Telescoping would then give integrality also for every positive multiple $`mh_0`$.*
+**Proposition 265** (Period exclusion for the totient series). *For $`\sum_n\varphi(n)/2^n`$, the cited finite test proves that $`\mathrm{totientTail}(N+h)-\mathrm{totientTail}(N)`$ is not an integer by excluding every possible integer state in a bounded range within finitely many steps. If the series were rational, some positive period $`h_0`$ would make these tail differences integral for every sufficiently large $`N`$. Telescoping would then give integrality also for every positive multiple $`mh_0`$.*
 
 *Consequently, the required certificate supply is: for every $`h_0\ge1`$ and every lower bound $`N_0`$, there exist $`m\ge1`$, $`N\ge N_0`$ and a finite test length $`K`$ excluding integrality for $`(mh_0,N)`$. The unbounded choice of $`N`$ is essential; a counterexample before the unknown eventual threshold does not exclude an eventual period. It is sufficient instead to obtain such certificates for $`h=\mathrm{lcm}(1,\ldots,t)`$ with both $`t`$ and $`N`$ exceeding arbitrary prescribed lower bounds. The supplied finite theorem excludes the tail differences for $`1\le h\le16`$ at $`(N,L)=(14,9)`$, and hence excludes rational values whose reduced denominator divides $`2^{14}(2^h-1)`$ for one of those $`h`$. It does not establish the unbounded certificate supply.*
 
@@ -4617,9 +4652,9 @@ The next results give counterexamples to particular summaries and estimates for 
 #### The scalar-localisation height obstruction
 
 <div id="lem:scalar-localization" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#lem-scalar-localization">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#lem-scalar-localization-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#lem-scalar-localization">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#lem-scalar-localization-comparator">Comparator</a></p>
 
-**Lemma 265** (Denominator complement survives scaling). *For $`x:\mathbb Q`$, $`c:\mathbb Z`$, $`H:\mathbb N`$: if $`H\mid x.\mathrm{den}`$ and $`(c\cdot x).\mathrm{den}\mid H`$ ; i.e. multiplying by the integer $`c`$ shrinks the displayed denominator down *into* $`H`$ ; then the **complementary** denominator factor $`x.\mathrm{den}/H`$ divides $`c`$:
+**Lemma 266** (Denominator complement survives scaling). *For $`x:\mathbb Q`$, $`c:\mathbb Z`$, $`H:\mathbb N`$: if $`H\mid x.\mathrm{den}`$ and $`(c\cdot x).\mathrm{den}\mid H`$ ; i.e. multiplying by the integer $`c`$ shrinks the displayed denominator down *into* $`H`$ ; then the **complementary** denominator factor $`x.\mathrm{den}/H`$ divides $`c`$:
 ``` math
 H\mid x.\mathrm{den} \ \land\ (c\cdot x).\mathrm{den}\mid H \implies x.\mathrm{den}/H \mid |c|.
 ```
@@ -4630,9 +4665,9 @@ Equivalently, writing $`D=x.\mathrm{den}/H`$, we have $`D\mid c`$, so $`t=c/D`$ 
 </div>
 
 <div id="cor:mersenne-height" class="cor">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#cor-mersenne-height-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/ScalarLocalisationHeightObstruction.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#cor-mersenne-height-comparator">Comparator</a></p>
 
-**Corollary 266** (Mersenne specialisation). *Let $`x`$ be a positive rational number and let $`r\ge0`$, $`n\ge1`$ be integers. If $`2^r\mid x.\mathrm{num}.\mathrm{natAbs}`$ and $`x<2/(2^n-1)`$, then $`2^r\cdot(2^n-1) < 2\cdot x.\mathrm{den}`$ ; a numerator $`2`$-power lower bound plus a Mersenne-scale upper bound on $`x`$ together force a denominator lower bound, *without* introducing a global prefix LCM. To see the inequality directly, write $`x=a/b`$ in lowest terms with $`a,b>0`$. The hypotheses give $`a\ge2^r`$ and $`a(2^n-1)<2b`$. The conclusion follows by substitution. An application of Lemma <a href="#lem:scalar-localization" data-reference-type="ref" data-reference="lem:scalar-localization">265</a> must in addition supply its denominator-divisibility assumptions.*
+**Corollary 267** (Mersenne specialisation). *Let $`x`$ be a positive rational number and let $`r\ge0`$, $`n\ge1`$ be integers. If $`2^r\mid x.\mathrm{num}.\mathrm{natAbs}`$ and $`x<2/(2^n-1)`$, then $`2^r\cdot(2^n-1) < 2\cdot x.\mathrm{den}`$ ; a numerator $`2`$-power lower bound plus a Mersenne-scale upper bound on $`x`$ together force a denominator lower bound, *without* introducing a global prefix LCM. To see the inequality directly, write $`x=a/b`$ in lowest terms with $`a,b>0`$. The hypotheses give $`a\ge2^r`$ and $`a(2^n-1)<2b`$. The conclusion follows by substitution. An application of Lemma <a href="#lem:scalar-localization" data-reference-type="ref" data-reference="lem:scalar-localization">266</a> must in addition supply its denominator-divisibility assumptions.*
 
 </div>
 
@@ -4642,7 +4677,7 @@ Equivalently, writing $`D=x.\mathrm{den}/H`$, we have $`D\mid c`$, so $`t=c/D`$ 
 
 <div id="defn:band-escape" class="defn">
 
-**Definition 267** (Upper-reset dyadic band escape). At each upper-reset row $`d\ge13`$, write $`E_d=4\,\mathrm{overshoot}(d)+\mathrm{abovePulse}(d)`$ for the reset expression in the preceding transition formulas. The condition is
+**Definition 268** (Upper-reset dyadic band escape). At each upper-reset row $`d\ge13`$, write $`E_d=4\,\mathrm{overshoot}(d)+\mathrm{abovePulse}(d)`$ for the reset expression in the preceding transition formulas. The condition is
 ``` math
 \text{for every }0\le j\le d,\qquad
  E_d>2^{d-j+1}\quad\text{or}\quad
@@ -4653,26 +4688,26 @@ Thus $`E_d`$ must avoid the interval $`(2^{d-j+1}-2(d+j),\,2^{d-j+1}]`$ at every
 </div>
 
 <div id="prop:critical-band-index" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/CriticalDyadicBandCollapse.lean#L20">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-critical-band-index-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/CriticalDyadicBandCollapse.lean#L20">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-10.md#prop-critical-band-index-comparator">Comparator</a></p>
 
-**Proposition 268** (Quantifier collapse: one critical index suffices, not $`d{+}1`$). *Let $`d,E\in\mathbb N`$ and assume $`E\le2^{d+1}`$. Then the purely combinatorial statement $`\mathsf{DyadicBandEscape}(d,E) \iff \exists j,\ \mathsf{CriticalDyadicBandIndex}(d,E,j)\land
-E+2(d+j)\le 2^{d-j+1}`$ collapses the $`\forall j\in[0,d]`$ band-avoidance condition (formally $`d{+}1`$ separate inequalities) to checking exactly *one* nearest-boundary index $`j`$. The range assumption ensures that a dyadic threshold lies at or above $`E`$. Choose the smallest such threshold: smaller thresholds are already below $`E`$, while larger thresholds have narrower forbidden bands. Without the range assumption all bands escape automatically when $`E>2^{d+1}`$, but no critical index exists; $`(d,E)=(0,3)`$ is the smallest example. Specialised to the concrete seam reset charge, $`\mathsf{SeamUpperResetCriticalBandEscape}`$ is proved logically *equivalent* to Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">267</a>’s hypothesis. Zero Mersenne/seam content in the core lemma ; pure $`(d,E,j)`$ arithmetic over powers of 2.*
+**Proposition 269** (Quantifier collapse: one critical index suffices, not $`d{+}1`$). *Let $`d,E\in\mathbb N`$ and assume $`E\le2^{d+1}`$. Then the purely combinatorial statement $`\mathsf{DyadicBandEscape}(d,E) \iff \exists j,\ \mathsf{CriticalDyadicBandIndex}(d,E,j)\land
+E+2(d+j)\le 2^{d-j+1}`$ collapses the $`\forall j\in[0,d]`$ band-avoidance condition (formally $`d{+}1`$ separate inequalities) to checking exactly *one* nearest-boundary index $`j`$. The range assumption ensures that a dyadic threshold lies at or above $`E`$. Choose the smallest such threshold: smaller thresholds are already below $`E`$, while larger thresholds have narrower forbidden bands. Without the range assumption all bands escape automatically when $`E>2^{d+1}`$, but no critical index exists; $`(d,E)=(0,3)`$ is the smallest example. Specialised to the concrete seam reset charge, $`\mathsf{SeamUpperResetCriticalBandEscape}`$ is proved logically *equivalent* to Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">268</a>’s hypothesis. Zero Mersenne/seam content in the core lemma ; pure $`(d,E,j)`$ arithmetic over powers of 2.*
 
 </div>
 
 <div id="cert:band-through-31" class="obs">
 
-*Observation 269* (A verified finite range of reset indices). The linked certificate proves the condition in Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">267</a> for each reset index $`13\le d\le30`$. It uses successor remainders at rows $`14`$–$`31`$, including $`\mathrm{rem}(14)=392`$ and $`\mathrm{rem}(31)=4{,}187{,}487{,}147`$. Thus the last remainder row is $`31`$, but the last reset index covered by this theorem is $`30`$. [`Erdos249257.seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78).
+*Observation 270* (A verified finite range of reset indices). The linked certificate proves the condition in Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">268</a> for each reset index $`13\le d\le30`$. It uses successor remainders at rows $`14`$–$`31`$, including $`\mathrm{rem}(14)=392`$ and $`\mathrm{rem}(31)=4{,}187{,}487{,}147`$. Thus the last remainder row is $`31`$, but the last reset index covered by this theorem is $`30`$. [`Erdos249257.seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78).
 
 </div>
 
 <div id="rem:band-caveat" class="rem">
 
-*Remark 270* (What this does *not* show). Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">267</a> is a $`\forall d\ge13`$ statement; Observation <a href="#cert:band-through-31" data-reference-type="ref" data-reference="cert:band-through-31">269</a> is a finite verification in the cited Lean source for $`13\le d\le30`$. **The finite certificate does not establish the universal hypothesis.** Nothing here proves the band condition for all $`d\ge13`$; it is the unproved hypothesis of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a>, stated here in its own form.
+*Remark 271* (What this does *not* show). Definition <a href="#defn:band-escape" data-reference-type="ref" data-reference="defn:band-escape">268</a> is a $`\forall d\ge13`$ statement; Observation <a href="#cert:band-through-31" data-reference-type="ref" data-reference="cert:band-through-31">270</a> is a finite verification in the cited Lean source for $`13\le d\le30`$. **The finite certificate does not establish the universal hypothesis.** Nothing here proves the band condition for all $`d\ge13`$; it is the unproved hypothesis of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">54</a>, stated here in its own form.
 
 The finite theorem supplies no reset index beyond $`30`$. It therefore does not prove that the orbit avoids the band at unboundedly many reset indices, let alone at every reset. The universal band condition remains an unproved sufficient hypothesis.
 
-For the branch convention of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">40</a>, direct integer recomputation at reset-test indices $`6\le r\le2500`$ gives $`605`$ middle and $`604`$ upper resets, hence $`1209`$ resets. There are $`1286`$ right transitions. The earlier reported count $`1264`$ does not agree with this convention. The recomputation checks the sign inequalities at these resets, the square-root bound at resets $`r\ge10`$, and the displayed band condition at upper resets $`r\ge13`$, with no failures. This remains a finite ordinary computation, distinct from the cited Lean theorem for $`13\le r\le30`$ and from an assertion at every later reset.
+For the branch convention of Theorem <a href="#thm:dynamics" data-reference-type="ref" data-reference="thm:dynamics">41</a>, direct integer recomputation at reset-test indices $`6\le r\le2500`$ gives $`605`$ middle and $`604`$ upper resets, hence $`1209`$ resets. There are $`1286`$ right transitions. The earlier reported count $`1264`$ does not agree with this convention. The recomputation checks the sign inequalities at these resets, the square-root bound at resets $`r\ge10`$, and the displayed band condition at upper resets $`r\ge13`$, with no failures. This remains a finite ordinary computation, distinct from the cited Lean theorem for $`13\le r\le30`$ and from an assertion at every later reset.
 
 </div>
 
@@ -4686,7 +4721,7 @@ For example, the first two weighted divisor counts after $`M=3`$ give $`(\tau(4)
 
 <div id="defn:theta" class="defn">
 
-**Definition 271** (The short-window divisor phase). For $`M\ge 1`$ and $`L\ge 1`$ put
+**Definition 272** (The short-window divisor phase). For $`M\ge 1`$ and $`L\ge 1`$ put
 ``` math
 \Theta_L(M)\ :=\ \sum_{i=1}^{L}\bigl(\tau(M+i)-1\bigr)\,2^{-i}\ \in\ \mathbb{Q}_{\ge 0},
 ```
@@ -4703,7 +4738,7 @@ Consequently $`2^L\Theta_L(M)`$ is an integer, and
 \operatorname{dist}(\Theta_L(M),\mathbb Z)
  =2^{-L}\operatorname{dist}(K(M+L),2^L\mathbb Z).
 ```
-A nonzero distance is at least $`2^{-L}`$, but nonvanishing itself requires an argument. For instance $`\Theta_1(3)=1`$ has distance zero. The identity concerns $`K`$; the quotient deviation also contains the skip-set correction in Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">38</a>. No positive lower bound for this phase is asserted to be necessary for the universal support problem.
+A nonzero distance is at least $`2^{-L}`$, but nonvanishing itself requires an argument. For instance $`\Theta_1(3)=1`$ has distance zero. The identity concerns $`K`$; the quotient deviation also contains the skip-set correction in Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">39</a>. No positive lower bound for this phase is asserted to be necessary for the universal support problem.
 
 <a id="sec:invent-R1"></a>
 
@@ -4746,9 +4781,9 @@ A finite recomputation ([saved run](https://github.com/wcook04/plectis-erdos/blo
 Expanding each divisor count separates its residue conditions. This is a finite counting identity. It does not prescribe whether an eventual proof should be analytic, combinatorial, or use another method.
 
 <div id="lem:odometer" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-odometer">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-odometer-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-odometer">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-odometer-comparator">Comparator</a></p>
 
-**Lemma 272** (Divisor-residue form of the short-window phase). *For all $`M,L\ge 1`$,
+**Lemma 273** (Divisor-residue form of the short-window phase). *For all $`M,L\ge 1`$,
 ``` math
 \Theta_L(M)\ =\ \sum_{d\ge 2}\ \sum_{\substack{1\le i\le L\\ i\,\equiv\,-M\ (\mathrm{mod}\ d)}} 2^{-i}
 \ =\ \sum_{d\ge 2}\ 2^{-i_d(M)}\cdot\frac{1-2^{-d\,m_d}}{1-2^{-d}},
@@ -4775,7 +4810,7 @@ A finite divisor cutoff makes the averaging question precise. For integers $`D\g
                   \mathbf1_{d\mid x+i},\qquad
  Q_D=\operatorname{lcm}(1,\ldots,D).
 ```
-This is the cutoff sum of Lemma <a href="#lem:odometer" data-reference-type="ref" data-reference="lem:odometer">272</a>. It is periodic in $`x`$ with period $`Q_D`$, and $`\Theta_L(M)=\Psi_{L,D}(M)`$ whenever $`M\ge1`$ and $`D\ge M+L`$. Averaging each indicator over a complete period gives
+This is the cutoff sum of Lemma <a href="#lem:odometer" data-reference-type="ref" data-reference="lem:odometer">273</a>. It is periodic in $`x`$ with period $`Q_D`$, and $`\Theta_L(M)=\Psi_{L,D}(M)`$ whenever $`M\ge1`$ and $`D\ge M+L`$. Averaging each indicator over a complete period gives
 ``` math
 \frac1{Q_D}\sum_{x=0}^{Q_D-1}\Psi_{L,D}(x)
    =(1-2^{-L})\sum_{d=2}^{D}\frac1d.
@@ -4784,7 +4819,7 @@ The mean diverges as $`D\to\infty`$, even for fixed $`L`$. Thus this family does
 
 The same issue arises if one uses the profinite integers $`\widehat{\mathbb Z}`$, whose Haar probability measure is uniform on each finite residue quotient. The finite-cutoff functions are continuous there. Their increasing limit is infinite almost everywhere: the events $`p\mid x+1`$ are independent over primes by the Chinese remainder theorem, have probabilities $`1/p`$, and occur infinitely often almost surely. Each contributes $`1/2`$ to the term at offset $`1`$. The positive integer inputs $`M`$, for which $`\Theta_L(M)`$ is finite, do not justify treating this divergent limit as a continuous or integrable function. Only the finite period average above is used in the present argument.
 
-There is a related residue expression in Theorem <a href="#thm:real-form" data-reference-type="ref" data-reference="thm:real-form">39</a>, but its index and divisor set differ:
+There is a related residue expression in Theorem <a href="#thm:real-form" data-reference-type="ref" data-reference="thm:real-form">40</a>, but its index and divisor set differ:
 ``` math
 \sum_{d\in D_n}\left\{\frac{4^n}{2^d-1}\right\}
  =\sum_{d\in D_n}\frac{2^{-i_d(2n)}}{1-2^{-d}}.
@@ -4921,7 +4956,7 @@ Unboundedness of $`g`$ alone would not suffice in (c). For example, $`g(n)=\lflo
 
 ##### What kind of object would furnish it
 
-The real and integer greedy rules must be distinguished here. A real straddling word agrees with the real greedy prefix ([`IsStraddlePrefix.half_agrees_greedy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L442)). An exact local row instead satisfies $`\ensuremath{Q}\ D\ n=2^{n-1}-1`$. Although floor division is not injective in general, the quotient weights at fixed $`n`$ have a gap of at least $`1`$ between distinct subset sums. A witness is therefore unique when it exists and is recovered by the integer greedy test (Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">143</a> and Propositions <a href="#record:257bm-i11b" data-reference-type="ref" data-reference="record:257bm-i11b">144</a>–<a href="#record:257bm-i11c" data-reference-type="ref" data-reference="record:257bm-i11c">145</a>). There is no exponential family of witnesses to choose from at that depth. What remains to prove is that successful depths are unbounded.
+The real and integer greedy rules must be distinguished here. A real straddling word agrees with the real greedy prefix ([`IsStraddlePrefix.half_agrees_greedy`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L442)). An exact local row instead satisfies $`\ensuremath{Q}\ D\ n=2^{n-1}-1`$. Although floor division is not injective in general, the quotient weights at fixed $`n`$ have a gap of at least $`1`$ between distinct subset sums. A witness is therefore unique when it exists and is recovered by the integer greedy test (Theorem <a href="#record:257bm-i11a" data-reference-type="ref" data-reference="record:257bm-i11a">144</a> and Propositions <a href="#record:257bm-i11b" data-reference-type="ref" data-reference="record:257bm-i11b">145</a>–<a href="#record:257bm-i11c" data-reference-type="ref" data-reference="record:257bm-i11c">146</a>). There is no exponential family of witnesses to choose from at that depth. What remains to prove is that successful depths are unbounded.
 
 One possible additional ingredient is an integer-valued function $`\Phi(n,D)\ge0`$ on reachable exact rows that increases by at least one under each permitted transition and is bounded on rows of bounded endpoint. Along an infinite trajectory, $`\Phi`$ would then tend to infinity, forcing the endpoints to be unbounded. Strict increase only on recycle steps would need a separate check of what doubling does to $`\Phi`$; an unspecified real-valued increasing quantity need not tend to infinity. This describes one possible proof mechanism, not a necessary class of all proofs. The record already has the sharp capacity test in exact form: by [`localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L22), form (a) is exactly the statement that the $`c-2`$-bit suffix capacity $`\ensuremath{S}\,D\,1\,(2c-2)<2^{\,c-2}`$ is met.
 
@@ -4998,9 +5033,9 @@ Here $`G`$ is the actual greedy support for $`1/2`$. The forward directions of (
 ##### The carry bound at perfect-square depths
 
 <div id="lem:sqwitness" class="lem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-sqwitness">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-sqwitness-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-sqwitness">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-11.md#lem-sqwitness-comparator">Comparator</a></p>
 
-**Lemma 273** (The terminal bound at square depths). *Let $`A\subseteq\mathbb{N}`$ with $`1\notin A`$ and $`X_{A}(2)=1/2`$. Then for every $`k\ge1`$,
+**Lemma 274** (The terminal bound at square depths). *Let $`A\subseteq\mathbb{N}`$ with $`1\notin A`$ and $`X_{A}(2)=1/2`$. Then for every $`k\ge1`$,
 ``` math
 \bigl(\ensuremath{\operatorname{ihc}}\ A\ (k^{2}-1)\ :\ \mathbb{R}\bigr)
 \ =\ \mathtt{binaryCoeffTail}\ (c_{A})\ (k^{2})
@@ -5022,7 +5057,7 @@ and the first term vanishes by hypothesis. Take $`N=k^{2}-1`$, so $`N+1=k^{2}`$.
 
 </div>
 
-The difference between the real and the integer square root disappears when cofinal witness depths are restricted to perfect squares: at $`n=k^{2}`$ the two roots coincide exactly and no widening is needed. Applying Lemma <a href="#lem:sqwitness" data-reference-type="ref" data-reference="lem:sqwitness">273</a> along $`M=k^{2}-1`$ gives (4) directly; taking $`a`$ to be the indicator of an achieving support truncated to $`\{0,\ldots,M\}`$ at $`M=k^{2}`$, and using [`integerHalfCarry_inter_Iic_eq_of_succ_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L49) together with $`1\notin A`$ (forced because $`\ensuremath{w}\,1=1>1/2`$), gives the witness required by [`HalfTerminalOnlyStripWitness`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L24) and hence (5).
+The difference between the real and the integer square root disappears when cofinal witness depths are restricted to perfect squares: at $`n=k^{2}`$ the two roots coincide exactly and no widening is needed. Applying Lemma <a href="#lem:sqwitness" data-reference-type="ref" data-reference="lem:sqwitness">274</a> along $`M=k^{2}-1`$ gives (4) directly; taking $`a`$ to be the indicator of an achieving support truncated to $`\{0,\ldots,M\}`$ at $`M=k^{2}`$, and using [`integerHalfCarry_inter_Iic_eq_of_succ_le`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L49) together with $`1\notin A`$ (forced because $`\ensuremath{w}\,1=1>1/2`$), gives the witness required by [`HalfTerminalOnlyStripWitness`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TerminalOnlyCofinal.lean#L24) and hence (5).
 
 <a id="what-the-equivalences-establish"></a>
 
@@ -5075,9 +5110,9 @@ Necessity follows by subtraction. For sufficiency, keep the strongest prime-powe
 The dense branch as stated is *false*: an explicit, natural, divisor-dense support refutes it. This also corrects an earlier claim that universal \#257 reduces with no loss to the existence of certificates for every infinite support.
 
 <div id="prop:squarefree" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquarefreeSupportEngineCeiling.lean#L20">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-11.md#prop-squarefree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquarefreeSupportEngineCeiling.lean#L20">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-11.md#prop-squarefree-comparator">Comparator</a></p>
 
-**Proposition 274** (Squarefree support: a limit of the certificate method, not an open value). *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then
+**Proposition 275** (Squarefree support: a limit of the certificate method, not an open value). *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then
 ``` math
 c_{A}(n)=2^{\omega(n)}-1,
 ```
@@ -5091,7 +5126,7 @@ This does not leave the squarefree value open. Duverney–Tachiya’s Corollary�
   \sum_{n\ {\rm squarefree}}\frac1{2^n-1},\quad\ldots,\quad
   \sum_{n\ {\rm squarefree}}\frac1{2^{hn}-1}
 ```
-are linearly independent over $`\mathbb{Q}`$. After deleting the rational $`n=1`$ term, squarefree support is therefore irrational at every base $`2^j`$. Among the integer bases, the cited theorem leaves the non-powers of two uncovered. This is cited mathematics, not formalised here. Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">274</a> is a failure of two proof schemas on a value already known to be irrational.
+are linearly independent over $`\mathbb{Q}`$. After deleting the rational $`n=1`$ term, squarefree support is therefore irrational at every base $`2^j`$. Among the integer bases, the cited theorem leaves the non-powers of two uncovered. This is cited mathematics, not formalised here. Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">275</a> is a failure of two proof schemas on a value already known to be irrational.
 
 The dependence on the choice of support is exact. Adjoin $`1`$ to the support. The series changes by the rational number $`(b-1)^{-1}`$, so its irrationality is unchanged, while the incidence becomes $`2^{\omega(n)}`$: [`ErdosProblems.Erdos257.SquarefreeSupportIncidence.supportCoeff_squarefreeShiftedSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L314) and [`ErdosProblems.Erdos257.SquarefreeSupportIncidence.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L335). At base $`2`$, CRT then supplies arbitrarily long opening blocks with $`\omega(N+r)\ge r`$: [`ErdosProblems.Erdos257.SquarefreeSupportIncidence.exists_omega_ge_block`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L441) and [`ErdosProblems.Erdos257.SquarefreeSupportIncidence.exists_digitwise_block_squarefreeShiftedSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L485). The middle-window and height conditions remain; no certificate or new irrationality proof follows. The durable conclusion is methodological: test a no-go statement under rational finite changes before attributing it to the underlying value.
 
@@ -5117,7 +5152,7 @@ These representations all descend from the same greedy carry; they are not indep
 
 ##### Why the support and rational-target problems remain distinct
 
-Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">274</a> is a reason to separate the two halves rather than assimilate them. On the universal side the present certificate method first meets a parity obstruction that depends on the choice of support. The squarefree value is nevertheless already known to be irrational at power-of-two bases, and adjoining $`1`$ removes the opening-block obstruction without changing irrationality. Thus the obstruction concerns this method; it does not concern the value or the universal problem.
+Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">275</a> is a reason to separate the two halves rather than assimilate them. On the universal side the present certificate method first meets a parity obstruction that depends on the choice of support. The squarefree value is nevertheless already known to be irrational at power-of-two bases, and adjoining $`1`$ removes the opening-block obstruction without changing irrationality. Thus the obstruction concerns this method; it does not concern the value or the universal problem.
 
 Short-window near-integer anti-concentration is one possible missing input for the particular mechanisms analysed here. No equivalence shows that it is necessary for either problem, and no argument identifies it as a common necessary obstruction to both. The squarefree example shows why finite rational changes of support must be checked before an opening-block failure is interpreted as a property of the value.
 
@@ -5127,7 +5162,7 @@ Short-window near-integer anti-concentration is one possible missing input for t
 
 It does not determine whether a short proof exists: nothing in a catalogue of failed methods bounds the length of a successful one.
 
-It records limitations of specified methods. The fixed-precision completion theorem and the balanced-pulse countermodel concern the particular summaries defined above, not all fixed-precision arithmetic or all finite-state methods with additional arithmetic input. An irrationality-measure bound on $`E`$ does not classify a specified rational in $`\mathcal{A}`$. Instantiating the present block-certificate method at a general support is blocked, on the universal side, by Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">274</a>. Survival through any tested finite depth does not by itself establish membership; a fatal-gap certificate would establish non-membership. These facts do not decide rational-target membership, and they do not yield an impossibility theorem for all probabilistic, measure-theoretic or averaging methods.
+It records limitations of specified methods. The fixed-precision completion theorem and the balanced-pulse countermodel concern the particular summaries defined above, not all fixed-precision arithmetic or all finite-state methods with additional arithmetic input. An irrationality-measure bound on $`E`$ does not classify a specified rational in $`\mathcal{A}`$. Instantiating the present block-certificate method at a general support is blocked, on the universal side, by Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">275</a>. Survival through any tested finite depth does not by itself establish membership; a fatal-gap certificate would establish non-membership. These facts do not decide rational-target membership, and they do not yield an impossibility theorem for all probabilistic, measure-theoretic or averaging methods.
 
 <a id="v.-outstanding-obligations-and-provenance"></a>
 
@@ -5152,7 +5187,7 @@ The base-$`2`$ support series is $`X_{A}(2) := \sum_{n\in A} 1/(2^n-1)`$ ([`erdo
 
 <div class="defn">
 
-**Definition 275** (Universal \#257).
+**Definition 276** (Universal \#257).
 ``` math
 \mathrm{U257} \;:=\; \forall\, A\subseteq\mathbb{N}_{\ge 1},\ A\text{ infinite} \;\Longrightarrow\;
 \mathrm{Irrational}\!\left(X_{A}(2)\right).
@@ -5181,7 +5216,7 @@ would imply $`\mathrm{U257}`$, but the reduction is *not* lossless and $`\mathrm
 
 <div class="defn">
 
-**Definition 276** (Half membership).
+**Definition 277** (Half membership).
 ``` math
 \mathrm{HALF}\ :=\ \tfrac12\in\mathcal{A}.
 ```
@@ -5201,9 +5236,9 @@ $`\mathrm{HALF}`$ is a *single instance* of the negation of $`\mathrm{U257}`$: a
 The following three conditions are equivalent to half-membership. They express the same unresolved assertion in different terms. The proofs of equivalence identify the content still to be established; they do not compare the difficulty of possible proofs.
 
 <div id="prop:cpgs-equiv" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-12.md#prop-cpgs-equiv-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-12.md#prop-cpgs-equiv-comparator">Comparator</a></p>
 
-**Proposition 277** (Infinitely many positive skips are equivalent to half-membership). *Define
+**Proposition 278** (Infinitely many positive skips are equivalent to half-membership). *Define
 ``` math
 \mathrm{CPGS}\ :=\ \forall N,\ \exists c\ge N,\ c\ \text{skipped by the rational half-greedy
 orbit}\ \wedge\ 0<\ensuremath{r}(1/2)(c-1)
@@ -5218,13 +5253,13 @@ The positivity conjunct is unconditionally true for every skipped $`c`$ (an odd-
 The implication [`cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L84) therefore gives an equivalent formulation, not a proof of membership.
 
 <div id="prop:strip-equiv" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-12.md#prop-strip-equiv">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-12.md#prop-strip-equiv-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-12.md#prop-strip-equiv">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-12.md#prop-strip-equiv-comparator">Comparator</a></p>
 
-**Proposition 278** (Terminal carry bounds are equivalent to half-membership). *Consider finite sets $`D\subseteq\{2,\ldots,M\}`$ at arbitrarily large depths $`M`$ with
+**Proposition 279** (Terminal carry bounds are equivalent to half-membership). *Consider finite sets $`D\subseteq\{2,\ldots,M\}`$ at arbitrarily large depths $`M`$ with
 ``` math
 |\operatorname{ihc}(D,M-1)|\le2\lfloor\sqrt M\rfloor+4.
 ```
-This is the exact terminal-strip condition. It is equivalent to $`1/2\in\mathcal A`$: the forward direction follows from the displayed finite-approximation estimate; for the converse, truncate an achieving support at $`M=k^2`$ and apply Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">17</a>. Thus constant $`4`$ already suffices at cofinally many depths. The relaxed constant $`6`$ gives a bound at every depth, using $`\sqrt M\le\lfloor\sqrt M\rfloor+1`$, but that relaxation is not needed for the cofinal statement.*
+This is the exact terminal-strip condition. It is equivalent to $`1/2\in\mathcal A`$: the forward direction follows from the displayed finite-approximation estimate; for the converse, truncate an achieving support at $`M=k^2`$ and apply Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem:sqrt-witness">18</a>. Thus constant $`4`$ already suffices at cofinally many depths. The relaxed constant $`6`$ gives a bound at every depth, using $`\sqrt M\le\lfloor\sqrt M\rfloor+1`$, but that relaxation is not needed for the cofinal statement.*
 
 </div>
 
@@ -5232,7 +5267,7 @@ The existence condition is therefore not logically weaker than half-membership. 
 
 <div class="obs">
 
-*Observation 279*. Propositions <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">277</a> and <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">278</a> do not decide half-membership. They show that the proposed existence conditions are equivalent to it, not that those formulations have no possible use. The upper bound on the centred carry in [`greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L834) has the same equivalence for the greedy support $`A=G`$. For arbitrary $`A`$ with $`1\notin A`$, an upper bound alone yields only $`x_A\ge1/2`$, as the identity $`\operatorname{ihc}(A,N)=2^{N+1}(1/2-x_A)+\mathrm T(N+1)`$ shows. The greedy inequality $`x_G\le1/2`$ is what turns that conclusion into equality.
+*Observation 280*. Propositions <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">278</a> and <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">279</a> do not decide half-membership. They show that the proposed existence conditions are equivalent to it, not that those formulations have no possible use. The upper bound on the centred carry in [`greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L834) has the same equivalence for the greedy support $`A=G`$. For arbitrary $`A`$ with $`1\notin A`$, an upper bound alone yields only $`x_A\ge1/2`$, as the identity $`\operatorname{ihc}(A,N)=2^{N+1}(1/2-x_A)+\mathrm T(N+1)`$ shows. The greedy inequality $`x_G\le1/2`$ is what turns that conclusion into equality.
 
 </div>
 
@@ -5242,18 +5277,18 @@ The existence condition is therefore not logically weaker than half-membership. 
 
 <div class="defn">
 
-**Definition 280**. For every integer $`N`$, require some $`n\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,n\}`$ with
+**Definition 281**. For every integer $`N`$, require some $`n\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,n\}`$ with
 ``` math
 \sum_{d\in D}\left\lfloor\frac{2^n}{2^d-1}\right\rfloor
        =2^{n-1}-1.
 ```
-([`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38)). This condition is unproved. Supports at different depths need not agree. This is the condition in Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">109</a>; no strict weakening of half-membership is asserted.
+([`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38)). This condition is unproved. Supports at different depths need not agree. This is the condition in Definition <a href="#record:257bm-d4" data-reference-type="ref" data-reference="record:257bm-d4">110</a>; no strict weakening of half-membership is asserted.
 
 </div>
 
 The implication from this condition to $`\mathrm{HALF}`$ is proved unconditionally via compactness of $`\mathcal{A}`$ (a continuous image of the space of $`0/1`$ sequences under the digit-coding map, hence closed) ([`half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)). The cited theorem already proves that a representing support exists, because that is what membership of $`\mathcal A`$ means. It need not choose a support by a specified algorithm from the row witnesses. An ordinary diagonal subsequence argument gives a compatible limiting support: successively fix each coordinate along an infinite subsequence, then use the uniform tail bound to pass to its value. This uses continuity of the digit map, also recorded in [`continuous_positiveMersenneDigitValue`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L628). The diagonal argument preserves $`2\in A`$, since all sufficiently deep exact rows contain exponent two ([`two_mem_of_exact_localMersenneQuotient`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowRankTwo.lean#L23)). This describes an ordinary existence proof; no additional formal extraction theorem or effective algorithm from purely existential row data is claimed.
 
-Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>(c) already identifies this condition as logically equivalent to $`1/2\in\mathcal{A}`$. Equivalence of a membership condition, constructive extraction of a coherent support, and a rejected sufficient strengthening are not interchangeable descriptions. Absence of a Lean extraction theorem does not make this condition a strictly weaker substitute for $`\mathrm{HALF}`$. The remaining work here is to supply exact rows at unbounded depths, or any equivalent membership condition.
+Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a>(c) already identifies this condition as logically equivalent to $`1/2\in\mathcal{A}`$. Equivalence of a membership condition, constructive extraction of a coherent support, and a rejected sufficient strengthening are not interchangeable descriptions. Absence of a Lean extraction theorem does not make this condition a strictly weaker substitute for $`\mathrm{HALF}`$. The remaining work here is to supply exact rows at unbounded depths, or any equivalent membership condition.
 
 <a id="a-capacity-condition-for-exact-sums-at-unbounded-depths"></a>
 
@@ -5300,7 +5335,7 @@ c\ge4,\ c\notin G\quad\Longrightarrow\quad
 
 <div class="defn">
 
-**Definition 281** (Reset $`\sqrt{\text{-escape}}`$ from row 10).
+**Definition 282** (Reset $`\sqrt{\text{-escape}}`$ from row 10).
 ``` math
 \mathrm{SQRTESC}\ :=\ \forall r\ge10\ \text{that are resets},\quad
 \big|\mathrm{rem}(r+1)-2^{r+1}\big|>2^{(r+5)/2}
@@ -5309,12 +5344,12 @@ c\ge4,\ c\notin G\quad\Longrightarrow\quad
 
 </div>
 
-The conditional implication uses the integer bound $`B(r)=2^{\lfloor(r+4)/2\rfloor}+2r+3`$ described in Theorem <a href="#thm:lower-bound-every-reset" data-reference-type="ref" data-reference="thm:lower-bound-every-reset">246</a>: $`B(r)^2\le2^{r+5}`$ for $`r\ge10`$, while a right branch at the critical crossing would force $`|\Delta_{r+1}|\le B(r)`$. Thus the actual implication chain is
+The conditional implication uses the integer bound $`B(r)=2^{\lfloor(r+4)/2\rfloor}+2r+3`$ described in Theorem <a href="#thm:lower-bound-every-reset" data-reference-type="ref" data-reference="thm:lower-bound-every-reset">247</a>: $`B(r)^2\le2^{r+5}`$ for $`r\ge10`$, while a right branch at the critical crossing would force $`|\Delta_{r+1}|\le B(r)`$. Thus the actual implication chain is
 ``` math
 \mathrm{SQRTESC}\ \Longrightarrow\
  \text{the hypothesis of Theorem~\ref{thm:largest-skip-late}}\ \Longrightarrow\ \mathrm{HALF}.
 ```
-The last implication is [`half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167); the first is proved in Theorem <a href="#thm:lower-bound-every-reset" data-reference-type="ref" data-reference="thm:lower-bound-every-reset">246</a>. These are sufficient implications, not an equivalence with half-membership.
+The last implication is [`half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167); the first is proved in Theorem <a href="#thm:lower-bound-every-reset" data-reference-type="ref" data-reference="thm:lower-bound-every-reset">247</a>. These are sufficient implications, not an equivalence with half-membership.
 
 For comparison one may ask for
 ``` math
@@ -5332,13 +5367,13 @@ The pulse sum and the threshold ranges cannot be dropped to claim $`\mathrm{RUNB
 
 <div class="obs">
 
-*Observation 282* (The sign of the reset deviation). At all $`1209`$ observed resets, the sign of the deviation is perfectly predicted by branch type (M$`\Rightarrow`$dev$`>0`$, U$`\Rightarrow`$dev$`<0`$, zero exceptions), and the margin over the threshold grows from $`1.11`$ bits at $`r=14`$ to $`\sim1246`$ bits by row $`2500`$ (exact computation). Proving the sign law reduces to the middle inequality $`4\mathrm{rem}(r)>p_r`$. For an upper reset the sign already follows from $`w_{r+1}=-(4o_r+p_r^+)<0`$, with positive overshoot and nonnegative pulse. The middle inequality remains unproved. Even after both signs are known, a separate lower bound for their magnitudes is required for $`\mathrm{SQRTESC}`$.
+*Observation 283* (The sign of the reset deviation). At all $`1209`$ observed resets, the sign of the deviation is perfectly predicted by branch type (M$`\Rightarrow`$dev$`>0`$, U$`\Rightarrow`$dev$`<0`$, zero exceptions), and the margin over the threshold grows from $`1.11`$ bits at $`r=14`$ to $`\sim1246`$ bits by row $`2500`$ (exact computation). Proving the sign law reduces to the middle inequality $`4\mathrm{rem}(r)>p_r`$. For an upper reset the sign already follows from $`w_{r+1}=-(4o_r+p_r^+)<0`$, with positive overshoot and nonnegative pulse. The middle inequality remains unproved. Even after both signs are known, a separate lower bound for their magnitudes is required for $`\mathrm{SQRTESC}`$.
 
 </div>
 
 <div id="obs:dangerous-reset-rigidity" class="obs">
 
-*Observation 283* (Rigidity of dangerous resets). If reset $`r`$ is *dangerous* ($`|\mathrm{rem}(r+1)-2^{r+1}|\le2^{(r+5)/2}`$) and the preceding reset $`r_0`$ has a pure R-run of length $`L'=r-r_0-1>(r+5)/4`$, then $`w_{r_0+1}`$ is confined to at most two adjacent integers, determined by the divisor-pulse stream alone. A chain of $`n`$ consecutive dangerous resets with long runs forces $`n-1`$ nested exact congruence towers. This shows the failure mode is a tower of exact integer coincidences, not drift; it is an ordinary argument, and it does *not* by itself exclude the two pinned values; an isolated dangerous reset after a short run is untouched by this theorem.
+*Observation 284* (Rigidity of dangerous resets). If reset $`r`$ is *dangerous* ($`|\mathrm{rem}(r+1)-2^{r+1}|\le2^{(r+5)/2}`$) and the preceding reset $`r_0`$ has a pure R-run of length $`L'=r-r_0-1>(r+5)/4`$, then $`w_{r_0+1}`$ is confined to at most two adjacent integers, determined by the divisor-pulse stream alone. A chain of $`n`$ consecutive dangerous resets with long runs forces $`n-1`$ nested exact congruence towers. This shows the failure mode is a tower of exact integer coincidences, not drift; it is an ordinary argument, and it does *not* by itself exclude the two pinned values; an isolated dangerous reset after a short run is untouched by this theorem.
 
 </div>
 
@@ -5348,7 +5383,7 @@ The pulse sum and the threshold ranges cannot be dropped to claim $`\mathrm{RUNB
 
 <div class="defn">
 
-**Definition 284**. The *two-sided cell condition* excludes three integer values of the middle coordinate, $`4\cdot\mathrm{rem}(s)-\mathrm{belowPulse}(s)-4\notin\{-3,-2,-1\}`$, plus one right-pulse-leak bound $`4\cdot\mathrm{overshoot}(s)+\mathrm{abovePulse}(s)\le2^{s+2}`$ under $`\mathrm{overshoot}(s)\le2^s`$ ([`SeamTwoSidedDyadicCellEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4374)).
+**Definition 285**. The *two-sided cell condition* excludes three integer values of the middle coordinate, $`4\cdot\mathrm{rem}(s)-\mathrm{belowPulse}(s)-4\notin\{-3,-2,-1\}`$, plus one right-pulse-leak bound $`4\cdot\mathrm{overshoot}(s)+\mathrm{abovePulse}(s)\le2^{s+2}`$ under $`\mathrm{overshoot}(s)\le2^s`$ ([`SeamTwoSidedDyadicCellEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4374)).
 
 </div>
 
@@ -5359,7 +5394,7 @@ A distinct sufficient condition concerns upper resets only. For every $`d\ge13`$
 2^{d-j+1}<E_d\quad\text{or}\quad
  E_d+2(d+j)\le2^{d-j+1}.
 ```
-This is the upper-reset band condition of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a> ([`SeamUpperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4566)). It is unproved in general, and verified by exact finite computation for rows $`13\le d\le30`$ ([`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)). This band has linear width $`O(d)`$, whereas the other bound uses a width of order $`2^{d/2}`$. The quantities being bounded are different, so this comparison of widths does not prove a logical implication or strict weakening. The linear-width condition suffices for half-membership ([`half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790)). It is proved logically equivalent to a single-critical-index check per row ([`seamUpperResetCriticalBandEscape_iff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfUpperResetCriticalBand.lean#L883)), which is a genuine quantifier-complexity reduction, not a strength reduction.
+This is the upper-reset band condition of Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">54</a> ([`SeamUpperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4566)). It is unproved in general, and verified by exact finite computation for rows $`13\le d\le30`$ ([`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)). This band has linear width $`O(d)`$, whereas the other bound uses a width of order $`2^{d/2}`$. The quantities being bounded are different, so this comparison of widths does not prove a logical implication or strict weakening. The linear-width condition suffices for half-membership ([`half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790)). It is proved logically equivalent to a single-critical-index check per row ([`seamUpperResetCriticalBandEscape_iff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfUpperResetCriticalBand.lean#L883)), which is a genuine quantifier-complexity reduction, not a strength reduction.
 
 <a id="whether-one-twenty-first-is-represented"></a>
 
@@ -5386,10 +5421,10 @@ Read left to right: $`\Rightarrow`$ records a proved implication with the hypoth
 | Universal irrationality | Would exclude both rational targets; the stronger universal certificate condition is false | open |
 | Half-membership | Would give a counterexample to universal irrationality | open |
 | $`1/21`$ membership | Equivalent to excluding the specified failure branch; would give a counterexample | open |
-| Infinitely many greedy skips (Proposition <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">277</a>) | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
-| Terminal-only strip (Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">278</a>) | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
+| Infinitely many greedy skips (Proposition <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">278</a>) | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
+| Terminal-only strip (Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">279</a>) | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
 | The centred square-root bound for $`G`$ | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
-| Exact finite sums at unbounded depths | $`\Leftrightarrow`$ half-membership (Prop. <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>(c)); Lean proves $`\Rightarrow`$ | open, equivalent condition |
+| Exact finite sums at unbounded depths | $`\Leftrightarrow`$ half-membership (Prop. <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a>(c)); Lean proves $`\Rightarrow`$ | open, equivalent condition |
 | Linear-width capacity band | $`\Rightarrow`$ exact sums at unbounded depths (Lean, given a lemma) | open |
 | The quotient condition on skipped greedy prefixes | $`\Rightarrow`$ exact sums at unbounded depths (Lean) | open; no strict comparison asserted |
 | Reset square-root bound | $`\Rightarrow`$ half-membership (Lean); no run-length equivalence asserted | open |
@@ -5404,7 +5439,7 @@ Read left to right: $`\Rightarrow`$ records a proved implication with the hypoth
 
 The following comparisons identify missing hypotheses in the recorded arguments. They neither predict the length of a proof nor classify all possible methods.
 
-**The universal statement.** The question is $`\mathrm{U257}`$ itself. The stronger schema $`\mathrm{O1'}=\forall A\,\mathrm{Cert}(A)`$ is a rejected sufficient strengthening, not future work: Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">274</a> already exhibits a squarefree support on which neither the digitwise nor the carry-aware block certificate exists, while Duverney–Tachiya still prove that squarefree value irrational. Supplying $`\mathrm{Cert}(A)`$ for arbitrary infinite supports is therefore not an open equivalent normal form of $`\mathrm{U257}`$. The remaining work is the universal irrationality statement, or a different method that covers supports the certificate schemas cannot.
+**The universal statement.** The question is $`\mathrm{U257}`$ itself. The stronger schema $`\mathrm{O1'}=\forall A\,\mathrm{Cert}(A)`$ is a rejected sufficient strengthening, not future work: Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">275</a> already exhibits a squarefree support on which neither the digitwise nor the carry-aware block certificate exists, while Duverney–Tachiya still prove that squarefree value irrational. Supplying $`\mathrm{Cert}(A)`$ for arbitrary infinite supports is therefore not an open equivalent normal form of $`\mathrm{U257}`$. The remaining work is the universal irrationality statement, or a different method that covers supports the certificate schemas cannot.
 
 **Half-membership, exact sums and middle cells.** The sharp-capacity gap $`(\ast)\to(\ast\ast)`$ and the $`-2,-1`$ middle-cell exclusion are both, at bottom, requests for anti-concentration of an explicit divisor-count quantity ($`\ensuremath{S}`$, or $`4\cdot\mathrm{rem}-\mathrm{belowPulse}-4`$) away from specified short integer windows. A congruence argument, a quantitative distribution estimate, or another method would have to supply the stated inequalities. The reformulations do not decide which kind of argument can do so.
 
@@ -5414,7 +5449,7 @@ The following comparisons identify missing hypotheses in the recorded arguments.
 
 #### Summary
 
-The results here do not decide the universal statement $`\mathrm{U257}`$ or the two rational membership targets $`1/2`$ and $`1/21`$. The conditions surveyed here have different logical roles. Those equivalent to half-membership, including exact sums at unbounded depths by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>(c), do not establish membership merely by reformulating it. The sufficient conditions (the reset bound, the remaining middle-cell exclusions and the capacity band) have not been established at unboundedly many indices, and no converse is proved for them. The proposed universal certificate strengthening $`\mathrm{O1'}`$ is a separate, rejected statement: it is already false on squarefree support. Finite computational checks, however large their margins, are distinct from all these quantified assertions. The sufficient support theorems in the first part are proved for their stated classes. The identities, finite checks and equivalences in this section organise the remaining questions but do not resolve either rational target or the universal problem.
+The results here do not decide the universal statement $`\mathrm{U257}`$ or the two rational membership targets $`1/2`$ and $`1/21`$. The conditions surveyed here have different logical roles. Those equivalent to half-membership, including exact sums at unbounded depths by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">19</a>(c), do not establish membership merely by reformulating it. The sufficient conditions (the reset bound, the remaining middle-cell exclusions and the capacity band) have not been established at unboundedly many indices, and no converse is proved for them. The proposed universal certificate strengthening $`\mathrm{O1'}`$ is a separate, rejected statement: it is already false on squarefree support. Finite computational checks, however large their margins, are distinct from all these quantified assertions. The sufficient support theorems in the first part are proved for their stated classes. The identities, finite checks and equivalences in this section organise the remaining questions but do not resolve either rational target or the universal problem.
 
 <a id="sec:257-logarithmic-sampling"></a>
 
@@ -5453,12 +5488,12 @@ We use $`K_*(F)`$ for the infimum of the existing fractional-cover cost
  \label{eq:257-optimised-cover-cost}
 \end{equation}
 ```
-over finite or countable families of finite sets $`F_j`$ of positive integers covering $`F`$, exponents $`0<\alpha_j\le1`$, weights $`\eta_j>0`$ with $`\sum_j\eta_j=1`$, and coefficients $`c_{j,d}\ge0`$ satisfying $`f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}`$ for every $`n\ge1`$. The covering sets need not be disjoint or contained in $`F`$. Covers of infinite cost do not lower the infimum, and a finite-cost cover exists, for example the single set $`F`$ with exponent one. This is the fractional cost of Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">2</a>, not a redefinition of the logarithmic cost.
+over finite or countable families of finite sets $`F_j`$ of positive integers covering $`F`$, exponents $`0<\alpha_j\le1`$, weights $`\eta_j>0`$ with $`\sum_j\eta_j=1`$, and coefficients $`c_{j,d}\ge0`$ satisfying $`f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}`$ for every $`n\ge1`$. The covering sets need not be disjoint or contained in $`F`$. Covers of infinite cost do not lower the infimum, and a finite-cost cover exists, for example the single set $`F`$ with exponent one. This is the fractional cost of Theorem <a href="#thm:257-variable-fractional-cover" data-reference-type="ref" data-reference="thm:257-variable-fractional-cover">3</a>, not a redefinition of the logarithmic cost.
 
 <div id="thm:257-logarithmic-counterexample" class="thm">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-13.md#thm-257-logarithmic-counterexample">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-13.md#thm-257-logarithmic-counterexample-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-13.md#thm-257-logarithmic-counterexample">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-13.md#thm-257-logarithmic-counterexample-comparator">Comparator</a></p>
 
-**Theorem 285** (arithmetic logarithmic counterexample). *For every integer $`H\ge2`$ and every real $`A_0\ge0`$, there are a squarefree positive integer $`L`$ and a finite nonempty set $`F`$ of distinct squarefree positive integers such that
+**Theorem 286** (arithmetic logarithmic counterexample). *For every integer $`H\ge2`$ and every real $`A_0\ge0`$, there are a squarefree positive integer $`L`$ and a finite nonempty set $`F`$ of distinct squarefree positive integers such that
 ``` math
 \min F>\max\{L,A_0\},\qquad
  \kappa_1(F;1)\le\frac{30\log2}{H},\qquad
@@ -5576,9 +5611,9 @@ Take $`M=L`$ and $`2^R\ge16P_0`$. The error is at most $`1/8`$, whereas $`p\ge1-
 #### The arithmetic lower bound for every fractional cover
 
 <div id="cor:257-logarithmic-separation" class="cor">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-13.md#cor-257-logarithmic-separation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-13.md#cor-257-logarithmic-separation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-13.md#cor-257-logarithmic-separation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-13.md#cor-257-logarithmic-separation-comparator">Comparator</a></p>
 
-**Corollary 286** (finite-functional separation). *For every finite nonempty $`F`$, with $`Q=\operatorname{lcm}(F)`$,
+**Corollary 287** (finite-functional separation). *For every finite nonempty $`F`$, with $`Q=\operatorname{lcm}(F)`$,
 ``` math
 \begin{equation}
  K_*(F)\ge\max_{\ell\mid Q}
@@ -5586,7 +5621,7 @@ Take $`M=L`$ and $`2^R\ge16P_0`$. The error is at most $`1/8`$, whereas $`p\ge1-
  \label{eq:257-arithmetic-cover-lower}
 \end{equation}
 ```
-where $`N`$ is uniform modulo $`Q`$. The supports of Theorem <a href="#thm:257-logarithmic-counterexample" data-reference-type="ref" data-reference="thm:257-logarithmic-counterexample">285</a> satisfy $`K_*(F)\ge1-e^{-1}`$ and $`\kappa_1(F;1)\le30\log2/H`$. In particular, no absolute $`C`$ gives $`K_*(F)\le C\kappa_1(F;1)`$ for all finite nonempty $`F`$, even after all covering sets, exponents, coefficients and positive weights have been optimised.*
+where $`N`$ is uniform modulo $`Q`$. The supports of Theorem <a href="#thm:257-logarithmic-counterexample" data-reference-type="ref" data-reference="thm:257-logarithmic-counterexample">286</a> satisfy $`K_*(F)\ge1-e^{-1}`$ and $`\kappa_1(F;1)\le30\log2/H`$. In particular, no absolute $`C`$ gives $`K_*(F)\le C\kappa_1(F;1)`$ for all finite nonempty $`F`$, even after all covering sets, exponents, coefficients and positive weights have been optimised.*
 
 </div>
 
@@ -5611,9 +5646,9 @@ For fixed $`L,M`$, let $`R`$ tend to infinity. Periodicity of the left-hand indi
 #### What survives without arithmetic restriction
 
 <div id="prop:257-logarithmic-initial-interval" class="prop">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/efc285328be650b3ad638256d9124f44576c6d32/lean/ErdosProblems/Erdos257/PaperCompleteR21/LogarithmicInitialInterval.lean#L491">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos257-mersenne-reasoning-surface/section-13.md#prop-257-logarithmic-initial-interval-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/LogarithmicInitialInterval.lean#L491">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos257-mersenne-reasoning-surface/section-13.md#prop-257-logarithmic-initial-interval-comparator">Comparator</a></p>
 
-**Proposition 287** (ordinary initial intervals). *For every finite nonempty $`F`$, integer $`X\ge1`$, and $`0<t\le1`$,
+**Proposition 288** (ordinary initial intervals). *For every finite nonempty $`F`$, integer $`X\ge1`$, and $`0<t\le1`$,
 ``` math
 \frac1X\#\{1\le N\le X:U_F(N)>t\}
  \le\frac{2}{\log(4/3)}\kappa_1(F;t).
@@ -5692,7 +5727,7 @@ This work received no external funding. The author declares no competing interes
 
 99
 
-P. Erdős, [*On arithmetical properties of Lambert series*](https://www.renyi.hu/~p_erdos/1948-04.pdf), J. Indian Math. Soc. 12 (1948), 63–66. P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969); [five-page scan](https://www.renyi.hu/~p_erdos/1969-09.pdf). The theorem on p. 222 treats pairwise-coprime support with convergent reciprocal sum at every integer base $`b\ge2`$; the claimed removal of pairwise coprimality is stated without proof. The same page says the reciprocal-sum condition could be replaced by a weaker but more complicated condition, and p. 226 suggests $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ for pairwise coprime supports. F. Luca and Y. Tachiya, [*Linear independence results for the values of divisor functions series*](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf), RIMS Kôkyûroku No. 2014 (2017), 138–150. Theorem A (p. 139) restates Theorem 1.1 of their paper *Irrationality of Lambert series associated with a periodic sequence*, Int. J. Number Theory 10 (2014), no. 3, 623–636, [DOI](https://doi.org/10.1142/S1793042113501121): for a purely periodic integer sequence $`a(n)`$, not identically zero, $`\sum_{n\ge1}a(n)/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$. Example 2 (p. 140) treats the odd support. Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013). Theorem 4 (p. 9) shows that when every term exceeds its tail the subsum set is a Cantor set of Lebesgue measure $`\lim_n2^nX_n`$, where $`X_n`$ is the $`n`$th tail, and credits this to H. Hornich (1941). H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). The averaged tail $`R_c(q,x,z)`$, a sum over offsets $`j\ge z`$, is (1.7) and Theorem 1 is on p. 3; its rational-integer form, Theorem 3, is on p. 5. Lemma 1 (pp. 6–7) derives irrationality from arbitrarily small nonzero scaled tails, and Lemma 2 (pp. 7–8) shows that most scaled tails in a range are small under a counting condition on the support. Their criteria assume sparse coefficient supports. D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. Theorem 1.1 (pp. 2–3) is the refined Chowla–Erdős criterion; its proof in Section 2 (pp. 5–7) selects an index by minimising a local coefficient mass along an arithmetic progression, (2.3)–(2.9). Corollary 1.2 gives the general $`F_s(E)`$ theorem and its monomial images under $`|q|\operatorname{lcm}(1,\dots,\ell)\le s`$, and at every integer base when $`s=\infty`$; Example 1.1 gives the joint squarefree family at all bases $`2^j`$, $`j\ge1`$. Both are on p. 4, which also relates Corollary 1.2 to the conjecture of Erdős and Graham; the proof of Corollary 1.2 is on pp. 10–11. T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). Theorem 1.3 (p. 4) proves $`\sum_{n\ge1}\omega(n)/2^n=\sum_p(2^p-1)^{-1}`$ irrational, settling the prime-support case of \#257 at base $`2`$; the paragraph after it states that the prime-support result extends to every integer base $`b\ge2`$, and separately that full prime-power support is irrational at base $`2`$. The modifications for those two assertions are left to the reader; arbitrary subsets of the primes or prime powers are not treated there. Theorem 3.1 is on p. 24, and the proof of Theorem 1.3 is Section 5, pp. 44–56. W. Zudilin, *Heine’s basic transform and a permutation group for $`q`$-harmonic series*, Acta Arith. 111 (2004), no. 2, 153–164, [DOI](https://doi.org/10.4064/aa111-2-4). Theorem 1 (p. 154) gives $`\mu(h_p(1))\le2.46497868\ldots`$ for $`h_p(1)=\sum_{n\ge1}1/(p^n-1)`$, uniformly in the integer $`p`$ with $`|p|\ge2`$; the remark at the end of Section 3 (p. 159) corrects the computation of the author’s earlier paper. J. M. Campbell, [*On the binary digits of the Erdős–Borwein constant*](https://arxiv.org/abs/2605.24160v1), arXiv:2605.24160v1 (2026). Theorem 1 (p. 12) proves that the block `11` occurs infinitely often in the binary expansion of $`\sum_{n\ge1}1/(2^n-1)`$, answering a question of Crandall recalled in the introduction. K. Matomäki and M. Radziwiłł, *Multiplicative functions in short intervals*, Ann. of Math. (2) 183 (2016), no. 3, 1015–1056, [DOI](https://doi.org/10.4007/annals.2016.183.3.6). Page numbers refer to arXiv:1501.04585v4. A. P. Mangerel, *Divisor-bounded multiplicative functions in short intervals*, Res. Math. Sci. 10 (2023), no. 1, Paper No. 12, [DOI](https://doi.org/10.1007/s40687-023-00376-0). Page numbers refer to arXiv:2108.11401v2. Y.-C. Sun, [*The critical-window profile for the $`k`$-fold divisor function in almost all short intervals*](https://arxiv.org/abs/2401.08432v3), arXiv:2401.08432v3 (2026). F. Luca and Y. Tachiya, *Irrationality of Lambert series associated with a periodic sequence*, International Journal of Number Theory **10** (2014), no. 3, 623–636. [doi:10.1142/S1793042113501121](https://doi.org/10.1142/S1793042113501121).
+P. Erdős, [*On arithmetical properties of Lambert series*](https://www.renyi.hu/~p_erdos/1948-04.pdf), J. Indian Math. Soc. 12 (1948), 63–66. P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969); [five-page scan](https://www.renyi.hu/~p_erdos/1969-09.pdf). The theorem on p. 222 treats pairwise-coprime support with convergent reciprocal sum at every integer base $`b\ge2`$; the claimed removal of pairwise coprimality is stated without proof. The same page says the reciprocal-sum condition could be replaced by a weaker but more complicated condition, and p. 226 suggests $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ for pairwise coprime supports. F. Luca and Y. Tachiya, [*Linear independence results for the values of divisor functions series*](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf), RIMS Kôkyûroku No. 2014 (2017), 138–150. Theorem A (p. 139) restates Theorem 1.1 of their paper *Irrationality of Lambert series associated with a periodic sequence*, Int. J. Number Theory 10 (2014), no. 3, 623–636, [DOI](https://doi.org/10.1142/S1793042113501121): for a purely periodic integer sequence $`a(n)`$, not identically zero, $`\sum_{n\ge1}a(n)/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$. Example 2 (p. 140) treats the odd support. Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013). Theorem 4 (p. 9) shows that when every term exceeds its tail the subsum set is a Cantor set of Lebesgue measure $`\lim_n2^nX_n`$, where $`X_n`$ is the $`n`$th tail, and credits this to H. Hornich (1941). N. Sedaghat, T. Stephen, and L. Chindelevitch, [*Speeding up dualization in the Fredman–Khachiyan Algorithm B*](https://doi.org/10.4230/LIPIcs.SEA.2018.6), 17th International Symposium on Experimental Algorithms (SEA 2018), LIPIcs 103 (2018), 6:1–6:13. H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). The averaged tail $`R_c(q,x,z)`$, a sum over offsets $`j\ge z`$, is (1.7) and Theorem 1 is on p. 3; its rational-integer form, Theorem 3, is on p. 5. Lemma 1 (pp. 6–7) derives irrationality from arbitrarily small nonzero scaled tails, and Lemma 2 (pp. 7–8) shows that most scaled tails in a range are small under a counting condition on the support. Their criteria assume sparse coefficient supports. D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. Theorem 1.1 (pp. 2–3) is the refined Chowla–Erdős criterion; its proof in Section 2 (pp. 5–7) selects an index by minimising a local coefficient mass along an arithmetic progression, (2.3)–(2.9). Corollary 1.2 gives the general $`F_s(E)`$ theorem and its monomial images under $`|q|\operatorname{lcm}(1,\dots,\ell)\le s`$, and at every integer base when $`s=\infty`$; Example 1.1 gives the joint squarefree family at all bases $`2^j`$, $`j\ge1`$. Both are on p. 4, which also relates Corollary 1.2 to the conjecture of Erdős and Graham; the proof of Corollary 1.2 is on pp. 10–11. T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). Theorem 1.3 (p. 4) proves $`\sum_{n\ge1}\omega(n)/2^n=\sum_p(2^p-1)^{-1}`$ irrational, settling the prime-support case of \#257 at base $`2`$; the paragraph after it states that the prime-support result extends to every integer base $`b\ge2`$, and separately that full prime-power support is irrational at base $`2`$. The modifications for those two assertions are left to the reader; arbitrary subsets of the primes or prime powers are not treated there. Theorem 3.1 is on p. 24, and the proof of Theorem 1.3 is Section 5, pp. 44–56. W. Zudilin, *Heine’s basic transform and a permutation group for $`q`$-harmonic series*, Acta Arith. 111 (2004), no. 2, 153–164, [DOI](https://doi.org/10.4064/aa111-2-4). Theorem 1 (p. 154) gives $`\mu(h_p(1))\le2.46497868\ldots`$ for $`h_p(1)=\sum_{n\ge1}1/(p^n-1)`$, uniformly in the integer $`p`$ with $`|p|\ge2`$; the remark at the end of Section 3 (p. 159) corrects the computation of the author’s earlier paper. J. M. Campbell, [*On the binary digits of the Erdős–Borwein constant*](https://arxiv.org/abs/2605.24160v1), arXiv:2605.24160v1 (2026). Theorem 1 (p. 12) proves that the block `11` occurs infinitely often in the binary expansion of $`\sum_{n\ge1}1/(2^n-1)`$, answering a question of Crandall recalled in the introduction. K. Matomäki and M. Radziwiłł, *Multiplicative functions in short intervals*, Ann. of Math. (2) 183 (2016), no. 3, 1015–1056, [DOI](https://doi.org/10.4007/annals.2016.183.3.6). Page numbers refer to arXiv:1501.04585v4. A. P. Mangerel, *Divisor-bounded multiplicative functions in short intervals*, Res. Math. Sci. 10 (2023), no. 1, Paper No. 12, [DOI](https://doi.org/10.1007/s40687-023-00376-0). Page numbers refer to arXiv:2108.11401v2. Y.-C. Sun, [*The critical-window profile for the $`k`$-fold divisor function in almost all short intervals*](https://arxiv.org/abs/2401.08432v3), arXiv:2401.08432v3 (2026). F. Luca and Y. Tachiya, *Irrationality of Lambert series associated with a periodic sequence*, International Journal of Number Theory **10** (2014), no. 3, 623–636. [doi:10.1142/S1793042113501121](https://doi.org/10.1142/S1793042113501121).
 
 F. Luca and Y. Tachiya, *Linear independence of certain Lambert series*, Proceedings of the American Mathematical Society **142** (2014), no. 10, 3411–3419. [doi:10.1090/S0002-9939-2014-12102-2](https://doi.org/10.1090/S0002-9939-2014-12102-2).
 

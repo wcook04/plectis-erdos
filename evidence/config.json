@@ -9,5 +9,8 @@
   "receipts": "evidence/comparator/replay-35935225572"
  },
  "record_commit": "fca55989afe5048b0a9c59f78bb49eebed5f6335",
- "record_commit_overrides": {}
+ "record_commit_overrides": {
+  "erdos-257-mersenne-support-subseries": "d53aeecbcf2dbebe03b57c170925e4be033da959",
+  "erdos257-mersenne-reasoning-surface": "d53aeecbcf2dbebe03b57c170925e4be033da959"
+ }
 }
