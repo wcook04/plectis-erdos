@@ -80,6 +80,44 @@ strongest relevant result, exact missing bridge or falsifier, and cheapest
 test capable of changing the current appraisal. Ranking directs attention; it
 does not establish truth, novelty, or acceptance.
 
+## Use compression scores to choose a test
+
+When deciding which existing lemma to inspect for reuse or consolidation, run
+the source-pinned analysis in
+`research/experiments/interestingness/README.md`. Its dependency-expanded
+source costs adapt Patel et al.'s conditional-value proposal; they measure a
+particular recorded proof graph, not the shortest possible proof or a
+mathematician's valuation. Keep its coverage report with every selection.
+An omitted declaration or unresolved dependency is missing evidence, not zero
+cost or zero reuse.
+
+Before allocating work from a ranking:
+
+1. Compare the score with proof size and direct user count. In particular,
+   correlation between `V/L` and `users * V` has a shared factor: compare it
+   with shuffled-user controls before treating it as support for the metric.
+2. Inspect sensitivity to generated certificates, their downstream users,
+   thin wrappers and repeated statement text. A certificate-heavy cone can
+   remain large after generated target declarations are removed. Textual
+   equality is only a duplicate-review candidate; resolve namespaces,
+   hypotheses and library containment before consolidating declarations.
+3. Choose a named consumer and a falsifiable action. For a reuse candidate,
+   identify the exact premise and target and check the proposed application.
+   For a duplicate, compare elaborated types and the pinned mathlib. For a
+   large certificate cone, inspect the generating mechanism before proposing
+   mathematical priority. Preserve useful negative results even when these
+   scores rank them poorly.
+4. Record the decision separately from the score: source revision, candidate
+   family, competing baseline, cheapest test, evidence returned and next
+   owner. A rank alone never changes a claim's status or paper prominence.
+
+For a claimed research improvement, freeze candidates and their scores before
+the evaluation period. Record later independent consumers, accepted reuse,
+review and repair cost, and failed attempts. Compare with proof-size,
+direct-use and unranked baselines under the same effort budget. Retrospective
+graph analysis can diagnose a proxy; it cannot establish prospective discovery
+benefit. Re-run after a source-changing event, not an unchanged timer tick.
+
 ## Event-driven coupling
 
 Wake stewardship after a stable mathematical, authority, exposition, or

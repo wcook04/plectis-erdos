@@ -5,3 +5,4 @@ import ErdosProblems.Synthesis.CongruenceInterpolation
 import ErdosProblems.Synthesis.DyadicShiftEscape
 import ErdosProblems.Synthesis.FeedbackContinuation
 import ErdosProblems.Synthesis.FactorialJet
+import ErdosProblems.Synthesis.UniformRankBarrier

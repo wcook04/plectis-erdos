@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:25cce4097b6e07e656b84dca1f90365ce06147c0eac46b47fd42bec1a709eb34",
-  "module_count": 1834,
-  "synopsis_count": 1587,
+  "source_fingerprint": "sha256:1d839195b0d059e56c5ef362f2d366cdf2741de35e966d7cb940fb19f72d999f",
+  "module_count": 1828,
+  "synopsis_count": 1581,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -6228,9 +6228,29 @@
       "synopsis": "Erdős #249: residue-class totient series and the isolated-pulse separation This file formalises the reusable core of the \"fixed resolution\" attack on `S = ∑_{n ≥ 1} φ(n) / 2 ^ n`. Nothing here proves that `S` is irrational. What is proved is the exact mechanism that makes every *fixed-resolution* projection of the totient word irrational, together with the quantitative separation it supplies. Main results * `isolated_pulse_separation` — the abstract Diophantine core. If `a : ℕ → ℤ` is bounded by `C`, and `a` has a nonzero letter `t` at position `p = N+1+L` surrounded on both sides by a block of `L` zeros, then for every `q ≥ 1` with `2 ^ L > 2 * q * C` the real number `q * ∑ a n / 2 ^ n` stays at distance at least `q * (|t| - C / 2 ^ L) / 2 ^ p` from every integer. Both the left and the right zero block are used: the right block makes the tail nonzero, the left block makes the tail small enough to be the distance to `ℤ`. * `two_sided_prime_isolation` — the arithmetic supply. For `m ≥ 2` and any `r` with `gcd (r+1, m) = 1` there are arbitrarily large primes `p` with `φ p ≡ r [MOD m]` and `m ∣ φ (p ± j)` for every `0 < j ≤ L`. Auxiliary primes `ℓ_j ≡ 1 [MOD m]` are produced by Dirichlet's theorem and glued by the Chinese remainder theorem; `ℓ_j ∣ p ± j` forces `ℓ_j - 1 ∣ φ (p ± j)`. * `irrational_totientObservable` — the general special-value theorem. If an integer letter map `f` vanishes at the zero residue and is nonzero at some residue `r < m` with `gcd (r+1, m) = 1`, then `∑ f (φ n mod m) / 2 ^ n` is irrational. `fixed_resolution_observable_irrational` is the `m = 2 ^ k` "
     },
     {
+      "id": "ErdosProblems.Erdos249.TotientApproximationDichotomy",
+      "path": "lean/ErdosProblems/Erdos249/TotientApproximationDichotomy.lean",
+      "synopsis": "Two approximation modes for the same normalized totient matrix The explicit Möbius truncation of `φ(i+j+2)/(i+j+2)` uses at most `D * (D + 1) / 2` separated factors. Its mean absolute error on every leading `N` by `N` square is at most `2 / D`, whereas its uniform error is at least `1 / 2`. The latter is the exact distance to all finite-rank matrices, attained by the constant matrix `1 / 2`. This module only combines the two approximation theorems, translating the positive indices of the mean estimate to the zero-based Hankel convention. The displayed factor count is a representation budget, not a minimal rank."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.TotientMeanApproximation",
+      "path": "lean/ErdosProblems/Erdos249/TotientMeanApproximation.lean",
+      "synopsis": "Normalized totient: finite-rank mean approximation The arithmetic matrix `φ(i+n)/(i+n)` has finite-rank approximants obtained by truncating its Möbius divisor expansion. The final finite-square estimate is uniform in the size of the square; it concerns mean error, not uniform error."
+    },
+    {
       "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
       "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
       "synopsis": "Erdős #249: gaps in the first harmonic of the tail orbit This module records two sufficient conditions for irrationality of the binary totient series. The first is a uniform saving for the real part of the first harmonic on arbitrarily late dyadic blocks. The second is the earlier pointwise condition along suitable prime indices. Neither condition is proved here for the actual totient orbit. In particular, the results below do not establish the required density estimate or solve Erdős Problem #249."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.TotientTranslateSeparation",
+      "path": "lean/ErdosProblems/Erdos249/TotientTranslateSeparation.lean",
+      "synopsis": "Extremal separation of normalized totient translates For distinct nonnegative shifts, the normalized totient translates have supremum distance one, even after any fixed cutoff. A prime in a reduced arithmetic progression makes one value close to one; a prescribed product of other primes makes the second close to zero. Only one translate must be prime. The product is chosen using divergence of the reciprocal-prime sum. This is the arithmetic input to a uniform finite-rank approximation barrier. It does not assert irrationality of the binary totient series."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.TotientUniformRankBarrier",
+      "path": "lean/ErdosProblems/Erdos249/TotientUniformRankBarrier.lean",
+      "synopsis": "Exact uniform finite-rank distance of the normalized totient matrix The infinite matrix `φ(i+j+2)/(i+j+2)` has distance exactly `1/2` from the set of all finite-separated-rank real matrices in the uniform norm. The constant matrix `1/2` attains the distance. Factors in the finite-rank representation need not be bounded; unbounded approximation error is represented in `ENNReal`. The arithmetic separation and the generic compactness theorem live in separate modules so that this consumer can be replayed with precisely those premises. This is a uniform-norm statement, not an obstruction to mean-error approximation or a proof of irrationality of the binary totient series."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.Audit",
@@ -6863,11 +6883,6 @@
       "synopsis": "Infinite displacement and the exact arithmetic consumer Unlike the finite rational tail-budget interface, this file uses the actual infinite real support series. All summability hypotheses needed to interchange infinite sums are proved from the existing library. The arithmetic endgame reuses RadixCloseReturn's general close-return consumer, translated into displacement notation. No reciprocal- summability hypothesis is added or removed from that consumer. The ordinary positive-cover and mixed-support arguments must still establish its analytic input. No admission, new axiom, or parent claim is used."
     },
     {
-      "id": "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions",
-      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean",
-      "synopsis": "The finite-prime weighted support criterion These are the canonical definitions used by the analytic support theorem. Their small import boundary also permits arithmetic constructions to use the same weights without importing the displacement proof."
-    },
-    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
       "synopsis": "Infinite tail budget and the landed r6 delayed gluing theorem Proof source. This file goes beyond the finite algebra in `DisplacementTailBudget.lean`: it proves the tail estimate for actual infinite support sums and assembles the diagonal construction. Its hypothesis is the r6 general version, namely return admissibility of *every finite union* of the given hosts. It does not assume that separately admissible hosts can be united, nor prove the missing weighted/positive-cover analytic producer. The r6 construction is in the current short note's prose rather than a numbered result environment. It is therefore recorded as supplementary coverage, not used to inflate the 261-row theorem-environment census."
@@ -7066,56 +7081,6 @@
       "id": "ErdosProblems.Erdos257.WeightedSupportAveraging",
       "path": "lean/ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
       "synopsis": "Finite averaging for divisibility-weighted supports The weighted support proof needs two finite estimates before taking any limit. The orbit estimate retains the geometric GCD factor discarded by the reciprocal-mass bound. The observation-length estimate sums incomplete-period errors across dyadic scales, charging each conductor only once. These are the actual finite estimates used in the analytic proof. The prime-part decomposition and the final choice of scales are separate steps."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessBlockArithmetic",
-      "path": "lean/ErdosProblems/Erdos257/WitnessBlockArithmetic.lean",
-      "synopsis": "Arithmetic of the clause support The support is the actual union of coprime layers used in the witness-rule construction. Prime factors outside the clause are retained in the exact restricted factorization identity."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessBlockHarmonic",
-      "path": "lean/ErdosProblems/Erdos257/WitnessBlockHarmonic.lean",
-      "synopsis": "Reciprocal mass of the cofactors congruent to one Grouping each positive integer with the first member of its length-`Q` block gives an explicit finite lower bound for the progression `1 mod Q`."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessBlockReciprocal",
-      "path": "lean/ErdosProblems/Erdos257/WitnessBlockReciprocal.lean",
-      "synopsis": "Reciprocal divergence of the actual clause support Each coprime layer has a uniformly positive reciprocal mass on a progression congruent to one. Unique layer indices make these contributions disjoint."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessBlockSummability",
-      "path": "lean/ErdosProblems/Erdos257/WitnessBlockSummability.lean",
-      "synopsis": "Summability of an arithmetic clause met by a prime witness The finite cofactor rows are dominated by the checked scalar clause series. A chosen representation of each support element transfers that summability to the actual set without requiring disjointness of the enlarged rows."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessBlockWeightBound",
-      "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeightBound.lean",
-      "synopsis": "Removing a positive integer multiplier from a Lambert coefficient Bernoulli's inequality controls the denominator after multiplying the exponent. The resulting bound is uniform in the additional prime contribution."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessBlockWeighted",
-      "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeighted.lean",
-      "synopsis": "Canonical prime weights on the arithmetic clause layers The exact prime-part identity keeps all primes of the witness. On cofactors congruent to one modulo the union of the clause and witness primes, only the clause-intersection product remains."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessLogic",
-      "path": "lean/ErdosProblems/Erdos257/WitnessLogic.lean",
-      "synopsis": "Finite unions of nonnegative weighted supports This is the finite-union part of the proposed witness-logic construction. It does not assert that any particular arithmetic block has the required summability classification."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessLogicHost",
-      "path": "lean/ErdosProblems/Erdos257/WitnessLogicHost.lean",
-      "synopsis": "One host realising a finite monotone witness rule Fix a finite set `E` of primes and an upward-closed rule `U` on finite sets of primes with `U E` true and `U ∅` false. The host is the finite union of the clause supports `witnessClauseSupport (E \\ M)`, one for each forbidden `M ⊆ E`. For every base `b ≥ 2` and every finite prime set `P`, including primes outside `E`, the canonical weighted series on this one host converges exactly when `U (P ∩ E)` holds, and its ordinary reciprocal sum diverges. The irrationality consequence is in `WitnessLogicIrrational`. The block classification is the proved theorem `summable_primeWeightedTerm_witnessClauseSupport_iff`; nothing about the arithmetic blocks is assumed here."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessLogicIrrational",
-      "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
-      "synopsis": "Irrationality on a witness-logic host The full witness `E` has finite weighted mass at base two on the host of `WitnessLogicHost`, so the checked weighted theorem makes every infinite subset irrational in every base, although the host's reciprocal sum diverges."
-    },
-    {
-      "id": "ErdosProblems.Erdos257.WitnessLogicSeries",
-      "path": "lean/ErdosProblems/Erdos257/WitnessLogicSeries.lean",
-      "synopsis": "The analytic series for a witness clause The scalar series arising in the ordinary block comparison converges exactly when the intersection product is at least two. The comparison with the actual prime-weighted arithmetic support is a separate obligation."
     },
     {
       "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
@@ -7330,7 +7295,7 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR7AnalyticInterfaces",
       "path": "lean/ErdosProblems/Erdos269/PaperR7AnalyticInterfaces.lean",
-      "synopsis": "Round 7: proved algebra around explicitly unresolved analytic inputs This file DOES NOT prove the two-prime transcendence theorem. Its final algebraic step is separated from THREE hypotheses still requiring analytic proofs: transcendence of the specified Hecke--Mahler value, and the two identities for the actual series. The parameters are visible, not axioms or admitted theorems. It also proves the constant rank-one upper witness for the uniform carry approximation. The lower bound over every finite separated rank remains open as a formalisation obligation in this return. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: proved algebra around explicitly unresolved analytic inputs This file DOES NOT prove the two-prime transcendence theorem. Its final algebraic step is separated from THREE hypotheses still requiring analytic proofs: transcendence of the specified Hecke--Mahler value, and the two identities for the actual series. The parameters are visible, not axioms or admitted theorems. It also proves the constant rank-one upper witness for the uniform carry approximation. The matching lower bound over every finite separated rank is proved in `ErdosProblems.Erdos269.PaperR8UniformRank`. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
@@ -7375,7 +7340,7 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR8UniformRank",
       "path": "lean/ErdosProblems/Erdos269/PaperR8UniformRank.lean",
-      "synopsis": "The infinite uniform finite-rank obstruction The finite staircase minors alone do not prove a uniform lower bound. This file uses their column separation inside a finite-dimensional bounded column space, and a finite covering of a compact ball. Row factors in an arbitrary separated representation need not be bounded; the subspace is formed by intersecting their algebraic span with the space of bounded functions. The final infimum ranges over ALL finite-separated-rank matrices. It uses an extended nonnegative supremum so that unbounded approximants have infinite uniform error, never the spurious zero returned by an unbounded real iSup. The resulting finite value is also identified after conversion to the reals. All proof text is an uncompiled candidate against the packet's pinned Mathlib."
+      "synopsis": "The infinite uniform finite-rank obstruction The finite staircase minors alone do not prove a uniform lower bound. This file uses their column separation inside a finite-dimensional bounded column space, and a finite covering of a compact ball. Row factors in an arbitrary separated representation need not be bounded; the subspace is formed by intersecting their algebraic span with the space of bounded functions. The final infimum ranges over ALL finite-separated-rank matrices. It uses an extended nonnegative supremum so that unbounded approximants have infinite uniform error, never the spurious zero returned by an unbounded real iSup. The resulting finite value is also identified after conversion to the reals."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR9SourceCounts",
@@ -9141,6 +9106,11 @@
       "id": "ErdosProblems.Synthesis.FeedbackContinuation",
       "path": "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
       "synopsis": "Eventual congruences from the existing feedback construction The #251 feedback theorem supplies bounded digits, their weighted sum, and a prescribed divisor of every cumulative prefix. Nested moduli turn these prefix divisibilities into eventual divisibility of both the individual digits and all preceding cumulative sums. This is the analytic continuation mechanism used by the factorial tail-capacity argument. It does not formalize the choice of factorial allowances, active positions, moduli, or continuation intervals in that ordinary proof. Those inputs remain explicit hypotheses here. No feedback selector is duplicated."
+    },
+    {
+      "id": "ErdosProblems.Synthesis.UniformRankBarrier",
+      "path": "lean/ErdosProblems/Synthesis/UniformRankBarrier.lean",
+      "synopsis": "Uniform finite-rank error from separated rows A uniformly bounded matrix with arbitrarily large finite families of rows separated by `δ` in supremum distance cannot be uniformly approximated by a finite-separated-rank matrix with error below `δ / 2`. The separation may be a supremum that no coordinate attains. Neither factor of the approximating matrix is assumed bounded. The proof reuses the finite-dimensional packing and bounded-column-space lemmas from the #269 development. The additional interface isolates the metric premise from the arithmetic construction of separated rows, so a different source of separation can use the same obstruction. It states no bound for mean error, and exact infinite rank alone is not a hypothesis that supplies uniform separation."
     },
     {
       "id": "ErdosProblems.Synthesis",

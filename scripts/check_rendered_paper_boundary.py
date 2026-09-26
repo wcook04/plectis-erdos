@@ -80,8 +80,9 @@ FIRST_MINUTE_CONTRACT = {
     # the contribution cycle and the limits each keep their boundary within
     # one page of where they render today. The 24 September revision opens
     # with three pages of worked mathematics, so the later windows moved back.
-    # The 25 September revision adds the cross-problem transfer to Section 3,
-    # which moves the checking section's limits one page later.
+    # The 26 September revision adds source-cost controls and the periodic-chain
+    # example to Section 3. Checks begin on page 7, the cycle on page 9 and
+    # limitations on page 13; each boundary stays within its section's band.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -90,18 +91,18 @@ FIRST_MINUTE_CONTRACT = {
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (5, 7): (
+        (7, 9): (
             "lean verifies that a proof establishes the formal statement written in the source",
             "comparator-checked",
             "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
             "coverage boundary, not a reliability score",
         ),
-        (6, 8): (
+        (8, 10): (
             "an empty search never counts as evidence of no consequence",
             "whether the formal statement matches the 1958 wording",
         ),
-        (9, 11): (
+        (12, 14): (
             "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),

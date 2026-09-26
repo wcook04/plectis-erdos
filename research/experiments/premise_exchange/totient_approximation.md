@@ -14,9 +14,10 @@ rank is exactly one half in the uniform norm. Yet a single explicit family of
 finite-rank matrices approximates every leading finite square in mean absolute
 error, with bounds independent of the square's size.
 
-These are **candidate ordinary mathematical results with proofs below**. They
-have been cross-checked as ordinary arguments but have not been formalized
-or independently reviewed by an expert. The companion Python
+The separation, the exact uniform distance and the mean bound are proved
+below and checked in Lean (section 4). The exact rank of the approximants in
+section 3 is an ordinary proof with exact finite controls. None has been
+independently reviewed by an expert. The companion Python
 program verifies finite rational identities, factorizations and inequalities;
 it does not verify the infinite assertions. No novelty or irrationality claim
 is made. The work connects two existing arguments in the public corpus: the
@@ -117,8 +118,8 @@ A_D(i,n)=\sum_{1\le d\le D}\frac{\mu(d)}d\mathbf1_{d\mid i+n}.
 
 These are \(d\) explicit separated factors. Summing over \(d\le D\) gives
 the bound \(\sum_{d\le D}d=D(D+1)/2\). The smaller bound
-\(\sum_{d\le D,\,\mu(d)\ne0}d\) is also immediate. These bounds are not
-asserted to be exact ranks.
+\(\sum_{d\le D,\,\mu(d)\ne0}d\) is also immediate. Neither is the exact
+rank; the proposition after the error bound computes it.
 
 **Proof of the error bound.** The divisor identity
 \(h(m)=\sum_{d\mid m}\mu(d)/d\) gives
@@ -143,6 +144,73 @@ The final inequality follows by comparison with
 \(\int_D^\infty x^{-2}\,dx\). All sums preceding that comparison are finite.
 If \(D\ge2N\), the approximation is exact on the square. ∎
 
+**Proposition (exact rank).** For every positive integer \(D\), the
+separated rank of \(A_D\) is exactly
+
+\[
+R_D=\sum_{\substack{1\le q\le D\\ q\text{ squarefree}}}\varphi(q).
+\]
+
+The leading \(R_D\times R_D\) block is nonsingular, so every larger leading
+square also has rank \(R_D\).
+
+**Proof.** For positive \(d\) and every integer \(m\),
+\(\mathbf1_{d\mid m}=d^{-1}\sum_{\zeta^d=1}\zeta^m\). Hence
+\(A_D(i,n)=a_D(i+n)\) with
+
+\[
+a_D(m)=\sum_{d\le D}\frac{\mu(d)}{d^2}\sum_{\zeta^d=1}\zeta^m .
+\]
+
+A root of unity of exact order \(q\) is a \(d\)-th root exactly when
+\(q\mid d\), so after grouping equal roots its coefficient is
+
+\[
+\beta_q=\sum_{m\le D/q}\frac{\mu(qm)}{q^2m^2}.
+\]
+
+If \(q\) is not squarefree then \(\mu(qm)=0\) and \(\beta_q=0\). If \(q\) is
+squarefree, put \(M=\lfloor D/q\rfloor\). Since \(\mu(qm)=\mu(q)\mu(m)\)
+when \(\gcd(m,q)=1\) and \(\mu(qm)=0\) otherwise,
+
+\[
+\beta_q=\frac{\mu(q)}{q^2}\sum_{\substack{m\le M\\ \gcd(m,q)=1}}
+\frac{\mu(m)}{m^2}.
+\]
+
+The inner sum is \(1\) when \(M=1\). When \(M\ge2\) it is at least
+\(1-\sum_{m=2}^M m^{-2}>1-\sum_{m=2}^M\frac1{m(m-1)}=\frac1M\). So
+\(\beta_q\ne0\) exactly for the \(R_D\) roots of squarefree order at most
+\(D\). Writing these roots as \(\zeta_1,\ldots,\zeta_R\) with coefficients
+\(\beta_1,\ldots,\beta_R\), the leading block factors as
+
+\[
+\bigl[A_D(i,n)\bigr]_{1\le i,n\le R}=V\operatorname{diag}(\beta_s)V^{\mathsf T},
+\qquad V_{i,s}=\zeta_s^{\,i}.
+\]
+
+The roots are distinct and nonzero, so \(V\) is a Vandermonde matrix with
+nonzero column scalings and is nonsingular. The block therefore has rank
+\(R_D\) over \(\mathbb C\). The same expansion bounds the rank of every
+finite submatrix by \(R_D\). The entries are real, and the rank of a real
+matrix does not change over \(\mathbb C\). ∎
+
+For \(D=8\) this gives \(R_8=16\), against the factor count \(24\); for
+\(D=16\) it gives \(56\), against \(87\). The matrices and their errors are
+unchanged, so the \(2/D\) mean bound and the uniform distance \(1/2\) are
+unaffected. Since \(R_D\le\sum_{q\le D}\varphi(q)\), the rank still grows
+quadratically in \(D\). No minimality is claimed among all finite-rank
+matrices with the same mean error.
+
+The deduction came from a ChatGPT research pass on 26 September 2026 and was
+rechecked line by line before inclusion. It is an ordinary proof and has not
+been formalized. [totient_exact_rank.py](totient_exact_rank.py) checks
+\(D=1,\ldots,16\) in exact arithmetic: every grouped coefficient as a
+fraction, nonzero exactly at squarefree orders, and the leading \(R_D\)
+block nonsingular modulo the prime \(1{,}000{,}003\). All denominators are
+at most \(D\), so each nonsingular reduction certifies a nonsingular
+rational block.
+
 Thus average error \(\le\varepsilon\) is achieved with
 \(D=\lceil2/\varepsilon\rceil\) and rank \(O(\varepsilon^{-2})\), uniformly
 over all leading square sizes. Each truncated sequence is periodic, with a
@@ -162,6 +230,7 @@ Run from the repository root:
 
 ```sh
 python3 research/experiments/premise_exchange/totient_approximation.py
+python3 research/experiments/premise_exchange/totient_exact_rank.py
 ```
 
 The program uses only the Python standard library and exact `Fraction`
@@ -175,19 +244,29 @@ witnesses test the distinct arithmetic premise, including a shift difference
 divisible by both 2 and 3. Trial division certifies the primes used; the search
 is bounded by 10,000 progression candidates for each chosen modulus.
 
-For example, the \((128,8)\) matrix has a certified rank upper bound 24 and
+For example, the \((128,8)\) matrix has a certified rank upper bound 24
+(its exact rank is 16 by the proposition in section 3) and
 mean absolute error approximately 0.036205; the general proved bound is 0.25.
 The numerical value illustrates the experiment, not an improvement to the
 proved rate. The JSON output gives exact fractions as well as decimals.
 
-The useful formal target is a generic lemma: an infinite family of bounded
-rows with pairwise supremum distance at least \(\delta>0\) forces uniform
-finite-rank error at least \(\delta/2\). Instantiate it with the already
-written #269 threshold separation and the totient progression separation
-above. Separately formalize the finite divisor-counting mean bound. This tests
-the actual reusable proof premise; it does not ask Lean to infer arithmetic
-separation from unrelated rank declarations. No Lean build was run for this
-experiment.
+Lean checks the propositions of sections 1 to 3, except the exact rank.
+The generic lemma
+[`finite_rank_uniform_error_lower_of_row_packs`](../../../lean/ErdosProblems/Synthesis/UniformRankBarrier.lean)
+states that bounded rows with arbitrarily large families pairwise separated
+by \(\delta\) force uniform finite-rank error at least \(\delta/2\); it
+reuses the #269 packing lemmas and assumes no bound on the factors.
+[`totientHankel_row_separation_cofinal`](../../../lean/ErdosProblems/Erdos249/TotientTranslateSeparation.lean)
+proves the separation of section 1 by Dirichlet's theorem in Mathlib, and
+[`iInf_totient_uniform_finite_rank_distance`](../../../lean/ErdosProblems/Erdos249/TotientUniformRankBarrier.lean)
+proves that the infimum is exactly \(1/2\).
+[`normalizedTotient_mean_error_le`](../../../lean/ErdosProblems/Erdos249/TotientMeanApproximation.lean)
+proves the \(2/D\) mean bound with the factor budget \(D(D+1)/2\), and
+[`totient_approximation_dichotomy`](../../../lean/ErdosProblems/Erdos249/TotientApproximationDichotomy.lean)
+states both for the same matrices. The arithmetic separation enters as its
+own theorem; the generic lemma does not infer it from rank declarations. The
+indices there start at zero, so `totientHankel i j` is \(H(i+1,j+1)\). The
+printed axioms are `propext`, `Classical.choice` and `Quot.sound`.
 
 ## 5. Native sources and prior art
 

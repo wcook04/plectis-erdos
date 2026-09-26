@@ -1,0 +1,659 @@
+{
+  "correlations": {
+    "interestingness_vs_direct_users": {
+      "n": 9289,
+      "spearman_rho": -0.17171393135681093
+    },
+    "interestingness_vs_expanded_proof_lines": {
+      "n": 9289,
+      "spearman_rho": 0.8955610433442946
+    },
+    "interestingness_vs_utility": {
+      "n": 9289,
+      "spearman_rho": 0.7988342239245257
+    },
+    "permuted_degree_times_same_proof_lines": {
+      "fraction_at_least_observed": 1.0,
+      "max_rho": 0.8358820854902559,
+      "mean_rho": 0.8329441716012971,
+      "min_rho": 0.8288827807000303,
+      "permutation_rhos": [
+        0.8339284561207585,
+        0.8296103419227239,
+        0.8335479739997359,
+        0.8345589207442662,
+        0.8343322581179956,
+        0.8305950859625466,
+        0.8299117787580824,
+        0.8345537735798961,
+        0.8297287709894992,
+        0.8328368974665765,
+        0.8306823479387495,
+        0.8332442396871892,
+        0.8358820854902559,
+        0.8350693176052546,
+        0.8327427437528773,
+        0.8344326091189541,
+        0.83178105061991,
+        0.8336617456317491,
+        0.8346337380172539,
+        0.8314782625540932,
+        0.8338836171501868,
+        0.8315884689534644,
+        0.8327266332595104,
+        0.8328973136397719,
+        0.8346790402711206,
+        0.8356725875114706,
+        0.8327297819361165,
+        0.8316064128451878,
+        0.8321897794083672,
+        0.8322498669620985,
+        0.8335063983147254,
+        0.8349920638100686,
+        0.8307559620092517,
+        0.8337300409103342,
+        0.8357283383464907,
+        0.8345866999476586,
+        0.8342149369332105,
+        0.8328214868188347,
+        0.8340777192180412,
+        0.8301820860739372,
+        0.834682821610747,
+        0.829124216128452,
+        0.8310878168000879,
+        0.8339880062610716,
+        0.8333222974111083,
+        0.8288827807000303,
+        0.8343817507309724,
+        0.8350725107946886,
+        0.8349729763116377,
+        0.8319556598101401,
+        0.831070650525962,
+        0.8328000760883792,
+        0.8322573043293899,
+        0.8317521748640093,
+        0.8306838170334165,
+        0.8338971766572771,
+        0.8301806880257789,
+        0.8358383232412587,
+        0.8309625222402384,
+        0.8297092728093232,
+        0.8349924594155854,
+        0.8333001924624271,
+        0.8356953124321411,
+        0.8357845434006745
+      ],
+      "replicates": 64,
+      "seed": 260928603
+    }
+  },
+  "coverage": {
+    "correlation_cohort_count": 9289,
+    "cross_problem_synthesis_direct_multi_source_count": 2,
+    "effective_atlas_declaration_count": 163604,
+    "environment_direct_reference_pair_count": 80743,
+    "environment_public_corpus_constant_count": 18829,
+    "externally_addressable_atlas_declaration_count": 23096,
+    "formal_type_affordance_binder_count": 39824,
+    "formal_type_affordance_binder_name_count": 2650,
+    "formal_type_affordance_proposition_binder_count": 16588,
+    "formal_type_affordance_symbol_count": 3250,
+    "loaded_library_roots": [
+      "Erdos249257",
+      "ErdosProblems"
+    ],
+    "omitted_internal_reference_count": 38261,
+    "private_atlas_declarations_in_loaded_modules": 9931,
+    "private_helper_proof_lines_not_source_joined": 122893,
+    "pure_text_duplicate_candidate_group_count": 121,
+    "resolved_declarations_without_detected_body": 148,
+    "resolved_node_count": 16111,
+    "resolved_private_node_count": 0,
+    "resolved_theorem_or_lemma_count": 13499,
+    "source_resolved_direct_edge_count": 71878,
+    "source_resolved_formal_type_affordance_count": 13499,
+    "source_resolved_node_count": 16111,
+    "unresolved_atlas_declaration_count": 6985,
+    "unresolved_atlas_declaration_status_counts": {
+      "loaded_constant_owned_by_different_module": 1,
+      "not_present_in_loaded_root_environment": 6984
+    },
+    "unresolved_public_edge_count": 8865,
+    "zero_local_proof_line_nodes": 148
+  },
+  "cross_problem_reuse": [
+    {
+      "direct_problem_sources": [
+        "251",
+        "269"
+      ],
+      "expanded_proof_lines": 337,
+      "local_proof_lines": 16,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.RealDyadicTailRecurrence",
+        "ErdosProblems.Erdos251.RealIntegral",
+        "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+        "ErdosProblems.Erdos251.realTailShift",
+        "ErdosProblems.Erdos269.FarFromIntegers",
+        "ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far"
+      ],
+      "source_ref": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean:45",
+      "target": "ErdosProblems.Synthesis.DyadicShiftEscape.cofinal_separated_tailShifts_of_irrational"
+    },
+    {
+      "direct_problem_sources": [
+        "251",
+        "269"
+      ],
+      "expanded_proof_lines": 337,
+      "local_proof_lines": 21,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.RealDyadicTailRecurrence",
+        "ErdosProblems.Erdos251.RealIntegral",
+        "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+        "ErdosProblems.Erdos251.realTailShift",
+        "ErdosProblems.Erdos269.FarFromIntegers",
+        "ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le"
+      ],
+      "source_ref": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean:88",
+      "target": "ErdosProblems.Synthesis.DyadicShiftEscape.cofinal_third_separated_tailShifts_of_irrational"
+    }
+  ],
+  "definitions": {
+    "correlation_cohort": "Resolved theorem/lemma targets with positive direct users, proof lines, and description characters; rank ties use average ranks.",
+    "generated_ancestry": "Generated-certificate atlas flag appears anywhere in the value-reference closure; sensitivity removes the entire affected target. A separate conservative module-name heuristic also removes certificate-related modules and their descendants.",
+    "interestingness_proxy": "100 * observed_V_empty / observed_L_empty (Patel et al. Eq. 6 structure; not numerically comparable to their mathlib I0).",
+    "observed_L_empty": "Characters in atlas compact source signature of target plus compact signatures of distinct source-resolved definitions transitively reached through type-reference edges (bit 1). This approximates Eq. 5; the atlas truncates signatures at 800 characters and unresolved/external definitions are missing.",
+    "observed_V_empty": "Indexed proof-source subtotal: code-bearing proof lines of distinct source-resolved declarations reachable by value-reference (edge bit 2), including the target. This is neither a complete observed proof cost nor a shortest proof.",
+    "observed_V_given_P": "Traverse value references from target and stop at available premise vertices; shared ancestors reached by another path remain charged.",
+    "utility_proxy": "source-resolved direct value-reference user count * indexed proof-source subtotal (Patel et al. Eq. 7 structure).",
+    "utility_proxy_non_generated_users": "source-resolved non-generated direct value-reference user count * indexed proof-source subtotal."
+  },
+  "inputs": {
+    "declaration_atlas": "docs/declaration_atlas.json",
+    "declaration_atlas_sha256": "sha256:21ae09866bf2a494741aafb8609afc2052468f4e21be51d4370a52b0966eb148",
+    "dependency_index": "docs/lean_dependency_index.json",
+    "dependency_index_sha256": "sha256:741e4b9bda5aa8622a28f84fd096694002a5223fdf46c2571134c57f18642d23",
+    "lean_source_manifest_sha256": "sha256:52c70ae943ae72804b98380e3037bda00650168966da553c01ddf71c5b9a75b2",
+    "public_revision": "827cba0b890f12583195681e8ab59d86d81297cf",
+    "shared_source_fingerprint": "sha256:1b897074eae213c240ccca65032dcaae871c428917c60b10bbcc6d76a5043e35"
+  },
+  "limitations": [
+    "The indexed subtotal omits unresolved public edges, internal references, and atlas declarations not in the source-resolved graph. It can be smaller than a fully expanded version of this recorded proof; it is not a lower bound on shortest proof cost.",
+    "Private helpers remain separate declaration spans; their source lines are not silently charged to preceding public theorems, and inaccessible private dependency edges can understate proof cost.",
+    "Source spans, compact signatures, and direct references are proxies. Tactics, elaboration, definitions, and proof alternatives make these values incomparable to an ideal shortest proof.",
+    "Generated certificate ladders, thin wrapper declarations, and direct-user degree can dominate correlations; the negative controls and ablations must accompany any interpretation.",
+    "Identical compact source text is only a review candidate; namespaces, elaborated constants, implicit arguments, and Mathlib containment can change its meaning.",
+    "A high metric is neither novelty, significance, a new theorem, nor progress on an open problem."
+  ],
+  "paper": "https://arxiv.org/abs/2609.28603",
+  "schema": "plectis-patel-interestingness-profile/1",
+  "sensitivity": {
+    "also_remove_generated_direct_users": {
+      "n": 8019,
+      "spearman_rho": 0.8570421570463554
+    },
+    "certificate_majority_ancestry_in_cohort": 1159,
+    "generated_direct_value_edge_count": 19989,
+    "generated_target_count": 3008,
+    "remove_any_certificate_named_module_ancestry": {
+      "n": 6462,
+      "spearman_rho": 0.8372494398938276
+    },
+    "remove_generated_targets_and_any_generated_value_ancestry": {
+      "n": 8022,
+      "spearman_rho": 0.8561725379206221
+    },
+    "remove_local_wrappers_at_most_three_proof_lines": {
+      "n": 7745,
+      "spearman_rho": 0.7701115302548895
+    },
+    "remove_nodes_with_omitted_internal_refs_anywhere_in_value_ancestry": {
+      "n": 2417,
+      "spearman_rho": 0.6598620894692632
+    }
+  },
+  "stewardship_candidates": {
+    "certificate_ablation": [
+      {
+        "direct_non_generated_users": 411,
+        "direct_users": 2133,
+        "expanded_proof_lines": 19,
+        "generated_ancestry_fraction": 1.0,
+        "handle": "Erdos249257.TotientTailPeriodKiller.binaryPow_eq_pow",
+        "local_proof_lines": 15,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/DiagonalPincerCertificates.lean:42"
+      },
+      {
+        "direct_non_generated_users": 411,
+        "direct_users": 2133,
+        "expanded_proof_lines": 18,
+        "generated_ancestry_fraction": 1.0,
+        "handle": "Erdos249257.TotientTailPeriodKiller.binaryPow_zmod",
+        "local_proof_lines": 3,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/DiagonalPincerCertificates.lean:77"
+      },
+      {
+        "direct_non_generated_users": 411,
+        "direct_users": 2133,
+        "expanded_proof_lines": 15,
+        "generated_ancestry_fraction": 1.0,
+        "handle": "Erdos249257.TotientTailPeriodKiller.prime_dvd_factorBlocks",
+        "local_proof_lines": 13,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/DiagonalPincerCertificates.lean:118"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1722,
+        "expanded_proof_lines": 4,
+        "generated_ancestry_fraction": 1.0,
+        "handle": "Erdos249257.TotientTailPeriodKiller.natCast_zmod_ne_one_iff",
+        "local_proof_lines": 2,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/DiagonalPincerCertificates.lean:88"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1723,
+        "expanded_proof_lines": 2,
+        "generated_ancestry_fraction": 1.0,
+        "handle": "Erdos249257.TotientTailPeriodKiller.natCast_zmod_eq_one_iff",
+        "local_proof_lines": 2,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/DiagonalPincerCertificates.lean:83"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 2,
+        "expanded_proof_lines": 807,
+        "generated_ancestry_fraction": 0.9838909541511772,
+        "handle": "Erdos249257.concrete_generated_b2_F33_A7_p3_prime_witness",
+        "local_proof_lines": 794,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/GeneratedCertificates.lean:4606"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1,
+        "expanded_proof_lines": 824,
+        "generated_ancestry_fraction": 0.9733009708737864,
+        "handle": "Erdos249257.concrete_lifted_b2_F33_A623_from_A7_mul89_p3_prime_witness",
+        "local_proof_lines": 8,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/GeneratedCertificates.lean:26988"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1,
+        "expanded_proof_lines": 807,
+        "generated_ancestry_fraction": 0.9838909541511772,
+        "handle": "Erdos249257.concrete_generated_b2_F33_A14329_p11_prime_witness",
+        "local_proof_lines": 794,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/GeneratedCertificates.lean:1896"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1,
+        "expanded_proof_lines": 807,
+        "generated_ancestry_fraction": 0.9838909541511772,
+        "handle": "Erdos249257.concrete_generated_b2_F33_A14329_p3_prime_witness",
+        "local_proof_lines": 794,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/GeneratedCertificates.lean:1096"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1,
+        "expanded_proof_lines": 807,
+        "generated_ancestry_fraction": 0.9838909541511772,
+        "handle": "Erdos249257.concrete_generated_b2_F33_A161_p3_prime_witness",
+        "local_proof_lines": 794,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/GeneratedCertificates.lean:2782"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1,
+        "expanded_proof_lines": 807,
+        "generated_ancestry_fraction": 0.9838909541511772,
+        "handle": "Erdos249257.concrete_generated_b2_F33_A2047_p11_prime_witness",
+        "local_proof_lines": 794,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/GeneratedCertificates.lean:3719"
+      },
+      {
+        "direct_non_generated_users": 0,
+        "direct_users": 1,
+        "expanded_proof_lines": 253,
+        "generated_ancestry_fraction": 1.0,
+        "handle": "Erdos249257.TotientTailPeriodKiller.prime_lucas_89813600379287971",
+        "local_proof_lines": 36,
+        "reason": "At least half of observed expanded source lines lie in generated certificate ancestry.",
+        "required_next_validation": "Inspect the certificate manifest and theorem statement; compare ranking after generated ancestry is removed before assigning stewardship priority.",
+        "source_ref": "lean/Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5A.lean:16"
+      }
+    ],
+    "compression_reuse": [
+      {
+        "direct_non_generated_users": 7,
+        "direct_users": 7,
+        "expanded_proof_lines": 3667,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR16.actual_remainder_quadLogRateR16",
+        "local_proof_lines": 23,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/G02SourceRatesR16.lean:152"
+      },
+      {
+        "direct_non_generated_users": 5,
+        "direct_users": 5,
+        "expanded_proof_lines": 2434,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR16.actual_remainder_posR16",
+        "local_proof_lines": 6,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/G02SourceRatesR16.lean:143"
+      },
+      {
+        "direct_non_generated_users": 9,
+        "direct_users": 9,
+        "expanded_proof_lines": 1328,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_pos_of_lt_two_mul",
+        "local_proof_lines": 35,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/Erdos249257/TotientActualLcmOrbitArithmetic.lean:1703"
+      },
+      {
+        "direct_non_generated_users": 4,
+        "direct_users": 4,
+        "expanded_proof_lines": 2943,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR14.actual_pairHeight_log_upper_zero",
+        "local_proof_lines": 7,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/SourceHeightRateR14.lean:323"
+      },
+      {
+        "direct_non_generated_users": 5,
+        "direct_users": 5,
+        "expanded_proof_lines": 2258,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR16.actual_pairWidth_rateR16",
+        "local_proof_lines": 4,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/G02SourceRatesR16.lean:88"
+      },
+      {
+        "direct_non_generated_users": 11,
+        "direct_users": 11,
+        "expanded_proof_lines": 986,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut_nextRemainder",
+        "local_proof_lines": 6,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/Erdos249257/HalfCylinderConcreteSeamAdapter.lean:699"
+      },
+      {
+        "direct_non_generated_users": 2,
+        "direct_users": 2,
+        "expanded_proof_lines": 4938,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure",
+        "local_proof_lines": 5,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean:167"
+      },
+      {
+        "direct_non_generated_users": 2,
+        "direct_users": 2,
+        "expanded_proof_lines": 4835,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR17.rational_base_approximation_upper",
+        "local_proof_lines": 9,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean:141"
+      },
+      {
+        "direct_non_generated_users": 3,
+        "direct_users": 3,
+        "expanded_proof_lines": 3182,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "Erdos1041.Counterexample.s4_instance_critical",
+        "local_proof_lines": 9,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean:4275"
+      },
+      {
+        "direct_non_generated_users": 28,
+        "direct_users": 28,
+        "expanded_proof_lines": 318,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut_remainder",
+        "local_proof_lines": 7,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/Erdos249257/HalfCylinderConcreteSeamAdapter.lean:375"
+      },
+      {
+        "direct_non_generated_users": 4,
+        "direct_users": 4,
+        "expanded_proof_lines": 2211,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "ErdosProblems.Erdos1049.PaperR14.actual_cancelled_remainder_identity",
+        "local_proof_lines": 14,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/ErdosProblems/Erdos1049/ActualSourceRemainderR14.lean:76"
+      },
+      {
+        "direct_non_generated_users": 9,
+        "direct_users": 9,
+        "expanded_proof_lines": 970,
+        "generated_ancestry_fraction": 0.0,
+        "handle": "Erdos249257.seamGreedyWord_succ_eq_middleBranch",
+        "local_proof_lines": 22,
+        "reason": "High non-generated direct reuse times indexed proof-source subtotal, after excluding generated and certificate-named ancestry.",
+        "required_next_validation": "Read the theorem and each major consumer; check mathematical containment, actual proof compression, and whether a clearer shared lemma exists.",
+        "source_ref": "lean/Erdos249257/HalfCylinderSkippedEndpointClassifier.lean:306"
+      }
+    ],
+    "duplicate_review": [
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.G097_of_irr",
+          "DemandLedger.Bridge2.b2_G097_of_irrational",
+          "DemandLedger.Bridge3.b3_G097_of_irrational",
+          "DemandLedger.ClusterA.G097_of_irrational"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : G097"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.existsCertifiedKill_of_irr",
+          "DemandLedger.Bridge2.b2_exists_certifiedKill_of_irrational",
+          "DemandLedger.Bridge3.b3_exists_certifiedKill_of_irrational",
+          "DemandLedger.ClusterA.exists_certifiedKill_of_irrational"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "{h N : ℕ} (hh : 0 < h) (hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : ∃ L, certifiedKill h N L"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.G103_of_irr",
+          "DemandLedger.Bridge2.b2_G103_of_irrational",
+          "DemandLedger.Bridge3.b3_G103_of_irrational",
+          "DemandLedger.ClusterA.G103_of_irrational"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : G103"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "Erdos249257.greedyTwentyOne_unsafeSkip_consecutive_gcd_lt",
+          "Erdos249257.greedyTwentyOne_unsafeSkip_consecutive_gcd_lt_or_exception",
+          "Erdos249257.greedyTwentyOne_unsafeSkip_nextPrimitiveNumerator_gt",
+          "Erdos249257.greedyTwentyOne_unsafeSkip_nextResidual_twoStage"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(n : ℕ) (hdyadic : 1 / (2 : ℚ) ^ (n + 1) < greedyMersenneRemainderRat (1 / 21 : ℚ) n) (hskip : greedyMersenneRemainderRat (1 / 21 : ℚ) n < mersenneWeightRat (n + 1)) : let x"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.G100_of_irr",
+          "DemandLedger.Bridge2.b2_G100_of_irrational",
+          "DemandLedger.Bridge3.b3_G100_of_irrational",
+          "DemandLedger.ClusterA.G100_of_irrational"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : G100"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.irr_of_G103",
+          "DemandLedger.Bridge2.b2_irrational_of_G103",
+          "DemandLedger.Bridge3.b3_irrational_of_G103",
+          "DemandLedger.ClusterA.irrational_of_G103"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(h : G103) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.irr_of_G100",
+          "DemandLedger.Bridge2.b2_irrational_of_G100",
+          "DemandLedger.Bridge3.b3_irrational_of_G100",
+          "DemandLedger.ClusterA.irrational_of_G100"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(h : G100) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.irr_of_G097",
+          "DemandLedger.Bridge2.b2_irrational_of_G097",
+          "DemandLedger.Bridge3.b3_irrational_of_G097",
+          "DemandLedger.ClusterA.irrational_of_G097"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(h : G097) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "Erdos249257.two_adic_n0_2_exception_blocks_collapse",
+          "Erdos249257.two_adic_n0_2_exception_blocks_collapse_of_odd_rows",
+          "Erdos249257.two_adic_n0_2_exception_supplies_PrimeComponentWitness",
+          "Erdos249257.two_adic_n0_2_exception_supplies_PrimeComponentWitness_of_odd_rows"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "{ι : Type*} [DecidableEq ι] {s : Finset ι} {i0 : ι} {b K m L A p : Nat} {k : ι → Nat} {T : ι → Nat} (hb_gt_one : 1 < b) (hb_odd : Odd b) (hi0 : i0 ∈ s) (hi0_k : k i0 = 2) (hK_ne_ze"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.tailDiff_notMem_int_of_irr",
+          "DemandLedger.Bridge2.b2_tail_diff_notMem_int_of_irrational",
+          "DemandLedger.Bridge3.b3_tail_diff_notMem_int_of_irrational",
+          "DemandLedger.ClusterA.tail_diff_notMem_int_of_irrational"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "{h N : ℕ} (hh : 0 < h) (hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)"
+      },
+      {
+        "candidate_count": 4,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.existsStrictJump",
+          "DemandLedger.Bridge2.b2_exists_strict_jump",
+          "DemandLedger.ClusterA.exists_strict_jump",
+          "Erdos249257.DiagonalFreshLossBridge.exists_periodLcm_strict_jump_ge"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(t₀ : ℕ) : ∃ t, t₀ ≤ t ∧ periodLcm t < periodLcm (t + 1)"
+      },
+      {
+        "candidate_count": 3,
+        "candidate_handles": [
+          "DemandLedger.Bridge1.Bridge1.G096_of_irr",
+          "DemandLedger.Bridge2.b2_G096_of_irrational",
+          "DemandLedger.ClusterA.G096_of_irrational"
+        ],
+        "reason": "identical_compact_source_statement_after_declaration_name_removed",
+        "required_next_validation": "Elaborate full types under their namespaces and check existing Mathlib containment before any deduplication or upstream claim.",
+        "statement_excerpt": "(hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) : G096"
+      }
+    ]
+  },
+  "transfer_251_to_269": [
+    {
+      "available_direct_premises": [
+        "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+        "ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far"
+      ],
+      "indexed_source_line_subtotal_difference": 308,
+      "indexed_source_line_subtotal_with_two_premises_available": 29,
+      "indexed_source_line_subtotal_without_premises": 337,
+      "interpretation": "Restricted source-DAG subtotal accounting only; this is neither actual proof-length savings nor ideal shortest-proof Bellman equality.",
+      "local_bridge_lines": 16,
+      "source_ref": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean:45",
+      "target": "ErdosProblems.Synthesis.DyadicShiftEscape.cofinal_separated_tailShifts_of_irrational"
+    },
+    {
+      "available_direct_premises": [
+        "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+        "ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le"
+      ],
+      "indexed_source_line_subtotal_difference": 303,
+      "indexed_source_line_subtotal_with_two_premises_available": 34,
+      "indexed_source_line_subtotal_without_premises": 337,
+      "interpretation": "Restricted source-DAG subtotal accounting only; this is neither actual proof-length savings nor ideal shortest-proof Bellman equality.",
+      "local_bridge_lines": 21,
+      "source_ref": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean:88",
+      "target": "ErdosProblems.Synthesis.DyadicShiftEscape.cofinal_third_separated_tailShifts_of_irrational"
+    }
+  ]
+}
