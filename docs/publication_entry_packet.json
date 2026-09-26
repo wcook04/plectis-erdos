@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:556b565dddc99a98010ae005a3d10942c734c8e757895b6a60bddb758ec18744",
+    "docs/claims.json": "sha256:a374adbe018bace9383104164632ec12f97fa7fd0a2166057a54c3b4d4029478",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
-    "docs/publication_contract.json": "sha256:80a1c1a88f29751e21371fca883a1b1665f5af230be198551b4bc43c8c284d6f",
+    "docs/publication_contract.json": "sha256:a8ff55df71c66a8cc916f518f7689ed52b84d577a782ed189038fc8e26db5543",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:512f503bf65007039a08597063accb56f3e7a19d129b0c376eea8d0d3fc95cff",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1067,
+        "line": 1183,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1083,
+        "line": 1199,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "bounded returns of the scaled remainder"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1092,
+        "line": 1208,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1103,
+        "line": 1219,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
