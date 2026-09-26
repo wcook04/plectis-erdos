@@ -12,12 +12,16 @@ strongest are these.
   primes 2, 3 and 5 came first from the replay and is checked in Lean; the
   general case came from restating the sum as a Cantor series whose bases
   follow the cutting sequence of a linear flow on a torus, comparing two tails
-  at a close return of the flow, and was refereed by a second reader.
+  at a close return of the flow, and was refereed by a second reader. For two
+  primes irrationality already follows from Hecke–Mahler transcendence
+  (Loxton and van der Poorten 1977; Bugeaud and Laurent 2023).
   Evidence: [`../erdos269/distinct_height/`](../erdos269/distinct_height/).
 - For coprime integers a > b ≥ 1 and every infinite divisibility chain
   n₁ | n₂ | ⋯, the Lambert subsum Σ 1/((a/b)^{n_j} − 1) is transcendental.
   This settles the first open case the synthesis paper recorded (base 4/3,
   ratios 2 with infinitely many 3s) and removes its hypothesis a² > b³.
+  Integer bases already follow from Roth's theorem and Mahler's method; the
+  new cases are non-integer bases with bounded aperiodic ratio words.
   Evidence: [`../chain_transcendence/`](../chain_transcendence/).
 
 Both are ordinary proofs pending specialist review. The first relies on
@@ -117,7 +121,10 @@ factors of Fermat numbers give, by the Chinese remainder theorem, blocks in
 which 2^j divides a_{N+j} for every j ≤ L, and Erdős's argument then shows
 that Σ a_n 2^{−n} is rational exactly when a_n vanishes for all large n. So
 the series is irrational whenever κ(3^k) ≥ 2 infinitely often, which extends
-the short paper's bounded-residue theorem to slowly growing moduli. This is
+the short paper's bounded-residue theorem to slowly growing moduli. A later
+search found that Theorem 3 of Kaneko, Suzuki and Tachiya
+([arXiv:2601.20743](https://arxiv.org/abs/2601.20743)) also implies this
+statement, through a density bound for n with small 2-adic valuation of φ(n). This is
 an ordinary proof from classical ingredients; it waits for propagation into
 the Problem 249 long record, whose owner is working on that paper now.
 
