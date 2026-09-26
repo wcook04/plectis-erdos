@@ -586,6 +586,120 @@ class Graph:
         return node
 
 
+def dependency_handles(root: Path) -> dict[str, str]:
+    """source_ref (lean/<module>:<line>) -> fully qualified declaration name."""
+    index = load_json(root / "docs" / "lean_dependency_index.json")
+    out: dict[str, str] = {}
+    if not index:
+        return out
+    for node in index.get("nodes", []):
+        if node.get("source_ref") and node.get("handle"):
+            out[node["source_ref"]] = node["handle"]
+    return out
+
+
+def semantic_nodes(root: Path) -> list[dict[str, Any]]:
+    path = root / "docs" / "semantic_corpus.json.gz"
+    if not path.is_file():
+        return []
+    with gzip.open(path, "rt", encoding="utf-8") as handle:
+        return json.load(handle).get("statement_nodes", [])
+
+
+def kernel_status(graph: "Graph", name: str) -> str | None:
+    theorem = graph.theorems.get(name)
+    if theorem is None:
+        return None
+    closed = theorem.get("hypotheses", [])
+    if not closed:
+        return "unconditional"
+    if any(k not in graph.supplied for k in closed):
+        return "conditional_on_open"
+    return "conditional_on_supplied"
+
+
+def compositions(graph: "Graph", papers: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Statements the graph supplies only by chaining a conditional theorem
+    with hypotheses that other theorems prove: the corpus holds every piece,
+    and no single declaration states the composed result."""
+    direct = {head for (head, _, _, residuals) in graph.reductions if not residuals}
+    out = []
+    for key in sorted(graph.supplied):
+        if key in direct:
+            continue
+        index = graph.witness.get(key, -1)
+        if index < 0:
+            continue
+        head, producer, reading, residuals = graph.reductions[index]
+        suppliers = []
+        for residual in residuals:
+            w = graph.witness.get(residual, -1)
+            suppliers.append({"statement": residual, "type": graph.statements.get(residual, {}).get("type"),
+                              "supplied_by": graph.reductions[w][1] if w >= 0 else None})
+        out.append({
+            "statement": key,
+            "type": graph.statements[key].get("type"),
+            "via": producer,
+            "reading": reading,
+            "hypotheses_supplied_by": suppliers,
+            "paper_rows_of_conditional_theorem": papers.get(producer, []),
+        })
+    out.sort(key=lambda row: (not row["paper_rows_of_conditional_theorem"], row["via"]))
+    return out
+
+
+def audit_authored_layers(graph: "Graph", root: Path) -> dict[str, Any]:
+    """Check the authored navigation layers against the kernel graph."""
+    handles = dependency_handles(root)
+    rows = []
+    counts: dict[str, int] = defaultdict(int)
+    for node in semantic_nodes(root):
+        label = node.get("logical_class")
+        if label in (None, "infrastructure", "finite_instance", "generated_certificate_instance"):
+            continue
+        statuses = []
+        for evidence in node.get("evidence", []) or []:
+            handle = handles.get(f"lean/{evidence.get('module')}:{evidence.get('line')}")
+            status = kernel_status(graph, handle) if handle else None
+            if status:
+                statuses.append((handle, status))
+        if not statuses:
+            counts["unresolved_evidence"] += 1
+            continue
+        if label == "conditional_implication":
+            if all(status != "conditional_on_open" for _, status in statuses):
+                verdict = "conditional_label_but_no_open_kernel_hypothesis"
+            else:
+                verdict = "consistent"
+        elif label == "unconditional_object_theorem":
+            if any(status == "conditional_on_open" for _, status in statuses):
+                verdict = "unconditional_label_but_open_kernel_hypothesis"
+            else:
+                verdict = "consistent"
+        else:
+            verdict = "not_audited_class"
+        counts[f"{label}:{verdict}"] += 1
+        if verdict not in ("consistent", "not_audited_class"):
+            rows.append({"node": node.get("id"), "logical_class": label, "verdict": verdict,
+                         "declarations": [{"name": h, "kernel_status": st} for h, st in statuses]})
+    frontier = load_json(root / "docs" / "semantic" / "frontier.json") or {}
+    antecedent_rows = []
+    for antecedent in frontier.get("open_antecedents", []) or []:
+        constants = set(antecedent.get("lean_constants") or [])
+        if not constants:
+            continue
+        hits = [k for k, n in graph.statements.items()
+                if any(c in constants or any(c.endswith("." + x) for x in constants) for c in n.get("constants", ()))]
+        statuses = sorted({"supplied" if k in graph.supplied else "open" for k in hits})
+        antecedent_rows.append({"id": antecedent.get("id"), "lean_constants": sorted(constants),
+                                "kernel_statements": len(hits), "kernel_statuses": statuses,
+                                "verdict": ("authored_open_but_kernel_supplied" if statuses == ["supplied"]
+                                            else "consistent" if "open" in statuses else "not_found_in_graph")})
+    return {"semantic_logical_class": {"counts": dict(sorted(counts.items())), "disagreements": rows[:200],
+                                       "disagreement_count": len(rows)},
+            "frontier_open_antecedents": antecedent_rows}
+
+
 # --------------------------------------------------------------------------
 # Projection
 
@@ -695,6 +809,8 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         }
 
     conditional = [name for name, t in graph.theorems.items() if t["hypotheses"]]
+    composed = compositions(graph, papers)
+    audit = audit_authored_layers(graph, root)
     summary = {
         "theorems": len(graph.theorems),
         "conditional_arguments": len(conditional),
@@ -710,6 +826,10 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         "candidate_caps": len(graph.caps),
         "export_errors": len(graph.errors),
         "export_truncated": bool(graph.summary.get("truncated")),
+        "compositions": len(composed),
+        "compositions_of_paper_cited_conditional_theorems": sum(
+            1 for row in composed if row["paper_rows_of_conditional_theorem"]),
+        "semantic_label_disagreements": audit["semantic_logical_class"]["disagreement_count"],
     }
     source = {
         "export_digest": file_digest(export_path),
@@ -735,10 +855,14 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
             "bundle": "a minimal set of open statements whose supply supplies the statement",
             "leverage": "number of open statements supplied once the statement is supplied",
             "sink": "an open statement with a reduction into it that implies nothing outside its own class",
+            "composition": "a statement supplied only by chaining a conditional theorem with hypotheses other theorems prove",
+            "audit": "authored logical classes and open antecedents checked against the kernel graph",
         },
         "source": source,
         "summary": summary,
         "problems": per_problem,
+        "compositions": composed[:LIST_LIMIT * 3],
+        "audit": audit,
     }
     graph_payload = {
         "schema": GRAPH_SCHEMA,
