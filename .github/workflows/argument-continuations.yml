@@ -68,6 +68,8 @@ jobs:
 
       # Restore only. Same key shape as lean.yml and lean-cache-warm.yml so the
       # newest main entry seeds this run; nothing here writes a cache back.
+      # Larger PR caches can evict main's `lake-` cache; main's coverage cache
+      # also holds the supported roots.
       - name: Restore project Lean cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -75,6 +77,7 @@ jobs:
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
             lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+            lake-coverage-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
 
       - name: Install pinned Lean toolchain
         env:
