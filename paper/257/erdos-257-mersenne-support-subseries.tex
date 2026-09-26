@@ -393,18 +393,22 @@ weighted mass exactly when $P$ meets $C$.  The same lower estimate
 with $Q=D_C$ shows that each layer contributes at least $1/(2D_C)$
 to the ordinary reciprocal sum.
 
-For every inclusion-maximal forbidden set $M\notin\mathcal U$, take
+For every forbidden set $M\subseteq E$ with $M\notin\mathcal U$, take
 $C$ to be its complement in $E$, and let $A_{\mathcal U}$ be the union of these
-finitely many $B_C$.  Each clause $C$ is nonempty.  A subset of $E$
+finitely many $B_C$.  Each clause $C$ is nonempty.  (Keeping only the
+inclusion-maximal forbidden sets gives a smaller host with the same
+classification.)  A subset of $E$
 belongs to $\mathcal U$ exactly when it meets every such $C$;
 nonnegative weights make summability on the union equivalent to
 summability on each block.  This proves~\eqref{eq:finite-witness-rule}
 and reciprocal divergence.  The finite Boolean correspondence is
 standard~\cite[Section~2]{sedaghatstephenchindelevitch}; the arithmetic
 work here is the block comparison.  Since $E\in\mathcal U$, the binary weighted
-criterion with $P=E$ proves the claimed irrationality.  For example,
-the three clauses $\{2,3\}$, $\{2,5\}$, $\{3,5\}$ give precisely the
-three minimal witnesses $\{2,3\}$, $\{2,5\}$, $\{3,5\}$.
+criterion with $P=E$ proves the claimed irrationality.  For example, when
+$\mathcal U$ consists of the subsets of $E=\{2,3,5\}$ with at least two
+elements, the maximal forbidden sets give the three clauses $\{2,3\}$,
+$\{2,5\}$, $\{3,5\}$, and the minimal witnesses are precisely
+$\{2,3\}$, $\{2,5\}$, $\{3,5\}$.
 The construction and its comparison are ordinary proofs; the Lean
 result used here is the conditional weighted criterion, not a
 formalisation of this particular support.  The novelty of the arithmetic

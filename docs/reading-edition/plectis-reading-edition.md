@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `d2310692c818b2cd`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `995749810836c8c8`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -2362,6 +2362,33 @@ The last bound uses $`2^{2^k}-1\ge2^{2^k-1}`$ and $`2^k\ge2k`$. The weighted mas
 
 Both proofs select a term no larger than a finite average. For a related selection step on arithmetic progressions, see Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. The sparse-coefficient criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\] do not apply directly to $`c_A`$: for nonempty $`A`$, it is positive on every multiple of $`\min A`$. The companion, Section 1.2, gives the counting argument and distinguishes their remote-tail average from the displacement used here.
 
+<a id="erdos-257-mersenne-support-subseries--sec:finite-witness-rules"></a>
+
+#### Finite rules for prime witnesses
+
+The weighted condition can encode more than a single required prime. Let $`E`$ be a finite nonempty set of primes, and let $`\mathcal U`$ be a nonempty proper upward-closed family of subsets of $`E`$. We construct an infinite support $`A_{\mathcal U}`$ such that, for every integer $`b\ge2`$ and every finite prime set $`P`$ (including $`P=\varnothing`$, with $`h(a)=1`$),
+``` math
+\begin{equation}
+\label{eq:finite-witness-rule}
+ W_{b,P}(A_{\mathcal U})<\infty
+ \quad\Longleftrightarrow\quad P\cap E\in\mathcal U.
+\end{equation}
+```
+Its ordinary reciprocal sum diverges, yet every infinite subset has irrational $`X_B(b)`$ at every integer base $`b\ge2`$.
+
+Here is the construction and proof. For each nonempty $`C\subseteq E`$, put $`D_C=\prod_{p\in C}p`$ and
+``` math
+B_C=\{D_C^km:k\ge1,\ 1\le m\le2^{D_C^k},\ \gcd(m,D_C)=1\}.
+```
+Write $`g=\prod_{p\in C\cap P}p`$, with an empty product equal to $`1`$. The $`k`$th layer has a fixed $`C`$-part $`D_C^k`$. Its weighted mass is bounded above and below, with positive constants depending on $`C\cup P`$, by $`g^k/(b^{g^k}-1)`$. For the upper bound, the $`P`$-part of $`D_C^km`$ is $`g^ku`$; the ratio of its weight to the weight at $`g^k`$ is $`u/(1+b^{g^k}+\cdots+b^{(u-1)g^k})\le1`$, and $`\sum_{m\le2^r}1/m\le2r`$. For the lower bound, keep only $`m\equiv1\pmod Q`$, where $`Q=\prod_{p\in C\cup P}p`$. These cofactors have $`P`$-part $`g^k`$. Write $`H_n=\sum_{j=1}^n1/j`$. Grouping $`1,\ldots,2^r`$ into blocks of at most $`Q`$ integers gives
+``` math
+\sum_{\substack{m\le2^r\\m\equiv1\pmod Q}}\frac1m
+ \ge\frac{H_{2^r}}Q\ge\frac r{2Q}.
+```
+Take $`r=D_C^k`$. If $`g=1`$, the comparison terms all equal $`1/(b-1)`$; if $`g\ge2`$, they are summable because the ratio of consecutive terms is at most $`g/b^{g^k}\to0`$. Thus $`B_C`$ has finite weighted mass exactly when $`P`$ meets $`C`$. The same lower estimate with $`Q=D_C`$ shows that each layer contributes at least $`1/(2D_C)`$ to the ordinary reciprocal sum.
+
+For every inclusion-maximal forbidden set $`M\notin\mathcal U`$, take $`C`$ to be its complement in $`E`$, and let $`A_{\mathcal U}`$ be the union of these finitely many $`B_C`$. Each clause $`C`$ is nonempty. A subset of $`E`$ belongs to $`\mathcal U`$ exactly when it meets every such $`C`$; nonnegative weights make summability on the union equivalent to summability on each block. This proves <a href="#erdos-257-mersenne-support-subseries--eq:finite-witness-rule" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:finite-witness-rule">[eq:finite-witness-rule]</a> and reciprocal divergence. The finite Boolean correspondence is standard \[sedaghatstephenchindelevitch, Section 2\]; the arithmetic work here is the block comparison. Since $`E\in\mathcal U`$, the binary weighted criterion with $`P=E`$ proves the claimed irrationality. For example, the three clauses $`\{2,3\}`$, $`\{2,5\}`$, $`\{3,5\}`$ give precisely the three minimal witnesses $`\{2,3\}`$, $`\{2,5\}`$, $`\{3,5\}`$. The construction and its comparison are ordinary proofs; the Lean result used here is the conditional weighted criterion, not a formalisation of this particular support. The novelty of the arithmetic realisation has not yet been assessed.
+
 <a id="erdos-257-mersenne-support-subseries--sec:common-kernel"></a>
 
 #### A common finite average for the extensions
@@ -2622,13 +2649,13 @@ For comparison, Tao–Teräväinen prove the full-prime case at base $`2`$ \[ta
 
 <a id="erdos-257-mersenne-support-subseries--sec:period"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) (80 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) (83 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
 <div class="thebibliography">
 
-99 D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. 175 (2025), no. 2, 572–608, [DOI](https://doi.org/10.1007/s10474-025-01528-0). Page numbers refer to arXiv:2406.17593v4. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. 12 (1948), 63–66. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`257`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean), Lean source at commit `f776d2f`, 2025, accessed 13 September 2026.
+99 N. Sedaghat, T. Stephen, and L. Chindelevitch, [*Speeding up dualization in the Fredman–Khachiyan Algorithm B*](https://doi.org/10.4230/LIPIcs.SEA.2018.6), 17th International Symposium on Experimental Algorithms (SEA 2018), LIPIcs 103 (2018), 6:1–6:13. D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. 175 (2025), no. 2, 572–608, [DOI](https://doi.org/10.1007/s10474-025-01528-0). Page numbers refer to arXiv:2406.17593v4. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. 12 (1948), 63–66. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`257`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean), Lean source at commit `f776d2f`, 2025, accessed 13 September 2026.
 
 P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969); [five-page scan](https://www.renyi.hu/~p_erdos/1969-09.pdf). P. Erdős, *Some problems and results on the irrationality of the sum of infinite series*, J. Math. Sci. 10 (1975), 1–7. K. Barreto, J. Kang, S.-H. Kim, V. Kovač, and S. Zhang, [*Irrationality of rapidly converging series: a problem of Erdős and Graham*](https://arxiv.org/abs/2601.21442v3), arXiv:2601.21442v3 (2026), to appear in Bull. London Math. Soc. Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013). F. Luca and Y. Tachiya, [*Linear independence results for the values of divisor functions series*](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf), RIMS Kôkyûroku No. 2014 (2017), 138–150. Theorem A restates their periodic-sequence theorem ([DOI](https://doi.org/10.1142/S1793042113501121)). F. Luca and Y. Tachiya, *Irrationality of Lambert series associated with a periodic sequence*, International Journal of Number Theory **10** (2014), no. 3, 623–636. [doi:10.1142/S1793042113501121](https://doi.org/10.1142/S1793042113501121).
 
