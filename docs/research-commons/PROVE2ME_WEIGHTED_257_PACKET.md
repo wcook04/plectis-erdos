@@ -47,6 +47,15 @@ It combines the fixed-base hereditary criterion with the all-base conclusion
 from a base-two weighted witness. It is a new composition of two accepted
 Lean declarations, not a declaration copied verbatim from this checkout.
 
+The wrapper is the main item of the
+[#257 ResearchPaper mission](https://prove2.me/missions/Weighted_support_criteria_for_reciprocal_Mersenne_subseries_%28Erd%C5%91s_%23257%29)
+on Prove2Me, which a platform moderator approved on 26 September 2026. Its
+four items are the weighted definitions, the fixed-base hereditary theorem,
+the binary-host all-base theorem and this wrapper. The mission is complete.
+Its discussion is the place to propose a support family, a prime-set
+certificate or an obstruction to one, or a correction. The support-class
+comparison later in this packet is outside the mission.
+
 **Reading the proof.** Prove2Me displays its formal challenge statement with
 `:= by sorry` even when the theorem is marked Proved. The accepted Solution is
 separate under **View graph → Solutions & Sketches**; the graph route asks
