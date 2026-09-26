@@ -4148,7 +4148,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:72e5aa201e3f0d942b09ad10b637aedc6100ba0b7f4a49b2db483b9af4cc42ad",
+      "source_sha256": "sha256:257ba6b57ef2bc5d8db6066b2f7a5ea1cc8f9640c0756e7c8bc9bc5116909483",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -4213,103 +4213,103 @@
           "level": 2,
           "id": "combining-the-two-support-criteria",
           "title": "Combining the two support criteria",
-          "line": 426
+          "line": 427
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 493
+          "line": 494
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 519
+          "line": 520
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Limits of the small-displacement criterion",
-          "line": 534
+          "line": 535
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 552
+          "line": 553
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "Greedy membership and an integer recurrence",
-          "line": 568
+          "line": 569
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 635
+          "line": 636
         },
         {
           "level": 4,
           "id": "integer-quotients-for-121.",
           "title": "Integer quotients for 1/21.",
-          "line": 641
+          "line": 642
         },
         {
           "level": 4,
           "id": "approximation-to-12-by-finite-supports.",
           "title": "Approximation to 1/2 by finite supports.",
-          "line": 691
+          "line": 692
         },
         {
           "level": 4,
           "id": "finite-families-with-a-shared-prefix.",
           "title": "Finite families with a shared prefix.",
-          "line": 731
+          "line": 732
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 797
+          "line": 798
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 801
+          "line": 802
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 816
+          "line": 817
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Sources",
-          "line": 829
+          "line": 830
         },
         {
           "level": 4,
           "id": "reproducing-the-weighted-theorem.",
           "title": "Reproducing the weighted theorem.",
-          "line": 837
+          "line": 838
         },
         {
           "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 850
+          "line": 851
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 856
+          "line": 857
         }
       ],
       "citations_rendered": 20,
@@ -4338,7 +4338,7 @@
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 635
+            "line": 636
           }
         ],
         "unresolved_count": 0
@@ -4381,7 +4381,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:aeb9e69e5fef25083224797bfcf7c8e949a94c954cacc6fe3da89298619f4d48",
+      "source_sha256": "sha256:781868f903af0624baed4f556a46eccb225f88c087adcd04ce488e9606204131",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7667,7 +7667,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:e6d9dd020d896768268b64ba4bff3737e85a21b8ff4a4416f8a30febc5b2cdbd",
+      "source_sha256": "sha256:d0c3108758a88c8f7353d7871943120828eedb2880e1d828e42b42cbc5165bf8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7845,7 +7845,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:271098415d9494df1cfc86c8febf3769b49e8e24c0a4f9da7715b4a1862c2c0c",
+      "source_sha256": "sha256:d4ba169276995836b7dc914342dd9ba9371fa22e98a45dcb53c95a85cb78f133",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,

@@ -44,7 +44,7 @@ For $`P=\{2\}`$, the summand in <a href="#eq:weighted-fixed-base" data-referenc
 For every finite $`P`$, full support and all odd exponents fail the condition: the integers coprime to $`2\prod_{p\in P}p`$ have $`h(a)=1`$ and divergent reciprocal sum, by inclusion–exclusion. The full set of primes fails too, since the primes outside $`P`$ contribute $`1/[a(b-1)]`$. These are limitations of this criterion, not assertions of rationality. By contrast, $`h/(2^h-1)\le1`$ shows that it includes every reciprocal-summable support.
 
 <div id="res:reciprocal-support" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-reciprocal-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-reciprocal-support-comparator">Comparator</a></p>
 
 **Theorem 2** (reciprocal-summable supports). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
 ``` math
@@ -277,7 +277,7 @@ For the last inequality, use $`(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}`$ an
 For a finite set $`F`$, write $`f_F(n)=\#\{a\in F:a\mid n\}`$. We bound a fractional power of this count by a nonnegative sum over divisors of $`n`$. The inequality must hold for every positive integer $`n`$, not just on average.
 
 <div id="thm:variable-fractional-cover" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#thm-variable-fractional-cover-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#thm-variable-fractional-cover-comparator">Comparator</a></p>
 
 **Theorem 4** (a summable divisor-cover criterion). *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 ``` math
@@ -329,7 +329,7 @@ The fixed rational lattice excludes rationality at base two. For $`0\le r<d`$, t
 
 </div>
 
-The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: replace $`2^{j\alpha_j}`$ in <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> by $`\eta_j^{-\alpha_j}`$ and take $`t_j=\varepsilon\eta_j`$. The stronger condition $`\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty`$ implies <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>, since each of its summands is the corresponding summand of <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> multiplied by $`2^{\alpha_j}/(2^{\alpha_j}-1)>1`$. This proves inclusion of the hypotheses for a given cover, not strict inclusion of the resulting support classes after optimisation over all covers. No separating construction is proved here.
+The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: replace $`2^{j\alpha_j}`$ in <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> by $`\eta_j^{-\alpha_j}`$ and take $`t_j=\varepsilon\eta_j`$. The stronger condition $`\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty`$ implies <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>, since each of its summands is the corresponding summand of <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> multiplied by $`2^{\alpha_j}/(2^{\alpha_j}-1)>1`$. This proves inclusion of the hypotheses for a given cover; after optimisation over all covers, the inclusion of support classes is strict by a [Lean proof](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean#L41).
 
 <a id="what-every-positive-cover-must-pay"></a>
 
@@ -371,6 +371,7 @@ In particular, $`1-1/S\le qK_*(F(q,P))/(eS)\le1`$. Thus $`K_*(F(q,P))\sim eS/q`$
 The logarithmic lower bound is not a converse: replacing a fractional majorant by a logarithmic one need not control averages along the multiples of a prescribed modulus. A counterexample and the distinct bound for ordinary initial intervals are proved in the companion, Section 13; those proofs were first worked out in an AI-assisted note of 17 September 2026. The three results of that section also have Lean proofs, each compared independently by Comparator; the ordinary proofs have not had independent human review. Those arguments concern finite functionals. The next construction uses the divisor cubes to compare the infinite-support criteria. Write $`\mathcal W_b`$ for the supports satisfying the finite-prime weighted hypothesis at base $`b`$, and $`\mathcal C`$ for supports admitting a strengthened positive cover as in <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>.
 
 <div id="res:weighted-cover-incomparability" class="proposition">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-cover-incomparability">Lean</a></p>
 
 **Proposition 5** (incomparable support criteria). *There are infinite positive supports $`E`$ and $`V`$ such that
 ``` math
@@ -479,7 +480,7 @@ The combination is strict as a comparison of sufficient criteria.
 
 </div>
 
-The mixed implication has a Lean declaration in the public corpus. Proposition <a href="#res:weighted-cover-incomparability" data-reference-type="ref" data-reference="res:weighted-cover-incomparability">5</a> and this corollary have ordinary proofs here, but these particular constructions have not been formalised in Lean or independently reviewed. The weighted-only construction follows the first-logarithmic-moment method; the bounded-mass reverse construction was developed in an AI-assisted continuation on 25 September 2026. No historical priority claim is made for the comparison.
+The mixed implication and Proposition <a href="#res:weighted-cover-incomparability" data-reference-type="ref" data-reference="res:weighted-cover-incomparability">5</a> have Lean proofs, the latter with a squarefree divisor-cube host as $`V`$. The printed construction and this corollary have ordinary proofs, and none has been independently reviewed. The weighted-only construction follows the first-logarithmic-moment method; the bounded-mass reverse construction was developed in an AI-assisted continuation on 25 September 2026. No historical priority claim is made for the comparison.
 
 Even the fixed-dyadic cover class in (V) is closed under finite unions. For two covers, interleave their $`j`$th frames at positions $`2j-1,2j`$, halve each exponent, and retain the nonnegative coefficient columns. The majorants persist since $`f^{\alpha/2}\le f^\alpha`$ for every nonnegative integer $`f`$. Writing $`T_j=C_j2^{j\alpha_j}/(2^{\alpha_j}-1)`$ for an old column, its new cost is at most
 ``` math
@@ -584,7 +585,7 @@ Thus $`P_N=\sum_{j=1}^N2^{N-j}c_x(j)`$ is the integer truncation of the Lambert 
 ```
 
 <div id="res:general-repair" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-general-repair-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-general-repair-comparator">Comparator</a></p>
 
 **Theorem 9** (membership and nonincreasing integer remainders). *For every real $`x\ge0`$, the following are equivalent:
 ``` math
@@ -699,7 +700,7 @@ K_A(m)=2^{m-1}-\sum_{j=2}^{m}2^{m-j}c_A(j).
 It measures the error in the truncated divisor-coefficient sum, after multiplication by $`2^m`$. In particular, $`K_A(1)=1`$ and $`K_A(m+1)=2K_A(m)-c_A(m+1)`$.
 
 <div id="res:terminalhalf" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L51">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-terminalhalf-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L51">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-terminalhalf-comparator">Comparator</a></p>
 
 **Theorem 11** (finite approximations with vanishing scaled error). *Suppose there are integers $`M_j\ge1`$ tending to infinity and sets $`A_j\subseteq\{2,\ldots,M_j\}`$ such that
 ``` math
@@ -745,7 +746,7 @@ Require that all the $`A_k`$ agree on $`\{1,\ldots,K\}`$ and that some integer $
 Thus the binary suffixes have consecutive values $`E-k`$, while the terminal carry ranges through the entire permitted interval. This is substantially more data than one finite approximation to $`1/2`$.
 
 <div id="res:cylinderhalf" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-cylinderhalf-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d53aeecbcf2dbebe03b57c170925e4be033da959/evidence/erdos-257-mersenne-support-subseries.md#res-cylinderhalf-comparator">Comparator</a></p>
 
 **Theorem 12** (unbounded shared-prefix families imply a half-support). *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 
