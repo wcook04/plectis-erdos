@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:6b88a1c454bd128d0eaeadf00156a02e6a80111c037a1e595d43698b7d2ce3d0",
+    "docs/claims.json": "sha256:17665455143a291dc44c76708fcfff22226120d076d706a68e9390994fb5f9cb",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
-    "docs/publication_contract.json": "sha256:be2013848989fadd7ea559a58c3a86ff5cc4dc7b3f78fdf5c67a519573732ca9",
+    "docs/publication_contract.json": "sha256:ae8b9b9ee62c654465829055684293e9335d4814cfd3b0a6976912cd19ae6518",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:e1d4f2fa2e6a1e99b49947a09d3242aee17dfa928b009b404d8e4a38035ccac3",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:6e0d0de3fea04794095fef82b4399431bf5c766ea81b3ac2bae2c1a942d97734",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:01027ecd2d61ab01077eb25e28d37d78353674fcbcb6cb914fea7403f0abe865",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:1080309d215b537b68fe931191da7b8e55e82e2f238fddbb6ddaa5b5f4d34114",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1067,
+        "line": 1183,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1083,
+        "line": 1199,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "bounded returns of the scaled remainder"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1092,
+        "line": 1208,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1103,
+        "line": 1219,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },

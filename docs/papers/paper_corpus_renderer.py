@@ -97,9 +97,19 @@ def _render_citation(node: dict[str, Any]) -> dict[str, Any]:
 class _AstWalk:
     """One pass that fixes citations, anchors headers, and indexes sections."""
 
-    def __init__(self) -> None:
+    _SHARED_STATEMENTS = {
+        "theorem", "proposition", "lemma", "corollary", "definition", "example", "problem",
+    }
+
+    def __init__(self, *, section_numbered_statements: bool = False,
+                 front_title_id: str = "") -> None:
         self.sections: list[dict[str, Any]] = []
         self.citations_rendered = 0
+        self.section_numbered_statements = section_numbered_statements
+        self.front_title_id = front_title_id
+        self.section_number = 0
+        self.statement_number = 0
+        self.statement_numbers: dict[str, str] = {}
 
     def blocks(self, blocks: list[Any]) -> list[Any]:
         out: list[Any] = []
@@ -108,6 +118,11 @@ class _AstWalk:
                 level, attr, inlines = block["c"]
                 anchor = attr[0]
                 title = _stringify(inlines).strip()
+                if (self.section_numbered_statements and level == 1
+                        and anchor != self.front_title_id
+                        and "unnumbered" not in attr[1]):
+                    self.section_number += 1
+                    self.statement_number = 0
                 if anchor:
                     # A raw HTML anchor survives into GFM, where pandoc's header
                     # attributes do not. Without it the paper's own \label ids --
@@ -115,6 +130,19 @@ class _AstWalk:
                     # exist in the generated file at all.
                     out.append({"t": "RawBlock", "c": ["html", f'<a id="{anchor}"></a>']})
                 self.sections.append({"level": level, "id": anchor, "title": title})
+            if (self.section_numbered_statements and isinstance(block, dict)
+                    and block.get("t") == "Div"):
+                attr, body = block["c"]
+                if attr[1] and attr[1][0] in self._SHARED_STATEMENTS:
+                    self.statement_number += 1
+                    number = f"{self.section_number}.{self.statement_number}"
+                    first = body[0]["c"][0]["c"]
+                    if (len(first) < 3 or first[2].get("t") != "Str"
+                            or not re.fullmatch(r"\d+", first[2].get("c", ""))):
+                        raise RuntimeError(f"cannot number statement {attr[0]}")
+                    first[2]["c"] = number
+                    if attr[0]:
+                        self.statement_numbers[attr[0]] = number
             out.append(self.node(block))
         return out
 
@@ -127,6 +155,63 @@ class _AstWalk:
             self.citations_rendered += 1
             return _render_citation(node)
         return {k: (self.node(v) if k == "c" else v) for k, v in node.items()}
+
+
+def _tagged_equation_numbers(node: Any) -> dict[str, str]:
+    """Read author-supplied display tags; do not guess TeX's equation counter."""
+    numbers: dict[str, str] = {}
+    def visit(value: Any) -> None:
+        if isinstance(value, list):
+            for item in value:
+                visit(item)
+        elif isinstance(value, dict):
+            if value.get("t") == "Math" and isinstance(value.get("c"), list):
+                body = value["c"][1]
+                if isinstance(body, str):
+                    tag = re.search(r"\\tag\{([^{}]+)\}", body)
+                    if tag:
+                        for label in re.findall(r"\\label\{([^{}]+)\}", body):
+                            numbers[label] = f"({tag.group(1)})"
+            for child in value.values():
+                visit(child)
+    visit(node)
+    return numbers
+
+
+def _declared_equation_numbers(tex: str) -> dict[str, str]:
+    """Read display numbers recorded for untagged equations in paper source.
+
+    TeX's equation counter may be affected by earlier tagged displays, which
+    Pandoc does not reproduce. These source comments are checked against the
+    compiled PDF when the paper is reviewed; the converter never invents a
+    number from an incomplete counter reconstruction.
+    """
+    numbers: dict[str, str] = {}
+    for label, number in re.findall(
+        r"(?m)^% paper-text-number: ([A-Za-z0-9:_-]+)=([A-Za-z0-9.]+)$",
+        tex,
+    ):
+        if f"\\label{{{label}}}" not in tex or label in numbers:
+            raise RuntimeError(f"stale or duplicate paper-text-number for {label}")
+        numbers[label] = f"({number})"
+    return numbers
+
+
+def _render_numbered_references(node: Any, numbers: dict[str, str]) -> None:
+    """Replace Pandoc's raw label display while retaining its stable anchor."""
+    if isinstance(node, list):
+        for item in node:
+            _render_numbered_references(item, numbers)
+    elif isinstance(node, dict):
+        if node.get("t") == "Link":
+            attr, inlines, target = node["c"]
+            metadata = dict(attr[2])
+            label = metadata.get("reference")
+            if (metadata.get("reference-type") in {"ref", "eqref"}
+                    and target[0] == f"#{label}" and label in numbers):
+                inlines[:] = [{"t": "Str", "c": numbers[label]}]
+        for child in node.values():
+            _render_numbered_references(child, numbers)
 
 
 def _pandoc(args: list[str], stdin: str | None = None, cwd: Path | None = None) -> str:
@@ -1090,8 +1175,21 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
         )
     )
     front, title, subtitle = _meta_blocks(ast.get("meta") or {}, stem)
-    walk = _AstWalk()
+    # This manuscript's section counter and tagged equations have been checked
+    # against its PDF. Other paper families define counters differently and
+    # need their own source-to-renderer review before changing their text.
+    preserve_pdf_numbers = stem == "optimal-sparse-perturbations"
+    tagged_equations = ({
+        **_tagged_equation_numbers(ast["blocks"]),
+        **_declared_equation_numbers(source),
+    } if preserve_pdf_numbers else {})
+    walk = _AstWalk(
+        section_numbered_statements=preserve_pdf_numbers,
+        front_title_id=stem,
+    )
     ast["blocks"] = walk.blocks(front + ast["blocks"])
+    _render_numbered_references(ast["blocks"],
+                                {**walk.statement_numbers, **tagged_equations})
     markdown = _pandoc(["-f", "json", "-t", "gfm", "--wrap=none"], stdin=json.dumps(ast))
     markdown = _remove_immediate_duplicate_gfm_table_headers(markdown)
     markdown = _externalize_long_gfm_table_source_notes(markdown)

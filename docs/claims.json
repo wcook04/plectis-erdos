@@ -1046,7 +1046,9 @@
             "res:reciprocal-support",
             "res:weighted-support",
             "thm:variable-fractional-cover",
-            "res:mixed-supports"
+            "res:mixed-supports",
+            "res:weighted-cover-incomparability",
+            "res:strict-mixed-supports"
           ]
         },
         {
@@ -1103,9 +1105,13 @@
           "title": "Reading Eight Erdős Problems Together",
           "source": "paper/synthesis/optimal-sparse-perturbations.tex",
           "rendered": "paper/synthesis/optimal-sparse-perturbations.pdf",
-          "role": "Consolidated cross-problem paper: sharp rationality, dimension and interior thresholds for factorial derivative vectors; exact capacity and support-gap criteria; Lambert-chain arguments, subsum obstructions and the research record. Complete arguments are ordinary proofs. Lean checks specified finite carry and feedback ingredients, not the complete theorems. No Erdos claim status changes.",
+          "role": "Consolidated cross-problem paper: sharp rationality, dimension and interior thresholds for factorial derivative vectors; exact capacity and support-gap criteria; Lambert-chain arguments, subsum obstructions, restricted dyadic shifts and their polynomial and prime-argument criteria, and the research record. Complete arguments are ordinary proofs, with the sharp dyadic input cited. Lean checks specified ingredients, not the complete theorems. No Erdos claim status changes.",
           "anchor_label_allowlist": [
             "sec:map",
+            "sec:dyadic-shifts",
+            "thm:restricted-dyadic-shifts",
+            "sec:polynomial-shifts",
+            "cor:polynomial-shifts",
             "capacity:sec:criterion",
             "capacity:eq:capacity",
             "capacity:thm:capacity",
@@ -20845,7 +20851,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1067
+        "line": 1183
       }
     },
     {
@@ -20977,7 +20983,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1083
+        "line": 1199
       }
     },
     {
@@ -20989,7 +20995,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1092
+        "line": 1208
       }
     },
     {
@@ -21001,7 +21007,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1103
+        "line": 1219
       }
     }
   ],
