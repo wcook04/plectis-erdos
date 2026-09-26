@@ -153,6 +153,30 @@ def sha256_file(path: Path, *, root: Path | None = None) -> str:
     return sha256_bytes(_read_safe_bytes(path, root=root))
 
 
+def effective_verifier_identity(source: Path) -> dict[str, Any]:
+    """Bind the Python code making the replay decision to the fetched commit."""
+    files = {
+        "runner": (Path("scripts/replay_external_verification.py"), Path(__file__)),
+        "singleflight": (Path("scripts/validation_singleflight.py"),
+                         Path(singleflight.__file__)),
+    }
+    observed = {}
+    for name, (relative, loaded_path) in files.items():
+        loaded_digest = sha256_file(loaded_path)
+        source_digest = sha256_file(source / relative, root=source)
+        observed[name] = {
+            "source_path": relative.as_posix(),
+            "loaded_sha256": loaded_digest,
+            "source_sha256": source_digest,
+            "matches_source": loaded_digest == source_digest,
+        }
+    return {
+        "contract": "loaded_python_source_matches_selected_commit_v1",
+        "files": observed,
+        "identity_verified": all(row["matches_source"] for row in observed.values()),
+    }
+
+
 def load_json(path: Path, *, root: Path | None = None) -> dict[str, Any]:
     candidate = safe_replay_file(path, root=root)
     try:
@@ -219,9 +243,8 @@ def bounded_tail(text: str) -> str:
 
 def replay_checks_pass(positive_exit: int, negative_exit: int,
                        negative_text: str, expected_diagnostic: str) -> bool:
-    """Shared CI/local verdict: infrastructure failure is never a negative proof."""
-    return (positive_exit == 0 and negative_exit > 0
-            and negative_exit not in (124, 125, 126, 127)
+    """Accept only Comparator's completed statement-mismatch exit."""
+    return (positive_exit == 0 and negative_exit == 1 and bool(expected_diagnostic)
             and expected_diagnostic in negative_text)
 
 
@@ -594,6 +617,9 @@ def execute(
         source_contract = load_contract(source)
         if source_contract != bootstrap_contract:
             raise ReplayError("bootstrap contract differs from the commit-pinned source contract")
+        receipt["effective_verifier"] = effective_verifier_identity(source)
+        if not receipt["effective_verifier"]["identity_verified"]:
+            raise ReplayError("loaded replay verifier differs from the commit-pinned source")
         selected = select_replay_unit(source_contract, unit)
         positive_config = selected['positive_config']
         negative_config = selected['negative_config']

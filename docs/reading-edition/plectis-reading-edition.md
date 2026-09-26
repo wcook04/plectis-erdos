@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `da9b9c2ea82ee3e1`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `aae1acfb46624011`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -3786,6 +3786,56 @@ into exactly one of three outcomes.
 The script takes a host set `B` of admissible indices. The hosts used are all
 positive integers, the integers not divisible by 3, the squarefree integers and
 the odd integers.
+
+For one rational target, run the same classifier directly. The exact output
+records the selected prefix and, when excluded, the strict gap inequality.
+It uses the compact universal bound
+`sum_{k>n} 1/(2^k-1) <= 2^-n + (2/3)4^-n`, starting at the next allowed
+host index, when that bound is strong enough;
+otherwise it displays the probe's exact horizon bound. The inequality follows
+by summing `1/(2^k-1) <= 2^-k + 2*4^-k` over `k>n`.
+The `189/388` example changes outcome between depths 16 and 17:
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --host all --depth 16 17 --horizon 160
+```
+
+For a first try without the full checkout, [inspect the single Python file at
+commit `bb1afb42`](https://github.com/wcook04/plectis-erdos/blob/bb1afb42f933352d83a5d56bd111f158f75a6d32/research/experiments/choices_contraction/rational_membership_probe.py),
+save it as `rational_membership_probe.py`, and run it with Python 3.11 or later:
+
+```sh
+python3 -I rational_membership_probe.py --target 189/388 --host all \
+  --depth 16 17 --horizon 160
+```
+
+The pinned file uses only Python's standard library. Inspect it before running
+it; the full clone is the route for the theorem, further research and returns.
+
+Use `--json` for a portable record. A `not_excluded` row means only that this
+finite depth found neither a gap nor a finite sum. The target input must be
+positive and at most the computed finite host-sum lower bound; the horizon
+must exceed the largest requested depth by at least 64. This computation is
+about rational membership in a reciprocal-Mersenne subseries at base 2, not
+a verification of the weighted irrationality theorem.
+
+For a terminal `excluded` or `finite_representation` row, the
+[separate receiver checker](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/choices_contraction/verify_terminal_witness.py) reconstructs the
+target, host, forced prefix, and bound without importing the probe. From the
+clone, this makes and checks one exclusion record:
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --depth 17 --horizon 160 --json > witness.json
+python3 research/experiments/choices_contraction/verify_terminal_witness.py \
+  witness.json
+```
+
+The checker refuses `not_excluded` rows, including mixed files containing
+one. It has a horizon resource limit of 512; refusal beyond that limit is
+not a mathematical verdict. A checked terminal row is an exact finite
+certificate, not a Lean check or a decision about all rational targets.
 
 ```sh
 python3 research/experiments/choices_contraction/rational_membership_probe.py
