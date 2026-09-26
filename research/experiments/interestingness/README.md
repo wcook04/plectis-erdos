@@ -180,3 +180,33 @@ python3 research/experiments/interestingness/conditional_reuse.py
 python3 research/experiments/interestingness/conditional_reuse.py --check
 python3 research/experiments/interestingness/test_conditional_reuse.py
 ```
+
+## A representation change that strengthens a theorem
+
+Reading the #257/#1049 synthesis suggested grouping a repeated block of
+divisibility ratios before applying the existing Mahler argument. The synthesis
+theorem now proves transcendence of the Lambert subsum on every chain with
+eventually periodic integer ratios, at every algebraic real base greater than
+one. It previously stated only eventual doubling at rational bases. This is
+an ordinary corollary of Nishioka's value theorem, with its proof in
+`paper/synthesis/optimal-sparse-perturbations.tex`, Theorem `thm:chains`;
+it is neither a new Lean result nor a historical novelty claim.
+
+For alternating ratios 2,3, group the exponents as `6^k` and `2*6^k`.
+The generating function satisfies
+`G(z) - G(z^6) = z/(1-z) + z^2/(1-z^2)`.
+The old doubling equation fails already at degree 4. The coefficient probe
+checks five repeated blocks through degree 100,000, building coefficients
+from support divisibility independently of the proposed functional equation.
+It also rejects this particular base-6 equation for the explicit Thue–Morse
+ratio word at degree 12. That rejection says nothing about other equations.
+The infinite block decomposition and Mahler regularity check in the paper
+prove transcendence; finite agreement does not.
+
+```sh
+python3 research/experiments/interestingness/periodic_chain_probe.py
+```
+
+This case motivates searching for a useful representation when the existing
+dependency graph supplies no bridge. It does not show that the numeric
+ranking discovered the theorem or that this workflow outperforms another one.
