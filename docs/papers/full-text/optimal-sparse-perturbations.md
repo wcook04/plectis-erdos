@@ -8,7 +8,7 @@
 
 </div>
 
-Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; eventually doubling chains give transcendence at every rational base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
+Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; chains with eventually periodic successive ratios give transcendence at every algebraic real base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
 
 <a id="sec:map"></a>
 
@@ -568,13 +568,21 @@ Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s 
 
 <div id="thm:chains" class="theorem">
 
-**Theorem 6.3** (divisibility chains). *Let $`t=a/b>1`$ in lowest terms and let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
+**Theorem 6.3** (divisibility chains). *Let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
 
-*<span class="upright">(a)</span> If $`a^2>b^3`$, then $`X_S(t)`$ is irrational.*
+*<span class="upright">(a)</span> If $`t=a/b>1`$ is rational in lowest terms and $`a^2>b^3`$, then $`X_S(t)`$ is irrational.*
 
-*<span class="upright">(b)</span> If $`n_{j+1}=2n_j`$ for all large $`j`$, then $`X_S(t)`$ is transcendental, with no condition on $`a`$ and $`b`$.*
+*<span class="upright">(b)</span> If the integer ratios $`n_{j+1}/n_j`$ are eventually periodic, then $`X_S(t)`$ is transcendental for every algebraic real $`t>1`$.*
 
 </div>
+
+For example, the chain $`1,2,6,12,36,72,\ldots`$ has alternating ratios $`2,3`$. Part (b) proves
+``` math
+\sum_{k\ge0}\left(\frac1{(4/3)^{6^k}-1}
+                  +\frac1{(4/3)^{2\cdot6^k}-1}\right)
+ \quad\hbox{is transcendental},
+```
+although $`4^2<3^3`$. Repeated blocks of ratios, rather than a stronger tail estimate, supply the functional equation used in this case. Part (b) is a direct corollary of the classical Mahler value theorem cited below; no historical novelty is claimed for this specialisation.
 
 The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#thm:bases" data-reference-type="ref" data-reference="thm:bases">6.2</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056830213840605\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that the sufficient cutoff supplied by one integer-polynomial family with common leading degree, coefficient-height and decay bounds at every fixed real base $`x>1`$ is at most $`1/2`$ \[plectis1049, Theorem 5\]. This restriction does not exclude stronger estimates at a particular base or a different choice of family there. Thin supports reach further than the full sum because the denominators divide one another.
 
@@ -592,7 +600,7 @@ The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with 
 
 #### Evidence.
 
-The proofs of Theorems <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">6.1</a>–<a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">6.4</a> are ordinary proofs. Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually doubling case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
+The proofs of Theorems <a href="#thm:dichotomy" data-reference-type="ref" data-reference="thm:dichotomy">6.1</a>–<a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">6.4</a> are ordinary proofs. Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually periodic case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
 
 <a id="sec:dichotomy"></a>
 
@@ -630,7 +638,7 @@ The same comparison appears in Kovač and Tao’s theorem that for integers $`2\
 
 <div class="proof">
 
-*Proof of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>.* Write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
+*Proof of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>.* For part (a), write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
 ``` math
 0<X_S(t)-S_j\le\sum_{n\ge n_{j+1}}\frac{\rho^n}{1-\rho^n}
  \le\frac{\rho^{\,n_{j+1}}}{(1-\rho)^2}.
@@ -644,22 +652,36 @@ Suppose the ratio is at least $`3`$ for infinitely many $`j`$. For those $`j`$,
 ```
 when $`a^2>b^3`$. If $`X_S(t)=p/q`$, then $`qD_j(X_S(t)-S_j)`$ is a positive integer for every $`j`$, a contradiction.
 
-Otherwise the ratio is $`2`$ from some index on, which is the case of part (b), and $`S`$ is a finite set together with $`\{d,2d,4d,\dots\}`$. With $`z=t^{-d}`$ the infinite part contributes $`g(z)`$, where
+Otherwise the ratio is $`2`$ from some index on, so part (b) completes the proof of (a).
+
+For part (b), discard a finite prefix and write the repeating ratio block as $`r_1,\ldots,r_\ell`$, with every $`r_i\ge2`$. Put
 ``` math
-g(z)=\sum_{k\ge0}\frac{z^{2^k}}{1-z^{2^k}},\qquad
- g(z^2)=g(z)-\frac{z}{1-z}.
+Q=\prod_{i=1}^{\ell}r_i,\qquad e_0=1,\qquad
+ e_i=\prod_{h=1}^i r_h\quad(1\le i<\ell).
 ```
+With $`d`$ the first exponent after that prefix, the remaining exponents are exactly $`d e_iQ^k`$ with $`0\le i<\ell`$ and $`k\ge0`$. Indeed, one complete block multiplies an exponent by $`Q`$, and its intermediate positions multiply it by the $`e_i`$. These exponents are distinct since $`1=e_0<\cdots<e_{\ell-1}<Q`$. Define
+``` math
+G(z)=\sum_{k\ge0}\sum_{i=0}^{\ell-1}
+          \frac{z^{e_iQ^k}}{1-z^{e_iQ^k}},\qquad
+ R(z)=\sum_{i=0}^{\ell-1}\frac{z^{e_i}}{1-z^{e_i}}.
+```
+The series for $`G`$ converges normally on compact subsets of $`|z|<1`$: on $`|z|\le r<1`$ its absolute sum is at most $`\ell(1-r)^{-1}\sum_{k\ge0}r^{Q^k}<\infty`$. Its Taylor coefficients are integers, and removing the $`k=0`$ block gives $`G(z)=R(z)+G(z^Q)`$. For the one-term block $`(2)`$ this is the function $`g(z)=\sum_{k\ge0}z^{2^k}/(1-z^{2^k})`$ used below.
+
+The function $`G`$ is transcendental over $`\mathbb C(z)`$. To see this, fix a primitive root of unity $`\zeta`$ of order $`Q^j`$, with $`j\ge1`$, and approach it along $`r\zeta`$ as $`r\uparrow1`$. For every $`k\ge j`$, all terms in the $`k`$th block are positive real numbers. Already the term $`k=j,i=0`$ tends to $`+\infty`$. Among the finitely many earlier terms, those with $`\zeta^{e_iQ^k}=1`$ are also positive, and all the others remain bounded. Thus $`\operatorname{Re}G(r\zeta)\to+\infty`$. The infinitely many distinct orders $`Q^j`$ give infinitely many singularities, whereas an algebraic function over $`\mathbb C(z)`$ has only finitely many.
+
 We use Nishioka’s value theorem for Mahler systems \[nishioka1996\], in the precise form quoted by Adamczewski and Faverjon \[adamczewskifaverjon2016, Theorem 1.1, p. 3\]. At an algebraic regular point it equates the transcendence degree of the function values with that of the functions over $`\overline{\mathbb{Q}}(z)`$. Here the system is
 ``` math
-\begin{pmatrix}g(z)\\1\end{pmatrix}
- =\begin{pmatrix}1&z/(1-z)\\0&1\end{pmatrix}
-  \begin{pmatrix}g(z^2)\\1\end{pmatrix}.
+\begin{pmatrix}G(z)\\1\end{pmatrix}
+ =\begin{pmatrix}1&R(z)\\0&1\end{pmatrix}
+  \begin{pmatrix}G(z^Q)\\1\end{pmatrix}.
 ```
-The matrix and its inverse have no poles at any iterate $`\rho^{\,d2^k}\in(0,1)`$, so $`\rho^d`$ is regular. The function $`g`$ is transcendental: at a root of unity $`\zeta`$ of order $`2^j`$ the terms with $`k\ge j`$ are positive on the ray $`r\zeta`$ and diverge as $`r\to1`$, while the earlier terms stay bounded, so $`g`$ has infinitely many singularities on the unit circle. An algebraic function over $`\mathbb{C}(z)`$ has only finitely many singular points, so $`g`$ is transcendental over $`\mathbb{C}(z)`$. Hence $`g(\rho^{\,d})`$ is transcendental, and adding the rational finite part proves (b) and completes (a). ◻
+For algebraic real $`t>1`$, the point $`\alpha=t^{-d}`$ is algebraic and lies in $`(0,1)`$. The matrix and its inverse have poles only at roots of unity, so none of $`\alpha^{Q^k}`$ is a pole and $`\alpha`$ is regular. Nishioka’s theorem gives $`\operatorname{trdeg}_{\overline{\mathbb{Q}}}(G(\alpha),1)=1`$. The discarded finite sum is algebraic, so adding it to $`G(\alpha)`$ proves part (b). ◻
 
 </div>
 
-We do not know whether $`a^2>b^3`$ is necessary in (a). The first open case is base $`4/3`$ with a chain whose ratios are $`2`$ except for infinitely many $`3`$s.
+The accompanying exact coefficient probe checks the proposed functional equation through degree $`100{,}000`$ for five ratio blocks, including $`(2,3)`$. For that alternating chain, the doubling equation $`G(z)-G(z^2)=z/(1-z)`$ already fails at degree four. The probe also rejects the $`(2,3)`$ block’s equation on an explicit nonperiodic ratio word. The probe is in [`research/experiments/interestingness/periodic_chain_probe.py`](https://github.com/wcook04/plectis-erdos/blob/01de6282/research/experiments/interestingness/periodic_chain_probe.py). Those finite checks test the formulas; the block decomposition above proves the equation at every degree.
+
+We do not know whether $`a^2>b^3`$ can be removed from the universal statement in (a). At base $`4/3`$, chains with a non-eventually-periodic word of ratios $`2,3`$ remain outside the argument. Arbitrarily grouping such ratios into blocks does not supply a single functional equation.
 
 <a id="sec:base2"></a>
 
@@ -904,7 +926,7 @@ The capacity criterion already covers non-power and oscillating allowances.
 
 2.  Does the count of fractions of height at most $`Q`$ rejected at step $`n`$ stay close to $`(3Q^2/\pi^2)2^{n-1}g_n`$ in the joint range $`n\le(2-\varepsilon)\log_2Q`$, counted modulo the translations of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.6</a>? A persistent excess would be the first sign of an arithmetic mechanism for \#257.
 
-3.  Is $`a^2>b^3`$ necessary in Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>(a)? First case: base $`4/3`$, a chain with ratios $`2`$ and infinitely many ratios $`3`$.
+3.  Can $`a^2>b^3`$ be removed from Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>(a)? At base $`4/3`$, the remaining case includes chains with a non-eventually-periodic word of ratios $`2,3`$; periodic words are transcendental by part (b).
 
 4.  Is there one inequality behind \#1049 Theorem 5 and the cover cost of \#257?
 

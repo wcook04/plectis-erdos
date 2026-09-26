@@ -62,6 +62,8 @@ The two roles can be run by different people, agent harnesses, or machines. A co
 
 The stewardship role is not a ceremonial reviewer added after the work. Its appraisal changes where future effort goes. It may discover that a new “theorem” is only a reformulation, that five declarations are one coherent result family, that a short no-go eliminates an expensive research direction, or that a paper still leads with a weaker theorem. It then updates four separate outputs: proof and evidence status, mathematical appraisal, paper prominence, and the next allocation of compute or expert attention. These outputs may influence one another, but they are not one score and none can promote an unproved claim.
 
+Conditional proof cost offers one way to propose that allocation: Patel et al. \[patel\] rank statements by proof cost relative to statement length and compare this with reuse. The systems paper tests such a proxy on this repository before using it for triage. Shared factors in the scores, generated certificates and duplicated interfaces can all affect a ranking; the stewardship procedure asks which concrete consumer, containment check or failed route deserves investigation. Whether this allocation improves later research requires a prospective comparison with simpler baselines.
+
 The coupling is event-driven. A stable mathematical delta wakes the steward; a changed appraisal, missing consumer, or sharper open boundary can wake the miner. An unchanged repository should consume no agent turn merely to report that it is unchanged. This makes continuous work a sequence of inspectable state transitions rather than an expensive synonym for leaving a chat window open.
 
 The public [`run-coupled-research-goals skill`](https://github.com/wcook04/plectis-erdos/blob/402497d8e1ae025518ee34190664e8f67aa40f93/skills/run-coupled-research-goals/SKILL.md) makes this control shape executable in a cold clone. It invokes the existing mining and consequence-propagation jobs, preserves a shared source pin, and passes committed objects and receipts rather than conversational claims of progress. One agent may alternate between the roles, or different people, models, subscriptions, and machines may supply them. The architecture requires distinct decisions, not an unnecessarily grand collection of laptops.
@@ -639,6 +641,8 @@ Palomar Registry, *About Palomar* and *Contribution policy*, [registry documenta
 C. E. Brown, C. Kaliszyk, and J. Urban, *Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents*, 2026, [arXiv:2603.06737](https://arxiv.org/abs/2603.06737).
 
 B. Yanahama and A. Sannai, *Lean Atlas: An Integrated Proof Environment for Scalable Human–AI Collaborative Formalization*, 2026, [arXiv:2604.16347](https://arxiv.org/abs/2604.16347).
+
+N. Patel, A. Rammal, A. Hayat, R. Munos, and J. Kempe, *Learning to Discover Interesting Mathematics*, arXiv:2609.28603v1, 2026, <https://arxiv.org/abs/2609.28603>.
 
 S. Chen, K. Marwaha, X. Lu, H. Yuen, and T. Peng, *Prove2Me: An Open Collaborative Platform for Scaling Math Formalization*, 2026, [arXiv:2608.28433](https://arxiv.org/abs/2608.28433).
 
