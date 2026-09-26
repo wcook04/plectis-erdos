@@ -489,11 +489,57 @@ def main() -> int:
         < main_source.index("start_independent_checks("),
         "release identity no longer fails before expensive projection and late pools",
     )
+    check_dependency_preflight()
+    check_empty_selection_is_not_a_pass()
     print(
         "test_check_release_environment: release-gate child processes cannot "
         "inherit caller Git, Python, locale, or PATH state"
     )
     return 0
+
+
+def check_dependency_preflight() -> None:
+    """A direct call without the pinned dependencies stops before any check."""
+    saved_errors, saved_checks = check_release.ERRORS, check_release.CHECKS
+    check_release.ERRORS, check_release.CHECKS = [], 0
+    try:
+        with patch("importlib.util.find_spec", return_value=None), patch.object(
+            check_release.singleflight, "submit"
+        ) as submit, patch("sys.stderr") as stderr:
+            code = check_release.main([])
+        written = "".join(call.args[0] for call in stderr.write.call_args_list)
+        require(code == 2, "missing release dependency did not stop the gate")
+        require(not submit.called, "gate queued validation without its dependencies")
+        require(check_release.CHECKS == 0, "gate ran checks without its dependencies")
+        require(
+            "scripts/run_release_check.py" in written,
+            "dependency stop does not name the supported release entry",
+        )
+    finally:
+        check_release.ERRORS, check_release.CHECKS = saved_errors, saved_checks
+
+
+def check_empty_selection_is_not_a_pass() -> None:
+    """A test selector that matches nothing must not report success."""
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(check_release.ROOT / "scripts" / "test_validation_singleflight.py"),
+            "-k",
+            "selector_that_matches_no_test",
+        ],
+        cwd=check_release.ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=120,
+    )
+    verdict = json.loads(completed.stdout.strip().splitlines()[-1])
+    require(completed.returncode == 5, "empty test selection exited as a pass")
+    require(
+        verdict["status"] == "no_tests_ran" and verdict["successful"] is False,
+        "empty test selection reported success",
+    )
 
 
 if __name__ == "__main__":

@@ -39,8 +39,13 @@ $1/k$, so its weighted sum diverges. At base $3$, its term is bounded by a
 constant times $(2/3)^{2^k}/k$ plus a summable rounding term. That sum
 converges, as do the weighted sums at all larger integer bases. The
 fixed-base theorem applies to every infinite $B\subseteq A$ at each
-$b\ge3$. Failure of this $P=\{2\}$ test at base $2$ supplies no rationality
-verdict there; another argument or a different finite prime set might apply.
+$b\ge3$. At base $2$, no fixed finite prime set gives a weighted witness
+for the whole of $A$. This support is the host $A(2,r)$ of (1) below. If
+$2\in P$, its comparison series at base $2$ is
+$\sum_k r_k/(2^{2^k}-1)$, which behaves like $\sum_k1/k$; if $2\notin P$,
+it is $\sum_k r_k/2^k$, whose terms tend to infinity. This failure of the
+test gives no rationality verdict: another argument may still prove
+irrationality, and a thinner infinite subset may admit a weighted witness.
 
 With $k^2$ in the denominator, the binary weighted terms behave like
 $1/k^2$, so the binary test converges. The theorem's binary clause then
