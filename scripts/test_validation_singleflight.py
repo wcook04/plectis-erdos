@@ -41,13 +41,14 @@ class ValidationSingleflightTests(unittest.TestCase):
         self._host_lock_directory.cleanup()
 
     def test_cli_honors_selected_test_and_rejects_unknown_selector(self) -> None:
-        for selector, successful in (
-            ("ValidationSingleflightTests.test_receipt_only_collect_waits_without_build_materialization", True),
-            ("ValidationSingleflightTests.test_missing_cli_selector", False),
+        for selector, status, code, ran in (
+            (["ValidationSingleflightTests.test_receipt_only_collect_waits_without_build_materialization"], "passed", 0, 1),
+            (["ValidationSingleflightTests.test_missing_cli_selector"], "failed", 1, 1),
+            (["-k", "selector_that_matches_no_test"], "no_tests_ran", 5, 0),
         ):
             with self.subTest(selector=selector):
                 completed = subprocess.run(
-                    [sys.executable, str(Path(__file__).resolve()), selector],
+                    [sys.executable, str(Path(__file__).resolve()), *selector],
                     cwd=ROOT,
                     env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
                     capture_output=True,
@@ -56,13 +57,15 @@ class ValidationSingleflightTests(unittest.TestCase):
                     check=False,
                 )
                 summary = json.loads(completed.stdout.strip().splitlines()[-1])
-                self.assertEqual(completed.returncode, 0 if successful else 1, completed.stderr)
+                self.assertEqual(completed.returncode, code, completed.stderr)
                 self.assertEqual(summary, {
-                    "schema": "public-validation-singleflight-tests/1",
-                    "tests_run": 1,
-                    "successful": successful,
+                    "schema": "public-validation-singleflight-tests/2",
+                    "status": status,
+                    "tests_run": ran,
+                    "skipped": 0,
+                    "successful": status == "passed",
                 })
-                self.assertIn("Ran 1 test", completed.stderr)
+                self.assertIn(f"Ran {ran} test", completed.stderr)
 
     @staticmethod
     def _safe_spec(command: list[str]) -> dict[str, object]:
@@ -1389,14 +1392,27 @@ class ValidationSingleflightTests(unittest.TestCase):
 
 if __name__ == "__main__":
     result = unittest.main(exit=False, verbosity=2).result
+    # An empty selection or an all-skipped run is not a pass: unittest reports
+    # wasSuccessful() for both, so the verdict names what actually executed.
+    skipped = len(result.skipped)
+    if not result.wasSuccessful():
+        status = "failed"
+    elif result.testsRun == 0:
+        status = "no_tests_ran"
+    elif skipped >= result.testsRun:
+        status = "all_skipped"
+    else:
+        status = "passed"
     print(
         json.dumps(
             {
-                "schema": "public-validation-singleflight-tests/1",
+                "schema": "public-validation-singleflight-tests/2",
+                "status": status,
                 "tests_run": result.testsRun,
-                "successful": result.wasSuccessful(),
+                "skipped": skipped,
+                "successful": status == "passed",
             },
             sort_keys=True,
         )
     )
-    raise SystemExit(0 if result.wasSuccessful() else 1)
+    raise SystemExit({"passed": 0, "failed": 1}.get(status, 5))

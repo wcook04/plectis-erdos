@@ -292,14 +292,27 @@ class LeanPackageShareTests(unittest.TestCase):
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(LeanPackageShareTests)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
+    # An empty selection or an all-skipped run is not a pass: unittest reports
+    # wasSuccessful() for both, so the verdict names what actually executed.
+    skipped = len(result.skipped)
+    if not result.wasSuccessful():
+        status = "failed"
+    elif result.testsRun == 0:
+        status = "no_tests_ran"
+    elif skipped >= result.testsRun:
+        status = "all_skipped"
+    else:
+        status = "passed"
     print(
         json.dumps(
             {
-                "schema": "public-lean-package-share-tests/1",
+                "schema": "public-lean-package-share-tests/2",
+                "status": status,
                 "tests_run": result.testsRun,
-                "successful": result.wasSuccessful(),
+                "skipped": skipped,
+                "successful": status == "passed",
             },
             sort_keys=True,
         )
     )
-    raise SystemExit(0 if result.wasSuccessful() else 1)
+    raise SystemExit({"passed": 0, "failed": 1}.get(status, 5))
