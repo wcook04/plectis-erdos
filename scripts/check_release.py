@@ -282,6 +282,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
         ],
+        "interestingness_profile": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "interestingness" / "test_profile.py"),
+        ],
         "mutation_harness": [
             sys.executable,
             str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
@@ -2964,6 +2968,7 @@ def main(argv: list[str] | None = None) -> int:
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
         "proof_workbench", "computation_replay", "admissible_feedback",
+        "interestingness_profile",
     ):
         result = late_checks[name]
         check(result.returncode == 0,
