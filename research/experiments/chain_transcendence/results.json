@@ -1,0 +1,1462 @@
+{
+ "schema": "plectis-chain-transcendence-bookkeeping/1",
+ "boundary": "Finite exact checks of the formulas in the proof; the theorem rests on the Subspace Theorem and the written proof.",
+ "all_exact_checks_pass": true,
+ "cases": [
+  {
+   "a": 4,
+   "b": 3,
+   "word": "squares",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 2,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.41058,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": -0.3151
+    },
+    {
+     "j": 2,
+     "N": 3,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 4,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.14017,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.7405
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 4,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.07719,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.7836
+    },
+    {
+     "j": 4,
+     "N": 12,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 5,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.13797,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.5206
+    },
+    {
+     "j": 5,
+     "N": 36,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 7,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05313,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 6,
+     "N": 72,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 8,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05247,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 7,
+     "N": 144,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 9,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05005,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 8,
+     "N": 288,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 9,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05023,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 9,
+     "N": 576,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 10,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.0616,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.5232
+    }
+   ]
+  },
+  {
+   "a": 4,
+   "b": 3,
+   "word": "fibonacci",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 2,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.28825,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.2513
+    },
+    {
+     "j": 2,
+     "N": 2,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 3,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.2647,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.2079
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 5,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.07625,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.7887
+    },
+    {
+     "j": 4,
+     "N": 12,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 5,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.09426,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8083
+    },
+    {
+     "j": 5,
+     "N": 24,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 6,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.06876,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.5232
+    },
+    {
+     "j": 6,
+     "N": 72,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 7,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05245,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 7,
+     "N": 144,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 8,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.06254,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.5232
+    },
+    {
+     "j": 8,
+     "N": 432,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 10,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.04983,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    }
+   ]
+  },
+  {
+   "a": 4,
+   "b": 3,
+   "word": "thue_morse",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 2,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.28825,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.2513
+    },
+    {
+     "j": 2,
+     "N": 2,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 3,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.2647,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.2079
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 4,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.09623,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.4915
+    },
+    {
+     "j": 4,
+     "N": 18,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 5,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.07914,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8106
+    },
+    {
+     "j": 5,
+     "N": 36,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 6,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.06628,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.5232
+    },
+    {
+     "j": 6,
+     "N": 108,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 8,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05131,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 7,
+     "N": 216,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 8,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.04971,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 8,
+     "N": 432,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 9,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.06228,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.5232
+    }
+   ]
+  },
+  {
+   "a": 4,
+   "b": 3,
+   "word": "doubling",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 3,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.24389,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.5588
+    },
+    {
+     "j": 2,
+     "N": 2,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 4,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.18647,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.6955
+    },
+    {
+     "j": 3,
+     "N": 4,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 5,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.09153,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.764
+    },
+    {
+     "j": 4,
+     "N": 8,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 6,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.11726,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8002
+    },
+    {
+     "j": 5,
+     "N": 16,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 7,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05819,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8103
+    },
+    {
+     "j": 6,
+     "N": 32,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 8,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.0567,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 7,
+     "N": 64,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 9,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05132,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 8,
+     "N": 128,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 10,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.05173,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    },
+    {
+     "j": 9,
+     "N": 256,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 11,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.0496,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.8109
+    }
+   ]
+  },
+  {
+   "a": 5,
+   "b": 4,
+   "word": "fibonacci",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 2,
+     "K": 4,
+     "truncation_J": 3,
+     "coefficients": [
+      1,
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.17465,
+     "predicted_limit": -0.0156,
+     "liouville_exponent_per_N": 0.7576
+    },
+    {
+     "j": 2,
+     "N": 2,
+     "ratio": 3,
+     "K": 3,
+     "truncation_J": 4,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.11661,
+     "predicted_limit": -0.0354,
+     "liouville_exponent_per_N": 0.6755
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 2,
+     "K": 4,
+     "truncation_J": 5,
+     "coefficients": [
+      1,
+      2,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.02913,
+     "predicted_limit": -0.0156,
+     "liouville_exponent_per_N": 1.1347
+    },
+    {
+     "j": 4,
+     "N": 12,
+     "ratio": 2,
+     "K": 4,
+     "truncation_J": 6,
+     "coefficients": [
+      1,
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.026,
+     "predicted_limit": -0.0156,
+     "liouville_exponent_per_N": 1.1576
+    },
+    {
+     "j": 5,
+     "N": 24,
+     "ratio": 3,
+     "K": 3,
+     "truncation_J": 7,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.0521,
+     "predicted_limit": -0.0354,
+     "liouville_exponent_per_N": 0.9398
+    },
+    {
+     "j": 6,
+     "N": 72,
+     "ratio": 2,
+     "K": 4,
+     "truncation_J": 8,
+     "coefficients": [
+      1,
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.01727,
+     "predicted_limit": -0.0156,
+     "liouville_exponent_per_N": 1.1632
+    },
+    {
+     "j": 7,
+     "N": 144,
+     "ratio": 3,
+     "K": 3,
+     "truncation_J": 9,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.03622,
+     "predicted_limit": -0.0354,
+     "liouville_exponent_per_N": 0.94
+    }
+   ]
+  },
+  {
+   "a": 3,
+   "b": 2,
+   "word": "squares",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 3,
+     "K": 1,
+     "truncation_J": 2,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -1.41828,
+     "predicted_limit": -0.10721,
+     "liouville_exponent_per_N": -0.865
+    },
+    {
+     "j": 2,
+     "N": 3,
+     "ratio": 2,
+     "K": 2,
+     "truncation_J": 3,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.24207,
+     "predicted_limit": -0.15876,
+     "liouville_exponent_per_N": 0.2012
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 2,
+     "K": 2,
+     "truncation_J": 4,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.35002,
+     "predicted_limit": -0.15876,
+     "liouville_exponent_per_N": 0.2737
+    },
+    {
+     "j": 4,
+     "N": 12,
+     "ratio": 3,
+     "K": 1,
+     "truncation_J": 5,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.14993,
+     "predicted_limit": -0.10721,
+     "liouville_exponent_per_N": -0.1184
+    },
+    {
+     "j": 5,
+     "N": 36,
+     "ratio": 2,
+     "K": 2,
+     "truncation_J": 6,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.16333,
+     "predicted_limit": -0.15876,
+     "liouville_exponent_per_N": 0.2877
+    },
+    {
+     "j": 6,
+     "N": 72,
+     "ratio": 2,
+     "K": 2,
+     "truncation_J": 7,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.16566,
+     "predicted_limit": -0.15876,
+     "liouville_exponent_per_N": 0.2877
+    },
+    {
+     "j": 7,
+     "N": 144,
+     "ratio": 2,
+     "K": 2,
+     "truncation_J": 8,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.15991,
+     "predicted_limit": -0.15876,
+     "liouville_exponent_per_N": 0.2877
+    },
+    {
+     "j": 8,
+     "N": 288,
+     "ratio": 2,
+     "K": 2,
+     "truncation_J": 9,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.15934,
+     "predicted_limit": -0.15876,
+     "liouville_exponent_per_N": 0.2877
+    }
+   ]
+  },
+  {
+   "a": 9,
+   "b": 7,
+   "word": "thue_morse",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 2,
+     "K": 5,
+     "truncation_J": 3,
+     "coefficients": [
+      1,
+      1,
+      2,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.12994,
+     "predicted_limit": -0.01598,
+     "liouville_exponent_per_N": 1.2895
+    },
+    {
+     "j": 2,
+     "N": 2,
+     "ratio": 3,
+     "K": 3,
+     "truncation_J": 3,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.08756,
+     "predicted_limit": -0.0042,
+     "liouville_exponent_per_N": 1.104
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 3,
+     "K": 3,
+     "truncation_J": 5,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.03907,
+     "predicted_limit": -0.0042,
+     "liouville_exponent_per_N": 1.4052
+    },
+    {
+     "j": 4,
+     "N": 18,
+     "ratio": 2,
+     "K": 5,
+     "truncation_J": 6,
+     "coefficients": [
+      1,
+      1,
+      2,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.02137,
+     "predicted_limit": -0.01598,
+     "liouville_exponent_per_N": 1.694
+    },
+    {
+     "j": 5,
+     "N": 36,
+     "ratio": 3,
+     "K": 3,
+     "truncation_J": 7,
+     "coefficients": [
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.00769,
+     "predicted_limit": -0.0042,
+     "liouville_exponent_per_N": 1.4433
+    },
+    {
+     "j": 6,
+     "N": 108,
+     "ratio": 2,
+     "K": 5,
+     "truncation_J": 8,
+     "coefficients": [
+      1,
+      2,
+      1,
+      2
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.01739,
+     "predicted_limit": -0.01598,
+     "liouville_exponent_per_N": 1.6946
+    }
+   ]
+  },
+  {
+   "a": 2,
+   "b": 1,
+   "word": "squares",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 3,
+     "K": 1,
+     "truncation_J": 2,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -2.80735,
+     "predicted_limit": -2.0,
+     "liouville_exponent_per_N": -1.9459
+    },
+    {
+     "j": 2,
+     "N": 3,
+     "ratio": 2,
+     "K": 1,
+     "truncation_J": 3,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -2.05664,
+     "predicted_limit": -1.0,
+     "liouville_exponent_per_N": -0.7324
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 2,
+     "K": 1,
+     "truncation_J": 4,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.97295,
+     "predicted_limit": -1.0,
+     "liouville_exponent_per_N": -0.6957
+    },
+    {
+     "j": 4,
+     "N": 12,
+     "ratio": 3,
+     "K": 1,
+     "truncation_J": 5,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -2.04711,
+     "predicted_limit": -2.0,
+     "liouville_exponent_per_N": -1.3863
+    },
+    {
+     "j": 5,
+     "N": 36,
+     "ratio": 2,
+     "K": 1,
+     "truncation_J": 6,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.99412,
+     "predicted_limit": -1.0,
+     "liouville_exponent_per_N": -0.6931
+    },
+    {
+     "j": 6,
+     "N": 72,
+     "ratio": 2,
+     "K": 1,
+     "truncation_J": 7,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -1.02475,
+     "predicted_limit": -1.0,
+     "liouville_exponent_per_N": -0.6931
+    },
+    {
+     "j": 7,
+     "N": 144,
+     "ratio": 2,
+     "K": 1,
+     "truncation_J": 8,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.99852,
+     "predicted_limit": -1.0,
+     "liouville_exponent_per_N": -0.6931
+    },
+    {
+     "j": 8,
+     "N": 288,
+     "ratio": 2,
+     "K": 1,
+     "truncation_J": 9,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -1.00273,
+     "predicted_limit": -1.0,
+     "liouville_exponent_per_N": -0.6931
+    }
+   ]
+  },
+  {
+   "a": 4,
+   "b": 3,
+   "word": "factorial",
+   "rows": [
+    {
+     "j": 1,
+     "N": 1,
+     "ratio": 2,
+     "K": 3,
+     "truncation_J": 2,
+     "coefficients": [
+      1,
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.28825,
+     "predicted_limit": -0.04902,
+     "liouville_exponent_per_N": 0.2513
+    },
+    {
+     "j": 2,
+     "N": 2,
+     "ratio": 3,
+     "K": 2,
+     "truncation_J": 3,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.2647,
+     "predicted_limit": -0.06128,
+     "liouville_exponent_per_N": 0.2079
+    },
+    {
+     "j": 3,
+     "N": 6,
+     "ratio": 4,
+     "K": 2,
+     "truncation_J": 4,
+     "coefficients": [
+      1
+     ],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.15816,
+     "predicted_limit": -0.13203,
+     "liouville_exponent_per_N": 0.2031
+    },
+    {
+     "j": 4,
+     "N": 24,
+     "ratio": 5,
+     "K": 1,
+     "truncation_J": 5,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.14732,
+     "predicted_limit": -0.03759,
+     "liouville_exponent_per_N": -0.0522
+    },
+    {
+     "j": 5,
+     "N": 120,
+     "ratio": 6,
+     "K": 1,
+     "truncation_J": 6,
+     "coefficients": [],
+     "coefficient_bound_holds": true,
+     "P_j_integer_matches_divisor_form": true,
+     "identity_exact": true,
+     "tail_positive_and_bounded": true,
+     "s_unit_coordinates": true,
+     "exponent_condition": true,
+     "monomials_distinct_below_Kr": true,
+     "log_product_over_log_height": -0.24946,
+     "predicted_limit": -0.24511,
+     "liouville_exponent_per_N": -0.3398
+    }
+   ]
+  }
+ ],
+ "millin_boundary": {
+  "a": 4,
+  "b": 3,
+  "depth": 8,
+  "telescoping_identity_exact": true,
+  "second_and_fourth_coordinates_coincide": true,
+  "value": "3"
+ }
+}
