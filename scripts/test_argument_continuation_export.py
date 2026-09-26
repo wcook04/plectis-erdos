@@ -100,6 +100,9 @@ def run_export() -> list[dict]:
         if completed.returncode != 0:
             sys.stderr.write(completed.stdout[-6000:] + completed.stderr[-6000:])
             raise SystemExit(f"toy export failed with exit {completed.returncode}")
+        keep = os.environ.get("PLECTIS_TEST_KEEP_EXPORT")
+        if keep:
+            shutil.copyfile(out_file, keep)
         return [json.loads(line) for line in out_file.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 

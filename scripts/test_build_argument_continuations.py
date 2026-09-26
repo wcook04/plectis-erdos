@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""Tests for ``build_argument_continuations.py`` on the toy-corpus export.
+
+``scripts/fixtures/toy_argument_continuations_export.jsonl`` is the exporter's
+output on the toy corpus in ``test_argument_continuation_export.py`` (refresh
+it with ``PLECTIS_TEST_KEEP_EXPORT=<path>``). The expectations are computed by
+hand from that corpus:
+
+* supplied: ``Supply 3``, ``EvenP 2``, the guarded universal statement, the
+  conjunction and the iff (unconditional theorems), and ``True``;
+* open: ``Target``, ``OpenQ``, ``∀ n, Supply n``, ``∀ n, EvenP n``,
+  ``EvenP 3``, ``3 ≥ 7`` and ``∀ n, n ≥ 7``;
+* the only disguise class is ``{Target, OpenQ}`` (the iff read both ways);
+* supplying ``∀ n, EvenP n`` supplies ``∀ n, Supply n``, ``Target`` and
+  ``OpenQ``;
+* the bundles of ``Target`` are four singletons, one per route.
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+
+import build_argument_continuations as builder  # noqa: E402
+
+FIXTURE = ROOT / "scripts" / "fixtures" / "toy_argument_continuations_export.jsonl"
+
+
+class ToyGraph(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.graph = builder.Graph(builder.read_export(FIXTURE))
+        cls.graph.analyse()
+        cls.key = {node["type"]: key for key, node in cls.graph.statements.items()}
+
+    def k(self, text: str) -> str:
+        self.assertIn(text, self.key, f"statement {text!r} missing; have {sorted(self.key)}")
+        return self.key[text]
+
+    def test_supply(self) -> None:
+        supplied = {self.graph.statements[k]["type"] for k in self.graph.supplied}
+        for text in ("ToyCorpus.Supply 3", "ToyCorpus.EvenP 2",
+                     "∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n", "True"):
+            self.assertIn(text, supplied)
+        for text in ("ToyCorpus.Target", "ToyCorpus.OpenQ", "∀ (n : Nat), ToyCorpus.Supply n",
+                     "∀ (n : Nat), ToyCorpus.EvenP n", "ToyCorpus.EvenP 3", "3 ≥ 7"):
+            self.assertNotIn(text, supplied)
+
+    def test_witness_chain(self) -> None:
+        tree = self.graph.proof_tree(self.k("∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n"))
+        self.assertEqual(tree["producer"], "ToyCorpus.supply_ge")
+        self.assertEqual(tree["from"], [])
+
+    def test_disguise_class(self) -> None:
+        classes = [{self.graph.statements[m]["type"] for m in members}
+                   for members in self.graph.disguise_classes()]
+        self.assertEqual(classes, [{"ToyCorpus.Target", "ToyCorpus.OpenQ"}])
+
+    def test_leverage(self) -> None:
+        gained = {self.graph.statements[k]["type"]
+                  for k in self.graph.leverage(self.k("∀ (n : Nat), ToyCorpus.EvenP n"))}
+        self.assertEqual(gained, {"∀ (n : Nat), ToyCorpus.Supply n", "ToyCorpus.Target", "ToyCorpus.OpenQ"})
+        self.assertEqual(self.graph.leverage(self.k("ToyCorpus.EvenP 2")), set())
+
+    def test_bundles(self) -> None:
+        bundles, truncated = self.graph.bundles(self.k("ToyCorpus.Target"))
+        self.assertFalse(truncated)
+        as_text = sorted(tuple(sorted(self.graph.statements[k]["type"] for k in bundle)) for bundle in bundles)
+        self.assertEqual(as_text, sorted([
+            ("ToyCorpus.OpenQ",),
+            ("∀ (n : Nat), ToyCorpus.Supply n",),
+            ("∀ (n : Nat), ToyCorpus.EvenP n",),
+            ("∀ (n : Nat), n ≥ 7",),
+        ]))
+
+    def test_projection_writes(self) -> None:
+        projection, graph_payload = builder.build(FIXTURE, ROOT)
+        self.assertEqual(projection["schema"], builder.SCHEMA)
+        self.assertEqual(projection["summary"]["disguise_classes"], 1)
+        self.assertEqual(projection["summary"]["open_statements"], 7)
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "a.json"
+            gz = Path(tmp) / "a.json.gz"
+            builder.write_outputs(projection, graph_payload, out, gz)
+            again = Path(tmp) / "b.json.gz"
+            builder.write_outputs(projection, graph_payload, out, again)
+            self.assertEqual(gz.read_bytes(), again.read_bytes(), "graph output must be byte-stable")
+            self.assertEqual(json.loads(out.read_text())["schema"], builder.SCHEMA)
+
+
+if __name__ == "__main__":
+    unittest.main()

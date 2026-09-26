@@ -104,11 +104,16 @@ def selected (cfg : Config) (env : Environment) (name : Name) : Bool :=
   else
     cfg.namePrefixes.any fun p => p.isPrefixOf name
 
-/-- Hex rendering of the structural hash: the identity of a closed statement. -/
-def keyOf (e : Expr) : String :=
-  let h := e.hash.toNat
-  let digits := Nat.toDigits 16 h
+private def hex16 (n : Nat) : String :=
+  let digits := Nat.toDigits 16 n
   String.ofList (List.replicate (16 - digits.length) '0' ++ digits)
+
+/-- The identity of a closed statement. `Expr.hash` alone carries 32 bits,
+so tens of thousands of statements would collide; the key pairs it with a
+64-bit hash of the full term rendering (constants fully qualified, universe
+levels included). -/
+def keyOf (e : Expr) : String :=
+  hex16 e.hash.toNat ++ hex16 (hash (toString e)).toNat
 
 def clip (s : String) (limit : Nat := 700) : String :=
   let flat := (s.replace "\n" " ").replace "\t" " "
