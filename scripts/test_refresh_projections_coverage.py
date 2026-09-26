@@ -32,7 +32,13 @@ BUILDER_NAME = re.compile(r"^(?:build|refresh)_[a-z0-9_]+\.py$")
 # Verified by check_release.py but deliberately outside the refresh pipeline,
 # each with the reason it does not belong there. Keep this list short and
 # argued; it is the only supported way to be in one list and not the other.
-DELIBERATELY_UNREFRESHED: dict[str, str] = {}
+DELIBERATELY_UNREFRESHED: dict[str, str] = {
+    "build_lean_dependency_index.py": (
+        "Requires a coordinated full Lean build and elaborated environment export; "
+        "the Python projection refresh must not launch Lean implicitly. Run its "
+        "--check --full-check --write-stale after the final projection refresh."
+    ),
+}
 
 
 def require(condition: bool, message: str) -> None:

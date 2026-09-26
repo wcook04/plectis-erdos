@@ -1439,6 +1439,18 @@ def main(argv: list[str] | None = None) -> int:
     read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
 
+    # A local export receipt must not conceal evidence missing from a clone.
+    # This read-only check never acquires a Lean build owner.
+    dependency_index = run(
+        [sys.executable, str(ROOT / "scripts" / "build_lean_dependency_index.py"),
+         "--check", "--tracked-only"],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    if dependency_index.returncode:
+        print("check_release: committed Lean dependency index is stale")
+        print(dependency_index.stderr.strip() or dependency_index.stdout.strip())
+        return 1
+
     # Fail fast on the cheapest high-severity invariant.  In particular, do
     # not spend the corpus-query budget before rejecting untrusted proof code.
     check_proof_trust()
