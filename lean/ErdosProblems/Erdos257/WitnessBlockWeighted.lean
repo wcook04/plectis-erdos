@@ -73,6 +73,7 @@ theorem primeWeightedTerm_clause_progression_of_disjoint (b : ℕ) (C P : Finset
   rw [primeWeightedTerm_clause_progression b C P hC hP]
   simp only [Finset.disjoint_iff_inter_eq_empty.mp hdis, Finset.prod_empty,
     one_pow, Nat.cast_one, pow_one, Nat.cast_mul]
+  rw [one_div_mul_one_div]
   ring
 
 /-- A finite prime witness disjoint from the clause has divergent canonical
@@ -99,7 +100,7 @@ theorem not_summable_primeWeightedTerm_witnessClauseSupport_of_disjoint
       (1 / ((b : ℝ) - 1)) * (1 / (clauseProgressionPoint (C.prod id) Q x : ℝ))) := by
     apply hsub.congr
     intro x
-    rw [Set.indicator_of_mem (clauseProgression_mem C Q hQ hDQ x)]
+    rw [Function.comp_apply, Set.indicator_of_mem (clauseProgression_mem C Q hQ hDQ x)]
     exact primeWeightedTerm_clause_progression_of_disjoint b C P hC hP hdis (x.1 + 1) x.2.val
   have hc : (1 / ((b : ℝ) - 1)) ≠ 0 := by
     have hbR : (2 : ℝ) ≤ b := by exact_mod_cast hb

@@ -57,11 +57,14 @@ theorem clauseProgression_row_reciprocal (D Q k : ℕ) :
       (1 : ℝ) / (clauseProgressionPoint D Q ⟨k, j⟩ : ℝ)) =
       (1 / ((D ^ (k + 1) : ℕ) : ℝ)) *
         progressionHarmonicMass Q (2 ^ (D ^ (k + 1))) := by
-  simp only [clauseProgressionPoint, Nat.cast_mul]
-  rw [Fin.sum_univ_eq_sum_range]
-  simp only [progressionHarmonicMass, Finset.mul_sum]
+  simp only [clauseProgressionPoint]
+  refine (Fin.sum_univ_eq_sum_range
+    (fun j => (1 : ℝ) / ((D ^ (k + 1) * (1 + j * Q) : ℕ) : ℝ)) _).trans ?_
+  rw [progressionHarmonicMass, Finset.mul_sum]
   apply Finset.sum_congr rfl
-  intro j hj
+  intro j _
+  rw [Nat.cast_mul, ← one_div_mul_one_div]
+  congr 1
   push_cast
   ring
 

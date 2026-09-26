@@ -51,7 +51,8 @@ theorem harmonicMass_le_mul_progression (Q N : ℕ) (hQ : 0 < Q) :
       exact_mod_cast (by omega : Q * (n / Q) + 1 ≤ n + 1)
     _ = ∑ j ∈ range ((N - 1) / Q + 1),
         ∑ n ∈ (range N).filter (fun n => n / Q = j),
-          (1 : ℝ) / (Q * j + 1) := (sum_fiberwise_of_maps_to' hmap _).symm
+          (1 : ℝ) / (Q * j + 1) :=
+      (sum_fiberwise_of_maps_to' hmap (fun j : ℕ => (1 : ℝ) / (Q * j + 1))).symm
     _ ≤ ∑ j ∈ range ((N - 1) / Q + 1),
         (Q : ℝ) * ((1 : ℝ) / (Q * j + 1)) := by
       apply sum_le_sum

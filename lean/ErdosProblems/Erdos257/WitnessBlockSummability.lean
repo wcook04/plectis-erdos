@@ -46,12 +46,16 @@ theorem primeWeightedTerm_clause_layer_le (b : ℕ) (hb : 2 ≤ b) (C P : Finset
           ((b : ℝ) ^ ((P ∩ C).prod id ^ k * primeSetPart P m) - 1)) /
             ((C.prod id ^ k * m : ℕ) : ℝ) := by
       rw [primeWeightedTerm, primeSetPart_clause_layer C P hC k m (by omega)]
+      simp only [div_eq_mul_inv, mul_inv]
       ring
     _ ≤ ((((P ∩ C).prod id ^ k : ℕ) : ℝ) /
         ((b : ℝ) ^ ((P ∩ C).prod id ^ k) - 1)) /
           ((C.prod id ^ k * m : ℕ) : ℝ) :=
       div_le_div_of_nonneg_right hbound (Nat.cast_nonneg _)
-    _ = _ := by push_cast; ring
+    _ = _ := by
+      push_cast
+      simp only [div_eq_mul_inv, mul_inv]
+      ring
 
 theorem dyadic_harmonic_le_two_mul (r : ℕ) (hr : 1 ≤ r) :
     (∑ n ∈ Finset.range (2 ^ r), (1 : ℝ) / (n + 1)) ≤ 2 * r := by
@@ -110,7 +114,8 @@ theorem clauseFull_weighted_row_le (b : ℕ) (hb : 2 ≤ b) (C P : Finset ℕ)
   have hden : 0 < (b : ℝ) ^ x - 1 := sub_pos.mpr (one_lt_pow₀ hbR hx.ne')
   have hcoef : 0 ≤ (x : ℝ) / ((r : ℝ) * ((b : ℝ) ^ x - 1)) := by positivity
   change (∑ j : Fin (2 ^ r), primeWeightedTerm b P (r * (j.val + 1))) ≤ _
-  rw [Fin.sum_univ_eq_sum_range]
+  refine (Fin.sum_univ_eq_sum_range
+    (fun j => primeWeightedTerm b P (r * (j + 1))) (2 ^ r)).trans_le ?_
   calc
     (∑ j ∈ Finset.range (2 ^ r), primeWeightedTerm b P (r * (j + 1))) ≤
         ∑ j ∈ Finset.range (2 ^ r),
@@ -129,7 +134,6 @@ theorem clauseFull_weighted_row_le (b : ℕ) (hb : 2 ≤ b) (C P : Finset ℕ)
         2 * x / ((b : ℝ) ^ x - 1)
       have hrR : (r : ℝ) ≠ 0 := by exact_mod_cast hr.ne'
       field_simp [hrR, hden.ne']
-      ring
 
 /-- A witness meeting the clause has finite canonical weighted mass on the
 actual constructed set, even with arbitrary additional witness primes. -/
@@ -158,7 +162,7 @@ theorem summable_primeWeightedTerm_witnessClauseSupport_of_inter_nonempty
   have hs : Summable (fun x : clauseFullIndex (C.prod id) =>
       primeWeightedTerm b P (clauseFullPoint (C.prod id) x)) := by
     apply (summable_sigma_of_nonneg (fun x => clause_primeWeightedTerm_nonneg b hb P hP _)).mpr
-    exact ⟨fun k => summable_fintype _, by simpa only [tsum_fintype] using hrows⟩
+    exact ⟨fun k => (hasSum_fintype _).summable, by simpa only [tsum_fintype] using hrows⟩
   exact summable_indicator_of_cover (primeWeightedTerm b P) (witnessClauseSupport C)
     (clauseFullPoint (C.prod id)) (witnessClauseSupport_covered C) hs
 
