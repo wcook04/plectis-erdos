@@ -45,6 +45,15 @@ continuation state. Problem selection in `query_corpus.py` uses
 `--route erdos_<number>` or ordinary-language `--ask`; it has no `--problem`
 selector.
 
+The [argument graph](../../docs/ARGUMENT_GRAPH.md) gives the same frontier as
+the kernel sees it: the open targets of a problem, the theorems that reduce to
+them, the paper results that assume them, the open statements that are the
+target in other coordinates, and what each missing input would settle.
+
+```sh
+python3 scripts/query_continuations.py packet --problem 257
+```
+
 If a stewardship or consequence-propagation receipt exists, consume its
 source-pinned frontier before selecting work. Treat its ranking as a reasoned
 allocation input, not proof authority. Prefer the strongest attackable
@@ -69,7 +78,13 @@ returned material. Agreement between agents is not independent proof.
 ## 3. Run the research loop
 
 1. Re-read the current frontier and its relevant corpus neighbourhood.
-2. Check whether the proposed route or failure is already recorded.
+2. Check whether the proposed route or failure is already recorded. For a
+   proposed intermediate statement, ask the graph whether a corpus theorem
+   already supplies it, whether it lies in the target's disguise class (then it
+   is the target restated, and proving it is the whole problem), and which
+   kernel-checked results already constrain its objects:
+   `python3 scripts/query_continuations.py find "<text>"`, then `statement`
+   and `about <constant>`.
 3. Compare structurally different attacks; do not rename the same residual.
 4. Use exact computation where it can falsify or discriminate, not merely add
    more cases.
