@@ -44,4 +44,7 @@
 {"constants":["ToyCorpus.EvenP"],"key":"00000000bee646f5e1023789917401c5","origin":"residual","record":"statement","type":"ToyCorpus.EvenP 3"}
 {"constants":[],"key":"0000000095d6be2db7f6b3ed757843f0","origin":"residual","record":"statement","type":"3 ≥ 7"}
 {"constants":[],"key":"000000006a0d2a6d9592c03c2c4a0e86","origin":"residual","record":"statement","type":"∀ (n : Nat), n ≥ 7"}
-{"budget_exhausted_attempts":0,"elapsed_ms":222,"matches":17,"producer_relation":"lower_bound_prefiltered_by_conclusion_constants","record":"summary","statements_discovered":12,"statements_searched":12,"theorems":13,"truncated":false}
+{"conclusion":"00000000c2f4bb9a82d4f2e03de0b30b","hypotheses":[{"key":"0000000071522fda758e770326ee7bdd","producer":"ToyCorpus.both","reading":"and_right"}],"kernel_checked":true,"kernel_error":"","record":"composition","theorem":"ToyCorpus.uses_even_two","type":"True"}
+{"conclusion":"00000000c2f4bb9a82d4f2e03de0b30b","hypotheses":[{"key":"00000000ac5582ec3f672dc40b763728","producer":"ToyCorpus.supply_ge","reading":"conclusion"}],"kernel_checked":true,"kernel_error":"","record":"composition","theorem":"ToyCorpus.uses_guarded","type":"True"}
+{"conclusion":"00000000e7c0ef36dcf917cd4106dc49","hypotheses":[{"key":"00000000e7c0ef36dcf917cd4106dc49","producer":"ToyCorpus.supply_three","reading":"conclusion"}],"kernel_checked":true,"kernel_error":"","record":"composition","theorem":"ToyCorpus.uses_supply_three","type":"ToyCorpus.Supply 3"}
+{"budget_exhausted_attempts":0,"compositions":3,"elapsed_ms":287,"kernel_checked_compositions":3,"matches":17,"producer_relation":"lower_bound_prefiltered_by_conclusion_constants","record":"summary","statements_discovered":12,"statements_searched":12,"theorems":13,"truncated":false}

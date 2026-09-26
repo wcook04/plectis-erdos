@@ -27,7 +27,7 @@ permissions:
 jobs:
   export:
     runs-on: ubuntu-24.04
-    timeout-minutes: 330
+    timeout-minutes: 355
     env:
       GIT_CONFIG_NOSYSTEM: "1"
       GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
@@ -105,21 +105,35 @@ jobs:
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
 
+      # The search stops itself at its time budget; the outer timeout is a
+      # backstop so a stuck elaboration cannot consume the job and lose the
+      # partial stream. The builder labels a stream without a summary record as
+      # truncated rather than rejecting it.
       - name: Export the argument graph
+        timeout-minutes: 120
         env:
           PLECTIS_CONTINUATION_EXPORT_FILE: ${{ runner.temp }}/argument_continuations_export.jsonl
-          PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "7200"
+          PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "4500"
         run: |
-          set -euo pipefail
-          start=$(date +%s)
-          lake env lean scripts/export_argument_continuations.lean
-          end=$(date +%s)
-          echo "export seconds: $((end - start))"
-          tail -n 1 "$PLECTIS_CONTINUATION_EXPORT_FILE"
+          set -uo pipefail
           git rev-parse HEAD > "$RUNNER_TEMP/argument_continuations_source_revision.txt"
-          gzip -9 "$PLECTIS_CONTINUATION_EXPORT_FILE"
+          start=$(date +%s)
+          timeout --kill-after=60s 110m lake env lean scripts/export_argument_continuations.lean
+          status=$?
+          end=$(date +%s)
+          echo "export exit $status after $((end - start)) seconds"
+          tail -n 1 "$PLECTIS_CONTINUATION_EXPORT_FILE" || true
+          exit "$status"
 
-      - name: Upload the argument graph
+      - name: Compress the argument graph
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/argument_continuations_export.jsonl" ]; then
+            gzip -9 -f "$RUNNER_TEMP/argument_continuations_export.jsonl"
+          fi
+
+      - name: Upload the argument graph artifact
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: argument-continuations-${{ github.sha }}
@@ -127,4 +141,4 @@ jobs:
             ${{ runner.temp }}/argument_continuations_export.jsonl.gz
             ${{ runner.temp }}/argument_continuations_source_revision.txt
           retention-days: 14
-          if-no-files-found: error
+          if-no-files-found: warn

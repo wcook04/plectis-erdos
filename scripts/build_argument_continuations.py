@@ -85,13 +85,20 @@ def read_export(path: Path) -> list[dict[str, Any]]:
             try:
                 rows.append(json.loads(line))
             except json.JSONDecodeError as error:
+                if not line.endswith("\n"):
+                    print(f"warning: {path}:{line_number}: dropping a partially written final line",
+                          file=sys.stderr)
+                    break
                 raise SystemExit(f"{path}:{line_number}: invalid JSON line: {error}") from error
     if not rows or rows[0].get("record") != "meta":
         raise SystemExit(f"{path}: export does not start with a meta record")
     if rows[0].get("schema") != "plectis-argument-continuation-export/1":
         raise SystemExit(f"{path}: unexpected export schema {rows[0].get('schema')!r}")
     if not any(row.get("record") == "summary" for row in rows):
-        raise SystemExit(f"{path}: export has no summary record (truncated file?)")
+        # A stream cut off by the CI backstop: keep what was exported and say so.
+        print(f"warning: {path} has no summary record; treating the export as truncated", file=sys.stderr)
+        rows.append({"record": "summary", "truncated": True, "cut_off_before_summary": True,
+                     "theorems": sum(1 for row in rows if row.get("record") == "theorem")})
     return rows
 
 

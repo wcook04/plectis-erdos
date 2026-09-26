@@ -288,6 +288,7 @@ def tryProducer (cfg : Config) (xs : Array Expr) (localHyps : Array Expr)
         return none
 
 structure State where
+  direct : Std.HashMap String (Name × String) := {}
   seen : Std.HashSet String := {}
   queue : Array (Expr × String) := #[]
   processed : Nat := 0
@@ -333,6 +334,95 @@ def binderRows (cfg : Config) (env : Environment) (type : Expr) :
       ("constants", toJson (corpusConstants cfg env body))]
     if bodyClosed then conclusion := conclusion ++ [("key", toJson (keyOf body))]
     return (rows, closedHyps, Json.mkObj conclusion, if bodyClosed then some body else none)
+
+
+/-- A proof of the closed statement `statement` from a residual-free
+producer, rebuilt the way the search found it: introduce the statement's
+binders, apply the producer with metavariables, unify, discharge its
+remaining propositions from the introduced hypotheses or by instance
+synthesis, and close over the binders. -/
+def proveDirect (statement : Expr) (producer : Name) (reading : String) : MetaM (Option Expr) :=
+  forallTelescope statement fun xs matrix => do
+    let mut localHyps : Array Expr := #[]
+    for x in xs do
+      if ← isProp (← inferType x) then localHyps := localHyps.push x
+    let constant ← mkConstWithFreshMVarLevels producer
+    let (mvars, _, body) ← forallMetaTelescopeReducing (← inferType constant)
+    let target? : Option Expr :=
+      match reading with
+      | "conclusion" => some body
+      | "and_left" => if body.isAppOfArity ``And 2 then some body.appFn!.appArg! else none
+      | "and_right" => if body.isAppOfArity ``And 2 then some body.appArg! else none
+      | _ => none
+    let some target := target? | return none
+    unless ← isDefEq target matrix do return none
+    for m in mvars do
+      let id := m.mvarId!
+      if ← id.isAssigned then continue
+      let type ← instantiateMVars (← inferType m)
+      if let some inst ← (try synthInstance? type catch _ => pure none) then
+        id.assign inst
+        continue
+      if ← isProp type then
+        let mut done := false
+        for h in localHyps do
+          if ← isDefEq type (← inferType h) then
+            id.assign h
+            done := true
+            break
+        unless done do return none
+    let applied ← instantiateMVars (mkAppN constant mvars)
+    let proof ←
+      match reading with
+      | "and_left" => mkAppM ``And.left #[applied]
+      | "and_right" => mkAppM ``And.right #[applied]
+      | _ => pure applied
+    let closed ← instantiateMVars (← mkLambdaFVars xs proof)
+    if closed.hasMVar then return none
+    return some closed
+
+/-- Compose a conditional theorem with residual-free producers of each of
+its closed hypotheses and ask the kernel to check the result as a new
+theorem declaration (in a scratch environment). -/
+def composeAndCheck (info : ConstantInfo) (direct : Std.HashMap String (Name × String)) :
+    MetaM (Option Json) := do
+  unless info.levelParams.isEmpty do return none
+  let (mvars, _, body) ← forallMetaTelescope info.type
+  let mut used : Array Json := #[]
+  let mut anyHypothesis := false
+  for m in mvars do
+    let id := m.mvarId!
+    let type ← instantiateMVars (← inferType m)
+    if (← id.isAssigned) then continue
+    if let some inst ← (try synthInstance? type catch _ => pure none) then
+      id.assign inst
+      continue
+    unless ← isProp type do return none      -- a free data binder: nothing to compose
+    if type.hasMVar then return none         -- a hypothesis about a data binder
+    let key := keyOf type
+    let some (producer, reading) := direct.get? key | return none
+    let some proof ← proveDirect type producer reading | return none
+    unless ← isDefEq (← inferType proof) type do return none
+    id.assign proof
+    anyHypothesis := true
+    used := used.push (Json.mkObj [("key", toJson key), ("producer", toJson producer.toString),
+                                    ("reading", toJson reading)])
+  unless anyHypothesis do return none
+  let value ← instantiateMVars (mkAppN (mkConst info.name) mvars)
+  let type ← instantiateMVars body
+  if value.hasMVar || type.hasMVar || type.hasFVar then return none
+  let declName := `_argument_composition ++ info.name
+  let checked ← withoutModifyingEnv do
+    try
+      addDecl (.thmDecl { name := declName, levelParams := [], type, value })
+      pure (none : Option String)
+    catch ex => pure (some (← ex.toMessageData.toString))
+  return some <| Json.mkObj [
+    ("record", "composition"), ("theorem", toJson info.name.toString),
+    ("conclusion", toJson (keyOf type)), ("type", toJson (← render type)),
+    ("hypotheses", Json.arr used),
+    ("kernel_checked", toJson checked.isNone),
+    ("kernel_error", toJson (checked.map (clip · 400) |>.getD ""))]
 
 def exportAll : MetaM Unit := do
   let cfg ← readConfig
@@ -439,6 +529,14 @@ def exportAll : MetaM Unit := do
           emit stream row
           if (row.getObjValAs? String "status").toOption == some "matched" then
             state := { state with matchCount := state.matchCount + 1 }
+            let residualCount := match row.getObjVal? "residuals" with
+              | .ok (.arr xs) => xs.size
+              | _ => 1
+            let reading := (row.getObjValAs? String "reading").toOption.getD ""
+            let producer := (row.getObjValAs? String "producer").toOption.getD ""
+            if residualCount == 0 && !state.direct.contains key &&
+                (reading == "conclusion" || reading == "and_left" || reading == "and_right") then
+              state := { state with direct := state.direct.insert key (producer.toName, reading) }
           else if (row.getObjValAs? String "record").toOption == some "match" then
             state := { state with exhausted := state.exhausted + 1 }
           for r in residuals do state := enqueue state r "residual"
@@ -446,8 +544,26 @@ def exportAll : MetaM Unit := do
         emit stream <| Json.mkObj [
           ("record", "statement_error"), ("statement", toJson key),
           ("reason", toJson reason)]
+  -- Pass 3: compose conditional theorems whose closed hypotheses all have a
+  -- residual-free producer, and have the kernel check each composition.
+  let mut compositions := 0
+  let mut checkedCompositions := 0
+  for name in names do
+    if (← IO.monoMsNow) - startMs > cfg.timeBudgetMs + 1200000 then
+      state := { state with truncated := true }
+      break
+    let some info := env.find? name | continue
+    match ← budgeted 400000 (composeAndCheck info state.direct) with
+    | .ok (some row) =>
+        emit stream row
+        compositions := compositions + 1
+        if (row.getObjValAs? Bool "kernel_checked").toOption == some true then
+          checkedCompositions := checkedCompositions + 1
+    | _ => pure ()
   emit stream <| Json.mkObj [
     ("record", "summary"), ("theorems", toJson theoremCount),
+    ("compositions", toJson compositions),
+    ("kernel_checked_compositions", toJson checkedCompositions),
     ("statements_discovered", toJson state.queue.size),
     ("statements_searched", toJson state.processed),
     ("matches", toJson state.matchCount),

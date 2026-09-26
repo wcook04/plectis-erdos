@@ -174,6 +174,19 @@ def main() -> int:
     even2 = supplied("ToyCorpus.EvenP 2")
     expect(even2.get("both:and_right") == [], f"EvenP 2 supplied by a conjunct: {even2}")
 
+    compositions = [r for r in rows if r["record"] == "composition"]
+    by_theorem = {c["theorem"].split(".")[-1]: c for c in compositions}
+    guarded = by_theorem.get("uses_guarded")
+    expect(guarded is not None and guarded["kernel_checked"],
+           f"uses_guarded composes with supply_ge and the kernel accepts it: {compositions}")
+    even = by_theorem.get("uses_even_two")
+    expect(even is not None and even["kernel_checked"]
+           and even["hypotheses"][0]["reading"] == "and_right",
+           f"uses_even_two composes through a conjunct: {compositions}")
+    expect("uses_target" not in by_theorem, "an open hypothesis must not compose")
+    expect(summary["kernel_checked_compositions"] == sum(1 for c in compositions if c["kernel_checked"]),
+           "summary counts kernel-checked compositions")
+
     expect(summary["truncated"] is False, "toy export must not truncate")
     expect(summary["theorems"] == len(theorems), "summary theorem count")
 
