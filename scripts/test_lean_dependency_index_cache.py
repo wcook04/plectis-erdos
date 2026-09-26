@@ -538,7 +538,7 @@ def check_tracked_only_ignores_local_success() -> None:
              patch.object(builder, "check_input_fingerprint", return_value="sha256:current"), \
              patch.object(builder, "load_cached_check", side_effect=lambda **kw: load(output=output, **kw)), \
              patch.object(builder, "coordinated_export", side_effect=AssertionError("cheap check launched Lean")):
-            for contents in (None, "not-json", json.dumps({**receipt, "input_fingerprint": "sha256:old"})):
+            for contents in (None, "not-json", "[]", "null", json.dumps({**receipt, "input_fingerprint": "sha256:old"})):
                 if contents is not None:
                     tracked.write_text(contents, encoding="utf-8")
                 with patch.object(builder.sys, "argv", ["builder", "--check"]):
@@ -556,7 +556,7 @@ def check_ci_freshness_precedes_expensive_jobs() -> None:
     workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
     jobs = dict(re.findall(r"^  ([\w-]+):\n(.*?)(?=^  [\w-]+:|\Z)", workflow, re.M | re.S))
     gate = jobs["change_scope"]
-    command = "python3 scripts/build_lean_dependency_index.py --check --tracked-only"
+    command = "python3 scripts/refresh_projections.py --preflight"
     require(command in gate, "CI must check committed evidence before its dependent jobs")
     step = gate[gate.rfind("      - name:"):]
     require(command in step and "if:" not in step, "freshness gate is conditional or moved")

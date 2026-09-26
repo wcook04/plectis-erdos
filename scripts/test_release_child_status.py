@@ -27,13 +27,12 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
-    stale = subprocess.CompletedProcess([], 1, "", "stale committed dependency evidence")
-    with patch.object(check_release, "run", return_value=stale) as run, \
+    with patch.object(check_release.refresh_projections, "preflight", return_value=1) as preflight, \
+         patch.object(check_release, "missing_release_dependencies", return_value=[]), \
          patch.object(check_release, "check_proof_trust", side_effect=AssertionError("release continued past stale evidence")):
         require(check_release.main(["--singleflight-worker"]) == 1,
                 "release accepted stale dependency evidence")
-        require("--tracked-only" in run.call_args.args[0],
-                "release allows local cache to mask stale committed evidence")
+        preflight.assert_called_once_with()
 
     source = inspect.getsource(check_release)
     require("2>/dev/null" not in source, "release runner still discards stderr")

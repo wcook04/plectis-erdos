@@ -16,6 +16,26 @@ import run_release_check as release
 
 
 class ReleasePreparationTests(unittest.TestCase):
+    def setUp(self) -> None:
+        preflight = patch.object(release.refresh_projections, "preflight", return_value=0)
+        self.preflight = preflight.start()
+        self.addCleanup(preflight.stop)
+
+    def test_stale_source_evidence_stops_before_any_preparation(self) -> None:
+        for options in ([], ["--prepare-only"]):
+            with (
+                self.subTest(options=options),
+                patch.object(sys, "argv", ["run_release_check.py", *options]),
+                patch.object(release, "select_python") as select,
+                patch.object(release, "prepare_python") as install,
+                patch.object(release, "prepare_pilot") as build,
+            ):
+                self.preflight.return_value = 1
+                self.assertEqual(release.main(), 1)
+                select.assert_not_called()
+                install.assert_not_called()
+                build.assert_not_called()
+
     def test_selects_python_312_even_when_invoked_by_newer_python(self) -> None:
         with (
             patch.object(release.sys, "executable", "/python3.14"),

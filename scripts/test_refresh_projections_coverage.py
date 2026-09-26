@@ -22,6 +22,7 @@ import ast
 import re
 import subprocess
 from pathlib import Path
+from unittest.mock import patch
 
 import refresh_projections
 
@@ -82,14 +83,46 @@ def check_check_only_dispatch() -> None:
         refresh_projections.run = original
     dispatched = [Path(args[1]).relative_to(ROOT).as_posix() for args in calls]
     require(
-        sorted(dispatched) == sorted(refresh_projections.BUILDERS),
+        sorted(dispatched) == sorted((*refresh_projections.BUILDERS, *refresh_projections.CHECK_ONLY_BUILDERS)),
         "check-only dispatch dropped or duplicated a projection builder",
     )
+    require(
+        all("--tracked-only" in args for args in calls if Path(args[1]).name in (
+            "build_semantic_corpus.py", "build_lean_dependency_index.py",
+        )),
+        "portable evidence check can fall back to local receipts",
+    )
+
+
+def check_external_evidence_is_not_silently_omitted() -> None:
+    external = "scripts/build_lean_dependency_index.py"
+    for operation in (refresh_projections.refresh, refresh_projections.check_only):
+        calls = []
+
+        def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
+            calls.append(args)
+            failed = args[1] == str(ROOT / external)
+            return subprocess.CompletedProcess(args, int(failed), "", "stale receipt" if failed else "")
+
+        with patch.object(refresh_projections, "run", side_effect=run), \
+             patch.object(refresh_projections, "tracked_diff", return_value=set()):
+            require(operation() == 1, "projection pipeline reported success with stale external evidence")
+        require(all("--check" in args for args in calls if args[1] == str(ROOT / external)),
+                "Python refresh launched an implicit Lean export")
+
+    for failed in refresh_projections.PREFLIGHT_CHECKS:
+        def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
+            return subprocess.CompletedProcess(args, int(args[1] == str(ROOT / failed)), "", "fixture stale")
+        with patch.object(refresh_projections, "run", side_effect=run):
+            require(refresh_projections.preflight() == 1, f"preflight ignored {failed}")
 
 
 def main() -> int:
     source = CHECK_RELEASE.read_text(encoding="utf-8")
     checked = checked_builders(source)
+    require("refresh_projections.preflight()" in source, "release gate bypasses shared evidence preflight")
+    checked.update(Path(path).name for path in refresh_projections.PREFLIGHT_CHECKS
+                   if BUILDER_NAME.match(Path(path).name))
 
     # A parse that finds nothing would make every assertion below vacuous, so
     # the first thing this contract proves is that it can still see its input.
@@ -171,6 +204,7 @@ def main() -> int:
         "order a full refresh cannot converge",
     )
     check_check_only_dispatch()
+    check_external_evidence_is_not_silently_omitted()
 
     print(
         "refresh projection coverage: PASS; "

@@ -509,7 +509,8 @@ def receipt_matches(
     output_digest: str,
 ) -> bool:
     return (
-        receipt.get("schema") == CHECK_RECEIPT_SCHEMA
+        isinstance(receipt, dict)
+        and receipt.get("schema") == CHECK_RECEIPT_SCHEMA
         and receipt.get("builder_schema") == SCHEMA
         and receipt.get("input_fingerprint") == input_fingerprint
         and receipt.get("output_digest") == output_digest

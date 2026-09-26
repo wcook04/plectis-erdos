@@ -74,6 +74,15 @@ branch without a separate explicit instruction naming the exact target.
 
 ## Validate the proposed branch
 
+After the final source and projection edits, run
+`python3 scripts/refresh_projections.py --preflight` before preparing expensive
+validation or pushing. It checks the shipped evidence without compiling or
+installing anything. A valid local receipt does not establish that a fresh
+clone has current evidence. Follow the named builder on failure and commit its
+outputs and tracked receipt together. The full projection refresh also checks
+artifacts requiring a separate Lean export and reports that exact repair command;
+it must not silently declare them current or start an implicit Lean build.
+
 Run the narrow tests required by every changed subsystem, followed by the
 public-boundary and contribution-entry checks when relevant. Record exact
 commands, results, omissions, and environmental deferrals. A green test is
