@@ -31,17 +31,18 @@ libraries and makes four passes.
    either component, and discharges a producer's premises from the statement's
    own hypotheses where they match. What the producer still needs is closed
    over the binders it uses and searched in turn. A named proposition such as
-   `def G : Prop := …` is merged with the term it names. Unification is the
+   `def G : Prop := …` is merged with the term it names. For every hypothesis
+   it also searches for theorems proving the negation. Unification is the
    kernel's `isDefEq` under a heartbeat budget for each attempt; an exhausted
    budget is recorded as such, never as a missing producer.
 3. For every theorem whose closed hypotheses all have a producer with nothing
    left over, it builds the composed proof term and submits it to the kernel as
    a new declaration.
-4. For every closed statement that no corpus theorem supplies, it tries a fixed
-   battery of standard closing tactics (`decide`, `omega`, `norm_num`,
-   `simp_all`, `positivity`, `linarith`) after introducing binders and
-   unfolding the corpus definitions the statement mentions. A proof counts only
-   if the kernel accepts it.
+4. For every closed statement for which the search found no producer at all,
+   it tries a fixed battery of standard closing tactics (`decide`, `omega`,
+   `norm_num`, `simp_all`, `positivity`, `linarith`) after introducing binders
+   and unfolding the corpus definitions the statement mentions, and then the
+   same battery on its negation. A proof counts only if the kernel accepts it.
 
 The export runs in continuous integration
 ([workflow](../.github/workflows/argument-continuations.yml)) because it needs
@@ -54,12 +55,22 @@ computes the following from that stream.
 |---|---|
 | Reduction | A theorem that supplies a statement once its remaining hypotheses are supplied |
 | Supplied | Some reduction has every remaining hypothesis supplied (least fixpoint); the first such reduction is kept, so every supplied statement has a kernel witness chain |
+| Refuted | A theorem proving the negation has every remaining hypothesis supplied, or the battery proves the negation |
+| Vacuous theorem | A conditional theorem with a refuted closed hypothesis: it can never be applied |
 | Implication | A reduction left with exactly one open hypothesis |
 | Disguise class | Open statements that imply each other (a strongly connected component of implications): the same statement in different coordinates |
 | Bundle | A minimal set of open statements whose supply supplies a given statement |
 | Leverage | The open statements that become supplied when a given statement is supplied |
 | Criticality | The supplied statements that lose every witness chain when a given statement or theorem is withdrawn |
 | Composition | A statement supplied only by chaining a conditional theorem with hypotheses that other theorems prove |
+
+The [barrier registry](semantic/barriers.json) lists the corpus's barrier
+theorems: countermodels, endpoint equivalences, method ceilings, finite
+blindness results and scoped failures, each checked against its source by
+`scripts/check_barrier_registry.py`. The builder attaches each barrier to the
+open statements that mention its route predicates. What a barrier rules out is
+an authored reading of a kernel-checked declaration, and a formalised class of
+arguments can be narrower than the methods a specialist would try.
 
 Each theorem is joined to the paper results that cite it, short or long, with
 the label, the TeX line and the Comparator status recorded in the
@@ -80,6 +91,8 @@ python3 scripts/query_continuations.py statement <key>
 python3 scripts/query_continuations.py theorem <declaration>
 python3 scripts/query_continuations.py why <key>
 python3 scripts/query_continuations.py about <corpus constant>
+python3 scripts/query_continuations.py near "<objects of a proposed statement>"
+python3 scripts/query_continuations.py barriers --problem 249
 python3 scripts/query_continuations.py criticality <key or declaration>
 python3 scripts/query_continuations.py transfer
 python3 scripts/query_continuations.py diff <old graph> <new graph>
@@ -91,6 +104,17 @@ assume them, the disguise classes, the members of bundles with two or more
 open statements (each strictly weaker than the target it serves unless the
 kernel also proves the converse), and the open statements with the largest
 leverage.
+
+## Checking a new statement without a local build
+
+A corpus build needs several gigabytes. A research session without one can
+push scratch files under `research/probes/` to a `claude/kernel-probe-*` or
+`codex/kernel-probe-*` branch; the [kernel probe
+workflow](../.github/workflows/kernel-probe.yml) builds the corpus roots from
+the main-branch cache, runs each probe with `lake env lean` and uploads a
+verdict per file (`scripts/run_kernel_probes.py`). A probe is accepted when
+Lean exits cleanly with no error and no `sorry`; a result that matters moves
+into `lean/` through the ordinary landing path.
 
 ## What it establishes and what it does not
 
