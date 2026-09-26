@@ -574,7 +574,14 @@ class Graph:
         return cached
 
     def leverage(self, key: str, limit: int = 100000) -> set[str]:
-        """Open statements supplied once ``key`` is supplied."""
+        """Open statements supplied once ``key`` is supplied (memoised)."""
+        cache = self.__dict__.setdefault("_leverage_cache", {})
+        if key in cache:
+            return cache[key]
+        cache[key] = result = self._leverage(key, limit)
+        return result
+
+    def _leverage(self, key: str, limit: int) -> set[str]:
         if key in self.supplied:
             return set()
         remaining: dict[int, int] = {}
