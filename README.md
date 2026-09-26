@@ -15,6 +15,8 @@ infinite support `A` with finite base-two weighted mass
 `∑_{a∈A} 1/a`. The question for *every* infinite support remains open.
 [Longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf) ·
 [Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+An [ordinary construction with three prime choices](research/experiments/weighted_support_transfer/README.md#a-host-with-several-minimal-witnesses)
+shows how two primes can suffice even though no one prime is mandatory.
 Other seven programmes: [results guide](docs/RESULTS.md#problem-by-problem-guide).
 
 [#257 exercise](docs/research-commons/PROVE2ME_WEIGHTED_257_PACKET.md#try-changing-a-hypothesis) · [#243/#257 proofs](docs/research-commons/README.md#native-prove2me-theorems).

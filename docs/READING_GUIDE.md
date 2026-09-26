@@ -34,9 +34,11 @@ programme can suggest a different theorem in another. The
 [reading edition](reading-edition/README.md) gives a short research instruction
 and the opening of each short paper in one file. For #257, follow the weighted
 theorem, its averaging proof, the long record and Lean source. Then try the
-[changed-base exercise](../research/experiments/weighted_support_transfer/README.md):
-the failed sufficient test proves no rationality claim, and the universal
-question remains open. The
+[weighted-support examples](../research/experiments/weighted_support_transfer/README.md):
+one changes the base, and another constructs a host with three different
+minimal prime witnesses. The construction has an ordinary proof; Lean checks
+the conditional theorem it uses, not that particular host. A failed sufficient
+test proves no rationality claim, and the universal question remains open. The
 [dyadic shift exercise](../research/experiments/premise_exchange/shift_family_exercise.md)
 tests another change of hypothesis.
 

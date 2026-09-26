@@ -340,6 +340,15 @@ has been formalised separately in Lean.
 The comparison identifies the added class and proof mechanism, but does not
 settle independent novelty or priority assessment. See the
 [short paper's theorem, example and sources](papers/full-text/erdos-257-mersenne-support-subseries.md#an-example-beyond-reciprocal-summability).
+An [ordinary finite-witness construction](papers/full-text/erdos-257-mersenne-support-subseries.md#finite-rules-for-prime-witnesses)
+uses finite unions of prime-cofactor blocks to realise any nonconstant
+monotone rule for which finite prime sets make the weighted test converge.
+For three primes, any two suffice and none is individually mandatory.
+The [worked variants](../research/experiments/weighted_support_transfer/README.md#a-host-with-several-minimal-witnesses)
+compare this host with a different required-prime construction. The
+arithmetic construction is AI-assisted and has not been formalised in Lean
+or independently assessed for novelty; the conditional weighted theorem
+it uses is Lean-checked.
 At base two, the weighted condition can also be combined with the positive
 divisor-cover criterion: the long paper proves that a common finite averaging
 window makes both displacements small. Every infinite subset of their union

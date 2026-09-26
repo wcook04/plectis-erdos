@@ -212,6 +212,9 @@ python3 scripts/lean_fast_build.py --jobs 2 \
 [`DivisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean)
 states the fixed-base and hereditary clauses. The proof declaration is
 [`divisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+The weighted term and `FinitePrimeWeighted` definitions are in
+[`PrimeWeightedDefinitions.lean`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean),
+which the R7 interface imports.
 The R7 interface file's preamble describes the earlier development stage;
 its "missing" proof wording is not the current theorem status. Read the R8
 proof and the claim record above for that status. The R7 source remains at
