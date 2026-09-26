@@ -2469,6 +2469,14 @@ def main(argv: list[str] | None = None) -> int:
                 str(ROOT / "scripts" / "test_check_theory_lab_environment.py"),
                 "--fixtures-only",
             ],
+            "argument_graph_builder": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_build_argument_continuations.py"),
+            ],
+            "barrier_registry_source": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_barrier_registry.py"),
+            ],
             "reasoning_coordinates": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_reasoning_source_coordinates.py"),
