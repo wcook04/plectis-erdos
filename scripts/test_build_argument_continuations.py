@@ -118,9 +118,10 @@ def git_lean_tree() -> str | None:
 class ToyGraph(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        # Structural semantics on the toy's reductions; the battery (which
-        # proves the toy's easy statements outright) is tested separately.
-        cls.graph = builder.Graph(builder.read_export(FIXTURE), include_battery=False)
+        # Structural semantics on the toy's producer relation. The battery and
+        # the idle strengthenings (which prove the toy's easy statements
+        # outright) are tested separately.
+        cls.graph = builder.Graph(builder.read_export(FIXTURE), include_battery=False, include_idle=False)
         cls.graph.analyse()
         cls.key = {}
         for key, node in cls.graph.statements.items():
@@ -241,30 +242,46 @@ class ToyGraph(unittest.TestCase):
         hypotheses = {tuple(self.graph.theorems[f"ReviewToy.uses_s8_{s}"]["hypotheses"]) for s in "nmi"}
         self.assertEqual(len(hypotheses), 1)
 
-    def test_idle_rows(self) -> None:
-        entries = {e["theorem"].split(".")[-1]: e for e in self.graph.idle}
-        self.assertEqual(set(entries), {"fresh_of_open", "supply_ge", "supply_of_even", "uses_even_two",
-                                        "uses_guarded", "uses_named"})
-        self.assertTrue(entries["uses_named"]["reduction"])
-        self.assertEqual(entries["uses_named"]["dropped_open_without_idle"], [self.k("ToyCorpus.Target")])
-        self.assertEqual(entries["fresh_of_open"]["dropped_open_without_idle"], [self.k("ToyCorpus.OpenQ")])
-        self.assertEqual(builder.kernel_status(self.graph, "ToyCorpus.fresh_of_open", after_idle=True),
-                         "unconditional")
-        stronger = entries["fresh_of_open"].get("statement")
-        if stronger:
-            # An export that keys the stronger statement ∀ n, Fresh n supplies
-            # it through the idle row alone.
-            self.assertEqual(self.graph.reductions[self.graph.witness[stronger]][2], "idle")
-        else:
-            # Its conclusion Fresh n mentions the binder n: no reduction.
-            self.assertEqual(entries["fresh_of_open"]["reason"], "conclusion mentions a binder")
-        self.assertFalse(entries["supply_ge"]["reduction"])
-
     def test_idle_rows_can_be_left_out(self) -> None:
         graph = builder.Graph(builder.read_export(FIXTURE), include_battery=False, include_idle=False)
         graph.analyse()
         self.assertEqual(graph.idle, [])
         self.assertFalse([r for r in graph.reductions if r[2] == "idle"])
+
+
+class ToyGraphWithIdle(unittest.TestCase):
+    """Idle strengthenings on the toy, without the battery: a proof that never
+    uses a hypothesis proves the stronger statement, and the kernel accepted
+    each one the export lists."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.graph = builder.Graph(builder.read_export(FIXTURE), include_battery=False)
+        cls.graph.analyse()
+        cls.key = {}
+        for key, node in cls.graph.statements.items():
+            for text in [node["type"], *node.get("aliases", ())]:
+                cls.key[text] = key
+
+    def test_idle_rows(self) -> None:
+        entries = {e["theorem"].split(".")[-1]: e for e in self.graph.idle}
+        self.assertEqual(set(entries), {"fresh_of_open", "supply_ge", "supply_of_even", "uses_even_two",
+                                        "uses_guarded", "uses_named"})
+        # ∀ n, Fresh n is supplied only through fresh_of_open's idle row.
+        fresh = self.key["∀ (n : Nat), ToyCorpus.Fresh n"]
+        self.assertIn(fresh, self.graph.supplied)
+        self.assertEqual(self.graph.reductions[self.graph.witness[fresh]][2], "idle")
+        self.assertEqual(entries["fresh_of_open"]["dropped_open_without_idle"], [self.key["ToyCorpus.OpenQ"]])
+        self.assertEqual(builder.kernel_status(self.graph, "ToyCorpus.fresh_of_open", after_idle=True),
+                         "unconditional")
+
+    def test_idle_strengthening_supplies_the_toy_target(self) -> None:
+        # supply_of_even proves Supply n by rfl without using EvenP n, so the
+        # kernel accepts ∀ n, Supply n outright: Target, which the producer
+        # relation alone leaves open, is supplied, and OpenQ with it.
+        for text in ("∀ (n : Nat), ToyCorpus.Supply n", "ToyCorpus.Target", "ToyCorpus.OpenQ"):
+            self.assertIn(self.key[text], self.graph.supplied, text)
+        self.assertEqual(self.graph.disguise_classes(), [])
 
 
 class ToyGraphWithBattery(unittest.TestCase):

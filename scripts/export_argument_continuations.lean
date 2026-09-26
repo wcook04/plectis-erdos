@@ -588,6 +588,9 @@ def strengthenAndCheck (info : ConstantInfo) (idle : Array Nat) : MetaM (Option 
     return some <| Json.mkObj [
       ("record", "idle"), ("theorem", toJson info.name.toString),
       ("dropped", Json.arr dropped), ("type", toJson (← render strongerType)),
+      -- The stronger statement is closed (every binder is abstracted), so it
+      -- is a statement of the graph that the kernel just proved.
+      ("key", toJson (keyOf strongerType)),
       ("kernel_checked", toJson checked.isNone),
       ("kernel_error", toJson (checked.getD ""))]
 
