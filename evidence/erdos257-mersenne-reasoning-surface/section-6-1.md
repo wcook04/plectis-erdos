@@ -10,7 +10,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.fatal_absorbing`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L27)
+[`ErdosProblems.Erdos257.PaperCompleteR21.fatal_absorbing`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L27)
 
 ```lean
 theorem fatal_absorbing {x : ℝ} (hx : 0 ≤ x) :
@@ -44,7 +44,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_limit_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L560)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_limit_unconditional`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L560)
 
 ```lean
 theorem paper_seam_limit_unconditional :
@@ -58,21 +58,21 @@ theorem paper_seam_limit_unconditional :
         ∃ rows : ℕ → ℕ, SeamGreedyRemainderSubquadraticAlong rows)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L438)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L438)
 
 ```lean
 theorem tendsto_seamGreedyFiniteValue_greedyHalfTargetValue :
     Tendsto seamGreedyFiniteValue atTop (nhds greedyHalfTargetValue)
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.tendsto_seamGreedyNormalizedRemainder`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L537)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.tendsto_seamGreedyNormalizedRemainder`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L537)
 
 ```lean
 theorem tendsto_seamGreedyNormalizedRemainder :
     Tendsto seamGreedyNormalizedRemainder atTop (nhds seamGreedyLimitDeficit)
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.eventually_seamSupport_agrees`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L370)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.eventually_seamSupport_agrees`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L370)
 
 ```lean
 theorem eventually_seamSupport_agrees (K : ℕ) :
@@ -81,7 +81,7 @@ theorem eventually_seamSupport_agrees (K : ℕ) :
         ↔ d ∈ greedyMersenneSupport (1 / 2 : ℝ))
 ```
 
-5. [`ErdosProblems.Erdos257.PaperCompleteR21.seamScaledRem_eq_tailGreedyRemainder`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L259)
+5. [`ErdosProblems.Erdos257.PaperCompleteR21.seamScaledRem_eq_tailGreedyRemainder`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L259)
 
 ```lean
 theorem seamScaledRem_eq_tailGreedyRemainder {s : ℕ} (hs : 2 ≤ s) :
@@ -90,7 +90,7 @@ theorem seamScaledRem_eq_tailGreedyRemainder {s : ℕ} (hs : 2 ≤ s) :
         = tailGreedyRemainder (seamScaledTarget s) (seamScaledWeight s) m
 ```
 
-6. [`ErdosProblems.Erdos257.PaperCompleteR21.mem_seamGreedySupport_iff_scaled`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L332)
+6. [`ErdosProblems.Erdos257.PaperCompleteR21.mem_seamGreedySupport_iff_scaled`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L332)
 
 ```lean
 theorem mem_seamGreedySupport_iff_scaled {s d : ℕ} (hs : 2 ≤ s) (h2 : 2 ≤ d)
@@ -100,7 +100,7 @@ theorem mem_seamGreedySupport_iff_scaled {s d : ℕ} (hs : 2 ≤ s) (h2 : 2 ≤ 
           ≤ tailGreedyRemainder (seamScaledTarget s) (seamScaledWeight s) (d - 2)
 ```
 
-7. [`ErdosProblems.Erdos257.PaperCompleteR21.abs_supportValue_sub_le_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L398)
+7. [`ErdosProblems.Erdos257.PaperCompleteR21.abs_supportValue_sub_le_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean#L398)
 
 ```lean
 theorem abs_supportValue_sub_le_mersenneTail {A B : Set ℕ} {K : ℕ}
@@ -138,7 +138,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1425)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L1425)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
@@ -150,7 +150,7 @@ theorem half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_of_skipped_dyadicCap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1444)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_of_skipped_dyadicCap`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L1444)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_skipped_dyadicCap
@@ -188,7 +188,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparation`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L3118)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparation`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L3118)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_secondChannelSeparation
@@ -198,7 +198,7 @@ theorem half_mem_mersenneAchievementSet_of_secondChannelSeparation
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L3151)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L3151)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven
@@ -229,7 +229,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.straddle_all_depths_iff_mem`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L42)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.straddle_all_depths_iff_mem`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L42)
 
 ```lean
 theorem straddle_all_depths_iff_mem (t : ℝ) :
@@ -239,7 +239,7 @@ theorem straddle_all_depths_iff_mem (t : ℝ) :
       t ∈ mersenneAchievementSet
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.straddle_limiting_support_inputs`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L103)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.straddle_limiting_support_inputs`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean#L103)
 
 ```lean
 theorem straddle_limiting_support_inputs :
@@ -273,7 +273,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
@@ -281,13 +281,13 @@ theorem half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-2. [`Erdos249257.largestSkipLateAt_fourteen`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderLargestSkipInduction.lean#L73)
+2. [`Erdos249257.largestSkipLateAt_fourteen`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderLargestSkipInduction.lean#L73)
 
 ```lean
 theorem largestSkipLateAt_fourteen : LargestSkipLateAt 14
 ```
 
-where [`LargestSkipLateAt`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderLargestSkipInduction.lean#L27) is
+where [`LargestSkipLateAt`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderLargestSkipInduction.lean#L27) is
 
 ```lean
 def LargestSkipLateAt (s : ℕ) : Prop :=
@@ -295,7 +295,7 @@ def LargestSkipLateAt (s : ℕ) : Prop :=
     IsLargestFalseRank (seamGreedyWord s) d ∧ 2 * s < 3 * d
 ```
 
-3. [`Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L57)
+3. [`Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L57)
 
 ```lean
 theorem seamGreedy_terminal_false_iff_upperOrMiddle
@@ -329,7 +329,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2364)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2364)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_middleProducerCardEscape
@@ -337,7 +337,7 @@ theorem half_mem_mersenneAchievementSet_of_middleProducerCardEscape
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2371)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2371)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_middleProducerRowEscape
@@ -369,7 +369,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The hypotheses are the printed ones: row $D$ is middle through its two branch inequalities, where the natural-number subtraction is exact since $p_D^-<2^{D+1}$, and each later row $s$ is right, written as $D_{s+1}=D_s\cup\{s\}$. Under them the Lean statements prove $C_D<\Theta_D$, with $C_D=4\,\mathrm{rem}(D)-p_D^--4$ identified separately, and the bounds $0\le\Theta_D\le|F_D|$; they add a second conclusion, $\tfrac12-X_{D_D}(2)<w_D$.
 
-1. [`Erdos249257.middleProducer_allRight_forces_carry_lt_tail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1814)
+1. [`Erdos249257.middleProducer_allRight_forces_carry_lt_tail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1814)
 
 ```lean
 theorem middleProducer_allRight_forces_carry_lt_tail
@@ -394,7 +394,7 @@ theorem middleProducer_allRight_forces_carry_lt_tail
         (2 * D + 2)
 ```
 
-2. [`Erdos249257.middleProducer_allRight_forces_rational_skip`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1888)
+2. [`Erdos249257.middleProducer_allRight_forces_rational_skip`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L1888)
 
 ```lean
 theorem middleProducer_allRight_forces_rational_skip
@@ -411,7 +411,7 @@ theorem middleProducer_allRight_forces_rational_skip
       mersenneWeightRat D
 ```
 
-3. [`Erdos249257.producerCarry_insert_seamBelowSupport_eq_middleCoordinate`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderProducerLowerBound.lean#L150)
+3. [`Erdos249257.producerCarry_insert_seamBelowSupport_eq_middleCoordinate`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderProducerLowerBound.lean#L150)
 
 ```lean
 theorem producerCarry_insert_seamBelowSupport_eq_middleCoordinate
@@ -423,14 +423,14 @@ theorem producerCarry_insert_seamBelowSupport_eq_middleCoordinate
         ((seamAdjacentCut s hs).belowPulse : ℤ) - 4
 ```
 
-4. [`Erdos249257.binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GenericTailOrbitRigidity.lean#L78)
+4. [`Erdos249257.binaryCoeffTail_nonneg`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GenericTailOrbitRigidity.lean#L78)
 
 ```lean
 theorem binaryCoeffTail_nonneg (c : ℕ → ℕ) (N : ℕ) :
     0 ≤ binaryCoeffTail c N
 ```
 
-5. [`Erdos249257.binaryCoeffTail_supportCoeff_coe_finset_le_card`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L222)
+5. [`Erdos249257.binaryCoeffTail_supportCoeff_coe_finset_le_card`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L222)
 
 ```lean
 theorem binaryCoeffTail_supportCoeff_coe_finset_le_card
@@ -473,7 +473,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean hypothesis is the printed pair of conditions at every row $s\ge5$, with the branches $\mathrm M$ and $\mathrm R$ written as their defining inequalities, and the conclusion $\mathrm{rem}(s)\le2^s$ or $o_s\le2^s$ at every row $s\ge5$ is the printed one.
 
-[`Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448)
+[`Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4448)
 
 ```lean
 theorem SeamTwoSidedDyadicCellEscape.twoSided
@@ -502,7 +502,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The first Lean statement is the printed implication from the band condition to $1/2\in\mathcal A$. The second gives the band disjunction, with reset charge $4o_d+p_d^+$, at every actual upper reset $13\le d\le30$ and every $0\le j\le d$, and the third states the successor remainders $\mathrm{rem}(14)=392$ through $\mathrm{rem}(31)=4187487147$. Together they have the printed hypotheses and conclusions.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4790)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
@@ -510,7 +510,7 @@ theorem half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-2. [`Erdos249257.seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)
+2. [`Erdos249257.seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)
 
 ```lean
 theorem seamUpperResetDyadicBandEscape_through_thirty
@@ -526,7 +526,7 @@ theorem seamUpperResetDyadicBandEscape_through_thirty
           2 ^ (d - j + 1)
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean#L44)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean#L44)
 
 ```lean
 theorem paper_successor_remainders_fourteen_through_thirtyone :
@@ -575,7 +575,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L94)
+1. [`Erdos249257.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L94)
 
 ```lean
 theorem mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half
@@ -585,7 +585,7 @@ theorem mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half
     0 ≤ mobiusCenteredHalfCarry A N
 ```
 
-2. [`Erdos249257.HalfCarryReachability.integerHalfCarry_eq_scaled_residual_add_tail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCarryReachability.lean#L871)
+2. [`Erdos249257.HalfCarryReachability.integerHalfCarry_eq_scaled_residual_add_tail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCarryReachability.lean#L871)
 
 ```lean
 theorem integerHalfCarry_eq_scaled_residual_add_tail
@@ -618,14 +618,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.HalfCarryReachability.greedy_mobiusCenteredHalfCarry_nonneg`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCarryReachability.lean#L919)
+1. [`Erdos249257.HalfCarryReachability.greedy_mobiusCenteredHalfCarry_nonneg`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCarryReachability.lean#L919)
 
 ```lean
 theorem greedy_mobiusCenteredHalfCarry_nonneg (N : ℕ) :
     0 ≤ mobiusCenteredHalfCarry (greedyMersenneSupport (1 / 2 : ℝ)) N
 ```
 
-2. [`Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCarryReachability.lean#L834)
+2. [`Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCarryReachability.lean#L834)
 
 ```lean
 theorem greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
@@ -641,7 +641,7 @@ theorem greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
         (1 : ℝ) / 2
 ```
 
-3. [`Erdos249257.HalfCarryReachability.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCarryReachability.lean#L817)
+3. [`Erdos249257.HalfCarryReachability.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCarryReachability.lean#L817)
 
 ```lean
 theorem infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound
@@ -685,7 +685,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L633)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L633)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
@@ -693,7 +693,7 @@ theorem half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
     (1 / 2 : ℝ) ∈ mersenneAchievementSet
 ```
 
-2. [`Erdos249257.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L671)
+2. [`Erdos249257.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L671)
 
 ```lean
 theorem skippedSeamAlignmentZero_iff_skippedFullShellNonnegative :
@@ -701,7 +701,7 @@ theorem skippedSeamAlignmentZero_iff_skippedFullShellNonnegative :
       HalfGreedySkippedFullShellNonnegative
 ```
 
-3. [`Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L722)
+3. [`Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean#L722)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_of_skippedSeamEscape
@@ -729,7 +729,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_erdosSum_full_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L8328)
+[`Erdos249257.irrational_erdosSum_full_support`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L8328)
 
 ```lean
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
@@ -754,7 +754,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one; its set $A$ may formally contain $0$, which no infinite pairwise-coprime set does, since $\gcd(0,a)=a$.
 
-[`Erdos249257.irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L10776)
+[`Erdos249257.irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L10776)
 
 ```lean
 theorem irrational_erdosSupportSeries_pairwise_coprime (b : ℕ) (A : Set ℕ)
@@ -790,7 +790,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_coeff_series_of_weighted_coeff_block_certificates`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L8665)
+[`Erdos249257.irrational_coeff_series_of_weighted_coeff_block_certificates`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L8665)
 
 ```lean
 theorem irrational_coeff_series_of_weighted_coeff_block_certificates
@@ -822,7 +822,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.irrational_erdosSum_of_lcm_gap`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L5883)
+[`Erdos249257.irrational_erdosSum_of_lcm_gap`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L5883)
 
 ```lean
 theorem irrational_erdosSum_of_lcm_gap
@@ -856,14 +856,14 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The two Lean statements are the two irrationality claims for every $b\ge2$, indexed as printed by $k\ge0$. The remarks on the preceding least common multiples and gaps are elementary identities outside the Lean statements: $\operatorname{lcm}(1!,\ldots,k!)=k!$ with $(k+1)!-k!=k\,k!$, and $\operatorname{lcm}(1,2,\ldots,2^{k-1})=2^{k-1}$ with $2^k-2^{k-1}=2^{k-1}$.
 
-1. [`Erdos249257.irrational_erdosSum_factorial_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L6035)
+1. [`Erdos249257.irrational_erdosSum_factorial_support`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L6035)
 
 ```lean
 theorem irrational_erdosSum_factorial_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (Nat.factorial (k + 1)) - 1))
 ```
 
-2. [`Erdos249257.irrational_erdosSum_two_pow_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L6059)
+2. [`Erdos249257.irrational_erdosSum_two_pow_support`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L6059)
 
 ```lean
 theorem irrational_erdosSum_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
@@ -893,7 +893,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements give the printed identity and irrationality for $b\ge2$ and $d\ge1$. The Lean set of multiples of $d$ also contains $0$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.
 
-1. [`Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L9054)
+1. [`Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L9054)
 
 ```lean
 theorem erdosSupportSeries_multiples_eq_pow_base_full_support
@@ -902,7 +902,7 @@ theorem erdosSupportSeries_multiples_eq_pow_base_full_support
       = ∑' k : ℕ, (1 : ℝ) / (((b : ℝ) ^ d) ^ (k + 1) - 1)
 ```
 
-2. [`Erdos249257.irrational_erdosSupportSeries_multiples`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L9103)
+2. [`Erdos249257.irrational_erdosSupportSeries_multiples`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L9103)
 
 ```lean
 theorem irrational_erdosSupportSeries_multiples (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
@@ -930,7 +930,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement takes a set $A\subseteq\N$ with a positive element and asks for $n+m\in A\iff n\in A$ at every $n\ge1$. The printed support is such a set, since it is nonempty and lies in $\Npos$, so the Lean theorem gives the printed conclusion. It is more general only in allowing $0\in A$, whose term is $0$ under the convention $1/0=0$.
 
-[`ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean#L49)
+[`ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean#L49)
 
 ```lean
 theorem irrational_erdosSupportSeries_positivePeriodic
@@ -952,7 +952,7 @@ theorem irrational_erdosSupportSeries_positivePeriodic
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one and also allows $0\in A$, whose term $1/(b^0-1)$ is $0$ under the convention $1/0=0$.
 
-[`Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L11604)
+[`Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11604)
 
 ```lean
 theorem irrational_erdosSupportSeries_eventuallyPeriodic
@@ -980,7 +980,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with the residue $c$ taken in $\N$, which covers every class modulo $m$. The Lean class also contains $0$ when $m\mid c$, and that term is $0$ under the convention $1/0=0$.
 
-1. [`Erdos249257.irrational_erdosSupportSeries_residueClass`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L11672)
+1. [`Erdos249257.irrational_erdosSupportSeries_residueClass`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11672)
 
 ```lean
 theorem irrational_erdosSupportSeries_residueClass
@@ -988,7 +988,7 @@ theorem irrational_erdosSupportSeries_residueClass
     Irrational (erdosSupportSeries b {n : ℕ | n % m = c % m})
 ```
 
-2. [`Erdos249257.irrational_erdosSupportSeries_odd`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L11686)
+2. [`Erdos249257.irrational_erdosSupportSeries_odd`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L11686)
 
 ```lean
 theorem irrational_erdosSupportSeries_odd (b : ℕ) (hb : 2 ≤ b) :
@@ -1019,7 +1019,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The dichotomy and the two sign versions, with $c_w(n)\ge0$ for every $n\ge1$ or $c_w(n)\le0$ for every $n\ge1$ and $c_w$ nonzero at arbitrarily large $n$, are the three Lean statements. The Lean weight is defined on $\N$ and periodic from $0$, which for the printed $w$ means setting $w(0)=w(m)$; the term at $a=0$ is $0$ under the convention $1/0=0$, and $c_w(n)$ uses only positive divisors.
 
-1. [`Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L14175)
+1. [`Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L14175)
 
 ```lean
 theorem irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
@@ -1029,7 +1029,7 @@ theorem irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
       ∨ ∃ (k : ℕ) (z : ℤ), (b : ℝ) ^ k * intWeightedErdosSeries b w = (z : ℝ)
 ```
 
-2. [`Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L14583)
+2. [`Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L14583)
 
 ```lean
 theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero
@@ -1040,7 +1040,7 @@ theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently
     Irrational (intWeightedErdosSeries b w)
 ```
 
-3. [`Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/CertificateKernel.lean#L14643)
+3. [`Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/CertificateKernel.lean#L14643)
 
 ```lean
 theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero
@@ -1075,7 +1075,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L210)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L210)
 
 ```lean
 theorem paper_mersenne_channel_survival
@@ -1088,7 +1088,7 @@ theorem paper_mersenne_channel_survival
       ((h : ℚ) * paperB r).den
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival_of_coprime_scale`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L234)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival_of_coprime_scale`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L234)
 
 ```lean
 theorem paper_mersenne_channel_survival_of_coprime_scale
@@ -1101,7 +1101,7 @@ theorem paper_mersenne_channel_survival_of_coprime_scale
     (∏ p ∈ P, (2 ^ p - 1)) ∣ ((h : ℚ) * paperB r).den
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factor_gcd_eq_one`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L248)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factor_gcd_eq_one`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L248)
 
 ```lean
 theorem paper_channel_factor_gcd_eq_one
@@ -1110,7 +1110,7 @@ theorem paper_channel_factor_gcd_eq_one
       Nat.gcd (2 ^ p - 1) (2 ^ q - 1) = 1
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factors_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L260)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factors_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L260)
 
 ```lean
 theorem paper_channel_factors_pairwise_coprime
@@ -1118,28 +1118,28 @@ theorem paper_channel_factors_pairwise_coprime
     (P : Set ℕ).Pairwise fun p q => Nat.Coprime (2 ^ p - 1) (2 ^ q - 1)
 ```
 
-5. [`ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_divInt_paperA`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L118)
+5. [`ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_divInt_paperA`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L118)
 
 ```lean
 theorem paperB_eq_divInt_paperA {r : ℕ} (hr : Squarefree r) :
     paperB r = Rat.divInt (paperA r) (RadicalMobiusShadow.mersenne r : ℤ)
 ```
 
-6. [`ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_baseMobiusShadow`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L100)
+6. [`ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_baseMobiusShadow`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L100)
 
 ```lean
 theorem paperB_eq_baseMobiusShadow {r : ℕ} (hr : Squarefree r) :
     paperB r = RadicalMobiusShadow.baseMobiusShadow r
 ```
 
-7. [`ErdosProblems.Erdos257.PaperCompleteR21.paperA_eq_mobiusNumerator`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L83)
+7. [`ErdosProblems.Erdos257.PaperCompleteR21.paperA_eq_mobiusNumerator`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L83)
 
 ```lean
 theorem paperA_eq_mobiusNumerator {r : ℕ} (hr : Squarefree r) :
     paperA r = RadicalMobiusShadow.mobiusNumerator r
 ```
 
-8. [`ErdosProblems.Erdos257.PaperCompleteR21.channelProduct_coprime_mobiusNumerator_of_one_le`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L163)
+8. [`ErdosProblems.Erdos257.PaperCompleteR21.channelProduct_coprime_mobiusNumerator_of_one_le`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L163)
 
 ```lean
 theorem channelProduct_coprime_mobiusNumerator_of_one_le
@@ -1151,7 +1151,7 @@ theorem channelProduct_coprime_mobiusNumerator_of_one_le
       (RadicalMobiusShadow.mobiusNumerator r).natAbs
 ```
 
-9. [`ErdosProblems.Erdos257.PaperCompleteR21.upperHalfChannel_survivorProduct_dvd_den_of_one_le`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L187)
+9. [`ErdosProblems.Erdos257.PaperCompleteR21.upperHalfChannel_survivorProduct_dvd_den_of_one_le`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/MersenneChannelSurvivalAllHeights.lean#L187)
 
 ```lean
 theorem upperHalfChannel_survivorProduct_dvd_den_of_one_le
@@ -1247,7 +1247,7 @@ theorem upperHalfChannel_survivorProduct_dvd_den_of_one_le
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_lower_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MersenneShadowDenominatorGrowth.lean#L85)
+1. [`Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_lower_bound`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MersenneShadowDenominatorGrowth.lean#L85)
 
 ```lean
 theorem lcmHeight_scaledMobiusShadow_den_lower_bound
@@ -1257,7 +1257,7 @@ theorem lcmHeight_scaledMobiusShadow_den_lower_bound
         RadicalMobiusShadow.numericMobiusShadow (lcmHeight t)).den
 ```
 
-2. [`Erdos249257.MersenneShadowDenominatorGrowth.upperHalfMersenneProduct_lower_bound`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MersenneShadowDenominatorGrowth.lean#L60)
+2. [`Erdos249257.MersenneShadowDenominatorGrowth.upperHalfMersenneProduct_lower_bound`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MersenneShadowDenominatorGrowth.lean#L60)
 
 ```lean
 theorem upperHalfMersenneProduct_lower_bound {t : ℕ} (ht : 5 ≤ t) :
@@ -1265,7 +1265,7 @@ theorem upperHalfMersenneProduct_lower_bound {t : ℕ} (ht : 5 ≤ t) :
       ∏ p ∈ upperHalfPrimes t, RadicalMobiusShadow.mersenne p
 ```
 
-3. [`Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_exact`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MersenneShadowDenominatorGrowth.lean#L147)
+3. [`Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_exact`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MersenneShadowDenominatorGrowth.lean#L147)
 
 ```lean
 theorem lcmHeight_scaledMobiusShadow_den_exact (t : ℕ) :
@@ -1329,7 +1329,7 @@ theorem lcmHeight_scaledMobiusShadow_den_exact (t : ℕ) :
 
 The Lean declaration below states this result or one that implies it. The Lean statement is the printed identity, summed over the positive integers. Absolute convergence follows from $|\mu(d)|/(2^d-1)\le2^{1-d}$.
 
-[`MersenneLambertLadder.tsum_moebius_div_two_pow_sub_one_eq_half`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MersenneLambertLadder.lean#L587)
+[`MersenneLambertLadder.tsum_moebius_div_two_pow_sub_one_eq_half`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MersenneLambertLadder.lean#L587)
 
 ```lean
 theorem tsum_moebius_div_two_pow_sub_one_eq_half :
@@ -1360,7 +1360,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements give the identity $X_N(2)=\frac12+\sum_{d\ge2,\,\mu(d)=1}1/(2^d-1)$ and the conclusion $X_N(2)>\frac12$. The intermediate bound $X_N(2)\ge\frac12+\frac1{63}$ follows from the identity, since every term of the sum is nonnegative and the term at $d=6$ is $1/63$.
 
-1. [`Erdos249257.MobiusSignSupportNoGo.tsum_negativeMobius_eq_half_add_positiveMobiusTail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MobiusSignSupportNoGo.lean#L111)
+1. [`Erdos249257.MobiusSignSupportNoGo.tsum_negativeMobius_eq_half_add_positiveMobiusTail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MobiusSignSupportNoGo.lean#L111)
 
 ```lean
 theorem tsum_negativeMobius_eq_half_add_positiveMobiusTail :
@@ -1368,7 +1368,7 @@ theorem tsum_negativeMobius_eq_half_add_positiveMobiusTail :
       1 / 2 + ∑' d : ℕ+, positiveMobiusTailTerm d
 ```
 
-2. [`Erdos249257.MobiusSignSupportNoGo.half_lt_tsum_negativeMobius`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/MobiusSignSupportNoGo.lean#L164)
+2. [`Erdos249257.MobiusSignSupportNoGo.half_lt_tsum_negativeMobius`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/MobiusSignSupportNoGo.lean#L164)
 
 ```lean
 theorem half_lt_tsum_negativeMobius :
@@ -1399,7 +1399,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The equivalence is stated as printed, with $\N_{>0}\smallsetminus G$ written as the set of positive exponents omitted by the greedy rule for $1/2$. Irrationality of the full Mersenne sum $\sum_{n\ge1}1/(2^n-1)$, used in the forward direction, is the second Lean statement.
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L2583)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L2583)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite :
@@ -1407,7 +1407,7 @@ theorem half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite :
       (greedyMersenneSkippedSupport (1 / 2 : ℝ)).Infinite
 ```
 
-2. [`Erdos249257.irrational_erdosBorweinMersenneConstant`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L2469)
+2. [`Erdos249257.irrational_erdosBorweinMersenneConstant`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L2469)
 
 ```lean
 theorem irrational_erdosBorweinMersenneConstant :
@@ -1447,7 +1447,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. Items (1) to (5) and (7) are each proved equivalent to $1/2\in\mathcal A$, with branch $\mathrm R$ at row $s$ written as $D_{s+1}=D_s\cup\{s\}$ and the omitted ranks in (5) read off the greedy word of row $s_j$. Item (6) follows by combining the equivalence for (2) with the Lean equivalence between (2) and (6).
 
-1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
+1. [`Erdos249257.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight :
@@ -1455,7 +1455,7 @@ theorem half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight :
       ¬ SeamGreedyEventuallyRight
 ```
 
-2. [`Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L126)
+2. [`Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L126)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse :
@@ -1463,7 +1463,7 @@ theorem half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse :
       SeamGreedyUnboundedTerminalFalse
 ```
 
-3. [`Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L156)
+3. [`Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L156)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle :
@@ -1471,7 +1471,7 @@ theorem half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle :
       SeamGreedyUnboundedUpperOrMiddle
 ```
 
-4. [`Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L203)
+4. [`Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L203)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse :
@@ -1479,7 +1479,7 @@ theorem half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse :
       SeamGreedyCofinalTerminalFalse
 ```
 
-5. [`Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L213)
+5. [`Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L213)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong :
@@ -1487,7 +1487,7 @@ theorem half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong :
       ∃ rows : ℕ → ℕ, SeamGreedyUnboundedSkippedRanksAlong rows
 ```
 
-6. [`Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L228)
+6. [`Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L228)
 
 ```lean
 theorem unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite :
@@ -1495,7 +1495,7 @@ theorem unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite :
       (greedyMersenneSkippedSupport (1 / 2 : ℝ)).Infinite
 ```
 
-7. [`Erdos249257.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L235)
+7. [`Erdos249257.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L235)
 
 ```lean
 theorem half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip :
@@ -1527,7 +1527,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. With the seam right from row $S\ge5$ on and support $u\cup\{D+1,\ldots,S-1\}$ at row $S$, where $u\subseteq\{2,\ldots,D-1\}$ and $2\le D<S$, the Lean statements prove $X_u(2)+R_D<\frac12$ for the cofinite continuation $u\cup\{D+1,D+2,\ldots\}$ and $\frac12<X_{u\cup\{D\}}(2)$ for the upper competitor.
 
-1. [`Erdos249257.prefix_add_mersenneTail_lt_half_of_eventually_right`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFatalGapRightTail.lean#L402)
+1. [`Erdos249257.prefix_add_mersenneTail_lt_half_of_eventually_right`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFatalGapRightTail.lean#L402)
 
 ```lean
 theorem prefix_add_mersenneTail_lt_half_of_eventually_right
@@ -1542,7 +1542,7 @@ theorem prefix_add_mersenneTail_lt_half_of_eventually_right
       (1 / 2 : ℝ)
 ```
 
-2. [`Erdos249257.half_lt_upper_competitor_of_eventually_right`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/HalfCylinderFatalGapRightTail.lean#L627)
+2. [`Erdos249257.half_lt_upper_competitor_of_eventually_right`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/HalfCylinderFatalGapRightTail.lean#L627)
 
 ```lean
 theorem half_lt_upper_competitor_of_eventually_right
@@ -1583,35 +1583,35 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean lower bound is $2^{-n}+\tfrac13\,4^{-n}<R_n$, sharper than the printed $2^{-n}<R_n$, and this bound, the identity $R_n=w_{n+1}+R_{n+1}$ and $R_n\le2w_{n+1}$ hold for every $n\ge0$; the printed statement takes $n\ge1$, where $2w_{n+1}<w_n$ and $R_n<w_n$ are as printed. The remark on the totient weights is the arithmetic $\varphi(4)/2^4+\varphi(5)/2^5=\frac14=\varphi(3)/2^3$, outside the Lean statements.
 
-1. [`Erdos249257.mersenneTail_eq_weight_add`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L114)
+1. [`Erdos249257.mersenneTail_eq_weight_add`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L114)
 
 ```lean
 theorem mersenneTail_eq_weight_add (n : ℕ) :
     mersenneTail n = mersenneWeight (n + 1) + mersenneTail (n + 1)
 ```
 
-2. [`Erdos249257.halfTwoChannelCap_lt_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L1226)
+2. [`Erdos249257.halfTwoChannelCap_lt_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L1226)
 
 ```lean
 theorem halfTwoChannelCap_lt_mersenneTail (n : ℕ) :
     halfTwoChannelCap n < mersenneTail n
 ```
 
-3. [`Erdos249257.mersenneTail_le_two_mul_weight`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L155)
+3. [`Erdos249257.mersenneTail_le_two_mul_weight`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L155)
 
 ```lean
 theorem mersenneTail_le_two_mul_weight (n : ℕ) :
     mersenneTail n ≤ 2 * mersenneWeight (n + 1)
 ```
 
-4. [`Erdos249257.two_mul_mersenneWeight_succ_lt`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L125)
+4. [`Erdos249257.two_mul_mersenneWeight_succ_lt`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L125)
 
 ```lean
 theorem two_mul_mersenneWeight_succ_lt {n : ℕ} (hn : 0 < n) :
     2 * mersenneWeight (n + 1) < mersenneWeight n
 ```
 
-5. [`Erdos249257.mersenneTail_lt_weight`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/GreedyAchievementSet.lean#L180)
+5. [`Erdos249257.mersenneTail_lt_weight`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/Erdos249257/GreedyAchievementSet.lean#L180)
 
 ```lean
 theorem mersenneTail_lt_weight {n : ℕ} (hn : 0 < n) :

@@ -10,7 +10,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L272)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L272)
 
 ```lean
 theorem paper_one_orbit_stability
@@ -27,7 +27,7 @@ theorem paper_one_orbit_stability
           (mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)))
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.approx_orbit_induction`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L182)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.approx_orbit_induction`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L182)
 
 ```lean
 theorem approx_orbit_induction
@@ -43,7 +43,7 @@ theorem approx_orbit_induction
             (mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)))
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.tailGreedyRemainder_mersenne`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L166)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.tailGreedyRemainder_mersenne`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L166)
 
 ```lean
 theorem tailGreedyRemainder_mersenne (m : ℕ) :
@@ -71,7 +71,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L126)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L126)
 
 ```lean
 theorem paper_no_ties (k : ℕ) (hk : 2 ≤ k) :
@@ -79,21 +79,21 @@ theorem paper_no_ties (k : ℕ) (hk : 2 ≤ k) :
       greedyMersenneRemainder (1 / 2 : ℝ) (k - 1) ≠ mersenneTail k
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties_take`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L71)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties_take`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L71)
 
 ```lean
 theorem paper_no_ties_take (n : ℕ) :
     greedyMersenneRemainder (1 / 2 : ℝ) n ≠ mersenneWeight (n + 1)
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties_skip`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L114)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties_skip`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L114)
 
 ```lean
 theorem paper_no_ties_skip (n : ℕ) :
     greedyMersenneRemainder (1 / 2 : ℝ) n ≠ mersenneTail (n + 1)
 ```
 
-4. [`ErdosProblems.Erdos257.PaperCompleteR21.irrational_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L44)
+4. [`ErdosProblems.Erdos257.PaperCompleteR21.irrational_mersenneTail`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean#L44)
 
 ```lean
 theorem irrational_mersenneTail : ∀ n : ℕ, Irrational (mersenneTail n)
@@ -120,7 +120,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, and the uniqueness is stronger: every set $A\subseteq\mathbb N$ with $\sum_{n\in A}w_n^{(J)}=1/2$ is the greedy support, with no restriction to $A\subseteq\{2,3,\ldots\}$. The inequality $w_n^{(J)}>T_{n+1}^{(J)}$ holds for every $n\ge0$, and a rank $n$ is fatal when the greedy remainder before rank $n$ lies in $(T_{n+1}^{(J)},w_n^{(J)})$.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L486)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L486)
 
 ```lean
 theorem paper_forced_greedy_unique_support_and_criterion {J : ℕ} (hJ : 2 ≤ J) :
@@ -128,7 +128,7 @@ theorem paper_forced_greedy_unique_support_and_criterion {J : ℕ} (hJ : 2 ≤ J
       (HalfRung J ↔ ∀ n : ℕ, ¬ RungFatal J n)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L567)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L567)
 
 ```lean
 theorem paper_forced_greedy_low_ranks {J : ℕ} (hJ : 2 ≤ J) :
@@ -136,7 +136,7 @@ theorem paper_forced_greedy_low_ranks {J : ℕ} (hJ : 2 ≤ J) :
       2 ∈ rungGreedySupport J ∧ 3 ∈ rungGreedySupport J
 ```
 
-3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L147)
+3. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L147)
 
 ```lean
 theorem paper_forced_greedy_tail_lt_weight' {J : ℕ} (hJ : 2 ≤ J) (n : ℕ) :
@@ -155,7 +155,7 @@ theorem paper_forced_greedy_tail_lt_weight' {J : ℕ} (hJ : 2 ≤ J) (n : ℕ) :
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_parity_excludes_finite_support`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L176)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_parity_excludes_finite_support`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L176)
 
 ```lean
 theorem paper_parity_excludes_finite_support {J : ℕ} (hJ : 2 ≤ J)
@@ -189,7 +189,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_witness_exclusion`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L250)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_witness_exclusion`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L250)
 
 ```lean
 theorem paper_witness_exclusion {J n M : ℕ} (hJ : 3 ≤ J) (hn : 4 ≤ n)
@@ -218,7 +218,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_half_lcm_horizon`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L467)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_half_lcm_horizon`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L467)
 
 ```lean
 theorem paper_half_lcm_horizon {J n : ℕ} (hJ : 2 ≤ J) (hn4 : 4 ≤ n)
@@ -244,7 +244,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_mod_twelve_filter`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L544)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_mod_twelve_filter`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungWitnessHorizon.lean#L544)
 
 ```lean
 theorem paper_mod_twelve_filter {J M : ℕ} (hJ : 7 ≤ J)
@@ -269,7 +269,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_rung_finite_decision`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L896)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_rung_finite_decision`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean#L896)
 
 ```lean
 theorem paper_rung_finite_decision {J : ℕ} (hJ : 2 ≤ J) :
