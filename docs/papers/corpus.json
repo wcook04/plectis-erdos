@@ -4360,7 +4360,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:f416aae7069e05033ec6bb58a69f660fe37ce823cb3e06311e0e8e8119859733",
+      "source_sha256": "sha256:16d6e9dd68f0e21145acc771c5a996d4a68f6f211272db43fa33ccd186ebf86a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -5342,8 +5342,8 @@
       ],
       "citations_rendered": 41,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:aac336c1bd2a7775ca1527bed9be5dd27622974506fcb7a4f37245aa62a03395",
-      "pdf_byte_count": 796931,
+      "pdf_sha256": "sha256:2822938d8295bd8096ba11172df46e7c4a1d9c22da796184504e74d08ded549e",
+      "pdf_byte_count": 797294,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7634,7 +7634,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:a95860ed2e1af4038248300cdd62cc7e8b8833e2f5531f720f45a391c3d68846",
+      "source_sha256": "sha256:ecb905ae8e2ede0f2ed1d7dde3f747af652da1e469aed501dba0ccc0d79a35be",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7734,8 +7734,8 @@
       ],
       "citations_rendered": 49,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:13ee864e842de94844077262413aa137da48cb47996734d8dc35bfd8516afdab",
-      "pdf_byte_count": 128737,
+      "pdf_sha256": "sha256:512f503bf65007039a08597063accb56f3e7a19d129b0c376eea8d0d3fc95cff",
+      "pdf_byte_count": 129032,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7806,7 +7806,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:dc5dd4b37231bf70084adee1043b7423326ee2139b097aa2b400eadc361ae747",
+      "source_sha256": "sha256:7d629bd4139ae382eb72aa9c77e3303846f99c832f8800b3c0c6e9c2bd9f5289",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7936,8 +7936,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:4648b461a4ab85f24f4c9f5bf9ced1e7a295cda1e8b05ea84af463a7c51a8d62",
-      "pdf_byte_count": 87537,
+      "pdf_sha256": "sha256:bb085154793359bbd79de6dffb05b5277a61d615f6ba1eeef8eeb16e84a1b1cd",
+      "pdf_byte_count": 88652,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8008,7 +8008,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:93ed028ed9917075b4588e6cd4eef66966518071da9cd5607a53d1b0204069e0",
+      "source_sha256": "sha256:35a129f690176e6aa9eed97fe0b52f971f67502bd96891a4189a5df99d961654",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8186,32 +8186,32 @@
         {
           "level": 1,
           "id": "sec:execution",
-          "title": "The next decision",
+          "title": "The next decision and its dependencies",
           "line": 555
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 563
+          "line": 565
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 573
+          "line": 575
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 609
+          "line": 611
         }
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:7c4df5ffb4b6954d49f26a1283ca0c3bc9291f05927b657412bb9aff20ce442c",
-      "pdf_byte_count": 160008,
+      "pdf_sha256": "sha256:4159374e00fcfbace38a62143e350cc3077bfdcd6941fe4351ea7d775b490495",
+      "pdf_byte_count": 160573,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
