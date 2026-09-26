@@ -953,7 +953,11 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         "barriers_in_graph": sum(1 for e in barriers["entries"] if e["in_graph"]),
         "open_statements_constrained_by_barriers": len(barriers["constrains"]),
     }
+    dependency_index = load_json(root / "docs" / "lean_dependency_index.json") or {}
     source = {
+        # The Lean source fingerprint the committed dependency index was built
+        # from; query_continuations.py reports the graph stale when it changes.
+        "lean_source_fingerprint": dependency_index.get("source_fingerprint"),
         "export_digest": file_digest(export_path),
         "export_schema": graph.meta.get("schema"),
         "lean_version": graph.meta.get("lean_version"),

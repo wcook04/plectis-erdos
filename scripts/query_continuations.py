@@ -116,8 +116,19 @@ def statement_view(graph: builder.Graph, payload: dict[str, Any], key: str, *, d
     return view
 
 
+def freshness(payload: dict[str, Any]) -> dict[str, Any]:
+    """Whether the Lean sources changed since the graph was built."""
+    built = (payload.get("source") or {}).get("lean_source_fingerprint")
+    index = ROOT / "docs" / "lean_dependency_index.json"
+    current = json.loads(index.read_text(encoding="utf-8")).get("source_fingerprint") if index.is_file() else None
+    if not built or not current:
+        return {"state": "unknown", "built_from": built, "current": current}
+    return {"state": "current" if built == current else "stale", "built_from": built, "current": current}
+
+
 def cmd_summary(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
     return {
+        "freshness": freshness(payload),
         "source": payload.get("source"),
         "statements": len(graph.statements),
         "supplied": len(graph.supplied),
