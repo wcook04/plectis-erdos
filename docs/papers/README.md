@@ -388,7 +388,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 15 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 16 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [A theorem and the explanation it needs](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From corpus to insight](full-text/claim-faithful-publication-systems-paper.md#sec:production), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
