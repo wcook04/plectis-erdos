@@ -216,6 +216,17 @@ checked a whole chain as one term only where a composition row says so. A
 derived refutation follows recorded reductions backwards from a kernel
 refutation in the same way. The rest of the graph is navigation.
 
+A unification step that is wrong can make the graph report anything, so the
+builder watches for the plainest symptom. If `False`, or one of the registered
+open targets in `SENTINELS` (1/2 and 1/21 in the Mersenne achievement set, the
+irrationality of the #249 series), comes out supplied, or an open target comes
+out refuted, the build writes its outputs, lists each such statement with its
+witness chain under `sentinel_alarms`, exits with status 3 and writes no paper
+macros. The stream exported before the adversarial review tripped all four:
+producers that need a witness nobody has constructed had been counted as
+unconditional. An alarm is either a defect or a solution, and in both cases a
+person reads the witness chain before the graph is used.
+
 The producer search is a lower bound. It tries only corpus theorems as
 producers, prefilters them by the constants in their conclusions, and unfolds
 only named propositions without arguments. A statement reported open may
