@@ -43,6 +43,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import tomllib
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -50,6 +51,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from migrate_statement_presentation import bodies, presentation_form  # noqa: E402
+from lean_fast_build import source_imports  # noqa: E402
 from lean_source import (  # noqa: E402
     DECLARATION_HEAD_RE,
     lean_code_without_comments_and_strings,
@@ -66,7 +68,9 @@ SIDECAR_DIR = "paper/evidence"
 RECORD_DIR = "evidence"
 REPO_URL = "https://github.com/wcook04/plectis-erdos"
 CORPUS_URL = "https://github.com/wcook04/plectis-erdos-lean"
-SCHEMA = "plectis-paper-evidence/1"
+SCHEMA = "plectis-paper-evidence/2"
+SUPPORT_SCHEMA = "plectis-complete-source-support/1"
+PROPOSITION_KINDS = ("theorem", "lemma")
 RECEIPT_SCHEMA = "palomar_replay_receipt_v1"
 PERMITTED_AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
 
@@ -137,9 +141,135 @@ class LeanDeclaration:
     kind: str
     docstring: str | None
     statement: str          # as written, docstring and proof excluded
-    normalised: str         # comments removed, layout collapsed
+    normalised: str         # proposition: layout collapsed; support: versioned full source
     unfolds: tuple = ()     # ((name, path, line, text), ...) definitions the statement's type names
     named: str | None = None  # the identifier the statement's type consists of, if it is one
+
+
+class SourceSupport:
+    """Conservative complete module closure at one immutable Git revision.
+
+    Reuse the build planner's import-header reader and Lake source roots. Hash
+    full module bytes, including inherited fields, referenced definitions,
+    notation, attributes and commands; never guess semantic dependencies from
+    declaration text. External dependencies are bound by the complete lockfile,
+    toolchain and Lake configuration. An unrelated module is not in the closure.
+    """
+
+    def __init__(self, repo: Repo, commit: str) -> None:
+        self.repo, self.commit = repo, commit
+        self.modules: dict[str, str] | None = None
+        self.environment: dict[str, str] = {}
+        self.cache: dict[str, dict] = {}
+
+    def _index(self) -> None:
+        if self.modules is not None:
+            return
+        inputs = {}
+        for path in ("lean-toolchain", "lake-manifest.json", "lakefile.toml"):
+            data = self.repo.blob(self.commit, path)
+            if data is None:
+                raise EvidenceError(f"complete support binding requires {path} at {self.commit[:12]}")
+            inputs[path] = data
+        config = tomllib.loads(inputs["lakefile.toml"].decode())
+        manifest = json.loads(inputs["lake-manifest.json"])
+        if not isinstance(manifest, dict) or not isinstance(manifest.get("packages"), list):
+            raise EvidenceError("support dependency manifest must contain a package list")
+        for package in manifest["packages"]:
+            if not isinstance(package, dict):
+                raise EvidenceError("invalid support dependency manifest package")
+            if not re.fullmatch(r"[0-9a-f]{40}", str(package.get("rev", ""))):
+                raise EvidenceError("complete support binding requires immutable dependency revisions")
+        self.environment = {path: sha256_hex(data) for path, data in inputs.items()}
+        libraries = config.get("lean_lib", [])
+        if not isinstance(libraries, list) or any(not isinstance(row, dict) for row in libraries):
+            raise EvidenceError("invalid Lake library list in support binding")
+        roots = [""] + [row.get("srcDir", "") for row in libraries]
+        if any(not isinstance(r, str) or r.startswith("/") or ".." in Path(r).parts for r in roots):
+            raise EvidenceError("unsupported Lake source root in support binding")
+        roots = sorted(set(roots), key=len, reverse=True)
+        result = subprocess.run(["git", "-C", str(self.repo.root), "ls-tree", "-r", "--name-only", "-z",
+                                 self.commit], check=True, capture_output=True)
+        modules = {}
+        for path in result.stdout.decode().split("\0"):
+            if not path.endswith(".lean") or any(p.startswith(".") for p in Path(path).parts):
+                continue
+            prefix = next(r for r in roots if not r or path.startswith(r.rstrip("/") + "/"))
+            relative = path[len(prefix.rstrip("/")) + 1:] if prefix else path
+            module = relative[:-5].replace("/", ".")
+            if module in modules and modules[module] != path:
+                raise EvidenceError(f"ambiguous module {module} in support binding")
+            modules[module] = path
+        self.modules = modules
+
+    def closure(self, path: str) -> dict:
+        if path in self.cache:
+            return self.cache[path]
+        self._index()
+        assert self.modules is not None
+        owners = [m for m, p in self.modules.items() if p == path]
+        if len(owners) != 1:
+            raise EvidenceError(f"{path} has no unique module in support binding")
+        pending = [owners[0]]
+        hashes = {}
+        external = set()
+        namespaces = {m.split(".", 1)[0] for m in self.modules}
+        while pending:
+            module = pending.pop()
+            if module in hashes:
+                continue
+            source_path = self.modules[module]
+            data = self.repo.blob(self.commit, source_path)
+            if data is None:
+                raise EvidenceError(f"missing support dependency {source_path}")
+            hashes[module] = sha256_hex(data)
+            try:
+                imports = source_imports(data.decode(), source_path)
+            except RuntimeError as error:
+                raise EvidenceError(str(error)) from error
+            for imported in imports:
+                if imported in self.modules:
+                    pending.append(imported)
+                elif imported.split(".", 1)[0] in namespaces:
+                    raise EvidenceError(f"missing local support dependency {imported}")
+                else:
+                    external.add(imported)
+        result = {"schema": SUPPORT_SCHEMA, "root_module": owners[0],
+                  "modules": dict(sorted(hashes.items())), "external_imports": sorted(external),
+                  "environment": self.environment}
+        result["sha256"] = sha256_hex(json.dumps(result, sort_keys=True, separators=(",", ":")).encode())
+        self.cache[path] = result
+        return result
+
+    def identity(self, declaration: LeanDeclaration) -> dict:
+        closure = self.closure(declaration.path)
+        result = {"schema": SUPPORT_SCHEMA, "declaration": declaration.name,
+                  "kind": declaration.kind, "source_closure": closure}
+        result["sha256"] = sha256_hex(json.dumps(result, sort_keys=True, separators=(",", ":")).encode())
+        return result
+
+
+def validate_support_transport(source: dict, target: dict, binding: dict, *,
+                               consumer: str, association: dict, receipt: dict,
+                               solution_closure: dict) -> None:
+    """Bind a definition to one exact checked consumer, never to existence.
+
+    Version 1 only accepts identical complete source environments. A compiler,
+    dependency or representation change needs separately checked transport;
+    authored hashes alone cannot assert equivalence across that change.
+    """
+    if binding.get("schema") != SUPPORT_SCHEMA or binding.get("role") != "support_only":
+        raise EvidenceError("support binding must be versioned support_only; it cannot witness existence")
+    if source != target or binding.get("identity") != source:
+        raise EvidenceError("support identity or complete source environment differs; checked transport required")
+    if binding.get("consumer") != consumer or binding.get("entry") != association.get("entry") or \
+            binding.get("challenge") != association.get("challenge"):
+        raise EvidenceError("support binding does not name its exact selected consumer")
+    if receipt.get("entry") != association.get("entry") or \
+            association.get("challenge") not in receipt.get("theorem_names", []):
+        raise EvidenceError("support binding uses an unrelated receipt")
+    if source["source_closure"]["root_module"] not in solution_closure["modules"]:
+        raise EvidenceError("support declaration is outside the checked Solution import closure")
 
 
 def named_proposition(normalised: str) -> str | None:
@@ -253,7 +383,10 @@ def lean_declaration(source: LeanFile, path: str, declaration: str, *, allow_suf
             block = "".join(lines[j:k + 1]).strip()
             block = block[block.index("/--") + 3:]
             docstring = block[: block.rindex("-/")].strip() or None
-    if kind not in ("theorem", "lemma"):
+    if kind not in PROPOSITION_KINDS:
+        # Never use a declaration header as a definition or structure identity.
+        # Display remains bounded, but identity includes every byte of this module.
+        normalised = SUPPORT_SCHEMA + "\n" + text
         # A definition is shown whole: its body is what the paper's statement reads.
         tail = text[end:]
         stop = re.search(r"\n\s*\n", tail)
@@ -436,8 +569,17 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
     relations = load_json(root / RELATIONS) if (root / RELATIONS).is_file() else {"rows": {}}
     here = Repo(root)
     pin = ledger["lean_pin"]
+    support_source = SourceSupport(here, pin)
+    support_corpus = SourceSupport(corpus, config["corpus_commit"]) if corpus else None
     if not here.has_commit(pin):
         problems.add("ledger", f"lean_pin {pin} is not in this repository's history")
+    try:
+        dependency_manifest = json.loads(here.text(pin, "lake-manifest.json") or "{}")
+        if not isinstance(dependency_manifest, dict) or not isinstance(dependency_manifest.get("packages", []), list):
+            raise ValueError("dependency manifest must contain a package list")
+    except ValueError as error:
+        problems.add("ledger", str(error))
+        dependency_manifest = {}
     corpus_commit = config["corpus_commit"]
     run_id = str(config["replay"]["run_id"])
     receipts_dir = root / config["replay"]["receipts"]
@@ -589,6 +731,24 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             problems.add(where, f"corpus {path}: {exc}")
             return None
 
+    support_identities: dict[tuple[str, str], dict] = {}
+
+    def support_identity(d: LeanDeclaration, where: str) -> dict | None:
+        key = (d.path, d.name)
+        if key not in support_identities:
+            try:
+                support_identities[key] = support_source.identity(d)
+            except (EvidenceError, ValueError) as error:
+                problems.add(where, str(error))
+                return None
+        return support_identities[key]
+
+    def declaration_stamp(d: LeanDeclaration, where: str) -> str:
+        if d.kind in PROPOSITION_KINDS:
+            return sha256_hex(d.normalised.encode())
+        identity = support_identity(d, where)
+        return identity["sha256"] if identity else "unresolved-support"
+
     rows_by_paper: dict[str, list[dict]] = {}
     for row in ledger["rows"]:
         rows_by_paper.setdefault(row["paper_id"], []).append(row)
@@ -663,7 +823,7 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             relation = None
             if status == "exact_or_stronger":
                 note = relations["rows"].get(row["id"])
-                stamp = {d.name: sha256_hex(d.normalised.encode()) for d in decls}
+                stamp = {d.name: declaration_stamp(d, where) for d in decls}
                 if note is None:
                     if require_relations:
                         problems.add(where, "exact_or_stronger row without an authored relation note")
@@ -676,6 +836,10 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             if row["comparator"]["status"] == "compared":
                 checks = []
                 for d in decls:
+                    if d.kind not in PROPOSITION_KINDS:
+                        problems.add(where, f"{d.name} is support, not a selected proposition; "
+                                     "a conditional consumer cannot witness structure existence")
+                        continue
                     link = associations["declarations"].get(d.name)
                     if link is None:
                         problems.add(where, f"{d.name} has no Comparator association")
@@ -711,6 +875,9 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                     if corpus is not None:
                         if challenge is None or solution is None:
                             continue
+                        if challenge.kind not in PROPOSITION_KINDS or solution.kind not in PROPOSITION_KINDS:
+                            problems.add(where, "Comparator endpoints must be exact selected propositions")
+                            continue
                         vendored_path = d.path[len("lean/"):] if d.path.startswith("lean/") else d.path
                         vendored = corpus_decl(d.name, vendored_path, where, allow_suffix=True)
                         if vendored is None:
@@ -743,6 +910,40 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                                   "checks": checks}
             elif row["comparator"]["status"] == "pending":
                 comparator = {"status": "pending"}
+            supporting = []
+            for item in row["lean"].get("supporting_declarations", []):
+                d = pin_decl(item["name"], item["file"], where)
+                if d is None:
+                    continue
+                if d.kind in PROPOSITION_KINDS:
+                    problems.add(where, f"{d.name} is a proposition, not a supporting definition")
+                    continue
+                identity = support_identity(d, where)
+                binding = (associations.get("support_declarations") or {}).get(d.name, {})
+                consumer = item.get("consumer")
+                accepted = {c["declaration"]: c for c in (comparator or {}).get("checks", [])}
+                if consumer not in accepted or identity is None:
+                    problems.add(where, f"{d.name}: support needs its exact accepted proposition consumer")
+                    continue
+                link = associations["declarations"][consumer]
+                got = receipt(link["entry"], where)
+                if support_corpus is None or got is None:
+                    problems.add(where, f"{d.name}: support transport requires committed corpus source")
+                    continue
+                vendored_path = d.path[len("lean/"):] if d.path.startswith("lean/") else d.path
+                vendored = corpus_decl(d.name, vendored_path, where, allow_suffix=True)
+                if vendored is None:
+                    continue
+                try:
+                    solution_closure = support_corpus.closure(accepted[consumer]["solution"]["path"])
+                    validate_support_transport(identity, support_corpus.identity(vendored), binding,
+                        consumer=consumer, association=link, receipt=got, solution_closure=solution_closure)
+                except (EvidenceError, ValueError) as error:
+                    problems.add(where, f"{d.name}: {error}")
+                    continue
+                supporting.append({"name": d.name, "path": d.path, "role": "support_only",
+                                   "consumer": consumer, "identity": identity,
+                                   "binding": binding, "solution_closure": solution_closure})
             mark = None
             if status in ("exact", "exact_or_stronger"):
                 mark = "lean"
@@ -787,10 +988,13 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                                         prev.get("lean", {}).get("reason") == row["lean"].get("reason") else
                                         tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all)),
                     "relation_note": relation,
+                    **({"supporting_declarations": supporting} if row["lean"].get("supporting_declarations") else {}),
                     "declarations": [
                         {"name": d.name, "path": d.path, "line": d.line, "kind": d.kind,
                          "docstring": d.docstring, "statement": d.statement,
-                         "statement_sha256": sha256_hex(d.normalised.encode()),
+                         "statement_sha256": declaration_stamp(d, where),
+                         **({"identity_rule": SUPPORT_SCHEMA, "support_identity": support_identity(d, where)}
+                            if d.kind not in PROPOSITION_KINDS else {}),
                          "unfolds": [{"name": u[0], "path": u[1], "line": u[2], "text": u[3]}
                                      for u in (d.unfolds or ((pin_definition(d.named, d.name),) if d.named and pin_definition(d.named, d.name) else ()))]}
                         for d in decls
@@ -813,8 +1017,8 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
         "lean_repository": REPO_URL,
         "lean_pin": pin,
         "lean_toolchain": (here.text(pin, "lean-toolchain") or "").strip(),
-        "mathlib": next((p.get("rev") for p in json.loads(here.text(pin, "lake-manifest.json") or "{}").get("packages", [])
-                         if p.get("name") == "mathlib"), None),
+        "mathlib": next((p.get("rev") for p in dependency_manifest.get("packages", [])
+                         if isinstance(p, dict) and p.get("name") == "mathlib"), None),
         "corpus_repository": CORPUS_URL,
         "corpus_commit": corpus_commit,
         "corpus_archive_tag": config.get("corpus_archive_tag"),
@@ -1185,6 +1389,25 @@ def main(argv: list[str] | None = None) -> int:
         evidence = previous
         ledger = load_json(root / LEDGER)
         mapped = {r["id"]: r for p in previous["papers"] for r in p["results"]}
+        support_source = SourceSupport(Repo(root), ledger["lean_pin"])
+        if previous.get("schema") != SCHEMA:
+            problems.add(EVIDENCE_MAP, "legacy identity schema; regenerate complete support identities")
+        for paper in previous["papers"]:
+            for result in paper["results"]:
+                for d in result["lean"]["declarations"]:
+                    if d.get("kind") in PROPOSITION_KINDS:
+                        continue
+                    try:
+                        source = support_source.repo.text(ledger["lean_pin"], d["path"])
+                        if source is None:
+                            raise EvidenceError("support source absent at Lean pin")
+                        actual = support_source.identity(lean_declaration(LeanFile(source), d["path"],
+                                                                         d["name"], allow_suffix=True))
+                        if d.get("identity_rule") != SUPPORT_SCHEMA or d.get("support_identity") != actual or \
+                                d.get("statement_sha256") != actual["sha256"]:
+                            raise EvidenceError("legacy or stale complete support identity; regenerate")
+                    except (EvidenceError, ValueError) as error:
+                        problems.add(result["id"], str(error))
         if previous.get("lean_pin") != ledger["lean_pin"]:
             problems.add(EVIDENCE_MAP, "was resolved at a different Lean pin than the ledger's")
         for row in ledger["rows"]:
@@ -1199,6 +1422,41 @@ def main(argv: list[str] | None = None) -> int:
                 problems.add(row["id"], "the evidence map records different Lean evidence than the ledger")
             if r["comparator"]["status"] != row["comparator"]["status"]:
                 problems.add(row["id"], "the evidence map records a different Comparator status than the ledger")
+            requested_support = row["lean"].get("supporting_declarations", [])
+            recorded_support = r["lean"].get("supporting_declarations", [])
+            support_key = lambda d: (d.get("name"), d.get("path", d.get("file")), d.get("consumer"))
+            if [support_key(d) for d in requested_support] != [support_key(d) for d in recorded_support]:
+                problems.add(row["id"], "the evidence map records different supporting declarations than the ledger")
+            associations = load_json(root / ASSOCIATIONS)
+            accepted = {c["declaration"]: c for c in r["comparator"].get("checks", [])}
+            for d in recorded_support:
+                try:
+                    source = support_source.repo.text(ledger["lean_pin"], d["path"])
+                    if source is None:
+                        raise EvidenceError("support source absent at Lean pin")
+                    actual = support_source.identity(lean_declaration(LeanFile(source), d["path"],
+                                                                     d["name"], allow_suffix=True))
+                    consumer = d.get("consumer")
+                    link = associations["declarations"].get(consumer)
+                    binding = (associations.get("support_declarations") or {}).get(d["name"])
+                    check = accepted.get(consumer)
+                    if not link or not check or not binding or d.get("binding") != binding or \
+                            d.get("role") != "support_only" or \
+                            r["comparator"].get("commit") != config["corpus_commit"] or \
+                            str(r["comparator"].get("run_id")) != str(config["replay"]["run_id"]) or \
+                            check.get("entry") != link.get("entry") or \
+                            check.get("challenge", {}).get("declaration") != link.get("challenge"):
+                        raise EvidenceError("support binding differs from its exact accepted proposition consumer")
+                    receipt_path = root / config["replay"]["receipts"] / f"receipt-{link['entry']}.json"
+                    got = load_json(receipt_path)
+                    if got.get("verification", {}).get("outcome") != "passed" or got.get("exit") != 0 or \
+                            got.get("github", {}).get("sha") != config["corpus_commit"] or \
+                            str(got.get("github", {}).get("run_id")) != str(config["replay"]["run_id"]):
+                        raise EvidenceError("support consumer receipt is stale or unsuccessful")
+                    validate_support_transport(actual, d.get("identity"), binding, consumer=consumer,
+                        association=link, receipt=got, solution_closure=d.get("solution_closure", {"modules": {}}))
+                except (EvidenceError, ValueError, OSError) as error:
+                    problems.add(row["id"], str(error))
         for extra in mapped:
             problems.add(extra, "is in the evidence map but not in the ledger")
     expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "",

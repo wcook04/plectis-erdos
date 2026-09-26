@@ -1,6 +1,6 @@
 {
  "schema": "plectis-paper-evidence-relations/1",
- "rule": "For each exact_or_stronger result: one sentence saying how the Lean statement implies the printed one. statement_sha256 and lean_statements record what the sentence was written against; a change to either invalidates it.",
+ "rule": "For each exact_or_stronger result: one sentence saying how the Lean statement implies the printed one. statement_sha256 and lean_statements record what the sentence was written against; a change to either invalidates it. Non-proposition stamps use the versioned complete source and transitive import binding in paper_evidence.py; legacy header-only stamps require review, never automatic migration.",
  "rows": {
   "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample": {
    "note": "The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\\{|f|<1\\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\\{|f|<1\\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.",

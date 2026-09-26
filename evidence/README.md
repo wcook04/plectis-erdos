@@ -25,3 +25,38 @@ The records, the margin links (`paper/evidence/`) and `paper_evidence.json` are 
 `comparator/associations.json`, the replay reports and `relations.json`; do not edit them by
 hand. `config.json` pins the corpus commit, the replay run and the commit of the records the
 papers link to.
+
+Definition and structure identity uses `plectis-complete-source-support/1`.
+It includes the full owning module and every local module in its transitive
+import closure, read from the pinned Git revision with the build planner's
+import-header reader. Full file bytes cover fields, inherited requirements,
+referenced definitions, notation and commands. The toolchain, dependency lock
+and Lake configuration are bound separately. Display limits never limit this
+identity; changing an unrelated module leaves it unchanged.
+
+The evidence map is version 2. For non-theorem declarations, `statement_sha256`
+now identifies this complete support binding, and `identity_rule` names the
+rule. Legacy header-only hashes cannot validate a relation note under this
+rule. Theorem statement hashes retain their existing meaning. The three
+non-theorem occurrences in this migration already withheld Comparator marks:
+the two `qZeta` occurrences remain named-input rows, and
+`record:257bm-c5` remains pending. No accepted Comparator proposition is
+revoked or promoted by this migration.
+
+A support declaration cannot satisfy a proposition obligation. Optional
+`lean.supporting_declarations` records have a separate `consumer` naming a
+proposition already selected in the same row. The matching
+`comparator/associations.json::support_declarations` entry must carry the schema,
+`role: support_only`, complete `identity`, and exact `consumer`, `entry` and
+`challenge`. The resolver checks the existing proposition association and
+successful replay first, then requires the support module to be in that
+Solution's import closure. Version 1 accepts only identical complete source and
+dependency environments. Changed representations, toolchains or dependencies
+need independently checked transport; hash assertions do not establish that
+transport.
+
+A consumer that assumes a structure proves only its stated conditional
+conclusion. Adding a support binding cannot establish an instance or turn that
+consumer into an existence theorem. A required structure left among a row's
+proposition declarations therefore keeps the Comparator mark unavailable; a
+paper's witness claim needs its own exact selected witness proposition.

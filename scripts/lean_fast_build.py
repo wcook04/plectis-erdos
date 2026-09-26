@@ -168,33 +168,35 @@ def code_without_comments(line: str, block_depth: int) -> tuple[str, int]:
     return "".join(code), block_depth
 
 
-def local_imports(source: Path, modules: dict[str, Path]) -> set[str]:
-    """Read only the Lean header, where import commands are legal."""
+def source_imports(text: str, source: str = "<source>") -> set[str]:
+    """Read the complete supported import header from source bytes.
 
+    Shared by the build planner and committed-source evidence binding. Unsupported
+    header syntax fails closed; this is a module-import inventory, not a parser
+    for declarations or their semantic dependencies.
+    """
     imports: set[str] = set()
     block_depth = 0
-    with source.open(encoding="utf-8") as lines:
-        for raw_line in lines:
-            code, block_depth = code_without_comments(raw_line, block_depth)
-            stripped = code.strip()
-            if not stripped or stripped == "prelude":
-                continue
-            match = IMPORT_RE.match(stripped)
-            if match:
-                imports.update(
-                    module for module in match.group(1).split() if module in modules
-                )
-                continue
-            if IMPORT_KEYWORD_RE.match(stripped):
-                raise RuntimeError(
-                    f"unsupported Lean import header in {source}: {stripped}"
-                )
-            if MODULE_HEADER_RE.match(stripped):
-                raise RuntimeError(
-                    f"unsupported Lean module header in {source}: {stripped}"
-                )
-            break
+    for raw_line in text.splitlines():
+        code, block_depth = code_without_comments(raw_line, block_depth)
+        stripped = code.strip()
+        if not stripped or stripped == "prelude":
+            continue
+        match = IMPORT_RE.match(stripped)
+        if match:
+            imports.update(match.group(1).split())
+            continue
+        if IMPORT_KEYWORD_RE.match(stripped):
+            raise RuntimeError(f"unsupported Lean import header in {source}: {stripped}")
+        if MODULE_HEADER_RE.match(stripped):
+            raise RuntimeError(f"unsupported Lean module header in {source}: {stripped}")
+        break
     return imports
+
+
+def local_imports(source: Path, modules: dict[str, Path]) -> set[str]:
+    """Read only the Lean header, where import commands are legal."""
+    return source_imports(source.read_text(encoding="utf-8"), str(source)) & modules.keys()
 
 
 def local_graph(modules: dict[str, Path]) -> dict[str, set[str]]:
