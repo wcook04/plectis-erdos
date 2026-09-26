@@ -29,7 +29,8 @@ layout are removed.
 Every failure is collected; if there is any, nothing is written and the exit status is 1.
 
 Usage:
-  paper_evidence.py build --corpus-repo PATH --aux-dir DIR [--record-commit SHA]
+  paper_evidence.py build --corpus-repo PATH --aux-dir DIR [--aux-paper PAPER_ID]
+                          [--record-commit SHA]
   paper_evidence.py check [--corpus-repo PATH]      # regenerate in memory, compare
 """
 from __future__ import annotations
@@ -427,7 +428,8 @@ class Problems:
 
 
 def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
-            previous: dict | None, problems: Problems, *, require_relations: bool) -> dict:
+            previous: dict | None, problems: Problems, *, require_relations: bool,
+            aux_papers: set[str] | None = None) -> dict:
     ledger = load_json(root / LEDGER)
     config = load_json(root / CONFIG)
     associations = load_json(root / ASSOCIATIONS)
@@ -604,7 +606,7 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
     for paper in ledger["papers"]:
         pid = paper["paper_id"]
         numbers = {}
-        if aux_dir is not None:
+        if aux_dir is not None and (aux_papers is None or pid in aux_papers):
             aux = aux_dir / f"{pid}.aux"
             if not aux.is_file():
                 problems.add(pid, f"no {aux}")
@@ -746,6 +748,12 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 mark = "lean"
             elif status == "modulo_named_input":
                 mark = "lean_dagger"
+            # Without fresh aux, equation and problem references cannot be
+            # renumbered.  Keep previously rendered text for each unchanged
+            # field; changed scope and reason prose must still be refreshed.
+            preserve_presentation = ((aux_dir is None or
+                                      (aux_papers is not None and pid not in aux_papers))
+                                     and prev.get("statement_sha256") == row["statement_sha256"])
             results.append({
                 "id": row["id"],
                 "label": label,
@@ -758,8 +766,9 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 "statement_sha256": row["statement_sha256"],
                 "statement_key": statement_keys.get(row["statement_sha256"]),
                 "title": (statements.get(label) or (None, None))[0] if env else span_title(row),
-                "statement_markdown": renumber_references((statements.get(label) or (None, None))[1],
-                                                          numbers_for_row_all),
+                "statement_markdown": (prev.get("statement_markdown") if preserve_presentation else
+                                       renumber_references((statements.get(label) or (None, None))[1],
+                                                           numbers_for_row_all)),
                 "lean": {
                     "status": status,
                     "mark": mark,
@@ -768,9 +777,15 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                         {"name": u[0], "path": u[1], "line": u[2], "text": u[3]}
                         for u in (pin_definition(n) for n in (row["lean"].get("named_inputs") or [])) if u],
                     "scope": row["lean"].get("scope"),
-                    "scope_markdown": tex_to_markdown(row["lean"].get("scope"), numbers_for_row_all),
+                    "scope_markdown": (prev.get("lean", {}).get("scope_markdown")
+                                       if preserve_presentation and
+                                       prev.get("lean", {}).get("scope") == row["lean"].get("scope") else
+                                       tex_to_markdown(row["lean"].get("scope"), numbers_for_row_all)),
                     "reason": row["lean"].get("reason"),
-                    "reason_markdown": tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all),
+                    "reason_markdown": (prev.get("lean", {}).get("reason_markdown")
+                                        if preserve_presentation and
+                                        prev.get("lean", {}).get("reason") == row["lean"].get("reason") else
+                                        tex_to_markdown(row["lean"].get("reason"), numbers_for_row_all)),
                     "relation_note": relation,
                     "declarations": [
                         {"name": d.name, "path": d.path, "line": d.line, "kind": d.kind,
@@ -1074,31 +1089,15 @@ def paper_titles(root: Path) -> dict[str, tuple[str, str]]:
     return out
 
 
-def record_commits_from_config(config: dict, evidence: dict, problems: Problems) -> dict[str, str]:
-    """Validate per-paper immutable record pins without moving other papers' links."""
-    raw = config.get("record_commits", {})
-    if not isinstance(raw, dict):
-        problems.add(CONFIG, "record_commits must be a paper-id to full-commit mapping")
-        return {}
-    known = {paper["paper_id"] for paper in evidence["papers"]}
-    valid: dict[str, str] = {}
-    for pid, commit in raw.items():
-        if pid not in known or not isinstance(commit, str) or re.fullmatch(r"[0-9a-f]{40}", commit) is None:
-            problems.add(CONFIG, f"invalid paper record pin for {pid!r}")
-        else:
-            valid[pid] = commit
-    return valid
-
-
 def outputs(root: Path, evidence: dict, record_commit: str,
-            record_commits: dict[str, str] | None = None) -> dict[str, str]:
+            record_commit_overrides: dict[str, str] | None = None) -> dict[str, str]:
     titles = paper_titles(root)
     files: dict[str, str] = {}
     for paper in evidence["papers"]:
         pid = paper["paper_id"]
         title, pdf = titles.get(pid, (pid, f"paper/{pid}.pdf"))
         files.update(paper_records(evidence, paper, title, pdf))
-        pin = (record_commits or {}).get(pid, record_commit)
+        pin = (record_commit_overrides or {}).get(pid, record_commit)
         files[f"{SIDECAR_DIR}/{pid}.tex"] = render_sidecar(evidence, paper, pin)
     files[EVIDENCE_MAP] = json.dumps(evidence, indent=1, ensure_ascii=False) + "\n"
     return files
@@ -1126,6 +1125,8 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("build")
     b.add_argument("--corpus-repo", type=Path, required=True)
     b.add_argument("--aux-dir", type=Path)
+    b.add_argument("--aux-paper", action="append", metavar="PAPER_ID",
+                   help="read fresh aux for this paper only; retain prior numbers for others")
     b.add_argument("--record-commit")
     b.add_argument("--allow-missing-relations", action="store_true")
     c = sub.add_parser("check")
@@ -1138,19 +1139,32 @@ def main(argv: list[str] | None = None) -> int:
     config = load_json(root / CONFIG)
     previous = load_json(root / EVIDENCE_MAP) if (root / EVIDENCE_MAP).is_file() else None
     corpus = Repo(args.corpus_repo) if getattr(args, "corpus_repo", None) else None
+    record_commit_overrides = config.get("record_commit_overrides") or {}
+    if not isinstance(record_commit_overrides, dict):
+        problems.add(CONFIG, "record_commit_overrides must be a paper-id to commit map")
+        record_commit_overrides = {}
+    paper_ids = {p["paper_id"] for p in load_json(root / LEDGER)["papers"]}
+    for pid, commit in record_commit_overrides.items():
+        if pid not in paper_ids or not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
+            problems.add(CONFIG, f"invalid record_commit_overrides entry for {pid}")
     if args.command == "build":
+        aux_papers = set(args.aux_paper) if args.aux_paper else None
+        if aux_papers is not None:
+            known_papers = {p["paper_id"] for p in load_json(root / LEDGER)["papers"]}
+            if args.aux_dir is None or not aux_papers <= known_papers:
+                problems.add("aux", "--aux-paper needs --aux-dir and known paper IDs")
         record_commit = args.record_commit or config.get("record_commit")
         if not record_commit:
             problems.add("config", "no record commit: pass --record-commit or set record_commit")
         evidence = resolve(root, corpus, args.aux_dir, previous, problems,
-                           require_relations=not args.allow_missing_relations)
-        record_commits = record_commits_from_config(config, evidence, problems)
+                           require_relations=not args.allow_missing_relations,
+                           aux_papers=aux_papers)
         if problems.items:
             for item in problems.items:
                 print("FAIL", item, file=sys.stderr)
             print(f"{len(problems.items)} problems; nothing written", file=sys.stderr)
             return 1
-        write_atomically(root, outputs(root, evidence, record_commit, record_commits))
+        write_atomically(root, outputs(root, evidence, record_commit, record_commit_overrides))
         n = sum(len(p["results"]) for p in evidence["papers"])
         print(f"wrote evidence for {n} results in {len(evidence['papers'])} papers")
         return 0
@@ -1161,7 +1175,6 @@ def main(argv: list[str] | None = None) -> int:
     if previous is None:
         problems.add(EVIDENCE_MAP, "missing")
         return report(problems)
-    record_commits = record_commits_from_config(config, previous, problems)
     if corpus is not None:
         # Full check: resolve everything again against the corpus; numbering is taken from
         # the committed map (the rendered-PDF check verifies it against the PDFs).
@@ -1188,7 +1201,8 @@ def main(argv: list[str] | None = None) -> int:
                 problems.add(row["id"], "the evidence map records a different Comparator status than the ledger")
         for extra in mapped:
             problems.add(extra, "is in the evidence map but not in the ledger")
-    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "", record_commits)
+    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "",
+                       record_commit_overrides)
     for rel, text in expected.items():
         path = root / rel
         if not path.is_file() or path.read_text(encoding="utf-8") != text:
@@ -1198,23 +1212,20 @@ def main(argv: list[str] | None = None) -> int:
         if rel not in expected and rel != f"{RECORD_DIR}/README.md":
             problems.add(rel, "is not generated from the current evidence; delete it")
     here = Repo(root)
-    pin_exists: dict[str, bool] = {}
-    for rel, text in expected.items():
-        if not (rel.startswith(RECORD_DIR + "/") and rel.endswith(".md")):
-            continue
-        first = Path(rel).relative_to(RECORD_DIR).parts[0]
-        pid = first.removesuffix(".md")
-        pin = record_commits.get(pid, record_commit)
+    for paper in evidence["papers"]:
+        pid = paper["paper_id"]
+        pin = record_commit_overrides.get(pid, record_commit)
         if not pin:
-            problems.add(CONFIG, f"no record commit for {pid}")
             continue
-        if pin not in pin_exists:
-            pin_exists[pin] = here.has_commit(pin)
-        if not pin_exists[pin]:
+        if not here.has_commit(pin):
             problems.add(CONFIG, f"record commit {pin} for {pid} is not in this repository's history")
-        elif here.text(pin, rel) != text:
-            problems.add(rel, f"the paper links the record at {pin[:12]}, which differs from "
-                              "the current record: rebuild the evidence and the paper")
+            continue
+        prefix = f"{RECORD_DIR}/{pid}"
+        for rel, text in expected.items():
+            if (rel == prefix + ".md" or rel.startswith(prefix + "/")) and rel.endswith(".md"):
+                if here.text(pin, rel) != text:
+                    problems.add(rel, f"the paper links the record at {pin[:12]}, which differs from "
+                                      "the current record: rebuild the evidence and the paper")
     return report(problems)
 
 

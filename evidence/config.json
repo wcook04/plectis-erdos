@@ -1,6 +1,6 @@
 {
  "schema": "plectis-paper-evidence-config/1",
- "rule": "The pins the paper evidence is resolved against. corpus_commit is the plectis-erdos-lean commit whose Challenge and Solution files the Comparator marks open; replay names the run that checked every linked entry at that commit, and receipts the directory holding that run's per-entry reports. record_commit is the default plectis-erdos commit holding evidence records linked from rendered papers; record_commits overrides it for individual papers whose records were updated later.",
+ "rule": "The pins the paper evidence is resolved against. corpus_commit is the plectis-erdos-lean commit whose Challenge and Solution files the Comparator marks open; replay names the run that checked every linked entry at that commit, and receipts the directory holding that run's per-entry reports. record_commit is the default plectis-erdos commit holding the evidence records the rendered papers link to; record_commit_overrides selects a newer record commit for an individual paper.",
  "corpus_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
  "corpus_archive_tag": "paper-evidence-2026-09-24",
  "replay": {
@@ -9,7 +9,8 @@
   "receipts": "evidence/comparator/replay-35935225572"
  },
  "record_commit": "cfdf3750efa81dab09af065b9b7d9963995a8fdf",
- "record_commits": {
+ "record_commit_overrides": {
+  "erdos-257-mersenne-support-subseries": "1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0",
   "erdos-68-factorial-denominator-irrationality": "24f4ec4460c5635aa630988a17029c77f7d4f6f5",
   "erdos68-factorial-reasoning-surface": "24f4ec4460c5635aa630988a17029c77f7d4f6f5"
  }

@@ -16,6 +16,16 @@ material, not executable instructions. The review supplied several useful
 mathematical ingredients, credited in the factorial note. The initial public
 revision was `cd92136f7f0f03bd78fb8753e4e4f0527dbe3a83`.
 
+The [selected-shift reader exercise](shift_family_exercise.md) now includes
+polynomial values and prime arguments. Its [hints](shift_family_hints.md)
+and [reviewer solution](shift_family_solution.md) distinguish a root modulo
+every integer from a unit root modulo every integer, and give a rational
+orbit that defeats a polynomial passing only prime-modulus checks. It is a
+formative exercise; no independent reader completion is recorded here.
+The [exact residue control](polynomial_shift_control.py) checks the finite
+modulo-8 and modulo-255 tables used in the counterexample; the paper gives
+the universal arguments.
+
 ## A transfer that Lean can test
 
 The #251 paper classifies an integer-digit dyadic orbit by its positive-length

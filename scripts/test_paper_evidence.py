@@ -301,25 +301,80 @@ def test_outputs_are_deterministic_and_checkable(f: Fixture) -> None:
 
 
 @with_fixture
-def test_paper_record_pin_override_is_scoped_and_validated(f: Fixture) -> None:
-    f.relations["rows"][f"{PAPER_ID}#res:second"] = f.relation_for("res:second")
+def test_partial_aux_keeps_other_papers_numbered(f: Fixture) -> None:
     f.materialise()
-    config_path = f.root / pe.CONFIG
-    config = json.loads(config_path.read_text())
-    config["record_commits"] = {PAPER_ID: "e" * 40}
-    config_path.write_text(json.dumps(config))
-    args = ["--root", str(f.root), "--corpus-repo", str(f.corpus)]
-    require(pe.main(["build", *args]) == 0, "a scoped record pin was refused")
-    sidecar = (f.root / "paper/evidence" / f"{PAPER_ID}.tex").read_text()
+    prior = {"papers": [{"results": [
+        {"id": f"{PAPER_ID}#res:first", "number": "3.4", "page": "8",
+         "statement_sha256": f.ledger["rows"][0]["statement_sha256"],
+         "statement_markdown": "Prior reference to Equation (2)", "lean": {}},
+        {"id": f"{PAPER_ID}#res:second", "number": "3.5", "page": "9",
+         "statement_sha256": f.ledger["rows"][1]["statement_sha256"],
+         "statement_markdown": "Prior reference to Problem 1.3", "lean": {}},
+    ]}]}
+    missing_aux = f.root / "missing-aux"
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, problems,
+                          require_relations=False, aux_papers=set())
+    require(not problems.items, f"an unselected paper required aux: {problems.items}")
+    results = evidence["papers"][0]["results"]
+    require([(r["number"], r["page"]) for r in results] == [("3.4", "8"), ("3.5", "9")],
+            "partial aux lost the prior printed coordinates")
+    require([r["statement_markdown"] for r in results] ==
+            ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
+            "partial aux rewrote untouched rendered references")
+    checked = pe.Problems()
+    unchanged = pe.resolve(f.root, pe.Repo(f.corpus), None, prior, checked,
+                           require_relations=False)
+    require(not checked.items and
+            [r["statement_markdown"] for r in unchanged["papers"][0]["results"]] ==
+            ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
+            "a no-aux check rewrote previously validated references")
+    required = pe.Problems()
+    pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, required,
+               require_relations=False, aux_papers={PAPER_ID})
+    require(any("no " in p and ".aux" in p for p in required.items),
+            "a selected paper with missing aux was accepted")
+
+
+@with_fixture
+def test_no_aux_refreshes_changed_explanations(f: Fixture) -> None:
+    f.materialise()
+    row = f.ledger["rows"][0]
+    row["lean"]["scope"] = "Updated scope"
+    row["lean"]["reason"] = "Updated reason"
+    write(f.root, pe.LEDGER, json.dumps(f.ledger))
+    prior = {"papers": [{"results": [{
+        "id": row["id"], "label": row["label"], "number": "3.4", "page": "8",
+        "statement_sha256": row["statement_sha256"],
+        "statement_markdown": "Prior numbered statement",
+        "lean": {"scope": "Old scope", "scope_markdown": "Old scope rendered",
+                 "reason": "Old reason", "reason_markdown": "Old reason rendered"},
+    }]}]}
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, prior, problems,
+                          require_relations=False)
+    require(not problems.items, f"a changed explanation failed: {problems.items}")
+    result = evidence["papers"][0]["results"][0]
+    require(result["statement_markdown"] == "Prior numbered statement",
+            "the unchanged statement lost its prior numbered rendering")
+    require(result["lean"]["scope_markdown"] == "Updated scope" and
+            result["lean"]["reason_markdown"] == "Updated reason",
+            "changed scope or reason retained stale markdown")
+
+
+@with_fixture
+def test_paper_record_pin_override(f: Fixture) -> None:
+    f.materialise()
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, None, problems,
+                          require_relations=False)
+    require(not problems.items, f"the sound evidence failed: {problems.items}")
+    files = pe.outputs(f.root, evidence, "d" * 40, {PAPER_ID: "e" * 40})
+    sidecar = files[f"paper/evidence/{PAPER_ID}.tex"]
     require(f"/blob/{'e' * 40}/evidence/{PAPER_ID}.md" in sidecar,
-            "the paper did not link its own immutable record pin")
+            "the per-paper record pin did not reach the rendered links")
     require(f"/blob/{'d' * 40}/evidence/{PAPER_ID}.md" not in sidecar,
-            "the default record pin overrode the paper-specific pin")
-    config["record_commits"] = {"unknown-paper": "e" * 40}
-    config_path.write_text(json.dumps(config))
-    require(pe.main(["build", *args]) == 1, "an unknown record pin was accepted")
-    require((f.root / "paper/evidence" / f"{PAPER_ID}.tex").read_text() == sidecar,
-            "a rejected pin overwrote the existing sidecar")
+            "the default pin leaked into an overridden paper")
 
 
 def test_statement_with_let_is_read_whole() -> None:
@@ -354,7 +409,9 @@ def main() -> int:
         test_relation_notes_are_required_and_bound,
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
-        test_paper_record_pin_override_is_scoped_and_validated,
+        test_partial_aux_keeps_other_papers_numbered,
+        test_no_aux_refreshes_changed_explanations,
+        test_paper_record_pin_override,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,
     ]
