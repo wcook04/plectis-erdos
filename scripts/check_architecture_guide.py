@@ -222,7 +222,7 @@ PAPER_SECTION_ORDER = (
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
         "persistent unit of work, the problem-sized world",
-        "Any model, provider or person can resume from the record",
+        "The public record supports continuation by human researchers and compatible agents beyond the originating chat or provider",
         "accepted work returns to it with credit",
         "The other seven targets remain open",
         "Comparator, a checker the Lean FRO built",
