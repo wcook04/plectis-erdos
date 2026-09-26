@@ -141,3 +141,42 @@ inspect a declaration, never an upstreamability verdict. The distinct
 conditional-cost case is the verified #251 to #269 transfer; testing whether
 a proposed intermediate lemma reduces *future* proof work would require
 another proof or a prospective intervention, not only this static graph.
+
+## Choose premises for an actual workload
+
+`conditional_reuse.py` asks a narrower question: which existing proofs could
+be treated as available premises when inspecting a frozen set of eight
+paper-linked declarations? It recomputes each marginal cut in the source
+graph. Across the selected #251 and #269 proofs, counting a shared
+prerequisite once gives 3,529 indexed lines; inspecting every target
+independently gives 6,135. These are different workloads, not measured human
+review times.
+
+Within the same screened candidate pool, the leader by direct uses times
+subtotal removes only 30 indexed lines from the shared workload. The largest
+initial contextual cut removes 491. Source inspection shows that this winner
+is an equivalence wrapper, so the report redirects explanation work toward
+the actual staircase-minor, ambient-filling and support-cardinality proofs.
+The metric proposes an inspection; reading the mathematics decides its value.
+
+Premises can also be complementary. The #269 pair
+`cofinalLocalWindowEscape_of_irrational` and
+`value_ne_rat_of_cofinalLocalWindowEscape` remove 220 and 216 lines separately,
+but 467 together. A shared dependency disappears only when both paths to it
+are cut. Thus gains need not diminish, and greedy selection has no general
+optimality guarantee. The report tests all 435 pairs among the 30 largest
+initial cuts and finds 18 with positive complementarity.
+
+A separate breadth check selects one explicit paper assertion per problem.
+Six are present in the resolved graph; the selected #243 and #1049 declarations
+are unavailable and remain named as missing. Those six indexed cones are
+disjoint. Existing graph reuse therefore cannot supply the missing semantic
+bridge between them; one must inspect their statements and representations.
+All source hashes, selection reasons, coverage exclusions and proposed review
+actions are in [conditional_reuse.json](conditional_reuse.json).
+
+```sh
+python3 research/experiments/interestingness/conditional_reuse.py
+python3 research/experiments/interestingness/conditional_reuse.py --check
+python3 research/experiments/interestingness/test_conditional_reuse.py
+```
