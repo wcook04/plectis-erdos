@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `3592a4774660d046`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `4858365bf122a2b8`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -120,7 +120,7 @@ result and the next question it opens.
 
 </div>
 
-Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; chains with eventually periodic successive ratios give transcendence at every algebraic real base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
+Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; chains with eventually periodic successive ratios give transcendence at every algebraic real base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. For polynomially selected shifts, the condition becomes a root modulo every integer, or a unit root modulo every integer when the polynomial argument must be prime. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
 
 <a id="optimal-sparse-perturbations--sec:map"></a>
 
@@ -934,6 +934,39 @@ Here is the strict endpoint step used in the proof. Write the Thue–Morse word 
 
 The factorial family $`H=\{j!:j\ge1\}`$ satisfies the divisibility condition: $`d\mid d!`$. The power-of-two family does not, since none of its members is divisible by $`3`$. An especially small counterexample for the latter is the rational orbit $`T_N=\{2^N/7\}`$: for each tested shift its distances cycle through $`1/7`$, $`2/7`$, and $`3/7`$, so it passes at every $`c<\tau`$. No finite shift family suffices. Conversely, excluding all multiples of a large $`d`$ leaves a family of density $`1-1/d`$ that fails the test; factorial shifts have density zero and succeed. This criterion does not establish irrationality for the actual prime-gap tail in \#251.
 
+Divisor coverage also implies that $`H\cap d\mathbb{Z}_{>0}`$ is unbounded for every $`d>0`$: apply coverage to the multiples $`kd`$ as $`k`$ grows. Consequently deleting finitely many shifts from a working family preserves the criterion.
+
+<a id="optimal-sparse-perturbations--sec:polynomial-shifts"></a>
+
+#### Polynomially selected shifts
+
+For a polynomial $`P\in\mathbb{Z}[x]`$ with positive leading coefficient, set
+``` math
+H_P=\{P(n):n\ge0,\ P(n)>0\},\qquad
+ H_P^{\mathrm{prime}}=\{P(p):p\text{ prime},\ P(p)>0\}.
+```
+The argument of $`P`$ in the second family is prime; this is different from checking whether $`P`$ has a root modulo every prime.
+
+<div id="optimal-sparse-perturbations--cor:polynomial-shifts" class="corollary">
+
+**Corollary 7.2** (Polynomial shift families). *Fix $`0<c<\tau`$. The $`H_P`$-selected test detects irrationality for every integer-digit dyadic recurrence if and only if $`P`$ has a root modulo every positive integer. The $`H_P^{\mathrm{prime}}`$-selected test has this property if and only if, for every positive integer $`d`$, there is a root $`r`$ of $`P`$ modulo $`d`$ with $`\gcd(r,d)=1`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* By Theorem <a href="#optimal-sparse-perturbations--thm:restricted-dyadic-shifts" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:restricted-dyadic-shifts">7.1</a>, each assertion reduces to whether every $`d>0`$ divides a member of the selected family. If $`P(r)\equiv0\pmod d`$, all sufficiently large integers $`n\equiv r\pmod d`$ give positive multiples $`P(n)`$ of $`d`$. This proves the first assertion in both directions.
+
+For the prime-argument family, a root $`r`$ coprime to $`d`$ gives arbitrarily large primes $`p\equiv r\pmod d`$ by Dirichlet’s theorem, and hence positive multiples $`P(p)`$ of $`d`$. Conversely, suppose there is no unit root modulo some $`d`$. Every prime $`p`$ for which $`d\mid P(p)`$ then satisfies $`\gcd(p,d)>1`$, so $`p`$ is one of the finitely many prime divisors of $`d`$. Thus $`H_P^{\mathrm{prime}}\cap d\mathbb{Z}`$ is bounded. Divisor coverage would make this intersection unbounded, since for every $`k>0`$ it supplies a member divisible by $`kd`$. This is a contradiction. ◻
+
+</div>
+
+The first condition is the usual intersectivity condition \[leintersective\]. The unit-root condition for prime arguments is $`P`$-intersectivity, also called intersectivity of the second kind \[ricepintersective, §1.2\]. For example, $`P(n)=n^2`$ works with integer arguments, while $`n^2+1`$ fails modulo $`3`$. At prime arguments, $`P(p)=p`$ fails already modulo $`6`$, while $`p-1`$ and $`p^2-1`$ work: the residue $`1`$ is a unit root modulo every $`d`$.
+
+Intersectivity need not come from an integer root. Mishra lists $`F(x)=(x^2-13)(x^2-17)(x^2-221)`$ as a polynomial with a root modulo every positive integer but no rational root \[mishraquadratic\]. In fact, it also has a *unit* root modulo every positive integer. For odd primes other than $`13`$ and $`17`$, at least one of $`13,17,221`$ is a nonzero quadratic residue, since $`221=13\cdot17`$; its root lifts to every prime power. Modulo powers of $`13`$, use $`x^2-17`$ with $`x\equiv2\pmod{13}`$; modulo powers of $`17`$, use $`x^2-13`$ with $`x\equiv8\pmod{17}`$. At powers of $`2`$, the unit $`17\equiv1\pmod8`$ has a square root. The Chinese remainder theorem supplies unit roots modulo arbitrary $`d`$. Thus both $`H_F`$ and $`H_F^{\mathrm{prime}}`$ pass the criterion, without relying on a single global root.
+
+Prime moduli alone do not suffice for the first condition. Let $`Q(x)=(x^2-2)(x^2-3)(x^2-6)`$. It has a root modulo every prime: for odd primes not dividing $`6`$, if neither $`2`$ nor $`3`$ is a square, their product $`6`$ is; the primes $`2`$ and $`3`$ are immediate. But $`Q(n)\equiv4`$ when $`n`$ is even and $`Q(n)\equiv6`$ when $`n`$ is odd, modulo $`8`$. Therefore neither $`H_Q`$ nor its prime-argument subfamily contains a multiple of $`8`$. Lê’s cited arXiv v1 introduction lists this $`Q`$ as intersective \[leintersective, p. 1\]; the modulo-$`8`$ calculation corrects that example, without affecting the local-root criterion stated there. The failure is visible without the general counterexample construction: take the rational orbit $`T_N=\{2^N/255\}`$. Since $`2^8\equiv1\pmod{255}`$, for every positive shift $`h=Q(n)`$, indices $`N\equiv3\pmod8`$ when $`h\equiv4\pmod8`$ give $`\|T_{N+h}-T_N\|=120/255`$, and indices $`N\equiv1\pmod8`$ when $`h\equiv6\pmod8`$ give $`126/255`$. Both distances exceed $`7/16>\tau`$, so this rational orbit passes every $`Q`$-selected test at $`0<c<\tau`$. The modular root and orbit calculations are ordinary proofs; this polynomial extension is not claimed as Lean checked.
+
 <a id="optimal-sparse-perturbations--sec:second"></a>
 
 ### Limits on methods
@@ -1046,7 +1079,11 @@ The capacity criterion already covers non-power and oscillating allowances. For 
 
 <div class="thebibliography">
 
-99 S. Akiyama and H. Kaneko, *Multiplicative analogue of Markoff–Lagrange spectrum and Pisot numbers*, Adv. Math. 380 (2021), 107547, p. 3, reporting the theorem of A. Dubickas, [arXiv:1911.06170v6](https://arxiv.org/abs/1911.06170v6).
+99 T. H. Lê, *Intersective polynomials and the primes*, [arXiv:0910.1880v1](https://arxiv.org/abs/0910.1880v1).
+
+A. Rice, *Sárközy’s theorem for $`P`$-intersective polynomials*, [arXiv:1111.6559](https://arxiv.org/abs/1111.6559).
+
+B. Mishra, *Polynomials consisting of quadratic factors with roots modulo any positive integer*, Amer. Math. Monthly **129** (2022), 178–182, [arXiv:2102.08379](https://arxiv.org/abs/2102.08379). S. Akiyama and H. Kaneko, *Multiplicative analogue of Markoff–Lagrange spectrum and Pisot numbers*, Adv. Math. 380 (2021), 107547, p. 3, reporting the theorem of A. Dubickas, [arXiv:1911.06170v6](https://arxiv.org/abs/1911.06170v6).
 
 J.-P. Allouche, M. Clarke and N. Sidorov, *Periodic unique beta-expansions: the Sharkovskiı̆ ordering*, Ergodic Theory Dynam. Systems 29 (2009), 1055–1074, [doi:10.1017/S0143385708000746](https://doi.org/10.1017/S0143385708000746).
 
@@ -1126,7 +1163,7 @@ Each entry gives the abstract and the opening sections of the short paper, cut a
 
 *Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf)
 
-Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (175 KB as text).
+Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (181 KB as text).
 
 <a id="erdos-68-factorial-denominator-irrationality--erdos-68-factorial-denominator-irrationality"></a>
 
@@ -1210,7 +1247,7 @@ Neither restriction implies the other: the prime $`300007`$ satisfies the divisi
 A finite non-unit carry excludes particular denominators. Non-unit carries at arbitrarily large indices are equivalent to irrationality.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:carry-characterization" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator">Comparator</a></p>
 
 **Theorem 2** (exact carry characterisation). *<span id="erdos-68-factorial-denominator-irrationality--res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
 ``` math
@@ -1234,7 +1271,7 @@ that rational constant is $`S`$. Finally writing $`x=(m-1)!H_{m-1}`$ gives $`b_m
 
 For $`e`$, multiplication by $`m!`$ clears every denominator of the partial sum; here $`\gcd(m!,m!-1)=1`$ prevents even the last summand from being cleared when $`m\ge3`$. For the tail arguments below, the issue is the gap to an integer after scaling, not just the size of the unscaled tail. The remaining sections study that gap and the exact coefficient equations. Appendix <a href="#erdos-68-factorial-denominator-irrationality--sec:companion-orbit" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:companion-orbit">8</a> gives a factorial-digit formulation and the floor correction relating the two sequences. Secondary constructions are proved in the long paper.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:channels"></a>
 
@@ -1262,7 +1299,7 @@ Thus the weights retain an integer linear form in $`1`$ and $`S`$ while allowing
 For example, $`4e_3-e_4`$ has moment zero, $`V_2=6`$ and $`V_4=23`$, with all other $`V_d`$ zero. The vector $`2e_1-e_2`$ has moment zero and only $`V_2=1`$ nonzero. Subtracting six copies of the latter therefore removes the unwanted $`V_2`$ without changing $`V_4`$. The following recursion performs this elimination at the proper divisors of each index.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
 
 **Theorem 3** (an integer basis with prescribed weighted sums). *Set
 ``` math
@@ -1371,7 +1408,7 @@ k!\mid W_{d,dk}=\frac{(dk)!}{(d!)^k}.
 The quotient by $`k!`$ counts partitions into $`k`$ unordered blocks of size $`d`$.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
 
 **Theorem 4** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 ``` math
@@ -1391,7 +1428,7 @@ This does not justify replacing $`H`$ by $`2D`$. ◻
 Bertrand’s postulate supplies $`\ell`$ for every $`D\ge3`$, and $`\ell=2`$ works for $`D=2`$. This finite calculation determines allowable moments, not the nonintegrality of their remainders.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:bandbreakpoint" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator">Comparator</a></p>
 
 **Theorem 5** (constant values of the floor in the weights). *Let $`\lambda`$ be a finitely supported integer vector, let $`d\ge2`$ and $`k\ge0`$ be integers, and suppose each index $`n`$ in its support satisfies $`kd\le n<(k+1)d`$. Then
 ``` math
@@ -1409,9 +1446,30 @@ In particular, support in $`[d,2d)`$ and $`V_d(\lambda)=0`$ force $`M(\lambda)=0
 
 For example, at $`D=4`$ the minimum moment is $`1380`$, attained by $`12K_4+253U_6-11U_8`$. The inputs to <a href="#erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> are $`L_4=115`$, $`a_4=-55`$ and $`g_4=60`$. The last equality uses the full-tail divisibility $`\operatorname{lcm}(1,\ldots,n)\mid u_n`$ together with $`23u_6-u_8=60`$. <span id="erdos-68-factorial-denominator-irrationality--eq:channel-lcm-envelope" label="eq:channel-lcm-envelope"></span> The long paper, §5.1, proves that divisibility by Legendre’s formula, checks the attaining vector, and gives the different minimum $`4140`$ when support is restricted to $`n\le6`$.
 
+There is also a short certificate for this depth-four value that does not require computing the entire tail gcd. For every $`n\ge2`$,
+``` math
+\begin{equation}
+  1380\mid 11n!-46W_{2,n}+12W_{4,n}.
+  \label{eq:depth-four-dual}
+\end{equation}
+```
+For $`n=2,3,4`$ the expression is zero. For $`n\ge4`$, each summand is divisible by $`12`$: $`12\mid n!`$, while $`6\mid W_{2,n}`$ because $`W_{2,2r}=r!\prod_{j=1}^{r}(2j-1)`$ for $`r\ge2`$ and $`W_{2,2r+1}=(2r+1)W_{2,2r}`$. For $`n\ge5`$, each summand is divisible by $`5`$, since the denominators removed from $`n!`$ in $`W_{2,n}`$ and $`W_{4,n}`$ are powers of $`2`$ and $`24`$. Finally, $`n!=24^{\lfloor n/4\rfloor}W_{4,n}\equiv W_{4,n}\pmod{23}`$ and $`46W_{2,n}\equiv0\pmod{23}`$. The factors $`12`$, $`5`$ and $`23`$ are coprime, proving <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-dual" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-dual">[eq:depth-four-dual]</a>.
+
+Summing against a finite integer vector gives $`1380\mid 11M-46V_2+12V_4`$. Thus $`V_2=V_4=0`$ implies $`1380\mid M`$, since $`11`$ is coprime to $`1380`$. Equality is attained even with the third channel cancelled:
+``` math
+\begin{equation}
+  \lambda=1482e_2-784e_3-136e_5+83e_6-e_8,
+  \qquad (M,V_2,V_3,V_4)=(1380,0,0,0).
+  \label{eq:depth-four-short-vector}
+\end{equation}
+```
+These values follow directly from the five rows $`(n!,W_{2,n},W_{3,n},W_{4,n})`$ at $`n=2,3,5,6,8`$: $`(2,1,2,2)`$, $`(6,3,1,6)`$, $`(120,30,20,5)`$, $`(720,90,20,30)`$ and $`(40320,2520,1120,70)`$. Hence imposing $`V_3=0`$ does not change the attainable *moments*; it does restrict the vectors, since $`3e_2-e_3`$ has $`M=V_2=V_4=0`$ but $`V_3=5`$.
+
+The first possible maximum index of a vector attaining moment $`1380`$ under $`V_2=V_4=0`$ is $`8`$. Indeed, the expression in <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-dual" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-dual">[eq:depth-four-dual]</a> is zero at $`n=2,3,4,5`$ and equals $`4140`$ and $`28980=7\cdot4140`$ at $`n=6,7`$. For support at most $`7`$, $`11M=4140(\lambda_6+7\lambda_7)`$ when the two channels vanish; coprimality of $`11`$ and $`4140`$ forces $`4140\mid M`$. The vector in <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-short-vector" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-short-vector">[eq:depth-four-short-vector]</a> reaches index $`8`$. All of these statements concern finite cancellation; they do not prove irrationality of the series.
+
 <a id="erdos-68-factorial-denominator-irrationality--sec:translator"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (67 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (70 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
@@ -2113,7 +2171,7 @@ Paul Erdős, [*Sur certaines séries à valeur irrationnelle*](https://users.ren
 
 *Which weighted-support Mersenne subseries are proved irrational, and what still blocks the universal Erdős #257 question?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf)
 
-Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) (599 KB as text).
+Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) (600 KB as text).
 
 <a id="erdos-257-mersenne-support-subseries--erdos-257-mersenne-support-subseries"></a>
 
@@ -2125,7 +2183,7 @@ Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plecti
 
 </div>
 
-For a finite nonempty set $`P`$ of primes, let $`h(a)`$ be the $`P`$-part of $`a`$. We prove that $`\sum_{a\in A}h(a)/[a(2^{h(a)}-1)]<\infty`$ makes $`\sum_{a\in B}(b^a-1)^{-1}`$ irrational for every integer $`b\ge2`$ and every infinite $`B\subseteq A`$. The condition permits a divergent reciprocal sum, but excludes full support and all odd exponents. The proof averages positive displacements over multiples of a finite modulus; a second, dyadic average controls incomplete periods. We also prove the reciprocal-summable criterion stated by Erdős and a common-average extension using positive divisor covers. Supplementary results concern finite denominators and conditional rational-membership tests, not a resolution of the universal problem.
+For a finite nonempty set $`P`$ of primes, let $`h(a)`$ be the $`P`$-part of $`a`$. We prove that $`\sum_{a\in A}h(a)/[a(2^{h(a)}-1)]<\infty`$ makes $`\sum_{a\in B}(b^a-1)^{-1}`$ irrational for every integer $`b\ge2`$ and every infinite $`B\subseteq A`$. The condition permits a divergent reciprocal sum, but excludes full support and all odd exponents. The proof averages positive displacements over multiples of a finite modulus; a second, dyadic average controls incomplete periods. We also prove the reciprocal-summable criterion stated by Erdős and a common-average extension using positive divisor covers. The two sufficient classes are incomparable; their mixed criterion admits supports in neither class. Supplementary results concern finite denominators and conditional rational-membership tests, not a resolution of the universal problem.
 
 <a id="erdos-257-mersenne-support-subseries--sec:problem"></a>
 
@@ -2134,7 +2192,7 @@ For a finite nonempty set $`P`$ of primes, let $`h(a)`$ be the $`P`$-part of $`a
 For $`A\subseteq\mathbb{N}_{>0}`$ and $`b>1`$, put $`X_A(b)=\sum_{a\in A}(b^a-1)^{-1}`$. This converges because $`(b^a-1)^{-1}\le b^{1-a}/(b-1)`$. For a finite set $`P`$ of primes, the *$`P`$-part* of $`a`$ is $`h(a)=\prod_{p\in P}p^{v_p(a)}`$, where $`v_p(a)`$ is the exponent of $`p`$ in $`a`$. For example, if $`P=\{2\}`$ and $`a=2^km`$ with $`m`$ odd, then $`h(a)=2^k`$.
 
 <div id="erdos-257-mersenne-support-subseries--res:weighted-support" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support-comparator">Comparator</a></p>
 
 **Theorem 1** (a weighted condition on the support). *Let $`b\ge2`$ be an integer, let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, and let $`P`$ be a finite nonempty set of primes. Set $`h(a)=\prod_{p\in P}p^{v_p(a)}`$. If
 ``` math
@@ -2161,7 +2219,7 @@ For $`P=\{2\}`$, the summand in <a href="#erdos-257-mersenne-support-subseries-
 For every finite $`P`$, full support and all odd exponents fail the condition: the integers coprime to $`2\prod_{p\in P}p`$ have $`h(a)=1`$ and divergent reciprocal sum, by inclusion–exclusion. The full set of primes fails too, since the primes outside $`P`$ contribute $`1/[a(b-1)]`$. These are limitations of this criterion, not assertions of rationality. By contrast, $`h/(2^h-1)\le1`$ shows that it includes every reciprocal-summable support.
 
 <div id="erdos-257-mersenne-support-subseries--res:reciprocal-support" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md#res-reciprocal-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md#res-reciprocal-support-comparator">Comparator</a></p>
 
 **Theorem 2** (reciprocal-summable supports). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
 ``` math
@@ -2202,7 +2260,7 @@ Thus arbitrary infinite thinnings of the powerful integers are included. For ful
 
 Sections <a href="#erdos-257-mersenne-support-subseries--sec:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:reciprocal-support">2</a>–<a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">3</a> prove the support criteria: first the simpler reciprocal-summable argument, then the weighted theorem and its common-average extension. The remaining sections give supplementary finite-denominator and rational-membership results. None is needed for the weighted proof.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 The coefficient sequence throughout is the divisor transform of the indicator function of the support:
 ``` math
@@ -2351,7 +2409,7 @@ Both proofs select a term no larger than a finite average. For a related selecti
 
 #### A common finite average for the extensions
 
-To combine the weighted criterion with positive divisor majorants, both arguments must use the same indices. The following estimate supplies that common average; Theorem <a href="#erdos-257-mersenne-support-subseries--res:mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:mixed-supports">5</a> gives the combination.
+To combine the weighted criterion with positive divisor majorants, both arguments must use the same indices. The following estimate supplies that common average; Theorem <a href="#erdos-257-mersenne-support-subseries--res:mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:mixed-supports">6</a> gives the combination.
 
 For $`1<B\le2`$, positive integers $`L,d,M`$, and an integer $`R\ge0`$, put
 ``` math
@@ -2392,7 +2450,7 @@ For the last inequality, use $`(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}`$ an
 For a finite set $`F`$, write $`f_F(n)=\#\{a\in F:a\mid n\}`$. We bound a fractional power of this count by a nonnegative sum over divisors of $`n`$. The inequality must hold for every positive integer $`n`$, not just on average.
 
 <div id="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md#thm-variable-fractional-cover-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md#thm-variable-fractional-cover-comparator">Comparator</a></p>
 
 **Theorem 4** (a summable divisor-cover criterion). *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 ``` math
@@ -2483,7 +2541,60 @@ for $`0\le z\le1`$ the claimed lower bound is nonpositive. Thus $`\Psi(2^z)\ge e
 ```
 In particular, $`1-1/S\le qK_*(F(q,P))/(eS)\le1`$. Thus $`K_*(F(q,P))\sim eS/q`$ as $`S\to\infty`$, uniformly over the permitted choices of $`q`$ and $`P`$.
 
-The logarithmic lower bound is not a converse: replacing a fractional majorant by a logarithmic one need not control averages along the multiples of a prescribed modulus. A counterexample and the distinct bound for ordinary initial intervals are proved in the companion, Section 13; those proofs were first worked out in an AI-assisted note of 17 September 2026. The three results of that section also have Lean proofs, each compared independently by Comparator; the ordinary proofs have not had independent human review. Those arguments concern finite functionals, not a comparison of the infinite-support irrationality classes. No separation between the weighted supports of Theorem <a href="#erdos-257-mersenne-support-subseries--res:weighted-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-support">1</a> and the cover supports of Theorem <a href="#erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover">4</a> is proved here.
+The logarithmic lower bound is not a converse: replacing a fractional majorant by a logarithmic one need not control averages along the multiples of a prescribed modulus. A counterexample and the distinct bound for ordinary initial intervals are proved in the companion, Section 13; those proofs were first worked out in an AI-assisted note of 17 September 2026. The three results of that section also have Lean proofs, each compared independently by Comparator; the ordinary proofs have not had independent human review. Those arguments concern finite functionals. The next construction uses the divisor cubes to compare the infinite-support criteria. Write $`\mathcal W_b`$ for the supports satisfying the finite-prime weighted hypothesis at base $`b`$, and $`\mathcal C`$ for supports admitting a strengthened positive cover as in <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a>.
+
+<div id="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" class="proposition">
+
+**Proposition 5** (incomparable support criteria). *There are infinite positive supports $`E`$ and $`V`$ such that
+``` math
+E\in\mathcal W_2,\quad E\notin\mathcal C,\qquad
+ V\in\mathcal C,\quad V\notin\mathcal W_b\ (b\ge2),\qquad
+ \sum_{a\in V}\frac1a=\infty.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The reciprocal sum over odd primes diverges, even after finitely many are removed. Otherwise $`\prod_{p\text{ odd}}(1+1/p)`$ would bound the reciprocal mass of odd squarefree integers; the decomposition $`n=ds^2`$ would then make the odd harmonic series converge.
+
+Choose pairwise disjoint finite sets $`P_k`$ of odd primes such that $`2^k/4\le S_k:=\sum_{p\in P_k}1/p<2^k/4+1`$. Put $`M_k=\prod_{p\in P_k}p`$ and $`E=\bigcup_{k\ge1}\{2^kd:d\mid M_k\}`$. The witness $`\{2\}`$ has weighted mass
+``` math
+\sum_{k\ge1}\frac{\prod_{p\in P_k}(1+1/p)}{2^{2^k}-1}
+ \le 2e\sum_{k\ge1}
+       \exp\bigl(-(\log2-1/4)2^k\bigr)<\infty.
+```
+For the union $`F_m`$ of the first $`m`$ frames, average $`\log^+ f_{F_m}`$ over one period. On $`v_2(n)=k<m`$, the $`k`$th frame contributes $`2^{Z_k(n)}`$ divisors, where $`Z_k(n)=\sum_{p\in P_k}\mathbf1_{p\mid n}`$. This event has density $`2^{-(k+1)}`$ and is independent of odd-prime divisibility. Thus
+``` math
+\mathbb E_{F_m}\log^+f_{F_m}
+ \ge(\log2)\sum_{k=1}^{m-1}2^{-(k+1)}S_k
+ \ge\frac{m-1}{8}\log2.
+```
+Bound <a href="#erdos-257-mersenne-support-subseries--eq:cover-log-obstruction" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> makes these means uniformly bounded for every strengthened cover, so $`E\notin\mathcal C`$.
+
+For the reverse direction, choose unused odd primes $`q_j\ge4^j`$ and disjoint finite sets $`P_j`$ of unused odd primes. Stop each $`P_j`$ at the first prefix with $`R_j:=\prod_{p\in P_j}(1+1/p)\ge q_j`$. Prime reciprocal divergence permits this, and minimality gives $`q_j\le R_j<4q_j/3`$. Put $`S_j=\sum_{p\in P_j}1/p`$, $`M_j=\prod_{p\in P_j}p`$, and $`V=\bigcup_{j\ge1}F_j`$, where $`F_j=\{q_jd:d\mid M_j\}`$. The frames have disjoint prime alphabets, and
+``` math
+\sum_{a\in F_j}\frac1a=\frac{R_j}{q_j}\in[1,4/3).
+```
+Thus the reciprocal sum diverges. Every finite prime set misses all factors of all but finitely many frames; each missed frame has base-$`b`$ weighted mass $`R_j/[q_j(b-1)]\ge1/(b-1)`$. Hence $`V\notin\mathcal W_b`$ for every integer $`b\ge2`$.
+
+For the full infinite-cover cost, from $`\log(1+x)\ge x-x^2/2`$ and $`\sum_{p\in P_j}p^{-2}\le1`$ we have $`S_j\le\log R_j+1/2<\log q_j+1`$. Set
+``` math
+z_j=(j+S_j)^{-1},\qquad
+ \alpha_j=\log_2(1+z_j),\qquad
+ c_{j,q_jd}=z_j^{\omega(d)}\quad(d\mid M_j),
+```
+with other coefficients zero and $`\omega(d)`$ the number of prime factors of $`d`$. If $`q_j\mid n`$ and $`Z`$ primes in $`P_j`$ divide $`n`$, the divisor majorant equals $`(1+z_j)^Z=f_{F_j}(n)^{\alpha_j}`$; otherwise both sides vanish. The column cost is $`C_j=q_j^{-1}\prod_{p\in P_j}(1+z_j/p)`$, whence
+``` math
+\frac{C_j2^{j\alpha_j}}{2^{\alpha_j}-1}
+ =\frac{(1+z_j)^j}{q_jz_j}
+    \prod_{p\in P_j}(1+z_j/p)
+ \le\frac{e(j+S_j)}{q_j}
+ \le e\bigl((1+\log4)j+1\bigr)4^{-j}.
+```
+The last bound uses that $`(j+\log x+1)/x`$ decreases for $`x\ge4^j`$. Its sum converges, including the frame-index factor in <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a>; hence $`V\in\mathcal C`$. ◻
+
+</div>
 
 <a id="erdos-257-mersenne-support-subseries--combining-the-two-support-criteria"></a>
 
@@ -2492,9 +2603,9 @@ The logarithmic lower bound is not a converse: replacing a fractional majorant b
 Separate small-displacement witnesses need not occur at the same index. For example, a sequence small only at even indices and one small only at odd indices need never have a small sum. The useful feature of (S) is its uniformity in the moving modulus: the positive-cover argument can use the exact observation window selected by the weighted proof.
 
 <div id="erdos-257-mersenne-support-subseries--res:mixed-supports" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports-comparator">Comparator</a></p>
 
-**Theorem 5** (mixed weighted and cover supports). *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies <a href="#erdos-257-mersenne-support-subseries--eq:weighted-return" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-return">[eq:weighted-return]</a> for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem <a href="#erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover">4</a>, with either <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+**Theorem 6** (mixed weighted and cover supports). *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies <a href="#erdos-257-mersenne-support-subseries--eq:weighted-return" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-return">[eq:weighted-return]</a> for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem <a href="#erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover">4</a>, with either <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
 </div>
 
@@ -2527,15 +2638,34 @@ Overlaps between the supports only improve the inequality. Infinitude of $`A`$ m
 
 </div>
 
-The proof does not establish strict containment of either individual class in the mixed class.
+The combination is strict as a comparison of sufficient criteria.
 
-With arbitrary positive cover weights, the class of subsets of such mixed hosts is closed under finite unions and finite changes. For weighted supports use the union of the two finite prime sets: the prime part grows and $`h/(2^h-1)`$ decreases. For two covers, interleave their finite sets with weights $`\eta_j/2`$ and $`\theta_j/2`$; the total cost grows by at most two, since $`2^{\alpha_j}\le2`$. Subsets inherit the same hosts, and finite sets have finite weighted mass. This argument uses the positive-weight variant; it does not silently reindex the dyadic weights in (V). Countable unions require a tail budget. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$. The reciprocal-summable class is contained in the weighted class, since $`h/(2^h-1)\le1`$. Theorem <a href="#erdos-257-mersenne-support-subseries--res:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:reciprocal-support">2</a> supplies the direct proof of that baseline case.
+<div id="erdos-257-mersenne-support-subseries--res:strict-mixed-supports" class="corollary">
+
+**Corollary 7** (a host requiring the mixed criterion). *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Take $`E,V`$ from Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a> and put $`U=E\cup V`$. A strengthened cover of $`U`$ would cover $`E`$. A finite-prime weighted witness for $`U`$ at any fixed base would also witness $`V`$, since its summands are nonnegative. Both conclusions contradict the proposition. Theorem <a href="#erdos-257-mersenne-support-subseries--res:mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:mixed-supports">6</a> applies to the actual pair $`E,V`$ and proves the all-base hereditary conclusion; no addition of irrational numbers is involved. ◻
+
+</div>
+
+The mixed implication has a Lean declaration in the public corpus. Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a> and this corollary have ordinary proofs here, but these particular constructions have not been formalised in Lean or independently reviewed. The weighted-only construction follows the first-logarithmic-moment method; the bounded-mass reverse construction was developed in an AI-assisted continuation on 25 September 2026. No historical priority claim is made for the comparison.
+
+Even the fixed-dyadic cover class in (V) is closed under finite unions. For two covers, interleave their $`j`$th frames at positions $`2j-1,2j`$, halve each exponent, and retain the nonnegative coefficient columns. The majorants persist since $`f^{\alpha/2}\le f^\alpha`$ for every nonnegative integer $`f`$. Writing $`T_j=C_j2^{j\alpha_j}/(2^{\alpha_j}-1)`$ for an old column, its new cost is at most
+``` math
+\frac{C_j2^{j\alpha_j}}{2^{\alpha_j/2}-1}
+ =(1+2^{\alpha_j/2})T_j\le(1+\sqrt2)T_j.
+```
+For $`r`$ covers, interleave at positions at most $`rj`$ and divide each exponent by $`r`$; the cost ratio is $`(2^\alpha-1)/(2^{\alpha/r}-1)<2r`$. Weighted supports are likewise closed under finite unions: combine their finite prime witnesses, so the prime part grows and $`h/(b^h-1)`$ decreases. Finite supports admit both criteria; subsets inherit each host. Thus the mixed class is closed under finite unions and finite changes using the literal dyadic condition (V), without changing to arbitrary cover weights. Countable unions require a tail budget. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$. The reciprocal-summable class is contained in the weighted class, since $`h/(2^h-1)\le1`$. Theorem <a href="#erdos-257-mersenne-support-subseries--res:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:reciprocal-support">2</a> supplies the direct proof of that baseline case.
 
 For comparison, Tao–Teräväinen prove the full-prime case at base $`2`$ \[taoteravainen2025, Theorem 1.3, p. 4\]. The paragraph following it states extensions to prime support at every integer base and to full prime-power support at base $`2`$, leaving the modifications to the reader. It does not treat arbitrary infinite thinnings. The proposed thinning extension is not a premise of any theorem here.
 
 <a id="erdos-257-mersenne-support-subseries--sec:period"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) (74 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) (80 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 

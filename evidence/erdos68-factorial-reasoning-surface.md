@@ -631,7 +631,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-residual-transparency"></a>
 
-## Theorem 5.4 (how the coefficient choices change the remainder), page 18
+## Theorem 5.4 (how the coefficient choices change the remainder), page 19
 
 > *For the vector in (19),
 > ``` math
@@ -702,7 +702,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 <a id="long68-res-channel-radius"></a>
 
-## Theorem 5.5 (a lower bound for the support parameter), page 19
+## Theorem 5.5 (a lower bound for the support parameter), page 21
 
 > *Let $`t,M,R\in\mathbb{N}`$ satisfy
 > ``` math
@@ -788,7 +788,7 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
 
 <a id="long68-res-radius-constant"></a>
 
-## Corollary 5.6 (the asymptotic lower bound), page 20
+## Corollary 5.6 (the asymptotic lower bound), page 21
 
 > *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 > ``` math
@@ -831,7 +831,7 @@ theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
 
 <a id="long68-res-translator"></a>
 
-## Theorem 5.7 (changing just one weighted sum), page 21
+## Theorem 5.7 (changing just one weighted sum), page 22
 
 > *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 

@@ -409,8 +409,11 @@ component checks as a serial checklist.
   routed skill. For example, agent-entry work uses
   `python3 scripts/test_agent_entry.py`; semantic projection work uses its
   `build_*.py --check` command plus the matching contract test.
-- Before publishing a non-Lean public-surface change, run
-  `python3 scripts/check_release.py` once. It already runs the registered
+- Before publishing a non-Lean public-surface change from a cold checkout,
+  run `python3 scripts/run_release_check.py` once. It prepares the locked
+  Python environment and the proof-state pilot's Lean import, then runs
+  `scripts/check_release.py`. Prepared CI can call that script directly. The
+  gate already runs the registered
   projection freshness checks, source-coordinate checks, public-boundary
   checks, query suite, cold-clone adversarial suite, and mutation fixtures.
 - After a Lean change, run the focused build wrapper below as the separate

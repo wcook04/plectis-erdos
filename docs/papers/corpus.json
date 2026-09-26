@@ -1183,7 +1183,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:ee993e3113845a16b22814949ca5039a9eecb51180a12fec6e36b0ae902a838e",
+      "source_sha256": "sha256:260525ba1e5a4b98ca0b951ebf35f36dd7cef3d42ae0ce39a5666abd33dd7f1f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1242,121 +1242,121 @@
           "level": 1,
           "id": "sec:translator",
           "title": "How cancellation forces a large moment",
-          "line": 282
+          "line": 303
         },
         {
           "level": 2,
           "id": "growth-of-the-compulsory-factor",
           "title": "Growth of the compulsory factor",
-          "line": 294
+          "line": 315
         },
         {
           "level": 2,
           "id": "sec:compressed-kernel",
           "title": "Solutions supported on an arithmetic progression",
-          "line": 319
+          "line": 340
         },
         {
           "level": 1,
           "id": "sec:prime-pole",
           "title": "Cancellation in a reduced prefix",
-          "line": 331
+          "line": 352
         },
         {
           "level": 1,
           "id": "sec:projection",
           "title": "Comparing the tail with the distance to an integer",
-          "line": 365
+          "line": 386
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining real comparison",
-          "line": 437
+          "line": 458
         },
         {
           "level": 4,
           "id": "sec:nogo",
           "title": "The limit of short truncations.",
-          "line": 472
+          "line": 493
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Computation records",
-          "line": 484
+          "line": 505
         },
         {
           "level": 1,
           "id": "sec:companion-orbit",
           "title": "A criterion using the factorial digits of S-e+2",
-          "line": 496
+          "line": 517
         },
         {
           "level": 2,
           "id": "sec:digits",
           "title": "When subtracting the tail changes a floor",
-          "line": 592
+          "line": 613
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 615
+          "line": 636
         },
         {
           "level": 4,
           "id": "further-formal-sources.",
           "title": "Further formal sources.",
-          "line": 621
+          "line": 642
         },
         {
           "level": 4,
           "id": "the-common-denominator-bound.",
           "title": "The common-denominator bound.",
-          "line": 627
+          "line": 648
         },
         {
           "level": 4,
           "id": "links-to-individual-statements.",
           "title": "Links to individual statements.",
-          "line": 633
+          "line": 654
         },
         {
           "level": 4,
           "id": "related-denominator-estimates.",
           "title": "Related denominator estimates.",
-          "line": 653
+          "line": 674
         },
         {
           "level": 4,
           "id": "comparison-with-denominator-savings-in-p-adic-linear-forms.",
           "title": "Comparison with denominator savings in p-adic linear forms.",
-          "line": 659
+          "line": 680
         },
         {
           "level": 4,
           "id": "factorial-series-comparisons.",
           "title": "Factorial-series comparisons.",
-          "line": 665
+          "line": 686
         },
         {
           "level": 4,
           "id": "selected-prime-and-mean-comparisons.",
           "title": "Selected-prime and mean comparisons.",
-          "line": 675
+          "line": 696
         },
         {
           "level": 4,
           "id": "additional-proofs-and-comparison-files.",
           "title": "Additional proofs and comparison files.",
-          "line": 681
+          "line": 702
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 691
+          "line": 712
         }
       ],
       "citations_rendered": 24,
@@ -1365,8 +1365,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:0c5f920369deabf815f42ed11ee28c8e26dcff2b45d4ced289be575270c76690",
-      "pdf_byte_count": 131432,
+      "pdf_sha256": "sha256:4e0706cade2867001edd645156be3170149709c27fe90402b50465ecf3ade082",
+      "pdf_byte_count": 134924,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1384,12 +1384,12 @@
           {
             "id": "sec:projection",
             "title": "Comparing the tail with the distance to an integer",
-            "line": 365
+            "line": 386
           },
           {
             "id": "sec:open",
             "title": "The remaining real comparison",
-            "line": 437
+            "line": 458
           }
         ],
         "unresolved_count": 0
@@ -1432,7 +1432,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
       "local_source": "paper/68/erdos68-factorial-reasoning-surface.tex",
-      "source_sha256": "sha256:7c48b01f9f24f796511ca13781dbaf91200017ff609e7dae6201d2dd8d9d20b9",
+      "source_sha256": "sha256:9c7466de76bfd6c91fcd05522c23c63e9549652f7da01385269c4253cc85d1b8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1527,151 +1527,151 @@
           "level": 4,
           "id": "a-primitive-solution-on-an-arithmetic-progression.",
           "title": "A primitive solution on an arithmetic progression.",
-          "line": 905
+          "line": 941
         },
         {
           "level": 1,
           "id": "long68:sec:finite",
           "title": "Finite denominator exclusions",
-          "line": 956
+          "line": 992
         },
         {
           "level": 4,
           "id": "carry-computation-record.",
           "title": "Carry computation record.",
-          "line": 995
+          "line": 1031
         },
         {
           "level": 1,
           "id": "long68:sec:open",
           "title": "The remaining arithmetic inputs",
-          "line": 1007
+          "line": 1043
         },
         {
           "level": 4,
           "id": "value-sets-do-not-determine-the-weighted-residue-sum.",
           "title": "Value sets do not determine the weighted residue sum.",
-          "line": 1013
+          "line": 1049
         },
         {
           "level": 4,
           "id": "the-shared-denominator-and-the-gap-must-be-controlled-together.",
           "title": "The shared denominator and the gap must be controlled together.",
-          "line": 1019
+          "line": 1055
         },
         {
           "level": 4,
           "id": "what-two-gap-product-tests-do-not-show.",
           "title": "What two gap-product tests do not show.",
-          "line": 1058
+          "line": 1094
         },
         {
           "level": 4,
           "id": "prime-powers-already-seen-at-earlier-indices.",
           "title": "Prime powers already seen at earlier indices.",
-          "line": 1073
+          "line": 1109
         },
         {
           "level": 4,
           "id": "the-upper-alternative-in-the-finite-test.",
           "title": "The upper alternative in the finite test.",
-          "line": 1097
+          "line": 1133
         },
         {
           "level": 4,
           "id": "conditions-at-twice-a-prime.",
           "title": "Conditions at twice a prime.",
-          "line": 1103
+          "line": 1139
         },
         {
           "level": 4,
           "id": "the-cofactor-form-of-the-progression-construction.",
           "title": "The cofactor form of the progression construction.",
-          "line": 1122
+          "line": 1158
         },
         {
           "level": 4,
           "id": "criteria-from-the-literature-that-do-not-apply.",
           "title": "Criteria from the literature that do not apply.",
-          "line": 1155
+          "line": 1191
         },
         {
           "level": 1,
           "id": "sources-and-evidence",
           "title": "Sources and evidence",
-          "line": 1163
+          "line": 1199
         },
         {
           "level": 1,
           "id": "long68:app:sources",
           "title": "Guide to the formal sources",
-          "line": 1190
+          "line": 1226
         },
         {
           "level": 1,
           "id": "long68:sec:extended-record",
           "title": "Further deductions and limitations",
-          "line": 1302
+          "line": 1338
         },
         {
           "level": 2,
           "id": "long68:sec:ext-digits",
           "title": "Factorial digits and their remainders",
-          "line": 1308
+          "line": 1344
         },
         {
           "level": 2,
           "id": "long68:sec:ext-literature",
           "title": "How the classical criteria apply here",
-          "line": 1345
+          "line": 1381
         },
         {
           "level": 2,
           "id": "long68:sec:ext-superseded",
           "title": "A superseded deduction",
-          "line": 1396
+          "line": 1432
         },
         {
           "level": 2,
           "id": "long68:sec:ext-plateau",
           "title": "Rational grid points and first crossings",
-          "line": 1410
+          "line": 1446
         },
         {
           "level": 2,
           "id": "long68:sec:ext-collision",
           "title": "Exact identities for shared prime powers",
-          "line": 1463
+          "line": 1499
         },
         {
           "level": 2,
           "id": "long68:sec:ext-certificates",
           "title": "Finite vectors and exact numerical examples",
-          "line": 1545
+          "line": 1581
         },
         {
           "level": 2,
           "id": "long68:sec:ext-nogo",
           "title": "Limits of the recurrences and clearing factors used here",
-          "line": 1572
+          "line": 1608
         },
         {
           "level": 2,
           "id": "long68:sec:ext-generic",
           "title": "An elementary criterion for any real number",
-          "line": 1586
+          "line": 1622
         },
         {
           "level": 1,
           "id": "sec:erdos-68-complete-family-map",
           "title": "Relations among the criteria",
-          "line": 1606
+          "line": 1642
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 1614
+          "line": 1650
         }
       ],
       "citations_rendered": 70,
@@ -1680,8 +1680,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f43e878d2f295fb3af1963397c724cc7244940c145d369925c1670dc478f855a",
-      "pdf_byte_count": 292302,
+      "pdf_sha256": "sha256:6fba0036b9d67d1ad5140c6641a1aa6e5dc75eba023ff22c9967cd6e4b179cee",
+      "pdf_byte_count": 300996,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1694,17 +1694,17 @@
           {
             "id": "long68:sec:finite",
             "title": "Finite denominator exclusions",
-            "line": 956
+            "line": 992
           },
           {
             "id": "long68:sec:open",
             "title": "The remaining arithmetic inputs",
-            "line": 1007
+            "line": 1043
           },
           {
             "id": "sec:erdos-68-complete-family-map",
             "title": "Relations among the criteria",
-            "line": 1606
+            "line": 1642
           }
         ],
         "unresolved_count": 0
@@ -4127,7 +4127,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:390ac1fb088c08e0778ef700b1effa2fc2cf0f6bf3c51c7be82af62e4298b08f",
+      "source_sha256": "sha256:dc324514dec8da33763c8fe510eadec675fc8feb94586d3a5ce408b28e04f78b",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -4192,109 +4192,109 @@
           "level": 2,
           "id": "combining-the-two-support-criteria",
           "title": "Combining the two support criteria",
-          "line": 371
+          "line": 424
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 419
+          "line": 491
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 445
+          "line": 517
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Limits of the small-displacement criterion",
-          "line": 460
+          "line": 532
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 478
+          "line": 550
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "Greedy membership and an integer recurrence",
-          "line": 494
+          "line": 566
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 561
+          "line": 633
         },
         {
           "level": 4,
           "id": "integer-quotients-for-121.",
           "title": "Integer quotients for 1/21.",
-          "line": 567
+          "line": 639
         },
         {
           "level": 4,
           "id": "approximation-to-12-by-finite-supports.",
           "title": "Approximation to 1/2 by finite supports.",
-          "line": 617
+          "line": 689
         },
         {
           "level": 4,
           "id": "finite-families-with-a-shared-prefix.",
           "title": "Finite families with a shared prefix.",
-          "line": 657
+          "line": 729
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 723
+          "line": 795
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 727
+          "line": 799
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 742
+          "line": 814
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Sources",
-          "line": 755
+          "line": 827
         },
         {
           "level": 4,
           "id": "reproducing-the-weighted-theorem.",
           "title": "Reproducing the weighted theorem.",
-          "line": 763
+          "line": 835
         },
         {
           "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 776
+          "line": 848
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 782
+          "line": 854
         }
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:8299007a02ee0a4dbdab043f6bd290464849dbbcae7f1afb162be5a30311c397",
-      "pdf_byte_count": 165421,
+      "pdf_sha256": "sha256:055cb823afe0c70c6298b78ad4df1f7769bf2471938c4349092b1660ff038a46",
+      "pdf_byte_count": 174923,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4317,7 +4317,7 @@
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 561
+            "line": 633
           }
         ],
         "unresolved_count": 0
@@ -4360,7 +4360,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:f416aae7069e05033ec6bb58a69f660fe37ce823cb3e06311e0e8e8119859733",
+      "source_sha256": "sha256:16d6e9dd68f0e21145acc771c5a996d4a68f6f211272db43fa33ccd186ebf86a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -5342,8 +5342,8 @@
       ],
       "citations_rendered": 41,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:aac336c1bd2a7775ca1527bed9be5dd27622974506fcb7a4f37245aa62a03395",
-      "pdf_byte_count": 796931,
+      "pdf_sha256": "sha256:2822938d8295bd8096ba11172df46e7c4a1d9c22da796184504e74d08ded549e",
+      "pdf_byte_count": 797294,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7343,12 +7343,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:f26ecd2eaee4c13039aa2dfe73da5dfeb397b096b89cad2cecf96ee0c10cc64a",
+      "source_sha256": "sha256:1b70085a86d8631b484f6524714cdeaea0299fc9a3cf19053a31fdcb9a2bfecb",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 35,
+      "section_count": 36,
       "sections": [
         {
           "level": 1,
@@ -7519,56 +7519,62 @@
           "line": 760
         },
         {
+          "level": 2,
+          "id": "sec:polynomial-shifts",
+          "title": "Polynomially selected shifts",
+          "line": 827
+        },
+        {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 825
+          "line": 858
         },
         {
           "level": 1,
           "id": "sec:misread",
           "title": "The computation and its limits",
-          "line": 848
+          "line": 881
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 875
+          "line": 908
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 889
+          "line": 922
         },
         {
           "level": 1,
           "id": "capacity:sec:sources",
           "title": "Sources and formal correspondence",
-          "line": 903
+          "line": 936
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Further questions",
-          "line": 921
+          "line": 954
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 1003
+          "line": 1040
         }
       ],
-      "citations_rendered": 62,
+      "citations_rendered": 66,
       "fallback_title_drift": {
         "registry_fallback": "An Exact Capacity Criterion for Series with Eventual Congruences",
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:eb8dfc60123c0178e2749b42f06502487380daff4c8b1b19f4315b125d48c268",
-      "pdf_byte_count": 216730,
+      "pdf_sha256": "sha256:5958eba5880f9e6f9bc8e1f4d911d1120ea3b100a665f4969f33ba7b898acbf0",
+      "pdf_byte_count": 224949,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7591,7 +7597,7 @@
           {
             "id": "sec:questions",
             "title": "Further questions",
-            "line": 921
+            "line": 954
           }
         ],
         "unresolved_count": 0
@@ -7634,7 +7640,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:aea018c4e671f031a9dda02e2b424e8113926adc05837b56074def1966edfef3",
+      "source_sha256": "sha256:1a677d802974c2f6e55660a21b82742c4249a3118880ab0f4dc67662bf052588",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7740,8 +7746,8 @@
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:2724b912a3ea2eb88c3203537f1d00da986df3fa0990eabd394d99e3d5617c47",
-      "pdf_byte_count": 138064,
+      "pdf_sha256": "sha256:7c50cd2da30acc3425c76bad303ddecf7fc548204e27fb8c9059edc67b52d1a5",
+      "pdf_byte_count": 138525,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7812,7 +7818,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:dc5dd4b37231bf70084adee1043b7423326ee2139b097aa2b400eadc361ae747",
+      "source_sha256": "sha256:89ff084d0b7d2ba36b84f7287514b5e9c7a974936c22afafd835eb0b5d6182c5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7942,8 +7948,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:4648b461a4ab85f24f4c9f5bf9ced1e7a295cda1e8b05ea84af463a7c51a8d62",
-      "pdf_byte_count": 87537,
+      "pdf_sha256": "sha256:b14cdd459be6bffd7cdfcd9c14d09fd7c4dc519447772b700f6d6d34b6b71475",
+      "pdf_byte_count": 88655,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8014,7 +8020,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:78d4ebba2d08735178ceee5000e656f24072274156f40eec09a7ffee690dd858",
+      "source_sha256": "sha256:badcff778bfef6a840bd5395c4417ea45f45321bf48f003365decdb12111bc35",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8192,32 +8198,32 @@
         {
           "level": 1,
           "id": "sec:execution",
-          "title": "The next decision",
+          "title": "The next decision and its dependencies",
           "line": 557
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 565
+          "line": 567
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 575
+          "line": 577
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 611
+          "line": 613
         }
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:635f3802bec9c326d5b3f948b9df3396e8e1d0333f630b2201787a1d4d628371",
-      "pdf_byte_count": 162689,
+      "pdf_sha256": "sha256:a5366d3ff3f570a1a5420703f256dc40829551bc8907a51928ccca548f523f13",
+      "pdf_byte_count": 163253,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

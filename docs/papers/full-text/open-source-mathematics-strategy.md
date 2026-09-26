@@ -405,7 +405,7 @@ The project should present several ways to use and contribute to the repository;
 
 The lowest-friction invitation is to read a result and return a specific question, counterexample, correction or source observation through the public issue or email route, without cloning. Readers who want to run an agent or change source can clone the project and use its compact entry file. The first screen of the README should state checked results beside their exact remaining-open questions, explain that a useful return need not solve a problem, and give architecture contributions first-class credit.
 
-Publicity should follow a working contribution loop rather than precede it. A Hacker News launch, research talk, or model-community post can then make a specific claim: a stranger can clone the corpus, reach an exact open question, run or improve the machinery, return a typed result, and see accepted work in public lineage. Stars, clones, and raw agent-hours measure attention or activity. They do not measure mathematical progress.
+A public invitation should describe the route it actually demonstrates. A mathematical reading encounter needs a reachable result and a clear evidence boundary; a reproducible local run additionally needs a tested command and a return path. A launch claiming a reusable contribution loop must also show review and public lineage for accepted work. Stars, clones, and raw agent-hours measure attention or activity. They do not measure mathematical progress.
 
 <a id="sec:evaluation"></a>
 
@@ -479,7 +479,7 @@ A continuous stewardship run executes a second loop beside it:
 
 6.  return a source-pinned frontier update: the strongest surviving result, its hard step, the exact boundary, and the next discriminating question.
 
-This second loop explains why paper order is allowed to change as the corpus improves. A paper is a reader-facing projection of current mathematical judgement, not a chronological dump of agent activity. The strongest exact results and mechanisms should lead; routine scaffolding remains available but receives less space. Comparator remains an exact-interface firewall, and Palomar remains an external review route. The stewardship goal may prepare and prioritise those objects, but it cannot award novelty, acceptance, or canonical status to itself.
+This second loop explains why paper order is allowed to change as the corpus improves. A paper is a reader-facing projection of current mathematical judgement, not a chronological dump of agent activity. The strongest exact results and mechanisms should lead; routine scaffolding remains available but receives less space. Comparator remains an exact-interface firewall, and Palomar remains an external formal-verification and automated editorial route. The stewardship goal may prepare and prioritise those objects, but it cannot award novelty, acceptance, or canonical status to itself.
 
 Subagents can divide literature reading, computation, proof search, formalisation, and adversarial review when their questions and evidence remain independent. The integrating agent must read and verify their returns, and each lane keeps its own starting state and stop condition. Parallel agents can multiply attempts. They do not multiply truth.
 
@@ -556,9 +556,11 @@ Finally, openness does not remove resource inequality. Compute donors, frontier-
 
 <a id="sec:execution"></a>
 
-# The next decision
+# The next decision and its dependencies
 
 The public clone already gives readers problem papers, exact open boundaries, bounded query routes, ordinary-language return paths and an accepted architecture receipt. Those establish an inspectable mechanism, not its benefit to a new reader. The next decision is whether an unfamiliar reader can use one mathematical case and return evidence a maintainer can assess without the original sessions. Section <a href="#sec:evaluation" data-reference-type="ref" data-reference="sec:evaluation">12</a> specifies a small dyadic-shift round and the observations that would lead to a correction of the explanation, return prompt or review rule.
+
+The work has route-specific dependencies, but no single launch sequence. Reading a paper, running a bounded public check, or contributing an ordinary mathematical idea can proceed while hosted services and controlled comparisons remain future work. The README, navigation, and return routes are partly implemented in the current public clone. Each advertised route should be used when its own operation works and its limits are clear. Higher-throughput services need their own resource, security, and review boundaries; those dependencies do not suspend use of the bounded paths already available.
 
 If the route works, a later comparison can test whether it reduces complete continuation and review work against good ordinary papers and source links. If it does not, the mathematical case remains useful and the default entry should be simplified. A donated-compute service, public task market and transfer to physical science would need separate evidence and governance; none is a reported capability of this repository.
 

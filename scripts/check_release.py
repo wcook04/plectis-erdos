@@ -44,7 +44,15 @@ This script verifies that every other public surface agrees with it:
      committed PDFs every mark sits level with its result's heading, points
      where it is declared to, and no paper is longer than its frozen
      baseline (scripts/check_paper_evidence_pdfs.py, which needs pypdf).
-Stdlib only; run from the repository root:  python3 scripts/check_release.py
+The gate itself imports only the standard library, but check 14 runs a child
+that needs the hash-pinned release dependencies (pypdf). From a cold checkout
+run the supported entry, which prepares that environment first:
+
+    python3 scripts/run_release_check.py
+
+Call this script directly only from an interpreter that already has
+scripts/requirements-release.txt installed (as CI does); otherwise it stops
+before any check runs and names the supported entry.
 """
 
 from __future__ import annotations
@@ -261,6 +269,10 @@ def late_check_commands() -> dict[str, list[str]]:
         "release_environment": [
             sys.executable,
             str(ROOT / "scripts" / "test_check_release_environment.py"),
+        ],
+        "release_preparation": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_run_release_check.py"),
         ],
         "proof_workbench": [
             sys.executable,
@@ -1354,6 +1366,16 @@ def check_proof_trust() -> None:
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
 
+RELEASE_CHILD_MODULES = ("pypdf",)
+
+
+def missing_release_dependencies() -> list[str]:
+    """Modules a release child imports that are absent from this interpreter."""
+    from importlib.util import find_spec
+
+    return [name for name in RELEASE_CHILD_MODULES if find_spec(name) is None]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -1362,6 +1384,16 @@ def main(argv: list[str] | None = None) -> int:
         help=argparse.SUPPRESS,
     )
     args = parser.parse_args(argv)
+    missing = missing_release_dependencies()
+    if missing:
+        print(
+            "check_release: this interpreter lacks the pinned release "
+            f"dependencies ({', '.join(missing)}); no check ran. Run "
+            "`python3 scripts/run_release_check.py`, which installs "
+            "scripts/requirements-release.txt into an ignored environment.",
+            file=sys.stderr,
+        )
+        return 2
     if not args.singleflight_worker:
         state_root = singleflight.default_state_root()
         specification = singleflight.validator_spec(
