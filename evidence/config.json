@@ -12,6 +12,7 @@
  "record_commit_overrides": {
   "erdos-257-mersenne-support-subseries": "1dd59e1d71f37ca2f5bbea2ac698fe03db6f31c0",
   "erdos-68-factorial-denominator-irrationality": "24f4ec4460c5635aa630988a17029c77f7d4f6f5",
-  "erdos68-factorial-reasoning-surface": "24f4ec4460c5635aa630988a17029c77f7d4f6f5"
+  "erdos68-factorial-reasoning-surface": "24f4ec4460c5635aa630988a17029c77f7d4f6f5",
+  "erdos1041-lemniscate-reasoning-surface": "e121e306a0f76464a4f1c45616eda5fd6bf87dc1"
  }
 }

@@ -6625,8 +6625,8 @@
       ],
       "citations_rendered": 65,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:23c834897bc59ef0152cf3b157e9389c1f22cb01ccc02f94c9e1b12bc5cdc8fd",
-      "pdf_byte_count": 428361,
+      "pdf_sha256": "sha256:def16e734f00d839b4af22d2f4caeba407b670f0d2ba514261f5ad67109bf872",
+      "pdf_byte_count": 428465,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

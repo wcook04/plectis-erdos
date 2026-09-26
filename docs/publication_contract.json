@@ -304,7 +304,7 @@
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "source_content_digest": "sha256:df383fa768918554665481132badb8986c22aaa0dabfa8ca45ca42cf04e77dc7",
       "rendered_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "rendered_content_digest": "sha256:23c834897bc59ef0152cf3b157e9389c1f22cb01ccc02f94c9e1b12bc5cdc8fd",
+      "rendered_content_digest": "sha256:def16e734f00d839b4af22d2f4caeba407b670f0d2ba514261f5ad67109bf872",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
       "claim_scope": "Claim-bounded reasoning record for Erdős Problem 1041. It assembles ordinary positive-family arguments and exact obstruction examples alongside Lean-checked Newton-flow, translation, perturbation, cyclic-trinomial, critical-value-mean and solved-family kernels. For ani's explicit monic degree-seven polynomial with distinct open-disc roots, Lean proves the one-dimensional Hausdorff-measure bound for every preconnected strict-lemniscate subset joining two roots and the negation and answer(False) forms of the exact Formal Conjectures path-image-length statement. The separate total-variation bound remains checked. This formalises one polynomial, not the reported family; correspondence with the 1958 wording awaits independent human review. The remaining ordinary analytic assemblies carry no blanket Lean-coverage claim.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
