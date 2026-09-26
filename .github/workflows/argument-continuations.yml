@@ -123,19 +123,21 @@ jobs:
           mapfile -t targets < <(python3 scripts/coverage_build_targets.py)
           python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness "${targets[@]}"
 
-      # Each pass stops itself at its own budget: search 75 min, compositions at
-      # most 20 min after the search budget, idle hypotheses 10 min, battery
-      # 20 min, library search on the 150 most-consumed open leaves 10 min. The outer timeout is a backstop so a stuck elaboration cannot
+      # Each pass stops itself at its own budget: used consequences 10 min,
+      # search 75 min, compositions at most 20 min after the search budget, idle
+      # hypotheses 10 min, battery 20 min, library search on the 150
+      # most-consumed open leaves 10 min. The outer timeout is a backstop so a stuck elaboration cannot
       # consume the job and lose the partial stream. The builder labels a
       # stream without a summary record as truncated rather than rejecting it.
       # The lean/ tree id lets any checkout tell whether the graph is current
       # without fetching the pull request's merge commit.
       - name: Export the argument graph
-        timeout-minutes: 170
+        timeout-minutes: 185
         env:
           PLECTIS_CONTINUATION_EXPORT_FILE: ${{ runner.temp }}/argument_continuations_export.jsonl
           PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "4500"
           PLECTIS_CONTINUATION_IDLE_SECONDS: "600"
+          PLECTIS_CONTINUATION_WEAKEN_SECONDS: "600"
           PLECTIS_CONTINUATION_BATTERY_SECONDS: "1200"
           PLECTIS_CONTINUATION_DEEP_LEAVES: "150"
           PLECTIS_CONTINUATION_DEEP_SECONDS: "600"
@@ -150,11 +152,11 @@ jobs:
             tail -n +3 scripts/export_argument_continuations.lean
           } > "$wrapper"
           start=$(date +%s)
-          timeout --kill-after=60s 160m lake env lean "$wrapper"
+          timeout --kill-after=60s 175m lake env lean "$wrapper"
           status=$?
           if [ "$status" -ne 0 ] && [ ! -s "$PLECTIS_CONTINUATION_EXPORT_FILE" ]; then
             echo "the coverage targets did not import (exit $status); exporting the default roots only"
-            timeout --kill-after=60s 150m lake env lean scripts/export_argument_continuations.lean
+            timeout --kill-after=60s 165m lake env lean scripts/export_argument_continuations.lean
             status=$?
           fi
           end=$(date +%s)

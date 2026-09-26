@@ -49,6 +49,8 @@ source-coordinate join and the argument graph. Environment variables:
   1200);
 * `PLECTIS_CONTINUATION_IDLE_SECONDS`: wall-clock budget for the idle-hypothesis
   pass (default 600);
+* `PLECTIS_CONTINUATION_WEAKEN_SECONDS`: wall-clock budget for the
+  used-consequence pass (default 600);
 * `PLECTIS_CONTINUATION_WORKERS`: statements searched in parallel (default 4);
 * `PLECTIS_CONTINUATION_DEEP_LEAVES` and `PLECTIS_CONTINUATION_DEEP_SECONDS`:
   library search (`exact?`) on that many of the most-consumed leaves the
@@ -69,6 +71,15 @@ neither closes nor refutes is reported as open, never as false.
 Pass 2 also searches, for every antecedent (a hypothesis or a residual),
 corpus theorems proving its negation (`refutation` rows): a refuted antecedent
 makes every conditional argument that needs it vacuous.
+
+Between the telescopes and the search, the used-consequence pass asks, for
+each closed hypothesis of each theorem (most-consumed first), what the proof
+derives from it. When the proof uses `h : H` only through use sites such as
+`L h`, `h.1` or `h 3`, the theorem with `h` replaced by the propositions those
+sites prove is added to the environment (the kernel checks it on the way in)
+and becomes a producer like any other theorem; each consequence `C` is a new
+statement, searched, refuted and tried by the battery like the rest, and the
+kernel checks `H → C` for each (`weakening` rows).
 -/
 
 open Lean Meta Elab Command
@@ -85,6 +96,7 @@ structure Config where
   batteryHeartbeats : Nat
   batteryBudgetMs : Nat
   idleBudgetMs : Nat
+  weakenBudgetMs : Nat
   workers : Nat
   deepLeaves : Nat
   deepBudgetMs : Nat
@@ -115,6 +127,7 @@ def readConfig : IO Config := do
     batteryHeartbeats := ← envNat "PLECTIS_CONTINUATION_BATTERY_HEARTBEATS" 40000
     batteryBudgetMs := (← envNat "PLECTIS_CONTINUATION_BATTERY_SECONDS" 1200) * 1000
     idleBudgetMs := (← envNat "PLECTIS_CONTINUATION_IDLE_SECONDS" 600) * 1000
+    weakenBudgetMs := (← envNat "PLECTIS_CONTINUATION_WEAKEN_SECONDS" 600) * 1000
     workers := max 1 (← envNat "PLECTIS_CONTINUATION_WORKERS" 4)
     deepLeaves := ← envNat "PLECTIS_CONTINUATION_DEEP_LEAVES" 0
     deepBudgetMs := (← envNat "PLECTIS_CONTINUATION_DEEP_SECONDS" 600) * 1000
@@ -187,6 +200,12 @@ def render (e : Expr) : MetaM String := do
       (o.setBool `pp.proofs false).setBool `pp.deepTerms false) <| ppExpr e
   return clip (toString fmt)
 
+/-- A proof term as a reader would want to see a use site: `L h`, `h.2`. -/
+def renderProof (e : Expr) : MetaM String := do
+  let fmt ← withOptions (fun o =>
+      (o.setBool `pp.proofs true).setBool `pp.deepTerms false) <| ppExpr e
+  return clip (toString fmt) 300
+
 def binderInfoLabel : BinderInfo → String
   | .default => "explicit"
   | .implicit => "implicit"
@@ -237,11 +256,16 @@ def readings (conclusion : Expr) : Array (String × Expr) := Id.run do
     out := out.push ("ne_as_not", neAsNot c)
   return out
 
-def producerIndex (cfg : Config) (env : Environment) :
+def producerIndex (cfg : Config) (env : Environment) (extra : Array Name := #[]) :
     Std.HashMap Name (Array Producer) := Id.run do
   let mut index : Std.HashMap Name (Array Producer) := {}
+  let mut theorems : Array (Name × ConstantInfo) := #[]
   for (name, info) in env.constants.toList do
-    unless selected cfg env name && !generatedTheorem name do continue
+    if selected cfg env name && !generatedTheorem name then theorems := theorems.push (name, info)
+  -- Theorems this export derived (weakened hypotheses) are producers too.
+  for name in extra do
+    if let some info := env.find? name then theorems := theorems.push (name, info)
+  for (name, info) in theorems do
     let .thmInfo _ := info | continue
     let conclusion := strippedConclusion info.type
     for (reading, body) in readings conclusion do
@@ -566,6 +590,220 @@ def idleHypotheses (info : ConstantInfo) : MetaM (Array Nat) := do
       unless later do idle := idle.push i
     return idle
 
+/-! ## Used consequences
+
+A proof may use a hypothesis `h : H` only through what it derives from it:
+`L h` for a lemma `L`, a component `h.1`, an instance `h 3`. Replacing `h` by
+those consequences gives a theorem with weaker hypotheses and the same
+argument. A *use site* is an occurrence of `h` inside the largest application
+around it that mentions no bound variable of the proof and no other binder of
+the statement, whose type is a proposition that neither mentions `H` nor is
+`H` up to unfolding nor is the theorem's own conclusion. The weakening exists
+when every occurrence of `h` lies in a use site. -/
+
+/-- Whether `e` is the hypothesis `h` itself, possibly transported by a cast,
+`Eq.mp`, `Eq.mpr` or `id` whose other arguments do not use `h`. -/
+partial def isHypRef (h : FVarId) (e : Expr) : Bool :=
+  match e.consumeMData with
+  | .fvar id => id == h
+  | e =>
+      match e.getAppFn with
+      | .const n _ =>
+          let args := e.getAppArgs
+          if (n == ``Eq.mpr || n == ``Eq.mp || n == ``cast) && args.size == 4 then
+            !args[2]!.containsFVar h && isHypRef h args[3]!
+          else if n == ``id && args.size == 2 then isHypRef h args[1]!
+          else false
+      | _ => false
+
+structure UseScan where
+  /-- Per subterm: whether it mentions `h`, and whether it mentions another
+  free variable. Memoised, so shared subterms are visited once. -/
+  facts : Std.HashMap Expr (Bool × Bool) := {}
+  verdicts : Std.HashMap Expr Bool := {}
+  sites : Array Expr := #[]
+  visited : Nat := 0
+
+abbrev UseM := StateT UseScan MetaM
+
+partial def useFacts (h : FVarId) (e : Expr) : UseM (Bool × Bool) := do
+  if !e.hasFVar then return (false, false)
+  if let some f := (← get).facts.get? e then return f
+  let f ← match e with
+    | .fvar id => pure (id == h, id != h)
+    | .app f a => do
+        let x ← useFacts h f
+        let y ← useFacts h a
+        pure (x.1 || y.1, x.2 || y.2)
+    | .lam _ t b _ | .forallE _ t b _ => do
+        let x ← useFacts h t
+        let y ← useFacts h b
+        pure (x.1 || y.1, x.2 || y.2)
+    | .letE _ t v b _ => do
+        let x ← useFacts h t
+        let y ← useFacts h v
+        let z ← useFacts h b
+        pure (x.1 || y.1 || z.1, x.2 || y.2 || z.2)
+    | .mdata _ b | .proj _ _ b => useFacts h b
+    | _ => pure (false, false)
+  modify fun s => { s with facts := s.facts.insert e f }
+  return f
+
+/-- No bound variable of the proof, no metavariable, no free variable but `h`. -/
+def closedFor (h : FVarId) (e : Expr) : UseM Bool := do
+  if e.hasLooseBVars || e.hasMVar then return false
+  return !(← useFacts h e).2
+
+/-- The proposition a use site proves, if the site qualifies. -/
+def siteType? (hType : Expr) (conclusionKey : Option String) (site : Expr) : MetaM (Option Expr) := do
+  try
+    let t ← instantiateMVars (← inferType site)
+    unless ← isProp t do return none
+    if t.hasFVar || t.hasMVar || t.hasLooseBVars then return none
+    if (t.find? (· == hType)).isSome then return none
+    if conclusionKey == some (keyOf t) then return none
+    if let .ok true ← budgeted 5000 (withNewMCtxDepth (isDefEq t hType)) then return none
+    return some t
+  catch _ => return none
+
+mutual
+/-- Whether every occurrence of `h` in `e` lies inside a use site; the sites
+are collected in the state. `false`: some occurrence uses `h` as it stands. -/
+partial def collectUses (h : FVarId) (hType : Expr) (conclusionKey : Option String) (e : Expr) :
+    UseM Bool := do
+  if !(← useFacts h e).1 then return true
+  if let some v := (← get).verdicts.get? e then return v
+  let s ← get
+  if s.visited ≥ 200000 then return false
+  set { s with visited := s.visited + 1 }
+  let v ← visitUses h hType conclusionKey e
+  modify fun s => { s with verdicts := s.verdicts.insert e v }
+  return v
+
+partial def visitUses (h : FVarId) (hType : Expr) (conclusionKey : Option String) (e : Expr) :
+    UseM Bool := do
+  match e with
+  | .fvar _ => return false
+  | .mdata _ b => collectUses h hType conclusionKey b
+  | .proj _ _ b =>
+      if isHypRef h b && (← closedFor h e) then
+        unless (← siteType? hType conclusionKey e).isSome do return false
+        modify fun s => { s with sites := s.sites.push e }
+        return true
+      collectUses h hType conclusionKey b
+  | .lam _ t b _ | .forallE _ t b _ =>
+      let x ← collectUses h hType conclusionKey t
+      let y ← collectUses h hType conclusionKey b
+      return x && y
+  | .letE _ t v b _ =>
+      let x ← collectUses h hType conclusionKey t
+      let y ← collectUses h hType conclusionKey v
+      let z ← collectUses h hType conclusionKey b
+      return x && y && z
+  | .app .. =>
+      -- `h` transported by a cast is `h`; the application around it decides.
+      if isHypRef h e then return false
+      let fn := e.getAppFn
+      let args := e.getAppArgs
+      let mut k := 0
+      if ← closedFor h fn then
+        while k < args.size do
+          if ← closedFor h args[k]! then k := k + 1 else break
+      if k > 0 && (isHypRef h fn || (args.extract 0 k).any (isHypRef h)) then
+        let site := mkAppN fn (args.extract 0 k)
+        unless (← siteType? hType conclusionKey site).isSome do return false
+        modify fun s => { s with sites := s.sites.push site }
+        let mut ok := true
+        for a in args.extract k args.size do
+          unless ← collectUses h hType conclusionKey a do ok := false
+        return ok
+      let mut ok ← collectUses h hType conclusionKey fn
+      for a in args do
+        unless ← collectUses h hType conclusionKey a do ok := false
+      return ok
+  | _ => return true
+end
+
+structure Weakening where
+  type : Expr
+  value : Expr
+  hypothesis : Expr
+  consequences : Array Expr
+  /-- Per consequence: the constants its use sites apply `h` to, and the
+  sites as rendered. -/
+  via : Array (Array String)
+  sites : Array (Array String)
+  /-- Per consequence: whether the kernel accepts `H → C` as the use site. -/
+  implied : Array Bool
+
+/-- Binder `i` of a theorem replaced by what the proof uses of it: one
+hypothesis per distinct use-site proposition, placed where the binder was,
+with each use site in the proof replaced by the new hypothesis. -/
+def weakenAt (info : ConstantInfo) (i : Nat) : MetaM (Option Weakening) := do
+  let some value := info.value? | return none
+  forallTelescope info.type fun xs body => do
+    unless i < xs.size do return none
+    let x := xs[i]!
+    let h := x.fvarId!
+    let hType ← instantiateMVars (← h.getDecl).type
+    if body.containsFVar h then return none
+    for j in [i+1:xs.size] do
+      if (← xs[j]!.fvarId!.getDecl).type.containsFVar h then return none
+    let proof := value.beta xs
+    let conclusionKey := if body.hasFVar then none else some (keyOf body)
+    let (ok, scan) ← (collectUses h hType conclusionKey proof).run {}
+    unless ok && !scan.sites.isEmpty do return none
+    let mut consequences : Array Expr := #[]
+    let mut slot : Array Nat := #[]
+    let mut via : Array (Array String) := #[]
+    let mut rendered : Array (Array String) := #[]
+    for site in scan.sites do
+      let t ← instantiateMVars (← inferType site)
+      let head := (headName? site).map Name.toString |>.getD (if isHypRef h site.getAppFn then "hypothesis" else "")
+      let text ← renderProof site
+      match consequences.findIdx? (· == t) with
+      | some j =>
+          slot := slot.push j
+          unless via[j]!.contains head do via := via.modify j (·.push head)
+          unless rendered[j]!.contains text do rendered := rendered.modify j (·.push text)
+      | none =>
+          slot := slot.push consequences.size
+          consequences := consequences.push t
+          via := via.push #[head]
+          rendered := rendered.push #[text]
+    let mut implied : Array Bool := #[]
+    for j in [0:consequences.size] do
+      let some k := slot.findIdx? (· == j) | implied := implied.push false; continue
+      let checked ← kernelVerdict (← mkForallFVars #[x] consequences[j]!)
+        (← mkLambdaFVars #[x] scan.sites[k]!) info.levelParams
+      implied := implied.push checked.isNone
+    let decls := consequences.mapIdx fun j t =>
+      (Name.mkSimple s!"used{j}", fun (_ : Array Expr) => (pure t : MetaM Expr))
+    withLocalDeclsD decls fun cs => do
+      let sites := scan.sites
+      let replaced := proof.replace fun e =>
+        if !e.hasFVar then none
+        else match sites.findIdx? (· == e) with
+          | some j => some cs[slot[j]!]!
+          | none => none
+      if replaced.containsFVar h then return none
+      let keep := xs.extract 0 i ++ cs ++ xs.extract (i + 1) xs.size
+      let type ← instantiateMVars (← mkForallFVars keep body)
+      let value ← instantiateMVars (← mkLambdaFVars keep replaced)
+      if type.hasMVar || value.hasMVar then return none
+      return some { type, value, hypothesis := hType, consequences, via, sites := rendered, implied }
+
+/-- Add the weakened theorem to the environment under a derived name; the
+kernel checks it on the way in, and the passes after this one can use it. -/
+def addWeakened (info : ConstantInfo) (i : Nat) (type value : Expr) : MetaM (Except String Name) := do
+  let name := info.name ++ Name.mkSimple s!"_argument_weakening_{i}"
+  let decl := Declaration.thmDecl { name, levelParams := info.levelParams, type, value }
+  match (← getEnv).addDeclCore 0 decl none with
+  | .ok env =>
+      setEnv env
+      return .ok name
+  | .error ex => return .error (clip (← (ex.toMessageData (← getOptions)).toString) 400)
+
 /-- Drop a theorem's idle binders and ask the kernel to check the stronger
 statement with the same proof. -/
 def strengthenAndCheck (info : ConstantInfo) (idle : Array Nat) : MetaM (Option Json) := do
@@ -730,9 +968,9 @@ def exportAll : Elab.TermElabM Unit := do
     ("max_candidates", toJson cfg.maxCandidates),
     ("max_statements", toJson cfg.maxStatements),
     ("time_budget_ms", toJson cfg.timeBudgetMs)]
-  let producers := producerIndex cfg env
   -- Pass 1: telescopes.
   let mut state : State := {}
+  let mut weakenCandidates : Array (Name × Nat × String) := #[]
   let mut theoremCount := 0
   let mut consumerCount : Std.HashMap String Nat := {}
   let mut hasProducer : Std.HashSet String := {}
@@ -754,6 +992,11 @@ def exportAll : Elab.TermElabM Unit := do
           state := enqueue state h "hypothesis"
           state := { state with antecedents := state.antecedents.insert (keyOf h) }
           consumerCount := consumerCount.insert (keyOf h) (consumerCount.getD (keyOf h) 0 + 1)
+        for row in rows do
+          if (row.getObjValAs? String "kind").toOption == some "hypothesis" then
+            if let .ok key := row.getObjValAs? String "key" then
+              if let .ok i := row.getObjValAs? Nat "i" then
+                weakenCandidates := weakenCandidates.push (name, i, key)
         -- The conclusion of a conditional argument is itself a statement the
         -- graph must be able to reach and unfold.
         if let some body := closedBody then
@@ -769,6 +1012,54 @@ def exportAll : Elab.TermElabM Unit := do
         emit stream <| Json.mkObj [
           ("record", "theorem_error"), ("name", toJson name.toString),
           ("reason", toJson reason)]
+  -- Pass 1b: what each proof uses of each closed hypothesis, the hypotheses
+  -- most consumed across the corpus (named inputs) first.
+  let weakenStart ← IO.monoMsNow
+  let ordered := weakenCandidates.qsort fun a b =>
+    consumerCount.getD a.2.2 0 > consumerCount.getD b.2.2 0 ||
+      (consumerCount.getD a.2.2 0 == consumerCount.getD b.2.2 0 && a.1.toString < b.1.toString)
+  let mut weakened : Array Name := #[]
+  let mut weakenTried := 0
+  let mut weakenRejected := 0
+  let mut weakenTruncated := false
+  let mut consequenceKeys : Std.HashSet String := {}
+  for (name, i, hKey) in ordered do
+    if (← IO.monoMsNow) - weakenStart > cfg.weakenBudgetMs then
+      weakenTruncated := true
+      break
+    let some info := (← getEnv).find? name | continue
+    weakenTried := weakenTried + 1
+    let .ok (some w) ← budgeted 400000 (weakenAt info i) | continue
+    let mut consequenceRows : Array Json := #[]
+    for c in w.consequences, via in w.via, sites in w.sites, implied in w.implied do
+      consequenceRows := consequenceRows.push <| Json.mkObj [
+        ("key", toJson (keyOf c)), ("type", toJson (← render c)),
+        ("via", toJson via), ("sites", toJson sites),
+        ("implication_kernel_checked", toJson implied)]
+    let verdict ← addWeakened info i w.type w.value
+    emit stream <| Json.mkObj [
+      ("record", "weakening"), ("theorem", toJson name.toString), ("i", toJson i),
+      ("hypothesis", toJson hKey), ("hypothesis_type", toJson (← render w.hypothesis)),
+      ("consequences", Json.arr consequenceRows),
+      ("weakened", toJson (match verdict with | .ok n => n.toString | .error _ => "")),
+      ("type", toJson (← render w.type)),
+      ("kernel_checked", toJson verdict.isOk),
+      ("kernel_error", toJson (match verdict with | .ok _ => "" | .error e => e))]
+    match verdict with
+    | .error _ => weakenRejected := weakenRejected + 1
+    | .ok synthetic =>
+        weakened := weakened.push synthetic
+        for c in w.consequences do
+          state := enqueue state c "consequence"
+          state := { state with antecedents := state.antecedents.insert (keyOf c) }
+          consumerCount := consumerCount.insert (keyOf c) (consumerCount.getD (keyOf c) 0 + 1)
+          consequenceKeys := consequenceKeys.insert (keyOf c)
+  let weakenEnd ← IO.monoMsNow
+  -- The search budget runs from the start, less the used-consequence pass,
+  -- which has its own.
+  let searchBase := startMs + (weakenEnd - weakenStart)
+  let env ← getEnv
+  let producers := producerIndex cfg env weakened
   -- Pass 2: producer search over the closed statements, following residuals.
   -- The per-statement budget covers every candidate's own budget, so it trips
   -- only on work outside the attempts.
@@ -781,7 +1072,7 @@ def exportAll : Elab.TermElabM Unit := do
     if state.processed ≥ cfg.maxStatements then
       state := { state with truncated := true }
       break
-    if (← IO.monoMsNow) - startMs > cfg.timeBudgetMs then
+    if (← IO.monoMsNow) - searchBase > cfg.timeBudgetMs then
       state := { state with truncated := true }
       break
     -- A wave: the next statements of the queue, searched in parallel. The
@@ -853,7 +1144,7 @@ def exportAll : Elab.TermElabM Unit := do
   -- A statement searched before it was seen as an antecedent (for example a
   -- conclusion that is later a residual) gets its refutation search now.
   for (statement, _) in state.queue.extract 0 cursor do
-    if (← IO.monoMsNow) - startMs > cfg.timeBudgetMs then
+    if (← IO.monoMsNow) - searchBase > cfg.timeBudgetMs then
       state := { state with truncated := true }
       break
     let key := keyOf statement
@@ -867,8 +1158,8 @@ def exportAll : Elab.TermElabM Unit := do
   -- residual-free producer, and have the kernel check each composition.
   let mut compositions := 0
   let mut checkedCompositions := 0
-  for name in names do
-    if (← IO.monoMsNow) - startMs > cfg.timeBudgetMs + 1200000 then
+  for name in names ++ weakened do
+    if (← IO.monoMsNow) - searchBase > cfg.timeBudgetMs + 1200000 then
       state := { state with truncated := true }
       break
     let some info := env.find? name | continue
@@ -903,10 +1194,16 @@ def exportAll : Elab.TermElabM Unit := do
     | _ => pure ()
   -- Pass 4: the tactic battery on open leaves, most-consumed first.
   let batteryStart ← IO.monoMsNow
+  -- A used consequence always has a producer (the lemma at its use site
+  -- proves it from the hypothesis), so it is a leaf whatever the search found,
+  -- and it goes first: a consequence the battery proves makes a conditional
+  -- theorem unconditional.
   let mut leaves : Array (Nat × Expr) := #[]
   for (statement, _) in state.queue.extract 0 cursor do
     let key := keyOf statement
-    unless hasProducer.contains key do
+    if consequenceKeys.contains key then
+      leaves := leaves.push (consumerCount.getD key 0 + 1000000000, statement)
+    else unless hasProducer.contains key do
       leaves := leaves.push (consumerCount.getD key 0, statement)
   leaves := leaves.qsort (fun a b => a.1 > b.1)
   let mut batteryTried := 0
@@ -956,13 +1253,20 @@ def exportAll : Elab.TermElabM Unit := do
     ("idle_theorems", toJson idleTheorems),
     ("idle_kernel_checked", toJson idleChecked),
     ("idle_truncated", toJson idleTruncated),
+    ("weakening_tried", toJson weakenTried),
+    ("weakened_theorems", toJson weakened.size),
+    ("weakening_rejected", toJson weakenRejected),
+    ("weakening_consequences", toJson consequenceKeys.size),
+    ("weakening_truncated", toJson weakenTruncated),
+    ("weakening_ms", toJson (weakenEnd - weakenStart)),
     ("statements_discovered", toJson state.queue.size),
     ("statements_searched", toJson state.processed),
     ("matches", toJson state.matchCount),
     ("budget_exhausted_attempts", toJson state.exhausted),
     ("truncated", toJson state.truncated),
     ("elapsed_ms", toJson ((← IO.monoMsNow) - startMs)),
-    ("search_ms", toJson (searchEnd - startMs)),
+    ("search_ms", toJson (searchEnd - weakenEnd)),
+    ("telescope_ms", toJson (weakenStart - startMs)),
     ("composition_ms", toJson (idleStart - searchEnd)),
     ("idle_ms", toJson (batteryStart - idleStart)),
     ("battery_ms", toJson (deepStart - batteryStart)),

@@ -332,6 +332,72 @@ class ToyGraphWithBattery(unittest.TestCase):
             self.assertEqual(reloaded.disguise_classes(), fresh.disguise_classes())
 
 
+class ToyWeakenings(unittest.TestCase):
+    """Used consequences on the toy (namespace UseToy): goal_of_strong uses the
+    open input Strong only through weak_of_strong, and a theorem proves Weak;
+    odd_of_bad uses Bad only at Nat.succ, where it is false."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.graph = builder.Graph(builder.read_export(FIXTURE))
+        cls.graph.analyse()
+        cls.without = builder.Graph(builder.read_export(FIXTURE), include_weakening=False)
+        cls.without.analyse()
+        cls.key = {}
+        for key, node in cls.graph.statements.items():
+            for text in [node["type"], *node.get("aliases", ())]:
+                cls.key[text] = key
+
+    def test_goal_is_supplied_only_through_the_weakening(self) -> None:
+        goal, strong, weak = (self.key[t] for t in ("UseToy.Goal", "UseToy.Strong", "UseToy.Weak"))
+        self.assertIn(goal, self.graph.supplied)
+        self.assertEqual(self.graph.reductions[self.graph.witness[goal]][1],
+                         "UseToy.goal_of_strong._argument_weakening_0")
+        self.assertIn(strong, self.graph.open)
+        self.assertIn(weak, self.graph.supplied)
+        self.assertNotIn(goal, self.without.supplied)
+        entry = next(e for e in self.graph.weakenings if e["theorem"] == "UseToy.goal_of_strong")
+        self.assertEqual((entry["hypothesis"], [c["key"] for c in entry["consequences"]]), (strong, [weak]))
+        self.assertEqual(entry["consequences"][0]["via"], ["UseToy.weak_of_strong"])
+        self.assertTrue(entry["reduction"])
+
+    def test_a_false_consequence_refutes_its_input(self) -> None:
+        bad, used = self.key["UseToy.Bad"], self.key["Nat.succ 0 = Nat.succ 1"]
+        self.assertEqual(self.graph.refuted[used]["kind"], "kernel")
+        derived = self.graph.refuted[bad]
+        self.assertEqual((derived["kind"], derived["reaches"]), ("derived", used))
+        self.assertIn(("UseToy.odd_of_bad", bad), self.graph.vacuous_theorems)
+        # The consequence is a statement only because the pass found the use
+        # site; once it is, odd_of_bad's own conclusion reduces it to Bad, so
+        # the refutation stands without the weakening reductions too.
+        self.assertIn(bad, self.without.refuted)
+        self.assertEqual(self.graph.inconsistent, [])
+
+    def test_projection_query_and_papers(self) -> None:
+        projection, payload = builder.build(FIXTURE, ROOT)
+        summary = projection["summary"]
+        self.assertEqual(summary["weakened_theorems"], 5)
+        self.assertEqual(summary["weakenings_kernel_checked"], 5)
+        self.assertGreaterEqual(summary["statements_supplied_only_by_weakening"], 1)
+        first = projection["weakenings"][0]
+        self.assertEqual((first["theorem"], first["conclusion_supplied_only_by_weakening"]),
+                         ("UseToy.goal_of_strong", True))
+        self.assertIn(r"\newcommand{\AGWeakened}{5}", builder.paper_macro_region(projection))
+        with tempfile.TemporaryDirectory() as tmp:
+            out, gz = Path(tmp) / "a.json", Path(tmp) / "a.json.gz"
+            builder.write_outputs(projection, payload, out, gz)
+            graph, loaded = query.load(gz)
+            view = query.cmd_weakenings(graph, loaded, argparse.Namespace(problem=None, limit=10))
+            self.assertEqual(view["count"], 5)
+            self.assertEqual(view["rows"][0]["name"], "UseToy.goal_of_strong")
+            self.assertEqual([u["status"] for u in view["rows"][0]["uses_only"]], ["supplied"])
+            theorem = query.cmd_theorem(graph, loaded, argparse.Namespace(name="UseToy.goal_of_strong"))
+            self.assertEqual(theorem["weakenings"][0]["uses_only"][0]["type"], "UseToy.Weak")
+            self.assertEqual(query.status_after_weakening(graph, "UseToy.goal_of_strong"),
+                             "conditional_on_supplied")
+            self.assertEqual(builder.kernel_status(graph, "UseToy.goal_of_strong"), "conditional_on_open")
+
+
 # --------------------------------------------------------------------------
 # Hand-made streams
 

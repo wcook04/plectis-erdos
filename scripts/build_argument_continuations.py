@@ -373,9 +373,10 @@ def existential_reason(found: dict[str, list[Any]]) -> str:
 
 class Graph:
     def __init__(self, rows: list[dict[str, Any]], *, include_battery: bool = True,
-                 include_idle: bool = True):
+                 include_idle: bool = True, include_weakening: bool = True):
         self.include_battery = include_battery
         self.include_idle = include_idle
+        self.include_weakening = include_weakening
         self.meta = rows[0] if rows else {}
         self.summary = next((row for row in rows if row.get("record") == "summary"), {})
         self.theorems: dict[str, dict[str, Any]] = {}
@@ -394,6 +395,11 @@ class Graph:
         # kernel-checked idle rows, each with what the graph made of it
         self.idle: list[dict[str, Any]] = []
         self.idle_unchecked = 0
+        # kernel-checked weakenings (a closed hypothesis replaced by what the
+        # proof uses of it), and each weakened theorem's derived name
+        self.weakenings: list[dict[str, Any]] = []
+        self.weakening_unchecked = 0
+        self.synthetic: dict[str, str] = {}
         self._ingest(rows)
 
     def canon(self, key: str) -> str:
@@ -409,6 +415,8 @@ class Graph:
     def from_payload(cls, payload: dict[str, Any], *, include_idle: bool = True) -> "Graph":
         """Rebuild the graph from ``argument_continuations_graph.json.gz``."""
         graph = cls([], include_battery=True, include_idle=include_idle)
+        graph.weakenings = [dict(entry) for entry in payload.get("weakenings", [])]
+        graph.synthetic = {e["weakened"]: e["theorem"] for e in graph.weakenings if e.get("weakened")}
         graph.meta = {"schema": payload.get("schema")}
         graph.summary = (payload.get("source") or {}).get("export_summary", {})
         for row in payload.get("statements", []):
@@ -471,6 +479,11 @@ class Graph:
                 if named != unfolded:
                     self.alias[unfolded] = named
         canon = self.canon
+        # Theorems the export derived by weakening a hypothesis, by name.
+        for row in rows:
+            if row.get("record") == "weakening" and row.get("kernel_checked") and row.get("weakened"):
+                self.synthetic[row["weakened"]] = row.get("theorem")
+        derived = set(self.synthetic) if not self.include_weakening else set()
 
         def add_reduction(head: str, producer: str, reading: str, residuals: Iterable[str]) -> bool:
             head = canon(head)
@@ -485,6 +498,7 @@ class Graph:
 
         binders_of: dict[str, list[dict[str, Any]]] = {}
         idle_rows: list[dict[str, Any]] = []
+        weakening_rows: list[dict[str, Any]] = []
         for row in rows:
             record = row.get("record")
             if record == "theorem":
@@ -527,6 +541,8 @@ class Graph:
                                 row.get("constants", ()))
             elif record == "unfold":
                 self._statement(row["unfolded"], row.get("type"), "unfolding", row.get("constants", ()))
+            elif record in ("match", "refutation", "composition") and row.get("producer", row.get("theorem")) in derived:
+                continue  # a weakened theorem, left out with the weakenings
             elif record == "match":
                 status = row.get("status")
                 if status != "matched":
@@ -579,12 +595,73 @@ class Graph:
                     idle_rows.append(row)
                 else:
                     self.idle_unchecked += 1
+            elif record == "weakening" and self.include_weakening:
+                if row.get("kernel_checked"):
+                    weakening_rows.append(row)
+                else:
+                    self.weakening_unchecked += 1
             elif record == "candidate_cap":
                 self.caps.append(row)
             elif record in ("theorem_error", "statement_error"):
                 self.errors.append(row)
         for row in idle_rows:
             self._ingest_idle(row, binders_of.get(row.get("theorem")), add_reduction)
+        for row in weakening_rows:
+            self._ingest_weakening(row, binders_of.get(row.get("theorem")), add_reduction)
+        if not self.include_weakening:
+            self.synthetic = {}
+
+    def _ingest_weakening(self, row: dict[str, Any], binders: list[dict[str, Any]] | None,
+                          add_reduction) -> None:
+        """A kernel-checked weakening: the theorem's proof uses the closed
+        hypothesis H only through use sites proving the consequences C, and the
+        kernel accepted the theorem with H replaced by them. Each C whose
+        implication H → C the kernel accepted is reduced to H (``use_site``), so
+        supplying H supplies C and refuting C refutes H. The weakened theorem
+        reduces the conclusion to the obligations that remain and the
+        consequences (``weakening``); its matches arrive under its own name."""
+        canon = self.canon
+        name = row.get("theorem")
+        synthetic = row.get("weakened") or None
+        theorem = self.theorems.get(name)
+        hypothesis = canon(row["hypothesis"]) if row.get("hypothesis") else None
+        consequences: list[dict[str, Any]] = []
+        for c in row.get("consequences", []) or []:
+            if not c.get("key"):
+                continue
+            node = self._statement(c["key"], c.get("type"), "consequence")
+            if synthetic:
+                node["consumers"].add(synthetic)
+            key = canon(c["key"])
+            implied = bool(c.get("implication_kernel_checked"))
+            if hypothesis and implied:
+                add_reduction(key, name, "use_site", [hypothesis])
+            consequences.append({"key": key, "type": c.get("type"), "via": c.get("via", []),
+                                 "sites": c.get("sites", []), "implication_kernel_checked": implied})
+        entry: dict[str, Any] = {
+            "theorem": name, "i": row.get("i"), "weakened": synthetic,
+            "hypothesis": hypothesis, "hypothesis_type": row.get("hypothesis_type"),
+            "consequences": consequences, "type": row.get("type"),
+            "conclusion": theorem.get("conclusion_key") if theorem else None,
+            "residuals": [], "reduction": False, "reason": None,
+        }
+        if theorem is None or binders is None:
+            entry["reason"] = "no theorem row"
+        else:
+            remaining = obligations(b for b in binders if b.get("i") != row.get("i"))
+            residuals = sorted({canon(key) for key, _ in remaining["residuals"]} | {c["key"] for c in consequences})
+            entry["residuals"] = residuals
+            schematic = bool(remaining["schematic_props"] or remaining["schematic_witnesses"])
+            if not (theorem["conclusion_closed"] and theorem["conclusion_key"]):
+                entry["reason"] = "conclusion mentions a binder"
+            elif schematic:
+                entry["reason"] = "an obligation that mentions another binder remains"
+            else:
+                entry["reduction"] = add_reduction(theorem["conclusion_key"], synthetic or name, "weakening",
+                                                   residuals)
+                if not entry["reduction"]:
+                    entry["reason"] = "tautological"
+        self.weakenings.append(entry)
 
     def _ingest_idle(self, row: dict[str, Any], binders: list[dict[str, Any]] | None, add_reduction) -> None:
         """A kernel-checked idle row: the theorem holds without the dropped
@@ -1191,7 +1268,7 @@ def compositions(graph: "Graph", papers: dict[str, list[dict[str, Any]]]) -> lis
             "reading": reading,
             "hypotheses_supplied_by": suppliers,
             "kernel_checked_composition": (producer, key) in checked,
-            "paper_rows_of_conditional_theorem": papers.get(producer, []),
+            "paper_rows_of_conditional_theorem": papers.get(graph.synthetic.get(producer, producer), []),
         })
     out.sort(key=lambda row: (not row["paper_rows_of_conditional_theorem"], row["via"]))
     return out
@@ -1324,6 +1401,9 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         return module_problem(theorem["module"] if theorem else "", name)
 
     theorem_problems = {name: theorem_problem(name) for name in graph.theorems}
+    # A weakened theorem is attributed like the theorem it was derived from.
+    for derived_name, original in graph.synthetic.items():
+        theorem_problems[derived_name] = theorem_problems.get(original)
     # A statement's own attribution comes from the theorems that state it (as a
     # hypothesis or a conclusion); the per-problem views also count the
     # problems of the theorems that reduce it.
@@ -1463,6 +1543,47 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                        key=lambda r: (not r["papers"], not any(d["open_without_idle"] for d in r["dropped"]),
                                       r["theorem"]))
     idle_dropping_open = [r for r in idle_rows if any(d["open_without_idle"] for d in r["dropped"])]
+
+    # What the weakenings gain: statements supplied only when the weakened
+    # theorems and the use-site reductions take part.
+    if graph.weakenings:
+        without_weakening, _ = graph.supply(exclude_producers=frozenset(graph.synthetic),
+                                            exclude_readings=frozenset({"weakening", "use_site"}))
+        gained_by_weakening = graph.supplied - without_weakening
+    else:
+        gained_by_weakening = set()
+
+    def weakening_row(entry: dict[str, Any]) -> dict[str, Any]:
+        name = entry["theorem"]
+        conclusion = entry.get("conclusion")
+        hypothesis = entry.get("hypothesis")
+        return {
+            "theorem": name,
+            "problem": theorem_problems.get(name),
+            "source": refs.get(name),
+            "papers": papers.get(name, []),
+            "hypothesis": {"key": hypothesis, "type": entry.get("hypothesis_type"),
+                           "status": graph.status(hypothesis) if hypothesis in graph.statements else None},
+            "uses_only": [{"key": c["key"], "type": c.get("type"),
+                           "status": graph.status(c["key"]) if c["key"] in graph.statements else None,
+                           "via": c.get("via", []), "sites": c.get("sites", [])}
+                          for c in entry.get("consequences", [])],
+            "weakened_theorem": entry.get("weakened"),
+            "weakened_statement": entry.get("type"),
+            "conclusion": conclusion,
+            "conclusion_type": graph.theorems.get(name, {}).get("conclusion_type"),
+            "conclusion_status": graph.status(conclusion) if conclusion in graph.statements else None,
+            "conclusion_supplied_only_by_weakening": conclusion in gained_by_weakening,
+            "reduction": entry.get("reduction"),
+            "reason_without_reduction": entry.get("reason"),
+        }
+
+    weakening_rows = sorted(
+        (weakening_row(e) for e in graph.weakenings),
+        key=lambda r: (not r["conclusion_supplied_only_by_weakening"], not r["papers"],
+                       r["hypothesis"]["status"] != "open",
+                       not all(c["status"] == "supplied" for c in r["uses_only"]), r["theorem"]))
+    consequence_keys = {c["key"] for e in graph.weakenings for c in e.get("consequences", [])}
     kernel_refuted = {k: v for k, v in graph.refuted.items() if v["kind"] == "kernel"}
     derived_refuted = {k: v for k, v in graph.refuted.items() if v["kind"] == "derived"}
     theorem_modules = {t["module"] for t in graph.theorems.values() if t.get("module")}
@@ -1501,6 +1622,14 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "idle_theorems_unchecked": graph.idle_unchecked,
         "idle_reductions": sum(1 for e in graph.idle if e.get("reduction")),
         "idle_dropping_open": len(idle_dropping_open),
+        "weakened_theorems": len({e["theorem"] for e in graph.weakenings}),
+        "weakenings_kernel_checked": len(graph.weakenings),
+        "weakenings_unchecked": graph.weakening_unchecked,
+        "weakenings_of_open_hypotheses": sum(1 for r in weakening_rows if r["hypothesis"]["status"] == "open"),
+        "weakening_consequences": len(consequence_keys),
+        "weakening_consequences_supplied": sum(1 for k in consequence_keys if k in graph.supplied),
+        "weakening_consequences_refuted": sum(1 for k in consequence_keys if k in graph.refuted),
+        "statements_supplied_only_by_weakening": len(gained_by_weakening),
         "semantic_label_disagreements": audit["semantic_logical_class"]["disagreement_count"],
         "barriers": len(barriers["entries"]),
         "barriers_in_graph": sum(1 for e in barriers["entries"] if e["in_graph"]),
@@ -1568,6 +1697,10 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                            "exporter composed and the kernel accepted",
             "idle": "a theorem whose proof never uses some proposition binders; the kernel accepted the stronger "
                     "statement without them",
+            "weakening": "a theorem whose proof uses a closed hypothesis H only through use sites (L h, h.1, h a) "
+                         "proving propositions C; the kernel accepted the theorem with H replaced by the C, and "
+                         "H → C for each. uses_only lists the C; a reduction of each C to H (reading use_site) "
+                         "lets a refutation of C refute H",
             "vacuous_theorem": "a conditional theorem with a refuted closed hypothesis: it can never be applied",
             "audit": "authored logical classes and open antecedents checked against the kernel graph",
         },
@@ -1583,6 +1716,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "supplied_and_refuted": [
             {"key": key, "type": graph.statements.get(key, {}).get("type")} for key in graph.inconsistent],
         "idle": idle_rows[:LIST_LIMIT * 3],
+        "weakenings": weakening_rows[:LIST_LIMIT * 6],
         "audit": audit,
         "sentinel_alarms": alarms,
     }
@@ -1622,6 +1756,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "existential_reductions": graph.existential,
         "budget_exhausted": graph.budget_exhausted,
         "idle": graph.idle,
+        "weakenings": graph.weakenings,
         "theorems": [
             {**theorem_card(name), "module": t["module"], "problem": theorem_problems.get(name),
              "hypotheses": t["hypotheses"], "schematic_hypotheses": t["schematic_hypotheses"],
@@ -1701,6 +1836,9 @@ def paper_macro_region(projection: dict[str, Any]) -> str:
         "AGLabelDisagreements": summary["semantic_label_disagreements"],
         "AGIdle": summary["idle_theorems_kernel_checked"],
         "AGIdleOpen": summary["idle_dropping_open"],
+        "AGWeakened": summary["weakened_theorems"],
+        "AGWeakenedOpen": summary["weakenings_of_open_hypotheses"],
+        "AGWeakeningGain": summary["statements_supplied_only_by_weakening"],
     }
     lines = [TEX_MACROS_BEGIN]
     for name, value in values.items():

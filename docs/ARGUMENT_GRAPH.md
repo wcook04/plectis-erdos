@@ -31,7 +31,7 @@ compiles. When those targets cannot be built or imported together, the job
 exports the default roots alone, and the stream's `meta` row lists the modules
 the export imported. Theorems the elaborator generates (injectivity and
 `sizeOf` lemmas, equation lemmas and internal details) are left out. The
-export makes five passes.
+export makes six passes.
 
 1. **Telescopes.** For every theorem it records the hypothesis telescope. Each
    binder is classified as data, an instance or a proposition, and each
@@ -42,7 +42,23 @@ export makes five passes.
    is not and the type is closed, the statement `Nonempty T` becomes one of the
    theorem's obligations: the theorem applies only once an element of `T` is
    supplied.
-2. **Producer and refutation search**, in parallel waves. For every closed
+2. **Used consequences.** For every closed hypothesis `h : H` of every
+   theorem, the most-consumed hypotheses first and within a time budget, it
+   asks what the proof derives from `h`. A *use site* is the largest
+   application around an occurrence of `h` that mentions no variable bound
+   inside the proof and no other binder of the theorem (`L h` for a lemma `L`,
+   `h.2`, `h 3`), provided its type is a proposition that does not mention
+   `H`, is not `H` up to unfolding and is not the theorem's own conclusion.
+   When every occurrence of `h` lies in a use site, the theorem with `h`
+   replaced by the propositions those sites prove, the *consequences* of `H`
+   that the proof uses, is added to the environment and the kernel checks it
+   on the way in; the kernel also checks `H → C` for each consequence `C`
+   (`weakening` rows). The weakened theorem is a producer in the search like
+   any corpus theorem. Each consequence is a statement: it is searched and
+   refutation-searched, and it goes to the tactic battery and library search
+   ahead of the other leaves, because the lemma at its use site always gives
+   it a producer from `H`.
+3. **Producer and refutation search**, in parallel waves. For every closed
    statement it searches the corpus for theorems whose conclusion unifies with
    it. It introduces the statement's own binders first, reads a proved
    equivalence in either direction, a conjunction through either component and
@@ -60,16 +76,16 @@ export makes five passes.
    Unification is the elaborator's `Meta.isDefEq` at default transparency, with
    a heartbeat budget for each attempt; an exhausted budget is recorded with
    its own status and kept apart from a missing producer.
-3. **Compositions.** For every theorem whose closed hypotheses all have a
+4. **Compositions.** For every theorem (weakened ones included) whose closed hypotheses all have a
    producer with nothing left over, it builds the composed proof term and
    submits it to the kernel as a new declaration.
-4. **Idle hypotheses.** For every theorem it finds the proposition binders
+5. **Idle hypotheses.** For every theorem it finds the proposition binders
    (instance binders excepted) its proof never uses: the binder occurs neither
    in the proof term, nor in a later binder type, nor in the conclusion.
    Dropping them leaves a stronger statement with the same proof, and the
    kernel checks that statement (`idle` rows). The pass has a time budget, and
    the export's summary says when it ran out.
-5. **Tactic battery.** For every closed statement for which the search found
+6. **Tactic battery.** For every closed statement for which the search found
    no usable producer, it tries a fixed battery of standard closing tactics
    (`decide`, `omega`, `norm_num`, `simp_all`, `positivity`, `linarith`) after
    introducing binders and unfolding the corpus definitions the statement
@@ -92,6 +108,8 @@ under `lean/` are not compared.
 |---|---|
 | Reduction | A theorem that supplies a statement once its remaining obligations are supplied |
 | Idle reduction | A kernel-checked idle row: the conclusion from the obligations of the binders the proof uses |
+| Weakening | A kernel-checked weakening row: the conclusion from the other obligations and the consequences the proof uses of one hypothesis |
+| Use-site reduction | A consequence `C` from the hypothesis `H` it is derived from (the kernel checked `H → C`): supplying `H` supplies `C`, and refuting `C` refutes `H` |
 | Supplied | Some reduction has every remaining obligation supplied (least fixpoint); the first such one is the witness |
 | Refuted | Kernel: a theorem or battery proof of the negation, residuals supplied. Derived: supplying it supplies a refuted one |
 | Open | Neither supplied nor refuted |
@@ -124,6 +142,15 @@ lists every kernel-checked idle row (`\AGIdle`), paper-cited theorems first,
 and marks those that drop a statement the graph leaves open when idle
 reductions are left out: a theorem stated conditionally on an open statement
 whose proof never uses it (`\AGIdleOpen`).
+
+The projection lists every kernel-checked weakening, theorems whose hypothesis
+is open first, with the status of the hypothesis and of each consequence and
+the lemmas at the use sites (`\AGWeakened` theorems, `\AGWeakenedOpen` with an
+open hypothesis). A consequence is a weaker target than the input it comes
+from: when the graph supplies every consequence a theorem uses of an open
+input, the theorem's conclusion holds without that input, and
+`\AGWeakeningGain` counts the statements the graph supplies only that way. A
+consequence the battery or a corpus theorem refutes refutes the input.
 
 The [barrier registry](semantic/barriers.json) lists the corpus's barrier
 theorems: countermodels, endpoint equivalences, method ceilings, finite
@@ -181,6 +208,8 @@ python3 scripts/query_continuations.py about <corpus constant>
 python3 scripts/query_continuations.py near "<objects of a proposed statement>"
 python3 scripts/query_continuations.py barriers --problem 249
 python3 scripts/query_continuations.py idle --problem 257
+python3 scripts/query_continuations.py weakenings --problem 249
+python3 scripts/query_continuations.py papers --problem 257
 python3 scripts/query_continuations.py criticality <key or declaration>
 python3 scripts/query_continuations.py transfer
 python3 scripts/query_continuations.py diff <old graph> <new graph>
@@ -190,7 +219,8 @@ python3 scripts/query_continuations.py diff <old graph> <new graph>
 targets with the theorems that reduce to them and the paper results that
 assume them, the disguise classes, the members of bundles with two or more
 open statements, the problem's refuted statements, the hypotheses its theorems
-assume without using, and the open statements with the largest leverage. The
+assume without using, what its theorems use of their open inputs, and the open
+statements with the largest leverage. The
 graph records no reduction by which a member of a larger bundle supplies the
 target alone, and it records nothing about whether the target implies that
 member. A declaration name given to `theorem` or `criticality` may be a
@@ -210,7 +240,8 @@ into `lean/` through the ordinary landing path.
 ## What it establishes and what it does not
 
 The kernel checked every corpus theorem the graph cites, every battery proof,
-and every composition and idle row marked `kernel_checked`. A witness chain
+every composition, idle and weakening row marked `kernel_checked`, and the
+implication behind every use-site reduction. A witness chain
 joins kernel-checked theorems through the elaborator's unifier; the kernel
 checked a whole chain as one term only where a composition row says so. A
 derived refutation follows recorded reductions backwards from a kernel

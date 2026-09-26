@@ -22,6 +22,10 @@ the questions a researcher asks before spending effort on a statement:
     barriers [--problem N]      kernel-checked barriers (countermodels, endpoint
                                 equivalences, method ceilings) and what they constrain
     idle [--problem N]          theorems whose proofs never use some hypotheses
+    weakenings [--problem N]    theorems whose proofs use a hypothesis only through
+                                what they derive from it, with what that is
+    papers [--problem N]        every paper result against the graph, with the
+                                hypotheses its declarations need or use only in part
     criticality KEY|THEOREM     what loses its witness chain without it
     transfer                    reductions where a theorem attributed to one problem
                                 supplies a statement attributed only to others
@@ -317,6 +321,9 @@ def cmd_theorem(graph: builder.Graph, payload: dict[str, Any], args: argparse.Na
     if idle:
         view["idle"] = {"stronger_statement": idle.get("type"), "dropped": idle.get("dropped", []),
                         "kernel_status_after_idle": builder.kernel_status(graph, name, after_idle=True)}
+    weakened = [row for row in weakening_rows(graph) if row["name"] == name]
+    if weakened:
+        view["weakenings"] = weakened
     return view
 
 
@@ -353,6 +360,52 @@ def idle_rows(graph: builder.Graph, problem: str | None = None) -> list[dict[str
     rows.sort(key=lambda r: (not r.get("papers"), not any(d["open_without_idle"] for d in r["dropped"]),
                              r["name"]))
     return rows
+
+
+def weakening_rows(graph: builder.Graph, problem: str | None = None) -> list[dict[str, Any]]:
+    """Theorems whose proofs use a closed hypothesis only through what they
+    derive from it, with the status of the hypothesis and of each consequence.
+    The kernel accepted each weakened theorem and each implication."""
+    rows = []
+    for entry in graph.weakenings:
+        card = theorem_card(graph, entry.get("theorem"))
+        if problem and card.get("problem") != problem:
+            continue
+        hypothesis = entry.get("hypothesis")
+        conclusion = entry.get("conclusion")
+        uses = [{"key": c["key"], "type": c.get("type"), "status": graph.status(c["key"]),
+                 "via": c.get("via", []), "sites": c.get("sites", [])} for c in entry.get("consequences", [])]
+        rows.append({**card,
+                     "hypothesis": {"key": hypothesis, "type": entry.get("hypothesis_type"),
+                                    "status": graph.status(hypothesis) if hypothesis else None},
+                     "uses_only": uses,
+                     "weakened_theorem": entry.get("weakened"),
+                     "weakened_statement": entry.get("type"),
+                     "conclusion": {"key": conclusion, "status": graph.status(conclusion) if conclusion else None},
+                     "reduction": entry.get("reduction"), "reason_without_reduction": entry.get("reason")})
+    rows.sort(key=lambda r: (r["hypothesis"]["status"] != "open",
+                             not all(u["status"] == "supplied" for u in r["uses_only"]),
+                             not r.get("papers"), r["name"]))
+    return rows
+
+
+def status_after_weakening(graph: builder.Graph, name: str) -> str | None:
+    """The theorem's status when each hypothesis it weakens counts as supplied
+    once every consequence the proof uses of it is supplied: the kernel
+    accepted the weakened theorem, so those consequences suffice."""
+    theorem = graph.theorems.get(name)
+    if theorem is None:
+        return None
+    covered = {e.get("hypothesis") for e in graph.weakenings if e.get("theorem") == name
+               and all(c["key"] in graph.supplied for c in e.get("consequences", []))}
+    closed = [h for h in theorem.get("hypotheses", []) if h not in covered]
+    if any(k in graph.refuted for k in closed):
+        return "conditional_on_refuted"
+    if any(k not in graph.supplied for k in closed):
+        return "conditional_on_open"
+    if theorem.get("schematic_hypotheses") or theorem.get("witness_obligations"):
+        return "conditional_on_schematic"
+    return "conditional_on_supplied" if theorem.get("hypotheses") else "unconditional"
 
 
 # The order in which a paper result's declarations decide its row: the most
@@ -392,19 +445,35 @@ def cmd_papers(graph: builder.Graph, payload: dict[str, Any], args: argparse.Nam
                     for h in open_hypotheses[:6]]
             if name in idle_by_theorem:
                 declaration["idle_hypotheses"] = [d.get("type") for d in idle_by_theorem[name].get("dropped", [])]
+            weakened = [e for e in graph.weakenings if e.get("theorem") == name]
+            if weakened:
+                declaration["uses_only"] = [
+                    {"hypothesis": e.get("hypothesis_type"), "hypothesis_status": graph.status(e["hypothesis"])
+                     if e.get("hypothesis") else None,
+                     "consequences": [{"type": c.get("type"), "status": graph.status(c["key"]),
+                                       "via": c.get("via", [])} for c in e.get("consequences", [])]}
+                    for e in weakened]
+                after = status_after_weakening(graph, name)
+                if after != status and PAPER_STATUS_ORDER.index(after) > PAPER_STATUS_ORDER.index(
+                        declaration.get("status_after_idle", status)):
+                    declaration["status_after_weakening"] = after
             entry["declarations"].append(declaration)
     counts: dict[str, int] = defaultdict(int)
     for entry in rows.values():
-        statuses = {d.get("status_after_idle", d["status"]) for d in entry["declarations"]}
+        statuses = {d.get("status_after_weakening", d.get("status_after_idle", d["status"]))
+                    for d in entry["declarations"]}
         entry["status"] = next((s for s in PAPER_STATUS_ORDER if s in statuses), "unconditional")
         counts[entry["status"]] += 1
     notable = [e for e in rows.values()
                if e["status"] in ("conditional_on_refuted", "conditional_on_supplied")
-               or any("idle_hypotheses" in d or "status_after_idle" in d for d in e["declarations"])]
+               or any("idle_hypotheses" in d or "status_after_idle" in d or "uses_only" in d
+                      for d in e["declarations"])]
     notable.sort(key=lambda e: (PAPER_STATUS_ORDER.index(e["status"]), e["row"]))
     return {
         "rule": "a row takes the most conditional status among its declarations; conditional_on_supplied means "
-                "every closed hypothesis has a witness chain in the graph; idle hypotheses are kernel-checked",
+                "every closed hypothesis has a witness chain in the graph; idle hypotheses and weakenings "
+                "(uses_only: what the proof derives from a hypothesis) are kernel-checked, and a declaration's "
+                "status after either is the one that counts",
         "paper_results_in_graph": len(rows),
         "by_status": dict(sorted(counts.items())),
         "notable": notable[: args.limit],
@@ -418,6 +487,18 @@ def cmd_idle(graph: builder.Graph, payload: dict[str, Any], args: argparse.Names
     rows = idle_rows(graph, args.problem)
     return {"count": len(rows),
             "dropping_open": sum(1 for r in rows if any(d["open_without_idle"] for d in r["dropped"])),
+            "rows": rows[: args.limit]}
+
+
+def cmd_weakenings(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """Theorems whose proofs use a closed hypothesis only through what they
+    derive from it: open hypotheses first, then those whose consequences the
+    graph supplies (the conclusion then holds without the hypothesis)."""
+    rows = weakening_rows(graph, args.problem)
+    return {"count": len(rows),
+            "of_open_hypotheses": sum(1 for r in rows if r["hypothesis"]["status"] == "open"),
+            "consequences_all_supplied": sum(1 for r in rows if all(u["status"] == "supplied"
+                                                                    for u in r["uses_only"])),
             "rows": rows[: args.limit]}
 
 
@@ -723,6 +804,18 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
             lines.append(f"- `{row['name']}` drops {dropped}: {row['stronger_statement']}")
         lines.append("")
 
+    weakened = [r for r in weakening_rows(graph, problem) if r["hypothesis"]["status"] == "open"]
+    if weakened:
+        lines += ["## What the proofs use of their open inputs", "",
+                  "Each theorem below assumes an open statement but its proof uses only the consequences listed "
+                  "(through the lemmas named); the kernel accepted the theorem with the input replaced by them. "
+                  "A consequence is a weaker target than the input it comes from.", ""]
+        for row in weakened[:limit * 2]:
+            uses = "; ".join(f"`{short(u['key'])}` {u['type']} ({u['status']}, via "
+                             + ", ".join(f"`{v}`" for v in u["via"][:2]) + ")" for u in row["uses_only"])
+            lines.append(f"- `{row['name']}` assumes {row['hypothesis']['type']} and uses only: {uses}")
+        lines.append("")
+
     lines += ["## 4. Highest leverage open statements", ""]
     levered = sorted(keys, key=lambda k: (-len(graph.leverage(k)), k))
     for key in levered[:limit]:
@@ -757,6 +850,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--limit", type=int, default=15); p.add_argument("--sinks", type=int, default=12)
     p = sub.add_parser("barriers"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("idle"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
+    p = sub.add_parser("weakenings"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("papers"); p.add_argument("--problem"); p.add_argument("--paper")
     p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("criticality"); p.add_argument("target"); p.add_argument("--limit", type=int, default=30)
@@ -768,7 +862,8 @@ def main(argv: list[str] | None = None) -> int:
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
                "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "next": cmd_next,
-               "barriers": cmd_barriers, "idle": cmd_idle, "papers": cmd_papers, "criticality": cmd_criticality,
+               "barriers": cmd_barriers, "idle": cmd_idle, "weakenings": cmd_weakenings, "papers": cmd_papers,
+               "criticality": cmd_criticality,
                "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):

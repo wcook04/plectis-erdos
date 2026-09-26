@@ -14,7 +14,10 @@ producer relation it emits against hand-computed expectations:
   disguise the graph builder must detect);
 * an ``∧`` component supplied outright;
 * the idle-hypothesis pass: a proof that never uses a hypothesis, with the
-  stronger statement accepted by the kernel.
+  stronger statement accepted by the kernel;
+* the used-consequence pass (namespace ``UseToy``): a proof that uses a named
+  input only through a lemma, a universal hypothesis at one instance, one
+  conjunct, and an input whose used instance is false.
 
 Namespace ``ReviewToy`` holds the shapes an adversarial review of the
 exporter found mishandled, all without ``sorry``: a disequation producer that
@@ -117,6 +120,46 @@ theorem my_trans (a b c : Nat) (h1 : a = b) (h2 : b = c) : a = c := h1 ▸ h2
 theorem uses_225 (h : (2 : Nat) + 2 = 5) : (2 : Nat) + 2 = 5 ∧ True := ⟨h, trivial⟩
 
 end ReviewToy
+
+namespace UseToy
+
+def dbl : Nat → Nat
+  | 0 => 0
+  | n + 1 => dbl n + 2
+theorem dbl_eq (n : Nat) : dbl n = 2 * n := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [dbl, ih]; omega
+
+/-- An open named input: no theorem proves it and the battery cannot. -/
+def Strong : Prop := ∀ n : Nat, dbl n = 2 * n ∧ ∃ m, dbl m = m + 1
+/-- The part of it the argument below needs, which a theorem proves by
+induction (so the battery, which does not induct, cannot). -/
+def Weak : Prop := ∀ n : Nat, dbl n = 2 * n
+def Goal : Prop := ∀ n : Nat, dbl n ≤ 2 * n + 1
+
+theorem weak_of_strong (h : Strong) : Weak := fun n => (h n).1
+theorem weak_holds : Weak := dbl_eq
+/-- Proved from the named input, through `weak_of_strong` only. -/
+theorem goal_of_strong (h : Strong) : Goal :=
+  fun n => Nat.le_succ_of_le (Nat.le_of_eq (weak_of_strong h n))
+
+def Fam (n : Nat) : Prop := n + 0 = n
+/-- Uses the universal hypothesis at one instance. -/
+theorem fam_three (h : ∀ n : Nat, Fam n) : Fam 3 ∧ True := ⟨h 3, trivial⟩
+/-- Uses one component of a conjunction. -/
+theorem right_part (h : Strong ∧ Weak) : Weak ∧ True := ⟨h.2, trivial⟩
+/-- Uses the hypothesis as it stands. -/
+theorem uses_all (h : Strong) : Strong ∧ True := ⟨h, trivial⟩
+/-- The weakened hypothesis sits between other binders. -/
+theorem mixed (n : Nat) (h : Strong) (k : Nat) (hk : k = n) : dbl k ≤ 2 * n + 1 :=
+  hk ▸ Nat.le_succ_of_le (Nat.le_of_eq (weak_of_strong h k))
+
+/-- An input whose one used instance is false, so the input is refuted. -/
+def Bad : Prop := ∀ f : Nat → Nat, f 0 = f 1
+theorem odd_of_bad (h : Bad) : Nat.succ 0 = Nat.succ 1 ∧ True := ⟨h Nat.succ, trivial⟩
+
+end UseToy
 """
 
 
@@ -156,7 +199,7 @@ def run_export() -> list[dict]:
             raise SystemExit(0)
         env = dict(os.environ)
         env["PLECTIS_CONTINUATION_EXPORT_FILE"] = str(out_file)
-        env["PLECTIS_CONTINUATION_NAME_PREFIXES"] = "ToyCorpus,ReviewToy"
+        env["PLECTIS_CONTINUATION_NAME_PREFIXES"] = "ToyCorpus,ReviewToy,UseToy"
         completed = subprocess.run(
             command, cwd=os.environ.get("PLECTIS_TEST_LEAN_CWD", str(ROOT)),
             env=env, text=True, capture_output=True, timeout=900,
@@ -311,6 +354,51 @@ def main() -> int:
     generated = [n for n in theorems if n.split(".")[-1] in ("inj", "injEq", "sizeOf_spec")]
     expect(not generated, f"generated lemmas are not corpus arguments: {generated}")
     expect(all(len(k) == 32 and k[:8] != "00000000" for k in statements), "keys lead with the 64-bit hash")
+
+    # Used consequences: what a proof derives from a hypothesis.
+    weakenings = {r["theorem"].split(".")[-1]: r for r in rows if r["record"] == "weakening"}
+    goal = weakenings.get("goal_of_strong")
+    expect(goal is not None and goal["kernel_checked"]
+           and [c["type"] for c in goal["consequences"]] == ["UseToy.Weak"]
+           and goal["consequences"][0]["via"] == ["UseToy.weak_of_strong"]
+           and goal["consequences"][0]["implication_kernel_checked"]
+           and goal["hypothesis"] == by_type.get("UseToy.Strong"),
+           f"goal_of_strong uses Strong only through weak_of_strong: {goal}")
+    goal_supply = supplied("UseToy.Goal")
+    expect(goal_supply.get("_argument_weakening_0:conclusion") == ["UseToy.Weak"],
+           f"the weakened theorem supplies Goal from Weak: {goal_supply}")
+    weak_supply = supplied("UseToy.Weak")
+    expect(weak_supply.get("weak_holds:conclusion") == [], f"Weak is supplied outright: {weak_supply}")
+    expect(any(c["theorem"].endswith("goal_of_strong._argument_weakening_0") and c["kernel_checked"]
+               for c in compositions),
+           f"the weakened theorem composes with weak_holds and the kernel accepts it: {compositions}")
+    fam = weakenings.get("fam_three")
+    expect(fam is not None and fam["kernel_checked"]
+           and [c["type"] for c in fam["consequences"]] == ["UseToy.Fam 3"]
+           and fam["consequences"][0]["via"] == ["hypothesis"],
+           f"fam_three uses its universal hypothesis at 3 only: {fam}")
+    right = weakenings.get("right_part")
+    expect(right is not None and right["kernel_checked"]
+           and [c["type"] for c in right["consequences"]] == ["UseToy.Weak"],
+           f"right_part uses the second conjunct only: {right}")
+    mixed = weakenings.get("mixed")
+    expect(mixed is not None and mixed["kernel_checked"] and mixed["i"] == 1
+           and [c["type"] for c in mixed["consequences"]] == ["UseToy.Weak"]
+           and mixed["type"] == "∀ (n : Nat), UseToy.Weak → ∀ (k : Nat), k = n → UseToy.dbl k ≤ 2 * n + 1",
+           f"a hypothesis between other binders is weakened in place: {mixed}")
+    bad = weakenings.get("odd_of_bad")
+    expect(bad is not None and bad["kernel_checked"]
+           and [c["type"] for c in bad["consequences"]] == ["Nat.succ 0 = Nat.succ 1"],
+           f"odd_of_bad uses Bad at Nat.succ only: {bad}")
+    expect("Nat.succ 0 = Nat.succ 1" in refuted, f"the used instance of Bad is refuted: {refuted}")
+    for name in ("uses_all", "weak_of_strong", "uses_target", "uses_universal", "named_of_even",
+                 "uses_supply_three", "uses_g3", "a_first"):
+        expect(name not in weakenings, f"{name} uses its hypothesis as it stands: {weakenings.get(name)}")
+    expect(summary["weakened_theorems"] == sum(1 for r in weakenings.values() if r["kernel_checked"]) == 5,
+           "summary counts the weakened theorems")
+    expect(all(s["origin"] != "consequence" or s["key"] in {c["key"] for r in weakenings.values()
+                                                              for c in r["consequences"]}
+               for s in statements.values()), "consequence statements come from weakening rows")
 
     expect(summary["truncated"] is False, "toy export must not truncate")
     expect(summary["theorems"] == len(theorems), "summary theorem count")
