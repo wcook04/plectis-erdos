@@ -22,7 +22,9 @@
 \newcommand{\SemanticStructuralOnly}{11,984}
 \newcommand{\SemanticAuthoredPercent}{92.1}
 % END generated_semantic_coverage_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/af849c4709186165092254b08b00e9524f11144b/#1}{\texttt{#2}}}
+% BEGIN generated_argument_graph_macros
+% END generated_argument_graph_macros
+\newcommand{\repolink}[2]{\href{\repobase/blob/5176d8878036549d6e35a4cb42d8e26fdb3e4b46/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -58,23 +60,34 @@ answer as \texttt{False} and links the proof. Worked cases from Problems 257
 and 249 and from a cross-problem synthesis show what the record keeps for a
 result, and a transfer between Problems 251 and 269, checked in Lean, shows one
 problem's theorem proving another's criterion and then improving its constant
-from $1/31$ to $1/3$. The paper compares the design with Prove2Me and blueprint-based
-systems and specifies the controlled comparison that will measure whether
-such records reduce the work of understanding, checking and continuing a
-result.
+from $1/31$ to $1/3$. The record also reads every unfinished argument out of
+the elaborated Lean environment and connects them. For each standalone
+hypothesis of each theorem a unification search finds the theorems that supply
+it, what they still need and the theorems that refute it, and the kernel
+checks each composition the search proposes and each statement a proof
+establishes without one of its hypotheses. The resulting argument graph, over
+\AGStatements{} statements and joined to the papers, the ledger and
+Comparator, shows what is proved and by which chain, what is refuted, which
+open statements are the same question in other coordinates, what each missing
+input would settle and what fails without a given lemma. %FINDINGS-ABSTRACT
+The paper compares the design with Prove2Me and blueprint-based systems.
 \end{abstract}
 
 \begin{paperresult}{Contribution and scope}
 \textbf{Design.} The problem-sized world as the persistent unit of AI-assisted
 research; four separately recorded decisions about every returned result, on
 its evidence, its mathematical appraisal, its exposition and the next unit of
-work; a path from proof to public claim that separates what Lean settles, what
-Comparator settles and what a mathematician judges; and a contribution cycle
-that a person or an agent can run from a public clone.
+work; an argument graph of the record's unfinished arguments, read out of the
+Lean environment and joined to the papers and Comparator; a path from proof to
+public claim that separates what Lean settles, what Comparator settles and
+what a mathematician judges; and a contribution cycle that a person or an
+agent can run from a public clone.
 \textbf{Instance.} Eight Erd\H{o}s problems in one Lean repository:
 sixteen problem papers, 1,823 Lean modules, and 674 results
 asserted in the papers, short and long versions counted separately, of which 671
-carry a Lean declaration and 633 have been compared by Comparator.
+carry a Lean declaration and 633 have been compared by Comparator; the
+argument graph holds \AGTheorems{} theorems, \AGConditional{} of them
+conditional arguments.
 \textbf{Scope.} For Problem 1041 the Formal Conjectures statement is refuted;
 independent human review of its correspondence with the 1958 wording has not
 been recorded. The other seven targets remain open. The system leaves novelty
@@ -158,7 +171,8 @@ This paper describes a research environment built to keep that record. Its
 unit of work is the \emph{problem-sized world}: one research problem together
 with everything learned about it, kept in a public repository. As producing results becomes easier, helping other people
 understand and use them becomes the scarce part of the work, and the world is
-organised around that part.
+organised around that part. Section~\ref{sec:graph} reads the world's
+unfinished arguments out of its Lean source and connects them.
 
 \section{A problem-sized world}\label{sec:world}
 
@@ -278,6 +292,151 @@ The finite theorem makes no \(t=83\) or cofinal claim. What remains open is the
 unbounded supply itself, which is the irrationality of $S$ in equivalent form,
 and the record states it in exactly that form.
 
+\section{The argument graph}\label{sec:graph}
+
+The part of a record that crosses least well from one reader to the next is
+the unfinished argument. A theorem
+$T:\forall\rho,\ H_1\to\cdots\to H_k\to G$ whose hypotheses nothing proves
+establishes $G$ once the $H_i$ are supplied, and a library written during
+research holds thousands of them, each waiting for an input that another
+module may already prove, refute or restate. A hypothesis that mentions none
+of the earlier binders is a \emph{closed statement}, a proposition in its own
+right. A data binder the conclusion does not mention is a hypothesis too: when
+its type is closed and not known to be inhabited, the theorem needs the closed
+statement $\mathrm{Nonempty}\,\tau$. The record reads every theorem out of the
+elaborated Lean environment, the two library roots together with every module
+the coverage build compiles, and connects these statements into an
+\emph{argument graph}
+(\repolink{docs/ARGUMENT_GRAPH.md}{docs/ARGUMENT\_GRAPH.md}).
+
+\paragraph{Export.} A Lean program
+(\repolink{scripts/export_argument_continuations.lean}{export\_argument\_continuations.lean})
+runs five passes in continuous integration. It records each theorem's
+hypothesis telescope. For every closed statement it searches the corpus for
+theorems whose conclusions unify with it, using Lean's definitional-equality
+check under a fixed budget for each attempt: it introduces the statement's own
+binders, so a guarded statement $\forall n\ge7,\,P(n)$ can be supplied by a
+theorem proving $P(n)$ from $n\ge7$; it reads a proved equivalence in either
+direction, a conjunction through either component and a disequation as a
+negation; it discharges a producer's premises from the statement's own
+hypotheses; and it closes what the producer still needs over the binders it
+uses and searches that in turn. A producer that needs a witness unification
+leaves undetermined, of a type not known to be inhabited, is recorded and not
+used. For every statement that is ever an antecedent it also searches for
+theorems proving the negation. It then composes each conditional theorem whose
+closed hypotheses all have producers with nothing left over, drops every
+proposition binder that a theorem's proof never uses, and tries a fixed
+battery of closing tactics, and then library search, on the open statements
+no theorem supplies, and on their negations. A composition, a stronger
+statement or a tactic proof counts only if the kernel accepts it. An exhausted
+budget is recorded as such and never read as the absence of a producer.
+
+\paragraph{The graph.} A \emph{reduction} of $S$ is a theorem that supplies
+$S$ once its remaining hypotheses are supplied. Table~\ref{tab:notions}
+defines the rest. Each theorem is joined to the paper results that cite it,
+short or long, with the label, the \TeX{} line and the Comparator status the
+paper-to-Lean ledger records, and every open statement lists the paper results
+whose declarations assume it. The builder also checks two authored layers of
+the record against the graph: a node of the semantic corpus labelled as a
+conditional implication should still depend on an open statement, and every
+open antecedent the authored frontier lists should still be open.
+
+\begin{table}[!ht]
+\centering\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}
+                    >{\raggedright\arraybackslash}p{0.72\linewidth}@{}}
+\toprule
+\papertablehead
+Notion & Definition \\
+\midrule
+Supplied & Some reduction has every remaining hypothesis supplied (least
+fixpoint); the first such reduction is kept as a witness chain of
+kernel-checked theorems \\
+\addlinespace
+Refuted & A theorem proving the negation has every remaining hypothesis
+supplied, or a tactic proves the negation; refutation passes back along a
+reduction whose other hypotheses are supplied \\
+\addlinespace
+Vacuous theorem & A conditional theorem with a refuted closed hypothesis \\
+\addlinespace
+Idle hypothesis & A hypothesis the proof never uses; the kernel accepts the
+statement without it \\
+\addlinespace
+Disguise class & Open statements that imply one another: one open question in
+several coordinates \\
+\addlinespace
+Bundle & A set of open statements whose supply supplies a given statement,
+minimal among those a bounded search finds \\
+\addlinespace
+Leverage & The open statements that become supplied when a given statement is
+supplied \\
+\addlinespace
+Criticality & The supplied statements that lose every chain when a given
+statement or theorem is withdrawn \\
+\bottomrule
+\end{tabular}
+\caption{The notions the argument graph computes from the relations the
+export records.}
+\label{tab:notions}
+\end{table}
+
+\paragraph{What it shows.} %FINDINGS-SECTION
+The graph of the record at this paper's revision has \AGStatements{}
+statements from \AGTheorems{} theorems in \AGModules{} Lean modules, of which
+\AGConditional{} are conditional arguments. \AGSupplied{} statements are
+supplied and \AGOpen{} are open; \AGRefuted{} are refuted, which makes
+\AGVacuous{} theorems vacuous. The kernel accepted \AGKernelCompositions{}
+compositions, \AGIdle{} statements without a hypothesis their proofs never
+use, \AGIdleOpen{} of them dropping a hypothesis that is open, and
+\AGBatteryClosed{} tactic proofs of open statements. The open statements fall
+into \AGDisguiseClasses{} disguise classes, the largest with
+\AGLargestDisguise{} members.
+
+\paragraph{Research with the graph.} A research session on a problem opens a
+bounded packet built from the graph
+(\repolink{scripts/query_continuations.py}{query\_continuations.py}): the open
+targets with the theorems that reduce to them and the paper results that
+assume them, the disguise classes, the bundles with two or more open members,
+the refuted antecedents and the open statements with the largest leverage.
+Before a proposed intermediate statement is attacked, three questions go to
+the graph. Does a chain of corpus theorems already supply it? Is it refuted?
+Does it lie in the target's disguise class, so that proving it is the whole
+problem? A referee's question, where a hypothesis is used and what fails
+without it, has a mechanical part that the graph answers from the proof terms:
+the theorems that consume the statement, the paper results that cite them and
+the statements that lose every chain when it is withdrawn.
+
+A session rarely has a corpus build, which needs several gigabytes and, without
+a cache, hours. It writes the statement it wants checked, with its proof, as a
+scratch Lean file on a probe branch; continuous integration builds the corpus
+from the main branch's cache, runs the file and returns a verdict with the
+axioms each declaration uses
+(\repolink{.github/workflows/kernel-probe.yml}{kernel-probe.yml}). A route that
+a countermodel is suspected to block is tested the same way, by stating the
+route as a proposition and proving its negation from the countermodel.
+
+Two requests quoted in Section~\ref{sec:intro} become operations a reader can
+run. The analysis Tao asks for, of what a solution process revealed about
+nearby problems, is for a record the label the graph gives every statement:
+proved, refuted, conditional on named inputs or open, with the kernel theorems
+behind the label and the revision it was computed from. The isolation of new
+methods that the declaration asks for is visible as a cross-problem reduction,
+a lemma proved for one problem that supplies another problem's hypothesis.
+
+\paragraph{What it does not establish.} The kernel-checked compositions,
+stronger statements and tactic proofs are proofs; a supplied or refuted
+statement rests on kernel theorems joined by the unifier; the rest of the
+graph is a map, and a lower bound. The search tries only corpus theorems as
+producers and prefilters them by the constants in their conclusions, so a
+statement shown open may follow from an argument the search did not try. A
+disguise class records proved equivalences only, and leverage counts
+consequences inside this record. Importance, difficulty and interest remain
+judgements for a mathematician. Before any number above was reported, an
+adversarial review of the graph code found confirmed defects, among them one
+that counted a theorem needing a witness of an empty type as unconditional and
+so reported \texttt{False} as supplied; each became a regression case in the
+exporter's test corpus.
+
 \section{From corpus to insight}\label{sec:production}
 \papersectiontarget{systems-mathloop}
 
@@ -310,59 +469,16 @@ into the paper, where a reader can inspect and dispute it.
 \paragraph{Testing a proposed measure of value.}
 Patel et al.~\cite{patel} propose conditional proof difficulty as a way to
 choose useful mathematics: a lemma is valuable when making it available
-shortens later proofs. Their intrinsic score divides proof cost by the length
-of the statement and its required definitions. Their direct-use utility
-multiplies that cost by the number of citing theorems. This gives stewardship
-a testable proposal, but the shared proof-cost factor means that correlation
-between the two scores alone cannot establish that either finds useful
-abstractions. Our \href{\repobase/blob/d8c241f3/research/experiments/interestingness/README.md}{accompanying experiment} compares the observed correlation
-with shuffled user counts, separates generated certificates and repeated
-statement text, and records the resolved part of the dependency graph. It
-uses indexed subtotals of recorded source proofs; it neither trains their value
-model nor estimates a shortest proof.
-
-On the source snapshot used here, the two proxies have Spearman correlation
-$0.799$ over 9,289 cited theorem or lemma declarations. Yet their common
-proof-cost factor survives shuffling the user counts: all 64 fixed-seed
-permutations give a larger correlation, with mean $0.833$, while the
-interestingness proxy correlates $-0.172$ with user count alone. This is a
-negative control against interpreting the local correlation as independent
-evidence of reuse prediction, not a test of the authors' trained model.
-Excluding every target with generated-certificate ancestry leaves 8,022
-declarations and correlation $0.856$; excluding targets whose indexed
-dependency closure reports any omitted internal reference leaves 2,417 and
-$0.660$. These are different selected populations, not causal estimates.
-The experiment therefore reports source coverage alongside each result:
-the index resolves 16,111 declarations and omits private helpers and some
-public dependencies. Its costs are subtotals in that index. The analysis
-turns an apparently reassuring correlation into a concrete demand for
-independent evaluation.
-
-Conditioning on a workload gives a different question. In an
-\href{\repobase/blob/bb8f1f64/research/experiments/interestingness/conditional_reuse.json}{eight-target inspection experiment}
-drawn from the Problem 251 and 269 papers, shared prerequisites account for
-3,529 indexed lines, compared with 6,135 if every target is inspected
-separately. Among the same candidate premises, the leader by use count times
-cost removes only 30 lines from the shared subtotal; the largest initial
-contextual cut removes 491. Neither number determines importance: reading
-the source identifies the latter as an equivalence wrapper and redirects
-attention to the underlying arguments. Two Problem 269 premises remove 220
-and 216 lines separately, but 467 together, because a shared dependency stops
-being needed only after both paths to it are cut. Thus contextual gains can
-increase; adding individual scores misses this complementarity, and greedy
-selection has no general optimality guarantee. The paired tests make the
-workload and available premises explicit before allocating an inspection.
-
-The resulting candidates carry different jobs. A widely reused lemma needs
-an explanation of the mechanism its users share; a repeated statement needs
-a comparison of its elaborated types and the pinned library; a large
-certificate dependency needs an inspection of the generator before its size
-is read as mathematical difficulty. A negative result that eliminates an
-unproductive attack can deserve attention despite few formal users. The
+shortens later proofs. Leverage in the argument graph is its logical
+counterpart, the open statements a lemma would settle, and like their score it
+is an input to an allocation. Our \href{\repobase/blob/d8c241f3/research/experiments/interestingness/README.md}{accompanying experiment}
+tests two proxies for their score on this record: over 9,289 cited
+declarations they have Spearman correlation $0.799$, yet all 64 fixed-seed
+shuffles of the user counts give a larger correlation, so the shared
+proof-cost factor, and not observed reuse, carries it. The
 \href{\repobase/blob/d8c241f3/skills/run-coupled-research-goals/SKILL.md}{stewardship procedure}
 requires a named consumer or falsifiable test and records the allocation
-separately from the score. Such a ranking changes which question is checked
-next; the returned evidence determines whether the appraisal changes.
+separately from any score.
 
 Negative results are part of what the loop produces. Tao observes that
 withheld negative results and processes hide where a new frontier
@@ -843,11 +959,15 @@ beside a formal proof. Each component exists elsewhere; a world contributes
 their combination on one task, as in the transfer of
 Section~\ref{sec:production}, where the record selected the move, Lean checked
 it, the explanation sits beside the proof and the next question carries its
-test. The measurement of Section~\ref{sec:limits} compares that workload with
-the alternatives. Provers such as ReProver, built on LeanDojo, and
+test. A blueprint records the dependencies an author declared along a planned
+proof; the argument graph records what unification can connect across a whole
+record, including connections no author planned. Provers such as ReProver, built on LeanDojo, and
 OpenProver~\cite{leandojo,openprover} can supply a world with candidate proofs,
 and Li et al.\ hold generation and validation apart in research mathematics
-without a proof assistant~\cite{lihai}.
+without a proof assistant~\cite{lihai}. Premise selection retrieves lemmas
+likely to help with one goal; the graph's producer search unifies every open
+hypothesis of a record against every conclusion in it and follows what each
+candidate leaves behind.
 
 \section{Limits, and what stronger models change}\label{sec:limits}
 \papersectiontarget{systems-trust}
@@ -883,43 +1003,23 @@ public facility in which coordinated agents explore a research programme
 divided into subproblems under researchers' direction~\cite{koukoulopoulos}. A
 problem-sized world is one concrete way to maintain the sources, explanations
 and open questions such work draws on, here at the scale of eight problems,
-and the measurement below tests its value against an on-demand briefing built
-from the same material. Antieau writes that texts generated largely by a language
+and its argument graph is one concrete form for the map such work needs: its
+subproblems are the open statements, and its interfaces are the kernel-checked
+relations between them. Antieau writes that texts generated largely by a language
 model deserve a home other than the arXiv~\cite{antieau}; a world gives its
 long records one beside the proofs they explain. The same structure suits a
 single landmark result, and it asks three things of a field: stable result
 identities, a checker where one exists, and an explicit boundary on public
 claims.
 
-The next measurement is comparative. With the source revision, task set,
-model, tool access and budget held fixed, agents receive the Lean source
-alone, an information-equivalent written briefing, or the whole world with its
-continuation tools. A representation contrast holds information, tools and budget
-fixed and varies only the organisation and recorded decisions; a product
-contrast compares the world with the best on-demand briefing and tools built
-from the same material, with preparation amortised over observed reuse and
-maintenance, review and repair counted on both sides. miniCTX's repository
-contexts and temporal splits are a precedent for these controls~\cite{minictx}. Independent domain readers grade whether each recovers the strongest
-supported claim, its hypotheses, its hard step, its antecedents and the
-remaining obligation, and review one returned change; statement errors,
-reviewer time and total work, preparation and maintenance included, are
-recorded, and failed and abandoned attempts are counted. Ablations separate the
-short paper, the evidence links and the continuation tools; historical tasks
-need a cutoff that hides later proofs and theorem names, and prospective tasks
-give a separate test. Tasks separating meaning from wording include a new antecedent
-that leaves the Lean proof intact and changes the appraisal, as the Dubickas
-comparison did, a dropped hypothesis or a limsup bound read as a bound reached
-infinitely often, and a faithful paraphrase. The
-transfer of Section~\ref{sec:production} is a diagnostic fixture; discovery
-comparisons use held-out transformations or prospective continuations. Repeating the frozen tasks with a stronger model measures
-what the record adds as models improve.
-
-For score-guided allocation, freeze the candidate statements and their
-rankings before the continuation period. Compare with proof-size, direct-use
-and unranked selection under equal effort, recording later independent
-consumers, accepted reuse, review cost and abandoned attempts. Scoring the
-selected outputs by the selection score would test the optimiser rather than
-the usefulness of its choices.
+The graph gives the record a measurement of its own. Each build is dated by
+the revision it was computed from, and the difference between two builds lists
+which open statements a change settled, which disguise classes it merged and
+which conditional theorems it turned unconditional, so what a landed theorem
+did is read from the proof terms. Whether a record organised this way makes
+understanding, checking and continuing a result less work for other people is
+a question for its users; no comparison with other organisations of the same
+material has been run.
 
 \section{Conclusion}\label{sec:conclusion}
 
@@ -930,10 +1030,14 @@ totient basis and the derivative-interpolation theorem show that record for
 three results, the dyadic transfer shows the corpus supplying a proof its
 parts did not contain, and the eight worlds in the public repository show that it can
 be kept persistent, checkable and open to contribution across several hard
-problems. The record is built for models stronger than the ones that produced
-it: each starts from the recorded frontier with the failed routes marked, and
-Section~\ref{sec:limits} names the measurement that tests whether this makes
-it more effective.
+problems. The argument graph turns the record's unfinished arguments into a
+map of its problems: what is proved, what is refuted, what reduces to what,
+what is the open problem in other coordinates and what each missing input would
+settle, with every kernel-checked row a proof and the rest a lower bound that
+says so. %FINDINGS-CONCLUSION
+The record is built for models stronger than the ones that produced it: each
+starts from the graph with the failed routes, refutations and disguise classes
+already marked, and whatever it proves re-enters the graph at the next build.
 
 \appendix
 \section{Inspection routes and reproducibility}\label{app:repro}
