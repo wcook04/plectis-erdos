@@ -7343,12 +7343,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:73b61adcdb44439c93f3cdfa0a46bfe0719a7ccc5171bd2ebc66203a3b9c8f06",
+      "source_sha256": "sha256:62b30a66e6e9ea5f1a22c258be646c0953ef5d4030f0a7c344d5417a0efa529a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 35,
+      "section_count": 36,
       "sections": [
         {
           "level": 1,
@@ -7519,56 +7519,62 @@
           "line": 738
         },
         {
+          "level": 2,
+          "id": "sec:polynomial-shifts",
+          "title": "Polynomially selected shifts",
+          "line": 805
+        },
+        {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 803
+          "line": 836
         },
         {
           "level": 1,
           "id": "sec:misread",
           "title": "The computation and its limits",
-          "line": 826
+          "line": 859
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 853
+          "line": 886
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 867
+          "line": 900
         },
         {
           "level": 1,
           "id": "capacity:sec:sources",
           "title": "Sources and formal correspondence",
-          "line": 881
+          "line": 914
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Further questions",
-          "line": 899
+          "line": 932
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 981
+          "line": 1018
         }
       ],
-      "citations_rendered": 62,
+      "citations_rendered": 66,
       "fallback_title_drift": {
         "registry_fallback": "An Exact Capacity Criterion for Series with Eventual Congruences",
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:af9f67bb5d86f91fc4fc7fd788174c2d3c3261b111ff9a922526872079ec4808",
-      "pdf_byte_count": 211610,
+      "pdf_sha256": "sha256:5e420944fe5b07e81e20145eadd7eaf4c895f7fa9ad4bfc7e9d3511a46b07b35",
+      "pdf_byte_count": 220052,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7591,7 +7597,7 @@
           {
             "id": "sec:questions",
             "title": "Further questions",
-            "line": 899
+            "line": 932
           }
         ],
         "unresolved_count": 0
@@ -7634,7 +7640,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:ecb905ae8e2ede0f2ed1d7dde3f747af652da1e469aed501dba0ccc0d79a35be",
+      "source_sha256": "sha256:6d01a38e0ce0ca5df07d0369a1e15566e400a9f60d3c2daff8dd1a69798facb2",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7734,8 +7740,8 @@
       ],
       "citations_rendered": 49,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:512f503bf65007039a08597063accb56f3e7a19d129b0c376eea8d0d3fc95cff",
-      "pdf_byte_count": 129032,
+      "pdf_sha256": "sha256:41eb5d3a8fb37440bd38bcd69dfabd72c75cc5ce0d68582e217b6866ce5e25d7",
+      "pdf_byte_count": 129034,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
