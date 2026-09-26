@@ -680,6 +680,7 @@ def exportAll : Elab.TermElabM Unit := do
     ("record", "meta"), ("schema", "plectis-argument-continuation-export/1"),
     ("lean_version", toJson Lean.versionString),
     ("roots", toJson (cfg.roots.map Name.toString)),
+    ("imports", toJson (env.imports.map (·.module.toString))),
     ("name_prefixes", toJson (cfg.namePrefixes.map Name.toString)),
     ("match_heartbeats_thousands", toJson cfg.matchHeartbeats),
     ("max_candidates", toJson cfg.maxCandidates),

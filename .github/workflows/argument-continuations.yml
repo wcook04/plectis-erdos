@@ -108,6 +108,17 @@ jobs:
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
 
+      # Two thirds of the declarations the paper-to-Lean ledger cites live in
+      # modules only the coverage build compiles. The export imports those
+      # targets too; if they cannot be built or imported together it falls
+      # back to the default roots and the stream's meta row says which.
+      - name: Memory-bounded Lean build of the coverage targets
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          mapfile -t targets < <(python3 scripts/coverage_build_targets.py)
+          python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness "${targets[@]}"
+
       # Each pass stops itself at its own budget: search 75 min, compositions at
       # most 20 min after the search budget, idle hypotheses 10 min, battery
       # 20 min. The outer timeout is a backstop so a stuck elaboration cannot
@@ -126,9 +137,20 @@ jobs:
           set -uo pipefail
           git rev-parse HEAD > "$RUNNER_TEMP/argument_continuations_source_revision.txt"
           git rev-parse HEAD:lean > "$RUNNER_TEMP/argument_continuations_lean_tree.txt"
+          wrapper="$RUNNER_TEMP/ArgumentContinuationExportWithCoverage.lean"
+          {
+            head -n 2 scripts/export_argument_continuations.lean
+            python3 scripts/coverage_build_targets.py --imports
+            tail -n +3 scripts/export_argument_continuations.lean
+          } > "$wrapper"
           start=$(date +%s)
-          timeout --kill-after=60s 160m lake env lean scripts/export_argument_continuations.lean
+          timeout --kill-after=60s 160m lake env lean "$wrapper"
           status=$?
+          if [ "$status" -ne 0 ] && [ ! -s "$PLECTIS_CONTINUATION_EXPORT_FILE" ]; then
+            echo "the coverage targets did not import (exit $status); exporting the default roots only"
+            timeout --kill-after=60s 150m lake env lean scripts/export_argument_continuations.lean
+            status=$?
+          fi
           end=$(date +%s)
           echo "export exit $status after $((end - start)) seconds"
           tail -n 1 "$PLECTIS_CONTINUATION_EXPORT_FILE" || true
