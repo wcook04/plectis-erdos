@@ -32,9 +32,21 @@ open Finset Filter Topology
 
 open ExcludedCofactor
 
-namespace ExcludedCofactor
+/-! ## The budget at `η = 1/1000` without the prime number theorem
 
-/-! ## Chebyshev's bound gives the dyadic prime count with constant `log 4` -/
+The prime number theorem enters `excluded_budget_one_thousandth` only through the
+dyadic count `eventually_card_primes_dyadic_le`.  Chebyshev's bound gives that count
+with `log 4` in place of `1`: the primes `p` with `a + 1 < p ≤ 2a + 1` divide
+`C(2a + 1, a) ≤ 4 ^ a` (`prod_primes_dyadic_le_four_pow`), so
+`#{p prime : a < p ≤ 2a + 1} · log a ≤ a log 4 + log a` for every `a`
+(`card_primes_dyadic_mul_log_le`).  Steps 2 to 4 of the proof are linear in the
+constant of the dyadic count, so a constant `K` gives the excluded count
+`(K D + o(1)) X` (`eventually_card_excluded_le_of_upper_of_dyadic`) and the `X/100`
+budget whenever `K D < 1/100` (`eventually_excluded_budget_of_upper_of_dyadic`).
+At `η = 1/1000`, `log 4 · 3/1000 ≤ 9/1000 < 1/100`
+(`excluded_budget_one_thousandth_of_chebyshev`). -/
+
+namespace ExcludedCofactor
 
 /-- Chebyshev's product bound: the primes `p` with `a + 2 ≤ p ≤ 2a + 1` divide the
 binomial coefficient `C(2a + 1, a + 1) = C(2a + 1, a) ≤ 4 ^ a`, so their product is
@@ -109,8 +121,6 @@ theorem one_le_log_four : 1 ≤ Real.log 4 := by
     (show Real.exp 1 ≤ 4 by linarith [Real.exp_one_lt_d9])
   rwa [Real.log_exp] at h
 
-/-! ## The estimate with a general dyadic constant -/
-
 /-- `excluded_final_arith` with a general leading constant `K > 0` in place of
 `1 + e`: with `t ≤ eX`, `8C ≤ e log X`, `S ≤ 2K(X + t)/log X · T`, `T ≥ 0` and
 `T ≤ (D + e)(log X)/2 + C`, one gets `S ≤ K (D + ε) X`. -/
@@ -140,8 +150,8 @@ If `#{p prime : a < p ≤ 2a + 1} · log a ≤ (K + ε) a` for every `ε > 0` an
 large `a`, and `B(η)` has upper density at most `D ∈ [0, 1]`, then for every
 `ε > 0`, for all large `X`, `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (K D + ε) X`.  The prime
 number theorem gives the dyadic count with `K = 1` (`eventually_card_primes_dyadic_le`),
-and then this is `eventually_card_excluded_le_of_upper`; Chebyshev's bound gives
-it with `K = log 4` (`eventually_card_primes_dyadic_le_log_four`). -/
+and then this is the bound of `eventually_card_excluded_le_of_upper`; Chebyshev's
+bound gives it with `K = log 4` (`eventually_card_primes_dyadic_le_log_four`). -/
 theorem eventually_card_excluded_le_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K)
     (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop,
       ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a)
@@ -200,7 +210,7 @@ theorem eventually_card_excluded_le_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK
 /-- The budget consequence from a dyadic prime count with constant `K` and an upper
 density bound `D` with `K D < 1/100`: for all large `X` the count is `< X/100`, and
 the excluded-cofactor contribution `∑_{N ∈ 𝒜 ∖ 𝒢} E(h, N, L)` has norm at most
-`X/100`.  With `K = 1` this is `eventually_excluded_budget_of_upper`. -/
+`X/100`.  With `K = 1` this is the conclusion of `eventually_excluded_budget_of_upper`. -/
 theorem eventually_excluded_budget_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K)
     (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop,
       ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a)
@@ -235,13 +245,12 @@ theorem eventually_excluded_budget_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK 
 
 end ExcludedCofactor
 
-/-- **The explicit choice `η = 1/1000`, unconditionally.**  Chebyshev's bound
+/-- **The explicit choice `η = 1/1000`, with no input.**  Chebyshev's bound
 replaces the prime number theorem in `excluded_budget_one_thousandth`: it gives the
 dyadic prime count with constant `log 4` (`eventually_card_primes_dyadic_le_log_four`),
 `B(1/1000)` has upper density at most `3/1000` (`excludedCofactorSet_upperDensityLE`),
 and `log 4 · 3/1000 ≤ 9/1000 < 1/100`.  So for all large `X` the excluded-cofactor
-count is `< X/100` and the excluded-cofactor contribution meets its `X/100` budget,
-with no hypothesis. -/
+count is `< X/100` and the excluded-cofactor contribution meets its `X/100` budget. -/
 theorem excluded_budget_one_thousandth_of_chebyshev (h s : ℕ) :
     ∀ᶠ X : ℕ in atTop,
       ((((pivotSupplierBases X (minimalDepth h s X) s).filter
