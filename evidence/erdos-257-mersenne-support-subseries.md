@@ -4,7 +4,7 @@ This record belongs to the paper [erdos-257-mersenne-support-subseries.pdf](../p
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`7f3dbf0947c3`](https://github.com/wcook04/plectis-erdos/tree/7f3dbf0947c387335ffd392b689eea5721017d84) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 12 results: 10 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 2 without a Lean proof of the whole statement; 9 compared.
+- **Counts.** 11 results: 9 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 2 without a Lean proof of the whole statement; 9 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
@@ -101,44 +101,9 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
-<a id="res-finite-witness-rule"></a>
-
-## Proposition 3.1 (realising finite monotone witness rules), page 6
-
-> *Let $`E`$ be a finite set of primes, and let $`\mathcal U`$ be an upward-closed family of subsets of $`E`$ with $`E\in\mathcal U`$ and $`\varnothing\notin\mathcal U`$. There is a set $`A_{\mathcal U}\subseteq\mathbb{N}_{>0}`$ with $`\sum_{a\in A_{\mathcal U}}1/a=\infty`$ such that, for every integer $`b\ge2`$ and every finite set $`P`$ of primes (including $`P=\varnothing`$, with $`h(a)=1`$),
-> ``` math
-> \begin{equation}
-> \label{eq:finite-witness-rule}
->  W_{b,P}(A_{\mathcal U})<\infty
->  \quad\Longleftrightarrow\quad P\cap E\in\mathcal U.
-> \end{equation}
-> ```
-> Moreover $`X_B(b)`$ is irrational for every infinite $`B\subseteq A_{\mathcal U}`$ and every integer $`b\ge2`$.*
-
-The Lean declaration below states this result or one that implies it. The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\varnothing)$; the printed family $\mathcal U$ on subsets of $E$ is the case $U(S)\iff S\cap E\in\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(P\cap E)$ reads $P\cap E\in\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,P}(H)<\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.
-
-[`ErdosProblems.Erdos257.finite_monotone_witness_rule_realised`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean#L39)
-
-```lean
-theorem finite_monotone_witness_rule_realised
-    (E : Finset ℕ) (hE : ∀ p ∈ E, Nat.Prime p)
-    (U : Finset ℕ → Prop) (hUp : ∀ S T : Finset ℕ, S ⊆ T → U S → U T)
-    (hUE : U E) (hU0 : ¬ U ∅) :
-    ∃ H : Set ℕ, 0 ∉ H ∧
-      (∀ b : ℕ, 2 ≤ b → ∀ P : Finset ℕ, (∀ p ∈ P, Nat.Prime p) →
-        (Summable (Set.indicator H (primeWeightedTerm b P)) ↔ U (P ∩ E))) ∧
-      ¬ Summable (Set.indicator H (fun a : ℕ => (1 : ℝ) / a)) ∧
-      (∀ A : Set ℕ, A ⊆ H → A.Infinite →
-        ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
-```
-
-<a id="res-finite-witness-rule-comparator"></a>
-
-**Comparator:** not yet compared.
-
 <a id="thm-variable-fractional-cover"></a>
 
-## Theorem 3.2 (a summable divisor-cover criterion), page 8
+## Theorem 3.1 (a summable divisor-cover criterion), page 7
 
 > *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 > ``` math
@@ -182,7 +147,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weighted-cover-incomparability"></a>
 
-## Proposition 3.3 (incomparable support criteria), page 11
+## Proposition 3.2 (incomparable support criteria), page 10
 
 > *There are infinite positive supports $`E`$ and $`V`$ such that
 > ``` math
@@ -195,9 +160,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-mixed-supports"></a>
 
-## Theorem 3.4 (mixed weighted and cover supports), page 12
+## Theorem 3.3 (mixed weighted and cover supports), page 11
 
-> *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies ({W}) for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem 3.2, with either ({V}) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+> *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies ({W}) for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem 3.1, with either ({V}) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying (V), with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
 
@@ -240,7 +205,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-strict-mixed-supports"></a>
 
-## Corollary 3.5 (a host requiring the mixed criterion), page 13
+## Corollary 3.4 (a host requiring the mixed criterion), page 12
 
 > *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
 
@@ -248,7 +213,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-period"></a>
 
-## Theorem 4.1 (the exact denominator period), page 14
+## Theorem 4.1 (the exact denominator period), page 13
 
 > *Let $`F\subseteq\mathbb{N}_{>0}`$ be finite and nonempty, let $`b\ge2`$ be an integer, and let $`D_F>0`$ be the denominator of $`X_F(b)`$ in lowest terms. Then $`D_F`$ is coprime to $`b`$, and
 > ``` math
@@ -346,7 +311,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-one-over-twenty-one-frontier"></a>
 
-## Theorem 9.1 (integer-quotient tests for $`1/21`$), page 18
+## Theorem 9.1 (integer-quotient tests for $`1/21`$), page 17
 
 > *The following statements hold.*
 > 
@@ -452,7 +417,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-terminalhalf"></a>
 
-## Theorem 9.2 (finite approximations with vanishing scaled error), page 19
+## Theorem 9.2 (finite approximations with vanishing scaled error), page 18
 
 > *Suppose there are integers $`M_j\ge1`$ tending to infinity and sets $`A_j\subseteq\{2,\ldots,M_j\}`$ such that
 > ``` math
@@ -489,7 +454,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cylinderhalf"></a>
 
-## Theorem 9.3 (unbounded shared-prefix families imply a half-support), page 20
+## Theorem 9.3 (unbounded shared-prefix families imply a half-support), page 19
 
 > *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 

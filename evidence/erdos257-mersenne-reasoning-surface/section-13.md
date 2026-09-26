@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="thm-257-logarithmic-counterexample"></a>
 
-## Theorem 13.1 (arithmetic logarithmic counterexample), page 138
+## Theorem 13.1 (arithmetic logarithmic counterexample), page 139
 
 > *For every integer $`H\ge2`$ and every real $`A_0\ge0`$, there are a squarefree positive integer $`L`$ and a finite nonempty set $`F`$ of distinct squarefree positive integers such that
 > ``` math
@@ -61,7 +61,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-257-logarithmic-separation"></a>
 
-## Corollary 13.2 (finite-functional separation), page 140
+## Corollary 13.2 (finite-functional separation), page 141
 
 > *For every finite nonempty $`F`$, with $`Q=\operatorname{lcm}(F)`$,
 > ``` math
@@ -115,7 +115,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-257-logarithmic-initial-interval"></a>
 
-## Proposition 13.3 (ordinary initial intervals), page 141
+## Proposition 13.3 (ordinary initial intervals), page 142
 
 > *For every finite nonempty $`F`$, integer $`X\ge1`$, and $`0<t\le1`$,
 > ``` math

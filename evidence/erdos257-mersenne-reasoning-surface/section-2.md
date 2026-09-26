@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="prop-canon"></a>
 
-## Proposition 2.2 (Uniqueness under the stated finite conditions), page 24
+## Proposition 2.2 (Uniqueness under the stated finite conditions), page 25
 
 > *Put $`G=\mathrm{greedyMersenneSupport}(1/2)`$, $`w_n=(2^n-1)^{-1}`$ and $`R_d=\sum_{n>d}w_n`$. The following are three separate uniqueness statements.*
 > 
@@ -68,7 +68,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-collapse-mech"></a>
 
-## Lemma 2.4 (Carry and residual value), page 25
+## Lemma 2.4 (Carry and residual value), page 26
 
 > *Let $`A \subseteq \mathbb{N}`$ with $`1 \notin A`$, put $`\delta := 1/2 - x_A`$, and let $`\operatorname{ihc}(A,N)`$ denote the integer half-carry at level $`N`$. Then
 > ``` math
@@ -119,7 +119,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-collapse"></a>
 
-## Proposition 2.5 (A cofinal carry bound), page 25
+## Proposition 2.5 (A cofinal carry bound), page 26
 
 > *If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
 
@@ -158,7 +158,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-sqrt-witness"></a>
 
-## Lemma 2.6 (The terminal bound at square depths), page 25
+## Lemma 2.6 (The terminal bound at square depths), page 26
 
 > *Suppose $`x_A = 1/2`$ and $`1 \notin A`$. Then for every $`k \ge 1`$,
 > ``` math
@@ -190,7 +190,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-collapsed-list"></a>
 
-## Proposition 2.7 (Six equivalent membership conditions), page 26
+## Proposition 2.7 (Six equivalent membership conditions), page 27
 
 > *Each of the following is logically *equivalent* to $`1/2 \in \mathcal{A}`$, not strictly weaker:*
 > 
@@ -239,7 +239,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-local-void"></a>
 
-## Proposition 2.8 (Limits of the specified local summaries), page 27
+## Proposition 2.8 (Limits of the specified local summaries), page 28
 
 > *(i) After $`L`$ common steps the endpoint residue mod $`2^L`$ of an affine binary orbit is *independent* of the initial carry: $`u(L) - v(L) = 2^L(u_0 - v_0)`$. (ii) Fix $`m\ge2`$ and put $`h=\lfloor(m+1)/2\rfloor`$. Consider the coefficient sequences
 > ``` math
@@ -336,7 +336,7 @@ theorem balancedPulse_common_history (m : ℕ) (hm : 2 ≤ m) (r : ℕ)
 
 <a id="prop-exponent-gap"></a>
 
-## Proposition 2.9 (Weighted denominator budget), page 27
+## Proposition 2.9 (Weighted denominator budget), page 28
 
 > *Let $`n\ge2`$, let $`\mathrm{Skip}_n\subseteq\{2,\ldots,n-1\}`$, and let $`D_n`$ be the reduced denominator of the associated finite sum. Since $`D_n`$ divides the product of its Mersenne denominators,
 > ``` math
@@ -382,7 +382,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-one-sided"></a>
 
-## Theorem 2.11 (One-sidedness), page 28
+## Theorem 2.11 (One-sidedness), page 29
 
 > *Non-membership of $`1/2`$ in $`\mathcal A`$ has an effectively checkable finite-certificate formulation, hence a $`\Sigma^0_1`$ formulation. Membership has the complementary $`\Pi^0_1`$ formulation. Survival through a tested finite depth alone does not establish membership; a uniform theorem or inductive invariant could. The arithmetical-hierarchy form by itself proves neither undecidability nor the absence of finite proofs.*
 

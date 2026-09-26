@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="record-257bm-i-mob"></a>
 
-## Theorem 6.106 (Möbius inversion of the divisor counts), page 71
+## Theorem 6.106 (Möbius inversion of the divisor counts), page 72
 
 > *For a set $`A\subseteq\mathbb{N}`$ and each positive integer $`n`$,
 > ``` math
@@ -50,7 +50,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-bridge"></a>
 
-## Theorem 6.107 (The support series as a coefficient series), page 71
+## Theorem 6.107 (The support series as a coefficient series), page 72
 
 > *For $`A\subseteq\mathbb{N}_{>0}`$,
 > ``` math
@@ -105,7 +105,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i2"></a>
 
-## Theorem 6.108 (A restriction on dyadic rational values), page 72
+## Theorem 6.108 (A restriction on dyadic rational values), page 73
 
 > *If an infinite support $`A\subseteq\mathbb{N}_{>0}`$ has $`X_A(2)=p/2^c`$ for integers $`p`$ and $`c\ge0`$, then $`\sum_{a\in A}1/a`$ either diverges or converges to a value greater than $`1`$. The cited proof averages the shifted integer recurrence and uses a common multiple of two distinct support elements. Thus a convergent reciprocal sum of at most $`1`$ is excluded. This is a separate necessary condition: the reciprocal-summable criterion proved earlier already excludes every support with a convergent reciprocal sum, not just those whose sum is at most $`1`$.*
 
@@ -147,7 +147,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i3"></a>
 
-## Theorem 6.109 (Unboundedness of a positive shifted recurrence), page 72
+## Theorem 6.109 (Unboundedness of a positive shifted recurrence), page 73
 
 > *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, fix a shift $`c\ge0`$ and a positive integer $`v`$, and let $`u`$ be a positive integer sequence satisfying
 > ``` math
@@ -211,7 +211,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i4a"></a>
 
-## Theorem 6.110 (Bounds for intervals with zero divisor counts), page 72
+## Theorem 6.110 (Bounds for intervals with zero divisor counts), page 73
 
 > *Suppose that $`X_A(2)=p/(2^cv)`$ for an infinite positive support $`A`$ and an odd positive integer $`v`$. For every $`\varepsilon>0`$ there is $`B`$ such that, for $`N\ge1`$, a run of $`h`$ zero divisor counts starting after $`c+N`$ satisfies $`h\le\varepsilon\log_2N+B`$. In fact this conclusion holds without rationality: fix any $`a\in A`$. Every $`a`$ consecutive positive integers include a multiple of $`a`$, where $`c_A`$ is positive. Hence $`h\le a-1`$, so one can take $`B=a-1`$. The zero-run conclusion therefore imposes no additional restriction on a fixed nonempty support, regardless of the tail estimates used in the linked proof.*
 
@@ -253,7 +253,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i4b"></a>
 
-## Proposition 6.111 (A subpower bound for divisor counts), page 72
+## Proposition 6.111 (A subpower bound for divisor counts), page 73
 
 > *For positive integers $`n,k`$, $`\tau(n)^k \le (k^{2^k})^k\cdot n`$, or equivalently $`\tau(n)\le k^{2^k}n^{1/k}`$. The constant absorbs the finitely many primes below $`2^k`$; for larger primes, $`(\nu+1)^k\le p^\nu`$ controls each factor of the divisor product. This estimate is independent of the support problem. The elementary zero-run bound above already follows from a single positive support element, without this estimate or a recurrence.*
 
@@ -290,7 +290,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i5"></a>
 
-## Proposition 6.112 (Two distinct prime-power differences commute), page 72
+## Proposition 6.112 (Two distinct prime-power differences commute), page 73
 
 > *Lemma 6.57 gives the four-term expansion and its divisor-count interpretation. Commutation is elementary for arbitrary positive multipliers. The extraction formula uses distinct primes, *positive* exponents $`e,f`$ and $`\gcd(n,pq)=1`$. The example $`A=\{12\}`$ shows the extracted coefficient explicitly. No rationality statement about multiplicative subsequences follows from commutation alone.*
 
@@ -339,7 +339,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-cross2"></a>
 
-## Theorem 6.114 (Existence of a first crossing), page 73
+## Theorem 6.114 (Existence of a first crossing), page 74
 
 > *Let $`E\subseteq\{2,3,\ldots\}`$ be finite and suppose $`X_E(2)>1/2`$. There is a least $`c\in E`$ such that
 > ``` math
@@ -377,7 +377,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i6"></a>
 
-## Theorem 6.115 (Nonnegative centred carries below the half-value), page 73
+## Theorem 6.115 (Nonnegative centred carries below the half-value), page 74
 
 > *If $`1\notin A`$ and $`X_A(2)<1/2`$, then
 > ``` math
@@ -426,7 +426,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i7"></a>
 
-## Theorem 6.116 (Three possibilities at a skipped endpoint), page 73
+## Theorem 6.116 (Three possibilities at a skipped endpoint), page 74
 
 > *For a rank $`s\ge5`$ omitted by the real greedy support, let $`H_s`$ and $`f_s`$ be as in Lemma 6.45. That lemma identifies the actual prefix as $`D_s`$ when $`f_s\le0`$ and as $`B_s`$ when $`f_s>0`$, with the exact remainder or overshoot in each case. To obtain the nonnegative-margin condition in Definition 6.81, the negative case would still have to be excluded at every required skipped rank. The trichotomy itself does not exclude it. In particular, the value $`-3`$ excluded for $`C_D`$ under the all-right-tail hypothesis of Theorem 6.44 is not an exclusion for $`f_s`$: the coordinates and the hypotheses are different.*
 
@@ -465,7 +465,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i2"></a>
 
-## Theorem 6.118 (The unweighted sum of remaining gap lengths), page 74
+## Theorem 6.118 (The unweighted sum of remaining gap lengths), page 75
 
 > *For every $`N\ge0`$, the unweighted sum of gap lengths satisfies
 > ``` math
@@ -519,7 +519,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i4"></a>
 
-## Theorem 6.120 (A sufficient inequality for a safe skip), page 74
+## Theorem 6.120 (A sufficient inequality for a safe skip), page 75
 
 > *Let $`k,u,L\ge1`$ be integers, set $`a=2L-(2^k-1)u`$, and suppose $`a>0`$. For the skipped rational remainder $`\rho=u/(2L)`$, $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$, whereas
 > ``` math
@@ -637,7 +637,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i5"></a>
 
-## Proposition 6.121 (Two unconditional safety cases), page 75
+## Proposition 6.121 (Two unconditional safety cases), page 76
 
 > *Under the positive-integer and skipped-step hypotheses of Theorem 6.120, $`u=1`$ implies $`a\ge1`$, so the current remainder is less than $`R_k`$. Conversely, a fatal tail-mass deficit forces $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd. These are statements about the current step, not infinite survival.*
 
@@ -738,7 +738,7 @@ theorem unitNumerator_skipSafe_actualTail {k u L a : ℕ}
 
 <a id="record-257bm-i13"></a>
 
-## Theorem 6.122 (Two-sided dyadic bounds), page 75
+## Theorem 6.122 (Two-sided dyadic bounds), page 76
 
 > *Under the local hypothesis excluding the specified three middle cells and imposing the right-pulse bound, induction (base case at row 5 verified by direct computation) propagates it to the universal two-sided bound
 > ``` math
@@ -769,7 +769,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i14"></a>
 
-## Proposition 6.123 (A finite band check for $`13\le d\le30`$), page 75
+## Proposition 6.123 (A finite band check for $`13\le d\le30`$), page 76
 
 > *For every actual upper-reset index $`13\le d\le30`$ and every $`0\le j\le d`$, the linked certificate verifies
 > ``` math
@@ -859,7 +859,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i15"></a>
 
-## Theorem 6.124 (A general perturbed greedy recurrence), page 75
+## Theorem 6.124 (A general perturbed greedy recurrence), page 76
 
 > *Let the old integer values be separated by at least $`g\ge1`$, and let the update be $`t(x)=4s(x)+p(x)`$ with $`0\le p(x)\le B<g`$. Suppose $`x_-`$ and $`x_+`$ are the adjacent old values on either side of capacity $`C`$. Theorem 6.62 gives the largest admissible updated value at capacity $`4C+g`$ and the exact three-branch remainder after testing the extra weight $`2g+4`$.*
 > 
@@ -1054,7 +1054,7 @@ theorem prefixChoice_eq_below {α : Type*} (F : PerturbedFamily α) {C : ℕ}
 
 <a id="record-257bm-i16"></a>
 
-## Theorem 6.125 (Spacing of compatible reverse-carry words), page 75
+## Theorem 6.125 (Spacing of compatible reverse-carry words), page 76
 
 > *Consider two integer carry recurrences $`b_i(m)+2u_i(m)=a_i(m)+u_i(m+1)`$, $`i=1,2`$. If $`a_1(k)=a_2(k)`$ and the output bits at $`k`$ are $`1`$ and $`0`$, then the carry difference at $`k+1`$ is odd. If the coefficients and bits agree for the following $`L`$ positions, the difference at $`k+L+1`$ is $`2^L`$ times that odd integer. Consequently absolute terminal bounds $`B_1,B_2`$ give $`2^L\le B_1+B_2`$. Lemma 6.46 states the exact identity and proves it by subtraction. The linked formal statements encode these agreements; they do not supply terminal bounds for an unrelated digit system.*
 
@@ -1163,7 +1163,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i17"></a>
 
-## Proposition 6.126 (Changing one support bit at a doubled rank), page 76
+## Proposition 6.126 (Changing one support bit at a doubled rank), page 77
 
 > *Let two supports agree except that the second includes $`N+1`$ while the first does not. At the argument $`2(N+1)`$ their divisor counts differ by exactly $`1`$, because $`N+1`$ divides $`2(N+1)`$. More generally the difference at a positive argument $`m`$ is $`\mathbf1_{N+1\mid m}`$. The linked statements apply this identity to the finite supports in their hypotheses. No conclusion about a different coefficient sequence follows without identifying its own support change.*
 
@@ -1221,7 +1221,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k1"></a>
 
-## Theorem 6.127 (A bounded model of the doubling-or-return alternative), page 76
+## Theorem 6.127 (A bounded model of the doubling-or-return alternative), page 77
 
 > *The dichotomy $`\mathrm{ExactLocalMersenneHalfRow}(2n{-}1) \vee \exists c,\,4\le c\le n\wedge
 > \mathrm{ExactLocalMersenneHalfRow}(2c{-}2)`$ (proved for $`n\ge6`$ at Theorem 6.128 below) is not by itself enough for cofinality. Countermodel: $`\mathrm{boundedDoubleOrRecycleModel}(n) := (n=6)`$ satisfies exactly the same two-branch transition shape (seed at 6, and the model reproduces the $`\vee`$ shape by always taking the recycle branch with $`c=4`$, conclusion back at $`2\cdot4-2=6`$), yet
@@ -1270,7 +1270,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k-dich"></a>
 
-## Theorem 6.128 (Doubling or returning to an earlier depth), page 76
+## Theorem 6.128 (Doubling or returning to an earlier depth), page 77
 
 > *For $`n\ge6`$, $`\mathrm{ExactLocalMersenneHalfRow}(n)`$:
 > ``` math
@@ -1322,7 +1322,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k2"></a>
 
-## Proposition 6.129 (A sufficient fractional-mass bound need not hold), page 76
+## Proposition 6.129 (A sufficient fractional-mass bound need not hold), page 77
 
 > *Take $`D=\{2,3\}`$ and $`c=5`$. Direct calculation gives
 > ``` math
@@ -1379,7 +1379,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k4"></a>
 
-## Theorem 6.131 (The returning endpoint need not be larger), page 77
+## Theorem 6.131 (The returning endpoint need not be larger), page 78
 
 > *Theorem 6.78 is unconditional, but its witness is $`\exists c\le n`$, not $`\exists c`$ large: $`2c-2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem 6.127 is the explicit falsifier of the naive hope that growth comes for free: $`\mathrm{boundedDoubleOrRecycleModel}(n):=(n=6)`$ satisfies the same transition schema plus a seed and is not cofinal. Growth is recovered only inside $`\mathrm{ProtectedExactLocalMersenneRow}`$ (Theorem 6.71), whose invariants $`\mathrm{endpoint}<2\cdot\mathrm{cutoff}`$ and $`\mathrm{new\_above\_cutoff}`$ force $`c>\mathrm{cutoff}`$ hence $`2c-2>\mathrm{endpoint}`$ ; and maintaining those invariants is precisely what needs the strict-upper (sharp capacity) fill of Theorem 6.75 rather than this general recycling theorem.*
 
@@ -1447,7 +1447,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-k6"></a>
 
-## Theorem 6.133 (Uniqueness at a critical crossing), page 78
+## Theorem 6.133 (Uniqueness at a critical crossing), page 79
 
 > *For $`c\ge4`$, $`D`$ bounded $`[2,c)`$, below-half, with genuine crossing deficit $`\tfrac12-\mathrm{value}(D) < \ensuremath{w}(c)`$:
 > ``` math
@@ -1480,7 +1480,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k9"></a>
 
-## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 78
+## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 79
 
 > *Let $`V`$ be a vector space over $`\mathbb{Q}`$, let $`e:V\to\mathbb{Q}`$ be linear, and let $`(\ell_j)_{j\in\iota}`$ be a finite family of linear functionals vanishing on $`\ker e`$. For any vectors $`(v_i)_{i\in\iota}`$, the matrix $`(\ell_j(v_i))_{i,j\in\iota}`$ has rank at most one, so every square minor of size at least two vanishes. Indeed, the functionals descend to $`V/\ker e`$, which has dimension at most one. This elementary linear-algebra argument applies at every matrix size. It does not cover additional functionals that fail to vanish on $`\ker e`$.*
 
@@ -1522,7 +1522,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-k12"></a>
 
-## Theorem 6.139 (Excluding the cell with value minus three), page 79
+## Theorem 6.139 (Excluding the cell with value minus three), page 80
 
 > *At a middle row $`D\ge13`$ followed only by right transitions, $`4\,\mathrm{rem}(D)-p_D^--4\ne-3`$, by Theorem 6.44. Its proof uses the nonnegative centred carry for the completed support, not a finite search. The values $`-2,-1`$ remain among the three exceptional negative cells. Excluding them under this extra tail assumption would still not exclude nonnegative values of the coordinate, or establish the all-middle-row and right-branch hypotheses in Theorem 6.9. The complete remaining tail inequality is stated in Remark 10.8.*
 
@@ -1601,7 +1601,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-unsafe-middle-range-exactly-three"></a>
 
-## Proposition 6.140 (The unsafe middle range is exactly three integers), page 79
+## Proposition 6.140 (The unsafe middle range is exactly three integers), page 80
 
 > *For $`s\ge5`$, write $`R=\mathrm{rem}(s)`$ and $`P=p_s^-`$. Since $`4R-P-4`$ is an integer,
 > ``` math
@@ -1638,7 +1638,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-finite-approximations-without-compatibility"></a>
 
-## Proposition 6.142, page 81
+## Proposition 6.142, page 82
 
 > *Every shared-prefix family just defined at depth $`N`$ contains a finite support $`A`$ with $`|K_A(N)|\le B(N)`$, and at a feedback row this survives *both* outputs of the corpus’s total feedback theorem; full-cylinder advance or a localized one-hole seam, which can delete at most one of carries $`3,4`$.*
 
@@ -1808,7 +1808,7 @@ theorem paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 
 <a id="prop-exact-lebesgue-measure-dichotomy"></a>
 
-## Proposition 6.146 (Exact Lebesgue-measure dichotomy), page 83
+## Proposition 6.146 (Exact Lebesgue-measure dichotomy), page 84
 
 > *Either $`J=F^c`$ for a finite $`F`$, and $`\mathrm{vol}(\mathcal A_J)=2^{-|F|}`$ exactly, or $`J^c`$ is infinite and the volume is exactly $`0`$.*
 

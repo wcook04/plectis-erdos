@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="thm-lower-bound-every-reset"></a>
 
-## Theorem 9.46 (A: a sufficient lower bound at every reset), page 106
+## Theorem 9.46 (A: a sufficient lower bound at every reset), page 107
 
 > *Assume that $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ for every upper or middle reset $`r\ge10`$. Then $`1/2\in\mathcal A`$.*
 > 
@@ -72,7 +72,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-one-sided-finite-decision-boundary"></a>
 
-## Theorem 9.48 (C: the one-sided finite decision boundary), page 107
+## Theorem 9.48 (C: the one-sided finite decision boundary), page 108
 
 > *The equivalence of Theorem 5.10 separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is a finite certificate that $`1/2\notin\mathcal A`$. By contrast, membership requires survival at every rank; this paper supplies no finite certificate that the orbit survives forever and no completion theorem turning a long surviving prefix into membership.*
 > 
