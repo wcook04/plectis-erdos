@@ -464,7 +464,9 @@ CHALLENGE_FILENAME = "Challenge.lean"
 
 def _lean_sources() -> list[Path]:
     """Every committed Lean source, excluding build output."""
-    return sorted(p for p in ROOT.rglob("*.lean") if ".lake" not in p.parts)
+    return sorted(
+        p for p in ROOT.rglob("*.lean") if ".lake" not in p.relative_to(ROOT).parts
+    )
 
 
 def sorry_census() -> dict:

@@ -1,0 +1,25 @@
+{
+  "schema": "paper_archive_versions/1",
+  "role": "Hand-authored versioned publication records; the taxonomy builder projects their relationship to the current manuscript bytes.",
+  "boundary": "Archive publication records no independent mathematical review. An archived edition is not automatically the current paper or its current formal evidence.",
+  "papers": {
+    "erdos-257-mersenne-support-subseries": [
+      {
+        "identifier": "aiXiv:2609.02921",
+        "version": 1,
+        "published": "2026-09-25",
+        "url": "https://aixiv.online/abs/2609.02921v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.02921v1",
+        "source_url": "https://aixiv.online/src/2609.02921v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.02921",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "2945372c6d306dc8c5bf62c95dfd8bc2939c650d",
+        "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984",
+        "pdf_sha256": "sha256:b7635e96da57a679d715c552af4e1f0b31b555b9ca9ba9ca1dc075e7526563a2",
+        "source_archive_sha256": "sha256:696a9c67f6cd8c39704727706b40ee6e43b4f27d2fbc946f323940d065b20fc9",
+        "peer_review_state": "not_externally_reviewed"
+      }
+    ]
+  }
+}

@@ -34,7 +34,8 @@ result has not propagated:
       reason, in ``docs/paper_lean_docstring_exemptions.json``;
   (e) a row with exact Lean evidence still pending Comparator has no
       ``queued_at`` date.  Those rows are printed as the Comparator and
-      Palomar worklist.
+      Palomar worklist. Optional ``pending_reason`` and ``next_action``
+      strings explain an exact interface gap without conferring a replay.
 
 It also fails when the ledger no longer describes the papers: a content digest
 that does not match, a summary block whose counts differ from the rows, an
@@ -1122,8 +1123,18 @@ def worklist(ledger: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[st
             failures.append({"clause": "e", "row": row["id"], "source": row["source"],
                              "detail": "exact Lean evidence pending Comparator without a queued_at date"})
             continue
-        queued.append({"row": row["id"], "source": row["source"], "queued_at": date,
-                       "declarations": [d["name"] for d in declarations_of(row)]})
+        item = {"row": row["id"], "source": row["source"], "queued_at": date,
+                "declarations": [d["name"] for d in declarations_of(row)]}
+        for key in ("pending_reason", "next_action"):
+            if key not in comparator:
+                continue
+            value = comparator[key]
+            if not isinstance(value, str) or not value.strip():
+                failures.append({"clause": "e", "row": row["id"], "source": row["source"],
+                                 "detail": f"pending Comparator {key} must be a nonempty string"})
+            else:
+                item[key] = value
+        queued.append(item)
     return queued, failures
 
 
@@ -1332,6 +1343,9 @@ def print_report(report: Report) -> None:
         for item in report.queued:
             print(f"    queued {item['queued_at']}  {item['row']}  "
                   f"({len(item['declarations'])} declaration(s))")
+            for key in ("pending_reason", "next_action"):
+                if key in item:
+                    print(f"      {key}: {item[key]}")
 
 
 def restamped(ledger: dict[str, Any], drift: list[tuple[str, str, int]]) -> dict[str, Any]:
@@ -1392,6 +1406,10 @@ def print_rows(rows: list[dict[str, Any]]) -> None:
               + f"; palomar {row['palomar']['status']}")
         for declaration in declarations_of(row):
             print(f"    {declaration['name']}  {declaration['file']}")
+        if comparator["status"] == "pending":
+            for key in ("pending_reason", "next_action"):
+                if comparator.get(key):
+                    print(f"    {key}: {comparator[key]}")
     print(f"{len(rows)} row(s)")
 
 

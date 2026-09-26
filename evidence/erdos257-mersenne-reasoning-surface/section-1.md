@@ -71,7 +71,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-257-finite-witness-rule"></a>
 
-## Proposition 1.2, page 13
+## Proposition 1.2 (realising finite monotone witness rules), page 13
 
 The Lean declaration below states this result or one that implies it. The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\varnothing)$; the printed family $\mathcal U$ on subsets of $E$ is the case $U(S)\iff S\cap E\in\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(\mathcal P\cap E)$ reads $\mathcal P\cap E\in\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,\mathcal P}(H)<\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.
 
