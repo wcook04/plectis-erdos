@@ -8,6 +8,9 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import os
+import shutil
+import subprocess
 import tempfile
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
@@ -197,9 +200,49 @@ def main() -> int:
 
     makefile = (sync.ROOT / "paper" / "Makefile").read_text(encoding="utf-8")
     require(
-        "tectonic -o . -Z search-path=. $<" in makefile,
+        "tectonic -o . -Z search-path=. --keep-intermediates $<" in makefile,
         "nested paper sources must compile into paper/<stem>.pdf via tectonic outdir/search-path",
     )
+
+    # Exercise Make's dependency graph without requiring a TeX installation.
+    # Both a changed evidence URL and changed placement code must rebuild an
+    # otherwise current PDF; unrelated papers must remain current.
+    with tempfile.TemporaryDirectory(prefix="pdf-make-evidence-") as raw:
+        root = Path(raw)
+        paper = root / "paper"
+        paper.mkdir()
+        (paper / "Makefile").write_text(makefile)
+        stem = "erdos-68-factorial-denominator-irrationality"
+        inputs = [
+            f"paper/68/{stem}.tex", f"paper/evidence/{stem}.tex",
+            "paper/paper-evidence.tex", "paper/paper-house-style.sty",
+            "paper/problem-note-preamble.tex", "paper/module-aliases.tex",
+            "paper/archive/erdos249-257-main-paper.tex",
+            "scripts/build_paper_module_aliases.py",
+        ]
+        for relative in inputs:
+            path = root / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("fixture\n")
+            os.utime(path, (100, 100))
+        pdf = paper / f"{stem}.pdf"
+        pdf.write_bytes(b"current PDF")
+        os.utime(pdf, (200, 200))
+        command = [shutil.which("make") or "make", "-n", f"{stem}.pdf"]
+        baseline = subprocess.run(command, cwd=paper, text=True, capture_output=True)
+        require(baseline.returncode == 0 and "tectonic" not in baseline.stdout,
+                f"current PDF unexpectedly rebuilt: {baseline.stdout} {baseline.stderr}")
+        for changed in (f"evidence/{stem}.tex", "paper-evidence.tex"):
+            result = subprocess.run(command + ["-W", changed], cwd=paper,
+                                    text=True, capture_output=True)
+            require(result.returncode == 0 and "tectonic" in result.stdout,
+                    f"changed {changed} did not rebuild its PDF: {result.stdout} {result.stderr}")
+            require(f"--keep-intermediates 68/{stem}.tex" in result.stdout,
+                    "evidence dependency replaced the manuscript as the compiler input")
+        unrelated = subprocess.run(command + ["-W", "evidence/other-paper.tex"],
+                                   cwd=paper, text=True, capture_output=True)
+        require(unrelated.returncode == 0 and "tectonic" not in unrelated.stdout,
+                "unrelated evidence rebuilt this paper")
 
     print(
         "test_sync_publication_pdfs: CLI arguments fail before mutation; "

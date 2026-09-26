@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "76680ed44d018930bc9525d45d8d38bf513aa495",
-  "content_digest": "sha256:16a75deac5eab8314b38694ef56b746aad6c06c39c2cb64d6ab421651136fea6",
+  "content_digest": "sha256:85c124d60b1c76214f55ee1bf1b4d0df962799643e7a0abf392595fbd5142698",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -13,21 +13,21 @@
   "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",
   "checker": "python3 scripts/check_lean_paper_propagation.py",
   "summary": {
-    "rows": 694,
+    "rows": 695,
     "lean": {
       "exact": 508,
-      "exact_or_stronger": 140,
+      "exact_or_stronger": 141,
       "modulo_named_input": 25,
       "none": 21
     },
     "comparator": {
       "compared": 633,
       "not_applicable": 46,
-      "pending": 15
+      "pending": 16
     },
     "palomar": {
       "not_applicable": 46,
-      "pending": 15,
+      "pending": 16,
       "prepared": 633
     },
     "uncounted_rows": 0
