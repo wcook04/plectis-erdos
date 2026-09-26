@@ -17,6 +17,16 @@ formal ingredients retain their stated scope. This paper consolidates the former
 synthesis note, working record and capacity account. Their earlier versions
 remain in Git history.
 
+The paper also proves that a chosen family of positive dyadic shifts detects
+irrationality in every integer-digit recurrence, at any fixed threshold
+`0<c<τ`, exactly when the family contains a multiple of every positive
+integer. Factorial shifts work; power-of-two shifts fail on a rational orbit.
+This is an ordinary proof using a cited sharp bound of Dubickas; the
+[`1/3` transfer](../../lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean)
+is its Lean-checked starting point. Try the
+[shift-family exercise](../../research/experiments/premise_exchange/shift_family_exercise.md)
+before reading the proof.
+
 The paper is a place for insights that arise while working with the full
 corpus: connections between problems, reusable constructions, obstructions,
 new intermediate objects and questions worth investigating. A contribution
