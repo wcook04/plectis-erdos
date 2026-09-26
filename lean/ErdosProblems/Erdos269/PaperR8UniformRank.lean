@@ -17,7 +17,6 @@ The final infimum ranges over ALL finite-separated-rank matrices. It uses an
 extended nonnegative supremum so that unbounded approximants have infinite
 uniform error, never the spurious zero returned by an unbounded real iSup.
 The resulting finite value is also identified after conversion to the reals.
-All proof text is an uncompiled candidate against the packet's pinned Mathlib.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR8

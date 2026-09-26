@@ -11,10 +11,10 @@ transcendence of the specified Hecke--Mahler value, and the two identities for
 the actual series. The parameters are visible, not axioms or admitted theorems.
 
 It also proves the constant rank-one upper witness for the uniform carry
-approximation. The lower bound over every finite separated rank remains open
-as a formalisation obligation in this return.
+approximation. The matching lower bound over every finite separated rank is
+proved in `ErdosProblems.Erdos269.PaperR8UniformRank`.
 
-Validation: authored, not compiled. No admissions.
+No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

@@ -7343,7 +7343,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:62b30a66e6e9ea5f1a22c258be646c0953ef5d4030f0a7c344d5417a0efa529a",
+      "source_sha256": "sha256:1b70085a86d8631b484f6524714cdeaea0299fc9a3cf19053a31fdcb9a2bfecb",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7480,91 +7480,91 @@
           "level": 4,
           "id": "evidence.",
           "title": "Evidence.",
-          "line": 591
+          "line": 599
         },
         {
           "level": 2,
           "id": "sec:dichotomy",
           "title": "Choices against contraction",
-          "line": 597
+          "line": 605
         },
         {
           "level": 2,
           "id": "sec:bases",
           "title": "The subseries across bases",
-          "line": 619
+          "line": 627
         },
         {
           "level": 2,
           "id": "sec:base2",
           "title": "Base two",
-          "line": 664
+          "line": 686
         },
         {
           "level": 3,
           "id": "sec:lemmas",
           "title": "Removed intervals and finite translations",
-          "line": 668
+          "line": 690
         },
         {
           "level": 3,
           "id": "fixed-depth-rational-counts",
           "title": "Fixed-depth rational counts",
-          "line": 702
+          "line": 724
         },
         {
           "level": 1,
           "id": "sec:dyadic-shifts",
           "title": "Which dyadic shifts detect irrationality?",
-          "line": 738
+          "line": 760
         },
         {
           "level": 2,
           "id": "sec:polynomial-shifts",
           "title": "Polynomially selected shifts",
-          "line": 805
+          "line": 827
         },
         {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 836
+          "line": 858
         },
         {
           "level": 1,
           "id": "sec:misread",
           "title": "The computation and its limits",
-          "line": 859
+          "line": 881
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 886
+          "line": 908
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 900
+          "line": 922
         },
         {
           "level": 1,
           "id": "capacity:sec:sources",
           "title": "Sources and formal correspondence",
-          "line": 914
+          "line": 936
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Further questions",
-          "line": 932
+          "line": 954
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 1018
+          "line": 1040
         }
       ],
       "citations_rendered": 66,
@@ -7573,8 +7573,8 @@
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:5e420944fe5b07e81e20145eadd7eaf4c895f7fa9ad4bfc7e9d3511a46b07b35",
-      "pdf_byte_count": 220052,
+      "pdf_sha256": "sha256:5958eba5880f9e6f9bc8e1f4d911d1120ea3b100a665f4969f33ba7b898acbf0",
+      "pdf_byte_count": 224949,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7597,7 +7597,7 @@
           {
             "id": "sec:questions",
             "title": "Further questions",
-            "line": 932
+            "line": 954
           }
         ],
         "unresolved_count": 0
@@ -7640,12 +7640,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:6d01a38e0ce0ca5df07d0369a1e15566e400a9f60d3c2daff8dd1a69798facb2",
+      "source_sha256": "sha256:7ac81951bbec1935a5788cbddce341b1b7d6af269d14cf8005f4111a98da1bfc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 15,
+      "section_count": 16,
       "sections": [
         {
           "level": 1,
@@ -7678,70 +7678,76 @@
           "line": 106
         },
         {
+          "level": 4,
+          "id": "testing-a-proposed-measure-of-value.",
+          "title": "Testing a proposed measure of value.",
+          "line": 118
+        },
+        {
           "level": 1,
           "id": "sec:checks",
           "title": "From a proof to a public claim",
-          "line": 135
+          "line": 155
         },
         {
           "level": 1,
           "id": "sec:cycle",
           "title": "The contribution cycle",
-          "line": 157
+          "line": 177
         },
         {
           "level": 4,
           "id": "credit.",
           "title": "Credit.",
-          "line": 167
+          "line": 187
         },
         {
           "level": 2,
           "id": "sec:example",
           "title": "Worked example: Problem 1041",
-          "line": 175
+          "line": 195
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Eight problems in one repository",
-          "line": 181
+          "line": 201
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 218
+          "line": 238
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 242
+          "line": 262
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 248
+          "line": 268
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 268
+          "line": 290
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 274
+          "line": 296
         }
       ],
-      "citations_rendered": 49,
+      "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:41eb5d3a8fb37440bd38bcd69dfabd72c75cc5ce0d68582e217b6866ce5e25d7",
-      "pdf_byte_count": 129034,
+      "pdf_sha256": "sha256:5143487b9371f9dd6177dfc0d1ed15e91b1078a1d61c57b85205f231d941a47c",
+      "pdf_byte_count": 138526,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7764,12 +7770,12 @@
           {
             "id": "sec:checks",
             "title": "From a proof to a public claim",
-            "line": 135
+            "line": 155
           },
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 248
+            "line": 268
           }
         ],
         "unresolved_count": 0
@@ -7812,7 +7818,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:7d629bd4139ae382eb72aa9c77e3303846f99c832f8800b3c0c6e9c2bd9f5289",
+      "source_sha256": "sha256:89ff084d0b7d2ba36b84f7287514b5e9c7a974936c22afafd835eb0b5d6182c5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7942,8 +7948,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:bb085154793359bbd79de6dffb05b5277a61d615f6ba1eeef8eeb16e84a1b1cd",
-      "pdf_byte_count": 88652,
+      "pdf_sha256": "sha256:01e2b76032d7903b272b7c9be1b63a1b88e8e5bb7811cc6a5ea814bfaa21bd36",
+      "pdf_byte_count": 88655,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8014,7 +8020,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:35a129f690176e6aa9eed97fe0b52f971f67502bd96891a4189a5df99d961654",
+      "source_sha256": "sha256:badcff778bfef6a840bd5395c4417ea45f45321bf48f003365decdb12111bc35",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8043,181 +8049,181 @@
           "level": 2,
           "id": "what-one-clone-lets-a-contributor-do",
           "title": "What one clone lets a contributor do",
-          "line": 73
+          "line": 75
         },
         {
           "level": 1,
           "id": "sec:model",
           "title": "A production model for mathematical progress",
-          "line": 84
+          "line": 86
         },
         {
           "level": 1,
           "id": "sec:math",
           "title": "Why begin with hard mathematics",
-          "line": 128
+          "line": 130
         },
         {
           "level": 1,
           "id": "sec:object",
           "title": "The public research object",
-          "line": 147
+          "line": 149
         },
         {
           "level": 1,
           "id": "sec:protocol",
           "title": "The contribution protocol",
-          "line": 168
+          "line": 170
         },
         {
           "level": 1,
           "id": "sec:attention",
           "title": "From an agent claim to mathematical attention",
-          "line": 212
+          "line": 214
         },
         {
           "level": 1,
           "id": "sec:credit",
           "title": "Progress, provenance, and credit",
-          "line": 240
+          "line": 242
         },
         {
           "level": 2,
           "id": "record-now-trace-consequences-later",
           "title": "Record now, trace consequences later",
-          "line": 280
+          "line": 282
         },
         {
           "level": 1,
           "id": "sec:security",
           "title": "Distributed compute without distributed authority",
-          "line": 292
+          "line": 294
         },
         {
           "level": 1,
           "id": "sec:prior",
           "title": "Precedents and the missing composition",
-          "line": 308
+          "line": 310
         },
         {
           "level": 4,
           "id": "distributed-compute.",
           "title": "Distributed compute.",
-          "line": 314
+          "line": 316
         },
         {
           "level": 4,
           "id": "distributed-mathematical-insight.",
           "title": "Distributed mathematical insight.",
-          "line": 320
+          "line": 322
         },
         {
           "level": 4,
           "id": "distributed-formalisation.",
           "title": "Distributed formalisation.",
-          "line": 326
+          "line": 328
         },
         {
           "level": 4,
           "id": "multi-agent-formal-research.",
           "title": "Multi-agent formal research.",
-          "line": 332
+          "line": 334
         },
         {
           "level": 4,
           "id": "individual-research-practice.",
           "title": "Individual research practice.",
-          "line": 338
+          "line": 340
         },
         {
           "level": 4,
           "id": "open-agent-platforms.",
           "title": "Open agent platforms.",
-          "line": 344
+          "line": 346
         },
         {
           "level": 4,
           "id": "semi-autonomous-discovery-on-the-erd\u0151s-problems.",
           "title": "Semi-autonomous discovery on the Erd\u0151s problems.",
-          "line": 352
+          "line": 354
         },
         {
           "level": 4,
           "id": "proof-abundance.",
           "title": "Proof abundance.",
-          "line": 360
+          "line": 362
         },
         {
           "level": 1,
           "id": "sec:add-problem",
           "title": "Adding another problem world",
-          "line": 368
+          "line": 370
         },
         {
           "level": 1,
           "id": "sec:growth",
           "title": "Participation and growth",
-          "line": 386
+          "line": 388
         },
         {
           "level": 1,
           "id": "sec:evaluation",
           "title": "Evaluation",
-          "line": 408
+          "line": 410
         },
         {
           "level": 1,
           "id": "sec:learning",
           "title": "Learning from every run",
-          "line": 444
+          "line": 446
         },
         {
           "level": 2,
           "id": "sec:local-to-general",
           "title": "The local-to-general track",
-          "line": 486
+          "line": 488
         },
         {
           "level": 1,
           "id": "sec:science",
           "title": "A bounded transfer hypothesis beyond mathematics",
-          "line": 521
+          "line": 523
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and governance",
-          "line": 531
+          "line": 533
         },
         {
           "level": 1,
           "id": "sec:execution",
           "title": "The next decision and its dependencies",
-          "line": 555
+          "line": 557
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 565
+          "line": 567
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 575
+          "line": 577
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 611
+          "line": 613
         }
       ],
-      "citations_rendered": 38,
+      "citations_rendered": 39,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:4159374e00fcfbace38a62143e350cc3077bfdcd6941fe4351ea7d775b490495",
-      "pdf_byte_count": 160573,
+      "pdf_sha256": "sha256:a5366d3ff3f570a1a5420703f256dc40829551bc8907a51928ccca548f523f13",
+      "pdf_byte_count": 163253,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8230,22 +8236,22 @@
           {
             "id": "sec:protocol",
             "title": "The contribution protocol",
-            "line": 168
+            "line": 170
           },
           {
             "id": "sec:attention",
             "title": "From an agent claim to mathematical attention",
-            "line": 212
+            "line": 214
           },
           {
             "id": "sec:local-to-general",
             "title": "The local-to-general track",
-            "line": 486
+            "line": 488
           },
           {
             "id": "sec:limits",
             "title": "Limits and governance",
-            "line": 531
+            "line": 533
           }
         ],
         "unresolved_count": 0
