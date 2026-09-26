@@ -28,8 +28,9 @@ This builder adds, per paper:
     the summary block records where.
 
 ``doi`` and ``doi_absence_reason``
-    ``null`` and ``no_archival_deposit_yet``. Nothing here is deposited in an
-    archive that mints identifiers, so there is no identifier to record.
+    No DOI is recorded. A versioned archive deposit may have its own non-DOI
+    identifier; the hand-authored ``archive_versions.json`` owns those records.
+    Their source and PDF digests distinguish a frozen edition from current work.
 
 ``preferred_citation``
     Assembled only from fields the corpus already carries: the manuscript title,
@@ -69,9 +70,11 @@ from typing import Any
 CORPUS_REL = "docs/papers/corpus.json"
 CITATION_REL = "CITATION.cff"
 BUILDER_REL = "docs/papers/build_publication_taxonomy.py"
+ARCHIVE_REL = "docs/papers/archive_versions.json"
 
 PEER_REVIEW_STATE = "not_externally_reviewed"
 DOI_ABSENCE_REASON = "no_archival_deposit_yet"
+ARCHIVED_DOI_ABSENCE_REASON = "archival_identifier_is_not_a_doi"
 
 PUBLICATION_CLASSES = {
     "problem_paper": (
@@ -98,8 +101,8 @@ PUBLICATION_CLASSES = {
 
 MANUSCRIPT_STATUSES = {
     "technical_report": (
-        "A self-contained report released by its author. Not a submission to a "
-        "venue and not a record of one."
+        "A self-contained report released by its author. Frozen archive "
+        "editions, when present, are recorded separately."
     ),
     "working_research_record": (
         "A record of an investigation that is still open, expected to change "
@@ -143,6 +146,7 @@ NEW_PAPER_KEYS = (
     "doi",
     "doi_absence_reason",
     "preferred_citation",
+    "archived_versions",
 )
 
 COPYRIGHT_RE = re.compile(r"^\s*(?P<year>\d{4})\s+(?P<holder>.+?)\s*$")
@@ -150,6 +154,69 @@ COPYRIGHT_RE = re.compile(r"^\s*(?P<year>\d{4})\s+(?P<holder>.+?)\s*$")
 
 class TaxonomyError(RuntimeError):
     """A paper the ordered rules do not cover, or corpus data that is missing."""
+
+
+def archive_version_errors(version: dict[str, Any]) -> list[str]:
+    """Validate an immutable aiXiv edition without inferring review or currency."""
+    errors = []
+    identifier = version.get("identifier", "")
+    number = version.get("version")
+    if not isinstance(identifier, str) or not re.fullmatch(r"aiXiv:\d{4}\.\d{5}", identifier):
+        errors.append("archive identifier must be an aiXiv identifier")
+    if type(number) is not int or number < 1:
+        errors.append("archive version must be a positive integer")
+    record_id = str(identifier).removeprefix("aiXiv:")
+    expected = {
+        "url": f"https://aixiv.online/abs/{record_id}v{number}",
+        "pdf_url": f"https://aixiv.online/pdf/{record_id}v{number}",
+        "source_url": f"https://aixiv.online/src/{record_id}v{number}",
+    }
+    for key, value in expected.items():
+        if version.get(key) != value:
+            errors.append(f"{key} must address the declared archive version")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(version.get("source_commit", ""))):
+        errors.append("archive source_commit must be a full Git commit")
+    for key in ("source_sha256", "pdf_sha256", "source_archive_sha256"):
+        if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(version.get(key, ""))):
+            errors.append(f"archive {key} must be a SHA-256 digest")
+    if version.get("peer_review_state") != PEER_REVIEW_STATE:
+        errors.append("archive deposit must preserve the recorded review boundary")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(version.get("published", ""))):
+        errors.append("archive publication date must be YYYY-MM-DD")
+    return errors
+
+
+def archive_relation(paper: dict[str, Any], version: dict[str, Any]) -> str:
+    return ("same_source_and_pdf" if all(
+        paper.get(key) == version.get(key) for key in ("source_sha256", "pdf_sha256")
+    ) else "different_source_or_pdf")
+
+
+def _archive_versions(root: Path, papers: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    path = root / ARCHIVE_REL
+    if not path.exists():
+        return {}
+    source = json.loads(path.read_text(encoding="utf-8"))
+    if source.get("schema") != "paper_archive_versions/1":
+        raise TaxonomyError(f"{ARCHIVE_REL}: unknown schema")
+    versions = source.get("papers", {})
+    if not isinstance(versions, dict) or set(versions) - {p["paper_id"] for p in papers}:
+        raise TaxonomyError(f"{ARCHIVE_REL}: unknown paper identifiers")
+    for paper_id, rows in versions.items():
+        if not isinstance(rows, list) or not rows:
+            raise TaxonomyError(f"{paper_id}: archive versions must be a nonempty list")
+        seen = set()
+        for row in rows:
+            if not isinstance(row, dict):
+                raise TaxonomyError(f"{paper_id}: archive version must be an object")
+            errors = archive_version_errors(row)
+            identity = (row.get("identifier"), row.get("version"))
+            if identity in seen:
+                errors.append("duplicate archive version")
+            seen.add(identity)
+            if errors:
+                raise TaxonomyError(f"{paper_id}: {'; '.join(errors)}")
+    return versions
 
 
 def _classify(paper: dict[str, Any]) -> tuple[str, str]:
@@ -381,11 +448,14 @@ def _summary(records: list[dict[str, Any]], root: Path) -> dict[str, Any]:
         },
         "archival_deposit": {
             "papers_with_doi": 0,
-            "doi_absence_reason": DOI_ABSENCE_REASON,
+            "papers_with_archived_versions": sum(bool(p.get("archived_versions")) for p in records),
+            "source": ARCHIVE_REL,
+            "doi_absence_reason": "no_doi_recorded",
             "statement": (
-                "No manuscript here is deposited in an archive that mints "
-                "persistent identifiers, so no paper carries a DOI. A citation "
-                "pins the manuscript by its canonical source commit instead."
+                "Versioned archive deposits are listed separately from the current "
+                "manuscripts. An aiXiv identifier is not a DOI, and deposit does "
+                "not establish external mathematical review. Compare the recorded "
+                "source and PDF digests before treating an edition as current."
             ),
         },
         "repository_citation_metadata": _read_citation_cff(root),
@@ -395,7 +465,7 @@ def _summary(records: list[dict[str, Any]], root: Path) -> dict[str, Any]:
     return summary
 
 
-def _project_paper(paper: dict[str, Any]) -> dict[str, Any]:
+def _project_paper(paper: dict[str, Any], archives: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     """Return the paper with the taxonomy keys added after publication_state.
 
     Existing keys keep their order and their values. Re-running replaces the
@@ -409,9 +479,14 @@ def _project_paper(paper: dict[str, Any]) -> dict[str, Any]:
         "manuscript_status": _manuscript_status(paper, publication_class),
         "peer_review_state": PEER_REVIEW_STATE,
         "doi": None,
-        "doi_absence_reason": DOI_ABSENCE_REASON,
+        "doi_absence_reason": ARCHIVED_DOI_ABSENCE_REASON if archives else DOI_ABSENCE_REASON,
         "preferred_citation": _preferred_citation(paper),
     }
+    if archives:
+        projected["archived_versions"] = [
+            {**version, "relation_to_current_manuscript": archive_relation(paper, version)}
+            for version in archives
+        ]
 
     rebuilt: dict[str, Any] = {}
     for key, value in paper.items():
@@ -438,8 +513,9 @@ def _is_unavailable(paper: dict[str, Any]) -> bool:
 
 
 def build(corpus: dict[str, Any], root: Path) -> dict[str, Any]:
+    archives = _archive_versions(root, corpus.get("papers", []))
     papers = [
-        paper if _is_unavailable(paper) else _project_paper(paper)
+        paper if _is_unavailable(paper) else _project_paper(paper, archives.get(paper["paper_id"]))
         for paper in corpus.get("papers", [])
     ]
     summary = _summary([paper for paper in papers if not _is_unavailable(paper)], root)

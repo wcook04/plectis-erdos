@@ -326,6 +326,11 @@ Start here (selected for this guide): [The tail recurrence and the exact criteri
 
 [full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 26 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
+Archived edition: [aiXiv:2609.02921v1](https://aixiv.online/abs/2609.02921v1) ([PDF](https://aixiv.online/pdf/2609.02921v1), [source archive](https://aixiv.online/src/2609.02921v1)); published 2026-09-25 from [source `2945372c6d30`](https://github.com/wcook04/plectis-erdos/blob/2945372c6d306dc8c5bf62c95dfd8bc2939c650d/paper/257/erdos-257-mersenne-support-subseries.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
 Start here (selected for this guide): [Introduction and main results](full-text/erdos-257-mersenne-support-subseries.md#sec:problem), [Reciprocal-summable supports at every integer base](full-text/erdos-257-mersenne-support-subseries.md#sec:reciprocal-support), [Extensions beyond reciprocal summability](full-text/erdos-257-mersenne-support-subseries.md#sec:eight-return-extensions), [Further questions](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
 ### What weighted and cover criteria prove hereditary Mersenne irrationality for Erdős #257, and which targets remain open?

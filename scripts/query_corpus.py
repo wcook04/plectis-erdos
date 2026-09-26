@@ -10264,6 +10264,7 @@ def paper_reading_guide_packet() -> dict[str, Any]:
                 "publication_state": row["publication_state"],
                 "manuscript_status": row["manuscript_status"],
                 "peer_review_state": row["peer_review_state"],
+                "archived_versions": row.get("archived_versions", []),
                 "preferred_read_path": preferred_read_path,
                 "full_text_available_in_checkout": full_text_available,
                 "pdf_available_in_checkout": pdf_available,
