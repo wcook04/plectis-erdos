@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import io
 import tempfile
+from contextlib import redirect_stderr
 from pathlib import Path
 
 from pypdf import PdfWriter
@@ -138,6 +139,14 @@ def test_dagger_mark_declaration_parses() -> None:
                        "https://a/b.md\\#res-x-comparator")], f"a dagger mark did not parse: {found}")
 
 
+def test_unknown_paper_id_cannot_pass_without_checks() -> None:
+    error = io.StringIO()
+    with redirect_stderr(error):
+        result = check.main(["--paper", "not-an-evidence-mark-paper"])
+    require(result == 2 and "unknown evidence-mark paper ID" in error.getvalue(),
+            "an unknown paper selection passed without checking any PDF")
+
+
 def main() -> int:
     tests = [
         test_sound_page_passes,
@@ -149,6 +158,7 @@ def main() -> int:
         test_workflow_run_link_fails,
         test_paper_longer_than_baseline_fails,
         test_dagger_mark_declaration_parses,
+        test_unknown_paper_id_cannot_pass_without_checks,
     ]
     for test in tests:
         test()

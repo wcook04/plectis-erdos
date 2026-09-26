@@ -249,4 +249,10 @@ python3 scripts/check_release.py
 
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus
-checks; do not regenerate authored prose mechanically.
+checks; do not regenerate authored prose mechanically. For a native TeX edit,
+build the changed PDF and run `scripts/sync_publication_pdfs.py` before
+`docs/papers/refresh_paper_corpus.py --write`: the corpus records the PDF
+digest as well as the manuscript text. Then restamp the source/PDF pair through
+`check_publication_contract.py --restamp --apply`, reanchor any moved source
+attributions, refresh projections, and run the release check. A corpus refresh
+done before PDF synchronization must be repeated afterward.
