@@ -1197,7 +1197,9 @@ def exportAll : Elab.TermElabM Unit := do
   -- A used consequence always has a producer (the lemma at its use site
   -- proves it from the hypothesis), so it is a leaf whatever the search found,
   -- and it goes first: a consequence the battery proves makes a conditional
-  -- theorem unconditional.
+  -- theorem unconditional. Consequences get their own time (half the
+  -- used-consequence budget), and the ordinary leaves keep the whole battery
+  -- budget, counted from the first ordinary leaf.
   let mut leaves : Array (Nat × Expr) := #[]
   for (statement, _) in state.queue.extract 0 cursor do
     let key := keyOf statement
@@ -1206,13 +1208,25 @@ def exportAll : Elab.TermElabM Unit := do
     else unless hasProducer.contains key do
       leaves := leaves.push (consumerCount.getD key 0, statement)
   leaves := leaves.qsort (fun a b => a.1 > b.1)
+  let consequenceBudgetMs := cfg.weakenBudgetMs / 2
   let mut batteryTried := 0
+  let mut batteryConsequences := 0
   let mut batteryClosed := 0
   let mut batteryRefuted := 0
   let mut batteryDone : Std.HashSet String := {}
+  let mut triedKeys : Std.HashSet String := {}
+  let mut ordinaryStart? : Option Nat := none
   for (_, statement) in leaves do
-    if (← IO.monoMsNow) - batteryStart > cfg.batteryBudgetMs then break
+    let key := keyOf statement
+    let now ← IO.monoMsNow
+    if consequenceKeys.contains key then
+      if now - batteryStart > consequenceBudgetMs then continue
+      batteryConsequences := batteryConsequences + 1
+    else
+      if ordinaryStart?.isNone then ordinaryStart? := some now
+      if now - ordinaryStart?.getD now > cfg.batteryBudgetMs then break
     batteryTried := batteryTried + 1
+    triedKeys := triedKeys.insert key
     if let some label ← tryBattery cfg env statement then
       batteryClosed := batteryClosed + 1
       batteryDone := batteryDone.insert (keyOf statement)
@@ -1227,13 +1241,26 @@ def exportAll : Elab.TermElabM Unit := do
         ("tactic", toJson label), ("kernel_checked", toJson true)]
   -- Library search on the most-consumed leaves the battery left open: a leaf
   -- that is a single library lemma is not an open question.
+  -- Used consequences first again, with half the leaves and half the time of
+  -- their own; the ordinary leaves keep the whole allowance.
   let deepStart ← IO.monoMsNow
   let mut deepTried := 0
+  let mut deepConsequences := 0
+  let mut deepOrdinary := 0
   let mut deepClosed := 0
-  for (_, statement) in (leaves.extract 0 (min leaves.size (batteryTried))) do
-    if deepTried ≥ cfg.deepLeaves then break
-    if (← IO.monoMsNow) - deepStart > cfg.deepBudgetMs then break
-    if batteryDone.contains (keyOf statement) then continue
+  let mut ordinaryDeepStart? : Option Nat := none
+  for (_, statement) in leaves do
+    let key := keyOf statement
+    unless triedKeys.contains key do continue
+    if batteryDone.contains key then continue
+    let now ← IO.monoMsNow
+    if consequenceKeys.contains key then
+      if deepConsequences ≥ cfg.deepLeaves / 2 || now - deepStart > cfg.deepBudgetMs / 2 then continue
+      deepConsequences := deepConsequences + 1
+    else
+      if ordinaryDeepStart?.isNone then ordinaryDeepStart? := some now
+      if deepOrdinary ≥ cfg.deepLeaves || now - ordinaryDeepStart?.getD now > cfg.deepBudgetMs then break
+      deepOrdinary := deepOrdinary + 1
     deepTried := deepTried + 1
     if let some label ← tryBattery cfg env statement ["exact?"] then
       deepClosed := deepClosed + 1
@@ -1244,9 +1271,11 @@ def exportAll : Elab.TermElabM Unit := do
     ("record", "summary"), ("theorems", toJson theoremCount),
     ("battery_leaves", toJson leaves.size),
     ("battery_tried", toJson batteryTried),
+    ("battery_consequences_tried", toJson batteryConsequences),
     ("battery_closed", toJson batteryClosed),
     ("battery_refuted", toJson batteryRefuted),
     ("library_search_tried", toJson deepTried),
+    ("library_search_consequences_tried", toJson deepConsequences),
     ("library_search_closed", toJson deepClosed),
     ("compositions", toJson compositions),
     ("kernel_checked_compositions", toJson checkedCompositions),

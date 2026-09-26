@@ -56,8 +56,10 @@ export makes six passes.
    (`weakening` rows). The weakened theorem is a producer in the search like
    any corpus theorem. Each consequence is a statement: it is searched and
    refutation-searched, and it goes to the tactic battery and library search
-   ahead of the other leaves, because the lemma at its use site always gives
-   it a producer from `H`.
+   whatever producers the search found for it (the lemma at its use site
+   always gives it one, from `H`). The consequences go first, with half the
+   pass's budget as time of their own in each of the two, so the other leaves
+   keep their whole allowance.
 3. **Producer and refutation search**, in parallel waves. For every closed
    statement it searches the corpus for theorems whose conclusion unifies with
    it. It introduces the statement's own binders first, reads a proved
