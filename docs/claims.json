@@ -1046,7 +1046,9 @@
             "res:reciprocal-support",
             "res:weighted-support",
             "thm:variable-fractional-cover",
-            "res:mixed-supports"
+            "res:mixed-supports",
+            "res:weighted-cover-incomparability",
+            "res:strict-mixed-supports"
           ]
         },
         {
@@ -20824,7 +20826,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1067
+        "line": 1183
       }
     },
     {
@@ -20956,7 +20958,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1083
+        "line": 1199
       }
     },
     {
@@ -20968,7 +20970,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1092
+        "line": 1208
       }
     },
     {
@@ -20980,7 +20982,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1103
+        "line": 1219
       }
     }
   ],

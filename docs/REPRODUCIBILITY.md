@@ -326,19 +326,23 @@ check; the checker does not rebuild or download dependencies.
 ## 3. Run the release-surface checks
 
 The release checks inspect claim records, links, generated files, licences and
-other published metadata. Install their Python dependencies in a local virtual
-environment first. CI uses Python 3.12.9 with this hash-pinned requirements file.
+other published metadata. From a cold checkout, this entry selects Python
+3.12, creates an ignored environment under `.lake/`, installs the committed
+hash-pinned release dependencies if needed, and builds the Lean import used by
+the proof-state pilot before running the existing gate:
 
 ```sh
-python3 -m venv .venv
-. .venv/bin/activate
-python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
-  --requirement scripts/requirements-release.txt
-python3 scripts/check_release.py
+python3 scripts/run_release_check.py
 ```
 
-The release check runs for several minutes and prints only its final
-summary; it has not stalled. The Lean build and this Python check answer separate questions. A publication
+Install Python 3.12 and Elan first; the pinned Lean version comes from
+`lean-toolchain`. CI uses Python 3.12.9 and may run
+`python3 scripts/check_release.py` directly because its dependency and Lean
+preparation steps have already run. The wrapper's `--prepare-only` option
+checks those prerequisites without starting the full gate. A missing import
+artifact or failed hash-checked installation stops during preparation; it
+cannot appear as a passing proof-state control. The release check runs for
+several minutes and prints only its final summary. The Lean build and this Python check answer separate questions. A publication
 also needs its selected external verification receipts, described in
 [the verification guide](verification/README.md). A successful static check
 alone is not the complete release decision.
