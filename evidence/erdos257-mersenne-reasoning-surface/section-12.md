@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="prop-cpgs-equiv"></a>
 
-## Proposition 12.3 (Infinitely many positive skips are equivalent to half-membership), page 131
+## Proposition 12.3 (Infinitely many positive skips are equivalent to half-membership), page 130
 
 > *Define
 > ``` math
@@ -18,7 +18,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44)
 
 ```lean
 theorem paper_cpgs_equiv :
@@ -53,7 +53,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-strip-equiv"></a>
 
-## Proposition 12.4 (Terminal carry bounds are equivalent to half-membership), page 132
+## Proposition 12.4 (Terminal carry bounds are equivalent to half-membership), page 131
 
 > *Consider finite sets $`D\subseteq\{2,\ldots,M\}`$ at arbitrarily large depths $`M`$ with
 > ``` math
@@ -63,7 +63,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L130)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L130)
 
 ```lean
 theorem paper_terminal_strip_equiv :
@@ -77,7 +77,7 @@ theorem paper_terminal_strip_equiv :
         ↔ (1 / 2 : ℝ) ∈ mersenneAchievementSet)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_relaxed_constant_six_every_depth`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L112)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_relaxed_constant_six_every_depth`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L112)
 
 ```lean
 theorem paper_relaxed_constant_six_every_depth

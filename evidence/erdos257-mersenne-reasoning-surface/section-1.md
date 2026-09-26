@@ -31,13 +31,13 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declarations below together state this result or one that implies it. The first conjunct of the Lean claim and the displacement statement are the printed irrationality of $X_A(b)$ and the cofinal returns $0<\Delta_{b,A}(m)<\varepsilon$; the Lean claim adds a second conjunct, that if a set $H\subseteq\mathbb N_{>0}$ has finite weighted mass at $b=2$, then $X_A(b)$ is irrational for every $b\ge2$ and every infinite $A\subseteq H$.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120)
+1. [`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120)
 
 ```lean
 theorem divisibilityWeightedClaim : DivisibilityWeightedClaim
 ```
 
-where [`DivisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L75) is
+where [`DivisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61) is
 
 ```lean
 def DivisibilityWeightedClaim : Prop :=
@@ -48,7 +48,7 @@ def DivisibilityWeightedClaim : Prop :=
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L100)
+2. [`ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L100)
 
 ```lean
 theorem weighted_displacement_cofinal_close_return
@@ -71,11 +71,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-257-finite-witness-rule"></a>
 
-## Proposition 1.2, page 13
+## Proposition 1.2 (realising finite monotone witness rules), page 13
 
 The Lean declaration below states this result or one that implies it. The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\varnothing)$; the printed family $\mathcal U$ on subsets of $E$ is the case $U(S)\iff S\cap E\in\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(\mathcal P\cap E)$ reads $\mathcal P\cap E\in\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,\mathcal P}(H)<\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.
 
-[`ErdosProblems.Erdos257.finite_monotone_witness_rule_realised`](https://github.com/wcook04/plectis-erdos/blob/7f3dbf0947c387335ffd392b689eea5721017d84/lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean#L39)
+[`ErdosProblems.Erdos257.finite_monotone_witness_rule_realised`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean#L39)
 
 ```lean
 theorem finite_monotone_witness_rule_realised
@@ -113,13 +113,13 @@ theorem finite_monotone_witness_rule_realised
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, with $F_j\subseteq\Npos$ written as $0\notin F_j$ and the index $j\ge1$ shifted to start at $0$. Lean assumes each $C_j$ finite, which the printed summability hypothesis already implies.
 
-[`ErdosProblems.Erdos257.PaperCompleteR8.strengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241)
+[`ErdosProblems.Erdos257.PaperCompleteR8.strengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241)
 
 ```lean
 theorem strengthenedPositiveCoverClaim : StrengthenedPositiveCoverClaim
 ```
 
-where [`StrengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L67) is
+where [`StrengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L53) is
 
 ```lean
 def StrengthenedPositiveCoverClaim : Prop :=
@@ -146,13 +146,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying the summability condition of the cover theorem, with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126)
+1. [`ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126)
 
 ```lean
 theorem mixedSupportClaim : MixedSupportClaim
 ```
 
-where [`MixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L85) is
+where [`MixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L71) is
 
 ```lean
 def MixedSupportClaim : Prop :=
@@ -162,7 +162,7 @@ def MixedSupportClaim : Prop :=
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L101)
+2. [`ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L101)
 
 ```lean
 theorem arbitraryWeightMixedSupport_allBase_hereditary
@@ -185,13 +185,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-geometry"></a>
 
-## Theorem 1.8 (Achievement-set geometry), page 21
+## Theorem 1.7 (Achievement-set geometry), page 20
 
 > *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR20.paper_achievement_geometry`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean#L40)
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_achievement_geometry`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean#L40)
 
 ```lean
 theorem paper_achievement_geometry :
@@ -216,13 +216,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-supported-dichotomy"></a>
 
-## Theorem 1.9 (Support-restricted refinement), page 21
+## Theorem 1.8 (Support-restricted refinement), page 20
 
 > *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
 The Lean declarations below together state this result or one that implies it. The four Lean statements give the printed claims with the same zero-based coordinates: measure $2^{-|\N\smallsetminus J|}$ when $\N\smallsetminus J$ is finite, measure $0$ when it is infinite, injectivity of the coding map for every $J$, and perfectness for infinite $J$.
 
-1. [`ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L397)
+1. [`ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L397)
 
 ```lean
 theorem volume_supportedMersenneAchievementSet_dichotomy (J : Set ℕ) :
@@ -234,7 +234,7 @@ theorem volume_supportedMersenneAchievementSet_dichotomy (J : Set ℕ) :
         volume (supportedMersenneAchievementSet J) = 0)
 ```
 
-2. [`ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L368)
+2. [`ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L368)
 
 ```lean
 theorem volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
@@ -242,7 +242,7 @@ theorem volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
     volume (supportedMersenneAchievementSet J) = 0
 ```
 
-3. [`ErdosProblems.Erdos257.perfect_supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L167)
+3. [`ErdosProblems.Erdos257.perfect_supportedMersenneAchievementSet`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L167)
 
 ```lean
 theorem perfect_supportedMersenneAchievementSet
@@ -250,7 +250,7 @@ theorem perfect_supportedMersenneAchievementSet
     Perfect (supportedMersenneAchievementSet J)
 ```
 
-4. [`ErdosProblems.Erdos257.supportedMersenneDigitValue_injective`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L54)
+4. [`ErdosProblems.Erdos257.supportedMersenneDigitValue_injective`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L54)
 
 ```lean
 theorem supportedMersenneDigitValue_injective (J : Set ℕ) :
@@ -272,7 +272,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-greedy-survival"></a>
 
-## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 22
+## Theorem 1.10 (Membership equals greedy survival; the fatal-gap dichotomy), page 21
 
 > *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
 > ``` math
@@ -283,7 +283,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR20.paper_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean#L183)
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean#L183)
 
 ```lean
 theorem paper_greedy_survival :
