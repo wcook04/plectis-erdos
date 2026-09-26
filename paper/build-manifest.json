@@ -195,27 +195,27 @@
     },
     "erdos_68_note": {
       "inputs": {
-        "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:bcaa11aead316cd70078553d0f89f49c438143eb9f846adf2ad0a0496c9db34f",
+        "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:260525ba1e5a4b98ca0b951ebf35f36dd7cef3d42ae0ce39a5666abd33dd7f1f",
         "paper/evidence/erdos-68-factorial-denominator-irrationality.tex": "sha256:9cf6b25c5701093c1d78ab871cfe7889211783c3b535a66fe26afc6905aca765",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:8d69dfda5d627484af1a9b46a1a06a6e047cd5930a561f3476d445f46b375d26",
+      "rendered_content_digest": "sha256:4e0706cade2867001edd645156be3170149709c27fe90402b50465ecf3ade082",
       "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "storage_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf"
     },
     "erdos_68_reasoning_record": {
       "inputs": {
-        "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:494b2dcd820eba2c10044d2e8a0d0fe70e8a49bc267cfaa9cf14f98de1a6f61d",
+        "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:9c7466de76bfd6c91fcd05522c23c63e9549652f7da01385269c4253cc85d1b8",
         "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:8007fd950b74568c5f62ab0a763319e69261b8f7222f9d6133a1b0371ef86434",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:96d018ae8034666f13ca3f1b0264921c6238ca07ad1c450023bf2524d01af507",
+      "rendered_content_digest": "sha256:6fba0036b9d67d1ad5140c6641a1aa6e5dc75eba023ff22c9967cd6e4b179cee",
       "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },

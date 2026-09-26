@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `5bbd497d9badb2f1`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `e2d936ce39c9b991`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1815,7 +1815,7 @@ The unconditional correction <a href="#erdos-68-factorial-denominator-irrational
 
 ### Acknowledgements
 
-The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper. The depth-four dual congruence and shorter vectors in this revision arose in an AI-assisted research continuation. An independent AI pass checked their arithmetic and proof. They build on the factorial-channel definitions and general moment-ideal theory developed earlier in this paper.
+The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper. An AI research pass supplied by Will Cook derived the depth-four dual congruence and shorter vectors from the factorial-channel definitions and general moment-ideal theory developed earlier here. OpenAI Codex checked and integrated them; a separate AI pass reviewed the proof.
 
 <div class="thebibliography">
 

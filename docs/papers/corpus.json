@@ -1183,7 +1183,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:bcaa11aead316cd70078553d0f89f49c438143eb9f846adf2ad0a0496c9db34f",
+      "source_sha256": "sha256:260525ba1e5a4b98ca0b951ebf35f36dd7cef3d42ae0ce39a5666abd33dd7f1f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1365,8 +1365,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:8d69dfda5d627484af1a9b46a1a06a6e047cd5930a561f3476d445f46b375d26",
-      "pdf_byte_count": 134966,
+      "pdf_sha256": "sha256:4e0706cade2867001edd645156be3170149709c27fe90402b50465ecf3ade082",
+      "pdf_byte_count": 134924,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1432,7 +1432,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
       "local_source": "paper/68/erdos68-factorial-reasoning-surface.tex",
-      "source_sha256": "sha256:494b2dcd820eba2c10044d2e8a0d0fe70e8a49bc267cfaa9cf14f98de1a6f61d",
+      "source_sha256": "sha256:9c7466de76bfd6c91fcd05522c23c63e9549652f7da01385269c4253cc85d1b8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1680,8 +1680,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:96d018ae8034666f13ca3f1b0264921c6238ca07ad1c450023bf2524d01af507",
-      "pdf_byte_count": 301024,
+      "pdf_sha256": "sha256:6fba0036b9d67d1ad5140c6641a1aa6e5dc75eba023ff22c9967cd6e4b179cee",
+      "pdf_byte_count": 300996,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
