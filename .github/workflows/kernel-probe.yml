@@ -1,0 +1,153 @@
+name: Kernel probe with dependency-index export
+
+# Export branch for pull request branch claude/erdos257-terminalhalf-iff-20260926.
+#
+# lean.yml runs its build job only after release-surfaces passes, and the
+# release gate rejects a committed dependency index that predates the Lean
+# tree.  A pull request that changes Lean therefore cannot obtain the
+# lean-dependency-index-fresh artifact from its own Lean CI.  This branch holds
+# the pull request's tree at the formal-source checkpoint commit plus this
+# workflow, which runs the same build wrapper and the same exporter command as
+# lean.yml's build job and uploads the same three files.  The exported receipt
+# records its input fingerprint; build_lean_dependency_index.py --check in the
+# pull request's own build job accepts it only when that fingerprint equals the
+# fingerprint of the pull request's tree.
+#
+# Restore-only cache, like the probe workflow, so this run never evicts main's
+# `.lake`.
+
+on:
+  push:
+    branches:
+      - "claude/kernel-probe-*"
+    paths:
+      - ".github/workflows/kernel-probe.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: kernel-probe-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    env:
+      GIT_CONFIG_NOSYSTEM: "1"
+      GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
+      GIT_OPTIONAL_LOCKS: "0"
+      GIT_NO_REPLACE_OBJECTS: "1"
+      GIT_NAMESPACE: ""
+      GIT_REPLACE_REF_BASE: ""
+      GIT_PAGER: cat
+      GIT_TERMINAL_PROMPT: "0"
+      GIT_ASKPASS: /bin/false
+      GIT_TRACE2: ""
+      GIT_TRACE2_EVENT: ""
+      GIT_TRACE2_PERF: ""
+      PYTHONHOME: ""
+      PYTHONPATH: ""
+      PYTHONSTARTUP: ""
+      PYTHONUSERBASE: ""
+      PYTHONBREAKPOINT: ""
+      PYTHONWARNINGS: ""
+      PYTHONOPTIMIZE: ""
+      PATH: /usr/local/bin:/usr/bin:/bin
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      LANGUAGE: C.UTF-8
+      PYTHONHASHSEED: "0"
+      PYTHONNOUSERSITE: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - name: Install the pinned Python runtime
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.9"
+      - name: Restore project Lean cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: |
+            lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+            lake-coverage-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+      - name: Install pinned Lean toolchain
+        env:
+          ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
+          ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/elan-x86_64-unknown-linux-gnu.tar.gz"
+          installer_dir="$RUNNER_TEMP/elan-installer"
+          mkdir -p "$installer_dir"
+          curl --fail --location --proto '=https' --tlsv1.2 \
+            --retry 5 --retry-all-errors --retry-delay 10 \
+            --output "$archive" "$ELAN_ARCHIVE_URL"
+          printf '%s  %s\n' "$ELAN_ARCHIVE_SHA256" "$archive" | sha256sum --check -
+          tar --extract --gzip --file "$archive" --directory "$installer_dir"
+          "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
+          "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned dependency build artifacts
+        run: lake exe cache get
+      - name: Memory-bounded Lean build of the corpus roots
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
+      - name: Verify elaborated dependency index
+        id: dependency-index
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          if python3 scripts/build_lean_dependency_index.py --check; then
+            exit 0
+          fi
+          python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale
+      - name: Upload the fresh dependency index
+        if: steps.dependency-index.outputs.fresh_export_written == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-fresh-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
+          path: |
+            docs/lean_dependency_index.json
+            docs/lean_dependency_index_check.json
+            .lake/aiw/lean_dependency_index_outcome.json
+          if-no-files-found: error
+      - name: Upload dependency-index diagnostics
+        if: >-
+          always() &&
+          steps.dependency-index.outcome != 'success' &&
+          steps.dependency-index.outputs.fresh_export_written != 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-diagnostics-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
+          path: |
+            .lake/aiw/lean_dependency_index_outcome.json
+            .lake/aiw/lean_dependency_export_diagnostics.log
+          if-no-files-found: warn
+      # Elaborate the two landed files as they stand in the tree: the coverage
+      # module is outside the supported roots, so this is its compile here.
+      - name: Elaborate the landed modules and print their axioms
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/landed-axioms"
+          lake env lean lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean \
+            | tee "$RUNNER_TEMP/landed-axioms/TerminalSetCorrespondence.log"
+          lake env lean lean/Erdos249257/ExactRowRigidity.lean \
+            | tee "$RUNNER_TEMP/landed-axioms/ExactRowRigidity.log"
+      - name: Upload the axiom reports
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: landed-axioms-${{ github.sha }}
+          path: ${{ runner.temp }}/landed-axioms
+          if-no-files-found: warn
