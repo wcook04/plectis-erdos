@@ -18,10 +18,15 @@
 % source links below remain pinned to their own immutable revisions.
 \renewcommand{\commit}{ee650b32b8b2cb98b94e5500df5370d85f7403b8}
 \renewcommand{\commitshort}{ee650b32b8b2}
+% The distinct-height programs, at the commit that added them, and the Lean
+% proof of the {2,3,5} theorem, at the commit that added it.
+\newcommand{\distinctheighturl}{https://github.com/wcook04/plectis-erdos/tree/10178c4df40cb27d83b5ebb1ec337dd588b82998/research/experiments/erdos269/distinct_height}
+\newcommand{\distinctheightlean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean}
+\newcommand{\distinctheightblocklean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean}
 \hypersetup{
   pdftitle={The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic (Erdős Problem 269)},
   pdfsubject={Erdős Problem Notes: Problem 269},
-  pdfkeywords={transcendence, Hecke-Mahler values, least common multiple, smooth numbers, lattice sums, Lean 4},
+  pdfkeywords={irrationality, transcendence, Hecke-Mahler values, least common multiple, smooth numbers, Cantor series, lattice sums, Lean 4},
 }
 
 % The three pure-power coordinates and the running height.
@@ -37,7 +42,7 @@
 \title{The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic}
 \subtitle{Erd\H{o}s Problem~\#269}
 \author{Will Cook}
-\date{July 2026; exposition revised 18 September 2026}
+\date{July 2026; revised 26 September 2026}
 
 \setlength{\emergencystretch}{2em}
 % Permit breaks inside long declaration names in the generated catalogue.
@@ -49,18 +54,29 @@
 \noteprovenance
 
 \begin{abstract}
-The reciprocal three-prime running-LCM kernel has nonsingular minors of
-every order: row and column rescaling leaves a two-valued matrix, and
-density supplies the required threshold pattern.  For the rescaled matrix,
-we compute the rank of every finite restriction and the least uniform
-approximation error over all matrices of finite separated rank.  For the repeated $\{2,3,5\}$ sum, we derive an
-integer-coefficient tail recurrence and determine exactly when a
-hypothetical rational denominator would clear.  Quadratic tail bounds
-then give a residue criterion equivalent to irrationality.  The unproved
-step is to find such windows for every positive multiplier coprime to
-$30$ and after every prescribed start.  We also give the full two-prime comparison, following
-Fan's earlier Hecke--Mahler reduction, and identify the boundary terms
-that survive a proposed finite-difference cancellation.
+The sum of the reciprocals of the distinct running least common multiples
+of the $\{2,3,5\}$-smooth integers is irrational, as Erd\H{o}s asserted in
+a 1973 letter that gives no proof.  Grouped between consecutive powers of
+two, its normalised tails follow five affine maps with disjoint images, and
+a rational value would make the powers of $3$ fall periodically among the
+dyadic blocks; the argument is checked in Lean.  A criterion of the same
+form, checked by exact computation,
+proves irrationality for every set of three primes at most $31$ and for
+$292$ of the $330$ sets of four primes at most $31$; the $38$ sets it leaves
+undecided include $\{2,3,5,7\}$.  The reciprocal three-prime running-LCM kernel has
+nonsingular minors of every order: row and column rescaling leaves a
+two-valued matrix, and density supplies the required threshold pattern.
+For the rescaled matrix, we compute the rank of every finite restriction
+and the least uniform approximation error over all matrices of finite
+separated rank.  For the repeated $\{2,3,5\}$ sum, we derive an
+integer-coefficient tail recurrence, determine exactly when a hypothetical
+rational denominator would clear, and prove a residue criterion equivalent
+to irrationality.  The unproved step is to find such windows for every
+positive multiplier coprime to $30$ and after every prescribed start; the
+tails grow quadratically, and the finite-state argument has no counterpart
+there.  We also give the full two-prime comparison, following Fan's earlier
+Hecke--Mahler reduction, and identify the boundary terms that survive a
+proposed finite-difference cancellation.
 \end{abstract}
 
 \section{The problem, and what is settled}\label{long269:sec:problem}
@@ -73,16 +89,40 @@ in $P$.  Erd\H{o}s Problem~\#269 asks whether
 \]
 is irrational, where $[a_1,\ldots,a_n]$ is the least common
 multiple~\cite[p.~65]{erdosgraham1980}\cite[p.~106]{erdos1988}.  The problem number is that of Bloom's catalogue~\cite{erdosproblems}.
-Theorem~\ref{long269:res:lead-two-prime} settles every instance with $|P|=2$,
-at the level of transcendence, and Fan posted that argument
-first~\cite{fan2026comment}; this record leaves the repeated finite cases with $|P|\ge3$ unresolved.
 
 Write $\mathcal R_P$ for the sum above and $\mathcal D_P$ for the
 sum in which each distinct running-LCM value contributes its reciprocal
-once.  These differ because the running value can repeat.  The catalogue
-question concerns $\mathcal R_P$; Erd\H{o}s's earlier assertion about
-$\mathcal D_P$ and the singleton and infinite-prime cases are discussed in
-Section~\ref{long269:long:history}.
+once.  These differ because the running value can repeat.  In a letter of
+1 January 1973, Erd\H{o}s called the irrationality of $\mathcal R_P$ a
+conjecture and wrote that he could show $\mathcal D_P$ to be irrational,
+without giving an argument~\cite[p.~335]{erdos1974letter}.
+
+\begin{theorem}[the distinct-height sum at $\{2,3,5\}$]\label{long269:res:distinct-height-235}
+The sum $\mathcal D_{\{2,3,5\}}$ is irrational.
+\end{theorem}
+\evidenceremark{Checked in Lean (\href{\distinctheightlean\#L689}{Lean
+proof}) for the sum as written in~\eqref{long269:eq:distinct-sum};
+Comparator has not yet been run on it.  Section~\ref{long269:sec:distinct}
+gives the ordinary proof.}
+
+Section~\ref{long269:sec:distinct} reads the sum one dyadic block at a time.
+The normalised tails then follow five affine maps whose images of a common
+interval are disjoint, so a rational value would make the powers of $3$ fall
+periodically among the dyadic blocks.  The same section proves a criterion
+of this form for every finite set of primes
+(Theorem~\ref{long269:res:distinct-height-criterion}), and exact computation
+verifies it for every set of three primes at most $31$ and for $292$ of the
+$330$ sets of four primes at most $31$
+(Corollary~\ref{long269:res:distinct-height-sets}).  It leaves
+$\{2,3,5,7\}$ undecided.  Section~\ref{long269:long:history} discusses
+Erd\H{o}s's assertion for general $P$, the singleton and infinite-prime
+cases, and the literature search behind this record.
+
+For the catalogue sum $\mathcal R_P$ the case of two primes is settled.
+Theorem~\ref{long269:res:lead-two-prime} proves transcendence of both sums
+for every pair of primes, and Fan posted that argument
+first~\cite{fan2026comment}; this record leaves the repeated finite cases
+with $|P|\ge3$ unresolved.
 
 \begin{theorem}[two-prime transcendence]\label{long269:res:lead-two-prime}
 Let $p$ and $q$ be distinct primes.  Then $\mathcal R_{\{p,q\}}$ and
@@ -164,14 +204,16 @@ Section~\ref{long269:long:history}.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; transcendence; least common
-multiple; smooth numbers; separated rank; Lean~4.
+multiple; smooth numbers; Cantor series; separated rank; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11A05, 11N25, 68V20 (secondary).
 
 \paragraph{Relation to the short paper.}
-The short paper leads with the determinant construction and proves a
-quadratic tail bound sufficient for the residue criterion.  This companion
-supplies the finite geometry, full two-prime calculation and approximation
+The short paper leads with the distinct-height theorem for $\{2,3,5\}$ and
+its corollary for three primes, then gives the determinant construction and
+proves a quadratic tail bound sufficient for the residue criterion.  This
+companion supplies the finite geometry, full two-prime calculation, the
+distinct-height criterion with its certificates, and the approximation
 arguments in Sections~\ref{long269:sec:lcm}--\ref{long269:sec:rank}.
 Sections~\ref{long269:sec:blocks}--\ref{long269:sec:escape} derive the tail
 coefficients, sharpen the bound, determine the denominator-clearing index
@@ -435,7 +477,416 @@ its slope is rational as well.  The coprime extension was already noted
 in the forum discussion (Section~\ref{long269:long:history}).
 
 A third prime introduces an additional floor term that cannot be separated
-in this way.  The next section makes that obstruction precise.
+in this way; Section~\ref{long269:sec:rank} makes that obstruction precise.
+For the distinct-height sums, the next section proves irrationality at three
+primes by an elementary argument that uses no value theorem.
+
+\section{The distinct-height sums at three and more primes}
+\label{long269:sec:distinct}
+
+This section proves Theorem~\ref{long269:res:distinct-height-235}, turns its
+argument into a criterion for every finite set of primes, and records the
+exact computations that apply the criterion to sets of three and four
+primes.  The argument proves irrationality only; it gives no transcendence
+statement of the kind obtained for two primes in
+Section~\ref{long269:sec:two-prime}.
+
+\subsection{Dyadic blocks and affine maps}\label{long269:sec:distinct-blocks}
+
+Let $P$ be a finite set of at least two primes, with least element $p$, and
+put $\hgt_P(t)=\prod_{r\in P}r^{\lfloor\log_rt\rfloor}$.  The proofs of
+Theorem~\ref{long269:res:lcm} and Propositions~\ref{long269:res:cell}
+and~\ref{long269:res:count} apply unchanged to any finite set of primes: the
+running least common multiple of the $P$-smooth integers up to $t$ is
+$\hgt_P(t)$, it changes only at the prime powers $r^n$ ($r\in P$, $n\ge1$),
+where it is multiplied by $r$, and distinct prime powers are distinct
+numbers.  List the prime powers as $t_1<t_2<\cdots$ and let $q_k$ be the prime
+of $t_k$.  The distinct running values are then $1$ and
+$\hgt_P(t_k)=q_1\cdots q_k$, so
+\begin{equation}\label{long269:eq:distinct-sum}
+ \mathcal D_P=1+\sum_{k\ge1}\frac1{\hgt_P(t_k)}
+ =\sum_{k\ge0}\frac1{q_1\cdots q_k}.
+\end{equation}
+This is the sum $\Sigma'$ of Erd\H{o}s's letter~\cite{erdos1974letter},
+which counts each distinct value of $[a_1,\ldots,a_n]$ once.  For
+$P=\{2,3,5\}$ the prime powers $2,3,4,5,8,9,16,25,27,32$ give the terms
+$1,\frac12,\frac16,\frac1{12},\frac1{60},\frac1{120},\frac1{360},\frac1{720},
+\frac1{3600},\frac1{10800},\frac1{21600}$, and
+$\mathcal D_{\{2,3,5\}}=1.77961698329474905045919064931698327\ldots$.
+
+The blocks are the intervals $(p^a,p^{a+1}]$ for $a\ge0$.  Put
+$P_a=\hgt_P(p^a)$ and
+\[
+ Y_a=P_a\sum_{t_k>p^a}\frac1{\hgt_P(t_k)} .
+\]
+The \emph{type} $\tau_a$ of block $a$ is the sequence $(r_1,\ldots,r_v)$ of
+the primes whose powers lie strictly inside the block, listed in increasing
+order of those powers; the empty sequence is written $\varnothing$.
+
+\begin{lemma}[blocks, tails and integrality]\label{long269:res:distinct-height-blocks}
+Let $P$ be a finite set of at least two primes with least element $p$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Block $a$ ends with the jump at $p^{a+1}$ and contains at most one
+power of each prime $q\in P\setminus\{p\}$, lying strictly inside it.  The
+power $q^f$ with $f\ge1$ lies in block $\lfloor f\log_pq\rfloor$.
+\item If block $a$ has type $\tau=(r_1,\ldots,r_v)$, then
+$Y_a=G_\tau(Y_{a+1})$, where
+\[
+ G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad b_\tau=pr_1\cdots r_v,\qquad
+ \mu_\tau=1+b_\tau\sum_{j=1}^{v}\frac1{r_1\cdots r_j}.
+\]
+Each $G_\tau$ is increasing with slope $1/b_\tau\le1/p$ and maps
+$[0,1/(p-1)]$ into itself, and $0<Y_a\le1/(p-1)$.
+\item If $\mathcal D_P=N/K$ with integers $N$ and $K\ge1$, then $KY_a$ is
+an integer for every $a\ge0$.
+\end{enumerate}
+\end{lemma}
+\evidenceremark{Ordinary proof.  Its case $P=\{2,3,5\}$ is checked in Lean
+as part of the proof of Theorem~\ref{long269:res:distinct-height-235}.}
+
+\begin{proof}
+(i) The endpoint $p^{a+1}$ is a jump.  Consecutive powers of $q$ have ratio
+$q>p$, so the block contains at most one of them, and no power of $q$ equals
+a power of $p$.  The power $q^f$ lies in $(p^a,p^{a+1})$ exactly when
+$a<f\log_pq<a+1$.
+
+(ii) The jumps of block $a$ are the interior powers, with heights
+$P_ar_1$, $P_ar_1r_2$, \ldots, $P_ar_1\cdots r_v$, followed by the jump at
+$p^{a+1}$, whose height is $P_{a+1}=b_\tau P_a$.  Splitting off the block,
+\[
+ Y_a=\sum_{j=1}^{v}\frac1{r_1\cdots r_j}+\frac1{b_\tau}
+    +\frac{P_a}{P_{a+1}}Y_{a+1}=\frac{\mu_\tau+Y_{a+1}}{b_\tau}.
+\]
+Each jump multiplies the height by at least $p$, so
+$0<Y_a\le\sum_{k\ge1}p^{-k}=1/(p-1)$.  Since every $r_j>p$,
+$G_\tau(1/(p-1))\le\sum_{j=1}^{v}p^{-j}+p^{-v}/(p-1)=1/(p-1)$, and
+$G_\tau(0)>0$.
+
+(iii) If $t\le p^a$, each exponent in $\hgt_P(t)$ is at most the
+corresponding exponent in $P_a$, so $\hgt_P(t)\mid P_a$.  Hence
+$P_a\mathcal D_P-Y_a=P_a\bigl(1+\sum_{t_k\le p^a}\hgt_P(t_k)^{-1}\bigr)$ is
+an integer, and so is $KY_a=P_aN-K(P_a\mathcal D_P-Y_a)$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{long269:res:distinct-height-235}}
+\label{long269:sec:distinct-235}
+
+Take $P=\{2,3,5\}$.  The possible types, written as words, are
+$\varnothing$, $3$, $5$, $35$ and $53$, and
+Lemma~\ref{long269:res:distinct-height-blocks}(ii) gives
+\[
+\begin{array}{c|ccccc}
+ \tau&\varnothing&3&5&35&53\\\hline
+ b_\tau&2&6&10&30&30\\
+ \mu_\tau&1&3&3&13&9
+\end{array}
+\]
+For instance $\mu_{35}=1+30(\frac13+\frac1{15})=13$.  The first twelve
+blocks have types $\varnothing,3,5,3,53,\varnothing,35,3,\varnothing,53,
+\varnothing,35$: block $4=(16,32]$ contains $25<27$, and block
+$6=(64,128]$ contains $81<125$.
+
+\begin{proof}[Proof of Theorem~\ref{long269:res:distinct-height-235}]
+\emph{Bounds.}  By Lemma~\ref{long269:res:distinct-height-blocks}(ii),
+$Y_a\ge\mu_{\tau_a}/b_{\tau_a}\ge3/10$, the minimum being attained by the
+types $5$ and $53$, and $Y_a\le1$.  By
+Lemma~\ref{long269:res:distinct-height-blocks}(i), the power $5^f$ lies in
+block $\lfloor f\log_25\rfloor$, and $2<\log_25<3$.  So the blocks
+containing a power of $5$ begin with block $2$ and are two or three apart,
+and every three consecutive blocks include one.  On $[0,1]$ the three maps
+whose block contains a power of $5$ are at most $G_{35}(1)=7/15$, and
+$G_\varnothing(y)-G_3(y)=y/3\ge0$.  If $a+i$, with $0\le i\le2$, is the first
+block from $a$ onwards that contains a power of $5$, then $Y_{a+i}\le7/15$,
+and each of the at most two maps leading back from $Y_{a+i}$ to $Y_a$ is
+$G_\varnothing$ or $G_3$, hence at most $G_\varnothing$.  Therefore
+\[
+ \frac3{10}\le Y_a\le G_\varnothing\bigl(G_\varnothing(7/15)\bigr)
+ =\frac{13}{15}\qquad(a\ge0).
+\]
+
+\emph{Separation.}  The five maps send $I=[3/10,13/15]$ to the intervals
+\[
+\begin{array}{c|ccccc}
+ \tau&53&5&35&3&\varnothing\\\hline
+ G_\tau(I)&[\frac{31}{100},\frac{74}{225}]&[\frac{33}{100},\frac{29}{75}]
+ &[\frac{133}{300},\frac{104}{225}]&[\frac{11}{20},\frac{29}{45}]
+ &[\frac{13}{20},\frac{14}{15}]
+\end{array}
+\]
+in increasing order, and consecutive intervals are separated by
+$1/900$, $17/300$, $79/900$ and $1/180$.  Since $Y_{a+1}\in I$, the value
+$Y_a$ lies in $G_{\tau_a}(I)$ and in no other image.  So $Y_a$ determines
+$\tau_a$, then $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$, and by induction the
+whole word $\tau_a\tau_{a+1}\cdots$.
+
+\emph{Return.}  Suppose $\mathcal D_{\{2,3,5\}}=N/K$ with integers $N$ and
+$K\ge1$.  By Lemma~\ref{long269:res:distinct-height-blocks}(iii), every
+$KY_a$ is an integer in $[3K/10,13K/15]$.  There are finitely many such
+integers, so $Y_a=Y_{a'}$ for some $a<a'$.  Then $\tau_{a+j}=\tau_{a'+j}$
+for every $j\ge0$, and the word $(\tau_a)$ is eventually periodic, with
+period $\ell=a'-a$.
+
+\emph{Contradiction.}  Put $\alpha=\log2/\log3$, which is irrational.  By
+Lemma~\ref{long269:res:distinct-height-blocks}(i), $3^e$ lies in block $a$
+exactly when $a\alpha<e<(a+1)\alpha$, so block $a$ contains
+$\lfloor(a+1)\alpha\rfloor-\lfloor a\alpha\rfloor$ powers of $3$, a number
+recorded by $\tau_a$.  Summing over one period, the number
+$c=\lfloor(a+\ell)\alpha\rfloor-\lfloor a\alpha\rfloor$ does not depend on
+$a$ once $a$ is large, hence $\lfloor(a+n\ell)\alpha\rfloor=\lfloor
+a\alpha\rfloor+nc$ for every $n\ge1$.  Dividing by $n$ and letting
+$n\to\infty$ gives $\ell\alpha=c$, that is $2^\ell=3^c$, which is
+impossible.
+\end{proof}
+
+The Lean proof follows this route.  It
+\href{\distinctheightlean\#L60}{identifies $\hgt(t)$ with the running least
+common multiple}, \href{\distinctheightlean\#L698}{shows that the sum counts
+each distinct value once}, identifies the contribution of each dyadic block
+with one of the five pairs $(b_\tau,\mu_\tau)$, and proves that
+\href{\distinctheightlean\#L437}{every three consecutive blocks contain a power
+of $5$} and that \href{\distinctheightlean\#L494}{the blocks containing a power
+of $3$ are not eventually periodic}.  It then applies an
+\href{\distinctheightblocklean\#L340}{irrationality criterion for block series
+with these five pairs}, whose proof contains the bounds, the separation and
+the return above.
+
+The delicate step is the upper bound.  Because $G_3(y)=G_\varnothing(y/3)$ and
+$G_{53}(y)=G_5(y/3)$, the images of the empty block and of the block with one
+power of $3$ are disjoint exactly when the largest tail is less than three
+times the smallest, and the same holds for the blocks $53$ and $5$.  The gaps
+$1/180$ and $1/900$ are $\frac16$ and $\frac1{30}$ of
+$3\cdot\frac3{10}-\frac{13}{15}=\frac1{30}$.  With the trivial bound
+$Y_a\le1$ in place of $13/15$ these images overlap; the spacing of the powers
+of $5$ is what makes the difference.  Over the first $3000$ blocks the
+tails lie in $[0.3186,0.7799]$, well inside $I$.
+
+Grouping the jumps into dyadic blocks matters.  One jump at a time, the
+tails $x_k=(q_1\cdots q_k)\sum_{j>k}(q_1\cdots q_j)^{-1}$
+satisfy $x_{k}=(1+x_{k+1})/q_{k+1}$ and $1/4\le x_k\le1$, and the images of
+$[1/4,1]$ under $x\mapsto(1+x)/2$ and $x\mapsto(1+x)/3$ overlap on
+$[5/8,2/3]$.  A tail before a jump by $2$ cannot be told from a tail before a
+jump by $3$ from these bounds alone.
+
+In the form~\eqref{long269:eq:distinct-sum}, $\mathcal D_P$ is a Cantor
+series with every digit equal to $1$ and every base in $P$.  The criteria of
+Erd\H{o}s--Straus \cite[Theorem~2.1]{erdosstraus1974} and
+Han\v{c}l--Tijdeman \cite[Theorem~3.1]{hancltijdeman2004}, recalled in
+Section~\ref{long269:sec:actual-orbit}, assume that each digit divided by
+the product of the last two bases in its denominator tends to $0$.  Here that
+quotient is at least $(\max P)^{-2}$, so neither criterion applies.
+
+\subsection{A decoding criterion for every finite set of primes}
+\label{long269:sec:distinct-criterion}
+
+For $\{2,3,5\}$ a single interval contained every tail.  For other sets the
+bound is allowed to depend on how recently each prime appeared.  Put
+$Q=P\setminus\{p\}$ and, for $q\in Q$, let $g_q$ be the integer with
+$p^{g_q}<q<p^{g_q+1}$.  By Lemma~\ref{long269:res:distinct-height-blocks}(i),
+two consecutive blocks containing a power of $q$ have indices
+$\lfloor f\log_pq\rfloor$ and $\lfloor(f+1)\log_pq\rfloor$, which differ by
+$g_q$ or $g_q+1$.
+
+These constraints define a finite automaton.  Its states are the tuples
+$s=(s_q)_{q\in Q}$ with $1\le s_q\le g_q+1$; the entry $s_q$ counts the blocks
+since the last block containing a power of $q$.  A \emph{transition} from $s$
+is a pair $(\tau,s')$ in which $\tau$ is an ordering of a set $T\subseteq Q$
+with
+\[
+ \{q:s_q=g_q+1\}\subseteq T\subseteq\{q:s_q\ge g_q\},
+\]
+and $s'_q=1$ for $q\in T$, $s'_q=s_q+1$ for $q\notin T$.  A path from $s$
+is a sequence of transitions $(u_1,s_1),(u_2,s_2),\ldots$ with $(u_1,s_1)$ a
+transition from $s$ and each $(u_{i+1},s_{i+1})$ a transition from $s_i$.
+The \emph{value} of an infinite path is the limit of
+$G_{u_1}\circ\cdots\circ G_{u_n}(y)$ as $n\to\infty$; by
+Lemma~\ref{long269:res:distinct-height-blocks}(ii) these numbers lie, for
+$y\in[0,1/(p-1)]$, in nested intervals of length at most $p^{-n}/(p-1)$, so
+the limit exists and does not depend on $y$.
+
+Every prime $q\in Q$ lies in block $g_q$.  For $a>\max_qg_q$ let $s_a$ record,
+for each $q$, the number $a-\ell$, where $\ell<a$ is the index of the last
+block before $a$ containing a power of $q$.  The next such block has index
+$\ell+g_q$ or $\ell+g_q+1$, and it is at least $a$.  Hence $s_a$ is a state,
+block $a$ contains a power of $q$ when $(s_a)_q=g_q+1$ and does not when
+$(s_a)_q<g_q$, and $(\tau_a,s_{a+1})$ is a transition from $s_a$.  Since
+$Y_a=G_{\tau_a}\circ\cdots\circ G_{\tau_{a+n-1}}(Y_{a+n})$ with
+$Y_{a+n}\in[0,1/(p-1)]$, the tail $Y_a$ is the value of the actual path
+$(\tau_a,s_{a+1}),(\tau_{a+1},s_{a+2}),\ldots$ from $s_a$.
+
+\begin{theorem}[a decoding criterion]\label{long269:res:distinct-height-criterion}
+Let $P$ be a finite set of at least two primes, and for every state $s$ let
+$J(s)$ be a closed interval containing the values of all infinite paths from
+$s$.  For $k\ge1$ and each type $\tau$, let $U_\tau$ be the union of the
+intervals $G_{u_1}\circ\cdots\circ G_{u_k}\bigl(J(s_k)\bigr)$ over all states
+$s$ and all paths $(u_1,s_1),\ldots,(u_k,s_k)$ from $s$ with $u_1=\tau$.  If
+the sets $U_\tau$ are pairwise disjoint, then $\mathcal D_P$ is irrational.
+\end{theorem}
+\evidenceremark{Ordinary proof.  Lean checks only the case $P=\{2,3,5\}$
+with $k=1$ and the single interval used in
+Section~\ref{long269:sec:distinct-235}.}
+
+\begin{proof}
+Let $a>\max_qg_q$.  The first $k$ transitions of the actual path from $s_a$
+form a path of length $k$ with first type $\tau_a$, and
+$Y_a=G_{\tau_a}\circ\cdots\circ G_{\tau_{a+k-1}}(Y_{a+k})$, where
+$Y_{a+k}\in J(s_{a+k})$ because it is the value of an infinite path from
+$s_{a+k}$.  Thus $Y_a\in U_{\tau_a}$, and by disjointness $\tau_a$ is the
+only type with this property.  So $Y_a$ determines $\tau_a$, then
+$Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$, and by induction the word
+$\tau_a\tau_{a+1}\cdots$.
+
+Suppose $\mathcal D_P=N/K$.  By
+Lemma~\ref{long269:res:distinct-height-blocks}(ii) and~(iii), the numbers
+$KY_a$ are integers in $[0,K/(p-1)]$, so $Y_a=Y_{a'}$ for some
+$\max_qg_q<a<a'$, and the word $(\tau_a)$ is eventually periodic.  Fix
+$q\in Q$ and put $\beta=\log p/\log q$, which lies in $(0,1)$ and is
+irrational because no power of $p$ equals a power of $q$.  By
+Lemma~\ref{long269:res:distinct-height-blocks}(i), block $a$ contains
+$\lfloor(a+1)\beta\rfloor-\lfloor a\beta\rfloor$ powers of $q$, a number
+recorded by $\tau_a$.  As in the proof of
+Theorem~\ref{long269:res:distinct-height-235}, eventual periodicity with
+period $\ell$ forces $\ell\beta\in\Z$, a contradiction.
+\end{proof}
+
+Intervals $J(s)$ with the required property are easy to produce.  The
+constant interval $[0,1/(p-1)]$ qualifies by
+Lemma~\ref{long269:res:distinct-height-blocks}(ii).  If a family $J$
+qualifies, so does any family $J'$ with
+\[
+ J'(s)\supseteq G_\tau\bigl(J(s')\bigr)\quad\text{for every transition }(\tau,s')\text{ from }s,
+\]
+because an infinite path from $s$ is a transition $(\tau,s')$ followed by an
+infinite path from $s'$.  Starting from the constant family and repeatedly
+taking the smallest interval containing these images, with endpoints rounded
+outwards, therefore gives valid intervals after any number of rounds.  The
+tightest choice is $J(s)=[L(s),U(s)]$, where $L(s)$ and $U(s)$ are the least
+and greatest values of the infinite paths from $s$.  They satisfy
+$L(s)=\min G_\tau(L(s'))$ and $U(s)=\max G_\tau(U(s'))$ over the transitions
+from $s$, and these equations have unique solutions because each $G_\tau$
+contracts by at least the factor $1/p$.
+
+For $\{2,3,5\}$ the constant interval $I=[3/10,13/15]$ has the required
+property: every path takes a transition with $5\in T$ within any three
+steps, which is the only fact the bounds used.  With $k=1$ the criterion is
+then the proof given above.
+
+\subsection{Certificates for three and four primes}
+\label{long269:sec:distinct-certificates}
+
+\begin{corollary}[three and four primes up to $31$]\label{long269:res:distinct-height-sets}
+Let $P$ be a set of primes, each at most $31$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $|P|=3$, then $\mathcal D_P$ is irrational.
+\item If $|P|=4$ and $P$ is not one of the $38$ sets listed below, then
+$\mathcal D_P$ is irrational.
+\end{enumerate}
+\end{corollary}
+\evidenceremark{Ordinary proof by Theorem~\ref{long269:res:distinct-height-criterion},
+applied through an exact finite computation for each set; no Lean proof.}
+
+\begin{proof}
+For each set, the program \texttt{certificate.py} of the
+\href{\distinctheighturl}{distinct-height programs} builds the automaton,
+computes intervals $J(s)$ by $80$ rounds of the operation above from
+$[0,1/(p-1)]$, with endpoints rounded outwards to multiples of $2^{-96}$, and
+tests the disjointness of the sets $U_\tau$ for $k=1,2,\ldots$.  Every
+comparison is made in exact rational arithmetic, and each $U_\tau$ is
+computed as a union of intervals merged where they meet.  The test passes for
+each of the $165$ sets of three primes with some $k\le4$, and for each set of
+four primes outside the list with some $k\le5$.
+Theorem~\ref{long269:res:distinct-height-criterion} then gives
+irrationality.
+\end{proof}
+
+For three primes the least passing depth is $k=1$ for $141$ sets and $k=2$
+for the $17$ sets
+$\{2,3,11\}$, $\{2,3,13\}$, $\{2,3,17\}$, $\{2,3,19\}$, $\{2,3,23\}$,
+$\{2,3,29\}$, $\{2,3,31\}$, $\{2,5,7\}$, $\{2,11,17\}$, $\{2,13,19\}$,
+$\{2,17,19\}$, $\{2,19,29\}$, $\{2,19,31\}$, $\{3,13,17\}$, $\{3,17,23\}$,
+$\{3,23,31\}$ and $\{3,29,31\}$.  It is $k=3$ for $\{2,3,7\}$,
+$\{2,11,13\}$, $\{2,17,29\}$ and $\{2,19,23\}$, and $k=4$ for
+$\{2,17,31\}$, $\{2,23,29\}$ and $\{2,29,31\}$.  The smallest gap between
+sets $U_\tau$ of different types, among all passing triples, is about
+$9.4\cdot10^{-6}$, for $\{2,17,31\}$; for $\{2,3,5\}$ it is
+$27983/963915\approx0.029$ at depth $1$, much larger than the gap $1/900$ of
+the single interval used above.  For four primes the least passing depth is
+$1,2,3,4,5$ for $184$, $34$, $28$, $42$ and $4$ sets respectively, and the
+smallest gap is about $1.8\cdot10^{-8}$, for $\{3,7,17,19\}$.  All these gaps
+are far above the rounding scale $2^{-96}$.  The $38$ four-prime sets with no
+passing depth $k\le5$ are $\{2,3,5,7\}$, $\{2,3,5,11\}$, $\{2,3,5,13\}$,
+$\{2,3,5,17\}$, $\{2,3,5,19\}$, $\{2,3,5,23\}$, $\{2,3,7,11\}$,
+$\{2,3,7,13\}$, $\{2,3,7,17\}$, $\{2,3,7,23\}$, $\{2,3,11,13\}$,
+$\{2,3,11,17\}$, $\{2,3,11,19\}$, $\{2,3,11,29\}$, $\{2,3,11,31\}$,
+$\{2,3,13,19\}$, $\{2,3,13,29\}$, $\{2,3,17,19\}$, $\{2,3,17,29\}$,
+$\{2,3,29,31\}$, $\{2,5,7,11\}$, $\{2,5,17,29\}$, $\{2,5,23,29\}$,
+$\{2,5,23,31\}$, $\{2,11,13,19\}$, $\{2,11,17,23\}$, $\{2,11,17,29\}$,
+$\{2,11,23,31\}$, $\{2,13,19,31\}$, $\{2,19,23,31\}$, $\{3,5,13,17\}$,
+$\{3,5,17,19\}$, $\{3,5,23,31\}$, $\{3,7,11,13\}$, $\{3,19,23,29\}$,
+$\{3,19,23,31\}$, $\{3,19,29,31\}$ and $\{7,13,29,31\}$.  Twenty of them
+contain both $2$ and $3$.
+
+A second computation replaces the rounded intervals by the exact extremes
+$[L(s),U(s)]$, found by policy iteration and checked by substitution into
+their defining equations.  It returns the same least depth for all $495$
+sets.  A third check compares the automaton with the first $400$ actual
+blocks of every set: every actual word is a path, and every exact enclosure
+of an actual tail lies in the interval of its state.  This comparison is a
+consistency check only.  The whole triple computation takes about three
+seconds, and the four-prime computation about seventy seconds, on one
+laptop; the receipts record every depth and gap.
+
+For $\{2,3,5,7\}$ the automaton has $18$ states and $16$ types, and the test
+fails through depth $7$.  Its tail intervals range from about $0.188$ to
+$0.785$, so the largest exceeds three times the smallest, and the images of
+the empty block and of the block with one power of $3$ overlap.  The largest
+overlap between two first types is always of this pair.  For each depth $k$
+the table gives the number of merged intervals in the sets $U_\tau$ and the
+length of that largest overlap.
+\begin{center}\small
+\begin{tabular}{@{}rrr@{}}
+\hline
+$k$ & intervals & largest overlap\\\hline
+$1$ & $16$ & $2.4\cdot10^{-2}$\\
+$2$ & $58$ & $1.8\cdot10^{-3}$\\
+$3$ & $386$ & $1.0\cdot10^{-4}$\\
+$4$ & $1413$ & $4.6\cdot10^{-5}$\\
+$5$ & $8395$ & $7.6\cdot10^{-7}$\\
+$6$ & $38494$ & $2.4\cdot10^{-7}$\\
+$7$ & $193905$ & $1.8\cdot10^{-8}$\\\hline
+\end{tabular}
+\end{center}
+At depth $7$ two further pairs of types still overlap, $(5,7,3)$ with $(7)$
+by about $1.5\cdot10^{-9}$ and $(3,5,7)$ with $(3,7)$ by about
+$5.8\cdot10^{-10}$.  The overlap shrinks irregularly and has not vanished.
+Whether the value sets of two different first types genuinely meet, in which
+case no depth succeeds for this automaton, or a finer automaton that records
+the relative positions of the powers of $3$, $5$ and $7$ would separate them,
+is not decided here.
+
+\subsection{Where the argument stops for the repeated sums}
+\label{long269:sec:distinct-stop}
+
+For $P=\{2,3,5\}$ the tails of the two sums obey recurrences with the same
+bases.  With $P_a=\hgt(2^a)$ as in Section~\ref{long269:sec:blocks},
+$b_{\tau_a}=P_{a+1}/P_a=b_a$, and
+Lemma~\ref{long269:res:distinct-height-blocks}(ii) reads
+$Y_{a+1}=b_aY_a-\mu_{\tau_a}$, while Theorem~\ref{long269:res:actual-orbit}
+gives $X_{a+1}=b_aX_a-m_a$ for the repeated sum.  The distinct-height sum
+subtracts one of five numbers $\mu_\tau\le13$.  The repeated sum subtracts
+the weighted count $m_a$ of the smooth numbers in the shell, and
+$m_a=\Theta((a+1)^2)$ by Lemma~\ref{long269:res:literal-triangle}.  Three
+steps of the proof above then have no counterpart.  The tails are unbounded,
+since $X_a>m_a/30$, so the integers $d_a=BX_a$ of
+Theorem~\ref{long269:res:actual-cancellation} are unbounded and need not
+repeat.  The maps $y\mapsto(m_a+y)/b_a$ depend on $a$, so even a repeated
+value $d_a=d_{a'}$ would not align the two futures.  And there is no finite
+list of maps whose images could be separated.  The residue criterion of
+Section~\ref{long269:sec:escape} replaces the return to an earlier state by a
+comparison of residues with the quadratic bound on $d_a$.  The example after
+Proposition~\ref{long269:long:windowconsumer} shows that the radices and
+quadratic growth alone do not decide the question: numerators
+$\widehat m_a$ of quadratic size with the same radices give the rational
+value $\sum_a\widehat m_a/P_{a+1}=9$.
 
 \section{Why the third prime prevents finite separation}\label{long269:sec:rank}
 
@@ -1836,8 +2287,9 @@ instance of the problem.
 
 \subsection{An exact weighted-shift identity for the repeated series}
 \label{long269:sec:weighted-shifts}
-We return to the repeated sum $S$, not the distinct-height sum
-$\mathcal D_{2,3,5}$.  Set $\alpha=S/2$ and keep the boundary heights
+We return to the repeated sum $S$; the distinct-height sum
+$\mathcal D_{\{2,3,5\}}$ plays no part in this subsection.  Set
+$\alpha=S/2$ and keep the boundary heights
 $P_a$ defined above.  A shifted tail represents the same value after a
 finite rational correction.  The following identity combines several
 such shifts with fixed integer coefficients.  Its weights are necessary:
@@ -2230,28 +2682,33 @@ also permits integral tails, so it does not settle this question.
 
 \subsection{What a function-theoretic proof would require}
 
-This subsection concerns a different sum: each height is now counted
-once, at the jump where it first appears.  Put
+This subsection returns to the distinct-height sum of
+Section~\ref{long269:sec:distinct}, in which each height is counted once, at
+the jump where it first appears:
 \[
- \mathcal D_{2,3,5}=1+
+ \mathcal D_{\{2,3,5\}}=1+
  \sum_{t\in\{2^{n},3^{n},5^{n}:n\ge1\}}
  \frac{1}{2^{\lfloor\log_2t\rfloor}3^{\lfloor\log_3t\rfloor}
            5^{\lfloor\log_5t\rfloor}}.
 \]
-The same prime-power jumps determine the bases $b_a$ in
-\eqref{long269:eq:dyadic-alphabet}, but this sum counts each height once,
-not once for every smooth integer at that height.
+The bases $b_a$ in \eqref{long269:eq:dyadic-alphabet} come from the same
+prime-power jumps.  This sum counts each height once; the repeated sum
+counts it once for every smooth integer at that height.
+Theorem~\ref{long269:res:distinct-height-235} proves $\mathcal D_{\{2,3,5\}}$
+irrational by an elementary argument that gives no information about
+transcendence.  For two primes, Section~\ref{long269:sec:two-prime} deduces
+the transcendence of $\mathcal D_{\{p,q\}}$ from one Hecke--Mahler value.  A
+comparable statement at three primes would need a representation of the
+following kind.
 
 \begin{problem}[an exact function representing the distinct-height sum]
 \label{long269:prob:representation}
-The historical irrationality assertion for $\mathcal D_{2,3,5}$ is not
-being reclassified as a new open problem.  A recovered proof or a
-transcendence theorem would require its own argument.  For a functional
-approach, first specify the function, its coefficient field and convergence
-domain, then prove an exact identity for $\mathcal D_{2,3,5}$, and only then
-apply a stated value theorem.  A conditional theorem must display the
-extra nondegeneracy assumption; a no-representation theorem must specify
-the class it excludes.
+Transcendence of $\mathcal D_{\{2,3,5\}}$ is not proved here.  For a functional
+approach to it, first specify the function, its coefficient field and
+convergence domain, then prove an exact identity for $\mathcal D_{\{2,3,5\}}$,
+and only then apply a stated value theorem.  A conditional theorem must
+display the extra nondegeneracy assumption; a no-representation theorem
+must specify the class it excludes.
 \end{problem}
 
 For $(p,q,r)=(2,3,5)$, the two slopes in the rank proof are
@@ -2280,7 +2737,7 @@ stated intervals
 bound},
 \lword{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}{digit
 bound}).  These conditional linear-algebra statements neither construct a
-function representing $\mathcal D_{2,3,5}$ nor show that a corresponding
+function representing $\mathcal D_{\{2,3,5\}}$ nor show that a corresponding
 function space must be infinite-dimensional.
 
 \paragraph{The cited value theorems and their hypotheses.}
@@ -2424,7 +2881,12 @@ these clearing and arbitrarily small nonzero-gap conditions.
 
 \subsection{Where the problem stands}
 
-For the repeated $\{2,3,5\}$ sum, the coefficients, recurrence, quadratic
+The distinct-height sum is irrational for $\{2,3,5\}$
+(Theorem~\ref{long269:res:distinct-height-235}) and for the sets of three and
+four primes in Corollary~\ref{long269:res:distinct-height-sets}; the
+criterion of Theorem~\ref{long269:res:distinct-height-criterion} leaves
+$\{2,3,5,7\}$ undecided through depth $7$.  For the repeated
+$\{2,3,5\}$ sum, the coefficients, recurrence, quadratic
 bounds and denominator clearing are derived here from the original
 multiplicities.  What remains is to exclude eventual integral reduced
 tails, equivalently to prove residue escape for every admissible
@@ -2445,10 +2907,17 @@ uses Fan's earlier reduction to the cited Hecke--Mahler value theorem.
 The two-prime deduction rests on the cited external value theorem, which
 the Lean proof of Theorem~\ref{long269:res:lead-two-prime} assumes; Fan
 posted that deduction first, on the erdosproblems.com
-forum~\cite{fan2026comment}.  Every other theorem, proposition, lemma and
-corollary has a Lean proof of its whole statement, marked in the margin;
-Section~\ref{long269:sec:coverage} states what the Lean proof of the
-two-prime theorem checks.
+forum~\cite{fan2026comment}.
+Theorem~\ref{long269:res:distinct-height-235} is checked in Lean, as the
+remark below it states; Comparator has not yet compared it.
+Lemma~\ref{long269:res:distinct-height-blocks},
+Theorem~\ref{long269:res:distinct-height-criterion} and
+Corollary~\ref{long269:res:distinct-height-sets} have the ordinary proofs
+given in Section~\ref{long269:sec:distinct}, the corollary together with an
+exact finite computation, and no Lean proofs.  Every other theorem,
+proposition, lemma and corollary has a Lean proof of its whole statement,
+marked in the margin; Section~\ref{long269:sec:coverage} states what the
+Lean proof of the two-prime theorem checks.
 
 The weighted-triangle and weighted-shift identities, exact denominator
 formula, scaled dichotomy, uniqueness argument, residue limit, strip
@@ -2467,6 +2936,12 @@ source inventory and to the dyadic-window checker open a
 witnesses and exact checkers for the two large numerical exclusions and
 the saved larger scan are in the
 \href{https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations}{large-computation directory}.
+The \href{\distinctheighturl}{distinct-height programs} recompute the
+constants of Theorem~\ref{long269:res:distinct-height-235} and the
+certificates of Corollary~\ref{long269:res:distinct-height-sets} in exact
+rational arithmetic, with two independent computations of the tail
+intervals, and store their outputs; a fast test checks them against the
+stored receipts.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.
@@ -2503,23 +2978,47 @@ For $P=\{p\}$, the enumeration is $a_n=p^{n-1}$, so
 $[a_1,\ldots,a_n]=p^{n-1}$ and both sums equal $p/(p-1)$.
 In the primary 1988 source Erd\H{o}s states irrationality for infinite $P$
 as a simple exercise and presents persistence for a finite number of
-primes greater than one as a probable extension, not a theorem
+primes greater than one as a probable extension
 \cite[p.~106]{erdos1988}.  Bloom's catalogue, as accessed on 28 July
 2026, records an open problem \cite{erdosproblems}; that status is not
 inferred from the conjectural wording.
-In the letter written on 1 January 1973 and published in 1974,
-Erd\H{o}s says he can prove irrationality of the distinct-height sum
-\cite[p.~335]{erdos1974letter}.  He writes ``given primes $p_1,\ldots,p_r$''
-without restricting $r$, so the singleton calculation forces the
-qualification $|P|\ge2$.  The assertion is made for a general finite list
-of primes and supplies no proof.  We record it as an attributed historical
-assertion rather than present $\mathcal D_P$ as a newly identified open
-case.  The note's unresolved target is the repeated series $\mathcal R_P$.  A recovered proof of the letter's assertion, or a
-transcendence statement for $\mathcal D_P$ with $|P|\ge3$, would be a different
-question and needs its own formulation.
 
-The letter prints no argument.  On 26 June 2026 Steve Fan posted the
-two-prime factorisation, the Hecke--Mahler reduction and the transcendence
+In the letter written on 1 January 1973 and published in 1974, Erd\H{o}s
+calls the irrationality of $\mathcal R_P$ a conjecture that he cannot prove,
+and says that he can show the sum over the distinct values of
+$[a_1,\ldots,a_k]$ to be irrational \cite[p.~335]{erdos1974letter}.  That
+sum is $\mathcal D_P$.  The letter introduces its primes as $p_1,\ldots,p_s$,
+later writing $p_r$, without restricting their number, so the singleton
+calculation forces the qualification $|P|\ge2$.  It prints no argument.  The
+catalogue has cited the letter for Problem~\#269 since 28 December 2025,
+after the letter was quoted in the site's discussion of missing
+problems~\cite{erdosproblemsmissing}, and its page records Erd\H{o}s's
+statement about the distinct values.
+Theorem~\ref{long269:res:distinct-height-235} proves that statement for
+$P=\{2,3,5\}$, and Corollary~\ref{long269:res:distinct-height-sets} proves
+it for every set of three primes at most $31$ and for all but $38$ of the
+sets of four primes at most $31$.  For a general finite set, and in
+particular for $\{2,3,5,7\}$, it remains Erd\H{o}s's assertion.  We do not
+know what argument he had in mind.
+
+We have not found a proof of the assertion in print.  Erd\H{o}s's survey of
+1975 on the irrationality of series \cite{erdos1975} does not mention the
+running least common multiple of the $P$-smooth integers, and his survey of
+1988 states only the question for $\mathcal R_P$ \cite[p.~106]{erdos1988}.
+The discussion thread of Problem~\#269 contains no argument for
+$\mathcal D_P$ with $|P|\ge3$, and the \emph{Formal Conjectures} statement
+\cite{formalconjectures269} concerns $\mathcal R_P$ only.  The Cantor-series
+criteria of Erd\H{o}s--Straus~\cite[Theorem~2.1]{erdosstraus1974} and
+Han\v{c}l--Tijdeman~\cite[Theorem~3.1]{hancltijdeman2004} do not apply to
+$\mathcal D_P$, as explained in Section~\ref{long269:sec:distinct-235}.  The
+search did not reach the text of \cite[p.~65]{erdosgraham1980}, the
+sections on irrational series in Guy's \emph{Unsolved Problems in Number
+Theory}, or MathSciNet reviews.  The unresolved target of this record is the
+repeated series $\mathcal R_P$; a transcendence statement for $\mathcal D_P$
+with $|P|\ge3$ is a separate question
+(Problem~\ref{long269:prob:representation}).
+
+On 26 June 2026 Steve Fan posted the two-prime factorisation, the Hecke--Mahler reduction and the transcendence
 conclusion in the discussion thread of the problem's page
 \cite{fan2026comment}; the comment itself notes that the argument does not seem
 to generalise immediately to $|P|\ge3$, and a reply there observes that it
@@ -2922,6 +3421,12 @@ Their geometry alone gives no irrationality statement.\\
 Two-prime values & Earlier factorisation plus the cited external
 Hecke--Mahler value theorem.  The reduction to that theorem is checked in
 Lean; the theorem itself is a cited input (Section~\ref{long269:sec:coverage}).\\
+Distinct-height sums & Dyadic blocks, finitely many affine maps with
+disjoint images, integrality of the scaled tails and the irrationality of
+$\log p/\log q$.  The theorem for $\{2,3,5\}$ is checked in Lean; the
+general criterion has an ordinary proof, and
+Corollary~\ref{long269:res:distinct-height-sets} adds exact finite
+computations.  No statement about the repeated sums.\\
 Arbitrary-order rank & Diagonal rescaling, separate one-dimensional
 densities and a staircase determinant; checked in Lean.\\
 Tail recurrence & Counting the original multiplicities, normalising by
@@ -2943,14 +3448,18 @@ checkers, and the larger scan a published saved run; none is a theorem
 input.\\\hline
 \end{tabular}
 \end{center}
-None of these results proves the remaining irrationality assertion.
+None of these results proves irrationality of the repeated sum
+$\mathcal R_P$ for three or more primes.
 
 \subsection*{What the Lean proof of the two-prime theorem assumes}
 \label{long269:sec:coverage}
 \papersectiontarget{coverage}
 
-Every theorem, lemma, proposition and corollary of this record carries a
-Lean mark in the margin.  Only the Lean proof of
+Every theorem, lemma, proposition and corollary of this record has a Lean
+proof, except Lemma~\ref{long269:res:distinct-height-blocks},
+Theorem~\ref{long269:res:distinct-height-criterion} and
+Corollary~\ref{long269:res:distinct-height-sets}, whose proofs are ordinary
+proofs and, for the corollary, exact computations.  Only the Lean proof of
 Theorem~\ref{long269:res:lead-two-prime} assumes an input.  It
 verifies the reduction of that theorem to the transcendence of the Hecke--Mahler boundary sum
 at an irrational $\theta\in(0,1)$ and nonzero algebraic $\beta,\alpha$ with
@@ -2988,6 +3497,15 @@ here.
 \bibitem{erdosproblems} Thomas F. Bloom,
   \emph{Erd\H{o}s Problem \#269} (2026),
   \href{https://www.erdosproblems.com/269}{source}. Accessed 28 July 2026.
+\bibitem{erdosproblemsmissing} \emph{Missing Erd\H{o}s problems},
+  discussion thread on the erdosproblems.com forum, posts 2427 by Alfaiz
+  (26 December 2025) and 2531 by Thomas F. Bloom (28 December 2025),
+  \href{https://www.erdosproblems.com/forum/thread/Missing\%20Erd\%C5\%91s\%20problems}{source}.
+  Accessed 26 September 2026.
+\bibitem{erdos1975} Paul Erd\H{o}s,
+  \emph{Some problems and results on the irrationality of the sum of infinite series},
+  Journal of Mathematical Sciences \textbf{10} (1975), 1--7,
+  \href{https://users.renyi.hu/~p_erdos/1976-44.pdf}{source}.
 \bibitem{formalconjectures269} The Formal Conjectures Authors,
   \emph{FormalConjectures.ErdosProblems.269} (2025),
   \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/269.lean}{source}.

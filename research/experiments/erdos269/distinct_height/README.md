@@ -15,13 +15,15 @@ H_P(t) = product over r in P of r^floor(log_r t).
 For P = {2, 3, 5} this number,
 D = 1 + 1/2 + 1/6 + 1/12 + 1/60 + 1/120 + ... = 1.7796169832947490504...,
 is irrational. The [#269 short paper](../../../../paper/269/erdos-269-three-prime-running-lcm.tex)
-proves this by hand; the proof is ordinary mathematics and has no Lean proof
-yet. Erdős asserted irrationality of these distinct-value sums in a letter
+proves this by hand, and
+[DistinctHeightIrrationality.lean](../../../../lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean)
+checks the same argument in Lean. Erdős asserted irrationality of these distinct-value sums in a letter
 dated 1 January 1973 ([Fibonacci Quarterly 12 (1974), p. 335](https://www.fq.math.ca/Scanned/12-4/letter.pdf))
 without printing an argument. The same argument, together with the exact
 finite certificates computed here, proves D_P irrational for every set of
 three primes at most 31, and for 292 of the 330 sets of four primes at most
-31. The catalogue question of Erdős Problem #269 concerns a different sum,
+31; those results are ordinary proofs with exact computations and have no
+Lean proof. The catalogue question of Erdős Problem #269 concerns a different sum,
 the one in which a value is counted once for every integer at which it
 occurs; these programs say nothing about it.
 

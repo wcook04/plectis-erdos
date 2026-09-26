@@ -954,8 +954,10 @@
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #269 and the three-prime residue-escape boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #269: irrationality of the {2,3,5} distinct-height sum and its three-prime certificates, and the three-prime residue-escape boundary of the catalogue sum.",
           "anchor_label_allowlist": [
+            "res:distinct-height-235",
+            "res:distinct-height-triples",
             "res:consumer",
             "res:windowconsumer"
           ]
@@ -20852,7 +20854,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 49
+        "line": 62
       }
     },
     {
@@ -20900,7 +20902,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 581
+        "line": 799
       }
     },
     {
@@ -20912,7 +20914,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 587
+        "line": 805
       }
     },
     {
@@ -20924,7 +20926,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 2245
+        "line": 2704
       }
     },
     {
@@ -21005,7 +21007,7 @@
       "id": "erdos_269",
       "label": "Erdős #269: irrationality of running-LCM reciprocal sums",
       "status": "open",
-      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
+      "statement": "The distinct-height sum D_{2,3,5}, which counts each value of the running LCM of the {2,3,5}-smooth integers once, is irrational (res:distinct-height-235; Lean-checked as ErdosProblems.Erdos269.distinctHeightSum235_irrational, Comparator not yet run), confirming for {2,3,5} an assertion in Erdős's 1973 letter; an exact finite certificate extends it to every set of three primes at most 31 (res:distinct-height-triples, ordinary proof with exact computation). For the catalogue sum, which counts each running-LCM value once per smooth integer, both two-prime sums are transcendental by Fan's reduction to a cited Hecke-Mahler value theorem (res:two-prime-transcendence), and the case of three or more primes is unresolved in this release: for the actual {2,3,5} series the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality",
         "remaining_open.erdos_269_reduced_tail_nonintegrality",
