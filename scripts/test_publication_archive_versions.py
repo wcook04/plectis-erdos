@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
 """Archive editions must remain distinct from changing paper source and PDFs."""
 from __future__ import annotations
 
