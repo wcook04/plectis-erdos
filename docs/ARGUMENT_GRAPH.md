@@ -70,7 +70,12 @@ blindness results and scoped failures, each checked against its source by
 `scripts/check_barrier_registry.py`. The builder attaches each barrier to the
 open statements that mention its route predicates. What a barrier rules out is
 an authored reading of a kernel-checked declaration, and a formalised class of
-arguments can be narrower than the methods a specialist would try.
+arguments can be narrower than the methods a specialist would try. To test
+whether a countermodel blocks a route you have in mind, state the route as a
+Lean proposition (every property of the object the route would use, implying
+the conclusion it needs) and prove its negation from the countermodel in a
+kernel probe; a proof settles the question, and a failed attempt says only that
+this countermodel does not obviously apply.
 
 Each theorem is joined to the paper results that cite it, short or long, with
 the label, the TeX line and the Comparator status recorded in the
