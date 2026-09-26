@@ -14455,7 +14455,8 @@
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement"
+            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement",
+            "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions"
           ]
         },
         {
@@ -14472,6 +14473,12 @@
             "Erdos249257.AllBaseReciprocalSupportIrrationality",
             "ErdosProblems.Erdos257.RadixCloseReturn"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
@@ -14856,6 +14863,84 @@
           "imports": [
             "Erdos249257.ReciprocalSupportIrrationality"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockHarmonic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockHarmonic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockReciprocal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+            "ErdosProblems.Erdos257.WitnessBlockHarmonic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockSummability",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockSummability.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockWeighted",
+            "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+            "ErdosProblems.Erdos257.WitnessLogicSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeightBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockWeighted",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeighted.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+            "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+            "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicHost",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicHost.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessLogic",
+            "ErdosProblems.Erdos257.WitnessBlockSummability",
+            "ErdosProblems.Erdos257.WitnessBlockReciprocal"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicIrrational",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessLogicHost",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicSeries",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicSeries.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
@@ -19197,7 +19282,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "efc285328be650b3ad638256d9124f44576c6d32",
+      "ref": "7f3dbf0947c387335ffd392b689eea5721017d84",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -20828,7 +20913,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1183
+        "line": 1256
       }
     },
     {
@@ -20960,7 +21045,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1199
+        "line": 1272
       }
     },
     {
@@ -20972,7 +21057,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1208
+        "line": 1281
       }
     },
     {
@@ -20984,7 +21069,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1219
+        "line": 1292
       }
     }
   ],

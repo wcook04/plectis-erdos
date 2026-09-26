@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
-  "lean_pin": "efc285328be650b3ad638256d9124f44576c6d32",
-  "content_digest": "sha256:2c265119cefe7caed45598a89044b5b047571ff08e4c2408820c1f82ec54ab62",
+  "lean_pin": "7f3dbf0947c387335ffd392b689eea5721017d84",
+  "content_digest": "sha256:2df1e4805c8b3cbc374c7a4dd166f4e06e8c04365059371729a3a347eca714a6",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
