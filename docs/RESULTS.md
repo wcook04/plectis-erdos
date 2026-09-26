@@ -325,6 +325,18 @@ diverges while the weighted sum converges. The theorem gives irrationality
 at every integer base for every infinite subset of `A★`. It does not cover
 full support, all odd exponents, or the full prime support; Tao–Teräväinen
 prove the latter at base two by another method.
+The [#257 reader exercise](research-commons/PROVE2ME_WEIGHTED_257_PACKET.md#try-changing-a-hypothesis)
+tests how changing a layer cutoff alters this certificate, and why a failed
+weighted test is not a rationality result.
+A [second test](research-commons/PROVE2ME_WEIGHTED_257_PACKET.md#try-a-changing-prime-set)
+shows why a prime set fitted separately to each finite prefix cannot certify
+the infinite hypothesis.
+The [weighted-support transfer exercise](../research/experiments/weighted_support_transfer/README.md#a-host-that-needs-every-chosen-prime)
+gives the complementary fixed-host phenomenon: for any prescribed finite
+nonempty prime set, its binary weighted certificate can require every prime
+in that set. This is a calculation about the sufficient criterion, not a
+claim that each infinite subset needs the same witness or that the example
+has been formalised separately in Lean.
 The comparison identifies the added class and proof mechanism, but does not
 settle independent novelty or priority assessment. See the
 [short paper's theorem, example and sources](papers/full-text/erdos-257-mersenne-support-subseries.md#an-example-beyond-reciprocal-summability).

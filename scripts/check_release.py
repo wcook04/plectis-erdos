@@ -262,6 +262,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_check_release_environment.py"),
         ],
+        "release_preparation": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_run_release_check.py"),
+        ],
         "proof_workbench": [
             sys.executable,
             str(ROOT / "scripts" / "test_proof_workbench.py"),
