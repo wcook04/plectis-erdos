@@ -52,10 +52,14 @@ After the producer search, two more passes run. Pass 3 composes each
 conditional theorem whose closed hypotheses all have a residual-free producer
 and has the kernel check the composed term. Pass 4 tries a fixed battery of
 standard closing tactics (after introducing binders and unfolding the corpus
-definitions the statement mentions) on every closed statement no corpus
-theorem supplies, most-consumed first, and has the kernel check every proof it
-finds. A leaf the battery does not close is reported as untried or unclosed,
-never as false.
+definitions the statement mentions) on every closed statement for which the
+search found no producer at all, most-consumed first, and then on its
+negation, and has the kernel check every proof it finds. A leaf the battery
+neither closes nor refutes is reported as open, never as false.
+
+Pass 2 also searches, for every antecedent (a hypothesis or a residual),
+corpus theorems proving its negation (`refutation` rows): a refuted antecedent
+makes every conditional argument that needs it vacuous.
 -/
 
 open Lean Meta Elab Command
@@ -447,6 +451,46 @@ def composeAndCheck (info : ConstantInfo) (direct : Std.HashMap String (Name × 
     ("kernel_error", toJson (checked.map (clip · 400) |>.getD ""))]
 
 
+/-- Corpus theorems whose conclusion unifies with `target` (after `target`'s
+own binders are introduced), as `match`-shaped rows labelled `recordName` and
+keyed by the subject statement `key`, each with its closed residuals. -/
+def searchProducers (cfg : Config) (producers : Std.HashMap Name (Array Producer))
+    (key : String) (recordName : String) (target : Expr) :
+    MetaM (Array (Json × Array Expr)) :=
+  forallTelescope target fun xs matrix => do
+    let mut localHyps : Array Expr := #[]
+    for x in xs do
+      if ← isProp (← inferType x) then localHyps := localHyps.push x
+    let mut rows : Array (Json × Array Expr) := #[]
+    let some head := headName? matrix | return rows
+    let used := matrix.getUsedConstantsAsSet
+    let candidates := (producers.getD head #[]).filter fun p =>
+      p.constants.toList.all fun c => used.contains c
+    let mut tried := 0
+    for p in candidates do
+      if tried ≥ cfg.maxCandidates then
+        rows := rows.push (Json.mkObj [
+          ("record", "candidate_cap"), ("statement", toJson key), ("search", toJson recordName),
+          ("candidates", toJson candidates.size), ("tried", toJson tried)], #[])
+        break
+      tried := tried + 1
+      match ← tryProducer cfg xs localHyps matrix p with
+      | none => pure ()
+      | some outcome =>
+          let mut residualRows : Array Json := #[]
+          for r in outcome.residuals do
+            residualRows := residualRows.push <| Json.mkObj [
+              ("key", toJson (keyOf r)), ("type", toJson (← render r)),
+              ("has_open_data", toJson r.hasMVar)]
+          rows := rows.push (Json.mkObj [
+            ("record", toJson recordName), ("statement", toJson key),
+            ("producer", toJson p.name.toString), ("reading", toJson p.reading),
+            ("status", toJson outcome.status),
+            ("open_data", toJson outcome.openData),
+            ("residuals", Json.arr residualRows)],
+            outcome.residuals.filter (fun r => !r.hasMVar))
+    return rows
+
 /-- `budgeted` for elaboration-level work (tactics). -/
 def budgetedTerm (heartbeats : Nat) (x : Elab.TermElabM α) : Elab.TermElabM (Except String α) := do
   withCurrHeartbeats <|
@@ -515,7 +559,7 @@ def exportAll : Elab.TermElabM Unit := do
   let mut state : State := {}
   let mut theoremCount := 0
   let mut consumerCount : Std.HashMap String Nat := {}
-  let mut supplied : Std.HashSet String := {}
+  let mut hasProducer : Std.HashSet String := {}
   let mut names : Array Name := #[]
   for (name, info) in env.constants.toList do
     if selected cfg env name then
@@ -561,40 +605,12 @@ def exportAll : Elab.TermElabM Unit := do
     cursor := cursor + 1
     state := { state with processed := state.processed + 1 }
     let key := keyOf statement
-    let searched ← budgeted 2000000 <| forallTelescope statement fun xs matrix => do
-      let mut localHyps : Array Expr := #[]
-      for x in xs do
-        if ← isProp (← inferType x) then localHyps := localHyps.push x
-      let mut rows : Array (Json × Array Expr) := #[]
-      let some head := headName? matrix | return rows
-      let used := matrix.getUsedConstantsAsSet
-      let candidates := (producers.getD head #[]).filter fun p =>
-        p.constants.toList.all fun c => used.contains c
-      let mut tried := 0
-      for p in candidates do
-        if tried ≥ cfg.maxCandidates then
-          rows := rows.push (Json.mkObj [
-            ("record", "candidate_cap"), ("statement", toJson key),
-            ("candidates", toJson candidates.size),
-            ("tried", toJson tried)], #[])
-          break
-        tried := tried + 1
-        match ← tryProducer cfg xs localHyps matrix p with
-        | none => pure ()
-        | some outcome =>
-            let mut residualRows : Array Json := #[]
-            for r in outcome.residuals do
-              residualRows := residualRows.push <| Json.mkObj [
-                ("key", toJson (keyOf r)), ("type", toJson (← render r)),
-                ("has_open_data", toJson r.hasMVar)]
-            rows := rows.push (Json.mkObj [
-              ("record", "match"), ("statement", toJson key),
-              ("producer", toJson p.name.toString), ("reading", toJson p.reading),
-              ("status", toJson outcome.status),
-              ("open_data", toJson outcome.openData),
-              ("residuals", Json.arr residualRows)],
-              outcome.residuals.filter (fun r => !r.hasMVar))
-      return rows
+    let searched ← budgeted 2000000 <| searchProducers cfg producers key "match" statement
+    -- Refutation search: corpus theorems proving the negation. Only for
+    -- antecedents, where a refutation turns a conditional argument vacuous.
+    let refutations ← if origin == "hypothesis" || origin == "residual" then
+        budgeted 2000000 <| searchProducers cfg producers key "refutation" (mkNot statement)
+      else pure (.ok #[])
     emit stream <| Json.mkObj [
       ("record", "statement"), ("key", toJson key), ("origin", toJson origin),
       ("type", toJson (← render statement)),
@@ -611,7 +627,7 @@ def exportAll : Elab.TermElabM Unit := do
           emit stream row
           if (row.getObjValAs? String "status").toOption == some "matched" then
             state := { state with matchCount := state.matchCount + 1 }
-            supplied := supplied.insert key
+            hasProducer := hasProducer.insert key
             let residualCount := match row.getObjVal? "residuals" with
               | .ok (.arr xs) => xs.size
               | _ => 1
@@ -627,6 +643,10 @@ def exportAll : Elab.TermElabM Unit := do
         emit stream <| Json.mkObj [
           ("record", "statement_error"), ("statement", toJson key),
           ("reason", toJson reason)]
+    if let .ok rows := refutations then
+      for (row, residuals) in rows do
+        emit stream row
+        for r in residuals do state := enqueue state r "residual"
   -- Pass 3: compose conditional theorems whose closed hypotheses all have a
   -- residual-free producer, and have the kernel check each composition.
   let mut compositions := 0
@@ -648,11 +668,12 @@ def exportAll : Elab.TermElabM Unit := do
   let mut leaves : Array (Nat × Expr) := #[]
   for (statement, _) in state.queue.extract 0 cursor do
     let key := keyOf statement
-    unless supplied.contains key do
+    unless hasProducer.contains key do
       leaves := leaves.push (consumerCount.getD key 0, statement)
   leaves := leaves.qsort (fun a b => a.1 > b.1)
   let mut batteryTried := 0
   let mut batteryClosed := 0
+  let mut batteryRefuted := 0
   for (_, statement) in leaves do
     if (← IO.monoMsNow) - batteryStart > cfg.batteryBudgetMs then break
     batteryTried := batteryTried + 1
@@ -661,11 +682,17 @@ def exportAll : Elab.TermElabM Unit := do
       emit stream <| Json.mkObj [
         ("record", "battery"), ("statement", toJson (keyOf statement)),
         ("tactic", toJson label), ("kernel_checked", toJson true)]
+    else if let some label ← tryBattery cfg env (mkNot statement) then
+      batteryRefuted := batteryRefuted + 1
+      emit stream <| Json.mkObj [
+        ("record", "battery_refutation"), ("statement", toJson (keyOf statement)),
+        ("tactic", toJson label), ("kernel_checked", toJson true)]
   emit stream <| Json.mkObj [
     ("record", "summary"), ("theorems", toJson theoremCount),
     ("battery_leaves", toJson leaves.size),
     ("battery_tried", toJson batteryTried),
     ("battery_closed", toJson batteryClosed),
+    ("battery_refuted", toJson batteryRefuted),
     ("compositions", toJson compositions),
     ("kernel_checked_compositions", toJson checkedCompositions),
     ("statements_discovered", toJson state.queue.size),

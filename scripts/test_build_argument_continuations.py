@@ -113,6 +113,10 @@ class ToyGraph(unittest.TestCase):
         self.assertIn(self.k("ToyCorpus.Target"), graph.supplied)
         self.assertEqual(graph.disguise_classes(), [])
         self.assertNotIn(self.k("∀ (n : Nat), n ≥ 7"), graph.supplied)
+        # The battery refutes 3 ≥ 7, so supply_ge's instance at 3 is a dead route,
+        # and nothing is both supplied and refuted.
+        self.assertIn(self.k("3 ≥ 7"), graph.refuted)
+        self.assertEqual(graph.inconsistent, [])
         self.assertTrue(any(row.get("kernel_checked") for row in graph.compositions_checked))
 
     def test_projection_writes(self) -> None:

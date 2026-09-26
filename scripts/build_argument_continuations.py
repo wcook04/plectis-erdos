@@ -205,6 +205,8 @@ class Graph:
         self.errors: list[dict[str, Any]] = []
         self.alias: dict[str, str] = {}
         self.compositions_checked: list[dict[str, Any]] = []
+        # refutation: (statement, producer, reading, residual keys)
+        self.refutations: list[tuple[str, str, str, tuple[str, ...]]] = []
         self._ingest(rows)
 
     def canon(self, key: str) -> str:
@@ -241,6 +243,9 @@ class Graph:
                 "conclusion_closed": row.get("conclusion") is not None, "data_binders": [],
                 "card": {k: row[k] for k in ("source", "papers", "comparator_result", "problem") if k in row},
             }
+        for row in payload.get("refutations", []):
+            graph.refutations.append((row["statement"], row["producer"], row.get("reading", "conclusion"),
+                                      tuple(row.get("residuals", []))))
         graph.existential = payload.get("existential_reductions", [])
         graph.budget_exhausted = payload.get("budget_exhausted", [])
         return graph
@@ -353,6 +358,16 @@ class Graph:
                 add_reduction(row["statement"], f"tactic:{row.get('tactic')}", "battery", ())
             elif record == "composition":
                 self.compositions_checked.append(row)
+            elif record == "refutation" and row.get("status") == "matched" and not row.get("open_data"):
+                residuals = row.get("residuals", [])
+                if not any(r.get("has_open_data") for r in residuals):
+                    for residual in residuals:
+                        self._statement(residual["key"], residual.get("type"), "residual")
+                    self.refutations.append((canon(row["statement"]), row["producer"],
+                                             row.get("reading", "conclusion"),
+                                             tuple(sorted({canon(r["key"]) for r in residuals}))))
+            elif record == "battery_refutation" and self.include_battery and row.get("kernel_checked"):
+                self.refutations.append((canon(row["statement"]), f"tactic:{row.get('tactic')}", "battery", ()))
             elif record == "candidate_cap":
                 self.caps.append(row)
             elif record in ("theorem_error", "statement_error"):
@@ -403,7 +418,17 @@ class Graph:
 
     def analyse(self) -> None:
         self.supplied, self.witness = self.supply()
+        self.refuted: dict[str, tuple[str, str]] = {}
+        for statement, producer, reading, residuals in self.refutations:
+            if statement not in self.refuted and all(r in self.supplied for r in residuals):
+                self.refuted[statement] = (producer, reading)
+        # A statement both supplied and refuted would mean the corpus proves a
+        # contradiction (or that two different statements share a key).
+        self.inconsistent = sorted(set(self.refuted) & self.supplied)
         self.open = {key for key in self.statements if key not in self.supplied}
+        self.vacuous_theorems = sorted(
+            (name, key) for name, theorem in self.theorems.items()
+            for key in theorem.get("hypotheses", []) if key in self.refuted)
         # Reduced reductions of open heads: residuals minus supplied.
         self.reduced: list[tuple[str, str, str, tuple[str, ...]]] = []
         for head, producer, reading, residuals in self.reductions:
@@ -533,7 +558,9 @@ class Graph:
             return result
 
         found = expand(key, 0, frozenset())
-        out = [sorted(bundle) for bundle in found if bundle != frozenset([key])]
+        refuted = getattr(self, "refuted", {})
+        out = [sorted(bundle) for bundle in found
+               if bundle != frozenset([key]) and not any(member in refuted for member in bundle)]
         return out, truncated
 
     @property
@@ -844,6 +871,9 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         "export_truncated": bool(graph.summary.get("truncated")),
         "battery_closed_statements": sum(1 for (_, producer, _, _) in graph.reductions
                                          if producer.startswith("tactic:")),
+        "refuted_statements": len(graph.refuted),
+        "vacuous_theorems": len({name for name, _ in graph.vacuous_theorems}),
+        "supplied_and_refuted": len(graph.inconsistent),
         "kernel_checked_compositions": sum(1 for row in graph.compositions_checked
                                            if row.get("kernel_checked")),
         "compositions": len(composed),
@@ -876,12 +906,24 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
             "leverage": "number of open statements supplied once the statement is supplied",
             "sink": "an open statement with a reduction into it that implies nothing outside its own class",
             "composition": "a statement supplied only by chaining a conditional theorem with hypotheses other theorems prove",
+            "refuted": "a corpus theorem (or a kernel-checked battery proof) establishes the negation, with every residual supplied",
+            "vacuous_theorem": "a conditional theorem with a refuted closed hypothesis: it can never be applied",
             "audit": "authored logical classes and open antecedents checked against the kernel graph",
         },
         "source": source,
         "summary": summary,
         "problems": per_problem,
         "compositions": composed[:LIST_LIMIT * 3],
+        "refuted": [
+            {"key": key, "type": graph.statements.get(key, {}).get("type"), "refuted_by": producer,
+             "reading": reading, "consumers": sorted(graph.statements.get(key, {}).get("consumers", ()))[:12]}
+            for key, (producer, reading) in sorted(graph.refuted.items())][:LIST_LIMIT * 3],
+        "vacuous_theorems": [
+            {"theorem": name, "refuted_hypothesis": key,
+             "type": graph.statements.get(key, {}).get("type"), "refuted_by": graph.refuted[key][0]}
+            for name, key in graph.vacuous_theorems][:LIST_LIMIT * 3],
+        "supplied_and_refuted": [
+            {"key": key, "type": graph.statements.get(key, {}).get("type")} for key in graph.inconsistent],
         "audit": audit,
     }
     graph_payload = {
@@ -892,7 +934,8 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
                 "key": key,
                 "type": node.get("type"),
                 "origins": sorted(node["origins"]),
-                "status": "supplied" if key in graph.supplied else "open",
+                "status": ("supplied" if key in graph.supplied
+                           else "refuted" if key in graph.refuted else "open"),
                 "problems": sorted(statement_problems.get(key, ())),
                 "consumers": sorted(node["consumers"]),
                 "conclusion_of": sorted(node["conclusion_of"]),
@@ -908,6 +951,9 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
             {"statement": head, "producer": producer, "reading": reading, "residuals": list(residuals)}
             for head, producer, reading, residuals in graph.reductions
         ],
+        "refutations": [
+            {"statement": st, "producer": pr, "reading": rd, "residuals": list(rs)}
+            for st, pr, rd, rs in graph.refutations],
         "existential_reductions": graph.existential,
         "budget_exhausted": graph.budget_exhausted,
         "theorems": [
@@ -945,6 +991,8 @@ def paper_macro_region(projection: dict[str, Any]) -> str:
         "AGBatteryClosed": summary.get("battery_closed_statements", 0),
         "AGBatteryTried": export.get("battery_tried", 0),
         "AGBudgetExhausted": summary["budget_exhausted_attempts"],
+        "AGRefuted": summary["refuted_statements"],
+        "AGVacuous": summary["vacuous_theorems"],
         "AGLabelDisagreements": summary["semantic_label_disagreements"],
     }
     lines = [TEX_MACROS_BEGIN]

@@ -193,6 +193,9 @@ def main() -> int:
     expect("ToyCorpus.EvenP 3" in battery, f"the battery closes EvenP 3 after unfolding: {battery}")
     expect("∀ (n : Nat), n ≥ 7" not in battery, f"the battery must not close a false statement: {battery}")
     expect("3 ≥ 7" not in battery, "the battery must not close 3 ≥ 7")
+    refuted = {statements[r["statement"]]["type"] for r in rows if r["record"] == "battery_refutation"}
+    expect("3 ≥ 7" in refuted, f"the battery refutes 3 ≥ 7: {refuted}")
+    expect("ToyCorpus.EvenP 3" not in refuted, "a true statement must not be refuted")
 
     expect(summary["truncated"] is False, "toy export must not truncate")
     expect(summary["theorems"] == len(theorems), "summary theorem count")
