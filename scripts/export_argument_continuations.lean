@@ -48,7 +48,8 @@ source-coordinate join and the argument graph. Environment variables:
   wall-clock budget for the tactic battery on open leaves (defaults 40000 and
   1200);
 * `PLECTIS_CONTINUATION_IDLE_SECONDS`: wall-clock budget for the idle-hypothesis
-  pass (default 600).
+  pass (default 600);
+* `PLECTIS_CONTINUATION_WORKERS`: statements searched in parallel (default 4).
 
 After the producer search, three more passes run. Pass 3 composes each
 conditional theorem whose closed hypotheses all have a residual-free producer
@@ -81,6 +82,7 @@ structure Config where
   batteryHeartbeats : Nat
   batteryBudgetMs : Nat
   idleBudgetMs : Nat
+  workers : Nat
 
 private def squeeze (s : String) : String :=
   String.ofList (s.toList.filter fun c => !c.isWhitespace)
@@ -108,6 +110,7 @@ def readConfig : IO Config := do
     batteryHeartbeats := ← envNat "PLECTIS_CONTINUATION_BATTERY_HEARTBEATS" 40000
     batteryBudgetMs := (← envNat "PLECTIS_CONTINUATION_BATTERY_SECONDS" 1200) * 1000
     idleBudgetMs := (← envNat "PLECTIS_CONTINUATION_IDLE_SECONDS" 600) * 1000
+    workers := max 1 (← envNat "PLECTIS_CONTINUATION_WORKERS" 4)
   }
 
 def exportStream : IO IO.FS.Stream := do
@@ -610,9 +613,11 @@ def searchProducers (cfg : Config) (producers : Std.HashMap Name (Array Producer
       | some outcome =>
           let mut residualRows : Array Json := #[]
           for r in outcome.residuals do
-            residualRows := residualRows.push <| Json.mkObj [
-              ("key", toJson (keyOf r)), ("type", toJson (← render r)),
-              ("has_open_data", toJson r.hasMVar)]
+            -- A residual with a metavariable is not a statement: its
+            -- rendering names an arbitrary metavariable, so it gets no key.
+            residualRows := residualRows.push <| Json.mkObj <|
+              (if r.hasMVar then [] else [("key", toJson (keyOf r))]) ++
+              [("type", toJson (← render r)), ("has_open_data", toJson r.hasMVar)]
           rows := rows.push (Json.mkObj [
             ("record", toJson recordName), ("statement", toJson key),
             ("producer", toJson p.name.toString), ("reading", toJson p.reading),
@@ -670,6 +675,32 @@ def tryBattery (cfg : Config) (env : Environment) (statement : Expr) :
     modifyThe Core.State fun st => { st with messages := {} }
     if accepted then return some label
   return none
+
+/-- The producer and refutation searches of one wave of statements, run in
+parallel tasks. Each task gets its own copy of the elaboration state over the
+shared (immutable) environment and returns closed terms only, so the results
+are merged by the caller in wave order. -/
+def searchWave (cfg : Config) (producers : Std.HashMap Name (Array Producer)) (budget : Nat)
+    (wave : Array (Expr × Bool)) :
+    MetaM (Array (Except String (Array (Json × Array Expr)) × Except String (Array (Json × Array Expr)))) := do
+  let coreContext ← readThe Core.Context
+  let coreState ← getThe Core.State
+  let one (statement : Expr) (refute : Bool) :
+      MetaM (Except String (Array (Json × Array Expr)) × Except String (Array (Json × Array Expr))) := do
+    let key := keyOf statement
+    let searched ← budgeted budget <| searchProducers cfg producers key "match" statement
+    let refutations ← if refute then
+        budgeted budget <| searchProducers cfg producers key "refutation" (mkNot statement)
+      else pure (.ok #[])
+    return (searched, refutations)
+  let tasks ← wave.mapM fun (statement, refute) =>
+    IO.asTask do
+      let (result, _, _) ← (one statement refute).toIO coreContext coreState
+      return result
+  tasks.mapM fun task => do
+    match ← IO.wait task with
+    | .ok result => return result
+    | .error error => return (.error s!"task_error: {error}", .ok #[])
 
 def exportAll : Elab.TermElabM Unit := do
   let cfg ← readConfig
@@ -730,6 +761,9 @@ def exportAll : Elab.TermElabM Unit := do
   -- only on work outside the attempts.
   let searchBudget := cfg.matchHeartbeats * (cfg.maxCandidates + 4) * 2
   let mut cursor := 0
+  let mut outcomes : Array (Except String (Array (Json × Array Expr)) ×
+      Except String (Array (Json × Array Expr))) := #[]
+  let mut outcomeBase := 0
   while cursor < state.queue.size do
     if state.processed ≥ cfg.maxStatements then
       state := { state with truncated := true }
@@ -737,19 +771,26 @@ def exportAll : Elab.TermElabM Unit := do
     if (← IO.monoMsNow) - startMs > cfg.timeBudgetMs then
       state := { state with truncated := true }
       break
+    -- A wave: the next statements of the queue, searched in parallel. The
+    -- refutation search covers antecedents (where a refutation turns a
+    -- conditional argument vacuous) known when the wave starts; the late
+    -- pass below covers the rest.
+    if cursor ≥ outcomeBase + outcomes.size then
+      let stop := min state.queue.size (min (cursor + 2 * cfg.workers) (cursor + (cfg.maxStatements - state.processed)))
+      let mut wave : Array (Expr × Bool) := #[]
+      for (statement, _) in state.queue.extract cursor stop do
+        let key := keyOf statement
+        let refute := state.antecedents.contains key
+        if refute then
+          state := { state with refutationSearched := state.refutationSearched.insert key }
+        wave := wave.push (statement, refute)
+      outcomes ← searchWave cfg producers searchBudget wave
+      outcomeBase := cursor
     let (statement, origin) := state.queue[cursor]!
+    let (searched, refutations) := outcomes[cursor - outcomeBase]!
     cursor := cursor + 1
     state := { state with processed := state.processed + 1 }
     let key := keyOf statement
-    let searched ← budgeted searchBudget <| searchProducers cfg producers key "match" statement
-    -- Refutation search: corpus theorems proving the negation. Only for
-    -- antecedents, where a refutation turns a conditional argument vacuous.
-    let refute := state.antecedents.contains key
-    if refute then
-      state := { state with refutationSearched := state.refutationSearched.insert key }
-    let refutations ← if refute then
-        budgeted searchBudget <| searchProducers cfg producers key "refutation" (mkNot statement)
-      else pure (.ok #[])
     emit stream <| Json.mkObj [
       ("record", "statement"), ("key", toJson key), ("origin", toJson origin),
       ("type", toJson (← render statement)),
