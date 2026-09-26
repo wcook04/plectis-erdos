@@ -152,8 +152,13 @@ python3 research/experiments/choices_contraction/verify_terminal_witness.py \
 ```
 
 The checker refuses `not_excluded` rows, including mixed files containing
-one. It has a horizon resource limit of 512; refusal beyond that limit is
-not a mathematical verdict. A checked terminal row is an exact finite
+one. It has a horizon resource limit of 512. Rational fields use ASCII integer
+or fraction strings such as `0`, `189/388` or `-1/3`, with at most 4,300 digits
+in each numerator and denominator. Decimal, exponent, underscore and whitespace
+forms are refused before conversion; Python's integer-string guard remains
+enabled and may impose a stricter limit. Refusal at a resource or input boundary
+is not a mathematical verdict. Canonical exports within these bounds retain
+their existing meaning. A checked terminal row is an exact finite
 certificate, not a Lean check or a decision about all rational targets.
 
 ```sh

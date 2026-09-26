@@ -15,8 +15,10 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from fractions import Fraction
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -118,6 +120,67 @@ console.log(JSON.stringify(cases.map(c => {
         self.assertIn('prefers-reduced-motion', self.html)
         self.assertIn('current=null;', self.html)
         self.assertIn('finite survival is not a certificate', self.html)
+
+    def test_checker_rejects_expanding_forms_before_fraction_conversion(self):
+        # Compact exponent notation must never reach Fraction: the exponent
+        # could otherwise allocate integers unrelated to the horizon limit.
+        invalid = ("1e1000000000", "1E-1000000000", "0.5", "1.", ".5",
+                   "1_000", " 1/3", "1 / 3", "+1", "１/３", "1/2/3", "")
+        with patch.object(self.checker, "Fraction", side_effect=AssertionError("Fraction called")):
+            for value in invalid:
+                with self.subTest(value=value), self.assertRaisesRegex(ValueError, "integer or fraction"):
+                    self.checker.rational(value, "target")
+
+    def test_checker_digit_limit_applies_to_each_component_before_conversion(self):
+        too_many = "9" * (self.checker.MAX_RATIONAL_DIGITS + 1)
+        with patch.object(self.checker, "Fraction", side_effect=AssertionError("Fraction called")):
+            for value in (too_many, "-" + too_many, "1/" + too_many,
+                          too_many + "/" + too_many):
+                with self.subTest(length=len(value)), self.assertRaisesRegex(ValueError, "digit limit"):
+                    self.checker.rational(value, "target")
+
+    def test_checker_accepts_boundary_fractions_without_changing_integer_guard(self):
+        before = sys.get_int_max_str_digits()
+        digits = min(self.checker.MAX_RATIONAL_DIGITS, before or self.checker.MAX_RATIONAL_DIGITS)
+        component = "9" * digits
+        number = 10 ** digits - 1
+        for value, expected in ((component, Fraction(number)),
+                                ("-" + component, Fraction(-number)),
+                                ("1/" + component, Fraction(1, number)),
+                                (component + "/" + component, Fraction(1)),
+                                ("0", Fraction(0)), ("189/388", Fraction(189, 388))):
+            self.assertEqual(self.checker.rational(value, "target"), expected)
+        self.assertEqual(sys.get_int_max_str_digits(), before)
+        for value in ("1/0", "0/0"):
+            with self.assertRaisesRegex(ValueError, "invalid target"):
+                self.checker.rational(value, "target")
+
+    def test_checker_refuses_expanding_record_under_optimized_python(self):
+        row = self.run_cases([["1/3", "all", 17]])[0]["ok"]["row"]
+        row["target"] = "1e1000000000"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "malformed.json"
+            path.write_text(json.dumps({"rows": [row]}))
+            result = subprocess.run([sys.executable, "-I", "-O",
+                                     str(HOME / "verify_terminal_witness.py"), str(path)],
+                                    text=True, capture_output=True, timeout=5)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("target must be an integer or fraction", result.stderr)
+
+    def test_checker_respects_a_stricter_python_integer_guard(self):
+        driver = """
+import runpy, sys
+checker = runpy.run_path(sys.argv[1])
+try:
+    checker['rational']('9' * 641, 'target')
+except ValueError:
+    assert sys.get_int_max_str_digits() == 640
+else:
+    raise AssertionError('stricter Python integer guard was bypassed')
+"""
+        subprocess.run([sys.executable, "-I", "-X", "int_max_str_digits=640", "-c", driver,
+                        str(HOME / "verify_terminal_witness.py")],
+                       text=True, capture_output=True, check=True, timeout=5)
 
 
 if __name__ == "__main__":
