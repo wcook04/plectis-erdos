@@ -255,7 +255,7 @@ def write_runtime_receipt(path: Path, receipt: dict[str, Any]) -> Path:
 def is_expected_negative_rejection(
     exit_code: int, log_text: str, expected: str = EXPECTED_MISMATCH
 ) -> bool:
-    return exit_code != 0 and expected in log_text
+    return exit_code == 1 and bool(expected) and expected in log_text
 
 
 def runtime_statement_contract(owner: dict, packet: dict) -> dict:

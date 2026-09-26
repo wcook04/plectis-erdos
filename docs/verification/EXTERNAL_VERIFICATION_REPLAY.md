@@ -79,7 +79,13 @@ python3 scripts/replay_external_verification.py plan \
 
 `plan` shows the selected source, statement, controls, and security contract;
 it does not probe the host. `run` checks host prerequisites before fetching or
-building anything.
+building anything. Use the runner from the selected commit. After fetching that
+commit, it compares the loaded runner and `validation_singleflight.py` bytes
+with those in the fetched tree before running the costly checks. The receipt's
+`effective_verifier` row records both pairs of digests and must say
+`identity_verified: true` for a passing run. An older receipt without this row
+was produced under the earlier replay contract and does not establish this
+loaded-code binding.
 
 Then run the isolated replay:
 
@@ -152,7 +158,8 @@ Use the existing [research progress or correction form](https://github.com/wcook
 for a successful, failed, or incomplete outside run. A completed independent
 replay should include the full receipt JSON (attached or linked), its SHA-256,
 the source commit and tree, Linux and systemd mode, the positive and deliberate
-mismatch verdicts, and the `failure_controls` result with its four `observed`
+mismatch verdicts, the `effective_verifier` identity row, and the
+`failure_controls` result with its four `observed`
 control IDs for `weighted-support`. Say what was unclear on first use and how
 you want the work credited. If setup stops before a receipt can be written,
 give the exact command and diagnostic instead; do not select the

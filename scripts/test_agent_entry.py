@@ -22,6 +22,15 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "check my rational candidate for subsum membership": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Prove a new theorem involving 189/388": (
+        "bounded_research", "mine-open-problem",
+    ),
     "I want to reproduce the #257 weighted theorem with Comparator from a clean checkout": (
         "comparator_replay", "explain-public-system",
     ),

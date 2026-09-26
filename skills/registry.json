@@ -189,6 +189,31 @@
   ],
   "lanes": [
     {
+      "id": "rational_subsum_probe",
+      "title": "Test one reciprocal-Mersenne rational candidate exactly",
+      "task_cues": [
+        "rational membership probe",
+        "test a rational candidate",
+        "reciprocal mersenne subsum",
+        "greedy subsum test"
+      ],
+      "task_intents": [
+        {
+          "actions": ["test", "check", "probe", "classify"],
+          "objects": ["rational", "fraction", "subsum"]
+        }
+      ],
+      "skills": ["explain-public-system"],
+      "read": [
+        "skills/explain-public-system/SKILL.md#test-one-rational-subsum-candidate",
+        "research/experiments/choices_contraction/README.md#the-probe"
+      ],
+      "commands": [
+        "python3 research/experiments/choices_contraction/rational_membership_probe.py --target 189/388 --depth 16 17 --horizon 160 --json"
+      ],
+      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erdős #257."
+    },
+    {
       "id": "comparator_replay",
       "title": "Reproduce a selected theorem with the external Comparator",
       "task_cues": [

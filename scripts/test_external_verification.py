@@ -576,6 +576,9 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         self.assertFalse(is_expected_negative_rejection(125, "systemd unavailable"))
         self.assertFalse(is_expected_negative_rejection(127, "landrun: command not found"))
+        for code in (0, 2, 130, 137, 143, -9, -15):
+            self.assertFalse(is_expected_negative_rejection(code, EXPECTED_MISMATCH))
+        self.assertFalse(is_expected_negative_rejection(1, '', ''))
 
     def test_ci_separates_core_builds_from_external_and_paper_only_changes(self) -> None:
         workflow = (ROOT / ".github/workflows/lean.yml").read_text()
