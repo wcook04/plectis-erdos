@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="thm-greedy-survival-catalogue"></a>
 
-## Theorem 6.35 (Greedy survival and membership), page 51
+## Theorem 6.35 (Greedy survival and membership), page 52
 
 > *With the greedy remainder $`r_n(x)`$ and complete tail $`R_n`$,
 > ``` math
@@ -35,7 +35,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-rank-step-trichotomy"></a>
 
-## Lemma 6.36 (The two next-prefix intervals and their gap), page 51
+## Lemma 6.36 (The two next-prefix intervals and their gap), page 52
 
 > *Let $`d\ge0`$ be an integer, let $`u\subseteq\{1,\ldots,d\}`$, and suppose the target $`t`$ lies in the interval $`[X_u(2),X_u(2)+R_d]`$. At depth $`d+1`$, either $`t`$ lies in the lower interval
 > ``` math
@@ -108,7 +108,7 @@ theorem IsStraddlePrefix.half_strict {u : Finset ℕ} {d : ℕ}
 
 <a id="lem-fatal-gap-exclusion"></a>
 
-## Lemma 6.37 (A greedy gap excludes every representation), page 51
+## Lemma 6.37 (A greedy gap excludes every representation), page 52
 
 > *Let $`d\ge0`$ be an integer and $`u\subseteq\{1,\ldots,d\}`$ a finite prefix. If
 > ``` math
@@ -179,7 +179,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-half-endpoint-kills"></a>
 
-## Lemma 6.38 (No finite Mersenne sum equals one half), page 52
+## Lemma 6.38 (No finite Mersenne sum equals one half), page 53
 
 > *For every finite $`u\subseteq\mathbb N_{>0}`$, $`X_u(2)\ne1/2`$: its reduced denominator is odd. Also $`X_u(2)+R_d\ne1/2`$ for every $`d\ge0`$, since $`R_d`$ is the irrational full Mersenne sum minus a finite rational sum. These observations exclude equality at the finite-prefix and complete-tail endpoints of Lemma 6.36.*
 
@@ -215,7 +215,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-straddle-agrees-greedy"></a>
 
-## Lemma 6.39 (Straddle words are canonical: they agree with the greedy prefix), page 52
+## Lemma 6.39 (Straddle words are canonical: they agree with the greedy prefix), page 53
 
 > *Let $`u\subseteq\{1,\ldots,d\}`$ satisfy $`X_u(2)\le1/2\le X_u(2)+R_d`$. Then
 > ``` math
@@ -247,7 +247,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-last-skip-iff-fatal"></a>
 
-## Theorem 6.40 (Last-skip iff local fatality: a pointwise criterion), page 52
+## Theorem 6.40 (Last-skip iff local fatality: a pointwise criterion), page 53
 
 > *Keep $`G`$ for the selected half-greedy support, $`r_M(1/2)`$ for its remainder and $`R_M`$ for the complete tail after rank $`M`$. A positive rank $`M`$ is the last omitted rank if and only if $`M\notin G`$ and $`r_M(1/2)>R_M`$. Consequently,
 > ``` math
@@ -292,7 +292,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-seam-upper-or-middle"></a>
 
-## Lemma 6.41 (Seam upper-or-middle classification), page 52
+## Lemma 6.41 (Seam upper-or-middle classification), page 53
 
 > *At a row $`s\ge5`$, the terminal rank is omitted in the next row, $`s\notin D_{s+1}`$, if and only if either
 > ``` math
@@ -328,7 +328,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-largest-false-rank-algebra"></a>
 
-## Lemma 6.42 (The exact gap at the largest omitted rank), page 52
+## Lemma 6.42 (The exact gap at the largest omitted rank), page 53
 
 > *Let $`2\le d<s`$ and $`2s<3d`$. Write $`W_s(E)=\sum_{e\in E}\lfloor4^s/(2^e-1)\rfloor`$ for a finite set $`E\subseteq\{2,\ldots,s-1\}`$. For $`u\subseteq\{2,\ldots,d-1\}`$, put $`E_-=u\cup\{d+1,\ldots,s-1\}`$ and $`E_+=u\cup\{d\}`$. Then
 > ``` math
@@ -378,7 +378,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-critical-dyadic-band"></a>
 
-## Theorem 6.43 (Reduction to the nearest dyadic boundary), page 53
+## Theorem 6.43 (Reduction to the nearest dyadic boundary), page 54
 
 > *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let $`j_*`$ be the largest $`j\in\{0,\ldots,d\}`$ for which $`E\le2^{d-j+1}`$. The set is nonempty, so $`j_*`$ is well defined, including when $`E=0`$. Then
 > ``` math
@@ -432,7 +432,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-final-middle-cell"></a>
 
-## Theorem 6.44 (Excluding minus three at a final middle transition), page 53
+## Theorem 6.44 (Excluding minus three at a final middle transition), page 54
 
 > *Suppose that row $`D\ge13`$ is a middle transition in Theorem 5.16 and every transition at a row $`s\ge D+1`$ is right. Then
 > ``` math
@@ -483,7 +483,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-skipped-endpoint-trichotomy"></a>
 
-## Lemma 6.45 (The signed position of a skipped greedy prefix), page 54
+## Lemma 6.45 (The signed position of a skipped greedy prefix), page 55
 
 > *Let $`s\ge5`$ be omitted by the real greedy support $`G`$, and put
 > ``` math
@@ -535,7 +535,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-reverse-carry-word"></a>
 
-## Lemma 6.46 (Spacing of reverse-carry words), page 54
+## Lemma 6.46 (Spacing of reverse-carry words), page 55
 
 > *For $`i=1,2`$, let integer sequences $`a_i,b_i,u_i`$ satisfy
 > ``` math
@@ -609,7 +609,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-linear-channel-nogo"></a>
 
-## Lemma 6.47 (Linear functionals factoring through one value), page 54
+## Lemma 6.47 (Linear functionals factoring through one value), page 55
 
 > *Let $`V`$ be a vector space over $`\mathbb Q`$, let $`\mathrm{ev}:V\to\mathbb Q`$ be linear, and choose $`e\in V`$ with $`\mathrm{ev}(e)=1`$. Suppose that each linear functional $`\ell_j:V\to\mathbb Q`$ vanishes on $`\ker(\mathrm{ev})`$. Then $`v-\mathrm{ev}(v)e\in\ker(\mathrm{ev})`$ gives $`\ell_j(v)=\ell_j(e)\mathrm{ev}(v)`$. Consequently any finite evaluation matrix $`(\ell_j(v_i))_{i,j}`$ is an outer product and has rank at most one. Every square minor of order at least two therefore vanishes. This excludes determinant arguments formed from these particular functionals, not determinant methods with additional independent information.*
 
@@ -652,7 +652,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-two-thirds-band"></a>
 
-## Theorem 6.48 (Two-thirds band: exact localisation of post-take skip-unsafety), page 54
+## Theorem 6.48 (Two-thirds band: exact localisation of post-take skip-unsafety), page 55
 
 > *Write a positive residual as $`1/R`$. A skipped rank $`k`$ passes the sufficient dyadic test precisely when $`R\ge2^k`$. Suppose a weight at rank $`b`$ is taken without exhausting the residual: with $`q=2^b-1`$, assume $`0<R<q`$. The new reciprocal residual is $`Rq/(q-R)`$. If the next take is at rank $`c\ge b+2`$, put $`m=2^{c-1}`$. The last skipped rank is dyadically unsafe exactly when
 > ``` math
@@ -713,7 +713,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-sharp-fatal-gap"></a>
 
-## Theorem 6.49 (A weaker sufficient test against the remaining tail), page 55
+## Theorem 6.49 (A weaker sufficient test against the remaining tail), page 56
 
 > *Let $`k,u,L`$ be positive integers, and put $`a=2L-(2^k-1)u`$. Suppose $`a>0`$, equivalently that $`\rho=u/(2L)<w_k`$ and the greedy rule skips weight $`w_k`$. The dyadic sufficient test $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$. The weaker sufficient condition
 > ``` math
@@ -761,7 +761,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-gap-mass-summability"></a>
 
-## Lemma 6.50 (Summability of one gap length per level), page 55
+## Lemma 6.50 (Summability of one gap length per level), page 56
 
 > *For $`n\ge1`$, put $`g_n=w_n-R_n>0`$. The sum of one gap length per level satisfies, for $`N\ge0`$,
 > ``` math
@@ -814,7 +814,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-half-divisor-unit-drop"></a>
 
-## Lemma 6.51 (The effect of adding one divisor), page 55
+## Lemma 6.51 (The effect of adding one divisor), page 56
 
 > *Let $`N\ge0`$ and let finite supports $`D_0,D_1`$ differ only by $`D_1=D_0\cup\{N+1\}`$, with $`N+1\notin D_0`$. For every positive integer $`m`$,
 > ``` math
@@ -855,7 +855,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-tempered-orbit-rigidity"></a>
 
-## Theorem 6.52 (Uniqueness of an integer recurrence with a vanishing scaled limit), page 56
+## Theorem 6.52 (Uniqueness of an integer recurrence with a vanishing scaled limit), page 57
 
 > *For any nonnegative-integer coefficient sequence $`c:\mathbb N\to\mathbb N`$ with $`c(n)\le
 > n`$: the binary coefficient series $`X_c = \sum'_{n\ge 1} c(n)/2^n`$ is rational iff there exists a positive integer multiplier $`v`$ and an integer orbit $`u:\mathbb N\to\mathbb Z`$ satisfying the exact carry recurrence $`u(N{+}1)=2u(N)-v\cdot c(N{+}1)`$ together with the condition $`u(N)/2^N\to0`$. Every integer sequence satisfying both conditions obeys $`u(N) = v\cdot T_c(N)`$ exactly, where $`T_c(N)=\sum_{j\ge 1} c(N{+}j)/2^j`$ is the scaled tail. For each fixed $`v`$ there is at most one such sequence. Positivity of the orbit alone is deliberately *not* used as an equivalent criterion: a homogeneous $`2^N`$-scaled perturbation can be added to any orbit without breaking the recurrence, so the limit condition cannot be dropped. The choices $`c=c_A`$ for Problem 257 and $`c=\varphi`$ for Problem 249 both satisfy $`0\le c(n)\le n`$. The telescoping argument is given again, with an example, in Theorem 6.105.*
@@ -893,7 +893,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-tail-transfer"></a>
 
-## Lemma 6.53 (Changing finitely many support elements), page 56
+## Lemma 6.53 (Changing finitely many support elements), page 57
 
 > *Let $`b\ge2`$ be an integer, and let $`A,B\subseteq\mathbb N_{\ge1}`$. If $`X_A(b)`$ is irrational and $`A,B`$ have finite symmetric difference, then $`X_B(b)`$ is irrational too: the two sums differ by a finite sum of rational numbers. This observation supplies the finite modifications in Theorem 6.21.*
 
@@ -928,7 +928,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-dyadic-excess-reformulation"></a>
 
-## Lemma 6.54 (An integer test for the interval between the dyadic and Mersenne weights), page 56
+## Lemma 6.54 (An integer test for the interval between the dyadic and Mersenne weights), page 57
 
 > *For positive integers $`p,L`$ and $`n\ge0`$, write the residual as $`p/(2L)`$ and put $`E=2^np-L`$. Clearing positive denominators gives
 > ``` math
@@ -980,7 +980,7 @@ theorem divInt_mem_nextMersenneDyadicSliver_iff_excess
 
 <a id="lem-denominator-sandwich"></a>
 
-## Lemma 6.55 (The odd denominator survives dyadic subtraction), page 56
+## Lemma 6.55 (The odd denominator survives dyadic subtraction), page 57
 
 > *Let $`r/D`$ be a reduced fraction with $`D>0`$ odd, let $`p\in\mathbb Z`$, and let $`c\ge0`$ be an integer. The reduced denominator of $`p/2^c-r/D`$ is divisible by $`D`$ and divides $`2^cD`$. Indeed, its unreduced numerator $`pD-2^cr`$ is coprime to $`D`$, since $`\gcd(r,D)=\gcd(2^c,D)=1`$. Reduction can therefore remove only powers of $`2`$ from the displayed denominator. No property of Mersenne weights is used.*
 
@@ -1021,7 +1021,7 @@ theorem dyadicResidualIntNumerator_coprime_oddDenominator
 
 <a id="lem-denominator-survival"></a>
 
-## Lemma 6.56 (A guaranteed divisor of a reduced denominator), page 56
+## Lemma 6.56 (A guaranteed divisor of a reduced denominator), page 57
 
 > *Let $`a\in\mathbb Z`$, $`D\in\mathbb N_{>0}`$ and $`m,C,h\in\mathbb N`$. Write $`\operatorname{den}(x)`$ for the positive reduced denominator of a rational number $`x`$. If $`m\mid D`$ and $`\gcd(m,|a|)=1`$, then $`m\mid\operatorname{den}(a/D)`$. If $`C\mid D`$ and $`\gcd(C,|a|)=1`$, then
 > ``` math
@@ -1063,7 +1063,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-mixed-prime-power-layer"></a>
 
-## Lemma 6.57 (Commuting prime-power differences), page 56
+## Lemma 6.57 (Commuting prime-power differences), page 57
 
 > *For a function $`g:\mathbb N_{>0}\to\mathbb Z`$, a positive integer $`p`$ and an integer $`e\ge1`$, define
 > ``` math
@@ -1112,7 +1112,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-achievement-set-topology"></a>
 
-## Proposition 6.59 (Achievement-set topology: compact, closed, perfect, measure exactly one), page 57
+## Proposition 6.59 (Achievement-set topology: compact, closed, perfect, measure exactly one), page 58
 
 > *$`\ensuremath{\mathcal A}`$ is compact (continuous image of the binary-sequence Cantor space $`\mathbb N\to\mathrm{Fin}\,2`$ under the product topology, via the positive-index digit map), hence closed; it is also perfect, totally disconnected, and nowhere dense, with Lebesgue measure exactly $`1`$. The compactness/closedness argument (binary coding $`\to`$ Cantor space $`\to`$ continuous image) is a fully generic technique for characterizing the achievement set of *any* absolutely convergent digit-weighted series, not specific to Mersenne denominators ; reusable for a $`\varphi(n)/2^n`$ subsum set after checking summability. No separation of successive weights is needed for compactness or closedness; the stronger topological conclusions require their own hypotheses. Closedness alone is what powers every “limit of a sequence of achieved points is achieved” argument in this catalogue (e.g. Theorem 6.2, Theorem 6.5).*
 
@@ -1144,7 +1144,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-master-dichotomy"></a>
 
-## Theorem 6.60 (Nonmembership of one half and a finite fatal gap), page 58
+## Theorem 6.60 (Nonmembership of one half and a finite fatal gap), page 59
 
 > *The value $`1/2`$ is not in $`\mathcal A`$ if and only if there are an integer $`d\ge0`$ and a finite set $`u\subseteq\{1,\ldots,d\}`$ such that
 > ``` math
@@ -1188,7 +1188,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-perturbed-family-maximality"></a>
 
-## Theorem 6.62 (Perturbed-family maximality and the three-branch recurrence), page 58
+## Theorem 6.62 (Perturbed-family maximality and the three-branch recurrence), page 59
 
 > *Use the family and adjacent pair of Definition 6.61, and assume in addition that $`B<g`$. At capacity $`C'=4C+g`$, the largest admissible updated value is $`t(x_+)`$ if $`4o+p_+\le g`$, and $`t(x_-)`$ otherwise. After this choice, apply the take-if-possible rule to an additional weight $`W=2g+4`$. The resulting remainder is
 > ``` math
@@ -1254,7 +1254,7 @@ theorem prefixRemainder_eq_capacity_sub_choice
 
 <a id="record-257bm-c1"></a>
 
-## Theorem 6.67 (Compactness from exact finite sums), page 60
+## Theorem 6.67 (Compactness from exact finite sums), page 61
 
 > *Suppose the cofinal exact-row condition in Definition 6.66 holds. Then $`1/2\in\mathcal A`$. For each $`N`$, choose an exact row $`D_N`$ at depth $`n_N\ge\max\{N,1\}`$. Proposition 6.98 gives
 > ``` math
@@ -1306,7 +1306,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c2"></a>
 
-## Theorem 6.68 (Infinitely many greedy skips suffice), page 60
+## Theorem 6.68 (Infinitely many greedy skips suffice), page 61
 
 > *Suppose that the greedy remainder for $`1/2`$ satisfies
 > ``` math
@@ -1374,7 +1374,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c3"></a>
 
-## Theorem 6.69 (A compatible family of finite supports), page 61
+## Theorem 6.69 (A compatible family of finite supports), page 62
 
 > *Let $`b_{n,d}\in\{0,1\}`$ satisfy $`b_{n+1,d}=b_{n,d}`$ whenever $`2d\le n`$. Define
 > ``` math
@@ -1463,7 +1463,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c4"></a>
 
-## Theorem 6.70 (A sufficient quotient bound at a crossing), page 61
+## Theorem 6.70 (A sufficient quotient bound at a crossing), page 62
 
 > *Consider the following condition on finite sets $`D`$ and integers $`c\ge4`$:
 > ``` math
@@ -1522,7 +1522,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c5"></a>
 
-## Theorem 6.71 (Induction from the depth-six example), page 61
+## Theorem 6.71 (Induction from the depth-six example), page 62
 
 > *An already-formalised induction from the endpoint-six seed (Definition 6.97) consumes Theorem 6.70 at every step: each protected exact row either doubles below half (unconditional) or recycles at its first crossing rank $`e >`$ cutoff, giving endpoint $`2e-2 >`$ previous endpoint; protection (endpoint $`< 2\cdot`$cutoff, new ranks $`>`$ cutoff) is exactly what converts the non-growing recycle endpoint of the bare dichotomy (Theorem 6.127) into strict progress. The below-half branch never fires twice from the seed arithmetic, so the supply is needed at essentially every step. Its conclusion is the cofinal exact-row condition of Definition 6.66.*
 

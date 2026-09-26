@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="prop-cpgs-equiv"></a>
 
-## Proposition 12.3 (Infinitely many positive skips are equivalent to half-membership), page 130
+## Proposition 12.3 (Infinitely many positive skips are equivalent to half-membership), page 131
 
 > *Define
 > ``` math
@@ -53,7 +53,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-strip-equiv"></a>
 
-## Proposition 12.4 (Terminal carry bounds are equivalent to half-membership), page 131
+## Proposition 12.4 (Terminal carry bounds are equivalent to half-membership), page 132
 
 > *Consider finite sets $`D\subseteq\{2,\ldots,M\}`$ at arbitrarily large depths $`M`$ with
 > ``` math

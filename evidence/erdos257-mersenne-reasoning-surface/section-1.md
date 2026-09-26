@@ -73,6 +73,16 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.2 (realising finite monotone witness rules), page 13
 
+> *Let $`E`$ be a finite set of primes, and let $`\mathcal U`$ be an upward-closed family of subsets of $`E`$ with $`E\in\mathcal U`$ and $`\varnothing\notin\mathcal U`$. There is a set $`A_{\mathcal U}\subseteq\mathbb N_{>0}`$ with $`\sum_{a\in A_{\mathcal U}}1/a=\infty`$ such that, for every integer $`b\ge2`$ and every finite set $`\mathcal P`$ of primes,
+> ``` math
+> \begin{equation}
+> \label{eq:257-finite-witness-rule}
+>  W_{b,\mathcal P}(A_{\mathcal U})<\infty
+>  \quad\Longleftrightarrow\quad \mathcal P\cap E\in\mathcal U.
+> \end{equation}
+> ```
+> Moreover $`X_B(b)`$ is irrational for every infinite $`B\subseteq A_{\mathcal U}`$ and every integer $`b\ge2`$.*
+
 The Lean declaration below states this result or one that implies it. The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\varnothing)$; the printed family $\mathcal U$ on subsets of $E$ is the case $U(S)\iff S\cap E\in\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(\mathcal P\cap E)$ reads $\mathcal P\cap E\in\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,\mathcal P}(H)<\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.
 
 [`ErdosProblems.Erdos257.finite_monotone_witness_rule_realised`](https://github.com/wcook04/plectis-erdos/blob/76680ed44d018930bc9525d45d8d38bf513aa495/lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean#L39)
@@ -185,7 +195,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-geometry"></a>
 
-## Theorem 1.7 (Achievement-set geometry), page 20
+## Theorem 1.8 (Achievement-set geometry), page 21
 
 > *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 
@@ -216,7 +226,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-supported-dichotomy"></a>
 
-## Theorem 1.8 (Support-restricted refinement), page 20
+## Theorem 1.9 (Support-restricted refinement), page 21
 
 > *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
@@ -272,7 +282,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-greedy-survival"></a>
 
-## Theorem 1.10 (Membership equals greedy survival; the fatal-gap dichotomy), page 21
+## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 22
 
 > *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
 > ``` math
