@@ -3,11 +3,92 @@
 
 # Weighted Erdős #257 theorem on Prove2Me
 
+## Exact claim
+
+For a finite nonempty prime set $P$, let
+$h_P(a)=\prod_{p\in P}p^{v_p(a)}$. If $b\ge2$, $A$ is an infinite set of
+positive integers, and
+
+$$
+\sum_{a\in A}\frac{h_P(a)}{a(b^{h_P(a)}-1)}<\infty,
+$$
+
+then $\sum_{a\in A}(b^a-1)^{-1}$ is irrational. Separately, if a host $H$
+of positive integers has finite weighted mass at base two for some such $P$,
+then **every infinite subset** $A\subseteq H$ has an irrational support sum
+at **every** integer base $b\ge2$. The paper states both clauses and their
+hereditary consequences at `res:weighted-support` in
+`paper/257/erdos-257-mersenne-support-subseries.tex`.
+
+The exact Lean declaration is
+`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim` at
+`lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120`.
+Its conjunction type `DivisibilityWeightedClaim` and the weighted-mass
+definition `FinitePrimeWeighted` are in
+`lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean:75` and
+`:32`. The public claim row is `finite_prime_weighted_support` in
+`docs/claims.json`, status `formalised here`. The packet hashes the theorem,
+paper, and Lean claim-interface source, and checks the registered declaration
+line, paper label and exact open-proposition mapping.
+
+Lean checks the weighted criterion. The paper verifies an explicit
+reciprocal-divergent support to which it applies; that example is ordinary
+paper mathematics, not a separate Lean named-instance theorem. The criterion
+does **not** prove the universal Erdős #257 assertion for every infinite
+support. The registered
+remainder is `remaining_open.universal_257_all_infinite_supports`. No
+external novelty, priority, or peer-review verdict follows from this packet.
+
+## Accepted proof and public reuse
+
 The [paper Theorem 1 wrapper](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd)
 is public and **Proved** on Prove2Me in Lean 4.30.0 with Mathlib `c5ea003`.
 It combines the fixed-base hereditary criterion with the all-base conclusion
 from a base-two weighted witness. It is a new composition of two accepted
 Lean declarations, not a declaration copied verbatim from this checkout.
+
+**Reading the proof.** Prove2Me displays its formal challenge statement with
+`:= by sorry` even when the theorem is marked Proved. The accepted Solution is
+separate under **View graph → Solutions & Sketches**; the graph route asks
+signed-out readers to sign in. Without an account, start with the wrapper's
+two linked component theorems and their pinned public Lean sources:
+[fixed-base heredity](https://github.com/wcook04/plectis-erdos-lean/blob/c93c2e4dd86a2e317e0cb650ea244fee1afd59c2/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31)
+and the [all-base weighted claim](https://github.com/wcook04/plectis-erdos-lean/blob/c93c2e4dd86a2e317e0cb650ea244fee1afd59c2/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+The [paper's Theorem 1](../../paper/257/erdos-257-mersenne-support-subseries.tex)
+states the mathematical result and its context.
+
+Here is the accepted wrapper Solution as stored by Prove2Me on 25 September.
+It composes those two imports; the hard weighted criterion is in the imported
+proofs. The platform imports belong to Prove2Me's Lean 4.30.0 environment,
+not this checkout's Lean 4.29.1 toolchain. The public Proved badge and this
+copy are useful inspection evidence, while an independent replay still needs
+that pinned environment and its dependency graph.
+
+```lean
+import Theorems.Thm_ErdosProblems_Erdos257_PaperCompleteR8_finitePrimeWeighted_fixedBase_hereditary
+import Theorems.Thm_ErdosProblems_Erdos257_PaperCompleteR8_divisibilityWeightedClaim
+
+noncomputable section
+
+theorem solution :
+    (∀ (b : ℕ) (H : Set ℕ), 2 ≤ b → 0 ∉ H → H.Infinite →
+      ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted b H →
+      ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+        Irrational (Erdos249257.erdosSupportSeries b A)) ∧
+    (∀ H : Set ℕ, 0 ∉ H → H.Infinite →
+      ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted 2 H →
+      ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+        ∀ b : ℕ, 2 ≤ b →
+          Irrational (Erdos249257.erdosSupportSeries b A)) := by
+  constructor
+  · intro b H hb hH0 _ hweighted A hAH hA
+    exact ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary
+      b H hb hH0 hweighted A hAH hA
+  · intro H hH0 _ hweighted A hAH hA b hb
+    exact ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim.2
+      H hH0 hweighted A hAH hA b hb
+```
+
 A [finite-deletion consequence](https://prove2.me/theorems/617fa7c2-841e-4ab0-9f2c-7152d79e3891)
 is also public and Proved in the same environment. Its statement removes an
 arbitrary finite set from the weighted host. The stronger
@@ -20,15 +101,52 @@ also public and Proved. This is source-prepared native reuse across two
 results. These statuses do not establish outside first use, mathematical peer
 review, or the universal Erdős #257 claim.
 
-**Reading the proof.** Prove2Me displays its formal challenge statement with
-`:= by sorry` even when the theorem is marked Proved. The accepted Solution is
-separate under **View graph → Solutions & Sketches**; the graph route asks
-signed-out readers to sign in. Without an account, start with the wrapper's
-two linked component theorems and their pinned public Lean sources:
-[fixed-base heredity](https://github.com/wcook04/plectis-erdos-lean/blob/c93c2e4dd86a2e317e0cb650ea244fee1afd59c2/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31)
-and the [all-base weighted claim](https://github.com/wcook04/plectis-erdos-lean/blob/c93c2e4dd86a2e317e0cb650ea244fee1afd59c2/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
-The [paper's Theorem 1](../../paper/257/erdos-257-mersenne-support-subseries.tex)
-states the mathematical result and its context.
+## Support-class comparison
+
+The [paper's support-class comparison](../../paper/257/erdos-257-mersenne-support-subseries.tex)
+gives two ordinary constructions. One has a finite-prime weighted witness
+but no strengthened positive cover. In the other, each finite divisor
+block uses a fresh set of primes: it has a strengthened cover, yet no
+fixed finite prime set gives a weighted witness at any integer base.
+Each block has reciprocal mass between $1$ and $4/3$. If $q_j$ is
+its marker prime and $S_j$ is the reciprocal sum of its other primes,
+the paper bounds the full cover cost by
+$e(j+S_j)/q_j$, with $q_j\ge4^j$. This includes the cost of the
+block's position in the cover, so the infinite total converges.
+The paper then applies the
+mixed theorem to their union. Every infinite subset of that union has
+an irrational series at every integer base, although the union satisfies
+neither individual criterion. This comparison and the explicit hosts
+have ordinary proofs in the paper; the hosts and their strictness
+corollary have not been Lean-checked or independently reviewed.
+A differently parameterised weighted-only host has an
+[accepted public proof](https://prove2.me/theorems/7ec42d0d-2fbe-4ebf-a448-b40c9221448a)
+of the no-cover separation. That proof does not verify the exact hosts
+constructed here or the fresh-prime direction.
+
+The paper also proves that the literal dyadic cover class is closed under
+finite unions: interleave the frames, divide their exponents by the number
+of covers, and retain their coefficient columns. The full indexed cost
+increases by a bounded factor. This composition argument is ordinary
+mathematics here, not an additional accepted Lean declaration.
+
+Keeping the odd-prime blocks $P_j$ and replacing only $q_j$ by $4^j$
+does **not** justify a weighted witness: $R_j$ is bounded relative to
+$q_j$, which may be arbitrarily larger than $4^j$. For example, choosing
+$q_j>2^{2\cdot4^j}$ makes the replacement frame's base-two weighted
+mass $R_j/(2^{4^j}-1)>2^{4^j}$.
+
+A controlled comparison keeps each $P_j$ fixed and uses the least power
+of two $m_j\ge q_j$, so $q_j\le m_j<2q_j$. Move the coefficient at
+$q_jd$ to $m_jd$, retaining $z_j$ and $\alpha_j$. The pointwise divisor
+majorant survives, and its full indexed cost is multiplied by
+$q_j/m_j\le1$. The replacement union has the witness $\{2\}$ at every
+integer base $b\ge2$, because its weighted mass is at most
+$\sum_jR_j/(b^{m_j}-1)\le\sum_j4q_j/[3(2^{q_j}-1)]<\infty$.
+Frames may share a marker, so this is an upper bound on the union's
+mass. This size-matched intervention isolates the role of fresh prime
+factors. Failure of either sufficient criterion alone gives no
+rationality conclusion.
 
 ## Try changing a hypothesis
 
@@ -92,37 +210,7 @@ criterion, not a named theorem about this family. The unrestricted Erdős
 
 </details>
 
-Here is the accepted wrapper Solution as stored by Prove2Me on 25 September.
-It composes those two imports; the hard weighted criterion is in the imported
-proofs. The platform imports belong to Prove2Me's Lean 4.30.0 environment,
-not this checkout's Lean 4.29.1 toolchain. The public Proved badge and this
-copy are useful inspection evidence, while an independent replay still needs
-that pinned environment and its dependency graph.
-
-```lean
-import Theorems.Thm_ErdosProblems_Erdos257_PaperCompleteR8_finitePrimeWeighted_fixedBase_hereditary
-import Theorems.Thm_ErdosProblems_Erdos257_PaperCompleteR8_divisibilityWeightedClaim
-
-noncomputable section
-
-theorem solution :
-    (∀ (b : ℕ) (H : Set ℕ), 2 ≤ b → 0 ∉ H → H.Infinite →
-      ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted b H →
-      ∀ A : Set ℕ, A ⊆ H → A.Infinite →
-        Irrational (Erdos249257.erdosSupportSeries b A)) ∧
-    (∀ H : Set ℕ, 0 ∉ H → H.Infinite →
-      ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted 2 H →
-      ∀ A : Set ℕ, A ⊆ H → A.Infinite →
-        ∀ b : ℕ, 2 ≤ b →
-          Irrational (Erdos249257.erdosSupportSeries b A)) := by
-  constructor
-  · intro b H hb hH0 _ hweighted A hAH hA
-    exact ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary
-      b H hb hH0 hweighted A hAH hA
-  · intro H hH0 _ hweighted A hAH hA b hb
-    exact ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim.2
-      H hH0 hweighted A hAH hA b hb
-```
+## Historical offline adapter
 
 The offline adapter described below predates this hosted release. It remains
 a source-bound experiment against this checkout's older toolchain; its
@@ -137,70 +225,7 @@ covers further supports under its additional cover hypotheses.
 The weighted theorem was already proved locally before its native port.
 Neither the adapter nor this note submits or registers anything.
 
-The [paper's support-class comparison](../../paper/257/erdos-257-mersenne-support-subseries.tex)
-gives two ordinary constructions. One has a finite-prime weighted witness
-but no strengthened positive cover. In the other, each finite divisor
-block uses a fresh set of primes: it has a strengthened cover, yet no
-fixed finite prime set gives a weighted witness at any integer base.
-Each block has reciprocal mass between $1$ and $4/3$. If $q_j$ is
-its marker prime and $S_j$ is the reciprocal sum of its other primes,
-the paper bounds the full cover cost by
-$e(j+S_j)/q_j$, with $q_j\ge4^j$. This includes the cost of the
-block's position in the cover, so the infinite total converges.
-The paper then applies the
-mixed theorem to their union. Every infinite subset of that union has
-an irrational series at every integer base, although the union satisfies
-neither individual criterion. This comparison and the explicit hosts
-have ordinary proofs in the paper; the hosts and their strictness
-corollary have not been Lean-checked or independently reviewed.
-A differently parameterised weighted-only host has an
-[accepted public proof](https://prove2.me/theorems/7ec42d0d-2fbe-4ebf-a448-b40c9221448a)
-of the no-cover separation. That proof does not verify the exact hosts
-constructed here or the fresh-prime direction.
-
-A useful check is to replace each fresh marker prime by $4^j$.
-The cover calculation still works, but $\{2\}$ then becomes a
-weighted witness. The change shows why fresh prime factors, rather
-than large markers alone, defeat a single fixed witness. Failure of
-either sufficient criterion alone gives no rationality conclusion.
-
-## Exact claim
-
-For a finite nonempty prime set $P$, let
-$h_P(a)=\prod_{p\in P}p^{v_p(a)}$. If $b\ge2$, $A$ is an infinite set of
-positive integers, and
-
-$$
-\sum_{a\in A}\frac{h_P(a)}{a(b^{h_P(a)}-1)}<\infty,
-$$
-
-then $\sum_{a\in A}(b^a-1)^{-1}$ is irrational. Separately, if a host $H$
-of positive integers has finite weighted mass at base two for some such $P$,
-then **every infinite subset** $A\subseteq H$ has an irrational support sum
-at **every** integer base $b\ge2$. The paper states both clauses and their
-hereditary consequences at `res:weighted-support` in
-`paper/257/erdos-257-mersenne-support-subseries.tex`.
-
-The exact Lean declaration is
-`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim` at
-`lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120`.
-Its conjunction type `DivisibilityWeightedClaim` and the weighted-mass
-definition `FinitePrimeWeighted` are in
-`lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean:75` and
-`:32`. The public claim row is `finite_prime_weighted_support` in
-`docs/claims.json`, status `formalised here`. The packet hashes the theorem,
-paper, and Lean claim-interface source, and checks the registered declaration
-line, paper label and exact open-proposition mapping.
-
-Lean checks the weighted criterion. The paper verifies an explicit
-reciprocal-divergent support to which it applies; that example is ordinary
-paper mathematics, not a separate Lean named-instance theorem. The criterion
-does **not** prove the universal Erdős #257 assertion for every infinite
-support. The registered
-remainder is `remaining_open.universal_257_all_infinite_supports`. No
-external novelty, priority, or peer-review verdict follows from this packet.
-
-## Prepare a source-bound packet
+### Prepare a source-bound packet
 
 From a checkout with `origin/main` available:
 

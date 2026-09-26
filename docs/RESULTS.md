@@ -41,7 +41,7 @@ step. Mathematical importance requires separate judgement.
 
 | Problem | A result to start with | Where the result stops |
 |---|---|---|
-| [#68](#result-68) | Two exact finite denominator exclusions, one with a Lean-checked carry consumer, and a Lean-checked `3/2` lower growth exponent for the uncleared common denominator. | No cofinal non-unit factorial carries have been produced; irrationality remains open. |
+| [#68](#result-68) | Two exact finite denominator exclusions and a Lean-checked `3/2` lower growth exponent; the paper also gives a finite calculation of attainable factorial moments after prescribed cancellations. | No cofinal non-unit factorial carries have been produced; irrationality remains open. |
 | [#243](#result-243) | Lean checks irrationality under the precise cubic-rate hypothesis; the paper transfers it to one-based indexing. Signed-error criteria also force eventual Sylvester behaviour under their stated premises. | The unrestricted Sylvester-tail hypotheses remain unproved. |
 | [#249](#result-249) | The short paper and Lean classify the fixed-base-two totient-residue series for every positive modulus and every rational-valued observable at dyadic moduli. They also give the exact all-base totient-kernel rank `k^e+1`. | The original series with unreduced totients remains open; the conditional routes still need their cofinal arithmetic inputs. |
 | [#251](#result-251) | Lean checks a rich synthetic prime-gap countermodel, and the paper gives a separate sparse-perturbation obstruction. | These are not actual prime gaps; the prime-specific producer for irrationality remains open. |
@@ -108,6 +108,24 @@ contains six structural carry, channel and criterion declarations. It does
 not select the denominator exclusions or the `3/2` growth theorem above.
 Its [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36019608937)
 passed at that exact source commit; this is not a Palomar registration.
+
+The channel results have a direct finite use. For a finitely supported integer
+vector `λ` on indices `n≥2`, set `M(λ)=∑ n!λₙ` and let `V_d(λ)` be its
+factorial channel at `d`, as defined in [Section 2 of the short
+paper](../paper/68/erdos-68-factorial-denominator-irrationality.pdf).
+Given a depth `D≥2`, the paper classifies the moments possible when
+`V₂(λ)=⋯=V_D(λ)=0`. Its tail gcd needs only coefficients through
+`H=D(2p−1)<2D²` for a prime `D/2<p≤D`; this makes the minimum positive
+moment a finite calculation. At `D=4`, the minimum is **1380**, attained by
+`λ=(-15318, 8176, -710, 1518, -253, -88, 11)` on indices `2,…,8`.
+Direct substitution gives `M(λ)=1380` and `V₂(λ)=V₃(λ)=V₄(λ)=0`; the
+coordinate and finite-gcd theorems prove minimality. This certificate answers
+which moments survive a chosen finite cancellation. It does not establish
+nonintegrality of the remaining tail or irrationality of `S`.
+Run `python3 scripts/check_erdos68_channel_moment.py` for the
+[exact integer replay](../scripts/check_erdos68_channel_moment.py) of the
+recurrence, finite gcd, moment and three vanishing channels. The paper's
+finite tail-gcd theorem extends the computed gcd to all later indices.
 
 <a id="result-243"></a>
 
