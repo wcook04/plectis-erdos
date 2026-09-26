@@ -64,7 +64,7 @@ import argparse
 import json
 import re
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 CORPUS_REL = "docs/papers/corpus.json"
@@ -176,6 +176,12 @@ def archive_version_errors(version: dict[str, Any]) -> list[str]:
             errors.append(f"{key} must address the declared archive version")
     if not re.fullmatch(r"[0-9a-f]{40}", str(version.get("source_commit", ""))):
         errors.append("archive source_commit must be a full Git commit")
+    if not re.fullmatch(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+",
+                        str(version.get("source_repository", ""))):
+        errors.append("archive source_repository must name a public GitHub repository")
+    source_path = PurePosixPath(str(version.get("source_path", "")))
+    if source_path.is_absolute() or ".." in source_path.parts or source_path.suffix != ".tex":
+        errors.append("archive source_path must be a repository-relative TeX file")
     for key in ("source_sha256", "pdf_sha256", "source_archive_sha256"):
         if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(version.get(key, ""))):
             errors.append(f"archive {key} must be a SHA-256 digest")

@@ -48,6 +48,8 @@ class ArchiveVersionTests(unittest.TestCase):
     def test_float_version_bad_pin_and_review_promotion_are_rejected(self):
         for key, value in (("pdf_url", "https://aixiv.online/pdf/2609.02921"),
                            ("source_commit", "main"), ("source_sha256", "unknown"),
+                           ("source_repository", "file:///private/source"),
+                           ("source_path", "../../unpublished.tex"),
                            ("peer_review_state", "peer_reviewed")):
             with self.subTest(key=key):
                 version = {**self.version, key: value}
