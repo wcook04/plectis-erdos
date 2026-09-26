@@ -170,6 +170,13 @@
     "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal": "fc88cc76742dc8e852c135d64681ce6cd5023aba23feb9c6da8266710528bcd7"
    }
   },
+  "erdos-257-mersenne-support-subseries#res:terminalhalf": {
+   "note": "The Lean statement is the equivalence stated in the paragraph after the theorem: its right-to-left direction is the printed theorem, with $A\\subseteq\\mathbb N_{>0}$ written as $0\\notin B$, and its left-to-right direction is the converse, with the approximants $M_j=j+1$ and $A_j=B\\cap\\{0,\\ldots,j+1\\}$.",
+   "statement_key": "sha256:c03fa40d5d3cf9481cef1a41f3dad8dade5a0e826b02a32efdb3f7adb667c4d3",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff": "3a980882134f31b5708c20de9f7b630c725be2523cd056552241f76e2bc65370"
+   }
+  },
   "erdos-257-mersenne-support-subseries#res:weighted-support": {
    "note": "The Lean statements have the same hypotheses and conclusions as the printed ones, with $A\\subseteq\\Npos$ written as $0\\notin A$ and $W_{b,P}(A)<\\infty$ written as summability over $A$ for some finite nonempty set $P$ of primes. The fixed-base statement and, under (W), irrationality at every $b\\ge2$ for every infinite subset are the two parts of `divisibilityWeightedClaim`; heredity under the fixed-base condition is `finitePrimeWeighted_fixedBase_hereditary`.",
    "statement_key": "sha256:61a9d749743390e1e637e664f5d815901c204fe3d7582ca658a71966cb914ee8",

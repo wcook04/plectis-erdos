@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
-  "lean_pin": "7f3dbf0947c387335ffd392b689eea5721017d84",
-  "content_digest": "sha256:84d0dd9a00827f187bc21e3d4f220bf4c0f62752584f875d8db5616fb4394ccb",
+  "lean_pin": "6f9328a11dc425fcc311321d5f98d4019c546131",
+  "content_digest": "sha256:d1b674571959ee11db2d8d7b986317453e7655b821cb454a36384d9b42ac587a",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -15,20 +15,20 @@
   "summary": {
     "rows": 677,
     "lean": {
-      "exact": 506,
-      "exact_or_stronger": 141,
+      "exact": 505,
+      "exact_or_stronger": 142,
       "modulo_named_input": 25,
       "none": 5
     },
     "comparator": {
-      "compared": 634,
+      "compared": 633,
       "not_applicable": 30,
-      "pending": 13
+      "pending": 14
     },
     "palomar": {
       "not_applicable": 30,
-      "pending": 13,
-      "prepared": 634
+      "pending": 14,
+      "prepared": 633
     },
     "uncounted_rows": 0
   },
@@ -2177,29 +2177,22 @@
       "statement_sha256": "sha256:506643145304e5fdb1a5ddbceac6a0b992d1929726a7d86ff093f2f6c01152c5",
       "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1112",
       "lean": {
-        "status": "exact",
+        "status": "exact_or_stronger",
         "declarations": [
           {
-            "name": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf",
+            "name": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff",
             "file": "lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean"
           }
         ]
       },
       "palomar": {
-        "status": "prepared"
+        "status": "pending"
       },
       "comparator": {
-        "status": "compared",
-        "repository": "https://github.com/wcook04/plectis-erdos-lean",
-        "entries": [
-          "PalomarCorpus/E257bc"
-        ],
-        "run_ids": [
-          "35624228171"
-        ],
-        "corpus_commits": [
-          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
-        ]
+        "status": "pending",
+        "queued_at": "2026-09-26",
+        "pending_reason": "Comparator entry E257_47 (replay 35935225572 at corpus commit cc7e541cf2081c6fef5a5e377d52e365e33b01eb) checks paper_terminalhalf, which is the right-to-left direction of the equivalence alone. No Challenge, Solution or replay is bound for paper_terminalhalf_iff.",
+        "next_action": "In the next governed corpus build, transport lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean from public paper commit 6f9328a11dc425fcc311321d5f98d4019c546131 (SHA-256 6daff7f2777bede7e0831ba83061add33f7cbe520cb07ccf840f0b34e1ffcc8e; Lean v4.29.1). Build its module, probe the exact declaration closure, prepare an independent Challenge for paper_terminalhalf_iff with terminalPaperCarry and erdosSupportSeries restated from Mathlib, and its checked Solution, and run Comparator. Add an association for paper_terminalhalf_iff only after a matching source-bound replay passes, then regenerate paper evidence."
       }
     },
     {
