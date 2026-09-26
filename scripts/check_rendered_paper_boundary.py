@@ -81,7 +81,10 @@ FIRST_MINUTE_CONTRACT = {
     # one page of where they render today. The 24 September revision opens
     # with three pages of worked mathematics, so the later windows moved back.
     # The 25 September revision adds the cross-problem transfer to Section 3,
-    # which moves the checking section's limits one page later.
+    # which moves the checking section's limits one page later. The 26
+    # September revision adds the replay of the recorded routes to Section 3,
+    # which moves the checking section to pages 7-9 and the limits section
+    # from page 11 to page 12.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -90,18 +93,18 @@ FIRST_MINUTE_CONTRACT = {
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (5, 7): (
+        (6, 8): (
             "lean verifies that a proof establishes the formal statement written in the source",
             "comparator-checked",
             "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
             "coverage boundary, not a reliability score",
         ),
-        (6, 8): (
+        (7, 9): (
             "an empty search never counts as evidence of no consequence",
             "whether the formal statement matches the 1958 wording",
         ),
-        (9, 11): (
+        (10, 12): (
             "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),
@@ -111,7 +114,7 @@ FIRST_MINUTE_CONTRACT = {
             "from a cold clone to a proof receipt",
             "153,253 declarations",
             "navigation does not receive proof authority",
-            "verdicts come from the pinned lean process",
+            "derives probe verdicts from the pinned lean process",
             "not an autonomous theorem prover",
         ),
     },

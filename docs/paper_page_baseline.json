@@ -8,7 +8,7 @@
   "erdos-249-binary-totient-series": 17,
   "erdos-251-prime-gap-dyadic-series": 15,
   "erdos-257-mersenne-support-subseries": 22,
-  "erdos-269-three-prime-running-lcm": 16,
+  "erdos-269-three-prime-running-lcm": 17,
   "erdos-1041-lemniscate-newton-flow": 32,
   "erdos-1049-rational-base-lambert": 21,
   "erdos68-factorial-reasoning-surface": 49,
@@ -16,9 +16,25 @@
   "erdos249-totient-reasoning-surface": 164,
   "erdos251-prime-gap-reasoning-surface": 49,
   "erdos257-mersenne-reasoning-surface": 166,
-  "erdos269-running-lcm-reasoning-surface": 53,
+  "erdos269-running-lcm-reasoning-surface": 65,
   "erdos1041-lemniscate-reasoning-surface": 78,
   "erdos1049-rational-base-lambert-reasoning-surface": 73
  },
- "total": 858
+ "total": 871,
+ "revisions": [
+  {
+   "date": "2026-09-26",
+   "paper": "erdos-269-three-prime-running-lcm",
+   "from": 16,
+   "to": 17,
+   "reason": "general all-primes theorem with complete proof added 26 Sep 2026; {2,3,5} hand proof and certificate sweep moved to the long record"
+  },
+  {
+   "date": "2026-09-26",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 53,
+   "to": 65,
+   "reason": "complete record: general all-primes distinct-height theorem with proof, the dyadic {2,3,5} proof, the decoding criterion and the three- and four-prime certificates, and the single-prime sub-sum theorem added 26 Sep 2026"
+  }
+ ]
 }

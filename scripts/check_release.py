@@ -286,13 +286,31 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
+        "replay_routes": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "replay_worlds" / "test_check_routes.py"),
+        ],
         "totient_normal_form": [
             sys.executable,
             str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
         ],
+        "chain_transcendence": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "chain_transcendence" / "test_chain_bookkeeping.py"),
+        ],
         "admissible_feedback": [
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
+        ],
+        "distinct_height": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_distinct_height.py"),
+        ],
+        "distinct_height_two_tail": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_two_tail.py"),
         ],
         "mutation_harness": [
             sys.executable,
@@ -2995,7 +3013,9 @@ def main(argv: list[str] | None = None) -> int:
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "proof_workbench", "computation_replay", "admissible_feedback",
+        "chain_transcendence",
+        "proof_workbench", "computation_replay", "replay_routes", "admissible_feedback",
+        "distinct_height", "distinct_height_two_tail",
     ):
         result = late_checks[name]
         check(result.returncode == 0,

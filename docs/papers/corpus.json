@@ -1365,8 +1365,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:4e0706cade2867001edd645156be3170149709c27fe90402b50465ecf3ade082",
-      "pdf_byte_count": 134924,
+      "pdf_sha256": "sha256:2e0afbe808cd2d6a448e730a957a8f35a88d1af05815b5996512bd5683c355c5",
+      "pdf_byte_count": 134929,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1680,8 +1680,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:6fba0036b9d67d1ad5140c6641a1aa6e5dc75eba023ff22c9967cd6e4b179cee",
-      "pdf_byte_count": 300996,
+      "pdf_sha256": "sha256:18832e4b15728c3afa823abe46d76f851229df8fbbccd7db484928e4e57883cd",
+      "pdf_byte_count": 301004,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1871,8 +1871,8 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:ebe580648bb0374ad5b0332d666c4ccbae822224a879c40240198b3b5749c45f",
-      "pdf_byte_count": 139688,
+      "pdf_sha256": "sha256:da51b6b4f75c8ca4d0f271d37d4a5a7970387a674891fb372919ec9ae63e3d1a",
+      "pdf_byte_count": 139686,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2302,8 +2302,8 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b9ea7cd4c673d6401882bc3afb323ccd2160aad6300f025d889af6b5705d2c7e",
-      "pdf_byte_count": 374928,
+      "pdf_sha256": "sha256:a6a44e64f8638d475615b8557ce8aa27057829e505fb69f24bf9b4e55c841017",
+      "pdf_byte_count": 374929,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2491,8 +2491,8 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:3337b5b37713d66855045367332824d2cb8595c7e845a399a918e27f2abd94e2",
-      "pdf_byte_count": 145650,
+      "pdf_sha256": "sha256:dfc67176b06e34077110b6c8e0cb78724652a86302595eb99a091647806e08ca",
+      "pdf_byte_count": 145649,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3534,8 +3534,8 @@
       ],
       "citations_rendered": 47,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:2a5976d6789d4e3c8897db0c26e8e5986f15e8beb4dca11261900f131034727c",
-      "pdf_byte_count": 745349,
+      "pdf_sha256": "sha256:b225d989015bca4e3794d3bff843892a00a2a9e1dc1858f7833c27bce042bbf2",
+      "pdf_byte_count": 745341,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3689,8 +3689,8 @@
       ],
       "citations_rendered": 37,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:28b891eb9fb5b3c8f1bc20a07f82f02811d81441b804614a8ff93c609815c60e",
-      "pdf_byte_count": 123748,
+      "pdf_sha256": "sha256:96508cdde3cd6a68272b19a9d793120d6f43837238bcd1e9e4062091f14e0604",
+      "pdf_byte_count": 123740,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4060,8 +4060,8 @@
       ],
       "citations_rendered": 69,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:88a7f514b591695a1d99e7728b4fcf8c3432457e4e13912589264f2c3a84335d",
-      "pdf_byte_count": 292258,
+      "pdf_sha256": "sha256:1bad0195e01ed6e17cc8aa1142742579b5b555fa5bf158abe7e6297ca815428a",
+      "pdf_byte_count": 292257,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4293,8 +4293,8 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:055cb823afe0c70c6298b78ad4df1f7769bf2471938c4349092b1660ff038a46",
-      "pdf_byte_count": 174923,
+      "pdf_sha256": "sha256:c2c488e64cdea3b7ba05fcd19d1ccbb50184f723a8d655ef2227509c4dbf742b",
+      "pdf_byte_count": 174919,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5342,8 +5342,8 @@
       ],
       "citations_rendered": 41,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:2822938d8295bd8096ba11172df46e7c4a1d9c22da796184504e74d08ded549e",
-      "pdf_byte_count": 797294,
+      "pdf_sha256": "sha256:a6bd78bb0f650928757a713fcb49fc14c7f2e9b9c942c51751d9cd67aec90d3a",
+      "pdf_byte_count": 797305,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5409,12 +5409,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md",
       "local_source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-      "source_sha256": "sha256:316fd934a7a966623319e2cc56e6c035d3ea13067e41f980f7a5eacf3be07870",
+      "source_sha256": "sha256:05cde879083b9f8bbf4c471dc1cf4261137a0e0de592133e6a25ea5615332659",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 45,
+      "section_count": 58,
       "sections": [
         {
           "level": 1,
@@ -5432,265 +5432,343 @@
           "level": 4,
           "id": "what-the-third-prime-changes.",
           "title": "What the third prime changes.",
-          "line": 38
+          "line": 61
         },
         {
           "level": 4,
           "id": "relation-to-the-short-paper.",
           "title": "Relation to the short paper.",
-          "line": 63
+          "line": 86
         },
         {
           "level": 1,
           "id": "long269:sec:lcm",
           "title": "The finite geometry of the running value",
-          "line": 73
+          "line": 96
         },
         {
           "level": 1,
           "id": "long269:sec:two-prime",
           "title": "One Hecke\u2013Mahler value controls both two-prime sums",
-          "line": 182
+          "line": 205
+        },
+        {
+          "level": 1,
+          "id": "long269:sec:distinct",
+          "title": "The distinct-height sums",
+          "line": 275
+        },
+        {
+          "level": 2,
+          "id": "long269:sec:distinct-all",
+          "title": "Every finite set of primes",
+          "line": 292
+        },
+        {
+          "level": 4,
+          "id": "words.",
+          "title": "Words.",
+          "line": 298
+        },
+        {
+          "level": 4,
+          "id": "the-torus.",
+          "title": "The torus.",
+          "line": 357
+        },
+        {
+          "level": 4,
+          "id": "the-referees-corrections.",
+          "title": "The referee\u2019s corrections.",
+          "line": 404
+        },
+        {
+          "level": 4,
+          "id": "why-the-two-walls-are-needed.",
+          "title": "Why the two walls are needed.",
+          "line": 410
+        },
+        {
+          "level": 4,
+          "id": "exact-illustrations.",
+          "title": "Exact illustrations.",
+          "line": 420
+        },
+        {
+          "level": 2,
+          "id": "long269:sec:distinct-blocks",
+          "title": "Dyadic blocks and affine maps",
+          "line": 426
+        },
+        {
+          "level": 2,
+          "id": "long269:sec:distinct-235",
+          "title": "Proof of Theorem\u00a02",
+          "line": 470
+        },
+        {
+          "level": 2,
+          "id": "long269:sec:distinct-criterion",
+          "title": "A decoding criterion for every finite set of primes",
+          "line": 519
+        },
+        {
+          "level": 2,
+          "id": "long269:sec:distinct-certificates",
+          "title": "Certificates for three and four primes",
+          "line": 557
+        },
+        {
+          "level": 2,
+          "id": "long269:sec:distinct-stop",
+          "title": "Where the argument stops for the repeated sums",
+          "line": 607
+        },
+        {
+          "level": 4,
+          "id": "the-single-prime-sub-sums.",
+          "title": "The single-prime sub-sums.",
+          "line": 615
         },
         {
           "level": 1,
           "id": "long269:sec:rank",
           "title": "Why the third prime prevents finite separation",
-          "line": 252
+          "line": 682
         },
         {
           "level": 4,
           "id": "scope-of-the-rank-theorem.",
           "title": "Scope of the rank theorem.",
-          "line": 408
+          "line": 838
         },
         {
           "level": 2,
           "id": "the-exact-uniform-approximation-error",
           "title": "The exact uniform approximation error",
-          "line": 414
+          "line": 844
         },
         {
           "level": 1,
           "id": "long269:sec:blocks",
           "title": "The recurrence for tails between powers of two",
-          "line": 474
+          "line": 904
         },
         {
           "level": 1,
           "id": "long269:sec:actual-orbit",
           "title": "Bounding the tails and clearing a rational denominator",
-          "line": 640
+          "line": 1070
         },
         {
           "level": 2,
           "id": "a-smaller-bound-from-the-order-of-the-prime-power-jumps",
           "title": "A smaller bound from the order of the prime-power jumps",
-          "line": 798
+          "line": 1228
         },
         {
           "level": 4,
           "id": "relation-to-cantor-series-criteria.",
           "title": "Relation to Cantor-series criteria.",
-          "line": 835
+          "line": 1265
         },
         {
           "level": 1,
           "id": "long269:sec:escape",
           "title": "A residue criterion and the bounds it allows",
-          "line": 884
+          "line": 1314
         },
         {
           "level": 4,
           "id": "the-exact-growth-restriction-on-a-dominating-bound.",
           "title": "The exact growth restriction on a dominating bound.",
-          "line": 1002
+          "line": 1432
         },
         {
           "level": 2,
           "id": "how-fast-the-window-base-grows",
           "title": "How fast the window base grows",
-          "line": 1046
+          "line": 1476
         },
         {
           "level": 1,
           "id": "long269:sec:evidence",
           "title": "Finite computations and their limits",
-          "line": 1092
+          "line": 1522
         },
         {
           "level": 2,
           "id": "checking-individual-windows",
           "title": "Checking individual windows",
-          "line": 1098
+          "line": 1528
         },
         {
           "level": 2,
           "id": "finite-denominator-bounds",
           "title": "Finite denominator bounds",
-          "line": 1115
+          "line": 1545
         },
         {
           "level": 4,
           "id": "a-denominator-bound-from-twelve-shells.",
           "title": "A denominator bound from twelve shells.",
-          "line": 1119
+          "line": 1549
         },
         {
           "level": 4,
           "id": "long269:res:lead-block-exclusion",
           "title": "Window-128 lattice exclusion.",
-          "line": 1144
+          "line": 1574
         },
         {
           "level": 4,
           "id": "long269:res:cf-exclusion",
           "title": "Continued-fraction exclusion.",
-          "line": 1161
+          "line": 1591
         },
         {
           "level": 1,
           "id": "long269:sec:open",
           "title": "The remaining arithmetic questions",
-          "line": 1169
+          "line": 1599
         },
         {
           "level": 2,
           "id": "long269:sec:weighted-shifts",
           "title": "An exact weighted-shift identity for the repeated series",
-          "line": 1173
+          "line": 1603
         },
         {
           "level": 2,
           "id": "long269:sec:boundary-difference",
           "title": "Why the growing boundary need not cancel",
-          "line": 1219
+          "line": 1649
         },
         {
           "level": 4,
           "id": "what-the-heckemahler-comparison-does-and-does-not-supply.",
           "title": "What the Hecke\u2013Mahler comparison does and does not supply.",
-          "line": 1294
+          "line": 1724
         },
         {
           "level": 4,
           "id": "why-a-finite-alphabet-of-bases-is-not-enough.",
           "title": "Why a finite alphabet of bases is not enough.",
-          "line": 1309
+          "line": 1739
         },
         {
           "level": 2,
           "id": "what-a-function-theoretic-proof-would-require",
           "title": "What a function-theoretic proof would require",
-          "line": 1413
+          "line": 1843
         },
         {
           "level": 4,
           "id": "the-cited-value-theorems-and-their-hypotheses.",
           "title": "The cited value theorems and their hypotheses.",
-          "line": 1436
+          "line": 1866
         },
         {
           "level": 2,
           "id": "what-the-auxiliary-carry-results-assume",
           "title": "What the auxiliary carry results assume",
-          "line": 1448
+          "line": 1878
         },
         {
           "level": 2,
           "id": "where-the-problem-stands",
           "title": "Where the problem stands",
-          "line": 1480
+          "line": 1910
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1488
+          "line": 1918
         },
         {
           "level": 4,
           "id": "proof-sources.",
           "title": "Proof sources.",
-          "line": 1492
+          "line": 1922
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1500
+          "line": 1930
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1506
+          "line": 1936
         },
         {
           "level": 4,
           "id": "authorship-and-review.",
           "title": "Authorship and review.",
-          "line": 1512
+          "line": 1942
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1518
+          "line": 1948
         },
         {
           "level": 1,
           "id": "long269:long:extended",
           "title": "Further examples, conditional lemmas and source references",
-          "line": 1524
+          "line": 1954
         },
         {
           "level": 2,
           "id": "long269:long:history",
           "title": "The historical and catalogue record",
-          "line": 1530
+          "line": 1960
         },
         {
           "level": 2,
           "id": "long269:long:general-carries",
           "title": "The abstract carry lemmas in their general form",
-          "line": 1540
+          "line": 1974
         },
         {
           "level": 2,
           "id": "long269:long:finite-geometry",
           "title": "Worked finite examples",
-          "line": 1622
+          "line": 2056
         },
         {
           "level": 2,
           "id": "long269:long:experiments",
           "title": "The finite-scan histogram",
-          "line": 1646
+          "line": 2080
         },
         {
           "level": 2,
           "id": "long269:long:sources",
           "title": "Source inventory",
-          "line": 1676
+          "line": 2110
         },
         {
           "level": 1,
           "id": "sec:erdos-269-complete-family-map",
           "title": "What the results use and what they do not prove",
-          "line": 1818
+          "line": 2252
         },
         {
           "level": 2,
           "id": "long269:sec:coverage",
           "title": "What the Lean proof of the two-prime theorem assumes",
-          "line": 1841
+          "line": 2278
         }
       ],
-      "citations_rendered": 40,
+      "citations_rendered": 58,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:6909da635d1f0120bf13ec49ef77e1113d485455910bf34e89e54e655be20134",
-      "pdf_byte_count": 312409,
+      "pdf_sha256": "sha256:5bd147a1bc83dbb0cdd815df00fd55e0e82fc5e205caaba0d7787a693825f008",
+      "pdf_byte_count": 408467,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5703,17 +5781,17 @@
           {
             "id": "long269:sec:rank",
             "title": "Why the third prime prevents finite separation",
-            "line": 252
+            "line": 682
           },
           {
             "id": "long269:sec:open",
             "title": "The remaining arithmetic questions",
-            "line": 1169
+            "line": 1599
           },
           {
             "id": "sec:erdos-269-complete-family-map",
             "title": "What the results use and what they do not prove",
-            "line": 1818
+            "line": 2252
           }
         ],
         "unresolved_count": 0
@@ -5756,12 +5834,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "source_sha256": "sha256:97662a4b3b2b8050bef065b0e2c693a3eb9ac20412a1305e9b614d3696c8ff5e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 16,
+      "section_count": 20,
       "sections": [
         {
           "level": 1,
@@ -5777,93 +5855,117 @@
         },
         {
           "level": 1,
+          "id": "sec:distinct",
+          "title": "The distinct-height sums",
+          "line": 38
+        },
+        {
+          "level": 4,
+          "id": "words.",
+          "title": "Words.",
+          "line": 60
+        },
+        {
+          "level": 4,
+          "id": "the-torus.",
+          "title": "The torus.",
+          "line": 119
+        },
+        {
+          "level": 2,
+          "id": "sec:distinct-235",
+          "title": "The case \\{2,3,5\\}, checked in Lean",
+          "line": 168
+        },
+        {
+          "level": 1,
           "id": "sec:rank",
           "title": "Nonsingular minors of every order",
-          "line": 32
+          "line": 183
         },
         {
           "level": 4,
           "id": "the-indices-must-be-selected.",
           "title": "The indices must be selected.",
-          "line": 118
+          "line": 269
         },
         {
           "level": 4,
           "id": "exact-rank-is-not-an-approximation-obstruction.",
           "title": "Exact rank is not an approximation obstruction.",
-          "line": 145
+          "line": 296
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime comparison",
-          "line": 151
+          "line": 302
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "The recurrence for the repeated sum",
-          "line": 206
+          "line": 357
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "A window test and the remaining arithmetic",
-          "line": 370
+          "line": 535
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 478
+          "line": 643
         },
         {
           "level": 4,
           "id": "proof-sources.",
           "title": "Proof sources.",
-          "line": 482
+          "line": 647
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 488
+          "line": 653
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 494
+          "line": 659
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 500
+          "line": 665
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 506
+          "line": 671
         },
         {
           "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 512
+          "line": 677
         },
         {
           "level": 4,
           "id": "scope-of-the-supplementary-literature.",
           "title": "Scope of the supplementary literature.",
-          "line": 518
+          "line": 683
         }
       ],
-      "citations_rendered": 21,
+      "citations_rendered": 27,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:5bbfc97871cc7dcbc9d8c27a024b298e780a1569a2a1f271f114a573568c5eef",
-      "pdf_byte_count": 115066,
+      "pdf_sha256": "sha256:58bd56870d28386d828669ce72429e936c7d9143b63eebaf3850988d6af140a3",
+      "pdf_byte_count": 152347,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5876,17 +5978,17 @@
           {
             "id": "sec:rank",
             "title": "Nonsingular minors of every order",
-            "line": 32
+            "line": 183
           },
           {
             "id": "sec:lcm",
             "title": "The recurrence for the repeated sum",
-            "line": 206
+            "line": 357
           },
           {
             "id": "sec:escape",
             "title": "A window test and the remaining arithmetic",
-            "line": 370
+            "line": 535
           }
         ],
         "unresolved_count": 0
@@ -6155,8 +6257,8 @@
       ],
       "citations_rendered": 43,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:5be5e853dccbd6fdfaf2979c91559054778f5f2e6f8754a863230ebfee6175bf",
-      "pdf_byte_count": 198206,
+      "pdf_sha256": "sha256:10045aa823aff14bd6bc0f02f2512dd611e3503202fe54a1d7e088e8a27aac00",
+      "pdf_byte_count": 198198,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6604,8 +6706,8 @@
       ],
       "citations_rendered": 65,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:23c834897bc59ef0152cf3b157e9389c1f22cb01ccc02f94c9e1b12bc5cdc8fd",
-      "pdf_byte_count": 428361,
+      "pdf_sha256": "sha256:50a78d24e0fc43c258c64ef9797d0be451a6571d028c85d8ef3b89697f421835",
+      "pdf_byte_count": 428357,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6823,8 +6925,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:bd16b9c7ee984c4e143a7a0c2446e640287424fa78fa1d665dd6296a4037db25",
-      "pdf_byte_count": 158812,
+      "pdf_sha256": "sha256:f50faee6bea05c033d5c39a4fceb1c8457f9ed43203aef4d933849d76929abbf",
+      "pdf_byte_count": 158816,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7276,8 +7378,8 @@
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:fdadeb0a3336fa8be097a940567d07c2e5082a58f89379d83f4ce9acd9346c27",
-      "pdf_byte_count": 424666,
+      "pdf_sha256": "sha256:21283f768e9f28036b32dbc1cdc0e73c93cc3046781a0a73cd8a8034a0f2438e",
+      "pdf_byte_count": 424663,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7343,12 +7445,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:62b30a66e6e9ea5f1a22c258be646c0953ef5d4030f0a7c344d5417a0efa529a",
+      "source_sha256": "sha256:10b1e1a18a6fc5c04f98c5fb34189433394f2a7f5c5e346eee5f30d94fd33051",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 36,
+      "section_count": 37,
       "sections": [
         {
           "level": 1,
@@ -7495,86 +7597,92 @@
           "line": 619
         },
         {
+          "level": 4,
+          "id": "evidence.-1",
+          "title": "Evidence.",
+          "line": 670
+        },
+        {
           "level": 2,
           "id": "sec:base2",
           "title": "Base two",
-          "line": 664
+          "line": 734
         },
         {
           "level": 3,
           "id": "sec:lemmas",
           "title": "Removed intervals and finite translations",
-          "line": 668
+          "line": 738
         },
         {
           "level": 3,
           "id": "fixed-depth-rational-counts",
           "title": "Fixed-depth rational counts",
-          "line": 702
+          "line": 772
         },
         {
           "level": 1,
           "id": "sec:dyadic-shifts",
           "title": "Which dyadic shifts detect irrationality?",
-          "line": 738
+          "line": 808
         },
         {
           "level": 2,
           "id": "sec:polynomial-shifts",
           "title": "Polynomially selected shifts",
-          "line": 805
+          "line": 875
         },
         {
           "level": 1,
           "id": "sec:second",
           "title": "Limits on methods",
-          "line": 836
+          "line": 906
         },
         {
           "level": 1,
           "id": "sec:misread",
           "title": "The computation and its limits",
-          "line": 859
+          "line": 929
         },
         {
           "level": 1,
           "id": "sec:eliminated",
           "title": "Eliminated ideas",
-          "line": 886
+          "line": 956
         },
         {
           "level": 1,
           "id": "sec:known",
           "title": "What was already known",
-          "line": 900
+          "line": 970
         },
         {
           "level": 1,
           "id": "capacity:sec:sources",
           "title": "Sources and formal correspondence",
-          "line": 914
+          "line": 984
         },
         {
           "level": 1,
           "id": "sec:questions",
           "title": "Further questions",
-          "line": 932
+          "line": 1002
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 1018
+          "line": 1100
         }
       ],
-      "citations_rendered": 66,
+      "citations_rendered": 71,
       "fallback_title_drift": {
         "registry_fallback": "An Exact Capacity Criterion for Series with Eventual Congruences",
         "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
       },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:5e420944fe5b07e81e20145eadd7eaf4c895f7fa9ad4bfc7e9d3511a46b07b35",
-      "pdf_byte_count": 220052,
+      "pdf_sha256": "sha256:0f5fa0a4bb1cd2dfd09a60a1499a20f569d889c361ee0905dd18033ad2e925ea",
+      "pdf_byte_count": 242701,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7597,7 +7705,7 @@
           {
             "id": "sec:questions",
             "title": "Further questions",
-            "line": 932
+            "line": 1002
           }
         ],
         "unresolved_count": 0
@@ -7640,12 +7748,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:6d01a38e0ce0ca5df07d0369a1e15566e400a9f60d3c2daff8dd1a69798facb2",
+      "source_sha256": "sha256:39c269e2deda569b9c3daf29752fc6c5af3c1796be8bed22d27226d9487fefde",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 15,
+      "section_count": 16,
       "sections": [
         {
           "level": 1,
@@ -7678,70 +7786,76 @@
           "line": 106
         },
         {
+          "level": 4,
+          "id": "replaying-the-record.",
+          "title": "Replaying the record.",
+          "line": 120
+        },
+        {
           "level": 1,
           "id": "sec:checks",
           "title": "From a proof to a public claim",
-          "line": 135
+          "line": 141
         },
         {
           "level": 1,
           "id": "sec:cycle",
           "title": "The contribution cycle",
-          "line": 157
+          "line": 163
         },
         {
           "level": 4,
           "id": "credit.",
           "title": "Credit.",
-          "line": 167
+          "line": 173
         },
         {
           "level": 2,
           "id": "sec:example",
           "title": "Worked example: Problem 1041",
-          "line": 175
+          "line": 181
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Eight problems in one repository",
-          "line": 181
+          "line": 187
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 218
+          "line": 224
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 242
+          "line": 248
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 248
+          "line": 254
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 268
+          "line": 274
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 274
+          "line": 280
         }
       ],
-      "citations_rendered": 49,
+      "citations_rendered": 58,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:41eb5d3a8fb37440bd38bcd69dfabd72c75cc5ce0d68582e217b6866ce5e25d7",
-      "pdf_byte_count": 129034,
+      "pdf_sha256": "sha256:c05a621148c61c1756c20b7d7697b19e42992bb9b3004dbbb8147d88f5e38eeb",
+      "pdf_byte_count": 138499,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7764,12 +7878,12 @@
           {
             "id": "sec:checks",
             "title": "From a proof to a public claim",
-            "line": 135
+            "line": 141
           },
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 248
+            "line": 254
           }
         ],
         "unresolved_count": 0
@@ -7812,7 +7926,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:7d629bd4139ae382eb72aa9c77e3303846f99c832f8800b3c0c6e9c2bd9f5289",
+      "source_sha256": "sha256:ec954f8305bfa2a131976e8a217e48362b8baf083a8b42a4c379177ae32cb8d7",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7942,8 +8056,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:bb085154793359bbd79de6dffb05b5277a61d615f6ba1eeef8eeb16e84a1b1cd",
-      "pdf_byte_count": 88652,
+      "pdf_sha256": "sha256:9cda8b978d8cbc9a76d695ed34db10eed685216b5fa1a02a1148850737d2e718",
+      "pdf_byte_count": 88664,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

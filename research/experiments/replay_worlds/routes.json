@@ -1,0 +1,623 @@
+{
+  "schema": "plectis-replay-routes/1",
+  "source_commit": "5d82dfaca8164948a83a64be9760acb6cd3722ec",
+  "replayed_on": "2026-09-26",
+  "records": "docs/papers/full-text",
+  "closure_classes": {
+    "proved": "a theorem in the record (including exact equivalences)",
+    "obstruction_proved": "a theorem that rules a class of arguments or objects out, on stated hypotheses",
+    "counterexample": "an explicit object refuting a statement on an exact domain",
+    "finite_outcome": "an exact computation with a stated finite domain",
+    "attempt_closed": "a route that stalled, used too weak an estimate or stopped, with no proof that it cannot work",
+    "superseded": "a route replaced by an equivalent or stronger formulation",
+    "out_of_support": "a route the record names or implies but never tried"
+  },
+  "reading_rule": "Only proved, obstruction_proved, counterexample and finite_outcome close anything, and only on their own hypotheses, domain and representation. An attempt_closed route keeps its parent idea eligible until the cause of the stall is located; an out_of_support route is unknown, not failed. Checked results are premises in every world.",
+  "readers": [
+    {
+      "reader": "A",
+      "worlds": [
+        "257",
+        "1049"
+      ],
+      "routes": [
+        {
+          "id": "A01",
+          "world": "257",
+          "mechanism": "average the displacement over multiples of lcm(1..t)",
+          "closure": "proved",
+          "locus": "erdos-257-mersenne-support-subseries.md#Reciprocal-summable supports"
+        },
+        {
+          "id": "A02",
+          "world": "257",
+          "mechanism": "weight by the P-part, then a second dyadic average",
+          "closure": "proved",
+          "locus": "erdos-257-mersenne-support-subseries.md#Proof of the weighted criterion"
+        },
+        {
+          "id": "A03",
+          "world": "257",
+          "mechanism": "fractional divisor covers on a common window",
+          "closure": "proved",
+          "locus": "erdos-257-mersenne-support-subseries.md#Positive divisor majorants"
+        },
+        {
+          "id": "A04",
+          "world": "257",
+          "mechanism": "cost of a positive cover",
+          "closure": "obstruction_proved",
+          "locus": "erdos-257-mersenne-support-subseries.md#What every positive cover must pay"
+        },
+        {
+          "id": "A05",
+          "world": "257",
+          "mechanism": "small displacement at full support",
+          "closure": "obstruction_proved",
+          "locus": "erdos-257-mersenne-support-subseries.md#Limits of the small-displacement criterion"
+        },
+        {
+          "id": "A06",
+          "world": "257",
+          "mechanism": "half-membership rewritings of the greedy carry",
+          "closure": "superseded",
+          "locus": "erdos257-mersenne-reasoning-surface.md#Implication table",
+          "needle": "Implication table",
+          "file": "erdos257-mersenne-reasoning-surface.md"
+        },
+        {
+          "id": "A07",
+          "world": "257",
+          "mechanism": "quotient-row resets and bands",
+          "closure": "attempt_closed",
+          "locus": "erdos257-mersenne-reasoning-surface.md#Reset bounds and runs"
+        },
+        {
+          "id": "A08",
+          "world": "257",
+          "mechanism": "double-or-recycle exact rows",
+          "closure": "obstruction_proved",
+          "locus": "erdos257-mersenne-reasoning-surface.md#Theorems 170-174"
+        },
+        {
+          "id": "A09",
+          "world": "257",
+          "mechanism": "fixed-precision, 2-adic and finite-state summaries",
+          "closure": "obstruction_proved",
+          "locus": "erdos257-mersenne-reasoning-surface.md#Propositions 19, 256, 261 (model only)"
+        },
+        {
+          "id": "A10",
+          "world": "257",
+          "mechanism": "irrationality-measure denominator budget",
+          "closure": "attempt_closed",
+          "locus": "erdos257-mersenne-reasoning-surface.md#Observation 255"
+        },
+        {
+          "id": "A11",
+          "world": "257",
+          "mechanism": "quadratic-base product estimate",
+          "closure": "out_of_support",
+          "locus": "erdos257-mersenne-reasoning-surface.md#Two further analytic tests"
+        },
+        {
+          "id": "A12",
+          "world": "1049",
+          "mechanism": "Zudilin's 2004 forms with cyclotomic cancellation",
+          "closure": "proved",
+          "locus": "erdos-1049-rational-base-lambert.md#Theorem 1"
+        },
+        {
+          "id": "A13",
+          "world": "1049",
+          "mechanism": "one two-coordinate family valid at every base",
+          "closure": "obstruction_proved",
+          "locus": "erdos-1049-rational-base-lambert.md#Theorem 5",
+          "needle": "no decay",
+          "file": "erdos1049-rational-base-lambert-reasoning-surface.md"
+        },
+        {
+          "id": "A14",
+          "world": "1049",
+          "mechanism": "optimising Zudilin's parameter directions",
+          "closure": "finite_outcome",
+          "locus": "erdos1049-rational-base-lambert-reasoning-surface.md#certified finite parameter search"
+        },
+        {
+          "id": "A15",
+          "world": "1049",
+          "mechanism": "Hankel determinant order and size",
+          "closure": "attempt_closed",
+          "locus": "erdos-1049-rational-base-lambert.md#What neither calculation implies",
+          "needle": "What neither calculation implies",
+          "file": "erdos-1049-rational-base-lambert.md"
+        },
+        {
+          "id": "A16",
+          "world": "1049",
+          "mechanism": "clearing at 3/2 and the tail lattice",
+          "closure": "obstruction_proved",
+          "locus": "erdos-1049-rational-base-lambert.md#Theorem 8"
+        },
+        {
+          "id": "A17",
+          "world": "1049",
+          "mechanism": "Mahler equations for the full Lambert series",
+          "closure": "obstruction_proved",
+          "locus": "erdos1049-rational-base-lambert-reasoning-surface.md#Proposition 46"
+        },
+        {
+          "id": "A18",
+          "world": "synthesis",
+          "mechanism": "chains by a one-form Liouville estimate (a^2 > b^3)",
+          "closure": "proved",
+          "locus": "optimal-sparse-perturbations.md#Theorem 6.3(a)",
+          "needle": "We do not know whether $`a^2>b^3`$ is necessary",
+          "file": "optimal-sparse-perturbations.md"
+        },
+        {
+          "id": "A19",
+          "world": "synthesis",
+          "mechanism": "nonperiodic ratio chains at base 4/3",
+          "closure": "out_of_support",
+          "locus": "optimal-sparse-perturbations.md#Theorem 6.3 remark",
+          "needle": "The first open case is base",
+          "file": "optimal-sparse-perturbations.md",
+          "reopened": "R2"
+        }
+      ]
+    },
+    {
+      "reader": "B",
+      "worlds": [
+        "251",
+        "269"
+      ],
+      "routes": [
+        {
+          "id": "B01",
+          "world": "251",
+          "mechanism": "summation by parts for T_{N+1} = 2T_N - g_{N+1}",
+          "closure": "proved",
+          "locus": "erdos-251-prime-gap-dyadic-series.md#Theorem 3"
+        },
+        {
+          "id": "B02",
+          "world": "251",
+          "mechanism": "tail denominators and Euler's congruence",
+          "closure": "proved",
+          "locus": "erdos-251-prime-gap-dyadic-series.md#Theorem 5"
+        },
+        {
+          "id": "B03",
+          "world": "251",
+          "mechanism": "two small tail differences with an unequal gap, arbitrarily late",
+          "closure": "attempt_closed",
+          "locus": "erdos251-prime-gap-reasoning-surface.md#The two-window event has density zero",
+          "needle": "An averaging argument that detects a sparse set is not ruled out",
+          "file": "erdos251-prime-gap-reasoning-surface.md"
+        },
+        {
+          "id": "B04",
+          "world": "251",
+          "mechanism": "truncation, progression and lcm-diagonal rewrites",
+          "closure": "superseded",
+          "locus": "erdos-251-prime-gap-dyadic-series.md#Proposition 8"
+        },
+        {
+          "id": "B05",
+          "world": "251",
+          "mechanism": "sparse or bounded congruence-preserving perturbations",
+          "closure": "obstruction_proved",
+          "locus": "erdos-251-prime-gap-dyadic-series.md#Proposition 1"
+        },
+        {
+          "id": "B06",
+          "world": "251",
+          "mechanism": "synthetic coefficient sequences with integral tails",
+          "closure": "counterexample",
+          "locus": "erdos251-prime-gap-reasoning-surface.md#Theorem 29"
+        },
+        {
+          "id": "B07",
+          "world": "251",
+          "mechanism": "pigeonhole on repeated tail values under rationality",
+          "closure": "attempt_closed",
+          "locus": "erdos251-prime-gap-reasoning-surface.md#Repeated tail values",
+          "needle": "equal-tail pairs have difference zero",
+          "file": "erdos251-prime-gap-reasoning-surface.md",
+          "stall_cause": "the #251 tails are unbounded and their coefficients cannot be read back from them",
+          "reopened": "R1"
+        },
+        {
+          "id": "B08",
+          "world": "251",
+          "mechanism": "exact certificates for tail pairs",
+          "closure": "finite_outcome",
+          "locus": "erdos251-prime-gap-reasoning-surface.md#Propositions 18-19"
+        },
+        {
+          "id": "B09",
+          "world": "251",
+          "mechanism": "uniform Hardy-Littlewood input",
+          "closure": "out_of_support",
+          "locus": "erdos251-prime-gap-reasoning-surface.md#Remaining prime-gap estimates"
+        },
+        {
+          "id": "B10",
+          "world": "269",
+          "mechanism": "two-prime Hecke-Mahler reduction (Fan)",
+          "closure": "proved",
+          "locus": "erdos-269-three-prime-running-lcm.md#Theorem 5"
+        },
+        {
+          "id": "B11",
+          "world": "269",
+          "mechanism": "kernel separation by nonsingular minors",
+          "closure": "obstruction_proved",
+          "locus": "erdos-269-three-prime-running-lcm.md#Theorem 1"
+        },
+        {
+          "id": "B12",
+          "world": "269",
+          "mechanism": "dyadic-shell recurrence X_{a+1} = b_a X_a - m_a",
+          "closure": "proved",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#Theorem 14"
+        },
+        {
+          "id": "B13",
+          "world": "269",
+          "mechanism": "bounded-radix dichotomy and denominator clearing for the repeated sum",
+          "closure": "proved",
+          "locus": "erdos-269-three-prime-running-lcm.md#Cantor-series comparison",
+          "needle": "90B(a+1)^2",
+          "file": "erdos-269-three-prime-running-lcm.md",
+          "stall_cause": "numerators grow quadratically, so the integer states of the repeated sum are unbounded"
+        },
+        {
+          "id": "B14",
+          "world": "269",
+          "mechanism": "Erdos-Straus and Hancl-Tijdeman Cantor-series criteria",
+          "closure": "obstruction_proved",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#Relation to Cantor-series criteria"
+        },
+        {
+          "id": "B15",
+          "world": "269",
+          "mechanism": "finite-difference cancellation",
+          "closure": "counterexample",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#Example 30"
+        },
+        {
+          "id": "B16",
+          "world": "269",
+          "mechanism": "fixed-base recoding term by term",
+          "closure": "obstruction_proved",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#Why a finite alphabet of bases is not enough",
+          "needle": "Why a finite alphabet of bases is not enough",
+          "file": "erdos269-running-lcm-reasoning-surface.md"
+        },
+        {
+          "id": "B17",
+          "world": "269",
+          "mechanism": "window, twelve-shell, continued-fraction and lattice exclusions",
+          "closure": "finite_outcome",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#Finite computations and their limits"
+        },
+        {
+          "id": "B18",
+          "world": "269",
+          "mechanism": "a function-theoretic proof for the distinct-height sum",
+          "closure": "out_of_support",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#Problem 34",
+          "needle": "an exact function representing the distinct-height sum",
+          "file": "erdos269-running-lcm-reasoning-surface.md",
+          "reopened": "R1"
+        },
+        {
+          "id": "B19",
+          "world": "269",
+          "mechanism": "a recovered proof of Erdos's 1973 distinct-height assertion",
+          "closure": "out_of_support",
+          "locus": "erdos269-running-lcm-reasoning-surface.md#The historical and catalogue record",
+          "needle": "A recovered proof of the letter",
+          "file": "erdos269-running-lcm-reasoning-surface.md",
+          "reopened": "R1"
+        },
+        {
+          "id": "B20",
+          "world": "251->269",
+          "mechanism": "difference variable U = T_{N+h} - T_N into the escape dichotomy",
+          "closure": "proved",
+          "locus": "research/experiments/premise_exchange/README.md"
+        }
+      ]
+    },
+    {
+      "reader": "C",
+      "worlds": [
+        "249",
+        "68"
+      ],
+      "routes": [
+        {
+          "id": "C01",
+          "world": "249",
+          "mechanism": "CRT-Dirichlet evaluation matrix on the base-k sections of the totient",
+          "closure": "proved",
+          "locus": "erdos-249-binary-totient-series.md#A basis and all its relations"
+        },
+        {
+          "id": "C02",
+          "world": "249",
+          "mechanism": "one nonzero coefficient between long zero blocks with bounded coefficients",
+          "closure": "proved",
+          "locus": "erdos-249-binary-totient-series.md#Bounded residues and rationality",
+          "needle": "must be fixed before the zero blocks",
+          "file": "erdos-249-binary-totient-series.md"
+        },
+        {
+          "id": "C03",
+          "world": "249",
+          "mechanism": "residue tests and twenty re-quantified certificate forms",
+          "closure": "superseded",
+          "locus": "erdos249-totient-reasoning-surface.md#Summary of implications",
+          "needle": "Summary of implications",
+          "file": "erdos249-totient-reasoning-surface.md"
+        },
+        {
+          "id": "C04",
+          "world": "249",
+          "mechanism": "diagonal certificates through scale 82 and the Farey window",
+          "closure": "finite_outcome",
+          "locus": "erdos249-totient-reasoning-surface.md#Diagonal certificates through scale 82"
+        },
+        {
+          "id": "C05",
+          "world": "249",
+          "mechanism": "unbounded Farey growth",
+          "closure": "out_of_support",
+          "locus": "erdos249-totient-reasoning-surface.md#Proposition 124",
+          "needle": "No unboundedness claim is proved or attempted",
+          "file": "erdos249-totient-reasoning-surface.md"
+        },
+        {
+          "id": "C06",
+          "world": "249",
+          "mechanism": "block exponential sum with a four-term split",
+          "closure": "attempt_closed",
+          "locus": "erdos249-totient-reasoning-surface.md#The four-term decomposition",
+          "needle": "The four-term decomposition",
+          "file": "erdos249-totient-reasoning-surface.md"
+        },
+        {
+          "id": "C07",
+          "world": "249",
+          "mechanism": "fixed gap at prime positions",
+          "closure": "attempt_closed",
+          "locus": "erdos249-totient-reasoning-surface.md#Separation along prime positions",
+          "needle": "Separation along prime positions",
+          "file": "erdos249-totient-reasoning-surface.md"
+        },
+        {
+          "id": "C08",
+          "world": "249",
+          "mechanism": "carry rank under rationality",
+          "closure": "counterexample",
+          "locus": "erdos249-totient-reasoning-surface.md#Why rationality does not bound carry rank",
+          "needle": "Why rationality does not bound carry rank",
+          "file": "erdos249-totient-reasoning-surface.md"
+        },
+        {
+          "id": "C09",
+          "world": "249",
+          "mechanism": "Erdos's 1948 divisibility argument applied to the totient",
+          "closure": "attempt_closed",
+          "locus": "erdos-249-binary-totient-series.md#Bounded residues and rationality",
+          "stall_cause": "2^L divides phi(N+L) forces 2^L <= N+L, so the tail envelope of the unreduced coefficients exceeds 1",
+          "reopened": "R3"
+        },
+        {
+          "id": "C10",
+          "world": "249",
+          "mechanism": "Mahler equations for the totient series in one base",
+          "closure": "obstruction_proved",
+          "locus": "erdos-249-binary-totient-series.md#Regularity, Mahler equations and section maps"
+        },
+        {
+          "id": "C11",
+          "world": "68",
+          "mechanism": "next-integer carry and external denominator exclusions",
+          "closure": "proved",
+          "locus": "erdos-68-factorial-denominator-irrationality.md#The denominator exclusions"
+        },
+        {
+          "id": "C12",
+          "world": "68",
+          "mechanism": "factorial digits of S - e + 2 and the escape test",
+          "closure": "superseded",
+          "locus": "erdos68-factorial-reasoning-surface.md#Proposition 9"
+        },
+        {
+          "id": "C13",
+          "world": "68",
+          "mechanism": "channel vectors and the moment ideal",
+          "closure": "attempt_closed",
+          "locus": "erdos68-factorial-reasoning-surface.md#Theorems 15-18"
+        },
+        {
+          "id": "C14",
+          "world": "68",
+          "mechanism": "short truncations and adjacent unit carries",
+          "closure": "obstruction_proved",
+          "locus": "erdos68-factorial-reasoning-surface.md#Why one proposed window argument is circular",
+          "needle": "Why one proposed window argument is circular",
+          "file": "erdos68-factorial-reasoning-surface.md"
+        },
+        {
+          "id": "C15",
+          "world": "68",
+          "mechanism": "classical irrationality criteria from the literature",
+          "closure": "obstruction_proved",
+          "locus": "erdos68-factorial-reasoning-surface.md#Criteria from the literature that do not apply",
+          "needle": "Criteria from the literature that do not apply",
+          "file": "erdos68-factorial-reasoning-surface.md"
+        },
+        {
+          "id": "C16",
+          "world": "68",
+          "mechanism": "Hermite-Pade with other denominators",
+          "closure": "out_of_support",
+          "locus": "erdos68-factorial-reasoning-surface.md#Limits of the recurrences and clearing factors used here",
+          "needle": "Limits of the recurrences and clearing factors used here",
+          "file": "erdos68-factorial-reasoning-surface.md"
+        }
+      ]
+    },
+    {
+      "reader": "D",
+      "worlds": [
+        "243",
+        "1041",
+        "synthesis"
+      ],
+      "routes": [
+        {
+          "id": "D01",
+          "world": "synthesis",
+          "mechanism": "residue feedback with one shared continuation interval",
+          "closure": "proved",
+          "locus": "optimal-sparse-perturbations.md#Theorem 3.1"
+        },
+        {
+          "id": "D02",
+          "world": "synthesis",
+          "mechanism": "prefix lattice with bounded capacity",
+          "closure": "obstruction_proved",
+          "locus": "optimal-sparse-perturbations.md#3.2-3.3"
+        },
+        {
+          "id": "D03",
+          "world": "synthesis",
+          "mechanism": "carry as multiplication by (z - 1)",
+          "closure": "proved",
+          "locus": "optimal-sparse-perturbations.md#Theorems 2.1-2.2"
+        },
+        {
+          "id": "D04",
+          "world": "synthesis",
+          "mechanism": "covering by choices against contraction",
+          "closure": "proved",
+          "locus": "optimal-sparse-perturbations.md#Theorem 6.2"
+        },
+        {
+          "id": "D05",
+          "world": "synthesis",
+          "mechanism": "Mahler's method for doubling ratios",
+          "closure": "proved",
+          "locus": "optimal-sparse-perturbations.md#Theorem 6.3(b)"
+        },
+        {
+          "id": "D06",
+          "world": "synthesis",
+          "mechanism": "base-2 stopping rule for the greedy test",
+          "closure": "counterexample",
+          "locus": "optimal-sparse-perturbations.md#6.3 and 9"
+        },
+        {
+          "id": "D07",
+          "world": "synthesis",
+          "mechanism": "one inequality for #1049 Theorem 5 and the #257 cover cost",
+          "closure": "attempt_closed",
+          "locus": "optimal-sparse-perturbations.md#8"
+        },
+        {
+          "id": "D08",
+          "world": "synthesis",
+          "mechanism": "dyadic shift families",
+          "closure": "proved",
+          "locus": "optimal-sparse-perturbations.md#Theorem 7.1"
+        },
+        {
+          "id": "D09",
+          "world": "synthesis",
+          "mechanism": "Subspace Theorem in S-unit coordinates for chains",
+          "closure": "out_of_support",
+          "locus": "absent from the chain records",
+          "absent_terms": [
+            "Subspace",
+            "S-unit",
+            "Ridout"
+          ],
+          "absent_files": [
+            "optimal-sparse-perturbations.md",
+            "erdos-257-mersenne-support-subseries.md",
+            "erdos257-mersenne-reasoning-surface.md",
+            "erdos-1049-rational-base-lambert.md",
+            "erdos1049-rational-base-lambert-reasoning-surface.md"
+          ],
+          "reopened": "R2"
+        },
+        {
+          "id": "D10",
+          "world": "243",
+          "mechanism": "gcd stabilisation with a CRT first crossing",
+          "closure": "proved",
+          "locus": "erdos-243-reciprocal-tail-rigidity.md#2"
+        },
+        {
+          "id": "D11",
+          "world": "243",
+          "mechanism": "exact-polynomial extraction, square field and mod-7 words",
+          "closure": "proved",
+          "locus": "erdos243-reciprocal-tail-reasoning-surface.md#2"
+        },
+        {
+          "id": "D12",
+          "world": "243",
+          "mechanism": "other integer rates d != 3",
+          "closure": "out_of_support",
+          "locus": "erdos243-reciprocal-tail-reasoning-surface.md#2"
+        },
+        {
+          "id": "D13",
+          "world": "243",
+          "mechanism": "saturation modulo an old denominator",
+          "closure": "obstruction_proved",
+          "locus": "erdos243-reciprocal-tail-reasoning-surface.md#Lemma 21"
+        },
+        {
+          "id": "D14",
+          "world": "243",
+          "mechanism": "repair-entropy bound",
+          "closure": "attempt_closed",
+          "locus": "erdos243-reciprocal-tail-reasoning-surface.md#14"
+        },
+        {
+          "id": "D15",
+          "world": "1041",
+          "mechanism": "ani's degree-7 polynomial",
+          "closure": "counterexample",
+          "locus": "erdos-1041-lemniscate-newton-flow.md#1"
+        }
+      ]
+    }
+  ],
+  "reopened": {
+    "R1": {
+      "transport": "B07 (a return argument stalled by unbounded states in #251) into the #269 distinct-height sum, whose tails are bounded once terms are grouped into dyadic shells",
+      "result": "D_{2,3,5} is irrational (ordinary proof); exact decoding certificates for all 165 prime triples up to 31; {2,3,5,7} fails the certificate through depth 6",
+      "evidence": "research/experiments/erdos269/distinct_height/"
+    },
+    "R2": {
+      "transport": "a structurally different engine for A19: Schlickewei's p-adic Subspace Theorem in S-unit coordinates, never tried in the chain records (D09)",
+      "result": "transcendence of the Lambert subsum over every infinite divisibility chain at every rational base a/b > 1 (ordinary proof citing the Subspace Theorem)",
+      "evidence": "research/experiments/chain_transcendence/"
+    },
+    "R3": {
+      "transport": "C09 (Erdos's 1948 divisibility argument, stalled for the totient because the coefficients are as large as n) repaired by reducing the coefficients and building 2-divisible blocks from prime factors of Fermat numbers",
+      "result": "for a_n = phi(n) mod 2^kappa(n) with 2^kappa(n) = o(log n), the series sum a_n 2^-n is rational exactly when a_n = 0 for all large n; it is irrational whenever kappa(3^k) >= 2 infinitely often (ordinary proof; extends the bounded-residue theorem of the #249 short paper to slowly growing moduli)",
+      "evidence": "pending propagation to the #249 long record by its owner"
+    }
+  }
+}

@@ -18,7 +18,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44)
+[`ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L44)
 
 ```lean
 theorem paper_cpgs_equiv :
@@ -63,7 +63,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L130)
+1. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L130)
 
 ```lean
 theorem paper_terminal_strip_equiv :
@@ -77,7 +77,7 @@ theorem paper_terminal_strip_equiv :
         ↔ (1 / 2 : ℝ) ∈ mersenneAchievementSet)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_relaxed_constant_six_every_depth`](https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L112)
+2. [`ErdosProblems.Erdos257.PaperCompleteR21.paper_relaxed_constant_six_every_depth`](https://github.com/wcook04/plectis-erdos/blob/4d41eaab40de87460b9049d84455ef18660b858e/lean/ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean#L112)
 
 ```lean
 theorem paper_relaxed_constant_six_every_depth

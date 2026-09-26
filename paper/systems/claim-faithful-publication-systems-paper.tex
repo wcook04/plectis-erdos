@@ -15,12 +15,12 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{151,710}
+\newcommand{\SemanticAuthoredTheoremLike}{151,784}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{11,892}
-\newcommand{\SemanticAuthoredPercent}{92.2}
+\newcommand{\SemanticStructuralOnly}{11,966}
+\newcommand{\SemanticAuthoredPercent}{92.1}
 % END generated_semantic_coverage_macros
 \newcommand{\repolink}[2]{\href{\repobase/blob/3aea812a5fb031b14e0911cc9110885cd8a10bfd/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
@@ -58,7 +58,10 @@ answer as \texttt{False} and links the proof. Worked cases from Problems 257
 and 249 and from a cross-problem synthesis show what the record keeps for a
 result, and a transfer between Problems 251 and 269, checked in Lean, shows one
 problem's theorem proving another's criterion and then improving its constant
-from $1/31$ to $1/3$. The paper compares the design with Prove2Me and blueprint-based
+from $1/31$ to $1/3$. Replaying the recorded failed routes of all eight problems
+turned a stalled argument into a proof that the Problem 269 distinct-height
+sum is irrational for every set of at least two primes, which Erd\H{o}s
+asserted without proof in 1973; Lean checks the case of the primes 2, 3 and 5. The paper compares the design with Prove2Me and blueprint-based
 systems and specifies the controlled comparison that will measure whether
 such records reduce the work of understanding, checking and continuing a
 result.
@@ -321,6 +324,64 @@ probe} first rules out $189/388$ at step~17. The record keeps both facts: the
 estimate is false, and the problem itself is untouched. Inside the weighted
 proof the same discipline explains the second average: the short paper shows
 why the majorant of the reciprocal-summable proof fails beyond that class.
+
+\paragraph{Replaying the record.}
+Zheng et al.~\cite{dreamrsi} store a completed discovery run as a tree of
+attempts with their evaluated outcomes, so that another exploration policy
+can be replayed over the tree without rerunning any attempt; a separate agent
+improves that policy while the discovery agent and evaluator stay fixed, and
+a route outside the recorded branches earns nothing. In a problem-sized world
+the reader of the record is the agent that makes the next attempt, and the
+\repolink{scripts/proof_workbench.py}{proof workbench} records moves and
+kernel verdicts but by design does not search, rank or decide. The record
+also keeps two kinds of outcome: a checked theorem or an exact computation
+replays identically and is a premise in every world, while a failed attempt
+closes nothing until its cause is located. On 26 September four readers
+replayed the recorded routes of the eight worlds under that distinction
+(\href{\repobase/blob/f3559e2f/research/experiments/replay_worlds/README.md}{replay}),
+classing 70 decisive rows as proofs, obstructions, counterexamples, finite
+computations, stalled attempts, superseded formulations or routes never
+tried; a checker rereads every cited record at the pinned commit. Three
+reopened routes became theorems. The Problem 251 record had tried to force a
+repeated tail under rationality and stalled because its tails are unbounded.
+In the distinct-height sum of Problem 269, where each running least common
+multiple counts once, grouping the terms into dyadic shells makes the tails
+bounded and uniquely decodable, and the same return argument proves
+$\mathcal D_{\{2,3,5\}}$ irrational~\cite{paper269}, and Lean checks the proof
+(\href{\repobase/blob/5154f4c4/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean}{DistinctHeightIrrationality.lean}).
+Erd\H{o}s asserted
+irrationality of these sums in 1973 without printing an
+argument~\cite{erdos1974letter}. The general case came from restating the sum
+in another field's terms, as a Cantor series whose bases follow the cutting
+sequence of the flow $t(1,\dots,1)$ on $\prod_{q\in P}\mathbb R/(\log q)\mathbb Z$;
+Kurgan et al.\ find that the lemmas a proof uses rarely share its statement's
+vocabulary~\cite{theoremgraph}. Rationality forces two tails taken at a close
+return of the flow to be equal, and an Euler-characteristic count on a
+subtorus supplies a return at which they differ by one transposition, so
+$\mathcal D_P$ is irrational for every set $P$ of at least two primes. For two
+primes this already follows from transcendence of Hecke--Mahler
+values~\cite{loxtonvdp1977,bugeaudlaurent2023}; a search in both vocabularies
+found no result for three or more. The attack on the full catalogue sum
+failed, and the failure left a theorem: with the carry $f$ replaced by the
+product of the primes that follow $p$ in a chain, the same comparison proves
+irrational every sub-sum $E_p$ over the powers of one prime $p$, and for two
+primes the catalogue sum factors exactly as $E_pE_q$. Axelrod et al.\ mine
+the lemmas of failed proof searches for abstractions and keep one only when
+it speeds a later proof~\cite{twitch}; here the kept object is an operation
+defined by what it preserves, and its consumer is a theorem. The synthesis paper had proved
+transcendence along eventually doubling chains with Mahler's method and
+recorded chains at base $4/3$ whose ratios are $2$ except for infinitely many
+$3$s as its first open case; Schlickewei's Subspace Theorem in S-unit
+coordinates~\cite{schlickewei,corvajazannier} proves transcendence for every
+infinite divisibility chain at every rational base $a/b>1$~\cite{synthesis};
+integer bases already follow from Roth's theorem and Mahler's method, so the
+new cases are non-integer bases with bounded aperiodic ratio words. Erd\H{o}s's 1948 divisibility argument, which the
+Problem 249 record had stopped on coefficient size, proves irrationality once
+the totient coefficients are reduced modulo slowly growing powers of two, a
+statement that a 2026 criterion of Kaneko, Suzuki and Tachiya also
+implies~\cite{kst2026}.
+The general case, the sub-sum theorem and these last two proofs are ordinary arguments, the first two checked step by step by a second, independent agent, awaiting specialist review, and
+the replay compares no exploration policies.
 
 Reading the problems together raises questions that none of them asks alone.
 The smallest complete case is a transfer between two problems. For dyadic
@@ -971,6 +1032,41 @@ September 2026.
 \bibitem{fcpr} Formal Conjectures, pull request 6505, \emph{Erd\H{o}s 1041:
 mark solved with answer(False) and link a formal proof}, merged 23 September
 2026, \href{https://github.com/google-deepmind/formal-conjectures/pull/6505}{GitHub}.
+\bibitem{dreamrsi} T.~Zheng, X.~Wu, Z.~Zhang, et al., \emph{Dream-RSI:
+Recursive Self-Improvement through Evolving Worlds}, 2026,
+\href{https://arxiv.org/abs/2609.14858}{arXiv:2609.14858}.
+\bibitem{loxtonvdp1977} J.~H.~Loxton and A.~J.~van der Poorten, \emph{Arithmetic
+properties of certain functions in several variables III}, Bull. Austral.
+Math. Soc. \textbf{16} (1977), 15--47.
+
+\bibitem{bugeaudlaurent2023} Y.~Bugeaud and M.~Laurent, \emph{Transcendence and
+continued fraction expansion of values of Hecke--Mahler series}, Acta Arith.
+\textbf{209} (2023), 59--90.
+
+\bibitem{kst2026} H.~Kaneko, Y.~Suzuki and Y.~Tachiya, \emph{Refinements of
+Erd\H{o}s's irrationality criterion for certain sparse infinite series},
+arXiv:2601.20743 (2026).
+
+\bibitem{twitch} G.~Axelrod, M.~Johansson and N.~Smallbone, \emph{Twitch:
+Learning Abstractions for Equational Theorem Proving}, IJCAR 2026,
+arXiv:2603.06849.
+
+\bibitem{theoremgraph} S.~Kurgan, E.~Wang, E.~Leonen et al., \emph{TheoremGraph:
+Bridging Formal and Informal Mathematics}, arXiv:2606.25363 (2026).
+
+\bibitem{paper269} W.~Cook, \emph{The Three-Prime Running LCM}, short paper on
+Erd\H{o}s Problem~269, September 2026,
+\repolink{paper/269/erdos-269-three-prime-running-lcm.pdf}{PDF}.
+\bibitem{erdos1974letter} P.~Erd\H{o}s, \emph{Letter to the Editor}, Fibonacci
+Quart.\ 12 (1974), 335,
+\href{https://www.fq.math.ca/Scanned/12-4/letter.pdf}{scan}.
+\bibitem{schlickewei} H.~P.~Schlickewei, \emph{Die $p$-adische
+Verallgemeinerung des Satzes von Thue--Siegel--Roth--Schmidt}, J.\ Reine
+Angew.\ Math.\ 288 (1976), 86--105; stated as Theorem~2.3 of Yu.~F.~Bilu,
+\emph{The many faces of the subspace theorem}, Ast\'erisque 317 (2008),
+\href{https://arxiv.org/abs/0907.2098}{arXiv:0907.2098}.
+\bibitem{corvajazannier} P.~Corvaja and U.~Zannier, \emph{Some new applications
+of the subspace theorem}, Compositio Math.\ 131 (2002), 319--340.
 \bibitem{fan269} S.~Fan, comment on Erd\H{o}s Problem \#269, erdosproblems.com
 forum, 26 June 2026,
 \href{https://www.erdosproblems.com/forum/thread/269\#post-7218}{forum post}.

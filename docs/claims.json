@@ -954,10 +954,14 @@
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #269 and the three-prime residue-escape boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #269: irrationality of the distinct-height sum for every finite prime set (Lean-checked at {2,3,5}), its three-prime certificates, irrationality of the single-prime sub-sums of the catalogue sum, and the three-prime residue-escape boundary of the catalogue sum.",
           "anchor_label_allowlist": [
+            "res:distinct-height-all",
+            "res:distinct-height-235",
+            "res:distinct-height-triples",
             "res:consumer",
-            "res:windowconsumer"
+            "res:windowconsumer",
+            "res:single-prime-subsums"
           ]
         },
         {
@@ -1105,7 +1109,7 @@
           "title": "Reading Eight Erdős Problems Together",
           "source": "paper/synthesis/optimal-sparse-perturbations.tex",
           "rendered": "paper/synthesis/optimal-sparse-perturbations.pdf",
-          "role": "Consolidated cross-problem paper: sharp rationality, dimension and interior thresholds for factorial derivative vectors; exact capacity and support-gap criteria; Lambert-chain arguments, subsum obstructions, restricted dyadic shifts and their polynomial and prime-argument criteria, and the research record. Complete arguments are ordinary proofs, with the sharp dyadic input cited. Lean checks specified ingredients, not the complete theorems. No Erdos claim status changes.",
+          "role": "Consolidated cross-problem paper: sharp rationality, dimension and interior thresholds for factorial derivative vectors; exact capacity and support-gap criteria; transcendence of Lambert sums along every divisibility chain at every rational base, subsum obstructions, restricted dyadic shifts and their polynomial and prime-argument criteria, and the research record. Complete arguments are ordinary proofs, with the sharp dyadic input and the p-adic Subspace Theorem cited. Lean checks specified ingredients, not the complete theorems. No Erdos claim status changes.",
           "anchor_label_allowlist": [
             "sec:map",
             "sec:dyadic-shifts",
@@ -1135,6 +1139,7 @@
             "thm:dichotomy",
             "thm:bases",
             "thm:chains",
+            "thm:chain-transcendence",
             "thm:forced",
             "sec:dichotomy",
             "sec:bases",
@@ -14911,6 +14916,29 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.DistinctHeightAxiomAudit",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightAxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DistinctHeightIrrationality"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightIrrationality",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
           "path": "lean/ErdosProblems/Erdos269/DyadicBlockMassIdentity.lean",
           "role": "Lean proof module",
@@ -19197,7 +19225,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "3aea812a5fb031b14e0911cc9110885cd8a10bfd",
+      "ref": "4d41eaab40de87460b9049d84455ef18660b858e",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -20852,7 +20880,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 49
+        "line": 70
       }
     },
     {
@@ -20900,7 +20928,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 581
+        "line": 931
       }
     },
     {
@@ -20912,7 +20940,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 587
+        "line": 937
       }
     },
     {
@@ -20924,7 +20952,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 2245
+        "line": 3196
       }
     },
     {
@@ -21005,7 +21033,7 @@
       "id": "erdos_269",
       "label": "Erdős #269: irrationality of running-LCM reciprocal sums",
       "status": "open",
-      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
+      "statement": "For every finite set P of at least two primes, the distinct-height sum D_P, which counts each value of the running LCM of the P-smooth integers once, is irrational (res:distinct-height-all; ordinary proof found within the project on 26 September 2026 and independently refereed by a second AI reader, no Lean proof), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from the two-prime Hecke-Mahler transcendence. The case P = {2,3,5} is Lean-checked by a dyadic-block proof (res:distinct-height-235; ErdosProblems.Erdos269.distinctHeightSum235_irrational, Comparator not yet run). For the catalogue sum, both two-prime sums are transcendental by Fan's reduction to a cited Hecke-Mahler value theorem (res:two-prime-transcendence), and for every finite P with |P| >= 2 the sub-sum E_p over the powers of one prime p is irrational (res:single-prime-subsums; ordinary refereed proof, no Lean proof, literature not searched). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality",
         "remaining_open.erdos_269_reduced_tail_nonintegrality",
