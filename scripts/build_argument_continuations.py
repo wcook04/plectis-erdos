@@ -170,18 +170,36 @@ def comparator_results(root: Path) -> dict[str, dict[str, Any]]:
     return out
 
 
+def semantic_problems(root: Path) -> dict[str, str]:
+    """Declaration -> problem, from the semantic corpus's authored evidence."""
+    handles = dependency_handles(root)
+    out: dict[str, str] = {}
+    for node in semantic_nodes(root):
+        problem = node.get("problem")
+        if problem not in PROBLEMS:
+            continue
+        for evidence in node.get("evidence", []) or []:
+            handle = handles.get(f"lean/{evidence.get('module')}:{evidence.get('line')}")
+            if handle:
+                out.setdefault(handle, problem)
+    return out
+
+
 def module_problem(module: str, name: str) -> str | None:
     match = re.search(r"\.Erdos(\d+)(?:\.|$)", "." + module)
     if match and match.group(1) in PROBLEMS:
         return match.group(1)
-    if module.startswith("Erdos249257"):
-        text = module + "." + name
-        hits_257 = any(token in text for token in PROBLEM_257_TOKENS)
-        hits_249 = any(token in text for token in PROBLEM_249_TOKENS)
-        if hits_257 and not hits_249:
-            return "257"
-        if hits_249 and not hits_257:
-            return "249"
+    # The shared library is named Erdos249257, which contains the token
+    # "Erdos249"; strip it before reading tokens, or everything in it would look
+    # like Problem 249.
+    text = (module + "." + name).replace("Erdos249257", "")
+    hits_257 = any(token in text for token in PROBLEM_257_TOKENS)
+    hits_249 = any(token in text for token in PROBLEM_249_TOKENS)
+    if hits_257 and not hits_249:
+        return "257"
+    if hits_249 and not hits_257:
+        return "249"
+    if module.startswith("Erdos249257") or hits_257 or hits_249:
         return "249_257"
     return None
 
@@ -794,11 +812,17 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
     papers = paper_rows(root)
     comparator = comparator_results(root)
 
+    semantic = semantic_problems(root)
+
     def theorem_problem(name: str) -> str | None:
+        # Paper rows first, then the semantic corpus's authored attribution,
+        # then module and name tokens.
         rows_for = papers.get(name) or []
         problems = sorted({row["problem"] for row in rows_for if row.get("problem")})
         if problems:
             return problems[0] if len(problems) == 1 else "cross"
+        if name in semantic:
+            return semantic[name]
         theorem = graph.theorems.get(name)
         return module_problem(theorem["module"] if theorem else "", name)
 
