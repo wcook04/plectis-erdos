@@ -14916,6 +14916,29 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.DistinctHeightAxiomAudit",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightAxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DistinctHeightIrrationality"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightIrrationality",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
           "path": "lean/ErdosProblems/Erdos269/DyadicBlockMassIdentity.lean",
           "role": "Lean proof module",
