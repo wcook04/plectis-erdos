@@ -340,7 +340,7 @@ has been formalised separately in Lean.
 The comparison identifies the added class and proof mechanism, but does not
 settle independent novelty or priority assessment. See the
 [short paper's theorem, example and sources](papers/full-text/erdos-257-mersenne-support-subseries.md#an-example-beyond-reciprocal-summability).
-[One host realises any finite monotone witness rule](papers/full-text/erdos-257-mersenne-support-subseries.md#finite-rules-for-prime-witnesses),
+[One host realises any finite monotone witness rule](papers/full-text/erdos257-mersenne-reasoning-surface.md#finite-rules-for-prime-witnesses),
 checked in Lean as `finite_monotone_witness_rule_realised`. Given a finite
 set $E$ of primes and a nonconstant upward-closed rule on its subsets, a
 finite union of prime-cofactor blocks has divergent reciprocal sum, its

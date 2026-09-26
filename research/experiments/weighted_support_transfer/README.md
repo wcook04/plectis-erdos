@@ -224,9 +224,9 @@ base-independent alternative host whose test needs every prime of $F$. The
 single-product host $A_F$ above remains distinct: its minimal witnesses can
 change with the base.
 
-The [short paper's finite-witness section](../../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md#finite-rules-for-prime-witnesses)
-gives the concise construction, while its simpler first example takes
-$r_k=2^k$. Compare its proof with these two choices, the
+The [long record's finite-witness proposition](../../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md#finite-rules-for-prime-witnesses)
+proves the finite-witness realisation, and the short paper's first example
+takes $r_k=2^k$. Compare that example with these two choices, the
 [exact Lean statement](../../../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61)
 and the [reproduction route](../../../docs/REPRODUCIBILITY.md). The Lean
 proof checks the conditional weighted theorem, not this parameter choice.

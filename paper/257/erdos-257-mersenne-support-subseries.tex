@@ -353,78 +353,13 @@ $c_A$: for nonempty $A$, it is positive on every multiple of $\min A$.
 The companion, Section~1.2, gives the counting argument and distinguishes
 their remote-tail average from the displacement used here.
 
-\subsection{Finite rules for prime witnesses}\label{sec:finite-witness-rules}
-The weighted condition can encode more than a single required prime.
-One host can realise any monotone rule on a finite set of primes, at
-every base simultaneously.
-
-\begin{proposition}[realising finite monotone witness rules]
-\label{res:finite-witness-rule}
-Let $E$ be a finite set of primes, and let $\mathcal U$ be an
-upward-closed family of subsets of $E$ with $E\in\mathcal U$ and
-$\varnothing\notin\mathcal U$.  There is a set $A_{\mathcal U}\subseteq\Npos$
-with $\sum_{a\in A_{\mathcal U}}1/a=\infty$ such that, for every integer
-$b\ge2$ and every finite set $P$ of primes (including $P=\varnothing$, with
-$h(a)=1$),
-\begin{equation}\label{eq:finite-witness-rule}
- W_{b,P}(A_{\mathcal U})<\infty
- \quad\Longleftrightarrow\quad P\cap E\in\mathcal U.
-\end{equation}
-Moreover $X_B(b)$ is irrational for every infinite $B\subseteq A_{\mathcal U}$
-and every integer $b\ge2$.
-\end{proposition}
-
-The host is chosen before the base and the prime set, and primes of $P$
-outside $E$ never change the answer.  A rule such as ``at least two of
-$2,3,5$'' is covered: no single prime is mandatory, but no single prime
-is sufficient.
-
-Here is the construction and proof.  For each nonempty $C\subseteq E$,
-put $D_C=\prod_{p\in C}p$ and
-\[
- B_C=\{D_C^km:k\ge1,\ 1\le m\le2^{D_C^k},\ \gcd(m,D_C)=1\}.
-\]
-Write $g=\prod_{p\in C\cap P}p$, with an empty product equal to $1$.
-The $k$th layer has a fixed $C$-part $D_C^k$.  Its weighted mass is
-bounded above and below, with positive constants depending on $C\cup P$,
-by $g^k/(b^{g^k}-1)$.  For the upper bound, the $P$-part of
-$D_C^km$ is $g^ku$; the ratio of its weight to the weight at $g^k$ is
-$u/(1+b^{g^k}+\cdots+b^{(u-1)g^k})\le1$, and
-$\sum_{m\le2^r}1/m\le2r$.  For the lower bound, keep only
-$m\equiv1\pmod Q$, where $Q=\prod_{p\in C\cup P}p$.  These cofactors
-have $P$-part $g^k$.  Write $H_n=\sum_{j=1}^n1/j$.
-Grouping $1,\ldots,2^r$ into blocks of at most $Q$ integers gives
-\[
- \sum_{\substack{m\le2^r\\m\equiv1\pmod Q}}\frac1m
- \ge\frac{H_{2^r}}Q\ge\frac r{2Q}.
-\]
-Take $r=D_C^k$.  If $g=1$, the comparison terms all equal
-$1/(b-1)$; if $g\ge2$, they are summable because the ratio of
-consecutive terms is at most $g/b^{g^k}\to0$.  Thus $B_C$ has finite
-weighted mass exactly when $P$ meets $C$.  The same lower estimate
-with $Q=D_C$ shows that each layer contributes at least $1/(2D_C)$
-to the ordinary reciprocal sum.
-
-For every forbidden set $M\subseteq E$ with $M\notin\mathcal U$, take
-$C$ to be its complement in $E$, and let $A_{\mathcal U}$ be the union of these
-finitely many $B_C$.  Each clause $C$ is nonempty.  (Keeping only the
-inclusion-maximal forbidden sets gives a smaller host with the same
-classification.)  A subset of $E$
-belongs to $\mathcal U$ exactly when it meets every such $C$;
-nonnegative weights make summability on the union equivalent to
-summability on each block.  This proves~\eqref{eq:finite-witness-rule}
-and reciprocal divergence.  The finite Boolean correspondence is
-standard~\cite[Section~2]{sedaghatstephenchindelevitch}; the arithmetic
-work here is the block comparison.  Since $E\in\mathcal U$, the binary weighted
-criterion with $P=E$ proves the claimed irrationality.  For example, when
-$\mathcal U$ consists of the subsets of $E=\{2,3,5\}$ with at least two
-elements, the maximal forbidden sets give the three clauses $\{2,3\}$,
-$\{2,5\}$, $\{3,5\}$, and the minimal witnesses are precisely
-$\{2,3\}$, $\{2,5\}$, $\{3,5\}$.
-Lean checks Proposition~\ref{res:finite-witness-rule} for the host
-built from all forbidden sets; the reduced host of the example is an
-ordinary variant.  The novelty of the arithmetic realisation has not yet
-been assessed.
+One host realises any monotone rule on a finite set $E$ of primes: if
+$\mathcal U$ is an upward-closed family of subsets of $E$ with
+$E\in\mathcal U\not\ni\varnothing$, a finite union of prime-cofactor blocks
+has divergent reciprocal sum and $W_{b,P}<\infty$ exactly when
+$P\cap E\in\mathcal U$, for every $b\ge2$ and finite prime set $P$, so every
+infinite subset is irrational at every base.  The companion proves this and
+Lean checks it.
 
 \subsection{A common finite average for the extensions}\label{sec:common-kernel}
 To combine the weighted criterion with positive divisor majorants, both
@@ -1412,11 +1347,6 @@ the mathematics of the present paper.
 
 \begingroup\small
 \begin{thebibliography}{99}
-\bibitem{sedaghatstephenchindelevitch} N.~Sedaghat, T.~Stephen, and
-  L.~Chindelevitch, \href{https://doi.org/10.4230/LIPIcs.SEA.2018.6}
-  {\emph{Speeding up dualization in the Fredman--Khachiyan Algorithm B}},
-  17th International Symposium on Experimental Algorithms (SEA 2018),
-  LIPIcs 103 (2018), 6:1--6:13.
 \bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya,
   \href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf}
   {\emph{Refinement of the Chowla--Erd\H{o}s method and linear independence

@@ -135,13 +135,6 @@
     "Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages": "182b4f9d7c95c2e675dae4875e402b7c60a21d58d820e401d777eaa0f3b38ece"
    }
   },
-  "erdos-257-mersenne-support-subseries#res:finite-witness-rule": {
-   "note": "The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\\varnothing)$; the printed family $\\mathcal U$ on subsets of $E$ is the case $U(S)\\iff S\\cap E\\in\\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(P\\cap E)$ reads $P\\cap E\\in\\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,P}(H)<\\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.",
-   "statement_key": "sha256:44733bf56212e1612c501e868bac2c20c422a31db39e4882fd6e6abf611a983e",
-   "lean_statements": {
-    "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised": "553a21b9ad9b63b30f7f946a3ed92f6d2bf82084967b03c1b6d77be87c442b7c"
-   }
-  },
   "erdos-257-mersenne-support-subseries#res:mixed-supports": {
    "note": "The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\\subseteq\\Npos$ written as $0\\notin E$. A cover satisfying (V), with its index $j\\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\\eta_j>0$, $\\sum_j\\eta_j=1$ and $\\sum_jC_j\\eta_j^{-\\alpha_j}/(2^{\\alpha_j}-1)<\\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.",
    "statement_key": "sha256:591f6d5c9d64758827d4fd7579b2bc3a9a616efabe450a4cd9023ee7268d9093",
@@ -678,6 +671,13 @@
     "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion": "8b2b3c20ab0dae491b061324cd44120381f7ecfc8f4f38520809627450f19b0d",
     "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks": "2860359aabaac14cdb92cd6936e3be004257a39a53d20a86a1919c6f79bb82a1",
     "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'": "db5ce4bebd4f0411d812b6b86cf2ccf6200042f645e1ae42cd1c39d0d007c54f"
+   }
+  },
+  "erdos257-mersenne-reasoning-surface#prop:257-finite-witness-rule": {
+   "note": "The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\\varnothing)$; the printed family $\\mathcal U$ on subsets of $E$ is the case $U(S)\\iff S\\cap E\\in\\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(\\mathcal P\\cap E)$ reads $\\mathcal P\\cap E\\in\\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,\\mathcal P}(H)<\\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.",
+   "statement_key": "sha256:12fbd124eecd8016b4fd7426bdeb2ddca64e779a4b4bd2bf7b484c392a234dff",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised": "553a21b9ad9b63b30f7f946a3ed92f6d2bf82084967b03c1b6d77be87c442b7c"
    }
   },
   "erdos257-mersenne-reasoning-surface#prop:257-logarithmic-initial-interval": {
