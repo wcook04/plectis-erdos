@@ -121,7 +121,7 @@ jobs:
 
       # Each pass stops itself at its own budget: search 75 min, compositions at
       # most 20 min after the search budget, idle hypotheses 10 min, battery
-      # 20 min. The outer timeout is a backstop so a stuck elaboration cannot
+      # 20 min, library search on the 150 most-consumed open leaves 10 min. The outer timeout is a backstop so a stuck elaboration cannot
       # consume the job and lose the partial stream. The builder labels a
       # stream without a summary record as truncated rather than rejecting it.
       # The lean/ tree id lets any checkout tell whether the graph is current
@@ -133,6 +133,8 @@ jobs:
           PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "4500"
           PLECTIS_CONTINUATION_IDLE_SECONDS: "600"
           PLECTIS_CONTINUATION_BATTERY_SECONDS: "1200"
+          PLECTIS_CONTINUATION_DEEP_LEAVES: "150"
+          PLECTIS_CONTINUATION_DEEP_SECONDS: "600"
         run: |
           set -uo pipefail
           git rev-parse HEAD > "$RUNNER_TEMP/argument_continuations_source_revision.txt"

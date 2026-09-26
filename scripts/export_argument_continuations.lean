@@ -49,7 +49,10 @@ source-coordinate join and the argument graph. Environment variables:
   1200);
 * `PLECTIS_CONTINUATION_IDLE_SECONDS`: wall-clock budget for the idle-hypothesis
   pass (default 600);
-* `PLECTIS_CONTINUATION_WORKERS`: statements searched in parallel (default 4).
+* `PLECTIS_CONTINUATION_WORKERS`: statements searched in parallel (default 4);
+* `PLECTIS_CONTINUATION_DEEP_LEAVES` and `PLECTIS_CONTINUATION_DEEP_SECONDS`:
+  library search (`exact?`) on that many of the most-consumed leaves the
+  battery left open, within that wall-clock budget (defaults 0, off, and 600).
 
 After the producer search, three more passes run. Pass 3 composes each
 conditional theorem whose closed hypotheses all have a residual-free producer
@@ -83,6 +86,8 @@ structure Config where
   batteryBudgetMs : Nat
   idleBudgetMs : Nat
   workers : Nat
+  deepLeaves : Nat
+  deepBudgetMs : Nat
 
 private def squeeze (s : String) : String :=
   String.ofList (s.toList.filter fun c => !c.isWhitespace)
@@ -111,6 +116,8 @@ def readConfig : IO Config := do
     batteryBudgetMs := (← envNat "PLECTIS_CONTINUATION_BATTERY_SECONDS" 1200) * 1000
     idleBudgetMs := (← envNat "PLECTIS_CONTINUATION_IDLE_SECONDS" 600) * 1000
     workers := max 1 (← envNat "PLECTIS_CONTINUATION_WORKERS" 4)
+    deepLeaves := ← envNat "PLECTIS_CONTINUATION_DEEP_LEAVES" 0
+    deepBudgetMs := (← envNat "PLECTIS_CONTINUATION_DEEP_SECONDS" 600) * 1000
   }
 
 def exportStream : IO IO.FS.Stream := do
@@ -640,13 +647,15 @@ def budgetedTerm (heartbeats : Nat) (x : Elab.TermElabM α) : Elab.TermElabM (Ex
 unfolding the corpus definitions the statement mentions. Scripts are parsed
 against the current environment, so a tactic the environment lacks (for
 example a Mathlib tactic in a core-only test) is skipped, not an error. -/
-def batteryScripts (defs : Array Name) : Elab.TermElabM (Array (String × Syntax)) := do
+def batteryScripts (defs : Array Name)
+    (tactics : List String := ["decide", "omega", "norm_num", "simp_all", "positivity", "linarith"]) :
+    Elab.TermElabM (Array (String × Syntax)) := do
   let env ← getEnv
   let pre :=
     if defs.isEmpty then "intros"
     else "(intros; try unfold " ++ String.intercalate " " (defs.toList.map toString) ++ " at *)"
   let mut out := #[]
-  for tac in ["decide", "omega", "norm_num", "simp_all", "positivity", "linarith"] do
+  for tac in tactics do
     match Parser.runParserCategory env `tactic s!"({pre}; {tac})" with
     | .ok stx => out := out.push (tac, stx)
     | .error _ => pure ()
@@ -654,11 +663,12 @@ def batteryScripts (defs : Array Name) : Elab.TermElabM (Array (String × Syntax
 
 /-- Try the battery on a closed statement; return the tactic that closed it
 if the kernel accepts the resulting proof. -/
-def tryBattery (cfg : Config) (env : Environment) (statement : Expr) :
+def tryBattery (cfg : Config) (env : Environment) (statement : Expr)
+    (tactics : List String := ["decide", "omega", "norm_num", "simp_all", "positivity", "linarith"]) :
     Elab.TermElabM (Option String) := do
   let defs := (statement.getUsedConstants.filter fun c =>
       selected cfg env c && (match env.find? c with | some (.defnInfo _) => true | _ => false))
-  for (label, script) in ← batteryScripts defs do
+  for (label, script) in ← batteryScripts defs tactics do
     -- The kernel check runs inside the reverted block: a tactic's auxiliary
     -- lemmas exist only there.
     let attempt : Elab.TermElabM Bool := withoutModifyingState do
@@ -899,18 +909,36 @@ def exportAll : Elab.TermElabM Unit := do
   let mut batteryTried := 0
   let mut batteryClosed := 0
   let mut batteryRefuted := 0
+  let mut batteryDone : Std.HashSet String := {}
   for (_, statement) in leaves do
     if (← IO.monoMsNow) - batteryStart > cfg.batteryBudgetMs then break
     batteryTried := batteryTried + 1
     if let some label ← tryBattery cfg env statement then
       batteryClosed := batteryClosed + 1
+      batteryDone := batteryDone.insert (keyOf statement)
       emit stream <| Json.mkObj [
         ("record", "battery"), ("statement", toJson (keyOf statement)),
         ("tactic", toJson label), ("kernel_checked", toJson true)]
     else if let some label ← tryBattery cfg env (mkNot statement) then
       batteryRefuted := batteryRefuted + 1
+      batteryDone := batteryDone.insert (keyOf statement)
       emit stream <| Json.mkObj [
         ("record", "battery_refutation"), ("statement", toJson (keyOf statement)),
+        ("tactic", toJson label), ("kernel_checked", toJson true)]
+  -- Library search on the most-consumed leaves the battery left open: a leaf
+  -- that is a single library lemma is not an open question.
+  let deepStart ← IO.monoMsNow
+  let mut deepTried := 0
+  let mut deepClosed := 0
+  for (_, statement) in (leaves.extract 0 (min leaves.size (batteryTried))) do
+    if deepTried ≥ cfg.deepLeaves then break
+    if (← IO.monoMsNow) - deepStart > cfg.deepBudgetMs then break
+    if batteryDone.contains (keyOf statement) then continue
+    deepTried := deepTried + 1
+    if let some label ← tryBattery cfg env statement ["exact?"] then
+      deepClosed := deepClosed + 1
+      emit stream <| Json.mkObj [
+        ("record", "battery"), ("statement", toJson (keyOf statement)),
         ("tactic", toJson label), ("kernel_checked", toJson true)]
   emit stream <| Json.mkObj [
     ("record", "summary"), ("theorems", toJson theoremCount),
@@ -918,6 +946,8 @@ def exportAll : Elab.TermElabM Unit := do
     ("battery_tried", toJson batteryTried),
     ("battery_closed", toJson batteryClosed),
     ("battery_refuted", toJson batteryRefuted),
+    ("library_search_tried", toJson deepTried),
+    ("library_search_closed", toJson deepClosed),
     ("compositions", toJson compositions),
     ("kernel_checked_compositions", toJson checkedCompositions),
     ("idle_theorems", toJson idleTheorems),
@@ -932,7 +962,8 @@ def exportAll : Elab.TermElabM Unit := do
     ("search_ms", toJson (searchEnd - startMs)),
     ("composition_ms", toJson (idleStart - searchEnd)),
     ("idle_ms", toJson (batteryStart - idleStart)),
-    ("battery_ms", toJson ((← IO.monoMsNow) - batteryStart)),
+    ("battery_ms", toJson (deepStart - batteryStart)),
+    ("library_search_ms", toJson ((← IO.monoMsNow) - deepStart)),
     ("producer_relation", "lower_bound_prefiltered_by_conclusion_constants")]
   stream.flush
 
