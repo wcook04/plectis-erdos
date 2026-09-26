@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:bdf4d5cc3dd375c4db4d93b31e5eff11260f8899d3e69d4fe1da8abf3e1b8b1b",
-  "module_count": 1826,
-  "synopsis_count": 1579,
+  "source_fingerprint": "sha256:0277e21a18fd53355cc119b351e5540297b185a90ba9aca196f9052a2727349f",
+  "module_count": 1834,
+  "synopsis_count": 1587,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -5721,6 +5721,46 @@
       "id": "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
       "path": "lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
       "synopsis": "Erdős #249: the exact `X - 2` cyclotomic layer and anchored period kills For the polynomial `X - 2`, the cyclic resultant at index `n` is `2^n - 1`. This file discharges the previously abstract prime-ray producer completely: every prime divisor of `2^q - 1`, for prime `q`, is `1 mod q`; consequently the prime divisors appearing in these layers are unbounded. That arithmetic support theorem does not itself prove irrationality of the binary totient series. The second half records the exact missing bridge: cofinally remote certified tail discrepancies, with the period allowed to be a multiple of the cyclotomic anchor. Two substantial finite certificates are also checked by the Lean kernel."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationDyadicClassification",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+      "synopsis": "Finite dyadic observables across commensurate integer bases The first theorem applies the joint integer pulse result after simultaneous rational centering. Its first-active-dilation hypothesis is later discharged by separating the finitely many even-constant observables."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationJointValue",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "synopsis": "Joint irrationality for a finite family of commensurate bases This private module composes the finite-dilation CRT pulse, finite-series transport, and the public integer-radix pulse consumer. The statement is a finite-combination theorem; the countable rational-independence corollary requires only the usual reduction of a relation to finite support."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+      "synopsis": "Rational coefficients in finite least-residue relations The joint integer-coefficient theorem already isolates a nonzero least dilation. One common denominator converts a finite rational relation to that integer theorem while preserving the actual positive-index series value."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+      "synopsis": "Countable rational independence of dilated least-residue values The finite affine obstruction is the source theorem. This companion records its countable family form using Mathlib's `LinearIndependent` predicate."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationMixedModuli",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+      "synopsis": "Joint rationality with a different dyadic modulus at each dilation The common-modulus theorem is applied after lifting each finite residue table to one dyadic level. The positive-index series is retained throughout."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "synopsis": "Arithmetic core for pulses after finitely many dilations Private finite-dilation arithmetic core, checked with Mathlib / Lean 4.29.1. This file proves centre isolation, neighbour killing, the simultaneous CRT/Dirichlet prime-witness construction, and unconditional isolated pulses for finite dilation mixing at a prime-accessible residue. The public integer-radix source supplies the signed-series consumer separately. Series transport and the joint value theorem are not proved here. None of these statements establishes irrationality of the unreduced totient series."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationRationalObservables",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+      "synopsis": "Rational observables across finitely many dilations The integer mixed-word theorem applies after subtracting each observable's value at residue zero and clearing denominators once for the entire finite family. This file isolates that simultaneous clearing step."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "synopsis": "Reindexing one dilated series The arithmetic pulse proof uses coefficients indexed by `d * n`. This file isolates the infinite-sum change of variables needed before finite dilation mixing can be identified with one integer-radix series."
     },
     {
       "id": "ErdosProblems.Erdos249.FiniteEulerSieve",

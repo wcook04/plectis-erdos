@@ -12509,6 +12509,69 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.FiniteDilationDyadicClassification",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationJointValue",
+            "ErdosProblems.Erdos249.FiniteDilationRationalObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationJointValue",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+            "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationJointValue"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationMixedModuli",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationDyadicClassification"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationRationalObservables",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
           "path": "lean/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
           "role": "Lean proof module",
@@ -19220,7 +19283,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "fdfea5b5e0b370d62a4fbc9233a0166c0e33d762",
+      "ref": "3e05a76c0fb0922c7477ff932fdfcd1adc88f659",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
