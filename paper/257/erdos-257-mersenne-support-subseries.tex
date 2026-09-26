@@ -355,17 +355,29 @@ their remote-tail average from the displacement used here.
 
 \subsection{Finite rules for prime witnesses}\label{sec:finite-witness-rules}
 The weighted condition can encode more than a single required prime.
-Let $E$ be a finite nonempty set of primes, and let $\mathcal U$ be a
-nonempty proper upward-closed family of subsets of $E$.  We construct
-an infinite support $A_{\mathcal U}$ such that, for every integer $b\ge2$
-and every finite prime set $P$ (including $P=\varnothing$, with
+One host can realise any monotone rule on a finite set of primes, at
+every base simultaneously.
+
+\begin{proposition}[realising finite monotone witness rules]
+\label{res:finite-witness-rule}
+Let $E$ be a finite set of primes, and let $\mathcal U$ be an
+upward-closed family of subsets of $E$ with $E\in\mathcal U$ and
+$\varnothing\notin\mathcal U$.  There is a set $A_{\mathcal U}\subseteq\Npos$
+with $\sum_{a\in A_{\mathcal U}}1/a=\infty$ such that, for every integer
+$b\ge2$ and every finite set $P$ of primes (including $P=\varnothing$, with
 $h(a)=1$),
 \begin{equation}\label{eq:finite-witness-rule}
  W_{b,P}(A_{\mathcal U})<\infty
  \quad\Longleftrightarrow\quad P\cap E\in\mathcal U.
 \end{equation}
-Its ordinary reciprocal sum diverges, yet every infinite subset has
-irrational $X_B(b)$ at every integer base $b\ge2$.
+Moreover $X_B(b)$ is irrational for every infinite $B\subseteq A_{\mathcal U}$
+and every integer $b\ge2$.
+\end{proposition}
+
+The host is chosen before the base and the prime set, and primes of $P$
+outside $E$ never change the answer.  A rule such as ``at least two of
+$2,3,5$'' is covered: no single prime is mandatory, but no single prime
+is sufficient.
 
 Here is the construction and proof.  For each nonempty $C\subseteq E$,
 put $D_C=\prod_{p\in C}p$ and
@@ -409,10 +421,10 @@ $\mathcal U$ consists of the subsets of $E=\{2,3,5\}$ with at least two
 elements, the maximal forbidden sets give the three clauses $\{2,3\}$,
 $\{2,5\}$, $\{3,5\}$, and the minimal witnesses are precisely
 $\{2,3\}$, $\{2,5\}$, $\{3,5\}$.
-The construction and its comparison are ordinary proofs; the Lean
-result used here is the conditional weighted criterion, not a
-formalisation of this particular support.  The novelty of the arithmetic
-realisation has not yet been assessed.
+Lean checks Proposition~\ref{res:finite-witness-rule} for the host
+built from all forbidden sets; the reduced host of the example is an
+ordinary variant.  The novelty of the arithmetic realisation has not yet
+been assessed.
 
 \subsection{A common finite average for the extensions}\label{sec:common-kernel}
 To combine the weighted criterion with positive divisor majorants, both

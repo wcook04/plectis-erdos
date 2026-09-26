@@ -187,11 +187,13 @@ That block's layers are disjoint, so their contributions diverge; the union
 contains the block.
 
 Now let $\mathcal U$ be any nonempty proper upward-closed family of subsets
-of $E$. For each inclusion-maximal forbidden set $M\notin\mathcal U$, put
+of $E$. For each forbidden set $M\notin\mathcal U$, put
 $C_M=E\setminus M$ and take $\mathcal H$ to consist of these clauses.
 Every $C_M$ is nonempty. A set $S\subseteq E$ belongs to $\mathcal U$
 exactly when it meets every $C_M$: an allowed set cannot lie inside a
-forbidden $M$, while every forbidden set lies inside a maximal one.
+forbidden $M$, while a forbidden set $S$ misses its own clause $C_S$.
+Keeping only the inclusion-maximal forbidden sets gives a smaller host with
+the same classification.
 Equation (2) therefore gives
 
 $$
@@ -202,9 +204,11 @@ $$
 for every integer $b\ge2$ and every fixed finite $P$. This realises every
 nonconstant monotone Boolean rule on finitely many prime witnesses. The
 successful sets are the hitting sets of $\mathcal H$; the minimal witnesses
-are its minimal hitting sets. This is an AI-assisted ordinary proof, not a
-Lean formalisation or a statement about which thinner subsets admit
-different witnesses. The finite monotone representation is standard; see
+are its minimal hitting sets. Lean checks this realisation, with divergent
+reciprocal sum and all-base irrationality of every infinite subset, as
+[`finite_monotone_witness_rule_realised`](../../../lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean)
+for the host built from all forbidden sets. It says nothing about which
+thinner subsets admit different witnesses. The finite monotone representation is standard; see
 [Sedaghat, Stephen and Chindelevitch, Section 2](https://doi.org/10.4230/LIPIcs.SEA.2018.6).
 For related arithmetic settings, compare [Erdős's original support note,
 pp. 222 and 226](https://www.renyi.hu/~p_erdos/1969-09.pdf) and

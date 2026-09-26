@@ -31,11 +31,11 @@ theorem witnessLogicHost_allBase_irrational
   exact PaperCompleteR8.divisibilityWeightedClaim.2 _
     (zero_not_mem_witnessLogicHost E hE U) hW
 
-/-- **Finite monotone witness logic is realisable.** For each finite prime set
-`E` and each nonconstant upward-closed rule `U`, one host `H` without zero has:
-weighted summability at every base `b ≥ 2` and every finite prime witness `P`
-exactly when `U (P ∩ E)`; a divergent reciprocal sum; and irrational support
-series for every infinite subset in every base. -/
+/-- **`res:finite-witness-rule`.** Finite monotone witness logic is realisable.
+For each finite prime set `E` and each nonconstant upward-closed rule `U`, one
+host `H` without zero has: weighted summability at every base `b ≥ 2` and every
+finite prime witness `P` exactly when `U (P ∩ E)`; a divergent reciprocal sum;
+and irrational support series for every infinite subset in every base. -/
 theorem finite_monotone_witness_rule_realised
     (E : Finset ℕ) (hE : ∀ p ∈ E, Nat.Prime p)
     (U : Finset ℕ → Prop) (hUp : ∀ S T : Finset ℕ, S ⊆ T → U S → U T)
