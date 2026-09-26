@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:1d839195b0d059e56c5ef362f2d366cdf2741de35e966d7cb940fb19f72d999f",
-  "module_count": 1828,
-  "synopsis_count": 1581,
+  "source_fingerprint": "sha256:d14142eadb927104c74de7292352680cf0925288c6a59a72dca90e5a4d135682",
+  "module_count": 1839,
+  "synopsis_count": 1592,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -6883,6 +6883,11 @@
       "synopsis": "Infinite displacement and the exact arithmetic consumer Unlike the finite rational tail-budget interface, this file uses the actual infinite real support series. All summability hypotheses needed to interchange infinite sums are proved from the existing library. The arithmetic endgame reuses RadixCloseReturn's general close-return consumer, translated into displacement notation. No reciprocal- summability hypothesis is added or removed from that consumer. The ordinary positive-cover and mixed-support arguments must still establish its analytic input. No admission, new axiom, or parent claim is used."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean",
+      "synopsis": "The finite-prime weighted support criterion These are the canonical definitions used by the analytic support theorem. Their small import boundary also permits arithmetic constructions to use the same weights without importing the displacement proof."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
       "synopsis": "Infinite tail budget and the landed r6 delayed gluing theorem Proof source. This file goes beyond the finite algebra in `DisplacementTailBudget.lean`: it proves the tail estimate for actual infinite support sums and assembles the diagonal construction. Its hypothesis is the r6 general version, namely return admissibility of *every finite union* of the given hosts. It does not assume that separately admissible hosts can be united, nor prove the missing weighted/positive-cover analytic producer. The r6 construction is in the current short note's prose rather than a numbered result environment. It is therefore recorded as supplementary coverage, not used to inflate the 261-row theorem-environment census."
@@ -7081,6 +7086,56 @@
       "id": "ErdosProblems.Erdos257.WeightedSupportAveraging",
       "path": "lean/ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
       "synopsis": "Finite averaging for divisibility-weighted supports The weighted support proof needs two finite estimates before taking any limit. The orbit estimate retains the geometric GCD factor discarded by the reciprocal-mass bound. The observation-length estimate sums incomplete-period errors across dyadic scales, charging each conductor only once. These are the actual finite estimates used in the analytic proof. The prime-part decomposition and the final choice of scales are separate steps."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockArithmetic.lean",
+      "synopsis": "Arithmetic of the clause support The support is the actual union of coprime layers used in the witness-rule construction. Prime factors outside the clause are retained in the exact restricted factorization identity."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockHarmonic",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockHarmonic.lean",
+      "synopsis": "Reciprocal mass of the cofactors congruent to one Grouping each positive integer with the first member of its length-`Q` block gives an explicit finite lower bound for the progression `1 mod Q`."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockReciprocal.lean",
+      "synopsis": "Reciprocal divergence of the actual clause support Each coprime layer has a uniformly positive reciprocal mass on a progression congruent to one. Unique layer indices make these contributions disjoint."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockSummability",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockSummability.lean",
+      "synopsis": "Summability of an arithmetic clause met by a prime witness The finite cofactor rows are dominated by the checked scalar clause series. A chosen representation of each support element transfers that summability to the actual set without requiring disjointness of the enlarged rows."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeightBound.lean",
+      "synopsis": "Removing a positive integer multiplier from a Lambert coefficient Bernoulli's inequality controls the denominator after multiplying the exponent. The resulting bound is uniform in the additional prime contribution."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockWeighted",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeighted.lean",
+      "synopsis": "Canonical prime weights on the arithmetic clause layers The exact prime-part identity keeps all primes of the witness. On cofactors congruent to one modulo the union of the clause and witness primes, only the clause-intersection product remains."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogic",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogic.lean",
+      "synopsis": "Finite unions of nonnegative weighted supports This is the finite-union part of the proposed witness-logic construction. It does not assert that any particular arithmetic block has the required summability classification."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogicHost",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogicHost.lean",
+      "synopsis": "One host realising a finite monotone witness rule Fix a finite set `E` of primes and an upward-closed rule `U` on finite sets of primes with `U E` true and `U ∅` false. The host is the finite union of the clause supports `witnessClauseSupport (E \\ M)`, one for each forbidden `M ⊆ E`. For every base `b ≥ 2` and every finite prime set `P`, including primes outside `E`, the canonical weighted series on this one host converges exactly when `U (P ∩ E)` holds, and its ordinary reciprocal sum diverges. The irrationality consequence is in `WitnessLogicIrrational`. The block classification is the proved theorem `summable_primeWeightedTerm_witnessClauseSupport_iff`; nothing about the arithmetic blocks is assumed here."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogicIrrational",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+      "synopsis": "Irrationality on a witness-logic host The full witness `E` has finite weighted mass at base two on the host of `WitnessLogicHost`, so the checked weighted theorem makes every infinite subset irrational in every base, although the host's reciprocal sum diverges."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogicSeries",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogicSeries.lean",
+      "synopsis": "The analytic series for a witness clause The scalar series arising in the ordinary block comparison converges exactly when the intersection product is at least two. The comparison with the actual prime-weighted arithmetic support is a separate obligation."
     },
     {
       "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
