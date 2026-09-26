@@ -13227,6 +13227,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies",
           "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArithmeticAssemblies.lean",
           "role": "Lean proof module",
@@ -13236,6 +13242,15 @@
             "Erdos249257.SignedQMomentObstruction",
             "Erdos249257.AllBaseTotientKernel",
             "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+            "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse"
           ]
         },
         {
@@ -13253,6 +13268,14 @@
           "imports": [
             "ErdosProblems.Erdos249.PeriodicTotientIndependence",
             "ErdosProblems.Erdos249.ResidueClassTotientSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
           ]
         },
         {
@@ -19197,7 +19220,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "3aea812a5fb031b14e0911cc9110885cd8a10bfd",
+      "ref": "fdfea5b5e0b370d62a4fbc9233a0166c0e33d762",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

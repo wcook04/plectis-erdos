@@ -58,6 +58,7 @@ import ErdosProblems.Erdos243.RecordIncrementBarrier
 import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
 import ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification
+import ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification
 import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
