@@ -9,12 +9,16 @@ name: Argument continuations
 # the main-branch `.lake` that lean-cache-warm.yml maintains, so it cannot
 # evict main's entry or be restored by lean.yml.
 
+# A push trigger: its path filter sees only the commits pushed, so a later
+# push that leaves the exporter alone does not restart a two-hour export (a
+# pull_request path filter sees the whole pull-request diff).
 on:
   workflow_dispatch:
-  pull_request:
+  push:
     paths:
       - scripts/export_argument_continuations.lean
       - scripts/test_argument_continuation_export.py
+      - scripts/coverage_build_targets.py
       - .github/workflows/argument-continuations.yml
 
 concurrency:
