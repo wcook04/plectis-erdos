@@ -7218,6 +7218,14 @@
           ]
         },
         {
+          "id": "Erdos249257.ExactRowRigidity",
+          "path": "lean/Erdos249257/ExactRowRigidity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusCofinalExactRows"
+          ]
+        },
+        {
           "id": "Erdos249257.ExponentOnlyTransport",
           "path": "lean/Erdos249257/ExponentOnlyTransport.lean",
           "role": "Lean proof module",
