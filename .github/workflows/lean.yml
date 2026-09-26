@@ -342,6 +342,30 @@ jobs:
               raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
           print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
           PY
+      - name: Audit the finite witness-rule realisation axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean | tee "$RUNNER_TEMP/witness-rule-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "witness-rule-axioms.log").read_text()
+          theorem = "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
       - name: Audit the Erdős 249 Formal Conjectures variant proof
         if: steps.lean-inputs.outputs.changed == 'true'
         run: |
