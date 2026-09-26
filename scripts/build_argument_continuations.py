@@ -920,6 +920,49 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
     return projection, graph_payload
 
 
+TEX_MACROS_BEGIN = "% BEGIN generated_argument_graph_macros"
+TEX_MACROS_END = "% END generated_argument_graph_macros"
+
+
+def paper_macro_region(projection: dict[str, Any]) -> str:
+    """LaTeX macros carrying the graph's measured totals into a paper, so no
+    number in the prose is typed by hand."""
+    summary = projection["summary"]
+    export = projection["source"].get("export_summary", {})
+    values = {
+        "AGTheorems": summary["theorems"],
+        "AGConditional": summary["conditional_arguments"],
+        "AGStatements": summary["closed_statements"],
+        "AGSupplied": summary["supplied_statements"],
+        "AGOpen": summary["open_statements"],
+        "AGReductions": summary["reductions"],
+        "AGImplications": summary["implications_between_open_statements"],
+        "AGDisguiseClasses": summary["disguise_classes"],
+        "AGLargestDisguise": summary["largest_disguise_class"],
+        "AGCompositions": summary["compositions"],
+        "AGKernelCompositions": summary.get("kernel_checked_compositions", 0),
+        "AGPaperCompositions": summary["compositions_of_paper_cited_conditional_theorems"],
+        "AGBatteryClosed": summary.get("battery_closed_statements", 0),
+        "AGBatteryTried": export.get("battery_tried", 0),
+        "AGBudgetExhausted": summary["budget_exhausted_attempts"],
+        "AGLabelDisagreements": summary["semantic_label_disagreements"],
+    }
+    lines = [TEX_MACROS_BEGIN]
+    for name, value in values.items():
+        rendered = f"{value:,}" if isinstance(value, int) else str(value)
+        lines.append(rf"\newcommand{{\{name}}}{{{rendered}}}")
+    lines.append(TEX_MACROS_END)
+    return "\n".join(lines)
+
+
+def replace_macro_region(text: str, region: str) -> str:
+    start = text.find(TEX_MACROS_BEGIN)
+    end = text.find(TEX_MACROS_END)
+    if start < 0 or end < start:
+        raise SystemExit("paper has no generated_argument_graph_macros region")
+    return text[:start] + region + text[end + len(TEX_MACROS_END):]
+
+
 def write_outputs(projection: dict[str, Any], graph_payload: dict[str, Any],
                   output: Path, graph_output: Path) -> None:
     output.write_text(json.dumps(projection, indent=1, ensure_ascii=False, sort_keys=False) + "\n",
@@ -936,9 +979,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--graph-output", type=Path, default=DEFAULT_GRAPH_OUTPUT)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root for the joins")
+    parser.add_argument("--paper", type=Path, action="append", default=[],
+                        help="TeX file whose generated_argument_graph_macros region is rewritten")
     args = parser.parse_args(argv)
     projection, graph_payload = build(args.export, args.root)
     write_outputs(projection, graph_payload, args.output, args.graph_output)
+    for paper in args.paper:
+        text = paper.read_text(encoding="utf-8")
+        paper.write_text(replace_macro_region(text, paper_macro_region(projection)), encoding="utf-8")
     summary = projection["summary"]
     print(json.dumps({"output": str(args.output), "graph_output": str(args.graph_output), **summary}, indent=1))
     return 0
