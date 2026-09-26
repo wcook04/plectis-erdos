@@ -385,6 +385,44 @@ jobs:
               raise SystemExit(f"unexpected axiom audit for {name}: {output}")
           print(match.group(0))
           PY
+      - name: Audit the Erdős 257 support-class comparison axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/support-class-axioms.lean" <<'LEAN'
+          import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability
+          import ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.old_cover_class_strictly_smaller
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.exists_incomparable_hosts_with_mixed_heredity
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_union
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.hasStrengthenedPositiveCover_union
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClass_union
+          LEAN
+          lake env lean "$RUNNER_TEMP/support-class-axioms.lean" | tee "$RUNNER_TEMP/support-class-axioms.log"
+          python3 - "$RUNNER_TEMP/support-class-axioms.log" <<'PY'
+          import pathlib, re, sys
+          output = pathlib.Path(sys.argv[1]).read_text()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for short in (
+              "exists_weighted_not_strengthened_host",
+              "exists_strengthened_not_old_or_weighted_host",
+              "old_cover_class_strictly_smaller",
+              "exists_incomparable_hosts_with_mixed_heredity",
+              "finitePrimeWeighted_union",
+              "hasStrengthenedPositiveCover_union",
+              "mixedSupportClass_union",
+          ):
+              name = f"ErdosProblems.Erdos257.PaperCompleteR8.{short}"
+              match = re.search(rf"['\"]?{re.escape(name)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]", output)
+              if match is None:
+                  raise SystemExit(f"missing axiom report for {name}")
+              axioms = {part.strip() for part in match.group(1).split(",") if part.strip()}
+              if unexpected := axioms - allowed:
+                  raise SystemExit(f"unexpected axioms for {name}: {sorted(unexpected)}")
+              print(f"axiom audit passed for {name}: {sorted(axioms)}")
+          PY
       - name: Verify a separate Lake project can use the library
         if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/check_downstream_reuse.py
