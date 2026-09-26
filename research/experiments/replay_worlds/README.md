@@ -12,8 +12,9 @@ strongest are these.
   primes 2, 3 and 5 came first from the replay and is checked in Lean; the
   general case came from restating the sum as a Cantor series whose bases
   follow the cutting sequence of a linear flow on a torus, comparing two tails
-  at a close return of the flow, and was refereed by a second reader. For two
-  primes irrationality already follows from Hecke–Mahler transcendence
+  at a close return of the flow. A second, independent agent checked it step
+  by step; no human has reviewed it yet. For two primes irrationality
+  already follows from Hecke–Mahler transcendence
   (Loxton and van der Poorten 1977; Bugeaud and Laurent 2023).
   Evidence: [`../erdos269/distinct_height/`](../erdos269/distinct_height/).
 - For coprime integers a > b ≥ 1 and every infinite divisibility chain
