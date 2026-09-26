@@ -574,11 +574,95 @@ class ValidationSingleflightTests(unittest.TestCase):
             target.mkdir()
             (source / "shared.olean").write_text("shared", encoding="utf-8")
             (target / "other.olean").write_text("other", encoding="utf-8")
-            if build_share.package_share.copy_on_write_command(source, target) is None:
+            if sys.platform != "darwin" and build_share.package_share.copy_on_write_command(source, target) is None:
                 self.skipTest("copy-on-write cloning is unavailable")
             build_share._copy_contents(source, target, [Path("shared.olean")])
             self.assertEqual((target / "shared.olean").read_text(), "shared")
             self.assertEqual((target / "other.olean").read_text(), "other")
+
+    def test_unsupported_apfs_clone_preserves_existing_build_output(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            source = base / "source"
+            target = base / "target"
+            source.mkdir()
+            target.mkdir()
+            (source / "shared.olean").write_bytes(b"new")
+            output = target / "shared.olean"
+            output.write_bytes(b"old")
+            with mock.patch.object(build_share.sys, "platform", "darwin"), mock.patch.object(
+                build_share.package_share, "clone_file_strict", side_effect=OSError("clone unsupported")
+            ):
+                with self.assertRaisesRegex(OSError, "clone unsupported"):
+                    build_share._copy_contents(source, target, [Path("shared.olean")])
+            self.assertEqual(output.read_bytes(), b"old")
+            self.assertEqual(list(target.glob("*.clone")), [])
+
+    def test_later_clone_failure_preserves_all_existing_build_outputs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            source = base / "source"
+            target = base / "target"
+            source.mkdir()
+            target.mkdir()
+            for name in ("first.olean", "second.olean"):
+                (source / name).write_bytes(b"new")
+                (target / name).write_bytes(b"old")
+
+            def clone_then_fail(path: Path, output: Path) -> None:
+                if path.name == "second.olean":
+                    raise OSError("second clone failed")
+                output.write_bytes(path.read_bytes())
+
+            with mock.patch.object(build_share.sys, "platform", "darwin"), mock.patch.object(
+                build_share.package_share, "clone_file_strict", side_effect=clone_then_fail
+            ):
+                with self.assertRaisesRegex(OSError, "second clone failed"):
+                    build_share._copy_contents(
+                        source, target, [Path("first.olean"), Path("second.olean")]
+                    )
+            self.assertEqual((target / "first.olean").read_bytes(), b"old")
+            self.assertEqual((target / "second.olean").read_bytes(), b"old")
+
+    def test_install_failure_rolls_back_previous_artifact(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            source = base / "source"
+            target = base / "target"
+            source.mkdir()
+            target.mkdir()
+            for name in ("first.olean", "second.olean"):
+                (source / name).write_bytes(b"new")
+                (target / name).write_bytes(b"old")
+            original_replace = build_share.os.replace
+
+            def fail_second_install(src: Path, dst: Path) -> None:
+                if str(src).endswith(".stage/second.olean"):
+                    raise OSError("second install failed")
+                original_replace(src, dst)
+
+            with mock.patch.object(build_share.sys, "platform", "darwin"), mock.patch.object(
+                build_share.package_share, "clone_file_strict",
+                side_effect=lambda path, output: output.write_bytes(path.read_bytes()),
+            ), mock.patch.object(build_share.os, "replace", side_effect=fail_second_install):
+                with self.assertRaisesRegex(OSError, "second install failed"):
+                    build_share._copy_contents(
+                        source, target, [Path("first.olean"), Path("second.olean")]
+                    )
+            self.assertEqual((target / "first.olean").read_bytes(), b"old")
+            self.assertEqual((target / "second.olean").read_bytes(), b"old")
+
+    def test_build_artifact_symlinked_prefix_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            build = base / "build"
+            outside = base / "outside"
+            build.mkdir()
+            outside.mkdir()
+            (outside / "Foo.olean").write_bytes(b"outside")
+            (build / "lib").symlink_to(outside, target_is_directory=True)
+            with self.assertRaisesRegex(build_share.BuildShareError, "symbolic link"):
+                build_share._module_artifacts(build, {Path("Foo")})
 
     def test_automatic_cleanup_is_rate_limited_and_detached(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
