@@ -355,6 +355,62 @@ def idle_rows(graph: builder.Graph, problem: str | None = None) -> list[dict[str
     return rows
 
 
+# The order in which a paper result's declarations decide its row: the most
+# conditional status wins.
+PAPER_STATUS_ORDER = ("conditional_on_refuted", "conditional_on_open", "conditional_on_schematic",
+                      "conditional_on_supplied", "unconditional")
+
+
+def cmd_papers(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """Every paper result the paper-to-Lean ledger joins to a theorem of the
+    graph, with what the graph says about that theorem: unconditional;
+    conditional only on statements the graph supplies (so a chain of corpus
+    theorems closes it); conditional on an open, schematic or refuted
+    hypothesis; and any hypothesis its proof never uses. The ledger status and
+    the Comparator status travel with each row."""
+    idle_by_theorem = {row["theorem"]: row for row in payload.get("idle", []) if row.get("kernel_checked", True)}
+    rows: dict[str, dict[str, Any]] = {}
+    for name, theorem in sorted(graph.theorems.items()):
+        for paper in (theorem.get("card") or {}).get("papers", []):
+            if args.problem and str(paper.get("problem")) != str(args.problem):
+                continue
+            if args.paper and args.paper not in (paper.get("paper") or ""):
+                continue
+            entry = rows.setdefault(paper["row"], {
+                "row": paper["row"], "paper": paper.get("paper"), "side": paper.get("side"),
+                "label": paper.get("label"), "lean_status": paper.get("lean_status"),
+                "comparator": paper.get("comparator"), "declarations": []})
+            status = builder.kernel_status(graph, name)
+            after_idle = builder.kernel_status(graph, name, after_idle=True)
+            declaration: dict[str, Any] = {"name": name, "status": status}
+            if after_idle != status:
+                declaration["status_after_idle"] = after_idle
+            open_hypotheses = [h for h in theorem.get("hypotheses", []) if h not in graph.supplied]
+            if open_hypotheses:
+                declaration["open_or_refuted_hypotheses"] = [
+                    {"key": h, "type": graph.statements.get(h, {}).get("type"), "status": graph.status(h)}
+                    for h in open_hypotheses[:6]]
+            if name in idle_by_theorem:
+                declaration["idle_hypotheses"] = [d.get("type") for d in idle_by_theorem[name].get("dropped", [])]
+            entry["declarations"].append(declaration)
+    counts: dict[str, int] = defaultdict(int)
+    for entry in rows.values():
+        statuses = {d.get("status_after_idle", d["status"]) for d in entry["declarations"]}
+        entry["status"] = next((s for s in PAPER_STATUS_ORDER if s in statuses), "unconditional")
+        counts[entry["status"]] += 1
+    notable = [e for e in rows.values()
+               if e["status"] in ("conditional_on_refuted", "conditional_on_supplied")
+               or any("idle_hypotheses" in d or "status_after_idle" in d for d in e["declarations"])]
+    notable.sort(key=lambda e: (PAPER_STATUS_ORDER.index(e["status"]), e["row"]))
+    return {
+        "rule": "a row takes the most conditional status among its declarations; conditional_on_supplied means "
+                "every closed hypothesis has a witness chain in the graph; idle hypotheses are kernel-checked",
+        "paper_results_in_graph": len(rows),
+        "by_status": dict(sorted(counts.items())),
+        "notable": notable[: args.limit],
+    }
+
+
 def cmd_idle(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
     """Theorems whose proofs never use some proposition binders; the kernel
     accepted each stronger statement. Paper-cited ones first, then those that
@@ -701,6 +757,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--limit", type=int, default=15); p.add_argument("--sinks", type=int, default=12)
     p = sub.add_parser("barriers"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("idle"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
+    p = sub.add_parser("papers"); p.add_argument("--problem"); p.add_argument("--paper")
+    p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("criticality"); p.add_argument("target"); p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("transfer"); p.add_argument("--limit", type=int, default=60)
     p = sub.add_parser("diff"); p.add_argument("old", type=Path); p.add_argument("new", type=Path)
@@ -710,7 +768,7 @@ def main(argv: list[str] | None = None) -> int:
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
                "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "next": cmd_next,
-               "barriers": cmd_barriers, "idle": cmd_idle, "criticality": cmd_criticality,
+               "barriers": cmd_barriers, "idle": cmd_idle, "papers": cmd_papers, "criticality": cmd_criticality,
                "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):

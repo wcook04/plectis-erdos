@@ -622,5 +622,28 @@ class Sentinels(unittest.TestCase):
             self.assertEqual(projection["summary"]["sentinel_alarms"], 1)
 
 
+class Papers(unittest.TestCase):
+    def test_paper_rows_take_the_most_conditional_status(self) -> None:
+        import argparse
+        rows = [
+            statement("P"), statement("Q"), match("P", "prove_p"),
+            theorem("T.uses_p", [hyp(0, "P")], "C1"),
+            theorem("T.uses_q", [hyp(0, "Q")], "C2"),
+            theorem("T.plain", [], "C3"),
+        ]
+        graph = graph_of(rows)
+        def cite(name: str, row: str) -> None:
+            graph.theorems[name]["card"] = {"papers": [
+                {"row": row, "paper": "paper-x", "side": "short", "label": row, "problem": "1",
+                 "lean_status": "exact", "comparator": "compared"}]}
+        cite("T.uses_p", "r1")
+        cite("T.uses_q", "r2")
+        cite("T.plain", "r2")
+        out = query.cmd_papers(graph, {"idle": []}, argparse.Namespace(problem=None, paper=None, limit=10))
+        self.assertEqual(out["paper_results_in_graph"], 2)
+        self.assertEqual(out["by_status"], {"conditional_on_open": 1, "conditional_on_supplied": 1})
+        self.assertEqual([e["row"] for e in out["notable"]], ["r1"])
+
+
 if __name__ == "__main__":
     unittest.main()
