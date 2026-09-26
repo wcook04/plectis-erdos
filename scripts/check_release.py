@@ -399,6 +399,10 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
                 sys.executable,
                 str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
             ],
+            "publication_archive_versions": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_publication_archive_versions.py"),
+            ],
         }
     )
     results = run_independent_checks(commands)
@@ -1555,9 +1559,8 @@ def main(argv: list[str] | None = None) -> int:
         "generated paper-corpus freshness failed: "
         f"{child_output(paper_corpus_check)}",
     )
-    # Freshness is not the only way the corpus can mislead. Nothing here has
-    # been externally reviewed and nothing carries an archival identifier; a
-    # field claiming either would read as a credential at publication stage.
+    # Archive editions have source-bound identities, separate from current
+    # manuscripts. Neither an archive identifier nor freshness confers review.
     publication_taxonomy_check = publication_stage_results[
         "publication_taxonomy"
     ]
@@ -1565,6 +1568,12 @@ def main(argv: list[str] | None = None) -> int:
         publication_taxonomy_check.returncode == 0,
         "paper publication-taxonomy honesty failed: "
         f"{child_output(publication_taxonomy_check)}",
+    )
+    archive_version_check = publication_stage_results["publication_archive_versions"]
+    check(
+        archive_version_check.returncode == 0,
+        "paper archive-version boundary failed: "
+        f"{child_output(archive_version_check)}",
     )
     publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
         "docs/papers/build_publication_taxonomy.py"
