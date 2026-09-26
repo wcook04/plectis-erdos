@@ -322,7 +322,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     ),
     "related_work": (
         "is the closest published system",
-        "Persistence, decomposition, visible negative results and exact statement checking are therefore shared features",
+        "Persistence, correction, shared work and exact statement checking are therefore overlapping capabilities",
         "LeanMarathon maintains an evolving blueprint",
         "a direct precedent for the explanation a world keeps beside a formal proof",
         "the two designs developed independently",
