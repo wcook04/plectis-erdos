@@ -1,0 +1,530 @@
+{
+  "schema_version": "erdos249257-proof-state-compilation/1",
+  "kind": "proof_state_compilation_packet",
+  "goal_id": "totient_uniform_rank_barrier_from_arithmetic_separation",
+  "environment_fingerprint": {
+    "repository_head": "87cb898e4cdf58d6a3b294b669dfe56f925e3cb7",
+    "lean_version": "Lean (version 4.29.1, arm64-apple-darwin24.6.0, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)",
+    "lean_toolchain_digest": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "lake_manifest_digest": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "lakefile_digest": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211",
+    "fingerprint": "sha256:c416ce74af69db8d8d74b0d52eb1ed0ed7e20df6141dd58c994e86a5193e71ef"
+  },
+  "request_digest": "sha256:1e9b906faf69f841bb554fbec05fdf061c307afeee53696115b5e5ca949a76d9",
+  "goal_identity": {
+    "target": "(1 : \u211d) / 2 \u2264 E",
+    "context_names": [
+      "A",
+      "hA",
+      "E",
+      "hE",
+      "herr"
+    ]
+  },
+  "assumption_world": [
+    "hA",
+    "hE",
+    "herr"
+  ],
+  "candidate_actions": [
+    {
+      "candidate_id": "three_prime_specific_bound",
+      "declaration": "ErdosProblems.Erdos269.PaperR8.finite_rank_uniform_error_lower",
+      "tactic": "apply ErdosProblems.Erdos269.PaperR8.finite_rank_uniform_error_lower (p := 2) (q := 3) (r := 5)"
+    },
+    {
+      "candidate_id": "generic_obstruction_exposes_arithmetic_obligation",
+      "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+      "tactic": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr"
+    },
+    {
+      "candidate_id": "arithmetic_separation_closes_shared_obstruction",
+      "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+      "tactic": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr"
+    }
+  ],
+  "lean_tested_transitions": [
+    {
+      "candidate_id": "three_prime_specific_bound",
+      "declaration": "ErdosProblems.Erdos269.PaperR8.finite_rank_uniform_error_lower",
+      "declaration_receipt": {
+        "declaration": "ErdosProblems.Erdos269.PaperR8.finite_rank_uniform_error_lower",
+        "availability": "not_source_joined_in_dependency_index"
+      },
+      "proposal_receipt": "Interface probe only: the existing theorem concerns a different kernel and the smaller carry-jump bound. A rejected application is not a proof-search lower bound or evidence that the target was inaccessible.",
+      "application": {
+        "tactic": "apply ErdosProblems.Erdos269.PaperR8.finite_rank_uniform_error_lower (p := 2) (q := 3) (r := 5)",
+        "argument_terms": [
+          "(p := 2)",
+          "(q := 3)",
+          "(r := 5)"
+        ],
+        "substitution_witness": "explicit_argument_terms_plus_Lean_instantiated_subgoals"
+      },
+      "application_accepted": false,
+      "proof_closed": false,
+      "status": "lean_rejected",
+      "root_nodes": [
+        {
+          "node_id": "ps_64b8b3a5dd3804ee",
+          "case": null,
+          "context": [
+            "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+            "hA : FiniteSeparatedRank A",
+            "E : \u211d",
+            "hE : 0 \u2264 E",
+            "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+          ],
+          "target": "\u22a2 1 / 2 \u2264 E",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 1 / 2 \u2264 E",
+          "assumption_world": [
+            "hA",
+            "hE",
+            "herr"
+          ]
+        }
+      ],
+      "child_nodes": [],
+      "hyperedge": null,
+      "discharge_receipts": [],
+      "open_obligations": [],
+      "typed_failures": [
+        {
+          "kind": "[anonymous]",
+          "line": 14,
+          "data": "Tactic `apply` failed: could not unify the conclusion of `finite_rank_uniform_error_lower`\n  (1 - (\u21915)\u207b\u00b9) / 2 \u2264 ?E\nwith the goal\n  1 / 2 \u2264 E\n\nNote: The full type of `finite_rank_uniform_error_lower` is\n  0 < 2 \u2192\n    0 < 3 \u2192\n      1 < 5 \u2192\n        ErdosProblems.Shared.NoIntegerOrbit (Real.logb \u21915 \u21912) \u2192\n          ErdosProblems.Shared.NoIntegerOrbit (Real.logb \u21915 \u21913) \u2192\n            \u2200 (A : \u2115 \u2192 \u2115 \u2192 \u211d),\n              FiniteSeparatedRank A \u2192\n                \u2200 (E : \u211d),\n                  0 \u2264 E \u2192\n                    (\u2200 (i j : \u2115), |ErdosProblems.Erdos269.PaperR7.realCarryMatrix 2 3 5 i j - A i j| \u2264 E) \u2192\n                      (1 - (\u21915)\u207b\u00b9) / 2 \u2264 E\n\nA : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 1 / 2 \u2264 E"
+        }
+      ],
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 1,
+        "timed_out": false,
+        "source_digest": "sha256:377fa4b81acde3595ec1c39569d26f68750bc51263243d85ab08a50a3911d231",
+        "message_digest": "sha256:dfff56aa21374641de00edc3e7418c984dde2b43272a01b0cf3848a9e4523a39",
+        "message_count": 2,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": false
+      },
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 0,
+        "discharge_tactic_count": 0,
+        "closed": false
+      }
+    },
+    {
+      "candidate_id": "generic_obstruction_exposes_arithmetic_obligation",
+      "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+      "declaration_receipt": {
+        "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+        "availability": "not_source_joined_in_dependency_index"
+      },
+      "proposal_receipt": "Apply the shared analytic mechanism and retain its arithmetic separation obligation. No claim is made that a prover could not discharge this obligation automatically.",
+      "application": {
+        "tactic": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr",
+        "argument_terms": [
+          "totientHankel",
+          "1",
+          "1",
+          "(by norm_num)",
+          "totientHankel_abs_le_one",
+          "_",
+          "A",
+          "hA",
+          "E",
+          "hE",
+          "herr"
+        ],
+        "substitution_witness": "explicit_argument_terms_plus_Lean_instantiated_subgoals"
+      },
+      "application_accepted": true,
+      "proof_closed": false,
+      "status": "lean_accepted_open_obligations",
+      "root_nodes": [
+        {
+          "node_id": "ps_64b8b3a5dd3804ee",
+          "case": null,
+          "context": [
+            "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+            "hA : FiniteSeparatedRank A",
+            "E : \u211d",
+            "hE : 0 \u2264 E",
+            "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+          ],
+          "target": "\u22a2 1 / 2 \u2264 E",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 1 / 2 \u2264 E",
+          "assumption_world": [
+            "hA",
+            "hE",
+            "herr"
+          ]
+        }
+      ],
+      "child_nodes": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "context": [
+            "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+            "hA : FiniteSeparatedRank A",
+            "E : \u211d",
+            "hE : 0 \u2264 E",
+            "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+          ],
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "assumption_world": [
+            "hA",
+            "hE",
+            "herr"
+          ]
+        }
+      ],
+      "hyperedge": {
+        "edge_id": "pe_bccd5d37d4332bba",
+        "source_nodes": [
+          "ps_64b8b3a5dd3804ee"
+        ],
+        "action": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr",
+        "target_nodes": [
+          "ps_fd806d87a52465c2"
+        ],
+        "child_semantics": "AND",
+        "alternative_semantics_at_source": "OR",
+        "closed_after_discharge": false
+      },
+      "discharge_receipts": [],
+      "open_obligations": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+        }
+      ],
+      "typed_failures": [],
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 1,
+        "timed_out": false,
+        "source_digest": "sha256:ef9977096144d00762b7fddb227035a3af194a45f2a1a8b44dff44d7c30add6d",
+        "message_digest": "sha256:de964e54c1f291e3c85dfa0f53a5f8b5ec7cec906f4132a09cda1d50fef99c17",
+        "message_count": 3,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": true
+      },
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 1,
+        "discharge_tactic_count": 0,
+        "closed": false
+      }
+    },
+    {
+      "candidate_id": "arithmetic_separation_closes_shared_obstruction",
+      "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+      "declaration_receipt": {
+        "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+        "availability": "not_source_joined_in_dependency_index"
+      },
+      "proposal_receipt": "Discharge the actual missing premise using the separate CRT/Dirichlet/Euler-product theorem. The final TotientUniformRankBarrier endpoint module is not imported. This tests mathematical composition, not randomized discovery advantage or the authors' trained predictor.",
+      "application": {
+        "tactic": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr",
+        "argument_terms": [
+          "totientHankel",
+          "1",
+          "1",
+          "(by norm_num)",
+          "totientHankel_abs_le_one",
+          "_",
+          "A",
+          "hA",
+          "E",
+          "hE",
+          "herr"
+        ],
+        "substitution_witness": "explicit_argument_terms_plus_Lean_instantiated_subgoals"
+      },
+      "application_accepted": true,
+      "proof_closed": true,
+      "status": "kernel_checked_closed",
+      "root_nodes": [
+        {
+          "node_id": "ps_64b8b3a5dd3804ee",
+          "case": null,
+          "context": [
+            "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+            "hA : FiniteSeparatedRank A",
+            "E : \u211d",
+            "hE : 0 \u2264 E",
+            "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+          ],
+          "target": "\u22a2 1 / 2 \u2264 E",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 1 / 2 \u2264 E",
+          "assumption_world": [
+            "hA",
+            "hE",
+            "herr"
+          ]
+        }
+      ],
+      "child_nodes": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "context": [
+            "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+            "hA : FiniteSeparatedRank A",
+            "E : \u211d",
+            "hE : 0 \u2264 E",
+            "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+          ],
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "assumption_world": [
+            "hA",
+            "hE",
+            "herr"
+          ]
+        }
+      ],
+      "hyperedge": {
+        "edge_id": "pe_bccd5d37d4332bba",
+        "source_nodes": [
+          "ps_64b8b3a5dd3804ee"
+        ],
+        "action": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr",
+        "target_nodes": [
+          "ps_fd806d87a52465c2"
+        ],
+        "child_semantics": "AND",
+        "alternative_semantics_at_source": "OR",
+        "closed_after_discharge": true
+      },
+      "discharge_receipts": [
+        {
+          "index": 0,
+          "tactic": "exact totientHankel_row_separation",
+          "trace_reached": true,
+          "open_goals": [],
+          "open_goal_count": 0
+        }
+      ],
+      "open_obligations": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+        }
+      ],
+      "typed_failures": [],
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 0,
+        "timed_out": false,
+        "source_digest": "sha256:acc22dbeac4ba245b668d43b2b38273284889e0482b04cc40e240cc712bf1190",
+        "message_digest": "sha256:349785da8f7bf138fe2127df343bf84ebfd0fde8ac7657d7161445210ed3f1f2",
+        "message_count": 3,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": false
+      },
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 1,
+        "discharge_tactic_count": 1,
+        "closed": true
+      }
+    }
+  ],
+  "proof_state_hypergraph": {
+    "root_semantics": "OR_over_candidate_hyperedges",
+    "edge_child_semantics": "AND_all_generated_subgoals",
+    "nodes": [
+      {
+        "node_id": "ps_64b8b3a5dd3804ee",
+        "case": null,
+        "context": [
+          "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+          "hA : FiniteSeparatedRank A",
+          "E : \u211d",
+          "hE : 0 \u2264 E",
+          "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+        ],
+        "target": "\u22a2 1 / 2 \u2264 E",
+        "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 1 / 2 \u2264 E",
+        "assumption_world": [
+          "hA",
+          "hE",
+          "herr"
+        ]
+      },
+      {
+        "node_id": "ps_fd806d87a52465c2",
+        "case": null,
+        "context": [
+          "A : \u2115 \u2192 \u2115 \u2192 \u211d",
+          "hA : FiniteSeparatedRank A",
+          "E : \u211d",
+          "hE : 0 \u2264 E",
+          "herr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E"
+        ],
+        "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+        "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+        "assumption_world": [
+          "hA",
+          "hE",
+          "herr"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "pe_bccd5d37d4332bba",
+        "source_nodes": [
+          "ps_64b8b3a5dd3804ee"
+        ],
+        "action": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr",
+        "target_nodes": [
+          "ps_fd806d87a52465c2"
+        ],
+        "child_semantics": "AND",
+        "alternative_semantics_at_source": "OR",
+        "closed_after_discharge": false
+      },
+      {
+        "edge_id": "pe_bccd5d37d4332bba",
+        "source_nodes": [
+          "ps_64b8b3a5dd3804ee"
+        ],
+        "action": "apply finite_rank_uniform_error_lower_of_row_separation totientHankel 1 1 (by norm_num) totientHankel_abs_le_one _ A hA E hE herr",
+        "target_nodes": [
+          "ps_fd806d87a52465c2"
+        ],
+        "child_semantics": "AND",
+        "alternative_semantics_at_source": "OR",
+        "closed_after_discharge": true
+      }
+    ]
+  },
+  "pareto_frontier": [
+    {
+      "candidate_id": "generic_obstruction_exposes_arithmetic_obligation",
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 1,
+        "discharge_tactic_count": 0,
+        "closed": false
+      }
+    },
+    {
+      "candidate_id": "arithmetic_separation_closes_shared_obstruction",
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 1,
+        "discharge_tactic_count": 1,
+        "closed": true
+      }
+    }
+  ],
+  "plan_blocker_sets": [
+    {
+      "candidate_id": "generic_obstruction_exposes_arithmetic_obligation",
+      "required_open_node_ids": [
+        "ps_fd806d87a52465c2"
+      ],
+      "required_open_targets": [
+        "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+      ]
+    }
+  ],
+  "minimal_missing_interventions": [
+    {
+      "node_ids": [
+        "ps_fd806d87a52465c2"
+      ],
+      "targets": [
+        "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+      ]
+    }
+  ],
+  "minimal_blocker_cuts": [
+    {
+      "node_ids": [
+        "ps_fd806d87a52465c2"
+      ],
+      "targets": [
+        "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+      ]
+    }
+  ],
+  "blocker_algebra_semantics": {
+    "plan_blocker_sets": "per-plan AND residuals: every listed obligation of one plan must be discharged for that plan to close",
+    "minimal_missing_interventions": "antichain over plan residuals: supplying every member of one row completes at least one Lean-reached route",
+    "minimal_blocker_cuts": "minimal transversals of the plan residuals: the smallest removals meeting every known route; a cut is not an addition plan"
+  },
+  "closed_proof_receipts": [
+    {
+      "candidate_id": "arithmetic_separation_closes_shared_obstruction",
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 0,
+        "timed_out": false,
+        "source_digest": "sha256:acc22dbeac4ba245b668d43b2b38273284889e0482b04cc40e240cc712bf1190",
+        "message_digest": "sha256:349785da8f7bf138fe2127df343bf84ebfd0fde8ac7657d7161445210ed3f1f2",
+        "message_count": 3,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": false
+      },
+      "discharge_receipts": [
+        {
+          "index": 0,
+          "tactic": "exact totientHankel_row_separation",
+          "trace_reached": true,
+          "open_goals": [],
+          "open_goal_count": 0
+        }
+      ]
+    }
+  ],
+  "abstention_receipt": null,
+  "authority_posture": {
+    "transition": "Lean elaboration certifies that the action produced the recorded subgoals",
+    "closed_proof": "only return_code_zero_with_no_remaining_goals is a kernel-checked local proof receipt",
+    "planning": "hypergraph ranking, blocker cuts, and counterfactual interpretation remain advisory",
+    "status_and_exposition": "claim registries and authored papers remain separate authorities"
+  },
+  "omissions_and_reentry": {
+    "candidate_limit": 8,
+    "candidate_count": 3,
+    "omitted_candidate_count": 0,
+    "recursive_search": "not_yet_enabled",
+    "bridge_synthesis": "not_claimed",
+    "expansion": "submit another explicit request at a generated child target"
+  },
+  "packet_bytes": 17886
+}

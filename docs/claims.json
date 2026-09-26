@@ -13409,11 +13409,44 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos249.TotientApproximationDichotomy",
+          "path": "lean/ErdosProblems/Erdos249/TotientApproximationDichotomy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TotientMeanApproximation",
+            "ErdosProblems.Erdos249.TotientUniformRankBarrier"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientMeanApproximation",
+          "path": "lean/ErdosProblems/Erdos249/TotientMeanApproximation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.MersenneLambertLadder",
+            "ErdosProblems.Erdos269.PaperR8UniformRank"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
           "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.PivotAntiReconstruction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientTranslateSeparation",
+          "path": "lean/ErdosProblems/Erdos249/TotientTranslateSeparation.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientUniformRankBarrier",
+          "path": "lean/ErdosProblems/Erdos249/TotientUniformRankBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TotientTranslateSeparation",
+            "ErdosProblems.Synthesis.UniformRankBarrier"
           ]
         },
         {
@@ -14460,7 +14493,8 @@
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement"
+            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement",
+            "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions"
           ]
         },
         {
@@ -14477,6 +14511,12 @@
             "Erdos249257.AllBaseReciprocalSupportIrrationality",
             "ErdosProblems.Erdos257.RadixCloseReturn"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
@@ -14861,6 +14901,84 @@
           "imports": [
             "Erdos249257.ReciprocalSupportIrrationality"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockHarmonic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockHarmonic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockReciprocal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+            "ErdosProblems.Erdos257.WitnessBlockHarmonic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockSummability",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockSummability.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockWeighted",
+            "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+            "ErdosProblems.Erdos257.WitnessLogicSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeightBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockWeighted",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeighted.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+            "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+            "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicHost",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicHost.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessLogic",
+            "ErdosProblems.Erdos257.WitnessBlockSummability",
+            "ErdosProblems.Erdos257.WitnessBlockReciprocal"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicIrrational",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessLogicHost",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicSeries",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicSeries.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
@@ -17977,7 +18095,11 @@
             "ErdosProblems.Erdos249.PeriodMultipleEscape",
             "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
             "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+            "ErdosProblems.Erdos249.TotientApproximationDichotomy",
+            "ErdosProblems.Erdos249.TotientMeanApproximation",
             "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+            "ErdosProblems.Erdos249.TotientTranslateSeparation",
+            "ErdosProblems.Erdos249.TotientUniformRankBarrier",
             "ErdosProblems.Erdos251.PrimeGapDyadicTail",
             "ErdosProblems.Erdos251.ShiftedGapCountingR9",
             "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
@@ -18261,6 +18383,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Synthesis.UniformRankBarrier",
+          "path": "lean/ErdosProblems/Synthesis/UniformRankBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR8UniformRank"
+          ]
+        },
+        {
           "id": "ErdosProblems.Synthesis",
           "path": "lean/ErdosProblems/Synthesis.lean",
           "role": "Lean proof module",
@@ -18268,7 +18398,8 @@
             "ErdosProblems.Synthesis.CongruenceInterpolation",
             "ErdosProblems.Synthesis.DyadicShiftEscape",
             "ErdosProblems.Synthesis.FeedbackContinuation",
-            "ErdosProblems.Synthesis.FactorialJet"
+            "ErdosProblems.Synthesis.FactorialJet",
+            "ErdosProblems.Synthesis.UniformRankBarrier"
           ]
         },
         {
@@ -20856,7 +20987,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1183
+        "line": 1191
       }
     },
     {
@@ -20988,7 +21119,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1199
+        "line": 1207
       }
     },
     {
@@ -21000,7 +21131,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1208
+        "line": 1216
       }
     },
     {
@@ -21012,7 +21143,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1219
+        "line": 1227
       }
     }
   ],

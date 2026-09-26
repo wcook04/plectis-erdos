@@ -275,7 +275,7 @@ theorem finite_period_noncollapse_rat_den
 
 <a id="res-general-repair"></a>
 
-## Theorem 8.1 (membership and nonincreasing integer remainders), page 15
+## Theorem 8.1 (membership and nonincreasing integer remainders), page 16
 
 > *For every real $`x\ge0`$, the following are equivalent:
 > ``` math

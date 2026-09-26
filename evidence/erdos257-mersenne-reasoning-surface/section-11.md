@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="lem-odometer"></a>
 
-## Lemma 11.2 (Divisor-residue form of the short-window phase), page 117
+## Lemma 11.2 (Divisor-residue form of the short-window phase), page 118
 
 > *For all $`M,L\ge 1`$,
 > ``` math
@@ -176,7 +176,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-sqwitness"></a>
 
-## Lemma 11.3 (The terminal bound at square depths), page 124
+## Lemma 11.3 (The terminal bound at square depths), page 125
 
 > *Let $`A\subseteq\mathbb{N}`$ with $`1\notin A`$ and $`X_{A}(2)=1/2`$. Then for every $`k\ge1`$,
 > ``` math
@@ -221,7 +221,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-squarefree"></a>
 
-## Proposition 11.4 (Squarefree support: a limit of the certificate method, not an open value), page 126
+## Proposition 11.4 (Squarefree support: a limit of the certificate method, not an open value), page 127
 
 > *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then
 > ``` math

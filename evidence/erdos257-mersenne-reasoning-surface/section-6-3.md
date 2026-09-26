@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="record-257bm-c6"></a>
 
-## Theorem 6.72 (The quotient condition on greedy prefixes), page 62
+## Theorem 6.72 (The quotient condition on greedy prefixes), page 63
 
 > *Let $`D_c=G\cap\{2,\ldots,c-1\}`$. The condition on the actual greedy prefixes is
 > ``` math
@@ -37,7 +37,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c6a"></a>
 
-## Theorem 6.73 (Two consecutive skips), page 62
+## Theorem 6.73 (Two consecutive skips), page 63
 
 > *If $`c\ge6`$ and the real half-greedy rule skips both $`c`$ and $`c+1`$, put $`D=G\cap\{2,\ldots,c-1\}`$. Then
 > ``` math
@@ -103,7 +103,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c6b"></a>
 
-## Theorem 6.74 (A later skip after a selected block), page 62
+## Theorem 6.74 (A later skip after a selected block), page 63
 
 > *Suppose the real half-greedy rule skips rank $`c`$, takes $`c+1,\ldots,c+t-1`$, and skips $`c+t`$. If
 > ``` math
@@ -171,7 +171,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c7"></a>
 
-## Theorem 6.75 (Filling the remaining binary positions), page 63
+## Theorem 6.75 (Filling the remaining binary positions), page 64
 
 > *For any $`c\ge4`$ and any finite $`D\subseteq[2,c)`$ with $`\mathrm{value}(D)<1/2`$ and the sharp capacity
 > ``` math
@@ -210,7 +210,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c8"></a>
 
-## Theorem 6.76 (An exact sum at depth $`2c-2`$), page 63
+## Theorem 6.76 (An exact sum at depth $`2c-2`$), page 64
 
 > *Under the hypotheses of Theorem 6.75, there is a set $`E\subseteq\{2,\ldots,2c-2\}`$ with
 > ``` math
@@ -244,7 +244,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c9"></a>
 
-## Proposition 6.77 (Quotients in the upper half of the index range), page 63
+## Proposition 6.77 (Quotients in the upper half of the index range), page 64
 
 > *For integers $`d\ge2`$ and $`d\le M<2d`$,
 > ``` math
@@ -286,7 +286,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c10"></a>
 
-## Theorem 6.78 (A finite sum from a skipped prefix), page 63
+## Theorem 6.78 (A finite sum from a skipped prefix), page 64
 
 > *Let $`c\ge4`$ and $`D\subseteq\{2,\ldots,c-1\}`$ satisfy
 > ``` math
@@ -322,7 +322,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c11"></a>
 
-## Theorem 6.79 (Testing one nearest dyadic boundary), page 64
+## Theorem 6.79 (Testing one nearest dyadic boundary), page 65
 
 > *Let $`d,E`$ be nonnegative integers with $`E\le2^{d+1}`$, and let
 > ``` math
@@ -388,7 +388,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c12"></a>
 
-## Proposition 6.80 (An upper bound for the reset expression), page 64
+## Proposition 6.80 (An upper bound for the reset expression), page 65
 
 > *Let $`d\ge5`$ be an actual upper-reset row. Write $`E_d`$ for its reset charge, the sum of four times the adjacent upper overshoot and the corresponding nonnegative correction term. The upper-reset identity is
 > ``` math
@@ -432,7 +432,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c14"></a>
 
-## Theorem 6.82 (An equivalent vanishing condition), page 65
+## Theorem 6.82 (An equivalent vanishing condition), page 66
 
 > *``` math
 > \begin{gathered}
@@ -491,7 +491,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c15"></a>
 
-## Theorem 6.83 (A sufficient lower bound for the integer remainder), page 65
+## Theorem 6.83 (A sufficient lower bound for the integer remainder), page 66
 
 > *``` math
 > \forall\ \text{skipped rank }n\ge3,\quad B(2n) < \mathrm{rem}(n),
@@ -555,7 +555,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-c16"></a>
 
-## Theorem 6.84 (A square-root carry bound implies half-membership), page 65
+## Theorem 6.84 (A square-root carry bound implies half-membership), page 66
 
 > *Write $`G`$ for the greedy support and $`C_G(N)`$ for its centred carry. If
 > ``` math
@@ -598,7 +598,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-c17"></a>
 
-## Theorem 6.85 (Terminal bounds at unbounded depths), page 65
+## Theorem 6.85 (Terminal bounds at unbounded depths), page 66
 
 > *Suppose that for every $`N\ge0`$ there are $`M\ge\max\{N,1\}`$ and $`D\subseteq\{2,\ldots,M\}`$ such that
 > ``` math
@@ -679,7 +679,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-c18"></a>
 
-## Theorem 6.86 (Cofinal returns of the greedy carry), page 66
+## Theorem 6.86 (Cofinal returns of the greedy carry), page 67
 
 > *Suppose that for every $`N\ge0`$ there is $`M\ge N`$ such that
 > ``` math
@@ -728,7 +728,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c19"></a>
 
-## Theorem 6.87 (An eventual nonnegative margin suffices), page 66
+## Theorem 6.87 (An eventual nonnegative margin suffices), page 67
 
 > *Fix a positive depth $`k`$ and put $`D=G\cap\{2,\ldots,k\}`$. The following conditions are equivalent:
 > ``` math
@@ -861,7 +861,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-c20"></a>
 
-## Theorem 6.88 (Half-membership and infinitely many skips), page 66
+## Theorem 6.88 (Half-membership and infinitely many skips), page 67
 
 > *``` math
 > \tfrac12\in\ensuremath{\mathcal A} \;\Longleftrightarrow\; \text{the set of ranks skipped by the greedy rule for }\tfrac12\text{ is infinite}.
@@ -900,7 +900,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i1a"></a>
 
-## Theorem 6.89 (The next floor quotient), page 67
+## Theorem 6.89 (The next floor quotient), page 68
 
 > *For $`d\ge2`$ and $`M\ge0`$, the floor quotient satisfies
 > ``` math
@@ -957,7 +957,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i1b"></a>
 
-## Theorem 6.90 (The next quotient sum), page 67
+## Theorem 6.90 (The next quotient sum), page 68
 
 > *For a fixed finite set $`D\subseteq\{2,3,\ldots\}`$ and $`M\ge0`$,
 > ``` math
@@ -990,7 +990,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i1c"></a>
 
-## Theorem 6.91 (The signed endpoint recurrence), page 67
+## Theorem 6.91 (The signed endpoint recurrence), page 68
 
 > *The signed next-step expression is $`H(D,k,n)=2S(D,k,n-1)+1-c_D(n)`$. The last term counts the selected exponents dividing the new endpoint. This is the same recurrence shape as the generic tempered-orbit recurrence $`u(N+1)=2u(N)-v\cdot c(N+1)`$ from the tempered-orbit criterion (Theorem 6.105 below), specialised to Mersenne local repair. A matching recurrence alone does not imply rationality: Theorem 6.105 also requires one fixed coefficient sequence, integer states and a vanishing scaled limit. Those additional conditions must be checked before that criterion can be applied to these finite-row quantities.*
 
@@ -1048,7 +1048,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i5"></a>
 
-## Theorem 6.93 (Equivalent forms of the sharper bound), page 67
+## Theorem 6.93 (Equivalent forms of the sharper bound), page 68
 
 > *Under the hypotheses of Definition 6.92:
 > ``` math
@@ -1083,7 +1083,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i6"></a>
 
-## Theorem 6.94 (An unconditional bound with one extra bit), page 68
+## Theorem 6.94 (An unconditional bound with one extra bit), page 69
 
 > *Unconditionally, for every $`c\ge4`$ and every below-half core $`D\subseteq[2,c)`$ with deficit $`<\ensuremath{w}(c)`$:
 > ``` math
@@ -1144,7 +1144,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i7"></a>
 
-## Theorem 6.95 (The binary bound after doubling), page 68
+## Theorem 6.95 (The binary bound after doubling), page 69
 
 > *Let $`n\ge6`$ and $`D\subseteq\{2,\ldots,n\}`$ satisfy $`2\in D`$, $`Q(D,n)=2^{n-1}-1`$, and $`X_D(2)<1/2`$. Then
 > ``` math
@@ -1199,7 +1199,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-rank2"></a>
 
-## Proposition 6.96 (Every exact sum contains exponent two), page 69
+## Proposition 6.96 (Every exact sum contains exponent two), page 70
 
 > *Let $`n\ge3`$ and let $`D\subseteq\{2,\ldots,n\}`$ satisfy $`Q(D,n)=2^{n-1}-1`$. Then $`2\in D`$. Thus the rank-two hypothesis in Theorem 6.95 is automatic for its exact rows. The interval restriction on $`D`$ is part of the assertion, not an assumption about arbitrary finite quotient sums.*
 
@@ -1228,7 +1228,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i9"></a>
 
-## Proposition 6.98 (Error in the finite subseries value), page 69
+## Proposition 6.98 (Error in the finite subseries value), page 70
 
 > *An exact row at endpoint $`n`$ has real value within $`O(n/2^n)`$ of $`1/2`$: the quantitative bound $`|y_n-1/2|\le(n+1)/2^n`$ consumed by Theorem 6.67 to turn a sequence of exact rows tending to depth infinity into a sequence of values tending to $`1/2`$.*
 
@@ -1257,7 +1257,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i10"></a>
 
-## Proposition 6.99 (No finite support has value one half), page 69
+## Proposition 6.99 (No finite support has value one half), page 70
 
 > *A finite sum of reciprocals of odd integers has odd denominator in lowest terms, so it cannot equal $`1/2`$. Applied to the denominators $`2^a-1`$, this proves that a support representing $`1/2`$ must be infinite, as used in Theorem 6.67.*
 
@@ -1319,7 +1319,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i11a"></a>
 
-## Theorem 6.100 (Small remainder forces the greedy word), page 69
+## Theorem 6.100 (Small remainder forces the greedy word), page 70
 
 > *Let $`g\ge1`$ and let $`w_1,\ldots,w_m`$ be nonnegative integer weights satisfying
 > ``` math
@@ -1361,7 +1361,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i11b"></a>
 
-## Proposition 6.101 (Gap domination of the integer weights), page 70
+## Proposition 6.101 (Gap domination of the integer weights), page 71
 
 > *For integers $`1\le d\le R\le M`$, the quotient weights satisfy
 > ``` math
@@ -1411,7 +1411,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i11c"></a>
 
-## Proposition 6.102 (Uniqueness of the finite greedy representation), page 70
+## Proposition 6.102 (Uniqueness of the finite greedy representation), page 71
 
 > *Let $`1\le M`$, $`0\le R\le M`$, and $`0\le a<2^{M-R}`$. If
 > ``` math
@@ -1452,7 +1452,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i12"></a>
 
-## Theorem 6.103 (A division-free form of the binary bound), page 70
+## Theorem 6.103 (A division-free form of the binary bound), page 71
 
 > *For $`M\ge0`$ and $`d\ge2`$,
 > ``` math
@@ -1511,7 +1511,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i2"></a>
 
-## Theorem 6.104 (An upper bound for a binary coefficient tail), page 70
+## Theorem 6.104 (An upper bound for a binary coefficient tail), page 71
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then
 > ``` math
@@ -1549,7 +1549,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-t7"></a>
 
-## Theorem 6.105 (Rationality through an integer recurrence), page 71
+## Theorem 6.105 (Rationality through an integer recurrence), page 72
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then $`\sum_{n\ge1}c(n)2^{-n}`$ is rational if and only if there exist a positive integer $`v`$ and a sequence $`u:\mathbb{N}\to\mathbb{Z}`$ such that
 > ``` math

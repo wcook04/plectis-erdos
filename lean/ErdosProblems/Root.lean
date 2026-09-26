@@ -37,7 +37,11 @@ import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
 import ErdosProblems.Erdos249.PeriodMultipleEscape
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
 import ErdosProblems.Erdos249.RankOneSubrankObstruction
+import ErdosProblems.Erdos249.TotientApproximationDichotomy
+import ErdosProblems.Erdos249.TotientMeanApproximation
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
+import ErdosProblems.Erdos249.TotientTranslateSeparation
+import ErdosProblems.Erdos249.TotientUniformRankBarrier
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos251.ShiftedGapCountingR9
 import ErdosProblems.Erdos257.HalfCounterexampleFrontier

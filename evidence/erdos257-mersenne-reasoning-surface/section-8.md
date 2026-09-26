@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="prop-one-orbit"></a>
 
-## Proposition 8.1 (Stability of each fixed greedy prefix), page 88
+## Proposition 8.1 (Stability of each fixed greedy prefix), page 89
 
 > *Let $`t_j\to1/2`$ and, for each fixed $`n\ge2`$, let $`v_n^{(j)}\to x_n=(2^n-1)^{-1}`$, with $`v_n^{(j)}>0`$. Apply the greedy rule with target $`t_j`$ and weights $`v_n^{(j)}`$ in increasing order of $`n`$, through depths $`m_j\to\infty`$. For every fixed depth $`K`$, the decisions at ranks $`2,\ldots,K`$ eventually agree with those of the real half-greedy rule. This assertion concerns finite prefixes, not survival at all ranks.*
 
@@ -65,7 +65,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-no-ties"></a>
 
-## Lemma 8.2 (No-ties lemma), page 89
+## Lemma 8.2 (No-ties lemma), page 90
 
 > *At every rank $`k`$ of the full greedy orbit for target $`1/2`$, both defining comparisons are strict: $`\rho\ne x_k`$ and $`\rho\ne T_{k+1}`$.*
 
@@ -114,7 +114,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-tr-forced-greedy"></a>
 
-## Lemma 8.4 (Forced greedy), page 90
+## Lemma 8.4 (Forced greedy), page 91
 
 > *For every $`J\ge2`$: $`w_n^{(J)}>T_{n+1}^{(J)}`$ for all $`n`$ (the $`q=1`$ terms agree exactly, and every $`q\ge2`$ tail term is strictly smaller than the corresponding weight term). Consequently the greedy support is the unique candidate support, and $`\mathrm{HalfRung}(J)`$ holds iff the greedy orbit for $`1/2`$ under weights $`w_n^{(J)}`$ never lands in a fatal interval $`(T_{n+1}^{(J)},w_n^{(J)})`$. Rank $`1`$ is always a safe skip; ranks $`2`$ and $`3`$ are always takes.*
 
@@ -149,7 +149,7 @@ theorem paper_forced_greedy_tail_lt_weight' {J : ℕ} (hJ : 2 ≤ J) (n : ℕ) :
 
 <a id="lem-tr-parity"></a>
 
-## Lemma 8.5 (Parity forces infinite support), page 90
+## Lemma 8.5 (Parity forces infinite support), page 91
 
 > *For every $`J\ge2`$, no finite $`A\subseteq\{2,3,\ldots\}`$ attains $`\mathrm{HalfRung}(J)`$.*
 
@@ -175,7 +175,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-tr-witness-exclusion"></a>
 
-## Theorem 8.6 (Witness exclusion), page 90
+## Theorem 8.6 (Witness exclusion), page 91
 
 > *Define the misalignment mass
 > ``` math
@@ -212,7 +212,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-tr-half-lcm"></a>
 
-## Corollary 8.7 (Half-LCM horizon), page 90
+## Corollary 8.7 (Half-LCM horizon), page 91
 
 > *Let $`J\ge2`$ and $`L_J:=\mathrm{lcm}(2,3,\ldots,J)`$. For every $`n\ge\max\{4,L_J/2+1\}`$ there is an $`M\in[n,2n-2]`$ with $`\mu_J(M)<11/15`$. Thus witness exclusion leaves only the finite window $`[4,L_J/2]`$ to check.*
 
@@ -238,7 +238,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-tr-mod12"></a>
 
-## Lemma 8.8 (Mod-12 filter, $`J\ge7`$), page 91
+## Lemma 8.8 (Mod-12 filter, $`J\ge7`$), page 92
 
 > *For $`J\ge7`$, the inequality $`\mu_J(M)\le11/15`$ implies $`12\mid M`$. Thus only multiples of $`12`$ need be tested as witnesses in each interval $`[n,2n-2]`$; no potentially uncovered rank is discarded.*
 
@@ -263,7 +263,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-tr-finite-decision"></a>
 
-## Theorem 8.9 (Finite decision procedure), page 91
+## Theorem 8.9 (Finite decision procedure), page 92
 
 > *Call $`n\in[4,L_J/2]`$ **bad** if no $`M\in[n,2n-2]`$ has $`\mu_J(M)\le\tfrac{11}{15}`$, and set $`B(J):=\max(\mathrm{bad}\cup\{3\})`$. Then $`\mathrm{HalfRung}(J)`$ holds iff the greedy orbit for $`1/2`$ under weights $`w_n^{(J)}`$ survives every rank from $`2`$ through $`B(J)`$. This is a finite exact decision procedure.*
 

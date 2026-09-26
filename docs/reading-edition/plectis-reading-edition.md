@@ -680,13 +680,21 @@ Part (b) is proved in the companion note on \#257, Section 7, from Hornich’s 
 
 <div id="optimal-sparse-perturbations--thm:chains" class="theorem">
 
-**Theorem 6.3** (divisibility chains). *Let $`t=a/b>1`$ in lowest terms and let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
+**Theorem 6.3** (divisibility chains). *Let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$.*
 
-*<span class="upright">(a)</span> If $`a^2>b^3`$, then $`X_S(t)`$ is irrational.*
+*<span class="upright">(a)</span> If $`t=a/b>1`$ is rational in lowest terms and $`a^2>b^3`$, then $`X_S(t)`$ is irrational.*
 
-*<span class="upright">(b)</span> If $`n_{j+1}=2n_j`$ for all large $`j`$, then $`X_S(t)`$ is transcendental, with no condition on $`a`$ and $`b`$.*
+*<span class="upright">(b)</span> If the integer ratios $`n_{j+1}/n_j`$ are eventually periodic, then $`X_S(t)`$ is transcendental for every algebraic real $`t>1`$.*
 
 </div>
+
+For example, the chain $`1,2,6,12,36,72,\ldots`$ has alternating ratios $`2,3`$. Part (b) proves
+``` math
+\sum_{k\ge0}\left(\frac1{(4/3)^{6^k}-1}
+                  +\frac1{(4/3)^{2\cdot6^k}-1}\right)
+ \quad\hbox{is transcendental},
+```
+although $`4^2<3^3`$. Repeated blocks of ratios, rather than a stronger tail estimate, supply the functional equation used in this case. Part (b) is a direct corollary of the classical Mahler value theorem cited below; no historical novelty is claimed for this specialisation.
 
 The hypothesis $`a^2>b^3`$ says $`\log b/\log a<2/3`$. It holds for every integer base, for $`3/2`$, $`5/2`$ and $`7/3`$, and fails for $`4/3`$ and $`5/4`$. At integer bases part (a) is contained in the theorem of Erdős on supports with $`\sum_{n\in S}1/n<\infty`$ \[erdos1968\], proved in full in \[plectis257, Theorem 2\]. At base $`3/2`$ it sits inside the regime of Theorem <a href="#optimal-sparse-perturbations--thm:bases" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:bases">6.2</a>(a): rational values occur there, and exact divisibility still forces irrationality. For comparison, the companion note on \#1049 proves the irrationality of the full sum $`X_{\mathbb{N}_{>0}}(a/b)`$ when $`\log b/\log a<0.4056830213840605\ldots`$, using Zudilin’s linear forms \[plectis1049, Theorem 1\], \[zudilin2004\], and proves that the sufficient cutoff supplied by one integer-polynomial family with common leading degree, coefficient-height and decay bounds at every fixed real base $`x>1`$ is at most $`1/2`$ \[plectis1049, Theorem 5\]. This restriction does not exclude stronger estimates at a particular base or a different choice of family there. Thin supports reach further than the full sum because the denominators divide one another.
 
@@ -704,7 +712,7 @@ The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with 
 
 ###### Evidence.
 
-The proofs of Theorems <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>–<a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> are ordinary proofs. Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually doubling case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
+The proofs of Theorems <a href="#optimal-sparse-perturbations--thm:dichotomy" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:dichotomy">6.1</a>–<a href="#optimal-sparse-perturbations--thm:forced" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:forced">6.4</a> are ordinary proofs. Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a> uses Nishioka’s theorem for Mahler systems as an external premise in the eventually periodic case, hence in both parts. Results quoted from the problem papers retain the evidence class given at each use.
 
 <a id="optimal-sparse-perturbations--sec:dichotomy"></a>
 
@@ -742,7 +750,7 @@ The same comparison appears in Kovač and Tao’s theorem that for integers $`2\
 
 <div class="proof">
 
-*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a>.* Write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
+*Proof of Theorem <a href="#optimal-sparse-perturbations--thm:chains" data-reference-type="ref" data-reference="optimal-sparse-perturbations--thm:chains">6.3</a>.* For part (a), write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$. Because $`n_i\mid n_j`$ for $`i\le j`$, each $`a^{n_i}-b^{n_i}`$ divides $`D_j`$, so $`D_jS_j`$ is an integer. The tail satisfies
 ``` math
 0<X_S(t)-S_j\le\sum_{n\ge n_{j+1}}\frac{\rho^n}{1-\rho^n}
  \le\frac{\rho^{\,n_{j+1}}}{(1-\rho)^2}.
@@ -756,18 +764,30 @@ Suppose the ratio is at least $`3`$ for infinitely many $`j`$. For those $`j`$,
 ```
 when $`a^2>b^3`$. If $`X_S(t)=p/q`$, then $`qD_j(X_S(t)-S_j)`$ is a positive integer for every $`j`$, a contradiction.
 
-Otherwise the ratio is $`2`$ from some index on, which is the case of part (b), and $`S`$ is a finite set together with $`\{d,2d,4d,\dots\}`$. With $`z=t^{-d}`$ the infinite part contributes $`g(z)`$, where
+Otherwise the ratio is $`2`$ from some index on, so part (b) completes the proof of (a).
+
+For part (b), discard a finite prefix and write the repeating ratio block as $`r_1,\ldots,r_\ell`$, with every $`r_i\ge2`$. Put
 ``` math
-g(z)=\sum_{k\ge0}\frac{z^{2^k}}{1-z^{2^k}},\qquad
- g(z^2)=g(z)-\frac{z}{1-z}.
+Q=\prod_{i=1}^{\ell}r_i,\qquad e_0=1,\qquad
+ e_i=\prod_{h=1}^i r_h\quad(1\le i<\ell).
 ```
+With $`d`$ the first exponent after that prefix, the remaining exponents are exactly $`d e_iQ^k`$ with $`0\le i<\ell`$ and $`k\ge0`$. Indeed, one complete block multiplies an exponent by $`Q`$, and its intermediate positions multiply it by the $`e_i`$. These exponents are distinct since $`1=e_0<\cdots<e_{\ell-1}<Q`$. Define
+``` math
+G(z)=\sum_{k\ge0}\sum_{i=0}^{\ell-1}
+          \frac{z^{e_iQ^k}}{1-z^{e_iQ^k}},\qquad
+ R(z)=\sum_{i=0}^{\ell-1}\frac{z^{e_i}}{1-z^{e_i}}.
+```
+The series for $`G`$ converges normally on compact subsets of $`|z|<1`$: on $`|z|\le r<1`$ its absolute sum is at most $`\ell(1-r)^{-1}\sum_{k\ge0}r^{Q^k}<\infty`$. Its Taylor coefficients are integers, and removing the $`k=0`$ block gives $`G(z)=R(z)+G(z^Q)`$. For the one-term block $`(2)`$ this is the function $`g(z)=\sum_{k\ge0}z^{2^k}/(1-z^{2^k})`$ used below.
+
+The function $`G`$ is transcendental over $`\mathbb C(z)`$. To see this, fix a primitive root of unity $`\zeta`$ of order $`Q^j`$, with $`j\ge1`$, and approach it along $`r\zeta`$ as $`r\uparrow1`$. For every $`k\ge j`$, all terms in the $`k`$th block are positive real numbers. Already the term $`k=j,i=0`$ tends to $`+\infty`$. Among the finitely many earlier terms, those with $`\zeta^{e_iQ^k}=1`$ are also positive, and all the others remain bounded. Thus $`\operatorname{Re}G(r\zeta)\to+\infty`$. The infinitely many distinct orders $`Q^j`$ give infinitely many singularities, whereas an algebraic function over $`\mathbb C(z)`$ has only finitely many.
+
 We use Nishioka’s value theorem for Mahler systems \[nishioka1996\], in the precise form quoted by Adamczewski and Faverjon \[adamczewskifaverjon2016, Theorem 1.1, p. 3\]. At an algebraic regular point it equates the transcendence degree of the function values with that of the functions over $`\overline{\mathbb{Q}}(z)`$. Here the system is
 ``` math
-\begin{pmatrix}g(z)\\1\end{pmatrix}
- =\begin{pmatrix}1&z/(1-z)\\0&1\end{pmatrix}
-  \begin{pmatrix}g(z^2)\\1\end{pmatrix}.
+\begin{pmatrix}G(z)\\1\end{pmatrix}
+ =\begin{pmatrix}1&R(z)\\0&1\end{pmatrix}
+  \begin{pmatrix}G(z^Q)\\1\end{pmatrix}.
 ```
-The matrix and its inverse have no poles at any iterate $`\rho^{\,d2^k}\in(0,1)`$, so $`\rho^d`$ is regular. The function $`g`$ is transcendental: at a root of unity $`\zeta`$ of order $`2^j`$ the terms with $`k\ge j`$ are positive on the ray $`r\zeta`$ and diverge as $`r\to1`$, while the earlier terms stay bounded, so $`g`$ has infinitely many singularities on the unit circle. An algebraic function over $`\mathbb{C}(z)`$ has only finitely many singular points, so $`g`$ is transcendental over $`\mathbb{C}(z)`$. Hence $`g(\rho^{\,d})`$ is transcendental, and adding the rational finite part proves (b) and completes (a). ◻
+For algebraic real $`t>1`$, the point $`\alpha=t^{-d}`$ is algebraic and lies in $`(0,1)`$. The matrix and its inverse have poles only at roots of unity, so none of $`\alpha^{Q^k}`$ is a pole and $`\alpha`$ is regular. Nishioka’s theorem gives $`\operatorname{trdeg}_{\overline{\mathbb{Q}}}(G(\alpha),1)=1`$. The discarded finite sum is algebraic, so adding it to $`G(\alpha)`$ proves part (b). ◻
 
 </div>
 
@@ -2231,7 +2251,7 @@ Paul Erdős, [*Sur certaines séries à valeur irrationnelle*](https://users.ren
 
 *Which weighted-support Mersenne subseries are proved irrational, and what still blocks the universal Erdős #257 question?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf)
 
-Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) (600 KB as text).
+Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) (604 KB as text).
 
 <a id="erdos-257-mersenne-support-subseries--erdos-257-mersenne-support-subseries"></a>
 
@@ -2464,6 +2484,8 @@ Each block $`2^j\le m<2^{j+1}`$, $`1\le j<r`$, contains $`2^{j-1}`$ odd integers
 The last bound uses $`2^{2^k}-1\ge2^{2^k-1}`$ and $`2^k\ge2k`$. The weighted mass is summable. Every infinite subset of $`A_\star`$ therefore has irrational $`X_A(b)`$ at every integer base, although $`\sum_{a\in A_\star}1/a`$ diverges. This example is an ordinary argument; the Lean proofs do not treat this particular set.
 
 Both proofs select a term no larger than a finite average. For a related selection step on arithmetic progressions, see Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. The sparse-coefficient criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\] do not apply directly to $`c_A`$: for nonempty $`A`$, it is positive on every multiple of $`\min A`$. The companion, Section 1.2, gives the counting argument and distinguishes their remote-tail average from the displacement used here.
+
+One host realises any monotone rule on a finite set $`E`$ of primes: if $`\mathcal U`$ is an upward-closed family of subsets of $`E`$ with $`E\in\mathcal U\not\ni\varnothing`$, a finite union of prime-cofactor blocks has divergent reciprocal sum and $`W_{b,P}<\infty`$ exactly when $`P\cap E\in\mathcal U`$, for every $`b\ge2`$ and finite prime set $`P`$, so every infinite subset is irrational at every base. The companion proves this and Lean checks it.
 
 <a id="erdos-257-mersenne-support-subseries--sec:common-kernel"></a>
 

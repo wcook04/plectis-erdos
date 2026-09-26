@@ -3265,7 +3265,7 @@
          {
           "name": "ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
-          "line": 75,
+          "line": 61,
           "text": "def DivisibilityWeightedClaim : Prop :=\n  (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →\n    FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧\n  (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →\n    ∀ A : Set ℕ, A ⊆ H → A.Infinite →\n      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))"
          }
         ]
@@ -3401,7 +3401,7 @@
      "printed_kind": "Theorem",
      "number": "3.1",
      "page": "7",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:414",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:422",
      "statement_sha256": "sha256:b5019135ee5bf7f77def9071046144098c182a1cef97a05890dd7865e6a1d35e",
      "statement_key": "sha256:31efd542ebea0837f2bc0c9a140df1e9ab94f26d2b51df58cf7beaef3e6114e3",
      "title": "a summable divisor-cover criterion",
@@ -3429,7 +3429,7 @@
          {
           "name": "ErdosProblems.Erdos257.PaperCompleteR7.StrengthenedPositiveCoverClaim",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
-          "line": 67,
+          "line": 53,
           "text": "def StrengthenedPositiveCoverClaim : Prop :=\n  ∀ C : PositiveCoverData, C.StrengthenedCostSummable →\n    ∀ A : Set ℕ, A ⊆ C.host → A.Infinite →\n      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)"
          }
         ]
@@ -3472,7 +3472,7 @@
      "printed_kind": "Proposition",
      "number": "3.2",
      "page": "10",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:569",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:577",
      "statement_sha256": "sha256:e0a8fff5d2de2a4b70ca7c51caa977154c634916e33fd6f5b73f38628f270c11",
      "statement_key": "sha256:c98f508389e9bedf3baeed1d57fe7a957069b51c6a598cf9a79f6335234d7113",
      "title": "incomparable support criteria",
@@ -3502,7 +3502,7 @@
      "printed_kind": "Theorem",
      "number": "3.3",
      "page": "11",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:654",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:662",
      "statement_sha256": "sha256:5deb5eaac428d65e2ba0ec7848adb44d7a3ff27fee98d7c7ddda9d489e587339",
      "statement_key": "sha256:591f6d5c9d64758827d4fd7579b2bc3a9a616efabe450a4cd9023ee7268d9093",
      "title": "mixed weighted and cover supports",
@@ -3530,7 +3530,7 @@
          {
           "name": "ErdosProblems.Erdos257.PaperCompleteR7.MixedSupportClaim",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
-          "line": 85,
+          "line": 71,
           "text": "def MixedSupportClaim : Prop :=\n  ∀ E V : Set ℕ, 0 ∉ E → FinitePrimeWeighted 2 E →\n    HasStrengthenedPositiveCover V →\n    ∀ A : Set ℕ, A ⊆ E ∪ V → A.Infinite →\n      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)"
          }
         ]
@@ -3602,7 +3602,7 @@
      "printed_kind": "Corollary",
      "number": "3.4",
      "page": "12",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:707",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:715",
      "statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
      "statement_key": "sha256:e593aae89286611333df000c890fd8abb91c23a587c2ad5b1a1dffeed8f3c943",
      "title": "a host requiring the mixed criterion",
@@ -3632,7 +3632,7 @@
      "printed_kind": "Theorem",
      "number": "4.1",
      "page": "13",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:775",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:783",
      "statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b",
      "statement_key": "sha256:d4d67171781d771736af72409c286c2f740065ec5c523b6a1b3d2d0e682b2adf",
      "title": "the exact denominator period",
@@ -3753,8 +3753,8 @@
      "environment": "theorem",
      "printed_kind": "Theorem",
      "number": "8.1",
-     "page": "15",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:942",
+     "page": "16",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:950",
      "statement_sha256": "sha256:17e70c7e375db04ec58fa70163814efca251acb652fb73b84d84a07a3a15760d",
      "statement_key": "sha256:4bc73b0b1bfb368d13a3b781af9d711850a52b30172ef9334c677cd216961735",
      "title": "membership and nonincreasing integer remainders",
@@ -3818,7 +3818,7 @@
      "printed_kind": "Theorem",
      "number": "9.1",
      "page": "17",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1062",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1070",
      "statement_sha256": "sha256:1e26929c04e4cdb30205d6e796ec3468b8d8b4f47e55c359f519551798631bce",
      "statement_key": "sha256:486f56e089889c9dd29ee9ef1d7e2c864daa8f1a6a3ca03396238de4b3e740b6",
      "title": "integer-quotient tests for $`1/21`$",
@@ -4005,7 +4005,7 @@
      "printed_kind": "Theorem",
      "number": "9.2",
      "page": "18",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1104",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1112",
      "statement_sha256": "sha256:506643145304e5fdb1a5ddbceac6a0b992d1929726a7d86ff093f2f6c01152c5",
      "statement_key": "sha256:c03fa40d5d3cf9481cef1a41f3dad8dade5a0e826b02a32efdb3f7adb667c4d3",
      "title": "finite approximations with vanishing scaled error",
@@ -4069,7 +4069,7 @@
      "printed_kind": "Theorem",
      "number": "9.3",
      "page": "19",
-     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1169",
+     "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1177",
      "statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5",
      "statement_key": "sha256:7dad5a6420c979571305e709e3a13505d4e887659cea387ae7ecb7a41e818176",
      "title": "unbounded shared-prefix families imply a half-support",
@@ -42837,7 +42837,7 @@
          {
           "name": "ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
-          "line": 75,
+          "line": 61,
           "text": "def DivisibilityWeightedClaim : Prop :=\n  (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →\n    FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧\n  (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →\n    ∀ A : Set ℕ, A ⊆ H → A.Infinite →\n      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))"
          }
         ]
@@ -42902,14 +42902,55 @@
      "record": "evidence/erdos257-mersenne-reasoning-surface/section-1.md"
     },
     {
+     "id": "erdos257-mersenne-reasoning-surface#prop:257-finite-witness-rule",
+     "label": "prop:257-finite-witness-rule",
+     "anchor": "prop-257-finite-witness-rule",
+     "environment": "prop",
+     "printed_kind": "Proposition",
+     "number": "1.2",
+     "page": "13",
+     "source": "paper/reasoning-parts/erdos257/a257_front.tex:510",
+     "statement_sha256": "sha256:cbb30ad0b19d323bff1cd2c18e8624917ca6e6231b2262334ebdccddc566c891",
+     "statement_key": "sha256:12fbd124eecd8016b4fd7426bdeb2ddca64e779a4b4bd2bf7b484c392a234dff",
+     "title": null,
+     "statement_markdown": null,
+     "lean": {
+      "status": "exact_or_stronger",
+      "mark": "lean",
+      "named_inputs": null,
+      "named_input_definitions": [],
+      "scope": null,
+      "scope_markdown": null,
+      "reason": null,
+      "reason_markdown": null,
+      "relation_note": "The Lean statement takes any upward-closed predicate $U$ on finite sets of naturals with $U(E)$ and not $U(\\varnothing)$; the printed family $\\mathcal U$ on subsets of $E$ is the case $U(S)\\iff S\\cap E\\in\\mathcal U$, which is upward closed because intersection with $E$ preserves inclusion, and then $U(\\mathcal P\\cap E)$ reads $\\mathcal P\\cap E\\in\\mathcal U$. The host $H$ omits $0$, so it is a set of positive integers; `Summable (Set.indicator H primeWeightedTerm)` is $W_{b,\\mathcal P}(H)<\\infty$ for nonnegative terms, and failure of summability of $1/a$ on $H$ is the printed divergence.",
+      "declarations": [
+       {
+        "name": "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised",
+        "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+        "line": 39,
+        "kind": "theorem",
+        "docstring": "**Finite monotone witness logic is realisable.** For each finite prime set\n`E` and each nonconstant upward-closed rule `U`, one host `H` without zero has:\nweighted summability at every base `b ≥ 2` and every finite prime witness `P`\nexactly when `U (P ∩ E)`; a divergent reciprocal sum; and irrational support\nseries for every infinite subset in every base.",
+        "statement": "theorem finite_monotone_witness_rule_realised\n    (E : Finset ℕ) (hE : ∀ p ∈ E, Nat.Prime p)\n    (U : Finset ℕ → Prop) (hUp : ∀ S T : Finset ℕ, S ⊆ T → U S → U T)\n    (hUE : U E) (hU0 : ¬ U ∅) :\n    ∃ H : Set ℕ, 0 ∉ H ∧\n      (∀ b : ℕ, 2 ≤ b → ∀ P : Finset ℕ, (∀ p ∈ P, Nat.Prime p) →\n        (Summable (Set.indicator H (primeWeightedTerm b P)) ↔ U (P ∩ E))) ∧\n      ¬ Summable (Set.indicator H (fun a : ℕ => (1 : ℝ) / a)) ∧\n      (∀ A : Set ℕ, A ⊆ H → A.Infinite →\n        ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))",
+        "statement_sha256": "553a21b9ad9b63b30f7f946a3ed92f6d2bf82084967b03c1b6d77be87c442b7c",
+        "unfolds": []
+       }
+      ]
+     },
+     "comparator": {
+      "status": "pending"
+     },
+     "record": "evidence/erdos257-mersenne-reasoning-surface/section-1.md"
+    },
+    {
      "id": "erdos257-mersenne-reasoning-surface#thm:257-variable-fractional-cover",
      "label": "thm:257-variable-fractional-cover",
      "anchor": "thm-257-variable-fractional-cover",
      "environment": "thm",
      "printed_kind": "Theorem",
-     "number": "1.2",
+     "number": "1.3",
      "page": "14",
-     "source": "paper/reasoning-parts/erdos257/a257_front.tex:555",
+     "source": "paper/reasoning-parts/erdos257/a257_front.tex:620",
      "statement_sha256": "sha256:6678a1b5de08c717c16fee5ff99f31ffe23f366b4edbb8d1757e51917284c31b",
      "statement_key": "sha256:6554ee3ed4339f164340af3c1c3f1445f57760b7b2e40faebefc2c7222a53f52",
      "title": "A summable family of divisor majorants",
@@ -42937,7 +42978,7 @@
          {
           "name": "ErdosProblems.Erdos257.PaperCompleteR7.StrengthenedPositiveCoverClaim",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
-          "line": 67,
+          "line": 53,
           "text": "def StrengthenedPositiveCoverClaim : Prop :=\n  ∀ C : PositiveCoverData, C.StrengthenedCostSummable →\n    ∀ A : Set ℕ, A ⊆ C.host → A.Infinite →\n      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)"
          }
         ]
@@ -42978,13 +43019,13 @@
      "anchor": "thm-257-mixed-supports",
      "environment": "thm",
      "printed_kind": "Theorem",
-     "number": "1.3",
-     "page": "15",
-     "source": "paper/reasoning-parts/erdos257/a257_front.tex:640",
+     "number": "1.4",
+     "page": "16",
+     "source": "paper/reasoning-parts/erdos257/a257_front.tex:705",
      "statement_sha256": "sha256:e64269394e221a7809ef213f1c45550e3f339c4f7126bc6e8d42913232bdf7a2",
      "statement_key": "sha256:f09411ebd268a5042059e950ae35e9d7c0060051579152b25952cad1871e68f1",
      "title": "mixed weighted and cover supports",
-     "statement_markdown": "*Let $`E,V\\subseteq\\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass (1) at $`b=2`$ for a finite nonempty prime set $`\\mathcal P`$. Suppose also that $`V\\subseteq\\bigcup_jF_j`$ for sets and majorants satisfying Theorem 1.2, with (13) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\\subseteq E\\cup V`$ and every integer $`b\\ge2`$.*",
+     "statement_markdown": "*Let $`E,V\\subseteq\\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass (1) at $`b=2`$ for a finite nonempty prime set $`\\mathcal P`$. Suppose also that $`V\\subseteq\\bigcup_jF_j`$ for sets and majorants satisfying Theorem 1.3, with (14) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\\subseteq E\\cup V`$ and every integer $`b\\ge2`$.*",
      "lean": {
       "status": "exact_or_stronger",
       "mark": "lean",
@@ -43008,7 +43049,7 @@
          {
           "name": "ErdosProblems.Erdos257.PaperCompleteR7.MixedSupportClaim",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
-          "line": 85,
+          "line": 71,
           "text": "def MixedSupportClaim : Prop :=\n  ∀ E V : Set ℕ, 0 ∉ E → FinitePrimeWeighted 2 E →\n    HasStrengthenedPositiveCover V →\n    ∀ A : Set ℕ, A ⊆ E ∪ V → A.Infinite →\n      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)"
          }
         ]

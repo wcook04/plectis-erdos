@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1183,
+        "line": 1191,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1199,
+        "line": 1207,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "bounded returns of the scaled remainder"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1208,
+        "line": 1216,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1219,
+        "line": 1227,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },

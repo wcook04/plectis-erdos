@@ -230,6 +230,8 @@ The last bound uses $`2^{2^k}-1\ge2^{2^k-1}`$ and $`2^k\ge2k`$. The weighted mas
 
 Both proofs select a term no larger than a finite average. For a related selection step on arithmetic progressions, see Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. The sparse-coefficient criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\] do not apply directly to $`c_A`$: for nonempty $`A`$, it is positive on every multiple of $`\min A`$. The companion, Section 1.2, gives the counting argument and distinguishes their remote-tail average from the displacement used here.
 
+One host realises any monotone rule on a finite set $`E`$ of primes: if $`\mathcal U`$ is an upward-closed family of subsets of $`E`$ with $`E\in\mathcal U\not\ni\varnothing`$, a finite union of prime-cofactor blocks has divergent reciprocal sum and $`W_{b,P}<\infty`$ exactly when $`P\cap E\in\mathcal U`$, for every $`b\ge2`$ and finite prime set $`P`$, so every infinite subset is irrational at every base. The companion proves this and Lean checks it.
+
 <a id="sec:common-kernel"></a>
 
 ## A common finite average for the extensions

@@ -355,6 +355,21 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
 
+    def test_pull_requests_never_save_the_lake_cache(self) -> None:
+        """A PR cache only its own PR can read must not evict main's warm cache."""
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        start = workflow.index("- name: Save project Lean cache after the build")
+        save_step = workflow[start : workflow.index("\n      - ", start + 1)]
+        self.assertIn("uses: actions/cache/save@", save_step)
+        self.assertIn("github.event_name != 'pull_request'", save_step)
+        warm = (fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("branches:\n      - main", warm)
+        self.assertIn("actions/cache", warm)
+
     def test_ci_installs_lean_from_checksum_verified_primary_source(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"

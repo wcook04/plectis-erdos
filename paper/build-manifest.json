@@ -238,7 +238,7 @@
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:0a5629d0701b403f9b9879771d2c1dfa74df60b68e77f8d98908af6e25f0ab6d",
+      "rendered_content_digest": "sha256:cea3e21fef5e85f27c531f1b8368b2183f03c3853bd8c8257b7700218e1be7cf",
       "source_path": "paper/archive/erdos249-257-main-paper.tex",
       "storage_path": "paper/archive/erdos249-257-main-paper.pdf"
     },
@@ -247,9 +247,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/open-source-mathematics-strategy.tex": "sha256:35a129f690176e6aa9eed97fe0b52f971f67502bd96891a4189a5df99d961654"
+        "paper/systems/open-source-mathematics-strategy.tex": "sha256:badcff778bfef6a840bd5395c4417ea45f45321bf48f003365decdb12111bc35"
       },
-      "rendered_content_digest": "sha256:4159374e00fcfbace38a62143e350cc3077bfdcd6941fe4351ea7d775b490495",
+      "rendered_content_digest": "sha256:64731c139745759d58aa0e8c4968680334ce917ded89e6aef8f1bee1d83ecdee",
       "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },

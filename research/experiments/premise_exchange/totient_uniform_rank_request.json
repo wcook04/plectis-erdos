@@ -1,0 +1,44 @@
+{
+  "schema_version": "erdos249257-proof-state-request/1",
+  "goal_id": "totient_uniform_rank_barrier_from_arithmetic_separation",
+  "imports": [
+    "ErdosProblems.Synthesis.UniformRankBarrier",
+    "ErdosProblems.Erdos249.TotientTranslateSeparation"
+  ],
+  "opens": [
+    "ErdosProblems.Erdos269.PaperR8",
+    "ErdosProblems.Synthesis.UniformRankBarrier",
+    "ErdosProblems.Erdos249.TotientTranslateSeparation"
+  ],
+  "context": [
+    {"name": "A", "binder": "(A : ℕ → ℕ → ℝ)", "role": "term"},
+    {"name": "hA", "binder": "(hA : FiniteSeparatedRank A)", "role": "assumption"},
+    {"name": "E", "binder": "(E : ℝ)", "role": "term"},
+    {"name": "hE", "binder": "(hE : 0 ≤ E)", "role": "assumption"},
+    {"name": "herr", "binder": "(herr : ∀ i j, |totientHankel i j - A i j| ≤ E)", "role": "assumption"}
+  ],
+  "target": "(1 : ℝ) / 2 ≤ E",
+  "candidates": [
+    {
+      "candidate_id": "three_prime_specific_bound",
+      "declaration": "ErdosProblems.Erdos269.PaperR8.finite_rank_uniform_error_lower",
+      "arguments": ["(p := 2)", "(q := 3)", "(r := 5)"],
+      "discharge_tactics": [],
+      "proposal_receipt": "Interface probe only: the existing theorem concerns a different kernel and the smaller carry-jump bound. A rejected application is not a proof-search lower bound or evidence that the target was inaccessible."
+    },
+    {
+      "candidate_id": "generic_obstruction_exposes_arithmetic_obligation",
+      "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+      "arguments": ["totientHankel", "1", "1", "(by norm_num)", "totientHankel_abs_le_one", "_", "A", "hA", "E", "hE", "herr"],
+      "discharge_tactics": [],
+      "proposal_receipt": "Apply the shared analytic mechanism and retain its arithmetic separation obligation. No claim is made that a prover could not discharge this obligation automatically."
+    },
+    {
+      "candidate_id": "arithmetic_separation_closes_shared_obstruction",
+      "declaration": "finite_rank_uniform_error_lower_of_row_separation",
+      "arguments": ["totientHankel", "1", "1", "(by norm_num)", "totientHankel_abs_le_one", "_", "A", "hA", "E", "hE", "herr"],
+      "discharge_tactics": ["exact totientHankel_row_separation"],
+      "proposal_receipt": "Discharge the actual missing premise using the separate CRT/Dirichlet/Euler-product theorem. The final TotientUniformRankBarrier endpoint module is not imported. This tests mathematical composition, not randomized discovery advantage or the authors' trained predictor."
+    }
+  ]
+}
