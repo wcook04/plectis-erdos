@@ -1506,6 +1506,8 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "barriers_in_graph": sum(1 for e in barriers["entries"] if e["in_graph"]),
         "open_statements_constrained_by_barriers": len(barriers["constrains"]),
     }
+    alarms = sentinel_alarms(graph)
+    summary["sentinel_alarms"] = len(alarms)
     lean_tree = resolve_lean_tree(export_path, lean_tree)
     source = {
         # The git tree of lean/ the export was computed from; query_continuations.py
@@ -1582,6 +1584,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
             {"key": key, "type": graph.statements.get(key, {}).get("type")} for key in graph.inconsistent],
         "idle": idle_rows[:LIST_LIMIT * 3],
         "audit": audit,
+        "sentinel_alarms": alarms,
     }
     graph_payload = {
         "schema": GRAPH_SCHEMA,
@@ -1628,6 +1631,40 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         ],
     }
     return projection, graph_payload
+
+
+# Statements the graph must never report as settled. Supplying False means
+# a supply chain is unsound (an exporter or builder defect, never a proof);
+# supplying or refuting a registered open target means either such a defect or
+# a solution, and either way a person looks before any number is used. The
+# pre-review exporter supplied every one of these through producers that need
+# a witness of an empty type.
+SENTINELS = {
+    "False": "a supply chain that proves False is unsound",
+    "1 / 2 ∈ Erdos249257.mersenneAchievementSet": "open: remaining_open.half_value_membership",
+    "1 / 21 ∈ Erdos249257.mersenneAchievementSet": "open: remaining_open.twenty_one_permanent_affine_supercapacity",
+    "Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)": "open: remaining_open.erdos_249_irrationality",
+}
+
+
+def sentinel_alarms(graph: "Graph") -> list[dict[str, Any]]:
+    """Sentinel statements the graph reports as supplied or refuted, each with
+    the witness chain to inspect. Refuting False is not an alarm."""
+    alarms = []
+    for key, node in sorted(graph.statements.items()):
+        texts = {node.get("type"), *node.get("aliases", ())}
+        hits = [text for text in texts if text in SENTINELS]
+        if not hits:
+            continue
+        status = graph.status(key)
+        if status == "supplied" or (status == "refuted" and hits != ["False"]):
+            alarm = {"key": key, "type": hits[0], "status": status, "reason": SENTINELS[hits[0]]}
+            if status == "supplied":
+                alarm["witness"] = graph.proof_tree(key, limit=3)
+            else:
+                alarm["refutation"] = graph.refuted.get(key)
+            alarms.append(alarm)
+    return alarms
 
 
 TEX_MACROS_BEGIN = "% BEGIN generated_argument_graph_macros"
@@ -1705,10 +1742,19 @@ def main(argv: list[str] | None = None) -> int:
                              "beside the export)")
     parser.add_argument("--paper", type=Path, action="append", default=[],
                         help="TeX file whose generated_argument_graph_macros region is rewritten")
+    parser.add_argument("--allow-sentinel-alarms", action="store_true",
+                        help="write paper macros and exit 0 even when a sentinel statement is settled")
     args = parser.parse_args(argv)
     projection, graph_payload = build(args.export, args.root, lean_tree=args.lean_tree,
                                       source_revision=args.source_revision)
     write_outputs(projection, graph_payload, args.output, args.graph_output)
+    alarms = projection["sentinel_alarms"]
+    if alarms and not args.allow_sentinel_alarms:
+        # The outputs are written for inspection; no number reaches a paper.
+        print(json.dumps({"sentinel_alarms": alarms}, indent=1, ensure_ascii=False)[:20000], file=sys.stderr)
+        print(f"ALARM: {len(alarms)} sentinel statement(s) settled; inspect the witness chains before "
+              "using this graph (see sentinel_alarms in the projection)", file=sys.stderr)
+        return 3
     for paper in args.paper:
         text = paper.read_text(encoding="utf-8")
         paper.write_text(replace_macro_region(text, paper_macro_region(projection)), encoding="utf-8")

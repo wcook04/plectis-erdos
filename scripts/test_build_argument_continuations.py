@@ -582,5 +582,45 @@ class Build(unittest.TestCase):
             self.assertEqual(query.freshness(unknown, Path(tmp))["state"], "unknown")
 
 
+class Sentinels(unittest.TestCase):
+    """The graph must never report False, or a registered open target, as
+    settled without an alarm: the pre-review exporter did both."""
+
+    def test_false_supplied_raises_an_alarm(self) -> None:
+        graph = graph_of([statement("False"), match("False", "bogus_producer")])
+        alarms = builder.sentinel_alarms(graph)
+        self.assertEqual([a["type"] for a in alarms], ["False"])
+        self.assertEqual(alarms[0]["status"], "supplied")
+        self.assertIn("witness", alarms[0])
+
+    def test_open_target_supplied_or_refuted_raises_an_alarm(self) -> None:
+        half = "1 / 2 ∈ Erdos249257.mersenneAchievementSet"
+        supplied = graph_of([statement(half), match(half, "bogus_producer")])
+        self.assertEqual([a["status"] for a in builder.sentinel_alarms(supplied)], ["supplied"])
+        refuted = graph_of([statement(half), refute(half)])
+        self.assertEqual([a["status"] for a in builder.sentinel_alarms(refuted)], ["refuted"])
+
+    def test_refuting_false_and_open_targets_left_open_are_quiet(self) -> None:
+        half = "1 / 2 ∈ Erdos249257.mersenneAchievementSet"
+        graph = graph_of([statement("False"), refute("False"), statement(half)])
+        self.assertEqual(builder.sentinel_alarms(graph), [])
+
+    def test_main_withholds_paper_macros_on_an_alarm(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            export = write_stream(directory, [statement("False"), match("False", "bogus_producer")])
+            paper = directory / "paper.tex"
+            paper.write_text("x\n% BEGIN generated_argument_graph_macros\n% END generated_argument_graph_macros\n",
+                             encoding="utf-8")
+            before = paper.read_text(encoding="utf-8")
+            code = builder.main(["--export", str(export), "--output", str(directory / "p.json"),
+                                 "--graph-output", str(directory / "g.json.gz"), "--root", str(ROOT),
+                                 "--paper", str(paper)])
+            self.assertEqual(code, 3)
+            self.assertEqual(paper.read_text(encoding="utf-8"), before)
+            projection = json.loads((directory / "p.json").read_text(encoding="utf-8"))
+            self.assertEqual(projection["summary"]["sentinel_alarms"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
