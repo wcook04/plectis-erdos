@@ -311,8 +311,14 @@ the coverage build compiles, and connects these statements into an
 
 \paragraph{Export.} A Lean program
 (\repolink{scripts/export_argument_continuations.lean}{export\_argument\_continuations.lean})
-runs five passes in continuous integration. It records each theorem's
-hypothesis telescope. For every closed statement it searches the corpus for
+runs six passes in continuous integration. It records each theorem's
+hypothesis telescope, and for each closed hypothesis $h:H$ it finds what the
+proof derives from $h$. When every occurrence of $h$ lies in an application
+that mentions no other variable of the theorem or of the proof, such as
+$L\,h$ for a lemma $L$, a component of $h$ or an instance of $h$, the theorem
+holds with $H$ replaced by the propositions these applications prove; the
+kernel checks that theorem and each implication from $H$, and these
+\emph{used consequences} become statements like the rest. For every closed statement it searches the corpus for
 theorems whose conclusions unify with it, using Lean's definitional-equality
 check under a fixed budget for each attempt: it introduces the statement's own
 binders, so a guarded statement $\forall n\ge7,\,P(n)$ can be supplied by a
@@ -327,8 +333,9 @@ theorems proving the negation. It then composes each conditional theorem whose
 closed hypotheses all have producers with nothing left over, drops every
 proposition binder that a theorem's proof never uses, and tries a fixed
 battery of closing tactics, and then library search, on the open statements
-no theorem supplies, and on their negations. A composition, a stronger
-statement or a tactic proof counts only if the kernel accepts it. An exhausted
+no theorem supplies, and on their negations, used consequences first. A
+composition, a stronger statement, a weakened theorem or a tactic proof counts
+only if the kernel accepts it. An exhausted
 budget is recorded as such and never read as the absence of a producer.
 
 \paragraph{The graph.} A \emph{reduction} of $S$ is a theorem that supplies
@@ -362,6 +369,10 @@ Vacuous theorem & A conditional theorem with a refuted closed hypothesis \\
 Idle hypothesis & A hypothesis the proof never uses; the kernel accepts the
 statement without it \\
 \addlinespace
+Used consequence & A proposition the proof derives from a hypothesis and uses
+in its place; the kernel accepts the theorem with the hypothesis replaced by
+its used consequences, and a refuted consequence refutes the hypothesis \\
+\addlinespace
 Disguise class & Open statements that imply one another: one open question in
 several coordinates \\
 \addlinespace
@@ -388,7 +399,10 @@ supplied and \AGOpen{} are open; \AGRefuted{} are refuted, which makes
 \AGVacuous{} theorems vacuous. The kernel accepted \AGKernelCompositions{}
 compositions, \AGIdle{} statements without a hypothesis their proofs never
 use, \AGIdleOpen{} of them dropping a hypothesis that is open, and
-\AGBatteryClosed{} tactic proofs of open statements. The open statements fall
+\AGBatteryClosed{} tactic proofs of open statements. \AGWeakened{} theorems
+use a closed hypothesis only through consequences of it, \AGWeakenedOpen{} of
+them an open hypothesis, and \AGWeakeningGain{} statements are supplied only
+through such a replacement. The open statements fall
 into \AGDisguiseClasses{} disguise classes, the largest with
 \AGLargestDisguise{} members.
 
@@ -397,7 +411,8 @@ bounded packet built from the graph
 (\repolink{scripts/query_continuations.py}{query\_continuations.py}): the open
 targets with the theorems that reduce to them and the paper results that
 assume them, the disguise classes, the bundles with two or more open members,
-the refuted antecedents and the open statements with the largest leverage.
+the refuted antecedents, what the proofs use of their open inputs, and the
+open statements with the largest leverage.
 Before a proposed intermediate statement is attacked, three questions go to
 the graph. Does a chain of corpus theorems already supply it? Is it refuted?
 Does it lie in the target's disguise class, so that proving it is the whole

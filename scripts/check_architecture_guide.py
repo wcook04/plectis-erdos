@@ -342,7 +342,9 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     # rests on the unifier, what is only a lower bound, and the review that
     # preceded every reported number.
     "argument_graph": (
-        "A composition, a stronger statement or a tactic proof counts only if the kernel accepts it",
+        "A composition, a stronger statement, a weakened theorem or a tactic proof counts only if the kernel "
+        "accepts it",
+        "the kernel checks that theorem and each implication from $H$",
         "never read as the absence of a producer",
         "the rest of the graph is a map, and a lower bound",
         "A disguise class records proved equivalences only",
