@@ -294,6 +294,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
         ],
+        "chain_transcendence": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "chain_transcendence" / "test_chain_bookkeeping.py"),
+        ],
         "admissible_feedback": [
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
@@ -2999,6 +3003,7 @@ def main(argv: list[str] | None = None) -> int:
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
+        "chain_transcendence",
         "proof_workbench", "computation_replay", "replay_routes", "admissible_feedback",
     ):
         result = late_checks[name]
