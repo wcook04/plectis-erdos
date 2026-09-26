@@ -1383,9 +1383,9 @@ this intersection unbounded, since for every $k>0$ it supplies a member
 divisible by $kd$. This is a contradiction.
 \end{proof}
 
-The first condition is the usual intersectivity condition; the unit-root
-condition for prime arguments is often called intersectivity of the second
-kind or $P$-intersectivity~\cite{leintersective,ricepintersective}. For
+The first condition is the usual intersectivity condition~\cite{leintersective}.
+The unit-root condition for prime arguments is $P$-intersectivity, also
+called intersectivity of the second kind~\cite[\S1.2]{ricepintersective}. For
 example, $P(n)=n^2$ works with integer arguments, while $n^2+1$ fails
 modulo $3$. At prime arguments, $P(p)=p$ fails already modulo $6$, while
 $p-1$ and $p^2-1$ work: the residue $1$ is a unit root modulo every $d$.
@@ -1409,8 +1409,11 @@ odd primes not dividing $6$, if neither $2$ nor $3$ is a square, their
 product $6$ is; the primes $2$ and $3$ are immediate. But $Q(n)\equiv4$
 when $n$ is even and $Q(n)\equiv6$ when $n$ is odd, modulo $8$.
 Therefore neither $H_Q$ nor its prime-argument subfamily contains a multiple
-of $8$. The failure is visible without
-the general counterexample construction: take the rational orbit
+of $8$. L\^e's cited arXiv v1 introduction lists this $Q$ as
+intersective~\cite[p.~1]{leintersective}; the modulo-$8$ calculation
+corrects that example, without affecting the local-root criterion stated
+there. The failure is visible without the general counterexample
+construction: take the rational orbit
 $T_N=\{2^N/255\}$. Since $2^8\equiv1\pmod{255}$, for every positive
 shift $h=Q(n)$, indices $N\equiv3\pmod8$ when $h\equiv4\pmod8$ give
 $\|T_{N+h}-T_N\|=120/255$, and indices $N\equiv1\pmod8$ when
@@ -1689,7 +1692,7 @@ necessity is asserted here.
 \begin{thebibliography}{99}
 \bibitem{leintersective} T.~H. L\^e,
 \emph{Intersective polynomials and the primes},
-\href{https://arxiv.org/abs/0910.1880}{arXiv:0910.1880}.
+\href{https://arxiv.org/abs/0910.1880v1}{arXiv:0910.1880v1}.
 
 \bibitem{ricepintersective} A.~Rice,
 \emph{S\'ark\"ozy's theorem for $P$-intersective polynomials},

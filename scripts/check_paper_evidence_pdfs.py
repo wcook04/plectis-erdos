@@ -157,6 +157,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--paper", action="append")
     args = ap.parse_args(argv)
     evidence = json.loads(EVIDENCE_MAP.read_text(encoding="utf-8"))
+    known_papers = {paper["paper_id"] for paper in evidence["papers"]}
+    unknown = sorted(set(args.paper or []) - known_papers)
+    if unknown:
+        print(
+            "unknown evidence-mark paper ID(s): " + ", ".join(unknown)
+            + "; valid IDs: " + ", ".join(sorted(known_papers)),
+            file=sys.stderr,
+        )
+        return 2
     baseline = json.loads(BASELINE.read_text(encoding="utf-8"))["pages"] if BASELINE.is_file() else {}
     contract = json.loads((ROOT / "docs/publication_contract.json").read_text(encoding="utf-8"))
     storage = {}

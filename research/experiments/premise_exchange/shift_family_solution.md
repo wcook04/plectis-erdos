@@ -67,6 +67,9 @@ their product is a square. The cases $2$ and $3$ are direct. This checks
 prime moduli only. Squares modulo $8$ show $Q(n)\equiv4$ for even $n$
 and $Q(n)\equiv6$ for odd $n$; hence $8$ divides no selected shift.
 The prime-argument subfamily also fails, since it is contained in $H_Q$.
+Lê's [arXiv v1 introduction, p. 1](https://arxiv.org/pdf/0910.1880v1)
+lists this $Q$ as intersective; the modulo-$8$ table corrects that
+particular printed example, not the general local-root criterion there.
 For the rational orbit $T_N=\{2^N/255\}$, a shift $h\equiv4\pmod8$
 has distance $120/255$ at every $N\equiv3\pmod8$, while a shift
 $h\equiv6\pmod8$ has distance $126/255$ at every
@@ -79,8 +82,8 @@ The [exact residue control](polynomial_shift_control.py) reproduces the
 finite tables used in the orbit calculation.
 
 For terminology and context, see Lê's
-[intersective-polynomial paper](https://arxiv.org/abs/0910.1880) and Rice's
-[prime-argument paper](https://arxiv.org/abs/1111.6559). The criterion
+[intersective-polynomial paper](https://arxiv.org/abs/0910.1880v1) and Rice's
+[prime-argument paper, §1.2](https://arxiv.org/abs/1111.6559). The criterion
 above is proved in the synthesis paper from its selected-shift theorem;
 these references are not substituted for that proof.
 

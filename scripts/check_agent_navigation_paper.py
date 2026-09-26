@@ -53,7 +53,7 @@ ANCHOR_GROUPS = {
         # typed "101 claims; 10 programmes; 5 open propositions", which pinned
         # counts that the registry owns and that move with every wave.
         "reports unresolved rows and edges instead of silently treating absence as independence",
-        r"\SemanticAuthoredTheoremLike\ authored theorem-like declarations are linked",
+        r"\SemanticAuthoredTheoremLike\ theorem-like declarations in the source scope",
         r"\SemanticAuthoredInterpreted\ (\SemanticAuthoredPercent\%) participate",
         r"\SemanticDirectEvidence\ are exact",
         r"\SemanticContextual\ are bounded contextual links",
@@ -72,7 +72,8 @@ ANCHOR_GROUPS = {
     ),
     "authority_boundary": (
         "Navigation does not receive proof authority",
-        "agent cannot type a verdict into the ledger",
+        "agent cannot supply a verdict through the supported notary interface",
+        "This interface rule does not prevent an actor with filesystem access",
         "claim must cite an accepted probe receipt",
         "Replay reruns every stored probe",
     ),
