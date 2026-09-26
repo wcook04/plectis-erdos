@@ -7,7 +7,7 @@
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
         "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:89ff084d0b7d2ba36b84f7287514b5e9c7a974936c22afafd835eb0b5d6182c5"
       },
-      "rendered_content_digest": "sha256:b14cdd459be6bffd7cdfcd9c14d09fd7c4dc519447772b700f6d6d34b6b71475",
+      "rendered_content_digest": "sha256:01e2b76032d7903b272b7c9be1b63a1b88e8e5bb7811cc6a5ea814bfaa21bd36",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
@@ -258,9 +258,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:1a677d802974c2f6e55660a21b82742c4249a3118880ab0f4dc67662bf052588"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:7ac81951bbec1935a5788cbddce341b1b7d6af269d14cf8005f4111a98da1bfc"
       },
-      "rendered_content_digest": "sha256:7c50cd2da30acc3425c76bad303ddecf7fc548204e27fb8c9059edc67b52d1a5",
+      "rendered_content_digest": "sha256:5143487b9371f9dd6177dfc0d1ed15e91b1078a1d61c57b85205f231d941a47c",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }

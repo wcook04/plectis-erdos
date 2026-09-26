@@ -7640,7 +7640,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:1a677d802974c2f6e55660a21b82742c4249a3118880ab0f4dc67662bf052588",
+      "source_sha256": "sha256:7ac81951bbec1935a5788cbddce341b1b7d6af269d14cf8005f4111a98da1bfc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7746,8 +7746,8 @@
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:7c50cd2da30acc3425c76bad303ddecf7fc548204e27fb8c9059edc67b52d1a5",
-      "pdf_byte_count": 138525,
+      "pdf_sha256": "sha256:5143487b9371f9dd6177dfc0d1ed15e91b1078a1d61c57b85205f231d941a47c",
+      "pdf_byte_count": 138526,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7948,7 +7948,7 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:b14cdd459be6bffd7cdfcd9c14d09fd7c4dc519447772b700f6d6d34b6b71475",
+      "pdf_sha256": "sha256:01e2b76032d7903b272b7c9be1b63a1b88e8e5bb7811cc6a5ea814bfaa21bd36",
       "pdf_byte_count": 88655,
       "first_pass": {
         "stated_by_the_paper": false,
