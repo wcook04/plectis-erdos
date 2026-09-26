@@ -53,9 +53,9 @@ a point of a torus lying on exactly two coordinate walls produces a run of
 two primes whose rearrangement changes the tail.  The proof is an ordinary
 one, refereed by a second reader.  For $\{2,3,5\}$ a different proof, by
 five affine maps with disjoint images on dyadic blocks, is checked in Lean.
-The same finite-state method proves every set of three primes at most $31$
-by exact computation and fails for $\{2,3,5,7\}$, where two different words
-of blocks have the same affine map.  The same comparison of two tails proves
+The companion extends this finite-state method to every set of three primes
+at most $31$ by exact computation; it fails for $\{2,3,5,7\}$, where two
+different words of blocks have the same affine map.  The same comparison of two tails proves
 that the sub-sum of the catalogue series over the powers of one prime is
 irrational.  For three distinct primes the reciprocal running-LCM
 kernel has nonsingular minors of every order, so no finite sum of products
@@ -229,12 +229,9 @@ $\log(q^j/t_k)$ with $q^j>t_k$, so $W(\theta_k)=q_{k+1}q_{k+2}\cdots$, and
 crossings of different primes never coincide.
 
 Let $T_0$ be the closure of $\Theta(\R)$, a subtorus containing every
-$\theta_k$.  For $t>0$ and $\varepsilon>0$, the pigeonhole principle applied
-to the points $\Theta(jt')$, $j\ge1$, with $t'>t$, gives $d>t$ with
-$\Theta(d)$ within $\varepsilon$ of $0$, so $\Theta(-t)$ is within
-$\varepsilon$ of $\Theta(d-t)$.  Hence $\Theta([0,\infty))$ is dense in
-$T_0$, and so is every forward orbit $\{\theta+\Theta(t):t\ge t_0\}$ with
-$\theta\in T_0$.
+$\theta_k$.  Every forward orbit $\{\theta+\Theta(t):t\ge t_0\}$ with
+$\theta\in T_0$ is dense in $T_0$, by Kronecker's theorem or a one-line
+pigeonhole argument (the companion's Section~4.1).
 
 In the coordinates $\varphi_q=\theta_q/\log q$ the torus is
 $\R^P/\Z^P$, and by Kronecker's theorem $T_0$ is the image of the smallest
@@ -367,17 +364,10 @@ $(\tau_a-\tau_b)-D$, whose sign is opposite to that of $\tau_a-\tau_b$, so
 $C'$ is $C$ reversed.  But $f(ab)-f(ba)=b-a\ne0$, a contradiction.
 \end{proof}
 
-Written as the Cantor series $\sum_{k\ge0}(q_1\cdots q_k)^{-1}$,
-$\mathcal D_P$ has every digit equal to $1$ and every base in $P$.  The
-irrationality criteria of Erd\H{o}s--Straus
-\cite[Theorem~2.1]{erdosstraus1974} and Han\v{c}l--Tijdeman
-\cite[Theorem~3.1]{hancltijdeman2004} assume that each digit divided by the
-product of the last two bases in its denominator tends to $0$; here that
-quotient is at least $(\max P)^{-2}$, so neither applies.  The rationality
-criterion of Diananda and Oppenheim~\cite{dianandaoppenheim1955} condenses a
-Cantor series into blocks of consecutive terms, the form of the dyadic
-argument below; it restates rationality and does not by itself decide
-$\mathcal D_P$.
+The companion's Section~11.1 compares $\mathcal D_P$, written as a Cantor
+series, with the criteria of Erd\H{o}s--Straus~\cite{erdosstraus1974},
+Han\v{c}l--Tijdeman~\cite{hancltijdeman2004} and Diananda and
+Oppenheim~\cite{dianandaoppenheim1955}, none of which decides it.
 
 \subsection{The case \texorpdfstring{$\{2,3,5\}$}{\{2,3,5\}}, checked in Lean}
 \label{sec:distinct-235}
@@ -387,158 +377,18 @@ The number $\mathcal D_{\{2,3,5\}}$ is irrational.
 \end{theorem}
 \evidenceremark{Checked in Lean for the sum exactly as defined in the
 introduction (\href{\distinctheightlean\#L689}{Lean proof}); Comparator has
-not yet been run on it.  The constants of the proof below, the five pairs
-$(b_\tau,\mu_\tau)$, the bounds $3/10$ and $13/15$ and the four gaps, are also
-recomputed in exact arithmetic by the
-\href{\distinctheighturl}{distinct-height programs}.}
+not yet been run on it.  The constants of its proof, the five affine maps,
+their bounds and the gaps between their images, are also recomputed in exact
+arithmetic by the \href{\distinctheighturl}{distinct-height programs}.}
 
-This is a case of Theorem~\ref{res:distinct-height-all}.  The Lean proof
-follows a different route, which reads the sum one dyadic block at a time.
-Between consecutive powers of two there is at most one power of $3$ and at
-most one power of $5$, so each block acts on the normalised tail by one of
-five affine maps, and the images of the possible tails under these maps are
-disjoint.  A tail therefore determines the block before it, and with it
-every later block.  A rational value would make two tails coincide and the
-pattern of blocks repeat, and the powers of $3$ do not fall periodically
-among the dyadic blocks.
-
-\begin{proof}
-List the prime powers $2^n,3^n,5^n$ ($n\ge1$) in increasing order as
-$t_1<t_2<\cdots$.  For $a\ge0$ the block $(2^a,2^{a+1}]$ ends with the jump
-at $2^{a+1}$.  Consecutive powers of $3$, and of $5$, have ratio greater than
-$2$, so the block contains at most one power of each odd prime, both strictly
-inside it.  Its type $\tau_a$ is the word formed by those odd primes in
-increasing order of their powers, one of $\varnothing,3,5,35,53$; for
-instance $(16,32]$ contains $25<27$, so $\tau_4=53$.
-
-Put $P_a=\hgt(2^a)$ and $Y_a=P_a\sum_{t_k>2^a}\hgt(t_k)^{-1}$.  If block $a$
-has interior primes $r_1,\ldots,r_v$ in this order, its jumps have heights
-$P_ar_1,\ P_ar_1r_2,\ \ldots,\ P_ar_1\cdots r_v$ and finally
-$P_{a+1}=2P_ar_1\cdots r_v$.  Splitting off the block gives
-\begin{equation}\label{eq:distinct-block}
- Y_a=G_{\tau_a}(Y_{a+1}),\qquad
- G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad
- b_\tau=2r_1\cdots r_v,\quad
- \mu_\tau=1+b_\tau\sum_{j\le v}\frac1{r_1\cdots r_j}.
-\end{equation}
-For $\tau=\varnothing,3,5,35,53$ the pairs $(b_\tau,\mu_\tau)$ are
-$(2,1)$, $(6,3)$, $(10,3)$, $(30,13)$ and $(30,9)$.
-
-Every jump multiplies the height by at least $2$, so $0<Y_a\le1$, and each
-$G_\tau$ is increasing and maps $[0,1]$ into itself.  By
-\eqref{eq:distinct-block}, $Y_a\ge\mu_{\tau_a}/b_{\tau_a}\ge3/10$.  The power
-$5^f$ lies in block $\lfloor f\log_25\rfloor$ and $2<\log_25<3$, so the
-blocks containing a power of $5$ begin with block $2$ and are two or three
-apart; every three consecutive blocks include one.  On $[0,1]$ a map whose
-block contains a power of $5$ is at most $G_{35}(1)=7/15$.  So if $a+i$, with
-$i\le2$, is the first block from $a$ onwards containing a power of $5$, then
-$Y_{a+i}\le7/15$, and the at most two maps leading back to $Y_a$ are
-$G_\varnothing$ or $G_3$, both bounded by $G_\varnothing$ because
-$G_\varnothing(y)-G_3(y)=y/3\ge0$.  Hence
-\[
- \frac3{10}\le Y_a\le G_\varnothing\bigl(G_\varnothing(7/15)\bigr)
- =\frac{13}{15}\qquad(a\ge0).
-\]
-
-The five maps send $I=[3/10,13/15]$ to the intervals
-\[
- \Bigl[\frac{31}{100},\frac{74}{225}\Bigr],\
- \Bigl[\frac{33}{100},\frac{29}{75}\Bigr],\
- \Bigl[\frac{133}{300},\frac{104}{225}\Bigr],\
- \Bigl[\frac{11}{20},\frac{29}{45}\Bigr],\
- \Bigl[\frac{13}{20},\frac{14}{15}\Bigr]
- \qquad(\tau=53,5,35,3,\varnothing),
-\]
-separated by the gaps $1/900$, $17/300$, $79/900$ and $1/180$.  Since
-$Y_{a+1}\in I$, the value $Y_a$ lies in the image of $\tau_a$ and of no other
-type.  Thus $Y_a$ determines $\tau_a$, then $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$,
-and by induction the whole word $\tau_a\tau_{a+1}\cdots$.
-
-Suppose $\mathcal D_{\{2,3,5\}}=N/K$ with integers $N$ and $K\ge1$.  For
-$t\le2^a$ the height $\hgt(t)$ divides $P_a$, so
-\[
- P_a\mathcal D_{\{2,3,5\}}-Y_a
- =P_a\Bigl(1+\sum_{t_k\le2^a}\hgt(t_k)^{-1}\Bigr)\in\Z,
-\]
-and $KY_a$ is an integer in $[3K/10,13K/15]$ for every $a\ge0$.  Two indices
-$a<a'$ give the same integer.  Then $Y_a=Y_{a'}$, so $\tau_{a+j}=\tau_{a'+j}$
-for every $j\ge0$, and the word $(\tau_a)$ is eventually periodic with period
-$\ell=a'-a$.
-
-Finally, $2^a<3^e<2^{a+1}$ holds exactly when $a\alpha<e<(a+1)\alpha$, where
-$\alpha=\log2/\log3$ is irrational.  Block $a$ therefore contains
-$\lfloor(a+1)\alpha\rfloor-\lfloor a\alpha\rfloor$ powers of $3$, a number
-recorded by $\tau_a$.  Summing over one period, the difference
-$\lfloor(a+\ell)\alpha\rfloor-\lfloor a\alpha\rfloor$ is a constant $c$ for all
-large $a$, hence $\lfloor(a+n\ell)\alpha\rfloor=\lfloor a\alpha\rfloor+nc$ for
-every $n\ge1$.  Dividing by $n$ and letting $n\to\infty$ gives $\ell\alpha=c$,
-that is $2^\ell=3^c$, which is impossible.
-\end{proof}
-
-The upper bound is the delicate step.  Since
-$G_3(y)=G_\varnothing(y/3)$ and $G_{53}(y)=G_5(y/3)$, the images of the empty
-block and of the block with one power of $3$, and those of the blocks $5$ and
-$53$, are disjoint exactly when the largest tail is less than three times the
-smallest, and the trivial bound $Y_a\le1$ would not separate them; the
-spacing of the powers of $5$ lowers it to $13/15$.
-
-\subsection{A finite-state method, and where it stops}
-\label{sec:distinct-decoding}
-
-The dyadic argument extends to other prime sets through a finite
-automaton.  It gives an independent proof for every set of three primes at
-most $31$ and for most sets of four, and it fails at $\{2,3,5,7\}$ for a
-reason the proof of Theorem~\ref{res:distinct-height-all} explains.
-
-\begin{corollary}[three primes up to $31$]\label{res:distinct-height-triples}
-For every set $P$ of three primes, each at most $31$, the distinct-height
-sum $\mathcal D_P$ is irrational.
-\end{corollary}
-\evidenceremark{A case of Theorem~\ref{res:distinct-height-all}, proved
-here by the independent finite-state method: an ordinary proof of the
-criterion below, applied through an exact finite computation for each of
-the $165$ sets; no Lean proof.  The long record proves the criterion in
-full.}
-
-\begin{proof}
-Let $P=\{p<q<r\}$ and group the prime powers into the blocks
-$(p^a,p^{a+1}]$.  Each block ends with $p^{a+1}$ and contains at most one
-power of $q$ and one of $r$, so, as in \eqref{eq:distinct-block}, the tails
-follow one of five increasing affine maps, one for each ordered set of
-interior primes.  The power $q^f$ lies in block $\lfloor f\log_pq\rfloor$, so
-consecutive blocks containing a power of $q$ are $g_q$ or $g_q+1$ apart,
-where $p^{g_q}<q<p^{g_q+1}$, and likewise for $r$.  Record before each block
-the number of blocks since $q$ and since $r$ last appeared.  These pairs are
-the states of a finite automaton, and once both primes have appeared the
-actual sequence of blocks is one of its infinite paths.  Start with the
-interval $[0,1/(p-1)]$, which contains every tail, at every state, and
-repeatedly replace the interval at a state by the smallest interval
-containing the images of the intervals at its successors; every tail at that
-state stays inside.  Suppose that for some $k$ the images of these intervals
-under all compositions of $k$ maps along the automaton, grouped by the first
-map, are pairwise disjoint.  Then a tail determines its block, and the rest
-of the proof of Theorem~\ref{res:distinct-height-235} applies with
-$[0,1/(p-1)]$ in place of $I$ and $\log p/\log q$ in place of $\alpha$.  An
-exact computation, with interval endpoints rounded outwards to multiples of
-$2^{-96}$, finds such a $k\le4$ for each of the $165$ sets: $k=1$ for $141$
-of them, and $k=4$ for $\{2,17,31\}$, $\{2,23,29\}$ and $\{2,29,31\}$.  A
-second computation, which solves exactly for the least and greatest values of
-the infinite paths from each state, returns the same $k$ for every set.
-\end{proof}
-
-For the $330$ sets of four primes at most $31$ the test succeeds for $292$
-at some depth $k\le5$, for instance at $k=1$ for $\{3,5,7,11\}$.  For
-$\{2,3,5,7\}$ it fails at every depth.  The two-block words
-$(5,7,3),\varnothing$ and $(7),(3,5)$ have the same map,
-\[
- G_{573}\circ G_\varnothing(y)=G_7\circ G_{35}(y)=\frac{103+y}{420},
-\]
-which is the collision $f(5,7,3,2)=f(7,2,3,5)=51$ read in blocks.  Both
-words continue by the blocks $(3),(5,7)$ to the same state of the automaton,
-so the images for the first types $(5,7,3)$ and $(7)$ overlap at every depth,
-and a single tail cannot determine its block.  The proof of
-Theorem~\ref{res:distinct-height-all} compares two tails, and there one run
-of two primes suffices.
+The Lean proof takes a different route (companion, Sections~4.2
+and~4.3): each dyadic block acts on the normalised tail by one of five affine
+maps with disjoint images, so a tail determines every later block, and a
+rational value would make the blocks eventually periodic, which the powers
+of $3$ prevent.  With an automaton recording how recently each prime
+appeared, the same method proves every set of three primes at most $31$ by
+exact computation, and it fails for $\{2,3,5,7\}$, where two words of blocks
+have the same affine map (companion, Sections~4.4 and~4.5).
 
 \section{Nonsingular minors of every order}\label{sec:rank}
 
@@ -953,33 +803,8 @@ the displayed denominator.  The three divisibility conditions for $h_a$
 are precisely the three inequalities stated above.
 \end{proof}
 
-\paragraph{Where the distinct-height argument stops.}
-The bases $b_a$ of~\eqref{eq:actual-digit} are the numbers
-$b_{\tau_a}=\hgt(2^{a+1})/\hgt(2^a)$ of~\eqref{eq:distinct-block}, and both
-sums obey a recurrence of the same shape: $Y_{a+1}=b_aY_a-\mu_{\tau_a}$ for
-the distinct-height sum and $X_{a+1}=b_aX_a-m_a$ here.  They differ in what
-is subtracted.  The distinct-height sum subtracts one of the five numbers
-$\mu_\tau\le13$, which gives its tails a fixed interval and its maps a
-finite list.  Here $m_a$ counts the smooth numbers of the shell with weights
-and grows quadratically; the companion's Section~6 proves
-$m_a\ge(\lfloor a/(2\log_23)\rfloor+1)(\lfloor a/(2\log_25)\rfloor+1)$.  Since
-$X_a>m_a/b_a\ge m_a/30$, the tails are unbounded, and so are the integers
-$d_a=BX_a$ that a rational value of $S$ would produce by
-Theorem~\ref{res:denominator-reduction}.  The maps $y\mapsto(m_a+y)/b_a$
-also change with $a$, so a repeated value of $d_a$ would not repeat the
-future of the recurrence.  The proof of Theorem~\ref{res:distinct-height-235}
-stops at exactly this step: no finite set of states determines the future of
-the repeated recurrence, and the rest of this note replaces the return to
-an earlier state by a comparison of residues.
-
-The two-tail proof of Theorem~\ref{res:distinct-height-all} stops at the
-same place.  Over the prime powers, $\mathcal R_P=\sum_{k\ge0}c_k/Q_k$,
-where $c_k$ counts the smooth integers in $[t_k,t_{k+1})$ (with $t_0=1$),
-and the tails scaled by $Q_k$ are unbounded, as the $X_a$ are.
-Lemma~\ref{res:dp-blocks} needs every tail in $(0,1)$, so that an integer
-equal to a difference of two tails vanishes.  With unbounded tails that
-step fails, and equality of two tails no longer forces agreement on each
-rearranged run.
+The companion's Section~4.6 shows where the dyadic and two-tail arguments
+stop for the repeated sum, whose scaled tails are unbounded.
 
 The comparison does close on part of the catalogue series.  For $p\in P$
 let $E_p=\sum_{\alpha\ge0}\Lprefix(p^\alpha)^{-1}$ be the sub-sum of
@@ -1137,8 +962,7 @@ has had no human review.  Theorem~\ref{res:single-prime-subsums} has the
 ordinary proof in the companion, refereed in the same way, and no Lean
 proof.  Theorem~\ref{res:distinct-height-235} is
 checked in Lean, as the remark below it states; Comparator has not yet
-compared it.  Corollary~\ref{res:distinct-height-triples} has an ordinary
-proof together with an exact finite computation, and no Lean proof.  Every
+compared it.  Every
 other theorem, proposition, lemma and corollary has a Lean proof of its
 whole statement, marked in the margin; Appendix~\ref{app:sources} describes
 the formal sources.  Neither these proofs nor the finite calculations supply
@@ -1150,8 +974,7 @@ The companion contains the detailed bounds and supplementary arguments;
 its source inventory explains the normalisation conventions of the Lean
 sources.  The \href{\distinctheighturl}{distinct-height programs}
 recompute the constants of Theorem~\ref{res:distinct-height-235} and the
-certificates behind Corollary~\ref{res:distinct-height-triples} and the
-four-prime data in exact rational arithmetic, and store their outputs; the
+companion's three- and four-prime certificates in exact rational arithmetic, and store their outputs; the
 same directory holds exact illustrations of the proof of
 Theorem~\ref{res:distinct-height-all}, which the proof does not use.  AI
 agents carried out most of the research and drafting.  The work has not had

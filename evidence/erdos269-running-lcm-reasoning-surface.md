@@ -10,13 +10,17 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="long269-res-distinct-height-all"></a>
 
-## Theorem 1.1, page 2
+## Theorem 1.1 (the distinct-height sums), page 2
+
+> *For every finite set $`P`$ of primes with $`|P|\ge2`$, the sum $`\mathcal D_P`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus.
 
 <a id="long269-res-distinct-height-235"></a>
 
-## Theorem 1.2, page 2
+## Theorem 1.2 (the distinct-height sum at $`\{2,3,5\}`$), page 2
+
+> *The sum $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
 The Lean declaration below states this result.
 
@@ -330,55 +334,100 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dp-integral-tails"></a>
 
-## Lemma 4.1, page 9
+## Lemma 4.1 (integral tails), page 9
+
+> *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`Kx_k`$ is an integer for every $`k\ge1`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-dp-blocks"></a>
 
-## Lemma 4.2, page 9
+## Lemma 4.2 (rearranged blocks), page 9
+
+> *Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.*
+> 
+> 1.  *If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.*
+> 
+> 2.  *If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-dp-short"></a>
 
-## Lemma 4.3, page 9
+## Lemma 4.3 (short rearrangements), page 9
+
+> *The map $`f`$ is injective on the orderings of any set of at most three distinct primes.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-dp-two-walls"></a>
 
-## Lemma 4.4, page 10
+## Lemma 4.4 (two walls), page 10
+
+> *If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-distinct-height-blocks"></a>
 
-## Lemma 4.5, page 13
+## Lemma 4.5 (blocks, tails and integrality), page 13
+
+> *Let $`P`$ be a finite set of at least two primes with least element $`p`$.*
+> 
+> 1.  *Block $`a`$ ends with the jump at $`p^{a+1}`$ and contains at most one power of each prime $`q\in P\smallsetminus\{p\}`$, lying strictly inside it. The power $`q^f`$ with $`f\ge1`$ lies in block $`\lfloor f\log_pq\rfloor`$.*
+> 
+> 2.  *If block $`a`$ has type $`\tau=(r_1,\ldots,r_v)`$, then $`Y_a=G_\tau(Y_{a+1})`$, where
+>     ``` math
+>     G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad b_\tau=pr_1\cdots r_v,\qquad
+>      \mu_\tau=1+b_\tau\sum_{j=1}^{v}\frac1{r_1\cdots r_j}.
+>     ```
+>     Each $`G_\tau`$ is increasing with slope $`1/b_\tau\le1/p`$ and maps $`[0,1/(p-1)]`$ into itself, and $`0<Y_a\le1/(p-1)`$.*
+> 
+> 3.  *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`KY_a`$ is an integer for every $`a\ge0`$.*
 
 **No Lean proof of the whole statement.** In Lean, the lemma is stated for every finite set of primes; only its {2,3,5} case is checked in Lean, inside the proof of the {2,3,5} theorem.
 
 <a id="long269-res-distinct-height-criterion"></a>
 
-## Theorem 4.6, page 15
+## Theorem 4.6 (a decoding criterion), page 15
+
+> *Let $`P`$ be a finite set of at least two primes, and for every state $`s`$ let $`J(s)`$ be a closed interval containing the values of all infinite paths from $`s`$. For $`k\ge1`$ and each type $`\tau`$, let $`U_\tau`$ be the union of the intervals $`G_{u_1}\circ\cdots\circ G_{u_k}\bigl(J(s_k)\bigr)`$ over all states $`s`$ and all paths $`(u_1,s_1),\ldots,(u_k,s_k)`$ from $`s`$ with $`u_1=\tau`$. If the sets $`U_\tau`$ are pairwise disjoint, then $`\mathcal D_P`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, the criterion for every finite set of primes is not formalised; Lean checks its {2,3,5} case at depth one with the single interval [3/10,13/15] (irrational_tsum_blockTerm).
 
 <a id="long269-res-distinct-height-sets"></a>
 
-## Corollary 4.7, page 16
+## Corollary 4.7 (three and four primes up to $`31`$), page 16
+
+> *Let $`P`$ be a set of primes, each at most $`31`$.*
+> 
+> 1.  *If $`|P|=3`$, then $`\mathcal D_P`$ is irrational.*
+> 
+> 2.  *If $`|P|=4`$ and $`P`$ is not one of the $`38`$ sets listed below, then $`\mathcal D_P`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof from the decoding criterion and an exact finite computation for each set (research/experiments/erdos269/distinct_height); neither is formalised.
 
 <a id="long269-res-single-prime-identities"></a>
 
-## Proposition 4.8, page 19
+## Proposition 4.8 (sub-sums and the catalogue sum), page 19
+
+> *Let $`P`$ be a finite set of primes with $`|P|\ge2`$.*
+> 
+> 1.  *$`\mathcal D_P=\sum_{q\in P}E_q-(|P|-1)`$.*
+> 
+> 2.  *If $`P=\{p,q\}`$, then $`\operatorname{H}_P(p^iq^j)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)`$ for all $`i,j\ge0`$, and $`\mathcal R_P=E_pE_q`$.*
+> 
+> 3.  *If $`P=\{p,q,r\}`$, then $`\operatorname{H}_P(p^iq^jr^k)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)\operatorname{H}_P(r^k)\,
+>     p^{\kappa_p(j,k)}q^{\kappa_q(i,k)}r^{\kappa_r(i,j)}`$, where $`\kappa_p(j,k)=\lfloor j\log_pq+k\log_pr\rfloor-\lfloor j\log_pq\rfloor-\lfloor
+>     k\log_pr\rfloor\in\{0,1\}`$ and $`\kappa_q,\kappa_r`$ are defined in the same way. For a general finite $`P`$ the corresponding exponents lie in $`\{0,\ldots,|P|-2\}`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof (floor-sum carries of the height exponents); checked in exact arithmetic on finite ranges by research/experiments/erdos269/distinct_height/two_tail.py; not formalised.
 
 <a id="long269-res-single-prime-subsums"></a>
 
-## Theorem 4.9, page 19
+## Theorem 4.9 (the single-prime sub-sums), page 19
+
+> *Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and let $`p\in P`$. Then $`E_p`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit.
 

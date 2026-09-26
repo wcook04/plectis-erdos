@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "4d41eaab40de87460b9049d84455ef18660b858e",
-  "content_digest": "sha256:9863b1b115c98af2b099007a285da830323d62caf4427e7e52cefa8a6cc6e018",
+  "content_digest": "sha256:16a75deac5eab8314b38694ef56b746aad6c06c39c2cb64d6ab421651136fea6",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -13,20 +13,20 @@
   "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",
   "checker": "python3 scripts/check_lean_paper_propagation.py",
   "summary": {
-    "rows": 695,
+    "rows": 694,
     "lean": {
       "exact": 508,
       "exact_or_stronger": 140,
       "modulo_named_input": 25,
-      "none": 22
+      "none": 21
     },
     "comparator": {
       "compared": 633,
-      "not_applicable": 47,
+      "not_applicable": 46,
       "pending": 15
     },
     "palomar": {
-      "not_applicable": 47,
+      "not_applicable": 46,
       "pending": 15,
       "prepared": 633
     },
@@ -2247,7 +2247,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:e455e5b51ffff6f69223a25794e6e22121a5fbd938b8e5911ba869865e2219d9",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:545",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:395",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2283,7 +2283,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:a02a4cba884b472dfc06e8fae73980185ba2f02230bd5857d127de25424b0cd9",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:385",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:375",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2402,7 +2402,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:677d9508f99d71da755b42dc0a5f32fd6e2929127bcfc6e0ae587c0c1a73e468",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:625",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:475",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2438,7 +2438,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:6052f2c2870a433203ef5d23210c51b19113b4f855acb7ce8224a5c39cba2ee6",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:660",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:510",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2466,29 +2466,6 @@
       }
     },
     {
-      "id": "erdos-269-three-prime-running-lcm#res:distinct-height-triples",
-      "problem": 269,
-      "paper_id": "erdos-269-three-prime-running-lcm",
-      "side": "short",
-      "label": "res:distinct-height-triples",
-      "environment": "corollary",
-      "kind": "corollary",
-      "statement_sha256": "sha256:714f1a1fcbfb05e09c09949d929cc06e39fd0d215ce5936148cfea14fd01316f",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:493",
-      "lean": {
-        "status": "none",
-        "counted": true,
-        "declarations": [],
-        "reason": "ordinary proof of the decoding criterion applied through an exact finite computation for each of the 165 sets (research/experiments/erdos269/distinct_height); neither the general criterion nor the computation is formalised"
-      },
-      "comparator": {
-        "status": "not_applicable"
-      },
-      "palomar": {
-        "status": "not_applicable"
-      }
-    },
-    {
       "id": "erdos-269-three-prime-running-lcm#res:dp-two-walls",
       "problem": 269,
       "paper_id": "erdos-269-three-prime-running-lcm",
@@ -2497,7 +2474,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:6c3011176e3e01591534f4dcf0ab2f4b576883fa570cd0f6f588b3b3389ebe47",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:252",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:249",
       "lean": {
         "status": "none",
         "counted": true,
@@ -2520,7 +2497,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:9b272a1a8cc70540058eebeb6ac8b8ba863ffd39861087fc4394ab5027300f1b",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:708",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:558",
       "other_labels": [
         "res:two-prime-repeated-transcendence",
         "eq:two-prime-affine"
@@ -2602,7 +2579,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:2e9bee1f5b0e79f729a9d6c6840ccff1af08db8c51183c960e2c0029d1790d4c",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:780",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:630",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2638,7 +2615,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:685f6c9585303df8d13e0a162aa95a6a2720c7d03b01fb3e5a67391deb1fcd93",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:797",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:647",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2691,7 +2668,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:5d520287ff9279c0a3e5592290a43e54485f3b26f17bb25ec2e977718d53c917",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:812",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:662",
       "other_labels": [
         "res:fibre"
       ],
@@ -2730,7 +2707,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:3170b8a0cccce34ae341e54263aa846976787fb4c4e89759ae86b7cf0b4d92e7",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:840",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:690",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2766,7 +2743,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:aecf1ea4e5589051bd550b21f6674a7629fda3bb31b457358c0968a0246a2c15",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:862",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:712",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2802,7 +2779,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:1ff86c656878bf54aa6377092ff239766b55585f10684ba06fc6331f3c1adc95",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:904",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:754",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2838,7 +2815,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:73ce6d68f74531ce8edf71826be0b6a406f56724eeffe6f7639125aa0eaf56c5",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:939",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:789",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2886,7 +2863,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:aa3f53bacac647d9d242f6449e3024899ff1e8855e1e6daa377e183443e59c98",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:1043",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:868",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2922,7 +2899,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0d9ff8e4757ce37a274a706af2598af55924c7527674b9fd545490d9e0eb6bd3",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:1059",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:884",
       "other_labels": [
         "eq:escape"
       ],
@@ -2961,7 +2938,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:468a77f2ba45a62231ab251fd0a7a02a1102e4616aea0420f836960c89f75751",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:991",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:816",
       "lean": {
         "status": "none",
         "counted": true,

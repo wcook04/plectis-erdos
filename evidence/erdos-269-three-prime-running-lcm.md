@@ -4,43 +4,59 @@ This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../pape
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`4d41eaab40de`](https://github.com/wcook04/plectis-erdos/tree/4d41eaab40de87460b9049d84455ef18660b858e) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 21 results: 13 with a Lean proof of the whole statement, 1 whose Lean proof assumes a named input (marked with a dagger), 7 without a Lean proof of the whole statement; 12 compared.
+- **Counts.** 20 results: 13 with a Lean proof of the whole statement, 1 whose Lean proof assumes a named input (marked with a dagger), 6 without a Lean proof of the whole statement; 12 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
 <a id="res-distinct-height-all"></a>
 
-## Theorem 2.1, page 3
+## Theorem 2.1 (the distinct-height sums), page 3
+
+> *For every finite set $`P`$ of primes with $`|P|\ge2`$, the number $`\mathcal D_P`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus.
 
 <a id="res-dp-integral-tails"></a>
 
-## Lemma 2.2, page 3
+## Lemma 2.2 (integral tails), page 3
+
+> *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`Kx_k`$ is an integer for every $`k\ge1`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="res-dp-blocks"></a>
 
-## Lemma 2.3, page 3
+## Lemma 2.3 (rearranged blocks), page 3
+
+> *Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.*
+> 
+> 1.  *If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.*
+> 
+> 2.  *If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="res-dp-short"></a>
 
-## Lemma 2.4, page 4
+## Lemma 2.4 (short rearrangements), page 4
+
+> *The map $`f`$ is injective on the orderings of any set of at most three distinct primes.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="res-dp-two-walls"></a>
 
-## Lemma 2.5, page 4
+## Lemma 2.5 (two walls), page 4
+
+> *If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="res-distinct-height-235"></a>
 
-## Theorem 2.6, page 6
+## Theorem 2.6 (the distinct-height sum for $`\{2,3,5\}`$), page 6
+
+> *The number $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
 The Lean declaration below states this result.
 
@@ -54,15 +70,9 @@ theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235
 
 **Comparator:** not yet compared.
 
-<a id="res-distinct-height-triples"></a>
-
-## Corollary 2.7, page 7
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof of the decoding criterion applied through an exact finite computation for each of the 165 sets (research/experiments/erdos269/distinct_height); neither the general criterion nor the computation is formalised.
-
 <a id="res-infinite-rank"></a>
 
-## Theorem 3.1 (no finite separation of the kernel), page 8
+## Theorem 3.1 (no finite separation of the kernel), page 6
 
 > *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 > ``` math
@@ -102,7 +112,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-admissible-modular-minors"></a>
 
-## Corollary 3.2 (the same minors modulo integers coprime to $`30`$), page 9
+## Corollary 3.2 (the same minors modulo integers coprime to $`30`$), page 7
 
 > *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 
@@ -132,7 +142,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-cut-rank"></a>
 
-## Proposition 3.4 (rank of a matrix of threshold columns), page 10
+## Proposition 3.4 (rank of a matrix of threshold columns), page 8
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
 
@@ -170,7 +180,7 @@ theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
 
 <a id="res-two-prime-transcendence"></a>
 
-## Theorem 4.1 (both two-prime sums), page 11
+## Theorem 4.1 (both two-prime sums), page 9
 
 > *<span id="res:two-prime-repeated-transcendence" label="res:two-prime-repeated-transcendence"></span> Let $`p<q`$ be distinct primes. Put $`\theta=\log p/\log q`$ and $`A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}`$. Let $`\mathcal R_{p,q}`$ sum the reciprocal running LCM at every positive $`\{p,q\}`$-smooth integer, and let $`\mathcal D_{p,q}`$ count each distinct running LCM once. Then
 > ``` math
@@ -308,7 +318,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 <a id="res-lcm"></a>
 
-## Proposition 5.1 (the running least common multiple), page 12
+## Proposition 5.1 (the running least common multiple), page 10
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
@@ -336,7 +346,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cell"></a>
 
-## Proposition 5.2 (cells and jumps), page 12
+## Proposition 5.2 (cells and jumps), page 10
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -418,7 +428,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fibre-prop"></a>
 
-## Proposition 5.3 (grouping terms with the same height), page 12
+## Proposition 5.3 (grouping terms with the same height), page 10
 
 > *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 > ``` math
@@ -453,7 +463,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-dyadic-alphabet"></a>
 
-## Lemma 5.4 (integer coefficients and four possible bases), page 13
+## Lemma 5.4 (integer coefficients and four possible bases), page 10
 
 > *For every $`a\ge0`$, $`m_a`$ is a positive integer and $`b_a\in\{2,6,10,30\}`$. The word “numerator” does not impose the positional-digit restriction $`m_a<b_a`$; that restriction need not hold.*
 
@@ -483,7 +493,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-actual-orbit"></a>
 
-## Proposition 5.5 (the tail recurrence and a quadratic bound), page 13
+## Proposition 5.5 (the tail recurrence and a quadratic bound), page 11
 
 > *The series defining $`S,T_a`$ converge. For every $`a\ge0`$,
 > ``` math
@@ -527,7 +537,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-denominator-reduction"></a>
 
-## Theorem 5.6 (rationality gives positive integer tails), page 14
+## Theorem 5.6 (rationality gives positive integer tails), page 11
 
 > *If $`S=A/D`$ in lowest terms, where $`D=2^u3^v5^wB`$ and $`\gcd(B,30)=1`$, then for every $`a\ge a_0=u+1+2v+3w`$,
 > ``` math
@@ -564,7 +574,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-exact-onset"></a>
 
-## Corollary 5.7 (the first index at which the denominator clears), page 14
+## Corollary 5.7 (the first index at which the denominator clears), page 12
 
 > *Under the same lowest-terms hypothesis, put $`M=2^u3^v5^w`$ and let $`\operatorname{den}`$ denote the positive reduced denominator. For $`a\ge1`$,
 > ``` math
@@ -631,13 +641,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-single-prime-subsums"></a>
 
-## Theorem 5.8, page 15
+## Theorem 5.8 (the single-prime sub-sums), page 12
+
+> *For every finite set $`P`$ of primes with $`|P|\ge2`$ and every $`p\in P`$, the number $`E_p`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit.
 
 <a id="res-consumer"></a>
 
-## Lemma 6.1 (least positive residues), page 16
+## Lemma 6.1 (least positive residues), page 13
 
 > *If $`d`$ is a positive integer with $`d\le K`$ and $`d\equiv -BF\pmod W`$, where $`W\ge1`$, then $`\operatorname{lpr}_W(-BF)\le K`$.*
 
@@ -664,7 +676,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-windowconsumer"></a>
 
-## Theorem 6.2 (a residue criterion for irrationality), page 16
+## Theorem 6.2 (a residue criterion for irrationality), page 13
 
 > *The number $`S`$ is irrational if and only if
 > ``` math
