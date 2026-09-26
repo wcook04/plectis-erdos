@@ -94,9 +94,10 @@ problem the numerators grow quadratically (short paper, bound 90B(a+1)²),
 the integer states are unbounded, and the argument stops there.
 
 **R2, a local optimum in one mechanism.** The chain-transcendence line had
-refined Mahler's method from eventually doubling ratios to periodic ratio
-blocks and recorded nonperiodic ratio words at base 4/3 as its first open
-case. None of the synthesis paper, the Problem 257 records or the Problem
+proved transcendence along eventually doubling chains with Mahler's method
+(an unpublished branch extends it to eventually periodic ratio blocks) and
+recorded the chains at base 4/3 whose ratios are 2 except for infinitely many
+3s as its first open case. None of the synthesis paper, the Problem 257 records or the Problem
 1049 records mentions a Subspace, S-unit or Ridout argument. Two readers
 independently replaced the engine: in S-unit coordinates the Subspace
 Theorem credits the p-adic smallness that a one-form archimedean estimate
