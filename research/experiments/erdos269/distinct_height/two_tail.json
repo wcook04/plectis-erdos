@@ -1,0 +1,508 @@
+{
+ "identity": {
+  "identity_checks": 2000,
+  "adjacent_swap_checks": 5000
+ },
+ "injectivity": [
+  {
+   "bound": 200,
+   "size": 2,
+   "sets": 1035,
+   "collisions": 0,
+   "examples": []
+  },
+  {
+   "bound": 200,
+   "size": 3,
+   "sets": 15180,
+   "collisions": 0,
+   "examples": []
+  },
+  {
+   "bound": 60,
+   "size": 4,
+   "sets": 2380,
+   "collisions": 30,
+   "examples": [
+    [
+     [
+      5,
+      7,
+      3,
+      2
+     ],
+     [
+      7,
+      2,
+      3,
+      5
+     ],
+     51
+    ],
+    [
+     [
+      11,
+      17,
+      3,
+      2
+     ],
+     [
+      17,
+      2,
+      3,
+      11
+     ],
+     111
+    ],
+    [
+     [
+      23,
+      37,
+      3,
+      2
+     ],
+     [
+      37,
+      2,
+      3,
+      23
+     ],
+     231
+    ]
+   ]
+  }
+ ],
+ "reversal": {
+  "bound": 100,
+  "size": 4,
+  "pairs": 151800,
+  "collisions": 5,
+  "examples": [
+   [
+    [
+     43,
+     13,
+     3,
+     53
+    ],
+    [
+     53,
+     3,
+     13,
+     43
+    ],
+    2280
+   ],
+   [
+    [
+     41,
+     7,
+     5,
+     43
+    ],
+    [
+     43,
+     5,
+     7,
+     41
+    ],
+    1764
+   ],
+   [
+    [
+     11,
+     67,
+     5,
+     13
+    ],
+    [
+     13,
+     5,
+     67,
+     11
+    ],
+    4434
+   ],
+   [
+    [
+     61,
+     11,
+     5,
+     67
+    ],
+    [
+     67,
+     5,
+     11,
+     61
+    ],
+    4088
+   ],
+   [
+    [
+     71,
+     13,
+     5,
+     79
+    ],
+    [
+     79,
+     5,
+     13,
+     71
+    ],
+    5610
+   ]
+  ]
+ },
+ "identity2357": {
+  "two_block_maps_equal": true,
+  "two_block_map": "(103 + y)/420",
+  "four_block_maps_equal": true,
+  "common_start_states": [
+   {
+    "start": [
+     1,
+     2,
+     2
+    ],
+    "end_w1": [
+     2,
+     1,
+     1
+    ],
+    "end_w2": [
+     2,
+     1,
+     1
+    ]
+   },
+   {
+    "start": [
+     1,
+     2,
+     3
+    ],
+    "end_w1": [
+     2,
+     1,
+     1
+    ],
+    "end_w2": [
+     2,
+     1,
+     1
+    ]
+   }
+  ],
+  "same_end_state_everywhere": true,
+  "letter_collision": [
+   51,
+   51
+  ],
+  "actual_blocks_scanned": 20000,
+  "occurrences_w1": 12,
+  "occurrences_w2": 40
+ },
+ "chains": [
+  {
+   "primes": [
+    2,
+    3
+   ],
+   "p": 2,
+   "a0": 40,
+   "n": 1054,
+   "epsilon": "4.365e-05",
+   "beta": "0.261",
+   "least_margin_to_cut": "4.4e-05",
+   "crossings": 3000,
+   "chain_sizes": {
+    "1": 2997,
+    "2": 1
+   },
+   "rearranged_chains": 0,
+   "rearranged_transpositions": 0,
+   "f_collisions": 0,
+   "first_rearranged": []
+  },
+  {
+   "primes": [
+    2,
+    3,
+    5
+   ],
+   "p": 3,
+   "a0": 30,
+   "n": 9975,
+   "epsilon": "5.166e-03",
+   "beta": "0.313",
+   "least_margin_to_cut": "6.4e-05",
+   "crossings": 3000,
+   "chain_sizes": {
+    "1": 2885,
+    "2": 57
+   },
+   "rearranged_chains": 8,
+   "rearranged_transpositions": 8,
+   "f_collisions": 0,
+   "first_rearranged": [
+    [
+     183,
+     [
+      5,
+      2
+     ],
+     [
+      2,
+      5
+     ],
+     -3
+    ],
+    [
+     882,
+     [
+      5,
+      2
+     ],
+     [
+      2,
+      5
+     ],
+     -3
+    ],
+    [
+     1581,
+     [
+      5,
+      2
+     ],
+     [
+      2,
+      5
+     ],
+     -3
+    ]
+   ]
+  },
+  {
+   "primes": [
+    2,
+    3,
+    5,
+    7
+   ],
+   "p": 2,
+   "a0": 60,
+   "n": 283526,
+   "epsilon": "1.174e-02",
+   "beta": "0.158",
+   "least_margin_to_cut": "6.8e-05",
+   "crossings": 4000,
+   "chain_sizes": {
+    "1": 3555,
+    "2": 204,
+    "3": 12
+   },
+   "rearranged_chains": 39,
+   "rearranged_transpositions": 35,
+   "f_collisions": 0,
+   "first_rearranged": [
+    [
+     11,
+     [
+      3,
+      2,
+      5
+     ],
+     [
+      2,
+      3,
+      5
+     ],
+     -5
+    ],
+    [
+     215,
+     [
+      3,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     -1
+    ],
+    [
+     252,
+     [
+      3,
+      5
+     ],
+     [
+      5,
+      3
+     ],
+     2
+    ]
+   ]
+  },
+  {
+   "primes": [
+    3,
+    5,
+    7,
+    11
+   ],
+   "p": 5,
+   "a0": 20,
+   "n": 153355,
+   "epsilon": "1.568e-02",
+   "beta": "0.329",
+   "least_margin_to_cut": "5.9e-06",
+   "crossings": 4000,
+   "chain_sizes": {
+    "1": 3570,
+    "2": 201,
+    "3": 9
+   },
+   "rearranged_chains": 48,
+   "rearranged_transpositions": 45,
+   "f_collisions": 0,
+   "first_rearranged": [
+    [
+     87,
+     [
+      7,
+      3
+     ],
+     [
+      3,
+      7
+     ],
+     -4
+    ],
+    [
+     89,
+     [
+      5,
+      3
+     ],
+     [
+      3,
+      5
+     ],
+     -2
+    ],
+    [
+     254,
+     [
+      7,
+      3
+     ],
+     [
+      3,
+      7
+     ],
+     -4
+    ]
+   ]
+  }
+ ],
+ "close_pair": {
+  "n": 2547450,
+  "a0": 60,
+  "letters": 4000,
+  "rearranged_segments": 9,
+  "segment_sizes": [
+   2
+  ],
+  "f_collisions": 0,
+  "first_rearranged": [
+   1005,
+   [
+    5,
+    2
+   ],
+   [
+    2,
+    5
+   ],
+   3,
+   6
+  ],
+  "difference_exceeds_truncation_error": true,
+  "log10_difference": -501.1234,
+  "log10_predicted_leading_term": -501.1234,
+  "return_scan_limit": 3000000,
+  "best_return_found": 2547450
+ },
+ "euler": {
+  "trials": 400,
+  "entry_bound": 6,
+  "max_sum_k_minus_3": -4,
+  "square_with_diagonals": {
+   "sum_k_minus_3": 0,
+   "two_line_vertices": 1
+  }
+ },
+ "ep_identities": {
+  "shift_identity_checks": 2000,
+  "follower_orderings": 12096,
+  "two_prime_product_pairs": 5,
+  "three_prime_carry_values": {
+   "2,3,5": [
+    0,
+    1
+   ],
+   "2,3,7": [
+    0,
+    1
+   ],
+   "3,5,7": [
+    0,
+    1
+   ]
+  },
+  "four_prime_carry_values": [
+   0,
+   1,
+   2
+  ]
+ },
+ "ep_close_pair": {
+  "primes": [
+   2,
+   3,
+   5
+  ],
+  "p": 2,
+  "a0": 20,
+  "n": 65,
+  "letters": 300,
+  "first_rearranged": [
+   131,
+   [
+    2,
+    3
+   ],
+   [
+    3,
+    2
+   ],
+   3,
+   1
+  ],
+  "difference_exceeds_truncation_error": true,
+  "log10_difference": -58.098
+ },
+ "run": {
+  "program": "two_tail.py",
+  "program_sha256": "1ff593f666f7e8ea3da8db1907330448f122df9abc522b6aa4409c3163bddf5e",
+  "library_sha256": "f19b4fa209972322b22fbee98de8c3fdec920ed98aaeb1c4efe7c6e3d943f63f",
+  "mode": "full",
+  "python": "3.14.7",
+  "seconds": 64.63
+ }
+}

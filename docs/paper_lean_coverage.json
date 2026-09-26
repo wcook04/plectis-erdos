@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
-  "content_digest": "sha256:c968b9c3757586019861ff42961fefcf55781d827600e7f2658a8592f7982614",
+  "content_digest": "sha256:a0dfdb52fcfbbb79282d285209a6e53221e26d02d0ef2e1b0966977bc3646c57",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -13,21 +13,21 @@
   "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",
   "checker": "python3 scripts/check_lean_paper_propagation.py",
   "summary": {
-    "rows": 676,
+    "rows": 695,
     "lean": {
-      "exact": 506,
+      "exact": 508,
       "exact_or_stronger": 140,
       "modulo_named_input": 25,
-      "none": 5
+      "none": 22
     },
     "comparator": {
       "compared": 633,
-      "not_applicable": 30,
-      "pending": 13
+      "not_applicable": 47,
+      "pending": 15
     },
     "palomar": {
-      "not_applicable": 30,
-      "pending": 13,
+      "not_applicable": 47,
+      "pending": 15,
       "prepared": 633
     },
     "uncounted_rows": 0
@@ -2247,7 +2247,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:e455e5b51ffff6f69223a25794e6e22121a5fbd938b8e5911ba869865e2219d9",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:75",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:545",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2275,6 +2275,125 @@
       }
     },
     {
+      "id": "erdos-269-three-prime-running-lcm#res:distinct-height-235",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:distinct-height-235",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:a02a4cba884b472dfc06e8fae73980185ba2f02230bd5857d127de25424b0cd9",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:385",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.distinctHeightSum235_irrational",
+            "file": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean"
+          }
+        ]
+      },
+      "palomar": {
+        "status": "pending"
+      },
+      "comparator": {
+        "status": "pending",
+        "queued_at": "2026-09-26"
+      }
+    },
+    {
+      "id": "erdos-269-three-prime-running-lcm#res:distinct-height-all",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:distinct-height-all",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:10239dfb9fe62a45d21a12770a423dadfea6d9c4cbe15360016e434eee4e8462",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:132",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos-269-three-prime-running-lcm#res:dp-integral-tails",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:dp-integral-tails",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:1060399c6035c22180e21ff602493155e421c8fe2666ce4edb115c9532a4f913",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:172",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos-269-three-prime-running-lcm#res:dp-blocks",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:dp-blocks",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:c0fe7832c9ad50edd448191acb96f6527b16c8a4c4ee4b38edc0af4eabe6afaf",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:181",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos-269-three-prime-running-lcm#res:dp-short",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:dp-short",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:c2b70357e78926242da2c77b8bd430b5617d9b5f4cde66bcaf592a6c53eb23b4",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:202",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos-269-three-prime-running-lcm#res:admissible-modular-minors",
       "problem": 269,
       "paper_id": "erdos-269-three-prime-running-lcm",
@@ -2283,7 +2402,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:677d9508f99d71da755b42dc0a5f32fd6e2929127bcfc6e0ae587c0c1a73e468",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:155",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:625",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2319,7 +2438,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:6052f2c2870a433203ef5d23210c51b19113b4f855acb7ce8224a5c39cba2ee6",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:190",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:660",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2347,6 +2466,52 @@
       }
     },
     {
+      "id": "erdos-269-three-prime-running-lcm#res:distinct-height-triples",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:distinct-height-triples",
+      "environment": "corollary",
+      "kind": "corollary",
+      "statement_sha256": "sha256:714f1a1fcbfb05e09c09949d929cc06e39fd0d215ce5936148cfea14fd01316f",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:493",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof of the decoding criterion applied through an exact finite computation for each of the 165 sets (research/experiments/erdos269/distinct_height); neither the general criterion nor the computation is formalised"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos-269-three-prime-running-lcm#res:dp-two-walls",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:dp-two-walls",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:6c3011176e3e01591534f4dcf0ab2f4b576883fa570cd0f6f588b3b3389ebe47",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:252",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
       "problem": 269,
       "paper_id": "erdos-269-three-prime-running-lcm",
@@ -2355,7 +2520,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:9b272a1a8cc70540058eebeb6ac8b8ba863ffd39861087fc4394ab5027300f1b",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:238",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:708",
       "other_labels": [
         "res:two-prime-repeated-transcendence",
         "eq:two-prime-affine"
@@ -2437,7 +2602,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:2e9bee1f5b0e79f729a9d6c6840ccff1af08db8c51183c960e2c0029d1790d4c",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:309",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:780",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2473,7 +2638,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:685f6c9585303df8d13e0a162aa95a6a2720c7d03b01fb3e5a67391deb1fcd93",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:326",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:797",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2526,7 +2691,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:5d520287ff9279c0a3e5592290a43e54485f3b26f17bb25ec2e977718d53c917",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:342",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:812",
       "other_labels": [
         "res:fibre"
       ],
@@ -2565,7 +2730,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:3170b8a0cccce34ae341e54263aa846976787fb4c4e89759ae86b7cf0b4d92e7",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:370",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:840",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2601,7 +2766,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:aecf1ea4e5589051bd550b21f6674a7629fda3bb31b457358c0968a0246a2c15",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:392",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:862",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2637,7 +2802,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:1ff86c656878bf54aa6377092ff239766b55585f10684ba06fc6331f3c1adc95",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:434",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:904",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2673,7 +2838,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:73ce6d68f74531ce8edf71826be0b6a406f56724eeffe6f7639125aa0eaf56c5",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:469",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:939",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2721,7 +2886,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:aa3f53bacac647d9d242f6449e3024899ff1e8855e1e6daa377e183443e59c98",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:518",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:1043",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2757,7 +2922,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0d9ff8e4757ce37a274a706af2598af55924c7527674b9fd545490d9e0eb6bd3",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:534",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:1059",
       "other_labels": [
         "eq:escape"
       ],
@@ -2785,6 +2950,29 @@
         "corpus_commits": [
           "253a436b69603a5662696127016559ddcfd1db42"
         ]
+      }
+    },
+    {
+      "id": "erdos-269-three-prime-running-lcm#res:single-prime-subsums",
+      "problem": 269,
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "label": "res:single-prime-subsums",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:468a77f2ba45a62231ab251fd0a7a02a1102e4616aea0420f836960c89f75751",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:991",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
       }
     },
     {
@@ -25036,7 +25224,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:dfa88cd517cb5f6d55769d6f5300ffc1c6c88ac4fb475ae0c89110ea00218e4b",
-      "source": "paper/reasoning-parts/erdos269/core.tex:41",
+      "source": "paper/reasoning-parts/erdos269/core.tex:108",
       "lean": {
         "status": "modulo_named_input",
         "declarations": [
@@ -25074,6 +25262,56 @@
       }
     },
     {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-235",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:distinct-height-235",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:de9e607a7640b23bcbd7cd6904332b11b5b72883b512b1489c08e349526a522e",
+      "source": "paper/reasoning-parts/erdos269/core.tex:75",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.distinctHeightSum235_irrational",
+            "file": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean"
+          }
+        ]
+      },
+      "palomar": {
+        "status": "pending"
+      },
+      "comparator": {
+        "status": "pending",
+        "queued_at": "2026-09-26"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-all",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:distinct-height-all",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:263c7846cdf1b36a23fd50b2bb058ad94ec9545b90a1d1b58a02c49179d0b207",
+      "source": "paper/reasoning-parts/erdos269/core.tex:60",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos269-running-lcm-reasoning-surface#long269:res:lcm",
       "problem": 269,
       "paper_id": "erdos269-running-lcm-reasoning-surface",
@@ -25082,7 +25320,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:9ccde90299d777bc756df8749ec4774508bd66274fcee33cdfbe93cd9486fd4a",
-      "source": "paper/reasoning-parts/erdos269/core.tex:162",
+      "source": "paper/reasoning-parts/erdos269/core.tex:232",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25118,7 +25356,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:30f2092067e4b730096173e4e6b4614d5427892d933bb7ac83a9b5b6edf1de10",
-      "source": "paper/reasoning-parts/erdos269/core.tex:196",
+      "source": "paper/reasoning-parts/erdos269/core.tex:266",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25170,7 +25408,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:4c6962a1dc431c84172f61f8c5c0b96c7c5fa29fbae64bf23d10fa60658759ea",
-      "source": "paper/reasoning-parts/erdos269/core.tex:212",
+      "source": "paper/reasoning-parts/erdos269/core.tex:282",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -25206,7 +25444,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:eb88ccb350c9fec0e948b34df577c76eb4ff655f9b9df6610faed7ee4f1ab252",
-      "source": "paper/reasoning-parts/erdos269/core.tex:231",
+      "source": "paper/reasoning-parts/erdos269/core.tex:301",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -25242,7 +25480,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:c12a12e86a5467f6edf20df60e79d369ed85d7cc515edbc0337db910f59f425d",
-      "source": "paper/reasoning-parts/erdos269/core.tex:250",
+      "source": "paper/reasoning-parts/erdos269/core.tex:320",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25278,7 +25516,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:15125c47f4643afc2e34c5388dc889053209f945e42423267c9c4455c9078879",
-      "source": "paper/reasoning-parts/erdos269/core.tex:266",
+      "source": "paper/reasoning-parts/erdos269/core.tex:336",
       "other_labels": [
         "long269:res:shell"
       ],
@@ -25317,7 +25555,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:011ed3f7bb527807fcf7ba921264c880fe4bc2fe1ac0a14a6860180d97abb15a",
-      "source": "paper/reasoning-parts/erdos269/core.tex:402",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1340",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25353,7 +25591,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:f37f29f89b48343dfa0a6dee7904fe4e901c171ab43aadb0c69cd4a9d5a2837a",
-      "source": "paper/reasoning-parts/erdos269/core.tex:431",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1369",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -25389,7 +25627,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:a6e6c974ce10d5389e065ecfadb40618bfcbcdc7ba849db65fac9a768efaea0d",
-      "source": "paper/reasoning-parts/erdos269/core.tex:450",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1388",
       "other_labels": [
         "long269:res:lead-infinite-rank"
       ],
@@ -25420,6 +25658,121 @@
       }
     },
     {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-blocks",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:distinct-height-blocks",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:6c7e1bada6a0dba96e61dbcfbfc60127bba8c67748fddc71bd772d2064f9dd99",
+      "source": "paper/reasoning-parts/erdos269/core.tex:792",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the lemma is stated for every finite set of primes; only its {2,3,5} case is checked in Lean, inside the proof of the {2,3,5} theorem"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-integral-tails",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:dp-integral-tails",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:b9984a155ee94cc451accfd07124a05acaae2fb823cffb643cdd8f44c58ed806",
+      "source": "paper/reasoning-parts/erdos269/core.tex:525",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-blocks",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:dp-blocks",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:9c61760e4480378f2d2a9f9760bc5f4d783bbca44377057a660815615ac33996",
+      "source": "paper/reasoning-parts/erdos269/core.tex:534",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-short",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:dp-short",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:28677b599e4e0485993db56cb03ae70cdd3bdc30719cdc53394f31b16525ab4d",
+      "source": "paper/reasoning-parts/erdos269/core.tex:555",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-two-walls",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:dp-two-walls",
+      "environment": "lemma",
+      "kind": "lemma",
+      "statement_sha256": "sha256:9828dfb4bc1b3f39ad2f2e4a164d3ff4d45f5d70240579fb60fd3808282fea55",
+      "source": "paper/reasoning-parts/erdos269/core.tex:605",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos269-running-lcm-reasoning-surface#long269:res:finite-cut-rank",
       "problem": 269,
       "paper_id": "erdos269-running-lcm-reasoning-surface",
@@ -25428,7 +25781,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:f1a01746203a91483137ce52220c9fcd0e80065f830e6e95e241e3135dc2fa3e",
-      "source": "paper/reasoning-parts/erdos269/core.tex:544",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1482",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25464,7 +25817,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:a15db0bf61ffdee682f59dc991b6e99cb68f8ff3f25afbcd87e9cfab49c90ed6",
-      "source": "paper/reasoning-parts/erdos269/core.tex:634",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1572",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25492,6 +25845,52 @@
       }
     },
     {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-criterion",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:distinct-height-criterion",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:3350fb56598092c27a6a76f38a0248b1dc5f592b986fe74032d89b3019a48858",
+      "source": "paper/reasoning-parts/erdos269/core.tex:982",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the criterion for every finite set of primes is not formalised; Lean checks its {2,3,5} case at depth one with the single interval [3/10,13/15] (irrational_tsum_blockTerm)"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-sets",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:distinct-height-sets",
+      "environment": "corollary",
+      "kind": "corollary",
+      "statement_sha256": "sha256:848f625372077eed047d8b5130954f1dbb5137cadc1993077904ef2e432c6375",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1042",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof from the decoding criterion and an exact finite computation for each set (research/experiments/erdos269/distinct_height); neither is formalised"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos269-running-lcm-reasoning-surface#long269:res:dyadic-alphabet",
       "problem": 269,
       "paper_id": "erdos269-running-lcm-reasoning-surface",
@@ -25500,7 +25899,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:16cd906385587b426bf4dc50acf4fd207a3a1d9ac84fa380b458e51926d8da43",
-      "source": "paper/reasoning-parts/erdos269/core.tex:738",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1676",
       "other_labels": [
         "long269:eq:dyadic-alphabet"
       ],
@@ -25555,6 +25954,52 @@
       }
     },
     {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:single-prime-identities",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:single-prime-identities",
+      "environment": "proposition",
+      "kind": "proposition",
+      "statement_sha256": "sha256:2e1d1b1ac632016bbdbc90abdabb105fd77644d4e628a0ee67df54cf40c712b8",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1196",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof (floor-sum carries of the height exponents); checked in exact arithmetic on finite ranges by research/experiments/erdos269/distinct_height/two_tail.py; not formalised"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
+      "id": "erdos269-running-lcm-reasoning-surface#long269:res:single-prime-subsums",
+      "problem": 269,
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "label": "long269:res:single-prime-subsums",
+      "environment": "theorem",
+      "kind": "theorem",
+      "statement_sha256": "sha256:edc618ea62ebd99cfe77c51945af0c87eacf65e38fe47b7a64c5c7efd4c38a85",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1231",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos269-running-lcm-reasoning-surface#long269:res:actual-orbit",
       "problem": 269,
       "paper_id": "erdos269-running-lcm-reasoning-surface",
@@ -25563,7 +26008,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:a265ddfb0ed4a80d51a44272644470725906ed3acc49d9a971c76684706048a7",
-      "source": "paper/reasoning-parts/erdos269/core.tex:798",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1736",
       "other_labels": [
         "long269:eq:shell-digit-identity"
       ],
@@ -25602,7 +26047,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:d7d665ad928e8f07ff5ced35524c6357b39fa749fcc86c5b435c54041245ac69",
-      "source": "paper/reasoning-parts/erdos269/core.tex:844",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1782",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25638,7 +26083,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:b4949783c552067d6489861db6f3284c05f09d49363cefdfc62d7ccc62ac0623",
-      "source": "paper/reasoning-parts/erdos269/core.tex:888",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1826",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25674,7 +26119,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:323ff3700d3be92bb5ef5b42a371eb40c79f23d016de0bd074aadcb2d75de40a",
-      "source": "paper/reasoning-parts/erdos269/core.tex:950",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1888",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25710,7 +26155,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:22a75f92650487115dbfeeda90e9f2bbc6ef433347207815ca5f0041fb365e9e",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1026",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1964",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25746,7 +26191,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:482a233da113f48c76664c46d9e55e118db0eba05f7fe15e2c7dc63874135524",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1048",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1986",
       "other_labels": [
         "long269:res:lead-carry-bridge",
         "long269:res:actual-carry-bound",
@@ -25791,7 +26236,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:29812bc3f71b5574cc1b581852232e1566f424096b1f73729ca0ce13788159b8",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1083",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2021",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -25851,7 +26296,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:3985f5f799bbcfb4843132ef9213d5a405ea0a04799c81a742ca2589a47c4247",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1116",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2054",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25887,7 +26332,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:4ab724fd26090e5696d31dbbdec177b9ad52392442857dde6d00d608462d7bcd",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1160",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2098",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25923,7 +26368,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:c5bf4be5ccacccdf60c0ff8e3c433924bb757ad3cdfeed6e189c8e6c5d1dbb44",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1341",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2279",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -25959,7 +26404,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:e520cc11063600c09bfc066c1f9a52c848e270951112cc0a72a19853238d04bd",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1376",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2314",
       "other_labels": [
         "long269:res:lead-escape-equivalence",
         "long269:res:windowconsumer"
@@ -25999,7 +26444,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:b8b857d8e67e267e5f0d1e75250548ad1179d21e342045647e46fe2062e1d26b",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1436",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2374",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26043,7 +26488,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:91dcc8746272e5d6015b6ecbaed4775820818f5cdda70ccad9f1750fe0d25e3a",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1560",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2498",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26079,7 +26524,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:145b6701f167bc40c8699b8845c0d60b49a632b9be0537338be8ff3d10bc66b1",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1581",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2519",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26115,7 +26560,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:50773cfb7c69e7742e810b5bbf0d93b8e63c869c2705c713338bfddd8c36352f",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1802",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2741",
       "other_labels": [
         "long269:eq:weighted-shift-identity"
       ],
@@ -26154,7 +26599,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:eb3746cfce4bdd08e4327a94e33ab9747b7a183b5350e9f923b3eeb2f2aba9d2",
-      "source": "paper/reasoning-parts/erdos269/core.tex:1886",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2825",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26194,7 +26639,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:f51edd92731ef73454aaceaecf4a8541c156e984b87c5419ad4a7ebe049b3215",
-      "source": "paper/reasoning-parts/erdos269/core.tex:2036",
+      "source": "paper/reasoning-parts/erdos269/core.tex:2975",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26230,7 +26675,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:b5b4439408107e67df6f2dbdf5ef2ce1e3239b8335243a2ac422e81934a850e5",
-      "source": "paper/reasoning-parts/erdos269/core.tex:2165",
+      "source": "paper/reasoning-parts/erdos269/core.tex:3104",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26266,7 +26711,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:2afd80abd16d91cfc69a75bdff6e264e3f65ac3ca00358f51c6e67c8e033ba07",
-      "source": "paper/reasoning-parts/erdos269/core.tex:2514",
+      "source": "paper/reasoning-parts/erdos269/core.tex:3537",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -26302,7 +26747,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:b95d64e6b86ff6fdeed0379671df69617a86640c2871dde8290f755ac18850cd",
-      "source": "paper/reasoning-parts/erdos269/core.tex:2579",
+      "source": "paper/reasoning-parts/erdos269/core.tex:3602",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
