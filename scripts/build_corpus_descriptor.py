@@ -968,15 +968,15 @@ def render_wave_package_shape(atlas: dict[str, Any]) -> str:
             f"- The diagonal-pincer family contains {pincer_prime_shards:,} isolated prime-certificate "
             f"modules and {pincer_scale_aggregators} scale aggregators. The shards are indexed through "
             "aggregators rather than presented as separate mathematical claims.",
-            f"- Entire checked corpus: {scale['module_count']:,} modules, "
+            f"- Indexed source corpus: {scale['module_count']:,} modules, "
             f"{scale['declaration_count']:,} declarations, {scale['theorem_like_count']:,} theorem-like "
             f"declarations, and {scale['generated_certificate_declaration_count']:,} manifest-marked "
             "generated-certificate declarations (a classification floor, not the generated share). "
             "The release gate rejects `sorry`, `admit`, custom `axiom` declarations, and "
             "`native_decide`.",
             "",
-            "These are generated inventory facts, not mathematical claim counts. The declaration atlas",
-            "and Lean source remain the drilldown owners.",
+            "These counts describe the source inventory; they do not establish a successful Lean build",
+            "or Comparator replay. The declaration atlas and Lean source remain the drilldown owners.",
             WAVE_SHAPE_END,
         ]
     )
