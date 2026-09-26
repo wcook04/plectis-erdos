@@ -743,6 +743,38 @@ def audit_authored_layers(graph: "Graph", root: Path) -> dict[str, Any]:
             "frontier_open_antecedents": antecedent_rows}
 
 
+def barrier_overlay(graph: "Graph", root: Path) -> dict[str, Any]:
+    """Attach each authored barrier to the statements that mention its route
+    predicates, and say whether its declaration is in the kernel environment
+    the graph was read from."""
+    registry = load_json(root / "docs" / "semantic" / "barriers.json") or {}
+    lanes = registry.get("build_lanes") or {}
+    by_constant: dict[str, set[str]] = defaultdict(set)
+    for key, node in graph.statements.items():
+        for constant in node.get("constants", ()):
+            by_constant[constant].add(key)
+    entries = []
+    constrains: dict[str, list[str]] = defaultdict(list)
+    for entry in registry.get("entries", []):
+        declaration = entry.get("declaration")
+        in_graph = bool(declaration) and declaration in graph.theorems
+        touched: set[str] = set()
+        for predicate in entry.get("route_predicates") or []:
+            touched |= by_constant.get(predicate, set())
+        open_touched = sorted(k for k in touched if k not in graph.supplied)
+        for key in open_touched:
+            constrains[key].append(entry["id"])
+        entries.append({
+            "id": entry["id"], "problem": entry["problem"], "kind": entry["barrier_kind"],
+            "declaration": declaration, "source": entry.get("source_ref"),
+            "build_lane": lanes.get(entry["id"]), "in_graph": in_graph,
+            "plain_statement": entry.get("plain_statement"), "blocks": entry.get("blocks"),
+            "does_not_block": (entry.get("does_not_block") or [])[:6],
+            "open_statements_touched": len(open_touched),
+        })
+    return {"entries": entries, "constrains": {k: v for k, v in constrains.items()}}
+
+
 # --------------------------------------------------------------------------
 # Projection
 
@@ -837,7 +869,12 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         classes = sorted({graph.component[k] for k in keys
                           if graph.component.get(k) is not None
                           and len(graph.components[graph.component[k]]) >= 2})
+        problem_barriers = [e for e in barriers["entries"] if e["problem"] == problem]
         per_problem[problem] = {
+            "barriers": problem_barriers[:LIST_LIMIT * 2],
+            "barrier_count": len(problem_barriers),
+            "open_statements_constrained_by_barriers": sum(
+                1 for k in keys if k in barriers["constrains"]),
             "open_statements": len(keys),
             "supplied_statements": sum(1 for k in graph.supplied if problem in statement_problems.get(k, ())),
             "sinks": [statement_card(k, with_bundles=True) for k in sinks[:LIST_LIMIT]],
@@ -854,6 +891,7 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
     conditional = [name for name, t in graph.theorems.items() if t["hypotheses"]]
     composed = compositions(graph, papers)
     audit = audit_authored_layers(graph, root)
+    barriers = barrier_overlay(graph, root)
     summary = {
         "theorems": len(graph.theorems),
         "conditional_arguments": len(conditional),
@@ -880,6 +918,9 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         "compositions_of_paper_cited_conditional_theorems": sum(
             1 for row in composed if row["paper_rows_of_conditional_theorem"]),
         "semantic_label_disagreements": audit["semantic_logical_class"]["disagreement_count"],
+        "barriers": len(barriers["entries"]),
+        "barriers_in_graph": sum(1 for e in barriers["entries"] if e["in_graph"]),
+        "open_statements_constrained_by_barriers": len(barriers["constrains"]),
     }
     source = {
         "export_digest": file_digest(export_path),
@@ -954,6 +995,7 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         "refutations": [
             {"statement": st, "producer": pr, "reading": rd, "residuals": list(rs)}
             for st, pr, rd, rs in graph.refutations],
+        "barriers": barriers,
         "existential_reductions": graph.existential,
         "budget_exhausted": graph.budget_exhausted,
         "theorems": [
@@ -992,6 +1034,8 @@ def paper_macro_region(projection: dict[str, Any]) -> str:
         "AGBatteryTried": export.get("battery_tried", 0),
         "AGBudgetExhausted": summary["budget_exhausted_attempts"],
         "AGRefuted": summary["refuted_statements"],
+        "AGBarriers": summary["barriers"],
+        "AGBarriersInGraph": summary["barriers_in_graph"],
         "AGVacuous": summary["vacuous_theorems"],
         "AGLabelDisagreements": summary["semantic_label_disagreements"],
     }

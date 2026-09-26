@@ -13,6 +13,8 @@ the questions a researcher asks before spending effort on a statement:
     theorem NAME                one theorem: hypotheses (with status), conclusion, papers
     why KEY                     the kernel witness chain of a supplied statement
     about CONSTANT              everything the graph holds about one corpus object
+    barriers [--problem N]      kernel-checked barriers (countermodels, endpoint
+                                equivalences, method ceilings) and what they constrain
     criticality KEY|THEOREM     what loses its kernel witness chain without it
     transfer                    reductions where a theorem attributed to one problem
                                 supplies a statement attributed only to others
@@ -98,6 +100,9 @@ def statement_view(graph: builder.Graph, payload: dict[str, Any], key: str, *, d
     if component is not None and len(graph.components[component]) >= 2:
         view["disguise_class"] = [
             {"key": m, "type": graph.statements[m].get("type")} for m in graph.components[component]]
+    touching = ((payload.get("barriers") or {}).get("constrains") or {}).get(key, [])
+    if touching:
+        view["barriers_touching"] = touching[:12]
     gained = graph.leverage(key)
     view["leverage"] = {"count": len(gained),
                         "sample": [{"key": g, "type": graph.statements[g].get("type")} for g in sorted(gained)[:15]]}
@@ -198,6 +203,15 @@ def cmd_why(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namesp
     if view["status"] != "supplied":
         return {"key": view["key"], "status": "open", "note": "no kernel witness chain in the export"}
     return graph.proof_tree(view["key"], limit=args.depth)
+
+
+def cmd_barriers(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    entries = (payload.get("barriers") or {}).get("entries", [])
+    if args.problem:
+        entries = [e for e in entries if e["problem"] == args.problem]
+    entries = sorted(entries, key=lambda e: (-e["open_statements_touched"], e["id"]))
+    return {"count": len(entries), "in_graph": sum(1 for e in entries if e["in_graph"]),
+            "entries": entries[: args.limit]}
 
 
 def cmd_about(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
@@ -361,6 +375,16 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
         lines.append("None: every recorded route to these targets is a single open statement.")
     lines.append("")
 
+    problem_barriers = [e for e in (payload.get("barriers") or {}).get("entries", []) if e["problem"] == problem]
+    if problem_barriers:
+        lines += ["## Barriers: argument classes already ruled out", "",
+                  "Each is a Lean declaration (kernel-checked when `in graph`); what it rules out is an "
+                  "authored reading, and a barrier may rule out a narrower class than a specialist would try.", ""]
+        for e in sorted(problem_barriers, key=lambda e: -e["open_statements_touched"])[:limit * 2]:
+            lane = "in graph" if e["in_graph"] else (e.get("build_lane") or "outside graph")
+            lines.append(f"- **{e['kind']}** `{e.get('declaration') or e['id']}` ({lane}): {e.get('blocks')}")
+        lines.append("")
+
     lines += ["## 4. Highest leverage open statements", ""]
     levered = sorted(keys, key=lambda k: (-len(graph.leverage(k)), k))
     for key in levered[:limit]:
@@ -390,6 +414,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("theorem"); p.add_argument("name")
     p = sub.add_parser("why"); p.add_argument("key"); p.add_argument("--depth", type=int, default=6)
     p = sub.add_parser("about"); p.add_argument("constant"); p.add_argument("--limit", type=int, default=30)
+    p = sub.add_parser("barriers"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("criticality"); p.add_argument("target"); p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("transfer"); p.add_argument("--limit", type=int, default=60)
     p = sub.add_parser("diff"); p.add_argument("old", type=Path); p.add_argument("new", type=Path)
@@ -398,7 +423,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
-               "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "criticality": cmd_criticality,
+               "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "barriers": cmd_barriers, "criticality": cmd_criticality,
                "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):
