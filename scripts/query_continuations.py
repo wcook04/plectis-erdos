@@ -13,6 +13,8 @@ the questions a researcher asks before spending effort on a statement:
     theorem NAME                one theorem: hypotheses (with status), conclusion, papers
     why KEY                     the kernel witness chain of a supplied statement
     about CONSTANT              everything the graph holds about one corpus object
+    near "WORDS"                the supplied and open statements sharing the most
+                                corpus objects with a proposed statement
     barriers [--problem N]      kernel-checked barriers (countermodels, endpoint
                                 equivalences, method ceilings) and what they constrain
     criticality KEY|THEOREM     what loses its kernel witness chain without it
@@ -165,9 +167,15 @@ def cmd_problem(graph: builder.Graph, payload: dict[str, Any], args: argparse.Na
     }
 
 
+def statement_text(node: dict[str, Any]) -> str:
+    return " ".join([node.get("type") or "", *sorted(node.get("aliases", ())),
+                     *sorted(node.get("constants", ()))]).lower()
+
+
 def cmd_find(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
-    needle = args.text.lower()
-    hits = [(k, n) for k, n in graph.statements.items() if needle in (n.get("type") or "").lower()]
+    words = [w for w in args.text.lower().split() if w]
+    hits = [(k, n) for k, n in graph.statements.items()
+            if all(w in statement_text(n) for w in words)]
     hits.sort(key=lambda kn: (kn[0] in graph.supplied, len(kn[1].get("type") or "")))
     return [{"key": k, "status": "supplied" if k in graph.supplied else "open", "type": n.get("type")}
             for k, n in hits[: args.limit]]
@@ -212,6 +220,37 @@ def cmd_barriers(graph: builder.Graph, payload: dict[str, Any], args: argparse.N
     entries = sorted(entries, key=lambda e: (-e["open_statements_touched"], e["id"]))
     return {"count": len(entries), "in_graph": sum(1 for e in entries if e["in_graph"]),
             "entries": entries[: args.limit]}
+
+
+def cmd_near(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """Statements that share the most corpus objects with a proposed statement:
+    the kernel facts to read before formulating a new lemma."""
+    words = [w for w in args.text.replace("(", " ").replace(")", " ").split() if w]
+    constants: set[str] = set()
+    universe = {c for n in graph.statements.values() for c in n.get("constants", ())}
+    for word in words:
+        constants |= {c for c in universe if c == word or c.endswith("." + word)}
+    if not constants:
+        return {"query": args.text, "note": "no corpus constant matches a word of the query"}
+    scored = []
+    for key, node in graph.statements.items():
+        mine = set(node.get("constants", ()))
+        shared = mine & constants
+        if shared:
+            scored.append((len(shared) / len(mine | constants), key, sorted(shared)))
+    scored.sort(key=lambda row: (-row[0], row[1]))
+    def rows(status: str) -> list[dict[str, Any]]:
+        out = []
+        for score, key, shared in scored:
+            is_supplied = key in graph.supplied
+            if (status == "supplied") != is_supplied:
+                continue
+            out.append({"key": key, "overlap": round(score, 3), "shared": shared,
+                        "type": graph.statements[key].get("type")})
+            if len(out) >= args.limit:
+                break
+        return out
+    return {"query_constants": sorted(constants), "supplied": rows("supplied"), "open": rows("open")}
 
 
 def cmd_about(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
@@ -414,6 +453,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("theorem"); p.add_argument("name")
     p = sub.add_parser("why"); p.add_argument("key"); p.add_argument("--depth", type=int, default=6)
     p = sub.add_parser("about"); p.add_argument("constant"); p.add_argument("--limit", type=int, default=30)
+    p = sub.add_parser("near"); p.add_argument("text"); p.add_argument("--limit", type=int, default=12)
     p = sub.add_parser("barriers"); p.add_argument("--problem"); p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("criticality"); p.add_argument("target"); p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("transfer"); p.add_argument("--limit", type=int, default=60)
@@ -423,7 +463,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
-               "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "barriers": cmd_barriers, "criticality": cmd_criticality,
+               "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "barriers": cmd_barriers, "criticality": cmd_criticality,
                "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):
