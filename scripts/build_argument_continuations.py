@@ -195,7 +195,17 @@ class Graph:
         self.budget_exhausted: list[dict[str, Any]] = []
         self.caps: list[dict[str, Any]] = []
         self.errors: list[dict[str, Any]] = []
+        self.alias: dict[str, str] = {}
         self._ingest(rows)
+
+    def canon(self, key: str) -> str:
+        """Representative of a statement's definitional-alias class."""
+        root = key
+        while self.alias.get(root, root) != root:
+            root = self.alias[root]
+        while self.alias.get(key, key) != root:
+            self.alias[key], key = root, self.alias[key]
+        return root
 
     @classmethod
     def from_payload(cls, payload: dict[str, Any]) -> "Graph":
@@ -208,6 +218,7 @@ class Graph:
                 "key": row["key"], "type": row.get("type"), "origins": set(row.get("origins", [])),
                 "consumers": set(row.get("consumers", [])), "conclusion_of": set(row.get("conclusion_of", [])),
                 "constants": set(row.get("constants", [])),
+                "aliases": set(row.get("aliases", [])),
             }
         for row in payload.get("reductions", []):
             graph.reductions.append((row["statement"], row["producer"], row.get("reading", "conclusion"),
@@ -227,10 +238,16 @@ class Graph:
 
     def _statement(self, key: str, type_text: str | None, origin: str,
                    constants: Iterable[str] = ()) -> dict[str, Any]:
+        representative = self.canon(key)
+        if representative != key:
+            node = self._statement(representative, None, origin, constants)
+            if type_text:
+                node["aliases"].add(type_text)
+            return node
         node = self.statements.get(key)
         if node is None:
             node = {"key": key, "type": type_text, "origins": set(), "consumers": set(),
-                    "conclusion_of": set(), "constants": set()}
+                    "conclusion_of": set(), "constants": set(), "aliases": set()}
             self.statements[key] = node
         if type_text and not node.get("type"):
             node["type"] = type_text
@@ -240,9 +257,20 @@ class Graph:
 
     def _ingest(self, rows: list[dict[str, Any]]) -> None:
         seen_reductions: set[tuple[str, str, str, tuple[str, ...]]] = set()
+        # Definitional aliases first: a named proposition and its one-step
+        # unfolding are one statement. The named side represents the class.
+        unfold_types: dict[str, str] = {}
+        for row in rows:
+            if row.get("record") == "unfold":
+                named, unfolded = self.canon(row["statement"]), self.canon(row["unfolded"])
+                if named != unfolded:
+                    self.alias[unfolded] = named
+                unfold_types[row["unfolded"]] = row.get("type")
+        canon = self.canon
 
         def add_reduction(head: str, producer: str, reading: str, residuals: Iterable[str]) -> None:
-            residual_tuple = tuple(sorted(set(residuals)))
+            head = canon(head)
+            residual_tuple = tuple(sorted({canon(r) for r in residuals}))
             if head in residual_tuple:
                 return  # tautological: the statement reduces to itself
             item = (head, producer, reading, residual_tuple)
@@ -262,9 +290,9 @@ class Graph:
                 self.theorems[name] = {
                     "name": name,
                     "module": row.get("module", ""),
-                    "hypotheses": [b.get("key") for b in closed],
+                    "hypotheses": [canon(b.get("key")) for b in closed if b.get("key")],
                     "schematic_hypotheses": [b.get("type") for b in schematic],
-                    "conclusion_key": conclusion.get("key"),
+                    "conclusion_key": canon(conclusion["key"]) if conclusion.get("key") else None,
                     "conclusion_type": conclusion.get("type"),
                     "conclusion_closed": bool(conclusion.get("closed")),
                     "data_binders": [b.get("name") for b in binders if b.get("kind") == "data"],
@@ -278,7 +306,7 @@ class Graph:
                     node["conclusion_of"].add(name)
                     if schematic:
                         self.existential.append({
-                            "statement": conclusion["key"], "producer": name,
+                            "statement": canon(conclusion["key"]), "producer": name,
                             "reason": "hypothesis depends on a data binder absent from the conclusion",
                         })
                     else:
@@ -287,6 +315,8 @@ class Graph:
             elif record == "statement":
                 self._statement(row["key"], row.get("type"), row.get("origin", "statement"),
                                 row.get("constants", ()))
+            elif record == "unfold":
+                self._statement(row["unfolded"], row.get("type"), "unfolding", row.get("constants", ()))
             elif record == "match":
                 status = row.get("status")
                 if status != "matched":
@@ -300,7 +330,7 @@ class Graph:
                     self._statement(residual["key"], residual.get("type"), "residual")
                 if row.get("open_data") or any(r.get("has_open_data") for r in residuals):
                     self.existential.append({
-                        "statement": row["statement"], "producer": row["producer"],
+                        "statement": canon(row["statement"]), "producer": row["producer"],
                         "reason": "producer data not determined by unification",
                         "residual_types": [r.get("type") for r in residuals],
                     })
@@ -723,6 +753,7 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
                 "consumers": sorted(node["consumers"]),
                 "conclusion_of": sorted(node["conclusion_of"]),
                 "constants": sorted(node.get("constants", ())),
+                "aliases": sorted(node.get("aliases", ())),
                 "component": graph.component.get(key),
                 "witness": (graph.reductions[graph.witness[key]][1]
                             if graph.witness.get(key, -1) >= 0 else None),

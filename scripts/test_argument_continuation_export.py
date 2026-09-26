@@ -54,6 +54,10 @@ theorem uses_even_two (_h : EvenP 2) : True := trivial
 theorem uses_target (h : Target) : OpenQ := open_iff_target.mpr h
 theorem schematic (n : Nat) (h : Supply n) : Supply n := h
 
+def Named : Prop := ∀ n : Nat, Supply n
+theorem uses_named (_h : Named) : True := trivial
+theorem named_of_even (h : ∀ n : Nat, EvenP n) : Named := fun n => supply_of_even n (h n)
+
 end ToyCorpus
 """
 
@@ -158,6 +162,14 @@ def main() -> int:
     openq = supplied("ToyCorpus.OpenQ")
     expect(openq.get("open_iff_target:iff_mpr_supplies_lhs") == ["ToyCorpus.Target"],
            f"OpenQ reduces to Target through the iff: {openq}")
+
+    unfolds = [r for r in rows if r["record"] == "unfold"]
+    named_key = by_type.get("ToyCorpus.Named")
+    universal_key = by_type.get("∀ (n : Nat), ToyCorpus.Supply n")
+    expect(any(u["statement"] == named_key and u["unfolded"] == universal_key for u in unfolds),
+           f"Named unfolds to the universal Supply statement: {unfolds}")
+    named = supplied("ToyCorpus.Named")
+    expect(named.get("named_of_even:theorem") is None, "theorem reductions are the builder's job")
 
     even2 = supplied("ToyCorpus.EvenP 2")
     expect(even2.get("both:and_right") == [], f"EvenP 2 supplied by a conjunct: {even2}")

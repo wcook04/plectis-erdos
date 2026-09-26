@@ -37,14 +37,31 @@ class ToyGraph(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.graph = builder.Graph(builder.read_export(FIXTURE))
         cls.graph.analyse()
-        cls.key = {node["type"]: key for key, node in cls.graph.statements.items()}
+        cls.key = {}
+        for key, node in cls.graph.statements.items():
+            for text in [node["type"], *node.get("aliases", ())]:
+                cls.key[text] = key
 
     def k(self, text: str) -> str:
         self.assertIn(text, self.key, f"statement {text!r} missing; have {sorted(self.key)}")
         return self.key[text]
 
+    def names(self, keys) -> set[str]:
+        out: set[str] = set()
+        for k in keys:
+            node = self.graph.statements[k]
+            out.add(node["type"])
+            out.update(node.get("aliases", ()))
+        return out
+
+    def test_aliases_merge(self) -> None:
+        # Target, Named and the universal Supply statement are one statement.
+        self.assertEqual(self.k("ToyCorpus.Target"), self.k("∀ (n : Nat), ToyCorpus.Supply n"))
+        self.assertEqual(self.k("ToyCorpus.Named"), self.k("ToyCorpus.Target"))
+        self.assertEqual(self.k("ToyCorpus.OpenQ"), self.k("∀ (n : Nat), ToyCorpus.EvenP n"))
+
     def test_supply(self) -> None:
-        supplied = {self.graph.statements[k]["type"] for k in self.graph.supplied}
+        supplied = self.names(self.graph.supplied)
         for text in ("ToyCorpus.Supply 3", "ToyCorpus.EvenP 2",
                      "∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n", "True"):
             self.assertIn(text, supplied)
@@ -58,26 +75,19 @@ class ToyGraph(unittest.TestCase):
         self.assertEqual(tree["from"], [])
 
     def test_disguise_class(self) -> None:
-        classes = [{self.graph.statements[m]["type"] for m in members}
-                   for members in self.graph.disguise_classes()]
-        self.assertEqual(classes, [{"ToyCorpus.Target", "ToyCorpus.OpenQ"}])
+        classes = [frozenset(members) for members in self.graph.disguise_classes()]
+        self.assertEqual(classes, [frozenset({self.k("ToyCorpus.Target"), self.k("ToyCorpus.OpenQ")})])
 
     def test_leverage(self) -> None:
-        gained = {self.graph.statements[k]["type"]
-                  for k in self.graph.leverage(self.k("∀ (n : Nat), ToyCorpus.EvenP n"))}
-        self.assertEqual(gained, {"∀ (n : Nat), ToyCorpus.Supply n", "ToyCorpus.Target", "ToyCorpus.OpenQ"})
+        gained = self.graph.leverage(self.k("∀ (n : Nat), n ≥ 7"))
+        self.assertEqual(gained, {self.k("ToyCorpus.Target"), self.k("ToyCorpus.OpenQ")})
         self.assertEqual(self.graph.leverage(self.k("ToyCorpus.EvenP 2")), set())
 
     def test_bundles(self) -> None:
         bundles, truncated = self.graph.bundles(self.k("ToyCorpus.Target"))
         self.assertFalse(truncated)
-        as_text = sorted(tuple(sorted(self.graph.statements[k]["type"] for k in bundle)) for bundle in bundles)
-        self.assertEqual(as_text, sorted([
-            ("ToyCorpus.OpenQ",),
-            ("∀ (n : Nat), ToyCorpus.Supply n",),
-            ("∀ (n : Nat), ToyCorpus.EvenP n",),
-            ("∀ (n : Nat), n ≥ 7",),
-        ]))
+        self.assertEqual(sorted(map(tuple, bundles)),
+                         sorted([(self.k("ToyCorpus.OpenQ"),), (self.k("∀ (n : Nat), n ≥ 7"),)]))
 
     def test_criticality(self) -> None:
         # Withdrawing supply_ge removes the only witness of the guarded statement,
@@ -89,7 +99,7 @@ class ToyGraph(unittest.TestCase):
         self.assertEqual(self.graph.criticality(statement=self.k("ToyCorpus.EvenP 2")), set())
 
     def test_object_index(self) -> None:
-        mentions = [n["type"] for n in self.graph.statements.values() if "ToyCorpus.EvenP" in n["constants"]]
+        mentions = self.names(k for k, n in self.graph.statements.items() if "ToyCorpus.EvenP" in n["constants"])
         self.assertIn("∀ (n : Nat), ToyCorpus.EvenP n", mentions)
         self.assertIn("ToyCorpus.Supply 1 ∧ ToyCorpus.EvenP 2", mentions)
 
@@ -97,7 +107,7 @@ class ToyGraph(unittest.TestCase):
         projection, graph_payload = builder.build(FIXTURE, ROOT)
         self.assertEqual(projection["schema"], builder.SCHEMA)
         self.assertEqual(projection["summary"]["disguise_classes"], 1)
-        self.assertEqual(projection["summary"]["open_statements"], 7)
+        self.assertEqual(projection["summary"]["open_statements"], 5)
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "a.json"
             gz = Path(tmp) / "a.json.gz"

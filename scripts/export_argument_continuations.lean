@@ -187,6 +187,22 @@ def corpusConstants (cfg : Config) (env : Environment) (e : Expr) : Array String
   let names := e.getUsedConstants.filter (selected cfg env)
   ((names.map Name.toString).qsort (· < ·)).extract 0 48
 
+/-- One delta step on a corpus-named proposition: `c a₁ … aₙ`, with `c` a
+corpus definition, becomes its body applied to the arguments. The two terms
+are definitionally equal but structurally different, so without this step a
+named antecedent (for example one lifted by `hypOf%`) and the binder type it
+names would be two unrelated statements. -/
+def unfoldNamedProp? (cfg : Config) (env : Environment) (e : Expr) : Option Expr := do
+  let e := e.consumeMData
+  -- Only named propositions without arguments: the shape of a lifted
+  -- antecedent or a registered target. Unfolding every predicate
+  -- application would double the statements searched for little gain.
+  let .const c us := e | none
+  unless selected cfg env c do none
+  let .defnInfo d ← env.find? c | none
+  let unfolded := d.value.instantiateLevelParams d.levelParams us
+  if unfolded.hasLooseBVars || unfolded == e then none else some unfolded
+
 def emit (stream : IO.FS.Stream) (j : Json) : IO Unit :=
   stream.putStr (j.compress ++ "\n")
 
@@ -285,7 +301,7 @@ def enqueue (s : State) (e : Expr) (origin : String) : State :=
   else { s with seen := s.seen.insert k, queue := s.queue.push (e, origin) }
 
 def binderRows (cfg : Config) (env : Environment) (type : Expr) :
-    MetaM (Array Json × Array Expr × Json) := do
+    MetaM (Array Json × Array Expr × Json × Option Expr) := do
   forallTelescope type fun xs body => do
     let mut rows : Array Json := #[]
     let mut closedHyps : Array Expr := #[]
@@ -316,7 +332,7 @@ def binderRows (cfg : Config) (env : Environment) (type : Expr) :
       ("head", toJson ((headName? body).map Name.toString |>.getD "")),
       ("constants", toJson (corpusConstants cfg env body))]
     if bodyClosed then conclusion := conclusion ++ [("key", toJson (keyOf body))]
-    return (rows, closedHyps, Json.mkObj conclusion)
+    return (rows, closedHyps, Json.mkObj conclusion, if bodyClosed then some body else none)
 
 def exportAll : MetaM Unit := do
   let cfg ← readConfig
@@ -345,12 +361,16 @@ def exportAll : MetaM Unit := do
     let some info := env.find? name | continue
     let result ← budgeted 400000 (binderRows cfg env info.type)
     match result with
-    | .ok (rows, closedHyps, conclusion) =>
+    | .ok (rows, closedHyps, conclusion, closedBody) =>
         emit stream <| Json.mkObj [
           ("record", "theorem"), ("name", toJson name.toString),
           ("module", toJson (moduleOf env name).toString),
           ("binders", Json.arr rows), ("conclusion", conclusion)]
         for h in closedHyps do state := enqueue state h "hypothesis"
+        -- The conclusion of a conditional argument is itself a statement the
+        -- graph must be able to reach and unfold.
+        if let some body := closedBody then
+          if !closedHyps.isEmpty then state := enqueue state body "conclusion"
         theoremCount := theoremCount + 1
     | .error reason =>
         emit stream <| Json.mkObj [
@@ -407,6 +427,12 @@ def exportAll : MetaM Unit := do
       ("record", "statement"), ("key", toJson key), ("origin", toJson origin),
       ("type", toJson (← render statement)),
       ("constants", toJson (corpusConstants cfg env statement))]
+    if let some unfolded := unfoldNamedProp? cfg env statement then
+      emit stream <| Json.mkObj [
+        ("record", "unfold"), ("statement", toJson key),
+        ("unfolded", toJson (keyOf unfolded)), ("type", toJson (← render unfolded)),
+        ("constants", toJson (corpusConstants cfg env unfolded))]
+      state := enqueue state unfolded "unfolding"
     match searched with
     | .ok rows =>
         for (row, residuals) in rows do
