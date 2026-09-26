@@ -369,8 +369,15 @@ jobs:
       # away the compiled oleans, so every rerun paid a cold build again.
       # Save the compiled tree as soon as the build step finishes, whatever
       # the later evidence checks decide.
+      #
+      # Pull requests never save. Each .lake entry is about 3 GB against the
+      # repository's 10 GB cache quota, and a pull-request cache is readable
+      # only by that pull request, so three open PRs evicted main's warmed
+      # cache (26 Sep 2026: every PR then cold-built for about 2h15m). Main is
+      # warmed by lean-cache-warm.yml on every push and by manual dispatch
+      # here; a PR restores it and rebuilds only the modules it changes.
       - name: Save project Lean cache after the build
-        if: always() && steps.lean-inputs.outputs.changed == 'true'
+        if: always() && steps.lean-inputs.outputs.changed == 'true' && github.event_name != 'pull_request'
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake
