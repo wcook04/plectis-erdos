@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import ast
 import re
 from pathlib import Path
 
@@ -125,6 +126,67 @@ def require_release_validator_path(workflow: str) -> None:
     )
 
 
+def require_release_before_expensive_jobs(workflow: str) -> None:
+    """Evaluate the actual job conditions across failed and selective runs.
+
+    GitHub implicitly requires successful dependencies unless an expression
+    contains a status function. Only the explicit replay-only dispatch may
+    accept the intentionally skipped release job.
+    """
+    release = job_body(workflow, "release-surfaces")
+    require("needs: change_scope" in release,
+            "release checks must remain independent of expensive jobs")
+    for job in ("build", "external-verification"):
+        body = job_body(workflow, job)
+        needs = re.search(r"(?m)^    needs: \[([^\]]+)\]$", body)
+        require(needs is not None, f"{job} must declare its release dependency")
+        require(set(x.strip() for x in needs.group(1).split(",")) ==
+                {"change_scope", "release-surfaces"},
+                f"{job} must await classification and release checks")
+        condition = re.search(r"(?m)^    if: \$\{\{ (.+) \}\}$", body)
+        require(condition is not None, f"{job} lost its scope condition")
+        expression = condition.group(1)
+        for event, scope, result, cancelled, corpus_only, expected in (
+            ("pull_request", "", "success", False, "false", True),
+            ("pull_request", "", "failure", False, "false", False),
+            ("pull_request", "", "skipped", False, "false", False),
+            ("pull_request", "", "cancelled", False, "false", False),
+            ("pull_request", "", "success", True, "false", False),
+            ("pull_request", "", "success", False, "true", job == "build"),
+            ("workflow_dispatch", "all", "success", False, "false", True),
+            ("workflow_dispatch", "all", "failure", False, "false", False),
+            ("workflow_dispatch", "release-surfaces-only", "success", False, "false", False),
+            ("workflow_dispatch", "external-verification-only", "skipped", False, "false",
+             job == "external-verification"),
+            ("workflow_dispatch", "external-verification-only", "failure", False, "false", False),
+            ("workflow_dispatch", "external-verification-only", "skipped", True, "false", False),
+        ):
+            values = {
+                "github.event_name": event,
+                "inputs.scope": scope,
+                "needs.change_scope.result": "success",
+                "needs.change_scope.outputs.erdos1041_corpus_only": corpus_only,
+                "needs.release-surfaces.result": result,
+                "cancelled()": cancelled,
+            }
+            rendered = expression
+            for key, value in values.items():
+                rendered = rendered.replace(key, repr(value))
+            rendered = rendered.replace("&&", " and ").replace("||", " or ")
+            rendered = re.sub(r"!(?!=)", "not ", rendered).strip()
+            tree = ast.parse(rendered, mode="eval")
+            allowed = (ast.Expression, ast.BoolOp, ast.UnaryOp, ast.Compare,
+                       ast.Constant, ast.And, ast.Or, ast.Not, ast.Eq, ast.NotEq)
+            require(all(isinstance(node, allowed) for node in ast.walk(tree)),
+                    f"unsupported CI condition in {job}")
+            actual = bool(eval(compile(tree, "<job condition>", "eval"), {"__builtins__": {}}))
+            if "cancelled()" not in expression:
+                actual = actual and result == "success" and not cancelled
+            require(actual == expected,
+                    f"{job} schedules incorrectly: {event}/{scope}/{result}, "
+                    f"cancelled={cancelled}, corpus_only={corpus_only}")
+
+
 def main() -> int:
     environment = workflow_environment(WORKFLOW)
     warm_environment = workflow_environment(WARM_WORKFLOW)
@@ -148,6 +210,7 @@ def main() -> int:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     require_pinned_python(workflow)
     require_release_validator_path(workflow)
+    require_release_before_expensive_jobs(workflow)
     require(
         re.search(r"(?m)^    env:\n", workflow) is None,
         "a Lean job added a job-level environment that could override the baseline",

@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "7f3dbf0947c387335ffd392b689eea5721017d84",
-  "content_digest": "sha256:550f0f047d6c9d6519534dfafb0c9606c8b104da617d7fa169d5b401286130ad",
+  "content_digest": "sha256:84d0dd9a00827f187bc21e3d4f220bf4c0f62752584f875d8db5616fb4394ccb",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -21,14 +21,14 @@
       "none": 5
     },
     "comparator": {
-      "compared": 633,
+      "compared": 634,
       "not_applicable": 30,
-      "pending": 14
+      "pending": 13
     },
     "palomar": {
       "not_applicable": 30,
-      "pending": 14,
-      "prepared": 633
+      "pending": 13,
+      "prepared": 634
     },
     "uncounted_rows": 0
   },
@@ -19447,7 +19447,9 @@
       },
       "comparator": {
         "status": "pending",
-        "queued_at": "2026-09-23"
+        "queued_at": "2026-09-23",
+        "pending_reason": "No exact Comparator interface or replay is bound for the positive-index theorem. The existing periodic interface assumes periodicity also at n = 0; the existing eventuallyPeriodic interface assumes infinitude. This paper theorem requires periodicity only at positive indices and derives infinitude from a positive member.",
+        "next_action": "In the next governed corpus build, transport lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean from public paper commit 7f79e63d0b36b5b4f0b47b6368342b4a50824f4e (SHA-256 322da3b9cfa18a8b9ecd145c4a1a9935f8cbaf3ad7dd8c230857f118efee4572; Lean v4.29.1). Build its module, probe the exact declaration closure, prepare its independent Challenge and checked Solution, and run Comparator. Add an association for irrational_erdosSupportSeries_positivePeriodic only after a matching source-bound replay passes, then regenerate paper evidence."
       }
     },
     {
@@ -26493,11 +26495,20 @@
         ]
       },
       "palomar": {
-        "status": "pending"
+        "status": "prepared"
       },
       "comparator": {
-        "status": "pending",
-        "queued_at": "2026-09-23"
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1041_01"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
       }
     },
     {

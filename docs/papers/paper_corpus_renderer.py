@@ -1683,6 +1683,22 @@ def _readme(
             f"`{record['paper_id']}` · {record['relation_to_this_repository']} to this repository"
         )
         lines.append("")
+        for archived in record.get("archived_versions", []):
+            label = f"{archived['identifier']}v{archived['version']}"
+            source_url = (f"{archived['source_repository']}/blob/"
+                          f"{archived['source_commit']}/{archived['source_path']}")
+            lines += [
+                f"Archived edition: [{label}]({archived['url']}) "
+                f"([PDF]({archived['pdf_url']}), [source archive]({archived['source_url']})); "
+                f"published {archived['published']} from "
+                f"[source `{archived['source_commit'][:12]}`]({source_url}).",
+                "",
+                ("The current source and PDF match this archived edition."
+                 if archived["relation_to_current_manuscript"] == "same_source_and_pdf"
+                 else "The current source or PDF differs from this frozen edition; the archive record does not cover later changes."),
+                "Archive publication does not establish independent mathematical review.",
+                "",
+            ]
         route = record.get("first_pass")
         if route:
             entries = route["sections"]

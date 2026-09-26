@@ -11,6 +11,8 @@ exemption lists honest.  A check that cannot fail proves nothing.
 from __future__ import annotations
 
 import copy
+import contextlib
+import io
 import json
 import subprocess
 import tempfile
@@ -418,6 +420,38 @@ def test_integrity_rejects_unstamped_edits_and_invalid_statuses() -> None:
     require(check.ledger_integrity_failures(none_with_names), "a none row may not name declarations")
 
 
+def test_pending_obligations_are_visible_without_claiming_comparison() -> None:
+    text = paper(STATEMENT)
+    pending = {
+        "status": "pending", "queued_at": "2026-09-23",
+        "pending_reason": "The replay checks a stronger hypothesis than this paper statement.",
+        "next_action": "Prepare and compare the exact declaration, then bind its receipt.",
+    }
+    ledger = short_ledger(text, comparator=pending)
+    ledger["rows"][0]["palomar"] = {"status": "pending"}
+    ledger = check.restamped(ledger, [])
+    before = copy.deepcopy(ledger)
+    report = evaluate(ledger, {SHORT_PAPER: text, **evidence_texts()})
+    require(not report.failed(), "an exact pending obligation should remain valid")
+    for key in ("pending_reason", "next_action"):
+        require(report.queued[0][key] == pending[key], f"JSON worklist hides {key}")
+    rendered = io.StringIO()
+    with contextlib.redirect_stdout(rendered):
+        check.print_report(report)
+        check.print_rows(ledger["rows"])
+    for key in ("pending_reason", "next_action"):
+        require(rendered.getvalue().count(pending[key]) == 2, f"text views hide {key}")
+    require(ledger == before, "showing an obligation must not mutate evidence or status")
+    for key in ("pending_reason", "next_action"):
+        for invalid in ("", "   ", ["later"], None):
+            bad = copy.deepcopy(ledger)
+            bad["rows"][0]["comparator"][key] = invalid
+            bad["content_digest"] = check.content_digest(bad)
+            report = evaluate(bad, {SHORT_PAPER: text})
+            require(any(key in failure["detail"] for failure in report.e),
+                    f"(e) accepted malformed {key}: {invalid!r}")
+
+
 def test_summary_follows_the_rows_and_restamp_regenerates_it() -> None:
     text = paper(STATEMENT, NOTE)
     ledger = short_ledger(text)
@@ -535,6 +569,7 @@ def main() -> int:
         test_clause_c_flags_stale_generated_links_and_spares_author_citations,
         test_clause_d_label_docstrings_need_a_row_or_a_reasoned_exemption,
         test_clause_e_pending_exact_rows_need_a_queue_date,
+        test_pending_obligations_are_visible_without_claiming_comparison,
         test_integrity_rejects_unstamped_edits_and_invalid_statuses,
         test_summary_follows_the_rows_and_restamp_regenerates_it,
         test_currency_detects_changed_moved_and_unrecorded_statements,
