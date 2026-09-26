@@ -252,6 +252,16 @@ premise, all quantifiers, prior art and limits. Lean checks the separation,
 the exact distance \(1/2\) and the mean bound; the exact rank is an ordinary
 proof with exact finite controls. Their historical novelty is unassessed.
 
+The replay in
+[results/totient_uniform_rank](results/totient_uniform_rank/summary.json)
+runs the three premise candidates of
+[totient_uniform_rank_request.json](totient_uniform_rank_request.json)
+without importing the endpoint module. The three-prime #269 theorem is
+rejected: its conclusion \((1-1/5)/2\le E\) does not unify with the goal
+\(1/2\le E\). The generic barrier applies and leaves one goal, that distinct
+rows of \(H\) come within any \(\eta>0\) of distance one. Supplying the #249
+theorem `totientHankel_row_separation` closes it.
+
 ## Controls that changed the investigation
 
 - A proposed sharp uniform finite-rank barrier for the normalized #269

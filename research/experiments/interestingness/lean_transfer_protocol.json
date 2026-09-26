@@ -84,8 +84,13 @@
     "first_compile_diagnosis": "The first focused build (future cf_5ad56bc6e5354501b029) failed on tactic and API drift, not on mathematics: a subtype-versus-ambient distance atom in the generic barrier, a simp normal form in the separation bound, renamed Mathlib lemmas and brittle simp calls in the mean estimate, and a computability marker. Each proof kept its statement and strategy.",
     "admission": "All five modules are imported from the supported roots (Root.lean and Synthesis.lean).",
     "pending": [
-      "Replay the explicit premise candidates through the premise_exchange runner and proof_state_compiler.",
       "Bind the declarations to a paper row only if a paper prints these statements; the research note is their current reader surface."
-    ]
+    ],
+    "premise_replay": {
+      "result": "research/experiments/premise_exchange/results/totient_uniform_rank/summary.json",
+      "command": "python3 research/experiments/premise_exchange/run.py research/experiments/premise_exchange/totient_uniform_rank_request.json --output research/experiments/premise_exchange/results/totient_uniform_rank",
+      "transitions": "three_prime_specific_bound rejected by Lean (conclusion (1 - 5^-1)/2 <= E does not unify with 1/2 <= E); generic_obstruction_exposes_arithmetic_obligation accepted with one open goal, the cofinal row separation of totientHankel; arithmetic_separation_closes_shared_obstruction accepted and closed by exact totientHankel_row_separation. The endpoint module TotientUniformRankBarrier is not imported.",
+      "boundary": "Shows the interface exposes and discharges the missing premise. It is not independent human use, a proof-search lower bound, or evidence for a selection method."
+    }
   }
 }

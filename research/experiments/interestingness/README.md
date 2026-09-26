@@ -115,17 +115,24 @@ minimality, or the cost of an alternate proof. It does show which dependency
 and premise are actually present in this checked transfer, a stronger basis
 for choosing the next experiment than a corpus-wide score alone.
 
-Choosing an interesting target and choosing a helpful premise move the score
-in opposite directions. For one target under two contexts,
+Choosing an interesting target and choosing a helpful premise are different
+optimization questions. For one target under two contexts,
 
 \[
 \frac{I(T\mid P')}{I(T\mid P)}
 =\frac{V(T\mid P')}{V(T\mid P)}\cdot\frac{L(T\mid P)}{L(T\mid P')}.
 \]
 
-A premise that makes a fixed target easier lowers \(V(T\mid P')\) and so
-tends to lower \(I(T\mid P')\). A higher ratio can come from a harder proof,
-from cheaper premise-relative vocabulary, or from both. The paper's appendix
+When an added premise lowers the proof cost \(V(T\mid P')\) of a fixed target
+and leaves its premise-relative description length unchanged, conditional
+interestingness decreases. When the premise also supplies definitions, both
+quantities can decrease and the ratio has no fixed direction: with positive
+lengths, \(I(T\mid P')>I(T\mid P)\) exactly when
+\(V(T\mid P')\,L(T\mid P)>V(T\mid P)\,L(T\mid P')\), so a move from
+\((V,L)=(100,100)\) to \((60,20)\) lowers proof cost and raises \(I\) from 100
+to 300. A transfer record therefore reports the proof-cost change and the
+vocabulary-length change separately. A higher ratio can come from a harder
+proof, from cheaper premise-relative vocabulary, or from both. The paper's appendix
 matrix of cross-area interestingness reports exactly this ratio, as medians
 of predicted scores against the same-area condition. It measures how
 interesting targets look under another area's premises. It does not record
