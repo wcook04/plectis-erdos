@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `b71c1a9a652d419c`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `2712d72dc6af22e2`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1104,7 +1104,7 @@ Each entry gives the abstract and the opening sections of the short paper, cut a
 
 *Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf)
 
-Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (175 KB as text).
+Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (181 KB as text).
 
 <a id="erdos-68-factorial-denominator-irrationality--erdos-68-factorial-denominator-irrationality"></a>
 
@@ -1387,9 +1387,30 @@ In particular, support in $`[d,2d)`$ and $`V_d(\lambda)=0`$ force $`M(\lambda)=0
 
 For example, at $`D=4`$ the minimum moment is $`1380`$, attained by $`12K_4+253U_6-11U_8`$. The inputs to <a href="#erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> are $`L_4=115`$, $`a_4=-55`$ and $`g_4=60`$. The last equality uses the full-tail divisibility $`\operatorname{lcm}(1,\ldots,n)\mid u_n`$ together with $`23u_6-u_8=60`$. <span id="erdos-68-factorial-denominator-irrationality--eq:channel-lcm-envelope" label="eq:channel-lcm-envelope"></span> The long paper, §5.1, proves that divisibility by Legendre’s formula, checks the attaining vector, and gives the different minimum $`4140`$ when support is restricted to $`n\le6`$.
 
+There is also a short certificate for this depth-four value that does not require computing the entire tail gcd. For every $`n\ge2`$,
+``` math
+\begin{equation}
+  1380\mid 11n!-46W_{2,n}+12W_{4,n}.
+  \label{eq:depth-four-dual}
+\end{equation}
+```
+For $`n=2,3,4`$ the expression is zero. For $`n\ge4`$, each summand is divisible by $`12`$: $`12\mid n!`$, while $`6\mid W_{2,n}`$ because $`W_{2,2r}=r!\prod_{j=1}^{r}(2j-1)`$ for $`r\ge2`$ and $`W_{2,2r+1}=(2r+1)W_{2,2r}`$. For $`n\ge5`$, each summand is divisible by $`5`$, since the denominators removed from $`n!`$ in $`W_{2,n}`$ and $`W_{4,n}`$ are powers of $`2`$ and $`24`$. Finally, $`n!=24^{\lfloor n/4\rfloor}W_{4,n}\equiv W_{4,n}\pmod{23}`$ and $`46W_{2,n}\equiv0\pmod{23}`$. The factors $`12`$, $`5`$ and $`23`$ are coprime, proving <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-dual" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-dual">[eq:depth-four-dual]</a>.
+
+Summing against a finite integer vector gives $`1380\mid 11M-46V_2+12V_4`$. Thus $`V_2=V_4=0`$ implies $`1380\mid M`$, since $`11`$ is coprime to $`1380`$. Equality is attained even with the third channel cancelled:
+``` math
+\begin{equation}
+  \lambda=1482e_2-784e_3-136e_5+83e_6-e_8,
+  \qquad (M,V_2,V_3,V_4)=(1380,0,0,0).
+  \label{eq:depth-four-short-vector}
+\end{equation}
+```
+These values follow directly from the five rows $`(n!,W_{2,n},W_{3,n},W_{4,n})`$ at $`n=2,3,5,6,8`$: $`(2,1,2,2)`$, $`(6,3,1,6)`$, $`(120,30,20,5)`$, $`(720,90,20,30)`$ and $`(40320,2520,1120,70)`$. Hence imposing $`V_3=0`$ does not change the attainable *moments*; it does restrict the vectors, since $`3e_2-e_3`$ has $`M=V_2=V_4=0`$ but $`V_3=5`$.
+
+The first possible maximum index of a vector attaining moment $`1380`$ under $`V_2=V_4=0`$ is $`8`$. Indeed, the expression in <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-dual" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-dual">[eq:depth-four-dual]</a> is zero at $`n=2,3,4,5`$ and equals $`4140`$ and $`28980=7\cdot4140`$ at $`n=6,7`$. For support at most $`7`$, $`11M=4140(\lambda_6+7\lambda_7)`$ when the two channels vanish; coprimality of $`11`$ and $`4140`$ forces $`4140\mid M`$. The vector in <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-short-vector" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-short-vector">[eq:depth-four-short-vector]</a> reaches index $`8`$. All of these statements concern finite cancellation; they do not prove irrationality of the series.
+
 <a id="erdos-68-factorial-denominator-irrationality--sec:translator"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (67 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (70 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
