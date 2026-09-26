@@ -1304,6 +1304,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     parser.add_argument(
+        "--tracked-only",
+        action="store_true",
+        help="with ordinary --check, require the committed receipt; ignore local cache",
+    )
+    parser.add_argument(
         "--refresh-validation-metadata",
         action="store_true",
         help=(
@@ -1338,6 +1343,11 @@ def main() -> int:
         help="with --report-ci-outcome, exit nonzero unless the outcome is current",
     )
     args = parser.parse_args()
+    if args.tracked_only and (
+        not args.check or args.full_check or args.refresh_validation_metadata
+        or args.report_ci_outcome or args.singleflight_worker
+    ):
+        parser.error("--tracked-only requires ordinary --check")
     if args.report_ci_outcome:
         if args.check or args.full_check or args.write_stale or args.refresh_validation_metadata:
             parser.error(
@@ -1366,7 +1376,9 @@ def main() -> int:
     if args.write_stale and not (args.check and args.full_check):
         parser.error("--write-stale requires --check --full-check")
     if args.check and not args.full_check:
-        cached = load_cached_check()
+        cached = load_cached_check(
+            receipt_path=TRACKED_CHECK_RECEIPT if args.tracked_only else None,
+        )
         if cached is not None:
             print(
                 "Lean dependency index: PASS cached "
@@ -1378,7 +1390,10 @@ def main() -> int:
             "Lean dependency index: STALE exact receipt; ordinary --check "
             "never compiles. After the coordinated root build, run "
             "python3 scripts/build_lean_dependency_index.py --check "
-            "--full-check to export the elaborated environment.",
+            "--full-check --write-stale to export the elaborated environment; "
+            "a stale export exits 1 after writing. Commit both "
+            "docs/lean_dependency_index.json and docs/lean_dependency_index_check.json, "
+            "then rerun --check --tracked-only.",
             file=sys.stderr,
         )
         return 1

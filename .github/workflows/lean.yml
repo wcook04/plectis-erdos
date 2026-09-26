@@ -108,6 +108,12 @@ jobs:
           echo "erdos1041_corpus_only=$corpus_only" >> "$GITHUB_OUTPUT"
           echo "Erdős 1041 corpus-only publication: $corpus_only"
 
+      # Every job depends on this gate. Reject stale committed evidence before
+      # restoring Lean caches or compiling; keep the full export below as an
+      # independent verification of a source-current packet.
+      - name: Check committed dependency-index receipt before expensive jobs
+        run: python3 scripts/build_lean_dependency_index.py --check --tracked-only
+
   build:
     needs: change_scope
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}

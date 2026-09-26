@@ -9,6 +9,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import subprocess
 import tempfile
 from pathlib import Path
@@ -221,11 +222,10 @@ def check_tracked_cold_clone_receipt() -> None:
     cached = builder.load_cached_check(
         receipt_path=builder.TRACKED_CHECK_RECEIPT,
     )
-    if cached is not None:
-        require(
-            cached == receipt,
-            "exact tracked cache lookup returned a different receipt",
-        )
+    require(
+        cached == receipt,
+        "tracked cold-clone receipt is stale for current semantic inputs",
+    )
 
 
 def check_safe_dependency_input_boundary() -> None:
@@ -517,6 +517,54 @@ def check_plain_check_never_builds() -> None:
     )
 
 
+def check_tracked_only_ignores_local_success() -> None:
+    """A warm clone must reject the same missing/stale evidence as cold CI."""
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        output, local, tracked = (root / name for name in ("index", "local", "tracked"))
+        output.write_text('{"current":true}\n', encoding="utf-8")
+        receipt = {
+            "schema": builder.CHECK_RECEIPT_SCHEMA,
+            "builder_schema": builder.SCHEMA,
+            "input_fingerprint": "sha256:current",
+            "output_digest": sha256_text(output.read_text(encoding="utf-8")),
+            "source_resolved_node_count": 1,
+            "source_resolved_direct_edge_count": 0,
+        }
+        local.write_text(json.dumps(receipt), encoding="utf-8")
+        load = builder.load_cached_check
+        with patch.object(builder, "CHECK_RECEIPT", local), \
+             patch.object(builder, "TRACKED_CHECK_RECEIPT", tracked), \
+             patch.object(builder, "check_input_fingerprint", return_value="sha256:current"), \
+             patch.object(builder, "load_cached_check", side_effect=lambda **kw: load(output=output, **kw)), \
+             patch.object(builder, "coordinated_export", side_effect=AssertionError("cheap check launched Lean")):
+            for contents in (None, "not-json", json.dumps({**receipt, "input_fingerprint": "sha256:old"})):
+                if contents is not None:
+                    tracked.write_text(contents, encoding="utf-8")
+                with patch.object(builder.sys, "argv", ["builder", "--check"]):
+                    require(builder.main() == 0, "warm local receipt fixture was not current")
+                with patch.object(builder.sys, "argv", ["builder", "--check", "--tracked-only"]):
+                    require(builder.main() == 1, "local success concealed missing/stale tracked evidence")
+            tracked.write_text(json.dumps(receipt), encoding="utf-8")
+            with patch.object(builder.sys, "argv", ["builder", "--check", "--tracked-only"]):
+                require(builder.main() == 0, "current tracked receipt was rejected")
+                output.write_text('{"corrupted":true}\n', encoding="utf-8")
+                require(builder.main() == 1, "changed output passed tracked receipt check")
+
+
+def check_ci_freshness_precedes_expensive_jobs() -> None:
+    workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
+    jobs = dict(re.findall(r"^  ([\w-]+):\n(.*?)(?=^  [\w-]+:|\Z)", workflow, re.M | re.S))
+    gate = jobs["change_scope"]
+    command = "python3 scripts/build_lean_dependency_index.py --check --tracked-only"
+    require(command in gate, "CI must check committed evidence before its dependent jobs")
+    step = gate[gate.rfind("      - name:"):]
+    require(command in step and "if:" not in step, "freshness gate is conditional or moved")
+    for name in ("build", "external-verification", "release-surfaces"):
+        require("needs: change_scope" in jobs[name], f"{name} can bypass cheap freshness gate")
+    require("--full-check" in jobs["build"], "cheap freshness replaced independent Lean export")
+
+
 def check_write_stale_requires_full_check() -> None:
     with patch.object(
         builder.sys,
@@ -776,6 +824,8 @@ def main() -> int:
     check_guarded_metadata_refresh()
     check_environment_build_is_bounded()
     check_plain_check_never_builds()
+    check_tracked_only_ignores_local_success()
+    check_ci_freshness_precedes_expensive_jobs()
     check_write_stale_requires_full_check()
     check_export_file_transport_preserves_raw_data_and_clean_environment()
     check_export_file_transport_rejects_missing_or_empty_output()

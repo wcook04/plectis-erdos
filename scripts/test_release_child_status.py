@@ -8,6 +8,7 @@ from __future__ import annotations
 import inspect
 import subprocess
 import sys
+from unittest.mock import patch
 
 import check_release
 
@@ -26,6 +27,14 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    stale = subprocess.CompletedProcess([], 1, "", "stale committed dependency evidence")
+    with patch.object(check_release, "run", return_value=stale) as run, \
+         patch.object(check_release, "check_proof_trust", side_effect=AssertionError("release continued past stale evidence")):
+        require(check_release.main(["--singleflight-worker"]) == 1,
+                "release accepted stale dependency evidence")
+        require("--tracked-only" in run.call_args.args[0],
+                "release allows local cache to mask stale committed evidence")
+
     source = inspect.getsource(check_release)
     require("2>/dev/null" not in source, "release runner still discards stderr")
     require("| tail" not in source, "release runner still truncates child output in a pipe")
