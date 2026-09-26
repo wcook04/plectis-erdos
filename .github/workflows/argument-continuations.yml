@@ -94,13 +94,15 @@ jobs:
           "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
-      - name: Toy-corpus exporter test
-        run: python3 scripts/test_argument_continuation_export.py
-
       - name: Fetch pinned dependency build artifacts
         run: |
           set -euo pipefail
           lake exe cache get
+
+      # The toy corpus imports Mathlib's tactic modules, so it runs after the
+      # dependency artifacts are fetched.
+      - name: Toy-corpus exporter test
+        run: python3 scripts/test_argument_continuation_export.py
 
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems

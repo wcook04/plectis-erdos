@@ -42,7 +42,20 @@ source-coordinate join and the argument graph. Environment variables:
 * `PLECTIS_CONTINUATION_MAX_STATEMENTS`: closed statements searched in total
   (default 60000);
 * `PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS`: wall-clock budget for the
-  producer search (default 5400).
+  producer search (default 5400);
+* `PLECTIS_CONTINUATION_BATTERY_HEARTBEATS` and
+  `PLECTIS_CONTINUATION_BATTERY_SECONDS`: per-tactic budget (thousands) and
+  wall-clock budget for the tactic battery on open leaves (defaults 40000 and
+  1200).
+
+After the producer search, two more passes run. Pass 3 composes each
+conditional theorem whose closed hypotheses all have a residual-free producer
+and has the kernel check the composed term. Pass 4 tries a fixed battery of
+standard closing tactics (after introducing binders and unfolding the corpus
+definitions the statement mentions) on every closed statement no corpus
+theorem supplies, most-consumed first, and has the kernel check every proof it
+finds. A leaf the battery does not close is reported as untried or unclosed,
+never as false.
 -/
 
 open Lean Meta Elab Command
@@ -56,6 +69,8 @@ structure Config where
   maxCandidates : Nat
   maxStatements : Nat
   timeBudgetMs : Nat
+  batteryHeartbeats : Nat
+  batteryBudgetMs : Nat
 
 private def squeeze (s : String) : String :=
   String.ofList (s.toList.filter fun c => !c.isWhitespace)
@@ -80,6 +95,8 @@ def readConfig : IO Config := do
     maxCandidates := ← envNat "PLECTIS_CONTINUATION_MAX_CANDIDATES" 96
     maxStatements := ← envNat "PLECTIS_CONTINUATION_MAX_STATEMENTS" 60000
     timeBudgetMs := (← envNat "PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS" 5400) * 1000
+    batteryHeartbeats := ← envNat "PLECTIS_CONTINUATION_BATTERY_HEARTBEATS" 40000
+    batteryBudgetMs := (← envNat "PLECTIS_CONTINUATION_BATTERY_SECONDS" 1200) * 1000
   }
 
 def exportStream : IO IO.FS.Stream := do
@@ -381,6 +398,16 @@ def proveDirect (statement : Expr) (producer : Name) (reading : String) : MetaM 
     if closed.hasMVar then return none
     return some closed
 
+/-- Kernel verdict on `value : type`, checked synchronously against the
+current environment (so auxiliary lemmas a tactic just created are visible).
+`none` means accepted. -/
+def kernelVerdict (type value : Expr) : MetaM (Option String) := do
+  let decl := Declaration.thmDecl
+    { name := `_argument_continuation_check, levelParams := [], type, value }
+  match Kernel.Environment.addDecl (← getEnv).toKernelEnv (← getOptions) decl with
+  | .ok _ => return none
+  | .error ex => return some (clip (← (ex.toMessageData (← getOptions)).toString) 400)
+
 /-- Compose a conditional theorem with residual-free producers of each of
 its closed hypotheses and ask the kernel to check the result as a new
 theorem declaration (in a scratch environment). -/
@@ -411,12 +438,7 @@ def composeAndCheck (info : ConstantInfo) (direct : Std.HashMap String (Name × 
   let value ← instantiateMVars (mkAppN (mkConst info.name) mvars)
   let type ← instantiateMVars body
   if value.hasMVar || type.hasMVar || type.hasFVar then return none
-  let declName := `_argument_composition ++ info.name
-  let checked ← withoutModifyingEnv do
-    try
-      addDecl (.thmDecl { name := declName, levelParams := [], type, value })
-      pure (none : Option String)
-    catch ex => pure (some (← ex.toMessageData.toString))
+  let checked ← kernelVerdict type value
   return some <| Json.mkObj [
     ("record", "composition"), ("theorem", toJson info.name.toString),
     ("conclusion", toJson (keyOf type)), ("type", toJson (← render type)),
@@ -424,7 +446,57 @@ def composeAndCheck (info : ConstantInfo) (direct : Std.HashMap String (Name × 
     ("kernel_checked", toJson checked.isNone),
     ("kernel_error", toJson (checked.map (clip · 400) |>.getD ""))]
 
-def exportAll : MetaM Unit := do
+
+/-- `budgeted` for elaboration-level work (tactics). -/
+def budgetedTerm (heartbeats : Nat) (x : Elab.TermElabM α) : Elab.TermElabM (Except String α) := do
+  withCurrHeartbeats <|
+    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
+      tryCatchRuntimeEx (do return .ok (← x)) fun ex =>
+        if ex.isMaxHeartbeat then return .error "budget_exhausted"
+        else if ex.isMaxRecDepth then return .error "runtime_limit"
+        else return .error "tactic_failed"
+
+/-- The closing tactics tried on an open leaf, each after `intros` and after
+unfolding the corpus definitions the statement mentions. -/
+def batteryScripts (defs : Array Name) : Elab.TermElabM (Array (String × Syntax)) := do
+  let ids : Array Ident := defs.map mkIdent
+  let pre : Syntax ←
+    if ids.isEmpty then `(tactic| intros)
+    else `(tactic| (intros; try unfold $ids* at *))
+  let pre : TSyntax `tactic := ⟨pre⟩
+  return #[
+    ("decide", ← `(tactic| ($pre; decide))),
+    ("omega", ← `(tactic| ($pre; omega))),
+    ("norm_num", ← `(tactic| ($pre; norm_num))),
+    ("simp_all", ← `(tactic| ($pre; simp_all))),
+    ("positivity", ← `(tactic| ($pre; positivity))),
+    ("linarith", ← `(tactic| ($pre; linarith)))]
+
+/-- Try the battery on a closed statement; return the tactic that closed it
+if the kernel accepts the resulting proof. -/
+def tryBattery (cfg : Config) (env : Environment) (statement : Expr) :
+    Elab.TermElabM (Option String) := do
+  let defs := (statement.getUsedConstants.filter fun c =>
+      selected cfg env c && (match env.find? c with | some (.defnInfo _) => true | _ => false))
+  for (label, script) in ← batteryScripts defs do
+    -- The kernel check runs inside the reverted block: a tactic's auxiliary
+    -- lemmas exist only there.
+    let attempt : Elab.TermElabM Bool := withoutModifyingState do
+      let goal ← mkFreshExprMVar statement
+      let remaining ← Elab.Tactic.run goal.mvarId! (Elab.Tactic.evalTactic script)
+      unless remaining.isEmpty do return false
+      Elab.Term.synthesizeSyntheticMVarsNoPostponing
+      let proof ← instantiateMVars goal
+      if proof.hasMVar || proof.hasSyntheticSorry then return false
+      return (← kernelVerdict statement proof).isNone
+    let accepted := match ← budgetedTerm cfg.batteryHeartbeats attempt with
+      | .ok true => true
+      | _ => false
+    modifyThe Core.State fun st => { st with messages := {} }
+    if accepted then return some label
+  return none
+
+def exportAll : Elab.TermElabM Unit := do
   let cfg ← readConfig
   let env ← getEnv
   let stream ← exportStream
@@ -442,6 +514,8 @@ def exportAll : MetaM Unit := do
   -- Pass 1: telescopes.
   let mut state : State := {}
   let mut theoremCount := 0
+  let mut consumerCount : Std.HashMap String Nat := {}
+  let mut supplied : Std.HashSet String := {}
   let mut names : Array Name := #[]
   for (name, info) in env.constants.toList do
     if selected cfg env name then
@@ -456,7 +530,9 @@ def exportAll : MetaM Unit := do
           ("record", "theorem"), ("name", toJson name.toString),
           ("module", toJson (moduleOf env name).toString),
           ("binders", Json.arr rows), ("conclusion", conclusion)]
-        for h in closedHyps do state := enqueue state h "hypothesis"
+        for h in closedHyps do
+          state := enqueue state h "hypothesis"
+          consumerCount := consumerCount.insert (keyOf h) (consumerCount.getD (keyOf h) 0 + 1)
         -- The conclusion of a conditional argument is itself a statement the
         -- graph must be able to reach and unfold.
         if let some body := closedBody then
@@ -529,6 +605,7 @@ def exportAll : MetaM Unit := do
           emit stream row
           if (row.getObjValAs? String "status").toOption == some "matched" then
             state := { state with matchCount := state.matchCount + 1 }
+            supplied := supplied.insert key
             let residualCount := match row.getObjVal? "residuals" with
               | .ok (.arr xs) => xs.size
               | _ => 1
@@ -560,8 +637,29 @@ def exportAll : MetaM Unit := do
         if (row.getObjValAs? Bool "kernel_checked").toOption == some true then
           checkedCompositions := checkedCompositions + 1
     | _ => pure ()
+  -- Pass 4: the tactic battery on open leaves, most-consumed first.
+  let batteryStart ← IO.monoMsNow
+  let mut leaves : Array (Nat × Expr) := #[]
+  for (statement, _) in state.queue.extract 0 cursor do
+    let key := keyOf statement
+    unless supplied.contains key do
+      leaves := leaves.push (consumerCount.getD key 0, statement)
+  leaves := leaves.qsort (fun a b => a.1 > b.1)
+  let mut batteryTried := 0
+  let mut batteryClosed := 0
+  for (_, statement) in leaves do
+    if (← IO.monoMsNow) - batteryStart > cfg.batteryBudgetMs then break
+    batteryTried := batteryTried + 1
+    if let some label ← tryBattery cfg env statement then
+      batteryClosed := batteryClosed + 1
+      emit stream <| Json.mkObj [
+        ("record", "battery"), ("statement", toJson (keyOf statement)),
+        ("tactic", toJson label), ("kernel_checked", toJson true)]
   emit stream <| Json.mkObj [
     ("record", "summary"), ("theorems", toJson theoremCount),
+    ("battery_leaves", toJson leaves.size),
+    ("battery_tried", toJson batteryTried),
+    ("battery_closed", toJson batteryClosed),
     ("compositions", toJson compositions),
     ("kernel_checked_compositions", toJson checkedCompositions),
     ("statements_discovered", toJson state.queue.size),

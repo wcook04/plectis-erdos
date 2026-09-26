@@ -191,7 +191,8 @@ def module_problem(module: str, name: str) -> str | None:
 
 
 class Graph:
-    def __init__(self, rows: list[dict[str, Any]]):
+    def __init__(self, rows: list[dict[str, Any]], *, include_battery: bool = True):
+        self.include_battery = include_battery
         self.meta = rows[0] if rows else {}
         self.summary = next((row for row in rows if row.get("record") == "summary"), {})
         self.theorems: dict[str, dict[str, Any]] = {}
@@ -203,6 +204,7 @@ class Graph:
         self.caps: list[dict[str, Any]] = []
         self.errors: list[dict[str, Any]] = []
         self.alias: dict[str, str] = {}
+        self.compositions_checked: list[dict[str, Any]] = []
         self._ingest(rows)
 
     def canon(self, key: str) -> str:
@@ -217,7 +219,7 @@ class Graph:
     @classmethod
     def from_payload(cls, payload: dict[str, Any]) -> "Graph":
         """Rebuild the graph from ``argument_continuations_graph.json.gz``."""
-        graph = cls([])
+        graph = cls([], include_battery=True)
         graph.meta = {"schema": payload.get("schema")}
         graph.summary = (payload.get("source") or {}).get("export_summary", {})
         for row in payload.get("statements", []):
@@ -344,6 +346,13 @@ class Graph:
                     continue
                 add_reduction(row["statement"], row["producer"], row.get("reading", "conclusion"),
                               [r["key"] for r in residuals])
+            elif record == "battery" and self.include_battery and row.get("kernel_checked"):
+                # A standard closing tactic proved the statement and the kernel
+                # accepted the proof: a residual-free reduction.
+                self._statement(row["statement"], None, "battery")
+                add_reduction(row["statement"], f"tactic:{row.get('tactic')}", "battery", ())
+            elif record == "composition":
+                self.compositions_checked.append(row)
             elif record == "candidate_cap":
                 self.caps.append(row)
             elif record in ("theorem_error", "statement_error"):
@@ -833,6 +842,10 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
         "candidate_caps": len(graph.caps),
         "export_errors": len(graph.errors),
         "export_truncated": bool(graph.summary.get("truncated")),
+        "battery_closed_statements": sum(1 for (_, producer, _, _) in graph.reductions
+                                         if producer.startswith("tactic:")),
+        "kernel_checked_compositions": sum(1 for row in graph.compositions_checked
+                                           if row.get("kernel_checked")),
         "compositions": len(composed),
         "compositions_of_paper_cited_conditional_theorems": sum(
             1 for row in composed if row["paper_rows_of_conditional_theorem"]),

@@ -294,9 +294,23 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
             notes.insert(0, f"`{card['source']}`")
         return "; ".join(notes)
 
+    def depending_results(key: str) -> list[str]:
+        """Paper results whose Lean declarations take this statement as a hypothesis."""
+        out = []
+        for name in sorted(graph.statements[key]["consumers"]):
+            for row in theorem_card(graph, name).get("papers", [])[:2]:
+                out.append(f"{row.get('side')} `{row.get('label')}` ({row.get('source')}; "
+                           f"Comparator: {row.get('comparator') or 'n/a'})")
+        return out[:6]
+
     for key in sinks[:limit]:
         node = graph.statements[key]
         lines.append(f"### `{key[:12]}` {node.get('type')}")
+        results = depending_results(key)
+        if results:
+            lines.append("Paper results that assume it: " + "; ".join(results) + ".")
+        if node.get("aliases"):
+            lines.append("Also stated as: " + "; ".join(sorted(node["aliases"])[:3]) + ".")
         reductions = graph.reduced_by_head.get(key, [])
         lines.append(f"Reductions into it: {len(reductions)}.")
         for (_, producer, reading, left) in reductions[:8]:
