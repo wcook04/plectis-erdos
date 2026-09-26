@@ -130,7 +130,14 @@ external mathematical acceptance remain separate steps.
 
 ## Keep publication and local checkout state distinct
 
-Before publication, run `python3 scripts/check_checkout_sync.py --fetch`.
+Before publication, after committing the intended candidate, run
+`python3 scripts/check_checkout_sync.py --fetch --check-merge` (add
+`--base origin/<target>` for a different target branch). Exit 1 names merge
+conflicts; exit 2 means the check could not certify the candidate. Resolve
+conflicts and rerun the release checks before pushing. This check preserves
+the checkout and accepts a clean feature branch that differs from main; it
+does not establish that the merged proofs or generated artifacts are valid.
+Use `python3 scripts/check_checkout_sync.py --fetch` for a divergence report.
 Read both directions of divergence: an old feature branch can contain useful
 unmerged work while missing later public papers and fixes. Preserve it in a
 separate worktree; do not use its generated files to overwrite current main.
