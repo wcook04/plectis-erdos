@@ -107,6 +107,8 @@ import ErdosProblems.Erdos269.BlockMassEngines
 import ErdosProblems.Erdos269.CertificateRangeR11
 import ErdosProblems.Erdos269.CertificateSafetyR12
 import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
+import ErdosProblems.Erdos269.DistinctHeightAxiomAudit
+import ErdosProblems.Erdos269.DistinctHeightIrrationality
 import ErdosProblems.Erdos269.DyadicBlockMassIdentity
 import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
 import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
