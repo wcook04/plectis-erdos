@@ -1,7 +1,7 @@
 {
   "schema": "plectis-conditional-premise-transfer/1",
   "starting_revision": "2ea8cec4671c059c88125f3677dc8c22b8c8b3c0",
-  "status": "proof_attempt_in_progress",
+  "status": "transfer_compiled",
   "question": "Can a premise suggested by source inspection in one problem world discharge a substantial formal target in another?",
   "source_method": {
     "paper": "https://arxiv.org/abs/2609.28603",
@@ -53,5 +53,39 @@
     "replay": "Use the existing premise_exchange runner and proof_state_compiler, with explicit candidates and returned obligations. Do not infer proof-search impossibility from one rejected application.",
     "admission": "Promote only statements covered by successful source-current Lean receipts. Keep unfinished arithmetic bridges explicit."
   },
-  "evaluation_boundary": "A successful transfer establishes the displayed mathematical statements and replayed applications. It does not establish historical novelty, discovery efficiency, the quality of a learned value model, or an Erdős-problem endpoint."
+  "evaluation_boundary": "A successful transfer establishes the displayed mathematical statements and replayed applications. It does not establish historical novelty, discovery efficiency, the quality of a learned value model, or an Erdős-problem endpoint.",
+  "formalization_sources": [
+    {
+      "file": "lean/ErdosProblems/Synthesis/UniformRankBarrier.lean",
+      "interface": "finite_rank_uniform_error_lower_of_row_packs",
+      "role": "Generic finite-dimensional obstruction, with counterexamples to dropping boundedness or separation."
+    },
+    {
+      "file": "lean/ErdosProblems/Erdos249/TotientTranslateSeparation.lean",
+      "interface": "totientHankel_row_separation_cofinal",
+      "role": "Unconditional arithmetic separation arbitrarily far along every pair of distinct rows."
+    },
+    {
+      "file": "lean/ErdosProblems/Erdos249/TotientUniformRankBarrier.lean",
+      "interface": "iInf_totient_uniform_finite_rank_distance",
+      "role": "Sharp uniform distance one half, attained by the rank-one midpoint."
+    },
+    {
+      "file": "lean/ErdosProblems/Erdos249/TotientMeanApproximation.lean",
+      "interface": "normalizedTotient_mean_error_le",
+      "role": "All-size mean-error bound with explicit triangular separated-factor budget."
+    }
+  ],
+  "proof_state_request": "research/experiments/premise_exchange/totient_uniform_rank_request.json",
+  "current_evidence": {
+    "status": "kernel_checked_focused_build",
+    "ordinary_proof": "research/experiments/premise_exchange/totient_approximation.md",
+    "receipt": "26 Sep 2026: python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.TotientApproximationDichotomy exited 0 with the pinned Lean 4.29.1 toolchain, including the final serialized Lake authority check. No source contains sorry; the printed axioms of totient_finite_rank_uniform_error_lower, midpoint_uniformError and iInf_totient_uniform_finite_rank_distance are propext, Classical.choice and Quot.sound.",
+    "first_compile_diagnosis": "The first focused build (future cf_5ad56bc6e5354501b029) failed on tactic and API drift, not on mathematics: a subtype-versus-ambient distance atom in the generic barrier, a simp normal form in the separation bound, renamed Mathlib lemmas and brittle simp calls in the mean estimate, and a computability marker. Each proof kept its statement and strategy.",
+    "admission": "All five modules are imported from the supported roots (Root.lean and Synthesis.lean).",
+    "pending": [
+      "Replay the explicit premise candidates through the premise_exchange runner and proof_state_compiler.",
+      "Bind the declarations to a paper row only if a paper prints these statements; the research note is their current reader surface."
+    ]
+  }
 }

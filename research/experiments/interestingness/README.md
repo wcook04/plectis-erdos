@@ -115,6 +115,25 @@ minimality, or the cost of an alternate proof. It does show which dependency
 and premise are actually present in this checked transfer, a stronger basis
 for choosing the next experiment than a corpus-wide score alone.
 
+Choosing an interesting target and choosing a helpful premise move the score
+in opposite directions. For one target under two contexts,
+
+\[
+\frac{I(T\mid P')}{I(T\mid P)}
+=\frac{V(T\mid P')}{V(T\mid P)}\cdot\frac{L(T\mid P)}{L(T\mid P')}.
+\]
+
+A premise that makes a fixed target easier lowers \(V(T\mid P')\) and so
+tends to lower \(I(T\mid P')\). A higher ratio can come from a harder proof,
+from cheaper premise-relative vocabulary, or from both. The paper's appendix
+matrix of cross-area interestingness reports exactly this ratio, as medians
+of predicted scores against the same-area condition. It measures how
+interesting targets look under another area's premises. It does not record
+proof completions or savings from transferring that area's machinery, so its
+largest cells are not a ranking of transfers to attempt. Here a transfer is
+evaluated by holding the target fixed, adding a motivated premise or bundle,
+and recording whether the proof completes and what it costs.
+
 ## How to reproduce and use the result
 
 From the checkout root:

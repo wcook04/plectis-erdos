@@ -232,14 +232,15 @@ separate gcd obstruction are checked in Lean.
 arithmetic separation argument from #249 with the compactness argument from
 #269 leads to the normalized totient matrix
 \(H(i,n)=\varphi(i+n)/(i+n)\). Its distance from finite separated rank in the
-uniform norm is exactly \(1/2\). But an explicit Möbius truncation has rank
-at most \(D(D+1)/2\) and average absolute error at most \(2/D\) on every
-leading \(N\times N\) square, independently of \(N\). The
+uniform norm is exactly \(1/2\). But an explicit Möbius truncation has
+average absolute error at most \(2/D\) on every leading \(N\times N\) square,
+independently of \(N\), and its exact rank is the sum of \(\varphi(q)\) over
+squarefree \(q\le D\) (16 at \(D=8\)). The
 [proof note](totient_approximation.md) and
 [exact rational experiment](totient_approximation.py) explain the arithmetic
-premise, all quantifiers, prior art and limits. These propositions have been
-cross-checked as ordinary proofs, not formalized. Their historical novelty
-is unassessed.
+premise, all quantifiers, prior art and limits. Lean checks the separation,
+the exact distance \(1/2\) and the mean bound; the exact rank is an ordinary
+proof with exact finite controls. Their historical novelty is unassessed.
 
 ## Controls that changed the investigation
 
@@ -281,7 +282,8 @@ the experiment.
 
 The next question for the capacity theorem is the Hausdorff dimension in
 its null case, or a replacement for the prefix lattice outside integer
-divisibility chains. The totient direction asks for sharp rank
-versus mean-error bounds and a generic formal separation lemma usable by
-both #249 and #269. Those are mathematical questions, not promises that
+divisibility chains. The totient direction now has the exact rank of the
+Möbius truncations; it still asks for the least rank of any matrix with
+mean error at most \(\varepsilon\), and for a generic formal separation
+lemma usable by both #249 and #269. Those are mathematical questions, not promises that
 further infrastructure will answer them.
