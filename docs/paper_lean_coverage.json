@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
-  "lean_pin": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
-  "content_digest": "sha256:c968b9c3757586019861ff42961fefcf55781d827600e7f2658a8592f7982614",
+  "lean_pin": "efc285328be650b3ad638256d9124f44576c6d32",
+  "content_digest": "sha256:2c265119cefe7caed45598a89044b5b047571ff08e4c2408820c1f82ec54ab62",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -13,21 +13,21 @@
   "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",
   "checker": "python3 scripts/check_lean_paper_propagation.py",
   "summary": {
-    "rows": 676,
+    "rows": 677,
     "lean": {
       "exact": 506,
-      "exact_or_stronger": 140,
+      "exact_or_stronger": 141,
       "modulo_named_input": 25,
       "none": 5
     },
     "comparator": {
       "compared": 633,
       "not_applicable": 30,
-      "pending": 13
+      "pending": 14
     },
     "palomar": {
       "not_applicable": 30,
-      "pending": 13,
+      "pending": 14,
       "prepared": 633
     },
     "uncounted_rows": 0
@@ -81,7 +81,7 @@
         "paper/257/erdos-257-mersenne-support-subseries.tex",
         "paper/problem-note-preamble.tex"
       ],
-      "asserting_environments": 11
+      "asserting_environments": 12
     },
     {
       "paper_id": "erdos-269-three-prime-running-lcm",
@@ -1901,6 +1901,36 @@
       }
     },
     {
+      "comparator": {
+        "status": "pending",
+        "queued_at": "2026-09-26"
+      },
+      "environment": "proposition",
+      "id": "erdos-257-mersenne-support-subseries#res:finite-witness-rule",
+      "kind": "proposition",
+      "label": "res:finite-witness-rule",
+      "lean": {
+        "declarations": [
+          {
+            "file": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+            "name": "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised"
+          }
+        ],
+        "status": "exact_or_stronger"
+      },
+      "other_labels": [
+        "eq:finite-witness-rule"
+      ],
+      "palomar": {
+        "status": "pending"
+      },
+      "paper_id": "erdos-257-mersenne-support-subseries",
+      "problem": 257,
+      "side": "short",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:361",
+      "statement_sha256": "sha256:150d4f437babbf1fb9f634ef641c30fa4d2d1fd419bfa0f003410795d4556452"
+    },
+    {
       "id": "erdos-257-mersenne-support-subseries#thm:variable-fractional-cover",
       "problem": 257,
       "paper_id": "erdos-257-mersenne-support-subseries",
@@ -1909,7 +1939,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:b5019135ee5bf7f77def9071046144098c182a1cef97a05890dd7865e6a1d35e",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:414",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:487",
       "other_labels": [
         "eq:strengthened-cover"
       ],
@@ -1948,7 +1978,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:e0a8fff5d2de2a4b70ca7c51caa977154c634916e33fd6f5b73f38628f270c11",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:569",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:642",
       "lean": {
         "status": "none",
         "counted": true,
@@ -1971,7 +2001,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:5deb5eaac428d65e2ba0ec7848adb44d7a3ff27fee98d7c7ddda9d489e587339",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:654",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:727",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2014,7 +2044,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:707",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:780",
       "lean": {
         "status": "none",
         "counted": true,
@@ -2037,7 +2067,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:775",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:848",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2084,7 +2114,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:17e70c7e375db04ec58fa70163814efca251acb652fb73b84d84a07a3a15760d",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:942",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1015",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2120,7 +2150,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:1e26929c04e4cdb30205d6e796ec3468b8d8b4f47e55c359f519551798631bce",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1062",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1135",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -2175,7 +2205,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:506643145304e5fdb1a5ddbceac6a0b992d1929726a7d86ff093f2f6c01152c5",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1104",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1177",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -2211,7 +2241,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1169",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1242",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
