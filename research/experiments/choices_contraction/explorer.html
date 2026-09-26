@@ -1,0 +1,139 @@
+<!doctype html>
+<!-- SPDX-FileCopyrightText: 2026 Will Cook -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Can this fraction be a subsum? · Plectis</title>
+<style>
+:root{--paper:#f5f3eb;--ink:#222b26;--muted:#59635b;--line:#cbd0c4;--accent:#346145;--wash:#e3e9df}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,sans-serif;line-height:1.55}
+main,header,footer{max-width:1160px;margin:auto;padding:24px 40px}header{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.09em;text-transform:uppercase}
+a{color:var(--accent);text-underline-offset:4px}h1,h2,.big-number{font-family:Georgia,serif;font-weight:400;line-height:1.12}h1{font-size:clamp(40px,6vw,72px);max-width:800px;letter-spacing:-.035em;margin:24px 0}h2{font-size:30px;margin:0 0 16px}p{max-width:740px}.intro{font-size:19px;max-width:700px}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.formula{font-family:Georgia,serif;font-size:30px;margin:24px 0 32px}.muted,small{color:var(--muted)}
+form{display:grid;grid-template-columns:2fr 2fr 1fr auto;align-items:end;gap:16px;padding:28px 0;border-top:1px solid var(--line)}label{display:flex;flex-direction:column;gap:7px;font-size:14px}input,select,button{font:inherit;border:1px solid var(--line);border-radius:3px;padding:12px;background:#fffef8;color:var(--ink);min-height:48px}input,select{width:100%}button{cursor:pointer;transition:background .15s,transform .15s}button:hover{background:var(--wash)}button:active{transform:translateY(1px)}button.primary{background:var(--accent);color:white;border-color:var(--accent)}button.primary:hover{background:#254a33}:focus-visible{outline:3px solid #8b620d;outline-offset:3px}.examples{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:0 0 30px}.examples button{font-size:13px;min-height:36px;padding:6px 12px}.error{color:#922e22;min-height:24px;margin:0}
+.result{border-top:2px solid var(--ink);padding:30px 0;animation:appear .25s ease-out}.result-head{display:grid;grid-template-columns:1fr 160px;gap:24px}.big-number{font-size:60px;text-align:right}.big-number small{display:block;font:12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase}.verdict{font-size:31px;margin:8px 0}.rail{display:flex;flex-wrap:wrap;gap:5px;margin:26px 0 12px}.rail button{width:34px;min-height:34px;padding:4px;font-size:12px;border-color:var(--muted)}.rail .take{background:var(--accent);color:white}.rail .stop{border:2px solid var(--ink);font-weight:700}.rail [aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}.legend{font-size:12px;color:var(--muted)}.detail{margin-top:24px;padding:20px 0;border-top:1px solid var(--line)}.detail h3{font-size:17px;font-weight:600;margin:0 0 8px}.exact{font:13px ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;max-height:180px;overflow:auto;background:var(--wash);padding:14px;margin:10px 0}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:24px}.notes{display:grid;grid-template-columns:1fr 1fr;gap:50px;border-top:1px solid var(--line);padding:34px 0}.notes p{font-size:15px}summary{cursor:pointer;color:var(--accent)}code{font-family:ui-monospace,monospace;font-size:.87em;overflow-wrap:anywhere}footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line)}[hidden]{display:none!important}@keyframes appear{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}@media(max-width:700px){main,header,footer{padding:20px}header{font-size:10px}form{grid-template-columns:1fr 1fr}form .target{grid-column:1/-1}.notes{grid-template-columns:1fr;gap:22px}.result-head{grid-template-columns:1fr 75px}.big-number{font-size:42px}.verdict{font-size:25px}.formula{font-size:24px}.intro{font-size:17px}}
+</style>
+</head>
+<body>
+<header><span>Plectis / Mathematics you can inspect</span><span>Exact arithmetic · Offline</span></header>
+<main>
+<div class="eyebrow">An experiment beside Erdős problem 257</div>
+<h1>Can this fraction be a subsum?</h1>
+<p class="intro">Choose some of the numbers below. Can their sum equal your fraction? Each number is larger than the entire tail after it, so every choice is forced.</p>
+<div class="formula" aria-label="One, one third, one seventh, one fifteenth, one thirty-first, and so on">1 &nbsp; + &nbsp; ⅓ &nbsp; + &nbsp; ⅐ &nbsp; + &nbsp; <span style="font-size:.7em">1/15</span> &nbsp; + &nbsp; <span style="font-size:.7em">1/31</span> &nbsp; + &nbsp; ···</div>
+<form id="controls">
+<label class="target">Rational target<input id="target" value="189/388" required maxlength="256" autocomplete="off" spellcheck="false" aria-describedby="input-help"></label>
+<label>Allowed exponents<select id="host"><option value="all">All positive integers</option><option value="odd">Odd integers</option><option value="squarefree">Squarefree integers</option><option value="not_divisible_by_3">Not divisible by 3</option></select></label>
+<label>Depth<input id="depth" type="number" min="1" max="64" step="1" value="17" required></label>
+<button class="primary" type="submit">Run experiment</button>
+</form>
+<p id="input-help" class="muted" style="font-size:13px;margin-top:0">Enter a positive fraction such as 189/388, or an integer. Depth counts exponents, including those outside the chosen host.</p>
+<div class="examples"><span class="muted" style="font-size:13px">Try:</span><button type="button" data-target="189/388" data-depth="16">189/388 at depth 16</button><button type="button" data-target="189/388" data-depth="17">One step further</button><button type="button" data-target="1/3" data-depth="17">A finite sum</button><button type="button" data-target="1/2" data-depth="64">An unresolved candidate</button></div>
+<p id="error" class="error" role="alert"></p>
+<section id="result" class="result" hidden aria-label="Experiment result">
+<div class="result-head"><div><div id="result-target" class="eyebrow"></div><h2 id="verdict" class="verdict" aria-live="polite"></h2><p id="meaning"></p></div><div class="big-number"><span id="end"></span><small id="end-label"></small></div></div>
+<div id="rail" class="rail" role="group" aria-label="Inspect a greedy step"></div>
+<div class="legend">Filled: take this term. Empty: skip it. Double border: terminal step. Select a step to inspect its exact arithmetic.</div>
+<div id="step" class="detail"></div>
+<details><summary>Selected indices and exact remainder</summary><p id="selected"></p><div id="remainder" class="exact"></div></details>
+<div class="actions"><button id="download" type="button">Download result JSON</button><span id="export-note" class="muted" style="font-size:13px"></span></div>
+</section>
+<section class="notes">
+<div><h2>Why the choice is forced</h2><p>The term at exponent <i>n</i> is <code>1/(2ⁿ − 1)</code>. All later terms together are smaller. If the remainder is at least this term, take it. Otherwise skip it. A remainder strictly between the later tail and this term cannot be filled by any choices.</p><p>A restricted host allows only the exponents you selected. The same argument applies because removing terms can only decrease the later tail.</p><details><summary>What is computed exactly?</summary><p>Every comparison uses integer fractions, with JavaScript BigInt. The tail bound sums allowed terms through exponent 160 and adds <code>2/2¹⁶⁰</code> for everything beyond. For an exclusion, a shorter analytic bound is used when possible: <code>2⁻ⁿ + (2/3)4⁻ⁿ</code>. No decimal approximation decides a result.</p></details></div>
+<div><h2>Where the evidence stops</h2><p>A finite sum is an explicit answer. A strict gap rules the target out, even as an infinite sum. Reaching the chosen depth with neither event leaves the target <strong>undecided</strong>. Increasing the depth may change that answer.</p><p>This is an exact finite computation, not a Lean proof. It does not settle whether every infinite subseries sum is irrational, the unrestricted question in Erdős #257.</p><p><a href="https://github.com/wcook04/plectis-erdos/blob/02171e0a9fb695b49d0350c835b9c01466a1983c/research/experiments/choices_contraction/README.md">Read the investigation and its open questions</a></p></div>
+</section>
+<section class="notes">
+<div><h2>Check a terminal result yourself</h2><p>Download the JSON and the <a href="https://raw.githubusercontent.com/wcook04/plectis-erdos/02171e0a9fb695b49d0350c835b9c01466a1983c/research/experiments/choices_contraction/verify_terminal_witness.py" download>independent Python checker</a>. Run them in the same directory with Python 3.11 or later:</p><div class="exact">python3 -I verify_terminal_witness.py plectis-result.json</div><p>The checker reconstructs the forced choices and strict bound without importing this page or its producer. It deliberately refuses an undecided record; finite survival is not a certificate.</p></div>
+<div><h2>Keep exploring</h2><p>Change the fraction, the allowed exponents, or the depth. The 189/388 example remains undecided through 16 and is excluded at 17. Try finding where another rational first encounters a gap.</p><p>The <a href="https://github.com/wcook04/plectis-erdos/blob/02171e0a9fb695b49d0350c835b9c01466a1983c/research/experiments/choices_contraction/rational_membership_probe.py">Python probe</a> supports larger investigations. This page limits depth to 64 and input length to 256 characters to keep the computation responsive.</p></div>
+</section>
+<noscript>This experiment needs JavaScript. The linked Python probe runs the same exact finite calculation.</noscript>
+</main>
+<footer>No installation, account, network requests or tracking. Save this single HTML file and open it in a modern browser. Links open the public source repository. © 2026 Will Cook · Apache-2.0</footer>
+<script id="exact-core">
+"use strict";
+// Kept separate from the interface so another runtime can replay every exported row.
+const Explorer = (() => {
+  const HORIZON = 160;
+  const gcd = (a,b) => { a=a<0n?-a:a; while(b){[a,b]=[b,a%b];} return a; };
+  class Q {
+    constructor(a,b=1n){if(b===0n)throw Error("The denominator must be nonzero.");if(b<0n){a=-a;b=-b;}const g=gcd(a,b);this.a=a/g;this.b=b/g;}
+    add(q){return new Q(this.a*q.b+q.a*this.b,this.b*q.b);}
+    sub(q){return new Q(this.a*q.b-q.a*this.b,this.b*q.b);}
+    cmp(q){const d=this.a*q.b-q.a*this.b;return d<0n?-1:d>0n?1:0;}
+    toString(){return this.b===1n?String(this.a):`${this.a}/${this.b}`;}
+  }
+  function parse(s){if(typeof s!=="string"||s.length>256||!/^\s*\d+\s*(?:\/\s*\d+\s*)?$/.test(s))throw Error("Enter a positive integer or a fraction such as 189/388 (at most 256 characters).");const [a,b="1"]=s.trim().split("/");const q=new Q(BigInt(a.trim()),BigInt(b.trim()));if(q.a<=0n)throw Error("The target must be positive.");return q;}
+  const hosts={all:n=>true,odd:n=>n%2===1,not_divisible_by_3:n=>n%3!==0,squarefree:n=>{for(let p=2;p*p<=n;p++)if(n%(p*p)===0)return false;return true;}};
+  const weight=n=>new Q(1n,(1n<<BigInt(n))-1n);
+  const analytic=n=>new Q(1n,1n<<BigInt(n)).add(new Q(2n,3n*(1n<<BigInt(2*n))));
+  const cached=new Map();
+  function prepare(host){
+    if(!Object.hasOwn(hosts,host))throw Error("Choose a supported host.");
+    if(cached.has(host))return cached.get(host);
+    const indices=[],weights=new Map(),tails=new Map();let lower=new Q(0n),acc=new Q(2n,1n<<BigInt(HORIZON));
+    for(let n=1;n<=HORIZON;n++)if(hosts[host](n)){indices.push(n);weights.set(n,weight(n));}
+    for(const n of [...indices].reverse()){tails.set(n,acc);acc=acc.add(weights.get(n));lower=lower.add(weights.get(n));}
+    const data={indices,weights,tails,lower};cached.set(host,data);return data;
+  }
+  function run(target,host,depth){
+    const x=parse(target);if(!Number.isInteger(depth)||depth<1||depth>64)throw Error("Choose a whole-number depth between 1 and 64.");
+    const {indices,weights,tails,lower}=prepare(host);
+    if(x.cmp(lower)>0)throw Error("The target exceeds the computed sum through exponent 160 for this host. Choose a smaller target.");
+    let r=x;const selected=[],trace=[];
+    const row={target:String(x),host,depth,horizon:HORIZON,outcome:"not_excluded",selected_indices:selected,remainder:null,first_rejection:null,finite_representation_end:null};
+    for(const n of indices){
+      if(n>depth)break;const w=weights.get(n),before=r;let action="skip";
+      if(r.cmp(w)>=0){r=r.sub(w);selected.push(n);action="take";if(r.a===0n){row.outcome="finite_representation";row.finite_representation_end=n;}}
+      else if(r.cmp(tails.get(n))>0){
+        action="exclude";row.outcome="excluded";row.first_rejection=n;
+        const next=indices.find(k=>k>n)||HORIZON+1,short=analytic(next-1);
+        if(short.cmp(r)<0){row.tail_upper=String(short);row.tail_bound_kind="universal_analytic";row.tail_bound_from=next;}
+        else{row.tail_upper=String(tails.get(n));row.tail_bound_kind="computed_horizon";}
+        row.weight=String(w);
+      }
+      trace.push({n,action,before:String(before),weight:String(w),after:String(r),tail:String(tails.get(n))});
+      if(row.outcome!=="not_excluded")break;
+    }
+    row.remainder=String(r);return {row,trace};
+  }
+  return {run};
+})();
+if(typeof module!=="undefined"&&module.exports)module.exports=Explorer;
+</script>
+<script>
+"use strict";
+const el=id=>document.getElementById(id);let current=null;
+function textNode(tag,text,cls){const n=document.createElement(tag);n.textContent=text;if(cls)n.className=cls;return n;}
+function showStep(i){
+  const t=current.trace[i],box=el("step");box.replaceChildren();
+  for(const [j,b] of [...el("rail").children].entries())b.setAttribute("aria-pressed",String(i===j));
+  box.append(textNode("h3",`Exponent ${t.n} · ${t.action==="take"?"Take this term":t.action==="exclude"?"A strict gap":"Skip this term"}`));
+  if(t.action==="take"){box.append(textNode("p","The remainder is at least this term. Omitting it would leave too little in the tail."),textNode("div",`${t.before} − ${t.weight} = ${t.after}`,"exact"));}
+  else if(t.action==="exclude"){box.append(textNode("p","The remainder exceeds a rigorous upper bound for every later allowed term combined, but is smaller than this term. No selector can fill the gap."),textNode("div",`${current.row.tail_upper} < ${t.before} < ${t.weight}`,"exact"));}
+  else{box.append(textNode("p","The remainder is smaller than this term. Taking it would overshoot. The tail bound has not ruled the remainder out."),textNode("div",`Remainder ${t.before} < term ${t.weight}`,"exact"));}
+}
+function render(){
+  const {row,trace}=current,terminal=row.outcome!=="not_excluded";
+  el("result-target").textContent=`Target ${row.target} · ${el("host").selectedOptions[0].textContent}`;
+  el("end").textContent=row.first_rejection||row.finite_representation_end||row.depth;
+  el("end-label").textContent=terminal?"terminal exponent":"depth reached";
+  el("verdict").textContent=row.outcome==="excluded"?"Excluded by a strict gap":row.outcome==="finite_representation"?"An exact finite sum":`Undecided through depth ${row.depth}`;
+  el("meaning").textContent=row.outcome==="excluded"?"No finite or infinite selection from this host sums to this target.":row.outcome==="finite_representation"?"The selected terms sum exactly to the target. Inspect them below.":"No exclusion and no finite sum were found. This is not a membership claim and says nothing about larger depths.";
+  el("rail").replaceChildren();trace.forEach((t,i)=>{const b=textNode("button",String(t.n),`${t.action==="take"?"take":""} ${terminal&&i===trace.length-1?"stop":""}`);b.type="button";b.setAttribute("aria-label",`Exponent ${t.n}: ${t.action}`);b.onclick=()=>showStep(i);el("rail").append(b);});
+  el("selected").textContent=`Selected exponents: ${row.selected_indices.join(", ")||"none"}.`;
+  el("remainder").textContent=`Remainder: ${row.remainder}`;
+  el("export-note").textContent=terminal?"Ready for the independent checker below.":"An undecided record. The terminal-witness checker will refuse it.";
+  el("result").hidden=false;showStep(trace.length-1);
+}
+function calculate(){el("error").textContent="";el("result").hidden=true;current=null;try{current=Explorer.run(el("target").value,el("host").value,Number(el("depth").value));render();}catch(e){el("error").textContent=e.message;}}
+el("controls").addEventListener("submit",e=>{e.preventDefault();calculate();});
+// Once an input changes, do not leave a stale result looking like its answer.
+el("controls").addEventListener("input",()=>{el("result").hidden=true;current=null;});
+document.querySelectorAll("[data-target]").forEach(b=>b.addEventListener("click",()=>{el("target").value=b.dataset.target;el("depth").value=b.dataset.depth;el("host").value="all";calculate();}));
+el("download").addEventListener("click",()=>{if(!current)return;const blob=new Blob([JSON.stringify({schema:"plectis-single-target-probe/1",rows:[current.row]},null,2)+"\n"],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="plectis-result.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+calculate();
+</script>
+</body>
+</html>

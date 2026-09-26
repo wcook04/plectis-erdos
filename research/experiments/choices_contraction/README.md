@@ -68,6 +68,29 @@ index.**
 
 ## The probe
 
+### Try it in a browser
+
+Download [`explorer.html`](explorer.html) using GitHub's **Download raw file**
+button, then open the saved file in a modern browser. It is a single offline
+page with no dependencies or installation. Change the target, allowed
+exponents or depth, inspect each forced choice, and download its exact result
+as JSON. Start with `189/388` at depths 16 and 17 to see finite survival become
+a strict exclusion.
+
+The page uses integer fractions with JavaScript BigInt, through depth 64 with
+tail horizon 160. Its result rows follow the Python probe's contract below.
+The [independent terminal-witness checker](verify_terminal_witness.py) accepts
+its finite sums and exclusions and refuses undecided records. Reaching a
+finite depth is not a membership certificate. This remains a finite
+computation, not a Lean proof or a solution to Erdős #257.
+
+To replay the browser arithmetic against Python and the separate checker, run
+`python3 scripts/test_rational_explorer.py` from the repository root with
+Node.js available. The test executes the script embedded in the HTML and
+also checks deliberately corrupted exports.
+
+### Run the Python probe
+
 [`rational_membership_probe.py`](rational_membership_probe.py) runs the greedy
 rule in exact rational arithmetic on every reduced fraction `p/q` with
 `q <= Q` in the relevant interval, through depth `N`. It sorts each fraction
