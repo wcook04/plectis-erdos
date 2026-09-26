@@ -27,7 +27,7 @@ The first two sections keep two different questions separate: which prime powers
 
 *Status.* The problem treated here is open, and this note does not close it. Every Lean mark in the margin points to propositions that the pinned Lean kernel accepts, with no `sorry`, no added axiom, and no unchecked evaluation. That claim concerns the formal statements only; it says nothing about their mathematical interest, their novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="long68:sec:prime-powers"></a>
 
@@ -54,7 +54,7 @@ The need to check cancellation is already visible in $`1/3+1/15=2/5`$: the commo
 <span id="long68:res:lead-prime-pole" label="long68:res:lead-prime-pole"></span>
 
 <div id="long68:res:prime-pole" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-prime-pole-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-prime-pole-comparator">Comparator</a></p>
 
 **Theorem 2** (maximal prime-power survival). *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
 ``` math
@@ -121,7 +121,7 @@ The primes still divide the corresponding common denominators $`L_M`$. These are
 We next ask where a prime first divides a denominator $`d_m`$. This means it divides none of $`d_2,\ldots,d_{m-1}`$; it may still divide a later denominator, so uniqueness at its first occurrence gives no uniqueness in every larger block.
 
 <div id="long68:res:wilson-cofinality" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-wilson-cofinality-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-wilson-cofinality-comparator">Comparator</a></p>
 
 **Proposition 3** (cofinal first prime occurrences). *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
 
@@ -142,7 +142,7 @@ The construction proves cofinality of first occurrences, but not the inequality 
 Theorem <a href="#long68:res:prime-pole" data-reference-type="ref" data-reference="long68:res:prime-pole">2</a> concerns the denominator after reduction. The common denominator before reduction admits an unconditional lower bound of its own, by an elementary argument.
 
 <div id="long68:res:product-lcm" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-product-lcm-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-product-lcm-comparator">Comparator</a></p>
 
 **Lemma 4** (product, least common multiple, pairwise gcd). *For positive integers $`x_1,\ldots,x_k`$,
 ``` math
@@ -162,7 +162,7 @@ The next divisibility is the case $`P=-1`$ of the relation $`\gcd(i!+P(i),j!+P(j
 The earlier spacing method of Erdős and Stewart \[erdos-stewart1976, §3, pp. 516–517\] is related background. We now state only the subtraction needed for the lcm argument, rather than importing the prime-factor estimates of those papers.
 
 <div id="long68:res:gap-gcd" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-gap-gcd-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-gap-gcd-comparator">Comparator</a></p>
 
 **Lemma 5** (factorial-gap gcd). *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
@@ -175,7 +175,7 @@ The earlier spacing method of Erdős and Stewart \[erdos-stewart1976, §3, pp. 
 </div>
 
 <div id="long68:res:segment" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-segment-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-segment-comparator">Comparator</a></p>
 
 **Lemma 6** (segment inequality). *For $`2\le k\le N-1`$,
 ``` math
@@ -199,7 +199,7 @@ Taking logarithms of the resulting divisibility gives <a href="#long68:eq:segmen
 </div>
 
 <div id="long68:res:lcm-growth" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-lcm-growth-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-lcm-growth-comparator">Comparator</a></p>
 
 **Theorem 7** (common-denominator growth).
 *``` math
@@ -306,7 +306,7 @@ Compare the factorial scaling in Hančl and Tijdeman’s tail-integrality lemma 
 <span id="long68:res:lead-carry-equivalence" label="long68:res:lead-carry-equivalence"></span> <span id="long68:res:strict-successor-complete-characterization" label="long68:res:strict-successor-complete-characterization"></span>
 
 <div id="long68:res:carry-equivalence" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-carry-equivalence-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-carry-equivalence-comparator">Comparator</a></p>
 
 **Theorem 8** (an exact criterion from successive partial sums). *For $`m\ge3`$,
 ``` math
@@ -383,7 +383,7 @@ The canonical factorial digits of a real $`x`$ are $`a_m(x)=\lfloor m!x\rfloor-m
 <span id="long68:res:lead-companion-orbit" label="long68:res:lead-companion-orbit"></span>
 
 <div id="long68:res:companion-orbit" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-companion-orbit-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-companion-orbit-comparator">Comparator</a></p>
 
 **Proposition 9** (rationality and factorial residues).
 *``` math
@@ -423,7 +423,7 @@ The condition is eventual equality, not equality at many computed indices. The p
 Write $`\theta_m=\{m!\,S\}`$. We ask whether $`\theta_{m-1}`$ lies outside $`[0,E_m/m)`$, an interval of width less than $`2/m^2`$.
 
 <div id="long68:res:lower-escape" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-lower-escape-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-lower-escape-comparator">Comparator</a></p>
 
 **Proposition 10** (lower-interval criterion).
 *``` math
@@ -504,7 +504,7 @@ The same digit argument applies to the other shifts mentioned by Erdős. For an 
 The restriction $`t\ge-1`$ keeps every denominator positive for $`n\ge2`$; $`t=-2`$ is excluded because its first denominator is zero. All series in this identity converge absolutely. The familiar case $`t=0`$ is $`e-2`$; this example will make the residue condition explicit.
 
 <div id="long68:res:shift-family" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-shift-family">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-shift-family-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-shift-family">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-shift-family-comparator">Comparator</a></p>
 
 **Theorem 11** (a criterion for the shifts $`t\ge-1`$). *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
 ``` math
@@ -569,7 +569,7 @@ C_3H_5=\frac{34264}{13685},\qquad
 The tail estimate in the proof below gives $`C_3(S-H_5)<7/1080<6791/13685`$. This verifies the comparison for one actual prefix. The theorem needs such prefixes at arbitrarily large $`p`$, so that $`F_p`$ can absorb any fixed rational denominator.
 
 <div id="long68:res:global-residue" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-global-residue-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-global-residue-comparator">Comparator</a></p>
 
 **Theorem 12** (a sufficient tail inequality). *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 ``` math
@@ -655,7 +655,7 @@ Beyond the support, $`V_d(c)=M(c)`$, so this series converges absolutely. Cancel
 ```
 
 <div id="long68:res:normalform" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-normalform-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean#L17">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-normalform-comparator">Comparator</a></p>
 
 **Theorem 13** (divisibility of the difference). *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(c)=M(c)+(d!-1)k`$.*
 
@@ -677,7 +677,7 @@ The sum is finite and each term is integral by <a href="#long68:eq:channel-congr
 In the next theorem, the parameters $`d,k`$ and the support indices are integers.
 
 <div id="long68:res:bandbreakpoint" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-bandbreakpoint-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-bandbreakpoint-comparator">Comparator</a></p>
 
 **Theorem 14** (constant values of the floor in the weights). *Let $`d\ge2`$ and $`k\ge0`$, and suppose every supported index $`i`$ satisfies $`kd\le i<(k+1)d`$. Then $`M(c)=(d!)^kV_{d}(c)`$. In particular, cancellation on the interval $`d\le i<2d`$ forces $`M(c)=0`$; and if every supported index is at least $`d`$ while $`M(c)\ne0`$ and $`V_{d}(c)=0`$, then some supported index is at least $`2d`$.*
 
@@ -744,7 +744,7 @@ The scalar coefficients satisfy $`u_2=2`$ and $`u_n=-\sum_{d\mid n,\ 2\le d<n}W_
 Indeed, the finite gcd $`g`$ divides $`u_{2p}\ne0`$ and hence $`(2p)!`$. For $`n>H`$ and a divisor $`d\le D`$ of $`n`$ one has $`n/d\ge2p`$. The quotient $`W_{d,n}/(n/d)!`$ counts partitions of $`n`$ points into $`n/d`$ unordered blocks of size $`d`$, so $`(n/d)!\mid W_{d,n}`$ and hence $`g\mid W_{d,n}`$. Strong induction in the recurrence handles the remaining divisors $`D<d<n`$, so $`g`$ divides every $`u_n`$ with $`n>D`$. Bertrand’s postulate supplies $`p`$ for $`D\ge3`$, and $`p=2`$ serves for $`D=2`$; finally $`H\le D(2D-1)<2D^2`$. The short note proves the same determination in its theorem “a finite formula for the gcd”.
 
 <div id="long68:res:moment-ideal" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-moment-ideal">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-moment-ideal-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-moment-ideal">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-moment-ideal-comparator">Comparator</a></p>
 
 **Theorem 15** (the set of attainable moments). *Fix $`D\ge2`$ and a prime $`p`$ with $`D/2<p\le D`$. Put
 ``` math
@@ -766,6 +766,42 @@ For a concrete instance, take $`D=4`$. One first needs $`\operatorname{lcm}(1,\l
 
 If support is additionally restricted to $`n\le6`$, only $`u_5=0`$ and $`u_6=-180`$ remain available in <a href="#long68:eq:low-channel-support" data-reference-type="eqref" data-reference="long68:eq:low-channel-support">[long68:eq:low-channel-support]</a>. The least positive moment is then $`115\cdot180/\gcd(180,55)=4140`$. Minimising the moment and minimising the largest supported index are therefore different problems.
 
+The same minimum has a direct certificate using only the second and fourth channels. For every $`n\ge2`$,
+``` math
+\begin{equation}
+1380\mid 11n!-46W_{2,n}+12W_{4,n}.
+\label{long68:eq:depth-four-dual}
+\end{equation}
+```
+The expression is zero for $`n=2,3,4`$. For $`n\ge4`$, it is divisible by $`12`$: $`12\mid n!`$ and $`6\mid W_{2,n}`$, as follows from $`W_{2,2r}=r!\prod_{j=1}^r(2j-1)`$ for $`r\ge2`$ and the corresponding odd-index recurrence. For $`n\ge5`$, it is divisible by $`5`$ because $`5\mid n!`$ and the denominators removed to form $`W_{2,n}`$ and $`W_{4,n}`$ are coprime to $`5`$. Modulo $`23`$, $`n!\equiv W_{4,n}`$ and $`46W_{2,n}\equiv0`$. This proves the congruence. Consequently $`V_2=V_4=0`$ forces $`1380\mid M`$, without a restriction on the largest supported index. Conversely, $`1482e_2-784e_3-136e_5+83e_6-e_8`$ has moment $`1380`$ and $`V_2=V_3=V_4=0`$. Thus adding the third channel does not change the moment ideal, although $`3e_2-e_3`$ shows that it changes the set of admissible vectors.
+
+At support horizon $`8`$, this five-term vector is sparsest among attaining vectors. More precisely, every integer vector supported on $`\{2,\ldots,8\}`$ with $`M=1380`$ and $`V_2=V_3=V_4=0`$ has, for some $`t,x,y\in\mathbb{Z}`$, the coefficients
+``` math
+\begin{equation}
+\begin{aligned}
+\lambda_2&=1482-4200t,&\lambda_3&=-784+2240t,\\
+\lambda_4&=-680+1890t-5x,&\lambda_5&=x,\\
+\lambda_6&=83-238t-7y,&\lambda_7&=y,\\
+\lambda_8&=-1+3t.
+\end{aligned}
+\label{long68:eq:depth-four-family}
+\end{equation}
+```
+Indeed, the values of the expression in <a href="#long68:eq:depth-four-dual" data-reference-type="eqref" data-reference="long68:eq:depth-four-dual">[long68:eq:depth-four-dual]</a> at indices $`2,\ldots,8`$ are
+``` math
+(0,0,0,0,4140,28980,328440).
+```
+Therefore the dual identity and $`M=1380`$ give $`11=3\lambda_6+21\lambda_7+238\lambda_8`$. Modulo $`3`$ this yields $`\lambda_8=-1+3t`$, then $`\lambda_6+7\lambda_7=83-238t`$. Set $`x=\lambda_5`$ and $`y=\lambda_7`$; solving the three channel equations for indices $`2,3,4`$ gives <a href="#long68:eq:depth-four-family" data-reference-type="eqref" data-reference="long68:eq:depth-four-family">[long68:eq:depth-four-family]</a>. The coefficient matrix is $`\left(\begin{smallmatrix}1&3&6\\2&1&4\\2&6&1\end{smallmatrix}\right)`$, with determinant $`55`$, and substitution verifies the converse. Indices $`2,3,8`$ are nonzero for every integral $`t`$; neither the pair $`(\lambda_4,\lambda_5)`$ nor $`(\lambda_6,\lambda_7)`$ can vanish together. Thus five nonzero entries are necessary at this horizon.
+
+The smallest coefficient $`\ell^1`$ norm at horizon $`8`$ is $`2416`$, attained by $`(\lambda_2,\ldots,\lambda_8)=(1482,-784,0,-136,-1,12,-1)`$. For $`t\ge1`$, the absolute values at indices $`2,3,8`$ alone sum to $`6443t-2267\ge4176`$; for $`t\le-1`$ they sum to $`2267-6443t\ge8710`$. Thus a minimizer has $`t=0`$. The remaining independent minima are $`\min_x(|-680-5x|+|x|)=136`$ at $`x=-136`$ and $`\min_y(|83-7y|+|y|)=13`$ at $`y=12`$. For the first, $`680\le|-680-5x|+5|x|`$ is at most five times the objective. For the second, the objective is at least $`83`$ when $`y\le0`$, at least $`17`$ when $`0\le y\le11`$, and equals $`8y-83\ge13`$ when $`y\ge12`$. Adding the fixed contribution $`1482+784+1=2267`$ gives $`2416`$. Equality forces $`t=0`$, $`x=-136`$ and $`y=12`$, so this norm minimizer is unique. Among the five-term vectors, $`t=0`$ is again necessary for the least norm; the pair $`(\lambda_6,\lambda_7)`$ can then have one nonzero entry only when $`y=0`$, since $`7\nmid83`$. The pair $`(\lambda_4,\lambda_5)`$ has one nonzero entry only at $`x=0`$ or $`x=-136`$, and the latter is smaller. Hence the displayed five-term vector is the unique least-norm vector among those of minimum support, with norm $`2486`$.
+
+The third channel changes these optimization costs even though it does not change the moment ideal. With only $`V_2=V_4=0`$, group the seven coefficients by $`a=\lambda_2+3\lambda_3`$, $`b=\lambda_4+5\lambda_5`$, $`c=\lambda_6+7\lambda_7`$ and $`d=\lambda_8`$. Solving the two channel equations and $`M=1380`$ gives
+``` math
+(a,b,c,d)=(-870+2520t,-680+1890t,83-238t,-1+3t),
+\qquad t\in\mathbb{Z}.
+```
+Each coordinate is nonzero for integral $`t`$, so four nonzero coefficients are necessary and sufficient. One four-term witness is $`-290e_3-136e_5+83e_6-e_8`$, with norm $`510`$. For the unrestricted coefficient norm at this horizon, $`|\lambda_2|+|\lambda_3|\ge|a|/3`$ and $`|\lambda_4|+|\lambda_5|\ge|b|/5`$; when $`t\ne0`$, these bounds together with $`|d|`$ already sum to at least $`794`$. At $`t=0`$, the four groups have unique norm minima $`290`$, $`136`$, $`13`$ and $`1`$, respectively. Thus the unique norm minimizer under only $`V_2=V_4=0`$ is $`-290e_3-136e_5-e_6+12e_7-e_8`$, with norm $`440`$. The support-horizon, sparsity and norm optima here concern this depth-four finite problem; they make no assertion about the series’ irrationality.
+
 The factor beyond $`L_D`$ is not always $`12`$. At $`D=6`$, the same recurrence gives
 ``` math
 L_6=9839515,\qquad a_6=-2242555,\qquad G_6=840.
@@ -775,7 +811,7 @@ To verify the last value, $`u_7=0`$, while $`840=\operatorname{lcm}(1,\ldots,8)`
 We can now express the remainder using the basis coefficients in <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a>. This refines the integer-difference identity at the start of §<a href="#long68:sec:channels" data-reference-type="ref" data-reference="long68:sec:channels">5</a> by giving its integer term explicitly for the classified vectors.
 
 <div id="long68:res:residual-transparency" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency-comparator">Comparator</a></p>
 
 **Theorem 16** (how the coefficient choices change the remainder). *For the vector in <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a>,
 ``` math
@@ -807,7 +843,7 @@ To impose this small-tail comparison at the largest supported index, one needs m
 <span id="long68:res:lead-channel-radius" label="long68:res:lead-channel-radius"></span>
 
 <div id="long68:res:channel-radius" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-channel-radius">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-channel-radius-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-channel-radius">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-channel-radius-comparator">Comparator</a></p>
 
 **Theorem 17** (a lower bound for the support parameter). *Let $`t,M,R\in\mathbb{N}`$ satisfy
 ``` math
@@ -845,7 +881,7 @@ These hypotheses are compatible: for a fixed $`t`$, one may take $`M=L_{2t^2}`$ 
 Theorem <a href="#long68:res:lcm-growth" data-reference-type="ref" data-reference="long68:res:lcm-growth">7</a> raises the asymptotic constant in the same estimate.
 
 <div id="long68:res:radius-constant" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-radius-constant-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L54">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-radius-constant-comparator">Comparator</a></p>
 
 **Corollary 18** (the asymptotic lower bound). *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 ``` math
@@ -880,7 +916,7 @@ where $`\log2<1`$ and $`\log t\le t`$ suffice for the last comparison. Integer p
 At a prime index, the two-term vector $`T_p`$ already changes only one weighted sum; there are no proper divisors to eliminate.
 
 <div id="long68:res:translator" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos68-factorial-reasoning-surface.md#long68-res-translator-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L299">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos68-factorial-reasoning-surface.md#long68-res-translator-comparator">Comparator</a></p>
 
 **Theorem 19** (changing just one weighted sum). *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
@@ -1553,7 +1589,7 @@ The minimum-moment vector $`12K_4+253U_6-11U_8`$ from §<a href="#long68:sec:cha
  <255+\frac56,
  \qquad \frac{2\cdot1380}{9!-1}<\frac1{100}.
 ```
-The tail bound therefore places the remainder strictly between $`255`$ and $`256`$. Its fractional part, rather than the size of the remainder itself, is what excludes denominators dividing $`1380`$. This small instance explains the signed-part comparison in the short note; the headline finite exclusions already imply its denominator restriction.
+The tail bound therefore places the remainder strictly between $`255`$ and $`256`$. Its fractional part, rather than the size of the remainder itself, is what excludes denominators dividing $`1380`$. This small instance explains the signed-part comparison in the short note; the headline finite exclusions already imply its denominator restriction. The five-term vector in §<a href="#long68:sec:channels" data-reference-type="ref" data-reference="long68:sec:channels">5</a> has the same moment and residual $`1380(S-H_4)-44`$, exactly $`286`$ less than the preceding remainder, hence strictly between $`-31`$ and $`-30`$. The horizon-eight norm minimizer has residual $`1380(S-H_4)-56`$, strictly between $`-43`$ and $`-42`$. These integer translations give the same fractional obstruction with smaller coefficients; they do not settle the irrationality of $`S`$. The exact offsets are reproduced by `scripts/check_erdos68_channel_moment.py`.
 
 The finite-support vector $`\lambda=2e_3-e_4`$ has, by kernel check, $`V_{2}(\lambda)=0`$, factorial moment $`-12`$, $`V_{3}(\lambda)=-2`$, $`V_{4}(\lambda)=11`$, and $`V_{d}(\lambda)=-12`$ for every $`d\ge5`$. Under the exact tail enclosure $`1/119<\sum_{d\ge5}1/(d!-1)<1/50`$ its residual lies strictly between $`-93/575`$ and $`-309/13685`$, so it is nonzero and has absolute value less than $`1`$.
 
@@ -1615,7 +1651,7 @@ For a rational value $`S=a/q`$, such a form is integral whenever $`q\mid M(c)`$.
 
 # Acknowledgements
 
-The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper.
+The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper. An AI research pass supplied by Will Cook derived the depth-four dual congruence and shorter vectors from the factorial-channel definitions and general moment-ideal theory developed earlier here. OpenAI Codex checked and integrated them; a separate AI pass reviewed the proof.
 
 <div class="thebibliography">
 

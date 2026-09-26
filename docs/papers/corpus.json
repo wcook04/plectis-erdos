@@ -1183,7 +1183,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:ee993e3113845a16b22814949ca5039a9eecb51180a12fec6e36b0ae902a838e",
+      "source_sha256": "sha256:260525ba1e5a4b98ca0b951ebf35f36dd7cef3d42ae0ce39a5666abd33dd7f1f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1242,121 +1242,121 @@
           "level": 1,
           "id": "sec:translator",
           "title": "How cancellation forces a large moment",
-          "line": 282
+          "line": 303
         },
         {
           "level": 2,
           "id": "growth-of-the-compulsory-factor",
           "title": "Growth of the compulsory factor",
-          "line": 294
+          "line": 315
         },
         {
           "level": 2,
           "id": "sec:compressed-kernel",
           "title": "Solutions supported on an arithmetic progression",
-          "line": 319
+          "line": 340
         },
         {
           "level": 1,
           "id": "sec:prime-pole",
           "title": "Cancellation in a reduced prefix",
-          "line": 331
+          "line": 352
         },
         {
           "level": 1,
           "id": "sec:projection",
           "title": "Comparing the tail with the distance to an integer",
-          "line": 365
+          "line": 386
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining real comparison",
-          "line": 437
+          "line": 458
         },
         {
           "level": 4,
           "id": "sec:nogo",
           "title": "The limit of short truncations.",
-          "line": 472
+          "line": 493
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Computation records",
-          "line": 484
+          "line": 505
         },
         {
           "level": 1,
           "id": "sec:companion-orbit",
           "title": "A criterion using the factorial digits of S-e+2",
-          "line": 496
+          "line": 517
         },
         {
           "level": 2,
           "id": "sec:digits",
           "title": "When subtracting the tail changes a floor",
-          "line": 592
+          "line": 613
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 615
+          "line": 636
         },
         {
           "level": 4,
           "id": "further-formal-sources.",
           "title": "Further formal sources.",
-          "line": 621
+          "line": 642
         },
         {
           "level": 4,
           "id": "the-common-denominator-bound.",
           "title": "The common-denominator bound.",
-          "line": 627
+          "line": 648
         },
         {
           "level": 4,
           "id": "links-to-individual-statements.",
           "title": "Links to individual statements.",
-          "line": 633
+          "line": 654
         },
         {
           "level": 4,
           "id": "related-denominator-estimates.",
           "title": "Related denominator estimates.",
-          "line": 653
+          "line": 674
         },
         {
           "level": 4,
           "id": "comparison-with-denominator-savings-in-p-adic-linear-forms.",
           "title": "Comparison with denominator savings in p-adic linear forms.",
-          "line": 659
+          "line": 680
         },
         {
           "level": 4,
           "id": "factorial-series-comparisons.",
           "title": "Factorial-series comparisons.",
-          "line": 665
+          "line": 686
         },
         {
           "level": 4,
           "id": "selected-prime-and-mean-comparisons.",
           "title": "Selected-prime and mean comparisons.",
-          "line": 675
+          "line": 696
         },
         {
           "level": 4,
           "id": "additional-proofs-and-comparison-files.",
           "title": "Additional proofs and comparison files.",
-          "line": 681
+          "line": 702
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 691
+          "line": 712
         }
       ],
       "citations_rendered": 24,
@@ -1365,8 +1365,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:0c5f920369deabf815f42ed11ee28c8e26dcff2b45d4ced289be575270c76690",
-      "pdf_byte_count": 131432,
+      "pdf_sha256": "sha256:4e0706cade2867001edd645156be3170149709c27fe90402b50465ecf3ade082",
+      "pdf_byte_count": 134924,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1384,12 +1384,12 @@
           {
             "id": "sec:projection",
             "title": "Comparing the tail with the distance to an integer",
-            "line": 365
+            "line": 386
           },
           {
             "id": "sec:open",
             "title": "The remaining real comparison",
-            "line": 437
+            "line": 458
           }
         ],
         "unresolved_count": 0
@@ -1432,7 +1432,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
       "local_source": "paper/68/erdos68-factorial-reasoning-surface.tex",
-      "source_sha256": "sha256:7c48b01f9f24f796511ca13781dbaf91200017ff609e7dae6201d2dd8d9d20b9",
+      "source_sha256": "sha256:9c7466de76bfd6c91fcd05522c23c63e9549652f7da01385269c4253cc85d1b8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -1527,151 +1527,151 @@
           "level": 4,
           "id": "a-primitive-solution-on-an-arithmetic-progression.",
           "title": "A primitive solution on an arithmetic progression.",
-          "line": 905
+          "line": 941
         },
         {
           "level": 1,
           "id": "long68:sec:finite",
           "title": "Finite denominator exclusions",
-          "line": 956
+          "line": 992
         },
         {
           "level": 4,
           "id": "carry-computation-record.",
           "title": "Carry computation record.",
-          "line": 995
+          "line": 1031
         },
         {
           "level": 1,
           "id": "long68:sec:open",
           "title": "The remaining arithmetic inputs",
-          "line": 1007
+          "line": 1043
         },
         {
           "level": 4,
           "id": "value-sets-do-not-determine-the-weighted-residue-sum.",
           "title": "Value sets do not determine the weighted residue sum.",
-          "line": 1013
+          "line": 1049
         },
         {
           "level": 4,
           "id": "the-shared-denominator-and-the-gap-must-be-controlled-together.",
           "title": "The shared denominator and the gap must be controlled together.",
-          "line": 1019
+          "line": 1055
         },
         {
           "level": 4,
           "id": "what-two-gap-product-tests-do-not-show.",
           "title": "What two gap-product tests do not show.",
-          "line": 1058
+          "line": 1094
         },
         {
           "level": 4,
           "id": "prime-powers-already-seen-at-earlier-indices.",
           "title": "Prime powers already seen at earlier indices.",
-          "line": 1073
+          "line": 1109
         },
         {
           "level": 4,
           "id": "the-upper-alternative-in-the-finite-test.",
           "title": "The upper alternative in the finite test.",
-          "line": 1097
+          "line": 1133
         },
         {
           "level": 4,
           "id": "conditions-at-twice-a-prime.",
           "title": "Conditions at twice a prime.",
-          "line": 1103
+          "line": 1139
         },
         {
           "level": 4,
           "id": "the-cofactor-form-of-the-progression-construction.",
           "title": "The cofactor form of the progression construction.",
-          "line": 1122
+          "line": 1158
         },
         {
           "level": 4,
           "id": "criteria-from-the-literature-that-do-not-apply.",
           "title": "Criteria from the literature that do not apply.",
-          "line": 1155
+          "line": 1191
         },
         {
           "level": 1,
           "id": "sources-and-evidence",
           "title": "Sources and evidence",
-          "line": 1163
+          "line": 1199
         },
         {
           "level": 1,
           "id": "long68:app:sources",
           "title": "Guide to the formal sources",
-          "line": 1190
+          "line": 1226
         },
         {
           "level": 1,
           "id": "long68:sec:extended-record",
           "title": "Further deductions and limitations",
-          "line": 1302
+          "line": 1338
         },
         {
           "level": 2,
           "id": "long68:sec:ext-digits",
           "title": "Factorial digits and their remainders",
-          "line": 1308
+          "line": 1344
         },
         {
           "level": 2,
           "id": "long68:sec:ext-literature",
           "title": "How the classical criteria apply here",
-          "line": 1345
+          "line": 1381
         },
         {
           "level": 2,
           "id": "long68:sec:ext-superseded",
           "title": "A superseded deduction",
-          "line": 1396
+          "line": 1432
         },
         {
           "level": 2,
           "id": "long68:sec:ext-plateau",
           "title": "Rational grid points and first crossings",
-          "line": 1410
+          "line": 1446
         },
         {
           "level": 2,
           "id": "long68:sec:ext-collision",
           "title": "Exact identities for shared prime powers",
-          "line": 1463
+          "line": 1499
         },
         {
           "level": 2,
           "id": "long68:sec:ext-certificates",
           "title": "Finite vectors and exact numerical examples",
-          "line": 1545
+          "line": 1581
         },
         {
           "level": 2,
           "id": "long68:sec:ext-nogo",
           "title": "Limits of the recurrences and clearing factors used here",
-          "line": 1572
+          "line": 1608
         },
         {
           "level": 2,
           "id": "long68:sec:ext-generic",
           "title": "An elementary criterion for any real number",
-          "line": 1586
+          "line": 1622
         },
         {
           "level": 1,
           "id": "sec:erdos-68-complete-family-map",
           "title": "Relations among the criteria",
-          "line": 1606
+          "line": 1642
         },
         {
           "level": 1,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 1614
+          "line": 1650
         }
       ],
       "citations_rendered": 70,
@@ -1680,8 +1680,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f43e878d2f295fb3af1963397c724cc7244940c145d369925c1670dc478f855a",
-      "pdf_byte_count": 292302,
+      "pdf_sha256": "sha256:6fba0036b9d67d1ad5140c6641a1aa6e5dc75eba023ff22c9967cd6e4b179cee",
+      "pdf_byte_count": 300996,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1694,17 +1694,17 @@
           {
             "id": "long68:sec:finite",
             "title": "Finite denominator exclusions",
-            "line": 956
+            "line": 992
           },
           {
             "id": "long68:sec:open",
             "title": "The remaining arithmetic inputs",
-            "line": 1007
+            "line": 1043
           },
           {
             "id": "sec:erdos-68-complete-family-map",
             "title": "Relations among the criteria",
-            "line": 1606
+            "line": 1642
           }
         ],
         "unresolved_count": 0

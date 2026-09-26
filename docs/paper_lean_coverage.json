@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
-  "content_digest": "sha256:5197efb65fa4eccdc654ad83853fb70581bf671fe5ed5d7aa57e9f4965a469de",
+  "content_digest": "sha256:c968b9c3757586019861ff42961fefcf55781d827600e7f2658a8592f7982614",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -406,7 +406,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:944859b9b0c399d925d1865d3c15f4fa0ec32cb90fffea15a090615589615912",
-      "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex:573",
+      "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex:616",
       "other_labels": [
         "eq:global-complementary-target"
       ],
@@ -445,7 +445,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:59e934c75c84c3728b702e7b6576dc9e7cc2d337cb4d75ffebb4e519391d9f79",
-      "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex:748",
+      "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex:791",
       "other_labels": [
         "eq:companion-cofinal"
       ],
@@ -5006,7 +5006,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:787f10ab0534d5003e04ce4749e762755c5431585099f7748d4f7d3762824c61",
-      "source": "paper/reasoning-parts/erdos68/core.tex:1144",
+      "source": "paper/reasoning-parts/erdos68/core.tex:1243",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5054,7 +5054,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:eb95cac86d31b256e1ab76e136b457540141aa9fd2e1e9e304fea8965fa52e57",
-      "source": "paper/reasoning-parts/erdos68/core.tex:1225",
+      "source": "paper/reasoning-parts/erdos68/core.tex:1324",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5098,7 +5098,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:1a31df7c3a02bb14faa51544dcd8ce9fd20362621e832f555d28dc81a8c3c167",
-      "source": "paper/reasoning-parts/erdos68/core.tex:1277",
+      "source": "paper/reasoning-parts/erdos68/core.tex:1376",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -5134,7 +5134,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:162979718dbf5d28fa7d8480785ac7e262139e2db53deb06902e5a7ae09bbf5c",
-      "source": "paper/reasoning-parts/erdos68/core.tex:1325",
+      "source": "paper/reasoning-parts/erdos68/core.tex:1424",
       "lean": {
         "status": "exact",
         "declarations": [

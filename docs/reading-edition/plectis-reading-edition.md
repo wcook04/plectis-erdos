@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `666d58d78e16bafc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `aae1acfb46624011`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1141,7 +1141,7 @@ Each entry gives the abstract and the opening sections of the short paper, cut a
 
 *Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf)
 
-Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (175 KB as text).
+Longer record: [Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) (181 KB as text).
 
 <a id="erdos-68-factorial-denominator-irrationality--erdos-68-factorial-denominator-irrationality"></a>
 
@@ -1225,7 +1225,7 @@ Neither restriction implies the other: the prime $`300007`$ satisfies the divisi
 A finite non-unit carry excludes particular denominators. Non-unit carries at arbitrarily large indices are equivalent to irrationality.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:carry-characterization" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator">Comparator</a></p>
 
 **Theorem 2** (exact carry characterisation). *<span id="erdos-68-factorial-denominator-irrationality--res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
 ``` math
@@ -1249,7 +1249,7 @@ that rational constant is $`S`$. Finally writing $`x=(m-1)!H_{m-1}`$ gives $`b_m
 
 For $`e`$, multiplication by $`m!`$ clears every denominator of the partial sum; here $`\gcd(m!,m!-1)=1`$ prevents even the last summand from being cleared when $`m\ge3`$. For the tail arguments below, the issue is the gap to an integer after scaling, not just the size of the unscaled tail. The remaining sections study that gap and the exact coefficient equations. Appendix <a href="#erdos-68-factorial-denominator-irrationality--sec:companion-orbit" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:companion-orbit">8</a> gives a factorial-digit formulation and the floor correction relating the two sequences. Secondary constructions are proved in the long paper.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:channels"></a>
 
@@ -1277,7 +1277,7 @@ Thus the weights retain an integer linear form in $`1`$ and $`S`$ while allowing
 For example, $`4e_3-e_4`$ has moment zero, $`V_2=6`$ and $`V_4=23`$, with all other $`V_d`$ zero. The vector $`2e_1-e_2`$ has moment zero and only $`V_2=1`$ nonzero. Subtracting six copies of the latter therefore removes the unwanted $`V_2`$ without changing $`V_4`$. The following recursion performs this elimination at the proper divisors of each index.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/7f79e63d0b36b5b4f0b47b6368342b4a50824f4e/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
 
 **Theorem 3** (an integer basis with prescribed weighted sums). *Set
 ``` math
@@ -1386,7 +1386,7 @@ k!\mid W_{d,dk}=\frac{(dk)!}{(d!)^k}.
 The quotient by $`k!`$ counts partitions into $`k`$ unordered blocks of size $`d`$.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
 
 **Theorem 4** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 ``` math
@@ -1406,7 +1406,7 @@ This does not justify replacing $`H`$ by $`2D`$. ◻
 Bertrand’s postulate supplies $`\ell`$ for every $`D\ge3`$, and $`\ell=2`$ works for $`D=2`$. This finite calculation determines allowable moments, not the nonintegrality of their remainders.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:bandbreakpoint" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cfdf3750efa81dab09af065b9b7d9963995a8fdf/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/24f4ec4460c5635aa630988a17029c77f7d4f6f5/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator">Comparator</a></p>
 
 **Theorem 5** (constant values of the floor in the weights). *Let $`\lambda`$ be a finitely supported integer vector, let $`d\ge2`$ and $`k\ge0`$ be integers, and suppose each index $`n`$ in its support satisfies $`kd\le n<(k+1)d`$. Then
 ``` math
@@ -1424,9 +1424,30 @@ In particular, support in $`[d,2d)`$ and $`V_d(\lambda)=0`$ force $`M(\lambda)=0
 
 For example, at $`D=4`$ the minimum moment is $`1380`$, attained by $`12K_4+253U_6-11U_8`$. The inputs to <a href="#erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> are $`L_4=115`$, $`a_4=-55`$ and $`g_4=60`$. The last equality uses the full-tail divisibility $`\operatorname{lcm}(1,\ldots,n)\mid u_n`$ together with $`23u_6-u_8=60`$. <span id="erdos-68-factorial-denominator-irrationality--eq:channel-lcm-envelope" label="eq:channel-lcm-envelope"></span> The long paper, §5.1, proves that divisibility by Legendre’s formula, checks the attaining vector, and gives the different minimum $`4140`$ when support is restricted to $`n\le6`$.
 
+There is also a short certificate for this depth-four value that does not require computing the entire tail gcd. For every $`n\ge2`$,
+``` math
+\begin{equation}
+  1380\mid 11n!-46W_{2,n}+12W_{4,n}.
+  \label{eq:depth-four-dual}
+\end{equation}
+```
+For $`n=2,3,4`$ the expression is zero. For $`n\ge4`$, each summand is divisible by $`12`$: $`12\mid n!`$, while $`6\mid W_{2,n}`$ because $`W_{2,2r}=r!\prod_{j=1}^{r}(2j-1)`$ for $`r\ge2`$ and $`W_{2,2r+1}=(2r+1)W_{2,2r}`$. For $`n\ge5`$, each summand is divisible by $`5`$, since the denominators removed from $`n!`$ in $`W_{2,n}`$ and $`W_{4,n}`$ are powers of $`2`$ and $`24`$. Finally, $`n!=24^{\lfloor n/4\rfloor}W_{4,n}\equiv W_{4,n}\pmod{23}`$ and $`46W_{2,n}\equiv0\pmod{23}`$. The factors $`12`$, $`5`$ and $`23`$ are coprime, proving <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-dual" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-dual">[eq:depth-four-dual]</a>.
+
+Summing against a finite integer vector gives $`1380\mid 11M-46V_2+12V_4`$. Thus $`V_2=V_4=0`$ implies $`1380\mid M`$, since $`11`$ is coprime to $`1380`$. Equality is attained even with the third channel cancelled:
+``` math
+\begin{equation}
+  \lambda=1482e_2-784e_3-136e_5+83e_6-e_8,
+  \qquad (M,V_2,V_3,V_4)=(1380,0,0,0).
+  \label{eq:depth-four-short-vector}
+\end{equation}
+```
+These values follow directly from the five rows $`(n!,W_{2,n},W_{3,n},W_{4,n})`$ at $`n=2,3,5,6,8`$: $`(2,1,2,2)`$, $`(6,3,1,6)`$, $`(120,30,20,5)`$, $`(720,90,20,30)`$ and $`(40320,2520,1120,70)`$. Hence imposing $`V_3=0`$ does not change the attainable *moments*; it does restrict the vectors, since $`3e_2-e_3`$ has $`M=V_2=V_4=0`$ but $`V_3=5`$.
+
+The first possible maximum index of a vector attaining moment $`1380`$ under $`V_2=V_4=0`$ is $`8`$. Indeed, the expression in <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-dual" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-dual">[eq:depth-four-dual]</a> is zero at $`n=2,3,4,5`$ and equals $`4140`$ and $`28980=7\cdot4140`$ at $`n=6,7`$. For support at most $`7`$, $`11M=4140(\lambda_6+7\lambda_7)`$ when the two channels vanish; coprimality of $`11`$ and $`4140`$ forces $`4140\mid M`$. The vector in <a href="#erdos-68-factorial-denominator-irrationality--eq:depth-four-short-vector" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:depth-four-short-vector">[eq:depth-four-short-vector]</a> reaches index $`8`$. All of these statements concern finite cancellation; they do not prove irrationality of the series.
+
 <a id="erdos-68-factorial-denominator-irrationality--sec:translator"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (67 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (70 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
