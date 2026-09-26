@@ -11,8 +11,11 @@ membership or representation claim.
 from __future__ import annotations
 
 import importlib.util
+import copy
+import io
 import json
 import re
+from contextlib import redirect_stdout
 from fractions import Fraction
 from pathlib import Path
 
@@ -48,8 +51,19 @@ def load_probe():
     return module
 
 
+def load_verifier():
+    spec = importlib.util.spec_from_file_location(
+        "verify_terminal_witness", HOME / "verify_terminal_witness.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
 def main() -> int:
     probe = load_probe()
+    verifier = load_verifier()
 
     # The three outcomes partition the candidates and replay the saved rows.
     saved = json.loads((HOME / "results" / "grid_q12_24_36.json").read_text(encoding="utf-8"))
@@ -96,6 +110,59 @@ def main() -> int:
             assert probe.classify(target, indices, weight, tail_upper, depth) == (
                 "excluded", 17
             ), (target, depth)
+
+    early = probe.single_target(Fraction(189, 388), "all", 16, 160)
+    late = probe.single_target(Fraction(189, 388), "all", 17, 160)
+    assert early["outcome"] == "not_excluded" and early["first_rejection"] is None
+    assert late["outcome"] == "excluded" and late["first_rejection"] == 17
+    assert late["selected_indices"] == [2, 3, 7, 9, 10, 14, 15, 16]
+    assert late["tail_upper"] == "196609/25769803776"
+    assert late["tail_bound_kind"] == "universal_analytic"
+    assert late["tail_bound_from"] == 18
+    assert Fraction(late["tail_upper"]) < Fraction(late["remainder"]) < Fraction(late["weight"])
+    odd_gap = probe.single_target(Fraction(1, 2), "odd", 20, 160)
+    assert odd_gap["outcome"] == "excluded" and odd_gap["first_rejection"] == 1
+    assert odd_gap["tail_upper"] == "7/24" and odd_gap["tail_bound_from"] == 3
+    assert probe.single_target(Fraction(1, 3), "all", 20, 160)["outcome"] == "finite_representation"
+    assert probe.single_target(Fraction(1, 2), "all", 20, 160)["outcome"] == "not_excluded"
+    for invalid in (Fraction(0), Fraction(-1, 2), Fraction(2)):
+        try:
+            probe.single_target(invalid, "all", 17, 160)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError((invalid, "invalid target accepted"))
+    output = io.StringIO()
+    with redirect_stdout(output):
+        assert probe.main(["--target", "189/388", "--depth", "16", "17",
+                           "--horizon", "160", "--json"]) == 0
+    cli_rows = json.loads(output.getvalue())["rows"]
+    assert [row["outcome"] for row in cli_rows] == ["not_excluded", "excluded"]
+    assert cli_rows[1] == late
+    assert verifier.verify(late) == "verified_exclusion"
+    assert verifier.verify(probe.single_target(Fraction(1, 3), "all", 20, 160)) == \
+        "verified_finite_representation"
+    computed = probe.single_target(Fraction(5, 8), "all", 20, 100)
+    assert computed["tail_bound_kind"] == "computed_horizon"
+    assert verifier.verify(computed) == "verified_exclusion"
+    for changed in (
+        {"target": "1/2"},
+        {"selected_indices": [2, 3, 7]},
+        {"remainder": "1/100"},
+        {"tail_upper": "1/1000000"},
+        {"weight": "1/2"},
+        {"first_rejection": 18},
+        {"host": "odd"},
+        {"outcome": "not_excluded"},
+    ):
+        altered = copy.deepcopy(late)
+        altered.update(changed)
+        try:
+            verifier.verify(altered)
+        except (ValueError, KeyError):
+            pass
+        else:
+            raise AssertionError((changed, "altered witness accepted"))
 
     # The large-cutoff table in the README is the saved computation.
     sweep = json.loads(

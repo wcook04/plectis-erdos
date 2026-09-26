@@ -10,6 +10,7 @@ import hashlib
 import inspect
 import json
 import os
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -702,6 +703,58 @@ def test_tracked_artifact_path_prefers_nested_storage() -> None:
         )
 
 
+def test_effective_verifier_identity() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        source = Path(raw) / "source"
+        scripts = source / "scripts"
+        scripts.mkdir(parents=True)
+        runner = scripts / "replay_external_verification.py"
+        helper = scripts / "validation_singleflight.py"
+        shutil.copyfile(replay.__file__, runner)
+        shutil.copyfile(singleflight.__file__, helper)
+        (source / "README.md").write_text("unrelated documentation revision\n")
+        identity = replay.effective_verifier_identity(source)
+        require(identity["identity_verified"], "matching loaded verifier was refused")
+        require(
+            set(identity["files"]) == {"runner", "singleflight"},
+            "effective verifier omitted a loaded module",
+        )
+
+        helper.write_bytes(helper.read_bytes() + b"\n# changed helper\n")
+        identity = replay.effective_verifier_identity(source)
+        require(not identity["identity_verified"], "changed loaded helper was accepted")
+        require(not identity["files"]["singleflight"]["matches_source"],
+                "helper mismatch was not identified")
+        shutil.copyfile(singleflight.__file__, helper)
+
+        runner.write_bytes(runner.read_bytes() + b"\n# newer selected runner\n")
+        identity = replay.effective_verifier_identity(source)
+        require(not identity["identity_verified"], "old runner/new source was accepted")
+        output = Path(raw) / "replay-receipt.json"
+        contract = {"repository": "https://example.invalid/plectis-erdos"}
+        with (
+            patch.object(replay, "check_programs"),
+            patch.object(replay, "sandbox_mode", return_value="user-manager"),
+            patch.object(replay, "load_contract", return_value=contract),
+            patch.object(replay, "prepare_source", return_value=source),
+            patch.object(replay, "run") as expensive_run,
+        ):
+            result, exit_code = replay.execute(
+                source_commit="a" * 40,
+                source_tree="b" * 40,
+                output=output,
+                workspace=None,
+            )
+        require(exit_code == 1, "mismatched verifier produced a passing replay")
+        require(result["effective_verifier"] == identity,
+                "failure receipt lost the effective verifier evidence")
+        require("loaded replay verifier differs" in result["error"],
+                "failure receipt lost the effective verifier diagnostic")
+        require(json.loads(output.read_text()) == result,
+                "verifier mismatch was not written to the receipt")
+        expensive_run.assert_not_called()
+
+
 def test_replay_plan() -> None:
     commit = "a" * 40
     tree = "b" * 40
@@ -794,11 +847,13 @@ def test_replay_rejects_missing_systemd_before_fetch() -> None:
 def test_named_construction_replay_unit() -> None:
     diagnostic = 'exact theorem mismatch'
     require(replay.replay_checks_pass(0, 1, diagnostic, diagnostic), 'valid comparison rejected')
-    for code in (0, -999, -9, 124, 125, 126, 127):
+    for code in (0, -999, -9, -15, 2, 124, 125, 126, 127, 130, 137, 143):
         require(not replay.replay_checks_pass(0, code, diagnostic, diagnostic),
                 'infrastructure failure accepted as semantic rejection')
     require(not replay.replay_checks_pass(1, 1, diagnostic, diagnostic), 'failed positive accepted')
     require(not replay.replay_checks_pass(0, 1, 'other failure', diagnostic), 'wrong diagnostic accepted')
+    require(not replay.replay_checks_pass(0, 1, '', diagnostic), 'missing log accepted')
+    require(not replay.replay_checks_pass(0, 1, '', ''), 'empty diagnostic accepted')
     plan = replay.replay_plan('a' * 40, 'b' * 40, 'feedback-policy')
     require(plan['unit'] == 'feedback-policy', 'selected unit was lost')
     require(plan['statement_contract']['theorem'].endswith('feedbackPolicy_preserves_sum'),
@@ -920,6 +975,11 @@ def test_weighted_support_runtime_receipt() -> None:
                 'weighted CI receipt lost its challenge')
         require(row['permitted_axioms'] == unit['permitted_axioms'],
                 'weighted CI receipt lost its axiom budget')
+        row = receipt.weighted_support_runtime_row(1, 1, positive_log, negative_log)
+        require(row['result'] == 'fail', 'failed positive comparison counted as a pass')
+        negative_log.write_text('')
+        row = receipt.weighted_support_runtime_row(0, 1, positive_log, negative_log)
+        require(row['result'] == 'fail', 'empty negative diagnostic counted as a mismatch')
         negative_log.write_text('an unrelated failure\n')
         row = receipt.weighted_support_runtime_row(0, 1, positive_log, negative_log)
         require(row['result'] == 'fail', 'unrelated failure counted as a mismatch')
@@ -1051,6 +1111,7 @@ def main() -> int:
     test_receipt_subprocess_environment()
     test_replay_subprocess_environment()
     test_tracked_artifact_path_prefers_nested_storage()
+    test_effective_verifier_identity()
     test_replay_plan()
     test_replay_rejects_missing_systemd_before_fetch()
     test_named_construction_replay_unit()

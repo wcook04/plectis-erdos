@@ -194,6 +194,54 @@ class LeanPackageShareTests(unittest.TestCase):
                 package_share.copy_on_write_command(Path("source"), Path("target"))
             )
 
+    @unittest.skipUnless(sys.platform == "darwin", "strict APFS clone is macOS-only")
+    def test_strict_tree_clone_preserves_file_mode_and_symlink(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "source"
+            target = Path(directory) / "target"
+            (source / "nested").mkdir(parents=True)
+            artifact = source / "nested/artifact.olean"
+            artifact.write_bytes(b"validated")
+            artifact.chmod(0o640)
+            (source / "link").symlink_to("nested/artifact.olean")
+            package_share.clone_tree(source, target)
+            self.assertEqual((target / "nested/artifact.olean").read_bytes(), b"validated")
+            self.assertEqual((target / "nested/artifact.olean").stat().st_mode & 0o777, 0o640)
+            self.assertTrue((target / "link").is_symlink())
+            self.assertEqual(os.readlink(target / "link"), "nested/artifact.olean")
+
+    @unittest.skipUnless(sys.platform == "darwin", "strict APFS clone is macOS-only")
+    def test_strict_tree_clone_failure_removes_only_new_stage(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source"
+            target = root / "target"
+            source.mkdir()
+            (source / "artifact.olean").write_bytes(b"must remain")
+            with mock.patch.object(
+                package_share, "clone_file_strict", side_effect=OSError("clone unsupported")
+            ):
+                with self.assertRaisesRegex(OSError, "clone unsupported"):
+                    package_share.clone_tree(source, target)
+            self.assertFalse(target.exists())
+            self.assertEqual((source / "artifact.olean").read_bytes(), b"must remain")
+
+    @unittest.skipUnless(sys.platform == "darwin", "strict APFS clone is macOS-only")
+    def test_clone_failure_survives_stage_cleanup_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "source"
+            target = Path(directory) / "target"
+            source.mkdir()
+            (source / "artifact.olean").write_bytes(b"source")
+            with mock.patch.object(
+                package_share, "clone_file_strict", side_effect=OSError("clone unsupported")
+            ), mock.patch.object(
+                package_share.shutil, "rmtree", side_effect=OSError("cleanup denied")
+            ):
+                with self.assertRaisesRegex(OSError, "clone unsupported"):
+                    package_share.clone_tree(source, target)
+            self.assertEqual((source / "artifact.olean").read_bytes(), b"source")
+
     def test_setup_compression_is_explicitly_optional_off_macos(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             package_share.sys, "platform", "linux"
@@ -244,14 +292,27 @@ class LeanPackageShareTests(unittest.TestCase):
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(LeanPackageShareTests)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
+    # An empty selection or an all-skipped run is not a pass: unittest reports
+    # wasSuccessful() for both, so the verdict names what actually executed.
+    skipped = len(result.skipped)
+    if not result.wasSuccessful():
+        status = "failed"
+    elif result.testsRun == 0:
+        status = "no_tests_ran"
+    elif skipped >= result.testsRun:
+        status = "all_skipped"
+    else:
+        status = "passed"
     print(
         json.dumps(
             {
-                "schema": "public-lean-package-share-tests/1",
+                "schema": "public-lean-package-share-tests/2",
+                "status": status,
                 "tests_run": result.testsRun,
-                "successful": result.wasSuccessful(),
+                "skipped": skipped,
+                "successful": status == "passed",
             },
             sort_keys=True,
         )
     )
-    raise SystemExit(0 if result.wasSuccessful() else 1)
+    raise SystemExit({"passed": 0, "failed": 1}.get(status, 5))
