@@ -31,8 +31,8 @@
 
 \runninghead{Erd\H{o}s \#269: no finite separable representation}
 \title{No Finite Separable Representation\\at Three Prime Generators}
-\subtitle{An irrational distinct-height sum, kernel rank and a tail
-criterion for Erd\H{o}s Problem~\#269}
+\subtitle{Irrational distinct-height sums for every finite set of primes,
+kernel rank and a tail criterion for Erd\H{o}s Problem~\#269}
 \author{Will Cook}
 \date{July 2026; revised 26 September 2026}
 
@@ -41,15 +41,23 @@ criterion for Erd\H{o}s Problem~\#269}
 \noteprovenance
 
 \begin{abstract}
-The sum of the reciprocals of the distinct running least common multiples
-of the integers $2^i3^j5^k$ is irrational, as Erd\H{o}s asserted in a 1973
-letter that gives no proof.  Between consecutive powers of two the
-normalised tails of this sum follow one of five affine maps whose images of
-a common interval are disjoint, so a rational value would make the powers of
-$3$ fall periodically among the dyadic blocks.  The argument is checked in
-Lean.  With an exact finite
-certificate the same argument proves irrationality for every set of three
-primes at most $31$.  For three distinct primes the reciprocal running-LCM
+For every finite set $P$ of at least two primes, the sum of the reciprocals
+of the distinct running least common multiples of the $P$-smooth integers
+is irrational.  Erd\H{o}s asserted this in a 1973 letter that gives no
+proof.  For two primes it follows from a Hecke--Mahler transcendence
+theorem; the new case is three or more primes.  A rational value would make
+the scaled tails of the sum integers, so two tails that are close would be
+equal.  The tails after a prime power $t$ and after $tp^n$, for a good return
+$n$, are close, and their words of primes differ by rearranging short runs;
+a point of a torus lying on exactly two coordinate walls produces a run of
+two primes whose rearrangement changes the tail.  The proof is an ordinary
+one, refereed by a second reader.  For $\{2,3,5\}$ a different proof, by
+five affine maps with disjoint images on dyadic blocks, is checked in Lean.
+The same finite-state method proves every set of three primes at most $31$
+by exact computation and fails for $\{2,3,5,7\}$, where two different words
+of blocks have the same affine map.  The same comparison of two tails proves
+that the sub-sum of the catalogue series over the powers of one prime is
+irrational.  For three distinct primes the reciprocal running-LCM
 kernel has nonsingular minors of every order, so no finite sum of products
 separates one exponent from the other two.  For the repeated $\{2,3,5\}$
 series, which counts a running LCM once for every integer at which it
@@ -89,11 +97,11 @@ LCM $60$, which contributes $2/60$ to $\mathcal R_{\{2,3,5\}}$ and $1/60$ to
 $\mathcal D_{\{2,3,5\}}$.  In a letter dated 1 January 1973, Erd\H{o}s
 called the irrationality of $\mathcal R_P$ a conjecture he could not prove
 and wrote that he could show the distinct-height sum to be irrational; the
-letter prints no argument~\cite{erdos1974letter}, and we have not found a
-proof in print (the companion's Section~11.1 lists the sources searched).
-Section~\ref{sec:distinct} proves the irrationality of $\mathcal D_P$ for
-$P=\{2,3,5\}$ and, with an exact finite certificate, for every set of three
-primes at most $31$.
+letter prints no argument~\cite{erdos1974letter}.  Erd\H{o}s and Graham
+state only the question for $\mathcal R_P$~\cite[p.~65]{erdosgraham1980},
+and we have not found a proof in print (the companion's Section~11.1 lists
+the sources searched).  Section~\ref{sec:distinct} proves the irrationality
+of $\mathcal D_P$ for every finite $P$ with $|P|\ge2$.
 
 Fan used the identity $\Lprefix=\hgt$ to separate the two-prime
 kernel~\cite{fan2026comment}.  With three primes, even a finite sum of
@@ -104,15 +112,275 @@ $\{2,3,5\}$ sum and state exactly what its irrationality still requires.
 
 \evidenceparagraph{\evidencerecordurl}
 
-\section{The distinct-height sum for \texorpdfstring{$\{2,3,5\}$}{\{2,3,5\}}}
+\section{The distinct-height sums}
 \label{sec:distinct}
 
+Let $P$ be a finite set of primes with $|P|\ge2$ and put
+$\hgt_P(t)=\prod_{r\in P}r^{\lfloor\log_rt\rfloor}$.  The proof of
+Proposition~\ref{res:lcm} applies to any finite set of primes: the running
+LCM of the $P$-smooth integers up to $t$ is $\hgt_P(t)$, and it changes only
+at the prime powers $r^n$ ($r\in P$, $n\ge1$), where it is multiplied by $r$.
+List these prime powers as $t_1<t_2<\cdots$, let $q_k$ be the prime of $t_k$,
+and put $Q_k=q_1\cdots q_k=\hgt_P(t_k)$.  Then
+\[
+ \mathcal D_P=1+\sum_{k\ge1}\frac1{Q_k}.
+\]
 For $P=\{2,3,5\}$ the prime powers $2,3,4,5,8,9,16,25,27,32,\ldots$ carry
 the heights $2,6,12,60,120,360,720,3600,10800,21600,\ldots$, so
+$\mathcal D_{\{2,3,5\}}=1.7796169832947490504\ldots$.
+
+\begin{theorem}[the distinct-height sums]\label{res:distinct-height-all}
+For every finite set $P$ of primes with $|P|\ge2$, the number
+$\mathcal D_P$ is irrational.
+\end{theorem}
+\evidenceremark{Ordinary proof, given below.  It was found within this
+project on 26 September 2026 and independently refereed by a second reader,
+whose five small corrections are incorporated.  It has no Lean proof, so
+Comparator does not apply.  The case $P=\{2,3,5\}$ is
+Theorem~\ref{res:distinct-height-235}, which is checked in Lean.}
+
+For $|P|=2$ the theorem is contained in
+Theorem~\ref{res:two-prime-transcendence}: $\mathcal D_{\{p,q\}}$ is an
+affine function of one Hecke--Mahler value, which is transcendental by
+Loxton and van der Poorten~\cite[Theorem~8, p.~40]{loxtonvdp1977} and
+Bugeaud and Laurent~\cite[Theorem~1.1]{bugeaudlaurent2023}.  The new case
+is $|P|\ge3$, where every Hecke--Mahler theorem we found has a single slope.
+
+The proof compares two tails of the series.  A rational value makes every
+scaled tail an integer, so two tails closer than the scale are equal.  The
+tails after $t_k$ and after $t_kp^n$, for a suitable $n$, are that close.
+Their words of primes differ only by rearranging short runs, and equality of
+the tails forces an integer invariant $f$ to agree on each run and its
+rearrangement.  A run of two primes violates this, and a point of a torus
+on exactly two coordinate walls produces one.
+
+\paragraph{Words.}
+For an infinite word $u=u_1u_2\cdots$ over $P$ put
+$V(u)=\sum_{i\ge1}(u_1\cdots u_i)^{-1}$.  For a finite word
+$\sigma=\sigma_1\cdots\sigma_n$ put $\Pi(\sigma)=\sigma_1\cdots\sigma_n$ and
 \[
- \mathcal D_{\{2,3,5\}}=1+\frac12+\frac16+\frac1{12}+\frac1{60}+\frac1{120}
- +\frac1{360}+\cdots=1.7796169832947490504\ldots .
+ f(\sigma)=\sum_{t=1}^{n}\sigma_{t+1}\cdots\sigma_n ,
 \]
+the term $t=n$ being $1$.  Then $f(\sigma)$ is a positive integer and
+\begin{equation}\label{eq:word-shift}
+ V(\sigma u)=\frac{f(\sigma)+V(u)}{\Pi(\sigma)}.
+\end{equation}
+Put $x_k=V(q_{k+1}q_{k+2}\cdots)=\sum_{j>k}Q_k/Q_j$.  Every suffix of
+$q_1q_2\cdots$ contains every prime of $P$, in particular one larger than
+$\min P$, so its value lies in $(0,1/(\min P-1))\subseteq(0,1)$.
+
+\begin{lemma}[integral tails]\label{res:dp-integral-tails}
+If $\mathcal D_P=N/K$ with integers $N$ and $K\ge1$, then $Kx_k$ is an
+integer for every $k\ge1$.
+\end{lemma}
+\begin{proof}
+$Q_k\mathcal D_P=Q_k+\sum_{i\le k}Q_k/Q_i+x_k$, and $Q_i$ divides $Q_k$
+for $i\le k$.  So $Kx_k=Q_kN-K\bigl(Q_k+\sum_{i\le k}Q_k/Q_i\bigr)$.
+\end{proof}
+
+\begin{lemma}[rearranged blocks]\label{res:dp-blocks}
+Let $u=\sigma_1\sigma_2\cdots$ and $u'=\sigma'_1\sigma'_2\cdots$ be infinite
+words, where each $\sigma_i$ is a nonempty finite word and $\sigma'_i$ is a
+rearrangement of it, and suppose that every suffix of $u$ or $u'$ starting
+at a block boundary has value in $(0,1)$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $V(u)=V(u')$, then $f(\sigma_i)=f(\sigma'_i)$ for every $i$.
+\item If $\sigma_i=\sigma'_i$ for every $i<i_0$, then
+$|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Let $U_i$ and $U'_i$ be the values of the suffixes starting at block $i$.
+Since $\Pi(\sigma_i)=\Pi(\sigma'_i)$, \eqref{eq:word-shift} gives
+$\Pi(\sigma_i)(U_i-U'_i)=f(\sigma_i)-f(\sigma'_i)+U_{i+1}-U'_{i+1}$.  If
+$U_i=U'_i$, the integer $f(\sigma_i)-f(\sigma'_i)$ equals
+$U'_{i+1}-U_{i+1}\in(-1,1)$, so both vanish.  Induction from
+$U_1=V(u)=V(u')$ proves~(i).  For~(ii),
+$V(u)-V(u')=(U_{i_0}-U'_{i_0})/\Pi(\sigma_1\cdots\sigma_{i_0-1})$.
+\end{proof}
+
+\begin{lemma}[short rearrangements]\label{res:dp-short}
+The map $f$ is injective on the orderings of any set of at most three
+distinct primes.
+\end{lemma}
+\begin{proof}
+For two primes, $f(ab)=1+b$.  For three,
+$f(\sigma_1\sigma_2\sigma_3)=1+\sigma_3(1+\sigma_2)$.  Let $\sigma,\sigma'$
+be orderings of $\{a,b,c\}$ with $f(\sigma)=f(\sigma')$.  If
+$\sigma_3=\sigma'_3$, then $\sigma_2=\sigma'_2$ and $\sigma=\sigma'$.
+Otherwise say $\sigma_3=a$ and $\sigma'_3=b$, so
+$a(1+\sigma_2)=b(1+\sigma'_2)$ with $\sigma_2\in\{b,c\}$ and
+$\sigma'_2\in\{a,c\}$.  The pairs $(b,a)$ and $(c,c)$ give $a=b$, the pair
+$(b,c)$ gives $b\mid a$, and $(c,a)$ gives $a\mid b$.
+\end{proof}
+
+For four primes injectivity fails: $f(5,7,3,2)=f(7,2,3,5)=51$.  The proof
+therefore looks for a run of two primes, for which
+$f(ab)-f(ba)=b-a\ne0$.
+
+\paragraph{The torus.}
+Let $\mathbb T=\prod_{q\in P}\R/(\log q)\Z$ and
+$\Theta(s)=(s\bmod\log q)_{q\in P}$ for $s\in\R$.  For $\theta\in\mathbb T$
+a \emph{$q$-crossing} is a real $t$ with
+$\theta_q+t\in(\log q)\Z$, and $W(\theta)$ is the word of the primes of the
+positive crossings in increasing order of time.  For
+$\theta_k=\Theta(\log t_k)$ the positive $q$-crossings are the times
+$\log(q^j/t_k)$ with $q^j>t_k$, so $W(\theta_k)=q_{k+1}q_{k+2}\cdots$, and
+crossings of different primes never coincide.
+
+Let $T_0$ be the closure of $\Theta(\R)$, a subtorus containing every
+$\theta_k$.  For $t>0$ and $\varepsilon>0$, the pigeonhole principle applied
+to the points $\Theta(jt')$, $j\ge1$, with $t'>t$, gives $d>t$ with
+$\Theta(d)$ within $\varepsilon$ of $0$, so $\Theta(-t)$ is within
+$\varepsilon$ of $\Theta(d-t)$.  Hence $\Theta([0,\infty))$ is dense in
+$T_0$, and so is every forward orbit $\{\theta+\Theta(t):t\ge t_0\}$ with
+$\theta\in T_0$.
+
+In the coordinates $\varphi_q=\theta_q/\log q$ the torus is
+$\R^P/\Z^P$, and by Kronecker's theorem $T_0$ is the image of the smallest
+rational subspace $L\subseteq\R^P$ containing
+$\omega=(1/\log q)_{q\in P}$.  The annihilator of $L$ is a rational
+subspace spanned by the integer vectors $c$ with
+$\sum_qc_q/\log q=0$.  If it contained a nonzero vector supported on at most
+two primes $a,b$, it would contain an integer one, and $\log a/\log b$ would
+be rational, which is false because no power of $a$ is a power of $b$.  So
+each $\varphi_q$ is nonzero on $L$ and any two are linearly independent on
+$L$.  In particular the linear form
+$\theta_b-\theta_a=(\log b)\varphi_b-(\log a)\varphi_a$ is nonzero on $L$,
+although it vanishes on the flow direction $\omega$.
+
+\begin{lemma}[two walls]\label{res:dp-two-walls}
+If $|P|\ge4$, there is $x\in T_0$ with $\theta_q(x)=0$ for exactly two
+primes $q\in P$.
+\end{lemma}
+\begin{proof}
+For $q\ne q'$ the function
+$(u_1,u_2)\mapsto\varphi_q(u_1)\varphi_{q'}(u_2)-\varphi_q(u_2)\varphi_{q'}(u_1)$
+is a nonzero polynomial on $L\times L$, since $\varphi_q$ and $\varphi_{q'}$
+are independent on $L$.  Rational points are dense in $L\times L$, so there
+are rational $u_1,u_2\in L$ at which all these determinants are nonzero, and
+a change of basis of their span multiplies every determinant by the same
+nonzero constant.
+Their span is a rational plane; with a $\Z$-basis $e_1,e_2$ of its integer
+points, $s\mapsto s_1e_1+s_2e_2$ identifies $\R^2/\Z^2$ with a subtorus
+$S\subseteq T_0$.  On $S$ the condition $\theta_q=0$ reads
+$\langle\gamma_q,s\rangle\in\Z$ with
+$\gamma_q=(\varphi_q(e_1),\varphi_q(e_2))\in\Z^2$, and these vectors are
+nonzero and pairwise non-parallel.  Each set $\{\theta_q=0\}\cap S$ is
+therefore a family of finitely many disjoint parallel closed geodesics.
+
+Two non-parallel closed geodesics of the flat torus meet.  So the union of
+the families is a graph whose vertices are the points on at least two
+families, and every geodesic contains a vertex.  Let $k_v$ be the number of
+families through a vertex $v$.  A geodesic with $r$ vertices is cut into $r$
+edges, and geodesics of one family are disjoint, so $E=\sum_vk_v$.  For $q\ne q'$ the map
+$s\mapsto(\langle\gamma_q,s\rangle,\langle\gamma_{q'},s\rangle)$ is a
+covering of $\R^2/\Z^2$ of degree $|\det(\gamma_q,\gamma_{q'})|$, so each
+component of the complement of these two families is an open
+parallelogram.  Each face of the arrangement lies in such a parallelogram,
+where the other families are straight chords, so it is an open convex
+polygon with at least three sides.  Euler's formula $V-E+F=0$ for the torus
+and $2E\ge3F$ give $\sum_v(k_v-3)\le0$.  The origin lies on all $|P|\ge4$
+families, so some vertex has $k_v=2$, and it is the required $x$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{res:distinct-height-all}]
+Suppose $\mathcal D_P=N/K$.  Fix $p\in P$ and an index $k$ with $q_k=p$.
+If $|P|\ge4$, fix $a$, $b$ and $x$ as in Lemma~\ref{res:dp-two-walls}, and
+put $\eta=\min(1/10,\ \min_{c\ne a,b}\operatorname{dist}(\theta_c(x),0))>0$,
+distances being taken in $\R/(\log c)\Z$.  Let
+$\beta=\min_{q\ne p}\operatorname{dist}(\theta_{k,q},0)$, which is positive
+because $t_k$ is a power of $p$.  Choose $T>0$ such that $2^\nu\ge K$, where
+$\nu$ is the number of crossings of $\theta_k$ in $(0,T]$, and let $g>0$ be
+the least distance between two crossings of $\theta_k$ in $[0,T+1]$.
+
+For $n\ge1$ let $t_m=t_kp^n$, so that $\theta_m=\theta_k+\Theta(n\log p)$.
+Write $\delta_p=0$ and $\delta_q=n\log p-m_q\log q$ for $q\ne p$, with $m_q$
+the nearest integer to $n\log p/\log q$; then $\Theta(n\log p)$ has
+coordinates $\delta_q\bmod\log q$.  By Dirichlet's simultaneous
+approximation theorem we may choose $n$ with
+\[
+ \varepsilon=\max_q|\delta_q|
+ <\min\Bigl(\beta,\ \frac g2,\ \frac{\log2}{2|P|},\ \frac\eta8\Bigr),
+\]
+the last term only when $|P|\ge4$.  Then every $m_q\ge1$, and the numbers
+$\delta_q$ are pairwise distinct because $p^n$ and the $q^{m_q}$ are
+pairwise distinct.
+
+\emph{Chains.}  The $q$-crossings of $\theta_m$ are those of $\theta_k$
+shifted by $-\delta_q$.  Every $q$-crossing $s$ of $\theta_k$ with $q\ne p$
+has $|s|\ge\beta>|\delta_q|$, so the shift preserves signs and matches the
+positive $q$-crossings of $\theta_k$ and $\theta_m$ in order.  Cut the
+positive crossings of $\theta_k$ wherever two consecutive ones are more
+than $2\varepsilon$ apart, and call the pieces \emph{chains}.  Crossings in
+different chains are more than $2\varepsilon$ apart and their shifts differ
+by less than $2\varepsilon$, so they keep their order.  Hence $W(\theta_m)$
+is the concatenation of the chains of $W(\theta_k)$ in the same order, each
+rearranged.  Two crossings of one prime are at least $\log2$ apart, and any
+$|P|+1$ consecutive crossings of one chain lie within
+$2\varepsilon|P|<\log2$; they would belong to $|P|+1$ distinct primes, which
+is impossible.  So a chain has at most $|P|$ crossings, and they belong to
+distinct primes.
+
+\emph{Equal tails.}  A chain meeting $(0,T]$ is a single crossing, since
+the crossings in $[0,T+1]$ are at least $g>2\varepsilon$ apart and a
+crossing beyond $T+1$ is more than $1$ away.  So the first $\nu$ blocks of
+the two chain decompositions agree, and Lemma~\ref{res:dp-blocks}(ii) gives
+$|x_k-x_m|<2^{-\nu}\le1/K$.  By Lemma~\ref{res:dp-integral-tails}, $Kx_k$ and
+$Kx_m$ are integers less than $1$ apart, so $x_k=x_m$.
+Lemma~\ref{res:dp-blocks}(i) then gives $f(C)=f(C')$ for every chain $C$ of
+$W(\theta_k)$ and its rearrangement $C'$ in $W(\theta_m)$.
+
+\emph{Case $|P|\le3$.}  Take $q\ne p$, and suppose $\delta_q>0$; the other
+sign is symmetric.  The positive $p$-crossings of $\theta_k$ are the
+numbers $j\log p$ with $j\ge1$, and its positive $q$-crossings are the
+numbers $i\log q-\log t_k$ with $i$ large.  Since $\log p/\log q$ is
+irrational, the differences $j\log p-i\log q+\log t_k$ with $i,j$ large are
+dense in $\R$.  So some $p$-crossing $j\log p$ and $q$-crossing $s$ of
+$\theta_k$ satisfy $s-\delta_q<j\log p<s$.  Their shifts reverse their
+order, so they lie in one chain, which is genuinely rearranged in
+$W(\theta_m)$.  It consists of at most three distinct primes, and
+Lemma~\ref{res:dp-short} gives $f(C)\ne f(C')$, a contradiction.
+
+\emph{Case $|P|\ge4$.}  Put $D=\delta_a-\delta_b$, so $0<|D|<2\varepsilon$.
+Since $\theta_b-\theta_a$ is a nonzero linear form on $L$, there is $y\in L$
+with $|\theta_q(y)|<\eta/8$ for every $q$ and $\theta_b(y)-\theta_a(y)$
+strictly between $0$ and $D$.  Let $z$ be the point $x+y+\Theta(-\eta/2)$ of
+$T_0$, with $y$ read in the torus.  The $a$-crossings of $z$ are the times
+$\eta/2-\theta_a(y)+j\log a$, so exactly one of them, $\tau_a$, lies in
+$[-\eta/4,5\eta/4]$, and it lies in $(\eta/4,3\eta/4)$; the same holds for
+$b$, and $\tau_a-\tau_b$ lies strictly between $0$ and $D$.  Every
+$c$-crossing of $z$ with $c\ne a,b$ is at distance at least $7\eta/8$ from
+$\eta/2$, so it lies outside $[-\eta/4,5\eta/4]$.  Let $U$ be the set of
+$\theta\in T_0$ with exactly one $a$-crossing and one $b$-crossing in
+$[-\eta/4,5\eta/4]$, both in $(\eta/4,3\eta/4)$, with their difference
+$\tau_a-\tau_b$ strictly between $0$ and $D$, and with no other crossing in
+$[-\eta/4,5\eta/4]$.  Each condition is open, so $U$ is an open subset of
+$T_0$ containing $z$, and by density $\theta_k+\Theta(t^*)\in U$ for some
+$t^*>T+2$.
+
+Then $\theta_k$ has an $a$-crossing $t^*+\tau_a$ and a $b$-crossing
+$t^*+\tau_b$ less than $|D|<2\varepsilon$ apart, and every other crossing
+of $\theta_k$ is more than $\eta/2>4\varepsilon$ away from both.  So these
+two crossings form a chain $C$.  Their shifts differ by
+$(\tau_a-\tau_b)-D$, whose sign is opposite to that of $\tau_a-\tau_b$, so
+$C'$ is $C$ reversed.  But $f(ab)-f(ba)=b-a\ne0$, a contradiction.
+\end{proof}
+
+Written as the Cantor series $\sum_{k\ge0}(q_1\cdots q_k)^{-1}$,
+$\mathcal D_P$ has every digit equal to $1$ and every base in $P$.  The
+irrationality criteria of Erd\H{o}s--Straus
+\cite[Theorem~2.1]{erdosstraus1974} and Han\v{c}l--Tijdeman
+\cite[Theorem~3.1]{hancltijdeman2004} assume that each digit divided by the
+product of the last two bases in its denominator tends to $0$; here that
+quotient is at least $(\max P)^{-2}$, so neither applies.  The rationality
+criterion of Diananda and Oppenheim~\cite{dianandaoppenheim1955} condenses a
+Cantor series into blocks of consecutive terms, the form of the dyadic
+argument below; it restates rationality and does not by itself decide
+$\mathcal D_P$.
+
+\subsection{The case \texorpdfstring{$\{2,3,5\}$}{\{2,3,5\}}, checked in Lean}
+\label{sec:distinct-235}
 
 \begin{theorem}[the distinct-height sum for $\{2,3,5\}$]\label{res:distinct-height-235}
 The number $\mathcal D_{\{2,3,5\}}$ is irrational.
@@ -124,14 +392,15 @@ $(b_\tau,\mu_\tau)$, the bounds $3/10$ and $13/15$ and the four gaps, are also
 recomputed in exact arithmetic by the
 \href{\distinctheighturl}{distinct-height programs}.}
 
-The proof reads the sum one dyadic block at a time.  Between consecutive
-powers of two there is at most one power of $3$ and at most one power of
-$5$, so each block acts on the normalised tail by one of five affine maps,
-and the images of the possible tails under these maps are disjoint.  A tail
-therefore determines the block before it, and with it every later block.  A
-rational value would make the tails, scaled by one denominator, integers in
-a bounded range; two tails would coincide and the pattern of blocks would
-repeat.  The powers of $3$ do not fall periodically among the dyadic blocks.
+This is a case of Theorem~\ref{res:distinct-height-all}.  The Lean proof
+follows a different route, which reads the sum one dyadic block at a time.
+Between consecutive powers of two there is at most one power of $3$ and at
+most one power of $5$, so each block acts on the normalised tail by one of
+five affine maps, and the images of the possible tails under these maps are
+disjoint.  A tail therefore determines the block before it, and with it
+every later block.  A rational value would make two tails coincide and the
+pattern of blocks repeat, and the powers of $3$ do not fall periodically
+among the dyadic blocks.
 
 \begin{proof}
 List the prime powers $2^n,3^n,5^n$ ($n\ge1$) in increasing order as
@@ -210,29 +479,26 @@ The upper bound is the delicate step.  Since
 $G_3(y)=G_\varnothing(y/3)$ and $G_{53}(y)=G_5(y/3)$, the images of the empty
 block and of the block with one power of $3$, and those of the blocks $5$ and
 $53$, are disjoint exactly when the largest tail is less than three times the
-smallest.  These are the gaps $1/180$ and $1/900$, each a fixed multiple of
-$3\cdot\frac3{10}-\frac{13}{15}=\frac1{30}$.  The trivial bound $Y_a\le1$
-would not separate these images; the spacing of the powers of $5$ lowers it
-to $13/15$.  Reading one prime power at a time, with the trivial bounds,
-does not separate the maps: the tails then obey $x\mapsto(1+x)/q$ with
-$q\in\{2,3,5\}$, and the images of $[1/4,1]$ for $q=2$ and $q=3$ overlap on
-$[5/8,2/3]$.
+smallest, and the trivial bound $Y_a\le1$ would not separate them; the
+spacing of the powers of $5$ lowers it to $13/15$.
 
-Written as the Cantor series $\sum_{k\ge0}(q_1\cdots q_k)^{-1}$, where $q_k$
-is the prime of the $k$th prime power, $\mathcal D_{\{2,3,5\}}$ has every
-digit equal to $1$ and every base in $\{2,3,5\}$.  The irrationality criteria
-of Erd\H{o}s--Straus \cite[Theorem~2.1]{erdosstraus1974} and
-Han\v{c}l--Tijdeman \cite[Theorem~3.1]{hancltijdeman2004} assume that each
-digit divided by the product of the last two bases in its denominator tends
-to $0$; here that quotient is at least $1/25$, so neither criterion applies.
+\subsection{A finite-state method, and where it stops}
+\label{sec:distinct-decoding}
+
+The dyadic argument extends to other prime sets through a finite
+automaton.  It gives an independent proof for every set of three primes at
+most $31$ and for most sets of four, and it fails at $\{2,3,5,7\}$ for a
+reason the proof of Theorem~\ref{res:distinct-height-all} explains.
 
 \begin{corollary}[three primes up to $31$]\label{res:distinct-height-triples}
 For every set $P$ of three primes, each at most $31$, the distinct-height
 sum $\mathcal D_P$ is irrational.
 \end{corollary}
-\evidenceremark{Ordinary proof of the criterion below, applied through an
-exact finite computation for each of the $165$ sets; no Lean proof.  The
-long record proves the criterion in full.}
+\evidenceremark{A case of Theorem~\ref{res:distinct-height-all}, proved
+here by the independent finite-state method: an ordinary proof of the
+criterion below, applied through an exact finite computation for each of
+the $165$ sets; no Lean proof.  The long record proves the criterion in
+full.}
 
 \begin{proof}
 Let $P=\{p<q<r\}$ and group the prime powers into the blocks
@@ -260,14 +526,19 @@ second computation, which solves exactly for the least and greatest values of
 the infinite paths from each state, returns the same $k$ for every set.
 \end{proof}
 
-The test applies to larger sets as well.  For the $330$ sets of four primes
-at most $31$ it succeeds for $292$ at some depth $k\le5$, for instance at
-$k=1$ for $\{3,5,7,11\}$.  For $\{2,3,5,7\}$ it fails through depth $7$.
-There the automaton allows tails from about $0.188$ to $0.785$, more than a
-factor $3$ apart, and the images of the empty block and of the block with one
-power of $3$ still overlap at depth $7$, on an interval of length about
-$1.8\cdot10^{-8}$.  Whether a finer automaton, or a different argument,
-decides $\{2,3,5,7\}$ is open.
+For the $330$ sets of four primes at most $31$ the test succeeds for $292$
+at some depth $k\le5$, for instance at $k=1$ for $\{3,5,7,11\}$.  For
+$\{2,3,5,7\}$ it fails at every depth.  The two-block words
+$(5,7,3),\varnothing$ and $(7),(3,5)$ have the same map,
+\[
+ G_{573}\circ G_\varnothing(y)=G_7\circ G_{35}(y)=\frac{103+y}{420},
+\]
+which is the collision $f(5,7,3,2)=f(7,2,3,5)=51$ read in blocks.  Both
+words continue by the blocks $(3),(5,7)$ to the same state of the automaton,
+so the images for the first types $(5,7,3)$ and $(7)$ overlap at every depth,
+and a single tail cannot determine its block.  The proof of
+Theorem~\ref{res:distinct-height-all} compares two tails, and there one run
+of two primes suffices.
 
 \section{Nonsingular minors of every order}\label{sec:rank}
 
@@ -497,7 +768,7 @@ $1<p<q$, such as $4,9$, but need not describe all integers supported on
 their prime factors.  The companion's Section~3 gives this extension and
 the failure for $4,8$.
 
-The distinct-height sum at three primes was treated in
+The distinct-height sums for every finite set of primes were treated in
 Section~\ref{sec:distinct}.  The tail argument of the next two sections
 starts again from the running LCM and retains every multiplicity; it does
 not use the rank theorem.
@@ -701,6 +972,42 @@ stops at exactly this step: no finite set of states determines the future of
 the repeated recurrence, and the rest of this note replaces the return to
 an earlier state by a comparison of residues.
 
+The two-tail proof of Theorem~\ref{res:distinct-height-all} stops at the
+same place.  Over the prime powers, $\mathcal R_P=\sum_{k\ge0}c_k/Q_k$,
+where $c_k$ counts the smooth integers in $[t_k,t_{k+1})$ (with $t_0=1$),
+and the tails scaled by $Q_k$ are unbounded, as the $X_a$ are.
+Lemma~\ref{res:dp-blocks} needs every tail in $(0,1)$, so that an integer
+equal to a difference of two tails vanishes.  With unbounded tails that
+step fails, and equality of two tails no longer forces agreement on each
+rearranged run.
+
+The comparison does close on part of the catalogue series.  For $p\in P$
+let $E_p=\sum_{\alpha\ge0}\Lprefix(p^\alpha)^{-1}$ be the sub-sum of
+$\mathcal R_P$ over the powers of $p$.  Then
+$\mathcal D_P=\sum_{q\in P}E_q-(|P|-1)$, and for two primes
+$\mathcal R_{\{p,q\}}=E_pE_q$, which is the factorisation in the proof of
+Theorem~\ref{res:two-prime-transcendence}.
+
+\begin{theorem}[the single-prime sub-sums]\label{res:single-prime-subsums}
+For every finite set $P$ of primes with $|P|\ge2$ and every $p\in P$, the
+number $E_p$ is irrational.
+\end{theorem}
+\evidenceremark{Ordinary proof in the companion, Section~4.6.  It was found
+within this project on 26 September 2026 and independently refereed by a
+second reader; it has no Lean proof, so Comparator does not apply.  For
+$|P|=2$, $E_p$ is an affine function of the Hecke--Mahler value in the
+proof of Theorem~\ref{res:two-prime-transcendence} and is transcendental;
+the new case is $|P|\ge3$, for which we have not searched the literature.}
+
+The proof compares the tails after $p^\alpha$ and $p^{\alpha+n}$ as in
+Section~\ref{sec:distinct}, with the invariant replaced by the product of
+the primes that follow $p$ in a run, and takes the run at a passage of the
+flow near the origin of the torus; no two-wall lemma is needed.  For
+$\mathcal R_P$ itself the comparison fails at its first step: between the
+two scales the tail of $\mathcal R_P$ gains the early terms of every ray
+$p^\alpha w$, with $w$ a $(P\smallsetminus\{p\})$-smooth integer, that enters
+there, and $E_p$ is the case $w=1$, where nothing enters.
+
 
 \section{A window test and the remaining arithmetic}
 \label{sec:escape}\label{sec:open}
@@ -818,7 +1125,17 @@ certificates (Section~9) and its comparisons with other approaches
 Theorem~\ref{res:two-prime-transcendence} uses the transcendence theorem of
 Bugeaud and Laurent, which its Lean proof assumes.  Fan's post of 26 June
 2026 on the erdosproblems.com forum has priority for the two-prime
-deduction~\cite{fan2026comment}.  Theorem~\ref{res:distinct-height-235} is
+deduction~\cite{fan2026comment}.  Theorem~\ref{res:distinct-height-all}
+and Lemmas~\ref{res:dp-integral-tails}--\ref{res:dp-two-walls} have the
+ordinary proofs given in Section~\ref{sec:distinct} and no Lean proofs; a
+formal proof would need Kronecker's theorem on the closure of a line in a
+torus and the Euler characteristic count of Lemma~\ref{res:dp-two-walls}.
+The proof of Theorem~\ref{res:distinct-height-all} was found by an AI agent
+on 26 September 2026 and refereed by a second AI agent working
+independently, who re-derived every step and closed five small gaps; it
+has had no human review.  Theorem~\ref{res:single-prime-subsums} has the
+ordinary proof in the companion, refereed in the same way, and no Lean
+proof.  Theorem~\ref{res:distinct-height-235} is
 checked in Lean, as the remark below it states; Comparator has not yet
 compared it.  Corollary~\ref{res:distinct-height-triples} has an ordinary
 proof together with an exact finite computation, and no Lean proof.  Every
@@ -834,7 +1151,9 @@ its source inventory explains the normalisation conventions of the Lean
 sources.  The \href{\distinctheighturl}{distinct-height programs}
 recompute the constants of Theorem~\ref{res:distinct-height-235} and the
 certificates behind Corollary~\ref{res:distinct-height-triples} and the
-four-prime data in exact rational arithmetic, and store their outputs.  AI
+four-prime data in exact rational arithmetic, and store their outputs; the
+same directory holds exact illustrations of the proof of
+Theorem~\ref{res:distinct-height-all}, which the proof does not use.  AI
 agents carried out most of the research and drafting.  The work has not had
 independent human mathematical review.
 
@@ -850,7 +1169,10 @@ note on Problem~\#243; he has not reviewed the mathematics of this paper.
 
 \appendix
 \section{Guide to the formal sources}\label{app:sources}
-There are three separate arguments.  The distinct-height proof uses dyadic
+There are four separate arguments.  The proof of
+Theorem~\ref{res:distinct-height-all} uses integral tails, rearranged
+blocks, a closed subtorus and an Euler characteristic count, and has no
+Lean proof.  The proof of Theorem~\ref{res:distinct-height-235} uses dyadic
 blocks, the disjoint images of five affine maps and the irrationality of
 $\log2/\log3$; its Lean proof follows the same route.  The rank proof uses
 the height formula, row and column rescaling, and a threshold determinant.
@@ -916,6 +1238,10 @@ is used in this note's counting argument.
 \bibitem{fan2026comment} Steve Fan,
   \emph{Comment on Erd\H{o}s Problem \#269, thread 269, post 7218} (2026),
   \href{https://www.erdosproblems.com/forum/thread/269#post-7218}{source}. Public forum post, 26 June 2026, thread 269, post 7218.
+\bibitem{dianandaoppenheim1955} P. H. Diananda and A. Oppenheim,
+  \emph{Criteria for irrationality of certain classes of numbers~II},
+  American Mathematical Monthly \textbf{62}, no.~4 (1955), 222--225.
+  Cited in the form stated by Serbenyuk, arXiv:\href{https://arxiv.org/abs/1706.03124}{1706.03124}, Theorem~1.
 \bibitem{erdosstraus1974} Paul Erd\H{o}s and Ernst G. Straus,
   \emph{On the irrationality of certain series}, Pacific Journal of Mathematics \textbf{55}, no.~1 (1974), 85--92,
   \href{https://doi.org/10.2140/pjm.1974.55.85}{doi:\nolinkurl{10.2140/pjm.1974.55.85}}.

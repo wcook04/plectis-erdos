@@ -19,13 +19,19 @@ proves this by hand, and
 [DistinctHeightIrrationality.lean](../../../../lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean)
 checks the same argument in Lean. Erdős asserted irrationality of these distinct-value sums in a letter
 dated 1 January 1973 ([Fibonacci Quarterly 12 (1974), p. 335](https://www.fq.math.ca/Scanned/12-4/letter.pdf))
-without printing an argument. The same argument, together with the exact
-finite certificates computed here, proves D_P irrational for every set of
-three primes at most 31, and for 292 of the 330 sets of four primes at most
-31; those results are ordinary proofs with exact computations and have no
-Lean proof. The catalogue question of Erdős Problem #269 concerns a different sum,
+without printing an argument. The #269 papers now prove D_P irrational for
+every finite set P of at least two primes, by a second argument that
+compares two tails of the series (an ordinary proof, independently refereed
+by a second reader within the project on 26 September 2026, with no Lean
+proof); for two primes this was already implied by a Hecke-Mahler
+transcendence theorem, so the new case is three or more primes. The dyadic
+argument, together with the exact finite certificates computed here, gives
+an independent proof for every set of three primes at most 31 and for 292
+of the 330 sets of four primes at most 31; those results are ordinary proofs
+with exact computations and have no Lean proof. The catalogue question of Erdős Problem #269 concerns a different sum,
 the one in which a value is counted once for every integer at which it
-occurs; these programs say nothing about it.
+occurs; these programs say nothing about it, except for the single-prime
+sub-sums E_p described below.
 
 ## How the proof uses a computation
 
@@ -58,6 +64,8 @@ python3 sweep.py --size 3 --bound 31 --max-depth 4 --output triple_sweep.json
 python3 sweep.py --size 4 --bound 31 --max-depth 5 --output four_prime_sweep.json
 python3 certificate.py --primes 2,3,5,7 --max-depth 7 --method both --validate-blocks 400 --output primes_2357.json
 python3 test_distinct_height.py
+python3 two_tail.py --full --output two_tail.json
+python3 test_two_tail.py
 ```
 
 | Program | What it computes | Receipt | Time |
@@ -67,6 +75,8 @@ python3 test_distinct_height.py
 | [sweep.py](sweep.py), size 3 | All 165 sets of three primes at most 31: first passing depth, least gap, both methods | [triple_sweep.json](triple_sweep.json) | 3 s |
 | [sweep.py](sweep.py), size 4 | All 330 sets of four primes at most 31, to depth 5 | [four_prime_sweep.json](four_prime_sweep.json) | 72 s |
 | [test_distinct_height.py](test_distinct_height.py) | Recomputes the triple receipt and the proof constants, checks receipt hashes and negative controls | none | under 1 s |
+| [two_tail.py](two_tail.py) | Exact illustrations of the two-tail proof for every P: the word identity for f, injectivity of f on two and three primes and its failure on four, reversal collisions, the {2,3,5,7} block identity, the crossing and chain correspondence at returns for four prime sets, the close pair of {2,3,5,7}, torus line arrangements, and the E_p identities and close pair | [two_tail.json](two_tail.json) | 2 min with `--full`; the default fast run takes about 1 s |
+| [test_two_tail.py](test_two_tail.py) | Recomputes the fast subset of two_tail.py and checks it against the full receipt | none | about 2 s |
 
 Times are from one Apple M4 laptop.
 
@@ -89,8 +99,12 @@ about 9.4e-6, belongs to {2, 17, 31}. The outer envelopes and the exact
 envelopes give the same depth for every set.
 
 **Four primes.** 292 of the 330 sets pass by depth 5 (184, 34, 28, 42 and 4
-at depths 1 to 5). The other 38, among them {2, 3, 5, 7}, are undecided at
-depth 5. For {2, 3, 5, 7} the test still fails at depth 7. The largest
+at depths 1 to 5). The other 38, among them {2, 3, 5, 7}, are not decided by
+this method at depth 5 (all of them are irrational by the two-tail theorem).
+For {2, 3, 5, 7} the test fails at every depth: the two-block words
+(5,7,3),() and (7),(3,5) have the same map y -> (103 + y)/420, which is the
+letter collision f(5,7,3,2) = f(7,2,3,5) = 51, and both continue by
+(3),(5,7) to the same automaton state (two_tail.py checks this). The largest
 overlap is always between the empty block and the block with one power of 3:
 it has length 0.024 at depth 1 and about 1.8e-8 at depth 7, and two further
 pairs of types still overlap at depth 7. The tails of {2, 3, 5, 7} range over
@@ -122,3 +136,40 @@ R_P = sum over n of 1/[a_1, ..., a_n] that Erdős Problem #269 asks about.
 There the numerators that replace mu grow quadratically, the integer tails
 that a rational value would produce are unbounded, and the finite-state
 argument above has no counterpart.
+
+## The two-tail proof and the single-prime sub-sums
+
+The proof that D_P is irrational for every finite P compares the tail after
+a prime power t_k with the tail after t_k p^n for a good return n. With
+f(s) = sum_{t=1..n} s_(t+1)...s_n for a finite word s, the value of a word
+satisfies V(s u) = (f(s) + V(u))/Pi(s). A rational D_P makes the two tails
+equal, the two future words differ by rearranging short chains, and every
+chain must keep its f-value; a chain of two primes cannot, since
+f(ab) - f(ba) = b - a. [two_tail.py](two_tail.py) checks the finite facts the
+papers quote about this argument; the proof uses none of them.
+
+- f has no collision on orderings of two or three distinct primes below 200;
+  on four primes below 60 it has 30, the first f(5,7,3,2) = f(7,2,3,5) = 51.
+- Full reversals can collide: f(43,13,3,53) = f(53,3,13,43) = 2280, one of
+  five such collisions among four primes below 100. This is why the proof
+  needs a point of the torus on exactly two coordinate walls.
+- At returns for {2,3}, {2,3,5}, {2,3,5,7} and {3,5,7,11} the crossings after
+  t_k and after t_k p^n correspond exactly, every chain stays in place, chains
+  have at most |P| distinct primes, and no rearranged chain has equal f-values
+  (for {2,3,5,7}: 39 rearranged chains, 35 of them transpositions).
+- For {2,3,5,7}, t_k = 2^60 and n = 2547450, the exact difference of the two
+  tails has log10 |x_k - x_m| = -501.1234, the leading term predicted by the
+  first rearranged chain (5,2) against (2,5).
+- On 400 random arrangements of four to six line families on R^2/Z^2,
+  sum_v (k_v - 3) <= -4; the square with both diagonals attains 0 and still
+  has a vertex on exactly two lines.
+
+The same comparison proves that the sub-sum E_p = sum_a 1/H_P(p^a) of the
+catalogue series is irrational for every P with |P| >= 2 (an ordinary
+refereed proof in the long record, no Lean proof; new for |P| >= 3, literature
+not searched). two_tail.py checks the identities used around it: the carry
+f_p of an ordering of distinct primes is the product of the followers of p,
+R_{p,q} = E_p E_q term by term, the three-prime carries lie in {0,1} and the
+four-prime carries in {0,1,2}, D_P = sum_q E_q - (|P| - 1), and for {2,3,5},
+p = 2, t_k = 2^20, n = 65 the first rearranged chain is (2,3) against (3,2)
+with f_2 = 3 against 1 and log10 |y_k - y_m| = -58.098.
