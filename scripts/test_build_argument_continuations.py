@@ -58,21 +58,21 @@ class ToyGraph(unittest.TestCase):
 
     def test_aliases_merge(self) -> None:
         # Target, Named and the universal Supply statement are one statement.
-        self.assertEqual(self.k("ToyCorpus.Target"), self.k("∀ (n : ℕ), ToyCorpus.Supply n"))
+        self.assertEqual(self.k("ToyCorpus.Target"), self.k("∀ (n : Nat), ToyCorpus.Supply n"))
         self.assertEqual(self.k("ToyCorpus.Named"), self.k("ToyCorpus.Target"))
-        self.assertEqual(self.k("ToyCorpus.OpenQ"), self.k("∀ (n : ℕ), ToyCorpus.EvenP n"))
+        self.assertEqual(self.k("ToyCorpus.OpenQ"), self.k("∀ (n : Nat), ToyCorpus.EvenP n"))
 
     def test_supply(self) -> None:
         supplied = self.names(self.graph.supplied)
         for text in ("ToyCorpus.Supply 3", "ToyCorpus.EvenP 2",
-                     "∀ n ≥ 7, ToyCorpus.Supply n", "True"):
+                     "∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n", "True"):
             self.assertIn(text, supplied)
-        for text in ("ToyCorpus.Target", "ToyCorpus.OpenQ", "∀ (n : ℕ), ToyCorpus.Supply n",
-                     "∀ (n : ℕ), ToyCorpus.EvenP n", "ToyCorpus.EvenP 3", "3 ≥ 7"):
+        for text in ("ToyCorpus.Target", "ToyCorpus.OpenQ", "∀ (n : Nat), ToyCorpus.Supply n",
+                     "∀ (n : Nat), ToyCorpus.EvenP n", "ToyCorpus.EvenP 3", "3 ≥ 7"):
             self.assertNotIn(text, supplied)
 
     def test_witness_chain(self) -> None:
-        tree = self.graph.proof_tree(self.k("∀ n ≥ 7, ToyCorpus.Supply n"))
+        tree = self.graph.proof_tree(self.k("∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n"))
         self.assertEqual(tree["producer"], "ToyCorpus.supply_ge")
         self.assertEqual(tree["from"], [])
 
@@ -81,7 +81,7 @@ class ToyGraph(unittest.TestCase):
         self.assertEqual(classes, [frozenset({self.k("ToyCorpus.Target"), self.k("ToyCorpus.OpenQ")})])
 
     def test_leverage(self) -> None:
-        gained = self.graph.leverage(self.k("∀ (n : ℕ), n ≥ 7"))
+        gained = self.graph.leverage(self.k("∀ (n : Nat), n ≥ 7"))
         self.assertEqual(gained, {self.k("ToyCorpus.Target"), self.k("ToyCorpus.OpenQ")})
         self.assertEqual(self.graph.leverage(self.k("ToyCorpus.EvenP 2")), set())
 
@@ -89,20 +89,20 @@ class ToyGraph(unittest.TestCase):
         bundles, truncated = self.graph.bundles(self.k("ToyCorpus.Target"))
         self.assertFalse(truncated)
         self.assertEqual(sorted(map(tuple, bundles)),
-                         sorted([(self.k("ToyCorpus.OpenQ"),), (self.k("∀ (n : ℕ), n ≥ 7"),)]))
+                         sorted([(self.k("ToyCorpus.OpenQ"),), (self.k("∀ (n : Nat), n ≥ 7"),)]))
 
     def test_criticality(self) -> None:
         # Withdrawing supply_ge removes the only witness of the guarded statement,
         # and with it the only witness of `True` that goes through it survives
         # through uses_even_two, so exactly one statement is lost.
         lost = {self.graph.statements[k]["type"] for k in self.graph.criticality(producer="ToyCorpus.supply_ge")}
-        self.assertEqual(lost, {"∀ n ≥ 7, ToyCorpus.Supply n"})
+        self.assertEqual(lost, {"∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n"})
         # Supply 3 has an unconditional witness; removing EvenP 2 loses nothing else.
         self.assertEqual(self.graph.criticality(statement=self.k("ToyCorpus.EvenP 2")), set())
 
     def test_object_index(self) -> None:
         mentions = self.names(k for k, n in self.graph.statements.items() if "ToyCorpus.EvenP" in n["constants"])
-        self.assertIn("∀ (n : ℕ), ToyCorpus.EvenP n", mentions)
+        self.assertIn("∀ (n : Nat), ToyCorpus.EvenP n", mentions)
         self.assertIn("ToyCorpus.Supply 1 ∧ ToyCorpus.EvenP 2", mentions)
 
     def test_battery_supplies(self) -> None:
@@ -112,7 +112,7 @@ class ToyGraph(unittest.TestCase):
         self.assertIn(self.k("ToyCorpus.OpenQ"), graph.supplied)
         self.assertIn(self.k("ToyCorpus.Target"), graph.supplied)
         self.assertEqual(graph.disguise_classes(), [])
-        self.assertNotIn(self.k("∀ (n : ℕ), n ≥ 7"), graph.supplied)
+        self.assertNotIn(self.k("∀ (n : Nat), n ≥ 7"), graph.supplied)
         self.assertTrue(any(row.get("kernel_checked") for row in graph.compositions_checked))
 
     def test_projection_writes(self) -> None:

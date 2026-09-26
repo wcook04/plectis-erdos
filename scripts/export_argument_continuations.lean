@@ -457,20 +457,20 @@ def budgetedTerm (heartbeats : Nat) (x : Elab.TermElabM α) : Elab.TermElabM (Ex
         else return .error "tactic_failed"
 
 /-- The closing tactics tried on an open leaf, each after `intros` and after
-unfolding the corpus definitions the statement mentions. -/
+unfolding the corpus definitions the statement mentions. Scripts are parsed
+against the current environment, so a tactic the environment lacks (for
+example a Mathlib tactic in a core-only test) is skipped, not an error. -/
 def batteryScripts (defs : Array Name) : Elab.TermElabM (Array (String × Syntax)) := do
-  let ids : Array Ident := defs.map mkIdent
-  let pre : Syntax ←
-    if ids.isEmpty then `(tactic| intros)
-    else `(tactic| (intros; try unfold $ids* at *))
-  let pre : TSyntax `tactic := ⟨pre⟩
-  return #[
-    ("decide", ← `(tactic| ($pre; decide))),
-    ("omega", ← `(tactic| ($pre; omega))),
-    ("norm_num", ← `(tactic| ($pre; norm_num))),
-    ("simp_all", ← `(tactic| ($pre; simp_all))),
-    ("positivity", ← `(tactic| ($pre; positivity))),
-    ("linarith", ← `(tactic| ($pre; linarith)))]
+  let env ← getEnv
+  let pre :=
+    if defs.isEmpty then "intros"
+    else "(intros; try unfold " ++ String.intercalate " " (defs.toList.map toString) ++ " at *)"
+  let mut out := #[]
+  for tac in ["decide", "omega", "norm_num", "simp_all", "positivity", "linarith"] do
+    match Parser.runParserCategory env `tactic s!"({pre}; {tac})" with
+    | .ok stx => out := out.push (tac, stx)
+    | .error _ => pure ()
+  return out
 
 /-- Try the battery on a closed statement; return the tactic that closed it
 if the kernel accepts the resulting proof. -/
@@ -537,6 +537,12 @@ def exportAll : Elab.TermElabM Unit := do
         -- graph must be able to reach and unfold.
         if let some body := closedBody then
           if !closedHyps.isEmpty then state := enqueue state body "conclusion"
+          -- Both sides of a proved equivalence are statements, so every
+          -- recorded equivalence reaches the disguise-class computation.
+          let c := body.consumeMData
+          if c.isAppOfArity ``Iff 2 then
+            state := enqueue state c.appFn!.appArg! "iff_side"
+            state := enqueue state c.appArg! "iff_side"
         theoremCount := theoremCount + 1
     | .error reason =>
         emit stream <| Json.mkObj [

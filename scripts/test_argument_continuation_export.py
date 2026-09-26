@@ -67,10 +67,9 @@ def toy_source() -> str:
     header = "import Erdos249257\nimport ErdosProblems\nimport Lean\n"
     if not source.startswith(header):
         raise SystemExit("exporter header changed; update the toy test")
-    # The battery quotes Mathlib tactics, so the toy needs them in scope; the
-    # corpus imports all of Mathlib.
-    source = ("import Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\n"
-              "import Mathlib.Tactic.Linarith\nimport Lean\n") + source[len(header):]
+    # Core Lean only: the battery parses its scripts against the environment
+    # and skips the Mathlib tactics a core-only toy lacks.
+    source = "import Lean\n" + source[len(header):]
     marker = "-- @@TEST_DECLARATIONS@@"
     if marker not in source:
         raise SystemExit("exporter lost its test-declaration marker")
@@ -151,11 +150,11 @@ def main() -> int:
     expect(s3.get("supply_three:conclusion") == [], f"Supply 3 supplied outright: {s3}")
     expect(s3.get("supply_of_even:conclusion") == ["ToyCorpus.EvenP 3"], f"Supply 3 via EvenP 3: {s3}")
 
-    universal = supplied("∀ (n : ℕ), ToyCorpus.Supply n")
-    expect(universal.get("supply_of_even:conclusion") == ["∀ (n : ℕ), ToyCorpus.EvenP n"],
+    universal = supplied("∀ (n : Nat), ToyCorpus.Supply n")
+    expect(universal.get("supply_of_even:conclusion") == ["∀ (n : Nat), ToyCorpus.EvenP n"],
            f"universal statement reduces to universal EvenP: {universal}")
 
-    guarded_supply = supplied("∀ n ≥ 7, ToyCorpus.Supply n")
+    guarded_supply = supplied("∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n")
     expect(guarded_supply.get("supply_ge:conclusion") == [],
            f"guard discharges the producer premise: {guarded_supply}")
 
@@ -168,7 +167,7 @@ def main() -> int:
 
     unfolds = [r for r in rows if r["record"] == "unfold"]
     named_key = by_type.get("ToyCorpus.Named")
-    universal_key = by_type.get("∀ (n : ℕ), ToyCorpus.Supply n")
+    universal_key = by_type.get("∀ (n : Nat), ToyCorpus.Supply n")
     expect(any(u["statement"] == named_key and u["unfolded"] == universal_key for u in unfolds),
            f"Named unfolds to the universal Supply statement: {unfolds}")
     named = supplied("ToyCorpus.Named")
@@ -192,7 +191,7 @@ def main() -> int:
 
     battery = {statements[r["statement"]]["type"]: r["tactic"] for r in rows if r["record"] == "battery"}
     expect("ToyCorpus.EvenP 3" in battery, f"the battery closes EvenP 3 after unfolding: {battery}")
-    expect("∀ (n : ℕ), n ≥ 7" not in battery, f"the battery must not close a false statement: {battery}")
+    expect("∀ (n : Nat), n ≥ 7" not in battery, f"the battery must not close a false statement: {battery}")
     expect("3 ≥ 7" not in battery, "the battery must not close 3 ≥ 7")
 
     expect(summary["truncated"] is False, "toy export must not truncate")
