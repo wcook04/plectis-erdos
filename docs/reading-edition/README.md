@@ -4,13 +4,13 @@
 
 # Reading edition
 
-Edition fingerprint `da9b9c2ea82ee3e1`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `aae1acfb46624011`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
 | File | Contents | Size |
 |---|---|---:|
-| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 388 KB |
+| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 390 KB |
 | [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 728 KB |
 | Complete edition | All 17 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,204 KB |
 
