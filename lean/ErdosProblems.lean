@@ -59,6 +59,8 @@ import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
 import ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification
 import ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification
+import ErdosProblems.Erdos249.FiniteDilationMixedModuli
+import ErdosProblems.Erdos249.FiniteDilationLinearIndependent
 import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
