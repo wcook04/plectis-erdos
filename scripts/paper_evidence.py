@@ -1074,14 +1074,32 @@ def paper_titles(root: Path) -> dict[str, tuple[str, str]]:
     return out
 
 
-def outputs(root: Path, evidence: dict, record_commit: str) -> dict[str, str]:
+def record_commits_from_config(config: dict, evidence: dict, problems: Problems) -> dict[str, str]:
+    """Validate per-paper immutable record pins without moving other papers' links."""
+    raw = config.get("record_commits", {})
+    if not isinstance(raw, dict):
+        problems.add(CONFIG, "record_commits must be a paper-id to full-commit mapping")
+        return {}
+    known = {paper["paper_id"] for paper in evidence["papers"]}
+    valid: dict[str, str] = {}
+    for pid, commit in raw.items():
+        if pid not in known or not isinstance(commit, str) or re.fullmatch(r"[0-9a-f]{40}", commit) is None:
+            problems.add(CONFIG, f"invalid paper record pin for {pid!r}")
+        else:
+            valid[pid] = commit
+    return valid
+
+
+def outputs(root: Path, evidence: dict, record_commit: str,
+            record_commits: dict[str, str] | None = None) -> dict[str, str]:
     titles = paper_titles(root)
     files: dict[str, str] = {}
     for paper in evidence["papers"]:
         pid = paper["paper_id"]
         title, pdf = titles.get(pid, (pid, f"paper/{pid}.pdf"))
         files.update(paper_records(evidence, paper, title, pdf))
-        files[f"{SIDECAR_DIR}/{pid}.tex"] = render_sidecar(evidence, paper, record_commit)
+        pin = (record_commits or {}).get(pid, record_commit)
+        files[f"{SIDECAR_DIR}/{pid}.tex"] = render_sidecar(evidence, paper, pin)
     files[EVIDENCE_MAP] = json.dumps(evidence, indent=1, ensure_ascii=False) + "\n"
     return files
 
@@ -1126,12 +1144,13 @@ def main(argv: list[str] | None = None) -> int:
             problems.add("config", "no record commit: pass --record-commit or set record_commit")
         evidence = resolve(root, corpus, args.aux_dir, previous, problems,
                            require_relations=not args.allow_missing_relations)
+        record_commits = record_commits_from_config(config, evidence, problems)
         if problems.items:
             for item in problems.items:
                 print("FAIL", item, file=sys.stderr)
             print(f"{len(problems.items)} problems; nothing written", file=sys.stderr)
             return 1
-        write_atomically(root, outputs(root, evidence, record_commit))
+        write_atomically(root, outputs(root, evidence, record_commit, record_commits))
         n = sum(len(p["results"]) for p in evidence["papers"])
         print(f"wrote evidence for {n} results in {len(evidence['papers'])} papers")
         return 0
@@ -1142,6 +1161,7 @@ def main(argv: list[str] | None = None) -> int:
     if previous is None:
         problems.add(EVIDENCE_MAP, "missing")
         return report(problems)
+    record_commits = record_commits_from_config(config, previous, problems)
     if corpus is not None:
         # Full check: resolve everything again against the corpus; numbering is taken from
         # the committed map (the rendered-PDF check verifies it against the PDFs).
@@ -1168,7 +1188,7 @@ def main(argv: list[str] | None = None) -> int:
                 problems.add(row["id"], "the evidence map records a different Comparator status than the ledger")
         for extra in mapped:
             problems.add(extra, "is in the evidence map but not in the ledger")
-    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "")
+    expected = outputs(root, json.loads(json.dumps(evidence)), record_commit or "", record_commits)
     for rel, text in expected.items():
         path = root / rel
         if not path.is_file() or path.read_text(encoding="utf-8") != text:
@@ -1178,13 +1198,23 @@ def main(argv: list[str] | None = None) -> int:
         if rel not in expected and rel != f"{RECORD_DIR}/README.md":
             problems.add(rel, "is not generated from the current evidence; delete it")
     here = Repo(root)
-    if record_commit and here.has_commit(record_commit):
-        for rel, text in expected.items():
-            if rel.startswith(RECORD_DIR + "/") and rel.endswith(".md") and here.text(record_commit, rel) != text:
-                problems.add(rel, f"the papers link the record at {record_commit[:12]}, which differs from "
-                                  "the current record: rebuild the evidence and the papers")
-    elif record_commit:
-        problems.add("config", f"record_commit {record_commit} is not in this repository's history")
+    pin_exists: dict[str, bool] = {}
+    for rel, text in expected.items():
+        if not (rel.startswith(RECORD_DIR + "/") and rel.endswith(".md")):
+            continue
+        first = Path(rel).relative_to(RECORD_DIR).parts[0]
+        pid = first.removesuffix(".md")
+        pin = record_commits.get(pid, record_commit)
+        if not pin:
+            problems.add(CONFIG, f"no record commit for {pid}")
+            continue
+        if pin not in pin_exists:
+            pin_exists[pin] = here.has_commit(pin)
+        if not pin_exists[pin]:
+            problems.add(CONFIG, f"record commit {pin} for {pid} is not in this repository's history")
+        elif here.text(pin, rel) != text:
+            problems.add(rel, f"the paper links the record at {pin[:12]}, which differs from "
+                              "the current record: rebuild the evidence and the paper")
     return report(problems)
 
 

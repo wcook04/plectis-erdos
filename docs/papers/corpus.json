@@ -1365,8 +1365,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:67047021911ecd6bf566dd0b9d30b8164b4b7045662300625edcf6d9f07ffb06",
-      "pdf_byte_count": 134964,
+      "pdf_sha256": "sha256:8d69dfda5d627484af1a9b46a1a06a6e047cd5930a561f3476d445f46b375d26",
+      "pdf_byte_count": 134966,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1680,8 +1680,8 @@
         "manuscript_title": "Denominators and Rationality Criteria for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f0582a9256f3627856a5590b193bd6f3b225fc716fdfda86fe9bcd40ff0362f1",
-      "pdf_byte_count": 301028,
+      "pdf_sha256": "sha256:96d018ae8034666f13ca3f1b0264921c6238ca07ad1c450023bf2524d01af507",
+      "pdf_byte_count": 301024,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

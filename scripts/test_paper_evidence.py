@@ -300,6 +300,28 @@ def test_outputs_are_deterministic_and_checkable(f: Fixture) -> None:
     require("Comparator: passed" in record and "receipt-E1.json" in record, "the record omits the check")
 
 
+@with_fixture
+def test_paper_record_pin_override_is_scoped_and_validated(f: Fixture) -> None:
+    f.relations["rows"][f"{PAPER_ID}#res:second"] = f.relation_for("res:second")
+    f.materialise()
+    config_path = f.root / pe.CONFIG
+    config = json.loads(config_path.read_text())
+    config["record_commits"] = {PAPER_ID: "e" * 40}
+    config_path.write_text(json.dumps(config))
+    args = ["--root", str(f.root), "--corpus-repo", str(f.corpus)]
+    require(pe.main(["build", *args]) == 0, "a scoped record pin was refused")
+    sidecar = (f.root / "paper/evidence" / f"{PAPER_ID}.tex").read_text()
+    require(f"/blob/{'e' * 40}/evidence/{PAPER_ID}.md" in sidecar,
+            "the paper did not link its own immutable record pin")
+    require(f"/blob/{'d' * 40}/evidence/{PAPER_ID}.md" not in sidecar,
+            "the default record pin overrode the paper-specific pin")
+    config["record_commits"] = {"unknown-paper": "e" * 40}
+    config_path.write_text(json.dumps(config))
+    require(pe.main(["build", *args]) == 1, "an unknown record pin was accepted")
+    require((f.root / "paper/evidence" / f"{PAPER_ID}.tex").read_text() == sidecar,
+            "a rejected pin overwrote the existing sidecar")
+
+
 def test_statement_with_let_is_read_whole() -> None:
     text = ("theorem t (a : Nat) :\n    let C := a + 1\n    C = a + 1 ∧\n    letI := 0\n"
             "    True := by\n  exact ⟨rfl, trivial⟩\n")
@@ -332,6 +354,7 @@ def main() -> int:
         test_relation_notes_are_required_and_bound,
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
+        test_paper_record_pin_override_is_scoped_and_validated,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,
     ]
