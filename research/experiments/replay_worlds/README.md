@@ -6,10 +6,13 @@
 Three recorded routes, reopened on 26 September 2026, became theorems. The two
 strongest are these.
 
-- The distinct-height running-LCM sum of Problem 269 for the primes
-  2, 3 and 5 is irrational. Erdős asserted irrationality of these sums in a
-  letter of 1 January 1973 without printing an argument. Exact decoding
-  certificates extend the same proof to every triple of primes up to 31.
+- The distinct-height running-LCM sum of Problem 269 is irrational for every
+  set of at least two primes. Erdős asserted irrationality of these sums in a
+  letter of 1 January 1973 without printing an argument. The case of the
+  primes 2, 3 and 5 came first from the replay and is checked in Lean; the
+  general case came from restating the sum as a Cantor series whose bases
+  follow the cutting sequence of a linear flow on a torus, comparing two tails
+  at a close return of the flow, and was refereed by a second reader.
   Evidence: [`../erdos269/distinct_height/`](../erdos269/distinct_height/).
 - For coprime integers a > b ≥ 1 and every infinite divisibility chain
   n₁ | n₂ | ⋯, the Lambert subsum Σ 1/((a/b)^{n_j} − 1) is transcendental.
@@ -18,8 +21,9 @@ strongest are these.
   Evidence: [`../chain_transcendence/`](../chain_transcendence/).
 
 Both are ordinary proofs pending specialist review. The first relies on
-nothing beyond elementary arithmetic and the irrationality of log 2 / log 3;
-the second cites Schlickewei's p-adic Subspace Theorem.
+elementary arithmetic, the irrationality of log p / log q, Kronecker density on
+a subtorus and Euler's formula on the 2-torus; the second cites Schlickewei's
+p-adic Subspace Theorem.
 
 ## Where the idea comes from
 
