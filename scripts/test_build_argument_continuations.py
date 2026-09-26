@@ -79,6 +79,20 @@ class ToyGraph(unittest.TestCase):
             ("∀ (n : Nat), n ≥ 7",),
         ]))
 
+    def test_criticality(self) -> None:
+        # Withdrawing supply_ge removes the only witness of the guarded statement,
+        # and with it the only witness of `True` that goes through it survives
+        # through uses_even_two, so exactly one statement is lost.
+        lost = {self.graph.statements[k]["type"] for k in self.graph.criticality(producer="ToyCorpus.supply_ge")}
+        self.assertEqual(lost, {"∀ (n : Nat), n ≥ 7 → ToyCorpus.Supply n"})
+        # Supply 3 has an unconditional witness; removing EvenP 2 loses nothing else.
+        self.assertEqual(self.graph.criticality(statement=self.k("ToyCorpus.EvenP 2")), set())
+
+    def test_object_index(self) -> None:
+        mentions = [n["type"] for n in self.graph.statements.values() if "ToyCorpus.EvenP" in n["constants"]]
+        self.assertIn("∀ (n : Nat), ToyCorpus.EvenP n", mentions)
+        self.assertIn("ToyCorpus.Supply 1 ∧ ToyCorpus.EvenP 2", mentions)
+
     def test_projection_writes(self) -> None:
         projection, graph_payload = builder.build(FIXTURE, ROOT)
         self.assertEqual(projection["schema"], builder.SCHEMA)

@@ -185,8 +185,8 @@ def module_problem(module: str, name: str) -> str | None:
 
 class Graph:
     def __init__(self, rows: list[dict[str, Any]]):
-        self.meta = rows[0]
-        self.summary = next(row for row in rows if row.get("record") == "summary")
+        self.meta = rows[0] if rows else {}
+        self.summary = next((row for row in rows if row.get("record") == "summary"), {})
         self.theorems: dict[str, dict[str, Any]] = {}
         self.statements: dict[str, dict[str, Any]] = {}
         # reduction: (head, producer, reading, residual keys tuple)
@@ -197,14 +197,45 @@ class Graph:
         self.errors: list[dict[str, Any]] = []
         self._ingest(rows)
 
-    def _statement(self, key: str, type_text: str | None, origin: str) -> dict[str, Any]:
+    @classmethod
+    def from_payload(cls, payload: dict[str, Any]) -> "Graph":
+        """Rebuild the graph from ``argument_continuations_graph.json.gz``."""
+        graph = cls([])
+        graph.meta = {"schema": payload.get("schema")}
+        graph.summary = (payload.get("source") or {}).get("export_summary", {})
+        for row in payload.get("statements", []):
+            graph.statements[row["key"]] = {
+                "key": row["key"], "type": row.get("type"), "origins": set(row.get("origins", [])),
+                "consumers": set(row.get("consumers", [])), "conclusion_of": set(row.get("conclusion_of", [])),
+                "constants": set(row.get("constants", [])),
+            }
+        for row in payload.get("reductions", []):
+            graph.reductions.append((row["statement"], row["producer"], row.get("reading", "conclusion"),
+                                     tuple(row.get("residuals", []))))
+        for row in payload.get("theorems", []):
+            graph.theorems[row["name"]] = {
+                "name": row["name"], "module": row.get("module", ""),
+                "hypotheses": row.get("hypotheses", []),
+                "schematic_hypotheses": row.get("schematic_hypotheses", []),
+                "conclusion_key": row.get("conclusion"), "conclusion_type": row.get("conclusion_type"),
+                "conclusion_closed": row.get("conclusion") is not None, "data_binders": [],
+                "card": {k: row[k] for k in ("source", "papers", "comparator_result", "problem") if k in row},
+            }
+        graph.existential = payload.get("existential_reductions", [])
+        graph.budget_exhausted = payload.get("budget_exhausted", [])
+        return graph
+
+    def _statement(self, key: str, type_text: str | None, origin: str,
+                   constants: Iterable[str] = ()) -> dict[str, Any]:
         node = self.statements.get(key)
         if node is None:
-            node = {"key": key, "type": type_text, "origins": set(), "consumers": set(), "conclusion_of": set()}
+            node = {"key": key, "type": type_text, "origins": set(), "consumers": set(),
+                    "conclusion_of": set(), "constants": set()}
             self.statements[key] = node
         if type_text and not node.get("type"):
             node["type"] = type_text
         node["origins"].add(origin)
+        node["constants"].update(constants)
         return node
 
     def _ingest(self, rows: list[dict[str, Any]]) -> None:
@@ -242,7 +273,8 @@ class Graph:
                     node = self._statement(binder["key"], binder.get("type"), "hypothesis")
                     node["consumers"].add(name)
                 if conclusion.get("closed") and conclusion.get("key"):
-                    node = self._statement(conclusion["key"], conclusion.get("type"), "conclusion")
+                    node = self._statement(conclusion["key"], conclusion.get("type"), "conclusion",
+                                           conclusion.get("constants", ()))
                     node["conclusion_of"].add(name)
                     if schematic:
                         self.existential.append({
@@ -253,7 +285,8 @@ class Graph:
                         add_reduction(conclusion["key"], name, "theorem",
                                       [binder["key"] for binder in closed])
             elif record == "statement":
-                self._statement(row["key"], row.get("type"), row.get("origin", "statement"))
+                self._statement(row["key"], row.get("type"), row.get("origin", "statement"),
+                                row.get("constants", ()))
             elif record == "match":
                 status = row.get("status")
                 if status != "matched":
@@ -282,16 +315,25 @@ class Graph:
     # ------------------------------------------------------------------
     # Supply fixpoint with witnesses
 
-    def supply(self, extra: Iterable[str] = ()) -> tuple[set[str], dict[str, int]]:
+    def supply(self, extra: Iterable[str] = (), *, exclude_heads: frozenset[str] = frozenset(),
+               exclude_producers: frozenset[str] = frozenset()) -> tuple[set[str], dict[str, int]]:
+        def usable(index: int) -> bool:
+            head, producer, _, _ = self.reductions[index]
+            return head not in exclude_heads and producer not in exclude_producers
+
         remaining = [len(residuals) for (_, _, _, residuals) in self.reductions]
         by_residual: dict[str, list[int]] = defaultdict(list)
         for index, (_, _, _, residuals) in enumerate(self.reductions):
+            if not usable(index):
+                continue
             for residual in residuals:
                 by_residual[residual].append(index)
         supplied: set[str] = set()
         witness: dict[str, int] = {}
         queue: list[str] = []
         for index, (head, _, _, residuals) in enumerate(self.reductions):
+            if not usable(index):
+                continue
             if not residuals and head not in supplied:
                 supplied.add(head)
                 witness[head] = index
@@ -483,6 +525,18 @@ class Graph:
         gained.discard(key)
         return gained
 
+    def criticality(self, *, statement: str | None = None, producer: str | None = None) -> set[str]:
+        """Supplied statements that lose every kernel witness chain when the
+        given statement is no longer supplied, or the given theorem is
+        withdrawn: the answer to "what fails without it"."""
+        supplied, _ = self.supply(
+            exclude_heads=frozenset([statement]) if statement else frozenset(),
+            exclude_producers=frozenset([producer]) if producer else frozenset())
+        lost = self.supplied - supplied
+        if statement:
+            lost.discard(statement)
+        return lost
+
     def proof_tree(self, key: str, depth: int = 0, limit: int = 6) -> dict[str, Any]:
         index = self.witness.get(key)
         node: dict[str, Any] = {"statement": key, "type": self.statements.get(key, {}).get("type")}
@@ -668,6 +722,7 @@ def build(export_path: Path, root: Path = ROOT) -> tuple[dict[str, Any], dict[st
                 "problems": sorted(statement_problems.get(key, ())),
                 "consumers": sorted(node["consumers"]),
                 "conclusion_of": sorted(node["conclusion_of"]),
+                "constants": sorted(node.get("constants", ())),
                 "component": graph.component.get(key),
                 "witness": (graph.reductions[graph.witness[key]][1]
                             if graph.witness.get(key, -1) >= 0 else None),

@@ -182,6 +182,11 @@ def producerIndex (cfg : Config) (env : Environment) :
       | none => pure ()
   return index
 
+/-- Corpus constants a statement mentions: the object index key. -/
+def corpusConstants (cfg : Config) (env : Environment) (e : Expr) : Array String :=
+  let names := e.getUsedConstants.filter (selected cfg env)
+  ((names.map Name.toString).qsort (· < ·)).extract 0 48
+
 def emit (stream : IO.FS.Stream) (j : Json) : IO Unit :=
   stream.putStr (j.compress ++ "\n")
 
@@ -279,7 +284,8 @@ def enqueue (s : State) (e : Expr) (origin : String) : State :=
   if s.seen.contains k then s
   else { s with seen := s.seen.insert k, queue := s.queue.push (e, origin) }
 
-def binderRows (type : Expr) : MetaM (Array Json × Array Expr × Json) := do
+def binderRows (cfg : Config) (env : Environment) (type : Expr) :
+    MetaM (Array Json × Array Expr × Json) := do
   forallTelescope type fun xs body => do
     let mut rows : Array Json := #[]
     let mut closedHyps : Array Expr := #[]
@@ -307,7 +313,8 @@ def binderRows (type : Expr) : MetaM (Array Json × Array Expr × Json) := do
     let bodyClosed := !body.hasFVar
     let mut conclusion : List (String × Json) := [
       ("closed", toJson bodyClosed), ("type", toJson (← render body)),
-      ("head", toJson ((headName? body).map Name.toString |>.getD ""))]
+      ("head", toJson ((headName? body).map Name.toString |>.getD "")),
+      ("constants", toJson (corpusConstants cfg env body))]
     if bodyClosed then conclusion := conclusion ++ [("key", toJson (keyOf body))]
     return (rows, closedHyps, Json.mkObj conclusion)
 
@@ -336,7 +343,7 @@ def exportAll : MetaM Unit := do
   names := names.qsort (fun a b => a.toString < b.toString)
   for name in names do
     let some info := env.find? name | continue
-    let result ← budgeted 400000 (binderRows info.type)
+    let result ← budgeted 400000 (binderRows cfg env info.type)
     match result with
     | .ok (rows, closedHyps, conclusion) =>
         emit stream <| Json.mkObj [
@@ -398,7 +405,8 @@ def exportAll : MetaM Unit := do
       return rows
     emit stream <| Json.mkObj [
       ("record", "statement"), ("key", toJson key), ("origin", toJson origin),
-      ("type", toJson (← render statement))]
+      ("type", toJson (← render statement)),
+      ("constants", toJson (corpusConstants cfg env statement))]
     match searched with
     | .ok rows =>
         for (row, residuals) in rows do
