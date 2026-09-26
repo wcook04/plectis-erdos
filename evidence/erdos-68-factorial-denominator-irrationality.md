@@ -245,7 +245,7 @@ theorem global_complementary_criterion_nat
 
 <a id="res-companion-orbit-rationality-boundary"></a>
 
-## Theorem A.1 (rationality and factorial residues), page 12
+## Theorem A.1 (rationality and factorial residues), page 13
 
 > *The following statements are equivalent:*
 > 
