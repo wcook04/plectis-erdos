@@ -3,19 +3,10 @@
 
 # Theory laboratory
 
-The semantic corpus answers *what is proved and how statements relate*. This
-layer asks three further questions:
-
-- **Which few mechanisms underlie those proofs?** The reusable reasons theorems
-  hold and methods fail, rather than the theorems themselves.
-- **What survives when the mathematics is deliberately perturbed?** A typed
-  intervention shifts a coefficient, changes a base, or drops a structural
-  precondition, records which mechanisms it predicts will break, and then checks.
-- **Does the explanation transfer to unseen mathematics?** A holdout uses the
-  commit before a theorem landed and measures whether the layer helps recover it.
-
-The third question tests the first two: a mechanism that reads well but does not
-improve held-out recovery is a story, not an explanation.
+The semantic corpus records statements and their relationships. This laboratory
+records reusable proof mechanisms, predicts what breaks under a mathematical
+perturbation, and prepares historical holdouts for testing recovery. A readable
+explanation alone does not establish improved recovery.
 
 ## Files
 
@@ -53,33 +44,22 @@ semantic layer improves mathematical recovery.
 
 ## What a mechanism is
 
-An invariant, plus a transformation, plus the observable it controls. The test is
-predictive, not descriptive: given only the record, could a mathematician who has
-never seen this repository decide whether a *new* nearby statement is reachable
-by it? If not, the record is a label and the contract rejects it for missing one
-of `invariant`, `transformation`, `observable_controlled`.
-
-A theorem family is not a mechanism. A restatement is not a mechanism. A
-dependency cluster is not a mechanism.
+Each record names an `invariant`, a `transformation`, and the
+`observable_controlled`. It should explain whether a new nearby statement is
+reachable by that method. A theorem-family label or dependency cluster alone
+does not supply this explanation.
 
 ## Why the negative space is first-class
 
-Most formal libraries record what worked. This corpus also keeps blocked engines,
-failed generalisations, and repairs that expose the next precondition.
-`receipts.json` requires each receipt ruling out a mechanism to name the sibling
-mechanisms it does **not** reach.
-
-A barrier here nearly got recorded as closing a family of certificate engines
-although a weaker low-carry engine survived it. The contract now prevents a
-barrier from being recorded without naming unaffected siblings.
+`receipts.json` records failed generalisations and their scope. Every receipt
+ruling out a mechanism must name unaffected siblings: a barrier to one
+certificate engine may leave a weaker engine available.
 
 ## Prediction integrity
 
-An intervention records what it predicts *before* the outcome is known.
-`scripts/build_theory_lab.py --stamp` fingerprints exactly the predictive fields;
-the checker recomputes and rejects a mismatch, and `--stamp` refuses to stamp a
-record whose outcome is already known. So "we predicted this" is auditable rather
-than a story assembled afterwards.
+An intervention records its prediction before the outcome is known.
+`scripts/build_theory_lab.py --stamp` fingerprints the predictive fields and
+refuses an outcome-bearing record. The checker rejects a changed fingerprint.
 
 ## Packet arms
 
@@ -111,36 +91,24 @@ python3 scripts/query_semantic.py receipts
 python3 scripts/query_semantic.py benchmark
 ```
 
-`unexplained` is the honest one. A large residual is a finding about the
-mechanism basis, not a bookkeeping gap, and it is reported rather than hidden.
+`unexplained` reports statements not covered by the recorded mechanisms.
 
 ## Return to public evidence
 
-A theory-lab record explains a mechanism; it is not proof authority or a public
-claim. After following a mechanism, intervention, discrepancy, or holdout,
-return through the canonical [complete eight-problem return matrix](../../SOURCE_MAP.md#complete-eight-problem-return-matrix)
-to rejoin the problem-owned source, paper, and exact frontier. From an exact
-source or paper handle, use `python3 scripts/query_corpus.py --source
-<module.lean:line>` or `--paper-anchor <TeX_label_or_source_ref>` to recover the
-corresponding reverse route. This keeps a useful explanation connected to the
-checked declaration and its unresolved boundary without promoting the lab's
-mechanism vocabulary into a mathematical result.
+Follow the [complete eight-problem return matrix](../../SOURCE_MAP.md#complete-eight-problem-return-matrix)
+back to the problem's source, paper and open boundary. Exact reverse routes are
+available through `python3 scripts/query_corpus.py` with `--source
+<module.lean:line>`, `--paper-anchor <TeX_label_or_source_ref>`, or
+`--module <module_path_or_sigil>`. The module route includes its synopsis,
+declarations, source identity, attached claims and route-memory context.
 
-For a module-level handoff, use `python3 scripts/query_corpus.py --module
-<module_path_or_sigil>`. A source path or paper sigil returns the authored
-synopsis, declaration preview, exact source identity, attached claims, and
-route-memory context before you return to the problem matrix and its boundary.
-
-For external statement identity, follow the generated [Formal Conjectures
-crosswalk](../../verification/FORMAL_CONJECTURES_CROSSWALK.md). Its eight problem rows bind
-the pinned upstream declaration and source hash to the matching local route;
-the lab remains an explanation layer and does not become proof or claim
-authority by following that link.
+The generated [Formal Conjectures crosswalk](../../verification/FORMAL_CONJECTURES_CROSSWALK.md)
+binds each of the eight problems to its pinned upstream declaration, source
+hash and local route. Following a link does not verify a lab explanation.
 
 ## What this layer does not decide
 
-Not novelty, not significance, not correctness. A mechanism is an explanation;
-Lean remains the proof authority and the semantic corpus remains the statement
-authority. `docs/methodology.json` carries the evidence class
-`blinded_recovery_evaluation`, which states exactly what a recovery result does
-and does not establish.
+Lean owns proof correctness; the semantic corpus owns statement records. Lab
+mechanisms do not establish correctness, novelty or significance.
+`docs/methodology.json::blinded_recovery_evaluation` defines the separate
+evidence required for recovery results.
