@@ -547,7 +547,7 @@ condition no `s` meets that clause's hypotheses; the region is not empty
 old instances: every `ε ≥ 1` instance of #251's per-clause countermodel follows
 from the `ε = 1` instance (`ArgumentGraph/Results/Erdos251.lean`). And a dropped
 hypothesis can follow from the others, as #243's `v n > 0` does, which gives the
-same region with a shorter statement. `scripts/residual_evaluator.py` decides
+same region with a shorter statement (`ArgumentGraph/Results/Erdos243.lean`). `scripts/residual_evaluator.py` decides
 such relations with the kernel: whether residuals imply a target, restate it or
 are false, and whether one demand for a target implies another, under binders
 the sketches share (`--emit` writes its probes for a kernel-probe branch and
