@@ -24,6 +24,33 @@ improve held-out recovery is a story, not an explanation.
 `docs/theory_lab.json` is **generated** from them by
 `scripts/build_theory_lab.py` and guarded by `scripts/check_theory_lab.py`.
 
+## Preparing a recovery packet
+
+`scripts/build_benchmark_packet.py` exports the exact `cut_commit` registered in
+`benchmark_items.json`. It does not select a newer cutoff when history is
+reconciled. The export contains the tracked historical files without a `.git`
+directory or shared object database. Existing destinations are refused; prepare
+each arm in a fresh directory outside every Git worktree.
+
+The `signatures` arm gives a participant the full historical source for ordinary
+search. Other arms add the selected graph, mechanisms, or failure records.
+Records citing unavailable declarations are removed, and capsule transfer
+challenges are withheld. An evaluator receipt records the frozen cutoff, future
+commit, and answer key outside the participant export. Those identities are
+excluded from its `docs/_packet/MANIFEST.json`.
+
+This is packet preparation, not a scored evaluation. Every manifest records
+`evaluation_ready: false`. Before recording results, bind a participant runner
+that cannot read the evaluator's filesystem or retrieve later source, use fresh
+participants, and fix the question, scoring rubric, model, search tools, and
+compute budget. Review the current concepts and explanatory prose separately:
+checking their declaration references does not prove that their wording is free
+of answer hints. The shuffled and off-problem controls also need capsule and
+prose-volume matching; their current payloads do not implement that comparison.
+
+Packet construction and repository checks alone provide no evidence that the
+semantic layer improves mathematical recovery.
+
 ## What a mechanism is
 
 An invariant, plus a transformation, plus the observable it controls. The test is
@@ -54,16 +81,11 @@ the checker recomputes and rejects a mismatch, and `--stamp` refuses to stamp a
 record whose outcome is already known. So "we predicted this" is auditable rather
 than a story assembled afterwards.
 
-## How holdouts avoid leaking
+## Packet arms
 
-`scripts/build_benchmark_packet.py` creates a detached git worktree at the commit
-before the target declaration was introduced. The target is absent from that
-checkout by construction — the control does not depend on the agent's restraint.
-Injected artifacts are filtered against declarations extracted from the checkout
-itself, so a mechanism record citing a future theorem is dropped rather than
-trimmed. Arms are cumulative:
+The four main arms add successive layers to the same frozen source export:
 
-    signatures   the cut checkout alone
+    signatures   the historical source export alone
     graph        + statement graph, filtered to the cut
     mechanism    + mechanism records and capsules, filtered to the cut
     negative     + failure receipts
@@ -72,7 +94,9 @@ trimmed. Arms are cumulative:
 python3 scripts/build_benchmark_packet.py --target NAME --arm mechanism --dest /tmp/cut --answer-key /tmp/key.json
 ```
 
-The answer key is refused if it would be written inside the packet.
+Use a target registered in `benchmark_items.json`. The answer key is refused if
+it would be written inside the packet or replace an existing file. Keep it in
+the evaluator's filesystem when arranging a participant run.
 
 ## Routes
 
